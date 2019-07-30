@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: eb52169fc522ba323f82c42d9505571b18f49f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b96b65b7dd38900fccb8d5d3a9133f37ee93949f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244477"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595519"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Contoso Retail データを Azure SQL Data Warehouse に読み込む
 
@@ -72,7 +72,7 @@ WITH (
 ```
 
 ### <a name="12-create-the-external-data-source"></a>1.2. 外部データ ソースを作成する
-この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使って、データの場所とデータ型を格納します。 
+この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使用して、データの場所とデータ型を格納します。 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -213,7 +213,7 @@ GO
 ```
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. データを新しいテーブルに読み込む
-Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使用します。 CTAS による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。 新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの [CTAS][CTAS] ステートメントを使用してください。 
+Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL) ステートメントを使用します。CTAS による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの CTAS ステートメントを使用してください。][CREATE TABLE AS SELECT (Transact-SQL)] statement. Loading with CTAS leverages the strongly typed external tables you've created. To load the data into new tables, use one [CTAS][CTAS] 
  
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 
@@ -264,7 +264,7 @@ ORDER BY
 ```
 
 ## <a name="5-optimize-columnstore-compression"></a>5.列ストア圧縮の最適化
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これが発生する理由はさまざまです。 詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
+既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これが発生する理由はさまざまです。 詳しくは、[列ストア インデックスの管理][manage columnstore indexes]に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。 
 
@@ -276,7 +276,7 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-列ストア インデックスの保守について詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
+列ストア インデックスの保守の詳細については、 [列ストア インデックスの管理][manage columnstore indexes] に関する記事をご覧ください。
 
 ## <a name="6-optimize-statistics"></a>6.統計の最適化
 読み込みの直後に単一列の統計を作成することをお勧めします。 クエリ述語に含まれない列があることがわかっている場合は、その列に対する統計の作成はスキップできます。 すべての列に対して単一列の統計を作成する場合は、すべての統計の再構築に時間がかかる場合があります。 
@@ -343,7 +343,7 @@ GROUP BY p.[BrandName]
 ## <a name="next-steps"></a>次の手順
 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)例を実行します。
 
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。
+開発に関するその他のヒントについては、「 [SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][SQL Data Warehouse development overview]」をご覧ください。
 
 <!--Image references-->
 

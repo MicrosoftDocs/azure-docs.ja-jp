@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40fc631e84336b684f981a2fef1515a1febec0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65811902"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293063"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関
 招待側組織が Multi-Factor Authentication を実行します。 招待側組織は、Multi-Factor Authentication を使用している B2B ユーザーに対する十分なライセンスがあることを確認する必要があります。
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>パートナー組織で、既に Multi-Factor Authentication を設定している場合はどうなりますか。 パートナー組織の Multi-Factor Authentication を信頼でき、独自の Multi-Factor Authentication は使用しないのですか。
-この機能は今後のリリースで計画されています。機能が実装されたら、特定のパートナーを選択して、自社 (招待側組織) の多要素認証から除外できるようになります。
+この機能は、現時点ではサポートされていません。 組織のリソースへのアクセスで多要素認証が必要な場合、取引先組織に対する多要素認証を (招待側) 組織に登録する必要があります。
 
 ### <a name="how-can-i-use-delayed-invitations"></a>招待の遅延は、どのように使用するのですか。
 組織で、B2B コラボレーション ユーザーを追加し、必要に応じてそれらのユーザーをアプリケーションにプロビジョニングして、招待を送信したいと考える場合があります。 B2B コラボレーションの招待 API を使用して、オンボード ワークフローをカスタマイズできます。
@@ -58,12 +58,12 @@ B2B コラボレーション ユーザーは、制限付き管理者のロール
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>ゲスト ユーザーに対して Azure Portal へのアクセスをブロックできますか。
 はい。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
-ゲスト ユーザーの [Azure ポータル](https://portal.azure.com)へのアクセスをブロックするには、Windows Azure クラシック デプロイ モデル API で条件付きアクセス ポリシーを使用します。
+ゲスト ユーザーの [Azure portal](https://portal.azure.com) へのアクセスをブロックするには、Windows Azure クラシック デプロイ モデル API で条件付きアクセス ポリシーを使用します。
 1. **すべてのユーザー** グループをメンバーだけが含まれるように変更します。
    ![UserType が [ゲスト] と等しくない [すべてのユーザー] グループを示すスクリーンショット](media/faq/modify-all-users-group.png)
 2. ゲスト ユーザーを含む動的グループを作成します。
    ![新しい [すべてのゲスト ユーザー] グループを示すスクリーンショット](media/faq/group-with-guest-users.png)
-3. 次のビデオで示されているように、ゲスト ユーザーによるポータルへのアクセスをブロックする条件付きアクセス ポリシーをセットアップします。
+3. 次のビデオで示されているように、ゲスト ユーザーによるポータルへのアクセスをブロックする条件付きアクセス ポリシーを設定します。
   
    > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
 

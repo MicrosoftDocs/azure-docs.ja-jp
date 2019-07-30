@@ -1,22 +1,22 @@
 ---
-title: Azure Web アプリケーション ファイアウォール (WAF) のカスタム規則
-description: この記事では、Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のカスタム規則の概要を説明します。
+title: Azure Web アプリケーション ファイアウォール (WAF) v2 のカスタム規則
+description: この記事では、Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) v2 のカスタム規則の概要を説明します。
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: d35e1dc96f65e51ab14c4962d1824334cbdb1616
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752033"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164660"
 ---
-# <a name="custom-rules-for-web-application-firewall"></a>Web アプリケーション ファイアウォールのカスタム規則
+# <a name="custom-rules-for-web-application-firewall-v2"></a>Web アプリケーション ファイアウォール v2 のカスタム規則
 
-Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) には、さまざまな種類の攻撃からの保護を提供する、事前構成済みで、プラットフォームにより管理される規則セットが付属します。 これらの攻撃には、クロス サイトスクリプティング、SQL インジェクションなどが含まれます。 WAF 管理者は、コア規則セット (CRS) の規則を補強するために独自の規則を記述することが必要な場合があります。 規則では、一致基準に基づいて、要求されたトラフィックをブロックまたは許可できます。
+Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) v2 には、さまざまな種類の攻撃からの保護を提供する、事前構成済みで、プラットフォームにより管理される規則セットが付属しています。 これらの攻撃には、クロス サイトスクリプティング、SQL インジェクションなどが含まれます。 WAF 管理者は、コア規則セット (CRS) の規則を補強するために独自の規則を記述することが必要な場合があります。 規則では、一致基準に基づいて、要求されたトラフィックをブロックまたは許可できます。
 
 カスタム規則では、WAF を通過する要求ごとに評価される独自の規則を作成できます。 これらの規則は、マネージド規則セット内の他の規則よりも高い優先度を持ちます。 カスタム規則には、規則名、規則の優先度、一致条件の配列が含まれます。 これらの条件が満たされた場合、(許可またはブロックするための) アクションが実行されます。
 

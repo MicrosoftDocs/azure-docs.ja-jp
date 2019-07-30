@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2af076153725dc91caaf07b710acf21ebc143fb0
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764382"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273660"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Azure Event Hubs のプログラミング ガイド
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
@@ -70,6 +70,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 ```
 
 ## <a name="partition-key"></a>パーティション キー
+
+> [!NOTE]
+> パーティションをよく知らない場合は、[この記事](event-hubs-features.md#partitions)を参照してください。 
 
 イベント データを送信するときに、パーティション割り当てを生成するためにハッシュされる値を指定できます。 [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) プロパティを使用して、パーティションを指定します。 ただし、パーティションを使用するという決定は、可用性と整合性のどちらを優先するかを選択することを意味します。 
 

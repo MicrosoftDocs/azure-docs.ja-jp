@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 0beac64ceb0bbf729d2f6d0f6a0ca8d5af499f42
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1c8bdd0ca715b6dfd00dc9876a074c61711990af
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725420"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67117822"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
 
@@ -45,7 +45,7 @@ HDInsight 4.0 での重要な変更の詳細については、「[HDI 4.0 の新
 - Apache Pig 0.16.0
 - Apache Ranger 0.7.0
 - Apache Slider 0.92.0
-- Apache Spark 2.3.1
+- Apache Spark 2.3.2
 - Apache Sqoop 1.4.7
 - Apache TEZ 0.9.1
 - Apache Zeppelin 0.8.0

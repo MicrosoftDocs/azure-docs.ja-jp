@@ -4,17 +4,17 @@ description: この記事では、Hybrid Runbook Worker ロールを持つロー
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88e3c0514861da0bd11acffd26cced54717e4418
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738504"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478483"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -35,7 +35,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 ```
 
 > [!NOTE]
-> The **RunOn** parameter was added to the **Start-AzureAutomationRunbook** cmdlet in version 0.9.1 of Microsoft Azure PowerShell. 以前のバージョンがインストールされている場合は、 [最新バージョンをダウンロード](https://azure.microsoft.com/downloads/) する必要があります。 PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。 ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。
+> **RunOn** パラメーターは、Microsoft Azure PowerShell のバージョン 0.9.1 で **Start-AzureAutomationRunbook** コマンドレットに追加されました。 以前のバージョンがインストールされている場合は、 [最新バージョンをダウンロード](https://azure.microsoft.com/downloads/) する必要があります。 PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。 ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 

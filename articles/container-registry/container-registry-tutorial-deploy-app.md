@@ -3,17 +3,18 @@ title: チュートリアル - Azure 内の Geo レプリケートされてい�
 description: コンテナー イメージを使用し、Geo レプリケートされている Azure コンテナー レジストリから 2 つの異なる Azure リージョンに Linux ベースの Web アプリをデプロイします。 3 部構成のシリーズのパート 2。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e5a38e2b6550d763f30c2462944b154f76bbe92c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5a3ffcc75ac37dac1284d0ffb5af234fd2f376cd
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253835"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310464"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>チュートリアル: Geo レプリケートされている Azure コンテナー レジストリから Web アプリをデプロイする
 
@@ -41,22 +42,22 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 [Azure Portal](https://portal.azure.com) にサインインし、前のチュートリアルで作成したレジストリに移動します。
 
-**[リポジトリ]** > **[acr-helloworld]** を選択し、**[タグ]** の下の **[v1]** タグを右クリックして **[Web アプリにデプロイ]** を選択します。
+**[リポジトリ]**  >  **[acr-helloworld]** を選択し、 **[タグ]** の下の **[v1]** タグを右クリックして **[Web アプリにデプロイ]** を選択します。
 
 ![Azure Portal の [App Service へのデプロイ]][deploy-app-portal-01]
 
-[Web アプリにデプロイ] が無効になっている場合は、最初のチュートリアルの「[コンテナー レジストリの作成](container-registry-tutorial-prepare-registry.md#create-a-container-registry)」の指示に従ってレジストリ管理者ユーザーを有効にしていない可能性があります。 管理者ユーザーは、Azure portal の **[設定]** > **[アクセス キー]** で有効にすることができます。
+[Web アプリにデプロイ] が無効になっている場合は、最初のチュートリアルの「[コンテナー レジストリの作成](container-registry-tutorial-prepare-registry.md#create-a-container-registry)」の指示に従ってレジストリ管理者ユーザーを有効にしていない可能性があります。 管理者ユーザーは、Azure portal の **[設定]**  >  **[アクセス キー]** で有効にすることができます。
 
 [Web アプリにデプロイ] を選択した後に表示される **[Web App for Containers]** で、各設定に次の値を設定します。
 
 | Setting | 値 |
 |---|---|
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-westus` という形式を使用します。 |
-| **リソース グループ** | **[既存のものを使用]** > `myResourceGroup` |
+| **リソース グループ** | **[既存のものを使用]**  > `myResourceGroup` |
 | **App Service プラン/場所** | **[米国西部]** リージョンに `plan-westus` という名前の新しいプランを作成します。 |
 | **Image** | `acr-helloworld:v1`
 
-**[作成]** を選択して、*[米国西部]* リージョンに Web アプリをプロビジョニングします。
+**[作成]** を選択して、 *[米国西部]* リージョンに Web アプリをプロビジョニングします。
 
 ![Azure Portal での Web app on Linux の構成][deploy-app-portal-02]
 
@@ -81,11 +82,11 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 | Setting | 値 |
 |---|---|
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-eastus` という形式を使用します。 |
-| **リソース グループ** | **[既存のものを使用]** > `myResourceGroup` |
+| **リソース グループ** | **[既存のものを使用]**  > `myResourceGroup` |
 | **App Service プラン/場所** | **[米国東部]** リージョンに `plan-eastus` という名前の新しいプランを作成します。 |
 | **Image** | `acr-helloworld:v1`
 
-**[作成]** を選択して、*[米国東部]* リージョンに Web アプリをプロビジョニングします。
+**[作成]** を選択して、 *[米国東部]* リージョンに Web アプリをプロビジョニングします。
 
 ![Azure Portal での Web app on Linux の構成][deploy-app-portal-06]
 

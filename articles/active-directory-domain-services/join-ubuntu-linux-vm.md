@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:Ubuntu VM をマネージド ド�
 description: Ubuntu Linux 仮想マシンを Azure AD Domain Services に参加させる
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 9b1ad1b70258f623219ca171797aac4cdd33b310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 29a6cb69a818ed11e5f20dddd7299c01fbefbf47
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245304"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234011"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Azure 内の Ubuntu 仮想マシンをマネージド ドメインに参加させる
 この記事では、Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -57,15 +57,16 @@ Ubuntu 仮想マシンが Azure でプロビジョニングされました。 �
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Linux 仮想マシン上の hosts ファイルを構成する
 SSH ターミナルで /etc/hosts ファイルを編集し、ご自分のマシンの IP アドレスとホスト名を更新します。
 
-```
+```console
 sudo vi /etc/hosts
 ```
 
 hosts ファイルに、次の値を入力します。
 
-```
+```console
 127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
 ```
+
 ここで、"contoso100.com" は、マネージド ドメインの DNS ドメイン名です。 "contoso-ubuntu" は、マネージド ドメインに参加させる Ubuntu 仮想マシンのホスト名です。
 
 
@@ -74,12 +75,13 @@ hosts ファイルに、次の値を入力します。
 
 1.  SSH ターミナルで、次のコマンドを入力して、リポジトリからパッケージ一覧をダウンロードします。 このコマンドはパッケージ一覧を更新して、最新バージョンのパッケージとその依存関係についての情報を取得します。
 
-    ```
+    ```console
     sudo apt-get update
     ```
 
 2. 次のコマンドを入力して、必要なパッケージをインストールします。
-    ```
+
+    ```console
       sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
     ```
 
@@ -87,27 +89,26 @@ hosts ファイルに、次の値を入力します。
 
     > [!TIP]
     > マネージド ドメインの名前が contoso100.com の場合は、領域として「CONTOSO100.COM」を入力します。 領域名は大文字で指定する必要があることを忘れないでください。
-    >
-    >
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Linux 仮想マシンで NTP (ネットワーク タイム プロトコル) 設定を構成する
 Ubuntu VM の日付と時刻は、マネージド ドメインと同期させる必要があります。 /etc/ntp.conf ファイルに、マネージド ドメインの NTP ホスト名を追加します。
 
-```
+```console
 sudo vi /etc/ntp.conf
 ```
 
 ntp.conf ファイルに次の値を入力し、ファイルを保存します。
 
-```
+```console
 server contoso100.com
 ```
+
 ここで、"contoso100.com" は、マネージド ドメインの DNS ドメイン名です。
 
 次は、Ubuntu VM の日付と時刻を NTP サーバーと同期させてから、NTP サービスを開始します。
 
-```
+```console
 sudo systemctl stop ntp
 sudo ntpdate contoso100.com
 sudo systemctl start ntp
@@ -119,7 +120,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 1. AAD ドメイン サービスのマネージド ドメインを探します。 SSH ターミナルで、次のコマンドを入力します。
 
-    ```
+    ```console
     sudo realm discover CONTOSO100.COM
     ```
 
@@ -136,7 +137,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     > * kinit のエラーを防ぐため、ドメイン名は必ず大文字で指定します。
     >
 
-    ```
+    ```console
     kinit bob@CONTOSO100.COM
     ```
 
@@ -144,9 +145,8 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
     > [!TIP]
     > 前の手順で指定したユーザー アカウントを使用します ("kinit")。
-    >
 
-    ```
+    ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
     ```
 
@@ -155,29 +155,34 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 ## <a name="update-the-sssd-configuration-and-restart-the-service"></a>SSSD 構成を更新してサービスを再起動する
 1. SSH ターミナルで、次のコマンドを入力します。 sssd.conf ファイルを開いて、次の変更を加えます。
-    ```
+    
+    ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
 2. **use_fully_qualified_names = True** という行をコメント アウトし、ファイルを保存します。
-    ```
+    
+    ```console
     # use_fully_qualified_names = True
     ```
 
 3. SSSD サービスを再起動します。
-    ```
+    
+    ```console
     sudo service sssd restart
     ```
 
 
 ## <a name="configure-automatic-home-directory-creation"></a>自動ホーム ディレクトリ作成を構成する
 ユーザーにログインした後にホーム ディレクトリの自動作成を有効にするには、PuTTY ターミナルで次のコマンドを入力します。
-```
+
+```console
 sudo vi /etc/pam.d/common-session
 ```
 
 このファイルで、"session optional pam_sss.so" という行の下に次の行を追加し、保存します。
-```
+
+```console
 session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ```
 
@@ -186,17 +191,20 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 マシンがマネージド ドメインに正常に参加したかどうかを確認してみましょう。 別の SSH 接続を使用して、ドメインに参加した Ubuntu VM に接続します。 ドメイン ユーザー アカウントを使用して、そのユーザー アカウントが正しく解決されているかどうかを確認します。
 
 1. SSH ターミナルで次のコマンドを入力し、SSH を使用して、ドメインに参加した Ubuntu 仮想マシンに接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@CONTOSO100.COM')。
-    ```
+    
+    ```console
     ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
     ```
 
 2. SSH ターミナルで次のコマンドを入力し、ホーム ディレクトリが正しく初期化されているかどうかを確認します。
-    ```
+    
+    ```console
     pwd
     ```
 
 3. SSH ターミナルで次のコマンドを入力し、グループ メンバーシップが正しく解決されているかどうかを確認します。
-    ```
+    
+    ```console
     id
     ```
 
@@ -205,12 +213,14 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 "AAD DC Administrators" グループのメンバーに Ubuntu VM での管理特権を付与できます。 sudo ファイルは、/etc/sudoers にあります。 sudoers に追加された AD グループのメンバーは、sudo を実行できます。
 
 1. SSH ターミナルに、スーパーユーザー特権でログインしていることを確認します。 VM の作成中に指定した、ローカル管理者アカウントを使用することができます。 次のコマンドを実行します。
-    ```
+    
+    ```console
     sudo vi /etc/sudoers
     ```
 
 2. /etc/sudoers ファイルに次のエントリを追加し、保存します。
-    ```
+    
+    ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```

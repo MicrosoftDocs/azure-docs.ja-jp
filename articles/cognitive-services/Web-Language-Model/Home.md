@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
-ms.author: pibehre
+ms.author: piyush
 ROBOTS: NOINDEX
-ms.openlocfilehash: 751b6e5979174eae9bc815061f16bf99bd0899cf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 066c7f8dbd6f64ba40ec539b636922069ee8b925
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534788"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849904"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは (プレビュー)
 

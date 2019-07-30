@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 06/25/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 8df9c2a5e45cf222debc733b3e051c3f707715c5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603091"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448211"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box Disk の返送と Azure へのデータ アップロードの確認
 
@@ -88,7 +88,7 @@ ms.locfileid: "65603091"
 
 ### <a name="pick-up-in-asia-pacific-region"></a>アジア太平洋地域で集荷する
 
-この地域には、日本、韓国、オーストラリア向けの手順があります。
+この地域には、日本、韓国、オーストラリア、シンガポール向けの手順があります。
 
 #### <a name="pick-up-in-australia"></a>オーストラリアで集荷する
 
@@ -103,43 +103,64 @@ ms.locfileid: "65603091"
 
 #### <a name="pick-up-in-japan"></a>日本で集荷する
 
-1. 必ず返送用の日本郵便の着払伝票を同封してください。
-2. 伝票に送信元の情報としてお客様の会社名と住所の情報を記入します。
-3. 日本郵便に集荷依頼の電話をかけます (フリー ダイヤルで 0800-0800-111)。 集荷する住所の 7 桁の郵便番号をダイヤルすると、最寄りの郵便局に転送されます。
-    - 集荷を利用できる時間は、郵便局によって異なります。
-    - 日本郵便の着払ゆうパックを利用した配送であることを知らせます。
-    - 同封されていた着払伝票を使用します。
-4. 日本郵便の着払伝票が同封されていなかった場合は、*Quantium Solutions* (`Customerservice.JP@quantiumsolutions.com`) にメールを送信してください。 *Quantium Solutions* が日本郵便に集荷を依頼し、集荷時に伝票を持って行くように伝えます。
-    - 日本郵便が持ってくる着払伝票の備考欄に参照番号を記入します。
-    - 次のように、配送先住所を入力します。   
-        ```
-        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
-        Microsoft Service Center c/o Quantium Solutions Japan
-        TEL: 03-5755-0150
-        ```
+1. 伝票に送信元の情報としてお客様の会社名と住所の情報を記入します。
+2. 次のメール テンプレートを使用して Quantium Solutions にメールで送信します。
 
-着払伝票が見つからない場合は、メールで集荷を依頼できます。 次のメール テンプレートを使用して集荷を依頼してください。
+    - 日本郵便の着払伝票が含まれていなかった場合、または紛失した場合は、このメールにそのことを記載します。 Quantium Solutions Japan が日本郵便に集荷を依頼し、集荷時に伝票を持って行くように伝えます。
+    - 複数の注文がある場合は、必ず個別に集荷するようにメールを送信します。
 
-```
-To: Customerservice.JP@quantiumsolutions.com
-Subject: Pickup request for Azure Data Box Disk｜Job Name： 
-Body: 
-- Azure Data Box Disk job name：
-- Reference number:  
-- Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-```
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+        a. 08：00-13：00 
+        b. 13：00-15：00 
+        c. 15：00-17：00 
+        d. 17：00-19：00 
+    ```
+
+3. 集荷を予約した後、Quantium Solutions からメールの確認を受信します。 確認のメールには、着払伝票に関する情報も含まれています。
+
+必要に応じて、次の情報で Quantium Solutions のサポート (日本語) に問い合わせることができます。 
+
+- メール: Customerservice.JP@quantiumsolutions.com 
+- 電話： 03-5755-0150 
 
 #### <a name="pick-up-in-korea"></a>韓国で集荷する
 
 1. 必ず返品用の伝票を同封してください。
-2. 集荷を依頼するには:
-    1. 営業時間中 (月曜日から金曜日の午前 10 時から午後 5 時) に *Quantium Solutions International* ホットライン (070-8231-1418) に電話をかけます。 *Microsoft の集荷*であることと伝票番号を伝え、集荷を手配します。  
-    2. ホットラインにつながらない場合は、`microsoft@rocketparcel.com` にメールを送信します。メールの件名に「*Microsoft Pickup (Microsoft の集荷)* 」、参照として伝票番号を入力します。
+2. 伝票があるときに集荷を依頼するには:
+    1. 営業時間中 (月曜日から金曜日の午前 10 時から午後 5 時) に *Quantium Solutions International* ホットライン (070-8231-1418) に電話をかけます。 "*Microsoft Azure の集荷*" であることとサポート リクエスト番号を伝え、集荷を手配します。  
+    2. ホットラインにつながらない場合は、`microsoft@rocketparcel.com` にメールを送信します。メールの件名に「*Microsoft Azure Pickup (Microsoft Azure の集荷)* 」、参照としてサポート リクエスト番号を入力します。
     3. 配送業者が集荷に来ない場合は、*Quantium Solutions International* ホットラインに別の手配を依頼します。 
+    4. 集荷スケジュールの確認メールが届きます。
+3. 伝票がない場合にのみ、この手順を実行してください。 集荷を依頼するには:
+    1. 営業時間中 (月曜日から金曜日の午前 10 時から午後 5 時) に *Quantium Solutions International* ホットライン (070-8231-1418) に電話をかけます。 "*Microsoft Azure の集荷*" であることとサポート リクエスト番号を伝え、集荷を手配します。 集荷を手配するには新しい伝票が必要であることを指定します。 送付元 (お客様)、受取先の情報 (Azure データセンター)、および参照番号 (サービス リクエスト番号) を指定します。 
+    2. ホットラインにつながらない場合は、`microsoft@rocketparcel.com` にメールを送信します。メールの件名に「*Microsoft Azure Pickup (Microsoft Azure の集荷)* 」、参照としてサポート リクエスト番号を入力します。
+    3. 配送業者が集荷に来ない場合は、*Quantium Solutions International* ホットラインに別の手配を依頼します。 
+    4. 電話でのリクエストの場合は、口頭で確認を受け取ります。
+
+### <a name="pick-up-in-singapore"></a>シンガポールでの集荷
+
+1. 配送先住所ラベルを印刷し、箱に貼り付けます。 ラベルを破損または紛失した場合:
+    - **[概要] > [出荷ラベルをダウンロード]** に移動します。
+
+        ![配送先住所ラベルのダウンロード](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        この操作により、次に示した返送ラベルがダウンロードされます。
+
+        ![配送先住所ラベルの例](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - デバイスにラベルを貼り付けます。 ラベルが見えることを確認します。
+
+2. 集荷を依頼するには:
+    - **SingPost** ホットラインには、営業時間内 (月曜日から金曜日の午前 9 時から午後 5 時まで) に **6845 6485** まで電話をかけます。  
+    - "*Microsoft Azure の集荷*" であることとサポート リクエスト番号 (返送用配送先住所ラベルには追跡番号) を伝え、集荷を手配します。 
+    - 口頭で集荷スケジュールが確認されます。 
+    - 配送業者が集荷に来ない場合は、**SingPost** (**6845 6485**) に別の手配を依頼します。 
+3. 配送業者に渡します。 
+
 
 ## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
 
@@ -156,6 +177,8 @@ Azure データセンター内のサーバーにディスクが接続される�
 コピーが完了すると、注文の状態が "**完了**" に更新されます。
 
 ![データのコピーが完了](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
+
+コピーがエラーで完了した場合は、[アップロード エラーのトラブルシューティング](data-box-disk-troubleshoot-upload.md)に関するページを参照してください。
 
 コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。 データは次の場所にあります。
 

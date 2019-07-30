@@ -3,18 +3,18 @@ title: Azure IoT Central アプリケーションを作成する | Microsoft Doc
 description: 新しい Azure IoT Central アプリケーションを作成します。 アプリケーション テンプレートを使用して、試用版や従量課金制のアプリケーションを作成します。
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 06/07/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 6b53f091b63c79493f6bed78e111b50d33adbf13
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 07b062bd39177f283bd38ed6b687b590c5c4fb46
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442178"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066034"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central アプリケーションの作成
 
@@ -24,7 +24,7 @@ ms.locfileid: "65442178"
 
 Azure IoT Central の [[Application Manager]\(アプリケーション マネージャー\)](https://aka.ms/iotcentral) ページに移動します。 Microsoft 個人アカウントか、職場または学校のアカウントを使用してサインインする必要があります。
 
-新しい Azure IoT Central アプリケーションの作成を開始するには、**[New Application]\(新しいアプリケーション\)** を選択します。 これで、**[アプリケーションの作成]** ページに移動します。
+新しい Azure IoT Central アプリケーションの作成を開始するには、 **[New Application]\(新しいアプリケーション\)** を選択します。 これで、 **[アプリケーションの作成]** ページに移動します。
 
 ![Azure IoT Central の [Create Application]\(アプリケーションの作成\) ページ](media/quick-deploy-iot-central/iotcentralcreate.png)
 
@@ -34,7 +34,7 @@ Azure IoT Central の [[Application Manager]\(アプリケーション マネー
    - **試用版**アプリケーションは、有効期限が切れるまでの 7 日間は無料となります。 有効期限内で、いつでも従量課金制に変更することができます。 **試用版**アプリケーションを作成する場合は、連絡先情報を入力し、Microsoft から情報やヒントを受信するかどうかを選択します。
    - **従量課金制**アプリケーションは、デバイスごとに課金され、最初の 5 個のデバイスは無料です。 **従量課金制**アプリケーションを作成する場合は、"*ディレクトリ*"、"*Azure サブスクリプション*"、および "*リージョン*" を選択する必要があります。
       - "*ディレクトリ*" は、アプリケーションを作成する Azure Active Directory (AD) です。 ユーザー ID、資格情報、およびその他の組織情報が含まれています。 Azure AD を持っていない場合は、Azure サブスクリプションを作成するときに自動的に作成されます。
-      - "*Azure サブスクリプション*" を使用すると、Azure サービスのインスタンスを作成できます。 IoT Central では、リソースがサブスクリプション内にプロビジョニングされます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。 Azure サブスクリプションを作成したら、**[アプリケーションの作成]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されます。
+      - "*Azure サブスクリプション*" を使用すると、Azure サービスのインスタンスを作成できます。 IoT Central では、リソースがサブスクリプション内にプロビジョニングされます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。 Azure サブスクリプションを作成したら、 **[アプリケーションの作成]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されます。
       - "*リージョン*" は、アプリケーションを作成する物理的な場所です。 通常は、最適なパフォーマンスを得るために、デバイスに物理的に最も近いリージョンを選択する必要があります。Azure IoT Central を利用可能なリージョンは、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」ページで確認できます。 いったんリージョンを選択すると、後でアプリケーションを別のリージョンに移動することはできません。
 
       価格の詳細については、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)を参照してください。

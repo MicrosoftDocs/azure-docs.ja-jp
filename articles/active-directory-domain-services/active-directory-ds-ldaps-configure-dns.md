@@ -3,7 +3,7 @@ title: LDAPS を使用してインターネット経由でマネージド ドメ
 description: LDAPS を使用してインターネット経由で Azure AD Domain Services のマネージド ドメインにアクセスするよう DNS を構成します
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: a47f0f3e-2578-422a-a421-034f66de38f5
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: ergreenl
-ms.openlocfilehash: 122282d168246e34aaa4a6369f7433b167355887
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: iainfou
+ms.openlocfilehash: 1c5a119c686bc879b11b8fa87a9c81ba36b0beb4
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60416740"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67474018"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>セキュア LDAP (LDAPS) を使用して Azure AD Domain Services のマネージド ドメインにアクセスするよう DNS を構成する
 

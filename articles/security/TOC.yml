@@ -1,52 +1,52 @@
 - name: Azure のセキュリティのドキュメント
   href: index.md
 - name: アーキテクチャと設計
-  href: azure-security.md
+  href: ./fundamentals/overview.md
   expanded: false
   items:
     - name: 高度な脅威検出
       displayName: 'vulnerability, virus, IDs, incident'
-      href: azure-threat-detection.md
+      href: ./fundamentals/threat-detection.md
     - name: Azure のログと監査
       displayName: incident
-      href: azure-log-audit.md
+      href: ./fundamentals/log-audit.md
     - name: Azure のネットワーク セキュリティ
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: abstract-azure-network-security.md
+      href: ./fundamentals/abstract-network-security.md
     - name: Azure のサーバーレス プラットフォームのセキュリティ
-      href: abstract-serverless-platform-security.md
+      href: ./fundamentals/abstract-serverless-platform-security.md
     - name: Azure のコンテナーのセキュリティ
-      href: abstract-container-security-microsoft-azure.md
+      href: ./fundamentals/abstract-container-security.md
     - name: 運用上のセキュリティの有効化
       displayName: 'policy, policies, azure monitor, soc'
-      href: abstract-azure-operational-security.md
+      href: ./fundamentals/abstract-operational-security.md
     - name: Azure クラウドでの分離
       displayName: trust boundary
-      href: azure-isolation.md
+      href: ./fundamentals/isolation-choices.md
     - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
       displayName: trust boundary
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: セキュリティの技術的な機能
-      href: azure-security-technical-capabilities.md
+      href: ./fundamentals/technical-capabilities.md
     - name: セキュリティで保護されたアプリを Azure で開発する
-      href: abstract-develop-secure-apps.md
+      href: ./fundamentals/abstract-develop-secure-apps.md
 - name: データ セキュリティと暗号化
-  href: security-azure-encryption-overview.md
+  href: ./fundamentals/encryption-overview.md
   items:
     - name: データベースのセキュリティ
-      href: azure-database-security-overview.md
+      href: ./fundamentals/database-security-overview.md
       items:
         - name: ベスト プラクティス
-          href: azure-database-security-best-practices.md
+          href: ./fundamentals/database-best-practices.md
         - name: セキュリティ チェックリスト
-          href: azure-database-security-checklist.md
+          href: ./fundamentals/database-security-checklist.md
     - name: ディスクの暗号化
       items:
         - name: ベスト プラクティス
           displayName: transit
-          href: azure-security-data-encryption-best-practices.md
+          href: ./fundamentals/data-encryption-best-practices.md
         - name: 保存時のデータ暗号化
-          href: azure-security-encryption-atrest.md
+          href: ./fundamentals/encryption-atrest.md
         - name: IaaS VM のディスク暗号化
           items:
             - name: Azure Disk Encryption について
@@ -91,86 +91,89 @@
                       displayName: active directory
                       href: azure-security-disk-encryption-linux-aad.md
     - name: Azure Storage セキュリティ
-      href: security-storage-overview.md
+      href: ./fundamentals/storage-overview.md
     - name: Storage のセキュリティ ガイド
       href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: カスタマー ロックボックス
-      href: azure-customer-lockbox-overview.md
+      href: ./fundamentals/customer-lockbox-overview.md
 - name: プラットフォームとインフラストラクチャ
   items:
     - name: インフラストラクチャのセキュリティ
-      href: azure-security-infrastructure.md
+      href: ./fundamentals/infrastructure.md
       items:
         - name: 物理的なセキュリティ
-          href: azure-physical-security.md
+          href: ./fundamentals/physical-security.md
         - name: 可用性
-          href: azure-infrastructure-availability.md
+          href: ./fundamentals/infrastructure-availability.md
         - name: コンポーネントと境界
-          href: azure-infrastructure-components.md
+          href: ./fundamentals/infrastructure-components.md
         - name: ネットワーク アーキテクチャ
           displayName: 'ssl, https'
-          href: azure-infrastructure-network.md
+          href: ./fundamentals/infrastructure-network.md
         - name: 運用ネットワーク
-          href: azure-production-network.md
+          href: ./fundamentals/production-network.md
         - name: SQL Database
-          href: azure-infrastructure-sql.md
+          href: ./fundamentals/infrastructure-sql.md
         - name: 操作
-          href: azure-infrastructure-operations.md
+          href: ./fundamentals/infrastructure-operations.md
         - name: 監視
-          href: azure-infrastructure-monitoring.md
+          href: ./fundamentals/infrastructure-monitoring.md
         - name: 整合性
-          href: azure-infrastructure-integrity.md
+          href: ./fundamentals/infrastructure-integrity.md
         - name: データ保護
-          href: azure-protection-of-customer-data.md
+          href: ./fundamentals/protection-customer-data.md
     - name: Microsoft Antimalware
       displayName: virus
-      href: azure-security-antimalware.md
+      href: ./fundamentals/antimalware.md
     - name: IaaS セキュリティ
-      href: security-virtual-machines-overview.md
+      href: ./fundamentals/virtual-machines-overview.md
       items:
         - name: ベスト プラクティス - IaaS ワークロード
           displayName: patch
-          href: azure-security-iaas.md
+          href: ./fundamentals/iaas.md
         - name: Azure Marketplace イメージ
-          href: security-recommendations-azure-marketplace-images.md
+          href: ./fundamentals/azure-marketplace-images.md
     - name: ID 管理
-      href: security-identity-management-overview.md
+      href: ./fundamentals/identity-management-overview.md
       items:
         - name: Azure AD 認証の選択
           displayName: 'identity, active directory, seamless sso'
-          href: azure-ad-choose-authn.md
+          href: ./fundamentals/choose-ad-authn.md
         - name: セキュリティ チェックリスト
           displayName: 'identity, active directory, password'
-          href: azure-ad-secure-steps.md
+          href: ./fundamentals/steps-secure-identity.md
+        - name: パスワードなしの選択
+          displayName: 'identity, active directory, passwordless'
+          href: ./fundamentals/ad-passwordless.md
         - name: ベスト プラクティス
           displayName: 'password, identity, active directory'
-          href: azure-security-identity-management-best-practices.md
+          href: ./fundamentals/identity-management-best-practices.md
         - name: サブスクリプション管理者に対する MFA の適用
           displayName: identity
-          href: azure-security-global-admin.md
+          href: ./fundamentals/global-admin.md
     - name: ネットワークのセキュリティ
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, azure application gateway, application gateway, ips, waf'
-      href: security-network-overview.md
+      href: ./fundamentals/network-overview.md
       items:
         - name: ベスト プラクティス
-          href: azure-security-network-security-best-practices.md
+          href: ./fundamentals/network-best-practices.md
         - name: DDoS Protection
-          href: azure-ddos-best-practices.md
+          href: ./fundamentals/ddos-best-practices.md
         - name: 境界のセキュリティ
           href: ../best-practices-network-security.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Application
   items:
     - name: PaaS
-      href: security-paas-deployments.md
+      href: ./fundamentals/paas-deployments.md
       items:
         - name: PaaS の Azure App Service
-          href: security-paas-applications-using-app-services.md
+          href: ./fundamentals/paas-applications-using-app-services.md
         - name: PaaS の Azure Storage
-          href: security-paas-applications-using-storage.md
+          href: ./fundamentals/paas-applications-using-storage.md
         - name: PaaS の DB ベスト プラクティス
-          href: security-paas-applications-using-sql.md
+          href: ./fundamentals/paas-applications-using-sql.md
     - name: IoT
-      href: security-internet-of-things-overview.md
+      href: ./fundamentals/iot-overview.md
       items:
         - name: IoT セキュリティのベスト プラクティス
           href: ../iot-accelerators/iot-security-best-practices.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
@@ -179,14 +182,14 @@
         - name: IoT デプロイのセキュリティ保護
           href: ../iot-accelerators/iot-accelerators-security-deployment.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Azure Service Fabric のセキュリティ
-      href: azure-service-fabric-security-overview.md
+      href: ./fundamentals/service-fabric-overview.md
       items:
         - name: ベスト プラクティス
-          href: azure-service-fabric-security-best-practices.md
+          href: ./fundamentals/service-fabric-best-practices.md
         - name: セキュリティ チェックリスト
-          href: azure-service-fabric-security-checklist.md
+          href: ./fundamentals/service-fabric-checklist.md
 - name: 監視、監査、および操作
-  href: security-management-and-monitoring-overview.md
+  href: ./fundamentals/management-monitoring-overview.md
   items:
     - name: 監査とログ記録
       items:
@@ -194,31 +197,31 @@
           displayName: 'vulnerability, incident, virus,'
           href: ../security-center/security-center-intro.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
         - name: リモート管理セキュリティ
-          href: azure-security-management.md
+          href: ./fundamentals/management.md
         - name: Azure ログ統合
           items:
             - name: はじめに
-              href: security-azure-log-integration-overview.md
+              href: ./fundamentals/azure-log-integration-overview.md
             - name: 作業開始
-              href: security-azure-log-integration-get-started.md
+              href: ./fundamentals/azure-log-integration-get-started.md
             - name: Azure AD 監査ログの統合
               displayName: active directory
-              href: security-azure-log-integration-ad.md
+              href: ./fundamentals/azure-log-integration-ad.md
             - name: Security Center のアラートの統合
               displayName: splunk
               href: ../security-center/security-center-export-data-to-siem.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
             - name: Key Vault のログの統合
               displayName: keyvault
-              href: security-azure-log-integration-keyvault-eventhub.md
+              href: ./fundamentals/azure-log-integration-keyvault-eventhub.md
             - name: FAQ
-              href: security-azure-log-integration-faq.md
+              href: ./fundamentals/azure-log-integration-faq.md
     - name: 運用上のセキュリティ
-      href: azure-operational-security-overview.md
+      href: ./fundamentals/operational-overview.md
       items:
         - name: ベスト プラクティス
-          href: azure-operational-security-best-practices.md
+          href: ./fundamentals/operational-best-practices.md
         - name: セキュリティ チェックリスト
-          href: azure-operational-security-checklist.md
+          href: ./fundamentals/operational-checklist.md
 - name: ガバナンスとコンプライアンス
   displayName: 'blueprint, privacy, certifications'
   items:
@@ -309,67 +312,69 @@
         - name: PaaS Web アプリケーション
           href: ./blueprints/ukofficial-paaswa-overview.md
 - name: ホワイト ペーパー
-  href: security-white-papers.md
+  href: ./fundamentals/white-papers.md
 - name: Azure セキュリティ サービス
-  href: azure-security-services-technologies.md
+  href: ./fundamentals/services-technologies.md
 - name: 技術的概要
-  href: security-overviews.md
+  href: ./fundamentals/overviews.md
 - name: ベスト プラクティス
-  href: security-best-practices-and-patterns.md
+  href: ./fundamentals/best-practices-and-patterns.md
 - name: リソース
   items:
     - name: 一般的なセキュリティ属性
-      href: common-security-attributes.md
+      href: ./fundamentals/common-security-attributes.md
     - name: Azure セキュリティの MVP プログラム
-      href: azure-security-mvp.md
+      href: ./fundamentals/mvp.md
     - name: サイバーセキュリティに関する相談
-      href: azure-security-cyber-services.md
+      href: ./fundamentals/cyber-services.md
     - name: セキュリティ イベント サポート チケットのログ記録
-      href: azure-security-event-support-ticket.md
+      href: ./fundamentals/event-support-ticket.md
     - name: 侵入テスト
       displayName: penetration
-      href: azure-security-pen-testing.md
+      href: ./fundamentals/pen-testing.md
     - name: Microsoft Threat Modeling Tool
       displayName: stride
-      href: azure-security-threat-modeling-tool.md
+      href: ./develop/threat-modeling-tool.md
       items:
         - name: 使用の開始
-          href: azure-security-threat-modeling-tool-getting-started.md
+          href: ./develop/threat-modeling-tool-getting-started.md
         - name: 機能の概要
-          href: azure-security-threat-modeling-tool-feature-overview.md
+          href: ./develop/threat-modeling-tool-feature-overview.md
         - name: 脅威
-          href: azure-security-threat-modeling-tool-threats.md
+          href: ./develop/threat-modeling-tool-threats.md
         - name: リリース
-          href: azure-security-threat-modeling-tool-releases.md
+          href: ./develop/threat-modeling-tool-releases.md
           items:
             - name: Threat Modeling Tool GA リリース 7.1.5091.2 - 2018 年 9 月 12 日
-              href: azure-security-threat-modeling-tool-releases-71509112.md
+              href: ./develop/threat-modeling-tool-releases-71509112.md
             - name: Threat Modeling Tool 更新プログラム リリース 7.1.51023.1 - 2018 年 11 月 1 日
-              href: azure-security-threat-modeling-tool-releases-71510231.md
+              href: ./develop/threat-modeling-tool-releases-71510231.md
             - name: Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 2019 年 1 月 29 日
-              href: azure-security-threat-modeling-tool-releases-71601261.md
+              href: ./develop/threat-modeling-tool-releases-71601261.md
             - name: Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 2019 年 4 月 9 日
-              href: azure-security-threat-modeling-tool-releases-71604081.md
+              href: ./develop/threat-modeling-tool-releases-71604081.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60702.1 - 7/02/2019
+              href: ./develop/threat-modeling-tool-releases-71607021.md
         - name: 軽減策
-          href: azure-security-threat-modeling-tool-mitigations.md
+          href: ./develop/threat-modeling-tool-mitigations.md
           items:
             - name: 監査とログ記録
-              href: azure-security-threat-modeling-tool-auditing-and-logging.md
+              href: ./develop/threat-modeling-tool-auditing-and-logging.md
             - name: Authentication
-              href: azure-security-threat-modeling-tool-authentication.md
+              href: ./develop/threat-modeling-tool-authentication.md
             - name: Authorization
-              href: azure-security-threat-modeling-tool-authorization.md
+              href: ./develop/threat-modeling-tool-authorization.md
             - name: 通信のセキュリティ
-              href: azure-security-threat-modeling-tool-communication-security.md
+              href: ./develop/threat-modeling-tool-communication-security.md
             - name: 構成管理
-              href: azure-security-threat-modeling-tool-configuration-management.md
+              href: ./develop/threat-modeling-tool-configuration-management.md
             - name: 暗号化
-              href: azure-security-threat-modeling-tool-cryptography.md
+              href: ./develop/threat-modeling-tool-cryptography.md
             - name: 例外管理
-              href: azure-security-threat-modeling-tool-exception-management.md
+              href: ./develop/threat-modeling-tool-exception-management.md
             - name: 入力の検証
-              href: azure-security-threat-modeling-tool-input-validation.md
+              href: ./develop/threat-modeling-tool-input-validation.md
             - name: 機微なデータ
-              href: azure-security-threat-modeling-tool-sensitive-data.md
+              href: ./develop/threat-modeling-tool-sensitive-data.md
             - name: セッションの管理
-              href: azure-security-threat-modeling-tool-session-management.md
+              href: ./develop/threat-modeling-tool-session-management.md

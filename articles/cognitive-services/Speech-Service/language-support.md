@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 006b9401a3418e3b2b3803fa0b7897b28887d14a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65020852"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606607"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート
 
@@ -24,7 +24,7 @@ ms.locfileid: "65020852"
 
 ## <a name="speech-to-text"></a>音声テキスト変換
 
-Microsoft の音声認識 API では、次の言語がサポートされています。 言語ごとにさまざまなレベルのカスタマイズを利用できます。
+Microsoft 音声認識 SDK と REST API は、どちらも以下の言語 (ロケール) をサポートしています。 言語ごとにさまざまなレベルのカスタマイズを利用できます。
 
   コード | 言語 | [音響適応](how-to-customize-acoustic-models.md) | [言語適応](how-to-customize-language-model.md) | [発音適応](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------

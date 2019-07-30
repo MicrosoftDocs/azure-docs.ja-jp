@@ -6,14 +6,12 @@ metadata:
   title: Azure Windows 仮想マシンのドキュメント - チュートリアル、API リファレンス
   meta.description: 'Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.'
   services: virtual-machines\windows
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machines-windows
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Azure Windows 仮想マシンでは、Windows Server を使用して、セキュリティで保護された高スケールな仮想化インフラをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Windows VM の作成、構成、管理、スケーリングを行う方法を確認してください。
   aside:

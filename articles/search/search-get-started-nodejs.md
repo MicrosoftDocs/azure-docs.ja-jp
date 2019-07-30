@@ -1,6 +1,6 @@
 ---
-title: Node.js での Azure Search の使用 - Azure Search
-description: プログラミング言語として Node.js を使用して Azure のホスト型クラウド検索サービスに基づいた検索アプリケーションを作成する手順を示します。
+title: 'Node.js のクイック スタート: Azure Search REST API を使用したインデックスの作成、読み込み、クエリの実行 - Azure Search'
+description: Node.js と Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 author: jj09
 manager: jlembicz
 services: search
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44b7f1f49d6764418dcc0e72cb667e17a2b920c6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289205"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450039"
 ---
-# <a name="get-started-with-azure-search-in-nodejs"></a>Node.js での Azure Search の使用
+# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>クイック スタート:Node.js で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [ポータル](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -32,7 +32,7 @@ ms.locfileid: "61289205"
 ## <a name="about-the-data"></a>データについて
 このサンプル アプリケーションでは、 [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm)からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。 このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
-このアプリケーションでは、 **DataIndexer** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。 オンライン データ ソースに対する資格情報と接続情報は、プログラム コードで提供されます。 それ以上の構成は必要ありません。
+このアプリケーションでは、 **DataIndexer** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、Azure SQL Database からフィルター処理された USGS データセットを取得します。 オンライン データ ソースに対する資格情報と接続情報は、プログラム コードで提供されます。 それ以上の構成は必要ありません。
 
 > [!NOTE]
 > このデータセットにフィルターを提供し、無料価格レベルのドキュメントを 10,000 件未満に制限しました。 標準レベルを使用する場合は、この制限は適用されません。 各価格レベルの容量の詳細については、「 [Azure Search サービスの制限](search-limits-quotas-capacity.md)」を参照してください。

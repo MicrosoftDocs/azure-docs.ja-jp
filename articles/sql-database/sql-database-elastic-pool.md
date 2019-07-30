@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: c1db16475224cc3c91a5353ead0aabd091098e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 775e1abe1f3d6412171b8ff5427fd905e37480b5
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240373"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489687"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL データベースの管理およびスケーリング
 
@@ -217,7 +217,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 ## <a name="next-steps"></a>次の手順
 
-- エラスティック プールをスケーリングするには、[エラスティック プールのスケーリング](sql-database-elastic-pool.md)および[エラスティック プールのスケーリングのサンプル コード](scripts/sql-database-monitor-and-scale-pool-powershell.md)に関するページをご覧ください
+- エラスティック プールをスケーリングするには、[エラスティック プールのスケーリング](sql-database-elastic-pool-scale.md)および[エラスティック プールのスケーリングのサンプル コード](scripts/sql-database-monitor-and-scale-pool-powershell.md)に関するページをご覧ください
 - ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
 - エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 - エラスティック プールを使用した SaaS チュートリアルについては、「[Introduction to the Wingtip SaaS application (Wingtip SaaS アプリケーションの概要)](sql-database-wtp-overview.md)」を参照してください。

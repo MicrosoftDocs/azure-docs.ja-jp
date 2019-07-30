@@ -5,26 +5,27 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 629b484d27d863727d180bb3e2d01b605ca539a6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239681"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850135"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル: Custom Vision Service を使用してエッジで画像の分類を実行する
 
-Azure IoT Edge では、ワークロードをクラウドからエッジに移すことにより、IoT ソリューションの効率性を高めることができます。 この機能は、コンピューター ビジョン モデルのような、多くのデータを処理するサービスに適しています。 [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) を使用すると、カスタム画像分類器を構築して、コンテナーとしてデバイスにデプロイすることが可能です。 この 2 つのサービスを組み合わせることで、あらかじめサイトからすべてのデータを転送しなくても、画像やビデオ ストリームから分析情報を得ることができます。 Custom Vision では、トレーニングされたモデルに対して画像を比較して分析情報を生成する分類器が提供されます。 
+Azure IoT Edge では、ワークロードをクラウドからエッジに移すことにより、IoT ソリューションの効率性を高めることができます。 この機能は、コンピューター ビジョン モデルのような、多くのデータを処理するサービスに適しています。 [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) を使用すると、カスタム画像分類器を構築して、コンテナーとしてデバイスにデプロイすることが可能です。 この 2 つのサービスを組み合わせることで、あらかじめサイトからすべてのデータを転送しなくても、画像やビデオ ストリームから分析情報を得ることができます。 Custom Vision では、トレーニングされたモデルに対して画像を比較して分析情報を生成する分類器が提供されます。
 
-たとえば、IoT Edge デバイス上の Custom Vision では、高速道路の交通量が通常よりも多いか少ないかや、駐車場に連続した駐車スペースがあるかどうかを判断することができます。 これらの分析情報は、アクションを実行する別のサービスと共有できます。 
+たとえば、IoT Edge デバイス上の Custom Vision では、高速道路の交通量が通常よりも多いか少ないかや、駐車場に連続した駐車スペースがあるかどうかを判断することができます。 これらの分析情報は、アクションを実行する別のサービスと共有できます。
 
-このチュートリアルでは、以下の内容を学習します。 
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * Custom Vision を使用して、画像分類器を構築する。
 > * デバイス上の Custom Vision Web サーバーに対してクエリを実行する IoT Edge モジュールを開発する。
 > * 画像分類器の結果を IoT Hub に送信する。
@@ -70,12 +71,13 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
    | フィールド | 値 |
    | ----- | ----- |
-   | Name | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
+   | EnableAdfsAuthentication | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
    | 説明 | オプションのプロジェクトの説明。 |
-   | リソース グループ | 既定値の **[Limited trial]\(期間限定試用版\)** をそのまま使用します。 |
+   | リソース グループ | Custom Vision Service Resource を含む Azure リソース グループを 1 つ選択するか、まだ追加していない場合は**新規作成**します。 |
    | プロジェクトの種類 | **分類** |
-   | 分類の種類 | **[Multiclass (single tag per image)]\(マルチクラス (画像ごとに 1 つのタグ)\)** | 
+   | 分類の種類 | **[Multiclass (single tag per image)]\(マルチクラス (画像ごとに 1 つのタグ)\)** |
    | ドメイン | **[General (compact)]\(汎用 (コンパクト)\)** |
+   | Export Capabilities (エクスポート機能) | **[Basic platforms (Tensorflow, CoreML, ONNX, ...)]\(基本プラットフォーム (Tensorflow、CoreML、ONNX、...)\)** |
 
 5. **[プロジェクトの作成]** を選択します。
 
@@ -139,17 +141,9 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 1. Visual Studio Code で、 **[表示]**  >  **[ターミナル]** の順に選択し、VS Code 統合ターミナルを開きます。
 
-2. 統合ターミナルで、次のコマンドを入力して、**cookiecutter** をインストール (または更新) します。これは、VS Code で IoT Edge Python モジュール テンプレートを作成するときに使用します。
+1. **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >コマンド プロンプトから起動できるように、cookiecutter をインストールするディレクトリが環境の `Path` にあることを確認してください。
-
-3. **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
-
-4. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
+1. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
 
    | フィールド | 値 |
    | ----- | ----- |
@@ -446,7 +440,7 @@ cameraCapture モジュールからのメッセージとして送信される、
 
 次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。 
 
-それ以外の場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除してもかまいません。 
+そうでない場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除できます。 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 

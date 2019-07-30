@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0ab11d8ef9fd481d2b3ea7029664a1ec2778cf4b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858401"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604081"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>クイック スタート:C# でカスタム用語リストと照らしてテキストを確認する
+# <a name="check-text-against-a-custom-term-list-in-c"></a>C# でカスタム用語リストと照らしてテキストを確認する
 
 Azure Content Moderator の既定のグローバルな用語リストは、ほとんどのコンテンツ モデレーションのニーズに十分対応できます。 しかし、組織に固有の用語のスクリーニングが必要になる場合があります。 たとえば、さらに詳しくレビューするために、競合他社名にタグを付けたい場合などです。 
 
@@ -373,7 +373,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="putting-it-all-together"></a>まとめ
+## <a name="compose-the-main-method"></a>Main メソッドを作成する
 
 名前空間 **TermLists**、クラス **Program** に **Main** メソッドの定義を追加します。 最後に、**Program** クラスと **TermLists** 名前空間を閉じます。
 
@@ -415,9 +415,9 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>アプリケーションを実行して出力を確認する
 
-出力は次の行のようになりますが、データは異なる場合があります。
+コンソールの出力は次のようになります。
 
-```
+```console
 Creating term list.
 Term list created. ID: 252.
 Updating information for term list with ID 252.

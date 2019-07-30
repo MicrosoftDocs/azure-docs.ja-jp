@@ -1,18 +1,18 @@
 ---
 title: Cosmos DB エンドポイントを使用して Azure Databricks を構築する
 description: このチュートリアルでは、仮想ネットワークに、Cosmos DB に対して有効なサービス エンドポイントを使用して Azure Databricks を構築する方法について説明します。
-services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
+ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: 0d5442a63680227f3a6186330502666c92dc3129
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d1268ea2cfc22e6350edb32230588a497be8bc79
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012786"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054509"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>チュートリアル:Cosmos DB エンドポイントを使用して Azure Databricks を構築する
 
@@ -45,13 +45,13 @@ ms.locfileid: "60012786"
 
    ![仮想ネットワーク サブネット](./media/service-endpoint-cosmosdb/virtual-network-subnets.png)
 
-2. *public-subnet* を選択し、Cosmos DB サービス エンドポイントを作成します。 その後、**[保存]** を選択します。
+2. *public-subnet* を選択し、Cosmos DB サービス エンドポイントを作成します。 その後、 **[保存]** を選択します。
    
    ![Cosmos DB サービス エンドポイントの追加](./media/service-endpoint-cosmosdb/add-cosmosdb-service-endpoint.png)
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する
 
-1. Azure Portal を開きます。 画面の左上で、**[リソースの作成] > [データベース] > [Azure Cosmos DB]** の順に選択します。
+1. Azure Portal を開きます。 画面の左上で、 **[リソースの作成] > [データベース] > [Azure Cosmos DB]** の順に選択します。
 
 2. **[基本]** タブの **[インスタンスの詳細]** に次の設定を入力します。
 
@@ -74,13 +74,13 @@ ms.locfileid: "60012786"
    b. **[Azure portal からのアクセスを許可する]** が有効になっていることを確認します。 この設定により、Azure portal から Cosmos DB アカウントにアクセスできるようになります。 このオプションが **[拒否]** に設定されている場合は、ご利用のアカウントにアクセスしようとしたときにエラーが発生します。 
 
    > [!NOTE]
-   > このチュートリアルでは必要ありませんが、ローカル コンピューターから Cosmos DB アカウントにアクセスできるようにしたい場合は、*[自分の IP からのアクセスを許可する]* を有効にすることもできます。 たとえば、Cosmos DB SDK を使用してご利用のアカウントに接続する場合は、この設定を有効にする必要があります。 これが無効になっていると、"アクセスが拒否されました" エラーが発生します。
+   > このチュートリアルでは必要ありませんが、ローカル コンピューターから Cosmos DB アカウントにアクセスできるようにしたい場合は、 *[自分の IP からのアクセスを許可する]* を有効にすることもできます。 たとえば、Cosmos DB SDK を使用してご利用のアカウントに接続する場合は、この設定を有効にする必要があります。 これが無効になっていると、"アクセスが拒否されました" エラーが発生します。
 
    ![Cosmos DB アカウントのネットワーク設定](./media/service-endpoint-cosmosdb/create-cosmosdb-account-network.png)
 
-4. **[確認と作成]** を選択した後、**[作成]** を選択して仮想ネットワーク内に Cosmos DB アカウントを作成します。
+4. **[確認と作成]** を選択した後、 **[作成]** を選択して仮想ネットワーク内に Cosmos DB アカウントを作成します。
 
-5. Cosmos DB アカウントが作成されたら、**[設定]** の **[キー]** に移動します。 プライマリ接続文字列をコピーし、後で使用できるようテキスト エディターに保存します。
+5. Cosmos DB アカウントが作成されたら、 **[設定]** の **[キー]** に移動します。 プライマリ接続文字列をコピーし、後で使用できるようテキスト エディターに保存します。
 
     ![Cosmos DB アカウントの [キー] ページ](./media/service-endpoint-cosmosdb/cosmos-keys.png)
 
@@ -94,19 +94,19 @@ ms.locfileid: "60012786"
 
     ![Cosmos DB データ移行ツール](./media/service-endpoint-cosmosdb/cosmos-data-migration-tool.png)
 
-2. **[ソース情報]** タブで、**[インポート元]** ドロップダウンから **[CSV ファイル]** を選択します。 次に、**[ファイルの追加]** を選択し、前提条件としてダウンロードした暴風雨データの CSV を追加します。
+2. **[ソース情報]** タブで、 **[インポート元]** ドロップダウンから **[CSV ファイル]** を選択します。 次に、 **[ファイルの追加]** を選択し、前提条件としてダウンロードした暴風雨データの CSV を追加します。
 
     ![Cosmos DB データ移行ツールのソース情報](./media/service-endpoint-cosmosdb/cosmos-source-information.png)
 
-3. **[ターゲット情報]** タブで、実際の接続文字列を入力します。 接続文字列の形式は `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>` です。 前のセクションで保存したプライマリ接続文字列には AccountEndpoint と AccountKey が含まれています。 接続文字列の末尾に `Database=<your database name>` を追加して、**[確認]** を選択します。 次に、コレクション名とパーティション キーを追加します。
+3. **[ターゲット情報]** タブで、実際の接続文字列を入力します。 接続文字列の形式は `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>` です。 前のセクションで保存したプライマリ接続文字列には AccountEndpoint と AccountKey が含まれています。 接続文字列の末尾に `Database=<your database name>` を追加して、 **[確認]** を選択します。 次に、コレクション名とパーティション キーを追加します。
 
     ![Cosmos DB データ移行ツールのターゲット情報](./media/service-endpoint-cosmosdb/cosmos-target-information.png)
 
-4. 概要ページが表示されるまで **[次へ]** を選択します。 その後、**[インポート]** を選択します。
+4. 概要ページが表示されるまで **[次へ]** を選択します。 その後、 **[インポート]** を選択します。
 
 ## <a name="create-a-cluster-and-add-library"></a>クラスターを作成してライブラリを追加する
 
-1. [Azure portal](https://portal.azure.com) で Azure Databricks サービスに移動し、**[ワークスペースの起動]** を選択します。
+1. [Azure portal](https://portal.azure.com) で Azure Databricks サービスに移動し、 **[ワークスペースの起動]** を選択します。
 
    ![Databricks ワークスペースの起動](./media/service-endpoint-cosmosdb/launch-workspace.png)
 
@@ -114,11 +114,11 @@ ms.locfileid: "60012786"
 
    ![新しいクラスターの設定](./media/service-endpoint-cosmosdb/create-cluster.png)
 
-3. クラスターの作成後、そのクラスターのページに移動し、**[ライブラリ]** タブを選択します。**[新規インストール]** を選択し、Spark コネクタの jar ファイルをアップロードしてライブラリをインストールします。
+3. クラスターの作成後、そのクラスターのページに移動し、 **[ライブラリ]** タブを選択します。 **[新規インストール]** を選択し、Spark コネクタの jar ファイルをアップロードしてライブラリをインストールします。
 
     ![Spark コネクタ ライブラリのインストール](./media/service-endpoint-cosmosdb/install-cosmos-connector-library.png)
 
-    ライブラリがインストールされたことは、**[ライブラリ]** タブで確認できます。
+    ライブラリがインストールされたことは、 **[ライブラリ]** タブで確認できます。
 
     ![Databricks クラスターの [ライブラリ] タブ](./media/service-endpoint-cosmosdb/installed-library.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "60012786"
 
 リソース グループ、Azure Databricks ワークスペース、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、不必要な課金を回避できます。 Azure Databricks ワークスペースを後で使用する予定がある場合は、クラスターを停止し、後で再起動することができます。 この Azure Databricks ワークスペースの使用を続けない場合は、以下の手順に従って、このチュートリアルで作成したすべてのリソースを削除してください。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソース グループの名前をクリックします。
+1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソース グループの名前をクリックします。
 
 2. リソース グループのページで **[削除]** を選択し、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** を再度選択します。
 

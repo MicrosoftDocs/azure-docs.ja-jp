@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735000"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785814"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -149,6 +149,16 @@ Azure App Configuration イベントをサブスクライブして、キーと�
 | [Event Grid を使用して Azure App Configuration イベントに応答する](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure App Configuration と Event Grid の統合の概要。 |
 | [クイックスタート: Azure CLI を使用して Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Azure App Configuration イベントを Webhook に送信する方法を示します。 |
 | [イベント スキーマ](event-schema-app-configuration.md) | Azure App Configuration イベントのフィールドを表示します。 |
+
+## <a name="azure-signalr"></a>Azure SignalR
+クライアント接続のイベントに応答するには、Azure SignalR Service のイベントをサブスクライブします。
+
+|タイトル | 説明 |
+|---------|---------|
+| [Event Grid を使用して Azure SignalR Service のイベントに反応する](../azure-signalr/signalr-concept-event-grid-integration.md) | Azure SignalR Service と Event Grid の統合の概要。 |
+| [Azure SignalR Service のイベントを Event Grid に送信する方法](../azure-signalr/signalr-howto-event-grid-integration.md) | Event Grid を通して Azure SignalR Service のイベントをアプリケーションに送信する方法を示します。 |
+| [イベント スキーマ](event-schema-azure-signalr.md) | Azure SignalR Service のイベントのフィールドを示します。 |
+
 
 
 ## <a name="next-steps"></a>次の手順

@@ -3,23 +3,26 @@ title: 'クイック スタート: サポートされている言語の一覧を
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Python で Translator Text API を使った例を紹介しています。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: fe2ab3952b68243f7e95ebf754a42e58006f012b
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 9ff7dbd86efe56472b7e31b34310bcfdbbf95109
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514731"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705459"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>クイック スタート: Translator Text API と Python を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Python と Translator Text REST API を使用し、GET 要求を行うことによって、サポートされている言語の一覧を取得する方法を説明します。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +36,10 @@ ms.locfileid: "66514731"
 
 ```python
 # -*- coding: utf-8 -*-
-import os, requests, uuid, json
+import os
+import requests
+import uuid
+import json
 ```
 
 > [!NOTE]
@@ -67,6 +73,8 @@ headers = {
 }
 ```
 
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
+
 ## <a name="create-a-request-to-get-a-list-of-supported-languages"></a>サポートされている言語の一覧を取得するための要求を作成する
 
 `requests` モジュールを使用して GET 要求を作成してみましょう。 これは、連結された URL と要求ヘッダーの 2 つの引数を受け取ります。
@@ -81,7 +89,8 @@ response = request.json()
 最後の手順では、結果を出力します。 このコード スニペットでは、キーを並べ替え、インデントを設定し、項目とキーの区切りを宣言することによって、結果を整形します。
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4,
+                 ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
@@ -190,8 +199,10 @@ python get-languages.py
 
 ## <a name="next-steps"></a>次の手順
 
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+
 > [!div class="nextstepaction"]
-> [GitHub で Python のコード例を詳しく見てみる](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

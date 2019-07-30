@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
-ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: timlt
+ms.openlocfilehash: 5a3800cfdf36bdc2e042eec860310a508204ba11
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630185"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876445"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 ## <a name="overview"></a>概要
@@ -205,7 +205,7 @@ Microsoft Azure StorSimple は、重複除去とデータ圧縮を使用して�
 ## <a name="storsimple-workload-summary"></a>StorSimple ワークロードの概要
 サポートされる StorSimple ワークロードの概要を、次の表に示します。
 
-| シナリオ | ワークロード | サポートされています | 制限 | バージョン |
+| シナリオ | ワークロード | サポートされています | 制限 | Version |
 | --- | --- | --- | --- | --- |
 | コラボレーション |ファイル共有 |はい | |すべてのバージョン |
 | コラボレーション |分散ファイル共有 |はい | |すべてのバージョン |
@@ -232,7 +232,7 @@ StorSimple 8000 シリーズ デバイスでは、次のワークロードはサ
 
 StorSimple がサポートするインフラストラクチャ コンポ―ネントの一覧を次に示します。
 
-| シナリオ | ワークロード | サポートされています | 制限 | バージョン |
+| シナリオ | ワークロード | サポートされています | 制限 | Version |
 | --- | --- | --- | --- | --- |
 | 全般 |ExpressRoute |はい | |すべてのバージョン |
 | 全般 |DataCore FC |はい* |DataCore SANsymphony でサポート |すべてのバージョン |

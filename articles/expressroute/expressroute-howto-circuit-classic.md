@@ -6,14 +6,15 @@ author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: ganesr;cherylmc
+ms.author: ganesr
+ms.reviewer: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7468338e7bc39128564e71831abe61bb1714ff72
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370270"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849236"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)
 
@@ -21,6 +22,7 @@ ms.locfileid: "60370270"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager テンプレート](expressroute-howto-circuit-resource-manager-template.md)
 > * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
@@ -125,7 +127,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 ダウンタイムなく、次のタスクを実行できます。
 
 * ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にします。
-* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やします。 回線の帯域幅のダウングレードはサポートされていません。 
+* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やします。 回線の帯域幅のダウングレードはサポートされていません。
 * 課金プランを従量制課金データから無制限データに変更します。 無制限データから従量制課金データへの課金プランの変更はサポートされていません。
 * *従来の操作の許可*を有効または無効にできます。
 
@@ -154,8 +156,8 @@ Status                           : Enabled
 
 > [!IMPORTANT]
 > 標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗することがあります。
-> 
-> 
+>
+>
 
 #### <a name="considerations"></a>考慮事項
 
@@ -189,8 +191,8 @@ Status                           : Enabled
 > 既存のポートの容量が不十分な場合、ExpressRoute 回線の再作成が必要になる可能性があります。 その場所に使用可能な追加の容量がない場合、回路をアップグレードすることはできません。
 >
 > 中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
-> 
-> 
+>
+>
 
 #### <a name="resize-a-circuit"></a>回線のサイズ変更
 

@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: d6a2c9d92d79bed3f0e9a9976a64f6e11debba88
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: c0e3ac1d53cda2afb2184b92b0fd0afd662101bb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523276"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277513"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>チュートリアル:ロールを使って文脈的に関連するパターンを抽出する
 
@@ -74,11 +74,11 @@ ms.locfileid: "59523276"
 
 3. **[Create new entity]\(新しいエンティティの作成\)** を選択します。
 
-4. ポップアップ ウィンドウで、**[簡易]** エンティティとして「`NewEmployee`」と入力します。
+4. ポップアップ ウィンドウで、 **[簡易]** エンティティとして「`NewEmployee`」と入力します。
 
 5. **[Create new entity]\(新しいエンティティの作成\)** を選択します。
 
-6. ポップアップ ウィンドウで、**[簡易]** エンティティとして「`NewEmployeeRelocation`」と入力します。
+6. ポップアップ ウィンドウで、 **[簡易]** エンティティとして「`NewEmployeeRelocation`」と入力します。
 
 7. エンティティの一覧から **NewEmployeeRelocation** を選択します。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "59523276"
 ## <a name="create-new-intent"></a>新しい意図の作成
 事前構築済みの keyPhrase エンティティが開始前に削除されてから、このセクションの手順を完了した後に再び追加される場合、以下の手順でエンティティにラベルを付けるほうが簡単なことがあります。 
 
-1. 左側のナビゲーションで、**[Intents]\(意図\)** を選択します。
+1. 左側のナビゲーションで、 **[Intents]\(意図\)** を選択します。
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
@@ -252,7 +252,7 @@ ms.locfileid: "59523276"
     |マイアミ|
     |ダラス|
 
-    世界のすべての都市、または地域のすべての都市を追加しないでください。 何という都市かを LUIS がリストから一般化できる必要があります。 必ず、**[These values are interchangeable]\(これらの値は交換可能\)** は選択したままにしてください。 この設定は、リスト上の単語がシノニムとして扱われることを意味します。 
+    世界のすべての都市、または地域のすべての都市を追加しないでください。 何という都市かを LUIS がリストから一般化できる必要があります。 必ず、 **[These values are interchangeable]\(これらの値は交換可能\)** は選択したままにしてください。 この設定は、リスト上の単語がシノニムとして扱われることを意味します。 
 
 3. アプリをトレーニングして公開します。
 

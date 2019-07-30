@@ -7,14 +7,14 @@ author: jimzim
 ms.author: jzim
 ms.date: 05/10/2019
 ms.topic: conceptual
-ms.service: openshift
+ms.service: container-service
 manager: jeconnoc
-ms.openlocfilehash: 21ccd7b2919714610dbd51c62701c4bb32d330d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a31655e8c8805505bdcc5e90bf25191590d35c18
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808821"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672513"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
 

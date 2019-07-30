@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae423b6fb141cab4038e65ba85c6067f1c23aee0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740996"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320686"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでのコンピューター グループ
 Azure Monitor では、コンピューター グループを使用して、[ログ クエリ](../log-query/log-query-overview.md)の範囲を特定のコンピューターのセットに限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログ クエリに含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
@@ -53,9 +53,9 @@ Azure Portal でログ検索からコンピューター グループを作成す
 
 次の表では、コンピューター グループを定義するプロパティについて説明しています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:---|:---|
-| Name   | ポータルに表示するクエリの名前。 |
+| EnableAdfsAuthentication   | ポータルに表示するクエリの名前。 |
 | 関数のエイリアス | クエリ内でコンピューター グループを識別するのに使用される一意のエイリアス。 |
 | Category       | ポータル内でクエリを整理するためのカテゴリ。 |
 
@@ -84,7 +84,7 @@ Azure portal でお使いの Log Analytics ワークスペースの **[詳細設
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
 Configuration Manager のコレクション メンバーシップをインポートするように Azure Monitor を構成すると、各コレクションのコンピューター グループが作成されます。  コンピューター グループを最新に保つために、コレクション メンバーシップ情報は 3 時間ごとに取得されます。 
 
-Configuration Manager のコレクションをインポートするには、[Azure Monitor に Configuration Manager を接続する](collect-sccm.md)必要があります。  その後、Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** からインポートを構成できます。  **[コンピューター グループ]** 、 **[SCCM]** の順に選択して、 **[Configuration Manager コレクション メンバーシップをインポートする]** を選択します。  さらに手動で構成する必要はありません。
+Configuration Manager のコレクションをインポートするには、[Azure Monitor に Configuration Manager を接続する](collect-sccm.md)必要があります。  
 
 ![SCCM のコンピューター グループ](media/computer-groups/configure-sccm.png)
 

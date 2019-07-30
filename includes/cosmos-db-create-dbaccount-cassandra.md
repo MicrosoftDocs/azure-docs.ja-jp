@@ -9,11 +9,11 @@ ms.date: 09/14/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 6e2b160bde17b7ccd9f65740044b1a71d573d2cf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151493"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181725"
 ---
 1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
 

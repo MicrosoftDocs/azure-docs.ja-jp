@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: c18227a491478d0d8010761440a54fd088344b39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: alerts
+ms.openlocfilehash: 91ec5aa42367f6caaa93aaf808fde504e92fbc04
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776599"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594331"
 ---
 # <a name="common-alert-schema"></a>共通アラート スキーマ
 
@@ -125,6 +125,7 @@ ms.locfileid: "60776599"
 ## <a name="next-steps"></a>次の手順
 
 - [Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義。](https://aka.ms/commonAlertSchemaDefinitions)
+- [共通アラートのスキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法について説明します。](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 
 
 

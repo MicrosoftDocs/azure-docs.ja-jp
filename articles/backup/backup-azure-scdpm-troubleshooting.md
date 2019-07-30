@@ -1,19 +1,18 @@
 ---
 title: Azure Backup での System Center Data Protection Manager のトラブルシューティング
 description: System Center Data Protection Manager での問題のトラブルシューティングを行います。
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5e4aa113eda6ea53c520e6de52e4fa17d75f4095
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236208"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465371"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>System Center Data Protection Manager のトラブルシューティング
 

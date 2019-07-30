@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fbe4fd5f85026cd62f1bd10e36561b312464054
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc1d52a1062d1848daaaeef7977f96cd270567c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64690568"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203467"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
@@ -114,7 +114,16 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
-## <a name="step-6-create-a-replication-policy"></a>ステップ 6:レプリケーション ポリシーを作成する
+Hyper-V コア サーバーを実行している場合は、セットアップ ファイルをダウンロードして、これらの手順に従います。
+1. このコマンドを実行して、AzureSiteRecoveryProvider.exe からローカル ディレクトリにファイルを抽出します。```AzureSiteRecoveryProvider.exe /x:. /q```
+2. ```.\setupdr.exe /i``` を実行します。結果は %Programdata%\ASRLogs\DRASetupWizard.log に記録されます。
+
+3. このコマンドを実行してサーバーを登録します。
+
+    ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
+
+
+## <a name="step-6-create-a-replication-policy"></a>手順 6:レプリケーション ポリシーを作成する
 
 開始する前に、指定されたストレージ アカウントが、コンテナーと同じ Azure リージョンに存在する必要があることに注意してください。また、geo レプリケーションが有効になっている必要もあります。
 

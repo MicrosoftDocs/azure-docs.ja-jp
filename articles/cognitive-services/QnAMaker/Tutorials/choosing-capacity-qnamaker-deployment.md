@@ -3,20 +3,20 @@ title: デプロイのリソース容量 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスを作成する前に、前述したサービスに関して、どのレベルが現状に適しているかを判断する必要があります。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a332d263526bb6507e7394c205caa1c4d1f9e3e6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3126613a9dca00d221610dc46116dd409c65d53d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613267"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446638"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>QnA Maker のデプロイに使用する容量の選択
 

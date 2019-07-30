@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 30e25fa8ea9e49b3005badc3db8f6ada3c0aed50
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d6b7cc275fc50fefbe0057620d315d1484c47745
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65885163"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603014"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>クイック スタート:Python 用 Speech SDK を使用して音声を認識する
 

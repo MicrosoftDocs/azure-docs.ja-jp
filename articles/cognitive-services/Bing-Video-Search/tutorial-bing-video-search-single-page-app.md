@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:シングルページ Bing Video Search アプリを構築する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: シングルページ Web アプリケーションで Bing Video Search API を使用する方法を説明します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 6ba777754990560526d7981ef497ea7f0441e1b0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d2cd3d37801fc1a42a9bcbd5f70a6a55e78aaf08
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798471"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500075"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>チュートリアル:シングルページ Video Search アプリ
 Bing Video Search API を使うと、Web を検索して、検索クエリに関連するビデオの結果を取得できます。 このチュートリアルでは、Bing Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
@@ -312,7 +312,7 @@ Bing News Search API は、関連する結果を最大で 4 種類返します�
 |-|-|
 |`pivotSuggestions`|元の検索の軸語を別のものに置き換えるクエリです。 たとえば、"赤い花" を検索した場合、"赤" が軸語で、"黄色い花" が候補になる可能性があります。|
 |`queryExpansions`|複数の条件を追加することで、元の検索を絞り込むクエリです。 たとえば、"Microsoft Surface" を検索した場合、クエリが "Microsoft Surface Pro" に拡張される場合があります。|
-|`relatedSearches`|元の検索を入力した他のユーザーが他に入力したことのあるクエリです。 たとえば、"レーニア山" を検索した場合、関連する検索は "セント  ヘレンズ山" となる場合があります。|
+|`relatedSearches`|元の検索を入力した他のユーザーが他に入力したことのあるクエリです。 たとえば、"レーニア山" を検索した場合、関連する検索は "セント ヘレンズ山" となる場合があります。|
 |`similarTerms`|元の検索と似た意味を持つクエリです。 たとえば、"学校" を検索すると、似た用語として "教育" が挙げられる場合があります。|
 
 `renderSearchResults()` で確認したように、`relatedItems` の候補だけがレンダリングされ、結果のリンクはページのサイドバーに配置されます。
@@ -373,7 +373,7 @@ searchItemRenderers = {
 > * 画像およびその画像が含まれるページにリンクされる HTML `<a>` タグをビルドします。
 > * 画像およびその画像が存在するサイトに関する情報を示す説明をビルドします。
 
-サムネイルのサイズは、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 その後、[Bing サムネイル サービス](resize-and-crop-thumbnails.md)から、そのサイズのとおりのサムネイルが提供されます。
+サムネイルのサイズは、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 Bing では、正確にそのサイズの[サムネイル](../bing-web-search/resize-and-crop-thumbnails.md)が返されます。
 
 ## <a name="persisting-client-id"></a>クライアント ID の永続化
 Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含まれることがあり、このヘッダーは後続の要求で API に送り返す必要があります。 複数の Bing Search API を使用している場合、可能であれば、それらすべてで同じクライアント ID を使用する必要があります。
@@ -389,7 +389,7 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 > [!NOTE]
 > 運用環境の Web アプリケーションでは、要求サーバー側を実行する必要があります。 そうしないと、Web ページに Bing Search API キーを含める必要があり、ソースを表示した人ならだれでもキーを使用できるようになってしまいます。 権限のない者によって行われた要求であっても、すべての利用に対してユーザーの API サブスクリプション キーに基づいて料金が発生するため、キーは公開しないようにする必要があります。
 
-開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 そのようなプロキシからの応答には、応答ヘッダーを許可して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 

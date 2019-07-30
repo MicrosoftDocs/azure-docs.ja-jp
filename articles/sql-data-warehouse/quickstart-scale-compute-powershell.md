@@ -2,20 +2,20 @@
 title: クイック スタート:Azure SQL Data Warehouse のコンピューティングのスケールアウト - PowerShell | Microsoft Docs
 description: PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: sql-data-warehouse
-author: kevinvngo
+author: Antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.subservice: manage
+ms.subservice: implement
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: Anthony.vanGemert
 ms.reviewer: igorstan
-ms.openlocfilehash: bd137b71cab4a345afce835effd2ecb0c03df312
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ddf33c927054512d1807d1c9e3429edaa5de25b9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66167024"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479244"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>クイック スタート:PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングします。
 
@@ -68,10 +68,10 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 SQL Data Warehouse では、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
 
-Data Warehouse ユニットを変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell コマンドレットを使用します。 次の例では、サーバー **mynewserver-20180430** 上のリソース グループ **myResourceGroup** においてホストされているデータベース **mySampleDataWarehouse** の Data Warehouse ユニットを DW300 に設定します。
+Data Warehouse ユニットを変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell コマンドレットを使用します。 次の例では、サーバー **mynewserver-20180430** 上のリソース グループ **myResourceGroup** においてホストされているデータベース **mySampleDataWarehouse** の Data Warehouse ユニットを DW300c に設定します。
 
 ```Powershell
-Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
 ```
 
 ## <a name="check-data-warehouse-state"></a>データ ウェアハウスの状態の確認
@@ -98,7 +98,7 @@ MaxSizeBytes                  : 263882790666240
 Status                        : Online
 CreationDate                  : 11/20/2017 9:18:12 PM
 CurrentServiceObjectiveId     : 284f1aff-fee7-4d3b-a211-5b8ebdd28fea
-CurrentServiceObjectiveName   : DW300
+CurrentServiceObjectiveName   : DW300c
 RequestedServiceObjectiveId   : 284f1aff-fee7-4d3b-a211-5b8ebdd28fea
 RequestedServiceObjectiveName :
 ElasticPoolName               :

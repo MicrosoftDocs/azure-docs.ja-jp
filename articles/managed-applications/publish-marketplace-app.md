@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 06/04/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 40132f67b135b0dc081180c34361047e59776b81
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 0e2e161c22ee87d11156c4818bd689c316799e87
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688568"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305607"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージド アプリケーション
 
@@ -27,7 +27,7 @@ ms.locfileid: "66688568"
 
 この記事を完了するには、マネージド アプリケーション定義の .zip ファイルを既に用意している必要があります。 詳細については、[サービス カタログ アプリケーションの作成](publish-service-catalog-app.md)に関する記事を参照してください。
 
-さらに、いくつかのビジネス上の前提条件があります。 次に例を示します。
+いくつかのビジネス上の前提条件があります。 次に例を示します。
 
 * 貴社またはその子会社は、Marketplace によって販売がサポートされる国/地域に所在している必要があります。
 * Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。
@@ -37,14 +37,7 @@ ms.locfileid: "66688568"
 * Azure Marketplace 参加ポリシーと発行者契約の条項に同意します。
 * 使用条件、Microsoft のプライバシーに関する声明、および Microsoft Azure 認定プログラム契約に従うことに同意します。
 
-## <a name="become-a-publisher"></a>発行元になる
-
-Azure Marketplace の発行元になるには、次のことを行う必要があります。
-
-1. Microsoft ID を作成する - 個人ではなく会社のドメインに属する電子メール アドレスを使用して、Microsoft アカウントを作成します。 この電子メール アドレスは、Microsoft デベロッパー センターと Cloud パートナー ポータルの両方で使用されます。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
-1. [Azure Marketplace 申請フォーム](https://aka.ms/ampnomination)を送信する - **[Solution that you intend to publish?]\(公開したいソリューション\)** で、 **[マネージド アプリケーション]** を選択します。 フォームが送信されると、Marketplace オンボード チームによって申し込みが確認され、申請が検証されます。 この承認プロセスには 1 ～ 3 日かかります。 申請が承認されると、お客様にご利用コードが送信されます。このコードを使用すると、デベロッパー センターの登録料金が免除されます。 Marketplace Nomination Form (Marketplace 申請フォーム) に入力**しない**場合、99 ドルの登録料金の支払いを求められます。
-1. [デベロッパー センター](https://dev.windows.com/registration?accountprogram=azure)に登録する - Microsoft により、お客様の組織が、登録先の国/地域の有効な税 ID を持つ合法的な法人であることが検証されます。 この承認プロセスには 5 ～ 10 日かかります。 登録料金の支払い免除を受けるには、申請プロセスの電子メールで受け取ったご利用コードを使用します。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
-1. [Cloud パートナー ポータル](https://cloudpartner.azure.com)にサインインする - 発行プロファイルで、お客様のデベロッパー センター アカウントを Marketplace Publisher プロファイルに関連付けます。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
+また、Marketplace アカウントも持っている必要があります。 アカウントを作成するには、「[Commercial Marketplace アカウントをパートナー センターで作成する方法](..//marketplace/partner-center-portal/create-account.md)」を参照してください。
 
 ## <a name="create-a-new-azure-application-offer"></a>新しい Azure アプリケーション プランの作成
 
@@ -105,6 +98,10 @@ SKU は、Marketplace では親プランの下に表示されます。 Azure Por
    * **パッケージ ファイル (.zip)** : このパッケージには、.zip パッケージに圧縮された 2 つの必須ファイルが含まれています。 1 つのファイルは、マネージド アプリケーションでデプロイするリソースを定義する Resource Manager テンプレートです。 もう 1 つのファイルは、コンシューマーがポータルを使用してマネージド アプリケーションをデプロイするための[ユーザー インターフェイス](create-uidefinition-overview.md)を定義します。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
    * **テナント ID**:アクセスを取得するアカウントのテナント ID。
    * **[Enable JIT Access?]\(JIT アクセスの有効化\)** :アカウントで [Just-In-Time アクセス制御](request-just-in-time-access.md)を有効にするには、 **[はい]** を選択します。 有効にすると、指定した期間、コンシューマーのアカウントへのアクセスを要求します。 マネージド アプリケーションのコンシューマーがあなたのアカウントに永続アクセスを付与するように要求するには、 **[いいえ]** を選択します。
+   * **[Customize allowed customer actions?]\(許可された顧客のアクションをカスタマイズしますか?\)** : **[はい]** を選択して、コンシューマーが管理対象リソースに対して実行できるアクションを指定します。
+   * **[Allowed customer actions]\(許可される顧客のアクション\)** :前の設定で **[はい]** を選択した場合は、[Azure リソースの拒否割り当て](../role-based-access-control/deny-assignments.md)を使用して、コンシューマーに許可するアクションを指定できます。
+
+     使用できるアクションについては、「[Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md)」を参照してください。 たとえば、仮想マシンの再起動をコンシューマーに許可するには、許可されているアクションに `Microsoft.Compute/virtualMachines/restart/action` を追加します。 `*/read` アクションは自動的に許可されるので、この設定を含める必要はありません。
    * **PrincipalId**: このプロパティは、顧客のサブスクリプション内のリソースへのアクセス権が付与されているユーザー、ユーザー グループ、またはアプリケーション の Azure Active Directory (Azure AD) 識別子です。 ロールの定義では、アクセス許可について説明します。
    * **ロール定義**: このプロパティは、Azure AD によって提供されているロールベースのアクセス制御 (RBAC) の組み込みロールの一覧です。 最も適切なロールを選択して使用することで、顧客に代わってリソースを管理できます。
    * **ポリシー設定**: マネージド アプリケーションに [Azure Policy](../governance/policy/overview.md) を適用して、デプロイしたソリューションのコンプライアンス要件を指定します。 使用可能なオプションから、適用するポリシーを選択します。 **[ポリシー パラメーター]** には、パラメーターの値を含んだ JSON 文字列を指定します。 ポリシーの定義とパラメーター値の形式については、「[Azure Policy のサンプル](../governance/policy/samples/index.md)」を参照してください。

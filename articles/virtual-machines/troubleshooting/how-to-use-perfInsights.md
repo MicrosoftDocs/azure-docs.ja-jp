@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60318349"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -72,7 +72,7 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 
 このシナリオでは、特別なパフォーマンス カウンター キャプチャと、ネットワーク トレースを実行します。 このキャプチャには、すべてのサーバー メッセージ ブロック (SMB) クライアント共有カウンターが含まれています。 キャプチャに含まれる重要な SMB クライアント共有のパフォーマンス カウンターをいくつか次に示します。
 
-| **種類**     | **SMB クライアント共有カウンター** |
+| **Type**     | **SMB クライアント共有カウンター** |
 |--------------|-------------------------------|
 | IOPS         | データ要求数/秒             |
 |              | 読み取り要求数/秒             |
@@ -83,7 +83,7 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 | IO サイズ      | Avg.バイト/データ要求       |
 |              | Avg.バイト/読み取り               |
 |              | Avg.バイト/書き込み              |
-| Throughput   | データ バイト数/秒                |
+| スループット   | データ バイト数/秒                |
 |              | 読み取りバイト数/秒                |
 |              | 書き込みバイト数/秒               |
 | キューの長さ | Avg.読み取りキューの長さ        |
@@ -132,10 +132,10 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 
 バックグラウンドでルール ベースのエンジンを実行してデータを収集し、継続的なパフォーマンスの問題を診断します。 現在サポートされているルールは次のとおりです。
 
-- HighCpuUsage ルール: CPU 使用率が高い期間を検出し、その期間で CPU 使用率が最も高いコンシューマーを表示します。
-- HighDiskUsage ルール: 物理ディスクでディスク使用量が多い期間を検出し、その期間でディスク使用量が最も多いコンシューマーを表示します。
-- HighResolutionDiskMetric ルール: 物理ディスクごとに 50 ミリ秒あたりの IOPS、スループット、および IO 待機時間の指標を表示します。 ディスク調整期間をすばやく特定するときに役立ちます。
-- HighMemoryUsage ルール: メモリ使用量が多い期間を検出し、その期間でメモリ使用量が最も多いコンシューマーを表示します。
+- HighCpuUsage ルール: CPU 使用率が高い期間を検出し、それらの期間中に CPU 使用率が最も高いコンシューマーを表示します。
+- HighDiskUsage ルール: 物理ディスク上のディスク使用量が多い期間を検出し、それらの期間中にディスク使用量が最も多いコンシューマーを表示します。
+- HighResolutionDiskMetric ルール: 物理ディスクごとに 50 ミリ秒あたりの IOPS、スループット、および I/O 待機時間のメトリックを表示します。 ディスク調整期間をすばやく特定するときに役立ちます。
+- HighMemoryUsage ルール: メモリ使用量が多い期間を検出し、それらの期間中にメモリ使用量が最も多いコンシューマーを表示します。
 
 > [!NOTE] 
 > 現時点では、.NET Framework 4.5 以降のバージョンが搭載された Windows バージョンがサポートされています。
@@ -167,7 +167,7 @@ Diskspd I/O ワークロード テスト (OS ディスク [書き込み] とプ�
 
 -  このツールを、パフォーマンスに問題がある VM で実行する必要があります。 
 
--  Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1、および Windows 10 のオペレーティング システムがサポートされています。
+-  次のクライアント オペレーティング システムがサポートされています。Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1、および Windows 10。
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>運用 VM でこのツールを実行したときに発生する可能性のある問題
 
@@ -192,7 +192,7 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 1. [PerfInsights.zip](https://aka.ms/perfinsightsdownload) をダウンロードします。
 
-2. PerfInsights.zip ファイルのブロックを解除します。 これを行うには、PerfInsights.zip ファイルを右クリックし、**[プロパティ]** を選択します。 **[全般]** タブで **[ブロックの解除]** を選択し、**[OK]** を選択します。 これにより、追加のセキュリティ プロンプトは表示されずに、確実にツールが実行されます。  
+2. PerfInsights.zip ファイルのブロックを解除します。 これを行うには、PerfInsights.zip ファイルを右クリックし、 **[プロパティ]** を選択します。 **[全般]** タブで **[ブロックの解除]** を選択し、 **[OK]** を選択します。 これにより、追加のセキュリティ プロンプトは表示されずに、確実にツールが実行されます。  
 
     ![[ブロックの解除] が強調表示された PerfInsights プロパティのスクリーンショット](media/how-to-use-perfInsights/unlock-file.png)
 
@@ -237,11 +237,11 @@ PerfInsights ツールを実行するには、次の手順に従います。
     ```
 
     >[!Note]
-    >シナリオを実行する前に、PerfInsights から、診断情報を共有し、使用許諾契約書に同意するよう求めるプロンプトが表示されます。 これらのプロンプトを省略するには、**/AcceptDisclaimerAndShareDiagnostics** オプションを使用します。 
+    >シナリオを実行する前に、PerfInsights から、診断情報を共有し、使用許諾契約書に同意するよう求めるプロンプトが表示されます。 これらのプロンプトを省略するには、 **/AcceptDisclaimerAndShareDiagnostics** オプションを使用します。 
     >
     >有効な Microsoft のサポート チケットをお持ちで、サポート エンジニアからの依頼に従って PerfInsights を実行している場合は、 **/sr** オプションを使用してサポート チケット番号を入力してください。
     >
-    >既定では、PerfInsights は自動的に最新バージョンに更新されます。 自動更新を省略するには、**/SkipAutoUpdate** または **/sau** パラメーターを使用してください。  
+    >既定では、PerfInsights は自動的に最新バージョンに更新されます。 自動更新を省略するには、 **/SkipAutoUpdate** または **/sau** パラメーターを使用してください。  
     >
     >期間を切り替えるスイッチ **/d** が指定されていない場合は、PerfInsights から、VM の低速シナリオ、Azure Files シナリオ、および高度なシナリオの実行中に発生した問題を報告することを求められます。 
 
@@ -281,7 +281,7 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 ![SQL タブのスクリーンショット](media/how-to-use-perfInsights/sqltab.png)
 
-このセクションには、**[検索結果]** タブと、VM 上でホストされている SQL Server インスタンスごとの追加のタブが含まれています。
+このセクションには、 **[検索結果]** タブと、VM 上でホストされている SQL Server インスタンスごとの追加のタブが含まれています。
 
 **[検索結果]** タブには、見つかった SQL に関連するすべてのパフォーマンスの問題の一覧が推奨事項と共に含まれています。
 

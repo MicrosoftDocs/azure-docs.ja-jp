@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 98e8c0ccd150776341e644f7565696e8fbd63e99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b060e2c8a7353dd8145ced8c6e89d9b666a4212c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556281"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703893"
 ---
-# <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure Media Services v3 のよく寄せられる質問
+# <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
 この記事では、Azure Media Services (AMS) v3 のよく寄せられる質問に対する回答を提供します。
 
-## <a name="v3-apis"></a>v3 API
+## <a name="general"></a>全般
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure Media Services リソースに対してアクションを実行できる Azure のロールは何ですか。 
 
@@ -45,6 +45,10 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure Media Services v3 では、どのような機能がまだ利用可能になっていますか。
 
 詳細については、「[v2 API に関する機能のギャップ](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis)」を参照してください。
+
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>サブスクリプション間での Media Services アカウントの移動のプロセスはどのようなものですか?  
+
+詳細については、「[サブスクリプション間での Media Services アカウントの移動](media-services-account-concept.md)」を参照してください。
 
 ## <a name="live-streaming"></a>ライブ ストリーミング 
 

@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/15/2019
-ms.author: v-gedod
-ms.openlocfilehash: 9fd693207b429ddc0a2bfdd772f4822f188ac3f7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.author: aahi
+ms.openlocfilehash: 2c98484eca027d20fbbe72ffb333a3e281e6f46b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65884933"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849885"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>クイック スタート:Bing Visual Search SDK for C# を使用して画像に関する分析情報を取得する
 

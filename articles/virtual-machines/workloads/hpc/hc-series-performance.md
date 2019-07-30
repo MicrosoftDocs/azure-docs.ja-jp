@@ -4,7 +4,7 @@ description: Azure での HC シリーズ VM サイズのパフォーマンス �
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: f931bfa486384a0f38a4964c2ed7b2446b40bfec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cea772f03d5e2838b44d50f3cf5e926d740be5f0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809769"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707678"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC シリーズの仮想マシンのサイズ
 

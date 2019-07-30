@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/6/2019
+ms.date: 7/8/2019
 ms.author: raiye
-ms.openlocfilehash: bdb3d0af93a69c1d15bd34a4badef5915ec0f01f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743025"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721131"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
-Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 「[Azure ゲスト OS の更新設定][Azure Guest OS Update Settings]」に説明されているゲスト OS の *自動更新*を使用するようにロールを構成している場合は、このページを読むことは必須ではありません。
+Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 ロールを構成して、「 *Azure ゲスト OS の更新設定* 」に説明されているゲスト OS の [自動][Azure Guest OS Update Settings]更新を使用する場合、このページを読むことは必須ではありません。
 
 > [!IMPORTANT]
 > このページは、ゲスト OS 上で実行される Cloud Services Web ロールと worker ロールに適用されます。 IaaS Virtual Machines には **適用されません** 。
@@ -39,9 +39,12 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 >
 >
 
-ゲスト OS の更新方法については、 [こちらを][ cloud updates]確認してください。
+ゲスト OS の更新方法については、 [こちら][cloud updates]を確認してください。
 
 ## <a name="news-updates"></a>最新情報
+
+###### <a name="july-8-2019"></a>**2019 年 7 月 8 日**
+6 月のゲスト OS がリリースされました。
 
 ###### <a name="june-6-2019"></a>**2019 年 6 月 6 日**
 5 月のゲスト OS がリリースされました。
@@ -78,7 +81,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-6-releases"></a>ファミリ 6 のリリース
 **Windows Server 2019**
 
-インストールされている .NET Framework:3.5、4.7.2
+インストールされている .NET Framework:3.5、4.7.2、4.8
 
 > [!NOTE]
 > Windows Azure SDK for .NET - 3.0 は、[こちら][Windows Azure SDK]からダウンロードできます。
@@ -95,8 +98,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-6.8_201906-01 |2019 年 7 月 8 日 |Post 6.10 |
 | WA-GUEST-OS-6.7_201905-01 |2019 年 6 月 6 日 |Post 6.9 |
-| WA-GUEST-OS-6.6_201904-01 |2019 年 5 月 7 日 |Post 6.8 |
+|~~WA-GUEST-OS-6.6_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-6.5_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-6.4_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
 |~~WA-GUEST-OS-6.3_201901-01~~ |2019 年 2 月 5 日 |2019 年 3 月 26 日 |
@@ -106,7 +110,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-5-releases"></a>ファミリ 5 のリリース
 **Windows Server 2016**
 
-インストールされている .NET Framework:3.5、4.6.2
+インストールされている .NET Framework:3.5、4.6.2、4.7.2、4.8
 
 > [!NOTE]
 > OS ファミリ 5 用の RDP パスワードは、10 文字以上にする必要があります。
@@ -115,8 +119,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-5.32_201906-01 |2019 年 7 月 8 日 |Post 5.34 |
 | WA-GUEST-OS-5.31_201905-01 |2019 年 6 月 6 日 |Post 5.33 |
-| WA-GUEST-OS-5.30_201904-01 |2019 年 5 月 7 日 |Post 5.32 |
+|~~WA-GUEST-OS-5.30_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-5.29_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-5.28_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
 |~~WA-GUEST-OS-5.27_201901-01~~ |2019 年 2 月 5 日 |2019 年 3 月 26 日 |
@@ -128,12 +133,13 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-4-releases"></a>ファミリ 4 のリリース
 **Windows Server 2012 R2**
 
-インストールされている .NET Framework:3.5、4.5.1
+インストールされている .NET Framework:3.5、4.5.1、4.5.2
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-4.67_201906-01 |2019 年 7 月 8 日 |Post 4.69 |
 | WA-GUEST-OS-4.66_201905-01 |2019 年 6 月 6 日 |Post 4.68 |
-| WA-GUEST-OS-4.65_201904-01 |2019 年 5 月 7 日 |Post 4.67 |
+|~~WA-GUEST-OS-4.65_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-4.63_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
 |~~WA-GUEST-OS-4.62_201901-01~~ |2019 年 2 月 5 日 |2019 年 3 月 26 日 |
@@ -149,8 +155,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
-| WA-GUEST-OS-3.73_201905-01 |2019 年 6 月 67 日 |Post 3.75 |
-| WA-GUEST-OS-3.72_201904-01 |2019 年 5 月 7 日 |Post 3.74 |
+| WA-GUEST-OS-3.74_201906-01 |2019 年 7 月 8 日 |Post 3.76 |
+| WA-GUEST-OS-3.73_201905-01 |2019 年 6 月 6 日 |Post 3.75 |
+|~~WA-GUEST-OS-3.72_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-3.70_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
 |~~WA-GUEST-OS-3.69_201901-01~~ |2019 年 2 月 5 日 |2019 年 3 月 26 日 |
@@ -162,12 +169,13 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-2-releases"></a>ファミリ 2 のリリース
 **Windows Server 2008 R2 SP1**
 
-インストールされている .NET Framework:3.5 (2.0 と 3.0 を含む)
+インストールされている .NET Framework:3.5 (2.0 と 3.0 を含む)、4.5
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-2.87_201906-01 |2019 年 7 月 8 日 |Post 2.89 |
 | WA-GUEST-OS-2.86_201905-01 |2019 年 6 月 6 日 |Post 2.88 |
-| WA-GUEST-OS-2.85_201904-01 |2019 年 5 月 7 日 |Post 2.87 |
+|~~WA-GUEST-OS-2.85_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-2.83_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
 |~~WA-GUEST-OS-2.82_201901-01~~ |2019 年 2 月 5 日 |2019 年 3 月 26 日 |
@@ -230,7 +238,7 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 ゲスト OS を手動で更新する場合は、追加情報について[ゲスト OS の提供終了ポリシー][retirepolicy]のページを参照してください。
 
 ## <a name="guest-os-supportability-and-retirement-policy"></a>ゲスト OS のサポートと提供終了のポリシー
-ゲスト OS のサポートと提供終了のポリシーについては、[こちら][retirepolicy]で説明しています。
+ゲスト OS のサポートと提供終了のポリシーについては、[こちら][retirepolicy]で説明されています。
 
 [cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
 [ゲスト OS 更新 RSS フィード]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml

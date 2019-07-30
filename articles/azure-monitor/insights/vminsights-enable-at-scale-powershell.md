@@ -13,37 +13,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2019
 ms.author: magoedte
-ms.openlocfilehash: a22bc88fb066d9b845f7fdf1592e2194a03915bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff284ea0adf6021ace84cd6a41f0a0e4e987a9c8
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65524045"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144246"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-template"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
+# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、Azure PowerShell または Azure Resource Manager テンプレートを使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs (プレビュー) を有効にする方法について説明します。 このプロセスを完了すると、すべての仮想マシンの監視を正常に開始し、パフォーマンスや可用性の問題が発生していないかどうかを確認できるようになります。 
+この記事では、Azure PowerShell または Azure Resource Manager テンプレートを使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs (プレビュー) を有効にする方法について説明します。 このプロセスを完了すると、すべての仮想マシンの監視を正常に開始し、パフォーマンスや可用性の問題が発生していないかどうかを確認できるようになります。
 
 ## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics ワークスペースを設定する 
 
-Log Analytics ワークスペースがない場合は、「[Prerequisites (前提条件)](vminsights-enable-overview.md#log-analytics)」セクションで推奨されている方法を確認してワークスペースを作成してから構成する手順に進み、Azure Resource Manager テンプレートを使用して Azure Monitor for VMs のデプロイを実行してください。
+Log Analytics ワークスペースがない場合は、作成する必要があります。 構成する手順を続行する前に、「[前提条件](vminsights-enable-overview.md#log-analytics)」のセクションで提案されている方法を確認してください。 次に、Azure Resource Manager テンプレート メソッドを使用して、Azure Monitor for VMs のデプロイを完了できます。
 
 ### <a name="enable-performance-counters"></a>パフォーマンス カウンターを有効にする
 
-ソリューションによって参照されている Log Analytics ワークスペースが、ソリューションで必要なパフォーマンス カウンターを収集するようにまだ構成されていない場合は、カウンターを有効にする必要があります。 次の 2 つの方法のいずれかで行うことができます。
+ソリューションによって参照されている Log Analytics ワークスペースが、ソリューションで必要なパフォーマンス カウンターを収集するようにまだ構成されていない場合は、カウンターを有効にする必要があります。 次の 2 つの方法のいずれかでこれを行うことができます。
 * 「[Log Analytics での Windows および Linux のパフォーマンス データ ソース](../../azure-monitor/platform/data-sources-performance-counters.md)」の説明に従って、手動で行います
 * [Azure PowerShell ギャラリー](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)で入手できる PowerShell スクリプトをダウンロードして実行します
 
 ### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>ServiceMap および InfrastructureInsights ソリューションをインストールする
 この方法には、Log Analytics ワークスペースでソリューション コンポーネントを有効にするための構成を指定する JSON テンプレートが含まれています。
 
-テンプレートを使用してリソースをデプロイすることに慣れていない場合は、以下をご覧ください。
+テンプレートを使用してリソースをデプロイする方法がわからない場合は、以下を参照してください。
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI を使用するには、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードするには、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 1. 以下の JSON 構文をコピーして、ファイルに貼り付けます。
 
@@ -121,7 +121,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
         New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
         ```
 
-        設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
+        設定の変更が完了するまで数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
 
         ```powershell
         provisioningState       : Succeeded
@@ -135,23 +135,23 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
         az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
         ```
 
-設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
+        設定の変更が完了するまで数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
 
-```azurecli
-provisioningState       : Succeeded
-```
+        ```azurecli
+        provisioningState       : Succeeded
+        ```
 
-## <a name="enable-with-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して有効化する
-仮想マシンまたは仮想マシン スケール セットをオンボードするための、Azure Resource Manager テンプレートの例が用意されています。 これらのテンプレートには、既存のリソースに対する監視を有効にするシナリオや、監視を有効にする新しいリソースを作成するシナリオが含まれています。
+## <a name="enable-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して有効にする
+仮想マシンまたは仮想マシン スケール セットをオンボードするための、Azure Resource Manager テンプレートの例が用意されています。 これらのテンプレートには、既存のリソースに対する監視を有効にして、監視が有効な新しいリソースを作成するために使用できるシナリオが含まれています。
 
 >[!NOTE]
 >テンプレートは、オンボードするリソースと同じリソース グループ内にデプロイする必要があります。
 
-テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
+テンプレートを使用してリソースをデプロイする方法がわからない場合は、以下を参照してください。
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
+Azure CLI を使用するには、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードするには、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 ### <a name="download-templates"></a>テンプレートをダウンロードする
 
@@ -163,26 +163,26 @@ Azure Resource Manager テンプレートはアーカイブ ファイル (.zip) 
 - **NewVmOnboarding** テンプレートでは、仮想マシンを作成し、これを監視するために Azure Monitor for VMs を有効にします。
 - **ExistingVmssOnboarding** テンプレートでは、仮想マシン スケール セットが既に存在する場合に Azure Monitor for VMs を有効にします。
 - **NewVmssOnboarding** テンプレートでは、仮想マシン スケール セットを作成し、これを監視するために Azure Monitor for VMs を有効にします。
-- **ConfigureWorksapce*** テンプレートでは、Linux および Windows オペレーティング システム パフォーマンス カウンターのソリューションと収集を有効にすることで、Azure Monitor for VMs をサポートする Log Analytics ワークスペースを構成します。
+- **ConfigureWorksapce** テンプレートでは、Linux および Windows オペレーティング システム パフォーマンス カウンターのソリューションと収集を有効にすることで、Azure Monitor for VMs をサポートする Log Analytics ワークスペースを構成します。
 
 >[!NOTE]
 >仮想マシン スケール セットが既に存在し、アップグレード ポリシーが**手動**に設定されている場合、**ExistingVmssOnboarding** Azure Resource Manager テンプレートを実行しても、これらのインスタンスに対して Azure Monitor for VMs は既定では有効になりません。 手動でインスタンスをアップグレードする必要があります。
 
-### <a name="deploy-using-azure-powershell"></a>Azure PowerShell を使用したデプロイ
+### <a name="deploy-by-using-azure-powershell"></a>Azure PowerShell を使用したデプロイ
 
 Azure PowerShell を使用して監視を有効にするには、次の手順のようにします。
 
 ```powershell
 New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile <Template.json> -TemplateParameterFile <Parameters.json>
 ```
-設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
+設定の変更が完了するまで数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
 
 ```powershell
 provisioningState       : Succeeded
 ```
-### <a name="deploy-using-azure-cli"></a>Azure CLI を使用したデプロイ
+### <a name="deploy-by-using-the-azure-cli"></a>Azure CLI を使用したデプロイ
 
-Azure CLI を使用して監視を有効にするには、次の手順のようにします。   
+Azure CLI を使用して監視を有効にするには、次の手順のようにします。
 
 ```azurecli
 az login
@@ -190,7 +190,7 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file <Template.json> --parameters <Parameters.json>
 ```
 
-出力は次のようになります。
+出力結果は、以下のようになります。
 
 ```azurecli
 provisioningState       : Succeeded
@@ -198,7 +198,13 @@ provisioningState       : Succeeded
 
 ## <a name="enable-with-powershell"></a>PowerShell を使用した有効化
 
-複数の VM または仮想マシン スケール セットに対して Azure Monitor for VMs を有効にするには、Azure PowerShell ギャラリーから入手できる PowerShell スクリプトの [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) を使用できます。 このスクリプトでは、サブスクリプション内、または *ResourceGroup* で指定されたスコープ内のリソース グループ内のすべての仮想マシンと仮想マシン スケール セット、または *Name* で指定された単一の VM または仮想マシン スケール セットに対して反復処理が実行されます。 このスクリプトでは、各 VM または仮想マシン スケール セットに対して、VM 拡張機能が既にインストールされているかどうかが確認されます。 VM 拡張機能がインストールされていない場合、スクリプトで再インストールが試みられます。 VM 拡張機能がインストールされている場合、スクリプトでは Log Analytics と Dependency Agent の VM 拡張機能がインストールされます。
+複数の VM または仮想マシン スケール セットに対して Azure Monitor for VMs を有効にするには、PowerShell スクリプト [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) を使用します。 これは Azure PowerShell ギャラリーから入手できます。 このスクリプトでは以下について反復処理が実行されます。
+
+- サブスクリプションに設定されているすべての仮想マシンと仮想マシン スケール セット。
+- *ResourceGroup* で指定されたスコープ付きリソース グループ。 
+- *Name* で指定された 1 つの VM または仮想マシン スケール セット。
+
+このスクリプトでは、各 VM または仮想マシン スケール セットに対して、VM 拡張機能が既にインストールされているかどうかが確認されます。 VM 拡張機能がインストールされていない場合、スクリプトで再インストールが試みられます。 VM 拡張機能がインストールされている場合、スクリプトでは Log Analytics と Dependency Agent の VM 拡張機能がインストールされます。
 
 このスクリプトには、Azure PowerShell モジュール Az バージョン 1.0.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
@@ -218,23 +224,23 @@ SYNTAX
 
 
 DESCRIPTION
-    This script installs or re-configures following on VMs and VM Scale Sets:
-    - Log Analytics VM Extension configured to supplied Log Analytics Workspace
-    - Dependency Agent VM Extension
+    This script installs or reconfigures the following on VMs and virtual machine scale sets:
+    - Log Analytics VM extension configured to supplied Log Analytics workspace
+    - Dependency agent VM extension
 
     Can be applied to:
     - Subscription
-    - Resource Group in a Subscription
-    - Specific VM/VM Scale Set
-    - Compliance results of a policy for a VM or VM Extension
+    - Resource group in a subscription
+    - Specific VM or virtual machine scale set
+    - Compliance results of a policy for a VM or VM extension
 
-    Script will show you list of VMs/VM Scale Sets that will apply to and let you confirm to continue.
+    Script will show you a list of VMs or virtual machine scale sets that will apply to and let you confirm to continue.
     Use -Approve switch to run without prompting, if all required parameters are provided.
 
-    If the extensions are already installed will not install again.
-    Use -ReInstall switch if you need to for example update the workspace.
+    If the extensions are already installed, they will not install again.
+    Use -ReInstall switch if you need to, for example, update the workspace.
 
-    Use -WhatIf if you would like to see what would happen in terms of installs, what workspace configured to, and status of the extension.
+    Use -WhatIf if you want to see what would happen in terms of installs, what workspace configured to, and status of the extension.
 
 
 PARAMETERS
@@ -289,19 +295,19 @@ PARAMETERS
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup>
 
-    Install for all VMs in a Resource Group in a subscription
+    Install for all VMs in a resource group in a subscription
 
     -------------------------- EXAMPLE 2 --------------------------
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup> -ReInstall
 
-    Specify to reinstall extensions even if already installed, for example to update to a different workspace
+    Specify to reinstall extensions even if already installed, for example, to update to a different workspace
 
     -------------------------- EXAMPLE 3 --------------------------
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -PolicyAssignmentName a4f79f8ce891455198c08736 -ReInstall
 
-    Specify to use a PolicyAssignmentName for source, and to reinstall (move to a new workspace)
+    Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
 次の例では、フォルダー内で PowerShell コマンドを使用して Azure Monitor for VMs を有効化して、想定される出力を解釈する方法を示しています。
@@ -312,16 +318,16 @@ $WorkspaceKey = "<Key>"
 $SubscriptionId = "<GUID>"
 .\Install-VMInsights.ps1 -WorkspaceId $WorkspaceId -WorkspaceKey $WorkspaceKey -SubscriptionId $SubscriptionId -WorkspaceRegion eastus
 
-Getting list of VMs or VM ScaleSets matching criteria specified
+Getting list of VMs or virtual machine scale sets matching criteria specified
 
-VMs or VM ScaleSets matching criteria:
+VMs or virtual machine scale sets matching criteria:
 
 db-ws-1 VM running
 db-ws2012 VM running
 
-This operation will install the Log Analytics and Dependency agent extensions on above 2 VMs or VM Scale Sets.
+This operation will install the Log Analytics and Dependency agent extensions on the previous two VMs or virtual machine scale sets.
 VMs in a non-running state will be skipped.
-Extension will not be reinstalled if already installed. Use -ReInstall if desired, for example to update workspace
+Extension will not be reinstalled if already installed. Use -ReInstall if desired, for example, to update workspace.
 
 Confirm
 Continue?
@@ -338,7 +344,7 @@ db-ws2012 : Successfully deployed MicrosoftMonitoringAgent
 
 Summary:
 
-Already Onboarded: (0)
+Already onboarded: (0)
 
 Succeeded: (4)
 db-ws-1 : Successfully deployed DependencyAgentWindows
@@ -355,4 +361,9 @@ Failed: (0)
 
 ## <a name="next-steps"></a>次の手順
 
-これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。 正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 VM のパフォーマンスのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。または、検出されたアプリケーションの依存関係を表示するには、[VM 用 Azure Monitor のマップの表示](vminsights-maps.md)に関するページを参照してください。
+これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。
+ 
+- 正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 
+- 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 
+- VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事を参照してください。 
+- 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。

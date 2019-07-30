@@ -3,17 +3,17 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: functions
 author: ggailey777
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9c519fc2db020b8df22275c6b276c6ec23d10b1c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180938"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608254"
 ---
 Functions を使用すると、[Azure portal] から関数アプリに Application Insights 統合を簡単に追加できます。
 

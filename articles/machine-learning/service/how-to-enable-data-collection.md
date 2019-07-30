@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/03/2018
+ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: df2f0731aff6c90ef83b26041a9d383ce14974c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024246"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227946"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
 この記事では、Azure Kubernetes Cluster (AKS) にデプロイした Azure Machine Learning サービスの入力モデル データを収集し、Azure Blob ストレージに格納する方法について説明します。 
 
 この方法を習得すると、収集したデータで次のことができるようになります。
-* 実稼働データがモデルに追加されたときのデータの変動を監視する
+* 実稼働データがモデルに追加されたときの[データの変動を監視する](how-to-monitor-data-drift.md)
 
 * モデルの再トレーニングや最適化の時期をより適切に判断する
 

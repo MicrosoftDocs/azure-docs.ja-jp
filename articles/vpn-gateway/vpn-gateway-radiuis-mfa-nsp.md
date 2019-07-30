@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60458128"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666211"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーを統合する 
 
@@ -52,7 +52,7 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>手順 2. Azure MFA 用の NPS を構成する
 
 1. NPS サーバーで、[Azure MFA 用の NPS 拡張機能をインストール](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)します。
-2. NPS コンソールを開き、 **[RADIUS Clients]\(RADIUS クライアント\)** を右クリックして、 **[新規]** を選択します。 次の設定を指定して、RADIUS クライアントを作成します。
+2. NPS コンソールを開き、 **[RADIUS クライアント]** を右クリックし、 **[新規]** を選択します。 次の設定を指定して、RADIUS クライアントを作成します。
 
     - **[フレンドリ名]** : 任意の名前を入力します。
     - **[アドレス (IP または DNS)]** : 手順 1 で作成したゲートウェイ サブネットを入力します。

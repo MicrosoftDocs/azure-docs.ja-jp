@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: anroth
-ms.openlocfilehash: 9b6d01908265791a83ee311375fa50fcca995f79
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 28ea62ffa7a2b163b984c089649c1cd99d5e4556
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472737"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827552"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>クイック スタート:Custom Vision .NET SDK を使って画像分類プロジェクトを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "58472737"
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
 
-Custom Vision を使用する .NET アプリを作成するには、Custom Vision NuGet パッケージが必要となります。 これらは、これからダウンロードするサンプル プロジェクトに含まれていますが、次のページから個別にアクセスすることもできます。
+Custom Vision を使用する .NET アプリを作成するには、Custom Vision NuGet パッケージが必要となります。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
@@ -44,7 +44,7 @@ _Program.cs_ ファイルを開いて、コードを詳しく調べます。 **M
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=21-30)]
 
-Endpoint パラメーターは、Custom Vision リソースを含む Azure リソース グループが作成されたリージョンを指す必要があります。 この例では、米国中南部リージョンであると想定して、これを使用しています。
+Endpoint パラメーターは、Custom Vision リソースを含む Azure リソース グループが作成されたリージョンを指す必要があります。 この例では、米国中南部リージョンであると想定して、以下を使用しています。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=14-14)]
 
@@ -71,6 +71,7 @@ Endpoint パラメーターは、Custom Vision リソースを含む Azure リ�
 このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 ```csharp
+var iteration = trainingApi.TrainProject(project.Id);
 // The returned iteration will be in progress, and can be queried periodically to see when it has completed
 while (iteration.Status == "Training")
 {
@@ -120,7 +121,7 @@ foreach (var c in result.Predictions)
 
 アプリケーションを実行すると、コンソール ウィンドウが開いて、次の出力が書き込まれます。
 
-```
+```console
 Creating new project:
         Uploading images
         Training

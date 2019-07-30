@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83fb999b0cf66cfd8d96e82d23ed43626352a8aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d78a64ee41e37fe53eba20eab6753c0b6eb8389
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544132"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277912"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET でのユニバーサル Windows プラットフォームに固有の考慮事項
-Xamarin iOS には、MSAL.NET を使用する場合に考慮する必要がある考慮事項がいくつかあります。
+UWP には、MSAL.NET を使用する場合に考慮する必要がある考慮事項がいくつかあります。
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork プロパティ
-WinRT のプラットフォームにおける `PublicClientApplication` には、ブール型プロパティ ``UseCorporateNetwork`` があります。 このプロパティにより、ユーザーがフェデレーション Azure AD テナントのアカウントでサインインした場合、Win8.1 および UWP のアプリケーションで、統合 Windows 認証 (したがって、オペレーティング システムにサインインしたユーザーによる SSO) のメリットが得られます。 これには、WAB (Web 認証ブローカー) を利用します。 
+WinRT のプラットフォームにおける `PublicClientApplication` には、ブール型プロパティ ``UseCorporateNetwork`` があります。 このプロパティにより、ユーザーがフェデレーション Azure AD テナントのアカウントでサインインした場合、Win8.1 および UWP のアプリケーションで、統合 Windows 認証 (したがって、オペレーティング システムにサインインしたユーザーによる SSO) のメリットが得られます。 このプロパティを設定すると、MSAL.NET は WAB (Web Authentication Broker) を利用します。
 
 > [!IMPORTANT]
 > このプロパティを true に設定するにあたり、アプリケーション開発者がアプリケーションで統合 Windows 認証 (IWA) を有効にしておくことが前提となります。 この場合、
@@ -37,9 +37,32 @@ WinRT のプラットフォームにおける `PublicClientApplication` には�
 >   - プライベート ネットワーク (クライアントとサーバー)
 >   - 共有ユーザー証明書
 
-エンタープライズ認証または共有ユーザー証明書の機能を要求するアプリケーションでは、Windows ストアに受け入れるためにより高いレベルの検証が必要であり、またすべての開発者がより高いレベルの検証を望むわけではないため、IWA は既定では有効になっていません。 
+エンタープライズ認証または共有ユーザー証明書の機能を要求するアプリケーションでは、Windows ストアに受け入れるためにより高いレベルの検証が必要であり、またすべての開発者がより高いレベルの検証を望むわけではないため、IWA は既定では有効になっていません。
 
-UWP プラットフォーム (WAB) 上の基になる実装は、条件付きアクセスが有効となったエンタープライズ シナリオでは正しく動作しません。 この症状は、ユーザーが Windows Hello を使用してサインインしようとして、証明書を選択するように求められますが、PIN の証明書が見つからないか、ユーザーがそれを選択したにもかかわらず PIN の入力を求められないことです。 回避策として別の方法 (ユーザー名/パスワード + 電話認証) を使用できますが、あまり良い結果は得られません。 
+UWP プラットフォーム (WAB) 上の基になる実装は、条件付きアクセスが有効となったエンタープライズ シナリオでは正しく動作しません。 症状は次のとおりです。ユーザーは Windows Hello でのサインインを試み、証明書を選択するように提案されますが:
+
+- PIN に対応した証明書が見つかりません。
+- または、ユーザーは証明書を選択しますが、PIN の指定を求められることはありません。
+
+回避策として別の方法 (ユーザー名/パスワード + 電話認証) を使用できますが、あまり良い結果は得られません。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+ある特定の企業環境で次のサインイン エラーが発生したという報告が、一部のお客様から寄せられています。
+
+```Text
+We can't connect to the service you need right now. Check your network connection or try this again later
+```
+
+一方で、インターネット接続があること、またパブリック ネットワークでは正しく動作することをお客様は把握しています。
+
+回避策は、WAB (基礎となる Windows コンポーネント) がプライベート ネットワークを許可することの確認です。 これを行うには、次のようにレジストリ キーを設定します。
+
+```Text
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
+```
+
+詳細については、[「Web 認証ブローカー」の「Fiddler」](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 詳細は、以下の例に示されています。

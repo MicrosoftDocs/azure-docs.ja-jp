@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 41a55eca321cbe1bfa23a889b8e3ce7c701ce769
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d23190dc8f7980cb8a94ba295f45ae67fc7d4678
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468015"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605083"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Speech SDK でコーデック圧縮オーディオを使用する
 
@@ -23,6 +23,7 @@ Speech SDK の**圧縮オーディオ入力ストリーム** API では、PullSt
 
 > [!IMPORTANT]
 > 圧縮オーディオのストリーミングは、Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9) 用の C++、 C#、および Java でのみサポートされます。
+> Speech SDK バージョン 1.4.0 以降が必要です。
 
 wav/PCM については、メインライン音声のドキュメントを参照してください。  wav/PCM 以外では、次のコーデック圧縮入力形式がサポートされています。
 

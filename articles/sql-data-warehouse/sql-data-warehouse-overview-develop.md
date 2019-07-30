@@ -2,7 +2,7 @@
 title: Azure でのデータ ウェアハウスの開発に関するリソース | Microsoft Docs
 description: SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 613bcb05dab993989a2ae00b71fef95794953ab8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a78d78618a4cd9bf8d2aaebbd0c0da13697549bc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850735"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479474"
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>SQL Data Warehouse の設計上の決定と コーディング技法
 SQL Data Warehouse に関する主要な設計上の決定、推奨事項、およびコーディング技法をより深く理解するために、開発に関する次の記事に目を通してください。
@@ -23,11 +23,11 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 ## <a name="key-design-decisions"></a>主要な設計上の決定
 次の記事には、SQL Data Warehouse を使用して分散データウェア ハウスを開発するための概念と設計に関する決定事項が概説されています。
 
-* [接続][connections]
+* [connections][connections]
 * [コンカレンシー][concurrency]
 * [トランザクション][transactions]
 * [ユーザー定義スキーマ][user-defined schemas]
-* [テーブルの分散][table distribution]
+* [テーブルのディストリビューション][table distribution]
 * [テーブルのインデックス][table indexes]
 * [テーブルのパーティション][table partitions]
 * [CTAS][CTAS]

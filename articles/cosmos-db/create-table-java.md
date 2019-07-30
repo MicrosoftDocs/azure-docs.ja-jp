@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 22d5aea119d71553afc02ee923fab5cf5ead5ce0
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 3610a5be356f306e4f92ea35d399a888f568d6d3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519046"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326196"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>クイック スタート: Java と Azure Cosmos DB で Table API アプリを構築する
 
@@ -94,7 +94,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 5. 1 行目をコメント アウトし、2 行目をコメント解除します。 最初の 2 行は次のようになります。
 
-    ```
+    ```xml
     #StorageConnectionString = UseDevelopmentStorage=true
     StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
     ```

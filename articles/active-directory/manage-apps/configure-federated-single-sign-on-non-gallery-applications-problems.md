@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87c70990f003a39def551171b8637615129379b4
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 99c5e4d99f45e2a642a46f7dc070fb7512ff4d73
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190300"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422543"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 

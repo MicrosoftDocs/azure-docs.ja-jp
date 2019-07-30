@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: bce9f3b3a574d27e2fb47fb9b2da9470c43fd2eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78a531c769612af0597e732f0dc539286dd7cdac
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399420"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489886"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -115,7 +115,7 @@ RDM | NA | NA
 ディスク: 4K 論理および 512 バイトの物理セクター | はい |  はい
 論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | はい | はい
 ストライピングされたディスクのボリューム > 1 TB | はい | はい
-記憶域スペース | はい | はい
+記憶域 | いいえ | いいえ
 ディスクのホット アド/削除 | いいえ | いいえ
 ディスクの除外 | はい | はい
 マルチパス (MPIO) | はい | はい

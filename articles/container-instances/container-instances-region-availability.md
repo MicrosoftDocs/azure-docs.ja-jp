@@ -3,16 +3,17 @@ title: Azure Container Instances リソースの可用性
 description: さまざまな Azure リージョンにある Azure Container Instances サービス用のコンピューティング リソースとメモリ リソースの可用性。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 05/14/2019
 ms.author: danlep
-ms.openlocfilehash: 64b60178413e470cc7fe9b3991c6fc29b5a0f860
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 14e7b9a3ea11e59aabeb901c4039e69208ea0cfd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794289"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325720"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -35,9 +36,9 @@ ms.locfileid: "65794289"
 | 西ヨーロッパ、米国西部 2 | Linux | 4 | 14 |
 | オーストラリア東部、東日本 | Linux | 2 | 8 |
 | 米国中北部、インド南部 | Linux | 2 | 3.5 |
-| 西ヨーロッパ |  Windows | 4 | 16 |
-| 米国東部、米国西部 |  Windows | 4 | 14 |
-| オーストラリア東部、カナダ中部、インド中部、米国中部、東アジア、米国東部 2、東日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、米国西部 2 |  Windows | 2 | 3.5 |
+| 西ヨーロッパ | Windows | 4 | 16 |
+| 米国東部、米国西部 | Windows | 4 | 14 |
+| オーストラリア東部、カナダ中部、インド中部、米国中部、東アジア、米国東部 2、東日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、米国西部 2 | Windows | 2 | 3.5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC、1809 デプロイ (プレビュー)
 
@@ -45,8 +46,8 @@ ms.locfileid: "65794289"
 
 | Location | OS | CPU | メモリ (GB) |
 | -------- | -- | :---: | :-----------: |
-| 東南アジア、北ヨーロッパ、西ヨーロッパ、米国中部、米国東部、米国西部、米国西部 2 |  Windows | 4 | 16 |
-| 米国東部 2 |  Windows | 2 | 3.5 |
+| 東南アジア、北ヨーロッパ、西ヨーロッパ、米国中部、米国東部、米国西部、米国西部 2 | Windows | 4 | 16 |
+| 米国東部 2 | Windows | 2 | 3.5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>可用性 - 仮想ネットワークのデプロイ (プレビュー)

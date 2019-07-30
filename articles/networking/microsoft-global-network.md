@@ -5,19 +5,20 @@ services: networking
 documentationcenter: ''
 author: KumudD
 manager: ''
-ms.service: networking
+ms.service: virtual-network
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2019
-ms.author: ypitsch,kumud
-ms.openlocfilehash: 99650577b17874e61d1cede979d7ef2f4bfd491b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/13/2019
+ms.author: kumud
+ms.reviewer: ypitsch
+ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245484"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876148"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク
 
@@ -33,8 +34,10 @@ ms.locfileid: "66245484"
  
 Microsoft クラウドを使用していれば、[考えられる最高のエクスペリエンス](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)を選ぶことは簡単です。 戦略的に配置されたエッジ ノードを経由して、お客様のトラフィックがこのグローバル ネットワークに入った瞬間から、データは最適なルートを通ってほぼ光速で移動します。 これにより、最高のパフォーマンスを得るための最適な待機時間が保証されます。 これらのエッジ ノードはすべて、145 以上の場所に存在する膨大な数の接続を通じて、ユニーク数 3,500 を超えるインターネット パートナー (ピア) と相互接続され、マイクロソフトの相互接続戦略の基礎を提供しています。 
  
-ロンドンから東京への接続であれ、ワシントン DC からロサンゼルスへの接続であれ、ネットワーク パフォーマンスは定量化され、待機時間、ジッター、パケット損失、スループットなどの影響を受けます。  マイクロソフトでは、トランジット リンクとは対照的に、直接相互接続を優先的に使用します。これによって応答トラフィックの対称性が保たれ、ホップ、ピアリング パーティ、およびパスをできるだけ短くシンプルに保ちやすくなります。 この優れたアプローチはしばしば、[コールド ポテト ルーティング](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing)と呼ばれ、ハンドオフされるまでにお客様のネットワーク トラフィックができるだけ長く Microsoft ネットワーク内にとどまることを保証します。  
- 
+ロンドンから東京への接続であれ、ワシントン DC からロサンゼルスへの接続であれ、ネットワーク パフォーマンスは定量化され、待機時間、ジッター、パケット損失、スループットなどの影響を受けます。  マイクロソフトでは、トランジット リンクとは対照的に、直接相互接続を優先的に使用します。これによって応答トラフィックの対称性が保たれ、ホップ、ピアリング パーティ、およびパスをできるだけ短くシンプルに保ちやすくなります。 
+
+たとえば、ロンドンのユーザーが東京のサービスにアクセスしようとすると、インターネット トラフィックはロンドンのエッジのいずれかに送信され、フランスを経由して Microsoft WAN に送信され、ヨーロッパとインドの間のインド洋横断経路を通過し、サービスがホストされている日本に到達します。 応答トラフィックは、対称になります。 これは [cold-potato routing (コールド ポテト ルーティング)](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) とも呼ばれ、トラフィックは、渡されるまで可能な限りマイクロソフトのネットワークに留まります。  
+  
 ところで、それは、Microsoft サービスを使用するときの一切かつすべてのトラフィックを意味するのでしょうか。 はい。最適なパフォーマンスと整合性を保証するために、Microsoft Azure 内のデータセンター間、または Virtual Machines、Office 365、Xbox、SQL DB、Storage、仮想ネットワークなどの Microsoft サービス間のあらゆるトラフィックはこのグローバル トラフィック内でルーティングされ、決してパブリック インターネットを経由しません。  
  
 マイクロソフトのクラウドおよびオンライン サービスの劇的な成長を促進しつつ、一貫した高水準のサービス レベルを維持するためには、メトロ、地上、海底の各経路でファイバーの容量と多様性への莫大な投資が不可欠です。 このグローバル ネットワークに最近加わったものには、ビルバオ (スペイン) とバージニアビーチ (米バージニア州) を結ぶ業界初の海中経由 Open Line System (OLS) である [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) 海底ケーブルがあります。このほか、米ニューヨークとダブリン (アイルランド) を結ぶ [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) や、東京 (日本) とポートランド (米オレゴン州) を結ぶ [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) があります。 

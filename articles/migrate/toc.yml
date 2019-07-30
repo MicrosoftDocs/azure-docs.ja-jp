@@ -3,45 +3,101 @@
 - name: 概要
   items:
     - name: Azure Migrate について
-      href: migrate-overview.md
+      href: migrate-services-overview.md
+    - name: 新機能
+      href: whats-new.md
 - name: チュートリアル
   items:
-    - name: VMware VM の検出と評価
-      href: tutorial-assessment-vmware.md
+    - name: VMware VM の評価と移行
+      items:
+        - name: VMware VM の評価と移行の準備をする
+          href: tutorial-prepare-vmware.md
+        - name: 移行のために VMware VM を評価する
+          href: tutorial-assess-vmware.md
+        - name: VMware VM を移行する
+          items:
+            - name: VMware VM の移行オプションについて
+              href: server-migrate-overview.md
+            - name: エージェントレス移行で VMware VM を移行する
+              href: tutorial-migrate-vmware.md
+            - name: エージェントベース移行で VMware VM を移行する
+              href: tutorial-migrate-vmware-agent.md
+    - name: Hyper-V VM の評価と移行
+      items:
+        - name: Hyper-V の評価と移行の準備をする
+          href: tutorial-prepare-hyper-v.md
+        - name: 移行のために Hyper-V VM を評価する
+          href: tutorial-assess-hyper-v.md
+        - name: Hyper-V VM を移行する
+          href: tutorial-migrate-hyper-v.md
+    - name: 物理サーバーと VM の移行
+      href: tutorial-migrate-physical-virtual-machines.md
 - name: 概念
   items:
-    - name: コレクターについて
-      href: concepts-collector.md
-    - name: コレクター バージョンのアップグレード
-      href: concepts-collector-upgrade.md
-    - name: 評価の計算
+    - name: 一般的な質問
+      href: resources-faq.md
+    - name: サポート マトリックス
+      items:
+        - name: Azure Migrate のサポート マトリックス
+          href: migrate-support-matrix.md
+        - name: VMware の評価と移行のサポート マトリックス
+          href: migrate-support-matrix-vmware.md
+        - name: Hyper-V の評価と移行のサポート マトリックス
+          href: migrate-support-matrix-hyper-v.md
+    - name: Hyper-V 移行アーキテクチャ
+      href: hyper-v-migration-architecture.md
+    - name: エージェントベースの移行アーキテクチャ
+      href: agent-based-migration-architecture.md
+    - name: Azure Migrate アプライアンス
+      href: migrate-appliance.md
+    - name: Azure Migrate レプリケーション アプライアンス
+      href: migrate-replication-appliance.md
+    - name: 評価のベスト プラクティス
+      href: best-practices-assessment.md
+    - name: 評価の概要
       href: concepts-assessment-calculation.md
-    - name: 依存関係の視覚化について
+    - name: 依存関係の視覚化
       href: concepts-dependency-visualization.md
 - name: ハウツー ガイド
   items:
-    - name: '移行の例: Contoso シリーズ'
-      href: contoso-migration-overview.md
-    - name: 大規模な環境の検出と評価
-      href: how-to-scale-assessment.md
-    - name: マシンのグループ化
+    - name: 以前のバージョンの使用
+      href: migrate-v1.md
+    - name: VMware アプライアンスのデプロイ
+      href: how-to-set-up-appliance-vmware.md
+    - name: Hyper-V アプライアンスのデプロイ
+      href: how-to-set-up-appliance-hyper-v.md
+    - name: ツールの初回追加
+      href: how-to-add-tool-first-time.md
+    - name: 評価ツールの追加
+      href: how-to-assess.md
+    - name: アセスメントためのマシンのグループ化
       href: how-to-create-a-group.md
-    - name: マシンの依存関係を使用したマシンのグループ化
+    - name: 依存関係の視覚化を使用したマシンのグループ化
       href: how-to-create-group-machine-dependencies.md
-    - name: グループの依存関係を使用したグループの絞り込み
-      href: how-to-create-group-dependencies.md
+    - name: 評価を作成する
+      href: how-to-create-assessment.md
     - name: 評価のカスタマイズ
       href: how-to-modify-assessment.md
-    - name: 評価後のマシンの移行
-      href: how-to-get-migration-tool.md
-    - name: 多数の VM の移行の自動化
-      href: how-to-migrate-at-scale.md
+    - name: 移行ツールの追加
+      href: how-to-migrate.md
+    - name: 評価の移行のスケール
+      items:
+        - name: 大量の VMware VM を評価する
+          href: scale-vmware-assessment.md
+        - name: 大量の Hyper-V VM を評価する
+          href: scale-hyper-v-assessment.md
+        - name: 多数の VM の移行の自動化
+          href: how-to-migrate-at-scale.md
+    - name: '移行の例: Contoso シリーズ'
+      href: contoso-migration-overview.md
+- name: トラブルシューティング
+  items:
     - name: Azure Migrate のトラブルシューティング
       href: troubleshooting-general.md
 - name: リソース
   items:
-    - name: FAQ
-      href: resources-faq.md
+    - name: クラウド導入フレームワークにおける移行
+      href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/migrate/'
     - name: Resource Manager テンプレート

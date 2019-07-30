@@ -2,22 +2,22 @@
 title: チュートリアル:Azure Digital Twins を使用して空間を監視する | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins を使用して空間リソースをプロビジョニングし、作業条件を監視する方法を学習します。
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/27/2018
-ms.author: dkshir
-ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 06/26/2019
+ms.author: alinast
+ms.openlocfilehash: 3ebfa9b54007d0b409780e6a549bdd2411b94810
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535384"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484664"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>チュートリアル:Azure Digital Twins を使用して建物をプロビジョニングし、作業環境を監視する
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>チュートリアル:Azure Digital Twins プレビューを使用して建物をプロビジョニングし、作業環境を監視する
 
-このチュートリアルでは、Azure Digital Twins を使用して、望ましい温度条件と快適度を基準に空間を監視する方法について説明します。 [サンプルの建物を構成](tutorial-facilities-setup.md)した後、このチュートリアルの手順を使用して建物をプロビジョニングし、センサー データに対してカスタム関数を実行できます。
+このチュートリアルでは、Azure Digital Twins プレビューを使用して、望ましい温度条件と快適度を基準に空間を監視する方法について説明します。 [サンプルの建物を構成](tutorial-facilities-setup.md)した後、このチュートリアルの手順を使用して建物をプロビジョニングし、センサー データに対してカスタム関数を実行できます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -43,14 +43,14 @@ ms.locfileid: "57535384"
 
 Visual Studio Code で、**occupancy-quickstart** サンプル プロジェクトの **src\actions\provisionSample.yaml** ファイルを開きます。 型 **matchers** で始まるセクションに注目してください。 この型の各エントリによって、指定された**名前**のマッチャーが作成されます。 このマッチャーによって、型 **dataTypeValue** のセンサーが監視されます。 これが *Focus Room A1* という名前の空間とどのように関係しているかに注目してください。ここには、いくつかのセンサーがある **devices** ノードが含まれています。 これらのセンサーの 1 つを追跡するマッチャーをプロビジョニングするには、その **dataTypeValue** がセンサーの **dataType** と一致している必要があります。 
 
-既存のマッチャーの下に次のマッチャーを追加します。 キーの位置が揃っていて、空白がタブで置き換えられていないことを確認してください。
+既存のマッチャーの下に次のマッチャーを追加します。 キーの位置が揃っていて、空白がタブで置き換えられていないことを確認してください。 これらの行は、コメントアウトされた行として *provisionSample.yaml* ファイル内にもあります。 各行の先頭にある `#` 文字を削除するだけでコメント解除することができます。
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-このマッチャーは、[最初のチュートリアル](tutorial-facilities-setup.md)で追加した SAMPLE_SENSOR_TEMPERATURE センサーを追跡します。 これらの行は、コメントアウトされた行として *provisionSample.yaml* ファイル内にもあります。 各行の先頭にある `#` 文字を削除するだけでコメント解除することができます。
+このマッチャーは、[最初のチュートリアル](tutorial-facilities-setup.md)で追加した SAMPLE_SENSOR_TEMPERATURE センサーを追跡します。 
 
 <a id="udf"></a>
 

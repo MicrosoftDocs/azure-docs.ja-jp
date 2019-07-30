@@ -9,17 +9,17 @@ metadata:
   ms.author: mamccrea
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 05/08/2019
+  ms.date: 06/21/2019
 abstract:
-  description: Stream Analytics は、アプリケーションおよび IoT デバイスからのデータ ストリームをリアルタイムで分析できるフル マネージドのサーバーレス イベント処理エンジンです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
+  description: Stream Analytics はフルマネージドの PaaS サービスで、IoT のデバイス、アプリケーション、クリックストリームなどのデータの迅速な移動ストリームをリアルタイムで分析、処理し、必要に応じてアラートやアクションをトリガーするのに役立ちます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
   aside:
     image:
       alt: null
       height: 110
       src: ./media/index/streaming-analytics-thumbnail.png
       width: 250
-    title: 'Azure Stream Analytics を使用したリアルタイム分析と機械学習 (1:15:05)'
-    href: 'https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor'
+    title: 'クラウドからインテリジェント エッジへ - Azure Stream Analytics を使用してリアルタイムでの意思決定を促進する。 (1:02:11)'
+    href: 'https://azure.microsoft.com/resources/videos/build-2019-from-cloud-to-the-intelligent-edge-drive-real-time-decisions-with-azure-stream-analytics/'
     width: 250
 sections:
   - title: 5 分間のクイック スタート
@@ -68,6 +68,6 @@ sections:
           - title: コマンド ライン
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>'
           - title: Languages
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference">Stream Analytics クエリ言語</a></p>'
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference">Stream Analytics クエリ言語</a></p>'
           - title: REST
             html: <p><a href="/rest/api/streamanalytics">REST API リファレンス</a></p>

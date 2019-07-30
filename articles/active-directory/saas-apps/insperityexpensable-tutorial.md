@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b049b6526b0053c79b313d3d51a94a7706d5f93c
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 43b24bec557d1cc879be9568bea451f1a8b0b310
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565735"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625310"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>チュートリアル:Azure Active Directory と Insperity ExpensAble の統合
 
@@ -53,11 +53,11 @@ Azure AD への Insperity ExpensAble の統合を構成するには、ギャラ�
 
 **ギャラリーから Insperity ExpensAble を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Insperity ExpensAble の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Insperity ExpensAble**」と入力し、結果パネルで **[Insperity ExpensAble]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Insperity ExpensAble**」と入力し、結果パネルで **[Insperity ExpensAble]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Insperity ExpensAble](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Insperity ExpensAble で Azure AD のシングル サインオンを構成し、
 
 Insperity ExpensAble で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Insperity ExpensAble** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Insperity ExpensAble** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -108,9 +108,9 @@ Insperity ExpensAble で Azure AD シングル サインオンを構成するに
     **[サインオン URL]** ボックスに、`https://server.expensable.com/esapp/Authenticate?companyId=<company ID>` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Insperity ExpensAble サポート チーム](http://expensable.com/support/support-overview)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Insperity ExpensAble サポート チーム](https://www.insperity.com/products/expense-management/support/express/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -126,13 +126,13 @@ Insperity ExpensAble で Azure AD シングル サインオンを構成するに
 
 ### <a name="configure-insperity-expensable-single-sign-on"></a>Insperity ExpensAble のシングル サインオンの構成
 
-**Insperity ExpensAble** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Insperity ExpensAble サポート チーム](http://expensable.com/support/support-overview)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Insperity ExpensAble** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Insperity ExpensAble サポート チーム](https://www.insperity.com/products/expense-management/support/express/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -157,7 +157,7 @@ Insperity ExpensAble で Azure AD シングル サインオンを構成するに
 
 このセクションでは、Britta Simon に Insperity ExpensAble へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Insperity ExpensAble]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Insperity ExpensAble]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -169,19 +169,19 @@ Insperity ExpensAble で Azure AD シングル サインオンを構成するに
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-insperity-expensable-test-user"></a>Insperity ExpensAble のテスト ユーザーの作成
 
-このセクションでは、Insperity ExpensAble で Britta Simon というユーザーを作成します。  [Insperity ExpensAble サポート チーム](http://expensable.com/support/support-overview)と協力して、Insperity ExpensAble プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Insperity ExpensAble で Britta Simon というユーザーを作成します。  [Insperity ExpensAble サポート チーム](https://www.insperity.com/products/expense-management/support/express/)と協力して、Insperity ExpensAble プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

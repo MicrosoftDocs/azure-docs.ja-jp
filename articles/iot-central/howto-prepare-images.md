@@ -3,17 +3,17 @@ title: イメージを Azure IoT Central アプリケーションにアップロ
 description: 開発者として、イメージを準備して Azure IoT Central アプリケーションにアップロードする方法を学習します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/05/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a20662c2fc9b416fefce89a6ebe706307ee71bb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 255033f03acd40580fb4d4a92b0aa9b3e16969f3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236467"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850157"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>イメージを準備して Azure IoT Central アプリケーションにアップロードする
 

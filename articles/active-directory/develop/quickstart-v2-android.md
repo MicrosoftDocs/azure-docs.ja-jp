@@ -3,7 +3,7 @@ title: Microsoft ID プラットフォーム Android のクイック スター�
 description: Android アプリケーションで、Microsoft ID プラットフォーム エンドポイントによるアクセス トークンを必要とする API を呼び出す方法を説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: rwike77
 manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/26/2019
-ms.author: dadobali
+ms.date: 07/17/2019
+ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45252cc4d45e96c2bde4a4600630ea578a8d3009
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 1c22d93d39f086aaa6e2f103d3becbe9376b49b0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946721"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324546"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -104,8 +104,10 @@ ms.locfileid: "64946721"
 >          }
 >       ]
 >    }
-> 1. Inside **app** > **manifests**, open  **AndroidManifest.xml**.
-> 1. Paste the following activity to the **manifest\application** node: 
+>    ```
+> 
+> 1. **[app]**  >  **[manifests]** で、**AndroidManifest.xml** を開きます。
+> 1. **manifest\application** ノードに次のアクティビティを貼り付けます。 
 >    ```xml
 >    <!--Intent filter to catch Microsoft's callback after Sign In-->
 >    <activity
@@ -120,7 +122,11 @@ ms.locfileid: "64946721"
 >        </intent-filter>
 >    </activity>
 >    ```
-> > 1. アプリを実行します。 
+> 1. アプリを実行します。 
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
 
 > [!div renderon="docs"]
 > 1. プロジェクトを解凍し、Android Studio で開きます。
@@ -247,3 +253,8 @@ Android 用 MSAL ライブラリの詳細をご覧ください。
 > [Android 用 MSAL ライブラリ Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
+
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

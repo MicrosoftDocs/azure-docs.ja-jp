@@ -4,17 +4,17 @@ description: この記事では、Azure Automation での GitHub とのソース
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ae61af2ad857068950e2b2cdb6f058a33f57186
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574112"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477568"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 

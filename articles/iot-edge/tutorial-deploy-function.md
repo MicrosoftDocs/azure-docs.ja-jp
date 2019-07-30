@@ -4,23 +4,24 @@ description: このチュートリアルでは、Azure 関数を IoT Edge モジ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5b7d903c8be74e4c0561bb4a857619c9c62f95a9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2c2a2659b6b9c77b36001af1602c904e7d200b56
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239650"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433043"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル: Azure 関数を IoT Edge モジュールとして展開する
 
-Azure Functions を使用して、ビジネス ロジックを実装するコードを Azure IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データをフィルター処理する Azure 関数の作成と展開について段階的に説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。     
+Azure Functions を使用して、ビジネス ロジックを実装するコードを Azure IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データをフィルター処理する Azure 関数の作成と展開について段階的に説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * Visual Studio Code を使用して、Azure 関数を作成する。
 > * VS Code と Docker を使用して Docker イメージを作成し、コンテナー レジストリに発行する。
 > * コンテナー レジストリから IoT Edge デバイスにモジュールを配置する。
@@ -136,14 +137,14 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
                    if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
                    {
-                       // Send the message to the output as the temperature value is greater than the threashold.
+                       // Send the message to the output as the temperature value is greater than the threshold.
                        var filteredMessage = new Message(messageBytes);
                        // Copy the properties of the original message into the new Message object.
                        foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
                        {filteredMessage.Properties.Add(prop.Key, prop.Value);}
                        // Add a new property to the message to indicate it is an alert.
                        filteredMessage.Properties.Add("MessageType", "Alert");
-                       // Send the message.       
+                       // Send the message.
                        await output.AddAsync(filteredMessage);
                        logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
                    }
@@ -160,12 +161,12 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
        class Machine
        {
            public double temperature {get; set;}
-           public double pressure {get; set;}         
+           public double pressure {get; set;}
        }
        class Ambient
        {
            public double temperature {get; set;}
-           public int humidity {get; set;}         
+           public int humidity {get; set;}
        }
    }
    ```
@@ -176,17 +177,17 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 前のセクションでは、IoT Edge ソリューションを作成し、**CSharpFunction** にコードを追加しました。これにより、報告されるマシンの温度が許容可能なしきい値を下回っている場合のメッセージがフィルターで除外されます。 次は、ソリューションをコンテナー イメージとしてビルドして、それをコンテナー レジストリにプッシュする必要があります。
 
-このセクションでは、コンテナー レジストリの資格情報を 2 回指定します。 1 回目では、開発用マシンからローカルにサインインして、Visual Studio Code がイメージをレジストリにプッシュできるようにします。 2 回目は IoT Edge ソリューションの **.env** ファイル内で行います。これにより、レジストリからイメージを取得するアクセス許可が IoT Edge デバイスに与えられます。 
+このセクションでは、Visual Studio Code からレジストリにイメージをプッシュできるように、お使いの開発用マシンからローカルでサインインして、2 回目にはコンテナー レジストリの資格情報を指定します (最初は IoT Edge ソリューションの **.env**  ファイル内にありました)
 
 1. **[表示]**  >  **[ターミナル]** を選択して、VS Code 統合ターミナルを開きます。 
 
 2. 統合ターミナルで次のコマンドを入力して、コンテナー レジストリにサインインします。 前に Azure Container Registry からコピーしたユーザー名とログイン サーバーを使用します。
-     
+
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
 
-    パスワードの入力を求めるメッセージが表示されたら、コンテナー レジストリのパスワードを貼り付けて **Enter** キーを押します。
+    パスワードの入力を求めるメッセージが表示されたら、コンテナー レジストリのパスワード (ターミナル ウィンドウには表示されません) を貼り付けて **Enter** キーを押します。
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>

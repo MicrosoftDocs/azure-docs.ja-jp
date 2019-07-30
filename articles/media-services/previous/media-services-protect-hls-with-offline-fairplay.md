@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: willzhan, dwgeo
-ms.openlocfilehash: bc939011f87f03ef1de7e728fc52fc0c9887dd31
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: willzhan
+ms.reviewer: dwgeo
+ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935400"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871635"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください。"]
 > * [Version 3](../latest/offline-fairplay-for-ios.md)
 > * [Version 2](media-services-protect-hls-with-offline-fairplay.md)
 
@@ -42,8 +43,8 @@ Azure Media Services では、次のものを対象にして、適切に設計�
 さまざまなストリーミング プロトコルでのオンライン ストリーミングのコンテンツの保護だけでなく、保護されたコンテンツのオフライン モードも、よく要求される機能です。 オフライン モードのサポートは、次のシナリオで必要です。
 
 * 旅行中など、インターネット接続を利用できないときに再生します。
-* コンテンツ プロバイダーによっては、国/地域の境界を越えた DRM ライセンス配信を許可しない場合があります。 ユーザーが国/地域の外で旅行中にコンテンツを視聴する場合、オフライン ダウンロードが必要です。
-* 一部の国/地域では、インターネットの可用性や帯域幅にまだ制限があります。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題はネットワークの可用性ではなく、ネットワーク帯域幅の制限です。 Over-the-Top (OTT)/オンライン ビデオ プラットフォーム (OVP) プロバイダーは、オフライン モードのサポートを要求します。
+* コンテンツ プロバイダーによっては、国/地域の境を越えた DRM ライセンス配信を許可しないことがあります。 国/地域の外部を旅行中にコンテンツを視聴したい場合は、オフライン ダウンロードが必要です。
+* 一部の国/地域では、インターネットの使用や帯域幅がまだ制限されています。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題はネットワークの可用性ではなく、ネットワーク帯域幅の制限です。 Over-the-Top (OTT)/オンライン ビデオ プラットフォーム (OVP) プロバイダーは、オフライン モードのサポートを要求します。
 
 この記事では、iOS 10 以降を搭載するデバイスを対象とする FairPlay Streaming (FPS) のオフライン モードのサポートについて説明します。 この機能は、watchOS、tvOS、Safari on macOS など、他の Apple プラットフォームではサポートされていません。
 

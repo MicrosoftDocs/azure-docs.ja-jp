@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c64fb2dc4c494252f0078b8d23e05b15f07ebe00
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8ad2ffddf96aa6ecc886ac5653d2d0b8dcfb0856
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903722"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>チュートリアル:Azure Active Directory と SAP Business Object Cloud の統合
 
@@ -53,11 +53,11 @@ Azure AD への SAP Business Object Cloud の統合を構成するには、ギ�
 
 **ギャラリーから SAP Business Object Cloud を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への SAP Business Object Cloud の統合を構成するには、ギ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SAP Business Object Cloud**」と入力し、結果パネルで **[SAP Business Object Cloud]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SAP Business Object Cloud**」と入力し、結果パネルで **[SAP Business Object Cloud]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの SAP Business Object Cloud](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ SAP Business Object Cloud で Azure AD のシングル サインオンを構成�
 
 SAP Business Object Cloud で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **SAP Business Object Cloud** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **SAP Business Object Cloud** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -122,7 +122,7 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成す�
     > [!NOTE] 
     > これらの URL の値は、単なる例です。 実際のサインオン URL と識別子 URLでこれらの値を更新してください。 サインオン URL を取得するには、[SAP Business Object Cloud クライアント サポート チーム](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)に問い合わせてください。 識別子 URL は、管理コンソールから SAP Business Object Cloud のメタデータをダウンロードすることで取得できます。 これについては、このチュートリアルの後半で説明します。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -130,7 +130,7 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成す�
 
 1. Web ブラウザーの別のウィンドウで、SAP Business Object Cloud 企業サイトに管理者としてサインインします。
 
-2. **[Menu]\(メニュー\)** > **[System]\(システム\)** > **[Administration]\(管理\)** を選択します。
+2. **[Menu]\(メニュー\)**  >  **[System]\(システム\)**  >  **[Administration]\(管理\)** を選択します。
     
     ![[Menu]\(メニュー\)、[System]\(システム\)、および [Administration]\(管理\) の選択](./media/sapboc-tutorial/config1.png)
 
@@ -142,19 +142,19 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成す�
 
     ![認証方法として [SAML Single Sign-On (SSO)]\(SAML シングル サインオン (SSO)\) を選択](./media/sapboc-tutorial/config3.png)  
 
-5. サービス プロバイダーのメタデータをダウンロードする (手順 1) には、**[Download]\(ダウンロード\)** を選択します。 メタデータ ファイルで、**entityID** を見つけてその値をコピーします。 Azure portal で、**[基本的な SAML 構成]** ダイアログの **[識別子]** ボックスに値を貼り付けます。
+5. サービス プロバイダーのメタデータをダウンロードする (手順 1) には、 **[Download]\(ダウンロード\)** を選択します。 メタデータ ファイルで、**entityID** を見つけてその値をコピーします。 Azure portal で、 **[基本的な SAML 構成]** ダイアログの **[識別子]** ボックスに値を貼り付けます。
 
     ![EntityID 値をコピーして貼り付ける](./media/sapboc-tutorial/config4.png)  
 
-6. Azure ポータルからダウンロードしたファイル内のサービス プロバイダーのメタデータをアップロードする (手順 2) には、**[Upload Identity Provider metadata]\(ID プロバイダーのメタデータのアップロード\)** で、**[アップロード]** を選択します。  
+6. Azure ポータルからダウンロードしたファイル内のサービス プロバイダーのメタデータをアップロードする (手順 2) には、 **[Upload Identity Provider metadata]\(ID プロバイダーのメタデータのアップロード\)** で、 **[アップロード]** を選択します。  
 
     ![[Upload Identity Provider metadata]\(ID プロバイダーのメタデータのアップロード\) で [アップロード] を選択](./media/sapboc-tutorial/config5.png)
 
-7. **[User Attribute]\(ユーザー属性\)** の一覧で、実装で使用するユーザー属性を選択します (手順 3)。 このユーザー属性が ID プロバイダーにマップされます。 ユーザーのページでカスタム属性を入力するには、**[Custom SAML Mapping]\(カスタム SAML マッピング\)** オプションを使用します。 または、ユーザー属性として **[Email]\(電子メール\)** または **[USER ID]\(ユーザー ID\)** のいずれかを選択できます。 この例では、Azure portal で **[ユーザー属性とクレーム]** セクションの **userprincipalname** 属性にユーザー識別子要求をマップしたため、**[Email]\(電子メール\)** を選択しています。 これにより、一意のユーザーの電子メールが用意され、SAML 応答が成功するたびに SAP Business Object Cloud アプリケーションに送信されます。
+7. **[User Attribute]\(ユーザー属性\)** の一覧で、実装で使用するユーザー属性を選択します (手順 3)。 このユーザー属性が ID プロバイダーにマップされます。 ユーザーのページでカスタム属性を入力するには、 **[Custom SAML Mapping]\(カスタム SAML マッピング\)** オプションを使用します。 または、ユーザー属性として **[Email]\(電子メール\)** または **[USER ID]\(ユーザー ID\)** のいずれかを選択できます。 この例では、Azure portal で **[ユーザー属性とクレーム]** セクションの **userprincipalname** 属性にユーザー識別子要求をマップしたため、 **[Email]\(電子メール\)** を選択しています。 これにより、一意のユーザーの電子メールが用意され、SAML 応答が成功するたびに SAP Business Object Cloud アプリケーションに送信されます。
 
     ![ユーザー属性の選択](./media/sapboc-tutorial/config6.png)
 
-8. アカウントを ID プロバイダーで確認する (ステップ 4) には、**[Login Credential (Email)]\(ログイン資格情報 (電子メール)\)** ボックスに、ユーザーの電子メール アドレスを入力します。 次に、**[Verify Account]\(アカウントの確認\)** を選択します。 システムがサインイン資格情報をユーザー アカウントに追加します。
+8. アカウントを ID プロバイダーで確認する (ステップ 4) には、 **[Login Credential (Email)]\(ログイン資格情報 (電子メール)\)** ボックスに、ユーザーの電子メール アドレスを入力します。 次に、 **[Verify Account]\(アカウントの確認\)** を選択します。 システムがサインイン資格情報をユーザー アカウントに追加します。
 
     ![電子メール アドレスを入力し、[Verify Account]\(アカウントの確認\) を選択](./media/sapboc-tutorial/config7.png)
 
@@ -166,7 +166,7 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成す�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -191,7 +191,7 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成す�
 
 このセクションでは、Britta Simon に SAP Business Object Cloud へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[SAP Business Object Cloud]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[SAP Business Object Cloud]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -203,15 +203,15 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成す�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-sap-business-object-cloud-test-user"></a>SAP Business Object Cloud のテスト ユーザーの作成
 
@@ -221,11 +221,11 @@ Azure AD ユーザーが SAP Business Object Cloud にサインインできる�
 
 1. SAP Business Object Cloud 企業サイトに管理者としてサインインします。
 
-2. **[Menu]\(メニュー\)** > **[Security]\(セキュリティ\)** > **[Users]\(ユーザー\)** を選択します。
+2. **[Menu]\(メニュー\)**  >  **[Security]\(セキュリティ\)**  >  **[Users]\(ユーザー\)** を選択します。
 
     ![従業員の追加](./media/sapboc-tutorial/user1.png)
 
-3. **[Users]\(ユーザー\)** ページで、新しいユーザーの詳細を追加するには、**+** を選択します。 
+3. **[Users]\(ユーザー\)** ページで、新しいユーザーの詳細を追加するには、 **+** を選択します。 
 
     ![[Add Users]\(ユーザーの追加\) ページ](./media/sapboc-tutorial/user4.png)
 
@@ -241,7 +241,7 @@ Azure AD ユーザーが SAP Business Object Cloud にサインインできる�
 
     e. **[E-MAIL]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (この例では **brittasimon\@contoso.com**)。
 
-    f. **[Select Roles]\(ロールの選択\)** ページで、ユーザーの適切なロールを選択し、**[OK]** を選択します。
+    f. **[Select Roles]\(ロールの選択\)** ページで、ユーザーの適切なロールを選択し、 **[OK]** を選択します。
 
       ![Select role](./media/sapboc-tutorial/user3.png)
 

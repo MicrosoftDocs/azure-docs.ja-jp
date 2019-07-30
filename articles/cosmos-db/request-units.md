@@ -4,14 +4,14 @@ description: Azure Cosmos DB で要求ユニットの要件を指定したり、
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: 9615aebd345c957c8e401581ff94735f39ba73c6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a1143f912d894c1219de05b03a2338dc4e5bdc5f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953540"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467650"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 
@@ -75,3 +75,4 @@ Azure Cosmos DB では、多くの API (SQL、MongoDB、Cassandra、Gremlin、Ta
 * [Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する](optimize-cost-throughput.md)方法を確認する。
 * [Azure Cosmos DB の読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)方法を確認する。
 * [Azure Cosmos DB でのクエリ コストを最適化する](optimize-cost-queries.md)方法を確認する。
+* [メトリックを使用してスループットを監視する](use-metrics.md)方法を確認する。

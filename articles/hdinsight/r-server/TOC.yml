@@ -4,16 +4,23 @@
   items:
     - name: HDInsight での ML Services とは
       href: r-server-overview.md
-- name: 作業開始
+- name: クイック スタート
+  expanded: true
   items:
-    - name: ML サービスで開始する
-      href: r-server-get-started.md
+    - name: サンプル ジョブ - RStudio Server
+      href: ./machine-learning-services-quickstart-job-rstudio.md
+    - name: サンプル ジョブ - R コンソール
+      href: ./machine-learning-services-quickstart-job-rconsole.md
+- name: チュートリアル
+  items:
+    - name: HDInsight の Spark コンピューティング コンテキストでの R
+      href: ml-services-tutorial-spark-compute.md
+- name: 概念
+  items:
     - name: HDInsight アプリをインストールする
       href: ../hdinsight-apps-install-applications.md
     - name: クラスターの容量計画
       href: ../hdinsight-capacity-planning.md
-- name: 概念
-  items:
     - name: HDInsight の Apache Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
@@ -56,8 +63,6 @@
           href: ../hdinsight-hadoop-customize-cluster-linux.md
         - name: スクリプト アクションを開発する
           href: ../hdinsight-hadoop-script-actions-linux.md
-        - name: Presto をインストールして使用する
-          href: ../hdinsight-hadoop-install-presto.md
         - name: Apache Hive ライブラリを追加する
           href: ../hdinsight-hadoop-add-hive-libraries.md
         - name: Apache Giraph を使用する
@@ -249,10 +254,14 @@
       items:
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight 用の VNET の計画
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight 用の VNET の作成
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG と UDR に必要な IP アドレス
+          href: ../hdinsight-management-ip-addresses.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet の HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
     - name: Azure Monitor ログを使用した監視

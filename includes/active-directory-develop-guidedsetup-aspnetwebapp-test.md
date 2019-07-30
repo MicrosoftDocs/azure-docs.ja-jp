@@ -15,15 +15,15 @@ ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121727"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181784"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
-Visual Studio でお使いのアプリケーションをテストするには、**F5** キーを押してプロジェクトを実行します。 ブラウザーで http://<span></span>localhost:{ポート} の場所を開くと、**[Microsoft アカウントでサインイン]** ボタンが表示されます。 ボタンを選択して、サインイン プロセスを開始します。
+Visual Studio でお使いのアプリケーションをテストするには、**F5** キーを押してプロジェクトを実行します。 ブラウザーで http://<span></span>localhost:{ポート} の場所を開くと、 **[Microsoft アカウントでサインイン]** ボタンが表示されます。 ボタンを選択して、サインイン プロセスを開始します。
 
 テストを実行する準備が整ったら、Microsoft Azure Active Directory (Azure AD) アカウント (職場または学校のアカウント) または個人用の Microsoft アカウント (<span>live.</span>com または <span>outlook.</span>com) を使用してサインインします。
 
@@ -33,7 +33,7 @@ Visual Studio でお使いのアプリケーションをテストするには、
 
 #### <a name="view-application-results"></a>アプリケーションの結果を表示する
 
-サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定した HTTPS の URL です。 ホーム ページには、ようこそメッセージ *"Hello \<ユーザー>"*、サインアウトのためのリンク、およびユーザーの要求を表示するリンクが含まれます。 ユーザーの要求へのリンクは、先ほど作成した *Claims* コントローラーを参照します。
+サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定した HTTPS の URL です。 ホーム ページには、ようこそメッセージ *"Hello \<ユーザー>"* 、サインアウトのためのリンク、およびユーザーの要求を表示するリンクが含まれます。 ユーザーの要求へのリンクは、先ほど作成した *Claims* コントローラーを参照します。
 
 ### <a name="browse-to-see-the-users-claims"></a>ユーザーの要求を参照して表示する
 

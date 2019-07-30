@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse でのテーブルのパーティション分割 | Microsoft Docs
 description: Azure SQL Data Warehouse でのテーブル パーティションの使用に関する推奨事項と例。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: af9fa49d274036888fd266f8983c523a3b077cbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6791ff2f2a9719a19d2c9abc4ff480435de7bb00
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851524"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477083"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのパーティション分割
 Azure SQL Data Warehouse でのテーブル パーティションの使用に関する推奨事項と例。

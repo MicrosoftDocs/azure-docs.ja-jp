@@ -3,19 +3,19 @@ title: Azure クイック スタート - Batch ジョブの実行 - .NET
 description: Batch .NET クライアント ライブラリを使用して Batch ジョブとタスクを短時間で実行できます。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: b8d7556607cdb73c3e3ae19109bcbf34b72b0915
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595350"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322325"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Visual Studio ソリューション ファイル `BatchDotNetQuickstart.sln` が含まれているディレクトリに移動します。
 
-Visual Studio でソリューション ファイルを開き、`Program.cs` 内の資格情報文字列を、お使いのアカウントに関して取得した値で更新します。 例: 
+Visual Studio でソリューション ファイルを開き、`Program.cs` 内の資格情報文字列を、お使いのアカウントに関して取得した値で更新します。 例:
 
 ```csharp
 // Batch account credentials

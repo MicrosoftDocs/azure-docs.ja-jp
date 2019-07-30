@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: de99d1a58cac12c80748b34ef4a1b07c9fb2a78e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 34c8c49166ea13d67c1f3d51805671c63dbb352b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576856"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312591"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure Portal を使用して Azure Data Factory パイプラインを作成します。 このパイプラインは、Spark アクティビティとオンデマンドの Azure HDInsight のリンクされたサービスを使用して、データを変換します。 
@@ -84,14 +84,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
+1. 左側のメニューの **[新規]** を選択し、 **[データ + 分析]** を選択して、 **[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
-1. **[新しいデータ ファクトリ]** ウィンドウで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+1. **[新しいデータ ファクトリ]** ウィンドウで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
    ![[新しいデータ ファクトリ] ウィンドウ](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください  (**&lt;yourname&gt;ADFTutorialDataFactory** など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+   Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください ( **&lt;yourname&gt;ADFTutorialDataFactory** など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
    ![名前が使用できないときのエラー](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。 
@@ -101,14 +101,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-1. **[バージョン]** で、**[V2]** を選択します。
+1. **[バージョン]** で、 **[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 
 
-   現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+   現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
-1. 作成が完了すると、**[データ ファクトリ]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Data Factory UI アプリケーションを起動します。
+1. 作成が完了すると、 **[データ ファクトリ]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Data Factory UI アプリケーションを起動します。
 
     ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
 
@@ -124,13 +124,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[Let's get started]\(始めましょう\) ページ](./media/tutorial-transform-data-spark-portal/get-started-page.png)
 
-1. ウィンドウの下部にある **[接続]** を選択して、**[+ 新規]** を選択します。 
+1. ウィンドウの下部にある **[接続]** を選択して、 **[+ 新規]** を選択します。 
 
    ![新しい接続を作成するためのボタン](./media/tutorial-transform-data-spark-portal/new-connection.png)
-1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、**[データ ストア]** > **[Azure Blob Storage]** を選択し、**[続行]** を選択します。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、 **[データ ストア]**  >  **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。 
 
    ![[Azure Blob Storage] タイルの選択](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
-1. **[ストレージ アカウント名]** で一覧から名前を選択し、**[保存]** を選択します。 
+1. **[ストレージ アカウント名]** で一覧から名前を選択し、 **[保存]** を選択します。 
 
    ![ストレージ アカウント名を指定するボックス](./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png)
 
@@ -138,7 +138,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>オンデマンドの HDInsight のリンクされたサービスを作成する
 
 1. **[+ 新規]** ボタンをもう一度選択して、別のリンクされたサービスを作成します。 
-1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、**[コンピューティング]** > **[Azure HDInsight]** の順に選択し、**[続行]** を選択します。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、 **[コンピューティング]**  >  **[Azure HDInsight]** の順に選択し、 **[続行]** を選択します。 
 
    ![[Azure HDInsight] タイルの選択](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を完了します。 
@@ -147,7 +147,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
    b. **[Type]\(タイプ\)** で **[On-demand HDInsight]\(オンデマンド HDInsight\)** が選択されていることを確認します。
    
-   c. **[Azure Storage Linked Service]\(Azure Storage のリンクされたサービス\)** で **[AzureStorage1]** を選択します。 このリンクされたサービスは、前の手順で作成したものです。 別の名前を使用した場合は、ここで適切な名前を指定します。 
+   c. **[Azure Storage Linked Service]\(Azure Storage のリンクされたサービス\)** で **[AzureBlobStorage1]** を選択します。 このリンクされたサービスは、前の手順で作成したものです。 別の名前を使用した場合は、ここで適切な名前を指定します。 
    
    d. **[クラスターの種類]** で **[spark]** を選択します。
    
@@ -189,13 +189,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![HDInsight のリンクされたサービスの指定](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. **[Script/Jar]\(スクリプト/Jar\)** タブに切り替えて、次の手順を実行します。 
 
-   a. **[Job Linked Service]\(ジョブのリンクされたサービス\)** で **[AzureStorage1]** を選択します。
+   a. **[Job Linked Service]\(ジョブのリンクされたサービス\)** で **[AzureBlobStorage1]** を選択します。
    
    b. **[ストレージを参照]** を選択します。
 
    ![[Script/Jar]\(スクリプト/Jar\) タブでの Spark スクリプトの指定](./media/tutorial-transform-data-spark-portal/specify-spark-script.png)
    
-   c. **adftutorial/spark/script** フォルダーに移動します。**WordCount_Spark.py** を選択し、**[完了]** を選択します。      
+   c. **adftutorial/spark/script** フォルダーに移動します。**WordCount_Spark.py** を選択し、 **[完了]** を選択します。      
 
 1. パイプラインを検証するために、ツール バーの **[検証]** ボタンを選択します。 **>>** (右矢印) ボタンを選択して、検証ウィンドウを閉じます。 
     
@@ -206,7 +206,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
-ツール バーの **[トリガー]** を選択し、**[Trigger Now]\(今すぐトリガー\)** を選択します。 
+ツール バーの **[トリガーの追加]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 
 
 ![[トリガー] ボタンと [Trigger Now]\(今すぐトリガー\) ボタン](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -218,11 +218,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[最新の情報に更新] ボタンが表示されている、パイプライン実行を監視するためのタブ](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
-1. パイプラインの実行に関連付けられているアクティビティの実行を表示するために、**[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** を選択します。
+1. パイプラインの実行に関連付けられているアクティビティの実行を表示するために、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** を選択します。
 
    ![パイプラインの実行の状態](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   上部の **[パイプライン]** リンクを選択すると、パイプラインの実行ビューに戻ることができます。
+   上部の **[All Pipeline Runs]\(すべてのパイプラインの実行\)** リンクを選択すると、パイプラインの実行ビューに戻ることができます。
 
    !["アクティビティの実行" ビュー](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 
@@ -231,7 +231,7 @@ adftutorial コンテナーの spark/otuputfiles/wordcount フォルダーに出
 
 ![出力ファイルの場所](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-このファイルには、入力テキスト ファイルに含まれている単語と、各単語がファイル内に出現する回数が含まれています。 例:  
+このファイルには、入力テキスト ファイルに含まれている単語と、各単語がファイル内に出現する回数が含まれています。 例: 
 
 ```
 (u'This', 1)

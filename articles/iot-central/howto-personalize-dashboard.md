@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a1641c4f3ae4eaa175657db8ff4064fa2202aea6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c048ae8c0daba0e467a9243f4dd83f8d95921e10
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053002"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502654"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>個人用ダッシュボードの作成と管理
 
@@ -38,6 +38,8 @@ ms.locfileid: "67053002"
 ![タイルの設定とプロパティが表示された [Dashboard]\(ダッシュボード\) タブ](media/howto-personalize-dashboard/personaldashboard.png)
 
 ライブラリ内の他のタイルの種類を調べて、個人用ダッシュボードをカスタマイズする方法を確認することができます。
+
+Azure IoT Central でタイルを使用する方法の詳細については、[ダッシュボード タイルの使用](howto-use-tiles.md)に関する記事をご覧ください。
 
 ## <a name="manage-dashboards"></a>ダッシュボードの管理
 

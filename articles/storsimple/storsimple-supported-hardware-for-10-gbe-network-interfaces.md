@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: db03b3cd668bf8e35913872ac4225de6d4d3edd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8303195f0f3228ee145cbba9e322ea4e5e4c1264
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110570"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726965"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア
 ## <a name="overview"></a>概要
@@ -34,19 +34,19 @@ Microsoft では、テストの結果、次の小型フォーム ファクター
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>ケーブル
-| 連続 いいえ、できません。 | 保存する | モデル |
+| 連続 いいえ。 | Make | モデル |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
-| 3. |Cisco |SFP-H10GB-CU3M |
+| 手順 3. |Cisco |SFP-H10GB-CU3M |
 | 4. |Tripp-Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>スイッチ
-| 連続 いいえ、できません。 | 保存する | モデル |
+| 連続 いいえ。 | Make | モデル |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
-| 3. |Cisco |N5K-C5596UP-FA |
+| 手順 3. |Cisco |N5K-C5596UP-FA |
 
 ## <a name="list-of-devices-tested-in-the-field"></a>実地テスト済みのデバイスの一覧
 このセクションでは、StorSimple ユーザーによって現場で正常にデプロイされたデバイスを一覧で紹介します。 これらは Microsoft でテストされていませんが、StorSimple デバイスで動作することが見込まれています。
@@ -58,9 +58,9 @@ Microsoft では、テストの結果、次の小型フォーム ファクター
 | スイッチのオペレーティング システム バージョン |JunOS 12.3R9.4 |
 | ブレード モデル |オンボード ポート (PIC 0) |
 | トランシーバー メーカー |Juniper |
-| トランシーバー モデル |部品番号 740-021308  <br></br> 部品番号 740-030658 |
+| トランシーバー モデル |部品番号 740-021308 <br></br> 部品番号 740-030658 |
 | トランシーバーのファームウェア バージョン |Rev 01 Version 0.0 (報告済み) |
-| ケーブル モデル |デュプレックス ジャンパー LC/LC 50/125µ、OM3、LSZH |
+| ケーブル モデル |デュプレックス ジャンパー LC/LC 50/125µ、   OM3、LSZH |
 | StorSimple モデル |8600 |
 | StorSimple ソフトウェアのバージョン |6.3.9600.17491 |
 
@@ -70,11 +70,11 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Mellanox でサポートされているケーブルとモジュール
 次の表に、Mellanox でサポートされているケーブルとモジュールを示します。 これらは Microsoft でテストされていませんが、StorSimple デバイスで動作することが見込まれています。
 
-| 連続 いいえ、できません。 | 速度 | モデル | Description | 保存する |
+| 連続 いいえ。 | 速度 | モデル | 説明 | Make |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、1 m |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、2 m |Arista |
-| 3. |10 GbE |CAB-SFP-SFP-3M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、3 m |Arista |
+| 手順 3. |10 GbE |CAB-SFP-SFP-3M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、3 m |Arista |
 | 4. |10 GbE |CAB-SFP-SFP-5M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、5 m |Arista |
 | 5. |10 GbE |Cisco SFP-H10GBCU1M |Cisco SFP+ ケーブル |Cisco |
 | 6. |10 GbE |Cisco SFP-H10GBCU3M |Cisco SFP+ ケーブル |Cisco |
@@ -111,16 +111,16 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 ### <a name="switches-supported-by-mellanox"></a>Mellanox でサポートされているスイッチ
 次の表に、Mellanox でサポートされているスイッチの一覧を示します。 これらは Microsoft でテストされていませんが、StorSimple デバイスで動作することが見込まれています。
 
-| 連続 いいえ、できません。 | 速度 | モデル | Description | 保存する |
+| 連続 いいえ。 | 速度 | モデル | 説明 | Make |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |516733-B21 |HP ProCurve 6120XG 10 GbE イーサネット ブレード スイッチ |HP |
 | 2. |10 GbE |538113-B21 |HP 10 GbE パススルー モジュール (PTM) |HP |
-| 3. |10 GbE |EN4093 |IBM PureFlex システム ファブリック EN4093 10 ギガビット スケーラブル スイッチ モジュール |IBM |
+| 手順 3. |10 GbE |EN4093 |IBM PureFlex システム ファブリック EN4093 10 ギガビット スケーラブル スイッチ モジュール |IBM |
 | 4. |1 GbE |3020 |Cisco Catalyst 3020 1 GbE スイッチ ブレード |Cisco |
 | 5. |1 GbE |3020X |Cisco Catalyst 3020X 1 GbE スイッチ ブレード |Cisco |
 | 6. |1 GbE |438030-B21 |HP 1 GbE スイッチ モジュール - GbE2c レイヤー 2/3 イーサネット ブレード スイッチ |HP |
 | 7. |1 GbE |6120G |HP ProCurve 6120G/XG 1 GbE スイッチ ブレード |HP |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [StorSimple ハードウェア コンポーネントと状態の詳細](storsimple-monitor-hardware-status.md)
 

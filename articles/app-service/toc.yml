@@ -105,6 +105,10 @@
           href: web-sites-php-configure.md
         - name: Java を構成する
           href: configure-language-java.md
+        - name: オンプレミスのリソースへの接続
+          href: web-sites-integrate-with-vnet.md
+        - name: Azure Storage (コンテナー) の構成
+          href: configure-connect-to-azure-storage.md
     - name: Deploy to Azure (Azure へのデプロイ)
       items:
         - name: アプリケーションのデプロイ

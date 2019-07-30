@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d485799547644ccb3c34a8841e8b20d8a45444bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ffe2cfc19a7ce94e47046839f6973793b73c118
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707366"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441409"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 Apache Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
@@ -37,7 +37,7 @@ Apache Hive 用 Apache Ranger ポリシーを構成する方法について説�
     現在、Ranger は Yarn および Hive でのみ機能します。
 
 ## <a name="create-domain-users"></a>ドメイン ユーザーの作成
-hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)」をご覧ください。 このチュートリアルでは、この 2 つのユーザー アカウントを使用します。
+hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)」をご覧ください。 この記事では、その 2 つのユーザー アカウントを使用します。
 
 ## <a name="create-ranger-policies"></a>Ranger ポリシーの作成
 このセクションでは、hivesampletable にアクセスするための 2 つの Ranger ポリシーを作成します。 異なる列セットに対する select 権限を付与します。 両方のユーザーは、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)」で作成されました。 次のセクションでは、2 つのポリシーを Excel でテストします。

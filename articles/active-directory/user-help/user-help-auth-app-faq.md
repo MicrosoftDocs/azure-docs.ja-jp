@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c8c074365707fed0a6d079bdfdbd138a91255d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c37edffcc6aa00db3f052088ec712ec2921b470b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730431"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083954"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator アプリに関する FAQ
 

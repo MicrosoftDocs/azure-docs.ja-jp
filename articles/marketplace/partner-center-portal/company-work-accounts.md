@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: df8ab370e8874e07f8985ecfb3a772848a2e2b21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9326cab6cb5ed4ca76c9a84654697f9f90bcfcd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65804847"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619548"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>会社の職場アカウントとパートナー センター
 

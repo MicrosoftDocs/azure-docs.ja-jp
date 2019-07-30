@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Azure VM のバックアップからファイルとフォルダーを回復する'
 description: Azure 仮想マシンの回復ポイントからファイルを回復します
-services: backup
 author: pvrk
 manager: shivamg
 keywords: アイテム レベルの回復; Azure VM のバックアップからのファイルの回復; Azure VM からのファイルの復元
@@ -9,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 678b187eb49c84b5b4cf17fe063d21d09b333434
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240012"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465658"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -213,7 +212,7 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 スクリプトを実行し、復旧ポイントに安全に接続するには、Python および Bash コンポーネントも必要となります。
 
-|コンポーネント | バージョン  |
+|コンポーネント | Version  |
 | --------------- | ---- |
 | Bash | 4 以降 |
 | Python | 2.6.6 以降  |

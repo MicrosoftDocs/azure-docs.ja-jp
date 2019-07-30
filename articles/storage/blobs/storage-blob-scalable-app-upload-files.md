@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 63de2045498b312580640859c1911046f9785d8e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 83a888a28c1d1e51a1fe59649dfb956cd0f72203
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794360"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071424"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -31,7 +31,7 @@ ms.locfileid: "65794360"
 
 Azure BLOB Storage では、データを格納するためのスケーラブルなサービスを提供しています。 アプリケーションのパフォーマンスをできる限り高められるように、Blob ストレージの仕組みを理解することをお勧めします。 Azure BLOB の制限事項に関する知識が重要です。これらの制限事項の詳細については、[Blob Storage のスケーラビリティ ターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets)に関する記述をご覧ください。
 
-[パーティションの名前付け](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47)は、BLOB を使用して高パフォーマンスのアプリケーションを設計するときの、もう 1 つの重要な要素です。 Azure Storage では、範囲を基にしたパーティション構成を使用して、拡大縮小および負荷分散を行います。 この構成は、類似の名前付け規則またはプレフィックスを持つファイルが同じパーティションに含まれることを意味します。 このロジックには、ファイルのアップロード先となるコンテナーの名前が含まれます。 このチュートリアルでは、ランダムに生成されたコンテンツと名前に対して GUID を保持するファイルを使用します。 その後、それらのファイルは、ランダムな名前の異なる 5 つのコンテナーにアップロードされます。
+[パーティションの名前付け](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47)は、BLOB を使用して高パフォーマンスのアプリケーションを設計するときに、もう 1 つの重要な要素になる場合があります。 4 MiB 以上のブロック サイズの場合、[高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) が使用され、パーティションの名前付けはパフォーマンスに影響しません。 4 MiB 未満のブロック サイズの場合、Azure Storage では、範囲を基にしたパーティション構成を使用して、拡大縮小および負荷分散を行います。 この構成は、類似の名前付け規則またはプレフィックスを持つファイルが同じパーティションに含まれることを意味します。 このロジックには、ファイルのアップロード先となるコンテナーの名前が含まれます。 このチュートリアルでは、ランダムに生成されたコンテンツと名前に対して GUID を保持するファイルを使用します。 その後、それらのファイルは、ランダムな名前の異なる 5 つのコンテナーにアップロードされます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +57,7 @@ setx storageconnectionstring "<storageConnectionString>" /m
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-`D:\git\storage-dotnet-perf-scale-app` に移動します。
+[https://test-cors.org](`D:\git\storage-dotnet-perf-scale-app`) に移動します。
 
 `dotnet run` キーを押してアプリケーションを実行します。 `dotnet` を初めて実行するときは、復元速度を向上させてオフライン アクセスを有効にするために、ローカル パッケージ キャッシュを設定します。 このコマンドを完了するには最大 1 分がかかり、処理は一度だけ実行されます。
 

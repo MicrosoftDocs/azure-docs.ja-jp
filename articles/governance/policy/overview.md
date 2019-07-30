@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2dd31ab29479fade21d27b8e2c23952f905f530a
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: da045a561fba81bf9a5e412a6f2bf0a6160acfa7
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979156"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807446"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Azure Policy サービスの概要
 
@@ -25,6 +25,8 @@ Azure Policy は、ポリシーの作成、割り当て、管理に使用する 
 
 > [!IMPORTANT]
 > Azure Policy のコンプライアンス評価が、価格レベルに関係なくすべての割り当てに対して提供されるようになりました。 割り当てにコンプライアンス データが表示されない場合は、サブスクリプションが Microsoft.PolicyInsights リソース プロバイダーに登録されていることを確認してください。
+
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-is-it-different-from-rbac"></a>RBAC との違いは何か。
 
@@ -45,7 +47,7 @@ Azure Policy のリソースに対するアクセス許可は、さまざまな�
 
 Azure Policy でポリシーを作成して実装する手順は、ポリシー定義の作成から始まります。 すべてのポリシー定義に、ポリシーが適用される条件があります。 また、条件が満たされた場合に実現される効果も定義されています。
 
-Azure Policy には、既定で使うことができる組み込みポリシーがいくつかあります。 例: 
+Azure Policy には、既定で使うことができる組み込みポリシーがいくつかあります。 例:
 
 - **SQL Server バージョン 12.0 を必須とする**:すべての SQL Server でバージョン 12.0 が使われていることを検証します。 その効果として、これらの条件を満たしていないすべてのサーバーが拒否されます。
 - **許可されているストレージ アカウントの SKU**:展開されているストレージ アカウントが SKU サイズの設定内であるかどうかを判断します。 その効果として、定義されている SKU サイズの設定に準拠していないすべてのストレージ アカウントが拒否されます。

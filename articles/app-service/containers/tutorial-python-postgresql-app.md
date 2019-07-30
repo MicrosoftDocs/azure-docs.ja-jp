@@ -10,14 +10,15 @@ ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: beverst;cephalin
+ms.author: cephalin
+ms.reviewer: beverst
 ms.custom: seodec18
-ms.openlocfilehash: b3d262a33ecbc35ada278019ee0998486bc92efe
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 3fbc9429da393f4df14ade57d6bd20219b5fcfa2
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678923"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617521"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Azure App Service で Python と PostgreSQL アプリを構築する
 
@@ -166,7 +167,7 @@ Django サーバーを任意のタイミングで停止するには、ターミ�
 
 Cloud Shell 内で [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) コマンドを使用して、PostgreSQL サーバーを作成します。
 
-次のコマンドの例では、*\<postgresql_name>* を一意のサーバー名、*\<admin_username>* と *\<admin_password>* を目的のユーザー資格情報に置き換えます。 このユーザー資格情報は、データベース管理者のアカウントのものです。 このサーバー名は、PostgreSQL エンドポイント (`https://<postgresql-name>.postgres.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
+次のコマンドの例では、 *\<postgresql_name>* を一意のサーバー名、 *\<admin_username>* と *\<admin_password>* を目的のユーザー資格情報に置き換えます。 このユーザー資格情報は、データベース管理者のアカウントのものです。 このサーバー名は、PostgreSQL エンドポイント (`https://<postgresql-name>.postgres.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
@@ -286,7 +287,8 @@ python manage.py runserver
 Django では、受信要求の `HTTP_HOST` ヘッダーが検証されます。 App Service 上で Django アプリを動作させるには、許可されるホストにアプリの完全修飾ドメイン名を追加する必要があります。 _azuresite/settings.py_ を開き、`ALLOWED_HOSTS` 設定を見つけます。 その行を次のように変更します。
 
 ```python
-ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net',
+                 '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
 次に、Django では[運用環境での静的ファイルの使用](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)はサポートされないため、これを手動で有効にする必要があります。 このチュートリアルでは、[WhiteNoise](https://whitenoise.evans.io/en/stable/) を使用します。 WhiteNoise パッケージは _requirements.txt_ に既に含まれています。 必要なのは、それを使用するように Django を構成することだけです。 
@@ -396,9 +398,9 @@ http://<app-name>.azurewebsites.net
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="manage-your-app-in-the-azure-portal"></a>Azure Portal でアプリを管理する
+## <a name="manage-your-app-in-the-azure-portal"></a>Azure portal でアプリを管理する
 
-[Azure portal](https://portal.azure.com) に移動し、作成したアプリを表示します。
+[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを表示します。
 
 左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e603435a49894a9b8faa2df9b49a8572b94eecb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 861aacb3e4c288ea7f55c5906534b728e9cd22b6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965593"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447214"
 ---
-# <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
+# <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
 
-Azure Cosmos DB は、きめ細かいマルチ テナントとリソース ガバナンスを考慮して設計されています。 この設計により、Azure Cosmos DB はかなり低コストで動作し、ユーザーはコストを節約できます。 現在、Azure Cosmos DB では、密度が増加し続ける 1 台のコンピューター上の 280 個を超えるお客様のワークロードと、クラスター内の数千ものお客様のワークロードがサポートされています。 これにより、クラスター内のさまざまなコンピューター間で、またデータ センター内の複数のクラスター間でお客様のワークロードのレプリカの負荷が分散されます。詳細については、「[Azure Cosmos DB:グローバルな分散データベースの新境地を開拓する](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)」を参照してください。 リソース ガバナンス、マルチ テナント、および Azure インフラストラクチャの残りの部分とのネイティブ統合により、Azure Cosmos DB のコストは、MongoDB、Cassandra、または IaaS で実行されているその他の OSS NoSQL より平均で 4 倍から 6 倍低くなり、オンプレミスで実行されているデータベース エンジンより最大で 10 倍低くなります。 「[The total cost of (non) ownership of a NoSQL database cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)」 (NoSQL データベース クラウド サービスの総 (非) 保有コスト) の論文を参照してください。
+Azure Cosmos DB は、きめ細かいマルチ テナントとリソース ガバナンスを考慮して設計されています。 この設計により、Azure Cosmos DB はかなり低コストで動作し、ユーザーはコストを節約できます。 現在、Azure Cosmos DB では、密度が増加し続ける 1 台のコンピューター上の 280 個を超えるお客様のワークロードと、クラスター内の数千ものお客様のワークロードがサポートされています。 これにより、クラスター内のさまざまなコンピューター間で、またデータ センター内の複数のクラスター間でお客様のワークロードのレプリカの負荷が分散されます。 詳細については、「[Azure Cosmos DB:グローバルな分散データベースの新境地を開拓する](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)」を参照してください。 リソース ガバナンス、マルチ テナント、および Azure インフラストラクチャの残りの部分とのネイティブ統合により、Azure Cosmos DB のコストは、MongoDB、Cassandra、または IaaS で実行されているその他の OSS NoSQL より平均で 4 倍から 6 倍低くなり、オンプレミスで実行されているデータベース エンジンより最大で 10 倍低くなります。 「[The total cost of (non) ownership of a NoSQL database cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)」 (NoSQL データベース クラウド サービスの総 (非) 保有コスト) の論文を参照してください。
 
 Apache Cassandra、MongoDB、HBase、エンジンなどの OSS NoSQL データベース ソリューションは、オンプレミス用に設計されています。 マネージド サービスとして提供されている場合は、プロビジョニングされたクラスターの管理および監視のサポートのためのテナント データベースを使用する Resource Manager テンプレートと同等となります。 OSS NoSQL アーキテクチャでは運用上のオーバーヘッドがかなり必要となり、専門知識を見つけるのが難しく、コストがかかる場合があります。 一方、Azure Cosmos DB は完全に管理されたクラウド サービスであり、これを使用することで、開発者はデータベース インフラストラクチャの管理や維持ではなく、事業革新に集中できます。 
 

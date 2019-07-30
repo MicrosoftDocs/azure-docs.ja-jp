@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT エージェントを構成する (プレビュー) | Microsoft Docs
 description: Azure Security Center for IoT で使用するエージェントを構成する方法について説明します。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: f95c445a-4f0d-4198-9c6c-d01446473bd0
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 311a867c863cbd72292d8e34b4f7abdb949b12c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39539bb14877208e5f6af957e735a136b077f16a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198439"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618272"
 ---
 # <a name="tutorial-configure-security-agents"></a>チュートリアル:セキュリティ エージェントを構成する
 

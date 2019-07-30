@@ -7,14 +7,14 @@ manager: darosa
 ms.author: aschhab
 ms.date: 11/28/2018
 ms.topic: tutorial
-ms.service: event-hubs-messaging
+ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 9eea40a8ad2f08099b2662a0e7539c326d4d143e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779047"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605857"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>チュートリアル: Event Hubs 名前空間で仮想ネットワークの統合とファイアウォールを有効にする
 
@@ -51,9 +51,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ここでは既存の Event Hubs 名前空間を使うので、使用可能な Event Hubs 名前空間があることを確認してください。 ない場合は、[こちらのチュートリアル](./event-hubs-create.md)をご覧ください
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-まず [Azure Portal][Azure portal] にアクセスし、Azure サブスクリプションを使用してサインインします。
+まず [Azure portal][Azure portal] に移動し、ご利用の Azure サブスクリプションを使用してサインインします。
 
 ## <a name="select-event-hubs-namespace"></a>Event Hubs 名前空間を選択する
 
@@ -61,11 +61,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="navigate-to-firewalls-and-virtual-networks-experience"></a>ファイアウォールと仮想ネットワークのエクスペリエンスに移動する
 
-ポータルの左側のウィンドウのナビゲーション メニューで、**[ファイアウォールと仮想ネットワーク]** オプションを選択します。
+ポータルの左側のウィンドウのナビゲーション メニューで、 **[ファイアウォールと仮想ネットワーク]** オプションを選択します。
 
   ![メニューに移動する](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-landing-page.png)
 
-  初めてこのページに移動したときは、**[すべてのネットワーク]** オプション ボタンが選択されているはずです。 これは、その Event Hubs 名前空間ですべての着信接続が許可されることを意味します。
+  初めてこのページに移動したときは、 **[すべてのネットワーク]** オプション ボタンが選択されているはずです。 これは、その Event Hubs 名前空間ですべての着信接続が許可されることを意味します。
 
 ## <a name="add-virtual-network-service-endpoint"></a>仮想ネットワーク サービス エンドポイントを追加する
 

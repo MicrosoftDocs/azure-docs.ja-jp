@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023762"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423012"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "65023762"
 
 ドキュメント クラッキングでは、ファイルに埋め込まれた画像や画像ファイルを操作するための、新しいインデクサー構成パラメーター セットを使用できます。 これらのパラメーターは、下流の処理で画像を正規化するために使用されます。 画像を正規化することで、画像の画一性が高まります。 大きい画像は、高さと幅の最大値に応じてサイズ変更され、扱いやすくなります。 向きについてのメタデータがある画像は、画像の回転が垂直方向の読み込み用に調整されます。 メタデータの調整結果は、各画像用に作成された複合型に取得されます。 
 
-画像の正規化をオフにすることはできません。 画像を反復処理するスキルでは、正規化された画像が受け付けられます。
+画像の正規化をオフにすることはできません。 画像を反復処理するスキルでは、正規化された画像が受け付けられます。 インデクサーで画像の正規化を有効にするには、そのインデクサーにスキルセットがアタッチされている必要があります。
 
 | 構成パラメーター | 説明 |
 |--------------------|-------------|
@@ -102,8 +102,6 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 ### <a name="ocr-skill"></a>OCR スキル
 
 [OCR スキル](cognitive-search-skill-ocr.md)では、JPG、PNG、ビットマップなどの画像ファイルからテキストを抽出できます。 テキストのほかに、レイアウト情報を抽出することもできます。 このレイアウト情報によって、特定された各文字列の境界ボックスが提供されます。
-
-OCR スキルでは、画像内のテキストの検出に使用するアルゴリズムを選択できます。 現在、2 つのアルゴリズムがサポートされています。1 つは印刷されたテキスト用、もう 1 つは手書きの文字用です。
 
 ## <a name="embedded-image-scenario"></a>埋め込み画像のシナリオ
 

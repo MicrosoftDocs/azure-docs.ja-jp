@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: 7d52585b51af09c430130141c3680b5630f7b95e
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 89a1fa396ff8bc5b954e91e7b08e6d731a81559a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417276"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657649"
 ---
 # <a name="what-is-text-analytics-api"></a>Text Analytics API とは
 
@@ -28,13 +28,13 @@ Text Analytics API は、未加工のテキストに対して高度な自然言�
 テキスト分析にはさまざまな意味がありますが、Cognitive Services の場合、Text Analytics API には次のように 4 種類の分析が用意されています。
 
 ## <a name="sentiment-analysis"></a>感情分析
-[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md)を使用すると、肯定的または否定的な感情の手がかりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。<br /> 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](text-analytics-supported-languages.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK を使用することができます。
+[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md)を使用すると、肯定的または否定的な感情の手がかりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。<br /> 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](text-analytics-supported-languages.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK を使用することができます。
 
 ## <a name="key-phrase-extraction"></a>キー フレーズ抽出
-[キー フレーズを自動的に抽出](how-tos/text-analytics-how-to-keyword-extraction.md)し、重要な点を迅速に特定します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 ここで [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK を使用することができます。
+[キー フレーズを自動的に抽出](how-tos/text-analytics-how-to-keyword-extraction.md)し、重要な点を迅速に特定します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 ここで [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK を使用することができます。
 
 ## <a name="language-detection"></a>言語検出
-さまざまな言語、異形、方言、一部の地方言語や文化言語で、[入力テキストの記述言語を検出する](how-tos/text-analytics-how-to-language-detection.md)ほか、要求で送信されたドキュメントごとに 1 つの言語コードを報告することができます。 言語コードは、評価値の強度を示すスコアと組みになります。 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK を使用することができます。
+さまざまな言語、異形、方言、一部の地方言語や文化言語で、[入力テキストの記述言語を検出する](how-tos/text-analytics-how-to-language-detection.md)ほか、要求で送信されたドキュメントごとに 1 つの言語コードを報告することができます。 言語コードは、評価値の強度を示すスコアと組みになります。 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK を使用することができます。
 
 ## <a name="named-entity-recognition"></a>名前付きエンティティの認識
 [テキスト内のエンティティを識別して分類します](how-tos/text-analytics-how-to-entity-linking.md) (人、場所、組織、日付/時刻、数量、パーセンテージ、通貨など)。 既知のエンティティも識別され、Web 上の詳細ページにリンクされます。 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) API を使用できます。
@@ -89,7 +89,18 @@ Text Analytics API のエンドポイントはすべて、未加工のテキス�
 | 要求全体の最大サイズ | 1 MB |
 | 1 件の要求での最大ドキュメント数 | 1,000 ドキュメント |
 
-レート制限は、毎秒 100 件/毎分 1,000 件です。 1 回の呼び出しで大量のドキュメントを送信できます (最大 1,000 ドキュメント)。
+レート制限は価格レベルによって異なります。
+
+| レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
+|---------------|---------------------|---------------------|
+| マルチサービス | 1000                | 1000                |
+| S0/F0         | 100                 | 300                 |
+| S1            | 200                 | 300                 |
+| S2            | 300                 | 300                 |
+| S3            | 500                 | 500                 |
+| S4            | 1000                | 1000                |
+
+要求数は、Text Analytics の機能ごとに個別に測定されます。 たとえば、各機能に対して、利用中の価格レベルで最大数の要求を同時に送信できます。      
 
 ## <a name="unicode-encoding"></a>Unicode エンコーディング
 

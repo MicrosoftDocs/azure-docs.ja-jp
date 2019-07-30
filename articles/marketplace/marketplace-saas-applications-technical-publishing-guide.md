@@ -6,13 +6,13 @@ author: keithcharlie
 ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
-ms.author: keithcharlie
-ms.openlocfilehash: 4501a343b406f07b4775f3ad0e84d71825412a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kevidal
+ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752724"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876529"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
@@ -104,7 +104,7 @@ Azure AD を使ってアプリまたは試用版の 1 クリック認証を有�
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Marketplace に対する Azure AD 統合の認定  
 
-アプリケーションがシングル テナントかマルチテナントか、Azure AD フェデレーショ シングル サインオン (SSO) を初めて使用するか、既にサポートしているかに応じて、Azure AD の統合を認定することができます。  
+アプリケーションがシングル テナントかマルチテナントか、Azure AD フェデレーション シングル サインオン (SSO) を初めて使用するか、既にサポートしているかに応じて、Azure AD の統合を認定します。  
 
 **マルチテナント アプリケーションの場合:**  
 

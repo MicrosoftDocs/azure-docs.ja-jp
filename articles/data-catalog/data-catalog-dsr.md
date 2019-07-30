@@ -7,12 +7,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5ffbee1b4fdfc08b111e199e73baae19341b1022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85753e788284396262053aad8cf567ad5cd71fee
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65775678"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509291"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
@@ -152,7 +152,7 @@ ms.locfileid: "65775678"
       <td></td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse ビュー</td>
+      <td>Azure SQL Data Warehouse ビュー</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -165,7 +165,7 @@ ms.locfileid: "65775678"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services KPI</td>
@@ -173,7 +173,7 @@ ms.locfileid: "65775678"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services メジャー</td>
@@ -181,7 +181,7 @@ ms.locfileid: "65775678"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services テーブル</td>
@@ -189,7 +189,7 @@ ms.locfileid: "65775678"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services レポート</td>
@@ -197,7 +197,7 @@ ms.locfileid: "65775678"
       <td>✓</td>
       <td>✓</td>
       <td>[ブラウザー] ボタンを</td>
-      <td>ネイティブ モードのサーバーのみ。 SharePoint モードはサポートされていません。</td>
+      <td>ネイティブ モードのサーバーのみ。 SharePoint モードはサポートされていません。 SQL Server 2008 以降のバージョンのみ</td>
     </tr>
     <tr>
       <td>SQL Server テーブル</td>
@@ -205,7 +205,7 @@ ms.locfileid: "65775678"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server データ ツール</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server ビュー</td>
@@ -213,7 +213,7 @@ ms.locfileid: "65775678"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server データ ツール</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>Teradata テーブル</td>

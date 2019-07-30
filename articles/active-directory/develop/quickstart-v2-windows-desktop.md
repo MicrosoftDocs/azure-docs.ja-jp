@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa400d678fb1e0793ea1a0cfd53bdfb715a5bc77
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c407ca9f7d28f1a74f0037931d83dd64fe7fc801
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785017"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335541"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
 
@@ -55,7 +55,7 @@ ms.locfileid: "65785017"
 >      - **[サポートされているアカウントの種類]** セクションで、 **[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
 >      - **[登録]** を選択して、アプリケーションを作成します。
 > 1. アプリのページの一覧から **[認証]** を選択します。
-> 1. **[デスクトップとデバイス]** セクションを展開します   ( **[デスクトップとデバイス]** セクションが表示されない場合は、最初に上部のバナーをクリックしてプレビューの認証エクスペリエンスを表示します)。
+> 1. **[デスクトップとデバイス]** セクションを展開します  ( **[デスクトップとデバイス]** セクションが表示されない場合は、最初に上部のバナーをクリックしてプレビューの認証エクスペリエンスを表示します)。
 > 1. **[リダイレクト URI]** セクションで、 **[URI の追加]** を選択します。  「**urn:ietf:wg:oauth:2.0:oob**」と入力します。
 > 1. **[保存]** を選択します。
 
@@ -70,7 +70,7 @@ ms.locfileid: "65785017"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトのダウンロード
 
-[Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  ([GitHub でプロジェクトを表示](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
+[Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([GitHub でプロジェクトを表示](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
 
@@ -82,6 +82,9 @@ ms.locfileid: "65785017"
     private static string ClientId = "Enter_the_Application_Id_here";
     private static string Tenant = "Enter_the_Tenant_Info_Here";
     ```
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > このクイックスタートでは、Enter_the_Supported_Account_Info_Here をサポートしています。
 
 > [!div renderon="docs"]
 > 各値の説明:
@@ -149,7 +152,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
-リソースへのアクセスが必要になるたびに、ユーザーに自分の資格情報を検証させたくない場合があります。 ほとんどの場合は、ユーザーの操作なしにトークンの取得や更新を行います。 最初に `AcquireTokenInteractive` メソッドを呼び出した後は、`AcquireTokenSilentAsync` メソッドを使用して保護されたリソースにアクセス するトークンを取得することができます。
+リソースへのアクセスが必要になるたびに、ユーザーに自分の資格情報を検証させたくない場合があります。 ほとんどの場合は、ユーザーの操作なしにトークンの取得や更新を行います。 最初に `AcquireTokenInteractive` メソッドを呼び出した後は、`AcquireTokenSilent` メソッドを使用して保護されたリソースにアクセス するトークンを取得することができます。
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -172,3 +175,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 > [!div class="nextstepaction"]
 > [Graph API 呼び出しチュートリアル](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
 
+Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
+
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 225ac86efba8a32b085a5fb7fc41bed48c499eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41637fae5592ac292da22303071d51b43116c78b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65022180"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671906"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>コグニティブ検索ワークロードに関するドキュメント リソース
 
@@ -27,7 +27,7 @@ ms.locfileid: "65022180"
 + [コグニティブ検索とは](cognitive-search-concept-intro.md)
 + [クイック スタート:ポータルでコグニティブ検索を使ってみる](cognitive-search-quickstart-blob.md)
 + [チュートリアル:コグニティブ検索 API について学習する](cognitive-search-tutorial-blob.md)
-+ [例: カスタム スキルの作成](cognitive-search-create-custom-skill-example.md)
++ [例:コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>使用方法に関するガイダンス
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

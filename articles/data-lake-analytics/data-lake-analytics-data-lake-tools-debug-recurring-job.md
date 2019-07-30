@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260042"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60629759"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>異常な定期的ジョブのトラブルシューティング
 
@@ -27,17 +27,17 @@ ms.locfileid: "51260042"
 
 Azure Data Lake Tools for Visual Studio の**関連ジョブ ビュー**を使うと、どちらの場合についてもトラブルシューティングがはかどります。
 
-## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>ステップ 1: 定期的なジョブを探して関連ジョブ ビューを開く
+## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>手順 1:定期的なジョブを探して関連ジョブ ビューを開く
 
 関連ジョブ ビューを使って定期的なジョブの問題のトラブルシューティングを行うには、最初に Visual Studio で定期的なジョブを探してから、関連ジョブ ビューを開く必要があります。
 
-### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>ケース 1: 定期的なジョブの URL がわかっている
+### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>ケース 1:定期的なジョブの URL がわかっている
 
-**[ツール]** > **[Data Lake]** > **[ジョブ ビュー]** の順に選択し、ジョブの URL を貼り付けて Visual Studio でジョブ ビューを開きます。 **[関連ジョブの表示]** を選択して関連ジョブ ビューを開きます。
+**[ツール]**  >  **[Data Lake]**  >  **[ジョブ ビュー]** の順に選択し、ジョブの URL を貼り付けて Visual Studio でジョブ ビューを開きます。 **[関連ジョブの表示]** を選択して関連ジョブ ビューを開きます。
 
 ![Data Lake Analytics Tools の [関連ジョブの表示] リンク](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
-### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>ケース 2: 定期的なジョブのパイプラインはあるが、URL はわからない
+### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>ケース 2:定期的なジョブのパイプラインはあるが、URL はわからない
 
 Visual Studio で、[サーバー エクスプローラー] > Azure Data Lake Analytics のアカウント > **[パイプライン]** の順に選んで、パイプライン ブラウザーを開くことができます。 ([サーバー エクスプローラー] でこのノードが見つからない場合は、[最新のプラグインをダウンロード](https://aka.ms/adltoolsvs)してください。) 
 
@@ -47,7 +47,7 @@ Visual Studio で、[サーバー エクスプローラー] > Azure Data Lake An
 
 ![パイプラインを選択して関連ジョブ ビューを開く](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
 
-## <a name="step-2-analyze-a-statistics-report"></a>ステップ 2: 統計レポートを分析する
+## <a name="step-2-analyze-a-statistics-report"></a>手順 2:統計レポートを分析する
 
 概要および統計レポートは関連ジョブ ビューの上部に表示されます。 そこで、問題の根本原因を発見できます。 
 
@@ -56,7 +56,7 @@ Visual Studio で、[サーバー エクスプローラー] > Azure Data Lake An
 
 ![統計の確認のプロセス図](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
 
-## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>ステップ 3: 異常なジョブと正常なジョブを比較する
+## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>手順 3:異常なジョブと正常なジョブを比較する
 
 関連ジョブ ビューの下部にあるジョブの一覧で、すべての送信された定期的なジョブを見つけることができます。 詳細情報および考えられる解決策を見つけるには、異常なジョブを右クリックします。 ジョブの相違点ビューを使用して、異常なジョブと以前の正常なジョブを比較します。
 

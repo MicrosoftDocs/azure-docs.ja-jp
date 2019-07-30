@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: d99b10598b9f16da2cf202330f0b5bac9219699f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 428b42e62f44d182de109740359544135561e54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476837"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441489"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する
 
@@ -50,11 +50,10 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 
 開始する前に次の点を確認します。
 
-- Microsoft Azure サブスクリプションで Data Box Gateway リソースがサポートされていること。 従量課金制のサブスクリプションには対応していません。
+- Microsoft Azure サブスクリプションで Data Box Gateway リソースがサポートされていること。 従量課金制のサブスクリプションもサポートされます。
 - Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルの所有者または共同作成者のアクセス許可を持っていること。
 
     - Data Box Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
-    - IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
     - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
 - Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。

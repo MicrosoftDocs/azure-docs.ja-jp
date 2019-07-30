@@ -6,13 +6,13 @@ author: yijenj
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 4055b1a30c1868f701de281b5de8d648d576219e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: a89921d4b5ec25bc0c924646d3bd41aecf3e8d9c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937899"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870923"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>クラウド マーケットプレースのリード管理
 

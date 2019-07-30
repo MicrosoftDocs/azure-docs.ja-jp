@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461563"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477862"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
@@ -29,12 +29,14 @@ Application Insights のスマート検出ルールは、[Azure Resource Manager
 
 スマート検出ルールに対して次の設定を構成できます。
 - ルールが有効になっているかどうか (既定値は **true**)。
-- 検出が見つかったときに、サブスクリプションの所有者、共同作成者、閲覧者に電子メールを送信する必要があるかどうか (既定値は**true**)。
+- 検出が見つかったときに、メールがサブスクリプションの [[閲覧者の監視]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) ロールと [[共同作成者の監視]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) ロールに関連付けられたユーザーに送信される必要がある場合 (既定値は **true**)。
 - 検出が見つかったときに通知を受ける必要があるその他の電子メール受信者。
-- * 電子メールの構成は、_プレビュー_とマークされたスマート検出ルールで使用できません。
+    -  メールの構成は、_プレビュー_とマークされたスマート検出ルールで使用できません。
 
 Azure Resource Manager を使用してルールの設定を構成できるように、スマート検出ルールの構成は、Application Insights リソース内で **ProactiveDetectionConfigs** という名前の内部リソースとして使用できるようになりました。
 柔軟性を最大化するために、各スマート検出ルールを一意の通知設定で構成できます。
+
+## 
 
 ## <a name="examples"></a>例
 
@@ -136,12 +138,46 @@ Application Insights リソース名を置換し、関連するスマート検�
 
 ```
 
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>エラーの異常 v2 (非従来型) のアラート ルール
+
+この Azure Resource Manager テンプレートでは、重大度 2 でのエラーの異常 v2 のアラート ルールの構成について示しています。 この新しいバージョンのエラーの異常のアラート ルールは、新しい Azure のアラート プラットフォームの一部であり、[従来のアラートの回収プロセス](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)の一環として廃止される従来のバージョンに置き換わります。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "microsoft.alertsmanagement/smartdetectoralertrules",
+            "apiVersion": "2019-03-01",
+            "name": "Failure Anomalies - my-app",
+            "properties": {
+                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "state": "Enabled",
+                  "severity": "2",
+                  "frequency": "PT1M",
+                  "detector": {
+                  "id": "FailureAnomaliesDetector"
+                  },
+                  "scope": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/microsoft.insights/components/my-app"],
+                  "actionGroups": {
+                        "groupIds": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/MyResourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup"]
+                  }
+            }
+        }
+    ]
+}
+```
+
+> [!NOTE]
+> この Azure Resource Manager テンプレートは、エラーの異常 v2 のアラート ルールに対して固有であり、この記事で説明されているその他の従来のスマート検出ルールとは異なります。   
+
 ## <a name="smart-detection-rule-names"></a>スマート検出ルール名
 
 Azure Resource Manager テンプレートで使用する必要がある、ポータルに表示されるスマート検出ルール名とその内部名の表を次に示します。
 
 > [!NOTE]
-> プレビューとしてマークされているスマート検出ルールでは、電子メール通知はサポートされません。 そのため、これらのルールに対して有効なプロパティのみを設定できます。 
+> _プレビュー_としてマークされているスマート検出ルールでは、メール通知がサポートされません。 そのため、これらのルールに対して_有効な_プロパティのみを設定できます。 
 
 | Azure portal ルール名 | 内部名
 |:---|:---|
@@ -154,18 +190,7 @@ Azure Resource Manager テンプレートで使用する必要がある、ポー
 | 例外数の異常な上昇 (プレビュー) | extension_exceptionchangeextension |
 | Potential memory leak detected (潜在的なメモリ リークの検出) (プレビュー) | extension_memoryleakextension |
 | Potential security issue detected (潜在的なセキュリティの問題の検出) (プレビュー) | extension_securityextensionspackage |
-| Resource utilization issue detected (リソース使用率の問題の検出) (プレビュー) | extension_resourceutilizationextensionspackage |
-
-## <a name="who-receives-the-classic-alert-notifications"></a>(クラシック) アラート通知は誰が受け取りますか。
-
-このセクションは、スマート検出クラシック アラートにのみ適用され、目的の受信者だけが通知を受け取るように、アラート通知を最適化するために役立ちます。 [クラシック アラート](../platform/alerts-classic.overview.md)と新しいアラート エクスペリエンスの違いの詳細については、[アラートの概要の記事](../platform/alerts-overview.md)を参照してください。 現在スマート検出アラートは、クラシック アラート エクスペリエンスのみをサポートしています。 この 1 つの例外は、[Azure クラウド サービスのスマート検出アラート](./proactive-cloud-services.md)です。 Azure クラウド サービスのスマート検出アラートのアラート通知を制御するには、[アクション グループ](../platform/action-groups.md)を使用します。
-
-* スマート検出/クラシック アラート通知には、特定の受信者の使用をお勧めします。
-
-* スマート検出アラートの場合、**一括/グループ** チェックボックス オプションが有効にされていれば、サブスクリプション内の所有者、共同作成者、または閲覧者ロールを持つユーザーに送信されます。 実際には、サブスクリプションの Application Insights リソースにアクセスできる _すべて_ のユーザーが範囲内になり、通知を受け取ります。 
-
-> [!NOTE]
-> 現在、**一括/グループ** チェックボックス オプションを使用しており、それを無効にすると、変更を元に戻すことはできません。
+| 日次データ ボリュームの異常な上昇 (プレビュー) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>次の手順
 

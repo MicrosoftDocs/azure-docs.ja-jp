@@ -2,17 +2,17 @@
 title: Azure Kubernetes Services (AKS) における Kubernetes の基本概念
 description: Kubernetes の基本のクラスターおよびワークロードについてと、クラスターおよびワークロードが Azure Kubernetes Service (AKS) の機能にどのように関連しているかを説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: iainfou
-ms.openlocfilehash: ab818c0bded71b4566173f4a6a720fce9bc539c3
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: mlearned
+ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514528"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616020"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -132,7 +132,7 @@ Kubernetes は*ポッド*を使用して、お使いのアプリケーション�
 
 ポッドを作成する場合、*リソースの上限*を定義して、一定量の CPU やメモリ リソースを要求できます。 Kubernetes スケジューラは、要件を満たす利用可能なリソースを備えたノード上で実行されるように、ポッドのスケジュール設定を試みます。 また、指定されたポッドでの基本ノードからのコンピューティング リソースの消費量が過大にならないように、リソースの上限を指定することも可能です。 ベスト プラクティスは、必要かつ許可されているリソースがどれかを Kubernetes スケジューラが認識できるように、すべてのポッドにリソース制限を組み入れることです。
 
-詳細については、[Kubernetes ポッド][kubernetes-pods]と [Kubernetes ポッドのライフサイクル][kubernetes-pod-lifecycle]に関するページをご覧ください。
+詳細については、[Kubernetes ポッドに関するページと、][kubernetes-pods]Kubernetes ポッドのライフサイクル and [Kubernetes pod lifecycle][kubernetes-pod-lifecycle] に関するページを参照してください。
 
 ポッドは論理リソースですが、コンテナーは、アプリケーション ワークロードが実行される場所です。 ポッドは通常、短期間の破棄可能なリソースであり、個々にスケジュール設定されたポッドでは、Kubernetes が提供する高可用性と冗長性の一部の機能が欠落します。 ポッドは通常、個々にスケジュール設定されず、デプロイ コントローラーなどの Kubernetes の "*コントローラー*" によってデプロイされ管理されます。
 
@@ -189,7 +189,7 @@ Helm を使用するために、Kubernetes クラスターに *Tiller* と呼ば
 
 ![Helm には、クライアント コンポーネントと Kubernetes クラスター内にリソースを作成するサーバー側の Tiller コンポーネントが含まれます。](media/concepts-clusters-workloads/use-helm.png)
 
-詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][aks-helm]」をご覧ください。
+詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][aks-helm]」を参照してください。
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSet と DaemonSet
 
@@ -206,7 +206,7 @@ Helm を使用するために、Kubernetes クラスターに *Tiller* と呼ば
 
 `kind: StatefulSet` を使用して YAML 形式でアプリケーションを定義すると、StatefulSet コントローラーは要求されたレプリカのデプロイと管理を処理します。 データは、Azure Managed Disks または Azure Files によって提供された永続的なストレージに書き込まれます。 複数の StatefulSet を使用すると、StatefulSet が削除されても、基本の永続化ストレージは残ります。
 
-詳細については、[Kubernetes の StatefulSet][kubernetes-statefulsets] に関するページをご覧ください。
+詳細については、[Kubernetes の StatefulSet][kubernetes-statefulsets] に関するページを参照してください。
 
 StatefulSet 内のレプリカは、1 つの AKS クラスター内にある任意の利用可能なノード全体にスケジュールされて、実行されます。 セット内の 1 つ以上のポッドが、ノード上で実行されることを保証する必要がある場合は、代わりに、DaemonSet を使用できます。
 
@@ -218,7 +218,7 @@ DaemonSet コントローラーでは、既定の Kubernetes スケジューラ�
 
 StatefulSet と同様に、DaemonSet は `kind: DaemonSet` を使用して、YAML 定義の一部として定義されています。
 
-詳細については、[Kubernetes の DaemonSet][kubernetes-daemonset] に関するページをご覧ください。
+詳細については、[Kubernetes の DaemonSet][kubernetes-daemonset] に関するページを参照してください。
 
 > [!NOTE]
 > [仮想ノードのアドオン](virtual-nodes-cli.md#enable-virtual-nodes-addon)を使用している場合は、DaemonSet によって仮想ノード上にポッドが作成されることはありません。
@@ -235,11 +235,11 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 - *kube-system* - この名前空間は、DNS とプロキシ、または Kubernetes ダッシュボードのようなネットワーク機能など、重要なリソースが置かれている場所です。 通常は、この名前空間に独自のアプリケーションをデプロイしません。
 - *kube-public* - この名前空間は、通常は使用されませんが、クラスター全体でリソースを表示可能にして、ユーザーが確認できるようにするために使用できます。
 
-詳細については、[Kubernetes の名前空間][kubernetes-namespaces] に関するページをご覧ください。
+詳細については、[Kubernetes の名前空間][kubernetes-namespaces] に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Kubernetes の主要なコンポーネントの一部と、それらのコンポーネントを AKS クラスターに適用する方法について説明しました。 Kubernetes と AKS の中心概念に関する追加情報については、次の記事を参照してください。
+この記事では、Kubernetes の主要なコンポーネントの一部と、それらのコンポーネントを AKS クラスターに適用する方法について説明しました。 Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
 - [Kubernetes/AKS のアクセスと ID][aks-concepts-identity]
 - [Kubernetes/AKS のセキュリティ][aks-concepts-security]

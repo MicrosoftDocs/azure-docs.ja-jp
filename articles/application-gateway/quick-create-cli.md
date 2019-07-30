@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a4f6cc2af7b9e044e5a72767898f876932fbf973
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56b655b07314d5ebc2d0cb47389988f1a89e6a56
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66133938"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304345"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.4 以降を実行してください。 バージョンを確認するには、**az --version** を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
-### <a name="resource-group"></a>リソース グループ
+### <a name="resource-group"></a>Resource group
 
 Azure で、関連するリソースをリソース グループに割り当てます。 [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 
 
@@ -60,7 +60,9 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ### <a name="backend-servers"></a>バックエンド サーバー
@@ -147,7 +149,7 @@ az network application-gateway create \
   --location eastus \
   --resource-group myResourceGroupAG \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Enabled \
   --public-ip-address myAGPublicIPAddress \
   --vnet-name myVNet \
@@ -155,13 +157,13 @@ az network application-gateway create \
   --servers "$address1" "$address2"
 ```
 
-Azure によってアプリケーション ゲートウェイが作成されるのに最大 30 分かかる場合があります。 作成後は、**[アプリケーション ゲートウェイ]** ページの **[設定]** セクションで次の設定を確認できます。
+Azure によってアプリケーション ゲートウェイが作成されるのに最大 30 分かかる場合があります。 作成後は、 **[アプリケーション ゲートウェイ]** ページの **[設定]** セクションで次の設定を確認できます。
 
-- **appGatewayBackendPool**:**[バックエンド プール]** ページにあります。 これは、必要なバックエンド プールを指定します。
-- **appGatewayBackendHttpSettings**:**[HTTP 設定]** ページにあります。 これは、アプリケーション ゲートウェイがポート 80 を使用すること、および通信に HTTP プロトコルを使用することを指定します。
-- **appGatewayHttpListener**:**[リスナー] ページ**にあります。 これは、**appGatewayBackendPool** に関連付けられている既定のリスナーを指定します。
-- **appGatewayFrontendIP**:**[フロントエンド IP 構成]** ページにあります。 これは、*myAGPublicIPAddress* を **appGatewayHttpListener** に割り当てます。
-- **rule1**:**[ルール]** ページにあります。 **appGatewayHttpListener** に関連付けられている既定のルーティング規則を指定します。
+- **appGatewayBackendPool**: **[バックエンド プール]** ページにあります。 これは、必要なバックエンド プールを指定します。
+- **appGatewayBackendHttpSettings**: **[HTTP 設定]** ページにあります。 これは、アプリケーション ゲートウェイがポート 80 を使用すること、および通信に HTTP プロトコルを使用することを指定します。
+- **appGatewayHttpListener**: **[リスナー] ページ**にあります。 これは、**appGatewayBackendPool** に関連付けられている既定のリスナーを指定します。
+- **appGatewayFrontendIP**: **[フロントエンド IP 構成]** ページにあります。 これは、*myAGPublicIPAddress* を **appGatewayHttpListener** に割り当てます。
+- **rule1**: **[ルール]** ページにあります。 **appGatewayHttpListener** に関連付けられている既定のルーティング規則を指定します。
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 

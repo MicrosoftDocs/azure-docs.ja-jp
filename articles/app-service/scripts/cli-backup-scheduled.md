@@ -12,14 +12,15 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: msangapu;cephalin
+ms.author: msangapu
+ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b5f75ded0b51b78d56354bf97b5ebb0488022509
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48ac455da32084f0ea2c5cf4f9f8b2d2cdc09719
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136892"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613495"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>CLI を使用して App Service アプリのスケジュールされたバックアップを作成する
 

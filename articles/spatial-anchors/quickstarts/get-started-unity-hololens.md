@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 31c7af3edf6364ebca021f87240e73c74e64ebc4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c29819d817138f2512420584947763247837a9ea
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704130"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "67135200"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Unity HoloLens アプリを作成する
 
-このクイック スタートでは、[Azure Spatial Anchors](../overview.md) を使用する Unity HoloLens アプリを作成します。 Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、複数のデバイス間でその位置を長期にわたって保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。 完了すると、Unity でビルドされた、空間アンカーを保存して再呼び出しできる HoloLens アプリが作成されます。
+このクイックスタートでは、[Azure Spatial Anchors](../overview.md) を使用する Unity HoloLens アプリを作成します。 Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、複数のデバイス間でその位置を長期にわたって保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。 完了すると、Unity でビルドされた、空間アンカーを保存して再呼び出しできる HoloLens アプリが作成されます。
 
 学習内容は次のとおりです。
 
@@ -34,18 +34,18 @@ ms.locfileid: "64704130"
 このクイック スタートを完了するには、以下が必要です。
 
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> 以降および <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> 以降がインストールされている Windows コンピューターが必要です。 Visual Studio インストールには、**ユニバーサル Windows プラットフォーム開発**ワークロードが含まれている必要があります。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> もインストールする必要があります。
+- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> 以降および <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 以降がインストールされている Windows コンピューターが必要です。 Visual Studio インストールには、**ユニバーサル Windows プラットフォーム開発**ワークロードが含まれている必要があります。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> をインストールします。
 - [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイスが必要です。 [Windows 2018 年 10 月 10 日更新プログラム](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (RS5 とも呼ばれます) をデバイスにインストールする必要があります。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** を選択します。
 - アプリで **SpatialPerception** 機能を有効にする必要があります。 この設定は、 **[ビルド設定]**  >  **[プレーヤーの設定]**  >  **[発行の設定]**  >  **[機能]** にあります。
 - アプリで **[Virtual Reality Supported]\(サポートされている仮想現実\)** を **Windows Mixed Reality SDK** と共に有効にする必要があります。 この設定は、 **[ビルド設定]**  >  **[プレーヤーの設定]**  >  **[XR Settings]\(XR 設定\)** にあります。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Unity でサンプル プロジェクトを開く
+## <a name="download-and-open-the-unity-sample-project"></a>Unity のサンプル プロジェクトをダウンロードして開く
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Unity で、Unity フォルダー内のプロジェクトを開きます。
+[!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
 **[ファイル]**  >  **[ビルド設定]** を選択して、 **[ビルド設定]** を開きます。
 
@@ -53,7 +53,7 @@ Unity で、Unity フォルダー内のプロジェクトを開きます。
 
 **[Switch Platform]\(プラットフォームの切り替え\)** を選択して、プラットフォームを **[ユニバーサル Windows プラットフォーム]** に変更します。 UWP をサポートするコンポーネントが不足している場合は、Unity によってそれらをインストールすることを要求される場合があります。
 
-   ![Unity の [Build Settings]\(ビルド設定\) ウィンドウ](./media/get-started-unity-hololens/unity-build-settings.png)
+![Unity の [Build Settings]\(ビルド設定\) ウィンドウ](./media/get-started-unity-hololens/unity-build-settings.png)
 
 **[ビルド設定]** ウィンドウを閉じます。
 

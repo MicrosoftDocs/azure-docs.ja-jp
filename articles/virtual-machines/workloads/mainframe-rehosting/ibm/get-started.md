@@ -4,16 +4,19 @@ description: メインフレーム エミュレーターや Microsoft パート�
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
+ms.author: edprice
 manager: edprice
 editor: edprice
+ms.topic: conceptual
+ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: ccecfd6abe0e9418e217ad7f200ce980d73c7b45
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4acf2fe1bc63061f17f90d6737f586408520dc13
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61468331"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621322"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上での IBM ワークロード
 

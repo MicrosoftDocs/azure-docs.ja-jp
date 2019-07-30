@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: ロード バランサーの TCP アイドル タイムアウトの構成
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 0c57eec4d739da13d98099a6b2f01fbf0ad0051c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: b3df1ead7a3164ffd9a4b4acf8820d0f5b82cee3
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734604"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274180"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer の TCP アイドル タイムアウト設定を構成する
 

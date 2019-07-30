@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/201
+ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: bbb064c358eba2dd64ba9ae86540a30cb56adb66
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742820"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595024"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -68,7 +68,7 @@ Web アプリにカスタム DNS 名をマップするには、Web アプリの 
 
 App Service アプリの管理ページが表示されます。  
 
-<a name="checkpricing"></a>
+<a name="checkpricing" aria-hidden="true"></a>
 
 ### <a name="check-the-pricing-tier"></a>価格レベルの確認
 
@@ -82,7 +82,7 @@ App Service アプリの管理ページが表示されます。
 
 App Service プランが **F1** レベルではない場合は、 **[スケール アップ]** ページを閉じて、「[CNAME レコードのマップ](#cname)」に進みます。
 
-<a name="scaleup"></a>
+<a name="scaleup" aria-hidden="true"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>App Service プランをスケール アップする
 
@@ -96,7 +96,7 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 
 ![スケール操作の確認](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-<a name="cname"></a>
+<a name="cname" aria-hidden="true"></a>
 
 ## <a name="map-your-domain"></a>ドメインをマップする
 
@@ -156,13 +156,13 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> カスタム ドメインの **[安全ではない]\(Not Secure\)** ラベルは、それがまだ SSL 証明書にバインドされておらず、ブラウザーからカスタム ドメインへの HTTPS 要求は、ブラウザーによってはエラーまたは警告を受け取る可能性があることを意味します。 SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+> カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
 
 手順を飛ばしていたり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
 
 ![検証エラー](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
-<a name="a"></a>
+<a name="a" aria-hidden="true"></a>
 
 ### <a name="map-an-a-record"></a>A レコードのマップ
 
@@ -213,7 +213,7 @@ A レコードをアプリにマップする場合、App Service では **2 つ*
 
 ![DNS レコード ページ](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-<a name="enable-a"></a>
+<a name="enable-a" aria-hidden="true"></a>
 
 #### <a name="enable-the-a-record-mapping-in-the-app"></a>アプリの A レコード マッピングを有効にする
 
@@ -240,13 +240,13 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 ![追加された A レコード](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> カスタム ドメインの **[安全ではない]\(Not Secure\)** ラベルは、それがまだ SSL 証明書にバインドされておらず、ブラウザーからカスタム ドメインへの HTTPS 要求は、ブラウザーによってはエラーまたは警告を受け取る可能性があることを意味します。 SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+> カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
 
 手順を飛ばしていたり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
 
 ![検証エラー](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
-<a name="wildcard"></a>
+<a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>ワイルドカード ドメインのマップ
 
@@ -310,7 +310,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 - 構成されているカスタム ドメインに A レコードまたは CNAME レコード (またはその両方) がない。
 - クライアントのブラウザーが、ドメインの古い IP アドレスをキャッシュしている。 キャッシュをクリアして、DNS の解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
 
-<a name="virtualdir"></a>
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="migrate-an-active-domain"></a>アクティブなドメインの移行
 

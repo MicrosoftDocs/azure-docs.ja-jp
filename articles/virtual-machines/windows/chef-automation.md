@@ -4,7 +4,7 @@ description: Chef を使用して自動化された仮想マシンの展開と�
 services: virtual-machines-windows
 documentationcenter: ''
 author: diegoviso
-manager: jeconnoc
+manager: gwallace
 tags: azure-service-management,azure-resource-manager
 editor: ''
 ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
@@ -13,17 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2017
+ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 9cb7172fb529d8f0cd8650db7c06a78176ef342d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74b92c277b1d6eaa0984e55a70459bad59c2bf84
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64729557"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719280"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef で Azure 仮想マシンの展開を自動化する
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef は自動化と必要な状態の構成を提供する優れたツールです。
 
@@ -55,9 +54,24 @@ Chef ワークステーションは、ポリシーを作成したり、管理コ
 
 まず、Chef 構成ファイルと Cookbook を保存するディレクトリを作成して、ワークステーションを準備します。
 
-C:\chef というディレクトリを作成します。
+C:\Chef というディレクトリを作成します。
 
-Azure PowerShell [パブリッシュ設定](https://docs.microsoft.com/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information)をダウンロードします。
+お使いのワークステーション上に、最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードしてインストールします。
+
+## <a name="configure-azure-service-principal"></a>Azure サービス プリンシパルを構成する
+
+最も簡単に言えば、Azure サービス プリンシパルとは 1 つのサービス アカウントです。   ここでは、サービス プリンシパルを使用して、Chef Workstation から Azure リソースを作成します。  必要なアクセス許可を利用して関連するサービス プリンシパルを作成するには、PowerShell 内で次のコマンドを実行する必要があります。
+ 
+```powershell
+Login-AzureRmAccount
+Get-AzureRmSubscription
+Select-AzureRmSubscription -SubscriptionName "<yourSubscriptionName>"
+$myApplication = New-AzureRmADApplication -DisplayName "automation-app" -HomePage "https://chef-automation-test.com" -IdentifierUris "https://chef-automation-test.com" -Password "#1234p$wdchef19"
+New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
+New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
+```
+
+SubscriptionID、TenantID、ClientID、およびクライアント シークレット (上記で設定したパスワード) をメモしておいてください。後で必要になります。 
 
 ## <a name="setup-chef-server"></a>Chef サーバーの設定
 
@@ -86,7 +100,7 @@ Chef サーバーを使用していない場合は、次の手順を実行でき
 
 このスターター キットの zip ファイルでは、`.chef` ディレクトリに組織の構成ファイルとユーザー キーが含まれています。
 
-`organization-validator.pem` は秘密キーであり、秘密キーは Chef サーバーに保存するべきではないため、個別にダウンロードする必要があります。 [Chef Manage](https://manage.chef.io/) で [Reset Validation Key]\ (検証キーのリセット\) を選択します。これで、別個にダウンロードするためのファイルが提供されます。 ファイルを c:\chef に保存します。
+`organization-validator.pem` は秘密キーであり、秘密キーは Chef サーバーに保存するべきではないため、個別にダウンロードする必要があります。 [Chef Manage](https://manage.chef.io/) から、[管理] セクションに移動して、[Reset Validation Key]\(検証キーのリセット\) を選択します。これで、個別にダウンロードするためのファイルが提供されます。 ファイルを c:\chef に保存します。
 
 ### <a name="configuring-your-chef-workstation"></a>Chef ワークステーションの構成
 
@@ -138,19 +152,20 @@ validation_client_name   "myorg-validator"
 
 validation_key           "#{current_dir}/myorg.pem"
 
-また、Azure パブリッシュ設定ファイルの名前を反映する次の行を追加します。
+knife[:azure_tenant_id] =         "0000000-1111-aaaa-bbbb-222222222222"
 
-    knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+knife[:azure_subscription_id] =   "11111111-bbbbb-cccc-1111-222222222222"
 
-パスから「/../」を削除して「cookbook_path」を変更し、次のようにします。
+knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
 
-    cookbook_path  ["#{current_dir}/cookbooks"]
+knife[:azure_client_secret] =     "#1234p$wdchef19"
 
-これらの行によって、Knife が c:\chef\cookbooks の cookbook ディレクトリを参照し、Azure 操作中に Azure パブリッシュ設定を使用するようになります。
+
+これらの行によって、Knife では c:\chef\cookbooks 下の cookbook ディレクトリを参照し、また、Azure 操作の中で作成した Azure サービス プリンシパルが使用されることが保証されます。
 
 これで、knife.rb ファイルは次の例のようになります。
 
-![][6]
+![][14]
 
 <!--- Giant problem with this section: Chef 12 uses a config.rb instead of knife.rb
 // However, the starter kit hasn't been updated
@@ -159,17 +174,19 @@ validation_key           "#{current_dir}/myorg.pem"
 <!--- update image [6] knife.rb -->
 
 ```rb
-knife.rb
 current_dir = File.dirname(__FILE__)
 log_level                :info
 log_location             STDOUT
-node_name                "mynode"
-client_key               "#{current_dir}/user.pem"
-chef_server_url          "https://api.chef.io/organizations/myorg"
+node_name                "myorg"
+client_key               "#{current_dir}/myorg.pem"
 validation_client_name   "myorg-validator"
-validation_key           ""#{current_dir}/myorg.pem"
-cookbook_path            ["#{current_dir}/cookbooks"]
-knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+validation_key           "#{current_dir}/myorg-validator.pem"
+chef_server_url          "https://api.chef.io/organizations/myorg"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+knife[:azure_tenant_id] = "0000000-1111-aaaa-bbbb-222222222222"
+knife[:azure_subscription_id] = "11111111-bbbbb-cccc-1111-222222222222"
+knife[:azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
+knife[:azure_client_secret] = "#1234p$wdchef19"
 ```
 
 ## <a name="install-chef-workstation"></a>Chef ワークステーションのインストール
@@ -182,13 +199,13 @@ knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 `chef --version` は、次のように返します。
 
 ```
-Chef Workstation: 0.2.29
-  chef-run: 0.2.2
-  Chef Client: 14.6.47x
-  delivery-cli: master (6862f27aba89109a9630f0b6c6798efec56b4efe)
-  berks: 7.0.6
-  test-kitchen: 1.23.2
-  inspec: 3.0.12
+Chef Workstation: 0.4.2
+  chef-run: 0.3.0
+  chef-client: 15.0.300
+  delivery-cli: 0.0.52 (9d07501a3b347cc687c902319d23dc32dd5fa621)
+  berks: 7.0.8
+  test-kitchen: 2.2.5
+  inspec: 4.3.2
 ```
 
 > [!NOTE]
@@ -218,7 +235,7 @@ Knife Azure 拡張機能をインストールします。 これで Knife に「
 
 すべてが正しく構成されたことを確認するには、次のコマンドを実行します。
 
-    knife azure image list
+    knife azurerm server list
 
 すべてが正しく構成されていると、利用できる Azure イメージの一覧がスクロール表示されます。
 
@@ -273,32 +290,50 @@ C:\chef\cookbooks\webserver\recipes\default.rb ファイルを変更し、次の
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Knife Azure で仮想マシンをデプロイする
 Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb ページをインストールする "Webserver" Cookbook を適用します。
 
-これを実行するには **knife azure server create** コマンドを使用します。
+これを実行するには **knife azurerm server create** コマンドを使用します。
 
 コマンドの例を次に示します。
 
-    knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
+    knife azurerm server create `
+    --azure-resource-group-name rg-chefdeployment `
+    --azure-storage-account store `
+    --azure-vm-name chefvm `
+    --azure-vm-size 'Standard_DS2_v2' `
+    --azure-service-location 'westus' `
+    --azure-image-reference-offer 'WindowsServer' `
+    --azure-image-reference-publisher 'MicrosoftWindowsServer' `
+    --azure-image-reference-sku '2016-Datacenter' `
+    --azure-image-reference-version 'latest' `
+    -x myuser -P myPassword123 `
+    --tcp-endpoints '80,3389' `
+    --chef-daemon-interval 1 `
+    -r "recipe[webserver]"
 
-パラメーターを見ればすぐにわかります。 特定の変数に置き換えて実行してください。
+
+上記の例では、米国西部リージョン内に Windows Server 2016 がインストールされている Standard_DS2_v2 仮想マシンを作成します。 特定の変数に置き換えて実行してください。
 
 > [!NOTE]
-> このコマンド ラインでは –tcp-endpoints パラメーターを使用し、エンドポイント ネットワーク フィルター ルールも自動化しています。 ここではポート 80 と 3389 を開き、Web ページと RDP セッションにアクセスできるようにしています。
+> このコマンド ラインでは –tcp-endpoints パラメーターを使用し、エンドポイント ネットワーク フィルター ルールも自動化しています。 ここでは、ポート 80 と 3389 を開き、Web ページと RDP セッションにアクセスできるようにしました。
 >
 >
 
 コマンドを実行したら、Azure portal に移動し、ご使用のマシンでプロビジョニングが開始されることを確認します。
 
-![][13]
+![][15]
 
 次にコマンド プロンプトが表示されます。
 
-![][10]
+![][16]
 
-デプロイが完了したら、このポートは knife Azure コマンドで仮想マシンをプロビジョニングした際に開くため、ポート 80 で Web サービスに接続できるようになります。 この仮想マシンはこのクラウド サービスで唯一の仮想マシンであるため、クラウド サービスの URL で接続します。
+デプロイが完了すると、新しい仮想マシンのパブリック IP アドレスが完了したデプロイに表示されます。これをコピーして Web ブラウザーに貼り付けて、デプロイした Web サイトを閲覧できます。 仮想マシンをデプロイしたときに、ポート 80 を開いたので、外部で利用可能になっているはずです。   
 
 ![][11]
 
 この例では、クリエイティブ HTML コードを使用します。
+
+また、[Chef Manage](https://manage.chef.io/) 上でノードのステータスも閲覧できます。 
+
+![][17]
 
 また、ポート 3389 を経由して Azure portal から RDP セッションを通じて接続できます。
 
@@ -316,6 +351,10 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 [10]: media/chef-automation/10.png
 [11]: media/chef-automation/11.png
 [13]: media/chef-automation/13.png
+[14]: media/chef-automation/14.png
+[15]: media/chef-automation/15.png
+[16]: media/chef-automation/16.png
+[17]: media/chef-automation/17.png
 
 
 <!--Link references-->

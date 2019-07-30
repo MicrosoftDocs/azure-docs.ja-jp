@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 03bec71cca445d580605c1b0f4705e619933000a
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: cee93538706b8a886e2468e8ef9bf0d9b504e2c6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729132"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696176"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure PowerShell サンプル
 
@@ -40,10 +40,9 @@ PowerShell をインストールしてローカルで使用する場合、この
 |**geo レプリケーションを構成しフェールオーバーする**||
 | [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、単一の Azure SQL データベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
 | [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、SQL エラスティック プールにある Azure SQL データベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
-| [単一データベースのフェールオーバー グループを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database サーバー インスタンスのフェールオーバー グループを構成し、このフェールオーバー グループにデータベースを追加し、セカンダリ サーバーにフェールオーバーします |
 |**単一のデータベースとエラスティック プールをスケーリングする**||
 | [単一のデータベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL データベースのパフォーマンス メトリックを監視し、そのデータベースを上位のコンピューティング サイズにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成します。 |
-| [エラスティック プールをスケーリングする](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database エラスティック プールのパフォーマンス メトリックを監視し、そのデータベースを上位のコンピューティング サイズにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成します。  |
+| [エラスティック プールをスケーリングする](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database エラスティック プールのパフォーマンス メトリックを監視し、そのデータベースを上位のコンピューティング サイズにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成します。 |
 | **監査と脅威の検出** |
 | [監査と脅威検出を構成する](scripts/sql-database-auditing-and-threat-detection-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、Azure SQL データベースの監査と脅威検出ポリシーを構成します。 |
 | **データベースを復元、コピー、インポートする**||
@@ -67,6 +66,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 |**マネージド インスタンスを作成して構成する**||
 | [Managed Instance を作成し、管理する](scripts/sql-database-create-configure-managed-instance-powershell.md) | この PowerShell スクリプトでは、Azure PowerShell を使用してマネージド インスタンスを作成および管理する方法が示されます |
 | [Azure Resource Manager テンプレート を使用してマネージド インスタンスを作成および管理する](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure PowerShell Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成および管理する方法を示しています。|
+| [データベースを別の geo リージョンの Managed Instance に復元する](scripts/sql-managed-instance-restore-geo-backup.md) | この PowerShell スクリプトでは、1 つのデータベースのバックアップが作成されて、別のリージョンに復元されます。 これは、geo リストア ディザスター リカバリー シナリオとして知られています。 |
 | **透過的なデータ暗号化 (TDE) の構成**||
 | [Azure Key Vault の独自のキーを使用してマネージド インスタンスで Transparent Data Encryption を管理する](scripts/transparent-data-encryption-byok-sql-managed-instance-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトによって、Azure Key Vault のキーを使用し、Azure SQL マネージド インスタンスの Bring Your Own Key シナリオで Transparent Data Encryption (TDE) が構成されます。|
 |||

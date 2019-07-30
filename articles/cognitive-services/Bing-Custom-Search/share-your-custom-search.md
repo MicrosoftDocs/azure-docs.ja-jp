@@ -1,6 +1,6 @@
 ---
 title: カスタム検索の共有 - Bing Custom Search
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: カスタム検索インスタンスを共有する方法について説明します。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: dc4ab9237929df3610d4dd53786bb98903fa5593
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d016fbed07fa31ac92ac804d6b4d63692834b42c
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61067375"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404974"
 ---
 # <a name="share-your-custom-search-instance"></a>カスタム検索インスタンスの共有
 

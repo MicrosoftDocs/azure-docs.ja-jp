@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b7e59e39adbb485738ca66b7ad8e5ba8293ddc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ff2089e8abdde8e6a99de1be2be070fb457fa632
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784992"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276637"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 
@@ -59,16 +59,16 @@ ms.locfileid: "65784992"
 
 ### <a name="create-your-application"></a>アプリケーションの作成
 
-1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
+1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
 2. **[テンプレート]** で **[Visual C#]** を選択します。
 3. **[Blank App (Universal Windows)] (空のアプリ (ユニバーサル Windows))** を選択します。
-4. アプリの名前を指定し、**[OK]** を選択します。
-5. メッセージが表示されたら、"**ターゲット**" と "**最小**" バージョンに任意のバージョンを選択し、**[OK]** を選択します。
+4. アプリの名前を指定し、 **[OK]** を選択します。
+5. メッセージが表示されたら、"**ターゲット**" と "**最小**" バージョンに任意のバージョンを選択し、 **[OK]** を選択します。
 
     >![最小バージョンとターゲット バージョン](./media/tutorial-v2-windows-uwp/vs-minimum-target.png)
 
 ## <a name="add-microsoft-authentication-library-to-your-project"></a>プロジェクトへの Microsoft Authentication Library の追加
-1. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択します。
+1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。
 2. 以下のコマンドをコピーして、**パッケージ マネージャー コンソール**のウィンドウに貼り付けます。
 
     ```powershell
@@ -147,7 +147,7 @@ ms.locfileid: "65784992"
         }
 
         /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
@@ -329,18 +329,18 @@ ms.locfileid: "65784992"
 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
 1. **[新規登録]** を選択します。
    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `UWP-App-calling-MSGraph`)。
-   - **[サポートされているアカウントの種類]** セクションで、**[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択します。
+   - **[サポートされているアカウントの種類]** セクションで、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択します。
    - **[登録]** を選択して、アプリケーションを作成します。
-1. アプリの **[概要]** ページで、**[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 Visual Studio に戻って **MainPage.xaml.cs** を開き、ClientId の値を、先ほど記録しておいたアプリケーション ID に置き換えます。
+1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 Visual Studio に戻って **MainPage.xaml.cs** を開き、ClientId の値を、先ほど記録しておいたアプリケーション ID に置き換えます。
 1. アプリのページの一覧から **[認証]** を選択します。
    1. **[リダイレクト URI]** セクションの、リダイレクト URI の一覧で:
-   1. **[種類]** 列で、**[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
+   1. **[種類]** 列で、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
    1. **[リダイレクト URI]** 列に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。
 1. **[保存]** を選択します。
 1. アプリのページの一覧から **[API のアクセス許可]** を選択します
    - **[アクセス許可の追加]** をクリックします。さらに、
    - **[Microsoft API]** タブが選択されていることを確認します
-   - *[よく使用される Microsoft API]* セクションで、**[Microsoft Graph]** をクリックします
+   - *[よく使用される Microsoft API]* セクションで、 **[Microsoft Graph]** をクリックします
    - **[委任されたアクセス許可]** セクションで、適切なアクセス許可がオンになっていることを確認します:**User.Read**。 必要に応じて検索ボックスを使用します。
    - **[アクセス許可の追加]** ボタンを選択します
 
@@ -364,13 +364,13 @@ Windows 統合認証を、フェデレーション Azure AD ドメインと共�
 
 ![アプリケーションのユーザー インターフェイス](./media/tutorial-v2-windows-uwp/testapp-ui.png)
 
-テストの準備ができたら、**[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** を選択します。 次に、Azure AD 組織アカウントまたは Microsoft アカウント (live.com、outlook.com など) を使用してサインインします。 初めての場合は、ユーザーにサインインを求めるウィンドウが表示されます。
+テストの準備ができたら、 **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** を選択します。 次に、Azure AD 組織アカウントまたは Microsoft アカウント (live.com、outlook.com など) を使用してサインインします。 初めての場合は、ユーザーにサインインを求めるウィンドウが表示されます。
 
 ![サインイン ページ](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
 ### <a name="consent"></a>同意
 
-アプリケーションに初めてサインインすると、次のような同意画面が表示されます。 アクセスするには、**[はい]** を選択して、明示的に同意します。
+アプリケーションに初めてサインインすると、次のような同意画面が表示されます。 アクセスするには、 **[はい]** を選択して、明示的に同意します。
 
 ![アクセス同意画面](./media/tutorial-v2-windows-uwp/consentscreen.png)
 
@@ -380,7 +380,7 @@ Windows 統合認証を、フェデレーション Azure AD ドメインと共�
 
 ![API 呼び出しの結果画面](./media/tutorial-v2-windows-uwp/uwp-results-screen.PNG)
 
-`AcquireTokenInteractive` または `AcquireTokenSilent` によって取得したトークンに関する以下の基本的な情報も、**[Token Info]\(トークン情報\)** ボックスに表示されます。
+`AcquireTokenInteractive` または `AcquireTokenSilent` によって取得したトークンに関する以下の基本的な情報も、 **[Token Info]\(トークン情報\)** ボックスに表示されます。
 
 |プロパティ  |形式  |説明 |
 |---------|---------|---------|
@@ -408,7 +408,7 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 **原因:** エンタープライズ機能および証明書機能が有効になっていません。
 
-**解決策:**[フェデレーション ドメインでの統合認証](#enable-integrated-authentication-on-federated-domains-optional)に関するセクションの手順に従います。
+**解決策:** [フェデレーション ドメインでの統合認証](#enable-integrated-authentication-on-federated-domains-optional)に関するセクションの手順に従います。
 
 ### <a name="issue-2"></a>問題 2
 
@@ -416,6 +416,6 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 **原因:** この問題は、Windows 10 デスクトップで実行される UWP アプリケーションの Web 認証ブローカーに関する既知の制限です。 Windows 10 Mobile では正常に動作します。
 
-**対処法:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、**[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
+**対処法:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、 **[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

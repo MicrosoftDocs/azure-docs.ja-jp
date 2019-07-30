@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: fb45d2e36939a53d6242cf7cd5a0b9f1990780c3
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: cedcc1be5525cc6932ff168e6549de84fa02a4ca
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299047"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669105"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST チュートリアル:Azure Search のインデックス パイプラインで Cognitive Services API を呼び出す
 
@@ -61,7 +61,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -89,7 +89,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ## <a name="set-up-postman"></a>Postman の設定
 
-Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Search REST API を調べる方法](search-fiddler.md)に関するページを参照してください。
+Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
 
 このチュートリアルで使用した要求メソッドは **POST**、**PUT**、**GET** です。 ヘッダーのキーは、"application/json" に設定された "Content-type" と、Azure Search サービスの管理者キーに設定された "api-key" です。 本文は、呼び出しの実際のコンテンツを配置する場所です。 
 
@@ -488,4 +488,4 @@ Content-Type: application/json
 カスタム スキルを使ってパイプラインをカスタマイズまたは拡張します。 カスタム スキルを作成してスキルセットに追加すると、自分で作成したテキストまたは画像分析をオンボードできます。 
 
 > [!div class="nextstepaction"]
-> [例: カスタム スキルの作成](cognitive-search-create-custom-skill-example.md)
+> [例:コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)

@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
+ms.topic: concept
+ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: ebe7f9307fcfa39d6cb133203a4c17243ad390c5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2353b8c735602aff0386f44cc29d2be5eb9f90c4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025503"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340889"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -41,6 +41,12 @@ Personalizer では、アクションとコンテキストに対して送信で�
 
 Personalizer では、フィーチャーとして文字列、数値、ブールをサポートしています。
 
+### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>フィーチャーの種類の選択が Personalizer で Machine Learning に及ぼす影響
+
+* **文字列**:文字列型の場合、キーと値のすべての組み合わせが、Personalizer の機械学習モデルに新しい重みを作成します。 
+* **数値**:数字に比例した影響をパーソナライズ結果に及ぼす必要がある場合は、数値を使用してください。 これはシナリオに大きく依存します。 店舗体験をパーソナライズする場合のような単純化した例では、2 匹または 3 匹のペットを飼っている人が、1 匹しか飼っていない人の 2 倍または 3 倍、パーソナライズ結果に影響を及ぼすようにしたいので、数値である NumberOfPetsOwned がフィーチャーの候補になります。 数値の単位に基づいているが (年齢、気温、人の身長のように) 意味が線形ではないフィーチャーは文字列としてエンコードするのが最適であり、フィーチャーの品質は通常、範囲を使用して向上させることができます。 たとえば、年齢は "Age":"0-5"、"Age":"6-10" などのようにエンコードできます。
+* "false" の値で送信された**ブール**値は、まったく送信されなかったかのように機能します。
+
 存在しないフィーチャーは要求から除外してください。 null 値を含むフィーチャーの送信は避けてください。モデルをトレーニングするとき、存在するものとして、かつ、値 "null" で処理されます。
 
 ## <a name="categorize-features-with-namespaces"></a>名前空間でフィーチャーを分類する
@@ -64,12 +70,15 @@ Personalizer では、フィーチャーが名前空間で整理されます。 
 
 次の JSON では、`user`、`state`、`device` がフィーチャーの名前空間です。
 
+JSON オブジェクトには、入れ子にした JSON オブジェクトと単純なプロパティ/値を含めることができます。 配列は、配列の項目が数値の場合にのみ含めることができます。 
+
 ```JSON
 {
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug"
+                "name":"Doug",
+                "latlong": [47.6, -122.1]
             }
         },
         {
@@ -123,7 +132,7 @@ Artificial Intelligence や、すぐに実行できる Cognitive Services は Pe
 
 人工知能サービスを利用して項目を事前に処理することで、パーソナライズに関連する可能性がある情報を自動的に抽出できます。
 
-例: 
+例:
 
 * [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) で映画ファイルを実行し、シーンの要素、テキスト、センチメント、その他さまざまな属性を抽出できます。 そのような属性は密度を高くし、元の項目メタデータにはなかった特性を反映できます。 
 * たとえば、画像は物体検出で、顔はセンチメントで実行できます。
@@ -190,6 +199,8 @@ Rank API コールの結果として生成される_アクション_をユーザ
 
 Rank を呼び出すとき、次から複数のアクションを選択して送信します。
 
+JSON オブジェクトには、入れ子にした JSON オブジェクトと単純なプロパティ/値を含めることができます。 配列は、配列の項目が数値の場合にのみ含めることができます。 
+
 ```json
 {
     "actions": [
@@ -198,7 +209,8 @@ Rank を呼び出すとき、次から複数のアクションを選択して送
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "medium"
+          "spiceLevel": "medium",
+          "grams": [400,800]
         },
         {
           "nutritionLevel": 5,
@@ -211,7 +223,8 @@ Rank を呼び出すとき、次から複数のアクションを選択して送
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [150, 300, 450]
         },
         {
           "nutritionalLevel": 2
@@ -223,7 +236,8 @@ Rank を呼び出すとき、次から複数のアクションを選択して送
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [300, 600, 900]
         },
         {
           "nutritionLevel": 5
@@ -238,7 +252,8 @@ Rank を呼び出すとき、次から複数のアクションを選択して送
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "low"
+          "spiceLevel": "low",
+          "grams": [300, 600]
         },
         {
           "nutritionLevel": 8
@@ -265,6 +280,8 @@ _コンテキスト_の情報は各アプリケーションとユース ケー�
 
 コンテキストは、Rank API に送信される JSON オブジェクトとして表現されます。
 
+JSON オブジェクトには、入れ子にした JSON オブジェクトと単純なプロパティ/値を含めることができます。 配列は、配列の項目が数値の場合にのみ含めることができます。 
+
 ```JSON
 {
     "contextFeatures": [
@@ -282,7 +299,9 @@ _コンテキスト_の情報は各アプリケーションとユース ケー�
         {
             "device": {
                 "mobile":true,
-                "Windows":true
+                "Windows":true,
+                "screensize": [1680,1050]
+                }
             }
         }
     ]

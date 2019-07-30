@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 7f1b6f955dd3f59f6c17403b536cf99d666aab08
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: chackdan
+ms.openlocfilehash: df25c52e7a3f35355eb52bd95a39f55852adfcae
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392996"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876590"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric でリバース プロキシを設定して構成する
 オプションの Azure Service Fabric サービスであるリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントのある他のサービスを検出してそのサービスと通信するのに役立ちます。 詳しくは、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。 この記事では、クラスターでリバース プロキシを設定して構成する方法を示します。 

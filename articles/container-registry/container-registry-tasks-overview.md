@@ -1,22 +1,22 @@
 ---
-title: Azure Container Registry タスク (ACR タスク) を使用して OS とフレームワークの修正プログラムの適用を自動化する
-description: クラウド内での安全で自動化されたコンテナー イメージのビルドと修正プログラムの適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
+title: Azure Container Registry タスク (ACR) でコンテナー イメージのビルドとパッチ適用を自動化する
+description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: cc182743c3879ab2748f92022437bc23c26c371c
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 5089650996693b81e548bba8d89c0de29a8afd93
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977195"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147979"
 ---
-# <a name="automate-os-and-framework-patching-with-acr-tasks"></a>ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する
+# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
-コンテナーは、アプリケーションと開発者の依存関係をインフラストラクチャおよび操作の要件から分離する新たなレベルの仮想化を提供します。 ただし、このアプリケーション仮想化に修正プログラムを適用する方法に取り組む必要が残っています。
+コンテナーは、アプリケーションと開発者の依存関係をインフラストラクチャおよび操作の要件から分離する新たなレベルの仮想化を提供します。 ただし、コンテナーのライフサイクルを通してこのアプリケーション仮想化を管理し修正プログラムを適用する方法に対処することはやはり必要です。
 
 ## <a name="what-is-acr-tasks"></a>ACR タスクとは
 
@@ -46,8 +46,7 @@ ACR タスクの[クイック タスク](container-registry-tutorial-quick-task.
 | ローカル ファイルシステム | ローカル ファイル システム上のディレクトリ内のファイル。 | `/home/user/projects/myapp` |
 | GitHub master ブランチ | GitHub リポジトリの master (またはその他の既定の) ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub ブランチ | GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub PR | GitHub リポジトリの pull request 。 | `https://github.com/gituser/myapp-repo.git#pull/23/head` |
-| GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例は、PR とサブフォルダーの指定の組み合わせを示しています。 | `https://github.com/gituser/myapp-repo.git#pull/24/head:myfolder` |
+| GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
 
 ACR タスクは、コンテナー ライフサイクル プリミティブとして設計されています。 たとえば、ACR タスクを CI/CD ソリューションに統合します。 [az login][az-login] を[サービス プリンシパル][az-login-service-principal]で実行することにより、CI/CD ソリューションは [az acr build][az-acr-build] コマンドを発行してイメージ ビルドを開始できます。
@@ -65,7 +64,7 @@ ACR タスクを使用して、コードが Git リポジトリにコミット�
 
 ## <a name="automate-os-and-framework-patching"></a>OS とフレームワークの修正プログラムの適用を自動化する
 
-ACR タスクがコンテナー ビルド ワークフローを真に強化する能力は、基本イメージに対する更新を検出する機能に由来します。 更新された基本イメージがレジストリにプッシュされると、ACR タスクはそれに基づいてすべてのアプリケーション イメージを自動的にビルドできます。
+ACR タスクがコンテナー ビルド ワークフローを真に強化する能力は、基本イメージに対する更新を検出する機能に由来します。 更新された基本イメージがレジストリにプッシュされると、または基本イメージが Docker Hub などのパブリック リポジトリで更新されると、ACR タスクではそれに基づいてすべてのアプリケーション イメージを自動的にビルドできます。
 
 コンテナー イメージは、"*基本*" イメージと "*アプリケーション*" イメージに大きく分類できます。 通常、基本イメージには、アプリケーションのビルドとその他のカスタマイズの基になるオペレーティング システムとアプリケーション フレームワークが含まれます。 通常、これらの基本イメージ自体はパブリック アップストリーム イメージに基づいています。たとえば、[Alpine Linux][base-alpine]、[Windows][base-windows]、[.NET][base-dotnet]、[Node.js][base-node] です。 いくつかのアプリケーション イメージは、共通の基本イメージを共有することがあります。
 
@@ -76,7 +75,7 @@ ACR タスクはコンテナー イメージをビルドするときに基本イ
 OS とフレームワークの修正プログラムの適用については、[Azure Container Registry タスクを使用して基本イメージ更新時のイメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)ことに関する ACR タスクの 3 つ目のチュートリアルを参照してください。
 
 > [!NOTE]
-> 基本イメージの更新は、基本イメージとアプリケーション イメージの両方が同じ Azure コンテナー レジストリにある場合、または基本イメージがパブリック Docker Hub リポジトリにある場合にのみビルドをトリガーします。
+> 現在、基本イメージの更新では、基本イメージとアプリケーション イメージの両方が同じ Azure コンテナー レジストリにある場合、または基本イメージがパブリック環境の Docker Hub リポジトリまたは Microsoft Container Registry リポジトリにある場合にのみ、ビルドがトリガーされます。
 
 ## <a name="multi-step-tasks"></a>複数ステップのタスク
 

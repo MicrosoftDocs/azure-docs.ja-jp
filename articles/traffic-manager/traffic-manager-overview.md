@@ -2,7 +2,7 @@
 title: Azure Traffic Manager | Microsoft Docs
 description: この記事では、Azure Traffic Manager の概要を示します。 実際のアプリケーションのユーザー トラフィックを負荷分散するための選択肢として適切かどうかを見極めましょう。
 services: traffic-manager
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: kumud
-ms.openlocfilehash: a8504cea3af6eb7633cf6738a73f757767d83138
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: allensu
+ms.openlocfilehash: 95ef493ed44da8fd8372c11f15c3ab712961783e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534319"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071023"
 ---
 # <a name="what-is-traffic-manager"></a>Traffic Manager について
 Azure Traffic Manager は、世界中の Azure リージョン間でサービスへのトラフィックを最適に配分しつつ、高可用性と応答性を実現する DNS ベースのトラフィック ロード バランサーです。

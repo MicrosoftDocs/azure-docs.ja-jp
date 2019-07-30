@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 06e61d30f0d4e598c48f190572b8b4343f351043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e4c0a6cd25587b33c06526b57e6acdbebb69c8b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762786"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445641"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL Database サーバーの SQL Database リソース制限
 
@@ -44,6 +44,9 @@ ms.locfileid: "65762786"
 > データベースの数が SQL Database サーバーあたりの制限に近づくと、次の状況が発生します。
 > - マスター データベースに対して実行するクエリの待機時間が増えます。  これには、リソース使用率統計情報のビューも含まれます (sys.resource_stats など)。
 > - サーバー内のデータベースの列挙を要する、管理操作やポータル ビュー ポイント表示の待機時間が長くなります。
+
+### <a name="storage-size"></a>ストレージ サイズ
+- 単一データベース リソースについては、[DTU ベースのリソース制限](sql-database-dtu-resource-limits-single-databases.md)に関するページ、または価格レベルごとのストレージ サイズ制限についての[仮想コアベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページのいずれかを参照してください。
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>データベース リソースが制限に達したときの影響
 

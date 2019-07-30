@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74ba9b8d0ce86a5c663eb9fbb6190e2bcf4513d7
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f510a111a6c8846b300c09f368a3a2a05b2bb7ad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412683"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719902"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Azure での既存の Windows VM の再起動またはサイズ変更に関するデプロイメントの問題のトラブルシューティング
 停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。 このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
@@ -41,7 +41,7 @@ ms.locfileid: "47412683"
 ### <a name="resolution"></a>解決策
 * 可用性セットのすべての VM を停止し、各 VM を再起動します。
   
-  1. **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
+  1. **[リソース グループ]**  > *対象のリソース グループ* >  **[リソース]**  > *対象の可用性セット* >  **[Virtual Machines]**  > *対象の仮想マシン* >  **[停止]** の順にクリックします。
   2. すべての VM が停止したら、停止している各 VM を選択し、[起動] をクリックします。
 * 後で再起動要求を再試行します。
 
@@ -57,7 +57,7 @@ VM のサイズ変更要求は、クラウド サービスをホストしてい�
   
   1. 可用性セットのすべての VM を停止します。
      
-     * **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
+     * **[リソース グループ]**  > *対象のリソース グループ* >  **[リソース]**  > *対象の可用性セット* >  **[Virtual Machines]**  > *対象の仮想マシン* >  **[停止]** の順にクリックします。
   2. すべての VM が停止したら、目的の VM のサイズを大きなサイズに変更します。
   3. サイズ変更した VM を選択して **[起動]** をクリックした後、停止している各 VM を起動します。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e82abd6a7915123a94b4355e24cb94f13f9693c8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110011"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550384"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。
@@ -32,7 +32,7 @@ ms.locfileid: "62110011"
 ![Service Fabric プロジェクトと Cloud Services プロジェクトの比較][3]
 
 ## <a name="worker-role-to-stateless-service"></a>worker ロールからステートレス サービスへ
-概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Document DB などの外部の状態ストアが管理します。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートレス サービスに変換する方法です。
+概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Cosmos DB などの外部の状態ストアによって管理されます。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートレス サービスに変換する方法です。
 
 ![worker ロールからステートレス サービスへ][4]
 

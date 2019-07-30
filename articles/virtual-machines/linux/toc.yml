@@ -61,8 +61,16 @@
   items:
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: リージョンと可用性
-      href: regions-and-availability.md
+    - name: リージョン
+      href: regions.md
+    - name: 可用性とパフォーマンス
+      items:
+        - name: 可用性
+          href: availability.md
+        - name: コロケーション
+          href: co-location.md
+        - name: ネットワーク パフォーマンス
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: VM の種類とサイズ
       href: sizes.md
       items:
@@ -137,6 +145,8 @@
           href: infrastructure-example.md
         - name: vCPU のクォータ
           href: quotas.md
+    - name: セキュリティ属性
+      href: virtual-machines-linux-security-attributes.md
 - name: ハウツー ガイド
   items:
     - name: VM の作成
@@ -274,13 +284,13 @@
           items:
             - name: 概要
               href: image-builder-overview.md
-            - name: CLI の使用
+            - name: Azure CLI の使用
               href: image-builder.md
             - name: テンプレート リファレンス
               href: image-builder-json.md
-            - name: ギャラリーと共に使用する
+            - name: イメージ ギャラリー用のビルド
               href: image-builder-gallery.md
-            - name: イメージ バージョンを更新する
+            - name: 既存のイメージの更新
               href: image-builder-gallery-update-image-version.md
             - name: トラブルシューティング
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
@@ -320,6 +330,8 @@
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 高可用性
           href: manage-availability.md
+        - name: 近接通信配置グループの作成
+          href: proximity-placement-groups.md
         - name: 垂直方向にスケーリングする
           href: vertical-scaling-automation.md
         - name: 可用性ゾーン内に VM を作成する

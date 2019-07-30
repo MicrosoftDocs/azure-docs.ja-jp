@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca062f4024bb5b0946812e00c8ccc1254b56d333
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003549"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440795"
 ---
 # <a name="what-are-baseline-policies"></a>ベースライン ポリシーとは?
 
 ベースライン ポリシーは、多くの一般的な攻撃から組織を保護するのに役立つ一連の定義済みポリシーです。 これらの一般的な攻撃としては、パスワード スプレー、リプレイ、およびフィッシングなどが考えられます。 ベースライン ポリシーは、Azure AD のすべてのエディションで使用できます。 この数年間で ID ベースの攻撃が増えているため、Microsoft はこれらのベースライン保護ポリシーをすべてのユーザーが利用できるようにしています。 これらの 4 つのポリシーの目標は、すべての組織が追加の費用なしでベースライン レベルのセキュリティを確実に有効にできるようにすることです。  
 
-カスタマイズされた条件付きアクセスを管理するには、Azure AD Premium ライセンスが必要です。
+カスタマイズされた条件付きアクセス ポリシーを管理するには、Azure AD Premium ライセンスが必要です。
 
 ## <a name="baseline-policies"></a>ベースライン ポリシー
 
@@ -30,18 +30,18 @@ ms.locfileid: "66003549"
 
 組織で有効にすることができるベースライン ポリシーには次の 4 つがあります。
 
-* [管理者に MFA を要求する](howto-baseline-protect-administrators.md)
+* [管理者に MFA を要求する (プレビュー)](howto-baseline-protect-administrators.md)
 * [エンド ユーザーの保護 (プレビュー)](howto-baseline-protect-end-users.md)
 * [レガシ認証をブロックする (プレビュー)](howto-baseline-protect-legacy-auth.md)
 * [サービス管理のために MFA を要求する (プレビュー)](howto-baseline-protect-azure.md)
 
 この 4 つのポリシーはすべて、POP、IMAP、より以前の Office デスクトップ クライアントなどのレガシ認証フローに影響を与えます。
 
-### <a name="require-mfa-for-admins"></a>Require MFA for admins \(管理者に MFA を要求する\)
+### <a name="require-mfa-for-admins-preview"></a>管理者に MFA を要求する (プレビュー)
 
 管理者アカウントには権限とアクセス権があるため、特別な注意を払って対処する必要があります。 特権アカウントの保護を向上するための一般的な方法の 1 つは、特権アカウントがサインインに使用されるときに、強力な形式のアカウント検証を必須にすることです。 Azure Active Directory では、Azure Multi-Factor Authentication への登録とその使用を管理者に要求することで、アカウント検証を強力にすることができます。
 
-[管理者に MFA を要求する](howto-baseline-protect-administrators.md) は、最も高い特権を持つ Azure AD ロールであると見なされている次のディレクトリ ロールに対して多要素認証 (MFA) を要求するベースライン ポリシーです。
+[管理者に MFA を要求する (プレビュー)](howto-baseline-protect-administrators.md)  は、最も高い特権を持つ Azure AD ロールであると見なされている次のディレクトリ ロールに対して多要素認証 (MFA) を要求するベースライン ポリシーです。
 
 * 全体管理者
 * SharePoint 管理者
@@ -52,7 +52,7 @@ ms.locfileid: "66003549"
 * 課金管理者
 * ユーザー管理者
 
-これらのアカウントがスクリプトまたはコードで使用されている組織の場合は、 [マネージド ID](../managed-identities-azure-resources/overview.md) に置き換えることを検討してください。 一時的な回避策として、ベースライン ポリシーから特定のユーザー アカウントを除外することができます。
+これらのアカウントがスクリプトまたはコードで使用されている組織の場合は、 [マネージド ID](../managed-identities-azure-resources/overview.md) に置き換えることを検討してください。
 
 ### <a name="end-user-protection-preview"></a>エンド ユーザーの保護 (プレビュー)
 
@@ -84,7 +84,7 @@ ms.locfileid: "66003549"
 
 ベースライン ポリシーを有効にするには:
 
-1.  **Azure Portal**  にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1.  **Azure portal**  にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
 1. ポリシーの一覧では、有効にしたいベースライン ポリシーを選択します。
 1. **[ポリシーを有効にする]** を **[オン]** に設定します。
@@ -96,7 +96,7 @@ ms.locfileid: "66003549"
 
 * [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/azure-ad-secure-steps.md)
 * [Azure Active Directory の条件付きアクセスとは](overview.md)
-* [管理者に MFA を要求する](howto-baseline-protect-administrators.md)
+* [管理者に MFA を要求する (プレビュー)](howto-baseline-protect-administrators.md)
 * [エンド ユーザーの保護 (プレビュー)](howto-baseline-protect-end-users.md)
 * [レガシ認証をブロックする (プレビュー)](howto-baseline-protect-legacy-auth.md)
 * [サービス管理のために MFA を要求する (プレビュー)](howto-baseline-protect-azure.md)

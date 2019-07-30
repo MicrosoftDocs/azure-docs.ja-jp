@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7157682d7952529f9dfa98e8bc8707df9cfe944f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b3e94bfdb513016015320dfcdf7db30981466303
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509242"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272065"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 承認コード フロー
 
@@ -116,7 +117,9 @@ error=access_denied
 | state |前の表の詳しい説明を参照してください。 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる `state` 値が同一であることをアプリ側で確認する必要があります。 |
 
 ## <a name="2-get-a-token"></a>2.トークンを取得する
-承認コードを取得したところで、POST 要求を `/token` エンドポイントに送信して、トークンの `code` を目的のリソースに適用できます。 Azure AD B2C では、トークンを要求できる唯一のリソースはアプリの独自のバックエンド Web API です。 自身のトークンを要求するには、アプリのクライアント ID をスコープとして使用します。
+承認コードを取得したところで、POST 要求を `/token` エンドポイントに送信して、トークンの `code` を目的のリソースに適用できます。 Azure AD B2C では、対応するスコープを要求の中で指定することによって、普通に[他の API のアクセス トークンを要求](active-directory-b2c-access-tokens.md#request-a-token)できます。
+
+さらに、要求スコープとしてアプリのクライアント ID を使用するという慣例によって、アプリ独自のバックエンド Web API 用アクセス トークンを要求することもできます (その場合、そのクライアント ID を "audience" として持つアクセス トークンが得られます)。
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1

@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: b65073c0646db0cd0c27a71005bb4f74b091ae09
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 26f8348bc2de9cb56110c1cc7ce896934bb46ef7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506886"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722458"
 ---
 # <a name="what-is-reinforcement-learning"></a>強化学習とは
 

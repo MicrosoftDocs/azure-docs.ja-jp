@@ -15,15 +15,15 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61257652"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md)
 > * [Pig アクティビティ](data-factory-pig-activity.md)
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
@@ -68,9 +68,9 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. **[新規]** > **[データ + 分析]** > **[データ ファクトリ]** を選択します。
+1. **[新規]**  >  **[データ + 分析]**  >  **[データ ファクトリ]** を選択します。
 
-1. **[新しいデータ ファクトリ]** ブレードで、**[名前]** フィールドに「**SparkDF**」と入力します。
+1. **[新しいデータ ファクトリ]** ブレードで、 **[名前]** フィールドに「**SparkDF**」と入力します。
 
    > [!IMPORTANT]
    > Azure Data Factory の名前はグローバルに一意にする必要があります。 "データ ファクトリ名 SparkDF は利用できません" というエラーが発生した場合は、データ ファクトリの名前を変更します。 たとえば、yournameSparkDFdate を使用し、もう一度データ ファクトリを作成します。 名前付け規則の詳細については、[Data Factory の名前付け規則](data-factory-naming-rules.md)に関するページを参照してください。
@@ -81,7 +81,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
    > [!IMPORTANT]
    > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
@@ -100,7 +100,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. **[データ ファクトリ]** ブレードで **[作成およびデプロイ]** を選択します。 Data Factory エディターが表示されます。
 
-1. **[新しいデータ ストア]**、**[Azure Storage]** の順に選択します。
+1. **[新しいデータ ストア]** 、 **[Azure Storage]** の順に選択します。
 
    ![新しいデータ ストア](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
 
@@ -115,7 +115,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 #### <a name="create-an-hdinsight-linked-service"></a>HDInsight のリンクされたサービスを作成する
 この手順では、HDInsight Spark クラスターをデータ ファクトリにリンクする、HDInsight のリンクされたサービスを作成します。 HDInsight のクラスターは、このサンプルのパイプラインの Spark アクティビティに指定された Spark プログラムを実行するために使用されます。 
 
-1. Data Factory エディターで、**[詳細]** > **[新規計算]** > **[HDInsight クラスター]** を選択します。
+1. Data Factory エディターで、 **[詳細]**  >  **[新規計算]**  >  **[HDInsight クラスター]** を選択します。
 
     ![HDInsight のリンクされたサービスを作成する](media/data-factory-spark/new-hdinsight-linked-service.png)
 
@@ -155,7 +155,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 ### <a name="create-the-output-dataset"></a>出力データセットを作成する
 出力データセットは、スケジュール (1 時間に 1 回、毎日) を開始します。 このため、Spark アクティビティによって出力が生成されなくても、パイプラインでアクティビティの出力データセットを指定する必要があります。 アクティビティの入力データセットの指定は省略可能です。
 
-1. Data Factory エディターで、**[詳細]** > **[新しいデータセット]** > **[Azure Blob Storage]** を選択します。
+1. Data Factory エディターで、 **[詳細]**  >  **[新しいデータセット]**  >  **[Azure Blob Storage]** を選択します。
 
 1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON スニペットで、**OutputDataset** という名前のデータセットを定義します。 さらに、**adfspark** という BLOB コンテナーと **pyFiles/output** というフォルダーに結果が保存されるように指定します。 前述のように、このデータセットはダミー データセットです。 この例の Spark プログラムでは出力は生成されません。 **availability** セクションでは、出力データセットが毎日生成されることを指定します。 
 
@@ -186,7 +186,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 ### <a name="create-a-pipeline"></a>パイプラインを作成する。
 この手順で、HDInsightSpark アクティビティのあるパイプラインを作成します。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 そのため、この例では入力データセットを指定しません。
 
-1. Data Factory エディターで、**[詳細]** > **[新しいパイプライン]** を選択します。
+1. Data Factory エディターで、 **[詳細]**  >  **[新しいパイプライン]** を選択します。
 
 1. [Draft-1] ウィンドウのスクリプトを次のスクリプトで置き換えます。
 
@@ -236,11 +236,11 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 1. パイプラインをデプロイするには、コマンド バーの **[デプロイ]** を選択します。
 
 ### <a name="monitor-a-pipeline"></a>パイプラインを監視する
-1. **[データ ファクトリ]** ブレードで、**[監視と管理]** を選択して、別のタブで監視アプリケーションを開始します。
+1. **[データ ファクトリ]** ブレードで、 **[監視と管理]** を選択して、別のタブで監視アプリケーションを開始します。
 
     ![Monitor & Manage tile](media/data-factory-spark/monitor-and-manage-tile.png)
 
-1. 上部にある **[開始時刻]** フィルターを **[2/1/2017]** に変更して、**[適用]** を選択します。
+1. 上部にある **[開始時刻]** フィルターを **[2/1/2017]** に変更して、 **[適用]** を選択します。
 
 1. パイプラインの開始時刻 (2017-02-01) と終了時刻 (2017-02-02) の間は 1 日のみのため、1 つのアクティビティ ウィンドウのみが表示されます。 データ スライスの状態が **[準備完了]** であることを確認します。
 
@@ -252,7 +252,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. [こちらの Web サイト](https://CLUSTERNAME.azurehdinsight.net/jupyter)に移動して、HDInsight Spark クラスターの Jupyter Notebook を開始します。 HDInsight Spark クラスターのクラスター ダッシュボードを開いて、Jupyter Notebook を起動することもできます。
 
-1. **[新規]** > **[PySpark]** を選択して、新しい Notebook を開始します。
+1. **[新規]**  >  **[PySpark]** を選択して、新しい Notebook を開始します。
 
     ![Jupyter の新しい Notebook](media/data-factory-spark/jupyter-new-book.png)
 
@@ -267,7 +267,8 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
     ![Jupyter クエリの結果](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> 手順について詳しくは、[Spark SQL クエリの実行](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関するページをご覧ください。 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
+詳細な手順については、[Spark SQL クエリの実行](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関するページをご覧ください。 
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 getDebugInfo を **Always** に設定しているため、BLOB コンテナー内の pyFiles フォルダーに log サブフォルダーが表示されます。 ログ フォルダーのログ ファイルで、追加情報を確認できます。 このログ ファイルは、エラーが発生している場合に特に便利です。 運用環境では、これを **Failure** に設定してください。
@@ -279,7 +280,7 @@ getDebugInfo を **Always** に設定しているため、BLOB コンテナー�
 
     ![YARN UI アプリケーション](media/data-factory-spark/yarnui-application.png)
 
-1. 実行の試行の 1 つについて、**[ログ]** を選択します。
+1. 実行の試行の 1 つについて、 **[ログ]** を選択します。
 
     ![[アプリケーション] ページ](media/data-factory-spark/yarn-applications.png)
 
@@ -329,32 +330,32 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | name | パイプラインのアクティビティの名前。 | はい |
-| description | アクティビティの動作を説明するテキスト。 | いいえ  |
+| description | アクティビティの動作を説明するテキスト。 | いいえ |
 | type | このプロパティは HDInsightSpark に設定する必要があります。 | はい |
 | linkedServiceName | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | はい |
 | rootPath | BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名の大文字と小文字は区別されます。 | はい |
 | entryFilePath | Spark コード/パッケージのルート フォルダーへの相対パス。 | はい |
-| className | アプリケーションの Java/Spark のメイン クラス。 | いいえ  |
-| arguments | Spark プログラムのコマンドライン引数の一覧です。 | いいえ  |
-| proxyUser | Spark プログラムの実行を偽装するユーザー アカウント。 | いいえ  |
-| sparkConfig | [Spark 構成のアプリケーション プロパティ](https://spark.apache.org/docs/latest/configuration.html#available-properties)に関するトピックに示されている Spark 構成プロパティの値を指定します。 | いいえ  |
-| getDebugInfo | HDInsight クラスターで使用されているストレージまたは sparkJobLinkedService で指定されたストレージに Spark ログ ファイルがコピーされるタイミングを指定します。 使用できる値は None、Always、または Failure です。 既定値は None です。 | いいえ  |
-| sparkJobLinkedService | Spark ジョブ ファイル、依存関係、およびログが含まれる Storage のリンクされたサービス。 指定しない場合は、HDInsight クラスターに関連付けられているストレージが使用されます。 | いいえ  |
+| className | アプリケーションの Java/Spark のメイン クラス。 | いいえ |
+| arguments | Spark プログラムのコマンドライン引数の一覧です。 | いいえ |
+| proxyUser | Spark プログラムの実行を偽装するユーザー アカウント。 | いいえ |
+| sparkConfig | [Spark 構成のアプリケーション プロパティ](https://spark.apache.org/docs/latest/configuration.html#available-properties)に関するトピックに示されている Spark 構成プロパティの値を指定します。 | いいえ |
+| getDebugInfo | HDInsight クラスターで使用されているストレージまたは sparkJobLinkedService で指定されたストレージに Spark ログ ファイルがコピーされるタイミングを指定します。 使用できる値は None、Always、または Failure です。 既定値は None です。 | いいえ |
+| sparkJobLinkedService | Spark ジョブ ファイル、依存関係、およびログが含まれる Storage のリンクされたサービス。 指定しない場合は、HDInsight クラスターに関連付けられているストレージが使用されます。 | いいえ |
 
 ## <a name="folder-structure"></a>フォルダー構造
 Spark アクティビティでは、Pig および Hive アクティビティが実行するインライン スクリプトがサポートされません。 また、Spark ジョブは、Pig/Hive ジョブよりも拡張できます。 Spark ジョブの場合、jar パッケージ (java CLASSPATH に配置)、Python ファイル (PYTHONPATH に配置) など、複数の依存関係を利用できます。
 
 HDInsight のリンクされたサービスによって参照される Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、Python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Blob Storage のフォルダー構造を次に示します。 
 
-| Path | 説明 | 必須 | type |
+| Path | 説明 | 必須 | Type |
 | ---- | ----------- | -------- | ---- |
-| にも掲載されています。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | フォルダー |
+| 。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | はい | ファイル |
-| ./jars | このフォルダーのすべてのファイルがアップロードされ、クラスターの Java classpath に配置されます。 | いいえ  | フォルダー |
-| ./pyFiles | このフォルダーのすべてのファイルがアップロードされ、クラスターの PYTHONPATH に配置されます。 | いいえ  | フォルダー |
-| ./files | このフォルダーのすべてのファイルがアップロードされ、Executor 作業ディレクトリに配置されます。 | いいえ  | フォルダー |
-| ./archives | このフォルダーのファイルは圧縮されていません。 | いいえ  | フォルダー |
-| ./logs | Spark クラスターのログが格納されているフォルダー。| いいえ  | フォルダー |
+| ./jars | このフォルダーのすべてのファイルがアップロードされ、クラスターの Java classpath に配置されます。 | いいえ | Folder |
+| ./pyFiles | このフォルダーのすべてのファイルがアップロードされ、クラスターの PYTHONPATH に配置されます。 | いいえ | Folder |
+| ./files | このフォルダーのすべてのファイルがアップロードされ、Executor 作業ディレクトリに配置されます。 | いいえ | Folder |
+| ./archives | このフォルダーのファイルは圧縮されていません。 | いいえ | Folder |
+| ./logs | Spark クラスターのログが格納されているフォルダー。| いいえ | Folder |
 
 次の例のストレージには、HDInsight のリンクされたサービスによって参照される Blob Storage に 2 つの Spark ジョブ ファイルが含まれています。
 

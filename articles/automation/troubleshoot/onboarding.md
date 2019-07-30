@@ -2,18 +2,18 @@
 title: Update Management、Change Tracking、および Inventory のオンボード時のエラーをトラブルシューティングする
 description: Update Management、Change Tracking、および Inventory ソリューションのオンボード時のエラーをトラブルシューティングする方法について説明します。
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 8867912d98897a695c1e59ebd4177301230281bb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 3687a2fdcba9c2078bbbd9344089b5a22467682c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399769"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477482"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
 
@@ -55,7 +55,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](http://aka.ms/PricingTierWarning)」を参照してください。
+このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](https://aka.ms/PricingTierWarning)」を参照してください。
 
 #### <a name="resolution"></a>解決策
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235100"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626395"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows Data Science Virtual Machine のプロビジョニング
 
@@ -61,13 +61,13 @@ DSVM には次のツールが含まれています。
 
 DSVM を使えば分析プロジェクトをすぐに開始できます。 R、Python、SQL、C# など、さまざまな言語でタスクを処理できます。 Visual Studio では、コードを開発してテストするための使いやすい統合開発環境 (IDE) が提供されています。 Azure SDK が VM に含まれているため、Microsoft のクラウド プラットフォームにあるさまざまなサービスを使用してアプリケーションを構築できます。
 
-このデータ サイエンス VM イメージにソフトウェア課金はありません。 Azure の利用料のみを支払います。 料金は、プロビジョニングする仮想マシンのサイズによって異なります。 コンピューティング料金について詳しくは、[Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) ページの**価格の詳細**に関するセクションをご覧ください。
+このデータ サイエンス VM イメージにソフトウェア課金はありません。 Azure の利用料のみを支払います。 料金は、プロビジョニングする仮想マシンのサイズによって異なります。 コンピューティング料金について詳しくは、[Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) ページの**価格の詳細**に関するセクションをご覧ください。
 
 ### <a name="other-dsvm-versions"></a>その他の DSVM バージョン
 
 * [Ubuntu](dsvm-ubuntu-intro.md) イメージ。 DSVM に似た多数のツールに加えて、いくつかの追加のディープ ラーニング フレームワークがあります。
 * [Linux CentOS](linux-dsvm-intro.md) イメージ。
-* Data Science Virtual Machine の [Windows Server 2012 エディション](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm)。 いくつかのツールは、Windows Server 2016 エディションでのみ使用できます。 その他、この記事は Windows Server 2012 エディションにも該当します。
+* Data Science Virtual Machine の [Windows Server 2012 エディション](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)。 いくつかのツールは、Windows Server 2016 エディションでのみ使用できます。 その他、この記事は Windows Server 2012 エディションにも該当します。
 
 ## <a name="prerequisite"></a>前提条件
 

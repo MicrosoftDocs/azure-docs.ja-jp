@@ -14,18 +14,20 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9cbdfe957587977b01bc46b46818856f789f46d8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 9eccb4ca505dac312dd22123a3585863c67f3ad7
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393615"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359863"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
-ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、その場で変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 さまざまな `IOptions<T>` パターンを使用して、それらをコードに挿入します。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。
+ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、その場で変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 さまざまな `IOptions<T>` パターンを使用して、それらをコードに挿入します。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。 アプリケーションのコントローラーに `IOptionsSnapshot<T>` を挿入すれば、Azure App Configuration に格納されている最新の構成にアクセスすることができます。
 
-アプリケーションのコントローラーに `IOptionsSnapshot<T>` を挿入すれば、Azure App Configuration に格納されている最新の構成にアクセスすることができます。 また、アプリ構成ストアにおける変更を常時監視して取得するように、App Configuration ASP.NET Core クライアント ライブラリを設定することもできます。 ポーリングの定期的な間隔を定義します。
+ミドルウェアを使って構成設定のセットを動的に更新するよう、App Configuration ASP.NET Core クライアント ライブラリを設定することもできます。 Web アプリで要求の受信が続けられている限り、構成設定は継続的に構成ストアで更新されます。
+
+設定の更新を維持しながら、構成ストアの呼び出しが多くなりすぎないようにするため、キャッシュが各設定に使用されます。 設定のキャッシュされた値の有効期限が切れるまで、構成ストアの値が変更された場合でも、更新操作で値は更新されません。 各要求の既定の有効期間は 30 秒ですが、必要な場合はオーバーライドできます。
 
 このチュートリアルでは、自分が作成するコードに、構成の動的更新を実装する方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
 
@@ -53,19 +55,22 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
+
                 config.AddAzureAppConfiguration(options =>
+                {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .Watch("TestApp:Settings:BackgroundColor")
-                           .Watch("TestApp:Settings:FontColor")
-                           .Watch("TestApp:Settings:Message"));
+                           .ConfigureRefresh(refresh =>
+                           {
+                               refresh.Register("TestApp:Settings:BackgroundColor")
+                                      .Register("TestApp:Settings:FontColor")
+                                      .Register("TestApp:Settings:Message")
+                           });
+                }
             })
             .UseStartup<Startup>();
     ```
 
-    `.Watch` メソッドの第 2 パラメーターは、ポーリング間隔です。ASP.NET クライアント ライブラリは、この間隔でアプリ構成ストアを照会します。 クライアント ライブラリは、特定の構成設定をチェックして、変更が発生したかどうかを確認します。
-    
-    > [!NOTE]
-    > 指定しない場合、`Watch` 拡張メソッドの既定のポーリング間隔は 30 秒です。
+    更新操作がトリガーされたときに、構成データをアプリ構成ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 実際に更新操作をトリガーするには、変更が発生したら構成データを更新するように、アプリケーションに対して更新ミドルウェアを構成する必要があります。
 
 2. 新しい `Settings` クラスを定義して実装する *Settings.cs* ファイルを追加します。
 
@@ -98,6 +103,21 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
     ```
+
+4. `Configure` メソッドを更新してミドルウェアを追加し、ASP.NET Core Web アプリで要求の受信が続けられている間、更新対象に登録された構成設定を更新できるようにします。
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+        app.UseMvc();
+    }
+    ```
+    
+    ミドルウェアでは、`Program.cs` の `AddAzureAppConfiguration` メソッドで指定されている更新の構成を使って、ASP.NET Core Web アプリによって受信された各要求の更新がトリガーされます。 要求ごとに、更新操作がトリガーされ、登録されている構成設定のキャッシュされた値の有効期限が切れているかどうかが、クライアント ライブラリによって確認されます。 キャッシュされた値の有効期限が切れている設定については、アプリ構成ストアで値が更新され、それ以外の値は変更されません。
+    
+    > [!NOTE]
+    > 構成設定の既定のキャッシュ有効期限は 30 秒ですが、`ConfigureRefresh` メソッドへの引数として渡されるオプション初期化子で `SetCacheExpiration` メソッドを呼び出すことにより、オーバーライドできます。
 
 ## <a name="use-the-latest-configuration-data"></a>最新の構成データを使用する
 
@@ -169,17 +189,20 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
 4. [Azure Portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストア インスタンスを選択します。
 
-5. **[Configuration Explorer]\(構成エクスプローラー)\** を選択して次のキーの値を更新します。
+5. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
     | キー | 値 |
     |---|---|
-    | TestAppSettings:BackgroundColor | green |
-    | TestAppSettings:FontColor | lightGray |
-    | TestAppSettings:Message | Data from Azure App Configuration - now with live updates! |
+    | TestApp:Settings:BackgroundColor | green |
+    | TestApp:Settings:FontColor | lightGray |
+    | TestApp:Settings:Message | Data from Azure App Configuration - now with live updates! |
 
-6. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
+6. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。 変更を反映するには、ブラウザー ページの複数の更新が必要な場合があります。
 
     ![クイック スタートのアプリ (ローカルで最新の情報に更新)](./media/quickstarts/aspnet-core-app-launch-local-after.png)
+    
+    > [!NOTE]
+    > 構成設定は既定の有効期限 30 秒でキャッシュされるので、アプリ構成ストアの設定に対する変更は、キャッシュの有効期限が切れたときにのみ、Web アプリに反映されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

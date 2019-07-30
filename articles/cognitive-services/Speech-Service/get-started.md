@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 09cc38cd5343e8b01b3e704191ea40c133d724f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aaae84fcb7df2abfe7e78adb64c22fb19fe45f4e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60541511"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606731"
 ---
 # <a name="try-speech-services-for-free"></a>Speech Services を無料で試す
 

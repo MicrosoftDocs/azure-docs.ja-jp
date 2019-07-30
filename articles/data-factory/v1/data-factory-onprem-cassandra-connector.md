@@ -14,14 +14,14 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60823982"
 ---
-# <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-cassandra-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-cassandra.md)
 
@@ -49,7 +49,7 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
-- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -73,7 +73,7 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 | username |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
 | password |ユーザー アカウントのパスワードを指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
 | gatewayName |オンプレミスの Cassandra データベースへの接続に使用されるゲートウェイの名前。 |はい |
-| encryptedCredential |ゲートウェイによって暗号化された資格情報。 |いいえ  |
+| encryptedCredential |ゲートウェイによって暗号化された資格情報。 |いいえ |
 
 >[!NOTE]
 >現在のところ、SSL で Cassandra に接続することはできません。
@@ -262,20 +262,20 @@ RelationalSource でサポートされるプロパティの一覧については
 ### <a name="type-mapping-for-cassandra"></a>Cassandra の型マッピング
 | Cassandra の型 | .NET ベースの型 |
 | --- | --- |
-| ASCII |String |
+| ASCII |string |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |BOOLEAN |
 | DECIMAL |Decimal |
 | DOUBLE |DOUBLE |
 | FLOAT |Single |
-| INET |String |
+| INET |string |
 | INT |Int32 |
-| TEXT |String |
+| TEXT |string |
 | TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
-| VARCHAR |String |
+| VARCHAR |string |
 | VARINT |DECIMAL |
 
 > [!NOTE]
@@ -314,7 +314,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 | 1 |"サンプル値 1" |
 | 3 |"サンプル値 3" |
 
-次のテーブルは、リスト、マップ、および StringSet の列からのデータを再正規化した仮想テーブルを表しています。 "_index" や "_key" で終わる名前の列は、元のリストまたはマップ内のデータの位置を示しています。  "_value" で終わる名前の列には、コレクションから展開されたデータが含まれています。
+次のテーブルは、リスト、マップ、および StringSet の列からのデータを再正規化した仮想テーブルを表しています。 "_index" や "_key" で終わる名前の列は、元のリストまたはマップ内のデータの位置を示しています。 "_value" で終わる名前の列には、コレクションから展開されたデータが含まれています。
 
 #### <a name="table-exampletablevtlist"></a>テーブル "ExampleTable_vt_List":
 | pk_int | List_index | List_value |

@@ -4,7 +4,7 @@ description: SUSE Linux Enterprise Server 上の Azure VM での NFS の高可�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: ed92be0c1968d8f8a931d59d2dadefbbb12f2100
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93644b9a3487906a27db70bfe82cceccdc7ab45c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925736"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707220"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性
 
@@ -71,9 +71,9 @@ ms.locfileid: "64925736"
 * SAP Note [1984787]: SUSE Linux Enterprise Server 12 に関する一般情報が記載されています。
 * SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
-* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ (この記事)][deployment-guide]
-* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * [SUSE Linux Enterprise High Availability Extension 12 SP3 のベスト プラクティス ガイド][sles-hae-guides]
   * Highly Available NFS Storage with DRBD and Pacemaker (DRBD と Pacemaker を使用した高可用性 NFS ストレージ)
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 のベスト プラクティス ガイド][sles-for-sap-bp]
@@ -110,7 +110,7 @@ GitHub にある Azure テンプレートを使用して、仮想マシン、可
 Azure Marketplace には、SUSE Linux Enterprise Server for SAP Applications 12 のイメージが含まれており、新しい仮想マシンのデプロイに使用できます。
 GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure Portal で [SAP ファイル サーバー テンプレート][template-file-server]を開きます   
+1. Azure portal で [SAP ファイル サーバー テンプレート][template-file-server]を開きます   
 1. 次のパラメーターを入力します
    1. Resource Prefix (リソース プレフィックス)  
       使用するプレフィックスを入力します。 この値は、デプロイされるリソースのプレフィックスとして使用されます。
@@ -543,4 +543,4 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。
-* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。
+* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]に関するページを参照してください。

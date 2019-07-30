@@ -1,25 +1,25 @@
 ---
 title: クイック スタート:画像を分析して好ましくない内容を検出する (C#) - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Content Moderator SDK for .NET を使用してさまざまな好ましくない要素を検出するために画像コンテンツを分析する方法
+description: Content Moderator SDK for .NET を使用して、さまざまな好ましくない素材の画像コンテンツを分析する方法
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/20/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d9a28dcd4af68cf9c00eb3d338c4bd83c8d89ecc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757234"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604115"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>クイック スタート:画像を分析して好ましくない内容を検出する (C#)
 
-この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 潜在的に好ましくない素材をモデレートすることを目的として、成人向けまたはわいせつなコンテンツ、抽出可能なテキスト、および人間の顔をスキャンする方法を学習します。
+この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 好ましくない可能性がある素材のモデレートを目的として、成人向けまたはきわどいコンテンツ、抽出可能なテキスト、人の顔をスキャンする方法について学習します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**ImageModeration** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
-1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - Microsoft.Azure.CognitiveServices.ContentModerator
     - Microsoft.Rest.ClientRuntime
     - Newtonsoft.Json
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="set-up-input-and-output-targets"></a>入力と出力のターゲットを設定する
 
-次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらによって、入力画像コンテンツ用および出力 JSON コンテンツ用のファイルが指定されます。
+次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらのフィールドでは、入力画像コンテンツ用および出力 JSON コンテンツ用のファイルを指定します。
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
 
@@ -86,13 +86,13 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="load-the-input-images"></a>入力画像を読み込む
 
-**Program** クラスの **Main** メソッドに次のコードを追加します。 これにより、入力ファイル内の各画像 URL に関する評価データを取得するようにプログラムが設定されます。 これで、このデータが単一の出力ファイルに書き込まれます。
+**Program** クラスの **Main** メソッドに次のコードを追加します。 このコードにより、入力ファイル内の各画像 URL に関する評価データを取得するようにプログラムが設定されます。 これで、このデータが単一の出力ファイルに書き込まれます。
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
 
 ## <a name="run-the-program"></a>プログラムの実行
 
-プログラムを実行すると、JSON 文字列データが _ModerationOutput.json_ ファイルに書き出されます。 このクイック スタートで使用したサンプル画像では、次の出力が得られます。 `ImageModeration`、`FaceDetection`、`TextDetection` の各セクションは、それぞれ **EvaluateImage** メソッドの 3 つの API 呼び出しに対応しており、画像ごとに異なることに注意してください。
+プログラムを実行すると、JSON 文字列データが _ModerationOutput.json_ ファイルに書き出されます。 このクイック スタートで使用したサンプル画像では、次の出力が得られます。 画像ごとに `ImageModeration`、`FaceDetection`、`TextDetection` 用の異なるセクションがあり、それぞれ **EvaluateImage** メソッドの 3 つの API 呼び出しに対応しています。
 
 ```json
 [{

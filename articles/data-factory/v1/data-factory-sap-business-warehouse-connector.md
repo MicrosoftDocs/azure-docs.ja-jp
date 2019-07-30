@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893256"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61258660"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](data-factory-sap-business-warehouse-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-sap-business-warehouse.md)
 
@@ -47,7 +47,7 @@ SAP BW への接続を有効にするには、次のコンポーネントをイ�
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
-- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -64,13 +64,13 @@ SAP BW への接続を有効にするには、次のコンポーネントをイ�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-server | SAP BW インスタンスが存在するサーバーの名前。 | 文字列 | はい
+server | SAP BW インスタンスが存在するサーバーの名前。 | string | はい
 systemNumber | SAP BW システムのシステムの数。 | 2 桁の 10 進数の文字列として表されます。 | はい
 clientId | SAP BW システム内のクライアントのクライアント ID。 | 3 桁の 10 進数の文字列として表されます。 | はい
-username | SAP サーバーにアクセスするユーザーの名前 | 文字列 | はい
-password | ユーザーのパスワード。 | 文字列 | はい
-gatewayName | Data Factory サービスが、オンプレミスの SAP BW インスタンスへの接続に使用するゲートウェイの名前。 | 文字列 | はい
-encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 | いいえ 
+username | SAP サーバーにアクセスするユーザーの名前 | string | はい
+password | ユーザーのパスワード。 | string | はい
+gatewayName | Data Factory サービスが、オンプレミスの SAP BW インスタンスへの接続に使用するゲートウェイの名前。 | string | はい
+encryptedCredential | 暗号化された資格情報の文字列。 | string | いいえ
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -292,27 +292,27 @@ SAP BW からデータを移動する場合、SAP BW 型から .NET 型に対す
 ABAP ディクショナリのデータ型 | .NET データ型
 -------------------------------- | --------------
 ACCP |  int
-CHAR | String
-CLNT | String
+CHAR | string
+CLNT | string
 CURR | Decimal
-CUKY | String
+CUKY | string
 DEC | Decimal
 FLTP | Double
 INT1 | Byte
 INT2 | Int16
 INT4 | int
-LANG | String
-LCHR | String
+LANG | string
+LCHR | string
 LRAW | Byte[]
 PREC | Int16
 QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
-STRING | String
-UNIT | String
-DATS | String
-NUMC | String
-TIMS | String
+STRING | string
+UNIT | string
+DATS | string
+NUMC | string
+TIMS | string
 
 > [!NOTE]
 > ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

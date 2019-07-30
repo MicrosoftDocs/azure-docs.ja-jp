@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cfb7dc8ef41c8829caebed6fff2d881093dbbe4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c45c42077d6f07ef847d2b95d4c24310f51abca4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076237"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621835"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
@@ -207,7 +207,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
 ここで作成するクエリは、変換されたデータを画面に表示するだけです。 後のセクションでは、出力シンクとそのシンクに変換されたデータを書き込むクエリを構成します。
 
-言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/dn834998.aspx)を参照してください。
+言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を参照してください。
 
 ### <a name="get-sample-data-for-testing-queries"></a>クエリをテストするためのサンプル データを取得する
 
@@ -289,11 +289,11 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    このクエリでは、`FROM` 句で `Timestamp By` キーワードを使って、タンブリング ウィンドウの定義に使う入力ストリームのタイムスタンプ フィールドを指定します。 この場合、ウィンドウは各レコードの `CallRecTime` フィールドによってデータをセグメントに分割します。 フィールドを指定しないと、各イベントがイベント ハブに到着した時刻がウィンドウ化操作に使われます。 「[Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時刻とアプリケーション時刻) をご覧ください。 
+    このクエリでは、`FROM` 句で `Timestamp By` キーワードを使って、タンブリング ウィンドウの定義に使う入力ストリームのタイムスタンプ フィールドを指定します。 この場合、ウィンドウは各レコードの `CallRecTime` フィールドによってデータをセグメントに分割します。 フィールドを指定しないと、各イベントがイベント ハブに到着した時刻がウィンドウ化操作に使われます。 「[Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時刻とアプリケーション時刻) をご覧ください。 
 
     プロジェクションに含まれる `System.Timestamp` は、各ウィンドウの終わりのタイムスタンプを返します。 
 
-    タンブリング ウィンドウを使うことを指定するには、`GROUP BY` 句で [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) 関数を使います。 この関数では、時間単位 (1 マイクロ秒から 1 日まで) とウィンドウ サイズ (単位数) を指定します。 この例では、タンブリング ウィンドウは 5 秒間隔で構成されるので、5 秒間の国/地域別の通話数が表示されます。
+    タンブリング ウィンドウを使うことを指定するには、`GROUP BY` 句で [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) 関数を使います。 この関数では、時間単位 (1 マイクロ秒から 1 日まで) とウィンドウ サイズ (単位数) を指定します。 この例では、タンブリング ウィンドウは 5 秒間隔で構成されるので、5 秒間の国/地域別の通話数が表示されます。
 
 2. もう一度 **[Test]** をクリックします。 結果では、**WindowEnd** のタイムスタンプが 5 秒刻みになっていることに注目してください。
 
@@ -418,5 +418,5 @@ Stream Analytics の一般的な情報について詳しくは、以下の記事
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

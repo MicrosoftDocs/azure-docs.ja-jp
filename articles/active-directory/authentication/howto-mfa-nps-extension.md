@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ca6f79b5febdbf12c80ab85d07117bf937babef0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570475"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798205"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -68,7 +68,7 @@ Windows PowerShell 用 Microsoft Azure Active Directory モジュールは、セ
 
 NPS の拡張機能を使用するすべてのユーザーが、Azure AD Connect を使用して Azure Active Directory に同期され、MFA の対象として登録されている必要があります。
 
-拡張機能をインストールするときに、Azure AD テナントのディレクトリ ID と管理資格情報が必要です。 ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインし、左側の **[Azure Active Directory]** アイコンを選択して、**[プロパティ]** を選択します。 **[ディレクトリ ID]** ボックス内の GUID をコピーして保存します。 NPS 拡張機能をインストールする際は、この GUID をテナント ID として使用します。
+拡張機能をインストールするときに、Azure AD テナントのディレクトリ ID と管理資格情報が必要です。 ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインし、左側の **[Azure Active Directory]** アイコンを選択して、 **[プロパティ]** を選択します。 **[ディレクトリ ID]** ボックス内の GUID をコピーして保存します。 NPS 拡張機能をインストールする際は、この GUID をテナント ID として使用します。
 
 ![Azure Active Directory のプロパティでディレクトリ ID を探す](./media/howto-mfa-nps-extension/find-directory-id.png)
 
@@ -76,8 +76,8 @@ NPS の拡張機能を使用するすべてのユーザーが、Azure AD Connect
 
 NPS サーバーは、ポート 80 および 443 を使って次の URL と通信できる必要があります。
 
-* https:\//adnotifications.windowsazure.com  
-* https:\//login.microsoftonline.com
+- https:\//adnotifications.windowsazure.com
+- https:\//login.microsoftonline.com
 
 さらに、[指定された PowerShell スクリプトを使用してアダプターの設定](#run-the-powershell-script)を行うには、次の URL への接続が必要です。
 
@@ -93,8 +93,8 @@ NPS 拡張機能をインストールする前に、認証トラフィックを�
 
 NPS サーバーは、Azure Active Directory に接続し、MFA 要求を認証します。 この役割に対して 1 台のサーバーを選択します。 NPS 拡張機能は RADIUS でないすべての要求に対してエラーをスローするため、他のサービスからの要求を処理しないサーバーを選択することをお勧めします。 NPS サーバーを、環境のプライマリおよびセカンダリ認証サーバーとしてセットアップする必要があります。別のサーバーに RADIUS 要求をプロキシすることはできません。
 
-1. サーバーで、サーバー マネージャーの [クイック スタート] メニューから、**[役割と機能の追加ウィザード]** を開きます。
-2. インストールの種類として、**[役割ベースまたは機能ベースのインストール]** を選択します。
+1. サーバーで、サーバー マネージャーの [クイック スタート] メニューから、 **[役割と機能の追加ウィザード]** を開きます。
+2. インストールの種類として、 **[役割ベースまたは機能ベースのインストール]** を選択します。
 3. **[ネットワーク ポリシーとアクセス サービス]** サーバーの役割を選択します。 ウィンドウがポップアップし、この役割を実行するために必要な機能が通知される場合があります。
 4. [確認] ページまでウィザードを続行します。 **[インストール]** を選択します。
 
@@ -121,9 +121,14 @@ NPS 拡張機能のデプロイで使用できる認証方法に影響する 2 �
 1. RADIUS クライアント (VPN、Netscaler サーバーなど) と NPS サーバー間で使用されるパスワードの暗号化アルゴリズム。
    - **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
-2. クライアント アプリケーション (VPN、Netscaler サーバーなど) が処理できる入力方式。 たとえば、VPN クライアントに、ユーザーがテキストまたはモバイル アプリから確認コードを入力できるようにするなんらかの手段があるかどうか。
 
-NPS 拡張機能をデプロイするときに、これらの要素を使用して、ユーザーに使用できる方法を評価します。 RADIUS クライアントは PAP をサポートしているが、クライアント UX に確認コードの入力フィールドがない場合は、サポートされるオプションは電話とモバイル アプリの通知の 2 つになります。
+      > [!NOTE]
+      > NPS 拡張機能をデプロイするときに、これらの要素を使用して、ユーザーに使用できる方法を評価します。 RADIUS クライアントは PAP をサポートしているが、クライアント UX に確認コードの入力フィールドがない場合は、サポートされるオプションは電話とモバイル アプリの通知の 2 つになります。
+      >
+      > さらに、VPN クライアント UX が入力フィールドをサポートしていて、ネットワーク アクセス ポリシーが構成されている場合、認証は成功するかもしれませんが、ネットワーク ポリシーで構成された RADIUS 属性は、RRAS サーバーのようなネットワーク アクセス デバイスにも VPN クライアントにも適用されません。 その結果、VPN クライアントは、必要以上に多くのアクセス権を持つか、アクセス権が足りずにアクセスできなくなる可能性があります。
+      >
+
+2. クライアント アプリケーション (VPN、Netscaler サーバーなど) が処理できる入力方式。 たとえば、VPN クライアントに、ユーザーがテキストまたはモバイル アプリから確認コードを入力できるようにするなんらかの手段があるかどうか。
 
 Azure で[サポートされていない認証方法を無効にする](howto-mfa-mfasettings.md#verification-methods)ことができます。
 
@@ -132,11 +137,10 @@ Azure で[サポートされていない認証方法を無効にする](howto-mf
 NPS 拡張機能を展開して使用する前に、2 段階認証を実行する必要があるユーザーを MFA に登録する必要があります。 もっと早く、拡張機能をデプロイ時にテストするには、Multi-Factor Authentication に対して完全に登録されている少なくとも 1 つのテスト アカウントが必要です。
 
 テスト アカウントを開始するには、次の手順を使用します。
-1. テスト アカウントで [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にサインインします。 
-2. 表示されたメッセージに従って、確認方法を設定します。
-3. 条件付きアクセス ポリシーを作成するか、[ユーザー状態を変更](howto-mfa-userstates.md)して、テスト アカウントの 2 段階認証を要求します。 
 
-NPS 拡張機能を使って認証するには、この手順に従って登録しておく必要もあります。
+1. テスト アカウントで [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にサインインします。
+2. 表示されたメッセージに従って、確認方法を設定します。
+3. テスト アカウントに対して多要素認証を要求するには、[条件付きアクセス ポリシーを作成](howto-mfa-getstarted.md#create-conditional-access-policy)します。
 
 ## <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
@@ -189,6 +193,14 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 > [!NOTE]
 > PowerShell スクリプトを使用して証明書を生成するのではなく独自の証明書を使用する場合は、NPS 名前付け規則に合わせてください。 サブジェクト名は **CN=\<TenantID\>,OU=Microsoft NPS Extension** にする必要があります。 
 
+### <a name="certificate-rollover"></a>証明書のロールオーバー
+
+NPS 拡張機能のリリース 1.0.1.32 では、複数の証明書の読み取りがサポートされるようになりました。 この機能により、証明書の有効期限が切れる前のローリング アップデートが容易になります。 組織で以前のバージョンの NPS 拡張機能を実行している場合は、バージョン 1.0.1.32 以降にアップグレードする必要があります。
+
+`AzureMfaNpsExtnConfigSetup.ps1` スクリプトによって作成された証明書は、2 年間有効です。 IT 組織は、証明書の有効期限を監視する必要があります。 NPS 拡張機能の証明書は、ローカル コンピューターの証明書ストアの [個人用] に配置され、スクリプトに提供されるテナント ID に対して発行されます。
+
+証明書の有効期限が近づいている場合は、置き換えるための新しい証明書を作成する必要があります。  このプロセスを完了するには、`AzureMfaNpsExtnConfigSetup.ps1` を再度実行し、メッセージが表示されたら同じテナント ID を指定します。 このプロセスは、環境内の各 NPS サーバーで繰り返す必要があります。
+
 ## <a name="configure-your-nps-extension"></a>NPS 拡張機能の構成
 
 このセクションでは、NPS 拡張機能を正常にデプロイするために必要な設計上の考慮事項と提案を示します。
@@ -219,13 +231,21 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
+### <a name="nps-extension-health-check-script"></a>NPS 拡張機能の正常性チェック スクリプト
+
+次のスクリプトは、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックの手順を実行するために、TechNet ギャラリーから入手できます。
+
+[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+
+---
+
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>クライアント証明書が正常にインストールされていることを確認するにはどうすればよいですか。
 
 インストーラーによって証明書ストア内に作成された自己署名証明書を探して、ユーザー **NETWORK SERVICE** が秘密キーへのアクセスを許可されていることを確認します。 この証明書のサブジェクト名は **CN \<tenantid\>, OU = Microsoft NPS Extension** になります。
 
 *AzureMfaNpsExtnConfigSetup.ps1* スクリプトによって生成された自己署名証明書の有効期間も 2 年間です。 証明書がインストールされていることを確認するときは、証明書の有効期限が切れていないことも確認する必要があります。
 
--------------------------------------------------------------
+---
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>クライアント証明書が Azure Active Directory のテナントに関連付けられていることを確認するにはどうすればよいですか。
 
@@ -251,13 +271,13 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 1 つ以上の証明書が返されている場合は、判読できる形式のタイムスタンプ Valid-From と Valid-Until を使用して、明らかに無関係な証明書を除外することができます。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-cant-i-sign-in"></a>サインインできないのはなぜか
 
 パスワードの有効期限が切れていないことを確認します。 NPS 拡張機能では、サインイン ワークフローの中でパスワードを変更することはできません。 ご自分の組織の IT スタッフに連絡してサポートを依頼してください。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-are-my-requests-failing-with-adal-token-error"></a>要求が ADAL トークン エラーで失敗するのはなぜですか。
 
@@ -268,19 +288,19 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 3. 証明書が Azure AD のテナントに関連付けられていることを確認します。
 4. 拡張機能を実行しているサーバーから https://login.microsoftonline.com/ にアクセスできることを確認します。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>HTTP ログにユーザーが見つからないというエラーが記録され、認証が失敗するのはなぜですか。
 
 AD Connect が実行していること、およびユーザーが Windows Active Directory と Azure Active Directory の両方に存在していることを確認します。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>すべての認証が失敗し、ログに HTTP 接続エラーが記録されるのはなぜですか。
 
 NPS 拡張機能を実行しているサーバーから https://adnotifications.windowsazure.com に到達可能であることを確認します。
 
--------------------------------------------------------------
+---
 
 ### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>有効な証明書があるにもかかわらず認証が機能しないのはなぜですか。
 
@@ -291,6 +311,10 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL プロトコルと暗号スイートの管理
 
 組織で求められない限り、以前の強度の低い暗号スイートを無効にするか、削除することをお勧めします。 このタスクを完了する方法については、「[Managing SSL/TLS Protocols and Cipher Suites for AD FS (AD FS の SSL/TLS プロトコルおよび暗号スイートの管理)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください
+
+### <a name="additional-troubleshooting"></a>その他のトラブルシューティング
+
+その他のトラブルシューティングのガイダンスと可能なソリューションについては、「[Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

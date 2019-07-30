@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2576aa112d58e499f0c4a16bf8e9261114974b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0f2a0560163f9806053f49944cbec0db2b1a9de8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698981"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>チュートリアル:Azure Active Directory と Clear Review の統合
 
@@ -54,11 +54,11 @@ Azure AD への Clear Review の統合を構成するには、ギャラリーか
 
 **ギャラリーから Clear Review を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への Clear Review の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Clear Review**」と入力し、結果パネルで **[Clear Review]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Clear Review**」と入力し、結果パネルで **[Clear Review]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Clear Review](common/search-new-app.png)
 
@@ -90,15 +90,15 @@ Clear Review で Azure AD のシングル サインオンを構成してテス�
 
 Clear Review で Azure AD シングル サインオンを構成するには、次の手順に従います
 
-1. [Azure portal](https://portal.azure.com/) の **Clear Review** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Clear Review** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
     b. **[応答 URL]** ボックスに、`https://<customer name>.clearreview.com/sso/acs/` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[Clear Review のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -119,7 +119,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Clear Review クライアント サポート チーム](https://clearreview.com/contact/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. Clear Review アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Clear Review アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+6. Clear Review アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Clear Review アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -135,7 +135,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
     c. **[Save]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -157,7 +157,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. ページの下部の **[Integrations]\(統合\)** セクションで、**[Single Sign-On Settings]\(シングル サインオンの設定\)** の右側にある **[Change]\(変更\)** をクリックします。
+3. ページの下部の **[Integrations]\(統合\)** セクションで、 **[Single Sign-On Settings]\(シングル サインオンの設定\)** の右側にある **[Change]\(変更\)** をクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -179,7 +179,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -204,7 +204,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に Clear Review へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Clear Review]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Clear Review]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -216,15 +216,15 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-clear-review-test-user"></a>Clear Review のテスト ユーザーの作成
 

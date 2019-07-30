@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 49f853341edab7c7dc92f72472b81f7fb22c0ad8
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 3573e136c1a830cd75aba0725b4bf087bcd63869
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808762"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485956"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C IoT Edge モジュールを開発する
 
@@ -51,10 +51,18 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 * コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
 * [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 拡張機能が構成された [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。
 * Windows コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
-* Azure IoT SDK for C。 
+* vcpkg を使用して Windows x64 用の Azure IoT C SDK をインストールします:
 
+   ```powershell
+   git clone https://github.com/Microsoft/vcpkg
+   cd vcpkg
+   .\bootstrap-vcpkg.bat
+   .\vcpkg install azure-iot-sdk-c:x64-windows
+   .\vcpkg --triplet x64-windows integrate install
+   ```
+   
 > [!TIP]
-> Visual Studio 2017 (バージョン 15.7 以降) を使用している場合は、Visual Studio Marketplace から VS 2017 用の [Azure IoT Edge Tools (プレビュー)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) をダウンロードしてインストールしてください
+> Visual Studio 2017 (バージョン 15.7 以降) を使用している場合は、Visual Studio Marketplace から VS 2017 用の [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) をダウンロードしてインストールしてください
 
 ## <a name="create-a-module-project"></a>モジュール プロジェクトを作成する
 

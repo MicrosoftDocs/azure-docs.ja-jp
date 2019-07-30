@@ -8,14 +8,13 @@ ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
-manager: craigg-msft
 ms.date: 02/08/2019
-ms.openlocfilehash: 31246f44be5645715c5c7041d0cf9bcff9c0fa52
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f6f0160e06ac10a6f1e4e51c93bfa133818117c8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303299"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568966"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>チュートリアル:C&#x23; と ADO.NET を使用して Azure SQL Database 内の単一データベースでリレーショナル データベースを設計する
 
@@ -62,7 +61,7 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が含まれていること、また、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が使用されていることが必要です。 |
-    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
+    | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 
     ![データベース サーバーの作成](./media/sql-database-design-first-database/create-database-server.png)
 

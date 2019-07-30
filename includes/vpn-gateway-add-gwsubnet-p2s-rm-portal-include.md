@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5642533fe1015e88c3b27e83139bfd26cb0b1a53
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b044912fd8f52f3f4fdbe1b3a74b64f9b565ddf0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181043"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673421"
 ---
-1. [ポータル](http://portal.azure.com)で、仮想ネットワーク ゲートウェイを作成する Resource Manager 仮想ネットワークに移動します。
+1. [ポータル](https://portal.azure.com)で、仮想ネットワーク ゲートウェイを作成する Resource Manager 仮想ネットワークに移動します。
 2. VNet のページの **[設定]** セクションで、 **[サブネット]** をクリックして **[サブネット]** ページを展開します。
 3. **[サブネット]** ページで **[+ゲートウェイ サブネット]** をクリックして、 **[サブネットの追加]** ページを開きます。 
 

@@ -1,6 +1,6 @@
 ---
 title: Bing Spell Check API への要求の送信
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Spell Check のモードや設定など、この API に関連した情報を取り上げます。
 services: cognitive-services
 author: aahill
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: e9f691147b5dcb12a48a632ff01880f3fdff89c5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ef5d812b1e55713f30928582d9aa9e61bba7c7a6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390263"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423546"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Bing Spell Check API への要求の送信
 
 テキスト文字列のスペルや文法の誤りを確認するには、次のエンドポイントに GET 要求を送信します。  
-  
+
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
 ```  
@@ -73,6 +73,8 @@ CORS プロキシをインストールして[チュートリアル アプリ](..
 
 前述の要求への応答は次のようになります。 例では、Bing に固有の応答ヘッダーも示されています。
 
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
+
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
 X-MSEdge-ClientID: 1C3352B306E669780D58D607B96869
@@ -119,7 +121,7 @@ BingAPIs-Market: en-US
 }  
 ```  
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 - [Bing Spell Check API とは](../overview.md)
 - [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

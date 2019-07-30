@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9d2e8b4ae1a01cd299d910c4e88655885c7d00dc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288479"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476380"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールに対する要求を承認または拒否する
 
@@ -38,15 +38,15 @@ Azure リソース ロールの要求を承認または拒否するには、こ�
 
 1. **[申請の承認]** をクリックします。
 
-    ![Azure リソース - [申請の承認]](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![申請の承認 - レビューの要求を示す Azure リソース ページ](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
     **[ロールのアクティブ化に関する要求]** セクションに、承認が保留されている要求の一覧が表示されます。
 
 ## <a name="approve-requests"></a>要求の承認
 
-1. 承認する要求を見つけてクリックします。 承認ウィンドウが表示されます。
+1. 承認する要求を見つけてクリックします。 承認または拒否のウィンドウが表示されます。
 
-    ![[申請の承認] ウィンドウ](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![申請の承認 - 詳細と [根拠] ボックスを含む承認または拒否のウィンドウ](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. **[根拠]** ボックスに、理由を入力します。
 
@@ -54,13 +54,13 @@ Azure リソース ロールの要求を承認または拒否するには、こ�
 
     承認すると同時に通知が表示されます。
 
-    ![承認通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![要求が承認されたことを示す承認の通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
-## <a name="deny-requests"></a>要求の拒否
+## <a name="deny-requests"></a>要求を拒否する
 
-1. 拒否する要求を見つけてクリックします。 承認ウィンドウが表示されます。
+1. 拒否する要求を見つけてクリックします。 承認または拒否のウィンドウが表示されます。
 
-    ![[申請の承認] ウィンドウ](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![申請の承認 - 詳細と [根拠] ボックスを含む承認または拒否のウィンドウ](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. **[根拠]** ボックスに、理由を入力します。
 

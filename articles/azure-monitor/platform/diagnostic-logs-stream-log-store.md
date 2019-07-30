@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e8e6276a38f06b5c6ebb24c89f3733b9fd7220f7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238009"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612841"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースに Azure 診断ログをストリーミングする
 
@@ -60,7 +60,7 @@ Azure Monitor では、柔軟なログ クエリと分析のツールが提供�
 
 4. **[Save]** をクリックします。
 
-しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのワークスペースにストリーミングされます。 イベントが生成されてから、それが Log Analytics に表示されるまでに 15 分ほどかかる場合があるので注意してください。
+しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのワークスペースにストリーミングされます。 イベントが生成されてから、それが Log Analytics に表示されるまでに最大 15 分かかる可能性があります。
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
 
@@ -99,37 +99,105 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 Azure Monitor ポータルの [ログ] ブレードでは、AzureDiagnostics テーブルでの Log Management ソリューションの一部として診断ログのクエリを実行することができます。 他にも、[Azure リソース向けの監視ソリューションがいくつか](../../azure-monitor/insights/solutions.md)存在します。それをインストールすることで、Azure Monitor に送信されているログ データからすぐに分析情報を得ることができます。
 
+### <a name="examples"></a>例
+
+```Kusto
+// Resources that collect diagnostic logs into this Log Analytics workspace, using Diagnostic Settings
+AzureDiagnostics
+| distinct _ResourceId
+```
+```Kusto
+// Resource providers collecting diagnostic logs into this Log Analytics worksapce, with log volume per category
+AzureDiagnostics
+| summarize count() by ResourceProvider, Category
+```
+```Kusto
+// Resource types collecting diagnostic logs into this Log Analytics workspace, with number of resources onboarded
+AzureDiagnostics
+| summarize ResourcesOnboarded=dcount(_ResourceId) by ResourceType
+```
+```Kusto
+// Operations logged by specific resource provider, in this example - KeyVault
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.KEYVAULT"
+| distinct OperationName
+```
+
+## <a name="azure-diagnostics-vs-resource-specific"></a>Azure Diagnostics とリソース固有  
+Azure Diagnostics の構成で Log Analytics の宛先を有効にした後、データは、明確に異なる 2 つ方法でワークスペースに表示されます。  
+- **Azure Diagnostics** - これは、現在、大部分の Azure サービスで使用されている従来の方法です。 このモードでは、特定のワークスペースを指しているすべての診断設定からのすべてのデータが _AzureDiagnostics_ テーブルに表示されます。 
+<br><br>同じテーブル (_AzureDiagnostics_) に多数のリソースからデータが送信されるため、このテーブルのスキーマが、収集されるすべての異なるデータ型のスキーマのスーパーセットになります。 たとえば、次のデータ型を収集するための診断設定を作成した場合、すべてが同じワークスペースに送信されます。
+    - リソース 1 の監査ログ (スキーマは列 A、B、C から構成される)  
+    - リソース 2 のエラー ログ (スキーマは列 D、E、F から構成される)  
+    - リソース 3 のデータ フロー ログ (スキーマは列 G、H、I から構成される)  
+
+    AzureDiagnostics テーブルは次のようになります。サンプル データが入力されています。  
+
+    | ResourceProvider | Category | A | b | C | D | E | F | G | H | I |
+    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+    | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+    | Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
+    | Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+    | Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
+    | Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+    | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+    | ... |
+
+- **リソース固有** - このモードでは、診断設定の構成で選択されたカテゴリごとに、個別のテーブルが選択されたワークスペース内に作成されます。 このより新しい方法では、すべてのカテゴリ用のテーブルに比べ、関心領域の明確な分離によって、目的のものをはるかに簡単に見つけることができます。 さらに、動的な型のサポートによる利点が提供されます。 このモードは、一部の Azure リソースの種類 ([Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) ログや [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) ログなど) で、すぐに確認できます。 最終的には、すべてのデータ型がリソース固有モードに移行される予定です。 
+
+    上記の例では、3 つのテーブルが作成されることになります。 
+    - _AuditLogs_ テーブルは次のようになります。
+
+        | ResourceProvider | Category | A | b | C |
+        | -- | -- | -- | -- | -- |
+        | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+        | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+        | ... |
+
+    - _ErrorLogs_ テーブルは次のようになります。  
+
+        | ResourceProvider | Category | D | E | F |
+        | -- | -- | -- | -- | -- | 
+        | Microsoft.Resource2 | ErrorLogs | q1 | w1 | e1 |
+        | Microsoft.Resource2 | ErrorLogs | q2 | w2 | e2 |
+        | ... |
+
+    - _DataFlowLogs_ テーブルは次のようになります。  
+
+        | ResourceProvider | Category | G | H | I |
+        | -- | -- | -- | -- | -- | 
+        | Microsoft.Resource3 | DataFlowLogs | j1 | k1 | l1|
+        | Microsoft.Resource3 | DataFlowLogs | j3 | k3 | l3|
+        | ... |
+
+    リソース固有モードを使用するその他のメリットとして、取り込みの待機時間とクエリ時間の両方でのパフォーマンスの向上、スキーマとそれらの構造の検出可能性の向上、特定のテーブルに対する RBAC 権限の付与などがあります。
+
+### <a name="selecting-azure-diagnostic-vs-resource-specific-mode"></a>Azure Diagnostics とリソース固有モードの選択
+ほとんどの Azure リソースでは、Azure Diagnostics を使用するかリソース固有モードを使用するかを選択する必要はありません。データは、リソースで使用するように選択されている方法で自動的に送信されます。 使用されるモードの詳細については、Log Analytics へのデータの送信を有効にしているリソースのドキュメントを参照してください。 
+
+前のセクションで述べたように、Azure Monitor の最終的な目標は、Azure のすべてのサービスでリソース固有モードを使用することです。 この移行を促進し、その一環としてデータの消失がないことを確認するために、一部の Azure サービスでは、Log Analytics へのオンボード時にモードを選択できるようになっています。  
+   ![診断設定のモード セレクター](media/diagnostic-logs-stream-log-store/diagnostic-settings-mode-selector.png)
+
+困難である可能性がある移行が完了するまでは、新たに作成する診断設定では、リソースを中心とするモードを使用することを**強く**お勧めします。  
+
+既存の診断設定については、特定の Azure リソースによって有効になった後、Azure Diagnostics からリソース固有モードにさかのぼって切り替えることができます。 以前に取り込まれたデータは、ワークスペースのデータ保持設定の構成に従って期限切れになるまでは _AzureDiagnostics_ テーブルで引き続き使用できますが、新しいデータは、すべて専用のテーブルに送信されます。 つまり、古いデータと新しいデータの両方を対象とする必要があるすべてのクエリでは、古いデータが完全に期限切れになるまでは、クエリで [union](https://docs.microsoft.com/azure/kusto/query/unionoperator) 演算子を使用して、これら 2 つのデータ セットを結合する必要があります。
+
+リソース固有モードでログをサポートする新しい Azure サービスの最新情報については、「[Azure の更新情報](https://azure.microsoft.com/updates/)」ブログをご覧ください。
+
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>既知の制限事項: AzureDiagnostics の列の制限
-多くのリソースの送信するデータ型はすべて同じテーブル ("_AzureDiagnostics_") に送信されるため、収集されるさまざまなデータ型のスキーマのスーパーセットとなります。 たとえば、次のデータ型の収集に対して診断設定を作成した場合、すべて同じワークスペースに送信されます。
-- リソース 1 の監査ログ (スキーマは列 A、B、C から構成される)  
-- リソース 2 のエラー ログ (スキーマは列 D、E、F から構成される)  
-- リソース 3 のデータ フロー ログ (スキーマは列 G、H、I から構成される)  
- 
-AzureDiagnostics テーブルは次のようになります。サンプル データが入力されています。  
- 
-| ResourceProvider | Category | A | b | C | D | E | F | G | H | I |
-| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
-| Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
-| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
-| Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
-| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
-| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
-| ... |
- 
-Azure Log のテーブルの列数は 500 を超えないという明示的な制限があります。 この上限に到達すると、最初の 500 列から外れるデータを含む行は、取り込み時に破棄されます。 AzureDiagnostics テーブルは特にこの制限の影響を受けやすくなっています。 これは一般的に、さまざまなデータ ソースが大量に同じワークスペースに送信されること、あるいは非常に冗長なデータ ソースが同じワークスペースに送信されることが理由です。 
- 
+Azure Log のテーブルの列数は 500 を超えないという明示的な制限があります。 この上限に到達すると、最初の 500 列から外れるデータを含む行は、取り込み時に破棄されます。 AzureDiagnostics テーブルは特にこの制限の影響を受けやすくなっています。 これは、通常は、多種多様なデータ ソースが同じワークスペースに送信されること、または複数の冗長なデータ ソースが同じワークスペースに送信されることで発生します。 
+
 #### <a name="azure-data-factory"></a>Azure Data Factory  
-Azure Data Factory は非常に詳細なログ セットに起因し、この制限によって特に影響を受けることが判明しているリソースです。 具体的には以下のとおりです。  
+Azure Data Factory は非常に詳細なログ セットであるため、この制限によって特に影響を受けることが判明しているリソースです。 特に、リソース固有モードが有効になる前に構成されている、または下位互換性を保つという理由でリソース固有モードが明示的に選択されている診断設定には、以下が適用されます。  
 - *パイプラインのアクティビティに対して定義されているユーザー パラメーター*: アクティビティに対して、一意の名前が付けられたユーザー パラメーターごとに新しい列が作成されます。 
-- *アクティビティの入力と出力*: これはアクティビティによって異なり、冗長性に起因して大量の列を生成します。 
+- *アクティビティの入力と出力*: これらは、アクティビティによって異なり、その冗長性によって多数の列が生成されます。 
  
-以下に提案する大まかな対処方法と同様に、ADF ログをそれぞれのワークスペースに分離させ、ワークスペースで収集される他のログ タイプにこのログが影響を与える可能性を最小限に抑えることをお勧めします。 Azure Data Factory 用に選別されたログを間もなく利用できるようにする予定です。
+次に示す対処方法の提案とともに、できるだけ早くリソース固有モードを使用するようにログを移行することをお勧めします。 今すぐ実行できない場合は、暫定措置として ADF ログをそれぞれに固有のワークスペースに分離して、これらのログがワークスペースに収集される他のログの種類に影響を与える可能性を最小限に抑えるようにします。 
  
 #### <a name="workarounds"></a>対処方法
-短期的対処。500 列の制限が再定義されるまで、冗長なデータ型を個々のワークスペースに分離し、上限に到達する可能性を減らすことをお勧めします。
+短期的には、すべての Azure サービスでリソース固有モードが有効になるまでは、リソース固有モードがサポートされていないすべてのサービスで、これらのサービスによって発行される冗長なデータの種類を別々のワークスペースに分離して、制限に達する可能性を削減することをお勧めします。  
  
-長期的対処。Azure Diagnostics は、まばらな統合スキーマからデータ型別のテーブルと動的な型の組み合わせに方針を移行しています。それにより、Azure Diagnostics メカニズム経由で Azure ログに入ってくるデータが大幅に使いやすくなります。 これは既に、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) ログや [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) ログなど、一部の Azure リソース タイプで確認することができます。 Azure でこれらの選別されたログがサポートされる新しいリソース タイプの最新情報は [Azure Updates](https://azure.microsoft.com/updates/) ブログでご覧ください。
+長期的には、Azure Diagnostics で、リソース固有モードをサポートするすべての Azure サービスに対応する予定です。 この 500 列という制限による影響の可能性を削減するために、できるだけ早くこのモードに移行することをお勧めします。  
 
 
 ## <a name="next-steps"></a>次の手順

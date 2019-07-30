@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 287e4ee53a108d1e2b83d4a8b11a98a2c7727721
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 3d6ed5c80d5c3241a9a328a2427ed8b920790635
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545587"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482483"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>認証と承認エラー コード
 
@@ -105,7 +105,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50127 | BrokerAppNotInstalled - ユーザーは、このコンテンツにアクセスするためにブローカー アプリをインストールする必要があります。 |
 | AADSTS50128 | ドメイン名が無効です。テナントを識別する情報が要求内に見つからず、指定されたどの資格情報でも暗黙的に示されませんでした。 |
 | AADSTS50129 | DeviceIsNotWorkplaceJoined - デバイスを登録するには、ワークプレースの参加が必要です。 |
-| AADSTS50131 | ConditionalAccessFailed - Windows デバイスの状態が無効である、疑わしいアクティビティ、アクセス ポリシー、セキュリティ ポリシーの判断が原因で要求がブロックされたなど、さまざまな条件付きアクセス エラーを示します。 |
+| AADSTS50131 | ConditionalAccessFailed - Windows デバイスの状態が無効である、疑わしいアクティビティ、アクセス ポリシー、またはセキュリティ ポリシーの判断によって要求がブロックされたなど、さまざまな条件付きアクセス エラーを示します。 |
 | AADSTS50132 | SsoArtifactInvalidOrExpired - パスワードが期限切れまたは最近のパスワード変更により、セッションは無効です。 |
 | AADSTS50133 | SsoArtifactRevoked - パスワードが期限切れまたは最近のパスワード変更により、セッションは無効です。 |
 | AADSTS50134 | DeviceFlowAuthorizeWrongDatacenter - 不適切なデータ センターです。 OAuth 2.0 デバイス フローでアプリケーションによって開始された要求を承認するには、承認者が元の要求が存在する場所と同じデータ センターにいる必要があります。 |
@@ -134,9 +134,9 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS51005 | TemporaryRedirect - 要求された情報が Location ヘッダーで指定された URI にあることを示す、HTTP ステータス 307 と同等です。 この状態が表示されたら、応答に関連付けられた Location ヘッダーに従います。 元の要求メソッドが POST の場合、リダイレクトされた要求も POST メソッドを使用します。 |
 | AADSTS51006 | ForceReauthDueToInsufficientAuth - 統合 Windows 認証が必要です。 ユーザーは、統合 Windows 認証の要求がないセッション トークンを使用してログインしました。 もう一度ログインするように、ユーザーに要求します。 |
 | AADSTS52004 | DelegationDoesNotExistForLinkedIn - ユーザーが、LinkedIn リソースへのアクセスに同意していません。 |
-| AADSTS53000 | DeviceNotCompliant - 条件付きアクセス ポリシーでは準拠デバイスが必要ですが、デバイスが準拠していません。 ユーザーは、Intune などの承認済み MDM プロバイダーにデバイスを登録する必要があります。 |
-| AADSTS53001 | DeviceNotDomainJoined - 条件付きアクセス ポリシーではドメイン参加デバイスが必要ですが、デバイスがドメインに参加していません。 ユーザーにドメイン参加デバイスを使用させます。 |
-| AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用されるアプリは、条件付きアクセスのために承認されたアプリではありません。 アクセスするには、ユーザーは承認されたアプリの一覧からアプリを 1 つ選んで使用する必要があります。 |
+| AADSTS53000 | DeviceNotCompliant - 条件付きアクセス ポリシーでは準拠デバイスを要求していますが、デバイスが準拠していません。 ユーザーは、Intune などの承認済み MDM プロバイダーにデバイスを登録する必要があります。 |
+| AADSTS53001 | DeviceNotDomainJoined - 条件付きアクセス ポリシーではドメイン参加デバイスを要求していますが、デバイスがドメインに参加していません。 ユーザーにドメイン参加デバイスを使用させます。 |
+| AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用されているアプリが、条件付きアクセスのために承認されたアプリではありません。 アクセスするには、ユーザーは承認されたアプリの一覧からアプリを 1 つ選んで使用する必要があります。 |
 | AADSTS53003 | BlockedByConditionalAccess - 条件付きアクセス ポリシーにより、アクセスがブロックされました。 アクセス ポリシーでは、トークンの発行が許可されていません。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - ユーザーは、このコンテンツにアクセスする前に、多要素認証登録プロセスを完了する必要があります。 ユーザーは多要素認証に登録する必要があります。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
@@ -201,7 +201,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 機能が無効になっています。 |
 | AADSTS90051 | InvalidNationalCloudId - 国内クラウド識別子に無効なクラウド識別子が含まれています。 |
 | AADSTS90055 | TenantThrottlingError - 着信要求が多すぎます。 この例外は、ブロックされているテナントに対してスローされます。 |
-| AADSTS90056 | BadResourceRequest - コードをアクセス トークンと引き換えるには、アプリで `/token` エンドポイントに POST 要求を送信する必要があります。 また、その前に認証コードを提供し、それを POST 要求で `/token` エンドポイントに送信する必要があります。 OAuth 2.0 承認コード フローの概要については、この記事 [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) を参照してください。 ユーザーを authorization_code を返す `/authorize` エンドポイントにリダイレクトしてください。 `/token` エンドポイントに要求をポストすることで、ユーザーはアクセス トークンを取得します。 Azure portal にログインし、**[アプリの登録] > [エンドポイント]** の順にチェックして、2 つのエンドポイントが正しく構成されていることを確認します。 |
+| AADSTS90056 | BadResourceRequest - コードをアクセス トークンと引き換えるには、アプリで `/token` エンドポイントに POST 要求を送信する必要があります。 また、その前に認証コードを提供し、それを POST 要求で `/token` エンドポイントに送信する必要があります。 OAuth 2.0 承認コード フローの概要については、この記事 [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) を参照してください。 ユーザーを authorization_code を返す `/authorize` エンドポイントにリダイレクトしてください。 `/token` エンドポイントに要求をポストすることで、ユーザーはアクセス トークンを取得します。 Azure portal にログインし、 **[アプリの登録] > [エンドポイント]** の順にチェックして、2 つのエンドポイントが正しく構成されていることを確認します。 |
 | AADSTS90072 | PassThroughUserMfaError - ユーザーがサインインに使用した外部アカウントが、ユーザーがサインインしているテナントに存在しません。そのため、ユーザーはテナントの MFA 要件を満たすことができません。 アカウントをまずテナントに外部ユーザーとして追加する必要があります。 サインアウトして別の Azure AD ユーザー アカウントでサインインしてください。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - サービスが WS-Federation メッセージを処理しようとしたときにエラーが発生しました。 メッセージが無効です。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 要求に対して選択された認証ポリシーは現在サポートされていません。 |
@@ -215,6 +215,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90093 | GraphUserUnauthorized - 要求に対して Forbidden エラー コードが Graph から返されました。 |
 | AADSTS90094 | AdminConsentRequired - 管理者の同意が必要です。 |
 | AADSTS90100 | InvalidRequestParameter - パラメーターが空であるか無効です。 |
+| AADSTS901002 | AADSTS901002:"resource" 要求パラメーターはサポートされていません。 |
 | AADSTS90101 | InvalidEmailAddress - 指定されたデータは有効な電子メール アドレスはありません。 電子メール アドレスは `someone@example.com` の形式である必要があります。 |
 | AADSTS90102 | InvalidUriParameter - 値は有効な絶対 URI である必要があります。 |
 | AADSTS90107 | InvalidXml - 要求は無効です。 データは無効な文字がないことを確認してください。|

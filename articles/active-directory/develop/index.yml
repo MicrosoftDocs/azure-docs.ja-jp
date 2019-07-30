@@ -1,222 +1,235 @@
 ### YamlMime:Landing
 title: 'Microsoft ID プラットフォーム (旧称: 開発者向け Azure Active Directory)'
 summary: Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。 これはフル機能を備えたプラットフォームであり、OAuth 2.0 および OpenID Connect 標準に準拠した認証サービス、オープンソース ライブラリ、アプリケーションの登録および構成、充実した概念とリファレンスのドキュメント、クイック スタート サンプル、コード サンプル、チュートリアル、攻略ガイドによって構成されています。
+metadata:
+  ms.topic: landing-page
+  ms.date: 06/22/2019
+  author: CelesteDG
+  ms.service: active-directory
+  ms.subservice: develop
+  ms.workload: identity
+  ms.openlocfilehash: a558bbd114bdaa2046bd0bfb8ffd846d0804b9a3
+  ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/10/2019
+  ms.locfileid: "67785599"
 landingContent:
-  - title: Microsoft ID プラットフォームについて
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Microsoft ID プラットフォームの進化
-            url: about-microsoft-identity-platform.md
-          - text: Microsoft ID プラットフォーム (v2.0)
-            url: v2-overview.md
-          - text: 開発者のための Azure Active Directory (v1.0)
-            url: v1-overview.md
-      - linkListType: learn
-        links:
-          - text: One Dev Minute - Microsoft ID プラットフォーム
-            url: 'https://youtu.be/y_fgJAatVhk'
-  - title: シングルページ アプリの構築
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: シナリオの概要
-            url: scenario-spa-overview.md
-      - linkListType: quickstart
-        links:
-          - text: JavaScript
-            url: quickstart-v2-javascript.md
-      - linkListType: tutorial
-        links:
-          - text: JavaScript
-            url: tutorial-v2-javascript-spa.md
-      - linkListType: deploy
-        links:
-          - text: アプリの統合のテスト
-            url: identity-platform-integration-checklist.md
-      - linkListType: download
-        links:
-          - text: サンプル - JavaScript、Angular
-            url: 'sample-v2-code.md#single-page-applications-spa'
-          - text: サンプル - Azure AD B2C を使用する SPA
-            url: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp'
-  - title: ユーザーをサインインさせる Web アプリの構築
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: シナリオの概要
-            url: scenario-web-app-sign-user-overview.md
-      - linkListType: quickstart
-        links:
-          - text: ASP.NET Core
-            url: quickstart-v2-aspnet-core-webapp.md
-          - text: ASP.NET
-            url: quickstart-v2-aspnet-webapp.md
-      - linkListType: tutorial
-        links:
-          - text: ASP.NET Core
-            url: 'https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2'
-      - linkListType: deploy
-        links:
-          - text: アプリの統合のテスト
-            url: identity-platform-integration-checklist.md
-      - linkListType: download
-        links:
-          - text: サンプル - ASP.NET Core、ASP.NET
-            url: 'sample-v2-code.md#web-applications'
-  - title: Web API を呼び出す Web アプリの構築
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: シナリオの概要
-            url: scenario-web-app-call-api-overview.md
-      - linkListType: tutorial
-        links:
-          - text: ASP.NET Core
-            url: 'https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial'
-      - linkListType: deploy
-        links:
-          - text: アプリの統合のテスト
-            url: identity-platform-integration-checklist.md
-      - linkListType: download
-        links:
-          - text: サンプル - ASP.NET Core、ASP.NET、Node.js、Ruby
-            url: 'sample-v2-code.md#web-applications'
-  - title: 保護された Web API の構築
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: シナリオの概要
-            url: scenario-protected-web-api-overview.md
-      - linkListType: tutorial
-        links:
-          - text: ASP.NET Core Web API
-            url: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2'
-      - linkListType: deploy
-        links:
-          - text: アプリの統合のテスト
-            url: identity-platform-integration-checklist.md
-      - linkListType: download
-        links:
-          - text: サンプル - ASP.NET
-            url: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2'
-  - title: Web API を呼び出す Web API
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: シナリオの概要
-            url: scenario-web-api-call-api-overview.md
-      - linkListType: tutorial
-        links:
-          - text: Microsoft Graph を呼び出す ASP.NET Core Web API
-            url: 'https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph'
-      - linkListType: deploy
-        links:
-          - text: アプリの統合のテスト
-            url: identity-platform-integration-checklist.md
-  - title: Web API を呼び出すデスクトップ アプリの構築
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: シナリオの概要
-            url: scenario-desktop-overview.md
-      - linkListType: quickstart
-        links:
-          - text: トークンを取得して Microsoft Graph API を呼び出す (Windows デスクトップ)
-            url: quickstart-v2-windows-desktop.md
-          - text: トークンを取得して Microsoft Graph API を呼び出す (UWP)
-            url: quickstart-v2-uwp.md
-      - linkListType: tutorial
-        links:
-          - text: Microsoft Graph API を呼び出す (Windows デスクトップ)
-            url: tutorial-v2-windows-desktop.md
-          - text: Microsoft Graph API を呼び出す (UWP)
-            url: tutorial-v2-windows-uwp.md
-      - linkListType: deploy
-        links:
-          - text: アプリの統合のテスト
-            url: identity-platform-integration-checklist.md
-      - linkListType: download
-        links:
-          - text: サンプル - .NET、.NET Core
-            url: 'sample-v2-code.md#desktop-and-mobile-public-client-apps'
-  - title: Web API を呼び出すデーモン アプリの構築
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: シナリオの概要
-            url: scenario-daemon-overview.md
-      - linkListType: quickstart
-        links:
-          - text: トークンを取得して Microsoft Graph API を呼び出す (.NET Core コンソール)
-            url: quickstart-v2-netcore-daemon.md
-          - text: トークンを取得して Microsoft Graph API を呼び出す (ASP.NET Web アプリ)
-            url: 'https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp'
-      - linkListType: deploy
-        links:
-          - text: アプリの統合のテスト
-            url: identity-platform-integration-checklist.md
-      - linkListType: download
-        links:
-          - text: サンプル - ASP.NET コンソール、ASP.NET web
-            url: 'sample-v2-code.md#daemon-applications'
-  - title: Web API を呼び出すモバイル アプリの構築
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: シナリオの概要
-            url: scenario-mobile-overview.md
-      - linkListType: quickstart
-        links:
-          - text: トークンを取得して Microsoft Graph API を呼び出す (Android)
-            url: quickstart-v2-android.md
-          - text: トークンを取得して Microsoft Graph API を呼び出す (iOS)
-            url: quickstart-v2-ios.md
-          - text: トークンを取得して Microsoft Graph API を呼び出す (Xamarin iOS と Android)
-            url: 'https://github.com/Azure-Samples/active-directory-xamarin-native-v2'
-      - linkListType: tutorial
-        links:
-          - text: ユーザーをサインインさせて Microsoft Graph API を呼び出す (Android)
-            url: tutorial-v2-android.md
-          - text: ユーザーをサインインさせて Microsoft Graph API を呼び出す (iOS)
-            url: tutorial-v2-ios.md
-      - linkListType: deploy
-        links:
-          - text: アプリの統合のテスト
-            url: identity-platform-integration-checklist.md
-      - linkListType: download
-        links:
-          - text: サンプル - Android、iOS、Xamarin
-            url: 'sample-v2-code.md#desktop-and-mobile-public-client-apps'
-  - title: Microsoft Graph API を呼び出す
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Microsoft Graph について
-            url: 'https://docs.microsoft.com/graph/overview'
-      - linkListType: quickstart
-        links:
-          - text: 3 分で起動して実行する
-            url: 'https://developer.microsoft.com/graph/get-started'
-      - linkListType: learn
-        links:
-          - text: API の使用
-            url: 'https://docs.microsoft.com/graph/use-the-api'
-          - text: Microsoft Graph REST API v1.0
-            url: 'https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-1.0'
-          - text: Microsoft Graph REST API ベータ版
-            url: 'https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-beta'
-      - linkListType: deploy
-        links:
-          - text: Graph エクスプローラー
-            url: 'https://developer.microsoft.com/graph/graph-explorer/'
-  - title: ソーシャルとローカルの ID でサインインする顧客向けアプリの構築
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Azure AD B2C について
-            url: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview'
-      - linkListType: tutorial
-        links:
-          - text: Azure AD B2C のアプリに ID プロバイダーを追加する
-            url: 'https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers'
+- title: Microsoft ID プラットフォームについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft ID プラットフォームの進化
+      url: about-microsoft-identity-platform.md
+    - text: Microsoft ID プラットフォーム (v2.0)
+      url: v2-overview.md
+    - text: 開発者のための Azure Active Directory (v1.0)
+      url: v1-overview.md
+  - linkListType: learn
+    links:
+    - text: One Dev Minute - Microsoft ID プラットフォーム
+      url: https://youtu.be/y_fgJAatVhk
+- title: シングルページ アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-spa-overview.md
+  - linkListType: quickstart
+    links:
+    - text: JavaScript
+      url: quickstart-v2-javascript.md
+  - linkListType: tutorial
+    links:
+    - text: JavaScript
+      url: tutorial-v2-javascript-spa.md
+  - linkListType: deploy
+    links:
+    - text: アプリの統合のテスト
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: サンプル - JavaScript、Angular
+      url: sample-v2-code.md#single-page-applications
+    - text: サンプル - Azure AD B2C を使用する SPA
+      url: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+- title: ユーザーをサインインさせる Web アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-web-app-sign-user-overview.md
+  - linkListType: quickstart
+    links:
+    - text: ASP.NET Core
+      url: quickstart-v2-aspnet-core-webapp.md
+    - text: ASP.NET
+      url: quickstart-v2-aspnet-webapp.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core
+      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
+  - linkListType: deploy
+    links:
+    - text: アプリの統合のテスト
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: サンプル - ASP.NET Core、ASP.NET
+      url: sample-v2-code.md#web-applications
+- title: Web API を呼び出す Web アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-web-app-call-api-overview.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core
+      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial
+  - linkListType: deploy
+    links:
+    - text: アプリの統合のテスト
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: サンプル - ASP.NET Core、ASP.NET、Node.js、Ruby
+      url: sample-v2-code.md#web-applications
+- title: 保護された Web API の構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-protected-web-api-overview.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core Web API
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
+  - linkListType: deploy
+    links:
+    - text: アプリの統合のテスト
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: サンプル - ASP.NET
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
+- title: Web API を呼び出す Web API
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-web-api-call-api-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Microsoft Graph を呼び出す ASP.NET Core Web API
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
+  - linkListType: deploy
+    links:
+    - text: アプリの統合のテスト
+      url: identity-platform-integration-checklist.md
+- title: Web API を呼び出すデスクトップ アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-desktop-overview.md
+  - linkListType: quickstart
+    links:
+    - text: トークンを取得して Microsoft Graph API を呼び出す (Windows デスクトップ)
+      url: quickstart-v2-windows-desktop.md
+    - text: トークンを取得して Microsoft Graph API を呼び出す (UWP)
+      url: quickstart-v2-uwp.md
+  - linkListType: tutorial
+    links:
+    - text: Microsoft Graph API を呼び出す (Windows デスクトップ)
+      url: tutorial-v2-windows-desktop.md
+    - text: Microsoft Graph API を呼び出す (UWP)
+      url: tutorial-v2-windows-uwp.md
+  - linkListType: deploy
+    links:
+    - text: アプリの統合のテスト
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: サンプル - .NET、.NET Core
+      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
+- title: Web API を呼び出すデーモン アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-daemon-overview.md
+  - linkListType: quickstart
+    links:
+    - text: トークンを取得して Microsoft Graph API を呼び出す (.NET Core コンソール)
+      url: quickstart-v2-netcore-daemon.md
+    - text: トークンを取得して Microsoft Graph API を呼び出す (ASP.NET Web アプリ)
+      url: https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp
+  - linkListType: deploy
+    links:
+    - text: アプリの統合のテスト
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: サンプル - ASP.NET コンソール、ASP.NET web
+      url: sample-v2-code.md#daemon-applications
+- title: Web API を呼び出すモバイル アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-mobile-overview.md
+  - linkListType: quickstart
+    links:
+    - text: トークンを取得して Microsoft Graph API を呼び出す (Android)
+      url: quickstart-v2-android.md
+    - text: トークンを取得して Microsoft Graph API を呼び出す (iOS)
+      url: quickstart-v2-ios.md
+    - text: トークンを取得して Microsoft Graph API を呼び出す (Xamarin iOS と Android)
+      url: https://github.com/Azure-Samples/active-directory-xamarin-native-v2
+  - linkListType: tutorial
+    links:
+    - text: ユーザーをサインインさせて Microsoft Graph API を呼び出す (Android)
+      url: tutorial-v2-android.md
+    - text: ユーザーをサインインさせて Microsoft Graph API を呼び出す (iOS)
+      url: tutorial-v2-ios.md
+  - linkListType: deploy
+    links:
+    - text: アプリの統合のテスト
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: サンプル - Android、iOS、Xamarin
+      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
+- title: Microsoft Graph API を呼び出す
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft Graph について
+      url: https://docs.microsoft.com/graph/overview
+  - linkListType: quickstart
+    links:
+    - text: 3 分で起動して実行する
+      url: https://developer.microsoft.com/graph/get-started
+  - linkListType: learn
+    links:
+    - text: API の使用
+      url: https://docs.microsoft.com/graph/use-the-api
+    - text: Microsoft Graph REST API v1.0
+      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-1.0
+    - text: Microsoft Graph REST API ベータ版
+      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-beta
+  - linkListType: deploy
+    links:
+    - text: Graph エクスプローラー
+      url: https://developer.microsoft.com/graph/graph-explorer/
+- title: ソーシャルとローカルの ID でサインインする顧客向けアプリの構築
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD B2C について
+      url: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
+  - linkListType: tutorial
+    links:
+    - text: Azure AD B2C のアプリに ID プロバイダーを追加する
+      url: https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers

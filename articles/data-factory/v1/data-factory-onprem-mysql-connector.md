@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2468fc0cbdcee9088aa9acb387af396dd448ad0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021642"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701693"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-mysql-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-mysql.md)
 
@@ -51,7 +51,7 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
-- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -69,11 +69,11 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesMySql** |はい |
-| server |MySQL サーバーの名前です。 |はい |
+| サーバー |MySQL サーバーの名前です。 |はい |
 | database |MySQL データベースの名前です。 |はい |
-| schema |データベース内のスキーマの名前です。 |いいえ  |
+| schema |データベース内のスキーマの名前です。 |いいえ |
 | authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |
-| username |MySQL データベースに接続するユーザー名を指定します。 |はい |
+| userName |MySQL データベースに接続するユーザー名を指定します。 |はい |
 | password |指定したユーザー アカウントのパスワードを指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
@@ -306,39 +306,39 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | bit |Decimal |
 | BLOB |Byte[] |
 | bool |Boolean |
-| char |String |
+| char |string |
 | date |DateTime |
 | Datetime |DateTime |
 | decimal |Decimal |
 | double precision |Double |
 | Double |Double |
-| enum |String |
+| enum |string |
 | float |Single |
 | 符号なしの int |Int64 |
 | int |Int32 |
 | 符号なしの integer |Int64 |
 | integer |Int32 |
 | long varbinary |Byte[] |
-| long varchar |String |
+| long varchar |string |
 | longblob |Byte[] |
-| longtext |String |
+| longtext |string |
 | mediumblob |Byte[] |
 | 符号なしの mediumint |Int64 |
 | mediumint |Int32 |
-| mediumtext |String |
+| mediumtext |string |
 | numeric |Decimal |
 | real |Double |
-| set |String |
+| set |string |
 | 符号なしの smallint |Int32 |
 | smallint |Int16 |
-| text |String |
-| time |timespan |
+| text |string |
+| time |TimeSpan |
 | timestamp |DateTime |
 | tinyblob |Byte[] |
 | 符号なしの tinyint |Int16 |
 | tinyint |Int16 |
-| tinytext |String |
-| varchar |String |
+| tinytext |string |
+| varchar |string |
 | year |int |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ

@@ -6,17 +6,23 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 135f8f1c9c352f9d2307a8bf9ad1bec892aac179
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 6/30/2019
+ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399924"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537798"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Grafana で Azure Data Explorer のデータを視覚化する
 
 Grafana は、データのクエリを実行して視覚化し、視覚化に基づいてダッシュボードを作成して共有できる分析プラットフォームです。 Grafana には、Azure Data Explorer に接続してそのデータを視覚化できる、Azure Data Explorer "*プラグイン*" が用意されています。 この記事では、Azure Data Explorer を Grafana のデータ ソースとして設定し、サンプル クラスターのデータを視覚化する方法について説明します。
+
+次のビデオを使用することで、Grafana の Azure Data Explorer プラグインを使って、Azure Data Explorer を Grafana 用のデータ ソースとして設定してから、データを視覚化する方法を学習できます。 
+
+> [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
+
+または、以下の記事で詳しく説明されているように、[データ ソースを構成](#configure-the-data-source)し、[データを視覚化](#visualize-data)することができます。
 
 ## <a name="prerequisites"></a>前提条件
 

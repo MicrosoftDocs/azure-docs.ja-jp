@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f0b467284872f3d936984741c6d092705008a5a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1fca2a21758a060dbfdc4acb2123a59fcae585fd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025697"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606560"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
 
@@ -78,7 +78,7 @@ ms.locfileid: "65025697"
 | Pi is about 3.14 | pi is about three point one four |
 It costs $3.14| it costs three fourteen |
 
-## <a name="mandarin-chinese-zh-cn"></a>標準中国語 (zh-cn)
+## <a name="mandarin-chinese-zh-cn"></a>標準中国語 (zh-CN)
 
 標準中国語音声のヒューマン ラベル付け文字起こしは、バイト順マーカー付きの UTF-8 でエンコードする必要があります。 半角句読点文字の使用は避けます。 これらの文字は、ワード プロセッシング プログラムでデータを準備するときや、Web ページからデータを収集するときに誤って含まれる可能性があります。 これらの文字が存在する場合は、必ず適切な全角代替文字に置き換えてください。
 
@@ -165,7 +165,7 @@ It costs $3.14| it costs three fourteen |
 ## <a name="next-steps"></a>次の手順
 
 * [データを準備してテストする](how-to-custom-speech-test-data.md)
-* [データを調査する](how-to-custom-speech-inspect-data.md)
+* [データを検査する](how-to-custom-speech-inspect-data.md)
 * [データを評価する](how-to-custom-speech-evaluate-data.md)
 * [モデルをトレーニングする](how-to-custom-speech-train-model.md)
 * [モデルをデプロイする](how-to-custom-speech-deploy-model.md)

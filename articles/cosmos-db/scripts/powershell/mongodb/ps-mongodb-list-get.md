@@ -3,15 +3,15 @@ title: Azure PowerShell スクリプト - Azure Cosmos DB MongoDB API の操作�
 description: Azure PowerShell スクリプト - Azure Cosmos DB MongoDB API の操作を一覧表示および取得する
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: af0ec094e7f77cf9c55456ce026c67a4ebae493d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd00166e93477dc229a25cc7a183febe4034d7bb
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245504"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603896"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB - MongoDB API のデータベースとグラフを一覧表示および取得する
 

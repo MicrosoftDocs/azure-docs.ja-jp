@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3157cef6952f01d689d3cb4a30c9d7c843095809
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405693"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071694"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -42,11 +42,11 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="alert-and-new-action-group-using-azure-portal"></a>Azure portal を使用するアラートと新しいアクション グループ
-1. [ポータル](https://portal.azure.com)で、**[サービス正常性]** を選択します。
+1. [ポータル](https://portal.azure.com)で、 **[サービス正常性]** を選択します。
 
     ![[サービス正常性] サービス](media/alerts-activity-log-service-notifications/home-servicehealth.png)
 
-1. **[アラート]** セクションで、**[正常性アラート]** を選択します。
+1. **[アラート]** セクションで、 **[正常性アラート]** を選択します。
 
     ![[正常性アラート] タブ](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
@@ -54,7 +54,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
     ![[サービス正常性アラートの作成] コマンド](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. アラートを受け取る **[サブスクリプション]**、**[サービス]**、**[リージョン]** を選択します。
+1. アラートを受け取る **[サブスクリプション]** 、 **[サービス]** 、 **[リージョン]** を選択します。
 
     ![[アクティビティ ログ アラートの追加] ダイアログ ボックス](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
 
@@ -73,13 +73,13 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 1. 受信者についての次の情報を入力して、受信者の一覧を定義します。
 
-    a. **[名前]**:受信者の名前、エイリアス、または識別子を入力します。
+    a. **[名前]** :受信者の名前、エイリアス、または識別子を入力します。
 
     b. **アクションの種類**:SMS、メール、webhook、Azure アプリなどを選択します。
 
     c. **詳細**:選択したアクションの種類に基づいて、電話番号、メール アドレス、Webhook の URI などを入力します。
 
-1. **[OK]** を選択してアクション グループを選択し、**[アラート ルールの作成]** を選択してアラートを完成させます。
+1. **[OK]** を選択してアクション グループを選択し、 **[アラート ルールの作成]** を選択してアラートを完成させます。
 
 数分以内にアラートがアクティブになり、作成時に指定した条件に基づいてトリガーが開始されます。
 
@@ -92,11 +92,11 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 ## <a name="alert-with-existing-action-group-using-azure-portal"></a>Azure portal を使用する既存のアクション グループでのアラート
 
-1. 前のセクションの手順 1. から 7. に従って、サービス正常性通知を作成します。 
+1. 前のセクションの手順 1 から 6 に従って、サービス正常性通知を作成します。 
 
-1. **[Define action group]\(アクション グループの定義\)** で、**[アクション グループの選択]** ボタンをクリックします。 適切なアクション グループを選択します。
+1. **[Define action group]\(アクション グループの定義\)** で、 **[アクション グループの選択]** ボタンをクリックします。 適切なアクション グループを選択します。
 
-1. **[追加]** を選択してアクション グループを追加し、**[アラート ルールの作成]** を選択してアラートを完成させます。
+1. **[追加]** を選択してアクション グループを追加し、 **[アラート ルールの作成]** を選択してアラートを完成させます。
 
 数分以内にアラートがアクティブになり、作成時に指定した条件に基づいてトリガーが開始されます。
 
@@ -192,7 +192,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 ## <a name="manage-your-alerts"></a>アラートの管理
 
-アラートを作成すると、**[モニター]** の **[アラート]** セクションにアラートが表示されます。 次の操作を行うために管理するアラートを選択します。
+アラートを作成すると、 **[モニター]** の **[アラート]** セクションにアラートが表示されます。 次の操作を行うために管理するアラートを選択します。
 
 * 編集する。
 * 削除する。

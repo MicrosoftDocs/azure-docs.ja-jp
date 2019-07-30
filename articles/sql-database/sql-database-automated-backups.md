@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 05/20/2019
-ms.openlocfilehash: 1c81f5748d1e3edff4902eb462b9beea78acd8bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/27/2019
+ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951670"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460676"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
-SQL Database では 7 日から 35 日間に保存されるデータベース バックアップが自動的に作成され、データ センターを使用できない場合でも、Azure の[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) を使用して確実に保存されます。 バックアップは自動的に作成され、追加料金は発生しません。 ユーザー側の操作は必要ありません。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 セキュリティ規則で、長期間バックアップ (最長 10 年間) を利用できる必要がある場合は、Single Database と Elastic Pool で[長期保有](sql-database-long-term-retention.md)を構成できます。
+SQL Database では 7 日から 35 日間に保存されるデータベース バックアップが自動的に作成され、データ センターを使用できない場合でも、Azure の[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) を使用して確実に保存されます。 これらのバックアップは自動的に作成されます。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 セキュリティ規則で、長期間バックアップ (最長 10 年間) を利用できる必要がある場合は、Single Database と Elastic Pool で[長期保有](sql-database-long-term-retention.md)を構成できます。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -32,7 +32,7 @@ SQL Database は SQL Server 技術を利用して、[完全バックアップ](h
 これらのバックアップを使用して、以下を行うことができます。
 
 - **保持期間内の過去の特定の時点に既存のデータベースを復元する**。その際、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 Single Database および Elastic Pool では、この操作により、元のデータベースと同じサーバーに、新しいデータベースが作成されます。 Managed Instance では、この操作により、同じサブスクリプションに、データベースのコピーか、同じ Managed Instance または異なる Managed Instance のコピーを作成できます。
-  - **[バックアップ保有期間の変更](#how-to-change-the-pitr-backup-retention-period)** 。35 日までの値を使用して、ご自身のバックアップ ポリシーを構成できます。
+  - **[バックアップ保有期間の変更](#how-to-change-the-pitr-backup-retention-period)** 。7 から 35 日までの値を使用して、ご自身のバックアップ ポリシーを構成できます。
   - **長期アイテム保持ポリシーの変更 (最大 10 年)** 。[Azure portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) または [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups) を使用して、Single Database および Elastic Pool のポリシーを変更できます。
 - **削除したデータベースを、削除された時点に復元する**。また、保持期間内の任意の時点に復元することもできます。 削除されたデータベースは、元のデータベースが作成された論理サーバーまたは Managed Instance にのみ復元できます。
 - **別の地理的リージョンにデータベースを復元する**。 geo リストアにより、サーバーやデータベースにアクセスできないときに、地理的な障害から復旧できます。 世界中のどこでも、あらゆる既存のサーバーで新しいデータベースを作成します。

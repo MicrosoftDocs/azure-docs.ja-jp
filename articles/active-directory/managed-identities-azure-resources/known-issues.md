@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a6797c7bd0c6bd8ce8d3f51b42cb4c2b1338fd6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1eb5600a9793963a722967e1bbe702cf3b2f670e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950485"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147114"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -84,8 +84,8 @@ Azure Instance Metadata Service の詳細については、[IMDS のドキュメ
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>リソースのマネージド ID に必要な Azure RBAC アクセス許可は何ですか? 
 
-- システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 例: Microsoft.Compute/virtualMachines/write。このアクションは、[Virtual Machine Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
-- ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 例: Microsoft.Compute/virtualMachines/write。 さらにマネージド ID に対する [Managed Identity Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当て。 
+- システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
+- ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当て。
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Azure リソース拡張機能のマネージド ID を再起動するにはどうすればよいですか?
 Windows と特定のバージョンの Linux で拡張機能が停止した場合は、次のコマンドレットを使用して手動で再起動できます。

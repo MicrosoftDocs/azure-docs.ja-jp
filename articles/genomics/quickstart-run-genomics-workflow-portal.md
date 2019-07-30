@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 4c8d488021ca12a704a5c0a06bb0c491588bcaed
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b2d68f878aed5ce400214b6bdf6e1c0d713043bb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261691"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670758"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイック スタート:Microsoft Genomics サービス経由でワークフローを実行する
 
@@ -41,7 +41,7 @@ Microsoft Genomics アカウントを作成するには、[Azure Portal](https:/
  |サブスクリプション         | お使いのサブスクリプション名|これは、Azure サービスの課金単位です。サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
  |リソース グループ       | MyResourceGroup       |  リソース グループを使用すると、複数の Azure リソース (Storage アカウント、Genomics アカウントなど) を1 つのグループにまとめて、管理を簡単にできます。 詳細については、「[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)」を参照してください。 有効なリソース グループ名については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
  |アカウント名         | MyGenomicsAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
- |場所                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
+ |Location                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
 
 
 
@@ -57,9 +57,9 @@ Microsoft Genomics アカウントを作成するには、[Azure Portal](https:/
 
 ### <a name="install-python"></a>Python のインストール
 
-Microsoft Genomics Python クライアントは、Python 2.7 と互換性があります。 2.7.12 またはそれ以降の 2.7.xx バージョンと互換性があります。この記事の執筆時点における最新バージョンは 2.7.15 で、推奨されるバージョンは 2.7.14 です。 ダウンロードは[こちら](https://www.python.org/downloads/)で検索できます。 
+Microsoft Genomics Python クライアントは、Python 2.7 と互換性があります。 2\.7.12 またはそれ以降の 2.7.xx バージョンと互換性があります。この記事の執筆時点における最新バージョンは 2.7.15 で、推奨されるバージョンは 2.7.14 です。 ダウンロードは[こちら](https://www.python.org/downloads/)で検索できます。 
 
-注:Python 3.x には Python 2.7.xx との互換性がありません。  MSGen は Python 2.7 アプリケーションです。 MSGen を実行するときは、アクティブな Python 環境で 2.7.xx バージョンの Python が使用されていることを確認してください。 3.x バージョンの Python で MSGen を使用しようとすると、エラーが発生する可能性があります。
+注:Python 3.x には Python 2.7.xx との互換性がありません。  MSGen は Python 2.7 アプリケーションです。 MSGen を実行するときは、アクティブな Python 環境で 2.7.xx バージョンの Python が使用されていることを確認してください。 3\.x バージョンの Python で MSGen を使用しようとすると、エラーが発生する可能性があります。
 
 
 ### <a name="install-the-microsoft-genomics-client"></a>Microsoft Genomics クライアントのインストール
@@ -94,7 +94,7 @@ Microsoft Genomics クライアントをテストするには、お使いのgeno
 
 
 
-先ほど作成した genomics アカウントを選択して、**[アクセス キー]** に移動し、構成ファイルをダウンロードします。
+先ほど作成した genomics アカウントを選択して、 **[アクセス キー]** に移動し、構成ファイルをダウンロードします。
 
 ![Microsoft Genomics から構成ファイルをダウンロードする](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Microsoft Genomics から構成ファイルをダウンロードする")
 
@@ -120,8 +120,8 @@ Microsoft Genomics サービスでは、Azure Storage アカウントのブロ�
  |サブスクリプション         | お使いの Azure サブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
  |リソース グループ       | MyResourceGroup       |  お使いの genomics アカウントと同じリソース グループを選択できます。 有効なリソース グループ名については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
  |ストレージ アカウント名         | MyStorageAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
- |場所                  | 米国西部 2                  | お使いの genomics アカウントの場所と同じ場所を使用し、送信費を削減すると共に待機時間を短縮します。  | 
- |パフォーマンス                  | 標準                   | 既定値は Standard です。 Standard および Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)」をご覧ください。    |
+ |Location                  | 米国西部 2                  | お使いの genomics アカウントの場所と同じ場所を使用し、送信費を削減すると共に待機時間を短縮します。  | 
+ |パフォーマンス                  | Standard                   | 既定値は Standard です。 Standard および Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)」をご覧ください。    |
  |アカウントの種類       | BLOB ストレージ       |  BLOB ストレージでは、汎用的な目的の場合より、2 ～ 5 倍のダウンロードおよびアップロードの高速化が可能です。 |
  |レプリケーション                  | ローカル冗長ストレージ                  | ローカル冗長ストレージでは、お使いのストレージ アカウントが作成されたリージョンのデータセンター内に、データをレプリケートします。 詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)」をご覧ください。    |
  |アクセス層                  | ホット                   | ホット アクセスは、ストレージ アカウント内のオブジェクトへのアクセス頻度が高いことを示します。    |
@@ -152,7 +152,7 @@ Microsoft Genomics サービス経由でワークフローを実行するため�
 ![Genomics config](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Genomics config")
 
 
-GATK4 を実行したい場合は、`process_name` パラメーターを gatk4 または gatk4-promo に設定します。 GATK4 プロモーションの詳細については、[こちらのページ](https://aka.ms/msgatk4)を参照してください。
+GATK4 を実行したい場合は、`process_name` パラメーターを `gatk4` に設定します。
 
 既定では、Genomics サービスから VCF ファイルが出力されます。 VCF 出力 (GATK 3.x では `-emitRefConfidence` に、GATK 4.x では `emit-ref-confidence` に相当) ではなく gVCF 出力を希望する場合は、`config.txt` に `emit_ref_confidence` パラメーターを追加し、それを `gvcf` に設定してください (上図参照)。  VCF 出力に戻す場合は、`config.txt` ファイルからそれを削除するか、`emit_ref_confidence` パラメーターを `none` に設定します。 
 

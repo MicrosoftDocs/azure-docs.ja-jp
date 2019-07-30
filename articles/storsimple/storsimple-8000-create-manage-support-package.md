@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254368"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61481871"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -31,7 +31,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
 
 ## <a name="create-a-support-package"></a>サポート パッケージを作成する
 
-場合によっては、StorSimple 用 Windows PowerShell でサポート パッケージを手動で作成する必要があります。 例: 
+場合によっては、StorSimple 用 Windows PowerShell でサポート パッケージを手動で作成する必要があります。 例:
 
 * Microsoft サポートにログ ファイルを送信する前に、ログから機密情報を削除する必要がある場合。
 * 接続の問題があり、パッケージをアップロードできない場合。
@@ -48,7 +48,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
    1. コマンド プロンプトに、次のコマンドを入力します。
      
        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
-   2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_ です。
+   2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_です。
      
       ![PowerShell の [資格情報] ダイアログ ボックス](./media/storsimple-8000-create-manage-support-package/IC740962.png)
    3. **[OK]** を選択します。
@@ -121,7 +121,7 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
         Supply values for the following parameters:EncryptionPassphrase: ****
 9. 要求されたときに Microsoft サポートと共有できるように、新しいパスフレーズを書き留めます。
 
-### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>例: パスワードで保護された共有でサポート パッケージ内のファイルを編集する
+### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>例:パスワードで保護された共有でサポート パッケージ内のファイルを編集する
 
 次に、サポート パッケージの復号化、編集、再暗号化の例を示します。
 

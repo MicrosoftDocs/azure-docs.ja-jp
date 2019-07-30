@@ -4,15 +4,15 @@ description: Windows Virtual Desktop プレビューのセッション ホスト
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755136"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620410"
 ---
 # <a name="automatically-scale-session-hosts"></a>セッション ホストを自動的にスケーリングする
 
@@ -75,7 +75,7 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
     たとえば、**Set-Variable -Name KeyPath -Scope Global -Value "c:\\scaling-HostPool1"** などです
 5. **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行します。 入力を求められたら、ホスト プール (ホスト プールは **config.xml** で指定されます) のクエリを実行するためのアクセス許可を持つ Windows Virtual Desktop 資格情報を入力します。
     - 別のサービス プリンシパルまたは標準アカウントを使用する場合は、アカウントごとに 1 回ずつ **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行して、ローカルに格納された資格情報を作成します。
-6. **Get-StoredCredentials -List** を実行して、資格情報が正常に作成されたことを確認します。
+6. **Get-StoredCredential -List** を実行して、資格情報が正常に作成されたことを確認します。
 
 ### <a name="configure-the-configxml-file"></a>config.xml ファイルの構成
 

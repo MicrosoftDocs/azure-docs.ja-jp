@@ -9,18 +9,16 @@ ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f2b5fb5c44cbb2e0d766c49ed6b715484c22f62e
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 0857d571e3bb029f564299efbe8cc4fdf5fbb3ff
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756737"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604105"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>Content Moderator .NET SDK サンプル
 
 次のリストは、Azure Content Moderator for .NET を使用してビルドされたコード サンプルへのリンクです。
-
-- **ヘルパー ライブラリ**: [他のサンプルで使用する Content Moderator クライアントを作成します](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ModeratorHelper/Clients.cs)。 [クイック スタート](content-moderator-helper-quickstart-dotnet.md)のページを参照してください。
 
 ## <a name="moderation"></a>モデレート
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1227871f2003ded7b9cb92eaf32bd9a984958f9f
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540716"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537815"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -27,16 +27,18 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 ## <a name="core-concepts"></a>主要な概念
 「[Service Fabric の用語](service-fabric-technical-overview.md)」、「[アプリケーション モデル](service-fabric-application-model.md)」、および「[サポートされるプログラミング モデル](service-fabric-choose-framework.md)」では詳細な概念や説明が提供されていますが、ここでは基本的な概念について説明します。
 
-### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>設計時: アプリケーションの種類、サービスの種類、アプリケーションのパッケージとマニフェスト、サービス パッケージとマニフェスト
-アプリケーションの種類は、一連のサービスの種類に割り当てられる名前/バージョンです。 これは、アプリケーション パッケージ ディレクトリに埋め込まれているファイル *ApplicationManifest.xml* に定義されています。 アプリケーション パッケージは、Service Fabric クラスターのイメージ ストアにコピーされます。 このアプリケーションの種類に基づいて名前付きアプリケーションを作成できます。作成したアプリケーションはクラスター内で実行します。 
+### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>設計時: サービスの種類、サービス パッケージとマニフェスト、アプリケーションの種類、アプリケーションのパッケージとマニフェスト
+サービスの種類は、サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前/バージョンです。 これは、ServiceManifest.xml ファイルで定義されています。 このサービスの種類は、実行時に読み込まれる実行可能コードおよびサービス構成設定と、サービスによって消費される静的データで構成されます。
 
-サービスの種類は、サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前/バージョンです。 これは、サービス パッケージ ディレクトリに埋め込まれているファイル ServiceManifest.xml に定義されています。 サービス パッケージ ディレクトリは、アプリケーション パッケージのファイル *ApplicationManifest.xml* から参照されます。 クラスターには、名前付きアプリケーションを作成した後、そのアプリケーションの種類を構成するいずれかのサービスの種類から名前付きサービスを作成することができます。 サービスの種類は、その *ServiceManifest.xml* ファイルに記述します。 このサービスの種類は、実行時に読み込まれる実行可能コードおよびサービス構成設定と、サービスによって消費される静的データで構成されます。
+サービス パッケージは、サービスの種類の ServiceManifest.xml ファイルが含まれるディスクのディレクトリで、そのサービスの種類のコード、静的データ、および構成パッケージを参照します。 たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
+
+アプリケーションの種類は、一連のサービスの種類に割り当てられる名前/バージョンです。 これは、ApplicationManifest.xml ファイルで定義されています。
 
 ![Service Fabric アプリケーションの種類とサービスの種類][cluster-imagestore-apptypes]
 
-アプリケーション パッケージは、アプリケーションの種類の *ApplicationManifest.xml* ファイルが含まれているディスク ディレクトリで、アプリケーションの種類を構成するサービスの種類ごとに、対応するサービス パッケージを参照します。 たとえば電子メール アプリケーション タイプのアプリケーション パッケージであれば、Queue サービス パッケージやフロントエンド サービス パッケージ、データベース サービス パッケージへの参照が含まれることが考えられます。 アプリケーション パッケージ ディレクトリ内のファイルは、Service Fabric クラスターのイメージ ストアにコピーされます。 
+アプリケーション パッケージは、アプリケーションの種類の ApplicationManifest.xml ファイルが含まれているディスク ディレクトリであり、アプリケーションの種類を構成するサービスの種類ごとにサービス パッケージが参照されます。 たとえば電子メール アプリケーション タイプのアプリケーション パッケージであれば、Queue サービス パッケージやフロントエンド サービス パッケージ、データベース サービス パッケージへの参照が含まれることが考えられます。  
 
-サービス パッケージは、サービスの種類の *ServiceManifest.xml* ファイルが含まれているディスク ディレクトリで、サービスの種類に対応するコード、静的データ、構成パッケージなどを参照します。 サービス パッケージ ディレクトリ内のファイルは、アプリケーションの種類を定義した *ApplicationManifest.xml* ファイルから参照されます。 たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
+アプリケーション パッケージ ディレクトリ内のファイルは、Service Fabric クラスターのイメージ ストアにコピーされます。 このアプリケーションの種類に基づいて名前付きアプリケーションを作成できます。作成したアプリケーションはクラスター内で実行します。 名前付きアプリケーションを作成した後、そのアプリケーションの種類のいずれかのサービスの種類から名前付きサービスを作成することができます。 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>実行時: クラスターとノード、名前付きアプリケーション、名前付きサービス、パーティション、およびレプリカ
 [Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。

@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed05748a450d8d2082476aaba0831383e5fb60a0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073611"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441559"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Azure SQL Database サービスとは
 

@@ -3,18 +3,18 @@ title: 'ツアー: Azure IoT Central の UI | Microsoft Docs'
 description: ビルダーとして、IoT ソリューションの作成に使用する Azure IoT Central の UI の主要な領域を把握しておきましょう。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/31/2019
+ms.date: 06/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 53306b2087a47f5a61fc2a228e2d1f527127f746
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 56ff40cb2b103c620b880792571549e2bdb17064
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476328"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064358"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>ツアー: Azure IoT Central の UI
 

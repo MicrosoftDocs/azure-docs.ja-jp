@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e655b442ba9290d4b4525108521f2d1a0c766b48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9df5eb9fa4493f82c6efd4a8e30eee324e4eac2a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869818"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273838"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -201,7 +201,7 @@ Android Studio でアプリケーションをビルドするには、数秒か�
 
 ## <a name="next-steps"></a>次の手順
 
-内容をマップに追加するには、次を参照してください。
+マップにオーバーレイ データを追加する方法を確認します。
 
 > [!div class="nextstepaction"]
 > [Android マップへのシンボル レイヤーの追加](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
@@ -211,5 +211,3 @@ Android Studio でアプリケーションをビルドするには、数秒か�
 
 > [!div class="nextstepaction"]
 > [Android マップでのマップ スタイルの変更](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
-
-

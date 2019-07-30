@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88df7ae0d4e6054d82302ad5f0adabcf656cb0f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761969"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620817"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
 
@@ -437,7 +437,12 @@ GROUP BY
 
 ```SQL
     SELECT
-        [user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
+        [user],
+    feature,
+    DATEDIFF(
+        second,
+        LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'),
+        Time) as duration
     FROM input TIMESTAMP BY Time
     WHERE
         Event = 'end'
@@ -696,6 +701,15 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 
 **説明**:[COUNT(DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics) は、特定の時間枠内での、Time 列の個別の値の数を返します。 その後、このステップの出力を使用し、重複を除去することによって、デバイスあたりの平均を計算できます。
 
+## <a name="geofencing-and-geospatial-queries"></a>ジオフェンシングおよび地理空間クエリ
+Azure Stream Analytics には、フリート管理、ライド シェア、コネクテッド カー、および資産追跡などのシナリオを実装するために使用できる、組み込みの地理空間関数が用意されています。 地理空間データは、イベント ストリームまたは参照データの一部として、GeoJSON または WKT 形式で取り込むことができます。 詳細については、「[Azure Stream Analytics を使用したジオフェンシングおよび地理空間集計のシナリオ](geospatial-scenarios.md)」を参照してください。
+
+## <a name="language-extensibility-through-javascript-and-c"></a>JavaScript と C# による言語の拡張性
+Azure Stream Ananlytics のクエリ言語は、JavaScript または C# 言語で記述されたカスタム関数を使用して拡張できます。 詳細については、次の記事を参照してください。
+* [Azure Stream Analytics の JavaScript ユーザー定義関数](stream-analytics-javascript-user-defined-functions.md)
+* [Azure Stream Analytics の JavaScript ユーザー定義集計](stream-analytics-javascript-user-defined-aggregates.md)
+* [Azure Stream Analytics Edge ジョブの .NET Standard ユーザー定義関数の開発](stream-analytics-edge-csharp-udf-methods.md)
+
 ## <a name="get-help"></a>問い合わせ
 
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
@@ -704,6 +718,6 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

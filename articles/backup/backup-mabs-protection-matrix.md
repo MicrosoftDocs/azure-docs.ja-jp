@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 83cfd2b7ccdf8ec14e828baec1031e11b28c988c
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 21c832235eeb86dcea94e70f34abaf4ec3489c3c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427374"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509609"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
 
@@ -80,7 +80,7 @@ ms.locfileid: "66427374"
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008 R2 SP1 - Enterprise および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|N|N|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi ライセンス版 5.5/6.0/6.5 |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|Y|Y|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
-|VMware VM|[VMware vSphere 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|Y|N|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
+|VMware VM|[VMware vSphere ライセンス版 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|Y|N|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
 |Linux|Hyper-V または VMware ゲストとして実行されている Linux|物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|Y|Y|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護: 仮想マシン全体<br /><br />回復: 仮想マシン全体 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート

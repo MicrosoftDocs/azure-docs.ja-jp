@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f24ad348c681609392f83af894bf774dbee226bc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60763366"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620840"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
@@ -232,9 +232,9 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 ## <a name="specify-the-job-query"></a>ジョブ クエリの指定
 
-Stream Analytics は、変換を記述するための単純な宣言型のクエリのモデルをサポートします。 言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)を参照してください。  このチュートリアルでは、Twitter データに対するいくつかのクエリを作成してテストすることができます。
+Stream Analytics は、変換を記述するための単純な宣言型のクエリのモデルをサポートします。 言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を参照してください。  このチュートリアルでは、Twitter データに対するいくつかのクエリを作成してテストすることができます。
 
-トピック間のメンション数を比較するには、[タンブリング ウィンドウ](https://msdn.microsoft.com/library/azure/dn835055.aspx)を使用して、5 秒ごとにトピック別のメンション数を取得します。
+トピック間のメンション数を比較するには、[タンブリング ウィンドウ](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)を使用して、5 秒ごとにトピック別のメンション数を取得します。
 
 1. **[入力]** ブレードを閉じます (まだ閉じていない場合)。
 
@@ -266,7 +266,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
     入力のエイリアスとして `TwitterStream` を使用しなかった場合は、クエリで `TwitterStream` の代わりに選択したエイリアスを使用します。  
 
-    このクエリでは、 **TIMESTAMP BY** キーワードを使用して、一時的な計算に使用されるペイロードのタイムスタンプ フィールドを指定しています。 このフィールドが指定されていない場合は、各イベントがイベント ハブに到着した時間を使用してウィンドウ化操作が実行されます。 詳細については、「[Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時間とアプリケーション時間) を参照してください。
+    このクエリでは、 **TIMESTAMP BY** キーワードを使用して、一時的な計算に使用されるペイロードのタイムスタンプ フィールドを指定しています。 このフィールドが指定されていない場合は、各イベントがイベント ハブに到着した時間を使用してウィンドウ化操作が実行されます。 詳細については、「[Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時間とアプリケーション時間) を参照してください。
 
     このクエリは、**System.Timestamp** プロパティを使用して、各期間の終わりのタイムスタンプにもアクセスします。
 
@@ -348,7 +348,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>トレンド トピックを特定する別のクエリの作成
 
-Twitter のセンチメントを理解するために使用できるもう 1 つのクエリは、[スライディング ウィンドウ](https://msdn.microsoft.com/library/azure/dn835051.aspx)に基づいています。 トレンド トピックを特定するには、指定された期間にメンションのしきい値を超えるトピックを検索します。
+Twitter のセンチメントを理解するために使用できるもう 1 つのクエリは、[スライディング ウィンドウ](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)に基づいています。 トレンド トピックを特定するには、指定された期間にメンションのしきい値を超えるトピックを検索します。
 
 このチュートリアルでは、直近の 5 秒間で 20 回を超えてメンションされたトピックをチェックします。
 
@@ -379,5 +379,5 @@ Twitter のセンチメントを理解するために使用できるもう 1 つ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

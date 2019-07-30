@@ -50,10 +50,6 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: iOS デバイスにローカライズしたプッシュ通知を送信する
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Kindle
-      items:
-        - name: Amazon Device Messaging を使用して通知をプッシュする
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
     - name: Windows Phone
       items:
         - name: アプリに通知をプッシュする
@@ -129,8 +125,6 @@
           href: configure-windows-push-notification-service.md
         - name: Microsoft プッシュ通知サービスの構成
           href: configure-microsoft-push-notification-service.md
-        - name: Android Device Messaging の構成
-          href: configure-android-device-messaging.md
         - name: Baidu Cloud Push の構成
           href: configure-baidu-cloud-push.md
     - name: アプリケーション バックエンドへの登録

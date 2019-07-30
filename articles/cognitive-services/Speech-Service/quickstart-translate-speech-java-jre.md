@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 69cb48df4e765250247605fb5c4e1f421554fd20
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 68567e673cf6fb53b8d9b6f7b9ef96aee691ac3a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467017"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604951"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を翻訳する
 
@@ -59,9 +59,9 @@ Linux を実行している場合は、Eclipse を開始する前に、これら
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
-1. 新しい空のクラスを Java プロジェクトに追加するために、**[File]**  >  **[New]**  >  **[Class]** の順に選択します。
+1. 新しい空のクラスを Java プロジェクトに追加するために、 **[File]**  >  **[New]**  >  **[Class]** の順に選択します。
 
-1. **[New Java Class]** ウィンドウで、**[Package]** フィールドに **speechsdk.quickstart** と入力し、**[Name]** フィールドに **Main** と入力します。
+1. **[New Java Class]** ウィンドウで、 **[Package]** フィールドに **speechsdk.quickstart** と入力し、 **[Name]** フィールドに **Main** と入力します。
 
    ![[New Java Class] ウィンドウのスクリーンショット](media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -77,7 +77,7 @@ Linux を実行している場合は、Eclipse を開始する前に、これら
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-F11 キーを押すか、**[Run]**  >  **[Debug]** の順に選択します。
+F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 
 マイクからの音声入力は、ドイツ語で文字起こしされ、コンソール ウィンドウにログ記録されます。 音声のキャプチャを停止するには、Enter キーを押します。
 

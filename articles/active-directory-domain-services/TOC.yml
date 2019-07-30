@@ -37,10 +37,12 @@
       items:
         - name: シナリオ
           href: scenarios.md
-        - name: 仮想ネットワークを作成する
+        - name: 仮想ネットワークを計画する
           href: network-considerations.md
     - name: Azure AD DS を管理する
       items:
+        - name: セキュリティ監査イベントを有効にする (プレビュー)
+          href: security-audit-events.md
         - name: マネージド ドメインの正常性をチェックする
           href: check-health.md
         - name: Azure AD からマネージド ドメインまで範囲指定された同期を構成する

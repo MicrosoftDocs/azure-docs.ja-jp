@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cb3260fa11354de963318a023fec912d082eae4
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539264"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653396"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Azure Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -35,20 +35,17 @@ Azure Storage では、構成可能なファイアウォールが提供されま
 
 ファイアウォールが有効になっているとき、特定のエラー メッセージはありません。 通常、ファイアウォールのエラーは `The remote server returned an error: (403) Forbidden` のようなものです。
 
-ファイアウォールが有効であることは[ポータル](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)で確認できます。 ファイアウォールが有効である場合、この問題を回避するために 2 つの方法があります。
+ファイアウォールが有効であることは[ポータル](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)で確認できます。 唯一のサポートされている回避策は、[[すべてのネットワーク]](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) からのアクセスを許可することを選択して、ファイアウォールを無効にすることです。
 
-1. [[すべてのネットワーク]](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) からのアクセスを許可することを選択して、ファイアウォールを無効にします。
-1. 検索サービスの IP アドレスを[例外として追加](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)します。 この IP アドレスを検索するには、次のコマンドを使用します。
+インデクサーにスキルセットが添付されていない場合、検索サービスの IP アドレスの[例外を追加](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)してみる_ことができます_。 ただし、このシナリオはサポートされておらず、動作は保証されていません。
 
-`nslookup <service name>.search.windows.net`
-
-[認知検索](cognitive-search-concept-intro.md)では、例外は機能しません。 唯一の回避策はファイアウォールを無効にすることです。
+検索サービスの IP アドレスは、その FQDN (`<your-search-service-name>.search.windows.net`) を ping することで確認できます。
 
 ### <a name="cosmos-db"></a>Cosmos DB
 
 #### <a name="indexing-isnt-enabled"></a>インデックス付けが有効でない
 
-Azure Search は、Cosmos DB のインデックス付けに暗黙に依存しています。 Cosmos DB の自動インデックス付けをオフにすると、Azure Search から成功状態が返されますが、コンテナーの内容をインデックス付けすることができません。 設定を確認してインデックス付けをオンにする手順については、[Azure Cosmos DB でのインデックス付けの管理](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#manage-indexing-using-azure-portal)に関する記事をご覧ください。
+Azure Search は、Cosmos DB のインデックス付けに暗黙に依存しています。 Cosmos DB の自動インデックス付けをオフにすると、Azure Search から成功状態が返されますが、コンテナーの内容をインデックス付けすることができません。 設定を確認してインデックス付けをオンにする手順については、[Azure Cosmos DB でのインデックス付けの管理](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal)に関する記事をご覧ください。
 
 ## <a name="document-processing-errors"></a>ドキュメントの処理エラー
 

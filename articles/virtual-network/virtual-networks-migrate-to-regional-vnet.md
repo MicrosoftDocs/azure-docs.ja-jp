@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 1fca7f6165998b95254f841638cf8bcbc1fb352d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d3bb93d12a217e6d9066d037ff92f071b6139ab3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792156"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60648637"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>仮想ネットワーク (クラシック) をアフィニティ グループからリージョンに移行する
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは Resource Manager デプロイメント モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは Resource Manager デプロイ モデルを使用することをお勧めします。
 
 アフィニティ グループを使うと、同じアフィニティ グループ内で作成したリソースが、近距離にある複数サーバーによって物理的にホストされるため、これらのリソースはより迅速に通信できるようになります。 これまでアフィニティ グループは、仮想ネットワーク (クラシック) を作成するための要件でした。 当時は、仮想ネットワーク (クラシック) を管理するネットワーク マネージャー サービスが機能できたのは、一連の物理サーバーまたはスケール ユニット内のみでした。 アーキテクチャの改善により、ネットワーク管理のスコープがリージョンに拡大しました。
 

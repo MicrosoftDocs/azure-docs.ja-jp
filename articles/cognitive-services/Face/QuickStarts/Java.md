@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c0c1b9c1e9afc84e9702f6c1897d372a017be868
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: d014785a0e866301e228458fe3742b899bd1f192
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629888"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606966"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>クイック スタート:REST API と Java を使用して画像内の顔を検出する
 
@@ -159,7 +159,7 @@ public class Main {
 
 ## <a name="run-the-app"></a>アプリの実行
 
-コードをコンパイルして実行します。 実行に成功した場合、応答として顔データが、読みやすい JSON 形式でコンソール ウィンドウに表示されます。 例: 
+コードをコンパイルして実行します。 実行に成功した場合、応答として顔データが、読みやすい JSON 形式でコンソール ウィンドウに表示されます。 例:
 
 ```json
 [{

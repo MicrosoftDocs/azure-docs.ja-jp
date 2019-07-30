@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: REST API を使用してバックアップ ポリシーを作成する'
 description: REST API を使用してバックアップ ポリシー (スケジュールと保持期間) を管理します。
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: f0729a49c3dc72a28431d711e6783abda96d2ce3
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289649"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466815"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API を使用して Azure Recovery Services バックアップ ポリシーを作成する
 
@@ -31,7 +30,7 @@ Azure Recovery Services コンテナー用のバックアップ ポリシーを�
 - ポリシーは、多くのリソースに割り当てることができます。 Azure VM のバックアップ ポリシーを使用して、多くの Azure VM を保護できます。
 - ポリシーは、2 つのコンポーネントで構成されています
   - スケジュール: いつバックアップを作成するか
-  - 保持期間: どのくらいの期間、各バックアップを保持する必要があるか。
+  - 保持期間: 各バックアップをどれだけの期間保持する必要があるか。
 - スケジュールでは、"毎日" または "毎週" の特定の時点として定義できます。
 - 保持期間は、"毎日"、"毎週"、"毎月"、"毎年" のバックアップ ポイントに対して定義できます。
 - "毎週" は週の特定の日、"毎月" は月の特定の日、"毎年" は年の特定の日に、バックアップを行うことを意味します。
@@ -50,10 +49,10 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 たとえば、Azure VM のバックアップに対するポリシーを作成する場合、要求本文のコンポーネントは次のとおりです。
 
-|Name  |必須  |type  |説明  |
+|EnableAdfsAuthentication  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
-|tags     |         | オブジェクト        |  リソース タグ       |
+|tags     |         | Object        |  リソース タグ       |
 
 要求本文での定義の完全な一覧については、[バックアップ ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。
 
@@ -152,16 +151,16 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 > [!IMPORTANT]
 > スケジュールと保持期間の日時形式では、DateTime のみがサポートされます。 Time 形式のみはサポートされません。
 
-## <a name="responses"></a>応答
+## <a name="responses"></a>Responses
 
 バックアップ ポリシーの作成/更新は、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
 ### <a name="example-responses"></a>応答の例
 

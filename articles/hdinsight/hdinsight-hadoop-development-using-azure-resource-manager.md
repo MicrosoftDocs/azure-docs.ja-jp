@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 36b43ce6636bf918e1e8c42af4c2746865f5ccd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 320611f05190d755c85a94a8e8eb9a1c04b3310e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523348"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508823"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
 
@@ -52,7 +52,7 @@ Azure Resource Manager では、次の新しいコマンドを使用できます
 
 * [Curl を使用して HDInsight の Hadoop で MapReduce ジョブを実行](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-curl.md)
-* [HDInsight 上の Apache Hadoop で cURL を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-curl.md)
+
 
 Apache Hadoop MapReduce、Apache Hive、および Apache Pig を対話形式で実行する他の方法については、[HDInsight 上の Hadoop で MapReduce を使用する](hadoop/hdinsight-use-mapreduce.md)方法のページ、[HDInsight 上の Apache Hadoop での Apache Hive の使用を使用する](hadoop/hdinsight-use-hive.md)方法のページ、および「[HDInsight 上の Apache Pig で Apache Pig を使用する](hadoop/hdinsight-use-pig.md)」を参照してください。
 
@@ -213,7 +213,6 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
 #### <a name="other-samples"></a>その他のサンプル
 * [HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 * [Apache Hive ジョブを送信する](hadoop/apache-hadoop-use-hive-powershell.md)
-* [Apache Pig ジョブを送信する](hadoop/apache-hadoop-use-pig-powershell.md)
 * [Apache Sqoop ジョブを送信する](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>新しい HDInsight .NET SDK に移行する
@@ -231,7 +230,6 @@ Azure Service Management ベース [(ASM) HDInsight .NET SDK](https://msdn.micro
 | Azure Active Directory と .NET SDK を使用して対話型アプリケーションを認証する |[.NET SDK を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関するページを参照してください。 この記事のコード スニペットでは、対話型の認証アプローチを使用しています。 |
 | Azure Active Directory と .NET SDK を使用して非対話型アプリケーションを認証する |「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | .NET SDK を使用して Apache Hive ジョブを送信する |[Apache Hive ジョブの送信](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関する記事を参照してください |
-| .NET SDK を使用して Apache Pig ジョブを送信する |[Apache Pig ジョブの送信](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関する記事を参照してください |
 | .NET SDK を使用して Apache Sqoop ジョブを送信する |[Apache Sqoop ジョブの送信](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)に関する記事を参照してください |
 | .NET SDK を使用して HDInsight クラスターを一覧表示する |「[List HDInsight clusters (HDInsight クラスターを一覧表示する)](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
 | .NET SDK を使用して HDInsight クラスターをスケールする |「[Scale HDInsight clusters (HDInsight クラスターをスケールする)](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |

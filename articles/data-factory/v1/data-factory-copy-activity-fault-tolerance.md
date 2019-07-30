@@ -13,15 +13,15 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3a255b21e8bfd7d78954603e9aa6e5ca39cee95b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321995"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60566083"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>互換性のない行をスキップすることによるコピー アクティビティへのフォールト トレランスの追加
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](data-factory-copy-activity-fault-tolerance.md)
 > * [バージョン 2 (最新バージョン)](../copy-activity-fault-tolerance.md)
 
@@ -72,10 +72,10 @@ Azure Data Factory の[コピー アクティビティ](data-factory-data-moveme
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | コピー中に互換性のない行のスキップを有効にするかどうか。 | True<br/>False (既定値) | いいえ  |
-| **redirectIncompatibleRowSettings** | 互換性のない行をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ  |
-| **linkedServiceName** | スキップされる行が含まれたログを格納する Azure Storage のリンク サービス。 | [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) または [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) リンク サービスの名前。これは、ログ ファイルの格納に使用するストレージ インスタンスです。 | いいえ  |
-| **path** | スキップした行を含むログ ファイルのパス。 | 互換性のないデータをログに記録する Blob Storage のパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ  |
+| **enableSkipIncompatibleRow** | コピー中に互換性のない行のスキップを有効にするかどうか。 | True<br/>False (既定値) | いいえ |
+| **redirectIncompatibleRowSettings** | 互換性のない行をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ |
+| **linkedServiceName** | スキップされる行が含まれたログを格納する Azure Storage のリンク サービス。 | [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) または [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) リンク サービスの名前。これは、ログ ファイルの格納に使用するストレージ インスタンスです。 | いいえ |
+| **path** | スキップした行を含むログ ファイルのパス。 | 互換性のないデータをログに記録する Blob Storage のパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ |
 
 ## <a name="monitoring"></a>監視
 コピー アクティビティの実行が完了すると、監視セクションでスキップされた行の数を次のように確認できます。

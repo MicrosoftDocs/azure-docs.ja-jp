@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 83ca0c11ab0065929d939b7345cbd15869740bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b56a31a58937ddbea08ff22c3d1c0c71942f47f1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024353"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445396"
 ---
 # <a name="data-import-overview---azure-search"></a>データ インポートの概要 - Azure Search
 
@@ -36,7 +36,7 @@ Azure Search では、[検索インデックス](search-what-is-an-index.md)に�
 
 現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
 
-各方法の概要については、「[Quickstart: Create an Azure Search index using PowerShell and the REST API](search-create-index-rest-api.md)」または「[クイック スタート: C# で Azure Search インデックスを作成する](search-import-data-dotnet.md)」を参照してください。
+各方法の概要については、「[Quickstart: PowerShell を使用した Azure Search インデックスの作成](search-create-index-rest-api.md)」または「[C# Quickstart: .NET SDK を使用した Azure Search インデックスの作成](search-get-started-dotnet.md)」をご覧ください。
 
 <a name="indexing-actions"></a>
 
@@ -44,9 +44,9 @@ Azure Search では、[検索インデックス](search-what-is-an-index.md)に�
 
 インデックス作成アクションの種類をドキュメントごとに制御できます。つまり、ドキュメントを全部アップロードするか、既存のドキュメント コンテンツとマージするか、または削除するかを指定できます。
 
-REST API では、JSON 要求本文を利用して HTTP POST 要求を Azure Search インデックスのエンドポイント URL に発行します。 "value" 配列内の各 JSON オブジェクトは、ドキュメントのキーを含み、インデックス作成アクションとしてドキュメント コンテンツの追加、更新、または削除を指定します。 コード例については、[ドキュメントの読み込み](search-create-index-rest-api.md#load-documents)に関するセクションを参照してください。
+REST API では、JSON 要求本文を利用して HTTP POST 要求を Azure Search インデックスのエンドポイント URL に発行します。 "value" 配列内の各 JSON オブジェクトは、ドキュメントのキーを含み、インデックス作成アクションとしてドキュメント コンテンツの追加、更新、または削除のいずれかを指定します。 コード例については、[ドキュメントの読み込み](search-get-started-dotnet.md#load-documents)に関するセクションを参照してください。
 
-.NET SDK では、データを `IndexBatch` オブジェクトにパッケージ化します。 `IndexBatch` は複数の `IndexAction` オブジェクトをカプセル化したものです。このオブジェクトにはそれぞれ、ドキュメント 1 つと、Azure Search にそのドキュメントへのアクションを指示するプロパティが 1 つ含まれています。 コード例については、「[IndexBatch の作成](search-import-data-dotnet.md#construct-indexbatch)」を参照してください。
+.NET SDK では、データを `IndexBatch` オブジェクトにパッケージ化します。 `IndexBatch` は複数の `IndexAction` オブジェクトをカプセル化したものです。このオブジェクトにはそれぞれ、ドキュメント 1 つと、Azure Search にそのドキュメントへのアクションを指示するプロパティが 1 つ含まれています。 コード例は、[ C# Quickstart](search-get-started-dotnet.md) を参照してください。
 
 
 | @search.action | 説明 | 各ドキュメントに必要なフィールド | メモ |

@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b00afa3d1001ee7c48997e41fd6042763bcc9aa
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: cd41bdfb90e5e8428a747832c10fe23a2cac4560
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616596"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109400"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -112,7 +112,7 @@ Azure AD Connect を使用して、サインイン方法をパスワード ハ�
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>パススルー認証エージェントを削除するにはどうすればよいですか。
 
-パススルー認証エージェントが実行されている間はアクティブなままであり、ユーザーのサインイン要求を継続的に処理します。 認証エージェントをアンインストールするには、**[コントロール パネル]、[プログラム]、[プログラムと機能]** の順に選択し、**Microsoft Azure AD Connect 認証エージェント**と **Microsoft Azure AD Connect Agent Updater** プログラムの両方をアンインストールします。
+パススルー認証エージェントが実行されている間はアクティブなままであり、ユーザーのサインイン要求を継続的に処理します。 認証エージェントをアンインストールするには、 **[コントロール パネル]、[プログラム]、[プログラムと機能]** の順に選択し、**Microsoft Azure AD Connect 認証エージェント**と **Microsoft Azure AD Connect Agent Updater** プログラムの両方をアンインストールします。
 
 上記の手順を完了した後、[Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを確認すると、認証エージェントは**非アクティブ**と表示されます。 これは "_予期されること_" です。 認証エージェントは数日後に自動的に一覧から削除されます。
 

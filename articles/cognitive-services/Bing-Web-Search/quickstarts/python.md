@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2f26392bdac34dd831e04c772e5357f5e41fc746
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4f7f1c28423e67ff9ff09385a5e0c7675e4a6049
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390220"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338821"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>クイック スタート:Python を使用して Bing Web Search API を呼び出す  
 
@@ -60,8 +60,8 @@ search_term = "Azure Cognitive Services"
 ```python
 import requests
 
-headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-params  = {"q": search_term, "textDecorations":True, "textFormat":"HTML"}
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+params = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
 response = requests.get(search_url, headers=headers, params=params)
 response.raise_for_status()
 search_results = response.json()
@@ -77,7 +77,7 @@ from IPython.display import HTML
 rows = "\n".join(["""<tr>
                        <td><a href=\"{0}\">{1}</a></td>
                        <td>{2}</td>
-                     </tr>""".format(v["url"],v["name"],v["snippet"]) \
+                     </tr>""".format(v["url"], v["name"], v["snippet"])
                   for v in search_results["webPages"]["value"]])
 HTML("<table>{0}</table>".format(rows))
 ```

@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 5/21/2019
+ms.date: 6/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07bcf50a816c090ccef846909dff671486e514c4
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157309"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203061"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成:Azure ポータル
 
@@ -41,7 +41,7 @@ ms.locfileid: "66157309"
 * **サブネットのアドレス範囲:** 192.168.1.0/24
 * **サブスクリプション:** サブスクリプションが複数ある場合は、適切なサブスクリプションを使用していることを確認します。
 * **[リソース グループ]:** TestRG
-* **[場所]:** 米国東部
+* **[場所]:** East US
 * **GatewaySubnet:** 192.168.200.0/24<br>
 * **DNS サーバー**: (オプション) 名前解決に利用する DNS サーバーの IP アドレス。
 * **仮想ネットワーク ゲートウェイ名:** VNet1GW
@@ -98,7 +98,7 @@ ms.locfileid: "66157309"
 2. **[今すぐ構成]** をクリックして構成ページを開きます。
 
    ![今すぐ構成](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. **ポイント対サイト**の構成ページの **[アドレス プール]** ボックスに、使用するプライベート IP アドレス範囲を追加します。 VPN クライアントには、指定した範囲から動的に IP アドレスが割り当てられます。 設定を確認して保存するには、 **[保存]** をクリックします。
+3. **ポイント対サイト**の構成ページの **[アドレス プール]** ボックスに、使用するプライベート IP アドレス範囲を追加します。 VPN クライアントには、指定した範囲から動的に IP アドレスが割り当てられます。 最小のサブネット マスクは、アクティブ/パッシブ構成の場合は 29 ビット、アクティブ/アクティブ構成の場合は 28 ビットです。 設定を確認して保存するには、 **[保存]** をクリックします。
 
    ![クライアント アドレス プール](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 

@@ -2,23 +2,17 @@
 title: Azure Cloud Services とは| Microsoft Docs
 description: Azure Cloud Services について説明します。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
+author: georgewallace
 ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337522"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359708"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
 Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。

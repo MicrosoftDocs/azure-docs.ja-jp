@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: b8cf0891bd2a11a4ea46cc9fb8bad266862b6971
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6e7d0ff396a4d264ee1f724d192c6c36abb400b1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005380"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051572"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>クイック スタート: IoT の利用統計情報を Android デバイスから送信する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Android Studio (https://developer.android.com/studio/)。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。 
+* Android Studio (https://developer.android.com/studio/ )。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。
 
 * この記事のサンプルでは、Android SDK 27 を使用しています。
 
@@ -87,7 +87,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Android Studio で、**[File]\(ファイル\)** > **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
+3. Android Studio で、 **[File]\(ファイル\)**  >  **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
 
    > [!NOTE]
    > プロジェクトの同期に失敗した場合、次のいずれかの理由が原因として考えられます。
@@ -95,9 +95,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > * プロジェクトで参照されている Android Gradle プラグインと Gradle のバージョンが、ご使用の Android Studio のバージョンに対して古い。 [こちらの手順](https://developer.android.com/studio/releases/gradle-plugin)に従って、実際の環境に合った正しいバージョンのプラグインと Gradle を参照、インストールしてください。
    > * Android SDK のライセンス契約に署名していない。 ビルド出力に書かれている手順に従ってライセンス契約に署名し、SDK をダウンロードしてください。
 
-4. ビルドが完了したら、**[Run]\(実行\)** > **[Run 'app']\(<アプリ> の実行\)** をクリックします。 物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
+4. ビルドが完了したら、 **[Run]\(実行\)**  >  **[Run 'app']\(<アプリ> の実行\)** をクリックします。 物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
 
-5. アプリが読み込まれたら、**[Start]\(開始\)** ボタンをクリックして、IoT ハブへの利用統計情報の送信を開始します。
+5. アプリが読み込まれたら、 **[Start]\(開始\)** ボタンをクリックして、IoT ハブへの利用統計情報の送信を開始します。
 
     ![Application](media/quickstart-send-telemetry-android/sample-screenshot.png)
 
@@ -113,11 +113,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
+
     次のスクリーンショットは、Android デバイスから送信された利用統計情報を IoT ハブが受信しているときの出力を示しています。
 
       ![Azure CLI を使用してデバイス メッセージを読み取る](media/quickstart-send-telemetry-android/read-data.png)
-
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
@@ -130,4 +129,3 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 > [!div class="nextstepaction"]
 > [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-android.md)
-

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 15724adfc6eb875f3d2d5b6d3ecbbb54135a7265
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181156"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671430"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
@@ -45,7 +45,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 
 ## <a name="puppet"></a>Puppet
-[Puppet](https://www.puppet.com) は、アプリケーションの配信とデプロイのプロセスを処理する、エンタープライズ対応の自動化プラットフォームです。 エージェントは、ターゲット マシンにインストールし、Azure インフラストラクチャと VM の目的の構成を定義したマニフェストを Puppet Master が実行できるようにします。 Puppet は、Jenkins や GitHub などの他のソリューションと統合して、DevOps ワークフローを強化できます。 詳細については、「[How Puppet works (Puppet のしくみ)](https://puppet.com/product/how-puppet-works)」を参照してください。
+[Puppet](https://www.puppet.com) は、アプリケーションの配信とデプロイのプロセスを処理する、エンタープライズ対応の自動化プラットフォームです。 エージェントは、ターゲット マシンにインストールし、Azure インフラストラクチャと VM の目的の構成を定義したマニフェストを Puppet Master が実行できるようにします。 Puppet は、Jenkins や GitHub などの他のソリューションと統合して、DevOps ワークフローを強化できます。 詳細については、「[How Puppet works (Puppet のしくみ)](https://puppet.com/products/how-puppet-works)」を参照してください。
 
 以下の項目について説明します。
 
@@ -53,7 +53,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 
 ## <a name="cloud-init"></a>cloud-init
-[cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 cloud-init は初回起動プロセスの間に呼び出されるので、構成を適用するために追加の手順や必要なエージェントはありません。  `#cloud-config` ファイルの形式を正しく設定する方法について詳しくは、[cloud-init のドキュメント サイト](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)をご覧ください。  `#cloud-config` ファイルは、base64 でエンコードされたテキスト ファイルです。
+[cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 cloud-init は初回起動プロセスの間に呼び出されるので、構成を適用するために追加の手順や必要なエージェントはありません。  `#cloud-config` ファイルの形式を正しく設定する方法について詳しくは、[cloud-init のドキュメント サイト](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)をご覧ください。  `#cloud-config` ファイルは、base64 でエンコードされたテキスト ファイルです。
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 

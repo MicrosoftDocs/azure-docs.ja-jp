@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: e51ef9afd0e49b690a4f9cab09fdfbd3e86eee66
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: a5bf0d7d0478ad836ed1921b302ab01b004ec73c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441046"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722223"
 ---
 # <a name="where-can-you-use-personalizer"></a>Personalizer を使用できる状況
 
@@ -35,7 +35,7 @@ Personalizer は、次の状況で適用できます。
 * コンテキスト上の決定を、限られた選択肢から最良の選択肢 (アクション) を順位付けすることとして表現できる。
 * ユーザー動作の一定の側面を測定し、それを "_報酬スコア_" で表現することによって、順位付けされた選択肢がアプリケーションにとってどれだけうまく機能したかを判断できる。 これは -1 から 1 までの数値です。
 * 報酬スコアに含まれる交絡または外部因子が多すぎない。 実験期間は、関連性を保持したまま報酬スコアを計算するのに必要上最小限の長さにします。
-* 順位のコンテキストを、適切な選択をするのに役立つと思われる少なくとも 5 つの[特徴](concepts-features.md)のリストとして表現できる。加えて、これには個人を特定できる情報が含まれない  (PII)。
+* 順位のコンテキストを、適切な選択をするのに役立つと思われる少なくとも 5 つの[特徴](concepts-features.md)のリストとして表現できる。加えて、これには個人を特定できる情報が含まれない (PII)。
 * Personalizer が適切な選択をするのに役立つと思われる少なくとも 5 つの[特徴](concepts-features.md)のリストとして、各コンテンツの選択 ("_アクション_") に関する情報がある。
 * アプリケーションは、少なくとも 10 万回の相互作用の履歴を蓄積するのに十分な期間にわたってデータを保持できる。
 

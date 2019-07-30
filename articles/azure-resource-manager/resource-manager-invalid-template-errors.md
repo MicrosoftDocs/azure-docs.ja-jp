@@ -1,24 +1,17 @@
 ---
 title: Azure の無効なテンプレート エラー | Microsoft Docs
 description: 無効なテンプレート エラーを解決する方法について説明します。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: ee4bce38e0fcde93ba0417617ae90dab2eefda67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0417a975ffbbe0acd94ceac6c0f8e1de27a27aa6
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61061393"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206259"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>無効なテンプレートのエラーを解決する
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 11d0a0a67d1ce5049166cab3d9ca3e4903b6b460
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05387d2fd9b38ffa8137668e01b6d7cff3346ac8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>チュートリアル:Azure Active Directory と Teamphoria の統合
 
@@ -53,11 +53,11 @@ Azure AD への Teamphoria の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Teamphoria を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Teamphoria の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Teamphoria**」と入力し、結果パネルで **[Teamphoria]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Teamphoria**」と入力し、結果パネルで **[Teamphoria]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リスト内の Teamphoria](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
 Teamphoria で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Teamphoria** アプリケーション統合ページで、**[シングルサインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Teamphoria** アプリケーション統合ページで、 **[シングルサインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Teamphoria で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 この値は実際のサインオン URL で更新する必要があります。 シングル サインオン URL を取得するには、[Teamphoria クライアント サポート チーム](https://www.teamphoria.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -128,7 +128,7 @@ Teamphoria で Azure AD シングル サインオンを構成するには、次�
 
 1. **Teamphoria** 側でシングル サインオンを構成するには、Teamphoria アプリケーションに管理者としてログインします。
 
-1. 左のツールバーの [Configure] タブの **[ADMIN SETTINGS]** オプションに移動し、**[SINGLE SIGN-ON]** をクリックして SSO 構成ウィンドウを開きます。
+1. 左のツールバーの [Configure] タブの **[ADMIN SETTINGS]** オプションに移動し、 **[SINGLE SIGN-ON]** をクリックして SSO 構成ウィンドウを開きます。
 
     ![Configure single sign-on](./media/teamphoria-tutorial/admin_sso_configure.png)
 
@@ -148,13 +148,13 @@ Teamphoria で Azure AD シングル サインオンを構成するには、次�
 
     d. **エントリ ポイント**: 先ほど Azure portal からコピーした**ログイン URL** を貼り付けます。
 
-    e. オプションを **[ON (オン)]** に切り替え、**[保存]** をクリックします。
+    e. オプションを **[ON (オン)]** に切り替え、 **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -168,7 +168,7 @@ Teamphoria で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -179,7 +179,7 @@ Teamphoria で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Teamphoria へのアクセスを　許可することにより、Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Teamphoria]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Teamphoria]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -191,15 +191,15 @@ Teamphoria で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-teamphoria-test-user"></a>Teamphoria テスト ユーザーの作成
 
@@ -209,7 +209,7 @@ Azure AD ユーザーが Teamphoria にサインインできるようにする�
 
 1. Teamphoria 企業サイトに管理者としてサインインします。
 
-1. 左のツールバーの **[管理]** タブで**管理者**設定をクリックし、**[ユーザー]** をクリックして、ユーザーの管理者ページを開きます。
+1. 左のツールバーの **[管理]** タブで**管理者**設定をクリックし、 **[ユーザー]** をクリックして、ユーザーの管理者ページを開きます。
 
     ![従業員の追加](./media/teamphoria-tutorial/admin_manage_users.png)
 

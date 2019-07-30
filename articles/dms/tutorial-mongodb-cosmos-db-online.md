@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/29/2019
-ms.openlocfilehash: 0bd271dbf173885cbd5f7835c5dc6b672a3e6035
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.date: 07/04/2019
+ms.openlocfilehash: 17f1b36ba5d5b699cce621db3917ef92654047ff
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298963"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565574"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオンラインで移行する
 
@@ -150,7 +150,14 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
      * JSON ダンプの場合、BLOB コンテナー内のファイルは、包含データベースの名前が付けられたフォルダーに配置する必要があります。 各データベース フォルダー内で、データ ファイルは "data" というサブフォルダーに配置し、*collection*.json の形式で名前を付ける必要があります。 メタデータ ファイルがある場合は、"metadata" というサブフォルダーに配置し、同じ形式の *collection*.json を使用して名前を付ける必要があります。 メタデータ ファイルは、MongoDB bsondump ツールによって生成されたものと同じ形式にする必要があります。
 
-   DNS の名前解決ができない場合は、IP アドレスを使用できます。
+    > [!IMPORTANT]
+    > Mongo サーバー上で自己署名入りの証明書を使用することはお勧めできません。 ただし、使用する場合は、**接続文字列のモード**を使用してサーバーに接続し、確実に接続文字列に “” を付けるようにしてください。
+    >
+    >```
+    >&sslVerifyCertificate=false
+    >```
+
+    DNS の名前解決ができない場合は、IP アドレスを使用できます。
 
    ![ソース詳細を指定する](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 

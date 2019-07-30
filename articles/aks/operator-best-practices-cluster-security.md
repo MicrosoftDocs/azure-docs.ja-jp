@@ -2,17 +2,17 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Service (AKS) でのクラスターのセキュリティ
 description: Azure Kubernetes Service (AKS) でクラスターのセキュリティとアップグレードを管理する方法に関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: 54f1455467295e786d9e634b64dfab0933d948db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: d4a77fc1756b0fa9decb6d3a84760beb1e700863
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475593"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614890"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -26,7 +26,7 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際には、ワ�
 > * AKS クラスターを最新の Kubernetes バージョンにアップグレードする
 > * ノードを最新の状態に保ち、セキュリティ パッチを自動的に適用する
 
-また、[コンテナー イメージの管理][best-practices-container-image-management]と [pod セキュリティ][best-practices-pod-security]に関するベスト プラクティスを参照できます。
+また、[コンテナー イメージの管理][best-practices-container-image-management]と and for [pod security][best-practices-pod-security]に関するベスト プラクティスを参照できます。
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>API サーバーとクラスター ノードへのアクセスをセキュリティで保護する
 
@@ -191,7 +191,7 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
 ```
 
-AKS のアップグレードの詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]と [AKS クラスターのアップグレード][aks-upgrade]に関する記事を参照してください。
+AKS のアップグレードの詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]と and [Upgrade an AKS cluster][aks-upgrade]に関する記事を参照してください。
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>kured を使用して Linux ノードの更新と再起動を処理する
 
@@ -212,7 +212,7 @@ Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェク�
 この記事では、AKS クラスターをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
 
 * [Azure Active Directory と AKS の統合][aks-aad]
-* [AKS クラスターを最新バージョンの Kubernetes にアップグレードする][aks-upgrade]
+* [AKS クラスターを最新版の Kubernetes にアップグレードする][aks-upgrade]
 * [kured を使用してセキュリティ更新プログラムとノードの再起動を処理する][aks-kured]
 
 <!-- EXTERNAL LINKS -->

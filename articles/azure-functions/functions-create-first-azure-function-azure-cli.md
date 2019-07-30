@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 7ff57519cfbb99fa705aff6c970951730c501f3e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 625fcda4b612fdeda940f9219238ac79354dd056
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846455"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444658"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>コマンド ラインから最初の関数を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "52846455"
 
 このサンプルを実行する前に、以下が必要です。
 
-+ [Azure Core Tools バージョン 2.x](functions-run-local.md#v2) をインストールします。
++ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降をインストールします。
 
 + [Azure CLI]( /cli/azure/install-azure-cli) をインストールします。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 [Azure Cloud Shell](https://shell.azure.com/bash) を使用することもできます。
 
@@ -65,9 +65,11 @@ Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
 cd MyFunctionProj
 ```
 
-[!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
+## <a name="enable-extension-bundles"></a>拡張バンドルを有効にする
 
-[!INCLUDE [functions-update-function-code](../../includes/functions-update-function-code.md)]
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+[!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
 
 [!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 
@@ -79,11 +81,11 @@ cd MyFunctionProj
 
 関数の実行をホストするための Function App が存在する必要があります。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用します。 
 
-次のコマンドでは、`<app_name>` プレースホルダーを一意の Function App 名で、`<storage_name>` をストレージ アカウント名で置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 また、関数アプリの `<language>` ランタイムを `dotnet` (C#) または `node` (JavaScript) から設定する必要があります。
+次のコマンドでは、`<APP_NAME>` プレースホルダーを一意の Function App 名で、`<STORAGE_NAME>` をストレージ アカウント名で置き換えます。 `<APP_NAME>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 また、関数アプリの `<language>` ランタイムを `dotnet` (C#) または `node` (JavaScript) から設定する必要があります。
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westeurope \
---name <app_name> --storage-account  <storage_name> --runtime <language> 
+--name <APP_NAME> --storage-account  <STORAGE_NAME> --runtime <language>
 ```
 
 _consumption-plan-location_ パラメーターを設定すると、従量課金ホスティング プランで Function App がホストされます。 このサーバーレス プランでは、関数からの要求に応じてリソースが動的に追加され、関数が実行中のときだけ課金されます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。

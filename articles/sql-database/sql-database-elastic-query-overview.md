@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 01/19/2019
-ms.openlocfilehash: fad9437a631254d6c60d6d97267ae111d195040f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 07/01/2019
+ms.openlocfilehash: 5188862c50895c8e3f1bdecb4e08d39409bb5f9e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567453"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491664"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 
@@ -140,9 +140,10 @@ DDL ステートメントを実行すると、ローカル テーブルである
 * SSMS または SSDT の外部データ ソースまたは外部テーブルからのスクリプト処理はまだサポートされていません。
 * SQL DB の Import/Export では、外部データ ソースと外部テーブルはまだサポートされていません。 Import/Export を使用する必要がある場合は、エクスポートの前にこれらのオブジェクトを削除し、インポート後にこれらのオブジェクトを再作成します。
 * 現在、エラスティック クエリでは、外部テーブルへの読み取り専用アクセスだけがサポートされています。 ただし、外部テーブルが定義されているデータベースでは、完全な T-SQL 機能を使用できます。 これは、SELECT <column_list> INTO <local_table> を使用して一時的な結果を保持する場合や、外部テーブルを参照するエラスティック クエリ データベースでストアド プロシージャを定義する場合などに便利です。
-* 外部テーブル定義では、nvarchar(max) 以外の LOB 型はサポートされていません。 この制限を回避するために、リモート データベースで LOB 型を nvarchar(max) にキャストするビューを作成し、ベース テーブルではなくそのビューで外部テーブルを定義し、クエリを使ってこれを元の LOB 型にキャストするという方法を利用できます。
+* 外部テーブル定義では、nvarchar(max) 以外の LOB 型 (空間型を含む) はサポートされていません。 この制限を回避するために、リモート データベースで LOB 型を nvarchar(max) にキャストするビューを作成し、ベース テーブルではなくそのビューで外部テーブルを定義し、クエリを使ってこれを元の LOB 型にキャストするという方法を利用できます。
 * 結果セット内の nvarchar(max) データ型の列は、エラスティック クエリの実装で使用される高度なバッチ テクニックを無効にするため、クエリのパフォーマンスを 1 桁変化させる可能性があります。クエリの結果として未集計の大量のデータが転送される標準的でないユース ケースでは、パフォーマンスの変化は 2 桁にもなる可能性があります。
 * 外部テーブルに対する列の統計情報は、現在サポートされていません。 テーブルの統計はサポートされていますが、手動で作成する必要があります。
+* エラスティック クエリは Azure SQL Database でのみ機能します。 オンプレミスの SQL Server、または VM 内の SQL Server に対するクエリ実行には使用できません。
 
 ## <a name="feedback"></a>フィードバック
 

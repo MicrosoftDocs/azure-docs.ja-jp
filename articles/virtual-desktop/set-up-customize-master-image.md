@@ -4,15 +4,15 @@ description: Windows Virtual Desktop プレビューのマスター イメージ
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 9df4be5534a1cbe6aa4ffb9c60bb180fd4587d32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2413a380adf32755452482d2b68d2055f7db666d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551042"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620436"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -78,7 +78,7 @@ Office 365 ProPlus および OneDrive を VM にインストールする場合�
 コマンド プロンプトで次のコマンドを実行して自動更新を無効にすることもできます。
 
 ```batch
-reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
 ### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Windows 10 PC のスタート画面のレイアウトを指定する (省略可能)
@@ -152,7 +152,7 @@ Windows 10 Enterprise または Windows 10 Enterprise マルチセッション�
 次のコマンドを実行して、レジストリで設定を変更することもできます。
 
 ```batch
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy /v 01 /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
 ### <a name="include-additional-language-support"></a>追加の言語サポートを含める
@@ -173,8 +173,7 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\S
 Windows 10 Enterprise マルチセッションでのテレメトリ データのフィードバック ハブ コレクションの場合は、次のコマンドを実行します。
 
 ```batch
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 3
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
 ワトソン クラッシュを修正するには、次のコマンドを実行します。
@@ -186,15 +185,13 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 5k 解像度のサポートを修正するには、レジストリ エディターに次のコマンドを入力します。 サイドバイサイド スタックを有効にする前に、コマンドを実行する必要があります。
 
 ```batch
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
-"MaxMonitors"=dword:00000004
-"MaxXResolution"=dword:00001400
-"MaxYResolution"=dword:00000b40
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxXResolution /t REG_DWORD /d 5120 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxYResolution /t REG_DWORD /d 2880 /f
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs]
-"MaxMonitors"=dword:00000004
-"MaxXResolution"=dword:00001400
-"MaxYResolution"=dword:00000b40
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxMonitors /t REG_DWORD /d 4 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxXResolution /t REG_DWORD /d 5120 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxYResolution /t REG_DWORD /d 2880 /f
 ```
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>Azure にアップロードするイメージの準備

@@ -8,12 +8,12 @@ manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 00274f8e15006f6f58a7c5f153bf0bbc0d26afb9
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 45499dac3cc50e2b6e79f9ebcb1bc3e7b4330beb
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416425"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165851"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -73,6 +73,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure Storage|[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービス](../azure-databricks/what-is-azure-databricks.md)|
+|Azure API Management|[MSI を使用してキー コンテナーからカスタムドメイン用の証明書をデプロイする](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
 
 
 

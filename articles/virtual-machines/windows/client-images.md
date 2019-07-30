@@ -4,7 +4,7 @@ description: Visual Studio サブスクリプションの特典を使用して�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd97b07416526d71d5bee9bc198eb0d912e1c55
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61403098"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719161"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 Enterprise (x64) を開発/テストのシナリオに使用できます。 この記事では、Windows 7、Windows 8.1、Windows 10 Enterprise を Azure で実行するための資格要件と、次の Azure ギャラリーのイメージの使用について説明します。

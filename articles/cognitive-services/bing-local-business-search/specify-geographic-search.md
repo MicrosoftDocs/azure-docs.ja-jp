@@ -1,5 +1,5 @@
 ---
-title: 地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する | Microsoft Docs
+title: 地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する
 titleSuffix: Azure Cognitive Services
 description: この記事を使用して、Bing Local Business Search API からの検索結果をフィルター処理する方法について学習します。
 services: cognitive-services
@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: e87ef96184974d10f99028be13399d1422a1c774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: e47a2ab8db17089773fd9a439b6dff225d6a8a29
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796593"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423302"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する
 

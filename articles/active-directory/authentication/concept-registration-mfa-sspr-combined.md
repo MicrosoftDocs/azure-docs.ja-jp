@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235586"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537014"
 ---
 # <a name="combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録 (プレビュー)
 
@@ -57,7 +57,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 | アプリ パスワード | はい | いいえ | はい |
 
 > [!NOTE]
-> アプリ パスワードは、Multi-Factor Authentication が適用されているユーザーのみが使用できます。 条件付きアクセス ポリシー経由で Multi-Factor Authentication が有効になっているユーザーはアプリ パスワードを使用できません。
+> アプリ パスワードは、Multi-Factor Authentication が適用されているユーザーのみが使用できます。 条件付きアクセス ポリシーによって Multi-Factor Authentication が有効になっているユーザーはアプリ パスワードを使用できません。
 
 ユーザーは、既定の Multi-Factor Authentication 方法として、次のオプションのいずれかを設定できます。
 
@@ -86,7 +86,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 - Identity Protection によって Multi-Factor Authentication の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
 - ユーザーごとの Multi-Factor Authentication によって Multi-Factor Authentication の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
-- 条件付きアクセスまたはその他のポリシーによって Multi-Factor Authentication の登録が適用されている: ユーザーは、Multi-Factor Authentication を必要とするリソースを使用するときに登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
+- 条件付きアクセス ポリシーまたはその他のポリシーによって Multi-Factor Authentication の登録が適用されている: ユーザーは、Multi-Factor Authentication を必要とするリソースを使用するときに登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
 - SSPR の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは SSPR 方法のみを登録します。
 - SSPR の更新が適用されている: ユーザーは、管理者によって設定された間隔で自分のセキュリティ情報を確認する必要があります。ユーザーには自分の情報が表示され、現在の情報を確認するか、または必要に応じて変更を行うことができます。
 
@@ -136,6 +136,8 @@ Multi-Factor Authentication に使用できる少なくとも 1 つの方法を�
 ## <a name="next-steps"></a>次の手順
 
 [テナントで統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
+
+[SSPR と MFA の使用状況と分析情報のレポート](howto-authentication-methods-usage-insights.md)
 
 [Multi-Factor Authentication と SSPR で使用可能な方法](concept-authentication-methods.md)
 

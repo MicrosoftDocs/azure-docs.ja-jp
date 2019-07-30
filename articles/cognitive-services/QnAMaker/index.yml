@@ -5,15 +5,15 @@ metadata:
   title: QnA Maker のドキュメント - Microsoft Cognitive Services | Microsoft Docs
   description: QnA Maker サービスと、このサービスのナレッジ ベースでの質問と回答の確認方法について説明します。
   services: cognitive-services
-  author: tulasim88
-  manager: cgronlun
+  author: diberry
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: qna-maker
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/18/2018
-  ms.author: tulasim
+  ms.author: diberry
 abstract:
   description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジ ベースにある Q&A から回答となる可能性が最も高いものが提示されます。
   aside:

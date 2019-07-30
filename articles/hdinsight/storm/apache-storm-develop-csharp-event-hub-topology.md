@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7f4db76fe2a302dd5acce01b456ef3b676b187c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd1a46ea008ce5f8fb02dd468b27494d231717f0
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078283"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483928"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
@@ -103,11 +103,11 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>完成したプロジェクトをダウンロードする
 
-このチュートリアルで作成したプロジェクトの完全なバージョンを [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からダウンロードできます。 ただし、このチュートリアルの手順に従って構成設定を指定する必要があります。
+この記事で作成したプロジェクトの完全なバージョンを [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からダウンロードできます。 ただし、この記事の手順に従って構成設定を指定する必要があります。
 
 ### <a name="prerequisites"></a>前提条件
 
-* [HDInsight クラスター バージョン 3.5 または 3.6 での Apache Storm](apache-storm-tutorial-get-started-linux.md)。
+* HDInsight 上の Apache Storm クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[Storm]** を選択してください。
 
     > [!WARNING]  
     > このドキュメントで使用している例では、HDInsight バージョン 3.5 または 3.6 での Storm が必要です。 クラス名の変更があるため、これは旧バージョンの HDInsight では動作しません。 以前のクラスターで動作するこの例のバージョンについては、[GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases) を参照してください。

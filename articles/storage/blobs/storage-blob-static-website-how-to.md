@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 61477767c59dd521e3f46db4445238a5a1ea759e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ab24a99b22fae172b5308ba7477953f27ecfd44
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071446"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435948"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -44,13 +44,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
 1. まず、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) を開きます。または、Azure CLI をローカルに[インストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
 
-2. 開いたコマンド ウィンドウから、ストレージ プレビュー拡張機能をインストールします。
-
-   ```azurecli-interactive
-   az extension add --name storage-preview
-   ```
-
-3. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、静的 Web サイトをホストするストレージ アカウントのサブスクリプションに設定します。
+2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、静的 Web サイトをホストするストレージ アカウントのサブスクリプションに設定します。
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -58,7 +52,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
    `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
 
-4. 静的な Web サイトのホスティングを有効にします。
+3. 静的な Web サイトのホスティングを有効にします。
 
    ```azurecli-interactive
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
@@ -70,7 +64,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
    * `<index-document-name>` プレースホルダーをインデックス ドキュメントの名前に置き換えます。 このドキュメントは、通常、"index.html" です。
 
-5. ソース ディレクトリから *$web* コンテナーにオブジェクトをアップロードします。
+4. ソース ディレクトリから *$web* コンテナーにオブジェクトをアップロードします。
 
    > [!NOTE]
    > Azure Cloud Shell を使用している場合は、`$web` コンテナーを参照するときに、必ず `\` エスケープ文字を追加してください (例: `\$web`)。 Azure CLI のローカル インストールを使用している場合は、エスケープ文字を使用する必要はありません。

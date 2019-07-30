@@ -3,19 +3,19 @@ title: メタデータと GenerateAnswer API - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker では、キー/値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/30/2019
-ms.author: tulasim
-ms.openlocfilehash: b18d47b4b09c6fa9c4d5f0ef87d7ebe73f151c60
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.date: 06/27/2019
+ms.author: diberry
+ms.openlocfilehash: 6bfcb531d0e4e8073a5553f7bc84a25e4f8a92a9
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693230"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785677"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -37,13 +37,13 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>GenerateAnswer API を使用して回答の予測を取得する
 
-ボットやアプリケーションで GenerateAnswer API を使用して、ユーザーの質問についてナレッジ ベースのクエリを実行し、質問と回答のセットから最も一致するものを取得します。
+ボットやアプリケーションで [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) を使用して、ユーザーの質問についてナレッジ ベースのクエリを実行し、質問と回答のセットから最も一致するものを取得します。
 
 <a name="generateanswer-endpoint"></a>
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>公開して GenerateAnswer エンドポイントを取得する 
 
-ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://go.microsoft.com/fwlink/?linkid=2092179) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
+ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
 
 エンドポイントの詳細を取得するには、次のようにします。
 1. [https://www.qnamaker.ai](https://www.qnamaker.ai) にサインインします。
@@ -59,34 +59,21 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer 要求の構成
 
-HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を呼び出す方法を示すサンプル コードについては、[クイック スタート](../quickstarts/csharp.md)を参照してください。
+HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を呼び出す方法を示すサンプル コードについては、[クイック スタート](../quickstarts/csharp.md)を参照してください。 
 
-**要求 URL** は、次のような形式になります。 
+POST 要求では以下を使用します。
+
+* 必須の [URI パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* セキュリティを確保するために必須の[ヘッダー プロパティ](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer) (`Authorization`)
+* 必須の[本文プロパティ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto) 
+
+GenerateAnswer の URL は次の形式になります。 
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|HTTP 要求プロパティ|Name|Type|目的|
-|--|--|--|--|
-|URL ルート パラメーター|ナレッジ ベース ID|string|ナレッジ ベースの GUID。|
-|URL ルート パラメーター|QnAMaker エンドポイントのホスト|string|Azure サブスクリプションにデプロイされているエンドポイントのホスト名。 これは、ナレッジ ベースを公開した後に、 **[設定]** ページで利用できます。 |
-|ヘッダー|Content-Type|string|API に送信される本文のメディアの種類。 既定値: ``|
-|ヘッダー|Authorization|string|エンドポイント キー (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
-|Post 本文|JSON オブジェクト|JSON|設定が付与されている質問。|
-
-
-JSON の本文には、次のようないくつかの設定があります。
-
-|JSON 本文のプロパティ|必須|Type|目的|
-|--|--|--|--|
-|`question`|必須|string|ナレッジ ベースに送信されるユーザーの質問。|
-|`top`|省略可能|integer|出力を含めるランク付けされた結果の数。 既定値は 1 です。|
-|`userId`|省略可能|string|ユーザーを識別する一意の ID。 この ID はチャット ログに記録されます。|
-|`scoreThreshold`|省略可能|integer|このしきい値を超える信頼度スコアを持つ回答のみが返されます。 既定値は 0 です。|
-|`isTest`|省略可能|Boolean|true に設定した場合、公開されたインデックスではなく、`testkb` 検索インデックスから結果が返されます。|
-|`strictFilters`|省略可能|string|指定した場合、指定されたメタデータを含む回答のみを返すように QnA Maker に指示します。 応答にメタデータ フィルターを適用しないよう指定するには、`none` を使用します。 |
-|`RankerType`|省略可能|string|`QuestionOnly` として指定されている場合、QnA Maker に質問だけを検索するように指示します。 指定されていない場合、QnA Maker は、質問と回答を検索します。
+文字列 `EndpointKey` の値と末尾のスペースを含めて、HTTP ヘッダー プロパティ `Authorization` を必ず設定してください。エンドポイント キーは、 **[設定]** ページで確認できます。
 
 JSON 本文の例は、次のようになります。
 
@@ -109,19 +96,7 @@ JSON 本文の例は、次のようになります。
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer の応答プロパティ
 
-成功した応答は、ステータス 200 と JSON 応答を返します。 
-
-|回答のプロパティ (スコア順)|目的|
-|--|--|
-|スコア|0 から 100 のランキング スコア。|
-|Id|回答に割り当てられた一意の ID。|
-|questions|ユーザーによって提供された質問。|
-|応答して|質問への答え。|
-|source|ナレッジ ベースで抽出または保存された回答のソースの名前。|
-|metadata|回答に関連付けられたメタデータ。|
-|metadata.name|メタデータの名前。 (文字列。最大長: 100。必須)|
-|metadata.value|メタデータの値。 (文字列。最大長: 100。必須)|
-
+[応答](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)は、回答と会話の次のターン (使用可能な場合) を表示するために必要なすべての情報を含む JSON オブジェクトです。
 
 ```json
 {
@@ -144,6 +119,40 @@ JSON 本文の例は、次のようになります。
     ]
 }
 ```
+
+## <a name="use-qna-maker-with-a-bot-in-c"></a>C# のボットで QnA Maker を使用する
+
+Bot Framework では、QnA Maker のプロパティへのアクセスを提供します。
+
+```csharp
+using Microsoft.Bot.Builder.AI.QnA;
+var metadata = new Microsoft.Bot.Builder.AI.QnA.Metadata();
+var qnaOptions = new QnAMakerOptions();
+
+qnaOptions.Top = Constants.DefaultTop;
+qnaOptions.ScoreThreshold = 0.3F;
+var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
+```
+
+サポート ボットに、このコードを使用した[サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418)があります。
+
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Node.js のボットで QnA Maker を使用する
+
+Bot Framework では、QnA Maker のプロパティへのアクセスを提供します。
+
+```javascript
+const { QnAMaker } = require('botbuilder-ai');
+this.qnaMaker = new QnAMaker(endpoint);
+
+// Default QnAMakerOptions
+var qnaMakerOptions = {
+    ScoreThreshold: 0.03,
+    Top: 3
+};
+var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
+```
+
+サポート ボットに、このコードを使用した[サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36)があります。
 
 <a name="metadata-example"></a>
 

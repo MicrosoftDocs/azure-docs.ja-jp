@@ -7,31 +7,31 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 892a79f898e2448096ad4b252a18e0713bb32e52
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539262"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485304"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
-Azure Search サービスを作成すると、サービスの有効期間にわたって固定される価格レベルまたは SKU で、[リソースが作成](search-create-service-portal.md)されます。 レベルには、Free、Basic、Standard、および Storage Optimized があります。 Standard と Storage Optimized は、いくつかの構成および容量で利用できます。
+Azure Search サービスを作成すると、サービスの有効期間にわたって固定される価格レベル (つまり SKU) で[リソースが作成](search-create-service-portal.md)されます。 レベルには、Free、Basic、Standard、および Storage Optimized があります。 Standard と Storage Optimized は、いくつかの構成および容量で利用できます。
 
-ほとんどのお客様は、サービスを評価できるように、Free レベルから始めます。 その後、開発および運用デプロイのために、いずれかの上位レベルにアップグレードします。 すべてのクイック スタートとチュートリアルは、リソースを集中的に使用するコグニティブ検索に関するものも含めて、Free レベルを利用して実行できます。
+ほとんどのお客様は、サービスを評価できるように、Free レベルから始めます。 評価後には、開発および運用環境用のデプロイのために上位レベルのいずれかに 2 つ目のサービスを作成するのが一般的です。 すべてのクイック スタートとチュートリアルは、リソースを集中的に使用するコグニティブ検索に関するものも含めて、Free レベルを利用して実行できます。
 
 > [!NOTE]
-> Storage Optimized サービス レベルは、現在、フィードバックを収集する目的もあり、テストと実験のために割引価格でプレビューとして提供されています。 最終的な価格は、これらのレベルが一般提供されるときに発表されます。 運用アプリケーションではこれらのレベルを使用しないことをお勧めします。
+> 7 月 1 日時点で、すべてのレベルは、ストレージ最適化レベルを含め、一般的に利用できます。 すべての価格は、[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページを参照してください。
 
 レベルは (機能ではなく) サービスをホストしているハードウェアの特性を反映していて、以下によって差別化されています。
 
 + 作成可能なインデックスの数。
 + パーティション (物理ストレージ) のサイズと速度。
 
-一般に、Free レベルを含むすべてのレベルで機能パリティが提供されますが、ワークロードが大きいほど、より高いレベルが必要になる可能性があります。 たとえば、[Cognitive Services を利用した AI インデックス作成](cognitive-search-concept-intro.md)には、データ セットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
+一般に、Free レベルを含むすべてのレベルで機能パリティが提供されますが、ワークロードが大きいほど、より高いレベルが必要になる可能性があります。 たとえば、[Cognitive Services を利用した AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 
 > [!NOTE] 
 > 機能パリティの例外は[インデクサー](search-indexer-overview.md)で、これは S3 HD では利用できません。
@@ -60,7 +60,11 @@ Azure Search サービスを作成すると、サービスの有効期間にわ�
 
 ## <a name="how-billing-works"></a>請求体系について
 
-Azure Search には 3 種類の費用負担方法があり、固定要素と可変要素があります。 このセクションでは、コア サービス コスト、データ エグレス料金、AI によって強化されたインデックス作成という 3 つの課金要素について説明します。
+Azure Search でコストが発生する場合は 3 つあります。 このセクションでは、3 つの課金コンポーネントについて説明します。 
+
++ コア サービス コスト
++ データ エグレス (または帯域幅) 料金
++ AI エンリッチメント
 
 ### <a name="core-service-costs-fixed-and-variable"></a>コア サービスのコスト (固定および可変)
 
@@ -98,9 +102,9 @@ SU は、サービスによって使用される "*レプリカ*" と "*パー�
 
 それらのサービスが別々のリージョンにある場合は、アウトバウンド データに料金が適用されます。 これらの料金は、実際には Azure Search の課金の一部ではありません。 データまたは AI によって強化されたインデクサーを使用して異なるリージョンからデータをプルする場合、それらのコストが全体の請求書に反映されるため、ここで言及しています。
 
-### <a name="ai-enriched-indexing-with-cognitive-services"></a>Cognitive Services を使用する、AI によって強化されたインデックス作成
+### <a name="ai-enrichments-with-cognitive-services"></a>Cognitive Services を使用する AI エンリッチメント
 
-[Cognitive Services を使用する AI インデックス作成](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、有料の Azure Cognitive Services リソースを Azure Search と同じリージョンの S0 価格レベルにアタッチするように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
+[Cognitive Services を使用する AI エンリッチメント](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、有料の Azure Cognitive Services リソースを Azure Search と同じリージョンの S0 価格レベルにアタッチするように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
 
 ドキュメントの解析時の画像抽出は、Azure Search の課金対象です。 ドキュメントから抽出された画像の数に基づいて課金されます。 現在、テキストの抽出は無料です。
 

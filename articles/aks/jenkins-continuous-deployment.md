@@ -7,11 +7,11 @@ author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 703aa081c8acf41f9206e2b0ccff45571367d2e8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7a81f26b4dad5f7257e5c3fd012dffaf06d573bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073779"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル:Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure Kubernetes Service (AKS) にデプロイする
@@ -48,6 +48,9 @@ ms.locfileid: "65073779"
 ## <a name="prepare-your-app"></a>アプリケーションの準備
 
 この記事では、1 つまたは複数のポッドでホストされる Web アプリケーション、および一時的なデータ ストレージのために Redis をホストしている 2 つ目のポッドを含む Azure 投票アプリケーションをサンプルとして使用します。 Jenkins と AKS を自動デプロイ用に統合する前に、まず手動で Azure 投票アプリケーションを準備し、AKS クラスターにデプロイします。 この手動展開は、アプリケーションのいずれかのバージョンであるため、アプリケーションの動作を確認しましょう。
+
+> [!NOTE]
+> サンプルの Azure 投票アプリケーションでは、Linux ノード上で実行するようにスケジュールされた Linux ポッドを使用します。 この記事で概要を説明するフローは、Windows Server ノード上でスケジュールされた Windows Server ポッドでも機能します。
 
 サンプル アプリケーション ([https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis)) の GitHub リポジトリをフォークします。 自身の GitHub アカウントにリポジトリをフォークするには、右上隅の **[Fork]** ボタンを選択します。
 
@@ -155,7 +158,7 @@ Enter the following to Unlock Jenkins:
 - **[Install suggested plugins]\(推奨されるプラグインのインストール\)** を選択します
 - 最初の管理者ユーザーを作成します。 *azureuser* などのユーザー名を入力し、独自の安全なパスワードを入力します。 最後に、フル ネームとメール アドレスを入力します。
 - **[Save and Finish]\(保存して終了する\)** を選択します
-- Jenkins が準備ができたら、**[Start using Jenkins]\(Jenkins の使用を開始する\)** を選択します
+- Jenkins が準備ができたら、 **[Start using Jenkins]\(Jenkins の使用を開始する\)** を選択します
     - Jenkins の使用を開始したときに Web ブラウザーに空白のページが表示された場合は、Jenkins サービスを再起動します。 サービスを再起動するには、Jenkins インスタンスのパブリック IP アドレスに SSH して `sudo service jenkins restart` を入力します。 サービスの再起動後、Web ブラウザーを更新します。
 - インストール プロセスで作成したユーザー名とパスワードで Jenkins にサインインします。
 
@@ -208,7 +211,7 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 
 Azure で作成したロールの割り当てを使用して、ACR の資格情報を Jenkins 資格情報オブジェクトに保存します。 これらの資格情報は、Jenkins ビルド ジョブの間に参照されます。
 
-Jenkins ポータルの左側に戻り、**[Credentials]\(資格情報\)** > **[Jenkins]** > **[Global credentials (unrestricted)]\(グローバル資格情報 (無制限)\)** > **[Add Credentials]\(資格情報の追加\)** の順にクリックします
+Jenkins ポータルの左側に戻り、 **[Credentials]\(資格情報\)**  >  **[Jenkins]**  >  **[Global credentials (unrestricted)]\(グローバル資格情報 (無制限)\)**  >  **[Add Credentials]\(資格情報の追加\)** の順にクリックします
 
 資格情報の種類が **[Username with password]\(ユーザー名とパスワード\)** であることを確認し、次の項目を入力します。
 
@@ -226,14 +229,14 @@ Jenkins ポータルの左側に戻り、**[Credentials]\(資格情報\)** > **[
 
 Jenkins ポータルのホーム ページから左側の **[新しい項目]** を選択します。
 
-1. ジョブ名として *azure-vote* を入力します。 **Freestyle プロジェクト**を選択し､**[OK]** をクリックします
+1. ジョブ名として *azure-vote* を入力します。 **Freestyle プロジェクト**を選択し､ **[OK]** をクリックします
 1. **[General]\(一般\)** セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https:\//github.com/\<your-github-account\>/azure-voting-app-redis*) を入力します
 1. **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https:\//github.com/\<your-github-account\>/azure-voting-app-redis.git*)
 
 1. **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します
-1. **[Build Environment]\(ビルド環境\)** で、**[Use secret texts or files]\(シークレット テキストまたはファイルを使用する\)** を選びます
-1. **[Bindings]\(バインド\)** で、**[Add]\(追加\)** > **[Username and password (separated)]\(ユーザー名とパスワード (別)\)** を選びます
-   - **[Username Variable]\(ユーザー名変数\)** に「`ACR_ID`」と入力し、**[Password Variable]\(パスワード変数\)** に「`ACR_PASSWORD`」と入力します
+1. **[Build Environment]\(ビルド環境\)** で、 **[Use secret texts or files]\(シークレット テキストまたはファイルを使用する\)** を選びます
+1. **[Bindings]\(バインド\)** で、 **[Add]\(追加\)**  >  **[Username and password (separated)]\(ユーザー名とパスワード (別)\)** を選びます
+   - **[Username Variable]\(ユーザー名変数\)** に「`ACR_ID`」と入力し、 **[Password Variable]\(パスワード変数\)** に「`ACR_PASSWORD`」と入力します
 
      ![Jenkins のバインド](media/aks-jenkins/bindings.png)
 
@@ -255,7 +258,7 @@ Jenkins ポータルのホーム ページから左側の **[新しい項目]** 
     kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME --kubeconfig /var/lib/jenkins/config
     ```
 
-1. 終了したら、**[Save]\(保存\)** をクリックします。
+1. 終了したら、 **[Save]\(保存\)** をクリックします。
 
 ## <a name="test-the-jenkins-build"></a>Jenkins のビルドをテストする
 

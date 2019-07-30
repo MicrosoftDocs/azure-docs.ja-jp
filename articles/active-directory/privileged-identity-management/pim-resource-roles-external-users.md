@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0afec1d6eded25a2d9b2389c950e2e21e06e0d54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07476c9f5db64a5d107a493022fa3548fe0dae4c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66307074"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476357"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>PIM でゲスト ユーザーを招待して Azure リソース ロールを割り当てる
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) は、組織が任意のアカ
 
 B2B コラボレーションを使用する場合は、外部ユーザーをゲストとして貴社の組織に招待することができます。 ゲストは貴社の組織にいるように見えますが、ゲストには資格情報が関連付けられていません。 ゲストは、認証を受ける必要がある場合は常に、貴社の組織内ではなく、ゲスト自身のホーム組織内で認証される必要があります。 つまり、ゲストは自分のホーム組織へのアクセス権を失った場合、貴社の組織へのアクセス権も失うことになります。 たとえば、ゲストが所属する組織を離れた場合、貴社が何もしなくても、ゲストは Azure AD 内で貴社と共有しているリソースへのアクセス権を自動的に失います。 B2B の詳細については、「[Azure Active Directory B2B のゲスト ユーザー アクセスとは](../b2b/what-is-b2b.md)」を参照してください。
 
-![B2B とゲスト](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![ゲスト ユーザーがディレクトリにどのように表示されるか示す図 (ただし、ゲスト ユーザーはホーム ディレクトリで認証されている)](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
 ## <a name="check-guest-collaboration-settings"></a>ゲスト コラボレーションの設定を確認する
 
@@ -59,7 +59,7 @@ B2B コラボレーションを使用する場合は、外部ユーザーをゲ�
 
 1. **[外部コラボレーションの設定]** をクリックします。
 
-    ![外部コラボレーションの設定](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
+    ![アクセス許可、招待、およびコラボレーション制限の設定が表示される [外部コラボレーションの設定] ページ](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
 1. **「管理者とゲスト招待元ロールのユーザーは招待ができる」** スイッチが **[はい]** に設定されていることを確認します。
 
@@ -81,21 +81,21 @@ PIM を使用すると、メンバー ユーザーと同様に、ゲストを招
 
 1. [管理] の **[ロール]** をクリックして、Azure リソースのロール一覧を表示します。
 
-    ![Azure リソース ロール](./media/pim-resource-roles-external-users/resources-roles.png)
+    ![アクティブなユーザーおよび資格のあるユーザーの数が表示される Azure リソースのロール一覧](./media/pim-resource-roles-external-users/resources-roles.png)
 
 1. ユーザーが必要とする最小限のロールをクリックします。
 
-    ![選択されたロール](./media/pim-resource-roles-external-users/selected-role.png)
+    ![そのロールの現在のメンバーが一覧表示される [選択されたロール] ページ](./media/pim-resource-roles-external-users/selected-role.png)
 
 1. ロール ページで、 **[メンバーの追加]** をクリックして [新しい割り当て] ウィンドウを開きます。
 
 1. **[メンバーまたはグループの選択]** をクリックします。
 
-    ![メンバーまたはグループの選択](./media/pim-resource-roles-external-users/select-member-group.png)
+    ![[招待] オプションとともにユーザーとグループが一覧表示される [新しい割り当て] - [メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-external-users/select-member-group.png)
 
 1. ゲストを招待するには、 **[招待]** をクリックします。
 
-    ![ゲストを招待する](./media/pim-resource-roles-external-users/invite-guest.png)
+    ![電子メール アドレスを入力するためのボックス、および個人宛メッセージを指定するためのボックスがある [ゲストを招待する] ページ](./media/pim-resource-roles-external-users/invite-guest.png)
 
 1. ゲストを選択したら、 **[招待]** をクリックします。
 
@@ -105,13 +105,13 @@ PIM を使用すると、メンバー ユーザーと同様に、ゲストを招
 
 1. **[メンバーシップ設定]** ウィンドウで、割り当ての種類と期間を選択します。
 
-    ![メンバーシップ設定](./media/pim-resource-roles-external-users/membership-settings.png)
+    ![割り当ての種類、開始日、および終了日を指定するためのオプションがある [新しい割り当て] - [メンバーシップ設定] ページ](./media/pim-resource-roles-external-users/membership-settings.png)
 
 1. 割り当てを完了するには、 **[完了]** 、次に **[追加]** をクリックします。
 
     ゲストのロールの割り当ては、ご利用のロールのリストに表示されます。
 
-    ![ゲストに対するロールの割り当て](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![有資格のゲストが一覧表示される [ロール] ページ](./media/pim-resource-roles-external-users/role-assignment.png)
 
 ## <a name="activate-role-as-a-guest"></a>ゲストとしてロールをアクティブ化する
 
@@ -119,13 +119,13 @@ PIM を使用すると、メンバー ユーザーと同様に、ゲストを招
 
 1. 招待状が含まれる電子メールを開きます。 電子メールは次のような内容です。
 
-    ![電子メールの招待](./media/pim-resource-roles-external-users/email-invite.png)
+    ![ディレクトリ名、個人宛メッセージ、および開始リンクが含まれる電子メール招待状](./media/pim-resource-roles-external-users/email-invite.png)
 
 1. 電子メールの **[開始する]** リンクをクリックします。
 
 1. アクセス許可を確認した後に、 **[同意する]** をクリックします。
 
-    ![アクセス許可の確認](./media/pim-resource-roles-external-users/invite-accept.png)
+    ![組織があなたに確認を求めるアクセス許可の一覧が含まれる、ブラウザー内の [アクセス許可の確認] ページ](./media/pim-resource-roles-external-users/invite-accept.png)
 
 1. 利用規約に同意し、サインインしたままにするかどうかを指定するように求められる場合があります。
 
@@ -133,11 +133,11 @@ PIM を使用すると、メンバー ユーザーと同様に、ゲストを招
 
 1. ロールをアクティブ化するには、ロールをアクティブ化するリンクがある電子メールを開きます。 電子メールは次のような内容です。
 
-    ![電子メールの招待](./media/pim-resource-roles-external-users/email-role-assignment.png)
+    ![ロールの資格があることを示す PIM からの電子メール メッセージ ([ロールのアクティブ化] リンクが含まれます)](./media/pim-resource-roles-external-users/email-role-assignment.png)
 
 1. PIM で、 **[ロールのアクティブ化]** をクリックして資格のあるロールを開きます。
 
-    ![自分のロール - 資格がある](./media/pim-resource-roles-external-users/my-roles-eligible.png)
+    ![資格のあるロールが一覧表示される PIM の [自分のロール] ページ](./media/pim-resource-roles-external-users/my-roles-eligible.png)
 
 1. [アクション] の下の **[アクティブ化]** リンクをクリックします。
 
@@ -145,7 +145,7 @@ PIM を使用すると、メンバー ユーザーと同様に、ゲストを招
 
 1. ロールの設定を指定したら、 **[アクティブ化]** をクリックしてロールをアクティブ化します。
 
-    ![ロールをアクティブ化する](./media/pim-resource-roles-external-users/activate-role.png)
+    ![スコープと開始時刻、期間、および理由を指定するためのオプションが一覧表示される [アクティブ化] ページ](./media/pim-resource-roles-external-users/activate-role.png)
 
     管理者が要求を承認する必要がない限り、指定されたリソースへのアクセスが必要です。
 
@@ -157,13 +157,13 @@ PIM を使用すると、メンバー ユーザーと同様に、ゲストを招
 
 1. **[リソースの監査]** をクリックして、そのリソースのアクティビティを表示します。 リソース グループのアクティビティの例を次に示します。
 
-    ![リソースの監査](./media/pim-resource-roles-external-users/audit-resource.png)
+    ![時刻、要求元、およびアクションが一覧表示される [Azure リソース] - [リソースの監査] ページ](./media/pim-resource-roles-external-users/audit-resource.png)
 
 1. ゲストのアクティビティを表示するには、 **[Azure Active Directory]**  >  **[ユーザー]** > ゲスト名の順にクリックします。
 
 1. **[監査ログ]** をクリックして、組織の監査ログを表示します。 必要に応じて、フィルターを指定できます。
 
-    ![組織の監査](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![日付、ターゲット、開始者、およびアクティビティが一覧表示される Directory 監査ログ](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,7 +4,7 @@ description: SAP HANA on Azure (L インスタンス) を監視します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5a5d462be5555090d1dfced5fa07c9b748eb312
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 93b8a03a46645683c98b6be3f7af83b3c7ac0e06
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345660"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708956"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) の監視方法
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77bf284734428e9257b46d85296796e4051ace26
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979547"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494838"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -72,6 +72,10 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ## <a name="mode"></a>Mode
 
+**Mode** は、ポリシーが Azure Resource Manager のプロパティまたはリソース プロバイダーのプロパティのどちらをターゲットにしているかどうかに応じて構成されます。
+
+### <a name="resource-manager-modes"></a>Resource Manager のモード
+
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
 
 - `all`: リソース グループとすべてのリソースの種類を評価します
@@ -80,6 +84,13 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
 タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/tag-support.md)」を参照してください。
+
+### <a name="resource-provider-modes"></a>リソース プロバイダーのモード
+
+現在サポートされている唯一のリソース プロバイダーのモードは、[Azure Kubernetes Service](../../../aks/intro-kubernetes.md) のアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data` です。
+
+> [!NOTE]
+> [Kubernetes 用の Azure Policy](rego-for-aks.md) はパブリック プレビューで、組み込みのポリシー定義のみをサポートします。
 
 ## <a name="parameters"></a>parameters
 
@@ -94,7 +105,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 パラメーターには、ポリシー定義内で使用される次のプロパティがあります。
 
 - **name**:お使いのパラメーターの名前。 ポリシー規則内の `parameters` デプロイ関数によって使用されます。 詳しくは、[パラメーター値の使用](#using-a-parameter-value)に関するページをご覧ください。
-- `type`:パラメーターが**文字列**または**配列**のどちらかを判定します。
+- `type`:パラメーターが **string**、**array**、**object**、**boolean**、**integer**、**float** **datetime** のどれであるかを決定します。
 - `metadata`:Azure portal によって主に使用されるサブプロパティを定義して、ユーザー フレンドリな情報を表示します。
   - `description`:パラメーターが何に使用されるかの説明。 許可される値の例を提示するために使用できます。
   - `displayName`:ポータル内に表示されるパラメーターのフレンドリ名。
@@ -389,6 +400,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 - **AuditIfNotExists**: リソースが存在しない場合に監査を有効にします。
 - **DeployIfNotExists**: リソースが存在しない場合にリソースをデプロイします。
 - **Disabled**: リソースがポリシー規則に準拠しているかどうかを評価しません。
+- **EnforceRegoPolicy**: Azure Kubernetes Service の Open Policy Agent アドミッション コントローラーを構成します (プレビュー)
 
 **append** の場合、次のように詳細を指定する必要があります。
 
@@ -474,8 +486,8 @@ Azure Policy では、次の種類の効果をサポートしています。
   # Use Get-AzPolicyAlias to list available providers
   Get-AzPolicyAlias -ListAvailable
 
-  # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Automation -- Microsoft.Automation)
-  Get-AzPolicyAlias -NamespaceMatch 'automation'
+  # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Compute -- Microsoft.Compute)
+  (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
 - Azure CLI
@@ -486,8 +498,8 @@ Azure Policy では、次の種類の効果をサポートしています。
   # List namespaces
   az provider list --query [*].namespace
 
-  # Get Azure Policy aliases for a specific Namespace (such as Azure Automation -- Microsoft.Automation)
-  az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
+  # Get Azure Policy aliases for a specific Namespace (such as Azure Compute -- Microsoft.Compute)
+  az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 
 - REST API / ARMClient

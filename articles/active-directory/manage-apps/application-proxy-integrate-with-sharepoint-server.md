@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d15bb4a1cd19af70b29d1d74f43e137cf884c4db
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473779"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164092"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化
 
@@ -129,7 +129,7 @@ KCD を構成したので、Azure AD アプリケーション プロキシを構
    1. ポータルのアプリケーション ページで **[シングル サインオン]** を選択します。
    2. シングル サインオン モードとして **[統合 Windows 認証]** を選択します。
    3. [内部アプリケーション SPN] を先ほど設定した値に設定します。 この例では、**HTTP/SharePoint** を使用します。
-   4. [委任されたログイン ID] で **[オンプレミスのソフトウェア アセット管理アカウント名]** を選択します。
+   4. [委任されたログイン ID] で、お使いの Active Directory フォレスト構成に最も適したオプションを選択します。 たとえば、フォレスト内に単一の AD ドメインがある場合は、(下に示しているように) **[オンプレミスのソフトウェア アセット管理アカウント名]** を選択しますが、ユーザーが SharePoint サーバーおよび App Proxy Connector サーバーと同じドメインにいない場合は、 **[オンプレミス ユーザー プリンシパル名]** (ここでは示されていません) を選択します。
 
    ![SSO のための統合 Windows 認証の構成](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 

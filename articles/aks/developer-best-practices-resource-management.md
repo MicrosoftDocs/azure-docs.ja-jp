@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: zarhoads
-ms.openlocfilehash: aebade14f3a8a1095925d17325ce99b78031dc32
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 69f60036bd718264174bf1befe832305e250e77c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073950"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でリソースを管理するアプリケーション開発者のベスト プラクティス
@@ -74,6 +74,8 @@ Azure Dev Spaces を使用して、AKS クラスターに対して直接アプ�
 
 Dev Spaces を使用するこの統合開発およびテスト プロセスにより、[minikube][minikube] などの、ローカル テスト環境の必要性が軽減されます。 代わりに、AKS クラスターに対する開発およびテストを行います。 クラスターを論理的に分離するための名前空間の使用に関する前のセクションで説明したように、このクラスターをセキュリティで保護し、分離することができます。 アプリを運用環境にデプロイする準備ができたら、開発は実際の AKS クラスターに対してすべて行われているため、自信を持ってデプロイできます。
 
+Azure Dev Spaces は、Linux ポッドおよびノード上で実行されるアプリケーションで使用することを目的としています。
+
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Kubernetes 用の Visual Studio Code 拡張機能を使用する
 
 **ベスト プラクティス ガイダンス** - YAML マニフェストを記述する場合、Kubernetes 用の VS Code 拡張機能をインストールして使用します。 統合されたデプロイ ソリューション用の拡張機能を使用することもできます。これは、AKS クラスターをあまり操作しないアプリケーション所有者に役立つ場合があります。
@@ -87,6 +89,8 @@ Dev Spaces を使用するこの統合開発およびテスト プロセスに�
 **ベスト プラクティス ガイダンス** - 最新バージョンの `kube-advisor` オープン ソース ツールを定期的に実行して、クラスターでの問題を検出します。 既存の AKS クラスターでリソース クォータを適用する場合は、まず、`kube-advisor` を実行し、リソースの要求と制限が定義されていないポッドを見つけます。
 
 [kube-advisor][kube-advisor] ツールでは、Kubernetes クラスターをスキャンし、見つかった問題について報告する、関連する AKS オープンソース プロジェクトです。 確認の際に、リソースの要求と制限が存在しないポッドの特定もできるため便利です。
+
+kube-advisor ツールは、PodSpecs for Windows アプリケーションおよび Linux アプリケーションに欠けているリソース要求と制限を報告することができますが、kube-advisor ツール自体は Linux ポッドでスケジュールする必要があります。 ポッドの構成で[ノード セレクター][k8s-node-selector]を使用して、特定の OS のノード プールで実行するようにポッドをスケジュールすることができます。
 
 多くの開発チームとアプリケーションをホストする AKS クラスターでは、これらのリソースの要求と制限が設定されていないポッドを追跡するのは困難な場合があります。 ベスト プラクティスとして、AKS クラスターで `kube-advisor` を定期的に実行します。
 
@@ -110,3 +114,4 @@ Dev Spaces を使用するこの統合開発およびテスト プロセスに�
 [dev-spaces]: ../dev-spaces/get-started-netcore.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

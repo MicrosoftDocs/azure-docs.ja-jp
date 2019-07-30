@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: e63937cedf44b1642e091a4744d898a26422be10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 587304968cdf3a3763e47b9f8b614fe67aebf534
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393686"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798030"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -23,7 +23,10 @@ ms.locfileid: "66393686"
 
 以下の機能はパブリック プレビュー段階です。 これらの機能は現在でも利用できますが、運用環境では使用しないでください。
 
-### <a name="visual-studio-code-for-azure-stream-analytics-released-may-2019"></a>Azure Stream Analytics 用の Visual Studio Code (2019 年 5 月リリース)
+### <a name="one-click-integration-with-event-hubs"></a>Event Hubs とのワンクリック統合 
+この統合により、受信データを視覚化し、Event Hub ポータルからワンクリックで Stream Analytics クエリの作成を開始できるようになります。 クエリの準備ができたら、数回のクリックでその運用を開始して、リアルタイムの洞察が得られるようになります。 これにより、リアルタイム分析ソリューションを開発するコストと時間が大幅に削減されます。 ドキュメントは[こちら](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics)で入手できます。
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
 
 Visual Studio Code で Azure Stream Analytics のジョブを作成できます。 [VS Code の使用に関するチュートリアル](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)をご覧ください。
 
@@ -49,19 +52,13 @@ Visual Studio Tools for Azure Stream Analytics ではローカル テスト機�
 
 ## <a name="other-previews"></a>その他のプレビュー
 
-次の機能もプレビューとして提供されています。
+ご要望に応じて、次の機能もプレビューとして提供されています。
 
-### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge-and-cloud-announced-may-2019"></a>Azure Stream Analytics on IoT Edge およびクラウド用の C# カスタム デシリアライザー (2019 年 5 月発表)
+### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge-and-cloud"></a>Azure Stream Analytics on IoT Edge およびクラウド用の C# カスタム デシリアライザー
 
 開発者は、C# でカスタム デシリアライザーを実装して、Azure Stream Analytics で受信したイベントを逆シリアル化できます。 逆シリアル化できる形式としては、Parquet、Protobuf、XML、または任意のバイナリ形式などがあります。 このプレビューへのサインアップは[こちら](https://aka.ms/asapreview1)で行えます。
 
-### <a name="parquet-output-announced-may-2019"></a>Parquet の出力 (2019 年 5 月発表)
-Parquet は、ビッグ データの効率的な処理を可能にする列指向の形式です。 データ レイクのデータを Parquet 形式で出力することで、大規模なストリーミング ETL を実現する Azure Stream Analytics を活用して、バッチ処理を実行したり、機械学習アルゴリズムのトレーニングを行ったり、履歴データに対して対話型クエリを実行したりすることができます。 このプレビューへのサインアップは[こちら](https://aka.ms/asapreview1)で行えます。
-
-### <a name="one-click-integration-with-event-hubs-announced-may-2019"></a>Event Hubs とのワンクリック統合 (2019 年 5 月発表) 
-この統合により、受信データを視覚化し、Event Hub ポータルからワンクリックで Stream Analytics クエリの作成を開始できるようになります。 クエリの準備ができたら、数回のクリックでその運用を開始して、リアルタイムの洞察が得られるようになります。 これにより、リアルタイム分析ソリューションを開発するコストと時間が大幅に削減されます。 このプレビューへのサインアップは[こちら](https://aka.ms/asapreview1)で行えます。
-
-### <a name="support-for-azure-stack-announced-may-2019"></a>Azure Stack のサポート (2019 年 5 月発表)
+### <a name="support-for-azure-stack"></a>Azure Stack のサポート
 この機能は Azure IoT Edge ランタイムで有効になり、Azure Stack 上で実行するローカルの入出力 (Event Hubs、IoT Hub、Blob Storage など) のネイティブ サポートなど、Azure Stack のカスタム機能を活用します。 この新しい統合により、データを生成場所の近くで分析できるハイブリッド アーキテクチャを構築し、待機時間を短縮して分析情報を最大限に活用することができます。
 このプレビューへのサインアップは[こちら](https://aka.ms/asapreview1)で行えます。
 

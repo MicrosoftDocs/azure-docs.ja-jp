@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 915d1284d66438219fc9aba893512e5f6a5b02b3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 6093e1017af2fb8c54eaf1c3192f937172567982
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305042"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080551"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid のイベント ハンドラー
 
@@ -78,9 +78,45 @@ Event Grid のイベントをエンタープライズ アプリケーション�
 
 ハンドラーとしての Service Bus はパブリック プレビュー段階ですが、これを使用してイベント サブスクリプションを作成する場合は CLI または PowerShell 拡張機能をインストールする必要があることに注意してください。
 
-### <a name="using-cli"></a>CLI の使用
+### <a name="install-extension-for-azure-cli"></a>Azure CLI 用の拡張機能のインストール
 
-Azure CLI の場合、次の例では、接続および Event Grid トピックを Service Bus キューにサブスクライブします。
+Azure CLI の場合は、[Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)が必要です。
+
+[CloudShell](/azure/cloud-shell/quickstart) の場合:
+
+* 拡張機能を以前にインストールしている場合は、`az extension update -n eventgrid` を使って更新します。
+* 拡張機能を以前にインストールしていない場合は、`az extension add -n eventgrid` を使ってインストールします。
+
+ローカル インストールの場合:
+
+1. [Azure CLI のインストール](/cli/azure/install-azure-cli)を実行します。 `az --version` を使って確認し、最新バージョンがあることを確認します。
+1. `az extension remove -n eventgrid` を使って、以前のバージョンの拡張機能をアンインストールします。
+1. `az extension add -n eventgrid` を使って `eventgrid` 拡張機能をインストールします
+
+### <a name="install-module-for-powershell"></a>PowerShell 用のモジュールのインストール
+
+PowerShell の場合は、[AzureRM.EventGrid モジュール](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview)が必要です。
+
+[CloudShell](/azure/cloud-shell/quickstart-powershell) の場合:
+
+* `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` を使ってモジュールをインストールします。
+
+ローカル インストールの場合:
+
+1. 管理者として PowerShell コンソールを開きます。
+1. `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` を使ってモジュールをインストールします。
+
+`-AllowPrerelease`パラメーターが使用可能でない場合は、次のステップを実行します。
+
+1. `Install-Module PowerShellGet -Force` を実行します。
+1. `Update-Module PowerShellGet` を実行します。
+1. PowerShell コンソールを閉じます。
+1. 管理者として PowerShell を再起動します。
+1. モジュール `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` をインストールします。
+
+### <a name="using-cli-to-add-a-service-bus-handler"></a>CLI を使って Service Bus ハンドラーを追加する
+
+Azure CLI の場合、次の例で Event Grid トピックを Service Bus キューにサブスクライブして接続します。
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.

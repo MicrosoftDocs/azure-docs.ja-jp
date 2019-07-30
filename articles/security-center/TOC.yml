@@ -35,6 +35,12 @@
       href: security-center-data-security.md
     - name: 推奨事項を使用してセキュリティを強化する
       href: security-center-using-recommendations.md
+    - name: 脅威を検出する
+      href: security-center-detection-capabilities.md
+    - name: セキュリティ アラートを管理する
+      href: security-center-managing-and-responding-alerts.md
+    - name: セキュリティ インシデント
+      href: security-center-incident.md
     - name: インシデント対応
       href: security-center-incident-response.md
 - name: ハウツー ガイド
@@ -97,19 +103,24 @@
           href: security-center-file-integrity-monitoring.md
         - name: アダプティブ ネットワークのセキュリティ強化機能
           href: security-center-adaptive-network-hardening.md
-    - name: 脅威を検出する
-      href: security-center-detection-capabilities.md
+    - name: 脅威検出アラート
       items:
-        - name: セキュリティのアラート
-          href: security-center-managing-and-responding-alerts.md
-        - name: セキュリティ インシデント
-          href: security-center-incident.md
-        - name: セキュリティ アラートについて
-          href: security-center-alerts-type.md
-        - name: アラートの検証
+        - name: セキュリティ アラートの概要
+          href: security-center-alerts-overview.md
+        - name: VM とサーバーの脅威検出
+          href: security-center-alerts-iaas.md
+        - name: クラウド ネイティブ コンピューティングの脅威検出
+          href: security-center-alerts-compute.md
+        - name: データ サービスの脅威検出
+          href: security-center-alerts-data-services.md
+        - name: Azure サービス レイヤーの脅威検出
+          href: security-center-alerts-service-layer.md
+        - name: Azure のセキュリティ製品との統合
+          href: security-center-alerts-integration.md
+        - name: クラウドのスマート アラートの関連付け (インシデント)
+          href: security-center-alerts-cloud-smart.md
+        - name: アラートの検証 (EICAR テスト ファイル)
           href: security-center-alert-validation.md
-        - name: Azure リソースおよびユーザーに対する UEBA
-          href: security-center-ueba-mcas.md
     - name: アーカイブ
       items:
         - name: ディスク暗号化の適用
@@ -168,6 +179,10 @@
           href: security-center-search.md
         - name: 計画と運用
           href: security-center-planning-and-operations-guide.md
+        - name: セキュリティ アラートについて
+          href: security-center-alerts-type.md
+        - name: Azure リソースおよびユーザーに対する UEBA
+          href: security-center-ueba-mcas.md
 - name: リファレンス
   items:
     - name: REST API

@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60711460"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-odbc-connector.md)
 > * [現在のバージョン](connector-odbc.md)
 
@@ -54,9 +54,9 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
 | type | type プロパティは、次のように設定する必要があります:**Odbc** | はい |
 | connectionString | 資格情報部分を除外した接続文字列。 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN on IR machine>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。<br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。| はい |
 | authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** と **Anonymous**。 | はい |
-| userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ  |
-| password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
-| credential | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドを SecureString とマークします。 | いいえ  |
+| userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ |
+| password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| credential | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドを SecureString とマークします。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例 1: 基本認証の使用**
@@ -193,9 +193,9 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **OdbcSink** | はい |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ  |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 0 - 自動検出) |
-| preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |
+| preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
 
 > [!NOTE]
 > "writeBatchSize" が設定されていない場合 (自動検出)、コピー アクティビティは、ドライバーでバッチ操作がサポートされるかどうかを検出した後、サポートされる場合は 10000 を、サポートされない場合は 1 を設定します。 0 以外の値を明示的に設定した場合、コピー アクティビティはその値を尊重します。実行時にドライバーがバッチ操作をサポートしていない場合、操作は失敗します。
@@ -354,7 +354,7 @@ Data Factory ソリューションで SAP HANA シンクを使用する前に、
 1. **Integration Runtime Configuration Manager** を起動します。
 2. **[診断]** タブに切り替えます。
 3. [テスト接続] セクションで、データ ストアの **[種類]** (リンクされたサービス) を選択します。
-4. データ ストアへの接続に使用する **[接続文字列]** を入力し、**[認証]** を選択し、**[ユーザー名]**、**[パスワード]**、**[資格情報]** を入力します。
+4. データ ストアへの接続に使用する **[接続文字列]** を入力し、 **[認証]** を選択し、 **[ユーザー名]** 、 **[パスワード]** 、 **[資格情報]** を入力します。
 5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。
 
 ## <a name="next-steps"></a>次の手順

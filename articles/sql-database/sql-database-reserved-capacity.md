@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 8c99ae1aa96e41173fb6e4d7303979d8fc167003
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574195"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491617"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い
 
@@ -28,7 +28,7 @@ ms.locfileid: "64574195"
 
 Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com) で購入できます。 SQL Database の予約容量を購入するには:
 
-- 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制サブスクリプションで所有者ロールである必要があります。
+- 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
 - Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 - クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが SQL Database の予約容量を購入できます。
 
@@ -45,14 +45,14 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. **[追加]** を選択し、[製品の種類を選択してください] ウィンドウで **[SQL Database]** を選択して、SQL Database の新しい予約を購入します。
-4. 必須フィールドに必要事項を入力します。 選択した属性と一致する既存または新規の単一データベース、エラスティック プール、マネージド インスタンスが、予約容量の割引を受けられます。 割引を受ける SQL Database インスタンスの実際の数は、選択したスコープと数量によって変わります。
+4. 必須フィールドに入力します。 選択した属性と一致する既存または新規の単一データベース、エラスティック プール、マネージド インスタンスが、予約容量の割引を受けられます。 割引を受ける SQL Database インスタンスの実際の数は、選択したスコープと数量によって変わります。
 
    ![SQL Database の予約容量の購入を送信する前のスクリーンショット](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
 
     | フィールド      | 説明|
     |:------------|:--------------|
     |Name        |この予約の名前。|
-    |サブスクリプション|SQL Database の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、SQL Database の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|
+    |サブスクリプション|SQL Database の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、SQL Database の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|
     |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合: <br/><br/>**単一サブスクリプション** - 仮想コアの予約割引はこのサブスクリプションの SQL Database インスタンスに適用されます。 <br/><br/>**共有サブスクリプション** - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている SQL Database インスタンスに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。|
     |リージョン      |SQL Database 予約容量の予約で充当されない Azure リージョン。|
     |デプロイの種類|予約を購入する SQL リソースの種類。|
@@ -77,6 +77,10 @@ SQL Database の予約容量の予約を別のリージョン、デプロイの�
 
 同じパフォーマンス レベルとリージョン内であれば、予約容量のベネフィットを失うことなく、仮想コアのサイズを柔軟にスケールアップまたはスケールダウンできます。 また、SQL Database の予約容量では、通常の操作 (同じリージョン内および同じパフォーマンス レベル内) の一部として、予約容量のベネフィットを失うことなく、プールと単一のデータベースの間で、ホット データベースを一時的に柔軟に移動できます。 予約内の未適用バッファーを維持することにより、予算を超えずに、パフォーマンスの急増を効果的に管理できます。
 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+
 ## <a name="next-steps"></a>次の手順
 
 仮想コアの予約割引は、SQL Database の予約容量の予約スコープと属性に一致する複数の SQL Database インスタンスに自動的に適用されます。 SQL Database の予約容量の予約スコープは、[Azure portal](https://portal.azure.com)、PowerShell、CLI、または API で更新できます。
@@ -91,7 +95,3 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 - [従量課金制サブスクリプションの予約使用量について](../billing/billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
-
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

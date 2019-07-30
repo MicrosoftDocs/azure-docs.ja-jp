@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.date: 06/14/2019
+ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734651"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147929"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -122,6 +122,9 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 PostgreSQL では、読み取りレプリカの `max_connections` パラメーターの値をマスターの値以上にする必要があります。そうしないと、レプリカが起動しません。 Azure Database for PostgreSQL で、`max_connections` パラメーター値は、SKU に基づきます。 詳しくは、「[Azure Database for PostgreSQL の制限事項](concepts-limits.md)」をご覧ください。 
 
 サーバーの値を更新しようとしていて、制限に従っていない場合、エラーが表示されます。
+
+### <a name="maxpreparedtransactions"></a>max_prepared_transactions
+読み取りレプリカの `max_prepared_transactions` パラメーターの値をマスターの値以上にすることが [PostgreSQL では必要](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)です。そうしないと、レプリカが起動しません。 マスターで `max_prepared_transactions` を変更する場合、まずレプリカで変更します。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
 マスター サーバーと読み取りレプリカの間のレプリケーションを停止した場合、変更を適用するためにレプリカが再起動されます。 停止したレプリカは、読み取りと書き込みの両方を受け入れるスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。

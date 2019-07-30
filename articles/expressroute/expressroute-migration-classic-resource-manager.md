@@ -2,18 +2,18 @@
 title: '仮想ネットワークをクラシックから Resource Manager に移行する - ExpressRoute: Azure: PowerShell | Microsoft Docs'
 description: このページでは、ExpressRoute 回線の移行後に、そこに関連付けられた仮想ネットワークを Resource Manager に移行する方法について説明します。
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.author: ganesr;cherylmc
+ms.date: 06/13/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 2e33454ac0ee97385386043706f4b8b73090f57a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f15431015e847d882e51b8d88c5b8a8c121d0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112553"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115423"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>クラシックから Resource Manager への ExpressRoute 回線および関連する仮想ネットワークの移行
 
@@ -23,7 +23,7 @@ ms.locfileid: "58112553"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Azure PowerShell モジュールの最新バージョンがあることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
+* Azure PowerShell モジュールの最新バージョンがあることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。 PowerShell サービス管理モジュール (クラシック デプロイ モデルに必要) をインストールするには、「[Azure PowerShell Service Management モジュールのインストール](/powershell/azure/servicemanagement/install-azure-ps)」を参照してください。
 * 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
 * [クラシックから Resource Manager への ExpressRoute 回線の移行](expressroute-move.md)に関する記事に記載されている情報を確認してください。 制限および制約事項について完全に理解していることを確認します。
 * 回路がクラシック デプロイ モデルで完全に動作できることを確認します。

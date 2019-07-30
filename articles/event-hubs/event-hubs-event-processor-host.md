@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 07/16/2019
 ms.author: shvija
-ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 013200295f3a6a48d6d96663f98bce506808cd70
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821865"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277370"
 ---
-# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>イベント プロセッサ ホストを使用して Azure Event Hubs からイベントを受信する
+# <a name="event-processor-host"></a>イベント プロセッサ ホスト
 
 Azure Event Hubs は、数百万件のイベントを低コストでストリーム配信するために使用できる、強力なテレメトリ インジェスト サービスです。 この記事では、チェックポイント処理、リース処理、および並列イベント リーダーの管理を簡素化するインテリジェントなコンシューマー エージェントである "*イベント プロセッサ ホスト*" (EPH) を使用して、取り込まれたイベントを使用する方法について説明します。  
 

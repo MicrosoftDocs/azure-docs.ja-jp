@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00ed40bef3f3cbe59825f546ffa39c3ebfb2e41f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003533"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560960"
 ---
-# <a name="baseline-policy-require-mfa-for-service-management-preview"></a>ベースライン ポリシー: サービス管理のために MFA を要求する (プレビュー)
+# <a name="baseline-policy-require-mfa-for-service-management-preview"></a>ベースライン ポリシー:サービス管理のために MFA を要求する (プレビュー)
 
 組織ではさまざまな Azure サービスが使用されている可能性があります。 これらのサービスは、Azure Resource Manager API を使用して管理できます。
 
@@ -31,8 +31,6 @@ Azure Resource Manager を使用してご自身のサービスを管理する操
 **サービス管理のために MFA を要求する**ポリシーは、Azure portal、Azure PowerShell、または Azure CLI にアクセスするすべてのユーザーに対して MFA を要求する[ベースライン ポリシー](concept-baseline-protection.md)です。 このポリシーは、Azure Resource Manager にアクセスするすべてのユーザーに対して、そのユーザーが管理者かどうかに関係なく適用されます。
 
 このポリシーがテナントで有効になると、Azure 管理リソースにログインするすべてのユーザーに多要素認証が求められます。 ユーザーが MFA に登録されていない場合、そのユーザーが操作を続行するには、Microsoft Authenticator アプリを使用してユーザー登録を行う必要があります。
-
-![Azure Resource Manager で MFA を要求する](./media/howto-baseline-protect-azure/baseline-policy-require-mfa-for-service-management.png)
 
 [Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) を使用して対話型サインインを実行するには、[Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用します。
 
@@ -52,18 +50,7 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
-**サービス管理のために MFA を要求する**ポリシーは、すべての Azure Resource Manager ユーザーに適用されます。したがって、デプロイが確実かつスムーズに行われるようにするための考慮事項がいくつかあります。 たとえば、MFA を実行できない、または実行すべきではないユーザーやサービス プリンシパルを Azure AD で特定する、ご自身の組織で使用されている先進認証非対応のアプリケーションやクライアントを特定する、といった考慮事項です。
-
-### <a name="user-exclusions"></a>ユーザーの除外
-
-このベースライン ポリシーには、ユーザーを対象外とするオプションが用意されています。 ご自身のテナントのポリシーを有効にする前に、次のアカウントを対象外とすることをお勧めします。
-
-* **緊急アクセス用**アカウントまたは**非常用**アカウント。テナント全体でアカウントがロックアウトされるのを防ぎます。 発生する可能性は低いシナリオですが、すべての管理者がテナントからロックアウトされた場合に、ご自身の緊急アクセス用管理アカウントを使用してテナントにログインし、アクセスを復旧する手順を実行できます。
-   * 詳細については、「[Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)」を参照してください。
-* **サービス アカウント**と**サービス プリンシパル** (Azure AD Connect 同期アカウントなど)。 サービス アカウントは、特定のユーザーに関連付けられていない非対話型のアカウントです。 通常、バックエンド サービスで使用され、アプリケーションへのプログラムによるアクセスが許可されます。 プログラムでは MFA を完了できないため、サービス アカウントは対象外とする必要があります。
-   * これらのアカウントがスクリプトまたはコードで使用されている組織の場合は、 [マネージド ID](../managed-identities-azure-resources/overview.md) に置き換えることを検討してください。 これらの特定のアカウントは、一時的な回避策として、ベースライン ポリシーの対象外にすることができます。
-* スマートフォンを持っていない、または使用できないユーザー。
-   * このポリシーでは、ユーザーが Microsoft Authenticator アプリを使用して MFA 登録を行う必要があります。
+**サービス管理のために MFA を要求する**ポリシーは、すべての Azure Resource Manager ユーザーに適用されます。したがって、デプロイが確実かつスムーズに行われるようにするための考慮事項がいくつかあります。 たとえば、MFA を実行できない、または実行すべきではないユーザーやサービス プリンシパルを Azure AD で特定する、ご自身の組織で使用されている先進認証に対応していないアプリケーションやクライアントを特定する、といった考慮事項です。
 
 ## <a name="enable-the-baseline-policy"></a>ベースライン ポリシーを有効にする
 
@@ -75,7 +62,6 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
 1. ポリシーの一覧で、 **[Baseline policy: Require MFA for service management (preview)]\(サービス管理のために MFA を要求する (プレビュー)\)** を選択します。
 1. **[ポリシーを有効にする]** を **[ポリシーをすぐに使用する]** に設定します。
-1. **[ユーザー]**  >  **[対象外とするユーザーの選択]** の順にクリックし、対象外とする必要があるユーザーを選択して、ユーザーの除外すべてを追加します。 **[選択]** 、 **[完了]** の順にクリックします。
 1.  **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順

@@ -1,15 +1,15 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/15/2019
-ms.openlocfilehash: 4f9300ab1d688e1f5043f5b919e70c5a36c7c0e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46376477aae9f94c1c8f6e1dd6bc718d213cc373
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064004"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712452"
 ---
 このコンテナーには、次の構成設定があります。
 

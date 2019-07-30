@@ -3,16 +3,16 @@ title: Azure CDN from Verizon Premium ルール エンジンの機能 | Microsof
 description: Azure CDN from Verizon Premium ルール エンジン機能に関するリファレンス ドキュメント。
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080783"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593238"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN from Verizon Premium ルール エンジンの機能
 
@@ -1128,7 +1128,7 @@ Disabled|既定の動作を復元します。 既定の動作では、要求時�
 
 指定されたヘッダーの名前が次のいずれの名前とも一致しないことを確認してください。
 
-- 標準的な要求ヘッダー名。 標準的なヘッダー名の一覧は [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) に記載されています。
+- 標準的な要求ヘッダー名。 標準的なヘッダー名の一覧は [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) に記載されています。
 - 予約済みのヘッダー名:
     - forwarded-for
     - host

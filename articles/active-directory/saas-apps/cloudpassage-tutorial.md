@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22d24b62532190ebd4d119b4ced03ddbd9dde8f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b94d852ec5e0cba133fc1e141a5695e1c898f16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863249"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>チュートリアル:Azure Active Directory と CloudPassage の統合
 
@@ -53,11 +53,11 @@ Azure AD への CloudPassage の統合を構成するには、ギャラリーか
 
 **ギャラリーから CloudPassage を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への CloudPassage の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**CloudPassage**」と入力し、結果パネルで **[CloudPassage]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**CloudPassage**」と入力し、結果パネルで **[CloudPassage]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの CloudPassage](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 CloudPassage との Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **CloudPassage** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **CloudPassage** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -114,11 +114,11 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を取得するには、[CloudPassage クライアント サポート チーム](https://www.cloudpassage.com/company/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. CloudPassage アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+5. CloudPassage アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
     | Name | ソース属性|
     | ---------------| --------------- |
@@ -144,7 +144,7 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
 
     g. **[Save]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -162,7 +162,7 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
 
 1. 別の Web ブラウザーのウィンドウで、管理者として CloudPassage 企業サイトにサインオンします。
 
-1. 上部のメニューの **[Settings (設定)]** をクリックし、**[Site Administration (サイトの管理)]** をクリックします。 
+1. 上部のメニューの **[Settings (設定)]** をクリックし、 **[Site Administration (サイトの管理)]** をクリックします。 
    
     ![Configure single sign-on][12]
 
@@ -182,7 +182,7 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
   
     d. **ログアウト URL** を **[Logout landing page]\(ログアウト ランディング ページ\)** ボックスに貼り付けます。
   
-    e. ダウンロードした証明書をメモ帳で開き、ダウンロードした証明書の内容をクリップボードにコピーして、**[x 509 certificate]\(x 509 証明書\)** ボックスに貼り付けます。
+    e. ダウンロードした証明書をメモ帳で開き、ダウンロードした証明書の内容をクリップボードにコピーして、 **[x 509 certificate]\(x 509 証明書\)** ボックスに貼り付けます。
   
     f. **[Save]** をクリックします。
 
@@ -190,7 +190,7 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -215,7 +215,7 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に CloudPassage へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[CloudPassage]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[CloudPassage]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -227,15 +227,15 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-cloudpassage-test-user"></a>CloudPassage テスト ユーザーの作成
 
@@ -245,11 +245,11 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
 
 1. **CloudPassage** 企業サイトに管理者としてサインオンします。 
 
-1. 上部にあるツールバーの **[Settings (設定)]** をクリックし、**[Site Administration (サイトの管理)]** をクリックします。 
+1. 上部にあるツールバーの **[Settings (設定)]** をクリックし、 **[Site Administration (サイトの管理)]** をクリックします。 
    
     ![CloudPassage テスト ユーザーの作成][22] 
 
-1. **[Users (ユーザー)]** タブをクリックし、**[Add New User (新しいユーザーの追加)]** をクリックします。 
+1. **[Users (ユーザー)]** タブをクリックし、 **[Add New User (新しいユーザーの追加)]** をクリックします。 
    
     ![CloudPassage テスト ユーザーの作成][23]
 
@@ -261,7 +261,7 @@ CloudPassage との Azure AD シングル サインオンを構成するには�
   
     b. **[姓]** ボックスに「Simon」と入力します。
   
-    c. **[Username]**、**[Email]**、**[Retype Email]** の各ボックスに、Britta の Azure AD でのユーザー名を入力します。
+    c. **[Username]** 、 **[Email]** 、 **[Retype Email]** の各ボックスに、Britta の Azure AD でのユーザー名を入力します。
   
     d. **[Access Type]** で **[Enable Halo Portal Access]** を選択します。
   

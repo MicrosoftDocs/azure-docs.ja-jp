@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 3229233d-400d-4971-8d76-eaa0d6591d75
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: cad1f84f611ac3214b8823bb11817ffceb3e2017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eaad8a6ae3d2dbaacf01e256bb6aa5691b05af49
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388698"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620589"
 ---
 # <a name="connect-your-check-point-appliance"></a>Check Point アプライアンスを接続する
 

@@ -4,7 +4,7 @@ description: Azure CLI のサンプル スクリプト - Linux VM の暗号化
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8f3e032d6723faf149faad039e3c3faff3e6d83a
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 16bbd4031c851a950af0f3c0fe98ebdd24b183df
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731497"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709435"
 ---
 # <a name="encrypt-a-linux-virtual-machine-in-azure"></a>Azure における Linux 仮想マシンの暗号化
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、Azure Key Vault、サービス プリンシパル、仮想マシン、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault) | セキュリティで保護されたデータ (暗号化キーなど) を格納する Azure Key Vault を作成します。 |

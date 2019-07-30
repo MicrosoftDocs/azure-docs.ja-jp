@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Python を使ってニュース検索を実行する - Bing News Search REST API
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:Python と Bing News Search REST API を使用してニュース検索を実行する
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Python を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7745db722d1862e5254c0e0fb07605799a8f7457
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2fc67cbfedccd69ff9063b0575ae51197eceb09d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076719"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423688"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>クイック スタート:Python と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -77,7 +77,8 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 
 ```python
 from IPython.display import HTML
-rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc) for desc in descriptions])
+rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc)
+                  for desc in descriptions])
 HTML("<table>"+rows+"</table>")
 ```
 

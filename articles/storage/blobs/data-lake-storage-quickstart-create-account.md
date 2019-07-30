@@ -5,18 +5,17 @@ services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: quickstart
-ms.date: 12/06/2018
+ms.topic: article
+ms.date: 07/19/2019
 ms.author: normesta
-ms.reviewer: jamesbak
-ms.openlocfilehash: 18132ac4c218c766efdc9a9afae2cc3508c4f732
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 297ab5971fdf60ce260808cb4864621ec1188b5e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939422"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360769"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
+# <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
 Azure Data Lake Storage Gen2 では、Hadoop 分散ファイル システム (HDFS) と連携するように調整された、ネイティブ ディレクトリベースのファイル システムを提供する[階層型名前空間がサポート](data-lake-storage-introduction.md)されています。 HDFS から Data Lake Storage Gen2 データにアクセスするには、[ABFS ドライバー](data-lake-storage-abfs-driver.md)を使用します。
 

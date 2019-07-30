@@ -1,5 +1,5 @@
 ---
-title: webhook を使用して既存の問題管理システム用に正常性通知を構成する | Microsoft Docs
+title: webhook を使用して既存の問題管理システム用に Azure サービス正常性通知を構成する
 description: 既存の問題管理システムに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 author: stephbaron
 ms.author: stbaron
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: ccddb1ffd86ce95b1ca5563de2f4b04c41d5737d
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 3e9a564310d750e63c9cf81d19f698e75712d09a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442427"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067191"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>webhook を使用して既存の問題管理システム用に正常性通知を構成する
 

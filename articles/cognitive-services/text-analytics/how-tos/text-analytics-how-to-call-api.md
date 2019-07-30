@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e98979ac43945ebc9af82d5f89db01855429ca70
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831420"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304205"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -87,7 +87,7 @@ Text Analytics API を使用する [Cognitive Services API アカウント](http
   + [エンティティの認識](text-analytics-how-to-entity-linking.md)  
 
 
-6. **[保存]** をクリックして、要求を送信します。 1 分あたり最大 100 個の要求を送信できます。 
+6. **[保存]** をクリックして、要求を送信します。 分単位および秒単位で送信できる要求の数については、概要の「[データ制限](../overview.md#data-limits)」セクションを参照してください。
 
    Postman では、応答は、次のウィンドウに単一の JSON ドキュメントとして、要求に指定された各ドキュメント ID の項目とともに表示されます。
 

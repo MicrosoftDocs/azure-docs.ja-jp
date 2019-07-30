@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: badf351f8336e501b3ee1c035fcb389a570750c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd8ed146c507d8d39ba99c6573321ee80bc891c9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072846"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442576"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>発話の例にエンティティを追加する 
 
 発話の例とは、ユーザーの質問や命令のサンプル テキストです。 Language Understanding (LUIS) に学習させるには、[意図](luis-concept-intent.md)に[発話の例](luis-concept-utterance.md)を追加する必要があります。
 
-通常は、まず、発話の例を意図に追加し、次に意図ページでエンティティを作成して発話にラベルを付けます。 先にエンティティを作成する場合、[エンティティの追加](luis-how-to-add-entities.md)に関するページを参照してください。
+通常は、まず、発話の例を意図に追加し、次に **[意図]** ページでエンティティを作成して発話にラベルを付けます。 先にエンティティを作成する場合、[エンティティの追加](luis-how-to-add-entities.md)に関するページを参照してください。
 
 ## <a name="marking-entities-in-example-utterances"></a>発話の例のエンティティにマークを付ける
 
@@ -32,7 +32,7 @@ ms.locfileid: "65072846"
 
 ## <a name="add-a-simple-entity"></a>シンプル エンティティを追加する
 
-以下の手順では、意図ページの次の発話内でカスタム エンティティを作成してタグを付けます。
+以下の手順では、 **[意図]** ページの次の発話内でカスタム エンティティを作成してタグを付けます。
 
 ```text
 Are there any SQL server jobs?
@@ -65,9 +65,9 @@ Are there any SQL server jobs?
 
     リスト アイテムまたはアイテムのシノニムをさらに追加するには、他の発話にラベルを付けるか、左のナビゲーションにある **[エンティティ]** でエンティティを編集します。 エンティティの[編集](luis-how-to-add-entities.md#add-list-entities)では、対応するシノニムと一緒に追加アイテムを入力したり、リストをインポートしたりできます。 
 
-## <a name="add-composite-entity"></a>複合エンティティを追加する
+## <a name="add-a-composite-entity"></a>複合エンティティを追加する
 
-複合エンティティは、既存の**エンティティ**を元に親エンティティとして作成します。 
+複合エンティティは、既存の**エンティティ**を元に親エンティティを形成するために作成します。 
 
 `Does John Smith work in Seattle?` という発話の場合、複合発話は、従業員名 `John Smith` のエンティティ情報と、複合エンティティ内の位置 `Seattle` を返すことができます。 子エンティティは、複合エンティティを作成する前にアプリ内に既に存在し、発話例でマークされている必要があります。
 
@@ -135,11 +135,11 @@ LUIS ポータルで新しい発話を入力するとき、発話にエンティ
 
 機械学習したエンティティ ラベルを発話から削除するには、発話でそのエンティティを選択します。 次に、エンティティ ドロップダウン ボックスが表示されるのでそこから **[ラベルの削除]** を選択します。
 
-### <a name="add-prebuilt-entity-label"></a>事前構築済みエンティティ ラベルを追加する
+### <a name="add-a-prebuilt-entity-label"></a>事前構築済みエンティティ ラベルを追加する
 
 事前構築済みエンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 事前構築済みエンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app)に関するページを参照してください。
 
-### <a name="add-regular-expression-entity-label"></a>正規表現エンティティ ラベルを追加する
+### <a name="add-a-regular-expression-entity-label"></a>正規表現エンティティ ラベルを追加する
 
 正規表現エンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 正規表現エンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts)に関するページを参照してください。
 
@@ -149,7 +149,7 @@ LUIS ポータルで新しい発話を入力するとき、発話にエンティ
 [予測の正確さを向上するためにパターンを追加する方法](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page)に関するページをご覧ください。
 
 
-### <a name="add-patternany-entity"></a>pattern.any エンティティを追加する
+### <a name="add-a-patternany-entity"></a>pattern.any エンティティを追加する
 
 pattern.any エンティティを LUIS アプリに追加する場合、発話にそのエンティティのラベルを付けることはできません。 pattern.any エンティティはパターンでのみ有効です。 pattern.any エンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities)に関するページを参照してください。
 
@@ -159,4 +159,4 @@ pattern.any エンティティを LUIS アプリに追加する場合、発話�
 
 ## <a name="next-steps"></a>次の手順
 
-意図で発話にラベルを付けたら、[複合エンティティ](luis-how-to-add-entities.md)を作成できます。
+**[意図]** で発話にラベルを付けたら、[複合エンティティ](luis-how-to-add-entities.md)を作成できます。

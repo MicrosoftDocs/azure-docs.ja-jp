@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:CentOS VM をマネージド ド�
 description: CentOS Linux 仮想マシンを Azure AD Domain Services に参加させる
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 23046dc356097a7b8cdbbc91c05a6419fc52d19f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: c4a04f55f4f69521f00ed450a2d3d1a80b56761c
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245322"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234091"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>CentOS Linux 仮想マシンをマネージド ドメインに参加させる
 この記事では、Azure 内の CentOS Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -57,24 +57,25 @@ CentOS 仮想マシンが Azure でプロビジョニングされました。 �
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Linux 仮想マシン上の hosts ファイルを構成する
 SSH ターミナルで /etc/hosts ファイルを編集し、ご自分のマシンの IP アドレスとホスト名を更新します。
 
-```
+```console
 sudo vi /etc/hosts
 ```
 
 hosts ファイルに、次の値を入力します。
 
-```
+```console
 127.0.0.1 contoso-centos.contoso100.com contoso-centos
 ```
+
 ここで、"contoso100.com" は、マネージド ドメインの DNS ドメイン名です。 "contoso-centos" は、マネージド ドメインに参加させる CentOS 仮想マシンのホスト名です。
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Linux 仮想マシンに必要なパッケージのインストール
 次は、仮想マシンでのドメイン参加に必要なパッケージをインストールします。 SSH ターミナルで、次のコマンドを入力して、必要なパッケージをインストールします。
 
-    ```
-    sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
-    ```
+```console
+sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
+```
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Linux 仮想マシンのマネージド ドメインへの参加
@@ -82,7 +83,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 1. AAD ドメイン サービスのマネージド ドメインを探します。 SSH ターミナルで、次のコマンドを入力します。
 
-    ```
+    ```console
     sudo realm discover CONTOSO100.COM
     ```
 
@@ -97,9 +98,8 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     > [!TIP]
     > * "AAD DC 管理者" グループに所属するユーザーを指定します。
     > * kinit のエラーを防ぐため、ドメイン名は必ず大文字で指定します。
-    >
 
-    ```
+    ```console
     kinit bob@CONTOSO100.COM
     ```
 
@@ -107,9 +107,8 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
     > [!TIP]
     > 前の手順で指定したユーザー アカウントを使用します ("kinit")。
-    >
 
-    ```
+    ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
     ```
 
@@ -120,17 +119,20 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 マシンがマネージド ドメインに正常に参加したかどうかを確認してみましょう。 別の SSH 接続を使用して、ドメインに参加した CentOS VM に接続します。 ドメイン ユーザー アカウントを使用して、そのユーザー アカウントが正しく解決されているかどうかを確認します。
 
 1. SSH ターミナルで次のコマンドを入力し、SSH を使用して、ドメインに参加した CentOS 仮想マシンに接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@CONTOSO100.COM')。
-    ```
+    
+    ```console
     ssh -l bob@CONTOSO100.COM contoso-centos.contoso100.com
     ```
 
 2. SSH ターミナルで次のコマンドを入力し、ホーム ディレクトリが正しく初期化されているかどうかを確認します。
-    ```
+   
+    ```console
     pwd
     ```
 
 3. SSH ターミナルで次のコマンドを入力し、グループ メンバーシップが正しく解決されているかどうかを確認します。
-    ```
+    
+    ```console
     id
     ```
 

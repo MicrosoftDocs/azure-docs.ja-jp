@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: eb7cbb80be12498242363eb8141a468e08cba73a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478333"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443329"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -136,7 +136,38 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 1. *ApplicationInsights.config* ファイルが常に出力ディレクトリにコピーされるように設定します。  
     *.config* ファイルのメッセージによって、インストルメンテーション キーをそこに配置するよう求められます。 ただし、クラウド アプリでは、それは *.cscfg* ファイルから設定することをお勧めします。 この方法により、ポータルでロールが正しく識別されます。
 
-#### <a name="run-and-publish-the-app"></a>アプリを実行して発行する
+## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>完全な SQL クエリを収集するように Status Monitor を設定する (省略可能)
+
+この手順は、.NET Framework で完全な SQL クエリをキャプチャする場合にのみ必要です。 
+
+1. `\*.csdef` ファイルに、次のように各ロールの[スタートアップ タスク](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)を追加します 
+
+    ```xml
+    <Startup>
+      <Task commandLine="AppInsightsAgent\InstallAgent.bat" executionContext="elevated" taskType="simple">
+        <Environment>
+          <Variable name="ApplicationInsightsAgent.DownloadLink" value="http://go.microsoft.com/fwlink/?LinkID=522371" />
+          <Variable name="RoleEnvironment.IsEmulated">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+        </Environment>
+      </Task>
+    </Startup>
+    ```
+    
+2. [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) と [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1) をダウンロードし、各ロール プロジェクトの `AppInsightsAgent` フォルダーに配置します。 必ず Visual Studio のファイルのプロパティまたはビルド スクリプトを使用して、それらを出力ディレクトリにコピーします。
+
+3. すべての worker ロールに環境変数を追加します。 
+
+    ```xml
+      <Environment>
+        <Variable name="COR_ENABLE_PROFILING" value="1" />
+        <Variable name="COR_PROFILER" value="{324F817A-7420-4E6D-B3C1-143FBED6D855}" />
+        <Variable name="MicrosoftInstrumentationEngine_Host" value="{CA487940-57D2-10BF-11B2-A3AD5A13CBC0}" />
+      </Environment>
+    ```
+    
+## <a name="run-and-publish-the-app"></a>アプリを実行して発行する
 
 1. お客様のアプリを実行し、Azure にサインインします。 
 
@@ -149,7 +180,7 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 1. 個別のイベントを表示するには、[[検索]][diagnostic] タイルを開きます。
 1. アプリで、テレメトリがいくつか生成されるようにさまざまなページを開きます。
 1. 数秒待ってから **[最新の情報に更新]** をクリックします。  
-    詳細については、[トラブルシューティング][qna]に関するページを参照してください。
+    詳細については、「 [トラブルシューティング][qna]」を参照してください。
 
 ## <a name="view-azure-diagnostics-events"></a>Azure 診断イベントを表示する
 Application Insights の [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)情報は、以下の場所にあります。

@@ -6,13 +6,13 @@ author: jnoller
 ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
-ms.author: jnoller
-ms.openlocfilehash: 9f3a62c5782724f14f10b5875fc8db31dbffe67c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jenoller
+ms.openlocfilehash: 247665f58dd064565f0e9aebc9859e97ce0ab0c0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693392"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836972"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service で CoreDNS をカスタマイズする
 
@@ -27,15 +27,15 @@ AKS はマネージド サービスであるため、CoreDNS のメイン構成 
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、AKS のクイックスタートの、[Azure CLI を使用][aks-quickstart-cli]に関するページと、Azure portal に関するページor [using the Azure portal][aks-quickstart-portal]を参照してください。
 
 ## <a name="what-is-supportedunsupported"></a>サポート対象/サポート対象外
 
-組み込みの CoreDNS プラグインはすべてサポート対象です。 アドオン/サード パーティ製のプラグインはサポート対象外です。
+組み込みの CoreDNS プラグインはすべてサポート対象です。 アドオン/サード パーティ製のプラグインはサポート対象外です。 
 
 ## <a name="rewrite-dns"></a>DNS を書き換える
 
-シナリオの 1 つとして、その場で DNS 名の書き換えを実行する場合があります。 次の例では、`<domain to be written>` を独自の完全修飾ドメイン名に置き換えます。 `corednsms.json` という名前のファイルを作成し、次の構成例を貼り付けます。
+シナリオの 1 つとして、その場で DNS 名の書き換えを実行する場合があります。 次の例では、`<domain to be written>` を独自の完全修飾ドメイン名に置き換えます。 `corednsms.yaml` という名前のファイルを作成し、次の構成例を貼り付けます。
 
 ```yaml
 apiVersion: v1
@@ -56,7 +56,7 @@ data:
 [kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、YAML マニフェストの名前を指定します。
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 ```
 
 カスタマイズが適用されたことを確認するには、[kubectl get configmaps][kubectl-get] を使用し、*coredns-custom* ConfigMap を指定します。
@@ -76,7 +76,7 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 
 ## <a name="custom-proxy-server"></a>カスタム プロキシ サーバー
 
-ネットワーク トラフィックにプロキシ サーバーを指定する必要がある場合は、DNS をカスタマイズするための ConfigMap を作成できます。 次の例では、`proxy` の名前とアドレスを自分の環境の値で更新します。 `corednsms.json` という名前のファイルを作成し、次の構成例を貼り付けます。
+ネットワーク トラフィックにプロキシ サーバーを指定する必要がある場合は、DNS をカスタマイズするための ConfigMap を作成できます。 次の例では、`proxy` の名前とアドレスを自分の環境の値で更新します。 `corednsms.yaml` という名前のファイルを作成し、次の構成例を貼り付けます。
 
 ```yaml
 apiVersion: v1
@@ -91,10 +91,10 @@ data:
     }
 ```
 
-前述の例のように、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、YAML マニフェストの名前を指定します。 次に、Kubernetes スケジューラで再作成するために、[kubectl delete pod][kubectl delete] を使用して ConfigMap の再読み込みを CoreDNS に強制します。
+前の例と同様に、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、ご自分の YAML マニフェストの名前を指定します。次に、CoreDNS で kubectl delete pod を使用して ConfigMap を作成し、Kubernetes スケジューラでそれらを再作成できるようにします。command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete]
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
@@ -102,7 +102,7 @@ kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 
 内部的にしか解決できないカスタム ドメインを構成する必要が生じる場合があります。 たとえば、有効な最上位レベルのドメインではないカスタム ドメイン *puglife.local* を解決したい場合があります。 カスタム ドメインの ConfigMap がないと、AKS クラスターはアドレスを解決できません。
 
-次の例では、自分の環境の値で、トラフィックの送信先となるカスタム ドメインと IP アドレスを更新します。 `corednsms.json` という名前のファイルを作成し、次の構成例を貼り付けます。
+次の例では、自分の環境の値で、トラフィックの送信先となるカスタム ドメインと IP アドレスを更新します。 `corednsms.yaml` という名前のファイルを作成し、次の構成例を貼り付けます。
 
 ```yaml
 apiVersion: v1
@@ -119,16 +119,16 @@ data:
     }
 ```
 
-前述の例のように、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、YAML マニフェストの名前を指定します。 次に、Kubernetes スケジューラで再作成するために、[kubectl delete pod][kubectl delete] を使用して ConfigMap の再読み込みを CoreDNS に強制します。
+前の例と同様に、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、ご自分の YAML マニフェストの名前を指定します。次に、CoreDNS で kubectl delete pod を使用して ConfigMap を作成し、Kubernetes スケジューラでそれらを再作成できるようにします。command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete]
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
 ## <a name="stub-domains"></a>スタブ ドメイン
 
-CoreDNS を使用してスタブ ドメインを構成することもできます。 次の例では、自分の環境の値でカスタム ドメイン と IP アドレスを更新します。 `corednsms.json` という名前のファイルを作成し、次の構成例を貼り付けます。
+CoreDNS を使用してスタブ ドメインを構成することもできます。 次の例では、自分の環境の値でカスタム ドメイン と IP アドレスを更新します。 `corednsms.yaml` という名前のファイルを作成し、次の構成例を貼り付けます。
 
 ```yaml
 apiVersion: v1
@@ -151,10 +151,10 @@ data:
 
 ```
 
-前述の例のように、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、YAML マニフェストの名前を指定します。 次に、Kubernetes スケジューラで再作成するために、[kubectl delete pod][kubectl delete] を使用して ConfigMap の再読み込みを CoreDNS に強制します。
+前の例と同様に、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、ご自分の YAML マニフェストの名前を指定します。次に、CoreDNS で kubectl delete pod を使用して ConfigMap を作成し、Kubernetes スケジューラでそれらを再作成できるようにします。command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete]
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 

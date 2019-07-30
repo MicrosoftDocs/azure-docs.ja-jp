@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/29/2018
+ms.date: 04/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 2d4c93b7ef707f5b09bc2f5f93d56c50c1bb3458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 20cfcea4a8b58c1c01a7c710163b7320ff96d65c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736328"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330828"
 ---
 # <a name="what-is-azure-front-door-service"></a>Azure Front Door Service とは
 Azure Front Door Service では、高可用性のために最大限のパフォーマンスと即時グローバル フェイルオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、および監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
@@ -60,6 +60,13 @@ Front Door はカスタム ドメイン名でも HTTPS をサポートしてい�
 Azure Front Door を使用すると、アクセス制御のためのカスタムの Web アプリケーション ファイアウォール (WAF) 規則を作成して、クライアント IP アドレス、国番号、および http パラメーターに基づいて HTTP/HTTPS ワークロードを不正使用から保護することができます。 さらに、Front Door では、悪意のあるボット トラフィックと戦うためにレート制限ルールを作成することもできます。 
 
 Front Door プラットフォーム自体は、[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) Basic によって保護されます。 さらに保護するために、Azure DDoS Protection Standard を VNET で有効にし、自動チューニングとリスク軽減によってネットワーク層 (TCP または UDP) 攻撃からリソースを保護することもできます。 Front Door はレイヤー 7 のリバース プロキシであり、既定では Web トラフィックにバックエンドへのパススルーと他のタイプのトラフィックのブロックしか許可しません。
+
+## <a name="url-redirection"></a>URL リダイレクト
+セキュリティで保護された通信のみをサポートすることが業界で強力に推進されているため、Web アプリケーションは HTTP トラフィックを自動的に HTTPS にリダイレクトすることが求められています。 これにより、ユーザーとアプリケーション間のすべての通信が、暗号化されたパスを経由して行われるようになります。 
+
+これまでは、アプリケーションの所有者は、HTTP で受信した要求を HTTPS にリダイレクトすることが唯一の目的である専用のサービスを作成することによって、この要件に対処してきました。 Azure Front Door Service では、トラフィックを HTTP から HTTPS にリダイレクトする機能がサポートされています。 これにより、アプリケーションの構成が簡単になり、リソースの使用が最適化され、グローバルなリダイレクトやパスに基づくリダイレクトなどの新しいリダイレクト シナリオがサポートされるようになります。 Azure Front Door Service からの URL リダイレクトは、HTTP から HTTPS へのリダイレクトだけでなく、別のホスト名へのリダイレクト、別のパスへのリダイレクト、または URL 内の新しいクエリ文字列へのリダイレクトにも対応しています。
+
+詳細については、Azure Front Door Service による[トラフィックのリダイレクト](front-door-url-redirect.md)に関するページを参照してください。
 
 ## <a name="url-rewrite"></a>URL 書き換え
 Front Door では、バックエンドに転送する要求の作成時に使用する、省略可能なカスタム転送パスの構成を許可することで、[URL 書き換え](front-door-url-rewrite.md)がサポートされています。 さらに、Front Door では、バックエンドに要求を転送するときに送信されるようにホスト ヘッダーを構成することができます。

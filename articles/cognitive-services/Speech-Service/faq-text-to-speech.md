@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: fd8362748c39389139e8384d0bad7e84d20128a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5ca7d8a6b09dc277664fdc7db2433466e665d56
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751628"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606672"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>テキスト読み上げについてよく寄せられる質問
 
@@ -59,7 +59,7 @@ ms.locfileid: "66751628"
 
 **Q:ユーザーの要求は調整されますか。**
 
-**A**: REST API では、要求を 5 秒で 25 に制限しています。 詳細は、[テキスト読み上げ](text-to-speech.md)に関するページを参照してください。 
+**A**: REST API では、要求を 5 秒で 25 に制限しています。 詳細は、[テキスト読み上げ](text-to-speech.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

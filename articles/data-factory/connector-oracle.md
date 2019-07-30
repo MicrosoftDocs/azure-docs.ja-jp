@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fa7612b9e4cd8a714e60879229bd0d39349494f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 04f623a889a87c325b1f53e3b39656ca4b703961
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441442"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509234"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-oracle-connector.md)
 > * [現在のバージョン](connector-oracle.md)
 
@@ -30,13 +30,16 @@ ms.locfileid: "57441442"
 
 Oracle データベースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のデータ ソース ストアから Oracle データベースにデータをコピーすることもできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この Oracle コネクタは、次のバージョンの Oracle データベースをサポートします。 基本認証または OID の認証もサポートしています。
+具体的には、この Oracle コネクタでは以下がサポートされています。
 
-- Oracle 12c R1 (12.1)
-- Oracle 11g R1、R2 (11.1、11.2)
-- Oracle 10g R1、R2 (10.1、10.2)
-- Oracle 9i R1、R2 (9.0.1、9.2)
-- Oracle 8i R3 (8.1.7)
+- Oracle データベースの次のバージョン:
+  - Oracle 12c R1 (12.1)
+  - Oracle 11g R1、R2 (11.1、11.2)
+  - Oracle 10g R1、R2 (10.1、10.2)
+  - Oracle 9i R1、R2 (9.0.1、9.2)
+  - Oracle 8i R3 (8.1.7)
+- **基本**認証または **OID** 認証を使用したデータのコピー。
+- Oracle ソースからの並列コピー。 詳細については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」をご覧ください。
 
 > [!Note]
 > Oracle プロキシ サーバーはサポートされていません。
@@ -59,7 +62,7 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 |:--- |:--- |:--- |
 | type | type プロパティは **Oracle** に設定する必要があります。 | はい |
 | connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 <br><br>**サポートされる接続の種類**:**Oracle SID** または **Oracle サービス名**を使用してデータベースを識別できます。<br>- SID を使用する場合: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- サービス名を使用する場合: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 >[!TIP]
 >"ORA 01025:UPI パラメータの値が有効範囲外です" というエラーが発生し、Oracle がバージョン 8i である場合、`WireProtocolMode=1` を接続文字列に追加してもう一度やり直してください。
@@ -190,16 +193,24 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 
 ### <a name="oracle-as-a-source-type"></a>ソース タイプとしての Oracle
 
+> [!TIP]
+>
+> データ パーティション分割を使用して、Oracle からデータを効率的に読み込む方法の詳細については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」をご覧ください。
+
 Oracle からデータをコピーするは、コピー アクティビティのソースの種類を **OracleSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **OracleSource** に設定する必要があります。 | はい |
-| oracleReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | いいえ  |
+| oracleReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。<br>パーティション分割された読み込みを有効にするときは、クエリで対応する組み込みパーティション パラメーターをフックする必要があります。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」をご覧ください。 | いいえ |
+| partitionOptions | Oracle からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>指定できる値は、**None** (既定値)、**PhysicalPartitionsOfTable**、**DynamicRange** です。<br>パーティション オプションが有効になっている ("None" ではない) 場合は、コピー アクティビティの **[`parallelCopies`](copy-activity-performance.md#parallel-copy)** 設定も構成してください (例: 4)。これにより、Oracle データベースからデータを同時に読み込むときの並列度が決定されます。 | いいえ |
+| partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
+| partitionNames | コピーする必要がある物理パーティションのリスト。 <br>パーティション オプションが `PhysicalPartitionsOfTable` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfTabularPartitionName` をフックします。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」をご覧ください。 | いいえ |
+| partitionColumnName | 並列コピーの範囲パーティション分割で使用される**整数型**のソース列の名前を指定します。 指定されていない場合は、テーブルの主キーが自動検出され、パーティション列として使用されます。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionColumnName` をフックします。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」をご覧ください。 | いいえ |
+| partitionUpperBound | データをコピーするパーティション列の最大値。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionUpbound` をフックします。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」をご覧ください。 | いいえ |
+| PartitionLowerBound | データをコピーするパーティション列の最小値。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionLowbound` をフックします。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」をご覧ください。 | いいえ |
 
-"oracleReaderQuery" を指定しない場合は、データセットの "structure" セクションに定義された列を使用して、Oracle データベースに対して実行するクエリ (`select column1, column2 from mytable`) が作成されます。 データセット定義に "構造" がない場合は、すべての列がテーブルから選択されます。
-
-**例:**
+**例: パーティションなしで基本的なクエリを使用してデータをコピーする**
 
 ```json
 "activities":[
@@ -231,6 +242,8 @@ Oracle からデータをコピーするは、コピー アクティビティの
 ]
 ```
 
+その他の例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」をご覧ください。
+
 ### <a name="oracle-as-a-sink-type"></a>シンクの種類としての Oracle
 
 Oracle にデータをコピーするには、コピー アクティビティのシンクの種類を **OracleSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
@@ -239,8 +252,8 @@ Oracle にデータをコピーするには、コピー アクティビティの
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **OracleSink** に設定する必要があります。 | はい |
 | writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 10,000) |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ  |
-| preCopyScript | コピー アクティビティの毎回の実行で、データを Oracle に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ  |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ |
+| preCopyScript | コピー アクティビティの毎回の実行で、データを Oracle に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |
 
 **例:**
 
@@ -273,6 +286,54 @@ Oracle にデータをコピーするには、コピー アクティビティの
 ]
 ```
 
+## <a name="parallel-copy-from-oracle"></a>Oracle からの並列コピー
+
+データ ファクトリの Oracle コネクタは、優れたパフォーマンスで Oracle からデータを並列コピーするために、組み込みのデータ パーティション分割を提供します。 データ パーティション分割オプションは、コピー アクティビティの Oracle ソースにあります。
+
+![パーティション オプション](./media/connector-oracle/connector-oracle-partition-options.png)
+
+パーティション分割されたコピーを有効にすると、データ ファクトリによって Oracle ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの **[`parallelCopies`](copy-activity-performance.md#parallel-copy)** 設定によって構成および制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリは、Oracle データベースからデータの一部を取得します。
+
+特に、Oracle データベースから大量のデータを読み込む場合は、データ パーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。
+
+| シナリオ                                                     | 推奨設定                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 物理パーティションに分割された大きなテーブル全体から読み込む          | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行時に、データ ファクトリによって物理パーティションが自動的に検出され、パーティションごとにデータがコピーされます。 |
+| 物理パーティションがなく、データ パーティション分割用の整数列がある大きなテーブル全体から読み込む | **パーティション オプション**: 動的範囲パーティション。<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 指定されていない場合は、主キー列が使用されます。 |
+| カスタム クエリを使用して大量のデータを読み込む (物理パーティションがある場合) | **パーティション オプション**: テーブルの物理パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`<br>**パーティション名**: データのコピー元のパーティション名を指定します。 指定されていない場合は、Oracle データセットで指定したテーブルの物理パーティションが ADF によって自動的に検出されます。<br><br>実行時に、データ ファクトリによって `?AdfTabularPartitionName` が実際のパーティション名に置き換えられ、Oracle に送信されます。 |
+| カスタム クエリを使用して大量のデータを読み込む (物理パーティションがなく、データ パーティション分割用の整数列がある場合) | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 整数データ型の列に対してパーティション分割を行うことができます。<br>**パーティションの上限**と**パーティションの下限**: パーティション列に対してフィルター処理を実行して、下限から上限までの範囲のデータのみを取得する場合に指定します。<br><br>実行時に、データ ファクトリによって `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound`、`?AdfRangePartitionLowbound` が各パーティションの実際の列名および値の範囲に置き換えられ、Oracle に送信されます。 <br>たとえば、パーティション列 "ID" で下限が 1、上限が 80 に設定され、並列コピーが 4 に設定されている場合、ADF によって、ID の範囲が [1, 20]、[21, 40]、[41, 60]、[61, 80] の 4 つのパーティションでデータが取得されます。 |
+
+**例: 物理パーティションを使用してクエリを実行する**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> PARTITION(\"?AdfTabularPartitionName\") WHERE <your_additional_where_clause>",
+    "partitionOption": "PhysicalPartitionsOfTable",
+    "partitionSettings": {
+        "partitionNames": [
+            "<partitionA_name>",
+            "<partitionB_name>"
+        ]
+    }
+}
+```
+
+**例: 動的範囲パーティションを使用してクエリを実行する**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>",
+    "partitionOption": "DynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<partition_column_name>",
+        "partitionUpperBound": "<upper_value_of_partition_column>",
+        "partitionLowerBound": "<lower_value_of_partition_column>"
+    }
+}
+```
+
 ## <a name="data-type-mapping-for-oracle"></a>Oracle のデータ型マッピング
 
 Oracle をコピー元またはコピー先としてデータをコピーするとき、次の Oracle のデータ型から Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
@@ -281,25 +342,25 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(Oracle 10g 以上でのみサポート) |
-| CHAR |String |
-| CLOB |String |
+| CHAR |string |
+| CLOB |string |
 | DATE |DateTime |
 | FLOAT |Decimal、String (有効桁数が 28 を超える場合) |
 | INTEGER |Decimal、String (有効桁数が 28 を超える場合) |
-| LONG |String |
+| LONG |string |
 | LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
+| NCHAR |string |
+| NCLOB |string |
 | NUMBER |Decimal、String (有効桁数が 28 を超える場合) |
-| NVARCHAR2 |String |
+| NVARCHAR2 |string |
 | RAW |Byte[] |
-| ROWID |String |
+| ROWID |string |
 | TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |String |
-| TIMESTAMP WITH TIME ZONE |String |
+| TIMESTAMP WITH LOCAL TIME ZONE |string |
+| TIMESTAMP WITH TIME ZONE |string |
 | 符号なし INTEGER |NUMBER |
-| VARCHAR2 |String |
-| XML |String |
+| VARCHAR2 |string |
+| XML |string |
 
 > [!NOTE]
 > INTERVAL YEAR TO MONTH データ型と INTERVAL DAY TO SECOND データ型はサポートされません。

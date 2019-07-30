@@ -11,16 +11,16 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8076ae81b111aa6b524b7e286ed15ca0661d748b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165965"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062120"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-use-custom-activities.md)
 > * [現在のバージョン](transform-data-using-dotnet-custom-activity.md)
 
@@ -103,15 +103,15 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | プロパティ              | 説明                              | 必須 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | パイプラインのアクティビティの名前。     | はい      |
-| description           | アクティビティの動作を説明するテキスト。  | いいえ        |
+| description           | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | はい      |
 | linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | はい      |
 | command               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | はい      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ &#42;       |
 | folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。<br/><br/>依存関係ファイルをサブフォルダーに置いている場合 (つまり、*folderPath* の下のフォルダー階層構造内に置いている場合)、現在の動作では、ファイルが Azure Batch にコピーされるときに、フォルダー構造がフラット化されます。 つまり、すべてのファイルは、サブフォルダーを使用せず、1 つのフォルダーにコピーされます。 この問題を回避するには、ファイルを圧縮し、圧縮されたファイルをコピーした後、目的の場所でカスタム コードと共に解凍することを検討してください。 | いいえ &#42;       |
-| referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ        |
-| extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ        |
-| retentionTimeInDays | カスタム アクティビティ用に送信するファイルのリテンション期間。 既定値は 30 日です。 | いいえ  |
+| referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ       |
+| extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ       |
+| retentionTimeInDays | カスタム アクティビティ用に送信するファイルのリテンション期間。 既定値は 30 日です。 | いいえ |
 
 &#42; `resourceLinkedService` プロパティと `folderPath` プロパティは、両方とも指定するか、両方とも省略する必要があります。
 
@@ -301,7 +301,7 @@ Activity Error section:
 ダウンストリームのアクティビティで stdout.txt の内容を使用する場合は、式 "\@activity('MyCustomActivity').output.outputs[0]" で stdout.txt ファイルへのパスを取得できます。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" パスに格納されています。 必要に応じて、パスを個別にクリーンアップする必要があります。
+> - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、`"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` パスに格納されています。 必要に応じて、パスを個別にクリーンアップする必要があります。
 > - セルフホステッド統合ランタイムを使用しているリンクされたサービスでは、顧客が定義したプライベート ネットワーク環境内に資格情報を保持できるように、セルフホステッド統合ランタイムによってキーやパスワードなどの機密情報が暗号化されます。 この場合、カスタム アプリケーション コードから一部の機密フィールドを参照したときにフィールドが見つからない可能性があります。 必要に応じて、リンクされたサービスの参照を使用するのではなく、extendedProperties で SecureString を使用してください。
 
 ## <a name="pass-outputs-to-another-activity"></a>別のアクティビティに出力を渡す
@@ -310,7 +310,7 @@ Activity Error section:
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString 出力の取得
 
-*SecureString* 型として指定された機密プロパティ値 (この記事の一部のサンプルに含まれています) は、Data Factory ユーザー インターフェイスの [監視] タブでマスクされます。  ただし、実際のパイプライン実行では、*SecureString* プロパティは `activity.json` ファイル内でプレーン テキストの JSON としてシリアル化されます。 例: 
+*SecureString* 型として指定された機密プロパティ値 (この記事の一部のサンプルに含まれています) は、Data Factory ユーザー インターフェイスの [監視] タブでマスクされます。  ただし、実際のパイプライン実行では、*SecureString* プロパティは `activity.json` ファイル内でプレーン テキストの JSON としてシリアル化されます。 例:
 
 ```json
 "extendedProperties": {

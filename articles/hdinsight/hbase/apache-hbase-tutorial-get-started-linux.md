@@ -1,28 +1,33 @@
 ---
-title: HDInsight での HBase の例の概要 - Azure
-description: この Apache HBase の例に従って、HDInsight で Hadoop を使い始めることができます。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。
+title: チュートリアル - Azure HDInsight で Apache HBase を使用する
+description: この Apache HBase のチュートリアルに従って、HDInsight で Hadoop を使い始めることができます。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。
 keywords: hbasecommand,hbase の例
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 05/27/2019
+ms.topic: tutorial
+ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9d94a976c08cdb5184ea4c5e2cd70ac039d78378
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 48b02a042b55af9ff65f57220f7a64c9cbde8848
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384695"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445543"
 ---
-# <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight で Apache HBase の例を使用する
+# <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
-HDInsight で [Apache HBase](https://hbase.apache.org/) クラスターを作成する方法、HBase テーブルを作成する方法、[Apache Hive](https://hive.apache.org/) を使用してテーブルを照会する方法について説明します。  HBase に関する一般的な情報については、[HDInsight HBase の概要](./apache-hbase-overview.md)に関するページを参照してください。
+このチュートリアルでは、Azure HDInsight で Apache HBase クラスターを作成する方法、HBase テーブルを作成する方法、Apache Hive を使用してテーブルのクエリを実行する方法について説明します。  HBase に関する一般的な情報については、[HDInsight HBase の概要](./apache-hbase-overview.md)に関するページを参照してください。
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+このチュートリアルでは、以下の内容を学習します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+> [!div class="checklist"]
+> * Apache HBase クラスターを作成する
+> * HBase テーブルを作成してデータを挿入する
+> * Apache Hive を使用して Apache HBase を照会する
+> * Curl を使用して HBase REST API を使用する
+> * クラスターの状態の確認
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,10 +35,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * Bash。 この記事の例では、curl コマンドのために Windows 10 上で Bash シェルを使用します。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  これらの curl の例は、少し変更すれば、Windows コマンド プロンプトで動作できます。  あるいは、Windows PowerShell コマンドレット [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod) を使用できます。
 
-
 ## <a name="create-apache-hbase-cluster"></a>Apache HBase クラスターを作成する
 
-次の手順では、Azure Resource Manager テンプレートを使用して、HBase クラスターと依存する既定の Azure Storage アカウントを作成します。 この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 Data Lake Storage Gen2 の使用について詳しくは、「[クイック スタート:HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+次の手順では、Azure Resource Manager テンプレートを使用して、HBase クラスターと依存する既定の Azure Storage アカウントを作成します。 この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/)にあります。
 
@@ -56,12 +60,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. **[上記の使用条件に同意する]** を選択し、 **[購入]** を選択します。 クラスターの作成には約 20 分かかります。
 
-> [!NOTE]  
-> HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。 新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。 不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
+HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。 新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。 不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
 
 ## <a name="create-tables-and-insert-data"></a>テーブルを作成してデータを挿入する
 
-SSH を使用して HBase クラスターに接続し、[Apache HBase シェル](https://hbase.apache.org/0.94/book/shell.html)を使用して HBase テーブルの作成、データの挿入、データのクエリを行うことができます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+SSH を使用して HBase クラスターに接続し、[Apache HBase シェル](https://hbase.apache.org/0.94/book/shell.html)を使用して HBase テーブルの作成、データの挿入、データのクエリを行うことができます。
 
 多くの場合、データは次のような表形式で表示されます。
 
@@ -149,8 +152,7 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 必要に応じて、自分でテキスト ファイルを作成し、そのファイルを自分のストレージ アカウントにアップロードできます。 手順については、「[HDInsight で Apache Hadoop ジョブのデータをアップロードする](../hdinsight-upload-data.md)」を参照してください。
 
-> [!NOTE]  
-> この手順では、前回の手順で作成した Contacts HBase テーブルを使用します。
+この手順では、前回の手順で作成した `Contacts` HBase テーブルを使用します。
 
 1. 開いている ssh 接続から、次のコマンドを実行してデータ ファイルを StoreFile に変換し、`Dimporttsv.bulk.output` で指定された相対パスに格納します。
 
@@ -178,7 +180,7 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
     Beeline の詳細については、「[Beeline による HDInsight での Hive と Hadoop の使用](../hadoop/apache-hadoop-use-hive-beeline.md)」を参照してください。
 
-1. 次の [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) スクリプトを実行して、HBase テーブルにマップする Hive テーブルを作成します。 ここで、HBase シェルを使用して、先ほど参照したサンプル テーブルが HBase に作成されたことを確認してから、このステートメントを実行してください。
+1. 次の [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) スクリプトを実行して、HBase テーブルにマップする Hive テーブルを作成します。 この記事で、HBase シェルを使用して、先ほど参照したサンプル テーブルが作成されたことを確認してから、このステートメントを実行してください。
 
     ```hiveql
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -240,7 +242,7 @@ REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wik
 
     -d スイッチで指定された値に base64 エンコードを使用する必要があります。 この例では次のとおりです。
 
-   * MTAwMA==:1,000
+   * MTAwMA==:1000
    * UGVyc29uYWw6TmFtZQ==:Personal:Name
    * Sm9obiBEb2xl:John Dole
 
@@ -270,16 +272,17 @@ HBase Rest の詳細については、「 [Apache HBase reference guide (Apache 
 >   
 >        {"status":"ok","version":"v1"}
 
-
 ## <a name="check-cluster-status"></a>クラスターの状態の確認
 
 HDInsight の HBase には、クラスターを監視するための Web UI が付属します。 この Web UI を使用すると、統計情報やリージョンに関する情報を要求できます。
 
 **HBase Master UI にアクセスするには**
 
-1. `https://Clustername.azurehdinsight.net` で Ambari Web UI にサインインします。
-2. 左側のメニューで **[HBase]** をクリックします。
-3. ページの上部にある **[Quick links (クイック リンク)]** をクリックし、アクティブな Zookeeper ノード リンクをポイントして、 **[HBase Master UI]** をクリックします。  UI は別のブラウザー タブで開かれます。
+1. `https://CLUSTERNAME.azurehdinsight.net` の Ambari Web UI にサインインします。この `CLUSTERNAME` は HBase クラスターの名前です。
+
+1. 左側のメニューで **[HBase]** を選択します。
+
+1. ページの上部にある **[Quick links]\(クイック リンク\)** を選択し、アクティブな Zookeeper ノード リンクをポイントして、 **[HBase Master UI]** を選択します。  UI は別のブラウザー タブで開かれます。
 
    ![HDInsight HBase Master UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -291,20 +294,19 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
    - タスク
    - ソフトウェア属性
 
-## <a name="delete-the-cluster"></a>クラスターを削除する
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
+不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。 HBase コマンド `disable 'Contacts'` を使用できます。 このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
-
-## <a name="troubleshoot"></a>トラブルシューティング
-
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](../hdinsight-hadoop-customize-cluster-linux.md#access-control)」を参照してください。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
+1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。
+1. **[削除]** をクリックします。 **[はい]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Apache HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+このチュートリアルでは、Apache HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。 また、HBase テーブルのデータに対して Hive クエリを使用する方法と、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。 詳細については、次を参照してください。
 
-詳細については、次を参照してください。
-
-* [HDInsight HBase の概要](./apache-hbase-overview.md):Apache HBase は、Apache Hadoop 上に構築された Apache 用のオープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
+> [!div class="nextstepaction"]
+> [HDInsight HBase の概要](./apache-hbase-overview.md)

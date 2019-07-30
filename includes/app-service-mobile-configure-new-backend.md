@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: a7c994f85d90e94d514bb4e4f91a6644ed45432c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455204"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440210"
 ---
 1. 次のプラットフォームのためのクライアント SDK クイック スタートをダウンロードします。
     
@@ -100,6 +100,4 @@ ms.locfileid: "66455204"
 
         4. 発行先として **[App Service]** を選択し、 **[既存のものを選択]** をクリックし、次にウィンドウ下部にある **[発行]** をクリックします。
 
-        5. 最初に、Azure サブスクリプションを使用して Visual Studio にログインする必要があります。 `Subscription`、`Resource Group` を選択し、次にアプリの名前を選択します。 準備ができたら **[OK]** をクリックします。これにより、ローカル環境にある .NET サーバー プロジェクトが App Service バックエンドにデプロイされます。 デプロイが完了すると、ブラウザーで `http://{zumoappname}.azurewebsites.net/` にリダイレクトされます。
-        
-           ![バックエンドが稼働](./media/app-service-mobile-configure-new-backend/backend-is-up.png)
+        5. 最初に、Azure サブスクリプションを使用して Visual Studio にログインする必要があります。 `Subscription`、`Resource Group` を選択し、次にアプリの名前を選択します。 準備ができたら **[OK]** をクリックします。これにより、ローカル環境にある .NET サーバー プロジェクトが App Service バックエンドにデプロイされます。 デプロイが完了すると、ブラウザーで `http://{zumoappname}.azurewebsites.net/` にリダイレクトされます。                   

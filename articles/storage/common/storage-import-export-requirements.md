@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bc244ecb62655d1e95046fb0eb8548fdacdcc2a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478591"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147949"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -41,7 +41,7 @@ WAImportExport ツールを使用してハード ドライブを準備するた�
 
 Azure Import/Export サービスでは、以下の種類のストレージ アカウントがサポートされます。
 
-- General Purpose v2 ストレージ アカウント (ほとんどのシナリオで推奨)
+- Standard General Purpose v2 ストレージ アカウント (ほとんどのシナリオで推奨)
 - BLOB ストレージ アカウント
 - General Purpose v1 ストレージ アカウント (クラシックまたは Azure Resource Manager の両方のデプロイ) 
 

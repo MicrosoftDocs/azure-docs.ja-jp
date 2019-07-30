@@ -9,12 +9,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 57cda4d07315c6c37c2ce51f530fb081949b628c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50d39aa3c6341e61e383c5584ab2992e3fea3189
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939496"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278086"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS):Hadoop 専用の Azure Storage ドライバー
 
@@ -55,11 +55,11 @@ Hadoop アプリケーションが Data Lake Storage Gen2 対応アカウント�
 
 ABFS ドライバーのすべての構成は <code>core-site.xml</code> 構成ファイルに格納されます。 [Ambari](https://ambari.apache.org/) を備えた Hadoop ディストリビューションでは、構成は Web ポータルまたは Ambari REST API を使用して管理することもできます。
 
-サポートされるすべての構成エントリの詳細は、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)で指定されています。
+サポートされるすべての構成エントリの詳細は、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html)で指定されています。
 
 ### <a name="hadoop-documentation"></a>Hadoop ドキュメント
 
-ABFS ドライバーについては、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)に完全に記載されています
+ABFS ドライバーについては、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html)に完全に記載されています
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 764fca8d3cb4cd9c40d7880043637f89ef1a8578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755479"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302246"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Azure Search のインデクサーのスケジュールを設定する方法
 インデクサーは通常、その作成直後に 1 回実行されます。 必要に応じて、ポータル、REST API、または .NET SDK を使用してもう一度実行できます。 スケジュールに従って定期的に実行するようにインデクサーを構成することもできます。
@@ -43,6 +43,9 @@ ms.locfileid: "66755479"
 * 最初のインデクサーの実行は、2019 年 6 月 1 日午前 8 時 (UTC) 前後に開始します。 この実行に 20 分 (または、1 時間未満) かかるものとします。
 * 2 番目の実行は、2019 年 6 月 1 日午前 9 時 (UTC) 前後に開始します。 この実行に 70 分 (1 時間より長く) かかり、午前 10 時 10 分 (UTC) まで完了しないとします。
 * 3 回目の実行は午前 10 時 (UTC) に開始するようにスケジュール設定されていますが、その時点で前の実行がまだ終わっていません。 このとき、このスケジュール設定された実行はスキップされます。 インデクサーの次の実行は午前 11 時 (UTC) まで開始しません。
+
+> [!NOTE]
+> インデクサーが特定のスケジュールに設定されているが実行のたびに同じドキュメントに対して繰り返し失敗する場合、進捗が再び正常化するまでの間、インデクサーは (最大で 24 時間に 1 回に) 間隔を開けて実行頻度を下げます。  インデクサーが特定の箇所で停止する原因になっていた問題をすべて修正したと思われる場合、インデクサーをオンデマンドで実行できます。それによって進捗が正常になったら、インデクサーは設定されていたスケジュール間隔に復帰します。
 
 <a name="portal"></a>
 

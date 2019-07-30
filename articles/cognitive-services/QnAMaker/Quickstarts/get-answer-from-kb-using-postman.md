@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 24bd6731faa9788dc336db199aa9776813e7348f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7083285ac81aa8eafee8de49175e40934e5d05b4
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683445"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253809"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>クイック スタート:Postman を使用してナレッジ ベースから回答を取得する
 
@@ -32,7 +32,7 @@ ms.locfileid: "59683445"
 
 ## <a name="use-production-endpoint-with-postman"></a>Postman を使って運用エンドポイントを使用する
 
-ナレッジ ベースが発行されると、**[発行]** ページに、回答を生成するための HTTP 要求の設定が表示されます。 既定のビューに、[Postman](https://www.getpostman.com) からの回答の生成に必要な設定が表示されます。
+ナレッジ ベースが発行されると、 **[発行]** ページに、回答を生成するための HTTP 要求の設定が表示されます。 既定のビューに、[Postman](https://www.getpostman.com) からの回答の生成に必要な設定が表示されます。
 
 次の図の黄色の数字は、次の手順で使用する名前/値のペアを示しています。
 
@@ -40,7 +40,7 @@ ms.locfileid: "59683445"
 
 Postman を使って回答を生成するには、次の手順を実行します。
 
-1. Postman を開きます。 構成要素の選択を求めるメッセージが表示された場合は、**[Basic Request]\(基本的な要求\)** 構成要素を選択します。 **要求名**として `Generate QnA Maker answer` を、**コレクション**として `Generate QnA Maker answers` を設定します。 コレクションに保存しない場合は、**[キャンセル]** を選択します。
+1. Postman を開きます。 構成要素の選択を求めるメッセージが表示された場合は、 **[Basic Request]\(基本的な要求\)** 構成要素を選択します。 **要求名**として `Generate QnA Maker answer` を、**コレクション**として `Generate QnA Maker answers` を設定します。 コレクションに保存しない場合は、 **[キャンセル]** を選択します。
 1. ワークスペースで、**POST** の HTTP メソッドを選択します。
 
     [![Postman 内で POST メソッドを設定する](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
@@ -51,7 +51,7 @@ Postman を使って回答を生成するには、次の手順を実行します
 
     [![Postman 内で完全な URL を設定する](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
-1. **[ヘッダー]** タブの URL で、**[一括編集]** を選択します。 
+1. **[ヘッダー]** タブの URL で、 **[一括編集]** を選択します。 
 
 1. ヘッダー (図の #3 と #4) をテキスト領域にコピーします。
 

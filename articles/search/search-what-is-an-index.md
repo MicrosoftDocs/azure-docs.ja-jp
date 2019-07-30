@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a6a5b0e3957141b9ea17a378a7cbeff33a0124e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024441"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485200"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Azure Search で基本的なインデックスを作成する
 
@@ -36,7 +36,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
   
    **[作成]** をクリックすると、このインデックスをサポートしているすべての物理構造が検索サービスに作成されます。
 
-3. [Get Index REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) や、[Postman](search-fiddler.md) などの Web テスト ツールを使用してインデックス スキーマをダウンロードします。 これで、ポータルで作成したインデックスの JSON 表現ができました。 
+3. [Get Index REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) や、[Postman](search-get-started-postman.md) などの Web テスト ツールを使用してインデックス スキーマをダウンロードします。 これで、ポータルで作成したインデックスの JSON 表現ができました。 
 
    ここからはコード ベースのアプローチに切り替えます。 既に作成されているインデックスは編集できないため、ポータルはイテレーションにあまり適していません。 ただし、残りのタスクには Postman や REST を使用できます。
 
@@ -48,7 +48,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 
 物理構造はサービス内で作成されるため、既存のフィールド定義に重要な変更を加えるたびに[インデックスの削除と再作成](search-howto-reindex.md)が必要です。 つまり、開発中は頻繁なリビルドを計画する必要があります。 リビルドを高速化するために、データのサブセットを使って作業することを検討してもよいでしょう。 
 
-反復的な設計には、ポータルを使う方法よりもコードのほうをお勧めします。 インデックス定義にポータルを使用する場合、リビルドのたびにインデックス定義を入力する必要があります。 開発プロジェクトがまだ初期段階の場合、代わりに [Postman や REST API](search-fiddler.md) などのツールを使用すると、概念実証テストに役立ちます。 要求本文のインデックス定義に増分的変更を加えてから要求をサービスに送信し、更新されたスキーマを使用してインデックスを再作成できます。
+反復的な設計には、ポータルを使う方法よりもコードのほうをお勧めします。 インデックス定義にポータルを使用する場合、リビルドのたびにインデックス定義を入力する必要があります。 開発プロジェクトがまだ初期段階の場合、代わりに [Postman や REST API](search-get-started-postman.md) などのツールを使用すると、概念実証テストに役立ちます。 要求本文のインデックス定義に増分的変更を加えてから要求をサービスに送信し、更新されたスキーマを使用してインデックスを再作成できます。
 
 ## <a name="components-of-an-index"></a>インデックスのコンポーネント
 
@@ -160,16 +160,22 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 Azure Search のサポートされるデータ型の詳細については、[このページ](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)を参照してください。
 
 ### <a name="index-attributes"></a>インデックスの属性
+
+インデックス内の 1 つのフィールドのみが、各ドキュメントを一意に識別する**キー** フィールドとして指定されている必要があります。
+
+他の属性によって、フィールドがアプリケーション内でどのように使用されるかが決まります。 たとえば、フルテキスト検索に含める必要があるすべてのフィールドには、**searchable** 属性が割り当てられています。 
+
+インデックスの作成に使用する API には、さまざまな既定の動作があります。 [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) の場合、ほとんどの属性は既定で有効であり (たとえば、文字列フィールドの **searchable** および **retrievable** は true です)、無効にする場合は、単にそれらを設定するだけです。 .NET SDK の場合は、逆のことが言えます。 明示的に設定していないプロパティの場合、既定では、特に有効にしない限り、対応する検索動作は無効にされています。
+
 | Attribute | 説明 |
 | --- | --- |
-| *キー* |ドキュメント検索に使用される各ドキュメントの一意の ID を提供する文字列です。 各インデックスに、1 つのキーが必要です。 1 つのフィールドだけをキーにすることができ、その型を Edm.String に設定する必要があります。 |
-| *Retrievable* |検索結果でフィールドを返すことができるかどうかを設定します。 |
-| *Filterable* |フィルター クエリでフィールドを使用できるようにします。 |
-| *Sortable* |このフィールドを使ってクエリで検索結果を並べ替えられるようにします。 |
-| *Facetable* |ユーザー自律フィルター処理の [ファセット ナビゲーション](search-faceted-navigation.md) 構造でフィールドを使用できるようにします。 通常は、複数のドキュメント (たとえば、1 つのブランドやサービス カテゴリに属する複数のドキュメント) をまとめてグループ化するために使用できる、反復する値があるフィールドが、ファセットとして最適です。 |
-| *Searchable* |フィールドをフルテキスト検索可能としてマークします。 |
+| `key` |ドキュメント検索に使用される各ドキュメントの一意の ID を提供する文字列です。 各インデックスに、1 つのキーが必要です。 1 つのフィールドだけをキーにすることができ、その型を Edm.String に設定する必要があります。 |
+| `retrievable` |検索結果でフィールドを返すことができるかどうかを設定します。 |
+| `filterable` |フィルター クエリでフィールドを使用できるようにします。 |
+| `Sortable` |このフィールドを使ってクエリで検索結果を並べ替えられるようにします。 |
+| `facetable` |ユーザー自律フィルター処理の [ファセット ナビゲーション](search-faceted-navigation.md) 構造でフィールドを使用できるようにします。 通常は、複数のドキュメント (たとえば、1 つのブランドやサービス カテゴリに属する複数のドキュメント) をまとめてグループ化するために使用できる、反復する値があるフィールドが、ファセットとして最適です。 |
+| `searchable` |フィールドをフルテキスト検索可能としてマークします。 |
 
-Azure Search のインデックス属性の詳細については、[このページ](https://docs.microsoft.com/rest/api/searchservice/Create-Index)を参照してください。
 
 ## <a name="storage-implications"></a>ストレージへの影響
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4b61b661d9da0748bc354b8defa4e6d67a047a2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7e61207ea23b9b9560668b58b33e3f32f5f70ab2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920483"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083936"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -218,7 +218,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 オンプレミスのアプリケーションとクラウドでホストされるアプリケーションの条件付きアクセス ポリシーを準備します。 ユーザーがワークプレースに参加しているデバイスを持っている場合、詳しくは「[Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定](../active-directory-device-registration-on-premises-setup.md)」をご覧ください。
 
 
-## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>ステージ 3: 可視性の構築と管理者アクティビティのフル コントロールの実施
+## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>ステージ 3:可視性の構築と管理者アクティビティのフル コントロールの実施
 
 ![ステージ 3 管理者アクティビティの制御](./media/directory-admin-roles-secure/stage-three.png)
 

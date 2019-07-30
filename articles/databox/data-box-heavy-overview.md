@@ -5,28 +5,27 @@ services: databox
 documentationcenter: NA
 author: alkohli
 ms.service: databox
-ms.subservice: pod
+ms.subservice: heavy
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f71d9b4400041db50cb3e24940e922acde55edc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991683"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592311"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>Azure Data Box Heavy とは (プレビュー)
+# <a name="what-is-azure-data-box-heavy"></a>Azure Data Box Heavy とは
 
 Azure Data Box Heavy では、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に送信できます。 1 PB のストレージ容量を持つ Data Box Heavy デバイスがお客様に出荷され、お客様がこのデバイスにデータを入力して Microsoft に返送することによって、データが Azure に転送されます。 デバイスは堅牢な筐体で保護され、転送中のデータはセキュリティで保護されます。
 
-Data Box Heavy は現在、プレビュー段階です。 Azure portal からデバイスをリクエストするには、サインアップしてください。 データセンターでデバイスを受け取ったら、ローカル Web UI を使用して設定します。 データをサーバーからデバイスにコピーし、デバイスを Azure に返送します。 Azure データセンターで、お客様のデータがお客様の Azure Storage アカウントにアップロードされます。 お客様は Azure portal でエンドツーエンドのプロセス全体を追跡できます。
+データセンターでデバイスを受け取ったら、ローカル Web UI を使用して設定します。 データをサーバーからデバイスにコピーし、デバイスを Azure に返送します。 Azure データセンターで、お客様のデータがお客様の Azure Storage アカウントにアップロードされます。 お客様は Azure portal でエンドツーエンドのプロセス全体を追跡できます。
 
 
 > [!IMPORTANT]
-> - Data Box Heavy はプレビュー段階です。 このソリューションを展開する前に、[プレビューに関する Azure のサービス利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-> - デバイスを要求するには、[Preview portal](https://aka.ms/azuredatabox) でサインアップします。
-> - プレビュー期間中、Data Box Heavy は、米国および欧州連合のお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](#region-availability)」をご覧ください。
+> - デバイスを要求するには、[Azure portal](https://portal.azure.com) でサインアップします。
+
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -62,14 +61,14 @@ Data Box Heavy は、ネットワークにほとんどまたはまったく影�
 
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
-| Weight                                                  | 最大 500 ポンド                |
+| Weight                                                  | 最大 500 ポンド <br>輸送用ロッキング ホイール上のデバイス|
 | Dimensions                                              | 幅:26 インチ 高さ:28 インチ 長さ:48 インチ |
-| ラック スペース                                              | ラック マウント不可|
-| 必要なケーブル                                         | 4 X 接地 120 V/10 A 電源コード (NEMA 5-15) 付属 <br> デバイスは最大 240 V 電源をサポートし、C-13 電源レセプタクルを備える <br> [Mellanox MCX314 A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) と互換性のあるネットワーク ケーブルを使用  |
-|累乗                                                    | 両方のデバイス ノードで共有される 4 基の内蔵電源装置 (PSU)|
+| ラック スペース                                              | ラックマウント不可|
+| 必要なケーブル                                         | 接地 120 V、10 A 電源コード (NEMA 5-15) 付属 x 4 <br> デバイスは最大 240 V 電源をサポートし、C-13 電源レセプタクルを備える <br> [Mellanox MCX314 A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) と互換性のあるネットワーク ケーブルを使用  |
+| 累乗                                                    | 両方のデバイス ノードで共有される 4 基の内蔵電源装置 (PSU) <br> 1,200 ワット定格消費電力|
 | ストレージの容量                                        | 最大 1 PB (ロー)、各 14 TB のディスク 70 台 <br> 使用可能な容量は 770 TB|
-|ノードの数                                          | デバイスごとに 2 つの独立したノード (各 500 TB) |
-| ノードあたりのネットワーク インターフェイス数                             | ノードあたり 4 つのネットワーク インターフェイス <br> MGMT、DATA3 <ul><li> 2 X 1 GbE インターフェイス </li><li> MGMT は管理用、ユーザー構成不可、初期セットアップに使用 </li><li> DATA3 はユーザー構成可能なデータ インターフェイス、既定では動的ホスト構成プロトコル (DHCP)</li><li>1 GbE ネットワーク インターフェイスは 10 GbE インターフェイスとしての構成も可能</li></ul>DATA1、DATA2 データ インターフェイス <ul><li>2 X 40 GbE インターフェイス </li><li> DHCP (既定) または静的でユーザー構成可能なデータ インターフェイス</li>|
+| ノードの数                                          | デバイスごとに 2 つの独立したノード (各 500 TB) |
+| ノードあたりのネットワーク インターフェイス数                             | ノードあたり 4 つのネットワーク インターフェイス <br><br> MGMT、DATA3 <ul><li> 2 X 1 GbE インターフェイス </li><li> MGMT は管理および初期セットアップ用、ユーザー構成不可 </li><li> DATA3 はユーザー構成可能であり、既定では動的ホスト構成プロトコル (DHCP)</li><li>1 GbE ネットワーク インターフェイスは 10 GbE インターフェイスとしての構成も可能</li></ul>DATA1、DATA2 データ インターフェイス <ul><li>2 X 40 GbE インターフェイス </li><li> ユーザー構成可能 (既定値の DHCP の場合)、または静的</li></ul>|
 
 
 ## <a name="components"></a>コンポーネント
@@ -115,25 +114,14 @@ Data Box Heavy の提供状況に関するリージョン別の最新情報に�
 
 ## <a name="sign-up"></a>サインアップ
 
-Data Box Heavy はプレビュー段階であり、サインアップする必要があります。 Data Box Heavy にサインアップするには、次の手順を実行します。
+Data Box Heavy にサインアップするには、次の手順を実行します。
 
-1. Azure portal (https://aka.ms/azuredatabox) にサインインします。
+1. Azure portal (https://portal.azure.com ) にサインインします。
 2. **[+ リソースの作成]** をクリックして新しいリソースを作成します。 **Azure Data Box** を検索します。 **Azure Data Box** サービスを選択します。
-
-    <!--![The Data Box Heavy sign up 1]()-->
-
 3. **Create** をクリックしてください。
-
-    <!--![The Data Box Heavy sign up 2]()-->
-
-4. Data Box Heavy プレビューに使用するサブスクリプションを選択します。 Data Box Heavy リソースをデプロイするリージョンを選択します。 **[Data Box Heavy]** オプションで、 **[サインアップ]** をクリックします。
-
-   <!--![The Data Box Heavy sign up 3]()-->
-
+4. Data Box Heavy に使用するサブスクリプションを選択します。 Data Box Heavy リソースをデプロイするリージョンを選択します。 **[Data Box Heavy]** オプションで、 **[サインアップ]** をクリックします。
 5. データ所在国/地域、時間枠、ターゲットの Azure サービス (データ転送、ネットワーク帯域幅、データ転送頻度) に関する質問に回答します。 プライバシーと利用規約を確認し、[Microsoft はお客様の電子メール アドレスを使用してお客様にご連絡いたします] のチェックボックスを選択します。
 
-    <!--![The Data Box Heavy sign up 4]()-->
-
-サインアップしてプレビューが有効になると、Data Box Heavy を注文できます。
+サインアップすると、Data Box Heavy を注文できます。
 
     

@@ -6,14 +6,14 @@ manager: vicenterivera
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5dc86aff7324b79f2c1b7a14b349337fc26a1901
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 343635db03273888fe1bd3747dfbe2502a23bff9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244311"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561458"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Unity で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -120,12 +120,8 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 [Start](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) メソッドの詳細を確認してください。
 
 ```csharp
-#if UNITY_IOS
-    this.arkitSession = UnityARSessionNativeInterface.GetARSessionNativeInterface();
-    this.cloudSession.Session = this.arkitSession.GetNativeSessionPtr();
-#elif UNITY_ANDROID
-    this.nativeSession = GoogleARCoreInternal.ARCoreAndroidLifecycleManager.Instance.NativeSession;
-    this.cloudSession.Session = this.nativeSession.SessionHandle;
+#if UNITY_ANDROID || UNITY_IOS
+    this.cloudSession.Session = aRSession.subsystem.nativePtr.GetPlatformPointer();
 #elif UNITY_WSA || WINDOWS_UWP
     // No need to set a native session pointer for HoloLens.
 #else
@@ -140,21 +136,19 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 [ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) メソッドの詳細を確認してください。
 
 ```csharp
-#if UNITY_ANDROID
-    long latestFrameTimeStamp = this.nativeSession.FrameApi.GetTimestamp();
-    bool newFrameToProcess = latestFrameTimeStamp > this.lastFrameProcessedTimeStamp;
-    if (newFrameToProcess)
+#if UNITY_ANDROID || UNITY_IOS
+    XRCameraFrame xRCameraFrame;
+    if (aRCameraManager.subsystem.TryGetLatestFrame(cameraParams, out xRCameraFrame))
     {
-        this.cloudSession.ProcessFrame(this.nativeSession.FrameHandle);
-        this.lastFrameProcessedTimeStamp = latestFrameTimeStamp;
-    }
-#endif
-#if UNITY_IOS
-    UnityARSessionNativeInterface.ARFrameUpdatedEvent += UnityARSessionNativeInterface_ARFrameUpdatedEvent;
+        long latestFrameTimeStamp = xRCameraFrame.timestampNs;
+        
+        bool newFrameToProcess = latestFrameTimeStamp > lastFrameProcessedTimeStamp;
 
-    void UnityARSessionNativeInterface_ARFrameUpdatedEvent(UnityARCamera camera)
-    {
-        this.cloudSession.ProcessFrame(this.arkitSession.GetNativeFramePtr());
+        if (newFrameToProcess)
+        {
+            session.ProcessFrame(xRCameraFrame.nativePtr.GetPlatformPointer());
+            lastFrameProcessedTimeStamp = latestFrameTimeStamp;
+        }
     }
 #endif
 ```
@@ -180,27 +174,12 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 ```csharp
     // Create a local anchor, perhaps by hit-testing and spawning an object within the scene
     Vector3 hitPosition = new Vector3();
-#if UNITY_IOS
-    var screenPosition = Camera.main.ScreenToViewportPoint(new Vector3(0.5f, 0.5f));
-    ARPoint point = new ARPoint
+#if UNITY_ANDROID || UNITY_IOS
+    List<ARRaycastHit> aRRaycastHits = new List<ARRaycastHit>();
+    if(arRaycastManager.Raycast(touch.position, aRRaycastHits) && aRRaycastHits.Count > 0)
     {
-        x = screenPosition.x,
-        y = screenPosition.y
-    };
-    var hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface().HitTest(point, ARHitTestResultType.ARHitTestResultTypeEstimatedHorizontalPlane | ARHitTestResultType.ARHitTestResultTypeExistingPlaneUsingExtent);
-    if (hitResults.Count > 0)
-    {
-        // The hitTest method sorts the resulting list by increasing distance from the camera
-        // The first hit result will usually be the most relevant when responding to user input
-        ARHitTestResult hitResult = hitResults[0];
-        hitPosition = UnityARMatrixOps.GetPosition(hitResult.worldTransform);
-    }
-#elif UNITY_ANDROID
-    TrackableHit hit;
-    TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon | TrackableHitFlags.FeaturePointWithSurfaceNormal;
-    if (Frame.Raycast(0.5f, 0.5f, raycastFilter, out hit))
-    {
-        hitPosition = hit.Pose.position;
+        ARRaycastHit hit = aRRaycastHits[0];
+        hitPosition = hit.pose.position;
     }
 #elif WINDOWS_UWP || UNITY_WSA
     RaycastHit hit;

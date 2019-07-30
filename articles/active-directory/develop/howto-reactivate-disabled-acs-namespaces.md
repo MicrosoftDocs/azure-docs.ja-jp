@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe1517cce8a1f9b1024085340ffb927b282f0fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540280"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482703"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
 
@@ -90,7 +90,7 @@ Microsoft では、2019 年 1 月 21 日より、新しい延長要請を受け�
 
 ### <a name="to-request-an-extension"></a>延長を要請するには
 
-1. Azure portal にログインし、[新しいサポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を作成します。
+1. Azure portal にサインインし、[新しいサポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を作成します。
 1. 次の例に示すように、新しいサポート リクエスト フォームに入力します。
 
     | サポート リクエストのフィールド | 値 |
@@ -102,7 +102,7 @@ Microsoft では、2019 年 1 月 21 日より、新しい延長要請を受け�
     | **問題の種類** | `ACS to SAS Migration` |
     | **[件名]** | 問題を説明します |
 
-   ![新しいテクニカル サポート リクエスト](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![新しいテクニカル サポート リクエストの例](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 

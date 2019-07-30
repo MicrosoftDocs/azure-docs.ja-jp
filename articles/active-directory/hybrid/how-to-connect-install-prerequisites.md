@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f7219578932a259f48b0109d433dcba9ff28d1f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b0392a40ef948d96e613da9127629f52b02deb97
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508032"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655815"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -48,6 +48,9 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * [Active Directory のごみ箱を有効にする](how-to-connect-sync-recycle-bin.md)ことをお勧めします。
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect サーバー
+>[!IMPORTANT]
+>Azure AD Connect サーバーは、重要な ID データを格納するため、[Active Directory 管理階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)の説明に従い、階層 0 のコンポーネントとして取り扱う必要があります。
+
 * Small Business Server または 2019 より前の Windows Server Essentials には、Azure AD Connect をインストールできません (Windows Server Essentials 2019 はサポートされます)。 サーバーは Windows Server Standard 以上を使用する必要があります。
 * Azure AD Connect をドメイン コントローラーにインストールすることはお勧めできません。これは、セキュリティの慣例上の理由に加え、設定に通常よりも厳しい制限があるために、Azure AD Connect を正しくインストールできないためです。
 * Azure AD Connect サーバーには、完全な GUI がインストールされている必要があります。 サーバー コアにインストールすることは**できません**。
@@ -63,7 +66,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 [Windows リモート管理](#windows-remote-management) を有効にする必要があります。
 * Active Directory フェデレーション サービスがデプロイされている場合は、 [SSL 証明書](#ssl-certificate-requirements)が必要です。
 * Active Directory フェデレーション サービス (AD FS) がデプロイされている場合は、 [名前解決](#name-resolution-for-federation-servers)を構成する必要があります。
-* 全体管理者が、MFA を有効にしている場合は、URL**https://secure.aadcdn.microsoftonline-p.com** は信頼済みサイトの一覧になければなりません。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
+* 全体管理者が、MFA を有効にしている場合は、URL **https://secure.aadcdn.microsoftonline-p.com** は信頼済みサイトの一覧になければなりません。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
 * Microsoft では、Azure AD Connect サーバーを強化して、お客様の IT 環境に含まれるこの重要なコンポーネントに対する、セキュリティ攻撃の対象領域を縮小することをお勧めしています。  以下の推奨事項に従うと、お客様の組織に対するセキュリティ リスクが低下します。
 
 * ドメイン参加しているサーバー上に Azure AD Connect をデプロイし、管理アクセス権を、ドメイン管理者やその他の厳格に管理されたセキュリティ グループに制限します。
@@ -187,7 +190,7 @@ Azure AD Connect を使用して Active Directory フェデレーション サ�
 * 証明書の ID は、フェデレーション サービス名 (sts.contoso.com など) と一致する必要があります。
   * ID は、dNSName タイプのサブジェクト代替名 (SAN) 拡張、または SAN エントリがない場合は共通名として指定されたサブジェクト名のどちらかになります。  
   * 複数の SAN エントリを証明書に表示できますが、そのうちの 1 つはフェデレーション サービス名に一致させます。
-  * 社内参加を使用する場合は、値 **enterpriseregistration**  の後に組織のユーザー プリンシパル名 (UPN) サフィックス (**enterpriseregistration.contoso.com** など) が続く追加の SAN が必要です。
+  * 社内参加を使用する場合は、値 **enterpriseregistration** の後に組織のユーザー プリンシパル名 (UPN) サフィックス (**enterpriseregistration.contoso.com** など) が続く追加の SAN が必要です。
 * CryptoAPI Next Generation (CNG) キーとキー記憶域プロバイダーに基づく証明書はサポートされません。 つまり、KSP (キー記憶域プロバイダー) ではなく CSP (暗号化サービス プロバイダー) に基づく証明書を使用する必要があります。
 * ワイルドカード証明書がサポートされます。
 

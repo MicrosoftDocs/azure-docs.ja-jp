@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 31403a11e8989cee6a1c166879a0b2f594892704
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e9469e012f2e6b54d9bb84858a9dfc970873b4c
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357628"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476802"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する
 
@@ -39,7 +39,7 @@ ms.locfileid: "66357628"
 
 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。 5 つ目のコード ブロックでは、シンボル レイヤーが作成され、マップに追加されます。
 
-6 つ目のコード ブロックでは、[サービス モジュール](https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js)の一部である Azure Maps ルーティング サービスのクエリが実行されます。 RouteURL の [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) メソッドは、開始点と終了点の間のルートを取得するために使用されます。 `geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。 次に、応答はマップ上にルートとしてレンダリングされます。 マップに線を追加する方法については、[マップへの線の追加](./map-add-shape.md#addALine)に関するページを参照してください。
+6 つ目のコード ブロックでは、[サービス モジュール](how-to-use-services-module.md)の一部である Azure Maps ルーティング サービスのクエリが実行されます。 RouteURL の [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) メソッドは、開始点と終了点の間のルートを取得するために使用されます。 `geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。 次に、応答はマップ上にルートとしてレンダリングされます。 マップに線を追加する方法については、[マップへの線の追加](./map-add-shape.md#addALine)に関するページを参照してください。
 
 最後のコード ブロックでは、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップの境界が設定されます。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66249050"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133732"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
@@ -45,7 +45,7 @@ Standard SSD では、スループットが 256 KiB 以下の I/O 操作は、�
 
 ## <a name="standard-hdd"></a>Standard HDD
 
-Azure Standard HDD では、待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポートが提供されます。 Standard Storage では、データはハード ディスク ドライブ (HDD) に格納されます。 Standard HDD ディスクの待機時間、IOPS、スループットは、SSD ベースのディスクと比較してより大きく異なる可能性があります。 VM を使用するとき、開発/テスト シナリオや重要度の低いワークロードには Standard HDD ディスクを使用できます。 Standard HDD はすべての Azure リージョンで使用可能であり、すべての Azure VM で使用できます。
+Azure Standard HDD では、待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポートが提供されます。 Standard Storage では、データはハード ディスク ドライブ (HDD) に格納されます。 Standard HDD ディスクの待機時間、IOPS、スループットは、SSD ベースのディスクと比較してより大きく異なる可能性があります。 Standard HDD ディスクは、ほとんどの IO 操作で 10 ミリ秒未満の書き込み待機時間と 20 ミリ秒未満の読み取り待機時間を実現するように設計されていますが、実際のパフォーマンスは IO サイズやワークロードのパターンによって異なる可能性があります。 VM を使用するとき、開発/テスト シナリオや重要度の低いワークロードには Standard HDD ディスクを使用できます。 Standard HDD はすべての Azure リージョンで使用可能であり、すべての Azure VM で使用できます。
 
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

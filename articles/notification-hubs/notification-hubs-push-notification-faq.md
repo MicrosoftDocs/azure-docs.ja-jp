@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 579d50a95ad0e478f401b7db012e7c743ce58491
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: a434101a806a810218927cbf0bc24fa0d22c5628
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730456"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488644"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -69,7 +69,7 @@ Basic と Standard の Notification Hubs レベルでは、適切に構成され
 
 ### <a name="which-client-platforms-do-you-support"></a>どのクライアント プラットフォームをサポートしていますか。
 
-プッシュ通知がサポートされているのは、[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China (Baidu 経由)](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) と Android)、および [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) です。 詳細については、[Notification Hubs の使用チュートリアル]に関するページを参照してください。
+プッシュ通知がサポートされているのは、[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Android China (Baidu 経由)](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) と Android)、および [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) です。 詳細については、[Notification Hubs の使用チュートリアル]に関するページを参照してください。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>テキスト メッセージ、電子メール、または Web 通知をサポートしていますか。
 
@@ -85,7 +85,7 @@ Notification Hubs は、主にモバイル アプリに通知を送信するこ�
 
 サポートされているデバイス数の詳細については、「[Notification Hubs の価格]」ページを参照してください。
 
-1,000 万台を超える登録済みデバイスのサポートが必要な場合は、直接[当社にお問い合わせ](https://azure.microsoft.com/overview/contact-us/)いただければ、ソリューションの拡張をお手伝いいたします。
+1000 万を超える登録デバイスのサポートが必要な場合、複数のハブでデバイスをパーティション分割する必要があります。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>送信できるプッシュ通知の数を教えてください。
 

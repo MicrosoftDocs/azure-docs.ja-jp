@@ -3,16 +3,15 @@ title: Azure Data Factory の Mapping Data Flow のスキーマの誤差
 description: スキーマの誤差がある Azure Data Factory 内での回復力のあるデータ フローの作成
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262169"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722886"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapping Data Flow のスキーマの誤差
 

@@ -2,18 +2,18 @@
 title: Kubernetes on Azure のチュートリアル - コンテナー レジストリを作成する
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry インスタンスを作成し、サンプルのアプリケーション コンテナー イメージをアップロードします。
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 1bd41dc464c251a2e7dab3087f3feffb15db785f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5089326af1d7f6e057667cd916f35de92bf517ef
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304410"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614239"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル:Azure Container Registry をデプロイして使用する
 
@@ -110,7 +110,7 @@ ACR へのイメージのプッシュが完了するまでに、数分かかる�
 
 ## <a name="list-images-in-registry"></a>レジストリ内のイメージの一覧表示
 
-ACR インスタンスにプッシュされたイメージの一覧を返すには、[az acr repository list][az-acr-repository-list] コマンドを使用します。 実際の `<acrName>` を次のように指定します。
+ご利用の ACR インスタンスにプッシュされたイメージの一覧を返すには、[az acr repository list][az-acr-repository-list] コマンドを使用します。 実際の `<acrName>` を次のように指定します。
 
 ```azurecli
 az acr repository list --name <acrName> --output table

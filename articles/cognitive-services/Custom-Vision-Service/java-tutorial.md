@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 01052e218d2c7017ca6f29126f7232aeee16705a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 62f60e0a143bee7e8392792719b30aca1d629880
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479548"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606854"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート:Custom Vision SDK for Java を使用して画像分類プロジェクトを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "58479548"
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
 
-Custom Vision を使用する Java アプリを作成するには、Custom Vision maven パッケージが必要となります。 これらは、これからダウンロードするサンプル プロジェクトに含まれていますが、次のページから個別にアクセスすることもできます。
+Custom Vision を使用する Java アプリを作成するには、Custom Vision maven パッケージが必要となります。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
 
 Maven Central Repository から Custom Vision SDK をインストールできます。
 
@@ -51,7 +51,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="understand-the-code"></a>コードの理解
 
-Java IDE で `Vision/CustomVision` プロジェクトを読み込み、_CustomVisionSamples.java_ ファイルを開きます。 **runSample** メソッドを探して、**ObjectDetection_Sample** メソッド呼び出しをコメントにしてください。このメソッドは物体検出のシナリオを実行するものであり、このガイドの対象外となります。 この例の主な機能は、**ImageClassification_Sample** メソッドに実装されます。このメソッドの定義に移動し、コードを詳しく調べてみましょう。
+Java IDE で `Vision/CustomVision` プロジェクトを読み込み、_CustomVisionSamples.java_ ファイルを開きます。 **runSample** メソッドを探して、**ObjectDetection_Sample** メソッド呼び出しをコメント アウトしてください&mdash;このメソッドで物体検出のシナリオが実行されますが、このガイドの対象外となります。 この例の主な機能は、**ImageClassification_Sample** メソッドに実装されます。このメソッドの定義に移動し、コードを詳しく調べてみましょう。
 
 ### <a name="create-a-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 

@@ -59,7 +59,7 @@
       href: virtual-network-ip-addresses-overview-arm.md
     - name: パブリック IP プレフィックス
       href: public-ip-address-prefix.md
-    - name: Azure VNET の IPv6
+    - name: Azure VNet の IPv6
       href: ipv6-overview.md
     - name: DDoS 保護
       href: ddos-protection-overview.md
@@ -91,7 +91,7 @@
           href: virtual-network-tcpip-performance-tuning.md
     - name: デプロイ
       items:
-        - name: Azure VNET の IPv6
+        - name: VNet の IPv6 - Basic Load Balancer
           items:
             - name: Azure PowerShell
               href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
@@ -99,6 +99,14 @@
               href: virtual-network-ipv4-ipv6-dual-stack-cli.md
             - name: Resource Manager テンプレート
               href: ipv6-configure-template-json.md
+        - name: VNet の IPv6 - Standard Load Balancer
+          items:
+            - name: Azure PowerShell
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+            - name: Azure CLI
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+            - name: Resource Manager テンプレート
+              href: ipv6-configure-standard-load-balancer-template-json.md
         - name: ネットワーク セキュリティ グループ
           items:
             - name: Azure PowerShell
@@ -363,6 +371,8 @@
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: ネットワークのフォーラム
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: ネットワークに関するフィードバック
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/virtual-network'
     - name: 料金計算ツール

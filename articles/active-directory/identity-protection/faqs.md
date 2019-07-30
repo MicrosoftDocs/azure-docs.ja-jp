@@ -2,31 +2,25 @@
 title: Azure Active Directory Identity Protection の FAQ | Microsoft Docs
 description: Azure AD Identity Protection についてよく寄せられる質問
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bea455371938ccc4d512bdb7ffddd72eb9508da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60454511"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334020"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection の FAQ
 
 この記事では、Azure Active Directory (Azure AD) Identity Protection に関してよく寄せられる質問の回答を示します。 詳細については、「[Azure Active Directory Identity Protection](../active-directory-identityprotection.md)」をご覧ください。 
-
 
 ## <a name="why-do-some-risk-events-have-closed-system-status"></a>一部のリスク イベントの状態が "クローズ (システム)" になっているのはなぜですか。
 

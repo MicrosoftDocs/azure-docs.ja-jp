@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 07/01/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: be9edd0497cca894e4daa87f97b037065379127f
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 836b6bb76ff608fed0f34e40fe450d593fec540a
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398286"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514161"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>リージョン間での Azure VM のフェールオーバーと再保護
 
@@ -46,7 +46,7 @@ ms.locfileid: "66398286"
    * **最後に処理があった時点**:仮想マシンを、Site Recovery サービスによって処理された最新の復旧ポイントに戻します
    * **カスタム**:特定の復旧ポイントにフェールオーバーします。 このオプションは、テスト フェールオーバーを実行するときに役立ちます。
 
-3. Site Recovery でフェールオーバーをトリガーする前にそのソース VM をシャットダウンする場合は、 **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 Site Recovery では、フェールオーバー後にソースがクリーンアップされません。
+3. Site Recovery でフェールオーバーをトリガーする前にそのソース VM をシャットダウンする場合は、 **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 シャットダウンはデータ損失を防止するのに役立ちます。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 Site Recovery では、フェールオーバー後にソースがクリーンアップされません。
 
 4. **[ジョブ]** ページで、フェールオーバーの進行状況を確認します。
 

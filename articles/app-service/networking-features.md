@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: db29d0761084e32d601dc9c6d94082cd09bc5d18
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66498553"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655461"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -136,7 +136,7 @@ App Service のハイブリッド接続機能は、Azure Relay のハイブリ�
 
 この機能を使用すると、受信ファイアウォールに穴を開けることなくオンプレミス リソースにアクセスできるため、開発者から高い人気を得ています。 App Service の他の送信ネットワーク機能は、Azure Virtual Networking とのつながりが非常に強くなっています。 ハイブリッド接続には VNet 経由という依存性がないため、より幅広いネットワークのニーズ向けに使用できます。 ただし、App Service のハイブリッド接続機能では、この接続上での操作は把握されないことに注意してください。 つまり、この接続は、メインフレーム上にあるデータベースや Web サービス、任意の TCP ソケットへのアクセスに使用できるということです。 本質的には、この機能は TCP パケットをトンネリングするものです。 
 
-ハイブリッド接続は、開発でよく利用されているだけでなく、非常に多くの運用アプリケーションでも使用されています。 Web サービスやデータベースへのアクセスには適していますが、非常に多くの接続が作成されるような状況には向いていません。 
+ハイブリッド接続は、開発でよく利用されているだけでなく、非常に多くの運用アプリケーションでも使用されています。 Web サービスやデータベースへのアクセスには適していますが、非常に多くの接続を作成するような状況には向いていません。 
 
 ### <a name="gateway-required-vnet-integration"></a>ゲートウェイが必要な VNet 統合 
 
@@ -223,7 +223,7 @@ ASE があれば、専用のアプリを隔離したまま最適にホストで�
 別個のフロントエンド アプリで VNet 統合を使用し、サブネットで API アプリからサービス エンドポイントを使用することで、複数のフロントエンド アプリで同じ API アプリを使用できます。  
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#bind-your-ssl-certificate
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl
 [iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections

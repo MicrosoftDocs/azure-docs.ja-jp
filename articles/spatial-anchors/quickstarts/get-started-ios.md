@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 56360238db8632e74a95c057a7fe643b5cea3151
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996647"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206831"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>クイック スタート:Azure Spatial Anchors を使用する iOS アプリを Swift または Objective-C で作成する
 
@@ -56,13 +56,13 @@ cd ./iOS/Swift/
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-`iOS/Objective-C/` に移動します。
+[https://test-cors.org](`iOS/Objective-C/`) に移動します。
 
 ```bash
 cd ./iOS/Objective-C/
 ```
 
-***
+---
 
 `pod install --repo-update` を実行して、プロジェクトの CocoaPods をインストールします。
 
@@ -80,7 +80,7 @@ open ./SampleSwift.xcworkspace
 open ./SampleObjC.xcworkspace
 ```
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>アカウント識別子とキーを構成する
 
@@ -102,7 +102,7 @@ open ./SampleObjC.xcworkspace
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスにデプロイする
 
@@ -117,7 +117,7 @@ iOS デバイスを Mac に接続し、**アクティブ スキーム**を iOS �
 > [!NOTE]
 > `library not found for -lPods-SampleObjC` エラーが表示される場合は、`.xcworkspace` ではなく `.xcodeproj` ファイルを開いた可能性があります。 `.xcworkspace` を開き、もう一度試してください。
 
-Xcode で、**[Stop]\(停止\)** を押してアプリを停止します。
+Xcode で、 **[Stop]\(停止\)** を押してアプリを停止します。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

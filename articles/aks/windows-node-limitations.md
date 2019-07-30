@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) での Windows Server ノード プールの制限事項
 description: Windows Server ノード プールとアプリケーション ワークロードを Azure Kubernetes Service (AKS) 内で実行するときの既知の制限事項について説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: 3d249271995d96307722dadf6b3e012e63565e6a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 05/31/2019
+ms.author: mlearned
+ms.openlocfilehash: 0d79b4d76249bd4a79f8adbd5df0cfa1ae133760
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956265"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613731"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -21,13 +21,14 @@ Azure Kubernetes Service (AKS) では、Windows Server をゲスト OS として
 この記事では、AKS 内の Windows Server ノードの制限事項および OS の概念について説明します。 Windows Server 用のノード プールは現在プレビューの段階です。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスかつオプトインです。 プレビューは、コミュニティからフィードバックやバグを収集するために提供されます。 ただし、これらは Azure テクニカル サポートではサポートされません。 クラスターを作成するか、または既存のクラスターにこれらの機能を追加した場合、そのクラスターは、この機能がプレビューでなくなり、一般提供 (GA) となるまでサポートされません。
+> AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
-> プレビュー機能に関する問題が発生した場合は、バグ タイトルにプレビュー機能の名前を使用して、[AKS GitHub リポジトリで問題をオープンします][aks-github]。
+> * [AKS のサポート ポリシー][aks-support-policies]
+> * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Kubernetes での Windows Server の制限事項
 
-Windows Server コンテナーは、Windows ベースのコンテナー ホスト上で実行する必要があります。 AKS で Windows Server コンテナーを実行するには、ゲスト OS として [Windows Server を実行するノード プールを作成][windows-node-cli]します。 Window Server ノード プールのサポートには、Kubernetes プロジェクトの上流 Windows Server の一部であるいくつかの制限が含まれます。 これらの制限は、AKS 固有ではありません。 Kubernetes での Windows Server 向けのこのアップストリーム サポートについて詳しくは、[Kubernetes での Windows Server コンテナーの制限事項][upstream-limitations]に関するページを参照してください。
+Windows Server コンテナーは、Windows ベースのコンテナー ホスト上で実行する必要があります。 AKS で Windows Server コンテナーを実行するには、ゲスト OS として [Windows Server を実行するノード プールを作成][windows-node-cli]します。 Window Server ノード プールのサポートには、Kubernetes プロジェクトの上流 Windows Server の一部であるいくつかの制限が含まれます。 これらの制限は、AKS 固有ではありません。 Kubernetes での Windows Server 向けのこのアップストリーム サポートについて詳しくは、[Kubernetes での Windows Server コンテナーの制限事項](https://docs.microsoft.com/azure/aks/windows-node-limitations)に関するページを参照してください。
 
 Kubernetes での Windows Server コンテナーに対する次のアップストリーム制限は、AKS に関連しています。
 
@@ -57,6 +58,8 @@ Kubernetes での Windows Server コンテナーに対する次のアップス�
 - ネットワーク ポリシーやクラスター オートスケーラーなどの AKS のプレビュー機能は Windows Server ノードに対して動作が保証されていません。
 - イングレス コントローラーは、NodeSelector を使用して Linux ノード上でのみスケジュールする必要があります。
 - Azure Dev Spaces は現在、Linux ベースのノード プールに対してのみ使用できます。
+- Windows サーバー ノードが Active Directory ドメインに参加していない場合のグループ管理サービス アカウント (gMSA) のサポートは、現在、AKS では使用できません。
+    - この機能を使用する必要がある場合は、オープン ソースのアップストリーム [aks-engine][aks-engine] プロジェクトで、現在、gMSA サポートが提供されています。
 
 ## <a name="os-concepts-that-are-different"></a>異なる OS の概念
 
@@ -74,11 +77,14 @@ AKS で Windows Server コンテナーの使用を開始するには、[AKS で 
 
 <!-- LINKS - external -->
 [upstream-limitations]: https://kubernetes.io/docs/setup/windows/#limitations
-[aks-github]: https://github.com/azure/aks/issues]
 [kubernetes]: https://kubernetes.io
+[aks-engine]: https://github.com/azure/aks-engine
 
 <!-- LINKS - internal -->
 [azure-network-models]: concepts-network.md#azure-virtual-networks
 [configure-azure-cni]: configure-azure-cni.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [windows-node-cli]: windows-container-cli.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md
+[azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat

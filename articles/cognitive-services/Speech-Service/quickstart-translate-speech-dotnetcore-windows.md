@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fa516c5050bfd53add761bea56c74a58057263c7
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8ab76a786f11677f5d8f0715b257bd2fb04e50bf
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465682"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602808"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>クイック スタート:Speech SDK for .NET Core を使用して音声を翻訳する
 
-クイック スタートは[音声変換](quickstart-csharp-dotnet-windows.md)と[テキスト読み上げ](quickstart-text-to-speech-dotnet-windows.md)にも使用できます。
+クイック スタートは[音声変換](quickstart-csharp-dotnet-windows.md)と[テキスト読み上げ](quickstart-text-to-speech-dotnetcore.md)にも使用できます。
 
 このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する、単純な .NET Core アプリケーションを作成します。 このアプリケーションは、64 ビット Windows 上で実行するように設計されており、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 を使用してビルドされています。
 
@@ -51,11 +51,11 @@ ms.locfileid: "65465682"
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-1. アプリケーションをビルドします。 メニュー バーから、**[ビルド]** > **[ソリューションのビルド]** を選択します。 コードはエラーなくコンパイルされるはずです。
+1. アプリケーションをビルドします。 メニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 コードはエラーなくコンパイルされるはずです。
 
     ![[ソリューションのビルド] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-dotnetcore-windows-05-build.png "成功したビルド")
 
-1. アプリケーションを起動します。 メニュー バーから、**[デバッグ]** > **[デバッグの開始]** を選択するか、**F5** キーを押します。
+1. アプリケーションを起動します。 メニュー バーから、 **[デバッグ]**  >  **[デバッグの開始]** を選択するか、**F5** キーを押します。
 
     ![[デバッグの開始] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "アプリのデバッグの開始")
 

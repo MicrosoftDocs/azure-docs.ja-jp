@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/18/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1563a023f397999deb5c6abd40843d6a376b0492
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 7fcc804db66430598e72e9ebf31a8837eda1cca6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576124"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67204604"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD アクセス レビューとは
 
@@ -58,19 +58,32 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 | --- | --- | --- | --- |
 | セキュリティ グループ メンバー</br>Office グループ メンバー | 指定されたレビュー担当者</br>グループ所有者</br>自己レビュー | Azure AD アクセス レビュー</br>Azure AD グループ | アクセス パネル |
 | 接続されたアプリに割り当て | 指定されたレビュー担当者</br>自己レビュー | Azure AD アクセス レビュー</br>azure AD エンタープライズ アプリ (プレビュー) | アクセス パネル |
-| Azure AD ロール | 指定されたレビュー担当者</br>自己レビュー | Azure AD PIM | Azure ポータル |
-| Azure リソース ロール | 指定されたレビュー担当者</br>自己レビュー | Azure AD PIM | Azure ポータル |
+| Azure AD ロール | 指定されたレビュー担当者</br>自己レビュー | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure ポータル |
+| Azure リソース ロール | 指定されたレビュー担当者</br>自己レビュー | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure ポータル |
 
-## <a name="prerequisites"></a>前提条件
+## <a name="which-users-must-have-licenses"></a>ライセンスが必要なユーザー
 
-アクセス レビューを使用するには、次のいずれかのライセンスが必要です。
+アクセス レビューを操作する各ユーザーには、有料の Azure AD Premium P2 ライセンスが必要です。 たとえば、次のようになります。
 
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5 ライセンス
+- アクセス レビューを作成する管理者
+- アクセス レビューを実行するグループ所有者
+- レビュー担当者として割り当てられたユーザー
+- 自己レビューを実行するユーザー
 
-詳細については、「[方法:Azure Active Directory Premium へのサインアップ](../fundamentals/active-directory-get-started-premium.md)」または「[Enterprise Mobility + Security E5 Trial](https://aka.ms/emse5trial)」をご覧ください。
+ゲスト ユーザーに各自のアクセスのレビューを求めることもできます。 自分自身の組織のユーザーの 1 人に割り当てる有料の Azure AD Premium P2 ライセンスごとに、Azure AD 企業間 (B2B) を使用して、外部ユーザー無料利用分に従って最大 5 人までのゲスト ユーザーを招待できます。 これらのゲスト ユーザーも Azure AD Premium P2 の機能を使用できます。 詳細については、[Azure AD B2B コラボレーションのライセンス ガイダンス](../b2b/licensing-guidance.md)を参照してください。
 
-## <a name="get-started-with-access-reviews"></a>アクセス レビューでの作業の開始
+必要なライセンス数の決定に役立つ一部のシナリオ例を次に示します。
+
+| シナリオ | 計算 | 必要なライセンスの数 |
+| --- | --- | --- |
+| 管理者は、ユーザーが 500 人のグループ A のアクセス レビューを作成します。<br/>レビュー担当者として 3 人のグループ所有者を割り当てます。 | 1 管理者 + 3 グループ所有者 | 4 |
+| 管理者は、ユーザーが 500 人のグループ A のアクセス レビューを作成します。<br/>自己レビューにします。 | 1 管理者 + レビュー担当者として 500 ユーザー | 501 |
+| 管理者は、ユーザーが 5 人とゲスト ユーザーが 25 人のグループ A のアクセス レビューを作成します。<br/>自己レビューにします。 | 1 管理者 + レビュー担当者として 5 ユーザー<br/>(ゲスト ユーザーは、必須の 1:5 比率でカバーされます) | 6 |
+| 管理者は、ユーザーが 5 人とゲスト ユーザーが 28 人のグループ A のアクセス レビューを作成します。<br/>自己レビューにします。 | 1 管理者 + 5 ユーザー (自己レビュー担当者として) + 1 ユーザー (必須の 1:5 比率のゲスト ユーザー対応用) | 7 |
+
+お客様のユーザーにライセンスを割り当てる方法については、「[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)」を参照してください。
+
+## <a name="learn-about-access-reviews"></a>アクセス レビューの詳細情報
 
 アクセス レビューの作成と実行の詳細については、この短いデモをご覧ください。
 
@@ -80,29 +93,9 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 
 >[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
-## <a name="enable-access-reviews"></a>アクセス レビューを有効にする
+## <a name="license-requirements"></a>ライセンスの要件
 
-アクセス レビューを有効にするには、次の手順のようにします。
-
-1. グローバル管理者またはユーザー管理者として、アクセス レビューを使用する [Azure portal](https://portal.azure.com) にサインインします。
-
-1. **[すべてのサービス]** をクリックして、アクセス レビュー サービスを見つけます。
-
-1. **[アクセス レビュー]** をクリックします。
-
-    ![[すべてのサービス] - [アクセス レビュー]](./media/access-reviews-overview/all-services-access-reviews.png)
-
-1. ナビゲーション リストで、**[配布準備をする]** をクリックして **[アクセス レビューの配布準備]** ページを開きます。
-
-    ![アクセス レビューの配布準備](./media/access-reviews-overview/onboard-button.png)
-
-1. **[作成]** をクリックして、現在のディレクトリでアクセス レビューを有効にします。
-
-    ![アクセス レビューの配布準備](./media/access-reviews-overview/onboard-access-reviews.png)
-
-    次にアクセス レビューを開始すると、アクセス レビュー オプションが有効になります。
-
-    ![有効になったアクセス レビュー](./media/access-reviews-overview/access-reviews-enabled.png)
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="next-steps"></a>次の手順
 

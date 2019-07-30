@@ -2,17 +2,17 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) でのクラスターの分離
 description: Azure Kubernetes Service (AKS) での分離に関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 8150e184f0c7533d5a6e7e4847bf126206f5e6c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60465308"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614931"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) でのクラスターの分離に関するベスト プラクティス
 
@@ -38,7 +38,7 @@ Kubernetes では、同じクラスター内のチームとワークロードを
 
 **ベスト プラクティス ガイダンス** - 論理的な分離を使用して、チームとプロジェクトを分離します。 チームまたはアプリケーションを分離するためにデプロイする物理 AKS クラスターの数を最小限にしてみます。
 
-論理的な分離では、1 つの AKS クラスターを、複数のワークロード、チーム、環境で使用できます。 Kubernetes の[名前空間では、][k8s-namespaces]ワークロードとリソースの論理的な分離境界を形成します。
+論理的な分離では、1 つの AKS クラスターを、複数のワークロード、チーム、環境で使用できます。 Kubernetes の[名前空間][k8s-namespaces]では、ワークロードとリソースの論理的な分離境界を形成します。
 
 ![AKS での Kubernetes クラスターの論理的な分離](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
@@ -62,7 +62,7 @@ AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント�
 
 * [Kubernetes スケジューラの基本的な機能][aks-best-practices-scheduler]
 * [Kubernetes スケジューラの高度な機能][aks-best-practices-advanced-scheduler]
-* [認証と承認][aks-best-practices-identity]
+* [認証と権限承認][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 

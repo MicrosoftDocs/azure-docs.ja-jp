@@ -3,8 +3,8 @@ title: Azure AD エンタイトルメント管理 (プレビュー) での一般
 description: Azure Active Directory エンタイトルメント管理 (プレビュー) での一般的なシナリオの場合に従う必要がある、大まかな手順について説明します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/23/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f8e7709abcc97baac9bf657b9fff2110cb2e72c1
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473141"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489028"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) での一般的なシナリオ
 
@@ -123,5 +123,5 @@ ms.locfileid: "66473141"
 
 ## <a name="next-steps"></a>次の手順
 
-- [チュートリアル:最初のアクセス パッケージの作成](entitlement-management-access-package-first.md)
-- [既存のアクセス パッケージの編集および管理](entitlement-management-access-package-edit.md)
+- [チュートリアル:最初のアクセス パッケージを作成する](entitlement-management-access-package-first.md)
+- [タスクを委任する](entitlement-management-delegate.md)

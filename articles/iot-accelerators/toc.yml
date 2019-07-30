@@ -137,6 +137,8 @@
           href: overview-opc-twin.md
         - name: OPC Vault とは
           href: overview-opc-vault.md
+        - name: OPC Publisher とは
+          href: overview-opc-publisher.md
         - name: コネクテッド ファクトリとは
           href: iot-accelerators-connected-factory-features.md
     - name: クイック スタート
@@ -153,8 +155,6 @@
           items:
             - name: ダッシュボードの使用
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: OPC Publisher の利用
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: ソリューション アクセラレータの構成
               href: iot-accelerators-connected-factory-configure.md
             - name: ソリューション アクセラレータのカスタマイズ
@@ -177,6 +177,12 @@
                   href: howto-opc-vault-deploy-existing-client-server-communication.md
             - name: OPC Vault をゼロからデプロイする
               href: howto-opc-vault-deploy-scratch.md
+        - name: OPC Publisher
+          items:
+            - name: OPC Publisher の構成
+              href: howto-opc-publisher-configure.md
+            - name: OPC Publisher の実行
+              href: howto-opc-publisher-run.md
     - name: リソース
       items:
         - name: GitHub リポジトリ

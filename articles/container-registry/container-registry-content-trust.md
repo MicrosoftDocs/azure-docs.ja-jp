@@ -3,16 +3,17 @@ title: Azure Container Registry におけるコンテンツの信頼
 description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュ/プルする方法について説明します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: ca9ef32a830f56edb471256b3b9175ba0fbec51d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65069225"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356538"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
@@ -33,10 +34,10 @@ Azure Container Registry では、Docker の[コンテンツの信頼][docker-co
 
 ### <a name="signing-keys"></a>署名キー
 
-コンテンツの信頼は、一連の暗号署名キーを使って管理されます。 これらのキーは、レジストリ内の特定のリポジトリ関連付けられます。 Docker クライアントとご利用のレジストリがリポジトリ内のタグに対する信頼を管理する際に使用する署名キーには、いくつかの種類があります。 コンテンツの信頼を有効にしてコンテナー発行/消費パイプラインに統合するときは、それらのキーを慎重に管理する必要があります。 詳細については、この記事の後半にある「[キー管理](#key-management)」および Docker ドキュメントの「[Manage keys for content trust (コンテンツの信頼に使用するキーの管理)][docker-manage-keys]」を参照してください。
+コンテンツの信頼は、一連の暗号署名キーを使って管理されます。 これらのキーは、レジストリ内の特定のリポジトリ関連付けられます。 Docker クライアントとご利用のレジストリがリポジトリ内のタグに対する信頼を管理する際に使用する署名キーには、いくつかの種類があります。 コンテンツの信頼を有効にしてコンテナー発行/消費パイプラインに統合するときは、それらのキーを慎重に管理する必要があります。 詳細については、この記事の後半にある「[キー管理](#key-management)」と Docker ドキュメントの「[Manage keys for content trust][docker-manage-keys]」 (コンテンツの信頼に使用するキーの管理) を参照してください。
 
 > [!TIP]
-> これは Docker のコンテンツ信頼モデルをごく簡単に説明したものです。 コンテンツの信頼についての詳細な解説については、「[Content trust in Docker (Docker におけるコンテンツの信頼)][docker-content-trust]」を参照してください。
+> これは Docker のコンテンツ信頼モデルをごく簡単に説明したものです。 コンテンツの信頼についての詳細な解説については、「[Content trust in Docker][docker-content-trust]」 (Docker におけるコンテンツの信頼) を参照してください。
 
 ## <a name="enable-registry-content-trust"></a>レジストリのコンテンツの信頼を有効にする
 
@@ -173,13 +174,13 @@ No valid trust data for unsigned
 ~/.docker/trust/private
 ```
 
-ルート キーとリポジトリ キーをバックアップする際は、それらを圧縮してアーカイブし、安全にオフラインで (USB 記憶装置などに) 保管してください。 たとえば Bash の場合は次のようになります。
+ルート キーとリポジトリ キーをバックアップする際は、それらを圧縮してアーカイブし、安全な場所に保管してください。 たとえば Bash の場合は次のようになります。
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
 ```
 
-信頼済みのイメージをプッシュするとき、ローカルで生成されるルート キーとリポジトリ キーの他に、いくつかのキーが Azure Container Registry により生成されて格納されます。 Docker の実装によるコンテンツの信頼で用いられる各種キーに関して、管理上の詳しいガイダンスを含む詳細については、Docker のドキュメントの「[Manage keys for content trust (コンテンツの信頼に使用するキーの管理)][docker-manage-keys]」を参照してください。
+信頼済みのイメージをプッシュするとき、ローカルで生成されるルート キーとリポジトリ キーの他に、いくつかのキーが Azure Container Registry により生成されて格納されます。 Docker の実装によるコンテンツの信頼で用いられる各種キーに関して、管理上の詳しいガイダンスを含む詳細については、Docker のドキュメントの「[Manage keys for content trust][docker-manage-keys]」 (コンテンツの信頼に使用するキーの管理) を参照してください。
 
 ### <a name="lost-root-key"></a>ルート キーの紛失
 
@@ -194,7 +195,9 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 ## <a name="next-steps"></a>次の手順
 
-コンテンツの信頼の詳細については、[Docker のコンテンツの信頼][docker-content-trust]に関するページを参照してください。 この記事では要点を絞って説明しましたが、コンテンツの信頼は広範囲に及ぶテーマです。Docker のドキュメントで、さらに踏み込んだ情報を得ることができるでしょう。
+* コンテンツの信頼の詳細については、[Docker のコンテンツの信頼][docker-content-trust]に関するページを参照してください。 この記事では要点を絞って説明しましたが、コンテンツの信頼は広範囲に及ぶテーマです。Docker のドキュメントで、さらに踏み込んだ情報を得ることができるでしょう。
+
+* Docker イメージをビルドし、プッシュするとき、コンテンツの信頼を利用する例については、[Azure Pipelines](/azure/devops/pipelines/build/content-trust) のドキュメントを参照してください。
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

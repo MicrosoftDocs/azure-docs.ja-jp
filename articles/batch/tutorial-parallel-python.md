@@ -3,19 +3,19 @@ title: 並列ワークロードの実行 - Azure Batch Python
 description: チュートリアル - Batch Python クライアント ライブラリを使用して、Azure Batch で ffmpeg を使ってメディア ファイルを並列処理します。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 286bc73cb7226d95c1e46fc51ae5999ea27d44ad
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 92d8c6fb1bfa1689475774bbc4f62cd9ab38268f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535685"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321843"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>チュートリアル:Python API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/batch-python-ffmpeg-tutorial.git
 pip install -r requirements.txt
 ```
 
-ファイル `config.py`を開きます。 Batch アカウントとストレージ アカウントの資格情報文字列を、アカウントに固有の値で更新します。 例: 
+ファイル `config.py`を開きます。 Batch アカウントとストレージ アカウントの資格情報文字列を、アカウントに固有の値で更新します。 例:
 
 
 ```Python
@@ -107,7 +107,7 @@ Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-プール、コンピューティング ノード、ジョブ、タスクを監視するには、Azure Portal で Batch アカウントに移動します。 たとえば、プール内のコンピューティング ノードのヒート マップを確認するには、**[プール]** > *LinuxFFmpegPool* の順にクリックします。
+プール、コンピューティング ノード、ジョブ、タスクを監視するには、Azure Portal で Batch アカウントに移動します。 たとえば、プール内のコンピューティング ノードのヒート マップを確認するには、 **[プール]**  > *LinuxFFmpegPool* の順にクリックします。
 
 タスクが実行されていると、ヒート マップは次のようになります。
 
@@ -135,7 +135,7 @@ blob_client = azureblob.BlockBlobService(
 
 ```python
 credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
-    _BATCH_ACCOUNT_KEY)
+                                             _BATCH_ACCOUNT_KEY)
 
 batch_client = batch.BatchServiceClient(
     credentials,
@@ -150,13 +150,14 @@ batch_client = batch.BatchServiceClient(
 blob_client.create_container(input_container_name, fail_on_exist=False)
 blob_client.create_container(output_container_name, fail_on_exist=False)
 input_file_paths = []
-    
-for folder, subs, files in os.walk(os.path.join(sys.path[0],'./InputFiles/')):
+
+for folder, subs, files in os.walk(os.path.join(sys.path[0], './InputFiles/')):
     for filename in files:
         if filename.endswith(".mp4"):
-            input_file_paths.append(os.path.abspath(os.path.join(folder, filename)))
+            input_file_paths.append(os.path.abspath(
+                os.path.join(folder, filename)))
 
-# Upload the input files. This is the collection of files that are to be processed by the tasks. 
+# Upload the input files. This is the collection of files that are to be processed by the tasks.
 input_files = [
     upload_file_to_container(blob_client, input_container_name, file_path)
     for file_path in input_file_paths]
@@ -181,7 +182,7 @@ new_pool = batch.models.PoolAddParameter(
             offer="UbuntuServer",
             sku="18.04-LTS",
             version="latest"
-            ),
+        ),
         node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_DEDICATED_POOL_NODE_COUNT,
@@ -221,10 +222,11 @@ batch_service_client.job.add(job)
 ```python
 tasks = list()
 
-for idx, input_file in enumerate(input_files): 
-    input_file_path=input_file.file_path
-    output_file_path="".join((input_file_path).split('.')[:-1]) + '.mp3'
-    command = "/bin/bash -c \"ffmpeg -i {} {} \"".format(input_file_path, output_file_path)
+for idx, input_file in enumerate(input_files):
+    input_file_path = input_file.file_path
+    output_file_path = "".join((input_file_path).split('.')[:-1]) + '.mp3'
+    command = "/bin/bash -c \"ffmpeg -i {} {} \"".format(
+        input_file_path, output_file_path)
     tasks.append(batch.models.TaskAddParameter(
         id='Task{}'.format(idx),
         command_line=command,
@@ -236,10 +238,10 @@ for idx, input_file in enumerate(input_files):
                     container_url=output_container_sas_url)),
             upload_options=batchmodels.OutputFileUploadOptions(
                 upload_condition=batchmodels.OutputFileUploadCondition.task_success))]
-        )
+    )
     )
 batch_service_client.task.add_collection(job_id, tasks)
-```    
+```
 
 ### <a name="monitor-tasks"></a>タスクの監視
 
@@ -254,7 +256,7 @@ while datetime.datetime.now() < timeout_expiration:
     tasks = batch_service_client.task.list(job_id)
 
     incomplete_tasks = [task for task in tasks if
-                         task.state != batchmodels.TaskState.completed]
+                        task.state != batchmodels.TaskState.completed]
     if not incomplete_tasks:
         print()
         return True
@@ -267,7 +269,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 タスクの実行後、自動的に、作成された入力用ストレージ コンテナーが削除され、Batch プールとジョブを削除するためのオプションが表示されます。 BatchClient の [JobOperations](/python/api/azure.batch.operations.joboperations) クラスと [PoolOperations](/python/api/azure.batch.operations.pooloperations) クラスの両方に削除メソッドがあります。このメソッドは、削除を確定すると呼び出されます。 ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは課金対象です。 そのため、必要な場合にのみプールを割り当てることをお勧めします。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、入力ファイルと出力ファイルはストレージ アカウントに残ります。
 
-リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、**[リソース グループの削除]** をクリックしてください。
+リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、 **[リソース グループの削除]** をクリックしてください。
 
 ## <a name="next-steps"></a>次の手順
 

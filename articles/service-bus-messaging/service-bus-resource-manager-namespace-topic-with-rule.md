@@ -14,18 +14,18 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c6ad222110081cd8f8838208da407e0e1d50f75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "54851268"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444741"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>トピック、サブスクリプション、ルールを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成します。
 
 この記事では、Azure Resource Manager テンプレートを使用して、トピック、サブスクリプション、ルール (フィルター) を含んだ Service Bus の名前空間を作成する方法について説明します。 この記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを指定する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成について詳しくは、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」を参照してください。
 
 Azure リソースの名前付け規則のプラクティスとパターンについて詳しくは、「[Azure リソースの推奨される名前付け規則][Recommended naming conventions for Azure resources]」をご覧ください。
 
@@ -39,7 +39,7 @@ Azure リソースの名前付け規則のプラクティスとパターンに�
 > * [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
 > * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 > 
-> 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Service Bus" を検索してください。
+> 最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][Azure Quickstart Templates] 」ギャラリーで "Service Bus" を検索してください。
 > 
 > 
 
@@ -179,7 +179,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>次の手順
-Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
+サブスクリプション フィルターの作成方法について説明している次のトピックを参照してください。[トピック、サブスクリプション、ルールを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
+
+次の記事を参照して、これらのリソースの管理方法を確認してください。
 
 * [Azure Service Bus を管理する](service-bus-management-libraries.md)
 * [PowerShell で Service Bus を管理する](service-bus-manage-with-ps.md)

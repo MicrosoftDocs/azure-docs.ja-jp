@@ -167,7 +167,7 @@ ms.locfileid: "64726864"
 ## <a name="watch-the-event"></a>イベントの視聴
 イベントを視聴するには、Azure Portal で **[Watch (視聴)]** をクリックするか、ストリーミング URL をコピーして任意のプレーヤーを使用します。 
 
-![作成日時](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
+![作成されたもの](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
 ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。
 

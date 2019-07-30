@@ -1,5 +1,5 @@
 ---
-title: REST API 要求の交換 - Azure Active Directory B2C | Microsoft Docs
+title: REST API 要求の交換 - Azure Active Directory B2C
 description: Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc0cea765816bfac066b05aca65f668fbce0c8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508765"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439008"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) B2C で RESTful API との対話を[カスタ�
 - オーケストレーション手順として設計できます。
 - 外部アクションをトリガーできます。 たとえば、外部データベースにイベントを記録できます。
 - 値をフェッチしてユーザー データベースに格納するために使用できます。
-- 実行フローを変更します。 
+- 実行フローを変更します。
 
 この記事のシナリオには次のアクションが含まれています。
 
@@ -45,9 +45,16 @@ Azure Active Directory (Azure AD) B2C で RESTful API との対話を[カスタ�
 
 このセクションでは、`email` の値を受け取ってから、Azure AD B2C が要求として使用できる `city` の値を返すように Azure 関数を準備します。
 
-作成した Azure 関数の run.csx ファイルを、次のコードを使用するように変更します。 
+作成した Azure 関数の run.csx ファイルを、次のコードを使用するように変更します。
 
-```
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
+
 public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
   log.LogInformation("C# HTTP trigger function processed a request.");
@@ -77,9 +84,9 @@ public class ResponseContent
 
 ## <a name="configure-the-claims-exchange"></a>要求の交換を構成する
 
-技術プロファイルには、要求の交換に対する構成が用意されています。 
+技術プロファイルには、要求の交換に対する構成が用意されています。
 
-*TrustFrameworkExtensions.xml* ファイルを開き、次の XML 要素を **ClaimsProvider** 要素の中に追加します。
+*TrustFrameworkExtensions.xml* ファイルを開き、次の **ClaimsProvider** XML 要素を **ClaimsProviders** 要素内に追加します。
 
 ```XML
 <ClaimsProvider>
@@ -134,7 +141,7 @@ REST API 呼び出しをオーケストレーション手順として使用で�
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
   <ClaimsExchanges>
-    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
@@ -188,7 +195,7 @@ REST API 呼び出しをオーケストレーション手順として使用で�
     <!-- Add a step 6 to the user journey before the JWT token is created-->
     <OrchestrationStep Order="6" Type="ClaimsExchange">
       <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
       </ClaimsExchanges>
     </OrchestrationStep>
     <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
@@ -204,13 +211,15 @@ REST API 呼び出しをオーケストレーション手順として使用で�
 新しい要求を追加した後の技術プロファイルは次の例のようになります。
 
 ```XML
-<DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="OpenIdConnect" />
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-      <OutputClaim ClaimTypeReferenceId="city" />
-    </OutputClaims>
-    <SubjectNamingInfo ClaimType="sub" />
+<TechnicalProfile Id="PolicyProfile">
+  <DisplayName>PolicyProfile</DisplayName>
+  <Protocol Name="OpenIdConnect" />
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+    <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+    <OutputClaim ClaimTypeReferenceId="city" />
+  </OutputClaims>
+  <SubjectNamingInfo ClaimType="sub" />
 </TechnicalProfile>
 ```
 

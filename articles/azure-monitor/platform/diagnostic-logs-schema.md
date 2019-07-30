@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 21eec5ee2fef185a927f6a416732303765e02b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 468bcdb6aa688157196bb9cba8added623a857d3
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789318"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155294"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -55,7 +55,7 @@ ms.locfileid: "65789318"
 | Azure Batch |[Azure Batch 診断ログ](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL の診断ログ](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL の診断ログ](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Cognitive Services | スキーマは使用できません。 |
+| Cognitive Services | [Azure Cognitive Services の診断ログ](../../cognitive-services/diagnostic-logging.md) |
 | Content Delivery Network | [CDN の Azure 診断ログ](../../cdn/cdn-azure-diagnostic-logs.md) |
 | Cosmos DB | [Azure Cosmos DB のログ](../../cosmos-db/logging.md) |
 | Data Factory | [Azure Monitor を使用して、データ ファクトリを監視する](../../data-factory/monitor-using-azure-monitor.md) |
@@ -209,4 +209,3 @@ ms.locfileid: "65789318"
 * [リソース診断ログを **Event Hubs** にストリーミングする](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Azure Monitor REST API を使用してリソース診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-

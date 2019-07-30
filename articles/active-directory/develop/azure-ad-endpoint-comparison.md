@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962876"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483016"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 
@@ -46,7 +46,7 @@ Microsoft ID プラットフォーム エンドポイントの場合、Microsoft
 
 必要な OAuth 2.0 アクセス許可を事前に指定するには、Azure AD v1.0 エンドポイントを使用するアプリが必要になります。その例を以下に示します。
 
-![アクセス許可の登録 UI](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![アクセス許可の登録 UI を示す例](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
 アプリケーションの登録時に直接設定されるアクセス許可は**静的**となります。 アプリの静的アクセス許可は Azure portal で定義されており、コードを適切に維持できますが、開発者にとってはそれがいくつかの問題を引き起こす場合があります。
 

@@ -11,12 +11,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: c3a988a831ad1069e5988f9c67e92a85a7a44840
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 53c870ad135fe13eb3bf7556678cac29352911aa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765198"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442930"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したチーム開発
 
@@ -62,9 +62,9 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 1. リモート ブランチ *azds_updates* をチェックアウトします。`git checkout -b azds_updates origin/azds_updates`
 1. 両方のサービスの F5/デバッグ セッションをすべて閉じます。ただし、Visual Studio ウィンドウでプロジェクトを開いたままにしておきます。
 1. _mywebapi_ プロジェクトがある Visual Studio ウィンドウに切り替えます。
-1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[プロパティ]** を選択します。
+1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[プロパティ]** を選択します。
 1. 左側の **[デバッグ]** タブを選択して、Azure Dev Spaces の設定を表示します。
-1. サービスに対して F5 キーまたは Ctrl + F5 キーを押したときに使用される空間を作成するために、**[変更]** を選択します。
+1. サービスに対して F5 キーまたは Ctrl + F5 キーを押したときに使用される空間を作成するために、 **[変更]** を選択します。
 1. [スペース] ボックスの一覧の **[\<Create New Space…\>]\(<新しいスペースの作成...>\)** を選択します。
 1. 親空間が **\<なし\>** に設定されていることを確認し、空間名「**dev**」を入力します。 [OK] をクリックします。
 1. Ctrl + F5 キーを押して、デバッガーをアタッチせずに _mywebapi_ を実行します。
@@ -83,11 +83,11 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 パブリック URL を開き、Web アプリに移動するすべてのユーザーは、既定の _dev_ 空間を使用して両方のサービスを介して実行される、作成済みのコード パスを呼び出すことになります。 ここでは、*mywebapi* の開発を続けるとします。開発空間を使用している他の開発者の作業を妨げずに続行するにはどうすればよいのでしょうか。 それには、独自のスペースを設定することです。
 
 ### <a name="create-a-new-dev-space"></a>新しい開発空間を作成する
-Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサービスを実行するときに使用される追加のスペースを作成できます。 スペースには任意の名前を付けることができます。内容に合わせて自由に名前を付けることができます (例:  _sprint4_ または _demo_)。
+Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサービスを実行するときに使用される追加のスペースを作成できます。 スペースには任意の名前を付けることができます。内容に合わせて自由に名前を付けることができます (例: _sprint4_ または _demo_)。
 
 新しいスペースを作成するには、次の手順を実行します。
 1. *mywebapi* プロジェクトがある Visual Studio ウィンドウに切り替えます。
-2. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[プロパティ]** を選択します。
+2. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[プロパティ]** を選択します。
 3. 左側の **[デバッグ]** タブを選択して、Azure Dev Spaces の設定を表示します。
 4. ここから、F5 キーまたは Ctrl + F5 キーを押したときに使用されるクラスターやスペースを変更または作成できます。 *以前に作成した Azure Dev Space が選択されていることを確認します。*
 5. [スペース] ボックスの一覧の **[\<Create New Space…\>]\(<新しいスペースの作成...>\)** を選択します。
@@ -126,7 +126,7 @@ Azure Dev Spaces のこの組み込み機能を使用すると、共有環境で
 ### <a name="test-code-running-in-the-devscott-space"></a>_dev/scott_ 空間で実行されているコードをテストする
 *mywebapi* の新しいバージョンと *webfrontend* をテストするには、ブラウザーで *webfrontend* のパブリック アクセス ポイントの URL (たとえば、 http://dev.webfrontend.123456abcdef.eus.azds.io) を開き、About ページに移動します。 "Hello from webfrontend and Hello from mywebapi" という元のメッセージが表示されます。
 
-URL に "scott.s." の部分を追加して、 http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io になるようにし、ブラウザーを更新します。 *mywebapi* プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、*mywebapi* で更新したコードのパスが _dev/scott_ 空間で実行されているためです。
+URL に "scott.s." の部分を追加して、 http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io になるようにし、ブラウザーを更新します。 *mywebapi* プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、*mywebapi* で更新したコードのパスが _dev/scott_ 空間で実行されているためです。
 
 最新の変更を常に含む _dev_ 空間があり、このチュートリアルのセクションで説明されているようにアプリケーションが DevSpace の空間ベースのルーティングを利用するように設計されていると仮定した場合、大規模なアプリケーションのコンテキスト内で新機能をテストする際に Dev Spaces がいかに役立つかは容易に想像できます。 "_すべての_" サービスをプライベート空間にデプロイする代わりに、_dev_ から派生するプライベート空間を作成し、実際に作業しているサービスのみを "アップ" することができます。 Dev Spaces ルーティング インフラストラクチャでは、_dev_ 空間で実行されている最新バージョンを既定で使用する一方で、プライベート空間で検出できる限りのサービスを利用して、残りの処理が行われます。 さらにすばらしいことに、"_複数の_" 開発者が互いに影響を与えることなく、自分の空間で同時に、異なるサービスをアクティブに開発することができます。
 

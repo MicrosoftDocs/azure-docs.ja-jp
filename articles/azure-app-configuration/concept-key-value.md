@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: b25cc8c04aed8cd333ff4de5b12db6674323787d
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: c7a7e7994ef5e16640f59efdc672f6793bc4f18d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393596"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706472"
 ---
 # <a name="keys-and-values"></a>キーと値
 
@@ -94,7 +94,7 @@ App Configuration のキー値には、必要に応じてラベル属性を割�
 | `label=1.0.*` | **1.0.** で始まるラベルに一致します |
 | `label=*.0.0` | **.0.0** で終わるラベルに一致します |
 | `label=*.0.*` | **.0.** を含むラベルに一致します |
-| `label=%00,1.0.0` | ラベル `null` または **1.0.1** に一致します (CSV の上限は 5 つ) |
+| `label=%00,1.0.0` | ラベル `null` または **1.0.0** に一致します (CSV の上限は 5 つ) |
 
 ## <a name="values"></a>値
 

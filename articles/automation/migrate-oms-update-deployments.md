@@ -4,17 +4,17 @@ description: この記事では、既存の OMS の更新プログラムの展�
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d11dfcb66a545cbecc80b6bdad558ca6d328ed2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2cc05dc0970211b066d9e431cc7aba06cbd126eb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60499258"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478300"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>OMS の更新プログラムの展開を Azure に移行する
 
@@ -57,7 +57,7 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
 
 更新するマシンには、既存の OMS の展開で使用された保存された検索条件を選択します。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 |Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| **Linux** か **Windows** を選択します。|

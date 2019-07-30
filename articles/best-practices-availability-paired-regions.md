@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed9dc595c537d8a923d3eb056dcb002cf225f7c
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 81ba993e6cbe55b45d34325545754bec561ce479
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427115"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514468"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン
 
@@ -42,7 +42,7 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 | インド |インド西部 |インド南部 |
 | 日本 |東日本 |西日本 |
 | 韓国 |韓国中部 |韓国南部 |
-| 北米 |米国東部 |米国西部 |
+| 北米 |East US |米国西部 |
 | 北米 |米国東部 2 |米国中部 |
 | 北米 |米国中北部 |米国中南部 |
 | 北米 |米国西部 2 |米国中西部 
@@ -77,7 +77,7 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 
 ![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – 災害発生中に別のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](resiliency/resiliency-technical-guidance.md)」をご覧ください。
 
-![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
+![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - マネージド ディスクを使用している場合は、Azure Backup を使用した[リージョン間のバックアップ](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)、および Azure Site Recovery を使用したリージョン間での [VM のレプリケーション](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)について確認してください。 ストレージ アカウントを使用している場合は、Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
 
 ![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – Azure SQL Database geo レプリケーションを使用すると、世界中の任意のリージョンへのトランザクションの非同期レプリケーションを構成できます。ただし、ほとんどのディザスター リカバリー シナリオでは、これらのリソースをペア リージョン内にデプロイすることをお勧めします。 詳細については、「[Azure SQL Database の geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)」を参照してください。
 

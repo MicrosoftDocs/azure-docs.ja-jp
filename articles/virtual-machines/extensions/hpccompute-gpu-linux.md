@@ -4,7 +4,7 @@ description: Linux を実行中の N シリーズのコンピューティング 
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 5a184c72da8af0d451902a164c8b71a94a01883f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c15948fd9e9acc1e1efeb536939002f179402d5a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683169"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706715"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 
@@ -27,6 +27,8 @@ ms.locfileid: "64683169"
 
 この拡張機能は、Linux N シリーズ VM に NVIDIA GPU ドライバーをインストールします。 VM ファミリに応じて、この拡張機能では CUDA ドライバーまたは GRID ドライバーがインストールされます。 この拡張機能を使用して NVIDIA ドライバーをインストールする際は、[NVIDIA のエンドユーザー使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=874330)の条項を受け入れ、同意します。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
 
+ドライバーの手動インストールの手順と現在サポートされているバージョンについては、[こちら](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)をご覧ください。
 NVIDIA GPU ドライバーを [Windows の N シリーズ VM](hpccompute-gpu-windows.md) にインストールする拡張機能も利用可能です。
 
 ## <a name="prerequisites"></a>前提条件
@@ -69,7 +71,7 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
 | Name | 値/例 | データ型 |
 | ---- | ---- | ---- |
@@ -85,7 +87,7 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 | Name | 説明 | Default value | 有効な値 | データ型 |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | ドライバーのインストールに必要ない場合でも、カーネルを更新します。 | false | true、false | ブール値 |
-| driverVersion | NV: GRID ドライバーのバージョン<br> NC/ND: CUDA Toolkit のバージョン。 選択した CUDA の最新のドライバーが自動的にインストールされます。 | latest | GRID: "418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA: "10.0.130"、"9.2.88"、"9.1.85" | string |
+| driverVersion | NV: GRID ドライバーのバージョン<br> NC/ND: CUDA Toolkit のバージョン。 選択した CUDA の最新のドライバーが自動的にインストールされます。 | latest | GRID: "430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA: "10.0.130"、"9.2.88"、"9.1.85" | string |
 | installCUDA | CUDA Toolkit をインストールします。 NC/ND シリーズの VM のみに関係します。 | true | true、false | ブール値 |
 
 

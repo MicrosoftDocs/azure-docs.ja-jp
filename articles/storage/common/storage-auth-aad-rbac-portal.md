@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ebb67ff295a934b4e125e298018c27a095adc590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 959d96a9bc1dd9f28e62d904248cd1f18d73c27d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153861"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67563931"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する
 
@@ -42,6 +42,11 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 以降のセクションで、これらの手順のそれぞれについて詳しく説明します。
 
+> [!NOTE]
+> Azure Storage アカウントの所有者であっても、データへのアクセス許可が自動的に割り当てられるわけではありません。 Azure Storage の RBAC ロールを自分自身に明示的に割り当てる必要があります。 これは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいはコンテナーまたはキューのレベルで割り当てることができます。
+> 
+> ストレージ アカウントで階層型名前空間が有効になっている場合、コンテナーまたはキューに対してスコープが指定されたロールを割り当てることはできません。
+
 ### <a name="assign-a-built-in-rbac-role"></a>組み込み RBAC ロールを割り当てる
 
 セキュリティ プリンシパルにロールを割り当てる前に、付与するアクセス許可のスコープを必ず検討してください。 適切なスコープの決定については、「[リソースのスコープを決定する](#determine-resource-scope)」セクションを参照してください。
@@ -65,11 +70,6 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
     ![ロールに割り当てられたユーザーの一覧を示すスクリーンショット](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
 同じ手順を実行して、ストレージ アカウント、リソース グループ、またはサブスクリプションに対してスコープが指定されたロールを割り当てることができます。
-
-> [!NOTE]
-> Azure Storage アカウントの所有者であっても、データへのアクセス許可が自動的に割り当てられるわけではありません。 Azure Storage の RBAC ロールを自分自身に明示的に割り当てる必要があります。 これは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいはコンテナーまたはキューのレベルで割り当てることができます。
-> 
-> ストレージ アカウントで階層型名前空間が有効になっている場合、コンテナーまたはキューに対してスコープが指定されたロールを割り当てることはできません。
 
 ### <a name="assign-the-reader-role-for-portal-access"></a>ポータルへのアクセス用の閲覧者ロールの割り当て
 

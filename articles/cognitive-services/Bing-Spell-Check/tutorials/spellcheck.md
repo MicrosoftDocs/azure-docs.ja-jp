@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Bing Spell Check API を使用してスペル チェックの結果を取得する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Spell Check の使用方法を示します。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 0a7b8637ae3ca7342a04f6bf3f8a808539d980eb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: dc3a30418615d1c6b30ca4059292425076327f00
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886164"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500805"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>チュートリアル:Web ページのスペル チェック クライアントを構築する
 

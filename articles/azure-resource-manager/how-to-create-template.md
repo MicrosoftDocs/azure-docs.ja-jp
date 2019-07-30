@@ -1,22 +1,17 @@
 ---
 title: Azure Resource Manager のテンプレートの作成方法
 description: Azure Resource Manager テンプレートの作成プロセスについて説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbe891aa584423d64531ae4b23bb8a6ead38c3da
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551004"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205571"
 ---
 # <a name="create-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを作成する
 

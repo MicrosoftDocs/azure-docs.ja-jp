@@ -4,18 +4,16 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 397a8a9b07b4d7a88d0345399ac4abcc3e738a82
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: b46a2b18309851bbe2934980137a53d2de6f6efc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58631177"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135329"
 ---
-## <a name="set-up-your-device"></a>デバイスのセットアップ
+## <a name="set-up-your-device-in-unity"></a>Unity でデバイスをセットアップする
 
-Unity で、`Unity` フォルダー内のプロジェクトを開きます。
-
-![Unity ウィンドウ](./media/spatial-anchors-unity/unity-window.png)
+[!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
 ### <a name="set-up-an-android-device"></a>Android デバイスのセットアップ
 
@@ -33,7 +31,7 @@ Unity で、`Unity` フォルダー内のプロジェクトを開きます。
 
 **[Inspector]\(インスペクター\)** ウィンドウで、`Base Sharing Url` の値として (ASP.NET Web アプリの Azure デプロイにある) `Sharing Anchors Service url` を入力し、`index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
 
-**[File]\(ファイル\)** > **[Save]\(保存\)** の順に選択してシーンを保存します。
+**[File]\(ファイル\)**  >  **[Save]\(保存\)** の順に選択してシーンを保存します。
 
 ## <a name="deploy-to-your-device"></a>デバイスにデプロイする
 
@@ -41,22 +39,28 @@ Unity で、`Unity` フォルダー内のプロジェクトを開きます。
 
 Android デバイスにサインインし、USB ケーブルを使用してコンピューターに接続します。
 
-**[ファイル]** > **[ビルド設定]** を選択して、**[ビルド設定]** を開きます。
+**[ファイル]**  >  **[ビルド設定]** を選択して、 **[ビルド設定]** を開きます。
 
-**[Scenes In Build]\(ビルド中のシーン\)** で、`AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` シーンの横にチェック マークを付けて、他のすべてのシーンのチェック マークをクリアします。
+**[Scenes In Build]\(ビルド内のシーン\)** で、すべてのシーンの横にチェック マークが付いていることを確認します。
 
 **[Export Project]\(プロジェクトのエクスポート\)** がオフであることを確認します。 **[Build And Run]\(ビルドして実行\)** を選択します。 `.apk` ファイルを保存するように求められます。 任意の名前を選択できます。
 
-アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。 最初のシナリオでは、後で同じデバイスまたは別のデバイス上で探知できるアンカーを作成できます。 2 つ目のシナリオでは、アプリを同じデバイスまたは別のデバイス上で既に実行している場合、前もって共有されているアンカーを探知できます。 シナリオを選択すると、実行する操作がアプリによって案内されます。 たとえば、環境情報を収集するためにデバイスを移動させるように求められます。 後で、環境内にアンカーを配置し、アップロードが完了するのを待機します。
+アプリが起動したら、 **[Choose A Demo]\(A デモの選択\)** ダイアログで、左右の矢印を使用して **[LocalShare]** オプションを選択し、 **[Go!]\(実行\)** をクリックします。 アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。
+
+最初のシナリオでは、後で同じデバイスまたは別のデバイス上で探知できるアンカーを作成できます。
+2 つ目のシナリオでは、アプリを同じデバイスまたは別のデバイス上で既に実行している場合、前もって共有されているアンカーを探知できます。 シナリオを選択すると、実行する操作がアプリによって案内されます。 たとえば、環境情報を収集するためにデバイスをあちこちに移動させることを求められます。 その後、環境内にアンカーを配置し、それが保存されるまで待機したりします。
 
 ### <a name="deploy-to-an-ios-device"></a>iOS デバイスにデプロイする
 
-**[ファイル]** > **[ビルド設定]** を選択して、**[ビルド設定]** を開きます。
+**[ファイル]**  >  **[ビルド設定]** を選択して、 **[ビルド設定]** を開きます。
 
-**[Scenes In Build]\(ビルド中のシーン\)** で、`AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` シーンの横にチェック マークを付けて、他のすべてのシーンのチェック マークをクリアします。
+**[Scenes In Build]\(ビルド内のシーン\)** で、すべてのシーンの横にチェック マークが付いていることを確認します。
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。 最初のシナリオでは、後で同じデバイスまたは別のデバイス上で探知できるアンカーを作成できます。 2 つ目のシナリオでは、アプリを同じデバイスまたは別のデバイス上で既に実行している場合、前もって共有されているアンカーを探知できます。 シナリオを選択すると、実行する操作がアプリによって案内されます。 たとえば、環境情報を収集するためにデバイスを移動させるように求められます。 後で、環境内にアンカーを配置し、アップロードが完了するのを待機します。
+アプリが起動したら、 **[Choose A Demo]\(A デモの選択\)** ダイアログで、左右の矢印を使用して **[LocalShare]** オプションを選択し、 **[Go!]\(実行\)** をクリックします。 アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。
 
-Xcode で、**[Stop]\(停止\)** を選択してアプリを停止します。
+最初のシナリオでは、後で同じデバイスまたは別のデバイス上で探知できるアンカーを作成できます。
+2 つ目のシナリオでは、アプリを同じデバイスまたは別のデバイス上で既に実行している場合、前もって共有されているアンカーを探知できます。 シナリオを選択すると、実行する操作がアプリによって案内されます。 たとえば、環境情報を収集するためにデバイスをあちこちに移動させることを求められます。 その後、環境内にアンカーを配置し、それが保存されるまで待機したりします。
+
+Xcode で、 **[Stop]\(停止\)** を選択してアプリを停止します。

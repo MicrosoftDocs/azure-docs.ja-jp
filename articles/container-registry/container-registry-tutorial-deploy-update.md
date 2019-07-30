@@ -3,17 +3,18 @@ title: チュートリアル - 更新されたコンテナー イメージをリ
 description: 変更された Docker イメージを Geo レプリケートされた Azure コンテナー レジストリにプッシュした後、それらの変更が複数のリージョンで実行されている Web アプリに自動的にデプロイされたことを確認します。 3 部構成のシリーズの第 3 部。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e01fdc41d0cc2e65951bd92378eb59f0fd35816a
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256623"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310430"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>チュートリアル:更新されたコンテナー イメージをリージョンの Web アプリのデプロイ用に geo レプリケーション コンテナー レジストリにプッシュする
 
@@ -103,7 +104,7 @@ v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186e
 
 イメージがレプリケートされている間、Azure Container Registry Webhook がトリガーされていることを確認できます。
 
-前のチュートリアルでコンテナーを *Web Apps for Containers* にデプロイしたときに作成されたリージョン Webhook を表示するには、Azure Portal のコンテナー レジストリに移動し、**[SERVICES] \(サービス)** の **[Webhook]** を選択します。
+前のチュートリアルでコンテナーを *Web Apps for Containers* にデプロイしたときに作成されたリージョン Webhook を表示するには、Azure Portal のコンテナー レジストリに移動し、 **[SERVICES] \(サービス)** の **[Webhook]** を選択します。
 
 ![Azure Portal のコンテナー レジストリ Webhook][tutorial-portal-01]
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: juliako
-ms.openlocfilehash: 1aa15a42893d867ae18c267e163e8df94af50723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 709ed293dbb0550dc1bb43bf1e1e1cc50906cc31
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824450"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293442"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure Media Services v3 のクォータと制限
 
@@ -44,6 +44,7 @@ ms.locfileid: "65824450"
 | Media Services アカウントあたりの Transform | 100 (固定)|
 | 1 つの資産に同時に関連付けられる一意のストリーミング ロケーター数 | 100<sup>(6)</sup> (固定) |
 | コンテンツ キー ポリシーごとのオプション |30 | 
+| アカウントあたりの Media Services キー配信サービスでの各 DRM 型の月毎のライセンス|1,000,000|
 
 <sup>1</sup> Azure Blob Storage では現在、1 つの BLOB でサポートされる最大サイズは 5 TB です。 Media Services ではさらに、サービスで使用される VM サイズに基づく別の制限が適用されます。 サイズの上限は、アップロードするファイルのほかに、Media Services 処理 (エンコードまたは分析) の結果として生成されるファイルにも適用されます。 ソース ファイルが 260 GB を超える場合、Job は失敗する可能性があります。 
 

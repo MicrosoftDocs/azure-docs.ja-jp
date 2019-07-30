@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 01a70bfbb169090fbdf4b5f8e00af6895f69c964
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903526"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>チュートリアル:Azure Active Directory と SAP NetWeaver の統合
 
@@ -54,11 +54,11 @@ Azure AD への SAP NetWeaver の統合を構成するには、ギャラリー�
 
 **ギャラリーから SAP NetWeaver を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への SAP NetWeaver の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SAP NetWeaver**」と入力し、結果ウィンドウで **SAP NetWeaver** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SAP NetWeaver**」と入力し、結果ウィンドウで **SAP NetWeaver** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の SAP NetWeaver](common/search-new-app.png)
 
@@ -128,11 +128,11 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![証明書のダウンロードのリンク](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
 
-5. ユーザー インターフェイスに入るためのユーザー名とパスワードを指定し、**[Edit]\(編集\)** をクリックします。
+5. ユーザー インターフェイスに入るためのユーザー名とパスワードを指定し、 **[Edit]\(編集\)** をクリックします。
 
     ![証明書のダウンロードのリンク](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
-6. **プロバイダー名** を T01122 から `http://T01122` に変更し、**[保存]** をクリックします。
+6. **プロバイダー名** を T01122 から `http://T01122` に変更し、 **[保存]** をクリックします。
 
     > [!NOTE]
     > 既定ではプロバイダー名は `<sid><client>` という形式ですが、Azure AD では `<protocol>://<name>` という形式の名前が想定されています。プロバイダー名は `https://<sid><client>` のままにして、Azure AD で複数の SAP NetWeaver ABAP エンジンを構成できるようにすることをお勧めします。
@@ -147,17 +147,17 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     b. **[Metadata]\(メタデータ\)** をクリックします。
 
-    c. 生成された**メタデータ XML ファイル**をコンピューターに保存し、それを Azure portal の **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** の値を自動的に設定します。
+    c. 生成された**メタデータ XML ファイル**をコンピューターに保存し、それを Azure portal の **[基本的な SAML 構成]** セクションにアップロードして、 **[識別子]** と **[応答 URL]** の値を自動的に設定します。
 
-8. [Azure portal](https://portal.azure.com/) の **SAP NetWeaver** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+8. [Azure portal](https://portal.azure.com/) の **SAP NetWeaver** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-9. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+9. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-10. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+10. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -167,11 +167,11 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、次に示すように、**識別子**と**応答 URL** の値が、**[基本的な SAML 構成]** セクションのテキスト ボックスに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、次に示すように、**識別子**と**応答 URL** の値が、 **[基本的な SAML 構成]** セクションのテキスト ボックスに自動的に設定されます。
 
     ![[SAP NetWeaver のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
@@ -184,13 +184,13 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
     > ``` 
     > ServicePrincipal Object ID は最初に自分で設定しておくことができるほか、ここで渡すこともできます。
 
-12. SAP NetWeaver アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+12. SAP NetWeaver アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
 13. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    a. **[編集]** アイコンをクリックして、**[ユーザー要求の管理]** ダイアログを開きます。
+    a. **[編集]** アイコンをクリックして、 **[ユーザー要求の管理]** ダイアログを開きます。
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute.png)
 
@@ -202,7 +202,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     d. **[Save]** をクリックします。
 
-14. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+14. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -220,7 +220,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 1. SAP システムにログオンし、トランザクション コード SAML2 に移動します。 新しいブラウザー ウィンドウで SAML 構成画面が開きます。
 
-2. 信頼できる ID プロバイダー (Azure AD) のエンド ポイントを構成するには、**[Trusted Providers]\(信頼できるプロバイダー\)** タブに移動します。
+2. 信頼できる ID プロバイダー (Azure AD) のエンド ポイントを構成するには、 **[Trusted Providers]\(信頼できるプロバイダー\)** タブに移動します。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
 
@@ -232,31 +232,31 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
 
-5. 次の画面で、エイリアス名を入力します。 たとえば「aadsts」と入力し、**[Next]\(次へ\)** をクリックして続行します。
+5. 次の画面で、エイリアス名を入力します。 たとえば「aadsts」と入力し、 **[Next]\(次へ\)** をクリックして続行します。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
-6. **[Digest Algorithm]\(ダイジェスト アルゴリズム\)** が **[SHA-256]** であることを確認します。何も変更する必要はありません。**[Next]\(次へ\)** をクリックします。
+6. **[Digest Algorithm]\(ダイジェスト アルゴリズム\)** が **[SHA-256]** であることを確認します。何も変更する必要はありません。 **[Next]\(次へ\)** をクリックします。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
 
-7. **[Single Sign-On Endpoints]\(シングル サインオン エンドポイント\)** では **[HTTP POST]** を使用し、**[Next]\(次へ\)** をクリックして続行します。
+7. **[Single Sign-On Endpoints]\(シングル サインオン エンドポイント\)** では **[HTTP POST]** を使用し、 **[Next]\(次へ\)** をクリックして続行します。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
-8. **[Single Logout Endpoints]\(シングル ログアウト エンドポイント\)** では **[HTTPRedirect]** を選択し、**[Next]\(次へ\)** をクリックして続行します。
+8. **[Single Logout Endpoints]\(シングル ログアウト エンドポイント\)** では **[HTTPRedirect]** を選択し、 **[Next]\(次へ\)** をクリックして続行します。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
-9. **[Artifact Endpoints]\(アーティファクト エンドポイント\)** では、**[Next]\(次へ\)** をクリックして続行します。
+9. **[Artifact Endpoints]\(アーティファクト エンドポイント\)** では、 **[Next]\(次へ\)** をクリックして続行します。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
-10. **[Authentication Requirements]\(認証要件\)** では、**[Finish]\(完了\)** をクリックします。
+10. **[Authentication Requirements]\(認証要件\)** では、 **[Finish]\(完了\)** をクリックします。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. **[Trusted Providers]\(信頼できるプロバイダー\)** > **[Identity Federation]\(ID フェデレーション\)** タブ (画面下部) に移動します。 **[編集]** をクリックします。
+11. **[Trusted Providers]\(信頼できるプロバイダー\)**  >  **[Identity Federation]\(ID フェデレーション\)** タブ (画面下部) に移動します。 **[編集]** をクリックします。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
@@ -290,11 +290,11 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/claimsaad2.png)
 
-15. **[Save]\(保存\)** をクリックし、**[Enable]\(有効\)** をクリックして ID プロバイダーを有効にします。
+15. **[Save]\(保存\)** をクリックし、 **[Enable]\(有効\)** をクリックして ID プロバイダーを有効にします。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/configuration1.png)
 
-16. メッセージが表示されたら、**[OK]** をクリックします。
+16. メッセージが表示されたら、 **[OK]** をクリックします。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/configuration2.png)
 
@@ -302,7 +302,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -327,7 +327,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に SAP NetWeaver へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[SAP NetWeaver]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[SAP NetWeaver]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -339,15 +339,15 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-sap-netweaver-test-user"></a>SAP NetWeaver のテスト ユーザーの作成
 

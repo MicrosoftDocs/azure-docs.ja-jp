@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f935b1b2815501710444e3f921a157ba02e3215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7814ff6b7575fedc19e63676ce3353c2a62a62b4
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544083"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154439"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET を使用して、構成オプションで機密クライアント アプリケーションをインスタンス化する
 
@@ -62,12 +62,12 @@ ASP.NET Core アプリケーションの構成は、*appsettings.json* ファイ
 }
 ```
 
-MSAL.NET v3.x 以降では、構成ファイルから機密クライアント アプリケーションを構成できます。 アプリの構成に関連するクラスは、`Microsoft.Identity.Client.AppConfig` 名前空間に存在します。
+MSAL.NET v3.x 以降では、構成ファイルから機密クライアント アプリケーションを構成できます。
 
-アプリケーションを構成してインスタンス化するクラスで、`ConfidentialClientApplicationOptions` オブジェクトを宣言する必要があります。  ソース (appconfig.json ファイルを含む) から読み取られた構成を、アプリケーション オプションのインスタンスにバインドします。
+アプリケーションを構成してインスタンス化するクラスで、`ConfidentialClientApplicationOptions` オブジェクトを宣言する必要があります。  [Microsoft.Extensions.Configuration.Binder NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)の `IConfigurationRoot.Bind()` メソッドを使って、ソース (appconfig.json ファイルを含む) から読み取られた構成を、アプリケーション オプションのインスタンスにバインドします。
 
 ```csharp
-using Microsoft.Identity.Client.AppConfig;
+using Microsoft.Identity.Client;
 
 private ConfidentialClientApplicationOptions _applicationOptions;
 _applicationOptions = new ConfidentialClientApplicationOptions();

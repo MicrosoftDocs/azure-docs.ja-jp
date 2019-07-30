@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure DevOps Projects を使用して Java 用の CI/CD パイプラインを作成する
+title: クイック スタート:Java 用の CI/CD パイプラインを作成する - Azure DevOps Projects
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc
+ms.custom: mvc, seo-java-july2019
 monikerRange: vsts
-ms.openlocfilehash: 38be92a006ae6dbb7a550d2d91d886df820fb883
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 87090e205f4aa3e6b2886e6384921ddd46ea717d
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093567"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489509"
 ---
 # <a name="create-a-cicd-pipeline-for-java-with-azure-devops-projects"></a>Azure DevOps Projects を使用して Java 用の CI/CD パイプラインを作成する
 
@@ -30,7 +30,7 @@ Azure DevOps Projects は、Azure リソースを作成して、Azure Pipelines 
 
 Azure サブスクリプションをお持ちでない場合は、[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
   DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
 1. 左のウィンドウで **[リソースの作成]** を選択し、**DevOps Projects** を検索します。  
 
-2. **作成**を選択します。
+2. **作成** を選択します。
 
     ![継続的デリバリーの構成の開始](_img/azure-devops-project-java/fullbrowser.png)
 
@@ -47,9 +47,9 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 1. Java サンプル アプリケーションを選択します。  
 Java のサンプルでは、複数のアプリケーション フレームワークから選択できます。
 
-1. 既定のサンプル フレームワークは Spring です。 既定の設定のままにして、**[次へ]** を選択します。  Web App for Containers が既定のデプロイ ターゲットです。 前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。 
+1. 既定のサンプル フレームワークは Spring です。 既定の設定のままにして、 **[次へ]** を選択します。  Web App for Containers が既定のデプロイ ターゲットです。 前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。 
 
-2. 既定のサービスのままにして、**[次へ]** を選択します。
+2. 既定のサービスのままにして、 **[次へ]** を選択します。
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する 
 
@@ -57,7 +57,7 @@ Java のサンプルでは、複数のアプリケーション フレームワ�
 
     a. プロジェクトの名前を選択します。 
 
-    b. Azure サブスクリプションと場所を選択し、アプリケーションの名前を選択して、**[完了]** を選択します。  
+    b. Azure サブスクリプションと場所を選択し、アプリケーションの名前を選択して、 **[完了]** を選択します。  
     数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 サンプル アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
     
 
@@ -104,9 +104,9 @@ DevOps Projects によって、Azure Repos または GitHub に Git リポジト
 
 1. ビルド パイプラインの上部で、ビルド パイプラインの名前を選択します。
 
-1. ビルド パイプラインの名前をよりわかりやすい名前に変更し、**[保存してキューに登録]** を選択して、**[保存]** を選択します。
+1. ビルド パイプラインの名前をよりわかりやすい名前に変更し、 **[保存してキューに登録]** を選択して、 **[保存]** を選択します。
 
-1. ご自身のビルド パイプラインの名前の下で、**[履歴]** を選択します。   
+1. ご自身のビルド パイプラインの名前の下で、 **[履歴]** を選択します。   
 **[履歴]** ウィンドウに、ビルドの最近の変更の監査証跡が表示されます。  ビルド パイプラインに対するすべての変更が Azure Pipelines によって追跡されるため、各バージョンを比較できます。
 
 1. **[トリガー]** を選択します。   
@@ -115,13 +115,13 @@ DevOps Projects によって、Azure Repos または GitHub に Git リポジト
 1. **[保持]** を選択します。   
 シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
 
-1. **[ビルドとリリース]** を選択し、**[リリース]** を選択します。  
+1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  
  DevOps Projects により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. 左側で、リリース パイプラインの横にある省略記号 (...) を選択し、**[編集]** を選択します。  
+1. 左側で、リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。  
 リリース パイプラインには、リリース プロセスを定義するパイプラインが含まれています。  
     
-12. **[成果物]** で、**[ドロップ]** を選択します。  
+12. **[成果物]** で、 **[ドロップ]** を選択します。  
 前の手順で調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
 1. **[ドロップ]** アイコンの横にある **[継続的配置トリガー]** を選択します。  
@@ -133,7 +133,7 @@ DevOps Projects によって、Azure Repos または GitHub に Git リポジト
 1. 右側の **[リリースの表示]** を選択します。  
 このビューには、リリースの履歴が表示されます。
 
-1. いずれかのリリースの横にある省略記号 (...) を選択し、**[開く]** を選択します。  
+1. いずれかのリリースの横にある省略記号 (...) を選択し、 **[開く]** を選択します。  
 リリース概要、関連付けられた作業項目、テストなど、調べる必要があるいくつかのメニューがあります。
 
 1. **[コミット]** を選択します。   

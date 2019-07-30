@@ -6,14 +6,14 @@ author: jimzim
 ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
-ms.service: openshift
+ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: 627acbfc1f3a460cbb94e322c43445a55fce1ffa
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 0ad70f4c3681705377a350fee8b02a55c526f26c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306162"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669335"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを削除する
 

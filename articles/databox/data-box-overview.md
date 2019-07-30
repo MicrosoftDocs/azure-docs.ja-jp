@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ddbb535d386fb90ccb2042e0908e66146e854f00
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603465"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551522"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは
 
@@ -116,6 +116,9 @@ Data Box は、サービスが展開されているリージョン、デバイ�
     - 欧州連合 - 西ヨーロッパ、北ヨーロッパ。
     - 英国 - 英国南部、英国西部。
     - フランス - フランス中部、フランス南部。
+    - 日本 - 東日本、西日本
+    - オーストラリア - オーストラリア東部、オーストラリア南東部
+    - カナダ - カナダ東部、カナダ中部
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、サービスが使用可能なすべての Azure リージョンで利用できます。  
 

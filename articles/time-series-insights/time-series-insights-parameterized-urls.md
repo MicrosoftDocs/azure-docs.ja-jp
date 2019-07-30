@@ -6,23 +6,23 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfc04397b1d7e9f3256810cbe469067ae52c99bd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: df60429a8b3d6fbdc504a7605d1502b4e084d386
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238969"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165313"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
 Time Series Insights Explorer のカスタム ビューを共有するために、プログラムからカスタム ビューのパラメーター化 URL を作成することができます。
 
-Time Series Insights Explorer では、そのエクスペリエンスのビューを URL から直接指定する URL クエリ パラメーターがサポートされています。 たとえば、ターゲット環境や検索述語、必要な期間を URL だけで指定することができます。 そのカスタマイズした URL をユーザーがクリックすると、Time Series Insights ポータル内の対応するアセットにインターフェイスから直接アクセスすることができます。 データ アクセス ポリシーが適用されます。
+Time Series Insights Explorer では、そのエクスペリエンスのビューを URL から直接指定する URL クエリ パラメーターがサポートされています。 たとえば、ターゲット環境や検索述語、必要な期間を URL だけで指定することができます。 そのカスタマイズした URL をユーザーが選択すると、Time Series Insights ポータル内の対応するアセットにインターフェイスから直接アクセスすることができます。 データ アクセス ポリシーが適用されます。
 
 > [!TIP]
 > * 無料の [Time Series Insights](https://insights.timeseries.azure.com/samples) のデモをご覧ください。

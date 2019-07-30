@@ -4,7 +4,7 @@ description: SAP HANA on Azure (L インスタンス) のアーキテクチャ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8131bc953c2aba3c8d33f866cbbe9b1e232e168
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c069203e94872452c11a7e6cebccd213e0af639c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481039"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706934"
 ---
 # <a name="know-the-terms"></a>用語の確認
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 50935aca20af931eec63717921ef7a73267d2373
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 8a5dd16948724e3a79863450212702aa8aeb2347
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350472"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605141"
 ---
 # <a name="what-is-azure-custom-vision"></a>Azure Custom Vision とは
 
-Azure Custom Vision は、独自の画像分類器を構築、デプロイ、および改良できるようにする認識サービスです。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
+Azure Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにする認識サービスです。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
 
 ## <a name="what-it-does"></a>実行内容
 
@@ -31,9 +31,9 @@ Custom Vision の機能は、2 つに分割できます。 **画像の分類**�
 
 ### <a name="optimization"></a>最適化
 
-Custom Vision サービスは、画像間の主な違いをすばやく認識するように最適化されています。 これにより、少量のデータでモデルのプロトタイプ作成を開始できます。 ラベルあたり 50 個の画像が、通常は適切な出発点です。 しかし、これは、画像の微妙な違いの検出 (たとえば、品質保証のシナリオにおける小さな割れやへこみの検出) にはこのサービスが最適ではないということを意味します。
+Custom Vision サービスは、画像間の主な違いをすばやく認識するために最適化されているため、少量のデータを含むモデルでプロトタイプの作成を始めることができます。 ラベルあたり 50 個の画像が、通常は適切な出発点です。 しかし、このサービスは、画像の微妙な違いの検出 (たとえば、品質保証のシナリオにおける小さな割れやへこみの検出) には最適ではありません。
 
-また、Custom Vision アルゴリズムのいくつかの種類の中から、特定の対象素材 (たとえば、ランドマークや小売り品目) が含まれている画像に適したものを選択することもできます。 それらの詳細については、[分類器の構築](getting-started-build-a-classifier.md)に関するガイドを参照してください。
+また、Custom Vision アルゴリズムのいくつかの種類の中から、特定の対象素材 (たとえば、ランドマークや小売り品目) が含まれている画像に適したものを選択することもできます。 詳細については、[分類器の構築](getting-started-build-a-classifier.md)に関するガイドを参照してください。
 
 ## <a name="what-it-includes"></a>備えている機能
 

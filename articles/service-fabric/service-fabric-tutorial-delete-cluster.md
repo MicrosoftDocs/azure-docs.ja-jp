@@ -3,7 +3,7 @@ title: Azure で Service Fabric クラスターを削除する | Microsoft Docs
 description: このチュートリアルでは、Azure でホストされている Service Fabric クラスターとそのすべてのリソースを削除する方法について説明します。 クラスターを含むリソース グループを削除するか、リソースを選択して削除することができます。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
-ms.author: aljo
+ms.date: 07/22/2019
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0e5137a8183f378ee5960846e281222c6ecaaa47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c6fd4234257cbb19580a5b406750cc72d03609c0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158082"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598867"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>チュートリアル:Azure で実行されている Service Fabric クラスターを削除する
 

@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: bcc66a73e3d7986b177b13eb309ad664a006b960
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6878d3b4fc8648db540d016389747eceb45d936a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118588"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436177"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>レンダー ファーム マネージャーで Azure Batch を使用する
 
@@ -23,7 +23,7 @@ Azure では、一般的なレンダー マネージャーのビルトイン サ
 次のレンダー マネージャーがサポートされています。
 
 * [PipelineFX Qube!](https://www.pipelinefx.com/)
-* [Royal Render](http://www.royalrender.de/)
+* [Royal Render](https://www.royalrender.de/)
 * [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
 
 ## <a name="using-azure-with-pipelinefx-qube"></a>Azure を PipelineFX Qube で使用する
@@ -32,7 +32,7 @@ Azure Batch のプール VM を Qube のワーカーとして使用すること�
 
 ## <a name="using-azure-with-royal-render"></a>Azure を Royal Render で使用する
 
-Royal Render には Azure や Azure Batch の統合が組み込まれており、Azure ベースの VM を使用してレンダー ファームを拡張できます。 概要については、[ヘルプ ファイル](http://www.royalrender.de/help8/index.html?Cloudrendering.html)をご覧ください。
+Royal Render には Azure や Azure Batch の統合が組み込まれており、Azure ベースの VM を使用してレンダー ファームを拡張できます。 概要については、[ヘルプ ファイル](https://www.royalrender.de/help8/index.html?Cloudrendering.html)をご覧ください。
 
 Azure の統合を使用する Royal Render のお客様の例については、[Jellyfish Pictures のカスタマー ストーリー](https://customers.microsoft.com/story/jellyfishpictures)をご覧ください。
 

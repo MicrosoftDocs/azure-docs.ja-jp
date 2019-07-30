@@ -2,17 +2,17 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) のストレージ
 description: Azure Kubernetes Service (AKS) のストレージ、データの暗号化、およびバックアップに関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.author: iainfou
-ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 5/6/2019
+ms.author: mlearned
+ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072646"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614592"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
 
@@ -34,12 +34,11 @@ Azure Kubernetes Service (AKS) でクラスターを作成して管理する際�
 
 次の表に、使用可能なストレージの種類とその機能の概要を示します。
 
-| ユース ケース | ボリューム プラグイン | 読み取り/書き込み (1 回のみ) | 読み取り専用 (複数回) | 読み取り/書き込み (複数回) |
-|----------|---------------|-----------------|----------------|-----------------|
-| 共有構成       | Azure Files   | はい | はい | はい |
-| 構造化されたアプリ データ        | Azure ディスク   | はい | いいえ   | いいえ   |
-| アプリ データ、読み取り専用で共有 | [dysk (プレビュー)][dysk] | はい | はい | いいえ   |
-| 非構造化データ、ファイル システム操作 | [BlobFuse (プレビュー)][blobfuse] | はい | はい | はい |
+| ユース ケース | ボリューム プラグイン | 読み取り/書き込み (1 回のみ) | 読み取り専用 (複数回) | 読み取り/書き込み (複数回) | Windows Server コンテナーのサポート |
+|----------|---------------|-----------------|----------------|-----------------|--------------------|
+| 共有構成       | Azure Files   | はい | はい | はい | はい |
+| 構造化されたアプリ データ        | Azure ディスク   | はい | いいえ  | いいえ  | はい |
+| 非構造化データ、ファイル システム操作 | [BlobFuse (プレビュー)][blobfuse] | はい | はい | はい | いいえ |
 
 AKS のボリュームに対して提供される、2 つの主な種類のストレージが、Azure ディスクまたは Azure ファイルでサポートされます。 セキュリティを向上させるため、両方の種類のストレージでは既定で Azure Storage Service Encryption (SSE) が使用され、保存データが暗号化されます。 ディスクは現在、AKS ノード レベルで Azure Disk Encryption を使用して暗号化することはできません。
 
@@ -48,7 +47,7 @@ Azure ファイルは現在、Standard パフォーマンス レベルで使用�
 - *Premium*。このディスクは、高パフォーマンスのソリッドステート ディスク (SSD) でサポートされます。 すべての運用環境のワークロードに Premium ディスクをお勧めします。
 - *Standard*。このディスクは標準のスピニング ディスク (HDD) でサポートされ、アーカイブまたはアクセス頻度の少ないデータに適しています。
 
-アプリケーション パフォーマンスのニーズとアクセス パターンを理解して、適切なストレージ レベルを選択してください。 Managed Disks のサイズとパフォーマンス レベルの詳細については、「[Azure Managed Disks overview][managed-disks]」 (Azure Managed Disks の概要) を参照してください
+アプリケーション パフォーマンスのニーズとアクセス パターンを理解して、適切なストレージ レベルを選択してください。 マネージド ディスクのサイズとパフォーマンス レベルの詳細については、[Azure マネージド ディスクの概要][managed-disks]に関するページを参照してください
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>アプリケーションのニーズを定義するためにストレージ クラスを作成して使用する
 
@@ -69,7 +68,7 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 ここでは、*Standard_DS2_v2* で、2 倍の数の接続ディスクが許可され、3 倍から 4 倍の量の IOPS とディスク スループットが提供されます。 コア コンピューティング リソースだけを見て、コストを比較した場合、*Standard_B2ms* VM サイズを選択する可能性があります。その場合、ストレージのパフォーマンスは低く、制限されます。 アプリケーション開発チームと協力し、ストレージ容量とパフォーマンスのニーズを理解してください。 パフォーマンスのニーズを満たすため、あるいはニーズを上回るように、AKS ノードに適した VM サイズを選択します。 定期的にアプリケーションのベースラインを設定し、必要に応じて、VM サイズを調整します。
 
-使用可能な VM サイズの詳細については、「[Sizes for Linux virtual machines in Azure][vm-sizes]」 (Azure の Linux 仮想マシンのサイズ) を参照してください。
+使用可能な VM サイズの詳細については、「[Azure の Linux 仮想マシンのサイズ][vm-sizes]」を参照してください。
 
 ## <a name="dynamically-provision-volumes"></a>ボリュームを動的にプロビジョニングする
 
@@ -81,9 +80,9 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 永続ボリューム要求 (PVC) を使用すれば、必要に応じて、ストレージを動的に作成することができます。 ポッドで要求されたときに、基になる Azure ディスクが生成されます。 ポッド定義で、ボリュームを作成し、設計されたマウント パスに接続するよう要求します
 
-ボリュームを動的に作成して使用する方法の概念については、「[Persistent Volumes Claims][aks-concepts-storage-pvcs]」 (永続ボリューム要求) を参照してください。
+ボリュームを動的に作成して使用する方法の概念については、「[永続ボリューム要求][aks-concepts-storage-pvcs]」を参照してください。
 
-これらのボリュームの動作を確認する場合は、[Azure ディスク][dynamic-disks]または [Azure ファイル][dynamic-files]で動的に永続ボリュームを作成して使用する方法を参照してください。
+これらのボリュームの動作を確認する場合は、[Azure ディスク][dynamic-disks] or [Azure Files][dynamic-files]を含む永続ボリュームを動的に作成して使用する方法を参照してください。
 
 ストレージ クラス定義の一部として、適切な *reclaimPolicy* を設定します。 この reclaimPolicy が、ポッドが削除されて永続ボリュームが不要になる可能性がある場合の、基礎となる Azure Storage リソースの動作を制御します。 基礎となるストレージ リソースは削除することも、将来のポッドで使用するために保持しておくこともできます。 reclaimPolicy は、*retain* または *delete* に設定できます。 アプリケーションのニーズを理解し、使用および課金される未使用ストレージの量を最小限に抑えるために保持されるストレージの定期チェックを実装します。
 
@@ -93,17 +92,16 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 **ベスト プラクティス ガイダンス** - Velero や Azure Site Recovery など、ご利用のストレージの種類に適したツールを使って、データをバックアップします。 それらのバックアップの整合性とセキュリティを確認します。
 
-アプリケーションでディスク上またはファイル内に保持されているデータを格納して使用する場合、定期的にそのデータのバックアップまたはスナップショットを作成する必要があります。 Azure ディスクでは、組み込みのスナップショット テクノロジを使用できます。 スナップショット操作を実行する前に、アプリケーションでディスクにフラッシュ書き込みを行うためのフックが必要になる場合があります。 [Velero][velero] では、追加のクラスター リソースおよび構成と共に永続ボリュームをバックアップできます。 [アプリケーションから状態を削除][remove-state]できない場合は、永続ボリュームからデータをバックアップし、復元操作を定期的にテストしてデータの整合性と必要なプロセスを確認します。
+アプリケーションでディスク上またはファイル内に保持されているデータを格納して使用する場合、定期的にそのデータのバックアップまたはスナップショットを作成する必要があります。 Azure ディスクでは、組み込みのスナップショット テクノロジを使用できます。 スナップショット操作を実行する前に、アプリケーションでディスクにフラッシュ書き込みを行うためのフックが必要になる場合があります。 [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state]では、永続ボリュームからデータをバックアップし、復元操作を定期的にテストしてデータの整合性と必要なプロセスが確認されます。
 
-データ バックアップのさまざまな方法の制限事項、またスナップショットを作成する前にデータを静止する必要がある場合の制限事項を理解します。 データ バックアップで、クラスター デプロイのアプリケーション環境を必ずしも復元できるとは限りません。 このようなシナリオの詳細については、[AKS での事業継続とディザスター リカバリーのベスト プラクティス][best-practices-multi-region]に関するページを参照してください。
+データ バックアップのさまざまな方法の制限事項、またスナップショットを作成する前にデータを静止する必要がある場合の制限事項を理解します。 データ バックアップで、クラスター デプロイのアプリケーション環境を必ずしも復元できるとは限りません。 このようなシナリオの詳細については、「[Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス][best-practices-multi-region]」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、AKS のストレージのベスト プラクティスに重点を置きました。 Kubernetes のストレージの基本について詳しくは、[AKS におけるアプリケーションのストレージの概念][aks-concepts-storage]に関するページを参照してください。
+この記事では、AKS のストレージのベスト プラクティスに重点を置きました。 Kubernetes のストレージの基本の詳細については、[AKS におけるアプリケーションのストレージの概念][aks-concepts-storage]に関するページを参照してください。
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero
-[dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 
 <!-- LINKS - Internal -->

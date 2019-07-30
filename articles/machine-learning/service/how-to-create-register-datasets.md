@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: b4c22caae86e20b8379db2b7feffb1ca82001239
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a879fa17244977277dab3e2e66c5888a44759764
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753155"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444025"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning でデータ セット (プレビュー) を作成してアクセスする
 
@@ -150,5 +150,4 @@ dataset = workspace.datasets['dataset_crime']
 ## <a name="next-steps"></a>次の手順
 
 * [データセットを探索および準備します](how-to-explore-prepare-data.md)。
-* [データセット定義のライフサイクルを管理します](how-to-manage-dataset-definitions.md)。
 * Datasets の使用例については、[サンプル ノートブック](https://aka.ms/dataset-tutorial)を参照してください。

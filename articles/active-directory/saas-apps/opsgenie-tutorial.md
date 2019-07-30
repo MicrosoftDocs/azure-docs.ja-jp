@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 98e4d1870c57c9718e2d4293157b21ead8ea44e1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 446ac54d84f7b2b3bf3aaf6eaf5536f0dfb804fe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987484"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル:Azure Active Directory と OpsGenie の統合
 
@@ -165,7 +165,7 @@ OpsGenie で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに、「**B. Simon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **bsimon@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに **bsimon@yourcompanydomain.extension** と入力します。  
     たとえば、BSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

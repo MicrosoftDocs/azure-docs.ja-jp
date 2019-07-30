@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87de721f596eb4148939c00bc4b4db270a87c24e
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850761"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724081"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Azure アカウントのプロファイル情報を変更する
 
@@ -87,10 +87,16 @@ Microsoft では、サービス関連の通知とアカウントのレコメン�
 1. [要求フォーム](https://account.microsoft.com/profile/permissions-link-request)に移動し、自分のプロファイルのメール アドレスを使って要求を送信します。 個人設定を更新するためのリンクをメールで受け取ります。
 2. そのリンクを選択して、 **[Manage communication permissions]\(通信のアクセス許可の管理\)** ページを開きます。 このページには、メール アドレスがオプトインされているマーケティング通信の種類が表示されます。 オプトアウトするトピックをオフにして、 **[保存]** を選択します。
 
-
 ![通信のアクセス許可を管理するためのページの例](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
 
 マーケティング通信をオプトアウトしても、アカウントに基づくサービスの通知はまだ受け取ります。
+
+## <a name="change-the-subscription-name"></a>サブスクリプション名を変更する
+
+1. [Azure portal](https://portal.azure.com) にサインインし、左側のウィンドウから **[サブスクリプション]** を選択して、名前を変更するサブスクリプションを選択します。
+1. **[概要]** を選択し、コマンド バーから **[名前の変更]** を選択します。
+    ![Azure サブスクリプションの名前変更の例](./media/billing-how-to-change-azure-account-profile/rename-sub.png)
+1. 名前を変更した後、 **[保存]** を選択します。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

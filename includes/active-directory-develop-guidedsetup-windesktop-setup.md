@@ -15,11 +15,11 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: ae6d590cdada24638ec2d24c83609b8e6addfaf0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121620"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181350"
 ---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
@@ -33,13 +33,13 @@ ms.locfileid: "66121620"
 
 アプリケーションを作成するには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
+1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
 2. **[テンプレート]** で **[Visual C#]** を選択します。
-3. 使用している Visual Studio バージョンに応じて、**[WPF アプリ (.NET Framework)]** を選択します。
+3. 使用している Visual Studio バージョンに応じて、 **[WPF アプリ (.NET Framework)]** を選択します。
 
 ## <a name="add-msal-to-your-project"></a>プロジェクトに MSAL を追加する
 
-1. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]**> **[パッケージ マネージャー コンソール]** の順に選択します。
+1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]** >  **[パッケージ マネージャー コンソール]** の順に選択します。
 2. [パッケージ マネージャー コンソール] ウィンドウで、次の Azure PowerShell コマンドを貼り付けます。
 
     ```powershell

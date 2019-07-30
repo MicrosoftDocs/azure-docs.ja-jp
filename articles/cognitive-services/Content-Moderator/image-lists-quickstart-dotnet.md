@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:C# でカスタム リストと照らして画像を確認する - Content Moderator
+title: C# でカスタム リストと照らして画像を確認する - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for C# を使用し、カスタム画像リストと照らして画像をモデレートする方法。
 services: cognitive-services
@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 49f87b7cf3d7f46a66c0992edf25968b1dbae073
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881793"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603403"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>クイック スタート:C# でカスタム画像リストを使用してモデレートする
+# <a name="moderate-with-custom-image-lists-in-c"></a>C# でカスタム画像リストを使用してモデレートする
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。
 - カスタム画像リストを作成する
@@ -32,7 +32,7 @@ ms.locfileid: "55881793"
 > [!NOTE]
 > **画像リスト数は 5 個**、各リストの**画像数は 10,000 個**という上限があります。
 
-このクイック スタートのコンソール アプリケーションは、Image List API で実行できるタスクの一部をシミュレートします。
+このガイドのコンソール アプリケーションでは、Image List API で実行できるタスクの一部をシミュレートします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
@@ -303,7 +303,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>リストに画像のコレクションを追加するメソッドを作成する
 
-**Program** クラスに次のメソッドを追加します。 このクイック スタートでは、リスト内の画像にタグを適用する方法を説明しません。 
+**Program** クラスに次のメソッドを追加します。 このガイドでは、リスト内の画像にタグを適用する方法は説明しません。 
 
 ```csharp
 /// <summary>

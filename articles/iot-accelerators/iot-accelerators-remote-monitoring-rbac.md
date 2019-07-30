@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61443093"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203147"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する
 
@@ -91,11 +91,11 @@ Azure Active Directory アプリケーション所有者は、Azure Portal を�
 
 1. Azure Portal で、ソリューション用の**アプリの登録**を見つけます。 アプリケーション名は、リモート監視ソリューションの名前です。 次のスクリーンショットでは、ソリューションとアプリケーションの表示名は **contoso rm4** です。
 
-    ![アプリの登録](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![アプリの登録](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. アプリケーションを選択し、 **[マニフェスト]** をクリックします。 アプリケーションに対して定義された 2 つの既存の[アプリ ロール](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)を確認できます。
 
-    ![マニフェストの表示](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![マニフェストの表示](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. 次のスニペットに示すように、マニフェストを編集して、**ManageDevices** という名前のロールを追加します。 新しいロールの ID として GUID などの一意の文字列が必要です。 [オンライン GUID ジェネレーター](https://www.guidgenerator.com/)などのサービスを使用して、新しい GUID を生成できます。
 

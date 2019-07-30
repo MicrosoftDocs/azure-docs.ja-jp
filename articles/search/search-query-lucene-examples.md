@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 467c323a0b669e70e12f801fd8fdd6df119e793d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: affe9084c488984747c4bafca5b8e9536cd6dba8
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595900"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485420"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>"完全な" Lucene 検索構文を使用するクエリの例 (Azure Search での高度なクエリ)
 
@@ -31,7 +31,7 @@ Lucene パーサーは、フィールド スコープ クエリ、あいまい�
 
 次の例では、[City of New York OpenData](https://opendata.cityofnewyork.us/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Search は必要ありません。
 
-必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、[REST クライアントを使用した探索](search-fiddler.md)に関するページを参照してください。
+必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、[REST クライアントを使用した探索](search-get-started-postman.md)に関するページを参照してください。
 
 ### <a name="set-the-request-header"></a>要求ヘッダーを設定する
 

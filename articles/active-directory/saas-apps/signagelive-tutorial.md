@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bff57635c87b77270e1bd20e04834dec132b2df6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c31f201179f9f0eb7077ed275aae927a2a4fe376
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867302"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>チュートリアル:Azure Active Directory と Signagelive の統合
 
@@ -56,7 +56,7 @@ Azure AD への Signagelive の統合を構成するには、まず、ギャラ�
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -68,7 +68,7 @@ Azure AD への Signagelive の統合を構成するには、まず、ギャラ�
 
      ![結果リストの Signagelive](common/search-new-app.png)
 
-5. 結果ウィンドウから **[Signagelive]** を選択し、**[追加]** ボタンを選択して、アプリケーションを追加します。
+5. 結果ウィンドウから **[Signagelive]** を選択し、 **[追加]** ボタンを選択して、アプリケーションを追加します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -90,15 +90,15 @@ Signagelive で Azure AD でのシングル サインオンを構成してテス
 
 Signagelive での Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Signagelive** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Signagelive** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログ ボックスで、**[SAML]** を選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML]** を選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** を選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** を選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Signagelive での Azure AD シングル サインオンを構成するには、
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Signagelive クライアント サポート チーム](mailto:support@signagelive.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** を選択して、ご自分の要件に適した特定のオプションの**証明書 (未加工)** をダウンロードします。 その後、ご自分のコンピューター上に保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して、ご自分の要件に適した特定のオプションの**証明書 (未加工)** をダウンロードします。 その後、ご自分のコンピューター上に保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -133,7 +133,7 @@ Signagelive 側でシングル サインオンを構成するには、ダウン�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -157,7 +157,7 @@ Signagelive 側でシングル サインオンを構成するには、ダウン�
 
 このセクションでは、Britta Simon に Signagelive へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Signagelive]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Signagelive]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -169,15 +169,15 @@ Signagelive 側でシングル サインオンを構成するには、ダウン�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** ボタンを選択します。 次に、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** ボタンを選択します。 次に、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、**[Britta Simon]** を選択します。 次に、画面の下部にある **[選択]** ボタンをクリックします。
+5. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、 **[Britta Simon]** を選択します。 次に、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内にロール値が必要な場合、**[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 次に、画面の下部にある **[選択]** ボタンをクリックします。
+6. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 次に、画面の下部にある **[選択]** ボタンをクリックします。
 
-7. **[割り当ての追加]** ダイアログ ボックスで、**[割り当て]** ボタンを選択します。
+7. **[割り当ての追加]** ダイアログ ボックスで、 **[割り当て]** ボタンを選択します。
 
 ### <a name="create-a-signagelive-test-user"></a>Signagelive のテスト ユーザーの作成
 

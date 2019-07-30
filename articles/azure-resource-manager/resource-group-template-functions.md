@@ -1,23 +1,17 @@
 ---
 title: リソース マネージャーのテンプレートの関数 | Microsoft Docs
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 0644abe1-abaa-443d-820d-1966d7d26bfd
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 80f5c59f5a113bbe29d18bae41ba44adc338a4b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 201fea91aba2a14720a7c28df5128f94e9e327fd
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069274"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205424"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
 この記事では、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](resource-group-authoring-templates.md#syntax)に関するセクションを参照してください。

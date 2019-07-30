@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/16/2019
-ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 06/26/2019
+ms.openlocfilehash: b03f546b992bd9de6092dc0da8ef72aa69aa1da2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002750"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447784"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>SQL Database Advanced Data Security の仮想ネットワークでの使用と 100% に近い互換性
 
@@ -64,7 +64,7 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 | データベースごとのデータ ファイル数 (ROWS) | 複数 |
 | データベースごとのログ ファイル数 (LOG) | 1 |
 | VNet - Azure Resource Manager デプロイ | はい |
-| VNet - クラシック デプロイ モデル | いいえ  |
+| VNet - クラシック デプロイ モデル | いいえ |
 | ポータルのサポート | はい|
 | 組み込み統合サービス (SSIS) | いいえ - SSIS は [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) に含まれます。 |
 | 組み込み Analysis Service (SSAS) | いいえ - SSAS は別の [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) です。 |
@@ -78,9 +78,12 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 仮想コア モデルでは、ハードウェアの世代を選択できます。
 
 - **Gen4** 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4-GHz プロセッサ、接続された SSD、物理コア、コアあたり 7 GB の RAM、8 - 24 仮想コアのコンピューティング サイズに基づいています。
-- **Gen5** 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、高速 NVMe SSD、ハイパースレッド論理コア、8 - 80 コアのコンピューティング サイズに基づいています。
+- **Gen5** 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、高速 NVMe SSD、ハイパースレッド論理コア、4 - 80 コアのコンピューティング サイズに基づいています。
 
 ハードウェアの世代の違いについて詳しくは、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)に関する記事をご覧ください。
+
+> [!IMPORTANT]
+> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
 
 ## <a name="managed-instance-service-tiers"></a>マネージド インスタンスのサービス レベル
 

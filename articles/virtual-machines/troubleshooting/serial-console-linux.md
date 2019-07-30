@@ -4,7 +4,7 @@ description: Azure Virtual Machines および仮想マシン スケール セッ
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 5325226d21b16ff3671f00ac251384e8e42db41c
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: f3fa646fcca99d5762f480b3fd12c5e249eabaf8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431117"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710572"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
-Azure portal のシリアル コンソールでは、Linux 仮想マシン (VM) および仮想マシン スケール セット インスタンス用のテキスト ベースのコンソールへのアクセスが提供されます。 このシリアル接続は、ネットワークやオペレーティング システムの状態には関係なく、VM または仮想マシン スケール セット インスタンスの COM1 シリアル ポートに接続してそのポートへのアクセスを提供します。 このシリアル コンソールは Azure portal を使用してのみアクセスでき、VM または仮想マシン スケール セットへの共同作成者以上のアクセス ロールを持つユーザーに対してのみ許可されます。
+Azure portal のシリアル コンソールでは、Linux 仮想マシン (VM) および仮想マシン スケール セット インスタンス用のテキスト ベースのコンソールへのアクセスが提供されます。 このシリアル接続は、ネットワークやオペレーティング システムの状態には関係なく、VM または仮想マシン スケール セット インスタンスの ttys0 シリアル ポートに接続してそのポートへのアクセスを提供します。 このシリアル コンソールは Azure portal を使用してのみアクセスでき、VM または仮想マシン スケール セットへの共同作成者以上のアクセス ロールを持つユーザーに対してのみ許可されます。
 
 シリアル コンソールは、VM と仮想マシン スケール セット インスタンスに対して同じ方法で動作します。 このドキュメントでは、特に記載のない限り、VM という記述にはすべて仮想マシン スケール セット インスタンスが暗黙的に含まれます。
 
@@ -208,6 +208,7 @@ Microsoft は、シリアル コンソールには問題がいくつかあるこ
 長い文字列を貼り付けると機能しない。 | シリアル コンソールでは、シリアル ポートの帯域幅に対する過負荷を防止するために、ターミナルに貼り付けられる文字列の長さが 2048 文字に制限されます。
 シリアル コンソールは、ストレージ アカウントのファイアウォールと連動しません。 | シリアル コンソールは、ブート診断ストレージ アカウントで有効になっているストレージ アカウント ファイアウォールと設計上、連動できません。
 シリアル コンソールが、階層型名前空間を持つ Azure Data Lake Storage Gen2 を使用するストレージ アカウントで機能しません。 | これは階層型名前空間の既知の問題です。 緩和するには、Azure Data Lake Storage Gen2 を使用して VM のブート診断ストレージ アカウントを作成しないようにします。 このオプションは、ストレージ アカウントの作成時にのみ設定できます。 この問題を緩和するには、Azure Data Lake Storage Gen2 を有効にせずに別個のブート診断ストレージ アカウントを作成しなければならない場合があります。
+SLES BYOS イメージでキーボード入力が不安定。 キーボード入力は散発的にしか認識されません。 | これは Plymouth パッケージの問題です。 スプラッシュ スクリーンは不要なので、Plymouth を Azure で実行しないでください。Plymouth は、シリアル コンソールを使用するプラットフォームの機能の妨げになります。 `sudo zypper remove plymouth` を使用して Plymouth を削除してから再起動します。 または、行の末尾に `plymouth.enable=0` を付加して GRUB 構成のカーネル行を修正します。 これを行うには、[起動時に起動エントリを編集する](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)か、`/etc/default/grub` の GRUB_CMDLINE_LINUX 行を編集し、`grub2-mkconfig -o /boot/grub2/grub.cfg` を使用して GRUB をリビルドしてから再起動します。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

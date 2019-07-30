@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 3df6c34420369effe11ae5a7ec58eba595ffa471
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 8e45c8924bbc5cf50877e6c7656dacd7971f59b2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957009"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606799"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート:Face REST API と Python を使用して画像から顔を検出する
 
@@ -60,15 +60,16 @@ face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/dete
 
 image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
 
-headers = { 'Ocp-Apim-Subscription-Key': subscription_key }
-    
+headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+
 params = {
     'returnFaceId': 'true',
     'returnFaceLandmarks': 'false',
     'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
 }
 
-response = requests.post(face_api_url, params=params, headers=headers, json={"url": image_url})
+response = requests.post(face_api_url, params=params,
+                         headers=headers, json={"url": image_url})
 print(json.dumps(response.json()))
 ```
 

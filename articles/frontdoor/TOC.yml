@@ -46,6 +46,8 @@
       href: front-door-routing-methods.md
     - name: URL 書き換え
       href: front-door-url-rewrite.md
+    - name: URL リダイレクト
+      href: front-door-url-redirect.md
     - name: WAF
       items:
         - name: 概要
@@ -58,6 +60,14 @@
           href: waf-front-door-monitor.md
 - name: ハウツー ガイド
   items:
+    - name: トラフィックのリダイレクト
+      items:
+        - name: HTTP および HTTPS リダイレクトを使用したフロント ドアの構成
+          href: front-door-how-to-redirect-https.md
+    - name: カスタム ドメインのオンボード
+      items:
+        - name: ルートまたは頂点のドメインのオンボード
+          href: front-door-how-to-onboard-apex-domain.md
     - name: トラブルシューティング
       items:
         - name: ルーティングの問題のトラブルシューティング

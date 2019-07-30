@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edbf5548f5e230986f0a1786d67fb4580e574e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235436"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482932"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意フレームワーク
 
@@ -50,7 +50,7 @@ OAuth 2.0 の認可付与を採用している同意フレームワークの使�
 
 1. ユーザーのサインインが終わると、そのユーザーに対して同意ページを表示する必要があるかどうかが Azure AD により判定されます。 表示の要否の判定基準は、ユーザー (またはそのユーザーが所属する組織の管理者) がアプリケーションに既に同意を与えているかどうかです。 同意がまだであれば、Azure AD からユーザーに対して同意を求めるメッセージと、アプリケーションが機能するうえで必要なアクセス許可が表示されます。 同意ダイアログに表示されるアクセス許可は、Azure portal の **[委任されたアクセス許可]** で選択したものと同じになります。
 
-    ![ユーザーの同意エクスペリエンス](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![同意ダイアログに表示されるアクセス許可の例を示します](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. ユーザーが同意すると、アプリケーションに認証コードが返されます。アクセス トークンと更新トークンを取得するときには、この認証コードが必要になります。 このフローについて詳しくは、[Web API のアプリの種類](web-api.md)に関する記事をご覧ください。
 

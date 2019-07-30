@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009176"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190162"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 
@@ -62,6 +62,17 @@ Azure Service Bus の geo ディザスター リカバリー機能は、災害�
 2. "*プライマリ名前空間のプロビジョニング先とは異なるリージョン*" に、"***セカンダリ***" Service Bus Premium 名前空間をプロビジョニングします。 これは、異なるリージョンのデータセンター間で障害を分離できるようにするために役立ちます。
 
 3. プライマリ名前空間とセカンダリ名前空間の間にペアリングを作成して、"***エイリアス***" を取得します。
+
+    >[!NOTE] 
+    > [Azure Service Bus Standard 名前空間を Azure Service Bus Premium に移行済み](service-bus-migrate-standard-premium.md)の場合、既存のエイリアス (つまり、Service Bus Standard 名前空間の接続文字列) を使用して、**PS/CLI** または **REST API** を介したディザスター リカバリー構成を作成する必要があります。
+    >
+    >
+    > これは、移行中に、Azure Service Bus Standard 名前空間の接続文字列/DNS 名自体が Azure Service Bus Premium 名前空間のエイリアスになるためです。
+    >
+    > クライアント アプリケーションでは、このエイリアス (つまり、Azure Service Bus Standard 名前空間の接続文字列) を利用して、ディザスター リカバリーのペアリングが設定されている Premium 名前空間に接続する必要があります。
+    >
+    > ポータルを使用してディザスター リカバリー構成を設定する場合、この注意事項を気にする必要はありません。
+
 
 4. 手順 3 で取得した "***エイリアス***" を使用して、クライアント アプリケーションを Geo-DR が有効なプライマリ名前空間に接続します。 最初、エイリアスは、プライマリ名前空間を指しています。
 
@@ -120,7 +131,7 @@ Azure Service Bus の geo ディザスター リカバリー機能は、災害�
 
 2. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされた新しいメッセージ、新しい重複については正しく機能します。 
 
-3. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation)を行うようお勧めします。
+3. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)を行うようお勧めします。
 
 4. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。 サブスクリプションやルールもエンティティとしてカウントされます。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 8f8dc8219d65505952f35ad018ef19aeb68d64e9
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9417d7b957d69dc802ecb2f9f78723eb7aba08ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989761"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099849"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>チュートリアル:Azure Active Directory と iPass SmartConnect の統合
 
@@ -123,7 +123,7 @@ iPass SmartConnect で Azure AD シングル サインオンを構成するに�
     | firstName | User.givenname |
     | lastName | User.surname |
     | email | user.userprincipalname |
-    | ユーザー名 | user.userprincipalname |
+    | username | user.userprincipalname |
     | | |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
@@ -180,7 +180,7 @@ iPass SmartConnect で Azure AD シングル サインオンを構成するに�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

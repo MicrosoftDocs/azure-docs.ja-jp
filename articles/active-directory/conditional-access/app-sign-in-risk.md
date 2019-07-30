@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5defdf2d33d32042775271fe01aba377687ae75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bdbdd0253478200d39501444ae649b87b77e65a4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891567"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509040"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
@@ -33,11 +33,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルのシナリオを完了するための要件を次に示します。
 
 - **Azure AD Premium P2 エディションへのアクセス** - Azure AD Premium P1 の条件付きアクセス機能を使用する場合、P2 エディションが必要になります。これは、このクイック スタートのシナリオでは Identity Protection が必要になるためです。
-
 - **Identity Protection** - このクイック スタートのシナリオでは Identity Protection を有効にする必要があります。 Identity Protection を有効にする方法がわからない場合は、「[Azure Active Directory Identity Protection の有効化](../identity-protection/enable.md)」を参照してください。
-
-- **Tor Browser** - [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) は、オンラインでの自身のプライバシー保護に役立つことを目的としています。 Identity Protection は、Tor Browser からのサインインを、中程度のリスク レベルのある**匿名 IP アドレスからのサインイン**として検出します。 詳細については、「[Azure Active Directory リスク イベント](../reports-monitoring/concept-risk-events.md)」を参照してください。  
-
+- **Tor Browser** - [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) は、オンラインでの自身のプライバシー保護に役立つことを目的としています。 Identity Protection は、Tor Browser からのサインインを、中程度のリスク レベルのある匿名 IP アドレスからのサインインとして検出します。 詳細については、「[Azure Active Directory リスク イベント](../reports-monitoring/concept-risk-events.md)」を参照してください。  
 - **Alain Charon というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「[クラウドベースのユーザーを追加する](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)」を参照してください。
 
 ## <a name="test-your-sign-in"></a>サインインをテストする
@@ -67,12 +64,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **条件付きアクセス ポリシーを構成するには:**
 
 1. [Azure portal](https://portal.azure.com) に全体管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
-
-1. Azure Portal の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
+1. Azure Portal の左側のナビゲーション バーで、 **[Azure Active Directory]** をクリックします。
 
    ![Azure Active Directory](./media/app-sign-in-risk/02.png)
 
-1. **[Azure Active Directory]** ページの **[セキュリティ]** セクションで、**[条件付きアクセス]** をクリックします。
+1. **[Azure Active Directory]** ページの **[セキュリティ]** セクションで、 **[条件付きアクセス]** をクリックします。
 
    ![条件付きアクセス](./media/app-sign-in-risk/03.png)
 
@@ -92,14 +88,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![条件付きアクセス](./media/app-sign-in-risk/107.png)
 
-   1. **[ユーザーとグループの選択]** をクリックし、**[ユーザーとグループ]** を選択します。
-
+   1. **[ユーザーとグループの選択]** をクリックし、 **[ユーザーとグループ]** を選択します。
    1. **[選択]** をクリックします。
-
-   1. **[選択]** ページで **[Alain Charon]** を選択し、**[選択]** をクリックします。
-
-   1. **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
-
+   1. **[選択]** ページで **[Alain Charon]** を選択し、 **[選択]** をクリックします。
+   1. **[ユーザーとグループ]** ページで、 **[完了]** をクリックします。
 1. **[クラウド アプリ]** をクリックします。
 
    ![クラウド アプリ](./media/app-sign-in-risk/08.png)
@@ -109,9 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![条件付きアクセス](./media/app-sign-in-risk/109.png)
 
    1. **［すべてのクラウド アプリ］** をクリックします。
-
    1. **[Done]** をクリックします。
-
 1. **[条件]** をクリックします。
 
    ![アクセス制御](./media/app-sign-in-risk/19.png)
@@ -121,16 +111,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![サインインのリスク レベル](./media/app-sign-in-risk/21.png)
 
    1. **[サインイン リスク]** をクリックします。
-
-   1. **[構成]** で、**[はい]** をクリックします。
-
+   1. **[構成]** で、 **[はい]** をクリックします。
    1. [サインイン リスク レベル] で **[中]** を選択します。
-
    1. **[選択]** をクリックします。
-
-   1. **[条件]** ページで、**[完了]** をクリックします。
-
-1. **[アクセス制御]** セクションで、**[許可]** をクリックします。
+   1. **[条件]** ページで、 **[完了]** をクリックします。
+1. **[アクセス制御]** セクションで、 **[許可]** をクリックします。
 
    ![アクセス制御](./media/app-sign-in-risk/10.png)
 
@@ -139,9 +124,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![条件付きアクセス](./media/app-sign-in-risk/105.png)
 
    1. **[アクセスのブロック]** を選択します。
-
    1. **[選択]** をクリックします。
-
 1. **[ポリシーを有効にする]** セクションで **[オン]** をクリックします。
 
    ![ポリシーを有効にする](./media/app-sign-in-risk/18.png)
@@ -150,7 +133,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="evaluate-a-simulated-sign-in"></a>シミュレートされたサインインを評価する
 
-条件付きアクセス ポリシーを構成したら、期待どおりに動作しているかどうかを確認してみましょう。 最初の手順として、条件付きアクセスの **What If ポリシー ツール**を使用して、テスト ユーザーのサインインをシミュレートします。 シミュレーションでは、サインインがポリシーに与える影響を推定し、シミュレーション レポートが生成されます。  
+条件付きアクセス ポリシーを構成したら、期待どおりに動作しているかどうかを確認してみましょう。 最初の手順として、条件付きアクセスの **What-If ポリシー ツール**を使用して、テスト ユーザーのサインインをシミュレートします。 シミュレーションでは、サインインがポリシーに与える影響を推定し、シミュレーション レポートが生成されます。  
 
 このシナリオに対して **What If ポリシー ツール**を実行すると、"**中程度のリスク レベルのアクセスをブロックします**" が **[適用するポリシー]** の下に一覧表示されます。
 
@@ -158,11 +141,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **条件付きアクセス ポリシーを評価するには:**
 
-1. [[条件付きアクセス - ポリシー]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) ページで、上部のメニューの **[What If ]** をクリックします。  
+1. [[条件付きアクセス - ポリシー]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) ページで、上部のメニューの **[What If]** をクリックします。  
 
    ![What If](./media/app-sign-in-risk/14.png)
 
-1. **[ユーザー]** をクリックし、**[ユーザー]** ページで **[Alan Charon]** を選択して、**[選択]** をクリックします。
+1. **[ユーザー]** をクリックし、 **[ユーザー]** ページで **[Alan Charon]** を選択して、 **[選択]** をクリックします。
 
    ![User](./media/app-sign-in-risk/116.png)
 
@@ -185,7 +168,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 不要になったら、テスト ユーザー、Tor Browser、条件付きアクセス ポリシーを削除します。
 
 - Azure AD ユーザーの削除方法がわからない場合は、「[Azure AD からユーザーを削除する](../fundamentals/add-users-azure-active-directory.md#delete-a-user)」を参照してください。
-
 - ポリシーを削除するには、ポリシーを選択し、クイック アクセス ツール バーの **[削除]** をクリックします。
 
    ![多要素認証](./media/app-sign-in-risk/33.png)

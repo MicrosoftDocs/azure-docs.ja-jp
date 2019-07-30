@@ -1,6 +1,6 @@
 ---
 title: Bing News Search の結果をページングする方法
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing News Search API が返すニュース記事をページングする方法について学習します。
 services: cognitive-services
 author: swhite-msft
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1eab92dcc9c1890e82f9999e26e54378a3687c6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5f8dce1a03e44758eea737ad2da419fa67c36a2
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390493"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423747"
 ---
 # <a name="how-to-page-through-news-search-results"></a>ニュース検索結果をページングする方法
 

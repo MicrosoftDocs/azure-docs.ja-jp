@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fa79f519c8f3eb8baeaab04870f22a1cfefa59ab
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053167"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS にボットを組み合わせてナレッジ ベースを配信する
 QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
@@ -27,7 +27,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 
 ## <a name="architecture"></a>アーキテクチャ
 
-![QnA Maker LUIS アーキテクチャ](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![QnA Maker と Language Understanding アーキテクチャ](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 上記のシナリオでは、QnA Maker はまず、入力された質問の意図を LUIS モデルから取得し、それを使って正しい QnA Maker ナレッジ ベースにルーティングします。
 
@@ -43,7 +43,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 
 1. [QnA Maker](https://qnamaker.ai) にサインインします。
 1. LUIS アプリのそれぞれの意図に対してナレッジ ベースを[作成](https://www.qnamaker.ai/Create)します。
-1. ナレッジ ベースをテストして発行します。 それぞれの KB を公開するとき、KB ID、ホスト (_.azurewebsites.net/qnamaker_ の前のサブドメイン)、および承認エンドポイント キーをメモします。 これらの値は後で必要になります。 
+1. ナレッジ ベースをテストして発行します。 それぞれの KB を公開するとき、KB ID、ホスト ( _.azurewebsites.net/qnamaker_ の前のサブドメイン)、および承認エンドポイント キーをメモします。 これらの値は後で必要になります。 
 
     この記事では、KB はすべて同じ Azure QnA Maker サブスクリプションで作成されることを想定しています。
 
@@ -51,11 +51,11 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 
 ## <a name="web-app-bot"></a>Web アプリ ボット
 
-1. LUIS テンプレートを使用して [Web アプリ ボットを作成](https://docs.microsoft.com/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample)します。 3.x の SDK および C# プログラミング言語を選択します。
+1. LUIS アプリを自動的にインクルードする ["Basic" Web アプリ ボットを作成](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)します。 4\.x の SDK および C# プログラミング言語を選択します。
 
 1. Azure portal に Web アプリ ボットを作成したら、その Web アプリ ボットを選択します。
 1. Web アプリ ボット サービス ナビゲーションで **[アプリケーションの設定]** を選択し、使用可能な設定の **[アプリケーションの設定]** セクションにスクロールします。
-1. **LuisAppId** を前のセクションで作成した LUIS アプリの値に変更し、**[保存]** を選択します。
+1. **LuisAppId** を前のセクションで作成した LUIS アプリの値に変更し、 **[保存]** を選択します。
 
 
 ## <a name="change-code-in-basicluisdialogcs"></a>BasicLuisDialog.cs のコードの変更
@@ -224,7 +224,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 
 
 ## <a name="build-the-bot"></a>ボットのビルド
-1. コード エディターで `build.cmd` を右クリックし、**[Run from Console]\(コンソールから実行\)** を選択します。
+1. コード エディターで `build.cmd` を右クリックし、 **[Run from Console]\(コンソールから実行\)** を選択します。
 
     ![コンソールから実行](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
@@ -233,7 +233,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
     ![コンソール ビルド](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
 ## <a name="test-the-bot"></a>ボットをテストする
-Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を選択してボットをテストします。 異なる意図のメッセージを入力して、対応するナレッジ ベースからの応答を得ます。
+Azure portal で、 **[Test in Web Chat]\(Web チャットでのテスト\)** を選択してボットをテストします。 異なる意図のメッセージを入力して、対応するナレッジ ベースからの応答を得ます。
 
 ![Web チャット テスト](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 

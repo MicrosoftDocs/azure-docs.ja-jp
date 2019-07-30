@@ -5,14 +5,12 @@ metadata:
   title: Batch のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。
 sections:

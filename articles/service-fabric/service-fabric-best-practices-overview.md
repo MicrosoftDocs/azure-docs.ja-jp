@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2019
+ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fdbd3f15b11e4c3975ca29627d5984382bcf049
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231368"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206803"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス
 
-Azure Service Fabric のアプリケーションとクラスターを問題なく管理するには、運用環境の信頼性を最適化するために実行することを強くお勧めする操作があります。このドキュメントで定義されている操作を実行し、[Azure サンプルの Service Fabric クラスター テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)のいずれかを選択して運用ソリューションの設計を始めるか、既存のテンプレートを変更してこれらのプラクティスを組み込んでください。
+この記事では、Azure Service Fabric のアプリケーションとクラスターの管理に関するベスト プラクティスへのリンクを提供します。 運用環境の信頼性を最適化するために、これらのプラクティスを実装することを強くお勧めします。 [Service Fabric クラスター テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)のいずれかを使用して運用環境のソリューションの設計を開始するか、または既存のテンプレートを更新してこれらのプラクティスを組み込みます。
 
-## <a name="security"></a>セキュリティ 
+## <a name="security"></a>セキュリティ
 
 * [セキュリティに関するベスト プラクティス](service-fabric-best-practices-security.md)
 
@@ -52,11 +52,11 @@ Azure Service Fabric のアプリケーションとクラスターを問題な�
 
 ## <a name="checklist"></a>チェック リスト
 
-上記のすべてのセクションを完了した後、運用環境の準備状況チェックリストのすべてのベスト プラクティスを統合したことを確認します。
+前のセクションで推奨されたプラクティスを実装した後は、運用環境の準備状況チェックリストのすべてのベスト プラクティスを統合したことを確認します。
 * [Azure Service Fabric の運用環境の準備状況チェックリスト](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
 
 ## <a name="next-steps"></a>次の手順
 
 * Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 * Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)
-* トラブルシューティング:[Service Fabric のトラブルシューティング ガイド](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* Service Fabric のトラブルシューティング:[トラブルシューティング ガイド](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

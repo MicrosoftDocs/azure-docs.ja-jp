@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: a0bb34f8a43199a5d3a18064bce92ef4bec543af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492832"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050648"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -25,13 +25,13 @@ ms.locfileid: "66492832"
 
 * さまざまなレベルの仮想ネットワーク接続性とスケーリングのオプションが設定された、マルチテナント インフラストラクチャ上で実行される一連のプラン オプションがあります。
     * [従量課金プラン](functions-scale.md#consumption-plan)。負荷に応じて動的にスケーリングし、最小限のネットワークの分離オプションを提供します。
-    * [Premium プラン](functions-scale.md#premium-plan-public-preview)。このプランでも動的なスケーリングが行われますが、より包括的なネットワークの分離が提供されます。
+    * [Premium プラン](functions-scale.md#premium-plan)。このプランでも動的なスケーリングが行われますが、より包括的なネットワークの分離が提供されます。
     * [App Service プラン](functions-scale.md#app-service-plan)。固定されたスケールで動作し、Premium プランと同様のネットワークの分離を提供します。
 * [App Service Environment](../app-service/environment/intro.md) で関数を実行できます。 この方法では、関数を仮想ネットワークにデプロイし、完全なネットワーク制御と分離を提供します。
 
 ## <a name="matrix-of-networking-features"></a>ネットワーク機能のマトリックス
 
-|                |[従量課金プラン](functions-scale.md#consumption-plan)|[Premium プラン](functions-scale.md#premium-plan-public-preview) (プレビュー)|[[App Service プラン]](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
+|                |[従量課金プラン](functions-scale.md#consumption-plan)|[Premium プラン](functions-scale.md#premium-plan) (プレビュー)|[[App Service プラン]](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[受信 IP の制限](#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|
 |[送信 IP の制限](#private-site-access)|❌いいえ| ❌いいえ|❌いいえ|✅はい|
@@ -92,7 +92,7 @@ Azure Functions で使用されるとき、各ハイブリッド接続は、単�
 ## <a name="private-site-access"></a>プライベート サイトへのアクセス
 
 プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 
-* プライベート サイトへのアクセスは、**サービス エンドポイント**が構成されている場合に Premium と App Service プランで利用可能です。詳細については、「[virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md)」 (仮想ネットワークのサービス エンドポイント) を参照してください。
+* プライベート サイトへのアクセスは、**サービス エンドポイント**が構成されている場合に Premium と App Service プランで利用可能です。 詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」を参照してください。
     * サービス エンドポイントがあれば、VNET 統合が構成されていても関数からインターネットにフルに送信アクセスできます。
 * プライベート サイトには、内部ロード バランサー (ILB) を使用して App Service Environment が構成されている場合のみアクセスできます。 詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」を参照してください。
 

@@ -4,18 +4,17 @@ titleSuffix: Azure Open Datasets
 description: Azure オープン データセットの利便性を Azure Machine Learning service の機能と組み合わせて活用して、ニューヨーク市のタクシー運賃を予測する回帰モデルを作成する方法について説明します。
 services: open-datasets
 ms.service: open-datasets
-ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: e753793b5da59d09a21991831046a43899c62ef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027518"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588970"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>チュートリアル:自動機械学習とオープン データセットを使って回帰モデルを構築する
 
@@ -1929,7 +1928,7 @@ print(1 - mean_abs_percent_error)
 1. Azure Portal で、左端にある **[リソース グループ]** を選択します。
 1. 作成したリソース グループを一覧から選択します。
 1. **[リソース グループの削除]** を選択します。
-1. リソース グループ名を入力します。 次に、**[削除]** を選択します。
+1. リソース グループ名を入力します。 次に、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

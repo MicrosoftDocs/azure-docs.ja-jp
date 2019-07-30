@@ -4,35 +4,34 @@ description: Azure Active Directory と Amazon Web Services (AWS) の間でシ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
+manager: mtillman
+ms.reviewer: celested
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/28/2019
+ms.date: 06/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f58c8c3ea76cf44730a54897e6b77ef6e648a49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f897653442a3e1b2d6098b3be60c85e75ca54f9a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901663"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551491"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory とアマゾン ウェブ サービス (AWS) の統合
+# <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>チュートリアル:Azure Active Directory とアマゾン ウェブ サービス (AWS) の統合
 
-このチュートリアルでは、Amazon Web Services (AWS) と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Amazon Web Services (AWS) と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Azure Active Directory (Azure AD) とアマゾン ウェブ サービス (AWS) を統合する方法について説明します。 Azure AD とアマゾン ウェブ サービス (AWS) を統合すると、以下を実行できます。
 
-* Amazon Web Services (AWS) にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントでアマゾン ウェブ サービス (AWS) に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* アマゾン ウェブ サービス (AWS) にアクセスできるユーザーを Azure AD で制御する。
+* ユーザーが自分の Azure AD アカウントを使用して自動的にアマゾン ウェブ サービス (AWS) にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ![アマゾン ウェブ サービス (AWS)](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
@@ -46,7 +45,7 @@ Azure AD はこれらの値から **#** の値を削除し、正しい値 `https
 
 **次の理由により、このアプローチを使用することをお勧めします。**
 
-a. それぞれのアプリケーションは一意の X509 証明書を提供するので、各インスタンスの証明書の有効期限は異なることがあり、これを個々の AWS アカウントごとに管理できます。 この場合、全体的な証明書のロールオーバーは簡単です。
+a. アプリケーションごとに独自の X509 証明書が提供されます。 AWS アプリのインスタンスごとに異なる証明書の有効期限を設定でき、それらを個別の AWS アカウントに基づいて管理できます。 この場合、証明書全体のロールオーバーが容易になります。
 
 b. Azure AD での AWS アプリによるユーザー プロビジョニングを有効にでき、続いてその AWS アカウントからすべてのロールを Microsoft のサービスがフェッチします。 アプリでの AWS ロールの追加や更新は手動で行う必要はありません。
 
@@ -57,97 +56,60 @@ c. Azure AD で直接アプリを管理できるアプリ所有者をアプリ�
 
 ## <a name="prerequisites"></a>前提条件
 
-Amazon Web Services (AWS) と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* アマゾン ウェブ サービス (AWS) でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
-
-> [!Note]
-> シングル サインオンのために複数の AWS アカウントを 1 つの Azure アカウントに統合したい場合は、[この](https://docs.microsoft.com/azure/active-directory/active-directory-saas-aws-multi-accounts-tutorial)記事を参照してください。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* アマゾン ウェブ サービス (AWS) シングル サインオン (SSO) 対応のサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
-
-* アマゾン ウェブ サービス (AWS) では、**SP と IDP** によって開始される SSO がサポートされます
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 アマゾン ウェブ サービス (AWS) では、**SP initiated SSO と IDP initiated SSO** がサポートされます。
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>ギャラリーからの Amazon Web Services (AWS) の追加
 
 Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Amazon Web Services (AWS) を追加する必要があります。
 
-**ギャラリーから Amazon Web Services (AWS) を追加するには、次の手順を実行します:** 
-
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
-
-    ![Azure Active Directory のボタン](common/select-azuread.png)
-
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
-
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
-
-4. 検索ボックスに「**Amazon Web Services (AWS)**」と入力して結果パネルから **[Amazon Web Services (AWS)]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
-
-     ![結果の一覧の Amazon Web Services (AWS)](common/search-new-app.png)
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**アマゾン ウェブ サービス (AWS)** 」と入力します。
+1. 結果パネルから **[アマゾン ウェブ サービス (AWS)]** を選択してそのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、アマゾン ウェブ サービス (AWS) で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーとアマゾン ウェブ サービス (AWS) の関連ユーザーの間で、リンク関係が確立されている必要があります。
+**B.Simon** というテスト ユーザーを使用して、アマゾン ウェブ サービス (AWS) に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーとアマゾン ウェブ サービス (AWS) の関連ユーザーの間で、リンク関係を確立する必要があります。
 
-Amazon Web Services (AWS) との Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+アマゾン ウェブ サービス (AWS) との Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[アマゾン ウェブ サービス (AWS) シングル サインオンの構成](#configure-amazon-web-services-aws-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[アマゾン ウェブ サービス (AWS) テスト ユーザーの作成](#create-amazon-web-services-aws-test-user)** - アマゾン ウェブ サービス (AWS) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+2. **[アマゾン ウェブ サービス (AWS) の構成](#configure-amazon-web-services-aws)** - アプリケーション側で SSO 設定を構成します。
+3. **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[アマゾン ウェブ サービス (AWS) テスト ユーザーの作成](#create-amazon-web-services-aws-test-user)** - アマゾン ウェブ サービス (AWS) で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-アマゾン ウェブ サービス (AWS) との Azure AD シングル サインオンを構成するには、次の手順を実行します。
+1. [Azure portal](https://portal.azure.com/) の**アマゾン ウェブ サービス (AWS)** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
-1. [Microsoft Azure portal](https://portal.azure.com/) の**アマゾン ウェブ サービス (AWS)** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    ![シングル サインオン構成のリンク](common/select-sso.png)
+4. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-4. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、**[保存]** ボタンをクリックします。
-
-    ![image](./media/amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_url.png)
-
-5. 複数のインスタンスを構成している場合は、識別子の値を指定してください。 2 番目以降のインスタンスからは、次の形式で識別子の値を指定してください。 一意の SPN 値を指定するには、**#** 記号を使用してください。
+5. 複数のインスタンスを構成している場合は、識別子の値を指定してください。 2 番目以降のインスタンスからは、次の形式で識別子の値を指定してください。 一意の SPN 値を指定するには、 **#** 記号を使用してください。
 
     `https://signin.aws.amazon.com/saml#2`
 
-    ![[Amazon Web Services (AWS) のドメインと URL] のシングル サインオン情報](./media/amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_identifier.png)
-
-6. アマゾン ウェブ サービス (AWS) アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+6. アマゾン ウェブ サービス (AWS) アプリケーションでは、特定の形式の SAML アサーションが使用されるため、カスタム属性のマッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
-7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+7. その他に、アマゾン ウェブ サービス (AWS) アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
     | Name  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
@@ -173,21 +135,15 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     g. **[Save]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/metadataxml.png)
+   ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-9. **[アマゾン ウェブ サービス (AWS) のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+1. **[アマゾン ウェブ サービス (AWS) のセットアップ]** セクションで、要件に基づく適切な URL をコピーします。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+   ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
-
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>アマゾン ウェブ サービス (AWS) のシングル サインオンの構成
+### <a name="configure-amazon-web-services-aws"></a>アマゾン ウェブ サービス (AWS) を構成する
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Amazon Web Services (AWS) 企業サイトにサインオンします。
 
@@ -199,7 +155,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![シングル サインオン ID の構成][12]
 
-4. **[Identity Providers]**、**[Create Provider]** の順にクリックします。
+4. **[Identity Providers]** 、 **[Create Provider]** の順にクリックします。
 
     ![シングル サインオン プロバイダーの構成][13]
 
@@ -211,11 +167,11 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     b. **[Provider Name]\(プロバイダー名\)** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
-    c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[ファイルの選択]** をクリックします。
+    c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、 **[ファイルの選択]** をクリックします。
 
-    d. ページの下部にある **[Next Step]**」を参照してください。
+    d. ページの下部にある **[Next Step]** 」を参照してください。
 
-6. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。
+6. **[Verify Provider Information]** ダイアログ ボックスで、 **[Create]** をクリックします。
 
     ![シングル サインオンの検証の構成][15]
 
@@ -253,7 +209,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 11. Azure AD ユーザー プロビジョニングの AWS アカウントからロールをフェッチするには、AWS サービス アカウントの資格情報を使用します。 そのためには、AWS コンソール ホームを開きます。
 
-12. **[Services]** -> **[Security, Identity& Compliance]** -> **[IAM]** をクリックします。
+12. **[Services]**  ->  **[Security, Identity& Compliance]**  ->  **[IAM]** をクリックします。
 
     ![AWS アカウントからのロールのフェッチ](./media/amazon-web-service-tutorial/fetchingrole1.png)
 
@@ -269,36 +225,23 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![新しいポリシーの作成](./media/amazon-web-service-tutorial/policy1.png)
 
-    a. **[ポリシーの作成]** セクションで、**[JSON]** タブをクリックします。
+    a. **[ポリシーの作成]** セクションで、 **[JSON]** タブをクリックします。
 
     b. ポリシー ドキュメントで、次の JSON を追加します。
 
-    ```
-
+    ```json
     {
-
-    "Version": "2012-10-17",
-
-    "Statement": [
-
-    {
-
-    "Effect": "Allow",
-
-    "Action": [
-
-    "iam:ListRoles"
-
-    ],
-
-    "Resource": "*"
-
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                "iam:ListRoles"
+                ],
+                "Resource": "*"
+            }
+        ]
     }
-
-    ]
-
-    }
-
     ```
 
     c. **[ポリシーの確認] ボタン**をクリックして、ポリシーを検証します。
@@ -343,7 +286,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     b. [フィルター] セクションで、新しく作成されたポリシー **AzureAD_SSOUserRole_Policy** を検索します。
 
-    c. **ポリシー**を選択し、**[Next: Review]\(次へ: 確認\)** をクリックします。
+    c. **ポリシー**を選択し、 **[Next: Review]\(次へ: 確認\)** をクリックします。
 
 19. 次の手順を実行して、接続されたユーザーに対するポリシーを確認します。
 
@@ -385,64 +328,41 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon にアマゾン ウェブ サービス (AWS) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon にアマゾン ウェブ サービス (AWS) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[アマゾン ウェブ サービス (AWS)]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で、 **[Amazon Web Services (AWS)]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-2. アプリケーションの一覧で、「**アマゾン ウェブ サービス (AWS)**」と入力し、選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![アプリケーションの一覧の [Amazon Web Services (AWS)] リンク](common/all-applications.png)
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>アマゾン ウェブ サービス (AWS) テスト ユーザーの作成
 
-このセクションの目的は、Amazon Web Services (AWS) で Britta Simon というユーザーを作成することです。 アマゾン ウェブ サービス (AWS) では、SSO 用にユーザーをシステムに作成する必要がないため、ここで操作を実行する必要はありません。
+このセクションの目的は、アマゾン ウェブ サービス (AWS) で B.Simon というユーザーを作成することです。 アマゾン ウェブ サービス (AWS) では、SSO 用にユーザーをシステムに作成する必要がないため、ここで操作を実行する必要はありません。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
-
-アクセス パネルで [アマゾン ウェブ サービス (AWS)] タイルをクリックすると、SSO を設定した Amazon Web Services (AWS) アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [アマゾン ウェブ サービス (AWS)] タイルを選択すると、SSO を設定したアマゾン ウェブ サービス (AWS) アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="known-issues"></a>既知の問題
 

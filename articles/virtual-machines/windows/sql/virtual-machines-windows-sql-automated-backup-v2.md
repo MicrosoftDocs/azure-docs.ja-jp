@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d03d4bd86367aa29bbf93062f7cc03f57f4cad83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165723"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075929"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
 
@@ -67,7 +67,7 @@ ms.locfileid: "66165723"
 | **自動化されたバックアップ** | 有効/無効 (無効) | SQL Server 2016/2017 Developer、Standard、または Enterprise を実行している Azure VM の自動バックアップを有効または無効にします。 |
 | **保有期間** | 1 ～ 30 日 (30 日) | バックアップを保持する日数。 |
 | **ストレージ アカウント** | Azure ストレージ アカウント | 自動バックアップのファイルを BLOB ストレージに保存するために使用する Azure ストレージ アカウント。 この場所にコンテナーが作成され、すべてのバックアップ ファイルが保存されます。 バックアップ ファイルの名前付け規則には、日付、時刻、およびデータベース GUID が含まれます。 |
-| **暗号化** |有効/無効 (無効) | 暗号化を有効または無効にします。 暗号化を有効にすると、バックアップの復元に使用する証明書は、指定されたストレージ アカウントに配置されます。 これには、同じ **automaticbackup** コンテナーと、同じ名前付け規則が使用されます。 パスワードが変更された場合、そのパスワードを使用して新しい証明書が生成されますが、以前のバックアップの復元には古い証明書が引き続き使用されます。 |
+| **暗号化** |有効/無効 (無効) | 暗号化を有効または無効にします。 暗号化を有効にすると、バックアップの復元に使用する証明書は、指定されたストレージ アカウントに配置されます。 それには、同じ**自動バックアップ** コンテナーと、同じ名前付け規則が使われます。 パスワードが変更された場合、そのパスワードを使用して新しい証明書が生成されますが、以前のバックアップの復元には古い証明書が引き続き使用されます。 |
 | **パスワード** |パスワード テキスト | 暗号化キーのパスワード。 このパスワードは、暗号化を有効にした場合にのみ必須となります。 暗号化されたバックアップを復元するには、バックアップの作成時に使用した正しいパスワードおよび関連する証明書が必要です。 |
 
 ### <a name="advanced-settings"></a>詳細設定
@@ -127,7 +127,7 @@ Azure Portal を使用すると、プロビジョニング中に、または既�
 
 Resource Manager デプロイメント モデルで新しい SQL Server 2016 または 2017 仮想マシンを作成する場合は、Azure Portal を使用して自動バックアップ v2 を構成します。
 
-**[SQL Server の設定]** ウィンドウで、**[自動バックアップ]** を選択します。 次の Azure Portal のスクリーンショットは、**SQL Automated Backup** の設定を示しています。
+**[SQL Server の設定]** タブで、 **[自動バックアップ]** の **[有効にする]** を選択します。 次の Azure Portal のスクリーンショットは、**SQL Automated Backup** の設定を示しています。
 
 ![Azure ポータルの SQL 自動バックアップ構成](./media/virtual-machines-windows-sql-automated-backup-v2/automated-backup-blade.png)
 
@@ -136,15 +136,14 @@ Resource Manager デプロイメント モデルで新しい SQL Server 2016 ま
 
 ## <a name="configure-existing-vms"></a>既存の VM を構成する
 
-既存の SQL Server 仮想マシンの場合は、ご使用の SQL Server 仮想マシンを選択します。 次に、VM の **[設定]** の **[SQL Server の構成]** セクションを選択します。
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+既存の SQL Server 仮想マシンの場合、[SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)に移動して **[バックアップ]** を選択し、自動バックアップを構成します。
 
 ![既存の VM の SQL 自動バックアップ](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration.png)
 
-**[SQL Server の構成]** 設定で、[自動バックアップ] セクションにある **[編集]** ボタンをクリックします。
 
-![既存の VM の SQL 自動バックアップを構成する](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration-edit.png)
-
-完了したら、**[SQL Server の構成]** 設定の一番下にある **[OK]** ボタンをクリックして変更を保存します。
+完了したら、 **[バックアップ]** 設定ページの下にある **[適用]** ボタンをクリックして、変更内容を保存します。
 
 自動バックアップを初めて有効にすると、バックグラウンドで SQL Server IaaS エージェントが構成されます。 この間、自動バックアップが構成されていることは、Azure ポータルに示されない可能性があります。 エージェントがインストールされ、構成されるまで数分待ちます。 その後、Azure ポータルに新しい設定が反映されます。
 
@@ -169,7 +168,7 @@ $resourcegroupname = "resourcegroupname"
 
 SQL Server IaaS Agent 拡張機能がインストールされている場合は、"SqlIaaSAgent" または "SQLIaaSExtension" として一覧に表示されます。 また拡張機能の **ProvisioningState** が "成功" と表示されます。 
 
-インストールされていないかプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン (**$region**) を指定する必要があります。
+インストールされていないかプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン ( **$region**) を指定する必要があります。
 
 ```powershell
 $region = “EASTUS2”
@@ -321,7 +320,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 SQL Server 2016/2017 上で自動バックアップを監視するには、主なオプションが 2 つあります。 自動バックアップでは SQL Server マネージド バックアップ機能を使用するため、この両方に同じ監視手法が適用されます。
 
-まず、[msdb.managed_backup.sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) を呼び出すことによって状態をポーリングできます。 または、[msdb.managed_backup.fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) テーブル値関数にクエリを実行します。
+まず、[msdb.managed_backup.sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) を呼び出すことによって状態をポーリングできます。 または、[msdb.managed_backup.fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) テーブル値関数のクエリを実行します。
 
 もう 1 つのオプションは、通知に組み込みのデータベース メール機能を利用する方法です。
 

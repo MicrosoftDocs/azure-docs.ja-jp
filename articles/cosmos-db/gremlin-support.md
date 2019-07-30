@@ -5,68 +5,34 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 05/21/2019
+ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: b36c041c24a07f89701e78aea4d08270342b8d22
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: db263c1c7f0a8b87b315c5aa6da31336229c9643
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978931"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502732"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
 Azure Cosmos DB は、[Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) と呼ばれる、[Apache TinkerPop](https://tinkerpop.apache.org) のグラフ トラバーサル言語をサポートしています。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
 
-Azure Cosmos DB は、グラフ データベースにエンタープライズ対応の機能を提供します。 これらの機能には、グローバル配布、ストレージとスループットの個別スケーリング、1 桁ミリ秒の予測可能な待ち時間、自動インデックス作成、SLA、2 つ以上の Azure リージョンにまたがるデータベース アカウントの読み取り可用性などがあります。 Azure Cosmos DB は TinkerPop/Gremlin をサポートしているため、他の互換性のあるグラフ データベースを使用して作成されたアプリケーションを簡単に移行できます。 さらに、Gremlin のサポートにより、Azure Cosmos DB は [Apache Spark GraphX](https://spark.apache.org/graphx/) などの TinkerPop 対応分析フレームワークとシームレスに統合されます。 
-
 この記事では、Gremlin の簡単なチュートリアルを提供し、Gremlin API でサポートされている Gremlin の機能を紹介します。
 
-## <a name="gremlin-by-example"></a>Gremlin の例
-サンプル グラフを使用して、Gremlin でクエリを表現する方法を理解しましょう。 次の図は、ユーザー、関心事、デバイスに関するデータを管理するビジネス アプリケーションをグラフの形で示しています。  
+## <a name="compatible-client-libraries"></a>互換性のあるクライアント ライブラリ
 
-![ユーザー、デバイス、関心事を示すサンプル データベース](./media/gremlin-support/sample-graph.png) 
+次の表に、Azure Cosmos DB に対して使用できる一般的な Gremlin ドライバーを示します。
 
-このグラフには、次の頂点の種類 (Gremlin では "ラベル" と呼ばれます) が含まれています。
+| ダウンロード | source | Getting Started (概要) | サポートされているコネクタのバージョン |
+| --- | --- | --- | --- |
+| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Github の Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET を使用してグラフを作成する](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Java を使用してグラフを作成する](create-graph-java.md) | 3.2.0 以降 |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub の Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) | [Node.js を使用してグラフを作成する](create-graph-nodejs.md) | 3.3.4 以降 |
+| [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub の Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Python を使用してグラフを作成する](create-graph-python.md) | 3.2.7 |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Github の Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [PHP を使用してグラフを作成する](create-graph-php.md) | 3.1.0 |
+| [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) | [TinkerPop ドキュメント](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gremlin コンソールを使用してグラフを作成する](create-graph-gremlin-console.md) | 3.2.0 以降 |
 
-- ユーザー: このグラフには、Robin、Thomas、Ben の 3 人のユーザーが含まれています。
-- 関心: 各ユーザーの関心事。この例では、フットボールの試合です。
-- デバイス:ユーザーが使用しているデバイスです。
-- オペレーティング システム: 各デバイスが実行されているオペレーティング システムです。
-
-次の辺の種類/ラベルによって、これらのエンティティの関係を表しています。
-
-- 知り合い: たとえば、"Thomas は Robin を知っている" ことが示されています。
-- 関心あり: このグラフの各ユーザーの関心事を表します。たとえば、"Ben はフットボールに関心がある" ことが示されています。
-- RunsOS: ノート PC で Windows OS が実行されています。
-- 使用: ユーザーが使用しているデバイスを表します。 たとえば、Robin はシリアル番号が 77 の Motorola Phone を使用しています。
-
-[Gremlin コンソール](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console)を使用して、このグラフに対していくつかの操作を実行しましょう。 これらの操作は、任意のプラットフォーム (Java、Node.js、Python、または .NET) で Gremlin ドライバーを使用して実行することもできます。  Azure Cosmos DB でサポートされているものを確認する前に、構文に慣れるために例をいくつか見てみましょう。
-
-まず、CRUD を見てみます。 次の Gremlin ステートメントでは、グラフに "Thomas" 頂点を挿入します。
-
-```java
-:> g.addV('person').property('id', 'thomas.1').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
-```
-
-次の Gremlin ステートメントでは、Thomas と Robin の間に "knows" 辺を挿入します。
-
-```java
-:> g.V('thomas.1').addE('knows').to(g.V('robin.1'))
-```
-
-次のクエリは、ユーザーの姓の降順で "person" 頂点を返します。
-```java
-:> g.V().hasLabel('person').order().by('firstName', decr)
-```
-
-グラフが強調表示されている場合、"Thomas の友人が使用しているオペレーティング システムは何か" というような質問に答える必要があります。 次の Gremlin トラバーサルを実行することで、グラフからこの情報を取得できます。
-
-```java
-:> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
-```
-次に、Azure Cosmos DB が Gremlin 開発者に提供するものを見ていきましょう。
-
-## <a name="gremlin-features"></a>Gremlin の機能
+## <a name="supported-graph-objects"></a>サポートされているグラフ オブジェクト
 TinkerPop は、さまざまなグラフ テクノロジに対応する標準です。 そのため、グラフ プロバイダーによって提供される機能を説明する標準的な用語があります。 Azure Cosmos DB は、複数のサーバーまたはクラスター間でパーティション分割できる、永続的でコンカレンシーの高い書き込み可能なグラフ データベースを提供します。 
 
 次の表に、Azure Cosmos DB で実装されている TinkerPop の機能を示します。 
@@ -128,7 +94,7 @@ GraphSON で使用される頂点のプロパティを次に説明します。
 | プロパティ | 説明 | 
 | --- | --- | --- |
 | `id` | 頂点の ID。 一意である必要があります (該当する場合は、`_partition` の値との組み合わせにおいて一意である必要があります)。 値が指定されていない場合は、GUID が自動的に提供されます | 
-| `label` | 頂点のラベル。 これは、エンティティの種類を示すために使用します。 |
+| `label` | 頂点のラベル。 このプロパティは、エンティティの種類を示すために使用します。 |
 | `type` | 頂点とグラフ以外のドキュメントを区別するために使用します。 |
 | `properties` | 頂点に関連付けられているユーザー定義プロパティのバッグ。 各プロパティには複数の値を指定できます。 |
 | `_partition` | 頂点のパーティション キー。 [グラフのパーティション分割](graph-partitioning.md)に使用されます。 |
@@ -184,12 +150,12 @@ GraphSON で使用される頂点のプロパティを次に説明します。
 | `sample` | トラバーサルの結果をサンプリングするときに使用します。 | [sample ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | トラバーサルの結果を予想するときに使用します。 |  [select ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | トラバーサルの非ブロッキング集計に使用します。 | [store ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で始まるプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  文字列フィルター処理関数。 この関数は、指定された文字列で終わるプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列の内容を含むプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で始まらないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で終わらないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列を含んでいないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で始まるプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  文字列フィルター処理関数。 この関数は、指定された文字列で終わるプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列の内容を含むプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で始まらないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で終わらないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列を含んでいないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | 頂点からのパスを集計してツリーを形成します。 | [tree ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | 反復子をステップとしてアンロールします。| [unfold ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | 複数のトラバーサルの結果をマージします。| [union ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

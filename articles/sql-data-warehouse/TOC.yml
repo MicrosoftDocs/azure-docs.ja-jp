@@ -127,6 +127,28 @@
           href: sql-data-warehouse-overview-develop.md
         - name: ベスト プラクティス
           href: sql-data-warehouse-best-practices-development.md
+        - name: JSON
+          items:
+            - name: JSON
+              href: /sql/t-sql/functions/json-functions-transact-sql?view=azure-sqldw-latest
+            - name: ISJSON
+              href: /sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest
+            - name: JSON_VALUE
+              href: /sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest
+            - name: JSON_QUERY
+              href: /sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest
+            - name: JSON_MODIFY
+              href: /sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest
+            - name: OPENJSON
+              href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
+        - name: 具体化されたビュー
+          items:
+            - name: Create
+              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
+            - name: Alter
+              href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: 結果セットのキャッシュ
+          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: テーブル
           items:
             - name: 概要
@@ -273,6 +295,16 @@
           href: sql-data-warehouse-manage-monitor.md
         - name: Gen2 キャッシュの監視
           href: sql-data-warehouse-how-to-monitor-cache.md
+    - name: バックアップと復元
+      items:
+        - name: 復元ポイントの作成
+          href: sql-data-warehouse-restore-points.md
+        - name: 既存のデータ ウェアハウスの復元
+          href: sql-data-warehouse-restore-active-paused-dw.md
+        - name: 削除されたデータ ウェアハウスを復元する
+          href: sql-data-warehouse-restore-deleted-dw.md
+        - name: geo バックアップから復元します
+          href: sql-data-warehouse-restore-from-geo-backup.md
     - name: 統合
       items:
         - name: 機械学習の使用
@@ -295,6 +327,8 @@
           href: sql-data-warehouse-troubleshoot-connectivity.md
 - name: リファレンス
   items:
+    - name: データベースの照合順序の種類
+      href: sql-data-warehouse-reference-collation-types.md
     - name: T-SQL
       items:
         - name: 完全なリファレンス

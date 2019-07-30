@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39f38af601888f847cd1a82da9e2e03e6893c28e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591599"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607277"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -54,7 +54,7 @@ Azure Virtual Machines では、従量課金制 (PAYG) またはライセンス�
 
 PAYG ライセンスでは、Azure Virtual Machines 上の SQL Server のフェールオーバー クラスター インスタンス (FCI) により、FCI のすべてのノード (パッシブ ノードを含む) に対する課金が発生します。 詳細については、「[SQL Server Enterprise Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)」を参照してください。 
 
-ソフトウェア アシュアランスの Enterprise Agreement を締結している顧客には、アクティブ ノードごとに 1 つの無料のパッシブ FCI ノードを使用する権利があります。 Azure でこの利点を利用するには、BYOL VM イメージを使用した後、FCI のアクティブ ノードとパッシブ ノードの両方で同じライセンスを使用します。 詳細については、[Enterprise Agreement](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx) に関するページを参照してください。
+ソフトウェア アシュアランスの Enterprise Agreement を締結している顧客には、アクティブ ノードごとに 1 つの無料のパッシブ FCI ノードを使用する権利があります。 Azure でこの利点を利用するには、BYOL VM イメージを使用した後、FCI のアクティブ ノードとパッシブ ノードの両方で同じライセンスを使用します。 詳細については、[Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx) に関するページを参照してください。
 
 SQL Server on Azure Virtual Machines の PAYG ライセンスと BYOL ライセンスを比較するには、[SQL VM の概要](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)に関するページを参照してください。
 

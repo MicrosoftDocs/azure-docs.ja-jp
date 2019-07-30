@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: abb4a43176026fca5a80409ade13af1f8f96d9f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb96b60593dc660682c6376c0e0133be8f371176
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390487"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348685"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
@@ -129,7 +129,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
 5. 操作が正常に完了すると、右上隅に次の通知が表示されます。
 
-    ![成功](./media/sql-database-aad-authentication/success.png)
+    ![success](./media/sql-database-aad-authentication/success.png)
 
 6. これで、マネージド インスタンスの Azure AD 管理者を選択できるようになりました。 選択するには、[Active Directory 管理者] ページで **[管理者の設定]** を選択します。
 
@@ -368,7 +368,7 @@ Azure AD のネイティブ ユーザーまたはフェデレーション ユー
 
 統合認証と Azure AD の ID を使用してデータベースに接続するには、データベース接続文字列内の Authentication キーワードを "Active Directory Integrated" に設定する必要があります。 次の C# のコード サンプルでは、ADO .NET を使用します。
 
-```C#
+```csharp
 string ConnectionString =
 @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
 SqlConnection conn = new SqlConnection(ConnectionString);
@@ -381,7 +381,7 @@ conn.Open();
 
 統合認証と Azure AD の ID を使用してデータベースに接続するには、Authentication キーワードを "Active Directory Password" に設定する必要があります。 接続文字列にユーザー ID (UID) とパスワード (PWD) のキーワードと値を含める必要があります。 次の C# のコード サンプルでは、ADO .NET を使用します。
 
-```C#
+```csharp
 string ConnectionString =
 @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Password; Initial Catalog=testdb;  UID=bob@contoso.onmicrosoft.com; PWD=MyPassWord!";
 SqlConnection conn = new SqlConnection(ConnectionString);
@@ -401,7 +401,7 @@ conn.Open();
 
 サンプルの接続文字列を次に示します。
 
-```c#
+```csharp
 string ConnectionString =@"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;"
 SqlConnection conn = new SqlConnection(ConnectionString);
 conn.AccessToken = "Your JWT token"

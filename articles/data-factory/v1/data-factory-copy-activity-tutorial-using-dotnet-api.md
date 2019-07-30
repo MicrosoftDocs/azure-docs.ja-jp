@@ -13,18 +13,17 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 49d6a06c2cd13c240a0843ef29fd6cc832c30384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2f4f214523d9d42761323ec02ca6dae4c20bba6
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122570"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839430"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>チュートリアル:コピー アクティビティがあるパイプラインを .NET API で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -51,7 +50,7 @@ ms.locfileid: "66122570"
 
 * [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) のページに目を通して、チュートリアルの概要を理解し、 **前提条件** の手順を完了します。
 * Visual Studio 2012 または 2013 または 2015
-*  [Azure .NET SDK](https://azure.microsoft.com/downloads/)
+* [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 * Azure PowerShell。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps) 」に記載されている手順に従って、コンピューターに Azure PowerShell をインストールします。 Azure PowerShell を使用して、Azure Active Directory アプリケーションを作成します。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
@@ -124,19 +123,19 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 ## <a name="walkthrough"></a>チュートリアル
 1. Visual Studio 2012/2013/2015 を使用して、C# .NET コンソール アプリケーションを作成します。
    1. **Visual Studio** 2012/2013/2015 を起動します。
-   2. **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
-   3. **[テンプレート]** を展開し、**[Visual C#]** を選択します。 このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。
+   2. **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。
+   3. **[テンプレート]** を展開し、 **[Visual C#]** を選択します。 このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。
    4. 右側にあるプロジェクトの種類の一覧から **[コンソール アプリケーション]** を選択します。
    5. [名前] に「 **DataFactoryAPITestApp** 」と入力します。
    6. [場所] で **[C:\ADFGetStarted]** を選択します。
    7. **[OK]** をクリックしてプロジェクトを作成します。
-2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
+2. **[ツール]** をクリックし、 **[NuGet パッケージ マネージャー]** をポイントして、 **[パッケージ マネージャー コンソール]** をクリックします。
 3. **パッケージ マネージャー コンソール**で、次の手順を実行します。
    1. 次のコマンドを実行して、Data Factory パッケージをインストールします: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. 次のコマンドを実行して、Azure Active Directory パッケージをインストールします (コードで Active Directory API を使用します): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. 次の **appSetttings** セクションを **App.config** ファイルに追加します。 これらの設定は、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。
 
-    **&lt;Application ID&gt;**、**&lt;Password&gt;**、**&lt;Subscription ID&gt;**、**&lt;tenant ID&gt;** の値を実際の値に置き換えます。
+    **&lt;Application ID&gt;** 、 **&lt;Password&gt;** 、 **&lt;Subscription ID&gt;** 、 **&lt;tenant ID&gt;** の値を実際の値に置き換えます。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -505,15 +504,15 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     }
     ```
 
-15. ソリューション エクスプローラーで、プロジェクト (DataFactoryAPITestApp) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。 "**System.Configuration**" アセンブリのチェック ボックスをオンにします。 **[OK]** をクリックします。
-16. コンソール アプリケーションをビルドします。 メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
+15. ソリューション エクスプローラーで、プロジェクト (DataFactoryAPITestApp) を展開し、 **[参照]** を右クリックして **[参照の追加]** をクリックします。 "**System.Configuration**" アセンブリのチェック ボックスをオンにします。 **[OK]** をクリックします。
+16. コンソール アプリケーションをビルドします。 メニューから **[ビルド]** をクリックし、 **[ソリューションのビルド]** をクリックします。
 17. Azure BLOB ストレージ内の **adftutorial** コンテナーに少なくとも 1 つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した **Emp.txt** ファイルをメモ帳で作成し、adftutorial コンテナーにアップロードします。
 
     ```
     John, Doe
     Jane, Doe
     ```
-18. メニューの **[デバッグ]** -> **[デバッグの開始]** の順にクリックして、サンプルを実行します。 **[Getting run details of a data slice (データ スライスの実行の詳細を取得中)]** が表示されている場合は、数分待機して、**Enter** を押します。
+18. メニューの **[デバッグ]**  ->  **[デバッグの開始]** の順にクリックして、サンプルを実行します。 **[Getting run details of a data slice (データ スライスの実行の詳細を取得中)]** が表示されている場合は、数分待機して、**Enter** を押します。
 19. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。
     * リンクされたサービス:**LinkedService_AzureStorage**
     * データセット:**InputDataset** と **OutputDataset**。

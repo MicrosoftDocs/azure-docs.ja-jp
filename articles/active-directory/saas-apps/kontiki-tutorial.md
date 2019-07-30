@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee7454942b9214eeb1253339446df370e20fe01
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785848"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>チュートリアル:Azure Active Directory と Kontiki の統合
 
@@ -83,7 +83,7 @@ Kontiki で Azure AD のシングル サインオンを構成してテストす�
 | --- | --- |
 | **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** | ユーザーがこの機能を使用できるようにします。 |
 | **[Kontiki シングル サインオンの構成](#configure-kontiki-single-sign-on)** | アプリケーションでシングル サインオン設定を構成します。 |
-| **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** | Britta Simon という名前のユーザーの Azure AD シングル サインオンをテストします。 |
+| **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** | Britta Simon という名前のユーザーの Azure AD シングル サインオンをテストします。 |
 | **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** | Britta Simon が Azure AD シングル サインオンを使用できるようにします。 |
 | **[Kontiki のテスト ユーザーの作成](#create-a-kontiki-test-user)** | Kontiki で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。 |
 | **[シングル サインオンのテスト](#test-single-sign-on)** | 構成が機能することを確認します。 |
@@ -100,7 +100,7 @@ Kontiki で Azure AD のシングル サインオンを構成してテストす�
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、 **[編集]** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -143,7 +143,7 @@ Kontiki 側でシングル サインオンを構成するには、ダウンロ�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**brittasimon\@\<your-company-domain>.\<extension>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」と入力します。
+    1. **[ユーザー名]** ボックスに、「**brittasimon\@\<企業のドメイン>.\<extension>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」と入力します。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
@@ -171,9 +171,9 @@ Kontiki 側でシングル サインオンを構成するには、ダウンロ�
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **[Britta Simon]** を選択します。 **[選択]** を選択します。
+1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **Britta Simon** を選択します。 **[選択]** を選択します。
 
-1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、一覧からユーザーに関連するロールを選択します。 **[選択]** を選択します。
+1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、ユーザーに関連したロールを一覧から選択します。 **[選択]** を選択します。
 
 1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
 

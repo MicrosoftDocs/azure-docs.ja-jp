@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c45fd508c14c368c6c9057b9fdeea8df9d8a52c3
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4be33f781dec93fd9fe1b1846322672266cd7350
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905691"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606911"
 ---
 # <a name="what-is-the-azure-face-api"></a>Azure Face API とは
 
@@ -59,11 +59,11 @@ Group API では、未知の顔の集合が、類似性に基づいて複数の�
 
 Identify API を使用して、人のデータベースと照らして、検出された顔を識別します。 この機能は、写真管理ソフトウェアにおける画像の自動タグ付けに役立つ可能性があります。 データベースは事前に作成しておき、後で編集できます。
 
-次の画像は、"myfriends" という名前のデータベースの例を示しています。 各グループは、最大で 100 万個の異なる person オブジェクトを含むことができます。 各 person オブジェクトには最大で 248 個の顔を登録できます。
+次の画像は、`"myfriends"` という名前のデータベースの例を示しています。 各グループは、最大で 100 万個の異なる person オブジェクトを含むことができます。 各 person オブジェクトには最大で 248 個の顔を登録できます。
 
 ![それぞれ異なる人物に対応する 3 つの列とそれぞれ 3 行の顔の画像から成るグリッド](./Images/person.group.clare.jpg)
 
-データベースを作成してトレーニングした後、新しく検出された顔を含んだグループに対して識別を実行できます。 顔がグループ内の person として識別された場合、その person オブジェクトが返されます。
+データベースを作成してトレーニングした後、新しく検出された顔を含むグループに対して識別を実行できます。 顔がグループ内の person として識別された場合、その person オブジェクトが返されます。
 
 人物の特定の詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Identify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) リファレンス ドキュメントを参照してください。
 

@@ -6,13 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: cherylmc
+ms.reviewer: anzaman
+ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837812"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657068"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -23,9 +24,10 @@ ms.locfileid: "60837812"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager テンプレート](expressroute-howto-circuit-resource-manager-template.md)
 > * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
-> 
+>
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -127,8 +129,8 @@ az network express-route list-service-providers
 
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
-> 
-> 
+>
+>
 
 リソース グループがまだない場合は、ExpressRoute 回線を作成する前に、作成しておく必要があります。 リソース グループを作成するには、次のコマンドを実行します。
 
@@ -136,7 +138,7 @@ az network express-route list-service-providers
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-以下の例では、Silicon Valley の Equinix を通じて 200 Mbps の ExpressRoute 回線を作成する方法を示します。 別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。 
+以下の例では、Silicon Valley の Equinix を通じて 200 Mbps の ExpressRoute 回線を作成する方法を示します。 別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。
 
 必ず、適切な SKU レベルと SKU ファミリを指定してください。
 
@@ -267,8 +269,8 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 > [!IMPORTANT]
 > 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。 サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成して管理します。
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.ExpressRoute 回線への仮想ネットワークのリンク
 
@@ -279,7 +281,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 次の変更は、ダウンタイムなしで行うことができます。
 
 * ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にすることができます。
-* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やすことができます。 ただし、回線の帯域幅のダウングレードはサポートされていません。 
+* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やすことができます。 ただし、回線の帯域幅のダウングレードはサポートされていません。
 * 課金プランを従量制課金データから無制限データに変更することができます。 ただし、無制限データから従量制課金データへの課金プランの変更はサポートされていません。
 * *従来の操作の許可*を有効または無効にできます。
 
@@ -299,8 +301,8 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 > [!IMPORTANT]
 > 標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗することがあります。
-> 
-> 
+>
+>
 
 ExpressRoute Premium アドオンを無効にする前に、次の条件を把握しておいてください。
 

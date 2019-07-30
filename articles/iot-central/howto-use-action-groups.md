@@ -4,16 +4,16 @@ description: 1 つの IoT Central ルールから複数のアクションを実�
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/19/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 857d747fa691d1ec2b386d5931a7edea08b7e609
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d9d7b2d189c6a1533be2d1cae4989669787c3f2a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60517199"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849001"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>1 つまたは複数のルールから実行する複数のアクションをグループ化する
 

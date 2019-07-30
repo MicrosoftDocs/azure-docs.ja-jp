@@ -53,7 +53,7 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
    az group create --name IoTEdgeResources --location westus2
    ```
 
-IoT Edge デバイス: 
+IoT Edge デバイス:
 
 * IoT Edge デバイスとして機能する Windows 仮想マシン。 この仮想マシンを作成するには、次のコマンドを使用します。 *{password}* は、セキュリティで保護されたパスワードに置き換えます。
 

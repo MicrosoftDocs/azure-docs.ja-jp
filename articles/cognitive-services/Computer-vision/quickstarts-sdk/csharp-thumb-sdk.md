@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ea03aa8242358833d32029918ce2e381182f6ba2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 78ffd9628c7a65ae60d457bbff3631ea261649d5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998330"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603439"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# によるサムネイルの生成
 
@@ -36,9 +36,9 @@ ms.locfileid: "59998330"
 
 1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
 1. Computer Vision クライアント ライブラリの NuGet パッケージをインストールします。
-    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、**[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.ComputerVision」と入力します。
-    1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
+    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+    1. **[参照]** タブをクリックし、 **[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.ComputerVision」と入力します。
+    1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
 1. `Program.cs` を以下のコードに置き換えます。 `GenerateThumbnailAsync` メソッドと `GenerateThumbnailInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[サムネイル取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) をラップします。 
 
     ```csharp

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
-ms.openlocfilehash: 9f834d697c0d3fe537bbdb190b0ba0d0f294ac87
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 73314c5864e3036d102deee2792021345b80bf2e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041015"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60687834"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio での頂点実行ビューの使用
 頂点実行ビューを使用して Data Lake Analytics ジョブを試験する方法について説明します。
@@ -30,7 +30,7 @@ Data Lake Tools for Visual Studio で U-SQL ジョブを開きます。 左下�
 
 ![Data Lake Analytics Tools の頂点実行ビュー](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
-左側の **[頂点セレクター]** を使用して、特性に基づいて頂点を選択できます (上位 10 のデータ読み取り、ステージ別の選択など)。 最も一般的に使用されるフィルターの 1 つに、**[クリティカル パスの頂点]** があります。 **[クリティカル パス]** は、U-SQL ジョブの頂点の最も長いチェーンです。 クリティカル パスを理解すると、最も時間のかかっている頂点を確認することでジョブを最適化できるので便利です。
+左側の **[頂点セレクター]** を使用して、特性に基づいて頂点を選択できます (上位 10 のデータ読み取り、ステージ別の選択など)。 最も一般的に使用されるフィルターの 1 つに、 **[クリティカル パスの頂点]** があります。 **[クリティカル パス]** は、U-SQL ジョブの頂点の最も長いチェーンです。 クリティカル パスを理解すると、最も時間のかかっている頂点を確認することでジョブを最適化できるので便利です。
   
 ![Data Lake Analytics Tools の頂点実行ビュー](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
@@ -40,12 +40,12 @@ Data Lake Tools for Visual Studio で U-SQL ジョブを開きます。 左下�
 
 下部中央のウィンドウは、各頂点に関する情報が表示されます。
 * [プロセス名]: 頂点インスタンスの名前。 名前は、StageName|VertexName|VertexRunInstance の各要素で構成されます。 たとえば、SV7_Split[62].v1 という頂点は、ステージ SV7_Split における頂点番号 62 の 2 番目の実行インスタンス (.v1。インデックスは 0 から始まる) を表します。
-* [Total Data Read (読み取られたデータの合計)]/[Total Data Written (書き込まれたデータの合計)]: この頂点によって読み取られたデータおよび書き込まれたデータ。
-* [状態]/[Exit Status (終了状態)]: 頂点が終了したときの最終的な状態。
-* [終了コード]/[Failure Type (エラーの種類)]: 頂点が失敗したときのエラー。
-* [Creation Reason (作成理由)]: 頂点が作成された理由。
+* [Total Data Read] (読み取られたデータの合計)/[Total Data Written] (書き込まれたデータの合計): この頂点によって読み取られたデータおよび書き込まれたデータ。
+* [状態]/[Exit Status] (終了状態): 頂点が終了したときの最終的な状態。
+* [終了コード]/[Failure Type] (エラーの種類): 頂点が失敗したときのエラー。
+* [Creation Reason] (作成理由): 頂点が作成された理由。
 * [Resource Latency (リソースの待機時間)]/[Process Latency (プロセスの待機時間)]/[PN Queue Latency (PN キューの待機時間)]: 頂点がリソースを待機していた時間、データの処理にかかった時間、およびキューに保持された時間。
-* [プロセス]/[Creator GUID (作成者 GUID)]: 現在実行中の頂点またはその作成者の GUID。
+* [プロセス]/[Creator GUID] (作成者 GUID): 現在実行中の頂点またはその作成者の GUID。
 * [バージョン]: 実行中の頂点の N 番目のインスタンス (システムは、フェールオーバーや計算冗長性などのさまざまな理由で頂点の新しいインスタンスをスケジュールする場合があります)。
 * [Version Created Time (バージョンの作成時刻)]。
 * [Process Create Start Time (プロセスの作成開始時刻)]/[Process Queued Time (プロセスがキューに挿入された時刻)]/[Process Start Time (プロセス開始時刻)]/[Process Complete Time (プロセス完了時刻)]: 頂点プロセスの作成が開始された時刻、頂点プロセスのキューへの挿入が開始された時刻、特定の頂点プロセスが開始された時刻、および特定の頂点が完了した時刻。

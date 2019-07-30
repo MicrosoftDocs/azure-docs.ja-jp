@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c20f86fe7fdcfc7ecc940923a8c98fa1fbf4cf65
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a2994602f857c2c8ff9f935b649a8d3e94c10dca
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132187"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444092"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -21,4 +21,5 @@ Cloud Shell を使用していない場合は、まず `az login` でサイン�
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
-通常は、現在地付近の地域にリソース グループおよびリソースを作成します。 App Service プランがサポートされているすべての場所を表示するには、[az appservice list-locations](/cli/azure/appservice#az-appservice-list-locations) コマンドを実行します。
+
+通常は、近くの[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)にリソース グループおよびリソースを作成します。 

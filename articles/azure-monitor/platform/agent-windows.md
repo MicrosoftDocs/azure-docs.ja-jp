@@ -1,6 +1,6 @@
 ---
-title: Windows コンピューターを Azure Log Analytics に接続する | Microsoft Docs
-description: この記事では、Microsoft Monitoring Agent (MMA) を使用して、他のクラウドやオンプレミス内にホストされている Windows コンピューターを Log Analytics に接続する方法について説明します。
+title: Windows コンピューターを Azure Monitor に接続する | Microsoft Docs
+description: この記事では、Windows 用 Log Analytics エージェントを使用して、他のクラウドやオンプレミス内にホストされている Windows コンピューターを Azure Monitor に接続する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 2d57e619ec17e183bc8c9bb155f3e111f43b85f1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7f562959ac6022539ccf7137f352a2e9507758dc
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952472"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146347"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -110,14 +110,16 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 2. エージェントをサイレント モードでインストールし、Azure の商用クラウド内のワークスペースにレポートを送信するように構成するには、セットアップ ファイルを抽出したフォルダーから、次のコマンドを入力します。 
    
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
    Azure の米国政府機関向けクラウドをエージェントのレポート送信先として構成するには、次のコマンドを入力します。 
 
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
+    >[!NOTE]
+    >パラメーター *OPINSIGHTS_WORKSPACE_ID* および *OPINSIGHTS_WORKSPACE_KEY* の文字列値を二重引用符でカプセル化し、パッケージの有効なオプションとして解釈するよう Windows インストーラーに指示する必要があります。 
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Azure Automation の DSC を使用してエージェントをインストールする
 
@@ -202,4 +204,6 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 ## <a name="next-steps"></a>次の手順
 
-マシンへのデプロイ ライフ サイクル中にエージェントを管理する方法については、「[Windows および Linux での Log Analytics エージェントの管理とメンテナンス](agent-manage.md)」をご覧ください。  
+- マシンへのデプロイ ライフ サイクル中にエージェントを管理する方法については、「[Windows および Linux での Log Analytics エージェントの管理とメンテナンス](agent-manage.md)」をご覧ください。  
+
+- エージェントのインストールまたは管理中に問題が発生した場合は、[Windows エージェントのトラブルシューティング](agent-windows-troubleshoot.md)に関する記事を参照してください。

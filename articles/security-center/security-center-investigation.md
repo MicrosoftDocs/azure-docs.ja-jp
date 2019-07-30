@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 55def52d248babd439227cdcd4170c0a3ca91bb1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107476"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569833"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Azure Security Center でのインシデントとアラートの調査 (プレビュー)
 このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。
+
+> [!NOTE]
+> アラートとインシデントの調査エクスペリエンスは、2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_investigate)」を参照してください。
 
 ## <a name="what-is-investigation-in-security-center"></a>Security Center の調査とは
 Security Center の調査機能を使用すると、潜在的な[セキュリティ インシデント](https://docs.microsoft.com/azure/security-center/security-center-incident)について、トリアージ、範囲の把握、根本原因の特定を行うことできます。
@@ -100,7 +103,7 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 
 1.  **[Security Center]** ダッシュボードを開きます。
 2.  **[セキュリティ アラート]** をクリックして、調査するインシデントを選択します。
-3.  インシデントのページで **[調査の開始]** ボタンをクリックすると、**[調査]** ダッシュボードが表示されます。
+3.  インシデントのページで **[調査の開始]** ボタンをクリックすると、 **[調査]** ダッシュボードが表示されます。
 
     ![アラート:](./media/security-center-investigation/security-center-investigation-fig8.png)
 

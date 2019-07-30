@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: REST API を使用して Azure VM を復元する'
 description: REST API を使用して Azure VM Backup の復元操作を管理します
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1b2e7994fa52e8fcbbd4fa32a6203181ad9735e5
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646658"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466748"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -37,7 +36,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Responses
 
-|Name  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -137,7 +136,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Azure VM バックアップからのディスクの復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|Name  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -171,9 +170,9 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
 #### <a name="example-responses"></a>応答の例
 

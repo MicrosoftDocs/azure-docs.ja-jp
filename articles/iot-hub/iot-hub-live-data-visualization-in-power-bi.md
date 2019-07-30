@@ -7,19 +7,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 4/11/2018
+ms.date: 6/06/2019
 ms.author: robinsh
-ms.openlocfilehash: 3e932048b41e9af149f14a814a1c92d86bd26f29
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7deb1b501d30c8af0cb190f4722d46435afa9b8e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479873"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065897"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
 ![エンド ツー エンド ダイアグラム](./media/iot-hub-live-data-visualization-in-power-bi/1_end-to-end-diagram.png)
-
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -37,7 +36,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
 ## <a name="what-you-need"></a>必要なもの
 
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 次の要件について取り上げられています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 これらの記事では、次の要件について取り上げています。
   
   * 有効な Azure サブスクリプション
   * サブスクリプションの Azure IoT Hub。
@@ -53,7 +52,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[モノのインターネット]**  >  **[Stream Analytics ジョブ]** の順にクリックします。
+1. [Azure portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[モノのインターネット (IoT)]**  >  **[Stream Analytics ジョブ]** の順に選択します。
 
 2. 次の情報をジョブに入力します。
 
@@ -63,37 +62,49 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
    **[場所]** :リソース グループと同じ場所を使用します。
 
-   **[ダッシュボードにピン留めする]** :ダッシュボードから IoT ハブに簡単にアクセスできるようにするには、このオプションをオンにします。
+   ![Azure での Stream Analytics ジョブの作成](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job-azure.png)
 
-   ![Azure での Stream Analytics ジョブの作成](./media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
-
-3. **Create** をクリックしてください。
+3. **作成** を選択します。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの入力の追加
 
 1. Stream Analytics ジョブを開きます。
 
-2. **[ジョブ トポロジ]** で **[入力]** をクリックします。
+2. **[ジョブ トポロジ]** で、 **[入力]** を選択します。
 
-3. **[入力]** ウィンドウで **[ストリーム入力の追加]** をクリックしてから、次の情報を入力します。
+3. **[入力]** ウィンドウで、 **[Add stream input]\(ストリーム入力の追加\)** を選択し、ドロップダウン リストから **[IoT Hub]** を選択します。 新しい入力ウィンドウで、次の情報を入力します。
 
-   **入力のエイリアス**:入力の一意のエイリアス。下の **[手動で IoT Hub 設定を指定]** を選択します。
+   **入力のエイリアス**:入力の一意のエイリアスを入力します。
 
-   **ソース**: **[IoT ハブ]** を選択します。
-   
-   **エンドポイント**: **[メッセージング]** をクリックします。
+   **[Provide IoT Hub from your subscription]\(サブスクリプションから IoT Hub を指定する\)** :このラジオ ボタンを選択します。
 
-   **コンシューマー グループ**:先ほど作成したコンシューマー グループを選択します。
+   **サブスクリプション**:このチュートリアルに使用している Azure サブスクリプションを選択します。
 
-4. **Create** をクリックしてください。
+   **IoT Hub**:このチュートリアルで使用している IoT Hub を選択します。
 
-   ![Azure で Stream Analytics ジョブに入力を追加する](./media/iot-hub-live-data-visualization-in-power-bi/3_add-input-to-stream-analytics-job-azure.png)
+   **エンドポイント**: **[メッセージング]** を選びます。
+
+   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT ハブに使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT ハブ上で既定で作成され、IoT ハブによって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
+
+   **[共有アクセス ポリシー キー]** :このフィールドは、共有アクセス ポリシー名の選択内容に基づいて自動的に入力されます。
+
+   **コンシューマー グループ**:以前に作成したコンシューマー グループを選びます。
+
+   他のすべてのフィールドは既定値のままにします。
+
+   ![Azure で Stream Analytics ジョブに入力を追加する](./media/iot-hub-live-data-visualization-in-power-bi/add-input-to-stream-analytics-job-azure.png)
+
+4. **[保存]** を選択します。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの出力の追加
 
-1. **[ジョブ トポロジ]** で **[出力]** をクリックします。
+1. **[ジョブ トポロジ]** で、 **[出力]** を選択します。
 
-2. **[出力]** ウィンドウで **[追加]** と **[Power BI]** をクリックしてから、次の情報を入力します。
+2. **[出力]** ウィンドウで、 **[追加]** と **[Power BI]** を選択します。
+
+3. **[Power BI - New output]\(Power BI - 新規出力\)** ウィンドウで、 **[Authorize]\(承認\)** を選択し、指示に従って Power BI アカウントにサインインします。
+
+4. Power BI にサインインした後、次の情報を入力します。
 
    **出力のエイリアス**:出力の一意のエイリアス。
 
@@ -103,29 +114,27 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
    **[テーブル名]** :テーブルの名前を入力します。
 
-3. **[承認]** をクリックして、Power BI アカウントにサインインします。
+   ![Azure で Stream Analytics ジョブに出力を追加する](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job-azure.png)
 
-4. **Create** をクリックしてください。
-
-   ![Azure で Stream Analytics ジョブに出力を追加する](./media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
+5. **[保存]** を選択します。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics ジョブのクエリの構成
 
-1. **[ジョブ トポロジ]** で **[クエリ]** をクリックします。
+1. **[ジョブ トポロジ]** で、 **[クエリ]** を選択します。
 
 2. `[YourInputAlias]` をジョブの入力エイリアスに置き換えます。
 
 3. `[YourOutputAlias]` をジョブの出力エイリアスに置き換えます。
 
-4. **[Save]** をクリックします。
+   ![Azure で Stream Analytics ジョブにクエリを追加する](./media/iot-hub-live-data-visualization-in-power-bi/add-query-stream-analytics-job-azure.png)
 
-   ![Azure で Stream Analytics ジョブにクエリを追加する](./media/iot-hub-live-data-visualization-in-power-bi/5_add-query-stream-analytics-job-azure.png)
+4. **[保存]** を選択します。
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
-Stream Analytics ジョブで、 **[開始]**  >  **[現在]**  >  **[開始]** の順にクリックします。 ジョブが正常に開始されると、ジョブの状態が **[停止済み]** から **[実行中]** に変わります。
+Stream Analytics ジョブで、 **[概要]** を選択してから、 **[開始]**  >  **[Now]\(今すぐ\)**  >  **[開始]** を選択します。 ジョブが正常に開始されると、ジョブの状態が **[停止済み]** から **[実行中]** に変わります。
 
-![Azure での Stream Analytics ジョブの実行](./media/iot-hub-live-data-visualization-in-power-bi/6_run-stream-analytics-job-azure.png)
+![Azure での Stream Analytics ジョブの実行](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job-azure.png)
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>データを視覚化する Power BI レポートの作成と公開
 
@@ -133,45 +142,45 @@ Stream Analytics ジョブで、 **[開始]**  >  **[現在]**  >  **[開始]** 
 
 2. [Power BI](https://powerbi.microsoft.com/en-us/) アカウントにサインインします。
 
-3. 使用したワークスペースである **[マイ ワークスペース]** をクリックします。
+3. 使用したワークスペースである **[マイ ワークスペース]** を選択します。
 
-4. **[データセット]** をクリックします。
+4. **[データセット]** を選択します。
 
    Stream Analytics ジョブの出力を作成したときに指定したデータセットが表示されます。
 
-5. 作成したデータセットで、 **[レポートの追加]** (データセット名の右側にある最初のアイコン) をクリックします。
+5. 作成したデータセットで、 **[レポートの追加]** (データセット名の右側にある最初のアイコン) を選択します。
 
-   ![Microsoft Power BI レポートの作成](./media/iot-hub-live-data-visualization-in-power-bi/7_create-power-bi-report-microsoft.png)
+   ![Microsoft Power BI レポートの作成](./media/iot-hub-live-data-visualization-in-power-bi/start-power-bi.png)
 
 6. 時間の経過に伴う温度の変化を示す折れ線グラフを作成します。
 
-   1. レポート作成のページで、折れ線グラフを追加します。
+   1. レポート作成ページの **[視覚化]** ウィンドウで、折れ線グラフのアイコンを選択して折れ線グラフを追加します。
 
    2. **[フィールド]** ウィンドウで、Stream Analytics ジョブの出力を作成したときに指定したテーブルを展開します。
-   
+
    3. **EventEnqueuedUtcTime** を、 **[視覚化]** ウィンドウの **[軸]** にドラッグします。
-   
+
    4. **temperature** を **[値]** にドラッグします。
 
       折れ線グラフが作成されます。 x 軸は日付と時刻 (UTC タイム ゾーン) を示し、 y 軸はセンサーから取得した温度を示します。
 
-      ![Microsoft Power BI レポートに温度の折れ線グラフを追加する](./media/iot-hub-live-data-visualization-in-power-bi/8_add-line-chart-for-temperature-to-power-bi-report-microsoft.png)
+      ![Microsoft Power BI レポートに温度の折れ線グラフを追加する](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-temp.png)
 
 7. 時間の経過に伴う湿度の変化を示す、別の折れ線グラフを作成します。 これを行うには、上記と同じ手順を行ったうえで、**EventEnqueuedUtcTime** を x 軸、**humidity** を y 軸に設定します。
 
-   ![Microsoft Power BI レポートに湿度の折れ線グラフを追加する](./media/iot-hub-live-data-visualization-in-power-bi/9_add-line-chart-for-humidity-to-power-bi-report-microsoft.png)
+   ![Microsoft Power BI レポートに湿度の折れ線グラフを追加する](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-humidity.png)
 
-8. **[保存]** をクリックしてレポートを保存します。
+8. **[保存]** を選択してレポートを保存します。
 
-9. 左側のウィンドウで **[レポート]** でクリックした後、先ほど作成したレポートをクリックします。
+9. 左側のウィンドウで **[レポート]** を選択した後、先ほど作成したレポートを選択します。
 
-10. **[ファイル]**  >  **[Web に公開]** の順にクリックします。
+10. **[ファイル]**  >  **[Web に公開]** を選択します。
 
-11. **[埋め込みコードの作成]** 、 **[公開]** の順にクリックします。
+11. **[埋め込みコードの作成]** 、 **[公開]** の順に選択します。
 
-他のユーザーと共有できるレポート アクセス用のリンクと、ブログまたは Web サイトにレポートを組み込むためのコード スニペットが表示されます。
+他のユーザーと共有できるレポート アクセス用のリンクと、ブログまたは Web サイトにレポートを組み込むために使用できるコード スニペットが表示されます。
 
-![Microsoft Power BI レポートの公開](./media/iot-hub-live-data-visualization-in-power-bi/10_publish-power-bi-report-microsoft.png)
+![Microsoft Power BI レポートの公開](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-publish.png)
 
 Microsoft は [Power BI のモバイル アプリ](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/)も提供しています。これを使用すると、モバイル デバイスで Power BI のダッシュボードとレポートを表示して操作できます。
 

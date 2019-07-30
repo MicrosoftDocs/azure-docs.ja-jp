@@ -3,20 +3,20 @@ title: 順位を使用して検索結果を表示する
 titleSuffix: Azure Cognitive Services
 description: Bing RankingResponse の回答を使用して優先度順に検索結果を表示する方法について説明します。
 services: cognitive-services
-author: bradumbaugh
+author: aahill
 manager: nitinme
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: conceptual
-ms.date: 05/08/2017
-ms.author: bking
-ms.openlocfilehash: 6afaa2f497fa1a23d083c3ddd76359a49105732d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: tutorial
+ms.date: 06/18/2019
+ms.author: aahi
+ms.openlocfilehash: cfe198352cae95227a76535544d55a6be0c66abc
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384835"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203255"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C# でのコンソール アプリ検索クライアントのビルド
 

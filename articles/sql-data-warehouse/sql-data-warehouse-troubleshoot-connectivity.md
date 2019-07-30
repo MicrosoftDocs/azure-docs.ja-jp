@@ -6,16 +6,16 @@ author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: supportability
+ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 3f25d2ab5b2b988725d8f4fdf942854746f404d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d7f56b65db09232af4fe7e198675ea0cfd64a25
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754852"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595488"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>接続の問題のトラブルシューティング
 

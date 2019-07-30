@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 629342e44af16b6d23f9ed85f8c5306c807b8bfc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864440"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621894"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 
@@ -22,11 +22,11 @@ ms.locfileid: "65864440"
 
 ## <a name="introduction"></a>はじめに
 
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するページには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-このチュートリアルは、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するクイック スタートに基づいて作成されています。次の手順の実行方法について説明します。
+このチュートリアルは、[デバイスから IoT ハブへのテレメトリ送信](quickstart-send-telemetry-dotnet.md)に関する記事に基づいて作成されています。 次の手順の実行方法について説明します。
 
 * ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 
@@ -40,11 +40,11 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 * **SimulatedDevice**: [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するページで作成されたアプリの修正版であり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
 
-* **SendCloudToDevice**。クラウドからデバイスへのメッセージを IoT Hub を介してデバイス アプリに送信し、その配信確認を受け取ります。
+* **SendCloudToDevice**。cloud-to-device メッセージを IoT Hub を介してデバイス アプリに送信し、その配信確認を受け取ります。
 
 > [!NOTE]
 > IoT Hub には、[Azure IoT device SDK](iot-hub-devguide-sdks.md) を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。 このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)を参照してください。
-> 
+>
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -138,7 +138,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
    static string connectionString = "{iot hub connection string}";
    ```
 
-6. **Program** クラスに次のメソッドを追加します。 [[Send telemetry from a device to an IoT hub...]\(デバイスから IoT ハブへのテレメトリの送信\)](quickstart-send-telemetry-dotnet.md) でデバイスを定義するときに使用したデバイス名を設定します。
+6. **Program** クラスに次のメソッドを追加します。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するページでデバイスを定義するときに使用した名前にデバイス名を設定します。
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
@@ -171,7 +171,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 ## <a name="receive-delivery-feedback"></a>配信フィードバックの受信
 
-クラウドからデバイスへの各メッセージに対して IoT Hub からの配信 (または有効期限) 確認を要求できます。 このオプションによって、ソリューション バックエンドで再試行または補正ロジックを簡単に通知できるようになります。 cloud-to-device フィードバックの詳細については、[IoT Hub における D2C と C2D のメッセージング](iot-hub-devguide-messaging.md)に関するページを参照してください。
+各 cloud-to-device メッセージに対して IoT Hub からの配信 (または有効期限) 確認を要求することができます。 このオプションによって、ソリューション バックエンドで再試行または補正ロジックを簡単に通知できるようになります。 cloud-to-device フィードバックの詳細については、[IoT Hub における D2C と C2D のメッセージング](iot-hub-devguide-messaging.md)に関するページを参照してください。
 
 このセクションでは、フィードバックを要求し、それを IoT ハブから受信するように、**SendCloudToDevice** アプリを変更します。
 

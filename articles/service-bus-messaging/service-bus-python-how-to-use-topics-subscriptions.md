@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d294ceaaf77175a3010131b18864b71c7b26b88b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991990"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360819"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Python で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -79,9 +79,9 @@ bus_service.create_topic('mytopic', topic_options)
 トピックのサブスクリプションも **ServiceBusService** オブジェクトで作成します。 サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定できます。
 
 > [!NOTE]
-> サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションがサブスクライブされているトピックが削除されるまで存在し続けます。
+> 既定では、サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションがサブスクライブされているトピックが削除されるまで存在し続けます。
 > 
-> 
+> [auto_delete_on_idle プロパティ](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python)を設定することで、サブスクリプションを自動的に削除することができます。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
@@ -140,18 +140,20 @@ bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 
 ```python
 for i in range(5):
-    msg = Message('Msg {0}'.format(i).encode('utf-8'), custom_properties={'messagenumber':i})
+    msg = Message('Msg {0}'.format(i).encode('utf-8'),
+                  custom_properties={'messagenumber': i})
     bus_service.send_topic_message('mytopic', msg)
 ```
 
-Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 
 サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの `receive_subscription_message` メソッドを使用します。
 
 ```python
-msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
+msg = bus_service.receive_subscription_message(
+    'mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
@@ -178,7 +180,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
 
-トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure portal]またはプログラムによって明示的に削除する必要があります。 次の例では、`mytopic` という名前のトピックを削除する方法を示しています。
+トピックとサブスクリプションは、[auto_delete_on_idle プロパティ](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python)が設定されている場合を除き、永続的です。 これらは [Azure portal][Azure portal] を通じて、またはプログラムで削除できます。 次の例では、`mytopic` という名前のトピックを削除する方法を示しています。
 
 ```python
 bus_service.delete_topic('mytopic')
@@ -198,7 +200,7 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [Service Bus のキュー、トピック、サブスクリプション][Queues, topics, and subscriptions]。
-* [SqlFilter.SqlExpression][SqlFilter.SqlExpression] のリファレンス。
+* [SqlFilter.SqlExpression][SqlFilter.SqlExpression] のリファレンス
 
 [Azure portal]: https://portal.azure.com
 [Azure Python package]: https://pypi.python.org/pypi/azure  

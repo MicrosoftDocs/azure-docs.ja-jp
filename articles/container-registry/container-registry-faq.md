@@ -3,17 +3,17 @@ title: Azure Container Registry - よく寄せられる質問
 description: Azure Container Registry サービスに関連したよく寄せられる質問への回答
 services: container-registry
 author: sajayantony
-manager: jeconnoc
-ms.service: container-instances
+manager: gwallace
+ms.service: container-registry
 ms.topic: article
-ms.date: 5/13/2019
+ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b835765bbd40ffbd4a5117f767a7ba163e41dda
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417930"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309282"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -27,6 +27,7 @@ ms.locfileid: "66417930"
 - [コンテナー レジストリの管理者の資格情報を取得するにはどうすればよいですか?](#how-do-i-get-admin-credentials-for-a-container-registry)
 - [Resource Manager テンプレートの管理者の資格情報を取得するにはどうすればよいですか?](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
 - [レプリケーションは Azure CLI または Azure PowerShell を使用して削除されるが、レプリケーションの削除が "許可されていません" 状態で失敗する](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
+- [ファイアウォール規則が正常に更新されたのに有効にならない](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure コンテナー レジストリを作成できますか?
 
@@ -34,11 +35,11 @@ ms.locfileid: "66417930"
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 内のイメージに対するセキュリティ脆弱性スキャンは存在しますか?
 
-はい。 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) および [Aqua](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントを参照してください。
+はい。 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントを参照してください。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Azure Container Registry で Kubernetes を構成するにはどうすればよいですか?
 
-[Kubernetes](http://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) のドキュメントおよび [Azure Kubernetes Service](container-registry-auth-aks.md) の手順を参照してください。
+[Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) のドキュメントおよび [Azure Kubernetes Service](container-registry-auth-aks.md) の手順を参照してください。
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>コンテナー レジストリの管理者の資格情報を取得するにはどうすればよいですか?
 
@@ -90,6 +91,11 @@ Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.Con
 ```azurecli  
 az role assignment create --role "Reader" --assignee user@contoso.com --scope /subscriptions/<subscription_id> 
 ```
+
+### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>ファイアウォール規則が正常に更新されたのに有効にならない
+
+ファイアウォール規則の変更が反映されるまで時間がかかります。 ファイアウォールの設定を変更した後は、この変更を検証する前に、数分間お待ちください。
+
 
 ## <a name="registry-operations"></a>レジストリの操作
 
@@ -245,8 +251,9 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 イメージの検疫は現在、ACR のプレビュー機能です。 セキュリティ スキャンに正常に合格したイメージのみが通常のユーザーに表示されるように、レジストリの検疫モードを有効にすることができます。 詳細については、[ACR の GitHub リポジトリ](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)に関するページを参照してください。
 
-## <a name="diagnostics"></a>診断
+## <a name="diagnostics-and-health-checks"></a>診断と正常性チェック
 
+- [`az acr check-health`](#check-health-with-az-acr-check-health) を使用した正常性チェック
 - [docker pull が "net/http: 接続の待機中に要求が取り消されました (ヘッダーの待機中に Client.Timeout を超えました)" というエラーで失敗する](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker push は成功するが、docker pull が "権限がありません: 認証が必要です" というエラーで失敗する](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [docker デーモンのデバッグ ログを有効にして取得する](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
@@ -255,16 +262,30 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 - [Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Windows で http トレースを収集するにはどうすればよいですか?](#how-do-i-collect-http-traces-on-windows)
 
+### <a name="check-health-with-az-acr-check-health"></a>`az acr check-health` を使用した正常性チェック
+
+環境とレジストリに関する一般的な問題のトラブルシューティングを行うには、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。
+
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull が "net/http: 接続の待機中に要求が取り消されました (ヘッダーの待機中に Client.Timeout を超えました)" というエラーで失敗する
 
  - このエラーが一時的な問題である場合は、再試行が成功します。
- - `docker pull` が引き続き失敗する場合は、docker デーモンの問題である可能性があります。 この問題は一般に、docker デーモンを再起動することによって緩和されます。 
- - docker デーモンを再起動してもこの問題が引き続き表示される場合は、コンピューターとの何らかのネットワーク接続の問題である可能性があります。 コンピューター上の一般的なネットワークが正常かどうかを確認するには、`ping www.bing.com` などのコマンドを試行します。
- - すべての docker クライアント操作に対して常に再試行メカニズムを用意する必要があります。
+ - `docker pull` が引き続き失敗する場合は、Docker デーモンの問題である可能性があります。 この問題は一般に、Docker デーモンを再起動することによって緩和されます。 
+ - Docker デーモンを再起動してもこの問題が引き続き表示される場合は、コンピューターとの何らかのネットワーク接続の問題である可能性があります。 コンピューター上の一般的なネットワークが正常かどうかを確認するには、次のコマンドを実行してエンドポイントの接続性をテストします。 この接続チェック コマンドを含む最小の`az acr` バージョンは、2.2.9 です。 以前のバージョンを使用している場合は、Azure CLI をアップグレードしてください。
+ 
+   ```azurecli
+    az acr check-health -n myRegistry
+    ```
+ - すべての Docker クライアント操作に対して常に再試行メカニズムを用意する必要があります。
+
+### <a name="docker-pull-is-slow"></a>Docker プル速度が遅い
+お使いのコンピューターのネットワーク ダウンロード速度をテストするには、[この](http://www.azurespeed.com/Azure/Download)ツールを使用します。 コンピューター ネットワークの速度が遅い場合は、レジストリと同じリージョンで Azure VM を使用することを検討してください。 これにより、通常はネットワーク速度が速くなります。
+
+### <a name="docker-push-is-slow"></a>Docker プッシュ速度が遅い
+お使いのコンピューターのネットワーク アップロード速度をテストするには、[この](http://www.azurespeed.com/Azure/Upload)ツールを使用します。 コンピューター ネットワークの速度が遅い場合は、レジストリと同じリージョンで Azure VM を使用することを検討してください。 これにより、通常はネットワーク速度が速くなります。
 
 ### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>docker push は成功するが、docker pull が "権限がありません: 認証が必要です" というエラーで失敗する
 
-このエラーは、`--signature-verification` が既定で有効になっている Red Hat バージョンの docker デーモンで発生する場合があります。 次のコマンドを実行して、Red Hat Enterprise Linux (RHEL) または Fedora の docker デーモン オプションを確認できます。
+このエラーは、`--signature-verification` が既定で有効になっている Red Hat バージョンの Docker デーモンで発生する場合があります。 次のコマンドを実行して、Red Hat Enterprise Linux (RHEL) または Fedora の Docker デーモン オプションを確認できます。
 
 ```bash
 grep OPTIONS /etc/sysconfig/docker
@@ -284,12 +305,12 @@ unauthorized: authentication required
 ```
 
 このエラーを解決するには:
-1. docker デーモンの構成ファイル `/etc/sysconfig/docker` にオプション `--signature-verification=false` を追加します。 例:
+1. Docker デーモンの構成ファイル `/etc/sysconfig/docker` にオプション `--signature-verification=false` を追加します。 例:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
   ```
-2. 次のコマンドを実行して、docker デーモン サービスを再起動します。
+2. 次のコマンドを実行して、Docker デーモン サービスを再起動します。
 
   ```bash
   sudo systemctl restart docker.service
@@ -297,9 +318,9 @@ unauthorized: authentication required
 
 `--signature-verification` の詳細は、`man dockerd` を実行して確認できます。
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>docker デーモンのデバッグ ログを有効にして取得する  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Docker デーモンのデバッグ ログを有効にして取得する  
 
-`debug` オプションを使用して `dockerd` を起動します。 最初に、docker デーモンの構成ファイル (`/etc/docker/daemon.json`) が存在しない場合は作成し、`debug` オプションを追加します。
+`debug` オプションを使用して `dockerd` を起動します。 最初に、Docker デーモンの構成ファイル (`/etc/docker/daemon.json`) が存在しない場合は作成し、`debug` オプションを追加します。
 
 ```json
 {   
@@ -387,7 +408,7 @@ curl $redirect_url
 
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか? 
 
-Microsoft Edge ブラウザーを使用している場合は、最大で 100 個のリポジトリまたはタグを一覧表示できます。 レジストリに 100 を超えるリポジトリまたはタグが含まれている場合は、すべてを一覧表示するために Firefox または Chrome ブラウザーを使用することをお勧めします。
+Microsoft Edge または IE ブラウザーを使用している場合は、最大で 100 個のリポジトリまたはタグを表示できます。 レジストリに 100 を超えるリポジトリまたはタグが含まれている場合は、すべてを一覧表示するために Firefox または Chrome ブラウザーを使用することをお勧めします。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows で http トレースを収集するにはどうすればよいですか?
 
@@ -439,7 +460,6 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub のアクション](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
-
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,15 +14,15 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812091"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60488222"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-copy-activity-performance.md)
 > * [バージョン 2 (最新バージョン)](../copy-activity-performance.md)
 
@@ -39,9 +39,9 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 この記事では、次の内容について説明します。
 
-* [パフォーマンス参照番号](#performance-reference) 
+* [パフォーマンス参照番号](#performance-reference)
 * [クラウド データ移動単位](#cloud-data-movement-units)、[並列コピー](#parallel-copy)、[ステージング コピー](#staged-copy)などのさまざまなシナリオにおけるコピーのスループットを高める機能
-* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps) 
+* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps)
 
 > [!NOTE]
 > コピー アクティビティ全般に慣れていない場合は、この記事を読む前に「 [コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md) 」を参照してください。
@@ -251,7 +251,7 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
 1. **ベースラインを確立する**。 開発フェーズでは、代表的なデータ サンプルに対してコピー アクティビティを使用して、パイプラインをテストします。 Data Factory の [スライシング モデル](data-factory-scheduling-and-execution.md) を使用することで、操作するデータの量を制限できます。
 
-   **監視と管理アプリ**を使用して、実行時間とパフォーマンス特性を収集します。 Data Factory のホーム ページで、**[監視と管理]** を選択します。 ツリー ビューで、 **出力データセット**を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** の一覧で、コピー アクティビティの実行を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** には、コピー アクティビティの期間とコピーされるデータのサイズが表示されます。 スループットは、 **[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]** に一覧表示されます。 このアプリの詳細については、 [新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
+   **監視と管理アプリ**を使用して、実行時間とパフォーマンス特性を収集します。 Data Factory のホーム ページで、 **[監視と管理]** を選択します。 ツリー ビューで、 **出力データセット**を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** の一覧で、コピー アクティビティの実行を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** には、コピー アクティビティの期間とコピーされるデータのサイズが表示されます。 スループットは、 **[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]** に一覧表示されます。 このアプリの詳細については、 [新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
    ![アクティビティ実行の詳細](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
@@ -420,6 +420,6 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 * Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../../storage/common/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../../storage/common/storage-performance-checklist.md)に関する記事
 * Azure SQL Database:[パフォーマンスを監視](../../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。[Azure SQL Data Warehouse でのコンピューティングの管理 (概要)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) に関するページを参照してください。
-* Azure Cosmos DB は:[Azure Cosmos DB のパフォーマンス レベル](../../cosmos-db/performance-levels.md)
+* Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../../cosmos-db/performance-levels.md)
 * オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 * オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)

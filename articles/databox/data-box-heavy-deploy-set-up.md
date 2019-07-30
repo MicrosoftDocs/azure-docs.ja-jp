@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f2f6b544b56977b3f1bfb6a4fb46a9f1e3bcc294
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3e6bfe4a93ab8c97bcffb84bda08977f8d811fa8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427944"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592367"
 ---
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>チュートリアル:ケーブルを配線して Azure Data Box Heavy に接続する (プレビュー)
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy に配線して接続する
 
 
 このチュートリアルでは、Azure Data Box Heavy のケーブル配線、接続、起動の方法について説明します。
@@ -30,7 +30,7 @@ ms.locfileid: "66427944"
 
 開始する前に次の点を確認します。
 
-1. 「[チュートリアル: Azure Data Box Heavy を注文する](data-box-heavy-deploy-ordered.md)」を完了していること。
+1. [Azure Data Box の設定に関する](data-box-heavy-deploy-ordered.md)を完了していること。
 2. Data Box Heavy の受け取りが済んでいて、ポータル内での注文の状態が **[配送済み]** であること。
 3. [Data Box Heavy の安全性に関するガイドライン](data-box-safety.md)を確認していること。
 4. データセンター内に、これだけの設置面積を占めるデバイスを収容可能な平らな場所があり、その近くに使用可能なネットワーク接続用設備があること。 このデバイスはラックにマウントできません。
@@ -79,7 +79,7 @@ ms.locfileid: "66427944"
 デバイスのいずれかのノードで、次の手順に従ってネットワークにケーブル接続します。
 
 1. CAT 6 RJ-45 ネットワーク ケーブル (図の青いケーブル) を使用して、ホスト コンピューターを 1 Gbps の管理ポートに接続します。
-2. Twinax QSFP+ 銅線ケーブル (図の黒いケーブル) を使用して、1 つ以上の 40 Gbps (1 Gbps よりも望ましい) のデータ用ネットワーク インターフェイスに接続します。 10 Gbps スイッチを使用している場合は、Twinax SFP+ 銅線ケーブルを使用して、QSFP+ から SFP+ へのアダプター (QSA アダプター) を使用して、データ用の 40 Gbps ネットワーク インターフェイスに接続します。
+2. QSFP+ ケーブル (ファイバーまたは銅線) を使用して、40 Gbps 以上 (1 Gbps よりも望ましい) のデータ用ネットワーク インターフェイスを少なくとも 1 つ接続します。 10 Gbps スイッチを使用する場合は、SFP+ ケーブルと、QSFP+ から SFP+ へのアダプター (QSA アダプター) を使用して、データ用の 40 Gbps ネットワーク インターフェイスに接続します。
 
     ![ケーブル接続した Data Box Heavy のポート](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 

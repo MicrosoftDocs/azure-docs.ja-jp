@@ -219,7 +219,7 @@ Apache Phoenix に接続するには、アクティブな Apache ZooKeeper ノ�
    ```
 
    > [!Note] 
-   > アクティブな Zookeeper ノードの IP アドレスは、Ambari UI から取得できます。 **[HBase]**  >  **[Quick Links]\(クイック リンク\)**  >  **[ZK\* (Active)]\(ZK (アクティブ)\)**  >  **[Zookeeper Info]\(Zookeeper 情報\)** に移動します。 
+   > アクティブな Zookeeper ノードの IP アドレスは、Ambari UI から取得できます。 **[HBase]** > **[Quick Links]\(クイック リンク\)** > **[ZK\* (Active)]\(ZK (アクティブ)\)** > **[Zookeeper Info]\(Zookeeper 情報\)** に移動します。 
 
 3. sqlline.py が Phoenix に接続し、タイムアウトしていない場合は、次のコマンドを実行して Phoenix の可用性と正常性を検証します。
 
@@ -248,7 +248,7 @@ Apache Phoenix に接続するには、アクティブな Apache ZooKeeper ノ�
    ```
 6. Apache Ambari UI で、次の手順に従って、すべての ZooKeeper ノード上で HMaster サービスを再起動します。
 
-    1. HBase の **[Summary]\(概要\)** セクションで、 **[HBase]**  >  **[Active HBase Master]** に移動します。 
+    1. HBase の **[Summary]\(概要\)** セクションで、**[HBase]** > **[Active HBase Master]** に移動します。 
     2. **[Components]\(コンポーネント\)** セクションで、HBase Master サービスを再起動します。
     3. 残りのすべての **Standby HBase Master** サービスに対して、上記の手順を繰り返します。 
 
@@ -271,11 +271,11 @@ An atomic renaming failure occurs. (アトミックな名前変更エラーが�
 
 ### <a name="probable-cause"></a>考えられる原因
 
-リージョン サーバー ログで、問題のファイルが作成された時間帯を特定し、ファイルの作成前後にプロセスのクラッシュが発生していないかどうかを確認します (この作業で支援が必要な場合は、HBase サポートに連絡してください)。このバグを回避し、プロセスを正常にシャットダウンできるように、より堅牢なメカニズムを提供するためにこの情報を活用させていただきます。
+リージョン サーバー ログで、問題のファイルが作成された時間帯を特定し、ファイルの作成前後にプロセスのクラッシュが発生していないかどうかを確認します  (この作業で支援が必要な場合は、HBase サポートに連絡してください)。このバグを回避し、プロセスを正常にシャットダウンできるように、より堅牢なメカニズムを提供するためにこの情報を活用させていただきます。
 
 ### <a name="resolution-steps"></a>解決手順
 
-呼び出し履歴を確認し、問題の原因となっていフォルダーを特定します (たとえば、WALs フォルダーや .tmp フォルダーが原因の場合があります)。 次に、Cloud Explorer または HDFS コマンドを使用して問題のファイルを特定します。 通常、これは \*-renamePending.json ファイルです (\*-renamePending.json ファイルは、WASB ドライバーでアトミックな名前変更操作を実装するために使用されるジャーナル ファイルです。 この実装のバグが原因で、プロセスのクラッシュ後にこれらのファイルが残されることがあります)。Cloud Explorer または HDFS コマンドを使用して、このファイルを強制的に削除します。 
+呼び出し履歴を確認し、問題の原因となっていフォルダーを特定します (たとえば、WALs フォルダーや .tmp フォルダーが原因の場合があります)。 次に、Cloud Explorer または HDFS コマンドを使用して問題のファイルを特定します。 通常、これは \*-renamePending.json ファイルです  (\*-renamePending.json ファイルは、WASB ドライバーでアトミックな名前変更操作を実装するために使用されるジャーナル ファイルです。 この実装のバグが原因で、プロセスのクラッシュ後にこれらのファイルが残されることがあります)。Cloud Explorer または HDFS コマンドを使用して、このファイルを強制的に削除します。 
 
 また、この場所に *$$$.$$$* のような名前の一時ファイルが存在する場合もあります。 このファイルを表示するには、HDFS `ls` コマンドを使用する必要があります。Cloud Explorer で表示することはできません。 このファイルを削除するには、HDFS コマンド `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$` を使用します。  
 
@@ -330,7 +330,7 @@ HMaster times out with a fatal exception similar to "java.io.IOException: Timedo
   
 ### <a name="resolution-steps"></a>解決手順
 
-1. Apache Ambari UI 内で、 **[HBase]**  >  **[Configs]\(構成\)** に移動します。 カスタム hbase-site.xml ファイルに次の設定を追加します。 
+1. Apache Ambari UI 内で、**[HBase]** > **[Configs]\(構成\)** に移動します。 カスタム hbase-site.xml ファイルに次の設定を追加します。 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -343,7 +343,7 @@ HMaster times out with a fatal exception similar to "java.io.IOException: Timedo
 
 ### <a name="issue"></a>問題
 
-リージョン サーバーでの再起動の失敗は、ベスト プラクティスに従うことで防ぐことができます。 HBase リージョン サーバーの再起動を予定しているときは、負荷の大きいワークロード アクティビティを一時停止することをお勧めします。 シャットダウンの進行中に、アプリケーションが引き続きリージョン サーバーに接続していると、リージョン サーバーの再起動操作が数分遅れます。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase:テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://web.archive.org/web/20190112153155/ https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) に関するページを参照してください。
+リージョン サーバーでの再起動の失敗は、ベスト プラクティスに従うことで防ぐことができます。 HBase リージョン サーバーの再起動を予定しているときは、負荷の大きいワークロード アクティビティを一時停止することをお勧めします。 シャットダウンの進行中に、アプリケーションが引き続きリージョン サーバーに接続していると、リージョン サーバーの再起動操作が数分遅れます。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase:テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) に関するページを参照してください。
 
 Apache Ambari UI から HBase リージョン サーバー上での再起動操作を開始すると、リージョン サーバーが停止しても、すぐには再起動していないことがすぐにわかります。 
 

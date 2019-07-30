@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 506847b436eeb3e1f612a17bf1182359a0e00947
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123380"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348431"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 
@@ -101,7 +101,7 @@ Split-Merge ツールは、Azure Web サービスとして実行されます。 
 
     参照テーブルとシャード化テーブルに関する情報は、シャード マップの `SchemaInfo` API によって提供されます。 次の例では、特定のシャード マップ マネージャー オブジェクトでこれらの API を使用しています。
 
-    ```c#
+    ```csharp
     // Create the schema annotations
     SchemaInfo schemaInfo = new SchemaInfo();
 

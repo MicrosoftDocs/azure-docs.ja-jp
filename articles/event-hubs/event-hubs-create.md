@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/23/2019
 ms.author: shvija
-ms.openlocfilehash: 83e33ffa2854b92718828ae870b82431993fac24
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 15b2b5863f5b78bd24ffd8cbd55b9914f52e32a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072806"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>クイック スタート: Azure portal を使用したイベント ハブの作成
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -57,7 +57,7 @@ Event Hubs 名前空間は一意のスコープ コンテナーを提供しま�
    ![Event Hubs を検索する](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
 3. 左側のナビゲーション メニューの **[お気に入り]** の下の **[Event Hubs]** を選択し、ツール バーの **[追加]** を選択します。
 
-   ![[追加] ツール バー ボタン](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
+   ![[追加] ボタン](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. **[名前空間の作成]** ページで、次の手順を実行します。
     1. 名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
     2. 価格レベル (Basic または Standard) を選択します。
@@ -98,7 +98,7 @@ Event Hubs 名前空間は一意のスコープ コンテナーを提供しま�
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [Node.JS](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (送信のみ)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (受信のみ)](event-hubs-storm-getstarted-receive.md)

@@ -3,42 +3,42 @@ title: Azure Stream Analytics ジョブの監視アラートを設定する
 description: この記事では、Azure Portal を使って Azure Stream Analytics ジョブの監視とアラートを設定する方法について説明します。
 services: stream-analytics
 author: jseb225
-ms.author: jeanb
+ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.date: 06/21/2019
+ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769492"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621770"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する
 
 Azure Stream Analytics ジョブが問題を生じることなく常に実行している状態を確保するためには、ジョブを監視することが大切です。 この記事では、監視が必要とされる一般的なシナリオについてのアラートの設定方法について説明します。 
 
-ルールは、ポータルでメトリックに対して設定することも、操作ログのデータに対して[プログラムによって](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)構成することもできます。
+ポータル経由で Operation Logs データからのメトリックに関するルールを定義できます。[プログラムで](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)定義することもできます。
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Azure Portal でアラートを設定する
+### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>ジョブが予期せず停止したときにアラートを受け取る
 
 次の例では、ジョブがエラー状態になったときのアラートを設定する方法を説明しています。 このアラートは、あらゆるジョブに推奨されます。
 
 1. Azure Portal で、アラートを作成する Stream Analytics ジョブを開きます。
 
-2. **[ジョブ]** ページで、**[監視]** セクションに移動します。  
+2. **[ジョブ]** ページで、 **[監視]** セクションに移動します。  
 
-3. **[メトリック]** を選択し、**[新しいアラート ルール]** をクリックします。
+3. **[メトリック]** を選択し、 **[新しいアラート ルール]** を選択します。
 
    ![Azure portal での Stream Analytics のアラートの設定](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. 該当する Stream Analytics ジョブ名が **[リソース]** に自動的に表示されます。 **[条件の追加]** をクリックし、**[シグナル ロジックの構成]** の **[All Administrative operations]\(すべての管理操作\)** を選択します。
+4. 該当する Stream Analytics ジョブ名が **[リソース]** に自動的に表示されます。 **[条件の追加]** をクリックし、 **[シグナル ロジックの構成]** の **[All Administrative operations]\(すべての管理操作\)** を選択します。
 
    ![Stream Analytics アラートのシグナル名を選択する](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. **[シグナル ロジックの構成]** で、**[イベントのレベル]** を **[すべて]** に変更し、**[状態]** を **[失敗]** に変更します。 **[イベント開始者]** は空欄のまま、**[完了]** をクリックします。
+5. **[シグナル ロジックの構成]** で、 **[イベントのレベル]** を **[すべて]** に変更し、 **[状態]** を **[失敗]** に変更します。 **[イベント開始者]** は空欄のままで、 **[完了]** を選択します。
 
    ![Stream Analytics アラートのシグナル ロジックの構成](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -46,11 +46,11 @@ Azure Stream Analytics ジョブが問題を生じることなく常に実行し
 
    ![Azure Streaming Analytics ジョブのアラートの設定](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. **[リソース]**、**[条件]**、**[アクション グループ]** がすべて入力されている必要があります。 起動するアラートの順に、定義されている条件が満たされる必要がある点に注意してください。 たとえば、直近 15 分間のメトリックの平均値を 5 分ごとに測定できます。
+7. **[リソース]** 、 **[条件]** 、 **[アクション グループ]** がすべて入力されている必要があります。 起動するアラートの順に、定義されている条件が満たされる必要がある点に注意してください。 たとえば、直近 15 分間のメトリックの平均値を 5 分ごとに測定できます。
 
    ![Stream Analytics のアラート ルールを作成する](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   **[アラートの詳細]** に **[アラート ルール名]**、**[説明]**、**[リソース グループ]** を追加し、**[アラート ルールの作成]** をクリックして、Stream Analytics ジョブ用のルールを作成します。
+   **[アラートの詳細]** に **[アラート ルール名]** 、 **[説明]** 、 **[リソース グループ]** を追加し、 **[アラート ルールの作成]** をクリックして、Stream Analytics ジョブ用のルールを作成します。
 
    ![Stream Analytics のアラート ルールを作成する](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
@@ -75,6 +75,6 @@ Azure Portal でのアラートの構成の詳細については、「[アラー
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

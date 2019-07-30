@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: ceb45048d160603a3ee619e3ea0e69a0c188a9ad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ee8115a29911d0c3d1ccf87366f939b4184e1ba2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725790"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606889"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>チュートリアル:Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
 
@@ -57,18 +57,18 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 自分で用意したモデルを使用するには、次の手順を実行します。
 
-1. Custom Vision Service を使用して分類器を[作成およびトレーニング](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)します。 モデルをエクスポートするには、**[General (compact)]\(全般 (コンパクト)\)** など、__コンパクト__ なドメインを選択します。 既存の分類器をエクスポートするには、右上にある歯車アイコンを選択して、ドメインをコンパクトに変換します。 __[設定]__ でコンパクト モデルを選択し、保存してからプロジェクトをトレーニングします。  
+1. Custom Vision Service を使用して分類器を[作成およびトレーニング](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)します。 モデルをエクスポートするには、 **[General (compact)]\(全般 (コンパクト)\)** など、__コンパクト__ なドメインを選択します。 既存の分類器をエクスポートするには、右上にある歯車アイコンを選択して、ドメインをコンパクトに変換します。 __[設定]__ でコンパクト モデルを選択し、保存してからプロジェクトをトレーニングします。  
 
-1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングの反復を選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]*、*[ONNX]*、*[ONNX1.2]*、*[エクスポート]* の順に選択します。 ファイルの準備ができたら、*[ダウンロード]* ボタンを選択します。
+1. [パフォーマンス] タブに移動して、[モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)します。コンパクト ドメインによるトレーニングの反復を選択すると、[エクスポート] ボタンが表示されます。 *[エクスポート]* 、 *[ONNX]* 、 *[ONNX1.2]* 、 *[エクスポート]* の順に選択します。 ファイルの準備ができたら、 *[ダウンロード]* ボタンを選択します。
 
 1. ONNX ファイルをプロジェクトの __[Assets]__ フォルダーにドロップします。 
 
-1. ソリューション エクスプローラーで [Assets] フォルダーを右クリックし、__[既存項目の追加]__ を選択します。 ONNX ファイルを選択します。
+1. ソリューション エクスプローラーで [Assets] フォルダーを右クリックし、 __[既存項目の追加]__ を選択します。 ONNX ファイルを選択します。
 
 1. ソリューション エクスプローラーで、[Assets] フォルダーの ONNX ファイルを選択します。 ファイルの以下のプロパティを変更します。
 
-    * __[ビルド アクション]__ -> __[コンテンツ]__
-    * __[出力ディレクトリにコピー]__ -> __[新しい場合はコピーする]__
+    * __[ビルド アクション]__  ->  __[コンテンツ]__
+    * __[出力ディレクトリにコピー]__  ->  __[新しい場合はコピーする]__
 
 1. `_onnxFileNames` 変数を ONNX ファイルの名前に変更します。 `ClassLabel` も、モデルに含まれているラベルの数に変更します。
 

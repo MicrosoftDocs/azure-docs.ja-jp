@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e83f4a1aea04bbaea12181419de6c5c06034f2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d47c742e4f6d2ba8a96e9897f43231e509e8aa63
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287079"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476081"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Azure Active Directory を使用して基本グループを作成してメンバーを追加する
 Azure Active Directory (Azure AD) ポータルを使用して、基本グループを作成できます。 この記事の目的に合わせて、基本グループは、リソース所有者 (管理者) によって単一リソースに追加され、そのリソースにアクセスする必要がある特定のメンバー (従業員) を含みます。 動的なメンバーシップやルールの作成など、より複雑なシナリオについては、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) ポータルを使用して、基本グルー�
 ### <a name="to-create-a-basic-group-and-add-members"></a>基本グループを作成してメンバーを追加するには、次の手順を実行します。
 1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]**、**[グループ]**、**[新しいグループ]** と選択します。
+2. **[Azure Active Directory]** 、 **[グループ]** 、 **[新しいグループ]** と選択します。
 
     ![[グループ] が表示された Azure AD ページ](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) ポータルを使用して、基本グルー�
         
        - **Office 365**。 共有メールボックス、カレンダー、ファイル、SharePoint サイトなどへのアクセスをメンバーに付与することで、共同作業の機会を提供します。 また、このオプションでは、組織外のユーザーにグループへのアクセス権を付与することもできます。 Office 365 グループの詳細については、「[Office 365 グループの概要](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)」を参照してください。
 
-   - **[グループ名]\(必須)。** グループの名前を追加します。覚えやすい、意味のある名前にします。
+   - **[グループ名]\(必須)。** グループの名前を追加します。覚えやすい、意味のある名前にします。 名前が別のグループに既に使用されているかどうかを判断するチェックが実行されます。 名前が既に使用されている場合は、重複した名前付けを避けるために、グループの名前を変更するように求められます。
 
    - **[グループの説明]。** 任意で、グループに説明を追加します。
 
@@ -58,15 +58,15 @@ Azure Active Directory (Azure AD) ポータルを使用して、基本グルー�
        >[!Important]
        >デバイスまたはユーザーのどちらかに対して動的グループを作成することは可能ですが、両方に対して作成することはできません。 また、デバイス所有者の属性に基づいてデバイス グループを作成することはできません。 デバイス メンバーシップ ルールで参照できるのは、デバイスの属性のみです。 ユーザーとデバイスの動的グループの作成に関する詳細については、「[動的グループの作成と状態チェックを行う](../users-groups-roles/groups-create-rule.md)」を参照してください。
 
-4. **作成**を選択します。
+4. **作成** を選択します。
 
     グループが作成され、メンバーを追加する準備ができました。
 
-5. **[グループ]** ページから **[メンバー]** 領域を選択して、**[メンバーの選択]** ページからグループに追加するメンバーの検索を開始します。
+5. **[グループ]** ページから **[メンバー]** 領域を選択して、 **[メンバーの選択]** ページからグループに追加するメンバーの検索を開始します。
 
     ![グループの作成プロセスの間に、グループのメンバーを選択する](media/active-directory-groups-create-azure-portal/select-members-create-group.png)
 
-6. メンバーの追加が完了したら、**[選択]** をクリックします。
+6. メンバーの追加が完了したら、 **[選択]** をクリックします。
 
     **[グループの概要]** ページが更新され、グループに追加されたメンバー数が表示されるようになりました。
 

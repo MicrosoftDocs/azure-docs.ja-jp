@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c024954053588537ac3363703876f716a38f41d9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358210"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702944"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD パスワード保護エージェントのバージョン履歴
 
@@ -38,7 +38,7 @@ ms.locfileid: "60358210"
   * ソフトウェアのバージョンおよび Azure テナントのデータは、バージョン 1.2.116.0 を実行している DC エージェントとプロキシでのみ使用可能です。
   * プロキシまたはフォレストの再登録 (または更新) が行われるまでは、Azure テナントのデータは報告されない可能性があります。
 * プロキシ サービスには、.NET 4.7 がインストールされていることが必要になりました。
-  * .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合は、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
+  * .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合は、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
   * Server Core システムでは、.NET 4.7 インストーラーが正常に実行するために、/q フラグを渡す必要がある場合があります。
 * プロキシ サービスでは、自動アップグレードがサポートされるようになりました。 自動アップグレードでは、プロキシ サービスと並んでインストールされる Microsoft Azure AD Connect Agent Updater サービスが使用されます。 自動アップグレードは既定で有効になります。
 * 自動アップグレードは、Set-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して有効または無効にすることができます。 現在の設定のクエリは、Get-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して実行できます。

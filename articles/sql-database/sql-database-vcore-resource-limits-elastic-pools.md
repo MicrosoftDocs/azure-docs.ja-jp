@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 05/23/2019
-ms.openlocfilehash: 98bd70d9f6eb70cb7848dfa74e19c78e55a34991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: 4e63e1e477ce82221e5121815b609326cc2c1112
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240356"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447182"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>仮想コアベースの購入モデルを使用したエラスティック プールに対するリソース制限
 
@@ -36,6 +36,9 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 > エラスティック プール内の個々のデータベースのリソース制限は、一般的に同じコンピューティング サイズのプール外の単一のデータベースのリソース制限と同じです。 たとえば、GP_Gen4_1 データベースの最大同時実行ワーカー数は 200 ワーカーです。 そのため、GP_Gen4_1 プール内のデータベースの最大の同時実行ワーカー数も 200 ワーカーです。 GP_Gen4_1 プールの同時実行ワーカーの総数は 210 です。
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>General Purpose サービス レベル:ストレージ サイズとコンピューティング サイズ
+
+> [!IMPORTANT]
+> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>General Purpose サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 
@@ -149,6 +152,9 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 \* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Business Critical サービス レベル:ストレージ サイズとコンピューティング サイズ
+
+> [!IMPORTANT]
+> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Business Critical サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 

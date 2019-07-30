@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/23/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 18c6175ede1e8459d3a9ca60f7890cc43d75e5ba
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236292"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561410"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -53,7 +53,7 @@ A. Data Box の原容量は 100 TB であり、使用可能な容量は 80 TB �
 A.  Data Box を利用できる国や地域については、「[利用可能なリージョン](data-box-overview.md#region-availability)」をご覧ください。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. Data Box では、どのリージョンでデータを保存できますか?
-A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国でサポートされています。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
+A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国、日本、オーストラリア、およびカナダでサポートされています。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. Data Box に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box に関して何か問題が発生した場合は、[Microsoft サポート](data-box-disk-contact-microsoft-support.md)にお問い合わせください。
@@ -170,7 +170,7 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Q. Data Box で複数のストレージ アカウントを使用することはできますか?
-A.  はい。 Data Box では、最大 10 件のストレージ アカウント、汎用、クラシック、または BLOB ストレージがサポートされています。 ホット BLOB とクール BLOB の両方がサポートされています。 GA リリース段階では、Azure パブリック クラウドにおいて、米国の全地域、西ヨーロッパ、北ヨーロッパ、フランス、英国でのストレージ アカウントがサポートされています。
+A.  はい。 Data Box では、最大 10 件のストレージ アカウント、汎用、クラシック、または BLOB ストレージがサポートされています。 ホット BLOB とクール BLOB の両方がサポートされています。 
 
 
 ## <a name="ship-device"></a>デバイスの配送

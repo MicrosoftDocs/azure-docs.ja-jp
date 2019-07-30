@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31df4cb9163e598bfde0c491d8088398c3204119
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e72ec4f9c512f6525f790d555794c1a120ac07c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407984"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093435"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>チュートリアル:Azure Active Directory と Qlik Sense Enterprise の統合
 
@@ -53,11 +53,11 @@ Azure AD への Qlik Sense Enterprise の統合を構成するには、ギャラ
 
 **ギャラリーから Qlik Sense Enterprise を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Qlik Sense Enterprise の統合を構成するには、ギャラ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Qlik Sense Enterprise**」と入力し、結果パネルで **[Qlik Sense Enterprise]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Qlik Sense Enterprise**」と入力し、結果パネルで **[Qlik Sense Enterprise]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Qlik Sense Enterprise](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
 
 Qlik Sense Enterprise で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Qlik Sense Enterprise** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Qlik Sense Enterprise** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -122,7 +122,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値は実際のサインオン URL、識別子、応答 URL に変更してください。これらの値の取得方法については、このチュートリアルの後半の説明を参照するか、[Qlik Sense Enterprise クライアント サポート チーム](https://www.qlik.com/us/services/support)に問い合わせてください。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -183,7 +183,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集**に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります**。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**  ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
 
-    f. これらは Azure AD が Qlik Sense サーバーに送信する **UserID** を表します。  スキーマ リファレンス情報は、構成が終了した後に Azure アプリの画面から取得できます。  名前属性を使用するには、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
+    f. これらは Azure AD が Qlik Sense サーバーに送信する **UserID** を表します。  スキーマ リファレンス情報は、構成が終了した後に Azure アプリの画面から取得できます。  名前属性を使用するには、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
     g. **ユーザー ディレクトリ**用の値を入力します。この値は、ユーザーが Azure AD を介して Qlik Sense サーバーで認証を行うときに、ユーザーにアタッチされます。  ハードコーディングされた値は**角かっこ []** で囲む必要があります。  Azure AD SAML アサーション内で送信される属性を使用するには、属性の名前をこのボックスに角かっこ **なし** で入力します。
 
@@ -195,7 +195,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     ![QlikSense][qs11]
 
-9. **[Add new server node]** ボタンをクリックし、エンジン ノードまたは Qlik Sense が負荷分散のためにセッションを送信する複数のノードを選択して、**[Add]** ボタンをクリックします。
+9. **[Add new server node]** ボタンをクリックし、エンジン ノードまたは Qlik Sense が負荷分散のためにセッションを送信する複数のノードを選択して、 **[Add]** ボタンをクリックします。
 
     ![QlikSense][qs12]
 
@@ -221,7 +221,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     ![QlikSense][qs17]
 
-15. この仮想プロキシ接続をサポートするプロキシ ノードを選択し、**[Link]** ボタンをクリックします。  リンクを作成すると、そのプロキシが [Associated proxies (関連プロキシ)] の下に一覧表示されます。
+15. この仮想プロキシ接続をサポートするプロキシ ノードを選択し、 **[Link]** ボタンをクリックします。  リンクを作成すると、そのプロキシが [Associated proxies (関連プロキシ)] の下に一覧表示されます。
 
     ![QlikSense][qs18]
   
@@ -231,7 +231,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     ![QlikSense][qs20]
 
-17. QMC が更新されたら、**[Virtual Proxies]** メニュー項目をクリックします。 新しい SAML 仮想プロキシのエントリが画面の表に表示されます。  仮想プロキシのエントリをクリックします。
+17. QMC が更新されたら、 **[Virtual Proxies]** メニュー項目をクリックします。 新しい SAML 仮想プロキシのエントリが画面の表に表示されます。  仮想プロキシのエントリをクリックします。
 
     ![QlikSense][qs51]
 
@@ -247,7 +247,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -272,11 +272,11 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
 このセクションでは、Britta Simon に Qlik Sense Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Qlik Sense Enterprise]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Qlik Sense Enterprise]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「**[Qlik Sense Enterprise]**」と入力して選択します。
+2. アプリケーションの一覧で、「 **[Qlik Sense Enterprise]** 」と入力して選択します。
 
     ![アプリケーションの一覧の Qlik Sense Enterprise のリンク](common/all-applications.png)
 
@@ -284,15 +284,15 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Qlik Sense Enterprise のテスト ユーザーの作成
 

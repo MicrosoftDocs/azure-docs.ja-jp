@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 01/08/2019
-ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.date: 07/10/2019
+ms.openlocfilehash: 412eaac2f82a6d09761dcac53192916df215831f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356190"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358788"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Azure の仮想ネットワーク内で実験と推論を安全に実行する
 
@@ -35,9 +35,13 @@ Azure Machine Learning service は、コンピューティング リソースの
 ## <a name="storage-account-for-your-workspace"></a>ワークスペースのストレージ アカウント
 
 > [!IMPORTANT]
-> 実験を行っている間だけ、Azure Machine Learning service ワークスペースにアタッチされているストレージ アカウントを仮想ネットワークの背後に置くことができます。 推論では、ストレージ アカウントへの無制限のアクセスが必要です。 これらの設定を変更済みかどうかわからない場合は、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)」の「__既定のネットワーク アクセス ルールの変更__」をご覧ください。 推論時、つまりモデルのスコア付け時に、すべてのネットワークからのアクセスを許可する手順を使用します。
+> Azure Machine Learning service 用の__既定のストレージ アカウント__は、__実験を行っている間だけ__、仮想ネットワークに配置できます。
+>
+> __実験用の既定以外のストレージ アカウント__の場合、または__推論__用にストレージ アカウントを使っている場合は、__ストレージ アカウントに対する無制限のアクセス__が必要です.
+> 
+> これらの設定を変更済みかどうかわからない場合は、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)」の「__既定のネットワーク アクセス ルールの変更__」をご覧ください。 推論時、つまりモデルのスコア付け時に、すべてのネットワークからのアクセスを許可する手順を使用します。
 
-仮想ネットワークの背後で、Azure Machine Learning 実験機能を Azure Storage で使用するには、次の手順に従います。
+ワークスペース用の既定の Azure ストレージ アカウントを仮想ネットワークに配置するには、次の手順のようにします。
 
 1. 仮想ネットワークの背後で実験のコンピューティング (例: Machine Learning コンピューティング) を作成するか、実験のコンピューティングをワークスペース (例: HDInsight クラスターまたは仮想マシン) にアタッチします。 詳細については、このドキュメントの「[Machine Learning コンピューティングを使用する](#use-machine-learning-compute)」と「[仮想マシンまたは HDInsight クラスターを使用する](#use-a-virtual-machine-or-hdinsight-cluster)」セクションを参照してください。
 2. ワークスペースにアタッチされているストレージに移動します。 ![Azure Machine Learning service のワークスペースにアタッチされている Azure Storage を示す Azure portal の画像](./media/how-to-enable-virtual-network/workspace-storage.png)
@@ -185,18 +189,18 @@ try:
     print("Found existing cpucluster")
 except ComputeTargetException:
     print("Creating new cpucluster")
-    
+
     # Specify the configuration for the new cluster
     compute_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
                                                            min_nodes=0,
                                                            max_nodes=4,
-                                                           vnet_resourcegroup_name = vnet_resourcegroup_name,
-                                                           vnet_name = vnet_name,
-                                                           subnet_name = subnet_name)
+                                                           vnet_resourcegroup_name=vnet_resourcegroup_name,
+                                                           vnet_name=vnet_name,
+                                                           subnet_name=subnet_name)
 
     # Create the cluster with the specified name and configuration
     cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
-    
+
     # Wait for the cluster to complete, show the output log
     cpu_cluster.wait_for_completion(show_output=True)
 ```
@@ -301,9 +305,9 @@ config.dns_service_ip = "10.0.0.10"
 config.docker_bridge_cidr = "172.17.0.1/16"
 
 # Create the compute target
-aks_target = ComputeTarget.create(workspace = ws,
-                                  name = "myaks",
-                                  provisioning_configuration = config)
+aks_target = ComputeTarget.create(workspace=ws,
+                                  name="myaks",
+                                  provisioning_configuration=config)
 ```
 
 作成プロセスが完了すると、仮想ネットワークの背後にある AKS クラスターで推論/スコア付けを行うことができます。 詳細については、[AKS へのデプロイ方法](how-to-deploy-to-aks.md)に関するページをご覧ください。

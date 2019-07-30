@@ -12,15 +12,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/30/2019
-ms.author: aljo,suhuruli
+ms.date: 07/22/2019
+ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 1487c9e3e57a2fe4dcdcab04aa81cd81315decfd
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 979c94e0c577c2a7dbcb11434ac5544e4dd1df64
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302281"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385149"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
 
@@ -40,7 +40,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 3. [Service Fabric SDK と CLI](service-fabric-get-started-linux.md#installation-methods) をインストールします。
 
-4.  [Git](https://git-scm.com/)
+4. [Git](https://git-scm.com/)
 
 
 ## <a name="get-the-application-package"></a>アプリケーション パッケージの取得
@@ -106,7 +106,7 @@ Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明�
 
 ## <a name="deploy-the-service-fabric-application"></a>Service Fabric アプリケーションをデプロイする
 
-1. CLI を使用して Azure の Service Fabric クラスターに接続します。 エンドポイントは、クラスターの管理エンドポイントです。 前のセクションで PEM ファイルを作成しました  
+1. CLI を使用して Azure の Service Fabric クラスターに接続します。 エンドポイントは、クラスターの管理エンドポイントです。 前のセクションで PEM ファイルを作成しました 
 
     ```bash
     sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
@@ -188,7 +188,7 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-クラスターの操作が完了したら、証明書ストアから証明書を削除できます。 例: 
+クラスターの操作が完了したら、証明書ストアから証明書を削除できます。 例:
 - Windows の場合:[証明書 MMC スナップイン](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)を使用します。 スナップインの追加時に **[ユーザー アカウント]** を選択してください。 `Certificates - Current User\Personal\Certificates` に移動して、証明書を削除します。
 - Mac の場合:キーチェーン アプリを使用します。
 - Ubuntu の場合:証明書の表示に使用される手順に従ってから、証明書を削除します。

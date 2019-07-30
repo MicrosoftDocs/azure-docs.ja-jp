@@ -4,17 +4,17 @@ description: この VM 管理ソリューションは、スケジュールに従
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389103"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476869"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -140,7 +140,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
    ここでは、次の操作が求められます。
    - **ターゲット ResourceGroup 名**を指定します。 この値は、このソリューションで管理する VM を含むリソース グループの名前です。 複数の名前を入力する場合は、それぞれをコンマで区切ってください (値の大文字と小文字は区別されません)。 ワイルドカードを使用して、サブスクリプション内の全リソース グループの VM を対象にすることもできます。 この値は、**External_Start_ResourceGroupNames** 変数と **External_Stop_ResourceGroupNames** 変数に格納されます。
    - **VM 除外リスト (文字列)** を指定します。 この値は、ターゲット リソース グループの 1 つ以上の仮想マシンの名前です。 複数の名前を入力する場合は、それぞれをコンマで区切ってください (値の大文字と小文字は区別されません)。 ワイルドカードの使用がサポートされています。 この値は **External_ExcludeVMNames** 変数に格納されます。
-   - **スケジュール**を選択します。 この値は、ターゲット リソース グループの VM を定期的に起動および停止する日時です。 既定では、スケジュールは今から 30 分後に構成されます。 別のリージョンを選択することはできません。 ソリューションの構成後、スケジュールを特定のタイム ゾーンに構成するには、「[起動および停止スケジュールの変更](#modify-the-startup-and-shutdown-schedules)」を参照してください。
+   - **スケジュール**を選択します。 スケジュールの日付と時刻を選択します。 選択した時間に開始し、毎日繰り返されるスケジュールが作成されます。 別のリージョンを選択することはできません。 ソリューションの構成後、スケジュールを特定のタイム ゾーンに構成するには、「[起動および停止スケジュールの変更](#modify-the-startup-and-shutdown-schedules)」を参照してください。
    - アクション グループから**電子メール通知**を受信するには、既定値の **[はい]** をそのまま使用し、有効なメール アドレスを指定します。 [[いいえ]](../azure-monitor/platform/action-groups.md) を選択したものの、後日、電子メール通知を受信することにした場合は、コンマで区切られた有効なメール アドレスで作成された**アクション グループ**を更新することができます。 また、次のアラート ルールを有効にする必要があります。
 
      - AutoStop_VM_Child

@@ -2,20 +2,20 @@
 title: Azure Active Directory とは - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory の概要と概念情報 (用語、利用可能なライセンス、関連機能の一覧と詳細情報へのリンクなど)。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.date: 05/08/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8fad7f0dc76aad306e0f2a8e26692ec997952c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 8fafa7bd95801be46025727b2261fc95bc539988
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470353"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440544"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -48,7 +48,7 @@ Azure AD の実装を強化するために、Azure Active Directory Basic、Prem
 >
 >Azure Active Directory Premium P1、Premium P2、Azure Active Directory Basic は、現在、中国ではサポートされていません。 Azure AD の価格の詳細については、[Azure Active Directory フォーラム](https://azure.microsoft.com/support/community/?product=active-directory)にお問い合わせください。
 
-- **Azure Active Directory Free。** ユーザーとグループの管理、オンプレミス ディレクトリ同期、基本レポートのほか、Azure、Office 365、および多くの一般的な SaaS アプリ全体のシングル サインオンを提供します。
+- **Azure Active Directory Free。** ユーザーとグループの管理、オンプレミス ディレクトリ同期、基本レポート、クラウド ユーザー向けのセルフサービスのパスワード変更のほか、Azure、Office 365、および多くの一般的な SaaS アプリ全体のシングル サインオンを提供します。
 
 - **Azure Active Directory Basic。** Basic では、Free の機能に加えて、クラウド中心のアプリ アクセス、グループベースのアクセス管理、クラウド アプリ向けのセルフサービスのパスワード リセットのほか、Azure AD を使用してオンプレミスの Web アプリを発行できる Azure AD アプリケーション プロキシも提供されます。
 
@@ -66,12 +66,14 @@ Azure AD とそのドキュメントをより深く理解するために、次�
 
 |用語または概念|説明|
 |---------------|-----------|
+|ID| 認証を受けることができるもの。 ID は、ユーザー名とパスワードを持つユーザーの可能性があります。 ID には、秘密キーまたは証明書による認証を必要とする可能性があるアプリケーションまたはその他のサーバーも含まれます。|
+|Account| データが関連付けられている ID。 ID なしではアカウントを持つことができません。|
+|Azure AD アカウント| Azure AD またはそれ以外の Microsoft クラウド サービス (Office 365 など) を通じて作成される ID です。 ID は Azure AD に保存され、組織のクラウド サービスのサブスクリプションで利用できます。 このアカウントは、職場または学校アカウントと呼ばれることもあります。|
 |Azure サブスクリプション| Azure クラウド サービスの支払いに使用されます。 多数のサブスクリプションをご利用いただけます。サブスクリプションはクレジット カードにリンクされます。|
 |Azure テナント| Azure AD の信頼された専用インスタンスであり、組織が Microsoft Azure、Microsoft Intune、Office 365 などの Microsoft クラウド サービスのサブスクリプションにサインアップしたときに自動的に作成されます。 1 つの Azure テナントは単一の組織を表します。|
 |シングル テナント| 専用の環境で他のサービスにアクセスする Azure テナントは、単一のテナントと見なされます。|
 |マルチテナント| 複数の組織の共用環境で他のサービスにアクセスする Azure テナントは、マルチテナントと見なされます。|
 |Azure AD ディレクトリ|Azure の各テナントには、信頼された専用の Azure AD ディレクトリが用意されます。 Azure AD ディレクトリは、テナントのユーザー、グループ、およびアプリを含み、テナント リソースに対して ID およびアクセス管理機能を実行するために使用されます。|
-|Azure AD アカウント | Azure AD またはそれ以外の Microsoft クラウド サービス (Office 365 など) を通じて作成される ID です。 ID は Azure AD に保存され、組織のクラウド サービスのサブスクリプションで利用できます。 このアカウントは、職場または学校アカウントと呼ばれることもあります。|
 |カスタム ドメイン|新しい Azure AD ディレクトリには、必ず domainname.onmicrosoft.com という初期ドメイン名が付けられます。 その初期の名前に加えて、組織のドメイン名をリストに追加することもできます。このドメイン名には、ビジネスを遂行するために使用するユーザー名と、ユーザーが組織のリソースにアクセスするために使用する名前が含まれます。 カスタム ドメイン名を追加すると、alain@contoso.com など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。|
 |アカウント管理者|この従来のサブスクリプション管理者ロールは、概念的にはサブスクリプションの課金の所有者です。 このロールは、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスでき、アカウント内の全サブスクリプションの管理を可能にします。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|
 |サービス管理者|この従来のサブスクリプション管理者ロールでは、アクセスを含め、すべての Azure リソースを管理することができます。 このロールは、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|

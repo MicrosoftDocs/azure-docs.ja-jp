@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: fa3e50374c47f863923252a47b4b54fc1e18f87d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2a05a4695ee80873a2d7464c0a1cf4d46ed30f5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991858"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543643"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Ruby で Service Bus のトピックとサブスクリプションを使用する方法
  
@@ -68,7 +68,9 @@ topic = azure_service_bus_service.create_topic(topic)
 ## <a name="create-subscriptions"></a>サブスクリプションを作成する
 トピック サブスクリプションも、**Azure::ServiceBusService** オブジェクトで作成します。 サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定できます。
 
-サブスクリプションは永続的です。 サブスクリプションは、サブスクリプションが削除されるか、サブスクリプションが関連付けられているトピックが削除されるまで保持されます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に getSubscription メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
+既定では、サブスクリプションは永続的です。 サブスクリプションは、サブスクリプションが削除されるか、サブスクリプションが関連付けられているトピックが削除されるまで保持されます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に getSubscription メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
+
+[AutoDeleteOnIdle プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)を設定することで、サブスクリプションを自動的に削除できます。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 新しいサブスクリプションの作成時にフィルターが指定されていない場合は､**MatchAll** フィルター (既定) が使用されます｡ **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"all-messages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
@@ -156,7 +158,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 メッセージが処理された後、`delete_subscription_message()` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 このプロセスは､しばしば "*1 回以上の処理*" と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、状況によっては、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、このロジックはメッセージの `message_id` プロパティを使用して実現され､配信の試行のたびにメッセージが変わることはありません｡
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
-トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure portal]またはプログラムによって明示的に削除する必要があります。 次の例では、`test-topic` という名前のトピックを削除する方法を示しています。
+トピックとサブスクリプションは、[AutoDeleteOnIdle プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)が設定されている場合を除き、永続的です。 これらは [Azure portal][Azure portal] を通じて、またはプログラムで削除できます。 次の例では、`test-topic` という名前のトピックを削除する方法を示しています。
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150735"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181840"
 ---
 1. Data Box デバイスにサインインします。 ロックが解除されていることを確認してください。
 
@@ -19,7 +19,7 @@ ms.locfileid: "66150735"
 
     ![Data Box ダッシュボード](media/data-box-add-device-ip/data-box-connect-via-rest-2.png)
 
-3. **[接続とコピー]** に移動し、**[REST]** をクリックします。
+3. **[接続とコピー]** に移動し、 **[REST]** をクリックします。
 
     ![Data Box ダッシュボード](media/data-box-add-device-ip/data-box-connect-via-rest-3.png)
 

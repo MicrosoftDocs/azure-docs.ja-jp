@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 7c51a0934457a2fcc03f9be1535712e97ac91a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60781184"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657108"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを Microsoft Genomics に送信する 
 
@@ -58,7 +58,7 @@ SAS トークンを作成するには、Azure Storage Explorer を使用する�
 
 ### <a name="set-up-create-a-sas-programmatically"></a>設定: SAS をプログラムで作成する
 
-Azure Storage SDK を使用して SAS を作成する場合は、[.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage)、[Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) など、複数の言語について説明されている既存のドキュメントを参照してください。 
+Azure Storage SDK を使用して SAS を作成する場合は、[.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage)、[Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) など、複数の言語について説明されている既存のドキュメントを参照してください。 
 
 SDK を使用せずに SAS を作成するには、SAS の認証に必要なすべての情報を含め、SAS クエリ文字列を直接構築することができます。 これらの[手順](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas)では、SAS クエリ文字列のコンポーネントとその構成方法について詳しく説明されています。 必要な SAS 署名は、これらの[手順](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples)で説明されているように、BLOB/コンテナー認証情報を使用して HMAC を生成して作成されます。
 

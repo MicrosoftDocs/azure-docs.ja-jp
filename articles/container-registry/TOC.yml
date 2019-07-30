@@ -41,14 +41,16 @@
   items:
     - name: Container Registry の SKU
       href: container-registry-skus.md
+    - name: レジストリ、リポジトリ、イメージ
+      href: container-registry-concepts.md
     - name: イメージ ストレージ
       href: container-registry-storage.md
     - name: コンテンツの形式
       href: container-registry-image-formats.md
+    - name: タグとバージョンのイメージ
+      href: container-registry-image-tag-version.md
     - name: geo レプリケーション
       href: container-registry-geo-replication.md
-    - name: ロールとアクセス許可
-      href: container-registry-roles.md
     - name: レジストリのベスト プラクティス
       href: container-registry-best-practices.md
 - name: ハウツー ガイド
@@ -87,14 +89,20 @@
               href: container-registry-auth-aci.md
             - name: Azure Kubernetes Service (AKS) からの認証
               href: container-registry-auth-aks.md
+        - name: ロールとアクセス許可
+          href: container-registry-roles.md
         - name: コンテンツの信頼
           href: container-registry-content-trust.md
     - name: ACR タスク
       items:
         - name: ACR タスクの概要
           href: container-registry-tasks-overview.md
+        - name: スケジュールされたタスク
+          href: container-registry-tasks-scheduled.md
         - name: 複数ステップのタスク
           href: container-registry-tasks-multi-step.md
+        - name: Buildpack を使用したイメージのビルド (プレビュー)
+          href: container-registry-tasks-pack-build.md
         - name: マネージド ID との使用
           href: container-registry-tasks-authentication-managed-identity.md
     - name: レジストリと他の Azure サービス
@@ -105,6 +113,10 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
         - name: Service Fabric
           href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+    - name: トラブルシューティング
+      items:
+        - name: 一般的な問題の診断
+          href: container-registry-check-health.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -129,6 +141,8 @@
       href: container-registry-webhook-reference.md
     - name: Event Grid スキーマ
       href: ../event-grid/event-schema-container-registry.md
+    - name: 正常性チェックのエラー
+      href: container-registry-health-error-reference.md
       maintainContext: true
 - name: リソース
   items:

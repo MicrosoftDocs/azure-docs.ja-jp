@@ -6,14 +6,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 07/23/2019
 ms.author: normesta
-ms.openlocfilehash: c5b6287757f6b71cfd60687f463673f142db04d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 010b7bc38caf83c12dd0d8b8e731fdbad6e45256
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939291"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422868"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -39,8 +39,8 @@ Data Lake Storage Gen2 アカウントは、階層型名前空間を持つスト
 
 |ツール | ガイダンス |
 |---|--|
-|Azure ストレージ エクスプローラー | [Storage Explorer を使用してファイル システムを作成する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-filesystem) |
-|AzCopy | [AzCopyV10 を使用して BLOB コンテナーまたはファイル共有を作成する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-blob-container-or-file-share)|
+|Azure ストレージ エクスプローラー | [Storage Explorer を使用してファイル システムを作成する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|AzCopy | [AzCopyV10 を使用して BLOB コンテナーまたはファイル共有を作成する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
 |Hadoop ファイル システム (HDFS) コマンド ライン インターフェイス (CLI) と HDInsight |[HDFS と HDInsight を使用してファイル システムを作成する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
 |Azure Databricks ノートブックでのコード|[ストレージ アカウント ファイル システムを作成する (Scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [ファイル システムを作成してマウントする (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
 
@@ -54,11 +54,11 @@ Storage Explorer または AzCopy を使用してファイル システムを作
 
 * ユーザー、グループ、ユーザー マネージド ID、またはサービス プリンシパルに、次のいずれかのロールを割り当てます。
 
-  [ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+  [ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
 
-  [ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
+  [ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 
-  [ストレージ BLOB データ所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
+  [ストレージ BLOB データ所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 * Shared Access Signature (SAS) トークンを使用します。
 
@@ -81,7 +81,7 @@ Storage Explorer または AzCopy を使用してファイル システムを作
 
 * [ファイルとディレクトリのアクセス制御リスト](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
 
-セキュリティの他の側面を設定する方法については、「[Azure Data Lake Storage Gen2 セキュリティ ガイド](https://review.docs.microsoft.com/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+セキュリティの他の側面を設定する方法については、「[Azure Data Lake Storage Gen2 セキュリティ ガイド](https://docs.microsoft.com/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 
 ## <a name="ingest-the-data"></a>データを取り込む
 
@@ -196,4 +196,4 @@ Data Lake Storage Gen2 からのデータのダウンロードに使用できる
 |ツール | ガイダンス |
 |---|--|
 |Azure Data Factory | [Azure Data Factory の Copy アクティビティ](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCop | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

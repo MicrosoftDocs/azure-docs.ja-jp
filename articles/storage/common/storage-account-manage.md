@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 06/20/2019
 ms.author: tamram
-ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66bdc4bd1e17347419a6eccd7c9532db17b33001
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61484276"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303495"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Azure portal でストレージ アカウント設定を管理する
 
@@ -20,16 +20,13 @@ ms.locfileid: "61484276"
 
 ## <a name="access-control"></a>アクセス制御
 
-Azure Storage では、ロールベースのアクセス制御 (RBAC) を介して、BLOB ストレージとキュー ストレージを Azure Active Directory で認証できます。 Azure AD による認証に関する詳細については、[Azure Active Directory を利用して Azure BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)方法に関するページを参照してください。
+Azure Storage では、ロールベースのアクセス制御 (RBAC) を介した Azure Active Directory による BLOB ストレージとキュー ストレージの承認がサポートされています。 Azure AD による承認の詳細については、「[Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
 
 Azure portal の**アクセス制御**設定を利用すれば、簡単な方法で RBAC ロールをユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることができます。 RBAC ロールを割り当てる方法の詳細については、「[Manage access rights to blob and queue data with RBAC](storage-auth-aad-rbac.md)」 (RBAC で BLOB とキュー データにアクセスする権利を管理する) を参照してください。
 
-> [!NOTE]
-> Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。 
-
 ## <a name="tags"></a>Tags
 
-Azure Storage では、カスタマイズした分類で Azure リソースを整理するための Azure Resource Manager タグがサポートされています。 サブスクリプション内のストレージ アカウントを論理的にグループ化できるように、ストレージ アカウントにタグを適用できます。 
+Azure Storage では、カスタマイズした分類で Azure リソースを整理するための Azure Resource Manager タグがサポートされています。 サブスクリプション内のストレージ アカウントを論理的にグループ化できるように、ストレージ アカウントにタグを適用できます。
 
 ストレージ アカウントについては、タグ名は 128 文字まで、タグ値は 256 文字までに制限されます。
 
@@ -41,24 +38,18 @@ Azure Storage では、カスタマイズした分類で Azure リソースを�
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-### <a name="view-and-copy-access-keys"></a>アクセス キーの表示とコピー
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
-ストレージ アカウントの資格情報を表示するには、次のように操作します。
+### <a name="view-account-keys-and-connection-string"></a>アカウント キーと接続文字列を表示する
 
-1. [Azure Portal](https://portal.azure.com) に移動します。
-2. 自分のストレージ アカウントを探します。
-3. ストレージ アカウントの概要の **[設定]** セクションで、 **[アクセス キー]** を選択します。 アカウント アクセス キーと、各キーの完全な接続文字列が表示されます。
-4. **[key1]** で **[キー]** 値を見つけ、 **[コピー]** ボタンをクリックしてアカウント キーをコピーします。
-5. あるいは、接続文字列全体をコピーできます。 **[Key1]** の **[接続文字列]** の値を見つけて **[コピー]** ボタンをクリックし、接続文字列をコピーします。
-
-    ![Azure portal でアクセス キーを表示する方法を示したスクリーンショット](media/storage-manage-account/portal-connection-string.png)
+[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
 ### <a name="regenerate-access-keys"></a>アクセス キーを再生成する
 
 Microsoft では、ストレージ アカウントを保護する目的で、アクセス キーを定期的に再生成することをお勧めしています。 キーをローテーションさせることができるように、2 つのアクセス キーが割り当てられます。 キーをローテーションさせるとき、プロセス全体でアプリケーションの Azure Storage へのアクセスが確実に維持されるようにします。 
 
 > [!WARNING]
-> アクセス キーの再生成は、ストレージ アカウント キーに依存するあらゆるアプリケーションまたは Azure サービスに影響を与える可能性があります。 メディア サービス、クラウド、モバイル アプリケーション、Azure Storage 向けのグラフィカル ユーザー インターフェイス アプリケーション ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) など) を含む、アクセス キーを使用してストレージ アカウントにアクセスするクライアントは新しいキーを使用するように更新する必要があります。 
+> アクセス キーの再生成は、ストレージ アカウント キーに依存するあらゆるアプリケーションまたは Azure サービスに影響を与える可能性があります。 メディア サービス、クラウド、モバイル アプリケーション、Azure Storage 向けのグラフィカル ユーザー インターフェイス アプリケーション ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) など) を含む、アクセス キーを使用してストレージ アカウントにアクセスするクライアントは新しいキーを使用するように更新する必要があります。
 
 次のプロセスでストレージ アカウント キーをローテーションさせます。
 
@@ -74,6 +65,7 @@ Microsoft では、ストレージ アカウントを保護する目的で、ア
 ストレージ アカウントの構成を変更すると、追加コストが発生する場合があります。 詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 ## <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する
+
 使わなくなったストレージ アカウントを削除するには、 [Azure ポータル](https://portal.azure.com)でストレージ アカウントに移動し、 **[削除]** をクリックします。 ストレージ アカウントを削除すると、アカウント内のすべてのデータを含む、アカウント全体が削除されます。
 
 > [!WARNING]

@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 24611e265788cf046aa0733bc423917aaf305427
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24fba1961c8fd95f1b9489716d690dd6eaa97b62
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589744"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274833"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -78,7 +78,7 @@ Standard メッセージング価格レベルが使用されているときに�
 [Service Bus Standard レベルの geo レプリケーション][Geo-replication with Service Bus Standard Tier]のサンプルで、メッセージング エンティティのパッシブ レプリケーションが説明されています。
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>データセンターの障害や災害からリレー エンドポイントを保護する
-リレー エンドポイントの geo レプリケーションにより、Service Bus 障害発生時にリレー エンドポイントを公開するサービスにアクセスできるようになります。 geo レプリケーションを実現するには、異なる名前空間内に 2 つのリレー エンドポイントを作成する必要があります。 これらの名前空間が異なるデータセンターに存在し、2 つのエンドポイントに異なる名前が付けられている必要があります。 たとえば、プライマリ エンドポイントは **contosoPrimary.servicebus.windows.net/myPrimaryService** を使用してアクセスでき、セカンダリ側は **contosoSecondary.servicebus.windows.net/mySecondaryService** を使用してアクセスできます。
+[Azure Relay](../service-bus-relay/relay-what-is-it.md) エンドポイントの geo レプリケーションにより、Service Bus 障害発生時にリレー エンドポイントを公開するサービスにアクセスできるようになります。 geo レプリケーションを実現するには、異なる名前空間内に 2 つのリレー エンドポイントを作成する必要があります。 これらの名前空間が異なるデータセンターに存在し、2 つのエンドポイントに異なる名前が付けられている必要があります。 たとえば、プライマリ エンドポイントは **contosoPrimary.servicebus.windows.net/myPrimaryService** を使用してアクセスでき、セカンダリ側は **contosoSecondary.servicebus.windows.net/mySecondaryService** を使用してアクセスできます。
 
 その後、サービスは、両方のエンドポイント上でリッスンし、クライアントはどちらかのエンドポイントを介してサービスを呼び出すことができます。 クライアント アプリケーションは、いずれかのリレー エンドポイントをプライマリ エンドポイントとしてランダムに選択して、アクティブなエンドポイントに要求を送信します。 操作が失敗してエラー コードが表示された場合、このエラーは、リレー エンドポイントを使用できないことを示します。 アプリケーションは、バックアップ エンドポイントへのチャネルを開き、要求を再び発行します。 この時点で、アクティブなエンドポイントとバックアップ エンドポイントの役割が切り替わります。クライアント アプリケーションは、前のアクティブなエンドポイントを新しいバックアップ エンドポイントと見なし、前のバックアップ エンドポイントを新しいアクティブなエンドポイントと見なします。 両方の送信操作が失敗した場合、2 つのエンティティの役割は変更されず、エラーが返されます。
 

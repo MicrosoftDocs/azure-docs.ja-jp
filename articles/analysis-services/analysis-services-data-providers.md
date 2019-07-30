@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b84616698b5e6d5b29968c4fc4014b781c7912a9
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: db2557bd34cace220b1c9e5f7e6932dd63d9f89c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729793"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734530"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
@@ -23,10 +23,10 @@ ms.locfileid: "66729793"
 
 |ダウンロード  |製品バージョン  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.19.24    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.19.24      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   16.1.0.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    16.1.0.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.24.20    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.24.20      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   16.3.0.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    16.3.0.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO と ADOMD (NuGet パッケージ)
 

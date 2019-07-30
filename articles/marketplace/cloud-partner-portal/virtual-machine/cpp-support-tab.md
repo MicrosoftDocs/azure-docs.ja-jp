@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
 ms.openlocfilehash: 9763c8d520b8736d8f7d7bc5db81b75762cb98f9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938205"
 ---
 # <a name="virtual-machine-support-tab"></a>仮想マシンの [サポート] タブ
 
-**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定できます。  **[Engineering]\(エンジニアリング\)** 、 **[カスタマー サポート]** 、 **[Support URLs]\(サポート URL\)** の 3 つの領域に分かれています。
+**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定できます。  これは次の 3 つの領域に分かれています。**Engineering (エンジニアリング)** 、**Customer Support (カスタマー サポート)** 、および **Support URLs (サポート URL)** 。
 
 ![仮想マシンの [新しいプラン] フォームの [サポート] タブ](./media/publishvm_012.png)
 

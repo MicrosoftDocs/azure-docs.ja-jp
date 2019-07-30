@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: a0a9af2098c4b45b8988e190a3984724cfce46ac
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 85f7395cbfa4ef2ba6ab448c9541b3f107eb0e96
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143691"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249816"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -145,8 +145,8 @@ Azure Diagnostics 拡張機能では、"データ シンク" と呼ばれる機�
 //Start of section to add
 "resources": [
 {
-            "type": "extensions",
-            "name": "Microsoft.Insights.VMDiagnosticsSettings",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'), '/', 'Microsoft.Insights.VMDiagnosticsSettings')]",
             "apiVersion": "2017-12-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [

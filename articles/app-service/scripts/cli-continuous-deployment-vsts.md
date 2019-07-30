@@ -3,7 +3,7 @@ title: Azure CLI サンプル スクリプト - アプリを作成して Azure R
 description: Azure CLI サンプル スクリプト - Azure Repos からの継続的なデプロイでアプリを作成する
 services: app-service\web
 documentationcenter: ''
-author: msangapu
+author: msangapu-msft
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: jeconnoc
+ms.author: msangapu-msft
 ms.custom: seodec18
-ms.openlocfilehash: 67e4f99046820aa21392ff1238318e1b48bb5354
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 502b2fabfe1bb90862e673d6bd88a5397065d5d7
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136790"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359941"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Azure CLI を使用して継続的なデプロイで App Service アプリを作成する
 

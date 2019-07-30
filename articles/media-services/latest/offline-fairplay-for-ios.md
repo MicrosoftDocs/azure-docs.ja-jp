@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 58315e639a54b67bdef6751004b7a768e4f92224
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2514fff2a3bb292a86c9f4c0e92c37ed2709097
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937511"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341041"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
@@ -40,6 +40,9 @@ ms.locfileid: "64937511"
 * 一部の国/地域では、インターネットの使用や帯域幅がまだ制限されています。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題はネットワークの可用性ではなく、ネットワーク帯域幅の制限です。 Over-the-Top (OTT)/オンライン ビデオ プラットフォーム (OVP) プロバイダーは、オフライン モードのサポートを要求します。
 
 この記事では、iOS 10 以降を搭載するデバイスを対象とする FairPlay Streaming (FPS) のオフライン モードのサポートについて説明します。 この機能は、watchOS、tvOS、Safari on macOS など、他の Apple プラットフォームではサポートされていません。
+
+> [!NOTE]
+> オフライン DRM は、コンテンツをダウンロードするときの 1 ライセンスのために、1 つの要求を発行することに対してのみ課金されます。 どのエラーにも課金は行われません。
 
 ## <a name="prerequisites"></a>前提条件
 

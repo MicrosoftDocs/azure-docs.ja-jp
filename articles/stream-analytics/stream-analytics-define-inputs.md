@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 1822bfe9f2d6d337db74ba94d43644b0b3567c71
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: 1f03f9e68640edd73d2f6bb55cf205a609450658
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455624"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620508"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -38,7 +38,7 @@ Stream Analytics では、すべてのデータ ストリーム入力ソース�
 
 Azure Event Hubs はスケーラブルな発行/サブスクライブ イベント インジェスターを提供します。 接続されたデバイスとアプリケーションによって生成される大量のデータを処理および分析できるように、イベント ハブでは 1 秒間に数百万件のイベントを収集できます。 Event Hubs と Stream Analytics を一緒に使用することで、リアルタイム分析用のエンド ツー エンドのソリューションが提供されます。 Event Hubs で Azure にイベントをリアルタイムでフィードし、Stream Analytics ジョブでこれらのイベントをリアルタイムで処理できます。 たとえば、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信できます。 続いて、リアルタイムのフィルター処理、集計、相関関係に入力データ ストリームとして Event Hubs を使用する Stream Analytics ジョブを作成できます。
 
-`EventEnqueuedUtcTime` は、イベントが Event Hubs に到着したときのタイムスタンプであり、Event Hubs から Stream Analytics に送信されるイベントの既定のタイムスタンプです。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+`EventEnqueuedUtcTime` は、イベントが Event Hubs に到着したときのタイムスタンプであり、Event Hubs から Stream Analytics に送信されるイベントの既定のタイムスタンプです。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) キーワードを使用する必要があります。
 
 ### <a name="event-hubs-consumer-groups"></a>Event Hubs コンシューマー グループ
 
@@ -79,14 +79,14 @@ FROM Input
 ```
 
 > [!NOTE]
-> IoT Hub ルートのエンドポイントとして Event Hub を使用する場合は、[GetMetadataPropertyValue 関数](https://msdn.microsoft.com/library/azure/mt793845.aspx)を使用して IoT Hub メタデータにアクセスすることができます。
+> IoT Hub ルートのエンドポイントとして Event Hub を使用する場合は、[GetMetadataPropertyValue 関数](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)を使用して IoT Hub メタデータにアクセスすることができます。
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>IoT Hub からのデータのストリーム配信
 
 Azure IoT Hub は、IoT シナリオ向けに最適化された高度にスケーラブルな発行/サブスクライブ イベント インジェスターです。
 
-IoT Hub から Stream Analytics に着信するイベントの既定のタイムスタンプは、このイベントが IoT Hub に到達したときのタイムスタンプです。このタイムスタンプが `EventEnqueuedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+IoT Hub から Stream Analytics に着信するイベントの既定のタイムスタンプは、このイベントが IoT Hub に到達したときのタイムスタンプです。このタイムスタンプが `EventEnqueuedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) キーワードを使用する必要があります。
 
 ### <a name="iot-hub-consumer-groups"></a>IoT Hub コンシューマー グループ
 
@@ -129,7 +129,7 @@ IoT Hub からのストリーム データを使用する場合、Stream Analyti
 
 ログの処理は、Blob Storage を Stream Analytics の入力として使用する場合によく使用されるシナリオです。 このシナリオでは、利用統計情報ファイルがシステムから取得されます。この情報を解析および処理して意味のあるデータを抽出する必要があります。
 
-Stream Analytics の Blob Storage イベントの既定のタイムスタンプは BLOB が最後に変更されたときのタイムスタンプです。このタイムスタンプが `BlobLastModifiedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。 Stream Analytics ジョブは、BLOB ファイルが使用可能な場合に、毎秒 Azure Blob Storage 入力からデータをプルします。 BLOB ファイルが使用不可能な場合は、最大で 90 秒の時間遅延がある指数関数的バックオフがあります。
+Stream Analytics の Blob Storage イベントの既定のタイムスタンプは BLOB が最後に変更されたときのタイムスタンプです。このタイムスタンプが `BlobLastModifiedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) キーワードを使用する必要があります。 Stream Analytics ジョブは、BLOB ファイルが使用可能な場合に、毎秒 Azure Blob Storage 入力からデータをプルします。 BLOB ファイルが使用不可能な場合は、最大で 90 秒の時間遅延がある指数関数的バックオフがあります。
 
 CSV 形式の入力では、データ セットに対してフィールドを定義するためのヘッダー行が必須です。また、ヘッダー行のフィールドはすべて、一意になっている必要があります。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1b55a2b053b86d3260fdca201357445d2556c444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1c4005651518eb27eebde0005bd70b4adad6432
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60793961"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798361"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
@@ -53,62 +53,61 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
     テレメトリ プロセッサが処理のチェーンを構築することに注意してください。 テレメトリ プロセッサをインスタンス化するときは、リンクをチェーン内の次のプロセッサに渡します。 テレメトリ データ ポイントが Process メソッドに渡されると、作業が実行され、そのチェーンの次のテレメトリ プロセッサが呼び出されます。
 
-    ```csharp
+```csharp
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.Extensibility;
+public class SuccessfulDependencyFilter : ITelemetryProcessor
+{
 
-    public class SuccessfulDependencyFilter : ITelemetryProcessor
-      {
+    private ITelemetryProcessor Next { get; set; }
 
-        private ITelemetryProcessor Next { get; set; }
+    // You can pass values from .config
+    public string MyParamFromConfigFile { get; set; }
 
-        // You can pass values from .config
-        public string MyParamFromConfigFile { get; set; }
+    // Link processors to each other in a chain.
+    public SuccessfulDependencyFilter(ITelemetryProcessor next)
+    {
+        this.Next = next;
+    }
+    public void Process(ITelemetry item)
+    {
+        // To filter out an item, just return
+        if (!OKtoSend(item)) { return; }
+        // Modify the item if required
+        ModifyItem(item);
 
-        // Link processors to each other in a chain.
-        public SuccessfulDependencyFilter(ITelemetryProcessor next)
-        {
-            this.Next = next;
-        }
-        public void Process(ITelemetry item)
-        {
-            // To filter out an item, just return
-            if (!OKtoSend(item)) { return; }
-            // Modify the item if required
-            ModifyItem(item);
-
-            this.Next.Process(item);
-        }
-
-        // Example: replace with your own criteria.
-        private bool OKtoSend (ITelemetry item)
-        {
-            var dependency = item as DependencyTelemetry;
-            if (dependency == null) return true;
-
-            return dependency.Success != true;
-        }
-
-        // Example: replace with your own modifiers.
-        private void ModifyItem (ITelemetry item)
-        {
-            item.Context.Properties.Add("app-version", "1." + MyParamFromConfigFile);
-        }
+        this.Next.Process(item);
     }
 
-    ```
-3. 次の内容を ApplicationInsights.config に挿入します
+    // Example: replace with your own criteria.
+    private bool OKtoSend (ITelemetry item)
+    {
+        var dependency = item as DependencyTelemetry;
+        if (dependency == null) return true;
+
+        return dependency.Success != true;
+    }
+
+    // Example: replace with your own modifiers.
+    private void ModifyItem (ITelemetry item)
+    {
+        item.Context.Properties.Add("app-version", "1." + MyParamFromConfigFile);
+    }
+}
+```
+
+3. プロセッサを追加します。
+
+**ASP.NET アプリ**: 次の内容を ApplicationInsights.config に挿入します。
 
 ```xml
-
-    <TelemetryProcessors>
-      <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
-         <!-- Set public property -->
-         <MyParamFromConfigFile>2-beta</MyParamFromConfigFile>
-      </Add>
-    </TelemetryProcessors>
-
+<TelemetryProcessors>
+  <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
+     <!-- Set public property -->
+     <MyParamFromConfigFile>2-beta</MyParamFromConfigFile>
+  </Add>
+</TelemetryProcessors>
 ```
 
 (これは、サンプリング フィルターを初期化するセクションと同じです)。
@@ -123,40 +122,55 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 **あるいは** 、コード内でフィルターを初期化することもできます。 適切な初期化クラス (たとえば Global.asax.cs の AppStart) で、プロセッサをチェーンに挿入します。
 
 ```csharp
+var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+builder.Use((next) => new SuccessfulDependencyFilter(next));
 
-    var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
-    builder.Use((next) => new SuccessfulDependencyFilter(next));
+// If you have more processors:
+builder.Use((next) => new AnotherProcessor(next));
 
-    // If you have more processors:
-    builder.Use((next) => new AnotherProcessor(next));
-
-    builder.Build();
-
+builder.Build();
 ```
 
 この時点より後に作成された TelemetryClients はプロセッサを使用します。
+
+**ASP.NET Core アプリ**
+
+> [!NOTE]
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+
+
+[ASP.NET Core](asp-net-core.md#adding-telemetry-processors) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
+        services.AddApplicationInsightsTelemetry();
+        services.AddApplicationInsightsTelemetryProcessor<SuccessfulDependencyFilter>();
+
+        // If you have more processors:
+        services.AddApplicationInsightsTelemetryProcessor<AnotherProcessor>();
+    }
+```
 
 ### <a name="example-filters"></a>フィルターの例
 #### <a name="synthetic-requests"></a>人工的な要求
 ボットと Web テストを除外します。 メトリックス エクスプローラーで人工的なソースを除外することもできますが、SDK でそのソースをフィルター処理することでトラフィックが削減されます。
 
 ```csharp
+public void Process(ITelemetry item)
+{
+  if (!string.IsNullOrEmpty(item.Context.Operation.SyntheticSource)) {return;}
 
-    public void Process(ITelemetry item)
-    {
-      if (!string.IsNullOrEmpty(item.Context.Operation.SyntheticSource)) {return;}
-
-      // Send everything else:
-      this.Next.Process(item);
-    }
-
+  // Send everything else:
+  this.Next.Process(item);
+}
 ```
 
 #### <a name="failed-authentication"></a>失敗した認証
 "401" 応答が返された要求を除外します。
 
 ```csharp
-
 public void Process(ITelemetry item)
 {
     var request = item as RequestTelemetry;
@@ -170,7 +184,6 @@ public void Process(ITelemetry item)
     // Send everything else:
     this.Next.Process(item);
 }
-
 ```
 
 #### <a name="filter-out-fast-remote-dependency-calls"></a>リモートの依存関係の高速呼び出しを除外する
@@ -182,7 +195,6 @@ public void Process(ITelemetry item)
 >
 
 ```csharp
-
 public void Process(ITelemetry item)
 {
     var request = item as DependencyTelemetry;
@@ -193,7 +205,6 @@ public void Process(ITelemetry item)
     }
     this.Next.Process(item);
 }
-
 ```
 
 #### <a name="diagnose-dependency-issues"></a>依存関係の問題の診断
@@ -214,71 +225,82 @@ public void Process(ITelemetry item)
 *C#*
 
 ```csharp
+using System;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    using System;
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.DataContracts;
-    using Microsoft.ApplicationInsights.Extensibility;
-
-    namespace MvcWebRole.Telemetry
+namespace MvcWebRole.Telemetry
+{
+  /*
+   * Custom TelemetryInitializer that overrides the default SDK
+   * behavior of treating response codes >= 400 as failed requests
+   *
+   */
+  public class MyTelemetryInitializer : ITelemetryInitializer
+  {
+    public void Initialize(ITelemetry telemetry)
     {
-      /*
-       * Custom TelemetryInitializer that overrides the default SDK
-       * behavior of treating response codes >= 400 as failed requests
-       *
-       */
-      public class MyTelemetryInitializer : ITelemetryInitializer
-      {
-        public void Initialize(ITelemetry telemetry)
+        var requestTelemetry = telemetry as RequestTelemetry;
+        // Is this a TrackRequest() ?
+        if (requestTelemetry == null) return;
+        int code;
+        bool parsed = Int32.TryParse(requestTelemetry.ResponseCode, out code);
+        if (!parsed) return;
+        if (code >= 400 && code < 500)
         {
-            var requestTelemetry = telemetry as RequestTelemetry;
-            // Is this a TrackRequest() ?
-            if (requestTelemetry == null) return;
-            int code;
-            bool parsed = Int32.TryParse(requestTelemetry.ResponseCode, out code);
-            if (!parsed) return;
-            if (code >= 400 && code < 500)
-            {
-                // If we set the Success property, the SDK won't change it:
-                requestTelemetry.Success = true;
-                // Allow us to filter these requests in the portal:
-                requestTelemetry.Context.Properties["Overridden400s"] = "true";
-            }
-            // else leave the SDK to set the Success property      
+            // If we set the Success property, the SDK won't change it:
+            requestTelemetry.Success = true;
+            // Allow us to filter these requests in the portal:
+            requestTelemetry.Context.Properties["Overridden400s"] = "true";
         }
-      }
+        // else leave the SDK to set the Success property      
     }
+  }
+}
 ```
 
-**初期化子を読み込む**
+**ASP.NET アプリ: 初期化子を読み込む**
 
 ApplicationInsights.config で:
 
 ```xml
-    <ApplicationInsights>
-      <TelemetryInitializers>
-        <!-- Fully qualified type name, assembly name: -->
-        <Add Type="MvcWebRole.Telemetry.MyTelemetryInitializer, MvcWebRole"/>
-        ...
-      </TelemetryInitializers>
-    </ApplicationInsights>
+<ApplicationInsights>
+  <TelemetryInitializers>
+    <!-- Fully qualified type name, assembly name: -->
+    <Add Type="MvcWebRole.Telemetry.MyTelemetryInitializer, MvcWebRole"/>
+    ...
+  </TelemetryInitializers>
+</ApplicationInsights>
 ```
 
 *または、* Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
 
 ```csharp
-    protected void Application_Start()
-    {
-        // ...
-        TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
-    }
+protected void Application_Start()
+{
+    // ...
+    TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+}
 ```
-
 
 [このトピックのその他のサンプルについては、こちらをご覧ください。](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-<a name="js-initializer"></a>
+**ASP.NET Core アプリ: 初期化子を読み込む**
+
+> [!NOTE]
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
+```
 
 ### <a name="java-telemetry-initializers"></a>Java テレメトリの初期化子
 
@@ -295,7 +317,7 @@ void initialize(Telemetry telemetry); }
 
 ```xml
 <Add type="mypackage.MyConfigurableContextInitializer">
-<Param name="some_config_property" value="some_value" />
+    <Param name="some_config_property" value="some_value" />
 </Add>
 ```
 
@@ -305,43 +327,42 @@ void initialize(Telemetry telemetry); }
 ポータルから取得した初期化コードの直後にテレメトリ初期化子を挿入します。
 
 ```JS
+<script type="text/javascript">
+    // ... initialization code
+    ...({
+        instrumentationKey: "your instrumentation key"
+    });
+    window.appInsights = appInsights;
 
-    <script type="text/javascript">
-        // ... initialization code
-        ...({
-            instrumentationKey: "your instrumentation key"
+
+    // Adding telemetry initializer.
+    // This is called whenever a new telemetry item
+    // is created.
+
+    appInsights.queue.push(function () {
+        appInsights.context.addTelemetryInitializer(function (envelope) {
+            var telemetryItem = envelope.data.baseData;
+
+            // To check the telemetry items type - for example PageView:
+            if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
+                // this statement removes url from all page view documents
+                telemetryItem.url = "URL CENSORED";
+            }
+
+            // To set custom properties:
+            telemetryItem.properties = telemetryItem.properties || {};
+            telemetryItem.properties["globalProperty"] = "boo";
+
+            // To set custom metrics:
+            telemetryItem.measurements = telemetryItem.measurements || {};
+            telemetryItem.measurements["globalMetric"] = 100;
         });
-        window.appInsights = appInsights;
+    });
 
+    // End of inserted code.
 
-        // Adding telemetry initializer.
-        // This is called whenever a new telemetry item
-        // is created.
-
-        appInsights.queue.push(function () {
-            appInsights.context.addTelemetryInitializer(function (envelope) {
-                var telemetryItem = envelope.data.baseData;
-
-                // To check the telemetry item�s type - for example PageView:
-                if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
-                    // this statement removes url from all page view documents
-                    telemetryItem.url = "URL CENSORED";
-                }
-
-                // To set custom properties:
-                telemetryItem.properties = telemetryItem.properties || {};
-                telemetryItem.properties["globalProperty"] = "boo";
-
-                // To set custom metrics:
-                telemetryItem.measurements = telemetryItem.measurements || {};
-                telemetryItem.measurements["globalMetric"] = 100;
-            });
-        });
-
-        // End of inserted code.
-
-        appInsights.trackPageView();
-    </script>
+    appInsights.trackPageView();
+</script>
 ```
 
 telemetryItem で使用できる非カスタム プロパティの概要については、[Application Insights エクスポート データ モデル](../../azure-monitor/app/export-data-model.md)に関するページを参照してください。

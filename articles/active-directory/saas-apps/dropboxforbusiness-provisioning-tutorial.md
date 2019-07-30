@@ -1,103 +1,165 @@
 ---
-title: チュートリアル:Dropbox を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
-description: Azure Active Directory と Dropbox for Business の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Dropbox for Business を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+description: ユーザー アカウントを Dropbox for Business に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure Active Directory を構成する方法について説明します。
 services: active-directory
-documentationCenter: na
-author: jeevansd
-manager: daveba
-ms.assetid: 0f3a42e4-6897-4234-af84-b47c148ec3e1
+documentationcenter: ''
+author: zchia
+writer: zchia
+manager: beatrizd
+ms.assetid: na
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d53d10b036a37489be0b7aae6208880044b766a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d7a7a76c86100041b544916c7d10e43bf3aaa44d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211803"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672910"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>チュートリアル:Dropbox for Business を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルでは、Azure AD から Dropbox for Business にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Dropbox for Business と Azure AD で実行する必要がある手順について説明します。
+このチュートリアルの目的は、ユーザーまたはグループを Dropbox for Business に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure AD を構成するために、Dropbox for Business と Azure Active Directory (Azure AD) で実行される手順を示すことです。
+
+> [!NOTE]
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-*   Azure Active Directory テナント。
-*   Dropbox for Business でのシングル サインオンが有効なサブスクリプション
-*   Team Admin アクセス許可がある Dropbox for Business のユーザー アカウント
+* Azure AD テナント
+* [Dropbox for Business テナント](https://www.dropbox.com/business/pricing)
+* Admin アクセス許可がある Dropbox for Business のユーザー アカウント。
+
+## <a name="add-dropbox-for-business-from-the-gallery"></a>ギャラリーから Dropbox for Business を追加する
+
+Azure AD で自動ユーザー プロビジョニング用に Dropbox for Business を構成する前に、Dropbox for Business を Azure AD アプリケーション ギャラリーからマネージド SaaS アプリケーションの一覧に追加する必要があります。
+
+**Azure AD アプリケーション ギャラリーから Dropbox for Business を追加するには、次の手順に従います。**
+
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+
+    ![Azure Active Directory のボタン](common/select-azuread.png)
+
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
+3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
+
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+
+4. 検索ボックスに「**Dropbox for Business**」と入力し、結果パネルで **[Dropbox for Business]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+
+    ![結果リストの Dropbox for Business](common/search-new-app.png)
 
 ## <a name="assigning-users-to-dropbox-for-business"></a>Dropbox for Business へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
-プロビジョニング サービスを構成して有効にする前に、Dropbox for Business アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Dropbox for Business アプリに割り当てることができます。
+自動ユーザー プロビジョニングを構成して有効にする前に、Dropbox for Business へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを Dropbox for Business に割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>ユーザーを Dropbox for Business に割り当てる際の重要なヒント
 
-*   単一の Azure AD ユーザーを Dropbox for Business に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを Dropbox for Business に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-*   Dropbox for Business にユーザーを割り当てるときに、有効なユーザー ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
+* Dropbox for Business にユーザーを割り当てるときは、割り当てダイアログで有効なアプリケーション固有ロール (使用可能な場合) を選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
 
-## <a name="enable-automated-user-provisioning"></a>自動化されたユーザー プロビジョニングを有効にする
+## <a name="configuring-automatic-user-provisioning-to-dropbox-for-business"></a>Dropbox for Business への自動ユーザー プロビジョニングを構成する 
 
-このセクションでは、Azure AD を Dropbox for Business のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みのユーザー アカウントを Dropbox for Business で作成、更新、無効化する手順を説明します。
+このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて Dropbox for Business のユーザーやグループを作成、更新、無効化するよう、Azure AD プロビジョニング サービスを構成する手順について説明します。
 
->[!Tip]
->Dropbox for Business では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> [!TIP]
+> Dropbox for Business では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Dropbox for Business シングル サインオンのチュートリアル](dropboxforbusiness-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>自動ユーザー アカウント プロビジョニングを構成するには:
+### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>Azure AD で Dropbox for Business の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
-2. シングル サインオンのために Dropbox for Business を既に構成している場合は、検索フィールドで Dropbox for Business のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Dropbox for Business** を検索します。 検索結果から Dropbox for Business を選択してアプリケーションの一覧に追加します。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. Dropbox for Business のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+2. アプリケーションの一覧で **[Dropbox for Business]** を選択します。
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。 
+    ![アプリケーション一覧の Dropbox for Business リンク](common/all-applications.png)
 
-    ![プロビジョニング](./media/dropboxforbusiness-provisioning-tutorial/provisioning.png)
+3. **[プロビジョニング]** タブを選択します。
+
+    ![[プロビジョニング] タブ](common/provisioning.png)
+
+4. **[プロビジョニング モード]** を **[自動]** に設定します。
+
+    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションにある **[承認する]** をクリックします。 新しいブラウザー ウィンドウで、Dropbox for Business のログイン ダイアログが開きます。
 
-6. **[Sign-in to Dropbox to link with Azure AD]\(Dropbox にサインインして Microsoft Azure AD とリンク\)** ダイアログで、Dropbox for Business テナントにサインインします。
+    ![プロビジョニング ](common/provisioning-oauth.png)
 
-     ![ユーザー プロビジョニング](./media/dropboxforbusiness-provisioning-tutorial/ic769518.png "ユーザー プロビジョニング")
+6. **[Sign-in to Dropbox for Business to link with Azure AD]\(Dropbox for Business にサインインして Azure AD とリンク\)** ダイアログで、Dropbox for Business テナントにサインインし、ID を検証します。
 
-7. Dropbox for Business のテナントに対して変更を行うためのアクセス許可を Azure Active Directory に付与することを確認します。 **[Allow]\(許可する\)** をクリックします。
-    
-      ![ユーザー プロビジョニング](./media/dropboxforbusiness-provisioning-tutorial/ic769519.png "ユーザー プロビジョニング")
+    ![Dropbox for Business サインイン](media/dropboxforbusiness-provisioning-tutorial/dropbox01.png)
 
-8. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Dropbox for Business アプリに接続できることを確認します。 接続が失敗した場合、使用中の Dropbox for Business アカウントに Team Admin アクセス許可があることを確認して、**"承認"** の手順をもう一度試してください。
+7. 手順 5 と 6 を完了したら、 **[テスト接続]** をクリックして、Azure AD が Dropbox for Business に接続できることを確認します。 接続できない場合は、使用中の Dropbox for Business アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-9. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
+    ![トークン](common/provisioning-testconnection-oauth.png)
 
-10. **[保存]** をクリックします。
+8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-11. [マッピング] セクションの **[Synchronize Azure Active Directory Users to Dropbox for Business]\(Azure Active Directory ユーザーを Dropbox for Business に同期する\)** を選びます。
+    ![通知用メール](common/provisioning-notification-email.png)
 
-12. **[属性マッピング]** セクションで、Azure AD から Dropbox for Business に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Dropbox for Business のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
+9. **[Save]** をクリックします。
 
-13. Dropbox for Business に対して Azure AD プロビジョニング サービスを有効にするには、[設定] セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Users to Dropbox]\(Azure Active Directory ユーザーを Dropbox に同期する\)** を選択します。
 
-14. **[保存]** をクリックします。
+    ![Dropbox ユーザー マッピング](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-mapping.png)
 
-これで、[ユーザーとグループ] セクションで Dropbox for Business に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって Dropbox for Business アプリに対して実行されたすべてのアクションが記載されています。
+11. **[属性マッピング]** セクションで、Azure AD から Dropbox に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Dropbox のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+
+    ![Dropbox ユーザー属性](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-attributes.png)
+
+12. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to Dropbox]\(Azure Active Directory グループを Dropbox に同期する\)** を選択します。
+
+    ![Dropbox グループ マッピング](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-mapping.png)
+
+13. **[属性マッピング]** セクションで、Azure AD から Dropbox に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Dropbox のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+
+    ![Dropbox グループ属性](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-attributes.png)
+
+14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+
+15. Dropbox に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+
+    ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
+
+16. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Dropbox にプロビジョニングするユーザーやグループを定義します。
+
+    ![プロビジョニングのスコープ](common/provisioning-scope.png)
+
+17. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+
+    ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
+
+これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Dropbox に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
+## <a name="connector-limitations"></a>コネクタの制限事項
+ 
+* Dropbox では、保留中の招待ユーザーはサポートされていません。 招待されたユーザーが保留中の場合、そのユーザーは削除されます。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](tutorial-list.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [シングル サインオンの構成](dropboxforbusiness-tutorial.md)
+
+## <a name="next-steps"></a>次の手順
+
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+

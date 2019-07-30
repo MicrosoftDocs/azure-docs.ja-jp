@@ -14,14 +14,19 @@
     - name: Video Indexer API の使用
       href: video-indexer-use-apis.md
 - name: 概念
-  href: video-indexer-concepts.md
   items:
+    - name: 概要
+      href: video-indexer-concepts.md
     - name: Video Indexer と Media Services のプリセットを比較する
       href: compare-video-indexer-with-media-services-presets.md
     - name: 複数のテナントの管理
       href: manage-multiple-tenants.md
+    - name: 言語識別モデル
+      href: language-identification-model.md
     - name: コンテンツ モデルのカスタマイズ
       items:
+        - name: 概要
+          href: customize-content-models-overview.md
         - name: ブランド
           href: customize-brands-model-overview.md
         - name: 言語
@@ -86,3 +91,5 @@
       href: faq.md
     - name: コンプライアンス
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
+    - name: リリース ノート
+      href: release-notes.md

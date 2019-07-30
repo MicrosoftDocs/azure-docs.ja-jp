@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 722d77bf27e3cd7eb921b09e0a1d4732a5b5f874
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319227"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514416"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリをアラートおよび監視する
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
@@ -387,7 +387,7 @@ ADFV2 は、次のメトリックを出力します
 
 | **メトリック**           | **メトリックの表示名**         | **単位** | **集計の種類** | **説明**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRun | 成功したパイプライン実行回数のメトリック | Count    | 合計                | 分の枠内で成功したパイプライン実行の合計回数 |
+| PipelineSucceededRuns | 成功したパイプライン実行回数のメトリック | Count    | 合計                | 分の枠内で成功したパイプライン実行の合計回数 |
 | PipelineFailedRuns   | 失敗したパイプライン実行回数のメトリック    | Count    | 合計                | 分の枠内で失敗したパイプライン実行の合計回数    |
 | ActivitySucceededRuns | 成功したアクティビティ実行回数のメトリック | Count    | 合計                | 分の枠内で成功したアクティビティ実行の合計回数  |
 | ActivityFailedRuns   | 失敗したアクティビティ実行回数のメトリック    | Count    | 合計                | 分の枠内で失敗したアクティビティ実行の合計回数     |

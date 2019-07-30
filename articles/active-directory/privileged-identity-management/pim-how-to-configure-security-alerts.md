@@ -14,18 +14,18 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6875ab8f184c67b02c91d1a8e312959f3ba9553b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288547"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476415"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールに対するセキュリティ アラートを構成する
 
 環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) によりアラートが生成されます。 アラートは、トリガーされると PIM ダッシュボードに表示されます。 アラートを選択して、アラートをトリガーしたユーザーまたはロールが一覧表示されたレポートを表示します。
 
-![PIM のセキュリティ アラート - スクリーンショット](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD ロール - アラートと重大度を一覧表示するアラート ウィンドウ](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>セキュリティのアラート
 
@@ -122,11 +122,11 @@ ms.locfileid: "60288547"
 
 1. **[設定]** 、 **[アラート]** の順にクリックします。
 
-    ![セキュリティ アラートの設定への移動](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+    ![Azure AD ロール - アラートが選択されている設定](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
 1. そのアラートの設定を構成するアラート名をクリックします。
 
-    ![セキュリティ アラートの設定](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![選択されたアラートの、セキュリティ アラートの設定ウィンドウ](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>次の手順
 

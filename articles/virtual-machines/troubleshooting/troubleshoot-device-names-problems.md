@@ -4,7 +4,7 @@ description: Linux VM デバイス名が変更される理由と、問題の解�
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0350b6bdc990ed6c2de60e3e98c3768b18d0d636
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362239"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710419"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Linux VM デバイス名の変更トラブルシューティング
 

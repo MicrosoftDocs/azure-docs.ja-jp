@@ -8,17 +8,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: AyoOlubeko
-ms.author: ayolubek
+author: Ninarn
+ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/12/2019
-ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/28/2019
+ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105796"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508762"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>クイック スタート:Azure portal の SQL クエリ エディターを使用した接続とデータの照会
 
@@ -32,14 +32,14 @@ SQL クエリ エディターは、お使いの Azure SQL Database または Azu
 
   || 単一データベース |
   |:--- |:--- |
-  | Create| [ポータル](sql-database-single-database-get-started.md) | 
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | 
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
-  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| 
+  | Create| [ポータル](sql-database-single-database-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]
-> SQL Server のファイアウォール設定で、**[Azure サービスへのアクセスを許可する]** オプションが **[オン]** に設定されていることを確認します。 このオプションにより、SQL クエリ エディターはデータベースおよびデータ ウェアハウスにアクセスできるようになります。
+> クエリ エディターでは、通信にポート 443 と 1443 が使用されます。  これらのポートで送信 HTTPS トラフィックを有効にしていることを確認してください。 また、お使いのデータベースとデータ ウェアハウスにアクセスできるようにするには、サーバーの許可されたファイアウォール規則に、送信 IP アドレスを追加する必要があります。
 
 ## <a name="sign-in-the-azure-portal"></a>Azure portal へのサインイン
 
@@ -49,13 +49,13 @@ SQL クエリ エディターは、お使いの Azure SQL Database または Azu
 
 1. 左側のメニューから **[SQL データベース]** を選択して、**mySampleDatabase** を選びます。
 
-2. 左側のメニューで、**[クエリ エディター (プレビュー)]** を探して選択します。 **[ログイン]** ページが表示されます。
+2. 左側のメニューで、 **[クエリ エディター (プレビュー)]** を探して選択します。 **[ログイン]** ページが表示されます。
 
     ![クエリ エディターの検索](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
 3. **[認証の種類]** ドロップダウン メニューから **[SQL Server 認証]** を選択して、データベースの作成に使用するサーバー管理者アカウントのユーザー ID とパスワードを入力します。
 
-    ![sign in](./media/sql-database-connect-query-portal/login-menu.png) 
+    ![sign in](./media/sql-database-connect-query-portal/login-menu.png)
 
 4. **[OK]** を選択します。
 
@@ -70,16 +70,16 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
 
 1. 左側のメニューから **[すべてのリソース]** を選択してから、お使いの SQL Server を選択します。
 
-2. お使いの SQL Server の **[設定]** メニューから、**[Active Directory 管理者]** を選択します。
+2. お使いの SQL Server の **[設定]** メニューから、 **[Active Directory 管理者]** を選択します。
 
-3. AD 管理者ページのツールバーから、**[管理者の設定]** を選択し、ユーザーまたはグループを AD 管理者として選択します。
+3. AD 管理者ページのツールバーから、 **[管理者の設定]** を選択し、ユーザーまたはグループを AD 管理者として選択します。
 
     ![Active Directory を選択する](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-4. AD 管理者ページのツールバーから、**[保存]** を選択します。
+4. AD 管理者ページのツールバーから、 **[保存]** を選択します。
 
-5. **mySampleDatabase** データベースに移動して、左側のメニューから **[クエリ エディター (プレビュー)]** を選択します。 **[ログイン]** ページが表示されます。 AD 管理者である場合は、右側にある **[Active Directory シングル サインオン]** の下に、サインインしたことを示すメッセージが表示されます。 
-   
+5. **mySampleDatabase** データベースに移動して、左側のメニューから **[クエリ エディター (プレビュー)]** を選択します。 **[ログイン]** ページが表示されます。 AD 管理者である場合は、右側にある **[Active Directory シングル サインオン]** の下に、サインインしたことを示すメッセージが表示されます。
+
 6. **[OK]** を選択します。
 
 
@@ -94,7 +94,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
     ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. ツールバーで、**[実行]** を選択して、**[結果]** ウィンドウで出力を確認します。
+2. ツールバーで、 **[実行]** を選択して、 **[結果]** ウィンドウで出力を確認します。
 
 ![クエリ エディターの結果](./media/sql-database-connect-query-portal/query-editor-results.png)
 
@@ -125,7 +125,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
    ```
 
 
-2. **[実行]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
+2. **[実行]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、 **[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
 
 ## <a name="update-data"></a>データの更新
@@ -140,7 +140,7 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
+2. **[実行]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、 **[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
 ## <a name="delete-data"></a>データの削除
 
@@ -153,14 +153,14 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
+2. **[実行]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、 **[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
 
 ## <a name="query-editor-considerations"></a>クエリ エディターに関する考慮事項
 
 クエリ エディターを操作するときは次の点に注意してください。
 
-* クエリ エディターを使用して仮想ネットワークの SQL Server データベースを照会することはできません。
+* クエリ エディターでは、通信にポート 443 と 1443 が使用されます。  これらのポートで送信 HTTPS トラフィックを有効にしていることを確認してください。 また、お使いのデータベースとデータ ウェアハウスにアクセスできるようにするには、サーバーの許可されたファイアウォール規則に、送信 IP アドレスを追加する必要があります。
 
 * F5 キーを押してクエリ エディターのページを更新すると、操作中のクエリは失われます。
 

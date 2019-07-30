@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/01/2019
+ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e54c18eb405ffa36260e9980705784130bc0ca4c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aae5b87e49b6d64e4c9ee854b65821d65969e66b
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803008"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536814"
 ---
 # <a name="quickstart-create-a-server---portal"></a>クイック スタート: サーバーの作成 - ポータル
 
@@ -31,13 +31,13 @@ ms.locfileid: "58803008"
 
 ## <a name="create-a-server"></a>サーバーの作成
 
-1. **[+ リソースの作成]** > **[分析]** > **[Analysis Services]** の順にクリックします。
+1. **[+ リソースの作成]**  >  **[分析]**  >  **[Analysis Services]** の順にクリックします。
 
     ![ポータル](./media/analysis-services-create-server/aas-create-server-portal.png)
 
 2. **[Analysis Services]** で、必要なフィールドを入力して **[作成]** をクリックします。
    
-   * **サーバー名**: サーバーの参照に使われる一意の名前を入力します。
+   * **サーバー名**: サーバーの参照に使われる一意の名前を入力します。 サーバー名は小文字で始まり、3 文字から 128 文字の小文字と数値を使用する必要があります。ホワイトスペースと特殊文字は使用できません。 Whitespaces and special characters are not allowed.
    * **サブスクリプション**:このサーバーを関連付けるサブスクリプションを選びます。
    * **リソース グループ**: 新しいリソース グループを作成するか、既存のリソース グループを選択します。 リソース グループは、Azure リソースのコレクション管理をサポートするように設計されています。 詳しくは、「[Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
    * **場所**: この Azure データセンターの場所でサーバーをホストします。 最大のユーザー ベースに最も近い場所を選びます。
@@ -46,11 +46,11 @@ ms.locfileid: "58803008"
    * **バックアップ ストレージの設定**: 省略可能。 [ストレージ アカウント](../storage/common/storage-introduction.md)が既に存在する場合、モデル データベースのバックアップの既定値として指定することができます。 後で[バックアップと復元](analysis-services-backup.md)の設定を指定することもできます。
    * **ストレージ キーの有効期限**: 省略可能。 ストレージ キーの有効期限を指定します。
 
-通常、サーバーの作成にかかる時間は 1 分以下です。 **[Add to Portal]** (ポータルに追加) を選んだ場合は、ポータルに移動して新しいサーバーを確認します。 または、**[すべてのサービス]** > **[Analysis Services]** に移動して、サーバーの準備ができていることを確認します。 サーバーは、互換性レベル 1200 以降の表形式モデルをサポートします。 モデルの互換性レベルは、SSDT または SSMS で指定されます。
+通常、サーバーの作成にかかる時間は 1 分以下です。 **[Add to Portal]** (ポータルに追加) を選んだ場合は、ポータルに移動して新しいサーバーを確認します。 または、 **[すべてのサービス]**  >  **[Analysis Services]** に移動して、サーバーの準備ができていることを確認します。 サーバーは、互換性レベル 1200 以降の表形式モデルをサポートします。 モデルの互換性レベルは、SSDT または SSMS で指定されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、サーバーを削除します。 サーバーの **[概要]** で、**[削除]** をクリックします。 
+不要になったら、サーバーを削除します。 サーバーの **[概要]** で、 **[削除]** をクリックします。 
 
  ![クリーンアップ](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 

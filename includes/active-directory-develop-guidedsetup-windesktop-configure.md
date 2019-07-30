@@ -15,11 +15,11 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: c4dc3d422e18d9ee41bf16ac3e6f22c3d7e466d7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121602"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181351"
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録
 
@@ -29,7 +29,7 @@ ms.locfileid: "66121602"
 
 次の手順を実行すると、アプリケーションをすばやく登録できます。
 1. [Azure portal の [アプリケーションの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs) に移動します。
-1. アプリケーションの名前を入力し、**[登録]** を選択します。
+1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 
 ### <a name="option-2-advanced-mode"></a>オプション 2:詳細設定モード
@@ -40,11 +40,11 @@ ms.locfileid: "66121602"
 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
 1. **[新規登録]** を選択します。
    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `Win-App-calling-MsGraph`)。
-   - **[サポートされているアカウントの種類]** セクションで、**[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
+   - **[サポートされているアカウントの種類]** セクションで、 **[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
    - **[登録]** を選択して、アプリケーションを作成します。
 1. アプリのページの一覧から **[認証]** を選択します。
    1. **[リダイレクト URI]** セクションの、リダイレクト URI の一覧で:
-   1. **[種類]** 列で、**[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
+   1. **[種類]** 列で、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
    1. **[リダイレクト URI]** 列に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。
 1. **[保存]** を選択します。
 1. Visual Studio に移動し、*App.xaml.cs* ファイルを開き、`Enter_the_Application_Id_here` を登録してコピーしたアプリケーション ID に置き換えます。

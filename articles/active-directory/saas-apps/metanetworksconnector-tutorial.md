@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ae0b8bb6dec4b129a4965426789819e119a25c53
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 82097b075ab86c4de5ab45e3110c9bc192ac7edb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991501"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル:Azure Active Directory と Meta Networks Connector の統合
 
@@ -132,7 +132,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     | firstname | User.givenname | |
     | lastname | User.surname | |
     | emailaddress| User.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | 名前 | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | phone | user.telephonenumber | |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。

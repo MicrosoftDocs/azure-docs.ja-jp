@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
 ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760972"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60888437"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-usql-activity.md)
 > * [現在のバージョン](transform-data-using-data-lake-analytics.md)
 
@@ -38,9 +38,9 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 | はい                                      |
 | **accountName**          | Azure Data Lake Analytics アカウント名。  | はい                                      |
-| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                        |
-| **subscriptionId**       | Azure サブスクリプション ID                    | いいえ                                        |
-| **resourceGroupName**    | Azure リソース グループ名                | いいえ                                        |
+| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                       |
+| **subscriptionId**       | Azure サブスクリプション ID                    | いいえ                                       |
+| **resourceGroupName**    | Azure リソース グループ名                | いいえ                                       |
 
 ### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 Azure Data Lake Analytics のリンクされたサービスには、Azure Data Lake Analytics サービスに接続するためのサービス プリンシパル認証が必要です。 サービス プリンシパル認証を使うには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Data Lake Analytics およびそれを使用する Data Lake Store の両方へのアクセス権を付与します。 詳細な手順については、「[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
@@ -120,16 +120,16 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 | プロパティ            | 説明                              | 必須 |
 | :------------------ | :--------------------------------------- | :------- |
 | name                | パイプラインのアクティビティの名前。     | はい      |
-| description         | アクティビティの動作を説明するテキスト。  | いいえ        |
+| description         | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | はい      |
 | linkedServiceName   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |はい       |
 | scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | はい      |
 | scriptLinkedService | データ ファクトリへのスクリプトを含む **Azure Data Lake Store** または **Azure Storage** をリンクするリンク サービス | はい      |
-| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ        |
-| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ        |
-| parameters          | U-SQL スクリプトに渡すパラメーター。    | いいえ        |
-| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ        |
-| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ  |
+| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ       |
+| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ       |
+| parameters          | U-SQL スクリプトに渡すパラメーター。    | いいえ       |
+| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ       |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ |
 
 スクリプト定義については、[SearchLogProcessing.txt](#sample-u-sql-script) をご覧ください。 
 
@@ -176,7 +176,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-代わりに、動的パラメーターを使用することもできます。 例:  
+代わりに、動的パラメーターを使用することもできます。 例: 
 
 ```json
 "parameters": {

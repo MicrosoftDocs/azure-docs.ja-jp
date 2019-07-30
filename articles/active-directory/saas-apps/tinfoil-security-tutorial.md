@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 135b5719422d1b28a82ac2eda06f76d6dd746800
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 627a324c580661220712a0598a996844fac0c169
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813729"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>チュートリアル:Azure Active Directory と TINFOIL SECURITY の統合
 
@@ -53,11 +53,11 @@ Azure AD への TINFOIL SECURITY の統合を構成するには、ギャラリ�
 
 **ギャラリーから TINFOIL SECURITY を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への TINFOIL SECURITY の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**TINFOIL SECURITY**」と入力し、結果パネルで **[TINFOIL SECURITY]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**TINFOIL SECURITY**」と入力し、結果パネルで **[TINFOIL SECURITY]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の TINFOIL SECURITY](common/search-new-app.png)
 
@@ -89,25 +89,25 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
 TINFOIL SECURITY で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **TINFOIL SECURITY** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **TINFOIL SECURITY** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. アプリは Azure と事前に統合済みであるため、**[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
+4. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
     ![[TINFOIL SECURITY ドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
-5. TINFOIL SECURITY アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
+5. TINFOIL SECURITY アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
-        ![image](common/edit-attribute.png)
+        ![image](common/edit-attribute.png)
 
 6. その他に、TINFOIL SECURITY アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -133,7 +133,7 @@ TINFOIL SECURITY で Azure AD シングル サインオンを構成するには�
 
     g. **[Save]** をクリックします。
 
-7. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、**[SAML 署名証明書]** ダイアログを開きます。
+7. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
     ![SAML 署名証明書の編集](common/edit-certificate.png)
 
@@ -173,7 +173,7 @@ TINFOIL SECURITY で Azure AD シングル サインオンを構成するには�
    
     c. **[SAML Post URL]\(SAML POST の URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます
    
-    d. **[SAML Certificate Fingerprint]\(SAML 証明書フィンガープリント\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。
+    d. **[SAML Certificate Fingerprint]\(SAML 証明書フィンガープリント\)** ボックスに、 **[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。
   
     e. **[Your Account ID]\(アカウント ID\)** の値をコピーし、Azure Portal の **[属性の追加]** セクションの **[属性値]** ボックスに値を貼り付けます。
    
@@ -183,7 +183,7 @@ TINFOIL SECURITY で Azure AD シングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -207,7 +207,7 @@ TINFOIL SECURITY で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に TINFOIL SECURITY へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[TINFOIL SECURITY]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[TINFOIL SECURITY]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -219,15 +219,15 @@ TINFOIL SECURITY で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-tinfoil-security-test-user"></a>TINFOIL SECURITY のテスト ユーザーの作成
 

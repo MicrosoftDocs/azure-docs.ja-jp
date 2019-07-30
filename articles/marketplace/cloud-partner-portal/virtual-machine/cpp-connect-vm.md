@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
 ms.openlocfilehash: ca002a77fd7252466f604b995af949b54694bc8c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938574"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Azure ベースの仮想マシンに接続する
@@ -22,7 +22,7 @@ ms.locfileid: "64938574"
 
 Azure にホストされている Windows ベースの VM には、リモート デスクトップ クライアントを使用して接続することになります。  ほとんどのバージョンの Windows は、リモート デスクトップ プロトコル (RDP) をネイティブでサポートしています。  その他のマシンのクライアントについて詳しくは、「[リモート デスクトップ クライアント](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)」を参照してください。  
 
-ビルトインの Windows RDP サポートを使用して VM に接続する方法については、[Windows が実行されている Azure 仮想マシンに接続してサインオンする方法](../../../virtual-machines/windows/connect-logon.md)に関する記事で詳しく説明しています。  
+次の記事では、組み込みの Windows RDP サポートを使用して VM に接続する方法について詳しく説明しています。[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](../../../virtual-machines/windows/connect-logon.md)。  
 
 >[!TIP]
 > このプロセス中にセキュリティ警告が表示されることがあります (.rdp ファイルの発行元が不明、ユーザーの資格情報を確認できないなど)。  これらの警告は無視しても問題ありません。
@@ -47,7 +47,7 @@ Linux ベースの VM に接続するには、Secure Shell プロトコル (SSH)
 7. **[Open]\(開く\)** をクリックして PuTTY ターミナルを開きます。  
 8. プロンプトが表示されたら、Linux VM のアカウント名とパスワードを入力します。 
 
-   接続に問題がある場合は、SSH クライアントのドキュメント、たとえば「[Chapter 10: Common error messages (第 10 章: 一般的なエラー メッセージ)](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors)」を参照してください。
+   接続に問題がある場合は、SSH クライアントのドキュメント、たとえば「[Chapter 10:Common error messages (第 10 章: 一般的なエラー メッセージ)](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors)」を参照してください。
 
 プロビジョニング済みの Linux VM にデスクトップを追加する方法など、詳細については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。
 

@@ -4,7 +4,7 @@ description: Azure App Service on Linux の FAQ
 keywords: Azure App Service、Web アプリ、FAQ、Linux、OSS、コンテナー用の Web アプリ、複数コンテナー、マルチコンテナー
 services: app-service
 documentationCenter: ''
-author: yili
+author: msangapu-msft
 manager: stefsch
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec571555415a912a31b094722bd47f67210a0372
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65594279"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617348"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -119,10 +119,7 @@ const io = require('socket.io')(server,{
 
 **自分が所有するカスタム コンテナーを使用しています。プラットフォームを SMB 共有の `/home/` ディレクトリにマウントさせたいと考えています。**
 
-これは、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を *true* に設定することで実現できます。 これにより、プラットフォームのストレージの変更時に、コンテナーの再起動が行われることに注意してください。
-
->[!NOTE]
->`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が指定されていない場合や *false* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で共有されず、このディレクトリに書き込まれたファイルは再起動後には保持されません。
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が**指定されていない**場合や *true* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で**共有され**、書き込まれたファイルは再起動後も**保持されます**。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を明示的に *false* に設定すると、マウントが無効になります。
 
 **カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。**
 

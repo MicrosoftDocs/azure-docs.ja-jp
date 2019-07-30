@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd44dda06b2f6fc48538f2fb74c0bf8e04d0362b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080069"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785458"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出す Web アプリ - Web API の呼び出し
 
@@ -28,7 +28,18 @@ ms.locfileid: "65080069"
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-以下に、`HomeController` のアクションの簡略化されたコードを示します。 このコードは、Microsoft Graph を呼び出すトークンを取得します。 今回コードが追加されて、Microsoft Graph を REST API として呼び出す方法が示されています。
+以下に、`HomeController` のアクションの簡略化されたコードを示します。 このコードは、Microsoft Graph を呼び出すトークンを取得します。 今回コードが追加されて、Microsoft Graph を REST API として呼び出す方法が示されています。 Graph API の URL は、`appsettings.json` ファイルで提供され、`webOptions` という名前の変数に読み取られます。
+
+```JSon
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    ...
+  },
+  ...
+  "GraphApiUrl": "https://graph.microsoft.com"
+}
+```
 
 ```CSharp
 public async Task<IActionResult> Profile()

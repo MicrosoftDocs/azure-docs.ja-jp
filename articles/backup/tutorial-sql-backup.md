@@ -1,19 +1,18 @@
 ---
 title: Azure への SQL Server データベースのバックアップ | Microsoft Docs
 description: このチュートリアルでは、SQL Server を Azure に バックアップする方法について説明します。
-services: backup
 author: dcurwin
 manager: ''
 ms.service: backup
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: bfe48fb1bf6a361ce79d0ddc5281a6380a5367e4
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 31549ddbc0fbe237b9cca1b2b7a4893bc98abaf9
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016117"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467099"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -33,7 +32,7 @@ ms.locfileid: "66016117"
 SQL Server データベースをバックアップする前に、次の条件を確認してください。
 
 1. SQL Server インスタンスをホストする VM として、同じリージョンまたはロケールの Recovery Services コンテナーを特定または[作成](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)する。
-2. SQL データベースをバックアップするのに必要な [VM のアクセス許可をチェック](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)する。
+2. SQL データベースをバックアップするのに必要な [VM のアクセス許可をチェック](backup-azure-sql-database.md#set-vm-permissions)する。
 3. VM が[ネットワーク接続](backup-sql-server-database-azure-vms.md#establish-network-connectivity)を備えていることを確認する。
 4. Azure Backup の[命名ガイドライン](#verify-database-naming-guidelines-for-azure-backup)に従って SQL Server データベースが名付けられていることをチェックする。
 5. データベースに対して有効になっているバックアップ ソリューションが他にないことを確認する。 このシナリオを設定する前に、他のすべての SQL Server バックアップを無効にします。 競合が発生することなく、VM 上で稼働している SQL Server データベースに対して Azure Backup を有効にするのと同時に、Azure VM に対して Azure Backup を有効にできます。
@@ -61,7 +60,7 @@ SQL Server データベースのバックアップを構成するとき、Azure 
 - 仮想マシン上のデータベースを検出するために、Azure Backup では **NT SERVICE\AzureWLBackupPluginSvc** というアカウントが作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。
 - Azure Backup では、データベースの検出と照会に **NT AUTHORITY\SYSTEM** アカウントが利用されます。そのため、このアカウントは SQL 上でパブリック ログインである必要があります。
 
-SQL Server VM を Azure Marketplace から作成しなかった場合、エラー **UserErrorSQLNoSysadminMembership** が発生する可能性があります。 これが発生した場合、[こちらの手順に従ってください](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)。
+SQL Server VM を Azure Marketplace から作成しなかった場合、エラー **UserErrorSQLNoSysadminMembership** が発生する可能性があります。 これが発生した場合、[こちらの手順に従ってください](backup-azure-sql-database.md#set-vm-permissions)。
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Azure Backup のデータベース命名ガイドラインを確認する
 
@@ -114,7 +113,7 @@ VM 上で稼働しているデータベースを検出します。
     - Azure Backup によって、サービス アカウント **NT Service\AzureWLBackupPluginSvc** が VM 上に作成されます。
       - すべてのバックアップおよび復元操作に、サービス アカウントを使用します。
       - **NT Service\AzureWLBackupPluginSvc** には、SQL sysadmin 権限が必要です。 Azure Marketplace で作成されたすべての SQL Server VM には、**SqlIaaSExtension** が元からインストールされています。 **AzureBackupWindowsWorkload** 拡張機能は **SQLIaaSExtension** を使用して自動的に必要な権限を取得します。
-    - VM をマーケットプレースから作成しなかった場合、VM には **SqlIaaSExtension** がインストールされておらず、検出操作はエラー メッセージ **UserErrorSQLNoSysAdminMembership** と共に失敗します。 [手順](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)に従ってこの問題を修正します。
+    - VM をマーケットプレースから作成しなかった場合、VM には **SqlIaaSExtension** がインストールされておらず、検出操作はエラー メッセージ **UserErrorSQLNoSysAdminMembership** と共に失敗します。 [手順](backup-azure-sql-database.md#set-vm-permissions)に従ってこの問題を修正します。
 
         ![VM とデータベースを選択する](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -143,19 +142,19 @@ VM 上で稼働しているデータベースを検出します。
 
     ![Always On 可用性グループで自動保護を有効にする](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5.  **[バックアップ ポリシーの選択]** でポリシーを選択し、 **[OK]** をクリックします。
+5. **[バックアップ ポリシーの選択]** でポリシーを選択し、 **[OK]** をクリックします。
 
-   - 既定のポリシーを選択します: HourlyLogBackup
+   - 既定のポリシーを選択します:HourlyLogBackup
    - SQL 用に以前に作成された既存のバックアップ ポリシーを選択する。
    - RPO とリテンション期間の範囲に基づいて新しいポリシーを定義する。
 
      ![[バックアップ ポリシー] を選択する](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6.  **[バックアップ] メニュー**で、 **[バックアップの有効化]** を選択します。
+6. **[バックアップ]** メニューで、 **[バックアップの有効化]** を選択します。
 
     ![選択したバックアップ ポリシーを有効にする](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. ポータルの  **[通知]**   領域で構成の進行状況を追跡します。
+7. ポータルの **[通知]** 領域で構成の進行状況を追跡します。
 
     ![[通知] 領域](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -245,5 +244,5 @@ VM 上で稼働しているデータベースを検出します。
 
 > [!div class="nextstepaction"]
 > [Azure VM 上の SQL Server データベースを復元する](./restore-sql-database-azure-vm.md)
- 
+ 
 

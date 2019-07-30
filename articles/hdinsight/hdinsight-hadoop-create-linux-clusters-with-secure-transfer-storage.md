@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 10ec4b55bab741f19adaf193295659b7876fe02c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72e8b1331005db59be572e033bfaaaf5ceeea0b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685218"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433600"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントで Apache Hadoop クラスターを作成する
 
 "[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)" 機能は、アカウントへのすべての要求にセキュリティで保護された接続を経由するように強制することで、Azure ストレージ アカウントのセキュリティを強化します。 この機能と wasbs スキーマは、HDInsight クラスター バージョン 3.6 以降でのみサポートされます。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+この記事を読み始める前に、以下を用意する必要があります。
 
 * **Azure サブスクリプション**:1 か月間の無料試用版アカウントを [azure.microsoft.com/free](https://azure.microsoft.com/free) で作成できます。
 * **安全な転送が有効になっている Azure ストレージ アカウント**。 手順については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」と「[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)」を参照してください。
@@ -31,7 +31,7 @@ ms.locfileid: "64685218"
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-このセクションでは、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-template-deploy.md)を利用して、HDInsight で Hadoop クラスターを作成します。 テンプレートは、[GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/) にあります。 このチュートリアルを利用するにあたり、Resource Manager テンプレートの使用経験は必要ありません。 その他のクラスター作成方法と、このチュートリアルで使うプロパティの詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+このセクションでは、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-template-deploy.md)を利用して、HDInsight で Hadoop クラスターを作成します。 テンプレートは、[GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/) にあります。 この記事に従うために、Resource Manager テンプレートの使用経験は必要ありません。 その他のクラスター作成方法と、この記事で使うプロパティの詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
 1. 次の画像をクリックして Azure にサインインし、Azure Portal で Resource Manager テンプレートを開きます。
 
@@ -61,7 +61,7 @@ ms.locfileid: "64685218"
 - スクリプト アクションを使用して、既存の HDInsight クラスターに安全な転送が有効になっている追加のストレージ アカウントを追加します。 詳細については、「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、HDInsight クラスターを作成し、ストレージ アカウントへの安全な転送を有効にする方法について説明しました。
+この記事では、HDInsight クラスターを作成し、ストレージ アカウントへの安全な転送を有効にする方法について説明しました。
 
 HDInsight でデータを分析する方法の詳細については、次の記事を参照してください。
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e5ddc8a1190161d9492cd083a50120ca9d5fc5f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 58fcd21c7e6e3f2336d3e809584451dc38f6276b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901289"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>チュートリアル:Azure Active Directory と Central Desktop の統合
 
@@ -53,11 +53,11 @@ Azure AD への Central Desktop の統合を構成するには、ギャラリー
 
 **ギャラリーから Central Desktop を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Central Desktop の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Central Desktop**」と入力し、結果パネルで **Central Desktop** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Central Desktop**」と入力し、結果パネルで **Central Desktop** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧での Central Desktop](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Central Desktop で Azure AD のシングル サインオンを構成してテ�
 
 Central Desktop で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Central Desktop** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Central Desktop** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -120,7 +120,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Central Desktop クライアント サポート チーム](https://imeetcentral.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -138,7 +138,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
 
 1. **Central Desktop** テナントにサインインします。
 
-2. **[設定]** に移動します。 **[Advanced]\(詳細\)** を選び、**[Single Sign On]\(シングル サインオン\)** を選びます。
+2. **[設定]** に移動します。 **[Advanced]\(詳細\)** を選び、 **[Single Sign On]\(シングル サインオン\)** を選びます。
 
     ![Setup - Advanced](./media/central-desktop-tutorial/ic769563.png "Setup - Advanced")
 
@@ -160,9 +160,9 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
     
     a. **[Certificate]** を選択します。
 
-    b. **[SSO Certificate]\(SSO 証明書\)** ボックスの一覧で、**[RSH SHA256]** を選びます。
+    b. **[SSO Certificate]\(SSO 証明書\)** ボックスの一覧で、 **[RSH SHA256]** を選びます。
 
-    c. ダウンロードした証明書をメモ帳で開きます。 証明書の内容をコピーして、**[SSO Certificate]\(SSO 証明書\)** フィールドに貼り付けます。
+    c. ダウンロードした証明書をメモ帳で開きます。 証明書の内容をコピーして、 **[SSO Certificate]\(SSO 証明書\)** フィールドに貼り付けます。
 
     d. **[Display a link to your SAMLv2 login page]** チェック ボックスをオンにします。
 
@@ -172,7 +172,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -197,7 +197,7 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Central Desktop へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Central Desktop]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Central Desktop]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -209,15 +209,15 @@ Central Desktop で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-central-desktop-test-user"></a>Central Desktop のテスト ユーザーの作成
 
@@ -230,11 +230,11 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 
 1. Central Desktop テナントにサインインします。
 
-2. **[People]\(ユーザー\)** を選択し、**[Add Internal Members]\(内部メンバーの追加\)** を選択します。
+2. **[People]\(ユーザー\)** を選択し、 **[Add Internal Members]\(内部メンバーの追加\)** を選択します。
 
     ![ユーザー](./media/central-desktop-tutorial/ic781051.png "People")
 
-3. **[Email Address of New Members]\(新しいメンバーの電子メール アドレス\)** ボックスにプロビジョニングする Azure AD アカウントを入力し、**[Next]\(次へ\)** を選びます。
+3. **[Email Address of New Members]\(新しいメンバーの電子メール アドレス\)** ボックスにプロビジョニングする Azure AD アカウントを入力し、 **[Next]\(次へ\)** を選びます。
 
     ![新しいメンバーの電子メール アドレス](./media/central-desktop-tutorial/ic781052.png "新しいメンバーの電子メール アドレス")
 

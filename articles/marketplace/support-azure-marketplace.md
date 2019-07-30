@@ -7,13 +7,13 @@ manager: nunoc
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 496fef7cfd93004e77a710942cffabbf23d6b29a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: nunoc
+ms.openlocfilehash: 1c27b85aca45f25354d6351c1a335b14cb9bc446
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937699"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297821"
 ---
 # <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
 Marketplace のサポート オプションの一覧です。  

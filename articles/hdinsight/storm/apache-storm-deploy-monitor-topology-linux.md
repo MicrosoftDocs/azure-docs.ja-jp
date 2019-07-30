@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ac1a4c77589f4ef88c9ee862cb871b376ca8a0fe
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078237"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483849"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm トポロジのデプロイと管理 
 
@@ -21,11 +21,12 @@ ms.locfileid: "67078237"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight クラスター上の Linux ベースの Storm**: クラスターの作成手順については、「 [HDInsight での Apache Storm の使用](apache-storm-tutorial-get-started-linux.md) 」を参照してください。
+* HDInsight 上の Apache Storm クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[Storm]** を選択してください。
 
-* (省略可能) **SSH と SCP を熟知していること**。詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* (省略可能) **Visual Studio**:Azure SDK 2.5.1 以降と Data Lake Tools for Visual Studio。 詳細については、[Data Lake Tools for Visual Studio の使用開始](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)に関するページをご覧ください。
+* (省略可能) SSH と SCP を熟知していること。詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
+* (省略可能) Visual Studio:Azure SDK 2.5.1 以降と Data Lake Tools for Visual Studio。 詳細については、[Data Lake Tools for Visual Studio の使用開始](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)に関するページをご覧ください。
 
     下記いずれかのバージョンの Visual Studio
 

@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5092872433529f11f699aa8a0c5e87d110cb59f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 204183fa25203a094eecd8df85a8bfd5dcf271cc
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077418"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593966"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは

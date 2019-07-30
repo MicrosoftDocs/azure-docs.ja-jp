@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769116"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705760"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
 
@@ -33,7 +33,7 @@ App Service Environment (ASE) をデプロイするには、次の 2 つの方�
 - 外部 IP アドレスの VIP を使用する。外部 ASE と呼ばれます。
 - 内部 IP アドレスの VIP を使用する。内部エンドポイントは内部ロード バランサー (ILB) であるため、ILB ASE と呼ばれます。
 
-この記事では、外部 ASE を作成する方法について説明します。 ASE の概要については、[App Service Environment の概要][Intro]に関するページをご覧ください。 ILB ASE の作成方法について詳しくは、[ILB ASE の作成と使用][MakeILBASE]に関するページをご覧ください。
+この記事では、外部 ASE を作成する方法について説明します。 ASE の概要については、[App Service Environment の概要][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE]に関するページをご覧ください。
 
 ## <a name="before-you-create-your-ase"></a>ASE を作成する前に
 
@@ -56,7 +56,7 @@ ASE を作成する方法は、3 つあります。
 
 - **App Service プランを作成中に作成する**。 この方法では、1 つの手順で、ASE と App Service プランを作成します。
 - **スタンドアロン アクションとして作成する**。 この方法では、何も含まない ASE である、スタンドアロン ASE を作成します。 この方法は、ASE を作成するより高度なプロセスです。 これを使用して ILB を備えた ASE を作成します。
-- **Azure Resource Manager テンプレートから作成する**。 この方法は、高度な知識を持つユーザー向けです。 詳細については、[テンプレートを使用して ASE を作成する方法][MakeASEfromTemplate]に関するページをご覧ください。
+- **Azure Resource Manager テンプレートから作成する**。 この方法は、高度な知識を持つユーザー向けです。 詳細については、[テンプレートからの ASE の作成][MakeASEfromTemplate]に関するページをご覧ください。
 
 外部 ASE はパブリック VIP を持ちます。つまり、ASE 内のアプリへのすべての HTTP/HTTPS トラフィックは、インターネットからアクセス可能な IP アドレスに届きます。 ILB を備えた ASE には、ASE によって使用されるサブネットの IP アドレスがあります。 ILB ASE 内でホストされているアプリは、インターネットに直接は公開されません。
 
@@ -72,7 +72,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 2. サブスクリプションを選択します。 アプリと ASE は、同じサブスクリプションに作成されます。
 
-3. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」をご覧ください。
+3. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」を参照してください。
 
 4. お使いの OS (Windows、Linux、Docker) を選択します。 
 
@@ -96,7 +96,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
     b. 新しいサブネット名を入力します。
 
-    c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/25` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
+    c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/24` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
 
     d. サブネット IP の範囲を選択します。
 
@@ -110,7 +110,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 1. サブスクリプションを選択します。 アプリと ASE は、同じサブスクリプションに作成されます。
 
-1. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」をご覧ください。
+1. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」を参照してください。
 
 1. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
@@ -132,7 +132,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
     b. 新しいサブネット名を入力します。
 
-    c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/25` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
+    c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/24` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
 
     d. サブネット IP の範囲を選択します。
 
@@ -176,7 +176,7 @@ ASE スタンドアロンを作成する場合、ASE には何も含まれませ
 
 最初のバージョンの App Service Environment (ASEv1) のインスタンスを作成することもできます。 そのプロセスを開始するには、Marketplace で **App Service Environment v1** を検索します。 スタンドアロン ASE を作成するのと同じ方法で、ASE を作成します。 完了すると、ASEv1 は 2 つのフロントエンドと 2 つの worker を持ちます。 ASEv1 では、フロントエンドや worker を管理する必要があります。 App Service プランを作成するときに自動的には追加されません。 フロントエンドは HTTP/HTTPS エンドポイントとして動作し、worker にトラフィックを送信します。 worker は、アプリをホストするロールです。 ASE を作成した後は、フロントエンドと worker の数を調整できます。 
 
-ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページをご覧ください。 ASEv1 のスケーリング、管理、および監視について詳しくは、[App Service Environment の構成方法][ConfigureASEv1]に関するページをご覧ください。
+ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

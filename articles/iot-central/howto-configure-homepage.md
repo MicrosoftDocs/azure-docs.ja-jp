@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーション ダッシュボードを構成
 description: 開発者として、既定の Azure IoT Central アプリケーション ダッシュボードを構成する方法を学習します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/13/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94ad51ac11687dfe060176132e2030d61b8d4ffc
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467621"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850211"
 ---
 # <a name="configure-the-application-dashboard"></a>アプリケーション ダッシュボードの構成
 
@@ -41,6 +41,8 @@ ms.locfileid: "65467621"
 ![タイルの設定とプロパティが表示された [Dashboard]\(ダッシュボード\) タブ](media/howto-configure-homepage/image4a.png)
 
 ライブラリ内の他のタイルの種類を調べて、既定のアプリケーション ダッシュボードをカスタマイズする方法を確認することができます。
+
+Azure IoT Central でタイルを使用する方法の詳細については、「[ダッシュボード タイルの使用](howto-use-tiles.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

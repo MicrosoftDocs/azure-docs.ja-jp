@@ -1,23 +1,17 @@
 ---
 title: 論理的に整理するための Azure リソースのタグ付け | Microsoft Docs
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: 003a78e5-2ff8-4685-93b4-e94d6fb8ed5b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: AzurePortal
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 07/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0ee1cc9673d5e4fbd71706af74e82f6520d42b6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77175738a0cae5c6185a8ac74e51e9b91b685235
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868778"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827929"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
 

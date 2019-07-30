@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 474aad3b4b2019c9f79f8f1316dd88769e0fabbd
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 699dd41024bd60b2016771d728253d938fc9ab23
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508199"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347153"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してネイティブ クライアント アプリケーションで認証を有効にする
 
@@ -32,7 +32,7 @@ ms.locfileid: "66508199"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。 
+- [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。
 - **[.NET デスクトップ開発]** および **[ASP.NET および Web の開発]** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする。
 
 ## <a name="add-the-native-client-application"></a>ネイティブ クライアント アプリケーションを追加する
@@ -65,14 +65,14 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 1. Visual Studio で `active-directory-b2c-wpf` ソリューションを開きます。
 2. `active-directory-b2c-wpf` プロジェクトの **App.xaml.cs** ファイルを開き、次の更新を行います。
 
-    ```C#
+    ```csharp
     private static string Tenant = "<your-tenant-name>.onmicrosoft.com";
     private static string ClientId = "<application-ID>";
     ```
 
 3. **PolicySignUpSignIn** 変数を、作成したユーザー フローの名前で更新します。
 
-    ```C#
+    ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";
     ```
 
@@ -83,12 +83,12 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
 1. **[サインイン]** をクリックし、ユーザーとしてサインアップします。 これにより、**B2C_1_signupsignin1** ユーザー フローが使用されます。
-2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[今すぐサインアップ]** リンクをクリックします。 
+2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[今すぐサインアップ]** リンクをクリックします。
 3. サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
 
-    有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。 
+    有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。
 
-    ![サインアップ ワークフロー](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![サインインまたはサインアップ ワークフローの一部として表示されるサインアップ ページ](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 4. **[作成]** をクリックして、Azure AD B2C テナントにローカル アカウントを作成します。
 

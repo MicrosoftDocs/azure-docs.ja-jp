@@ -1,21 +1,20 @@
 ---
 title: SSH および RDP 用の Azure IoT Hub デバイス ストリームの Node.js クイックスタート (プレビュー) | Microsoft Docs
 description: このクイックスタートでは、IoT Hub デバイス ストリームを介した SSH および RDP シナリオを有効にするためにプロキシとして機能するサンプル Node.js アプリケーションを実行します。
-author: rezasherafat
-manager: briz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
-ms.author: rezas
-ms.openlocfilehash: 1d77f3a10e286246e23ae522e95aa23c487cca2f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.author: robinsh
+ms.openlocfilehash: 83339273d9161c3947df191d10e788980db39b28
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735108"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446029"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>クイック スタート:Node.js プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 

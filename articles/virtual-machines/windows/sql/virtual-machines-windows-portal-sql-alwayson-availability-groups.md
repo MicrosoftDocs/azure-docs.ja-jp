@@ -16,13 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238167"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62129555"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines の Always On 可用性グループを自動的に構成するリソース マネージャー
 
 このチュートリアルでは、Azure Resource Manager 仮想マシンを使用する SQL Server 可用性グループを作成する方法について説明します。 このチュートリアルでは、テンプレートの構成に Azure ブレードを使用します。 既定の設定を確認し、必要な設定を入力して、ポータルでブレードを更新します。
 
@@ -64,7 +64,7 @@ ms.locfileid: "51238167"
 Azure では、ソリューション全体のギャラリー イメージを提供します。 テンプレートを見つけるには、次を実行します。
 
 1. アカウントを使用して Azure Portal にサインインします。
-2. Azure Portal で、**[リソースの作成]** をクリックして **[新規]** ウィンドウを開きます。
+2. Azure Portal で、 **[リソースの作成]** をクリックして **[新規]** ウィンドウを開きます。
 3. **[新規]** ウィンドウで **AlwaysOn** を検索します。
    ![AlwaysOn テンプレートを見つける](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. 検索結果から **[SQL Server AlwaysOn Cluster (SQL Server AlwaysOn クラスター)]** を見つけます。
@@ -104,7 +104,7 @@ Azure の仮想ネットワークの詳細については、[仮想ネットワ�
 
 これらの値は、必要に応じて変更することができます。 このチュートリアルでは、事前設定されている値を使用します。
 
-設定を確認し、**[OK]** をクリックします。
+設定を確認し、 **[OK]** をクリックします。
 
 ### <a name="availability-group-settings"></a>可用性グループの設定
 **[Availability group settings (可用性グループの設定)]** で、可用性グループとリスナーの事前設定されている値を確認します。
@@ -144,7 +144,7 @@ Click **OK**.
 
 ![VM サイズの記憶域の設定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/4-vm.png)
 
-設定を確認し、**[OK]** をクリックします。
+設定を確認し、 **[OK]** をクリックします。
 
 #### <a name="a-note-about-storage"></a>記憶域に関する注意点
 さらなる最適化には、SQL Server のデータ ディスクのサイズが関係します。 Azure では、データ ディスクのテラバイトごとに、Premium ストレージが 1 TB 追加されます。 サーバーに 2 TB 以上が必要な場合、テンプレートは各 SQL Server 仮想マシンに記憶域プールを作成します。 記憶域プールとは、容量を増やし、回復性、およびパフォーマンスを向上させるために複数のディスクが構成された仮想化された記憶域の形式です。  その後、記憶域プールに記憶域スペースが作成され、オペレーティング システムに 1 つのデータ ディスクとして提供されます。 テンプレートは、このディスクを SQL Server のデータ ディスクとして指定します。 テンプレートは、次の設定を使用して SQL Server の記憶域プールを調整します。
@@ -183,13 +183,13 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
 
 ![SQL Server の設定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/5-sql.png)
 
-設定を確認し、**[OK]** をクリックします。
+設定を確認し、 **[OK]** をクリックします。
 
 ### <a name="summary"></a>まとめ
 [概要] ページでは Azure によって設定が検証されます。 テンプレートをダウンロードすることもできます。 概要を確認します。 Click **OK**.
 
 ### <a name="buy"></a>購入
-この最後のブレードには **[使用条件]** と **[プライバシー ポリシー]** が掲載されています。 この情報を確認します。 Azure で仮想マシンと可用性グループに必要な他のすべてのリソースの作成を開始する準備ができたら、**[作成]** をクリックします。
+この最後のブレードには **[使用条件]** と **[プライバシー ポリシー]** が掲載されています。 この情報を確認します。 Azure で仮想マシンと可用性グループに必要な他のすべてのリソースの作成を開始する準備ができたら、 **[作成]** をクリックします。
 
 Azure Portal によって、リソース グループとすべてのリソースが作成されます。
 

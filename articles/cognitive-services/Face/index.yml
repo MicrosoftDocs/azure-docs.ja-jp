@@ -6,7 +6,7 @@ metadata:
   description: Face API を使用して、画像内の顔を検出および識別し、顔の情報を返す方法を説明します。 チュートリアルでは、この API を使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.tgt_pltfrm: na

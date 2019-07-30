@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: da8d1000ebe2695dbc95d475027722962a3305d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b85b06552dcd0fc419302882f05814adbd454f46
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65555887"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542562"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -60,6 +60,7 @@ ms.locfileid: "65555887"
 * v3 で作成された資産の場合、Media Services は [Azure Storage サーバー側のストレージ暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)のみをサポートします。
     * V3 API は、[ストレージ暗号化](../previous/media-services-rest-storage-encryption.md) (AES 256) が Media Services によって提供された v2 API で作成された資産と一緒に使用できます。
     * v3 API を使用して従来の AES 256 [ストレージ暗号化](../previous/media-services-rest-storage-encryption.md)で新しい資産を作成することはできません。
+* v3 の資産のプロパティは v2 と異なります。[プロパティのマッピング](assets-concept.md#map-v3-asset-properties-to-v2)に関するページを参照してください。
 * v3 SDK が Storage SDK から分離されたため、使用する Storage SDK のバージョンをより詳細に制御し、バージョン管理の問題を回避できるようになりました。 
 * v3 API では、エンコード ビット レートはすべてビット/秒単位です。 これは v2 Media Encoder Standard のプリセットとは異なります。 たとえば、v2 のビットレートは 128 (kbps) と指定されていますが、v3 では 128,000 (ビット/秒) です。 
 * v3 にはエンティティ AssetFiles、AccessPolicies、IngestManifests が存在しません。
@@ -80,7 +81,7 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 
 * [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) と従来の [Media Analytics プロセッサ](../previous/media-services-analytics-overview.md)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は v3 を使用してアクセスできません。<br/>Media Indexer 1 または2 のプレビューからの移行を希望するお客様は、v3 API でプリセットされている AudioAnalyzer をすぐに使用できます。  この新しいプリセットには、古い Media Indexer 1 または 2 より多くの機能が含まれています。 
 * 次に示すような、API の [v2 における Media Encoder Standard の高度な機能](../previous/media-services-advanced-encoding-with-mes.md) の多くは現在、v3 では利用できません。
-    * (オンデマンド シナリオおよびライブ シナリオ用の) クリッピング
+  
     * 資産の結合
     * オーバーレイ
     * トリミング

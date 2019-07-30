@@ -4,7 +4,7 @@ description: Resource Manager デプロイ モデルに作成された Azure 仮
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 7e006b8bc05d00de3e5fba20985e30fd5e96c1df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a106c639eb72d3793b0df8f4ddf36a4724f7418
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708675"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707875"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
 
@@ -76,7 +76,7 @@ $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
 $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
 
 $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
-Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
+Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
 ## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>手順 4:Key Vault の自己署名証明書の URL を取得する
@@ -93,7 +93,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 #### <a name="powershell"></a>PowerShell
 次の PowerShell コマンドを使用して、この URL を取得することができます
 
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>手順 5:VM を作成するときに、自己署名証明書の URL を参照する
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
@@ -138,7 +138,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 #### <a name="powershell"></a>PowerShell
     $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
     $credential = Get-Credential
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
     $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
     $sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
     $CertificateStore = "My"

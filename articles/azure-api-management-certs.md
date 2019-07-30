@@ -3,23 +3,19 @@ title: Azure サービス管理証明書のアップロード | Microsoft Docs
 description: Azure Portal のサービス管理証明書をアップロードする方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
+author: georgewallace
+manager: carmonm
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 5ce96796cbfdcefbaf5568ff199cba6a87f65e05
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60742970"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359875"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure サービス管理証明書のアップロード
 管理証明書を使用することにより、Azure のクラシック デプロイ モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ff0cb82e3f1ddedf8dabebadf7a0309d08b2c4e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fff2469269d8f60f837f0af444e16928a9212bb0
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139070"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67866574"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -90,13 +90,13 @@ dotnet run
 
 ### <a name="create-azure-resources"></a>Azure リソースを作成する
 
-Cloud Shell で次のコマンドを実行して、2 つの Web アプリを作成します。 _&lt;front\_end\_app\_name>_ と _&lt;back\_end\_app\_name>_ を、グローバルに一意の 2 つのアプリ名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 各コマンドの詳細については、[Azure App Service での RESTful API と CORS](app-service-web-tutorial-rest-api.md) に関する記事を参照してください。
+Cloud Shell で次のコマンドを実行して、2 つの Web アプリを作成します。 _\<front-end-app-name>_ と _\<back-end-app-name>_ を、グローバルに一意の 2 つのアプリ名に置き換えます (有効な文字は `a-z`、`0-9`、`-` です)。 各コマンドの詳細については、[Azure App Service での RESTful API と CORS](app-service-web-tutorial-rest-api.md) に関する記事を参照してください。
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
 az appservice plan create --name myAuthAppServicePlan --resource-group myAuthResourceGroup --sku FREE
-az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <front_end_app_name> --deployment-local-git --query deploymentLocalGitUrl
-az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <back_end_app_name> --deployment-local-git --query deploymentLocalGitUrl
+az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <front-end-app-name> --deployment-local-git --query deploymentLocalGitUrl
+az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <back-end-app-name> --deployment-local-git --query deploymentLocalGitUrl
 ```
 
 > [!NOTE]
@@ -105,14 +105,14 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-"_ローカル ターミナル ウィンドウ_" に戻り、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _&lt;deploymentLocalGitUrl-of-back-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL に置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure Portal へのログインに使用する資格情報ではなく、[デプロイ資格情報](deploy-configure-credentials.md)を入力してください。
+"_ローカル ターミナル ウィンドウ_" に戻り、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _\<deploymentLocalGitUrl-of-back-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL に置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、[デプロイ資格情報](deploy-configure-credentials.md)を入力してください。
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
 git push backend master
 ```
 
-ローカル ターミナル ウィンドウで、以下の Git コマンドを実行して、同じコードをフロントエンド アプリにデプロイします。 _&lt;deploymentLocalGitUrl-of-front-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL に置き換えます。
+ローカル ターミナル ウィンドウで、以下の Git コマンドを実行して、同じコードをフロントエンド アプリにデプロイします。 _\<deploymentLocalGitUrl-of-front-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL に置き換えます。
 
 ```bash
 git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
@@ -124,8 +124,8 @@ git push frontend master
 ブラウザーで次の URL に移動し、2 つのアプリが動作していることを確認します。
 
 ```
-http://<back_end_app_name>.azurewebsites.net
-http://<front_end_app_name>.azurewebsites.net
+http://<back-end-app-name>.azurewebsites.net
+http://<front-end-app-name>.azurewebsites.net
 ```
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/azure-run.png)
@@ -141,11 +141,11 @@ http://<front_end_app_name>.azurewebsites.net
 
 ### <a name="modify-front-end-code"></a>フロントエンド コードを変更する
 
-ローカル リポジトリで、_Controllers/TodoController.cs_ を開きます。 `TodoController` クラスの先頭に次の行を追加し、_&lt;back\_end\_app\_name>_ を実際のバックエンド アプリの名前に置き換えます。
+ローカル リポジトリで、_Controllers/TodoController.cs_ を開きます。 `TodoController` クラスの先頭に次の行を追加し、 _\<back-end-app-name>_ を実際のバックエンド アプリの名前に置き換えます。
 
 ```cs
 private static readonly HttpClient _client = new HttpClient();
-private static readonly string _remoteUrl = "https://<back_end_app_name>.azurewebsites.net";
+private static readonly string _remoteUrl = "https://<back-end-app-name>.azurewebsites.net";
 ```
 
 `GetAll()` メソッドを見つけ、中かっこ内のコードを次のように置き換えます。
@@ -204,9 +204,9 @@ git push frontend master
 
 ### <a name="check-your-changes"></a>変更を確認する
 
-`http://<front_end_app_name>.azurewebsites.net` に移動し、`from front end 1` や `from front end 2` などのいくつかの項目を追加します。
+`http://<front-end-app-name>.azurewebsites.net` に移動し、`from front end 1` や `from front end 2` などのいくつかの項目を追加します。
 
-`http://<back_end_app_name>.azurewebsites.net` に移動して、フロントエンド アプリから追加された項目を確認します。 また、`from back end 1` や `from back end 2` などのいくつかの項目を追加し、フロントエンド アプリを更新して、変更が反映されているかどうかを確認します。
+`http://<back-end-app-name>.azurewebsites.net` に移動して、フロントエンド アプリから追加された項目を確認します。 また、`from back end 1` や `from back end 2` などのいくつかの項目を追加し、フロントエンド アプリを更新して、変更が反映されているかどうかを確認します。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/remote-api-call-run.png)
 
@@ -218,25 +218,25 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>バックエンド アプリの認証と承認を有効にする
 
-[Azure portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]** > **[myAuthResourceGroup]** > _\<back\_end\_app\_name>_ の順にクリックして、バックエンド アプリの管理ページを開きます。
+[Azure portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]**  > **myAuthResourceGroup** >  _\<back-end-app-name>_ をクリックして、バックエンド アプリの管理ページを開きます。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
-バックエンド アプリの左側のメニューで **[認証/承認]** をクリックし、**[オン]** をクリックして App Service 認証を有効にします。
+バックエンド アプリの左側のメニューで **[認証/承認]** をクリックし、 **[オン]** をクリックして App Service 認証を有効にします。
 
-**[要求が認証されない場合に実行するアクション]** で、**[Azure Active Directory でのログイン]** を選択します。
+**[要求が認証されない場合に実行するアクション]** で、 **[Azure Active Directory でのログイン]** を選択します。
 
 **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。 
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/configure-auth-back-end.png)
 
-**[簡易]** をクリックし、既定の設定のままで新しい AD アプリを作成して、**[OK]** をクリックします。
+**[簡易]** をクリックし、既定の設定のままで新しい AD アプリを作成して、 **[OK]** をクリックします。
 
-**[認証/承認]** ページで、**[保存]** をクリックします。 
+**[認証/承認]** ページで、 **[保存]** をクリックします。 
 
-`Successfully saved the Auth Settings for <back_end_app_name> App` というメッセージの通知が表示されたら、ページを更新します。
+`Successfully saved the Auth Settings for <back-end-app-name> App` というメッセージの通知が表示されたら、ページを更新します。
 
-**[Azure Active Directory]** を再度クリックし、**[アプリケーションの管理]** をクリックします。
+**[Azure Active Directory]** を再度クリックし、 **[アプリケーションの管理]** をクリックします。
 
 AD アプリケーションの管理ページで、**アプリケーション ID** をメモ帳にコピーします。 この値は、後で必要になります。
 
@@ -246,7 +246,7 @@ AD アプリケーションの管理ページで、**アプリケーション ID
 
 フロントエンド アプリに対して同じ手順を行いますが、最後の手順はスキップします。 フロントエンド アプリでは、**アプリケーション ID** は必要ありません。 **[Azure Active Directory の設定]** ページを開いたままにしておきます。
 
-必要に応じて、`http://<front_end_app_name>.azurewebsites.net` に移動します。 セキュリティで保護されたサインイン ページにリダイレクトされるようになったはずです。 サインインした後でも、まだバックエンド アプリのデータにアクセスすることはできません。次の 3 つの作業を行う必要があります。
+必要に応じて、`http://<front-end-app-name>.azurewebsites.net` に移動します。 セキュリティで保護されたサインイン ページにリダイレクトされるようになったはずです。 サインインした後でも、まだバックエンド アプリのデータにアクセスすることはできません。次の 3 つの作業を行う必要があります。
 
 - バックエンドへのフロントエンド アクセスを許可する
 - 使用可能なトークンを返すように App Service を構成する
@@ -257,17 +257,17 @@ AD アプリケーションの管理ページで、**アプリケーション ID
 
 ### <a name="grant-front-end-app-access-to-back-end"></a>バックエンドへのフロントエンド アプリのアクセスを許可する
 
-両方のアプリに対する認証と承認を有効にしたので、それぞれのアプリは AD アプリケーションによってサポートされています。 この手順では、ユーザーの代わりにバックエンドにアクセスするアクセス許可をフロントエンド アプリに付与します  (技術的には、ユーザーの代わりにバックエンドの "_AD アプリケーション_" にアクセスするためのアクセス許可をフロントエンドの "_AD アプリケーション_" に付与します)。
+両方のアプリに対する認証と承認を有効にしたので、それぞれのアプリは AD アプリケーションによってサポートされています。 この手順では、ユーザーの代わりにバックエンドにアクセスするアクセス許可をフロントエンド アプリに付与します (技術的には、ユーザーの代わりにバックエンドの "_AD アプリケーション_" にアクセスするためのアクセス許可をフロントエンドの "_AD アプリケーション_" に付与します)。
 
 現時点では、フロントエンド アプリの **[Azure Active Directory の設定]** ページにいるはずです。 そうでない場合は、そのページに戻ります。 
 
-**[アクセス許可の管理]** > **[追加]** > **[API を選択する]** の順にクリックします。
+**[アクセス許可の管理]**  >  **[追加]**  >  **[API を選択する]** の順にクリックします。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-**[API を選択する]** ページで、バックエンド アプリの AD アプリケーション名を入力します。これは、既定では、バックエンド アプリと同じ名前です。 それを一覧で選択し、**[選択]** をクリックします。
+**[API を選択する]** ページで、バックエンド アプリの AD アプリケーション名を入力します。これは、既定では、バックエンド アプリと同じ名前です。 それを一覧で選択し、 **[選択]** をクリックします。
 
-**[_&lt;AD\_application\_name>_ へのアクセス]** の横にあるチェックボックスをオンにします。 **[選択]** > **[完了]** の順にクリックします。
+**[ _\<AD-application-name>_ へのアクセス]** の横にあるチェック ボックスをオンにします。 **[選択]**  >  **[完了]** の順にクリックします。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
@@ -279,9 +279,9 @@ AD アプリケーションの管理ページで、**アプリケーション ID
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-左側のブラウザーで、**[サブスクリプション]** > **_&lt;your\_subscription>_** > **[resourceGroups]** > **[myAuthResourceGroup]** > **[プロバイダー]** > **[Microsoft.Web]** > **[サイト]** > **_\<front\_end\_app\_name>_** > **[構成]** > **[authsettings]** の順にクリックします。
+左側のブラウザーで、 **[subscriptions]**  >  **_\<your-subscription>_**  >  **[resourceGroups]**  >  **[myAuthResourceGroup]**  >  **[providers]**  > **Microsoft.Web** >  **[sites]**  >  **_\<front-end-app-name>_**  >  **[config]**  >  **[authsettings]** の順にクリックします。
 
-**[authsettings]** ビューで、**[編集]** をクリックします。 コピーしたアプリケーション ID を使用して、`additionalLoginParams` を次の JSON 文字列に設定します。 
+**[authsettings]** ビューで、 **[編集]** をクリックします。 コピーしたアプリケーション ID を使用して、`additionalLoginParams` を次の JSON 文字列に設定します。 
 
 ```json
 "additionalLoginParams": ["response_type=code id_token","resource=<back_end_application_id>"],
@@ -327,7 +327,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-`https://<front_end_app_name>.azurewebsites.net` に再度サインインします。 ユーザー データの使用の同意のページで、**[同意する]** をクリックします。
+`https://<front-end-app-name>.azurewebsites.net` に再度サインインします。 ユーザー データの使用の同意のページで、 **[同意する]** をクリックします。
 
 以前と同様に、バックエンド アプリのデータを作成、読み取り、更新、および削除できるようになったはずです。 唯一の違いは、App Service の認証と承認によって、サービス間呼び出しも含めて、両方のアプリがセキュリティで保護されていることです。
 
@@ -345,10 +345,10 @@ git push frontend master
 
 ### <a name="configure-cors"></a>CORS を構成する
 
-Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _\<back\_end\_app\_name>_ および _\<front\_end\_app\_name>_ プレースホルダーを置き換えます。
+Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _\<back-end-app-name>_ と _\<front-end-app-name>_ のプレースホルダーを置き換えます。
 
 ```azurecli-interactive
-az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back_end_app_name> --set properties.cors.allowedOrigins="['https://<front_end_app_name>.azurewebsites.net']" --api-version 2015-06-01
+az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back-end-app-name> --set properties.cors.allowedOrigins="['https://<front-end-app-name>.azurewebsites.net']" --api-version 2015-06-01
 ```
 
 この手順は、認証と承認には無関係です。 ただし、ブラウザーで Angular.js アプリからのクロスドメイン API 呼び出しが許可されるようにするには、この手順が必要です。 詳細については、「[CORS 機能の追加](app-service-web-tutorial-rest-api.md#add-cors-functionality)」を参照してください。
@@ -357,7 +357,7 @@ az resource update --name web --resource-group myAuthResourceGroup --namespace M
 
 ローカル リポジトリで、_wwwroot/index.html_ を開きます。
 
-行 51 の `apiEndpoint` 変数を、バックエンド アプリの URL (`https://<back_end_app_name>.azurewebsites.net`) に設定します。 _\<back\_end\_app\_name>_ を、App Service の実際のアプリ名に置き換えます。
+行 51 の `apiEndpoint` 変数を、バックエンド アプリの URL (`https://<back-end-app-name>.azurewebsites.net`) に設定します。 _\<back-end-app-name>_ を、App Service の実際のアプリ名に置き換えます。
 
 ローカル リポジトリで、_wwwroot/app/scripts/todoListSvc.js_ を開き、すべての API 呼び出しの前に `apiEndpoint` が付加されていることを確認します。 Angular.js アプリが、バックエンド API を呼び出すようになりました。 
 
@@ -411,7 +411,7 @@ git commit -m "add authorization header for Angular"
 git push frontend master
 ```
 
-再度 `https://<front_end_app_name>.azurewebsites.net` に移動します。 バックエンド アプリのデータを Angular.js で直接作成、読み取り、更新、および削除できるようになったはずです。
+再度 `https://<front-end-app-name>.azurewebsites.net` に移動します。 バックエンド アプリのデータを Angular.js で直接作成、読み取り、更新、および削除できるようになったはずです。
 
 お疲れさまでした。 クライアント コードは、認証されたユーザーの代わりにバックエンドのデータにアクセスするようになりました。
 

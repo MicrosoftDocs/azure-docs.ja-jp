@@ -1,19 +1,18 @@
 ---
 title: Recovery Services コンテナーを Azure サブスクリプションをまたいで移動するか、別のリソース グループに移動します。
 description: Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動するための手順。
-services: backup
 author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 72bfbc34f57e7725ae9556e893825900474317cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e351a842a303430e66a52a87305cba23f774ef2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64876846"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465815"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -35,7 +34,7 @@ Recovery Services コンテナーのリソースの移動がサポートされ�
 - VM をコンテナーと一緒に移動するかどうかに関係なく、VM はコンテナー内に保持されているバックアップ履歴から復元できます。
 - Azure Disk Encryption では、キー コンテナーと VM が同じ Azure リージョンおよびサブスクリプションに属している必要があります。
 - 仮想マシンをマネージド ディスクと一緒に移動するには、この[記事](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)を参照してください。
-- クラシック モデルを使用してデプロイされるリソースを移動するためのオプションは、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations)を参照してください。
+- クラシック モデルを使用してデプロイされるリソースを移動するためのオプションは、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)を参照してください。
 - コンテナーに対して定義されるバックアップ ポリシーは、コンテナーがサブスクリプションをまたいで移動しても、新しいリソース グループに移動しても保持されます。
 - Azure Files、Azure File Sync、または SQL を IaaS VM に含むコンテナーを、サブスクリプションおよびリソース グループをまたいで移動することはできません。
 - VM のバックアップ データがあるコンテナーをサブスクリプションをまたいで移動する場合、バックアップを継続するためには、お客様の VM を同じサブスクリプションに移動し、同じターゲット リソース グループを使用する必要があります。<br>

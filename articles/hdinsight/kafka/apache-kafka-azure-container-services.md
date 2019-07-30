@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 35ef708cdcedc2d7bafedb8bf3686e4b468177df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc2c3e557f295bd3125c09d9b839716159dcf50b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723672"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446453"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -35,7 +35,7 @@ Azure Kubernetes Service (AKS) で HDInsight クラスター上の [Apache Kafka
 * Azure Kubernetes Service
 * Azure 仮想ネットワーク
 
-またこのドキュメントでは、読者が「[Azure Kubernetes Service tutorial (Azure Container Service チュートリアル)](../../aks/tutorial-kubernetes-prepare-app.md)」を学習済みであることを前提としています。 このチュートリアルでは、コンテナー サービス、Kubernetes クラスター、コンテナー レジストリを作成し、`kubectl` ユーティリティを構成しています。
+またこのドキュメントでは、読者が「[Azure Kubernetes Service tutorial (Azure Container Service チュートリアル)](../../aks/tutorial-kubernetes-prepare-app.md)」を学習済みであることを前提としています。 この記事では、コンテナー サービス、Kubernetes クラスター、コンテナー レジストリを作成し、`kubectl` ユーティリティを構成しています。
 
 ## <a name="architecture"></a>アーキテクチャ
 

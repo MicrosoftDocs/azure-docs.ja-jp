@@ -7,18 +7,18 @@ author: MGoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 568ff99364923c43b7199bed1dacd32cf0d18ab9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e9e27e224e42bf3f65fadcac22210fda314445fa
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571154"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67665994"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor での Agent Health ソリューション
 Azure において Agent Health ソリューションを使用すると、Azure Monitor の Log Analytics ワークスペースに対して、または Azure Monitor に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、応答していないエージェントと運用データを送信しているエージェントを把握するのに役立ちます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    

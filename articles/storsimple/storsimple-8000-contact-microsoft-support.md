@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
-ms.author: alkohli;
-ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606867"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612518"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 

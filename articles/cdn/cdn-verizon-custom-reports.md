@@ -1,25 +1,25 @@
 ---
 title: Verizon からのカスタム レポート | Microsoft Docs
-description: '次のレポートを使用して、CDN の使用パターンを表示できます: 帯域幅、転送されたデータ、ヒット数、キャッシュの状態、キャッシュ ヒット率、転送された IPV4/IPV6 データ。'
+description: 次のレポートを使用して、CDN の使用パターンを表示できます:帯域幅、転送されたデータ、ヒット数、キャッシュの状態、キャッシュ ヒット率、転送された IPV4/IPV6 データ。
 services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: magattus
-ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 15f17ac6556c4ff731372dc7f738d0f58bdc3e31
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092068"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593282"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon からのカスタム レポート
 
@@ -45,22 +45,22 @@ Verizon プロファイルの管理ポータル経由で Verizon カスタム �
 
 カスタム レポートは、次のレポート オプションを定義することによって生成します。
 
-- [メトリック]: 次のオプションがサポートされています。
+- メトリック: 次のオプションがサポートされています。
 
    - [ヒット数]: カスタム レポート機能が有効になっているエッジ CNAME に転送された要求の総数を示します。 このメトリックには、クライアントに返された状態コードは含まれません。
 
    - [転送されたデータ]: カスタム レポート機能が有効になっているエッジ CNAME に転送された要求のエッジ サーバーから HTTP クライアント (Web ブラウザーなど) に転送された合計のデータ量を示します。 転送されたデータ量は、HTTP 応答ヘッダーを応答本文に追加することによって計算されます。 その結果、資産ごとの転送されたデータ量はその実際のファイル サイズより大きくなります。
 
-- [Groupings] \(グループ化): 棒グラフの下に表示される統計の種類を決定します。 次のオプションがサポートされています。
+- [Groupings] (グループ化): 棒グラフの下に表示される統計の種類を決定します。 次のオプションがサポートされています。
 
    - [HTTP 応答コード]: クライアントに返された HTTP 応答コード (200 や 403 など) で統計を整理します。 
 
    - [Cache Status] (キャッシュ状態): キャッシュ状態で統計を整理します。
 
 
-レポートの日付範囲を設定するには、ドロップダウン リストから定義済みの日付範囲 (**[Today] (今日)** や **[This Week] (今週)** など) を選択するか、または **[カスタム]** を選択し、カレンダー アイコンをクリックして日付範囲を手動で入力することができます。 
+レポートの日付範囲を設定するには、ドロップダウン リストから定義済みの日付範囲 ( **[Today] \(今日)** や **[This Week] \(今週)** など) を選択するか、または **[カスタム]** を選択し、カレンダー アイコンをクリックして日付範囲を手動で入力することができます。 
 
-日付範囲を選択したら、**[適用]** をクリックしてレポートを生成します。
+日付範囲を選択したら、 **[適用]** をクリックしてレポートを生成します。
 
 **[適用]** ボタンの右にある Excel 記号をクリックすることによって、データを Excel 形式でエクスポートできます。
 

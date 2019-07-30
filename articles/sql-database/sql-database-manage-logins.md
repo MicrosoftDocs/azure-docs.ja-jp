@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: b1e952d9af474e2318ef91a6bdcc2605a3c30018
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: af6cec22ae455e6a6ead4c45fead2d7ff5b708d2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070499"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可
 
@@ -40,7 +40,7 @@ ms.locfileid: "58497926"
   Azure SQL サーバーを作成する際に、**サーバー管理者ログイン**を指定する必要があります。 このアカウントは SQL サーバーによって master データベースへのログインとして作成されます。 このアカウントは、SQL Server 認証 (ユーザー名とパスワード) を使用して接続します。 これらのアカウントのうち、存在できるのは 1 つだけです。
 
   > [!NOTE]
-  > サーバー管理者のパスワードをリセットするには、[Azure portal](https://portal.azure.com) にアクセスし、**[SQL Server]** をクリックし、一覧からサーバーを選択して、**[パスワードのリセット]** をクリックします。
+  > サーバー管理者のパスワードをリセットするには、[Azure portal](https://portal.azure.com) にアクセスし、 **[SQL Server]** をクリックし、一覧からサーバーを選択して、 **[パスワードのリセット]** をクリックします。
 
 - **Azure Active Directory の管理者**
 
@@ -48,8 +48,8 @@ ms.locfileid: "58497926"
 
 **サーバー管理者**アカウントと **Azure AD 管理者**アカウントには次の特性があります。
 
-- サーバー上の任意の SQL Database に自動的に接続できる唯一のアカウントです  (それ以外のアカウントでユーザー データベースに接続するには、そのデータベースの所有者であるか、そのユーザー データベースのユーザー アカウントを持っている必要があります)。
-- これらのアカウントは、`dbo` ユーザーとしてユーザー データベースにアクセスし、ユーザー データベースに対するすべてのアクセス許可を持ちます  (ユーザー データベースの所有者も、`dbo` ユーザーとしてデータベースにアクセスします)。 
+- サーバー上の任意の SQL Database に自動的に接続できる唯一のアカウントです (それ以外のアカウントでユーザー データベースに接続するには、そのデータベースの所有者であるか、そのユーザー データベースのユーザー アカウントを持っている必要があります)。
+- これらのアカウントは、`dbo` ユーザーとしてユーザー データベースにアクセスし、ユーザー データベースに対するすべてのアクセス許可を持ちます (ユーザー データベースの所有者も、`dbo` ユーザーとしてデータベースにアクセスします)。 
 - `master` データベースを `dbo` ユーザーとして入力しないでください。master にはアクセス許可の制限があります。 
 - 標準 SQL Server `sysadmin` 固定サーバー ロールのメンバーでは**ありません**。このロールは SQL Database では使用できません。  
 - データベース、ログイン、master のユーザー、およびサーバー レベルの IP ファイアウォール規則を作成、変更、削除できます。
@@ -64,7 +64,7 @@ ms.locfileid: "58497926"
 
 サーバーレベルのファイアウォールが正しく構成されている場合、**SQL サーバー管理者**と **Azure Active Directory 管理者**は、SQL Server Management Studio や SQL Server Data Tools などのクライアント ツールを使用して接続できます。 すべての機能を提供しているのは、最新のツールだけです。 次の図は、2 つの管理者アカウントの標準的な構成を示しています。
 
-![Administrator access path](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
+![2 つの管理アカウントの構成](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
 
 サーバー レベルのファイアウォールで開かれているポートを使用する場合、管理者はどの SQL データベースにも接続できます。
 
@@ -116,7 +116,7 @@ ms.locfileid: "58497926"
    > [!NOTE]
    > dbmanager は master データベースのデータベース ロールであるため、dbmanager ロールにはデータベース ユーザーのみを追加できます。 データベース レベルのロールにサーバー レベルのログインを追加することはできません。
 
-5. 必要に応じて、新しいユーザーに接続を許可するようにファイアウォール規則を構成します  (新しいユーザーは、既存のファイアウォール規則でカバーされる可能性があります)。
+5. 必要に応じて、新しいユーザーに接続を許可するようにファイアウォール規則を構成します (新しいユーザーは、既存のファイアウォール規則でカバーされる可能性があります)。
 
 これで、ユーザーは `master` データベースに接続し、新しいデータベースを作成できるようになりました。 データベースを作成したアカウントは、そのデータベースの所有者になります。
 
@@ -214,7 +214,7 @@ SQL Database のログインとユーザーの管理では、以下の点を考�
 - `CREATE USER` ステートメントを `FOR/FROM LOGIN` オプションと共に実行する場合、これが Transact-SQL バッチ内の唯一のステートメントである必要があります。
 - `ALTER USER` ステートメントを `WITH LOGIN` オプションと共に実行する場合、これが Transact-SQL バッチ内の唯一のステートメントである必要があります。
 - ユーザーに対して `CREATE/ALTER/DROP` を実行するには、データベースに対する `ALTER ANY USER` 権限が必要です。
-- データベース ロールの所有者が、そのデータベース ロールに対して他のデータベース ユーザーの追加または削除を行おうとすると、次のエラーが発生する場合があります:「**User or role 'Name' does not exist in this database.**」。 このエラーは、所有者からはユーザーが見えないために発生します。 この問題を解決するには、そのユーザーに対する `VIEW DEFINITION` 権限をロールの所有者に許可します。 
+- データベース ロールの所有者が、そのデータベース ロールに対して他のデータベース ユーザーの追加または削除を行おうとすると、次のエラーが発生する場合があります:「**User or role 'Name' does not exist in this database.** 」。 このエラーは、所有者からはユーザーが見えないために発生します。 この問題を解決するには、そのユーザーに対する `VIEW DEFINITION` 権限をロールの所有者に許可します。 
 
 
 ## <a name="next-steps"></a>次の手順

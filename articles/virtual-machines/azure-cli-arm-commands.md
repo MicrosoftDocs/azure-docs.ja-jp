@@ -4,7 +4,7 @@ description: Resource Manager デプロイ モデルのリソースを管理す�
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
 documentationcenter: ''
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4a155159759a4b817842087bff7d4167ed8ed0c5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155816"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722834"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager モードでの Azure CLI コマンド
 この記事では、Azure Resource Manager デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
@@ -48,7 +48,7 @@ ms.locfileid: "50155816"
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>Azure アカウント: アカウント情報の管理
+## <a name="azure-account-manage-your-account-information"></a>Azure アカウント: アカウント情報を管理する
 Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。
 
 **インポートされたサブスクリプションを一覧表示します**
@@ -196,7 +196,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
-例: クラスターを作成するときに実行するスクリプト アクションを含む構成ファイルの作成
+例:クラスターを作成するときに実行するスクリプト アクションを含む構成ファイルの作成
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
@@ -205,7 +205,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     hdinsight cluster create [options] <clusterName>
 
-例: Linux クラスターでの Storm の作成
+例:Linux クラスターで Storm を作成する
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -213,7 +213,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-例: スクリプト アクションによるクラスターの作成
+例:スクリプト アクションを使用したクラスターの作成
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 
@@ -307,12 +307,12 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: Insights (イベント、アラート ルール、自動スケール設定、メトリック) の監視に関連するコマンド
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: Insights (イベント、アラート ルール、自動スケール設定、メトリック) の監視に関連したコマンド
 **サブスクリプション、関連付け ID、リソース グループ、リソース、またはリソース プロバイダーの操作ログを取得します**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure の場所: すべてのリソースの種類で利用可能な場所を取得するコマンド
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure の場所: すべてのリソースの種類で使用可能な場所を取得するコマンド
 **利用可能な場所を一覧表示します**
 
     location list [options]
@@ -969,7 +969,8 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    network lb address-pool delete [オプション] <resource-group> <lb-name> <name>
+
+    network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 ロード バランサーからバックエンド IP プールの範囲のリソースを削除します。
 
@@ -1333,7 +1334,9 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    network public-ip list [オプション] &lt;resource-group&gt; リソース グループ内のすべてのパブリック IP リソースを一覧表示します。
+
+    network public-ip list [options] <resource-group>
+リソース グループ内のすべてのパブリック IP リソースを一覧表示します。
 
     azure network public-ip list -g myresourcegroup
 
@@ -1353,8 +1356,10 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
+
 <BR>
-    network public-ip show [オプション] <resource-group> <name>
+
+    network public-ip show [options] <resource-group> <name>
 
 リソース グループ内のパブリック IP リソースのパブリック IP プロパティが表示されます。
 
@@ -1557,7 +1562,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure Storage: Storage のオブジェクトを管理するコマンド
+## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure Storage: ストレージ オブジェクトの管理用コマンド
 **Storage のアカウントを管理するコマンド**
 
     storage account list [options]

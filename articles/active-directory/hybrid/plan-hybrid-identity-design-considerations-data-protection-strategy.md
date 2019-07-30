@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c1575781f280b3be1843abee0469af52baeb2d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918426"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109367"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -106,7 +106,7 @@ Azure Active Directory では、何千もの SaaS アプリケーションやオ
 >
 >
 
-Azure AD のサポートを使用すると、モバイル ビジネス アプリケーションでも簡単な Mobile Services の認証エクスペリエンスを使用できるため、従業員は会社の Active Directory 資格情報を使用してモバイル アプリケーションにサインインできます。 この機能により、既にサポートしている ID プロバイダー (Microsoft アカウント、Facebook ID、Google ID、Twitter ID など) と共に、Azure AD が Mobile Services の ID プロバイダーとしてサポートされます。 オンプレミスのアプリケーションで、会社の AD DS にあるユーザーの資格情報が使われている場合、クラウドのユーザーやパートナーからのアクセスを透過的にする必要があります。 (クラウドベースの) Web アプリケーション、Web API、Microsoft Cloud Services、サードパーティの SaaS アプリケーション、およびネイティブの (モバイル) クライアント アプリケーションに対するユーザーの条件付きアクセス制御を管理できます。また、セキュリティ、監査、レポートを 1 か所で実行できる利点があります。 ただし、非運用環境の実装で、またはユーザー数を限定して、これを検証することをお勧めします。
+Azure AD のサポートを使用すると、モバイル ビジネス アプリケーションでも簡単な Mobile Services の認証エクスペリエンスを使用できるため、従業員は会社の Active Directory 資格情報を使用してモバイル アプリケーションにサインインできます。 この機能により、既にサポートしている ID プロバイダー (Microsoft アカウント、Facebook ID、Google ID、Twitter ID など) と共に、Azure AD が Mobile Services の ID プロバイダーとしてサポートされます。 オンプレミスのアプリケーションで、会社の AD DS にあるユーザーの資格情報が使われている場合、クラウドのユーザーやパートナーからのアクセスを透過的にする必要があります。 (クラウド ベースの) Web アプリケーション、Web API、Microsoft クラウド サービス、サード パーティの SaaS アプリケーション、ネイティブの (モバイル) クライアント アプリケーションに対するユーザーの条件付きアクセス制御を管理できます。また、すべてのセキュリティ、監査、レポートの利点を 1 か所で活用できます。 ただし、非運用環境の実装で、またはユーザー数を限定して、これを検証することをお勧めします。
 
 > [!TIP]
 > AD DS にあるようなグループ ポリシーが Azure AD にはないことを確認しておくことが必要です。 デバイスのポリシーを適用するには、[Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) などのモバイル デバイス管理ソリューションが必要です。

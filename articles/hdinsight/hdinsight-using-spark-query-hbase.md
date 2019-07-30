@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: e3f5cb726dddbdbfbd1b1f48c800ac681e7a174c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/06/2019
+ms.openlocfilehash: e747f39ca84bb859b37550efef51e01cffd96876
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056739"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
@@ -21,11 +21,11 @@ ms.locfileid: "64696547"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 2 つの別個の HDInsight クラスター。1 つは HBase で、もう 1 つは Spark 2.1 (HDInsight 3.6) 以上がインストールされた Spark です。
-* Spark クラスターは最小限の待ち時間で HBase クラスターと直接通信できる必要があります。そのため、両方のクラスターを同じ仮想ネットワークにデプロイする構成をお勧めします。 詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」をご覧ください。
-* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-* クラスターのプライマリ ストレージの [URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Blob Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ wasbs:// または abfss:// になります。「[安全な転送](../storage/common/storage-require-secure-transfer.md)」も参照。
+* 2 つの異なる HDInsight クラスターが、同じ仮想ネットワークにデプロイされていること。 一方は HBase で、もう一方は Spark 2.1 (HDInsight 3.6) 以降がインストールされた Spark です。 詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」をご覧ください。
 
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
+* クラスターのプライマリ ストレージの [URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Blob Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ wasbs:// または abfss:// になります。「[安全な転送](../storage/common/storage-require-secure-transfer.md)」も参照。
 
 ## <a name="overall-process"></a>全体的なプロセス
 
@@ -40,38 +40,47 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 
 ## <a name="prepare-sample-data-in-apache-hbase"></a>Apache HBase でサンプル データを準備する
 
-この手順では、Spark を使用してクエリできる単純なテーブルを Apache HBase に作成し、データを設定します。
+この手順では、Spark を使用してクエリできるテーブルを Apache HBase に作成し、データを設定します。
 
-1. SSH を使用して、HBase クラスターのヘッド ノードに接続します。 詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。  `HBASECLUSTER` を HBase クラスターの名前に置き換え、`sshuser` を ssh ユーザー アカウント名に置き換えて以下のコマンドを編集し、そのコマンドを入力します。
+1. `ssh` コマンドを使用して HBase クラスターに接続します。 次のコマンドを編集して `HBASECLUSTER` を HBase クラスターの名前に置き換えてから、コマンドを入力します。
 
-    ```
+    ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. 以下のコマンドを入力して HBase シェルを開始します。
+2. `hbase shell` コマンドを使用して、HBase 対話型シェルを起動します。 SSH 接続で次のコマンドを入力します。
 
-        hbase shell
+    ```bash
+    hbase shell
+    ```
 
-3. 以下のコマンドを入力して、`Personal` および `Office` という列ファミリを持つ `Contacts` テーブルを作成します。
+3. `create` コマンドを使用して、2 つの列ファミリを持つ HBase テーブルを作成します。 次のコマンドを入力します。
 
-        create 'Contacts', 'Personal', 'Office'
+    ```hbase
+    create 'Contacts', 'Personal', 'Office'
+    ```
 
-4. 以下のコマンドを入力して、いくつかのサンプル データ行を読み込みます。
+4. `put` コマンドを使用して、特定のテーブルの指定行の指定列に値を挿入します。 次のコマンドを入力します。
 
-        put 'Contacts', '1000', 'Personal:Name', 'John Dole'
-        put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
-        put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
-        put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
-        put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
-        put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```hbase
+    put 'Contacts', '1000', 'Personal:Name', 'John Dole'
+    put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
+    put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
+    put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
+    put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
+    put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```
 
-5. 以下のコマンドを入力して HBase シェルを終了します。
+5. `exit` コマンドを使用して、HBase 対話型シェルを停止します。 次のコマンドを入力します。
 
-        exit 
+    ```hbase
+    exit
+    ```
 
 ## <a name="copy-hbase-sitexml-to-spark-cluster"></a>hbase-site.xml を Spark クラスターにコピーする
+
 ローカル ストレージから Spark クラスターの既定ストレージのルートに hbase-site.xml をコピーします。  以下のコマンドを編集して、構成を反映します。  次に、開いている HBase クラスターへの SSH セッションから、以下のコマンドを入力します。
 
 | 構文の値 | 新しい値|
@@ -80,9 +89,11 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 |`SPARK_STORAGE_CONTAINER`|Spark クラスターで使用される既定のストレージ コンテナー名に置き換えます。|
 |`SPARK_STORAGE_ACCOUNT`|Spark クラスターで使用される既定のストレージ アカウント名に置き換えます。|
 
-```
+```bash
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
 ```
+
+次に、HBase クラスターへの SSH 接続を終了します。
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Spark クラスターに hbase-site.xml を配置する
 
@@ -90,13 +101,15 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 2. 以下のコマンドを入力して、Spark クラスターの既定のストレージから、クラスターのローカル ストレージの Spark 2 構成フォルダーに `hbase-site.xml` をコピーします。
 
-        sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```bash
+    sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Spark HBase コネクターを参照する Spark Shell を実行する
 
 1. 開いている Spark クラスターへの SSH セッションから以下のコマンドを入力して、Spark シェルを開始します。
 
-    ```
+    ```bash
     spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
     ```  
 
@@ -185,12 +198,14 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 9. 次のような結果が表示されます。
 
-        +-------------+--------------------+
-        | personalName|       officeAddress|
-        +-------------+--------------------+
-        |    John Dole|1111 San Gabriel Dr.|
-        |  Calvin Raji|5415 San Gabriel Dr.|
-        +-------------+--------------------+
+    ```output
+    +-------------+--------------------+
+    | personalName|       officeAddress|
+    +-------------+--------------------+
+    |    John Dole|1111 San Gabriel Dr.|
+    |  Calvin Raji|5415 San Gabriel Dr.|
+    +-------------+--------------------+
+    ```
 
 ## <a name="insert-new-data"></a>新しい行を挿入する
 
@@ -229,13 +244,21 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 5. 次のような出力結果が表示されます。
 
-        +------+--------------------+--------------+------------+--------------+
-        |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
-        +------+--------------------+--------------+------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
-        | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+------------+--------------+
+    ```output
+    +------+--------------------+--------------+------------+--------------+
+    |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
+    +------+--------------------+--------------+------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
+    | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+------------+--------------+
+    ```
+
+6. 次のコマンドを入力して、Spark シェルを閉じます。
+
+    ```scala
+    :q
+    ```
 
 ## <a name="next-steps"></a>次の手順
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f354d0413d023e7af6d1719d86e0fbff59cf2b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 10d43de00c9daefdb86a92d92ebe2cfe39fd3248
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813300"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-surveymonkey-enterprise"></a>チュートリアル:Azure Active Directory と SurveyMonkey Enterprise の統合
 
@@ -54,11 +54,11 @@ Azure AD への SurveyMonkey Enterprise の統合を構成するには、ギャ�
 
 **ギャラリーから SurveyMonkey Enterprise を追加するには、次の手順を実行します。**
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への SurveyMonkey Enterprise の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SurveyMonkey Enterprise**」と入力し、結果パネルで **[SurveyMonkey Enterprise]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**SurveyMonkey Enterprise**」と入力し、結果パネルで **[SurveyMonkey Enterprise]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の SurveyMonkey Enterprise](common/search-new-app.png)
 
@@ -90,29 +90,29 @@ SurveyMonkey Enterprise で Azure AD のシングル サインオンを構成し
 
 SurveyMonkey Enterprise で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **SurveyMonkey Enterprise** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **SurveyMonkey Enterprise** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、**[保存]** ボタンをクリックします。
+4. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
     ![[SurveyMonkey Enterprise Domain and URLs]\(SurveyMonkey Enterprise のドメインと URL\) のシングル サインオン情報](common/preintegrated.png)
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[SurveyMonkey Enterprise Domain and URLs]\(SurveyMonkey Enterprise のドメインと URL\) のシングル サインオン情報](common/both-signonurl.png)
 
-    **[サインオン URL]** テキスト ボックスに URL として「` https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`」と入力します。
+    **[サインオン URL]** テキスト ボックスに URL として「`https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`」と入力します。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -134,7 +134,7 @@ SurveyMonkey Enterprise で Azure AD シングル サインオンを構成する
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -158,11 +158,11 @@ SurveyMonkey Enterprise で Azure AD シングル サインオンを構成する
 
 このセクションでは、Britta Simon に SurveyMonkey Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[SurveyMonkey Enterprise]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[SurveyMonkey Enterprise]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[SurveyMonkey Enterprise]** を選択します。
+2. アプリケーションの一覧で、 **[SurveyMonkey Enterprise]** を選択します。
 
     ![アプリケーションの一覧の SurveyMonkey Enterprise のリンク](common/all-applications.png)
 
@@ -170,15 +170,15 @@ SurveyMonkey Enterprise で Azure AD シングル サインオンを構成する
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-surveymonkey-enterprise-test-user"></a>SurveyMonkey Enterprise テスト ユーザーを作成する
 

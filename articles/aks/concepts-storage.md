@@ -2,17 +2,17 @@
 title: 概念 - Azure Kubernetes サービス (AKS) におけるストレージ
 description: Azure Kubernetes Service (AKS) のストレージについて、ボリューム、永続ボリューム、ストレージ クラス、要求などを説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: cce38eb12d803c0640d9ee774dbc6c98ab5db219
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: eb9141d363bdb09b5773f80dfc5a1c4b9b92728f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60466819"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615807"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -130,7 +130,7 @@ Azure ディスクまたは Azure Files を使用する動的または静的ボ�
 - [Azure ディスクを使用した動的ボリュームの作成][aks-dynamic-disks]
 - [Azure Files を使用した動的ボリュームの作成][aks-dynamic-files]
 
-Kubernetes と AKS の中心概念に関する追加情報については、次の記事を参照してください。
+Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
 - [Kubernetes/AKS クラスターとワークロード][aks-concepts-clusters-workloads]
 - [Kubernetes/AKS の ID][aks-concepts-identity]

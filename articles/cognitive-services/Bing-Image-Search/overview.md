@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c8213e7d725c7c06d40555176fff24be4cff7607
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 044cdde8e7c2f79835f4197ae70f7f0dc8d9ccec
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388673"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302667"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Bing Image Search API とは
 
@@ -31,7 +31,7 @@ Bing Image Search API では画像のみの検索結果が提供されますが�
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [検索用語をリアルタイムで提案する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、アプリのエクスペリエンスを向上します。 |
 | [画像の結果をフィルター処理して制限する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | クエリ パラメーターを編集して、Bing から返される画像をフィルター処理します。                                                                                                       |
-| [サムネイルのクロップ、サイズ変更、表示](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/resize-and-crop-thumbnails)                                                | Bing Image Search から返された画像のサムネイル プレビューを編集して表示します。                                                                                      |
+| [サムネイルのクロップ、サイズ変更、表示](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/resize-and-crop-thumbnails)                                                | Bing Image Search から返された画像のサムネイル プレビューを編集して表示します。                                                                                      |
 | [ユーザー検索クエリをピボットして展開する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)               | Bing で提案された検索用語をクエリに含めて表示することで、検索機能を拡張できます。                                                                    |
 | [注目の画像を取得する](https://review.docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images)                                                                     | 世界で注目を集めている画像の検索をカスタマイズします。                                                                                                          |
 

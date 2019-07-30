@@ -4,17 +4,17 @@ description: このクイック スタートでは、IoT Edge デバイスを作
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/19/2019
+ms.date: 07/09/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5c790d39ea471a599e8a6b46004b3e350834c318
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a3d2b51824f4293dc790979ca2513d011b60fd9c
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573959"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414446"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux デバイスに展開する
 
@@ -55,19 +55,18 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
 
 IoT Edge デバイス:
 
-* IoT Edge デバイスとして機能する Linux デバイスまたは仮想マシン。 Microsoft 提供の [Azure IoT Edge を Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) 仮想マシン上で使用する必要があります。そうすることで、デバイス上で IoT Edge を実行するために必要なものがすべて事前にインストールされます。 次のコマンドを使用してこの仮想マシンを作成します。
+* IoT Edge デバイスとして機能する Linux デバイスまたは仮想マシン。 Microsoft 提供の [Azure IoT Edge を Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) 仮想マシン上で使用する必要があります。そうすることで、デバイス上で IoT Edge を実行するために必要なものがすべて事前にインストールされます。 利用規約に同意し、次のコマンドを使ってこの仮想マシンを作成します。
 
    ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
    新しい仮想マシンを作成して起動するまでに数分かかる場合があります。
 
-   この時点で、`MarketplacePurchaseEligibilityFailed` エラーが発生することがあります。 その場合は、[Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) に移動して [`Get It Now`] をクリックし、ご契約条件に同意する必要があります。 サインインしてご契約条件に同意してから、コマンドを再試行してください。
-
    新しい仮想マシンを作成するときは、create コマンドの出力内容に含まれる **publicIpAddress** を書き留めておいてください。 このクイック スタートの中で、後からこのパブリック IP アドレスを使用して仮想マシンに接続します。
 
-* Azure IoT Edge ランタイムを自分のデバイスで実行したい場合は、「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」の手順に従います。
+* Azure IoT Edge ランタイムを自分のデバイス上で実行したい場合は、「[Linux に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-linux.md)」の手順に従います。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -131,7 +130,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
-IoT Edge をローカル コンピューター上または ARM32 デバイス上で実行している場合、IoT Edge ランタイムとその前提条件をデバイスにインストールする必要があります。 「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」の手順に従ってインストールしたら、このクイック スタートに戻ります。
+IoT Edge をローカル コンピューター上または ARM32 あるいは ARM64 デバイス上で実行している場合、IoT Edge ランタイムとその前提条件をデバイスにインストールする必要があります。 [Linux 上への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-linux.md)に関するページの手順に従ってから、このクイックスタートに戻ります。
 
 ### <a name="view-the-iot-edge-runtime-status"></a>IoT Edge ランタイムの状態を確認する
 

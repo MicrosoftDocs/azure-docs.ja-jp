@@ -9,14 +9,14 @@ ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8d8fd03d9c3d912788e9893377bbab3efac86f8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a89d73b63680415aa8e516926b8e1d6c59ffbbad
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66383833"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626012"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>検索応答に含まれる回答をフィルタリングする  
 
@@ -44,14 +44,20 @@ Web のクエリを実行すると、Bing はその検索で見つけたすべ�
     }
 }    
 ```
-[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) クエリ パラメーターを使用して、受け取るコンテンツの種類 (イメージ、ビデオ、ニュースなど) をフィルター処理できます。 指定された回答に関連するコンテンツを Bing が見つけると、それが返されます。 応答フィルターは、コンマ区切りの回答の一覧です。 
 
-`responseFilter` 値の先頭に `-` 文字を追加すると、イメージなど、特定の種類のコンテンツを応答から除外できます。 コンマ (`,`) を使用して、除外する種類を区切ることができます。 例:
+## <a name="query-parameters"></a>クエリ パラメーター
+
+Bing から返される応答をフィルター処理するには、API を呼び出すときに以下のクエリ パラメーターを使用します。  
+
+### <a name="responsefilter"></a>responseFilter
+
+回答のコンマ区切りリストである [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) クエリ パラメーターを使用すれば、Bing が応答に取り込む回答の種類 (たとえば、画像、ビデオ、ニュースなど) をフィルター処理することができます。 Bing によって回答に関連するコンテンツが検出された場合、その回答は応答に含められます。 
+
+応答から画像などの特定の回答を除外するには、回答の種類の先頭に `-` 文字を追加します。 例:
 
 ```
 &responseFilter=-images,-videos
 ```
-
 
 次の例は、`responseFilter` を使用して「sailing dinghies」の画像、ビデオ、ニュースを要求する方法を示しています。 クエリ文字列をエンコードすると、コンマは %2C になります。  
 
@@ -94,7 +100,9 @@ Host: api.cognitive.microsoft.com
 
 単一の API から結果を取得するために `responseFilter` を使うことはお勧めできません。 単一の Bing API からコンテンツを取得する場合は、その API を直接呼び出します。 たとえば、イメージのみを受信するには、Image Search API のエンドポイントである `https://api.cognitive.microsoft.com/bing/v7.0/images/search`、またはその他の[イメージ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) エンドポイントのいずれかに要求を送信します。 単一の API を呼び出すことが重要なのは、パフォーマンスが向上するためだけでなく、コンテンツに固有の API の方がより詳細な結果を提供するためです。 たとえば、Web Search API では使用できないフィルターを使用して結果をフィルタリングすることができます。  
 
-特定のドメインから検索結果を得るには、クエリ文字列に `site:` クエリ演算子を含めます。  
+### <a name="site"></a>サイト
+
+特定のドメインから検索結果を得るには、クエリ文字列に `site:` クエリ パラメーターを含めます。  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
@@ -103,9 +111,27 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > クエリによっては、`site:` クエリ演算子を使用した場合、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) 設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` の使用は、そのサイト上のコンテンツを承知していて、なおかつ成人向けのコンテンツが含まれていても問題がないシナリオに限定してください。
 
+### <a name="freshness"></a>freshness
+
+Web 回答の結果を、特定の期間中に Bing が検出した Web ページに限定するには、[freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) クエリ パラメーターを、大文字と小文字が区別されない次の値のいずれかに設定します。
+
+* `Day` — 過去 24 時間の間に Bing が検出した Web ページを返します
+* `Week` — 過去 7 日の間に Bing が検出した Web ページを返します
+* `Month` — 過去 30 日の間に検出された Web ページを返します
+
+また、このパラメーターは、`YYYY-MM-DD..YYYY-MM-DD` という形式でカスタム日付範囲に設定することもできます。 
+
+`https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
+
+結果を単一の日付に限定するには、freshness パラメーターを次のように特定の日付に設定します。
+
+`https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-04`
+
+ご利用のフィルター基準に対して Bing が一致した Web ページの数が、要求した Web ページの数 (または Bing が返す既定の数) より少ない場合、結果には指定した期間外の Web ページが含まれることがあります。
+
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>応答の回答数を制限する
 
-Bing は、ランキングに基づいて応答に回答を含めます。 たとえば、*sailing+dinghies* クエリを実行すると、Bing は `webpages`、`images`、`videos`、および `relatedSearches` を返します。
+Bing では、複数の回答の種類を JSON 応答で返すことができます。 たとえば、*sailing+dinghies* クエリを実行すると、Bing からは `webpages`、`images`、`videos`、および `relatedSearches` が返されます。
 
 ```json
 {

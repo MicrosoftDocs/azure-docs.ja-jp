@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4a4c4ca1925a501b10cb86a2cf60646af1e5b57
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 14c7495653f369d7a51cab6fedb136268b7b3378
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544247"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277929"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 [トークンは、取得](msal-acquire-cache-tokens.md)後に Microsoft Authentication Library (MSAL) でキャッシュされます。  アプリケーション コードでは、別のメソッドでトークンを取得する前に、キャッシュからトークンを取得しようとする必要があります。  この記事では、MSAL.NET でのトークン キャッシュの既定のシリアル化とカスタムのシリアル化について説明します。
@@ -42,15 +42,15 @@ MSAL.NET では、既定でメモリ内のトークン キャッシュが提供�
 
 トークン キャッシュのシリアル化では、次のクラスとインターフェイスが使用されます。
 
-- `ITokenCache` では、トークン キャッシュのシリアル化要求をサブスクライブするイベントと、キャッシュをさまざまな形式 (ADAL v3.0、MSAL 2.x および MSAL 3.x = ADAL v5.0) でシリアル化または逆シリアル化するメソッドを定義します。
+- `ITokenCache` では、トークン キャッシュのシリアル化要求をサブスクライブするイベントと、キャッシュをさまざまな形式 (ADAL v3.0、MSAL 2.x、および MSAL 3.x = ADAL v5.0) でシリアル化または逆シリアル化するメソッドを定義します。
 - `TokenCacheCallback` は、シリアル化を処理できるようにイベントに渡されるコールバックです。 `TokenCacheNotificationArgs` の型の引数で呼び出されます。
 - `TokenCacheNotificationArgs` では、アプリケーションの `ClientId` と、トークンを使用できるユーザーへの参照のみを提供します。
 
   ![クラス ダイアグラム](media/msal-net-token-cache-serialization/class-diagram.png)
 
 > [!IMPORTANT]
-> MSAL.NET により、トークン キャッシュが自動的に作成され、アプリケーションの `GetUserTokenCache` メソッドと `GetAppTokenCache` メソッドを呼び出すと `IToken` キャッシュが提供されます。 インターフェイスを自分で実装することはできません。 カスタムのトークン キャッシュのシリアル化を実装する際には、お客様の責任で次の処理を行います。
-> - `BeforeAccess` と `AfterAccess` の各 "イベント" に対応します。 `BeforeAccess` デリゲートではキャッシュの逆シリアル化を行い、`AfterAccess` デリゲートではキャッシュのシリアル化を行います。
+> アプリケーションの `UserTokenCache` プロパティと `AppTokenCache` プロパティを呼び出すと、MSAL.NET によりトークン キャッシュが自動的に作成され、`IToken` キャッシュが提供されます。 インターフェイスを自分で実装することはできません。 カスタムのトークン キャッシュのシリアル化を実装する際には、お客様の責任で次の処理を行います。
+> - `BeforeAccess` と `AfterAccess` の各 "イベント" (またはこれらの非同期版) に対応します。 `BeforeAccess` デリゲートではキャッシュの逆シリアル化を行い、`AfterAccess` デリゲートではキャッシュのシリアル化を行います。
 > - これらのイベントの一部では、BLOB が格納されるか、または読み込まれ、イベント引数を介して任意のストレージに渡されます。
 
 [パブリック クライアント アプリケーション](msal-client-applications.md) (デスクトップ) と[機密クライアント アプリケーション](msal-client-applications.md) (Web アプリ/Web API、デーモン アプリ) のどちらに対してトークン キャッシュのシリアル化を作成しているかに応じて、戦略は異なります。
@@ -164,7 +164,7 @@ namespace CommonCacheMsalV3
  static class FilesBasedTokenCacheHelper
  {
   /// <summary>
-  /// Get the user token cache
+  /// Enables the serialization of the token cache
   /// </summary>
   /// <param name="adalV3CacheFileName">File name where the cache is serialized with the
   /// ADAL V3 token cache format. Can
@@ -175,20 +175,14 @@ namespace CommonCacheMsalV3
   /// ADAL V4 and MSAL V2 and above, and also across ADAL/MSAL on the same platform.
   ///  Should not be <c>null</c></param>
   /// <returns></returns>
-  public static void EnableSerialization(ITokenCache cache, string unifiedCacheFileName, string adalV3CacheFileName)
+  public static void EnableSerialization(ITokenCache tokenCache, string unifiedCacheFileName, string adalV3CacheFileName)
   {
-   usertokenCache = cache;
    UnifiedCacheFileName = unifiedCacheFileName;
    AdalV3CacheFileName = adalV3CacheFileName;
 
-   usertokenCache.SetBeforeAccess(BeforeAccessNotification);
-   usertokenCache.SetAfterAccess(AfterAccessNotification);
+   tokenCache.SetBeforeAccess(BeforeAccessNotification);
+   tokenCache.SetAfterAccess(AfterAccessNotification);
   }
-
-  /// <summary>
-  /// Token cache
-  /// </summary>
-  static ITokenCache usertokenCache;
 
   /// <summary>
   /// File path where the token cache is serialized with the unified cache format

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 14-04-2019
+ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa59dff1fcc39cdccc8f74c8a71857ad7367f1b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b9bb3d260b808e61f15ec85752c299bfeb3ab6fd
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917712"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588557"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>チュートリアル: Azure Active Directory と Infor CloudSuite の統合
 

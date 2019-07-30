@@ -9,7 +9,7 @@ metadata:
   ms.author: jasonh
   ms.service: data-catalog
   ms.topic: landing-page
-  ms.date: 04/05/2019
+  ms.date: 07/01/2019
 abstract:
   description: Data Catalog を使用して、組織やチームがデータ ソースを検出、把握、活用する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、登録されたデータ ソースをデータ コンシューマーが検索し、領域の専門家によって提供される知識を取得できるデータ リポジトリの計画とセットアップの方法を紹介します。
 sections:
@@ -40,5 +40,3 @@ sections:
         items:
           - title: REST
             html: <p><a href="/rest/api/datacatalog/">REST API リファレンス</a></p><p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">検索構文リファレンス</a></p>
-          - title: リソース マネージャー
-            html: <p><a href="/azure/templates/microsoft.datacatalog/catalogs">Resource Manager テンプレート</a></p>

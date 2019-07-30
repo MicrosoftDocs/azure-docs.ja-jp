@@ -7,7 +7,8 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 6aa9dd27-6506-49c5-8e97-cc1aebecee87
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 754722508de248294667ee9e923e8faf3ad67f61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23e7db25e5ebed2a23b4d38bcfe9597b77c6b04b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236291"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620743"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Azure Sentinel プレビューでの脅威の検出
 

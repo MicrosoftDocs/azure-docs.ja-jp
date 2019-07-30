@@ -12,16 +12,16 @@ ms.date: 09/19/2018
 ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12370d54500dbc1fcd6f812206fdfea3e5298112
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b39704b25c26998e16ca8080c4e44dd1adf6965c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826092"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108213"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>アプリケーションを Azure Active Directory に移行するためのリソース
 
-アプリケーションのアクセスと認証を Azure Active Directory (Azure AD) に移行するために役立つリソース。 この簡単なアンケート (https://aka.ms/AppsMigrationFeedback)) を行って、アプリを Azure AD に移行した体験についてフィードバック (移行の妨げ、ツール/ガイダンスの必要性、オンプレミスの IDP を保持する理由など) を集めます。 
+アプリケーションのアクセスと認証を Azure Active Directory (Azure AD) に移行するために役立つリソース。 この簡単なアンケート (https://aka.ms/AppsMigrationFeedback) ) を行って、アプリを Azure AD に移行した体験についてフィードバック (移行の妨げ、ツール/ガイダンスの必要性、オンプレミスの IDP を保持する理由など) を集めます。 
 
 | Resource  | 説明  |
 |:-----------|:-------------|

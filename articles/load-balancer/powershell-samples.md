@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure PowerShell のサンプル
 services: virtual-network
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/10/2018
-ms.author: kumud
-ms.openlocfilehash: cf4e0346a93961df14afe48ec767e383f92eab3b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: cf984efdeb8c65f4f9d639e331c2dc07e2910479
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60507557"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274075"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>Load Balancer に関する Azure PowerShell のサンプル
 

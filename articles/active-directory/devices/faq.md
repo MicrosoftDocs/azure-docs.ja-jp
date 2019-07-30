@@ -2,32 +2,27 @@
 title: Azure Active Directory デバイス管理の FAQ | Microsoft Docs
 description: Azure Active Directory デバイス管理の FAQ。
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/22/2019
+ms.topic: troubleshooting
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af10596fb1ddf4a4f9eba2b8265eb77221a19f4c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 8802f9e5c84078725675d961ada7f8183c91c0ec
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996069"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481750"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
-### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか?  または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
+### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
 
-**A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、**[ユーザー デバイス]** には表示されません。
+**A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、 **[ユーザー デバイス]** には表示されません。
 Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
 
 **[ユーザー デバイス]** には、次のデバイスだけが表示されます。
@@ -61,31 +56,26 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 オンプレミスの Active Directory ドメインに参加済みの Windows 10 および Windows Server 2016 の参加状態をクリアするには、次の手順を実行します。
 
-1.  管理者としてコマンド プロンプトを開きます。
-
-2.  「 `dsregcmd.exe /debug /leave` 」を入力します。
-
-3.  サインアウトしてからサインインして、デバイスを Azure AD に再登録するスケジュール済みタスクをトリガーします。 
+1. 管理者としてコマンド プロンプトを開きます。
+1. 「 `dsregcmd.exe /debug /leave` 」を入力します。
+1. サインアウトしてからサインインして、デバイスを Azure AD に再登録するスケジュール済みタスクをトリガーします。 
 
 オンプレミスの Active Directory ドメインに参加済みのダウンレベルの Windows OS バージョンの場合は、次の手順を実行します。
 
-1.  管理者としてコマンド プロンプトを開きます。
-2.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` 」を入力します。
-3.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` 」を入力します。
+1. 管理者としてコマンド プロンプトを開きます。
+1. 「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` 」を入力します。
+1. 「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` 」を入力します。
 
 ---
 
 ### <a name="q-why-do-i-see-duplicate-device-entries-in-the-azure-portal"></a>Q:Azure portal に重複するデバイス エントリが表示されるのはなぜですか?
 
-**A:** 
+**A:**
 
--   Windows 10 および Windows Server 2016 の場合、同じデバイスの参加を解除し、再度参加させる操作を繰り返すと、エントリの重複が発生することがあります。 
-
--   **[職場または学校アカウントを追加]** を使用する各 Windows ユーザーは、同じデバイス名で新しいデバイス レコードを作成します。
-
--   オンプレミスの Azure Directory ドメインに参加しているダウンレベルの Windows OS バージョンでは、自動登録によって、デバイスにサインインするドメイン ユーザーごとに、同じデバイス名で新しいデバイス レコードが作成されます。 
-
--   Azure AD 参加済みコンピューターをワイプして再インストールし、同じ名前で再度参加させると、同じデバイス名で別のレコードとして表示されます。
+- Windows 10 および Windows Server 2016 の場合、同じデバイスの参加を解除し、再度参加させる操作を繰り返すと、エントリの重複が発生することがあります。 
+- **[職場または学校アカウントを追加]** を使用する各 Windows ユーザーは、同じデバイス名で新しいデバイス レコードを作成します。
+- オンプレミスの Azure Directory ドメインに参加しているダウンレベルの Windows OS バージョンでは、自動登録によって、デバイスにサインインするドメイン ユーザーごとに、同じデバイス名で新しいデバイス レコードが作成されます。 
+- Azure AD 参加済みコンピューターをワイプして再インストールし、同じ名前で再度参加させると、同じデバイス名で別のレコードとして表示されます。
 
 ---
 
@@ -108,10 +98,9 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>Q:デバイス上の Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?
 
-**A:**  
+**A:** 
 - ハイブリッド Azure AD 参加済みデバイスの場合は、必ず自動登録をオフにしてください。 その後、スケジュールされたタスクはデバイスを再登録しません。 次に、管理者としてコマンド プロンプトを開き、「`dsregcmd.exe /debug /leave`」と入力します。 または、このコマンドを複数のデバイスに対するスクリプトとして実行し、一括で参加を解除します。
-
-- 純粋な Azure AD 参加済みデバイスの場合、オフラインのローカル管理者アカウントを持っているか、作成する必要があります。 Azure AD ユーザーの資格情報ではサインインできません。 次に、**[設定]** > **[アカウント]** > **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、**[切断]** を選択します。 画面の指示に従い、入力を求められたらローカル管理者の資格情報を入力します。 デバイスを再起動して、参加の解除プロセスを完了します。
+- 純粋な Azure AD 参加済みデバイスの場合、オフラインのローカル管理者アカウントを持っているか、作成する必要があります。 Azure AD ユーザーの資格情報ではサインインできません。 次に、 **[設定]**  >  **[アカウント]**  >  **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、 **[切断]** を選択します。 画面の指示に従い、入力を求められたらローカル管理者の資格情報を入力します。 デバイスを再起動して、参加の解除プロセスを完了します。
 
 ---
 
@@ -119,13 +108,13 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 **A:** はい。 Windows には、以前にサインインしたユーザーがネットワークに接続していなくてもすばやくデスクトップにアクセスできるようにする、キャッシュされたユーザー名とパスワードの機能があります。 
 
-Azure AD でデバイスが削除または無効化されても、Windows デバイスにはわかりません。 そのため、以前にサインインしたユーザーは、引き続きキャッシュされたユーザー名とパスワードを使ってデスクトップにアクセスします。 しかし、デバイスは削除または無効化されているため、ユーザーはデバイス ベースの条件付きアクセスによって保護されているリソースにアクセスできません。 
+Azure AD でデバイスが削除または無効化されても、Windows デバイスにはわかりません。 そのため、以前にサインインしたユーザーは、引き続きキャッシュされたユーザー名とパスワードを使ってデスクトップにアクセスします。 しかし、デバイスは削除または無効化されているため、ユーザーはデバイスベースの条件付きアクセスによって保護されているリソースにアクセスできません。 
 
 以前にサインインしたことのないユーザーは、デバイスにはアクセスできません。 そのようなユーザーには、キャッシュされたユーザー名とパスワードが有効になっていません。 
 
 ---
 
-### <a name="q-can-disabled-or-deleted-users-sign-in-to-azure-ad-joined-devices"></a>Q:無効化または削除されたユーザーは、Azure AD 参加済みデバイスにサインインできますか?
+### <a name="q-can-a-disabled-or-deleted-user-sign-in-to-an-azure-ad-joined-devices"></a>Q:無効にされたか削除されたユーザーは、Azure AD 参加済みデバイスにサインインできますか?
 
 **A:** はい、ただし限られた期間だけです。 Azure AD でユーザーが削除または無効化されても、Windows デバイスはそのことをすぐには認識しません。 そのため、以前にサインインしたユーザーは、キャッシュされたユーザー名とパスワードを使ってデスクトップにアクセスできます。 
 
@@ -166,7 +155,6 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 この動作は、
 
 - Azure AD 参加済みデバイスと Azure AD 登録済みデバイスに適用できますが、ハイブリッド Azure AD 参加済みデバイスには適用できません。
-
 - そのデバイスにサインインするその他のユーザーには適用されません。 そのため、そのデバイスにアクセスする他のすべてのユーザーは、Multi-Factor Authentication で必要な情報を取得します。 その後、Multi-Factor Authentication を必要とするアプリケーションにアクセスできるようになります。
 
 ---
@@ -176,11 +164,8 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 **A:** このシナリオの一般的な理由は次のとおりです。
 
 - ユーザーの資格情報が有効ではなくなっています。
-
 - コンピューターが Azure Active Directory と通信できません。 ネットワーク接続の問題を確認してください。
-
 - フェデレーション サインインでは、有効になっていてアクセスできる WS-Trust エンドポイントがフェデレーション サーバーでサポートされている必要があります。 
-
 - パススルー認証が有効になっています。 そのため、サインインするときに一時パスワードを変更する必要があります。
 
 ---
@@ -209,7 +194,6 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 ---
 
-
 ## <a name="hybrid-azure-ad-join-faq"></a>Hybrid Azure AD Join の FAQ
 
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>Q:Hybrid Azure AD Join のエラーの診断に関するトラブルシューティング情報はどこにありますか?
@@ -217,15 +201,13 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 **A:** トラブルシューティング情報については、次の記事をご覧ください。
 
 - [Windows 10 と Windows Server 2016 のハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
-
 - [ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
  
 ### <a name="q-why-do-i-see-a-duplicate-azure-ad-registered-record-for-my-windows-10-hybrid-azure-ad-joined-device-in-the-azure-ad-devices-list"></a>Q:ハイブリッド Azure AD 参加済みの Windows 10 デバイスが、Azure AD デバイスの一覧に Azure AD 登録済みデバイスとして重複して表示されるのはなぜですか?
 
-**A:** ユーザーがドメイン参加済みデバイス上のアプリに各自のアカウントを追加すると、**[Add account to Windows?]\(アカウントを Windows に追加しますか?\)** というプロンプトが表示されることがあります。 このプロンプトで **[はい]** と入力すると、デバイスが Azure AD に登録されます。 信頼の種類は Azure AD 登録済みとしてマークされます。 ご自身の組織で Hybrid Azure AD Join を有効にすると、デバイスは、ハイブリッド Azure AD 参加済みになります。 それにより、同じデバイスに対して、2 つのデバイスの状態が表示されます。 
+**A:** ユーザーがドメイン参加済みデバイス上のアプリに各自のアカウントを追加すると、 **[Add account to Windows?]\(アカウントを Windows に追加しますか?\)** というプロンプトが表示されることがあります。 このプロンプトで **[はい]** と入力すると、デバイスが Azure AD に登録されます。 信頼の種類は Azure AD 登録済みとしてマークされます。 ご自身の組織で Hybrid Azure AD Join を有効にすると、デバイスは、ハイブリッド Azure AD 参加済みになります。 それにより、同じデバイスに対して、2 つのデバイスの状態が表示されます。 
 
-Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されます。 したがって、すべての認証と条件付きアクセス評価では、デバイスはハイブリッド Azure AD 参加とみなされます。 Azure AD ポータルから Azure AD 登録済みデバイスのレコードを安全に削除できます。 [Windows 10 コンピューターでこの二重状態を回避またはクリーンアップする](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)方法を確認してください。 
-
+Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されます。 したがって、すべての認証と条件付きアクセス評価では、デバイスはハイブリッド Azure AD 参加済みと見なされます。 Azure AD ポータルから Azure AD 登録済みデバイスのレコードを安全に削除できます。 [Windows 10 コンピューターでこの二重状態を回避またはクリーンアップする](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)方法を確認してください。 
 
 ---
 
@@ -237,16 +219,15 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>Q:Windows 10 のハイブリッド Azure AD 参加済みデバイスには、クラウド リソースにアクセスするためのドメイン コントローラーへの通信経路が必要ですか?
 
-**A:** ユーザーのパスワードが変更された場合を除いて、通常は必要ありません。 Windows 10 のハイブリッド Azure AD の参加が完了した後に、ユーザーが少なくとも 1 回サインインすると、そのデバイスにはクラウド リソースにアクセスするためのドメイン コントローラーへの通信経路は不要になります。 Windows 10 では、インターネット接続があればどこからでも Azure AD アプリケーションへのシングル サインオンが実現できますが、パスワードが変更された場合は例外です。 Windows Hello for Business でサインインしているユーザーは、パスワード変更後、ドメイン コントローラーへの通信経路がなくても、引き続き Azure AD アプリケーションへのシングル サインオンを利用できます。 
+**A:** ユーザーのパスワードが変更された場合を除いて、必要ありません。 Windows 10 のハイブリッド Azure AD の参加が完了した後に、ユーザーが少なくとも 1 回サインインすると、そのデバイスにはクラウド リソースにアクセスするためのドメイン コントローラーへの通信経路は不要になります。 Windows 10 では、インターネット接続があればどこからでも Azure AD アプリケーションへのシングル サインオンが実現できますが、パスワードが変更された場合は例外です。 Windows Hello for Business でサインインしているユーザーは、パスワード変更後、ドメイン コントローラーへの通信経路がなくても、引き続き Azure AD アプリケーションへのシングル サインオンを利用できます。 
 
 ---
 
 ### <a name="q-what-happens-if-a-user-changes-their-password-and-tries-to-login-to-their-windows-10-hybrid-azure-ad-joined-device-outside-the-corporate-network"></a>Q:ユーザーがパスワードを変更し、企業ネットワークの外部から Windows 10 のハイブリッド Azure AD 参加済みデバイスへログインしようとするとどうなりますか?
 
-**A:** パスワードを企業ネットワークの外部で (たとえば、Azure AD SSPR を使用して) 変更した場合、新しいパスワードを使用したユーザー ログオンは失敗します。 ハイブリッド Azure AD 参加済みデバイスの場合、オンプレミスの Active Directory がプライマリ機関です。 デバイスがドメイン コントローラーに対する通信経路を持たない場合、そのデバイスは新しいパスワードを検証できません。 このため、新しいパスワードでデバイスにサインインするためには、ユーザーはドメイン コントローラーとの接続を (VPN 経由または企業ネットワーク内のいずれかから) 確立する必要があります。 そうしないと、Windows でのキャッシュされたログオンの機能により、古いパスワードでしかサインインできません。 ただし、古いパスワードはトークン要求時に Azure AD によって無効にされるため、シングル サインオンができなくなり、デバイス ベースの条件付きアクセス ポリシーが失敗します。 この問題は、Windows Hello for Business を使用する場合は生じません。 
+**A:** パスワードを企業ネットワークの外部で (たとえば、Azure AD SSPR を使用して) 変更した場合、新しいパスワードを使用したユーザー サインインは失敗します。 ハイブリッド Azure AD 参加済みデバイスの場合、オンプレミスの Active Directory がプライマリ機関です。 デバイスがドメイン コントローラーに対する通信経路を持たない場合、そのデバイスは新しいパスワードを検証できません。 このため、新しいパスワードでデバイスにサインインするためには、ユーザーはドメイン コントローラーとの接続を (VPN 経由または企業ネットワーク内のいずれかから) 確立する必要があります。 そうしないと、Windows でのキャッシュされたサインインの機能により、古いパスワードでしかサインインできません。 ただし、古いパスワードはトークン要求時に Azure AD によって無効にされるため、シングル サインオンができなくなり、デバイスベースの条件付きアクセス ポリシーが失敗します。 この問題は、Windows Hello for Business を使用する場合は生じません。 
 
 ---
-
 
 ## <a name="azure-ad-register-faq"></a>Azure AD の登録の FAQ
 
@@ -259,11 +240,15 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 **A:** 次の手順を実行します。
 
 1.  [コンプライアンス ポリシーを作成する](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-2.  [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
+1.  [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
 
 **解説:**
 
 - 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](../conditional-access/technical-reference.md#client-apps-condition) が必要です。 
-
 - 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
 
+## <a name="next-steps"></a>次の手順
+
+- [Azure AD 登録済みデバイス](concept-azure-ad-register.md)について学習する
+- [Azure AD 参加済みデバイス](concept-azure-ad-join.md)について学習する
+- [ハイブリッド Azure AD 参加済みデバイス](concept-azure-ad-join-hybrid.md)について学習する

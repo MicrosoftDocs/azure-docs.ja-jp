@@ -1,8 +1,6 @@
 ---
-title: Microsoft 顧客契約の請求先アカウントの設定 - Azure | Microsoft Docs
+title: Microsoft 顧客契約の課金アカウントの設定 - Azure
 description: Microsoft 顧客契約の請求先アカウントの設定方法について説明します。
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,23 +10,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 947bfe85d94a5d11eeb54bd6b24c4c515af024d4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919149"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490693"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
-Enterprise Agreement 加入契約の有効期限が切れているか、期限切れが近い場合は、Microsoft 顧客契約に署名して加入契約を更新できます。 更新の手順は次のとおりです。
+Enterprise Agreement 加入契約の有効期限が切れているか、期限切れが近い場合は、Microsoft 顧客契約に署名して加入契約を更新できます。 この記事では、セットアップ後の既存の請求先に対する変更について説明し、新しい請求先アカウントのセットアップ手順について説明します。 更新の手順は次のとおりです。
 
 1. 新しい Microsoft 顧客契約に同意します。 Microsoft フィールド担当に問い合わせて、新しい契約の詳細を理解し、同意します。
 2. 新しい Microsoft 顧客契約用に作成された新しい請求先アカウントを設定します。
-
-この記事では、セットアップ後の既存の請求先に対する変更について説明し、新しい請求先アカウントのセットアップ手順について説明します。
 
 請求先アカウント設定を完了するには、Azure サブスクリプションの請求先を Enterprise Agreement 加入契約から新しいアカウントに切り替える必要があります。 セットアップは、サブスクリプションで実行されている Azure サービスに影響しません。 ただし、サブスクリプションに対する課金を管理する方法は変更されます。
 
@@ -45,7 +41,7 @@ Enterprise Agreement 加入契約の有効期限が切れているか、期限�
 - **課金階層に対する変更を確認する**
   - 新しい請求先アカウントは、Enterprise Agreement 加入契約とは異なる方法で構成されます。 [新規アカウントの課金階層に対する変更を確認します](#understand-changes-to-your-billing-hierarchy)。
 - **課金管理者のアクセス権に対する変更を確認する**
-  - Enterprise Agreement 加入契約の管理者は、新しいアカウントの課金スコープへのアクセス権を取得します。[アクセス権に対する変更を確認](#understand-changes-to-your-billing-administrators-access)します。
+  - Enterprise Agreement 加入契約の管理者は、新しいアカウントの課金スコープへのアクセス権を取得します。[アクセス権に対する変更を確認](#changes-to-billing-administrator-access)します。
 - **新しいアカウントで置き換えられる Enterprise Agreement 機能を表示する**
   - 新しいアカウントの機能で置き換えられる Enterprise Agreement 加入契約の機能を表示します。
 - **よく寄せられる質問に対する回答を表示する**
@@ -55,7 +51,7 @@ Enterprise Agreement 加入契約の有効期限が切れているか、期限�
 
 セットアップを完了するには、以下のアクセス権が必要です。
 
-- Microsoft 顧客契約に署名したときに作成された課金プロファイルの所有者。 課金プロファイルについて詳しくは、「[課金プロファイルを理解する」](billing-mca-overview.md#understand-billing-profiles)をご覧ください。
+- Microsoft 顧客契約に署名したときに作成された課金プロファイルの所有者。 課金プロファイルについて詳しくは、「[課金プロファイルを理解する」](billing-mca-overview.md#billing-profiles)をご覧ください。
 
 - 更新される加入契約のエンタープライズ管理者。
 
@@ -87,12 +83,12 @@ Microsoft 顧客契約に署名した組織内のユーザーが課金プロフ�
 
 ![ea-mca-post-transition-hierarchy の画像](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
 
-1. 請求先アカウントを使用して、Microsoft 顧客契約の課金を管理します。 請求先アカウントについて詳しくは、「[請求先アカウントを理解する](billing-mca-overview.md#understand-billing-account)」をご覧ください。
-2. Enterprise Agreement 加入契約の場合と同様に、課金プロファイルを使用して組織の課金を管理します。 エンタープライズ管理者が課金プロファイルの所有者になります。 課金プロファイルについて詳しくは、「[課金プロファイルを理解する」](billing-mca-overview.md#understand-billing-profiles)をご覧ください。
-3. Enterprise Agreement 加入契約の部署と同様に、請求書セクションを使用して、ニーズに基づいてコストを整理します。 部署が請求書セクションになり、部署の管理者がそれぞれの請求書セクションの所有者になります。 請求書セクションについて詳しくは、「[請求書セクションを理解する](billing-mca-overview.md#understand-invoice-sections)」をご覧ください。
+1. 請求先アカウントを使用して、Microsoft 顧客契約の課金を管理します。 請求先アカウントについて詳しくは、「[請求先アカウントを理解する](billing-mca-overview.md#your-billing-account)」をご覧ください。
+2. Enterprise Agreement 加入契約の場合と同様に、課金プロファイルを使用して組織の課金を管理します。 エンタープライズ管理者が課金プロファイルの所有者になります。 課金プロファイルについて詳しくは、「[課金プロファイルを理解する」](billing-mca-overview.md#billing-profiles)をご覧ください。
+3. Enterprise Agreement 加入契約の部署と同様に、請求書セクションを使用して、ニーズに基づいてコストを整理します。 部署が請求書セクションになり、部署の管理者がそれぞれの請求書セクションの所有者になります。 請求書セクションについて詳しくは、「[請求書セクションを理解する](billing-mca-overview.md#invoice-sections)」をご覧ください。
 4. Enterprise Agreement で作成されたアカウントは、新しい請求先アカウントではサポートされません。 アカウントのサブスクリプションは、各部署の請求書セクションに属します。 アカウント オーナーは、各自の請求書セクションのサブスクリプションを作成および管理できます。
 
-## <a name="understand-changes-to-your-billing-administrators-access"></a>課金管理者のアクセス権に対する変更を確認する
+## <a name="changes-to-billing-administrator-access"></a>課金管理者のアクセス権を変更する
 
 アクセス権に応じて、Enterprise Agreement 加入契約の課金管理者は、新しいアカウントの課金スコープへのアクセス権を取得します。 次の表では、セットアップ中のアクセスの変化について説明します。
 
@@ -110,7 +106,7 @@ Azure Active Directory テナントは、Microsoft 顧客契約の署名時に�
 
 ユーザーを招待すると、そのユーザーはテナントにゲスト ユーザーとして追加され、請求先アカウントにアクセスできます。 ユーザーを招待するには、テナントに対してゲスト アクセスをオンする必要があります。 詳しくは、「[Azure Active Directory 内のゲスト アクセスの制御](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)」をご覧ください。 ゲスト アクセスがオフの場合は、テナントの全体管理者に連絡してオンにしてください。 <!-- Todo - How can they find their global administrator -->
 
-## <a name="view-features-replaced-by-the-new-billing-account"></a>新しい請求先アカウントで置き換えられる機能を確認する
+## <a name="view-replaced-features"></a>置き換えられた機能を表示する
 
 以下の Enterprise Agreement 機能は、Microsoft 顧客契約の請求先アカウントの新機能に置き換えられます。
 
@@ -197,7 +193,7 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
    ![切り替え状態を示すスクリーンショット](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
 
-## <a name="validate-the-billing-account-is-set-up-properly"></a>請求先アカウントが正しく設定されていることを検証する
+## <a name="validate-billing-account-set-up"></a>課金アカウントのセットアップを検証する
 
  以下を検証して、新しい請求先アカウントが正しく設定することを確認します。
 
@@ -205,7 +201,7 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[コストの管理と請求]** で検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -221,7 +217,7 @@ Enterprise Agreement 加入契約から新しい請求先アカウントに切�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[コストの管理と請求]** で検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -241,7 +237,7 @@ Enterprise Agreement 加入契約から新しい請求先アカウントに移�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[コストの管理と請求]** で検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -257,7 +253,7 @@ Enterprise Agreement 加入契約から新しい請求先アカウントに移�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[コストの管理と請求]** で検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)。
 

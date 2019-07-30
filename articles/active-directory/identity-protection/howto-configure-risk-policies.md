@@ -2,30 +2,23 @@
 title: Azure Active Directory Identity Protection (更新版) でのリスク ポリシーの構成方法 | Microsoft Docs
 description: Azure Active Directory Identity Protection (更新版) でのリスク ポリシーの構成方法。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9ce4e2958978de9339f4340755e3740730025a5f
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699035"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334030"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>方法:Azure Active Directory Identity Protection (更新版) でのリスク ポリシーの構成
-
 
 Azure AD は、ID が侵害されている可能性の指標となるリスク イベントを検出します。 リスク ポリシーを構成することにより、以下のように検出結果に対して自動応答を定義できます。
 
@@ -33,7 +26,6 @@ Azure AD は、ID が侵害されている可能性の指標となるリスク �
 - ユーザー リスク ポリシーにより、あるユーザーについて一定期間にわたって検出されたすべてのアクティブ ユーザー リスクに対する応答を構成できます。  
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
-
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>サインイン リスク ポリシーとは
 
@@ -49,27 +41,25 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
    
 ![サインインのリスク ポリシー](./media/howto-configure-risk-policies/1014.png "Sign-in risk policy")
 
-
 ## <a name="sign-in-risk-policy-settings"></a>サインイン リスク ポリシーの設定
 
 サインイン リスク ポリシーを構成する場合は、次を設定する必要があります。
 
 - ポリシーの適用先のユーザーとグループ:
 
-    ![ユーザーとグループ](./media/howto-configure-risk-policies/11.png)
+   ![ユーザーとグループ](./media/howto-configure-risk-policies/11.png)
 
 - ポリシーをトリガーするサインイン リスク レベル:
 
-    ![サインインのリスク レベル](./media/howto-configure-risk-policies/12.png)
+   ![サインインのリスク レベル](./media/howto-configure-risk-policies/12.png)
 
 - サインイン リスク レベルが満たされたときに適用されるアクセスの種類:  
 
-    ![Access](./media/howto-configure-risk-policies/13.png)
+   ![Access](./media/howto-configure-risk-policies/13.png)
 
 - ポリシーの状態:
 
-    ![ポリシーを適用する](./media/howto-configure-risk-policies/14.png)
-
+   ![ポリシーを適用する](./media/howto-configure-risk-policies/14.png)
 
 ポリシーの構成ダイアログには、再構成の影響を見積もるためのオプションが用意されています。
 
@@ -86,7 +76,6 @@ MFA を要求するようにサインイン リスク セキュリティ ポリ�
 リスクの高いサインインに対して MFA を要求する場合は、次のことを行う必要があります。
 
 1. 影響を受けるユーザーの多要素認証の登録ポリシーを有効にします。
-
 2. 影響を受けるユーザーに対して、リスクのないセッションにログインして MFA 登録を実行するように求めます。
 
 上記の手順を完了すると、リスクの高いサインインには多要素認証が必要になります。
@@ -94,23 +83,13 @@ MFA を要求するようにサインイン リスク セキュリティ ポリ�
 サインイン リスク ポリシーは次のように使用されます。
 
 - 最新の認証を使用するすべてのブラウザー トラフィックとサインインに適用されます。
-
 - ADFS などのフェデレーション IDP で WS-Trust エンドポイントを無効にすることによって従来のセキュリティ プロトコルを使用するアプリケーションには適用されません。
-
 
 関連するユーザー エクスペリエンスの概要については、以下を参照してください。
 
 * [リスクの高いサインインの復旧](flows.md#risky-sign-in-recovery)
 * [ブロックされたリスクの高いサインイン](flows.md#risky-sign-in-blocked)  
 * [Azure AD Identity Protection を使用したサインイン エクスペリエンス](flows.md)  
-
-
-
-
-
-
-
-
 
 ## <a name="what-is-a-user-risk-policy"></a>ユーザー リスク ポリシーとは
 
@@ -122,14 +101,11 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 
 ユーザー リスク ポリシーは、特定のユーザー リスク レベルに対して構成できる自動対応です。 ユーザー リスク ポリシーでは、リソースへのアクセスをブロックするか、またはユーザー アカウントをクリーンな状態に戻すにはパスワード変更を要求するようにできます。
 
-
 ## <a name="how-do-i-access-the-user-risk-policy"></a>ユーザー リスク ポリシーにどのようにアクセスするか
    
 ユーザー リスク ポリシーは、[[Azure AD Identity Protection]](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) ぺージの **[構成]** セクションにあります。
    
 ![ユーザー リスクのポリシー](./media/howto-configure-risk-policies/11014.png)
-
-
 
 ## <a name="user-risk-policy-settings"></a>ユーザー リスク ポリシーの設定
 
@@ -137,19 +113,19 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 
 - ポリシーの適用先のユーザーとグループ:
 
-    ![ユーザーとグループ](./media/howto-configure-risk-policies/111.png)
+   ![ユーザーとグループ](./media/howto-configure-risk-policies/111.png)
 
 - ポリシーをトリガーするサインイン リスク レベル:
 
-    ![ユーザーのリスク レベル](./media/howto-configure-risk-policies/112.png)
+   ![ユーザーのリスク レベル](./media/howto-configure-risk-policies/112.png)
 
 - サインイン リスク レベルが満たされたときに適用されるアクセスの種類:  
 
-    ![Access](./media/howto-configure-risk-policies/113.png)
+   ![Access](./media/howto-configure-risk-policies/113.png)
 
 - ポリシーの状態:
 
-    ![ポリシーを適用する](./media/howto-configure-risk-policies/114.png)
+   ![ポリシーを適用する](./media/howto-configure-risk-policies/114.png)
 
 ポリシーの構成ダイアログには、構成の影響を見積もるためのオプションが用意されています。
 
@@ -161,36 +137,10 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 
 ![ブロック](./media/howto-configure-risk-policies/116.png)
 
-
 サインインをブロックすると、以下のことが行われます。
 
 * 影響を受けるユーザーに対して新しいユーザー リスク イベントが生成されなくなります。
 * 管理者は、ユーザーの ID に影響を与えるリスク イベントを手動で修復して、セキュリティで保護された状態に復元できます。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
@@ -201,22 +151,13 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 ポリシーを設定するときは次のようにします。
 
 - 多要素認証を使用しない/できないユーザーを除外します。
-
 - ポリシーを有効にするのが実際的でないロケールのユーザー (ヘルプデスクにアクセスできないユーザーなど) を除外します。
-
 - 多数の誤検知を生成する可能性があるユーザー (開発者、セキュリティ アナリスト) を除外します。
-
-- 初期のポリシー展開中、またはエンド ユーザーに表示されるチャレンジを最小限に抑える必要がある場合は、**[高]** しきい値を使用します。
-
+- 初期のポリシー展開中、またはエンド ユーザーに表示されるチャレンジを最小限に抑える必要がある場合は、 **[高]** しきい値を使用します。
 - 組織のセキュリティを強化する必要がある場合は、**低**しきい値を使用します。 **低** しきい値を選択すると、追加のユーザー サインイン チャレンジが導入されますが、セキュリティは強化されます。
 
 ほとんどの組織に対する既定の設定として、 **中** しきい値の規則を構成し、使いやすさとセキュリティのバランスを取ることをお勧めします。
 
-
-
-
-
 ## <a name="next-steps"></a>次の手順
 
  [Channel 9:Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-

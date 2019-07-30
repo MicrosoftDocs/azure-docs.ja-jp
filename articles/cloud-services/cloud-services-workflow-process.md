@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 7c8459a6694663a49203b6ec21a760d3e6bd60c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7b3146ffa0f4b828f1a28d3bc51b26db194244c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480764"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249499"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure クラシック VM のアーキテクチャのワークフロー 
 この記事では、仮想マシンなどの Azure リソースをデプロイまたは更新するときに発生するワークフロー プロセスの概要を示します。 
@@ -84,7 +84,7 @@ ms.locfileid: "60480764"
 5. WindowsAzureGuestAgent によって、ゲスト OS (ファイアウォール、ACL、LocalStorage など) が設定され、新しい XML 構成ファイルが c:\Config にコピーされてから、WaHostBootstrapper プロセスが開始されます。
 6. 完全な IIS Web ロールの場合、WaHostBootstrapper によって IISConfigurator が開始され、Web ロールの既存の AppPool を IIS から削除するように指示されます。
 7. WaHostBootstrapper によって、**スタートアップ** タスクが E:\RoleModel.xml から読み取られて、スタートアップ タスクの実行が開始されます。 WaHostBootstrapper は、すべての簡易スタートアップ タスクが完了して、"成功" メッセージが返されるまで待機します。
-8. 完全な IIS Web ロールの場合、WaHostBootstrapper は、IIS AppPool を構成するよう IISConfigurator に指示し、サイトに `E:\Sitesroot\<index>` を示します。`<index>` は、サービスに対して定義されている <Sites> 要素の数に対する 0 から始まるインデックスです。
+8. 完全な IIS Web ロールの場合、WaHostBootstrapper は、IIS AppPool を構成するよう IISConfigurator に指示し、サイトに `E:\Sitesroot\<index>` を示します。`<index>` は、サービスに対して定義されている `<Sites>` 要素の数に対する 0 から始まるインデックスです。
 9. WaHostBootstrapper によって、ロールの種類に応じたホスト プロセスが開始されます。
     1. **worker ロール**: WaWorkerHost.exe が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。それが終了した後、WaHostBootstrapper によって Run() メソッドの実行が開始されるのと同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます (InputEndpoints が定義されている場合)。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
     1. **SDK 1.2 HWC Web ロール**: WaWebHost が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、WaHostBootstrapper によって Run() メソッドの実行が開始されるのと同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます。 WaWebHost によって、ウォームアップ要求 (GET /do.rd_runtime_init) が発行されます。 すべての Web 要求は、WaWebHost.exe に送信されます。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
@@ -102,27 +102,27 @@ ms.locfileid: "60480764"
  
 **WaHostBootstrapper**
 
-C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log
+`C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
  
 **WaWebHost**
 
-C:\Resources\Directory\<guid>.<role>\WaWebHost.log
+`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
-C:\Resources\Directory\<deploymentID>.<role>\WaIISHost.log
+`C:\Resources\Directory\<deploymentID>.<role>\WaIISHost.log`
  
 **IISConfigurator**
 
-C:\Resources\Directory\<deploymentID>.<role>\IISConfigurator.log
+`C:\Resources\Directory\<deploymentID>.<role>\IISConfigurator.log`
  
 **IIS ログ**
 
-C:\Resources\Directory\<guid>.<role>.DiagnosticStore\LogFiles\W3SVC1
+`C:\Resources\Directory\<guid>.<role>.DiagnosticStore\LogFiles\W3SVC1`
  
 **Windows イベント ログ**
 
-D:\Windows\System32\Winevt\Logs
+`D:\Windows\System32\Winevt\Logs`
  
 
 

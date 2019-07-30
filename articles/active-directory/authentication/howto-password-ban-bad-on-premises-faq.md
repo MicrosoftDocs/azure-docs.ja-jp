@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd117b79c2d103225e8f1f29b63eb6ae341031d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917657"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702891"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 
@@ -26,7 +26,7 @@ ms.locfileid: "64917657"
 
 このトピックに関する Microsoft の現在のガイダンスについては、次のリンクを参照してください。
 
-[Microsoft のパスワードのガイダンス](https://www.microsoft.com/en-us/research/publication/password-guidance)
+[Microsoft のパスワードのガイダンス](https://www.microsoft.com/research/publication/password-guidance)
 
 **Q:オンプレミスの Azure AD パスワード保護はパブリックでないクラウドでサポートされますか?**
 
@@ -43,6 +43,10 @@ ms.locfileid: "64917657"
 パスワードの設定 (パスワードのリセットとも呼ばれます) は、たとえば Active Directory ユーザーとコンピューターの管理ツールを使用して、管理者がアカウントのパスワードを新しいパスワードに置き換える場合のアクションです。 この操作には高いレベルの特権 (通常はドメイン管理者) が必要であり、通常、操作を実行する担当者は古いパスワードを知りません。 ヘルプ デスクのシナリオでこのアクションがよく行われます。たとえば、パスワードを忘れたユーザーを支援する場合などです。 また、パスワードを指定して新しいユーザー アカウントを初めて作成するときにもパスワードの設定イベントが発生します。
 
 パスワード検証ポリシーは、実行されているのがパスワードの変更か設定かに関係なく同じように動作します。 Azure AD パスワード保護 DC エージェント サービスは、パスワードの変更または設定操作が行われたかどうかをユーザーに通知するために、さまざまなイベントをログに記録します。  「[Azure AD パスワード保護の監視とログ記録](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)」をご覧ください。
+
+**Q:Active Directory ユーザーとコンピューター管理スナップインを利用して弱いパスワードを設定しようとすると、重複パスワード拒否イベントがログに記録されるのはなぜですか。**
+
+Active Directory ユーザーとコンピューター管理スナップインではまず、Kerberos プロトコルを利用して新しいパスワードを設定しようとします。 エラーが発生すると、このスナップインでは次に、レガシ (SAM RPC) プロトコル (使用される特定のプロトコルは重要ではありません) を利用してパスワードを設定しようとします。 新しいパスワードが Azure AD パスワード保護で弱いと見なされると、その結果、2 セットのパスワード リセット拒否イベントがログに記録されます。
 
 **Q:その他のパスワード フィルター ベースの製品とサイド バイ サイドで Azure AD パスワード保護をインストールすることはサポートされていますか?**
 

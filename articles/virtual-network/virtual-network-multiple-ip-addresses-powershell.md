@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: kumud;annahar
-ms.openlocfilehash: f4ecc9a0b41cf3b287f7601101de3aa9d077b0d5
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: kumud
+ms.reviewer: annahar
+ms.openlocfilehash: e9bad6ad614855c543ee6d75d4e6f4dc8e2255aa
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64730429"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876220"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる
 

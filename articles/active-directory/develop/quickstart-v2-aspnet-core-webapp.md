@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4723b224d61b2ccc2b563150befa5ea2d33453ad
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190862"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335617"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート: ASP.NET Core Web アプリに Microsoft サインインを追加する
 
@@ -41,7 +41,7 @@ ms.locfileid: "65190862"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
 > 1. [Azure portal の [アプリの登録]](https://aka.ms/aspnetcore2-1-aad-quickstart-v2) に移動します。
-> 1. アプリケーションの名前を入力し、**[登録]** を選択します。
+> 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
@@ -55,9 +55,9 @@ ms.locfileid: "65190862"
 > 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 >    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `AspNetCore-Quickstart`)。
->    - **[リダイレクト URI]** で `https://localhost:44321/` を追加し、**[登録]** を選択します。
+>    - **[リダイレクト URI]** で `https://localhost:44321/` を追加し、 **[登録]** を選択します。
 > 1. **[認証]** メニューを選択し、次の情報を追加します。
->    - **[リダイレクト URI]** で `https://localhost:44321/signin-oidc` を追加し、**[保存]** を選択します。
+>    - **[リダイレクト URI]** で `https://localhost:44321/signin-oidc` を追加し、 **[保存]** を選択します。
 >    - **[詳細設定]** セクションの **[ログアウト URL]** を「`https://localhost:44321/signout-oidc`」に設定します。
 >    - **[暗黙的な許可]** の **[ID トークン]** チェック ボックスをオンにします。
 >    - **[保存]** を選択します。
@@ -86,6 +86,10 @@ ms.locfileid: "65190862"
     "TenantId": "Enter_the_Tenant_Info_Here"
     ```
 
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > このクイックスタートでは、Enter_the_Supported_Account_Info_Here をサポートしています。
+
 > [!div renderon="docs"]
 > 各値の説明:
 > - `Enter_the_Application_Id_here` -Azure portal に登録されているアプリケーションの "**アプリケーション (クライアント) ID**"。 "**アプリケーション (クライアント) ID**" は、アプリの **[概要]** ページで確認できます。
@@ -95,7 +99,7 @@ ms.locfileid: "65190862"
 >   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
 >
 > > [!TIP]
-> > **[アプリケーション (クライアント) ID]**、**[ディレクトリ (テナント) ID]**、**[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
+> > **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -163,3 +167,8 @@ public void ConfigureServices(IServiceCollection services)
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web アプリのチュートリアル](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+
+Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
+
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55b5207e4c05712b4d96d4272f9ae193cc4c1720
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839279"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508611"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft ピアリングにルート フィルターを構成する:Azure ポータル
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Dynamics 365 サービスと Office 365 サービス (Exchange Online、SharePoi
 
 ExpressRoute 回線に Microsoft ピアリングが構成されると、Microsoft のエッジ ルーターは、(貴社または接続プロバイダーの) エッジ ルーターとの間に一対の BGP セッションを確立します。 貴社のネットワークにはルートが一切アドバタイズされません。 ネットワークに対するルート アドバタイズを有効にするには、ルート フィルターを関連付ける必要があります。
 
-ExpressRoute 回線の Microsoft ピアリング経由で利用するサービスがルート フィルターによって識別されます。 これは、実質的には全 BGP コミュニティ値から成るホワイト リストです。 ルート フィルター リソースを定義して ExpressRoute 回線にアタッチすると、BGP コミュニティ値にマッピングされたすべてのプレフィックスが貴社のネットワークにアドバタイズされます。
+ExpressRoute 回線の Microsoft ピアリング経由で利用するサービスがルート フィルターによって識別されます。 これは実質的には、許可する全 BGP コミュニティ値の一覧です。 ルート フィルター リソースを定義して ExpressRoute 回線にアタッチすると、BGP コミュニティ値にマッピングされたすべてのプレフィックスが貴社のネットワークにアドバタイズされます。
 
 その回線上の Office 365 サービスにルート フィルターをアタッチするには、ExpressRoute を経由して Office 365 サービスを利用することへの承認が必要となります。 ExpressRoute 経由で Office 365 サービスを利用することを承認されていない場合、ルート フィルターをアタッチすることはできません。 承認プロセスの詳細については、「[Office 365 向け Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)」を参照してください。 Dynamics 365 サービスへの接続に事前の承認は一切必要ありません。
 
@@ -79,7 +79,7 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.使用する値をリストアップする
 
-ルート フィルターで使用する BGP コミュニティ値をリストアップします。 たとえば Dynamics 365 サービスの BGP コミュニティ値は 12076:5040 です。
+ルート フィルターで使用する [BGP コミュニティ値](expressroute-routing.md#bgp)をリストアップします。 
 
 ## <a name="filter"></a>手順 2:ルート フィルターとフィルター ルールを作成する
 
@@ -150,4 +150,6 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ## <a name="next-steps"></a>次の手順
 
-ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
+* ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
+
+* ルーター構成のサンプルについては、「[ルーティングをセットアップして管理するためのルーター構成のサンプル](expressroute-config-samples-routing.md)」を参照してください。 

@@ -4,7 +4,7 @@ description: Azure で入れ子になった仮想化を使用して問題のあ�
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 135368fd9b838573ae8aa65e16d5df2cd3df3e6d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005600"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709227"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
 
@@ -35,13 +35,13 @@ ms.locfileid: "51005600"
 
 -   問題のある VM と同じタイプのストレージ アカウント (Standard または Premium) が復旧 VM に使用されている必要があります。
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>手順 1: 復旧 VM を作成して Hyper-V ロールをインストールする
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>手順 1:復旧 VM を作成し、Hyper-V ロールをインストールする
 
 1.  新しい復旧 VM を作成します。
 
-    -  オペレーティング システム: Windows Server 2016 Datacenter
+    -  オペレーティング システム:Windows Server 2016 Datacenter
 
-    -  サイズ: 入れ子になった仮想化をサポートする 2 コア以上の V3 シリーズ。 詳細については、「[Introducing the new Dv3 and Ev3 VM sizes (新しい VM サイズ Dv3 および Ev3 の発表)](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)」を参照してください。
+    -  サイズ:入れ子になった仮想化をサポートする少なくとも 2 つのコアを備えたすべての V3 シリーズ。 詳細については、「[Introducing the new Dv3 and Ev3 VM sizes (新しい VM サイズ Dv3 および Ev3 の発表)](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)」を参照してください。
 
     -  問題のある VM と同じ場所、ストレージ アカウント、リソース グループ。
 
@@ -49,17 +49,17 @@ ms.locfileid: "51005600"
 
 2.  復旧 VM の作成後、その復旧 VM にリモート デスクトップで接続します。
 
-3.  サーバー マネージャーで **[管理]** > **[役割と機能の追加]** の順に選択します。
+3.  サーバー マネージャーで **[管理]**  >  **[役割と機能の追加]** の順に選択します。
 
 4.  **[インストールの種類]** セクションで **[役割ベースまたは機能ベースのインストール]** を選択します。
 
 5.  **[対象サーバーの選択]** セクションで、復旧 VM が選択されていることを確認します。
 
-6.  **[Hyper-V ロール]** > **[機能の追加]** の順に選択します。
+6.  **[Hyper-V ロール]**  >  **[機能の追加]** の順に選択します。
 
 7.  **[機能]** セクションで **[次へ]** を選択します。
 
-8.  仮想スイッチが利用可能な場合は、それを選択します。 それ以外の場合は、**[次へ]** を選択します。
+8.  仮想スイッチが利用可能な場合は、それを選択します。 それ以外の場合は、 **[次へ]** を選択します。
 
 9.  **[移行]** セクションで **[次へ]** を選択します。
 
@@ -71,7 +71,7 @@ ms.locfileid: "51005600"
 
 13. サーバーに Hyper-V ロールのインストールを許可します。 これには数分かかります。サーバーは自動的に再起動します。
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>手順 2: 問題のある VM を復旧 VM の Hyper-V サーバーに作成する
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>手順 2:復旧 VM の Hyper-V サーバー上に問題のある VM を作成する
 
 1.  問題のある VM のディスクの名前を記録しておき、問題のある VM を削除します。 アタッチされているディスクはすべて維持してください。 
 
@@ -79,19 +79,19 @@ ms.locfileid: "51005600"
 
     1.  問題のある VM の削除後、復旧 VM に移動します。
 
-    2.  **[ディスク]** を選択してから、**[データ ディスクの追加]** を選択します。
+    2.  **[ディスク]** を選択してから、 **[データ ディスクの追加]** を選択します。
 
-    3.  問題のある VM のディスクを選択してから、**[保存]** を選択します。
+    3.  問題のある VM のディスクを選択してから、 **[保存]** を選択します。
 
 3.  ディスクが正常にアタッチされたら、リモート デスクトップで復旧 VM に接続します。
 
 4.  ディスクの管理 (diskmgmt.msc) を開きます。 問題のある VM のディスクが **[オフライン]** に設定されていることを確認します。
 
-5.  Hyper-V マネージャーを開き、**[サーバー マネージャー]** で **Hyper-V ロール**を選択します。 そのサーバーを右クリックし、**[Hyper-V マネージャー]** を選択します。
+5.  Hyper-V マネージャーを開き、 **[サーバー マネージャー]** で **Hyper-V ロール**を選択します。 そのサーバーを右クリックし、 **[Hyper-V マネージャー]** を選択します。
 
-6.  Hyper-V マネージャーで、復旧 VM を右クリックし、**[新規]** > **[仮想マシン]** > **[次へ]** の順に選択します。
+6.  Hyper-V マネージャーで、復旧 VM を右クリックし、 **[新規]**  >  **[仮想マシン]**  >  **[次へ]** の順に選択します。
 
-7.  VM の名前を入力し、**[次へ]** を選択します。
+7.  VM の名前を入力し、 **[次へ]** を選択します。
 
 8.  **[第 1 世代]** を選択します。
 
@@ -105,9 +105,9 @@ ms.locfileid: "51005600"
 
 12. VM が作成されたら **[完了]** を選択します。
 
-13. 作成した VM を右クリックし、**[設定]** を選択します。
+13. 作成した VM を右クリックし、 **[設定]** を選択します。
 
-14. **[IDE コントローラー 0]** を選択し、**[ハード ドライブ]** を選択して、**[追加]** をクリックします。
+14. **[IDE コントローラー 0]** を選択し、 **[ハード ドライブ]** を選択して、 **[追加]** をクリックします。
 
     ![新しいハード ドライブの追加に関する画像](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
@@ -122,7 +122,7 @@ ms.locfileid: "51005600"
 
 19. これでその VM をオンプレミス VM として使用することができます。 必要なトラブルシューティング手順を実施することができます。
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>手順 3: Azure VM を Azure に再作成する
+## <a name="step-3-re-create-your-azure-vm-in-azure"></a>手順 3:Azure で Azure VM を再作成する
 
 1.  VM をオンライン状態に復帰させた後、その VM を Hyper-V マネージャーでシャットダウンします。
 

@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: db26380ef50fd7546f90ceccaec854587e4690c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 572313f65d5d97211dcb664d79122ea6be520bab
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165934"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786548"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>ストレージ リソースをグローバル Azure に移行する
 
@@ -133,7 +133,7 @@ azcopy -v /source:"https://md-kp4qvrzhj4j5.blob.core.cloudapi.de/r0pmw4z3vk1g/ab
 詳細:
 
 - Shared Access Signature URI を取得することによって [API 経由で](/rest/api/compute/disks/grantaccess)ディスクにエクスポートする方法を学習してください。 
-- 非管理対象の BLOB から [API 経由で](/rest/api/compute/disks/createorupdate#create_a_managed_disk_by_importing_an_unmanaged_blob_from_a_different_subscription.)マネージド ディスクを作成する方法を学習してください。
+- 非管理対象の BLOB から [API 経由で](/rest/api/compute/disks/createorupdate#create-a-managed-disk-by-importing-an-unmanaged-blob-from-a-different-subscription.)マネージド ディスクを作成する方法を学習してください。
 
 
 ## <a name="next-steps"></a>次の手順

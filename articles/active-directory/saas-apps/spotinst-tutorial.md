@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f0d42562b1c927fe0f87ddc87b5e097022d2be2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 817eecce6c2c1be273b47494e8ecc14180394796
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922076"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>チュートリアル:Azure Active Directory と Spotinst の統合
 
@@ -114,7 +114,7 @@ Spotinst で Azure AD シングル サインオンを構成するには、次の
 
     ![[Spotinst のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** テキスト ボックスに、URL として「`https://console.spotinst.com`」と入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://console.spotinst.com/auth/saml`」と入力します。
 
     > [!NOTE]
     > リレー状態の値は実際のものではありません。 実際のリレー状態にリレー状態値を置き換えます。実際の値については後で説明します。

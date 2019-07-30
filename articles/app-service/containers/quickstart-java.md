@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 7c6d5034335a455d24b1f22919b672e2ead2810d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 30689e05a2567646ff541818dc68a90c13da7a56
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510855"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297255"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>クイック スタート:App Service on Linux で Java アプリを作成する
 
@@ -62,50 +62,69 @@ code pom.xml
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.4</version>
-        <configuration>
-            <!-- Specify v2 schema -->
-            <schemaVersion>v2</schemaVersion>
-            <!-- App information -->
-            <subscriptionId>${SUBSCRIPTION_ID}</subscriptionId>
-            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-            <appName>${WEBAPP_NAME}</appName>
-            <region>${REGION}</region>
-   
-            <!-- Java Runtime Stack for App on Linux-->
-            <runtime>
-                <os>linux</os>
-                <javaVersion>jre8</javaVersion>
-                <webContainer>tomcat 8.5</webContainer>
-            </runtime> 
-            <deployment>
-                <resources>
-                    <resource>
-                        <directory>${project.basedir}/target</directory>
-                        <includes>
-                            <include>*.war</include>
-                        </includes>
-                    </resource>
-                </resources>
-            </deployment>
-        </configuration>
+        <version>1.7.0</version>
     </plugin>
 </plugins>
-```    
+```
 
+Azure App Service へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
 
-> [!NOTE] 
+```azurecli
+az login
+```
+
+次に、デプロイを構成し、[コマンド プロンプト] で maven コマンド `mvn azure-webapp:config` を実行し、 **[Confirm (Y/N)]\(確認 (Y/N)\)** プロンプトが表示されるまで **Enter** キーを押して既定の構成を使用し、 **'y'** キーを押して構成を完了します。
+
+```cmd
+~@Azure:~/helloworld$ mvn azure-webapp:config
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< example.demo:helloworld >-----------------------
+[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO]
+[INFO] --- azure-webapp-maven-plugin:1.7.0:config (default-cli) @ helloworld ---
+[WARNING] The plugin may not work if you change the os of an existing webapp.
+Define value for OS(Default: Linux):
+1. linux [*]
+2. windows
+3. docker
+Enter index to use:
+Define value for javaVersion(Default: jre8):
+1. jre8 [*]
+2. java11
+Enter index to use:
+Define value for runtimeStack(Default: TOMCAT 8.5):
+1. TOMCAT 9.0
+2. jre8
+3. TOMCAT 8.5 [*]
+4. WILDFLY 14
+Enter index to use:
+Please confirm webapp properties
+AppName : helloworld-1558400876966
+ResourceGroup : helloworld-1558400876966-rg
+Region : westeurope
+PricingTier : Premium_P1V2
+OS : Linux
+RuntimeStack : TOMCAT 8.5-jre8
+Deploy to slot : false
+Confirm (Y/N)? : Y
+```
+
+> [!NOTE]
 > この記事では、WAR ファイル内にパッケージ化された Java アプリのみを操作します。 このプラグインは、JAR Web アプリケーションもサポートしています。[Java SE JAR ファイルを App Service on Linux にデプロイする方法](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページにアクセスしてお試しください。
 
+もう一度 `pom.xml` に移動してプラグイン構成が更新されていることを確認します。必要に応じて、pom ファイルで App Service の他の構成を直接変更できます。その一般的なものを次に示します。
 
-プラグイン構成で、次のプレースホルダーを更新します。
-
-| プレースホルダー | 説明 |
-| ----------- | ----------- |
-| `SUBSCRIPTION_ID` | アプリをデプロイするサブスクリプションの一意の ID。 既定のサブスクリプションの ID は、Cloud Shell または CLI から `az account show` コマンドを使用して調べることができます。 使用可能なすべてのサブスクリプションを調べるには、`az account list` コマンドを使用します。|
-| `RESOURCEGROUP_NAME` | その中にアプリを作成する新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すれば、そのアプリに関連付けられているすべてのリソースが削除されます。 この値を一意の新しいリソース グループ名 (たとえば、*TestResources*) で更新します。 このリソース グループ名を使用して、後のセクションですべての Azure リソースをクリーンアップします。 |
-| `WEBAPP_NAME` | Azure にデプロイされると、このアプリ名はアプリのホスト名の一部になります (WEBAPP_NAME.azurewebsites.net)。 この値を、Java アプリをホストする新しい App Service アプリの一意の名前 (たとえば、*contoso*) で更新します。 |
-| `REGION` | アプリがホストされている Azure リージョン (たとえば、`westus2`)。 リージョンの一覧は、`az account list-locations` コマンドを使用して Cloud Shell または CLI から取得できます。 |
+ プロパティ | 必須 | 説明 | Version
+---|---|---|---
+`<schemaVersion>` | false | 構成スキーマのバージョンを指定します。 サポートされる値は `v1`、`v2` です。 | 1.5.2
+`<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
+`<appName>` | true | Web アプリの名前。 | 0.1.0 以降
+[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Web アプリがホストされるリージョンを指定します。既定値は **westus** です。 すべての有効なリージョンについては、「[サポートされているリージョン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region)」を参照してください。 | 0.1.0 以降
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Web アプリの価格レベル。 既定値は **P1V2** です。| 0.1.0 以降
+[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | ランタイム環境の構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)を参照してください。 | 0.1.0 以降
+[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | デプロイ構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)を参照してください。 | 0.1.0 以降
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
@@ -117,11 +136,19 @@ mvn package azure-webapp:deploy
 
 デプロイが完了したら、Web ブラウザーで次の URL を使用して、デプロイされたアプリケーションを参照します (たとえば、`http://<webapp>.azurewebsites.net`)。 
 
-![Azure で実行されるサンプル アプリ](media/quickstart-java/java-hello-world-in-browser-curl.png)
+![Azure で実行されるサンプル アプリ](media/quickstart-java/java-hello-world-in-browser.png)
 
 **お疲れさまでした。** App Service on Linux に初めての Java アプリをデプロイしました。
 
-[!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+前の手順では、リソース グループ内に Azure リソースを作成しました。 これらのリソースが将来必要になると想定していない場合、Cloud Shell で次のコマンドを実行して、リソース グループを削除します。
+
+```azurecli-interactive
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
+```
+
+このコマンドの実行には、少し時間がかかる場合があります。
 
 ## <a name="next-steps"></a>次の手順
 

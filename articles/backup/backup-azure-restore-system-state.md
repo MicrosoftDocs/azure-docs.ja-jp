@@ -1,19 +1,18 @@
 ---
 title: 'Azure Backup: Windows Server へのシステム状態の復元'
 description: Azure のバックアップから Windows Server のシステム状態を復元する手順について説明します。
-services: backup
 author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 6619611bee96089e465feb6f50d38caeada06dd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48eb9fce7b9863c84518546270a6566bb0cec711
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472503"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465649"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 

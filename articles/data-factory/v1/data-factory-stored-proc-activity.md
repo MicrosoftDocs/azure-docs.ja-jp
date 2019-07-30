@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775359"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61256020"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md)
 > * [Pig アクティビティ](data-factory-pig-activity.md)
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
@@ -89,7 +89,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューの **[新規]** をクリックし、**[インテリジェンス + 分析]**、**[Data Factory]** の順にクリックします。
+2. 左側のメニューの **[新規]** をクリックし、 **[インテリジェンス + 分析]** 、 **[Data Factory]** の順にクリックします。
 
     ![新しいデータ ファクトリ](media/data-factory-stored-proc-activity/new-data-factory.png)
 3. **[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「**SProcDF**」と入力します。 Azure Data Factory の名前は**グローバルで一意**となります。 ファクトリを正常に作成できるようにするには、データ ファクトリの名前の先頭に自分の名前を付ける必要があります。
@@ -100,7 +100,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    1. **[新規作成]** をクリックし、リソース グループの名前を入力します。
    2. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
 6. データ ファクトリの **場所** を選択します。
-7. 次回ログオンしたときにデータ ファクトリがダッシュボードに表示されるようにするために、**[ダッシュボードにピン留めする]** を選択します。
+7. 次回ログオンしたときにデータ ファクトリがダッシュボードに表示されるようにするために、 **[ダッシュボードにピン留めする]** を選択します。
 8. **[新しい Data Factory]** ブレードで **[作成]** をクリックします。
 9. 作成したデータ ファクトリは、Azure Portal の**ダッシュボード**に表示されます。 データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。
 
@@ -109,8 +109,8 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 ### <a name="create-an-azure-sql-linked-service"></a>Azure SQL のリンク サービスを作成する
 データ ファクトリの作成後、sampletable テーブルと usp_sample ストアド プロシージャが格納された Azure SQL データベースをデータ ファクトリにリンクする、Azure SQL のリンクされたサービスを作成します。
 
-1. **SProcDF** の **[Data Factory]** ブレードで、**[作成およびデプロイ]** をクリックして Data Factory エディターを起動します。
-2. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure SQL Database]** を選択します。 Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。
+1. **SProcDF** の **[Data Factory]** ブレードで、 **[作成およびデプロイ]** をクリックして Data Factory エディターを起動します。
+2. コマンド バーの **[新しいデータ ストア]** をクリックし、 **[Azure SQL Database]** を選択します。 Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。
 
    ![新しいデータ ストア](media/data-factory-stored-proc-activity/new-data-store.png)
 3. JSON スクリプトを次のように変更します。
@@ -128,7 +128,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 ### <a name="create-an-output-dataset"></a>出力データセットの作成
 ストアド プロシージャがデータを生成しない場合でも、ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 これは、出力データセットによってアクティビティのスケジュール (時間単位、日単位など、アクティビティの実行頻度) が開始されるためです。 出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 出力データセットに**ダミー データセット** (ストアド プロシージャの出力を実際には保持しないテーブルを参照するデータセット) を指定できる場合もあります。 このダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。
 
-1. **[...More (その他)]** (ツール バー上) をクリックし、**[新しいデータセット]**、**[Azure SQL]** の順にクリックします。 コマンド バーの **[新しいデータセット]** をクリックし、**[Azure SQL]** を選択します。
+1. **[...More (その他)]** (ツール バー上) をクリックし、 **[新しいデータセット]** 、 **[Azure SQL]** の順にクリックします。 コマンド バーの **[新しいデータセット]** をクリックし、 **[Azure SQL]** を選択します。
 
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/new-dataset.png)
 2. 次の JSON スクリプトをコピーして、JSON エディターに貼り付けます。
@@ -162,7 +162,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 - type プロパティの **storedProcedureName** を **usp_sample** (ストアド プロシージャの名前) に設定します。
 - **storedProcedureParameters** セクションには、**DateTime** という名前のパラメーターが 1 つ含まれています。 JSON でのパラメーターの名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義でのパラメーターの名前と一致する必要があります。 パラメーターで null を渡す必要がある場合は、構文として `"param1": null` (すべて小文字) を使用します。
 
-1. **[...More (その他)]** (コマンド バー上) をクリックし、**[新しいパイプライン]** をクリックします。
+1. **[...More (その他)]** (コマンド バー上) をクリックし、 **[新しいパイプライン]** をクリックします。
 2. 次の JSON スニペットをコピーして貼り付けます。
 
     ```JSON
@@ -307,12 +307,12 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name | アクティビティの名前 |はい |
-| description |アクティビティの用途を説明するテキストです。 |いいえ  |
+| description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type | 次のように設定する必要があります。**SqlServerStoredProcedure** | はい |
-| inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ  |
+| inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ |
 | outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |はい |
 | storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL データベース、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |はい |
-| storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |いいえ  |
+| storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |いいえ |
 
 ## <a name="passing-a-static-value"></a>静的な値を渡す
 次に、‘Document sample’ という静的値を含む ‘Scenario’ という別の列をテーブルに追加する例を考えてましょう。

@@ -1,10 +1,10 @@
 ---
 title: コミュニティ ツール - クラシックのリソースを Azure Resource Manager に移動する | Microsoft Docs
-description: この記事には、クラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに IaaS リソースの移行するのに役立つコミュニティ提供のツールが掲載されています。
+description: この記事には、クラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに IaaS リソースの移行するのに役立つコミュニティ提供のツールが掲載されています。
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 228b697b-3950-49f5-84bb-283bb56621b1
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: cce1906e75646f2fb9ea30842e968d14830f3497
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 63e1ad044204bf7695d274fa46f06523fd9d460f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30913938"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720284"
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager に IaaS リソースを移行するためのコミュニティ ツール
-この記事には、クラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに IaaS リソースの移行するのを支援するコミュニティ提供ツールが掲載されています。
+この記事には、クラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに IaaS リソースの移行するのを支援するコミュニティ提供ツールが掲載されています。
 
 > [!NOTE]
 > Microsoft サポートは これらのツールを正式にサポートしていません。 そのため、PowerShell スクリプトは GitHub でオープンソースになっており、修正プログラムや追加シナリオの PR を歓迎しています。 問題をレポートするには、GitHub の問題の機能を使用します。
@@ -42,7 +42,7 @@ ms.locfileid: "30913938"
 [ツールのドキュメントへのリンク](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
 ## <a name="migaz"></a>migAz
-migAz は、クラシック IaaS リソースの完全なセットを Azure Resource Manager の IaaS リソースに移行するための追加オプションです。 移行は、同じサブスクリプション内、または別のサブスクリプションとサブスクリプションの種類 (例: CSP サブスクリプション) の間で発生する可能性があります。
+migAz は、クラシック IaaS リソースの完全なセットを Azure Resource Manager の IaaS リソースに移行するための追加オプションです。 移行は、同じサブスクリプション内、または別のサブスクリプションとサブスクリプションの種類の間で発生する可能性があります (例:CSP サブスクリプション)。
 
 [ツールのドキュメントへのリンク](https://github.com/Azure/migAz)
 

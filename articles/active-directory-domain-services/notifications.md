@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:通知設定 | Microsoft Docs
 description: Azure AD Domain Services の通知設定
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: fab680e8e26584e6beeaf4bdb205c721e1b0b91e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: a89b13d40f4eea08ecdb0f1eb8d68d1a146aca2b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245440"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67472792"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Azure AD Domain Services の通知設定
 

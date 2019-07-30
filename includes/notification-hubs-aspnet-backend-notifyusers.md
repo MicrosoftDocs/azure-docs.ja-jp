@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181421"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227795"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
 
@@ -158,7 +158,7 @@ ms.locfileid: "67181421"
 
 3. 結果の一覧で、 **[Microsoft Azure Notification Hubs]** を選択してから、 **[インストール]** を選択します。 インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
 
-    この操作によって、[Microsoft.Azure.Notification Hubs NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用して Azure Notification Hubs SDK に参照が追加されます。
+    この操作によって、[Microsoft.Azure.Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用して Azure Notification Hubs SDK に参照が追加されます。
 
 4. 通知の送信に使用する通知ハブとの接続を表す新しいクラス ファイルを作成します。 ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。 新しいクラスに「**Notifications.cs**」という名前を付け、 **[追加]** を選択して、クラスを生成します。
 
@@ -170,7 +170,7 @@ ms.locfileid: "67181421"
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. `Notifications` クラス定義を以下のコードに置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure Portal](http://portal.azure.com)で確認できます) に置き換えます。
+6. `Notifications` クラス定義を以下のコードに置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure Portal](https://portal.azure.com)で確認できます) に置き換えます。
 
     ```csharp
     public class Notifications

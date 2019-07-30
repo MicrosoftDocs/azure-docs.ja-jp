@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 8487f82b123b42f9d6a6f0fbd6d6cbb240bf9fdc
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506870"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785517"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -36,6 +36,7 @@ ms.locfileid: "65506870"
 
 ## <a name="deployment-requirements"></a>デプロイ要件
 
+* Azure AD パスワード保護でのライセンス要件については、[組織内の不適切なパスワードの排除](concept-password-ban-bad.md#license-requirements)に関する記事を参照してください。
 * Azure AD パスワード保護用の DC エージェント サービスがインストールされるすべてのドメイン コントローラーでは、Windows Server 2012 以降を実行している必要があります。 この要件は、Active Directory ドメインまたはフォレストも Windows Server 2012 ドメインまたはフォレストの機能レベルにする必要があることを意味するものではありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアが実行するために必要な最低限の DFL または FFL はありません。
 * DC エージェント サービスがインストールされるすべてのマシンには、.NET 4.5 をインストールする必要があります。
 * Azure AD パスワード保護用のプロキシ サービスがインストールされるすべてのマシンでは、Windows Server 2012 R2 以降を実行している必要があります。
@@ -43,7 +44,7 @@ ms.locfileid: "65506870"
    > ドメイン コントローラーにインターネットへの直接の送信接続があった場合でも、Azure AD パスワード保護のデプロイには、プロキシ サービスの展開が必須要件です。 
    >
 * Azure AD パスワード保護プロキシ サービスがインストールされるすべてのマシンには、.NET 4.7 をインストールしておく必要があります。
-  .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合には、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
+  .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合には、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
 * ドメイン コントローラーを含め、Azure AD パスワード保護コンポーネントがインストールされるすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 Windows Update からすべての更新プログラムを確実に取得することでランタイムを入手できます。 または、OS 固有の更新プログラム パッケージで入手できます。 詳しくは、「[Update for Universal C Runtime in Windows (Windows のユニバーサル C ランタイムの更新プログラム)](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)」をご覧ください。
 * 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、パスワード保護用のプロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。 この接続では、ドメイン コントローラーがプロキシ サービス上の RPC エンドポイント マッパー ポート 135 および RPC サーバー ポートにアクセスできるようにする必要があります。 RPC サーバー ポートは、既定では動的 RPC ポートですが、[静的ポートを使用](#static)するように構成することができます。
 * プロキシ サービスをホストしているすべてのマシンに、次のエンドポイントへのネットワーク アクセスが必要です。
@@ -144,7 +145,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
    > このコマンドレットを特定の Azure テナントに対して最初に実行するときは、完了するまでにかなり時間がかかることがあります。 エラーが報告されない限り、この遅延については心配しないでください。
 
 1. フォレストを登録します。
-   * `Register-AzureADPasswordProtectionForest` PowerShell コマンドレットを使用して、Azure と通信するために必要な資格情報で、オンプレミスの Active Directory フォレストを初期化する必要があります。 このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 また、フォレスト ルート ドメイン内のオンプレミス Active Directory ドメイン管理者特権も必要です。 この手順は、フォレストごとに 1 回実行されます。
+   * `Register-AzureADPasswordProtectionForest` PowerShell コマンドレットを使用して、Azure と通信するために必要な資格情報で、オンプレミスの Active Directory フォレストを初期化する必要があります。 このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 また、オンプレミスの Active Directory のエンタープライズ管理者特権も必要です。 この手順は、フォレストごとに 1 回実行されます。
 
       `Register-AzureADPasswordProtectionForest` コマンドレットでは、以下の 3 つの認証モードがサポートされます。
 

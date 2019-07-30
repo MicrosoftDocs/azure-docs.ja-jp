@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2d9ce34d52d08b4dd38caaadfab48b7a69870e9a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: fcc1a093f8df87da24f9d7f7945c490d7b58c9bd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447909"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320581"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>クイック スタート:Java を使用して Azure SQL データベースに照会する
 
@@ -37,8 +37,7 @@ ms.locfileid: "58447909"
   |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
   |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
   |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
-  |||
-
+  
   > [!IMPORTANT]
   > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
@@ -168,7 +167,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="next-steps"></a>次の手順
 
-- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)  
+- [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)  
 
 - [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)  
 

@@ -17,18 +17,18 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: manayar
 ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741430"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204716"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio による仮想マシン スケール セットの作成方法
 この記事では、Visual Studio の "リソース グループの配置" を使用して Azure 仮想マシン スケール セットをデプロイする方法について説明します。
 
 [Azure 仮想マシン スケール セット](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)は、自動スケールと負荷分散機能を使用して、一連の類似する仮想マシンをデプロイし、管理するための Azure コンピューティング リソースです。 仮想マシン スケール セットのプロビジョニングとデプロイは、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を使用して実行できます。 Azure Resource Manager テンプレートは、Azure CLI、PowerShell、REST を使用してデプロイできます。また、Visual Studio から直接デプロイすることもできます。 Visual Studio には、"Azure リソース グループの配置" プロジェクトの一部としてデプロイできる一連のサンプル テンプレートが用意されています。
 
-Azure リソース グループの配置を使用すると、関連する一連の Azure リソースをグループ化し、1 回のデプロイ操作で発行できます。 詳細については、「 [Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
+Azure リソース グループの配置を使用すると、関連する一連の Azure リソースをグループ化し、1 回のデプロイ操作で発行できます。 制限の詳細については、以下を参照してください。[Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
 
 ## <a name="pre-requisites"></a>前提条件
 Visual Studio で仮想マシン スケール セットをデプロイするには、次のものが必要です。
@@ -66,7 +66,7 @@ Visual Studio で仮想マシン スケール セットをデプロイするに�
 ![JSON Explorer][json_explorer]
 
 ## <a name="deploy-the-project"></a>プロジェクトをデプロイする
-1. Azure Resource Manager テンプレートをデプロイして、仮想マシン スケール セット リソースを作成します。 プロジェクト ノードを右クリックし、**[配置]、[新しい配置]** の順に選択します。
+1. Azure Resource Manager テンプレートをデプロイして、仮想マシン スケール セット リソースを作成します。 プロジェクト ノードを右クリックし、 **[配置]、[新しい配置]** の順に選択します。
    
     ![テンプレートのデプロイ][5deploy_Template]
     
@@ -78,7 +78,7 @@ Visual Studio で仮想マシン スケール セットをデプロイするに�
    
     ![New Resource Group][new_resource]
 
-4. 次に、**[パラメーターの編集]** をクリックして、テンプレートに渡すパラメーターを入力します。 デプロイを作成する際に必要となる、OS のユーザー名とパスワードを指定します。 PowerShell Tools for Visual Studio をインストールしていない場合は、隠された PowerShell コマンド ライン プロンプトを回避するために **[パスワードの保存]** チェック ボックスをオンにするか、[KeyVault のサポート](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)を使用します。
+4. 次に、 **[パラメーターの編集]** をクリックして、テンプレートに渡すパラメーターを入力します。 デプロイを作成する際に必要となる、OS のユーザー名とパスワードを指定します。 PowerShell Tools for Visual Studio をインストールしていない場合は、隠された PowerShell コマンド ライン プロンプトを回避するために **[パスワードの保存]** チェック ボックスをオンにするか、[KeyVault のサポート](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)を使用します。
    
     ![Edit Parameters][edit_parameters]
 

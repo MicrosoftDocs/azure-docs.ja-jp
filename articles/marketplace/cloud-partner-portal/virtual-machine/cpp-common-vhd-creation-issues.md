@@ -6,13 +6,14 @@ author: HannibalSII
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/02/2018
-ms.author: hascipio; v-divte; v-miclar
-ms.openlocfilehash: d8b532793282db18d6182237bb921bc118ea717b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: hascipio
+ms.reviewer: v-divte; v-miclar
+ms.openlocfilehash: bb7e62138dbefdd8ff4933ef10602986a5da2bf6
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938450"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874996"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>VHD 作成における一般的な問題 (FAQ)
 

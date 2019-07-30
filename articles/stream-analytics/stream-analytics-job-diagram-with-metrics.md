@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 4a6d359b27b9a2e52d71ed5f8547041645147605
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479968"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620942"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>ジョブ ダイアグラムを使用したデータ主導型デバッグ
 
@@ -87,5 +87,5 @@ Azure Event Hubs の入力をパーティション単位で確認するには、
 * [Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
-* [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

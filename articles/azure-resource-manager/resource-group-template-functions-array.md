@@ -1,25 +1,17 @@
 ---
 title: Azure Resource Manager テンプレートの関数 - 配列とオブジェクト | Microsoft Docs
 description: Azure Resource Manager テンプレートで、配列とオブジェクトを操作するために使用する関数について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
-ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e093cb65137576a725a7d23676e5b2288bb778a0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128697"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206389"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数
 
@@ -402,7 +394,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| stringTrue | ブール値 | True |
+| stringTrue | Bool | True |
 | stringFalse | Bool | False |
 | objectTrue | Bool | True |
 | objectFalse | Bool | False |

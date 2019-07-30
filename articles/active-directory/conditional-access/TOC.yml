@@ -19,6 +19,8 @@
 - name: 概念
   expanded: false
   items:
+    - name: 条件付きアクセスの導入
+      href: howto-conditional-access-adoption-kit.md
     - name: ベースライン保護ポリシー
       href: concept-baseline-protection.md
     - name: 条件
@@ -42,7 +44,7 @@
       items:
         - name: Require MFA for admins \(管理者に MFA を要求する\)
           href: howto-baseline-protect-administrators.md
-        - name: エンド ユーザーの保護
+        - name: エンドユーザーの保護
           href: howto-baseline-protect-end-users.md
         - name: レガシ認証をブロックする
           href: howto-baseline-protect-legacy-auth.md
@@ -50,22 +52,26 @@
           href: howto-baseline-protect-azure.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
-    - name: クラシック ポリシーを移行する
-      href: policy-migration.md
-    - name: サインインの頻度とブラウザーの永続性の制御
-      href: howto-conditional-access-session-lifetime.md
+    - name: MFA 登録の条件付きアクセス
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 承認済みクライアント アプリを必須にする
       href: app-based-conditional-access.md
     - name: アプリの保護ポリシーを必須にする
       href: app-protection-based-conditional-access.md
     - name: マネージド デバイスを必須にする
       href: require-managed-devices.md
-    - name: 信頼されたネットワークを MFA 登録で必須にする
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
       href: untrusted-networks.md
     - name: 利用規約が必須
       href: terms-of-use.md
+    - name: サインインの頻度とブラウザーの永続性の制御
+      href: howto-conditional-access-session-lifetime.md
+    - name: クラシック ポリシーを移行する
+      href: policy-migration.md
+    - name: トラブルシューティング
+      items:
+        - name: What If ツールを使用したトラブルシューティング
+          href: troubleshoot-conditional-access-what-if.md
 - name: リファレンス
   items:
     - name: テクニカル リファレンス

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754543"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464676"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -20,10 +20,10 @@ ms.locfileid: "66754543"
 
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
-以前は、所有者、共同作成者、または閲覧者の [RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)を保有するクラスター ユーザーが HDInsight API を介してシークレットを取得できました。これは、必要な `*/read` アクセス許可を持つ誰でも利用できたためです。
+以前は、所有者、共同作成者、または閲覧者の [RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)を保有するクラスター ユーザーが HDInsight API を介してシークレットを取得できました。これは、`*/read` アクセス許可を持っていればだれでも利用できたためです。
 今後、これらのシークレットにアクセスするには `Microsoft.HDInsight/clusters/configurations/*` アクセス許可が必要になります。つまり、閲覧者ロールを持つユーザーからはアクセスできなくなります。 シークレットは、ユーザーのロールよりもさらに高度なアクセス権を取得するために使用できる値として定義されます。 これらには、クラスター ゲートウェイ HTTP 資格情報、ストレージ アカウント キー、およびデータベースの資格情報などの値が含まれます。
 
-また、共同作成者または所有者の管理アクセス許可を付与されなくても、シークレットを取得することができる新しい[HDInisght クラスター オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールも導入されます。 まとめると次のようになります。
+また、共同作成者または所有者の管理アクセス許可を付与されなくても、シークレットを取得することができる新しい [HDInsight クラスター オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールも導入されます。 まとめると次のようになります。
 
 | Role                                  | 以前                                                                                       | 今後の予定       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
@@ -121,10 +121,10 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 [バージョン 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) の HDInsight SDK for Python に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの**機密性の高いパラメーターが返されなくなります**。
-    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
-    - HTTP ゲートウェイ資格情報だけを取得するには、[`ConfigurationsOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) を使用します。
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-resource-group-name--cluster-name--tags-none--custom-headers-none--raw-false----operation-config-) は非推奨になり、[`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) に置き換えられています。
+- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの**機密性の高いパラメーターが返されなくなります**。
+    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
+    - HTTP ゲートウェイ資格情報だけを取得するには、[`ClusterOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) を使用します。
+- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) は非推奨になり、[`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) に置き換えられています。
 
 ### <a name="sdk-for-java"></a>Java 用 SDK
 
@@ -155,11 +155,11 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加する
 
-[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)ロールまたは[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)ロールを保有するユーザーは、機密 HDInsight クラスター 構成 (クラスター ゲートウェイ資格情報やストレージ アカウント キーなど) への読み取り/書き込みアクセスを求めるユーザーに[ HDInsight Cluster Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールを付与することができます。
+[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)ロールまたは[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)ロールを保有するユーザーは、機密 HDInsight クラスター構成 (クラスター ゲートウェイ資格情報やストレージ アカウント キーなど) への読み取り/書き込みアクセスを求めるユーザーに[ HDInsight Cluster Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールを付与することができます。
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
-このロール割り当てを追加するには、Azure CLI 内で `az role assignemnt create` コマンドを使用するのが最も簡単な方法です。
+このロール割り当てを追加するには、Azure CLI 内で `az role assignment create` コマンドを使用するのが最も簡単な方法です。
 
 > [!NOTE]
 > このコマンドは、共同作成者ロールまたは所有者ロールを保有するユーザーによって、それらのアクセス許可が付与される場合にのみ、実行される必要があります。 `--assignee` は HDInsight クラスター オペレーター ロールの割り当て先とするユーザーの電子メール アドレスです。

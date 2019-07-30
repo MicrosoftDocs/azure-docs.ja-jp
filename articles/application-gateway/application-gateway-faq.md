@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 25779cd62f70df41a7734d2f8097504923dcb3a3
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 71f1beb68171613fe926ba4d87a13ef58cac1edf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66430870"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655275"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -45,7 +45,7 @@ Application Gateway は、HTTP、HTTPS、HTTP/2、WebSocket をサポートし�
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>バックエンド プールの一部としてはどのようなリソースがサポートされていますか?
 
-[サポート対象のバックエンド リソース](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pool)に関するセクションを参照してください。
+[サポート対象のバックエンド リソース](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools)に関するセクションを参照してください。
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Application Gateway はどのリージョンで利用できますか?
 

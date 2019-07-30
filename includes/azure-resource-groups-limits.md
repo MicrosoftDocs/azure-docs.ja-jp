@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 04/19/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8bd16378e9c82a011309c12cf241b59d03405a77
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5e251402a89f84a0aa67eee676c1794207dd24fb
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181541"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869891"
 ---
 | Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "67181541"
 | 出力 |64 |64 |
 | テンプレート式 |24,576 文字 |24,576 文字 |
 | エクスポートされたテンプレート内のリソース |200 |200 | 
-| テンプレート サイズ |1 MB |1 MB |
+| テンプレート サイズ |4 MB |4 MB |
 | パラメーター ファイル サイズ |64 KB |64 KB |
 
 入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、[Azure リソース デプロイ時のリンクされたテンプレートの使用](../articles/azure-resource-manager/resource-group-linked-templates.md)に関するページを参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md)に関する記事をご覧ください。

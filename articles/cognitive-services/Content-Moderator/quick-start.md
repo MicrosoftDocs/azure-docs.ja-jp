@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: quickstart
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31bbc59b0587bb71999c4b10d273f75942737be2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127670"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604146"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
 

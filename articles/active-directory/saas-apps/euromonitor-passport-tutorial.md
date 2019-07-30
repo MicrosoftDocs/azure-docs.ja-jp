@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cdf8f78a54c89ac89441a87ca0ba34d61a3d2a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d8323e771d757d35e424516da6247b940901bb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65740120"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>チュートリアル:Azure Active Directory と Euromonitor Passport の統合
 
@@ -53,11 +53,11 @@ Azure AD への Euromonitor Passport の統合を構成するには、ギャラ�
 
 **ギャラリーから Euromonitor Passport を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Euromonitor Passport の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Euromonitor Passport**」と入力し、結果ウィンドウから **[Euromonitor Passport]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Euromonitor Passport**」と入力し、結果ウィンドウから **[Euromonitor Passport]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧にある Euromonitor Passport](common/search-new-app.png)
 
@@ -89,33 +89,33 @@ Euromonitor Passport による Azure AD のシングル サインオンを構成
 
 Euromonitor Passport によって Azure AD のシングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) 内の **Euromonitor Passport** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) 内の **Euromonitor Passport** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. アプリは Azure と事前に統合済みであるため、**[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
+4. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
     ![[Euromonitor Passport のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
-5. **SP** 開始モードでアプリケーションを構成する場合は、[Euromonitor Passport サポート チーム](mailto:passport.support@euromonitor.com)からサインオン URL を入手する必要があります。 Euromonitor Passport サポート チームからサインオン URL を入手したら、**[追加の URL を設定します]** をクリックして、次の手順を実行します。
+5. **SP** 開始モードでアプリケーションを構成する場合は、[Euromonitor Passport サポート チーム](mailto:passport.support@euromonitor.com)からサインオン URL を入手する必要があります。 Euromonitor Passport サポート チームからサインオン URL を入手したら、 **[追加の URL を設定します]** をクリックして、次の手順を実行します。
 
     ![[Euromonitor Passport のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
     Euromonitor Passport サポート チームから入手したサインオン URL の値を [サインオン URL] ボックスに貼り付けます。
 
-6. Euromonitor Passport は、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+6. Euromonitor Passport は、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](./media/euromonitor-passport-tutorial/attribute1.png)
 
-7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     | Name | ソース属性|
     | ---------------| --------- |
@@ -155,7 +155,7 @@ Euromonitor Passport によって Azure AD のシングル サインオンを構
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -180,7 +180,7 @@ Euromonitor Passport によって Azure AD のシングル サインオンを構
 
 このセクションでは、Euromonitor Passport へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 内で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Euromonitor Passport]** を選択します。
+1. Azure portal 内で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Euromonitor Passport]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -192,15 +192,15 @@ Euromonitor Passport によって Azure AD のシングル サインオンを構
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-euromonitor-passport-test-user"></a>Euromonitor Passport のテスト ユーザーの作成
 

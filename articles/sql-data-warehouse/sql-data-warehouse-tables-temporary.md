@@ -2,7 +2,7 @@
 title: SQL Data Warehouse の一時テーブル | Microsoft Docs
 description: セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 56c15a9505b3f0e4344c9164268082da1ff7cc22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e43e52e56ec7abbf5d8eb879defef54bd7d50658
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851564"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479828"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse の一時テーブル
 この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 この記事の情報に従うとコードをモジュール化できるため、コードの再利用性が向上し、保守が容易になります。
@@ -81,19 +81,6 @@ GROUP BY
 ,        st.[filter_definition]
 ,        st.[has_filter]
 )
-SELECT
-    CASE @update_type
-    WHEN 1
-    THEN 'UPDATE STATISTICS '+[two_part_name]+'('+[stats_name]+');'
-    WHEN 2
-    THEN 'UPDATE STATISTICS '+[two_part_name]+'('+[stats_name]+') WITH FULLSCAN;'
-    WHEN 3
-    THEN 'UPDATE STATISTICS '+[two_part_name]+'('+[stats_name]+') WITH SAMPLE '+CAST(@sample_pct AS VARCHAR(20))+' PERCENT;'
-    WHEN 4
-    THEN 'UPDATE STATISTICS '+[two_part_name]+'('+[stats_name]+') WITH RESAMPLE;'
-    END AS [update_stats_ddl]
-,   [seq_nmbr]
-FROM    t1
 ;
 ``` 
 

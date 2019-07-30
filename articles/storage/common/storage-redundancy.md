@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 07/10/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4b9e913363938f98999c6a769ba83efbd625b69
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002814"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798321"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -46,12 +46,14 @@ Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納デー�
 | 読み取り要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.99% 以上 (クール アクセス層の場合、99.9%) |
 | 書き込み要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) |
 
+ブロック BLOB、追加 BLOB、ページ BLOB、キュー、テーブル、およびファイルを含むストレージ アカウント内のすべてのデータがレプリケートされます。 ZRS に必要なのは汎用 v2 ストレージ アカウントですが、すべての種類のストレージ アカウントがレプリケートされます。
+
 さまざまな冗長オプションの料金情報については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。 
 
 Azure Storage の持続性と可用性の保証については、[Azure Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) に関するページをご覧ください。
 
 > [!NOTE]
-> Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。
+> Azure Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。
 
 ## <a name="changing-replication-strategy"></a>レプリケーション戦略の変更
 [Azure portal](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure クライアント ライブラリ](https://docs.microsoft.com/azure/index#pivot=sdkstools)のいずれかを使用して、ストレージ アカウントのレプリケーション戦略を変更できます。 使用しているストレージ アカウントのレプリケーションの種類を変更してもダウンタイムは発生しません。

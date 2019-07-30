@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 7768dde424aedc295b53512db50c9dfc9db9ab8c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c11155223220c075c28769a19875691783cce3bd
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091472"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593622"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する
 
@@ -36,13 +36,13 @@ Azure Content Delivery Network (CDN) プロファイルを作成してエンド�
 
 ## <a name="profile-comparison"></a>プロファイルの比較
 **Azure CDN Premium from Verizon** プロファイルは、主に次の点で **Azure CDN Standard from Verizon** プロファイルと異なります。
-- [圧縮](cdn-improve-performance.md)、[キャッシュ規則](cdn-caching-rules.md)、[geo フィルタリング](cdn-restrict-access-by-country.md)など、一部の Azure CDN 機能について、Azure CDN インターフェイスを使用できません。**[管理]** ボタン経由で Verizon ポータルを使用する必要があります。
-- API: Standard Verizon と異なり、Premium Verizon ポータルからアクセスされるこれらの機能の制御には、API を使用することができません。 ただし、エンドポイントの作成/削除、キャッシュされた資産の消去/読み込み、カスタム ドメインの有効化/無効化など、その他の一般的な機能を制御するために API を使用することはできます。
-- 価格: Premium Verizon では、データ転送に関する料金体系が Standard Verizon と異なります。 詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
+- [圧縮](cdn-improve-performance.md)、[キャッシュ規則](cdn-caching-rules.md)、[geo フィルタリング](cdn-restrict-access-by-country.md)など、一部の Azure CDN 機能について、Azure CDN インターフェイスを使用できません。 **[管理]** ボタン経由で Verizon ポータルを使用する必要があります。
+- API:Standard Verizon と異なり、Premium Verizon ポータルからアクセスされるこれらの機能の制御には、API を使用することができません。 ただし、エンドポイントの作成/削除、キャッシュされた資産の消去/読み込み、カスタム ドメインの有効化/無効化など、その他の一般的な機能を制御するために API を使用することはできます。
+- 価格:Premium Verizon では、データ転送に関する料金体系が Standard Verizon と異なります。 詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
 
 **Azure CDN Premium from Verizon** プロファイルには、次の追加の機能があります。
-- [トークン認証](cdn-token-auth.md): ユーザーが安全なリソースを取り込むためにトークンを取得して使用できるようにします。
-- [ルール エンジン](cdn-rules-engine.md): HTTP 要求を処理する方法をカスタマイズできるようにします。
+- [トークン認証](cdn-token-auth.md):ユーザーが安全なリソースを取り込むためにトークンを取得して使用できるようにします。
+- [ルール エンジン](cdn-rules-engine.md):HTTP 要求を処理する方法をカスタマイズできるようにします。
 - 高度な分析ツール:
    - [詳細な HTTP 分析](cdn-advanced-http-reports.md)
    - [エッジ パフォーマンス分析](cdn-edge-performance.md)

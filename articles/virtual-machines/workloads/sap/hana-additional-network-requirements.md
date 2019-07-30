@@ -4,7 +4,7 @@ description: SAP HANA on Azure (L インスタンス) 向け追加のネット�
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f4c74076f2763addc1f2b971d8ea0ca29ce6fd0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 953ee5d40a3a4c49d7cc01de804ae5c76ceedc7a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203977"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709795"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>L インスタンス向け追加のネットワーク要件
 

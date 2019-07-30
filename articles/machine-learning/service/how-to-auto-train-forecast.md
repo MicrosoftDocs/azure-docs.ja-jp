@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: c7f4b6d8aa614a460772fb7af11f9b83dc3fc979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 34902aa23339b62920f918ae19b410a99e226a0e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800810"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358799"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -26,6 +26,14 @@ ms.locfileid: "65800810"
 * 時系列データで予測を実行する
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
+
+自動化された ML を使用してテクニックとアプローチを組み合わせて、推奨される高品質な時系列予測を得ることができます。 自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 
+
+このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるという利点があります。 現実の予測アプリケーションでは、複数の要因が予測に影響を与える可能性があります。 たとえば、売上の予測では、履歴による傾向とのインタラクション、為替レート、および価格のすべてが、売上の結果に貢献します。 さらなるメリットは、回帰モデルのすべての最新の革新が予測にすぐに適用されることです。
+
+将来の予測をどこまで行うか (予測期間) の他に、ラグなども[構成](#config)できます。 自動化された ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。 
+
+トレーニング データから抽出されたフィーチャーが重要な役割を果たします。 さらに、自動化された ML では、標準的な前処理手順が実行され、追加の時系列フィーチャーが生成されて季節的影響がキャプチャされ、予測の精度が最大化されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,6 +77,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > 将来の値を予測するためにモデルをトレーニングするときは、目的のトレーニングで使用されるすべての機能が、意図した期間の予測を実行するときに使用できることを確認してください。 たとえば、需要の予測を作成するときに、現在の株価の機能を含めれば、トレーニングの精度を大幅に高めることができます。 ただし、長期間にわたり予測する予定の場合、将来の時系列ポイントに応じた将来の株価を正確に予測できない可能性があり、モデルの精度が低下することがあります。
 
+<a name="config"></a>
 ## <a name="configure-and-run-experiment"></a>実験を構成および実行する
 
 予測タスクの場合は、自動化された機械学習は、時系列データに固有の前処理および推定手順を使用します。 次の前処理手順が実行されます。
@@ -85,7 +94,7 @@ y_test = X_test.pop("sales_quantity").values
 |-------|-------|-------|
 |`time_column_name`|時系列の構築とその頻度の推定に使用される入力データで、datetime 列を指定するために使用されます。|✓|
 |`grain_column_names`|入力データ内の個々の系列グループを定義する名前。 グレインが定義されていない場合、データ セットは 1 つの時系列であると見なされます。||
-|`max_horizon`|時系列頻度を単位にした目的の最大予測期間。|✓|
+|`max_horizon`|時系列頻度を単位にした目的の最大予測期間を定義します。 単位は、月ごとや週ごとなどの予測を実行する必要があるトレーニング データの時間間隔に基づきます。|✓|
 |`target_lags`|モデルのトレーニング前にターゲット値を前方に *n* 期間ずらします。||
 |`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。||
 
@@ -158,7 +167,8 @@ y_actual = y_test.flatten()
 ```python
 y_query = y_test.copy().astype(np.float)
 y_query.fill(np.nan)
-y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+y_fcst, X_trans = fitted_pipeline.forecast(
+    X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
 `y_test` の実際の値と `y_pred` の予測値との RMSE (二乗平均平方根誤差) を計算します。

@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820eddff7da3bb52ca94ea0cb7e2361d89892a4a
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: de32ae16ea4d3c52b8017f35ae5af6009ab59205
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595311"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080898"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -32,18 +32,21 @@ Batch ワークロードの設計やスケールアップを行う際は、こ�
 
 Batch で実稼働ワークロードを実行する予定がある場合は、1 つまたは複数のクォータについて既定値から増やすことが必要になる場合があります。 クォータを増やすには、オンライン [カスタマー サポートに申請](#increase-a-quota) (無料) してください。
 
-> [!NOTE]
-> クォータは、容量の保証ではなく、クレジット制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
-
 ## <a name="resource-quotas"></a>リソース クォータ
-[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+クォータは、容量の保証ではなく、クレジット制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
+
+また、クォータは保証された値でないことに注意してください。 クォータは、Batch サービスからの変更や、クォータ値を変更するユーザー要求によって異なる場合があります。
+
+[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのコア クォータ
 
 プール割り当てモードを**ユーザー サブスクリプション**に設定した Batch アカウントを作成した場合、クォータの適用が異なります。 このモードでは、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 
 ## <a name="pool-size-limits"></a>プール サイズの制限
+
+プール サイズの制限は、Batch サービスによって設定されます。 [リソース クォータ](#resource-quotas)と異なり、これらの値は変更できません。 ノード間通信とカスタム イメージを使用するプールのみが、標準クォータとは異なる制限を持ちます。
 
 | **リソース** | **上限** |
 | --- | --- |
@@ -52,11 +55,13 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | バッチ サブスクリプション プール割り当てモード | 80 |
 | **[カスタム VM イメージを使用して作成されたプール](batch-custom-images.md)内の計算ノード**<sup>1</sup> ||
 | 専用ノード | 2000 |
-| 優先順位の低いノード | 1,000 |
+| 優先順位の低いノード | 1000 |
 
 <sup>1</sup> ノード間通信が有効になっていないプール用。
 
 ## <a name="other-limits"></a>その他の制限
+
+Batch サービスによって設定される追加の制限。 [リソース クォータ](#resource-quotas)と異なり、これらの値は変更できません。
 
 | **リソース** | **上限** |
 | --- | --- |

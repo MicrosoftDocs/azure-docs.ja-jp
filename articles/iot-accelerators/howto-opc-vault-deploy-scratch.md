@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 990b13d362b796f5e71f1bd41eb35fce9720fff4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73588d8c84525cf70de9fac312b0a485055b0a2c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835160"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605702"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC Vault をゼロからデプロイする
 

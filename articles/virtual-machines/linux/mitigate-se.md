@@ -4,7 +4,7 @@ description: Azure での予測実行のサイドチャネルの脆弱性を軽�
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: spectre,メルトダウン,スペクター
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2019
 ms.author: cynthn
-ms.openlocfilehash: 02c89cda7b2c11678539581e16d7162d3466a850
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26fbc6dff5ae98812f38225a17534d51b406e270
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735275"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671240"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Azure での予測実行のサイドチャネルの脆弱性を軽減するためのガイダンス
 

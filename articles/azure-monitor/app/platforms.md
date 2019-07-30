@@ -10,32 +10,25 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 07/06/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 9ef5c9e8b4a46b4bf2bed25027602fb98a09dbf0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 100f1f8875dd53f954e99c50f0bc5b9cd3fee31b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256098"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617814"
 ---
-# <a name="developer-analytics-languages-platforms-and-integrations"></a>開発者分析: 言語、プラットフォーム、統合
-以下は、これまでに把握している [Application Insights](../../azure-monitor/app/app-insights-overview.md) の実装です (サード パーティによるものも含む)。
-
-## <a name="languages---officially-supported-by-application-insights-team"></a>Application Insights チームで正式にサポートされている言語
+# <a name="languages---officially-supported-by-application-insights-team"></a>Application Insights チームで正式にサポートされている言語
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [JavaScript Web ページ](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
 
 ## <a name="languages---community-supported"></a>コミュニティでサポートされている言語
-* [F#](https://safe-stack.github.io/docs/template-azure-ai/)
-* [Go](https://github.com/Microsoft/ApplicationInsights-go)
-* [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
-* [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
-* [Ruby](https://rubygems.org/gems/application_insights)
-* [その他](#projects)
+
+Application Insights SDK をサポートしているコミュニティは数多くあり、その多くは、最初は Microsoft によって作られていました。 コミュニティでサポートしている SDK は Microsoft によって正式に管理されていないため、Microsoft では、正式にサポートされている一覧に記載されていない SDK をサポートすることはできません。 これらの SDK は実験的であるとみなされ、運用環境での使用は推奨されません。
 
 ## <a name="platforms-and-frameworks"></a>プラットフォームとフレームワーク
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
@@ -43,48 +36,22 @@ ms.locfileid: "66256098"
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
-* [Angular](https://github.com/MarkPieszak/angular-application-insights)
 * [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
-* [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)&#151; Web ロールと worker ロールの両方を含む
+* [Azure Cloud Services](../../azure-monitor/app/cloudservices.md) (Web ロールと worker ロール)
 * [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
-* [Docker](../../azure-monitor/app/docker.md)
-* [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
-* [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
-* [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
-* [SAFE スタック](https://safe-stack.github.io/docs/template-azure-ai/)
-* [Spring](https://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
 * [ユニバーサル Windows アプリ](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
 * [Windows デスクトップのアプリケーションとサービス、および worker ロール](../../azure-monitor/app/windows-desktop.md)
-* [その他](#projects)
 
 ## <a name="logging-frameworks"></a>ログ記録フレームワーク
 * [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
 * [Log4Net、NLog、または System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Java、Log4J、または Logback](../../azure-monitor/app/java-trace-logs.md)
-* [セマンティック ログ (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) - [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と統合
-* [クラウド ベースのロード テスト](https://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [LogStash プラグイン](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [Logary](https://www.nuget.org/packages/Logary.Targets.AppInsights/)
-* [Logrus](https://github.com/jjcollinge/logrus-appinsights)
 * [Azure Monitor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
-## <a name="content-management-systems"></a>コンテンツ管理システム
-* [Concrete](https://github.com/fidmor89/appInsights-Concrete)
-* [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
-* [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
-* [Orchard](https://azure.microsoft.com/blog/integrating-application-insights-into-a-modular-cms-and-a-multi-tenant-public-saas/preview/)
-* [SharePoint](../../azure-monitor/app/sharepoint.md)
-* [WordPress](https://wordpress.org/plugins/application-insights/)
-
 ## <a name="export-and-data-analysis"></a>エクスポートとデータの分析
-* [Alooma](https://www.alooma.com/blog/application-insights-amazon-redshift)
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
-* [Stream Analytics](../../azure-monitor/app/export-power-bi.md )
-
-## <a name="projects"></a> 独自の SDK をビルドする
-使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
+* [Stream Analytics](../../azure-monitor/app/export-power-bi.md)

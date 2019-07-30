@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:管理ガイド | Microsoft Docs
 description: Azure AD Domain Services のマネージド ドメインに組織単位 (OU) を作成する
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.author: mstephen
-ms.openlocfilehash: e7ff91a87377deed06fa4214cc1e5764e8b2da92
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: b2bdad25d676d65494fdd5b6a314f8c3381254de
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245348"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473678"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに組織単位 (OU) を作成する
 Azure AD Domain Services のマネージド ドメインには 2 つの組み込みのコンテナーが含まれており、それぞれを "AADDC Computers"、"AADDC Users" と呼びます。 "AADDC Computers" コンテナーには、マネージド ドメインに参加しているすべてのコンピューターを対象としたコンピューター オブジェクトが含まれています。 "AADDC Users" コンテナーには、Azure AD テナント内のユーザーとグループが含まれています。 場合によっては、ワークロードをデプロイするために、マネージド ドメイン上にサービス アカウントを作成しなければならないことがあります。 その場合は、マネージド ドメイン上でカスタムの組織単位 (OU) を作成し、その OU 内でサービス アカウントを作成できます。 この記事では、マネージド ドメインに OU を作成する方法を説明します。

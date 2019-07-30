@@ -3,18 +3,18 @@ title: Azure Container Instances のセキュリティに関する考慮事項
 description: Azure Container Instances のイメージとシークレットをセキュリティで保護する推奨事項、およびコンテナー プラットフォームに関する一般的なセキュリティの考慮事項です
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: dc516277d79e37500e73e1aee6b88c908acb9b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 618d3a901698e46760d970f6d4fbc4157c5d2ea3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943964"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325914"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 

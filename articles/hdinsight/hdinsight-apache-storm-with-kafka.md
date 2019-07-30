@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 12/06/2018
-ms.openlocfilehash: c89567115079887295704e216cd4046fae99c9d1
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.date: 06/25/2019
+ms.openlocfilehash: b6ef08be346aebd220b7234253ce45c4615e38a9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873024"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445523"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -629,15 +629,9 @@ Azure Portal を使用してリソース グループを削除するには:
 2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
 3. __[リソース グループの削除]__ を選択し、確認します。
 
-> [!WARNING]  
-> HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。
-> 
-> HDInsight クラスター上の Kafka を削除すると、Kafka に格納されているすべてのデータが削除されます。
-
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、[Apache Storm](https://storm.apache.org/) トポロジを使用して、HDInsight の [Apache Kafka](https://kafka.apache.org/) に対して書き込み/読み取りを実行する方法を説明しました。 また、HDInsight で使用される [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 互換ストレージにデータを格納する方法も説明しました。
 
-HDInsight の Apache Kafka の使用方法の詳細については、[Apache Kafka Producer および Consumer API の使用](kafka/apache-kafka-producer-consumer-api.md)に関するドキュメントを参照してください。
-
-Linux ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md)」を参照してください。
+> [!div class="nextstepaction"]
+> [Apache Kafka Producer API と Consumer API を使用する](kafka/apache-kafka-producer-consumer-api.md)

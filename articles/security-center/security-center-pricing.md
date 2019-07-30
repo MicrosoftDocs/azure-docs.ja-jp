@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 8f6f94fa8602dcc2b8eed19262f595cb18c40b57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 547aed05746cb3f6c73c420169c727cc98c4ac4f
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65968310"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551748"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。
@@ -28,7 +28,7 @@ Azure Security Center は、Azure、オンプレミス、他のクラウドで�
 Azure Security Center は 2 つのレベルで提供されます。
 
 - **Free** レベルは、すべての Azure サブスクリプションで自動的に有効にされ、セキュリティ ポリシー、継続的なセキュリティ評価、および Azure リソースを保護するための実践的なセキュリティに関する推奨事項を提供します
-- **Standard** レベルは、Free レベルの機能をプライベートおよびその他のパブリック クラウドで実行されているワークロードまで拡張したもので、統合されたセキュリティの管理と脅威の保護をハイブリッド クラウド ワークロード全体で提供します。 Standard レベルでは、高度な脅威検出機能も追加されます。これは、組み込みの行動分析と機械学習を利用して、各種攻撃やゼロデイ攻撃、アクセスやアプリケーション制御を特定し、ネットワーク攻撃やマルウェアなどによる侵害を減らします。 Standard レベルは無料でお試しいただけます。 Security Center Standard では、VM、VM スケール セット、App Service、SQL サーバー、ストレージ アカウントなどの Azure リソースがサポートされます。 Azure Security Center Standard をお使いの場合、リソースの種類に基づいてサポートをオプト アウトすることができます。 
+- **Standard** レベルは、Free レベルの機能をプライベートおよびその他のパブリック クラウドで実行されているワークロードまで拡張したもので、統合されたセキュリティの管理と脅威の保護をハイブリッド クラウド ワークロード全体で提供します。 Standard レベルでは、高度な脅威検出機能も追加されます。これは、組み込みの行動分析と機械学習を利用して、各種攻撃やゼロデイ攻撃、アクセスやアプリケーション制御を特定し、ネットワーク攻撃やマルウェアなどによる侵害を減らします。 Standard レベルは無料でお試しいただけます。 Security Center Standard では、VM、仮想マシン スケール セット、App Service、SQL サーバー、ストレージ アカウントなどの Azure リソースがサポートされます。 Azure Security Center Standard をお使いの場合、リソースの種類に基づいてサポートをオプト アウトすることができます。 
 
 
 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
@@ -40,9 +40,9 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
 
 Standard レベルを取得するには
 
-1. **Security Center** のメイン メニューで、 **[セキュリティ ポリシー]** を選択します。
+1. **Security Center** メイン メニューの **[Pricing & settings]\(価格と設定\)** を選択します。
 2. Standard レベルにアップグレードするサブスクリプションを選択します。
-3. **[Security policy]** ブレードで、 **[価格レベル]** を選択します。
+3. **[価格レベル]** を選択します。
 4. **[Standard]** を選択してアップグレードします。
 5. **[Save]** をクリックします。
 

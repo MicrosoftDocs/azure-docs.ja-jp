@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1c9c24f5b594935c0057eb15acec09a0b27324
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8b1461999679935587370f66349a440d588465cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496780"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052540"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication プロバイダーをいつ使用するか
 
@@ -25,7 +25,7 @@ Azure Active Directory を持つグローバル管理者と Office 365 ユーザ
 Azure Multi-Factor Authentication プロバイダーは、Azure Multi-Factor Authentication が提供する機能を、**ライセンスを持っていない**ユーザーが利用できるようにするために使用されます。
 
 > [!NOTE]
-> 2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できます。 多要素認証は、今後も Azure AD Premium ライセンスの一機能としてご利用いただけます。
+> 2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できますが、移行はもうできません。 多要素認証は、今後も Azure AD Premium ライセンスの一機能としてご利用いただけます。
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Azure MFA SDK に関する注意事項
 

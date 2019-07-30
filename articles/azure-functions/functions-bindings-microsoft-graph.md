@@ -3,18 +3,18 @@ title: Azure Functions における Microsoft Graph のバインド
 description: Azure Functions で Microsoft Graph のトリガーとバインドを使用する方法について説明します。
 services: functions
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae376343103d68df226d30d1d76133a3f055f5c2
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64511816"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480384"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -980,7 +980,7 @@ module.exports = function (context, req) {
 
 
 
-## <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>webhooks
 
 Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_ の作成、更新、および対応のための関数が必要です。 webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
 - [Microsoft Graph の webhook トリガー](#webhook-trigger)を使用すると、受信した webhook に応答できます。

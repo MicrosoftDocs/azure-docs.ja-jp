@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 04b1d0eda85972517155f80488ad590fb56619ab
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299096"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190678"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -53,7 +53,7 @@ ISE ベース ユニットの容量は固定されているため、さらにス
 
 ## <a name="connectors"></a>Connectors
 
-Azure Logic Apps のコネクタを使用すると、ご自身のロジック アプリに[トリガー](#triggers)、[アクション](#actions)、または両方を用意することで、クラウドまたはオンプレミスのアプリ、サービス、およびシステムにアクセスできます。 コネクタは、標準またはエンタープライズのいずれかとして分類されます。 これらの接続の概要については、「[Azure Logic Apps のコネクタ](../connectors/apis-list.md)」を参照してください。 以下のセクションで、トリガーとアクションの課金のしくみについて詳しく説明します。
+Azure Logic Apps のコネクタを使用すると、ご自身のロジック アプリに[トリガー](#triggers)、[アクション](#actions)、または両方を用意することで、クラウドまたはオンプレミスのアプリ、サービス、およびシステムにアクセスできます。 コネクタは、標準またはエンタープライズのいずれかとして分類されます。 これらの接続の概要については、「[Azure Logic Apps のコネクタ](../connectors/apis-list.md)」を参照してください。 ロジック アプリで使用する REST API 用の事前構築済みコネクタが利用できない場合、これらの REST API の単なるラッパーである[カスタム コネクタ](https://docs.microsoft.com/connectors/custom-connectors)を作成できます。 カスタム コネクタは標準コネクタとして課金されます。 以下のセクションで、トリガーとアクションの課金のしくみについて詳しく説明します。
 
 <a name="triggers"></a>
 
@@ -89,7 +89,7 @@ Azure Logic Apps では、すべての成功したアクションと失敗した
 
 ## <a name="integration-accounts"></a>統合アカウント
 
-Azure Logic Apps の [B2B および EDI](logic-apps-enterprise-integration-b2b.md) 機能と [XML 処理](logic-apps-enterprise-integration-xml.md)機能を追加コストなしで調査、開発、およびテストできる[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)には、従量課金が適用されます。
+Azure Logic Apps の [B2B および EDI](logic-apps-enterprise-integration-b2b.md) 機能と [XML 処理](logic-apps-enterprise-integration-xml.md)機能を追加コストなしで調査、開発、およびテストできる[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)には、固定価格モデルが適用されます。
 Azure リージョンごとに 1 つの統合アカウントを使用できます。 各統合アカウントでは、特定の[数まで成果物](../logic-apps/logic-apps-limits-and-config.md) (取引先、契約、マップ、スキーマ、アセンブリ、証明書、バッチ構成など) を格納できます。
 
 Azure Logic Apps には、Free、Basic、Standard の統合アカウントが用意されています。 Basic および Standard レベルは、Logic Apps サービス レベル アグリーメント (SLA) によってサポートされますが、Free レベルは SLA でサポートされず、スループットと使用に制限があります。

@@ -14,18 +14,17 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bc0980360bfafcf6f0334122731c6c02ce71e18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce9566618870419e22dc9c420e77ef2ed6cd3c81
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66151630"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836546"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル:データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -120,7 +119,7 @@ ms.locfileid: "66151630"
     ```
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-* 次のエラーが表示される場合があります。"**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)**" 次のいずれかを実行し、もう一度発行してみてください。
+* 次のエラーが表示される場合があります。"**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)** " 次のいずれかを実行し、もう一度発行してみてください。
 
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
@@ -223,9 +222,9 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
    SQL データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定がオンになっていることを確認します。 この設定を確認してオンにするには、次の手順を実行します。
 
     1. [Azure ポータル](https://portal.azure.com)
-    1. 左側にある **[その他のサービス]** をクリックし、**[データベース]** カテゴリの **[SQL servers]\(SQL サーバー\)** をクリックします。
+    1. 左側にある **[その他のサービス]** をクリックし、 **[データベース]** カテゴリの **[SQL servers]\(SQL サーバー\)** をクリックします。
     1. SQL サーバーの一覧で、目的のサーバーを選択します。
-    1. SQL サーバーのブレードで、**[ファイアウォール設定の表示]** リンクをクリックします。
+    1. SQL サーバーのブレードで、 **[ファイアウォール設定の表示]** リンクをクリックします。
     1. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
     1. ツール バーの **[保存]** をクリックします。 
 
@@ -463,7 +462,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
     ```
 
-    例: 
+    例:
     ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```

@@ -3,8 +3,8 @@ title: Azure AD のエンタイトルメント管理 (プレビュー) で新し
 description: Azure Active Directory エンタイトルメント管理 (プレビュー) で共有するリソースの新しいアクセス パッケージを作成する方法を説明します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/16/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 312658bd653d94f3e1a32204b3c5ae4ae290558e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 83eee019ee8530297689b85e6f3300fed4392610
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65832666"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489178"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) で新しいアクセス パッケージを作成する
 
@@ -126,5 +126,6 @@ ms.locfileid: "65832666"
 
 ## <a name="next-steps"></a>次の手順
 
-- [既存のアクセス パッケージを編集して管理する](entitlement-management-access-package-edit.md)
+- [既存のアクセス パッケージの編集および管理](entitlement-management-access-package-edit.md)
+- [カタログ所有者またはアクセス パッケージ マネージャーを追加する](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [カタログを作成および管理する](entitlement-management-catalog-create.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 039b0951484a6bf57703d9a91d604c9c5e5c9a66
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 249e5ac33b1420ada2cda45ea729471351f21adf
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64571184"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341987"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -30,7 +30,7 @@ ms.locfileid: "64571184"
 
 Azure 関数は、入力を処理して出力を生成する Python スクリプト内でステートレスなメソッドである必要があります。 既定で、ランタイムでは、このメソッドは `main()` と呼ばれるグローバル メソッドとして `__init__.py` ファイル内に実装されると想定されます。
 
-`function.json` ファイル内で `scriptFile` プロパティと `entryPoint` プロパティを指定すれば、既定の構成を変更することができます。 たとえば、以下の _function.json_ では、ご利用の Azure 関数のエントリ ポイントとして、_main.py_ ファイル内の _customentry()_ メソッドを使用するようにランタイムに指示が出されます。
+*function.json* ファイル内で `scriptFile` プロパティと `entryPoint` プロパティを指定すれば、既定の構成を変更することができます。 たとえば、以下の _function.json_ では、ご利用の Azure 関数のエントリ ポイントとして、_main.py_ ファイル内の `customentry()` メソッドを使用するようにランタイムに指示が出されます。
 
 ```json
 {
@@ -40,7 +40,7 @@ Azure 関数は、入力を処理して出力を生成する Python スクリプ
 }
 ```
 
-トリガーとバインディングからのデータをメソッド属性を介して関数にバインドするには、`function.json` 構成ファイル内に定義されている `name` プロパティを使用します。 たとえば、次の _function.json_ には、`req` という名前の HTTP 要求によってトリガーされるシンプルな関数が記述されています。
+トリガーとバインディングからのデータをメソッド属性を介して関数にバインドするには、*function.json* ファイル内で定義されている `name` プロパティを使用します。 たとえば、次の _function.json_ には、`req` という名前の HTTP 要求によってトリガーされるシンプルな関数が記述されています。
 
 ```json
 {
@@ -68,17 +68,18 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-必要があれば、Python の型の注釈を使用することで、関数内にパラメーターの型および戻り値の型を宣言することもできます。 たとえば、次のように注釈を使用して同じ関数を記述することができます。
+必要に応じて、コード エディターによって提供される IntelliSense 機能とオートコンプリート機能を利用するには、Python の型の注釈を使用して、関数内で属性の型と戻り値の型を宣言することもできます。 
 
 ```python
 import azure.functions
 
+
 def main(req: azure.functions.HttpRequest) -> str:
     user = req.params.get('user')
     return f'Hello, {user}!'
-```  
+```
 
-[azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。 
+[azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -97,8 +98,6 @@ Python 関数プロジェクトのフォルダー構造は、次のようにな�
  | | - mySecondHelperFunction.py
  | - host.json
  | - requirements.txt
- | - extensions.csproj
- | - bin
 ```
 
 関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。 
@@ -106,16 +105,16 @@ Python 関数プロジェクトのフォルダー構造は、次のようにな�
 共有コードは、別のフォルダーに保存する必要があります。 SharedCode フォルダー内のモジュールを参照するには、次の構文を使用します。
 
 ```
-from ..SharedCode import myFirstHelperFunction
+from __app__.SharedCode import myFirstHelperFunction
 ```
 
-Functions ランタイムで使用されるバインディング拡張機能は、`extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダー内にあります。 ローカルで開発する場合は、Azure Functions Core Tools を使用して、[バインディング拡張機能を登録する](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)必要があります。 
-
-Functions プロジェクトを Azure 内のご利用の関数アプリにデプロイする場合は、フォルダー自体ではなく、パッケージに FunctionApp フォルダーの内容全体を含める必要があります。
+関数プロジェクトを Azure 内のご利用の関数アプリにデプロイする場合は、フォルダー自体ではなく、パッケージに *FunctionApp* フォルダーの内容全体を含める必要があります。
 
 ## <a name="triggers-and-inputs"></a>トリガーと入力
 
-Azure Functions では、入力はトリガー入力と追加入力の 2 つのカテゴリに分けられます。 `function.json` ではこれらは同じではありませんが、Python コードでは同じように使用されます。  トリガーの接続文字列と入力ソースは、`local.settings.json`ファイル内の値と、Azure で実行するアプリケーション設定をローカルにマッピングします。 次のコード スニペットを例として使用します。
+Azure Functions では、入力はトリガー入力と追加入力の 2 つのカテゴリに分けられます。 `function.json` ファイルではこれらは同じではありませんが、Python コードでは同じように使用されます。  トリガーの接続文字列またはシークレットと入力ソースは、ローカル実行時には `local.settings.json` ファイル内の値にマップし、Azure での実行時にはアプリケーションの設定にマップします。 
+
+たとえば、次のコードでは 2 つの違いが示されています。
 
 ```json
 // function.json
@@ -155,6 +154,7 @@ Azure Functions では、入力はトリガー入力と追加入力の 2 つの�
 # __init__.py
 import azure.functions as func
 import logging
+
 
 def main(req: func.HttpRequest,
          obj: func.InputStream):
@@ -202,6 +202,7 @@ def main(req: func.HttpRequest,
 ```python
 import azure.functions as func
 
+
 def main(req: func.HttpRequest,
          msg: func.Out[func.QueueMessage]) -> str:
 
@@ -219,6 +220,7 @@ Azure Functions ランタイム ロガーへのアクセスは、ご利用の関
 ```python
 import logging
 
+
 def main(req):
     logging.info('Python HTTP trigger function processed a request.')
 ```
@@ -233,32 +235,24 @@ def main(req):
 | logging.**info(_message_)**    | ルート ロガー上に INFO レベルのメッセージを書き込みます。  |
 | logging.**debug(_message_)** | ルート ロガー上に DEBUG レベルのメッセージを書き込みます。  |
 
-## <a name="importing-shared-code-into-a-function-module"></a>関数モジュールへの共有コードのインポート
-
-関数モジュールと共に発行する Python モジュールは、相対インポート構文を使用してインポートする必要があります。
-
-```python
-from . import helpers  # Use more dots to navigate up the folder structure.
-def main(req: func.HttpRequest):
-    helpers.process_http_request(req)
-```
-
-あるいは、共有コードをスタンドアロン パッケージに配置し、それをパブリックまたはプライベートの PyPI インスタンスに発行して、通常の依存関係として指定します。
-
 ## <a name="async"></a>非同期
 
-1 つの関数アプリに付き、1 つの Python プロセスしか存在することができないので、`async def` ステートメントを使用してご自分の Azure 関数を非同期コルーチンとして実装することをお勧めします。
+`async def` ステートメントを使って非同期のコルーチンとして Azure 関数を記述することをお勧めします。
 
 ```python
 # Will be run with asyncio directly
+
+
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-main() 関数が同期 (`async` 修飾子が付いていない) の場合、それは `asyncio` スレッド プール内で自動的に実行されます。
+main() 関数が同期 (`async` 修飾子が付いていない) の場合、関数は `asyncio` スレッド プール内で自動的に実行されます。
 
 ```python
 # Would be run in an asyncio thread-pool
+
+
 def main():
     some_blocking_socket_io()
 ```
@@ -272,8 +266,9 @@ def main():
 ```python
 import azure.functions
 
+
 def main(req: azure.functions.HttpRequest,
-            context: azure.functions.Context) -> str:
+         context: azure.functions.Context) -> str:
     return f'{context.invocation_id}'
 ```
 
@@ -288,6 +283,22 @@ def main(req: azure.functions.HttpRequest,
 `invocation_id`  
 現在の関数呼び出しの ID です。
 
+## <a name="global-variables"></a>グローバル変数
+
+将来の実行に対してアプリの状態が保持されることは保証されません。 ただし、Azure Functions ランタイムでは、多くの場合、同じアプリの複数の実行に対して同じプロセスが再利用されます。 高コストの計算の結果をキャッシュするには、グローバル変数として宣言します。 
+
+```python
+CACHED_DATA = None
+
+
+def main(req):
+    global CACHED_DATA
+    if CACHED_DATA is None:
+        CACHED_DATA = load_json()
+
+    # ... use CACHED_DATA in code
+```
+
 ## <a name="python-version-and-package-management"></a>Python のバージョンとパッケージの管理
 
 現在、Azure Functions では、Python 3.6.x (公式な CPython 配布) のみがサポートされています。
@@ -295,10 +306,6 @@ def main(req: azure.functions.HttpRequest,
 Azure Functions Core Tools または Visual Studio Code を使用してローカルで開発を行う場合は、必要なパッケージの名前とバージョンを `requirements.txt` ファイルに追加し、`pip` を使用してそれらをインストールしてください。
 
 たとえば、次の要件のファイルと pip コマンドを使用すれば、PyPI から `requests` パッケージをインストールすることができます。
-
-```bash
-pip install requests
-```
 
 ```txt
 requests==2.19.1
@@ -308,20 +315,9 @@ requests==2.19.1
 pip install -r requirements.txt
 ```
 
-発行の準備ができたら、ご利用の依存関係がすべて、プロジェクト ディレクトリのルートにある `requirements.txt` ファイル内にリストされていることを確認します。 ご自分の Azure 関数を正常に実行するには、少なくとも次のパッケージが要件ファイルに含まれている必要があります。
-
-```txt
-azure-functions
-azure-functions-worker
-grpcio==1.14.1
-grpcio-tools==1.14.1
-protobuf==3.6.1
-six==1.11.0
-```
-
 ## <a name="publishing-to-azure"></a>Azure への発行
 
-使用しているパッケージにおいてコンパイラが必要とされるが、PyPI からの manylinux 対応のホイールのインストールがサポートされていない場合、Azure への発行は失敗し、次のエラーが返されます。 
+発行の準備ができたら、依存関係がすべて、プロジェクト ディレクトリのルートにある *requirements.txt* ファイル内にリストされていることを確認します。 使用しているパッケージにおいてコンパイラが必要とされるが、PyPI からの manylinux 対応のホイールのインストールがサポートされていない場合、Azure への発行は失敗し、次のエラーが返されます。 
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
@@ -336,69 +332,86 @@ func azure functionapp publish <app name> --build-native-deps
 
 Core Tools では、ご利用のローカル マシン上で [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) イメージをコンテナーとして実行するためにバックグラウンドで Docker が使用されます。 この環境を使用する場合、必要なモジュールがソース配布からビルドおよびインストールされてから、Azure への最終的なデプロイに備えてそれらがパッケージ化されます。
 
-> [!NOTE]
-> Core Tools (func) では、PyInstaller プログラムを使用して、ユーザーのコードと依存関係が、Azure 内で実行される 1 つのスタンドアロン実行可能ファイルに固定されます。 この機能は現在プレビュー段階にあり、すべての種類の Python パッケージに展開されるとは限りません。 使用するモジュールをインポートできない場合は、`--no-bundler` オプションを使用してもう一度発行を試みてください。 
-> ```
-> func azure functionapp publish <app_name> --build-native-deps --no-bundler
-> ```
-> それでもまだ問題が発生する場合は、Microsoft にお知らせください。そのためには、[issue を開き](https://github.com/Azure/azure-functions-core-tools/issues/new)、問題の説明を入力してください。 
+継続的デリバリー (CD) システムを使って依存関係のビルドと発行を行うには、[Azure DevOps パイプラインを使用](https://docs.microsoft.com/azure/azure-functions/functions-how-to-azure-devops)します。 
+
+## <a name="unit-testing"></a>単体テスト
+
+Python で記述された関数は、標準的なテスト フレームワークを使用して、他の Python コードのようにテストできます。 ほとんどのバインドでは、`azure.functions` パッケージから適切なクラスのインスタンスを作成することにより、モック入力オブジェクトを作成できます。
+
+たとえば、次に示すのは、HTTP によってトリガーされる関数のモック テストです。
+
+```python
+# myapp/__init__.py
+import azure.functions as func
+import logging
 
 
-依存関係をビルドし、継続的インテグレーション (CI) と継続的デリバリー (CD) システムを使用して発行するには、[Azure パイプライン](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=vsts)または [Travis CI のカスタム スクリプト](https://docs.travis-ci.com/user/deployment/script/)を使用します。 
+def main(req: func.HttpRequest,
+         obj: func.InputStream):
 
-次に示すのは、ビルドおよび発行プロセスに関する `azure-pipelines.yml` スクリプトの例です。
-```yml
-pool:
-  vmImage: 'Ubuntu 16.04'
-
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '8.x'
-
-- script: |
-    set -e
-    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-    curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-    sudo apt-get install -y apt-transport-https
-    echo "install Azure CLI..."
-    sudo apt-get update && sudo apt-get install -y azure-cli
-    npm i -g azure-functions-core-tools --unsafe-perm true
-    echo "installing dotnet core"
-    curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 2.0
-- script: |
-    set -e
-    az login --service-principal --username "$(APP_ID)" --password "$(PASSWORD)" --tenant "$(TENANT_ID)" 
-    func settings add FUNCTIONS_WORKER_RUNTIME python
-    func extensions install
-    func azure functionapp publish $(APP_NAME) --build-native-deps
+    logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-次に示すのは、ビルドおよび発行プロセスに関する `.travis.yaml` スクリプトの例です。
+```python
+# myapp/test_func.py
+import unittest
 
-```yml
-sudo: required
-
-language: node_js
-
-node_js:
-  - "8"
-
-services:
-  - docker
-
-before_install:
-  - echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-  - curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-  - sudo apt-get install -y apt-transport-https
-  - sudo apt-get update && sudo apt-get install -y azure-cli
-  - npm i -g azure-functions-core-tools --unsafe-perm true
+import azure.functions as func
+from . import my_function
 
 
-script:
-  - az login --service-principal --username "$APP_ID" --password "$PASSWORD" --tenant "$TENANT_ID"
-  - az account get-access-token --query "accessToken" | func azure functionapp publish $APP_NAME --build-native-deps
+class TestFunction(unittest.TestCase):
+    def test_my_function(self):
+        # Construct a mock HTTP request.
+        req = func.HttpRequest(
+            method='GET',
+            body=None,
+            url='/my_function',
+            params={'name': 'Test'})
 
+        # Call the function.
+        resp = my_function(req)
+
+        # Check the output.
+        self.assertEqual(
+            resp.get_body(),
+            'Hello, Test!',
+        )
+```
+
+キューによってトリガーされる関数の別の例を次に示します。
+
+```python
+# myapp/__init__.py
+import azure.functions as func
+
+
+def my_function(msg: func.QueueMessage) -> str:
+    return f'msg body: {msg.get_body().decode()}'
+```
+
+```python
+# myapp/test_func.py
+import unittest
+
+import azure.functions as func
+from . import my_function
+
+
+class TestFunction(unittest.TestCase):
+    def test_my_function(self):
+        # Construct a mock Queue message.
+        req = func.QueueMessage(
+            body=b'test')
+
+        # Call the function.
+        resp = my_function(req)
+
+        # Check the output.
+        self.assertEqual(
+            resp,
+            'msg body: test',
+        )
 ```
 
 ## <a name="known-issues-and-faq"></a>既知の問題とよくあるご質問

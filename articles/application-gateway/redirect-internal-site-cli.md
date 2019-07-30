@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: e44beed592e013a089011c2a774b7300f2b3f854
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25c50d400a68cdbfb9110a9e8e9d66477ad4710a
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133747"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513365"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Azure CLI を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -213,11 +213,11 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
+ブラウザーのアドレス バーにドメイン名を入力します。 例: http:\//www.contoso.com
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-アドレスを他のドメインに変更します (例: http://www.contoso.org )。トラフィックが www\. contoso.com のリスナーにリダイレクトされたことがわかります。
+アドレスを他のドメインに変更します (例: http:\//www.contoso.org)。トラフィックが www\.contoso.com のリスナーにリダイレクトされたことがわかります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d53dbcddf2025ddc3111bc585655e2c157844b18
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ROBOTS: NOINDEX
+ms.openlocfilehash: eb37fe247901b799a845ce75723a4a6b535cbb28
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190172"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422587"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する方法
 

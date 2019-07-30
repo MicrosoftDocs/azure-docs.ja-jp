@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 19c2298c9bda03acba28496a97c89c2a53e3c44e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: fc172b5327d72687fea7d13ddb706ecc7ab630b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964901"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135315"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>チュートリアル:Azure Cosmos DB バックエンドを使用してセッションやデバイス間で Azure Spatial Anchors を共有する
 
@@ -44,7 +44,7 @@ ms.locfileid: "65964901"
 
 後で必要になるため、`Connection String` をコピーします。
 
-## <a name="open-the-sample-project-in-unity"></a>Unity でサンプル プロジェクトを開く
+## <a name="download-the-unity-sample-project"></a>Unity サンプル プロジェクトをダウンロードする
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 

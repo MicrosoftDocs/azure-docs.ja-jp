@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9c29837e99d327112e6a9d648a5c56cc35e8555
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60958640"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296658"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps を使用して Azure BLOB ストレージ内に BLOB を作成して管理する
 
@@ -30,12 +30,21 @@ ms.locfileid: "60958640"
 >
 > * API Management を既に使用している場合は、このシナリオでこのサービスを使用できます。 詳細については、[単純なエンタープライズ統合アーキテクチャ](https://aka.ms/aisarch)を参照してください。
 
-ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
-コネクタ固有の技術情報については、<a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">Azure Blob Storage コネクタ リファレンス</a>に関する記事を参照してください。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 コネクタ固有の技術情報については、[Azure Blob Storage コネクタ リファレンス](/connectors/azureblobconnector/)に関する記事を参照してください。
+
+## <a name="limits"></a>制限
+
+* 既定では、Azure Blob Storage アクションは *50 MB 以下*のファイルの読み取りまたは書き込みが可能です。 Azure Blob Storage のアクションは、50 MB から 1024 MB までのファイルを処理するため、[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートしています。 **BLOB コンテンツの取得**アクションは、暗黙的にチャンクを使用します。
+
+* Azure Blob Storage トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求する場合、トリガーは 50 MB 以下のファイルのみを選択します。 50 MB より大きいファイルを取得するには、次のパターンに従います。
+
+  * **BLOB が追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返す Azure Blob Storage トリガーを使用します。
+
+  * Azure Blob Storage トリガーの **BLOB コンテンツの取得**アクションに従います。これは、暗黙的にチャンクを使用してファイル全体を読み取ります。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * [Azure ストレージ アカウントとストレージ コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -47,13 +56,13 @@ ms.locfileid: "60958640"
 
 Azure Logic Apps では、すべてのロジック アプリは、必ず[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)から起動されます。トリガーは、特定のイベントが起こるか特定の条件が満たされたときに発生します。 トリガーが発生するたびに、Logic Apps エンジンによってロジック アプリ インスタンスが作成され、アプリのワークフローが開始されます。
 
-この例では、BLOB のプロパティがストレージ コンテナーに追加されるか BLOB のプロパティが更新された場合に **[Azure Blob Storage - BLOB が追加または変更されたとき (プロパティのみ)]** トリガーを使用して、ロジック アプリのワークフローを開始する方法を示します。 
+この例では、BLOB のプロパティがストレージ コンテナーに追加されるか BLOB のプロパティが更新された場合に **BLOB が追加または変更されたとき (プロパティのみ)** トリガーを使用して、ロジック アプリのワークフローを開始する方法を示します。
 
-1. Azure Portal または Visual Studio で、Logic Apps デザイナーを開いて、空のロジック アプリを作成します。 この例では、Azure Portal を使用します。
+1. [Azure Portal](https://portal.azure.com) または Visual Studio で、Logic Apps デザイナーを開いて、空のロジック アプリを作成します。 この例では、Azure Portal を使用します。
 
 2. 検索ボックスに、フィルターとして「azure blob」と入力します。 トリガーの一覧から、目的のトリガーを選択します。
 
-   この例では、次のトリガーを使用します。 **[Azure Blob Storage -BLOB が追加または変更されたとき (プロパティのみ)]**
+   この例では、次のトリガーを使用します。**BLOB が追加または変更されたとき (プロパティのみ)**
 
    ![トリガーの選択](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -79,22 +88,22 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)とは、トリガーまたは別のアクションに続くワークフロー内のステップです。 この例では、ロジック アプリは、[繰り返しトリガー](../connectors/connectors-native-recurrence.md)を使用して起動されます。
 
-1. Azure Portal または Visual Studio で、ロジック アプリをロジック アプリ デザイナーで開きます。 この例では、Azure Portal を使用します。
+1. [Azure portal](https://portal.azure.com) または Visual Studio で、ロジック アプリをロジック アプリ デザイナーで開きます。 この例では、Azure Portal を使用します。
 
-2. Logic Apps デザイナーのトリガーまたはアクションで、 **[新しいステップ]**  >  **[アクションの追加]** を選択します。
+2. Logic Apps デザイナーのトリガーまたはアクションで、 **[新しいステップ]** を選択します。
 
    ![アクションを追加する](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 
-   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
+   既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 表示されるプラス ( **+** ) 記号を選択し、 **[アクションの追加]** を選択します。
 
 3. 検索ボックスに、フィルターとして「azure blob」と入力します。 アクションの一覧から、目的のアクションを選択します。
 
-   この例では、次のアクションを使用します。 **[Azure Blob Storage - BLOB コンテンツの取得]**
+   この例では、次のアクションを使用します。**BLOB コンテンツの取得**
 
-   ![選択アクション](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
+   ![選択アクション](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 
-4. 接続の詳細の入力を求められたら、[Azure Blob Storage 接続を今すぐ作成](#create-connection)します。 接続が既に存在する場合は、アクションに必要な情報を指定します。
+4. 接続の詳細の入力を求められたら、[Azure Blob Storage 接続を今すぐ作成](#create-connection)します。
+接続が既に存在する場合は、アクションに必要な情報を指定します。
 
    この例では、目的のファイルを選択します。
 
@@ -120,11 +129,6 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
 コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/azureblobconnector/)を参照してください。
-
-## <a name="get-support"></a>サポートを受ける
-
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

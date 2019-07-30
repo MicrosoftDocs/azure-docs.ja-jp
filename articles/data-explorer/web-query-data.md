@@ -1,20 +1,20 @@
 ---
-title: 'クイック スタート: Azure Data Explorer でデータのクエリを実行する'
-description: このクイック スタートでは、Azure Data Explorer でデータのクエリと共有を行う方法について説明します。
+title: クイック スタート:Azure Data Explorer の Web UI でデータのクエリを実行する
+description: このクイック スタートでは、Azure Data Explorer の Web UI でデータのクエリと共有を行う方法について説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/04/2019
+ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050562"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797188"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer"></a>クイック スタート: Azure Data Explorer でデータのクエリを実行する
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>クイック スタート:Azure Data Explorer の Web UI でデータのクエリを実行する
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer の Web アプリケーションを使用して、クエリを実行および共有できます。 そのアプリケーションは、Azure portal で利用でき、スタンドアロン Web アプリケーションとしても利用できます。 この記事では、スタンドアロン バージョンを使います。複数のクラスターに接続し、クエリへのディープ リンクを共有することができます。
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. アプリケーションの左上にある **[Add cluster]\(クラスターの追加\)** を選択します。
 
-1. **[Add cluster]\(クラスターの追加\)** ダイアログ ボックスで URI を入力して、**[Add]\(追加\)** を選択します。
+1. **[Add cluster]\(クラスターの追加\)** ダイアログ ボックスで URI を入力して、 **[Add]\(追加\)** を選択します。
 
    ヘルプ クラスター URI `https://help.kusto.windows.net` を使用できます。 独自のクラスターがある場合は、そのクラスターの URI を指定します。 たとえば、次の図のように、`https://mydataexplorercluster.westus.kusto.windows.net` と指定します。
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Add cluster]\(クラスターの追加\)** を選択します。
 
-1. **[Add cluster]\(クラスターの追加\)** ダイアログ ボックスで、テスト クラスターの URL を `https://<ClusterName>.<Region>.kusto.windows.net/` の形式で入力して､**[Add]\(追加\)** を選択します。
+1. **[Add cluster]\(クラスターの追加\)** ダイアログ ボックスで、テスト クラスターの URL を `https://<ClusterName>.<Region>.kusto.windows.net/` の形式で入力して､ **[Add]\(追加\)** を選択します。
 
     次の例では、**help** クラスターと、新しいクラスター **docscluster.westus** (完全な URL は `https://docscluster.westus.kusto.windows.net/`) が表示されています。
 
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. クエリ ウィンドウの上部にある **[Recall]\(リコール\)** を選択します。
 
-    クエリを再実行する必要なしに、クエリ ウィンドウに最初のクエリの結果セットが表示されます。 分析では複数のクエリを実行することがよくあり、**[Recall]\(リコール\)** を使用すると前のクエリの結果を再表示することができます。
+    クエリを再実行する必要なしに、クエリ ウィンドウに最初のクエリの結果セットが表示されます。 分析では複数のクエリを実行することがよくあり、 **[Recall]\(リコール\)** を使用すると前のクエリの結果を再表示することができます。
 
 1. もう 1 つクエリを実行し、異なる種類の出力を見てみましょう。
 
@@ -119,7 +119,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 基本的なクエリの動作を確認したので、次にテーブル グリッドを使用して結果をカスタマイズし、さらに分析を行う方法を見てみましょう。
 
-1. 最初のクエリを再実行します。 **State** 列をマウスでポイントし、メニューを選択して、**[Group by State]\(State でグループ化\)** を選択します。
+1. 最初のクエリを再実行します。 **State** 列をマウスでポイントし、メニューを選択して、 **[Group by State]\(State でグループ化\)** を選択します。
 
     ![Group by State (State でグループ化)](media/web-query-data/group-by.png)
 
@@ -129,7 +129,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     この種類のグループ化は、探索的分析を行うときに役に立ちます。
 
-1. **[Group]\(グループ\)** 列をマウスでポイントし、**[Reset columns]\(列のリセット\)** を選択します。
+1. **[Group]\(グループ\)** 列をマウスでポイントし、 **[Reset columns]\(列のリセット\)** を選択します。
 
     ![Reset columns (列のリセット)](media/web-query-data/reset-columns.png)
 
@@ -183,13 +183,12 @@ Data Explorer は現在プレビュー段階であり、ユーザーの経験に
 
 1. アプリケーションの右上にあるフィードバック アイコンを選択します。 ![フィードバック アイコン](media/web-query-data/icon-feedback.png)。
 
-1. フィードバックを入力し、**[Submit]\(送信\)** を選択してください。
+1. フィードバックを入力し、 **[Submit]\(送信\)** を選択してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイック スタートではリソースは何も作成しませんでしたが、アプリケーションから一方または両方のクラスターを削除したい場合は、クラスターを右クリックして、**[Remove connection]\(接続を削除\)** を選択します。
+このクイック スタートではリソースは何も作成しませんでしたが、アプリケーションから一方または両方のクラスターを削除したい場合は、クラスターを右クリックして、 **[Remove connection]\(接続を削除\)** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Azure Data Explorer のクエリを記述する](write-queries.md)
+[Azure Data Explorer のクエリを記述する](write-queries.md)

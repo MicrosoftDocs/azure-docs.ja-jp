@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 108d17d3e0ca5f32648f9d4f6cf4b5f9a2984d0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba08cd7fdecda99c04d5bb1007b3e5f61cd1bd5c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495818"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446766"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy の追跡とイベントのログ記録
 
@@ -29,7 +29,7 @@ Data Box または Data Box Heavy の注文は、注文、設定、データの�
 | デバイスへのデータのコピー        | データのコピー用の [*error.xml* ファイルを確認する](#view-error-log-during-data-copy)                                                             |
 | 発送の準備をする            | デバイス上のマニフェスト ファイルまたは [BOM ファイルを検査する](#inspect-bom-during-prepare-to-ship)                                      |
 | Azure へのデータのアップロード       | Azure データセンターでのデータのアップロード中のエラーについて [*copylogs* を確認する](#review-copy-log-during-upload-to-azure)                         |
-| デバイスからのデータの消去   | 監査ログと注文履歴を含む[生産物流管理ログを表示する](#get-chain-of-custody-logs-after-data-erasure)                                                   |
+| デバイスからのデータの消去   | 監査ログと注文履歴を含む[生産物流管理ログを表示する](#get-chain-of-custody-logs-after-data-erasure)                |
 
 この記事では、Data Box または Data Box Heavy の注文の追跡と監査に使用できるさまざまなメカニズムやツールの詳細について説明します。 この記事の情報は、Data Box と Data Box Heavy の両方に適用されます。 後続のセクションにおいて、Data Box への言及はすべて、Data Box Heavy にも適用されます。
 
@@ -203,7 +203,7 @@ Data Box サービスでは、処理される注文ごとに、関連付けら�
 
 巡回冗長検査 (CRC) の計算は、Azure へのアップロード中に行われます。 データのコピーからの CRC とデータのアップロード後の CRC が比較されます。 CRC の不一致は、対応するファイルがアップロードに失敗したことを示します。
 
-既定では、ログは copylog という名前のコンテナーに書き込まれます。 ログは、次の命名規則を使用して保存されます。
+既定では、ログは  `copylog` という名前のコンテナーに書き込まれます。 ログは、次の命名規則を使用して保存されます。
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`
 
@@ -245,7 +245,41 @@ Azure へのアップロードも、エラーで完了する場合がありま�
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
+次に、Azure の命名規則に準拠していないコンテナーが、Azure へのデータ アップロード中に名前変更された場合の `copylog` の例を示します。
 
+コンテナーの新しい固有名は `DataBox-GUID` という形式で、コンテナーのデータは、名前が変更された新しいコンテナーに配置されます。 この `copylog` では、コンテナーの古い名前と新しい名前が指定されています。
+
+```xml
+<ErroredEntity Path="New Folder">
+   <Category>ContainerRenamed</Category>
+   <ErrorCode>1</ErrorCode>
+   <ErrorMessage>The original container/share/blob has been renamed to: DataBox-3fcd02de-bee6-471e-ac62-33d60317c576 :from: New Folder :because either the name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>Container</Type>
+</ErroredEntity>
+```
+
+次に、Azure の命名規則に準拠していない BLOB またはファイルが、Azure へのデータ アップロード中に名前変更された場合の `copylog` の例を示します。 新しい BLOB 名またはファイル名は、コンテナーへの相対パスの SHA256 ダイジェストに変換され、宛先の種類に基づいてパスにアップロードされます。 宛先として、ブロック BLOB、ページ BLOB、または Azure Files を指定できます。
+
+この `copylog` では、BLOB またはファイルの古い名前と新しい名前、および Azure でのパスが指定されています。
+
+```xml
+<ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: PageBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="TesDir9856b9ab-6acb-4bc3-8717-9a898bdb1f8c\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: AzureFile/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="TesDirf92f6ca4-3828-4338-840b-398b967d810b\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: BlockBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity>
+```
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>データの消去後に生産物流管理ログを取得する
 

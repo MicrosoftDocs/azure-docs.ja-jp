@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 73dd46d1ca0a20748d7a3a7838c499f0c659253d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72cffea3e5d42210bffbdbeef94c475cc8bdebf4
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241675"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312101"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
@@ -122,9 +122,6 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 5. **[承認許可の種類]** として **[承認コード]** を選択します。
 
 6. **[承認エンドポイントの URL]** と **[トークン エンドポイントの URL]** を指定します。 これらの値は、Azure AD テナントの **[エンドポイント]** ページから取得します。 **[アプリの登録]** ページにもう一度移動し、 **[エンドポイント]** を選択します。
-
-    >[!NOTE]
-    > ここで **v1** エンドポイントを使用します
 
 7. **[OAuth 2.0 承認エンドポイント]** をコピーし、 **[承認エンドポイントの URL]** テキストボックスに貼り付けます。
 

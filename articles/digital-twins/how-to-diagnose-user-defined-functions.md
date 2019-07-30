@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.author: stefanmsft
+ms.author: stegaw
 ms.custom: seodec18
-ms.openlocfilehash: 4d772b8cad64f138d93d91e87f6e6364c5a5d602
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808899"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849327"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 

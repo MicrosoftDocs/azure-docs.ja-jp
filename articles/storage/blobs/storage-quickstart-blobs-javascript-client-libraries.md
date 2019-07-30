@@ -31,7 +31,7 @@ ms.locfileid: "65149576"
 ## <a name="setting-up-storage-account-cors-rules"></a>ストレージ アカウントの CORS ルールの設定 
 Web アプリケーションがクライアントから BLOB ストレージにアクセスできるようにするには、[クロス オリジン リソース共有](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効にするようにアカウントを構成する必要があります。 
 
-Azure Portal に戻り、ストレージ アカウントを選択します。 新しい CORS ルールを定義するには、**[設定]** セクションに戻り、**[CORS]** リンクをクリックします。 次に、**[追加]** ボタンをクリックして、**[CORS ルールの追加]** ウィンドウを開きます。 このクイック スタートでは、オープン CORS ルールを作成します。
+Azure Portal に戻り、ストレージ アカウントを選択します。 新しい CORS ルールを定義するには、 **[設定]** セクションに戻り、 **[CORS]** リンクをクリックします。 次に、 **[追加]** ボタンをクリックして、 **[CORS ルールの追加]** ウィンドウを開きます。 このクイック スタートでは、オープン CORS ルールを作成します。
 
 ![Azure BLOB ストレージ アカウントの CORS 設定](media/storage-quickstart-blobs-javascript-client-libraries/azure-blob-storage-cors-settings.png)
 
@@ -81,8 +81,8 @@ az storage account generate-sas
 
 | パラメーター        | 値   | 説明  |
 |------------------|---------|---------|
-| *アクセス許可*    | racwdl  | この SAS は、*read (読み取り)*、*append (追加)*、*create (作成)*、*write (書き込み)*、*delete (削除)*、および *list (一覧表示)* 機能を許可します。 |
-| *resource-types* | sco     | SAS の影響を受けるリソースは、*service (サービス)*、*container (コンテナー)*、および *object (オブジェクト)* です。 |
+| *アクセス許可*    | racwdl  | この SAS は、*read (読み取り)* 、*append (追加)* 、*create (作成)* 、*write (書き込み)* 、*delete (削除)* 、および *list (一覧表示)* 機能を許可します。 |
+| *resource-types* | sco     | SAS の影響を受けるリソースは、*service (サービス)* 、*container (コンテナー)* 、および *object (オブジェクト)* です。 |
 | *services*       | b       | SAS の影響を受けるサービスは、*BLOB* サービスです。 |
 
 これで SAS が生成されたので、コンソールに返された値をテキスト エディターにコピーします。 後の手順で、この値を使用します。
@@ -252,7 +252,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > このコード サンプルを動作させるには、*blobName* に文字列値を指定する必要があります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-このクイック スタートで作成したリソースをクリーンアップするには、[Azure Portal](https://portal.azure.com) に戻り、ストレージ アカウントを選択します。 選択後、**[概要]、[ストレージ アカウントの削除]** の順に移動して、ストレージ アカウントを削除できます。
+このクイック スタートで作成したリソースをクリーンアップするには、[Azure Portal](https://portal.azure.com) に戻り、ストレージ アカウントを選択します。 選択後、 **[概要]、[ストレージ アカウントの削除]** の順に移動して、ストレージ アカウントを削除できます。
 
 ## <a name="next-steps"></a>次の手順
 サンプルを調べて、BLOB をダウンロードする方法と、ファイルのアップロード中に進行状況を報告する方法について学習します。

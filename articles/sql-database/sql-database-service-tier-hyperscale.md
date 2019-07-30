@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 0fe098bd644762fb291eb623a7b41cd987c7fa26
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4aeda5612b2b3e9e2073a65320b238266c8bb33a
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779187"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537867"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>最大 100 TB の Hyperscale サービス レベル
 
@@ -38,7 +38,7 @@ Azure SQL Database の Hyperscale サービス レベルは、仮想コアベー
 Azure SQL Database の Hyperscale サービス レベルでは、次の追加機能が提供されます。
 
 - 最大 100 TB のデータベース サイズのサポート
-- サイズに関係なく、コンピューティングに対する IO の影響もなく、ほぼ瞬間的に行われるデータベース バックアップ (Azure BLOB Storage に格納されたファイル スナップショットに基づく)   
+- サイズに関係なく、コンピューティング リソースに対する IO の影響もなく、ほぼ瞬間的に行われるデータベース バックアップ (Azure BLOB Storage に格納されたファイル スナップショットに基づく)  
 - 数時間あるいは数日かからずに数分間で行われる迅速なデータベース復元 (ファイル スナップショットに基づく) (データ操作の規模ではない)
 - データ ボリュームに関係なく、高いログ スループットと速いトランザクション コミット時間による、全体的に高いパフォーマンス
 - 迅速なスケールアウト - 読み取りワークロードのオフロード用と、ホット スタンバイ用に、1 つ以上の読み取り専用ノードをプロビジョニングできます。
@@ -111,7 +111,7 @@ Azure Storage ノードは、ページ サーバーからのデータの最終�
 
 ハイパースケール データベースは、[Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、[Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)、または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) を使用して作成できます。 ハイパースケール データベースは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみを使用して入手できます。
 
-次の T-SQL コマンドによって、ハイパースケール データベースが作成されます。 `CREATE DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。
+次の T-SQL コマンドによって、ハイパースケール データベースが作成されます。 `CREATE DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。 有効なサービス目標の一覧については[リソースの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier)に関するページを参照してください。
 
 ```sql
 -- Create a HyperScale Database
@@ -146,8 +146,8 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 1. ターゲット リージョンにまだ適切なサーバーが存在しない場合は、そこに SQL Database サーバーを作成します。  このサーバーは、元の (ソース) サーバーと同じサブスクリプションが所有する必要があります。
 2. 自動バックアップからの Azure SQL データベースの復元に関するページの「[geo リストア](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore)」トピックにある手順に従ってください。
 
-#### <a name="notes-on-geo-restores-of-a-hyperscale-database"></a>Hyperscale データベースの geo リストアに関する注意事項
-ソースとターゲットが別々のリージョンにあるため、データベースは、geo リストア以外と同様に、スナップショット ストレージをソース データベースと共有することができません。これは、非常に短時間で完了します。  Hyperscale データベースの geo リストアの場合、ターゲットが geo レプリケーション ストレージのペア リージョンにある場合でも、データのサイズに関連した操作になります。  つまり、geo リストアを実行すると、復元されるデータベースのサイズに比例した時間がかかります。  ターゲットがペア リージョンにある場合、コピーはデータセンター内にあり、インターネット経由の遠距離コピーよりもかなり高速ですが、それでもすべてのビットがコピーされます。
+> [!NOTE]
+> ソースとターゲットが別々のリージョンにあるため、データベースは、geo リストア以外と同様に、スナップショット ストレージをソース データベースと共有することができません。これは、非常に短時間で完了します。  Hyperscale データベースの geo リストアの場合、ターゲットが geo レプリケーション ストレージのペア リージョンにある場合でも、データのサイズに関連した操作になります。  つまり、geo リストアを実行すると、復元されるデータベースのサイズに比例した時間がかかります。  ターゲットがペア リージョンにある場合、コピーはデータセンター内にあり、インターネット経由の遠距離コピーよりもかなり高速ですが、それでもすべてのビットがコピーされます。
 
 ## <a name=regions></a>対応リージョン
 
@@ -161,7 +161,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 - 中国東部 2
 - 中国北部 2
 - 東アジア
-- 米国東部
+- East US
 - 米国東部 2
 - フランス中部
 - 東日本
@@ -185,15 +185,15 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 1. [Azure の [ヘルプとサポート] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)に移動します
 
-2. [**[新しいサポート リクエスト]**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) をクリックします
+2. [ **[新しいサポート リクエスト]** ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) をクリックします
 
     ![Azure の [ヘルプとサポート] ブレード](media/sql-database-service-tier-hyperscale/whitelist-request-screen-1.png)
 
-3. **[問題の種類]** で、**[サービスとサブスクリプションの制限 (クォータ)]** を選択します
+3. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します
 
 4. データベースの作成に使用するサブスクリプションを選択します
 
-5. **[クォータの種類]** で、**[SQL データベース]** を選択します
+5. **[クォータの種類]** で、 **[SQL データベース]** を選択します
 
 6. **[次へ: ソリューション]** をクリックします
 
@@ -218,7 +218,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 11. 適切な連絡方法を選択し、詳細を入力します。
 
-12. **[保存]**、**[続行]** の順にクリックします
+12. **[保存]** 、 **[続行]** の順にクリックします
 
 ## <a name="known-limitations"></a>既知の制限事項
 以下は、一般提供時点の Hyperscale サービス レベルに対する現在の制限事項です。  これらの制限事項ができるだけなくなるように、積極的に取り組んでいます。

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.date: 06/18/2019
+ms.openlocfilehash: 1d639a8b1d5c7a5dd2b7bac7c5e020be7c8b1c50
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002206"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190957"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 
@@ -59,6 +59,16 @@ Azure Database Migration Service インスタンスを停止すると、次の�
 | 原因         | 解決策 |
 | ------------- | ------------- |
 | このエラーは、停止しようとしているサービス インスタンスに、まだ実行中のアクティビティや移行プロジェクト内に存在するアクティビティが含まれている場合に表示されます。 <br><br><br><br><br><br> | 停止しようとしている Azure Database Migration Service のインスタンスには実行中のアクティビティがないようにしてください。 また、サービスを停止する前に、アクティビティまたはプロジェクトを削除することもできます。 次の手順では、実行中のすべてのタスクを削除することでプロジェクトを削除し、移行サービス インスタンスをクリーンアップする方法を示します。<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount <br>手順 3.Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
+
+## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Azure Database Migration Service を開始しようとしたときのエラー
+
+Azure Database Migration Service インスタンスを開始すると、次のエラーが表示されます。
+
+* **エラー**: Service fails to Start. Error: {'errorDetail':'The service failed to start, please contact Microsoft support'} (サービスを開始できません。エラー: {'errorDetail':'サービスを開始できませんでした。Microsoft サポートにお問い合わせください'})
+
+| 原因         | 解決策 |
+| ------------- | ------------- |
+| このエラーは、前のインスタンスが内部で失敗したときに表示されます。 このエラーはまれに発生することがあり、エンジニア チームはそのことを認識しています。 <br> | 開始できないサービスのインスタンスを削除してから、それを置き換える新しいものをプロビジョニングします。 |
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>SQL から Azure SQL DB マネージド インスタンスに移行中のデータベース復元エラー
 

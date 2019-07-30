@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b849e63b758dca777df2be682b28bc4e10e58330
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481898"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102851"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と ExpenseIn の統合
 
@@ -57,15 +57,15 @@ Azure AD への ExpenseIn の統合を構成するには、ギャラリーから
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-**B. Simon** というテスト ユーザーを使用して、ExpenseIn に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと ExpenseIn の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、ExpenseIn に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと ExpenseIn の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 ExpenseIn で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
 2. **[ExpenseIn の構成](#configure-expensein)** - アプリケーション側で SSO 設定を構成します。
-3. **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** - B. Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B. Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[ExpenseIn のテスト ユーザーの作成](#create-expensein-test-user)** - ExpenseIn で B. Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[ExpenseIn のテスト ユーザーの作成](#create-expensein-test-user)** - ExpenseIn で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -101,41 +101,51 @@ ExpenseIn で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="configure-expensein"></a>ExpenseIn の構成
 
-1. 別の Web ブラウザー ウィンドウで、管理者として ExpenseIn にサインインします。
+1. ExpenseIn 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-2. ページ上部の **[管理者]** をクリックし、 **[シングル サインオン]** に移動して **[プロバイダーの追加]** をクリックします。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Setup ExpenseIn]\(ExpenseIn のセットアップ)** をクリックすると、ExpenseIn アプリケーションに移動します。 そこから、管理者の資格情報を入力して ExpenseIn にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. ExpenseIn を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として ExpenseIn 企業サイトにサインインして、次の手順を実行します。
+
+4. ページ上部の **[管理者]** をクリックし、 **[シングル サインオン]** に移動して **[プロバイダーの追加]** をクリックします。
 
      ![ExpenseIn の構成](./media/expenseIn-tutorial/config01.png)
 
-3. **[New Identity Provider] (新しい ID プロバイダー)** ポップアップで、次の手順に従います。
+5. **[New Identity Provider] (新しい ID プロバイダー)** ポップアップで、次の手順に従います。
 
     ![ExpenseIn の構成](./media/expenseIn-tutorial/config02.png)
 
     a. **[プロバイダー名]** ボックスに「Azure」などの名前を入力します。
 
-    b. **[ターゲット URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[Allow Provider Intitated Sign-On]\(プロバイダーによって開始されるサインオンを許可する\)** に **[Yes]\(はい\)** を選択します。
 
-    c. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    c. **[ターゲット URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. 証明書 (Base64) をメモ帳で開き、その内容をコピーして **[証明書]** ボックスに貼り付けます。
+    d. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    e. **Create** をクリックしてください。
+    e. 証明書 (Base64) をメモ帳で開き、その内容をコピーして **[証明書]** ボックスに貼り付けます。
+
+    f. **Create** をクリックしてください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure portal 内で B. Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B. Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `BrittaSimon@contoso.com` 」のように入力します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B. Simon に ExpenseIn へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に ExpenseIn へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[ExpenseIn]** を選択します。
@@ -147,7 +157,7 @@ ExpenseIn で Azure AD SSO を構成してテストするには、次の構成�
 
     ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B. Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
@@ -171,7 +181,7 @@ Azure AD ユーザーが ExpenseIn にサインインできるようにするに
 
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
-    c. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `B. Simon@contoso.com`)。
+    c. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `B.Simon@contoso.com`)。
 
     d. **Create** をクリックしてください。
 

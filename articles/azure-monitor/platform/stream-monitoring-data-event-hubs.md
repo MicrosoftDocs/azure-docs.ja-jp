@@ -1,19 +1,19 @@
 ---
 title: Event Hubs への Azure 監視データのストリーミング
 description: パートナー SIEM または分析ツールにデータを取り込むために Azure 監視データをイベント ハブにストリーム配信する方法について学習します。
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: johnkem
+ms.author: nikiest
 ms.subservice: ''
-ms.openlocfilehash: 72d744808d6b52ccd151645c97005bfdfe1a5541
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8a4de244d0fa07bfc162625f577015317fca7e6a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243466"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069328"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -43,8 +43,8 @@ Azure 環境内には監視データの "層" がいくつかあり、各層の�
 * イベント ハブのスループット スケールは、スループット単位の数によって増やすことができます。 多数のコンシューマー間での消費量は、パーティションの数によって並列化することができます。 1 つのパーティションで、最大 20MBps まで対応できます (1 秒あたり約 20,000 件のメッセージ)。 データの消費元のツールによっては、複数のパーティションからの消費をサポートできない場合もあります。 設定するべきパーティションの数がよくわからない場合は、4 つのパーティションから始めることをお勧めします。
 * イベント ハブでのメッセージのリテンション期間は 7 日間に設定することをお勧めします。 そうすれば、消費元のツールが 1 日以上ダウンした場合でも、ダウンした時点から (最大 7 日前までのイベントを) 復旧することができます。
 * イベント ハブには既定のコンシューマー グループを使用することをお勧めします。 2 つの異なるコンシューマー グループが同じイベント ハブから同じデータを使用するのでないかぎり、他のコンシューマー グループを作成したり、個別のコンシューマー グループを使用する必要はありません。
-* Azure Activity Log については、Event Hubs 名前空間を選択すると、Azure Monitor によって、その名前空間内に 'insights-logs-operationallogs' と呼ばれるイベント ハブが作成されます。 その他のログ タイプについては、既存のイベント ハブを選択する (同じ insights-logs-operationallogs イベント ハブを再利用できます) か、Azure Monitor によってログ カテゴリごとにイベント ハブを作成することができます。
-* 通常、イベント ハブからデータを消費するコンピューターでは、ポート 5671 と 5672 を開く必要があります。
+* Azure Activity Log については、Event Hubs 名前空間を選択すると、Azure Monitor によって、その名前空間内に 'insights-logs-operational-logs' と呼ばれるイベント ハブが作成されます。 その他のログ タイプについては、既存のイベント ハブを選択する (同じ insights-logs-operational-logs イベント ハブを再利用できます) か、Azure Monitor によってログ カテゴリごとにイベント ハブを作成することができます。
+* 通常、イベント ハブからデータを消費するコンピューターまたは VNET では、送信ポートの 5671 と 5672 を開く必要があります。
 
 「[Event Hubs のよく寄せられる質問](../../event-hubs/event-hubs-faq.md)」もご覧ください。
 

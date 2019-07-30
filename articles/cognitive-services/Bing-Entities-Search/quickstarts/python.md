@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Python を使用して Bing Entity Search REST API に検索要求を送信する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用すると、Python を使用して Bing Entity Search REST API に要求を送信し、JSON 応答を受信することができます。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 43f01b39ed01e94fe21283997b5981e7fa49bde5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: fa306ecd7690085d96f561fcf7e043064013344d
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384519"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478938"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>クイック スタート:Python を使用して Bing Entity Search REST API に検索要求を送信する
 

@@ -25,6 +25,8 @@
           href: howto-create-tenant.md
         - name: Azure AD アプリ オブジェクトとユーザーの作成
           href: howto-aad-app-configuration.md
+    - name: Azure Red Hat OpenShift クラスターでスタンドアロンの Prometheus をデプロイする
+      href: howto-deploy-prometheus.md
 - name: リファレンス
   items:
     - name: Azure Red Hat OpenShift CLI

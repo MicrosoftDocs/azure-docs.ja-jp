@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure Standard Load Balancer の機能の概要
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.custom: seodec18
 ms.service: load-balancer
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
-ms.author: kumud
-ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 8eb8134452685add53b9dc339437ac262ecc8a9f
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957472"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274394"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
 

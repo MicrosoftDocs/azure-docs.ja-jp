@@ -3,16 +3,17 @@ title: Azure Container Registry webhook
 description: レジストリ リポジトリで特定のアクションが発生したときに、webhook を使用してイベントをトリガーする方法について説明します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: danlep
-ms.openlocfilehash: 18ac3fcb2797b24c9d5e5f05968eed4bf8732af7
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 59e8d4979e7be02d6097e1c3eccc44e64da87e95
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389448"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311579"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 

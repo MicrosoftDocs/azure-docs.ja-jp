@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: iot-hub
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 01/15/2019
-ms.author: rezas
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 845196c78702c6a94e30554a3346ed776366aac9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c727cb1ed067309ae3c2661c43b2252ac1db63ad
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66163724"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446057"
 ---
 > [!div class="op_single_selector"]
 > * [C#](../articles/iot-hub/quickstart-device-streams-echo-csharp.md)
 > * [C](../articles/iot-hub/quickstart-device-streams-echo-c.md)
-> * [Node.js](../articles/iot-hub/quickstart-device-streams-echo-nodejs.md)
+> * [Node.JS](../articles/iot-hub/quickstart-device-streams-echo-nodejs.md)

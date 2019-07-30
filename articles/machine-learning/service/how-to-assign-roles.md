@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2410787c3307136f827ea7fc34df9a545a59cbf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f28397717d5c89e5a5bcd5e7bdc17b4feb49577
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850903"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467975"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -49,13 +49,13 @@ Azure Machine Learning ワークスペースは Azure リソースの 1 つで�
 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) をインストール済みの場合は、CLI コマンドを使用してユーザーにロールを割り当てることもできます。
 
 ```azurecli-interactive 
-az ml workspace share -n <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
+az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
 `user` フィールドは、ワークスペースの親サブスクリプションが存在する Azure Active Directory のインスタンスにおける既存のユーザーのメール アドレスです。 このコマンドレットを使用する方法の例を次に示します。
 
 ```azurecli-interactive 
-az ml workspace share -n my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
 ## <a name="create-custom-role"></a>カスタム ロールの作成
@@ -104,7 +104,7 @@ az role definition create --role-definition data_scientist_role.json
 デプロイ後、このロールは、指定したワークスペース内で利用可能になります。 これで、このロールを Azure portal で追加し、割り当てることができるようになりました。 または、`az ml workspace share` CLI コマンドを使用して、このロールをユーザーに割り当てることができます。
 
 ```azurecli-interactive
-az ml workspace share -n my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
 

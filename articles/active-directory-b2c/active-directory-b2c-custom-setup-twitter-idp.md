@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc657e079949b8217031906efeb84049217d6493
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf90ec8987ec419131ba21137972a0905e33f19
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510249"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654135"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Twitter アカウントでのサインインを設定する
 
@@ -48,7 +48,7 @@ Azure AD B2C テナントで前に記録した秘密鍵を格納する必要が�
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework - プレビュー]** を選択します。
+4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 6. **オプション**については、`Manual`を選択します。
 7. ポリシー キーの**名前**を入力します。 たとえば、「 `TwitterSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
@@ -58,7 +58,7 @@ Azure AD B2C テナントで前に記録した秘密鍵を格納する必要が�
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-ユーザーが Twitter アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
+ユーザーが Twitter アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 Twitter アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
@@ -147,7 +147,7 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
     ```XML
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
     ```
-    
+
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの ID に更新します。 たとえば、「 `Twitter-OAUTH1` 」のように入力します。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。

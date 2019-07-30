@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16b2eaef74a7aa0e3e28bfcbb6dbd9da568db6cf
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616453"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491400"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 
@@ -56,9 +56,9 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求書のダウンロード
 
-請求書は、Microsoft の顧客契約の[課金プロファイル](billing-mca-overview.md#understand-billing-profiles)ごとに生成されます。 Azure portal から請求書をダウンロードするには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。
+請求書は、Microsoft の顧客契約の[課金プロファイル](billing-mca-overview.md#billing-profiles)ごとに生成されます。 Azure portal から請求書をダウンロードするには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。
 
-1. **[コストの管理と請求]** で検索します。
+1. "**コスト管理 + 請求**" を検索します。
 2. 課金プロファイルを選択します。
 3. **[請求書]** を選択します。
 4. 請求書グリッドで、ダウンロードする請求書の行を探します。
@@ -108,7 +108,7 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 
 Microsoft 顧客契約を結んでいる場合は、メールの請求書の取得をオプトインできます。 すべての課金プロファイルの所有者、共同作成者、閲覧者、および請求書管理者が、メールで請求書を取得します。 閲覧者は、メールの請求書の設定を更新できません。
 
-1. **[コストの管理と請求]** で検索します。
+1. "**コスト管理 + 請求**" を検索します。
 1. 課金プロファイルを選択します。
 1. **[設定]** で **[プロパティ]** を選択します。
 1. **[請求書を電子メールで送信]** で、 **[請求書を電子メールで送信の設定の更新]** を選択します。
@@ -169,7 +169,7 @@ EA のお客様として使用量データを表示およびダウンロード�
 
 #### <a name="download-usage-for-billed-charges"></a>課金された料金の使用量のダウンロード
 
-1. **[コストの管理と請求]** で検索します。
+1. "**コスト管理 + 請求**" を検索します。
 2. 課金プロファイルを選択します。
 3. **[請求書]** を選択します。
 4. 請求書グリッドで、ダウンロードする使用量に対応する請求書の行を探します。
@@ -180,7 +180,7 @@ EA のお客様として使用量データを表示およびダウンロード�
 
 現在の請求期間の月度累計使用量 (料金がまだ課金されていないことを意味します) もダウンロードできます。
 
-1. **[コストの管理と請求]** で検索します。
+1. "**コスト管理 + 請求**" を検索します。
 2. 課金プロファイルを選択します。
 3. **[概要]** ブレードで **[Azure の利用状況と請求金額をダウンロードする]** をクリックします。
 

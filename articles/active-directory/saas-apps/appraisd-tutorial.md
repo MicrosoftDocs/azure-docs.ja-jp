@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee7e58aa6298977b279d0d538fefb24da657388
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357016"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561195"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>チュートリアル:Appraisd と Azure Active Directory の統合
 
@@ -89,7 +89,7 @@ Appraisd に対する Azure AD SSO を構成してテストするには、次の
     > [!NOTE]
     > このチュートリアルで後述する Appraisd SSO の [Configuration]\(構成\) ページで、実際の [Sign-on URL]\(サインオン URL\) と [Relay State]\(リレー状態\) の値を取得します。
 
-1. Appraisd アプリケーションは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier**  は  **user.userprincipalname** にマップされています。 Appraisd アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]**  アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Appraisd アプリケーションは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Appraisd アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 5149c20431155b92aa6dab3b976fe68e6d9cb8c2
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 0c8aa00d069ae54584d8e828dab35c22048f1876
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153940"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295538"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>自主的移行ツールを使用してクラシック アラート ルールを移行する
 
@@ -38,7 +38,7 @@ ms.locfileid: "67153940"
 
 - 新しいアラート ルールを作成および管理するための通知ペイロード形式と API は両方とも、クラシック アラート ルールの場合とは異なります。より多くの機能がサポートされているからです。 [移行のための準備を行う方法について](alerts-prepare-migration.md)。
 
-- 一部のクラシック アラート ルールは、ツールを使用して移行できません。 [移行することができないルールと、それらの対処方法について](alerts-understand-migration.md#which-classic-alert-rules-cannot-be-migrated)。
+- 一部のクラシック アラート ルールは、ツールを使用して移行できません。 [移行することができないルールと、それらの対処方法について](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated)。
 
     > [!NOTE]
     > 移行プロセスは、ご利用のクラシック アラート ルールの評価に影響ありません。 移行されて新しいアラート ルールが有効になるまで、それらは引き続き実行され、アラートを送信します。

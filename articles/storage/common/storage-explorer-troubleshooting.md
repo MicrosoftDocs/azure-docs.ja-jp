@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 980dc850537b7419e4ee48391acd5ba971fb3fed
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 03cb3f2339dda1bf1dbb510b686882e924a98d74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306730"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118699"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -194,7 +194,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 
 * プロキシ経由で作業する必要がある場合は、プロキシ経由で接続するようにネットワーク ツールを構成する必要があります。
 * ネットワーク ツールで使用されるポート番号を確認します。
-* Storage Explorer のプロキシ設定として、ローカル ホストの URL とネットワーク ツールのポート番号を入力します。 入力が正しく行われると、Storage Explorer によって生成された、管理とサービス エンドポイントに対するネットワーク要求のログ記録が、ネットワーク ツールによって開始されます。 たとえば、ブラウザーで BLOB エンドポイントとして「 https://cawablobgrs.blob.core.windows.net/」と入力すると、リソースは存在するが、それにはアクセスできないことを示す次のような応答を受信します。
+* Storage Explorer のプロキシ設定として、ローカル ホストの URL とネットワーク ツールのポート番号を入力します。 入力が正しく行われると、Storage Explorer によって生成された、管理とサービス エンドポイントに対するネットワーク要求のログ記録が、ネットワーク ツールによって開始されます。 たとえば、ブラウザーで BLOB エンドポイントとして「 https://cawablobgrs.blob.core.windows.net/ 」と入力すると、リソースは存在するが、それにはアクセスできないことを示す次のような応答を受信します。
 
 ![コード サンプル](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
@@ -265,7 +265,7 @@ Storage Explorer は、Ubuntu 18.04、16.04、および 14.04 で正式にサポ
 ---
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>新しいバージョンの .NET Core への Storage Explorer 修正プログラムの適用 
-2.0 より新しいバージョンの .NET Core がインストールされていて、Storage Explorer バージョン 1.7.0 以前を実行している場合は、次の手順を実行して Storage Explorer の修正プログラムを適用する必要があります。
+2\.0 より新しいバージョンの .NET Core がインストールされていて、Storage Explorer バージョン 1.7.0 以前を実行している場合は、次の手順を実行して Storage Explorer の修正プログラムを適用する必要があります。
 1. [nuget から](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)バージョン 1.5.43 の StreamJsonRpc をダウンロードします。 ページの右側で "パッケージのダウンロード" リンクを探します。
 2. パッケージをダウンロードした後、そのファイル拡張子を `.nupkg` から `.zip` に変更します
 3. パッケージの解凍

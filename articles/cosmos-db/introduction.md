@@ -4,14 +4,14 @@ description: Azure Cosmos DB について説明します。 このグローバ�
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: a338cec213b82d54b08f2a11a969ddecf72ea7e5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: ee863b6003444ec099753a6488f3fe4078338e60
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953907"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384124"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -74,11 +74,11 @@ Cosmos DB はフル マネージド サービスであるため、複雑なマ�
 
 Cosmos DB は、99.999% の高可用性、99 パーセンタイルでの読み取りと書き込みの待機時間、確実なスループット、整合性を実現する[業界トップの包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) が用意された史上初のサービスです。
 
-### <a name="globally-distributed-operational-analytics-with-spark"></a>Spark によるグローバルに分散された運用分析
+### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>Apache Spark がネイティブで組み込まれたグローバル分散型の運用分析と AI
 
 Cosmos DB の格納データに対して [Spark](spark-connector.md) を直接実行することができます。 この機能を使用すると、Cosmos DB を直接使用するトランザクション ワークロードに影響を与えることなく、世界的な規模で低遅延の運用分析を行うことができます。 詳細については、[グローバルに分散された運用分析](lambda-architecture.md)に関するページを参照してください。
 
-### <a name="develop-applications-on-cosmos-db-using-popular-nosql-apis"></a>人気のある NoSQL API を使用した Cosmos DB でのアプリケーションの開発
+### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>人気のあるオープン ソース ソフトウェア (OSS) API を使用した Cosmos DB でのアプリケーションの開発
 
 Cosmos DB では、Cosmos データベースに格納されているデータを操作するための API を選択できます。 既定では、Cosmos データベースに対するクエリを実行するために [SQL](how-to-sql-query.md) (コア API) を使用することができます。 Cosmos DB では、[Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md)、および [Azure Table Storage](table-introduction.md) の API も実装されています。 よく使用される NoSQL (MongoDB、Cassandra、Gremlin など) のクライアント ドライバー (およびツール) で Cosmos データベースを直接参照することができます。 よく使用される NoSQL API のワイヤ プロトコルがサポートされているため、Cosmos DB では次のことが可能です。
 

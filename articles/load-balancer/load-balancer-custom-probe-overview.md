@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 正常性プローブを使用して Load Balancer の背後にあるインスタンスを監視する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
-ms.author: kumud
-ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 75009530940a0cce7adb8469ead5f55f509a1faa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415709"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275349"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -204,7 +204,7 @@ Load Balancer の正常性プローブによってお客様のインスタンス
 
 正常性プローブの失敗をテストしたい場合、または個別のインスタンスをダウンとしてマークしたい場合は、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使用し、正常性プローブ (宛先ポートまたは[ソース IP](#probesource)) を明示的にブロックしてプローブの失敗をシミュレートできます。
 
-168\.63.129.16 が含まれている Microsoft 所有の IP アドレス範囲を使用してお客様の VNet を構成しないでください。  このような構成は正常性プローブの IP アドレスと競合して、お客様のシナリオの失敗を引き起こす可能性があります。
+168.63.129.16 が含まれている Microsoft 所有の IP アドレス範囲を使用してお客様の VNet を構成しないでください。  このような構成は正常性プローブの IP アドレスと競合して、お客様のシナリオの失敗を引き起こす可能性があります。
 
 VM に複数のインターフェイスがある場合は、プローブを受信したインターフェイスでプローブに応答することを保証する必要があります。  VM でインターフェイスごとにこのアドレスをソース ネットワーク アドレス変換することが必要な場合があります。
 

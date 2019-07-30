@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: fc0ef38193bbd6e5044764a26a5793a4d115348d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c97b09690885057370910c0c1ec062d6b3f37363
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278141"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>チュートリアル:Azure Active Directory と Grovo の統合
 
@@ -54,11 +54,11 @@ Azure AD への Grovo の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Grovo を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への Grovo の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Grovo**」と入力し、結果パネルで **[Grovo]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Grovo**」と入力し、結果パネルで **[Grovo]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Grovo](common/search-new-app.png)
 
@@ -90,15 +90,15 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 
 Grovo で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Grovo** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Grovo** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -123,7 +123,7 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL、リレー状態でこれらの値を更新します。 この値を取得するには、[Grovo クライアント サポート チーム](https://www.grovo.com/contact-us)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. Grovo アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Grovo アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+6. Grovo アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Grovo アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -172,7 +172,7 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
 1. 別の Web ブラウザー ウィンドウで、Grovo に管理者としてサインインします。
 
-2. **[管理者]** > **[統合]** に移動します。
+2. **[管理者]**  >  **[統合]** に移動します。
  
     ![Grovo 構成](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
@@ -190,7 +190,7 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
     c. **[Single sign-on service endpoint binding]\(シングル サインオン サービス エンドポイント バインディング\)** として `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` を選択します。
     
-    d. Azure Portal からダウンロードした **Base64 でエンコードされた証明書**をメモ帳で開き、**[公開キー]** ボックスに貼り付けます。
+    d. Azure Portal からダウンロードした **Base64 でエンコードされた証明書**をメモ帳で開き、 **[公開キー]** ボックスに貼り付けます。
 
     e. **[次へ]** をクリックします。
 
@@ -198,7 +198,7 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -223,7 +223,7 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションでは、Britta Simon に Grovo へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Grovo]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Grovo]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -235,15 +235,15 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-grovo-test-user"></a>Grovo テスト ユーザーの作成
 

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232666"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260607"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Azure Logic Apps でメーリング リスト要求を管理する
 
@@ -45,26 +45,26 @@ Azure サブスクリプションがない場合は、始める前に<a href="ht
 
 * 承認ワークフローに対応した Office 365 Outlook または Outlook.com のメール アカウント。 この記事では Office 365 Outlook を使います。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
-1. Azure のメイン メニューで、**[リソースの作成]** > **[Enterprise Integration]** > **[Logic App]** の順に選択します。
+1. Azure のメイン メニューで、 **[リソースの作成]**  >  **[Enterprise Integration]**  >  **[Logic App]** の順に選択します。
 
    ![ロジック アプリを作成する](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
 
-2. **[ロジック アプリの作成]** で、ロジック アプリに関する情報を次のように入力します。 終了したら、**[ダッシュボードにピン留めする]** > **[作成]** を選びます。
+2. **[ロジック アプリの作成]** で、ロジック アプリに関する情報を次のように入力します。 終了したら、 **[ダッシュボードにピン留めする]**  >  **[作成]** を選びます。
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **名前** | LA-MailingList | ロジック アプリの名前 | 
+   | **Name** | LA-MailingList | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | LA-MailingList-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
-   | **場所** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
+   | **リソース グループ** | LA-MailingList-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
+   | **Location** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
 
@@ -77,9 +77,9 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="add-trigger-to-monitor-emails"></a>メールを監視するトリガーを追加する
 
-1. デザイナーの検索ボックスに「メールが届いたとき」と入力します。 メール プロバイダーに対応するトリガーとして、**[<*your-email-provider*> - 新しい電子メールが届いたとき]** を選択します。
+1. デザイナーの検索ボックスに「メールが届いたとき」と入力します。 メール プロバイダーに対応するトリガーとして、 **[<*your-email-provider*> - 新しい電子メールが届いたとき]** を選択します。
    
-   ![メール プロバイダーの "新しい電子メールが届いたとき" トリガーを選択](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   ![電子メール プロバイダーに対して、[When a new email arrives \(新しい電子メールが届いたとき\)] のトリガーを選択する](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
    * Azure の職場または学校アカウントには、Office 365 Outlook を選択します。
    * 個人用 Microsoft アカウントには、Outlook.com を選択します。
@@ -96,7 +96,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
       | ------- | ----- | ----------- | 
       | **フォルダー** | Inbox | 監視するメール フォルダー | 
       | **間隔** | 1 | チェックの間隔 (単位数) | 
-      | **頻度** | Hour | チェックの間隔に使う時間の単位  | 
+      | **頻度** | 時 | チェックの間隔に使う時間の単位  | 
       |  |  |  | 
 
    2. **[詳細オプションを表示する]** を選択します。 トリガーでメールの件名から探すテキストとして「```subscribe-test-members-ML```」を **[件名フィルター]** ボックスに入力します。
@@ -107,7 +107,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![シェイプを折りたたんで詳細を非表示](./media/tutorial-process-mailing-list-subscriptions-workflow/collapse-trigger-shape.png)
 
-5. ロジック アプリを保存し、 デザイナーのツール バーで、**[保存]** を選択します。
+5. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
 
    ロジック アプリは現在稼働していますが、受信メールをチェックすること以外は何もしていません。 
    そこで、トリガーが起動したときに反応するアクションを追加します。
@@ -116,7 +116,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 トリガーが完成したら、申請の承認/拒否を依頼するメールの送信[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加します。 
 
-1. トリガーで、**[+ 新しいステップ]** > **[アクションの追加]** の順に選択します。 "承認" を検索し、**[<*your-email-provider*> - 承認の電子メールを送信します]** アクションを選択します。
+1. トリガーで、 **[+ 新しいステップ]**  >  **[アクションの追加]** の順に選択します。 "承認" を検索し、 **[<*your-email-provider*> - 承認の電子メールを送信します]** アクションを選択します。
 
    ![[<your-email-provider> - 承認の電子メールを送信します] を選択](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-send-approval-email.png)
 
@@ -141,13 +141,13 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="check-approval-response"></a>承認応答をチェックする
 
-1. **[承認の電子メールを送信します]** アクションの下で、**[+ 新しいステップ]** > **[条件の追加]** の順に選択します。
+1. **[承認の電子メールを送信します]** アクションの下で、 **[+ 新しいステップ]**  >  **[条件の追加]** の順に選択します。
 
    条件シェイプが表示され、ワークフローへの入力として追加できるパラメーターが表示されます。 
 
 2. 条件の名前をわかりやすい名前に変更します。
 
-   1. 条件のタイトル バーにある**省略記号** (**...**) ボタンを選択し、**[名前の変更]** を選択します。
+   1. 条件のタイトル バーにある**省略記号** ( **...** ) ボタンを選択し、 **[名前の変更]** を選択します。
 
       たとえばブラウザーの表示幅を狭くしている場合は、次のように表示されます。
 
@@ -160,13 +160,13 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 3. 承認者によって **[Approve]** が選択されたかどうかをチェックする条件を作成します。
 
    1. 条件内で **[値の選択]** ボックス内をクリックします。このボックスは、ブラウザーの表示幅が広い場合は左側に、表示幅が狭い場合は上部に表示されます。
-   パラメーター リストまたは動的コンテンツ リストから、**[承認の電子メールを送信します]** の **[SelectedOption]** フィールドを選択します。
+   パラメーター リストまたは動的コンテンツ リストから、 **[承認の電子メールを送信します]** の **[SelectedOption]** フィールドを選択します。
 
       たとえば表示幅を広くしている場合、条件は次のように表示されます。
 
       ![[承認の電子メールを送信します] の [SelectedOption] を選択](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
-   2. 比較演算子ボックスで、**[次の値に等しい]** を選択します。
+   2. 比較演算子ボックスで、 **[次の値に等しい]** を選択します。
 
    3. 右側 (表示幅が広い場合) または下部 (表示幅が狭い場合) にある **[値の選択]** ボックスに、値として「```Approve```」を入力します。
 
@@ -182,8 +182,8 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 今度は、承認済みのメンバーをメーリング リストに登録するアクションを追加します。
 
-1. 条件の **[true の場合]** 分岐で、**[アクションの追加]** を選択します。
-"mailchimp" を検索し、**[MailChimp - メンバーをリストに追加する]** アクションを選択します。
+1. 条件の **[true の場合]** 分岐で、 **[アクションの追加]** を選択します。
+"mailchimp" を検索し、次のアクションを選択します: **[MailChimp - メンバーをリストに追加する]**
 
    ![[MailChimp - メンバーをリストに追加する] を選択](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -197,7 +197,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | ------- | ----- | ----------- | 
    | **リスト ID** | test-members-ML | MailChimp メーリング リストの名前 | 
    | **状態** | subscribed | 新しいメンバーの登録ステータス。 詳細については、「<a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API (MailChimp API を使った購読者管理)</a>」を参照してください。 | 
-   | **メール アドレス** | <*new-member-email-address*> | パラメーター リストまたは動的コンテンツ リストから、**[新しい電子メールが届いたとき]** の **[差出人]** を選択します。ここから、新しいメンバーのメール アドレスが渡されます。 
+   | **メール アドレス** | <*new-member-email-address*> | パラメーター リストまたは動的コンテンツ リストから、 **[新しい電子メールが届いたとき]** の **[差出人]** を選択します。ここから、新しいメンバーのメール アドレスが渡されます。 
    |  |  |  | 
 
 5. ロジック アプリを保存し、
@@ -206,20 +206,20 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="check-for-success-or-failure"></a>成功か失敗かをチェックする
 
-1. **[true の場合]** 分岐の **[メンバーをリストに追加する]** アクションで、**[More]\(さらに表示\)** > **[条件の追加]** の順に選択します。
+1. **[true の場合]** 分岐の **[メンバーをリストに追加する]** アクションで、 **[More]\(さらに表示\)**  >  **[条件の追加]** の順に選択します。
 
 2. 条件の名前をわかりやすく「```If add member succeeded```」に変更します。
 
 3. 承認済みのメンバーが正常にメーリング リストに登録されているかどうかをチェックする条件を作成します。
 
    1. 条件内で **[値の選択]** ボックス内をクリックします。このボックスは、ブラウザーの表示幅が広い場合は左側に、表示幅が狭い場合は上部に表示されます。
-   パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** の **[Status]\(ステータス\)** フィールドを選択します。
+   パラメーター リストまたは動的コンテンツ リストから、 **[メンバーをリストに追加する]** の **[Status]\(ステータス\)** フィールドを選択します。
 
       たとえば表示幅を広くしている場合、条件は次のように表示されます。
 
       ![[メンバーをリストに追加する] の [Status]\(ステータス\) を選択](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member.png)
 
-   2. 比較演算子ボックスで、**[次の値に等しい]** を選択します。
+   2. 比較演算子ボックスで、 **[次の値に等しい]** を選択します。
 
    3. 右側 (表示幅が広い場合) または下部 (表示幅が狭い場合) にある **[値の選択]** ボックスに、値として「```subscribed```」を入力します。
 
@@ -231,11 +231,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="send-email-if-member-added"></a>メンバーが追加された場合にメールを送信する
 
-1. **[If add member succeeded]** 条件の **[true の場合]** 分岐で、**[アクションの追加]** を選択します。
+1. **[If add member succeeded]** 条件の **[true の場合]** 分岐で、 **[アクションの追加]** を選択します。
 
    ![条件の [true の場合] 分岐で、[アクションの追加] を選択します。](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
-2. "outlook メールの送信" を検索し、**[<*your-email-provider*> - 電子メールの送信]** アクションを選択します。
+2. "outlook メールの送信" を検索し、 **[<*your-email-provider*> - 電子メールの送信]** アクションを選択します。
 
    ![[電子メールの送信] アクションを追加](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
 
@@ -248,19 +248,19 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **To** | <*your-email-address*> | 成功時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 | 
-   | **[件名]** | <*subject-for-success-email*> | 成功時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Success! Member added to 'test-members-ML': **<メール アドレス>**" | 
-   | **本文** | <*body-for-success-email*> | 成功時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。  <p>"New member has joined 'test-members-ML': **<メール アドレス>**"</br>"Member opt-in status: **<ステータス>**" | 
+   | **[件名]** | <*subject-for-success-email*> | 成功時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、 **[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Success! Member added to 'test-members-ML': **メール アドレス**" | 
+   | **本文** | <*body-for-success-email*> | 成功時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、 **[メンバーをリストに追加する]** 下の指定したフィールドを選択します。  <p>"New member has joined 'test-members-ML': **メール アドレス**"</br>"Member opt-in status: **状態**" | 
    | | | | 
 
 5. ロジック アプリを保存し、
 
 ## <a name="send-email-if-member-not-added"></a>メンバーが追加されなかった場合にメールを送信する
 
-1. **[If add member succeeded]** 条件の **[false の場合]** 分岐で、**[アクションの追加]** を選択します。
+1. **[If add member succeeded]** 条件の **[false の場合]** 分岐で、 **[アクションの追加]** を選択します。
 
    ![条件の [false の場合] 分岐で、[アクションの追加] を選択します。](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
-2. "outlook メールの送信" を検索し、**[<*your-email-provider*> - 電子メールの送信]** アクションを選択します。
+2. "outlook メールの送信" を検索し、 **[<*your-email-provider*> - 電子メールの送信]** アクションを選択します。
 
    ![[電子メールの送信] アクションを追加](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
 
@@ -273,7 +273,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **To** | <*your-email-address*> | 失敗時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 | 
-   | **[件名]** | <*subject-for-failure-email*> | 失敗時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Failed, member not added to 'test-members-ML': **<メール アドレス>**" | 
+   | **[件名]** | <*subject-for-failure-email*> | 失敗時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、 **[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Failed, member not added to 'test-members-ML': **メール アドレス**" | 
    | **本文** | <*body-for-failure-email*> | 失敗時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力します。 <p>"Member might already exist. Check your MailChimp account." | 
    | | | | 
 
@@ -310,7 +310,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、ロジック アプリと関連リソースを含んだリソース グループを削除しましょう。 Azure のメイン メニューから **[リソース グループ]** に移動し、対象のロジック アプリのリソース グループを選択します。 **[リソース グループの削除]** を選択します。 確認のためにリソース グループ名を入力し、**[削除]** を選択します。
+必要がなくなったら、ロジック アプリと関連リソースを含んだリソース グループを削除しましょう。 Azure のメイン メニューから **[リソース グループ]** に移動し、対象のロジック アプリのリソース グループを選択します。 **[リソース グループの削除]** を選択します。 確認のためにリソース グループ名を入力し、 **[削除]** を選択します。
 
 ![[概要] > [リソース グループの削除]](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f46a35d971c008b61d4899e30101ea562d3cefea
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242701"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483401"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure でリアルタイム分析とストリーミング処理技術を選択する
 
@@ -44,7 +44,7 @@ Azure Stream Analytics には、面倒な設定なし使える機能が豊富に
 
 ### <a name="you-need-to-input-from-or-output-to-kafka"></a>Kafka から入力するか、Kafka に出力する必要がある
 
-Azure Stream Analytics には Apache Kafka の入力または出力アダプターがありません。 Kafka にランディングするイベントがあるか、Kafka に送信する必要があるが、自分の Kafka クラスターを実行するための要件を満たせない場合、イベント センダーを変更しなくても、Event Hubs Kafka API で Event Hubs にイベントを送信することで、引き続き Stream Analytics を使用できます。 自分の Kafka クラスターを実行する必要がない場合、[Azure Databricks](../azure-databricks/index.yml) か、[Azure HDInsight](../hdinsight/storm/apache-storm-tutorial-get-started-linux.md) の Storm で完全サポートされている Spark Structured Streaming を使用できます。
+Azure Stream Analytics には Apache Kafka の入力または出力アダプターがありません。 Kafka にランディングするイベントがあるか、Kafka に送信する必要があるが、自分の Kafka クラスターを実行するための要件を満たせない場合、イベント センダーを変更しなくても、Event Hubs Kafka API で Event Hubs にイベントを送信することで、引き続き Stream Analytics を使用できます。 自分の Kafka クラスターを実行する必要がない場合、[Azure Databricks](../azure-databricks/index.yml) か、[Azure HDInsight](../hdinsight/storm/apache-storm-overview.md) の Storm で完全サポートされている Spark Structured Streaming を使用できます。
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>JavaScript または C# 以外の言語で UDF、UDA、カスタム デシリアライザーを記述する
 

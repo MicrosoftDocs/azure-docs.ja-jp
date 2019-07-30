@@ -4,16 +4,16 @@ description: Power BI ワークスペース コレクションでの認証と承
 services: power-bi-workspace-collections
 author: rkarlin
 ms.author: rkarlin
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707109"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672503"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 

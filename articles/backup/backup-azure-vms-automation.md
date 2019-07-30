@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 4df65819256e6a81a07927d463d130fbfdf9317a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85e7b40778305395bb0f4a9403b4aeafc4607654
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255003"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565699"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -447,7 +447,7 @@ $restorejob
 >
 >
 
-追加のパラメーター **TargetResourceGroupName** で、マネージド ディスクの復元先とする RG を指定できます。 
+追加のパラメーター **TargetResourceGroupName** で、マネージド ディスクの復元先とする RG を指定できます。
 
 > [!NOTE]
 > パフォーマンスが大幅に向上するため、マネージド ディスクを復元する場合は **TargetResourceGroupName** を使用することを強くお勧めします。 また、Azure Powershell Az モジュール 1.0 以降では、マネージド ディスクを復元する場合、このパラメーターは必須です
@@ -483,6 +483,15 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob
 ```
 
 ディスクを復元したら、次のセクションに移動して VM を作成します。
+
+## <a name="replace-disks-in-azure-vm"></a>Azure VM でディスクを置き換える
+
+ディスクと構成情報を置き換えるには、次の手順を行います。
+
+- 手順 1:[ディスクを復元する](backup-azure-vms-automation.md#restore-the-disks)
+- 手順 2:[PowerShell を使用してデータ ディスクをデタッチする](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+- 手順 3:[PowerShell を使用してデータ ディスクを Windows VM にアタッチする](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
+
 
 ## <a name="create-a-vm-from-restored-disks"></a>復元されたディスクからの VM の作成
 
@@ -718,6 +727,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Azure VM バックアップからのファイルの復元
 

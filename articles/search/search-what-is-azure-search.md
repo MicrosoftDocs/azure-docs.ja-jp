@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 23754a1184f89d1fb563b2d73109f3a10c48920c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7ba653795791f0e6a2c3d3c73ff574a3ed31f314
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65539318"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485230"
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
 Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 クエリはユーザー定義インデックスを介して実行されます。
@@ -134,7 +134,7 @@ Azure サブスクライバーは [Free レベルでサービスをプロビジ�
 3. .NET と REST API のいずれかを使用してコーディングを進めます。
 
    + [.NET SDK を使用する方法](search-howto-dotnet-sdk.md)では、マネージド コードにおける主なワークフローについて説明します。  
-   + [REST API の概要](https://github.com/Azure-Samples/search-rest-api-getting-started)では、REST API の使用と同じ手順を示します。 さらに、次のクイック スタートを使用して、Postman または Fiddler から REST API を呼び出すこともできます([Azure Search REST API の探索](search-fiddler.md)に関するクイック スタート)。
+   + [REST API の概要](https://github.com/Azure-Samples/search-rest-api-getting-started)では、REST API の使用と同じ手順を示します。 さらに、次のクイック スタートを使用して、Postman または Fiddler から REST API を呼び出すこともできます([Azure Search REST API の探索](search-get-started-postman.md)に関するクイック スタート)。
 
 ## <a name="watch-this-video"></a>次の動画をご覧ください
 

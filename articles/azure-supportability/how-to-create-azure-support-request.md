@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 0b45bd2a1a2599908d2077198dce0062071b79af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31512512"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62129061"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure サポート要求を作成する方法
 ## <a name="summary"></a>まとめ
@@ -32,9 +32,9 @@ Azure ユーザーは、Azure Portal ([https://portal.azure.com](https://portal.
 
 お客様からいただいたご意見とご要望に基づき、サポート要求のシステムを改善しました。大きな目標として次の 3 つに取り組んでいます。
 
-* **合理化**: クリックとブレードを減らし、サポート要求の送信プロセスを簡素化しました。
-* **統合**: Azure リソースの問題を解決するとき、コンテキストを切り替えなくてもそのリソースのサポート要求を簡単に送信できるようにします。
-* **効率的**: 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めます。
+* **合理化**:クリックとブレードを減らし、サポート リクエストの送信プロセスを簡素化しました。
+* **統合**:Azure リソースの問題を解決するとき、コンテキストを切り替えなくてもそのリソースのサポート リクエストを簡単に送信できるようにします。
+* **効率性**: 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めます。
 
 ## <a name="getting-started"></a>使用の開始
 サポート要求は、上部にあるナビゲーション メニューから、あるいはリソース ブレードから直接、作成できます。
@@ -96,7 +96,7 @@ Azure ユーザーは、Azure Portal ([https://portal.azure.com](https://portal.
 ![連絡先情報 24x7](./media/how-to-create-azure-support-request/ContactInformation-2.png)
 
 ## <a name="all-support-requests"></a>すべてのサポート リクエスト
-サポート要求の作成後、**[すべてのサポート リクエスト]** ページで詳細を確認できます。
+サポート要求の作成後、 **[すべてのサポート リクエスト]** ページで詳細を確認できます。
 
 **上部のナビゲーション バーから**
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor を使用した Media Services のメトリックと診断ログの監視 | Microsoft Docs
-description: この記事では、Azure Monitor を使用して Media Services のメトリックと診断ログを監視する方法の概要を説明します。
+title: Azure Monitor を使用した Azure Media Services のメトリックと診断ログの監視 | Microsoft Docs
+description: この記事では、Azure Monitor を使用して Azure Media Services のメトリックと診断ログを監視する方法の概要を説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,81 +11,106 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: bbf43ecb07947fad8cc1ee064d2038e4a21d4444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 138b31856e424078ae32ca2f53393f5aa13505b2
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964771"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797601"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Media Services のメトリックと診断ログの監視
 
-[Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 Azure Monitor で収集されたすべてのデータは、2 つの基本的な型であるメトリックとログのどちらかに該当します。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)を使用して、メトリック データを視覚化し、分析できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信し、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートできます。またはサード パーティのサービスを使用できます。
+[Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 Azure Monitor で収集されたすべてのデータは、2 つの基本的な型であるメトリックとログのどちらかに該当します。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)を使用して、メトリック データを視覚化し、分析できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートできます。またはサード パーティのサービスを使用できます。
 
-概要については、[Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)に関する記事をご覧ください。
+詳細については、[Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)に関する記事をご覧ください。
 
-このトピックでは、現在利用できる [Media Services のメトリック](#media-services-metrics)と [Media Services の診断ログ](#media-services-diagnostic-logs)について説明します。
+このトピックでは、サポートされている [Media Services のメトリック](#media-services-metrics)と [Media Services の診断ログ](#media-services-diagnostic-logs)について説明します。
 
 ## <a name="media-services-metrics"></a>Media Services メトリック
 
-メトリックは、値の変化とは無関係に、一定の間隔で収集されます。 これらは頻繁にサンプリングでき、比較的単純なロジックですばやく起動できるため、アラートを発行するときに役に立ちます。
+メトリックは、値の変化とは無関係に、一定の間隔で収集されます。 これらは頻繁にサンプリングでき、比較的単純なロジックですばやく起動できるため、アラートを発行するときに役に立ちます。 メトリック アラートの作成方法の詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
+
+Media Services では、次のリソースの監視メトリックがサポートされています。
+
+* Account
+* ストリーミング エンドポイント
+ 
+### <a name="account"></a>Account
+
+次のアカウント メトリックを監視できます。 
+
+|メトリックの名前|Display name|説明|
+|---|---|---|
+|AssetCount|アセット数|アカウント内のアセットです。|
+|AssetQuota|アセットのクォータ|アカウント内のアセットのクォータです。|
+|AssetQuotaUsedPercentage|アセットのクォータの使用率|アセットのクォータのうち、既に使用されている割合です。|
+|ContentKeyPolicyCount|コンテンツ キー ポリシー数|アカウント内のコンテンツ キー ポリシーの数です。|
+|ContentKeyPolicyQuota|コンテンツ キー ポリシーのクォータ|アカウント内のコンテンツ キー ポリシーのクォータです。|
+|ContentKeyPolicyQuotaUsedPercentage|コンテンツ キー ポリシーのクォータの使用率|コンテンツ キー ポリシーのクォータのうち、既に使用されている割合です。|
+|StreamingPolicyCount|ストリーミング ポリシー数|アカウント内のストリーミング ポリシーの数です。|
+|StreamingPolicyQuota|ストリーミング ポリシーのクォータ|アカウント内のストリーミング ポリシーのクォータです。|
+|StreamingPolicyQuotaUsedPercentage|ストリーミング ポリシーのクォータの使用率|ストリーミング ポリシーのクォータのうち、既に使用されている割合です。|
+ 
+[アカウントのクォータと制限事項](limits-quotas-constraints.md)もご確認ください。
+
+### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
 
 現在、次の Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) メトリックが Azure によって生成されます。
 
-|メトリック|Display name|説明|
+|メトリックの名前|Display name|説明|
 |---|---|---|
-|Requests|Requests|ストリーミング エンドポイントによって処理された要求の合計数に関する詳細情報を提供します。|
+|Requests|Requests|ストリーミング エンドポイントで処理された HTTP 要求の合計数を提供します。|
 |エグレス|エグレス|エグレス バイト数の合計。 ストリーミング エンドポイントによってストリーミングされるバイト数など。|
-|SuccessE2ELatency|成功したエンド ツー エンドの待機時間| 成功した要求のエンド ツー エンドの待機時間について情報を提供します。|
+|SuccessE2ELatency|成功したエンド ツー エンドの待機時間|ストリーミング エンドポイントが要求を受信してから応答の最後のバイトが送信されるまでの期間。|
 
-たとえば、CLI を使用した "Egress" メトリックを取得するには、次の `az monitor metrics` CLI コマンドを実行します。
+### <a name="why-would-i-want-to-use-metrics"></a>メトリックを使用する理由 
 
-```cli
-az monitor metrics list --resource \
-   "/subscriptions/<subscription id>/resourcegroups/<resource group name>/providers/Microsoft.Media/mediaservices/<Media Services account name>/streamingendpoints/<streaming endpoint name>" \
-   --metric "Egress"
-```
+ここでは、Media Services のメトリックを監視すると、アプリケーションのパフォーマンスの把握にどのように役立つかについて、いくつかの例を示します。 Media Services のメトリックを使用して対処できる内容は次のとおりです。
 
-メトリック アラートの作成方法の詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
+* 制限値を超過したタイミングを把握するために、Standard ストリーミング エンドポイントを監視する方法。
+* 十分な Premium ストリーミング エンドポイント スケール ユニットがあるかどうかを把握する方法。 
+* アラートを設定して、ストリーミング エンドポイントをスケールアップするタイミングを把握する方法。
+* アラートを設定して、アカウントで構成されている最大エグレスに達したタイミングを把握する方法。
+* 失敗した要求の内訳を表示し、エラーの原因を確認する方法。
+* パッケージャーからプルされている DASH または HLS 要求の数を確認する方法。
+* アラートを設定して、失敗した要求の数がしきい値に達したタイミングを把握する方法。 
+
+### <a name="example"></a>例
+
+[Media Services のメトリックを監視する方法](media-services-metrics-howto.md)に関するページをご覧ください
 
 ## <a name="media-services-diagnostic-logs"></a>Media Services の診断ログ
 
-現時点では、次の診断ログを取得できます。
+診断ログからは、Azure リソースの操作で頻繁に見られるデータが豊富に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](../../azure-monitor/platform/diagnostic-logs-overview.md)に関するページをご覧ください。
+
+Media Services では、次の診断ログがサポートされています。
+
+* キー配信
+
+### <a name="key-delivery"></a>キー配信
 
 |Name|説明|
 |---|---|
 |キー配信サービス要求|キー配信サービス要求の情報を表示するログ。 詳細については、[スキーマ](media-services-diagnostic-logs-schema.md)に関するページを参照してください。|
 
-ストレージ アカウントでの診断ログの保存を有効にするには、次の `az monitor diagnostic-settings` CLI コマンドを実行します。 
+### <a name="why-would-i-want-to-use-diagnostics-logs"></a>診断ログを使用する理由 
 
-```cli
-az monitor diagnostic-settings create --name <diagnostic name> \
-    --storage-account <name or ID of storage account> \
-    --resource <target resource object ID> \
-    --resource-group <storage account resource group> \
-    --logs '[
-    {
-        "category": <category name>,
-        "enabled": true,
-        "retentionPolicy": {
-            "days": <# days to retain>,
-            "enabled": true
-        }
-    }]'
-```
+キー配信の診断ログで調べることができる内容は、次のとおりです。
 
-例:
+* DRM の種類ごとに提供されるライセンス数
+* ポリシーごとに提供されるライセンス数 
+* DRM またはポリシーの種類ごとのエラー数
+* クライアントからの未承認のライセンス要求数
 
-```cli
-az monitor diagnostic-settings create --name amsv3diagnostic \
-    --storage-account storageaccountforamsv3  \
-    --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsv3ResourceGroup/providers/Microsoft.Media/mediaservices/amsv3account" \
-    --resource-group "amsv3ResourceGroup" \
-    --logs '[{"category": "KeyDeliveryRequests",  "enabled": true, "retentionPolicy": {"days": 3, "enabled": true }}]'
-```
+### <a name="example"></a>例
+
+[Media Services の診断ログを監視する方法](media-services-diagnostic-logs-howto.md)に関するページをご覧ください
 
 ## <a name="next-steps"></a>次の手順 
 
-[Azure リソースからのログ データの収集と使用の方法](../../azure-monitor/platform/diagnostic-logs-overview.md)。
+* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)
+* [Media Services のメトリックを監視する方法](media-services-metrics-howto.md)
+* [Media Services の診断ログを監視する方法](media-services-diagnostic-logs-howto.md)

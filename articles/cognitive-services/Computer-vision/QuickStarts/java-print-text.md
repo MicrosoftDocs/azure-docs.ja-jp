@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 96d6a1281abfd8307ea997d30c92e39dcc8f0b77
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b43c0b067dee6c11b78f422155a20d5cd301490b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999146"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604352"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-java-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Java を使用して印刷されたテキストを抽出する (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>クイック スタート:Computer Vision の REST API と Java を使用して印刷されたテキスト (OCR) を抽出する
 
 このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
@@ -217,10 +217,6 @@ REST Response:
   "language": "en"
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になった場合は、コンパイル済みのクラスやインポートされたライブラリを含む Java プロジェクトを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

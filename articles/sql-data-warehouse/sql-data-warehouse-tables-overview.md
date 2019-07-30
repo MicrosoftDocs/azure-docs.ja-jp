@@ -2,7 +2,7 @@
 title: テーブルの設計 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でのテーブル設計の概要。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851587"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476744"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
 
@@ -107,7 +107,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
 
 ## <a name="statistics"></a>統計
-クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。 クエリのパフォーマンスを向上させるには、個々の列、特にクエリの結合で使用される列の統計を作成することが重要です。 [統計の作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics)は、自動的に行われます。  ただし、統計の更新は自動的には行われません。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
+クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。 クエリのパフォーマンスを向上させるには、個々の列、特にクエリの結合で使用される列の統計を作成することが重要です。 [統計の作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)は、自動的に行われます。  ただし、統計の更新は自動的には行われません。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
 
 ## <a name="commands-for-creating-tables"></a>テーブルを作成するためのコマンド
 テーブルは、新しい空のテーブルとして作成することができます。 テーブルを作成し、SELECT ステートメントの結果を使用して値を設定することもできます。 テーブルを作成するための T-SQL コマンドを次に示します。

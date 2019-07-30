@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 47fbce7ea26bcb7224fe2624d593d85cd178d610
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 964a472a5c0a6350090f83755747a12e89a1650e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60420311"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422917"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
 Azure Relay サービスでは、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開することができます。 ファイアウォールでポートを開放したり、企業ネットワーク インフラストラクチャ内に及ぶような変更を加えたりすることなく、それが可能です。 
@@ -56,7 +56,7 @@ Azure Relay のハイブリッド接続機能は、以前存在していたリ�
 > Azure Relay のハイブリッド接続は、BizTalk Services の以前ハイブリッド接続機能を置き換えるものです。 BizTalk Services のハイブリッド接続機能は、Azure Service Bus WCF Relay に基づいて構築されました。 Azure Relay のハイブリッド接続機能は、以前から存在する WCF Relay 機能を補完します。 これら 2 つのサービスの機能 (WCF Relay とハイブリッド接続) は、Azure Relay サービス内で並列して存在します。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
 
 ## <a name="wcf-relay"></a>WCF リレー
-WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作します。 一連の WCF "リレー" バインディングを使用して、オンプレミス サービスとリレー サービスとの間に接続を作成します。 リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。 詳細については、[WCF リレーの概要](relay-wcf-dotnet-get-started.md)に関するページを参照してください。
+WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作します。 一連の WCF "リレー" バインディングを使用して、オンプレミス サービスとリレー サービスとの間に接続を作成します。 リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。 詳細については、[WCF リレーの概要](service-bus-relay-tutorial.md)に関するページを参照してください。
 
 ## <a name="hybrid-connections-vs-wcf-relay"></a>ハイブリッド接続とWCF リレー
 ハイブリッド接続と WCF Relay のどちらでも、企業ネットワーク内に存在する資産へのセキュアな接続を実現できます。 どちらの機能を優先して使用するかは、次の表に示すように、個々のニーズによって決まります。

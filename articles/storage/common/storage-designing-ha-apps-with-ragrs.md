@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f38f6aae11f7bf806b7bad76db8f739fb2823d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951301"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357074"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
@@ -212,6 +212,33 @@ RA-GRS は、プライマリ リージョンからセカンダリ リージョ�
 この例では、T5 でクライアントの読み取り先がセカンダリ リージョンに切り替わっているものとします。 クライアントは、この時点で**管理者ロール** エンティティを正常に読み取ることができますが、このエンティティに含まれる管理者数の値は、このときセカンダリ リージョンで管理者としてマークされている**従業員**エンティティの数とは一致しません。 情報の整合性は犠牲にして、読み取った値をそのまま示すこともできますが、 更新が順不同で発生していることから**管理者ロール**が不整合の状態である可能性があると判断し、その事実をユーザーに通知することもできます。
 
 データの不整合が発生しているかどうかを判断するとき、クライアントは "*最後の同期時刻*" の値を使用します。この値は、ストレージ サービスを照会することでいつでも取得できます。 この値を見ると、セカンダリ リージョンのデータの整合性が取れていた最後の時刻と、その時点よりも前にサービスがすべてのトランザクションを適用した時刻がわかります。 上で示した例では、セカンダリ リージョンに**従業員**エンティティが挿入された後、最後の同期時刻が *T1* に設定されています。 この値はしばらく *T1* のままですが、セカンダリ リージョンの**従業員**エンティティが更新されると *T6* に設定されます。 クライアントは *T5* でエンティティを読み取ったときに最後の同期時刻を取得し、エンティティ上のタイムスタンプと比較することができます。 エンティティのタイムスタンプが最後の同期時刻よりも新しい場合、そのエンティティは不整合な状態である可能性があります。そこで、アプリケーションに応じて適切な対応を取ることができます。 このフィールドを使用するには、プライマリ リージョンへの最後の更新が完了した日時がわかっている必要があります。
+
+## <a name="getting-the-last-sync-time"></a>最終同期時刻の取得
+
+データがセカンダリに最後に書き込まれた時刻を特定するために、PowerShell または Azure CLI を使用して最終同期時刻を取得できます。
+
+### <a name="powershell"></a>PowerShell
+
+PowerShell を使用してストレージ アカウントの最終同期時刻を取得するには、ストレージ アカウントの **GeoReplicationStats.LastSyncTime** プロパティを確認します。 プレースホルダー値をお客様独自の値に置き換えてください。
+
+```powershell
+$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -Name <storage-account> `
+    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+Azure CLI を使用してストレージ アカウントの最終同期時刻を取得するには、ストレージ アカウントの **geoReplicationStats.lastSyncTime** プロパティを確認します。 `--expand` パラメーターを使用して、**geoReplicationStats** に下に入れ子になっているプロパティの値を返します。 プレースホルダー値をお客様独自の値に置き換えてください。
+
+```azurecli
+$lastSyncTime=$(az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --expand geoReplicationStats \
+    --query geoReplicationStats.lastSyncTime \
+    --output tsv)
+```
 
 ## <a name="testing"></a>テスト
 

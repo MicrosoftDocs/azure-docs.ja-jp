@@ -4,7 +4,7 @@ description: Azure のファイル共有を使用して Windows フェールオ�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28b3851a52ec5fe69eaa531e2e08f66fb73cb1e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d26df6aeb09934408b9081ac077af52ffc24d66
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936318"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709057"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -310,11 +310,11 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 * Azure Premium ディスクを使う必要があります。
 * Azure Managed Disks を使うことをお勧めします。
 * Resilient File System (ReFS) を使ってボリュームをフォーマットすることをお勧めします。
-    * 詳しくは、「[SAP Note 1869038 - SAP support for ReFs filesystem][1869038]」(SAP Note 1869038 - SAP による ReFs ファイル システムのサポート) および「記憶域スペース ダイレクトのボリュームの計画」記事の「[ファイル システムの選択][planning-volumes-s2d-choosing-filesystem]」をご覧ください。
+    * 詳しくは、「[SAP Note 1869038 - SAP support for ReFs filesystem][1869038]」 (SAP Note 1869038 - SAP による ReFs ファイル システムのサポート) および「記憶域スペース ダイレクトのボリュームの計画」記事の「and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem]ファイル システムの選択」をご覧ください。
     * [Microsoft KB4025334 の累積的な更新プログラム][kb4025334]を必ずインストールします。
 * DS シリーズまたは DSv2 シリーズの Azure VM サイズを使うことができます。
 * 記憶域スペース ダイレクトのディスク同期に必要な VM 間の高いネットワーク パフォーマンスを得るには、少なくとも "高" ネットワーク帯域幅の VM タイプを使う必要があります。
-    詳しくは、[DSv2 シリーズ][dv2-series]および [DS シリーズ][ds-series]の仕様をご覧ください。
+    詳しくは、[DSv2 シリーズ][dv2-series]and [DS-Series][ds-series]の仕様をご覧ください。
 * 記憶域プールに未割り当ての容量を若干確保しておくことをお勧めします。 記憶域プールに未割り当て容量を残しておくと、ドライブで障害が発生した場合に "その場で" 修復するためのボリューム領域が用意されます。 これにより、データの安全性とパフォーマンスが向上します。  詳しくは、「[ボリュームのサイズの選択][choosing-the-size-of-volumes-s2d]」をご覧ください。
 * スケールアウト ファイル共有の Azure VM は、専用の Azure 可用性セットにデプロイする必要があります。
 * スケールアウト ファイル共有のネットワーク名 (\<SAP グローバル ホスト\> など) に対して、Azure 内部ロード バランサーを構成する必要はありません。 これは、SAP ASCS/SCS インスタンスの \<ASCS/SCS 仮想ホスト名\> または DBMS に対して行われます。 スケールアウト ファイル共有は、すべてのクラスター ノード間に負荷をスケールアウトします。 \<SAP グローバル ホスト\> は、すべてのクラスター ノードのローカル IP アドレスを使います。
@@ -323,7 +323,7 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 > [!IMPORTANT]
 > \<SAP グローバル ホスト\> を指し示している SAPMNT ファイル共有の名前を変更することはできません。 SAP は、共有名 "sapmnt" のみをサポートします。
 >
-> 詳しくは、「[SAP Note 2492395 - Can the share name sapmnt be changed?][2492395]」(SAP Note 2492395 - 共有名 sapmnt を変更できますか) をご覧ください。
+> 詳しくは、「[SAP Note 2492395 - Can the share name sapmnt be changed?][2492395]」 (SAP Note 2492395 - 共有名 sapmnt を変更できますか) をご覧ください。
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>2 つのクラスターで SAP ASCS/SCS インスタンスとスケールアウト ファイル共有を構成する
 

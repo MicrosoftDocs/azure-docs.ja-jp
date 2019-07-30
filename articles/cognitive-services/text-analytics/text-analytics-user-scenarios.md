@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8f8d110a13e768d93f0be3c4baaf5715436f2ed
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: d8d2aed16b5af60c44501e6d72332783a164ff91
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502415"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478384"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 
@@ -29,7 +29,7 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>記録された受信カスタマー コールを分析する
 
-テキスト読み上げ、感情分析、およびキー フレーズ抽出を使用して、カスタマー サービスから分析情報を引き出します。 顧客の理解を深め、カスタマー サービスの傾向を明らかにし、顧客エンゲージメントを促進するために、結果を Power BI ダッシュボードまたはポータルに表示します。 API 要求をレポートのためにバッチとして送信するか、または介入のためにリアルタイムで送信します。 
+テキスト読み上げ、感情分析、およびキー フレーズ抽出を使用して、カスタマー サービスから分析情報を引き出します。 顧客の理解を深め、カスタマー サービスの傾向を明らかにし、顧客エンゲージメントを促進するために、結果を Power BI ダッシュボードまたはポータルに表示します。 API 要求をレポートのためにバッチとして送信するか、または介入のためにリアルタイムで送信します。 [サンプル コード](https://github.com/rlagh2/callcenteranalytics)を参照してください。
 
 ![カスタマー サービスの問い合わせからの分析情報の取得をセンチメント分析を使用して自動化する方法を説明する画像](media/use-cases/azure-inbound.svg)
 

@@ -4,18 +4,18 @@ description: Azure Portal を使用して IoT Edge デバイスにモジュー�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/19/2019
+ms.date: 06/25/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8337c8672eb886d79b38b2a38a74037f88604497
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595240"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448558"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 
@@ -43,9 +43,9 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 
 ### <a name="add-modules"></a>モジュールを追加する
 
-1. ページの **[レジストリ設定]** セクションで、モジュール イメージを格納するプライベート コンテナー レジストリにアクセスするための資格情報を指定します。
+1. ページの **[Container Registry の設定]** セクションで、モジュール イメージを格納するプライベート コンテナー レジストリにアクセスするための資格情報を指定します。
 
-1. ページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、 **[追加]** を選択します。
+1. ページの **[デプロイ モジュール]** セクションで、 **[追加]** を選択します。
 
 1. ドロップダウン リストでモジュールの種類を確認します。
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB の制限
-description: この記事では、Azure Cosmos DB の制限について説明します。
+title: Azure Cosmos DB サービスのクォータ
+description: Azure Cosmos DB サービスのクォータとさまざまなリソースの種類に対する既定の制限。
 author: arramac
 ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2019
-ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/10/2019
+ms.openlocfilehash: 74df0038676e8459028084890da569ed3b75a682
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969456"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797281"
 ---
-# <a name="limits-in-azure-cosmos-db"></a>Azure Cosmos DB の制限
+# <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
-この記事では、Azure Cosmos DB サービスの制限の概要について説明します。
+この記事では、Azure Cosmos DB の各種リソースに提供される既定のクォータの概要を説明します。
 
 ## <a name="storage-and-throughput"></a>ストレージとスループット
 
@@ -37,7 +37,6 @@ ms.locfileid: "65969456"
 
 Cosmos コンテナー (または共有スループット データベース) には、400 RU の最小スループットが必要です。 コンテナーが大きくなるにつれ、サポートされる最小スループットは次の要因にも依存するようになります。
 
-* コンテナーで消費される最大ストレージは、消費されるストレージの GB あたり 40 RU の増分値で測定されます。 たとえば、コンテナーに 100 GB のデータが含まれている場合、スループットは少なくとも 4000 RU である必要があります。
 * これまでにコンテナーにプロビジョニングされた最大スループット。 このサービスでは、コンテナーのスループットをプロビジョニングされた最大値の 10% まで下げることがサポートされます。 たとえば、スループットが 10000 RU まで増やされた場合、可能性のある最も低いプロビジョニング スループットは 1000 RU になります。
 * これまでに共有スループット データベース内に作成したコンテナーの総数 (コンテナーあたり 100 RU で測定されます)。 たとえば、共有スループット データベース内に 5 つのコンテナーを作成した場合、スループットは少なくとも 500 RU である必要があります。
 
@@ -48,7 +47,6 @@ Cosmos コンテナー (または共有スループット データベース) �
 | コンテナーあたりの最小 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | データベースあたりの最小 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | 共有スループット データベース内のコンテナーあたりの最小 RU | 100 |
-| 消費されるストレージの GB あたりの最小 RU | 40 |
 
 Cosmos DB は、SDK またはポータルを経由した、コンテナーまたはデータベースあたりのスループット (RU) のエラスティック スケーリングをサポートしています。 各コンテナーは、10 ～ 100 倍 (最小値～最大値) のスケール範囲内で同期的に、かつ直ちにスケーリングできます。 要求されたスループット値がこの範囲外である場合、スケーリングは非同期的に実行されます。 非同期のスケーリングは、要求されたスループットやコンテナー内のデータ ストレージ サイズに応じて、完了するまでに数分～数時間かかることがあります。  
 

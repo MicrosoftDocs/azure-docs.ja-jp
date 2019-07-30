@@ -3,19 +3,19 @@ title: SharePoint ファイル - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加して、Active Directory によりセキュリティで保護されている可能性がある質問と回答でサポート情報を補強できます。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
-ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/24/2019
+ms.author: diberry
+ms.openlocfilehash: ecb9777643296685d0dcc7cd5a177f2fe00d2580
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954954"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704624"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加する
 
@@ -27,18 +27,32 @@ QnA Maker サポート情報マネージャーが Active Directory マネージ�
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>サポート情報へのサポート対象ファイルの種類の追加
 
-SharePoint サーバーからご自分のサポート情報に、QnA Maker でサポートされているすべての[ファイルの種類](../Concepts/data-sources-supported.md)を追加できます。 ファイルのリソースがセキュリティで保護されている場合、[アクセス許可](#permissions)を付与する必要がある場合があります。
+SharePoint サイトからご自分のサポート情報に、QnA Maker でサポートされているすべての[ファイルの種類](../Concepts/data-sources-supported.md)を追加できます。 ファイルのリソースがセキュリティで保護されている場合、[アクセス許可](#permissions)を付与する必要がある場合があります。
 
-1. SharePoint サーバーからファイルの省略記号メニュー (`...`) を選択します。
+1. SharePoint サイトのあるライブラリから、ファイルの省略記号メニュー (`...`) を選択します。
 1. ファイルの URL をコピーします。
 
-    ![ファイルの省略記号メニューを選択し、次いで URL をコピーして、SharePoint ファイルの URL を取得します。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
+   ![ファイルの省略記号メニューを選択してから URL をコピーして、SharePoint ファイルの URL を取得します。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. QnA Maker ポータルの **[設定]** ページでサポート情報に [URL を追加](edit-knowledge-base.md#add-datasource)します。 
 
+### <a name="images-with-sharepoint-files"></a>SharePoint ファイルでのイメージ
+
+ファイルにイメージが含まれる場合、それらは抽出されません。 ファイルが QnA ペアに抽出された後、QnA Maker ポータルからイメージを追加できます。
+
+次のマークダウン構文を使用してイメージを追加します。 
+
+```markdown
+![Explanation or description of image](URL of public image)
+```
+
+角かっこ `[]` 内のテキストは、イメージについての説明です。 かっこ `()` 内の URL は、イメージへの直接リンクです。 
+
+QnA Maker ポータルのインタラクティブ テスト パネルで QnA ペアをテストすると、マークダウン テキストではなくイメージが表示されます。 これにより、クライアント アプリケーションからイメージをパブリックに取得できることが検証されます。
+
 ## <a name="permissions"></a>アクセス許可
 
-SharePoint サーバーからセキュリティで保護されたファイルがサポート情報に追加されると、アクセス許可が付与されます。 SharePoint の設定方法およびファイルを追加するユーザーのアクセス許可に応じ、次が必要になる場合があります。
+SharePoint サーバーからセキュリティで保護されたファイルがサポート情報に追加されると、アクセス許可が付与されます。 SharePoint の設定方法およびファイルを追加するユーザーのアクセス許可に応じ、以下が必要になる場合があります。
 
 * 追加の手順は不要です。そのファイルを追加するユーザーに必要なすべての権限があります。
 * [サポート情報マネージャー](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal)と [Active Directory マネージャー](#active-directory-manager-grant-file-read-access-to-qna-maker)の両者による手順。
@@ -53,7 +67,7 @@ SharePoint サーバーからセキュリティで保護されたファイルが
 
 ![ユーザー アカウントの認証](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-QnA Maker マネージャーがアカウントを選択すると、Active Directory 管理者は (QnA Maker マネージャーではなく) QnA Maker アプリが SharePoint リソースへのアクセスを許可される必要があるという通知を受け取ります。 Active Directory マネージャーはこれをすべての SharePoint リソースに対して行う必要があります。そのリソース内のすべてのドキュメントに対しては行う必要はありません。 
+QnA Maker マネージャーがアカウントを選択すると、Azure Active Directory 管理者は (QnA Maker マネージャーではなく) QnA Maker アプリが SharePoint リソースへのアクセスを許可される必要があるという通知を受け取ります。 Azure Active Directory マネージャーはこれをすべての SharePoint リソースに対して行う必要があります。そのリソース内のすべてのドキュメントに対しては行う必要はありません。 
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active Directory マネージャー: QnA Maker へのファイルの読み取りアクセスの付与
 
@@ -62,12 +76,12 @@ QnA Maker マネージャーがアカウントを選択すると、Active Direct
 ![対話形式でアクセス許可を付与する Azure Active Directory マネージャー](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
 <!--
-The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharepoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`. 
+The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharePoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`. 
 -->
 <!--
 ### Grant access from the interactive pop-up window 
 
-The Active Directory manager will get a pop-up window requesting permissions to the `QnAMakerPortalSharepoint` app. The pop-up window includes the QnA Maker Manager email address that initiated the request, an `App Info` link to learn more about **QnAMakerPortalSharepoint**, and a list of permissions requested. Select **Accept** to provide those permissions. 
+The Active Directory manager will get a pop-up window requesting permissions to the `QnAMakerPortalSharePoint` app. The pop-up window includes the QnA Maker Manager email address that initiated the request, an `App Info` link to learn more about **QnAMakerPortalSharePoint**, and a list of permissions requested. Select **Accept** to provide those permissions. 
 
 ![Azure Active Directory manager grants permission interactively](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 -->
@@ -77,7 +91,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. The Active Directory manager signs in to the Azure portal and opens **[App registrations list](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade)**. 
 
-1. Search for and select the **QnAMakerPortalSharepoint** app. Change the second filter box from **My apps** to **All apps**. The app information will open on the right side.
+1. Search for and select the **QnAMakerPortalSharePoint** app. Change the second filter box from **My apps** to **All apps**. The app information will open on the right side.
 
     ![Select QnA Maker app in App registrations list](../media/add-sharepoint-datasources/select-qna-maker-app-in-app-registrations.png)
 
@@ -101,9 +115,9 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. Active Directory マネージャーは Azure portal にサインインし、 **[Enterprise アプリケーション](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** を開きます。 
 
-1. `QnAMakerPortalSharepoint` を検索して、QnA Maker アプリを選択します。 
+1. `QnAMakerPortalSharePoint` を検索して、QnA Maker アプリを選択します。 
 
-    [![Enterprise アプリの一覧で QnAMakerPortalSharepoint を検索する](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![Enterprise アプリの一覧で QnAMakerPortalSharePoint を検索する](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
 1. **[セキュリティ]** の下で **[アクセス許可]** に移動します。 **[組織に管理者の同意を与えます]** を選択します。 
 
@@ -115,13 +129,13 @@ The Active Directory manager will get a pop-up window requesting permissions to 
   
 <!--
 
-## Add Sharepoint data source with APIs
+## Add SharePoint data source with APIs
 
-You need to get the Sharepoint file's URI before adding it to QnA Maker. 
+You need to get the SharePoint file's URI before adding it to QnA Maker. 
 
-## Get Sharepoint File URI
+## Get SharePoint File URI
 
-Use the following steps to transform the Sharepoint URL into a sharing token.
+Use the following steps to transform the SharePoint URL into a sharing token.
 
 1. Encode the URL using [base64](https://en.wikipedia.org/wiki/Base64). 
 
@@ -140,7 +154,7 @@ Use the following steps to transform the Sharepoint URL into a sharing token.
 
     Get the **@microsoft.graph.downloadUrl** and use this as `fileuri` in the QnA Maker APIs.
 
-### Add or update a Sharepoint File URI to your knowledge base
+### Add or update a SharePoint File URI to your knowledge base
 
 Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
@@ -151,7 +165,7 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
         {
             "fileUri": "<@microsoft.graph.downloadURL>",
             "fileName": "filename.xlsx",
-            "source": "<sharepoint link>"
+            "source": "<SharePoint link>"
         }
     ],
     "urls": [],
@@ -163,10 +177,10 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 
 
 
-## Remove QnA Maker app from Sharepoint authorization
+## Remove QnA Maker app from SharePoint authorization
 
 1. Use the steps in the previous section to find the Qna Maker app in the Active Directory admin center. 
-1. When you select the **QnAMakerPortalSharepoint**, select **Overview**. 
+1. When you select the **QnAMakerPortalSharePoint**, select **Overview**. 
 1. Select **Delete** to remove permissions. 
 
 -->

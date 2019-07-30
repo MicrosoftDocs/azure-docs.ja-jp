@@ -3,7 +3,7 @@ title: ユーザー アカウントでタスクを実行する - Azure Batch | M
 description: Azure Batch でタスクを実行するためのユーザー アカウントを構成する
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd5c16d755ef9b71f36b3d499838b12e6099ba6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93b3004303dd1587340b467c2fd52cb7233c95fd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595381"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322710"
 ---
 > [!NOTE] 
 > この記事で説明するユーザー アカウントは、セキュリティ上の理由により、Remote Desktop Protocol (RDP) や Secure Shell (SSH) で使用されているユーザー アカウントとは異なります。 

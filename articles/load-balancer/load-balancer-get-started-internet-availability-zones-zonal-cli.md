@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
-ms.author: kumud
-ms.openlocfilehash: 3b89c11c11276781ec63367247601fccfd2fa858
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 663567f6e3b078c1cb2afc60c3aaa9fcfb7af4dd
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122199"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275240"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 

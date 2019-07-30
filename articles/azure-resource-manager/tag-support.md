@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 72bb11cd064c90c2bbe1e9e6452dcbf07fe37817
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056874"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304862"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](resource-group-using-tags.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。
@@ -864,8 +864,8 @@ ms.locfileid: "67056874"
 | dnszones/TXT | いいえ |  いいえ |
 | expressRouteCircuits | はい  | いいえ |
 | expressRouteServiceProviders | いいえ |  いいえ |
-| frontdoors | はい | はい |
-| frontdoorWebApplicationFirewallPolicies | はい | はい |
+| frontdoors | はい。ただし、制限あり ([下記の注](#frontdoor)を参照) | はい |
+| frontdoorWebApplicationFirewallPolicies | はい。ただし、制限あり ([下記の注](#frontdoor)を参照) | はい |
 | getDnsResourceReference | いいえ |  いいえ |
 | interfaceEndpoints | はい | はい |
 | internalNotify | いいえ |  いいえ |
@@ -890,7 +890,7 @@ ms.locfileid: "67056874"
 | trafficmanagerprofiles | はい | はい |
 | trafficmanagerprofiles/heatMaps | いいえ |  いいえ |
 | virtualHubs | はい | はい |
-| virtualNetworkGateways | はい | いいえ |
+| virtualNetworkGateways | はい | はい |
 | virtualNetworks | はい | はい |
 | virtualNetworks/subnets | いいえ |  いいえ |
 | virtualNetworkTaps | はい | はい |
@@ -898,6 +898,10 @@ ms.locfileid: "67056874"
 | vpnGateways | はい | いいえ |
 | vpnSites | はい | はい |
 | webApplicationFirewallPolicies | はい | はい |
+
+<a id="frontdoor" />
+
+Azure Front Door Service の場合は、リソースの作成時にタグを適用できますが、タグの更新や追加は現在サポートされていません。
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | リソースの種類 | タグのサポート | コスト レポートのタグ |

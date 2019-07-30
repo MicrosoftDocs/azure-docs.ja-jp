@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc45c63d3168a15b4701dcaff7bb531f759d47ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: fa15a91a6b82a8858bf46a08e8a9dbe11a51d8d1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900054"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>チュートリアル:Azure Active Directory と Brightidea の統合
 
@@ -56,11 +56,11 @@ Azure AD への Brightidea の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Brightidea を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -68,7 +68,7 @@ Azure AD への Brightidea の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Brightidea**」と入力し、結果ウィンドウから **[Brightidea]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Brightidea**」と入力し、結果ウィンドウから **[Brightidea]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧にある Brightidea](common/search-new-app.png)
 
@@ -92,25 +92,25 @@ Brightidea による Azure AD のシングル サインオンを構成してテ�
 
 Brightidea によって Azure AD のシングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) 内の **Brightidea** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) 内の **Brightidea** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **サービス プロバイダー メタデータ ファイル**を保持しており、**IDP** によって開始されるモードに構成したい場合は、**[基本的な SAML 構成]** セクション上で次の手順を実行します。
+4. **サービス プロバイダー メタデータ ファイル**を保持しており、**IDP** によって開始されるモードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
@@ -121,13 +121,13 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
     > [!Note]
     > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![image](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.brightidea.com` という形式で URL を入力します。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -145,7 +145,7 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
 1. 別の Web ブラウザー ウィンドウで、管理者の資格情報を使って Brightidea にサインインします。
 
-2. Brightidea システム内の SSO 機能にアクセスするために、**[Enterprise Setup]\(エンタープライズ セットアップ\)** -> **[認証] タブ**の順に移動します。サブ タブとして[Auth Selection]\(認証の選択\) と [SAML Profiles]\(SAML プロファイル\) の 2 つが表示されます。
+2. Brightidea システム内の SSO 機能にアクセスするために、 **[Enterprise Setup]\(エンタープライズ セットアップ\)**  ->  **[認証] タブ**の順に移動します。サブ タブとして[Auth Selection]\(認証の選択\) と [SAML Profiles]\(SAML プロファイル\) の 2 つが表示されます。
 
     ![Brightidea の構成](./media/brightidea-tutorial/configure1.png)
 
@@ -163,12 +163,12 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
     
     ![Brightidea の構成](./media/brightidea-tutorial/configure4.png)
     
-   * たとえば `Azure Ad SSO` のように、**[SAML Profile Name]\(SAML プロファイル名\)** に入力します。
+   * たとえば `Azure Ad SSO` のように、 **[SAML Profile Name]\(SAML プロファイル名\)** に入力します。
     
    * **[Upload Metadata]\(メタデータのアップロード\)** において、[ファイルの選択] をクリックして、Azure portal からダウンロード済みのメタデータ ファイルをアップロードします。
 
      > [!NOTE]
-     > メタデータ ファイルをアップロードすると、残りのフィールド (**[シングル サインオン サービス]、[ID プロバイダーの発行者]、[公開キーのアップロード ]**) は自動的に入力されます。
+     > メタデータ ファイルをアップロードすると、残りのフィールド ( **[シングル サインオン サービス]、[ID プロバイダーの発行者]、[公開キーのアップロード ]** ) は自動的に入力されます。
 
    * **[電子メール]** ボックスに、`mail` の値を入力します。
      
@@ -180,7 +180,7 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -205,7 +205,7 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
 このセクションでは、Brightidea へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 内で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Brightidea]** を選択します。
+1. Azure portal 内で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Brightidea]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -217,15 +217,15 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-brightidea-test-user"></a>Brightidea テスト ユーザーを作成する
 

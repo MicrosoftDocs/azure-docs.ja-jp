@@ -3,8 +3,8 @@ title: Azure AD エンタイトルメント管理 (プレビュー) での要求
 description: Azure Active Directory エンタイトルメント管理 (プレビュー) におけるアクセス パッケージの要求プロセスと電子メール通知が送信されるタイミングについて説明します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: mamtakumar
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/30/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aede5e315141251026867f7028ebf989d44da4d5
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 25ad17f4c4d338e1d0b8118c1a172e0aaad7118e
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473057"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489099"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) の要求プロセスと電子メール通知
 

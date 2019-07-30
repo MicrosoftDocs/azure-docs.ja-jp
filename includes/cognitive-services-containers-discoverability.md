@@ -1,15 +1,15 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/28/2019
-ms.openlocfilehash: 2361bae06606a8337b709099832d677ca32c4499
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e36e65b90d560d7953992f875d390c123c8ae7f4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66420753"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704277"
 ---
 ## <a name="blog-posts"></a>ブログ記事
 

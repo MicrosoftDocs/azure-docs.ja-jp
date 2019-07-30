@@ -245,3 +245,5 @@
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
     - name: API 実装ガイダンス
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+    - name: '"ホスト名の更新の失敗" エラーに関するトラブルシューティング'
+      href: api-management-troubleshoot-cannot-add-custom-domain.md

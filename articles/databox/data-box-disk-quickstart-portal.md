@@ -9,20 +9,42 @@ ms.topic: quickstart
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: a01da3218b07307faa8e94acab1473c82bd86c41
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546927"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477794"
 ---
+::: zone target="docs"
+
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box Disk をデプロイする
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Azure portal を使用して Azure Data Box Disk の使用を開始する
+
+::: zone-end
+
+::: zone target="docs"
 
 このクイック スタートでは、Azure portal を使用して Azure Data Box Disk をデプロイする方法について説明します。 ここでは、すばやく注文を作成する手順や、ディスクを受け取る手順、開梱の手順、接続手順のほか、Azure にアップロードできるようデータをディスクにコピーする手順などについて取り上げています。
 
 デプロイと追跡に関する詳しい手順については、「[チュートリアル: Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」を参照してください。 
 
 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+::: zone-end
+
+::: zone target="chromeless"
+
+このクイック スタートでは、Azure portal を使用して Azure Data Box Disk をデプロイする方法について説明します。 この手順には、Azure へのアップロードのための前提条件の確認、ディスクのロック解除、データの接続とディスクへのコピーが含まれます。
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,12 +56,29 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 Azure Portal ([https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs)) にサインインします。
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>前提条件
+
+- Data Box Disk を注文済みであること。「[チュートリアル:Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」を参照してください。
+- ディスクの受け取りが済んでいて、ポータルでジョブの状態が **[配信済み]** に更新されていること。
+- データのコピー元として使用できるクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
+
+    - [サポート対象のオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されていること。
+    - Windows クライアントである場合は、[その他の必須ソフトウェア](data-box-disk-system-requirements.md#other-required-software-for-windows-clients)がインストールされていること。
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="order"></a>順序
 
 この手順には約 5 分かかります。
 
 1. Azure portal で新しい Azure Data Box リソースを作成します。 
-2. このサービスが有効になったサブスクリプションを選択し、転送の種類として **[インポート]** を選択します。 **[ソースの国]** にデータが存在する場所を、**[宛先 Azure リージョン]** にデータの転送先を指定します。
+2. このサービスが有効になったサブスクリプションを選択し、転送の種類として **[インポート]** を選択します。 **[ソースの国]** にデータが存在する場所を、 **[宛先 Azure リージョン]** にデータの転送先を指定します。
 3. **[Data Box Disk]** を選択します。 ソリューションの最大容量は 35 TB ですが、それを超えるサイズのデータについては複数のディスク注文を作成することができます。  
 4. 注文の詳細と発送情報を入力します。 ご利用のリージョンでこのサービスが提供されている場合、通知メール アドレスを指定し、概要を確認したうえで注文を作成します。
 
@@ -111,11 +150,11 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
 
 - Data Box の注文は、注文が処理される前であれば、Azure portal からキャンセルできます。 注文が処理された後は、キャンセルできません。 注文は、完了ステージに到達するまで続行されます。
 
-    注文をキャンセルするには、**[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。  
+    注文をキャンセルするには、 **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。  
 
 - Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。
 
-    注文を削除するには、**[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
+    注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -123,3 +162,5 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用して Data Box Disk を管理する](data-box-portal-ui-admin.md)
+
+::: zone-end

@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) クラスターを使用したイングレス用の独自の TLS 証明書の使用
 description: Azure Kubernetes Service (AKS) クラスターで独自の証明書を使用する NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: iainfou
-ms.openlocfilehash: eebc484351714c7a30f65e61434076fcde175a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430944"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615432"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成し、独自の TLS 証明書を使用する
 
@@ -25,11 +25,11 @@ ms.locfileid: "66430944"
 - [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
-- Let's Encrypt を使用して、[動的パブリック IP アドレスを使用][aks-ingress-tls]または[静的パブリック IP アドレスを使用][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
+- Let's Encrypt を使用して[動的パブリック IP アドレス付き][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]の TLS 証明書を自動的に生成するイングレス コントローラーを作成する
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Helm を使用し、NGINX イングレス コントローラーおよびサンプル Web アプリをインストールします。 Helm は、AKS クラスター内で初期化され、Tiller 用のサービス アカウントが使用されている必要があります。 最新リリースの Helm を使用していることを確認します。 アップグレード手順については、「[Helm のインストール ドキュメント][helm-install]」を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
+この記事では、Helm を使用し、NGINX イングレス コントローラーおよびサンプル Web アプリをインストールします。 Helm は、AKS クラスター内で初期化され、Tiller 用のサービス アカウントが使用されている必要があります。 最新リリースの Helm を使用していることを確認します。 アップグレード手順については、「[Helm のインストール ドキュメント][helm-install]」を参照してください。Helm の構成と使用について詳しくは、「Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール」を参照してください。. For more information on configuring and using Helm, see [Install applications with Helm in Azure Kubernetes Service (AKS)][use-helm]
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -301,7 +301,7 @@ kubectl delete namespace ingress-basic
 - [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
-- Let's Encrypt を使用して、[動的パブリック IP アドレスを使用][aks-ingress-tls]または[静的パブリック IP アドレスを使用][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
+- Let's Encrypt を使用して[動的パブリック IP アドレス付き][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]の TLS 証明書を自動的に生成するイングレス コントローラーを作成する
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm

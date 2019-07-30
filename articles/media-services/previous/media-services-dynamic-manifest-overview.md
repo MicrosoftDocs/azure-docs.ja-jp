@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: 68eeb40e905d089601208d9fc181042c7b434843
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956796"
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 2](media-services-dynamic-manifest-overview.md)
 > * [Version 3](../latest/filters-dynamic-manifest-overview.md)
 
@@ -73,14 +73,14 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>動的マニフェスト
-アセットの既定のマニフェスト ファイルに記述されている情報よりも、さらに高い柔軟性をクライアントが必要とする [シナリオ](media-services-dynamic-manifest-overview.md#scenarios) があります。 例: 
+アセットの既定のマニフェスト ファイルに記述されている情報よりも、さらに高い柔軟性をクライアントが必要とする [シナリオ](media-services-dynamic-manifest-overview.md#scenarios) があります。 例:
 
 * デバイスに固有: コンテンツの再生に使用するデバイスでサポートしている演奏や言語のトラックのみを指定して配信する場合 (「演奏フィルタ―処理」)。 
 * マニフェストを減らして、ライブ イベントのサブクリップのみを表示する場合 (「サブクリップ フィルター処理」)
 * ビデオの開始をトリミングする場合 (「ビデオのトリミング」)
 * プレゼンテーション ウィンドウ (DVR) を調整し、プレーヤーの DVR ウィンドウの長さを限定する ("プレゼンテーション ウィンドウの調整")。
 
-このような柔軟性を実現するために、Media Services では定義済みの **フィルター** に基づいた [動的マニフェスト](media-services-dynamic-manifest-overview.md#filters)を用意しています。  フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーミングできるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) によってサポートされるアダプティブ ビットレート ストリーミング プロトコル (HLS、MPEG-DASH、および Smooth Streaming) に適用できます。 例: 
+このような柔軟性を実現するために、Media Services では定義済みの **フィルター** に基づいた [動的マニフェスト](media-services-dynamic-manifest-overview.md#filters)を用意しています。  フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーミングできるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) によってサポートされるアダプティブ ビットレート ストリーミング プロトコル (HLS、MPEG-DASH、および Smooth Streaming) に適用できます。 例:
 
 フィルターを使用した MPEG DASH URL
 

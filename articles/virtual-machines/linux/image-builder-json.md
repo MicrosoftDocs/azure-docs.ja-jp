@@ -7,12 +7,12 @@ ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a577a2a2a3b21cb027ba699450631a627f4f7a39
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538293"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501881"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>更新:Azure Image Builder テンプレートを作成する 
 
@@ -55,7 +55,7 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
 
 location は、カスタム イメージを作成するリージョンです。 Image Builder プレビューでは、次のリージョンがサポートされています。
 
-- 米国東部
+- East US
 - 米国東部 2
 - 米国中西部
 - 米国西部
@@ -331,6 +331,8 @@ OS のサポート: Linux、Windows
  
  
 ファイルのダウンロードまたは指定されたディレクトリへの格納を行おうとしてエラーが発生した場合、そのカスタマイズ ステップは失敗し、customization.log にそれが記録されます。
+
+>> 注意! ファイル カスタマイザーは、小さいファイルのダウンロード (20 MB 未満) にのみ適しています。 大きいファイルをダウンロードする場合は、スクリプトまたはインライン コマンド (ファイルをダウンロードするための使用コード) を使用します。たとえば、Linux の場合は `wget` または `curl`、Windows の場合は `Invoke-WebRequest` などがあります。
 
 ファイル カスタマイザーのファイルは、[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) を使って Azure Storage からダウンロードできます。
 

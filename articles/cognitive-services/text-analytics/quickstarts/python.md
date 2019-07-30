@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/09/2019
+ms.date: 06/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9ae894bee803c60b56a1bfacd5667f355aa44d2b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 69f22d92cc586942d3e368a164d6e95f52aa3eea
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799998"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356902"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
@@ -49,7 +49,6 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 import requests
 # pprint is used to format the JSON response
 from pprint import pprint
-from IPython.display import HTML
 ```
 
 サブスクリプション キーと、Text Analytics REST API のエンドポイントのための変数を作成します。 エンドポイントのリージョンが、サインアップしたときに使用したリージョン (`westcentralus` など) に対応していることを確認します。 試用版のキーを使用している場合は、何も変更する必要はありません。
@@ -74,18 +73,18 @@ language_api_url = text_analytics_base_url + "languages"
 API に対するペイロードは、`id` 属性と `text` 属性を含むタプルである `documents` の一覧で構成されます。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
 
 ```python
-documents = { "documents": [
-    { "id": "1", "text": "This is a document written in English." },
-    { "id": "2", "text": "Este es un document escrito en Español." },
-    { "id": "3", "text": "这是一个用中文写的文件" }
+documents = {"documents": [
+    {"id": "1", "text": "This is a document written in English."},
+    {"id": "2", "text": "Este es un document escrito en Español."},
+    {"id": "3", "text": "这是一个用中文写的文件"}
 ]}
 ```
 
 要求ライブラリを使用して、ドキュメントを API に送信します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、`requests.post()` を使用して要求を送信します。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(language_api_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(language_api_url, headers=headers, json=documents)
 languages = response.json()
 pprint(languages)
 ```
@@ -143,19 +142,23 @@ sentiment_url = text_analytics_base_url + "sentiment"
 言語検出の例に示すように、サービスには、ドキュメントの一覧で構成された `documents` キーを使用してディクショナリを作成します。 各ドキュメントは、`id`、分析対象の `text`、およびテキストの `language` で構成されるタプルです。 
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
-  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
-  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+documents = {"documents": [
+    {"id": "1", "language": "en",
+        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+    {"id": "2", "language": "en",
+        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
+    {"id": "3", "language": "es",
+        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
+    {"id": "4", "language": "es",
+     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
 要求ライブラリを使用して、ドキュメントを API に送信します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、`requests.post()` を使用して要求を送信します。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(sentiment_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(sentiment_url, headers=headers, json=documents)
 sentiments = response.json()
 pprint(sentiments)
 ```
@@ -203,19 +206,23 @@ keyphrase_url = text_analytics_base_url + "keyPhrases"
 このドキュメントのコレクションは、感情分析の例で使用したものと同じです。
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
-  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
-  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+documents = {"documents": [
+    {"id": "1", "language": "en",
+        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+    {"id": "2", "language": "en",
+        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
+    {"id": "3", "language": "es",
+        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
+    {"id": "4", "language": "es",
+     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
 要求ライブラリを使用して、ドキュメントを API に送信します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、`requests.post()` を使用して要求を送信します。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(keyphrase_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(keyphrase_url, headers=headers, json=documents)
 key_phrases = response.json()
 pprint(key_phrases)
 ```
@@ -277,17 +284,18 @@ entities_url = text_analytics_base_url + "entities"
 前の例と同様に、ドキュメントのコレクションを作成します。 
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
+documents = {"documents": [
+    {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
 ]}
 ```
 
 要求ライブラリを使用して、ドキュメントを API に送信します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、`requests.post()` を使用して要求を送信します。
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(entities_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
+pprint(entities)
 ```
 
 ### <a name="output"></a>Output

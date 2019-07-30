@@ -6,7 +6,7 @@ metadata:
   description: Custom Vision を使用して、カスタム イメージの分類をビルド、デプロイ、および向上させる方法について説明します。 チュートリアルでは、この API を使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: custom-vision
   ms.tgt_pltfrm: na
@@ -50,7 +50,7 @@ sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: 矢印リンクを選択して Custom Vision の使用を開始する方法について説明します <img src="media/index/link.jpg" height="15" width="15"></img>
+        text: 矢印リンクを選択して Custom Vision の使用を開始する方法について学習します <img src="media/index/link.jpg" height="15" width="15"></img>
       - type: table
         style: dataMatrix
         columns:

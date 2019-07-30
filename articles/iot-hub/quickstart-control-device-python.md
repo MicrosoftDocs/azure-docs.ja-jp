@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/26/2019
-ms.openlocfilehash: 74146242ef4084e5990027117689bb1371c3f272
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.date: 06/21/2019
+ms.openlocfilehash: fe0c16962eef38ac26490eb7928d1705ef63a217
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65832176"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68355026"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Python)
 
@@ -44,11 +44,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 開発コンピューターに現在インストールされている Python のバージョンは、次のいずれかのコマンドを使って確認できます。
 
 ```python
-python --version
+python - -version
 ```
 
 ```python
-python3 --version
+python3 - -version
 ```
 
 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
@@ -102,12 +102,13 @@ az extension add --name azure-cli-iot-ext
     ```azurecli-interactive
     az iot hub show-connection-string \
       --name YourIoTHubName \
+      --policy-name service \
       --output table
     ```
 
     次のようなサービス接続文字列をメモしておきます。
 
-   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
     この値は、このクイック スタートの後の方で使います。 サービス接続文字列はデバイス接続文字列とは異なります。
 

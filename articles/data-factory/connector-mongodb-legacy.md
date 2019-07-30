@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320482"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61400476"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [現在のバージョン](connector-mongodb.md)
 
@@ -55,16 +55,16 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type |type プロパティは、次のように設定する必要があります:**MongoDb** |はい |
-| server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
+| サーバー |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 27017) |
 | databaseName |アクセスする MongoDB データベースの名前。 |はい |
 | authenticationType | MongoDB データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic**、**Anonymous**。 |はい |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | password |ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |いいえ。 基本認証の場合、既定では管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
-| enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
-| allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ  |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+| enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ |
+| allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
 
@@ -178,12 +178,12 @@ MongoDB からデータをコピーするとき、次の MongoDB のデータ型
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Date |Datetime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
+| ObjectID |string |
+| String |string |
 | UUID |Guid |
 | Object |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
 
@@ -199,7 +199,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 * 実テーブルと同じデータ (複合型列を除く) を含む **ベース テーブル**。 ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
 * 複合型列ごとの**仮想テーブル**。入れ子になったデータが展開されます。 仮想テーブルの名前は、実テーブルの名前、区切り文字の "_"、配列またはオブジェクトの名前を使用して付けられます。
 
-仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。  仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
+仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
 
 ### <a name="example"></a>例
 
@@ -219,7 +219,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 
 次のテーブルは、例における元の配列を表す仮想テーブルを示しています。 これらのテーブルには、以下が含まれます。
 
-* 元の配列の行に対応する元のプライマリ キー列への参照 (_Id 列を使用) 
+* 元の配列の行に対応する元のプライマリ キー列への参照 (_Id 列を使用)
 * 元の配列内のデータの位置の指定
 * 配列内の各要素の展開されたデータ
 

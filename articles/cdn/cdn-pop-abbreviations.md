@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 488f7bc4cb715e9cdb99b7a7c79407b9bbc0d29c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869616"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593594"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN の略称別の POP の場所
 > [!div class="op_single_selector"]

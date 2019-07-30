@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 204f540b-09f1-452b-a52f-78143710ef76
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 611867cf5606d5a1078706e1c0f67f673a7fa500
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: e03870322df94a4c9587a3395c70925d2d2e838d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254552"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>チュートリアル:Azure Active Directory と Mitel MiCloud Connect の統合
 
@@ -210,7 +210,7 @@ Mitel アカウント ポータルでのユーザーの追加の詳細につい�
 * **勤務先のメール アドレス:** `brittasimon@<yourcompanydomain>.<extension>`   
 (例: [brittasimon@contoso.com](mailto:brittasimon@contoso.com))
 
-* **ユーザー名:** `brittasimon@<yourcompanydomain>.<extension> `  
+* **ユーザー名:** `brittasimon@<yourcompanydomain>.<extension>`  
 (例: [brittasimon@contoso.com](mailto:brittasimon@contoso.com)。ユーザー名は通常、ユーザーの勤務先のメール アドレスと同じ)
 
 **注:** MiCloud Connect のユーザー名は、Azure 内のユーザーのメール アドレスと同じである必要があります。

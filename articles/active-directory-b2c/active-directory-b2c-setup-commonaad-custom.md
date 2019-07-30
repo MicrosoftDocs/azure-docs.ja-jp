@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72d01d6927ee421d01a831244acf65c44a084354
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1938164e957daa84b22fa83e9cb9fa8d51ffeb15
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508666"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654081"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -45,7 +45,7 @@ ms.locfileid: "66508666"
     ```
     https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
     ```
-    
+
 8. **Create** をクリックしてください。 後で使用するために **[アプリケーション ID]** をコピーします。
 9. アプリケーションを選択し、 **[設定]** を選択します。
 10. **[キー]** を選択し、キーの説明を入力し、期間を選択し、 **[保存]** をクリックします。 キーの値が表示されたら、後で使用するためにコピーします。
@@ -57,7 +57,7 @@ ms.locfileid: "66508666"
 
 1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 2. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-3. [概要] ページで、 **[Identity Experience Framework - プレビュー]** を選択します。
+3. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 4. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 5. **オプション**については、`Manual`を選択します。
 6. ポリシー キーの**名前**を入力します。 たとえば、「 `ContosoAppSecret` 」のように入力します。  プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
@@ -67,7 +67,7 @@ ms.locfileid: "66508666"
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-ユーザーが Azure AD を使用してサインインできるようにするには、エンドポイント経由で Azure AD B2C が通信できるクレーム プロバイダーとして Azure AD を定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
+ユーザーが Azure AD を使用してサインインできるようにするには、エンドポイント経由で Azure AD B2C が通信できるクレーム プロバイダーとして Azure AD を定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 ポリシーの拡張ファイル内で Azure AD を **ClaimsProvider** 要素に追加することで、Azure AD をクレーム プロバイダーとして定義できます。
 
@@ -93,7 +93,7 @@ ms.locfileid: "66508666"
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
-        
+
             <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
             <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
@@ -178,7 +178,7 @@ ms.locfileid: "66508666"
     ```XML
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
-    
+
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `Common-AAD` 」のように入力します。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。

@@ -8,16 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050732"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080417"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
-[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関する記事で詳しく説明したように、デバイスは、デバイス向けエンドポイント (**/devices/{deviceId}/files**) を介して通知を送信することで、ファイルのアップロードを開始できます。 アップロードが完了したことをデバイスが IoT Hub に通知すると、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/filenotifications**) を介してファイル アップロード通知メッセージを送信します。
+[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関する記事で詳しく説明したように、デバイスは、デバイス向けエンドポイント ( **/devices/{deviceId}/files**) を介して通知を送信することで、ファイルのアップロードを開始できます。 アップロードが完了したことをデバイスが IoT Hub に通知すると、IoT Hub はサービス向けエンドポイント ( **/messages/servicebound/filenotifications**) を介してファイル アップロード通知メッセージを送信します。
 
 IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT Hub が、関連付けられている Azure ストレージ アカウントへのディスパッチャーとして機能します。 デバイスは、アップロードするファイルに固有のストレージ トークンを IoT Hub に要求します。 SAS URI を使用して、ファイルをストレージにアップロードし、アップロードが完了すると、IoT Hub に完了の通知を送信します。 IoT Hub は、ファイル アップロードが完了したことを確認してから、サービス向けファイル通知エンドポイントにファイル アップロード通知メッセージを追加します。
 
@@ -95,7 +95,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 必要に応じて、デバイスがアップロードの完了を IoT Hub に通知すると、IoT Hub によって通知メッセージが生成されます。 このメッセージには、ファイルの名前とストレージの場所が含まれています。
 
-「[エンドポイント](iot-hub-devguide-endpoints.md)」で説明したように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/fileuploadnotifications**) 経由でメッセージとしてファイルのアップロード通知を配信します。 ファイルのアップロード通知の受信セマンティクスは Cloud-to-device メッセージの場合と同様であり、[メッセージのライフサイクル](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle)も同じです。 ファイルのアップロード通知エンドポイントから取得した各メッセージは、次のプロパティを持つ JSON レコードです。
+「[エンドポイント](iot-hub-devguide-endpoints.md)」で説明したように、IoT Hub はサービス向けエンドポイント ( **/messages/servicebound/fileuploadnotifications**) 経由でメッセージとしてファイルのアップロード通知を配信します。 ファイルのアップロード通知の受信セマンティクスは cloud-to-device メッセージの場合と同様であり、[メッセージのライフ サイクル](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)も同じです。 ファイルのアップロード通知エンドポイントから取得した各メッセージは、次のプロパティを持つ JSON レコードです。
 
 | プロパティ | 説明 |
 | --- | --- |

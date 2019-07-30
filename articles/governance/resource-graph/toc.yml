@@ -41,6 +41,9 @@
     - name: リソースの変更の取得
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
+- name: トラブルシューティング
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: リファレンス
   items:
     - name: Azure CLI

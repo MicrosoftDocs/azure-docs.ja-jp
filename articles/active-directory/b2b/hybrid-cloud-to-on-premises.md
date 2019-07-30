@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2447aac825874779a543d25b0a70c339dcbf1473
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6d3fa8e71df3d1184956e1802d1b6b72411b6449
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768457"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113031"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -61,9 +61,9 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 ### <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
 
-ライフサイクル管理ポリシーを使用して、オンプレミス B2B ユーザー オブジェクトを管理できます。 例: 
+ライフサイクル管理ポリシーを使用して、オンプレミス B2B ユーザー オブジェクトを管理できます。 例:
 
-- アプリケーション プロキシ認証中に多要素認証 (MFA) が使用されるようにゲスト ユーザーの MFA ポリシーを設定することができます。 詳細は、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」をご覧ください。
+- アプリケーション プロキシ認証中に多要素認証 (MFA) が使用されるようにゲスト ユーザーの MFA ポリシーを設定することができます。 詳細については、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」を参照してください。
 - クラウド B2B ユーザーに対して実行されるスポンサー、アクセス レビュー、アカウントの検証などが、オンプレミス ユーザーに適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、MIM 同期または Azure AD Connect 同期によってオンプレミス ユーザーも削除されます。詳細については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../governance/manage-guest-access-with-access-reviews.md)」を参照してください。
 
 ### <a name="create-b2b-guest-user-objects-through-mim"></a>MIM を介した B2B ゲスト ユーザー オブジェクトの作成

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1386f4058f9490bad0161b680005db6031bace1
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787317"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491527"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
 この記事では、Azure で自動スケール操作に基づいて特定の Web URL を呼び出すことや電子メールを送信することができるようにトリガーを設定する方法について説明します。  
 
-## <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>webhooks
 Webhook を使用すると、後処理やカスタム通知のために、Azure アラート通知を他のシステムにルーティングすることができます。 たとえば、受信 Web 要求を処理して SMS を送信する、バグをログに記録する、チャットやメッセージング サービスを使用してチームに通知するなどのサービスにアラートをルーティングすることができます。Webhook URI は有効な HTTP または HTTPS エンドポイントである必要があります。
 
 ## <a name="email"></a>電子メール
@@ -66,7 +66,7 @@ REST API または Resource Manager テンプレートを使用している場�
 | sendToSubscriptionAdministrator |はい |値は "true" または "false" にする必要があります。 |
 | sendToSubscriptionCoAdministrators |はい |値は "true" または "false" にする必要があります。 |
 | customEmails |はい |値として null [] または電子メールの文字列配列を指定できます。 |
-| Webhook |はい |値として null または有効な URI を指定できます。 |
+| webhooks |はい |値として null または有効な URI を指定できます。 |
 | serviceUri |はい |有効な https URI を指定します。 |
 | properties |はい |値は空 {} にするか、キーと値のペアを指定できます。 |
 
@@ -111,7 +111,7 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | timestamp |はい |自動スケール操作がトリガーされたときのタイム スタンプ。 |
 | id |はい |自動スケール設定の Resource Manager ID |
 | name |はい |自動スケール設定の名前。 |
-| 詳細 |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
+| details |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
 | subscriptionId |はい |スケールされるターゲット リソースのサブスクリプション ID。 |
 | resourceGroupName |はい |スケールされるターゲット リソースのリソース グループ名。 |
 | resourceName |はい |スケールされるターゲット リソースの名前。 |
@@ -120,5 +120,5 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | portalLink |はい |ターゲット リソースの概要ページへの Azure ポータルのリンク。 |
 | oldCapacity |はい |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
 | newCapacity |はい |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
-| Properties |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
+| properties |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
 

@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eb99cd94dca2a463c275dd5d4fab540b4fc55318
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 4cbca467b50dd0e43132b6d09dc0785c501fca0f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510443"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204690"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー データの管理
 
@@ -25,7 +26,7 @@ ms.locfileid: "66510443"
 
 ## <a name="delete-user-data"></a>ユーザー データを削除する
 
-ユーザー データは、Azure AD B2C ディレクトリおよび監査ログに格納されます。 すべてのユーザー監査データは、30 日間、Azure AD B2C に保持されます。 その 30 日の期間内にユーザー データを削除する場合は、[ユーザーの削除](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser)操作を使用できます。 データが存在する Azure AD B2C テナントごとに、DELETE 操作を行う必要があります。 
+ユーザー データは、Azure AD B2C ディレクトリおよび監査ログに格納されます。 すべてのユーザー監査データは、Azure AD B2C に 7 日間保持されます。 その 7 日の期間内にユーザー データを削除する場合は、[ユーザーの削除](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser)操作を使用できます。 データが存在する Azure AD B2C テナントごとに、DELETE 操作を行う必要があります。 
 
 Azure AD B2C 内のすべてのユーザーには、オブジェクト ID が割り当てられています。 オブジェクト ID は、Azure AD B2C 内のユーザー データの削除に使用する明確な識別子を提供します。 アーキテクチャによっては、オブジェクト ID は、他のサービス (財務データベース、マーケティング データベース、顧客関係管理データベースなど) との間の便利な相関関係識別子になる可能性があります。 
 

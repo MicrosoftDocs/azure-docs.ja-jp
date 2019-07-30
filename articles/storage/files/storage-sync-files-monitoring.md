@@ -5,45 +5,80 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0f19e3ea4f5952ac96b589fa267a2136c85e4f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86c4bf328430bbc623d8e493eec5db520d50ef82
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711652"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485974"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
-この記事では、Azure portal と Windows Server を使用して、ご利用の Azure File Sync デプロイを監視する方法について説明します。
+この記事では、Azure Monitor、ストレージ同期サービス、Windows Server を使用して、Azure File Sync デプロイを監視する方法について説明します。
 
 現在、以下の監視オプションを利用できます。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-monitor"></a>Azure Monitor
 
-Azure portal では、登録済みサーバーの正常性、サーバー エンドポイントの正常性 (同期の正常性)、およびメトリックを表示できます。
+[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用してメトリックを表示し、同期、クラウドを使った階層化、およびサーバー接続に関するアラートを構成します。  
 
-### <a name="storage-sync-service"></a>ストレージ同期サービス
+### <a name="metrics"></a>メトリック
+
+Azure File Sync のメトリックは既定で有効になっており、15 分ごとに Azure Monitor に送信されます。
+
+Azure Monitor 内で Azure File Sync のメトリックを表示するには、**ストレージ同期サービス** リソースの種類を選択します。
+
+Azure Monitor では、Azure File Sync の次のメトリックを使用できます。
+
+| メトリックの名前 | 説明 |
+|-|-|
+| 同期したバイト数 | データ転送 (アップロードとダウンロード) のサイズ。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
+| クラウドを使った階層化の呼び戻し | 呼び戻されたデータのサイズ。<br><br>**メモ**:このメトリックは今後削除される予定です。 クラウドを使った階層化の呼び戻しサイズ メトリックを使用して、呼び戻されたデータのサイズを監視します。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:サーバー名 |
+| クラウドを使った階層化の呼び戻しサイズ | 呼び戻されたデータのサイズ。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:サーバー名、同期グループ名 |
+| アプリケーションによるクラウドを使った階層化の呼び戻しサイズ | アプリケーションによって呼び戻されたデータのサイズ。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:アプリケーション名、サーバー名、同期グループ名 |
+| クラウドを使った階層化の呼び戻しスループット | データの呼び戻しスループットのサイズ。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:サーバー名、同期グループ名 |
+| ファイルが同期していない | 同期に失敗しているファイルの数。<br><br>単位:Count<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
+| 同期されたファイル数 | 転送された (アップロードとダウンロード) ファイルの数。<br><br>単位:Count<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
+| サーバーのオンライン状態 | サーバーから受信したハートビートの数。<br><br>単位:Count<br>集計の種類:最大値<br>適用可能なディメンション:サーバー名 |
+| 同期セッションの結果 | 同期セッションの結果 (1=成功した同期セッション; 0=失敗した同期セッション)<br><br>単位:Count<br>集計の種類:最大値<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
+
+### <a name="alerts"></a>アラート
+
+Azure Monitor でアラートを構成するには、ストレージ同期サービスを選択し、アラートに使用する [Azure File Sync のメトリック](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics)を選択します。  
+
+次の表に、監視するシナリオの例とアラートに使用する適切なメトリックを示します。
+
+| シナリオ | アラートに使用するメトリック |
+|-|-|
+| ポータルのサーバー エンドポイントの正常性 = エラー | 同期セッションの結果 |
+| ファイルがサーバーまたはクラウド エンドポイントへの同期に失敗する | ファイルが同期していない |
+| 登録済みのサーバーがストレージ同期サービスと通信できない | サーバーのオンライン状態 |
+| クラウドを使った階層化の呼び戻しサイズが 1 日で 500 GiB を超えた  | クラウドを使った階層化の呼び戻しサイズ |
+
+Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)」をご覧ください。
+
+## <a name="storage-sync-service"></a>ストレージ同期サービス
 
 登録済みサーバーの正常性、サーバー エンドポイントの正常性、およびメトリックを表示するには、Azure portal 内でストレージ同期サービスに移動します。 **[登録済みサーバー]** ブレードに登録済みサーバーの正常性が表示され、 **[同期グループ]** ブレードにサーバー エンドポイントの正常性が表示されます。
 
-登録済みサーバーの正常性:
+### <a name="registered-server-health"></a>登録済みサーバーの正常性
 
 - **登録済みサーバー**の状態が **[オンライン]** である場合、サーバーは正常にサービスと通信しています。
 - **登録済みサーバー**の状態が **[オフラインのようです]** である場合は、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスがサーバー上で実行されているか確認します。 サーバーがファイアウォールまたはプロキシの内側にある場合は、[こちらの記事](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)を参照して、ファイアウォールとプロキシを構成してください。
 
-サーバー エンドポイントの正常性:
+### <a name="server-endpoint-health"></a>サーバー エンドポイントの正常性
 
 - ポータルのサーバー エンドポイントの正常性は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 一時的なエラーが原因で同期セッションが失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である限り、ポータルには同期の正常性が引き続き表示される可能性があります。 ファイルが適用されているかどうかを判断するために、イベント ID 9302 が使用されます。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)と[同期の進行状況](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。
 - 同期が進行していないことが原因でポータルに同期エラーが表示された場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参考にしてください。
 
-メトリック:
+### <a name="metric-charts"></a>メトリック グラフ
 
-- ストレージ同期サービス ポータルでは、次のメトリックを表示できます。
+- ストレージ同期サービス ポータルでは、次のメトリック グラフを表示できます。
 
   | メトリックの名前 | 説明 | ブレードの名前 |
   |-|-|-|
@@ -57,23 +92,6 @@ Azure portal では、登録済みサーバーの正常性、サーバー エン
 
   > [!Note]  
   > ストレージ同期サービス ポータルのグラフには、24 時間の時間範囲があります。 異なる時間範囲やディメンションを表示するには、Azure Monitor を使用します。
-
-### <a name="azure-monitor"></a>Azure Monitor
-
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用して、同期、クラウドを使った階層化、サーバーの接続を監視します。 Azure File Sync のメトリックは既定で有効になっており、15 分ごとに Azure Monitor に送信されます。
-
-Azure Monitor 内で Azure File Sync のメトリックを表示するには、**ストレージ同期サービス** リソースの種類を選択します。
-
-Azure Monitor では、Azure File Sync の次のメトリックを使用できます。
-
-| メトリックの名前 | 説明 |
-|-|-|
-| 同期したバイト数 | データ転送 (アップロードとダウンロード) のサイズ。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
-| クラウドを使った階層化の呼び戻し | 呼び戻されたデータのサイズ。<br><br>単位:Bytes<br>集計の種類:合計<br>適用可能なディメンション:サーバー名 |
-| ファイルが同期していない | 同期に失敗しているファイルの数。<br><br>単位:Count<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
-| 同期されたファイル数 | 転送された (アップロードとダウンロード) ファイルの数。<br><br>単位:Count<br>集計の種類:合計<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
-| サーバーのオンライン状態 | サーバーから受信したハートビートの数。<br><br>単位:Count<br>集計の種類:最大値<br>適用可能なディメンション:サーバー名 |
-| 同期セッションの結果 | 同期セッションの結果 (1=成功した同期セッション; 0=失敗した同期セッション)<br><br>単位:Count<br>集計の種類:最大値<br>適用可能なディメンション:サーバー エンドポイント名、同期の方向、同期グループ名 |
 
 ## <a name="windows-server"></a>Windows Server
 

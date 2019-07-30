@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad619a72bc66df04675cd63589c540d2adc05b0b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7c9385078b1f9b42847cf627cf49ac16158d6b52
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996130"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276413"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Ruby を使用して印刷されたテキストを抽出する (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-ruby"></a>クイック スタート:Computer Vision の REST API と Ruby を使用して印刷されたテキスト (OCR) を抽出する
 
 このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
@@ -33,8 +33,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
-1. テキスト エディターに次のコードをコピーします。
-1. 必要に応じて、コードに次の変更を加えます。
+1. 次のコードをテキスト エディターにコピーします。
+1. コードに次の変更を加えます。
     1. `<Subscription Key>` は、実際のサブスクリプション キーで置き換えてください。
     1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドのエンドポイント URL で `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr` 値を置き換えます。
     1. 必要に応じて、印刷されたテキストを抽出したい別の画像の URL で `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\` を置き換えます。

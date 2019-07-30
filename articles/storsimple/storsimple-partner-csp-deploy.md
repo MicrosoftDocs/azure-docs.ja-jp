@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238932"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60629992"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム用の StorSimple Virtual Array をデプロイする
 
@@ -44,15 +44,15 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
      ![パートナー センターのダッシュボード](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. 左側のウィンドウで、**[顧客]** をクリックします。 右側のウィンドウで、**[顧客の追加]** をクリックします。 顧客の詳細を入力します。 **[次へ: サブスクリプション]** をクリックして、顧客のサブスクリプションを作成します。
+2. 左側のウィンドウで、 **[顧客]** をクリックします。 右側のウィンドウで、 **[顧客の追加]** をクリックします。 顧客の詳細を入力します。 **[次へ: サブスクリプション]** をクリックして、顧客のサブスクリプションを作成します。
 
     ![顧客の追加](./media/storsimple-partner-csp-deploy/image2.png)
 
-3.  **[Microsoft Azure]** プランを選択します。 ページの下部までスクロールし、**[Review (レビュー)]** をクリックします。
+3.  **[Microsoft Azure]** プランを選択します。 ページの下部までスクロールし、 **[Review (レビュー)]** をクリックします。
 
     ![サブスクリプション情報のレビュー](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. 情報をレビューし、**[送信]** をクリックします。
+4. 情報をレビューし、 **[送信]** をクリックします。
 
     ![サブスクリプションを送信する](./media/storsimple-partner-csp-deploy/image4.png)
 
@@ -64,11 +64,11 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
     ![顧客の検索](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. 左側のウィンドウで、**[サービス管理]** を選択します。 右側のウィンドウで、**[サービスの管理]** の下にある **[Microsoft Azure の管理ポータル]** をクリックして、顧客の Azure 管理者としてサインインします。
+7. 左側のウィンドウで、 **[サービス管理]** を選択します。 右側のウィンドウで、 **[サービスの管理]** の下にある **[Microsoft Azure の管理ポータル]** をクリックして、顧客の Azure 管理者としてサインインします。
 
     ![Azure Portal へのログイン](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple デバイス マネージャーを作成するには、**[+ 新規]** をクリックし、**[StorSimple 仮想デバイス シリーズ]** を検索するか、ここに移動します。 詳しくは、[StorSimple デバイス マネージャー サービスのデプロイ](storsimple-virtual-array-manage-service.md)に関するページをご覧ください。
+8. StorSimple デバイス マネージャーを作成するには、 **[+ 新規]** をクリックし、 **[StorSimple 仮想デバイス シリーズ]** を検索するか、ここに移動します。 詳しくは、[StorSimple デバイス マネージャー サービスのデプロイ](storsimple-virtual-array-manage-service.md)に関するページをご覧ください。
 
     ![StorSimple デバイス マネージャー サービスの作成](./media/storsimple-partner-csp-deploy/image8.png)
 
@@ -81,27 +81,27 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
      ![パートナー センターのダッシュボード](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. 左側のウィンドウで、**[顧客]** をクリックします。 サブスクリプションに追加する顧客を検索するか、その顧客に移動します。 ![展開チェックマーク アイコン](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) アイコンをクリックして、顧客の会社名の行を展開します。 詳細で、**[サブスクリプションの追加]** をクリックします。
+2. 左側のウィンドウで、 **[顧客]** をクリックします。 サブスクリプションに追加する顧客を検索するか、その顧客に移動します。 ![展開チェックマーク アイコン](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) アイコンをクリックして、顧客の会社名の行を展開します。 詳細で、 **[サブスクリプションの追加]** をクリックします。
 
     ![顧客](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. サブスクリプションの **[優先オファー]** で **[Microsoft Azure]** をオンにし、**[送信]** をクリックします。 これにより、新しいサブスクリプションが作成されます。
+3. サブスクリプションの **[優先オファー]** で **[Microsoft Azure]** をオンにし、 **[送信]** をクリックします。 これにより、新しいサブスクリプションが作成されます。
 
     ![新しいサブスクリプションの追加](./media/storsimple-partner-csp-deploy/image11.png)
 
-6. 新しいサブスクリプションが作成されたら、左側のウィンドウで **[<-- 顧客]** をクリックして、**[顧客]** ページに戻ります。 サブスクリプションを作成した顧客を検索します。 **[会社名]** をクリックして、詳細にドリル ダウンします。
+6. 新しいサブスクリプションが作成されたら、左側のウィンドウで **[<-- 顧客]** をクリックして、 **[顧客]** ページに戻ります。 サブスクリプションを作成した顧客を検索します。 **[会社名]** をクリックして、詳細にドリル ダウンします。
 
     ![顧客の検索](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. 左側のウィンドウで、**[サービス管理]** を選択します。 右側のウィンドウで、**[サービスの管理]** の下にある **[Microsoft Azure の管理ポータル]** をクリックして、顧客の Azure 管理者としてサインインします。
+7. 左側のウィンドウで、 **[サービス管理]** を選択します。 右側のウィンドウで、 **[サービスの管理]** の下にある **[Microsoft Azure の管理ポータル]** をクリックして、顧客の Azure 管理者としてサインインします。
 
     ![Azure Portal へのログイン](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple デバイス マネージャーを作成するには、**[+ 新規]** をクリックし、**[StorSimple 仮想デバイス シリーズ]** を検索するか、ここに移動します。 詳しくは、[StorSimple デバイス マネージャー サービスのデプロイ](storsimple-virtual-array-manage-service.md)に関するページをご覧ください。
+8. StorSimple デバイス マネージャーを作成するには、 **[+ 新規]** をクリックし、 **[StorSimple 仮想デバイス シリーズ]** を検索するか、ここに移動します。 詳しくは、[StorSimple デバイス マネージャー サービスのデプロイ](storsimple-virtual-array-manage-service.md)に関するページをご覧ください。
 
     ![StorSimple デバイス マネージャー サービスの作成](./media/storsimple-partner-csp-deploy/image8.png)
 
 ## <a name="next-steps"></a>次の手順
 
-- CSP の StorSimple について他に疑問がある場合は、[CSP の StorSimple: よく寄せられる質問](storsimple-partner-csp-faq.md)に関するページに進みます。
+- CSP の StorSimple について他に疑問がある場合CSP の StorSimple について他に疑問がある場合は、「[クラウド ソリューション プロバイダー プログラムの StorSimple: よく寄せられる質問](storsimple-partner-csp-faq.md)」をご覧ください。
 - StorSimple をデプロイする準備ができている場合は、[CSP での StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。

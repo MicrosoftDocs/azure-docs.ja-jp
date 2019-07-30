@@ -226,7 +226,7 @@ Azure CLI からポート 5601 を開いて、Kibana コンソールへのリモ
 az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 ```
 
-Kibana コンソールを開いて、**[作成]** を選択し、前に Elasticsearch に送信した syslog データに基づいて、既定のインデックスを生成します。 
+Kibana コンソールを開いて、 **[作成]** を選択し、前に Elasticsearch に送信した syslog データに基づいて、既定のインデックスを生成します。 
 
 ![Kibana で Syslog イベントを参照](media/elasticsearch-install/kibana-index.png)
 

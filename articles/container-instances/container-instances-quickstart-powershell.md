@@ -3,17 +3,18 @@ title: クイック スタート - Azure Container Instances への Docker コ�
 description: このクイック スタートでは、Azure PowerShell を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c6baf10308f04d5f08ba651bd70ac2b48dfc013c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 7fe199d2ac228ddb0ccfd1e5bc980e680e160acf
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729447"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325838"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してコンテナー インスタンスを Azure にデプロイする
 
@@ -43,7 +44,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure PowerShell を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、および Docker コンテナー イメージを [New-AzContainerGroup][New-AzContainerGroup] コマンドレットに渡します。 このクイック スタートでは、パブリックの `mcr.microsoft.com/windows/servercore/iis:nanoserver` イメージを使用します。 このイメージには、Nano Server で動作する Microsoft インターネット インフォメーション サービス (IIS) がパッケージされています。
+リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure PowerShell を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、Docker コンテナー イメージを [New-AzContainerGroup][New-AzContainerGroup] コマンドレットに指定します。 このクイック スタートでは、パブリックの `mcr.microsoft.com/windows/servercore/iis:nanoserver` イメージを使用します。 このイメージには、Nano Server で動作する Microsoft インターネット インフォメーション サービス (IIS) がパッケージされています。
 
 1 つまたは複数の開くポート、DNS 名ラベル、またはその両方を指定することで、コンテナーをインターネットに公開することができます。 このクイック スタートでは、IIS にパブリックに到達できるよう、DNS 名ラベルを指定してコンテナーをデプロイします。
 
@@ -91,7 +92,7 @@ Events                   : {}
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-コンテナーを使い終えたら、[Remove-AzContainerGroup][Remove-AzContainerGroup] コマンドレットを使用してそのコンテナーを削除します。
+コンテナーでの処理が完了したら、[Remove-AzContainerGroup][Remove-AzContainerGroup] コマンドレットを使用してそのコンテナーを削除します。
 
  ```azurepowershell-interactive
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer

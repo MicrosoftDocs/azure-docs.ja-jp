@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 817a19d5cabd7d20dc17154f29b4430e6b96c5fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb33e829853e1f9a975d29c7a80298b9033f0748
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072053"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249643"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>クイック スタート:cURL を使用してナレッジ ベースから回答を取得する
 

@@ -15,27 +15,21 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f8189b5a90f7e9114ec39a874cc60912ac2bb0ce
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 70a8e4cd694a90e83bf78e00a7c725a8c887b2eb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872991"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324072"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>クイック スタート: Python で Azure Cache for Redis を使用する
 
-
-## <a name="introduction"></a>はじめに
-
-このクイック スタートでは、Python で Azure Cache for Redis に接続して、キャッシュの読み取りと書き込みを実行する方法について説明します。 
-
-![完了した Python テスト](./media/cache-python-get-started/cache-python-completed.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Python アプリに組み込みます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [pip](https://pypi.org/project/pip/) と共にインストールされた [Python 2 または Python 3 環境](https://www.python.org/downloads/) 
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- [Python 2 または 3](https://www.python.org/downloads/)
 
 ## <a name="create-an-azure-cache-for-redis-on-azure"></a>Azure 上に Azure Cache for Redis を作成する
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -48,7 +42,9 @@ ms.locfileid: "65872991"
 
 次の例では、Python3 の *pip3* を使用し、昇格された管理者特権で実行されている Visual Studio 2019 の開発者コマンド プロンプトを使用して、Windows 10 に redis-py パッケージをインストールします。
 
+```python
     pip3 install redis
+```
 
 ![redis-py をインストールする](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
@@ -67,6 +63,9 @@ True
 b'bar'
 ```
 
+> [!IMPORTANT]
+> Redis では、バージョンは 3.0 以降であり、SSL 証明書の確認が実行されます。 Redis に接続する場合は、ssl_ca_certs を明示的に設定する必要があります。 RH Linux の場合、ssl_ca_certs は "/etc/pki/tls/certs/ca-bundle.crt" 証明書モジュール内で見つけることができます。
+
 ## <a name="create-a-python-script"></a>Python スクリプトを作成する
 
 *PythonApplication1.py* という名前の新しいスクリプト テキスト ファイルを作成します。
@@ -79,7 +78,8 @@ import redis
 myHostname = "<Your Host Name>.redis.cache.windows.net"
 myPassword = "<Your Access Key>"
 
-r = redis.StrictRedis(host=myHostname, port=6380,password=myPassword,ssl=True)
+r = redis.StrictRedis(host=myHostname, port=6380,
+                      password=myPassword, ssl=True)
 
 result = r.ping()
 print("Ping returned : " + str(result))
@@ -91,7 +91,7 @@ result = r.get("Message")
 print("GET Message returned : " + result.decode("utf-8"))
 
 result = r.client_list()
-print("CLIENT LIST returned : ") 
+print("CLIENT LIST returned : ")
 for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```
@@ -121,13 +121,10 @@ Python でスクリプトを実行します。
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Cache for Redis を使用する単純な ASP.NET Web アプリを作成する](./cache-web-app-howto.md)
-
-
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

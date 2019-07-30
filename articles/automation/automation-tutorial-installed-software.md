@@ -11,12 +11,12 @@ ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2cce925f4b3e1acc6c93019615b81983a5c95f6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 47313781756e460a8c30638661489874481b88a0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815894"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476818"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Azure マシンと Azure 以外のマシンにインストールされているソフトウェアを検出する
 
@@ -41,19 +41,19 @@ ms.locfileid: "56815894"
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (https://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com ) にログインします。
 
 ## <a name="enable-change-tracking-and-inventory"></a>変更履歴とインベントリを有効にする
 
 このチュートリアルでは、まず変更履歴とインベントリを有効にする必要があります。 既に **Change Tracking** ソリューションを有効にしてある場合、この手順は不要です。
 
-Automation アカウントに移動し、**[構成管理]** で、**[インベントリ]** を選択します。
+Automation アカウントに移動し、 **[構成管理]** で、 **[インベントリ]** を選択します。
 
-Log Analytics ワークスペースおよび Automation アカウントを選択し、**[Enable]\(有効にする\)** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
+Log Analytics ワークスペースおよび Automation アカウントを選択し、 **[Enable]\(有効にする\)** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
 ![インベントリのオンボード構成バナー](./media/automation-tutorial-installed-software/enableinventory.png)
 
-このソリューションを有効にするには、使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[Enable]\(有効にする\)** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
+このソリューションを有効にするには、使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、 **[Enable]\(有効にする\)** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペースは、インベントリのような機能およびサービスによって生成されるデータを収集するために使用されます。
 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
@@ -66,13 +66,13 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 
 ## <a name="onboard-a-vm"></a>VM の配布準備
 
-Automation アカウントで、**[構成管理]** の **[インベントリ]** に移動します。
+Automation アカウントで、 **[構成管理]** の **[インベントリ]** に移動します。
 
-**[+ Azure VM の追加]** を選択すると、**[仮想マシン]** ページが表示され、既存の VM を一覧から選択することができます。 配布準備をする VM を選択します。 表示されたページで **[Enable]\(有効にする\)** をクリックすると、その VM 上でソリューションが有効になります。 Microsoft Management Agent が VM にデプロイされ、ソリューションを有効にするときに構成した Log Analytics ワークスペースと通信を行うようにエージェントが構成されます。 配布準備が完了するまでに数分かかる場合があります。 この時点で、新しい VM を一覧から選択し、別の VM の配布準備をすることができます。
+**[+ Azure VM の追加]** を選択すると、 **[仮想マシン]** ページが表示され、既存の VM を一覧から選択することができます。 配布準備をする VM を選択します。 表示されたページで **[Enable]\(有効にする\)** をクリックすると、その VM 上でソリューションが有効になります。 Microsoft Management Agent が VM にデプロイされ、ソリューションを有効にするときに構成した Log Analytics ワークスペースと通信を行うようにエージェントが構成されます。 配布準備が完了するまでに数分かかる場合があります。 この時点で、新しい VM を一覧から選択し、別の VM の配布準備をすることができます。
 
 ## <a name="onboard-a-non-azure-machine"></a>Azure 以外のマシンの配布準備
 
-Azure 以外のマシンを追加するには、お使いのオペレーティング システムに応じて、[Windows](../azure-monitor/platform/agent-windows.md) または [Linux](automation-linux-hrw-install.md) のエージェントをインストールします。 エージェントのインストール後、Automation アカウントに移動し、**[構成管理]** の **[インベントリ]** に移動します。 **[マシンの管理]** をクリックすると、お使いの Log Analytics ワークスペースをレポート先とするマシンのうち、ソリューションが有効にされていないマシンが一覧表示されます。 実際の環境に合った適切なオプションを選んでください。
+Azure 以外のマシンを追加するには、お使いのオペレーティング システムに応じて、[Windows](../azure-monitor/platform/agent-windows.md) または [Linux](automation-linux-hrw-install.md) のエージェントをインストールします。 エージェントのインストール後、Automation アカウントに移動し、 **[構成管理]** の **[インベントリ]** に移動します。 **[マシンの管理]** をクリックすると、お使いの Log Analytics ワークスペースをレポート先とするマシンのうち、ソリューションが有効にされていないマシンが一覧表示されます。 実際の環境に合った適切なオプションを選んでください。
 
 * **[Enable on all available machines]\(使用可能なすべてのマシンで有効にします\)** - このオプションを選択すると、その時点で Log Analytics ワークスペースをレポート先とするすべてのマシンでソリューションが有効になります。
 * **[Enable on all available machines and future machines]\(使用可能なすべてのマシンおよび今後のマシンで有効にします\)** - このオプションを選択すると、Log Analytics ワークスペースをレポート先としているすべてのマシンおよび以後そのワークスペースに追加されることになるすべてのマシンでソリューションが有効になります。
@@ -82,9 +82,9 @@ Azure 以外のマシンを追加するには、お使いのオペレーティ�
 
 ## <a name="view-installed-software"></a>インストールされているソフトウェアを表示する
 
-変更履歴とインベントリ ソリューションが有効になると、**[インベントリ]** ページで結果を表示できます。
+変更履歴とインベントリ ソリューションが有効になると、 **[インベントリ]** ページで結果を表示できます。
 
-Automation アカウント内から、**[構成管理]** の **[インベントリ]** を選択します。
+Automation アカウント内から、 **[構成管理]** の **[インベントリ]** を選択します。
 
 **[インベントリ]** ページの **[ソフトウェア]** タブをクリックします。
 
@@ -103,7 +103,7 @@ Automation アカウント内から、**[構成管理]** の **[インベント�
 
 ## <a name="search-inventory-logs-for-installed-software"></a>インストールされているソフトウェアのインベントリ ログを検索する
 
-インベントリは、Azure Monitor ログに送信されるログ データを生成します。 クエリを実行してログを検索するには、**[インベントリ]** ウィンドウの上部にある **[Log Analytics]** ウィンドウを選択します。
+インベントリは、Azure Monitor ログに送信されるログ データを生成します。 クエリを実行してログを検索するには、 **[インベントリ]** ウィンドウの上部にある **[Log Analytics]** ウィンドウを選択します。
 
 インベントリ データは、型 **ConfigurationData** に格納されます。
 次のサンプル Log Analytics クエリは、Publisher が "Microsoft Corporation" と等しいインベントリの結果を返します。

@@ -9,114 +9,211 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: e37e99323c92adad0b9e897af8c276a8ac153371
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 21f5a2d93b708e93f124bd44177bb7852dfbd86a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515631"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720535"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで自動車価格を予測する
 
 このチュートリアルでは、Azure Machine Learning service のビジュアル インターフェイスでの予測分析ソリューションの開発についてさらに見ていきます。 このチュートリアルの目的は、送信の技術仕様に基づいてすべての自動車価格を予測できるソリューションを用意することです。
 
-このチュートリアルは[クイック スタート](ui-quickstart-run-experiment.md)の続きで、**2 部構成のチュートリアル シリーズのパート 1** です。 ただし、このチュートリアルを開始する前に、クイック スタートを完了する必要はありません。
-
-チュートリアル シリーズのパート 1 で学習する内容は次のとおりです。
+チュートリアルのパート 1 で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * データのインポートとクリーンアップ (クイック スタートと同じ手順)
+> * データのインポートとクリーンアップ
 > * 機械学習モデルのトレーニング
 > * モデルのスコア付けと評価
 
-チュートリアル シリーズの[パート 2](ui-tutorial-automobile-price-deploy.md) では、予測モデルを Azure Web サービスとしてデプロイする方法を学習します。
-
-> [!NOTE]
-> このチュートリアルの完成版は、実験のサンプルとして使用できます。
-> [実験] ページで、 **[新規追加]**  > **サンプル 1 - 回帰: Automobile Price Prediction(Basic)** (自動車価格の予測 (Basic)) に移動します。
-
+チュートリアルの[パート 2](ui-tutorial-automobile-price-deploy.md) では、予測モデルを Azure Web サービスとしてデプロイする方法を学習します。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
+このチュートリアルの完成版は、実験のサンプルとして使用できます。
+
+これを見つけるには、 **[実験] ページ**から **[新規追加]** を選択し、**サンプル 1 - 回帰:Automobile Price Prediction(Basic)** (自動車価格の予測 (Basic)) を選択します。
+
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
-Azure Machine Learning service ワークスペースがある場合は、[次のセクション](#open-the-visual-interface-webpage)に進みます。 ワークスペースがない場合は、ここで作成します。
+Azure Machine Learning service ワークスペースがある場合は、[次のセクション](#open-the-visual-interface-webpage)に進みます。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="open-the-visual-interface-webpage"></a>ビジュアル インターフェイスの Web ページを開く
 
-1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  
+1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。
 
-1. ワークスペースで、 **[ビジュアル インターフェイス]** を選択します。  次に、 **[ビジュアル インターフェイスを起動する]** を選択します。  
+1. ワークスペースで、 **[ビジュアル インターフェイス]** を選択します。 次に、 **[ビジュアル インターフェイスを起動する]** を選択します。 
 
     ![Machine Learning service ワークスペースからビジュアル インターフェイスにアクセスする方法を示す Azure portal のスクリーンショット](./media/ui-tutorial-automobile-price-train-score/launch-ui.png)
 
-    新しいブラウザー ページに、インターフェイスの Web ページが開きます。  
+## <a name="create-your-first-experiment"></a>初めての実験を作成する
 
-## <a name="import-and-clean-your-data"></a>データをインポートおよびクリーンアップする
-
-まずはクリーンなデータが必要です。 クイック スタートを完了している場合は、ここでデータ準備実験を再利用できます。 クイック スタートを完了していない場合は、次のセクションをスキップし、[新しい実験から開始](#start-from-a-new-experiment)します。
-
-### <a name="reuse-the-quickstart-experiment"></a>クイック スタートの実験を再利用する
-
-1. クイック スタートの実験を開きます。
-
-1. ウィンドウの下部にある **[名前を付けて保存]** を選択します。
-
-1. 表示されるポップアップ ダイアログで、新しい名前を指定します。
-
-    ![実験の名前を "Tutorial - Predict Automobile Price" (チュートリアル - 自動車価格を予測する) に変更する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/save-a-copy.png)
-
-1. 実験は以下のようになっているはずです。
-
-    ![実験の予期される状態を示すスクリーンショット。 自動車のデータ セットが Select Columns (列の選択) モジュールに接続され、それが Clean Missing Data (見つからないデータのクリーンアップ) モジュールに接続されています。](./media/ui-tutorial-automobile-price-train-score/save-copy-result.png)
-
-クイック スタートの実験を正常に再利用できた場合は、次のセクションをスキップして、[モデルのトレーニング](#train-the-model)を開始します。
-
-### <a name="start-from-a-new-experiment"></a>新しい実験から開始する
-
-クイック スタートを完了していない場合は、次の手順に従って、自動車のデータ セットをインポートおよびクリーンアップする新しい実験をすばやく作成します。
+ビジュアル インターフェイス ツールでは、予測分析モデルを作成するための視覚的な対話型の操作に対応した場所が提供されます。 データセットと分析モジュールを対話型のキャンバスにドラッグ アンド ドロップし、それらを相互に接続して "*実験*" を作成することができます。
 
 1. ビジュアル インターフェイス ウィンドウの下部にある **[+ 新規]** を選択して、新しい実験を作成します。
 
-1. **[Experiments]\(実験\)**  >   **[Blank Experiment]\(空の実験\)** の順に選択します。
+    ![新しい実験を追加する](./media/ui-tutorial-automobile-price-train-score/add-new.png)
+
+1. **[Blank Experiment]\(空の実験\)** を選択します。
 
 1. キャンバスの上部にある既定の実験名 "**Experimented Created on ...** " を選択し、わかりやすい名前に変更します。 たとえば、**Automobile price prediction** (自動車価格の予測) です。 名前は一意でなくてもかまいません。
 
-1. 実験キャンバスの左側には、データセットとモジュールのパレットがあります。 モジュールを検索するには、モジュール パレットの上部にある検索ボックスを使用します。 検索ボックスに「**automobile**」と入力し、**Automobile price data (Raw)** (自動車価格データ (Raw)) というラベルが付いたデータセットを検索します。 このデータセットを実験キャンバスにドラッグします。
+## <a name="add-data"></a>データの追加
 
-    ![自動車価格のデータ セットを検索する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/automobile-dataset.png)
+機械学習の実行にはまずデータが必要です。 このインターフェイスには、使用できるいくつかのサンプル データセットが含まれています。 既存のソースからデータをインポートすることもできます。 このチュートリアルでは、**Automobile price data (Raw)** というサンプル データセットを使用します。 
 
-    これでデータを用意できたので、**normalized-losses** 列を完全に削除するモジュールを追加できます。 次に、データが不足している行を削除する別のモジュールを追加します。
+1. 実験キャンバスの左側には、データセットとモジュールのパレットがあります。 **[Saved Datasets]\(保存されたデータセット\)** を選択し、次に **[Samples]\(サンプル\)** を選択して、利用可能なサンプル データセットを表示します。
 
-1. 検索ボックスに「**select columns**」と入力して、**Select Columns in Dataset** (データセット内の列の選択) モジュールを見つけます。 その後、それを実験キャンバスにドラッグします。 このモジュールを使用すると、モデルに含める、またはモデルから除外するデータの列を選択できます。
+1. **Automobile price data (raw)** データセットを選択し、キャンバスにドラッグします。
 
-1. **Automobile price data (Raw)** データセットの出力ポートを、Select Columns in Dataset の入力ポートに接続します。
+   ![データをキャンバスにドラッグする](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
 
-    ![Automobile Price Data (自動車価格データ) モジュールを Select Columns (列の選択) モジュールに接続する方法を示すアニメーション GIF](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+## <a name="select-columns"></a>Select columns
 
-1. Select Columns in Dataset (データセット内の列の選択) モジュールを選択し、 **[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** を選択します。
+使用するデータの列を選択します。 最初にモジュールを構成して、使用可能なすべての列を表示します。
 
-   1. 左側の **[With rules]\(規則を使用\)** を選択します。
+> [!TIP]
+> 必要なデータまたはモジュールの名前がわかっている場合は、パレットの上部にある検索バーを使用してすばやく検索します。 このチュートリアルの残りの部分では、このショートカットを使用します。
 
-   1. **[Begin With]\(次の値で始まる\)** の横にある **[すべての列]** を選択します。 これらの規則により、**Select Columns in Dataset** (データセット内の列の選択) では、すべての列がフィルターを通過します (これから除外する列を除く)。
 
-   1. ドロップダウンから **[Exclude]\(除外\)** と **[column names]\(列名\)** を選択し、テキスト ボックス内に「**normalized-losses**」と入力します。
+1. 検索ボックスに「**Select**」と入力して、**Select Columns in Dataset (データセットの列を選択する)** モジュールを見つけます。
 
-   1. (右下の) [OK] ボタンを選択して列セレクターを閉じます。
+1. **Select Columns in Dataset (データセットの列を選択する)** をクリックし、キャンバスにドラッグします。 先ほど追加したデータセットの下のモジュールを削除します。
 
-     これで、**Select Columns in Dataset**のプロパティ ウィンドウに、**normalized-losses** 以外のデータセットのすべての列がフィルターを通過することが示されます。
+1. データセットを **Select Columns in Dataset (データセットの列を選択する)** に接続する: データセットの出力ポートをクリックし、**Select Columns in Dataset (データセットの列を選択する)** の入力ポートにドラッグした後、マウス ボタンを離します。 これで、マウスをキャンバス上でどこに移動しても、データセットとモジュールが接続されたままになります。
 
-1. **Select Columns in Dataset** (データセット内の列の選択) モジュールをダブルクリックし、「Exclude normalized losses」(正規化された損失を除外する) と入力することで、このモジュールにコメントを追加します。 これで、実験でモジュールによりどのような処理が行われるかがひとめでわかります。
+    > [!TIP]
+    > データセットとモジュールには、小さな円で表される入力ポートと出力ポートがあります (入力ポートは上部、出力ポートは下部)。 1 つのモジュールの出力ポートを別のモジュールの入力ポートに接続するときに、実験を通じてデータのフローを作成することになります。
+    >
 
-    ![Select Columns (列の選択) モジュールの正しい構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/select-columns.png)
+    ![モジュールの接続](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
 
-1. 検索ボックスに「**Clean**」と入力して、**Clean Missing Data** (見つからないデータのクリーンアップ) モジュールを見つけます。 **Clean Missing Data** (見つからないデータのクリーンアップ) モジュールを実験キャンバスにドラッグし、**Select Columns in Dataset** (データセット内の列の選択) モジュールに接続します。
+    赤色の感嘆符は、モジュールのプロパティがまだ設定されていないことを示します。
 
-1. **[Properties]\(プロパティ\)** ウィンドウで、 **[Cleaning mode]\(整理モード\)** の下の **[Remove entire row]\(行全体を削除\)** を選択します。 これらのオプションにより、**Clean Missing Data** (見つからないデータのクリーンアップ) では値が不足している行が削除され、データがクリーンアップされます。 モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
+1. **Select Columns in Dataset (データセットの列を選択する)** モジュールを選択します。
 
-![Clean Missing Data (見つからないデータのクリーンアップ) モジュールの正しい構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/clean-missing-data.png)
+1. キャンバスの右側にある **[プロパティ]** ウィンドウで、 **[列の編集]** を選択します。
+
+    **[Select columns]\(列の選択\)** ダイアログで、 **[ALL COLUMNS]\(すべての列\)** を選択し、 **[all features]\(すべてのフィーチャー\)** を含めます。 ダイアログは次のようになります。
+
+     ![列セレクター](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+
+1. 右下の **[OK]** を選択して列セレクターを閉じます。
+
+## <a name="run-the-experiment"></a>実験を実行する
+
+いつでもデータセットまたはモジュールの出力ポートをクリックすると、データ フローのその時点でデータがどのようになっているかを確認できます。 **[Visualize]\(可視化\)** オプションが無効になっている場合、最初に実験を実行する必要があります。
+
+実験はコンピューティング先 (ワークスペースにアタッチされているコンピューティング リソース) で実行されます。 コンピューティング先を作成すると、将来の実行でそれを再利用できます。
+
+[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
+
+コンピューティング ターゲットが使用できるようになった後、実験が実行されます。 実行が完了したら、各モジュールに緑色のチェック マークが表示されます。
+
+
+## <a name="preview-the-data"></a>データをプレビューする
+
+最初の実験を実行したので、次にデータを視覚化して、作業する必要があるデータセットについてさらに理解することができます。
+
+1. **Select Columns in Dataset (データセットの列を選択する)** の下部にある出力ポートを選択し、 **[Visualize]\(可視化\)** を選択します。
+
+1. データ ウィンドウで別の列をクリックして、その列についての情報を表示します。
+
+    このデータセットでは、各行が自動車を表していて、各自動車に関連付けられている変数は列として表示されます。 このデータセット内には、205 の行と 26 の列があります。
+
+     データの列をクリックするたびに、その列の **[Statistics]\(統計\)** 情報と **[Visualization]\(視覚化\)** の画像が左側に表示されます。 たとえば、**num-of-doors** をクリックすると、一意の値が 2 つ、不足している値が 2 つあることがわかります。 下にスクロールして 2 ドアと 4 ドアの値を表示します。
+
+     ![データをプレビューする](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+
+1. 各列をクリックしてデータセットの詳細を把握し、自動車の価格を予測する際にこれらの列が役立つかどうかを考えます。
+
+## <a name="prepare-data"></a>データを準備する
+
+通常、データセットには、分析前にある程度の前処理が必要です。 データセットを視覚化するときに、いくつか不足値があることに気付いたかもしれません。 モデルがデータを正しく分析するには、これらの不足値を整理する必要があります。 値が不足している行をすべて削除します。 また、不足している値の大部分は、**normalized-losses** 列にあります。したがって、モデルからこの列を完全に除外します。
+
+> [!TIP]
+> 不足している値を入力データから整理することが、ほとんどのモジュールを使用するための前提条件となっています。
+
+### <a name="remove-column"></a>列を削除する
+
+最初に、**normalized-losses** 列を完全に削除します。
+
+1. **Select Columns in Dataset (データセットの列を選択する)** モジュールを選択します。
+
+1. キャンバスの右側にある **[プロパティ]** ウィンドウで、 **[列の編集]** を選択します。
+
+    * **[With rules]\(規則を使用\)** と **[ALL COLUMNS]\(すべての列\)** は選択したままにします。
+
+    * ドロップダウンから **[Exclude]\(除外\)** と **[column names]\(列名\)** を選択し、テキスト ボックスの内側をクリックします。 「**normalized-losses**」と入力します。
+
+    * 右下の **[OK]** を選択して列セレクターを閉じます。
+
+    ![列を除外する](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+        
+    これで、Select Columns in Dataset (データセットの列を選択する) のプロパティ ウィンドウに、**normalized-losses** 以外のデータセットのすべての列がフィルターを通過することが示されます。
+        
+    "**normalized-losses**" 列が除外されたことを示すプロパティ ウィンドウ。
+        
+    ![プロパティ ウィンドウ](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
+        
+    モジュールをダブルクリックして、テキストを入力すると、モジュールにコメントを追加できます。 これで、実験でモジュールがどのような処理をするのかがひとめでわかります。 
+
+1. **Select Columns in Dataset (データセットの列を選択する)** モジュールをダブルクリックして、「Exclude normalized losses」(normalized losses を除外する) というコメントを入力します。 
+    
+    コメントを入力した後、モジュールの外側をクリックします。 モジュールにコメントが含まれていることを示す下向き矢印が表示されます。
+
+1. コメントを表示するには、下向き矢印をクリックします。
+
+    今度は、コメントを非表示にする上向きの矢印がモジュールに表示されます。
+        
+    ![説明](./media/ui-tutorial-automobile-price-train-score/comments.png)
+
+### <a name="clean-missing-data"></a>見つからないデータのクリーンアップ
+
+モデルをトレーニングする際は、見つからないデータに対処する必要があります。 この場合、見つからないデータを含む残りの行を削除するためのモジュールを追加します。
+
+1. 検索ボックスに「**Clean**」と入力して、**Clean Missing Data (不足データのクリーンアップ)** モジュールを見つけます。
+
+1. **Clean Missing Data (不足データのクリーンアップ)** モジュールを実験キャンバスにドラッグして、**Select Columns in Dataset (データセットの列を選択する)** モジュールに接続します。 
+
+1. [Properties]\(プロパティ\) ウィンドウで、 **[Cleaning mode]\(整理モード\)** の **[Remove entire row]\(行全体を削除\)** を選択します。
+
+    これらのオプションにより、**Clean Missing Data (不足データのクリーンアップ)** では値が不足している行が削除され、データが整理されます。
+
+1. モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
+ 
+    ![行を削除する](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
+
+    実験は以下のようになっているはずです。
+    
+    ![select-column](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
+
+## <a name="visualize-the-results"></a>結果を視覚化する
+
+実験でモジュールに変更を加えたため、モジュール状態が "ドラフト" に変更されました。  新しい整理されたデータを視覚化するには、最初に実験をもう一度実行する必要があります。
+
+1. 下部の **[Run]\(実行\)** を選択して実験を実行します。
+
+    今回は、先ほど作成したコンピューティング ターゲットを再利用できます。
+
+1. ダイアログ内の **[Run]\(実行\)** を選択します。
+
+   ![実験を実行する](./media/ui-tutorial-automobile-price-train-score/select-compute.png)
+
+1. 実行が完了したら、**Clean Missing Data (不足データのクリーンアップ)** モジュールを右クリックし、新しい整理されたデータを視覚化します。
+
+    ![整理されたデータを視覚化する](./media/ui-tutorial-automobile-price-train-score/visualize-cleaned.png)
+
+1. 整理されたデータ ウィンドウで別の列をクリックし、データがどのように変更されたかを確認します。
+
+    ![整理されたデータを視覚化する](media/ui-tutorial-automobile-price-train-score/visualize-result.png)
+
+    193 の行と 25 の列があります。
+
+    **num-of-doors** をクリックすると、一意の値はまだ 2 つありますが、不足している値がは 0 であることがわかります。 残りの列をクリックスルーし、データセットに欠損値がないことを確認します。 
 
 ## <a name="train-the-model"></a>モデルをトレーニングする
 
@@ -154,7 +251,8 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     ![列セレクター モジュールの正しい構成を示すスクリーンショット。 [With rules]\(規則を使用\) > [Include]\(含める\)、[column names]\(列名\) > "price"](./media/ui-tutorial-automobile-price-train-score/select-price.png)
 
-    これで、実験の表示は次のようになります。
+    実験は以下のようになります。
+
     ![Train Model (モデルのトレーニング) モジュールを追加した後の実験の正しい構成を示すスクリーンショット。](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
 ### <a name="run-the-training-experiment"></a>トレーニング実験を実行する
@@ -219,7 +317,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 このチュートリアルのパート 1 では、次の手順を完了しました。
 
-* クイック スタートで作成した実験を再利用する
+* 実験を作成する
 * データを準備する
 * モデルをトレーニングする
 * モデルにスコアを付け、評価する

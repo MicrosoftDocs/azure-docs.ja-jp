@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d2440b638a9c8eb27505b747d26917de8032e6cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d3ce15ac9899fe09d907296976db15ed0babb35
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510138"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612478"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure サブスクリプションを Azure Active Directory B2C テナントにリンクする
 
@@ -81,6 +81,14 @@ Azure サブスクリプション内に Azure AD B2C リソースが正常に作
 - Azure AD B2C テナント リソースを他の Azure サブスクリプション、または他のリソース グループに移動する。
 
 ![B2C リソース設定](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Azure AD B2C テナントの課金サブスクリプションを変更する
+
+Azure AD B2C テナントは、ソースと宛先のサブスクリプションが同じ Azure Active Directory テナント内に存在する場合、別のサブスクリプションに移動できます。
+
+Azure AD B2C テナントなどの Azure リソースを別のサブスクリプションに移動する方法については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+
+移動を開始する前に、必ず記事全体に目を通して、このような移動についての制限事項および要件を十分に理解してください。 リソースを移動する手順だけでなく、移動前のチェックリストや移動操作の検証方法などの重要な情報が含まれています。
 
 ## <a name="known-issues"></a>既知の問題
 

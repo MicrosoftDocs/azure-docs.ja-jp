@@ -2,18 +2,18 @@
 title: Azure Backup の一般的なセキュリティ属性
 description: Azure Backup を評価するための一般的なセキュリティ属性のチェックリスト
 services: backup
-author: msmbaldwin
+author: utraghuv
 manager: barbkess
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 86b8ab96a94a6ffc44c304d8a0a689301560a989
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 595cc4eff70e2df4cb6d7f1d6a0c1a2748b34bf2
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002799"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565635"
 ---
 # <a name="security-attributes-for-azure-backup"></a>Azure Backup のセキュリティ属性
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b7451371fe1562a6763643cd90e5646bd255018
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024544"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653524"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure Search における "単純な" 検索構文を利用したクエリの例
 
@@ -27,7 +27,7 @@ ms.locfileid: "65024544"
 
 次の例では、[City of New York OpenData](https://nycopendata.socrata.com/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Search は必要ありません。
 
-必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、[REST クライアントを使用した探索](search-fiddler.md)に関するページを参照してください。
+必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、[REST クライアントを使用した探索](search-get-started-postman.md)に関するページを参照してください。
 
 ### <a name="set-the-request-header"></a>要求ヘッダーを設定する
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>例 3:フィルター クエリ
 
-[フィルター構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) は、**search** と一緒に使用することも、単独で使用することもできる OData 式です。 search パラメーターがないスタンドアロン フィルターは、関心があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析なし、スコア付けなし (すべて 1 にスコア付け)、および優先度付けなしになります。 検索文字列が空である点に注目してください。
+[フィルター構文](https://docs.microsoft.com/azure/search/search-query-odata-filter) は、**search** と一緒に使用することも、単独で使用することもできる OData 式です。 search パラメーターがないスタンドアロン フィルターは、関心があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析なし、スコア付けなし (すべて 1 にスコア付け)、および優先度付けなしになります。 検索文字列が空である点に注目してください。
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -147,7 +147,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-この関数の詳細については、[「フィルターの例」の search.ismatch](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) を参照してください。
+この関数の詳細については、[「フィルターの例」の search.ismatch](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples) を参照してください。
 
 ## <a name="example-4-range-filters"></a>例 4:範囲フィルター
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 ## <a name="example-5-geo-search"></a>例 5:地理空間検索
 
-サンプル インデックスには、緯度と経度の座標を持つ geo_location フィールドが含まれています。 この例では、[geo.distance 関数](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples)を使用して、開始点を中心に、指定された距離 (キロメートル単位) に収まるドキュメントをフィルター処理します。 クエリの最後の値 (4) を調整して、クエリのサーフェス領域を拡大または縮小できます。
+サンプル インデックスには、緯度と経度の座標を持つ geo_location フィールドが含まれています。 この例では、[geo.distance 関数](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples)を使用して、開始点を中心に、指定された距離 (キロメートル単位) に収まるドキュメントをフィルター処理します。 クエリの最後の値 (4) を調整して、クエリのサーフェス領域を拡大または縮小できます。
 
 次の例は、読みやすくするために POST 形式になっています。
 

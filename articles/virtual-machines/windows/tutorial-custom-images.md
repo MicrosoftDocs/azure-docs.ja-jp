@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure PowerShell を使って A
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 74087a6d1ce00293c968837e72c636847081e39e
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: fe19ea2d8946d645704139bbf2faa80f21e84039
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285984"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708056"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
 
@@ -57,8 +57,8 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 1. 仮想マシンへの接続
 2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを *%windir%\system32\sysprep* に変更し、`sysprep.exe` を実行します。
-3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
-4. **[シャットダウン オプション]** の **[シャットダウン]** を選択し、**[OK]** をクリックします。
+3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
+4. **[シャットダウン オプション]** の **[シャットダウン]** を選択し、 **[OK]** をクリックします。
 5. Sysprep は完了時に仮想マシンをシャットダウンします。 **VM は再起動しないでください**。
 
 ### <a name="deallocate-and-mark-the-vm-as-generalized"></a>VM の割り当てを解除して VM を汎用としてマークする

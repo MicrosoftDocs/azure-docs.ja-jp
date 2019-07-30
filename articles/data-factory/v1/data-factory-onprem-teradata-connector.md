@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60610739"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](data-factory-onprem-teradata-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-teradata.md)
 
@@ -65,7 +65,7 @@ Data Management Gateway で Teradata データベースに接続するには、[
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesTeradata** |はい |
-| server |Teradata のサーバーの名前です。 |はい |
+| サーバー |Teradata のサーバーの名前です。 |はい |
 | authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
@@ -285,11 +285,11 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 
 | Teradata データベース型 | .NET Framework 型 |
 | --- | --- |
-| Char |String |
-| Clob |String |
-| Graphic |String |
-| VarChar |String |
-| VarGraphic |String |
+| Char |string |
+| Clob |string |
+| Graphic |string |
+| VarChar |string |
+| VarGraphic |string |
 | Blob |Byte[] |
 | Byte |Byte[] |
 | VarByte |Byte[] |
@@ -302,7 +302,7 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 | SmallInt |Int16 |
 | Date |DateTime |
 | Time |TimeSpan |
-| Time With Time Zone |String |
+| Time With Time Zone |string |
 | Timestamp |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
@@ -315,15 +315,15 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 | Interval Minute |TimeSpan |
 | Interval Minute To Second |TimeSpan |
 | Interval Second |TimeSpan |
-| Interval Year |String |
-| Interval Year To Month |String |
-| Interval Month |String |
-| Period(Date) |String |
-| Period(Time) |String |
-| Period(Time With Time Zone) |String |
-| Period(Timestamp) |String |
-| Period(Timestamp With Time Zone) |String |
-| Xml |String |
+| Interval Year |string |
+| Interval Year To Month |string |
+| Interval Month |string |
+| Period(Date) |string |
+| Period(Time) |string |
+| Period(Time With Time Zone) |string |
+| Period(Timestamp) |string |
+| Period(Timestamp With Time Zone) |string |
+| Xml |string |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

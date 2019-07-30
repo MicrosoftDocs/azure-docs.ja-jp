@@ -10,14 +10,14 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 627ff40361b562630f05c70823e9ad2c7ef711e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f07aae0e8baae44ade152cf3fe20facc7fe6770
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002227"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248807"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>仮想ネットワークのサンプル スクリプト (プレビュー) で IPv6 エンドポイントを構成する
 
@@ -33,10 +33,12 @@ Azure でデュアル スタック アプリケーションをデプロイする
 次のように登録します。
 ```azurepowershell
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
+Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
 機能の登録が完了するまで、最長で 30 分かかります。 次の Azure PowerShell コマンドを実行することで、登録状態を確認できます。次のように登録を確認します。
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
+Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
 登録が完了した後、次のコマンドを実行します。
 

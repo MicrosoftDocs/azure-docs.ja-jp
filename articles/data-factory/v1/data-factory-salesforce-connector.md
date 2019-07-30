@@ -14,14 +14,14 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312140"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60309175"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-salesforce-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-salesforce.md)
 
@@ -52,7 +52,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -70,7 +70,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**Salesforce**。 |はい |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https:\//login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https:\//login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |はい |
@@ -107,7 +107,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 ## <a name="query-tips"></a>クエリのヒント
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>DateTime 列に対して where 句を 使ってデータを取得する
-SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の相違点に注意してください。 例: 
+SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の相違点に注意してください。 例:
 
 * **SOQL サンプル**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **SQL サンプル**:
@@ -115,7 +115,7 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
     * **JSON 編集を使用してクエリを指定 (char を適切にエスケープ):** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Salesforce レポートからのデータの取得
-`{call "<report name>"}` というクエリを指定することで、Salesforce レポートからデータを取得できます。例:  `"query": "{call \"TestReport\"}"`
+`{call "<report name>"}` というクエリを指定することで、Salesforce レポートからデータを取得できます。例: `"query": "{call \"TestReport\"}"`
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>削除済みレコードを Salesforce のごみ箱から取得する
 論理的に削除されたレコードを Salesforce のごみ箱から検索するには、クエリで **"IsDeleted = 1"** と指定します。 たとえば、次のように入力します。
@@ -128,8 +128,8 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 
 このシナリオの実現にあたって作成する必要のある Data Factory のアーティファクトは次のとおりです。 これらの手順については、箇条書きの後に続く各セクションで詳しく説明します。
 
-*  [Salesforce](#linked-service-properties)
-*  [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+* [Salesforce](#linked-service-properties)
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
 * [RelationalTable](#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)
 * [RelationalSource](#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
@@ -286,25 +286,25 @@ RelationalSource でサポートされるプロパティの一覧については
 
 | Salesforce の型 | .NET ベースの型 |
 | --- | --- |
-| オート ナンバー |String |
+| オート ナンバー |string |
 | チェックボックス |Boolean |
 | 通貨 |Decimal |
 | Date |DateTime |
 | 日付/時刻 |DateTime |
-| 電子メール |String |
-| Id |String |
-| 参照リレーションシップ |String |
-| 複数選択の候補リスト |String |
+| Email |string |
+| Id |string |
+| 参照リレーションシップ |string |
+| 複数選択の候補リスト |string |
 | Number |Decimal |
 | Percent |Decimal |
-| 電話 |String |
-| 候補リスト |String |
-| Text |String |
-| テキスト領域 |String |
-| テキスト領域 (ロング) |String |
-| テキスト領域 (リッチ) |String |
-| テキスト (暗号化) |String |
-| URL |String |
+| 電話 |string |
+| 候補リスト |string |
+| Text |string |
+| テキスト領域 |string |
+| テキスト領域 (ロング) |string |
+| テキスト領域 (リッチ) |string |
+| テキスト (暗号化) |string |
+| URL |string |
 
 > [!NOTE]
 > ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

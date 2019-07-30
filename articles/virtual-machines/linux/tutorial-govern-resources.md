@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure CLI を使用して、RBA
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: d3182c51ca80a26159e962a6354a53b5283326a2
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 760055a831998aa026439302094e146fd4d39394
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343070"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708435"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>チュートリアル:Azure CLI を使用した Azure 仮想マシンの管理方法の説明
 
@@ -65,7 +65,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-"**プリンシパル <guid> がディレクトリ**  にありません" というエラーが発生した場合、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
+"**プリンシパル \<guid> がディレクトリにありません**" というエラー メッセージが表示される場合は、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
 
 通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
 
@@ -77,7 +77,7 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 az policy definition list --query "[].[displayName, policyType, name]" --output table
 ```
 
-既存のポリシー定義が表示されます。 ポリシーの種類は、**[BuiltIn] (ビルトイン)** または **[カスタム]** のどちらかです。 この中から、割り当てる条件を記述している定義を探します。 この記事では、次のようなポリシーを割り当てます。
+既存のポリシー定義が表示されます。 ポリシーの種類は、 **[BuiltIn] (ビルトイン)** または **[カスタム]** のどちらかです。 この中から、割り当てる条件を記述している定義を探します。 この記事では、次のようなポリシーを割り当てます。
 
 * すべてのリソースの場所を制限する。
 * 仮想マシンの SKU を制限する。

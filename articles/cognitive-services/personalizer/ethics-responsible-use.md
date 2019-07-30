@@ -2,19 +2,20 @@
 title: 倫理と責任ある使用 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: これらのガイドラインは、会社およびサービスへの信頼の構築を助けるようなパーソナル化の実装を支援することを目的としています。 必ず、パーソナル化が人々の生活に与える影響を調査し、学び、慎重に検討してください。 疑問がある場合は、ガイダンスを求めてください。
+services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
+ms.topic: conceptual
+ms.date: 06/12/2019
 ms.author: edjez
-ms.openlocfilehash: 437dc1fba2502602109483aa9d6f25b4265af26f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ceb32e9e378ba1e58db11e55be8bd551faf08c2a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239886"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722397"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Personalizer の責任ある実装のガイドライン
 
@@ -196,7 +197,7 @@ Microsoft では、お客様がこれらの責任に基づいて行動するの�
 * 「[Ethics and Data Science](https://www.oreilly.com/library/view/ethics-and-data/9781492043898/)」(倫理とデータ科学)、DJ Patil、Hilary Mason、Mike Loukides 著
 * [ACM 倫理規定](https://www.acm.org/code-of-ethics)
 * [遺伝情報差別禁止法 - GINA](https://en.wikipedia.org/wiki/Genetic_Information_Nondiscrimination_Act)
-* [FATML の説明可能なアルゴリズムの原則](http://www.fatml.org/resources/principles-for-accountable-algorithms)
+* [FATML の説明可能なアルゴリズムの原則](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
 ## <a name="next-steps"></a>次の手順

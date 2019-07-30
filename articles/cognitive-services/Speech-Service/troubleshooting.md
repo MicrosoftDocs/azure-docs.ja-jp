@@ -3,20 +3,19 @@ title: Speech SDK のトラブルシューティング - Speech Services
 titleSuffix: Azure Cognitive Services
 description: この記事では、Speech SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: wolfma
-ms.custom: seodec18
-ms.openlocfilehash: a3741cb351b11b8cfd7c5d38713bb71232cf010e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/23/2019
+ms.author: jhakulin
+ms.openlocfilehash: 99cb23afcdb40f74485a7dcec34435a46d0e7476
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515450"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405909"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Speech SDK のトラブルシューティング
 

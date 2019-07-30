@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254667"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446790"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Azure Advisor によるアプリケーションの高可用性の向上
 
@@ -93,6 +93,9 @@ Azure Advisor は、Java SDK の古いバージョンを使用している Azure
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Azure Cosmos DB Spark コネクタを Maven からの最新バージョンにアップグレードする
 
 Azure Advisor は、Cosmos DB Spark コネクタの古いバージョンを使用している Azure Cosmos DB アカウントを識別し、最新の修正プログラム、パフォーマンス向上、および新機能のために Maven からの最新バージョンにアップグレードすることを推奨します。 [Cosmos DB Spark コネクタ](https://aka.ms/cosmosdb/spark-connector)の詳細を確認してください。
+
+## <a name="enable-virtual-machine-replication"></a>仮想マシンのレプリケーションを有効にする
+他のリージョンへのレプリケーションが有効になっていない仮想マシンは、リージョン内の障害に対する回復性が高くありません。 仮想マシンをレプリケートすることによって、Azure リージョン内での障害発生時にビジネスへの悪影響が低減されます。 Advisor は、レプリケーションが有効になっていない VM を検出し、障害発生時にリモート Azure リージョンで仮想マシンをすばやく起動できるように、レプリケーションを有効にするよう推奨します。 [仮想マシンのレプリケーションの詳細を確認する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 

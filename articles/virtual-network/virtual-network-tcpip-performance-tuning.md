@@ -3,14 +3,7 @@ title: Azure VM の TCP/IP パフォーマンス チューニング | Microsoft 
 description: 各種の一般的な TCP/IP パフォーマンス チューニング手法、およびその手法と Azure VM との関係について説明します。
 services: virtual-network
 documentationcenter: na
-author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
+author: rimayber
 manager: paragk
 editor: ''
 ms.assetid: ''
@@ -20,20 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
-ms.author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
-ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rimayber
+ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
+ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234995"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297777"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM の TCP/IP パフォーマンス チューニング
 

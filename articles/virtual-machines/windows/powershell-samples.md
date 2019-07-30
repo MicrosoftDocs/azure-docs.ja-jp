@@ -4,7 +4,7 @@ description: Azure 仮想マシンの PowerShell のサンプル
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 576fe268bec12c16c7c2e2076dfa066c908693d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aea63b8366bf974fd89c32105bea707ad72c8a5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583691"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719984"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 仮想マシンの PowerShell のサンプル
 
@@ -50,4 +50,5 @@ ms.locfileid: "60583691"
 | [VM とそのデータ ディスクを暗号化する](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Azure キー コンテナー、暗号化キー、およびサービス プリンシパルを作成し、VM を暗号化します。 |
 |**仮想マシンの監視**||
 | [Azure Monitor を使用して VM を監視する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 仮想マシンを作成し、Azure Log Analytics エージェントをインストールして、VM を Log Analytics ワークスペースに登録します。  |
+| [PowerShell を使用してサブスクリプション内のすべての VM に関する詳細情報を収集する](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 指定されたサブスクリプション内の VM の VM 名、リソース グループ名、リージョン、仮想ネットワーク、サブネット、プライベート IP アドレス、OS の種類、およびパブリック IP アドレスを含む csv を作成します。
 | | |

@@ -2,21 +2,20 @@
 title: Azure 上の Docker
 description: Docker をデプロイして Azure と統合する
 services: multiple
-author: czeumault
-manager: carolz
+author: georgewallace
+manager: gwallace
 layout: LandingPage
 ms.service: multiple
-ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
-ms.author: carolz
-ms.openlocfilehash: f3e26701a5764169b6d459d28c5d70227386c6bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: gwallace
+ms.openlocfilehash: 33f18722c26decb117a476a9d3adb562a7a726ed
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456524"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610455"
 ---
 <div class="content">
    <h1>Azure 上の Docker</h1>   

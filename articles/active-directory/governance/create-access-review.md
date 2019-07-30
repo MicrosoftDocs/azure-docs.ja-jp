@@ -2,8 +2,8 @@
 title: グループまたはアプリケーションのアクセス レビューを作成する - Azure Active Directory | Microsoft Docs
 description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure Active Directory アクセス レビューで作成する方法について説明します。
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/21/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 230fb40c8e3a100d2fdfa0af6b40c93c3e5b47d2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734559"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499720"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -43,7 +43,7 @@ ms.locfileid: "66734559"
 
 1. **[新しいアクセス レビュー]** をクリックして、新しいアクセス レビューを作成します。
 
-    ![アクセス レビュー - コントロール](./media/create-access-review/access-reviews.png)
+    ![Identity Governance の [アクセス レビュー] ウィンドウ](./media/create-access-review/access-reviews.png)
 
 1. アクセス レビューに名前を付けます。 必要に応じて、そのレビューに説明を加えます。 その名前と説明がレビュアーに示されます。
 
@@ -91,7 +91,7 @@ ms.locfileid: "66734559"
 
 1. レビュー完了後の動作を指定するには、 **[設定完了時]** セクションを展開します。
 
-    ![完了時の設定](./media/create-access-review/upon-completion-settings.png)
+    ![アクセス レビューの作成 - 設定完了時](./media/create-access-review/upon-completion-settings.png)
 
 1. 拒否されたユーザーのアクセスを自動的に削除する場合は、 **[リソースへの結果の自動適用]** を **[有効]** に設定します。 レビューが完了したときに結果を手動で適用する場合は、スイッチを **[無効]** に設定します。
 
@@ -106,7 +106,7 @@ ms.locfileid: "66734559"
 
 1. 他の設定を指定するには、 **[詳細設定]** セクションを展開します。
 
-    ![詳細設定](./media/create-access-review/advanced-settings.png)
+    ![アクセス レビューの作成 - 詳細設定](./media/create-access-review/advanced-settings.png)
 
 1. ユーザーの情報に基づくシステムの推奨事項をレビュー担当者に表示するには、 **[推奨事項を表示]** を **[有効]** に設定します。
 
@@ -122,7 +122,7 @@ ms.locfileid: "66734559"
 
 アクセス レビューの設定を指定したら、 **[開始]** をクリックします。 アクセス レビューはステータスと共にリストに表示されます。
 
-![アクセス レビューのリスト](./media/create-access-review/access-reviews-list.png)
+![アクセス レビューとそれらの状態の一覧](./media/create-access-review/access-reviews-list.png)
 
 既定では、レビューの開始直後に Azure AD からレビュー担当者宛てにメールが送信されます。 Azure AD からメールを送信することを選択しなかった場合は、アクセス レビューが実行待ちになっていることを必ずレビュー担当者に伝えてください。 レビュー担当者には、[グループまたはアプリケーションへのアクセスをレビュー](perform-access-review.md)する手順を案内することができます。 レビュー対象がゲストで、自分のアクセスをレビューしてもらう場合は、[グループまたはアプリケーションへの自身のアクセス権をレビューする](review-your-access.md)手順を案内します。
 

@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
-ms.author: andret
+ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef32cef67ae5f32959e026157f5126647b01401d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fce464c2351de7d3ef26882d0ab56f11743ea3f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540576"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702967"
 ---
 # <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 この手順では、アプリケーション ID をプロジェクトに追加する必要があります。

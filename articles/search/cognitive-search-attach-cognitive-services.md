@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffce8a2bd8a04e73acdeac037be0b10ba1a9a887
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244425"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672384"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
 
@@ -42,7 +42,7 @@ Azure Search と Azure Cognitive Services は同一リージョン内に存在�
 
 1. [データのインポート] ウィザードを開きます。
 
-   ![[データのインポート] ウィザードを開く](media/search-get-started-portal/import-data-cmd2.png "[データのインポート ]ウィザードを開く")
+   ![[データのインポート] ウィザードを開く](media/search-get-started-portal/import-data-cmd.png "[データのインポート ]ウィザードを開く")
 
 1. データ ソースを選択し、 **[認知検索を追加します (省略可能)]** に進みます。 このウィザードの詳細な手順については、[ポータル ツールを使用したインポート、インデックス作成、クエリ](search-get-started-portal.md)に関する記事をご覧ください。
 

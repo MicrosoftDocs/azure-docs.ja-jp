@@ -1,17 +1,18 @@
 ---
-title: Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する - Azure
-description: Enterprise セキュリティ パッケージを使用して Azure HDInsight に HBase 用の Apache Ranger ポリシーを構成する方法について説明します。
+title: チュートリアル - Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する - Azure
+description: チュートリアル - Enterprise セキュリティ パッケージを使用して Azure HDInsight に HBase 用の Apache Ranger ポリシーを構成する方法について説明します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: d1f2a2b24e6f1856d021911e6f2e9c107bd38b72
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/18/2019
+ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926092"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274405"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
 

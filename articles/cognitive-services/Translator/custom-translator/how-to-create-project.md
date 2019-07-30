@@ -2,19 +2,19 @@
 title: プロジェクトを作成する方法 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Custom Translator でプロジェクトを作成する方法
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 456860c74810a692b4839e4204ec0b78d5620864
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c8b46c35c03b472863bdc71d29552198dbb0d77
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66383002"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448329"
 ---
 # <a name="create-a-project"></a>プロジェクトの作成
 

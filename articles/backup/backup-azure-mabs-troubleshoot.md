@@ -2,18 +2,18 @@
 title: Azure Backup Server のトラブルシューティング
 description: Azure Backup Server のインストールと登録、およびアプリケーション ワークロードのバックアップと復元をトラブルシューティングします。
 services: backup
-author: kasinh
-manager: vvithal
+author: srinathvasireddy
+manager: sivan
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: kasinh
-ms.openlocfilehash: 06faed8ceca77edc20b67f73a76d885839aa7dbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/05/2019
+ms.author: srinathv
+ms.openlocfilehash: ee24fe4c1792f1934fcfb87a2481133631de4263
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304334"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705064"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 

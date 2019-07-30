@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 2ed1a20bf47771d927c0d58730fa0eb4471572af
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490448"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603370"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート:REST API と PHP を使用して画像内の顔を検出する
 
@@ -43,7 +43,7 @@ ms.locfileid: "59490448"
 
 ## <a name="write-the-php-script"></a>PHP スクリプトを作成する
 
-ドキュメントの `body` 要素内に次のコードを追加します。 これにより、URL フィールドと **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
+ドキュメントの `body` 要素内に次のコードを追加します。 このコードにより、URL フィールド、 **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
 
 ```php
 <?php

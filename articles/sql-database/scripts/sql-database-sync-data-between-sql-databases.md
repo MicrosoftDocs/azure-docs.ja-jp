@@ -10,14 +10,13 @@ ms.topic: sample
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 11b76374843743d3308b352c054ce9e8995f3543
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: db81238ca3622c0a45d5af567f9899701c068178
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729212"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569788"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>PowerShell を使用した複数の SQL Database 間の同期
  

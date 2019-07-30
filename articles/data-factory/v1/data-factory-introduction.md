@@ -13,15 +13,15 @@ ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: aed073e7d65f193c4123106ba1ae3f4f442965e1
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014932"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836309"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-introduction.md)
 > * [バージョン 2 (最新バージョン)](../introduction.md)
 
@@ -133,7 +133,6 @@ Data Factory は、米国西部、米国東部、北ヨーロッパ リージョ
 ## <a name="get-started-with-creating-a-pipeline"></a>パイプライン作成の概要
 Azure Data Factory には、次のいずれかのツールまたは API でデータ パイプラインを作成できます。 
 
-- Azure ポータル
 - Visual Studio
 - PowerShell
 - .NET API

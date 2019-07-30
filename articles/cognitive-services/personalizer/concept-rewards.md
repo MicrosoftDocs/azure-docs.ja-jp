@@ -1,21 +1,21 @@
 ---
 title: 報酬スコア - Personalizer
 titleSuffix: Azure Cognitive Services
-description: 報酬スコアは、パーソナル化の選択肢である RewardActionID がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。 Personalizer は、報酬を評価することによって、機械学習モデルをトレーニングします。
+description: 報酬スコアは、パーソナル化の選択肢である RewardActionID がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。 Personalizer は、報酬を評価することにより、機械学習モデルをトレーニングします。
 services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/13/2019
+ms.topic: conceptual
+ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 39db28cd7e11d77362a2aefcf4ad8d2748db59c2
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244248"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722512"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>報酬スコアは、パーソナル化の成功を示します
 
@@ -30,6 +30,18 @@ Personalizer は、報酬を評価することにより、機械学習モデル�
 報酬は、ユーザーの動作が行われた後に送信されます。これは数日後になることがあります。 イベントに報酬がない、または既定の報酬しかないと見なされるまで Personalizer が待機する最大の時間は、Azure portal の[報酬の待機時間](#reward-wait-time)で構成されます。
 
 イベントの報酬スコアが **報酬の待機時間**以内で受信されなかった場合、**既定の報酬**が適用されます。 通常、 **[既定の報酬](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** はゼロになるように構成されます。
+
+
+## <a name="behaviors-and-data-to-consider-for-rewards"></a>報酬のために考慮すべき動作とデータ
+
+報酬スコアのコンテキストについて、次のシグナルと動作を考慮します。
+
+* 選択肢 ("つまり X ということですか?") が含まれる場合の提案に対する直接のユーザー入力。
+* セッションの長さ。
+* セッション間の時間。
+* ユーザーの相互作用のセンチメント分析。
+* ボットからユーザーに有用性、正確度に関するフィードバックを求める直接の質問およびミニ アンケート。
+* アラートへの応答、またはアラートへの応答の待機時間
 
 ## <a name="composing-reward-scores"></a>報酬スコアの作成
 

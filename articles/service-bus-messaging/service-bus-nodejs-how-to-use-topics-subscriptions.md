@@ -14,21 +14,21 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 3dbec81237edd7cbf51e4812e83da068b9a366e0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992092"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540994"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Service Bus のトピックとサブスクリプションを Node.js および azure-sb パッケージで使用する方法
-> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
 このチュートリアルでは、[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージを使用して Service Bus トピックにメッセージを送り、Service Bus サブスクリプションからメッセージを受け取る Node.js アプリケーションの作成方法を学習します。 サンプルは JavaScript で記述され、Node.js [Azure モジュール](https://www.npmjs.com/package/azure)を使用し、その内部で `azure-sb` パッケージが使用されます。
 
-[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) を使用します。 より高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)を使用する新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用すると、高速なエクスペリエンスが得られます。 新しいパッケージの詳細については、「[How to use Service Bus topics and subscriptions with Node.js and @azure/service-bus package (Node.js および azure/service-bus パッケージで Service Bus トピックとサブスクリプションを使用する方法)](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)」を参照してください。または、[azure](https://www.npmjs.com/package/azure) パッケージの使用方法についてさらに読み進めてください。
+[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージでは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) が使用されています。 より高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)を使用する新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用すると、高速なエクスペリエンスが得られます。 新しいパッケージの詳細については、「[How to use Service Bus topics and subscriptions with Node.js and @azure/service-bus package (Node.js および azure/service-bus パッケージで Service Bus トピックとサブスクリプションを使用する方法)](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)」を参照してください。または、[azure](https://www.npmjs.com/package/azure) パッケージの使用方法についてさらに読み進めてください。
 
 ここでは、次のようなシナリオを扱います。
 
@@ -48,7 +48,7 @@ ms.locfileid: "65992092"
     > このクイック スタートでは、**Node.js** を使用して **トピック**と、そのトピックへの**サブスクリプション**を作成します。 
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web サイト」をご覧ください。
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web サイト」を参照してください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus を使用するには、Node.js Azure パッケージをダウンロードします。 このパッケージには、Service Bus REST サービスと通信するためのライブラリのセットが含まれています。
@@ -148,9 +148,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 トピック サブスクリプションも **ServiceBusService** オブジェクトで作成します。 サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定できます。
 
 > [!NOTE]
-> サブスクリプションは、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで保持されます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に `getSubscription` メソッドを使用して、サブスクリプションが存在しているかどうかを確認する必要があります。
+> 既定では、サブスクリプションは、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで保持されます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に `getSubscription` メソッドを使用して、サブスクリプションが存在しているかどうかを確認する必要があります。
 >
->
+> [AutoDeleteOnIdle プロパティ](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle)を設定することで、サブスクリプションを自動的に削除することができます。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 **MatchAll** フィルターは、サブスクリプションの作成時に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"AllMessages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
@@ -166,7 +166,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ### <a name="create-subscriptions-with-filters"></a>フィルターを適用したサブスクリプションの作成
 トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージに絞り込めるフィルターを作成することもできます。
 
-サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **SqlFilter** です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式について詳しくは、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文の説明をご覧ください。
+サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **SqlFilter** です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][SqlFilter.SqlExpression] 構文の説明を参照してください。
 
 フィルターをサブスクリプションに追加するには、**ServiceBusService** オブジェクトの `createRule` メソッドを使用します。 このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
 
@@ -314,7 +314,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 メッセージが処理された後、`deleteMessage` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般に、この動作は "*1 回以上の処理*" と呼ばれます。 つまり、各メッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合は、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 メッセージの **MessageId** プロパティを使用できます。このプロパティには、配信が試行された後も同じ値が保持されます。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
-トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure portal]またはプログラムによって明示的に削除する必要があります。
+トピックとサブスクリプションは [autoDeleteOnIdle プロパティ](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle)が設定されていない限り永続的であり、[Azure portal][Azure portal] またはプログラムによって明示的に削除する必要があります。
 次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
 
 ```javascript
@@ -342,7 +342,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [Service Bus のキュー、トピック、サブスクリプション][Queues, topics, and subscriptions]。
-* [SqlFilter][SqlFilter] の API のリファレンス
+* [SqlFilter][SqlFilter] の API のリファレンス。
 * GitHub の [Azure SDK for Node][Azure SDK for Node] リポジトリ。
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node

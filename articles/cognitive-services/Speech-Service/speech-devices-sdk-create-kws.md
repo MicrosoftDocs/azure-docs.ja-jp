@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 2280af4bf37fdb3cd12482da855f979a9180f0ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f43cbedc633b26a3a7fcbfb5f6a75da514bf0c45
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65020541"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604862"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Speech サービスを使用してカスタム ウェイク ワードを作成する
 

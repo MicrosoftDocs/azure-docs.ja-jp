@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/26/2019
+ms.date: 07/09/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6112facfc0c10d7a0a0495cd778fa6c3cb6130a7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: cb1e322e0424debc14a29ad8a516c95acea54714
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962139"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872108"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す
 
-このチュートリアルでは、Android アプリを Microsoft ID プラットフォームに統合する方法を学習します。 具体的には、お使いのアプリは、ユーザーのサインイン、Microsoft Graph API を呼び出すアクセス トークンの取得、および Microsoft Graph API への要求を行います。  
+このチュートリアルでは、Android アプリを Microsoft ID プラットフォームと統合する方法を学習します。 お使いのアプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。  
 
 このガイドを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。
 
@@ -33,64 +33,58 @@ ms.locfileid: "65962139"
 
 ![このチュートリアルで生成されたサンプル アプリの動作の紹介](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-このサンプルのアプリケーションは、ユーザーにサインインし、ユーザーに代わってデータを取得します。  このデータは、承認を必要とする保護された API (この場合は Microsoft Graph API) を通じてアクセスされます。
+このチュートリアルのアプリでは、ユーザーがサインインされ、ユーザーに代わってデータが取得されます。  このデータは、承認を要求し、Microsoft ID プラットフォームによって保護される API (Microsoft Graph API) を介してアクセスされます。
 
 具体的には次のとおりです。
 
 * お使いアプリで、ブラウザーまたは Microsoft Authenticator と Intune ポータル サイトを介してユーザーをサインインさせます。
-* エンド ユーザーが、アプリケーションから要求されたアクセス許可を受け入れます。 
+* エンド ユーザーが、アプリケーションから要求されたアクセス許可を受け入れます。
 * アプリケーションには、Microsoft Graph API 用のアクセス トークンが発行されます。
 * アクセス トークンは、Web API への HTTP 要求に含められます。
 * Microsoft Graph の応答を処理します。
 
-このサンプルでは、Android 用の Microsoft Authentication Library (MSAL) を使用して認証を実装します。MSAL は自動的にトークンを更新し、デバイス上の他のアプリとの間で SSO を提供し、アカウントを管理します。
+このサンプルでは、Android 用の Microsoft Authentication Library (MSAL) の [com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal) を使用して認証を実装します。
+
+ MSAL により、トークンが自動的に更新され、デバイス上の他のアプリとの間のシングル サインオン (SSO) が提供されて、アカウントが管理されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* このガイド付きセットアップでは、Android Studio を使用します。
-* Android 16 以降が必要です (19 以降を推奨)。
+* このチュートリアルでは、Android Studio バージョン 16 以降 (19 以降を推奨) が必要です。
 
-## <a name="library"></a>ライブラリ
-
-このガイドでは、次の認証ライブラリを使用します。
-
-|ライブラリ|説明|
-|---|---|
-|[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|
-
-## <a name="set-up-your-project"></a>プロジェクトの設定
+## <a name="create-a-project"></a>プロジェクトの作成
 
 このチュートリアルでは新しいプロジェクトを作成します。 代わりに完了したチュートリアルをダウンロードする場合は、[コードをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)してください。
 
-### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
-
-1. Android Studio を開き、**[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
-    - Android Studio を既に開いている場合は、**[File]\(ファイル\)** > **[New]\(新規\)** > **[New Project]\(新しいプロジェクト\)** を選択します。
-2. **[Empty Activity]\(空のアクティビティ\)** をそのままにして、**[Next]\(次へ\)** を選択します。
-3. アプリケーションに名前を付け、`Minimum API level` を **API 19 以降**に設定して、**[Finish]\(完了\)** をクリックします。
-5. `app/build.gradle` で、`targetedSdkVersion` を 27 に設定します。 
+1. Android Studio を開き、 **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
+2. **[Basic Activity]\(基本アクティビティ\)** を選択し、 **[Next]\(次へ\)** を選択します。
+3. アプリケーションに名前を付けます。
+4. パッケージ名を保存しておきます。 後ほど、Azure portal でそれを入力します。
+5. **[Minimum API level]\(最低 API レベル\)** を **API 19** 以上に設定し、 **[Finish]\(完了\)** をクリックします。
+6. プロジェクト ビューのドロップダウンで **[Project]\(プロジェクト\)** を選択して、ソースとソース以外のプロジェクト ファイルを表示し、**app/build.gradle** を開いて、`targetSdkVersion` を `27` に設定します。
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 
-次の 2 つのセクションで説明する方法のいずれかを使用して、アプリケーションを登録できます。
+1. [Azure ポータル](https://aka.ms/MobileAppReg)にアクセスします。
+2. [[アプリの登録] ブレード](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)を開き、 **[+ 新しい登録]** をクリックします。
+3. アプリの **[名前]** を入力した後、リダイレクト URI を設定しないで、 **[登録]** をクリックします。
+4. 表示されたウィンドウの **[管理]** セクションで、 **[認証]**  >  **[+ プラットフォームの追加]**  >  **[Android]** を選択します。
+5. プロジェクトのパッケージ名を入力します。 コードをダウンロードした場合、この値は `com.azuresamples.msalandroidapp` です。
+6. **[Android アプリの構成]** ページの **[署名ハッシュ]** セクションで、 **[Generating a development Signature Hash]\(開発用署名ハッシュの生成\)** をクリックします。 そして、お使いのプラットフォームに使用する KeyTool コマンドをコピーします。
 
-### <a name="register-your-app"></a>アプリの登録
+   > [!Note]
+   > KeyTool.exe は、Java Development Kit (JDK) の一部としてインストールされます。 KeyTool コマンドを実行するには、OpenSSL ツールもインストールする必要があります。
 
-1. [Azure portal](https://aka.ms/MobileAppReg) にアクセスし、`New registration` を選択します。 
-2. お使いのアプリ > `Register` で **名前**を入力します。 **この段階ではリダイレクト URI を設定しないでください**。 
-3. `Manage` セクションで `Authentication`  >  `Add a platform`  >  `Android` の順に移動します。
-    - プロジェクトのパッケージ名を入力します。 コードをダウンロードした場合、この値は `com.azuresamples.msalandroidapp` です。 
-    - デバッグ/開発の署名ハッシュを入力します。 ポータルで KeyTool コマンドを使用して、署名ハッシュを生成します。 
-4. `Configure` をクリックし、後で使用できるように ***MSAL の構成***を保存します。 
+7. KeyTool によって生成された**署名ハッシュ**を入力します。
+8. [`Configure`] をクリックし、後でアプリを構成するときに入力できるように、 **[Android の構成]** ページに表示される **[MSAL 構成]** を保存しておきます。  **[Done]** をクリックします。
 
 ## <a name="build-your-app"></a>アプリの構築
 
-### <a name="configure-your-android-app"></a>お使いの Android アプリを構成する
+### <a name="add-your-app-registration"></a>アプリ登録の追加
 
-1. **[res]** を右クリックし、 > **[New]\(新規\)** > **[Folder]\(フォルダー\)** > **[Raw Resources Folder]\(生のリソース フォルダー\)** を選択します。
-2. **[app]\(アプリ\)** > **[res]** > **[raw]\(生\)** で、`auth_config.json` という新しい JSON ファイルを作成して、お使いの ***MSAL の構成***を貼り付けます。 詳細については、[MSAL の構成](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)に関するページを参照してください。
-   <!-- Workaround for Docs conversion bug -->
-3. **[app]\(アプリ\)** > **[manifests]\(マニフェスト\)** > **[AndroidManifest.xml]** で、以下の `BrowserTabActivity` アクティビティを追加します。 このエントリにより、Microsoft は認証の完了後にアプリケーションにコールバックできます。
+1. Android Studio のプロジェクト ウィンドウで、**app\src\main\res** に移動します。
+2. **res** を右クリックして、 **[New]\(新規\)**  >  **[Directory]\(ディレクトリ\)** を選択します。 新しいディレクトリの名前に「`raw`」と入力し、 **[OK]** をクリックします。
+3. **app** > **src** > **res** > **raw** で、`auth_config.json` という名前の新しい JSON ファイルを作成し、先ほど保存した MSAL 構成を貼り付けます。 詳細については、[MSAL の構成](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)に関するページを参照してください。
+4. **app** > **src** > **main** > **AndroidManifest.xml** で、以下の `BrowserTabActivity` アクティビティを追加します。 このエントリにより、Microsoft は認証の完了後にアプリケーションにコールバックできます。
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -107,21 +101,20 @@ ms.locfileid: "65962139"
     </activity>
     ```
 
-    使用される署名ハッシュは **AndroidManifest.xml** で URL エンコードされてはならないことに注意してください。 
+    `android:host=` は、Azure portal で登録したパッケージ名に置き換えます。
+    `android:path=` は、Azure portal で登録したキー ハッシュに置き換えます。 署名ハッシュは、URL でエンコードしないでください。
 
-4. **AndroidManifest.xml** 内の `<application>` タグのすぐ上に、次のアクセス許可を追加します。
+5. **AndroidManifest.xml** 内の `<application>` タグのすぐ上に、次のアクセス許可を追加します。
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     ```
 
-5. `BrowserTabActivity` 内の ***[Package Name]\(パッケージ名\)*** と ***[Signature Hash]\(署名ハッシュ\)*** を Azure portal で登録された値に置き換えます。
-
 ### <a name="create-the-apps-ui"></a>アプリケーションの UI を作成する
 
-1. **[res]** > **[layout]** に移動し、**activity_main.xml** を開きます。
-2. アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` などから `LinearLayout` に変更します。
+1. Android Studio のプロジェクト ウィンドウで、**app** > **src** > **main** > **res** > **layout** に移動し、**activity_main.xml** を開いて、 **[Text]\(テキスト\)** ビューを開きます。
+2. アクティビティのレイアウトを変更します (たとえば、`<androidx.coordinatorlayout.widget.CoordinatorLayout` を `<androidx.coordinatorlayout.widget.LinearLayout` に)。
 3. `android:orientation="vertical"` プロパティを `LinearLayout` ノードに追加します。
 4. `LinearLayout` ノードに次のコードを貼り付け、現在の内容を置き換えます。
 
@@ -178,21 +171,22 @@ ms.locfileid: "65962139"
 
 ### <a name="add-msal-to-your-project"></a>プロジェクトに MSAL を追加する
 
-1. Android Studio で、**[Gradle Scripts]\(Gradle スクリプト\)** > **build.gradle (Module: app)** を選択します。
-2. **[Dependencies]\(依存関係\)** で、次のコードを貼り付けます。
+1. Android Studio のプロジェクト ウィンドウで、**app** > **src** > **build.gradle** に移動します。
+2. **[Dependencies]\(依存関係\)** の下に、以下を貼り付けます。
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.microsoft.identity.client:msal:0.3.+'
     ```
 
-### <a name="use-msal"></a>MSAL の使用 
+### <a name="use-msal"></a>MSAL の使用
 
-次のいくつかのセクションでは、`MainAcitivty.java` 内で変更を行います。 お使いのアプリで MSAL を追加して使用するのに必要な各手順を説明します。
+次に、`MainActivity.java` の内部を変更し、アプリで使用する MSAL を追加します。
+Android Studio のプロジェクト ウィンドウで、**app** > **src** > **main** > **java** > **com.example.msal** に移動し、`MainActivity.java` を開きます。
 
 #### <a name="required-imports"></a>必要なインポート
 
-以下のインポートをご使用のプロジェクトに追加します。 
+`MainActivity.java` の先頭付近に、次の import を追加します。
 
 ```java
 import android.app.Activity;
@@ -213,11 +207,11 @@ import com.microsoft.identity.client.*;
 import com.microsoft.identity.client.exception.*;
 ```
 
-#### <a name="instantiating-msal"></a>MSAL のインスタンス化 
+#### <a name="instantiate-msal"></a>MSAL をインスタンス化する
 
-`MainActivity` クラス内で、MSAL をインスタンス化するとともに、アクセスしたいスコープや Web API など、アプリが何をするのかについての構成をいくつか行う必要があります。 
+`MainActivity` クラス内で、MSAL をインスタンス化するとともに、アクセスしたいスコープや Web API など、アプリが何をするのかについての構成をいくつか行う必要があります。
 
-`MainActivity` 内に次の変数をコピーします。
+次の変数を、`MainActivity` クラスの内部にコピーします。
 
 ```java
 final static String SCOPES [] = {"https://graph.microsoft.com/User.Read"};
@@ -233,7 +227,7 @@ private PublicClientApplication sampleApp;
 private IAuthenticationResult authResult;
 ```
 
-次に、MSAL をインスタンス化するために、`onCreate(...)` メソッド内に次のコードをコピーします。
+`onCreate()` の内容を、MSAL をインスタンス化する次のコードに置き換えます。
 
 ```java
 super.onCreate(savedInstanceState);
@@ -273,19 +267,19 @@ sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
 });
 ```
 
-上記のコード ブロックは、`getAccounts(...)` を介してアプリケーションのオープン時にサイレントにユーザーをサインインさせようとします。成功した場合は `acquireTokenSilentAsync(...)` を使用します。  次のいくつかのセクションでは、サインインしたアカウントがない場合のためにコールバック ハンドラーを実装します。 
+上記のコードでは、ユーザーがアプリケーションを開いたら、`getAccounts()` が呼び出され、それが成功したら `acquireTokenSilentAsync()` が呼び出されて、サイレントでのユーザーのサインインが試みられます。  次のいくつかのセクションでは、サインインしたアカウントがない場合のためにコールバック ハンドラーを実装します。
 
 #### <a name="use-msal-to-get-tokens"></a>MSAL を使用してトークンを取得する
 
-これで、アプリの UI 処理ロジックを実装し、MSAL を介して対話的にトークンを取得できるようになりました。 
+これで、アプリの UI 処理ロジックを実装し、MSAL を介して対話的にトークンを取得できるようになりました。
 
-MSAL では、トークンを取得するための主要なメソッドとして `acquireTokenSilentAsync` と `acquireToken` が公開されています。  
+MSAL では、トークンを取得するための主要なメソッドとして `acquireTokenSilentAsync()` と `acquireToken()` が公開されています。  
 
-`acquireTokenSilentAsync` では、ユーザーのサインインが行われ、アカウントが存在すればユーザーとの対話なしにトークンが取得されます。 成功した場合、MSAL はトークンをお使いのアプリに渡します。失敗した場合、`MsalUiRequiredException` を生成します。  この例外が生成された場合、または対話型サインインのエクスペリエンス (資格情報、mfa またはその他の条件付きアクセス ポリシーが必要なこともあれば、不要なこともあります) をユーザーに提供する場合は、`acquireToken` を使用できます。  
+`acquireTokenSilentAsync()` では、ユーザーのサインインが行われ、アカウントが存在すればユーザーとの対話なしにトークンが取得されます。 成功した場合、MSAL はトークンをお使いのアプリに渡します。失敗した場合、`MsalUiRequiredException` を生成します。  この例外が生成される場合、または対話型サインイン エクスペリエンス (資格情報、mfa、または他の条件付きアクセス ポリシーが必要なこともあれば、不要なこともあります) をユーザーに提供する場合は、`acquireToken()` を使用します。  
 
-`acquireToken` ではユーザーのサインインとトークンの取得が行われるときに必ず UI が表示されますが、ブラウザーのセッション Cookie または Microsoft Authenticator のアカウントを使用して対話形式で SSO が行われる場合もあります。 
+ユーザーをサインインさせてトークンを取得しようとすると、`acquireToken()` で UI が表示されます。 ただし、ブラウザーでセッション Cookie を使用するか、または Microsoft 認証システムでアカウントを使用して、対話型の SSO エクスペリエンスを提供できます。
 
-開始するには、`MainActivity` クラス内に次の 3 つの UI メソッドを作成します。
+`MainActivity` クラス内に、次の 3 つの UI メソッドを作成します。
 
 ```java
 /* Set the UI for successful token acquisition data */
@@ -318,7 +312,7 @@ private void onCallGraphClicked() {
 }
 ```
 
-次に、現在のアクティビティを取得して、サイレント型および対話型のコールバックを処理するメソッドを追加します。
+次のメソッドを追加し、現在のアクティビティを取得して、サイレント型および対話型のコールバックを処理します。
 
 ```java
 public Activity getActivity() {
@@ -414,11 +408,12 @@ private AuthenticationCallback getAuthInteractiveCallback() {
 
 #### <a name="use-msal-for-sign-out"></a>サインアウトに MSAL を使用する
 
-次に、サインアウトのサポートをアプリに追加します。 
+次に、サインアウトのサポートを追加します。
 
-重要な点として、MSAL でサインアウトするとユーザーに関する既知の情報がすべてこのアプリケーションから削除されますが、ユーザーのデバイスではアクティブなセッションが維持されます。 ユーザーが再びサインインを試みた場合に対話画面が表示される可能性がありますが、デバイス セッションがアクティブであるため、資格情報を再入力する必要はありません。 
+> [!Important]
+> MSAL でサインアウトすると、ユーザーに関する既知の情報がすべてこのアプリケーションから削除されますが、ユーザーのデバイスではアクティブなセッションが維持されます。 ユーザーが再びサインインを試みた場合、サインイン UI が表示されることがありますが、デバイス セッションはまだアクティブであるため、資格情報を再入力する必要はありません。
 
-サインアウトを追加するには、すべてのアカウントを循環してそれらを削除する次のメソッドをアプリにコピーします。
+サインアウト機能を追加するには、`MainActivity` クラスの内部に次のメソッドを追加します。 このメソッドでは、すべてのアカウントが順次削除されます。
 
 ```java
 /* Clears an account's tokens from the cache.
@@ -461,16 +456,16 @@ private void onSignOutClicked() {
 
 #### <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API を呼び出す
 
-トークンの取得が成功すると、Microsoft Graph API に対して要求を実行できます。 アクセス トークンは、認証コールバックの `onSuccess(...)` メソッド内の `AuthenticationResult` にあります。 承認された要求を作成するには、お使いのアプリで、アクセス トークンを HTTP ヘッダーに追加する必要があります。
+トークンを受け取ったら、[Microsoft Graph API](https://graph.microsoft.com) に対して要求を実行できます。アクセス トークンは、認証コールバックの `onSuccess()` メソッド内の `AuthenticationResult` の中にあります。 承認された要求を作成するには、お使いのアプリで、アクセス トークンを HTTP ヘッダーに追加する必要があります。
 
 | ヘッダー キー    | value                 |
 | ------------- | --------------------- |
-| Authorization | Bearer <access-token> |
+| Authorization | Bearer \<access-token> |
 
-コードでこれを行うには、次の 2 つのメソッドをお使いのアプリに追加し、グラフを呼び出して UI を更新します。 
+次の 2 つのメソッドを `MainActivity` クラス内に追加し、グラフを呼び出して UI を更新します。
 
 ```java
-    /* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
+/* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
 private void callGraphAPI() {
     Log.d(TAG, "Starting volley request to graph");
 
@@ -524,24 +519,22 @@ private void updateGraphUI(JSONObject graphResponse) {
 }
 ```
 
-[Microsoft Graph API](https://graph.microsoft.com) の詳細についてご確認ください。
-
 #### <a name="multi-account-applications"></a>マルチアカウント アプリケーション
 
-このアプリは、シングル アカウントのシナリオを対象にビルドされています。 MSAL ではマルチアカウントのシナリオもサポートされますが、その場合はアプリで追加の作業が必要となります。 トークンを必要とする各アクションに使用するアカウントをユーザーが選択するための UI を作成する必要があります。 あるいは、アプリでヒューリスティックを実装して、`getAccounts(...)` メソッドによって使用するアカウントを選択することもできます。 
+このアプリは、シングル アカウントのシナリオを対象にビルドされています。 MSAL ではマルチアカウントのシナリオもサポートされますが、その場合はアプリで追加の作業が必要となります。 トークンを必要とする各アクションに使用するアカウントをユーザーが選択するための UI を作成する必要があります。 あるいは、アプリでヒューリスティックを実装して、`getAccounts()` メソッドによって使用するアカウントを選択することもできます。
 
 ## <a name="test-your-app"></a>アプリをテストする
 
 ### <a name="run-locally"></a>ローカルで実行する
 
-上記のコードに従っている場合は、アプリをビルドしてテスト デバイスまたはエミュレーターにデプロイします。 サインインして Azure AD または個人用 Microsoft アカウントのトークンを取得できるようになります。 ユーザーのサインイン後に、Microsoft Graph の `/me` エンドポイントから返されたデータがこのアプリに表示されます。 
+アプリをビルドし、テスト デバイスまたはエミュレーターに展開します。 サインインして、Azure AD または個人用 Microsoft アカウントのトークンを取得できるようになります。
 
-問題が発生した場合は、このドキュメントまたは MSAL ライブラリで問題を開いてご連絡ください。 
+サインインした後、Microsoft Graph の `/me` エンドポイントから返されたデータがアプリに表示されます。
 
-### <a name="consent-to-your-app"></a>アプリに同意する
+### <a name="consent"></a>同意
 
-ユーザーは、アプリに初めてサインインするときに、Microsoft Identity から、要求されたアクセス許可に同意するよう求められます。  ほとんどのユーザーはこれに同意できますが、一部の Azure AD テナントではユーザーによる同意が無効になっており、全ユーザーに代わって管理者が同意を行う必要があります。  このシナリオに対応できるように、必ず Azure portal でアプリのスコープを登録しておいてください。
+ユーザーは、アプリに初めてサインインするときに、Microsoft Identity から、要求されたアクセス許可に同意するよう求められます。  ほとんどのユーザーは同意できますが、一部の Azure AD テナントではユーザーによる同意が無効になっており、全ユーザーに代わって管理者が同意を行う必要があります。 このシナリオをサポートするには、Azure portal でアプリのスコープを登録します。
 
-## <a name="help-and-support"></a>ヘルプとサポート
+## <a name="get-help"></a>問い合わせ
 
-このチュートリアルまたは Microsoft ID プラットフォームで問題が発生した場合は、 [ヘルプとサポート](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)に関するページを参照してください。
+このチュートリアルまたは Microsoft ID プラットフォームで問題が発生した場合は、[ヘルプとサポート](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)に関する記事をご覧ください。

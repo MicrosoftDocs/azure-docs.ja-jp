@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 31ce00e21952a28850f91e6288c94898c676b3e8
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 6fc00bf0dfb83f349da91989a579f31be2027ff0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071678"
 ---
 # <a name="overview-of-azure-activity-log"></a>Azure アクティビティ ログの概要
 
@@ -33,7 +33,7 @@ ms.locfileid: "66808173"
 > Azure アクティビティ ログは、主に Azure Resource Manager で発生したアクティビティを記録します。 クラシック/RDFE モデルを使用しているリソースは追跡されません。 一部のクラシック リソース タイプでは、Azure Resource Manager にプロキシ リソース プロバイダー (例: Microsoft.ClassicCompute) が存在します。 これらのプロキシ リソース プロバイダーを使用して Azure Resource Manager 経由でクラシック リソース タイプを操作すると、その操作がアクティビティ ログに表示されます。 Azure Resource Manager プロキシの外部でクラシック リソース タイプを操作すると、そのアクションは操作ログにのみ記録されます。 操作ログは、ポータルの別のセクションで参照できます。
 
 ## <a name="activity-log-retention"></a>アクティビティ ログのリテンション期間
-アクティビティ ログ イベントは 90 日間保存されます。 このデータを長期間保存するには、[Azure Monitor](activity-log-collect.md) で収集するか、[ストレージまたは Event Hubs](activity-log-export.md) にエクスポートします。
+アクティビティ ログのエントリは一度作成されると、システムによって変更も削除も行われません。 また、インターフェイス内またはプログラムでそれらを変更することもできません。 アクティビティ ログ イベントは 90 日間保存されます。 このデータを長期間保存するには、[Azure Monitor](activity-log-collect.md) で収集するか、[ストレージまたは Event Hubs](activity-log-export.md) にエクスポートします。
 
 ## <a name="view-the-activity-log"></a>アクティビティ ログを表示する
 すべてのリソースのアクティビティ ログは、Azure portal の **[モニター]** メニューから表示します。 特定のリソースのアクティビティ ログは、そのリソースのメニューの **[アクティビティ ログ]** オプションから表示します。 PowerShell、CLI、または REST API を使用してアクティビティ ログ レコードを取得することもできます。  「[View and retrieve Azure Activity log events (Azure アクティビティ ログ イベントを表示して取得する)](activity-log-view.md)」を参照してください。

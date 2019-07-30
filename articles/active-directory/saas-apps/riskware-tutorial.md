@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 08db463c92e4ee34819f446c3827ed8dfddc02d7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b2bfbed33433521fd086d474ea4b754f5435f5e6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903938"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092920"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル:Azure Active Directory と Riskware の統合
 
@@ -114,7 +114,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
     | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、URL として次のように入力します: 
+    b. **[識別子 (エンティティ ID)]** ボックスに、URL として次のように入力します:
     
     | 環境| URL パターン|
     |--|--|

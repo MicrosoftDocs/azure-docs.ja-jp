@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: f9bc9bf540f7f44e07bc4bb0ae8ef6910ae78476
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1c7133801eb0d95616cacf501162e6cee3da7c80
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222388"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61477910"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio を使用して Azure Stream Analytics ジョブを表示する
 
@@ -34,13 +34,13 @@ Visual Studio の Azure Stream Analytics ツールのインストール方法に
 
 ### <a name="open-the-job-view"></a>ジョブ ビューを開く
 
-1. **サーバー エクスプローラー**で **[Stream Analytics ジョブ]** を選択し、**[更新]** を選択します。 **[Stream Analytics ジョブ]** の下にジョブが表示されます。
+1. **サーバー エクスプローラー**で **[Stream Analytics ジョブ]** を選択し、 **[更新]** を選択します。 **[Stream Analytics ジョブ]** の下にジョブが表示されます。
 
     ![Stream Analytics のサーバー エクスプローラーの一覧](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
 
 
-2. ジョブ ノードを展開し、**[ジョブ ビュー]** ノードをダブルクリックしてジョブ ビューを開きます。
+2. ジョブ ノードを展開し、 **[ジョブ ビュー]** ノードをダブルクリックしてジョブ ビューを開きます。
     
    ![展開されたジョブ ノード](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
@@ -70,7 +70,7 @@ Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage 
     
    ![ソリューション エクスプローラー](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. ジョブ ビューで、**[プロジェクトの生成]** を選択します。
+2. ジョブ ビューで、 **[プロジェクトの生成]** を選択します。
     
    ![ジョブ ビューからのプロジェクトの生成](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
@@ -87,6 +87,6 @@ Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage 
 ## <a name="next-steps"></a>次の手順
 
 * [Visual Studio を使用して Azure Stream Analytics ジョブを監視および管理する](stream-analytics-monitor-jobs-use-vs.md)
-* [クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
-* [チュートリアル: Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [クイック スタート:Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
+* [チュートリアル:Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Stream Analytics ツールで継続的に統合および開発する](stream-analytics-tools-for-visual-studio-cicd.md)

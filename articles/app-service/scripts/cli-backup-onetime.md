@@ -12,14 +12,15 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/07/2017
-ms.author: msangapu;cephalin
+ms.author: msangapu
+ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b394eb4674175f96d7fc0ceb8eafee0003312327
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fb44440e68f8205b18eba3a3418e5a498e6b2ba
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66137012"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613527"
 ---
 # <a name="back-up-an-app-using-cli"></a>CLI を使用してアプリをバックアップする
 

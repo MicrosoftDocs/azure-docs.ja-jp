@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 831ba47ea4e999219a6d8cf34cb5fb0fdcd1ead8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886082"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594953"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -117,7 +117,7 @@ ms.locfileid: "58886082"
 * 1 つの資格情報の種類または 1 つのアクセス制御メカニズムの中断によってアプリへのアクセスが影響を受ける場合は、フォールバック ポリシーのセットを構成します。 サード パーティの MFA プロバイダーを必要とするアクティブなポリシーに対するバックアップとして、制御としてのドメイン参加が必要なポリシーを無効化された状態で構成します。
 * [パスワードのガイダンス](https://aka.ms/passwordguidance)に関するホワイト ペーパーでの方法に従って、MFA が必要ないときに、パスワードを推測する悪意のあるユーザーのリスクを軽減します。
 * [Azure AD のセルフサービスのパスワード リセット (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) および [Azure AD のパスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy)を展開し、ユーザーが禁止されているありふれたパスワードや条件を使用しないようにします。
-* 単にフル アクセスにフォールバックするのではなく、特定の認証レベルが満たされていない場合はアプリ内でアクセスを制限するポリシーを使用します。 例: 
+* 単にフル アクセスにフォールバックするのではなく、特定の認証レベルが満たされていない場合はアプリ内でアクセスを制限するポリシーを使用します。 例:
   * Exchange および SharePoint に制限されたセッション要求を送信するバックアップ ポリシーを構成します。
   * 組織で Microsoft Cloud App Security が使用されている場合は、フォールバックするポリシーで、MCAS を適用し、MCAS によって読み取り専用アクセスを許可してアップロードを許可しないことを検討します。
 * 中断中にポリシーを簡単に見つけられるよう、ポリシーに名前を付けます。 ポリシー名には次の要素を含めます。
@@ -143,7 +143,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * 名前:EM001 - ENABLE IN EMERGENCY:MFA Disruption[1/4] - Exchange SharePoint - Require Hybrid Azure AD Join
   * ユーザーとグループ:ContingencyAccess を含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
-  * 条件:任意
+  * 条件:Any
   * 許可の制御:ドメインへの参加が必要
   * 状態:Disabled
 * ポリシー 2:Windows 以外のプラットフォームをブロック
@@ -263,7 +263,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 
 * [Azure AD Authentication のドキュメント](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Azure AD で緊急アクセス用管理者アカウントを管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Azure Active Directory で名前付きの場所を構成する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure Active Directory でネームド ロケーションを構成する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Windows Hello for Business の展開ガイド](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)

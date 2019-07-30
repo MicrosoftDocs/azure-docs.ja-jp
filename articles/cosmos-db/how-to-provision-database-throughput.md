@@ -4,14 +4,14 @@ description: Azure Cosmos DB のデータベース レベルでスループッ�
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: d73dd5ffe8cc8ed00288209b628d7175b795b335
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2744422e2e082c5bc6f63975b1100f336d32d5fa
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243764"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250076"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベースのスループットをプロビジョニングする
 
@@ -34,18 +34,54 @@ ms.locfileid: "66243764"
 
 ![[新しいデータベース] ダイアログ ボックスのスクリーンショット](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
+
+## <a name="provision-throughput-using-azure-cli"></a>Azure CLI を使用してスループットをプロビジョニングする
+
+```azcli-interactive
+az cosmosdb database create --db-name
+                            [--key]
+                            [--name]
+                            [--resource-group-name]
+                            [--subscription]
+                            [--throughput]
+                            [--url-connection]
+```
+
+
+
+
+## <a name="provision-throughput-using-powershell"></a>PowerShell を使用してスループットをプロビジョニングする
+
+```azurepowershell-interactive
+# Create a database and provision throughput of 400 RU/s
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "database1"
+$databaseResourceName = $accountName + "/sql/" + $databaseName
+
+$databaseProperties = @{
+    "resource"=@{ "id"=$databaseName };
+    "options"=@{ "Throughput"= 400 }
+}
+
+New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $databaseResourceName -PropertyObject $databaseProperties
+```
+
 ## <a name="provision-throughput-using-net-sdk"></a>.NET SDK を使用してスループットをプロビジョニング
 
 > [!Note]
 > SQL API 用の Cosmos SDK を使用して、すべての API のスループットをプロビジョニングできます。 Cassandra API では、必要に応じて以下の例を使用することもできます。
 
 ### <a id="dotnet-all"></a>すべての API
+### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 ```csharp
 //set the throughput for the database
 RequestOptions options = new RequestOptions
 {
-    OfferThroughput = 10000
+    OfferThroughput = 500
 };
 
 //create the database
@@ -54,11 +90,14 @@ await client.CreateDatabaseIfNotExistsAsync(
     options);
 ```
 
+### <a name="net-v3-sdk"></a>.Net V3 SDK
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
+
 ### <a id="dotnet-cassandra"></a>Cassandra API
 
 ```csharp
-// Create a Cassandra keyspace and provision throughput of 10000 RU/s
-session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=10000);
+// Create a Cassandra keyspace and provision throughput of 400 RU/s
+session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400);
 ```
 
 ## <a name="next-steps"></a>次の手順

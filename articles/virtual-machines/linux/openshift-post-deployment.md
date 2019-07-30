@@ -177,7 +177,7 @@ OpenShift Container Platform Marketplace オファーでは、クラスターの
 
 ### <a name="azure-cloud-provider-in-use"></a>使用中の Azure クラウド プロバイダー
 
-デプロイ時に指定された資格情報を使用し、(使用しているテンプレートとブランチに応じて) 要塞ノードまたは最初のマスター ノードに SSH を実行します。 次のコマンドを発行します。
+デプロイ時に指定された資格情報を使用し、(使用しているテンプレートとブランチに応じて) 踏み台ノードまたは最初のマスター ノードに SSH を実行します。 次のコマンドを発行します。
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \

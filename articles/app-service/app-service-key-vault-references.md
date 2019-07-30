@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7a049c8def0a5014aeb8a0e7a16aaa8def28009
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397826"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705696"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)
 
@@ -38,6 +38,8 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
    > Key Vault 参照では現在のところ、システム割り当てのマネージド ID のみをサポートしています。 ユーザー割り当て ID は使用できません。
 
 1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+
+    キー コンテナーのアプリケーション ID へのアクセス許可は 1 回限りの操作であり、すべての Azure サブスクリプションで同じです。 これを使用して、必要な数だけ証明書をデプロイできます。 
 
 ## <a name="reference-syntax"></a>参照構文
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 5e03a3e33d618c393241a649be50fe78632caafe
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 06/19/2019
+ms.openlocfilehash: c69ffb30a37de8e6dc3e15aa1f7dcd6a9311d614
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068995"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274289"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for PostgreSQL には、サーバーの動作の分析情報を提供する各種の監視オプションが用意されています。
@@ -38,18 +38,20 @@ Azure Database for PostgreSQL では、次のメトリックを使用できま�
 |network_bytes_egress|ネットワーク送信|Bytes|アクティブな接続全体のネットワーク送信。|
 |network_bytes_ingress|Network In|Bytes|アクティブな接続全体のネットワーク受信。|
 |backup_storage_used|使用済みバックアップ ストレージ|Bytes|使用されているバックアップ ストレージの量。|
+|pg_replica_log_delay_in_bytes|Max Lag Across Replicas (レプリカ間の最大ラグ)|Bytes|マスターと最も遅れているレプリカの間のバイト単位でのラグ。 このメトリックは、マスター サーバーのみで使用できます。|
+|pg_replica_log_delay_in_seconds|Replica Lag (レプリカ ラグ)|Seconds|最後に再生されたトランザクションからの時間。 このメトリックは、レプリカ サーバーのみで使用できます。|
 
 ## <a name="server-logs"></a>サーバー ログ
 サーバーでのログ記録を有効にできます。 これらのログは、[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログ記録の詳細については、[サーバー ログ](concepts-server-logs.md)に関するページをご覧ください。
 
 ## <a name="query-store"></a>クエリ ストア
-[クエリ ストア](concepts-query-store.md)は、クエリ ランタイム統計や待機イベントなど、一定期間のクエリ パフォーマンスを追跡記録するパブリック プレビュー機能です。 この機能により、**azure_sys** という名前のシステム データベースの query_store スキーマにクエリ ランタイム パフォーマンス情報が保持されます。 さまざまな構成ノブを介してデータのコレクションとストレージを制御できます。
+[クエリ ストア](concepts-query-store.md)は、クエリ ランタイム統計や待機イベントなど、一定期間のクエリ パフォーマンスを追跡記録します。 この機能により、**azure_sys** という名前のシステム データベースの query_store スキーマにクエリ ランタイム パフォーマンス情報が保持されます。 さまざまな構成ノブを介してデータのコレクションとストレージを制御できます。
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
-[Query Performance Insight](concepts-query-performance-insight.md) はクエリ ストアと連動し、データを視覚化します。視覚化したデータには Azure portal からアクセスできます。 これらのグラフにより、パフォーマンスに影響を与える主要なクエリを特定できます。 Query Performance Insight はパブリック プレビューの段階です。Azure Database for PostgreSQL サーバーのポータル ページの **[サポート + トラブルシューティング]** セクションからアクセスできます。
+[Query Performance Insight](concepts-query-performance-insight.md) はクエリ ストアと連動し、データを視覚化します。視覚化したデータには Azure portal からアクセスできます。 これらのグラフにより、パフォーマンスに影響を与える主要なクエリを特定できます。 Query Performance Insight には、Azure Database for PostgreSQL サーバーのポータル ページの **[サポート + トラブルシューティング]** セクションからアクセスできます。
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
-[パフォーマンスの推奨事項](concepts-performance-recommendations.md)機能によって、ワークロード パフォーマンス改善の機会が特定されます。 パフォーマンスの推奨事項のパブリック プレビュー リリースによって、ワークロードのパフォーマンスを改善する可能性がある新しいインデックスを作成するための推奨事項が提供されます。 推奨インデックスを作成するために、この機能は、クエリ ストアから報告されたスキーマ、ワークロードなどのさまざまなデータベースの特性を考慮します。 顧客は、パフォーマンスに関する推奨事項を実装した後、パフォーマンスをテストし、変更の影響を評価する必要があります。 
+[パフォーマンスの推奨事項](concepts-performance-recommendations.md)機能によって、ワークロード パフォーマンス改善の機会が特定されます。 パフォーマンスの推奨事項によって、ワークロードのパフォーマンスを改善する可能性がある新しいインデックスを作成するための推奨事項が提供されます。 推奨インデックスを作成するために、この機能は、クエリ ストアから報告されたスキーマ、ワークロードなどのさまざまなデータベースの特性を考慮します。 顧客は、パフォーマンスに関する推奨事項を実装した後、パフォーマンスをテストし、変更の影響を評価する必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。

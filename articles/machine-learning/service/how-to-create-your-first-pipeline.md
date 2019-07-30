@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c87685673052d2cfbc961d3bb717c9cd274872af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 948594a43cec92aa62386b041ce8c96a0558995e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059245"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466926"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK を使用して機械学習パイプラインを作成および実行する
 
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="set-up-a-datastore"></a>データストアをセットアップする
 データストアには、パイプラインでアクセスするデータが格納されます。 各ワークスペースに既定のデータストアがあります。 データストアを追加登録できます。 
 
-ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) と [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)が既定でワークスペースに接続されます。 Azure Files がワークスペースの既定のデータストアですが、BLOB ストレージをデータストアとして使用することもできます。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページを参照してください。 
+ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) と [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)が既定でワークスペースに接続されます。 Azure Blob Storage がワークスペースの既定のデータストアですが、BLOB ストレージをデータストアとして使用することもできます。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページを参照してください。 
 
 ```python
 # Default datastore (Azure file storage)

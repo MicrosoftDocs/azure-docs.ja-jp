@@ -6,7 +6,7 @@ metadata:
   title: Personalizer - チュートリアル、クイックスタート、API リファレンス
   description: アプリケーションで Personalizer サービスを使用して、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにする方法を学習します。
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

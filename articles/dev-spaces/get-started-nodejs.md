@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: e461f210dc5b2d0dda0eabd5ea80dfcdc9ccebfb
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 30f912e9c1573b32247bb3c2a3f7d4026436748b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66392803"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503037"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Azure Dev Spaces での Node.js の使用
 
@@ -134,24 +134,27 @@ azds up
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-ブラウザー ウィンドウでこの URL を開くと、Web アプリ ロードが表示されるはずです。 コンテナーが実行されると、`stdout` と `stderr` の出力がターミナル ウィンドウにストリーミングされます。
+`up` コマンドの出力で、サービスのパブリック URL を特定します。 これは `.azds.io` で終わります。 上記の例では、パブリック URL は `http://webfrontend.1234567890abcdef1234.eus.azds.io/` です。
+
+Web アプリを表示するには、ブラウザーでこのパブリック URL を開きます。 また、Web アプリを操作すると、`stdout` と `stderr` の出力が *azds trace* ターミナル ウィンドウにストリームされることに注目してください。 さらに、システムを通過する HTTP 要求の追跡情報を確認することもできます。 これにより、開発中に複雑なマルチ サービス呼び出しを追跡しやすくなります。 Dev Spaces で追加されるインストルメンテーションによって、この要求の追跡が提供されます。
 
 > [!Note]
-> 最初の実行では、パブリック DNS が準備されるまでに数分かかることがあります。 公開 URL が解決されない場合は、コンソール出力に表示される代替 `http://localhost:<portnumber>` URL を使用することができます。 localhost URL を使用する場合、コンテナーはローカルで実行されているように見えるかもしれませんが、実際には AKS で実行されています。 利便性を考慮し、また、ローカル コンピューターからのサービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。 後で DNS レコードが準備できたら、戻って公開 URL を試してみることができます。
+> パブリック URL に加えて、コンソール出力に表示される代替 `http://localhost:<portnumber>` URL を使用することができます。 localhost URL を使用する場合、コンテナーはローカルで実行されているように見えるかもしれませんが、実際には Azure で実行されています。 Azure Dev Spaces では、Kubernetes の *port-forward* 機能が使用され、AKS で実行されているコンテナーに localhost ポートがマップされます。 これにより、ローカル コンピューターからのサービスとの対話が容易になります。
 
 ### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
 Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
 
-1. `./public/index.html` ファイルを見つけ、HTML を編集します。 たとえば、ページの背景色を青の網掛けに変更します。
+1. `./public/index.html` ファイルを見つけ、HTML を編集します。 たとえば、[15 行目](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15)でページの背景色を青の網掛けに変更します。
 
     ```html
     <body style="background-color: #95B9C7; margin-left:10px; margin-right:10px;">
     ```
 
-2. ファイルを保存します。 しばらくすると、ターミナル ウィンドウに、実行中のコンテナー内のファイルが更新されたことを示すメッセージが表示されます。
+1. ファイルを保存します。 しばらくすると、ターミナル ウィンドウに、実行中のコンテナー内のファイルが更新されたことを示すメッセージが表示されます。
 1. ブラウザーに移動し、ページを更新します。 色が更新されていることがわかります。
 
 なぜでしょうか? HTML や CSS などのコンテンツ ファイルの編集では、Node.js プロセスを再開する必要はありません。アクティブな `azds up` コマンドによって、変更されたコンテンツ ファイルが Azure で実行中のコンテナーに自動的に直接同期されるので、編集後のコンテンツをすばやく確認できます。
@@ -161,7 +164,7 @@ webfrontend の公開 URL を使用して、モバイル デバイスで Web ア
 
 この問題を修正するには、`viewport` メタ タグを追加します。
 1. `./public/index.html` ファイルを開きます。
-1. 既存の `head` 要素に `viewport` メタ タグを追加します。
+1. [6 行目](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6)から始まる既存の `head` 要素に `viewport` メタ タグを追加します。
 
     ```html
     <head>
@@ -225,16 +228,24 @@ Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追�
 `up` コマンドと同様に、デバッグを開始するとコードが開発環境に同期され、コンテナーがビルドされて Kubernetes にデプロイされます。 今回は、デバッガーがリモート コンテナーにアタッチされます。
 
 > [!Tip]
-> VS Code のステータス バーに、クリック可能な URL が表示されます。
+> VS Code のステータス バーが、デバッガーがアタッチされていることを示すオレンジ色に変化します。 また、サイトをすばやく開くために使用できるクリック可能な URL も表示されます。
 
 ![](media/common/vscode-status-bar-url.png)
 
-サーバー側のコード ファイル (たとえば、`server.js` の `app.get('/api'...` 内) にブレークポイントを設定します。 ブラウザー ページを更新するか、[Say It Again]\(繰り返してください\) ボタンをクリックすると、ブレークポイントに到達し、コードをステップ実行できます。
+サーバー側のコード ファイル (たとえば、[`server.js` の 13 行目](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) の `app.get('/api'...` 内) にブレークポイントを設定します。 
+
+    ```javascript
+    app.get('/api', function (req, res) {
+        res.send('Hello from webfrontend');
+    });
+    ```
+
+ブラウザー ページを更新するか、 *[Say It Again]\(繰り返してください\)* ボタンをクリックすると、ブレークポイントに到達し、コードをステップ実行できます。
 
 コードがローカルで実行されている場合と同様に、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>コードを編集し、デバッグ セッションを更新する
-デバッガーをアクティブにしてコードを編集します。たとえば、hello メッセージをもう一度変更します。
+デバッガーをアクティブにしてコードを編集します。たとえば、[`server.js` の 13 行目](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)の hello メッセージをもう一度変更します。
 
 ```javascript
 app.get('/api', function (req, res) {
@@ -242,9 +253,9 @@ app.get('/api', function (req, res) {
 });
 ```
 
-ファイルを保存し、**デバッグ操作ウィンドウ**で **[最新の情報に更新]** ボタンをクリックします。 
+ファイルを保存し、**デバッグ操作ウィンドウ**で **[再起動]** ボタンをクリックします。 
 
-![](media/get-started-node/debug-action-refresh-nodejs.png)
+![](media/common/debug-action-refresh.png)
 
 コードを編集するたびに新しいコンテナー イメージを再構築して再展開すると、多くの場合、かなりの時間がかかります。Azure Dev Spaces では、代わりに、デバッグ セッション間に Node.js プロセスを再開することで、編集/デバッグ ループを高速化します。
 

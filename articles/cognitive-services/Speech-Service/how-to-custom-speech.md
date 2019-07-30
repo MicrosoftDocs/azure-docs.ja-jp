@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ab33feb1ffdbced193afaba8f52719b3c215652f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 668ce2206f54fb7bb84d641a1e46f8d5ea9f833d
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511088"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603171"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
@@ -29,7 +29,7 @@ Custom Speech で何かをするためには、あらかじめ Azure アカウ�
 
 ![Custom Speech ポータルを構成するさまざまな要素を示した図。](./media/custom-speech/custom-speech-overview.png)
 
-1. [登録を行ってプロジェクトを作成する](#set-up-your-azure-account) - Azure アカウントを作成して Speech Services に登録します。 この一元化されたサブスクリプションを通じて、音声テキスト変換、テキスト読み上げ、音声翻訳、Custom Speech ポータルにアクセスすることができます。 その後、自分の Speech Services サブスクリプションを使用して、初めての Custom Speech プロジェクトを作成します。
+1. [登録を行ってプロジェクトを作成する](#set-up-your-azure-account) - Azure アカウントを作成して Speech Services に登録します。 この統合されたサブスクリプションにより、音声テキスト変換、テキスト読み上げ、音声翻訳、および Custom Speech ポータルにアクセスできるようになります。 その後、自分の Speech Services サブスクリプションを使用して、初めての Custom Speech プロジェクトを作成します。
 
 2. [テスト データをアップロードする](how-to-custom-speech-test-data.md) - テスト データ (オーディオ ファイル) をアップロードして、ご利用のアプリケーション、ツール、製品に使用する Microsoft の音声テキスト変換プランを評価します。
 
@@ -52,14 +52,14 @@ Azure アカウントと Speech Services サブスクリプションを作成し
 
 1. Azure portal から Speech Services のサブスクリプション キーを取得します。
 2. [Custom Speech ポータル](https://aka.ms/custom-speech)にサインインします。
-3. 必要なサブスクリプションを選択し、音声プロジェクトを作成します。
+3. 作業に必要なサブスクリプションを選択し、音声プロジェクトを作成します。
 4. ご利用のサブスクリプションに変更を加えたい場合は、上部のナビゲーションにある**歯車**アイコンを使用します。
 
 ## <a name="how-to-create-a-project"></a>プロジェクトを作成する方法
 
 データ、モデル、テスト、エンドポイントなどのコンテンツは、Custom Speech ポータルの **[プロジェクト]** にまとめられます。 プロジェクトは、ドメインと国および言語ごとに作成されます。 たとえば、米国の英語を使用するコール センターのプロジェクトを作成することが考えられます。
 
-初めてのプロジェクトを作成するには、**[音声テキスト変換/Custom Speech]** を選択し、**[新しいプロジェクト]** をクリックします。 ウィザードの手順に従ってプロジェクトを作成します。 プロジェクトの作成後、4 つのタブが表示されます (**[データ]**、**[テスト中]**、**[トレーニング]**、**[デプロイ]**)。 それぞれのタブの使い方については、「[次の手順](#next-steps)」に記載のリンクを使用してください。
+初めてのプロジェクトを作成するには、 **[音声テキスト変換/Custom Speech]** を選択し、 **[新しいプロジェクト]** をクリックします。 ウィザードの手順に従ってプロジェクトを作成します。 プロジェクトの作成後、4 つのタブが表示されます ( **[データ]** 、 **[テスト中]** 、 **[トレーニング]** 、 **[デプロイ]** )。 それぞれのタブの使い方については、「[次の手順](#next-steps)」に記載のリンクを使用してください。
 
 ## <a name="next-steps"></a>次の手順
 

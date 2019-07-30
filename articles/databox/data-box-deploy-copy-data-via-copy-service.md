@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 412b554710c552bdfdf8bf94a59e822beed55b32
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925311"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206062"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>チュートリアル:データ コピー サービスを使用してデータを Azure Data Box にコピーする (プレビュー)
 
@@ -59,7 +59,7 @@ NAS デバイスに接続したら、次の手順はデータのコピーです�
     |-------------------------------|---------|
     |**ジョブ名**                       |ジョブの一意の名前を 230 文字未満で指定します。 \<、\>、\|、\?、\*、\\、\:、\/、\\ \.の各文字は、ジョブの名前には使用できません。         |
     |**ソースの場所**                |データ ソースの SMB パスを `\\<ServerIPAddress>\<ShareName>` 形式または `\\<ServerName>\<ShareName>` 形式で指定します。        |
-    |**ユーザー名**                       |データ ソースにアクセスするための `\\<DomainName><UserName>` 形式のユーザー名。        |
+    |**ユーザー名**                       |データ ソースにアクセスするための `\\<DomainName><UserName>` 形式のユーザー名。 ローカルの管理者が接続する場合は、明示的なセキュリティ アクセス許可が必要です。 フォルダーを右クリックし、 **[プロパティ]** を選択し、 **[セキュリティ]** を選択します。 これで、 **[セキュリティ]** タブでローカル管理者が追加されます。       |
     |**パスワード**                       |データ ソースにアクセスするためのパスワード。           |
     |**コピー先ストレージ アカウント**    |データのアップロード先となるターゲット ストレージ アカウントを一覧から選択します。         |
     |**送信先の種類**       |ターゲット ストレージの種類を一覧から選択します。 **[ブロック BLOB]** 、 **[ページ BLOB]** 、または **[Azure ファイル]** です。        |

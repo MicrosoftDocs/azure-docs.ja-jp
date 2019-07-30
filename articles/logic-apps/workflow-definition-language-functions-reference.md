@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: 506076e2d9b171e1ec1ff604519cbbfbe4339e87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5e2af7a7118eaa95e43049b3594ffd584aad4cc
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66733062"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203076"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps および Microsoft Flow でのワークフロー定義言語の関数リファレンス
 
@@ -4303,7 +4303,7 @@ xpath('<xml>', '<xpath>')
 
 * *式 2*
 
-  `xpath(xml(body('Http')), '/*[local-name=()=\"file\"] and namespace-uri()=\"http://contoso.com\"/*[local-name()]=\"location\" and namespace-uri()=\"\"]')`
+  `xpath(xml(body('Http')), '/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]')`
 
 引数は次のとおりです。
 
@@ -4317,9 +4317,9 @@ xpath('<xml>', '<xpath>')
 
   * `/*[name()=\"file\"]/*[name()=\"location\"]`
 
-  * `/*[local-name=()=\"file\"] and namespace-uri()=\"http://contoso.com\"/*[local-name()]=\"location\" and namespace-uri()=\"\"]`
+  * `/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]`
 
-`<location></location` ノードと一致する結果のノード:
+`<location></location>` ノードと一致する結果のノード:
 
 ```xml
 <location xmlns="https://contoso.com">Paris</location>

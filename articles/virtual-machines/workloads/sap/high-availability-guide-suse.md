@@ -4,7 +4,7 @@ description: SUSE Linux Enterprise Server for SAP Applications 上の SAP NetWea
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 44f99ed1af65eb1e487295c11077fd558ce4285c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f88790d96a1e46f60db368f69155b3ad7afbef
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142969"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797488"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性
 
@@ -73,10 +73,10 @@ ms.locfileid: "65142969"
 * SAP Note [1984787]: SUSE Linux Enterprise Server 12 に関する一般情報が記載されています。
 * SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
-* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
-* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
-* [SUSE SAP HA Best Practice Guides (SUSE SAP HA ベスト プラクティス ガイド)][suse-ha-guide]: このガイドには、オンプレミスで Netweaver HA と SAP HANA System Replication を設定するために必要なすべての情報が記載されています。 一般的なベースラインとしてこのガイドを使用してください。 このガイドには詳細な情報が提供されています。
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
+* [SUSE SAP HA ベスト プラクティス ガイド][suse-ha-guide]: このガイドには、オンプレミスで Netweaver HA と SAP HANA System Replication を設定するために必要なすべての情報が記載されています。 一般的なベースラインとしてこのガイドを使用してください。 このガイドには詳細な情報が提供されています。
 * [SUSE High Availability Extension 12 SP3 リリース ノート][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>概要
@@ -125,7 +125,7 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>高可用性 NFS サーバーのセットアップ
 
-SAP NetWeaver では、転送とプロファイル ディレクトリ用の共有ストレージが必要です。 SAP NetWeaver 用の NFS サーバーの設定方法については、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性][nfs-ha]」をご覧ください。
+SAP NetWeaver では、転送とプロファイル ディレクトリ用の共有ストレージが必要です。 SAP NetWeaver 用の NFS サーバーの設定方法については、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性][nfs-ha]」を参照してください。
 
 ## <a name="setting-up-ascs"></a>(A)SCS のセットアップ
 
@@ -137,8 +137,8 @@ Azure Marketplace には、SUSE Linux Enterprise Server for SAP Applications 12 
 
 GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure portal で、[ASCS/SCS マルチ SID テンプレート][template-multisid-xscs]または[集約型テンプレート][template-converged]を開きます。 
-   ASCS/SCS テンプレートで作成されるのは、SAP NetWeaver ASCS/SCS および ERS (Linux のみ) インスタンスの負荷分散規則のみであるのに対し、集約型テンプレートではデータベース (Microsoft SQL Server や SAP HANA など) の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールする予定があり、同じマシンにデータベースもインストールしたい場合は、[集約型テンプレート][template-converged]を使用してください。
+1. [ASCS または SCS マルチ SID テンプレート][template-multisid-xscs]を開きます。or the [converged template][template-converged] on the Azure portal. 
+   The ASCS/SCS template only creates the load-balancing rules for the SAP NetWeaver ASCS/SCS and ERS (Linux only) instances whereas the converged template also creates the load-balancing rules for a database (for example Microsoft SQL Server or SAP HANA). If you plan to install an SAP NetWeaver based system and you also want to install the database on the same machines, use the [converged template][template-converged]
 1. 次のパラメーターを入力します
    1. リソース プレフィックス (ASCS/SCS マルチ SID テンプレートのみ)  
       使用するプレフィックスを入力します。 この値は、デプロイされるリソースのプレフィックスとして使用されます。
@@ -710,7 +710,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 ## <a name="install-database"></a>データベースのインストール
 
-この例では、SAP HANA に SAP NetWeaver がインストールされます。 このインストールではサポートされているすべてのデータベースを使用できます。 Azure への SAP HANA のインストール方法について詳しくは、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」をご覧ください。 サポートされているデータベースの一覧については、[SAP Note 1928533][1928533] をご覧ください。
+この例では、SAP HANA に SAP NetWeaver がインストールされます。 このインストールではサポートされているすべてのデータベースを使用できます。 Azure で SAP HANA をインストールする方法の詳細については、[Azure 仮想マシン (VM) での SAP HANA の高可用性][sap-hana-ha]に関するページを参照してください。. For a list of supported databases, see [SAP Note 1928533][1928533]
 
 1. SAP データベース インスタンスのインストールを実行します
 
@@ -887,6 +887,9 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    # run as root
    # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
+   # Remove migration constraints
+   nw1-cl-0:~ # crm resource clear rsc_sap_NW1_ASCS00
+   #INFO: Removed migration constraints for rsc_sap_NW1_ASCS00
    </code></pre>
 
    テスト後のリソースの状態:
@@ -1200,4 +1203,4 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。
-* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。
+* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]に関するページを参照してください。

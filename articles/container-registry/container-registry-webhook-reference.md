@@ -3,16 +3,17 @@ title: Azure Container Registry webhook スキーマ リファレンス
 description: Azure Container Registry の webhook 要求 JSON ペイロードのリファレンスです。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
-ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcdee2be92f2a3052e2ebbfaab3a2f9cb96e0125
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61331343"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311599"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure Container Registry webhook リファレンス
 

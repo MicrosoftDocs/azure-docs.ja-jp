@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 1048b4e2ac3a8523d5539ddc1a1bdaca3ec2d912
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 311015aff5ea7020043ad8e43fd987144cdcbf52
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074256"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206750"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースをスケーリングする
 
@@ -56,7 +56,7 @@ ms.locfileid: "65074256"
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>サービス レベルの変更またはコンピューティング サイズの再スケーリングの待機時間
 
-単一データベースまたはエラスティック プールのサービス レベルを変更またはコンピューティング サイズを変更する待機時間は、次のようにパラメーター化されます。
+単一データベースまたはエラスティック プールのサービス レベルを変更またはコンピューティング サイズを変更する推定待機時間は、次のようにパラメーター化されます。
 
 |サービス階層|Basic 単一データベース、</br>Standard (S0-S1)|Basic エラスティック プール、</br>Standard (S2-S12)、 </br>ハイパースケール、 </br>汎用の単一データベースまたはエラスティック プール|Premium または Business Critical の単一データベースまたはエラスティック プール|
 |:---|:---|:---|:---|

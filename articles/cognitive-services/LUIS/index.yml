@@ -6,7 +6,7 @@ metadata:
   title: Language Understanding (LUIS) - チュートリアル、クイック スタート、API リファレンス
   description: Language Understanding サービスを使用して、アプリケーションが人の発言の意図を認識できるようにする方法について説明します。
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

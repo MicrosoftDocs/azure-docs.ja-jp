@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e672e7bd43dcd05d048d22205939749c1d96579
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65917013"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348071"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -156,7 +156,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 10. 新しい C# 関数のコードを次のコードで置き換え、 **[保存]** をクリックします。    
 
-    ```C#
+    ```csharp
     #r "Newtonsoft.Json"
     using System.Net;
     using System.Text;
@@ -404,7 +404,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 このサンプル コードでは、Device Provisioning Service のインスタンスにプロビジョニング要求を送信するデバイス ブート シーケンスがシミュレートされます。 ブート シーケンスにより、トースター デバイスが認識され、カスタム割り当てポリシーを使用して IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

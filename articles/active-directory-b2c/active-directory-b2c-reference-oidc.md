@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509200"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271975"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -152,7 +153,9 @@ ID トークンを検証した後、ユーザーとのセッションを開始�
 
 Web アプリケーションがユーザー フローの実行にのみ必要な場合は、次のいくつかのセクションを省略できます。 これらのセクションは、Web API への認証された呼び出しを行う必要があり、かつそれ自体も Azure AD B2C によって保護されている Web アプリケーションにのみ適用できます。
 
-トークン用に (`response_type=code+id_token` を使用して) 取得した承認コードは、`POST` 要求を `/token` エンドポイントに送信することによって目的のリソースに利用できます。 現在、トークンを要求できる唯一のリソースは、アプリケーションの独自のバックエンド Web API です。 自身のトークンを要求するには、アプリケーションのクライアント ID をスコープとして使用します。
+トークン用に (`response_type=code+id_token` を使用して) 取得した承認コードは、`POST` 要求を `/token` エンドポイントに送信することによって目的のリソースに利用できます。 Azure AD B2C では、対応するスコープを要求の中で指定することによって、普通に[他の API のアクセス トークンを要求](active-directory-b2c-access-tokens.md#request-a-token)できます。
+
+さらに、要求スコープとしてアプリのクライアント ID を使用するという慣例によって、アプリ独自のバックエンド Web API 用アクセス トークンを要求することもできます (その場合、そのクライアント ID を "audience" として持つアクセス トークンが得られます)。
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1

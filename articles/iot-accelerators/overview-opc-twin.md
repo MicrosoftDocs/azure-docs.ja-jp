@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 15deadad3b53b64c619933db76d28f012c85d6d1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d58dc18d5513259d5c01f7ddcc54736796e5c824
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730260"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603623"
 ---
 # <a name="what-is-opc-twin"></a>OPC Twin とは
 

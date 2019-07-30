@@ -1,19 +1,18 @@
 ---
 title: Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理
 description: Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。 この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。
-services: backup
 author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e852e1595be5b564bd1a6326d41115496284506f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648352"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466788"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 オフライン シード処理プロセスにより、Azure Backup はディスクを使ってオフライン バックアップ データを Azure にアップロードすることができます。
@@ -76,7 +75,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
    この画面では、次の内容を入力します。
 
     * **ステージングの場所**:初回バックアップ コピーが書き込まれる一時的なストレージの場所。 ステージング場所には、ネットワーク共有またはローカル コンピューター上の場所を使用できます。 コピー用コンピューターとソース コンピューターが異なる場合は、ステージング場所の完全なネットワーク パスを指定することをお勧めします。
-    * **Azure Resource Manager ストレージ アカウント**:Azure サブスクリプションに含まれる種類が Resource Manager のストレージ アカウントの名前。
+    * **Azure Resource Manager ストレージ アカウント**:Azure サブスクリプションでの Resource Manager タイプのストレージ アカウント (General Purpose v1 または General Purpose v2) の名前。
     * **Azure ストレージ コンテナー**:Recovery Services コンテナーにコピーする前に、バックアップ データをインポートする先の Azure ストレージ アカウントのストレージ BLOB の名前。
     * **Azure サブスクリプション ID**:Azure ストレージ アカウントを作成する Azure サブスクリプションの ID。
     * **Azure インポート ジョブ名**:ディスクを使用して Azure に送信されたデータを、Azure インポート サービスと Azure Backup が追跡するときに使用する一意の名前。 

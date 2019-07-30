@@ -6,18 +6,18 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6151af941b89198812f2a33a522b30ff0a8796a0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 129476c833e596d40daa7081e23c0fd6d1b93b30
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242070"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165772"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 
@@ -42,11 +42,11 @@ ms.locfileid: "66242070"
 
 アラートは、環境に起因する待機時間の問題の診断および緩和に役立ちます。
 
-1. Azure Portal で **[メトリック]** をクリックします。
+1. Azure portal で **[メトリック]** を選択します。
 
    [![メトリック](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
 
-1. **[メトリック アラートの追加]** をクリックします。  
+1. **[メトリック アラートの追加]** を選択します。  
 
    [![メトリック アラートを追加する](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
 
@@ -64,7 +64,7 @@ ms.locfileid: "66242070"
 
 ![Latency](media/environment-mitigate-latency/latency.png)
 
-* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が表示され、メッセージがイベント ソースに届く実際の時間から TSI が何秒遅れているのかが通知されます (約  30 ～ 60 秒のインデックス作成時間を除きます)。  *[Ingress Received Message Count Lag]\(受信メッセージの受信のカウント ラグ\)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
+* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が表示され、メッセージがイベント ソースに届く実際の時間から TSI が何秒遅れているのかが通知されます (約 30 ～ 60 秒のインデックス作成時間を除きます)。  *[Ingress Received Message Count Lag]\(受信メッセージの受信のカウント ラグ\)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
 
   たとえば、シングル ユニット S1 の環境で 5,000,000 メッセージの遅れがある場合、環境のサイズを 6 ユニットまで増やせば 1 日がかりで追いつける可能性があります。  さらに増やせば、それだけ短時間で追いつくことができます。 このキャッチアップ期間は、環境に初めてプロビジョニングするときに一般的に発生します。特に、イベントが既に入っているイベント ソースに接続するときや、大量の履歴データを一括アップロードするときに発生します。
 

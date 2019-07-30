@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: b824d122a5d26c17c41a0e2ea1c595c9e2dd7206
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4ee58835a5055f5382cefa3a049424ffe97a01c4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122939"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>条件付きアクセスを使用して Azure 管理へのアクセスを管理する
 

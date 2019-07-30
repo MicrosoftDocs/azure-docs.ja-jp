@@ -2,28 +2,21 @@
 title: Azure Active Directory Identity Protection 用の Microsoft Graph | Microsoft Docs
 description: Microsoft Graph に対するクエリを通じて、Azure Active Directory から一連のリスク イベントとその関連情報を取得する方法を説明します。
 services: active-directory
-keywords: azure active directory identity protection, リスク イベント, 脆弱性, セキュリティ ポリシー, Microsoft Graph
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/25/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
-ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3357cfd5e845346534f263c768b5cf6b6a38ea4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f939811bec312baa1f4c37f0f915d2e881121af
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60296206"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334078"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
@@ -32,7 +25,6 @@ Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[
 * [identityRiskEvents API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
 * [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
 * [signIn API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
-
 
 ## <a name="connect-to-microsoft-graph"></a>Microsoft Graph に接続する
 
@@ -48,108 +40,94 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 * Azure AD にアプリケーションを作成するための管理者特権
 * テナントのドメインの名前 (例: contoso.onmicrosoft.com)
 
-
 ## <a name="retrieve-your-domain-name"></a>ドメイン名の取得 
 
 1. Azure Portal に管理者として[サインイン](https://portal.azure.com)します。 
+1. 左のナビゲーション ウィンドウで、 **[Active Directory]** をクリックします。 
 
-2. 左のナビゲーション ウィンドウで、 **[Active Directory]** をクリックします。 
-   
-    ![Creating an application](./media/graph-get-started/41.png)
+   ![Creating an application](./media/graph-get-started/41.png)
 
+1. **[管理]** セクションで、 **[プロパティ]** をクリックします。
 
-3. **[管理]** セクションで、 **[プロパティ]** をクリックします。
+   ![Creating an application](./media/graph-get-started/42.png)
 
-    ![Creating an application](./media/graph-get-started/42.png)
-
-4. ドメイン名をコピーします。
-
+1. ドメイン名をコピーします。
 
 ## <a name="create-a-new-app-registration"></a>新しいアプリ登録の作成
 
 1. **[Active Directory]** ページの **[管理]** セクションで、 **[アプリの登録]** をクリックします。
 
-    ![Creating an application](./media/graph-get-started/42.png)
+   ![Creating an application](./media/graph-get-started/42.png)
 
+1. 上部のメニューで、 **[新しいアプリケーションの登録]** をクリックします。
 
-2. 上部のメニューで、 **[新しいアプリケーションの登録]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/43.png)
+   ![Creating an application](./media/graph-get-started/43.png)
 
-3. **[作成]** ページで、以下の手順を実行します。
-   
-    ![Creating an application](./media/graph-get-started/44.png)
+1. **[作成]** ページで、以下の手順を実行します。
 
-    a. **[名前]** ボックスにアプリケーションの名前 (例:AADIP Risk Event API Application) を入力します。
-   
-    b. **[種類]** として **[Web アプリケーションや Web API]** を選択します。
-   
-    c. **[サインオン URL]** ボックスに、「`http://localhost`」と入力します。
+   ![Creating an application](./media/graph-get-started/44.png)
 
-    d. **Create** をクリックしてください。
+   1. **[名前]** ボックスにアプリケーションの名前 (例:AADIP Risk Event API Application) を入力します。
 
-4. **[設定]** ページを開くには、アプリケーションの一覧で、新しく作成したアプリの登録をクリックします。 
+   1. **[種類]** として **[Web アプリケーションや Web API]** を選択します。
 
-5. **[アプリケーション ID]** をコピーします。
+   1. **[サインオン URL]** ボックスに、「`http://localhost`」と入力します。
 
+   1. **Create** をクリックしてください。
+1. **[設定]** ページを開くには、アプリケーションの一覧で、新しく作成したアプリの登録をクリックします。 
+1. **[アプリケーション ID]** をコピーします。
 
 ## <a name="grant-your-application-permission-to-use-the-api"></a>API を使用するためのアクセス許可をアプリケーションに付与します。
 
 1. **[設定]** ページで、 **[必要なアクセス許可]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/15.png)
 
-2. **[必要なアクセス許可]** ページで、上部ツール バーの **[追加]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/16.png)
-   
-3. **[API アクセスの追加]** ページで、 **[API を選択します]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/17.png)
+   ![Creating an application](./media/graph-get-started/15.png)
 
-4. **[API を選択します]** ページで、 **[Microsoft Graph]** を選んで、 **[選択]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/18.png)
+1. **[必要なアクセス許可]** ページで、上部ツール バーの **[追加]** をクリックします。
 
-5. **[API アクセスの追加]** ページで、 **[アクセス許可を選択します]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/19.png)
+   ![Creating an application](./media/graph-get-started/16.png)
 
-6. **[アクセスの有効化]** ページで、 **[すべての ID リスク イベント情報の読み取り]** をクリックし、 **[選択]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/20.png)
+1. **[API アクセスの追加]** ページで、 **[API を選択します]** をクリックします。
 
-7. **[API アクセスの追加]** ページで、 **[完了]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/21.png)
+   ![Creating an application](./media/graph-get-started/17.png)
 
-8. **[必要なアクセス許可]** ページで **[アクセス許可の付与]** をクリックし、 **[はい]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/22.png)
+1. **[API を選択します]** ページで、 **[Microsoft Graph]** を選んで、 **[選択]** をクリックします。
 
+   ![Creating an application](./media/graph-get-started/18.png)
 
+1. **[API アクセスの追加]** ページで、 **[アクセス許可を選択します]** をクリックします。
+
+   ![Creating an application](./media/graph-get-started/19.png)
+
+1. **[アクセスの有効化]** ページで、 **[すべての ID リスク イベント情報の読み取り]** をクリックし、 **[選択]** をクリックします。
+
+   ![Creating an application](./media/graph-get-started/20.png)
+
+1. **[API アクセスの追加]** ページで、 **[完了]** をクリックします。
+
+   ![Creating an application](./media/graph-get-started/21.png)
+
+1. **[必要なアクセス許可]** ページで **[アクセス許可の付与]** をクリックし、 **[はい]** をクリックします。
+
+   ![Creating an application](./media/graph-get-started/22.png)
 
 ## <a name="get-an-access-key"></a>アクセス キーを取得する
 
 1. **[設定]** ページで、 **[キー]** をクリックします。
-   
-    ![Creating an application](./media/graph-get-started/23.png)
 
-2. **[キー]** ページで、次の手順を実行します。
-   
-    ![Creating an application](./media/graph-get-started/24.png)
+   ![Creating an application](./media/graph-get-started/23.png)
 
-    a. **[キーの説明]** テキスト ボックスに、説明を入力します (例: "*AADIP リスク イベント*")。
-    
-    b. **[期間]** として、 **[1 年]** を選びます。
+1. **[キー]** ページで、次の手順を実行します。
 
-    c. **[Save]** をクリックします。
-   
-    d. キーの値をコピーし、安全な場所に貼り付けます。   
+   ![Creating an application](./media/graph-get-started/24.png)
+
+   1. **[キーの説明]** テキスト ボックスに、説明を入力します (例: "*AADIP リスク イベント*")。
+   1. **[期間]** として、 **[1 年]** を選びます。
+   1. **[Save]** をクリックします。
+   1. キーの値をコピーし、安全な場所に貼り付けます。   
    
    > [!NOTE]
    > このキーを紛失した場合、このセクションに戻って新しいキーを作成する必要があります。 このキーはだれにも渡さないように注意してください。このキーがあれば、だれでもデータにアクセスすることができます。
-   > 
    > 
 
 ## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Microsoft Graph に本人であることを証明して Identity Risk Events API を照会する
@@ -157,28 +135,22 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 この時点で次の情報が揃っている必要があります。
 
 - テナントのドメインの名前
-
 - クライアント ID 
-
 - キー 
-
 
 本人確認を行うために、post 要求を `https://login.microsoft.com` に送信します。要求本文に次のパラメーターを指定してください。
 
 - grant_type: “**client_credentials**”
-
--  resource: `https://graph.microsoft.com`
-
+- resource: `https://graph.microsoft.com`
 - client_id: \<クライアント ID\>
-
 - client_secret: \<キー\>
-
 
 認証に成功すると、認証トークンが返されます。  
 API を呼び出すためには、次のパラメーターを持つヘッダーを作成します。
 
-    `Authorization`=”<token_type> <access_token>"
-
+```
+`Authorization`=”<token_type> <access_token>"
+```
 
 トークンの種類とアクセス トークンは、認証時に返されたトークンで確認できます。
 
@@ -189,6 +161,7 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
 以下に示したコードは、PowerShell を使って認証と API 呼び出しを行う例です。  
 該当するクライアント ID、秘密キー、テナントのドメインを追加してください。
 
+```PowerShell
     $ClientID       = "<your client ID here>"        # Should be a ~36 hex character string; insert your info here
     $ClientSecret   = "<your client secret here>"    # Should be a ~44 character string; insert your info here
     $tenantdomain   = "<your tenant domain here>"    # For example, contoso.onmicrosoft.com
@@ -216,6 +189,7 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
     } else {
         Write-Host "ERROR: No Access Token"
     } 
+```
 
 ## <a name="query-the-apis"></a>API のクエリを実行する
 
@@ -244,27 +218,17 @@ GET https://graph.microsoft.com/beta/riskyUsers?$filter=riskDetail eq 'userPasse
 ```
 https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>' and riskState eq 'atRisk'
 ```
-
-
-
-
 ## <a name="next-steps"></a>次の手順
 
 以上、Microsoft Graph の API を呼び出す基本的な方法を紹介しました。  
 これを応用すれば、思いどおりに ID リスク イベントを照会し、そのデータを活用することができます。
 
-
 Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプリケーションの構築方法については、こちらの[ドキュメント](https://docs.microsoft.com/graph/overview)と [Microsoft Graph](https://developer.microsoft.com/graph) のサイトをご覧ください。 
-
 
 関連情報については、以下をご覧ください。
 
--  [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-
--  [Azure Active Directory Identity Protection で検出されるリスク イベントの種類](../reports-monitoring/concept-risk-events.md)
-
+- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection で検出されるリスク イベントの種類](../reports-monitoring/concept-risk-events.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
-
 - [Microsoft Graph の概要](https://developer.microsoft.com/graph/docs)
-
 - [Azure AD Identity Protection Service Root](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)

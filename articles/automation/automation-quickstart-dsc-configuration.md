@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a30f9c1a61044c0911a5afc27ad95fc758b4c83e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 0be78b444c9af9c5c0a818d790982670d2b68ee8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449095"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477612"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して Linux 仮想マシンを構成する
 
@@ -31,18 +31,18 @@ Desired State Configuration (DSC) を有効にすると、Windows および Linu
 * Red Hat Enterprise Linux、CentOS、または Oracle Linux を実行している (クラシックではなく) Azure Resource Manager VM。 VM の作成手順については、「[Azure Portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)」を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
- https://portal.azure.com で Azure にサインインします
+[https://portal.azure.com](https://portal.azure.com ) で Azure にサインインします
 
 ## <a name="onboard-a-virtual-machine"></a>仮想マシンをオンボードする
 マシンをオンボードし、Desired State Configuration を有効にするには、さまざまな方法があります。 このクイックスタートでは、Automation アカウントを使用してオンボードする方法について説明します。 [オンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)の記事を読むと、マシンを Desired State Configuration にオンボードするさまざまな方法を理解できます。
 
-1. Azure Portal の左ウィンドウで **[Automation アカウント]** を選択します。 左側のウィンドウに表示されていない場合は、**[すべてのサービス]** をクリックして、結果ビューから探します。
+1. Azure Portal の左ウィンドウで **[Automation アカウント]** を選択します。 左側のウィンドウに表示されていない場合は、 **[すべてのサービス]** をクリックして、結果ビューから探します。
 1. 一覧で Automation アカウントを選択します。
 1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)]** を選択します。
 2. **[追加]** をクリックして、VM の選択ページを開きます。
 3. DSC を有効にする仮想マシンを探します。 検索フィールドとフィルター オプションを使用して、特定の仮想マシンを検索することができます。
-4. 仮想マシンをクリックし、**[接続]** を選択します。
-5. 仮想マシンに適した DSC 設定を選択します。 構成を既に準備している場合は、*[ノード構成名]* として指定できます。 [構成モード](https://docs.microsoft.com/powershell/dsc/metaconfig)を設定して、マシンの構成動作を制御することができます。
+4. 仮想マシンをクリックし、 **[接続]** を選択します。
+5. 仮想マシンに適した DSC 設定を選択します。 構成を既に準備している場合は、 *[ノード構成名]* として指定できます。 [構成モード](https://docs.microsoft.com/powershell/dsc/metaconfig)を設定して、マシンの構成動作を制御することができます。
 6. **[OK]**
 
 ![Azure VM を DSC にオンボードする](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -101,7 +101,7 @@ configuration LAMPServer {
 
 構成をインポートするには：
 
-1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)]** を選択し、**[構成]** タブをクリックします。
+1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)]** を選択し、 **[構成]** タブをクリックします。
 2. **[+ 追加]** をクリックします。
 3. 前の手順で保存した*構成ファイル*を選択します
 4. **[OK]**
@@ -112,19 +112,19 @@ configuration LAMPServer {
 
 構成をコンパイルするには：
 
-1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)]** を選択し、**[構成]** タブをクリックします。
+1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)]** を選択し、 **[構成]** タブをクリックします。
 1. 前の手順でインポートした構成 ("LAMPServer") を選択しします
-1. メニュー オプションから **[コンパイル]** をクリックし、**[はい]** をクリックします
+1. メニュー オプションから **[コンパイル]** をクリックし、 **[はい]** をクリックします
 1. [構成] ビューに、キューに格納されている新しい*コンパイル ジョブ*が表示されます。 ジョブが正常に完了すると、次の手順に進むことができます。 失敗した場合は、コンパイル ジョブをクリックして詳細を確認します。
 
 ## <a name="assign-a-node-configuration"></a>ノード構成を割り当てる
 
 コンパイル済みの*ノード構成*を DSC ノードに割り当てることができます。 割り当てによって構成がマシンに適用され、その構成から外れている点が監視 (または自動修正) されます。
 
-1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)] を選択し、**[ノード]** タブをクリックします。
+1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)] を選択し、 **[ノード]** タブをクリックします。
 1. 構成を割り当てるノードを選択します
 1. **[ノード構成の割り当て]** をクリックします
-1. *[ノード構成]* - **[LAMPServer.localhost]** を選択して割り当て、**[OK]** をクリックします。
+1. *[ノード構成]*  -  **[LAMPServer.localhost]** を選択して割り当て、 **[OK]** をクリックします。
 1. コンパイルされた構成がノードに割り当てられ、ノードの状態は*保留中*に変わります。 次回の定期的なチェックで、ノードは構成を取得して適用し、状態を報告します。 ノードの設定に応じて、ノードが構成を取得するまでに最大 30 分かかることがあります。 即時のチェックを強制するには、Linux 仮想マシンのローカルで次のコマンドを実行します。`sudo /opt/microsoft/dsc/Scripts/PerformRequiredConfigurationChecks.py`
 
 ![ノード構成を割り当てる](./media/automation-quickstart-dsc-configuration/dsc-assign-node-configuration.png)

@@ -2,48 +2,52 @@
 title: Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用する
 description: Azure Kubernetes Service (AKS) で PodSecurityPolicy を使用してポッドのアドミッションを制御する方法について学習する
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
-ms.author: iainfou
-ms.openlocfilehash: 881a16501574dc7309eede6b58e270a97bed977a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: c398567dd3383f4b0b4fd2eaa4b474d1e95b7575
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235741"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613887"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用してクラスターのセキュリティを保護する
 
 AKS クラスターのセキュリティを向上させるには、どのポッドをスケジュールできるかを制限することができます。 許可しないリソースを要求するポッドは、AKS クラスターで実行できません。 ポッド セキュリティ ポリシーを使用してこのアクセスを定義します。 この記事では、ポッド セキュリティ ポリシーを使用して AKS でのポッドのデプロイを制限する方法について説明します。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 プレビューで、これらの機能は、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、'ベスト エフォート' のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
-> * [AKS サポート ポリシー][aks-support-policies]
+> * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal]して、AKS のクイックスタートを参照してください。
 
 Azure CLI バージョン 2.0.61 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-*aks-preview* CLI 拡張機能を使用してポッド セキュリティ ポリシーを有効にするように AKS クラスターが更新されます。 次の例に示すように、[az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
+ポッド セキュリティ ポリシーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> 以前に *aks-preview* 拡張機能をインストール済みの場合は、`az extension update --name aks-preview` コマンドを使用して、利用可能な更新プログラムをインストールします。
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-pod-security-policy-feature-provider"></a>ポッド セキュリティ ポリシー機能プロバイダーを登録する
 
 ポッド セキュリティ ポリシーを使用するために AKS クラスターを作成または更新するには、まず自分のサブスクリプションで機能フラグを有効にします。 *PodSecurityPolicyPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
+
+> [!CAUTION]
+> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
@@ -103,7 +107,7 @@ privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny  
 restricted   false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-*restricted* ポッド セキュリティ ポリシーは、AKS クラスター内のすべての認証済みユーザーに適用されます。 この割り当ては、ClusterRole と ClusterRoleBinding によって制御されます。 次のように、[kubectl get clusterrolebindings][kubectl-get] コマンドを使用して *default:restricted:* バインディングを検索します。
+*restricted* ポッド セキュリティ ポリシーは、AKS クラスター内のすべての認証済みユーザーに適用されます。 この割り当ては、ClusterRole と ClusterRoleBinding によって制御されます。 [kubectl get clusterrolebindings][kubectl-get] コマンドを使用して *default:restricted:* バインディングを検索します。
 
 ```console
 kubectl get clusterrolebindings default:restricted -o yaml
@@ -132,16 +136,16 @@ subjects:
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>AKS クラスターでテスト ユーザーを作成する
 
-既定で、[az aks get-credentials][az-aks-get-credentials] コマンドを使用すると、AKS クラスターの*管理者*資格情報が `kubectl` config に追加されます。管理者ユーザーは、ポッド セキュリティ ポリシーの適用をバイパスします。 AKS クラスターに Azure Active Directory 統合を使用する場合は、管理者以外のユーザーの資格情報でサインインして、ポリシーの適用の動作を確認することができます。 この記事では、自分が使用できる AKS クラスターにテスト ユーザー アカウントを作成しましょう。
+既定で、[az aks get-credentials][az-aks-get-credentials] コマンドを使用すると、AKS クラスターの "*管理者*" 資格情報が `kubectl` config. に追加されます。管理者ユーザーは、ポッド セキュリティ ポリシーの適用をバイパスします。 AKS クラスターに Azure Active Directory 統合を使用する場合は、管理者以外のユーザーの資格情報でサインインして、ポリシーの適用の動作を確認することができます。 この記事では、自分が使用できる AKS クラスターにテスト ユーザー アカウントを作成しましょう。
 
-[kubectl create namespace][kubectl-create] コマンドを使用して、テスト リソース用に *psp-aks* という名前のサンプル名前空間を作成します。 それから、次のように [kubectl create serviceaccount][kubectl-create] コマンドを使用して、*nonadmin-user* という名前のサービス アカウントを作成します。
+[kubectl create namespace][kubectl-create] コマンドを使用して、テスト リソース用に *psp-aks* という名前のサンプル名前空間を作成します。 そして、[kubectl create serviceaccount][kubectl-create] コマンドを使用して、*nonadmin-user* という名前のサービス アカウントを作成します。
 
 ```console
 kubectl create namespace psp-aks
 kubectl create serviceaccount --namespace psp-aks nonadmin-user
 ```
 
-次に、[kubectl create rolebinding][kubectl-create] コマンドを使用して、名前空間で基本的な操作を実行するために*管理者以外のユーザー*の RoleBinding を作成します。
+次に、[kubectl create rolebinding][kubectl-create] コマンドを使用して、名前空間で基本的な操作を行うために "*管理者以外のユーザー*" の RoleBinding を作成します。
 
 ```console
 kubectl create rolebinding \
@@ -184,7 +188,7 @@ spec:
         privileged: true
 ```
 
-次のように、[kubectl apply][kubectl-apply] コマンドを使用してポッドを作成し、YAML マニフェストのファイル名を指定します。
+[kubectl apply][kubectl-apply] コマンドを使用してポッドを作成し、YAML マニフェストのファイル名を指定します。
 
 ```console
 kubectl-nonadminuser apply -f nginx-privileged.yaml
@@ -217,7 +221,7 @@ spec:
       image: nginx:1.14.2
 ```
 
-次のように、[kubectl apply][kubectl-apply] コマンドを使用してポッドを作成し、YAML マニフェストのファイル名を指定します。
+[kubectl apply][kubectl-apply] コマンドを使用してポッドを作成し、YAML マニフェストのファイル名を指定します。
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
@@ -256,7 +260,7 @@ Events:
 
 この例は、AKS によって作成された既定のポッド セキュリティ ポリシーが有効であり、ユーザーが実行できるアクションを制限していることを示しています。 基本の NGINX ポッドが拒否されることを予期していない可能性があるので、これらの既定のポリシーのビヘイビアーを理解しておくことが重要です。
 
-次の手順に進む前に、次のように [kubectl delete pod][kubectl-delete] コマンドを使用してこのテスト ポッドを削除します。
+次の手順に進む前に、[kubectl delete pod][kubectl-delete] コマンドを使用してこのテスト ポッドを削除します。
 
 ```console
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
@@ -281,7 +285,7 @@ spec:
         runAsUser: 2000
 ```
 
-次のように、[kubectl apply][kubectl-apply] コマンドを使用してポッドを作成し、YAML マニフェストのファイル名を指定します。
+[kubectl apply][kubectl-apply] コマンドを使用してポッドを作成し、YAML マニフェストのファイル名を指定します。
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
@@ -318,7 +322,7 @@ Events:
   Warning  BackOff    105s (x5 over 2m11s)  kubelet, aks-agentpool-34777077-0  Back-off restarting failed container
 ```
 
-これらのイベントは、コンテナーが作成されて開始されたことを示しています。 ポッドが失敗状態である理由に関して、直ちに明らかなものはありません。 次のように、[kubectl logs][kubectl-logs] コマンドを使用してポッドのログを確認しましょう。
+これらのイベントは、コンテナーが作成されて開始されたことを示しています。 ポッドが失敗状態である理由に関して、直ちに明らかなものはありません。 [kubectl logs][kubectl-logs] コマンドを使用してポッドのログを確認しましょう。
 
 ```console
 kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
@@ -337,7 +341,7 @@ nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission den
 
 ここでも、既定のポッド セキュリティ ポリシーのビヘイビアーを理解することが重要です。 このエラーは見つけるのが少し難しいものでした。そしてここでも、基本的な NGINX ポッドが拒否されることは予期できない可能性があります。
 
-次の手順に進む前に、次のように [kubectl delete pod][kubectl-delete] コマンドを使用してこのテスト ポッドを削除します。
+次の手順に進む前に、[kubectl delete pod][kubectl-delete] コマンドを使用してこのテスト ポッドを削除します。
 
 ```console
 kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
@@ -370,7 +374,7 @@ spec:
   - '*'
 ```
 
-次のように、[kubectl apply][kubectl-apply] コマンドを使用してポリシーを作成し、YAML マニフェストのファイル名を指定します。
+[kubectl apply][kubectl-apply] コマンドを使用してポリシーを作成し、YAML マニフェストのファイル名を指定します。
 
 ```console
 kubectl apply -f psp-deny-privileged.yaml
@@ -409,7 +413,7 @@ rules:
   - use
 ```
 
-次のように、[kubectl apply][kubectl-apply] コマンドを使用して ClusterRole を作成し、YAML マニフェストのファイル名を指定します。
+[kubectl apply][kubectl-apply] コマンドを使用して ClusterRole を作成し、YAML マニフェストのファイル名を指定します。
 
 ```console
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
@@ -432,7 +436,7 @@ subjects:
   name: system:serviceaccounts
 ```
 
-次のように、[kubectl apply][kubectl-apply] コマンドを使用して ClusterRoleBinding を作成し、YAML マニフェストのファイル名を指定します。
+[kubectl apply][kubectl-apply] コマンドを使用して ClusterRoleBinding を作成し、YAML マニフェストのファイル名を指定します。
 
 ```console
 kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
@@ -443,7 +447,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>特権のないポッドの作成をもう一度テストする
 
-カスタム ポッド セキュリティ ポリシーが適用され、そのポリシーを使用するためのユーザー アカウントのバインディングが作成されたので、特権のないポッドをもう一度作成してみましょう。 次のように [kubectl apply][kubectl-apply] コマンドを使って、同じ `nginx-privileged.yaml` マニフェストを使用してポッドを作成します。
+カスタム ポッド セキュリティ ポリシーが適用され、そのポリシーを使用するためのユーザー アカウントのバインディングが作成されたので、特権のないポッドをもう一度作成してみましょう。 [kubectl apply][kubectl-apply] コマンドを使って、同じ `nginx-privileged.yaml` マニフェストを使用してポッドを作成します。
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
@@ -460,7 +464,7 @@ nginx-unprivileged   1/1     Running   0          7m14s
 
 この例は、カスタム ポッド セキュリティ ポリシーを作成して、さまざまなユーザーまたはグループのための AKS クラスターへのアクセス権を定義する方法を示しています。 既定の AKS ポリシーでは、ポッドが実行できることに対して厳格な管理が提供されているので、独自のカスタム ポリシーを作成して、自分に必要な制限を正しく定義します。
 
-次のように、[kubectl delete][kubectl-delete] コマンドを使用して、特権のない NGINX ポッドを削除し、YAML マニフェストの名前を指定します。
+[kubectl delete][kubectl-delete] コマンドを使用して、特権のない NGINX ポッドを削除し、YAML マニフェストの名前を指定します。
 
 ```console
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
@@ -498,9 +502,9 @@ kubectl delete namespace psp-aks
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、特権アクセスの使用を防止するためのポッド セキュリティ ポリシーを作成する方法を示しました。 ボリュームの種類や RunAs ユーザーなど、ポリシーが適用できるたくさんの機能があります。 可用性オプションの詳細情報については、[Kubernetes ポッド セキュリティ ポリシーの参照ドキュメント][kubernetes-policy-reference]をご覧ください。
+この記事では、特権アクセスの使用を防止するためのポッド セキュリティ ポリシーを作成する方法を示しました。 ボリュームの種類や RunAs ユーザーなど、ポリシーが適用できるたくさんの機能があります。 利用可能なオプションの詳細については、[Kubernetes ポッド セキュリティ ポリシーの参照ドキュメント][kubernetes-policy-reference]に関するページを参照してください。
 
-ポッド ネットワーク トラフィックの制限について詳しくは、「[AKS のネットワーク ポリシーを使用したポッド間のトラフィックの保護][network-policies]」を参照してください。
+ポッド ネットワーク トラフィックの制限の詳細については、「[Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護][network-policies]」を参照してください。
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -525,3 +529,5 @@ kubectl delete namespace psp-aks
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

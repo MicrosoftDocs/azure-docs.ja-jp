@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081833"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61462005"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](data-factory-onprem-postgresql-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-postgresql.md)
 
@@ -75,7 +75,7 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesPostgreSql** |はい |
-| server |PostgreSQL サーバーの名前です。 |はい |
+| サーバー |PostgreSQL サーバーの名前です。 |はい |
 | database |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ |
 | authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
@@ -314,28 +314,28 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | Boolean |bool |Boolean |
 | box | |Byte[], String |
 | bytea | |Byte[], String |
-| character [(n)] |char [(n)] |String |
-| character varying [(n)] |varchar [(n)] |String |
-| cid | |String |
-| cidr | |String |
+| character [(n)] |char [(n)] |string |
+| character varying [(n)] |varchar [(n)] |string |
+| cid | |string |
+| cidr | |string |
 | circle | |Byte[], String |
 | date | |Datetime |
-| daterange | |String |
+| daterange | |string |
 | double precision |float8 |Double |
 | inet | |Byte[], String |
-| intarry | |String |
-| int4range | |String |
-| int8range | |String |
+| intarry | |string |
+| int4range | |string |
+| int8range | |string |
 | integer |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |
-| json | |String |
+| json | |string |
 | jsonb | |Byte[] |
 | line | |Byte[], String |
 | lseg | |Byte[], String |
 | macaddr | |Byte[], String |
 | money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |String |
+| numrange | |string |
 | oid | |Int32 |
 | path | |Byte[], String |
 | pg_lsn | |Int64 |
@@ -345,7 +345,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |String |
+| text | |string |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

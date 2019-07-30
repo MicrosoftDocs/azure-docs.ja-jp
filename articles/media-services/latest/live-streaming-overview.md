@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/16/2019
 ms.author: juliako
-ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0abc3eec380cccae2672d0e9aa4a3a4c7199362f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556219"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295658"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -31,7 +31,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 - コンテンツの取り込み、プレビュー、パッケージ、録画、暗号化、ライブ イベントのブロードキャスト (顧客のほか、CDN に配信して広域配信することもできる) を可能にする、Media Services のコンポーネント。
 
 この記事では、Media Services を使用したライブ ストリーミングの概要とガイダンスを説明し、他の関連記事のリンクを提供します。
-
+ 
 > [!NOTE]
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用します。
 
@@ -49,27 +49,27 @@ Media Services では、[ダイナミック パッケージ](dynamic-packaging-o
 
 ## <a name="live-event-types"></a>ライブ イベントの種類
 
-ライブ イベントには、パススルーとライブ エンコードの 2 種類があります。 Media Services v3 のライブ ストリームに関する詳細については、「[ライブ イベントとライブ出力](live-events-outputs-concept.md)」を参照してください。
+[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)は、ライブ ビデオ フィードの取り込みと処理を担当します。 ライブ イベントには、パススルーとライブ エンコードの 2 種類があります。 Media Services v3 のライブ ストリームに関する詳細については、「[ライブ イベントとライブ出力](live-events-outputs-concept.md)」を参照してください。
 
 ### <a name="pass-through"></a>パススルー
 
 ![パススルー](./media/live-streaming/pass-through.svg)
 
-パススルー **ライブ イベント**を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは追加の処理なしで受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 
+パススルー **ライブ イベント**を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 入力プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは、追加のコード変換なしでダイナミック パッケージャー (ストリーミング エンドポイント) への受信ビデオ ストリームを通過します。 このようなパススルー ライブ イベントは、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 
 
 ### <a name="live-encoding"></a>ライブ エンコード  
 
 ![ライブ エンコード](./media/live-streaming/live-encoding.svg)
 
-Media Services によるライブ エンコードを使用する場合は、オンプレミス ライブ エンコーダーを、(RTMP または Fragmented MP4 プロトコルを使用して) ライブ イベントへの投稿フィードとしてシングル ビットレート ビデオを送信するように構成します。 ライブ イベントは、受信シングル ビットレート ストリームを[マルチ ビットレート ビデオ ストリーム](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)にエンコードし、そのストリームを、MPEG-DASH、HLS、Smooth Streaming などのプロトコルを介して再生デバイスに配信できるようにします。 
+Media Services によるクラウド エンコードを使用する場合は、オンプレミス ライブ エンコーダーを、(RTMP または Fragmented MP4 入力プロトコルを使用して) ライブ イベントへの投稿フィードとしてシングル ビットレート ビデオ (最大合計 32 Mbps) を送信するように構成します。 ライブ イベントは、配信を向上させるためにさまざまな解像度で受信シングル ビットレート ストリームを[マルチ ビットレート ビデオ ストリーム](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)にコード変換し、そのストリームを、MPEG-DASH、Apple HTTP ライブ ストリーミング プロトコル (HLS)、Microsoft Smooth Streaming などの業界標準プロトコルを介して再生デバイスに配信できるようにします。 
 
 ## <a name="live-streaming-workflow"></a>ライブ ストリーミング ワークフロー
 
 Media Services v3 のライブ ストリーミング ワークフローを理解するには、まず次の概念を確認して理解する必要があります。 
 
-- [ストリーミング エンドポイント API](streaming-endpoint-concept.md)
-- [ライブ イベントとライブ出力の API](live-events-outputs-concept.md)
-- [ストリーミング ロケーター API](streaming-locators-concept.md)
+- [ストリーミング エンドポイント](streaming-endpoint-concept.md)
+- [ライブ イベントとライブ出力](live-events-outputs-concept.md)
+- [ストリーミング ロケーター](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>一般的な手順
 
@@ -79,7 +79,7 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 4. プレビュー URL を取得し、それを使用して、エンコーダーからの入力が実際に受信されていることを確認します。
 5. 新しい**資産**オブジェクトを作成します。
 6. **ライブ出力**を作成し、作成した資産の名前を使用します。<br/>**ライブ出力**により、ストリームが**資産**にアーカイブされます。
-7. 組み込みの**ストリーミング ポリシー** タイプで**ストリーミング ロケーター**を作成します。<br/>コンテンツを暗号化する場合は、「[コンテンツ保護の概要](content-protection-overview.md)」を確認してください。
+7. [組み込みのストリーミング ポリシー タイプ](streaming-policy-concept.md)で**ストリーミング ロケーター**を作成します
 8. 使用する URL を返すためのパスを**ストリーミング ロケーター**に列挙します (これらは決定論的です)。
 9. ストリーミングする**ストリーミング エンドポイント** (配信元) のホスト名を取得します。
 10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。

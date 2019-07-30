@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
 title: 認証、アプリ、デバイスの管理に関するユーザー ヘルプ - Azure Active Directory | Microsoft Docs
-description: ユーザー ヘルプは、セキュリティ情報、2 段階認証、セルフサービスによるパスワードのリセット、デバイスの管理、Microsoft Authenticator アプリ、マイ アプリ ポータルの設定と使用でサポートを必要としているユーザーを対象としています。
+description: ユーザー ヘルプは、セキュリティ情報、2 段階認証、パスワード リセットのセルフサービス、デバイスの管理、Microsoft Authenticator アプリ、マイ アプリ ポータルの設定と使用の支援を必要としているユーザーを対象としています。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,16 +11,16 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861805"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383096"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>認証、アプリ、デバイスの管理に関するユーザー ヘルプ
 
-このコンテンツは、セキュリティ情報の設定と使用、2 段階認証、自分のパスワードのリセット方法の習得、Azure Active Directory デバイスの設定と参加、Microsoft Authenticator アプリとマイ アプリ ポータルの設定と使用を支援するために作成されました。
+このコンテンツは、セキュリティ情報と 2 段階認証の設定と使用、自分のパスワードのリセット、Azure Active Directory デバイスの設定と参加、Microsoft Authenticator アプリとマイ アプリ ポータルの設定と使用を支援するために作成されました。
 
 |  |
 |--|
@@ -77,6 +77,7 @@ ms.locfileid: "60861805"
                         <a href="/azure/active-directory/user-help/security-info-setup-auth-app">認証アプリの設定</a><br/>
                         <a href="/azure/active-directory/user-help/security-info-setup-text-msg">テキスト メッセージの設定</a><br/>
                         <a href="/azure/active-directory/user-help/security-info-setup-phone-number">音声通話の設定</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-security-key">セキュリティ キーの設定</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">サインイン方法</a>
                         </p>
                     </div>

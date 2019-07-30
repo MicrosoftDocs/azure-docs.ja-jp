@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 8d4cc5e46066ad2f18d596d0484f62f478b4cc23
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514323"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274229"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>ログとイベントをリアルタイムで表示する方法 (プレビュー)
-コンテナー用 Azure Monitor (現在、プレビュー段階) には、kubectl コマンドを実行せずに、Azure Kubernetes Service (AKS) コンテナーのログ (stdout と stderr) とイベントのライブ ビューを提供する機能が含まれています。 いずれかのオプションを選択すると、 **[ノード]** 、 **[コントローラー]** 、 **[コンテナー]** ビューのパフォーマンス データ テーブルの下に新しいウィンドウが表示されます。 ここにはコンテナー エンジンによって生成されたライブ ログおよびイベントが表示され、リアルタイムでの問題のトラブルシューティングに一層役立てることができます。 
+コンテナー用 Azure Monitor (現在、プレビュー段階) には、kubectl コマンドを実行せずに、Azure Kubernetes Service (AKS) コンテナーのログ (stdout と stderr) とイベントのライブ ビューを提供する機能が含まれています。 いずれかのオプションを選択すると、 **[ノード]** 、 **[コントローラー]** 、 **[コンテナー]** ビューのパフォーマンス データ テーブルの下に新しいウィンドウが表示されます。 ここにはコンテナー エンジンによって生成されたライブ ログおよびイベントが表示され、リアルタイムでの問題のトラブルシューティングに一層役立てることができます。
 
 >[!NOTE]
 >この機能を動作させるには、クラスター リソースへの**共同作成者**アクセスが必要です。
@@ -29,9 +29,9 @@ ms.locfileid: "66514323"
 
 ライブ ログでは、次の 3 つの方法でログへのアクセスが制御されます。
 
-1. Kubernetes RBAC 認証なしの AKS が有効 
+1. Kubernetes RBAC 認証なしの AKS が有効
 2. Kubernetes RBAC 認証を使って AKS が有効
-3. Azure Active Directory (AD) SAML ベースのシングル サインオンを使って AKS が有効 
+3. Azure Active Directory (AD) SAML ベースのシングル サインオンを使って AKS が有効
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>RBAC なしの Kubernetes クラスターが有効
  
@@ -66,21 +66,24 @@ Kubernetes RBAC 認証を有効にした場合は、クラスター ロール �
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. 初めてこれを構成する場合は、次のコマンドを実行して、クラスター ロール バインディングを作成します: `kubectl create -f LogReaderRBAC.yaml`。 ライブ イベント ログが導入される前に、あらかじめライブ ログのサポート (プレビュー) を有効にしていた場合、お使いの構成を更新するには、次のコマンドを実行します: `kubectl apply -f LogReaderRBAC.yml`。 
+2. 初めてこれを構成する場合は、次のコマンドを実行して、クラスター ロール バインディングを作成します: `kubectl create -f LogReaderRBAC.yaml`。 ライブ イベント ログが導入される前に、あらかじめライブ ログのサポート (プレビュー) を有効にしていた場合、お使いの構成を更新するには、次のコマンドを実行します: `kubectl apply -f LogReaderRBAC.yml`。
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Azure Active Directory で AKS を構成する
-ユーザー認証に Azure Active Directory (AD) を使うように AKS を構成できます。 これを初めて構成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/azure-ad-integration.md)」を参照してください。 [クライアント アプリケーション](../../aks/azure-ad-integration.md#create-client-application)を作成する手順中に、2 つの**リダイレクト URI** エントリを指定する必要があります。 2 つの URI は次のとおりです。
 
-- https://ininprodeusuxbase.microsoft.com/*
-- https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html  
+ユーザー認証に Azure Active Directory (AD) を使うように AKS を構成できます。 これを初めて構成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/azure-ad-integration.md)」を参照してください。 その手順の中で[クライアント アプリケーション](../../aks/azure-ad-integration.md#create-the-client-application)を作成するには、次のものを指定します。
+
+- **リダイレクト URI (省略可能)** : これは **Web** アプリケーションの種類であり、ベース URL の値は `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` である必要があります。
+- アプリケーションを登録した後、 **[概要]** ページの左側のウィンドウから **[認証]** を選択します。 **[認証]** ページで、 **[詳細設定]** の **[アクセス トークン]** と **[ID トークン]** を暗黙的に許可してから、変更内容を保存します。
 
 >[!NOTE]
->シングル サインオン用の Azure Active Directory での認証構成は、新しい AKS クラスターを最初にデプロイするときにのみ実行できます。 既にデプロイされている AKS クラスターに対して、シングル サインオンを構成することはできません。 URI でのワイルドカードの使用をサポートするには、Azure AD の **[App registration (legacy)]\(アプリの登録 (レガシ)\)** オプションから認証を構成する必要があります。また、これを一覧に追加する際、**ネイティブ** アプリとして登録する必要があります。
-> 
+>シングル サインオン用の Azure Active Directory での認証の構成は、新しい AKS クラスターの最初のデプロイ中にのみ実行できます。 既にデプロイされている AKS クラスターに対して、シングル サインオンを構成することはできません。
+  
+>[!IMPORTANT]
+>更新された URI を使用したユーザー認証のために Azure AD を再構成した場合は、ブラウザーのキャッシュをクリアして、更新された認証トークンが確実にダウンロードおよび適用されるようにします。   
 
 ## <a name="view-live-logs-and-events"></a>ライブ ログおよびイベントを表示する
 
-ログ イベントがコンテナー エンジンによって生成されたときに、 **[ノード]** 、 **[コントローラー]** 、および **[コンテナー]** ビューでこれらをリアルタイムに表示できます。 プロパティ ウィンドウで **[ライブ データを表示する (プレビュー)]** オプションを選択すると、パフォーマンス データ テーブルの下にウィンドウが表示され、連続的なストリームとしてログとイベントを表示できます。 
+ログ イベントがコンテナー エンジンによって生成されたときに、 **[ノード]** 、 **[コントローラー]** 、および **[コンテナー]** ビューでこれらをリアルタイムに表示できます。 プロパティ ウィンドウで **[ライブ データを表示する (プレビュー)]** オプションを選択すると、パフォーマンス データ テーブルの下にウィンドウが表示され、連続的なストリームとしてログとイベントを表示できます。
 
 ![ノード プロパティ ウィンドウのライブ ログの表示オプション](./media/container-insights-live-logs/node-properties-live-logs-01.png)  
 
@@ -100,9 +103,11 @@ AKS クラスターが AAD を使用して SSO で構成されている場合は
     
   ![ライブ ログ ウィンドウの取得済みデータ](./media/container-insights-live-logs/live-logs-pane-01.png)  
 
-検索バーでキー ワードによってフィルター処理して、そのテキストが含まれるログまたはイベントを強調表示できます。また、検索バーの右端にはフィルターに一致した結果の数が表示されます。   
+検索バーでキー ワードによってフィルター処理して、そのテキストが含まれるログまたはイベントを強調表示できます。また、検索バーの右端にはフィルターに一致した結果の数が表示されます。
 
   ![ライブ ログ ウィンドウのフィルターの例](./media/container-insights-live-logs/live-logs-pane-filter-example-01.png)
+
+イベントが表示されているときに、検索バーの右にある **[フィルター]** ピルを使用して結果をさらに制限できます。 選択したリソースに応じて、このピルにより、選択の対象となるポッド、名前空間、またはクラスターが一覧表示されます。  
 
 自動スクロールを中断し、ウィンドウの動作を制御して、読み込まれた新しいデータを手動でスクロールできるようにするには、 **[スクロール]** オプションをクリックします。 自動スクロールを再度有効にするには、 **[スクロール]** オプションをもう一度クリックします。 **[一時停止]** オプションをクリックして、ログまたはイベント データの取得を一時停止することもできます。再開する準備ができたら、 **[プレイ]** をクリックするだけです。  
 

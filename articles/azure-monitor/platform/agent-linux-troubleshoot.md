@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 83f9cc050694344cdc5f4f5a2070bc875fcba3d9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884178"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071667"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -117,7 +117,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 
 デバッグ ログを使用すると、バッチ処理された Azure Monitor へのアップロードを、種類、データ項目の数、および送信にかかった時間で区切って表示できます。
 
-*"デバッグを有効にしたログの例"*:
+*"デバッグを有効にしたログの例"* :
 
 ```
 Success sending oms.nagios x 1 in 0.14s
@@ -187,6 +187,33 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>問題: オンボードの直後にログ ファイルに 500 および 404 エラーが表示される
 これは、Linux データを Log Analytics ワークスペースに最初にアップロードするときに発生する既知の問題です。 送信されているデータやサービス エクスペリエンスには影響しません。
+
+
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>問題: omiagent が 100% の CPU を使用している
+
+### <a name="probable-causes"></a>考えられる原因
+nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-5.el7.x86_64.rpm.html) の回帰によって、重大なパフォーマンス上の問題が発生しました。これは、Redhat/Centos 7.x のディストリビューションで多く発生しています。 この問題の詳細については、「バグ [1667121 libcurl でのパフォーマンス回帰](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)」というドキュメントを確認してください。
+
+パフォーマンスに関連したバグは常に発生するわけではなく、再現するのは非常に困難です。 omiagent でそのような問題が発生する場合は、スクリプト omiHighCPUDiagnostics.sh を使用してください。これは、特定のしきい値を超えると、omiagent のスタック トレースを収集します。
+
+1. スクリプトのダウンロード <br/>
+`wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
+
+2. 30% の CPU しきい値で 24 時間診断を実行します <br/>
+`bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
+
+3. コールスタックが omiagent_trace ファイルにダンプされます。多くの Curl および NSS の関数呼び出しがある場合は、以下の解決手順を実行してください。
+
+### <a name="resolution-step-by-step"></a>解決 (段階的)
+
+1. nss-pem パッケージを [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-updates-x86_64/nss-pem-1.0.3-5.el7_6.1.x86_64.rpm.html) にアップグレードします。 <br/>
+`sudo yum upgrade nss-pem`
+
+2. nss-pem がアップグレードに使用できない場合 (多くの場合、Centos で発生する) 場合は、curl を 7.29.0-46 にダウングレードします。 誤って "yum update" を実行すると、curl は 7.29.0-51 にアップグレードされ、問題が再度発生します。 <br/>
+`sudo yum downgrade curl libcurl`
+
+3. OMI を再起動します。 <br/>
+`sudo scxadmin -restart`
 
 ## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>問題: Azure portal にデータが表示されない
 
@@ -284,7 +311,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * Linux 用 Log Analytics エージェント パッケージによってインストールされたものより新しいバージョンの OMI パッケージに手動でアップグレードされました
 * DSC リソースにより、"*クラスが見つからない*" というエラーが `omsconfig.log` ログ ファイルに記録されています
 * Log Analytics エージェントのデータがバックアップされています
-* DSC ログの "*現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。*" `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
+* DSC ログの "*現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。* " `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
 
 ### <a name="resolution"></a>解決策
 1. auditd パッケージのようなすべての依存関係をインストールします。
@@ -383,7 +410,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 1. `sudo usermod -a -G <GROUPNAME> <USERNAME>` で、`omsagent` ユーザーを特定のグループに追加します
 2. `sudo chmod -R ugo+rx <FILE DIRECTORY>` で、必要なファイルへの汎用の読み取りアクセス許可を付与します
 
-1.1.0-217 より前のバージョンの Linux 用 Log Analytics エージェントには、競合状態に関する既知の問題があります。 最新のエージェントに更新した後、次のコマンドを実行して、出力プラグインの最新バージョンを取得します。`sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
+1\.1.0-217 より前のバージョンの Linux 用 Log Analytics エージェントには、競合状態に関する既知の問題があります。 最新のエージェントに更新した後、次のコマンドを実行して、出力プラグインの最新バージョンを取得します。`sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>問題: 新しいワークスペースに再オンボードしようとしている
 エージェントを新しいワークスペースに再オンボードするときは、再オンボードの前に、Log Analytics エージェントの構成をクリーンアップする必要があります。 エージェントから古い構成をクリーンアップするには、`--purge` でシェル バンドルを実行します

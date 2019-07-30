@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8d377db827a6548c380128624c21f4ae7896aff
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080161"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055755"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
@@ -41,7 +41,9 @@ Web API を呼び出すデーモン アプリケーションのコードを構�
 
 デーモン アプリケーションが、委任されたアクセス許可を使用せず、アプリケーションのアクセス許可を使用することを考慮すると、それらの*サポートされているアカウントの種類*を、*任意の組織のディレクトリ内のアカウントおよび個人の Microsoft アカウント (たとえば、Skype、Xbox、Outlook.com)* にすることはできません。 実際、Microsoft の個人アカウントについてデーモン アプリケーションに同意を付与するテナント管理者がいないのです。 *自分の所属組織のアカウント*または*任意の組織のアカウント*を選択する必要があります。
 
-したがって、アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。 マルチテナント ツールを提供する ISV の場合は、`organizations` を使用することができます。 ただし、管理者の同意を付与する方法をお客様に説明することも必要になる点に留意してください。 詳細については、「[テナント全体の同意を要求する](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)」を参照してください。
+したがって、アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。
+
+マルチテナント ツールを提供する ISV の場合は、`organizations` を使用することができます。 ただし、管理者の同意を付与する方法をお客様に説明することも必要になる点に留意してください。 詳細については、「[テナント全体の同意の要求する](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)」を参照してください。 また、現在、MSAL には、クライアント資格情報が (証明書ではなく) アプリケーション シークレットである場合にのみ、`organizations` が許可されるという制限があります。 [MSAL.NET バグ #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891) に関するページを参照してください
 
 ## <a name="application-configuration-and-instantiation"></a>アプリケーションの構成とインスタンス化
 

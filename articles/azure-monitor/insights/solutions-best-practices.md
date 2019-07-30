@@ -7,18 +7,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d6d2414935bb5d1f095ad2b200acafa97b3b9b32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4f982f6265d1c8cab2ae666b9d6e2e33beb5064
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596651"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672932"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Azure の管理ソリューションの作成に関するベスト プラクティス (プレビュー)
 > [!NOTE]

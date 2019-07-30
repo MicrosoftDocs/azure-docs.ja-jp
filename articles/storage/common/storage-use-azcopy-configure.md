@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a160591ef0a47eed097ce8db373878f32965de9b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1a67846889b43d582a7a7d477a33f0e2168fd760
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245462"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147863"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -32,7 +32,7 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 
 | オペレーティング システム | command  |
 |--------|-----------|
-| **Windows** | `set https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | コマンド プロンプトでは、`set https_proxy=<proxy IP>:<proxy port>` を使用します<br> PowerShell では、`$env:https_proxy="<proxy IP>:<proxy port>"` を使用します|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -52,7 +52,7 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 
 ## <a name="change-the-location-of-the-log-files"></a>ログ ファイルの場所を変更する
 
-既定では、ログ ファイルは、Windows では `%USERPROFILE\\.azcopy` フォルダーに、Mac および Linux では `$HOME\\.azcopy` フォルダーにあります。 この場所は、以下のコマンドを使用することで、必要に応じて変更することができます。
+既定では、ログ ファイルは、Windows では `%USERPROFILE\\.azcopy` ディレクトリに、Mac および Linux では `$HOME\\.azcopy` ディレクトリにあります。 この場所は、以下のコマンドを使用することで、必要に応じて変更することができます。
 
 | オペレーティング システム | command  |
 |--------|-----------|
@@ -74,7 +74,7 @@ AzCopy は、ジョブごとにログ ファイルとプラン ファイルを�
 
 ログには、エラーの状態 (`UPLOADFAILED`、`COPYFAILED`、および `DOWNLOADFAILED`)、完全なパス、エラーの理由が含まれます。
 
-既定では、ログ ファイルとプラン ファイルは、Windows では `%USERPROFILE\\.azcopy` フォルダーに、Mac および Linux では `$HOME\\.azcopy` フォルダーにあります。
+既定では、ログ ファイルとプラン ファイルは、Windows では `%USERPROFILE\\.azcopy` ディレクトリに、Mac および Linux では `$HOME\\.azcopy` ディレクトリにあります。
 
 > [!IMPORTANT]
 > Microsoft サポートに要求を送信するとき (または、サード パーティが関わる問題のトラブルシューティングを行うとき) は、実行したいコマンドの修正済みバージョンを共有します。 これにより、SAS が誤って誰かと共有されることがなくなります。 修正済みバージョンは、ログ ファイルの先頭にあります。

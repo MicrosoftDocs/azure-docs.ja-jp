@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c686dc0af893259d942527d318f3dd7d98fd752d
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: d72cc4360025d50c6db55bf3029d1edeb538a040
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470735"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382945"
 ---
 # <a name="my-profile-preview-portal-overview"></a>マイ プロファイル (プレビュー) ポータルの概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "65470735"
 
 ## <a name="go-to-the-my-profile-portal"></a>マイ プロファイル ポータルへのアクセス
 
-**マイ プロファイル** ポータル (https://myprofile.microsoft.com)) には、次のブラウザーの最新バージョンからアクセスできます。
+**マイ プロファイル** ポータル (https://myprofile.microsoft.com) ) には、次のブラウザーの最新バージョンからアクセスできます。
 
 - Chrome
 - Microsoft Edge
@@ -46,7 +46,7 @@ ms.locfileid: "65470735"
 
 |記事 |説明 |
 |------|------------|
-|[セキュリティ情報を追加する](user-help-security-info-overview.md)| Microsoft Authenticator アプリ、テキスト メッセージ、または電話を認証方法として設定する方法を説明する記事を複数紹介しています。 また、忘れてしまったパスワードをリセットできるように、必要に応じてメール アドレスまたは事前定義のセキュリティの質問を追加する方法に関する記事も紹介しています。|
-|[接続されている組織を表示または脱退する](myprofile-portal-organizations-page.md)| 職場または学校アカウントに接続されている組織を表示する方法と、その組織から脱退する方法を説明します。|
-|[接続されているデバイスを表示または無効化する](myprofile-portal-devices-page.md)| 職場または学校アカウントに接続されているデバイスを表示する方法と無効化する方法を説明します。|
-|[プライバシーに関連する情報の表示](myprofile-portal-privacy-page.md)| 職場または学校アカウントに接続されているオンライン サービス、および組織の利用規約を表示する方法を説明します。|
+| [セキュリティ情報を追加する](user-help-security-info-overview.md) | Microsoft Authenticator アプリ、テキスト メッセージ、または電話を認証方法として設定する方法を説明する記事を複数紹介しています。 また、忘れてしまったパスワードをリセットできるように、必要に応じてメール アドレスまたは事前定義のセキュリティの質問を追加する方法に関する記事も紹介しています。|
+| [接続されている組織を表示または脱退する](myprofile-portal-organizations-page.md) | 職場または学校アカウントに接続されている組織を表示する方法と、その組織から脱退する方法を説明します。|
+| [接続されているデバイスを表示または無効化する](myprofile-portal-devices-page.md) | 職場または学校アカウントに接続されているデバイスを表示する方法と無効化する方法を説明します。|
+| [プライバシーに関連する情報の表示](myprofile-portal-privacy-page.md) | 職場または学校アカウントに接続されているオンライン サービス、および組織の利用規約を表示する方法を説明します。|

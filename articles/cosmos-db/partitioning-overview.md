@@ -5,13 +5,13 @@ ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.openlocfilehash: 7d252aed830e24719be2112391f0e77d9a6ff9c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/23/2019
+ms.openlocfilehash: 1bfa7104425b5013f9cdf36ff3c1dd88107d3ec7
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953714"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467855"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割
 

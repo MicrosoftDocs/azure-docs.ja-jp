@@ -2,18 +2,18 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのデプロイ
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry に格納されているカスタム イメージを使用して、複数コンテナーのアプリケーションをクラスターにデプロイします。
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: c579aed1acb555a82d5a04308ab4e68f4bfecb8c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: be4d3fd298a7c08aa640585beb741bad18a840ef
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305287"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614337"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
@@ -26,7 +26,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 追加のチュートリアルでは、このアプリケーションがスケールアウトされて更新されます。
 
-このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 詳しくは、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」をご覧ください。
+このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -72,7 +72,7 @@ containers:
 
 ## <a name="deploy-the-application"></a>アプリケーションのデプロイ
 
-アプリケーションをデプロイするには、[kubectl apply][kubectl-apply] コマンドを使用します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。 次の例に示すように、サンプルのマニフェスト ファイルを指定します。
+ご利用になるアプリケーションをデプロイするには、[kubectl apply][kubectl-apply] コマンドを使用します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。 次の例に示すように、サンプルのマニフェスト ファイルを指定します。
 
 ```console
 kubectl apply -f azure-vote-all-in-one-redis.yaml
@@ -93,7 +93,7 @@ service "azure-vote-front" created
 
 アプリケーションが実行されると、Kubernetes サービスによってアプリケーション フロント エンドがインターネットに公開されます。 このプロセスが完了するまでに数分かかることがあります。
 
-進行状況を監視するには、[kubectl get service][kubectl-get] コマンドと `--watch` 引数を使います。
+進行状況を監視するには、[kubectl get service][kubectl-get] コマンドを `--watch` 引数と一緒に使用します。
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -129,7 +129,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 次のチュートリアルに進んで、Kubernetes アプリケーションとその基になっている Kubernetes インフラストラクチャのスケーリング方法に関して学習してください。
 
 > [!div class="nextstepaction"]
-> [Kubernetes アプリケーションと Kubernetes インフラストラクチャをスケーリングする][aks-tutorial-scale]
+> [Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする][aks-tutorial-scale]
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

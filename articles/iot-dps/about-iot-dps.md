@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8331161cde9e7717834dabd2228848de40f7be23
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051470"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360291"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。
@@ -108,8 +108,9 @@ Device Provisioning Service では、99.9% のサービス レベル アグリ�
 ## <a name="quotas"></a>Quotas (クォータ)
 各 Azure サブスクリプションには既定のクォータ制限が設けられており、IoT ソリューションの範囲に影響する可能性があります。 サブスクリプションごとの現在の上限は、サブスクリプションあたり 10 個の Device Provisioning Service です。
 
-クォータ制限の詳細については、次を参照してください。
+[!INCLUDE [azure-iotdps-limits](../../includes/iot-dps-limits.md)]
 
+クォータ制限の詳細については、次を参照してください。
 * [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>関連する Azure のコンポーネント

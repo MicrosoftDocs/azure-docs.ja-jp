@@ -3,20 +3,20 @@ title: 言語サポート - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: ナレッジ ベースの言語は、ソースから質問と回答を自動的に抽出する QnA Maker の機能、およびユーザー クエリに対して QnA Maker が提供する結果の関連性に影響します。 QnA Maker のナレッジ ベースでサポートされるカルチャと自然言語の一覧。 同じナレッジ ベースに複数の言語を混在させないでください。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a543b17633b99bea63d72f46ba856a8b4593d16a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922405"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439546"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker の言語サポート
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Logic Apps へのアクセスのセキュリティ保護 | Microsoft Docs
+title: Azure Logic Apps へのアクセスのセキュリティ保護
 description: トリガー、入力と出力、パラメーター、その他のサービスなど、Azure Logic Apps にセキュリティを追加します
 services: logic-apps
 ms.service: logic-apps
@@ -7,15 +7,14 @@ ms.suite: integration
 author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
-ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65369e5747f17c0e420d5775f1c5704cac9ca21b
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995695"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341099"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Azure Logic Apps へのアクセスのセキュリティ保護
 
@@ -156,9 +155,9 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
 
 特定のユーザーまたはグループにのみお客様のロジック アプリに対する操作の実行を許可するために、管理、編集、表示などのタスクでアクセスを制限できます。 Logic Apps では、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) がサポートされていて、組み込みのロールをカスタマイズしてお客様のサブスクリプションのメンバーに割り当てることができます。次に例を示します。
 
-* [ロジック アプリの共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor): ユーザーがお客様のロジック アプリを表示、編集、更新できます。 
+* [ロジック アプリの共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor): ロジック アプリを管理できますが、アクセス権を変更することはできません。
 
-* [ロジック アプリのオペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator): ユーザーがお客様のロジック アプリと実行履歴を表示できます。また、お客様のロジック アプリを有効または無効にすることができます。 このロールでは、お客様のロジック アプリを編集したり、更新したりできません。
+* [ロジック アプリのオペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator): ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。
 
 他のユーザーがお客様のロジック アプリを変更したり削除したりしないようにするには、[Azure のリソース ロック](../azure-resource-manager/resource-group-lock-resources.md)を使用できます。 この機能は、他のユーザーが運用リソースを変更したり削除したりしないようにするのに役立ちます。
 

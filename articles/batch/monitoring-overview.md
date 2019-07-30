@@ -3,7 +3,7 @@ title: Azure Batch の監視 | Microsoft Docs
 description: Azure Batch の Azure 監視サービス、メトリック、診断ログ、その他の監視機能について説明します。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: b0243b37f725fc977337b72998d610e9bda71a86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77fcfed125104588e27e6a0e80cdb4a92a744083
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128857"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322447"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 

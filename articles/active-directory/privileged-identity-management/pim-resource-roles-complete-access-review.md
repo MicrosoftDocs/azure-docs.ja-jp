@@ -15,12 +15,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aee8ac3c2638ede559f8a1f9c51f2d6e62604998
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9903bb82a82291febf571829fb9874ba66d2eab2
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602238"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476358"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクセス レビューを完了する
 [アクセス レビューが開始](pim-resource-roles-start-access-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) によって、ユーザーに自分のアクセスをレビューするよう求めるメールが自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、[アクセス レビューを実行する方法](pim-resource-roles-perform-access-review.md)に関する手順を送信できます。
@@ -33,13 +33,14 @@ ms.locfileid: "65602238"
 2. リソースを選択します。
 
 3. ダッシュボードの **[アクセス レビュー]** セクションをクリックします。
-![アクセス レビュー](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
+
+    ![Azure リソース - ロール、所有者、開始日、終了日、状態を示すアクセス レビューの一覧](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
 
 4. 管理するアクセス レビューを選択します。
 
 アクセス レビューの [詳細] ブレードには、このレビューを管理するためのオプションが多数あります。 次のようなオプションがあります。
 
-![レビューを管理するためのオプション](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
+![レビューを管理するオプション - 停止、リセット、適用、削除](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
 
 ### <a name="stop"></a>Stop
 すべてのアクセス レビューには終了日が設定されていますが、 **[停止]** ボタンを使用するとレビューを早期に終了することができます。 この時点でレビューを完了していないすべてのユーザーは、レビューを停止した後に完了することはできません。 レビューを停止した後に再開することはできません。
@@ -54,12 +55,14 @@ ms.locfileid: "65602238"
 そのレビューが今後も必要なければ、削除します。 **[削除]** ボタンをクリックすると、レビューが PIM アプリケーションから削除されます。
 
 ## <a name="results"></a>結果
-**[結果]** タブで、レビュー結果の表示とダウンロードを行います。 
-![[結果]](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png) タブ
+**[結果]** ページで、レビュー結果の一覧の表示とダウンロードを行います。 
+
+![ユーザー、結果、理由、レビュー担当者、適用元、適用結果を一覧する [結果] ページ](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
 ## <a name="reviewers"></a>レビュー担当者
 既存のアクセス レビューの表示とレビュー担当者の追加を行います。 レビュー担当者にレビューを完了するように伝えます。
-![レビュー担当者の追加](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
+
+![名前とユーザー プリンシパル名を一覧する [レビュー担当者] ページ](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
 
 ## <a name="next-steps"></a>次の手順
 

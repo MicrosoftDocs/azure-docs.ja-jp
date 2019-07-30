@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: bc0f2044f70c674177f9c9786f56f0441db2e282
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 2a0e88a439400bc36873ed7160b8eb039a16ebfb
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978900"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356181"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
 
@@ -23,7 +23,7 @@ Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されて
 |---------|-------|
 | Apache Spark | 2.4.x、2.3.x、2.2.x、2.1.x |
 | Scala | 2.11 |
-| Azure Databricks ランタイムのバージョン | 3.4 より新しいバージョン |
+| Azure Databricks ランタイムのバージョン | 3\.4 より新しいバージョン |
 
 > [!WARNING]
 > このコネクタは、Azure Cosmos DB のコア (SQL) API をサポートします。
@@ -38,22 +38,23 @@ Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されて
 * これで、新しい Notebook を作成し、Cosmos DB コネクタ ライブラリをインポートすることができるようになりました。 ワークスペースのセットアップ方法についての詳細は、[Cosmos DB コネクタの操作](#bk_working_with_connector)に関する記事をご覧ください。
 * 次のセクションには、コネクタを使用した読み取りと書き込みの方法のスニペットがあります。
 
-### <a name="reading-from-cosmos-db"></a>Cosmos DB からの読み取り
+### <a name="batch-reads-from-cosmos-db"></a>Cosmos DB からのバッチ読み取り
 
 次のスニペットでは、PySpark で Cosmos DB からの読み取りのための Spark DataFrame を作成する方法を示します。
 
 ```python
 # Read Configuration
 readConfig = {
-  "Endpoint" : "https://doctorwho.documents.azure.com:443/",
-  "Masterkey" : "YOUR-KEY-HERE",
-  "Database" : "DepartureDelays",
-  "Collection" : "flights_pcoll",
-  "query_custom" : "SELECT c.date, c.delay, c.distance, c.origin, c.destination FROM c WHERE c.origin = 'SEA'" // Optional
+    "Endpoint": "https://doctorwho.documents.azure.com:443/",
+    "Masterkey": "YOUR-KEY-HERE",
+    "Database": "DepartureDelays",
+    "Collection": "flights_pcoll",
+    "query_custom": "SELECT c.date, c.delay, c.distance, c.origin, c.destination FROM c WHERE c.origin = 'SEA'" // Optional
 }
 
 # Connect via azure-cosmosdb-spark to create Spark DataFrame
-flights = spark.read.format("com.microsoft.azure.cosmosdb.spark").options(**readConfig).load()
+flights = spark.read.format(
+    "com.microsoft.azure.cosmosdb.spark").options(**readConfig).load()
 flights.count()
 ```
 
@@ -65,7 +66,7 @@ import com.microsoft.azure.cosmosdb.spark.schema._
 import com.microsoft.azure.cosmosdb.spark._
 import com.microsoft.azure.cosmosdb.spark.config.Config
 
-// Configure connection to your collection
+// Read Configuration
 val readConfig = Config(Map(
   "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
   "Masterkey" -> "YOUR-KEY-HERE",
@@ -79,28 +80,30 @@ val flights = spark.read.cosmosDB(readConfig)
 flights.count()
 ```
 
-### <a name="writing-to-cosmos-db"></a>Cosmos DB への書き込み
+### <a name="batch-writes-to-cosmos-db"></a>Cosmos DB へのバッチ書き込み
 
 次のスニペットでは、PySpark で Cosmos DB にデータ フレームを書き込む方法を示します。
 
 ```python
 # Write configuration
 writeConfig = {
- "Endpoint" : "https://doctorwho.documents.azure.com:443/",
- "Masterkey" : "YOUR-KEY-HERE",
- "Database" : "DepartureDelays",
- "Collection" : "flights_fromsea",
- "Upsert" : "true"
+    "Endpoint": "https://doctorwho.documents.azure.com:443/",
+    "Masterkey": "YOUR-KEY-HERE",
+    "Database": "DepartureDelays",
+    "Collection": "flights_fromsea",
+    "Upsert": "true"
 }
 
 # Write to Cosmos DB from the flights DataFrame
-flights.write.format("com.microsoft.azure.cosmosdb.spark").options(**writeConfig).save()
+flights.write.format("com.microsoft.azure.cosmosdb.spark").options(
+    **writeConfig).save()
 ```
 
 さらに、Scala での同様のコード スニペットを以下に示します。
 
 ```scala
-// Configure connection to the sink collection
+// Write configuration
+
 val writeConfig = Config(Map(
   "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
   "Masterkey" -> "YOUR-KEY-HERE",
@@ -109,20 +112,118 @@ val writeConfig = Config(Map(
   "Upsert" : "true"
 ))
 
-// Upsert the dataframe to Cosmos DB
+// Write to Cosmos DB from the flights DataFrame
 import org.apache.spark.sql.SaveMode
 flights.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
+### <a name="streaming-reads-from-cosmos-db"></a>Cosmos DB からのストリーミング読み取り
+
+次のスニペットは、Azure Cosmos DB 変更フィードに接続し、そこから読み取る方法を示します。
+
+```python
+# Read Configuration
+readConfig = {
+    "Endpoint": "https://doctorwho.documents.azure.com:443/",
+    "Masterkey": "YOUR-KEY-HERE",
+    "Database": "DepartureDelays",
+    "Collection": "flights_pcoll",
+    "ReadChangeFeed": "true",
+    "ChangeFeedQueryName": "Departure-Delays",
+    "ChangeFeedStartFromTheBeginning": "false",
+    "InferStreamSchema": "true",
+    "ChangeFeedCheckpointLocation": "dbfs:/Departure-Delays"
+}
+
+
+# Open a read stream to the Cosmos DB Change Feed via azure-cosmosdb-spark to create Spark DataFrame
+changes = (spark
+           .readStream
+           .format("com.microsoft.azure.cosmosdb.spark.streaming.CosmosDBSourceProvider")
+           .options(**readConfig)
+           .load())
+```
+さらに、Scala での同様のコード スニペットを以下に示します。
+
+```scala
+// Import Necessary Libraries
+import com.microsoft.azure.cosmosdb.spark.schema._
+import com.microsoft.azure.cosmosdb.spark._
+import com.microsoft.azure.cosmosdb.spark.config.Config
+
+// Read Configuration
+val readConfig = Config(Map(
+  "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
+  "Masterkey" -> "YOUR-KEY-HERE",
+  "Database" -> "DepartureDelays",
+  "Collection" -> "flights_pcoll",
+  "ReadChangeFeed" -> "true",
+  "ChangeFeedQueryName" -> "Departure-Delays",
+  "ChangeFeedStartFromTheBeginning" -> "false",
+  "InferStreamSchema" -> "true",
+  "ChangeFeedCheckpointLocation" -> "dbfs:/Departure-Delays"
+))
+
+// Open a read stream to the Cosmos DB Change Feed via azure-cosmosdb-spark to create Spark DataFrame
+val df = spark.readStream.format(classOf[CosmosDBSourceProvider].getName).options(readConfig).load()
+```
+
+### <a name="streaming-writes-to-cosmos-db"></a>Cosmos DB へのストリーミング書き込み
+
+次のスニペットでは、PySpark で Cosmos DB にデータ フレームを書き込む方法を示します。
+
+```python
+# Write configuration
+writeConfig = {
+    "Endpoint": "https://doctorwho.documents.azure.com:443/",
+    "Masterkey": "YOUR-KEY-HERE",
+    "Database": "DepartureDelays",
+    "Collection": "flights_fromsea",
+    "Upsert": "true",
+    "WritingBatchSize": "500",
+    "CheckpointLocation": "/checkpointlocation_write1"
+}
+
+# Write to Cosmos DB from the flights DataFrame
+changeFeed = (changes
+              .writeStream
+              .format("com.microsoft.azure.cosmosdb.spark.streaming.CosmosDBSinkProvider")
+              .outputMode("append")
+              .options(**writeconfig)
+              .start())
+```
+
+さらに、Scala での同様のコード スニペットを以下に示します。
+
+```scala
+// Write configuration
+
+val writeConfig = Config(Map(
+  "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
+  "Masterkey" -> "YOUR-KEY-HERE",
+  "Database" -> "DepartureDelays",
+  "Collection" -> "flights_fromsea",
+  "Upsert" -> "true",
+  "WritingBatchSize" -> "500",
+  "CheckpointLocation" -> "/checkpointlocation_write1"
+))
+
+// Write to Cosmos DB from the flights DataFrame
+df
+.writeStream
+.format(classOf[CosmosDBSinkProvider].getName)
+.options(writeConfig)
+.start()
+```
 その他のスニペットやエンド ツー エンドのサンプルは、[Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks) を参照してください。
 
 ## <a name="bk_working_with_connector"></a> コネクタの操作
 
-以下のリンクで、Github でソースからコネクタを作成したり、Maven から uber jar をダウンロードしたりすることができます。
+以下のリンクで、GitHub でソースからコネクタを作成したり、Maven から uber jar をダウンロードしたりすることができます。
 
 | Spark | Scala | 最新バージョン |
 |---|---|---|
-| 2.4.0 | 2.11 | [azure-cosmosdb-spark_2.4.0_2.11_1.3.5](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar)
+| 2.4.0 | 2.11 | [azure-cosmosdb-spark_2.4.0_2.11_1.4.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar)
 | 2.3.0 | 2.11 | [azure-cosmosdb-spark_2.3.0_2.11_1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
 | 2.2.0 | 2.11 | [azure-cosmosdb-spark_2.2.0_2.11_1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
 | 2.1.0 | 2.11 | [azure-cosmosdb-spark_2.1.0_2.11_1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
@@ -132,7 +233,7 @@ flights.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 Azure Databricks ガイドのガイダンスで [Azure Cosmos DB Spark コネクタの使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)に関する記事に従って、Databricks ワークスペースでライブラリを作成します
 
 > [!NOTE]
-> **Azure Cosmos DB Spark コネクタの使用**に関するページは現在最新ではありませんのでご注意ください。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、 https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。
+> **Azure Cosmos DB Spark コネクタの使用**に関するページは現在最新ではありませんのでご注意ください。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、 https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。
 > 
 
 ### <a name="using-spark-cli"></a>spark-cli の使用
@@ -140,7 +241,7 @@ Azure Databricks ガイドのガイダンスで [Azure Cosmos DB Spark コネク
 spark-cli (つまり `spark-shell`、`pyspark`、`spark-submit`) を使用してコネクタを操作するために、`--packages` パラメーターをコネクタの [Maven 座標](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11)と一緒に使用することができます。
 
 ```sh
-spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.3.5"
+spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.4.0"
 
 ```
 
@@ -151,7 +252,7 @@ HDInsight 内で Jupyter ノートブックを使用している場合は、spar
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
   "conf": {
-    "spark.jars.packages": "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.3.5",
+    "spark.jars.packages": "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.4.0",
     "spark.jars.excludes": "org.scala-lang:scala-reflect"
    }
    ...
@@ -173,11 +274,10 @@ mvn clean package
 [Cosmos DB Spark GitHub リポジトリ](https://github.com/Azure/azure-cosmosdb-spark)では、以下のサンプル ノートブックとスクリプトをお試しいただけます。
 
 * **Spark と Cosmos DB を利用したオンタイム フライト パフォーマンス (シアトル)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html):Spark SQL、GraphFrames を表示する HDInsight Jupyter ノートブック サービスを使用して Spark を Cosmos DB に接続し、ML パイプラインを使用してフライト遅延を予測します。
-* **[Spark を Cosmos DB 変更フィードに接続する](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Spark%2Band%2BCosmos%2BDB%2BChange%2BFeed.ipynb)**:Spark を Cosmos DB 変更フィードに接続する方法を簡単にご紹介します。
 * **Apache Spark と Azure Cosmos DB 変更フィードの Twitter ソース**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
 * **Apache Spark を使用して Cosmos DB グラフを検索する**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
-* `azure-cosmosdb-spark` を使用した **[Azure Cosmos DB への Azure Databricks の接続](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)**。  ここでリンクされているものも、[オンタイム フライト パフォーマンス ノートブック](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)の Azure Databricks バージョンです。
-* **[Azure Cosmos DB と HDInsight でのラムダ アーキテクチャ (Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)**:Cosmos DB と Spark を使用してビッグ データ パイプラインを維持するための運用上のオーバーヘッドを削減できます。
+* `azure-cosmosdb-spark` を使用した **[Azure Cosmos DB への Azure Databricks の接続](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** 。  ここでリンクされているものも、[オンタイム フライト パフォーマンス ノートブック](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)の Azure Databricks バージョンです。
+* **[Azure Cosmos DB と HDInsight でのラムダ アーキテクチャ (Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)** :Cosmos DB と Spark を使用してビッグ データ パイプラインを維持するための運用上のオーバーヘッドを削減できます。
 
 ## <a name="more-information"></a>詳細情報
 

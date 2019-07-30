@@ -7,13 +7,13 @@ metadata:
   description: Bing Spell Check API を使用して、テキスト ドキュメントの修正候補を取得する方法について説明します。 チュートリアルでは、この API を使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/19/2019
+  ms.date: 07/25/2019
   ms.author: aahi
 abstract:
   description: Bing Spell Check API を使用して、コンテキストに応じた文法とスペルのチェックを実行できます。 Bing では、機械学習と統計的機械翻訳を活用して、常に進化する高度にコンテキストに応じたアルゴリズムを動的にトレーニングする Web ベースのスペル チェック機能を開発しています。 このスペル チェック機能は、Web 検索とドキュメントの大規模な本体に基づいています。 Microsoft が提供するクイックスタート、チュートリアル、サンプルを使用して、コンテンツを分析するさまざまな方法をご確認ください。
@@ -95,7 +95,7 @@ sections:
           - title: REST
             html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference">Bing Spell Check API v7 リファレンス</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference">Bing Spell Check API v5 リファレンス</a> (旧バージョン)</p>'
           - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-spellcheck?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable">Java</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-spellcheck?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-java-stable">Java</a></p>'
           - title: PowerShell
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
           - title: CLI

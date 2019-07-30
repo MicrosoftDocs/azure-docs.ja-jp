@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2018
+ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d6d4a5b9688540e5aa96dd8789dbb609aedeca97
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877586"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077847"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -56,11 +56,11 @@ Linux のマルチパスは、次の表のように、カーネル コンポー�
 
 multipath.conf には次の 5 つのセクションがあります。
 
-- **システム レベルの既定値** *(defaults)*: システム レベルの既定値をオーバーライドすることができます。
-- **ブラックリストに載っているデバイス** *(blacklist)*: device-mapper で制御してはいけないデバイスの一覧を指定することができます。
-- **ブラックリストの例外** *(blacklist_exceptions)*: ブラックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
-- **記憶域コントローラー固有の設定** *(devices)*: 仕入先および製品の情報を持つデバイスに適用する構成設定を指定することができます。
-- **デバイス固有の設定** *(multipaths)*: このセクションは、個々の LUN の構成設定を微調整するために使用することができます。
+- **システム レベルの既定値** *(defaults)* : システム レベルの既定値をオーバーライドすることができます。
+- **ブラックリストに載っているデバイス** *(blacklist)* : device-mapper で制御してはいけないデバイスの一覧を指定することができます。
+- **ブラックリストの例外** *(blacklist_exceptions)* : ブラックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
+- **記憶域コントローラー固有の設定** *(devices)* : 仕入先および製品の情報を持つデバイスに適用する構成設定を指定することができます。
+- **デバイス固有の設定** *(multipaths)* : このセクションは、個々の LUN の構成設定を微調整するために使用することができます。
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Linux ホストに接続されている StorSimple でマルチパスを構成する
 Linux ホストに接続されている StorSimple デバイスを構成して、高可用性と負荷分散を実現することができます。 たとえば、SAN に接続されている 2 つのインターフェイスが Linux ホストに存在し、デバイスには SAN に接続する 2 つのインターフェイスがあり、これらのインターフェイスが同じサブネット上にある場合、4 つのパスを利用できるようになります。 ただし、デバイス上の各 DATA インターフェイスとホスト インターフェイスが別の IP サブネット上にある (およびルーティングできない) 場合、利用できるのは 2 つのパスのみです。 マルチパスを構成して、使用可能なすべてのパスの自動検出、これらのパスの負荷分散アルゴリズムの選択、StorSimple 専用ボリュームの特定の構成設定の適用、マルチパスの有効化と確認を実行することができます。
@@ -71,7 +71,7 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
 このセクションでは、CentOS のサーバーと StorSimple デバイスの構成の前提条件について説明します。
 
 ### <a name="on-centos-host"></a>CentOS ホスト
-1. CentOS ホストに、有効な 2 つのネットワーク インターフェイスがあることを確認します。 型: 
+1. CentOS ホストに、有効な 2 つのネットワーク インターフェイスがあることを確認します。 型:
    
     `ifconfig`
    
@@ -109,10 +109,10 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
 1. CentOS サーバーに *iSCSI-initiator-utils* をインストールします。 次の手順を実行して、 *iSCSI-initiator-utils*をインストールします。
    
    1. CentOS ホストに `root` としてログオンします。
-   1. *iSCSI-initiator-utils*をインストールします。 型: 
+   1. *iSCSI-initiator-utils*をインストールします。 型:
       
        `yum install iscsi-initiator-utils`
-   1. *iSCSI-Initiator-utils* が正常にインストールされた後で、iSCSI サービスを開始します。 型: 
+   1. *iSCSI-Initiator-utils* が正常にインストールされた後で、iSCSI サービスを開始します。 型:
       
        `service iscsid start`
       
@@ -130,7 +130,7 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
        上の例から、iSCSI 環境では、2、3、4、5 の実行レベルでのブート時に実行されることが確認できます。
-1. *device-mapper-multipath*をインストールします。 型: 
+1. *device-mapper-multipath*をインストールします。 型:
    
     `yum install device-mapper-multipath`
    
@@ -186,19 +186,19 @@ StorSimple デバイスに必要なものは次のとおりです。
 ### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>手順 1:マルチパスを自動検出用に構成する
 マルチパスがサポートされているデバイスを自動的に検出して構成できます。
 
-1. `/etc/multipath.conf` ファイルを初期化します。 型: 
+1. `/etc/multipath.conf` ファイルを初期化します。 型:
    
      `mpathconf --enable`
    
     上のコマンドによって、 `sample/etc/multipath.conf` ファイルが作成されます。
-1. マルチパス サービスを開始します。 型: 
+1. マルチパス サービスを開始します。 型:
    
     `service multipathd start`
    
     次の出力が表示されます。
    
     `Starting multipathd daemon:`
-1. マルチパスの自動検出を有効にします。 型: 
+1. マルチパスの自動検出を有効にします。 型:
    
     `mpathconf --find_multipaths y`
    
@@ -213,7 +213,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>手順 2:マルチパスを StorSimple ボリューム用に構成する
 既定では、すべてのデバイスが multipath.conf ファイルのブラック リストに記載されており、バイパスされます。 ブラックリストの例外を作成して、StorSimple デバイスのボリュームのマルチパスを許可する必要があります。
 
-1. `/etc/mulitpath.conf` ファイルを編集します。 型: 
+1. `/etc/mulitpath.conf` ファイルを編集します。 型:
    
     `vi /etc/multipath.conf`
 1. multipath.conf ファイルの blacklist_exceptions セクションを見つけます。 StorSimple デバイスを、ブラックリストの例外としてこのセクションに記載する必要があります。 このファイル内の関連する行のコメントを解除して、次のように変更することができます (使用するデバイスの特定のモデルのみを使用します)。
@@ -232,7 +232,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 ### <a name="step-3-configure-round-robin-multipathing"></a>手順 3:ラウンド ロビン マルチパスを構成する
 この負荷分散アルゴリズムは、バランスの取れたラウンド ロビン方式で、アクティブ コントローラーへの使用可能なすべてのマルチパスを使用します。
 
-1. `/etc/multipath.conf` ファイルを編集します。 型: 
+1. `/etc/multipath.conf` ファイルを編集します。 型:
    
     `vi /etc/multipath.conf`
 1. `defaults` セクションの `path_grouping_policy` を `multibus` に設定します。 `path_grouping_policy` では、指定されていないマルチパスに適用する既定のパスグループ化ポリシーを指定します。 既定値のセクションは次のようになります。
@@ -251,7 +251,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 > 
 
 ### <a name="step-4-enable-multipathing"></a>手順 4:マルチパスを有効にする
-1. `multipathd` デーモンを再起動します。 型: 
+1. `multipathd` デーモンを再起動します。 型:
    
     `service multipathd restart`
 1. 出力は次のようになります。
@@ -262,7 +262,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 ### <a name="step-5-verify-multipathing"></a>手順 5:マルチパスを確認する
 1. まず、iSCSI 接続が、StorSimple デバイスで次のように確立されていることを確認します。
    
-   a. StorSimple デバイスを検出します。 型: 
+   a. StorSimple デバイスを検出します。 型:
       
     ```
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
@@ -277,7 +277,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 
     前の出力から、StorSimple デバイスの IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`をコピーします。
 
-   b. ターゲット IQN を使用してデバイスに接続します。 ここでは StorSimple デバイスが iSCSI ターゲットです。 型: 
+   b. ターゲット IQN を使用してデバイスに接続します。 ここでは StorSimple デバイスが iSCSI ターゲットです。 型:
 
     ```
     iscsiadm -m node --login -T <IQN of iSCSI target>
@@ -300,7 +300,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 1. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。 詳細については、「[手順 6: ボリュームを作成する (StorSimple デバイス上で Azure portal を使用)](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)」を参照してください。
 
-1. 使用可能なパスを確認します。 型: 
+1. 使用可能なパスを確認します。 型:
 
       ```
       multipath –l
@@ -417,7 +417,7 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
     dm-3 devnode blacklisted, unmonitored
 
 
-詳細については、 [マルチパス用のトラブルシューティングのための対話型コマンドを使用する](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html)方法を参照してください。
+詳細については、[マルチパスのトラブルシューティング](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)に関するページを参照してください。
 
 ## <a name="list-of-useful-commands"></a>便利なコマンドの一覧
 | 確認を求められたら、「 | command | 説明 |
@@ -438,12 +438,12 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 | &nbsp; |`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y` |ブート時にマルチパス デーモンを開始するようにする |
 | &nbsp; |`multipathd –k` |トラブルシューティングのために対話型コンソールを起動する |
 | &nbsp; |`multipath –l` |マルチパス接続とデバイスを一覧表示する |
-| &nbsp; |`mpathconf --enable` | `/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |`/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>次の手順
 Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキュメントも参照することが必要になる場合があります。
 
-* [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
+* [CentOS での MPIO の設定](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux トレーニング ガイド](http://linux-training.be/linuxsys.pdf)
 

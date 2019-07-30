@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 15c7df52dcc2b9ab6977ee9d67d7997ff8b14287
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 623bf0b054544d2c25f3542043afe20d778fdd24
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485970"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603490"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>クイック スタート:Custom Vision Python SDK を使用して物体検出プロジェクトを作成する
 
@@ -46,7 +46,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 物体検出と画像分類のプロジェクト作成の違いは **create_project** 呼び出しに指定されるドメインであることにご注目ください。
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 物体検出と画像分類のプロジェクト作成の違いは、**create_project** 呼び出しに指定されるドメインです。
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -85,7 +85,7 @@ scissors_tag = trainer.create_tag(project.id, "scissors")
 
 物体検出プロジェクトで画像にタグを付ける際は、タグ付けする各物体の領域を正規化座標を使用して指定する必要があります。
 
-画像、タグ、領域をプロジェクトに追加するには、タグの作成後、次のコードを挿入します。 このチュートリアルでは、リージョンがコードに埋め込まれていることにご注目ください。 各領域は、正規化座標で境界ボックスを指定しており、座標は、左、上、幅、高さの順に指定しています。
+画像、タグ、領域をプロジェクトに追加するには、タグの作成後、次のコードを挿入します。 このチュートリアルでは、リージョンがコードの行内にハードコードされています。 各領域は、正規化座標で境界ボックスを指定しており、座標は、左、上、幅、高さの順に指定しています。
 
 ```Python
 fork_image_regions = {

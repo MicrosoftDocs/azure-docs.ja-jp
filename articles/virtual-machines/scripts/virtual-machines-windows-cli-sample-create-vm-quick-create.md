@@ -4,7 +4,7 @@ description: Azure CLI のサンプル スクリプト - Windows Server 2016 の
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
-ms.author: rickstercdn
+ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 2f63bbc444367afdad32615d0f6132e8986a6160
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: e9eed2ee25c5088df88730ccec8d2a634cd3fcef
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670351"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871616"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した仮想マシンの簡易作成
 

@@ -2,18 +2,18 @@
 title: Azure Kubernetes Service (AKS) で kubenet ネットワークを構成する
 description: Azure Kubernetes Service (AKS) で kubenet (基本) ネットワークを構成して、既存の仮想ネットワークおよびサブネットに AKS クラスターをデプロイする方法について説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 06/03/2019
-ms.author: iainfou
+ms.date: 06/26/2019
+ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: cde7d692e8bb37e874c6e55e5584d96e3b13af31
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497189"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615752"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -48,7 +48,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 妥協案として、*kubenet* を使用する AKS クラスターを作成し、既存の仮想ネットワーク サブネットに接続することができます。 この方法では、ノードは定義済みの IP アドレスを受け取ることができ、クラスター内で実行される可能性のあるすべてのポッド用に多数の IP アドレスを事前に予約する必要はありません。
 
-*kubenet* では、はるかに小さい IP アドレス範囲を使用して、大きなクラスターやアプリケーションの需要をサポートできます。 たとえばを、 */27* の IP アドレス範囲でも、20 ～ 25 ノードのクラスターを実行し、スケーリングやアップグレードのための十分な余裕を確保できます。 このクラスター サイズでは、最大で *2,200 ～ 2,750* 個のポッドがサポートされます (既定では、ノードあたり最大 110 ポッド)。 AKS において *kubenet* で構成できるノードあたりの最大ポッド数は 250 です。
+*kubenet* では、はるかに小さい IP アドレス範囲を使用して、大きなクラスターやアプリケーションの需要をサポートできます。 たとえばを、 */27* の IP アドレス範囲でも、20 ～ 25 ノードのクラスターを実行し、スケーリングやアップグレードのための十分な余裕を確保できます。 このクラスター サイズでは、最大で *2,200 ～ 2,750* 個のポッドがサポートされます (既定では、ノードあたり最大 110 ポッド)。 AKS において *kubenet* で構成できるノードあたりの最大ポッド数は 110 です。
 
 次の基本的な計算では、ネットワーク モデルの違いを比較します。
 
@@ -62,7 +62,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>仮想ネットワーク ピアリングと ExpressRoute 接続
 
-オンプレミスの接続を提供するため、*kubenet* および *Azure CNI* のどちらのネットワーク アプローチでも、[Azure 仮想ネットワーク ピアリング][vnet-peering]または [ExpressRoute 接続][express-route]を使用できます。 重複および正しくないトラフィック ルーティングが発生しないように、慎重に IP アドレス範囲を計画する必要があります。 たとえば、多くのオンプレミス ネットワークでは、ExpressRoute 接続経由でアドバタイズされる *10.0.0.0/8* のアドレス範囲が使用されます。 このアドレス範囲の外側にある Azure 仮想ネットワーク サブネット (*172.26.0.0/16* など) に、AKS クラスターを作成することをお勧めします。
+オンプレミスの接続を提供するため、*kubenet* および *Azure CNI* のどちらのネットワーク アプローチでも、[Azure 仮想ネットワーク ピアリング][vnet-peering]or [ExpressRoute connections][express-route]を使用できます。 重複および正しくないトラフィック ルーティングが発生しないように、慎重に IP アドレス範囲を計画する必要があります。 たとえば、多くのオンプレミス ネットワークでは、ExpressRoute 接続経由でアドバタイズされる *10.0.0.0/8* のアドレス範囲が使用されます。 AKS クラスターをこのアドレス範囲外の Azure 仮想ネットワーク サブネット (*172.16.0.0/16* など) に作成することをお勧めします。
 
 ### <a name="choose-a-network-model-to-use"></a>使用するネットワーク モデルを選択する
 
@@ -81,26 +81,28 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 - UDR を管理したくない。
 - 仮想ノードやネットワーク ポリシーなどの高度な機能を使用する必要がある。
 
+どのネットワーク モデルを使用するかの決定に役立つ詳細については、[ネットワーク モデルとそのサポート範囲の比較][network-comparisons]に関するページを参照してください。
+
 > [!NOTE]
 > Kuberouter により、kubenet の使用時にネットワーク ポリシーを有効にして AKS クラスターにデーモンセットとしてインストールできます。 Kube ルーターはまだベータ版であり、プロジェクトに対する Microsoft のサポートは提供されていないことに注意してください。
 
 ## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
 
-*kubenet* と独自の仮想ネットワーク サブネットを使い始めるには、最初に [az group create][az-group-create] コマンドを使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+*kubenet* と独自の仮想ネットワーク サブネットを使って作業を始めるには、最初に [az group create][az-group-create] コマンドを使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用できる既存の仮想ネットワークとサブネットがない場合は、[az network vnet create][az-network-vnet-create] コマンドを使用してこれらのネットワーク リソースを作成します。 次の例では、仮想ネットワークの名前は *myVnet*、アドレス プレフィックスは *10.0.0.0/8* です。 作成するサブネットの名前は *myAKSSubnet*、アドレス プレフィックスは *10.240.0.0/16* です。
+使用できる既存の仮想ネットワークとサブネットがない場合は、[az network vnet create][az-network-vnet-create] コマンドを使用してこれらのネットワーク リソースを作成します。 次の例では、*192.168.0.0/16* のアドレス プレフィックスを持つ仮想ネットワークに *myVnet* という名前が付けられています。 *192.168.1.0/24* のアドレス プレフィックスを持つ *myAKSSubnet* という名前のサブネットが作成されています。
 
 ```azurecli-interactive
 az network vnet create \
     --resource-group myResourceGroup \
     --name myAKSVnet \
-    --address-prefixes 10.0.0.0/8 \
+    --address-prefixes 192.168.0.0/16 \
     --subnet-name myAKSSubnet \
-    --subnet-prefix 10.240.0.0/16
+    --subnet-prefix 192.168.1.0/24
 ```
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>サービス プリンシパルを作成してアクセス許可を割り当てる
@@ -125,7 +127,7 @@ $ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-後の手順で正しい委任を割り当てるため、[az network vnet show][az-network-vnet-show] コマンドと [az network vnet subnet show][az-network-vnet-subnet-show] コマンドを使用して、必要なリソース ID を取得します。 これらのリソース ID を変数に格納し、後の手順で参照します。
+後の手順で正しい委任を割り当てるため、[az network vnet show][az-network-vnet-show]and [az network vnet subnet show][az-network-vnet-subnet-show] コマンドを使用して、必要なリソース ID を取得します。 これらのリソース ID を変数に格納し、後の手順で参照します。
 
 ```azurecli-interactive
 VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet --query id -o tsv)
@@ -150,7 +152,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 * *--pod-cidr* は、ネットワーク環境の他の場所で使われていない大きいアドレス空間にする必要があります。 ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこの範囲に含まれます。
     * このアドレス範囲は、スケールアップ後に予想されるノードの数を格納するのに十分な大きさである必要があります。 追加ノード用により多くのアドレスが必要になった場合でも、クラスターをデプロイした後では、このアドレス範囲を変更できません。
-    * ポッドの IP アドレス範囲は、クラスター内の各ノードに */24* アドレス空間を割り当てるために使用されます。 次の例の *--pod-cidr* の *192.168.0.0/16* では、1 番目のノードに *192.168.0.0/24* が、2 番目のノードに *192.168.1.0/24* が、3 番目のノードに *192.168.2.0/24* が、それぞれ割り当てられてます。
+    * ポッドの IP アドレス範囲は、クラスター内の各ノードに */24* アドレス空間を割り当てるために使用されます。 次の例では、*10.244.0.0/16* の *--pod-cidr* によって、最初のノードに *10.244.0.0/24*、2 番目のノードに *10.244.1.0/24*、3 番目のノードに *10.244.2.0/24* が割り当てられます。
     * クラスターをスケーリングまたはアップグレードすると、Azure プラットフォームによって引き続き新しい各ノードにポッドの IP アドレス範囲が割り当てられます。
     
 * *--docker-bridge-address* を使用すると、AKS ノードは基になる管理プラットフォームと通信できます。 この IP アドレスは、クラスターの仮想ネットワーク IP アドレス範囲に含まれていてはならず、ネットワークで使用されている他のアドレス範囲と重複していてもなりません。
@@ -163,7 +165,7 @@ az aks create \
     --network-plugin kubenet \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
-    --pod-cidr 192.168.0.0/16 \
+    --pod-cidr 10.244.0.0/16 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal <appId> \
@@ -174,7 +176,7 @@ AKS クラスターを作成すると、ネットワーク セキュリティ �
 
 ## <a name="next-steps"></a>次の手順
 
-既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Azure Dev Spaces を使用したアプリの構築][dev-spaces]や [Draft の使用][use-draft]を始めたり、[Helm を使用してアプリをデプロイ][use-helm]したりできます。
+既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Azure Dev Spaces を使用してアプリの構築][dev-spaces]or [using Draft][use-draft]に着手するか、[Helm][use-helm] を使用してアプリをデプロイします。
 
 <!-- LINKS - External -->
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
@@ -196,3 +198,4 @@ AKS クラスターを作成すると、ネットワーク セキュリティ �
 [virtual-nodes]: virtual-nodes-cli.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
+[network-comparisons]: concepts-network.md#compare-network-models

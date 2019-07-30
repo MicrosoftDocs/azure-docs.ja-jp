@@ -1,106 +1,112 @@
 ### YamlMime:Landing
 title: Azure IoT Edge
 summary: Azure IoT Edge は、IoT Hub の上に構築されるモノのインターネット (IoT) サービスです。 このサービスは、クラウド内ではなく、デバイスで (つまり "エッジで") データを分析したいお客様を対象としています。 ワークロードの一部をエッジに移動することで、デバイスはクラウドにメッセージを送る時間を減らし、イベントにさらに迅速に反応できるようになります。
+metadata:
+  ms.topic: landing-page
+  ms.openlocfilehash: 71589d66856b4f6d3a32da50252fadff564373ff
+  ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/23/2019
+  ms.locfileid: "68414427"
 landingContent:
-  - title: Linux デバイス向けの開発
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: 初めての IoT Edge モジュールを Linux デバイスに展開する
-            url: quickstart-linux.md
-      - linkListType: tutorial
-        links:
-          - text: Linux のデバイス用の IoT Edge モジュールを開発する
-            url: tutorial-develop-for-linux.md
-      - linkListType: how-to-guide
-        links:
-          - text: Visual Studio Code を使用してモジュールを開発およびデバッグする
-            url: how-to-vs-code-develop-module.md
-  - title: Windows デバイス向けの開発
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: 初めての IoT Edge モジュールを Windows デバイスにデプロイする
-            url: quickstart.md
-      - linkListType: tutorial
-        links:
-          - text: Windows デバイス用の IoT Edge モジュールを開発する
-            url: tutorial-develop-for-windows.md
-      - linkListType: how-to-guide
-        links:
-          - text: Visual Studio 2017 を使用してモジュールを開発およびデバッグする
-            url: how-to-visual-studio-develop-module.md
-  - title: IoT Edge デバイスのプロビジョニング
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Linux x64 で Install IoT Edge をインストールする
-            url: how-to-install-iot-edge-linux.md
-          - text: ARM32 で Install IoT Edge をインストールする
-            url: how-to-install-iot-edge-linux-arm.md
-          - text: Windows x64 で Install IoT Edge をインストールする
-            url: how-to-install-iot-edge-windows.md
-          - text: Linux デバイスを自動的にプロビジョニングする
-            url: how-to-auto-provision-simulated-device-linux.md
-          - text: Windows デバイスを自動的にプロビジョニングする
-            url: how-to-auto-provision-simulated-device-windows.md
-  - title: オープンソース コミュニティと交流する
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: IoT Edge のリポジトリ
-            url: 'https://github.com/Azure/iotedge'
-          - text: IoT Edge の GitHub 問題
-            url: 'https://github.com/Azure/iotedge/issues'
-          - text: 最新のリリースと changelog
-            url: 'https://github.com/Azure/azure-iotedge/releases'
-  - title: ゲートウェイとしての IoT Edge デバイスの使用
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: IoT Edge デバイスをゲートウェイとして使用する方法
-            url: iot-edge-as-gateway.md
-      - linkListType: how-to-guide
-        links:
-          - text: 透過的なゲートウェイの構成
-            url: how-to-create-transparent-gateway.md
-          - text: Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
-            url: how-to-authenticate-downstream-device.md
-          - text: ダウンストリーム デバイスをゲートウェイに接続する
-            url: how-to-connect-downstream-device.md
-  - title: 運用環境のシナリオに備える
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: 自動デプロイを理解する
-            url: module-deployment-monitoring.md
-          - text: プラットフォームのサポート
-            url: support.md
-          - text: 運用環境デプロイのチェックリスト
-            url: production-checklist.md
-          - text: IoT Edge 証明書の使用方法を理解する
-            url: iot-edge-certs.md
-          - text: IoT Edge のセキュリティ標準
-            url: security.md
-      - linkListType: how-to-guide
-        links:
-          - text: Azure CLI を使用した大規模なデプロイと監視
-            url: how-to-deploy-monitor-cli.md
-          - text: Azure Pipelines を使用した CI/CD パイプラインの作成
-            url: how-to-ci-cd.md
-      - linkListType: deploy
-        links:
-          - text: IoT Hub 用の REST API
-            url: 'https://docs.microsoft.com/rest/api/iothub/'
-  - title: AI をエッジにデプロイする
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Azure Machine Learning を IoT Edge モジュールとしてデプロイする
-            url: tutorial-deploy-machine-learning.md
-          - text: Custom Vision Service を使用してエッジで画像の分類を実行する
-            url: tutorial-deploy-custom-vision.md
-      - linkListType: deploy
-        links:
-          - text: Azure Marketplace で Azure Cognitive Services モジュールを見つける
-            url: 'https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services'
+- title: Linux デバイス向けの開発
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 初めての IoT Edge モジュールを Linux デバイスに展開する
+      url: quickstart-linux.md
+  - linkListType: tutorial
+    links:
+    - text: Linux のデバイス用の IoT Edge モジュールを開発する
+      url: tutorial-develop-for-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: Visual Studio Code を使用してモジュールを開発およびデバッグする
+      url: how-to-vs-code-develop-module.md
+- title: Windows デバイス向けの開発
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 初めての IoT Edge モジュールを Windows デバイスにデプロイする
+      url: quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Windows デバイス用の IoT Edge モジュールを開発する
+      url: tutorial-develop-for-windows.md
+  - linkListType: how-to-guide
+    links:
+    - text: Visual Studio 2017 を使用してモジュールを開発およびデバッグする
+      url: how-to-visual-studio-develop-module.md
+- title: IoT Edge デバイスのプロビジョニング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Linux に IoT Edge をインストールする
+      url: how-to-install-iot-edge-linux.md
+    - text: Windows に IoT Edge をインストールする
+      url: how-to-install-iot-edge-windows.md
+    - text: Linux デバイスを自動的にプロビジョニングする
+      url: how-to-auto-provision-simulated-device-linux.md
+    - text: Windows デバイスを自動的にプロビジョニングする
+      url: how-to-auto-provision-simulated-device-windows.md
+- title: オープンソース コミュニティと交流する
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: IoT Edge のリポジトリ
+      url: https://github.com/Azure/iotedge
+    - text: IoT Edge の GitHub 問題
+      url: https://github.com/Azure/iotedge/issues
+    - text: 最新のリリースと changelog
+      url: https://github.com/Azure/azure-iotedge/releases
+- title: ゲートウェイとしての IoT Edge デバイスの使用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IoT Edge デバイスをゲートウェイとして使用する方法
+      url: iot-edge-as-gateway.md
+  - linkListType: how-to-guide
+    links:
+    - text: 透過的なゲートウェイの構成
+      url: how-to-create-transparent-gateway.md
+    - text: Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
+      url: how-to-authenticate-downstream-device.md
+    - text: ダウンストリーム デバイスをゲートウェイに接続する
+      url: how-to-connect-downstream-device.md
+- title: 運用環境のシナリオに備える
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 自動デプロイを理解する
+      url: module-deployment-monitoring.md
+    - text: プラットフォームのサポート
+      url: support.md
+    - text: 運用環境デプロイのチェックリスト
+      url: production-checklist.md
+    - text: IoT Edge 証明書の使用方法を理解する
+      url: iot-edge-certs.md
+    - text: IoT Edge のセキュリティ標準
+      url: security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI を使用した大規模なデプロイと監視
+      url: how-to-deploy-monitor-cli.md
+    - text: Azure Pipelines を使用した CI/CD パイプラインの作成
+      url: how-to-ci-cd.md
+  - linkListType: deploy
+    links:
+    - text: IoT Hub 用の REST API
+      url: https://docs.microsoft.com/rest/api/iothub/
+- title: AI をエッジにデプロイする
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Machine Learning を IoT Edge モジュールとしてデプロイする
+      url: tutorial-deploy-machine-learning.md
+    - text: Custom Vision Service を使用してエッジで画像の分類を実行する
+      url: tutorial-deploy-custom-vision.md
+  - linkListType: deploy
+    links:
+    - text: Azure Marketplace で Azure Cognitive Services モジュールを見つける
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services

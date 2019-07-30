@@ -4,7 +4,7 @@ description: ポータルで Azure HANA Large Instances を識別して操作す
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/02/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d64fe6c244ffcb6da2926dfea6efaa6da315727
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61482229"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234468"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
 このドキュメントでは、[HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) が [Azure portal](https://portal.azure.com) で提供される方法、および自動的にデプロイされる HANA Large Instance ユニットについて Azure portal で実行できるアクティビティについて説明します。 Azure portal での HANA Large Instances の表示は、HANA Large Instances 用の Azure リソース プロバイダー (現在はパブリック プレビュー) によって提供されます
@@ -73,7 +73,7 @@ HANA Large Instance のデプロイ要求を送信するときは、HANA Large I
 ## <a name="look-at-attributes-of-single-hli-unit"></a>1 つの HLI ユニットの属性を調べる
 HANA Large Instance ユニットの一覧で 1 つのユニットをクリックすると、その HANA Large Instance ユニットの詳細を見ることができます。 
 
-概要画面でのユニットの表示は次のようになります。
+概要画面で [Show more] (詳細表示) をクリックした後、ユニットの表示は次のようになります。
 
 ![HLI ユニットの概要の表示](./media/hana-li-portal/portal-show-overview.png)
 
@@ -82,12 +82,21 @@ HANA Large Instance ユニットの一覧で 1 つのユニットをクリック
 - [HLI で利用可能な SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
 - [SAP HANA (Large Instances) のストレージ アーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
 
+右下にある追加データは、HANA Large Instance スタンプのリビジョンです。 次のいずれかの値になります。
+
+- Revision 3
+- Revision 4
+
+Revision 4 は HANA Large Instances の最新アーキテクチャ リリースであり、Azure VM と、Revision 4 のスタンプまたは行にデプロイされた HANA Large Instance ユニット間のネットワーク待機時間が大幅に改善されています。
+もう 1 つの非常に重要な情報が、概要の右下隅にあります。それは、デプロイされた HANA Large Instance ユニットのそれぞれに対して自動的に作成される Azure 近接通信配置グループの名前です。 SAP アプリケーション レイヤーをホストする Azure VM をデプロイするときは、この近接通信配置グループを参照する必要があります。 HANA Large Instance ユニットに関連付けられた [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用することで、Azure VM が確実に HANA Large Instance ユニットに近接してデプロイされるようにします。 近接通信配置グループを使用して、リビジョン 4 でホストされている HANA Large Instance ユニットと同じ Azure データセンターに SAP アプリケーション レイヤーを配置する方法については、[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)に関する記事で説明しています。
+
 ヘッダーの右側の列の追加フィールドでは、HANA Large Instance ユニットの電源の状態について通知されます。
 
 > [!NOTE]
 > 電源状態では、ハードウェア ユニットの電源がオンかオフかが示されます。 稼動しているオペレーティング システムに関する情報は提供されません。 HANA Large Instance を再起動すると、ユニットの状態が **[Starting]\(開始中\)** から **[Started]\(開始済み\)** に変わるまでにしばらく時間がかかります。 **[Started]\(開始済み\)** 状態になることは、OS が起動中であること、または OS が完全に起動したことを意味します。 その結果、ユニットの再起動後、状態が **[Started]\(開始済み\)** に切り替わったらすぐにユニットにログインすることはできません。
 > 
 
+[See more] (詳細表示) を押すと、追加の情報が表示されます。 追加情報の 1 つは、ユニットがデプロイされた HANA Large Instance スタンプのリビジョンの表示です。 HANA Large Instance スタンプのさまざまなリビジョンについては、「[SAP HANA on Azure (L インスタンス) とは](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」の記事を参照してください。
 
 ## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>1 つの HANA Large Instance ユニットのアクティビティを確認する 
 HANA Large Instance ユニットの概要だけでなく、特定のユニットのアクティビティを確認できます。 アクティビティ ログは次のようになります。

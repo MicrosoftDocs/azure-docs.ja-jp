@@ -5,20 +5,75 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 50e1cb95249f0108430e978ae3ffe23b6edc778d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bfaf848b0b700c8d745acf8c6a63c898dc91140
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418387"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272876"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、継続的に更新され、改善されています。 最新情報を入手し続ける助けになるように、この記事では、最新のリリース、新機能、および新しいコンテンツに関する情報を提供します。 このページは定期的に更新されます。
 
 Site Recovery の機能について提案がおありの場合は、ぜひ[フィードバックをお聞かせください](https://feedback.azure.com/forums/256299-site-recovery)。
+
+
+## <a name="updates-june-2019"></a>更新プログラム (2019年 6 月)
+
+### <a name="update-rollup-37"></a>更新プログラム ロールアップ 37
+
+[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/) では、次の更新プログラムが提供されます。
+
+**Update** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+
+### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
+
+今月追加された機能は、表にまとめられています。
+
+**機能** | **詳細**
+--- | ---
+**GPT パーティション** | 更新プログラム ロールアップ 37 以降 (モビリティ サービス バージョン 9.25.5241.1) では、UEFI で最大 5 つの GPT パーティションがサポートされます。 この更新プログラム以前は、4 つサポートされていました。
+
+
+
+## <a name="updates-may-2019"></a>更新プログラム (2019 年 5 月)
+
+### <a name="update-rollup-36"></a>更新プログラム ロールアップ 36
+
+[更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) では、次の更新プログラムが提供されます。
+
+**Update** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+
+今月追加された機能は、表にまとめられています。
+
+**機能** | **詳細**
+--- | ---
+**追加されたディスクのレプリケート** | 既にディザスター リカバリーが有効になっている Azure VM に追加されたデータ ディスクのレプリケーションを有効にします。 [詳細情報](azure-to-azure-enable-replication-added-disk.md)。
+**自動更新** | ディザスター リカバリーが有効になっている Azure VM で実行されるモビリティ サービス拡張機能の自動更新を構成するときに、Site Recovery によって作成される既定のアカウントを使用する代わりに、既存の Automation アカウントを選択できるようになりました。 [詳細情報](azure-to-azure-autoupdate.md)。
+
+
+### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
+
+今月追加された機能は、表にまとめられています。
+
+**機能** | **詳細**
+--- | ---
+**プロセス サーバーの監視** | オンプレミスの VMware VM と物理サーバーのディザスター リカバリーについて、強化されたサーバー正常性レポートおよびアラート機能により、プロセス サーバーの問題を監視してトラブルシューティングします。 [詳細情報](vmware-physical-azure-monitor-process-server.md)。 
+
+
+
 
 
 ## <a name="updates-march-2019"></a>更新プログラム (2019 年 3 月)
@@ -32,8 +87,9 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
 **問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
 
-#### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
-更新プログラムで新機能が追加されました。
+### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
+
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
@@ -63,8 +119,8 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
 
-#### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー 
-更新プログラムで新機能が追加されました。
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー 
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
@@ -73,8 +129,8 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 **記憶域スペース ダイレクト** | Azure VM アプリで実行されるアプリのディザスター リカバリーを、高可用性を実現するために[記憶域スペース ダイレクト](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を使用して設定できるようになりました。  Site Recovery と共に記憶域スペース ダイレクト (S2D) を使用することで、Azure VM ワークロードを包括的に保護することができます。 S2D では、Azure でゲスト クラスターをホストすることができます。 これは特に、SAP ASCS レイヤー、SQL Server、スケールアウト ファイル サーバーなど、重要なアプリケーションを VM でホストするときに便利です。
 
 
-#### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
-更新プログラムで新機能が追加されました。
+### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
@@ -83,6 +139,7 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 
 
 ## <a name="updates-january-2019"></a>更新プログラム (2019 年 1 月)
+
 
 ### <a name="accelerated-networking-azure-vms"></a>高速ネットワーク (Azure VM)
 
@@ -99,16 +156,19 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-#### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
 
-更新プログラムで新機能が追加されました。
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
 **Linux のサポート** | RedHat Workstation 6/7、および Ubuntu、Debian、SUSE 用の新しいカーネル バージョンのサポートが追加されました。
 **記憶域スペース ダイレクト** | Site Recovery では、記憶域スペース ダイレクト (S2D) を使用する Azure VM がサポートされます。
 
-#### <a name="vmware-vmsphysical-servers-replication"></a>VMware VM/物理サーバーのレプリケーション 
+### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー
+
+今月追加された機能は、表にまとめられています。
+ 
 **機能** | **詳細**
 --- | ---
 **Linux のサポート** | Redhat Enterprise Linux 7.6、RedHat Workstation 6/7、Oracle Linux 6.10/7.6、Ubuntu、Debian、SUSE 用の新しいカーネル バージョンのサポートが追加されました。
@@ -123,9 +183,8 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-#### <a name="vmware-vmsphysical-servers-replication"></a>VMware VM/物理サーバーのレプリケーション 
-更新プログラムで新機能が追加されました。
-
+### <a name="vmware-vmsphysical-servers-replication"></a>VMware VM/物理サーバーのレプリケーション 
+今月追加された機能は、表にまとめられています。
 **機能** | **詳細**
 --- | ---
 **Linux のサポート** | Oracle Linux 6.8 と 6.9/7.0、および UEK5 カーネルのサポートが追加されました。
@@ -135,8 +194,8 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 **フェールオーバー** | storvsc と vsbus がブート ドライバーではない VMware VM のフェールオーバー時間が改善されました。
 **UEFI のサポート** | Azure VM は UEFI というブートの種類をサポートしていません。 UEFI が設定されたオンプレミスの物理サーバーを、Site Recovery を使用して Azure に移行できるようになりました。 Site Recovery は、移行の前にブートの種類を BIOS に変換することにより、このようなサーバーを移行します。 Site Recovery では、以前は、VM の場合のみこの変換をサポートしていました。 現在は、Windows Server 2012 移行を実行する物理サーバーもサポートされています。
 
-#### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
-更新プログラムで新機能が追加されました。
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
@@ -176,8 +235,8 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-#### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
-更新プログラムで新機能が追加されました。
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
@@ -208,8 +267,8 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-#### <a name="azure-vms-disaster-recovery"></a>Azure VM のディザスター リカバリー 
-更新プログラムで新機能が追加されました。
+### <a name="azure-vms-disaster-recovery"></a>Azure VM のディザスター リカバリー 
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
@@ -217,8 +276,8 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **クラウドのサポート** | ドイツのクラウドで Azure VM のディザスター リカバリーがサポートされるようになりました。
 **サブスクリプション間のディザスター リカバリー** | 同じ Azure Active Directory テナント内の異なるサブスクリプションで、別のリージョンに Azure VM をレプリケートすることがサポートされるようになりました。 [詳細情報](https://aka.ms/cross-sub-blog)。
 
-#### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー 
-更新プログラムで新機能が追加されました。
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー 
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
@@ -237,17 +296,17 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-#### <a name="azure-vms-disaster-recovery"></a>Azure VM のディザスター リカバリー 
+### <a name="azure-vms-disaster-recovery"></a>Azure VM のディザスター リカバリー 
 
-更新プログラムで新機能が追加されました。
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
 **Linux のサポート** | Red Hat Enterprise Linux 7.5 のサポートが追加されました。
 
-#### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー 
 
-更新プログラムで新機能が追加されました。
+今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---

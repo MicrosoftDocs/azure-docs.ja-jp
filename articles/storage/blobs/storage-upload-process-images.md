@@ -10,25 +10,25 @@ ms.date: 11/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: mvc
-ms.openlocfilehash: e5be86f9f7fbaedeb8fbb10b89926644dcf8aac2
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 612c0b48faac365623fe36d6d2435c1c79566d9b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835132"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071324"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする
 
 このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Azure Storage クライアント ライブラリを使用してストレージ アカウントに画像をアップロードする Web アプリのデプロイ方法を学習します。 終了すると、Azure Storage に画像を格納して表示する Web アプリが完成します。
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![images コンテナーの表示](media/storage-upload-process-images/figure2.png)
+![.NET の画像サイズ変更アプリ](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![images コンテナーの表示](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node.js V2 の画像サイズ変更アプリ](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![images コンテナーの表示](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node.js V10 の画像サイズ変更アプリ](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -211,7 +211,7 @@ Web アプリをテストするには、発行したアプリの URL に移動�
 
 **[写真のアップロード]** 領域を選択し、ファイルを選択してアップロードするか、ファイルを領域にドラッグします。 正常にアップロードされると、画像は表示されなくなります。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。
 
-![ImageResizer アプリ](media/storage-upload-process-images/figure1.png)
+![.NET で写真をアップロードする](media/storage-upload-process-images/figure1.png)
 
 サンプル コードでは、*Storagehelper.cs* ファイル内の `UploadFiletoStorage` タスクの [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) メソッドを使用して、ストレージ アカウント内の *images* コンテナーに画像をアップロードします。 次のコード サンプルに、`UploadFiletoStorage` タスクが含まれています。
 
@@ -254,7 +254,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 **[Choose File]** を選択してファイルを選び、 **[Upload Image]** をクリックします。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。 
 
-![画像アップロード アプリ](media/storage-upload-process-images/upload-app-nodejs.png)
+![Node.js V2 で写真をアップロードする](media/storage-upload-process-images/upload-app-nodejs.png)
 
 このサンプル コードでは、`post` ルートが画像を BLOB コンテナーにアップロードする処理を担当します。 このルートは、次のモジュールを使用してアップロードを処理します。
 
@@ -318,7 +318,7 @@ router.post('/', uploadStrategy, (req, res) => {
 
 **[Choose File]** を選択してファイルを選び、 **[Upload Image]** をクリックします。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。 
 
-![画像アップロード アプリ](media/storage-upload-process-images/upload-app-nodejs.png)
+![Node.js V10 で写真をアップロードする](media/storage-upload-process-images/upload-app-nodejs.png)
 
 このサンプル コードでは、`post` ルートが画像を BLOB コンテナーにアップロードする処理を担当します。 このルートは、次のモジュールを使用してアップロードを処理します。
 
@@ -400,7 +400,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 コンテナー内に画像が表示されることを確認します。
 
-![images コンテナーの表示](media/storage-upload-process-images/figure13.png)
+![Azure portal の画像コンテナーの表示](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>サムネイルの表示をテストする
 
@@ -413,13 +413,13 @@ router.post('/', uploadStrategy, async (req, res) => {
 アプリに戻って、**thumbnails** コンテナーにアップロードした画像が表示されていることを確認します。
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![images コンテナーの表示](media/storage-upload-process-images/figure2.png)
+![新しい画像が表示された .NET 画像サイズ変更アプリ](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![images コンテナーの表示](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![新しい画像が表示された Node.js V2 画像サイズ変更アプリ](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![images コンテナーの表示](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![新しい画像が表示された Node.js V10 画像サイズ変更アプリ](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 

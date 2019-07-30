@@ -1,0 +1,53 @@
+- name: Azure Data Share プレビューのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Data Share プレビューとは
+      href: overview.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: データの共有
+      href: share-your-data.md
+    - name: データの受け入れと受信
+      href: subscribe-to-data-share.md
+- name: 概念
+  items:
+    - name: Azure Data Share の用語
+      href: terminology.md
+    - name: ロールと要件
+      href: concepts-roles-permissions.md
+- name: ハウツー ガイド
+  items:
+    - name: 監視
+      href: how-to-monitor.md
+    - name: データセット マッピングの構成
+      href: how-to-configure-mapping.md
+    - name: トラブルシューティング
+      href: data-share-troubleshoot.md
+    - name: データセットの追加
+      href: how-to-add-datasets.md
+    - name: 受信者の追加
+      href: how-to-add-recipients.md
+    - name: 招待の削除
+      href: how-to-delete-invitation.md
+    - name: 共有サブスクリプションの取り消し
+      href: how-to-revoke-share-subscription.md
+- name: リファレンス
+  items:
+    - name: .NET
+      href: /dotnet/api/overview/azure/datashare
+    - name: REST API
+      href: /rest/api/datashare
+- name: リソース
+  items:
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
+    - name: Microsoft Tech Community
+      href: 'https://techcommunity.microsoft.com/'
+    - name: 製品フィードバック
+      href: 'https://feedback.azure.com/forums/922759-azure-data-share-public-preview'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/data-share/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=data-share'

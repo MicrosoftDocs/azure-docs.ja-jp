@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db9424ff4ddd2663ae1342294181dc885c6ed937
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 4a5352e96e522a8bd32c428957b3bbfd62c5fa9b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479542"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275922"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure リソースのロールベースのアクセス制御 (RBAC) の概要
 
@@ -74,7 +74,7 @@ Azure には複数の[組み込みロール](built-in-roles.md)があり、使�
 
 残りの組み込みロールは、特定の Azure リソースの管理を許可します。 たとえば、[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 組み込みロールが組織の特定のニーズを満たさない場合は、独自に [Azure リソースに対するカスタム ロール](custom-roles.md)を作成することができます。
 
-Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作 (現在プレビュー段階) が導入されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。 詳しくは、[Azure リソースのロール定義](role-definitions.md)に関する記事をご覧ください。
+Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作が用意されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。 詳しくは、[Azure リソースのロール定義](role-definitions.md)に関する記事をご覧ください。
 
 ### <a name="scope"></a>Scope (スコープ)
 
@@ -108,10 +108,7 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 
 ## <a name="deny-assignments"></a>拒否割り当て
 
-これまでの RBAC は拒否のない許可のみのモデルでしたが、限定的にですが RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、サービス プリンシパル、またはマネージド ID に一連の拒否アクションがアタッチされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。 詳しくは、[Azure リソースの拒否割り当て](deny-assignments.md)に関する記事および [Azure portal を使用した Azure リソースの拒否割り当ての表示](deny-assignments-portal.md)に関する記事をご覧ください。
-
-> [!NOTE]
-> 現時点では、Azure Blueprints を使用することが、独自の拒否割り当てを追加する唯一の方法となります。 詳細については、「[Protect new resources with Azure Blueprints resource locks (Azure Blueprints リソース ロックで新しいリソースを保護する)](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
+これまでの RBAC は拒否のない許可のみのモデルでしたが、限定的にですが RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、サービス プリンシパル、またはマネージド ID に一連の拒否アクションがアタッチされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。 詳しくは、「[Azure リソースの拒否割り当ての概要](deny-assignments.md)」をご覧ください。
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>ユーザーがリソースへのアクセス権を持っているどうかを RBAC が特定する方法
 

@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: monitoring-and-diagnostics
+ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
-ms.author: ajaycode
-ms.openlocfilehash: b112771e8c0f08e6b9a02c2fc5b7e1887b3f2588
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: agummadi
+ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65620418"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672174"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 

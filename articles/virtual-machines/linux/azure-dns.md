@@ -4,7 +4,7 @@ description: Azure IaaS での Linux 仮想マシンの名前解決のシナリ�
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9ff8ca8ce35c8698fc67fa8588eed4228230068
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127091"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668489"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンの DNS 名前解決のオプション
 Azure では、既定で、単一の仮想ネットワーク内に含まれるすべての仮想マシンの DNS 名の解決を提供しています。 Azure でホストされている仮想マシンに独自の DNS サービスを構成することにより、DNS 名を解決する独自のソリューションを実装できます。 次のシナリオは、どちらの方法が状況に適しているかを判断するのに役立ちます。

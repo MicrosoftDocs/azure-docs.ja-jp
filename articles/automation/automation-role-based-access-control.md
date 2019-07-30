@@ -5,17 +5,17 @@ keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738759"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477729"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -232,6 +232,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |オンボード状態の確認 - VM を読み取る      | Microsoft.Compute/virtualMachines/read         | 仮想マシン         |
 |オンボード状態の確認 - アカウントを読み取る      | Microsoft.Automation/automationAccounts/read  |  Automation アカウント   |
 | VM のオンボード ワークスペース確認<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | サブスクリプション         |
+| Log Analytics プロバイダーの登録 |Microsoft.Insights/register/action | サブスクリプション|
 
 <sup>1</sup> VM ポータル エクスペリエンス経由でオンボードするには、このアクセス許可が必要です。
 
@@ -251,6 +252,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
 |スコープ構成を作成および編集する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
 |ソリューションをスコープ構成にリンクする      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | 解決策         |
+| Log Analytics プロバイダーの登録 |Microsoft.Insights/register/action | サブスクリプション|
 |**手順 2 - 複数の VM のオンボード**     |         |         |
 |VMOnboarding ブレード - MMA 拡張機能を作成する     | Microsoft.Compute/virtualMachines/write           | 仮想マシン        |
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write           | ワークスペース        |

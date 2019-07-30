@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c6da92ccd50707e676a1f5d583fe22ae8b3d8b73
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288375"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476314"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>PIM で Azure リソース ロールの設定を構成する
 
@@ -38,19 +38,19 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 1. サブスクリプションや管理グループなど、管理するリソースをクリックします。
 
-    ![管理する Azure リソースの一覧](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![管理できるリソースを一覧表示する [Azure リソース] ページ](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. **[ロールの設定]** をクリックします。
 
-    ![ロールの設定](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Azure リソース ロールを一覧表示する [ロールの設定] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. 設定を構成するロールをクリックします。
 
-    ![ロールの設定の詳細](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![複数の割り当てとアクティブ化の設定を一覧表示する [ロールの設定の詳細] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
 1. **[編集]** をクリックして [ロールの設定] ウィンドウを開きます。
 
-    ![ロールの設定を編集する](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![割り当てとアクティブ化の設定を更新するためのオプションがある [Edit role settings]/(ロールの設定の編集/) ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     各ロールの [ロールの設定] ウィンドウでは、複数の設定を構成できます。
 
@@ -109,7 +109,7 @@ PIM によって、2 つの異なるシナリオで、必要に応じて Azure M
 
 1. **[承認者の選択]** をクリックして [メンバーまたはグループの選択] ウィンドウを開きます。
 
-    ![メンバーまたはグループの選択](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![承認者を選択するための [メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
 1. 少なくとも 1 つのメンバーまたはグループを選択し、 **[選択]** をクリックします。 任意の組み合わせのメンバーとグループを追加できます。 少なくとも 1 人の承認者を選択する必要があります。 既定の承認者はいません。
 

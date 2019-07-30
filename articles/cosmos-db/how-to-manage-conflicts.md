@@ -4,14 +4,14 @@ description: Azure Cosmos DB で競合を管理する方法について
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 63d8b0dc8c446f70b981aacd1a18e6a60a217983
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240950"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360361"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
 
@@ -21,7 +21,7 @@ ms.locfileid: "66240950"
 
 以下のサンプルでは、最終書き込み者優先競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 最終書き込み者優先の既定のパスは、タイムスタンプ フィールドまたは `_ts` プロパティです。 また、これは数値型のユーザー定義パスに設定することもできます。 競合した場合には、最大値が優先されます。 このパスが設定されていない場合または無効な場合は、`_ts` が既定値になります。 このポリシーを使用して解決された競合は、競合フィードに表示されません。 このポリシーはすべての API で使用できます。
 
-### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
+### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -34,6 +34,20 @@ DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIf
           ConflictResolutionPath = "/myCustomId",
       },
   });
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-dotnet-v3"></a>.NET SDK V3
+
+```csharp
+Container container = await createClient.GetDatabase(this.databaseName)
+    .CreateContainerIfNotExistsAsync(new ContainerProperties(this.lwwCollectionName, "/partitionKey")
+    {
+        ConflictResolutionPolicy = new ConflictResolutionPolicy()
+        {
+            Mode = ConflictResolutionMode.LastWriterWins,
+            ResolutionPath = "/myCustomId",
+        }
+    });
 ```
 
 ### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async SDK
@@ -75,13 +89,14 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 
 ```python
 udp_collection = {
-                'id': self.udp_collection_name,
-                'conflictResolutionPolicy': {
-                    'mode': 'LastWriterWins',
-                    'conflictResolutionPath': '/myCustomId'
-                    }
-                }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+    'id': self.udp_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'LastWriterWins',
+        'conflictResolutionPath': '/myCustomId'
+    }
+}
+udp_collection = self.try_create_document_collection(
+    create_client, database, udp_collection)
 ```
 
 ## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>ストアド プロシージャを使用したカスタム競合解決ポリシーを作成する
@@ -157,7 +172,7 @@ function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
 }
 ```
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
+### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -178,6 +193,24 @@ UriFactory.CreateStoredProcedureUri(this.databaseName, this.udpCollectionName, "
     Id = "resolver",
     Body = File.ReadAllText(@"resolver.js")
 });
+```
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet-v3"></a>.NET SDK V3
+
+```csharp
+Container container = await createClient.GetDatabase(this.databaseName)
+    .CreateContainerIfNotExistsAsync(new ContainerProperties(this.udpCollectionName, "/partitionKey")
+    {
+        ConflictResolutionPolicy = new ConflictResolutionPolicy()
+        {
+            Mode = ConflictResolutionMode.Custom,
+            ResolutionProcedure = string.Format("dbs/{0}/colls/{1}/sprocs/{2}", this.databaseName, this.udpCollectionName, "resolver")
+        }
+    });
+
+await container.Scripts.CreateStoredProcedureAsync(
+    new StoredProcedureProperties("resolver", File.ReadAllText(@"resolver.js"))
+);
 ```
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
@@ -228,13 +261,14 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 
 ```python
 udp_collection = {
-  'id': self.udp_collection_name,
-  'conflictResolutionPolicy': {
-      'mode': 'Custom',
-      'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
-      }
-  }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+    'id': self.udp_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'Custom',
+        'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
+    }
+}
+udp_collection = self.try_create_document_collection(
+    create_client, database, udp_collection)
 ```
 
 コンテナーが作成されたら、`resolver` ストアド プロシージャを作成する必要があります。
@@ -244,7 +278,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 以下のサンプルでは、カスタム競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 これらの競合は競合フィードに表示されます。
 
-### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
+### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection manualCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -256,6 +290,19 @@ DocumentCollection manualCollection = await createClient.CreateDocumentCollectio
           Mode = ConflictResolutionMode.Custom,
       },
   });
+```
+
+### <a id="create-custom-conflict-resolution-policy-dotnet-v3"></a>.NET SDK V3
+
+```csharp
+Container container = await createClient.GetDatabase(this.databaseName)
+    .CreateContainerIfNotExistsAsync(new ContainerProperties(this.manualCollectionName, "/partitionKey")
+    {
+        ConflictResolutionPolicy = new ConflictResolutionPolicy()
+        {
+            Mode = ConflictResolutionMode.Custom
+        }
+    });
 ```
 
 ### <a id="create-custom-conflict-resolution-policy-java-async"></a>Java Async SDK
@@ -297,11 +344,11 @@ const {
 ```python
 database = client.ReadDatabase("dbs/" + self.database_name)
 manual_collection = {
-                    'id': self.manual_collection_name,
-                    'conflictResolutionPolicy': {
-                          'mode': 'Custom'
-                        }
-                    }
+    'id': self.manual_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'Custom'
+    }
+}
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
@@ -309,10 +356,32 @@ manual_collection = client.CreateContainer(database['_self'], collection)
 
 以下のサンプルでは、コンテナーの競合フィードから読み取りを行う方法について説明します。 競合が競合フィードに表示されるのは、自動的に解決されなかった場合またはカスタム競合ポリシーを使用している場合のみです。
 
-### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
+### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK V2
 
 ```csharp
 FeedResponse<Conflict> conflicts = await delClient.ReadConflictFeedAsync(this.collectionUri);
+```
+
+### <a id="read-from-conflict-feed-dotnet-v3"></a>.NET SDK V3
+
+```csharp
+FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictIterator();
+while (conflictFeed.HasMoreResults)
+{
+    FeedResponse<ConflictProperties> conflicts = await conflictFeed.ReadNextAsync();
+    foreach (ConflictProperties conflict in conflicts)
+    {
+        // Read the conflicted content
+        MyClass intendedChanges = container.Conflicts.ReadConflictContent<MyClass>(conflict);
+        MyClass currentState = await container.Conflicts.ReadCurrentAsync<MyClass>(conflict, new PartitionKey(intendedChanges.MyPartitionKey));
+
+        // Do manual merge among documents
+        await container.ReplaceItemAsync<MyClass>(intendedChanges, intendedChanges.Id, new PartitionKey(intendedChanges.MyPartitionKey));
+
+        // Delete the conflict
+        await container.Conflicts.DeleteAsync(conflict, new PartitionKey(intendedChanges.MyPartitionKey));
+    }
+}
 ```
 
 ### <a id="read-from-conflict-feed-java-async"></a>Java Async SDK

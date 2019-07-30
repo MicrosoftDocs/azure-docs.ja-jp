@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 0e24f66369cf990f6b271b894a31dc8395068e17
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: d61141a0955f916b1d4bfeabb22454ec38415cea
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257345"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603233"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル:C# 用の Speech SDK を使用して音声の意図を認識する
 

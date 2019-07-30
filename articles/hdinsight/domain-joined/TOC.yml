@@ -2,8 +2,8 @@
   href: /azure/hdinsight
 - name: 概要
   items:
-    - name: HDInsight での Enterprise セキュリティ パッケージとは
-      href: apache-domain-joined-introduction.md
+    - name: HDInsight のエンタープライズ セキュリティとは
+      href: hdinsight-security-overview.md
 - name: チュートリアル
   items:
     - name: Apache HBase RBAC と Apache Ranger の併用
@@ -14,8 +14,6 @@
   items:
     - name: ESP クラスターの計画
       href: apache-domain-joined-architecture.md
-    - name: ESP クラスターの作成およびオンプレミスとの同期
-      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
     - name: Azure AD DS による ESP クラスターの構成
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: HDInsight クラスターへの Azure AD ユーザーの同期
@@ -30,26 +28,36 @@
       href: ../spark/apache-spark-eclipse-tool-plugin.md
     - name: ESP クラスターで Apache Oozie を使用する
       href: hdinsight-use-oozie-domain-joined-clusters.md
-- name: データのセキュリティ保護
-  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-- name: ネットワーク アクセス
+    - name: データのセキュリティ保護
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+    - name: ネットワーク アクセス
+      items:
+        - name: HDInsight 仮想ネットワーク アーキテクチャ
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight 用の VNET の計画
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight 用の VNET の作成
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG と UDR に必要な IP アドレス
+          href: ../hdinsight-management-ip-addresses.md
+        - name: HDInsight とオンプレミス ネットワークの接続
+          href: ../connect-on-premises-network.md
+        - name: Azure VNet での Apache HBase クラスターの作成
+          href: ../hbase/apache-hbase-provision-vnet.md
+        - name: Azure VNet での Apache HBase クラスターのレプリケーション
+          href: ../hbase/apache-hbase-replication.md
+    - name: Azure Monitor ログを使用した監視
+      items:
+        - name: Azure Monitor ログの使用
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+        - name: Azure Monitor ログでのクエリの使用
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+        - name: クラスター パフォーマンスの監視
+          href: ../hdinsight-key-scenarios-to-monitor.md
+- name: 方法
   items:
-    - name: Azure VNet の HDInsight
-      href: ../hdinsight-extend-hadoop-virtual-network.md
-    - name: HDInsight とオンプレミス ネットワークの接続
-      href: ../connect-on-premises-network.md
-    - name: Azure VNet での Apache HBase クラスターの作成
-      href: ../hbase/apache-hbase-provision-vnet.md
-    - name: Azure VNet での Apache HBase クラスターのレプリケーション
-      href: ../hbase/apache-hbase-replication.md
-- name: Azure Monitor ログを使用した監視
-  items:
-    - name: Azure Monitor ログの使用
-      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - name: Azure Monitor ログでのクエリの使用
-      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-    - name: クラスター パフォーマンスの監視
-      href: ../hdinsight-key-scenarios-to-monitor.md
+    - name: ESP クラスターの作成およびオンプレミスとの同期
+      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
 - name: リファレンス
   items:
     - name: コード サンプル

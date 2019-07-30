@@ -3,8 +3,8 @@ title: Azure AD エンタイトルメント管理 (プレビュー) をトラブ
 description: Azure Active Directory エンタイトルメント管理 (Preview) をトラブルシューティングする際に確認しておくべき事項について説明します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/30/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2526ef10c3080dae1b32881a109a9436a0fd390
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 39ec27c75ff5ba9164b44b0524f90a4e28ab20f1
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473825"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488971"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) をトラブルシューティングする
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886689"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327163"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>クイック スタート:Java Spring Boot アプリケーションを Service Fabric にデプロイする
 
@@ -90,7 +90,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` ファイルに **Endpoints** リソースを追加します。
+1. **Endpoints** リソースを *gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml* ファイルに追加する
 
     ```xml 
         <Resources>
@@ -145,7 +145,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    ローカル クラスターの起動には、一定の時間がかかります。 クラスターが完全に起動されたことを確認するには、**http://localhost:19080** で Service Fabric Explorer にアクセスします。 5 つの正常なノードは、ローカル クラスターが起動され、実行されていることを示します。 
+    ローカル クラスターの起動には、一定の時間がかかります。 クラスターが完全に起動されたことを確認するには、 **http://localhost:19080** で Service Fabric Explorer にアクセスします。 5 つの正常なノードは、ローカル クラスターが起動され、実行されていることを示します。 
     
     ![正常なローカル クラスター](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
@@ -176,13 +176,13 @@ Service Fabric Explorer は、すべての Service Fabric クラスターで動�
 Web フロントエンド サービスをスケーリングするには、以下を実行します。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
-1. ツリー ビューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
+1. ツリー ビューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 (3 つの点) をクリックし、 **[Scale Service]\(サービスのスケール\)** を選択します。
 
     ![Service Fabric Explorer スケール サービス](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     次に、スケーリングするサービスのインスタンス数を選択します。
 
-1. 数値を **3** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
+1. 数値を **3** に変更し、 **[Scale Service]\(サービスのスケール\)** をクリックします。
 
     または、次のコマンドラインを使用してサービスを拡張することもできます。
 

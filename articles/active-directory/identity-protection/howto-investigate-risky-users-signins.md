@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4a90195a2d0899b0a157cc67badd2f9873164987
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547058"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108965"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>方法:危険なユーザーとサインインの調査 
 

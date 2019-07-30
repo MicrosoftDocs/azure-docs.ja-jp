@@ -2,20 +2,20 @@
 title: クイック スタート:Azure SQL Data Warehouse のコンピューティングをスケールアウトする - Azure Portal | Microsoft Docs
 description: Azure Portal で Azure SQL Data Warehouse のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: sql-data-warehouse
-author: kevinvngo
+author: Antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: implement
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: Anthony.vanGemert
 ms.reviewer: jrasnick
-ms.openlocfilehash: b02259e2eaf497fb1bfefc4c1ed7611a22394d48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c3e48cc57613b107e82cb0fbcb7d69aceb6cf0a
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894191"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479274"
 ---
 ## <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure SQL Data Warehouse のコンピューティングをスケーリングする
 
@@ -23,7 +23,7 @@ Azure Portal で Azure SQL Data Warehouse のコンピューティングをス�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -50,7 +50,7 @@ Data Warehouse ユニットを変更するには:
 
     ![スライダーの移動](media/quickstart-scale-compute-portal/scale-dwu.png)
 
-3. **[Save]** をクリックします。 確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、**[いいえ]** をクリックします。
+3. **[Save]** をクリックします。 確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、 **[いいえ]** をクリックします。
 
     ![[保存] をクリックします。](media/quickstart-scale-compute-portal/confirm-change.png)
 

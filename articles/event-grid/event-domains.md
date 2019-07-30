@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 61821caa2450096bdbdde3461316ad21a82f6f18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304294"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305403"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -105,7 +105,7 @@ Event Grid には、RBAC がイベント ドメインでより簡単に動作す
 - 50 のドメイン スコープ サブスクリプション 
 - 毎秒 5,000 イベントのインジェスト速度 (ドメインへの取り込み)
 
-これらの制限が実情に沿わない場合は、サポート チケットを開くか、[askgrid@microsoft.com](mailto:askgrid.microsoft.com) 宛てにメールを送信して製品チームにご相談ください。 
+これらの制限が実情に沿わない場合は、サポート チケットを開くか、[askgrid@microsoft.com](mailto:askgrid@microsoft.com) 宛てにメールを送信して製品チームにご相談ください。 
 
 ## <a name="pricing"></a>価格
 イベント ドメインでは、Event Grid の他のすべての機能で使用されるのと同じ[操作価格](https://azure.microsoft.com/pricing/details/event-grid/)が使用されます。

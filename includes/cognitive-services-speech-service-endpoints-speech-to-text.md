@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/08/2019
 ms.author: wolfma
-ms.openlocfilehash: 6b64d8ea32e0c99c6f9468b84ea02c377c7441f5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1b82d3c6ffb1f53d8adb3582a50134b300206b34
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181466"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68306109"
 ---
 | リージョン | エンドポイント |
 |--------|----------|
@@ -17,7 +17,7 @@ ms.locfileid: "67181466"
 | カナダ中部 | `https://canadacentral.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | 米国中部 | `https://centralus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | 東アジア | `https://eastasia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
-| 米国東部 | `https://eastus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
+| East US | `https://eastus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | 米国東部 2 | `https://eastus2.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | フランス中部 | `https://francecentral.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 | インド中部 | `https://centralindia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
@@ -33,4 +33,4 @@ ms.locfileid: "67181466"
 | 米国西部 2 | `https://westus2.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1` |
 
 > [!NOTE]
-> 4xx HTTP エラーを受け取らないためには、URL に言語パラメーターを付加する必要があります。 たとえば、米国西部エンドポイントを使用する米国英語に設定される言語は https://westus.stt.speech.microsoft.com/speech/recognition/conversation/speech/recognition/conversation/cognitiveservices/v1?language=en-US です。
+> 4xx HTTP エラーを受け取らないためには、URL に言語パラメーターを付加する必要があります。 たとえば、米国西部エンドポイントを使用する米国英語に設定される言語は `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` です。

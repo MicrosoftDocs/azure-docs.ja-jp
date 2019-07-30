@@ -1,19 +1,18 @@
 ---
 title: Azure Backup Server からデータを回復する
 description: Recovery Services コンテナーに保護しているデータを、そのコンテナーに登録されている任意の Azure Backup Server から回復します。
-services: backup
 author: kasinh
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/18/2017
+ms.date: 07/09/2019
 ms.author: kasinh
-ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aaa2efa706822bee85dc867ad35bc312f4c700a1
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60650899"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466913"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する
 Azure Backup Server を使用して、Recovery Services コンテナーにバックアップしたデータを回復することができます。 そのためのプロセスは、Azure Backup Server 管理コンソールに統合されており、他の Azure Backup コンポーネントの回復ワークフローに似ています。
@@ -83,21 +82,13 @@ Azure Backup Server からデータを回復するには:
 | No. | エラー メッセージ | トラブルシューティングの手順 |
 |:---:|:--- |:--- |
 | 1. |このサーバーは資格情報コンテナーが指定するコンテナーに登録されていません。 |**原因:** 選択したコンテナー資格情報ファイルが回復対象の Azure Backup Server に関連付けられている Recovery Services コンテナーに属さないとき、このエラーが表示されます。 <br> **解決策:** Azure Backup Server が登録されている Recovery Services コンテナーからコンテナー資格情報ファイルをダウンロードします。 |
-| 2. |回復可能なデータがないか、選択したサーバーが DPM サーバーではありません。 |**原因:** 他の Azure Backup Server が Recovery Services コンテナーに登録されていないか、サーバーがまだメタデータをアップロードしていないか、選択したサーバーが Azure Backup Server (別名、Windows Server または Windows Client) ではありません。 <br> **解決策:** 他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、最新の Azure Backup エージェントがインストールされていることを確認します。 <br>他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、インストール後 1 日待ってから、回復プロセスを開始します。 クラウドに保護されたすべてのバックアップのメタデータを夜間ジョブがアップロードします。 このデータを回復に利用できます。 |
+| 2. |回復可能なデータがないか、選択したサーバーが DPM サーバーではありません。 |**原因:** 他の Azure Backup Server が Recovery Services コンテナーに登録されていないか、サーバーがまだメタデータをアップロードしていないか、選択したサーバーが (Windows Server または Windows クライアントを使用する) Azure Backup Server ではありません。 <br> **解決策:** 他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、最新の Azure Backup エージェントがインストールされていることを確認します。 <br>他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、インストール後 1 日待ってから、回復プロセスを開始します。 クラウドに保護されたすべてのバックアップのメタデータを夜間ジョブがアップロードします。 このデータを回復に利用できます。 |
 | 手順 3. |このコンテナーには他の DPM サーバーが登録されていません。 |**原因:** 他の Azure Backup Server が回復元のコンテナーに登録されていません。<br>**解決策:** 他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、最新の Azure Backup エージェントがインストールされていることを確認します。<br>他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、インストール後 1 日待ってから、回復プロセスを開始します。 保護されたすべてのバックアップのメタデータを夜間ジョブがクラウドにアップロードします。 このデータを回復に利用できます。 |
 | 4. |入力した暗号化パスフレーズが、サーバー: **\<サーバー名>** に関連付けられているパスフレーズと一致しません |**原因:** 回復対象の Azure Backup Server のデータからデータを暗号化する過程で使用された暗号化パスフレーズが指定した暗号化パスフレーズに一致しません。 エージェントはデータを復号できません。 そのため、回復に失敗します。<br>**解決策:** データを回復する Azure Backup Server に関連付けられている暗号化パスフレーズとまったく同じものを指定してください。 |
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
+## <a name="next-steps"></a>次の手順
 
-### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>UR7 と最新の Azure Backup エージェントをインストールしましたが、外部 DPM サーバーを追加できません。なぜですか。
+その他のよく寄せられる質問をお読みください。
 
-ロールアップ 7 以前の更新プログラム ロールアップを利用して、データ ソースがクラウドに保護されている DPM サーバーの場合、UR7 と最新の Azure Backup エージェントをインストールした後、少なくとも 1 日待ってから**外部 DPM サーバーの追加**を開始する必要があります。 1 日の期間は、DPM 保護グループのメタデータを Azure にアップロードするために必要です。 保護グループ メタデータは、夜間ジョブを通じて、1 回目のアップロードが行われます。
-
-### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>Microsoft Azure Recovery Services エージェントは、最小でどのバージョンが必要ですか。
-
-この機能を有効にするための、Microsoft Azure Recovery Services エージェントまたは Azure Backup エージェントの最小バージョンは、2.0.8719.0 です。  エージェントのバージョンを確認するには、[コントロール パネル] **>** [すべてのコントロール パネル項目] **>** [プログラムと機能] **>** [Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェント\) の順に選択します。 バージョンが 2.0.8719.0 以前の場合は、[最新の Azure Backup エージェント](https://go.microsoft.com/fwLink/?LinkID=288905)をダウンロードしてインストールしてください。
-
-![外部 DPM の消去](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
-
-## <a name="next-steps"></a>次のステップ:
-•   [Azure Backup の FAQ](backup-azure-backup-faq.md)
+- Azure VM バックアップについて[よく寄せられる質問](backup-azure-vm-backup-faq.md)
+- Azure Backup エージェントについて[よく寄せられる質問](backup-azure-file-folder-backup-faq.md)

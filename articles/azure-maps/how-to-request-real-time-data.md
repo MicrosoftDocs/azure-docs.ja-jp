@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: bb99a3c063f69aa5aeb00efdb51319a53d05b2d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aaab5ef4d8fc3d60a12f9e9f85f2846695fd1ab4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067601"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329671"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用してリアルタイム データを要求する
 
@@ -116,20 +116,20 @@ Azure Maps 公共輸送 API を呼び出すには、Maps アカウントとキ�
     ```
 
 
-## 自転車ドック ステーションのリアルタイム データ
+## <a name="real-time-data-for-bike-docking-station"></a>自転車ドック ステーションのリアルタイム データ
 
-Azure Maps Mobility Service の [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) では、与えられた自転車またはスクーターのドック ステーションに関する、利用可能であるかどうかや空き状況のような、静的な情報やリアルタイムの情報を要求することができます。要求を行って、自転車のドック ステーションのリアルタイム データを取得してみましょう。
+Azure Maps Mobility Service の [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) を使用して、特定の自動車またはスクーターのドック ステーションの可用性や空き情報などの静的なリアルタイム情報を要求できます。 自転車のドッキング ステーションのリアルタイム データを取得する要求を行います。
 
-トランジット ドック情報の取得 API への要求を行うためには、対象のステーションの **dockId** が必要です。 [Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) の要求を作成し、**objectType** パラメーターに "bikeDock" を設定することで、ドック ID を取得することができます。以下の手順に従って、自転車のドック ステーションのリアルタイム データを取得します。
+Get Transit Dock Info API への要求を行うためには、そのステーションの **dockId** が必要です。 [Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) への検索要求を行い、**objectType** パラメーターを "bikeDock" に設定することで、ドック ID を取得できます。 自転車のドッキング ステーションのリアルタイム データを取得するには、次の手順に従います。
 
 
-### ドック ID を取得する
+### <a name="get-dock-id"></a>ドック ID を取得する
 
-**dockID** を取得するには、以下の手順に従って、 Get Nearby Transit API の要求を行います。
+**dockID** を取得するには、次の手順に従って Get Nearby Transit API への要求を行います。
 
-1. Postman で、 **[New Request]\(新しい要求\)** | **[GET request]\(GET 要求\)** をクリックし、「**Get dock ID**」という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET 要求]** をクリックし、「**Get dock ID (ドック ID の取得)** 」 という名前を付けます。
 
-2.  [Builder]\(ビルダー\) タブで、 **GET** HTTP メソッドを選択し、次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
+2.  [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock

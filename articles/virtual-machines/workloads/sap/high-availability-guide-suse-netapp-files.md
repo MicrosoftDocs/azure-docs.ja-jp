@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: b3b5a89b43eaa5c0851962aef414ec9c9b7440da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8fcf4afa5a363d355f627be95dd7fe8131203ac
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357728"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797969"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 
@@ -80,12 +80,12 @@ ms.locfileid: "66357728"
 * SAP Note [1984787]: SUSE Linux Enterprise Server 12 に関する一般情報が記載されています。
 * SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
-* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
-* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
-* [SUSE SAP HA Best Practice Guides (SUSE SAP HA ベスト プラクティス ガイド)][suse-ha-guide]: このガイドには、オンプレミスで Netweaver HA と SAP HANA System Replication を設定するために必要なすべての情報が記載されています。 一般的なベースラインとしてこのガイドを使用してください。 このガイドには詳細な情報が提供されています。
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
+* [SUSE SAP HA ベスト プラクティス ガイド][suse-ha-guide]: このガイドには、オンプレミスで Netweaver HA と SAP HANA System Replication を設定するために必要なすべての情報が記載されています。 一般的なベースラインとしてこのガイドを使用してください。 このガイドには詳細な情報が提供されています。
 * [SUSE High Availability Extension 12 SP3 リリース ノート][suse-ha-12sp3-relnotes]
-* [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]に関する記事
+* [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
 
 ## <a name="overview"></a>概要
 
@@ -137,9 +137,9 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データ�
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files インフラストラクチャの設定 
 
-SAP NetWeaver では、転送とプロファイル ディレクトリ用の共有ストレージが必要です。  Azure NetApp Files インフラストラクチャの設定を開始する前に、「[Azure NetApp Files のドキュメント][anf-azure-doc]」の内容をよく理解しておいてください。 選択した Azure リージョンで、Azure NetApp Files が利用できるかどうかを確認します。 Azure リージョン別に Azure NetApp Files が利用可能かどうかを確認するには、[Azure リージョン別の Azure NetApp Files の利用可能性][anf-avail-matrix]に関するページを参照してください。
+SAP NetWeaver では、転送とプロファイル ディレクトリ用の共有ストレージが必要です。  Azure NetApp Files インフラストラクチャの設定を続行する前に、「[Azure NetApp Files のドキュメント][anf-azure-doc]」の内容をよく理解しておいてください。 選択した Azure リージョンで、Azure NetApp Files が利用できるかどうかを確認します。 Azure リージョン別に Azure NetApp Files が利用可能かどうかを確認するには、[Azure リージョン別の Azure NetApp Files の利用可能性][anf-avail-matrix]に関するページを参照してください。
 
-Azure NetApp Files はいくつかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)で利用できます。 Azure NetApp Files をデプロイする前に、[Azure NetApp Files インフラストラクチャへの登録][anf-register]に関するページに従って、Azure NetApp Files へのオンボードを要求してください。 
+Azure NetApp Files はいくつかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)で利用できます。 Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登録する][anf-register]」の手順に従って、Azure NetApp Files へのオンボードを要求してください。 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files リソースのデプロイ  
 
@@ -426,7 +426,6 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    #     fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
    #     nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
    #     vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
-   #     rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl1</b>
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    </code></pre>
   
@@ -788,7 +787,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 ## <a name="install-database"></a>データベースのインストール
 
-この例では、SAP HANA に SAP NetWeaver がインストールされます。 このインストールではサポートされているすべてのデータベースを使用できます。 Azure への SAP HANA のインストール方法について詳しくは、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」をご覧ください。 サポートされているデータベースの一覧については、[SAP Note 1928533][1928533] をご覧ください。
+この例では、SAP HANA に SAP NetWeaver がインストールされます。 このインストールではサポートされているすべてのデータベースを使用できます。 Azure で SAP HANA をインストールする方法の詳細については、[Azure 仮想マシン (VM) での SAP HANA の高可用性][sap-hana-ha]に関するページを参照してください。. For a list of supported databases, see [SAP Note 1928533][1928533]
 
 * SAP データベース インスタンスのインストールを実行します
 
@@ -967,6 +966,9 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    # run as root
    # Remove failed actions for the ERS that occurred as part of the migration
    anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
+   # Remove migration constraints
+   anftstsapcl1:~ # crm resource clear rsc_sap_QAS_ASCS00
+   #INFO: Removed migration constraints for rsc_sap_QAS_ASCS00
    </code></pre>
 
    テスト後のリソースの状態:
@@ -1301,4 +1303,4 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * 高可用性を確立し、SAP のディザスター リカバリーを計画する方法について学びます 
 * HANA on Azure (大規模なインスタンス)。[Azure 上での SAP HANA (大規模なインスタンス) の高可用性およびディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)に関するページを参照してください。
-* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。
+* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]に関するページを参照してください。

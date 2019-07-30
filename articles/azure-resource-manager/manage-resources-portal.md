@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 20bf38b87ce29f8506a5611ecd25cf38f6d4ed61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4ff94a98514041290518e72e1b13c76722b9d4f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550704"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205596"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal を使用した Azure リソース の管理
 

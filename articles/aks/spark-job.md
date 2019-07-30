@@ -10,11 +10,11 @@ ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
 ms.openlocfilehash: ddaff590fd493b430a72c30dd35cb1b891b80d84
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414031"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205349"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
@@ -313,7 +313,7 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 ```
 
 > [!WARNING]
-> Spark [ドキュメント][spark-docs]から引用: "Kubernetes スケジューラーは現在、試験段階です。 将来のバージョンで、構成、コンテナー イメージおよびエントリポイントに関する動作が変更される可能性があります。"
+> Spark [ドキュメント][spark-docs]から引用:"Kubernetes スケジューラは現在、試験段階です。 将来のバージョンで、構成、コンテナー イメージおよびエントリポイントに関する動作が変更される可能性があります。"
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,17 +5,17 @@ keywords: AWS の認証, AWS の構成
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 419d5643981083c8e06a68e780e95db8ba5ee2c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cf2da02ed174d5deda7e126e657261af349ee2d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61074005"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477954"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>アマゾン ウェブ サービスによる Runbook の認証
 

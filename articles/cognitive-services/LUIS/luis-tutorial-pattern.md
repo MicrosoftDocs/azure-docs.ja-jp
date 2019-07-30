@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/22/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 33541d2a61c52476f6e314f6981a623390de8fa9
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e559d4a3366c45bd054cbf3a235805e048de3493
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193740"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276045"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加する
 
@@ -53,9 +53,9 @@ ms.locfileid: "57193740"
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。 
+2. **[Intents]\(意図\)** ページで、 **[Create new intent]\(意図の新規作成\)** を選びます。 
 
-3. ポップアップ ダイアログ ボックスに「`OrgChart-Manager`」と入力して、**[完了]** を選択します。
+3. ポップアップ ダイアログ ボックスに「`OrgChart-Manager`」と入力して、 **[完了]** を選択します。
 
     ![新しいメッセージ ポップアップ ウィンドウを作成する](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
@@ -73,11 +73,11 @@ ms.locfileid: "57193740"
 
     意図の発話で従業員エンティティの代わりに keyPhrase エンティティにラベルが付いているかどうかは気にしないでください。 どちらも [テスト] ウィンドウとエンドポイントで正しく予測されます。 
 
-5. 左側のナビゲーションで、**[Intents]\(意図\)** を選択します。
+5. 左側のナビゲーションで、 **[Intents]\(意図\)** を選択します。
 
 6. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
-7. ポップアップ ダイアログ ボックスに「`OrgChart-Reports`」と入力して、**[完了]** を選択します。
+7. ポップアップ ダイアログ ボックスに「`OrgChart-Reports`」と入力して、 **[完了]** を選択します。
 
 8. 発話の例を意図に追加します。
 
@@ -197,7 +197,7 @@ ms.locfileid: "57193740"
 この 2 つ目のブラウザー ウィンドウは開いたままにします。 後でまた使います。 
 
 ## <a name="template-utterances"></a>テンプレート発話
-人事ドメインの性質上、組織内の従業員の関係について一般的な尋ね方がいくつかあります。 例: 
+人事ドメインの性質上、組織内の従業員の関係について一般的な尋ね方がいくつかあります。 例:
 
 |発話|
 |--|
@@ -225,7 +225,7 @@ ms.locfileid: "57193740"
 
 1. 上部メニューの **[ビルド]** を選択します。
 
-2. 左側のナビゲーションの **[Improve app performance]\(アプリのパフォーマンスの改善\)** で、**[Patterns]\(パターン\)** を選択します。
+2. 左側のナビゲーションの **[Improve app performance]\(アプリのパフォーマンスの改善\)** で、 **[Patterns]\(パターン\)** を選択します。
 
 3. **OrgChart-Manager** 意図を選択し、次のテンプレート発話を入力します。
 

@@ -119,13 +119,11 @@
           href: how-to-register-device-vscode.md
     - name: IoT Edge のインストールと管理
       items:
-        - name: Linux X64
+        - name: Linux
           href: how-to-install-iot-edge-linux.md
-        - name: Linux ARM32
-          href: how-to-install-iot-edge-linux-arm.md
-        - name: Windows X64
+        - name: Windows
           href: how-to-install-iot-edge-windows.md
-        - name: Windows X64 上の Linux コンテナー
+        - name: Windows 上の Linux コンテナー
           href: how-to-install-iot-edge-windows-with-linux.md
         - name: Windows Server VM
           href: how-to-install-iot-edge-windows-server-vm.md
@@ -137,10 +135,14 @@
           href: how-to-update-iot-edge.md
     - name: DPS による自動プロビジョニング
       items:
-        - name: Linux
-          href: how-to-auto-provision-simulated-device-linux.md
-        - name: Windows
-          href: how-to-auto-provision-simulated-device-windows.md
+        - name: 対称キーの構成証明
+          href: how-to-auto-provision-symmetric-keys.md
+        - name: TPM の構成証明
+          items:
+            - name: Linux
+              href: how-to-auto-provision-simulated-device-linux.md
+            - name: Windows
+              href: how-to-auto-provision-simulated-device-windows.md
     - name: カスタム モジュールの開発とデバッグ
       items:
         - name: Visual Studio 2019

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 360ffb3d2c682d6bd2344cb3ae95447ff3df278d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076859"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 
@@ -41,7 +41,7 @@ Azure で SQL Server 仮想マシン イメージを構成するとき、ポー�
 
 次のセクションでは、新しい SQL Server 仮想マシンのストレージを構成する方法について説明します。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure ポータル
 
 SQL Server ギャラリー イメージを使用して Azure VM をプロビジョニングするとき、新しい VM のストレージを自動的に構成することを選択できます。 自動構成では、ストレージ サイズ、パフォーマンスの制限、およびワークロードの種類を指定します。 次のスクリーンショットは、SQL VM のプロビジョニング中に使用する [ストレージ構成] ブレードです。
 
@@ -55,7 +55,7 @@ VM が作成されたら、ここで選択した内容に基づいて、次の�
 * 仮想マシンで記憶域プールを新しいドライブに関連付ける。
 * 指定したワークロードの種類 (データ ウェアハウス、トランザクション処理、または一般) に基づいて、新しいドライブを最適化する。
 
-Azure によるストレージ設定の構成方法の詳細については、「 [ストレージの構成](#storage-configuration)」を参照してください。 Azure Portal で SQL Server VM を作成する詳しい手順については、[プロビジョニング チュートリアル](virtual-machines-windows-portal-sql-server-provision.md)をご覧ください。
+Azure によるストレージ設定の構成方法の詳細については、「 [ストレージの構成](#storage-configuration)」を参照してください。 Azure portal で SQL Server VM を作成する詳しい手順については、[プロビジョニング チュートリアル](virtual-machines-windows-portal-sql-server-provision.md)をご覧ください。
 
 ### <a name="resource-manage-templates"></a>Resource Manager テンプレート
 
@@ -67,24 +67,24 @@ Azure によるストレージ設定の構成方法の詳細については、�
 
 ## <a name="existing-vms"></a>既存の VM
 
-既存の SQL Server VM については、Azure ポータルで一部のストレージ設定を変更できます。 VM を選択し、[設定] 領域に移動して、[SQL Server の構成] を選択します。 [SQL Server の構成] ブレードに、VM の現在のストレージ使用量が表示されます。 このグラフには、VM 上のすべてのドライブが示されており、 ドライブごとに、次の 4 つのセクションの記憶域スペースが表示されます。
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+既存の SQL Server VM については、Azure ポータルで一部のストレージ設定を変更できます。 [SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)を開き、 **[概要]** を選択します。 SQL Server の概要ページに、VM の現在のストレージ使用量が表示されます。 このグラフには、VM 上のすべてのドライブが示されており、 ドライブごとに、次の 4 つのセクションの記憶域スペースが表示されます。
 
 * SQL データ
 * SQL ログ
 * その他 (非 SQL ストレージ)
 * 使用可能
 
-![既存の SQL Server VM 用のストレージを構成する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
+ストレージ設定を変更するには、 **[設定]** の下で **[構成]** を選択します。 
 
-新しいドライブを追加するか、既存のドライブを拡張するようにストレージを構成するには、グラフの上の [編集] をクリックします。
+![既存の SQL Server VM 用のストレージを構成する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
 表示される構成オプションは、この機能を前に使用したことがあるかどうかによって異なります。 初めて使用する場合は、新しいドライブのストレージ要件を指定できます。 この機能をドライブを作成したことがある場合は、そのドライブのストレージを拡張することを選択できます。
 
 ### <a name="use-for-the-first-time"></a>初めて使用する
 
 この機能を初めて使用する場合は、新しいドライブのストレージ サイズとパフォーマンス制限を指定できます。 これは、プロビジョニングするときの操作に似ています。 主な違いは、ワークロードの種類を指定できない点です。 この制限により、仮想マシン上の既存の SQL Server 構成が利用できなくなるのを防ぎます。
-
-![SQL Server ストレージ スライダーを構成する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
 
 Azure では、仕様に基いて新しいドライブが作成されます。 このシナリオでは、次のストレージ構成タスクが実行されます。
 
@@ -99,19 +99,17 @@ Azure によるストレージ設定の構成方法の詳細については、�
 
 SQL Server VM に既にストレージを構成してある場合は、そのストレージを拡張すると、新しいオプションが 2 つ表示されます。 1 つ目は新しいドライブを追加するオプションで、VM のパフォーマンス レベルを向上させることができます。
 
-![新しいドライブを SQL VM に追加する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
-
 ただし、パフォーマンス向上を実現するには、ドライブを追加した後、手動で構成しなければならない部分がいくつか出てきます。
 
 ### <a name="extend-the-drive"></a>ドライブの拡張
 
-もう 1 つはストレージ拡張オプションで、既存のドライブを拡張します。 このオプションでは、ドライブの利用可能なストレージは増えますが、パフォーマンスは向上しません。 記憶域プールを使用している場合、記憶域プールの作成後に、列数を変更することはできません。 データ ディスクにわたってストライピングできる、並列書き込み数は、この列数によって決まります。 したがって、データ ディスクを追加しても、パフォーマンスを高めることはできません。 データが書き込まれるストレージが増えるだけです。 また、この制限は、ドライブを拡張するとき、列数によって、追加できるデータ ディスクの最小数が決まることを意味します。 データ ディスクが 4 つ含まれる記憶域プールを作成した場合は、列数も 4 になります。 ストレージを拡張する場合は必ず、少なくとも 4 つのデータ ディスクを追加する必要があります。
+もう 1 つはストレージ拡張オプションで、既存のドライブを拡張します。 このオプションでは、ドライブの利用可能なストレージは増えますが、パフォーマンスは向上しません。 記憶域プールを使用している場合、記憶域プールの作成後に、列数を変更することはできません。 データ ディスクにわたってストライピングできる、並列書き込み数は、この列数によって決まります。 したがって、データ ディスクを追加しても、パフォーマンスを高めることはできません。 データが書き込まれるストレージが増えるだけです。 また、この制限は、ドライブを拡張するとき、列数によって、追加できるデータ ディスクの最小数が決まることを意味します。 データ ディスクが 4 つ含まれる記憶域プールを作成した場合は、列数も 4 になります。 ストレージを拡張するときは毎回、少なくとも 4 つのデータ ディスクを追加する必要があります。
 
 ![SQL VM のドライブを拡張する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>ストレージの構成
 
-このセクションでは、Azure Portal での SQL VM のプロビジョニングまたは構成時に自動的に行われる、ストレージ構成の変更に関するリファレンス情報を提供します。
+このセクションでは、Azure portal での SQL VM のプロビジョニングまたは構成時に自動的に行われる、ストレージ構成の変更に関するリファレンス情報を提供します。
 
 * VM に対して 2 TB 未満のストレージを選択した場合、記憶域プールは作成されません。
 * VM に対して 2 TB 以上のストレージを選択した場合、記憶域プールが構成されます。 このトピックの次のセクションでは、記憶域プールの構成について詳しく説明します。

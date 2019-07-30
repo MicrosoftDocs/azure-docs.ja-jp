@@ -6,13 +6,13 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
-manager: jeconnoc
-ms.openlocfilehash: 01109aa83c12bda9b1d21ec25784d663f8abf700
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: gwallace
+ms.openlocfilehash: fec6d83870e20b7622f37c52847803d4f03cbba5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157901"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722678"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>更新:Azure Image Builder で Windows VM を作成する
 

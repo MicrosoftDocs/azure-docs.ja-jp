@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: 3221b2bd18b8b0756f280d88fffc6016d0498b8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924822"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491684"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -77,6 +77,13 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
         - VSS サービス
         - Azure Site Recovery VSS プロバイダー
         - VDS サービス
+
+- SQL または Exchange ワークロードを実行している場合は、これらのアプリケーション ライターのログでエラーを確認します。 よく発生するエラーとその解決策については、以下の記事に記載されています。
+    -  [SQL Server データベースの AUTO-CLOSE オプションが TRUE に設定されている](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2 で再試行できないエラーがスローされる](https://support.microsoft.com/help/4504103)
+    - [SQL Server 2016 と 2017 の既知の問題](https://support.microsoft.com/help/4493364)
+    - [Exchange Servers 2013 と 2016 の一般的な問題](https://support.microsoft.com/help/4037535)
+
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>ソース マシンのチャーン レートが高い [エラー 78188]
 

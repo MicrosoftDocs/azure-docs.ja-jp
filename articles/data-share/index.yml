@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Data Share プレビューのドキュメント
+metadata:
+  title: Azure Data Share プレビューのドキュメント - チュートリアル、攻略ガイド
+  description: Azure Data Share プレビューは、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。
+  author: joannapea
+  ms.author: joanpo
+  ms.service: data-share
+  ms.topic: landing-page
+  ms.date: 07/10/2019
+abstract:
+  description: <p>Azure Data Share プレビューは、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。 データ共有の関係を管理、監視、制御する機能を使用して、共有するデータセットの選択、受信者の追加、データ共有の開始を実行します。 </p><p>Microsoft のチュートリアルと攻略ガイドを通じて Azure Data Share の使用方法を学習しましょう。</p>
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/azure-friday.png
+      width: 250
+    title: Azure Friday の Azure Data Share
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
+    width: 250
+sections:
+  - title: ハウツー ガイド
+    items:
+      - type: paragraph
+        text: 次の攻略ガイドのいずれかを使って、データ共有の監視、データセット マッピングの構成、受信者の追加などの方法を学習します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Azure Data Share の監視
+            href: /azure/data-share/how-to-monitor
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: データセット マッピングの構成
+            href: /azure/data-share/how-to-configure-mapping
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Azure Data Share のトラブルシューティング
+            href: /azure/data-share/data-share-troubleshoot
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Data Share を使用してデータの共有を開始する方法を学習します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="share-your-data">Azure Data Share を使用したデータの共有</a>
+          - html: <a href="subscribe-to-data-share">Azure Data Share を使用したデータの受け入れと受信</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 言語
+            html: <p><a href="/dotnet/api/overview/azure/datashare">.NET</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/datashare">REST API</a></p>

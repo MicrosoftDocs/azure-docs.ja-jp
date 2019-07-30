@@ -9,22 +9,22 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 9032a6903833ba819e09fd1ca11cd6b43d5485cb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a74058c509c8031d0ac53c0d9cdf91e6f933ea1f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399489"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620142"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスからハブへのテレメトリ送信 (Java)](quickstart-send-telemetry-java.md) に関するチュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 「[Send telemetry from a device to an IoT hub](quickstart-send-telemetry-java.md)」(デバイスから IoT ハブへのテレメトリの送信) のクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-このチュートリアルは、[デバイスから IoT ハブへのテレメトリ送信 (Java)](quickstart-send-telemetry-java.md) に関する記事に基づいて作成されています。 次の操作の実行方法について説明しています。
+このチュートリアルは、[デバイスから IoT ハブへのテレメトリ送信](quickstart-send-telemetry-java.md)に関する記事に基づいて作成されています。 次の操作の実行方法について説明しています。
 
 * ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 
@@ -36,7 +36,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 このチュートリアルの最後に、次の 2 つの Java コンソール アプリを実行します。
 
-* **simulated-device**: [デバイスからハブへのテレメトリ送信 (Java)](quickstart-send-telemetry-java.md) に関するページで作成されたアプリの修正版であり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
+* **simulated-device**: [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-java.md)に関するページで作成されたアプリの修正版であり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
 
 * **send-c2d-messages**。これは、C2D メッセージを IoT Hub を介してシミュレートされたデバイス アプリに送信し、その配信確認を受信します。
 
@@ -45,7 +45,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [デバイスからハブへのテレメトリ送信 (Java)](quickstart-send-telemetry-java.md) または [IoT Hub を使用したメッセージ ルーティングの構成](tutorial-routing.md)に関するチュートリアルの、完全に動作するバージョン。
+* [デバイスから IoT ハブへのテレメトリ送信](quickstart-send-telemetry-java.md)のクイックスタートまたは [IoT Hub を使用したメッセージ ルーティングの構成](tutorial-routing.md)のチュートリアルの完全に動作するバージョン。
 
 * 最新の [Java SE Development Kit 8](https://aka.ms/azure-jdks)
 
@@ -55,7 +55,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>シミュレートされたデバイス アプリでメッセージを受信する
 
-このセクションでは、[デバイスからハブへのテレメトリ送信 (Java)](quickstart-send-telemetry-java.md) に関するページで作成したシミュレート デバイス アプリを変更して、cloud-to-device メッセージを IoT ハブから受信するようにします。
+このセクションでは、[デバイスから IoT Hub へのテレメトリ送信](quickstart-send-telemetry-java.md)に関するページで作成したシミュレート デバイス アプリを変更して、cloud-to-device メッセージを IoT ハブから受信するようにします。
 
 1. テキスト エディターを使用し、simulated-device\src\main\java\com\mycompany\app\App.java ファイルを開きます。
 
@@ -66,16 +66,17 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
       public IotHubMessageResult execute(Message msg, Object context) {
         System.out.println("Received message from hub: "
           + new String(msg.getBytes(), Message.DEFAULT_IOTHUB_MESSAGE_CHARSET));
-    
+
         return IotHubMessageResult.COMPLETE;
       }
     }
     ```
+
 3. **main** メソッドを次のとおり変更して、**AppMessageCallback** インスタンスを作成し、**setMessageCallback** メソッドを呼び出してから、クライアントを開くようにします。
 
     ```java
     client = new DeviceClient(connString, protocol);
-   
+
     MessageCallback callback = new AppMessageCallback();
     client.setMessageCallback(callback, null);
     client.open();
@@ -92,7 +93,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。 [デバイスからハブへのテレメトリ送信 (Java)](quickstart-send-telemetry-java.md) のクイックスタートで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal](https://portal.azure.com) で確認できます)。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。 [デバイスから IoT Hub へのテレメトリ送信](quickstart-send-telemetry-java.md)のクイックスタートで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal](https://portal.azure.com) で確認できます)。
 
 1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という Maven プロジェクトを作成します。 このコマンドが 1 つの長いコマンドであることに注意してください。
 
@@ -137,31 +138,31 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     ```
 
 8. **main** メソッドを次のコードで置き換えます。 このコードは、IoT Hub に接続し、デバイスにメッセージを送信して、デバイスがメッセージを受信して処理したことを示す受信確認を受け取るまで待機します。
-   
+
     ```java
     public static void main(String[] args) throws IOException,
         URISyntaxException, Exception {
       ServiceClient serviceClient = ServiceClient.createFromConnectionString(
         connectionString, protocol);
-   
+
       if (serviceClient != null) {
         serviceClient.open();
         FeedbackReceiver feedbackReceiver = serviceClient
           .getFeedbackReceiver();
         if (feedbackReceiver != null) feedbackReceiver.open();
-   
+
         Message messageToSend = new Message("Cloud to device message.");
         messageToSend.setDeliveryAcknowledgement(DeliveryAcknowledgement.Full);
-   
+
         serviceClient.send(deviceId, messageToSend);
         System.out.println("Message sent to device");
-   
+
         FeedbackBatch feedbackBatch = feedbackReceiver.receive(10000);
         if (feedbackBatch != null) {
           System.out.println("Message feedback received, feedback time: "
             + feedbackBatch.getEnqueuedTimeUtc().toString());
         }
-   
+
         if (feedbackReceiver != null) feedbackReceiver.close();
         serviceClient.close();
       }
@@ -170,7 +171,6 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
     > [!NOTE]
     > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
-
 
 9. Maven を使用して **simulated-device** アプリをビルドするには、コマンド プロンプトで simulated-device フォルダーに移動し、次のコマンドを実行します。
 
@@ -185,7 +185,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 1. simulated-device フォルダーからコマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリの送信を開始して、IoT Hub から送信される (クラウドからデバイスへの) メッセージをリッスンします。
 
     ```cmd/sh
-    mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
     ![シミュレーション済みデバイス アプリを実行する](./media/iot-hub-java-java-c2d/receivec2d.png)
@@ -200,7 +200,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
+このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
 
 IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、 [Azure IoT ソリューション アクセラレータ](https://azure.microsoft.com/documentation/suites/iot-suite/)に関するドキュメントをご覧ください。
 

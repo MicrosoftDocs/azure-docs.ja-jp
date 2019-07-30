@@ -2,6 +2,8 @@
 title: Azure AD への接続時に MVC プロジェクトに行われる変更
 description: Visual Studio 接続済みサービスを使用して Azure AD に接続するときに MVC プロジェクトで何が起こるかについて説明します。
 services: active-directory
+ms.service: active-directory
+ms.subservice: develop
 author: ghogen
 manager: douge
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
@@ -13,12 +15,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8a2b73276dd6acc99e91df768ebf613b9e70477
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413996"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320757"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 

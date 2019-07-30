@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 6e0175173f17ae0958522517360b94ee80f3b2f9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148985"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133431"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,11 +25,14 @@ ms.locfileid: "66148985"
 
 Git リポジトリへのコミットでタスクをトリガーするには、リポジトリにアクセスするための個人用アクセス トークン (PAT) が ACR タスクに必要です。 まだ PAT がない場合は、次の手順に従って GitHub に PAT を生成してください。
 
-1. GitHub で PAT 作成ページ (https://github.com/settings/tokens/new) に移動します
+1. GitHub で PAT 作成ページ (https://github.com/settings/tokens/new ) に移動します
 1. トークンの短い**説明**を入力します (例: "ACR タスクのデモ")
-1. **[repo]\(リポジトリ\)** で、**repo:status** と **public_repo** を有効にします
+1. リポジトリにアクセスする ACR のスコープを選択します。 このチュートリアルのようにパブリック リポジトリにアクセスするには、 **[リポジトリ]** の下の **[repo:status]** と **[public_repo]** を有効にします。
 
    ![GitHub の個人用アクセス トークン生成ページのスクリーンショット][build-task-01-new-token]
+
+   > [!NOTE]
+   > "*プライベート*" リポジトリにアクセスする PAT を生成するには、**リポジトリ**を完全に制御するためのスコープを選択します。
 
 1. **[Generate token]\(トークンの生成\)** ボタンを選びます (パスワードの入力が必要な場合があります)
 1. 生成されたトークンをコピーし、**安全な場所**に保存します (このトークンは、次のセクションでタスクを定義するときに使います)

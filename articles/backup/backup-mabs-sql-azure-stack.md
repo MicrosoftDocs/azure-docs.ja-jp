@@ -1,19 +1,18 @@
 ---
 title: Azure Stack での SQL Server ワークロードのバックアップ
 description: Azure Stack 上の SQL Server ワークロードの保護には Azure Backup Server を使用します。
-services: backup
 author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
-ms.openlocfilehash: fb064c39fa014515fb2a3f4ccc96ce216f2f7b2e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11d03a9c5cc81b915f48bc66f5a0e5ab034662ed
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254478"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465156"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Stack 上の SQL Server のバックアップ
 この記事では、Azure Stack 上の SQL Server データベースを保護するための Microsoft Azure Backup Server (MABS) の構成について説明します。

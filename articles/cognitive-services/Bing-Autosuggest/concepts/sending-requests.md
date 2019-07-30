@@ -1,6 +1,6 @@
 ---
 title: Bing Autosuggest API への要求の送信
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Autosuggest API への要求を送信する方法について説明します。
 services: cognitive-services
 author: swhite-msft
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: abcce52e126e01d25434a90260a220c9aa337f5b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 6ece70b78166578cd4ef391d761b0e4e478f4f04
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382705"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405365"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Bing Autosuggest API への要求の送信
 
-アプリケーションから Bing Search API のいずれかにクエリを送信する場合、ユーザーの検索エクスペリエンスを向上させるために Bing Autosuggest API を使用することができます。 Bing Autosuggest API は、検索ボックス内の部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 アプリケーションの検索ボックスに文字が入力されると、ドロップダウン リスト内に候補を表示できます。 この記事を使用して、この API への要求の送信について確認してください。
+アプリケーションから Bing Search API のいずれかにクエリを送信する場合、ユーザーの検索エクスペリエンスを向上させるために Bing Autosuggest API を使用することができます。 Bing Autosuggest API は、検索ボックス内の部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 アプリケーションの検索ボックスに文字が入力されると、ドロップダウン リスト内に候補を表示できます。 この記事を使用して、この API への要求の送信について確認してください。 
 
 ## <a name="bing-autosuggest-api-endpoint"></a>Bing Autosuggest API のエンドポイント
 
@@ -44,7 +44,7 @@ Autosuggest API を使用した基本的な要求の例については、[Autosu
 ## <a name="bing-autosuggest-api-requests"></a>Bing Autosuggest API の要求
 
 > [!NOTE]
-> Bing Autosuggest API への要求には、HTTPS プロトコルを使用する必要があります。
+> * Bing Autosuggest API への要求には、HTTPS プロトコルを使用する必要があります。
 
 すべての要求をサーバーから送信することをお勧めします。 クライアント アプリケーションの一部としてキーを配布すると、悪意のあるサードパーティがアクセスする可能性が高くなります。 また、サーバーから呼び出しを行うと、今後の更新プログラムにアップグレードする場所が 1 つで済みます。
 
@@ -95,11 +95,13 @@ CORS プロキシをインストールして[チュートリアル アプリ](..
 
 いずれかの Bing API を初めて呼び出す場合は、クライアント ID ヘッダーを含めないでください。 クライアント ID ヘッダーを含めるのは、過去に Bing API を呼び出したことがあり、かつユーザーとデバイスの組み合わせに対応するクライアント ID が Bing から返されたことがある場合だけです。
 
-前述の要求への応答は次のようになります。 この応答には、検索クエリの候補の一覧を含む Web 候補グループが含まれます。 それぞれの候補には、`displayText`、`query`、および `url` フィールドが含まれています。
+次の Web 候補グループは、上の要求に対する応答です。 このグループには、検索クエリ候補の一覧が含まれています。各候補には、`displayText`、`query`、および `url` フィールドが含まれています。
 
 `displayText` フィールドには、検索ボックスのドロップダウン リストの設定に使用するクエリ候補が含まれています。 応答に含まれるすべての候補を、指定された順序で表示する必要があります。  
 
-ユーザーがドロップダウン リストからクエリを選択すると、それを使用して [Bing Search API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) の 1 つを呼び出して自身の結果を表示したり、返された `url` フィールドを使用して Bing 結果ページにそのユーザーを送信したりできます。 次の例では、Bing Web Search API を使用しています。
+ユーザーがドロップダウン リストからクエリを選択すると、それを使用して [Bing Search API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) の 1 つを呼び出して自身の結果を表示したり、返された `url` フィールドを使用して Bing 結果ページにそのユーザーを送信したりできます。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

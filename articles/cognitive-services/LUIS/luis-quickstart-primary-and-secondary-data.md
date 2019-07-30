@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66124233"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276202"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>チュートリアル:Simple エンティティとフレーズ リストを使用して名前を抽出する
 
@@ -58,7 +58,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
 |Please submit my resume for the engineering position. (技術系のポストに私の履歴書を提出してください。)|engineering (技術系)|
 |ジョブ 123456 の申込書に記入してください|123456|
 
-ジョブ名は名詞、動詞、または複数の単語で構成されるフレーズであるため、判断するのが困難です。 例: 
+ジョブ名は名詞、動詞、または複数の単語で構成されるフレーズであるため、判断するのが困難です。 例:
 
 |[ジョブ]|
 |--|
@@ -91,11 +91,11 @@ Simple エンティティがこのデータの種類に適しているのは次�
 
 1. **[Intents]\(意図\)** ページで、意図 **ApplyForJob** を選択します。 
 
-1. 発話 `I want to apply for the new accounting job` で、`accounting` を選択し、ポップアップ メニューの一番上のフィールドに「`Job`」と入力して、**[新しいエンティティの作成]** を選択します。 
+1. 発話 `I want to apply for the new accounting job` で、`accounting` を選択し、ポップアップ メニューの一番上のフィールドに「`Job`」と入力して、 **[新しいエンティティの作成]** を選択します。 
 
     [![エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
-1. ポップアップ ウィンドウでエンティティ名と型を確認し、**[Done]\(完了\)**  を選択します。
+1. ポップアップ ウィンドウでエンティティ名と型を確認し、 **[Done]\(完了\)**  を選択します。
 
     ![名前に "Job"、型に "Simple" が指定された、Simple エンティティの作成ポップアップ モデル ダイアログ](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
@@ -225,19 +225,19 @@ LUIS アプリによって、確実性の高い適切な意図が検出され、
 
 Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) ファイルを開きます。 リストに含まれるジョブの単語およびフレーズは 1,000 を超えます。 自分にとって意味のあるジョブの単語がリストにあるか確認します。 単語またはフレーズがリストにない場合は、自分で追加します。
 
-1. LUIS アプリの **[ビルド]** セクションで、**[アプリのパフォーマンス向上]** メニューの **[フレーズ リスト]** を選択します。
+1. LUIS アプリの **[ビルド]** セクションで、 **[アプリのパフォーマンス向上]** メニューの **[フレーズ リスト]** を選択します。
 
 1. **[Create new phrase list]\(新しいフレーズ リストの作成\)** を選択します。 
 
-1. 新しいフレーズ リスト `JobNames` に名前を付けて、そのリストを jobs-phrase-list.csv から **[値]** テキスト ボックスにコピーします。 [Enter] を選択します。 
+1. 新しいフレーズ リスト `JobNames` に名前を付けて、そのリストを jobs-phrase-list.csv から **[値]** テキスト ボックスにコピーします。
 
     [![新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    フレーズ リストに単語をさらに追加したい場合は、**[推奨]** を選択してから、新しい **[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
+    フレーズ リストに単語をさらに追加したい場合は、 **[推奨]** を選択してから、新しい **[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
 
-    これらの値は、すべてがジョブのシノニムとして扱われる必要があるため、**[These values are interchangeable]\(これらの値は交換可能\)** をオンのままにしておきます。 交換可能と交換不能の[フレーズ リストの概念](luis-concept-feature.md#how-to-use-phrase-lists)について学習してください。
+    これらの値は、すべてがジョブのシノニムとして扱われる必要があるため、 **[These values are interchangeable]\(これらの値は交換可能\)** をオンのままにしておきます。 交換可能と交換不能の[フレーズ リストの概念](luis-concept-feature.md#how-to-use-phrase-lists)について学習してください。
 
-1. **[保存]** を選択して、フレーズ リストをアクティブにします。
+1. **[完了]** を選択して、フレーズ リストをアクティブにします。
 
     [![フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 

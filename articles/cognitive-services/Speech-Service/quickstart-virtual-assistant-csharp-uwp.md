@@ -8,19 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.custom: ''
-ms.openlocfilehash: e03cc45c5868f90dd1c2da0d7b4890fbf72c9899
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954787"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604971"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>クイック スタート:Speech SDK、UWP を使用して音声優先仮想アシスタントを作成する
 
-クイック スタートは[音声変換](quickstart-csharp-uwp.md)と[音声翻訳](quickstart-translate-speech-uwp.md)にも使用できます。
+[音声変換](quickstart-csharp-uwp.md)、[テキスト読み上げ](quickstart-text-to-speech-csharp-uwp.md)、[音声翻訳](quickstart-translate-speech-uwp.md)のクイックスタートも利用できます。
 
 この記事では、[Speech SDK](speech-sdk.md) を使用して C# のユニバーサル Windows プラットフォーム (UWP) アプリケーションを開発します。 このプログラムは、以前に作成および構成されたボットに接続して、クライアント アプリケーションからの音声優先仮想アシスタント エクスペリエンスを可能にします。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 (任意のエディション) を使用します。
 
@@ -32,14 +31,11 @@ ms.locfileid: "65954787"
 このクイック スタートでは以下が必要です。
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Speech Service の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
 * [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)で構成された、以前に作成済みのボット
 
     > [!NOTE]
-    > プレビューでは、Direct Line Speech チャネルは、現在 **westus2** リージョンのみをサポートします。
-
-    > [!NOTE]
-    > 「[Speech Services を無料で試す](get-started.md)」に記載されている Standard 価格レベルの 30 日間の無料試用版は **westus** (**westus2** ではありません) に制限されているため、Direct Line Speech との互換性はありません。 Free および Standard レベルの **westus2**　サブスクリプションには互換性があります。
+    > Direct Line Speech (プレビュー) は、Speech Services のリージョンのサブセットでのみ現在利用できます。 [音声優先仮想アシスタントをサポートしているリージョンの一覧](regions.md#voice-first-virtual-assistants)を参照し、ご使用のリソースがそれらのリージョンのいずれかにデプロイされていることを確認します。
 
 ## <a name="optional-get-started-fast"></a>省略可能:すぐに開始
 
@@ -63,7 +59,7 @@ ms.locfileid: "65954787"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
+
         <Grid>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Margin="20,50,0,0" VerticalAlignment="Center" Width="800">
                 <Button x:Name="EnableMicrophoneButton" Content="Enable Microphone"  Margin="0,0,10,0" Click="EnableMicrophone_ButtonClicked" Height="35"/>
@@ -84,7 +80,7 @@ ms.locfileid: "65954787"
     </Page>
     ```
 
-1. コードビハインド ソース ファイル `MainPage.xaml.cs` を開きます。 これは `MainPage.xaml` 以下にグループ化されます。 内容を次のコードに置き換えます。 このサンプルの内容を次に示します。 
+1. コードビハインド ソース ファイル `MainPage.xaml.cs` を開きます。 これは `MainPage.xaml` 以下にグループ化されます。 内容を次のコードに置き換えます。 このサンプルの内容を次に示します。
 
     * Speech および Speech.Dialog 名前空間に対するステートメントの使用
     * ボタン ハンドラーに接続された、マイクへのアクセスを確実にするための簡単な実装
@@ -111,7 +107,7 @@ ms.locfileid: "65954787"
     {
         public sealed partial class MainPage : Page
         {
-            private SpeechBotConnector botConnector;
+            private DialogServiceConnector connector;
 
             private enum NotifyType
             {
@@ -230,7 +226,7 @@ ms.locfileid: "65954787"
                 });
             }
 
-            private void InitializeBotConnector()
+            private void InitializeDialogServiceConnector()
             {
                 // New code will go here
             }
@@ -243,31 +239,31 @@ ms.locfileid: "65954787"
     }
     ```
 
-1. 次に、サブスクリプション情報を使用して `SpeechBotConnector` を作成します。 `InitializeBotConnector` のメソッド本体に以下を追加し、文字列 `YourChannelSecret`、`YourSpeechSubscriptionKey`、および `YourServiceRegion` を、お使いのボット、音声サブスクリプション、および[リージョン](regions.md)の独自の値に置き換えます。
+1. 次に、サブスクリプション情報を使用して `DialogServiceConnector` を作成します。 `InitializeDialogServiceConnector` のメソッド本体に以下を追加し、文字列 `YourChannelSecret`、`YourSpeechSubscriptionKey`、および `YourServiceRegion` を、お使いのボット、音声サブスクリプション、および[リージョン](regions.md)の独自の値に置き換えます。
 
     > [!NOTE]
-    > プレビューでは、Direct Line Speech チャネルは、現在 **westus2** リージョンのみをサポートします。
+    > Direct Line Speech (プレビュー) は、Speech Services のリージョンのサブセットでのみ現在利用できます。 [音声優先仮想アシスタントをサポートしているリージョンの一覧](regions.md#voice-first-virtual-assistants)を参照し、ご使用のリソースがそれらのリージョンのいずれかにデプロイされていることを確認します。
 
     > [!NOTE]
     > ボットの構成とチャネル シークレットの取得については、[Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に関する Bot Framework のドキュメントを参照してください。
 
     ```csharp
-    // create a BotConnectorConfig by providing a bot secret key and Cognitive Services subscription key
+    // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
     // the RecoLanguage property is optional (default en-US); note that only en-US is supported in Preview
-    const string channelSecret = "YourChannelSecret";
-    const string speechSubscriptionKey = "YourSpeechSubscriptionKey";
-    const string region = "YourServiceRegion"; // note: this is assumed as westus2 for preview
+    const string channelSecret = "YourChannelSecret"; // Your channel secret
+    const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
+    const string region = "YourServiceRegion"; // Your subscription service region. Note: only a subset of regions are currently supported
 
-    var botConnectorConfig = BotConnectorConfig.FromSecretKey(channelSecret, speechSubscriptionKey, region);
-    botConnectorConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
-    botConnector = new SpeechBotConnector(botConnectorConfig);
+    var botConfig = DialogServiceConfig.FromBotSecret(channelSecret, speechSubscriptionKey, region);
+    botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
+    connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `SpeechBotConnector` は、ボットのアクティビティ、音声認識の結果、およびその他の情報を伝達するために、いくつかのイベントに依存しています。 `InitializeBotConnector` のメソッド本体の最後に次のコードを追加して、これらのイベントのハンドラーを追加します。
+1. `DialogServiceConnector` は、ボットのアクティビティ、音声認識の結果、およびその他の情報を伝達するために、いくつかのイベントに依存しています。 `InitializeDialogServiceConnector` のメソッド本体の最後に次のコードを追加して、これらのイベントのハンドラーを追加します。
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
-    botConnector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+    connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     {
         NotifyUser($"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
 
@@ -277,7 +273,7 @@ ms.locfileid: "65954787"
         }
     };
     // Canceled will be signaled when a turn is aborted or experiences an error condition
-    botConnector.Canceled += (sender, canceledEventArgs) =>
+    connector.Canceled += (sender, canceledEventArgs) =>
     {
         NotifyUser($"Canceled, reason={canceledEventArgs.Reason}");
         if (canceledEventArgs.Reason == CancellationReason.Error)
@@ -286,47 +282,47 @@ ms.locfileid: "65954787"
         }
     };
     // Recognizing (not 'Recognized') will provide the intermediate recognized text while an audio stream is being processed
-    botConnector.Recognizing += (sender, recognitionEventArgs) =>
+    connector.Recognizing += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Recognizing! in-progress text={recognitionEventArgs.Result.Text}");
     };
     // Recognized (not 'Recognizing') will provide the final recognized text once audio capture is completed
-    botConnector.Recognized += (sender, recognitionEventArgs) =>
+    connector.Recognized += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Final speech-to-text result: '{recognitionEventArgs.Result.Text}'");
     };
     // SessionStarted will notify when audio begins flowing to the service for a turn
-    botConnector.SessionStarted += (sender, sessionEventArgs) =>
+    connector.SessionStarted += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Now Listening! Session started, id={sessionEventArgs.SessionId}");
     };
     // SessionStopped will notify when a turn is complete and it's safe to begin listening again
-    botConnector.SessionStopped += (sender, sessionEventArgs) =>
+    connector.SessionStopped += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Listening complete. Session ended, id={sessionEventArgs.SessionId}");
     };
     ```
 
-1. 構成が確立され、イベント ハンドラーが登録されると、`SpeechBotConnector` はリッスンするだけで済みます。 `MainPage` クラスの `ListenButton_ButtonClicked` メソッドの本体に次のコードを追加します。
+1. 構成が確立され、イベント ハンドラーが登録されると、`DialogServiceConnector` はリッスンするだけで済みます。 `MainPage` クラスの `ListenButton_ButtonClicked` メソッドの本体に次のコードを追加します。
 
     ```csharp
     private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
     {
-        if (botConnector == null)
+        if (connector == null)
         {
-            InitializeBotConnector();
+            InitializeDialogServiceConnector();
             // Optional step to speed up first interaction: if not called, connection happens automatically on first use
-            var connectTask = botConnector.ConnectAsync();
+            var connectTask = connector.ConnectAsync();
         }
 
         try
         {
             // Start sending audio to your speech-enabled bot
-            var listenTask = botConnector.ListenOnceAsync();
+            var listenTask = connector.ListenOnceAsync();
 
             // You can also send activities to your bot as JSON strings -- Microsoft.Bot.Schema can simplify this
             string speakActivity = @"{""type"":""message"",""text"":""Greeting Message"", ""speak"":""Hello there!""}";
-            await botConnector.SendActivityAsync(speakActivity);
+            await connector.SendActivityAsync(speakActivity);
 
         }
         catch (Exception ex)
@@ -340,15 +336,15 @@ ms.locfileid: "65954787"
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-1. アプリケーションをビルドします。 Visual Studio のメニュー バーから、**[ビルド]** > **[ソリューションのビルド]** を選択します。 これで、コードは、エラーなしでコンパイルされます。
+1. アプリケーションをビルドします。 Visual Studio のメニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 これで、コードは、エラーなしでコンパイルされます。
 
     ![[ソリューションのビルド] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-uwp-08-build.png "成功したビルド")
 
-1. アプリケーションを起動します。 Visual Studio のメニュー バーから、**[デバッグ]** > **[デバッグの開始]** を選択するか、**F5** キーを押します。
+1. アプリケーションを起動します。 Visual Studio のメニュー バーから、 **[デバッグ]**  >  **[デバッグの開始]** を選択するか、**F5** キーを押します。
 
     ![[デバッグの開始] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-uwp-09-start-debugging.png "アプリのデバッグの開始")
 
-1. ウィンドウがポップアップ表示されます。 お使いのアプリケーションで、**[Enable Microphone]** を選択して、ポップアップ表示されるアクセス許可要求を確認します。
+1. ウィンドウがポップアップ表示されます。 お使いのアプリケーションで、 **[Enable Microphone]** を選択して、ポップアップ表示されるアクセス許可要求を確認します。
 
     ![アクセス許可要求のスクリーンショット](media/sdk/qs-csharp-uwp-10-access-prompt.png "アプリのデバッグの開始")
 
@@ -359,10 +355,12 @@ ms.locfileid: "65954787"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [GitHub で C# のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
+> [基本ボットの作成とデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>関連項目
 
-- [音声を変換する](how-to-translate-speech-csharp.md)
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [音声優先仮想アシスタントの概要](voice-first-virtual-assistants.md)
+- [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+- [カスタム ウェイク ワード](speech-devices-sdk-create-kws.md)
+- [ボットを Direct Line Speech に接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [GitHub で C# のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

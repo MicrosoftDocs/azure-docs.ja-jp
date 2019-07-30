@@ -6,13 +6,14 @@ author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/24/2018
-ms.author: yushwang, cherylmc
-ms.openlocfilehash: 7ba4fb32ddfb8b3eb88d2dbfce265b070d521414
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yushwang
+ms.reviewer: cherylmc
+ms.openlocfilehash: 6d973d81e0de407893beb5c5808962562f091d4c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119416"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871839"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する
 

@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2b34f6bcbf37a48fb49a2a64d727fc9330b0d735
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8316b994dac6b859f019bea1aac6b6a5c2c5b2d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627254"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593555"
 ---
 # <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>Azure CDN の現在の Verizon POP リストの取得
 

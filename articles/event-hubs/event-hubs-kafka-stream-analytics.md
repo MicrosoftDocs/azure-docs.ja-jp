@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c4beede2508104fc9af934d3f9a2bbcce791292
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748143"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626182"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
 この記事では、データを Kafka 対応 Event Hubs にストリームし、Azure Stream Analytics で処理する方法について説明します。 次の手順について説明します。 
@@ -163,7 +163,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
  
 
 ### <a name="define-a-query"></a>クエリを定義する
-着信データ ストリームを読み取るように Stream Analytics ジョブを設定したら、次の手順として、データをリアルタイムで分析する変換を作成します。 変換クエリの定義には、[Stream Analytics クエリ言語](https://msdn.microsoft.com/library/dn834998.aspx)を使用します。 このチュートリアルでは、変換を実行せずにデータをパス スルーするクエリを定義します。
+着信データ ストリームを読み取るように Stream Analytics ジョブを設定したら、次の手順として、データをリアルタイムで分析する変換を作成します。 変換クエリの定義には、[Stream Analytics クエリ言語](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を使用します。 このチュートリアルでは、変換を実行せずにデータをパス スルーするクエリを定義します。
 
 1. **[クエリ]** を選択します。
 2. クエリ ウィンドウで、`[YourOutputAlias]` を前に作成した出力エイリアスで置き換えます。

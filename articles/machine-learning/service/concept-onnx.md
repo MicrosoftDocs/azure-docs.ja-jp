@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1eca5bdd81a384efe04f769ebd12be9d91fc78a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10c47c5dbae0ffb204a78ff510e457cce9a25ff0
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65849727"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361091"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
@@ -54,26 +54,27 @@ ONNX Runtime 用 Python パッケージは、[PyPi.org](https://pypi.org) ([CPU]
 ```python   
 pip install onnxruntime       # CPU build
 pip install onnxruntime-gpu   # GPU build
-``` 
+```
 
 Python スクリプトで ONNX Runtime を呼び出すには、次を使用します:    
-```python   
-import onnxruntime  
-session = onnxruntime.InferenceSession("path to model") 
-``` 
+```python
+import onnxruntime
+session = onnxruntime.InferenceSession("path to model")
+```
 
 通常は、モデルに付属しているドキュメントに、モデルを使用するための入力と出力に関する情報が記載されています。 [Netron](https://github.com/lutzroeder/Netron) などの視覚化ツールを使用してモデルを表示することもできます。 ONNX Runtime では、モデルのメタデータ、入力、および出力のクエリを実行することもできます。    
-```python   
-session.get_modelmeta() 
-first_input_name = session.get_inputs()[0].name 
-first_output_name = session.get_outputs()[0].name   
-``` 
+```python
+session.get_modelmeta()
+first_input_name = session.get_inputs()[0].name
+first_output_name = session.get_outputs()[0].name
+```
 
 モデルを推論するには、`run` を使用し、返してほしい出力の一覧 (すべてが必要な場合は空のままにします) と入力値のマップを渡します。 結果として出力の一覧が返されます。  
-```python   
-results = session.run(["output1", "output2"], {"input1": indata1, "input2": indata2})   
-results = session.run([], {"input1": indata1, "input2": indata2})   
-``` 
+```python
+results = session.run(["output1", "output2"], {
+                      "input1": indata1, "input2": indata2})
+results = session.run([], {"input1": indata1, "input2": indata2})
+```
 
 完全な Python API リファレンスについては、[ONNX Runtime リファレンス ドキュメント](https://aka.ms/onnxruntime-python)を参照してください。    
 

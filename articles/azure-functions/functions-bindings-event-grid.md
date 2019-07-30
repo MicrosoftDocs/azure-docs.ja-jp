@@ -4,19 +4,19 @@ description: Azure Functions で Event Grid イベントを処理する方法を
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f48eced2ebcc4ad92c5124194ed2e2df92f64f11
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094162"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480656"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -214,6 +214,7 @@ Python コードを次に示します。
 import logging
 import azure.functions as func
 
+
 def main(event: func.EventGridEvent):
     logging.info("Python Event Grid function processed a request.")
     logging.info("  Subject: %s", event.subject)
@@ -386,7 +387,7 @@ Event Grid の HTTP 要求の受信を始めるには、関数を呼び出すエ
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Event Grid トリガーを使って Azure Portal で開発した関数の場合は、**[vent Grid サブスクリプションの追加]** を選びます。
+Event Grid トリガーを使って Azure Portal で開発した関数の場合は、 **[vent Grid サブスクリプションの追加]** を選びます。
 
 ![ポータルでサブスクリプションを作成する](media/functions-bindings-event-grid/portal-sub-create.png)
 
@@ -529,13 +530,13 @@ Event Grid 関数をローカルで実行します。
 * `aeg-event-type: Notification` ヘッダーを設定します。
 * 要求本文に RequestBin のデータを貼り付けます。
 * Event Grid トリガー関数の URL に投稿します。
-  * 2.x の場合は、以下のパターンを使用します。
+  * 2\.x の場合は、以下のパターンを使用します。
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 1.x の場合は、以下を使用します。
+  * 1\.x の場合は、以下を使用します。
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
@@ -555,7 +556,7 @@ Event Grid トリガー関数が実行されて、次の例のようなログが
 
 ## <a name="local-testing-with-ngrok"></a>ngrok でのローカル テスト
 
-Event Grid トリガーをローカルにテストするもう 1 つの方法は、インターネットと開発用コンピューターの間の HTTP 接続を自動化することです。 これは、[ngrok](https://ngrok.com/) という名前のオープン ソース ツールを使って行うことができます。
+Event Grid トリガーをローカルにテストするもう 1 つの方法は、インターネットと開発用コンピューターの間の HTTP 接続を自動化することです。 [ngrok](https://ngrok.com/) などのツールを使ってこれを行うことができます。
 
 1. [ngrok のエンドポイントを作成](#create-an-ngrok-endpoint)します。
 1. [Event Grid トリガー関数を実行](#run-the-event-grid-trigger-function)します。

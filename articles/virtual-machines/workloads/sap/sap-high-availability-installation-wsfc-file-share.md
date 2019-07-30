@@ -4,7 +4,7 @@ description: Windows フェールオーバー クラスターと SAP ASCS/SCS �
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0efb1ec30430a69563c61de667ad2568f2679a1b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357690"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708971"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール
 
@@ -291,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成
 
-「[クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]」で説明したように SAP ASCS/SCS クラスター ネットワーク名 (例: **pr1-ascs [10.0.6.7]** ) を作成します。
+「[クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]」で説明したように、SAP ASCS/SCS クラスター ネットワーク名を作成します (たとえば、**pr1-ascs [10.0.6.7]** )。
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>ASCS/SCS インスタンスと ERS インスタンスをクラスターにインストールする
@@ -335,7 +335,7 @@ SAP ASCS/SCS インスタンスを再起動します。 [SAP ASCS/SCS インス�
 
 ## <a name="next-steps"></a>次の手順
 
-* [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする: 高可用性ファイル共有向け公式 SAP ガイドライン][sap-official-ha-file-share-document]
+* [共有ディスクのないフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする - 高可用性ファイル共有のための公式 SAP ガイドライン][sap-official-ha-file-share-document]
 
 * [Windows Server 2016 での記憶域スペース ダイレクト][s2d-in-win-2016]
 

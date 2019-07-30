@@ -5,23 +5,21 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 05/23/2019
+ms.topic: overview
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 358b835b42862bd0ceb1a5c4a48ba4b18a567f4d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e48a0c69dc04325c3f3c2ff7b73a26c6366816c9
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235910"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137460"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight での Apache HBase の概要
 
 [Apache HBase](https://hbase.apache.org/) は、[Google BigTable](https://cloud.google.com/bigtable/) をモデルにしている [Apache Hadoop](https://hadoop.apache.org/) 上に構築されるオープン ソースの NoSQL データベースです。 HBase は、大量の非構造化データと半構造化データに対するランダム アクセスと強力な一貫性を、列ファミリで整理されたスキーマなしのデータベースで実現します。
 
 ユーザーの視点から見ると、HBase はデータベースに似ています。 データはテーブルの行および列内に格納され、行内のデータは列ファミリによってグループ化されます。 HBase は、列や列内に格納されるデータの型を使用前に定義する必要がないという意味で、スキーマレス データベースです。 オープン ソース コードは、直線的な拡張により何千ものノード上でペタバイト級のデータを扱うことができます。 また、Hadoop エコシステムの分散アプリケーションの利点であるデータの冗長性、バッチ処理などの機能を利用できます。
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 ## <a name="how-is-apache-hbase-implemented-in-azure-hdinsight"></a>Azure HDInsight での Apache HBase の実装方法
 
@@ -51,13 +49,8 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
   
     HBase をデータストアとして使用することで、アプリケーションは HBase の最上層で実行できます。 この例には、Phoenix、[OpenTSDB](http://opentsdb.net/)、Kiji、Titan があります。 アプリケーションを HBase と統合することもできます。 この例には、[Apache Hive](https://hive.apache.org/)、[Apache Pig](https://pig.apache.org/)、[Solr](https://lucene.apache.org/solr/)、[Apache Storm](https://storm.apache.org/)、[Apache Flume](https://flume.apache.org/)、[Apache Impala](https://impala.apache.org/)、[Apache Spark](https://spark.apache.org/)、[Ganglia](http://ganglia.info/)、[Apache Drill](https://drill.apache.org/) があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
+
 * [HDInsight の Apache Hadoop での Apache HBase の概要](./apache-hbase-tutorial-get-started-linux.md)
 * [Azure Virtual Network での HDInsight クラスターの作成](./apache-hbase-provision-vnet.md)
 * [HDInsight での Apache HBase レプリケーションの構成](apache-hbase-replication.md)
-* [HDInsight (Hadoop) で Apache HBase を使用する Java アプリケーションを構築するための Apache Maven の使用](./apache-hbase-build-java-maven-linux.md)
-
-## <a name="see-also"></a>関連項目
-* [Apache HBase](https://hbase.apache.org/)
-* [Apache HBase Reference Guide (Apache HBase リファレンス ガイド)](https://hbase.apache.org/book.html)
-* [Bigtable:A Distributed Storage System for Structured Data (Bigtable: 構造化データ用分散ストレージ システム)](https://research.google.com/archive/bigtable.html)

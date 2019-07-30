@@ -4,22 +4,22 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: df5d8ff941c742d546208c27c7af4e7bcbeec08a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f259c3e403e933c847ac56000b1db2cd594caf5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073740"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449939"
 ---
-| Resource | Standard ファイル共有 | Premium ファイル共有 (プレビュー) |
+| Resource | Standard ファイル共有 | Premium ファイル共有 |
 |----------|---------------|------------------------------------------|
 | ファイル共有の最小サイズ | 最小サイズなし。従量課金制 | 100 GiB、プロビジョニング済み |
-| ファイル共有の最大サイズ | 5 TiB | 100 TiB |
+| ファイル共有の最大サイズ | 5 TiB (GA)、100 TiB (プレビュー) | 100 TiB |
 | ファイル共有内の最大ファイル サイズ | 1 TiB | 1 TiB |
 | ファイル共有内の最大ファイル数 | 制限なし | 制限なし |
-| 共有あたりの最大 IOPS | 1,000 IOPS | 100,000 IOPS |
+| 共有あたりの最大 IOPS | 1,000 IOPS (GA)、10,000 IOPS (プレビュー) | 100,000 IOPS |
 | ファイル共有あたりの保存されるアクセス ポリシーの最大数 | 5 | 5 |
-| 1 つのファイル共有のターゲット スループット | 最大 60 MiB/秒 | Premium ファイル共有のイングレスとエグレスの値を参照してください|
+| 1 つのファイル共有のターゲット スループット | 最大 60 MiB/秒 (GA)、最大 300 MiB/秒 (プレビュー) | Premium ファイル共有のイングレスとエグレスの値を参照してください|
 | 1 つのファイル共有の最大エグレス | Standard ファイル共有のターゲット スループットを参照してください | 最大 6,204 MiB/秒 |
 | 1 つのファイル共有の最大イングレス | Standard ファイル共有のターゲット スループットを参照してください | 最大 4,136 MiB/秒 |
 | 開くことができるハンドルの 1 ファイルあたりの最大数 | 2,000 オープン ハンドル | 2,000 オープン ハンドル |

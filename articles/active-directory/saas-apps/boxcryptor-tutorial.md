@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4beac0ab739d62eb7acb00e6b2db717b5f43e15
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 384a0d1161197bbe4d4335e27b72ed50755980f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987970"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>チュートリアル:Azure Active Directory と Boxcryptor の統合
 

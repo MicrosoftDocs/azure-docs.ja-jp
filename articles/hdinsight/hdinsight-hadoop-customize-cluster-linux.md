@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 03fcbb0216d85e337b4161aa24ceeb7d3a2bdebe
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7885b03e9f92fc8e8c5b2c78049760cbed8d4dc7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479464"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703975"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
@@ -51,6 +51,9 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
       * ADLS Gen1:HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。 Data Lake Storage Gen1 に格納されているスクリプトの URI の形式は、`adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。
       
       * Azure ストレージ アカウントの BLOB (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。
+
+        > [!IMPORTANT]  
+        > この Azure ストレージ アカウントでは、ストレージ キーのローテーションを行わないでください。そこにスクリプトが格納されている後続のスクリプト アクションが失敗します。
 
       * http:// パスを介してアクセス可能なパブリック ファイル共有サービス。 たとえば、Azure Blob、GitHub、OneDrive などです。
 
@@ -143,11 +146,10 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
 
 HDInsight は、HDInsight クラスターで次のコンポーネントをインストールするためのスクリプトを提供します。
 
-| Name | スクリプト |
+| EnableAdfsAuthentication | スクリプト |
 | --- | --- |
 | Azure Storage アカウントの追加 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh` 「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」をご覧ください。 |
 | Hue のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh` 「[HDInsight Hadoop クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」をご覧ください。 |
-| Presto のインストール |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh` 「[Hadoop ベースの HDInsight クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md)」をご覧ください。 |
 | Giraph のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh` [HDInsight Hadoop クラスターへの Apache Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md)に関する記事をご覧ください。 |
 | Hive ライブラリの事前読み込み |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh` 「[HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)」をご覧ください。 |
 
@@ -174,9 +176,9 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
     | プロパティ | 値 |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合は、用意されているスクリプトのいずれかを選択します。 |
-    | Name |スクリプト アクションの名前を指定します。 |
+    | EnableAdfsAuthentication |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
-    | ヘッド/ワーカー/Zookeeper |スクリプトを実行するノードを指定します: **[ヘッド]** 、 **[ワーカー]** 、または **[ZooKeeper]** 。 |
+    | Head/Worker/ZooKeeper |スクリプトを実行するノードを指定します: **[Head]** 、 **[Worker]** 、または **[ZooKeeper]** 。 |
     | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
 
     スケーリング操作中にスクリプトが確実に適用されるようにするには、 __[スクリプト操作を保持する]__ エントリを使用します。
@@ -256,9 +258,9 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
     | プロパティ | 値 |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合、提供されているスクリプトを選択します。 |
-    | Name |スクリプト アクションの名前を指定します。 |
+    | EnableAdfsAuthentication |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
-    | ヘッド/ワーカー/Zookeeper |スクリプトを実行するノードを指定します: **[ヘッド]** 、 **[ワーカー]** 、または **[ZooKeeper]** 。 |
+    | Head/Worker/Zookeeper |スクリプトを実行するノードを指定します: **[Head]** 、 **[Worker]** 、または **[ZooKeeper]** 。 |
     | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
 
     スケーリング操作中にスクリプトが確実に適用されるようにするには、 __[スクリプト操作を保持する]__ エントリを使用します。

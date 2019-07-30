@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
-ms.author: monhaber
-ms.openlocfilehash: f35f410ddc039ee264fa1de317e152cb03f391b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 2f82f3fe6f5cb6808ba606125ee0869475a60274
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241482"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295885"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。

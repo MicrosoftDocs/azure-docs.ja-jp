@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a386924be2f82aadafeaccbeadc68e5e27404855
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ea247907aebc241fb8f1b266ad55bc2fc983607f
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546333"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853982"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python アプリを作成する (プレビュー)
 
@@ -64,7 +64,7 @@ Checking connectivity... done.
 
 サンプル コードが含まれているディレクトリに移動し、`az webapp up` コマンドを実行します。
 
-次の例で、<app_name> を一意のアプリ名に置き換えます。
+次の例では、 *\<app_name>* をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。
 
 ```bash
 cd python-docs-hello-world

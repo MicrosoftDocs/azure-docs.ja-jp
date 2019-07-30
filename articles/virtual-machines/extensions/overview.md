@@ -4,7 +4,7 @@ description: Azure VM 拡張機能と、それらを Azure 仮想マシンで使
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: a35cba0ab7df80596ba1403765980809635c0249
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a8c571d3c6bb55fdd8b2d097b71b83afab5ca00
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617998"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705916"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 仮想マシンの拡張機能とその機能
 Azure 仮想マシン (VM) の拡張機能は、Azure VM でデプロイ後の構成と自動化のタスクを実行する小さなアプリケーションです。ユーザーは既存のイメージを使用でき、後でそれをデプロイの一部としてカスタマイズできるため、カスタムのイメージのビルド作業をなくすことができます。

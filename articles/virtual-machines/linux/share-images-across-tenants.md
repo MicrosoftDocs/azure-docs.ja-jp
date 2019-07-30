@@ -3,24 +3,26 @@ title: Azure のテナント間でギャラリー イメージを共有する |M
 description: 共有イメージ ギャラリーを使用して、Azure テナント間で VM イメージを共有する方法について説明します。
 services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: 1578ba840c6dca93feb68754863439811d7ef099
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbf42de406ecb0caed67b77743f376284ab64608
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157769"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706550"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure テナント間でギャラリー VM イメージを共有する
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
+> [!IMPORTANT]
+> ポータルを使用して、別の Azure テナント内のイメージから VM をデプロイすることはできません。 テナント間で共有されているイメージから VM を作成するには、Azure CLI または [Powershell](../windows/share-images-across-tenants.md) を使用する必要があります。
 
 ## <a name="create-a-vm-using-azure-cli"></a>Azure CLI を使用した VM の作成
 

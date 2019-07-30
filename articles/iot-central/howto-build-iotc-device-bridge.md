@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 246c9ad8ab3083c1b847c1c25230a7193a8192e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c98574bc3447482429d7a028c6b47197e08e2e38
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60886876"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850229"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>IoT Central デバイス ブリッジを構築して他の IoT クラウドを IoT Central に接続する
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 954d19fb557540e4fdc6b17f313127e01eba97a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: da8f17da9225da1d2b92bd8515d645bce9a1bbaa
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636328"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593648"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>コンテンツ配信の種類に応じて Azure CDN を最適化する
 

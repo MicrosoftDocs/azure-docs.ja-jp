@@ -6,13 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
-ms.author: amitsriva
-ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: victorh
+ms.openlocfilehash: 39317c0448168bc2ed8fdd0455a210254887d496
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66135642"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655385"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
 
@@ -38,7 +38,7 @@ Application Gateway は、ポータル、PowerShell、およびコマンド ラ�
 
 ### <a name="view-back-end-health-through-the-portal"></a>ポータルを介したバックエンドの正常性の表示
 
-ポータルでは、バックエンドの正常性が自動的に提供されます。 既存の Application Gateway で、**[監視]** > **[バックエンド正常性]** を選択します。 
+ポータルでは、バックエンドの正常性が自動的に提供されます。 既存の Application Gateway で、 **[監視]**  >  **[バックエンド正常性]** を選択します。 
 
 バックエンド プール内の各メンバーはこのページに表示されます (NIC、IP、FQDN のいずれであっても)。 バックエンド プール名、ポート、バックエンドの HTTP 設定名、および正常性の状態が表示されます。 正常性の状態を表す有効値は、**正常**、**異常**、および**不明**です。
 
@@ -131,7 +131,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 ### <a name="enable-logging-through-the-azure-portal"></a>Azure Portal を使用したログの有効化
 
-1. Azure portal で、ご使用のリソースを見つけ、**[診断設定]** を選択します。
+1. Azure portal で、ご使用のリソースを見つけ、 **[診断設定]** を選択します。
 
    Application Gateway では、次の 3 つのログを使用できます。
 
@@ -139,7 +139,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
    * パフォーマンス ログ
    * ファイアウォール ログ
 
-2. データの収集を開始するには、**[診断を有効にする]** を選択します。
+2. データの収集を開始するには、 **[診断を有効にする]** を選択します。
 
    ![診断の有効化][1]
 
@@ -147,7 +147,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
    ![構成プロセスの開始][2]
 
-5. 設定の名前を入力し、設定を確認した後、**[保存]** を選択します。
+5. 設定の名前を入力し、設定を確認した後、 **[保存]** を選択します。
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
@@ -155,8 +155,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 ### <a name="access-log"></a>アクセス ログ
 
-アクセス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次の例に示すように、Application Gateway の各アクセスは JSON 形式でログに記録されます。
-
+アクセス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次の v1 の例に示すように、Application Gateway の各アクセスは JSON 形式でログに記録されます。
 
 |値  |説明  |
 |---------|---------|
@@ -193,6 +192,58 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
         "sentBytes": 553,
         "timeTaken": 205,
         "sslEnabled": "off"
+    }
+}
+```
+Application Gateway と WAF v2 の場合、ログにはさらにいくつかの情報が表示されます。
+
+|値  |説明  |
+|---------|---------|
+|instanceId     | 要求を処理した Application Gateway のインスタンス。        |
+|clientIP     | 要求の送信元 IP。        |
+|clientPort     | 要求の送信元ポート。       |
+|httpMethod     | 要求で使用される HTTP メソッド。       |
+|requestUri     | 受信した要求の URI。        |
+|RequestQuery     | **Server-Routed**:要求が送信されたバックエンド プールのインスタンス。</br>**X-AzureApplicationGateway-LOG-ID**:要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 </br>**SERVER-STATUS**:Application Gateway がバックエンドから受信した HTTP 応答コード。       |
+|UserAgent     | HTTP 要求ヘッダーからのユーザー エージェント。        |
+|httpStatus     | Application Gateway からクライアントに返される HTTP 状態コード。       |
+|httpVersion     | 要求の HTTP バージョン。        |
+|receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
+|sentBytes| 送信したパケットのサイズ (バイト単位)。|
+|timeTaken| 要求の処理および応答の送信にかかった時間 (ミリ秒単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
+|sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
+|sslCipher| SSL 通信に使用されている暗号スイート (SSL が有効な場合)|
+|sslProtocol| 使用されている SSL プロトコル (SSL が有効な場合)|
+|serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
+|serverStatus| バックエンド サーバーの HTTP 状態コード。|
+|serverResponseLatency| バックエンド サーバーからの応答の待機時間。|
+|host| 要求のホスト ヘッダーに表示されているアドレス。|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "ApplicationGatewayRole_IN_0",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off",
+        "sslCipher": "",
+        "sslProtocol": "",
+        "serverRouted": "104.41.114.59:80",
+        "serverStatus": "200",
+        "serverResponseLatency": "0.023",
+        "host": "52.231.230.101"
     }
 }
 ```
@@ -251,7 +302,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |message     | トリガーするイベントのわかりやすいメッセージ。 詳細は details セクションに示されます。        |
 |action     |  要求に対して実行されるアクション。 使用できる値は Blocked と Allowed です。      |
 |site     | ログの生成対象のサイト。 ルールがグローバルであるため、現時点では Global のみ表示されます。|
-|詳細     | トリガーするイベントの詳細。        |
+|details     | トリガーするイベントの詳細。        |
 |details.message     | ルールの説明。        |
 |details.data     | 要求で見つかった、ルールに一致するデータ。         |
 |details.file     | ルールが含まれている構成ファイル。        |
@@ -328,7 +379,7 @@ Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナ�
 
    バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの正常/異常なホストを表示できます。
 
-アプリケーション ゲートウェイに移動して **[監視]** の **[メトリック]** を選択します。 利用できる値を表示するには、**[メトリック]** ドロップダウン リストを選択します。
+アプリケーション ゲートウェイに移動して **[監視]** の **[メトリック]** を選択します。 利用できる値を表示するには、 **[メトリック]** ドロップダウン リストを選択します。
 
 次の画像では、最後の 30 分間に表示された 3 つのメトリックの例を確認できます。
 
@@ -346,9 +397,9 @@ Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナ�
 
    ![[メトリック アラートの追加] ボタン][6]
 
-2. **[ルールの追加]** ページで、名前、条件、通知の各セクションに入力して、**[OK]** を選択します。
+2. **[ルールの追加]** ページで、名前、条件、通知の各セクションに入力して、 **[OK]** を選択します。
 
-   * **[条件]** セレクターに入力できるのは、**[より大きい]**、**[以上]**、**[未満]**、または **[以下]** の 4 つの値です。
+   * **[条件]** セレクターに入力できるのは、 **[より大きい]** 、 **[以上]** 、 **[未満]** 、または **[以下]** の 4 つの値です。
 
    * **[期間]** セレクターで、5 分から 6 時間までの期間を選択します。
 

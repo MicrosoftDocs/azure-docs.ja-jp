@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 743dad6032547f8f535543413adff416efb56ac0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998398"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60640091"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory を使用して Cassandra からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [現在のバージョン](connector-cassandra.md)
 
@@ -54,13 +54,13 @@ Cassandra のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**Cassandra** |[はい] |
-| host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**Cassandra** |はい |
+| host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |はい |
 | port |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 9042) |
-| authenticationType | Cassandra データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic**、**Anonymous**。 |[はい] |
+| authenticationType | Cassandra データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic**、**Anonymous**。 |はい |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
 | password |ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい (authenticationType が Basic に設定されている場合)。 |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 >[!NOTE]
 >現在のところ、SSL で Cassandra に接続することはできません。
@@ -97,7 +97,7 @@ Cassandra からデータをコピーするには、データセットの type �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**CassandraTable** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**CassandraTable** | はい |
 | keyspace |Cassandra データベースのkeyspace またはスキーマの名前。 |はい ("CassandraSource" の "クエリ" が指定されている場合)。 |
 | tableName |Cassandra データベースのテーブル名。 |はい ("CassandraSource" の "クエリ" が指定されている場合)。 |
 
@@ -131,7 +131,7 @@ Cassandra からデータをコピーするには、コピー アクティビテ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**CassandraSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**CassandraSource** | はい |
 | query |カスタム クエリを使用してデータを読み取ります。 SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの "tableName" と "keyspace" が指定されている場合)。 |
 | consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 詳細については、「 [Configuring data consistency (データ整合性の構成)](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。<br/><br/>使用できる値は、以下のとおりです。**ONE**、**TWO**、**THREE**、**QUORUM**、**ALL**、**LOCAL_QUORUM**、**EACH_QUORUM**、および **LOCAL_ONE**。 |いいえ (既定値は `ONE`) |
 
@@ -173,20 +173,20 @@ Cassandra からデータをコピーするとき、次の Cassandra のデー�
 
 | Cassandra のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| ASCII |String |
+| ASCII |string |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |BOOLEAN |
 | DECIMAL |Decimal |
 | DOUBLE |DOUBLE |
 | FLOAT |Single |
-| INET |String |
+| INET |string |
 | INT |Int32 |
-| TEXT |String |
+| TEXT |string |
 | TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
-| VARCHAR |String |
+| VARCHAR |string |
 | VARINT |DECIMAL |
 
 > [!NOTE]
@@ -204,7 +204,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 * 実テーブルと同じデータ (コレクション列を除く) を含む **ベース テーブル**。 ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
 * 入れ子になったデータを展開する、各コレクション列の **仮想テーブル** 。 コレクションを表す仮想テーブルには、実テーブルの名前、区切り文字の "*vt*"、および列の名前を使用して名前が付けられます。
 
-仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。  詳細については、「例」セクションを参照してください。 仮想テーブルのクエリや結合により、Cassandra コレクションの内容にアクセスできます。
+仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 詳細については、「例」セクションを参照してください。 仮想テーブルのクエリや結合により、Cassandra コレクションの内容にアクセスできます。
 
 ### <a name="example"></a>例
 

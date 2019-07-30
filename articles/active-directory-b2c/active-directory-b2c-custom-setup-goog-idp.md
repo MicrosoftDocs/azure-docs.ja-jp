@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 212243f38b153f75c08a9b4c58622d0444f0ac62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498fe63964e44de8f9e1bc06c1740f1a9ef9b392
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510367"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654164"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントによるサインインを設定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "66510367"
 
 ## <a name="register-the-application"></a>アプリケーションを登録する
 
-Google アカウントのユーザーがサインインできるようにするには、Google アプリケーション プロジェクトを作成する必要があります。 
+Google アカウントのユーザーがサインインできるようにするには、Google アプリケーション プロジェクトを作成する必要があります。
 
 1. お使いのアカウントの資格情報を使用して [Google Developers Console](https://console.developers.google.com/) にサインインします。
 2. **プロジェクト名**を入力し、 **[作成]** をクリックして、新しいプロジェクトを使用していることを確認します。
@@ -50,7 +50,7 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework - プレビュー]** を選択します。
+4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 6. **オプション**については、`Manual`を選択します。
 7. ポリシー キーの**名前**を入力します。 たとえば、「 `GoogleSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
@@ -60,7 +60,7 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-ユーザーに Google アカウントを使用してサインインさせるには、そのアカウントを、Azure AD B2C がエンドポイント経由で通信できるクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
+ユーザーに Google アカウントを使用してサインインさせるには、そのアカウントを、Azure AD B2C がエンドポイント経由で通信できるクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 Google アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
@@ -152,7 +152,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
-    
+
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの ID に更新します。 たとえば、「 `Google-OAuth` 」のように入力します。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。

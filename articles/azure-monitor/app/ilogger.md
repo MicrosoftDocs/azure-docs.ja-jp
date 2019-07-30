@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: fd5a16334fff0319d7993fb2403a48d1777f6bce
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0691c35661a6d185a6aa5ed3383ad600653359d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058603"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core の ILogger ログ
 
@@ -106,6 +106,9 @@ public class ValuesController : ControllerBase
 ```
 
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>ASP.NET Core アプリの Startup.cs と Program.cs から ILogger ログをキャプチャする
+
+> [!NOTE]
+> ASP.NET Core 3.0 以降では、Program.cs および Startup.cs 内に `ILogger` を挿入できなくなりました。 詳細については、 https://github.com/aspnet/Announcements/issues/353 をご覧ください。
 
 新しい ApplicationInsightsLoggerProvider では、アプリケーション スタートアップ パイプラインの早い段階からログをキャプチャできます。 ApplicationInsightsLoggerProvider は Application Insights (バージョン 2.7.0-beta3 以降) で自動的に有効になりますが、パイプラインの後半までインストルメンテーション キーは設定されません。 そのため、**Controller**/その他クラスからのログのみがキャプチャされます。 **Program.cs** および **Startup.cs** 自体以降のすべてのログをキャプチャするには、ApplicationInsightsLoggerProvider のインストルメンテーション キーを明示的に有効にする必要があります。 また、**Program.cs** または **Startup.cs** 自体からログを記録するときは、*TelemetryConfiguration* は完全にはセットアップされません。 したがって、これらのログの構成は InMemoryChannel を使用する最小限のものであり、サンプリングは行われず、標準のテレメトリ初期化子またはプロセッサはありません。
 
@@ -201,7 +204,7 @@ public class Startup
 
 ## <a name="migrate-from-the-old-applicationinsightsloggerprovider"></a>古い ApplicationInsightsLoggerProvider から移行する
 
-2.7.0-beta2 より前のバージョンの Microsoft.ApplicationInsights.AspNet SDK では、現在は古い形式になっているログ記録プロバイダーがサポートされていました。 このプロバイダーは、ILoggerFactory の **AddApplicationInsights()** 拡張メソッドによって有効にされました。 次の 2 つのステップで、新しいプロバイダーに移行することをお勧めします。
+2\.7.0-beta2 より前のバージョンの Microsoft.ApplicationInsights.AspNet SDK では、現在は古い形式になっているログ記録プロバイダーがサポートされていました。 このプロバイダーは、ILoggerFactory の **AddApplicationInsights()** 拡張メソッドによって有効にされました。 次の 2 つのステップで、新しいプロバイダーに移行することをお勧めします。
 
 1. ログ記録が二重に行われないよう、*ILoggerFactory.AddApplicationInsights()* の呼び出しを **Startup.Configure()** メソッドから削除します。
 2. 新しいプロバイダーでは考慮されないため、コード内のすべてのフィルタリング規則を再適用します。 *ILoggerFactory.AddApplicationInsights()* のオーバーロードでは、最小限の LogLevel またはフィルター関数が取得されました。 新しいプロバイダーでは、フィルタリングはログ記録フレームワーク自体の一部です。 Application Insights プロバイダーでは行われません。 そのため、*ILoggerFactory.AddApplicationInsights()* のオーバーロードによって提供されるすべてのフィルターを削除する必要があります。 そして、「[ログ記録レベルの制御](#control-logging-level)」の説明に従ってフィルタリング規則を提供する必要があります。 *appsettings.json* を使用してログをフィルター処理している場合は、新しいプロバイダーでも引き続き動作します。どちらでも、同じプロバイダー別名 *ApplicationInsights* が使用されています。
@@ -440,7 +443,7 @@ public class MyController : ApiController
 > Microsoft.ApplicationInsights.AspNetCore パッケージを使用して Application Insights を有効にする場合は、このコードを変更して、コンストラクター内で直接 `TelemetryClient` を取得します。 例については、[こちらの FAQ](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#frequently-asked-questions) をご覧ください。
 
 
-### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>ILogger ログからはどのような種類の Application Insights テレメトリが生成されますか?  または、Application Insights ではどこで ILogger ログを見ることができますか?
+### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>ILogger ログからはどのような種類の Application Insights テレメトリが生成されますか? または、Application Insights ではどこで ILogger ログを見ることができますか?
 
 ApplicationInsightsLoggerProvider では、ILogger ログがキャプチャされて、それから TraceTelemetry が作成されます。 ILogger で **Log()** メソッドに Exception オブジェクトを渡した場合、TraceTelemetry の代わりに *ExceptionTelemetry* が作成されます。 これらのテレメトリ項目は、ポータル、分析、Visual Studio ローカル デバッガーなど、Application Insights の他の TraceTelemetry または ExceptionTelemetry と同じ場所で見ることができます。
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: b00630354834897793bbf357be378051bcf74698
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059383"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441989"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -30,7 +30,7 @@ Azure HDInsight クラスターは、Azure クラウドで実行される使い�
 
 ## <a name="users"></a>ユーザー
 
-HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-introduction.md)でない限り**シングルユーザー** システムであるとみなされます。 このクラスターでは、管理者レベルのアクセス許可を持つ単一の SSH ユーザー アカウントを作成します。 追加の SSH アカウントを作成することもできますが、これらのアカウントもクラスターに対する管理者アクセスを持ちます。
+HDInsight は、[ドメイン参加済み](./domain-joined/hdinsight-security-overview.md)でない限り**シングルユーザー** システムであるとみなされます。 このクラスターでは、管理者レベルのアクセス許可を持つ単一の SSH ユーザー アカウントを作成します。 追加の SSH アカウントを作成することもできますが、これらのアカウントもクラスターに対する管理者アクセスを持ちます。
 
 ドメイン参加済みの HDInsight では、複数のユーザーがサポートされ、アクセス許可とロールの設定を詳細に行うことができます。 詳細については、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/apache-domain-joined-manage.md)に関するページを参照してください。
 

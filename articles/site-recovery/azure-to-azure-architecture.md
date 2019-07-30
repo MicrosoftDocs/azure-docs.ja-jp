@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f985260175e5f54a17799ef07b3a280f42b716e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399572"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491883"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -31,7 +31,7 @@ Azure VM のディザスター リカバリーに関連するコンポーネン�
 **ソース リージョンの VM** | [サポートされているソース リージョン](azure-to-azure-support-matrix.md#region-support)内の 1 つ以上の Azure VM。<br/><br/> VM は、[サポートされているオペレーティング システム](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)のうちのどれを実行していてもかまいません。
 **ソース VM ストレージ** | Azure VM では、マネージド ディスクでも、複数のストレージ アカウントに分散するアンマネージド ディスクでも使用できます。<br/><br/>サポートされる Azure ストレージについては[こちらをご覧ください](azure-to-azure-support-matrix.md#replicated-machines---storage)。
 **ソース VM ネットワーク** | VM は、ソース リージョンの仮想ネットワーク (VNet) 内の 1 つまたは複数のサブネット内に存在できます。 ネットワークの要件については[こちらをご覧ください](azure-to-azure-support-matrix.md#replicated-machines---networking)。
-**キャッシュ ストレージ アカウント** | ソース ネットワークにはキャッシュ ストレージ アカウントが必要です。 レプリケーション中に、VM の変更は、ターゲット ストレージに送信される前に、キャッシュに格納されます。<br/><br/> キャッシュを使用することにより、VM で実行されている運用アプリケーションへの影響を最小限に抑えられます。<br/><br/> キャッシュ ストレージの要件について詳しくは、[こちらをご覧ください](azure-to-azure-support-matrix.md#cache-storage)。 
+**キャッシュ ストレージ アカウント** | ソース ネットワークにはキャッシュ ストレージ アカウントが必要です。 レプリケーション中に、VM の変更は、ターゲット ストレージに送信される前に、キャッシュに格納されます。  キャッシュ ストレージ アカウントは Standard である必要があります。<br/><br/> キャッシュを使用することにより、VM で実行されている運用アプリケーションへの影響を最小限に抑えられます。<br/><br/> キャッシュ ストレージの要件について詳しくは、[こちらをご覧ください](azure-to-azure-support-matrix.md#cache-storage)。 
 **ターゲット リソース** | ターゲット リソースは、レプリケーション中およびフェールオーバーの発生時に使用されます。 ターゲット リソースは、Site Recovery によって既定で設定することも、作成/カスタマイズすることもできます。<br/><br/> ターゲット リージョンでは、VM を作成できること、および必要な VM サイズをサポートするのに十分なリソースがサブスクリプションにあることを確認します。 
 
 ![ソースとターゲットのレプリケーション](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)

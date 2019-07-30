@@ -5,18 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 0203/26/2019
+ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 897f2eef0a52838d6190cb85a6a7f4492250935b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33d7f11842d6f22a86816b590cddd91eaf76ed72
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244851"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607048"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
 

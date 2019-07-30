@@ -14,18 +14,17 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2d04cdfb3ec12406e60fcb265966e0271b7220d9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 934effe585b85075a80eede4236258d4a428b9ce
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258064"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836566"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル:コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -54,7 +53,7 @@ ms.locfileid: "59258064"
 2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
 3. コンピューターに以下がインストールされている必要があります。 
    * Visual Studio 2013 または Visual Studio 2015
-   * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
+   * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、 **.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
    * Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 次の手順を実行して、プラグインを更新することもできます。メニューで **[ツール]**  ->  **[拡張機能と更新プログラム]**  ->  **[オンライン]**  ->  **[Visual Studio ギャラリー]**  ->  **[Microsoft Azure Data Factory Tools for Visual Studio]**  ->  **[更新]** の順にクリックします。
 
 ## <a name="steps"></a>手順
@@ -76,11 +75,11 @@ ms.locfileid: "59258064"
 4. Data Factory のエンティティ (リンクされたサービス、データセット、テーブル、およびパイプライン) をデプロイするときに Azure **データ ファクトリ**を作成します。 
 
 ## <a name="create-visual-studio-project"></a>Visual Studio プロジェクトの作成
-1. **Visual Studio 2015** を起動します。 **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。 **[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
-2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[Empty Data Factory Project (空の Data Factory プロジェクト)]** をクリックします。  
+1. **Visual Studio 2015** を起動します。 **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。 **[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
+2. **[新しいプロジェクト]** ダイアログ ボックスで、 **[DataFactory]** テンプレートを選択し、 **[Empty Data Factory Project (空の Data Factory プロジェクト)]** をクリックします。  
    
     ![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
-3. プロジェクトの名前、ソリューションの場所、およびソリューションの名前を指定し、**[OK]** をクリックします。
+3. プロジェクトの名前、ソリューションの場所、およびソリューションの名前を指定し、 **[OK]** をクリックします。
    
     ![ソリューション エクスプローラー](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
 
@@ -96,8 +95,8 @@ Azure SQL のリンクされたサービスは、Azure SQL データベースを
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事を参照してください。 Data Factory でサポートされているコンピューティング サービスの一覧については、「 [コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md) 」を参照してください。 このチュートリアルでは、コンピューティング サービスは使用しません。 
 
 ### <a name="create-the-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成します。
-1. **ソリューション エクスプローラー**の **[リンクされたサービス]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。      
-2. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service (Azure Storage のリンクされたサービス)]** を選択し、**[追加]** をクリックします。 
+1. **ソリューション エクスプローラー**の **[リンクされたサービス]** を右クリックして、 **[追加]** をポイントし、 **[新しい項目]** をクリックします。      
+2. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service (Azure Storage のリンクされたサービス)]** を選択し、 **[追加]** をクリックします。 
    
     ![新規のリンクされたサービス](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-linked-service-dialog.png)
 3. `<accountname>` と `<accountkey>`* を Azure ストレージ アカウントの名前とキーで置き換えます。 
@@ -108,8 +107,8 @@ Azure SQL のリンクされたサービスは、Azure SQL データベースを
     リンクされたサービスの定義の中の JSON プロパティの詳細については、[Azure Blob Storage コネクタ](data-factory-azure-blob-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="create-the-azure-sql-linked-service"></a>Azure SQL のリンクされたサービスを作成します。
-1. **ソリューション エクスプローラー**で **[リンクされたサービス]** ノードをもう一度右クリックして **[追加]** をポイントし、**[新しい項目]** をクリックします。 
-2. このとき、**[Azure SQL Linked Service (Azure SQL のリンクされたサービス)]** を選択し、**[追加]** をクリックします。 
+1. **ソリューション エクスプローラー**で **[リンクされたサービス]** ノードをもう一度右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。 
+2. このとき、 **[Azure SQL Linked Service (Azure SQL のリンクされたサービス)]** を選択し、 **[追加]** をクリックします。 
 3. **AzureSqlLinkedService1.json** ファイルで、`<servername>`、`<databasename>`、`<username@servername>`、`<password>` を Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。    
 4. **AzureSqlLinkedService1.json** ファイルを保存します。 
     
@@ -128,8 +127,8 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 
 ここでは、用語として "データセット" ではなく "テーブル" を使用します。 テーブルは四角形のデータセットであり、現時点でサポートされている唯一の種類のデータセットです。 
 
-1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックして **[追加]** をポイントし、**[新しい項目]** をクリックします。
-2. **[新しい項目の追加]** ダイアログ ボックスで、**[Azure BLOB]** をクリックし、**[追加]** をクリックします。   
+1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。
+2. **[新しい項目の追加]** ダイアログ ボックスで、 **[Azure BLOB]** をクリックし、 **[追加]** をクリックします。   
 3. JSON テキストを次のテキストで置き換え、 **AzureBlobLocation1.json** ファイルを保存します。 
 
    ```json   
@@ -181,8 +180,8 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 ### <a name="create-output-dataset"></a>出力データセットの作成
 この手順では、 **OutputDataset**という名前の出力データセットを作成します。 このデータセットは、 **AzureSqlLinkedService1**で表される Azure SQL データベース内の SQL テーブルをポイントします。 
 
-1. **ソリューション エクスプローラー**の **[テーブル]** をもう一度右クリックし、**[追加]** をポイントし、**[新しい項目]** をクリックします。
-2. **[新しい項目の追加]** ダイアログ ボックスで、**[Azure SQL]** を選択し、**[追加]** をクリックします。 
+1. **ソリューション エクスプローラー**の **[テーブル]** をもう一度右クリックし、 **[追加]** をポイントし、 **[新しい項目]** をクリックします。
+2. **[新しい項目の追加]** ダイアログ ボックスで、 **[Azure SQL]** を選択し、 **[追加]** をクリックします。 
 3. JSON テキストを次の JSON テキストで置き換え、 **AzureSqlTableLocation1.json** ファイルを保存します。
 
    ```json
@@ -229,8 +228,8 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 
 現在、スケジュールは出力データセットによって開始されます。 このチュートリアルでは、1 時間ごとにスライスを生成するように出力データセットを構成します。 パイプラインの開始時刻と終了時刻の差は 1 日 (24 時間) です。 したがって、24 個の出力データセットのスライスがパイプラインによって生成されます。 
 
-1. **ソリューション エクスプローラー**の **[パイプライン]** を右クリックして **[追加]** をポイントし、**[新しい項目]** をクリックします。  
-2. **[新しい項目の追加]** ダイアログ ボックスで **[データ パイプラインのコピー]** を選択し、**[追加]** をクリックします。 
+1. **ソリューション エクスプローラー**の **[パイプライン]** を右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。  
+2. **[新しい項目の追加]** ダイアログ ボックスで **[データ パイプラインのコピー]** を選択し、 **[追加]** をクリックします。 
 3. JSON テキストを次の JSON テキストで置き換え、 **CopyActivity1.json** ファイルを保存します。
 
    ```json   
@@ -295,7 +294,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 この手順では、先ほど作成した Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) を発行します。 また、これらのエンティティを保持するために、新しいデータ ファクトリの名前を指定して作成します。  
 
 1. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** をクリックします。 
-2. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
+2. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、 **[サインイン]** をクリックします。
 3. 次のダイアログ ボックスが表示されます。
    
    ![[発行] ダイアログ ボックス](./media/data-factory-copy-activity-tutorial-using-visual-studio/publish.png)
@@ -316,10 +315,10 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
       > 
    4. 作成するデータ ファクトリの **リソース グループ** を選択します。 
    5. データ ファクトリの **リージョン** を選択します。 Data Factory サービスによってサポートされているリージョンのみ、ドロップダウン リストに表示されます。
-   6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。
+   6. **[次へ]** をクリックし、 **[項目の発行]** ページに切り替えます。
       
        ![Configure data factory page](media/data-factory-copy-activity-tutorial-using-visual-studio/configure-data-factory-page.png)   
-5. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。
+5. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、 **[次へ]** をクリックして **[概要]** ページに切り替えます。
    
    ![Publish items page](media/data-factory-copy-activity-tutorial-using-visual-studio/publish-items-page.png)     
 6. 概要を確認してから **[次へ]** をクリックし、デプロイ プロセスを開始して **[デプロイ ステータス]** を表示します。
@@ -353,7 +352,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 データ ファクトリのホーム ページに移動します。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
-2. 左側のメニューの **[その他のサービス]** をクリックし、**[データ ファクトリ]** をクリックします。
+2. 左側のメニューの **[その他のサービス]** をクリックし、 **[データ ファクトリ]** をクリックします。
 
     ![Browse data factories](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
 3. データ ファクトリの名前の入力を開始します。
@@ -362,7 +361,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 4. 結果の一覧で目的のデータ ファクトリをクリックし、データ ファクトリのホーム ページを表示します。
 
     ![データ ファクトリのホーム ページ](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
-5. [データセットとパイプラインの監視](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline)に関するセクションの手順に従って、このチュートリアルで作成したパイプラインとデータセットを監視します。 現時点では、Visual Studio は Data Factory パイプラインの監視をサポートしていません。 
+5. [データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションの手順に従って、このチュートリアルで作成したパイプラインとデータセットを監視します。 現時点では、Visual Studio は Data Factory パイプラインの監視をサポートしていません。 
 
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL データベースにデータをコピーしました。 また、Visual Studio を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
@@ -381,23 +380,23 @@ HDInsight Hive アクティビティを使用して Azure HDInsight クラスタ
 ## <a name="view-all-data-factories-in-server-explorer"></a>サーバー エクスプローラーを使用したすべてのデータ ファクトリの表示
 このセクションでは、Visual Studio のサーバー エクスプローラーを使用して、Azure サブスクリプション内のすべてのデータ ファクトリを表示し、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成する方法について説明します。 
 
-1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、**[Azure]**、**[Data Factory]** の順に展開します。 **[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力し、**[続行]** をクリックします。 **パスワード**を入力し、**[サインイン]** をクリックします。 Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。 **[Data Factory Task List (Data Factory タスク リスト)]** ウィンドウで、この操作のステータスを確認します。
+1. **Visual Studio** のメニューで **[ビュー]** をクリックし、 **[サーバー エクスプローラー]** をクリックします。
+2. [サーバー エクスプローラー] ウィンドウで、 **[Azure]** 、 **[Data Factory]** の順に展開します。 **[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力し、 **[続行]** をクリックします。 **パスワード**を入力し、 **[サインイン]** をクリックします。 Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。 **[Data Factory Task List (Data Factory タスク リスト)]** ウィンドウで、この操作のステータスを確認します。
 
     ![[サーバー エクスプローラー]](./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png)
 
 ## <a name="create-a-visual-studio-project-for-an-existing-data-factory"></a>既存のデータ ファクトリの Visual Studio プロジェクトの作成
 
-- サーバー エクスプローラーでデータ ファクトリを右クリックし、**[Export Data Factory to New Project]\(データ ファクトリを新しいプロジェクトにエクスポートする\)** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
+- サーバー エクスプローラーでデータ ファクトリを右クリックし、 **[Export Data Factory to New Project]\(データ ファクトリを新しいプロジェクトにエクスポートする\)** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
 
     ![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>Visual Studio の Data Factory ツールを更新する
 Visual Studio の Azure Data Factory ツールを更新するには、次の手順に従います。
 
-1. メニューで **[ツール]** をクリックし、**[拡張機能と更新プログラム]** を選択します。 
-2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
-3. **[Azure Data Factory tools for Visual Studio]** を選択して、**[更新]** をクリックします。 このエントリが表示されない場合は、ツールは既に最新バージョンです。 
+1. メニューで **[ツール]** をクリックし、 **[拡張機能と更新プログラム]** を選択します。 
+2. 左ウィンドウで **[更新]** を選択し、 **[Visual Studio ギャラリー]** を選択します。
+3. **[Azure Data Factory tools for Visual Studio]** を選択して、 **[更新]** をクリックします。 このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
 ## <a name="use-configuration-files"></a>構成ファイルを使用する
 リンクされたサービス/テーブル/パイプラインには、Visual Studio から構成ファイルを使用して環境ごとに異なるプロパティを構成できます。
@@ -420,8 +419,8 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
 ### <a name="add-a-configuration-file"></a>構成ファイルを追加する
 環境ごとに次の手順を実行して構成ファイルを追加します。   
 
-1. Visual Studio ソリューションで Data Factory プロジェクトを右クリックし、**[追加]** をポイントして、**[新しい項目]** をクリックします。
-2. 左側にあるインストールされたテンプレートの一覧で **[構成]** を選択し、**[構成ファイル]** を選択して、構成ファイルの**名前**を入力し、**[追加]** をクリックします。
+1. Visual Studio ソリューションで Data Factory プロジェクトを右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします。
+2. 左側にあるインストールされたテンプレートの一覧で **[構成]** を選択し、 **[構成ファイル]** を選択して、構成ファイルの**名前**を入力し、 **[追加]** をクリックします。
 
     ![Add configuration file](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. 次の形式で構成パラメーターとその値を追加します。
@@ -497,13 +496,13 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 構成ファイルを使用して Azure Data Factory プロジェクトのエンティティを発行するには、次の手順を実行します。   
 
-1. Data Factory プロジェクトを右クリックして **[発行]** をクリックし、**[Publish Items (項目の発行)]** ダイアログ ボックスを表示します。
-2. **[Configure data factory (データ ファクトリの構成)]** ページで、既存のデータ ファクトリを選択するか、データ ファクトリを作成するために値を指定して、**[次へ]** をクリックします。   
-3. **[Publish Items (項目の発行)]** ページのドロップダウン リストに、**[Select Deployment Config (デプロイ構成の選択)]** フィールドで使用できる構成が表示されます。
+1. Data Factory プロジェクトを右クリックして **[発行]** をクリックし、 **[Publish Items (項目の発行)]** ダイアログ ボックスを表示します。
+2. **[Configure data factory (データ ファクトリの構成)]** ページで、既存のデータ ファクトリを選択するか、データ ファクトリを作成するために値を指定して、 **[次へ]** をクリックします。   
+3. **[Publish Items (項目の発行)]** ページのドロップダウン リストに、 **[Select Deployment Config (デプロイ構成の選択)]** フィールドで使用できる構成が表示されます。
 
     ![Select config file](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. 使用する**構成ファイル**を選択し、**[次へ]** をクリックします。
-5. JSON ファイルの名前が **[概要]** ページに表示されていることを確認し、**[次へ]** をクリックします。
+4. 使用する**構成ファイル**を選択し、 **[次へ]** をクリックします。
+5. JSON ファイルの名前が **[概要]** ページに表示されていることを確認し、 **[次へ]** をクリックします。
 6. デプロイ操作が終了したら、 **[完了]** をクリックします。
 
 実際にデプロイすると、JSON ファイルに指定されているプロパティの値が構成ファイルの値を使用して設定された後、Azure Data Factory サービスにエンティティがデプロイされます。   

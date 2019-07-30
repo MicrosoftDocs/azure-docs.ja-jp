@@ -4,18 +4,18 @@ description: Azure Functions の戻り値を管理する方法について学習
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 4ccfe192eaea94cb9b199bd3c6f0bdacf1685519
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03cf85ab12a8f64d639c09db5ea75002b258aa84
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61437720"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480278"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure 関数の戻り値の使用
 

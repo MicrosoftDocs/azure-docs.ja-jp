@@ -3,19 +3,19 @@ title: Azure リソースのマネージド ID をサポートする Azure サ�
 description: Azure リソースのマネージド ID と Azure AD 認証をサポートするサービスの一覧
 services: active-directory
 author: MarkusVi
-ms.author: priyamo
-ms.date: 05/09/2019
+ms.author: markvi
+ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0809423472bde0240145d43f4c28d9594b517928
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6869602b7d4aff6d779d189f0b6444dde2055d4
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518681"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261900"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -148,6 +148,17 @@ Azure Container Instances のために (それが提供されているリージ�
 - [Azure Resource Manager テンプレート](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
+### <a name="azure-container-registry-tasks"></a>Azure Container Registry タスク
+
+マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | --- | --- | --- | --- |
+| システム割り当て済み | 使用可能 | 使用できません。 | 使用できません。 | 使用できません。 |
+| ユーザー割り当て済み | プレビュー | 使用できません。 | 使用できません。 | 使用できません。 |
+
+Azure Container Registry タスクのために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
+
+- [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
+
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD 認証をサポートしている Azure サービス
 
 次のサービスは、Azure AD 認証をサポートしており、Azure リソースのマネージド ID を使用するクライアント サービスでテストされています。
@@ -217,10 +228,10 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 
 | クラウド | Resource ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://storage.azure.com/` | 使用可能 |
-| Azure Government | `https://storage.azure.com/` | 使用可能 |
-| Azure Germany | `https://storage.azure.com/` | 使用可能 |
-| Azure China 21Vianet | `https://storage.azure.com/` | 使用可能 |
+| Azure Global | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 使用可能 |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 使用可能 |
+| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 使用可能 |
+| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 使用可能 |
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 

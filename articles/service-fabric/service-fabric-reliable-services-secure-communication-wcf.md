@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: 26d34f0473dec5e0767041df400b84887a0d1778
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: chackdan
+ms.openlocfilehash: 4e41638472307f0f88e92413d98b669b27572f54
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725586"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872119"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>サービスの WCF ベースの通信をセキュリティで保護する
 セキュリティは、通信の最も重要な側面の 1 つです。 Reliable Services アプリケーション フレームワークに最初から用意されている通信スタックとツールを利用してセキュリティを確保することができます。 この記事では、サービスのリモート処理を使用しているときに、セキュリティを向上させる方法について説明します。

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 組織用のサインインを設定する - Azure Active Directory B2C | Microsoft Docs
+title: Azure Active Directory 組織用のサインインを設定する - Azure Active Directory B2C
 description: Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定します。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 28dbf0382ac151857e72d4bb59e207f07c8ad3f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b867a7f9ffeab3d243c8c094830aa0984cffd04a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508421"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654195"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directo
 7. **[リダイレクト URL]** では、値 **[Web]** をそのまま使用し、次の URL をすべて小文字で入力します。`your-B2C-tenant-name` は、お使いの Azure AD B2C テナントの名前に置き換えます。 例: `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`
 
     ```
-    https://your--B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
     ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
@@ -63,10 +63,10 @@ Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directo
     ```
 
 8. **[クライアント ID]** には、先ほどメモしたアプリケーション ID を入力し、 **[クライアント シークレット]** には、先ほどメモしたクライアント シークレットを入力します。
-9. 必要に応じて、**Domain_hint** に値を入力します。 たとえば、「 `ContosoAD` 」のように入力します。 この値は､要求で *domain_hint* を使用するこの ID プロバイダーを参照するときに使用します｡ 
+9. 必要に応じて、**Domain_hint** に値を入力します。 たとえば、「 `ContosoAD` 」のように入力します。 この値は､要求で *domain_hint* を使用するこの ID プロバイダーを参照するときに使用します｡
 10. Click **OK**.
 11. **[この ID プロバイダーの要求をマップする]** を選択し、次の要求を設定します。
-    
+
     - **User ID** には `oid` を入力します｡
     - **Display Name** には `name` を入力します｡
     - **Given name** には `given_name` を入力します｡

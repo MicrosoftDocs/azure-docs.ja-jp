@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6752a2474f3629ad79f6a652bba475691b6a53e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45e8f0d2e84a8c8879fb5d48c575906cfe31b53b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866300"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089325"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>チュートリアル:Azure Active Directory と Talent Palette の統合
 
@@ -54,11 +54,11 @@ Azure AD への Talent Palette の統合を構成するには、ギャラリー�
 
 **ギャラリーから Talent Palette を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select_azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise_applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への Talent Palette の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add_new_app.png)
 
-4. 検索ボックスに「**Talent Palette**」と入力し、結果パネルで **[Talent Palette]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Talent Palette**」と入力し、結果パネルで **[Talent Palette]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リスト内の Talent Palette](common/search_new_app.png)
 
@@ -90,15 +90,15 @@ Talent Palette を使用して Azure AD のシングル サインオンを構成
 
 Talent Palette を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **[Talent Palette]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **[Talent Palette]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select_sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select_saml_option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit_urls.png)
 
@@ -108,7 +108,7 @@ Talent Palette を使用して Azure AD のシングル サインオンを構成
 
     **[応答 URL]** ボックスに、`https://talent-p.net/saml/acs/<tenantID>` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[Talent Palette のドメインと URL] のシングル サインオン情報](common/both_signonurl.png)
 
@@ -117,7 +117,7 @@ Talent Palette を使用して Azure AD のシングル サインオンを構成
     > [!NOTE]
     > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Talent Palette クライアント サポート チーム](mailto:talent-support@pa-consul.co.jp)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -139,7 +139,7 @@ Talent Palette を使用して Azure AD のシングル サインオンを構成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -164,11 +164,11 @@ Talent Palette を使用して Azure AD のシングル サインオンを構成
 
 このセクションでは、Britta Simon に Talent Palette へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Talent Palette]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Talent Palette]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise_applications.png)
 
-2. アプリケーションの一覧で、**[Talent Palette]** を入力および選択します。
+2. アプリケーションの一覧で、 **[Talent Palette]** を入力および選択します。
 
     ![アプリケーションの一覧の Talent Palette のリンク](common/all_applications.png)
 
@@ -176,15 +176,15 @@ Talent Palette を使用して Azure AD のシングル サインオンを構成
 
     ![[ユーザーとグループ] リンク](common/users_groups_blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add_assign_user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-talent-palette-test-user"></a>Talent Palette のテスト ユーザーの作成
 

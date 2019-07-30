@@ -2,24 +2,25 @@
 title: Azure Security Center (ASC) for IoT プレビューの使用開始 | Microsoft Docs
 description: Azure Security Center for IoT の機能とサービスの基本的なワークフローへの理解を深めます。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 55c8d3b6-3126-4246-8d07-ef88fe5ea84f
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: bdc5e858286d7db03281408cf3ed00e0760e0c3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39f448f258923d23bdcba75a0a1987777ce0492e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200643"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616862"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>Azure Security Center for IoT の使用を開始する 
 

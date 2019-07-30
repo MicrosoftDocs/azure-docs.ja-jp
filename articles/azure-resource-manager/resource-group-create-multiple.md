@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 99fd4215de4dd118558acc008fcfa6490ea0093d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22317372a7d954286ebcb0b59aea293c746b2a58
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807370"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508181"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース、プロパティ、または変数の反復
 
@@ -50,6 +50,8 @@ ms.locfileid: "66807370"
 反復回数を指定するには、count プロパティの値を指定します。 count は 800 を超えることはできません。
 
 count は負の数値にすることはできません。 REST API バージョン **2019-05-10** 以降のテンプレートをデプロイする場合、count を 0 に設定できます。 それ以前の REST API のバージョンでは、count をゼロに設定することはサポートされていません。 現時点では、Azure CLI または PowerShell では count をゼロに設定することはサポートされていませんが、このサポートは将来のリリースで追加される予定です。
+
+コピーで[完全モード デプロイ](deployment-modes.md)を使用する際は注意してください。 完全モードでリソース グループに再デプロイする場合、コピー ループを解決した後でテンプレートに指定されていないリソースはすべて削除されます。
 
 count の制限は、リソース、変数、プロパティのいずれで使用する場合でも同じです。
 

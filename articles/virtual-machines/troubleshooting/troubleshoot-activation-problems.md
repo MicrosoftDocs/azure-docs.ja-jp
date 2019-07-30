@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc058cb3f27545b9e4ad8ef1062ca4d2fa4c9fa8
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60921277"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155145"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -51,11 +51,9 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
 >
 >ExpressRoute を使用していて、既定のルートを公開している場合は、「[Azure VM may fail to activate over ExpressRoute (Azure VM が ExpressRoute 経由でのライセンス認証に失敗する場合がある)](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)」を参照してください。
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>手順 1: 適切な KMS クライアント セットアップ キーを構成する (Windows Server 2016 および Windows Server 2012 R2 用)
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>手順 1: 適切な KMS クライアント セットアップ キーを構成する
 
-Windows Server 2016 または Windows Server 2012 R2 のカスタム イメージから作成する VM には、適切な KMS クライアント セットアップ キーを構成する必要があります。
-
-この手順は、Windows 2012 または Windows 2008 R2 には適用されません。 この手順で使用する仮想マシンの自動ライセンス認証 (AVMA) 機能は、Windows Server 2016 および Windows Server 2012 R2 だけでサポートされています。
+カスタム イメージから作成された VM の場合、適切な KMS クライアント セットアップ キーを構成する必要があります。
 
 1. 管理者特権でのコマンド プロンプトで、**slmgr.vbs /dlv** を実行します。 出力の Description 値を確認して、リテール (RETAIL チャネル) ライセンス メディアから作成されたのか、ボリューム (VOLUME_KMSCLIENT) ライセンス メディアから作成されたのかを判断します。
   

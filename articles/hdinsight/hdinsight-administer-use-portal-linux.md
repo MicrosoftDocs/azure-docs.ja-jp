@@ -6,24 +6,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 528d2fd5b26e06478078711405bd5b9ca51feeda
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c745fceca5efa66b1b23661001d93ddb287fe37b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859996"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460633"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure portal][azure-portal] を使用して、Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターを管理できます。 他のツールを使って HDInsight で Hadoop クラスターを管理する方法については、上のタブ セレクターを使ってください。
+[Azure portal](https://portal.azure.com) を使用して、Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターを管理できます。 他のツールを使って HDInsight で Hadoop クラスターを管理する方法については、上のタブ セレクターを使ってください。
 
 ## <a name="prerequisites"></a>前提条件
-- Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
+
+HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ## <a name="getting-started"></a>Getting Started (概要)
 [https://portal.azure.com](https://portal.azure.com) にサインインします。
@@ -72,9 +72,9 @@ ms.locfileid: "65859996"
     |スクリプト操作|クラスター上の Bash スクリプトを実行します。 「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。|
     |外部メタストア|[Apache Hive](https://hive.apache.org/) メタストアと [Apache Oozie](https://oozie.apache.org/) メタストアを表示します。 メタストアを構成できるのは、クラスターの作成処理中のみです。|
     |HDInsight パートナー|現在の HDInsight パートナーを追加または削除します。|
-    |Properties|[クラスターのプロパティ](#properties)を表示します。|
+    |properties|[クラスターのプロパティ](#properties)を表示します。|
     |ロック|クラスターの変更または削除を防ぐためのロックを追加します。|
-    |Automation スクリプト|クラスター向けの Azure Resource Manager テンプレートを表示およびエクスポートします。 現時点では、依存している Azure ストレージ アカウントのみをエクスポートできます。 「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。|
+    |テンプレートをエクスポートする|クラスター向けの Azure Resource Manager テンプレートを表示およびエクスポートします。 現時点では、依存している Azure ストレージ アカウントのみをエクスポートできます。 「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。|
 
   - **監視メニュー**
 
@@ -100,12 +100,13 @@ ms.locfileid: "65859996"
 |---|---|
 |ホスト名|クラスター名。|
 |クラスター URL|Ambari Web インターフェイスの URL。|
+|プライベート エンドポイント|クラスターのプライベート エンドポイント。|
 |Secure Shell (SSH)|SSH でクラスターにアクセスするときに使うユーザー名とホスト名。|
-|Status|次のいずれか:Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization。|
+|状態|次のいずれか:Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization。|
 |リージョン|Azure の場所。 サポートされている Azure の場所の一覧については、「**HDInsight の価格**」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/) ボックスの一覧をご覧ください。|
 |作成日|クラスターがデプロイされた日付。|
 |オペレーティング システム|**[Windows]** または **[Linux]** 。|
-|Type|Hadoop、HBase、Storm、Spark。|
+|TYPE|Hadoop、HBase、Storm、Spark。|
 |バージョン|「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](hdinsight-component-versioning.md)」をご覧ください。|
 |サブスクリプション|サブスクリプションの名前。|
 |既定のデータ ソース|クラスターの既定のファイル システムです。|
@@ -138,62 +139,10 @@ HDInsight クラスターを別の Azure リソース グループまたは別�
 クラスターが作成されたら、Azure ストレージ アカウントや Azure Data Lake Storage アカウントを追加できます。 詳細については、「[HDInsight にストレージ アカウントを追加する](./hdinsight-hadoop-add-storage.md)」を参照してください。
 
 ## <a name="scale-clusters"></a>クラスターのスケール
+
 クラスターのスケール設定機能を使うと、Azure HDInsight クラスターによって使われる worker ノードの数を、クラスターを再作成することなく、変更できます。
 
-> [!NOTE]  
-> HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「クラスターの一覧と表示」を参照してください。
-
-[クラスター ホーム ページ](#homePage)から:
-
-1. **[設定]** で、 **[クラスター サイズ]** を選択します。
-2. 数値テキスト ボックスで **[worker ノードの数]** を入力します。 クラスター ノードの数の制限は Azure サブスクリプションによって異なります。 制限値を上げるには、課金サポートにお問い合わせください。  コスト情報にはノード数の変更が反映されます。
-3. **[保存]** を選択します。
-
-    ![HDInsight Hadoop HBase Storm および Spark のスケール](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster2.png)
-
-データ ノード数を変更した場合の影響は、HDInsight でサポートされているクラスターの種類ごとに異なります。
-
-* Apache Hadoop
-
-    保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
-
-    データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 この動作により、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
-* Apache HBase
-
-    実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
-
-    ```bash
-    pushd %HBASE_HOME%\bin
-    hbase shell
-    balancer
-    ```
-
-    HBase シェルの使用の詳細については、「[HDInsight で Apache HBase の例を使用する](hbase/apache-hbase-tutorial-get-started-linux.md)」を参照してください。
-
-* Apache Storm
-
-    実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
-
-    バランス再調整は、次の 2 つの方法で実行できます。
-
-  * Storm Web UI
-  * コマンド ライン インターフェイス (CLI) ツール
-
-    詳細については、[Apache Storm に関するドキュメント](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
-
-    Storm Web UI は、HDInsight クラスターで使用できます。
-
-    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster-storm-rebalance.png)
-
-    Storm トポロジのバランスを再調整する CLI コマンドの例を次に示します。
-
-    ```cli
-    ## Reconfigure the topology "mytopology" to use 5 worker processes,
-    ## the spout "blue-spout" to use 3 executors, and
-    ## the bolt "yellow-bolt" to use 10 executors
-    $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
-    ```
-
+詳細については、「[HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md)」を参照してください。
 
 ## <a name="pauseshut-down-clusters"></a>クラスターの一時停止またはシャットダウン
 
@@ -203,13 +152,11 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 このプロセスをプログラムで実行する方法は数多くあります。
 
 * Azure Data Factory を使用する。 オンデマンドの HDInsight がリンクされたサービスを作成する詳細については、[Azure Data Factory を使用して HDInsight でオンデマンドの Linux ベースの Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-adf.md)に関するページを参照してください。
-* Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)」をご覧ください。
+* Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)」をご覧ください。
 * Azure CLI を使用する。 「[Azure CLI を使用した Azure HDInsight クラスターの管理](hdinsight-administer-use-command-line.md)」を参照してください。
 * HDInsight .NET SDK を使用する。 [Apache Hadoop ジョブを送信する](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページをご覧ください。
 
 価格情報については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。 ポータルからクラスターを削除する方法については、「[クラスターの削除](#delete-clusters)
-
-
 
 ## <a name="upgrade-clusters"></a>クラスターをアップグレードする
 
@@ -226,7 +173,7 @@ Ambari は、RESTful API がサポートする直感的で使いやすい Hadoop
     ![HDInsight Hadoop クラスター メニュー](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
 1. 新しいページから **[Ambari ホーム]** を選択します。
-2. クラスターのユーザー名とパスワードを入力します。  既定のクラスター ユーザー名は _admin_ です。Ambari Web UI は次のようになります。
+1. クラスターのユーザー名とパスワードを入力します。  既定のクラスター ユーザー名は _admin_ です。
 
 詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
@@ -261,8 +208,8 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 2. HTTP または HTTPS アドレスを使用して、HDInsight からアクセスできるストレージの場所にファイルをアップロードします。 たとえば、OneDrive や Azure Blob ストレージなどの公開ファイル ストアです。 URI (HTTP または HTTPS アドレス) をファイルに保存します。この URI は、次の手順で必要になります。
 3. [クラスター ホーム ページ](#homePage)の **[設定]** で、 **[スクリプト アクション]** を選択します。
-4. **[スクリプト アクション]** ブレードの上部で、 **[新規で送信]** を選択します。 
-5. **[スクリプト アクションの送信]** ブレードで、次の情報を入力します。
+4. **[スクリプト アクション]** ページで、 **[新規で送信]** を選択します。
+5. **[スクリプト アクションの送信]** ページで、次の情報を入力します。
 
    | フィールド | 値 |
    | --- | --- |
@@ -295,13 +242,12 @@ Azure Resource Manager モードでは、各 HDInsight クラスターは Azure 
 ## <a name="find-the-storage-accounts"></a>ストレージ アカウントを検索する
 HDInsight クラスターは、Azure Storage アカウントまたは Azure Data Lake Storage のいずれかを使用してデータを格納します。 各 HDInsight クラスターは、1 つの既定のストレージ アカウントと、複数のリンクされたストレージ アカウントを持つことができます。 ストレージ アカウントを一覧表示するには、**クラスター ホーム ページ**の **[設定]** で [[ストレージ アカウント]](#homePage) を選択します。
 
-
 ## <a name="monitor-jobs"></a>ジョブの監視
 「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md#monitoring)」を参照してください。
 
+## <a name="cluster-size"></a>クラスター サイズ
 
-## <a name="monitor-cluster-usage"></a>クラスターの使用状況の監視
-HDInsight クラスター ブレードの **[使用状況]** セクションには、サブスクリプションで HDInsight 用に使用できるコアの数、このクラスターに割り当てられているコアの数、およびこのクラスター内のノードへのコアの割り当て方法に関する情報が表示されます。 「クラスターの一覧と表示」を参照してください。
+[クラスター ホーム ページ](#homePage)の **[クラスター サイズ]** タイルには、このクラスターに割り当てられているコアの数と、このクラスター内のノードに割り当てられているコアの数が表示されます。
 
 > [!IMPORTANT]  
 > HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用について詳しくは、[Apache Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページをご覧ください
@@ -318,13 +264,8 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
-* [Apache Ambari Web UI の使用に関する詳細](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API の使用に関する詳細](hdinsight-hadoop-manage-ambari-rest-api.md)
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight 上で Apache Pig を使用する](hadoop/hdinsight-use-pig.md)
 * [HDInsight 上で Apache Sqoop を使用する](hadoop/hdinsight-use-sqoop.md)
-* [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する](hadoop/python-udf-hdinsight.md)
 * [Azure HDInsight でサポートされている Apache Hadoop のバージョン](hdinsight-component-versioning.md)
-
-[azure-portal]: https://portal.azure.com
-[image-hadoopcommandline]: ./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"

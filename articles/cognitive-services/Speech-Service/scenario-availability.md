@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: d844b171ff99dc97e5d1107bcb745f9e8d5b3e9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aa2c72a01f1887ea9680f8d5706b825a49039a1
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519826"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561285"
 ---
 # <a name="scenario-availability"></a>シナリオの利用可否
 
@@ -25,7 +25,7 @@ Speech service SDK には、さまざまなプログラミング言語と環境�
   - 矢印のリンク <img src="media/index/link.jpg" height="15" width="15"></img> が[こちら](https://aka.ms/csspeech)のクイック スタートの表に表示されているすべてのプログラミング言語/環境。
 - **テキスト読み上げ (TTS)**
   - C++/Windows および Linux
-  - C#/Windows
+  - C#/Windows および UWP および Unity
   - TTS REST API は他のすべての状況で使用できます。
 - **ウェイク ワード (Keyword Spotter/KWS)**
   - C++/Windows および Linux

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2eb9f8e19be2a7b6220bc34bf4ce0c72c4ac0b4f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683996"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275055"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と請求金額ファイル内の用語について
 
@@ -72,6 +72,7 @@ InvoiceSection | MCA | InvoiceSectionName を参照。
 InvoiceSectionId | EA、MCA | EA 部門または MCA 請求書セクションの一意識別子。
 InvoiceSectionName | EA、MCA | EA 部門または MCA 請求書セクションの名前。
 IsAzureCreditEligible | EA、MCA | Azure クレジットを使用して料金を支払うことができるかどうかを示す (値：True、False)。
+IsEstimated | All | 請求期間がクローズ/ファイナライズされているかどうかを示します。 請求書が生成されるまでは、請求期間の使用状況データが変更される可能性があります。 これらのレコードは、「推定」とマークされます。
 Location | EA、MCA | リソースが実行されているデータセンターの場所。
 MeterCategory | All | メーターの分類カテゴリの名前。 たとえば、*Cloud services*、*Networking* などです。
 MeterId | All | メーターの一意識別子。

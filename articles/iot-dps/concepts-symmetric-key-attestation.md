@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746153"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348359"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 
@@ -75,7 +75,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 デバイスの登録 ID を定義した後は、登録グループの対称キーを使用して、登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ハッシュを計算し、派生デバイス キーを生成します。 登録 ID のハッシュは、次の C# コードを使用して実行できます。
 
-```C#
+```csharp
 using System; 
 using System.Security.Cryptography; 
 using System.Text;  
@@ -92,7 +92,7 @@ public static class Utils
 } 
 ```
 
-```C#
+```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
 

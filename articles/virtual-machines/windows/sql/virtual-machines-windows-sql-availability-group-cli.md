@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5015f00d3c6dfe0e1e5c2466af777cc0f1bc509
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518982"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607147"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure SQL VM CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する
 この記事では、[Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-latest/) を使用して、Windows フェールオーバー クラスター (WSFC) をデプロイしたり、クラスターに SQL Server VM を追加したり、Always On 可用性グループの内部ロード バランサーおよびリスナーを作成したりする方法について説明します。  Always On 可用性グループの実際のデプロイは、引き続き SQL Server Management Studio (SSMS) を使用して手動で実行されます。 
@@ -28,7 +28,7 @@ ms.locfileid: "65518982"
 Azure SQL VM CLI を使用した Always On 可用性グループの設定を自動化するには、既に次の前提条件が満たされている必要があります。 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [SQL VM リソース プロバイダーに登録されている](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)のと*同じ可用性セットまたは別の可用性ゾーン*にある 1 つ以上のドメイン参加済みの、[SQL Server 2016 (以降) Enterprise Edition を実行している Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
+- [SQL VM リソース プロバイダーに登録されている](virtual-machines-windows-sql-register-with-resource-provider.md)のと*同じ可用性セットまたは別の可用性ゾーン*にある 1 つ以上のドメイン参加済みの、[SQL Server 2016 (以降) Enterprise Edition を実行している Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
 - [Azure CLI](/cli/azure/install-azure-cli)。 
 - 可用性グループと同じサブネット内の内部ロード バランサー用に 1 つと、可用性グループ リスナー用に 1 つの、2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 既存のロード バランサーが使用されている場合は、使用可能な IP アドレスが可用性グループ リスナー用に 1 つだけ必要です。 
 

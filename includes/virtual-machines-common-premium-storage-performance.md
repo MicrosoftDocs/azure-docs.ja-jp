@@ -5,38 +5,16 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7a37c9d51541c279a6b820641b6eb46175aa8413
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6cbda7d9be1617617e173c68c3d2a4a95c255ae0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181146"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673407"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
-
-この記事では、Azure Premium Storage を使用する高パフォーマンスのアプリケーションを構築するためのガイドラインを示します。 このドキュメントで説明する手順は、アプリケーションで使用されているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使用できます。 ガイドラインを示すために、このドキュメント全体を通じて、Premium Storage で実行されている SQL Server を例として使用しています。
-
-この記事では、ストレージ層のパフォーマンスのシナリオに対処していますが、アプリケーション層を最適化する必要があります。 たとえば、Azure Premium Storage で SharePoint ファームをホストしている場合は、この記事の SQL Server の例を使用してデータベース サーバーを最適化できます。 さらに、最大限のパフォーマンスを得るために、SharePoint ファームの Web サーバーとアプリケーション サーバーを最適化します。
-
-この記事は、Azure Premium Storage でのアプリケーションのパフォーマンスの最適化に関する次のような一般的な質問に答えるのに役立ちます。
-
-* アプリケーションのパフォーマンスはどのように測定するのか。  
-* 予想される高パフォーマンスが得られないのはなぜか。  
-* Premium Storage でアプリケーションのパフォーマンスに影響を及ぼすのはどの要素か。  
-* 各要素は Premium Storage でアプリケーションのパフォーマンスにどのような影響を及ぼすのか。  
-* IOPS、帯域幅、待機時間に最適化するにはどうすればよいか。  
-
-Premium Storage で実行されるワークロードは高パフォーマンスに依存するため、Premium Storage 専用のガイドラインを用意しました。 必要に応じて例も示しています。 これらのガイドラインの一部は、Standard Storage ディスクを使用する IaaS VM で実行されるアプリケーションにも適用できます。
-
-> [!NOTE]
-> ときには、ディスク パフォーマンスの問題のように見えるものが、実際にはネットワークのボトルネックであることもあります。 このような場合は、[ネットワーク パフォーマンス](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)を最適化する必要があります。
-> VM で高速ネットワークがサポートされる場合は、それが有効になっていることを確認する必要があります。 有効になっていない場合は、[Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) と [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) の両方で、既にデプロイされている VM 上で有効にすることができます。
-
-Premium Storage の知識がない場合は、作業を始める前に、まず [IaaS VM 用の Azure ディスクの種類の選択](../articles/virtual-machines/windows/disks-types.md)と [Azure Storage のスケーラビリティとパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)に関する記事をお読みください。
-
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
 アプリケーションがユーザー要求を処理する速度、アプリケーションが要求ごとに処理するデータの量、アプリケーションが一定時間内に処理する要求の数、要求の送信後、応答が返されるまでのユーザーの待機時間などのパフォーマンス指標を使用して、アプリケーションが問題なく実行されているかどうかを評価します。 これらのパフォーマンス指標は、IOPS、スループットまたは帯域幅、待機時間という専門用語で表されます。
@@ -413,4 +391,4 @@ Azure Premium Storage では、選択された VM サイズとディスク サ�
 SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プラクティスに関する次の記事をご覧ください。
 
 * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
+* [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

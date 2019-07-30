@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 0001cad6-699c-4ca9-b66c-80c194e439a5
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: d018ce4164c50f5d21c8ab3e833bba7055ad9753
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd6a80819c1ee6eec4614a3e17dda12bfcefd679
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385045"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611278"
 ---
 # <a name="connect-your-f5-appliance"></a>F5 アプライアンスを接続する
 

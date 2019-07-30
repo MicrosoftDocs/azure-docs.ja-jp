@@ -3,20 +3,20 @@ title: ナレッジ ベースに関する分析
 titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスの作成中に App Insights を有効にした場合、QnA Maker はすべてのチャット ログとその他のテレメトリを格納します。 サンプル クエリを実行して、App Insights からチャット ログを取得してみましょう。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/04/2019
-ms.author: tulasim
-ms.openlocfilehash: 09369e760c654e7e56067e6da02bb772bffa7400
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/16/2019
+ms.author: diberry
+ms.openlocfilehash: 5fc473fb1a1b1af84b0966bde4ecf02f4f221bf1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61372607"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296405"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
@@ -33,16 +33,17 @@ ms.locfileid: "61372607"
 3. 次のクエリを貼り付けて、実行します。
 
     ```query
-        requests
-        | where url endswith "generateAnswer"
-        | project timestamp, id, name, resultCode, duration
-        | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
-        | join kind= inner (
-        traces | extend id = operation_ParentId
-        ) on id
-        | extend question = tostring(customDimensions['Question'])
-        | extend answer = tostring(customDimensions['Answer'])
-        | project KbId, timestamp, resultCode, duration, question, answer
+    requests
+    | where url endswith "generateAnswer"
+    | project timestamp, id, name, resultCode, duration, performanceBucket
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
+    | join kind= inner (
+    traces | extend id = operation_ParentId
+    ) on id
+    | extend question = tostring(customDimensions['Question'])
+    | extend answer = tostring(customDimensions['Answer'])
+    | extend score = tostring(customDimensions['Score'])
+    | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId 
     ```
 
     **[実行]** を選択して、クエリを実行します。

@@ -1,15 +1,15 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/16/2019
-ms.openlocfilehash: 05961f8dd2788179a15e6bfe094484cf4770067b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a24300958c27daaaf49cc3045a5e99d77c938ab7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124329"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704211"
 ---
 コンテナーへのクエリは、`<ApiKey>` に使用される Azure リソースの価格レベルで課金されます。
 
@@ -27,6 +27,6 @@ Azure Cognitive Services コンテナーは、計測のために課金エンド�
 |--------|-------------|
 | `ApiKey` | 課金情報を追跡するために使用される Cognitive Services リソースの API キー。<br/>このオプションの値には、`Billing` に指定されたプロビジョニング済みのリソースの API キーが設定されている必要があります。 |
 | `Billing` | 課金情報を追跡するために使用される Cognitive Services リソースのエンドポイント。<br/>このオプションの値には、プロビジョニング済みの Azure リソースのエンドポイント URI が設定されている必要があります。|
-| `Eula` | お客様がコンテナーのライセンスに同意したことを示します。<br/>このオプションの値は `accept` に設定する必要があります。 |
+| `Eula` | お客様がコンテナーのライセンスに同意したことを示します。<br/>このオプションの値は **accept** に設定する必要があります。 |
 
 

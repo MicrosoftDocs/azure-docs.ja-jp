@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9744a4b7bc5d2e9ce22bfa14ea33a2b11dacda85
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457213"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612468"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway のリセット
 
@@ -24,7 +24,7 @@ VPN Gateway は、アクティブ/スタンバイ構成で動作する 2 つの 
 
 このコマンドを実行してゲートウェイをリセットすると、現在アクティブな Azure VPN Gateway のインスタンスが直ちに再起動されます。 再起動中のアクティブ インスタンスからスタンバイ インスタンスにフェールオーバーされる際に、わずかな時間差が生じます。 通常、時間差は 1 分未満です。
 
-初回再起動で接続が復元されない場合は、同じコマンドを再度実行して、2 つ目の VM インスタンス (新しくアクティブになった方のゲートウェイ) を再起動してください。 連続して 2 回の再起動が必要であった場合、アクティブとスタンバイの両方の VM インスタンスを再起動する分、1 回で済んだ場合よりもわずかに時間がかかります。 この場合、VPN 接続の途切れが長引いて、両方の VM が再起動を完了するまでに最大 2 ～ 4 分かかります。
+初回再起動で接続が復元されない場合は、同じコマンドを再度実行して、2 つ目の VM インスタンス (新しくアクティブになった方のゲートウェイ) を再起動してください。 連続して 2 回の再起動が必要であった場合、アクティブとスタンバイの両方の VM インスタンスを再起動する分、1 回で済んだ場合よりもわずかに時間がかかります。 この場合、VPN 接続の途切れが長引いて、両方の VM が再起動を完了するまでに最大 30 ～ 45 分かかります。
 
 2 回再起動してもクロスプレミス接続の問題が解消しない場合は、Azure ポータルからサポート リクエストを作成してください。
 

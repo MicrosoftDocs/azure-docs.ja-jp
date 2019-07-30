@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: de5649498dddcec8c65f2cfca6dcb39fa20a9267
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa688f40f8eb968f2c388601b387e4f584951a91
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242258"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595596"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の PolyBase データ読み込み戦略をデザインする
 

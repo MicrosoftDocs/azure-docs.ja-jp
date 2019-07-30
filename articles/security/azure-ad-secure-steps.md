@@ -9,13 +9,13 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
-ms.author: martincoetzer
-ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: martinco
+ms.openlocfilehash: a3a1542279077ffb949fbfd9c8cb7236827803d9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236778"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588899"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 

@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61248149"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](data-factory-usql-activity.md)
 > * [バージョン 2 (最新バージョン)](../transform-data-using-data-lake-analytics.md)
 
@@ -50,7 +50,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 | --- | --- | --- |
 | **type** |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
 | **accountName** |Azure Data Lake Analytics アカウント名。 |はい |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |いいえ  |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |いいえ |
 | **subscriptionId** |Azure サブスクリプション ID |いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
 | **resourceGroupName** |Azure リソース グループ名 |いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
 
@@ -121,7 +121,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 | Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など)。 |12 時間 |
 | Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から 14 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
-このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のようにコードを使用して、**sessionId** と **authorization** のプロパティ値をプログラムで生成することもできます。
+このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、 **[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のようにコードを使用して、**sessionId** と **authorization** のプロパティ値をプログラムで生成することもできます。
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -213,11 +213,11 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | いいえ (スクリプトを使用する場合)                   |
 | scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)                   |
 | script              | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 たとえば、「 `"script": "CREATE DATABASE test"`」のように入力します。 | いいえ (scriptPath と scriptLinkedService を使用する場合) |
-| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ                                        |
-| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ                                        |
-| parameters          | U-SQL スクリプトのパラメーター          | いいえ                                        |
-| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ                                        |
-| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。</p> <ul><li>**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。</li><li>**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。</li><li>**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。</li></ul><p>このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 </p> | いいえ                                        |
+| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ                                       |
+| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ                                       |
+| parameters          | U-SQL スクリプトのパラメーター          | いいえ                                       |
+| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ                                       |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。</p> <ul><li>**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。</li><li>**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。</li><li>**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。</li></ul><p>このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 </p> | いいえ                                       |
 
 スクリプト定義については、 [SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script) をご覧ください。 
 
@@ -331,7 +331,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-代わりに、動的パラメーターを使用することもできます。 例:  
+代わりに、動的パラメーターを使用することもできます。 例: 
 
 ```json
 "parameters": {

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 0dc9d18ea4dae6ea0f45d1a91392eb1994e6e80e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757241"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441717"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL Database の単一データベースの概要
 
@@ -51,3 +51,4 @@ ms.locfileid: "55757241"
 - 「[Azure SQL Database の単一データベースを使用する方法](sql-database-howto-single-database.md)」で、より高度な操作方法を参照します。
 - [PowerShell](sql-database-powershell-samples.md) と [Azure CLI](sql-database-cli-samples.md) で記述されたその他のサンプル スクリプトを確認します。
 - データベースの構成に使用できる[管理 API](sql-database-single-databases-manage.md) について詳しく学びます。
+- [オンプレミス データベースに適した Azure SQL Database/Managed Instance SKU を特定します](/sql/dma/dma-sku-recommend-sql-db/)。

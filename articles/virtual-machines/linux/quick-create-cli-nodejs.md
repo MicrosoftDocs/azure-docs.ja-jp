@@ -4,7 +4,7 @@ description: Azure クラシック CLI を使用した Azure での Linux VM の
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
-ms.author: v-livech
-ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: b36f6e2ace02324a63616f31fcdccfa666856699
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473741"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875216"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Linux VM を作成する
 
@@ -50,7 +50,7 @@ azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
 
 ディストリビューションを簡単に選択するには、最も一般的な OS ディストリビューションにマップされた Azure CLI のエイリアスを使用します。 次の表にエイリアスを示します (Azure CLI バージョン 0.10 の時点)。 `quick-create` を使用したすべてのデプロイの既定の VM では、プロビジョニングの高速化と高パフォーマンスのディスク アクセスを実現するソリッドステート ドライブ (SSD) ストレージを利用します (これらのエイリアスは、Azure で利用可能なディストリビューションのごく一部を表しています。 Azure Marketplace ではさらに多くのイメージを見つけることができます。[PowerShell でイメージを検索するか](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Web で探してください](https://azure.microsoft.com/marketplace/virtual-machines/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。[独自のカスタム イメージをアップロードすることもできます](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json))。
 
-| エイリアス | Publisher | プラン | SKU | バージョン |
+| エイリアス | Publisher | プラン | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
 | CentOS |OpenLogic |CentOS |7.2 |latest |
 | CoreOS |CoreOS |CoreOS |安定版 |latest |
@@ -67,7 +67,7 @@ azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
 * VM 名
 * 場所 (`westus`、`westeurope` など)
 * linux (必要な OS を Azure に通知します)。
-* username
+* userName
 
 次の例では、さらに入力を要求しなくて済むように、すべての値を指定しています。 `~/.ssh/id_rsa.pub` が ssh-rsa 形式の公開キー ファイルであれば、これは現状のまま機能します。
 

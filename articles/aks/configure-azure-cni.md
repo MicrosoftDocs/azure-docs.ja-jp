@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 25ff618045c65371b1bddd8aeb32166b3e168a93
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8e541834b31a762c65eabf07072d9b9f7333923e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497217"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441976"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "66497217"
 
 * AKS クラスターの仮想ネットワークでは、送信インターネット接続を許可する必要があります。
 * 同じサブネット内に複数の AKS クラスターを作成しないでください。
-* AKS クラスターでは、Kubernetes サービスのアドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` は使用できません。
+* AKS クラスターでは、Kubernetes サービスのアドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` は使用できません。
 * AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -100,7 +100,7 @@ AKS クラスターを作成するときに、Azure CNI ネットワーク用に
 * クラスターの仮想ネットワークの IP アドレス範囲に含まれていてはなりません
 * クラスターの仮想ネットワークがピアリングする他の仮想ネットワークと重複していてはなりません
 * オンプレミスのどの IP アドレスとも重複していてはなりません
-* `169.254.0.0/16`、`172.30.0.0/16`、または `172.31.0.0/16` の範囲内にあってはなりません
+* `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、または `192.0.2.0/24` の範囲内にあってはなりません
 
 技術的には、クラスターと同じ仮想ネットワーク内のサービス アドレス範囲を指定できますが、お勧めはしません。 重複する IP アドレス範囲を使うと、予期しない動作になる可能性があります。 詳細については、この記事の [FAQ](#frequently-asked-questions) のセクションを参照してください。 Kubernetes サービスについて詳しくは、Kubernetes ドキュメントの「[Services][services]」(サービス) をご覧ください。
 
@@ -180,13 +180,13 @@ AKS のネットワークの詳細については、次の記事を参照して�
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
 - [動的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成する][aks-ingress-tls]
-- [静的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成][aks-ingress-static-tls]
+- [静的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成する][aks-ingress-static-tls]
 
 ### <a name="aks-engine"></a>AKS Engine
 
 [Azure Kubernetes Service Engine (AKS Engine)][aks-engine] は、Azure に Kubernetes クラスターをデプロイする場合に使用できる Azure Resource Manager テンプレートを生成するオープンソース プロジェクトです。
 
-AKS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet] および [Azure CNI][cni-networking] プラグインの両方をサポートしています。 そのため、AKS Engine では両方のネットワーク シナリオがサポートされています。
+AKS Engine で作成された Kubernetes クラスターは、両方の [kubenet][kubenet]and [Azure CNI][cni-networking] プラグインをサポートしています。 そのため、AKS Engine では両方のネットワーク シナリオがサポートされています。
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png
@@ -211,3 +211,4 @@ AKS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet]
 [aks-ingress-internal]: ingress-internal-ip.md
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[network-comparisons]: concepts-network.md#compare-network-models

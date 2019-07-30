@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235803"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797721"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Microsoft Flow 内で IoT Central コネクタを使用してワークフローを作成する
 
@@ -31,7 +31,8 @@ IoT Central をモバイル通知や Microsoft Teams などの他のサービス
 ## <a name="prerequisites"></a>前提条件
 
 - 従量課金制アプリケーション
-- Flow にサインインするための、Microsoft の個人アカウント、または職場または学校アカウント ([Microsoft Flow のプランの詳細](https://aka.ms/microsoftflowplans))
+- Microsoft Flow を使用するための、Microsoft の個人アカウント、または職場または学校アカウント ([Microsoft Flow のプランの詳細を参照してください](https://aka.ms/microsoftflowplans))
+- Azure IoT Central コネクタを使用するための職場または学校アカウント
 
 ## <a name="trigger-a-workflow"></a>ワークフローのトリガー
 
@@ -45,7 +46,12 @@ IoT Central をモバイル通知や Microsoft Teams などの他のサービス
 
     ![使用可能な Microsoft Flow テンプレート](media/howto-add-microsoft-flow/flowtemplates1.png)
 
-1. 選択したテンプレートのコネクタにサインインするように求められます。 コネクタにサインインすると、ワークフローを構築するデザイナーが表示されます。 ワークフローには、[アプリケーション] と [規則] が既に入力されている IoT Central トリガーが含まれています。
+1. 選択したテンプレートのコネクタにサインインするように求められます。 
+
+    > [!NOTE]
+    > Azure IoT Central コネクタを使用するには、Azure Active Directory アカウント (職場または学校アカウント) を使用してサインインする必要があります。 abc@outlook.com や abc@live.com などの個人アカウントは、Azure IoT Central コネクタではサポートされていません。
+
+    コネクタにサインインすると、ワークフローを構築するためのデザイナーが表示されます。 ワークフローには、[アプリケーション] と [規則] が既に入力されている IoT Central トリガーが含まれています。
 
 1. アクションに渡される情報をカスタマイズしたり、新しいアクションを追加したりすることで、ワークフローをカスタマイズできます。 この例では、アクションは **[通知] - [Send me a mobile notification]\(モバイル通知を受け取る\)** です。 IoT Central 規則からの"*動的なコンテンツ*"を含め、デバイス名やタイムスタンプなどの重要な情報を通知に渡すことができます。
 

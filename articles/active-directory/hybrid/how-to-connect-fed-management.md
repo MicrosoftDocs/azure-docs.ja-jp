@@ -226,7 +226,7 @@ Azure AD Connect では、オブジェクトが Azure AD に同期されると�
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-この規則では、ユーザーの **ms-ds-concistencyguid** が設定されていない場合に **useguid** に設定される、**idflag** という一時フラグを定義します。 この規則は、AD FS では空の要求が許可されないという事実に基づいています。 http://contoso.com/ws/2016/02/identity/claims/objectguid クレームを追加するとき、 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid ルール 1 では、その値がユーザーに設定される場合にだけ、**msdsconsistencyguid** 要求で終了します。 値が設定されていない場合、AD FS によって空の値を持つことになると判断され、すぐに削除されます。 すべてのオブジェクトは **objectGuid**を持つため、規則 1 が実行された後には、常に要求が存在することになります。
+この規則では、ユーザーの **ms-ds-concistencyguid** が設定されていない場合に **useguid** に設定される、**idflag** という一時フラグを定義します。 この規則は、AD FS では空の要求が許可されないという事実に基づいています。 [http://contoso.com/ws/2016/02/identity/claims/objectguid](http://contoso.com/ws/2016/02/identity/claims/objectguid ) クレームを追加するとき、 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid ルール 1 では、その値がユーザーに設定される場合にだけ、**msdsconsistencyguid** 要求で終了します。 値が設定されていない場合、AD FS によって空の値を持つことになると判断され、すぐに削除されます。 すべてのオブジェクトは **objectGuid**を持つため、規則 1 が実行された後には、常に要求が存在することになります。
 
 **規則 3: ms-ds-consistencyguid が存在する場合にそれを不変 ID として発行する**
 

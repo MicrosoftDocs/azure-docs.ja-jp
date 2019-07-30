@@ -3,7 +3,7 @@ title: Azure Batch での並列 R シミュレーション
 description: チュートリアル - doAzureParallel R パッケージを使用して、Azure Batch で金融のモンテ カルロ シミュレーションを実行する詳しい手順
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a3f760f31bcd27c5f3d3289aa799d6886df17e15
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779964"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321898"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する 
 
@@ -226,7 +226,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-このシミュレーションでは、Batch プールのノードにタスクが分散されます。 Azure Portal のプールのヒート マップでアクティビティを確認できます。 **[Batch アカウント]** > *myBatchAccount* の順に移動します。 **[プール]** > *myPoolName* の順にクリックします。 
+このシミュレーションでは、Batch プールのノードにタスクが分散されます。 Azure Portal のプールのヒート マップでアクティビティを確認できます。 **[Batch アカウント]**  > *myBatchAccount* の順に移動します。 **[プール]**  > *myPoolName* の順にクリックします。 
 
 ![並列 R タスクを実行するプールのヒート マップ](media/tutorial-r-doazureparallel/pool.png)
 

@@ -3,20 +3,20 @@ title: Speech SDK でアプリを開発する - Speech Services
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用してアプリを作成する方法について説明します。
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: d8330ff663a7adc2f1cae3ed6bdf1cec2fa972c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fc27002af4ebef0825b23c806cfedbe7adf9642
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808459"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404815"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 
@@ -39,13 +39,16 @@ Cognitive Services Speech SDK には、[Visual Studio 2019 の Microsoft Visual 
 
 必要な Speech SDK ファイルは、お使いのアプリケーションと同じディレクトリに展開できます。 この方法で、お使いのアプリケーションはライブラリに直接アクセスできます。 必ず、お使いのアプリケーションと一致する正しいバージョン (Win32/x64) を選択してください。
 
-| Name | Function
+| EnableAdfsAuthentication | Function
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK。ネイティブおよびマネージド展開に必要
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要
 
 >[!NOTE]
 > リリース 1.3.0 以降、(以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
+
+>[!NOTE]
+> Windows フォーム アプリケーション (.NET Framework) の C# プロジェクトの場合は、ライブラリがプロジェクトのデプロイ設定に含まれていることを確認してください。 これは `Properties -> Publish Section` で確認できます。 `Application Files` ボタンをクリックし、一覧を下にスクロールして、対応するライブラリを見つけます。 値が `Included` に設定されていることを確認します。 プロジェクトが発行またはデプロイされると、Visual Studio にこのファイルが組み込まれます。
 
 ## <a name="linux"></a>Linux
 

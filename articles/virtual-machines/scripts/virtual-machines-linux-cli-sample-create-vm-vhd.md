@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/09/2017
-ms.author: allclark
+ms.author: douge
 ms.custom: mvc
-ms.openlocfilehash: 331bf57c415922a6686ba733b5fbcee24699a152
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 32f6794f6607fee04364d10a3f91128f169802b0
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118260"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875422"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>仮想ハード ディスクを使用した VM の作成
 

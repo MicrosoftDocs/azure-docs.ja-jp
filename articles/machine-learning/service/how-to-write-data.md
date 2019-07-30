@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6206ad1a7356221bf94134e5d293c27d778cc187
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6753be5613b10b64936cddaafbb9859aad837b02
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752876"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358626"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning Data Prep SDK でデータの書き込みと構成を行う
 
@@ -76,7 +76,7 @@ t.head(5)
 次のコードは、区切り記号入りファイルにデータを書き込むために [`write_to_csv()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow) 関数を使用します。
 
 ```python
-# Create a new data flow using `write_to_csv` 
+# Create a new data flow using `write_to_csv`
 write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'))
 
 # Run the data flow to begin the write operation.
@@ -101,7 +101,7 @@ written_files.head(5)
 書き込みの呼び出しの一部としてパラメーターを追加し、null 値を表すために使用する文字列を指定することができます。
 
 ```python
-write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'), 
+write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'),
                          error='BadData',
                          na='NA')
 write_t.run_local()
@@ -125,7 +125,7 @@ written_files.head(5)
 
 ```python
 write_parquet_t = t.write_to_parquet(directory_path=dprep.LocalFileOutput('./test_parquet_out/'),
-error='MiscreantData')
+                                     error='MiscreantData')
 ```
 
 データ フローを実行して書き込み操作を実行します。

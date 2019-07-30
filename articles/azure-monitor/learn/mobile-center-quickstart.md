@@ -5,18 +5,18 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8ce08c662e1615b62160e0c681a2fe8dbcb2be1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683426"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447035"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -68,18 +68,18 @@ Analytics.trackEvent("Video clicked")
 アプリからカスタム イベントが送信され、App Center で受信されるようになったら、Azure Portal で App Center 型の Application Insights リソースを作成する必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[リソースの作成]**  >  **[管理ツール]**  >  **[Application Insights]** の順に選択します。
+2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
-    ![Application Insights リソースの追加](./media/mobile-center-quickstart/add-b.png)
+    > [!NOTE]
+    > Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
 
     構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
     | 設定        |  値           | 説明  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 (例: "myApp-iOS") | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | App Center アプリケーション | 監視しているアプリの種類 |
-   | **リソース グループ**     | 新しいリソース グループ、またはメニューから選択した既存のリソース グループ | 新しい Application Insights リソースの作成先のリソース グループ |
-   | **場所** | メニューから選択した場所 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+     | **リソース グループ**     | 新しいリソース グループ、またはメニューから選択した既存のリソース グループ | 新しい Application Insights リソースの作成先のリソース グループ |
+   | **Location** | メニューから選択した場所 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 3. **Create** をクリックしてください。
 
@@ -89,9 +89,7 @@ Analytics.trackEvent("Video clicked")
 
 新しい Application Insights リソースの **[概要]** ページで、 リソースからインストルメンテーション キーをコピーします。
 
-   ![Application Insights の [Analytics] ボタン](./media/mobile-center-quickstart/overview-01.png)
-
-アプリの App Center インスタンスで:
+アプリの [App Center](https://appcenter.ms/) インスタンスで、次の手順を実行します。
 
 1. **[設定]** ページで **[エクスポート]** をクリックします。
 2. **[新しいエクスポート]** 、 **[Application Insights]** の順に選択し、 **[カスタマイズ]** をクリックします。
@@ -108,13 +106,11 @@ Analytics.trackEvent("Video clicked")
 
 Application Insights は、App Center で提供されている分析ツールよりも高度な、アプリからのカスタム イベント テレメトリのクエリ、セグメント化、フィルター、分析を行うことができます。
 
-1. **カスタム イベント テレメトリのクエリ。** Application Insights の **[概要]** ページから、 **[Analytics]** を選択します。 
+1. **カスタム イベント テレメトリのクエリ。** Application Insights の **[概要]** ページから **[ログ (Analytics)]** を選択します。
 
-   ![Application Insights の [Analytics] ボタン](./media/mobile-center-quickstart/analytics-001.png)
-
-   Application Insights リソースに関連付けられている Application Insights の Analytics ポータルが開きます。 Analytics ポータルでは Log Analytics クエリ言語を使用してデータを直接クエリできるので、アプリとそのユーザーに関する任意の複雑な質問をすることができます。
+   Application Insights リソースに関連付けられている Application Insights のログ (Analytics) ポータルが開きます。 ログ (Analytics) ポータルでは Log Analytics クエリ言語を使用してデータを直接クエリできるので、アプリとそのユーザーに関する任意の複雑な質問をすることができます。
    
-   Analytics ポータルで新しいタブを開き、次のクエリを貼り付けます。 このクエリは、過去 24 時間にアプリから各カスタム イベントを送信した個別ユーザーの数を、これらの数を基準として並べ替えて返します。
+   ログ (Analytics) ポータルで新しいタブを開き、次のクエリを貼り付けます。 このクエリは、過去 24 時間にアプリから各カスタム イベントを送信した個別ユーザーの数を、これらの数を基準として並べ替えて返します。
 
    ```AIQL
    customEvents
@@ -123,7 +119,7 @@ Application Insights は、App Center で提供されている分析ツールよ
    | order by dcount_user_Id desc 
    ```
 
-   ![Analytics ポータル](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![ログ (Analytics) ポータル](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. テキスト エディターでクエリの任意の場所をクリックして、クエリを選択します。
    2. **[実行]** をクリックしてクエリを実行します。 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 689d7dcd57c513479c7bc08a45094670242ef6a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153612"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075028"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
 
@@ -66,7 +66,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 コンストラクターには `pip_packages` という名前の別のパラメーターもあり、必要な pip パッケージに対して使用します
 
-ご自分の `Estimator` オブジェクトを作成すると、[実験](concept-azure-machine-learning-architecture.md#experiment)オブジェクト `experiment` で `submit` 関数を呼び出すことで、リモート コンピューティングで実行するトレーニング ジョブを送信します。 
+ご自分の `Estimator` オブジェクトを作成すると、[実験](concept-azure-machine-learning-architecture.md#experiments)オブジェクト `experiment` で `submit` 関数を呼び出すことで、リモート コンピューティングで実行するトレーニング ジョブを送信します。 
 
 ```Python
 run = experiment.submit(sk_est)

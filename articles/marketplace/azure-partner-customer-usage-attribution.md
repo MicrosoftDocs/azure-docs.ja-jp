@@ -6,13 +6,13 @@ author: yijenj
 ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
-ms.author: yijenj
-ms.openlocfilehash: 45d575488db8d740069fba961203842899024747
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: fa0a88ce3f74c20ab36931a6a78f8265bdb9d8be
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807185"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876234"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 

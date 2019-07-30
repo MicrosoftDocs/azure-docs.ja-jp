@@ -5,18 +5,18 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 56611267872ca79d7d2fe3a08c9b9f49a9b1840b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/27/2019
+ms.openlocfilehash: 686adfb2998eff10ef4b9f378163b164ba970c56
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067421"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461833"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) で SSL 接続を構成する
-Azure Database for PostgreSQL では、クライアント アプリケーションを PostgreSQL サービスに接続する際、Secure Sockets Layer (SSL) の使用が優先されます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
+Azure Database for PostgreSQL では、クライアント アプリケーションを PostgreSQL サービスに接続する際、Secure Sockets Layer (SSL) の使用が優先されます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、中間者 (man in the middle) 攻撃から保護されます。
 
-既定では、PostgreSQL データベース サービスは SSL 接続を要求するように構成されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。 
+既定では、PostgreSQL データベース サービスは SSL 接続を要求するように構成されます。 クライアント アプリケーションで SSL 接続がサポートされていない場合は、SSL の要求を無効にすることもできます。 
 
 ## <a name="enforcing-ssl-connections"></a>SSL 接続の適用
 Azure Portal や CLI を使用してプロビジョニングされたすべての Azure Database for PostgreSQL サーバーで、SSL 接続の適用が既定で有効になります。 
@@ -41,48 +41,23 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 ```
 
 ## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>アプリケーションまたはフレームワークが SSL 接続をサポートしているかどうかの確認
-Drupal、Django など、データベース サービスに PostgreSQL を使用している一般的なアプリケーション フレームワークの中には、インストール時に既定で SSL が有効にならないものが多く存在します。 この場合、インストール後またはアプリケーションに固有の CLI コマンドを使用して、SSL 接続を有効にする必要があります。 PostgreSQL サーバーが SSL 接続を適用している場合、関連付けられているアプリケーションが正しく構成されていないと、そのアプリケーションは、データベース サーバーに接続できない可能性があります。 SSL 接続を有効にする方法については、使用しているアプリケーションのドキュメントを参照してください。
+データベース サービスに PostgreSQL を使用しているアプリケーション フレームワークの中には、インストール時に既定で SSL が有効にならないものもあります。 PostgreSQL サーバーが SSL 接続を適用していても、アプリケーションで SSL が構成されていない場合、アプリケーションはデータベース サーバーに接続できない可能性があります。 SSL 接続を有効にする方法については、使用しているアプリケーションのドキュメントを参照してください。
 
 
 ## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>SSL 接続で証明書検証を必要とするアプリケーション
-安全に接続するために、信頼された証明機関 (CA) 証明書ファイル (.cer) から生成されたローカルの証明書ファイルがアプリケーションに必要な場合があります。 .cer ファイルを取得し、証明書をデコードして、アプリケーションにバインドするには、次の手順を参照してください。
+安全に接続するために、信頼された証明機関 (CA) 証明書ファイル (.cer) から生成されたローカルの証明書ファイルがアプリケーションに必要な場合があります。 Azure Database for PostgreSQL サーバーに接続するための証明書は、 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem にあります。 証明書ファイルをダウンロードし、希望の場所に保存します。 
 
-### <a name="download-the-certificate-file-from-the-certificate-authority-ca"></a>証明機関 (CA) からの証明書ファイルのダウンロード 
-Azure Database for PostgreSQL サーバーとの SSL 経由の通信に必要な証明書は[こちら](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)にあります。 証明書ファイルをローカルにダウンロードしてください。
+### <a name="connect-using-psql"></a>psql を使用した接続
+次の例は、psql コマンド ライン ユーティリティを使用して PostgreSQL サーバーに接続する方法を示しています。 `sslmode=verify-full` 接続文字列設定を使用して、SSL 証明書の検証を適用します。 ローカルの証明書ファイルのパスを `sslrootcert` パラメーターに渡します。
 
-### <a name="install-a-cert-decoder-on-your-machine"></a>ご自分のマシンへの証明書デコーダーのインストール 
-[OpenSSL](https://github.com/openssl/openssl) を使用して、ご自分のアプリケーションがご使用のデータベース サーバーに安全に接続するために必要な証明書ファイルをデコードできます。 OpenSSL のインストール方法については、[OpenSSL のインストール手順](https://github.com/openssl/openssl/blob/master/INSTALL)に関するページを参照してください。 
-
-
-### <a name="decode-your-certificate-file"></a>証明書ファイルのデコード
-ダウンロードしたルート CA ファイルは、暗号化されています。 OpenSSL を使用すると、証明書ファイルをデコードできます。 これを行うには、次の OpenSSL コマンドを実行します。
-
+psql の接続文字列の例を次に示します。
 ```
-openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
+psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoserver.postgres.database.azure.com dbname=postgres user=myusern@mydemoserver"
 ```
 
-### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>SSL 証明書認証での Azure Database for PostgreSQL への接続
-証明書を適切にデコードしたら、SSL 経由でデータベース サーバーに安全に接続できます。 サーバー証明書検証を許可するには、その証明書を、ユーザーのホーム ディレクトリの ~/.postgresql/root.crt ファイルに配置する必要があります (Microsoft Windows の場合、ファイル名は %APPDATA%\postgresql\root.crt です)。 
+> [!TIP]
+> `sslrootcert` に渡された値が、保存済みの証明書のファイル パスと一致することを確認します。
 
-#### <a name="connect-using-psql"></a>psql を使用した接続
-次の例は、psql コマンド ライン ユーティリティを使用して PostgreSQL サーバーに正常に接続する方法を示しています。 作成した `root.crt` ファイルと、`sslmode=verify-ca` または `sslmode=verify-full`オプションを使用してください。
-
-PostgreSQL コマンド ライン インターフェイスを使用して、次のコマンドを実行します。
-```bash
-psql "sslmode=verify-ca sslrootcert=root.crt host=mydemoserver.postgres.database.azure.com dbname=postgres user=mylogin@mydemoserver"
-```
-成功すると、次の出力が表示されます。
-```bash
-Password for user mylogin@mydemoserver:
-psql (9.6.2)
-WARNING: Console code page (437) differs from Windows code page (1252)
-     8-bit characters might not work correctly. See psql reference
-     page "Notes for Windows users" for details.
-SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-SHA384, bits: 256, compression: off)
-Type "help" for help.
-
-postgres=>
-```
 
 ## <a name="next-steps"></a>次の手順
-「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」に従って、さまざまなアプリケーション接続オプションをレビューします。
+[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)に関する記事で、さまざまなアプリケーション接続オプションを確認します。

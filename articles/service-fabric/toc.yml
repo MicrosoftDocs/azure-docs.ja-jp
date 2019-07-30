@@ -274,7 +274,7 @@
           items:
             - name: Azure クラスターの概要
               href: service-fabric-azure-clusters-overview.md
-            - name: ノードの種類と VM Scale Sets
+            - name: ノード タイプと仮想マシン スケール セット
               href: service-fabric-cluster-nodetypes.md
             - name: Azure でのクラスターのアップグレード
               href: service-fabric-cluster-upgrade.md
@@ -547,8 +547,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: 推奨プラクティス
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: 移行済みのアプリをリファクタリングする
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: アプリケーションを最新化する
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: アプリケーションのライフサイクルを管理する
       items:
         - name: アプリケーションをパッケージ化する

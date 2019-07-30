@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512741"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346773"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -183,7 +183,7 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
 
 次の例は、エラー メッセージを返す C# クラスを示しています。
 
-```C#
+```csharp
 public class ResponseContent
 {
   public string version { get; set; }

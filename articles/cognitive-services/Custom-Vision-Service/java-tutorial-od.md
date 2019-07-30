@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 00684df614771437f33655538a808468ee778d29
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9ddb882658551115b05df3820e70a6b6684d563b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487007"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604031"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート:Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "58487007"
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
 
-Custom Vision を使用する Java アプリを作成するには、Custom Vision maven パッケージが必要となります。 これらは、これからダウンロードするサンプル プロジェクトに含まれていますが、次のページから個別にアクセスすることもできます。
+Custom Vision を使用する Java アプリを作成するには、Custom Vision maven パッケージが必要となります。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
 
 Maven Central Repository から Custom Vision SDK をインストールできます。
 - [Training SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
@@ -50,7 +50,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="understand-the-code"></a>コードの理解
 
-Java IDE で `Vision/CustomVision` プロジェクトを読み込み、_CustomVisionSamples.java_ ファイルを開きます。 **runSample** メソッドを探して、**ImageClassification_Sample** メソッド呼び出しをコメントにしてください。このメソッドは画像分類のシナリオを実行するものであり、このガイドの対象外となります。 このクイック スタートの主な機能は、**ObjectDetection_Sample** メソッドに実装されます。このメソッドの定義に移動し、コードを詳しく調べてみましょう。 
+Java IDE で `Vision/CustomVision` プロジェクトを読み込み、_CustomVisionSamples.java_ ファイルを開きます。 **runSample** メソッドを探して、**ImageClassification_Sample** メソッド呼び出しをコメント アウトしてください&mdash;このメソッドで画像分類のシナリオが実行されますが、このガイドの対象外です。 このクイック スタートの主な機能は、**ObjectDetection_Sample** メソッドに実装されます。このメソッドの定義に移動し、コードを詳しく調べてみましょう。 
 
 ### <a name="create-a-new-custom-vision-service-project"></a>新しい Custom Vision Service プロジェクトを作成する
 

@@ -4,7 +4,7 @@ description: Azure での HC シリーズ VM サイズのプレビューサポ�
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: f96a1179c103dd9dfb4d358572f9a9adbe24b977
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809771"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797553"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC シリーズの仮想マシンの概要
 
@@ -31,7 +31,7 @@ VM あたり `(2 vNUMA domains) * (22 cores/vNUMA) = 44` コア
 
 VM は、pCore 0-1 と 24-25 が与えられていないことを認識していません。 そのため、ネイティブに 22 個のコアがあるかのように各 vNUMA が公開されています。
 
-Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内外と通信するためのオンダイ 2D メッシュ ネットワークも導入しています。 最適なパフォーマンスと一貫性のために、プロセス固定を強くお勧めします。 基になるシリコンはそのままゲスト VM に公開されるため、プロセス固定は HC シリーズ VM で機能します。 Intel Xeon SP アーキテクチャの詳細については https://bit.ly/2RCYkiE を参照してください
+Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内外と通信するためのオンダイ 2D メッシュ ネットワークも導入しています。 最適なパフォーマンスと一貫性のために、プロセス固定を強くお勧めします。 基になるシリコンはそのままゲスト VM に公開されるため、プロセス固定は HC シリーズ VM で機能します。 詳細については、[Intel Xeon SP のアーキテクチャ](https://bit.ly/2RCYkiE)に関するページを参照してください。
 
 次の図は、Azure Hypervisor と HC シリーズ VM 用に予約されているコアの分離を示しています。
 

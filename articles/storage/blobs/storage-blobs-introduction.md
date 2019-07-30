@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e8a68ca87307e1265c200f2e05464ff87983c1e6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: e216503cac2db55115bd4c1b5bf0e2f6e50355fc
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258401"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190851"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -29,7 +29,7 @@ Blob Storage には、3 種類のリソースがあります。
 
 次の図に、これらのリソースの関係を示します。
 
-![Blob Storage のアーキテクチャ図](./media/storage-blob-introduction/blob1.png)
+![アカウントの BLOB とコンテナー リソース間の関係](./media/storage-blob-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>ストレージ アカウント
 
@@ -56,7 +56,7 @@ Azure Storage では、3 種類の BLOB がサポートされています。
 
 * **ブロック BLOB** には、約 4.7 TB までのテキストとバイナリ データが格納されます。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
 * **追加 BLOB** は、ブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されています。 追加 BLOB は、仮想マシンのデータのログ記録などのシナリオに最適です。
-* **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB には、Azure 仮想マシン用のディスクとして機能する仮想ハード ドライブ (VHD) ファイルが格納されます。 ページ BLOB について詳しくは、「[Azure ページ BLOB の概要](storage-blob-pageblob-overview.md)」をご覧ください
+* **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB は、仮想ハード ドライブ (VHD) ファイルを格納し、Azure 仮想マシン用のディスクとして機能します。 ページ BLOB について詳しくは、「[Azure ページ BLOB の概要](storage-blob-pageblob-overview.md)」をご覧ください
 
 異なる種類の BLOB の詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)」(ブロック BLOB、追加 BLOB、ページ BLOB について) をご覧ください。
 

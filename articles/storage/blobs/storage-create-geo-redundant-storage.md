@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: cbf6409efa2fbb56500c6919edc6c741c4a2c45a
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 0ccd57e1614f23d775df2fe8e963d2cc7f9a4358
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306756"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360735"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [Maven](https://maven.apache.org/download.cgi) をインストールして、コマンド ラインから使用するように構成します
 * [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) をインストールして構成します
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
 
 * [Node.js](https://nodejs.org) をインストールします。
 
@@ -83,11 +83,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | **アカウントの種類** | StorageV2 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
    | **パフォーマンス** | Standard | このサンプル シナリオでは、標準で十分です。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
-   |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
    |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページを参照してください。 |
    |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
-   |**場所** | 米国東部 | 場所を選択します。 |
+   |**Location** | East US | 場所を選択します。 |
 
 ![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -117,7 +115,7 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs)して、ファイルを解凍します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Node.js アプリケーションが含まれています。
 
@@ -185,7 +183,7 @@ setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
 
 このサンプルを実行するには、実際のストレージ アカウントの資格情報を `.env.example` ファイルに追加し、その名前を `.env` に変更する必要があります。
 
@@ -268,7 +266,7 @@ Cleaning up the sample and exiting!
 
 サンプルを制御するため、そのコードを実行するコマンドを入力します。 入力では大文字と小文字が区別されます。
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
 
 サンプルを実行するには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`node index.js`」と入力します。
 
@@ -360,7 +358,8 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 def retry_callback(retry_context):
     global retry_count
     retry_count = retry_context.count
-    sys.stdout.write("\nRetrying event because of failure reading the primary. RetryCount= {0}".format(retry_count))
+    sys.stdout.write(
+        "\nRetrying event because of failure reading the primary. RetryCount= {0}".format(retry_count))
     sys.stdout.flush()
 
     # Check if we have more than n-retries in which case switch to secondary
@@ -404,7 +403,7 @@ myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONE
 final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
 
 Node.js V10 SDK では、コールバック ハンドラーは不要です。 代わりにこのサンプルでは、再試行オプションとセカンダリ エンドポイントを含むパイプラインを作成しています。 これによりアプリケーションは、プライマリ パイプラインで必要なデータに到達できなかった場合でも、自動的にセカンダリ パイプラインに切り替えることができます。
 

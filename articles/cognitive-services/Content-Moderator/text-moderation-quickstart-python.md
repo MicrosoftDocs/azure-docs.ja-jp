@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 20920a04c5b85c9eede7d7b249dd6e0548308240
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883408"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606988"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>クイック スタート: Python で好ましくない要素を検出するためにテキストの内容を分析する
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Content Moderator Python SDK をインストールするには、コマンド プロンプトを開いて次のコマンドを実行します。
 
-```
+```bash
 pip install azure-cognitiveservices-vision-contentmoderator
 ```
 
@@ -61,7 +61,7 @@ _ContentModeratorQS.py_ という名前の新しい Python スクリプトを作
 
 ## <a name="query-the-moderator-service"></a>Moderator サービスの照会
 
-お使いのサブスクリプション キーとエンドポイント URL を使用して、**ContentModeratorClient** インスタンスを作成します。 その後、インスタンスのメンバーである **TextModerationOperations** インスタンスを使用して、モデレート API を呼び出します。 呼び出し方法の詳細については、**[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** リファレンスのドキュメントを参照してください。
+お使いのサブスクリプション キーとエンドポイント URL を使用して、**ContentModeratorClient** インスタンスを作成します。 その後、インスタンスのメンバーである **TextModerationOperations** インスタンスを使用して、モデレート API を呼び出します。 呼び出し方法の詳細については、 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** リファレンスのドキュメントを参照してください。
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
 

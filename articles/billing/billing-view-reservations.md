@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 21bf96866c14615009a17279ff2fdd04bf4116ad
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60369167"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490263"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal に Azure の予約を表示する
 
@@ -32,7 +32,7 @@ Azure に対する予約を表示する方法は、ご利用のサブスクリ�
 所有者または閲覧者として予約を表示するには
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[予約]** で検索します。
+2. **予約**を検索します。
     ![Azure portal の検索を表示しているスクリーンショット](./media/billing-view-reservation/portal-reservation-search.png)  
 3. 一覧には、ご自分が所有者または閲覧者ロールになっている予約がすべて表示されます。 各予約には、最新の既知の使用率のパーセンテージが示されます。  
     ![予約の一覧を表示した例](./media/billing-view-reservation/view-reservations.png)
@@ -49,7 +49,7 @@ Azure に対する予約を表示する方法は、ご利用のサブスクリ�
 Azure portal で予約トランザクションを表示するには
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. **[コストの管理と請求]** で検索します。
+1. "**コスト管理 + 請求**" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-reservation/portal-cm-billing-search.png)
 

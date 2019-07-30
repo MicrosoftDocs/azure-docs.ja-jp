@@ -4,7 +4,7 @@ description: CLI を使用して Azure 仮想マシンで使用されるオペ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: b17647a09c88491e2486046b1ca99ee277f0cc28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970f3409cc46fa6cf96fff3e6944ebeaeadcdcce
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473877"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667262"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>CLI を使用して Azure VM で使用される OS ディスクを変更する
 

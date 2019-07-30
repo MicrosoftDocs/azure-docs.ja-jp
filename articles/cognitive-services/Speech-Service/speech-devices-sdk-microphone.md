@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 121e94228ca85684b20f2ee43c0f7fa3af82fc73
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65237007"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606334"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Speech Devices SDK のマイク配列の推奨事項
 

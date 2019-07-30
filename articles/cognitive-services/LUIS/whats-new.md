@@ -9,20 +9,24 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 515b40c9976ba901787182c249228f98f1938078
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 2efc48df906117a8d01ea8c309f001d2f623444f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431124"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485088"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。  
 
 ## <a name="release-notes"></a>リリース ノート 
+
+### <a name="june-24-2019"></a>2019 年 6 月 24 日
+
+* 次へ、前へ、最後などの順序付けをサポートする [OrdinalV2 事前構築済みエンティティ](luis-reference-prebuilt-ordinal-v2.md)。 英語圏のみ。
 
 ### <a name="may-6-2019---build-conference"></a>2019 年 5 月 6 日- //Build Conference
 

@@ -1,6 +1,6 @@
 ---
-title: .NET を使用して Azure Media Services v3 でライブ ストリーミングを行う | Microsoft Docs
-description: このチュートリアルでは、.NET Core を使用して Media Services v3 でライブ ストリーミングを行う方法について順を追って説明します。
+title: Azure Media Services v3 によるライブ ストリーミング | Microsoft Docs
+description: このチュートリアルでは、Media Services v3 を使用してライブ ストリーム配信を行う方法について順を追って説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,28 +12,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/21/2019
+ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: e4f32e14e8c1035055bd8a37bb453764984fbe4d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5028fd4179f19634b41bb46a5f6df40f36cc8e29
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149132"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275574"
 ---
-# <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>チュートリアル:.NET を使用した Media Services v3 によるライブ ストリーミング
-
-Azure Media Services では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)がライブ ストリーミング コンテンツの処理を受け持ちます。 ライブ イベントは入力エンドポイントであり、その取り込み URL をライブ エンコーダーに対して指定します。 ライブ イベントは、ライブ エンコーダーからライブ入力ストリームを受け取り、1 つまたは複数の[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、ライブ イベントはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します。 このチュートリアルでは、.NET Core を使用してライブ イベントの**パススルー** タイプを作成、管理する方法について説明します。 
+# <a name="tutorial-stream-live-with-media-services"></a>チュートリアル:Media Services によるライブ ストリーム配信
 
 > [!NOTE]
-> 先に進む前に、「[Live streaming with Media Services v3](live-streaming-overview.md)」(Media Services v3 によるライブ ストリーミング) を確認してください。 
+> このチュートリアルでは [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) の例を使用していますが、全体的な手順は [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)、またはその他のサポートされている [SDK](media-services-apis-overview.md#sdks) で同じです。
+
+Azure Media Services では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)がライブ ストリーミング コンテンツの処理を受け持ちます。 ライブ イベントは入力エンドポイントであり、その取り込み URL をライブ エンコーダーに対して指定します。 ライブ イベントは、ライブ エンコーダーからライブ入力ストリームを受け取り、1 つまたは複数の[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、ライブ イベントはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します。 このチュートリアルでは、.NET Core を使用してライブ イベントの**パススルー** タイプを作成、管理する方法について説明します。 
 
 このチュートリアルでは、次の操作方法について説明します。    
 
 > [!div class="checklist"]
 > * このトピックで説明されているサンプル アプリをダウンロードする
 > * ライブ ストリーミングを実行するコードを確認する
-> * [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) (https://ampdemo.azureedge.net) でイベントを視聴する
+> * [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) (https://ampdemo.azureedge.net ) でイベントを視聴する
 > * リソースのクリーンアップ
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -47,6 +47,9 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 - 「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
 - イベントのブロードキャストに使用するカメラまたはデバイス (ラップトップなど)。
 - カメラからの信号を Media Services ライブ ストリーミング サービスに送信されるストリームに変換するオンプレミスのライブ エンコーダー。 ストリームは **RTMP** または **Smooth Streaming** 形式である必要があります。
+
+> [!TIP]
+> 先に進む前に、「[Live streaming with Media Services v3](live-streaming-overview.md)」(Media Services v3 によるライブ ストリーミング) を確認してください。 
 
 ## <a name="download-and-configure-the-sample"></a>サンプルをダウンロードして構成する
 
@@ -88,7 +91,8 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 * Media Services の場所 
 * ライブ イベントのストリーミング プロトコル (現時点では、RTMP プロトコルと Smooth Streaming プロトコルがサポートされます)<br/>ライブ イベントや、それに関連付けられたライブ出力の実行中は、プロトコル オプションを変更できません。 別のプロトコルが必要な場合は、ストリーミング プロトコルごとに別のライブ イベントを作成する必要があります。  
 * 取り込みやプレビューの IP 制限。 このライブ イベントへのビデオの取り込みが許可される IP アドレスを定義できます。 許可される IP アドレスは、1 つの IP アドレス (例: '10.0.0.1')、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: '10.0.0.1/22')、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: '10.0.0.1(255.255.252.0)') のいずれかの形で指定できます。<br/>IP アドレスが指定されておらず、規則の定義もない場合は、どの IP アドレスも許可されません。 すべての IP アドレスを許可するには、規則を作成し、0.0.0.0/0 に設定します。<br/>IP アドレスの形式は、4 つの数字を含む IpV4 アドレスまたは CIDR アドレス範囲のどちらかである必要があります。
-* イベントの作成中に、そのイベントを自動開始するように設定できます。 <br/>自動開始が true に設定されている場合、ライブ イベントは作成された後に開始されます。 つまり、ライブ イベントの実行が開始されるとすぐに課金が開始されます。 それ以上の課金を停止するには、ライブ イベント リソースの Stop を明示的に呼び出す必要があります。 詳細については、「[LiveEvent の状態と課金](live-event-states-billing.md)」を参照してください。
+* イベントの作成中に、そのイベントを自動開始するように設定できます。 <br/>自動開始が true に設定されている場合、ライブ イベントは作成された後に開始されます。 つまり、ライブ イベントの実行が開始されるとすぐに課金が開始されます。 それ以上の課金を停止するには、ライブ イベント リソースの Stop を明示的に呼び出す必要があります。 詳細については、[ライブ イベントの状態と課金](live-event-states-billing.md)に関するページを参照してください。
+* 取り込み URL を予測的にするには、"バニティ" モードを設定します。 詳細については、「[ライブ イベントの取り込み URL](live-events-outputs-concept.md#live-event-ingest-urls)」を参照してください。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 
@@ -166,9 +170,9 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ## <a name="watch-the-event"></a>イベントの視聴
 
-イベントを視聴するには、「ストリーミング ロケーターを作成する」に記述されたコードを実行したときに取得したストリーミング URL をコピーし、適当なプレーヤーを使用します。 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) (https://ampdemo.azureedge.net) を使用して、ストリームをテストできます。 
+イベントを視聴するには、「ストリーミング ロケーターを作成する」に記述されたコードを実行したときに取得したストリーミング URL をコピーし、適当なプレーヤーを使用します。 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) (https://ampdemo.azureedge.net ) を使用して、ストリームをテストできます。 
 
-ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。 イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
+ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。 イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

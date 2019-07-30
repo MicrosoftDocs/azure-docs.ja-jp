@@ -3,23 +3,19 @@ title: Azure Cloud Services と ASP.NET を使ってみる | Microsoft Docs
 description: ASP.NET MVC と Azure を使用して多層アプリケーションを作成する方法について説明します。 ここで取り上げるアプリケーションは、クラウド サービス内で、Web ロールと worker ロールと連係して動作します。 Entity Framework、SQL Database、Azure Storage のキューと BLOB を使用しています。
 services: cloud-services, storage
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: d7aa440d-af4a-4f80-b804-cc46178df4f9
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 3082ca34f2bcb71dd7aa02b4539899997374cfc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 802ece106099e8a475b83c820130c3c238d330d2
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595165"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359215"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 

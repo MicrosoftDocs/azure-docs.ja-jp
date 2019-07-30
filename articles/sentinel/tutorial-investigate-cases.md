@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: a493cd67-dc70-4163-81b8-04a9bc0232ac
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: d1da180d3b30b57ca2b69985bf3d0261b8d70c39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82fac23fc2d718aa908f6291241abaa2aedb8815
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205517"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621185"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューでケースを調査する
 

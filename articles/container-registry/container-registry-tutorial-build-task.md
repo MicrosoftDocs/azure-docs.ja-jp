@@ -3,17 +3,18 @@ title: チュートリアル - コンテナー イメージ ビルドを自動�
 description: このチュートリアルでは、Git リポジトリにソース コードをコミットしたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするように Azure Container Registry タスクを構成する方法を説明します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ea3f4f295da747b3a53956c0888797a5f8607d6e
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544978"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310487"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>チュートリアル: ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する
 
@@ -33,7 +34,7 @@ ms.locfileid: "65544978"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-ローカルで Azure CLI を使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] でログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+Azure CLI をローカルで使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] を使用してログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -41,7 +42,7 @@ ms.locfileid: "65544978"
 
 ACR タスクがコミットの状態を読み取ってリポジトリに webhook を作成できるようにするために必要な手順が済んだので、リポジトリへのコミットでコンテナー イメージのビルドをトリガーするタスクを作成できます。
 
-最初に、次のシェル環境変数に、環境に適した値を設定します。 この手順は必須ではありませんが、このチュートリアルの複数行の Azure CLI コマンドの実行が少し簡単になります。 これらの環境変数を設定しない場合は、コマンドの例に現れるそれぞれの値を手動で置き換える必要があります。
+最初に、次のシェル環境変数に、環境に適した値を設定します。 この手順は必須ではありませんが、このチュートリアルの複数行の Azure CLI コマンドの実行が少し簡単になります。 これらの環境変数を設定しない場合は、それぞれの値を、サンプル コマンド内の現れたところで手動で置き換える必要があります。
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -128,7 +129,7 @@ az acr task create \
 
 ## <a name="test-the-build-task"></a>ビルド タスクをテストする
 
-ビルドを定義するタスクが完成しました。 ビルド パイプラインをテストするには、[az acr task run][az-acr-task-run] コマンドを実行してビルドを手動でトリガーします。
+ビルドを定義するタスクが完成しました。 ビルド パイプラインをテストするには、[az acr task run][az-acr-task-run] コマンドを実行することで、ビルドを手動でトリガーします。
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -208,7 +209,7 @@ Run ID: da2 was successful after 27s
 
 手動実行によるタスクのテストが済んだので、次に、ソース コードを変更して自動的にトリガーします。
 
-最初に、[リポジトリ][sample-repo]のローカルな複製が含まれるディレクトリにいることを確認します。
+最初に、[リポジトリ][sample-repo]のローカルなクローンが含まれるディレクトリにいることを確実にします。
 
 ```azurecli-interactive
 cd acr-build-helloworld-node

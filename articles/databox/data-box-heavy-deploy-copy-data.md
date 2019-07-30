@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8ee96f2e06071d60eb97596687387fd80ba14cc3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 1c45e06159e4c2850efa2d3ab3290647961fb7e1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496269"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592428"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb-preview"></a>チュートリアル:SMB 経由で Azure Data Box Heavy にデータをコピーする (プレビュー)
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>チュートリアル:SMB 経由で Azure Data Box Heavy にデータをコピーする
 
 このチュートリアルでは、ローカル Web UI を使用してホスト コンピューターに接続し、そこからデータをコピーする方法について説明します。
 

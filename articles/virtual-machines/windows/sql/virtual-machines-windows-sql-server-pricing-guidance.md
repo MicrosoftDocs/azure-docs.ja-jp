@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ce07c6c19c19f134cc322309bb338b94ef11ea85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d53c1de9678db497a20788d0cab7ee4f0e6f0c9c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393854"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607065"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
 
@@ -110,7 +110,7 @@ ms.locfileid: "66393854"
 
 - **有効期間と規模がわかっているワークロード**。 たとえば、1 年にわたって必要で、要求が予測されているアプリ。
 
-BYOL を SQL Server VM で利用するには、SQL Server Standard または Enterprise と[ソフトウェア アシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1) のライセンス (ボリューム ライセンス プログラムの必須オプション、他の製品では必要に応じて購入可能) が必要です。 ボリューム ライセンス プログラムで提供される料金レベルは、契約のタイプ、SQL Server の数やコミットメントによってさまざまです。 ただし、経験則として、継続的な運用環境のワークロードに自分のライセンスを持ち込むメリットは次のとおりです。
+BYOL を SQL Server VM で利用するには、SQL Server Standard または Enterprise と[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1) のライセンス (ボリューム ライセンス プログラムの必須オプション、他の製品では必要に応じて購入可能) が必要です。 ボリューム ライセンス プログラムで提供される料金レベルは、契約のタイプ、SQL Server の数やコミットメントによってさまざまです。 ただし、経験則として、継続的な運用環境のワークロードに自分のライセンスを持ち込むメリットは次のとおりです。
 
 | BYOL のメリット | 説明 |
 |-----|-----|

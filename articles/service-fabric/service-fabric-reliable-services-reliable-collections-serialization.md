@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
-ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2445b37e8152d8f55dad6eff057d273851dc2209
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723599"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340690"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -55,7 +55,7 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 
 カスタムのシリアライザーは通常、パフォーマンスを向上させたり、ネットワーク上とディスクのデータを暗号化したりするために使用します。 その主な理由は、型に関する情報をシリアル化する必要がないため、汎用シリアライザーに比べて、一般的にカスタム シリアライザーの方が効率性に優れているためです。 
 
-[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
+[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +73,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>カスタム シリアライザーの実装方法
 
-カスタム シリアライザーは、[IStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) インターフェイスを実装する必要があります。
+カスタム シリアライザーは、[IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) インターフェイスを実装する必要があります。
 
 > [!NOTE]
-> IStateSerializer<T> には、ベース値と呼ばれる追加の T を受け取る書き込みと読み取りのオーバーロードが含まれています。 この API は差分のシリアル化に使用します。 現在、差分のシリアル化機能は公開されていません。 そのため、差分のシリアル化が公開されて有効になるまで、これら 2 つのオーバーロードは呼び出されません。
+> IStateSerializer\<T> には、ベース値と呼ばれる追加の T を受け取る書き込みと読み取りのオーバーロードが含まれています。 この API は差分のシリアル化に使用します。 現在、差分のシリアル化機能は公開されていません。 そのため、差分のシリアル化が公開されて有効になるまで、これら 2 つのオーバーロードは呼び出されません。
 
 4 つのプロパティを含み、OrderKey と呼ばれるカスタムの型の例を次に示します。
 

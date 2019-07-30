@@ -14,15 +14,15 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 4093febd19d71512e3c80704e88f9d5cf669d7d9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122065"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60567423"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md)
 > * [Pig アクティビティ](data-factory-pig-activity.md)
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
@@ -184,7 +184,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
     }
     ```
 
-    入力 csv ファイルには列ヘッダー行がある必要があります。 **コピー アクティビティ**を使用している csv を BLOB ストレージに作成または移動する場合、シンクの **blobWriterAddHeader** プロパティを **true** に設定する必要があります。 例: 
+    入力 csv ファイルには列ヘッダー行がある必要があります。 **コピー アクティビティ**を使用している csv を BLOB ストレージに作成または移動する場合、シンクの **blobWriterAddHeader** プロパティを **true** に設定する必要があります。 例:
 
     ```JSON
     sink:

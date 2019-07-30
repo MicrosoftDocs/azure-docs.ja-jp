@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 06/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 25b3209bed98ea217db9e414caa6f08cee6d8c89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0a71e8b3ffff822521a23aafd6764bcce9bd4d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761878"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303929"
 ---
 # <a name="encoding-with-media-services"></a>Media Services でのエンコード
 
@@ -47,11 +47,46 @@ Media Services でエンコードする場合、プリセットを使用して�
 > [!NOTE]
 > MPI ファイルを変更または削除したり、サービスにこのようなファイルが存在するかどうかに依存しないようにしてください。
 
+### <a name="creating-job-input-from-an-https-url"></a>HTTPS URL からのジョブ入力の作成
+
+自分のビデオを処理するジョブを送信するときに、入力ビデオを検索する場所を Media Services に指示する必要があります。 選択肢の 1 つは、HTTPS URL をジョブ入力として指定することです。 現在、Media Services v3 では HTTPS URL を介したチャンク転送エンコードはサポートされていません。 
+
+#### <a name="examples"></a>例
+
+* [.NET を使用して HTTPS URL からエンコードする](stream-files-dotnet-quickstart.md)
+* [REST を使用して HTTPS URL からエンコードする](stream-files-tutorial-with-rest.md)
+* [CLI を使用して HTTPS URL からエンコードする](stream-files-cli-quickstart.md)
+* [Node.js を使用して HTTPS URL からエンコードする](stream-files-nodejs-quickstart.md)
+
+### <a name="creating-job-input-from-a-local-file"></a>ローカル ファイルからのジョブ入力の作成
+
+入力ビデオは Media Service 資産として格納できます。この場合は、(ローカルまたは Azure Blob ストレージに格納されている) ファイルに基づいて入力資産を作成します。 
+
+#### <a name="examples"></a>例
+
+[組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)
+
+### <a name="creating-job-input-with-subclipping"></a>サブクリップを使用したジョブ入力の作成
+
+ビデオをエンコードする際に、ソース ファイルをトリミングまたはクリッピングして、入力ビデオの目的の部分のみが含まれる出力を生成するように指定することもできます。 この機能は、[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築されたすべての[変換](https://docs.microsoft.com/rest/api/media/transforms)で動作します。 
+
+オンデマンドまたはライブ アーカイブ (記録されたイベント) のビデオの単一のクリップを使用して[ジョブ](https://docs.microsoft.com/rest/api/media/jobs/create)を作成するように指定できます。 資産または HTTPS URL をジョブ入力にすることができます。
+
+> [!TIP]
+> ビデオの再エンコードなしでビデオのサブクリップをストリーミングする場合は、[Dynamic Packager によるマニフェストの事前フィルター処理](filters-dynamic-manifest-overview.md)の使用を検討します。
+
+#### <a name="examples"></a>例
+
+次の例を参照してください。
+
+* [.NET を使用してビデオをサブクリップする](subclip-video-dotnet-howto.md)
+* [REST を使用してビデオをサブクリップする](subclip-video-rest-howto.md)
+
 ## <a name="built-in-presets"></a>組み込みのプリセット
 
 現在、Media Services は次の組み込みのエンコード プリセットをサポートしています。  
 
-### <a name="builtinstandardencoderpreset-preset"></a>BuiltInStandardEncoderPreset プリセット
+### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) は、Standard Encoder で入力ビデオをエンコードする組み込みのプリセットの設定に使用されます。 
 
@@ -71,7 +106,7 @@ Media Services でエンコードする場合、プリセットを使用して�
 
 プリセットがどのように使われるかについては、[ファイルのアップロード、エンコード、ストリーミング](stream-files-tutorial-with-api.md)に関する記事をご覧ください。
 
-### <a name="standardencoderpreset-preset"></a>StandardEncoderPreset プリセット
+### <a name="standardencoderpreset"></a>BuiltInStandardEncoderPreset
 
 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) には、Standard Encoder を使用して入力ビデオをエンコードするときに使用する設定を記述します。 変換プリセットをカスタマイズする場合は、このプリセットを使用します。 
 
@@ -82,9 +117,11 @@ Media Services でエンコードする場合、プリセットを使用して�
 - AVC コンテンツの高さと幅のすべての値は、4 の倍数である必要があります。
 - Azure Media Services v3 では、エンコード ビットレートはすべてビット/秒単位で指定されます。 これは v2 API のプリセットとは異なります。v2 では、キロビット/秒が単位として使用されていました。 たとえば、v2 でビットレートが 128 (キロビット/秒) に指定されていた場合、v3 では 128000 (ビット/秒) に設定されます。
 
-#### <a name="examples"></a>例
+### <a name="customizing-presets"></a>プリセットのカスタマイズ
 
 Media Services では、特定のエンコーディング ニーズと要件を満たすようにプリセットのすべての値をカスタマイズできます。 エンコーダー プリセットをカスタマイズする方法の例については、以下をご覧ください。
+
+#### <a name="examples"></a>例
 
 - [.NET でプリセットをカスタマイズする](customize-encoder-presets-how-to.md)
 - [CLI でプリセットをカスタマイズする](custom-preset-cli-howto.md)
@@ -104,7 +141,7 @@ Media Services v3 では、プリセットは API 自体で厳密に型指定さ
 
 ## <a name="next-steps"></a>次の手順
 
+* [Media Services を使用してアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
 * [組み込みのプリセットを使用して HTTPS の URL をエンコードする](job-input-from-http-how-to.md)
 * [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)
-* [ご自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](customize-encoder-presets-how-to.md)
-* [Media Services を使用してアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
+* [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](customize-encoder-presets-how-to.md)

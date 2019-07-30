@@ -16,8 +16,6 @@
       href: tutorial-sspr-pilot.md
     - name: SSPR オンプレミス統合を有効にする
       href: tutorial-enable-writeback.md
-    - name: Windows 10 のパスワード リセットを有効にする
-      href: tutorial-sspr-windows.md
     - name: Azure Identity Protection を統合する
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -25,6 +23,8 @@
   items:
     - name: 認証方法
       href: concept-authentication-methods.md
+    - name: パスワードなしの認証
+      href: concept-authentication-passwordless.md
     - name: 統合された登録
       href: concept-registration-mfa-sspr-combined.md
     - name: パスワード リセット
@@ -71,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: パスワード ライトバックの有効化
           href: howto-sspr-writeback.md
-        - name: Windows 7、8、8.1 用の SSPR
-          href: howto-sspr-windows-7-8.md
+        - name: Windows クライアント用 SSPR
+          href: howto-sspr-windows.md
     - name: クラウドベースの MFA
       items:
         - name: クラウドベースの MFA のデプロイ
@@ -131,8 +131,12 @@
       href: howto-password-smart-lockout.md
     - name: Windows Hello for Business
       href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: パスワードなしの電話によるサインイン
-      href: howto-authentication-phone-sign-in.md
+    - name: パスワードなし
+      items:
+        - name: パスワードなしの有効化
+          href: howto-authentication-passwordless-enable.md
+        - name: パスワードなしの電話によるサインイン
+          href: howto-authentication-phone-sign-in.md
     - name: 証明書ベースの認証
       items:
         - name: 証明書認証の概要
@@ -144,6 +148,8 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: レポート
       items:
+        - name: 使用状況と分析情報
+          href: howto-authentication-methods-usage-insights.md
         - name: SSPR レポート
           href: howto-sspr-reporting.md
         - name: MFA レポート

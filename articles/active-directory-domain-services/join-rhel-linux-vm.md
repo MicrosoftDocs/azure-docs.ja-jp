@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:RHEL VM をマネージド ドメ�
 description: Red Hat Enterprise Linux 仮想マシンのAzure AD ドメイン サービスへの参加
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 5231968f0818d26bb313bd62f45cb5ad2a86b0bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 52df4308020b03565c851b6969c0e2e31464d7d7
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245310"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234049"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 仮想マシンのマネージド ドメインへの参加
 この記事では、Red Hat Enterprise Linux (RHEL) 7 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -57,24 +57,25 @@ RHEL 7.2 仮想マシンの Azure でのプロビジョニングが完了しま�
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Linux 仮想マシン上の hosts ファイルを構成する
 SSH ターミナルで /etc/hosts ファイルを編集し、ご自分のマシンの IP アドレスとホスト名を更新します。
 
-```
+```console
 sudo vi /etc/hosts
 ```
 
 hosts ファイルに、次の値を入力します。
 
-```
+```console
 127.0.0.1 contoso-rhel.contoso100.com contoso-rhel
 ```
+
 ここで、"contoso100.com" は、マネージド ドメインの DNS ドメイン名です。 "contoso rhel" は、マネージド ドメインに参加させる RHEL 仮想マシンのホスト名です。
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Linux 仮想マシンに必要なパッケージのインストール
 次は、仮想マシンでのドメイン参加に必要なパッケージをインストールします。 SSH ターミナルで、次のコマンドを入力して、必要なパッケージをインストールします。
 
-    ```
-    sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
-    ```
+```console
+sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
+```
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Linux 仮想マシンのマネージド ドメインへの参加
@@ -82,7 +83,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 1. AAD ドメイン サービスのマネージド ドメインを探します。 SSH ターミナルで、次のコマンドを入力します。
 
-    ```
+    ```console
     sudo realm discover CONTOSO100.COM
     ```
 
@@ -97,9 +98,8 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     > [!TIP]
     > * ”AAD DC 管理者” グループに所属するユーザーを指定します。
     > * kinit のエラーを防ぐため、ドメイン名は必ず大文字で指定します。
-    >
 
-    ```
+    ```console
     kinit bob@CONTOSO100.COM
     ```
 
@@ -107,9 +107,8 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
     > [!TIP]
     > 前の手順で指定したユーザー アカウントを使用します ("kinit")。
-    >
 
-    ```
+    ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
     ```
 
@@ -120,17 +119,20 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 マシンがマネージド ドメインに正常に参加したかどうかを確認してみましょう。 異なる SSH 接続を使用して、ドメイン参加 RHEL VM に接続してください。 ドメイン ユーザー アカウントを使用して、ユーザー アカウントが正しく解決されているかどうかを確認します。
 
 1. SSH ターミナルで次のコマンドを入力し、ドメインに参加した RHEL 仮想マシンに、SSH を使用して接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@CONTOSO100.COM')。
-    ```
+    
+    ```console
     ssh -l bob@CONTOSO100.COM contoso-rhel.contoso100.com
     ```
 
 2. SSH ターミナルで次のコマンドを入力し、ホーム ディレクトリが正しく初期化されているかどうかを確認します。
-    ```
+    
+    ```console
     pwd
     ```
 
 3. SSH ターミナルで次のコマンドを入力し、グループ メンバーシップが正しく解決されているかどうかを確認します。
-    ```
+    
+    ```console
     id
     ```
 

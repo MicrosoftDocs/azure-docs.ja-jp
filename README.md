@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d6fa30fc781ffe2a9f387f7c9eb4c27eaacc77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344091"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338238"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure のドキュメント
 
@@ -34,10 +34,9 @@ ms.locfileid: "60344091"
 
 ## <a name="license"></a>ライセンス
 
-ライセンス情報については、[LICENSE](.github/LICENSE)、[LICENSE-CODE](.github/LICENSE-CODE)、[ThirdPartyNotices](.github/ThirdPartyNotices.md) を参照してください。
+ライセンス情報については、[LICENSE](LICENSE)、[LICENSE-CODE](LICENSE-CODE)、[ThirdPartyNotices](ThirdPartyNotices.md) を参照してください。
 
 ## <a name="code-of-conduct"></a>倫理規定
 
 このプロジェクトでは、[Microsoft オープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)を採用しています。
 詳細については、[倫理規定についてよくある質問](https://opensource.microsoft.com/codeofconduct/faq/)を参照するか、[opencode@microsoft.com](mailto:opencode@microsoft.com) 宛てに質問またはコメントをお送りください。
-

@@ -11,18 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 69399513291a47f7109003e825052314f447125a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 76e6e1595cb8bf49dbbc82c3cae5de80ea718aeb
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002324"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786445"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API を使用したフィルターの作成
 
-コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、クライアントは既定値のアセット マニフェスト ファイルに記載されているものよりも高い柔軟性を必要とする場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 詳細については、「[フィルター](filters-concept.md)」と「[動的マニフェスト](filters-dynamic-manifest-overview.md)」を参照してください。
+コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、クライアントは既定値のアセット マニフェスト ファイルに記載されているものよりも高い柔軟性を必要とする場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 
+
+この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
 このトピックでは、ビデオ オン デマンド アセットにフィルターを定義し、REST API を使用して[アカウント フィルター](https://docs.microsoft.com/rest/api/media/accountfilters)と[アセット フィルター](https://docs.microsoft.com/rest/api/media/assetfilters)を作成する方法を示しています。 
 
@@ -95,7 +97,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 フィルターが作成されました。
 
-詳細については、「 [作成または更新](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)」を参照してください。 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter)も参照してください。
+詳細については、「 [作成または更新](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)」を参照してください。 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)も参照してください。
 
 ## <a name="create-asset-filters"></a>資産フィルターの作成  
 
@@ -113,7 +115,25 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 アセット フィルターが作成されました。
 
-アセット フィルターを作成または更新する方法の詳細については、[作成または更新](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)を参照してください。 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter)も参照してください。 
+アセット フィルターを作成または更新する方法の詳細については、[作成または更新](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)を参照してください。 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)も参照してください。 
+
+## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
+
+資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー (ストリーミング エンドポイント)](dynamic-packaging-overview.md) では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+
+REST を使用してフィルターを作成してストリーミング ロケーターに関連付けるには、[Streaming Locators - Create](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API を使用し、[要求本文](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)で `properties.filters` を指定します。
+                                
+## <a name="stream-using-filters"></a>フィルターを使用するストリーム
+
+フィルターを定義すると、クライアントからストリーミング URL で使用できるようになります。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。
+
+次の表に、フィルターを含んだ URL の例をいくつか示します。
+
+|Protocol|例|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|スムーズ ストリーミング|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,15 +7,15 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
-manager: yuvalm
+manager: gwallace
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01e1401c5054eb56d4e2313b5e03ce5a36d1b301
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60687312"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704061"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 
@@ -34,7 +34,7 @@ ms.locfileid: "60687312"
 * [お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../container-registry/container-registry-auth-aks.md)
 
 ## <a name="download-sample-code"></a>サンプル コードのダウンロード
-時間を節約するために、サンプル コードの GitHub リポジトリのフォークを作成しましょう。 https://github.com/Azure/dev-spaces に移動して、 **[フォーク]** を選択します。 フォーク プロセスが完了すると、リポジトリのフォーク済みバージョンがローカルに**複製**されます。 既定で _master_ ブランチがチェックアウトされますが、_azds_updates_ ブランチに時間を節約するためのいくつかの変更を組み入れてあり、フォーク時にこのブランチも転送されているはずです。 _azds_updates_ ブランチには、Dev Spaces チュートリアルのセクション内で手動実行するように示されている更新プログラムと、CI/CD システムのデプロイを効率化するために事前作成されたいくつかの YAML および JSON ファイルが含まれています。 `git checkout -b azds_updates origin/azds_updates` のようなコマンドを使用して、ローカル リポジトリに _azds_updates_ ブランチをチェックアウトできます。
+時間を節約するために、サンプル コードの GitHub リポジトリのフォークを作成しましょう。 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces ) に移動して、 **[フォーク]** を選択します。 フォーク プロセスが完了すると、リポジトリのフォーク済みバージョンがローカルに**複製**されます。 既定で _master_ ブランチがチェックアウトされますが、_azds_updates_ ブランチに時間を節約するためのいくつかの変更を組み入れてあり、フォーク時にこのブランチも転送されているはずです。 _azds_updates_ ブランチには、Dev Spaces チュートリアルのセクション内で手動実行するように示されている更新プログラムと、CI/CD システムのデプロイを効率化するために事前作成されたいくつかの YAML および JSON ファイルが含まれています。 `git checkout -b azds_updates origin/azds_updates` のようなコマンドを使用して、ローカル リポジトリに _azds_updates_ ブランチをチェックアウトできます。
 
 ## <a name="dev-spaces-setup"></a>Dev Spaces の設定
 `azds space select` コマンドを使用して、_dev_ という新しい空間を作成します。 _dev_ 空間は、コードの変更をプッシュするために、CI/CD パイプラインによって使用されます。 また、_dev_ に基づく "_子空間_" を作成するためにも使用されます。

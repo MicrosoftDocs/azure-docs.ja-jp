@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6b93a7848e5c8516507c825d3064fb61a404e3cf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507764"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347137"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して ASP.NET Web API へのアクセスを許可する
 
@@ -91,13 +91,13 @@ Web API を登録し、スコープを定義したので、Azure AD B2C テナ�
 2. **TaskWebApp** プロジェクトの **Web.config** を開きます。
 3. API をローカルで実行するには、**api:TaskServiceUrl** に localhost の設定を使用します。 次のように Web.config を変更します。 
 
-    ```C#
+    ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
 3. API の URI を構成します。 これは、Web アプリケーションが API 要求を行うために使用する URI です。 また、要求されたアクセス許可を構成します。
 
-    ```C#
+    ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
     <add key="api:ReadScope" value="Hello.Read" />
     <add key="api:WriteScope" value="Hello.Write" />
@@ -108,25 +108,25 @@ Web API を登録し、スコープを定義したので、Azure AD B2C テナ�
 1. **TaskService** プロジェクトの **Web.config** を開きます。
 2. テナントを使用するように API を構成します。
 
-    ```C#
+    ```csharp
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
 3. クライアント ID を、API 用に登録されたアプリケーション ID に設定します。
 
-    ```C#
+    ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
 4. サインアップおよびサインインのユーザー フローの名前で、ユーザー フローの設定を更新します。
 
-    ```C#
+    ```csharp
     <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
     ```
 
 5. ポータルで作成したものと一致するようにスコープの設定を構成します。
 
-    ```C#
+    ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
     <add key="api:WriteScope" value="Hello.Write" />
     ```

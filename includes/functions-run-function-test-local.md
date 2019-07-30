@@ -10,11 +10,11 @@ ms.date: 10/20/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 74e14e36b1ac0979da31203a2d16e2396ed821d0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132177"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180949"
 ---
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 

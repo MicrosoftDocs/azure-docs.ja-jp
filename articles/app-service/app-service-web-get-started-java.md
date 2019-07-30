@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
-ms.author: jasonfreeberg
+ms.author: jafreebe
 ms.custom: mvc
-ms.openlocfilehash: c77f7afe3941395a156896135043710252637ef3
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 1e25f65cf7ec52b4a58386843a1d2f5796c66e65
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393234"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297357"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service"></a>クイック スタート:App Service で Java アプリを作成する
 
@@ -66,7 +66,7 @@ code pom.xml
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.4</version>
+        <version>1.7.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
@@ -105,9 +105,9 @@ code pom.xml
 | プレースホルダー | 説明 |
 | ----------- | ----------- |
 | `SUBSCRIPTION_ID` | アプリをデプロイするサブスクリプションの一意の ID。 既定のサブスクリプションの ID は、Cloud Shell または CLI から `az account show` コマンドを使用して調べることができます。 使用可能なすべてのサブスクリプションを調べるには、`az account list` コマンドを使用します。|
-| `RESOURCEGROUP_NAME` | その中にアプリを作成する新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すれば、そのアプリに関連付けられているすべてのリソースが削除されます。 この値を一意の新しいリソース グループ名 (たとえば、*TestResources*) で更新します。 このリソース グループ名を使用して、後のセクションですべての Azure リソースをクリーンアップします。 |
+| `RESOURCEGROUP_NAME` | その中にアプリを作成する新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すれば、そのアプリに関連付けられているすべてのリソースが削除されます。 この値を一意の新しいリソース グループ名 (たとえば、*myResourceGroup*) で更新します。 このリソース グループ名を使用して、後のセクションですべての Azure リソースをクリーンアップします。 |
 | `WEBAPP_NAME` | Azure にデプロイされると、このアプリ名はアプリのホスト名の一部になります (WEBAPP_NAME.azurewebsites.net)。 この値を、Java アプリをホストする新しい App Service アプリの一意の名前 (たとえば、*contoso*) で更新します。 |
-| `REGION` | アプリがホストされている Azure リージョン (たとえば、`westus2`)。 リージョンの一覧は、`az account list-locations` コマンドを使用して Cloud Shell または CLI から取得できます。 |
+| `REGION` | アプリがホストされている Azure リージョン (たとえば、*westus2*)。 リージョンの一覧は、`az account list-locations` コマンドを使用して Cloud Shell または CLI から取得できます。 |
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 

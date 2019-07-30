@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: b661499786057a3083f79684dfd12c85266b7b5c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b9e5d034db4711384d2ac8a1083da5c93ea11900
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128793"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61437244"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の MapReduce と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 
@@ -44,20 +44,20 @@ MapReduce ジョブの実行時に、Data Lake Storage Gen1 のパフォーマ�
 
 ## <a name="guidance"></a>ガイダンス
 
-**手順 1: 実行するジョブの数を決定する** - 既定では、MapReduce はジョブにクラスター全体を使用します。  クラスターの使用を抑えるには、使用可能なコンテナーの数よりも少ない Mapper を使用します。  このドキュメントのガイダンスでは、お使いのアプリケーションがクラスターで唯一実行されているアプリケーションであると想定しています。      
+**手順 1:実行するジョブの数を決定する** - 既定では、MapReduce はジョブのためにクラスター全体を使用します。  クラスターの使用を抑えるには、使用可能なコンテナーの数よりも少ない Mapper を使用します。  このドキュメントのガイダンスでは、お使いのアプリケーションがクラスターで唯一実行されているアプリケーションであると想定しています。      
 
-**手順 2: Mapreduce.map.memory/Mapreduce.reduce.memory を設定する** – Map タスクと Reduce タスクのメモリ サイズは、特定のジョブに依存します。  同時実行性を向上させるには、メモリ サイズを小さくします。  同時に実行できるタスクの数は、コンテナー数によって異なります。  Mapper や Reducer ごとのメモリの量を減らすことで、より多くのコンテナーを作成できるため、より多くの Mapper や Reducer を同時に実行できます。  メモリの量を減らし過ぎると、一部のプロセスでメモリが不足する場合があります。  ジョブの実行時にヒープ エラーが発生する場合は、Mapper や Reducer ごとのメモリを増やす必要があります。  コンテナーをさらに追加すると、追加された各コンテナーに余分なオーバーヘッドが加わり、パフォーマンスを低下させる可能性がある点を考慮する必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のノード数を増やすことが挙げられます。  メモリの量が増えると使用できるコンテナーの数も増えて、同時実行性が向上されます。  
+**手順 2:mapreduce.map.memory/mapreduce.reduce.memory を設定する** – Map および Reduce タスクのメモリのサイズは、ユーザー固有のジョブに依存します。  コンカレンシーを向上させるには、メモリ サイズを小さくします。  同時に実行できるタスクの数は、コンテナー数によって異なります。  Mapper や Reducer ごとのメモリの量を減らすことで、より多くのコンテナーを作成できるため、より多くの Mapper や Reducer を同時に実行できます。  メモリの量を減らし過ぎると、一部のプロセスでメモリが不足する場合があります。  ジョブの実行時にヒープ エラーが発生する場合は、Mapper や Reducer ごとのメモリを増やす必要があります。  コンテナーをさらに追加すると、追加された各コンテナーに余分なオーバーヘッドが加わり、パフォーマンスを低下させる可能性がある点を考慮する必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のノード数を増やすことが挙げられます。  メモリの量が増えると使用できるコンテナーの数も増えて、コンカレンシーが向上されます。  
 
-**手順 3: 合計 YARN メモリを決定する** - Mapreduce.job.maps/Mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
+**手順 3:合計 YARN メモリを決定する** - mapreduce.job.maps/mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
 
     Total YARN memory = nodes * YARN memory per node
 空のクラスターを使用している場合、メモリはクラスターの合計 YARN メモリになります。  ほかのアプリケーションでメモリを使用している場合は、Mapper や Reducer の数を使用するコンテナーの数に減らすことで、クラスターのメモリの一部のみを使用するように選択できます。  
 
-**手順 4: YARN コンテナーの数を計算する** – YARN コンテナーによって、ジョブの同時実行がどの程度可能かが決まります。  合計 YARN メモリを、mapreduce.map.memory で割ります。  
+**手順 4:YARN コンテナーの数を計算する** – YARN コンテナーによって、ジョブに使用できるコンカレンシーの量が規定されます。  合計 YARN メモリを、mapreduce.map.memory で割ります。  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
 
-**手順 5: mapreduce.job.maps/mapreduce.job.reduces を設定する** - mapreduce.job.maps/mapreduce.job.reduces を、少なくとも、使用可能なコンテナーの数に設定します。  さらに、Mapper や Reducer の数を増やして、パフォーマンスが向上するかを確認することができます。  Mapper の数を増やすとオーバーヘッドが追加されるため、Mapper の数が多すぎるとパフォーマンスが低下する可能性がある点にご注意ください。  
+**手順 5:mapreduce.job.maps/mapreduce.job.reduces を設定する** mapreduce.job.maps/mapreduce.job.reduces を少なくとも、使用できるコンテナーの数に設定します。  さらに、Mapper や Reducer の数を増やして、パフォーマンスが向上するかを確認することができます。  Mapper の数を増やすとオーバーヘッドが追加されるため、Mapper の数が多すぎるとパフォーマンスが低下する可能性がある点にご注意ください。  
 
 CPU スケジューリングと CPU の分離は既定ではオフになっているため、YARN コンテナーの数はメモリによって制約されます。
 
@@ -65,12 +65,12 @@ CPU スケジューリングと CPU の分離は既定ではオフになって�
 
 現在 8 つの D14 ノードから成るクラスターがあり、I/O 集約型ジョブを実行するとします。  次の計算を行う必要があります。
 
-**手順 1: 実行するジョブの数を決定する** - この例では、実行するジョブは 1 つだけであると想定しています。  
+**手順 1:実行するジョブの数を決定する** - この例では、このジョブが、実行されている唯一のジョブであることを前提にしています。  
 
-**手順 2: Mapreduce.map.memory/Mapreduce.reduce.memory を設定する** – この例では、I/O 集約型ジョブを実行し、Map タスクには 3GB のメモリで十分であると判断しています。
+**手順 2:mapreduce.map.memory/mapreduce.reduce.memory を設定する** – この例では、I/O 集中型ジョブを実行しており、Map タスクには 3GB のメモリで十分であると判断します。
 
     mapreduce.map.memory = 3GB
-**手順 3: 合計 YARN メモリを決定する**
+**手順 3:合計 YARN メモリを決定する**
 
     total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
 **手順 4: YARN コンテナーの数を計算する**

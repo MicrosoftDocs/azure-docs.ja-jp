@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 86b41bb2554dbefeaeb724e746bcaf757463f8ae
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431302"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795915"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -74,6 +74,9 @@ v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エ�
 v2 SKU の場合、Application Gateway サブネット上の UDR はサポートされません。 詳細については、[Azure Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku) をご覧ください。
 
 > [!NOTE]
+> UDR は v2 SKU ではサポートされていません。  UDR が必要な場合、続行して v1 SKU をデプロイしてください。
+
+> [!NOTE]
 > Application Gateway サブネット上で UDR を使用すると、[バックエンドの正常性ビュー](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)に正常性状態が "不明" と表示されます。 また、Application Gateway ログとメトリックの生成が失敗します。 バックエンドの正常性、ログ、およびメトリックを表示できるように、Application Gateway サブネット上で UDR を使用しないことをお勧めします。
 
 ## <a name="front-end-ip"></a>フロントエンド IP
@@ -84,7 +87,7 @@ v2 SKU の場合、Application Gateway サブネット上の UDR はサポート
 
 1 つのパブリック IP アドレスまたは 1 つのプライベート IP アドレスしかサポートされません。 アプリケーション ゲートウェイを作成するときにフロントエンド IP を選択します。
 
-- パブリック IP の場合は、新しいパブリック IP アドレスの作成またはアプリケーション ゲートウェイと同じ場所にある既存のパブリック IP を使用できます。 新しいパブリック IP を作成する場合、選択した IP アドレスの種類 (静的または動的) を後で変更することはできません。 詳細については、[静的なパブリック IP アドレスと動的なパブリック IP アドレス](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address)に関するページを参照してください。
+- パブリック IP の場合は、新しいパブリック IP アドレスの作成またはアプリケーション ゲートウェイと同じ場所にある既存のパブリック IP を使用できます。 新しいパブリック IP を作成する場合、選択した IP アドレスの種類 (静的または動的) を後で変更することはできません。 詳細については、[静的なパブリック IP アドレスと動的なパブリック IP アドレス](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)に関するページを参照してください。
 
 - プライベート IP の場合は、アプリケーション ゲートウェイが作成されるサブネットのプライベート IP アドレスを指定できます。 指定しないと、サブネットから任意の IP アドレスが自動的に選択されます。 詳細については、[内部ロード バランサーを使用したアプリケーション ゲートウェイの作成](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)に関するページを参照してください。
 
@@ -124,7 +127,7 @@ HTTP または HTTPS を選択します。
 
 - HTTP を選択すると、クライアントとアプリケーション ゲートウェイ間のトラフィックは暗号化されません。
 
-- [SSL 終端](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl)または[エンド ツー エンド SSL 暗号化](https://docs.microsoft.com/azure/application-gateway/ssl-overview)が必要な場合は、HTTPS を選択します。 クライアントとアプリケーション ゲートウェイ間のトラフィックは暗号化されます。 また、SSL 接続はアプリケーション ゲートウェイで終端します。 エンド ツー エンドの SSL 暗号化が必要な場合は、HTTPS を選択して**バックエンド HTTP** 設定を構成する必要があります。 これにより、トラフィックがアプリケーション ゲートウェイからバックエンドに送られるときに再暗号化されます。
+- [SSL 終端](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination)または[エンド ツー エンド SSL 暗号化](https://docs.microsoft.com/azure/application-gateway/ssl-overview)が必要な場合は、HTTPS を選択します。 クライアントとアプリケーション ゲートウェイ間のトラフィックは暗号化されます。 また、SSL 接続はアプリケーション ゲートウェイで終端します。 エンド ツー エンドの SSL 暗号化が必要な場合は、HTTPS を選択して**バックエンド HTTP** 設定を構成する必要があります。 これにより、トラフィックがアプリケーション ゲートウェイからバックエンドに送られるときに再暗号化されます。
 
 SSL 終端とエンド ツー エンド SSL 暗号化を構成するには、リスナーに証明書を追加して、アプリケーション ゲートウェイが対称キーを派生できるようにする必要があります。 これは SSL プロトコル仕様によって規定されています。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 この形式を使用すると、ゲートウェイがトラフィックの暗号化と復号化に使用する秘密キーをエクスポートできます。
 
@@ -172,7 +175,7 @@ Azure portal を使用してアプリケーション ゲートウェイを作成
 
 ### <a name="rule-type"></a>規則の種類
 
-新しい規則を作成するときは、["*基本*" または "*パス ベース*"](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule) を選択します。
+新しい規則を作成するときは、["*基本*" または "*パス ベース*"](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules) を選択します。
 
 - 関連付けられたリスナー (例: *blog<i></i>.contoso.com/\*)* に対するすべての要求を 1 つのバックエンド プールに転送する場合は、基本を選択します。
 - 特定の URL パスからの要求を特定のバックエンド プールにルーティングする場合は、パス ベースを選択します。 パスのパターンは URL のパスのみに適用され、クエリ パラメーターには適用されません。
@@ -245,7 +248,7 @@ HTTP から HTTPS へのリダイレクトの詳細については、以下を�
 この設定で、要求パケットと応答パケットがクライアントとバックエンド プール間を移動する間に、HTTP 要求および応答ヘッダーが追加、削除、または更新されます。 この機能を構成するには、PowerShell を使用する必要があります。 Azure portal と CLI ではまだ使用できません。 詳細については、次を参照してください。
 
  - [HTTP ヘッダーの書き換えの概要](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [HTTP ヘッダーの書き換えの構成](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
+ - [HTTP ヘッダーの書き換えの構成](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
 
 ## <a name="http-settings"></a>HTTP 設定
 
@@ -294,6 +297,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
   | /home/secondhome/          | /pathrule*      | /override/            | /override/home/secondhome/   |
   | /pathrule/home/            | /pathrule/home* | /override/            | /override/                   |
   | /pathrule/home/secondhome/ | /pathrule/home* | /override/            | /override/secondhome/        |
+  | /pathrule/                 | /pathrule/      | /override/            | /override/                   |
 
 ### <a name="use-for-app-service"></a>[App Service 用に使用します]
 

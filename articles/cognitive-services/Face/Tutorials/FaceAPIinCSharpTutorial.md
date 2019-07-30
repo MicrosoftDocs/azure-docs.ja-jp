@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 02/06/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 6a60afc45894518f92115976876ddd50efa1e410
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 54069fbaa8ad06d257ab835ed3b170fecb76d800
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310187"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603336"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する WPF アプリの作成
 
-このチュートリアルでは、.NET クライアント SDK を通じて Azure Face API を使用して、画像内の顔を検出した後にそのデータを UI に表示する方法を学習します。 ここでは、顔を検出し、それぞれの顔の周囲にフレームを描画して、ステータス バーに顔の説明を表示する、シンプルな Windows Presentation Framework (WPF) アプリケーションを作成します。 
+このチュートリアルでは、.NET クライアント SDK を通じて Azure Face API を使用し、画像内の顔を検出した後にそのデータを UI に示す方法を学習します。 顔を検出し、それぞれの顔の周囲にフレームを描画して、ステータス バーに顔の説明を表示する、Windows Presentation Framework (WPF) アプリケーションを作成します。 
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -46,9 +46,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 新しい WPF アプリケーション プロジェクトを作成するには、次の手順に従います。
 
-1. Visual Studio で、[新しいプロジェクト] ダイアログを開きます。 **[インストール済み]**、**[Visual C#]** の順に展開し、**[WPF アプリ (.NET Framework)]** を選択します。
-1. アプリケーションの名前を **FaceTutorial** に設定し、**[OK]** をクリックします。
-1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
+1. Visual Studio で、[新しいプロジェクト] ダイアログを開きます。 **[インストール済み]** 、 **[Visual C#]** の順に展開し、 **[WPF アプリ (.NET Framework)]** を選択します。
+1. アプリケーションの名前を **FaceTutorial** に設定し、 **[OK]** をクリックします。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="add-the-initial-code"></a>初期コードの追加
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-the-ui"></a>UI を作成する
 
-*MainWindow.xaml* を開き、その内容を次のコードに置き換えます。これにより UI ウィンドウが作成されます。 `FacePhoto_MouseMove` と `BrowseButton_Click` は後で定義するイベント ハンドラーであることに注意してください。
+*MainWindow.xaml* を開き、その内容を次のコードに置き換えます&mdash;このコードにより UI ウィンドウが作成されます。 `FacePhoto_MouseMove` メソッドと `BrowseButton_Click` メソッドは、後で定義するイベント ハンドラーです。
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?range=1-18)]
 
@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=1-12)]
 
-次に、**MainWindow** クラスに次のコードを挿入します。 これにより、サブスクリプション キーを使用して **FaceClient** インスタンスが作成されます。サブスクリプション キーは自分で入力する必要があります。 また、`faceEndpoint` に含まれるリージョン文字列も、実際のサブスクリプションに合った正しいリージョンに設定する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
+次に、**MainWindow** クラスに次のコードを挿入します。 このコードにより、サブスクリプション キーを使用して **FaceClient** インスタンスが作成されます。サブスクリプション キーは自分で入力する必要があります。 `faceEndpoint` に含まれるリージョン文字列を、ご利用のサブスクリプションに適したリージョンに設定する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=18-46)]
 
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=50-61)]
 
-最後に、**BrowseButton_Click** メソッドと **FacePhoto_MouseMove** メソッドをクラスに追加します。 これらは、*MainWindow.xaml* で宣言されているイベント ハンドラーに対応しています。 **BrowseButton_Click** メソッドは **OpenFileDialog** を作成し、ユーザーが .jpg 画像を選択できるようにします。 その後、メイン ウィンドウに画像を表示します。 **BrowseButton_Click** と **FacePhoto_MouseMove** の残りのコードについては、後の手順で挿入します。 また、`faceList` の参照にも注意してください。これは、**DetectedFace** オブジェクトのリストです。 ここでは、アプリが実際の顔データを保存したり呼び出したりします。
+最後に、**BrowseButton_Click** メソッドと **FacePhoto_MouseMove** メソッドをクラスに追加します。 これらのメソッドは、*MainWindow.xaml* で宣言されているイベント ハンドラーに対応しています。 **BrowseButton_Click** メソッドは **OpenFileDialog** を作成し、ユーザーが .jpg 画像を選択できるようにします。 その後、メイン ウィンドウに画像を表示します。 **BrowseButton_Click** と **FacePhoto_MouseMove** の残りのコードについては、後の手順で挿入します。 また、`faceList` の参照にも注意してください。これは、**DetectedFace** オブジェクトのリストです。 この参照では、アプリが実際の顔データを保存したり呼び出したりします。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=64-90,146)]
 
@@ -91,19 +91,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このアプリでは、**FaceClient.Face.DetectWithStreamAsync** メソッドを呼び出して顔を検出します。このメソッドは、ローカルの画像をアップロードするために [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップします。
 
-**MainWindow** クラスで **FacePhoto_MouseMove** メソッドの下に次のメソッドを挿入します。 これにより、取得する顔の属性のリストが定義され、送信した画像ファイルが **Stream** に読み込まれます。 その後、これらのオブジェクトの両方が **DetectWithStreamAsync** メソッド呼び出しに渡されます。
+**MainWindow** クラスで **FacePhoto_MouseMove** メソッドの下に次のメソッドを挿入します。 このメソッドにより、取得する顔の属性の一覧が定義され、送信した画像ファイルが **Stream** に読み込まれます。 その後、これらのオブジェクトの両方が **DetectWithStreamAsync** メソッド呼び出しに渡されます。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=189-226)]
 
 ## <a name="draw-rectangles-around-faces"></a>顔の周囲に四角形を描画する
 
-次に、画像内で検出されたそれぞれの顔の周囲に四角形を描画するコードを追加します。 **MainWindow** クラスで **BrowseButton_Click** メソッドの末尾にある `FacePhoto.Source = bitmapSource` 行の後に次のコードを挿入します。 これにより、**UploadAndDetectFaces** の呼び出しによって検出された顔のリストが設定されます。 その後、それぞれの顔の周囲に四角形が描画され、変更された画像がメイン ウィンドウに表示されます。
+次に、画像内で検出されたそれぞれの顔の周囲に四角形を描画するコードを追加します。 **MainWindow** クラスで **BrowseButton_Click** メソッドの末尾にある `FacePhoto.Source = bitmapSource` 行の後に次のコードを挿入します。 このコードにより、**UploadAndDetectFaces** の呼び出しから検出された顔の一覧が設定されます。 その後、それぞれの顔の周囲に四角形が描画され、変更された画像がメイン ウィンドウに表示されます。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=92-145)]
 
 ## <a name="describe-the-faces"></a>顔を説明する
 
-**MainWindow** クラスで **UploadAndDetectFaces** メソッドの下に次のメソッドを追加します。 これにより、取得した顔の属性が、顔を説明する文字列に変換されます。
+**MainWindow** クラスで **UploadAndDetectFaces** メソッドの下に次のメソッドを追加します。 このメソッドにより、取得した顔の属性が、顔を説明する文字列に変換されます。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=228-286)]
 

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 406bd11765e4b580849e8719939c3e11c19d99a8
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591342"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604562"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure クイック スタート テンプレートを使用して Azure VM で SQL Server の Always On 可用性グループを構成する
 この記事では、Azure クイック スタート テンプレートを使用して、Azure での SQL Server Virtual Machines 用の Always On 可用性グループ構成のデプロイを部分的に自動化する方法について説明します。 このプロセスでは、2 つの Azure クイック スタート テンプレートが使用されます。 
@@ -38,7 +38,7 @@ ms.locfileid: "60591342"
 クイック スタート テンプレートを使用して Always On 可用性グループのセットアップを自動化するには、次の前提条件が必要です。 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)されているのと同じ可用性セットまたは可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以上の) Enterprise エディションを実行する Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
+- [SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)されているのと同じ可用性セットまたは可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以上の) Enterprise エディションを実行する Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
 - 可用性グループと同じサブネット内の内部ロード バランサー用に 1 つと、可用性グループ リスナー用に 1 つの、2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 既存のロード バランサーが使用されている場合は、使用可能な IP アドレスが 1 つだけ必要です。  
 
 ## <a name="permissions"></a>アクセス許可
@@ -105,7 +105,7 @@ Always On 可用性グループ (AG) リスナーには、内部 Azure Load Bala
    | **プライベート IP アドレス** | サブネット内の利用可能な IP アドレスを指定します。 |
    | **サブスクリプション** |複数のサブスクリプションを所有している場合、このフィールドが表示されます。 このリソースに関連付けられているサブスクリプションを選択します。 通常は、可用性グループのすべてのリソースについて同じサブスクリプションを選択してください。 |
    | **リソース グループ** |SQL Server インスタンスが存在するリソース グループを選択します。 |
-   | **場所** |Azure において SQL Server インスタンスが存在する場所を選択します。 |
+   | **Location** |Azure において SQL Server インスタンスが存在する場所を選択します。 |
    | &nbsp; | &nbsp; |
 
 6. **作成** を選択します。 

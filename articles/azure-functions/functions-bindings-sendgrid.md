@@ -4,18 +4,18 @@ description: Azure Functions における SendGrid のバインディングの�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 663283c4dff16194dea78afbf5dd393f1fa833b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b7666b043379f3ff143e2a5eaae6b40ea80ab90
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64511943"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480251"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -261,8 +261,8 @@ public static void Run(
 |**apiKey**|**ApiKey**| API キーを含むアプリ設定の名前。 設定されていない場合、既定のアプリの設定名は"AzureWebJobsSendGridApiKey" です。|
 |**to**|**To**| 受信者の電子メール アドレス。 |
 |**from**|**From**| 送信者の電子メール アドレス。 |
-|**subject**|**[件名]**| 電子メールの件名。 |
-|**text**|**テキスト**| 電子メールの本文。 |
+|**subject**|**Subject**| 電子メールの件名。 |
+|**text**|**Text**| 電子メールの本文。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

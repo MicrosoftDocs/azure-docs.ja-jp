@@ -4,16 +4,21 @@ description: 仮想マシンのデプロイのトラブルシューティング�
 title: Azure Virtual Machines のトラブルシューティングのドキュメント | Microsoft Docs
 services: virtual-machines
 author: genlin
-manager: jeconnoc
-ms.assetid: null
+manager: gwallace
+ms.assetid: ''
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
+ms.openlocfilehash: 47db174042f7dd2e9d1bd1503c8e8b8f635b4dbe
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705744"
 ---
-
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure Virtual Machines のトラブルシューティング
 
 - 割り当ての失敗

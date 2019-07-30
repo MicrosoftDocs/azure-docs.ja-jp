@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Azure Backup で保護されたワークロードの監視'
 description: Azure portal を使用した Azure Backup ワークロードの監視
-services: backup
 author: pvrk
 manager: shivamg
 keywords: Azure Backup; アラート;
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b41b32943aa0113a7653c8d2eb74fd04afb2e080
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236441"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465828"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 

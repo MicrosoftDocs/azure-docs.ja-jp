@@ -1,129 +1,171 @@
 ---
-title: Azure Logic Apps からの REST エンドポイントの呼び出し | Microsoft Docs
-description: Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントと通信するタスクとワークフローを自動化します
+title: Azure Logic Apps から REST エンドポイントに接続する
+description: Azure Logic Apps を使用して、自動化されたタスク、プロセス、およびワークフロー内で REST エンドポイントを監視します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 07/05/2019
 tags: connectors
-ms.topic: article
-ms.date: 07/18/2016
-ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0410ed7a98e4838e41407868cf26b5254811ae3
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60448636"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541699"
 ---
-# <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
+# <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して REST エンドポイントを呼び出す
 
-ロジック アプリのワークフローで HTTP + Swagger アクションを使用すると、[Swagger ドキュメント](https://swagger.io)から REST エンドポイントへのファースト クラス コネクタを作成できます。 ロジック アプリ デザイナーの優れたエクスペリエンスを使用し、ロジック アプリを拡張して任意の REST エンドポイントを呼び出すこともできます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と組み込み HTTP + Swagger コネクタを使用すると、ロジック アプリを構築することで、[Swagger ファイル](https://swagger.io)を介して任意の REST エンドポイントを定期的に呼び出すワークフローを自動化できます。 HTTP + Swagger トリガーおよびアクションは [HTTP トリガーおよびアクション](connectors-native-http.md)と同様に機能しますが、Swagger ファイルで記述された API の構造と出力を公開することにより、ロジック アプリ デザイナーでのエクスペリエンスが向上します。 ポーリング トリガーを実装する場合は、[ロジック アプリから他の API、サービス、システムを呼び出すためのカスタム API の作成](../logic-apps/logic-apps-create-api-app.md#polling-triggers)に関するページで説明されているポーリング パターンに従ってください。
 
-コネクタ付きのロジック アプリを作成する方法については、「[新しいロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>トリガーまたはアクションとしての HTTP + Swagger の使用
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](connectors-native-http.md)と同様に機能しますが、ロジック アプリ デザイナーでは、[Swagger メタデータ](https://swagger.io)から API の構造と出力を公開することでエクスペリエンスが向上します。 また、HTTP + Swagger コネクタをトリガーとして使用することもできます。 ポーリング トリガーを実装する場合は、「[Logic Apps から他の API、サービス、およびシステムを呼び出すカスタム API の作成](../logic-apps/logic-apps-create-api-app.md#polling-triggers)」に記載されているポーリング パターンに従ってください。
+* ターゲットの REST エンドポイントが記述される Swagger ファイルの URL
 
-では、[ロジック アプリのトリガーとアクション](../connectors/apis-list.md)について詳しく説明します。
+  通常、コネクタが機能するためには、REST エンドポイントがこの条件を満たしている必要があります。
 
-ロジック アプリでワークフローのアクションとして HTTP + Swagger 操作を使用する方法の例を次に示します。
+  * Swagger ファイルは、パブリックにアクセス可能な HTTPS URL でホストされている必要があります。
 
-1. **[新しいステップ]** をクリックします。
-2. **[アクションの追加]** を選択します。
-3. アクションの検索ボックスに「 **swagger** 」と入力して、HTTP + Swagger アクションを表示します。
-   
-    ![HTTP + Swagger アクションの選択](./media/connectors-native-http-swagger/using-action-1.png)
-4. Swagger ドキュメントの URL を入力します。
-   
-   * ロジック アプリ デザイナーで使用するには、この URL が HTTPS エンドポイントであり、CORS が有効になっている必要があります。
-   * Swagger ドキュメントがこの要件を満たしていない場合は、CORS を有効にした Azure Storage を使用してドキュメントを格納できます。
-5. **[次へ]** をクリックし、Swagger ドキュメントを読み込んで表示します。
-6. HTTP 呼び出しに必要なすべてのパラメーターを追加します。
-   
-    ![Complete HTTP action](./media/connectors-native-http-swagger/using-action-2.png)
-7. ロジック アプリを保存して発行するには、デザイナーのツールバーの **[保存]** をクリックします。
+  * Swagger ファイルでは、[クロスオリジン リソース共有 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) が有効になっている必要があります。
 
-### <a name="host-swagger-from-azure-storage"></a>Azure Storage からの Swagger のホスト
-ホストされていない Swagger ドキュメントや、デザイナーのセキュリティとクロス オリジンの要件を満たしていない Swagger ドキュメントを参照することが必要になることがあります。 この問題を解決するには、Swagger ドキュメントを Azure Storage に格納し、CORS を有効にすることで、ドキュメントを参照します。  
+  参照する Swagger ファイルがホストされていない場合やセキュリティとクロスオリジンの要件を満たしていない場合は、[Azure ストレージ アカウント内の BLOB コンテナーにその Swagger ファイルをアップロード](#host-swagger)し、そのストレージ アカウントで CORS を有効にすると、そのファイルを参照できるようになります。
 
-Azure Storage で Swagger ドキュメントを作成、構成し、格納する手順を次に示します。
+  このトピックの例では、[Cognitive Services アカウントとアクセス キー](../cognitive-services/cognitive-services-apis-create-account.md)を必要とする [Cognitive Services Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) を使用します。
 
-1. [Azure BLOB ストレージでストレージ アカウントを作成します](../storage/common/storage-create-storage-account.md) この手順を実行するには、アクセス許可を **[パブリック アクセス]** に設定します。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
-2. BLOB で CORS を有効にします。 
+* ターゲット エンドポイントの呼び出し元となるロジック アプリ。 HTTP + Swagger トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 HTTP + Swagger アクションを使用するには、任意のトリガーで対象のロジック アプリを起動します。 この例では、最初のステップとして HTTP + Swagger トリガーを使用しています。
 
-   [この PowerShell スクリプト](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1) を使用して、この設定を自動的に構成できます。
+## <a name="add-an-http--swagger-trigger"></a>HTTP + Swagger トリガーの追加
 
-3. Swagger ファイルを BLOB にアップロードします。 
+この組み込みトリガーは、REST API を記述した Swagger ファイルの URL に HTTP 要求を送信し、そのファイルの内容を含む応答を返します。
 
-   この手順は、[Azure Portal](https://portal.azure.com) から、または [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールから実行できます。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで空のロジック アプリを開きます。
 
-4. Azure BLOB ストレージ内のドキュメントへの HTTPS リンクを参照します 
+1. デザイナーの検索ボックスに、フィルターとして「swagger」と入力します。 **[トリガー]** の一覧から、 **[HTTP + Swagger]** トリガーを選択します。
 
-   リンクは、次の形式を使用します。
+   ![HTTP + Swagger トリガーを選択する](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-   `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*`
+1. **[Swagger エンドポイント URL]** ボックスに Swagger ファイルの URL を入力し、 **[次へ]** を選択します。
 
-## <a name="technical-details"></a>技術的な詳細
-この HTTP + Swagger コネクタでサポートされているトリガーとアクションの詳細を次に示します。
+   この例では、[Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) に対して、米国西部リージョンにある Swagger URL を使用します。
 
-## <a name="http--swagger-triggers"></a>HTTP + Swagger トリガー
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 HTTP + Swagger コネクタにはトリガーが 1 つあります。 トリガーの詳細については[こちら](../connectors/apis-list.md)を参照してください。
+   `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-| トリガー | 説明 |
-| --- | --- |
-| HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
+   ![Swagger エンドポイントの URL を入力する](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
-## <a name="http--swagger-actions"></a>HTTP + Swagger アクション
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。 アクションの詳細については[こちら](../connectors/apis-list.md)を参照してください。
+1. Swagger ファイルで記述された操作がデザイナーに表示されたら、使用する操作を選択します。
 
-| Action | 説明 |
-| --- | --- |
-| HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
+   ![Swagger ファイル内の操作](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
-### <a name="action-details"></a>アクションの詳細
-HTTP + Swagger コネクタには、使用可能なアクションが 1 つ用意されています。 各アクションの情報、必須および任意の入力フィールド、アクションの使用に伴う出力の詳細を次に示します。
+1. エンドポイント呼び出しに含めるトリガー パラメーターの値を指定します (パラメーターは、選択した操作によって異なります)。 トリガーでエンドポイントを呼び出す頻度を設定します。
 
-#### <a name="http--swagger"></a>HTTP + Swagger
-Swagger メタデータを使用して HTTP 送信要求を行います。
-アスタリスク (*) は、必須フィールドであることを意味します。
+   この例では、トリガー名を "HTTP + Swagger trigger: Face - Detect" に変更して、このステップの名前をよりわかりやすくします。
 
-| Display name | プロパティ名 | 説明 |
-| --- | --- | --- |
-| メソッド* |method |使用する HTTP 動詞 |
-| URI* |uri |HTTP 要求の URI |
-| headers |headers |含める HTTP ヘッダーの JSON オブジェクト |
-| 本文 |body |HTTP 要求の本文 |
-| Authentication |認証 |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
+   ![操作の詳細](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-**出力の詳細**
+1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 
-HTTP 応答
+   HTTP + Swagger に使用できる認証の種類の詳細については、「[HTTP トリガーとアクションを認証する](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)」を参照してください。
 
-| プロパティ名 | データ型 | 説明 |
-| --- | --- | --- |
-| headers |object |応答ヘッダー |
-| 本文 |object |応答オブジェクト |
-| 状態コード |int |HTTP 状態コード |
+1. トリガーが起動したときに実行されるアクションを使用して、ロジック アプリのワークフローを引き続き構築します。
 
-### <a name="http-responses"></a>HTTP 応答
-さまざまなアクションを呼び出すと、特定の応答を受け取る場合があります。 次の表に、対応する応答と説明を示します。
+1. 完了したら、忘れずに対象のロジック アプリを保存してください。 デザイナーのツール バーで、 **[保存]** を選択します。
 
-| Name | 説明 |
-| --- | --- |
-| 200 |OK |
-| 202 |承認済み |
-| 400 |正しくない要求 |
-| 401 |権限がありません |
-| 403 |許可されていません |
-| 404 |見つかりません |
-| 500 |内部サーバー エラー。 不明なエラーが発生しました。 |
+## <a name="add-an-http--swagger-action"></a>HTTP + Swagger アクションの追加
+
+この組み込みアクションは、REST API を記述した Swagger ファイルの URL に HTTP 要求を送信し、そのファイルの内容を含む応答を返します。
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーでロジック アプリを開きます。
+
+1. HTTP + Swagger アクションを追加するステップで、 **[新しいステップ]** を選択します。
+
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 表示されるプラス記号 ( **+** ) を選択してから、 **[アクションの追加]** を選択します。
+
+1. デザイナーの検索ボックスに、フィルターとして「swagger」と入力します。 **[アクション]** の一覧で、 **[HTTP + Swagger]** アクションを選択します。
+
+    ![HTTP + Swagger アクションの選択](./media/connectors-native-http-swagger/select-http-swagger-action.png)
+
+1. **[Swagger エンドポイント URL]** ボックスに Swagger ファイルの URL を入力し、 **[次へ]** を選択します。
+
+   この例では、[Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) に対して、米国西部リージョンにある Swagger URL を使用します。
+
+   `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
+
+   ![Swagger エンドポイントの URL を入力する](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
+
+1. Swagger ファイルで記述された操作がデザイナーに表示されたら、使用する操作を選択します。
+
+   ![Swagger ファイル内の操作](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
+
+1. エンドポイント呼び出しに含めるアクション パラメーターの値を指定します (パラメーターは、選択した操作によって異なります)。
+
+   この例では、パラメーターがありませんが、アクション名を "HTTP + Swagger action: Face - Identify" に変更して、このステップの名前をよりわかりやすくします。
+
+   ![操作の詳細](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
+
+1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
+
+   HTTP + Swagger に使用できる認証の種類の詳細については、「[HTTP トリガーとアクションを認証する](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)」を参照してください。
+
+1. 完了したら、忘れずに対象のロジック アプリを保存してください。 デザイナーのツール バーで、 **[保存]** を選択します。
+
+<a name="host-swagger"></a>
+
+## <a name="host-swagger-in-azure-storage"></a>Azure Storage での Swagger のホスト
+
+ホストされていない、またはセキュリティとクロスオリジンの要件を満たしていない Swagger ファイルは、Azure ストレージ アカウント内の BLOB コンテナーに Swagger ファイルをアップロードし、そのストレージ アカウントで CORS を有効にすると参照できます。 Swagger ファイルを作成および設定し、Azure Storage に保存するには、次の手順に従います。
+
+1. [Azure Storage アカウント](../storage/common/storage-create-storage-account.md)を作成します。
+
+1. ここで、BLOB に対して CORS を有効にします。 ストレージ アカウント メニューの **[CORS]** を選択します。 **[Blob service]** タブで以下の値を指定し、 **[保存]** を選択します。
+
+   | プロパティ | 値 |
+   |----------|-------|
+   | **許可されたオリジン** | `*` |
+   | **許可されたメソッド** | `GET`、`HEAD`、`PUT` |
+   | **許可されたヘッダー** | `*` |
+   | **公開されるヘッダー** | `*` |
+   | **最長有効期間** (秒) | `200` |
+   |||
+
+   この例では [Azure portal](https://portal.azure.com) を使用していますが、[Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用することもできます。また、このサンプル [PowerShell スクリプト](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)を使用して、この設定を自動的に構成することもできます。
+
+1. [BLOB コンテナーを作成します](../storage/blobs/storage-quickstart-blobs-portal.md)。 コンテナーの **[概要]** ウィンドウで、 **[アクセス レベルを変更します]** を選択します。 **[パブリック アクセス レベル]** の一覧で、 **[BLOB (BLOB 専用の匿名読み取りアクセス)]** を選択し、 **[OK]** を選択します。
+
+1. [Azure portal](https://portal.azure.com) または [Azure Storage Explorer](https://storageexplorer.com/) のいずれかから、[Swagger ファイルを BLOB コンテナーにアップロード](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)します。
+
+1. BLOB コンテナー内のファイルを参照するには、次の形式に従う HTTPS リンクを使用します。ここで、大文字と小文字は区別されます。
+
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+ここでは、以下の情報を返す HTTP + Swagger トリガーまたはアクションからの出力の詳細情報を示します。 HTTP + Swagger 呼び出しにより、次の情報が返されます。
+
+| プロパティ名 | Type | 説明 |
+|---------------|------|-------------|
+| headers | object | 要求のヘッダー |
+| body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
+| status code | int | 要求の状態コード |
+|||
+
+| status code | 説明 |
+|-------------|-------------|
+| 200 | OK |
+| 202 | 承認済み |
+| 400 | 正しくない要求 |
+| 401 | 権限がありません |
+| 403 | 許可されていません |
+| 404 | 見つかりません |
+| 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
+|||
 
 ## <a name="next-steps"></a>次の手順
 
-* [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [他のコネクタを見つけます](apis-list.md)
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

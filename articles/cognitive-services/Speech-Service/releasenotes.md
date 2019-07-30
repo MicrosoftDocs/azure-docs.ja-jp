@@ -8,17 +8,48 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f22b0fcac6099482addfcf56a20e0e828866326e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606354"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490190"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: 2019-June リリース
+
+**サンプル**
+*   UWP および Unity 上の Text to Speech 用のクイック スタート サンプル
+*   iOS 上の Swift 用のクイック スタート サンプル
+*   音声および意図の認識と翻訳用の Unity サンプル
+*   DialogServiceConnector 用のクイック スタート サンプルを更新
+
+**機能強化/変更**
+* Dialog 名前空間:
+    * SpeechBotConnector は DialogServiceConnector に名前が変更されました
+    * BotConfig は DialogServiceConfig に名前が変更されました
+    * BotConfig::FromChannelSecret() が DialogServiceConfig::FromBotSecret() に再マップされました
+    * 既存のすべての Direct Line Speech クライアントは、名前の変更後も引き続きサポートされます
+* TTS REST アダプターが更新され、プロキシ、固定接続がサポートされるようになりました
+* 無効なリージョンが渡されたときのエラー メッセージを改善しました
+* Swift/Objective-C:
+    * エラー報告の改善: エラーが発生する可能性のあるメソッドが、2 つのバージョンで存在するようになりました。エラー処理のために `NSError` オブジェクトを公開するものと、例外を発生させるものです。 前者は Swift に公開されます。 この変更を既存の Swift コードに適応させる必要があります。
+    * イベント処理を改善しました
+
+**バグの修正**
+*   オーディオがレンダリングを完了するまで待たずに、SpeakTextAsync が制御を戻していた TTS の問題を修正しました
+*   言語の完全サポートを可能にするために、C# での文字列のマーシャリングを修正しました
+*   サンプルで net461 ターゲット フレームワークを使用してコア ライブラリを読み込むときの .NET Core アプリの問題を修正しました
+*   サンプルでネイティブ ライブラリを出力フォルダーに展開するときに発生する場合がある問題を修正しました
+*   Web ソケットを確実に閉じるための修正を行いました
+*   Linux で高負荷時に接続を開いたときに発生する可能性があるクラッシュを修正しました
+*   macOS 用のフレームワーク バンドルの欠落しているメタデータを修正しました
+*   Windows での `pip install --user` に関する問題を修正しました
+
 
 ## <a name="speech-sdk-151"></a>Speech SDK 1.5.1
 

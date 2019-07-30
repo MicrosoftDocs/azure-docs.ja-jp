@@ -3,23 +3,17 @@ title: 一般的なクラウド サービス管理タスク | Microsoft Docs
 description: Azure Portal で Cloud Services を管理する方法について説明します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: jeconnoc
-ms.openlocfilehash: d3d1ae759f0f3fa5edd417da61f1fa50b5d9cde7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61433970"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359605"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure Portal で Cloud Services を管理する
 Azure Portal の **[Cloud Services]** 領域では、次の操作を行うことができます。
@@ -34,7 +28,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 ## <a name="update-a-cloud-service-role-or-deployment"></a>クラウド サービス ロールまたはデプロイを更新する
 クラウド サービスのアプリケーション コードを更新する必要がある場合は、クラウド サービス ブレードの **[更新]** を使用します。 1 つのロールを更新することも、すべてのロールを更新することもできます。 更新するには、新しいサービス パッケージまたはサービス構成ファイルをアップロードする必要があります。
 
-1. [Azure Portal][Azure portal] で、更新するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
+1. [Azure ポータル][Azure portal]で、更新するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
 
 2. ブレードで、 **[更新]** を選択します。
 
@@ -59,7 +53,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 デプロイメントのスワップは、 **[Cloud Services]** ページまたはダッシュボードから実行できます。
 
-1. [Azure Portal][Azure portal] で、更新するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
+1. [Azure ポータル][Azure portal]で、更新するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
 
 2. ブレードで、 **[スワップ]** を選択します。
 
@@ -98,7 +92,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 以下の手順を使用して、デプロイメントまたはクラウド サービスを削除します。
 
-1. [Azure Portal][Azure portal] で、削除するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
+1. [Azure ポータル][Azure portal]で、削除するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
 
 2. ブレードで、 **[削除]** を選択します。
 

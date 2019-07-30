@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d44877e35687745ddba51d4d015729e62106c9ca
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273466"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348438"
 ---
 # <a name="quickstart-change-model-using-c"></a>クイック スタート: C# を使ってモデルを変更する
 
@@ -49,7 +49,7 @@ Visual Studio プロジェクトに **System.Web** が必要です。 ソリュ�
 
 ### <a name="add-other-dependencies"></a>その他の依存関係を追加する
 
-Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParser** が必要です。 ソリューション エクスプローラーで、**[参照設定]** を右クリックし、**[NuGet パッケージの管理]** を選択します。2 つのパッケージをそれぞれ参照して追加します。 
+Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParser** が必要です。 ソリューション エクスプローラーで、 **[参照設定]** を右クリックし、 **[NuGet パッケージの管理]** を選択します。2 つのパッケージをそれぞれ参照して追加します。 
 
 ![サード パーティの依存関係の追加](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -57,7 +57,7 @@ Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParse
 ### <a name="write-the-c-code"></a>C# コードを作成する
 次のような **Program.cs** ファイルを作成します。
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,7 +115,7 @@ LUIS ID と文字列を **Program** クラスに追加します。
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>utterances.json を出力ディレクトリにコピーします。
 
-ソリューション エクスプローラーで、ソリューション エクスプローラーのプロジェクト名を右クリックして `utterances.json` を追加し、**[追加]**、**[既存の項目]** の順に選択します。 `utterances.json` ファイルを選択します。 これで、ファイルがプロジェクトに追加されます。 次に、これを出力方向に追加する必要があります。 `utterances.json` を右クリックし、**[プロパティ]** を選択します。 プロパティ ウィンドウで、`Content` の **[ビルド アクション]** と、`Copy Always` の **[出力ディレクトリにコピー]** をマークします。  
+ソリューション エクスプローラーで、ソリューション エクスプローラーのプロジェクト名を右クリックして `utterances.json` を追加し、 **[追加]** 、 **[既存の項目]** の順に選択します。 `utterances.json` ファイルを選択します。 これで、ファイルがプロジェクトに追加されます。 次に、これを出力方向に追加する必要があります。 `utterances.json` を右クリックし、 **[プロパティ]** を選択します。 プロパティ ウィンドウで、`Content` の **[ビルド アクション]** と、`Copy Always` の **[出力ディレクトリにコピー]** をマークします。  
 
 ![JSON ファイルをコンテンツとしてマークする](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 

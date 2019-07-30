@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67829b6245fe4fea8da88c97fa8d5aeedccc90a0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204034"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446620"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -124,7 +124,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
    f. **[OK]** を選択してプールを作成します。
 
 #### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
-[Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf Software 製) を使用して、Storage プロジェクトのデータを検査し、変更します。 また、クラウドホスト型アプリケーションのログのデータを検査して変更することもできます。
+[Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf Software 製) を使用して、Storage プロジェクトのデータを検査し、変更します。 また、クラウドホスト型アプリケーションのログのデータを検査して変更することもできます。
 
 1. プライベートなアクセス (匿名アクセスなし) で **mycontainer** という名前のコンテナーを作成します。
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6faf023d36ea40e3694161ee0cfc8aac7c5652fa
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a8aa5f441e5b356d24d0150569b956da110aa734
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898392"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101393"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル:Azure Active Directory と HackerOne の統合
 

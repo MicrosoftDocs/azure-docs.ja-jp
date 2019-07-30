@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse のトランザクションの最適化 | Microsoft Docs
 description: ロールバックに長時間かかるリスクを最小限に抑えながら、Azure SQL Data Warehouse でトランザクション コードのパフォーマンスを最適化する方法について説明します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ab1da9fce74359448311591986d57abbbcef066
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873647"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479672"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのトランザクションの最適化
 ロールバックに長時間かかるリスクを最小限に抑えながら、Azure SQL Data Warehouse でトランザクション コードのパフォーマンスを最適化する方法について説明します。

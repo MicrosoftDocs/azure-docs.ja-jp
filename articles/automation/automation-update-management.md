@@ -4,17 +4,17 @@ description: この記事では、Azure Update Management ソリューション�
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4df40febefa872fa52afdfaaf31b94dba7000af5
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 3bfec413430de588be6c4423702d41779a8426d0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729481"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477978"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -39,13 +39,13 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 Update Management を使用して、同じテナント内の複数のサブスクリプションにマシンをネイティブにオンボードできます。
 
-CVE がリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2 ～ 3 時間かかります。  Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 ～ 15 時間かかります。
+パッケージがリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2、3 時間かかります。 Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 ～ 15 時間かかります。
 
 コンピューターが更新プログラムのコンプライアンスを確認するためにスキャンを完了した後、エージェントによって情報が Azure Monitor ログに一括転送されます。 Windows コンピューターでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
 
 このスキャン スケジュールに加えて、MMA の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムのコンプライアンスを確認するためのスキャンが開始されます。
 
-Linux コンピューターでは、コンプライアンス スキャンは既定では 3 時間ごとに実行されます。 MMA エージェントを再起動した場合は、コンプライアンス スキャンは 15 分以内に開始されます。
+Linux コンピューターでは、コンプライアンス スキャンは既定で 1 時間ごとに実行されます。 MMA エージェントを再起動した場合は、コンプライアンス スキャンは 15 分以内に開始されます。
 
 このソリューションは、同期先として構成されたソースに基づいて、コンピューターがどの程度最新の状態であるかをレポートします。 Windows コンピューターが WSUS にレポートするよう構成されている場合、WSUS が Microsoft Update と最後に同期したタイミングによっては、その結果が Microsoft Updates の示す内容と一致しない場合があります。 この動作は、パブリック リポジトリではなくローカル リポジトリにレポートするよう構成されている Linux コンピューターも同様です。
 
@@ -223,7 +223,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 新しい更新プログラムのデプロイを作成するには、 **[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ページが開きます。 次の表で説明されているプロパティの値を入力し、 **[作成]** をクリックします。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 | Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
@@ -303,7 +303,7 @@ Update Management は、Windows の更新プログラムのダウンロードと
 
 ### <a name="pre-download-updates"></a>更新プログラムの事前ダウンロード
 
-グループ ポリシーで更新プログラムを自動的にダウンロードするように構成するには、[[自動更新を構成する]](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) 設定を **[3]** に設定します。 これで、必要な更新プログラムはバックグラウンドでダウンロードされますが、インストールされません。 そのため、Update Management のスケジュールを管理しながら、更新プログラムの管理のメンテナンス期間以外に更新プログラムをダウンロードできます。 この方法で Update Management の "**メンテナンス期間を超過しました**" エラーを防ぐことができます。
+グループ ポリシーで更新プログラムを自動的にダウンロードするように構成するには、[[自動更新を構成する]](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) 設定を **[3]** に設定します。 これで、必要な更新プログラムはバックグラウンドでダウンロードされますが、インストールされません。 そのため、Update Management のスケジュールを管理しながら、更新プログラムの管理のメンテナンス期間以外に更新プログラムをダウンロードできます。 この方法で Update Management の "**メンテナンス期間を超過しました**" エラーを防ぐことができます。
 
 この設定は PowerShell で行うこともできます。更新プログラムを自動ダウンロードするシステム上で、次の PowerShell を実行してください。
 

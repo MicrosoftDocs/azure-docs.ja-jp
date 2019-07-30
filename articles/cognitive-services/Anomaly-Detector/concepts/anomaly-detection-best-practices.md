@@ -1,20 +1,21 @@
 ---
 title: Anomaly Detector API の利用に関するベスト プラクティス
+titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API を使用して異常を検出する場合のベスト プラクティスについて説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692197"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721626"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomaly Detector API の使用に関するベスト プラクティス
 
@@ -51,7 +52,7 @@ Anomaly Detector API のバッチの検出エンドポイントにより、時�
 
 ## <a name="data-preparation"></a>データの準備
 
-Anomaly Detector API では、JSON 要求オブジェクトへフォーマットされた時系列データを受け入れます。 時系列データは、一定期間にわたって順番に記録された数値データです。 API のパフォーマンスを改善するために、複数の時間枠の時系列データを Anomaly Detector API エンドポイントに送信できます。 送信できるデータ ポイントの最小数は 12 ポイントで、最大数は 8640 ポイントです。 
+Anomaly Detector API では、JSON 要求オブジェクトへフォーマットされた時系列データを受け入れます。 時系列データは、一定期間にわたって順番に記録された数値データです。 API のパフォーマンスを改善するために、複数の時間枠の時系列データを Anomaly Detector API エンドポイントに送信できます。 送信できるデータ ポイントの最小数は 12 ポイントで、最大数は 8640 ポイントです。 [粒度](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview)は、データがサンプリングされる速度と定義されています。 
 
 Anomaly Detector API に送信されるデータ ポイントには、有効な協定世界時 (UTC) のタイムスタンプと、数値が含まれている必要があります。 
 
@@ -68,6 +69,15 @@ Anomaly Detector API に送信されるデータ ポイントには、有効な�
         "value": 29615278
       },
     ]
+}
+```
+
+データが非標準の時間間隔でサンプリングされている場合は、要求に `customInterval` 属性を追加することでこれを指定できます。 たとえば、系列が 5 分ごとにサンプリングされている場合は、JSON 要求に次のコードを追加できます。
+
+```json
+{
+    "granularity" : "minutely", 
+    "customInterval" : 5
 }
 ```
 

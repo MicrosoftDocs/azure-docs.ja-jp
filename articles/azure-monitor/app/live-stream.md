@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8203cade1d2e34a9852e945df03dc2fddc1fbe5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721094"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359421"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream は、[プロファイラー](../../azure-monitor/app/profiler.md)、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)、[パフォーマンス テスト](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests)とともに、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを提供します。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 [プロファイラー](../../azure-monitor/app/profiler.md)、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)と共に、 Live Metrics Stream によって、ライブ Web サイトに影響を与えない強力な診断ツールが提供されます。
 
 Live Metrics Stream を使用すると、次のことが可能になります。
 
@@ -175,13 +175,13 @@ startup.cs ファイルを次のように変更します。
 
 最初に以下を追加します。
 
-``` C#
+```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 ```
 
 その後、ConfigureServices メソッド内で以下を追加します。
 
-``` C#
+```csharp
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
@@ -192,15 +192,6 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 >[!NOTE]
 >フィルター条件に CustomerID などの機密情報を入力する前に、認証済みチャネルを設定することを強くお勧めします。
 >
-
-## <a name="generating-a-performance-test-load"></a>パフォーマンス テスト負荷の生成
-
-負荷増加の影響を確認するには、パフォーマンス テスト ブレードを使用します。 これは、複数の同時ユーザーからの要求をシミュレートします。 単一の URL の "手動テスト" (ping テスト) を実行することも、アップロードする[複数ステップの Web パフォーマンス テスト](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)を (可用性テストと同じ方法で) 実行することもできます。
-
-> [!TIP]
-> パフォーマンス テストを作成したあと、テストと Live Stream ブレードを別々のウィンドウで開きます。 キューに登録済みのパフォーマンス テストの開始を確認でき、同時にライブ ストリームを見ることができます。
->
-
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

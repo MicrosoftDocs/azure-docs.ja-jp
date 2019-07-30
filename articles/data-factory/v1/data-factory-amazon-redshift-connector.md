@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541929"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60335431"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-amazon-redshift-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-amazon-redshift.md)
 
@@ -62,12 +62,12 @@ ms.locfileid: "57541929"
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |[はい] |
-| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
+| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |はい |
+| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
 | **port** |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439) |
-| **database** |Amazon Redshift データベースの名前。 |[はい] |
-| **username** |データベースへのアクセス権があるユーザーの名前。 |[はい] |
-| **password** |ユーザー アカウントのパスワードです。 |[はい] |
+| **database** |Amazon Redshift データベースの名前。 |はい |
+| **username** |データベースへのアクセス権があるユーザーの名前。 |はい |
+| **password** |ユーザー アカウントのパスワードです。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -88,7 +88,7 @@ ms.locfileid: "57541929"
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **query** | カスタム クエリを使用してデータを読み取ります。 |いいえ (データセットの **tableName** プロパティが指定されている場合) |
-| **redshiftUnloadSettings** | Redshift の **UNLOAD** コマンドを使用する場合のプロパティ グループが含まれます。 | いいえ  |
+| **redshiftUnloadSettings** | Redshift の **UNLOAD** コマンドを使用する場合のプロパティ グループが含まれます。 | いいえ |
 | **s3LinkedServiceName** | 中間ストアとして使用する Amazon S3 です。 リンクされたサービスは、**AwsAccessKey** 型の Azure Data Factory 名を使用して指定します。 | **redshiftUnloadSettings** プロパティを使用する場合に必要です |
 | **bucketName** | 中間データを格納するための Amazon S3 バケットを示します。 このプロパティを指定しない場合、コピー アクティビティによってバケットが自動生成されます。 | **redshiftUnloadSettings** プロパティを使用する場合に必要です |
 
@@ -336,12 +336,12 @@ Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/
 | DECIMAL |Decimal |
 | REAL |Single |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |String |
-| CHAR |String |
-| VARCHAR |String |
+| BOOLEAN |string |
+| CHAR |string |
+| VARCHAR |string |
 | DATE |DateTime |
 | TIMESTAMP |DateTime |
-| TEXT |String |
+| TEXT |string |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピング方法の詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。

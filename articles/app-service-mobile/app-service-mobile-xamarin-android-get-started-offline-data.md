@@ -2,7 +2,7 @@
 title: Azure モバイル アプリ (Xamarin Android) に対するオフライン同期の有効化
 description: App Service モバイル アプリを使用して、Xamarin Android アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,18 +12,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 7e951b9f2c2fda3c63f154b5b144addcbf65aacf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9409260af0fd9739ae68545eca102ee420e9b2e8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127966"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440138"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Xamarin Android モバイル アプリのオフライン同期を有効にする
 
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-android-get-started-offline-data) を今すぐチェックしてください。
+>
 
 ## <a name="overview"></a>概要
 
@@ -120,7 +124,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Azure Mobile Apps でのオフライン データ同期]
-* [Azure Mobile Apps .NET SDK HOWTO][8]
+* [Azure Mobile Apps .NET SDK の使用方法][8]
 
 <!-- URLs. -->
 [Create a Xamarin Android app (Xamarin Android アプリの作成)]: ./app-service-mobile-xamarin-android-get-started.md

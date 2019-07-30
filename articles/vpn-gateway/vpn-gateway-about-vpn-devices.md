@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/05/2019
 ms.author: yushwang
-ms.openlocfilehash: 6535949767999e04b11106ff8a294e912a6d0fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8301594f63efaa5c6484a4dfd640aafa96cf15a0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388847"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666257"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -31,10 +31,6 @@ VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス V
 
 ## <a name="devicetable"></a>検証済みの VPN デバイスとデバイス構成ガイド
 
-> [!NOTE]
-> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。
->
-
 Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、VPN ゲートウェイで動作します。 構成する VPN Gateway ソリューションの VPN の種類 (PolicyBased または RouteBased) については、[VPN ゲートウェイの設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)に関するページを参照してください。
 
 VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。 構成方法へのリンクは、入手できる範囲で記載しています。 VPN デバイスのサポートについては、デバイスの製造元に問い合わせてください。
@@ -48,6 +44,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Check Point |セキュリティ ゲートウェイ |R80.10 |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4 以降 (IKEv2*) |サポートされています |[構成ガイド*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased:IOS 15.1<br>RouteBased:IOS 15.2 |サポートされています |サポートされています |
+| Cisco | CSR | RouteBased:IOS-XE 16.10 | | [構成スクリプト](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased:IOS 15.0<br>RouteBased*:IOS 15.1 |サポートされています |サポートされています |
 | Cisco |Meraki |該当なし |互換性なし |互換性なし |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |

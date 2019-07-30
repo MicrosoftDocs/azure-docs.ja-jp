@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seojan2018
-ms.openlocfilehash: e5f7ee172563a81d45e3a35da2cfc7e8731de48d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1ca8a5ce7b615ed8d84c91d8a0d72098c175c44
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023851"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672126"
 ---
 # <a name="custom-web-api-skill"></a>カスタム Web API スキル
 
@@ -205,4 +205,4 @@ Web API が利用できないか、HTTP エラーが返された場合は、HTTP
 
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [コグニティブ検索にカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
-+ [Text Translate API を使用してカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
++ [例:コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)

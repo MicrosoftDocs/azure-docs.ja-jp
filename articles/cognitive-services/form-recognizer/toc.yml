@@ -7,7 +7,7 @@
 - name: クイック スタート
   expaned: true
   items:
-    - name: モデルをトレーニングしてデータを抽出する
+    - name: カスタム モデルをトレーニングしてデータを抽出する
       items:
         - name: REST API の使用
           items:
@@ -15,8 +15,18 @@
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
+    - name: レシートに関する事前構築済みモデルを使用する
+      items:
+        - name: REST API の使用
+          items:
+            - name: cURL
+              href: quickstarts/curl-receipts.md
+            - name: Python
+              href: quickstarts/python-receipts.md
 - name: ハウツー ガイド
   items:
+    - name: トレーニング データ セットの作成
+      href: build-training-data-set.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行
@@ -25,10 +35,16 @@
         - name: コンテナーを構成する
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: Container Instances の使用
+          href: deploy-form-recognizer-on-container-instances.md
 - name: リファレンス
   items:
     - name: Form Recognizer API
       href: 'https://aka.ms/form-recognizer/api'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
 - name: リソース
   items:
     - name: 料金と制限

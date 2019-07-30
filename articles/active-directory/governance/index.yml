@@ -6,14 +6,14 @@ metadata:
   title: Azure Active Directory Identity Governance のドキュメント | Microsoft Docs
   description: ID ライフサイクルとアクセス ライフサイクルのガバナンスのほか、従業員とパートナーにわたる安全な管理について説明します。
   services: active-directory
-  author: rolyon
-  manager: mtillman
+  author: msaburnley
+  manager: daveba
   ms.service: active-directory
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/18/2019
-  ms.author: rolyon
+  ms.author: ajburnle
 abstract:
   description: Azure Active Directory (Azure AD) Identity Governance を利用すれば、組織は ID ライフサイクルとアクセス ライフサイクルのガバナンスを実現できるほか、従業員とパートナーにわたって安全な管理を実現できます。
   aside:

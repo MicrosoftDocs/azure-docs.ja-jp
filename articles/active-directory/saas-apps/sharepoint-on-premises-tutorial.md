@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e85f390ee5ff74f02cb95fa4dcf1dfc1a35dad1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 21c10e142802914bcf3292ef7f25066675e6cdd1
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699856"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>チュートリアル:Azure Active Directory と SharePoint オンプレミスの統合
 
@@ -56,6 +56,9 @@ Azure AD への SharePoint オンプレミスの統合を構成するには、�
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
+
+    > [!NOTE]   
+    > この要素を使用できない場合は、左側のナビゲーション ウィンドウの上部にある固定された **[すべてのサービス]** リンクを通して開くこともできます。 以下の概要では、 **[Azure Active Directory]** リンクは **[ID]** セクションに配置されています。または、フィルター テキスト ボックスを使用して検索できます。
 
 2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-wingf-msft
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad0ee590572dbc92e67be9f84ffc65afc3e8473
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8368fc5369ee6cd93bbf472d4904cd647d66058d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60282181"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673033"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Bonusly を構成する
 

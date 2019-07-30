@@ -3,19 +3,18 @@ title: Azure Dev Spaces のしくみと構成方法
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 03/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces の使用を開始するためのプロセスおよび azds.yaml 構成ファイルでのそれらの構成方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 083ed45a8fa95ac5fc26af6547b5765acf80e43b
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 83034dd3c99cc030ed770995bf00a6ad9fb57bdc
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154559"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670817"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces のしくみと構成方法
 

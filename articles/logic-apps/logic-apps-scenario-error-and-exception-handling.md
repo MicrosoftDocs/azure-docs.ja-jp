@@ -5,17 +5,17 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: hedidin
-ms.author: b-hoedid
-ms.reviewer: estfan, LADocs
+ms.author: estfan
+ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d57a65bd7c9e5eefdf35b53b210585001be8a2a8
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60599485"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876777"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジック アプリの例外処理とエラーのログ記録
 

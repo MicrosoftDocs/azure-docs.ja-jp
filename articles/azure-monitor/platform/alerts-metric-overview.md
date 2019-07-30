@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244905"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071622"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -36,6 +36,8 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - しきい値: 70
 
 アラート ルールの作成時から、モニターは 1 分ごとに実行し、直近 5 分間のメトリック値を調べ、それらの値の平均値が 70 を超えるかどうかをチェックします。 条件が満たされている場合、つまり直近 5 分間の平均 CPU が 70 を超えている場合、アラート ルールによりアクティブ通知が生成されます。 アラート ルールに関連付けられているアクション グループで、電子メールまたは web フック アクションを構成した場合、両方でアクティブ通知を受け取ります。
+
+1 つのルールに複数の条件を使用している場合、そのルールは条件を "and" で結合します。  つまり、アラートのすべての条件が true と評価されたときにアラートが発生し、条件のいずれかが true ではなくなったときに解決します。 この種類のアラートの and の例は、"CPU が 90% を超過" かつ "キューの長さが 300 項目を超過" である場合のアラートなどです。 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>動的条件タイプのアラート ルール
 

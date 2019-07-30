@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694219"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502683"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
-貴社はパートナーとして、顧客エンゲージメント全体に対するその影響力を追跡できます。 顧客のリソースを管理する際に使用するアカウントには、貴社のパートナー ID をリンクすることができます。
+Microsoft パートナーは、お客様が Microsoft 製品を使用してビジネスや任務の目的を達成できるよう支援するサービスを提供しています。 パートナー ユーザーは、Azure サービスの管理、構成、サポートをお客様に代わって行うときに、お客様の環境にアクセスする必要があります。 パートナーは、パートナー管理者リンクを使用して、パートナー ネットワーク ID をサービス提供に使用される資格情報に関連付けることができます。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -141,11 +141,11 @@ C:\ az managementpartner delete --partner-id 12345
 
 **会社に複数の MPN ID がある場合は、どれを使用すべきですか。**
 
-仮想組織 (v-org) MPN ID 以外の任意の有効な MPN ID を使用できます。 ほとんどのパートナーは、顧客が拠点としている地域またはサービスが提供される地域の MPN ID を使用することを選択します。
+パートナー拠点アカウントおよび関連付けられている MPN ID を、パートナー ID のリンクに使用する必要があります。  パートナー アカウントの詳細については、[こちら](https://docs.microsoft.com/partner-center/account-structure)をご覧ください。
 
 **リンク済みのパートナー ID の影響を受ける収益レポートはどこで確認できますか。**
 
-影響を受ける収益レポートは、[マイ分析情報ダッシュボード](https://partner.microsoft.com/membership/reports/myinsights)で見つかります。 パートナーの関連付けの種類として [Partner Admin Link]\(パートナー管理リンク\) を選択する必要があります。
+"クラウド製品のパフォーマンス" レポートは、パートナー センターの [My Insights ダッシュボード](https://partner.microsoft.com/membership/reports/myinsights)で利用できます。 パートナーの関連付けの種類として [Partner Admin Link]\(パートナー管理リンク\) を選択する必要があります。
 
 **レポートに顧客が表示されないのはなぜですか。**
 

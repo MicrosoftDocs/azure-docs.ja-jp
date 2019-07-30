@@ -3,17 +3,18 @@ title: クイック スタート - Azure Container Instances への Docker コ�
 description: このクイック スタートでは、Azure CLI を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8e504a081f8685107871aed920077dd75a70dfa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a4a1c24211e644a796b4e60537978c327501383
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65908093"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325782"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してコンテナー インスタンスを Azure にデプロイする
 
@@ -23,7 +24,7 @@ ms.locfileid: "65908093"
 
 ![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][aci-app-browser]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][azure-account]を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-account] を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -41,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure CLI を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、および Docker コンテナー イメージを [az container create][az-container-create] コマンドに渡します。 このクイック スタートでは、パブリックの `mcr.microsoft.com/azuredocs/aci-helloworld` イメージを使用します。 このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。
+リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure CLI を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、Docker コンテナー イメージを [az container create][az-container-create] コマンドに指定します。 このクイック スタートでは、パブリックの `mcr.microsoft.com/azuredocs/aci-helloworld` イメージを使用します。 このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。
 
 1 つまたは複数の開くポート、DNS 名ラベル、またはその両方を指定することで、コンテナーをインターネットに公開することができます。 このクイック スタートでは、Web アプリにパブリックに到達できるよう、DNS 名ラベルを指定してコンテナーをデプロイします。
 
@@ -51,7 +52,7 @@ az group create --name myResourceGroup --location eastus
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
-数秒以内に、Azure CLI からデプロイが完了したことを示す応答を受信します。 [az container show][az-container-show] コマンドを使用して、コンテナーの状態を確認します。
+数秒以内に、Azure CLI からデプロイが完了したことを示す応答を受信します。 [az container show][az-container-show] コマンドを使用して、その状態を確認します。
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
@@ -124,7 +125,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-コンテナーを使い終えたら、[az container delete][az-container-delete] コマンドを使用して、そのコンテナーを削除します。
+コンテナーでの処理が完了したら、[az container delete][az-container-delete] コマンドを使用して、そのコンテナーを削除します。
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -138,7 +139,7 @@ az container list --resource-group myResourceGroup --output table
 
 **mycontainer** コンテナーは、コマンドの出力に表示されません。 リソース グループに別のコンテナーがない場合、出力は表示されません。
 
-*myResourceGroup* リソース グループとそこに含まれるすべてのリソースの操作が終了したら、[az group delete][az-group-delete] コマンドを使用してそれを削除します。
+*myResourceGroup* リソース グループとそこに含まれるすべてのリソースの処理が完了したら、[az group delete][az-group-delete] コマンドを使用してそれを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

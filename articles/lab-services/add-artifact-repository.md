@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ff036fbdf3ae9360bed8d728b9bec3a1937b70a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c391aa157e35bdc389bd30efe48fa380d06c193e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808255"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508362"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs でラボにアーティファクト リポジトリを追加する
 DevTest Labs では、VM の作成時または VM が作成された後に VM に追加されるアーティファクトを指定できます。 このアーティファクトには、VM にインストールするツールやアプリケーションがあります。 アーティファクトは、GitHub または Azure DevOps リポジトリから読み込まれた JSON ファイルで定義されます。 
@@ -303,7 +303,7 @@ $propertiesObject = @{
     status = 'Enabled'
 }
 
-Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"@
+Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"
 
 #Resource will be added to current subscription.
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'

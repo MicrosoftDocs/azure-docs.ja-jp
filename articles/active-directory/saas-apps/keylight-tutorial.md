@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a03bb2626525bf022b109105a7c6bc0dee23aea
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>チュートリアル:Azure Active Directory と LockPath Keylight の統合
 
@@ -55,11 +55,11 @@ Azure AD への LockPath Keylight の統合を構成するには、ギャラリ�
 
 **ギャラリーから LockPath Keylight を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への LockPath Keylight の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**LockPath Keylight**」と入力し、結果ウィンドウで **LockPath Keylight** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**LockPath Keylight**」と入力し、結果ウィンドウで **LockPath Keylight** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の LockPath Keylight](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
 
 LockPath Keylight で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **LockPath Keylight** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **LockPath Keylight** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -116,7 +116,7 @@ LockPath Keylight で Azure AD シングル サインオンを構成するには
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[LockPath Keylight クライアント サポート チーム](https://www.lockpath.com/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -158,7 +158,7 @@ LockPath Keylight で Azure AD シングル サインオンを構成するには
 
     c. **[ID プロバイダーのログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-    d. **[Choose File]\(ファイルの選択\)** をクリックし、ダウンロードした LockPath Keylight 証明書を選択して、**[Open]\(開く\)** をクリックして証明書をアップロードします。
+    d. **[Choose File]\(ファイルの選択\)** をクリックし、ダウンロードした LockPath Keylight 証明書を選択して、 **[Open]\(開く\)** をクリックして証明書をアップロードします。
 
     e. **[SAML ユーザー ID の場所]** を **[Subject ステートメントの NameIdentifier 要素]** に設定します。
 
@@ -168,15 +168,15 @@ LockPath Keylight で Azure AD シングル サインオンを構成するには
 
     h. **[アカウント タイプの自動プロビジョニング]** を **[すべてのユーザー]** に設定します。
 
-    i. **[Auto-provision security role]\(セキュリティ ロールの自動プロビジョニング\)** を設定し、**[Standard User with SAML]\(SAML を使用する標準ユーザー\)** を選択します。
+    i. **[Auto-provision security role]\(セキュリティ ロールの自動プロビジョニング\)** を設定し、 **[Standard User with SAML]\(SAML を使用する標準ユーザー\)** を選択します。
 
-    j. **[Auto-provision security config]\(セキュリティ構成の自動プロビジョニング\)** を設定し、**[Standard User Configuration]\(標準ユーザー構成\)** を選択します。
+    j. **[Auto-provision security config]\(セキュリティ構成の自動プロビジョニング\)** を設定し、 **[Standard User Configuration]\(標準ユーザー構成\)** を選択します。
 
-    k. **[Email Attribute]\(電子メール属性\)** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+    k. **[Email Attribute]\(電子メール属性\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
-    l. **[First name attribute]\(名属性\)** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
+    l. **[First name attribute]\(名属性\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
 
-    m. **[Last name attribute]\(姓属性\)** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
+    m. **[Last name attribute]\(姓属性\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
 
     n. **[Save]** をクリックします。
 
@@ -184,7 +184,7 @@ LockPath Keylight で Azure AD シングル サインオンを構成するには
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -208,7 +208,7 @@ LockPath Keylight で Azure AD シングル サインオンを構成するには
 
 このセクションでは、Britta Simon に LockPath Keylight へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[LockPath Keylight]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[LockPath Keylight]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -220,15 +220,15 @@ LockPath Keylight で Azure AD シングル サインオンを構成するには
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-lockpath-keylight-test-user"></a>LockPath Keylight テスト ユーザーを作成する
 

@@ -4,15 +4,15 @@ description: Windows Virtual Desktop テナント環境の設定時の問題の�
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 8e344d6908ba19f8e2294c7777b9c1016eafaf52
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b349d7f384c801e95d745f7a18535f9f5d13cf86
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928708"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605209"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>トラブルシューティングの概要、フィードバック、サポート
 
@@ -24,7 +24,7 @@ Windows Virtual Desktop がプレビューの間は、サポート ケースを�
 
 ## <a name="escalation-tracks"></a>エスカレーション トラック
 
-リモート デスクトップ クライアントを使用してテナント環境を設定しているときに発生することがある問題を特定し、解決するために次の表をご利用ください。
+リモート デスクトップ クライアントを使用してテナント環境を設定しているときに発生することがある問題を特定し、解決するために次の表をご利用ください。 テナントが設定されたら、新しい[診断サービス](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service)を使用して、一般的なシナリオに関する問題を識別できます。
 
 >[!NOTE]
 >Windows Virtual Desktop がプレビューの間は、サポート ケースを受け付けていません。 Windows Virtual Desktop サポートに言及している箇所については、当分の間、Tech Community フォーラムをご覧ください。 [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスすると、製品チームや活発に参加しているコミュニティ メンバーと問題について話し合うことができます。 サポート問題を解決する必要がある場合、アクティビティ ID と問題が発生したおおよその時間枠を含めてください。
@@ -51,7 +51,7 @@ Windows Virtual Desktop がプレビューの間は、サポート ケースを�
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」を参照してください。
 - Windows Virtual Desktop クライアント接続の問題を解決するには、「[リモート デスクトップ クライアントの接続](troubleshoot-client-connection.md)」を参照してください。
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
-- プレビュー サービスの詳細については、[Windows Desktop プレビュー環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)に関するページを参照してください。
+- プレビュー サービスの詳細については、「[Windows Virtual Desktop プレビュー環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)」を参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)」を参照してください。
 - 監査アクションについては、「 [リソース マネージャーの監査操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)に関するページを参照してください。

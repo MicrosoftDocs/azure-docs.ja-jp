@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 11/12/2018
 ms.author: diberry
 ms.openlocfilehash: fd6a4a4e2d779047d252fdc5e3eae8e3fba8b507
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145580"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181475"
 ---
 ## <a name="request-and-response-json"></a>要求と応答の JSON
 

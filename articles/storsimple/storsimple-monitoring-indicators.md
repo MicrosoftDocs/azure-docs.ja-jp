@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 9ae0caec211dc1199f0abd2ce9bc0c7ad11c02ec
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
-ms.locfileid: "24030359"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60630611"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple モニタリング インジケーターを使用してデバイスを管理する
 
@@ -53,7 +53,7 @@ StorSimple デバイスには、StorSimple デバイスの各モジュールお�
 ## <a name="front-panel-led-status"></a>前面パネルの LED の状態
 次の表を参考にして、デバイスまたは EBOD エンクロージャの前面パネルの LED が示す状態を判断してください。  
 
-| システム電源 | モジュール障害 | 論理的な障害 | アラーム | 状態 |
+| システム電源 | モジュール障害 | 論理的な障害 | アラーム | Status |
 | --- | --- | --- | --- | --- |
 | レッドアンバー |OFF |OFF |該当なし |AC 電源が喪失し、バックアップ電源で動作しているか、または AC 電源がオンで、コントローラー モジュールが取り外されています。 |
 | 緑 |ON |ON |該当なし |OPS パネル パワー オン (5s) テスト状態 |
@@ -86,7 +86,7 @@ LED の凡例:
 PCM の状態は、LED パネルに表示されます。 デバイスの PCM LED パネルには、6 つの LED があります。 そのうち 4 つの LED は、電源とファンの状態を示します。 残りの 2 つの LED は、PCM 内のバックアップ バッテリ モジュールの状態を示します。 次の表を参考にして、PCM の状態を判断してください。  
 
 ### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>電源とファンの PCM インジケーター LED
-| 状態 | PCM OK (緑) | AC 障害 (アンバー) | ファン障害 (アンバー) | DC 障害 (アンバー) |
+| Status | PCM OK (緑) | AC 障害 (アンバー) | ファン障害 (アンバー) | DC 障害 (アンバー) |
 | --- | --- | --- | --- | --- |
 | AC 電源なし (対エンクロージャ) |OFF |OFF |OFF |OFF |
 | AC 電源なし (この PCM のみ) |OFF |ON |OFF |ON |
@@ -98,7 +98,7 @@ PCM の状態は、LED パネルに表示されます。 デバイスの PCM LED
 | PCM ファームウェアのダウンロード |OFF |点滅 |点滅 |点滅 |
 
 ### <a name="pcm-indicator-leds-for-the-backup-battery"></a>バックアップ バッテリの PCM インジケーター LED
-| 状態 | バッテリ良好 (緑) | バッテリ障害 (アンバー) |
+| Status | バッテリ良好 (緑) | バッテリ障害 (アンバー) |
 | --- | --- | --- |
 | バッテリなし |OFF |OFF |
 | バッテリあり、充電済み |ON |OFF |
@@ -114,12 +114,12 @@ EBOD エンクロージャには、580W PCM が搭載されています。予備
 
 次の表を参考にして、PCM の状態を判断してください。  
 
-| 状態 | PCM OK (緑) | AC 障害 (アンバー) | ファン障害 (アンバー) | DC 障害 (アンバー) |
+| Status | PCM OK (緑) | AC 障害 (アンバー) | ファン障害 (アンバー) | DC 障害 (アンバー) |
 | --- | --- | --- | --- | --- |
 | AC 電源なし (対エンクロージャ) |OFF |OFF |OFF |OFF |
 | AC 電源なし (この PCM のみ) |OFF |ON |OFF |ON |
 | AC あり PCM ON - OK |ON |OFF |OFF |OFF |
-| PCM 障害 (ファンの障害) |OFF |OFF |ON |○ |
+| PCM 障害 (ファンの障害) |OFF |OFF |ON |X |
 | PCM 障害 (過増幅、過電圧、過電流) |OFF |ON |ON |ON |
 | PCM (ファン許容範囲超過) |ON |OFF |OFF |ON |
 | スタンバイ モード |点滅 |OFF |OFF |OFF |
@@ -129,14 +129,14 @@ EBOD エンクロージャには、580W PCM が搭載されています。予備
 StorSimple デバイスは、StorSimple デバイスのプライマリ コントローラーおよび EBOD コントローラー モジュールの LED を備えています。   
 
 ### <a name="monitoring-leds-for-the-primary-controller"></a>プライマリ コントローラーの監視 LED
-次の図を参考にして、プライマリ コントローラーの LED を識別してください  (位置を把握できるようにすべてのコンポーネントが示されています)。  
+次の図を参考にして、プライマリ コントローラーの LED を識別してください (位置を把握できるようにすべてのコンポーネントが示されています)。  
 
    ![LED の監視 - プライマリ コントローラー][4]
 
 次の表を使用して、コントローラー モジュールが正常に動作しているかどうかを判断してください。  
 
 ### <a name="controller-indicator-leds"></a>コントローラー インジケーター LED
-| LED | Description |
+| LED | 説明 |
 | --- | --- |
 | ID LED (青) |モジュールが識別されていることを示します。 青色の LED が動作中のコントローラーで点滅している場合、そのコントローラーがアクティブ コントローラーで、もう一方がスタンバイ コントローラーです。 詳細については、「 [デバイスでのアクティブなコントローラーの識別](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)」をご覧ください。 |
 | 障害 LED (アンバー) |コントローラー内の障害を示します。 |
@@ -158,7 +158,7 @@ StorSimple デバイスは、StorSimple デバイスのプライマリ コント
 次の表を使用して、EBOD コントローラー モジュールが正常に動作しているかどうかを判断してください。  
 
 ### <a name="ebod-controller-module-indicator-leds"></a>EBOD コントローラー モジュール インジケーター LED
-| 状態 | I/O モジュール OK (緑) | I/O モジュール障害 (アンバー) | ホスト ポート アクティビティ (緑) |
+| Status | I/O モジュール OK (緑) | I/O モジュール障害 (アンバー) | ホスト ポート アクティビティ (緑) |
 | --- | --- | --- | --- |
 | コントローラー モジュール - 問題なし |ON |OFF |- |
 | コントローラー モジュール - 障害あり |OFF |ON |- |
@@ -177,10 +177,10 @@ StorSimple デバイスには、主エンクロージャと EBOD エンクロー
 次の表を参考にして、各ディスク ドライブの状態を判断してください。ディスク ドライブの状態は、前面パネルの全体の LED の状態に影響を及ぼします。  
 
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>EBOD エンクロージャのディスク ドライブ インジケーター LED
-| 状態 | アクティビティ OK LED (緑) | 障害 LED (レッドアンバー) | 関連する OPS パネル LED |
+| Status | アクティビティ OK LED (緑) | 障害 LED (レッドアンバー) | 関連する OPS パネル LED |
 | --- | --- | --- | --- |
 | ドライブが取り付けられていない |OFF |OFF |なし |
-| ドライブが取り付けられており、動作可能である |アクティビティ状態に応じて点滅のオン/オフ |○ |なし |
+| ドライブが取り付けられており、動作可能である |アクティビティ状態に応じて点滅のオン/オフ |X |なし |
 | SES (SCSI エンクロージャ サービス) デバイス ID が設定されている |ON |1 秒点灯/1 秒消灯の点滅 |なし |
 | SES デバイス障害ビットが設定されている |ON |ON |論理的な障害 (赤) |
 | 電源制御回路の障害 |OFF |ON |モジュール障害 (赤) |
@@ -200,7 +200,7 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 次の表に、各種のアラーム状態を説明します。  
 
 ### <a name="alarm-states"></a>アラーム状態
-| アラーム状態 | アクション | ミュート ボタンが押された場合のアクション |
+| アラーム状態 | Action | ミュート ボタンが押された場合のアクション |
 | --- | --- | --- |
 | S0 |通常モード: サイレント |ビープ音が 2 度鳴る |
 | S1 |障害モード: 1 秒点灯、1 秒消灯 |S2 または S3 への移行 (注を参照) |
@@ -219,7 +219,7 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 次の表に、各種のアラーム状態を説明します。
 
 ### <a name="alarm-conditions"></a>アラーム状態
-| 状態 | 重大度 | アラーム | OPS パネル LED |
+| Status | 重大度 | アラーム | OPS パネル LED |
 | --- | --- | --- | --- |
 | PCM アラート - 1 つの PCM の DC 電源の喪失 |障害 - 冗長性は失われていない |S1 |モジュール障害 |
 | PCM アラート - 1 つの PCM の DC 電源の喪失 |障害 - 冗長性損失 |S1 |モジュール障害 |
@@ -241,7 +241,7 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 | ドライブが取り外されている |警告 |なし |モジュール障害 |
 | 電力供給が不十分である |警告 |なし |モジュール障害 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [StorSimple ハードウェア コンポーネントと状態](storsimple-8000-monitor-hardware-status.md)の詳細を確認します。
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png

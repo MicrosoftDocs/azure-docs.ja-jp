@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: dbef7c2cb8de5a1b4bbb3073f694b8f77c9f441b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: eae23806ee1b4e2dac1d3410e32c3242e89d4be8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231285"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719825"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>チュートリアル:Ansible を使用して Azure Kubernetes Service (AKS) でロールベースのアクセス制御 (RBAC) ロールを構成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "65231285"
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>AKS 認証用に Azure AD を構成する
 
-AKS 認証用に Azure AD を構成すると、2 つの Azure AD アプリケーションが構成されます。 この操作は、Azure テナント管理者が行う必要があります。 詳細については、[Azure Active Directory と AKS の統合](/azure/aks/aad-integration#create-server-application)に関するページをご覧ください。 
+AKS 認証用に Azure AD を構成すると、2 つの Azure AD アプリケーションが構成されます。 この操作は、Azure テナント管理者が行う必要があります。 詳細については、[Azure Active Directory と AKS の統合](/azure/aks/aad-integration#create-the-server-application)に関するページをご覧ください。 
 
 Azure テナント管理者に問い合わせて、次の値を取得します。
 
@@ -73,7 +73,7 @@ Azure テナント管理者に問い合わせて、次の値を取得します�
       location: "{{ location }}"
 
 - name: List supported kubernetes version from Azure
-  azure_rm_aks_version:
+  azure_rm_aksversion_facts:
       location: "{{ location }}"
   register: versions
 
@@ -135,7 +135,7 @@ RBAC のバインドを作成するには、まず Azure AD オブジェクト I
 
 1. **[名前]** 列で、お使いのアカウントへのリンクを選択します。
 
-1. **[ID]** セクションで、**[オブジェクト ID]** をコピーします。
+1. **[ID]** セクションで、 **[オブジェクト ID]** をコピーします。
 
     ![Azure AD オブジェクト ID をコピーします。](./media/ansible-aks-configure-rbac/ansible-aad-object-id.png)
 

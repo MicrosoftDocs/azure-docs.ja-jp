@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: lyrana
+ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a57089eb2cd87b08ba647afed002d90d6f14891a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66162116"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846656"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins 内でのロールの割り当ての作成と管理
 
@@ -39,7 +39,7 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 次の表は、各属性を示しています。
 
-| Attribute | Name | 必須 | Type | 説明 |
+| Attribute | EnableAdfsAuthentication | 必須 | Type | 説明 |
 | --- | --- | --- | --- | --- |
 | roleId | ロール定義識別子 | はい | string | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
 | objectId | オブジェクト識別子 | はい | string | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |

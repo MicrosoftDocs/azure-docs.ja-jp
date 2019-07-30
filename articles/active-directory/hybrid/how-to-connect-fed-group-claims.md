@@ -5,19 +5,19 @@ services: active-directory
 documentationcenter: ''
 ms.reviewer: paulgarn
 manager: daveba
-ms.component: hybrid
+ms.subservice: hybrid
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d547c73137605e4666499b568bdcebce394935a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138693"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595220"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory (パブリック プレビュー) を使ってアプリケーションに対するグループ要求を構成する
 

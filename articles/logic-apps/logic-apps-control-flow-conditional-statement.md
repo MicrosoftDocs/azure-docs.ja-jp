@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60684808"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
 
@@ -39,13 +39,13 @@ ms.locfileid: "50230337"
 
 1. 必要な場所に条件を追加します。 
 
-   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。 例: 
+   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。 例:
 
    ![ステップの間にアクションを追加する](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
    ワークフローの末尾に条件を追加するときは、ロジック アプリの一番下で **[新しいステップ]** > **[アクションの追加]** を選択します。
 
-1. 検索ボックスに、フィルターとして「条件」と入力します。 アクション **[条件 - 制御]** を選択します
+1. 検索ボックスに、フィルターとして「条件」と入力します。 このアクションを選択: **[条件] - [Control]\(コントロール)\**
 
    ![条件を追加する](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
@@ -62,17 +62,17 @@ ms.locfileid: "50230337"
    この例では、 **[次の値を含む]** を選択します。 
 
    1. 右のボックスに、条件として値またはフィールドを指定します。 
-   この例では、**Microsoft** の文字列を指定します。
+   この例では、次の文字列を指定します。**Microsoft**
 
    完成した条件を次に示します。
 
    ![完成した条件](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   条件に別の行を追加するには、**[追加]** > **[行の追加]** を選択します。 
-   サブ条件のグループを追加するには、**[追加]** > **[グループの追加]** を選択します。 
-   既存の行をグループ化するには、グループ化する行のチェック ボックスをオンにし、いずれかの行の省略記号 [...] ボタンを選択して、**[Make group]\(グループにする\)** を選択します。
+   条件に別の行を追加するには、 **[追加]**  >  **[行の追加]** を選択します。 
+   サブ条件のグループを追加するには、 **[追加]**  >  **[グループの追加]** を選択します。 
+   既存の行をグループ化するには、グループ化する行のチェック ボックスをオンにし、いずれかの行の省略記号 [...] ボタンを選択して、 **[Make group]\(グループにする\)** を選択します。
 
-1. **[If true]\(true の場合\)** と **[If false]\(false の場合\)** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 例: 
+1. **[If true]\(true の場合\)** と **[If false]\(false の場合\)** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 例:
 
    ![[If true]\(true の場合\) パスと [If false]\(false の場合\) パスを使用した条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 

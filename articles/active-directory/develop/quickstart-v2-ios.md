@@ -3,7 +3,7 @@ title: Microsoft ID プラットフォーム iOS のクイック スタート | 
 description: iOS アプリケーションでユーザーにサインインし、Microsoft Graph に対してクエリを実行する方法を説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: brandwe
 manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.author: brandwe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3802d8f92913e416cc6a80f899179fde80cec30
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: bfb136529c606cafa235a525fcbe6e03b1d583d0
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962594"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335597"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>クイック スタート:iOS アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -68,7 +68,7 @@ ms.locfileid: "65962594"
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
-> このクイック スタートのコード サンプルを動作させるには、Auth ブローカーと互換性があるリダイレクト URL を追加する必要があります。 
+> このクイック スタートのコード サンプルを動作させるには、Auth ブローカーと互換性があるリダイレクト URI を追加する必要があります。 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -90,8 +90,7 @@ ms.locfileid: "65962594"
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_here"
 >    let kAuthority = "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
->
->    ```
+>    ``` 
 > 1. **Info.plist** を右クリックし、 **[形式を指定して開く]**  >  **[ソース コード]** を選択します。
 > 1. dict ルート ノードの下で、***バンドル ID*** と置き換えます。
 >
@@ -108,6 +107,10 @@ ms.locfileid: "65962594"
 > 
 >    ```
 > 1. アプリをビルドして実行します。 
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
 
 > [!div renderon="docs"]
 >
@@ -231,7 +234,7 @@ applicationContext.acquireToken(with: parameters) { (result, error) in /* Add yo
 
 #### <a name="acquiretokensilent-getting-an-access-token-silently"></a>acquireTokenSilent:アクセス トークンを自動的に取得する
 
-アプリは、ユーザーがトークンを要求するたびに、サインインすることをユーザーに要求するべきではありません。 ユーザーが既にサインインしている場合、この方法により、アプリはトークンを暗黙的に要求できます。 
+アプリは、ユーザーがトークンを要求するたびに、サインインすることをユーザーに要求するべきではありません。 ユーザーが既にサインインしている場合は、この方法により、アプリはトークンを暗黙的に要求できます。 
 
 ```swift
 let parameters = MSALSilentTokenParameters(scopes: kScopes, account: applicationContext.allAccounts().first)
@@ -253,3 +256,8 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* 
 > [Graph API 呼び出し iOS チュートリアル](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
+
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aef7eb2e3d88bef7d2700d9945b9ff343c17536
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787281"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812811"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -45,12 +45,13 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 これらの関数例では、次の JSON 応答データが生成されます。 すべてのフィールドのデータ型は `string` です。
 
 | フィールド                   |説明                           |
-|-------------------------|--------------------------------------|
-| **`id`**                |オーケストレーション インスタンスの ID。 |
-| **`statusQueryGetUri`** |オーケストレーション インスタンスの状態の URL。 |
-| **`sendEventPostUri`**  |オーケストレーション インスタンスの "イベント発生" URL。 |
-| **`terminatePostUri`**  |オーケストレーション インスタンスの "終了" URL。 |
-| **`rewindPostUri`**     |オーケストレーション インスタンスの "rewind" URL。 |
+|-----------------------------|--------------------------------------|
+| **`id`**                    |オーケストレーション インスタンスの ID。 |
+| **`statusQueryGetUri`**     |オーケストレーション インスタンスの状態の URL。 |
+| **`sendEventPostUri`**      |オーケストレーション インスタンスの "イベント発生" URL。 |
+| **`terminatePostUri`**      |オーケストレーション インスタンスの "終了" URL。 |
+| **`purgeHistoryDeleteUri`** |オーケストレーション インスタンスの "消去履歴" URL。 |
+| **`rewindPostUri`**         |(プレビュー) オーケストレーション インスタンスの "巻き戻し" URL。 |
 
 次は応答の例です。
 
@@ -65,6 +66,7 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
     "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "purgeHistoryDeleteUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
     "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
@@ -547,11 +549,11 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 この API の応答には内容は含まれません。
 
-## <a name="rewind-instance-preview"></a>rewind インスタンス (プレビュー)
+### <a name="rewind-instance-preview"></a>rewind インスタンス (プレビュー)
 
 最後に失敗した操作を再実行することにより、失敗したオーケストレーション インスタンスを実行状態に復元します。
 
-### <a name="request"></a>Request
+#### <a name="request"></a>Request
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -580,7 +582,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 | **`instanceId`**  | URL             | オーケストレーション インスタンスの ID。 |
 | **`reason`**      | クエリ文字列    | 省略可能。 オーケストレーション インスタンスを rewind する理由。 |
 
-### <a name="response"></a>Response
+#### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
@@ -595,6 +597,89 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 ```
 
 この API の応答には内容は含まれません。
+
+### <a name="signal-entity-preview"></a>Signal エンティティ (プレビュー)
+
+一方向の操作メッセージを [Durable Entity](durable-functions-types-features-overview.md#entity-functions) に送信します。 エンティティが存在しない場合、自動的に作成されます。
+
+#### <a name="request"></a>Request
+
+HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
+
+```http
+POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &op={operationName}
+```
+
+この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
+
+| フィールド             | パラメーターのタイプ  | 説明 |
+|-------------------|-----------------|-------------|
+| **`entityType`**  | URL             | エンティティの種類。 |
+| **`entityKey`**   | URL             | エンティティの一意の名前。 |
+| **`op`**          | クエリ文字列    | 省略可能。 呼び出すユーザー定義操作の名前。 |
+| **`{content}`**   | 要求内容 | JSON 形式のイベント ペイロード。 |
+
+次に示すのは、ユーザー定義の "Add" メッセージを、`steps` という名前の `Counter` エンティティに送信する要求の例です。 メッセージの内容は値 `5` です。 エンティティがまだ存在しない場合、次の要求によって作成されます。
+
+```http
+POST /runtime/webhooks/durabletask/entities/Counter/steps?op=Add
+Content-Type: application/json
+
+5
+```
+
+#### <a name="response"></a>Response
+
+この操作には、複数の応答の可能性があります。
+
+* **HTTP 202 (Accepted)** :非同期処理のためにシグナル操作が受理された。
+* **HTTP 400 (Bad request)** :要求内容が `application/json` タイプまたは有効な JSON でなかったか、`entityKey` の値が無効だった。
+* **HTTP 404 (Not Found)** :指定された `entityType` が見つからなかった。
+
+成功した HTTP 要求の応答には内容は含まれません。 失敗した HTTP 要求は、応答の内容に JSON 形式のエラー情報が含まれている場合があります。
+
+### <a name="query-entity-preview"></a>Query エンティティ (プレビュー)
+
+指定されたエンティティの状態を取得します。
+
+#### <a name="request"></a>Request
+
+HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+```
+
+#### <a name="response"></a>Response
+
+この操作には、2 つの応答の可能性があります。
+
+* **HTTP 200 (OK)** :指定されたエンティティが存在する。
+* **HTTP 404 (Not Found)** :指定されたエンティティが見つからなかった。
+
+成功した応答は、JSON でシリアル化されたエンティティの状態がその内容に含まれます。
+
+#### <a name="example"></a>例
+次に示すのは、`steps` という名前の既存の `Counter` エンティティの状態を取得する HTTP 要求の例です。
+
+```http
+GET /runtime/webhooks/durabletask/entities/Counter/steps
+```
+
+`currentValue` フィールドに保存したステップ数しか `Counter` エンティティに含まれていなかった場合、応答の内容は次のようになります (読みやすいように整形しています)。
+
+```json
+{
+    "currentValue": 5
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

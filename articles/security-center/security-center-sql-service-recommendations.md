@@ -1,10 +1,10 @@
 ---
-title: Azure Security Center での Azure SQL サービスとデータの保護 | Microsoft Docs
+title: Azure Security Center で Azure データと記憶域サービスを保護する | Microsoft Docs
 description: このドキュメントでは、Azure Security Center での推奨事項に従ってデータと Azure SQL サービスを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
@@ -12,48 +12,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
-ms.author: monhaber
-ms.openlocfilehash: bbba5f380fddb4fdec43a7414e59778135c4e0ef
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.date: 06/19/2019
+ms.author: v-mohabe
+ms.openlocfilehash: 9e48114d0d4159d40006710f9c8194dea0d775f8
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428301"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295631"
 ---
-# <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Azure Security Center での Azure SQL サービスとデータの保護
-Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。  推奨事項は、仮想マシン (VM)、ネットワーク、SQL、データ、アプリケーションといった、Azure のリソースの種類に適用されます。
+# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Security Center で Azure データと記憶域サービスを保護する
+このトピックでは、データと記憶域リソースのセキュリティに関する推奨事項を表示および実装する方法を示します。 Azure Security Center は、Azure リソースのセキュリティ状態を分析する際に、セキュリティに関する推奨事項を検出します。
+
+## <a name="view-your-data-security-information"></a>データのセキュリティ情報を表示する
+
+1. **[リソース セキュリティの検疫]** セクションで、 **[Data and storage resources] (データと記憶域のリソース)** をクリックします。
+
+   ![データと記憶域のリソース](./media/security-center-monitoring/click-data.png)
+
+    **[Data security] (データ セキュリティ)** ページとデータ リソースの推奨事項が開きます。
+
+     ![データ リソース](./media/security-center-monitoring/sql-overview.png)
+
+このページからは、次のことを行うことができます。
+
+* **[概要]** タブをクリックすると、修復するすべてのデータ リソースの推奨事項が一覧表示されます。 
+* 各タブをクリックし、リソースの種類ごとに推奨事項を表示します。
+
+    > [!NOTE]
+    > ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
 
 
-### <a name="monitor-data-security"></a>データのセキュリティの監視
+## <a name="remediate-a-recommendation-on-a-data-resource"></a>データ リソースの推奨事項を修復する
 
-**[防止]** セクションの **[データのセキュリティ]** をクリックすると、 **[データ リソース]** が開き、SQL とストレージの推奨事項が表示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。 ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
+1. いずれかのリソース タブから、リソースをクリックします。 情報ページが開き、修復する推奨事項の一覧が表示されます。
 
-![データ リソース](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
+    ![リソース情報](./media/security-center-monitoring/sql-recommendations.png)
 
-**[SQL Recommendations (SQL の推奨事項)]** で任意の推奨事項をクリックすると、問題解決のためのアクションの詳細を確認できます。 次の例では、 **[Database Auditing & Threat detection on SQL databases (データベースの監査と SQL Database の脅威の検出)]** という推奨事項を展開した状態を示しています。
+2. 推奨事項をクリックします。 推奨事項ページが開き、推奨事項を実装する **[修復手順]** が表示されます。
 
-![SQL の推奨事項の詳細](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
+   ![修復手順](./media/security-center-monitoring/remediate1.png)
 
-**[SQL データベースの監査と脅威検出を有効にする]** には、次の情報が表示されます。
+3. **[アクションの実行]** をクリックします。 リソースの設定ページが表示されます。
 
-* SQL データベースの一覧
-* SQL データベースが配置されているサーバー
-* この設定がサーバーから継承されたものか、このデータベースに固有の設定かに関する情報
-* 現在の状態
-* 問題の重大度
+    ![推奨事項を有効にする](./media/security-center-monitoring/remediate2.png)
 
-この推奨事項に対処するためにデータベースをクリックすると、以下に示す **[監査と脅威検出]** が開きます。
-
-![監査と脅威検出](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
-
-監査を有効にするには、 **[監査]** オプションの **[オン]** を選択します。
+4. **[修復手順]** に従い、 **[保存]** をクリックします。
 
 ## <a name="data-and-storage-recommendations"></a>データとストレージの推奨事項
 
 |リソースの種類|セキュリティ スコア|推奨|説明|
 |----|----|----|----|
-|ストレージ アカウント|20|ストレージ アカウントへの安全な転送を有効にする必要がある|安全な転送は、ストレージ アカウントに、セキュリティで保護された接続 (HTTPS) からの要求のみを受け入れるように強制するオプションです。 HTTPS を使用することにより、サーバーとサービス間の認証が確実に行われ、転送中のデータをネットワーク層の攻撃 (man-in-the-middle、傍受、セッション ハイジャックなど) から保護します。|
+|ストレージ アカウント|20|ストレージ アカウントへの安全な転送を有効にする必要がある|安全な転送は、ストレージ アカウントに、セキュリティで保護された接続 (HTTPS) からの要求のみを受け入れるように強制するオプションです。 HTTPS によりサーバーとサービス間の認証が確実に行われ、転送中のデータをネットワーク層の攻撃 (man-in-the-middle、傍受、セッション ハイジャックなど) から保護します。|
 |Redis|20|Redis Cache に対してセキュリティで保護された接続のみを有効にする必要がある|Azure Cache for Redis に対して SSL 経由の接続のみを有効にします。 セキュリティで保護された接続を使用することにより、サーバーとサービス間の認証が確実に行われ、転送中のデータをネットワーク層の攻撃 (man-in-the-middle、傍受、セッション ハイジャックなど) から保護します。|
 |SQL|15|SQL データベースで Transparent Data Encryption を有効にする必要がある|Transparent Data Encryption を有効にすることで、保存データを保護し、コンプライアンス要件を満たします。|
 |SQL|15|SQL サーバー監査を有効にする必要がある|Azure SQL サーバーの監査を有効にします。 (Azure SQL サービスのみ。 仮想マシン上で実行されている SQL は含まれません)。|
@@ -65,13 +75,13 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 |ストレージ アカウント|1|ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある|新しい Azure Resource Manager V2 をストレージ アカウントに使用して、セキュリティの拡張機能を提供します。たとえば、アクセス制御の強化 (RBAC)、監査の改善、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのためのキー コンテナーへのアクセス、Azure AD に基づく認証、セキュリティ管理を容易にするタグとリソース グループのサポートがあります。|
 
 ## <a name="see-also"></a>関連項目
-その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
+その他の Azure リソースの種類に適用される推奨事項の詳細については、次のトピックをご覧ください。
 
 * [Azure Security Center での仮想マシンの保護](security-center-virtual-machine-recommendations.md)
 * [Azure Security Center でのアプリケーションの保護](security-center-application-recommendations.md)
 * [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
 
-セキュリティ センターの詳細については、次を参照してください。
+Security Center の詳細については、次のトピックを参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。

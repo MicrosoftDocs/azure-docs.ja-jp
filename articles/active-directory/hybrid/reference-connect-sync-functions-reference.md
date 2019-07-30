@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b21c5f8630598a4b7117d23ad7c8da46de07d2fa
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381146"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204490"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同期: 関数参照
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  
@@ -89,7 +89,7 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 | [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
-- - -
+---
 ### <a name="bitand"></a>BitAnd
 **説明:**  
 BitAnd 関数は、値に指定のビットを設定します。
@@ -111,7 +111,7 @@ BitAnd 関数は、値に指定のビットを設定します。
 `BitAnd(&HF, &HF7)`  
 16 進数の "F" と "F7" の AND は 7 と評価されるため、7 を返します。
 
-- - -
+---
 ### <a name="bitor"></a>BitOr
 **説明:**  
 BitOr 関数は、値に指定のビットを設定します。
@@ -124,7 +124,7 @@ BitOr 関数は、値に指定のビットを設定します。
 **解説:**  
 この関数は両方のパラメーターをバイナリ表現に変換して、マスクとフラグで対応するビットの 1 つまたは両方が 1 の場合はビットを 1 に設定し、対応する両方のビットが 0 の場合は 0 に設定します。 つまり、両方のパラメーターの対応するビットが 0 の場合を除くすべてのケースで 1 を返します。
 
-- - -
+---
 ### <a name="cbool"></a>CBool
 **説明:**  
 CBool 関数は、式の評価結果に基づいてブール値を返します。
@@ -140,7 +140,7 @@ CBool 関数は、式の評価結果に基づいてブール値を返します�
 
 両方の属性が同じ値を持つ場合は、True を返します。
 
-- - -
+---
 ### <a name="cdate"></a>CDate
 **説明:**  
 CDate 関数は、文字列から UTC DateTime を返します。 DateTime は Sync ではネイティブの属性の型ではありませんが、一部の関数で使用されます。
@@ -161,7 +161,7 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は S
 "2013-01-11 12:00 AM" を表す DateTime を返します。
 
 
-- - -
+---
 ### <a name="certextensionoids"></a>CertExtensionOids
 **説明:**  
 証明書オブジェクトのすべての重要な拡張機能の Oid 値を返します。
@@ -170,7 +170,7 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は S
 `mvstr CertExtensionOids(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certformat"></a>CertFormat
 **説明:**  
 この X.509v3 証明書の形式の名前を返します。
@@ -179,7 +179,7 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は S
 `str CertFormat(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certfriendlyname"></a>CertFriendlyName
 **説明:**  
 証明書に関連付けられている別名を返します。
@@ -188,7 +188,7 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は S
 `str CertFriendlyName(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certhashstring"></a>CertHashString
 **説明:**  
 X.509v3 証明書の SHA1 ハッシュ値を 16 進数文字列で返します。
@@ -197,7 +197,7 @@ X.509v3 証明書の SHA1 ハッシュ値を 16 進数文字列で返します�
 `str CertHashString(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certissuer"></a>CertIssuer
 **説明:**  
 X.509v3 証明書を発行した証明機関の名前を返します。
@@ -206,7 +206,7 @@ X.509v3 証明書を発行した証明機関の名前を返します。
 `str CertIssuer(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certissuerdn"></a>CertIssuerDN
 **説明:**  
 証明書の発行者の識別名を返します。
@@ -215,7 +215,7 @@ X.509v3 証明書を発行した証明機関の名前を返します。
 `str CertIssuerDN(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certissueroid"></a>CertIssuerOid
 **説明:**  
 証明書の発行者の識別証明書の発行者の Oid を返します。
@@ -224,7 +224,7 @@ X.509v3 証明書を発行した証明機関の名前を返します。
 `str CertIssuerOid(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
 **説明:**  
 この X.509v3 証明書のキー アルゴリズム情報を文字列で返します。
@@ -233,7 +233,7 @@ X.509v3 証明書を発行した証明機関の名前を返します。
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **説明:**  
 X.509v3 証明書のキー アルゴリズム パラメーターを 16 進数文字列で返します。
@@ -242,7 +242,7 @@ X.509v3 証明書のキー アルゴリズム パラメーターを 16 進数文
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certnameinfo"></a>CertNameInfo
 **説明:**  
 証明書のサブジェクトと発行者名を返します。
@@ -253,7 +253,7 @@ X.509v3 証明書のキー アルゴリズム パラメーターを 16 進数文
 *   X509NameType:サブジェクトの X509NameType 値。
 *   includesIssuerName: 発行者名を含める場合は true、それ以外の場合は false。
 
-- - -
+---
 ### <a name="certnotafter"></a>CertNotAfter
 **説明:**  
 その後は証明書が有効ではなくなる日付を現地時刻で返します。
@@ -262,7 +262,7 @@ X.509v3 証明書のキー アルゴリズム パラメーターを 16 進数文
 `dt CertNotAfter(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certnotbefore"></a>CertNotBefore
 **説明:**  
 証明書が有効になる日付を現地時刻で返します。
@@ -271,7 +271,7 @@ X.509v3 証明書のキー アルゴリズム パラメーターを 16 進数文
 `dt CertNotBefore(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
 **説明:**  
 X.509v3 証明書の公開キーの Oid を返します。
@@ -280,7 +280,7 @@ X.509v3 証明書の公開キーの Oid を返します。
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
 **説明:**  
 X.509v3 証明書の公開キーのパラメーターの Oid を返します。
@@ -289,7 +289,7 @@ X.509v3 証明書の公開キーのパラメーターの Oid を返します。
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certserialnumber"></a>CertSerialNumber
 **説明:**  
 X.509v3 証明書のシリアル番号を返します。
@@ -298,7 +298,7 @@ X.509v3 証明書のシリアル番号を返します。
 `str CertSerialNumber(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
 **説明:**  
 証明書の署名の作成に使用されるアルゴリズムの Oid を返します。
@@ -307,7 +307,7 @@ X.509v3 証明書のシリアル番号を返します。
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certsubject"></a>CertSubject
 **説明:**  
 証明書のサブジェクト識別名を取得します。
@@ -316,7 +316,7 @@ X.509v3 証明書のシリアル番号を返します。
 `str CertSubject(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
 **説明:**  
 証明書のサブジェクト識別名を返します。
@@ -325,7 +325,7 @@ X.509v3 証明書のシリアル番号を返します。
 `str CertSubjectNameDN(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
 **説明:**  
 証明書のサブジェクト名の Oid を返します。
@@ -334,7 +334,7 @@ X.509v3 証明書のシリアル番号を返します。
 `str CertSubjectNameOid(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certthumbprint"></a>CertThumbprint
 **説明:**  
 証明書の拇印を返します。
@@ -343,7 +343,7 @@ X.509v3 証明書のシリアル番号を返します。
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="certversion"></a>CertVersion
 **説明:**  
 証明書の X.509 形式のバージョンを返します。
@@ -352,7 +352,7 @@ X.509v3 証明書のシリアル番号を返します。
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
 
-- - -
+---
 ### <a name="cguid"></a>CGuid
 **説明:**  
 CGuid 関数は、GUID の文字列表現をそのバイナリ表現に変換します。
@@ -362,7 +362,7 @@ CGuid 関数は、GUID の文字列表現をそのバイナリ表現に変換し
 
 * このパターンで書式設定される文字列: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx または {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
-- - -
+---
 ### <a name="contains"></a>Contains
 **説明:**  
 Contains 関数は、複数値の属性内で文字列を検索します。
@@ -386,7 +386,7 @@ Contains 関数は、複数値の属性内で文字列を検索します。
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
 proxyAddresses 属性にプライマリ メール アドレスが含まれている場合は (大文字の "SMTP:" で表されます) proxyAddress 属性を返し、それ以外の場合はエラーを返します。
 
-- - -
+---
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **説明:**  
 ConvertFromBase64 関数は、指定した base64 でエンコードされた値を正規の文字列に変換します。
@@ -404,7 +404,7 @@ ConvertFromBase64 関数は、指定した base64 でエンコードされた値
 
 どちらの例でも "*Hello world!* " を返します。
 
-- - -
+---
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **説明:**  
 ConvertFromUTF8Hex 関数は、指定した UTF8 の 16 進数でエンコードされた値を文字列に変換します。
@@ -422,7 +422,7 @@ ConvertFromUTF8Hex 関数は、指定した UTF8 の 16 進数でエンコード
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
 "*Hello world!* " を返します。
 
-- - -
+---
 ### <a name="converttobase64"></a>ConvertToBase64
 **説明:**  
 ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換します。  
@@ -435,7 +435,7 @@ ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換�
 `ConvertToBase64("Hello world!")`  
 "SABlAGwAbABvACAAdwBvAHIAbABkACEA" を返します。
 
-- - -
+---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **説明:**  
 ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
@@ -450,7 +450,7 @@ ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコード�
 `ConvertToUTF8Hex("Hello world!")`  
 48656C6C6F20776F726C6421 を返します。
 
-- - -
+---
 ### <a name="count"></a>Count
 **説明:**  
 Count 関数は、複数値の属性内の要素数を返します。
@@ -458,7 +458,7 @@ Count 関数は、複数値の属性内の要素数を返します。
 **構文:**  
 `num Count(mvstr attribute)`
 
-- - -
+---
 ### <a name="cnum"></a>CNum
 **説明:**  
 CNum 関数は、文字列を受け取り、数値データ型を返します。
@@ -466,7 +466,7 @@ CNum 関数は、文字列を受け取り、数値データ型を返します。
 **構文:**  
 `num CNum(str value)`
 
-- - -
+---
 ### <a name="cref"></a>CRef
 **説明:**  
 文字列を参照属性に変換します。
@@ -477,7 +477,7 @@ CNum 関数は、文字列を受け取り、数値データ型を返します。
 **例:**  
 `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
 
-- - -
+---
 ### <a name="cstr"></a>CStr
 **説明:**  
 CStr 関数は、文字列データ型に変換します。
@@ -493,7 +493,7 @@ CStr 関数は、文字列データ型に変換します。
 `CStr([dn])`  
 "cn=Joe,dc=contoso,dc=com" を返します。
 
-- - -
+---
 ### <a name="dateadd"></a>DateAdd
 **説明:**  
 指定した時間間隔が追加された日付を含む Date を返します。
@@ -519,7 +519,7 @@ CStr 関数は、文字列データ型に変換します。
 `DateAdd("m", 3, CDate("2001-01-01"))`  
 3 か月を追加した結果の "2001-04-01" を表す DateTime を返します。
 
-- - -
+---
 ### <a name="datefromnum"></a>DateFromNum
 **説明:**  
 DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
@@ -532,7 +532,7 @@ DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換しま�
 `DateFromNum(129699324000000000)`  
 2012-01-01 23:00:00 を表す DateTime を返します。
 
-- - -
+---
 ### <a name="dncomponent"></a>DNComponent
 **説明:**  
 DNComponent 関数は、指定した DN コンポーネントの値を左から返します。
@@ -547,7 +547,7 @@ DNComponent 関数は、指定した DN コンポーネントの値を左から�
 `DNComponent(CRef([dn]),1)`  
 dn が "cn=Joe,ou=…," の場合は、Joe が返されます。
 
-- - -
+---
 ### <a name="dncomponentrev"></a>DNComponentRev
 **説明:**  
 DNComponentRev 関数は、指定した DN コンポーネントの値を右 (端) から返します。
@@ -566,7 +566,7 @@ dn が "cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com" の場合、
 `DNComponentRev(CRef([dn]),1,"DC")`  
 両方が US を返します。
 
-- - -
+---
 ### <a name="error"></a>Error
 **説明:**  
 Error 関数は、カスタム エラーを返すために使用します。
@@ -578,7 +578,7 @@ Error 関数は、カスタム エラーを返すために使用します。
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 属性 accountName が存在しない場合は、オブジェクトでエラーをスローします。
 
-- - -
+---
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **説明:**  
 EscapeDNComponent 関数は、DN のコンポーネントを 1 つ受け取り、LDAP で表示できるようにそれをエスケープします。
@@ -590,7 +590,7 @@ EscapeDNComponent 関数は、DN のコンポーネントを 1 つ受け取り�
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
 displayName 属性に LDAP でエスケープする必要のある文字が含まれている場合でも、LDAP ディレクトリでオブジェクトを作成できるようにします。
 
-- - -
+---
 ### <a name="formatdatetime"></a>FormatDateTime
 **説明:**  
 FormatDateTime 関数は、DateTime を指定した形式の文字列に設定するために使用します。
@@ -612,7 +612,7 @@ FormatDateTime 関数は、DateTime を指定した形式の文字列に設定�
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
 "20140905081453.0Z" などの結果になります。
 
-- - -
+---
 ### <a name="guid"></a>Guid
 **説明:**  
 GUID 関数は、新しいランダムな GUID を生成します。
@@ -620,7 +620,7 @@ GUID 関数は、新しいランダムな GUID を生成します。
 **構文:**  
 `str Guid()`
 
-- - -
+---
 ### <a name="iif"></a>IIF
 **説明:**  
 IIF 関数は、指定した条件に基づいて、使用できる一連の値のうち、いずれかを返します。
@@ -636,7 +636,7 @@ IIF 関数は、指定した条件に基づいて、使用できる一連の値�
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  ユーザーがインターンの場合はユーザーのエイリアスの先頭に "t-" を付けて返し、そうでない場合はユーザーのエイリアスをそのまま返します。
 
-- - -
+---
 ### <a name="instr"></a>InStr
 **説明:**  
 InStr 関数は文字列内の最初の部分文字列を検索します。
@@ -662,7 +662,7 @@ InStr 関数は文字列内の最初の部分文字列を検索します。
 `InStr("repEated","e",3,vbBinaryCompare)`  
 評価結果は 7 になります。
 
-- - -
+---
 ### <a name="instrrev"></a>InStrRev
 **説明:**  
 InStrRev 関数は文字列内の最後の部分文字列を検索します。
@@ -684,7 +684,7 @@ InStrRev 関数は文字列内の最後の部分文字列を検索します。
 `InStrRev("abbcdbbbef","bb")`  
 7 を返します。
 
-- - -
+---
 ### <a name="isbitset"></a>IsBitSet
 **説明:**  
 IsBitSet 関数は、ビットが設定されているかどうかをテストします。
@@ -698,7 +698,7 @@ IsBitSet 関数は、ビットが設定されているかどうかをテスト�
 `IsBitSet(&HF,4)`  
 ビット "4" が 16 進数値 "F" で設定されているため True が返されます。
 
-- - -
+---
 ### <a name="isdate"></a>IsDate
 **説明:**  
 式が DateTime 型として評価できる場合、IsDate 関数の評価結果は True になります。
@@ -709,7 +709,7 @@ IsBitSet 関数は、ビットが設定されているかどうかをテスト�
 **解説:**  
 CDate() が成功するかどうかを判断するために使用します。
 
-- - -
+---
 ### <a name="iscert"></a>IsCert
 **説明:**  
 生データを .NET X509Certificate2 証明書オブジェクトにシリアル化できる場合は true を返します。
@@ -717,7 +717,7 @@ CDate() が成功するかどうかを判断するために使用します。
 **構文:**  
 `bool CertThumbprint(binary certificateRawData)`  
 *   certificateRawData:X.509 証明書のバイト配列の表現。 バイト配列には、バイナリ (DER) または Base64 でエンコードされた X.509 データを指定できます。
-- - -
+---
 ### <a name="isempty"></a>IsEmpty
 **説明:**  
 属性が CS または MV に存在しても評価結果が空の文字列である場合、IsEmpty 関数の評価結果は True になります。
@@ -725,7 +725,7 @@ CDate() が成功するかどうかを判断するために使用します。
 **構文:**  
 `bool IsEmpty(var Expression)`
 
-- - -
+---
 ### <a name="isguid"></a>IsGuid
 **説明:**  
 文字列が GUID に変換できる場合、IsGUID 関数の評価結果は true になります。
@@ -742,7 +742,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
 StrAttribute に GUID 形式がある場合はバイナリ表現を返します。それ以外の場合は Null を返します。
 
-- - -
+---
 ### <a name="isnull"></a>IsNull
 **説明:**  
 式の評価結果が Null の場合、IsNull 関数は true を返します。
@@ -757,7 +757,7 @@ StrAttribute に GUID 形式がある場合はバイナリ表現を返します�
 `IsNull([displayName])`  
 CS または MV に属性がない場合は True を返します。
 
-- - -
+---
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **説明:**  
 式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。
@@ -773,7 +773,7 @@ CS または MV に属性がない場合は True を返します。
 `IsNullOrEmpty([displayName])`  
 CS または MV に属性がないか、空の文字列の場合は True を返します。
 
-- - -
+---
 ### <a name="isnumeric"></a>IsNumeric
 **説明:**  
 IsNumeric 関数は、式を数値型として評価できるかどうかを示すブール値を返します。
@@ -784,7 +784,7 @@ IsNumeric 関数は、式を数値型として評価できるかどうかを示�
 **解説:**  
 CNum() が式の解析に成功するかどうかを判断するために使用します。
 
-- - -
+---
 ### <a name="isstring"></a>IsString
 **説明:**  
 式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。
@@ -795,7 +795,7 @@ CNum() が式の解析に成功するかどうかを判断するために使用�
 **解説:**  
 CStr() が式の解析に成功するかどうかを判断するために使用します。
 
-- - -
+---
 ### <a name="ispresent"></a>IsPresent
 **説明:**  
 式の評価結果が Null でもなく、空でもない文字列の場合、IsPresent 関数は true を返します。
@@ -809,7 +809,7 @@ CStr() が式の解析に成功するかどうかを判断するために使用�
 **例:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
-- - -
+---
 ### <a name="item"></a>Item
 **説明:**  
 Item 関数は複数値の文字列/属性から 1 つの項目を返します。
@@ -829,7 +829,7 @@ Contains 関数は複数値の属性内の項目に対するインデックス�
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 プライマリ メール アドレスを返します。
 
-- - -
+---
 ### <a name="itemornull"></a>ItemOrNull
 **説明:**  
 ItemOrNull 関数は複数値の文字列/属性から 1 つの項目を返します。
@@ -845,7 +845,7 @@ ItemOrNull 関数は複数値の属性内の項目に対するインデックス
 
 インデックスが範囲外にある場合は、Null 値を返します。
 
-- - -
+---
 ### <a name="join"></a>結合
 **説明:**  
 Join 関数は、複数値の文字列を受け取り、指定した区切り記号が項目間に挿入された、単一値の文字列を返します。
@@ -864,7 +864,7 @@ Join 関数と Split 関数の間には類似点があります。 Join 関数�
 `Join([proxyAddresses],",")`  
 "SMTP:john.doe@contoso.com,smtp:jd@contoso.com" などを返します
 
-- - -
+---
 ### <a name="lcase"></a>LCase
 **説明:**  
 LCase 関数は、文字列内のすべての文字を小文字に変換します。
@@ -876,7 +876,7 @@ LCase 関数は、文字列内のすべての文字を小文字に変換しま�
 `LCase("TeSt")`  
 "test" を返します。
 
-- - -
+---
 ### <a name="left"></a>Left
 **説明:**  
 Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。
@@ -900,7 +900,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 `Left("John Doe", 3)`  
 "Joh" を返します。
 
-- - -
+---
 ### <a name="len"></a>Len
 **説明:**  
 Len 関数は文字列の文字数を返します。
@@ -912,7 +912,7 @@ Len 関数は文字列の文字数を返します。
 `Len("John Doe")`  
 8 を返します。
 
-- - -
+---
 ### <a name="ltrim"></a>LTrim
 **説明:**  
 LTrim 関数は文字列の先頭の空白文字を削除します。
@@ -924,7 +924,7 @@ LTrim 関数は文字列の先頭の空白文字を削除します。
 `LTrim(" Test ")`  
 "Test " を返します。
 
-- - -
+---
 ### <a name="mid"></a>Mid
 **説明:**  
 Mid 関数は文字列の指定した位置から数えて、指定した文字数分の文字を返します。
@@ -955,7 +955,7 @@ string で start 位置から後に numChar 文字が残っていない場合、
 `Mid("John Doe", 6, 999)`  
 "Doe" を返します。
 
-- - -
+---
 ### <a name="now"></a>Now
 **説明:**  
 Now 関数は、コンピューターのシステムの日付と時刻に従って、現在の日付と時刻を指定する DateTime を返します。
@@ -963,7 +963,7 @@ Now 関数は、コンピューターのシステムの日付と時刻に従っ�
 **構文:**  
 `dt Now()`
 
-- - -
+---
 ### <a name="numfromdate"></a>NumFromDate
 **説明:**  
 NumFromDate 関数は、AD の日付形式で日付を返します。
@@ -975,7 +975,7 @@ NumFromDate 関数は、AD の日付形式で日付を返します。
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
 129699324000000000 を返します。
 
-- - -
+---
 ### <a name="padleft"></a>PadLeft
 **説明:**  
 PadLeft 関数は、指定した埋め込み文字を使用して、指定した長さになるまで左側に文字列を埋め込みます。
@@ -1000,7 +1000,7 @@ PadLeft 関数は、指定した埋め込み文字を使用して、指定した
 `PadLeft("User", 10, "0")`  
 "000000User" を返します。
 
-- - -
+---
 ### <a name="padright"></a>PadRight
 **説明:**  
 PadRight 関数は、指定した埋め込み文字を使用して、指定した長さになるまで右側に文字列を埋め込みます。
@@ -1025,7 +1025,7 @@ PadRight 関数は、指定した埋め込み文字を使用して、指定し�
 `PadRight("User", 10, "0")`  
 "User000000" を返します。
 
-- - -
+---
 ### <a name="pcase"></a>PCase
 **説明:**  
 PCase 関数は、文字列内のスペースで区切られた単語の最初の文字を大文字に変換し、その他のすべての文字を小文字に変換します。
@@ -1044,7 +1044,7 @@ PCase 関数は、文字列内のスペースで区切られた単語の最初�
 `PCase(LCase("TEST"))`  
 "Test" を返します。
 
-- - -
+---
 ### <a name="randomnum"></a>RandomNum
 **説明:**  
 RandomNum 関数は、指定した範囲内の乱数を返します。
@@ -1059,7 +1059,7 @@ RandomNum 関数は、指定した範囲内の乱数を返します。
 `Random(100,999)`  
 734 などを返します。
 
-- - -
+---
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **説明:**  
 RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意になるように処理します。
@@ -1071,7 +1071,7 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 `RemoveDuplicates([proxyAddresses])`  
 重複する値がすべて削除された、校正済みの proxyAddress 属性を返します。
 
-- - -
+---
 ### <a name="replace"></a>*Views\\Home\\AllDates.cshtml*
 **説明:**  
 Replace 関数は、見つかった文字列をすべて別の文字列に置き換えます。
@@ -1094,7 +1094,7 @@ Replace 関数は、見つかった文字列をすべて別の文字列に置き
 `Replace([address],"\r\n",", ")`  
 CRLF をコンマとスペースで置き換え、"One Microsoft Way, Redmond, WA, USA" などの文字列にします。
 
-- - -
+---
 ### <a name="replacechars"></a>ReplaceChars
 **説明:**  
 ReplaceChars 関数は、ReplacePattern 文字列に見つかったすべての文字を置き換えます。
@@ -1127,7 +1127,7 @@ Raksmorgas を返します。
 `ReplaceChars("O’Neil",%ReplaceString%)`  
 "ONeil" を返します。単一引用符を削除するように定義されています。
 
-- - -
+---
 ### <a name="right"></a>Right
 **説明:**  
 Right 関数は文字列の右端から数えて指定した文字数分の文字を返します。
@@ -1153,7 +1153,7 @@ string の末尾から数えて numChars 文字分の文字が返されます。
 `Right("John Doe", 3)`  
 "Doe" を返します。
 
-- - -
+---
 ### <a name="rtrim"></a>RTrim
 **説明:**  
 RTrim 関数は文字列の末尾の空白文字を削除します。
@@ -1165,7 +1165,7 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 `RTrim(" Test ")`  
 " Test" を返します。
 
-- - -
+---
 ### <a name="select"></a>選択
 **説明:**  
 指定された関数に基づいて、複数値の属性 (または式の出力) 内のすべての値を処理します。
@@ -1183,7 +1183,7 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 `Select($item,[otherPhone],Replace($item,"-",""))`  
 ハイフン (-) の削除後に、複数値の属性 otherPhone 内のすべての値を返します。
 
-- - -
+---
 ### <a name="split"></a>分割
 **説明:**  
 Split 関数は区切り記号で区切られた文字列を受け取り、複数値の文字列にします。
@@ -1200,7 +1200,7 @@ Split 関数は区切り記号で区切られた文字列を受け取り、複�
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
 proxyAddress 属性に有用な 2 つの要素が含まれる複数値の文字列を返します。
 
-- - -
+---
 ### <a name="stringfromguid"></a>StringFromGuid
 **説明:**  
 StringFromGuid 関数は、バイナリ GUID を受け取り、文字列に変換します。
@@ -1208,7 +1208,7 @@ StringFromGuid 関数は、バイナリ GUID を受け取り、文字列に変�
 **構文:**  
 `str StringFromGuid(bin GUID)`
 
-- - -
+---
 ### <a name="stringfromsid"></a>StringFromSid
 **説明:**  
 StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列を文字列に変換します。
@@ -1216,7 +1216,7 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 **構文:**  
 `str StringFromSid(bin ObjectSID)`  
 
-- - -
+---
 ### <a name="switch"></a>Switch
 **説明:**  
 Switch 関数は、条件の評価結果に基づいて 1 つの値を返すために使用します。
@@ -1245,7 +1245,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
 一部の主要都市で話される言語を返します。それ以外の場合はエラーを返します。
 
-- - -
+---
 ### <a name="trim"></a>Trim
 **説明:**  
 Trim 関数は、文字列の先頭と末尾の空白文字を削除します。
@@ -1260,7 +1260,7 @@ Trim 関数は、文字列の先頭と末尾の空白文字を削除します。
 `Trim([proxyAddresses])`  
 proxyAddress 属性の値ごとに先頭と末尾の空白文字を削除します。
 
-- - -
+---
 ### <a name="ucase"></a>UCase
 **説明:**  
 UCase 関数は文字列内のすべての文字を大文字に変換します。
@@ -1272,7 +1272,7 @@ UCase 関数は文字列内のすべての文字を大文字に変換します�
 `UCase("TeSt")`  
 "test" を返します。
 
-- - -
+---
 ### <a name="where"></a>Where
 
 **説明:**  
@@ -1290,7 +1290,7 @@ UCase 関数は文字列内のすべての文字を大文字に変換します�
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
 有効期限が切れていない、複数値の属性 userCertificate 内の証明書の値を返します。
 
-- - -
+---
 ### <a name="with"></a>With
 **説明:**  
 With 関数は、複雑な式の中に 1 回以上現れる部分式を表す変数を使用することで、複雑な式を簡略化する方法となります。
@@ -1308,7 +1308,7 @@ With 関数は、複雑な式の中に 1 回以上現れる部分式を表す変
 userCertificate 属性内の、期限が切れていない証明書の値のみが返されます。
 
 
-- - -
+---
 ### <a name="word"></a>Word
 **説明:**  
 Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。

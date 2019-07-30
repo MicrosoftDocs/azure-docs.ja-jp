@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 030259f7773435760c09afd25ca674b63bb1b3ca
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073235"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -35,7 +35,7 @@ Application Insights は、分散しているテレメトリを相関付ける�
 
 `operation_Id`、`operation_parentId`、および `request.id` を `dependency.id` と共に使用して、分散型論理操作のビューを構築できます。 これらのフィールドでは、テレメトリ呼び出しの因果関係の順序も定義します。
 
-マイクロ サービス環境では、コンポーネントからのトレースがさまざまなストレージ項目に送信される可能性があります。 すべてのコンポーネントが、Application Insights 内に独自のインストルメンテーション キーを持つことができます。 論理操作のテレメトリを取得するには、すべてのストレージ項目に対してデータのクエリを実行する必要があります。 ストレージ項目の数が膨大な場合は、次に検索する場所に関するヒントが必要になります。 Application Insights データ モデルでは、この問題を解決するために `request.source` と `dependency.target` という 2 つのフィールドが定義されています。 最初のフィールドは依存関係要求を開始したコンポーネントを識別し、2 つ目のフィールドは依存関係呼び出しの応答を返したコンポーネントを識別します。
+マイクロ サービス環境では、コンポーネントからのトレースがさまざまなストレージ項目に送信される可能性があります。 すべてのコンポーネントが、Application Insights 内に独自のインストルメンテーション キーを持つことができます。 論理操作のテレメトリを取得する目的で、Application Insights UX では、すべてのストレージ項目に対してデータのクエリが実行されます。 ストレージ項目の数が膨大な場合は、次に検索する場所に関するヒントが必要になります。 Application Insights データ モデルでは、この問題を解決するために `request.source` と `dependency.target` という 2 つのフィールドが定義されています。 最初のフィールドは依存関係要求を開始したコンポーネントを識別し、2 つ目のフィールドは依存関係呼び出しの応答を返したコンポーネントを識別します。
 
 ## <a name="example"></a>例
 

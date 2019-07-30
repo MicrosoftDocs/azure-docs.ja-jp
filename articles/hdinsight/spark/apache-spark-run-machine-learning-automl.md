@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 5135de0fc87af227073f96c653d928ace1a50fd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff6a071a2d157bf79ab27fcbf4f9753fdbcac118
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917055"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68354866"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark 上で自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する
 
@@ -41,16 +41,16 @@ Zeppelin ノートブックを使用して AutoML を使用することもでき
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
 auth_sp = ServicePrincipalAuthentication(
-                tenant_id = '<Azure Tenant ID>',
-                service_principal_id = '<Azure AD Application ID>',
-                service_principal_password = '<Azure AD Application Key>'
-                )
+    tenant_id='<Azure Tenant ID>',
+    service_principal_id='<Azure AD Application ID>',
+    service_principal_password='<Azure AD Application Key>'
+)
 ```
 次のコード スニペットでは、**Azure AD ユーザー**を使用して、認証トークンが作成されます。
 
 ```python
 from azure.common.credentials import UserPassCredentials
-credentials = UserPassCredentials('user@domain.com','my_smart_password')
+credentials = UserPassCredentials('user@domain.com', 'my_smart_password')
 ```
 
 ## <a name="loading-dataset"></a>データセットの読み込み
@@ -60,9 +60,11 @@ Spark での自動化された機械学習では、データに対して遅延�
 ```python
 import azureml.dataprep as dprep
 
-dataflow_public = dprep.read_csv(path='https://commonartifacts.blob.core.windows.net/automl/UCI_Adult_train.csv')
+dataflow_public = dprep.read_csv(
+    path='https://commonartifacts.blob.core.windows.net/automl/UCI_Adult_train.csv')
 
-dataflow_with_token = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
+dataflow_with_token = dprep.read_csv(
+    path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
 ```
 
 ワンタイム登録を使用して、データ ストアをワークスペースに登録することもできます。

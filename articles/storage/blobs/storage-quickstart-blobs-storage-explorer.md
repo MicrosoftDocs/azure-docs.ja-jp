@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: tamram
-ms.openlocfilehash: 3424b46dff8f2904f41d0e8c1acf96788c51773f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 929ba7e28bca608359e76f9eeb130c61ba3235a0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994471"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435799"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>クイック スタート:Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "59994471"
 
 ## <a name="log-in-to-storage-explorer"></a>Storage Explorer にログインする
 
-初回の起動時には、**[Microsoft Azure Storage Explorer - 接続]** ウィンドウが表示されます。 Storage Explorer には、ストレージ アカウントに対する接続方法がいくつか用意されています。 次の表は、さまざまな接続方法を示しています。
+初回の起動時には、 **[Microsoft Azure Storage Explorer - 接続]** ウィンドウが表示されます。 Storage Explorer には、ストレージ アカウントに対する接続方法がいくつか用意されています。 次の表は、さまざまな接続方法を示しています。
 
 |タスク|目的|
 |---|---|
@@ -35,7 +35,7 @@ ms.locfileid: "59994471"
 |接続文字列または Shared Access Signature URI を使用する | SAS トークンまたは共有の接続文字列でコンテナーまたはストレージ アカウントに直接アクセスするために使用できます。 |
 |ストレージ アカウントの名前とキーを使用する| ストレージ アカウントの名前とキーを使用して、Azure Storage に接続します。|
 
-**[Add an Azure Account\(Azure アカウントの追加\)]** を選択し、**[サインイン]** をクリックします。画面上のプロンプトに従って Azure アカウントにサインインします。
+**[Add an Azure Account\(Azure アカウントの追加\)]** を選択し、 **[サインイン]** をクリックします。画面上のプロンプトに従って Azure アカウントにサインインします。
 
 ![[Microsoft Azure Storage Explorer - 接続] ウィンドウ](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -47,23 +47,23 @@ ms.locfileid: "59994471"
 
 BLOB は常にコンテナーにアップロードされます。 これにより、フォルダー内でコンピューター上のファイルを整理するように、BLOB のグループを整理できます。
 
-コンテナーを作成するには、前の手順で作成したストレージ アカウントを展開します。 **[BLOB コンテナー]** を選択し、**[BLOB コンテナーの作成]** を右クリックして選択します。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限の一覧については、「[コンテナーを作成し、アクセス許可を設定する](storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions)」をご覧ください。 完了したら、**Enter**キーを押して BLOB コンテナーを作成します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
+コンテナーを作成するには、前の手順で作成したストレージ アカウントを展開します。 **[BLOB コンテナー]** を選択し、 **[BLOB コンテナーの作成]** を右クリックして選択します。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限の一覧については、[コンテナーの作成](storage-quickstart-blobs-dotnet.md#create-a-container)に関するセクションを参照してください。 完了したら、**Enter**キーを押して BLOB コンテナーを作成します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
 
 ## <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
 Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 IaaS VM をバックアップするために使用される VHD ファイルはページ BLOB です。 追加 BLOB は、ファイルに書き込んでから詳細情報を追加し続ける場合などの、ログ記録に使用されます。 BLOB ストレージに格納されているほとんどのファイルはブロック BLOB です。
 
-コンテナー リボンで、**[アップロード]** を選択します。 この操作によって、フォルダーまたはファイルをアップロードするためのオプションが表示されます。
+コンテナー リボンで、 **[アップロード]** を選択します。 この操作によって、フォルダーまたはファイルをアップロードするためのオプションが表示されます。
 
 アップロードするファイルまたはフォルダーを選択します。 **BLOB の種類**を選択します。 **追加**、**ページ**、または**ブロック**の各 BLOB を選択できます。
 
-.vhd または .vhdx ファイルをアップロードする場合は、**[.vhd/.vhdx ファイルをページ BLOB としてアップロードする (推奨)]** を選択します。
+.vhd または .vhdx ファイルをアップロードする場合は、 **[.vhd/.vhdx ファイルをページ BLOB としてアップロードする (推奨)]** を選択します。
 
 **[アップロード先のフォルダー (オプション)]** フィールドで、ファイルを格納するフォルダーの名前またはコンテナーの下にあるフォルダー内のフォルダーを選択します。 フォルダーが選択されていない場合は、ファイルがコンテナーの下に直接アップロードされます。
 
 ![Microsoft Azure Storage Explorer - BLOB のアップロード](media/storage-quickstart-blobs-storage-explorer/uploadblob.png)
 
-**[OK]** を選択すると、選択したファイルがキューに登録され、各ファイルがアップロードされます。 アップロードが完了すると、**[アクティビティ]** ウィンドウに結果が表示されます。
+**[OK]** を選択すると、選択したファイルがキューに登録され、各ファイルがアップロードされます。 アップロードが完了すると、 **[アクティビティ]** ウィンドウに結果が表示されます。
 
 ## <a name="view-blobs-in-a-container"></a>コンテナー内の BLOB を表示する
 
@@ -85,11 +85,11 @@ Azure Storage Explorer には、BLOB の[スナップショット](storage-blob-
 
 Storage Explorer には、ユーザー インターフェイス内のコンテナーのアクセス ポリシーを管理する機能が用意されています。 サービス レベルおよびアカウント レベルという 2 種類のセキュア アクセス ポリシー (SAS) があります。 アカウント レベル SAS は、ストレージ アカウントが対象となり、複数のサービスとリソースに適用できます。 サービス レベル SAS は、特定のサービスの下でリソースに対して定義されます。 サービス レベル SAS を生成するには、任意のコンテナーを右クリックして **[Manage Access Policies...\(アクセス ポリシーの管理...\)]** を選択します。アカウント レベル SAS を生成するには、ストレージ アカウントを右クリックします。
 
-**[追加]** を選択して、新しいアクセス ポリシーを追加し、ポリシーのアクセス許可を定義します。 完了したら、**[保存]** を選択してアクセス ポリシーを保存します。 これで、Shared Access Signature の構成時にこのポリシーを使用できます。
+**[追加]** を選択して、新しいアクセス ポリシーを追加し、ポリシーのアクセス許可を定義します。 完了したら、 **[保存]** を選択してアクセス ポリシーを保存します。 これで、Shared Access Signature の構成時にこのポリシーを使用できます。
 
 ## <a name="work-with-shared-access-signatures"></a>Shared Access Signature を操作する
 
-Shared Access Signature (SAS) は Storage Explorer を使用して取得できます。 ストレージ アカウント、コンテナー、または BLOB を右クリックして **[Get Shared Access Signature...\(Shared Access Signature の取得...\)]** を選択します。SAS URL の開始時刻と有効期限、およびアクセス許可を選択し、**[作成]** を選択します。 クエリ文字列を含む完全な URL およびクエリ文字列自体が提供されます。これらは次の画面でコピーできます。
+Shared Access Signature (SAS) は Storage Explorer を使用して取得できます。 ストレージ アカウント、コンテナー、または BLOB を右クリックして **[Get Shared Access Signature...\(Shared Access Signature の取得...\)]** を選択します。SAS URL の開始時刻と有効期限、およびアクセス許可を選択し、 **[作成]** を選択します。 クエリ文字列を含む完全な URL およびクエリ文字列自体が提供されます。これらは次の画面でコピーできます。
 
 ![Microsoft Azure Storage Explorer - コンテナー内の BLOB の一覧](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 

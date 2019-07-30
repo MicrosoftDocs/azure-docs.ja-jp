@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046072"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60816739"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Prediction API でモデルを使用する
 
@@ -26,7 +26,7 @@ ms.locfileid: "59046072"
 
 ## <a name="publish-your-trained-iteration"></a>トレーニング済みイテレーションを発行する
 
-[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。
+[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、 __[Performance]__ \(パフォーマンス) タブを選択します。
 
 Prediction API にイメージを送信するには、まず予測のイテレーションを発行する必要があり、これは __[Publish]__ \(発行\) を選択して、発行されたイテレーションの名前を指定して実行できます。 これにより、モデルが、Custom Vision Azure リソースの Prediction API にアクセスできるようになります。
 
@@ -47,7 +47,7 @@ Prediction API にイメージを送信するには、まず予測のイテレ�
 > [!TIP]
 > __Prediction-Key__ は、[Azure portal](https://portal.azure.com) ページのプロジェクトに関連付けられている Custom Vision Azure リソースの __[キー]__ ブレードでも見つけることができます。
 
-このガイドでは、ローカル イメージを使用します。そのため、**[If you have an image file]\(イメージ ファイルがある場合\)** の下にある URL を一時的な場所にコピーします。 対応する __Prediction-Key__ 値もコピーします。
+このガイドでは、ローカル イメージを使用します。そのため、 **[If you have an image file]\(イメージ ファイルがある場合\)** の下にある URL を一時的な場所にコピーします。 対応する __Prediction-Key__ 値もコピーします。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 
@@ -137,7 +137,7 @@ Prediction API にイメージを送信するには、まず予測のイテレ�
 このガイドでは、C# SDK を使用して、カスタム画像分類器/検出器にイメージを送信し、応答をプログラムで受信する方法について説明しました。 次は、C# を使用してエンドツーエンドのシナリオを完了したり、さまざまな言語の SDK を使用して作業を開始したりする方法について説明します。
 
 * [クイック スタート: .NET SDK](csharp-tutorial.md)
-* [クイック スタート:Python SDK](python-tutorial.md)
+* [クイック スタート:Python SDK:](python-tutorial.md)
 * [クイック スタート:Java SDK](java-tutorial.md)
 * [クイック スタート:Node SDK](node-tutorial.md)
 * [クイック スタート:Go SDK](go-tutorial.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 667ee6a49238c1ecaabec631cb72804b0c4b2323
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545063"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304251"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -43,7 +43,7 @@ Azure にデプロイされた Service Fabric クラスター上の問題を報�
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>運用上の問題を報告するか、スタンドアロン Service Fabric クラスターの有料サポートを要求する
 
-オンプレミスまたは他のクラウドにデプロイされた Service Fabric クラスター上の問題を報告する場合は、[Microsoft サポート ポータル](https://support.microsoft.com/oas/default.aspx?prid=16146)でサポートのチケットを開きます。
+オンプレミスまたは他のクラウドにデプロイされた Service Fabric クラスター上の問題を報告する場合は、[Microsoft サポート ポータル](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)でサポートのチケットを開きます。
 
 各項目の詳細情報
 
@@ -60,11 +60,11 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow と MSDN フォーラム
 
-[StackOverflow の Service Fabric タグ][stackoverflow]と [MSDN の Service Fabric フォーラム][msdn-forum]は、プラットフォームのしくみやそのプラットフォームで特定のタスクを実行する方法について質問する場合に最適です。
+[StackOverflow の Service Fabric タグ][stackoverflow]と and the [Service Fabric forum on MSDN][msdn-forum]は、プラットフォームのしくみやそのプラットフォームで特定のタスクを実行する方法について質問する場合に最適です。
 
 ### <a name="azure-feedback-forum"></a>Azure フィードバック フォーラム
 
-[Service Fabric 用の Azure フィードバック フォーラム][uservoice-forum]は、ユーザーが製品について持っている多くの機能に関するアイデアを提起するのに最適な場所です。Microsoft は、最も人気のあるリクエストが中長期的な計画に含まれるように再検討します。 Microsoft では、コミュニティ内で自身の提案への支持を集めることをお勧めしています。
+[Service Fabric 用の Azure フィードバック フォーラム][uservoice-forum]は、ユーザーが製品について持っている多くの機能に関するアイデアを提起するのに最適な場所です。Microsoft では、最も人気のあるリクエストが中長期的な計画に含まれるように再検討しています。 Microsoft では、コミュニティ内で自身の提案への支持を集めることをお勧めしています。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric プレビュー バージョン - 運用環境での使用はサポートされない
 

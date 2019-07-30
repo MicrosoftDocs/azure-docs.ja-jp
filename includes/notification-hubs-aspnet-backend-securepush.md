@@ -4,16 +4,16 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b150cad22528234286fa7939bf7055e8312ed361
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181424"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229265"
 ---
 ## <a name="webapi-project"></a>Web API プロジェクト
 1. Visual Studio で、**ユーザーへの通知**に関するチュートリアルで作成した **AppBackend** プロジェクトを開きます。
-2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。 必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。 これらの値は [Azure ポータル](http://portal.azure.com)から取得できます。 ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。 完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。
+2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。 必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。 これらの値は [Azure ポータル](https://portal.azure.com)から取得できます。 ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。 完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。
    
         public class Notification
         {

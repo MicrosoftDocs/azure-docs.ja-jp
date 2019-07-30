@@ -3,18 +3,18 @@ title: 'Azure Toolkit for IntelliJ:SSH を使用した Spark アプリケーシ�
 description: Azure Toolkit for IntelliJ のHDInsight ツールを使用し、HDInsight クラスターで SSH によりアプリケーションをリモート デバッグする方法の手順を示すガイダンス
 keywords: デバッグ、intellij のリモート デバッグ、ssh、intellij、hdinsight、intellij のデバッグ、デバッグ
 ms.service: hdinsight
-author: hrasheed
-ms.author: hrasheed-msft
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 7554f0739626520153196472a790ab672a932331
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0bca6c16124f886d9df9e88e651f3f7450f51a1a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066220"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876368"
 ---
 # <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>ローカルまたはリモートから SSH 経由で Azure Toolkit for IntelliJ を使用して HDInsight クラスター上の Apache Spark アプリケーションをデバッグする
 
@@ -75,7 +75,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 ### <a name="scenario-2-perform-local-run"></a>シナリオ 2:ローカルで実行する
 1. **SparkCore_wasbloTest** スクリプトを開き、スクリプト エディターを右クリックし、 **[Run '[Spark Job]XXX']\('[Spark Job]XXX' の実行\)** オプションを選択してローカルで実行します。
-1. ローカル実行が完了すると、現在のプロジェクト エクスプローラーの **[data]**  >  ** __[default]__ ** に出力ファイルが保存されていることを確認できます。
+1. ローカル実行が完了すると、現在のプロジェクト エクスプローラーの **[data]**  >  ** __[default]__** に出力ファイルが保存されていることを確認できます。
 
     ![ローカル実行の結果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
 1. ローカル実行とローカル デバッグを行うと、既定のローカル実行構成が自動的に設定されます。 右上済の **[Spark on HDInsight] XXX** という構成を開くと、 **[HDInsight の Apache Spark]** の下に **[Spark on HDInsight]XXX** が既に作成されていることがわかります。 **[Locally Run]\(ローカル実行\)** タブに切り替えます。

@@ -13,30 +13,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/11/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 29126171a2d808153c7578d911e0725641ec39ff
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: f9f142543140be3348bf7cd94894cc9e88278368
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545147"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849476"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>App Service on Linux で Ruby on Rails アプリを作成する
 
-[Azure App Service on Linux](app-service-linux-intro.md) は、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、Web App on Linux として Azure にデプロイできる基本的な [Ruby on Rails](https://rubyonrails.org/) アプリケーションの作成方法を示します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して Azure App Service on Linux に Ruby on Rails アプリをデプロイする方法を示します。
 
 > [!NOTE]
 > この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用するか、[サポートされていない Ruby バージョン](app-service-linux-intro.md)を使用する場合は、[カスタム コンテナーで実行](quickstart-docker-go.md)する必要があります。
 
-![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
+![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Ruby 2.3 以降のインストール</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Ruby 2.6 以降をインストールする</a>
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 ターミナル ウィンドウを開き、`hello-world` ディレクトリに変更し、`rails server` コマンドを使用してサーバーを起動します。
 
-最初の手順では、必要な gem をインストールします。 `Gemfile` がサンプルに含まれているため、インストールする gem を指定する必要はありません。 これには bundler を使用します。
+最初の手順では、必要な gem をインストールします。 このサンプルには `Gemfile` が含まれているので、次のコマンドを実行するだけです。
 
 ```bash
 bundle install
@@ -65,7 +65,7 @@ bundle exec rails server
 
 Web ブラウザーで `http://localhost:3000` に移動して、ローカルでアプリケーションをテストします。
 
-![構成された Hello World](./media/quickstart-ruby/hello-world-configured.png)
+![構成された Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
 [!INCLUDE [Try Cloud Shell](../../../includes/cloud-shell-try-it.md)]
 
@@ -79,7 +79,7 @@ Web ブラウザーで `http://localhost:3000` に移動して、ローカルで
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-サイトを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
+アプリを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -91,47 +91,42 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="deploy-your-application"></a>アプリケーションをデプロイする
 
-次のコマンドを実行して、ローカル アプリケーションを Azure Web サイトにデプロイします。
+次のコマンドを実行して、ローカル アプリケーションを Azure Web アプリにデプロイします。
 
 ```bash
 git remote add azure <Git deployment URL from above>
-git add -A
-git commit -m "Initial deployment commit"
 git push azure master
 ```
 
 リモート デプロイ操作が正しく報告されていることを確認します。 これらのコマンドは、次のテキストに似た出力を生成します。
 
 ```bash
-remote: Using sass-rails 5.0.6
-remote: Updating files in vendor/cache
-remote: Bundle gems are installed into ./vendor/bundle
-remote: Updating files in vendor/cache
-remote: ~site/repository
+remote: Using turbolinks 5.2.0
+remote: Using uglifier 4.1.20
+remote: Using web-console 3.7.0
+remote: Bundle complete! 18 Gemfile dependencies, 78 gems now installed.
+remote: Bundled gems are installed into `/tmp/bundle`
+remote: Zipping up bundle contents
+remote: .......
+remote: ~/site/repository
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
-  579ccb....2ca5f31  master -> master
-myuser@ubuntu1234:~workspace/<app name>$
+remote: App container will begin restart within 10 seconds.
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
+   a6e73a2..ae34be9  master -> master
 ```
 
-デプロイが完了したら、次に示すように [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-restart) コマンドを使用して Web アプリを再起動してデプロイが有効になるようにします。
-
-```azurecli-interactive
-az webapp restart --name <app name> --resource-group myResourceGroup
-```
-
-サイトに移動して結果を確認します。
+デプロイが完了したら、Web アプリが再起動するまで約 10 秒待ってから、Web アプリに移動して結果を確認します。
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
-![更新後の Web アプリ](./media/quickstart-ruby/hello-world-updated.png)
+![更新後の Web アプリ](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> アプリの再起動中にサイトを参照しようとすると、結果は HTTP 状態コード `Error 503 Server unavailable` になります。 完全に再起動するまで、数分かかる場合があります。
+> アプリの再起動中に、ブラウザーまたは `Error 503 Server unavailable` の既定のページで、HTTP 状態コード `Hey, Ruby developers!` が表示される場合があります。 アプリが完全に再起動するまで、数分かかる場合があります。
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]

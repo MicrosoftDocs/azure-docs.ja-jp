@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 07/17/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2576a33e62b370bc2fd91c5d155e9f8d6e52c0f8
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: f3b23aa7db29390ef50a72f73fb153fef5301b92
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190268"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304830"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 
@@ -36,7 +36,7 @@ ms.locfileid: "67190268"
 
 このフローチャートは、実際の状況に最適なシングル サインオンの方法を判断するのに役立ちます。
 
-![シングル サインオンの方法を選択する](./media/what-is-single-sign-on/choose-single-sign-on-method-040419.png)
+![シングル サインオン方法の判断のフローチャート](./media/what-is-single-sign-on/choose-single-sign-on-method-040419.png)
 
 次の表は、シングル サインオンの方法と、詳細情報へのリンクをまとめたものです。
 
@@ -47,23 +47,24 @@ ms.locfileid: "67190268"
 | [パスワード ベース](#password-based-sso) | クラウドとオンプレミス | アプリケーションがユーザー名とパスワードを使用して認証する場合にはパスワードベースを選択します。 パスワードベースのシングル サインオンでは、セキュリティで保護されたアプリケーションのパスワードの保存と、Web ブラウザーの拡張機能またはモバイル アプリを使用した再生が可能になります。 この方法では、アプリケーションによって提供される既存のサインイン プロセスが使用されますが、管理者がパスワードを管理できるようになります。 |
 | [リンク](#linked-sign-on) | クラウドとオンプレミス | アプリケーションが別の ID プロバイダー サービスでのシングル サインオンの用に構成されている場合は、リンクされたサインオンを選択します。 このオプションは、アプリケーションにシングル サインオンを追加するものではありません。 ただし、アプリケーションには、Active Directory フェデレーション サービス (AD FS) などの別のサービスを使って既にシングル サインオンが実装されている場合があります。|
 | [Disabled](#disabled-sso) | クラウドとオンプレミス | シングル サインオンのためにアプリを構成する準備ができていない場合は、無効化のシングル サインオンを選択します。 ユーザーは、そのアプリケーションを起動するたびにユーザー名とパスワードを入力する必要があります。|
-| [統合 Windows 認証 (IWA)](#integrated-windows-authentication-iwa-sso) | オンプレミスのみ | [統合 Windows 認証 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) を使用するアプリケーションまたは要求に対応するアプリケーションには、IWA シングル サインオンを選択します。 IWA の場合、アプリケーション プロキシ コネクタは、アプリケーションに対して Kerberos 制約付き委任 (KCD) を使用し、ユーザーを認証します。 | 
-| [ヘッダーベース](#header-based-sso) | オンプレミスのみ | アプリケーションが認証のためにヘッダーを使用する場合は、ヘッダー ベースのシングル サインオンを使用します。 ヘッダーベースのシングル サインオンには、Azure AD 用の PingAccess が必要です。 アプリケーション プロキシは、Azure AD を使用してユーザーを認証してから、コネクタ サービス経由でトラフィックを渡します。  | 
+| [統合 Windows 認証 (IWA)](#integrated-windows-authentication-iwa-sso) | オンプレミスのみ | [統合 Windows 認証 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) を使用するアプリケーションまたは要求に対応するアプリケーションには、IWA シングル サインオンを選択します。 IWA の場合、アプリケーション プロキシ コネクタは、アプリケーションに対して Kerberos 制約付き委任 (KCD) を使用し、ユーザーを認証します。 |
+| [ヘッダーベース](#header-based-sso) | オンプレミスのみ | アプリケーションが認証のためにヘッダーを使用する場合は、ヘッダー ベースのシングル サインオンを使用します。 ヘッダーベースのシングル サインオンには、Azure AD 用の PingAccess が必要です。 アプリケーション プロキシは、Azure AD を使用してユーザーを認証してから、コネクタ サービス経由でトラフィックを渡します。  |
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect と OAuth
-新しいアプリケーションを開発する場合、OpenID Connect、OAuth などの最新のプロトコルを使用して、複数のデバイス プラットフォームでアプリケーションの最適なシングル サイオン エクスペリエンスを実現します。 OAuth により、ユーザーまたは管理者は、[MS Graph](/graph/overview) などの保護されたリソースについて[同意する](configure-user-consent.md)ことができます。 アプリケーション用の [SDK](../develop/reference-v2-libraries.md) を簡単に導入でき、さらにアプリケーションで [MS Graph](/graph/overview) をただちに使用できます。
+
+新しいアプリケーションを開発する場合、OpenID Connect、OAuth などの最新のプロトコルを使用して、複数のデバイス プラットフォームでアプリケーションの最適なシングル サイオン エクスペリエンスを実現します。 OAuth により、ユーザーまたは管理者は、[Microsoft Graph](/graph/overview) などの保護されたリソースについて[同意する](configure-user-consent.md)ことができます。 アプリ用の [SDK](../develop/reference-v2-libraries.md) を簡単に導入でき、さらに、アプリでは [Microsoft Graph](/graph/overview) をすぐにでも使用できるようになります。
 
 詳細については、次を参照してください。
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
-- [Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+- [Microsoft ID プラットフォーム開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
 
 ## <a name="saml-sso"></a>SAML SSO
+
 **SAML によるシングル サインオン**では、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 SAML ベースのシングル サインオンでは、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます。
 
 アプリケーションでサポートされている場合は、SAML ベースのシングル サインオンを選択してください。
-
 
 SAML ベースのシングル サインオンは、以下のいずれかのプロトコルを使用するアプリケーションに対してサポートされます。
 
@@ -79,9 +80,10 @@ SAML ベースのシングル サインオンのためにオンプレミス ア�
 SAML プロトコルの詳細については、「[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md)」を参照してください。
 
 ## <a name="password-based-sso"></a>パスワードベースの SSO
-パスワードベースのサインオンでは、ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインオンします。 最初のサインイン後は、Azure AD がユーザー名とパスワードをアプリケーションに提供します。 
 
-パスワード ベースのシングル サインオンでは、アプリケーションによって提供される既存の認証プロセスが使用されます。 アプリケーションでパスワードによるシングル サインオンを有効にすると、Azure AD がそのアプリケーション用のユーザー名とパスワードを収集し、安全に保存します。 ユーザーの資格情報は、暗号化された状態でディレクトリ内に保存されます。 
+パスワードベースのサインオンでは、ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインオンします。 最初のサインイン後は、Azure AD がユーザー名とパスワードをアプリケーションに提供します。
+
+パスワード ベースのシングル サインオンでは、アプリケーションによって提供される既存の認証プロセスが使用されます。 アプリケーションでパスワードによるシングル サインオンを有効にすると、Azure AD がそのアプリケーション用のユーザー名とパスワードを収集し、安全に保存します。 ユーザーの資格情報は、暗号化された状態でディレクトリ内に保存されます。
 
 パスワードベースのシングル サインオンは以下の場合に選択します。
 
@@ -91,6 +93,9 @@ SAML プロトコルの詳細については、「[シングル サインオン�
 パスワードベースのシングル サインオンは、HTML ベースのサインイン ページを持つどのクラウド ベース アプリケーションでもサポートされます。 ユーザーは、以下の任意のブラウザーを使用できます。
 
 - Internet Explorer 11 - Windows 7 以降
+   > [!NOTE]
+   > Internet Explorer は制限付きサポートとなっており、新しいソフトウェア更新プログラムは提供されなくなりました。 Microsoft Edge が推奨されるブラウザーです。
+
 - Microsoft Edge - Windows 10 Anniversary Edition 以降
 - Chrome - Windows 7 以降、MacOS X 以降
 - Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
@@ -118,12 +123,12 @@ Azure AD 管理者が資格情報を管理する場合:
 
 エンドユーザーが資格情報を管理する場合:
 
-- ユーザーは、必要に応じて自分のパスワードを更新または削除することで、パスワードを管理できます。 
+- ユーザーは、必要に応じて自分のパスワードを更新または削除することで、パスワードを管理できます。
 - 管理者は、この場合も、アプリケーションの新しい資格情報を設定できます。
 
-
 ## <a name="linked-sign-on"></a>リンクされたサインオン
-Azure AD は、リンクされたサインオンによって、既に別のサービスでのシングル サインオンのために構成されているシングル サインオンをアプリケーションに提供できます。 リンクされたアプリケーションは、Office 365 ポータルまたは Azure AD の MyApps ポータルで、エンドユーザーに表示できます。 たとえばユーザーは、Active Directory フェデレーション サービス 2.0 (AD FS) でシングル サインオン用に構成されているアプリケーションを、Office 365 ポータルから起動できます。 Office 365 ポータルまたは Azure AD の MyApps ポータルから起動される、リンクされたアプリケーションについても、追加のレポートが用意されています。 
+
+Azure AD は、リンクされたサインオンによって、既に別のサービスでのシングル サインオンのために構成されているシングル サインオンをアプリケーションに提供できます。 リンクされたアプリケーションは、Office 365 ポータルまたは Azure AD の MyApps ポータルで、エンドユーザーに表示できます。 たとえばユーザーは、Active Directory フェデレーション サービス 2.0 (AD FS) でシングル サインオン用に構成されているアプリケーションを、Office 365 ポータルから起動できます。 Office 365 ポータルまたは Azure AD の MyApps ポータルから起動される、リンクされたアプリケーションについても、追加のレポートが用意されています。
 
 ### <a name="linked-sign-on-for-application-migration"></a>アプリケーション移行の場合のリンクされたサインオン
 
@@ -133,47 +138,43 @@ Azure AD は、リンクされたサインオンによって、既に別のサ�
 
 ## <a name="disabled-sso"></a>無効化 SSO
 
-無効化モードは、そのアプリケーションに対してシングル サインオンが使用されないことを意味します。 シングル サインオンが無効になっている場合、ユーザーは 2 回認証することが必要な場合があります。 ユーザーは最初に Azure AD に対して認証してから、アプリケーションに対してサインインします。 
+無効化モードは、そのアプリケーションに対してシングル サインオンが使用されないことを意味します。 シングル サインオンが無効になっている場合、ユーザーは 2 回認証することが必要な場合があります。 ユーザーは最初に Azure AD に対して認証してから、アプリケーションに対してサインインします。
 
 シングル サインオン無効化モードは以下のために使用します。
 
 - このアプリケーションを Azure AD シングル サインオンと統合する準備ができていない場合、または
 - アプリケーションの他の側面をテスト中の場合、または
-- ユーザーを認証する必要ないオンプレミス アプリケーションへのセキュリティ層として。 無効化を指定したら、ユーザーは認証する必要があります。 
+- ユーザーを認証する必要ないオンプレミス アプリケーションへのセキュリティ層として。 無効化を指定したら、ユーザーは認証する必要があります。
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>統合 Windows 認証 (IWA) による SSO
 
 [アプリケーション プロキシ](application-proxy.md)は、[統合 Windows 認証 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) を使用するアプリケーションや要求対応のアプリケーションに対するシングル サインオン (SSO) を提供します。 アプリケーションで IWA が使用されている場合、アプリケーション プロキシは Kerberos の制約付き委任 (KCD) を使用して、アプリケーションに対する認証を行います。 Azure Active Directory を信頼している要求対応のアプリケーションでは、ユーザーは Azure AD を使用して既に認証されているため、シングル サインオンが機能します。
 
-統合 Windows 認証のシングル サインオン モードは以下の場合に選択します。
+統合 Windows 認証のシングル サインオン モードを選択して、IWA を利用して認証するオンプレミス アプリにシングル サインオンを提供します。
 
-- IWA を使用して認証するオンプレミス アプリに対するシングル サインオンを提供する場合。 
-
-IWA のためのオンプレミス アプリの構成については、[アプリケーション プロキシを使用して、アプリケーションに対するシングル サインオンのための Kerberos 制約付き委任を行う](application-proxy-configure-single-sign-on-with-kcd.md)ことに関するページを参照してください。 
+IWA のためのオンプレミス アプリの構成については、[アプリケーション プロキシを使用して、アプリケーションに対するシングル サインオンのための Kerberos 制約付き委任を行う](application-proxy-configure-single-sign-on-with-kcd.md)ことに関するページを参照してください。
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>KCD を使ったシングル サインオンのしくみ
 この図は、IWA を使用するオンプレミス アプリケーションにユーザーがアクセスするときの流れを説明するものです。
 
-![Microsoft AAD 認証のフロー図](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Microsoft Azure AD 認証フロー図](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
 1. ユーザーは、オンプレミスのアプリケーションにアプリケーション プロキシをとおしてアクセスするための URL を入力します。
-2. この要求がアプリケーション プロキシによって Azure AD 認証サービスにリダイレクトされて、事前認証が行われます。 この時点で、Azure AD の認証および承認のポリシーのうち、該当するものが適用されます (たとえば多要素認証)。 ユーザーの正当性が確認された場合は、Azure AD によってトークンが作成されてユーザーに送信されます。
-3. ユーザーは、このトークンをアプリケーション プロキシに渡します。
-4. アプリケーション プロキシはトークンを検証し、トークンからユーザー プリンシパル名 (UPN) を取得します。 次に、二重に認証された、セキュリティで保護されたチャネルを介して要求、UPN、およびサービス プリンシパル名 (SPN) をコネクタに送信します。
-5. コネクタは、オンプレミスの AD との間で、Kerberos の制約付き委任 (KCD) ネゴシエーションを使用します。このとき、ユーザーの偽装によってアプリケーションに対する Kerberos トークンを取得します。
-6. Active Directory は、そのアプリケーション用の Kerberos トークンをコネクタに送信します。
-7. コネクタは、AD から受信した Kerberos トークンを使用して、元の要求をアプリケーション サーバーに送信します。
-8. アプリケーションからコネクタに応答が送信されます。この応答はその後、アプリケーション プロキシ サービスに返され、最後にユーザーに返されます。
+1. この要求がアプリケーション プロキシによって Azure AD 認証サービスにリダイレクトされて、事前認証が行われます。 この時点で、Azure AD の認証および承認のポリシーのうち、該当するものが適用されます (たとえば多要素認証)。 ユーザーの正当性が確認された場合は、Azure AD によってトークンが作成されてユーザーに送信されます。
+1. ユーザーは、このトークンをアプリケーション プロキシに渡します。
+1. アプリケーション プロキシはトークンを検証し、トークンからユーザー プリンシパル名 (UPN) を取得します。 次に、二重に認証された、セキュリティで保護されたチャネルを介して要求、UPN、およびサービス プリンシパル名 (SPN) をコネクタに送信します。
+1. コネクタは、オンプレミスの AD との間で、Kerberos の制約付き委任 (KCD) ネゴシエーションを使用します。このとき、ユーザーの偽装によってアプリケーションに対する Kerberos トークンを取得します。
+1. Active Directory は、そのアプリケーション用の Kerberos トークンをコネクタに送信します。
+1. コネクタは、AD から受信した Kerberos トークンを使用して、元の要求をアプリケーション サーバーに送信します。
+1. アプリケーションからコネクタに応答が送信されます。この応答はその後、アプリケーション プロキシ サービスに返され、最後にユーザーに返されます。
 
 ## <a name="header-based-sso"></a>ヘッダーベースの SSO
 
-ヘッダー ベースのシングル サインオンは、認証のために HTTP ヘッダーを使用するアプリケーションに対して機能しします。 このサインイン方法では、PingAccess というサード パーティの認証サービスが使用されます。 ユーザーは、Azure AD に対してのみ認証する必要があります。 
+ヘッダー ベースのシングル サインオンは、認証のために HTTP ヘッダーを使用するアプリケーションに対して機能しします。 このサインイン方法では、PingAccess というサード パーティの認証サービスが使用されます。 ユーザーは、Azure AD に対してのみ認証する必要があります。
 
-ヘッダーベースのシングル サインオンは以下の場合に選択します。
+アプリケーションに対してアプリケーション プロキシと PingAccess が構成されている場合、ヘッダーベースのシングル サインオンを選択します。
 
-- アプリケーションに対してアプリケーション プロキシと PingAccess が構成されている
-
-ヘッダー ベースの認証を構成するには、[アプリケーション プロキシを使用したシングル サインオン用のヘッダー ベースの認証](application-proxy-configure-single-sign-on-with-ping-access.md)に関する記事を参照してください。 
+ヘッダー ベースの認証を構成するには、[アプリケーション プロキシを使用したシングル サインオン用のヘッダー ベースの認証](application-proxy-configure-single-sign-on-with-ping-access.md)に関する記事を参照してください。
 
 ### <a name="what-is-pingaccess-for-azure-ad"></a>PingAccess for Azure AD とは
 
@@ -183,15 +184,13 @@ IWA のためのオンプレミス アプリの構成については、[アプ�
 
 ### <a name="how-do-i-get-a-license-for-pingaccess"></a>PingAccess のライセンスを取得する方法
 
-このシナリオは Azure AD と PingAccess の連携によって実現されるため、その両方のサービスのライセンスが必要となります。 ただし、Azure AD Premium サブスクリプションには、最大 20 のアプリケーションをカバーする基本的な PingAccess ライセンスが含まれています。 20 を超えるヘッダー ベースのアプリケーションを公開する必要がある場合は、PingAccess から追加のライセンスを購入できます。 
+このシナリオは Azure AD と PingAccess の連携によって実現されるため、その両方のサービスのライセンスが必要となります。 ただし、Azure AD Premium サブスクリプションには、最大 20 のアプリケーションをカバーする基本的な PingAccess ライセンスが含まれています。 20 を超えるヘッダー ベースのアプリケーションを公開する必要がある場合は、PingAccess から追加のライセンスを購入できます。
 
 詳細については、「 [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)」をご覧ください。
 
-
 ## <a name="related-articles"></a>関連記事
-* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](../saas-apps/tutorial-list.md)
-* [シングル サインオンの構成に関するチュートリアル](configure-single-sign-on-portal.md)
-* [アプリケーションへのアクセスの管理の概要](what-is-access-management.md)
-* ダウンロード リンク:[シングル サインオンのデプロイ計画](https://aka.ms/SSODeploymentPlan)。
 
-
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](../saas-apps/tutorial-list.md)
+- [シングル サインオンの構成に関するチュートリアル](configure-single-sign-on-portal.md)
+- [アプリケーションへのアクセスの管理の概要](what-is-access-management.md)
+- ダウンロード リンク:[シングル サインオンのデプロイ計画](https://aka.ms/SSODeploymentPlan)

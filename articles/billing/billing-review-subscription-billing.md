@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
-ms.author: erikre
-ms.openlocfilehash: 0a73462b7fdbaf6386a3051a72da755f31ff8dd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: banders
+ms.openlocfilehash: 8cfa429b18fb282f5c1f85d2fd1637704653b855
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192131"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443047"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API を使用してサブスクリプションの課金を確認する
 

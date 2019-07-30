@@ -27,6 +27,8 @@
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
 - name: 概念
   items:
+    - name: レポートと監視のデプロイを計画する
+      href: plan-monitoring-and-reporting.md
     - name: 監査ログ
       href: concept-audit-logs.md
     - name: サインイン ログ
@@ -58,7 +60,7 @@
           href: howto-power-bi-content-pack.md
         - name: レポート API の構成の前提条件
           href: howto-configure-prerequisites-for-reporting-api.md
-        - name: Azure Monitor ブックの使用方法
+        - name: Azure AD ブックの使用方法
           href: howto-use-azure-monitor-workbooks.md
     - name: 監視
       items:
@@ -87,6 +89,8 @@
 - name: リファレンス
   expanded: true
   items:
+    - name: レポート用の Azure AD PowerShell コマンドレット
+      href: reference-powershell-reporting.md
     - name: 監査ログの API リファレンス
       href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
     - name: サインイン ログの API リファレンス

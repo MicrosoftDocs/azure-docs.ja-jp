@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: a7016b8ca43abee9c3f346c6dec55a101ce4020a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0802185b7fb0d1a6d7d41cd1fa5a30f5ce10424b
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60528325"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443905"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -61,5 +61,5 @@ Microsoft Azure Database for MySQL サーバー サービスに期待どおり�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-portal.md)
-[Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-cli.md)
+* [Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-portal.md)
+* [Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-cli.md)

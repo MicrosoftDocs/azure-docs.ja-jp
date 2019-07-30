@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/29/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 9d4fd798309398dff38081cc66b4071c5dd1f5bf
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730411"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670780"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -42,15 +42,15 @@ Swagger は、Azure Digital Twins Management API に対して行われる呼び�
 
 簡潔な概要では、API について説明されています。
 
-[![Swagger の最上部](media/how-to-use-swagger/swagger_management_top.PNG)](media/how-to-use-swagger/swagger_management_top.PNG#lightbox)
+[![Swagger の最上部](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 Management API オブジェクト モデルも一覧表示されます。
 
-[![Swagger モデル](media/how-to-use-swagger/swagger_management_models.PNG)](media/how-to-use-swagger/swagger_management_models.PNG#lightbox)
+[![Swagger モデル](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 一覧表示されている各オブジェクト モデルを選択すると、キー属性の詳細な概要が表示されます。
 
-[![Swagger モデル](media/how-to-use-swagger/swagger_management_model.PNG)](media/how-to-use-swagger/swagger_management_model.PNG#lightbox)
+[![Swagger モデル](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 生成された Swagger オブジェクト モデルは、Azure Digital Twins の使用可能なすべての[オブジェクトおよび API](./concepts-objectmodel-spatialgraph.md) を確認するのに便利です。 開発者は、Azure Digital Twins でソリューションを作成するときに、このリソースの使用できます。
 
@@ -64,7 +64,7 @@ Swagger では、Management API を構成するすべてのエンドポイント
 * 必須のパラメーターのデータ型。
 * リソースにアクセスする HTTP メソッド。
 
-[![Swagger エンドポイント](media/how-to-use-swagger/swagger_management_endpoints.PNG)](media/how-to-use-swagger/swagger_management_endpoints.PNG#lightbox)
+[![Swagger エンドポイント](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 さらに詳細な概要を見るには、各リソースをクリックします。
 
@@ -74,11 +74,11 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 特定のエンドポイントを選択すると、 **[試してみる]** と表示されます。
 
-[![Swagger の試用](media/how-to-use-swagger/swagger_management_try.PNG)](media/how-to-use-swagger/swagger_management_try.PNG#lightbox)
+[![Swagger の試用](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 そのセクションを展開すると、必須および省略可能な各パラメーターの入力フィールドが表示されます。 適切な値を入力し、 **[Execute]\(実行\)** を選択します。
 
-[![Swagger の試用後](media/how-to-use-swagger/swagger_management_tried.PNG)](media/how-to-use-swagger/swagger_management_tried.PNG#lightbox)
+[![Swagger の試用後](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 テストを実行した後は、応答データを検証できます。
 
@@ -86,51 +86,43 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 一覧表示されている各エンドポイントには、開発およびテストを検証するための応答本文データも含まれます。 これらの例には、HTTP 要求が成功したときに表示される状態コードと JSON が含まれます。
 
-[![Swagger の応答](media/how-to-use-swagger/swagger_management_response.PNG)](media/how-to-use-swagger/swagger_management_response.PNG#lightbox)
+[![Swagger の応答](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
 これらの例には、失敗したテストのデバッグまたは改善に役立つエラー コードも含まれます。
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 承認
 
-OAuth 2.0 によって保護された要求の対話的なテストに関する詳細については、[公式ドキュメント](https://swagger.io/docs/specification/authentication/oauth2/)を参照してください。
-
 > [!NOTE]
-> Azure Digital Twins リソースを作成したユーザー プリンシパルにはスペース管理者ロールが割り当てられ、他のユーザーに対して追加のロール割り当てを作成できます。
+> * Azure Digital Twins リソースを作成したユーザー プリンシパルにはスペース管理者ロールが割り当てられ、他のユーザーに対して追加のロール割り当てを作成できます。 このようなユーザーとそのロールには、API の呼び出しを許可することができます。
 
-1. [こちらのクイック スタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順に従って、種類が ***Web アプリ/API*** である Azure AD アプリケーションを作成します。 既存のアプリの登録を再利用することもできます。
+1. [こちらのクイック スタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順に従うか、[Azure Digital Twins アプリを Azure Active Directory レガシに登録](./how-to-use-legacy-aad.md)して、Azure AD アプリケーションを作成し、構成します。 または、既存のアプリの登録を再利用することもできます。
 
-2. 次の応答 URL をアプリの登録に追加します。
+1. 次の応答 URL をアプリの登録に追加します。
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Name  | 置換後の文字列 | 例 |
+    | EnableAdfsAuthentication  | 置換後の文字列 | 例 |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | ポータルで見つかった Management REST API ドキュメントの URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-3. Azure Digital Twins にアクセスするアクセス許可をアプリに付与します。 **[必要なアクセス許可]** に「`Azure Digital Twins`」と入力して、 **[委任されたアクセス許可]** を選択します。 その後、 **[アクセス許可の付与]** を選択します。
-
-    ![Azure AD のアプリ登録追加 API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
-
-4. OAuth 2.0 暗黙的フローを許可するようにアプリケーション マニフェストを構成します。 **[マニフェスト]** をクリックして、アプリのアプリケーション マニフェストを開きます。 *oauth2AllowImplicitFlow* を `true` に設定します。
-
-    ![Azure AD の暗黙的なフロー](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
-
-5. Azure AD アプリの ID をコピーします。
+1. Azure AD アプリの ID をコピーします。
 
 Azure Active Directory の登録を完了した後:
 
-6. Swagger ページで **[Authorize]\(承認\)** ボタンをクリックします。
+1. Swagger ページで **[Authorize]\(承認\)** ボタンをクリックします。
 
     [![Swagger の [Authorize]\(承認\) ボタンをクリックする](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-7. アプリケーション ID を **[client_id]** フィールドに貼り付けます。
+1. アプリケーション ID を **[client_id]** フィールドに貼り付けます。
 
     [![Swagger の [client_id] フィールド](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. 次の成功のモーダルにリダイレクトされます。
+1. 次の成功のモーダルにリダイレクトされます。
 
-    [![Swagger のリダイレクト モーダル](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
+    [![Swagger のリダイレクト モーダル](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+
+OAuth 2.0 によって保護された要求の対話的なテストに関する詳細については、[公式ドキュメント](https://swagger.io/docs/specification/authentication/oauth2/)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

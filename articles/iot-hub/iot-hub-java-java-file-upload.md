@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3658b57d003ddc5429c6857f88044376fe1aaa93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27cdada0bfbb4236e16d17c263aaba0f4f5c511f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399165"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620130"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
@@ -26,7 +26,7 @@ ms.locfileid: "60399165"
 
 * IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
 
-[IoT Hub にテレメトリを送信する方法 (Java)](quickstart-send-telemetry-java.md) と [IoT Hub を使用してクラウドからデバイスへのメッセージを送信する方法 (Java)](iot-hub-java-java-c2d.md) に関するチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングとクラウドからデバイスへのメッセージングの基本的な機能が示されています。 「[IoT Hub を使用してメッセージ ルーティングを構成する](tutorial-routing.md)」チュートリアルでは、Azure Blob Storage にデバイスからクラウドへのメッセージを確実に格納する方法を説明しています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例:
+[デバイスから IoT ハブにテレメトリを送信する方法](quickstart-send-telemetry-java.md)のクイックスタートと [IoT Hub で cloud-to-device メッセージを送信する方法](iot-hub-java-java-c2d.md)のチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングと cloud-to-device メッセージの基本的な機能が示されています。 「[IoT Hub を使用してメッセージ ルーティングを構成する](tutorial-routing.md)」チュートリアルでは、Azure Blob Storage にデバイスからクラウドへのメッセージを確実に格納する方法を説明しています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例:
 
 * イメージを含む大きなファイル
 * ビデオ
@@ -265,7 +265,9 @@ mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
 * [プログラムによる IoT Hub の作成](iot-hub-rm-template-powershell.md)
+
 * [C SDK の概要](iot-hub-device-sdk-c-intro.md)
+
 * [Azure IoT SDK](iot-hub-devguide-sdks.md)
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。

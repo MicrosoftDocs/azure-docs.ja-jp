@@ -4,17 +4,17 @@ description: System Center Orchestrator の Runbook と統合パックを Azure 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae47cba8f8e9a7cdf914c0b3ea5dfb9fa6c259a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb5a77668cce96ef45a960908612b502f1520e25
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738215"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477585"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Orchestrator から Azure Automation (ベータ版) へ移行する
 [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいているのに対し、Azure Automation の Runbook は Windows PowerShell に基づいています。  [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。

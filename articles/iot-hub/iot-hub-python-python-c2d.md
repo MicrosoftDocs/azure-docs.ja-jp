@@ -9,35 +9,36 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 7ac668bdbc3698be3ed2aa50a428cef84e68369a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00f639ec57f3d29dff1993bbc664477b8648ce9a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61441407"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612562"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」には、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-python.md)に関するクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-このチュートリアルは、[IoT Hub の概要](quickstart-send-telemetry-python.md)に関するページのチュートリアルに基づいて作成されており、 次の方法について説明します。
+このチュートリアルは、[デバイスから IoT ハブへのテレメトリ送信](quickstart-send-telemetry-python.md)に関する記事に基づいて作成されています。 次の方法について説明します。
 
 * ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 
 * クラウドからデバイスへのメッセージをデバイスで受信する。
 
-* IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を、ソリューション バックエンドから要求する。
+* ソリューション バックエンドから、IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を要求する。
 
 cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide-messaging.md)を参照してください。
 
 このチュートリアルの最後に、次の 2 つの Python コンソール アプリを実行します。
 
-* **SimulatedDevice.py**。「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
+* **SimulatedDevice.py**。[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-python.md)に関するページで作成されたアプリの修正版であり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
 
 * **SendCloudToDeviceMessage.py**。クラウドからデバイスへのメッセージを IoT Hub を介してシミュレートされたデバイス アプリに送信し、その配信確認を受け取ります。
 
@@ -78,7 +79,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
     RECEIVE_CALLBACKS = 0
     ```
 
-3. 次のコードを **SimulatedDevice.py** ファイルに追加します。 "{deviceConnectionString}" プレースホルダーの値を、クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で作成したデバイスのデバイス接続文字列に置き換えます。
+3. 次のコードを **SimulatedDevice.py** ファイルに追加します。 "{deviceConnectionString}" プレースホルダーの値を、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-python.md)に関するクイック スタートで作成したデバイスのデバイス接続文字列に置き換えます。
 
     ```python
     # choose AMQP or AMQP_WS as transport protocol
@@ -170,7 +171,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 
-このセクションでは、クラウドからデバイスへのメッセージをシミュレートされたデバイスのアプリに送信する Python コンソール アプリを作成します。 クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal](https://portal.azure.com) で確認できます)。
+このセクションでは、クラウドからデバイスへのメッセージをシミュレートされたデバイスのアプリに送信する Python コンソール アプリを作成します。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-python.md)に関するクイックスタートで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal](https://portal.azure.com) で確認できます)。
 
 1. テキスト エディターを使って、**SendCloudToDeviceMessage.py** ファイルを作成します。
 
@@ -189,7 +190,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. 次のコードを **SendCloudToDeviceMessage.py** ファイルに追加します。 "{IoTHubConnectionString}" プレースホルダーの値を、クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で作成したハブの IoT Hub 接続文字列に置き換えます。 "{deviceId}" プレースホルダーを、クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で追加したデバイスのデバイス ID に置き換えます。
+3. 次のコードを **SendCloudToDeviceMessage.py** ファイルに追加します。 "{IoTHubConnectionString}" プレースホルダーの値は、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-python.md)に関するクイックスタートで作成したハブの IoT Hub 接続文字列で置き換えてください。 "{deviceId}" プレースホルダーは、[デバイスから IoT Hub へのテレメトリ送信](quickstart-send-telemetry-python.md)に関するクイックスタートで追加したデバイスのデバイス ID で置き換えてください。
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -268,7 +269,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 1. コマンド プロンプトを開き、**Azure IoT Hub Device SDK for Python** をインストールします。
 
-    ```
+    ```shell
     pip install azure-iothub-device-client
     ```
 
@@ -282,7 +283,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 3. 新しいコマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。
 
-    ```
+    ```shell
     pip install azure-iothub-service-client
     ```
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 168e5eea2004a31b108a8a00d883298f8e2198ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 82e8fe26cc58117bc6249f8a7e87612dabc5f438
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090272"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839511"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル:Azure portal を使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -35,6 +35,9 @@ ms.locfileid: "58090272"
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
+
+> [!WARNING]
+> ADF v1 パイプラインの作成とデプロイのための Azure portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](https://docs.microsoft.com/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
 
 この記事では、[Azure Portal](https://portal.azure.com) を使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えたデータ ファクトリを作成します。 Azure Data Factory の使用経験がない場合は、このチュートリアルを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。   
 
@@ -67,13 +70,13 @@ ms.locfileid: "58090272"
     コピー アクティビティでは、Azure Blob Storage の BLOB から Azure SQL データベースのテーブルにデータをコピーします。 パイプラインでコピー アクティビティを使用して、任意のサポートされているソースから任意のサポートされているターゲットにデータをコピーできます。 サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事を参照してください。 
 5. パイプラインを監視します。 この手順では、Azure Portal を使用して、入力および出力データセットのスライスを**監視**します。 
 
-## <a name="create-data-factory"></a>データ ファクトリの作成
+## <a name="create-a-data-factory"></a>Data Factory を作成する。
 > [!IMPORTANT]
 > [チュートリアルの前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を完了します (まだ完了していない場合)。   
 
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。 それでは、この手順でデータ ファクトリの作成から始めましょう。
 
-1. [Azure Portal](https://portal.azure.com/) にログインした後、左側のメニューで **[リソースの作成]**、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+1. [Azure Portal](https://portal.azure.com/) にログインした後、左側のメニューで **[リソースの作成]** 、 **[データ + 分析]** 、 **[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)    
 2. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
@@ -104,7 +107,7 @@ ms.locfileid: "58090272"
       > データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。                
       > 
       > 
-3. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
+3. ダッシュボードに、 **[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/data-factory-copy-activity-tutorial-using-azure-portal/deploying-data-factory.png)
 4. 作成が完了すると、図に示されているような **[Data Factory]** ブレードが表示されます。
@@ -120,7 +123,7 @@ AzureStorageLinkedService は、Azure ストレージ アカウントをデー�
 
 AzureSqlLinkedService は、Azure SQL データベースをデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに emp テーブルを作成しました。  
 
-### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
+### <a name="create-an-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このセクションで、Azure Storage アカウントの名前とキーを指定します。  
 
 1. **[Data Factory]** ブレードの **[作成およびデプロイ]** タイルをクリックします。
@@ -141,7 +144,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
 
     リンクされたサービスの定義の中の JSON プロパティの詳細については、[Azure Blob Storage コネクタ](data-factory-azure-blob-connector.md#linked-service-properties)に関する記事を参照してください。
 
-### <a name="create-a-linked-service-for-the-azure-sql-database"></a>Azure SQL Database 用にリンクされたサービスを作成する
+### <a name="create-a-linked-service-for-azure-sql-database"></a>Azure SQL Database 用にリンクされたサービスを作成する
 この手順では、Azure SQL データベースをデータ ファクトリにリンクします。 このセクションで、Azure SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 
 
 1. **Data Factory エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure SQL Database]** を選択します。 Azure SQL のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
@@ -158,10 +161,10 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 
 同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時に Azure SQL データベースへの接続に使用する接続文字列を指定します。 出力 SQL テーブル データセット (OututDataset) は、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。 
 
-### <a name="create-input-dataset"></a>入力データセットの作成
+### <a name="create-an-input-dataset"></a>入力データセットの作成
 この手順では、BLOB ファイル (emp.txt) を参照する InputDataset という名前のデータセットを作成します。このファイルは、リンクされたサービス AzureStorageLinkedService が表す Azure Storage 内の BLOB コンテナー (adftutorial) のルート フォルダーにあります。 fileName の値を指定しなかった場合やこれをスキップした場合、入力フォルダー内のすべての BLOB のデータがターゲットにコピーされます。 このチュートリアルでは、fileName の値を指定します。 
 
-1. Data Factory の**エディター**で、**[...More (...詳細)]**、**[新しいデータセット]** の順にクリックし、ドロップダウン メニューから **[Azure Blob Storage]** を選択します。 
+1. Data Factory の**エディター**で、 **[...More (...詳細)]** 、 **[新しいデータセット]** の順にクリックし、ドロップダウン メニューから **[Azure Blob Storage]** を選択します。 
    
     ![New dataset menu](./media/data-factory-copy-activity-tutorial-using-azure-portal/new-dataset-menu.png)
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スニペットに置き換えます。 
@@ -215,10 +218,10 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     これらの JSON プロパティの詳細については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。      
 3. ツール バーの **[デプロイ]** をクリックし、**InputDataset** データセットを作成してデプロイします。 ツリー ビューに **InputDataset** が表示されることを確認します。
 
-### <a name="create-output-dataset"></a>出力データセットの作成
+### <a name="create-an-output-dataset"></a>出力データセットの作成
 Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時に Azure SQL データベースへの接続に使用する接続文字列を指定します。 この手順で作成する出力 SQL テーブル データセット (OututDataset) は、Blob Storage のデータのコピー先となるデータベース内のテーブルを指定します。
 
-1. Data Factory の**エディター**で、**[...More (...詳細)]**、**[新しいデータセット]** の順にクリックし、ドロップダウン メニューから **[Azure SQL]** を選択します。 
+1. Data Factory の**エディター**で、 **[...More (...詳細)]** 、 **[新しいデータセット]** の順にクリックし、ドロップダウン メニューから **[Azure SQL]** を選択します。 
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スニペットに置き換えます。
 
     ```json   
@@ -262,12 +265,12 @@ Azure SQL Database のリンクされたサービスは、Data Factory サービ
     これらの JSON プロパティの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#dataset-properties)に関する記事を参照してください。
 3. ツール バーの **[デプロイ]** をクリックし、**OutputDataset** データセットを作成してデプロイします。 ツリー ビューの **[データセット]** の下に **OutputDataset** が表示されることを確認します。 
 
-## <a name="create-pipeline"></a>パイプラインの作成
+## <a name="create-a-pipeline"></a>パイプラインを作成する。
 この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する**コピー アクティビティ**を備えたパイプラインを作成します。
 
 現在、スケジュールは出力データセットによって開始されます。 このチュートリアルでは、1 時間ごとにスライスを生成するように出力データセットを構成します。 パイプラインの開始時刻と終了時刻の差は 1 日 (24 時間) です。 したがって、24 個の出力データセットのスライスがパイプラインによって生成されます。 
 
-1. Data Factory の**エディター**で、**[...More (...詳細)]**、**[新しいパイプライン]** の順にクリックします。 または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. Data Factory の**エディター**で、 **[...More (...詳細)]** 、 **[新しいパイプライン]** の順にクリックします。 または、ツリー ビューの **[パイプライン]** を右クリックして、 **[新しいパイプライン]** をクリックする方法もあります。
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スニペットに置き換えます。 
 
     ```json   
@@ -324,12 +327,12 @@ Azure SQL Database のリンクされたサービスは、Data Factory サービ
 
      パイプライン定義内の JSON プロパティの説明については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティ定義内の JSON プロパティの説明については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 BlobSource でサポートされる JSON プロパティの説明については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md)に関する記事を参照してください。 SqlSink でサポートされる JSON プロパティの説明については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md)に関する記事を参照してください。
 3. ツール バーの **[デプロイ]** をクリックし、**ADFTutorialPipeline** を作成してデプロイします。 ツリー ビューにパイプラインが表示されることを確認します。 
-4. ここで、**[X]** をクリックして **[エディター]** ブレードを閉じます。もう一度 **[X]** をクリックし、**ADFTutorialDataFactory** 用の **Data Factory** ホーム ページを表示します。
+4. ここで、 **[X]** をクリックして **[エディター]** ブレードを閉じます。もう一度 **[X]** をクリックし、**ADFTutorialDataFactory** 用の **Data Factory** ホーム ページを表示します。
 
 **お疲れさまでした。** Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えた Azure データ ファクトリが正常に作成されました。 
 
 
-## <a name="monitor-pipeline"></a>パイプラインを監視する
+## <a name="monitor-the-pipeline"></a>パイプラインの監視
 この手順では、Azure ポータルを使用して、Azure データ ファクトリの状況を監視します。    
 
 ### <a name="monitor-pipeline-using-monitor--manage-app"></a>監視と管理アプリを使用してパイプラインを監視する
@@ -344,9 +347,9 @@ Azure SQL Database のリンクされたサービスは、Data Factory サービ
     > 承認の処理が進行中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、**サード パーティの Cookie とサイト データをブロック**するチェック ボックスをオフにするか、**login.microsoftonline.com** に対する例外を作成してから、もう一度アプリを開いてください。
 
     ![Monitor & Manage App](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-and-manage-app.png)
-3. パイプラインの開始時刻 (2017 年 5 月 11 日) と終了時刻 (2017 年 5 月 12 日) が含まれるように、**[開始時刻]** と **[終了時刻]** を変更し、**[適用]** をクリックします。       
+3. パイプラインの開始時刻 (2017 年 5 月 11 日) と終了時刻 (2017 年 5 月 12 日) が含まれるように、 **[開始時刻]** と **[終了時刻]** を変更し、 **[適用]** をクリックします。       
 3. 中央のウィンドウの一覧のパイプラインの開始時刻と終了時刻の間の各時間に関連付けられた**アクティビティ ウィンドウ**が表示されます。 
-4. アクティビティ ウィンドウの詳細を表示するには、**[Activity Windows]\(アクティビティ ウィンドウ\)** 一覧でアクティビティ ウィンドウを選択します。 
+4. アクティビティ ウィンドウの詳細を表示するには、 **[Activity Windows]\(アクティビティ ウィンドウ\)** 一覧でアクティビティ ウィンドウを選択します。 
     ![アクティビティ ウィンドウの詳細](./media/data-factory-copy-activity-tutorial-using-azure-portal/activity-window-details.png)
 
     右側の [Activity Window Explorer]\(アクティビティ ウィンドウ エクスプローラー\) を見ると、現在の UTC 時刻 (8:12 PM) までのスライスがすべて処理されていることがわかります (緑色の表示)。 8 ～ 9 PM、9 ～ 10 PM、10 ～ 11 PM、11 PM ～ 12 AM のスライスはまだ処理されていません。
@@ -360,16 +363,16 @@ Azure SQL Database のリンクされたサービスは、Data Factory サービ
 
 このアプリケーションの使い方の詳細については、 [監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
-### <a name="monitor-pipeline-using-diagram-view"></a>ダイアグラム ビューを使用してパイプラインを監視する
+### <a name="monitor-the-pipeline-using-diagram-view"></a>ダイアグラム ビューを使用してパイプラインを監視する
 ダイアグラム ビューを使用してデータ パイプラインを監視することもできます。  
 
-1. **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。
+1. **[Data Factory]** ブレードで、 **[ダイアグラム]** をクリックします。
    
     ![[Data Factory] ブレードの [ダイアグラム] タイル](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-datafactoryblade-diagramtile.png)
 2. 以下の図のようなダイアグラムが表示されるはずです。 
    
     ![[ダイアグラム] ビュー](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-diagram-blade.png)  
-5. ダイアグラム ビューで、**[InputDataset]** をダブルクリックしてデータセットのスライスを表示します。  
+5. ダイアグラム ビューで、 **[InputDataset]** をダブルクリックしてデータセットのスライスを表示します。  
    
     ![Datasets with InputDataset selected](./media/data-factory-copy-activity-tutorial-using-azure-portal/DataSetsWithInputDatasetFromBlobSelected.png)   
 5. **[See more]\(もっと見る\)** リンクをクリックして、すべてのデータ スライスを表示します。 パイプラインの開始時刻と終了時刻の間の 24 個の時間スライスが表示されます。 
@@ -381,13 +384,13 @@ Azure SQL Database のリンクされたサービスは、Data Factory サービ
 8. **OutputDataset** の **[テーブル]** ブレードの **[See more]\(もっと見る)** リンクをクリックして、すべてのスライスを表示します。
 
     ![[データ スライス] ブレード](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslices-blade.png) 
-9. 現在の UTC 時刻までのすべてのスライスが、**[実行を保留しています]** 状態から **[処理中]** ==> **[準備完了]** 状態へ移行している点に注意してください。 (現在の時刻の前の) 過去のスライスは、既定では最新のものから最も古いものに向かって順番に処理されます。 たとえば、現在の時刻が 8:12 PM UTC の場合、7 PM ～ 8 PM のスライスは、6 PM ～ 7 PM のスライスよりも先に処理されます。 8 PM ～ 9 PM のスライスは、既定では時間間隔の終了時、つまり 9 PM よりも後に処理されます。  
+9. 現在の UTC 時刻までのすべてのスライスが、 **[実行を保留しています]** 状態から **[処理中]**  ==>  **[準備完了]** 状態へ移行している点に注意してください。 (現在の時刻の前の) 過去のスライスは、既定では最新のものから最も古いものに向かって順番に処理されます。 たとえば、現在の時刻が 8:12 PM UTC の場合、7 PM ～ 8 PM のスライスは、6 PM ～ 7 PM のスライスよりも先に処理されます。 8 PM ～ 9 PM のスライスは、既定では時間間隔の終了時、つまり 9 PM よりも後に処理されます。  
 10. 一覧で任意のデータ スライスをクリックすると、 **[データ スライス]** ブレードが表示されます。 1 つのアクティビティ ウィンドウに関連付けられているデータを、スライスと呼びます。 スライスは、1 つまたは複数のファイルから構成されます。  
     
      ![[データ スライス] ブレード](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslice-blade.png)
     
-     スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備のできていないアップストリーム スライス]** の一覧に表示されます。
-11. **[データ スライス]** ブレードの下部にある一覧に、すべてのアクティビティの実行状況が表示されます。 **[activity run (アクティビティの実行)]** をクリックすると、**[アクティビティの実行の詳細]** ブレードが表示されます。 
+     スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、 **[準備のできていないアップストリーム スライス]** の一覧に表示されます。
+11. **[データ スライス]** ブレードの下部にある一覧に、すべてのアクティビティの実行状況が表示されます。 **[activity run (アクティビティの実行)]** をクリックすると、 **[アクティビティの実行の詳細]** ブレードが表示されます。 
     
     ![アクティビティの実行状況の詳細](./media/data-factory-copy-activity-tutorial-using-azure-portal/ActivityRunDetails.png)
 

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 0610f57e264189961a6803bee5bb93c1ec9fb103
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f9df42725e41fb514370dbdb828ad5b1305ea78
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753989"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485446"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Azure Search インデクサーを使用して Cosmos DB のインデックスを作成する方法
 
@@ -133,7 +133,7 @@ MongoDB を評価する場合は、REST の `api-version=2019-05-06-Preview` を
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 要求に対する入力をアセンブルする
 
-要求ごとに、Azure Search サービス名と管理者キーを (POST ヘッダーに) 指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-fiddler.md) を使用して、Azure Search に HTTP 要求を送信できます。
+要求ごとに、Azure Search サービス名と管理者キーを (POST ヘッダーに) 指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-get-started-postman.md) を使用して、Azure Search に HTTP 要求を送信できます。
 
 次の 4 つの値をメモ帳にコピーして、要求に貼り付けることができるようにします。
 

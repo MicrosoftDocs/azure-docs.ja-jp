@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 752a26b21854ec9030fc1945024ae461445815a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16529c8334ae9f2eed5715abb22dcbcdbebec7c4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146708"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485110"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの ordinal 作成済みエンティティ
 序数は、セット内のオブジェクトの数値表現 `first`、`second`、`third` です。 このエンティティは既にトレーニングされているので、序数メールを含む発話の例をアプリケーション意図に追加する必要はありません。 ordinal エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされます。 
@@ -130,4 +130,4 @@ ordinal は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blo
 
 ## <a name="next-steps"></a>次の手順
 
-[percentage](luis-reference-prebuilt-percentage.md)、[phone number](luis-reference-prebuilt-phonenumber.md)、および [temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。 
+[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)、[phone number](luis-reference-prebuilt-phonenumber.md)、[temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。 

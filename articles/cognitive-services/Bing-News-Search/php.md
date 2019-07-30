@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:PHP を使ってニュース検索を実行する - Bing News Search REST API
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:PHP と Bing News Search REST API を使用してニュース検索を実行する
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、PHP を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fa253f95c01e35505e154d9709ca88033735fa52
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390464"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423711"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>クイック スタート:PHP と Bing News Search REST API を使用してニュース検索を実行する
 

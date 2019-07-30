@@ -17,17 +17,17 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: victorh
 ms.openlocfilehash: dcf209d2036d2686bea0b51380db3cd2473d04a6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61293193"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS を他の Azure サービスと使用する方法
 
 Azure DNS は、ホストされる DNS 管理および名前解決サービスです。 これを使用して、Azure にデプロイしている他のアプリケーションやサービスのためにパブリック DNS 名を作成できます。 カスタム ドメイン内の Azure サービスのために名前を作成することは簡単です。 そのサービスの正しい種類のレコードを追加するだけです。
 
-* IP アドレスが動的に割り当てられる場合は、Azure でサービスに対して作成された DNS 名にマップされる DNS CNAME レコードを作成できます。 DNS の標準により、ゾーンの頂点でCNAME レコードを使用することはできません。 代わりに、エイリアス レコードを使用できます。 詳細については、「[チュートリアル: Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)」を参照してください。
+* IP アドレスが動的に割り当てられる場合は、Azure でサービスに対して作成された DNS 名にマップされる DNS CNAME レコードを作成できます。 DNS の標準により、ゾーンの頂点でCNAME レコードを使用することはできません。 代わりに、エイリアス レコードを使用できます。 詳細については、[チュートリアル: Azure パブリック IP アドレスを参照するエイリアス レコードの構成](tutorial-alias-pip.md)に関するページを参照してください。
 * 静的に割り当てられる IP アドレスについては、任意の名前を使用して DNS A レコードを作成することができ、それにはゾーンの頂点の*ネイキッド ドメイン*名が含まれます。
 
 次の表は、さまざまな Azure サービスで使用できる、サポートされているレコードの種類の要点を示しています。 表が示すように、Azure DNS は、インターネットに接続するネットワーク リソースの DNS レコードのみをサポートします。 Azure DNS は、内部アドレスやプライベート アドレスの名前解決には使用できません。
@@ -36,7 +36,7 @@ Azure DNS は、ホストされる DNS 管理および名前解決サービス�
 | --- | --- | --- |
 | Azure Application Gateway |[フロントエンド パブリック IP](dns-custom-domain.md#public-ip-address) |DNS A または CNAME レコードを作成できます。 |
 | Azure Load Balancer |[フロントエンド パブリック IP](dns-custom-domain.md#public-ip-address) |DNS A または CNAME レコードを作成できます。 Load Balancer には、動的に割り当てられる IPv6 パブリック IP アドレスを設定できます。 IPv6 アドレス用の CNAME レコードを作成してください。 |
-| Azure の Traffic Manager |パブリック名 |Traffic Manager プロファイルに割り当てられている trafficmanager.net 名にマップされるエイリアス レコードのみを作成できます。 詳細については、「[Tutorial: Configure an alias record to support apex domain names with Traffic Manager (チュートリアル: Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する)](tutorial-alias-tm.md)」を参照してください。 |
+| Azure の Traffic Manager |パブリック名 |Traffic Manager プロファイルに割り当てられている trafficmanager.net 名にマップされるエイリアス レコードのみを作成できます。 詳細については、[チュートリアル: Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードの構成](tutorial-alias-tm.md)に関するページを参照してください。 |
 | Azure クラウド サービス |[パブリック IP](dns-custom-domain.md#public-ip-address) |静的に割り当てられる IP アドレスには、DNS A レコードを作成できます。 動的に割り当てられる IP アドレスには、 *cloudapp.net* 名にマップする CNAME レコードを作成する必要があります。|
 | Azure App Service | [外部 IP](dns-custom-domain.md#app-service-web-apps) |外部 IP アドレスには、DNS A レコードを作成できます。 それ以外の場合は、azurewebsites.net 名にマップする CNAME レコードを作成する必要があります。 詳細については、[Azure アプリへのカスタム ドメイン名のマッピング](../app-service/app-service-web-tutorial-custom-domain.md)に関するページを参照してください。 |
 | Azure Resource Manager VM |[パブリック IP](dns-custom-domain.md#public-ip-address) |Resource Manager VM はパブリック IP アドレスを持つことができます。 パブリック IP アドレスを持つ VM は、ロード バランサーの背後にも配置できます。 パブリック アドレスには、DNS A、CNAME、またはエイリアス レコードを作成できます。 このカスタム名を使用して、ロード バランサーの VIP をバイパスできます。 |

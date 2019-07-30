@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6251df2317ceff9dded92f2d829bfab0503fdf1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f626ce2e009a18afcb4d04b7caa6850ea58c7483
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237602"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446822"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのプロビジョニングと管理
 
@@ -45,7 +45,7 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
 
 1. **[SKU]** メニューで **[PAYG]** ボタンを選択します。 環境名を入力し、使用するサブスクリプション グループとリソース グループを指定します。 次に、環境をホストする場所を選択します (サポートされている場所を選択します)。
 
-   [![Azure Time Series Insights インスタンスを作成する。](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+   [![Azure Time Series Insights インスタンスを作成する。](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 1. タイム シリーズ ID を入力します。
 
@@ -56,7 +56,7 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
 
 1. ストレージ アカウント名を選択し、レプリケーションを指定することで Azure ストレージ アカウントを作成します。 この作業で Azure Storage 汎用 v1 アカウントが作成されます。 先に選択した Azure Time Series Insights プレビュー環境と同じリージョンで作成されます。
 
-    [![インスタンス用の Azure ストレージ アカウントを作成する](media/v2-update-manage/manage_five.PNG)](media/v2-update-manage/manage_five.PNG#lightbox)
+    [![インスタンス用の Azure ストレージ アカウントを作成する](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
 1. 任意で、イベント ソースを追加できます。
 
@@ -67,11 +67,11 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
      > [!TIP]
      > メッセージが待ち行列に入った時刻は、バッチ イベントや履歴データをアップロードする場合、最適な構成設定ではないことがあります。 そのような場合、タイムスタンプ プロパティを使用するかどうかの判断を確認してください。
 
-     [![[イベント ソース] タブ](media/v2-update-manage/manage_two.PNG)](media/v2-update-manage/manage_two.PNG#lightbox)
+     [![[イベント ソース] タブ](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
 1. 希望の設定で環境がプロビジョニングされていることを確認します。
 
-    [![[確認と作成]](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox) タブ
+    [![[確認と作成]](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox) タブ
 
 ## <a name="manage-the-environment"></a>環境の管理
 
@@ -88,7 +88,7 @@ Azure portal を使用して Azure Time Series Insights プレビュー環境を
 
 * Azure portal の **[参照データ]** ブレードは Azure Time Series Insights プレビューで削除されています。参照データは PAYG 環境の構成要素ではないためです。
 
-[![Azure portal での Time Series Insights プレビュー環境](media/v2-update-manage/manage_four.PNG)](media/v2-update-manage/manage_four.PNG#lightbox)
+[![Azure portal での Time Series Insights プレビュー環境](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 

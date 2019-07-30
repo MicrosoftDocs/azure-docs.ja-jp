@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services によるクラウドのアップロードとストレージ | Microsoft Docs
-description: この記事では、クラウドのアップロードとストレージの概念について説明します。
+title: Azure Media Services の Azure Storage アカウント | Microsoft Docs
+description: Media Services アカウントの作成では、Azure Storage アカウント リソースの名前を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,27 +9,27 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c5bfa224b87040f5142663e6adab01072c6e6ba
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550142"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619293"
 ---
-# <a name="cloud-upload-and-storage"></a>クラウドのアップロードとストレージ
+# <a name="azure-storage-accounts"></a>Azure Storage アカウント
 
 Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成する必要があります。 Media Services アカウントの作成では、Azure Storage アカウント リソースの名前を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 
 
 Media Services アカウントおよび関連するすべてのストレージ アカウントは、同じ Azure サブスクリプションに存在する必要があります。 待機時間やデータ送信コストが増加することを回避するために、ストレージ アカウントを Media Services アカウントと同じ場所で使用することを強くお勧めします。
 
-1 つの**プライマリ** ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数の **セカンダリ** ストレージ アカウントを持つことができます。 Media Services は、**汎用 v2** (GPv2) アカウントまたは**汎用 v1** (GPv1) アカウントをサポートします。 
+1 つの**プライマリ** ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数の **セカンダリ** ストレージ アカウントを持つことができます。 Media Services は、**汎用 v2** (GPv2) アカウントまたは**汎用 v1** (GPv1) アカウントをサポートします。 <br/>BLOB のみのアカウントを**プライマリ**として使用することはできません。 
 
->[!NOTE]
-> BLOB のみのアカウントを**プライマリ**として使用することはできません。 
+最新の機能とパフォーマンスを利用できるように、GPv2 を使用することをお勧めします。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」を参照してください。
 
-ホット ストレージ層とクール ストレージ層の選択を活用できるように、GPv2 を使用することをお勧めします。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」を参照してください。 
+> [!NOTE]
+> Azure Media Services での使用をサポートされているのはホット アクセス層だけですが、他のアクセス層を使用してアクティブに使われていないコンテンツのストレージ コストを削減できます。
 
 ストレージ アカウント用に選択できる SKU はいくつかあります。 詳細については、[ストレージ アカウント](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)に関するページを参照してください。 ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 ただし、運用環境用の SKU を選択する場合は、ビジネス継続性のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。 
 

@@ -2,29 +2,24 @@
 title: Azure Active Directory Identity Protection 用語集 | Microsoft Docs
 description: Azure Active Directory Identity Protection 用語集
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー, 用語集
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5def46b6c12dc08c273ea7334516b63b7606477f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6751fe74bfd9b8a07aec2263582d9f1a4bc0b2ac
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521943"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333973"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
+
 ### <a name="at-risk-user"></a>危険 (ユーザー)
 1 つ以上のアクティブなリスク イベントを持つユーザーです。 
 
@@ -165,4 +160,3 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-

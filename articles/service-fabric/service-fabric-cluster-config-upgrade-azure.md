@@ -35,7 +35,7 @@ ms.locfileid: "62096268"
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Resource Manager テンプレートを使用してクラスター設定をカスタマイズする
 Azure クラスターは、JSON の Resource Manager テンプレートを使って構成できます。 さまざまな設定の詳細については、[クラスターの構成設定](service-fabric-cluster-fabric-settings.md)に関する記事をご覧ください。 例として、次の手順はで、Azure Resource Explorer を使って *MaxDiskQuotaInMB* という新しい設定を *Diagnostics* セクションに追加する方法を示します。
 
-1. https://resources.azure.com に移動します
+1. [https://resources.azure.com](https://resources.azure.com ) に移動します
 2. **[サブスクリプション]**  ->  **\<ご使用のサブスクリプション>**  ->  **[resourceGroups]**  ->  **\<ご使用のリソース グループ>**  ->  **[プロバイダー]**  ->  **[Microsoft.ServiceFabric]**  ->  **[クラスター]**  ->  **\<ご使用のクラスター名 >** の順に展開して、サブスクリプションに移動します
 3. 右上隅の **[読み取り/書き込み]** を選択します。
 4. **[編集]** を選択して `fabricSettings` JSON 要素を更新し、新しい要素を追加します。

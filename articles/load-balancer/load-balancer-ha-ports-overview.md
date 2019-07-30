@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 内部ロード バランサーでの高可用性ポートの負荷分散について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,23 +12,23 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
-ms.author: kumud
-ms.openlocfilehash: 328471292ea6cbe07e96cc18af7f9c524407de3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 89deedd3ef99ba76d0bb133bac37c0acee0a9f73
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60930286"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275032"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
 内部ロード バランサーを使用するときは、Azure Standard Load Balancer によって、すべてのポートで TCP フローと UDP フローの負荷分散を同時に行うことができます。 
 
-高可用性 (HA) ポート負荷分散規則は負荷分散規則の一種であり、内部 Standard Load Balancer 上に構成されます。 内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを負荷分散する単一の規則を指定することで、ロード バランサーの使用を単純化できます。 負荷分散の決定は、フローごとに行われます。 このアクションは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル) に基づいて行われます
+高可用性 (HA) ポート負荷分散規則は負荷分散規則の一種であり、内部 Standard Load Balancer 上に構成されます。 内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを負荷分散する単一の規則を指定することで、ロード バランサーの使用を単純化できます。 負荷分散の決定は、フローごとに行われます。 このアクションは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル) に基づいて行われます。
 
 HA ポート負荷分散規則は、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) の高可用性と拡張性のような、重要なシナリオで役に立ちます。 この機能は、多数のポートを負荷分散する必要がある場合にも役立ちます。 
 
-HA ポート負荷分散規則は、フロントエンド ポートとバックエンド ポートを **0** に、プロトコルを**すべて**に設定すると構成されます。 その後は、内部 Load Balancer リソースによって、ポート番号に関係なく、すべての TCP フローおよび UDP フローが負荷分散されます
+HA ポート負荷分散規則は、フロントエンド ポートとバックエンド ポートを **0** に、プロトコルを**すべて**に設定すると構成されます。 その後は、内部 Load Balancer リソースによって、ポート番号に関係なく、すべての TCP フローおよび UDP フローが負荷分散されます。
 
 ## <a name="why-use-ha-ports"></a>HA ポートを使う理由
 

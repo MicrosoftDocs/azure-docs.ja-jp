@@ -1,6 +1,6 @@
 ---
 title: インク データを Ink Recognizer API に送信する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: さまざまなアプリケーション用の Ink Analyzer API の呼び出しについて学習します
 services: cognitive-services
 author: erhopf
@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a212c7332d085c15baabef8650572162c47903d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 23431a6171f9ce4d2550ee62ac84679ce36126de
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025455"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721766"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>インク データを Ink Recognizer API に送信する 
 

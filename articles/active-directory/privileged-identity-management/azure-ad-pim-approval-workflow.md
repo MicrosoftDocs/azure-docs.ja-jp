@@ -16,12 +16,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47e9033b33c70a72a1685696f75a442e88eed033
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f83cb38567feb51ba7959ada7730d66ded677bf9
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289771"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476533"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールに対する要求を承認または拒否する
 
@@ -41,7 +41,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 1. **[申請の承認]** をクリックします。
 
-    ![PIM Azure AD ロール - ロール](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![Azure AD ロール - 申請の承認](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     承認が保留されている要求の一覧を確認できます。
 
@@ -49,27 +49,27 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 1. 承認する要求を選択し、 **[承認]** をクリックして、[選択した要求の承認] ウィンドウを開きます。
 
-    ![PIM の [申請の承認] リスト](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+    ![[承認] オプションが強調表示された [申請の承認] の一覧](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
 1. **[承認の理由]** ボックスに理由を入力します。
 
-    ![PIM の [選択した要求の承認]](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+    ![[承認の理由] を含む [選択した要求の承認] ウィンドウ](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
 1. **[Approve]\(承認\)** をクリックします。
 
     承認すると、状態シンボルが更新されます。
 
-    ![PIM の [選択した要求の承認]](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+    ![[承認] をクリックした後の [選択した要求の承認] ウィンドウ](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
 ## <a name="deny-requests"></a>要求を拒否する
 
 1. 拒否する要求を選択し、 **[拒否]** をクリックして、[選択した要求の拒否] ウィンドウを開きます。
 
-    ![PIM の [申請の承認] リスト](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+    ![[拒否] オプションが強調表示された [申請の承認] の一覧](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
 1. **[拒否の理由]** ボックスに理由を入力します。
 
-    ![PIN の[選択した要求の拒否]](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+    ![[拒否の理由] を含む [選択した要求の拒否] ウィンドウ](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
 1. **[拒否]** をクリックします。
 

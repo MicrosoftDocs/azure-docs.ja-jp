@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f2574cc64e157ff0f8a6cb875a832db88cf13dd6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395807"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479815"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -62,7 +62,9 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 
 3. **[OMS ワークスペース]** セクションで、ソリューションをインストールする Azure Log Analytics ワークスペースを選択します。
    >[!NOTE]
-   >Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
+   > * Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
+   > * ITSM Connector は、以下のリージョンの Log Analytics ワークスペースにのみインストールできます。米国東部、西ヨーロッパ、東南アジア、オーストラリア南東部、米国中西部、東日本、英国南部、インド中部、カナダ中部。
+
 4. **[OMS ワークスペースの設定]** セクションで、ソリューション リソースを作成する ResourceGroup を選択します。
 
    ![ITSMC ワークスペース](media/itsmc-overview/itsmc-solution-workspace.png)

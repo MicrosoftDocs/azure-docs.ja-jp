@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 10/26/2018
+ms.date: 7/2/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8aae88b24cee64136fb247744325424a446a7bbf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a256a0ff5164ec9b25aea3849f20643ee3719fac
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043160"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541417"
 ---
 # <a name="create-an-azure-cosmos-db-account-with-azure-cosmos-dbs-api-for-mongodb-using-azure-cli"></a>Azure CLI と Azure Cosmos DB の MongoDB 用 API を使用して Azure Cosmos DB アカウントを作成する
 
@@ -22,6 +22,8 @@ ms.locfileid: "54043160"
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+
+[!NOTE] データベースとコンテナーの名前付け規則の詳細については、「[Azure Cosmos DB のデータベース、コンテナー、項目の操作](../databases-containers-items.md)」を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -39,7 +41,7 @@ az group delete --name $resourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB アカウントを作成します。 |

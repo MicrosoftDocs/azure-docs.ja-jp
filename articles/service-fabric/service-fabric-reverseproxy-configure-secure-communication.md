@@ -14,11 +14,11 @@ ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
 ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502442"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60837845"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>リバース プロキシを使用したセキュリティで保護されたサービスへの接続
 
@@ -42,7 +42,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
 
 ### <a name="service-certificate-validation-options"></a>サービス証明書の検証オプション 
 
-- **None**: リバース プロキシではプロキシ対象のサービス証明書の検証がスキップされて、セキュリティで保護された接続が確立します。　 これは既定の動作です。
+- **なし**:リバース プロキシではプロキシ対象のサービス証明書の検証がスキップされて、セキュリティで保護された接続が確立します。 これは既定の動作です。
 値が **None**である **ApplicationCertificateValidationPolicy**を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
 
    ```json
@@ -63,7 +63,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: リバース プロキシは、証明書の共通名および直近の発行者のサムプリントに基づき、サービスによって提示された証明書を検証します。値が **ServiceCommonNameAndIssuer** である **ApplicationCertificateValidationPolicy** を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
+- **ServiceCommonNameAndIssuer**:リバース プロキシでは、証明書の共通名と直近の発行者の拇印に基づいて、サービスから提示された証明書が検証されます。値が **ServiceCommonNameAndIssuer** である **ApplicationCertificateValidationPolicy** を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
 
    ```json
    {
@@ -110,7 +110,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
    }
    ```
 
-- **ServiceCertificateThumbprints**: リバース プロキシでは、サムプリントに基づいてプロキシ対象のサービス証明書が検証されます。 自己署名証明書でサービスが構成されている場合は、次の方法を選択できます。 値が **ServiceCertificateThumbprints** である **ApplicationCertificateValidationPolicy** を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
+- **ServiceCertificateThumbprints**:リバース プロキシでは、サムプリントに基づいてプロキシ対象のサービス証明書が検証されます。 サービスが自己署名証明書を使って構成されている場合は、このルートを選択することができます。値が **ServiceCertificateThumbprints** である **ApplicationCertificateValidationPolicy** を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
 
    ```json
    {

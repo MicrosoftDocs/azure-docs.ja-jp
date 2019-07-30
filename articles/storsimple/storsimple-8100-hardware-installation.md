@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5fbc407a9792d033037fdaa2b14f4055d94c15ab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b367b6e7126a442dc68646ff52a29c955f50b798
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60631171"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブル接続
 ## <a name="overview"></a>概要
@@ -46,7 +46,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **ストレージ デバイスを開梱したようす**
    
-   | ラベル | 説明 |
+   | Label | 説明 |
    | --- | --- |
    |   1 |梱包箱 |
    |   2 |下部梱包材 |
@@ -122,7 +122,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **ラックへの外部レール アセンブリの取り付け**
    
-   | ラベル | 説明 |
+   | Label | 説明 |
    | --- | --- |
    |   1 |締め付けねじ |
    |   2 |角穴フロント ラック ポストねじ |
@@ -148,7 +148,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **フランジ キャップの取り付け**
    
-   | ラベル | 説明 |
+   | Label | 説明 |
    | --- | --- |
    |   1 |エンクロージャ固定ねじ |
 
@@ -188,7 +188,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **データ ポートが示されているデバイスの背面**
    
-   | ラベル | 説明 |
+   | Label | 説明 |
    | --- | --- |
    |   0、1、4、5 |1 GbE ネットワーク インターフェイス |
    |   2、3 |10 GbE ネットワーク インターフェイス |
@@ -199,7 +199,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     **デバイスのネットワーク ケーブル配線**
 
-   |ラベル | 説明 |
+   |Label | 説明 |
    |----- | ----------- |
    | A    | インターネット アクセスのある LAN |
    | B    | コントローラー 0 |

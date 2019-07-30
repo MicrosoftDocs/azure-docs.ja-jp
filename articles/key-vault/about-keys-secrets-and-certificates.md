@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708696"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703911"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -198,7 +198,7 @@ IntDate および他のデータ型について詳しくは、「[データ型](
 
 Key Vault によって管理されているキーのアクセス制御は、キーのコンテナーとして機能する Key Vault のレベルで提供されます。 キーのアクセス制御ポリシーは、同じキー コンテナー内のシークレットに対するアクセス制御ポリシーとは別です。 ユーザーは、1 つまたは複数のコンテナーを作成してキーを保持することができ、キーのセグメント化と管理に適切なシナリオを維持する必要があります。 キーのアクセス制御は、シークレットのアクセス制御に依存しません。  
 
-コンテナーのキー アクセス制御エントリでは、ユーザー/サービス プリンシパルごとに、次のアクセス許可を付与できます。 これらのアクセス許可は、キー オブジェクトに対して許可される操作を厳密に反映しています。  
+コンテナーのキー アクセス制御エントリでは、ユーザー/サービス プリンシパルごとに、次のアクセス許可を付与できます。 これらのアクセス許可は、キー オブジェクトに対して許可される操作を厳密に反映しています。  キー コンテナーのサービス プリンシパルへのアクセス許可は 1 回限りの操作であり、すべての Azure サブスクリプションで同じです。 これを使用して、必要なすべての証明書をデプロイできます。 
 
 - キー管理操作に対するアクセス許可
   - *get*:キーの公開部分とその属性を読み取ります
@@ -476,5 +476,4 @@ Key Vault では、Azure ストレージ アカウント キーを管理でき�
 ## <a name="see-also"></a>関連項目
 
 - [認証、要求、応答](authentication-requests-and-responses.md)
-- [Key Vault のバージョン](key-vault-versions.md)
 - [Key Vault 開発者ガイド](/azure/key-vault/key-vault-developers-guide)

@@ -1,34 +1,30 @@
 ---
-title: Microsoft 顧客契約の価格シートの用語を理解する - Azure | Microsoft Docs
-description: Azure サブスクリプションの使用状況と課金内容を確認して理解する方法について説明します
-services: ''
-documentationcenter: ''
-author: jureid
+title: Microsoft 顧客契約の価格シートの用語を理解する - Azure
+description: Microsoft 顧客契約の使用量と請求書を確認して理解する方法について説明します。
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4d83228fbec395d604e5ce3f988d2a6157f21eed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371361"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490658"
 ---
-# <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の価格シートの用語を理解する
+# <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft 顧客契約の価格シートの用語
 
-この記事では、Microsoft 顧客契約の請求先アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認します](#check-access-to-a-microsoft-customer-agreement)。
+この記事は、Microsoft 顧客契約の Azure 課金アカウントを対象としています。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
 
 課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者の場合、組織の価格シートを Azure portal からダウンロードすることができます。 [組織の価格の表示およびダウンロード](billing-ea-pricing.md)に関する記事を参照してください。
 
-## <a name="detailed-terms-and-descriptions-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft 顧客契約の価格シートの詳細な用語と説明
+## <a name="terms-and-descriptions-in-your-price-sheet"></a>価格シートの用語と説明
 
 次のセクションでは、Microsoft の顧客契約の価格シートに表示されている重要な用語について説明します。
 

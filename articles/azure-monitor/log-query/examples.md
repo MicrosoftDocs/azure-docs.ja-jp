@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d50a680ed2b054f87a9cf36e761bd16d79677fb3
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759913"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304695"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
 この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
@@ -34,7 +34,7 @@ ms.locfileid: "60759913"
 Event
 | where EventLog == "Application" 
 | where TimeGenerated > ago(24h) 
-| where RenderedDescription == "cryptographic"
+| where RenderedDescription contains "cryptographic"
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>マーシャリングの解除に関連するイベントの検索

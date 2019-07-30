@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1805f04d7833dea180847defadd865cb23e9df62
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236342"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340854"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel、Python、R から Azure Databricks に接続する
 
@@ -152,7 +152,7 @@ IDLE を開き、次の手順を実行します。
 import pyodbc
 
 # establish a connection using the DSN you created earlier
-conn = pyodbc.connect("DSN=<ENTER DSN NAME HERE>", autocommit = True)
+conn = pyodbc.connect("DSN=<ENTER DSN NAME HERE>", autocommit=True)
 
 # run a SQL query using the connection you created
 cursor = conn.cursor()
@@ -161,7 +161,6 @@ cursor.execute("SELECT * FROM radio_sample_data")
 # print the rows retrieved by the query.
 for row in cursor.fetchall():
     print(row)
-
 ```
 
 ## <a name="next-steps"></a>次の手順

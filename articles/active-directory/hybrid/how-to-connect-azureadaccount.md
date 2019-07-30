@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d68c190b51b9bbb5faf21e8ea75b07d1a82005e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571404"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204534"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Azure AD コネクタ アカウント パスワードの変更
 Azure AD コネクタ アカウントは、無料のサービスであると想定されています。 その資格情報をリセットする必要がある場合、このトピックが役立ちます。 たとえば、グローバル管理者が PowerShell を使用してアカウントのパスワードを誤ってリセットしてしまった場合などです。
@@ -39,12 +39,12 @@ Azure AD コネクタのアカウントが認証の問題のために Azure AD �
 ## <a name="known-issues-these-steps-can-solve"></a>上記の手順で解決できる既知の問題
 このセクションでは、ユーザーから報告された、Azure AD コネクタ アカウントの資格情報をリセットすることで修正されたエラーの一覧を示します。
 
-- - -
+---
 イベント 6900  
 The server encountered an unexpected error while processing a password change notification (パスワード変更通知の処理中に、サーバーで予期しないエラーが発生しました):  
 AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS50054: 認証に古いパスワードが使用されました。
 
-- - -
+---
 イベント 659  
 Error while retrieving password policy sync configuration. (パスワード ポリシーの同期構成を取得しているときにエラーが発生しました。) Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
 AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。) AADSTS50054: 認証に古いパスワードが使用されました。

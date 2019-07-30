@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 498246292b3cf591433a709139621b039ac3af33
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: de170955ced45040541565800fc9853edea322f5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002184"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603075"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>クイック スタート:macOS で C++ と Speech SDK を使用して音声を認識する
 
@@ -31,7 +31,7 @@ ms.locfileid: "66002184"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.5.1` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.6.0` です。
 
 macOS 用の Speech SDK は、zip 圧縮されたフレームワーク バンドルとして https://aka.ms/csspeech/macosbinary からダウンロードできます。
 
@@ -115,4 +115,3 @@ SDK を次のようにダウンロードしてインストールします。
 
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)
-

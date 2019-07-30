@@ -3,19 +3,19 @@ title: Speech コンテナーをインストールする
 titleSuffix: Azure Cognitive Services
 description: Speech コンテナーをインストールして実行します。 音声テキスト変換では、オーディオ ストリームからテキストへの文字起こしがリアルタイムで行われます。結果のテキストを、アプリケーション、ツール、またはデバイスで使用したり表示したりできます。 テキスト読み上げでは、入力テキストが人間のような合成音声に変換されます。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 7a4153dd382a901db21752dd3d55a01803431791
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 06/19/2019
+ms.author: dapine
+ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388686"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490232"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
@@ -25,7 +25,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 |Function|機能|最新|
 |-|-|--|
-|音声テキスト変換| <li>連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。|1.1.1|
+|音声テキスト変換| <li>連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。|1.1.3|
 |テキスト読み上げ| <li>テキストを自然な音声に変換します。 プレーンテキストの入力または音声合成マークアップ言語 (SSML) に対応しています。 |1.1.0|
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -71,14 +71,13 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 * 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
 
-
 コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
 **注**: 最小および推奨値は、Docker の制限に基づくもので、ホスト マシンのリソースに基づくものでは "*ありません*"。 たとえば、音声テキスト変換コンテナーは、大規模な言語モデルの一部をメモリ マップするため、ファイル全体がメモリに収まるようにすることを "_お勧めします_"。これには、追加で 4 から 6 GB が必要です。 また、モデルがメモリにページングされているため、どちらかのコンテナーの最初の実行に時間がかかる場合があります。
 
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
-Speech のコンテナー イメージを入手できます。 
+Speech のコンテナー イメージを入手できます。
 
 | コンテナー | リポジトリ |
 |-----------|------------|
@@ -89,7 +88,7 @@ Speech のコンテナー イメージを入手できます。
 
 ### <a name="language-locale-is-in-container-tag"></a>コンテナー タグ内の言語ロケール
 
-`latest` タグにより、`en-us` ロケールと `jessarus` 音声がプルされます。 
+`latest` タグにより、`en-us` ロケールと `jessarus` 音声がプルされます。
 
 #### <a name="speech-to-text-locales"></a>音声テキスト変換のロケール
 
@@ -102,10 +101,10 @@ Speech のコンテナー イメージを入手できます。
 次のタグは、この形式の例です。
 
 ```
-1.0.0-amd64-en-us-preview
+1.1.3-amd64-en-us-preview
 ```
 
-次の表に、1.1.1 バージョンのコンテナーの "**音声テキスト変換**" でサポートされているロケールを示します。
+次の表に、1.1.3 バージョンのコンテナーの**音声テキスト変換**でサポートされているロケールを示します。
 
 |言語ロケール|Tags|
 |--|--|
@@ -119,7 +118,6 @@ Speech のコンテナー イメージを入手できます。
 |ポルトガル語|`pt-br`|
 |スペイン語|`es-es`<br>`es-mx`|
 
-
 #### <a name="text-to-speech-locales"></a>テキスト読み上げのロケール
 
 `latest` を除くすべてのタグは次の形式になっています。ここで、`<culture>` はロケールを示し、`<voice>` はコンテナーの音声を示します。
@@ -131,7 +129,7 @@ Speech のコンテナー イメージを入手できます。
 次のタグは、この形式の例です。
 
 ```
-1.0.0-amd64-en-us-jessarus-preview
+1.1.0-amd64-en-us-jessarus-preview
 ```
 
 次の表に、1.1.0 バージョンのコンテナーの "**テキスト読み上げ**" でサポートされているロケールを示します。
@@ -171,8 +169,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 コンテナーを[ホスト コンピューター](#the-host-computer)上に用意できたら、次の手順を使用してコンテナーを操作します。
 
-1. 必要でありながら使用されていない課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](speech-container-configuration.md#example-docker-run-commands)もご覧いただけます。 
-1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。 
+1. 必要でありながら使用されていない課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](speech-container-configuration.md#example-docker-run-commands)もご覧いただけます。
+1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
@@ -194,7 +192,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 ### <a name="speech-to-text"></a>音声テキスト変換
@@ -204,7 +202,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 このコマンドは、次の操作を行います。
@@ -212,7 +210,7 @@ ApiKey={BILLING_KEY}
 * コンテナー イメージから Speech コンテナーを実行します
 * 2 つの CPU コアと 2 ギガバイト (GB) のメモリを割り当てます
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます
-* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。 
+* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
@@ -241,7 +239,9 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 次のようにコンテナー エンドポイントを使用する呼び出しに変更します。
 
 ```C#
-var config = SpeechConfig.FromEndpoint("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1", "YourSubscriptionKey");
+var config = SpeechConfig.FromEndpoint(
+    new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
+    "YourSubscriptionKey");
 ```
 
 #### <a name="for-python"></a>Python の場合
@@ -249,22 +249,22 @@ var config = SpeechConfig.FromEndpoint("ws://localhost:5000/speech/recognition/d
 この Azure クラウド初期化呼び出しを使用する方法を
 
 ```python
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_config = speechsdk.SpeechConfig(
+    subscription=speech_key, region=service_region)
 ```
 
 次のようにコンテナー エンドポイントを使用する呼び出しに変更します。
 
 ```python
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
+speech_config = speechsdk.SpeechConfig(
+    subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
 ```
 
 ### <a name="text-to-speech"></a>テキスト読み上げ
 
-コンテナーは、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)にある REST エンドポイント API シリーズを提供します。サンプルについては、[こちら](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)を参照してください。
-
+コンテナーは、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)にある REST エンドポイント API シリーズを提供します。サンプルについては、[こちら](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)を参照してください。
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
-
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 
@@ -272,11 +272,11 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://l
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-コンテナーを実行するとき、コンテナーでは **stdout** と **stderr** を使用して、コンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立つ情報を出力します。 
+コンテナーを実行するとき、コンテナーでは **stdout** と **stderr** を使用して、コンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立つ情報を出力します。
 
 ## <a name="billing"></a>課金
 
-Speech コンテナーは、Azure アカウントの _Speech_ リソースを使用して、Azure に課金情報を送信します。 
+Speech コンテナーは、Azure アカウントの _Speech_ リソースを使用して、Azure に課金情報を送信します。
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

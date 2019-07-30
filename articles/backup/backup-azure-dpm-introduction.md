@@ -1,19 +1,18 @@
 ---
 title: DPM サーバーを準備して ワークロードを Azure にバックアップする
 description: DPM データを Azure Recovery Services コンテナーにバックアップする手順の概要。
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 82e4278a130bb67a1af61ead981259d7bb4e1aa7
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 09c324fa1c24c56ede431fab8e175b166a52b438
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427439"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466565"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 

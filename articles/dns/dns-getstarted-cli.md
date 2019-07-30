@@ -82,7 +82,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
    nslookup www.contoso.xyz <name server name>
    ```
 
-   例: 
+   例:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.

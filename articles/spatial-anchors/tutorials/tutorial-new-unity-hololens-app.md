@@ -5,15 +5,15 @@ author: julianparismorgan
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: pmorgan
-ms.date: 05/14/2019
+ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3c125c54c1e0a70cdec19af912b17759d82a9936
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 57244dd9f3365b3899bcc1dde6382cc3b51719d9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969431"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722937"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順
 
@@ -73,13 +73,21 @@ ms.locfileid: "65969431"
 3. **[Clear Flags]\(フラグをクリア\)** プロパティを探して、ドロップダウンを **[Skybox]\(スカイボックス\)** から **[Solid Color]\(ソリッド カラー\)** に変更します。
 4. **[Background]\(背景\)** フィールドをクリックして、カラー ピッカーを開きます。
 5. **R、G、B、A** を **0** に設定します。
-6. **[Add Component]\(コンポーネントの追加\)** を選択し、**Spatial Mapping Collider** を検索します。
+6. **[コンポーネントの追加]** を選択し、**Spatial Mapping Collider** を追加します。
 
 **スクリプトを作成する**
 1. **[Project]\(プロジェクト\)** ウィンドウで、**Assets** フォルダーの下に新しいフォルダー (**Scripts**) を作成します。 
 2. そのフォルダーを右クリックして、 **[Create]\(作成\) >** **[C# Script]\(C# スクリプト\)** の順に選択します。 タイトルは「**AzureSpatialAnchorsScript**」にします。 
 3. **[GameObject]\(ゲームオブジェクト\)**  ->  **[Create Empty]\(空のオブジェクトの作成\)** の順に移動します。 
 4. それを選択し、 **[Inspector]\(インスペクター\)** でその名前を **GameObject** から **MixedRealityCloud** に変更します。 **[Add Component]\(コンポーネントの追加\)** を選択し、**AzureSpatialAnchorsScript** を検索して追加します。
+
+**球のプレハブを作成する**
+1. **[GameObject]**  ->  **[3D オブジェクト]**  ->  **[Sphere]\(球\)** に移動します。
+2. **[インスペクター]** で、そのスケールを **0.25、0.25、0.25** に設定します。
+3. **[階層]** ウィンドウで**球**オブジェクトを見つけます。 それをクリックして、 **[プロジェクト]** ウィンドウの **[資産]** フォルダーにドラッグします。
+4. 右クリックして、 **[階層]** ウィンドウで作成した元の球を**削除**します。
+
+**[プロジェクト]** ウィンドウに球のプレハブが作成されているのがわかります。
 
 ## <a name="trying-it-out"></a>試してみる
 問題ないことをテストするために、**Unity** でアプリをビルドし、**Visual Studio** でそれをデプロイします。 そのためには、「[**MR Basics 100: Getting started with Unity (MR の基本 100: Unity の概要)」** コース](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)の 6 章に従ってください。 Unity のスタート画面、そしてクリアな表示が示されます。
@@ -93,19 +101,25 @@ ms.locfileid: "65969431"
 
 それから、次のメンバー変数を `AzureSpatialAnchorsScript` クラスに追加します。 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-37,43-47,55-74)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-42,48-52,60-79)]
 
-次に、以下のコードを `Start()` メソッドに追加します。 このコードでは `GestureRecognizer` をフックします。これは、エア タップが行われたことを検出して `HandleTap` を呼び出します。
+続行する前に、spherePrefab メンバー変数で作成した球のプレハブを設定する必要があります。 **[Unity]** に戻ります。
+1. **[Unity]** の **[階層]** ウィンドウで **[MixedRealityCloud]** オブジェクトを選択します。
+2. **[プロジェクト]** ウィンドウに保存した**球**のプレハブをクリックします。 **[インスペクター]** ウィンドウで、 **[Azure Spatial Anchors (スクリプト)]** の下の **Sphere Prefab** 領域にクリックした **Sphere** をドラッグします。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=76-85,88&highlight=4-10)]
+これで**球**がスクリプト上のプレハブとして設定されます。 **Unity** からビルドし、結果の **Visual Studio** ソリューションを[試してみる](#trying-it-out)で行ったのと同じように再度開きます。 
+
+**Visual Studio** で、`AzureSpatialAnchorsScript.cs` を再度開きます。 次のコードを `Start()` メソッドに追加します。 このコードでは `GestureRecognizer` をフックします。これは、エア タップが行われたことを検出して `HandleTap` を呼び出します。
+
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-90,93&highlight=4-10)]
 
 ここで、次の `HandleTap()` メソッドを `Update()` の下に追加する必要があります。 これにより、レイ キャストを実行し、球体を配置するヒット ポイントを取得します。 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=264-274,295-297,301-309)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
 
 ここで、球体を作成する必要があります。 球体は最初白になります。しかし、この値は後で調整します。 次の `CreateAndSaveSphere()` メソッドを追加します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-324,389)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-325,390)]
 
 **Visual Studio** で自分のアプリを実行して、もう一度検証します。 今回は、画面をタップして白い球体を作成し、任意のサーフェス上に配置します。
 
@@ -115,15 +129,15 @@ Unity を使用する際には、Unity API (UI を更新するために使用す
 
 メンバー変数 dispatchQueue を追加してみましょう。これはアクションのキューです。 アクションをキューにプッシュしてからデキューし、そのアクションをメイン スレッドで実行します。 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=33-46&highlight=6-9)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=38-51&highlight=6-9)]
 
 次に、アクションをキューに追加する方法を追加しましょう。 `QueueOnUpdate()` を `Update()` の直後に追加します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=102-112)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=107-117)]
 
 次は Update() ループを使用して、キューに入れられたアクションがあるかどうかを確認しましょう。 ある場合は、そのアクションをデキューして実行します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=90-100&highlight=4-10)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=95-105&highlight=4-10)]
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure Spatial Anchors SDK の取得
 
@@ -137,29 +151,29 @@ Azure Spatial Anchors SDK を取得するために、ここで Nuget パッケ�
 
 自分の **Visual Studio** ソリューションで、次のインポートを `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` に追加します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=23-26&highlight=1)]
 
 続いて、以下のメンバー変数を `AzureSpatialAnchorsScript` クラスに追加します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=43-58&highlight=6-11)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=48-63&highlight=6-11)]
 
 ## <a name="attach-a-local-azure-spatial-anchor-to-the-local-anchor"></a>ローカル アンカーへのローカル Azure 空間アンカーのアタッチ
 
 Azure Spatial Anchor の CloudSpatialAnchorSession を設定しましょう。 まず、次の `InitializeSession()` メソッドを `AzureSpatialAnchorsScript` クラス内に追加します。 これが呼び出されると、Azure Spatial Anchors セッションが作成され、アプリの起動時に適切に初期化されます。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=169-197,200-204)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=174-202,205-209)]
 
 ここで、デリゲート呼び出しを処理するコードを記述する必要があります。 引き続き、これらにさらに追加していきます。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=206-221)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=211-226)]
 
 次に、`initializeSession()` メソッドを `Start()` メソッドにフックしましょう。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=76-88&highlight=12)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-93&highlight=12)]
 
 最後に、以下のコードを `CreateAndSaveSphere()` メソッドに追加します。 これにより、現実世界に配置している球体に、ローカル Azure 空間アンカーがアタッチされます。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-337,390&highlight=16-31)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-338,390&highlight=14-25)]
 
 先に進む前に、Azure Spatial Anchors アカウント識別子とキーがまだない場合はこれらを作成します。 次のセクションに従ってこれらを取得します。
 
@@ -171,7 +185,7 @@ Azure Spatial Anchors アカウント識別子とキーを作成したら、先�
 
 最後に、すべてをつなげましょう。 `SpawnNewAnchoredObject()` メソッドに次のコードを追加します。 これにより、球体が作成されるとすぐに `CreateAnchorAsync()` メソッドが呼び出されます。 メソッドから戻ると、次のコードによって球体への最終的な更新が実行され、色が青色に変わります。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-389&highlight=28-78)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-391&highlight=26-77)]
 
 **Visual Studio** で自分のアプリをもう一度実行します。 頭を動かしてみてから、エア タップして球体を配置します。 十分なフレームを取得すると、球体が黄色に変わり、クラウドのアップロードが開始されます。 アップロードの完了後に、球体は青色になります。 必要に応じて、**Visual Studio** 内の出力ウィンドウを使用し、アプリによって送信されているログ メッセージを監視することもできます。 作成の進行状況に関する推奨事項のほか、アップロード完了時にクラウドから返されるアンカー識別子を確認できるようになります。
 
@@ -186,20 +200,20 @@ Azure Spatial Anchors アカウント識別子とキーを作成したら、先�
 * `CloudSpatialAnchorSession` をもう一度初期化します。 これにより、配置しようとしているアンカーは、作成したローカル アンカーではなくクラウドから確実に取得されます。
 * Azure Spatial Anchors にアップロードしたアンカーを検索する**ウォッチャー**を作成します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=264-302&highlight=13-31,34-36)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-305&highlight=13-31,35-36)]
 
 次に `ResetSession()` および `CleanupObjects()` メソッドを追加しましょう。 これらは `QueueOnUpdate()` の下に配置できます。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=114-167)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=119-172)]
 
 ここで、クエリの実行対象であるアンカーが配置されたときに呼び出されるコードをフックする必要があります。 `InitializeSession()` 内に、次のコールバックを追加します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=195-201&highlight=4-5)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=200-206&highlight=4-5)]
 
  
 次に、CloudSpatialAnchor が配置されると緑色の球体を作成して配置するコードを追加しましょう。 これにより、画面をもう一度タップできるようになるので、シナリオ全体をもう一度繰り返すことができます。別のローカル アンカーを作成し、アップロードして、もう一度配置します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=223-262)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=228-265)]
 
 これで完了です。 最後にもう一度 **Visual Studio** でアプリを実行し、シナリオ全体をエンドツーエンドで試します。 お使いのデバイスを動かしてみて、白い球体を配置します。 次に、球体が黄色に変わるまで頭を動かし続けて環境データをキャプチャします。 ローカル アンカーがアップロードされ、球体が青色に変わります。 最後に、ローカル アンカーが削除されるように画面をもう一度タップしてから、対応するクラウド アンカーに対してクエリを実行します。 クラウド空間アンカーが配置されるまで、デバイスの移動を続けます。 正しい場所に緑色の球体が表示され、シナリオ全体をもう一度繰り返すことができます。
 

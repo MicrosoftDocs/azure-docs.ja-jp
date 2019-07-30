@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 44d5ce3e194c873a564039934f518cb3a0e142e3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 0fd605d7d502970dccd37da1f3f70fdadb1094a1
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497176"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550445"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -76,7 +76,8 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 1. `Get-Help AzureAppGWMigration.ps1` を実行して必要なパラメーターを調べます。
 
-   `AzureAppGwMigration.ps1
+   ```
+   AzureAppGwMigration.ps1
     -resourceId <v1 application gateway Resource ID>
     -subnetAddressRange <subnet space you want to use>
     -appgwName <string to use to append>
@@ -84,7 +85,8 @@ Azure Az モジュールがインストールされていて、それらをア�
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
     -publicIpResourceName <public IP name string>
-    -validateMigration -enableAutoScale`
+    -validateMigration -enableAutoScale
+   ```
 
    スクリプトのパラメーターは次のとおりです。
    * **resourceId: [String]:必須** - 既存の Standard v1 または WAF v1 ゲートウェイの Azure リソース ID です。 この文字列の値を調べるには、Azure portal に移動し、アプリケーション ゲートウェイまたは WAF リソース選択して、ゲートウェイの **[プロパティ]** リンクをクリックします。 そのページにリソース ID があります。
@@ -117,11 +119,11 @@ Azure Az モジュールがインストールされていて、それらをア�
 
       PSApplicationGatewayTrustedRootCertificate オブジェクトの一覧を作成するには、「[New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)」を参照してください。
    * **privateIpAddress: [String]:省略可能**。 新しい v2 ゲートウェイに関連付ける特定のプライベート IP アドレスです。  新しい v2 ゲートウェイに割り当てる同じ VNet のものである必要があります。 これが指定されていない場合、スクリプトによって v2 ゲートウェイにプライベート IP アドレスが割り当てられます。
-    * **publicIpResourceId: [String]:省略可能**。 新しい v2 ゲートウェイに割り当てる、サブスクリプション内のパブリック IP アドレス リソースのリソース ID です。 これが指定されていない場合、スクリプトによって同じリソース グループ内の新しいパブリック IP が割り当てられます。 名前は、v2 ゲートウェイの名前に *-IP* が付加されたものになります。
+    * **publicIpResourceId: [String]:省略可能**。 新しい v2 ゲートウェイに割り当てる、サブスクリプション内のパブリック IP アドレス (Standard SKU) リソースのリソース ID です。 これが指定されていない場合、スクリプトによって同じリソース グループ内の新しいパブリック IP が割り当てられます。 名前は、v2 ゲートウェイの名前に *-IP* が付加されたものになります。
    * **validateMigration: [switch]:省略可能**。 v2 ゲートウェイの作成と構成のコピーが完了した後に、スクリプトで基本的な構成比較検証を実行する場合は、このパラメーターを使用します。 既定では、検証は行われません。
    * **enableAutoScale: [switch]:省略可能**。 スクリプトで新しい v2 ゲートウェイを作成した後に自動スケールを有効にする場合は、このパラメーターを使用します。 既定では、自動スケールは無効です。 これは、新しく作成した v2 ゲートウェイで、後からいつでも手動で有効にすることができます。
 
-1. 適切なパラメーターを使用してスクリプトを実行します。
+1. 適切なパラメーターを使用してスクリプトを実行します。 完了するまで 5 から 7 分かかることがあります。
 
     **例**
 
@@ -133,7 +135,7 @@ Azure Az モジュールがインストールされていて、それらをア�
       -sslCertificates $Certs `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceName "MyPublicIP" `
+      -publicIpResourceId "MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 
@@ -176,7 +178,11 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Azure PowerShell スクリプトで作成した新しい v2 ゲートウェイのサイズは、現在 v1 ゲートウェイで対応しているすべてのトラフィックを処理するのに適切な大きさになりますか?
 
-Azure PowerShell スクリプトは、既存の V1 ゲートウェイのトラフィックを処理するのに適切なサイズで新しい v2 ゲートウェイを作成します。 既定では自動スケールが無効になっていますが、スクリプトを実行するときに自動スケールを有効にすることができます。
+Azure PowerShell スクリプトにより、既存の v1 ゲートウェイのトラフィックの処理に適したサイズで新しい v2 ゲートウェイが作成されます。 既定では自動スケールが無効になっていますが、スクリプトを実行するときに自動スケールを有効にすることができます。
+
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Azure Storage にログを送信するように v1 ゲートウェイを構成しました。 スクリプトによって、この構成も v2 用にレプリケートされますか?
+
+いいえ。 スクリプトでは、この構成は v2 用にレプリケートされません。 ログ構成は、移行後の v2 ゲートウェイに個別に追加する必要があります。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>このスクリプトの使用中に問題が発生しました。 どこに問い合わせればよいですか?
   

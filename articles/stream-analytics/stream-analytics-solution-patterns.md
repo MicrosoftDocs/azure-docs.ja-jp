@@ -6,27 +6,27 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 5929ff439bc31e16643e5c57868cd6b68f9cd99c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761991"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329571"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
 Azure にある他の多くのサービスと同様、Stream Analytics は、他のサービスと組み合わせて、より大きなエンドツーエンドのソリューションを作成する目的で最もよく使用されます。 この記事では、単純な Azure Stream Analytics ソリューションとさまざまなアーキテクチャ パターンについて説明します。 これらのパターンを基礎として、より複雑なソリューションを開発することができます。 この記事で取り上げるパターンは、さまざまなシナリオで使用できます。 シナリオごとのパターンの例については、「[Azure ソリューション アーキテクチャ](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics)」でご覧いただけます。
 
-## <a name="create-a-stream-analytics-job-with-a-real-time-dashboard"></a>リアルタイム ダッシュボードを使用して Stream Analytics ジョブを作成する
+## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Stream Analytics ジョブを作成してリアルタイム ダッシュボード エクスペリエンスを強化する
 
-使い勝手の良い Azure Stream Analytics を利用すれば、リアルタイムのダッシュボードとアラートを簡単に構築することができます。 Event Hubs または IoT Hub からイベントを取り込み、[Power BI ダッシュボードにストリーミング データ セットをフィード](/power-bi/service-real-time-streaming)するシンプルなソリューションが挙げられます。 詳細については、「[Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する](stream-analytics-manage-job.md)」という詳しいチュートリアルを参照してください。
+Azure Stream Analytics を使用して、リアルタイムのダッシュボードとアラートを簡単に構築することができます。 Event Hubs または IoT Hub からイベントを取り込み、[Power BI ダッシュボードにストリーミング データ セットをフィード](/power-bi/service-real-time-streaming)するシンプルなソリューションが挙げられます。 詳細については、「[Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する](stream-analytics-manage-job.md)」という詳しいチュートリアルを参照してください。
 
 ![ASA Power BI ダッシュボード](media/stream-analytics-solution-patterns/pbidashboard.png)
 
 このソリューションは、Azure portal からわずか数分で構築できます。 大がかりなコーディングは不要で、ビジネス ロジックの表現には SQL 言語が使用されます。
 
-このリアルタイム ダッシュボード ソリューション パターンでは、イベント ソースからブラウザーの Power BI ダッシュボードまでの間で、きわめて短い待ち時間が実現されています。 Azure Stream Analytics は、このビルトイン機能を備えた唯一の Azure サービスです。
+このソリューション パターンでは、イベント ソースからブラウザーの Power BI ダッシュボードまでの間で、最短待機時間が実現されます。 Azure Stream Analytics は、このビルトイン機能を備えた唯一の Azure サービスです。
 
 ## <a name="use-sql-for-dashboard"></a>ダッシュボードに SQL を使用する
 
@@ -34,19 +34,19 @@ Power BI ダッシュボードは、待ち時間は短いものの、本格的�
 
 ![ASA SQL ダッシュボード](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-SQL データベースを使用することで、待ち時間は増えますが柔軟性は向上します。 待ち時間の要件が 1 秒を超えるジョブには、このソリューションが最適です。 この方法では、Power BI の利便性を最大限に発揮させて、レポートに使用するデータのスライスとダイスを実行することができます。 また、Tableau など他のダッシュボード ソリューションを使用する柔軟性も得られます。
+SQL データベースを使用することで、待ち時間はわずかに長くなりますが、柔軟性は向上します。 待ち時間の要件が 1 秒を超えるジョブには、このソリューションが最適です。 この方法では、Power BI の機能を最大限に活用して、レポートに使用するデータをさらにスライスしてダイスしたり、その他の視覚化オプションを使用したりできます。 また、Tableau など他のダッシュボード ソリューションを使用する柔軟性も得られます。
 
-SQL は高スループットのデータ ストアではなく、Azure Stream Analytics から SQL データベースへの最大スループットは 24 MB/秒です。 実際のソリューションのイベント ソースからもっと高速にデータが生成される場合、Stream Analytics の処理ロジックを使用して、SQL への出力速度を下げる必要があります。 フィルタリング、ウィンドウ集計、テンポラル結合を使用したパターン マッチング、分析関数などの手法を利用できます。 SQL への出力速度は、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」で説明されている手法を使って、さらに最適化することができます。
+SQL は、高スループットのデータ ストアではありません。 Azure Stream Analytics から SQL データベースへの最大スループットは、現時点では約 24 MB/秒です。 実際のソリューションのイベント ソースからもっと高速にデータが生成される場合、Stream Analytics の処理ロジックを使用して、SQL への出力速度を下げる必要があります。 フィルタリング、ウィンドウ集計、テンポラル結合を使用したパターン マッチング、分析関数などの手法を利用できます。 SQL への出力速度は、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」で説明されている手法を使って、さらに最適化することができます。
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>イベント メッセージングを使用してリアルタイムの分析情報をアプリケーションに取り込む
 
 Stream Analytics がよく利用されるもう 1 つの用途として、リアルタイム アラートの生成があります。 このソリューション パターンでは、Stream Analytics のビジネス ロジックを使用して、[テンポラル パターンや空間パターン](stream-analytics-geospatial-functions.md)、[異常](stream-analytics-machine-learning-anomaly-detection.md)を検出して、アラート シグナルを生成できます。 ただし、Stream Analytics の推奨エンドポイントとして Power BI が使用されるダッシュボード ソリューションとは異なり、さまざまな中間データ シンクを使用することができます。 そうしたシンクとして、Event Hubs、Service Bus、Azure Functions などが挙げられます。 どのデータ シンクが実際のシナリオに最適であるかは、アプリケーション ビルダーが判断しなければなりません。
 
-既存のビジネス ワークフローでアラートを生成するためには、ダウンストリームのイベント コンシューマー ロジックを実装する必要があります。 カスタム ロジックを実装できる Azure Functions が、この統合を実施するうえで最も手軽な方法です。 Stream Analytics ジョブの出力として Azure Functions を使用するためのチュートリアルは、「[Azure Stream Analytics ジョブから Azure Functions を実行する](stream-analytics-with-azure-functions.md)」でご覧いただけます。 また、Azure Functions では、テキストやメールを含め、さまざまな種類の通知がサポートされます。 こうした統合には、ロジック アプリも使用できます。この場合、Stream Analytics とロジック アプリの間に Event Hubs を使用することになります。
+既存のビジネス ワークフローでアラートを生成するためには、ダウンストリームのイベント コンシューマー ロジックを実装する必要があります。 Azure Functions でカスタム ロジックを実装できるため、この統合を実施する最も手軽な方法は Azure Functions です。 Stream Analytics ジョブの出力として Azure Functions を使用するためのチュートリアルは、「[Azure Stream Analytics ジョブから Azure Functions を実行する](stream-analytics-with-azure-functions.md)」でご覧いただけます。 また、Azure Functions では、テキストやメールを含め、さまざまな種類の通知がサポートされます。 こうした統合には、ロジック アプリも使用できます。この場合、Stream Analytics とロジック アプリの間に Event Hubs を使用することになります。
 
 ![ASA イベント メッセージング アプリ](media/stream-analytics-solution-patterns/eventmessagingapp.png)
 
-他方で、Event Hubs は、きわめて柔軟性の高い統合ポイントとなります。 Azure Data Explorer や Time Series Insights など、他の多くのサービスが Event Hubs からイベントを取り込むことができます。 このソリューションは、Azure Stream Analytics から Event Hubs シンクにサービスを直接接続することによって実現できます。 Event Hubs は、このような統合シナリオを実現するための、Azure における最速のスループットを備えたメッセージング ブローカーでもあります。
+他方で、Event Hubs は、きわめて柔軟性の高い統合ポイントとなります。 Azure Data Explorer や Time Series Insights などの他の多くのサービスで、Event Hubs のイベントを消費できます。 このソリューションは、Azure Stream Analytics から Event Hubs シンクにサービスを直接接続することによって実現できます。 Event Hubs は、このような統合シナリオを実現するための、Azure における最速のスループットを備えたメッセージング ブローカーでもあります。
 
 ## <a name="dynamic-applications-and-websites"></a>動的アプリケーションと Web サイト
 

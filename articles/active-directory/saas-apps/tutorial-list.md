@@ -17,12 +17,12 @@ ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d26dffa005ac4bf8df0ecc0cee2c570960a38d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49a87346d76bbf1502a073f4bcb4d11eb659929d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239947"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67358154"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 
@@ -46,7 +46,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 
 | ロゴ | シングル サインオンのアプリケーション チュートリアル | ユーザー プロビジョニングのアプリケーション チュートリアル |
 | :--- | :--- | :--- |
-| ![ロゴ](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [アマゾン ウェブ サービス (AWS) コンソール](amazon-web-service-tutorial.md)| [アマゾン ウェブ サービス (AWS) コンソール - ロール プロビジョニング](amazon-web-service-tutorial.md#configure-azure-ad-single-sign-on) |
+| ![ロゴ](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [アマゾン ウェブ サービス (AWS) コンソール](amazon-web-service-tutorial.md)| [アマゾン ウェブ サービス (AWS) コンソール - ロール プロビジョニング](amazon-web-service-tutorial.md#configure-azure-ad-sso) |
 | ![ロゴ](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (ロールベースの SSO)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![ロゴ](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform - ユーザー プロビジョニング](google-apps-provisioning-tutorial.md) |
 | ![ロゴ](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce - User Provisioning](salesforce-provisioning-tutorial.md) |

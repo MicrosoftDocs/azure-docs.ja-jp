@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6d95e4a0a7aeedef2fc7e635d2e49ea68c3ba0ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa3aedf138564fedafe555adfbaf6c56efc1813e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992048"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360845"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Python で Service Bus キューを使用する方法
 
@@ -45,13 +45,13 @@ ms.locfileid: "65992048"
 from azure.servicebus import ServiceBusClient
 ```
 
-次のコードでは、**ServiceBusClient** オブジェクトを作成します。 `mynamespace`、`sharedaccesskeyname`、`sharedaccesskey` の部分は、実際の名前空間、Shared Access Signature (SAS) キー名、キー値に置き換えます。
+次のコードでは、**ServiceBusClient** オブジェクトを作成します。 `<CONNECTION STRING>` を servicebus 接続文字列で置換します。
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
 ```
 
-SAS キーの名前と値は、[Azure Portal][Azure portal] 接続情報に含まれています。また、サーバー エクスプローラーで Service Bus 名前空間を選択すると、Visual Studio の**プロパティ** ウィンドウに表示されます (前のセクションに示されているとおり)。
+SAS キーの名前と値は、[Azure portal][Azure portal] 接続情報に含まれています。また、サーバー エクスプローラーで Service Bus 名前空間を選択すると、Visual Studio の **[プロパティ]** ウィンドウに表示されます (前のセクションに示されているとおり)。
 
 ```python
 sb_client.create_queue("taskqueue")
@@ -60,7 +60,8 @@ sb_client.create_queue("taskqueue")
 `create_queue` メソッドは追加のオプションもサポートしています。これにより、メッセージの有効期間 (TTL) や最大キュー サイズなどの既定のキューの設定をオーバーライドできます。 次の例では、最大キュー サイズを 5 GB に設定し、TTL 値を 1 分に設定しています。
 
 ```python
-sb_client.create_queue("taskqueue", max_size_in_megabytes=5120, default_message_time_to_live=datetime.timedelta(minutes=1))
+sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
+                       default_message_time_to_live=datetime.timedelta(minutes=1))
 ```
 
 詳細については、[Azure Service Bus Python のドキュメント](/python/api/overview/azure/servicebus?view=azure-python)を参照してください。
@@ -73,15 +74,16 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120, default_message_
 ```python
 from azure.servicebus import QueueClient, Message
 
-# Create the QueueClient 
-queue_client = QueueClient.from_connection_string("<CONNECTION STRING>", "<QUEUE NAME>")
+# Create the QueueClient
+queue_client = QueueClient.from_connection_string(
+    "<CONNECTION STRING>", "<QUEUE NAME>")
 
 # Send a test message to the queue
 msg = Message(b'Test Message')
 queue_client.send(msg)
 ```
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
 
 詳細については、[Azure Service Bus Python のドキュメント](/python/api/overview/azure/servicebus?view=azure-python)を参照してください。
 
@@ -91,10 +93,11 @@ Service Bus キューでサポートされているメッセージの最大サ�
 ```python
 from azure.servicebus import QueueClient, Message
 
-# Create the QueueClient 
-queue_client = QueueClient.from_connection_string("<CONNECTION STRING>", "<QUEUE NAME>")
+# Create the QueueClient
+queue_client = QueueClient.from_connection_string(
+    "<CONNECTION STRING>", "<QUEUE NAME>")
 
-## Receive the message from the queue
+# Receive the message from the queue
 with queue_client.get_receiver() as queue_receiver:
     messages = queue_receiver.fetch_next(timeout=3)
     for message in messages:

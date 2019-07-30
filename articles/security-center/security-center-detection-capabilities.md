@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8cd76909c9ce15a97de4ea5af3b21ac120058dd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4ca08a7b757889f79fb7ea5b85d7bc5c1c72259
+ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60705895"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569364"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure Security Center の検出機能
 このドキュメントでは、Azure Security Center の高度な検出機能について取り上げます。この機能を使用すると、Microsoft Azure リソース (Windows と Linux の両方) が今さらされている脅威を特定し、迅速に対応するうえで必要な知見を得ることができます。
@@ -34,7 +34,7 @@ ms.locfileid: "60705895"
 
 そうした攻撃に対応するために多くの組織が実施しているさまざまな解決策は、既に知られている攻撃のシグネチャを探すことで企業ネットワークの境界領域やエンドポイントを防御する対症療法が中心です。 このような解決策では、精度の低いアラートが大量に生成されることが多く、セキュリティ アナリストが優先順位を付けて調査しなければなりません。 しかし、そのようなアラートに対応できるだけの時間とノウハウを持った組織はまれで、多くのアラートは未解決のまま放置されます。  その一方で攻撃者の手法は着々と進化を遂げています。シグネチャを使用した防御はその多くが攻略され、[クラウド環境への対応](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/)も進んでいます。 発生している脅威を従来以上に早く特定し、検出と対応にかかる時間を短縮する新しいアプローチが必要です。
 
-## <a name="how-azure-security-center-detects-and-responds-to-threats"></a>Azure Security Center での脅威の検出と対応
+## Azure Security Center での脅威の検出と対応方法 <a name="asc-detects"></a>
 マイクロソフトのセキュリティ研究員は、絶えず脅威に目を光らせています。 クラウドやオンプレミスにおけるマイクロソフトのグローバル プレゼンスから得た広範なテレメトリにアクセスすることが彼らには許されています。 この広範かつ多様なデータセットのコレクションによって、マイクロソフトは、そのオンプレミスの消費者向け/企業向け製品からオンライン サービスに至るまで、攻撃の新しいパターンや傾向を把握することができます。 攻撃者によって脆弱性の悪用手法が次々に生み出され、しだいに複雑化する中で、Security Center は、その検出アルゴリズムを更新することができるのです。 この手法が、目まぐるしい脅威の環境の変化に対応するために役立てられます。
 
 Security Center の脅威検出は、Azure のリソースやネットワーク、接続されているパートナー ソリューションからセキュリティ情報を自動的に収集することによって機能します。 この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。 Security Center では、セキュリティの警告に優先順位が、脅威に対処するための推奨事項と共に割り当てられます。

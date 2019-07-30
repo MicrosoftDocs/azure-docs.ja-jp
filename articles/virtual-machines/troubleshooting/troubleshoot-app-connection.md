@@ -4,7 +4,7 @@ description: この記事には、Azure 上の仮想マシンで実行されて�
 services: virtual-machines
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: アプリケーションを起動できない, プログラムが開かない, リッスン ポートがブロックされている, プログラムを起動できない, リッスン ポートがブロックされている
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 81535d51617a419174331dbf9b18ea558913dfa9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9bc528cdd098a2e355c542c3ca8f9bcb0287f339
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413164"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710522"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Azure 上の仮想マシンにおけるアプリケーション接続に関する問題のトラブルシューティング
 
@@ -69,7 +69,7 @@ Azure 仮想マシンで実行されているアプリケーションへのア�
 
 原因を特定して問題を修正するには、次の手順に従ってください。
 
-## <a name="step-1-access-application-from-target-vm"></a>手順 1: ターゲットの VM からアプリケーションにアクセスする
+## <a name="step-1-access-application-from-target-vm"></a>手順 1:ターゲット VM からアプリケーションにアクセスする
 適切なクライアント プログラムが実行されている VM からそのクライアント プログラムでアプリケーションへのアクセスを試みます。 ローカル ホスト名、ローカル IP アドレス、またはループバック アドレス (127.0.0.1) を使用します。
 
 ![start application directly from the VM](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
@@ -85,7 +85,7 @@ Azure 仮想マシンで実行されているアプリケーションへのア�
 
 Windows ベースと Linux ベースの両方の仮想マシンで、 **netstat-a** コマンドを使用してアクティブなリスニング ポートを表示します。 アプリケーションがリッスンしているポートの出力を確認します。 アプリケーションを再起動するか、必要であれば、正しいポートを使用するように構成を変更し、アプリケーションのローカルでのアクセスを試みます。
 
-## <a id="step2"></a> 2: 同じ仮想ネットワークの別の VM からアプリケーションにアクセスする
+## <a id="step2"></a>手順 2:同じ仮想ネットワーク内の別の VM からアプリケーションにアクセスする
 同じ仮想ネットワーク内の異なる VM からアプリケーションにアクセスしてみます。その VM のホスト名または Azure 割り当てのパブリック、プライベート、またはプロバイダー IP アドレスを使用します。 クラシック デプロイ モデルを使用して作成された VM の場合、クラウド サービスのパブリック IP アドレスは使用しないでください。
 
 ![start application from a different VM](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -105,7 +105,7 @@ Windows ベースと Linux ベースの両方の仮想マシンで、 **netstat-
 
 Windows ベースの仮想マシンについては、セキュリティ強化機能搭載 Windows ファイアウォールを使用して、ファイアウォール規則がアプリケーションの受信トラフィックと送信トラフィックを除外していないかどうかを確認してください。
 
-## <a id="step3"></a>手順 3: 仮想ネットワーク外からアプリケーションにアクセスする
+## <a id="step3"></a>手順 3:仮想ネットワークの外部からアプリケーションにアクセスする
 アプリケーションが実行されている VM の仮想ネットワーク外のコンピューターから、アプリケーションへのアクセスを試行してください。 元のクライアント コンピューターには別のネットワークを使用します。
 
 ![start application from a computer outside the virtual network](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)

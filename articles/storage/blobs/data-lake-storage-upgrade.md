@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 84e3aff9c1c8cb3e7fe399c861c2c7d58c278fed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d5bf318a86e989ce66bffbd2aa72638ea477ab1
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730535"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673922"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする
 
@@ -220,9 +220,9 @@ Data Lake Storage Gen1 では特定の情報とデータが他のサービスに
 
 | 戦略                       | ツール                                                                                                             | 長所                                                                                                                             | 考慮事項                                                                                                                                                                                                                                                                                                                |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **リフトアンドシフト**                 | [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2-from-gen1) | マネージド クラウド サービス                                                                                                                | データだけがコピーされます。 現時点では、ACL はコピーできません。                                                                                                                                                                                                                                                                      |
+| **リフトアンドシフト**                 | [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2-from-gen1) | マネージド クラウド サービス                                                                                                                | 現在、データと ACL の両方をコピーできます。                                                                                                                                                                                                                                                                      |
 |                                    | [Distcp](https://hadoop.apache.org/docs/r1.2.1/distcp.html)                                                           | よく知られた Hadoop 提供のるツール。このツールではアクセス許可つまり ACL をコピーできます                                                   | Data Lake Storage Gen1 と Gen2 の両方に同時に接続できるクラスターが必要です。                                                                                                                                                                                   |
-| **1 回のコピーと増分コピー** | Azure Data Factory                                                                                                    | マネージド クラウド サービス                                                                                                                | ADF で増分コピーをサポートするには、データを時系列的に編成する必要があります。 増分コピー間の最短の間隔は [15 分](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger)です。 間隔が短いと、ADF は機能しません。 現時点では、ACL はコピーできません。 |
+| **1 回のコピーと増分コピー** | Azure Data Factory                                                                                                    | マネージド クラウド サービス                                                                                                                | 現在、データと ACL の両方をコピーできます。 ADF で増分コピーをサポートするには、データを時系列的に編成する必要があります。 増分コピー間の最短の間隔は [15 分](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger)です。 |
 | **並列導入**              | [WANdisco](https://docs.wandisco.com/bigdata/wdfusion/adls/)                                                           | Azure Data Lake Storage に接続された純粋な Hadoop 環境を使用した場合は、一貫性のあるレプリケーションがサポートされます。双方向のレプリケーションがサポートされます | 純粋な Hadoop 環境を使用しない場合、レプリケーションが遅れる可能性があります。                                                                                                                                                                                                                                                  |
 
 上記のデータ/メタデータ コピー ツールを使用することなく、Data Lake Storage Gen1 から Data Lake Storage Gen2 へのアップグレードを処理できるサード パーティがあることに注意してください (例:[Cloudera](https://blog.cloudera.com/blog/2017/08/use-amazon-s3-with-cloudera-bdr/))。 それらでは、データ移行とワークロード移行を実行する "ワンストップ ショップ" エクスペリエンスが提供されます。 それらのエコシステムの外部にあるツールでは、帯域外のアップグレードを実行することが必要な場合があります。

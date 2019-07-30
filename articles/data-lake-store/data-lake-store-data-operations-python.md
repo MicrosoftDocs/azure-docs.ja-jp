@@ -2,21 +2,17 @@
 title: 'Python: Azure Data Lake Storage Gen1 に対するファイルシステム操作 | Microsoft Docs'
 description: Python SDK を使用して Data Lake Storage Gen1 のファイル システムを操作する方法について説明します。
 services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 57efc718a51398b577a0078ba829d2f6209cab54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f65b6f0bfefd7763b72e8853b0314830a8c5327b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878821"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68232551"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -59,30 +55,30 @@ pip install azure-datalake-store
 
 2. 必要なモジュールをインポートする次の行を追加します。
 
-    ```
-    ## Use this only for Azure AD service-to-service authentication
-    from azure.common.credentials import ServicePrincipalCredentials
+   ```
+   ## Use this only for Azure AD service-to-service authentication
+   from azure.common.credentials import ServicePrincipalCredentials
 
-    ## Use this only for Azure AD end-user authentication
-    from azure.common.credentials import UserPassCredentials
+   ## Use this only for Azure AD end-user authentication
+   from azure.common.credentials import UserPassCredentials
 
-    ## Use this only for Azure AD multi-factor authentication
-    from msrestazure.azure_active_directory import AADTokenCredentials
+   ## Use this only for Azure AD multi-factor authentication
+   from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Storage Gen1 account management
-    from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
-    from azure.mgmt.datalake.store.models import DataLakeStoreAccount
+   ## Required for Azure Data Lake Storage Gen1 account management
+   from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
+   from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Storage Gen1 filesystem management
-    from azure.datalake.store import core, lib, multithread
+   ## Required for Azure Data Lake Storage Gen1 filesystem management
+   from azure.datalake.store import core, lib, multithread
 
-    # Common Azure imports
-    from azure.mgmt.resource.resources import ResourceManagementClient
-    from azure.mgmt.resource.resources.models import ResourceGroup
+   ## Common Azure imports
+   from azure.mgmt.resource.resources import ResourceManagementClient
+   from azure.mgmt.resource.resources.models import ResourceGroup
 
-    ## Use these as needed for your application
-    import logging, getpass, pprint, uuid, time
-    ```
+   ## Use these as needed for your application
+   import logging, getpass, pprint, uuid, time
+   ```
 
 3. mysample.py に対する変更を保存します。
 

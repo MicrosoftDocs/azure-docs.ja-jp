@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.openlocfilehash: a4c601e81390efa3bb53a6f07225bb6e939bc9bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ec4e9cbfd1d70c128f530bd996793a49c8a7d00
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726447"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484135"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -34,9 +34,6 @@ Java で [Apache HBase](https://hbase.apache.org/) アプリケーションを�
 * PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
 
 * テキスト エディター。 この記事では、Microsoft Notepad を使用します。
-
-> [!IMPORTANT]  
-> Azure PowerShell コマンドレット[Get AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster)と[Get AzHDInsightJobOutput](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjoboutput) は現在、ストレージ アカウントで [secure transfer](../../storage/common/storage-require-secure-transfer.md) が有効になっていると動作しません。
 
 ## <a name="test-environment"></a>テスト環境
 この記事で使用された環境は、Windows 10 を実行しているコンピューターです。  コマンドはコマンド プロンプトで実行され、さまざまなファイルがメモ帳で編集されています。 ご使用の環境に応じて変更します。

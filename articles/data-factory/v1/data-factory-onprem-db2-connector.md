@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60824016"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-db2-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-db2.md)
 
@@ -84,10 +84,10 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |はい |
 | **server** |DB2 サーバーの名前です。 |はい |
 | **database** |DB2 データベースの名前です。 |はい |
-| **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ  |
+| **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ |
 | **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 指定できる値は、Anonymous、Basic、および Windows です。 |はい |
-| **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ  |
-| **password** |ユーザー アカウントのパスワードです。 |いいえ  |
+| **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ |
+| **password** |ユーザー アカウントのパスワードです。 |いいえ |
 | **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -320,20 +320,20 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Date |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
-| xml |Byte[] |
-| Char |String |
-| VarChar |String |
-| LongVarChar |String |
-| DB2DynArray |String |
+| Xml |Byte[] |
+| Char |string |
+| VarChar |string |
+| LongVarChar |string |
+| DB2DynArray |string |
 | Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |String |
-| VarGraphic |String |
-| LongVarGraphic |String |
-| Clob |String |
-| BLOB |Byte[] |
-| DbClob |String |
+| Graphic |string |
+| VarGraphic |string |
+| LongVarGraphic |string |
+| Clob |string |
+| Blob |Byte[] |
+| DbClob |string |
 | SmallInt |Int16 |
 | 整数 |Int32 |
 | BigInt |Int64 |
@@ -346,8 +346,8 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Date |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
-| xml |Byte[] |
-| Char |String |
+| Xml |Byte[] |
+| Char |string |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピング方法の詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。

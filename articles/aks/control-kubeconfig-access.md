@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) 内の kubeconfig へのアクセスを制限する
 description: クラスターの管理者とクラスターのユーザーを対象に Kubernetes 構成ファイル (kubeconfig) に対するアクセスを制御する方法を紹介します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: b55cc226cfbb462cdccd73b3b80cfb0d56c10711
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: mlearned
+ms.openlocfilehash: cbc653b86ed83f9d6a7348d39f51dc7cd49c6892
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475603"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615670"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure のロールベースのアクセス制御を使用して Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルに対するアクセス権を定義する
 
@@ -22,7 +22,7 @@ ms.locfileid: "66475603"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、AKS のクイックスタートの、[Azure CLI を使用][aks-quickstart-cli]に関するページと、Azure portal に関するページor [using the Azure portal][aks-quickstart-portal]を参照してください。
 
 この記事ではまた、Azure CLI バージョン 2.0.65 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -48,7 +48,7 @@ ms.locfileid: "66475603"
 使用可能なロールのいずれかを割り当てるには、AKS クラスターのリソース ID と、Azure AD ユーザー アカウントまたはグループの ID を取得する必要があります。 次のコマンド例は以下のように機能します。
 
 * [az aks show][az-aks-show] コマンドを使用して、*myResourceGroup* リソース グループに存在する *myAKSCluster* という名前のクラスターのリソース ID を取得する。 必要に応じて、独自のクラスター名とリソース グループ名を指定してください。
-* [az account show][az-account-show] コマンドと [az ad user show][az-ad-user-show] コマンドを使用して、ユーザー ID を取得する。
+* [az account show ][az-account-show] および、az ad user showand [az ad user show][az-ad-user-show] コマンドを使用して、ユーザー ID を取得する。
 * 最後に、[az role assignment create][az-role-assignment-create] コマンドを使用してロールを割り当てる。
 
 次の例では、"*Azure Kubernetes Service クラスター管理者ロール*" を個々のユーザー アカウントに割り当てます。

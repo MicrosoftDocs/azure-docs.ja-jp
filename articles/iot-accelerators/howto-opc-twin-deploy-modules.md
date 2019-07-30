@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f0fc3722ee440b6f50b86f916afef7ddc5876eef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 798f087c260b6b0a1efc366b864fe2bb7bce732e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693402"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603703"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 
@@ -72,7 +72,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
               "restartPolicy": "always",
               "settings": {
                 "image": "mcr.microsoft.com/iotedge/opc-twin:latest",
-                "createOptions": "{\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"CapAdd\":[\"NET_ADMIN\"]}}"
+                "createOptions": "{\"NetworkingConfig\": {\"EndpointsConfig\": {\"host\": {}}}, \"HostConfig\": {\"NetworkMode\": \"host\" }}"
               }
             },
             "opcpublisher": {
@@ -136,7 +136,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    *作成オプション*として、次の JSON を使用します。
 
    ```json
-   {"HostConfig":{"NetworkMode":"host","CapAdd":["NET_ADMIN"]}}
+   {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
    必要な場合は、省略可能なフィールドに入力します。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)」をご覧ください。 モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)」をご覧ください。
@@ -200,52 +200,6 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    ```
 
    device ID パラメーターでは大文字と小文字が区別されます。 ![az iot hub module-identity list の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
-
-## <a name="run-and-debug-locally"></a>ローカルでの実行とデバッグ
-
-トラブルシューティングとデバッグには、[IoT Edge Development Simulator](https://github.com/Azure/iotedgehubdev) を使用して Edge モジュールをローカルで実行すると便利です。  シミュレーターを含むローカルの開発エクスペリエンスが用意されており、運用環境で使用されるものと同じビット/コードを使用して Azure IoT Edge モジュールおよびソリューションを作成、開発、テスト、実行、デバッグすることができます。
-
-### <a name="prerequisites"></a>前提条件
-
-1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイする。
-
-2. [Windows](https://docs.docker.com/docker-for-windows/install/)、[macOS](https://docs.docker.com/docker-for-mac/install/)、または [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce) に [Docker CE (18.02.0 以降)](https://www.docker.com/community-edition) をインストールします。
-
-3. [Docker Compose (1.20.0 以降)](https://docs.docker.com/compose/install/#install-compose) をインストールします (**Linux** の場合にのみ必要です。 Compose は Windows/macOS Docker CE インストールに既に含まれています)
-
-4. [Python (2.7/3.5 以降) と Pip](https://www.python.org/) をインストールします
-
-5. ターミナルで以下のコマンドを実行して iotedgehubdev をインストールします
-
-   ```bash
-   pip install --upgrade iotedgehubdev
-   ```
-
-> [!NOTE]
-> Linux/macOS 上には `iotedgehubdev` を**ルート**にインストールします ( *'pip install' コマンドに '--user' オプションを使用しないでください*)。
-> iotedgehubdev と同じマシン上で Azure IoT Edge ランタイムが実行されていないことを確認します。これらは同じポートを使用するためです。
-
-### <a name="quickstart"></a>クイック スタート
-
-1. 手順に従って [Azure portal で Edge デバイスを作成](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)します。  Edge デバイスの接続文字列をコピーします。
-
-2. Edge 接続文字列を使用してシミュレーターを設定します。
-
-    ```bash
-    iotedgehubdev setup -c <edge-device-connection-string>
-    ```
-
-3. 上のマニフェストを同じフォルダー内の `deployment.json` ファイルにコピーします。  以下を使用してシミュレーターでデプロイを開始します
-
-    ```bash
-    iotedgehubdev start -d deployment.json
-    ```
-
-4. 以下を使用してシミュレーターを終了します
-
-   ```bash
-   iotedgehubdev stop
-   ```
 
 ## <a name="next-steps"></a>次の手順
 

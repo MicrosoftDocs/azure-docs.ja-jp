@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/10/2019
+ms.date: 06/12/2019
 ms.author: aljo
-ms.openlocfilehash: e992aae17f1217803b411a49c5d942efc501fbdc
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: a309b30fc9438ded280109691afd3bde0883dc3c
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606981"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144391"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -38,7 +38,7 @@ ms.locfileid: "65606981"
 | --- | --- | --- | --- |
 |ApplicationCertificateValidationPolicy|string、既定値は "None"|静的| サーバー証明書の検証を行いません。要求に成功しました。 構成 ServiceCertificateThumbprints で、リバース プロキシが信頼できるリモート証明書の、サムプリントのコンマ区切りリストを参照してください。 構成 ServiceCommonNameAndIssuer で、リバース プロキシが信頼できるリモート証明書の、サブジェクト名と発行者サムプリントを参照してください。 詳細については、[リバース プロキシのセキュリティで保護された接続](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)に関する記事を参照してください。 |
 |BodyChunkSize |uint、既定値は 16384 |動的| 本文の読み取りに使用するチャンクのサイズをバイト単位で指定します。 |
-|CrlCheckingFlag|uint、既定値は 0x40000000 |動的| アプリケーション/サービス証明書チェーン検証のフラグ。例: CRL checking 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください  |
+|CrlCheckingFlag|uint、既定値は 0x40000000 |動的| アプリケーション/サービス証明書チェーン検証のフラグ。例: CRL checking 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx ) の「dwFlags」を参照してください  |
 |DefaultHttpRequestTimeout |時間 (秒単位)、 既定値は 120 です |動的|timespan を秒単位で指定します。  HTTP アプリケーション ゲートウェイで処理される HTTP 要求の既定の要求タイムアウトを指定します。 |
 |ForwardClientCertificate|ブール値、既定値は FALSE|動的|false に設定すると、リバース プロキシはクライアント証明書を要求しません。true に設定すると、リバース プロキシは SSL ハンドシェイク中にクライアント証明書を要求し、base64 でエンコードされた PEM 書式設定文字列を X-Client-Certificate というヘッダーのサービスに転送します。サービスは、証明書データを検査した後、適切な状態コードで要求に失敗する可能性があります。 この状況で、クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。 リバース プロキシは透明なレイヤーとして機能します。 詳細については、[クライアント証明書の認証の設定](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)に関する記事を参照してください。 |
 |GatewayAuthCredentialType |string、既定値は "None" |静的| HTTP アプリケーション ゲートウェイ エンドポイントで使用するセキュリティ資格情報の種類を示します。有効な値は None/X509 です。 |
@@ -125,16 +125,21 @@ ms.locfileid: "65606981"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
+|AdminOnlyHttpAudit |ブール値、既定値は true | 動的 | クラスターの状態に影響を与えない HTTP 要求を監査から除外します。 現在、"GET" の種類の要求のみが除外されます。ただし、これは変更される可能性があります。 |
 |AppDiagnosticStoreAccessRequiresImpersonation |ブール値、既定値は true | 動的 |アプリケーションの代わりに診断ストアにアクセスするときに偽装が必要かどうかを示します。 |
 |AppEtwTraceDeletionAgeInDays |int、既定値は 3 | 動的 |アプリケーションの ETW トレースが含まれた古い ETL ファイルを削除するまでの日数。 |
 |ApplicationLogsFormatVersion |int、既定値は 0 | 動的 |アプリケーション ログの形式のバージョン。 サポートされる値は 0 と 1 です。 バージョン 1 には、バージョン 0 よりも多くの ETW イベント レコードのフィールドが含まれます。 |
-|ClusterId |String | 動的 |クラスターの一意の ID。 これはクラスターの作成時に生成されます。 |
-|ConsumerInstances |String | 動的 |DCA コンシューマー インスタンスのリスト。 |
+|AuditHttpRequests |ブール値、既定値は false | 動的 | HTTP 監査をオンまたはオフにします。 監査の目的は、要求を開始したユーザーを含め、クラスターに対して実行されたアクティビティを確認することです。 これはログ記録の最適な試行であり、トレースの損失が発生する可能性があることに注意してください。 "ユーザー" 認証を使用した HTTP 要求は記録されません。 |
+|CaptureHttpTelemetry|ブール値、既定値は false | 動的 | HTTP テレメトリをオンまたはオフにします。 テレメトリの目的は、Service Fabric でテレメトリ データをキャプチャして将来の作業を計画し、問題のある領域を特定できるようにすることです。 テレメトリには、個人データや要求の本文は記録されません。 特に構成されていない限り、テレメトリにはすべての HTTP 要求がキャプチャされます。 |
+|ClusterId |string | 動的 |クラスターの一意の ID。 これはクラスターの作成時に生成されます。 |
+|ConsumerInstances |string | 動的 |DCA コンシューマー インスタンスのリスト。 |
 |DiskFullSafetySpaceInMB |int、既定値は 1024 | 動的 |DCA によって使用されないようにする残りのディスク領域 (MB)。 |
 |EnableCircularTraceSession |ブール値、既定値は false | 静的 |循環トレース セッションを使用する必要があるかどうかを示すフラグ。 |
 |EnableTelemetry |ブール値、既定値は true | 動的 |テレメトリを有効または無効にします。 |
+|FailuresOnlyHttpTelemetry | ブール値、既定値は true | 動的 | HTTP テレメトリのキャプチャが有効な場合、失敗した要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
+|HttpTelemetryCapturePercentage | int、既定値は 50 | 動的 | HTTP テレメトリのキャプチャが有効な場合、ランダムな割合の要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
 |MaxDiskQuotaInMB |int、既定値は 65536 | 動的 |Windows Fabric のログ ファイルのディスク クォータ (MB)。 |
-|ProducerInstances |String | 動的 |DCA プロデューサー インスタンスのリスト。 |
+|ProducerInstances |string | 動的 |DCA プロデューサー インスタンスのリスト。 |
 
 ## <a name="dnsservice"></a>DnsService
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |
@@ -145,7 +150,7 @@ ms.locfileid: "65606981"
 |PartitionPrefix|string、既定値は "--"|静的|パーティション分割されたサービスの DNS クエリのパーティション プレフィックス文字列値を制御します。 値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>空の文字列にすることはできません。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。|
 |PartitionSuffix|string、既定値は ""|静的|パーティション分割されたサービスの DNS クエリのパーティション サフィックス文字列値を制御します。値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。 |
 
-## <a name="eventstore"></a>EventStore
+## <a name="eventstoreservice"></a>EventStoreService
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
@@ -484,7 +489,7 @@ ms.locfileid: "65606981"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|Counters |String | 動的 |収集するパフォーマンス カウンターのコンマ区切りリスト。 |
+|Counters |string | 動的 |収集するパフォーマンス カウンターのコンマ区切りリスト。 |
 |IsEnabled |ブール値、既定値は true | 動的 |ローカル ノードでのパフォーマンス カウンターの収集が有効になっているかどうかを示すフラグ。 |
 |MaxCounterBinaryFileSizeInMB |int、既定値は 1 | 動的 |各パフォーマンス カウンター バイナリ ファイルの最大サイズ (MB)。 |
 |NewCounterBinaryFileCreationIntervalInMinutes |int、既定値は 10 | 動的 |新しいパフォーマンス カウンター バイナリ ファイルを作成するまでの最大間隔 (秒単位)。 |
@@ -639,7 +644,7 @@ ms.locfileid: "65606981"
 |ClusterCredentialType|string、既定値は "None"|禁止|クラスターをセキュリティで保護するために使用する、セキュリティ資格情報の種類を示します。 有効な値は "None/X509/Windows" です |
 |ClusterIdentities|string、既定値は ""|動的|クラスターのノードの Windows ID。クラスター メンバーシップの承認に使用されます。 これはコンマ区切りリストで、各エントリがドメイン アカウント名またはグループ名です |
 |ClusterSpn|string、既定値は ""|禁止|ファブリックが 1 人のドメイン ユーザー (gMSA/ドメイン ユーザー アカウント) として実行されているときの、クラスターのサービス プリンシパル名。 fabric.exe のリース リスナーとリスナーの SPN です: フェデレーション リスナー、内部レプリケーション リスナー、ランタイム サービスのリスナー、および Naming Gateway リスナー。 ファブリックがマシン アカウントとして実行されている場合は、空のままにします。この場合は、接続側が、リスナー転送アドレスからリスナー SPN を計算します。 |
-|CrlCheckingFlag|uint、既定値は 0x40000000|動的|既定の証明書チェーン検証フラグ。コンポーネント固有のフラグにオーバーライドされる場合があります。例: Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください。 |
+|CrlCheckingFlag|uint、既定値は 0x40000000|動的|既定の証明書チェーン検証フラグ。コンポーネント固有のフラグにオーバーライドされる場合があります。例: Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx ) の「dwFlags」を参照してください。 |
 |CrlDisablePeriod|TimeSpan、既定値は Common::TimeSpan::FromMinutes(15)|動的|timespan を秒単位で指定します。 CRL オフライン エラーを無視できる場合、オフライン エラーの発生後、指定されている証明書に対して CRL チェックが無効になっている時間。 |
 |CrlOfflineHealthReportTtl|TimeSpan、既定値は Common::TimeSpan::FromMinutes(1440)|動的|timespan を秒単位で指定します。 |
 |DisableFirewallRuleForDomainProfile| ブール値、既定値は TRUE |静的| ドメイン プロファイルに対して、ファイアウォール規則を有効にするべきではないかどうかを示します |
@@ -804,10 +809,10 @@ ms.locfileid: "65606981"
 | --- | --- | --- | --- |
 |ContainerNetworkName|string、既定値は ""| 静的 |コンテナー ネットワークを設定するときに使用するネットワーク名。|
 |ContainerNetworkSetup|ブール値、既定値は FALSE| 静的 |コンテナー ネットワークを設定するかどうか。|
-|FabricDataRoot |String | 禁止 |Service Fabric のデータ ルート ディレクトリ。 Azure の場合、既定値は d:\svcfab です。 |
-|FabricLogRoot |String | 禁止 |Service Fabric のログ ルート ディレクトリ。 このディレクトリには、SF のログとトレースが配置されます。 |
+|FabricDataRoot |string | 禁止 |Service Fabric のデータ ルート ディレクトリ。 Azure の場合、既定値は d:\svcfab です。 |
+|FabricLogRoot |string | 禁止 |Service Fabric のログ ルート ディレクトリ。 このディレクトリには、SF のログとトレースが配置されます。 |
 |NodesToBeRemoved|string、既定値は ""| 動的 |構成のアップグレードの一環として削除する必要があるノード (スタンドアロンのデプロイのみ)。|
-|ServiceRunAsAccountName |String | 禁止 |Fabric ホスト サービスを実行するアカウント名。 |
+|ServiceRunAsAccountName |string | 禁止 |Fabric ホスト サービスを実行するアカウント名。 |
 |SkipContainerNetworkResetOnReboot|ブール値、既定値は FALSE|禁止|再起動時のコンテナー ネットワークのリセットをスキップするかどうか。|
 |SkipFirewallConfiguration |ブール値、既定値は false | 禁止 |ファイアウォールの設定をシステムで設定する必要があるかどうかを指定します。 これは、Windows ファイアウォールを使用する場合のみ適用されます。 サード パーティ製のファイアウォールを使用する場合、システムとアプリケーション用のポートを開く必要があります。 |
 

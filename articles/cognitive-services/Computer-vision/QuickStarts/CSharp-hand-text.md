@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 629a51673822a93ad15324239057adc111c36630
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 04c3c255e4218ef2fcd0bbd1d33da1abe3fc0c7f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357379"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604471"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と C# を使用して手書きテキストを抽出する
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用して手書きテキストを抽出する
 
 このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API と[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API を使うと、画像内の手書きテキストを検出し、認識した文字をコンピューターで読み取り可能な文字ストリームに抽出することができます。
 
@@ -68,11 +68,11 @@ namespace CSHttpClientSample
         // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the "westus" region.
+        // Free trial subscription keys are generated in the "westcentralus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =
-            "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
+            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
         static void Main()
         {

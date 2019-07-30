@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: a946443e1d1e66a1ae8f70671ff328cdf47ff009
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 315f8d30b7c7559947c599edd0e18eaa5a99ac22
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992010"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513627"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>クイック スタート:Azure portal を使用して Service Bus キューを作成する
-このクイック スタートでは、Service Bus キューとの間でメッセージを送受信し、[Azure Portal][Azure portal] を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
+このクイックスタートでは、Service Bus キューとの間でメッセージを送受信し、[Azure portal][Azure portal] を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "65992010"
 
 ## <a name="send-and-receive-messages"></a>メッセージを送受信する
 
-名前空間とキューがプロビジョニングされ、必要な資格情報を持っている場合、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
+名前空間とキューがプロビジョニングされ、必要な資格情報を持っている場合、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)でコードを調べることができます。
 
 コードを実行するには、次の手順を実行します。
 

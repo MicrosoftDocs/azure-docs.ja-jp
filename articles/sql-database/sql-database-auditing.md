@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 3efdf5c256a22529c9d19e9ae1dce5d2db9516a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b3a6a18d10b9d9f6ab6456ae2911e54f5c56a71
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827767"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544097"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -138,7 +138,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
 
-- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
+- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、「[SQL Database 監査ログの形式](https://go.microsoft.com/fwlink/?linkid=829599)」を参照してください。
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
@@ -233,10 +233,12 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 **PowerShell コマンドレット (WHERE 句のサポートによってフィルタリングを強化)** :
 
-- [データベース監査ポリシーを作成または更新する (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [サーバー監査ポリシーを作成または更新する (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
-- [データベース監査ポリシーを取得する (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [サーバー監査ポリシーを取得する (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [データベース監査ポリシーを作成または更新する (Set-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [サーバー監査ポリシーを作成または更新する (Set-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
+- [データベース監査ポリシーを取得する (Get-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [サーバー監査ポリシーを取得する (Get-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
+- [データベース監査ポリシーを削除する (Remove-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [サーバー監査ポリシーを削除する (Remove-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
 
 スクリプトの例については、[PowerShell を使用した監査と脅威検出の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページを参照してください。
 

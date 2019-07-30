@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f5c498fc3f3fe051070b3565041e506bc40fceda
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925162"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147529"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル:Azure Data Box Disk にデータをコピーして確認する
 
@@ -88,7 +88,7 @@ ms.locfileid: "64925162"
     
     |パラメーター/オプション  |説明 |
     |--------------------|------------|
-    |ソース            | コピー元ディレクトリのパスを指定します。        |
+    |source            | コピー元ディレクトリのパスを指定します。        |
     |宛先       | コピー先ディレクトリのパスを指定します。        |
     |/E                  | サブディレクトリをコピーします (空のディレクトリを含む)。 |
     |/MT[:N]             | スレッド数 N のマルチスレッド コピーを作成します。N は 1 から 128 の整数です。 <br>N の既定値は 8 です。        |
@@ -250,6 +250,8 @@ ms.locfileid: "64925162"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+分割コピー ツールの使用中にエラーが発生した場合は、[分割コピー ツールのエラーのトラブルシューティングを行う](data-box-disk-troubleshoot-data-copy.md)方法をご覧ください。
+
 データのコピーが完了した後、お客様のデータの検証に進むことができます。 分割コピー ツールを使用した場合は、検証をスキップして (分割コピー ツールで検証も行われます)、次のチュートリアルに進んでください。
 
 
@@ -270,6 +272,8 @@ ms.locfileid: "64925162"
     > - 小さなファイル (KB 単位まで) を含む大きなデータ セットを扱う場合、オプション 1 を使用します。 チェックサムの生成に非常に長い時間がかかり、パフォーマンスが非常に低くなる場合があるので、このオプションではファイルの検証だけを行います。
 
 3. 複数のディスクを使用している場合は、ディスクごとにコマンドを実行します。
+
+検証中にエラーが発生した場合は、[検証エラーのトラブルシューティング](data-box-disk-troubleshoot.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

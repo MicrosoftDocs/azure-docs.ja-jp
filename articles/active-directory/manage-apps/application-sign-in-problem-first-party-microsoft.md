@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956848"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108296"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft アプリケーションへのサインインに関する問題
 
@@ -444,7 +444,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 ### <a name="check-a-specific-applications-conditional-access-policy"></a>特定のアプリケーションの条件付きアクセス ポリシーを確認する
 
-1 つのアプリケーションで現在構成されている条件付きアクセス ポリシーを確認または検証する方法
+1 つのアプリケーションで現在構成されている条件付きアクセス ポリシーを確認または検証するには:
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 

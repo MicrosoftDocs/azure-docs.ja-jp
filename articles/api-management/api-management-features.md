@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
-ms.openlocfilehash: 34c4ef2885a82b6c392b814eeb624e616e341d48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a57f8e44d19432f82abe4fa5e7bafce900db3394
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304343"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448006"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Management レベルの機能に基づく比較
 
@@ -40,6 +40,7 @@ ms.locfileid: "66304343"
 | [Git による管理](api-management-configuration-repository-git.md)                        | いいえ                            | 可能            | はい            | はい            | はい            |
 | ダイレクト管理 API                                                                        | いいえ                            | 可能            | はい            | はい            | はい            |
 | Azure Monitor のログとメトリック                                                               | いいえ                | 可能            | はい            | はい            | はい            |
+| 静的 IP                                                               | いいえ                | 可能            | はい            | はい            | はい            |
 
 <sup>1</sup> ユーザーが開発者ポータルにサインインする際に、ID プロバイダーとして Azure AD (および Azure AD B2C) を使用できます。<br/>
 <sup>2</sup> 関連機能 (例: ユーザー、グループ、問題、アプリケーション、電子メール テンプレートと通知) を含みます。<br/>

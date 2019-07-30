@@ -5,15 +5,15 @@ author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/25/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 809c98c1e2e51ae51d7fe03f2165a5d9eecb05cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cad1b0ab484d172000bd62146a88a27bfab1e9f2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681819"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448765"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alerts-log.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -51,9 +51,10 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | Search Interval StartTime |#searchintervalstarttimeutc |UTC でのクエリの開始時刻。フォーマットは mm/dd/yyyy HH:mm:ss AM/PM です。 
 | SearchQuery |#searchquery |アラート ルールで使用されるログ検索クエリ。 |
 | SearchResults |"IncludeSearchResults": true|クエリで JSON テーブルとして返されるレコード。上限は最初の 1,000 レコード。"IncludeSearchResults":true がカスタム JSON webhook 定義に最上位レベルのプロパティとして追加されている場合。 |
+| アラートの種類| #alerttype | 構成されたログ アラート ルールの種類であり、[[メトリック測定]](alerts-unified-log.md#metric-measurement-alert-rules) または [[結果の数]](alerts-unified-log.md#number-of-results-alert-rules)。|
 | WorkspaceID |#workspaceid |Log Analytics ワークスペースの ID |
 | アプリケーション ID |#applicationid |Application Insight アプリの ID。 |
-| サブスクリプション ID |#subscriptionid |Application Insights で使用する Azure サブスクリプションの ID。 
+| サブスクリプション ID |#subscriptionid |使用された Azure サブスクリプションの ID。 
 
 > [!NOTE]
 > Analytics セクションで表示するために、LinkToSearchResults により、URL の SearchQuery、Search Interval StartTime、Search Interval EndTime などのパラメーターが Azure portal に渡されます。 Azure portal の URI サイズの上限は約 2,000 文字であり、パラメーター値がこの上限を超えると、アラートで指定されたリンクは "*開きません*"。 ユーザーは手動で詳細を入力して Analytics ポータルで結果を表示したり、[Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) または [Log Analytics REST API](/rest/api/loganalytics/) を使用して結果をプログラミングで取得したりできます。 
@@ -88,8 +89,18 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 
 ```json
 {
-    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
+    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
+    "AlertRuleName":"AcmeRule",
+    "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+    "AlertThresholdOperator": "Greater Than",
+    "AlertThresholdValue": 0,
+    "ResultCount": 2,
+    "SearchIntervalInSeconds": 3600,
+    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "Description": "log alert rule",
+    "Severity": "Warning",
     "SearchResult":
         {
         "tables":[
@@ -107,15 +118,8 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
                     }
                 ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "Warning"
+    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+    "AlertType": "Metric measurement"
  }
  ```
 
@@ -131,7 +135,17 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     "schemaId":"Microsoft.Insights/LogAlert","data":
     { 
     "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
+    "AlertRuleName":"AcmeRule",
+    "SearchQuery":"requests | where resultCode == \"500\"",
+    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+    "AlertThresholdOperator": "Greater Than",
+    "AlertThresholdValue": 0,
+    "ResultCount": 2,
+    "SearchIntervalInSeconds": 3600,
+    "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "Description": null,
+    "Severity": "3",
     "SearchResult":
         {
         "tables":[
@@ -149,16 +163,8 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
                     }
                 ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "3",
-    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
+    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
+    "AlertType": "Number of results"
     }
 }
 ```

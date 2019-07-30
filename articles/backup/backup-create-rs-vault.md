@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Recovery Services コンテナーの作成'
 description: バックアップと復旧ポイントを格納する Recovery Services コンテナーの作成
-services: backup
 author: sogup
 manager: vijayts
 keywords: Recovery Services コンテナー; Azure VM バックアップ; Azure VM 復元;
@@ -9,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: sogup
-ms.openlocfilehash: 9fba7d679b7d0edb3c99207c99b23f9616c6fa0e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 95ffe6aa0f65690e2df71c94b87d3e9f1ac7f7e5
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477575"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465168"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 

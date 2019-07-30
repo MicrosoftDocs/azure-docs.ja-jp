@@ -10,13 +10,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 05/22/2019
-ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/05/2019
+ms.openlocfilehash: 05ec49c98c5bcfe40346550f5570c03a8fb3f881
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66016393"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657990"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のタイム ゾーン
 
@@ -30,7 +30,9 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 
 ## <a name="supported-time-zones"></a>サポートされているタイム ゾーン
 
-サポートされている一連のタイム ゾーンは、マネージド インスタンスの基になるオペレーティング システムから継承されます。 また、新しいタイム ゾーン定義を取得して既存のものに変更を反映させるために、定期的に更新されています。 
+サポートされている一連のタイム ゾーンは、マネージド インスタンスの基になるオペレーティング システムから継承されます。 また、新しいタイム ゾーン定義を取得して既存のものに変更を反映させるために、定期的に更新されています。
+
+[夏時間/タイム ゾーンの変更ポリシー](https://aka.ms/time)により、2010 年以降のヒストリカルな正確さが保証されます。
 
 サポートされているタイム ゾーンの名前を記載したリストは、[sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) システム ビューを介して公開されています。
 
@@ -43,7 +45,7 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 
 ### <a name="set-the-time-zone-through-the-azure-portal"></a>Azure portal を使用してタイム ゾーンを設定する
 
-新しいインスタンスのパラメーターを入力するときに、サポートされているタイム ゾーンの一覧からタイム ゾーンを選択します。 
+新しいインスタンスのパラメーターを入力するときに、サポートされているタイム ゾーンの一覧からタイム ゾーンを選択します。
   
 ![インスタンスの作成時にタイム ゾーンを設定する](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -82,7 +84,10 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-ポイントインタイム リストアを実行するとき、復元する時刻は UTC 時間として解釈されます。 これは、夏時間とそれに伴う潜在的な変更によるあいまいさを回避するためです。
+<del>ポイントインタイム リストアを実行するとき、復元する時刻は UTC 時間として解釈されます。 これは、夏時間とそれに伴う潜在的な変更によるあいまいさを回避するためです。<del>
+
+ >[!WARNING]
+  > 現在の動作は上記と一致しておらず、復元する時刻は、自動データベース バックアップが取得されるソース マネージド インスタンスのタイム ゾーンに従って解釈されます。 特定の時点を UTC 時間として解釈するように、この動作の修正に取り組んでいます。 詳細については、「[既知の問題](sql-database-managed-instance-timezone.md#known-issues)」をご覧ください。
 
 ### <a name="auto-failover-groups"></a>自動フェールオーバー グループ
 
@@ -95,6 +100,21 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 
 - 既存のマネージド インスタンスのタイム ゾーンは変更できません。
 - SQL Server エージェントのジョブから起動される外部プロセスでは、インスタンスのタイム ゾーンは確認されません。
+
+## <a name="known-issues"></a>既知の問題
+
+ポイントインタイム リストア (PITR) 操作の実行時に、復元する時刻は、PITR のポータル ページでその時刻が UTC として解釈されることが示されている場合でも、自動データベース バックアップが取得されるマネージド インスタンスで設定されたタイム ゾーンに従って解釈されます。
+
+例:
+
+自動バックアップが取得されるインスタンスに東部標準時 (UTC-5) のタイム ゾーンが設定されているとします。
+ポイントインタイム リストアのポータル ページでは、選択する復元時刻が UTC 時刻であることが示されます。
+
+![ポータルの使用でローカル時間を示している PITR](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
+
+ただし、復元する時刻は、実際には東部標準時として解釈され、この特定の例では、データベースは、UTC 時刻ではなく、東部標準時の午前 9 時の状態に復元されます。
+
+UTC 時刻の特定の時点にポイントインタイム リストアを行う場合は、まずソース インスタンスのタイム ゾーンでの同等の時刻を計算し、ポータルまたは PowerShell/CLI スクリプトでその時刻を使用します。
 
 ## <a name="list-of-supported-time-zones"></a>サポートされているタイム ゾーンの一覧
 

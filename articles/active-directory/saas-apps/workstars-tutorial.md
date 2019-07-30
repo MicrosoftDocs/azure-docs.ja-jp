@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: db646c48c1332f986840d54127729c766ffb6dd7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920329"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>チュートリアル:Azure Active Directory と Workstars の統合
 

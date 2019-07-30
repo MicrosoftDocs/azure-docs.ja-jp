@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843676"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593608"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure 上のコンテンツ配信ネットワークとは
 コンテンツ配信ネットワーク (CDN) は、ユーザーに Web コンテンツを効率的に配信できるサーバーの分散ネットワークです。 CDN では、待ち時間を最小限に抑えるために、エンド ユーザーに近いポイントオブプレゼンス (POP) の場所のエッジ サーバーに、キャッシュされたコンテンツを格納します。 
@@ -38,7 +38,7 @@ Azure CDN を使用して Web サイト資産を配信すると、次のよう�
 ## <a name="how-it-works"></a>動作のしくみ
 ![CDN の概要](./media/cdn-overview/cdn-overview.png)
 
-1. ユーザー (Alice) は、特殊なドメイン名 (_&lt;endpoint name&gt;_.azureedge.net など) の URL を使用して、ファイル (資産とも呼ばれます) を要求します。 この名前には、エンドポイント ホスト名またはカスタム ドメインを指定できます。 DNS は、パフォーマンスが最も高い POP に要求をルーティングします。通常、その場所は、ユーザーに地理的に最も近い位置にある POP になります。
+1. ユーザー (Alice) は、特殊なドメイン名 ( _&lt;endpoint name&gt;_ .azureedge.net など) の URL を使用して、ファイル (資産とも呼ばれます) を要求します。 この名前には、エンドポイント ホスト名またはカスタム ドメインを指定できます。 DNS は、パフォーマンスが最も高い POP に要求をルーティングします。通常、その場所は、ユーザーに地理的に最も近い位置にある POP になります。
     
 2. POP のエッジ サーバーのキャッシュにファイルがない場合、POP は配信元サーバーにあるファイルを要求します。 配信元サーバーは、Azure Web App、Azure Cloud Service、Azure ストレージ アカウント、またはパブリックにアクセスできる Web サーバーです。
    
@@ -67,7 +67,7 @@ Azure CDN が提供する主要な機能は、次のとおりです。
 - [動的サイト アクセラレーション](cdn-dynamic-site-acceleration.md)
 - [CDN キャッシュ規則](cdn-caching-rules.md)
 - [HTTPS カスタム ドメインのサポート](cdn-custom-ssl.md)
-- [Azure 診断ログ](cdn-azure-diagnostic-logs.md)
+- [Azure Diagnostics ログ](cdn-azure-diagnostic-logs.md)
 - [ファイル圧縮](cdn-improve-performance.md)
 - [Geo-filtering](cdn-restrict-access-by-country.md)
 

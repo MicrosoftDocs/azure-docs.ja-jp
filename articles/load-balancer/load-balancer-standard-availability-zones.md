@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Standard Load Balancer と可用性ゾーン
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
-ms.author: kumud
-ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 5ef7de148d5ef4727602b8287164f2aff9ccf822
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734458"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274515"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 
@@ -186,7 +186,7 @@ Load Balancer は、可用性ゾーンのコンテキストにおいて柔軟性
 
 Load Balancer を使うと、ゾーン冗長フロントエンドとして 1 つの IP アドレスを簡単に持つことができます。 ゾーン冗長 IP アドレスは、任意のゾーンでゾーン ベースのリソースを安全に提供でき、リージョン内に正常なゾーンが 1 つでも残っている限り、1 つまたは複数のゾーンで障害があっても存続できます。 逆に、ゾーン ベースのフロントエンドは、単一のゾーンへのサービスの縮小であり、対応するゾーンの正常性に依存します。
 
-ゾーンの冗長性は、ヒットレス データパスまたは制御プレーンを意味するものではなく、データ プレーンを明示します。 ゾーン冗長なフローは任意のゾーンを使うことができ、ユーザーのフローはリージョン内で正常なすべてのゾーンを使います。 ゾーンで障害が発生すると、その時点で正常なゾーンを使っているトラフィック フローは影響を受けません。  ゾーンで障害が発生したときにゾーンを使っているトラフィック フローは影響を受ける可能性がありますが、アプリケーションは復旧でき、Azure がゾーンの障害を収束すると、再送信または再確立のときにリージョン内に残っている正常なゾーンでフローは続行できます。
+ゾーンの冗長性は、ヒットレス データパスまたは制御プレーンを意味するものではなく、データ プレーンを明示します。 ゾーン冗長なフローは任意のゾーンを使うことができ、ユーザーのフローはリージョン内で正常なすべてのゾーンを使います。 ゾーンで障害が発生すると、その時点で正常なゾーンを使っているトラフィック フローは影響を受けません。  ゾーンで障害が発生したときにゾーンを使用しているトラフィック フローは影響を受ける可能性がありますが、アプリケーションは復旧できます。 Azure がゾーンの障害を収束したら、再送信または再確立時にリージョン内に残っている正常なゾーンでこれらのフローを続行できます。
 
 ### <a name="xzonedesign"></a> ゾーンの境界を越える
 

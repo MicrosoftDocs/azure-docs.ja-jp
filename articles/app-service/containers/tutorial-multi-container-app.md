@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: d4a93bbd823db59d688f77a626b1225519fb7b44
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: d1176d2d70dcd4de3e4287a1973de027c061f291
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407614"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055559"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル:Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
@@ -154,7 +154,7 @@ Web アプリが作成されると、Cloud Shell に、次の例のような出�
 
 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して Azure Database for MySQL サーバーを作成します。
 
-次のコマンドで、_&lt;mysql-server-name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql-server-name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
+次のコマンドで、 _&lt;mysql-server-name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql-server-name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -470,7 +470,7 @@ az webapp config container set --resource-group myResourceGroup --name <app-name
 
 ### <a name="connect-wordpress-to-redis"></a>WordPress を Redis に接続する
 
-WordPress 管理にサインインします。左側のナビゲーションで **[プラグイン]** を選択し、**[Installed Plugins]\(インストールされているプラグイン\)** を選択します。
+WordPress 管理にサインインします。左側のナビゲーションで **[プラグイン]** を選択し、 **[Installed Plugins]\(インストールされているプラグイン\)** を選択します。
 
 ![WordPress プラグインを選択する][2]
 

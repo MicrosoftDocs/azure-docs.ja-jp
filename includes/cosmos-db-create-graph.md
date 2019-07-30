@@ -9,15 +9,15 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 9800848b24523a0eb5992e64ce1580cc53b0e3a0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151456"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181723"
 ---
 Azure Portal でデータ エクスプローラー ツールを使用してグラフ データベースを作成できるようになりました。 
 
-1. **[データ エクスプローラー]** > **[New Graph]\(新しいグラフ\)** をクリックします。
+1. **[データ エクスプローラー]**  >  **[New Graph]\(新しいグラフ\)** をクリックします。
 
     **[グラフの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
 
@@ -32,4 +32,4 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     ストレージの容量|固定 (10 GB)|既定値の**固定 (10 GB)** のままにします。 この値は、データベースの記憶域容量です。
     スループット|400 RU|スループットを 400 要求ユニット (RU/秒) に変更します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。
 
-3. フォームに入力したら、**[OK]** をクリックします。
+3. フォームに入力したら、 **[OK]** をクリックします。

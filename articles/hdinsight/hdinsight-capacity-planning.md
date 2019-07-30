@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237150"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786512"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -82,7 +82,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 クラスターの種類によっては、ワーカー ノードの数を増やすことでコンピューティング能力が高まりますが (コア数の増加など)、処理するデータのインメモリ ストレージをクラスター全体でサポートするために必要なメモリの総容量も増加する可能性があります。 VM のサイズと種類を選択する場合と同様に、通常、クラスタの適切なスケールの選択は、シミュレートされたワークロードやカナリア クエリを使用して経験的に行われます。
 
-ピーク時の負荷要求に合わせてクラスターをスケールアウトし、それらの追加ノードが不要になったらスケールインすることができます。 詳細については、[HDInsight クラスターのスケーリング](hdinsight-scaling-best-practices.md)に関するページを参照してください。
+ピーク時の負荷要求に合わせてクラスターをスケールアウトし、それらの追加ノードが不要になったらスケールインすることができます。 [自動スケーリング機能](hdinsight-autoscale-clusters.md)を使用すると、あらかじめ決められているメトリックとタイミングに基づいて、クラスターを自動的にスケーリングできます。 クラスターの手動スケーリングについて詳しくは、「[HDInsight クラスターのスケーリング](hdinsight-scaling-best-practices.md)」をご覧ください。
 
 ### <a name="cluster-lifecycle"></a>クラスターのライフサイクル
 

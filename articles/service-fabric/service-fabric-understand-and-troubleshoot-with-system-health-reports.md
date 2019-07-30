@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d5cfe91cfcc124ef3073cfb6bbeda683505ff8e1
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: b190db401b8ae31582ea31cf59d30f20baccf8c7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561377"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060367"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -72,17 +72,37 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 * **プロパティ**: Rebuild。
 * **次のステップ**: ノード間のネットワーク接続を調査すると共に、正常性レポートの説明に記載されているノードがあれば、その特定のノードの状態を調査します。
 
-## <a name="node-system-health-reports"></a>ノード システム正常性レポート
-System.FMは Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます。 詳細については、[RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync) に関する記事をご覧ください。
+### <a name="seed-node-status"></a>シード ノードの状態
+一部のシード ノードが正常でない場合、**System.FM** はクラスター レベルの警告を報告します。 シード ノードは、基になるクラスターの可用性を維持するノードです。 特定の種類のネットワーク障害が発生しているときに、他のノードとのリースを確立し、タイブレーカーとして機能することで、クラスターが確実に稼働し続けるうえで役立ちます。 クラスターでシード ノードの大部分がダウンしていて、元に戻らない場合、クラスターは自動的にシャットダウンします。 
 
-### <a name="node-updown"></a>ノードを上/下に移動
-System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。 ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。 正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。 その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。 そのノードにデプロイされたエンティティは、ノードが System.FM によって起動されたものとしてレポートされた場合、エンティティに関連付けられているインスタンスと同じインスタントと共に、クエリを通じて公開されます。 System.FM によってノードの停止または再起動が新規インスタンスとして報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
+ノードの状態が [ダウン]、[削除済み]、または [不明] の場合、シード ノードは正常ではありません。
+シード ノード状態の警告レポートには、すべての正常でないシード ノードが詳細情報と共に一覧表示されます。
+
+* **SourceID**: System.FM
+* **プロパティ**: SeedNodeStatus
+* **次のステップ**: この警告がクラスターに表示される場合は、次の修正手順に従います。Service Fabric バージョン 6.5 以降を実行しているクラスターの場合:Azure 上の Service Fabric クラスターでは、シード ノードが停止した後、Service Fabric は自動的にそれを非シード ノードに変更しようとします。 そうなるようにするには、プライマリ ノード タイプの非シード ノードの数が、ダウンしているシード ノードの数以上になるようにします。 そのために、必要に応じて、プライマリ ノード タイプにノードを追加します。
+クラスターの状態によっては、問題を解決するまでに時間がかかる場合があります。 これが完了すると、警告レポートは自動的にクリアされます。
+
+Service Fabric スタンドアロン クラスターでは、すべてのシード ノードが正常にならないと警告レポートをクリアできません。 シード ノードが正常でない理由に応じて、さまざまなアクションを実行する必要があります。シード ノードが [ダウン] の場合、ユーザーがそのシード ノードを起動する必要があります。シード ノードが [削除済み] または [不明] の場合、このシード ノードを[クラスターから削除する必要があります](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)。
+すべてのシード ノードが正常になると、警告レポートは自動的にクリアされます。
+
+6\.5 より前のバージョンの Service Fabric を実行しているクラスターの場合:この場合、警告レポートを手動でクリアする必要があります。 **レポートをクリアする前に、すべてのシード ノードが正常になったことをユーザーが確認する必要があります**: シード ノードが [ダウン] の場合、ユーザーがそのシード ノードを起動する必要があります。シード ノードが [削除済み] または [不明] の場合、そのシード ノードをクラスターから削除する必要があります。
+すべてのシード ノードが正常になったら、PowerShell から次のコマンドを使用して[警告レポートをクリア](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)します。
+
+```powershell
+PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
+
+## Node system health reports
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+
+### Node up/down
+System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
 
 * **SourceId**: System.FM
-* **プロパティ**: State。
-* **次のステップ**: ノードがアップグレードのために停止している場合は、アップグレード後に復帰する必要があります。 この例では、正常性状態が OK に切り替わる必要があります。 ノードが復帰しない場合、またはエラーが発生した場合は、さらに問題を調査する必要があります。
+* **Property**: State.
+* **Next steps**: If the node is down for an upgrade, it should come back up after it's been upgraded. In this case, the health state should switch back to OK. If the node doesn't come back or it fails, the problem needs more investigation.
 
-ノードの稼動を表す正常性状態 OK の System.FM イベントの例を次に示します。
+The following example shows the System.FM event with a health state of OK for node up:
 
 ```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/21/2019
 ms.author: mjbrown
-ms.openlocfilehash: b25d65b07420c5be53d952c6f81de5116dc9ec7d
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: e1215441b45e1fdba8d74c9149415f0da5c4c44a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978926"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360383"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する方法
 
@@ -148,9 +148,9 @@ with open('../js/spCreateToDoItem.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 sproc_definition = {
-            'id': 'spCreateToDoItem',
-            'serverScript': file_contents,
-        }
+    'id': 'spCreateToDoItem',
+    'serverScript': file_contents,
+}
 sproc = client.CreateStoredProcedure(container_link, sproc_definition)
 ```
 
@@ -279,11 +279,11 @@ with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 trigger_definition = {
-            'id': 'trgPreValidateToDoItemTimestamp',
-            'serverScript': file_contents,
-            'triggerType': documents.TriggerType.Pre,
-            'triggerOperation': documents.TriggerOperation.Create
-        }
+    'id': 'trgPreValidateToDoItemTimestamp',
+    'serverScript': file_contents,
+    'triggerType': documents.TriggerType.Pre,
+    'triggerOperation': documents.TriggerOperation.Create
+}
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
@@ -291,8 +291,10 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-item = { 'category': 'Personal', 'name': 'Groceries', 'description':'Pick up strawberries', 'isComplete': False}
-client.CreateItem(container_link, item, { 'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
+item = {'category': 'Personal', 'name': 'Groceries',
+        'description': 'Pick up strawberries', 'isComplete': False}
+client.CreateItem(container_link, item, {
+                  'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
 ## <a id="post-triggers"></a>ポストトリガーの実行方法
@@ -325,7 +327,7 @@ var newItem = {
     albums: ["Hellujah", "Rotators", "Spinning Top"]
 };
 
-var options = { postTriggerInclude: "trgPostUpdateMetadata" };
+RequestOptions options = new RequestOptions { PostTriggerInclude = new List<string> { "trgPostUpdateMetadata" } };
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.createDocumentAsync(containerUri, newItem, options);
 ```
@@ -398,11 +400,11 @@ with open('../js/trgPostUpdateMetadata.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 trigger_definition = {
-            'id': 'trgPostUpdateMetadata',
-            'serverScript': file_contents,
-            'triggerType': documents.TriggerType.Post,
-            'triggerOperation': documents.TriggerOperation.Create
-        }
+    'id': 'trgPostUpdateMetadata',
+    'serverScript': file_contents,
+    'triggerType': documents.TriggerType.Post,
+    'triggerOperation': documents.TriggerOperation.Create
+}
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
@@ -410,8 +412,10 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-item = { 'name': 'artist_profile_1023', 'artist': 'The Band', 'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-client.CreateItem(container_link, item, { 'postTriggerInclude': 'trgPostUpdateMetadata'})
+item = {'name': 'artist_profile_1023', 'artist': 'The Band',
+        'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
+client.CreateItem(container_link, item, {
+                  'postTriggerInclude': 'trgPostUpdateMetadata'})
 ```
 
 ## <a id="udfs"></a>ユーザー定義関数を操作する方法
@@ -514,9 +518,9 @@ with open('../js/udfTax.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
-            'id': 'Tax',
-            'serverScript': file_contents,
-        }
+    'id': 'Tax',
+    'serverScript': file_contents,
+}
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 ```
 
@@ -524,7 +528,8 @@ udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
+results = list(client.QueryItems(
+    container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
 ## <a name="next-steps"></a>次の手順

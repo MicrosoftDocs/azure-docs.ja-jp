@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: anshan
+ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/22/2019
-ms.openlocfilehash: 0bbab2acc9bf9e22e1d3c36336aa9dad04b0b73a
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 547edb194ffdf52a805f573d338f61edff80623a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688491"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164883"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>クイック スタート:Azure Time Series Insights プレビューのデモ環境を探索する
 

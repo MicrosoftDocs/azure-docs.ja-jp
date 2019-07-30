@@ -15,28 +15,21 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864816"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326495"
 ---
-# <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリで Azure Cache for Redis を使用する 
 
-## <a name="introduction"></a>はじめに
-
-このクイック スタートでは、Visual Studio 2019 を使用して ASP.NET Web アプリケーションを作成し Azure App Service にデプロイする方法を説明します。 このサンプル アプリケーションは、Azure Cache for Redis に接続して、キャッシュにデータを格納し、キャッシュからデータを取得します。 このクイック スタートを完了すると、Azure Redis Cache との間で読み書きを行う、Azure でホストされる Web アプリが完成します。
-
-![簡単なテストが完了した Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+このクイック スタートでは、Visual Studio 2019 を使用して、Azure Cache for Redis に接続してキャッシュからデータを格納および取得する ASP.NET Web アプリケーションを作成します。 次に、アプリを Azure App Service にデプロイします。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次の環境で [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする必要があります。
-* ASP.NET および Web の開発
-* Azure の開発
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- **ASP.NET と Web 開発**ワークロードおよび **Azure の開発**ワークロードを含む、[Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 

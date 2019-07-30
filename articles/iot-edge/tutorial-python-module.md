@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6ec429bc7c1598e947b798c30e7992e3d357d00c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: d75e4c3e2b6f28dfbde670406854ac87790dd090
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303827"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850109"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Python IoT Edge モジュールを開発およびデプロイする
 
@@ -47,7 +47,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux のデバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 これらのチュートリアルのいずれかを完了すると、次の前提条件が満たされます。 
+このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 これらのチュートリアルのいずれかを完了すると、次の前提条件が満たされます。 
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
@@ -69,25 +69,15 @@ Python で IoT Edge モジュールを開発するには、開発マシンに次
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-Python パッケージ **cookiecutter** を使用して、ソリューションのベースにする Python ソリューション テンプレートを作成します。 
+VS Code を使用して、ソリューションのベースにする Python ソリューション テンプレートを作成します。 
 
 1. Visual Studio Code で、 **[表示]**  >  **[ターミナル]** の順に選択し、VS Code 統合ターミナルを開きます。
 
-2. ターミナルで、次のコマンドを入力して、**cookiecutter** をインストール (または更新) します。これは、IoT Edge ソリューション テンプレートを作成するときに使用します。
+1. **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >コマンド プロンプトから起動できるように、cookiecutter をインストールするディレクトリが環境の PATH にあることを確認してください。 ディレクトリは、インストール スクリプトの出力の一部です。たとえば、`C:\Users\{user}\AppData\Roaming\Python\Python{version}\Scripts` などです。
-   >
-   >PATH への変更を反映するには、Visual Studio Code を再起動します。 
+1. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、手順に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
 
-3. **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
-
-4. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、手順に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
-
-5. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 プロンプトに従って、次の情報を指定してソリューションを作成します。
+1. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 プロンプトに従って、次の情報を指定してソリューションを作成します。
 
    | フィールド | 値 |
    | ----- | ----- |
@@ -114,7 +104,7 @@ Python パッケージ **cookiecutter** を使用して、ソリューション�
 
 1. コマンド パレットを開き、次を検索します: 「**Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
 
-2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** を維持します。 
+2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** のままにします。 
 
 ### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
@@ -209,7 +199,7 @@ Python パッケージ **cookiecutter** を使用して、ソリューション�
 
 1. **[表示]**  >  **[ターミナル]** を選択して、VS Code 統合ターミナルを開きます。
 
-1. ターミナルで次のコマンドを入力して、Docker にサインインします。 自分の Azure コンテナー レジストリのユーザー名、パスワード、ログイン サーバーを使用してサインインします。 これらの値は、Azure portal で自分のレジストリの **[アクセス キー]** セクションから取得できます。
+1. ターミナルで次のコマンドを入力して、Docker にサインインします。 自分の Azure コンテナー レジストリのユーザー名、パスワード、ログイン サーバーを使用してサインインします。 これらの値は、Azure portal でご自身のレジストリの **[アクセス キー]** セクションから取得できます。
      
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -219,14 +209,14 @@ Python パッケージ **cookiecutter** を使用して、ソリューション�
 
 2. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、 **[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。
 
-   ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、**config** という新しいフォルダーをソリューション内に作成します。これは、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持します。 次に、`docker build` を実行して、ターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。
+   ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。
 
 
 ## <a name="deploy-modules-to-device"></a>モジュールをデバイスにデプロイする
 
 IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Code エクスプローラーと Azure IoT Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
-IoT Edge デバイスが稼働していることを確認します。
+お使いの IoT Edge デバイスが稼働していることを確認します。
 
 1. Visual Studio Code エクスプローラーで **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開して、IoT デバイスの一覧を確認します。
 
@@ -242,7 +232,7 @@ IoT Edge デバイスに配置マニフェストを適用すると、デバイ�
 
 IoT Edge デバイスのステータスは、Visual Studio Code エクスプローラーの **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを使用して確認できます。 デバイスの詳細を展開すると、デプロイされて実行中のモジュールが一覧表示されます。
 
-1. Visual Studio Code エクスプローラーで、IoT Edge デバイスの名前を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
+1. Visual Studio Code のエクスプローラーで、IoT Edge デバイスの名前を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
 2. 自分の IoT ハブに到着するメッセージを表示します。 IoT Edge デバイスは、新しいデプロイを受け取ってすべてのモジュールを開始する必要があるため、メッセージの到着にはしばらく時間がかかる場合があります。 次に、PythonModule コードに加えられた変更により、マシンの温度が 25 度に達するまで待機してから、メッセージが送信されます。 また、その温度しきい値に達したすべてのメッセージにメッセージ型 **Alert** も追加されます。 
 
@@ -260,13 +250,13 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 
 5. モジュール ツイン編集ウィンドウ内の任意の場所を右クリックして、 **[Update module twin]\(モジュール ツインの更新\)** を選択します。 
 
-6. 到着する device-to-cloud メッセージを監視します。 新しいしきい値の温度に達するまで、メッセージは停止するはずです。 
+6. 到着する device-to-cloud メッセージを監視します。 新しい温度しきい値に達するまでメッセージが停止するのを確認できるはずです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 
 次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。 
 
-それ以外の場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除してもかまいません。 
+そうでない場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除できます。 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 

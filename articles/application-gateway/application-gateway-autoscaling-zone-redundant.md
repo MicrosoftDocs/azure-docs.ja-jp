@@ -1,20 +1,20 @@
 ---
-title: Azure での自動スケーリングとゾーン冗長 Application Gateway
+title: 自動スケーリングとゾーン冗長 Application Gateway v2
 description: この記事では、自動スケーリング機能とゾーン冗長機能が含まれる Azure Application Standard_v2 および WAF_v2 SKU について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/1/2019
+ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 8e79fd1a839113cad5a3a36c01855d98793d7032
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431201"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655310"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway"></a>自動スケーリングとゾーン冗長 Application Gateway 
+# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
 Application Gateway と Web アプリケーション ファイアウォール (WAF) は、Standard_v2 SKU と WAF_v2 SKU でも使用できます。 v2 SKU では、パフォーマンスが強化され、自動スケールダウン、ゾーン冗長、静的 VIP のサポートなどの重要な新機能のサポートが追加されます。 Standard SKU と WAF SKU の既存機能は、[比較](#differences-with-v1-sku)セクションで示されているいくつかの例外を除き、新しい v2 SKU でも引き続きサポートされます。
 
@@ -24,7 +24,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 - **ゾーン冗長性**: Application Gateway または WAF のデプロイは複数の可用性ゾーンを対象にできるため、Traffic Manager を使ってゾーンごとに個別に Application Gateway のインスタンスをプロビジョニングする必要はありません。 Application Gateway のインスタンスをデプロイする単一のゾーンまたは複数のゾーンを選択できるので、ゾーンの障害の回復性が向上します。 アプリケーションのバックエンド プールも、複数の可用性ゾーンに同様に分散できます。
 
   ゾーン冗長性は、Azure ゾーンが使用可能な場所でのみ使用できます。 他のリージョンでは、その他のすべての機能がサポートされます。 詳しくは、「[Azure の Availability Zones の概要](../availability-zones/az-overview.md#services-support-by-region)」をご覧ください。
-- **静的 VIP**: Application Gateway v2 SKU では、静的 VIP の種類だけがサポートされます。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、デプロイのライフサイクルの間は、再起動後であっても変化しません。
+- **静的 VIP**: Application Gateway v2 SKU では、静的 VIP の種類だけがサポートされます。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、デプロイのライフサイクルの間は、再起動後であっても変化しません。  v1 には静的 VIP がないため、アプリケーション ゲートウェイを経由して App Services にルーティングするドメイン名の IP アドレスの代わりに、アプリケーション ゲートウェイの URL を使用する必要があります。
 - **ヘッダーの書き換え**: Application Gateway では、HTTP 要求と応答のヘッダーを v2 SKU で追加、削除、更新することができます。 詳しくは、「[Application Gateway で HTTP ヘッダーを書き換える](rewrite-http-headers.md)」をご覧ください
 - **Key Vault の統合 (プレビュー)** : Application Gateway v2 では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) がサポートされます。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。
 - **Azure Kubernetes Service のイングレス コントローラー (プレビュー)** : Application Gateway v2 のイングレス コントローラーを使うと、AKS クラスターと呼ばれる Azure Kubernetes Service (AKS) に対するイングレスとして Azure Application Gateway を使用できます。 詳しくは、[ドキュメントのページ](https://azure.github.io/application-gateway-kubernetes-ingress/)をご覧ください。
@@ -35,7 +35,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-Standard_v2 および WAF_v2 SKU は、次のリージョンで利用できます: 米国中北部、米国中南部、米国西部、米国西部 2、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、東南アジア、フランス中部、英国西部、東日本、西日本。 今後、さらにリージョンが追加される予定です。
+Standard_v2 および WAF_v2 SKU は、次のリージョンで利用できます: 米国中北部、米国中南部、米国西部、米国西部 2、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、東南アジア、フランス中部、英国西部、東日本、西日本、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、東アジア、韓国中部、韓国南部、インド南部、英国南部、インド中部、インド西部、インド南部。
 
 ## <a name="pricing"></a>価格
 
@@ -71,7 +71,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 ある Standard_v2 アプリケーション ゲートウェイは、自動スケーリングなし、手動スケーリング モード、5 インスタンスの固定容量でプロビジョニングされます。
 
 固定価格 = 744 (時間) * $0.20 = $148.8 <br>
-容量ユニット = 744 (時間) 10 容量ユニット/インスタンス * 5 インスタンス * $0.008/容量ユニット時間 = $297.6
+容量ユニット = 744 (時間) * 10 容量ユニット/インスタンス * 5 インスタンス * $0.008/容量ユニット時間 = $297.6
 
 合計価格 = $148.8 + $297.6 = $446.4
 
@@ -85,6 +85,9 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 
 合計価格 = $148.8 + $23.81 = $172.61
 
+> [!NOTE]
+> Max 関数は、値のペアの最大値を返します。
+
 **例 3**
 
 ある WAF_v2 アプリケーション ゲートウェイは、1 か月間だけプロビジョニングされます。 この間に、毎秒 25 個の新規 SSL 接続と平均 8.88 Mbps のデータ転送を受け取り、1 秒間に 80 件の要求を行います。 接続の有効期間が短く、アプリケーションのコンピューティング ユニットの計算でコンピューティング ユニットあたり 10 RPS がサポートされると仮定した場合、価格は次のようになります。
@@ -94,6 +97,9 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 容量ユニットの価格 = 744 (時間) * 最大 (コンピューティング ユニット最大 (1 秒間の接続数に対する 25/50、80/10 WAF RPS)、スループットに対する 8.88/2.22 容量ユニット) * $0.0144 = 744 * 8 * 0.0144 = $85.71
 
 合計価格 =$267.84 + $85.71 = $353.55
+
+> [!NOTE]
+> Max 関数は、値のペアの最大値を返します。
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Application Gateway と WAF v2 のスケーリング
 
@@ -142,11 +148,12 @@ Application Gateway と WAF は、2 つのモードでスケーリングする�
 |FIPS モード|現在はサポートされていません。|
 |ILB のみモード|現在これはサポートされていません。 パブリック モードと ILB モードがまとめてサポートされます。|
 |Netwatcher 統合|サポートされていません。|
-|Azure サポート センターの統合|まだ使用できません。
+|Azure Security Center の統合|まだ使用できません。
 
 ## <a name="migrate-from-v1-to-v2"></a>v1 から v2 への移行
 
 Azure PowerShell スクリプトは PowerShell ギャラリー内で利用でき、v1 Application Gateway/WAF から v2 Autoscaling SKU への移行に役立ちます。 このスクリプトを利用して、v1 ゲートウェイから構成をコピーできます。 トラフィックの移行は引き続き、お客様の責任です。 詳しくは、[v1 から v2 への Azure Application Gateway の移行](migrate-v1-v2.md)に関するページをご覧ください。
+
 ## <a name="next-steps"></a>次の手順
 
 - [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)

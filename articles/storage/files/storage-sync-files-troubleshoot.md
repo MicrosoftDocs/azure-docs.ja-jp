@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65555957"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303886"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -245,17 +245,16 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | HRESULT | HRESULT (10 進値) | エラー文字列 | 問題 | Remediation |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 依存フォルダーがまだ同期されていないため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 |
-| 0x7b | 123 | ERROR_INVALID_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
+| 0x8007007b | -2147024773 | ERROR_INVALID_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | ファイルが変更されましたが、まだ同期によって変更が検出されていません。この変更が検出された後に同期が復旧します。 | 必要なアクションはありません。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure ファイル共有の制限に達したため、ファイルを同期できません。 | この問題を解決するには、トラブルシューティング ガイドの「[Azure のファイル共有ストレージの上限に到達しました](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)」をご覧ください。 |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | このエラーは、次の理由で発生する可能性があります: ファイルがサポートされていないソリューション (NTFS EFS など) によって暗号化されている場合、ファイルが削除保留中状態の場合、またはファイルが DFS-R 読み取り専用レプリケーション フォルダーにある場合 | ファイルがサポートされていないソリューションによって暗号化されている場合は、ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 ファイルが削除保留中状態の場合は、開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 ファイルが DFS-R 読み取り専用レプリケーション フォルダーにある場合、Azure Files Sync は DFS-R 読み取り専用レプリケーション フォルダーにおけるサーバー エンドポイントをサポートしません。 詳細については、[計画ガイド](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)を参照してください。
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同期中にファイルが変更されたため、再度同期する必要があります。 | 必要なアクションはありません。 |
 
 #### <a name="handling-unsupported-characters"></a>サポートされていない文字の処理
-**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因のエラー (エラー コード 0x7b および 0x8007007b) が示されている場合は、それぞれのファイル名で問題のある文字を削除したり名前変更したりする必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-tool)を使用して、サポートされていない文字を識別できます。
+**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因のエラー (エラー コード 0x8007007b) が示されている場合は、該当するファイル名から問題のある文字を削除するか、ファイル名を変更する必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-tool)を使用して、サポートされていない文字を識別できます。
 
 下の表に、Azure File Sync でまだサポートされていない Unicode 文字をすべて示します。
 
@@ -863,6 +862,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 問題が解決されない場合は、AFSDiag ツールを実行します。
 1. AFSDiag の出力が保存されるディレクトリを作成します (例: C:\Output)。
+    > [!NOTE]
+    >AFSDiag では、ログが収集される前に、出力ディレクトリ内のすべてのコンテンツが削除されます。 データが含まれていない出力場所を指定してください。
 2. 管理者特権で PowerShell ウィンドウを開き、次のコマンドを実行します (各コマンドの後で Enter キーを押します)。
 
     ```powershell

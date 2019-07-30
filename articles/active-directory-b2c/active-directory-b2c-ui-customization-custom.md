@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c3c97e786e2147f043a63b90b886e01eb5944cb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a051b0e853b60dfc1f5b6c3453d9ed8361f1748
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507670"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438816"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -79,18 +79,19 @@ ms.locfileid: "66507670"
 
 Blob Storage 内にパブリック コンテナーを作成するには、次の手順を実行します。
 
-1. **[概要]** タブをクリックします。
-2. **[コンテナー]** をクリックします。
-3. **[名前]** に「 **$root**」と入力します。
-4. **[Access type]** (アクセスの種類) を **[Blob]** に設定します。
-5. **$root** をクリックして、新しいコンテナーを開きます。
+1. 左側のメニューの **[Blob service]** で **[BLOB]** を選択します。
+2. **[+ コンテナー]** をクリックします。
+3. **[名前]** に「*root*」と入力します。 ここには任意の名前 (*wingtiptoys* など) を指定できますが、この例ではわかりやすくするために *root* を使用します。
+4. **[パブリック アクセス レベル]** で **[BLOB]** を選択し、 **[OK]** を選択します。
+5. **root** をクリックして、新しいコンテナーを開きます。
 6. **[アップロード]** をクリックします。
 7. **[ファイルの選択]** の横にあるフォルダー アイコンをクリックします。
-8. 先ほど「ページ UI のカスタマイズ」セクションで作成した **customize-ui.html** に移動します。
-9. **[アップロード]** をクリックします。
-10. アップロードした customize-ui.html BLOB を選択します。
-11. **[URL]** の横にある **[コピー]** をクリックします。
-12. ブラウザーで、コピーした URL を貼り付けて、そのサイトに移動します。 サイトにアクセスできない場合は、コンテナーのアクセスの種類が **[BLOB]** に設定されていることを確認してください。
+8. 先ほど「ページ UI のカスタマイズ」セクションで作成した **customize-ui.html** に移動し、これを選択します。
+9. サブフォルダーにアップロードする場合、 **[詳細設定]** を展開し、 **[アップロード先のフォルダー]** にフォルダー名を入力します。
+10. **[アップロード]** を選択します。
+11. アップロードした **customize-ui.html** BLOB を選択します。
+12. **[URL]** テキスト ボックスの右側にある **[クリップボードにコピー]** アイコンを選択して、URL をクリップボードにコピーします。
+13. Web ブラウザーで、コピーした URL に移動して、アップロードした BLOB にアクセスできることを確認します。 アクセスできない場合 (たとえば、`ResourceNotFound` エラーが発生した場合)、コンテナーのアクセスの種類が **[BLOB]** に設定されていることを確認します。
 
 ## <a name="configure-cors"></a>CORS を構成する
 
@@ -159,6 +160,7 @@ UI のカスタマイズを構成するには、**ContentDefinition** とその�
 
 ## <a name="reference"></a>リファレンス
 
+### <a name="sample-templates"></a>サンプル テンプレート
 ここでは、UI カスタマイズのサンプル テンプレートを示します。
 
 ```
@@ -174,6 +176,16 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 | *selfasserted.html* | このファイルは、ソーシャル アカウントのサインアップ ページ、ローカル アカウントのサインアップ ページ、またはローカル アカウントのサインイン ページのテンプレートとして使用します。 |
 | *unified.html* | このファイルは、統合されたサインアップ ページまたはサインイン ページのテンプレートとして使用します。 |
 | *updateprofile.html* | このファイルは、プロファイルの更新ページのテンプレートとして使用します。 |
+
+サンプルを使用するための手順を次に示します。 
+1. ローカル コンピューターにリポジトリを複製します。 sample_templates の下にあるテンプレート フォルダーを選択します。 `wingtip` または `contoso` を使用できます。
+2. 前のセクションの説明に従い、`css`、`fonts`、および `images` フォルダーの下にあるすべてのファイルを BLOB ストレージにアップロードします。 
+3. 次に、`wingtip` または `contoso` (最初の手順で選択した方) のルートにある各 \*.html ファイルを開き、"http://localhost" のすべての出現箇所を、手順 2 でアップロードした css、images、および fonts ファイルの URL に置き換えます。
+4. \*.html ファイルを保存し、それらを BLOB ストレージにアップロードします。
+5. 次に、先ほど「[拡張ファイルを変更する](#modify-the-extensions-file)」で説明したように、拡張ファイルを変更します。
+6. fonts、images、または css が欠落している場合、拡張ポリシーおよび \*.html ファイルで参照を確認してください。
+
+### <a name="content-defintion-ids"></a>コンテンツ定義 ID
 
 「サインアップまたはサインイン カスタム ポリシーを変更する」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
 

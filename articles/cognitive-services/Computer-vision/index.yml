@@ -6,7 +6,7 @@ metadata:
   description: Computer Vision を使用して画像を処理し、情報を返す方法を説明します。 チュートリアルでは、この API を使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
   ms.tgt_pltfrm: na

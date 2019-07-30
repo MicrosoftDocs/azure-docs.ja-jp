@@ -3,7 +3,7 @@ title: Xamarin.Forms を使用して Mobile Apps を使用する
 description: Xamarin.Forms 開発用の Mobile Apps を初めて使用する場合は、このチュートリアルに従ってください。
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: crdun
-ms.openlocfilehash: b0719f6ac2f99f9e665b1265665752dd53ccbaf0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: bca0f0de7de321060635459c4435525f650c7467
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242655"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446319"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Azure での Xamarin.Forms アプリの作成
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started) を今すぐチェックしてください。
+>
+
+## <a name="overview"></a>概要
 このチュートリアルでは、Azure App Service の Mobile Apps 機能をバックエンドとして使用して、Xamarin.Forms モバイル アプリにクラウドベースのバックエンド サービスを追加する方法を示します。 新しい Mobile Apps バックエンドと、アプリのデータを Azure に格納する簡単な To Do リスト Xamarin.Forms アプリの両方を作成します。
 
 Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアルを行う前に、このチュートリアルを完了してください。
@@ -34,7 +39,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。 このアプリは評価終了後も使用できます。 詳細については、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* Visual Studio 2017 以降または Visual Studio for Mac に含まれる Visual Studio Tools for Xamarin。 手順については、[Xamarin のインストール ページ][Install Xamarin]をご覧ください。
+* Visual Studio 2017 以降または Visual Studio for Mac に含まれる Visual Studio Tools for Xamarin。 手順については、[Xamarin のインストール ページ][Install Xamarin]を参照してください。
 
 * (省略可能) iOS アプリをビルドするには、Xcode 9.0 以降がインストールされた Mac が必要です。 Visual Studio for Mac を使用して iOS アプリを開発するか、Visual Studio 2017 以降を使用することができます (Mac がネットワーク上で使用可能な場合)。
 
@@ -46,23 +51,11 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 ## <a name="run-the-xamarinforms-solution"></a>Xamarin.Forms ソリューションを実行する
 
-ソリューションを開くには Visual Studio Tools for Xamarin が必要です。[Xamarin のインストール手順][Install Xamarin]をご覧ください。 ツールが既にインストールされている場合は、以下の手順に従ってソリューションをダウンロードし、開きます。
+ソリューションを開くには Visual Studio Tools for Xamarin が必要です。[Xamarin のインストール手順][Install Xamarin]を参照してください。 ツールが既にインストールされている場合は、以下の手順に従ってソリューションをダウンロードし、開きます。
 
-### <a name="visual-studio"></a>Visual Studio
+### <a name="visual-studio-windows-and-mac"></a>Visual Studio (Windows と Mac)
 
-1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
-
-2. モバイル アプリの [設定] ブレードで、 **[クイックスタート]** ([デプロイメント] の下) > **[Xamarin.Forms]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリの作成]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
-
-   この操作により、モバイル アプリに接続されているクライアント アプリケーションが含まれているプロジェクトがダウンロードされます。 圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
-
-3. ダウンロードしたプロジェクトを抽出し、Visual Studio で開きます。
-
-4. Android または Windows のプロジェクトを実行するには、以下の手順に従います。また、ネットワーク接続された Mac コンピューターが使用可能な場合は、iOS プロジェクトを実行できます。
-
-### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
-
-1. [Azure Portal](https://portal.azure.com/) にアクセスし、作成したモバイル アプリに移動します。 `Overview` ブレードで、モバイル アプリのパブリック エンドポイントである URL を探します。 例 - アプリ名 "test123" のサイト名は https://test123.azurewebsites.net になります。
+1. [Azure portal](https://portal.azure.com/) に移動し、作成したモバイル アプリに移動します。 `Overview` ブレードで、モバイル アプリのパブリック エンドポイントである URL を探します。 例 - アプリ名 "test123" のサイト名は https://test123.azurewebsites.net になります。
 
 2. このフォルダー内のファイル `Constants.cs` (xamarin.forms/ZUMOAPPNAME) を開きます。 アプリケーション名は `ZUMOAPPNAME` です。
 

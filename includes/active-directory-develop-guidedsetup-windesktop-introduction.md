@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ae17ef749a353cd60227e31ba4dadf328b1dc935
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 301abe95b245603e5414eef84ce74cdc8de01d19
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482348"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509880"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
@@ -28,7 +28,7 @@ ms.locfileid: "66482348"
 このガイドを完了すると、アプリケーションで個人アカウント (outlook.com、live.com など) を使用する保護された API を呼び出すことができるようになります。 このアプリケーションでは、Azure Active Directory を使用する会社または組織の職場および学校のアカウントも使用します。  
 
 > [!NOTE]
-> このガイドでは、Visual Studio 2015 Update 3 または Visual Studio 2019 が必要です。 どちらのバージョンもお持ちでない場合は、 [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
+> このガイドでは、Visual Studio 2015 Update 3、Visual Studio 2017、または Visual Studio 2019 が必要です。 これらのバージョンをお持ちでない場合は、 [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 

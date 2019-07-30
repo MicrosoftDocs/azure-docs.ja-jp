@@ -4,7 +4,7 @@ description: Azure PowerShell で OS ディスクを復旧 VM に接続して、
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: d28710bf249bd940ae9d685560e9f7140234e3a1
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 94abf9c8621e842605a4fab521fa4df853e1fb4a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64683237"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709298"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Azure PowerShell で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
 Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合は、ディスク自体にトラブルシューティング手順を実行する必要がある可能性があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure PowerShell を使用してディスクを別の Windows VM に接続してエラーを修正した後、元の VM を修復する方法について詳しく説明します。 

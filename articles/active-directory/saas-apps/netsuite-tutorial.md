@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab329574ef425e8133ac746c185050efcc8bc15a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2600989273d6ebfe4319a048cc65c8c3ff9ecdbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870977"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096313"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル:Azure Active Directory と NetSuite の統合
 
@@ -55,11 +55,11 @@ Azure AD への NetSuite の統合を構成するには、ギャラリーから�
 
 **ギャラリーから NetSuite を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への NetSuite の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**NetSuite**」と入力し、結果ウィンドウで **[NetSuite]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**NetSuite**」と入力し、結果ウィンドウで **[NetSuite]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の NetSuite](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ NetSuite で Azure AD のシングル サインオンを構成してテストす
 
 NetSuite で Azure AD のシングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **NetSuite** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **NetSuite** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -124,11 +124,11 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
     > [!NOTE]
     > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[NetSuite クライアント サポート チーム](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. NetSuite アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+5. NetSuite アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
     
     | Name | ソース属性 | 
     | ---------------| --------------- |
@@ -155,7 +155,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
     >[!NOTE]
     >account 属性の値は、実際のものではありません。 この値は後で置き換えます。これについては、このチュートリアルで後ほど説明します。
 
-4. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
+4. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -173,27 +173,27 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
 1. ブラウザーで新しいタブを開き、NetSuite の会社のサイトに管理者としてサインインします。
 
-2. ページの上部にあるツール バーで、**[セットアップ]** をクリックして、**[会社]** に移動し、**[機能の有効化]** をクリックします。
+2. ページの上部にあるツール バーで、 **[セットアップ]** をクリックして、 **[会社]** に移動し、 **[機能の有効化]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-3. ページの中央にあるツール バーで、**[SuiteCloud]** をクリックします。
+3. ページの中央にあるツール バーで、 **[SuiteCloud]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-4. **[Manage Authentication]\(認証の管理)** セクションで、**[SAML シングル サインオン]** を選択して、NetSuite での SAML シングル サインオン オプションを有効にします。
+4. **[Manage Authentication]\(認証の管理)** セクションで、 **[SAML シングル サインオン]** を選択して、NetSuite での SAML シングル サインオン オプションを有効にします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-5. ページの上部にあるツール バーで、**[セットアップ]** をクリックします。
+5. ページの上部にあるツール バーで、 **[セットアップ]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-setup.png)
 
-6. **[セットアップ タスク]** 一覧で、**[統合]** をクリックします。
+6. **[セットアップ タスク]** 一覧で、 **[統合]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-integration.png)
 
-7. **[Manage Authentication]\(認証の管理\)** セクションで、**[SAML シングル サインオン]** をクリックします。
+7. **[Manage Authentication]\(認証の管理\)** セクションで、 **[SAML シングル サインオン]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-saml.png)
 
@@ -203,11 +203,11 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
   
     a. **[PRIMARY AUTHENTICATION METHOD]\(プライマリ認証方法\)** を選択します。
 
-    b. **[SAMLV2 IDENTITY PROVIDER METADATA]\(SAMLV2 ID プロバイダー メタデータ\)** というラベルが付いたフィールドで、**[UPLOAD IDP METADATA FILE]\(IDP メタデータ ファイルのアップロード\)** を選択します。 **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+    b. **[SAMLV2 IDENTITY PROVIDER METADATA]\(SAMLV2 ID プロバイダー メタデータ\)** というラベルが付いたフィールドで、 **[UPLOAD IDP METADATA FILE]\(IDP メタデータ ファイルのアップロード\)** を選択します。 **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
     c. **[送信]** をクリックします。
 
-9. NetSuite で **[セットアップ]** をクリックし、**[会社]** に移動して、上部の ナビゲーション メニューから **[会社情報]** をクリックします。
+9. NetSuite で **[セットアップ]** をクリックし、 **[会社]** に移動して、上部の ナビゲーション メニューから **[会社情報]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-com.png)
 
@@ -219,11 +219,11 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
 10. ユーザーは NetSuite にシングル サインオンする前に、まず、NetSuite で適切なアクセス許可が割り当てられている必要があります。 次の手順に従って、アクセス許可を割り当てます。
 
-    a. ナビゲーション メニューで、**[セットアップ]** をクリックします。
+    a. ナビゲーション メニューで、 **[セットアップ]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-setup.png)
 
-    b. 左側のナビゲーション メニューで、**[Users/Roles]**、**[Manage Roles]** の順にクリックします。
+    b. 左側のナビゲーション メニューで、 **[Users/Roles]** 、 **[Manage Roles]** の順にクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-manage-roles.png)
 
@@ -239,19 +239,19 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-sso.png)
 
-    g. **[SAML シングル サインオン]** を選択して、**[追加]** をクリックします。
+    g. **[SAML シングル サインオン]** を選択して、 **[追加]** をクリックします。
 
     h. **[Save]** をクリックします。
 
-    i. 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
+    i. 上部のナビゲーション メニューで、 **[Setup]** 、 **[Setup Manager]** の順にクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-setup.png)
 
-    j. 左側のナビゲーション メニューで、**[Users/Roles]**、**[Manage Users]** の順にクリックします。
+    j. 左側のナビゲーション メニューで、 **[Users/Roles]** 、 **[Manage Users]** の順にクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-manage-users.png)
 
-    k. テスト ユーザーを選択します。 次に、**[編集]** をクリックし、**[アクセス]** タブに移動します。
+    k. テスト ユーザーを選択します。 次に、 **[編集]** をクリックし、 **[アクセス]** タブに移動します。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-edit-user.png)
 
@@ -265,7 +265,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -290,7 +290,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に NetSuite へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[NetSuite]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[NetSuite]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -302,15 +302,15 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-netsuite-test-user"></a>NetSuite のテスト ユーザーの作成
 

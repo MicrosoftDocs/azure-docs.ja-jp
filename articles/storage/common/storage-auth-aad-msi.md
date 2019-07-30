@@ -1,6 +1,6 @@
 ---
-title: Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを認証する - Azure Storage | Microsoft Docs
-description: Azure Blob と Queue storage は、Azure リソースのマネージド ID を使用して Azure Active Directory 認証をサポートします。 Azure リソースのマネージド ID を使用して、Azure の仮想マシン、関数アプリ、仮想マシン スケール セット、およびその他においてで実行されているアプリケーションから blob およびキューへのアクセスを認証することができます。
+title: Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを承認する - Azure Storage
+description: Azure の BLOB とキュー ストレージでは、Azure Active Directory と Azure リソースのマネージド ID を使用したアクセスの承認がサポートされています。 Azure リソースのマネージド ID を使用して、Azure の仮想マシン、関数アプリ、仮想マシン スケール セット、およびその他で実行されているアプリケーションからの BLOB とキューへのアクセスを承認することができます。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,14 +9,14 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f7525c3e125010bb4db9655bc214861e22dc8875
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23e1171a8757d021b8c6d38f90bdbf720014045f
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787976"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303416"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを認証する
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB とキューへのアクセスを承認する
 
 Azure の Blob およびキュー ストレージは、Azure Active Directory (Azure AD) 認証を[ Azure リソースのマネージド ID ](../../active-directory/managed-identities-azure-resources/overview.md)を使用してサポートします。 Azure リソースのマネージド ID により、Azure 仮想マシン (VM) で実行されているアプリケーション、関数アプリ、仮想マシン スケール セット、およびその他のサービスから Azure AD 資格情報を使用して、BLOB およびキューのデータへのアクセスを認証することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
 

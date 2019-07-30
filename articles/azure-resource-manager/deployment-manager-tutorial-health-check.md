@@ -4,21 +4,16 @@ description: Resource Manager テンプレートで Azure Deployment Manager を
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d43a0e7c48db9dd42c7cf3b52e5d4072a4827898
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 0e8a9fefdf92f568001cc3352fe83a85157acf9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479182"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442593"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>チュートリアル:Azure Deployment Manager で正常性チェックを使用する (パブリック プレビュー)
 
@@ -41,7 +36,10 @@ ms.locfileid: "66479182"
 > * ロールアウトのデプロイの検証
 > * リソースのクリーンアップ
 
-Azure Deployment Manager REST API のリファレンスについては、[こちら](https://docs.microsoft.com/rest/api/deploymentmanager/)でご覧いただけます。
+その他のリソース:
+
+- [Azure Deployment Manager REST API リファレンス](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+- [Azure Deployment Manager サンプル](https://github.com/Azure-Samples/adm-quickstart)。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -59,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次の 2 つのファイルは、Azure 関数をデプロイするために使用します。 チュートリアルを進めるためにこれらのファイルをダウンロードする必要はありません。
 
 * Resource Manager テンプレートは、[https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json) にあります。 Azure 関数を作成するには、このテンプレートをデプロイします。
-* Azure 関数のソース コードの ZIP ファイルは、[http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip) にあります。 この ZIP は、Resource Manager テンプレートによって呼び出されます。
+* Azure 関数のソース コードの ZIP ファイルは、[https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip) にあります。 この ZIP は、Resource Manager テンプレートによって呼び出されます。
 
 Azure 関数をデプロイするには、 **[試してみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次のスクリプトを貼り付けます。  コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 

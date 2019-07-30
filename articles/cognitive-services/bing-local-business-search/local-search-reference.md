@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: e96b1959d9e03273a9ca4c549c0f8b0bda6a708b
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796747"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592805"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing Local Business Search API v7 リファレンス
 
@@ -119,7 +119,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|name|ライセンスの名前。|string|  
+|名前|ライセンスの名前。|string|  
 |url|ライセンスに関する詳しい情報を取得できる Web サイトへの URL。<br /><br /> 名前と URL を使用してハイパーリンクを作成します。|string|  
 
 
@@ -142,7 +142,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|name|公開元の名前。|string|  
+|名前|公開元の名前。|string|  
 |url|公開元の Web サイトへの URL。<br /><br /> 公開元が Web サイトを提供しない場合があることに注意してください。|string|  
   
   
@@ -155,7 +155,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |_type|種類のヒントは、次のいずれかに設定される可能性があります。<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>レストラン</ul><li>|string|  
 |address|エンティティがある場所の住所。|PostalAddress|  
 |entityPresentationInfo|エンティティの種類を特定するために使用できるヒントなどの、エンティティに関する追加情報。 たとえば、それがレストランであるかホテルであるか。 `entityScenario` フィールドは ListItem に設定されます。|EntityPresentationInfo|  
-|name|エンティティの名前。|string|  
+|名前|エンティティの名前。|string|  
 |telephone|エンティティの電話番号。|string|  
 |url|エンティティの Web サイトへの URL。<br /><br /> クリックされたときにハイパーリンクを作成するためにエンティティの名前と共にこの URL を使用して、ユーザーをエンティティの web サイトに移動します。|string|  
 |webSearchUrl|この場所についての Bing の検索結果への URL。|string| 

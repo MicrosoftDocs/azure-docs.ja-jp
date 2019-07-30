@@ -1,28 +1,28 @@
 ---
 title: Ink Recognizer とは - Ink Recognizer API
-titlesuffix: Azure Cognitive Services
-description: Ink Recognizer をお使いのアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、以下を提供できます。
+titleSuffix: Azure Cognitive Services
+description: Ink Recognizer をお使いのアプリケーション、Web サイト、ツール、またはその他のソリューションに統合すると、インク ストローク データが識別されるようになり、入力として使用することができます。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
-ms.date: 05/02/2019
+ms.topic: overview
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65025607"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478369"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Ink Recognizer API とは
 
 
 Ink Recognizer Cognitive Service は、デジタルインク コンテンツ を分析および認識するためのクラウド ベースの REST API を提供します。 光学式文字認識 (OCR) を使用するサービスとは異なり、この API には入力としてデジタル インク ストローク データが必要になります。 デジタル インク ストロークは、デジタル ペンや指などの入力ツールの動きを表す 2D ポイント (X 座標、Y 座標) を時間順に並べたセットです。 入力から図形と手書きのコンテンツを認識し、認識されたすべてのエンティティを含む JSON 応答を返します。
 
-![API へのインク ストローク入力の送信を説明するフローチャート](media/ink-recognizer-pen-graph.png)
+![API へのインク ストローク入力の送信を説明するフローチャート](media/ink-recognizer-pen-graph.svg)
 
 ## <a name="features"></a>機能
 

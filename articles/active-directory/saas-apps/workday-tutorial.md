@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b9e4f5208eb1f6abb0d6fd786630c183a04ce50
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: aba2d3bab7d709b4bb9ac18e4a9c6ed052a5fb83
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388879"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086962"
 ---
 # <a name="tutorial-integrate-workday-with-azure-active-directory"></a>チュートリアル:Workday と Azure Active Directory の統合
 
@@ -137,8 +137,8 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
    > [!NOTE]
    > [環境] 属性の値が、テナント URL の値に関連付けられます。  
-   > - Workday テナント URL のドメイン名が impl で始まる場合 (例: *https:\//impl.workday.com/\<テナント\>/login-saml2.flex*)、 **[Environment]\(環境\)** 属性を [Implementation]\(実装\) に設定する必要があります。  
-   > - ドメイン名が impl 以外で始まる場合は、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせて、対応する **[Environment]\(環境\)** の値を取得してください。
+   > \- Workday テナント URL のドメイン名が impl で始まる場合 (例: *https:\//impl.workday.com/\<テナント\>/login-saml2.flex*)、 **[Environment]\(環境\)** 属性を [Implementation]\(実装\) に設定する必要があります。  
+   > \- ドメイン名が impl 以外で始まる場合は、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせて、対応する **[Environment]\(環境\)** の値を取得してください。
 
 4. **[SAML 設定]** セクションで、次の手順を実行します。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: bf4d11a18932d20e7dcc7580ebe5aa4e060c5a88
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630698"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606776"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>クイック スタート:Face .NET SDK を使用して画像から顔を検出する
 
@@ -32,9 +32,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**FaceDetection** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
-1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーで目的のプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[参照]** タブをクリックし、**[プレリリースを含める]** を選択した後、次のパッケージを検索してインストールします。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーで目的のプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブをクリックし、 **[プレリリースを含める]** を選択した後、次のパッケージを検索してインストールします。
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-1. プロジェクトのすべての NuGet パッケージの最新バージョンをインストールしたことを確認します。 ソリューション エクスプローラーで目的のプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[更新]** タブをクリックして、表示されたすべてのパッケージの最新バージョンをインストールします。
+1. プロジェクトのすべての NuGet パッケージの最新バージョンをインストールしたことを確認します。 ソリューション エクスプローラーで目的のプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[更新]** タブをクリックして、表示されたすべてのパッケージの最新バージョンをインストールします。
 
 ## <a name="add-face-detection-code"></a>顔検出コードを追加する
 
@@ -60,13 +60,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=36-41)]
 
-また、新たに作成した Face クライアントを使ってリモートとローカルの画像から顔を検出するコード (下記) を **Main** メソッドに追加します。 実際の検出メソッドは、この後で定義します。 
+また、**Main** メソッドには、リモートとローカルの画像から顔を検出するために、新たに作成した Face クライアントを使用するように、以下のコードも追加します。 実際の検出メソッドは、この後で定義します。 
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-50)]
 
 ### <a name="detect-faces"></a>顔を検出する
 
-**Program** クラスに次のメソッドを追加します。 Face サービス クライアントを使用してリモートの画像から顔を検出するもので、対象となる画像は URL で参照します。 `faceAttributes` フィールドが使用されていることに注目してください。`faceList` に追加された **DetectedFace** オブジェクトには、このフィールドに指定された属性 (この例では、年齢と性別) が格納されます。
+**Program** クラスに次のメソッドを追加します。 Face サービス クライアントを使用してリモートの画像から顔を検出するもので、対象となる画像は URL で参照します。 ここでは、`faceAttributes` フィールドが使用されます&mdash;`faceList` に追加された **DetectedFace** オブジェクトには、指定された属性 (この例では、年齢と性別) があります。
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=52-74)]
 
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="run-the-app"></a>アプリの実行
 
-成功応答には、画像内の個々の顔の性別と年齢が表示されます。 例: 
+成功応答には、画像内の個々の顔の性別と年齢が表示されます。 例:
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg

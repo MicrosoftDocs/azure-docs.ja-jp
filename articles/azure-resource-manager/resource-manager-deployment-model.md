@@ -1,24 +1,17 @@
 ---
 title: Resource Manager デプロイとクラシック デプロイ | Microsoft Docs
 description: Resource Manager デプロイ モデルとクラシック (あるいはサービス管理) デプロイ モデルの違いについて説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: c8aafa2dc2798aee5576dab4781b42d4aa67ddd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 773d369f23154a510624169b9329555a1f865320
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128517"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206307"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -103,7 +96,7 @@ Resource Manager で作成したリソースだけがタグに対応していま
 
 仮想マシンをホストする従来のソリューションは次のとおりです。
 
-* 仮想マシンをホストするためのコンテナーとして機能する必須のクラウド サービス (コンピューティング)  仮想マシンにはネットワーク インターフェイス カード (NIC) が自動的に提供され、IP アドレスは Azure によって割り当てられます。 さらに、クラウド サービスには、外部のロード バランサーのインスタンス、パブリック IP アドレス、および Windows ベースの仮想マシンのリモート デスクトップとリモート PowerShell トラフィックと Linux ベースの仮想マシン用の Secure Shell (SSH) トラフィックを許可する既定のエンドポイントが含まれています。
+* 仮想マシンをホストするためのコンテナーとして機能する必須のクラウド サービス (コンピューティング) 仮想マシンにはネットワーク インターフェイス カード (NIC) が自動的に提供され、IP アドレスは Azure によって割り当てられます。 さらに、クラウド サービスには、外部のロード バランサーのインスタンス、パブリック IP アドレス、および Windows ベースの仮想マシンのリモート デスクトップとリモート PowerShell トラフィックと Linux ベースの仮想マシン用の Secure Shell (SSH) トラフィックを許可する既定のエンドポイントが含まれています。
 * オペレーティング システム、一時、および追加のデータ ディスク (ストレージ) を含む、仮想マシンの VHD を格納するのに必要なストレージ アカウント。
 * サブネット化された構造を作成できる、また仮想マシンが配置されているサブネットを指定することができる、追加のコンテナーとして機能する、省略可能な仮想ネットワーク (ネットワーク)。
 
@@ -121,7 +114,7 @@ Resource Manager で作成したリソースだけがタグに対応していま
 | 予約済み IP アドレス |IP アドレスを Azure で予約し、クラウド サービスに関連付けることで、その IP アドレスを固定アドレスとすることができます。 |パブリック IP アドレスは静的モードで作成でき、予約済み IP アドレスと同じ機能を持ちます。 |
 | VM ごとのパブリック IP アドレス (PIP) |パブリック IP アドレスを直接 VM に関連付けることもできます。 |パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。 パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。 |
 | エンドポイント |特定のポートの接続を確立するためには、仮想マシンに入力エンドポイントを構成する必要があります。 入力エンドポイントを設定することによって仮想マシンに接続する一般的なモードの 1 つ。 |VM への接続用に特定のポートのエンドポイントを有効にする機能は、ロード バランサーに受信 NAT ルールを構成することで実現できます。 |
-| DNS 名 |クラウド サービスには、グローバルに一意となる暗黙的な DNS 名が与えられます  (例: `mycoffeeshop.cloudapp.net`)。 |DNS 名は、パブリック IP アドレス リソースに指定できる省略可能なパラメーターです。 FQDN は、`<domainlabel>.<region>.cloudapp.azure.com` という形式です。 |
+| DNS 名 |クラウド サービスには、グローバルに一意となる暗黙的な DNS 名が与えられます (例: `mycoffeeshop.cloudapp.net`)。 |DNS 名は、パブリック IP アドレス リソースに指定できる省略可能なパラメーターです。 FQDN は、`<domainlabel>.<region>.cloudapp.azure.com` という形式です。 |
 | ネットワーク インターフェイス |プライマリとセカンダリのネットワーク インターフェイスおよびそのプロパティは、仮想マシンのネットワーク構成として定義されます。 |ネットワーク インターフェイスは、Microsoft.Network プロバイダーによって公開されるリソースです。 ネットワーク インターフェイスのライフサイクルは、仮想マシンに関連付けられません。 ネットワーク インターフェイスは、仮想マシンに割り当てられた IP アドレス (必須)、仮想マシンの仮想ネットワークのサブネット (必須)、ネットワークのセキュリティ グループ (オプション) を参照します。 |
 
 さまざまなデプロイメント モデルから仮想ネットワークを接続する方法の詳細については、「[異なるデプロイ モデルの仮想ネットワークをポータルで接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)」を参照してください。

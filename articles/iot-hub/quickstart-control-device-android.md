@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2019
+ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 4f9f4ccb53f9530122f0a2463f8f45b596856282
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: d125328d903b419aa81c54ffecf1f549d4cb4fe2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149684"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330786"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Android)
 
@@ -35,7 +35,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Android Studio (https://developer.android.com/studio/)。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。
+* Android Studio (https://developer.android.com/studio/ )。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。
 
 * この記事のサンプルでは、Android SDK 27 を使用しています。
 
@@ -94,12 +94,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
 ```
 
 次のようなサービス接続文字列をメモしておきます。
 
-`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
 この値は、このクイック スタートの後の方で使います。 サービス接続文字列はデバイス接続文字列とは異なります。
 
@@ -117,7 +117,7 @@ az iot hub show-connection-string --name YourIoTHubName --output table
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Android Studio で、**[File]\(ファイル\)** > **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
+3. Android Studio で、 **[File]\(ファイル\)**  >  **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
 
    > [!NOTE]
    > プロジェクトの同期に失敗した場合、次のいずれかの理由が原因として考えられます。
@@ -125,9 +125,9 @@ az iot hub show-connection-string --name YourIoTHubName --output table
    > * プロジェクトで参照されている Android Gradle プラグインと Gradle のバージョンが、ご使用の Android Studio のバージョンに対して古い。 [こちらの手順](https://developer.android.com/studio/releases/gradle-plugin)に従って、実際の環境に合った正しいバージョンのプラグインと Gradle を参照、インストールしてください。
    > * Android SDK のライセンス契約に署名していない。 ビルド出力に書かれている手順に従ってライセンス契約に署名し、SDK をダウンロードしてください。
 
-4. ビルドが完了したら、**[Run]\(実行\)** > **[Run 'app']\(<アプリ> の実行\)** をクリックします。 物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
+4. ビルドが完了したら、 **[Run]\(実行\)**  >  **[Run 'app']\(<アプリ> の実行\)** をクリックします。 物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
 
-5. アプリが読み込まれたら、**[Start]\(開始\)** ボタンをクリックして、IoT ハブへの利用統計情報の送信を開始します。
+5. アプリが読み込まれたら、 **[Start]\(開始\)** ボタンをクリックして、IoT ハブへの利用統計情報の送信を開始します。
 
     ![クライアント デバイスの Android アプリのサンプル スクリーンショット](media/quickstart-control-device-android/sample-screenshot.png)
 
@@ -166,11 +166,11 @@ az iot hub show-connection-string --name YourIoTHubName --output table
 2. Android Studio でサンプル プロジェクトの *gradle.properties* を開き、**ConnectionString** プロパティと **DeviceId** プロパティの値を、先ほどメモしたご自分のサービスの接続文字列と登録済みの Android デバイス ID に更新します。
 
     ```
-    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}
+    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 
-3. Android Studio で、**[File]\(ファイル\)** > **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
+3. Android Studio で、 **[File]\(ファイル\)**  >  **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
 
    > [!NOTE]
    > プロジェクトの同期に失敗した場合、次のいずれかの理由が原因として考えられます。
@@ -178,9 +178,9 @@ az iot hub show-connection-string --name YourIoTHubName --output table
    > * プロジェクトで参照されている Android Gradle プラグインと Gradle のバージョンが、ご使用の Android Studio のバージョンに対して古い。 [こちらの手順](https://developer.android.com/studio/releases/gradle-plugin)に従って、実際の環境に合った正しいバージョンのプラグインと Gradle を参照、インストールしてください。
    > * Android SDK のライセンス契約に署名していない。 ビルド出力に書かれている手順に従ってライセンス契約に署名し、SDK をダウンロードしてください。
 
-4. ビルドが完了したら、**[Run]\(実行\)** > **[Run 'app']\(<アプリ> の実行\)** をクリックします。 単独の物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
+4. ビルドが完了したら、 **[Run]\(実行\)**  >  **[Run 'app']\(<アプリ> の実行\)** をクリックします。 単独の物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
 
-5. アプリの読み込み後、**[Set Messaging Interval]\(メッセージ送信間隔の設定\)** の値を **1000** に更新し、**[Invoke]\(呼び出し\)** をクリックします。
+5. アプリの読み込み後、 **[Set Messaging Interval]\(メッセージ送信間隔の設定\)** の値を **1000** に更新し、 **[Invoke]\(呼び出し\)** をクリックします。
 
     利用統計情報メッセージの送信間隔はミリ秒単位です。 このデバイス サンプルでは、利用統計情報の送信間隔が既定で 5 秒に設定されています。 この変更によって、利用統計情報が 1 秒おきに送信されるように Android IoT デバイスが更新されます。
 

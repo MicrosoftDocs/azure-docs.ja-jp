@@ -5,14 +5,14 @@ author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1129152c1823fbffb3d6c9ec918d7b8cb4426bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26cea6243a8b6d06c132325f0b2fe830c4030e9d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235623"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467771"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>整合性レベルと Azure Cosmos DB API
 

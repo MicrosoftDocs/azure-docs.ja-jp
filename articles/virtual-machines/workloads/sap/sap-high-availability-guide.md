@@ -4,7 +4,7 @@ description: Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガ
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb7919c6f4ff1b3cf2480333273a98f2cca9a223
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb468a735a9e1f5cca899090df0125013b9b8d4c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204934"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709319"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -177,13 +177,13 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 ## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> リソース
 Azure での SAP のデプロイについては、以下の記事で説明されています。
 
-* [SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
-* [SAP NetWeaver のための Azure Virtual Machines のデプロイ][deployment-guide]に関する記事
-* [SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
+* [SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]
+* [SAP NetWeaver のための Azure Virtual Machines のデプロイ][deployment-guide]
+* [SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * [SAP NetWeaver のための Azure Virtual Machines 高可用性 (このガイド)][sap-ha-guide]
 
 > [!NOTE]
-> 可能な限り、参照する SAP インストール ガイドへのリンクを提示しています ([SAP インストール ガイド][sap-installation-guides]を参照してください)。 インストール プロセスに関する前提条件と情報については、SAP NetWeaver のインストール ガイドをよく読むことをお勧めします。 この記事では、Virtual Machines で使用できる SAP NetWeaver ベースのシステムに関するタスクについてのみ説明します。
+> 可能な限り、参照する SAP インストール ガイドへのリンクを提示しています ([SAP インストール ガイド][sap-installation-guides]を参照)。 インストール プロセスに関する前提条件と情報については、SAP NetWeaver のインストール ガイドをよく読むことをお勧めします。 この記事では、Virtual Machines で使用できる SAP NetWeaver ベースのシステムに関するタスクについてのみ説明します。
 >
 >
 
@@ -223,7 +223,7 @@ Azure Resource Manager では、1 つのクラスターに複数の SAP シス�
 Azure クラシック デプロイ モデルを使用するには、[Azure での SAP NetWeaver に関する「Clustering SAP ASCS/SCS instances by using Windows Server Failover Clustering in Azure with SIOS DataKeeper (Azure での Windows Server フェールオーバー クラスタリングと SIOS DataKeeper を使用した SAP ASCS/SCS インスタンスのクラスタ化)」](https://go.microsoft.com/fwlink/?LinkId=613056)に記載されている手順に従ってください。
 
 > [!IMPORTANT]
-> SAP のインストールには、Azure Resource Manager デプロイ モデルを使用することを強くお勧めします。 クラシック デプロイ モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
+> SAP のインストールには、Azure Resource Manager デプロイ モデルを使用することを強くお勧めします。 クラシック デプロイ モデルにはない多くの利点があります。 Azure のデプロイメント モデルの詳細については、[こちら][virtual-machines-azure-resource-manager-architecture-benefits-arm]をご覧ください。   
 >
 >
 
@@ -514,7 +514,7 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 
 ASCS/SCS テンプレートは、複数の ASCS/SCS インスタンスをホストする Windows Server フェールオーバー クラスターの作成に使用できる 2 つの仮想マシンをデプロイします。
 
-ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image]または [Managed Disks を使用した ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image-md]で、次のパラメーターの値を入力します。
+ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image]or [ASCS/SCS multi-SID template using Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md]で、次のパラメーターの値を入力します。
 
   - **Resource Prefix (リソース プレフィックス)** 。  リソース プレフィックスを設定します。これは、デプロイ中に作成されるすべてのリソースのプレフィックスとして使われます。 リソースは 1 つの SAP システムのみに属するわけではないため、リソースのプレフィックスは 1 つの SAP システムの SID ではありません。  プレフィックスは、**3 ～ 6 文字**でなければなりません。
   - **Stack Type (スタックの種類)** 。 SAP システムのスタックの種類を選びます。 スタックの種類に応じて、Azure Load Balancer には、SAP システムごとに 1 つ (ABAP または Java のみ) または 2 つ (ABAP+ Java) のプライベート IP アドレスがあります。
@@ -549,7 +549,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 データベース テンプレートは、1 つの SAP システムのリレーショナル データベース管理システム (RDBMS) のインストールに使用できる 1 つまたは 2 つの仮想マシンをデプロイします。 たとえば、5 つの SAP システムに ASCS/SCS テンプレートをデプロイする場合は、このテンプレートを 5 回デプロイする必要があります。
 
-データベース マルチ SID テンプレートを設定するには、[データベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image]または [Managed Disks を使用したデータベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image-md]で、次のパラメーターの値を入力します。
+データベース マルチ SID テンプレートを設定するには、[データベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image]or [database multi-SID template using Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md]で、次のパラメーターの値を入力します。
 
 - **Sap System Id (SAP システム ID)** 。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
 - **Os Type (OS の種類)** 。 仮想マシンのオペレーティング システムを選びます。
@@ -566,7 +566,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 アプリケーション サーバー テンプレートは、1 つの SAP システムの SAP アプリケーション サーバー インスタンスとして使用できる 2 つ以上の仮想マシンをデプロイします。 たとえば、5 つの SAP システムに ASCS/SCS テンプレートをデプロイする場合は、このテンプレートを 5 回デプロイする必要があります。
 
-アプリケーション サーバー マルチ SID テンプレートを設定するには、[アプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image]または [Managed Disks を使用したアプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image-md]で、次のパラメーターの値を入力します。
+アプリケーション サーバー マルチ SID テンプレートを設定するには、[アプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image]or [application servers multi-SID template using Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md]で、次のパラメーターの値を入力します。
 
   -  **Sap System Id (SAP システム ID)** 。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
   -  **Os Type (OS の種類)** 。 仮想マシンのオペレーティング システムを選びます。
@@ -590,7 +590,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 1. Azure Portal の **[DNS サーバー]** ブレードで、仮想ネットワークの **[DNS サーバー]** オプションが **[カスタム DNS]** に設定されていることを確認します。
 2. ネットワークの種類に基づいて設定を選択します。 詳細については、次のリソースを参照してください。
-   * [企業ネットワーク接続 (クロスプレミス)][planning-guide-2.2]:オンプレミスの DNS サーバーの IP アドレスを追加します。  
+   * [企業ネットワーク接続 (クロスプレミス)][planning-guide-2.2]: オンプレミスの DNS サーバーの IP アドレスを追加します。  
    Azure で実行されている仮想マシンにオンプレミスの DNS サーバーを拡張できます。 その場合、DNS サービスを実行する Azure Virtual Machines の IP アドレスを追加できます。
    * Azure 内の分離された VM デプロイの場合:DNS サーバーとして機能する別の仮想マシンを同じ Virtual Network インスタンスにデプロイします。 DNS サービスを実行するように設定した Azure Virtual Machines の IP アドレスを追加します。
 

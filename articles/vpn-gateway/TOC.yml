@@ -140,6 +140,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
         - name: P2S 用公開 CA ゲートウェイ証明書への移行
           href: vpn-gateway-point-to-site-gateway-public-ca.md
+        - name: Always On VPN デバイス トンネルの構成
+          href: vpn-gateway-howto-always-on-device-tunnel.md
     - name: Azure Availability Zones でのゾーン冗長 VNet ゲートウェイの作成
       href: create-zone-redundant-vnet-gateway.md
     - name: 接続に対する IPsec/IKE ポリシーの構成

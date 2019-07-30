@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: ad6bf2576d7f033f8ae029338dc94635dbba0fe7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 579b35a06b74ffcef47ca0b41ff60bfdc4e0eb2b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267431"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>チュートリアル:Azure Active Directory と IQNavigator VMS の統合
 
@@ -146,7 +146,7 @@ IQNavigator VMS で Azure AD シングル サインオンを構成するには�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

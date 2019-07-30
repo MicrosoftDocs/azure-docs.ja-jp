@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7f2f85f8b68efadf1dc0a35d1a8e6bda2655f53b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 697983000f84f9e4efe7e2c8ef9dbb2f636e0735
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65207293"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620570"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Azure Security Center からデータを接続する
 

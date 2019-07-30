@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 05/31/2019
+ms.date: 07/17/2019
 ms.author: helohr
-ms.openlocfilehash: 296ea271e88dfbbd91b901dc1b24d49fc31c139e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 03105232cb92a65f8c38d6d755910739a3fc4720
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476732"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305052"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューとは 
 
@@ -105,10 +105,6 @@ Windows Virtual Desktop は、次の OS イメージをサポートします。
 
 * Windows 10 (Enterprise マルチセッション)
 * Windows Server 2016
-
-## <a name="provide-feedback"></a>フィードバックの提供
-
-Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。 Windows Virtual Desktop がプレビューの間は、サポート ケースを受け付けていません。
 
 ## <a name="next-steps"></a>次の手順
 

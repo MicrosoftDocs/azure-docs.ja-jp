@@ -3,20 +3,20 @@ title: クイック スタート:Translator Speech API (Python)
 titlesuffix: Azure Cognitive Services
 description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jaswel
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: v-jaswel
+ms.author: swmachan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9a6afc4dfb25a2a5f6e778fbda877a93269a96eb
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 9426514853d58db1aa43eb42ee054b7bd931ae62
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673277"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356921"
 ---
 # <a name="quickstart-translator-speech-api-with-python"></a>クイック スタート:Translator Speech API (Python)
 <a name="HOLTop"></a>
@@ -59,53 +59,58 @@ import websocket
 key = 'ENTER KEY HERE'
 
 host = 'wss://dev.microsofttranslator.com'
-path = '/speech/translate';
+path = '/speech/translate'
 params = '?api-version=1.0&from=en-US&to=it-IT&features=texttospeech&voice=it-IT-Elsa'
 uri = host + path + params
 
 input_file = 'speak.wav'
 output_file = 'speak2.wav'
 
-output = bytearray ()
+output = bytearray()
 
-def on_open (client):
-    print ("Connected.")
+
+def on_open(client):
+    print("Connected.")
 
 # r = read. b = binary.
-    with open (input_file, mode='rb') as file:
+    with open(input_file, mode='rb') as file:
         data = file.read()
 
-    print ("Sending audio.")
-    client.send (data, websocket.ABNF.OPCODE_BINARY)
+    print("Sending audio.")
+    client.send(data, websocket.ABNF.OPCODE_BINARY)
 # Make sure the audio file is followed by silence.
 # This lets the service know that the audio input is finished.
-    print ("Sending silence.")
-    client.send (bytearray (32000), websocket.ABNF.OPCODE_BINARY)
+    print("Sending silence.")
+    client.send(bytearray(32000), websocket.ABNF.OPCODE_BINARY)
 
-def on_data (client, message, message_type, is_last):
+
+def on_data(client, message, message_type, is_last):
     global output
     if (websocket.ABNF.OPCODE_TEXT == message_type):
-        print ("Received text data.")
-        print (message)
+        print("Received text data.")
+        print(message)
 # For some reason, we receive the data as type websocket.ABNF.OPCODE_CONT.
     elif (websocket.ABNF.OPCODE_BINARY == message_type or websocket.ABNF.OPCODE_CONT == message_type):
-        print ("Received binary data.")
-        print ("Is last? " + str(is_last))
+        print("Received binary data.")
+        print("Is last? " + str(is_last))
         output = output + message
         if (True == is_last):
-# w = write. b = binary.
-            with open (output_file, mode='wb') as file:
-                file.write (output)
-                print ("Wrote data to output file.")
-            client.close ()
+            # w = write. b = binary.
+            with open(output_file, mode='wb') as file:
+                file.write(output)
+                print("Wrote data to output file.")
+            client.close()
     else:
-        print ("Received data of type: " + str (message_type))
+        print("Received data of type: " + str(message_type))
 
-def on_error (client, error):
-    print ("Connection error: " + str (error))
 
-def on_close (client):
-    print ("Connection closed.")
+def on_error(client, error):
+    print("Connection error: " + str(error))
+
+
+def on_close(client):
+    print("Connection closed.")
+
 
 client = websocket.WebSocketApp(
     uri,
@@ -118,7 +123,7 @@ client = websocket.WebSocketApp(
     on_close=on_close
 )
 
-print ("Connecting...")
+print("Connecting...")
 client.run_forever()
 ```
 

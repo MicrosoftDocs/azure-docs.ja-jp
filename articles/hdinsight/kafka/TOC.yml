@@ -220,8 +220,6 @@
           href: ../hdinsight-virtual-network-architecture.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet の HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
     - name: Azure Monitor ログを使用した監視

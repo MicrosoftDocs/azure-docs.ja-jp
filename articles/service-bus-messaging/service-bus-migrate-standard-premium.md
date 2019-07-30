@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991417"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566075"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>既存の Azure Service Bus Standard 名前空間を Premium レベルに移行する
 以前は、Azure Service Bus では Standard レベルでのみ名前空間が提供されていました。 名前空間は、低スループット環境と開発者環境用に最適化されたマルチテナントの設定です。 Premium レベルでは、名前空間ごとに専用のリソースが提供され、予測可能な待機時間と固定価格でのスループット向上が実現します。 Premium レベルは、追加のエンタープライズ機能が必要な高スループット環境および実稼働環境向けに最適化されています。
@@ -117,6 +117,28 @@ Azure portal を使用した移行の論理フローは、コマンドを使用�
 1. 概要ページで変更を確認します。 **[移行の完了]** を選択して名前空間を切り替え、移行を完了します。
     ![名前空間を切り替える - スイッチ メニュー][] 移行が完了すると、確認ページが表示されます。
     ![名前空間を切り替える - 成功][]
+
+## <a name="caveats"></a>注意事項
+
+Azure Service Bus の Standard レベルで提供される機能の一部は、Azure Service Bus の Premium レベルではサポートされません。 Premium レベルでは予測可能なスループットと待機時間の専用リソースが提供されるため、これらは仕様です。
+
+以下は、Premium とそれらのリスク軽減でサポートされない機能のリストです。 
+
+### <a name="express-entities"></a>エクスプレス エンティティ
+
+   すべてのメッセージ データをストレージにコミットしないエクスプレス エンティティは、Premium ではサポートされません。 専用リソースでは、エンタープライズ メッセージング システムからの予想どおり、確実にデータを保持しながら、スループットが大幅に向上しました。
+   
+   移行中に、Standard 名前空間のいずれかのエクスプレス エンティティが、エクスプレス エンティティ以外のものとして Premium 名前空間で作成されます。
+   
+   Azure Resource Manager (ARM) テンプレートを利用する場合は、エラーが発生することなく自動ワークフローが実行されるように、必ず、デプロイ構成から 'enableExpress' フラグを削除するようにしてください。
+
+### <a name="partitioned-entities"></a>パーティション分割されたエンティティ
+
+   パーティション分割されたエンティティは、マルチテナント設定でより優れた可用性を提供するために、Standard レベルでサポートされていました。 Premium レベルでの名前空間ごとの利用可能な専用リソースのプロビジョニングでは、これは必要なくなりました。
+   
+   移行中に、Standard 名前空間のパーティション分割されたエンティティが、パーティション分割されていないエンティティとして Premium 名前空間に作成されます。
+   
+   ARM テンプレートで、特定のキューまたはトピックに対して 'enablePartitioning' が 'true' に設定された場合、それはブローカーによって無視されます。
 
 ## <a name="faqs"></a>FAQ
 

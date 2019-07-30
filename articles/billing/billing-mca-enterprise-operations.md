@@ -1,8 +1,6 @@
 ---
-title: Microsoft 顧客契約における Enterprise Agreement タスクを実行する - Azure | Microsoft Docs
+title: Microsoft 顧客契約における Enterprise Agreement タスクを実行する - Azure
 description: 新しい課金アカウントでの Enterprise Agreement タスクを実行する方法について説明します。
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,20 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/24/2018
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9b76fa935263904957c87cd062c84d0607771369
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9404908b7c486801480474c5a2c9ff7688e1de48
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371337"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490709"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する
 
 お客様の組織が Enterprise Agreement 加入契約を更新する Microsoft 顧客契約を結んでいる場合は、その契約用の新しい課金アカウントが作成されます。 新しいアカウントの課金は、Enterprise Agreement とは異なる方法で構成されています。 この記事では、新しい課金アカウントを使用して、Enterprise Agreement で実行していたタスクを実行する方法について説明します。
 
-## <a name="how-billing-is-organized-in-the-new-account"></a>新しいアカウントでの課金の構成方法
+## <a name="billing-organization-in-the-new-account"></a>新しいアカウントでの課金構成
 
 次の図は、新しい課金アカウントで課金がどのように構成されているかについて説明しています。
 
@@ -33,16 +31,16 @@ ms.locfileid: "60371337"
 
 | Enterprise Agreement   | Microsoft 顧客契約    |
 |------------------------|--------------------------------------------------------|
-| 加入            | Enterprise Agreement 加入契約と同様に、組織の課金は課金プロファイルを使用して管理されます。 エンタープライズ管理者が課金プロファイルの所有者になります。 課金プロファイルについて詳しくは、「[Understand billing profiles (課金プロファイルについて)](billing-mca-overview.md#understand-billing-profiles)」をご覧ください。
-| 部署            | Enterprise Agreement 加入契約の部署と同様に、コストは、請求書セクションを使用して整理されます。 部署が請求書セクションになり、部署管理者がそれぞれの請求書セクションの所有者になります。 請求書セクションについて詳しくは、「[Understand invoice sections (請求書セクションについて)](billing-mca-overview.md#understand-invoice-sections)」をご覧ください。 |
-| Account               | Enterprise Agreement で作成されたアカウントは、新しい課金アカウントではサポートされません。 アカウントのサブスクリプションは、各部署の請求書セクションに属します。 アカウント所有者は、各自の請求書セクションのサブスクリプションを作成および管理できます。 |
+| 加入            | Enterprise Agreement 加入契約と同様に、組織の課金は課金プロファイルを使用して管理されます。 エンタープライズ管理者が課金プロファイルの所有者になります。 課金プロファイルについて詳しくは、「[Understand billing profiles (課金プロファイルについて)](billing-mca-overview.md#billing-profiles)」をご覧ください。
+| 部署            | Enterprise Agreement 加入契約の部署と同様に、コストは、請求書セクションを使用して整理されます。 部署が請求書セクションになり、部署管理者がそれぞれの請求書セクションの所有者になります。 請求書セクションについて詳しくは、「[Understand invoice sections (請求書セクションについて)](billing-mca-overview.md#invoice-sections)」をご覧ください。 |
+| Account               | Enterprise Agreement で作成されたアカウントは、新しい課金アカウントではサポートされません。 アカウントのサブスクリプションは、各部署の請求書セクションに属します。 アカウント オーナーは、各自の請求書セクションのサブスクリプションを作成および管理できます。 |
 
-## <a name="changes-for-enterprise-administrators-in-the-new-billing-account"></a>新しい課金アカウントでのエンタープライズ管理者に対する変更
+## <a name="changes-for-enterprise-administrators"></a>エンタープライズ管理者への変更
 
 Microsoft 顧客契約に更新された Enterprise Agreement のエンタープライズ管理者には、次の変更が適用されます。
 
-- お客様の加入契約用の課金プロファイルが作成されます。 Enterprise Agreement 加入契約の場合と同様に、組織の課金は、課金プロファイルを使用して管理します。 課金プロファイルについて詳しくは、「[Understand billing profiles (課金プロファイルについて)](billing-mca-overview.md#understand-billing-profiles)」をご覧ください。
-- Enterprise Agreement 加入契約の各部署に対して、請求書セクションが作成されます。 請求書セクションを使用して部署を管理します。 新しい請求書セクションを作成して、追加の部署を設定できます。 請求書セクションについて詳しくは、「[Understand invoice sections (請求書セクションについて)](billing-mca-overview.md#understand-invoice-sections)」をご覧ください。
+- お客様の加入契約用の課金プロファイルが作成されます。 Enterprise Agreement 加入契約の場合と同様に、組織の課金は、課金プロファイルを使用して管理します。 課金プロファイルについて詳しくは、「[Understand billing profiles (課金プロファイルについて)](billing-mca-overview.md#billing-profiles)」をご覧ください。
+- Enterprise Agreement 加入契約の各部署に対して、請求書セクションが作成されます。 請求書セクションを使用して部署を管理します。 新しい請求書セクションを作成して、追加の部署を設定できます。 請求書セクションについて詳しくは、「[Understand invoice sections (請求書セクションについて)](billing-mca-overview.md#invoice-sections)」をご覧ください。
 - Enterprise Agreement 加入契約で作成されたアカウントと同様に、請求書セクションに対する Azure サブスクリプション作成者ロールを使用して、他のユーザーに Azure サブスクリプションを作成する許可を与えます。
 - Azure EA ポータルではなく [Azure portal](https://portal.azure.com) を使用して、組織に対する課金を管理します。
 
@@ -76,7 +74,7 @@ Enterprise Agreement 加入契約で作成されたアカウントは、新し�
 
 Azure の利用状況と請求金額を含む csv ファイルをダウンロードする方法については、「[Download usage for your Microsoft Customer Agreement (Microsoft 顧客契約の利用状況のダウンロード)](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement)」を参照してください。
 
-価格シートをダウンロードする方法については、[お客様の Microsoft 顧客契約向けの価格のダウンロード](billing-ea-pricing.md#view-and-download-pricing-for-your-microsoft-customer-agreement)に関する記事を参照してください。
+価格シートをダウンロードする方法については、[お客様の Microsoft 顧客契約向けの価格のダウンロード](billing-ea-pricing.md#microsoft-customer-agreement-pricing)に関する記事を参照してください。
 
 税務書類をダウンロードする方法については、[お客様の Microsoft 顧客契約向けの税務書類の表示](billing-mca-download-tax-document.md#view-and-download-tax-documents)に関する記事を参照してください。
 
@@ -92,13 +90,13 @@ Enterprise Agreement 加入契約の部署と同様に、ニーズに基づい�
 
 ### <a name="create-a-new-account"></a>新しいアカウントを作成する
 
-Enterprise Agreement 加入契約で作成されたアカウントと同様に、請求書セクションに対する Azure サブスクリプション作成者ロールをユーザーに割り当てて、Azure サブスクリプションへのアクセス許可をユーザーに与えます。 詳細については、「[Give others permission to create Azure subscriptions (Azure サブスクリプションを作成する権限を他のユーザーに付与する)](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions)」を参照してください。
+Enterprise Agreement 加入契約で作成されたアカウントと同様に、請求書セクションに対する Azure サブスクリプション作成者ロールをユーザーに割り当てて、Azure サブスクリプションへのアクセス許可をユーザーに与えます。 詳細については、「[Give others permission to create Azure subscriptions (Azure サブスクリプションを作成する権限を他のユーザーに付与する)](billing-mca-create-subscription.md#give-others-permission)」を参照してください。
 
-## <a name="changes-for-department-administrators-in-the-new-billing-account"></a>新しい課金アカウントでの部署管理者に対する変更
+## <a name="changes-for-department-administrators"></a>部署管理者への変更
 
 Microsoft 顧客契約に更新された Enterprise Agreement の部署管理者には、次の変更が適用されます。
 
-- Enterprise Agreement 加入契約の各部署に対して、請求書セクションが作成されます。 請求書セクションを使用して部署を管理します。 請求書セクションについて詳しくは、「[Understand invoice sections (請求書セクションについて)](billing-mca-overview.md#understand-invoice-sections)」をご覧ください。
+- Enterprise Agreement 加入契約の各部署に対して、請求書セクションが作成されます。 請求書セクションを使用して部署を管理します。 請求書セクションについて詳しくは、「[Understand invoice sections (請求書セクションについて)](billing-mca-overview.md#invoice-sections)」をご覧ください。
 - Enterprise Agreement 加入契約で作成されたアカウントと同様に、請求書セクションに対する Azure サブスクリプション作成者ロールを使用して、他のユーザーに Azure サブスクリプションを作成する権限を与えます。
 - Azure EA ポータルではなく Azure portal を使用して、組織に対する課金を管理します。
 
@@ -118,7 +116,7 @@ Enterprise Agreement に含まれていた各部署に対して、請求書セ�
 
 ### <a name="create-a-new-account-in-your-department"></a>部署内に新しいアカウントを作成する
 
-部署用に作成された請求書セクションに対する Azure サブスクリプション作成者ロールをユーザーに割り当てます。 詳細については、「[Give others permission to create Azure subscriptions (Azure サブスクリプションを作成する権限を他のユーザーに付与する)](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions)」を参照してください。
+部署用に作成された請求書セクションに対する Azure サブスクリプション作成者ロールをユーザーに割り当てます。 詳細については、「[Give others permission to create Azure subscriptions (Azure サブスクリプションを作成する権限を他のユーザーに付与する)](billing-mca-create-subscription.md#give-others-permission)」を参照してください。
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>部署内のアカウントに対する請求料金を表示する
 
@@ -126,7 +124,7 @@ Enterprise Agreement 加入契約で作成されたアカウントは、新し�
 
 部署内のアカウントに属していたサブスクリプションの集計コストを表示するには、各サブスクリプション用のコスト センターを設定する必要があります。 その後、Azure の利用状況と請求金額を含むファイルを使用して、コスト センターによってサブスクリプションをフィルター処理できます。
 
-## <a name="changes-for-account-owners-in-the-new-billing-account"></a>新しい課金アカウントでのアカウント所有者に対する変更
+## <a name="changes-for-account-owners"></a>アカウント所有者への変更
 
 Enterprise Agreement のアカウント所有者は、新しい課金アカウントの Azure サブスクリプションを作成する権限を取得します。 既存の Azure サブスクリプションは、部署用に作成された請求書セクションに属します。 アカウントが部署に属していない場合、サブスクリプションは [既定の請求書セクション] という名前の請求書セクションに属します。
 

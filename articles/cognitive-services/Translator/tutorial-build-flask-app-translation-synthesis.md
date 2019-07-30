@@ -3,19 +3,19 @@ title: チュートリアル:テキストの翻訳、音声合成、分析を行
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Azure Cognitive Services を使用してテキストの翻訳、感情分析、翻訳済みテキストの音声合成を行う Flask ベースの Web アプリを作成します。 重点的に取り上げるのは、目的のアプリケーションを実現する Python コードと Flask ルートです。 アプリを制御する JavaScript については詳しく取り上げませんが、ご自身で詳細に調べることができるようすべてのファイルを提供しています。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 4df2de7f0428ffe35712a29bfef645b6feb66813
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: cef747e82e7d039952bec73e822f28eab2adaa97
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515002"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434890"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 

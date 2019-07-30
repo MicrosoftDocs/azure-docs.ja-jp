@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba29688958ee11aa9906a820f7a3d2bf41223743
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783428"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798177"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -132,11 +132,11 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 Application Insights ポータルでは、プロパティ値に基づいてデータをフィルター選択および分割して、異なるバージョンを比較します。
 
-これを行うには、[テレメトリ初期化子を設定](../../azure-monitor/app/api-filtering-sampling.md##add-properties-itelemetryinitializer)します。
+これを行うには、[テレメトリ初期化子を設定](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)します。
+
+**ASP.NET アプリ**
 
 ```csharp
-
-
     // Telemetry initializer class
     public class MyTelemetryInitializer : ITelemetryInitializer
     {
@@ -155,8 +155,24 @@ Web アプリ初期化子 (Global.asax.cs など) 内:
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
+         .Add(new MyTelemetryInitializer());
     }
+```
+
+**ASP.NET Core アプリ**
+
+> [!NOTE]
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 すべての新しい TelemetryClients により、指定したプロパティ値が自動的に追加されます。 個々のテレメトリ イベントは、既定値をオーバーライドすることができます。

@@ -7,7 +7,8 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: ffe3ae5b6aa26d154928a74e51864a0574b82c68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc84db4bd3dc06d4e2dbecb3be8ceee37d554ae7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228638"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619849"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter Notebook を使用してセキュリティの脅威を検出する
 

@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) のネットワーク ポリシーによるポッドの保護
 description: Azure Kubernetes Service (AKS) の Kubernetes ネットワーク ポリシーを使用して、ポッドとの間で送受信されるトラフィックをセキュリティ保護する方法について説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: c9bf2c2c459999813c7fc30f95be653168d270ad
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230012"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613961"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -76,7 +76,7 @@ Azure には、ネットワーク ポリシーを実装する 2 つの方法が�
 
 最初に、ネットワーク ポリシーをサポートする AKS クラスターを作成しましょう。 ネットワーク ポリシー機能を有効にできるのは、クラスターの作成時のみになります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。
 
-AKS クラスターでネットワーク ポリシーを使用するには、[Azure CNI プラグイン][azure-cni]を使用し、独自の仮想ネットワークとサブネットを定義する必要があります。 必要なサブネット範囲を計画する方法の詳細については、[高度なネットワークの構成][use-advanced-networking]に関するページを参照してください。
+AKS クラスターでネットワーク ポリシーを使用するには、[Azure CNI プラグイン][azure-cni]を使用し、and define your own virtual network and subnets. For more detailed information on how to plan out the required subnet ranges, see [configure advanced networking][use-advanced-networking]。
 
 次のサンプル スクリプトでは、
 

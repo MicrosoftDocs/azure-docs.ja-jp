@@ -5,14 +5,14 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: aa27eb34753e18fa46c2ac9345a7c206f34fd110
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dc3a393d3cc3bea9412dfbc33ed21630de352e13
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482049"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619593"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへのアカウントの移行
 

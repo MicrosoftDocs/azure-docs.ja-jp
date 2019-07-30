@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) クラスターの資格情報のリセット
 description: Azure Kubernetes Service (AKS) のクラスターのサービス プリンシパル資格情報を更新またはリセットする方法について説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 189bcf2ddc7d301c8100f74e51374abd217a144f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: mlearned
+ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475491"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614122"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のサービス プリンシパル資格情報の更新またはローテーション
 

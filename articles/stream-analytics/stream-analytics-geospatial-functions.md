@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aed716b01fe748be40ee22e3eba5742983c2a523
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479985"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620932"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics 地理空間関数の概要
 
@@ -54,7 +54,7 @@ FROM input
 
  {"type" :"LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
 
-詳しくは、[CreateLineString](https://msdn.microsoft.com/azure/stream-analytics/reference/createlinestring) のリファレンスをご覧ください。
+詳しくは、[CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) のリファレンスをご覧ください。
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -81,7 +81,7 @@ FROM input
   
  {"type" :"Point", "coordinates" : [20.2321, -87.33]}  
 
-詳しくは、[CreatePoint](https://msdn.microsoft.com/azure/stream-analytics/reference/createpoint) のリファレンスをご覧ください。
+詳しくは、[CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) のリファレンスをご覧ください。
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -108,7 +108,7 @@ FROM input
  
  {"type" :"Polygon", "coordinates" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
 
-詳しくは、[CreatePolygon](https://msdn.microsoft.com/azure/stream-analytics/reference/createpolygon) のリファレンスをご覧ください。
+詳しくは、[CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) のリファレンスをご覧ください。
 
 
 ## <a name="stdistance"></a>ST_DISTANCE
@@ -122,7 +122,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-詳しくは、[ST_DISTANCE](https://msdn.microsoft.com/azure/stream-analytics/reference/st-distance) のリファレンスをご覧ください。
+詳しくは、[ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) のリファレンスをご覧ください。
 
 ## <a name="stoverlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS` 関数は、2 つのポリゴンを比較します。 ポリゴンが重なっている場合、この関数は 1 を返します。 ポリゴンが重なっていない場合、この関数は 0 を返します。 
@@ -143,7 +143,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-詳しくは、[ST_OVERLAPS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-overlaps) のリファレンスをご覧ください。
+詳しくは、[ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) のリファレンスをご覧ください。
 
 ## <a name="stintersects"></a>ST_INTERSECTS
 `ST_INTERSECTS` 関数は、2 つの LineString を比較します。 LineString が交差する場合、この関数は 1 を返します。 LineString が交差しない場合、この関数は 0 を返します。
@@ -169,7 +169,7 @@ FROM input
   
  0  
 
-詳しくは、[ST_INTERSECTS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-intersects) のリファレンスをご覧ください。
+詳しくは、[ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) のリファレンスをご覧ください。
 
 ## <a name="stwithin"></a>ST_WITHIN
 `ST_WITHIN` 関数は、ポイントまたはポリゴンが特定のポリゴン内にあるかどうかを判断します。 ポイントまたはポリゴンが特定のポリゴンに含まれている場合、この関数は 1 を返します。 ポイントまたはポリゴンが宣言されたポリゴン内にない場合、この関数は 0 を返します。
@@ -195,12 +195,12 @@ FROM input
   
  1  
 
-詳しくは、[ST_WITHIN](https://msdn.microsoft.com/azure/stream-analytics/reference/st-within) のリファレンスをご覧ください。
+詳しくは、[ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) のリファレンスをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

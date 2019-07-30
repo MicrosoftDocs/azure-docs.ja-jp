@@ -4,19 +4,19 @@ description: Azure Functions で HTTP トリガーとバインドを使用する
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, HTTP, API, REST
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: fb219316afa798dfda777c4d0d406d5b8cabf7f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53626c1d8fe0b9301883280a9f0925eb38ad1d99
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472369"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480451"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions のトリガーとバインド
 
@@ -307,6 +307,7 @@ Python コードを次に示します。
 ```python
 import logging
 import azure.functions as func
+
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -756,7 +757,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 これらの関数アプリレベル セキュリティ メソッドのいずれかを使用する場合は、HTTP トリガー関数認証レベルを`anonymous`に設定する必要があります。
 
-### <a name="webhooks"></a>Webhook
+### <a name="webhooks"></a>webhooks
 
 > [!NOTE]
 > Webhook モードは、関数ランタイムのバージョン 1.x でのみ使用できます。 この変更は、バージョン 2.x での HTTP トリガーのパフォーマンスを向上させるために行われました。

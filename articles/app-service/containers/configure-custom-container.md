@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 9bfd6c34d81e193fe31610f840474f1e4c91170d
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66430932"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480767"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service のカスタム Linux コンテナーを構成する
 
@@ -50,10 +50,10 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 永続的ストレージが無効になると、`/home` ディレクトリへの書き込みは、アプリの再起動後、または複数のインスタンス間で保持されません。 唯一の例外は `/home/LogFiles` ディレクトリであり、これは Docker およびコンテナーのログを格納するために使用されます。 永続的ストレージが有効になると、`/home` ディレクトリへのすべての書き込みは存続し、スケールアウトされたアプリのすべてのインスタンスからアクセスできます。
 
-既定では、永続的ストレージは*無効*になっています。 これを有効または無効にするには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 例:
+既定では、永続的ストレージが*有効*になり、設定はアプリケーション設定では公開されません。 これを無効にするには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 例:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]

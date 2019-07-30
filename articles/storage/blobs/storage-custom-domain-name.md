@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0fb3551b14a2239f26c54f639b90400277fab25
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148926"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501935"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Azure Storage アカウントのカスタム ドメイン名の構成
 
@@ -34,10 +34,10 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 
 | リソースの種類 | 既定の URL | カスタム ドメイン URL |
 | --- | --- | --- |
-| ストレージ アカウント | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
-| Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| ルート コンテナー | http://mystorageaccount.blob.core.windows.net/myblob または http://mystorageaccount.blob.core.windows.net/ $root/myblob| http://www.contoso.com/myblob または http://www.contoso.com/ $root/myblob |
-| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] または http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] または http://mystorageaccount.[zone].web.core.windows.net/$web または http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/ $web または http://www.contoso.com/ または http://www.contoso.com/ $web/[indexdoc] または http://www.contoso.com/ [indexdoc] |
+| ストレージ アカウント | http:\//mystorageaccount.blob.core.windows.net | http:\//www.contoso.com |
+| Blob |http:\//mystorageaccount.blob.core.windows.net/mycontainer/myblob | http:\//www.contoso.com/mycontainer/myblob |
+| ルート コンテナー | http:\//mystorageaccount.blob.core.windows.net/myblob または http:\//mystorageaccount.blob.core.windows.net/$root/myblob | http:\//www.contoso.com/myblob または http:\//www.contoso.com/$root/myblob |
+| Web |  http:\//mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] または http:\//mystorageaccount.[zone].web.core.windows.net/[indexdoc] または http:\//mystorageaccount.[zone].web.core.windows.net/$web または http:\//mystorageaccount.[zone].web.core.windows.net/ | http:\//www.contoso.com/$web または http:\//www.contoso.com/ または http:\//www.contoso.com/$web/[indexdoc] または http:\//www.contoso.com/[indexdoc] |
 
 > [!NOTE]  
 > 以下のセクションに示すように、Blob service エンドポイントの例はすべて、Web サービス エンドポイントにも適用されます。

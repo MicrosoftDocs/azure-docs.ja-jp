@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: mdgattuso
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 06/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5aa342700c8440e67987cd9d1b45574c02a45f47
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: e34fbe200420fef1653e21bb44ac2f7e0de90fb7
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729818"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593862"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN 製品の機能を比較する
 

@@ -3,24 +3,24 @@ title: 'クイック スタート: 音声を認識する、C# (UWP) - Speech Ser
 titleSuffix: Azure Cognitive Services
 description: この記事では、Cognitive Services Speech SDK を使用して C# のユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成する方法について説明します。 デバイスのマイクからリアルタイムで音声をテキストに変換します。 このアプリケーションの構築には、Speech SDK NuGet パッケージと Microsoft Visual Studio 2017 を使用します。
 services: cognitive-services
-author: wolfma61
+author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: lisaweixu
 ms.custom: seodec18
-ms.openlocfilehash: 674bb3f22f7b8c7c7ea3b52c2f27d862a9961fcb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 25b3474e33351d6365af37d78f442768aba88625
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466246"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405914"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する
 
-クイック スタートは[音声翻訳](quickstart-translate-speech-uwp.md)と[音声優先仮想アシスタント](quickstart-virtual-assistant-csharp-uwp.md)にも使用できます。
+[テキスト読み上げ](quickstart-text-to-speech-csharp-uwp.md)、[音声翻訳](quickstart-translate-speech-uwp.md)、[音声優先仮想アシスタント](quickstart-virtual-assistant-csharp-uwp.md)のクイックスタートも利用できます。
 
 必要に応じて、別のプログラミング言語や環境を選択します。<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -59,11 +59,11 @@ ms.locfileid: "65466246"
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-1. アプリケーションをビルドします。 メニュー バーから、**[ビルド]** > **[ソリューションのビルド]** を選択します。 これで、コードは、エラーなしでコンパイルされます。
+1. アプリケーションをビルドします。 メニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 これで、コードは、エラーなしでコンパイルされます。
 
     ![[ソリューションのビルド] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-uwp-08-build.png "成功したビルド")
 
-1. アプリケーションを起動します。 メニュー バーから、**[デバッグ]** > **[デバッグの開始]** を選択するか、**F5** キーを押します。
+1. アプリケーションを起動します。 メニュー バーから、 **[デバッグ]**  >  **[デバッグの開始]** を選択するか、**F5** キーを押します。
 
     ![[デバッグの開始] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-uwp-09-start-debugging.png "アプリのデバッグの開始")
 

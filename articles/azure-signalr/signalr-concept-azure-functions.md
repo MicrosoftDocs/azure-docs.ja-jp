@@ -6,16 +6,19 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c06203cfd7537dd4c9bc35c75a3f21d12bf64d26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88e2b012086f61aad3143c8fe6b0bd25ec333e5
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401880"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275098"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure Functions および Azure SignalR Service を使用してリアルタイム アプリを構築する
 
 Azure SignalR サービスと Azure Functions はどちらもインフラストラクチャを管理するのではなく、アプリケーションの構築に専念できる非常にスケーラブルなフル マネージド サービスであるため、2 つのサービスを併用して[サーバーレス](https://azure.microsoft.com/solutions/serverless/)環境でリアルタイム通信を提供するのが一般的です。
+
+> [!NOTE]
+> 対話型のチュートリアル「[Azure Functions と SignalR Service を使って、Web アプリケーションの自動更新を有効にする](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)」で、SignalR と Azure Functions を一緒に使用する方法を学習します。
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Azure サービスとのリアルタイム通信の統合
 
@@ -63,9 +66,10 @@ SignalR サービスでは、すべてのクライアントや、単一のユー
 
 この記事では、SignalR サービスと Azure Functions を使用して、さまざまなサーバーレス リアルタイム メッセージング シナリオを有効にする方法についての概要を把握しました。
 
-Azure Functions とSignalR Service を一緒に使用する方法の完全な詳細については、次のガイドを参照してください。
+Azure Functions とSignalR Service を一緒に使用する方法の完全な詳細については、以下のリソースにアクセスしてください。
 
 * [SignalR Service を使用した Azure Functions の開発と構成](signalr-concept-serverless-development-config.md)
+* [Azure Functions と SignalR Service を使って、Web アプリケーションの自動更新を有効にする](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 詳細については、これらのいずれかのクイック スタートを参照してください。
 

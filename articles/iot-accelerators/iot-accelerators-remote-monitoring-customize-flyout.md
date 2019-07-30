@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167428"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447116"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム ポップアップを追加する
 
@@ -133,7 +133,7 @@ export class BasicPage extends Component {
 npm start
 ```
 
-前のコマンドでは、UI が [http://localhost:3000/dashboard](http://localhost:3000/dashboard) でローカルに実行されます。 **[Example]\(例\)** ページに移動して、**[Open Flyout]\(ポップアップを開く\)** をクリックします。
+前のコマンドでは、UI が [http://localhost:3000/dashboard](http://localhost:3000/dashboard) でローカルに実行されます。 **[Example]\(例\)** ページに移動して、 **[Open Flyout]\(ポップアップを開く\)** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -45,3 +45,9 @@
     - name: 5 - Azure Service Fabric にデプロイする
       href: azure-devops-project-service-fabric.md
       maintainContext: true
+    - name: 6- Azure Cosmos DB にデプロイする
+      href: azure-devops-project-cosmos-db.md
+      maintainContext: true
+    - name: 7- Azure Functions にデプロイする
+      href: azure-devops-project-functions.md
+      maintainContext: true

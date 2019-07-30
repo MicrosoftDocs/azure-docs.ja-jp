@@ -9,6 +9,8 @@
   items:
     - name: 'ASP.NET Core - C#'
       href: signalr-quickstart-dotnet-core.md
+    - name: 'ASP.NET - C#'
+      href: signalr-quickstart-dotnet.md
     - name: Azure Functions - JavaScript
       href: signalr-quickstart-azure-functions-javascript.md
     - name: 'Azure Functions - C#'
@@ -51,6 +53,8 @@
       href: signalr-concept-performance.md
     - name: Authentication
       href: signalr-concept-authenticate-oauth.md
+    - name: イベント処理
+      href: signalr-concept-event-grid-integration.md
 - name: ハウツー ガイド
   items:
     - name: スケール
@@ -65,6 +69,8 @@
       items:
         - name: Azure Functions のバインド
           href: signalr-concept-azure-functions.md
+        - name: Event Grid の統合
+          href: signalr-howto-event-grid-integration.md
 - name: 参照
   items:
     - name: Azure CLI

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
-ms.openlocfilehash: e5693e0e191b36aa8d4552824c649a38d2f17b5b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475286"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593836"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの X-EC-Debug HTTP ヘッダー
 デバッグ キャッシュ要求ヘッダー `X-EC-Debug` では、要求された資産に適用されているキャッシュ ポリシーに関する追加情報が提供されます。 これらのヘッダーは、**Azure CDN Premium from Verizon** 製品に固有です。

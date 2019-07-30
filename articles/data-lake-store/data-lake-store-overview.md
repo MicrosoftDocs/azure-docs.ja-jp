@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 518c129aedf3161ab761d09139e0c4d988dd2cbc
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 99384374226fd89cfd672c6b4f851a1743db0764
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681830"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118800"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 とは
 

@@ -56,6 +56,11 @@
         - name: 回帰モデルをデプロイする
           displayName: experiment drag-and-drop visual interface Tutorial 2
           href: ui-tutorial-automobile-price-deploy.md
+    - name: 自動化された機械学習
+      items:
+        - name: 分類 (銀行データ)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-first-experiment-automated-ml.md
 - name: サンプル
   items:
     - name: Notebooks
@@ -78,6 +83,9 @@
         - name: 顧客離れを予測する
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+        - name: フライトの遅延を予測する
+          displayName: 'Basic Sample, training, classification, sample 6'
+          href: ui-sample-classification-predict-flight-delay.md
     - name: Azure Open Datasets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
@@ -106,6 +114,8 @@
       href: concept-accelerate-with-fpgas.md
     - name: ONNX と ONNX Runtime
       href: concept-onnx.md
+    - name: データの誤差の監視
+      href: concept-data-drift.md
     - name: セキュリティ
       items:
         - name: エンタープライズ セキュリティの概要
@@ -151,12 +161,6 @@
         - name: データを調査する
           displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
           href: how-to-explore-prepare-data.md
-        - name: データ定義をバージョン管理する
-          displayName: 'data, etl, dataset, data preparation, dataprep, version'
-          href: how-to-manage-dataset-definitions.md
-        - name: データのスナップショットを作成する
-          displayName: 'snapshots, profile, summary statistics, data copy'
-          href: how-to-create-dataset-snapshots.md
         - name: データストアからデータを取得する
           displayName: blob get fileshare access storage
           href: how-to-access-data.md
@@ -178,12 +182,16 @@
           href: how-to-set-up-training-targets.md
         - name: トレーニングでの推定器の作成
           href: how-to-train-ml-models.md
+        - name: Scikit-learn の使用
+          href: how-to-train-scikit-learn.md
         - name: Tensorflow の使用
           href: how-to-train-tensorflow.md
         - name: Keras の使用
           href: how-to-train-keras.md
         - name: PyTorch の使用
           href: how-to-train-pytorch.md
+        - name: Chainer の使用
+          href: how-to-train-chainer.md
         - name: ハイパーパラメーターを調整する
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -197,6 +205,9 @@
         - name: MLflow を使用して実験を追跡する
           displayName: 'log, monitor, metrics'
           href: how-to-use-mlflow.md
+        - name: TensorBoard を使用して実行を視覚化する
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
     - name: 機械学習の自動化
       displayName: 'automl, auto ml'
       items:
@@ -211,20 +222,32 @@
         - name: 予測モデルを自動トレーニングする
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: グラフとメトリックを理解する
+          href: how-to-understand-automated-ml.md
     - name: モデルをデプロイおよび提供する
       items:
         - name: デプロイする場所と方法
-          displayName: publish azure kubernetes azure container instances
+          displayName: publish web service
           href: how-to-deploy-and-where.md
-        - name: GPU
+        - name: Azure Container Instances
+          href: how-to-deploy-azure-container-instance.md
+        - name: Azure Kubernetes Service
+          href: how-to-deploy-azure-kubernetes-service.md
+        - name: GPU 推論
           href: how-to-deploy-inferencing-gpus.md
-        - name: FPGA
+        - name: FPGA 推論
           href: how-to-deploy-fpga-web-service.md
         - name: IoT Edge
           href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Azure App Service
+          displayName: web app
+          href: how-to-deploy-app-service.md
         - name: カスタム Docker イメージ
           href: how-to-deploy-custom-docker-image.md
-        - name: トラブルシューティング
+        - name: 既存のモデルをデプロイする
+          displayName: publish existing model
+          href: how-to-deploy-existing-model.md
+        - name: トラブルシューティングとデバッグ
           href: how-to-troubleshoot-deployment.md
     - name: Web サービスを使用する
       items:
@@ -234,11 +257,13 @@
         - name: バッチ予測を実行する
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
-    - name: Web サービスを監視する
+    - name: モデルを監視する
       items:
         - name: モデルのデータを収集して評価する
           displayName: track production
           href: how-to-enable-data-collection.md
+        - name: データの誤差を検出する
+          href: how-to-monitor-data-drift.md
         - name: Application Insights での監視
           href: how-to-enable-app-insights.md
     - name: 再利用可能なワークフローを作成する
@@ -260,9 +285,6 @@
     - name: Machine Learning SDK
       displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
-    - name: Monitoring SDK
-      displayName: api package python monitor
-      href: 'https://aka.ms/aml-monitoring-sdk'
     - name: Machine Learning CLI
       displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
@@ -297,6 +319,8 @@
               href: ../algorithm-module-reference/add-rows.md
             - name: 重複する行の削除
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: データの結合
+              href: ../algorithm-module-reference/join-data.md
             - name: データの分割
               href: ../algorithm-module-reference/split-data.md
             - name: データの正規化
@@ -345,12 +369,14 @@
               href: ../algorithm-module-reference/two-class-support-vector-machine.md
             - name: K-Means クラスタリング
               href: ../algorithm-module-reference/k-means-clustering.md
-        - name: Python 言語モジュール
+        - name: Python および R の言語モジュール
           items:
             - name: Python スクリプトの実行
               href: ../algorithm-module-reference/execute-python-script.md
             - name: Python モデルの作成
               href: ../algorithm-module-reference/create-python-model.md
+            - name: R スクリプトの実行
+              href: ../algorithm-module-reference/execute-r-script.md
         - name: エラー メッセージとコード
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: リソース

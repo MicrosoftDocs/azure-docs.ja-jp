@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 05/06/2019
-ms.openlocfilehash: 520dba611e6791fca990e21173424a914c3d8e14
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.date: 06/26/2019
+ms.openlocfilehash: e9d1ce3bcd3bf958be0a7837e8416300af03f5a2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693339"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449745"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>仮想コア サービス レベルの中から選択し、DTU サービス レベルから移行する
 
@@ -28,6 +28,8 @@ ms.locfileid: "66693339"
 
 Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティング リソースをはるかに高くまでスケールアップできます。
 
+> [!IMPORTANT]
+> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
 > [!NOTE]
 > DTU ベースのサービス レベルについては、[DTU ベースの購入モデルのサービス レベル](sql-database-service-tiers-dtu.md)に関するページを参照してください。 DTU ベースの購入モデルと仮想コアベースの購入モデルのサービス レベルの違いについては、[Azure SQL Database の購入モデル](sql-database-purchase-models.md)に関するページを参照してください。
 

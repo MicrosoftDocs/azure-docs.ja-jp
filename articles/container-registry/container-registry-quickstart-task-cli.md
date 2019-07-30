@@ -3,25 +3,26 @@ title: クイック スタート - Azure Container Registry 内でのコンテ�
 description: Azure Container Registry を使用して、クラウド内でコンテナー イメージをオンデマンドでビルドして実行するタスクを迅速に実行します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: be120ea8ae588da486c9a5acd4eb7bfdb4e45dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701563"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310627"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
-このクイック スタートでは、Azure Container Registry タスク コマンドを使用して、Docker コンテナー イメージの迅速なビルド、プッシュ、実行を Azure 内でネイティブに行い、「社内ループ」開発サイクルをクラウドにオフロードする方法を示します。 [ACR タスク][container-registry-tasks-overview]は、コンテナー ライフサイクル全体にわたってコンテナー イメージを管理および変更するのに役立つ Azure Container Registry 内の機能のスイートです。 
+このクイック スタートでは、Azure Container Registry タスク コマンドを使用して、Docker コンテナー イメージの迅速なビルド、プッシュ、実行を Azure 内でネイティブに行い、「社内ループ」開発サイクルをクラウドにオフロードする方法を示します。 [ACR タスク][container-registry-tasks-overview]は、コンテナー ライフサイクル全体でコンテナー イメージを管理および変更するのに役立つ Azure Container Registry 内の機能のスイートです。 
 
 このクイック スタートの後に、ACR タスクのより高度な機能について説明します。 ACR タスクでは、コードのコミットに基づくイメージのビルドまたは基本イメージの更新を自動化したり、他のシナリオ間で複数のコンテナーを並列にテストしたりすることができます。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][azure-account]を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-account] を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,7 +46,7 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-この例では、Azure Container Registry について学習している開発者にとって、コストが最適なオプションである *Basic* レジストリを作成します。 利用可能なサービス レベルの詳細については、「[Container Registry の SKU][container-registry-skus]」を参照してください。
+この例では、Azure Container Registry について学習している開発者にとって、コストが最適なオプションである *Basic* レジストリを作成します。 利用可能なサービス レベルの詳細については、[コンテナー レジストリの SKU][container-registry-skus] に関するページを参照してください。
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile からのイメージのビルド
 
@@ -117,7 +118,7 @@ Run ID: ca8 was successful after 10s
 
 ここでは、ビルドしてレジストリにプッシュしたイメージを迅速に実行します。 コンテナー開発ワークフローでは、これはイメージをデプロイする前の検証手順になる可能性があります。
 
-ローカルの作業ディレクトリに、次の 1 ステップのコンテンツを含む *quickrun.yaml* ファイルを作成します。 *\<acrLoginServer\>* はレジストリのログイン サーバー名に置き換えてください。 ログイン サーバー名は、*\<registry-name\>.azurecr.io* (すべて小文字) という形式です。たとえば、*mycontainerregistry008.azurecr.io* などです。 この例では、前のセクションで `sample/hello-world:v1` イメージをビルドしてプッシュしたことを想定します。
+ローカルの作業ディレクトリに、次の 1 ステップのコンテンツを含む *quickrun.yaml* ファイルを作成します。 *\<acrLoginServer\>* はレジストリのログイン サーバー名に置き換えてください。 ログイン サーバー名は、 *\<registry-name\>.azurecr.io* (すべて小文字) という形式です。たとえば、*mycontainerregistry008.azurecr.io* などです。 この例では、前のセクションで `sample/hello-world:v1` イメージをビルドしてプッシュしたことを想定します。
 
 ```yml
 steps:
@@ -179,7 +180,7 @@ Run ID: cab was successful after 6s
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete][az-group-delete] コマンドを使用して、リソース グループ、コンテナー レジストリ、およびそこに格納されているコンテナー イメージを削除できます。
+必要がなくなったら、[az group delete][az-group-delete] コマンドを使用して、リソース グループ、コンテナー レジストリ、そこに格納されているコンテナー イメージを削除できます。
 
 ```azurecli
 az group delete --name myResourceGroup

@@ -14,18 +14,17 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d83b659cc04218fad66ea95216e69682b265dc83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b5698d94a09096d58b316ca3b23bead5b1a39a7
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66151618"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839405"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル:REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -362,7 +361,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
      Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-* エラー "**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)**" が表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。 
+* エラー "**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)** " が表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。 
   
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
 
@@ -489,7 +488,7 @@ Azure SQL Database のリンクされたサービスは、Data Factory サービ
     Write-Host $results
     ```
 
-**お疲れさまでした。**  Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを持つ Azure データ ファクトリが正常に作成されました。
+**お疲れさまでした。** Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを持つ Azure データ ファクトリが正常に作成されました。
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
 この手順では、Data Factory REST API を使用して、パイプラインによって生成されるスライスを監視します。

@@ -7,20 +7,20 @@ ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
-ms.openlocfilehash: e4196cf59537be5194ceb510a1b7b066c97de19a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 41200139ef55fa1ae441192e2d81b5228cf29bad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410221"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795313"
 ---
-# <a name="tutorial-create-custom-provider-and-deploy-custom-resources"></a>チュートリアル:カスタム プロバイダーの作成とカスタム リソースのデプロイ
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ
 
-このチュートリアルでは、独自のリソース プロバイダーを作成し、そのリソース プロバイダーのカスタム リソースの種類をデプロイします。 カスタム プロバイダーの詳細については、「[Azure Custom Providers プレビューの概要](custom-providers-overview.md)」を参照してください。
+このクイックスタートでは、独自のリソース プロバイダーを作成し、そのリソース プロバイダーのカスタム リソースの種類をデプロイします。 カスタム プロバイダーの詳細については、「[Azure Custom Providers プレビューの概要](custom-providers-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、REST 操作を呼び出す必要があります。 [REST 要求を送信するさまざまな方法](/rest/api/azure/)があります。 REST 操作用のツールがまだない場合は、[ARMClient](https://github.com/projectkudu/ARMClient) をインストールしてください。 これは、Azure Resource Manager API の呼び出しを簡略化する、オープン ソースのコマンドライン ツールです。
+このクイックスタートの手順を完了するには、REST 操作を呼び出す必要があります。 [REST 要求を送信するさまざまな方法](/rest/api/azure/)があります。 REST 操作用のツールがまだない場合は、[ARMClient](https://github.com/projectkudu/ARMClient) をインストールしてください。 これは、Azure Resource Manager API の呼び出しを簡略化する、オープン ソースのコマンドライン ツールです。
 
 ## <a name="deploy-custom-provider"></a>カスタム プロバイダーをデプロイする
 
@@ -122,7 +122,7 @@ armclient POST $pingURI
 
 ## <a name="create-resource-type"></a>リソースの種類を作成する
 
-カスタム リソースの種類を作成する場合、テンプレート内のリソースをデプロイできます。 このアプローチは、このチュートリアルでデプロイしたテンプレートに示されています。 また、リソースの種類の PUT 要求を送信することもできます。
+カスタム リソースの種類を作成する場合、テンプレート内のリソースをデプロイできます。 この方法は、このクイックスタートでデプロイしたテンプレートで示されています。 また、リソースの種類の PUT 要求を送信することもできます。
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview

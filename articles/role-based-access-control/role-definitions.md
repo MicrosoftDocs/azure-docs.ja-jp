@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2019
+ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 5a08c2ae0b82841fd15aac4af06a8874cf64ba53
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9f5f9b3595074c26c80c824052727e962b01162a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949997"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275045"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure リソースのロール定義の概要
 
@@ -52,7 +52,8 @@ AssignableScopes []
 | ------------------- | ------------------- |
 | `*` | ワイルドカード文字は、文字列と一致するすべての操作に対するアクセスを許可します。 |
 | `read` | 読み取り操作 (GET) を有効にします。 |
-| `write` | 書き込み操作 (PUT、POST、および PATCH) を有効にします。 |
+| `write` | 書き込み操作 (PUT または PATCH) を有効にします。 |
+| `action` | 仮想マシンの再起動 (POST) などのカスタム操作を有効にします。 |
 | `delete` | 削除操作 (DELETE) を有効にします。 |
 
 JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を次に示します。 `Actions` 以下のワイルドカード (`*`) 操作は、このロールに割り当てられたプリンシパルがすべてのアクションを実行できること、つまりすべてを管理できることを示します。 これには、今後、Azure が新しいリソースの種類を追加するときに定義されるアクションも含まれます。 `NotActions` 以下の操作は `Actions` から引かれます。 [共同作成者](built-in-roles.md#contributor)ロールの場合、`NotActions` は、リソースに対するアクセスを管理するこのロールの機能を削除し、リソースへのアクセスも割り当てます。
@@ -79,7 +80,7 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 }
 ```
 
-## <a name="management-and-data-operations-preview"></a>管理操作とデータ操作 (プレビュー)
+## <a name="management-and-data-operations"></a>管理操作とデータ操作
 
 管理操作のロールベースのアクセス制御は、ロール定義の `Actions` プロパティと `NotActions` プロパティで指定されています。 Azure での管理操作の例をいくつか示します。
 
@@ -89,7 +90,7 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 
 管理アクセスはデータに継承されません。 この分離により、ワイルドカード (`*`) を使用したロールはデータに無制限にアクセスできなくなります。 たとえば、ユーザーがサブスクリプションで[閲覧者](built-in-roles.md#reader)ロールを持っている場合、ストレージ アカウントは表示できますが、既定では基になるデータを表示することはできません。
 
-以前は、ロールベースのアクセス制御はデータ操作には使用されませんでした。 データ操作のアクセス許可はリソース プロバイダーによって異なります。 管理操作に使用する同じロールベースのアクセス制御許可モデルがデータ操作に拡張されました (現在プレビュー中)。
+以前は、ロールベースのアクセス制御はデータ操作には使用されませんでした。 データ操作のアクセス許可はリソース プロバイダーによって異なります。 管理操作に使用する同じロールベースのアクセス制御許可モデルがデータ操作に拡張されました。
 
 データ操作をサポートするために、新しいデータ プロパティがロール定義構造体に追加されました。 データ操作は `DataActions` プロパティおよび `NotDataActions` プロパティで指定されます。 これらのデータ プロパティを追加することによって、管理とデータの分離が維持されます。 このことによって、ワイルドカード (`*`) を含む現在のロール割り当てが突然データにアクセスする動作が防止されます。 `DataActions` および `NotDataActions` で指定できるデータ操作の一部を次に示します。
 
@@ -169,11 +170,7 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者](buil
 
 REST API でデータ操作を確認して使用するには、次のバージョン以降に **api-version** パラメーターを設定する必要があります。
 
-- 2018-01-01-preview
-
-Azure portal では、ユーザーが Azure AD のプレビュー エクスペリエンスを介して、キューおよび BLOB コンテナーの内容を参照および管理することもできます。 キューまたは BLOB コンテナーの内容を表示および管理するには、ストレージ アカウントの [概要] にある **[Azure AD プレビューを使用してデータを探索します]** をクリックします。
-
-![Azure AD プレビューを使用してキューおよび BLOB コンテナーを探索する](./media/role-definitions/rbac-dataactions-browsing.png)
+- 2018-07-01
 
 ## <a name="actions"></a>Actions
 
@@ -195,7 +192,7 @@ Azure portal では、ユーザーが Azure AD のプレビュー エクスペ�
 > `NotActions` で特定の操作を除外したロールをユーザーに割り当てたうえで、同じユーザーにその操作へのアクセス権を付与する別のロールを割り当てた場合、ユーザーはその操作の実行が許可されます。 `NotActions` は拒否ルールとは異なり、特定の操作を除外する必要があるときに、許可の対象となる一連の操作を指定しやすくすることを目的としたものに過ぎません。
 >
 
-## <a name="dataactions-preview"></a>DataActions (プレビュー)
+## <a name="dataactions"></a>DataActions
 
 `DataActions` アクセス許可では、対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定します。 たとえば、ユーザーがあるストレージ アカウントへの BLOB データの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB を読み取ることができます。 次に `DataActions` で使用できるデータ操作の例を示します。
 
@@ -206,7 +203,7 @@ Azure portal では、ユーザーが Azure AD のプレビュー エクスペ�
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | メッセージを返します。 |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | メッセージまたはメッセージの書き込みまたは削除の結果を返します。 |
 
-## <a name="notdataactions-preview"></a>NotDataActions (プレビュー)
+## <a name="notdataactions"></a>NotDataActions
 
 `NotDataActions` アクセス許可では、許可された `DataActions` から除外されるデータ操作を指定します。 ロール (有効なアクセス許可) によって付与されたアクセスは、`DataActions` 操作から `NotDataActions` 操作を引くことによって計算されます。 各リソース プロバイダーは、それぞれの API セットを提供し、データ操作をサポートします。
 
@@ -216,7 +213,7 @@ Azure portal では、ユーザーが Azure AD のプレビュー エクスペ�
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` プロパティでは、ロールを割り当て可能なスコープ (サブスクリプション、リソース グループ、またはリソース) を指定します。 そのロールを必要とするサブスクリプションやリソース グループのみに割り当てを限定し、それ以外のサブスクリプションやリソース グループについては元のユーザー エクスペリエンスを保ち、不要な混乱を避けることができます。 少なくとも 1 つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
+`AssignableScopes` プロパティでは、このロール定義を利用可能なスコープ (サブスクリプション、リソース グループ、またはリソース) を指定します。 そのロールを必要とするサブスクリプションやリソース グループのみに割り当てを限定し、それ以外のサブスクリプションやリソース グループについては元のユーザー エクスペリエンスを保ち、不要な混乱を避けることができます。 少なくとも 1 つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
 
 組み込みロールでは `AssignableScopes` がルート スコープ (`"/"`) に設定されています。 ルート スコープは、すべてのスコープでそのロールを割り当て可能であることを示します。 有効な AssignableScopes の例を次に示します。
 
@@ -225,7 +222,7 @@ Azure portal では、ユーザーが Azure AD のプレビュー エクスペ�
 | 単一のサブスクリプションの割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
 | 2 つのサブスクリプションの割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
 | ネットワーク リソース グループでのみ割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| すべてのスコープの割り当てにロールを使用できる | `"/"` |
+| すべてのスコープの割り当てにロールを使用できる (組み込みロールのみに適用されます) | `"/"` |
 
 カスタム ロールの `AssignableScopes` の詳細については、[Azure リソースのカスタム ロール](custom-roles.md)に関する記事を参照してください。
 

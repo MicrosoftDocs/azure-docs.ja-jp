@@ -12,12 +12,12 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: a67436f09d6e28db8d19679e446ac4cf98383709
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3d0aaee624bdba169f13313bb57a3ebe8075592
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65593801"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490069"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
@@ -146,17 +146,7 @@ Azure SQL Database Managed Instance は、ADF のマネージド ID によるデ
 
 ### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance に対する Azure AD 認証を構成する
 
-1.   Azure Portal で、左側のナビゲーションから **[すべてのサービス]**  ->  **[SQL Server]** を選択します。
-
-2.   Azure AD 認証を構成する Managed Instance を選択します。
-
-3.   ブレードの **[設定]** セクションで **[Active Directory 管理者]** を選択します。
-
-4.   コマンド バーで、 **[管理者の設定]** を選択します。
-
-5.   サーバーの管理者にする Azure AD ユーザー アカウントを選択してから、 **[選択]** を選択します。
-
-6.   コマンド バーで、 **[保存]** を選択します。
+「[マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングする](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance)」の手順に従います。
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>ADF のマネージド ID を Azure SQL Database Managed Instance 内のユーザーとして追加する
 
@@ -164,7 +154,7 @@ Azure SQL Database Managed Instance は、ADF のマネージド ID によるデ
 
 1.  SSMS を起動します。
 
-2.  SQL/Active Directory 管理者のアカウントを使用して Managed Instance に接続します。
+2.  **sysadmin** である SQL Server アカウントを使用して、Managed Instance に接続します。 これは、Azure SQL Database Managed Instance 用 Azure AD サーバー プリンシパル (ログイン) の一般提供が開始されたら削除される一時的な制限事項です。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。"Msg 15247、Level 16、State 1、Line 1 このアクションを実行するアクセス許可がユーザーにありません"
 
 3.  **オブジェクト エクスプローラー**で、 **[データベース]**  ->  **[システム データベース]** フォルダーを展開します。
 

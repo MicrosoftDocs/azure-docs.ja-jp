@@ -1,5 +1,5 @@
 ---
-title: サインインと、OAuth 2.0 を使用した保護 API の呼び出しのために Azure AD と統合する、iOS アプリの構築 | Microsoft Docs
+title: OAuth 2.0 を使用してサインインするために Azure AD と統合された iOS アプリを作成する | Microsoft Docs
 description: iOS アプリからユーザーにサインインし、Microsoft Graph API を呼び出す方法について説明します。
 services: active-directory
 documentationcenter: ios
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6274557ede35d7640eba37e5777cb0cb67d459a
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8a82a7cad9b9176589824b6febb5cfdde89fce8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497095"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380878"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>クイック スタート:iOS アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 

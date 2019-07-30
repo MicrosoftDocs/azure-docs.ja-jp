@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c389f2ab9e67cbb1fd1a6a0c9ee274bca7d4c99d
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347449"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560434"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -94,6 +94,8 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 ## <a name="alerts-experience"></a>アラート エクスペリエンス 
 既定の [アラート] ページには、特定の時間枠内に作成されたアラートの概要が表示されます。 ここには、重大度ごとのアラートの合計が、重大度ごとの各状態にあるアラートの総数を識別する列と共に表示されます。 任意の重大度を選択すると、その重大度でフィルター処理された [[すべてのアラート]](#all-alerts-page) ページが開きます。
 
+または、[REST API を使用して、サブスクリプションに生成されたアラート インスタンスをプログラムで列挙する](#manage-your-alert-instances-programmatically)こともできます。
+
 古い[クラシック アラート](#classic-alerts)は表示または追跡されません。 サブスクリプションまたはフィルター パラメーターを変更して、ページを更新することができます。 
 
 ![Alerts page](media/alerts-overview/alerts-page.png)
@@ -102,7 +104,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 | 列 | 説明 |
 |:---|:---|
-| サブスクリプション | 最大 5 つの Azure サブスクリプションを選択します。 このビューには、選択されたサブスクリプション内のアラートのみが含まれます。 |
+| サブスクリプション | アラートを表示する Azure サブスクリプションを選択します。 必要に応じて、すべてのサブスクリプションを選択できます。 このビューには、選択したサブスクリプション内のアクセス権のあるアラートのみが含まれます。 |
 | リソース グループ | 1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
 | 時間範囲 | このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 |
 
@@ -145,7 +147,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 | 列 | 説明 |
 |:---|:---|
-| サブスクリプション | 最大 5 つの Azure サブスクリプションを選択します。 このビューには、選択されたサブスクリプション内のアラートのみが含まれます。 |
+| サブスクリプション | アラートを表示する Azure サブスクリプションを選択します。 必要に応じて、すべてのサブスクリプションを選択できます。 このビューには、選択したサブスクリプション内のアクセス権のあるアラートのみが含まれます。 |
 | リソース グループ | 1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
 | リソースの種類 | 1 つ以上のリソースの種類を選択します。 このビューには、選択された種類のターゲットを含むアラートのみが含まれます。 この列は、リソース グループを指定した後でのみ使用できます。 |
 | Resource | リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類を指定した後でのみ使用できます。 |
@@ -157,7 +159,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 表示する列を選択するには、ページの上部にある **[列]** を選択します。 
 
-## <a name="alert-detail-page"></a>アラートの詳細ページ
+## <a name="alert-details-page"></a>[アラートの詳細] ページ
 アラートを選択すると、[アラートの詳細] ページが表示されます。 ここにはアラートの詳細が表示され、その状態を変更できます。
 
 ![アラートの詳細](media/alerts-overview/alert-detail2.png)
@@ -166,11 +168,38 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 | Section | 説明 |
 |:---|:---|
-| 要点 | アラートに関するプロパティやその他の重大な情報を表示します。 |
+| まとめ | アラートに関するプロパティやその他の重大な情報を表示します。 |
 | 履歴 | アラートによって実行された各アクションと、アラートに加えられたすべての変更を一覧表示します。 現在は、状態の変更に制限されています。 |
-| スマート グループ | そのアラートが含まれているスマート グループに関する情報。 "*アラートの数*" は、そのスマート グループに含まれているアラートの数を示します。 アラートの一覧ページ内の時間フィルターに関係なく、過去 30 日間に作成された、同じスマート グループ内の他のアラートが含まれます。 アラートを選択すると、その詳細が表示されます。 |
-| 詳細 | 通常はそのアラートを作成したソースの種類に固有である、アラートの詳細なコンテキスト情報を表示します。 |
+| 診断 | そのアラートが含まれているスマート グループに関する情報。 "*アラートの数*" は、そのスマート グループに含まれているアラートの数を示します。 アラートの一覧ページ内の時間フィルターに関係なく、過去 30 日間に作成された、同じスマート グループ内の他のアラートが含まれます。 アラートを選択すると、その詳細が表示されます。 |
 
+## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>アラート インスタントのロールベースのアクセス制御 (RBAC)
+
+アラート インスタンスを使用および管理するには、ユーザーに[監視共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)または[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)のいずれかの組み込み RBAC ロールが必要です。 これらのロールは、サブスクリプション レベルからリソース レベルでの詳細な割り当てまで、Azure Resource Manager のすべてのスコープでサポートされています。 たとえば、ユーザーが仮想マシン "ContosoVM1" に対する "監視共同作成者" アクセス権のみを持っている場合は、"ContosoVM1" で生成されたアラートのみを使用および管理できます。
+
+## <a name="manage-your-alert-instances-programmatically"></a>プログラムによるアラート インスタンスの管理
+
+サブスクリプションに対して生成されたアラートをプログラムで照会したい多くのシナリオがあります。 たとえば、Azure portal の外部でカスタム ビューを作成したり、アラートを分析してパターンと傾向を特定したりする場合です。
+
+サブスクリプションに対して生成されたアラートを照会するには、[Alert Management REST API](https://aka.ms/alert-management-api) を使用するか、[アラート用の Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) を使用します。
+
+[アラート用の Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) を使用すると、大規模なアラート インスタンスを照会できます。 これは、多くのサブスクリプションで生成されたアラートを管理しなければならないシナリオにお勧めします。 
+
+次の API へのサンプル要求は、1 つのサブスクリプション内のアラートの数を返します。
+
+```json
+{
+  "subscriptions": [
+    <subscriptionId>
+  ],
+  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
+  "options": {
+            "dataset":"alerts"
+  }
+}
+```
+照会は、アラートの "[必須](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)" フィールドに対して行うことができます。
+
+[Alert Management REST API](https://aka.ms/alert-management-api) は、"[アラート コンテキスト](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)" フィールドなど、特定のアラートに関する詳細情報を取得するために使用できます。
 
 ## <a name="classic-alerts"></a>クラシック アラート 
 

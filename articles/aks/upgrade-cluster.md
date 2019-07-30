@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) クラスターのアップグレード
 description: Azure Kubernetes Service (AKS) クラスターのアップグレード方法について説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 2cadd4b33cb52307599ce1e83eee8370ef9850fe
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.author: mlearned
+ms.openlocfilehash: dd88b5a044fe495da374178be8774f45bdd30f61
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692783"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614066"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -47,7 +47,7 @@ default  myResourceGroup  1.11.9         1.11.9           1.12.7, 1.12.8
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS クラスターのアップグレード
 
-AKS クラスターに利用できるバージョンの一覧を参照し、[az aks upgrade][az-aks-upgrade] コマンドを使用してアップグレードします。 アップグレード プロセス中に、AKS は指定された Kubernetes バージョンを実行する新しいノードをクラスターに追加した後、実行中のアプリケーションへの中断を最小限に抑えるために古いノードのいずれかを慎重に[切断およびドレイン][kubernetes-drain]します。 新しいノードが実行中のアプリケーション ポッドとして確認されたら、その古いノードが削除されます。 このプロセスは、クラスター内のすべてのノードがアップグレードされるまで繰り返されます。
+AKS クラスターに利用できるバージョンの一覧を参照し、[az aks upgrade][az-aks-upgrade] コマンドを使用してアップグレードします。アップグレード プロセス中に、AKS は指定された Kubernetes バージョンを実行する新しいノードをクラスターに追加した後、実行中のアプリケーションへの中断を最小限に抑えるために古いノードのいずれかを慎重に切断およびドレインします。 command to upgrade. During the upgrade process, AKS adds a new node to the cluster that runs the specified Kubernetes version, then carefully [cordon and drains][kubernetes-drain] 新しいノードが実行中のアプリケーション ポッドとして確認されたら、その古いノードが削除されます。 このプロセスは、クラスター内のすべてのノードがアップグレードされるまで繰り返されます。
 
 次の例では、クラスターをバージョン *1.12.8* にアップグレードします。
 

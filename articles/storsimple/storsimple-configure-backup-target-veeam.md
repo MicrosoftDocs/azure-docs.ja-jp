@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
-ms.author: hkanna
-ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: matd
+ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633967"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875314"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veeam を使用したバックアップ ターゲットとしての StoreSimple
 

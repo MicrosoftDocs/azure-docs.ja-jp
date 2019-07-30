@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 479b810c5a66917bde5754d32991fb489ea26c9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a233299b86100c7e43291ffb6448d576ef6072f0
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299290"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302562"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -33,7 +33,7 @@ ms.locfileid: "66299290"
 |---------------|-------|
 |Http/Https | ローカルまたはリモートの http/https 呼び出し |
 |WCF 呼び出し| Http ベースのバインディングを使用する場合にのみ自動追跡されます。|
-|SQL | `SqlClient` で行われる呼び出し。 SQL クエリのキャプチャについては[こちら](##advanced-sql-tracking-to-get-full-sql-query)をご覧ください。  |
+|SQL | `SqlClient` で行われる呼び出し。 SQL クエリのキャプチャについては[こちら](#advanced-sql-tracking-to-get-full-sql-query)を参照してください。  |
 |[Azure Storage (BLOB、テーブル、キュー)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Azure Storage Client で行われる呼び出し。 |
 |[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | バージョン 1.1.0 以上。 |
 |[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| バージョン 3.0.0 以上。 |
@@ -104,7 +104,7 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 | --- | --- |
 | Azure Web アプリ |Web アプリのコントロール パネルで [Application Insights ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、SQL コマンドを .NET |
 | IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | [アプリケーションが実行されているサーバーに Status Monitor をインストールし](../../azure-monitor/app/monitor-performance-live-website-now.md)、IIS を再起動します。
-| Azure Cloud Services |[スタートアップ タスクを使用](../../azure-monitor/app/cloudservices.md)して [Status Monitor をインストール](monitor-performance-live-website-now.md#download)する |
+| Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) または [ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
 | IIS Express | サポートされていません
 
 上記の例では、インストルメンテーション エンジンが正しくインストールされていることを検証する適切な方法は、収集された `DependencyTelemetry` の SDK バージョンが "rddp" であることを確認することです。 "rdddsd" または "rddf" は、DiagnosticSource または EventSource コールバックを介して依存関係が収集されること、そのため、完全な SQL クエリはキャプチャされないことを示します。
@@ -113,47 +113,25 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 
 * [アプリケーション マップ](app-map.md)では、アプリと隣接コンポーネント間の依存関係が視覚化されます。
 * [トランザクションの診断](transaction-diagnostics.md)には、統合され、関連付けられたサーバー データが表示されます。
-* [[ブラウザー] ブレード](javascript.md#ajax-performance)では、ユーザーのブラウザーからの AJAX 呼び出しが示されます。
+* [[ブラウザー] タブ](javascript.md#ajax-performance)には、ユーザーのブラウザーからの AJAX 呼び出しが表示されます。
 * 低速または失敗した要求からクリックしていき、依存関係呼び出しを確認します。
-* 依存関係データのクエリを実行するには、[Analytics](#analytics) を使用できます。
+* 依存関係データのクエリを実行するには、[Analytics](#logs-analytics) を使用できます。
 
 ## <a name="diagnosis"></a> 低速なリクエストの診断
 
 各要求イベントは、依存関係呼び出し、例外、およびアプリでの要求の処理中に追跡されるその他のイベントに関連しています。 そのため、いくつかのリクエストが正しく実行されない場合は、それが依存関係からの応答が遅いためかどうかを調べることができます。
 
-ひとつの例を見てみましょう。
-
 ### <a name="tracing-from-requests-to-dependencies"></a>リクエストから依存関係までのトレース
 
-[パフォーマンス] ブレードを開き、要求のグリッドを参照します。
+**[パフォーマンス]** タブを開き、上部の操作の横にある **[依存関係]** タブに移動します。
 
-![平均およびカウントを持つ要求の一覧](./media/asp-net-dependencies/02-reqs.png)
+全体の下の **[依存関係名]** をクリックします。 依存関係を選択すると、その依存関係の期間の分布グラフが右側に表示されます。
 
-上部にあるものは、長い時間がかかります。 どこに時間がかかるか見つけられるか見てみましょう。
+![[パフォーマンス] タブで、上部の [依存関係] タブ、グラフ内の [依存関係名] の順にクリックします。](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-個々の要求イベントを表示するには、その行をクリックします。
+右下の青色の **[サンプル]** ボタン、サンプルの順にクリックし、エンドツーエンドのトランザクションの詳細を表示します。
 
-![要求回数の一覧](./media/asp-net-dependencies/03-instances.png)
-
-実行時間の長いインスタンスをクリックしてさらに検査し、この要求に関連したリモート依存関係呼び出しまで下にスクロールします。
-
-![リモートの依存関係への呼び出しを見つけ、異常な期間を特定します](./media/asp-net-dependencies/04-dependencies.png)
-
-この要求に使われた時間のほとんどが、ローカル サービスへの呼び出しに費やされたように見えます。
-
-さらに情報を得るには、その行をクリックします。
-
-![そのリモートの依存関係をクリックし、問題の原因を特定します](./media/asp-net-dependencies/05-detail.png)
-
-この依存関係に問題があるようです。 問題を特定できたので、あとは呼び出しに長い時間がかかっている理由を確認するだけです。
-
-### <a name="request-timeline"></a>要求のタイムライン
-
-別のケースでは、呼び出しが長い依存関係はありませんが、 タイムライン ビューに切り替えることで、内部処理に遅延が発生した箇所を確認できます。
-
-![リモートの依存関係への呼び出しを見つけ、異常な期間を特定します](./media/asp-net-dependencies/04-1.png)
-
-最初の依存関係呼び出しの後に大きな隔たりがあるようです。コードを参照してその理由を調べる必要があります。
+![サンプルをクリックして、エンドツーエンドのトランザクション詳細を表示します。](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>ライブ サイトのプロファイリング
 
@@ -161,35 +139,35 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 
 ## <a name="failed-requests"></a>失敗した要求
 
-失敗した要求も、依存関係への失敗した呼び出しに関連している可能性があります。 この場合も、クリック操作で問題を追跡することができます。
+失敗した要求も、依存関係への失敗した呼び出しに関連している可能性があります。
 
-![失敗した要求のグラフをクリックします。](./media/asp-net-dependencies/06-fail.png)
+左側の **[失敗]** タブに移動し、上部の **[依存関係]** タブをクリックします。
 
-失敗した要求の発生場所までクリックしていき、関連するイベントを参照します。
+![失敗した要求のグラフをクリックします。](./media/asp-net-dependencies/4-fail.png)
 
-![要求の種類をクリックし、インスタンスをクリックして同じインスタンスの異なるビューを取得し、それをクリックして例外の詳細を取得します。](./media/asp-net-dependencies/07-faildetail.png)
+ここで、失敗した依存関係の数を確認できます。 失敗した回に関する詳細を確認するには、一番下の表の依存関係名をクリックします。 右下の青色の **[依存関係]** ボタンをクリックすると、エンドツーエンドのトランザクションの詳細を取得できます。
 
-## <a name="analytics"></a>Analytics
+## <a name="logs-analytics"></a>ログ (Analytics)
 
 依存関係は [Kusto クエリ言語](/azure/kusto/query/)で追跡できます。 次に例をいくつか示します。
 
 * これは、失敗した依存関係呼び出しを見つけます。
 
-```
+``` Kusto
 
     dependencies | where success != "True" | take 10
 ```
 
 * これは、AJAX 呼び出しを見つけます。
 
-```
+``` Kusto
 
     dependencies | where client_Type == "Browser" | take 10
 ```
 
 * これは、要求に関連する依存関係呼び出しを見つけます。
 
-```
+``` Kusto
 
     dependencies
     | where timestamp > ago(1d) and  client_Type != "Browser"
@@ -200,17 +178,13 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 
 * これは、ページ ビューに関連する AJAX 呼び出しを見つけます。
 
-```
+``` Kusto 
 
     dependencies
     | where timestamp > ago(1d) and  client_Type == "Browser"
     | join (browserTimings | where timestamp > ago(1d))
       on operation_Id
 ```
-
-## <a name="video"></a>ビデオ
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -220,7 +194,6 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 あらゆる Application Insights SDK と同様に、依存関係収集モジュールもオープンソースです。 コードの閲覧、投稿、問題報告は[公式の GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet-server)で行います。
-
 
 ## <a name="next-steps"></a>次の手順
 

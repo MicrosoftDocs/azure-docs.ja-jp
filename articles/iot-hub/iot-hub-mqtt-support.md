@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Hub の MQTT サポートについて | Microsoft Docs
 description: 開発者ガイド - MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。
-author: rezasherafat
-manager: ''
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
-ms.author: rezas
-ms.openlocfilehash: 5c879b050fad0ac8c6467ffa29d9aee398f57aa2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.author: robinsh
+ms.openlocfilehash: 238627f5cb57a614d5f82f0eeba1ea6b4e32f458
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276854"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445476"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -45,7 +44,7 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 
 | 言語 | プロトコル パラメーター |
 | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
+| [Node.JS](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
@@ -88,7 +87,7 @@ Azure IoT Tools の場合:
 
 1. Visual Studio Code の左下隅にある **[Azure IoT ハブ デバイス]** タブを展開します。
   
-2. デバイスを右クリックし、**[Generate SAS Token for Device]\(デバイスの SAS トークンの生成\)** を選択します。
+2. デバイスを右クリックし、 **[Generate SAS Token for Device]\(デバイスの SAS トークンの生成\)** を選択します。
   
 3. **[期限]** を設定し、Enter キーを押します。
   
@@ -154,7 +153,7 @@ pip install paho-mqtt
 
 * `<generated SAS token>` は、この記事で前述のように作成されたデバイスの SAS トークンです。
 
-* `<iot hub name>` お使いの IoT ハブ の名前です。
+* `<iot hub name>` は、IoT ハブの名前です。
 
 ```python
 from paho.mqtt import client as mqtt
@@ -191,7 +190,7 @@ client.loop_forever()
 
 ### <a name="sending-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの送信
 
-接続に成功したら、デバイスから IoT Hub に `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用してメッセージを送信できます。 `{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。 例: 
+接続に成功したら、デバイスから IoT Hub に `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用してメッセージを送信できます。 `{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。 例:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -264,7 +263,7 @@ IoT Hub のデバイス ツインで報告されるプロパティをデバイ�
 
 3. サービスは、トピック `$iothub/twin/res/{status}/?$rid={request id}` で報告されたプロパティ コレクションの新しい ETag 値を含む応答メッセージを送信します。 この応答メッセージでは、要求と同じ**要求 ID** が使われます。
 
-要求メッセージの本文には、報告されるプロパティの新しい値を含む JSON ドキュメントが含まれています。 JSON ドキュメントの各メンバーは、デバイス ツインのドキュメントの対応するメンバーを更新または追加します。 メンバーを `null` に設定した場合、メンバーは包含オブジェクトから削除されます。 例: 
+要求メッセージの本文には、報告されるプロパティの新しい値を含む JSON ドキュメントが含まれています。 JSON ドキュメントの各メンバーは、デバイス ツインのドキュメントの対応するメンバーを更新または追加します。 メンバーを `null` に設定した場合、メンバーは包含オブジェクトから削除されます。 例:
 
 ```json
 {
@@ -301,7 +300,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + rid, twin_repor
 
 ### <a name="receiving-desired-properties-update-notifications"></a>必要なプロパティの更新通知の受信
 
-デバイスが接続されると、IoT Hub は、ソリューション バックエンドによって実行された更新の内容を含むトピック `$iothub/twin/PATCH/properties/desired/?$version={new version}` に通知を送信します。 例: 
+デバイスが接続されると、IoT Hub は、ソリューション バックエンドによって実行された更新の内容を含むトピック `$iothub/twin/PATCH/properties/desired/?$version={new version}` に通知を送信します。 例:
 
 ```json
 {
@@ -344,4 +343,4 @@ IoT Hub のデプロイの計画に関する詳細については、以下をご
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [IoT Hub 開発者ガイド](iot-hub-devguide.md)
-* [Azure IoT Edge を使ってエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)

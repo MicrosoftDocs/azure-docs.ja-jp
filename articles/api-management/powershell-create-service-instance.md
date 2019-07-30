@@ -31,7 +31,7 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (https://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com ) にログインします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

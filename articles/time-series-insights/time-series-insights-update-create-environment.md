@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b7b90b63ffebc14498183fc179b9c8ae76a722
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237858"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273002"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
@@ -29,9 +29,12 @@ ms.locfileid: "66237858"
 * データの基本的な分析を実行する。
 * 時系列モデルの種類と階層を定義して、インスタンスに関連付ける。
 
+>[!TIP]
+> [IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators)によって、カスタム IoT ソリューションの開発を高速化するために使用できる、エンタープライズ レベルのあらかじめ構成されたソリューションが提供されます。
+
 ## <a name="create-a-device-simulation"></a>デバイス シミュレーションを作成する
 
-このセクションでは、Azure IoT Hub のインスタンスにデータを送信する 3 つのシミュレートされたデバイスを作成します。
+このセクションでは、Azure IoT Hub のインスタンスにデータを送信する、3 つのシミュレートされたデバイスを作成します。
 
 1. [Azure IoT ソリューション アクセラレータのページ](https://www.azureiotsolutions.com/Accelerators)に移動します。 このページには、あらかじめ構築された例がいくつか表示されます。 お使いの Azure アカウントを使用して、サインインします。 次に、 **[Device Simulation]** を選択します。
 
@@ -43,58 +46,18 @@ ms.locfileid: "66237858"
 
     | パラメーター | Action |
     | --- | --- |
-    | **[ソリューション名]** | 新しいリソース グループに一意の値を入力します。 一覧の Azure リソースが作成され、リソース グループに割り当てられます。 |
-    | **サブスクリプション** | Time Series Insights 環境の作成に使用したサブスクリプションを選択します。 |
-    | **[リージョン]** | Time Series Insights 環境の作成に使用したリージョンを選択します。 |
-    | **[オプションの Azure リソースをデプロイする]** | **[IoT Hub]** チェック ボックスをオンのままにします。 シミュレートされたデバイスでは、IoT Hub を使用して接続され、データがストリーミングされます。 |
+    | **デプロイ名** | 新しいリソース グループに一意の値を入力します。 一覧の Azure リソースが作成され、リソース グループに割り当てられます。 |
+    | **Azure サブスクリプション** | Time Series Insights 環境の作成に使用したサブスクリプションを選択します。 |
+    | **Azure の場所** | Time Series Insights 環境の作成に使用したリージョンを選択します。 |
+    | **デプロイ オプション** | **[Provision new IoT Hub]\(新しい IoT ハブをプロビジョニングする\)** を選択します。 |
  
-    **[ソリューションの作成]** を選択します。 ソリューションがデプロイされるまで 10 分から 15 分待ちます。
+    **[ソリューションの作成]** を選択します。 ソリューションのデプロイが完了するのに最大で 20 分かかる場合があります。
 
     [![[ソリューションの作成 Device Simulation] ページ](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-1. ソリューション アクセラレータ ダッシュボードで、 **[起動]** を選択します。
-
-    [![デバイス シミュレーション ソリューションを起動する](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
-
-1. **Microsoft Azure IoT デバイス シミュレーション**のページにリダイレクトされます。 ページの右上隅にある **[New simulation]\(新しいシミュレーション\)** を選択します。
-
-    [![Azure IoT のシミュレーション ページ](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
-
-1. **[Simulation setup]\(シミュレーションの設定\)** ウィンドウで、次のパラメーターを設定します。
-
-    | パラメーター | Action |
-    | --- | --- |
-    | **Name** | シミュレーターの一意名を入力します。 |
-    | **説明** | 定義を入力します。 |
-    | **[Simulation duration]\(シミュレーション期間\)** | **[Run indefinitely]\(無期限に実行する\)** に設定します。 |
-    | **[デバイス モデル]** | **[名前]** :「**Chiller**」と入力します。 <br />**[Amount]\(量\)** :「**3**」と入力します。 |
-    | **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | **[Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\)** に設定します。 |
-
-    [![設定するパラメーター](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
-
-    **[シミュレーションの開始]** を選択します。
-
-    デバイス シミュレーション ダッシュボードで、 **[Active devices]\(アクティブなデバイス\)** と **[Messages per second]\(1 秒あたりのメッセージ数\)** に表示される情報を確認します。
-
-    [![Azure IoT シミュレーション ダッシュボード](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
-
-## <a name="list-device-simulation-properties"></a>デバイス シミュレーションのプロパティを一覧表示する
-
-Azure Time Series Insights 環境を作成する前に、お使いの IoT ハブ、サブスクリプション、およびリソース グループの名前が必要です。
-
-1. ソリューション アクセラレータ ダッシュボードに移動します。 同じ Azure サブスクリプション アカウントを使用してサインインします。 前のセクションで作成したデバイス シミュレーションを探します。
-
-1. そのデバイス シミュレーターを選択し、 **[起動]** を選択します。 右側のデバイス シミュレーター ソリューション アクセラレータ ウィンドウで、 **[Azure の管理ポータル]** オプションを選択します。
-
-    [![シミュレーターの一覧](media/v2-update-provision/device-six-listings.png)](media/v2-update-provision/device-six-listings.png#lightbox)
-
-1. IoT ハブ、サブスクリプション、およびリソース グループの名前を書き留めます。
-
-    [![Azure portal のデバイス シミュレーター ダッシュ ボードの詳細](media/v2-update-provision/device-eight-portal.png)](media/v2-update-provision/device-eight-portal.png#lightbox)
-
 ## <a name="create-a-time-series-insights-preview-payg-environment"></a>Time Series Insights プレビューの PAYG 環境を作成する
 
-このセクションでは、[Azure portal](https://portal.azure.com/) を使用して Azure Time Series Insights プレビューの環境を作成する方法について説明します。
+このセクションでは、Azure Time Series Insights プレビュー環境を作成し、[Azure portal](https://portal.azure.com/) を使用して、IoT ソリューション アクセラレータによって作成された IoT ハブにこれを接続する方法について説明します。
 
 1. 自分のサブスクリプション アカウントを使用して、Azure portal にサインインします。
 
@@ -109,7 +72,7 @@ Azure Time Series Insights 環境を作成する前に、お使いの IoT ハブ
     | **環境名** | Azure Time Series Insights プレビュー環境の一意名を入力します。 |
     | **サブスクリプション** | Azure Time Series Insights プレビュー環境を作成するサブスクリプションを入力します。 ベスト プラクティスとしては、デバイス シミュレーターによって作成される他の IoT リソースと同じサブスクリプションを使用します。 |
     | **リソース グループ** | Azure Time Series Insights プレビュー環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。 リソース グループとは、Azure リソース用のコンテナーです。 ベスト プラクティスとしては、デバイス シミュレーターによって作成される他の IoT リソースと同じリソース グループを使用します。 |
-    | **場所** | Azure Time Series Insights プレビュー環境のデータセンター リージョンを選択します。 帯域幅のコストや待機時間の増加を防ぐために、他の IoT リソースと同じリージョン内に Azure Time Series Insights プレビュー環境をすることをお勧めします。 |
+    | **Location** | Azure Time Series Insights プレビュー環境のデータセンター リージョンを選択します。 待ち時間の増加を防ぐために、お使いの他の IoT リソースと同じリージョン内に Azure Time Series Insights プレビュー環境を作成することをお勧めします。 |
     | **レベル** |  **[PAYG]** (*従量課金制*) を選択します。 これは、Azure Time Series Insights プレビュー製品の SKU です。 |
     | **プロパティ ID** | ご自分の時系列インスタンスを一意に識別できる値を入力します。 **[プロパティ ID]** ボックスに入力する値は変更不可です。 これは後で変更することはできません。 このチュートリアルでは、「**iothub-connection-device-id**」と入力します。Time Series ID の詳細については、[時系列 ID の選択のベスト プラクティス](./time-series-insights-update-how-to-id.md)に関するページを参照してください。 |
     | **Storage account name \(ストレージ アカウント名\)** | 作成する新しいストレージ アカウントのグローバルな一意名を入力します。 |
@@ -129,7 +92,7 @@ Azure Time Series Insights 環境を作成する前に、お使いの IoT ハブ
    | **サブスクリプション** | デバイス シミュレーターに使用したサブスクリプションを選択します。 |
    | **IoT Hub name (IoT ハブの名前)** | デバイス シミュレーター用に作成した IoT ハブの名前を選択します。 |
    | **IoT Hub access policy (IoT ハブのアクセス ポリシー)** | **[iothubowner]** を選びます。 |
-   | **Iot Hub consumer group (IoT Hub コンシューマー グループ)** | **[New]\(新規\)** を選択し、一意の名前を入力します。次に、 **[Add]\(追加\)** を選択します。 コンシューマー グループは、Azure Time Series Insights プレビューで一意の値である必要があります。 |
+   | **IoT Hub コンシューマー グループ** | **[New]\(新規\)** を選択し、一意の名前を入力します。次に、 **[Add]\(追加\)** を選択します。 コンシューマー グループは、Azure Time Series Insights プレビューで一意の値である必要があります。 |
    | **Timestamp property \(タイムスタンプのプロパティ\)** | この値は、受信したテレメトリ データで**タイムスタンプ** プロパティを識別するために使用されます。 このチュートリアルでは、このボックスを空のままにします。 このシミュレーターでは、IoT ハブからの受信タイムスタンプを使用します。これが Time Series Insights の既定の設定です。 |
 
    **[Review + create]\(レビュー + 作成\)** を選択します。
@@ -159,6 +122,34 @@ Azure Time Series Insights 環境を作成する前に、お使いの IoT ハブ
       [![表示された資格情報](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
    ご自分の資格情報が表示されない場合は、環境にアクセスするためのアクセス許可を自分自身に付与する必要があります。 アクセス許可の設定について詳しくは、「[データ アクセスの許可](./time-series-insights-data-access.md)」を参照してください。
+
+## <a name="stream-data-into-your-environment"></a>環境にデータをストリーム配信する
+
+1. [Azure IoT ソリューション アクセラレータのページ](https://www.azureiotsolutions.com/Accelerators)に戻ります。 ソリューション アクセラレータ ダッシュボードで、対象のソリューションを見つけます。 次に **[起動]** を選択します。
+
+    [![デバイス シミュレーション ソリューションを起動する](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+
+1. **Microsoft Azure IoT デバイス シミュレーション**のページにリダイレクトされます。 ページの右上隅にある **[New simulation]\(新しいシミュレーション\)** を選択します。
+
+    [![Azure IoT のシミュレーション ページ](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
+
+1. **[Simulation setup]\(シミュレーションの設定\)** ウィンドウで、次のパラメーターを設定します。
+
+    | パラメーター | Action |
+    | --- | --- |
+    | **Name** | シミュレーターの一意名を入力します。 |
+    | **説明** | 定義を入力します。 |
+    | **[Simulation duration]\(シミュレーション期間\)** | **[Run indefinitely]\(無期限に実行する\)** に設定します。 |
+    | **[デバイス モデル]** | **[名前]** :「**Chiller**」と入力します。 <br />**[Amount]\(量\)** :「**3**」と入力します。 |
+    | **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | **[Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\)** に設定します。 |
+
+    [![設定するパラメーター](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+
+    **[シミュレーションの開始]** を選択します。
+
+    デバイス シミュレーション ダッシュボードで、 **[Active devices]\(アクティブなデバイス\)** と **[Messages per second]\(1 秒あたりのメッセージ数\)** に表示される情報を確認します。
+
+    [![Azure IoT シミュレーション ダッシュボード](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data-in-your-environment"></a>環境内でデータを分析する
 

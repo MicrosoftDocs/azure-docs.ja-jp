@@ -1,19 +1,18 @@
 ---
 title: Azure Backup のレポートを構成する
 description: Recovery Services コンテナーを使用して Azure Backup の Power BI レポートを構成します。
-services: backup
 author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 07/09/2019
 ms.author: adigan
-ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ae772446a4955f9f9def830d5c770f7d826b7e48
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60642680"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466611"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 この記事では、Recovery Services コンテナーを使用して Azure Backup のレポートを構成するために実行する手順を示します。 また、Power BI を使用してレポートにアクセスする方法についても説明します。 これらの手順を完了したら、Power BI に直接移動してレポートを表示、カスタマイズ、および作成できます。
@@ -71,7 +70,7 @@ ms.locfileid: "60642680"
       ![診断設定を表示する (手順 9)](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> ストレージ アカウントを保存することによってレポートを構成した後、初期のデータ プッシュが完了するまで*24 時間待ってください*。 その後でのみ、Power BI で Azure Backup アプリをインポートします。 詳細については、[FAQ のセクション](#frequently-asked-questions)を参照してください。
+> ストレージ アカウントを保存することによってレポートを構成した後、初期のデータ プッシュが完了するまで*24 時間待ってください*。 その後でのみ、Power BI で Azure Backup アプリをインポートします。 詳細については、[FAQ のセクション](backup-azure-monitor-alert-faq.md)を参照してください。
 >
 >
 
@@ -112,34 +111,6 @@ Recovery Services コンテナーを使用してレポート用のストレー�
 
       ![Azure Backup レポートのタブ](./media/backup-azure-configure-reports/reports-tab-view.png)
 
-
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>レポート データがストレージ アカウントへの流入を開始したかどうかはどのように確認できますか?
-構成したストレージ アカウントに移動し、コンテナーを選択します。 コンテナーに insights-logs-azurebackupreport のエントリーがある場合は、レポート データのフローが既に開始されています。
-
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Power BI でのストレージ アカウントと Azure Backup コンテンツ パックへのデータ プッシュの頻度はどれくらいですか?
-  初日のユーザーの場合は、ストレージ アカウントにデータをプッシュするまでに約 24 時間かかります。 この初期のプッシュが完了した後、データは次の図に示されている頻度で更新されます。
-
-  * **ジョブ**、**アラート**、**バックアップ項目**、**コンテナー**、**保護されているサーバー**、および**ポリシー**に関連したデータは、それがログに記録された時点で顧客のストレージ アカウントにプッシュされます。
-
-  * **ストレージ**に関連したデータは、24 時間ごとに顧客のストレージ アカウントにプッシュされます。
-
-       ![Azure Backup のレポートのデータ プッシュ頻度](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
-
-  * Power BI では、[1 日 1 回のスケジュールされた更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed)が行われます。 Power BI でコンテンツ パックのデータを手動で更新することもできます。
-
-### <a name="how-long-can-i-retain-reports"></a>レポートはどれだけの期間保持できますか?
-ストレージ アカウントを構成するとき、ストレージ アカウント内のレポート データの保有期間を選択できます。 「[レポート用のストレージ アカウントを構成する](backup-azure-configure-reports.md#configure-storage-account-for-reports)」セクションの手順 6. に従います。 また、[Excel でレポートを分析し](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/)、必要に応じてより長い保有期間にわたってレポートを保存することもできます。
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>ストレージ アカウントを構成した後は、すべてのデータがレポートに表示されますか?
- ストレージ アカウントを構成した後に生成されたすべてのデータがストレージ アカウントにプッシュされ、レポートで使用できます。 進行中のジョブはレポートにプッシュされません。 そのジョブは、完了するか、または失敗した後にレポートに送信されます。
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>レポートを表示するためのストレージ アカウントを既に構成している場合は、別のストレージ アカウントを使用するように構成を変更できますか?
-はい、別のストレージ アカウントをポイントするように構成を変更できます。 Azure Backup コンテンツ パックに接続するときに、新しく構成されたストレージ アカウントを使用します。 また、別のストレージ アカウントが構成された後、新しいデータはこのストレージ アカウントに流入します。 以前の (構成を変更する前の) データは、引き続き前のストレージ アカウント内に残ります。
-
-### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>コンテナーおよびサブスクリプションにまたがるレポートを表示できますか?
-はい、複数のコンテナーに対して同じストレージ アカウントを構成して、複数のコンテナーにわたるレポートを表示できます。 また、複数のサブスクリプションの複数のコンテナーに対して同じストレージ アカウントを構成することもできます。 その後、Power BI で Azure Backup コンテンツ パックに接続するときに、このストレージ アカウントを使用してレポートを表示できます。 選択されるストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
 
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
 | Error Details | 解決策 |

@@ -50,14 +50,6 @@
           href: virtual-machines-windows-classic-sql-automated-backup.md
         - name: Azure Storage を使用したバックアップと復元
           href: ../sql/virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
-    - name: ビジネス インテリジェンス
-      items:
-        - name: Azure VM での SQL Server Business Intelligence
-          href: virtual-machines-windows-classic-ps-sql-bi.md
-        - name: Azure でホストされる Web サイトで ReportViewer を使用する
-          href: virtual-machines-windows-classic-sql-server-reportviewer.md
-        - name: Azure PowerShell を使用して Azure VM およびレポート サーバーを作成する
-          href: virtual-machines-windows-classic-ps-sql-report.md
     - name: パフォーマンスのベスト プラクティス
       href: ../sql/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
     - name: アプリケーション パターン

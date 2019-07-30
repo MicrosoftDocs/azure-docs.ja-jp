@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414485"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203593"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>リビジョンを使用して互換性に影響しない変更を安全に行う
 API の準備が整って開発者に使用され始めると、その API の変更が必要になることがありますが、API の呼び出し元を混乱させないように注意する必要もあります。 また、行った変更内容を開発者に知らせると有効です。 Azure API Management で**リビジョン**を使用することで、これを実現できます。 詳細については、「[Versions & revisions (バージョンとリビジョン)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)」と「[API Versioning with Azure API Management (Azure API Management での API のバージョン管理)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/)」を参照してください。
@@ -37,8 +37,8 @@ API の準備が整って開発者に使用され始めると、その API の�
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
 
 ## <a name="add-a-new-revision"></a>新しいリビジョンの追加
 
@@ -50,7 +50,7 @@ API の準備が整って開発者に使用され始めると、その API の�
 4. **[+ Add Revision] \(+ リビジョンの追加\)** を選択します。
 
     > [!TIP]
-    > また、API のコンテキスト メニュー (**[...]**) で **[リビジョンの追加]** を選択することもできます。
+    > また、API のコンテキスト メニュー ( **[...]** ) で **[リビジョンの追加]** を選択することもできます。
 
 5. 新しいリビジョンの使用目的を示す説明を入力します。
 6. **[作成]**
@@ -82,16 +82,16 @@ API の準備が整って開発者に使用され始めると、その API の�
 
     ![リビジョン画面の [リビジョン] メニュー。](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
 
-2. **リビジョン 2** のコンテキスト メニュー (**...**) を開きます。
+2. **リビジョン 2** のコンテキスト メニュー ( **...** ) を開きます。
 3. **[Make Current] \(最新にする\)** を選択します。
-4. この変更に関するメモを投稿する場合は、**[Post to Public Change log for this API]\(この API のパブリック変更ログを投稿する\)** をオンにします。 開発者が参照できるように、変更内容の説明を入力します。たとえば、「**テスト用リビジョン。新しい "test" 操作を追加しました。**」と入力します。
+4. この変更に関するメモを投稿する場合は、 **[Post to Public Change log for this API]\(この API のパブリック変更ログを投稿する\)** をオンにします。 開発者が参照できるように、変更内容の説明を入力します。たとえば、「**テスト用リビジョン。新しい "test" 操作を追加しました。** 」と入力します。
 5. これで**リビジョン 2** が最新となりました。
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>開発者ポータルを参照して、変更内容と変更ログを確認します。
 
 1. Azure portal で **[API]** を選択します。
 2. 上部のメニューから **[開発者ポータル]** を選択します。
-3. **[API]** を選択してから、**[Demo Conference API]\(デモ会議 API\)** を選択します。
+3. **[API]** を選択してから、 **[Demo Conference API]\(デモ会議 API\)** を選択します。
 4. 新しい **test** 操作が使用可能となっています。
 5. API 名の下の **[API Change History] \(API の変更履歴\)** を選択します。
 6. この一覧に、変更ログ エントリが表示されます。

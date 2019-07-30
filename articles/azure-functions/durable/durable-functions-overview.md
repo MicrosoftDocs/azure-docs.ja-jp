@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
-ms.author: azfuncdf, glenga
-ms.openlocfilehash: 2228f3fe05e1021d0f87ce0b0d33a8287f048a8c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.author: glenga
+ms.reviewer: azfuncdf
+ms.openlocfilehash: 6e1acf5f605d7f6fb42d24e6e7ec624a317b0e31
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872807"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612872"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 

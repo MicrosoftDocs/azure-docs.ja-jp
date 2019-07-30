@@ -14,14 +14,14 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331539"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60824186"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB からデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-on-premises-mongodb-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-mongodb.md)
 
@@ -66,15 +66,15 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |[はい] |
-| server |MongoDB サーバーの IP アドレスまたはホスト名。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |はい |
+| サーバー |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
-| authenticationType |Basic または Anonymous。 |[はい] |
+| authenticationType |Basic または Anonymous。 |はい |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | password |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |省略可能 (基本認証が使用される場合)。 既定では、管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
-| databaseName |アクセスする MongoDB データベースの名前。 |[はい] |
-| gatewayName |データ ストアにアクセスするゲートウェイの名前。 |[はい] |
+| databaseName |アクセスする MongoDB データベースの名前。 |はい |
+| gatewayName |データ ストアにアクセスするゲートウェイの名前。 |はい |
 | encryptedCredential |ゲートウェイによって暗号化された資格情報。 |省略可能 |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -84,7 +84,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| collectionName |MongoDB データベースのコレクション名前。 |[はい] |
+| collectionName |MongoDB データベースのコレクション名前。 |はい |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
@@ -301,8 +301,8 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
+| ObjectID |string |
+| String |string |
 | UUID |Guid |
 | Object |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
 

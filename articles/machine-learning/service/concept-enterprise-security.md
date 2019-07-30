@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/10/2019
-ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 07/10/2019
+ms.openlocfilehash: 8682baa961ca3270e76614702b51ac50f197e847
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151182"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795485"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Machine Learning service のエンタープライズ セキュリティ
 
@@ -75,7 +75,7 @@ print(primary)
 | モデル/イメージを表示する | ✓ | ✓ | ✓ |
 | Web サービスを呼び出す | ✓ | ✓ | ✓ |
 
-組み込みのロールがニーズに十分ではない場合は、カスタムのロールを作成することもできます。 サポートされているカスタム ロールは、ワークスペースと Machine Learning コンピューティングでの操作用だけであることに注意してください。 カスタム ロールは、ワークスペースとそのワークスペース内のコンピューティング リソースに対する読み取り、書き込み、または削除のアクセス許可を持つことができます。 ロールは、特定のワークスペース レベル、特定のリソース グループ レベル、または特定のサブスクリプション レベルで使用できるようにすることができます。 詳しくは、「[Manage users and roles in an Azure Machine Learning workspace (Azure Machine Learning workspace でユーザーとロールを管理する)](how-to-assign-roles.md)」をご覧ください
+組み込みのロールがニーズに十分ではない場合は、カスタムのロールを作成することもできます。 サポートされているカスタム ロールは、ワークスペースと Machine Learning コンピューティングでの操作用だけです。 カスタム ロールは、ワークスペースとそのワークスペース内のコンピューティング リソースに対する読み取り、書き込み、または削除のアクセス許可を持つことができます。 ロールは、特定のワークスペース レベル、特定のリソース グループ レベル、または特定のサブスクリプション レベルで使用できるようにすることができます。 詳しくは、「[Manage users and roles in an Azure Machine Learning workspace (Azure Machine Learning workspace でユーザーとロールを管理する)](how-to-assign-roles.md)」をご覧ください
 
 ### <a name="securing-compute-and-data"></a>コンピューティングとデータをセキュリティで保護する
 所有者と共同作成者は、ワークスペースにアタッチされているすべてのコンピューティング ターゲットとデータ ストアを使用できます。  
@@ -94,7 +94,7 @@ print(primary)
 
 管理者には、上記のリソースに対するマネージド ID のアクセス権を取り消さないことをお勧めします。 アクセスはキーの再同期操作で復元できます。
 
-Azure Machine Learning service では、すべてのワークスペース リージョンのサブスクリプションに、共同作成者レベルのアクセス権を持つ追加のアプリケーション (名前が aml- で始まるもの) が作成されます。 たとえば、 同じサブスクリプションで米国東部と北ヨーロッパに異なるワークスペースを持っている場合、このようなアプリケーションが 2 つ表示されます。 これは、Azure Machine Learning service がコンピューティング リソースを管理できるために必要です。
+Azure Machine Learning service では、すべてのワークスペース リージョンのサブスクリプションに、共同作成者レベルのアクセス権を持つ追加のアプリケーション (名前が `aml-` で始まるもの) が作成されます。 たとえば、 同じサブスクリプションで米国東部と北ヨーロッパに異なるワークスペースを持っている場合、このようなアプリケーションが 2 つ表示されます。 これは、Azure Machine Learning service がコンピューティング リソースを管理できるために必要です。
 
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
@@ -112,6 +112,8 @@ Azure Machine Learning service では、Azure Machine Learning service ワーク
 Azure Blob Storage に格納されるデータに独自のキーを使用する方法について詳しくは、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)」をご覧ください。
 
 通常は、トレーニング データもトレーニング コンピューティングでアクセスできるように Azure Blob Storage に格納されます。 このストレージは、Azure Machine Learning によっては管理されず、リモート ファイル システムとしてコンピューティングにマウントされます。
+
+ご使用のワークスペースで使われる Azure ストレージ アカウントのアクセス キーの再生成については、[ストレージ アクセス キーの再生成](how-to-change-storage-access-key.md)に関するページをご覧ください。
 
 #### <a name="cosmos-db"></a>Cosmos DB
 Azure Machine Learning service では、Azure Machine Learning service によって管理される Microsoft サブスクリプションに存在する Cosmos DB に、メトリックとメタデータが格納されます。 Cosmos DB に格納されるすべてのデータは、Microsoft によって管理されたキーを使用して保存時に暗号化されます。

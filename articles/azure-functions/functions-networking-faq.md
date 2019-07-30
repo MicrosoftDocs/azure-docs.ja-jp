@@ -7,13 +7,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche, glenga
-ms.openlocfilehash: b673e625e1a50c32e3d8580ec442792ed8611703
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkarche
+ms.reviewer: glenga
+ms.openlocfilehash: 0d352d61a971e289a6286c2d948c3f0869ddd8d2
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572603"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706377"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions のネットワークについてよく寄せられる質問
 

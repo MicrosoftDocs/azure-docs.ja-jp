@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Bing Autosuggest API を使用して自動提案の結果を取得する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Autosuggest の使用方法を示します。
 services: cognitive-services
 author: v-jaswel
@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 02/20/2019
-ms.author: v-jaswel
-ms.openlocfilehash: 8a338eb6ea3dfeea2027d44487138f290f6c8803
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.author: nitinme
+ms.openlocfilehash: 9c5d86c6af5e8dc26dbe6877e8b34baa3cd577c2
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010380"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405238"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>チュートリアル:Web ページ上で検索候補を取得する
 
@@ -283,7 +283,7 @@ Bing ロゴを表示します。
 
 ## <a name="display-results"></a>結果を表示する
 
-ブラウザーで Web ページを開きます。 プロンプトで、Bing Autosuggest API サブスクリプション キーを入力します。 次に、**[Autosuggest]** テキスト ボックスにクエリ (例: "sail") を入力します。 入力すると、Web ページが自動的に更新されて、Autosuggest の結果が表示されます。
+ブラウザーで Web ページを開きます。 プロンプトで、Bing Autosuggest API サブスクリプション キーを入力します。 次に、 **[Autosuggest]** テキスト ボックスにクエリ (例: "sail") を入力します。 入力すると、Web ページが自動的に更新されて、Autosuggest の結果が表示されます。
 
 ```json
 {

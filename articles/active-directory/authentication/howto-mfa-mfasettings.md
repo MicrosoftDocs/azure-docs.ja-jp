@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6a74548d0dc965127c5568708155341f60dbc65
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 618377d532dc932eb21f282ac8ba7f6c07df16f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496746"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113451"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -259,7 +259,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネージドテナントまたはフェデレーション テナントの管理者が使用します。 この機能では、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスします。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用できます。管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
 
 > [!NOTE]
-> MFA の信頼できる IP と条件付きアクセスの名前付きの場所は、IPV4 アドレスでのみ機能します。
+> MFA の信頼できる IP と条件付きアクセスのネームド ロケーションは、IPV4 アドレスでのみ機能します。
 
 組織がオンプレミスのアプリケーションに MFA を提供するために NPS 拡張機能をデプロイしている場合は、認証が試行されるとき、常にソース IP アドレスが NPS サーバーとして表示されます。
 
@@ -280,10 +280,10 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 
 信頼できる IP 機能が有効であるかどうかに関係なく、ブラウザー フローでは 2 段階認証が必要です。 以前のリッチ クライアント アプリケーションではアプリ パスワードが必要です。
 
-### <a name="enable-named-locations-by-using-conditional-access"></a>条件付きアクセスを使用した名前付きの場所の有効化
+### <a name="enable-named-locations-by-using-conditional-access"></a>条件付きアクセスを使用したネームド ロケーションの有効化
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、 **[Azure Active Directory]**  >  **[条件付きアクセス]**  >  **[名前付きの場所]** を選択します。
+2. 左側で、 **[Azure Active Directory]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
 3. **[新しい場所]** を選択します。
 4. 場所の名前を入力します。
 5. **[信頼できる場所としてマークする]** を選択します。
@@ -293,7 +293,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>条件付きアクセスを使用した信頼できる IP 機能の有効化
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、 **[Azure Active Directory]**  >  **[条件付きアクセス]**  >  **[名前付きの場所]** を選択します。
+2. 左側で、 **[Azure Active Directory]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
 3. **[MFA の信頼できる IP の構成]** を選択します。
 4. **[サービス設定]** ページの **[信頼できる IP]** で、次の 2 つのオプションのいずれかを選択します。
 

@@ -4,7 +4,7 @@ description: Azure CLI と Azure Portal を使用して Linux VHD をダウン�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7325282c6442a927f47df3e50efbfda481754fd
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61390230"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667907"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 

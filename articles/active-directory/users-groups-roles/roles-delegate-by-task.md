@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 21136046bad8cb58432de367f0de06d1d0457eec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417079"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083784"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -56,6 +56,9 @@ ID プロバイダーの作成、読み取り、更新、削除を実行する |
 ユーザーの作成、読み取り、更新、削除を実行する | グローバル管理者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
 すべての構成を読み取る | グローバル管理者 | 
 B2C 監査ログを読み取る | グローバル管理者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+
+> [!NOTE]
+> Azure AD B2C のグローバル管理者には、Azure AD のグローバル管理者と同じアクセス許可はありません。 Azure AD B2C のグローバル管理者権限がある場合は、Azure Active Directory ディレクトリではなく Azure AD B2C ディレクトリにいることを確認してください。
 
 ## <a name="company-branding"></a>会社のブランド
 

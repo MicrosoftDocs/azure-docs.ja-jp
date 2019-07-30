@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/17/2019
+ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 2f86b74299b5d47a87ed0b8e89a992f0f91a84be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4017a3be5e03e1a9b85b4002b8069a1adc3a6b83
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924627"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551577"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 を Azure IoT Hub に接続する
 
@@ -30,6 +30,8 @@ ms.locfileid: "64924627"
 * 開発環境を準備し、IoT DevKit 用のアプリケーションを開発する方法。
 
 DevKit をお持ちでない場合は、 [DevKit シミュレーター](https://azure-samples.github.io/iot-devkit-web-simulator/)を使用するか、[DevKit を購入](https://aka.ms/iot-devkit-purchase)してください。
+
+すべての DevKit チュートリアルのソース コードは、[IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) リポジトリにあります。
 
 ## <a name="what-you-need"></a>必要なもの
 
@@ -132,6 +134,11 @@ DevKit は、IoT ハブ上のデバイス固有のエンドポイントに接続
     ![Wi-Fi IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
     ![データの送信](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
+
+1. Azure に送信されたテレメトリ データを確認するには、Azure Cloud Shell で次のコマンドを実行します。
+    ```bash
+    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    ```
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
@@ -301,7 +308,7 @@ IoT Hub の device-to-cloud (D2C) メッセージは、[Azure IoT Tools](https:/
 1. VS Code で、`F1` をクリックし、 **[Azure IoT Hub:IoT Hub 接続文字列を設定する]** を入力して選択します。 その中に接続文字列をコピーします。
     ![Azure IoT Hub 接続文字列の設定](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. 右側の **[AZURE IOT HUB DEVICES]\(Azure IoT Hub デバイス)** ウィンドウを展開し、作成したデバイス名を右クリックして、 **[Start Monitoring D2C Message]\(D2C メッセージの監視の開始)** を選択します。
+1. 右側の **[AZURE IOT HUB DEVICES]\(Azure IoT Hub デバイス)** ウィンドウを展開し、作成したデバイス名を右クリックして、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視の開始\)** を選択します。
     ![D2C メッセージの監視](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 
 1. **[出力]** ウィンドウで、IoT Hub への受信 D2C メッセージを確認できます。

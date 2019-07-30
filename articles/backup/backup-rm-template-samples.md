@@ -1,7 +1,6 @@
 ---
 title: Azure Backup 用 Azure Resource Manager テンプレート
 description: Azure Backup PowerShell のサンプル
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
@@ -9,12 +8,12 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bed2c002cacdac1e47852e6fa3181885af6733d2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7bd502f86cabfcfb5048921d118802a780cd86e4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236794"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464950"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Backup 用 Azure Resource Manager テンプレート
 

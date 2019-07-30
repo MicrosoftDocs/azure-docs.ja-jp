@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c97729cf7d88ebdeefb44c83eb571bb6d7ebd0ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825597"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477236"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>アプリケーション プロキシで要求に対応するアプリケーションを利用する
 [要求に対応するアプリ](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)は、セキュリティ トークン サービス (STS) へのリダイレクトを実行します。 STS は、トークンと引き換えにユーザーの資格情報を要求し、アプリケーションにユーザーをリダイレクトします。 アプリケーション プロキシをこれらのリダイレクトに対応させる方法はいくつかあります。 この記事の手順に従って、要求に対応するアプリのデプロイを構成します。 
@@ -55,7 +55,7 @@ ms.locfileid: "65825597"
    ![エンドポイントを追加し、信頼された URL 値を設定しているスクリーン ショット](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>次の手順
-* 要求に対応するアプリケーション以外のアプリケーショで[シングル サインオンを有効](configure-single-sign-on-portal.md)にする
+* 要求に対応するアプリケーション以外のアプリケーショで[シングル サインオンを有効](configure-single-sign-on-non-gallery-applications.md)にする
 * [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする](application-proxy-configure-native-client-application.md)
 
 

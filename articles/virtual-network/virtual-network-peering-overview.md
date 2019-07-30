@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 22521abbc341fa9999738dd51301d3f84c18627a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919305"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077625"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -90,7 +90,7 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 仮想ネットワーク ピアリング接続を利用するイグレス トラフィックとエグレス トラフィックには少額の料金が発生します。 VNet ピアリングとグローバル VNet ピアリングの料金の詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
 
-ゲートウェイ転送は、1 つの仮想ネットワークがクロスプレミス接続または VNet 間接続用にピアリングされた仮想ネットワーク内の VPN ゲートウェイを活用できるようにするピアリング プロパティです。 このシナリオのリモート ゲートウェイを通過するトラフィックに対しては、[VPN ゲートウェイの料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)が発生しますが、[VNet ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は発生しません。 たとえば、VNetA にオンプレミス接続用の VPN ゲートウェイがあり、VNetB が適切なプロパティを構成して VNetA にピアリングされている場合、VNetB からオンプレミスへのトラフィックに対しては、VPN ゲートウェイあたりのエグレス料金のみが発生します。 VNet ピアリングの料金は適用されません。 [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法について学習してください。
+ゲートウェイ転送は、1 つの仮想ネットワークがクロスプレミス接続または VNet 間接続用にピアリングされた仮想ネットワーク内の VPN/ExpressRoute ゲートウェイを活用できるようにするピアリング プロパティです。 このシナリオのリモート ゲートウェイを通過するトラフィックに対しては、[VPN ゲートウェイの料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)または ExpressRoute ゲートウェイの料金が発生しますが、[VNet ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は発生しません。 たとえば、VNetA にオンプレミス接続用の VPN ゲートウェイがあり、VNetB が適切なプロパティを構成して VNetA にピアリングされている場合、VNetB からオンプレミスへのトラフィックに対しては、VPN ゲートウェイまたは ExpressRoute あたりのエグレス料金のみが発生します。 VNet ピアリングの料金は適用されません。 [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法について学習してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,23 +7,23 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: c4bb6a61-de3d-4f0c-9dca-202554c43dfa
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 48a84520a61d19968b467091871459e21898dd5e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18dbcbf93947306334ccc2c156d9266884198e19
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564245"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594123"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
-> * [Node.js](cdn-app-dev-node.md)
+> * [Node.JS](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
 > 
 > 

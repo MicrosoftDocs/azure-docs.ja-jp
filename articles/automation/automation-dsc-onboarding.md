@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 8a505e88ff92c5227d3b42da2adaf1dce58e6fbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca53d85a09727b75f68da8d049ac3fcd6723a041
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441509"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302268"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -56,7 +56,7 @@ Azure VM Desired State Configuration 拡張機能は非同期に実行される�
 
 マシンに PowerShell Desired State 拡張機能がインストールされておらず、[電源の状態] が [実行中] の場合は、 **[接続]** をクリックします。
 
-**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/metaconfig4)、および必要に応じて VM に割り当てるノード構成を入力します。
+**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/managing-nodes/metaconfig)、および必要に応じて VM に割り当てるノード構成を入力します。
 
 ![オンボード](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 

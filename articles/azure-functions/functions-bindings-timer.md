@@ -4,7 +4,7 @@ description: Azure Functions でタイマー トリガーを使用する方法�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 3b4ed6d1ba83e2adb96bcfac986381dccbbef56f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 1a26950f355fd10d9dd502851886a8b8101d4a83
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416239"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508283"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -45,8 +45,9 @@ ms.locfileid: "65416239"
 * [C#](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
 * [F#](#f-example)
-* [JavaScript](#javascript-example)
 * [Java](#java-example)
+* [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ### <a name="c-example"></a>C# の例
 
@@ -117,6 +118,21 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
     log.LogInformation(sprintf "F# function executed at %s!" now)
 ```
 
+### <a name="java-example"></a>Java の例
+
+次の例の関数は、5 分ごとにトリガーして実行します。 関数の `@TimerTrigger` 注釈では、[CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)と同じ文字列形式を使用してスケジュールが定義されています。
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 ### <a name="javascript-example"></a>JavaScript の例
 
 次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 [タイマー オブジェクト](#usage)が関数に渡されます。
@@ -148,19 +164,38 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="java-example"></a>Java の例
+### <a name="python-example"></a>Python の例
 
-次の例の関数は、5 分ごとにトリガーして実行します。 関数の `@TimerTrigger` 注釈では、[CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)と同じ文字列形式を使用してスケジュールが定義されています。
+次の例では、構成が *function.json* ファイルに記述されているタイマー トリガー バインディングを使用します。 このバインディングを使用する実際の [Python 関数](functions-reference-python.md)は、 *__init__.py* ファイルに記述されています。 関数に渡されるオブジェクトの型は、[azure.functions.TimerRequest オブジェクト](/python/api/azure-functions/azure.functions.timerrequest)です。 関数ロジックでは、現在の呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 
 
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+    "name": "mytimer",
+    "type": "timerTrigger",
+    "direction": "in",
+    "schedule": "0 */5 * * * *"
 }
+```
+
+Python コードを次に示します。
+
+```python
+import datetime
+import logging
+
+import azure.functions as func
+
+
+def main(mytimer: func.TimerRequest) -> None:
+    utc_timestamp = datetime.datetime.utcnow().replace(
+        tzinfo=datetime.timezone.utc).isoformat()
+
+    if mytimer.past_due:
+        logging.info('The timer is past due!')
+
+    logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
 ## <a name="attributes"></a>属性
@@ -190,7 +225,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 |**type** | 該当なし | "timerTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のタイマー オブジェクトを表す変数の名前。 | 
-|**schedule**|**ScheduleExpression**|[CRON 式](#cron-expressions)または [TimeSpan](#timespan) 値。 `TimeSpan` は、App Service プランで実行している関数アプリに対してのみ使うことができます。 スケジュール式をアプリ設定に含めて、たとえば "%ScheduleAppSetting%" のように、**%** 記号で囲まれたアプリ設定名にこのプロパティを設定できます。 |
+|**schedule**|**ScheduleExpression**|[CRON 式](#cron-expressions)または [TimeSpan](#timespan) 値。 `TimeSpan` は、App Service プランで実行している関数アプリに対してのみ使うことができます。 スケジュール式をアプリ設定に含めて、たとえば "%ScheduleAppSetting%" のように、 **%** 記号で囲まれたアプリ設定名にこのプロパティを設定できます。 |
 |**runOnStartup**|**runOnStartup**|`true` の場合、関数はランタイムの開始時に呼び出されます。 たとえば、ランタイムが開始するのは、関数アプリが非アクティブになってアイドル状態に移行した後で起動したとき、 関数が変化したために関数アプリが再起動するとき、関数アプリがスケールアウトするときなどです。`true` に設定されている場合でも、特に運用環境では、**runOnStartup** はほとんど呼び出されることはありません。 |
 |**useMonitor**|**UseMonitor**|`true` または `false` に設定し、スケジュールを監視する必要があるかどうかを示します。 スケジュールの監視はスケジュールの発生を維持し、関数アプリのインスタンスが再起動するときでもスケジュールが正しく維持されることを保証するのに役立ちます。 このプロパティを明示的に設定しない場合、繰り返し間隔が 1 分より長いスケジュールの既定値は `true` です。 1 分間に 2 回以上トリガーするスケジュールの既定値は `false` です。
 
@@ -234,12 +269,7 @@ Azure Functions では、CRON 式を解釈するのに [NCronTab](https://github
 |値のセット (`,` 演算子)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05、hh:mm:08、hh:mm:10。hh:mm は毎時の毎分です (1 分間に 3 回)|
 |間隔値 (`/` 演算子)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00、hh:10:00、hh:15:00、... hh:55:00 まで。hh は毎時です (1 時間に 12 回)|
 
-月や曜日を指定するには、数値、名前、または名前の省略形を使用できます。
-
-* 曜日については、数値は 0 から 6 で指定します (0 は日曜日です)。
-* 名前は英語で指定します。 例: `Monday`, `January`。
-* 名前の大文字と小文字は区別されません。
-* 名前は省略形でも指定できます。 省略形は 3 文字にすることをお勧めします。  例: `Mon`, `Jan`。 
+[!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
 ### <a name="cron-examples"></a>CRON の例
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65139261"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146306"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -300,4 +300,6 @@ System Center Operations Manager 管理グループに報告するように Linu
 
 ## <a name="next-steps"></a>次の手順
 
-エージェントのインストールまたは管理中に問題が発生した場合は、[Linux エージェントのトラブルシューティング](agent-linux-troubleshoot.md)に関する記事を参照してください。
+- Linux エージェントのインストールまたは管理中に問題が発生した場合は、[Linux エージェントのトラブルシューティング](agent-linux-troubleshoot.md)に関する記事を参照してください。
+
+- Windows エージェントのインストールまたは管理中に問題が発生した場合は、[Windows エージェントのトラブルシューティング](agent-windows-troubleshoot.md)に関する記事を参照してください。

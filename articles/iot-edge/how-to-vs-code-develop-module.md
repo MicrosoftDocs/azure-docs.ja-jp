@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 02/20/2019
+ms.date: 06/25/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9a7d83070caad86d7d66b62a9592dbb1e0017f97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff40ea3fec55c77d1135bde8088b00079e6b1c44
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125918"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448525"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -167,7 +167,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
         > [!NOTE]
         > .NET Core `TargetFramework` が `launch.json` 内のプログラム パスと一致しない場合は、Visual Studio Code がこのプログラムを正常に起動できるように .csproj ファイル内の `TargetFramework` に合わせて `launch.json` 内のプログラム パスを手動で更新する必要があります。
 
-   - **Node.js**
+   - **Node.JS**
      - Visual Studio Code 統合ターミナルで、ディレクトリを ***&lt;対象のモジュール名&gt;*** フォルダーに変更し、次のコマンドを実行して Node パッケージをインストールします。
 
        ```cmd
@@ -228,7 +228,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
    ![watch 変数](media/how-to-develop-csharp-module/view-log.png)
 
-1. Visual Studio Code の [デバッグ] ビューに移動し、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、 ** *&lt;対象のモジュール名&gt;* Remote Debug** のようになります。
+1. Visual Studio Code の [デバッグ] ビューに移動し、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、** *&lt;対象のモジュール名&gt;* Remote Debug** のようになります。
 
 1. **[デバッグの開始]** を選択するか、**F5** キーを押します。 アタッチするプロセスを選択します。
 
@@ -312,17 +312,17 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
   [開発用マシンと IoT Edge デバイス上で SSH チャネルを構成し](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes)、アタッチする `launch.json` ファイルを編集します。
 
-- **Node.js**
+- **Node.JS**
 
   - デバッグ対象のマシン上のモジュールが実行されており、デバッガーがアタッチする準備が整えられていること、およびポート 9229 が外部からアクセス可能であることを確認します。 これを確認するには、デバッガー マシン上で `http://<target-machine-IP>:9229/json` を開きます。 この URL に、デバッグ対象の Node.js モジュールに関する情報が表示されます。
   
-  - 開発用マシン上で Visual Studio Code を開き、`launch.json` を編集して、 ** *&lt;モジュール名&gt;* Remote Debug (Node.js)** プロファイル (モジュールが Windows コンテナーとして実行されている場合は、 ** *&lt;モジュール名&gt;* Remote Debug (Windows コンテナー内の Node.js)** プロファイル) のアドレス値が、デバッグ対象のマシンの IP になるようにします。
+  - 開発用マシン上で Visual Studio Code を開き、`launch.json` を編集して、** *&lt;モジュール名&gt;* Remote Debug (Node.js)** プロファイル (モジュールが Windows コンテナーとして実行されている場合は、** *&lt;モジュール名&gt;* Remote Debug (Windows コンテナー内の Node.js)** プロファイル) のアドレス値が、デバッグ対象のマシンの IP になるようにします。
 
 - **Java**
 
   - `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N` を実行し、デバッグ対象マシンへの SSH トンネルを構築します。
   
-  - 開発用マシン上で Visual Studio Code を開き、`launch.json` 内の  ** *&lt;モジュール名&gt;* Remote Debug (Java)** プロファイルを編集し、ターゲット マシンにアタッチできるようにします。 Visual Studio Code を使用して `launch.json` を編集したり、Java をデバッグしたりする方法の詳細については、[デバッガーの構成](https://code.visualstudio.com/docs/java/java-debugging#_configuration)の該当するセクションをご覧ください。
+  - 開発用マシン上で Visual Studio Code を開き、`launch.json` 内の ** *&lt;モジュール名&gt;* Remote Debug (Java)** プロファイルを編集し、ターゲット マシンにアタッチできるようにします。 Visual Studio Code を使用して `launch.json` を編集したり、Java をデバッグしたりする方法の詳細については、[デバッガーの構成](https://code.visualstudio.com/docs/java/java-debugging#_configuration)の該当するセクションをご覧ください。
 
 - **Python**
 
@@ -330,11 +330,11 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
   - 前に `main.py` 内に挿入したコード `ptvsd.enable_attach(('0.0.0.0', 5678))` 内で、**0.0.0.0** をデバッグ対象マシンの IP アドレスに変更します。 IoT Edge モジュールをもう一度ビルドし、プッシュしてデプロイします。
 
-  - 開発用マシン上で Visual Studio Code を開き、`launch.json` を編集して、 ** *&lt;モジュール名&gt;* Remote Debug (Python)** プロファイルの `host` 値に、`localhost` ではなく、ターゲット マシンの IP アドレスが使用されるようにします。
+  - 開発用マシン上で Visual Studio Code を開き、`launch.json` を編集して、** *&lt;モジュール名&gt;* Remote Debug (Python)** プロファイルの `host` 値に、`localhost` ではなく、ターゲット マシンの IP アドレスが使用されるようにします。
 
 ### <a name="debug-your-module"></a>モジュールをデバッグする
 
-1. Visual Studio Code の [デバッグ] ビューで、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、 ** *&lt;対象のモジュール名&gt;* Remote Debug** のようになります。
+1. Visual Studio Code の [デバッグ] ビューで、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、** *&lt;対象のモジュール名&gt;* Remote Debug** のようになります。
 
 1. お使いの開発言語のモジュール ファイルを開いて、ブレークポイントを追加します。
 

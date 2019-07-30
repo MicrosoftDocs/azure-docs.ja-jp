@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: juliako
-ms.openlocfilehash: ab07b87d724f2006b6b5c0e4f472140f92230dea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8e4228340917fe26ca5999bd70d122e31cd3c43
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080395"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797608"
 ---
 # <a name="pre-filtering-manifests-with-dynamic-packager"></a>Dynamic Packager でマニフェストにフィルターを事前適用する
 
@@ -48,7 +48,7 @@ REST の例については、[REST を使用したファイルのアップロー
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>ビデオ ストリームのビットレートを監視する
 
-[Azure Media Player のデモ ページ](https://aka.ms/amp)を使用して、ビデオ ストリームのビットレートを監視します。 デモ ページの **[Diagnostics]\(診断\)** タブに診断情報が表示されます。
+[Azure Media Player のデモ ページ](https://ampdemo.azureedge.net/azuremediaplayer.html)を使用して、ビデオ ストリームのビットレートを監視します。 デモ ページの **[Diagnostics]\(診断\)** タブに診断情報が表示されます。
 
 ![Azure Media Player の診断][amp_diagnostics]
  

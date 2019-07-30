@@ -3,7 +3,7 @@ title: Azure の請求およびコスト管理の予算シナリオ | Microsoft 
 description: Azure Automation を使用して特定の予算しきい値に基づいて VM をシャットダウンする方法を説明します。
 services: billing
 documentationcenter: ''
-author: Erikre
+author: bandersmsft
 manager: dougeby
 editor: ''
 tags: billing
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 03/13/2019
-ms.author: erikre
-ms.openlocfilehash: 4bf76ac0bdd59764815f18a40a3e243d7cf9d920
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: banders
+ms.openlocfilehash: 37f129526cb184a2eeee9e36028e8f00b5bbc247
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617391"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443470"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -277,8 +277,8 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 4.  次の項目を追加して確認します。
     - アクション グループ名
     - 短い名前
-    - サブスクリプション
-    - リソース グループ
+    - Subscription
+    - Resource group
 
     ![Azure - ロジック アプリ - アクション グループを追加する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
 

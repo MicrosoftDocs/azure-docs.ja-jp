@@ -4,7 +4,7 @@ description: チュートリアル - このチュートリアルでは、毎回�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6c6510113710ea19128fcd27adbf8671a8f083bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8ef524121f41129d842cfdf9822fe6a19c71810
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996505"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709547"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル:Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する
 
@@ -135,10 +135,10 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Web ブラウザーを開いて､`http://<publicIps>:8080` に移動します｡ 次のようにして Jenkins の初期設定を行います｡
 
 - **[Select plugins to install]** を選択します。
-- 上部のテキスト ボックスで *GitHub* を検索します。 *GitHub* のチェック ボックスをオンにし、**[Install]\(インストール\)** を選択します
+- 上部のテキスト ボックスで *GitHub* を検索します。 *GitHub* のチェック ボックスをオンにし、 **[Install]\(インストール\)** を選択します
 - 最初の管理者ユーザーを作成します。 **admin** などのユーザー名を入力し、独自の安全なパスワードを入力します。 最後に、フル ネームとメール アドレスを入力します。
 - **[Save and Finish]\(保存して終了する\)** を選択します
-- Jenkins が準備ができたら、**[Start using Jenkins]\(Jenkins の使用を開始する\)** を選択します
+- Jenkins が準備ができたら、 **[Start using Jenkins]\(Jenkins の使用を開始する\)** を選択します
   - Jenkins の使用を開始したときに Web ブラウザーに空白のページが表示された場合は、Jenkins サービスを再起動します。 SSH セッションから「`sudo service jenkins restart`」と入力し、Web ブラウザーを最新の情報に更新します。
 - 必要な場合は、作成したユーザー名とパスワードを使用して Jenkins にログインします。
 
@@ -151,8 +151,8 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 - **[Settings]\(設定\)** を選択して、左側の **[Integrations & services]\(統合とサービス\)** を選択します。
 - **[Webhook の追加]** を選択し、フィルター ボックスに「*Jenkins*」と入力します。
 - **[Payload URL]\(ペイロード URL\)** に、「`http://<publicIps>:8080/github-webhook/`」と入力します。 末尾のスラッシュ (/) を含めていることを確認します。
-- **[コンテンツの種類]** で、*[application/x-www-form-urlencoded]* を選択します。
-- **[Which events would you like to trigger this webhook?]\(この Webhook でトリガーするイベント\)** で、*[Just the push event]\(プッシュ イベントのみ\)* を選択します。
+- **[コンテンツの種類]** で、 *[application/x-www-form-urlencoded]* を選択します。
+- **[Which events would you like to trigger this webhook?]\(この Webhook でトリガーするイベント\)** で、 *[Just the push event]\(プッシュ イベントのみ\)* を選択します。
 - **[アクティブ]** をオンにします。
 - **[Webhook の追加]** を選択します。
 
@@ -164,9 +164,9 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 
 Jenkins Web サイトのホームページから **[Create new jobs]** を選択します。
 
-- ジョブ名として *HelloWorld* を入力します｡ **Freestyle プロジェクト**を選択し､**[OK]** をクリックします｡
-- **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/cynthn/nodejs-docs-hello-world*) を入力します
-- **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/cynthn/nodejs-docs-hello-world.git*)
+- ジョブ名として *HelloWorld* を入力します｡ **Freestyle プロジェクト**を選択し､ **[OK]** をクリックします｡
+- **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/cynthn/nodejs-docs-hello-world* ) を入力します
+- **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/cynthn/nodejs-docs-hello-world.git* )
 - **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します｡
 - **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **[Execute shell]** を選択し、コマンド ウィンドウに `echo "Test"` を入力します。
 - ジョブ ウィンドウの下部にある **[保存]** を選択します。
@@ -217,8 +217,8 @@ COPY index.js /var/www/
 Jenkins インスタンスに戻り､前の手順で作成したジョブを選択します｡ 左側の **[Configure]** を選択し、下方向にスクロールして **[Build]** セクションを表示します。
 
 - 既存の `echo "Test"` ビルド ステップを削除します｡ 既存のビルド ステップ ボックスの右上隅にある赤い十字を選択します。
-- **[Add build step]** を選択して、**[Execute shell]** を選択します。
-- **[コマンド]** ボックスに次の Docker コマンドを入力して、**[保存]** を選択します。
+- **[Add build step]** を選択して、 **[Execute shell]** を選択します。
+- **[コマンド]** ボックスに次の Docker コマンドを入力して、 **[保存]** を選択します。
 
   ```bash
   docker build --tag helloworld:$BUILD_NUMBER .
@@ -230,7 +230,7 @@ Docker ビルドステップはイメージを作成し､イメージの履歴�
 
 
 ## <a name="test-your-pipeline"></a>パイプラインをテストする
-動作中のパイプライン全体を表示するには、フォークした GitHub レポジトリ内の *index.js* ファイルを再び編集し、**[Commit change]** を選択します。 GitHub の webhook に基づき Jenkins で新しいジョブが開始されます｡ Docker イメージを作成して､新しいコンテナー内でアプリを起動するには､数秒の時間がかかります｡
+動作中のパイプライン全体を表示するには、フォークした GitHub レポジトリ内の *index.js* ファイルを再び編集し、 **[Commit change]** を選択します。 GitHub の webhook に基づき Jenkins で新しいジョブが開始されます｡ Docker イメージを作成して､新しいコンテナー内でアプリを起動するには､数秒の時間がかかります｡
 
 必要に応じて､再度､VM のパブリック IP アドレスを入手します｡
 

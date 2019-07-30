@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca3fe83d7072ba774c8124c5108652ab7223041d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593218"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449810"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Azure VM 起動時に Windows が "CRITICAL SERVICE FAILED" をブルー スクリーンに表示する
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のある "CRITICAL SERVICE FAILED" エラーについて説明します。 また、この問題の解決するためのトラブルシューティング手順について説明します。 
@@ -30,7 +30,7 @@ ms.locfileid: "60593218"
 
 Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) のブート スクリーンショットを確認すると、ブルー スクリーンに次のいずれかのエラー メッセージが表示されます。
 
-- "問題が発生したため、PC を再起動する必要があります。 再起動できます。 この問題と可能な解決方法の詳細については、 http://windows.com/stopcode を参照してください。 サポート担当者に電話をかける場合、次の情報を伝えます。停止コード: CRITICAL SERVICE FAILED" 
+- "問題が発生したため、PC を再起動する必要があります。 再起動できます。 この問題と可能な解決方法の詳細については、 https://windows.com/stopcode を参照してください。 サポート担当者に電話をかける場合、次の情報を伝えます。停止コード: CRITICAL SERVICE FAILED" 
 - "問題が発生したため、PC を再起動する必要があります。 エラー情報を収集しています。自動的に再起動します。 詳細については、次のエラーを後からオンラインで検索してください: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>原因

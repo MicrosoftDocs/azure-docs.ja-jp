@@ -10,13 +10,14 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
-ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 6c7952f5baf2e6956e4052f68ede6fb0c4902854
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.author: glenga
+ms.reviewer: azfuncdf, cotresne
+ms.openlocfilehash: c54a5631222a6de261e9805f284a4dfa2801750f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921355"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612927"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -32,7 +33,7 @@ ms.locfileid: "65921355"
 
 * [Visual Studio Code](https://code.visualstudio.com/download) をインストールします。
 
-* [最新の Azure Functions ツール](../functions-develop-vs.md#check-your-tools-version)があることを確認します。
+* 最新バージョンの [Azure Functions Core Tools](../functions-run-local.md) があることを確認します。
 
 * Windows コンピューターでは、[Azure Storage Emulator](../../storage/common/storage-use-emulator.md) がインストールされ、実行されていることを確認します。 Mac または Linux コンピューターでは、実際の Azure ストレージ アカウントを使用する必要があります。
 
@@ -48,69 +49,61 @@ ms.locfileid: "65921355"
 
 1. 関数アプリのルート ディレクトリで `npm install durable-functions` を実行して、`durable-functions` npm パッケージをインストールします。
 
-## <a name="create-a-starter-function"></a>starter 関数を作成する
+## <a name="creating-your-functions"></a>関数を作成する
+
+ここでは、Durable Functions を使い始めるために必要な 3 つの関数、つまり HTTP スターター、オーケストレーター、およびアクティビティ関数を作成します。 HTTP スターターによって対象のソリューション全体が開始され、オーケストレーターによってさまざまなアクティビティ関数に作業がディスパッチされます。
+
+### <a name="http-starter"></a>HTTP スターター
 
 まず、Durable Functions のオーケストレーションを開始する HTTP トリガー関数を作成します。
 
-1. **[Azure:Functions]** で [関数の作成] アイコンを選択します。
+1. *[Azure:Functions]* で **[関数の作成]** アイコンを選択します。
 
     ![関数を作成する](./media/quickstart-js-vscode/create-function.png)
 
-2. 関数アプリ プロジェクトが含まれたフォルダーを選択し、 **[HTTP トリガー]** 関数テンプレートを選択します。
+2. 自分の関数アプリ プロジェクトが含まれたフォルダーを選択し、 **[Durable Functions HTTP スターター]** 関数テンプレートを選択します。
 
-    ![HTTP トリガー テンプレートを選択する](./media/quickstart-js-vscode/create-function-choose-template.png)
+    ![HTTP スターター テンプレートを選択する](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. 関数名として「`HttpStart`」と入力して Enter キーを押し、 **[匿名]** 認証を選択します。
+3. 名前を既定値の `DurableFunctionsHttpStart` のままにして **** Enter ** キーを押し、 **[匿名]** 認証を選択します。
 
     ![匿名認証を選択する](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
-    HTTP によってトリガーされる関数のテンプレートを使用して、選択した言語で関数が作成されます。
-
-4. index.js を以下の JavaScript に置き換えます。
-
-    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
-
-5. function.json を以下の JSON に置き換えます。
-
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
-
 これで Durable Functions へのエントリ ポイントが作成されます。 オーケストレーターを追加してみましょう。
 
-## <a name="create-an-orchestrator-function"></a>オーケストレーター関数を作成する
+### <a name="orchestrator"></a>オーケストレーター
 
-次に、オーケストレーターにする別の関数を作成します。 便宜的に、HTTP トリガー関数テンプレートを使用します。 関数コード自体は、オーケストレーター コードに置き換えられます。
+ここでは、アクティビティ関数を調整するオーケストレーターを作成します。
 
-1. 前のセクションの手順を繰り返し、HTTP トリガー テンプレートを使用して 2 つ目の関数を作成します。 今回は関数に `OrchestratorFunction` と名前を付けます。
+1. *[Azure:Functions]* で **[関数の作成]** アイコンを選択します。
 
-2. 新しい関数の index.js ファイルを開き、内容を次のコードに置き換えます。
+    ![関数を作成する](./media/quickstart-js-vscode/create-function.png)
 
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
+2. 自分の関数アプリ プロジェクトが含まれたフォルダーを選択し、 **[Durable Functions オーケストレーター]** 関数テンプレートを選択します。 名前は既定値の "DurableFunctionsOrchestrator" のままにします
 
-3. function.json ファイルを開き、次の JSON ファイルに置き換えます。
-
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
+    ![オーケストレーター テンプレートを選択する](./media/quickstart-js-vscode/create-function-choose-template.png)
 
 ここでは、アクティビティ関数を調整するオーケストレーターを追加しました。 次は参照アクティビティ関数を追加してみましょう。
 
-## <a name="create-an-activity-function"></a>アクティビティ関数を作成する
+### <a name="activity"></a>アクティビティ
 
-1. 前のセクションの手順を繰り返し、HTTP トリガー テンプレートを使用して 3 つ目の関数を作成します。 ただし、今回は関数に `E1_SayHello` と名前を付けます。
+ここで、実際にソリューションの作業を実行するアクティビティ関数を作成します。
 
-2. 新しい関数の index.js ファイルを開き、内容を次のコードに置き換えます。
+1. *[Azure:Functions]* で **[関数の作成]** アイコンを選択します。
 
-    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
+    ![関数を作成する](./media/quickstart-js-vscode/create-function.png)
 
-3. function.json を以下の JSON に置き換えます。
+2. 自分の関数アプリ プロジェクトが含まれたフォルダーを選択し、 **[Durable Functions のアクティビティ]** 関数テンプレートを選択します。 名前は既定値の "Hello" のままにします。
 
-    [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
+    ![アクティビティ テンプレートを選択する](./media/quickstart-js-vscode/create-function-choose-template.png)
 
 これで、オーケストレーションを開始し、アクティビティ関数を連結するために必要なすべてのコンポーネントが追加されます。
 
 ## <a name="test-the-function-locally"></a>関数をローカルでテストする
 
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。  
+Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
-1. Windows コンピューターでは、Azure Storage Emulator を起動し、local.settings.json の **AzureWebJobsStorage** プロパティが `UseDevelopmentStorage=true` に設定されていることを確認します。 
+1. Windows コンピューターで、Azure Storage Emulator を起動し、*local.settings.json* の **AzureWebJobsStorage** プロパティが `UseDevelopmentStorage=true` に設定されていることを確認します。
 
     Storage Emulator 5.8 では、local.settings.json の **AzureWebJobsSecretStorageType** プロパティが `files` に設定されていることを確認します。 Mac または Linux コンピューターでは、既存の Azure ストレージ アカウントの接続文字列に **AzureWebJobsStorage** プロパティを設定する必要があります。 ストレージ アカウントの作成については、この記事で後述します。
 
@@ -123,7 +116,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
     ![Azure のローカル出力](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-4. `{functionName}` を `OrchestratorFunction` で置き換え
+4. `{functionName}` を `DurableFunctionsOrchestrator` で置き換え
 
 5. [Postman](https://www.getpostman.com/) または [cURL](https://curl.haxx.se/) のようなツールを使用して、HTTP POST 要求を URL エンドポイントに送信します。
 

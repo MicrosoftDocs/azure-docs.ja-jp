@@ -4,24 +4,24 @@ description: この記事では、Azure Stream Analytics ジョブで使用さ�
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 04c19e7e51777db4c59bfab3d5a8a7598560556a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 06/11/2019
+ms.openlocfilehash: 530ff8d09d6c580a31ae26929fafcec5bb5b471b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231650"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621586"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Stream Analytics ウィンドウ関数の概要
+
 タイム ストリーミング シナリオでは、テンポラル ウィンドウに含まれているデータに対する操作の実行は一般的なパターンです。 Stream Analytics には、ウィンドウ関数に対するネイティブ サポートがあるため、開発者は複雑なストリーム処理ジョブを最小限の作業で作成できます。
 
-選択できるテンポラル ウィンドウには、[**タンブリング**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics)、[**ホッピング**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics)、[**スライディング**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)、および[**セッション**](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics) ウィンドウの 4 種類があります。  ウィンドウ関数は、Stream Analytics ジョブ内のクエリ構文の [**GROUP BY**](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics) 句で使用します。
+選択できるテンポラル ウィンドウには、[**タンブリング**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)、[**ホッピング**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics)、[**スライディング**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)、および[**セッション**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) ウィンドウの 4 種類があります。  ウィンドウ関数は、Stream Analytics ジョブ内のクエリ構文の [**GROUP BY**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 句で使用します。 [**Windows()** 関数](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)を使用して、複数のウィンドウにわたってイベントを集計することもできます。
 
-すべての[ウィンドウ](https://msdn.microsoft.com/azure/stream-analytics/reference/windowing-azure-stream-analytics)操作が、ウィンドウの**終了**時に結果を出力します。 ウィンドウの出力は、使用される集計関数に基づく単一のイベントになります。 出力イベントにはウィンドウの終了のタイム スタンプが割り当てられ、すべてのウィンドウ関数が固定長で定義されています。 
+すべての[ウィンドウ](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)操作が、ウィンドウの**終了**時に結果を出力します。 ウィンドウの出力は、使用される集計関数に基づく単一のイベントになります。 出力イベントにはウィンドウの終了のタイム スタンプが割り当てられ、すべてのウィンドウ関数が固定長で定義されています。 
 
 ![Stream Analytics ウィンドウ関数の概念](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -56,6 +56,6 @@ ms.locfileid: "54231650"
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

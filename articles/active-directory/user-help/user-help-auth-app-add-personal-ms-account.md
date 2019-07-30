@@ -12,14 +12,15 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 502407bbf1cdb47fc8105ed0220babcd9f292faa
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474094"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382698"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>個人用の Microsoft アカウントを追加する
+
 標準的な 2 要素検証プロセスとパスワードなしの電話によるサインイン方法向けに、Outlook.com や Xbox LIVE などの個人用の Microsoft アカウントを Microsoft Authenticator アプリに追加します。
 
 - **標準的な 2 要素検証方法。** ログインするデバイスにご自分のユーザー名とパスワードを入力し、Microsoft Authenticator アプリが通知を送信するかどうか、または Microsoft Authenticator アプリの **[アカウント]** 画面から関連付けられている確認コードをコピーするかを選択します。
@@ -30,6 +31,7 @@ ms.locfileid: "60474094"
 >アカウントを追加する前に、Microsoft Authenticator アプリをダウンロードしてインストールする必要があります。 まだ完了していない場合は、「[アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」という記事の手順に従ってください。
 
 ## <a name="add-your-personal-microsoft-account"></a>個人用の Microsoft アカウントを追加する
+
 個人用の Microsoft アカウントを追加するには、最初に 2 要素検証を有効にしてから、アプリにアカウントを追加します。
 
 >[!Note]

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 79dba586a5f7102d0012c381593551a951f1b38e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 023e53bf17c1462c3eaedde3d6d9c1621ade27fc
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502348"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358865"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>データ サイエンス仮想マシンにアクセス資格情報を安全に保存する
 
@@ -91,15 +91,16 @@ credentials = MSIAuthentication(
 
 # Create a Key Vault client.
 key_vault_client = KeyVaultClient(
-credentials
+    credentials
 )
 
 key_vault_uri = "https://<key Vault Name>.vault.azure.net/"
 
 secret = key_vault_client.get_secret(
-key_vault_uri,  # Your key vault URL.
-"SQLPasswd",       # The name of your secret that already exists in the key vault.
-""              # The version of the secret; empty string for latest.
+    key_vault_uri,  # Your key vault URL.
+    # The name of your secret that already exists in the key vault.
+    "SQLPasswd",
+    ""              # The version of the secret; empty string for latest.
 )
 print("My secret value is {}".format(secret.value))
 ```

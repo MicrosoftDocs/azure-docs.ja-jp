@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: 9b4bdee19c883252e7de140ac7b19babd43d1df8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0383fd2ca348cd69f07ed61a7935e4fec7999b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755178"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538030"
 ---
 Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC ワークロードに対するリーダー クラスのパフォーマンス、MPI スケーラビリティ、およびコスト効率を提供するように設計されています。
 

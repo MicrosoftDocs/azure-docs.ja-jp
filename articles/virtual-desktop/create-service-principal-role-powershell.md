@@ -1,32 +1,32 @@
 ---
-title: Windows Virtual Desktop プレビューのサービス プリンシパルとロールの割り当てを PowerShell で作成する - Azure
-description: PowerShell で Windows Virtual Desktop プレビューのサービス プリンシパルを作成してロールを割り当てる方法
+title: Windows Virtual Desktop プレビューのサービス プリンシパルとロールの割り当てを PowerShell を使って作成する - Azure
+description: Windows Virtual Desktop プレビューで PowerShell を使用してサービス プリンシパルを作成する方法とロールを割り当てる方法を説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523311"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206654"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
 サービス プリンシパルとは、特定の目的に使用するロールやアクセス許可を割り当てるために Azure Active Directory に作成できる ID です。 Windows Virtual Desktop プレビューでは、次の用途でサービス プリンシパルを作成できます。
 
-- Windows Virtual Desktop の特定の管理タスクを自動化する
-- Windows Virtual Desktop Azure Resource Manager テンプレートを実行する際、MFA が求められるユーザーの代わりとなる資格情報として使用する。
+- Windows Virtual Desktop の特定の管理タスクを自動化する。
+- Windows Virtual Desktop 用の Azure Resource Manager テンプレートを実行する際、MFA が求められるユーザーの代わりとなる資格情報として使用する。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Active Directory にサービス プリンシパルを作成する
-> * Windows Virtual Desktop にロールの割り当てを作成する
-> * Windows Virtual Desktop にサービス プリンシパルでサインインする
+> * Azure Active Directory にサービス プリンシパルを作成します。
+> * Windows Virtual Desktop にロールの割り当てを作成します。
+> * サービス プリンシパルを使って Windows Virtual Desktop にサインインします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -72,18 +72,18 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincip
 
 ## <a name="sign-in-with-the-service-principal"></a>サービス プリンシパルでサインインする
 
-サービス プリンシパルに使用するロールの割り当てを作成したら、そのサービス プリンシパルが Windows Virtual Desktop にサインインできることを次のコマンドレットを実行して確認する必要があります。
+サービス プリンシパルに使用するロールの割り当てを作成したら、そのサービス プリンシパルが Windows Virtual Desktop にサインインできることを次のコマンドレットを実行して確認します。
 
 ```powershell
 $creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
 ```
 
-サインインできたら、そのサービス プリンシパルで、いくつかの Windows Virtual Desktop PowerShell コマンドレットを試し、すべてがうまく機能していることを確認します。
+サインインできたら、そのサービス プリンシパルで、いくつかの Windows Virtual Desktop PowerShell コマンドレットを試し、すべてがうまく機能することを確認します。
 
 ## <a name="view-your-credentials-in-powershell"></a>PowerShell で資格情報を確認する
 
-PowerShell セッションを終了する前に、自分の資格情報を確認し、後で参照できるように書き留めておく必要があります。 特にパスワードは、この PowerShell セッションを閉じた後は取得できなくなるので注意が必要です。
+PowerShell セッションを終了する前に、自分の資格情報を確認し、後で参照できるように書き留めておきます。 特にパスワードは、この PowerShell セッションを閉じた後は取得できなくなるので注意が必要です。
 
 次に示したのは、書き留めておくべき 3 つの資格情報と、それらを取得するために実行する必要のあるコマンドレットです。
 
@@ -93,7 +93,7 @@ PowerShell セッションを終了する前に、自分の資格情報を確認
     $svcPrincipalCreds.Value
     ```
 
-- テナント ID: 
+- テナント ID:
 
     ```powershell
     $aadContext.TenantId.Guid
@@ -107,7 +107,7 @@ PowerShell セッションを終了する前に、自分の資格情報を確認
 
 ## <a name="next-steps"></a>次の手順
 
-サービス プリンシパルを作成して Windows Virtual Desktop テナント内のロールに割り当てたら、そのテナントを使用してホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
+サービス プリンシパルを作成して Windows Virtual Desktop テナント内のロールに割り当てたら、それを使用してホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
 
  > [!div class="nextstepaction"]
  > [Windows Virtual Desktop のホスト プールのチュートリアル](./create-host-pools-azure-marketplace.md)

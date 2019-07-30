@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234016"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441746"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -36,24 +36,26 @@ CLI では、`--verbose` スイッチを使用してコマンド実行中に詳�
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>エラー "Azure Dev Spaces コントローラーを作成できませんでした"
 
+### <a name="reason"></a>理由
 コントローラーの作成で問題が発生した場合に、このようなエラーが表示されることがあります。 これが一時的なエラーの場合は、コントローラーを削除して再作成することで修正されます。
 
-### <a name="try"></a>次の操作を試してください。
+### <a name="try"></a>試す
 
-コントローラーを削除するには、Azure Dev Spaces の CLI を使用します。 Visual Studio や Cloud Shell でこれを行うことはできません。 AZDS CLI をインストールするには、まず、Azure CLI をインストールして、以下のコマンドを実行します。
+コントローラーを削除する:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+```
+
+コントローラーを削除するには、Azure Dev Spaces CLI を使用する必要があります。 Visual Studio からコントローラーを削除することはできません。 また、Azure Cloud Shell に Azure Dev Spaces CLI をインストールすることもできないため、Azure Cloud Shell からコントローラーを削除することはできません。
+
+Azure Dev Spaces CLI がインストールされていない場合は、まず次のコマンドを使用してインストールしてからコントローラーを削除できます。
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-次に、以下のコマンドを実行してコントローラーを削除します。
-
-```cmd
-azds remove -g <resource group name> -n <cluster name>
-```
-
-コントローラーの再作成は、CLI や Visual Studio から行うことができます。 初めての場合と同じように、チュートリアルの手順に従ってください。
-
+コントローラーの再作成は、CLI や Visual Studio から行うことができます。 例については、[チーム開発](quickstart-team-development.md)または [.NET Core を使用した開発](quickstart-netcore-visualstudio.md)のクイックスタートを参照してください。
 
 ## <a name="error-service-cannot-be-started"></a>エラー "サービスを開始できません。"
 
@@ -408,4 +410,32 @@ azds controller create --name my-controller --target-name MyAKS --resource-group
 ## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>AKS クラスターに Windows ノード プールが追加されていると、Dev Spaces を有効にすることができません
 
 ### <a name="reason"></a>理由
-現在のところ、Azure Dev Spaces は Linux のポッドとノードのみで実行するものです。 現時点では、Windows ノード プールを含む AKS クラスターで Azure Dev Spaces を有効にすることはできません。
+現在のところ、Azure Dev Spaces は Linux のポッドとノードのみで実行するものです。 Windows ノード プールのある AKS クラスターがある場合は、Azure Dev Spaces ポッドが Linux ノードでのみスケジュールされていることを確認する必要があります。 Azure Dev Spaces ポッドが Windows ノードで実行されるようにスケジュールされている場合、そのポッドは開始されず、Dev Spaces の有効化は失敗します。
+
+### <a name="try"></a>試す
+AKS クラスターに[テイントを追加](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)して、Linux ポッドが Windows ノードで実行されるようにスケジュールされていないことを確認します。
+
+## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>エラー "クラスター上で準備完了状態のテイントされていない Linux ノードが見つかりませんでした。 "azds" 名前空間にポッドをデプロイするには、準備完了状態でテイントされていない Linux ノードが少なくとも 1 つ必要です。"
+
+### <a name="reason"></a>理由
+
+ポッドをスケジュールする*準備完了*状態のテイントされていないノードが見つからなかったため、Azure Dev Spaces で AKS クラスターにコントローラーを作成できませんでした。 Azure Dev Spaces では、容認を指定せずにポッドをスケジュールするための、少なくとも 1 つの*準備完了*状態の Linux ノードが必要です。
+
+### <a name="try"></a>試す
+少なくとも 1 つの Linux ノードで容認を指定せずに確実にポッドをスケジュールできるように、AKS クラスターで[テイント構成を更新](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)します。 また、容認を指定せずポッドをスケジュールできる少なくとも 1 つの Linux ノードが、*準備完了*状態であることも確認します。 ノードが*準備完了*状態に達するのに時間がかかっている場合は、ノードの再起動を試みることができます。
+
+## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>`az aks use-dev-spaces` の実行時のエラー "Azure Dev Spaces CLI が正しくインストールされていません"
+
+### <a name="reason"></a>理由
+Azure Dev Spaces CLI に対する更新により、そのインストール パスが変更されました。 2\.0.63 より前のバージョンの Azure CLI を使用している場合は、このエラーが表示されることがあります。 Azure CLI のバージョンを表示するには、`az --version` を使用します。
+
+```bash
+$ az --version
+azure-cli                         2.0.60 *
+...
+```
+
+2\.0.63 の前のバージョンの Azure CLI で `az aks use-dev-spaces` を実行している場合は、エラー メッセージに関係なくインストールは成功します。 引き続き問題なく `azds` を使用できます。
+
+### <a name="try"></a>試す
+[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) のインストールを 2.0.63 以降に更新します。 これにより、`az aks use-dev-spaces` の実行中に受け取るエラー メッセージが解決されます。 また、引き続き現在のバージョンの Azure CLI と Azure Dev Spaces CLI を使用することもできます。

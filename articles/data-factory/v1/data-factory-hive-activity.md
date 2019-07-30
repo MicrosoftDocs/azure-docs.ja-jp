@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4b622a5925aebd140fed2ac74eaf7cc186803b90
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a63ef969f17fc48145174d99fec53e77b61885a4
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113756"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827973"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory での Hive アクティビティを使用したデータ変換 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md) 
 > * [Pig アクティビティ](data-factory-pig-activity.md)
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
@@ -75,15 +75,15 @@ Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsigh
 ## <a name="syntax-details"></a>構文の詳細
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |アクティビティの名前 |はい |
-| description |アクティビティの用途を説明するテキストです。 |いいえ  |
+| 名前 |アクティビティの名前 |はい |
+| description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type |HDinsightHive |はい |
-| inputs |Hive アクティビティによって使用される入力 |いいえ  |
+| inputs |Hive アクティビティによって使用される入力 |いいえ |
 | outputs |Hive アクティビティによって生成される出力 |はい |
 | linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |はい |
-| script |Hive スクリプトをインラインに指定します |いいえ  |
-| scriptPath |Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
-| defines |'hiveconf' を使用して Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |
+| script |Hive スクリプトをインラインに指定します |いいえ |
+| scriptPath |Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ |
+| defines |'hiveconf' を使用して Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ |
 
 ## <a name="example"></a>例
 ゲームのログ分析の例について考えてみましょう。ここでは、お客様の会社が発売したゲームをユーザーがプレイした時間を特定します。 

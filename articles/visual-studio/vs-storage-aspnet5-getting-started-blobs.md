@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: b2b707585df4a7ec26f689b4213be74bdaab680d
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 388c4d5f28e87f5cfe26336771d30fa44c6f9ef0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62123010"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Azure Blob ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET Core)
 
@@ -27,7 +27,7 @@ ms.locfileid: "42143816"
 
 Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。 1 つの BLOB は任意のサイズにできます。 BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。 この記事では、ASP.NET Core プロジェクトで、Visual Studio の**接続済みサービス**機能を使用して Azure Storage アカウントを作成した後、Blob Storage の使用を開始する方法について説明します。
 
-ファイルがフォルダーに格納されるのと同様に、ストレージ BLOB はコンテナーに格納されます。 BLOB を作成した後、その BLOB 内に 1 つ以上のコンテナーを作成します。 たとえば、"Scrapbook" という名前の BLOB に、写真を格納するための "images" という名前のコンテナーと、音声ファイルを格納するための "audio" という名前のコンテナーを作成できます。 コンテナーを作成すると、そこに個別のファイルをアップロードできるようになります。 プログラムを使用して BLOB を操作する方法の詳細については、「[クイック スタート: .NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md) 」をご覧ください。
+ファイルがフォルダーに格納されるのと同様に、ストレージ BLOB はコンテナーに格納されます。 BLOB を作成した後、その BLOB 内に 1 つ以上のコンテナーを作成します。 たとえば、"Scrapbook" という名前の BLOB に、写真を格納するための "images" という名前のコンテナーと、音声ファイルを格納するための "audio" という名前のコンテナーを作成できます。 コンテナーを作成すると、そこに個別のファイルをアップロードできるようになります。 「[クイック スタート:.NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」で、プログラムを使用して BLOB を操作する方法の詳細を参照してください。
 
 一部の Azure Storage API は非同期であるため、この記事のコードでは非同期メソッドが使用されている前提とします。 詳細については、[非同期プログラミング](https://docs.microsoft.com/dotnet/csharp/async)に関するページをご覧ください。
 
@@ -140,7 +140,7 @@ do
 } while (token != null);
 ```
 
-BLOB コンテナーのコンテンツを一覧表示する他の方法については、「[クイック スタート: .NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)」を参照してください。
+「[クイック スタート:.NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)」で、BLOB コンテナーのコンテンツを一覧表示する他の方法を参照してください。
 
 ## <a name="download-a-blob"></a>BLOB をダウンロードする
 
@@ -157,7 +157,7 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-BLOB をファイルとして保存する他の方法については、「[クイック スタート: .NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)」を参照してください。
+「[クイック スタート:.NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)」で、BLOB をファイルとして保存する他の方法を参照してください。
 
 ## <a name="delete-a-blob"></a>BLOB を削除する
 

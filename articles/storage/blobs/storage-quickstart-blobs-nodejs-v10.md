@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f426ee10017533c21021d618d613dc0931767988
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e2deda6bc9a5d13a631e9917f3020cfa68ee1e10
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149447"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536155"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>クイック スタート:Azure Storage v10 SDK for JavaScript を使用して BLOB のアップロード、ダウンロード、一覧表示、削除を行う
 
-このクイック スタートでは、Node.js で [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-storage-js) を使用して BLOB のアップロード、ダウンロード、一覧表示、削除およびコンテナーの管理を行う方法を学習します。
+このクイック スタートでは、Node.js で [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js) を使用して BLOB のアップロード、ダウンロード、一覧表示、削除およびコンテナーの管理を行う方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ cd azure-storage-js-v10-quickstart
 
 ## <a name="configure-your-storage-credentials"></a>ストレージの資格情報を構成する
 
-アプリケーションを実行する前に、ストレージ アカウントのセキュリティ資格情報を指定する必要があります。 サンプル リポジトリには、*.env.example* という名前のファイルが含まれています。 このファイル名から *.example* 拡張子を削除して、*.env* というファイル名に変更します。 *.env* ファイルで、*AZURE_STORAGE_ACCOUNT_NAME* キーの後にアカウント名の値を追加し、*AZURE_STORAGE_ACCOUNT_ACCESS_KEY* キーの後にアクセス キーの値を追加します。
+アプリケーションを実行する前に、ストレージ アカウントのセキュリティ資格情報を指定する必要があります。 サンプル リポジトリには、 *.env.example* という名前のファイルが含まれています。 このファイル名から *.example* 拡張子を削除して、 *.env* というファイル名に変更します。 *.env* ファイルで、*AZURE_STORAGE_ACCOUNT_NAME* キーの後にアカウント名の値を追加し、*AZURE_STORAGE_ACCOUNT_ACCESS_KEY* キーの後にアクセス キーの値を追加します。
 
 ## <a name="install-required-packages"></a>必要なパッケージをインストールする
 
@@ -99,7 +99,7 @@ const {
 
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
+    require('dotenv').config();
 }
 ```
 

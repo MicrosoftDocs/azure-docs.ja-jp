@@ -1,236 +1,485 @@
 ---
-title: SQL API を使って Azure Cosmos DB による .NET Web アプリを作る
-description: このクイック スタートでは、Azure portal と .NET Web アプリを使って Azure Cosmos DB に SQL API アカウント リソースを作成して管理します。
+title: Azure Cosmos DB SQL API リソースを管理する .NET コンソール アプリを構築する
+description: Azure Cosmos DB SQL API アカウント リソースを管理する .NET コンソール アプリを構築する方法について説明します。
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/06/2019
-ms.openlocfilehash: e39440a46228d82b0722f7d9d349d11fb2417b42
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 07/12/2019
+ms.openlocfilehash: c738b2d44c5faca1ef95b2da8fd1f90a1b3af919
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754624"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371014"
 ---
-# <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB の SQL API アカウントを使用して .NET Web アプリをビルドする
+# <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>クイック スタート:Azure Cosmos DB SQL API リソースを管理する .NET コンソール アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
-> * [.NET (プレビュー)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
-> 
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用して、キー/値データベース、ドキュメント データベース、およびグラフ データベースをすばやく作成し、クエリを実行できます。そのすべてで、Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用します。 
+.NET 用の Azure Cosmos DB SQL API クライアント ライブラリの概要について説明します。 このドキュメントの手順に従って .NET パッケージをインストールし、アプリをビルドして、Azure Cosmos DB に格納されているデータに対する基本的な CRUD 操作のサンプル コードを試してみてください。 
 
-このクイック スタートでは、Azure portal を使用して、Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウント、ドキュメント データベース、コレクションを作成し、データをコレクションに追加する方法を説明します。 その後、[SQL .NET SDK](sql-api-sdk-dotnet.md) Web アプリを使用して、コレクションにデータをさらに追加します。 
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、キー/値データベース、ドキュメント データベース、およびグラフ データベースをすばやく作成し、クエリを実行できます。 .NET 用の Azure Cosmos DB SQL API クライアント ライブラリを使用して、次のことを行います。
 
-このクイック スタートでは、Azure portal のデータ エクスプローラーを使用してデータベースとコレクションを作成します。 また、.NET サンプル コードを使用してデータベースとコレクションを作成することもできます。 詳細については、「[.NET コードの確認](#review-the-net-code)」を参照してください。 
+* Azure Cosmos データベースとコンテナーを作成する
+* コンテナーにサンプル データを追加する
+* データを照会する 
+* データベースを削除する
+
+[API リファレンスのドキュメント](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-cosmos-dotnet-v3) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure の開発] ワークフローがインストールされた Visual Studio 2019
-- **無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。 
+* Azure サブスクリプション - [無料で作成する](https://azure.microsoft.com/free/)か、Azure サブスクリプションを使用せず、料金やコミットメントなしで、[Azure Cosmos DB を無料で試用](https://azure.microsoft.com/try/cosmosdb/)できます。 
+* [.Net Core 2.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/2.1)。
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-Azure サブスクリプションまたは Azure Cosmos DB の無料試用版アカウント
-- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
+## <a name="setting-up"></a>設定
 
-<a id="create-account"></a>
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
+このセクションでは、Azure Cosmos アカウントを作成し、.NET 用 Azure Cosmos DB SQL API クライアント ライブラリを使用してリソースを管理するプロジェクトを設定する手順について説明します。 この記事で説明するコード例では `FamilyDatabase` データベースと、そのデータベース内にファミリ メンバー (各ファミリ メンバーが項目) を作成します。 各ファミリ メンバーには `Id, FamilyName, FirstName, LastName, Parents, Children, Address,` などのプロパティがあります。 `LastName` プロパティは、コンテナーのパーティション キーとして使用されます。 
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+### <a id="create-account"></a>Azure Cosmos アカウントを作成する
 
-<a id="create-collection-database"></a>
-## <a name="add-a-database-and-a-collection"></a>データベースとコレクションの追加 
+次のコードでは、セッションの整合性を持つ Azure Cosmos アカウントを作成します。 アカウントは `South Central US` と `North Central US` でレプリケートされます。 **[使ってみる]** ボタンを選択し、コードを貼り付けて、Azure クラウド シェルで実行します。 
 
-Azure portal のデータ エクスプローラーを使用してデータベースとコレクションを作成できます。 
+```azurecli-interactive
 
-1.  ご使用の Azure Cosmos DB アカウント ページの左側のナビゲーションで **[データ エクスプローラー]** を選択し、 **[新しいコンテナー]** を選択します。 
-    
-    **[コンテナーの追加]** ウィンドウを表示するために、右へスクロールする必要がある場合があります。
-    
-    ![Azure portal の [データ エクスプローラー] の [コレクションの追加] ウィンドウ](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
-    
-1.  **[コンテナーの追加]** ウィンドウで、新しいコレクションの設定を入力します。
-    
-    |Setting|推奨値|説明
-    |---|---|---|
-    |**[データベース ID]**|ToDoList|新しいデータベースの名前として *ToDoList* を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** オプションをオンにすると、データベースにプロビジョニングされたスループットをデータベース内のすべてのコンテナーにわたって共有できます。 このオプションは、コストの削減にも役立ちます。 |
-    |**スループット**|400|スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。| 
-    |**コンテナー ID**|項目|新しいコレクションの名前として*項目*を入力します。 コレクション ID には、データベース名と同じ文字要件があります。|
-    |**パーティション キー**| /category| この記事で説明するサンプルでは、 */category* をパーティション キーとして使用します。|
+# Set variables for the new SQL API account, database, and container
+resourceGroupName='myResourceGroup'
+location='southcentralus'
+accountName='mysqlapicosmosdb' 
+databaseName='FamilyDatabase'
+containerName='FamilyContainer'
 
-    
-    この例では、**一意のキー**を追加しません。 一意のキーを使用すると、パーティション キーごとに 1 つまたは複数の値の一意性を確保して、データベースにデータ整合性のレイヤーを追加できます。 詳細については、[Azure Cosmos DB における一意のキー](unique-keys.md)に関するページをご覧ください。
-    
-1.  **[OK]** を選択します。 作成した新しいデータベースとコンテナーがデータ エクスプローラーに表示されます。
-    
+# Create a resource group
+az group create \
+    --name $resourceGroupName \
+    --location $location
 
-## <a name="add-data-to-your-database"></a>ご自分のデータベースにデータを追加する
+# Create a SQL API Cosmos DB account with session consistency and multi-master enabled
+az cosmosdb create \
+    --resource-group $resourceGroupName \
+    --name $accountName \
+    --kind GlobalDocumentDB \
+    --locations regionName="South Central US" failoverPriority=0 --locations regionName="North Central US" failoverPriority=1 \
+    --default-consistency-level "Session" \
+    --enable-multiple-write-locations true
 
-データ エクスプローラーを使用して、ご自分の新しいデータベースにデータを追加します。
+```
 
-1. **データ エクスプローラー**で、**ToDoList** データベースを展開し、**Items** コンテナーを展開します。 次に、 **[項目]** を選択し、 **[新しい項目]** を選択します。 
-   
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
-   
-1. **[ドキュメント]** ウィンドウの右側でドキュメントに次の構造を追加します。
+### <a id="create-dotnet-core-app"></a>新しい .NET アプリを作成する
 
-     ```json
-     {
-         "id": "1",
-         "category": "personal",
-         "name": "groceries",
-         "description": "Pick up apples and strawberries.",
-         "isComplete": false
-     }
-     ```
+好みのエディターまたは IDE で、新しい .NET アプリケーションを作成します。 コンソール ウィンドウで、次の dotnet new コマンドを実行して、`todo` という名前の新しいアプリを作成します。
 
-1. **[保存]** を選択します。
-   
-   ![json データをコピーし、Azure portal のデータ エクスプローラーで [保存] を選択する](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
-   
-1. **[新しいドキュメント]** をもう一度選択し、一意の `id` に加え、必要なその他のプロパティと値を指定したもう 1 つのドキュメントを作成して保存します。 Azure Cosmos DB では、データにスキーマが課されないため、ご自分のドキュメントは任意の構造にすることができます。
+```console
+dotnet new console --langVersion 7.1 -n todo
+```
 
-## <a name="query-your-data"></a>データのクエリ
+新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
 
-[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
+```console
+cd todo
+dotnet build
+```
 
-## <a name="use-the-net-web-app-to-manage-data"></a>.NET Web アプリを使用してデータを管理する
+ビルドからの予想される出力は、次のようになります。
 
-プログラムを使って Azure Cosmos DB データを操作するのがいかに簡単かを確認するために、GitHub からサンプルの SQL API .NET Web アプリを複製し、接続文字列を更新し、アプリを実行してご自分のデータを更新します。 
+```console
+  Restore completed in 100.37 ms for C:\Users\user1\Downloads\CosmosDB_Samples\todo\todo.csproj.
+  todo -> C:\Users\user1\Downloads\CosmosDB_Samples\todo\bin\Debug\netcoreapp2.2\todo.dll
+  todo -> C:\Users\user1\Downloads\CosmosDB_Samples\todo\bin\Debug\netcoreapp2.2\todo.Views.dll
 
-また、.NET サンプル コードを使用してデータベースとコンテナーを作成することもできます。 詳細については、「[.NET コードの確認](#review-the-net-code)」を参照してください。
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
 
-### <a name="clone-the-sample-app"></a>サンプル アプリの複製
+Time Elapsed 00:00:34.17
+```
 
-まず、GitHub から C# [SQL API アプリ](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)を複製します。 
+### <a id="install-package"></a>Azure Cosmos DB パッケージをインストールする
 
-1. Git ターミナル ウィンドウ (Git Bash など) を開き、*git-samples* という名前の新しいディレクトリを作成し、そのディレクトリに変更します。 
-   
-   ```bash
-   mkdir /c/git-samples/
-   cd /c/git-samples/
-   ```
-   
-1. 次のコマンドを実行して、サンプル リポジトリを複製し、サンプル アプリのコピーをご使用のコンピューター上に作成します。
-   
-   ```bash
-   git clone https://github.com/Azure-Samples/documentdb-dotnet-todo-app.git
-   ```
+アプリケーション ディレクトリ内で、dotnet add package コマンドを使用して .NET Core 用の Azure Cosmos DB クライアント ライブラリをインストールします。
 
-### <a name="update-the-connection-string"></a>接続文字列を更新する 
+```console
+dotnet add package Microsoft.Azure.Cosmos
+```
 
-1. ご自分の複製したアプリの *todo.sln* ファイルに移動し、Visual Studio で開きます。 
+### <a name="copy-your-azure-cosmos-account-credentials-from-the-azure-portal"></a>Azure portal から Azure Cosmos アカウントの資格情報をコピーする
 
-1. Visual Studio の**ソリューション エクスプローラー**から *web.config* ファイルを開きます。 
+サンプル アプリケーションは、Azure Cosmos アカウントに対する認証を行う必要があります。 認証するには、Azure Cosmos アカウントの資格情報をアプリケーションに渡す必要があります。 次の手順に従って、Azure Cosmos アカウントの資格情報を取得します。
 
-1. Azure portal に戻り、ご自分の接続文字列情報をコピーし、*web.config* に貼り付けます。
-   
-   1. ご使用の Azure Cosmos DB アカウントの左側のナビゲーションにある **[キー]** を選択します。
-      
-      ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
-      
-   1. **[読み取り/書き込みキー]** の下にある **[URI]** の値を右側にあるコピー ボタンを使用してコピーし、*web.config* 内の `endpoint` キーに貼り付けます。例: 
-      
-      `<add key="endpoint" value="https://mysqlapicosmosdb.documents.azure.com:443/" />`
-      
-   1. **[プライマリ キー]** の値をコピーし、*web.config* 内の `authKey` キーに貼り付けます。例:
-      
-      `<add key="authKey" value="19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==" />`
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-       
-1. *web.config* 内のデータベースとコレクション (コンテナーとも呼ばれます) の値が以前に作成した名前と一致していることを確認します。 
+1. Azure Cosmos アカウントに移動します。 
 
-   ```csharp
-   <add key="database" value="ToDoList"/>
-   <add key="collection" value="Items"/>
-   ```
- 
-1. *web.config* を保存します。これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。
+1. **[キー]** ウィンドウを開き、アカウントの **[URI]** と **[プライマリ キー]** をコピーします。 次の手順では、URI とキーの値を環境変数に追加します。
 
-### <a name="run-the-web-app"></a>Web アプリの実行
+### <a name="set-the-environment-variables"></a>環境変数を設定する
 
-1. Visual Studio の**ソリューション エクスプローラー**で **todo** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 
+アカウントの **[URI]** と **[プライマリ キー]** をコピーしたら、アプリケーションを実行しているローカル コンピューター上の新しい環境変数に保存します。 環境変数を設定するには、コンソール ウィンドウを開き、次のコマンドを実行します。 `<Your_Azure_Cosmos_account_URI>` と `<Your_Azure_Cosmos_account_PRIMARY_KEY>` の値は必ず置き換えてください。
 
-1. NuGet の **[参照]** ボックスに「*DocumentDB*」と入力します。
+**Windows**
 
-1. 結果から、**Microsoft.Azure.DocumentDB** ライブラリの **2.2.3 バージョン**をインストールします (まだインストールしていない場合)。 これにより、[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) パッケージとすべての依存関係がインストールされます。
-   
-   NuGet パッケージ マネージャーに、いくつかのパッケージがソリューションに不足していることを示すメッセージが表示された場合は、 **[復元]** を選択して、内部ソースからそれらのパッケージをインストールします。 
+```console
+setx EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+```
 
-1. **Ctrl**+**F5** キーを押して、ご使用のブラウザーでアプリを実行します。 
+**Linux**
 
-1. todo アプリで **[Create New]\(新規作成\)** を選択し、いくつかの新しいタスクを作成します。
+```bash
+export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+```
 
-   ![todo アプリとサンプル データ](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
+**MacOS**
 
-Azure portal のデータ エクスプローラーに戻り、ご自分の新しいデータの表示、クエリ、変更、操作を行うことができます。 
+```bash
+export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+```
 
-## <a name="review-the-net-code"></a>.NET コードの確認
+ ## <a id="object-model"></a>オブジェクト モデル
 
-この手順は省略可能です。 このクイックスタートでは、Azure portal 内でデータベースとコンテナーを作成し、.NET サンプルを使用してサンプル データを追加しました。 ただし、.NET サンプルを使用してデータベースとコンテナーを作成することもできます。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認してください。 スニペットはすべて **todo** プロジェクトの *DocumentDBRepository.cs* ファイルからのものです。
+アプリケーションのビルドを開始する前に、Azure Cosmos DB のリソースの階層と、これらのリソースの作成とアクセスに使用されるオブジェクト モデルについて説明します。 Azure Cosmos DB によって、次の順序でリソースが作成されます。
 
-* このコードは `DocumentClient` を初期化します。 
+* Azure Cosmos アカウント 
+* データベース 
+* Containers 
+* 項目
 
-    ```csharp
-    client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
-    ```
+さまざまなエンティティの階層の詳細については、[Azure Cosmos DB のデータベース、コンテナー、および項目の操作](databases-containers-items.md)に関する記事を参照してください。 これらのリソースとやり取りするには、以下の .NET クラスを使用します。
 
-* このコードは `CreateDatabaseAsync` メソッドを使用して、新しいデータベースを作成します。
+* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet) - このクラスは、Azure Cosmos DB サービスのクライアント側の論理表現を提供します。 このクライアント オブジェクトは、サービスに対する要求の構成と実行に使用されます。
 
-    ```csharp
-    await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
-    ```
+* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet) - このメソッドによって、非同期操作としてデータベース リソースが (存在しない場合は) 作成されるか、(既に存在する場合は) 取得されます。 
 
-* 次のコードは `CreateDocumentCollectionAsync` メソッドを使用して、新しいコレクションを作成します。
+* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet) - このメソッドによって、非同期操作としてコンテナーが (存在しない場合は) 作成されるか、(既に存在する場合は) 取得されます。 応答から状態コードを確認して、コンテナーが新しく作成された (201) か、既存のコンテナーが返された (200) かを判断できます。 
+* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) - このメソッドによって、コンテナー内に項目が作成されます。 
 
-    ```csharp
-    private static async Task CreateCollectionIfNotExistsAsync(string partitionkey)
+* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
+) - このメソッドにより、SQL ステートメントとパラメーター化された値を利用して Azure Cosmos データベースのコンテナーの下でアイテムに対するクエリが作成されます。 
+
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet) - 指定されたデータベースを Azure Cosmos アカウントから削除します。 `DeleteAsync` メソッドでは、データベースのみが削除されます。 `Cosmosclient` インスタンスの破棄は個別に行われる必要があります (DeleteDatabaseAndCleanupAsync メソッドで実行されます)。 
+
+ ## <a id="code-examples"></a>コード例
+
+この記事で説明されているサンプル コードでは、Azure Cosmos DB でファミリ データベースを作成します。 ファミリ データベースには、名前、住所、場所、関連付けられている親、子供、ペットなどのファミリの詳細が含まれています。 データを Azure Cosmos アカウントに設定する前に、ファミリ項目のプロパティを定義します。 サンプル アプリケーションのルート レベルに `Family.cs` という名前の新しいクラスを作成し、次のコードを追加します。
+
+```csharp
+using Newtonsoft.Json;
+
+namespace todo
+{
+    public class Family
     {
-       try
-       {       
-        await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), new RequestOptions { PartitionKey = new PartitionKey(partitionkey) });
-       }
-        catch (DocumentClientException e)
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+        public string LastName { get; set; }
+        public Parent[] Parents { get; set; }
+        public Child[] Children { get; set; }
+        public Address Address { get; set; }
+        public bool IsRegistered { get; set; }
+        public override string ToString()
         {
-           if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                await client.CreateDocumentCollectionAsync(
-                  UriFactory.CreateDatabaseUri(DatabaseId),
-                   new DocumentCollection
-                    {
-                      Id = CollectionId,
-                      PartitionKey = new PartitionKeyDefinition
-                       {
-                           Paths = new System.Collections.ObjectModel.Collection<string>(new List<string>() { partitionkey })
-                        }
-                    },
-                      new RequestOptions { OfferThroughput = 400 });
-            }
-            else
-            {
-                throw;
-            }
+            return JsonConvert.SerializeObject(this);
         }
     }
-    ```
+
+    public class Parent
+    {
+        public string FamilyName { get; set; }
+        public string FirstName { get; set; }
+    }
+
+    public class Child
+    {
+        public string FamilyName { get; set; }
+        public string FirstName { get; set; }
+        public string Gender { get; set; }
+        public int Grade { get; set; }
+        public Pet[] Pets { get; set; }
+    }
+
+    public class Pet
+    {
+        public string GivenName { get; set; }
+    }
+
+    public class Address
+    {
+        public string State { get; set; }
+        public string County { get; set; }
+        public string City { get; set; }
+    }
+}
+```
+
+### <a name="add-the-using-directives--define-the-client-object"></a>using ディレクティブの追加とクライアント オブジェクトの定義と
+
+プロジェクト ディレクトリからエディターで `Program.cs` ファイルを開き、アプリケーションの先頭に次の using ディレクティブを追加します。
+
+```csharp
+
+using System;
+using System.Threading.Tasks;
+using System.Configuration;
+using System.Collections.Generic;
+using System.Net;
+using Microsoft.Azure.Cosmos;
+```
+
+`program.cs file` に、前の手順で設定した環境変数を読み取るコードを追加します。 `CosmosClient`、`Database`、および `Container` オブジェクトを定義します。 次に、Azure Cosmos アカウント リソースを管理する `GetStartedDemoAsync` メソッドを呼び出すコードを main メソッドに追加します。 
+
+```csharp
+namespace todo
+{
+public class Program
+{
+
+    /// The Azure Cosmos DB endpoint for running this GetStarted sample.
+    private string EndpointUrl = Environment.GetEnvironmentVariable("EndpointUrl");
+
+    /// The primary key for the Azure DocumentDB account.
+    private string PrimaryKey = Environment.GetEnvironmentVariable("PrimaryKey");
+
+    // The Cosmos client instance
+    private CosmosClient cosmosClient;
+
+    // The database we will create
+    private Database database;
+
+    // The container we will create.
+    private Container container;
+
+    // The name of the database and container we will create
+    private string databaseId = "FamilyDatabase";
+    private string containerId = "FamilyContainer";
+
+    public static async Task Main(string[] args)
+    {
+       try
+       {
+           Console.WriteLine("Beginning operations...\n");
+           Program p = new Program();
+           await p.GetStartedDemoAsync();
+
+        }
+        catch (CosmosException de)
+        {
+           Exception baseException = de.GetBaseException();
+           Console.WriteLine("{0} error occurred: {1}", de.StatusCode, de);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: {0}", e);
+        }
+        finally
+        {
+            Console.WriteLine("End of demo, press any key to exit.");
+            Console.ReadKey();
+        }
+    }
+}
+}
+```
+
+### <a name="create-a-database"></a>データベースを作成する 
+
+`program.cs` クラス内に `CreateDatabaseAsync` メソッドを定義します。 このメソッドによって、`FamilyDatabase` が作成されます (まだ存在しない場合)。 
+
+```csharp
+private async Task CreateDatabaseAsync()
+{
+    // Create a new database
+    this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
+    Console.WriteLine("Created Database: {0}\n", this.database.Id);
+}
+```
+
+### <a name="create-a-container"></a>コンテナーを作成する
+
+`program.cs` クラス内に `CreateContainerAsync` メソッドを定義します。 このメソッドによって、`FamilyContainer` が作成されます (まだ存在しない場合)。 
+
+```csharp
+/// Create the container if it does not exist. 
+/// Specifiy "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
+private async Task CreateContainerAsync()
+{
+    // Create a new container
+    this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/LastName");
+    Console.WriteLine("Created Container: {0}\n", this.container.Id);
+}
+```
+
+### <a name="create-an-item"></a>項目を作成する
+
+次のコードを使用して、`AddItemsToContainerAsync` メソッドを追加してファミリ項目を作成します。
+
+```csharp
+private async Task AddItemsToContainerAsync()
+{
+    // Create a family object for the Andersen family
+    Family andersenFamily = new Family
+    {
+        Id = "Andersen.1",
+        LastName = "Andersen",
+        Parents = new Parent[]
+        {
+           new Parent { FirstName = "Thomas" },
+           new Parent { FirstName = "Mary Kay" }
+        },
+        Children = new Child[]
+        {
+           new Child
+            {
+                FirstName = "Henriette Thaulow",
+                Gender = "female",
+                Grade = 5,
+                Pets = new Pet[]
+                {
+                    new Pet { GivenName = "Fluffy" }
+                }
+            }
+        },
+        Address = new Address { State = "WA", County = "King", City = "Seattle" },
+        IsRegistered = false
+ };
+
+try
+{
+    // Read the item to see if it exists. ReadItemAsync will throw an exception if the item does not exist and return status code 404 (Not found).
+    ItemResponse<Family> andersenFamilyResponse = await this.container.ReadItemAsync<Family>(andersenFamily.Id, new PartitionKey(andersenFamily.LastName));
+    Console.WriteLine("Item in database with id: {0} already exists\n", andersenFamilyResponse.Resource.Id);
+}
+catch(CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+{
+    // Create an item in the container representing the Andersen family. Note we provide the value of the partition key for this item, which is "Andersen"
+    ItemResponse<Family> andersenFamilyResponse = await this.container.CreateItemAsync<Family>(andersenFamily, new PartitionKey(andersenFamily.LastName));
+
+    // Note that after creating the item, we can access the body of the item with the Resource property off the ItemResponse. We can also access the RequestCharge property to see the amount of RUs consumed on this request.
+    Console.WriteLine("Created item in database with id: {0} Operation consumed {1} RUs.\n", andersenFamilyResponse.Resource.Id, andersenFamilyResponse.RequestCharge);
+}
+
+```
+
+### <a name="query-the-items"></a>項目に対してクエリを実行する
+
+項目を挿入した後、クエリを実行して "Andersen" ファミリの詳細を取得できます。 次のコードは、SQL クエリを直接使用してクエリを実行する方法を示しています。 "Anderson" ファミリの詳細を取得する SQL クエリは `SELECT * FROM c WHERE c.LastName = 'Andersen'` です。 `program.cs` クラス内で `QueryItemsAsync` メソッドを定義し、次のコードを追加します。
+
+
+```csharp
+private async Task QueryItemsAsync()
+{
+    var sqlQueryText = "SELECT * FROM c WHERE c.LastName = 'Andersen'";
+
+    Console.WriteLine("Running query: {0}\n", sqlQueryText);
+
+    QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText);
+    FeedIterator<Family> queryResultSetIterator = this.container.GetItemQueryIterator<Family>(queryDefinition);
+
+    List<Family> families = new List<Family>();
+
+    while (queryResultSetIterator.HasMoreResults)
+    {
+        FeedResponse<Family> currentResultSet = await queryResultSetIterator.ReadNextAsync();
+        foreach (Family family in currentResultSet)
+        {
+            families.Add(family);
+            Console.WriteLine("\tRead {0}\n", family);
+        }
+    }
+}
+
+```
+
+### <a name="delete-the-database"></a>データベースを削除する 
+
+最後に、次のコードを使用して `DeleteDatabaseAndCleanupAsync` メソッドを追加し、データベースを削除できます。
+
+```csharp
+private async Task DeleteDatabaseAndCleanupAsync()
+{
+   DatabaseResponse databaseResourceResponse = await this.database.DeleteAsync();
+   // Also valid: await this.cosmosClient.Databases["FamilyDatabase"].DeleteAsync();
+
+   Console.WriteLine("Deleted Database: {0}\n", this.databaseId);
+
+   //Dispose of CosmosClient
+    this.cosmosClient.Dispose();
+}
+```
+
+### <a name="execute-the-crud-operations"></a>CRUD 操作を実行する
+
+すべての必要なメソッドを定義したら、`GetStartedDemoAsync` メソッド内でそれらを実行します。 メソッド `DeleteDatabaseAndCleanupAsync` は、メソッドが実行された場合にリソースが表示されないため、このコード内ではコメント アウトされています。 Azure portal で Azure Cosmos DB リソースが作成されたことを確認した後にコメントを解除できます。 
+
+```csharp
+public async Task GetStartedDemoAsync()
+{
+    // Create a new instance of the Cosmos Client
+    this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+    await this.CreateDatabaseAsync();
+    await this.CreateContainerAsync();
+    await this.AddItemsToContainerAsync();
+    await this.QueryItemsAsync();
+    await this.ReplaceFamilyItemAsync();
+    await this.DeleteFamilyItemAsync();
+    //await this.DeleteDatabaseAndCleanupAsync();
+}
+```
+
+すべての必要なメソッドを追加したら、`Program.cs` ファイルを保存します。 
+
+## <a name="run-the-code"></a>コードの実行
+
+次に、アプリケーションをビルドして実行し、Azure Cosmos DB リソースを作成します。 新しいコマンド プロンプト ウィンドウを開き、環境変数の設定に使用したものと同じインスタンスを使用しないようにしてください。 環境変数が現在開いているウィンドウで設定されていないためです。 更新内容を表示するには、新しいコマンド プロンプトを開く必要があります。 
+
+```console
+dotnet build
+```
+
+```console
+dotnet run
+```
+
+アプリケーションを実行すると、次の出力が生成されます。 また、Azure portal にサインインして、リソースが作成されたことを確認することもできます。
+
+```console
+Created Database: FamilyDatabase
+
+Created Container: FamilyContainer
+
+Created item in database with id: Andersen.1 Operation consumed 11.62 RUs.
+
+Running query: SELECT * FROM c WHERE c.LastName = 'Andersen'
+
+        Read {"id":"Andersen.1","LastName":"Andersen","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":5,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":false}
+
+End of demo, press any key to exit.
+```
+
+データが作成されたことを確認するには、Azure portal にサインインし、Azure Cosmos アカウントで必要な項目を確認します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+必要がなくなったら、Azure CLI または Azure PowerShell を使用して、Azure Cosmos アカウントとそれに対応するリソース グループを削除できます。 次のコマンドは、Azure CLI を使用してリソース グループを削除する方法を示しています。
+
+```azurecli
+az group delete -g "myResourceGroup" -l "southcentralus"
+```
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してデータベースとコンテナーを作成し、.NET Web アプリを実行してご自分のデータを更新する方法を説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。 
+このクイックスタートでは、Azure Cosmos アカウントを作成し、.NET Core アプリを使用してデータベースとコンテナーを作成する方法を説明しました。 これで、次の記事の指示に従って Azure Cosmos アカウントに追加のデータをインポートできるようになりました。 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)
-

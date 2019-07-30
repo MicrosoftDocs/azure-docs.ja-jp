@@ -8,19 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: ea2399572177cc10006a5d9ee715190fff4a347b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0df9e4b41ff89dd295fe644900b78640a083e985
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66471450"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514572"
 ---
 # <a name="about-recovery-plans"></a>復旧計画について
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) の復旧計画について説明します。
 
-復旧計画は、マシンを復旧グループに収集します。 順序、説明、タスクを追加することで計画をカスタマイズできます。 計画を定義した後に、フェールオーバーを実行できます。
-
+復旧計画は、マシンを復旧グループに収集します。 順序、説明、タスクを追加することで計画をカスタマイズできます。 計画を定義した後に、フェールオーバーを実行できます。  マシンは複数の復旧計画で参照でき、このとき、マシンが別の復旧計画でデプロイされている場合、後続の計画ではマシンのデプロイ/起動はスキップされます。
 
 
 ## <a name="why-use-a-recovery-plan"></a>復旧計画を使用する理由

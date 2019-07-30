@@ -4,7 +4,7 @@ description: Windows 仮想マシン上の高可用性 SAP NetWeaver マルチ S
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b27ea761d19eb494895daceff699b2b604eccea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dadbfb138fb9e3e77cee265c008524b9c424a5dd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153865"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709615"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
@@ -473,7 +473,7 @@ ms.locfileid: "66153865"
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager] にある「ロード バランサーごとのプライベート フロント エンド IP」をご覧ください。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -642,31 +642,31 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 おおまかな手順は次のとおりです。
 
-1. [最初の SAP クラスター ノードのインストール][sap-ha-guide-9.1.2]  
+1. [最初の SAP クラスター ノードをインストールします][sap-ha-guide-9.1.2]。  
  このステップでは、**EXISTING WSFC クラスター ノード 1** に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。
 
-2. [ASCS/SCS インスタンスの SAP プロファイルの変更][sap-ha-guide-9.1.3]
+2. [ASCS/SCS インスタンスの SAP プロファイルを変更します][sap-ha-guide-9.1.3]。
 
-3. [プローブ ポートの構成][sap-ha-guide-9.1.4]  
+3. [プローブ ポートを構成します][sap-ha-guide-9.1.4]。  
  このステップではPowerShell を使用して、SAP クラスター リソース SAP-SID2-IP プローブ ポートを構成します。 この構成は、SAP ASCS/SCS クラスター ノードのいずれかで実行します。
 
-4. [データベース インスタンスのインストール][sap-ha-guide-9.2]  
+4. [データベース インスタンスをインストールします][sap-ha-guide-9.2]。  
  このステップでは、専用の WSFC クラスターに DBMS をインストールします。
 
-5. [第 2 のクラスター ノードのインストール][sap-ha-guide-9.3]  
+5. [第 2 のクラスター ノードをインストールします][sap-ha-guide-9.3]。  
  このステップでは、既存の WSFC クラスター ノード 2 に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。
 
 6. SAP ASCS/SCS のインスタンスと ProbePort の Windows ファイアウォール ポートを開く  
  SAP ASCS/SCS インスタンスで使用する両方のクラスター ノードで、SAP ASCS/SCS ポートが使用するすべての Windows ファイアウォール ポートを開きます。 これらのポートのリストは、メインの [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide-8.8]に記載されています。  
  また、Azure 内部ロード バランサー プローブ ポート (このシナリオでは 62350) を開きます。
 
-7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類の変更][sap-ha-guide-9.4]
+7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類を変更します][sap-ha-guide-9.4]。
 
-8. 新しい専用 VM での [SAP プライマリ アプリケーション サーバーのインストール][sap-ha-guide-9.5]
+8. 新しい専用 VM で [SAP プライマリ アプリケーション サーバーをインストールします][sap-ha-guide-9.5]。
 
-9. 新しい専用 VM での [SAP 追加アプリケーション サーバーのインストール][sap-ha-guide-9.6]
+9. 新しい専用 VM で [SAP 追加アプリケーション サーバーをインストールします][sap-ha-guide-9.6]。
 
-10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションのテスト][sap-ha-guide-10]
+10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションをテストします][sap-ha-guide-10]。
 
 ## <a name="next-steps"></a>次の手順
 

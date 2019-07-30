@@ -2,17 +2,17 @@
 title: オペレーターのベスト プラクティス - Kubernetes Services (AKS) でのコンテナー イメージの管理
 description: Azure Kubernetes Service (AKS) でコンテナー イメージを管理およびセキュリティで保護する方法に関するクラスター オペレーターのベスト プラクティス
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: ea39bceaa6b58e84def9635436d902002e33cd14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514509"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614830"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 
@@ -24,13 +24,13 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 > * イメージの脆弱性をスキャンして修復する
 > * 基本イメージが更新されたら、コンテナー イメージを自動的にトリガーおよび再デプロイする
 
-[クラスター セキュリティ][best-practices-cluster-security]および[ポッド セキュリティ][best-practices-pod-security]に関するベスト プラクティスも参照できます。
+[クラスター セキュリティ][best-practices-cluster-security]and for [pod security][best-practices-pod-security]に関するベスト プラクティスも参照できます。
 
 ## <a name="secure-the-images-and-run-time"></a>イメージおよびランタイムをセキュリティで保護する
 
 **ベスト プラクティス ガイダンス** - コンテナー イメージをスキャンして脆弱性を見つけ、検証に合格したイメージのみをデプロイします。 基本イメージおよびアプリケーション ランタイムを定期的に更新し、AKS クラスターにワークロードを再デプロイします。
 
-コンテナー ベースのワークロードの導入に関する 1 つ課題は、独自のアプリケーションをビルドするために使用するイメージおよびランタイムのセキュリティを検証することです。 デプロイ内にセキュリティの脆弱性が発生しないことをどのようにして確認できるでしょうか。 デプロイ ワークフローには、[Twistlock][twistlock] や [Aqua][aqua] などのツールを使用してコンテナー イメージをスキャンするプロセスを含める必要があります。その後、検証済みのイメージのみをデプロイできるようにします。
+コンテナー ベースのワークロードの導入に関する 1 つ課題は、独自のアプリケーションをビルドするために使用するイメージおよびランタイムのセキュリティを検証することです。 デプロイ内にセキュリティの脆弱性が発生しないことをどのようにして確認できるでしょうか。 デプロイ ワークフローには、[Twistlock][twistlock]or [Aqua][aqua] などのツールを使用してコンテナー イメージをスキャンするプロセスを含める必要があります。その後、検証済みのイメージのみをデプロイできるようにします。
 
 ![コンテナー イメージをスキャンして修正し、検証し、デプロイする](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
@@ -44,13 +44,13 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 
 また、Azure Container Registry タスクは、基本イメージの更新時にコンテナー イメージを自動的に更新できます。 この機能を使用すると、少数の基本イメージをビルドし、バグおよびセキュリティ修正プログラムを使用して、それらを定期的に更新続けることができます。
 
-基本イメージの更新の詳細については、「[Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update]」(Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する) を参照してください。
+基本イメージの更新の詳細については、「[Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update]」 (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 この記事では、コンテナーをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
 
-* [Automate image builds on base image update with Azure Container Registry タスク (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する)][acr-base-image-update]
+* [Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update] (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する)
 
 <!-- EXTERNAL LINKS -->
 [azure-pipelines]: /azure/devops/pipelines/?view=vsts

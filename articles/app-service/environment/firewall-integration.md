@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b57ac43b02e8630528e7ed3f77f51befa52ed45f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121708"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498467"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -30,6 +30,21 @@ ASE が持っている受信依存関係は複数あります。 受信管理ト
 ASE の送信依存関係は、ほぼすべて、背後に静的アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) を使用して ASE からの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の解決策に基づいてルールを設定し、それを使用して NSG を作成することができません。 
 
 送信アドレスをセキュリティで保護する解決策は、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスの使用方法にあります。 Azure Firewall では、宛先の FQDN に基づいて送信 HTTP および HTTPS トラフィックを制限できます。  
+
+## <a name="system-architecture"></a>システム アーキテクチャ
+
+アウトバウンドのトラフィックがファイアウォール デバイスを経由するようにして ASE をデプロイするには、ASE サブネットのルートを変更する必要があります。 ルートは IP レベルで動作します。 ルートを慎重に定義しないと、別のアドレスからの TCP 応答トラフィックの発信が強制される可能性があります。 これは、非対称ルーティングと呼ばれ、TCP が破られます。
+
+ASE へのインバウンドのトラフィックが、そのトラフィックが入ってきたのと同じ方法で応答できるようにルートが定義されている必要があります。 これは、インバウンドの管理要求にも、インバウンドのアプリケーション要求にも当てはまります
+
+ASE との間のトラフィックは、次の規則に従っている必要があります
+
+* Azure SQL、Storage、および Event Hub へのトラフィックは、ファイアウォール デバイスを使用する場合、サポートされません。 このトラフィックは、それらのサービスに直接送信される必要があります。 それを実行する方法は、それらの 3 つのサービスのサービス エンドポイントを構成することです。 
+* インバウンドの管理トラフィックをその送信元から送り返すルート テーブル規則が定義されている必要があります。
+* インバウンドのアプリケーション トラフィックをその送信元から送り返すルート テーブル規則が定義されている必要があります。 
+* ASE を離れる他のすべてのトラフィックは、ルート テーブル規則を使用してファイアウォール デバイスに送信することができます。
+
+![ASE と Azure Firewall の接続フロー][5]
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>ASE に合わせて Azure Firewall を構成する 
 
@@ -44,11 +59,11 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
    
    ![アプリケーション ルールの追加][1]
    
-1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [ルール] セクションで、名前を指定し、**[任意]** を選択して、[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを「123」を設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。
+1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [ルール] セクションで、名前を指定し、 **[任意]** を選択して、[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを「123」を設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。
 
    ![NTP ネットワーク ルールの追加][3]
 
-1. インターネットの次ホップがある [App Service Environment 管理アドレス]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。 インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。 0.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall プライベート IP アドレスである仮想アプライアンス ルートを追加します。 
+1. インターネットの次ホップがある [App Service Environment 管理アドレス]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。 インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。 0\.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall プライベート IP アドレスである仮想アプライアンス ルートを追加します。 
 
    ![ルート テーブルの作成][4]
    
@@ -68,8 +83,6 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 アプリケーションに依存関係がある場合は、それらを Azure Firewall に追加する必要があります。 その他すべてに関する HTTP/HTTPS トラフィックとネットワークのルールを許可するようにアプリケーション ルールを作成します。 
 
 アプリケーション要求トラフィックの送信元であるアドレス範囲がわかっている場合は、そのアドレス範囲を ASE サブネットに割り当てられているルート テーブルに追加することができます。 アドレス範囲が大きい場合や指定されていない場合は、Application Gateway などのネットワーク アプライアンスを使用して、ルート テーブルに追加するアドレスを 1 つ指定することができます。 ILB ASE に合わせて Application Gateway を構成する方法の詳細については、[ILB ASE を Application Gateway と統合する方法](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)に関するページを参照してください。
-
-![ASE と Azure Firewall の接続フロー][5]
 
 この Application Gateway の使用は、システムの構成方法の一例にすぎません。 このパスに従わなかった場合は、ASE サブネット ルート テーブルへのルートの追加が必要になります。その結果、Application Gateway に送信された応答トラフィックはそこに直接送られます。 
 
@@ -169,6 +182,8 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 |flighting.cp.wd.microsoft.com:443 |
 |dmd.metaservices.microsoft.com:80 |
 |admin.core.windows.net:443 |
+|prod.warmpath.msftcloudes.com:443 |
+|prod.warmpath.msftcloudes.com:80 |
 |azureprofileruploads.blob.core.windows.net:443 |
 |azureprofileruploads2.blob.core.windows.net:443 |
 |azureprofileruploads3.blob.core.windows.net:443 |

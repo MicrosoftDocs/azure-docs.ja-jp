@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 8074919a61ed4f2e3d0b127c13e733b0c485bf62
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 808b2d964bb39af6b410a84563717102ebece454
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890664"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094103"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>チュートリアル:Azure Active Directory と Predictix Price Reporting の統合
 
@@ -97,7 +97,7 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 

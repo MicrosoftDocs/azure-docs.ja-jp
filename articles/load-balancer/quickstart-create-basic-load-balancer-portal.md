@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: このクイックスタートでは、Azure Portal を使用してパブリック Basic Load Balancer を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: db781899a3fe0d13d030943ed3ab4ebd3d105ad1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9819111c8264493648233f40252db4fb4410aaf1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727582"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274096"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Basic Load Balancer を作成する
 
@@ -39,9 +39,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | サブスクリプション               | サブスクリプションを選択します。    |    
-    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
-    | Name                   | *myLoadBalancer*                                   |
+    | Subscription               | サブスクリプションを選択します。    |    
+    | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
+    | EnableAdfsAuthentication                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
     | Type          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Basic]** を選択します。                          |

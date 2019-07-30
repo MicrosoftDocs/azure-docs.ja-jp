@@ -62,12 +62,28 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
     - name: SDK
       items:
-        - name: .NET SDK リファレンス
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
-        - name: NuGet パッケージ
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+        - name: .NET
+          items:
+            - name: .NET SDK リファレンス
+              href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
+            - name: NuGet パッケージ
+              href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+        - name: Go
+          items:
+            - name: SDK
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer'
+        - name: Node.js
+          items:
+            - name: NPM
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
+        - name: Python
+          items:
+            - name: Pypi パッケージ
+              href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: リソース
   items:
+    - name: トラブルシューティング
+      href: troubleshooting.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス

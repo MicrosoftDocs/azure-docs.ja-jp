@@ -4,17 +4,17 @@ description: Runbook の入力パラメーターを利用すれば、開始時�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3fb89af0363ddc25f2bccfa1169834aa856e514a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60500039"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478228"
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
 

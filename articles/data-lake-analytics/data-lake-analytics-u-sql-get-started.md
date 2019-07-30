@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a138801ba13c6008880e3d24c89d1c23323b853
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813851"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626212"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL を使用する
 U-SQL は、あらゆる規模のデータの処理を可能にするために、宣言型の SQL と命令型の C# を組み合わせた言語です。 U-SQL のスケーラブルな分散クエリ機能を使用することで、Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。 U-SQL では、読み取り時にスキーマを適用し、カスタム ロジックと UDF を挿入することで、非構造化データを処理できます。 また、U-SQL には、スケールを実行する方法をきめ細かく制御する拡張性があります。 
@@ -22,7 +22,7 @@ U-SQL は、あらゆる規模のデータの処理を可能にするために�
 ## <a name="learning-resources"></a>学習用のリソース
 
 * 「[U-SQL チュートリアル](https://aka.ms/usqltutorial)」では、ほとんどの U-SQL 言語のガイド付きチュートリアルを提供しています。 U-SQL について学習するすべての開発者には、このドキュメントをご覧になることをお勧めします。
-* **U-SQL 言語構文**の詳細については、「[U-SQL Language Reference](https://go.microsoft.com/fwlink/p/?LinkId=691348)」(U-SQL 言語のリファレンス) を参照してください。
+* **U-SQL 言語構文**の詳細については、「[U-SQL Language Reference](https://docs.microsoft.com/u-sql/)」(U-SQL 言語のリファレンス) を参照してください。
 * **U-SQL のデザインの考え方**について理解するには、Visual Studio ブログの投稿「[Introducing U-SQL – A Language that makes Big Data Processing Easy](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)」(U-SQL 紹介 – ビッグ データ処理を容易にする言語)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件

@@ -13,6 +13,10 @@
   items:
     - name: Immersive Reader の起動 (Node.js)
       href: tutorial.md
+- name: 操作方法
+  items:
+    - name: Azure Active Directory 認証
+      href: azure-active-directory-authentication.md
 - name: リファレンス
   items:
     - name: SDK リファレンス

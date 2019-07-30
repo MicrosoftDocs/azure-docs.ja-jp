@@ -128,6 +128,8 @@
           href: dbms_guide_ibm.md
         - name: SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性
           href: dbms-guide-ha-ibm.md
+        - name: Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
           href: dbms_guide_sapase.md
         - name: Azure 上の SAP MaxDB、liveCache、コンテンツ サーバーのデプロイ
@@ -168,6 +170,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
               href: high-availability-guide-rhel.md
+            - name: Azure NetApp Files を使用した (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
+              href: high-availability-guide-rhel-netapp-files.md
         - name: Azure インフラストラクチャの準備
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
@@ -194,6 +198,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: Red Hat Enterprise Linux での SAP NetWeaver の高可用性
               href: high-availability-guide-rhel.md
+            - name: Azure NetApp Files を使用した (A)SCS インスタンス用の NFS を使用した Red Hat Enterprise Linux
+              href: high-availability-guide-rhel-netapp-files.md
         - name: SAP マルチ SID
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
@@ -202,6 +208,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
     - name: SAP のディザスター リカバリーのための Azure Site Recovery
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+    - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
+      href: sap-proximity-placement-scenarios.md
 - name: AAD SAP ID 統合およびシングル サインオン
   items:
     - name: SAP Cloud との統合

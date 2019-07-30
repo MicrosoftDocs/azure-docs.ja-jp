@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6b1e167d26b5848238dd51bf9792f8316c33a385
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d6a467307e4816ffbb45f23bac55b8023267352
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205562"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611253"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Office 365 ログからデータを接続する
 

@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/13/2019
-ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596952"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274175"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
 
@@ -158,7 +158,7 @@ ms.locfileid: "65596952"
 |---------|------|-------------|
 | headers | JSON オブジェクト | 応答のヘッダー |
 | body | JSON オブジェクト | 応答の本文 |
-| 状態コード | 整数 | 応答の状態コード |
+| status code | 整数 | 応答の状態コード |
 |||| 
 
 *例*
@@ -331,7 +331,7 @@ ms.locfileid: "65596952"
 |---------|------|-------------| 
 | headers | JSON オブジェクト | 応答のヘッダー | 
 | body | JSON オブジェクト | 応答の本文 | 
-| 状態コード | 整数 | 応答の状態コード | 
+| status code | 整数 | 応答の状態コード | 
 |||| 
 
 *受信要求の要件*
@@ -340,14 +340,14 @@ ms.locfileid: "65596952"
   
 | Response | 必須 | 説明 | 
 |----------|----------|-------------| 
-| 状態コード | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
+| status code | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
 | Retry-after ヘッダー | いいえ | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
 | Location ヘッダー | いいえ | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 | 
 |||| 
 
 *さまざまな要求の動作の例*
 
-| 状態コード | 再試行までの時間 | 動作 | 
+| status code | 再試行までの時間 | 動作 | 
 |-------------|-------------|----------|
 | 200 | {なし} | ワークフローを実行し、定義済みの繰り返しの後に、まだデータがあるかどうかを再確認します。 | 
 | 200 | 10 秒 | ワークフローを実行し、10 秒後に、まだデータがあるかどうかを再確認します。 |  
@@ -426,7 +426,7 @@ ms.locfileid: "65596952"
 |---------|------|-------------| 
 | headers | JSON オブジェクト | 応答のヘッダー | 
 | body | JSON オブジェクト | 応答の本文 | 
-| 状態コード | 整数 | 応答の状態コード | 
+| status code | 整数 | 応答の状態コード | 
 |||| 
 
 *例*
@@ -1692,7 +1692,7 @@ ID,Product_Name
 
 このアクションで作成される HTML テーブルは次のようになります。 
 
-<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Apples</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
+<table><thead><tr><th>id</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Apples</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
 
 *例 3*
 
@@ -2624,7 +2624,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 ### <a name="run-in-high-throughput-mode"></a>高スループット モードで実行する
 
-1 回のロジック アプリの実行において、5 分ごとに実行されるアクションの数には、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)が設定されています。 この上限を可能な[最大数](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)まで引き上げるには、`operationOptions` プロパティを `OptimizedForHighThroughput` に設定します。 この設定により、ロジック アプリが "高スループット" モードになります。 
+1 回のロジック アプリの定義において、5 分ごとに実行されるアクションの数には、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)が設定されています。 この上限を可能な[最大数](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)まで引き上げるには、`operationOptions` プロパティを `OptimizedForHighThroughput` に設定します。 この設定により、ロジック アプリが "高スループット" モードになります。 
 
 > [!NOTE]
 > 高スループット モードはプレビュー段階です。 必要に応じて複数のロジック アプリにワークロードを分散することもできます。

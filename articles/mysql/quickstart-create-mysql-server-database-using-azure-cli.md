@@ -223,7 +223,7 @@ mysql>
 az group delete --name myresourcegroup
 ```
 
-新しく作成した 1 つのサーバーを削除するだけの場合は、**[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete)** コマンドを実行してください。
+新しく作成した 1 つのサーバーを削除するだけの場合は、 **[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete)** コマンドを実行してください。
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```

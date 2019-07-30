@@ -130,12 +130,12 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 ## <a name="get-ingest-urls"></a>取り込み URL の取得
 チャネルが作成されると、ライブ エンコーダーに提供する取り込み URL を取得できます。 エンコーダーは、これらの URL を使用して、ライブ ストリームを入力します。
 
-![作成日時](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
+![作成されたもの](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>イベントの視聴
 イベントを視聴するには、Azure Portal で **[Watch (視聴)]** をクリックするか、ストリーミング URL をコピーして任意のプレーヤーを使用します。 
 
-![作成日時](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
+![作成されたもの](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
 ライブ イベントは、停止するとオンデマンド コンテンツに自動的に変換されます。
 

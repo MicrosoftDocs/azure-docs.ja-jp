@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3851e53bb648811b46ec69d9c4fc91b920ce80fb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fd29c24aa0da83b67f0c0d943312adc5c2558f8f
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784952"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335586"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -96,6 +96,10 @@ ms.locfileid: "65784952"
     > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
     > > [新しいクライアント シークレットを生成する]()
     
+    > [!div class="sxs-lookup" renderon="portal"]
+    > > [!NOTE]
+    > > このクイックスタートでは、Enter_the_Supported_Account_Info_Here をサポートしています。
+    
     > [!div renderon="docs"]
     >> 各値の説明:
     >> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
@@ -122,7 +126,7 @@ ms.locfileid: "65784952"
 
 ##### <a name="standard-user"></a>標準ユーザー
 
-テナントの標準ユーザーの場合は、お使いのアプリケーションに管理者の同意を与えてもらうようにグローバル管理者に依頼する必要があります。 これを行うには、次の URL を管理者に知らせます。
+テナントの標準ユーザーの場合は、お使いのアプリケーションに管理者の同意を与えるようグローバル管理者に依頼する必要があります。 これを行うには、次の URL を管理者に知らせます。
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
@@ -138,7 +142,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 #### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
 
-Visual Studio を使用している場合は、**F5** キーを押してアプリケーションを実行します。それ以外の場合、コマンド プロンプトまたはコンソールを使用してアプリケーションを実行します。
+Visual Studio を使用している場合は、**F5** キーを押してアプリケーションを実行します。それ以外の場合は、コマンド プロンプトまたはコンソールを使用してアプリケーションを実行します。
 
 ```console
 cd {ProjectFolder}\daemon-console
@@ -211,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | 要求されるスコープが含まれています。 Confidential クライアントの場合は、`{Application ID URI}/.default` のような形式を使用して、要求されるスコープが Azure Portal 上で設定されるアプリ オブジェクト内に静的に定義されたものであることを示す必要があります (Microsoft Graph では、`{Application ID URI}` は `https://graph.microsoft.com` を指します)。 カスタム Web API の場合、`{Application ID URI}` は、Azure Portal 上で [アプリケーションの登録 (プレビュー)] の **[API の公開]** セクションに定義されます。 |
 
-詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclientasync?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__)をご覧ください。
+詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__)をご覧ください。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
@@ -232,3 +236,8 @@ result = await app.AcquireTokenForClient(scopes)
 
 > [!div class="nextstepaction"]
 > [MSAL.NET を使用するクライアント資格情報フロー](https://aka.ms/msal-net-client-credentials)
+
+Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
+
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

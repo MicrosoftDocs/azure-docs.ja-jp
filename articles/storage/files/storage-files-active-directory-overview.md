@@ -5,22 +5,22 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 06/18/2019
 ms.author: rogarana
-ms.openlocfilehash: ad8ddf7e9e324bbcc48f15c95870a24fe7476828
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21087424be1a7a3edfe2dddcbec830bd74559b23
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237759"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269370"
 ---
-# <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)
+# <a name="overview-of-azure-files-azure-active-directory-domain-service-aad-ds-authentication-support-for-smb-access-preview"></a>Azure Files での SMB アクセスに対する Azure Active Directory Domain Services (AAD DS) 認証の概要 (プレビュー)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-SMB を使用した Azure Files の Azure AD 認証を有効にする方法については、「[SMB を使用した Azure Files の Azure Active Directory 認証 (プレビュー) を有効にする](storage-files-active-directory-enable.md)」をご覧ください。
+Azure Files に対して AAD DS 認証を有効にする方法については、「[SMB を使用して Azure Files への Azure Active Directory Domain Services 認証を有効にする (プレビュー)](storage-files-active-directory-enable.md)」をご覧ください。
 
 ## <a name="glossary"></a>用語集 
-SMB を使用した Azure Files の Azure AD 認証に関連するいくつかの重要な用語を理解することをお勧めします。
+SMB を使用した Azure Files の Azure AD Domain Service 認証に関連するいくつかの重要な用語を理解することをお勧めします。
 
 -   **Azure Active Directory (Azure AD)**  
     Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 Azure AD には、主要なディレクトリ サービス、アプリケーション アクセスの管理、ID 保護の機能が一つのソリューションとして統合されています。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
@@ -38,15 +38,14 @@ SMB を使用した Azure Files の Azure AD 認証に関連するいくつか�
 -  **サーバー メッセージ ブロック (SMB) プロトコル**  
     SMB は、業界標準のネットワーク ファイル共有プロトコルです。 SMB は、Common Internet File System (CIFS) とも呼ばれます。 SMB の詳細については、「[Microsoft SMB プロトコルと CIFS プロトコルの概要](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)」を参照してください。
 
-## <a name="advantages-of-azure-ad-authentication"></a>Azure AD 認証の利点
-SMB を使用した Azure Files の Azure AD 認証では、共有キー認証と比較して、以下のようにいくつかの利点があります。
+## <a name="advantages-of-azure-ad-domain-service-authentication"></a>Azure AD Domain Services 認証の利点
+Azure Files に対する Azure AD Domain Services 認証には、共有キー認証と比較して、以下のようなさまざまな利点があります。
 
--   **Azure AD でも、従来の ID を使用した共有ファイルへのアクセスのユーザー エクスペリエンスを**  
-    従来のファイル サーバーを Azure Files で置き換え、使用するアプリケーションを「リフト アンド シフト」でクラウドに移行する場合は、アプリケーションがファイル データへのアクセスを Azure AD で認証するようにした方がよい場合があります。 Azure Files は、ドメインに参加している VM から得た Azure AD の資格情報を使用した、
-SMB 経由のファイル共有、ディレクトリまたはファイルへのアクセスをサポートしています。 また、ユーザー名、パスワード、およびその他のグループ割り当てを保持するために、オンプレミスのすべての Active Directory オブジェクトを Azure AD と同期することも選択できます。
+-   **従来の ID ベースのファイル共有アクセス エクスペリエンスを Azure AD と Azure AD Domain Services を使用してクラウド上に展開する**  
+    従来のファイル サーバーを Azure Files に置き換えて、お使いのアプリケーションを "リフト アンド シフト" でクラウドに移行する場合は、アプリケーションによるファイル データへのアクセスを Azure AD 資格情報で認証することができます。 Azure Files では、AAD DS ドメイン参加済み Windows VM からの SMB を介した Azure Files へのアクセスでの Azure AD 資格情報の使用がサポートされています。 また、ユーザー名、パスワード、およびその他のグループ割り当てを保持するために、オンプレミスのすべての Active Directory オブジェクトを Azure AD と同期することも選択できます。
 
 -   **Azure のファイル共有への詳細なアクセス制御の適用が可能**  
-    SMB を使用した Azure AD 認証では、特定の ID に対して、ファイル共有、ディレクトリおよびファイル レベルで権限を付与できます。 たとえば、プロジェクトのコラボレーションのために、複数のチームが 1 つの Azure ファイル共有を使用しているとします。 その場合、機密ではないディレクトリについてはすべてのチームにアクセス権限を付与し、機密の財務データが含まれるディレクトリについては財務チームのみにアクセス権限を付与できます。 
+    特定の ID に対して、ファイル共有、ディレクトリ、またはファイル レベルでアクセス許可を付与できます。 たとえば、プロジェクトのコラボレーションのために、複数のチームが 1 つの Azure ファイル共有を使用しているとします。 その場合、機密ではないディレクトリについてはすべてのチームにアクセス権限を付与し、機密の財務データが含まれるディレクトリについては財務チームのみにアクセス権限を付与できます。 
 
 -   **データだけでなく、ACL のバックアップも可能**  
     Azure Files では、既存のオンプレミスのファイル共有をバックアップすることができます。 Azure Files では、SMB 経由で Azure Files に共有ファイルをバックアップすると、データと共に ACL も保持されます。
@@ -58,17 +57,17 @@ VM 上で実行されているアプリケーションに関連付けられて�
 
 ![SMB 経由の Azure AD 認証のスクリーン ショット](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
-### <a name="enable-azure-ad-authentication-over-smb"></a>SMB 経由の Azure AD 認証を有効にする
-2018 年 9 月 24 日より後に作成された、Azure Files の新規および既存のストレージ アカウントでは、SMB 経由の Azure AD 認証を有効にできます。 
+### <a name="enable-azure-ad-domain-service-authentication-for-smb-access"></a>SMB アクセスに対する Azure AD Domain Services 認証を有効にする
+2018 年 9 月 24 日より後に作成された新しいまたは既存のストレージ アカウントに対して、Azure Files 用の Azure AD Domain Services 認証を有効にできます。 
 
-SMB 経由の Azure AD 認証を有効にする場合は、ストレージ アカウントが関連付けられているプライマリ Azure AD テナントのために、Azure AD Domain Services がデプロイされていることを事前に確認します。 Azure AD Domain Services の設定がまだ完了していない場合は、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/create-instance.md)」に記載の手順に従ってください。
+この機能を有効にする前に、ストレージ アカウントが関連付けられているプライマリ Azure AD テナントに、Azure AD Domain Services がデプロイされていることを確認します。 Azure AD Domain Services の設定がまだ完了していない場合は、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/create-instance.md)」に記載の手順に従ってください。
 
-Azure AD Domain Services のデプロイは、通常 10～15 分要します。 Azure AD Domain Services のデプロイが完了後、SMB 経由で Azure Files の Azure AD 認証を有効にできます。 詳細については、「[SMB 経由で Azure files の Azure Active Directory 認証を有効にする認証 (プレビュー)](storage-files-active-directory-enable.md)」を参照してください。 
+Azure AD Domain Services のデプロイは、通常 10～15 分要します。 Azure AD Domain Services のデプロイが完了後、SMB 経由で Azure Files の Azure AD 認証を有効にできます。 詳細については、「[SMB を使用して Azure Files への Azure Active Directory Domain Services 認証を有効にする (プレビュー)](storage-files-active-directory-enable.md)」を参照してください。 
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Azure Files の共有レベルのアクセス権限を構成する
-Azure AD 認証が有効の場合、Azure AD の ID のカスタム RBAC ロールを構成して、ストレージ アカウント内の任意のファイル共有へのアクセス権を割り当てることができます。
+Azure AD Domain Services 認証を有効にした後、Azure AD の ID のカスタム RBAC ロールを構成し、ストレージ アカウント内の任意のファイル共有へのアクセス権を割り当てることができます。
 
-ドメインに参加している VM 上で実行されているアプリケーションが Azure のファイル共有をマウントしようとしたり、ディレクトリまたはファイルにアクセスしようとしたりした場合、そのアプリケーションの Azure AD 資格情報について、適切な共有レベルの権限と NTFS 権限があることが確認されます。 共有レベルの権限の構成の詳細については、「[SMB 経由でAzure Active Directory 認証を有効にする (プレビュー)](storage-files-active-directory-enable.md)」を参照してください。
+ドメインに参加している VM 上で実行されているアプリケーションが Azure のファイル共有をマウントしようとしたり、ディレクトリまたはファイルにアクセスしようとしたりした場合、そのアプリケーションの Azure AD 資格情報について、適切な共有レベルの権限と NTFS 権限があることが確認されます。 共有レベルのアクセス許可の構成の詳細については、「[SMB を使用して Azure Files への Azure Active Directory 認証を有効にする (プレビュー)](storage-files-active-directory-enable.md)」を参照してください。
 
 ### <a name="configure-directory--or-file-level-permissions-for-azure-files"></a>Azure Files のディレクトリレベルまたはファイルレベルの権限を構成する 
 Azure Files は、ルート ディレクトリを含め、ディレクトリレベルおよびファイルレベルで標準の NTFS ファイル権限を適用します。 ディレクトリレベルまたはファイルレベルの権限の構成は、SMB 経由の構成のみがサポートされています。 VM 上で対象のファイル共有をマウントし、Windows の [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) または [SET-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) コマンドを使用して権限を構成します。 
@@ -83,7 +82,7 @@ Azure Files は、ルート ディレクトリを含め、ディレクトリレ�
 > セキュリティのベスト プラクティスの一貫として、ストレージ アカウント キーの共有や、Azure AD の権限の利用は、可能な限り避けてください。
 
 ### <a name="preserve-directory-and-file-acls-for-data-import-to-azure-file-shares"></a>Azure のファイル共有にディレクトリとファイルのデータ インポート用の ACL を保持する
-SMB 経由の Azure AD 認証は、Azure のファイル共有にデータをコピーする際、ディレクトリまたはファイルの ACL を保持することをサポートしています。 プレビューのリリースにおいては、ディレクトリまたはファイルの ACL を Azure Files にコピーできます。 たとえば、[robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) を使用し、`/copy:s` のフラグを設定することで、データと ACL の両方を Azure のファイル共有にコピーすることができます。
+Azure Files では、Azure ファイル共有にデータをコピーするときに、ディレクトリまたはファイルの ACL の保持をサポートするようになりました。 ディレクトリまたはファイルの ACL を Azure Files にコピーできます。 たとえば、[robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) を使用し、`/copy:s` のフラグを設定することで、データと ACL の両方を Azure のファイル共有にコピーすることができます。 ACL の保持は既定でオンになっており、ストレージ アカウントに関する Azure AD Domain Services 認証機能を明示的に有効にする必要はありません。 
 
 ## <a name="pricing"></a>価格
 お使いのストレージアカウントで SMB 経由の Azure AD 認証を有効にする場合、追加のサービス料金は発生しません。 価格の詳細については、「[Azure Files の価格](https://azure.microsoft.com/pricing/details/storage/files/)」と「[Azure AD Domain Services の価格](https://azure.microsoft.com/pricing/details/active-directory-ds/)」のページを参照してください。

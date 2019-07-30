@@ -1,23 +1,21 @@
 ---
-title: Azure の予約を管理する | Microsoft Docs
+title: Azure の予約を管理する
 description: サブスクリプション スコープを変更し、Azure の予約に対するアクセス権を管理する方法について説明します。
 ms.service: billing
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89279387b3630ea654070eef671f131ec757d55f
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66127131"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491190"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -54,7 +52,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 共有スコープから単一スコープに変更する場合、選択できるのは自分が所有者であるサブスクリプションだけです。 選択できるのは、予約と同じ課金コンテキスト内のサブスクリプションに限られます。
 
-スコープの対象となるのは、従量課金制オファー MS-AZR-0003P または MS-AZR-0023P、Enterprise オファー MS-AZR-0017P または MS-AZR-0148P、または CSP サブスクリプションの種類のみです。
+スコープの対象となるのは、従量課金制料金の個別サブスクリプション (オファー MS-AZR-0003P または MS-AZR-0023P)、Enterprise オファー MS-AZR-0017P または MS-AZR-0148P、または CSP サブスクリプションの種類のみです。
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>予約を管理できるユーザーを追加または変更する
 

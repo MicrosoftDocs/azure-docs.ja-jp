@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: b7e6201d75556908cc16d97734d1c074efd0a587
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdc09973a192924c5b9a81cd4ed49b9f36fc0eb1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148415"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612310"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットを使用した Stream Analytics ジョブの監視および管理
 基本的な Stream Analytics タスクを実行する Azure PowerShell コマンドレットと PowerShell スクリプトを使用して、Stream Analytics リソースを監視および管理する方法について説明します。
@@ -228,7 +228,7 @@ Stream Analytics ジョブ内に新しい入力を作成したり、指定した
 
 –Force パラメーターを指定し、既存の入力名を指定すると、確認を求められることなく、入力が置き換えられます。
 
-JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの「[入力の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input]」のセクションを参照してください。
+JSON ファイルの構造と内容に関する詳細については、[入力の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] (section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference]) に関する記事を参照してください。
 
 **例 1**
 
@@ -287,7 +287,7 @@ Microsoft Azure に新しい Stream Analytics ジョブを作成したり、指�
 
 –Force パラメーターを指定し、既存のジョブ名を指定すると、確認を求められることなく、ジョブ定義が置き換えられます。
 
-JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの「[Stream Analytics ジョブの作成][msdn-rest-api-create-stream-analytics-job]」のセクションを参照してください。
+JSON ファイルの構造と内容に関する詳細については、[Stream Analytics ジョブの作成 ][msdn-rest-api-create-stream-analytics-job] (section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference]) に関する記事を参照してください。
 
 **例 1**
 
@@ -330,7 +330,7 @@ Stream Analytics ジョブ内に新しい出力を作成したり、既存の出
 
 –Force パラメーターを指定し、既存の出力名を指定すると、確認を求められることなく、出力が置き換えられます。
 
-JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの「[出力の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output]」のセクションを参照してください。
+JSON ファイルの構造と内容に関する詳細については、[出力の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] (section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference]) に関する記事を参照してください。
 
 **例 1**
 
@@ -373,7 +373,7 @@ Stream Analytics ジョブ内に新しい変換を作成したり、既存の変
 
 –Force パラメーターを指定し、既存の変換名を指定すると、確認を求められることなく、変換が置き換えられます
 
-JSON ファイルの構造と内容に関する詳細については、「[Stream Analytics 管理 REST API 参照][stream.analytics.rest.api.reference]」ライブラリの「[変換の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation]」のセクションを参照してください。
+JSON ファイルの構造と内容に関する詳細については、[変換の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] (section of the [Stream Analytics Management REST API Reference Library][stream.analytics.rest.api.reference]) に関する記事を参照してください。
 
 **例 1**
 
@@ -550,7 +550,7 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 [msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx

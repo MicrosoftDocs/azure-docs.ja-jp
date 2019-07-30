@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 10/05/2018
+ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 0199d8f0c4a76a10fffcab7cf2819643d0ac2d68
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496063"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075357"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
@@ -49,7 +49,7 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 | &bull; ServiceBus                     |                   | はい               | 
 | &bull; EventHub                       |                   | はい               | 
 | | | | 
-| **構成可能**                      |                   |                   |           
+| **構成可否**                      |                   |                   |           
 | &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
 
 

@@ -4,7 +4,7 @@ description: Ubuntu Linux オペレーティング システムを格納した A
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 06/24/2019
 ms.author: szark
-ms.openlocfilehash: 7776e0005facb57d223a1ba1e73d1efa30edec49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50651a31cd407da3ce32be3c2ddbbd24e6ca6b69
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60327951"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671569"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure 用の Ubuntu 仮想マシンの準備
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -125,15 +125,6 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
    > [!Note]
    >  `NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージによってこれらのパッケージが削除されます。
 
-Ubuntu 18.04/18.10 では、Azure データ ソースを更新して、/etc/cloud/cloud.cfg.d/90-azure.cfg を編集し、このコードをファイルの末尾に追加します。
-
-**重要: 次に示すように、コードはスペースを含めて正確に追加する必要があります。**
-
-```bash
-datasource:
-   Azure:
-     agent_command: [service, walinuxagent, start]
-```
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
    

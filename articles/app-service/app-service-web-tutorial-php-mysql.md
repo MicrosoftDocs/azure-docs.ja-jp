@@ -109,7 +109,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL 接続を構成する
 
-リポジトリのルートに、*.env* という名前のテキスト ファイルを作成します。 次の変数を *.env* ファイルにコピーします。 _&lt;root_password >_ プレース ホルダーを、MySQL ルート ユーザーのパスワードに置き換えます。
+リポジトリのルートに、 *.env* という名前のテキスト ファイルを作成します。 次の変数を *.env* ファイルにコピーします。 _&lt;root_password >_ プレース ホルダーを、MySQL ルート ユーザーのパスワードに置き換えます。
 
 ```
 APP_ENV=local
@@ -165,7 +165,7 @@ PHP サーバーを停止するには、ターミナルに「`Ctrl + C`」と入
 
 Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL にサーバーを作成します。
 
-次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
+次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、 *\<admin_user>* プレースホルダーをユーザー名に、 *\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1
@@ -301,7 +301,7 @@ _config/database.php_ を開き、次のコードに示すように `sslmode` �
 php artisan migrate --env=production --force
 ```
 
-この時点では、_.env.production_ には有効なアプリケーション キーはありません。 ターミナルで、新しいものを生成します。
+この時点では、 _.env.production_ には有効なアプリケーション キーはありません。 ターミナルで、新しいものを生成します。
 
 ```bash
 php artisan key:generate --env=production --force
@@ -378,7 +378,7 @@ PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを�
 
 Laravel には App Service のアプリケーション キーが必要です。 これはアプリ設定で構成できます。
 
-ローカル ターミナル ウィンドウで、`php artisan` を使用して新しいアプリケーションキーを生成します (_.env_ には保存されません)。
+ローカル ターミナル ウィンドウで、`php artisan` を使用して新しいアプリケーションキーを生成します ( _.env_ には保存されません)。
 
 ```bash
 php artisan key:generate --show
@@ -402,7 +402,7 @@ Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) �
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ (_sites\wwwroot_) に対して仮想アプリケーションのルート パス (_/_) をポイントします。
+既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ (_sites\wwwroot_) に対して仮想アプリケーションのルート パス ( _/_ ) をポイントします。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 

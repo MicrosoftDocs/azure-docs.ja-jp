@@ -1,6 +1,6 @@
 ---
-title: Visual Studio の Azure Stream Analytics ツールでの Stream Analytics Data Box Edge ジョブ
-description: この記事では、Visual Studio の Stream Analytics ツールを使って、Stream Analytics Data Box Edge ジョブのオーサリング、デバッグ、および作成を行う方法について説明します。
+title: Visual Studio の Azure Stream Analytics ツールでの Stream Analytics Edge ジョブ
+description: この記事では、Visual Studio の Stream Analytics ツールを使って、Stream Analytics on IoT Edge ジョブをオーサリング、デバッグ、および作成する方法について説明します。
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 242fb2daebfe9eb6e5a0c73c2c4c0e91a3131032
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1601bf6c73d9f3450959773c85385bc8ef907a66
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304157"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329959"
 ---
-# <a name="develop-stream-analytics-data-box-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Data Box Edge ジョブを作成する
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する
 
-このチュートリアルでは、Visual Studio の Stream Analytics ツールの使用方法について説明します。 Stream Analytics Data Box Edge ジョブをオーサリング、デバッグ、作成する方法について取り上げます。 ジョブを作成してテストした後、 Azure Portal に移動して、それをデバイスに配置できます。 
+このチュートリアルでは、Visual Studio の Stream Analytics ツールの使用方法について説明します。 Stream Analytics Edge ジョブをオーサリング、デバッグ、および作成する方法について取り上げます。 ジョブを作成してテストした後、 Azure Portal に移動して、それをデバイスに配置できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,15 +28,15 @@ ms.locfileid: "66304157"
 
 * [インストール手順](stream-analytics-tools-for-visual-studio-edge-jobs.md)に従って、Visual Studio の Stream Analytics ツールをインストールします。
  
-## <a name="create-a-stream-analytics-data-box-edge-project"></a>Stream Analytics Data Box Edge プロジェクトを作成する 
+## <a name="create-a-stream-analytics-edge-project"></a>Stream Analytics Edge プロジェクトを作成する 
 
 Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。 左側の **テンプレート**の一覧に移動し、 **[Azure Stream Analytics]**  >  **[Stream Analytics Edge]**  >  **[Azure Stream Analytics Edge Application]** を選択します。 プロジェクトの名前、場所、およびソリューション名を入力し、 **[OK]** を選択します。
 
-![Visual Studio での新しい Stream Analytics Data Box Edge プロジェクト](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
+![Visual Studio での新しい Stream Analytics Edge プロジェクト](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
 プロジェクトが作成されたら、**ソリューション エクスプローラー**に移動して、フォルダー階層を表示します。
 
-![Stream Analytics Data Box Edge ジョブのソリューション エクスプローラー ビュー](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
+![Stream Analytics Edge ジョブのソリューション エクスプローラー ビュー](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
  
 ## <a name="choose-the-correct-subscription"></a>適切なサブスクリプションを選択する
@@ -63,15 +63,14 @@ Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェク�
  
 ## <a name="define-the-transformation-query"></a>変換クエリを定義する
 
-Stream Analytics Data Box Edge 環境にデプロイする Stream Analytics ジョブは、[Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396)の大半をサポートします。 ただし、Stream Analytics Data Box Edge ジョブでは次の操作はまだサポートされていません。 
+Stream Analytics IoT Edge 環境にデプロイする Stream Analytics ジョブは、[Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396)の大半をサポートします。 ただし、Stream Analytics Edge ジョブでは次の操作はまだサポートされていません。 
 
 
 |**カテゴリ**  | **コマンド**  |
 |---------|---------|
-|地理空間演算子 |<ul><li>CreatePoint</li><li>CreatePolygon</li><li>CreateLineString</li><li>ST_DISTANCE</li><li>ST_WITHIN</li><li>ST_OVERLAPS</li><li>ST_INTERSECTS</li></ul> |
-|その他の演算子 | <ul><li>PARTITION BY</li><li>TIMESTAMP BY OVER</li><li>DISTINCT</li><li>COUNT 演算子の Expression パラメーター</li><li>日付と時刻関数のマイクロ秒</li><li>JavaScript UDA (この機能は、クラウドに配置されるジョブに対しては、まだプレビュー段階です)</li></ul>   |
+|その他の演算子 | <ul><li>PARTITION BY</li><li>TIMESTAMP BY OVER</li><li>JavaScript UDF</li><li>ユーザー定義集計 (UDA)</li><li>GetMetadataPropertyValue</li><li>1 つの手順での 14 を超える集計の使用</li></ul>   |
 
-ポータルで Stream Analytics Data Box Edge ジョブを作成するときに、サポートされている演算子を使用していない場合は、コンパイラによって自動的に警告が表示されます。
+ポータルで Stream Analytics Edge ジョブを作成するときに、サポートされている演算子を使用していない場合は、コンパイラによって自動的に警告が表示されます。
 
 Visual Studio のクエリ エディターで、次の変換クエリを定義します (**script.asaql ファイル**)。
 
@@ -105,15 +104,15 @@ FROM EdgeInput
 
 2. Azure にジョブを送信するには、クエリ エディターに移動し、 **[Azure に送信]** を選択します。  
 
-3. ポップアップ ウィンドウが表示されます。 既存の Stream Analytics Data Box Edge ジョブを更新するか、新しく作成することを選択してください。 既存のジョブを更新すると、すべてのジョブの構成が置き換えられます。このシナリオでは、新しいジョブを発行します。 **[新しい Azure Stream Analytics ジョブの作成]** を選択し、**MyASAEdgeJob** のようなジョブの名前を入力し、必要な **[サブスクリプション]** 、 **[リソース グループ]** 、および **[場所]** を選択し、 **[送信]** を選択します。
+3. ポップアップ ウィンドウが表示されます。 既存の Stream Analytics Edge ジョブを更新するか、新しく作成することを選択してください。 既存のジョブを更新すると、すべてのジョブの構成が置き換えられます。このシナリオでは、新しいジョブを発行します。 **[新しい Azure Stream Analytics ジョブの作成]** を選択し、**MyASAEdgeJob** のようなジョブの名前を入力し、必要な **[サブスクリプション]** 、 **[リソース グループ]** 、および **[場所]** を選択し、 **[送信]** を選択します。
 
    ![Visual Studio から Azure に Stream Analytics ジョブを送信する](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
-   これで Stream Analytics Data Box Edge ジョブが作成されました。 [IoT Edge でのジョブの実行に関するチュートリアル](stream-analytics-edge.md)を参照して、デバイスへの配置方法を確認できます。 
+   これで Stream Analytics Edge ジョブが作成されました。 [IoT Edge でのジョブの実行に関するチュートリアル](stream-analytics-edge.md)を参照して、デバイスへの配置方法を確認できます。 
 
 ## <a name="manage-the-job"></a>ジョブを管理する 
 
-サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で **[Stream Analytics]** から、Stream Analytics Data Box Edge ジョブをデプロイしたサブスクリプションとリソース グループを展開します。 状態が **[作成済み]** になっている MyASAEdgejob が表示されます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
+サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、 **[Stream Analytics]** から、Stream Analytics Edge ジョブをデプロイしたサブスクリプションとリソース グループを展開します。 状態が **[作成済み]** になっている MyASAEdgejob が表示されます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
 
 ![サーバー エクスプローラーのジョブ管理オプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

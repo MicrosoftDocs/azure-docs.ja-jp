@@ -4,7 +4,7 @@ description: このチュートリアルでは、Linux 仮想マシンを対象�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 921505e7f470d337d9e9e491c6db79930d487eb5
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 7aa0fd328e923df5882a2b6354dc61aac7ca4feb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754374"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695576"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で Linux 仮想マシンの監視と更新を行う
 
@@ -205,7 +205,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 新しい更新プログラムのデプロイを作成するには、 **[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ページが開きます。 次の表で説明されているプロパティの値を入力し、 **[作成]** をクリックします。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 | Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|

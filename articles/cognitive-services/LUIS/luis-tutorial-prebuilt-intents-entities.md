@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 07/16/2018
 ms.author: diberry
-ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 189514c51451dedfaab7b07f28d79f674b32f83a
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086617"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277546"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>チュートリアル:一般的な意図とエンティティを識別する
 
@@ -53,7 +53,7 @@ LUIS には、ユーザーの一般的な意図を使用する際に役立つ事
 
     [![検索ボックスに「Utilities」と入力された事前構築済み意図ダイアログのスクリーンショット](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
 
-1. 次の意図を選択し、**[完了]** をクリックします。 
+1. 次の意図を選択し、 **[完了]** をクリックします。 
 
    * Utilities.Cancel
    * Utilities.Confirm
@@ -61,7 +61,7 @@ LUIS には、ユーザーの一般的な意図を使用する際に役立つ事
    * Utilities.StartOver
    * Utilities.Stop
 
-     これらの意図は、ユーザーがいる場所やユーザーがしてほしいことを会話の中で判定するのに役立ちます。 
+     これらの意図は、ユーザーがいる場所やユーザーがしてほしいことを会話の中で判定するのに役立ちます。 これらの意図には、エンティティの使用状況が含まれています。 number、ordinal、および Utilities.DirectionalReference のエンティティは、LUIS アプリに自動的に追加されます。 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>一般的な種類のデータを抽出するのに役立つ事前構築済みエンティティを追加する
@@ -72,7 +72,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 1. **[Add prebuilt entity]\(作成済みエンティティの追加\)** ボタンを選択します。
 
-1. 事前構築済みエンティティの一覧から 次のエンティティを選択し、**[完了]** を選択します。
+1. 事前構築済みエンティティの一覧から 次のエンティティを選択し、 **[完了]** を選択します。
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**

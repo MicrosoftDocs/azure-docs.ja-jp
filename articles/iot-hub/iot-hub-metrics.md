@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 8eac70db0c563f102dfa0e3fcece9d4604582cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6afebfe9a5db713e31fed0acd2e8ad7244f30037
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595649"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274925"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub メトリックの理解
 
@@ -60,14 +60,14 @@ IoT Hub には、ハブの正常性の概要と、ハブに接続されている
 |d2c<br>.endpoints<br>.latency<br>.serviceBusQueues|ルーティング: Service Bus キューのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージと Service Bus キュー エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.serviceBusTopics|ルーティング: Service Bus トピックに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが Service Bus トピック エンドポイントに正常に配信された回数。|ディメンションなし|
 |d2c<br>.endpoints<br>.latency<br>.serviceBusTopics|ルーティング: Service Bus トピックのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージと Service Bus トピック エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
-|d2c<br>.endpoints<br>.egress<br>.builtIn<br>.events|ルーティング: メッセージ/イベントに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが組み込みのエンドポイント (メッセージ/イベント) に正常に配信された回数。|ディメンションなし|
-|d2c<br>.endpoints<br>.latency<br>.builtIn.events|ルーティング: メッセージ/イベントのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
+|d2c<br>.endpoints<br>.egress<br>.builtIn<br>.events|ルーティング: メッセージ/イベントに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが組み込みのエンドポイント (メッセージ/イベント) に正常に配信された回数。 このメトリックは、IoT ハブに対してルーティングが有効になっている (https://aka.ms/iotrouting) ) 場合にのみ動作を開始します。|ディメンションなし|
+|d2c<br>.endpoints<br>.latency<br>.builtIn.events|ルーティング: メッセージ/イベントのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。 このメトリックは、IoT ハブに対してルーティングが有効になっている (https://aka.ms/iotrouting) ) 場合にのみ動作を開始します。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.storage|ルーティング: ストレージに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージがストレージ エンドポイントに正常に配信された回数。|ディメンションなし|
 |d2c<br>.endpoints<br>.latency<br>.storage|ルーティング: ストレージのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージとストレージ エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.storage<br>.bytes|ルーティング: ストレージに配信されたデータ|Bytes|合計|IoT Hub ルーティングでストレージ エンドポイントに配信されたデータの量 (バイト)。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.storage<br>.blobs|ルーティング: ストレージに配信された BLOB|Count|合計|IoT Hub ルーティングで BLOB がストレージ エンドポイントに配信された回数。|ディメンションなし|
-|EventGridDeliveries|Event Grid の配信数 (プレビュー)|Count|合計|IoT Hub が Event Grid にイベントを出力する要求の数。 この数には、成功した要求と失敗した要求が含まれます。 別の種類の応答の数には Result ディメンションを使用します。 要求の送信元を確認するには、EventType ディメンションを使用します。|Result、EventType|
-|EventGridLatency|Event Grid の待機時間 (プレビュー)|ミリ秒|平均|IoT Hub へのイベント イングレスと Event Grid へのイベント イングレスの間の平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType|
+|EventGridDeliveries|Event Grid の配信数 (プレビュー)|Count|合計|Event Grid に発行された IoT Hub イベントの数。 成功および失敗した要求の数には、Result ディメンションを使用します。 EventType ディメンションは、イベントの種類 (https://aka.ms/ioteventgrid) を示します。 要求の送信元を確認するには、EventType ディメンションを使用します。|Result、EventType|
+|EventGridLatency|Event Grid の待機時間 (プレビュー)|ミリ秒|平均|oT Hub イベントが生成されてから、そのイベントが Event Grid に発行されるまでの平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType|
 |d2c<br>.twin<br>.read<br>.success|成功したデバイスからのツイン読み取り|Count|合計|デバイスが開始して成功したツイン読み取りの数。|ディメンションなし|
 |d2c<br>.twin<br>.read<br>.failure|失敗したデバイスからのツイン読み取り|Count|合計|デバイスが開始したツイン読み取りの失敗数。|ディメンションなし|
 |d2c<br>.twin<br>.read<br>.size|デバイスからのツイン読み取りの応答サイズ|Bytes|平均|デバイスが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|ディメンションなし|

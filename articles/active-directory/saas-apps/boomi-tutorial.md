@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fe436632eee12157dde2b082a5c77e67e7977cc
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 114d29d11e51209d5ac788ae25413b5b989b84f4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957167"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>チュートリアル:Azure Active Directory と Boomi の統合
 

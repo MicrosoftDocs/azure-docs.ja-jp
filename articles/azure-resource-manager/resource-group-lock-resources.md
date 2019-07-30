@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: a6c7983d22eed4a4232fbb2db490c1743684a04c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 31d77b4ea6e7594cd3ed4dba264f9ea6db4ca290
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813398"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155221"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止 
 
@@ -152,7 +152,7 @@ New-AzResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName exam
 New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
-ロックについての情報を取得するには、[Get-AzureRmResourceLock](/powershell/module/az.resources/get-azresourcelock) を使います。 サブスクリプション内のすべてのロックを取得するには、次のように入力します。
+ロックについての情報を取得するには、[Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock) を使います。 サブスクリプション内のすべてのロックを取得するには、次のように入力します。
 
 ```azurepowershell-interactive
 Get-AzResourceLock

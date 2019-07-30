@@ -3,7 +3,7 @@ title: Xamarin Forms アプリでの Mobile Apps の認証の使用 | Microsoft 
 description: Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Forms アプリのユーザーを認証する方法について説明します。
 services: app-service\mobile
 documentationcenter: xamarin
-author: panarasi
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: panarasi
-ms.openlocfilehash: 2945cefc18a378b31700104049f1a14a1f320136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019785"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446296"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Xamarin Forms アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) を今すぐチェックしてください。
+>
 
 ## <a name="overview"></a>概要
 このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。 このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、Xamarin Forms クイック スタート プロジェクトに認証を追加します。 モバイル アプリによって正常に認証、承認されると、ユーザー ID 値が表示され、制限付きのテーブル データにアクセスできます。
@@ -30,7 +34,7 @@ ms.locfileid: "66019785"
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルで最善の結果が得られるように、最初にチュートリアル「[Xamarin.Forms アプリの作成][1]」を完了しておくことをお勧めします。 このチュートリアルを完了すると、マルチプラットフォーム TodoList アプリである Xamarin Forms プロジェクトを作成できます。
 
-ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、認証拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][2]」を参照してください。
+ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、認証拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「 [Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)][2]」を参照してください。
 
 ## <a name="register-your-app-for-authentication-and-configure-app-services"></a>アプリケーションを認証に登録し、App Services を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -39,7 +43,7 @@ ms.locfileid: "66019785"
 
 認証をセキュリティで保護するには、アプリ用の新しい URL スキームの定義が必要になります。 これによって、認証プロセスが完了すると認証システムからアプリにリダイレクトできます。 このチュートリアル全体を通して、URL スキーム _appname_ を使用します。 ただし、選択したあらゆる URL スキームを使用できます。 URL スキームは、モバイル アプリに対して一意である必要があります。 サーバー側でリダイレクトを有効にするには、以下の手順に従います。
 
-1. [[Azure Portal]][8] で、App Service を選択します。
+1. [Azure Portal][8] で、App Service を選択します。
 
 2. **[認証/承認]** メニュー オプションをクリックします。
 
@@ -53,7 +57,8 @@ ms.locfileid: "66019785"
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>ポータブル クラス ライブラリに認証を追加する
-Mobile Apps では、App Service 認証を使用したユーザーのサインインに、[MobileServiceClient][4] の [LoginAsync][3] 拡張メソッドを使います。 このサンプルでは、アプリにプロバイダーのサインイン インターフェイスが表示される、サーバー側管理認証フローを使用します。 詳細については、「[サーバー側管理認証][5]」を参照してください。 運用アプリのユーザー エクスペリエンスを向上させるためには、代わりに[クライアント側管理認証][6]を使用することを検討してください。
+Mobile Apps では、[LoginAsync][3] extension method on the [MobileServiceClient][4] to sign in a user with App Service authentication. This sample
+uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication][5] が使用されます。 運用アプリのユーザー エクスペリエンスを向上させるためには、代わりに[クライアント側管理認証][6]を使用することを検討してください。
 
 Xamarin Forms プロジェクトで認証するには、アプリのポータブル クラス ライブラリに **IAuthenticate** インターフェイスを定義します。 次に、ポータブル クラス ライブラリで定義されているユーザー インターフェイスに **[サインイン]** ボタンを追加します。このボタンは、認証を開始するためにクリックします。 認証が成功すると、モバイル アプリ バックエンドからデータが読み込まれます。
 
@@ -165,7 +170,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
             return success;
         }
 
-    Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider][7] には別の値を選択してください。
+    Facebook 以外の ID プロバイダーを使用している場合、 [MobileServiceAuthenticationProvider][7]には別の値を選択してください。
 
 6. `<application>` 要素に次の XML を追加して、**AndroidManifest.xml** ファイルを更新します。
 
@@ -314,7 +319,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
             return success;
         }
 
-    Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider][7] には別の値を選択してください。
+    Facebook 以外の ID プロバイダーを使用している場合、 [MobileServiceAuthenticationProvider][7]には別の値を選択してください。
 
 1. `LoadApplication()` の呼び出しの前にある **MainPage** クラスのコンストラクター内に次のコード行を追加します。
 

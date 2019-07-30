@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4e236569cc728b7011ffa26554277f281397fd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61333641"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485841"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Azure portal を使用した大規模な自動 IoT デバイス管理
 
@@ -29,7 +29,9 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 * **ターゲット コンテンツ**: ターゲットのデバイス ツイン内のどのプロパティを追加または更新するのかを定義します。 このコンテンツには、変更するプロパティのセクションへのパスが含まれます。
 
-* **メトリック**: 各種の構成状態 (**成功**、**進行中**、**エラー**など) の集計カウントを定義します。 カスタム メトリックは、デバイス ツインから報告されたプロパティに関するクエリとして指定されます。  システム メトリックは、ツインの更新状態を測定する既定のメトリックです (対象となるデバイス ツインの数や、正常に更新されたツインの数など)。 
+* **メトリック**: 各種の構成状態 (**成功**、**進行中**、**エラー**など) の集計カウントを定義します。 カスタム メトリックは、デバイス ツインから報告されたプロパティに関するクエリとして指定されます。  システム メトリックは、ツインの更新状態を測定する既定のメトリックです (対象となるデバイス ツインの数や、正常に更新されたツインの数など)。
+
+自動デバイス構成は、構成が作成された直後に初めて実行され、その後は 5 分間隔で実行されます。 自動デバイス構成が実行されるたびに、メトリックのクエリが実行されます。
 
 ## <a name="implement-device-twins-to-configure-devices"></a>デバイスを構成するためのデバイス ツインを実装する
 

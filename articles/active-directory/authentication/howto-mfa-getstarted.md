@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca69fc23d580b61e74fe56b3d0c3524fdfad747
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 296486755f0935e4eb8dcdb663da46ef60ef38bc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235534"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441007"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -80,13 +80,13 @@ Azure Active Directory Identity Protection によって検出されるリスク 
 
 ## <a name="define-network-locations"></a>ネットワークの場所を定義する
 
-Microsoft では、組織が条件付きアクセスを使用し、[名前付きの場所](../conditional-access/location-condition.md#named-locations)を使用してネットワークを定義することを推奨しました。 組織で Identity Protection を使用している場合は、名前付きの場所ではなく、リスクベースのポリシーを使用することを検討します。
+Microsoft では、組織が条件付きアクセスを使用し、[ネームド ロケーション](../conditional-access/location-condition.md#named-locations)を使用してネットワークを定義することを推奨しました。 組織で Identity Protection を使用している場合は、ネームド ロケーションではなく、リスクベースのポリシーを使用することを検討します。
 
-### <a name="configuring-a-named-location"></a>名前付きの場所を構成する
+### <a name="configuring-a-named-location"></a>ネームド ロケーションを構成する
 
 1. Azure portal で **[Azure Active Directory]** を開きます
 2. **[条件付きアクセス]** をクリックします
-3. **[名前付きの場所]** をクリックします
+3. **[ネームド ロケーション]** をクリックします
 4. **[新しい場所]** をクリックします
 5. **[名前]** フィールドに、わかりやすい名前を入力します
 6. 場所の定義に IP 範囲または国/地域のどちらを使用するかを選択します
@@ -94,7 +94,7 @@ Microsoft では、組織が条件付きアクセスを使用し、[名前付き
       1. 場所を信頼済みとしてマークするかどうかを決定します。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。 入力した IP 範囲が確立され、組織内で信用されていることがわかる場合のみ、この場所を信頼できる場所とマークしてください。
       2. IP 範囲を指定します
    2. 国/地域を使用する場合
-      1. ドロップダウン メニューを開き、この名前付きの場所に対して定義する国または地域を選択します。
+      1. ドロップダウン メニューを開き、このネームド ロケーションに対して定義する国または地域を選択します。
       2. 不明な領域を含めるかどうかを決定します。 不明な領域は、国/地域にマップできない IP アドレスです。
 7. **[作成]**
 
@@ -182,7 +182,7 @@ Get-MsolUser -All | Set-MfaState -State Enforced
 
 # Wrapper to disable MFA with the option to keep the MFA
 # methods (to avoid having to proof-up again later)
-function Disable-Mfa {
+function Disable-MFA {
 
     [CmdletBinding()]
     param(
@@ -256,7 +256,7 @@ MFA やその他の制御がいつ必要になるかを決定する条件付き�
    * **[Done]** をクリックします。
 1. **[条件]** セクションで次の手順を実行します。
    * オプション:Azure Identity Protection を有効にしてある場合は、ポリシーの一部としてサインイン リスクを評価することを選択できます。
-   * オプション:信頼できる場所または名前付きの場所を構成してある場合は、これらの場所をポリシーに追加するか、ポリシーから除外するよう指定できます。
+   * オプション:信頼できる場所またはネームド ロケーションを構成してある場合は、これらの場所をポリシーに追加するか、ポリシーから除外するよう指定できます。
 1. **[許可]** で、 **[アクセス権の付与]** ラジオ ボタンが選択されていることを確認します。
     * **[多要素認証を要求する]** のボックスをオンにします。
     * **[選択]** をクリックします。

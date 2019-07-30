@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 956df17c821b86d95b1d87c3c8d8197bab7a95be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276fe9352d0c4ca7ec525b88d65689b56c0ba027
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955265"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593343"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定
 
@@ -81,7 +81,7 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
 
     Azure CDN は、*cdnverify* サブドメインを使用して DNS マッピングを検証し、この登録プロセスを完了します。 詳細については、「[CNAME DNS レコードを作成する](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)」を参照してください。 この手順により、Azure CDN がカスタム ドメインを認識し、要求に応答できるようになります。
     
- > [!NOTE]
+    > [!NOTE]
     > **Akamai プロファイルの Azure CDN** 上で SSL を有効にするには、cname でカスタム ドメインをエンドポイントに直接指定する必要があります。 SSL を有効にするための cdnverify はまだサポートされていません。 
     >
 

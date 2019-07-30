@@ -58,8 +58,12 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Azure PowerShell の使用
           href: virtual-machines-windows-ps-sql-create.md
+    - name: リソース プロバイダーへの登録
+      href: virtual-machines-windows-sql-register-with-resource-provider.md
     - name: SQL VM のライセンス モデルの変更
       href: virtual-machines-windows-sql-ahb.md
+    - name: SQL Server のエディションの変更
+      href: virtual-machines-windows-sql-change-edition.md
     - name: 移行
       items:
         - name: SQL Server データベースを移行する

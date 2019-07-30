@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824844"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476551"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する
 ユーザーがアプリケーションのアクセス許可に同意する方法を構成する方法について説明します。 管理者の同意を付与することでユーザー エクスペリエンスを簡素化できます。 この記事では、ユーザーの同意を構成するさまざまな方法を紹介します。 この方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。 
@@ -38,9 +38,10 @@ ms.locfileid: "65824844"
 2. 左側のナビゲーション メニューの上部にある **[すべてのサービス]** をクリックします。 **[Azure Active Directory 拡張機能]** が開きます。
 3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 4. ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
-5. **[管理者の同意の付与]** をクリックします。 アプリケーションを管理するためにサインインするようプロンプトが表示されます。
-6. アプリケーションに対する管理者の同意を付与する権限が与えられているアカウントでサインインします。 
-7. アプリケーションのアクセス許可に同意します。
+5. 同意のためのアプリを選択します。
+6. **[アクセス許可]** を選択し、 **[管理者の同意の付与]** をクリックします。 アプリケーションを管理するためにサインインするようプロンプトが表示されます。
+7. アプリケーションに対する管理者の同意を付与する権限が与えられているアカウントでサインインします。 
+8. アプリケーションのアクセス許可に同意します。
 
 このオプションは、アプリケーションが次の場合にのみ機能します。 
 
@@ -54,8 +55,8 @@ ms.locfileid: "65824844"
 1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。
 2. **[アプリの登録]** ブレードに移動します。
 3. 同意するアプリケーションを選択します。
-4. **[必要なアクセス許可]** を選択します。
-5. ブレードの上部にある **[アクセス許可の付与]** をクリックします。
+4. **[API のアクセス許可]** を選択します。
+5. **[管理者の同意の付与]** をクリックします。
 
 
 ## <a name="grant-admin-consent-through-a-url-request"></a>URL 要求を介して管理者の同意を付与する

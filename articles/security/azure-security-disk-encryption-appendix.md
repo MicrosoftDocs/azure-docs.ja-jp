@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66118492"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295053"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Azure Disk Encryption に関する付録 
 
@@ -133,15 +133,15 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
   - [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。  
 
-### <a name="encrypt-or-decrypt-vm-scale-sets"></a>VM スケール セットを暗号化または暗号化解除する
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>仮想マシン スケール セットを暗号化または暗号化解除する
 
 - [実行中の Linux 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [実行中の Windows 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [ジャンプボックスで Linux VM の VM スケール セットをデプロイし、Linux VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [ジャンプボックスで Linux VM の仮想マシン スケール セットをデプロイし、Linux VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [ジャンプボックスで Windows VM の VM スケール セットをデプロイし、Windows VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [ジャンプボックスで Windows VM の仮想マシン スケール セットをデプロイし、Windows VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [実行中の Linux 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -206,7 +206,7 @@ OS のパーティションを圧縮して、BitLocker 用にコンピュータ�
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS ディスクを暗号化するための前提条件
 
-* VM は、「[Azure Disk Encryption に関する FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)」に記載されている OS ディスクの暗号化と互換性のあるディストリビューションを使っている必要があります。 
+* VM は、[Azure Disk Encryption でサポートされているオペレーティング システムに関するページ記載されている OS ディスクの暗号化と互換性のあるディストリビューションを使っている必要があります。Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * VM は、Azure Resource Manager で Marketplace イメージから作成する必要があります。
 * 少なくとも 4 GB の RAM を持つAzure VM (推奨するサイズは 7 GB)。
 * (RHEL と CentOS については) SELinux を無効にします。 SELinux を無効にする方法については、 VM で「[SELinux User's and Administrator's Guide (SELinux ユーザーおよび管理者用ガイド)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)」の「4.4.2. Disabling SELinux (SELinux の無効化)」をご覧ください。

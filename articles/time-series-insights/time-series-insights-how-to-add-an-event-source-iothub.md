@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12e86e2a47698d7f736b5f66a92819a4621d5e96
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 47e14ff87a6197ccc97231835da545207545a328
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165687"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460795"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する
 
@@ -42,7 +42,7 @@ ms.locfileid: "67165687"
 
 1. **[設定]** で **[組み込みのエンドポイント]** を選択し、 **[イベント]** エンドポイントを選択します。
 
-   [![[組み込みのエンドポイント] ページで [イベント] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png#lightbox)
+   [![[組み込みのエンドポイント] ページで [イベント] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png#lightbox)
 
 1. **[コンシューマー グループ]** にコンシューマー グループの一意の名前を入力します。 Time Series Insights 環境で新しいイベント ソースを作成する場合に、これと同じ名前を使用します。
 
@@ -56,7 +56,7 @@ ms.locfileid: "67165687"
 
 1. **[環境トポロジ]** で **[イベント ソース]** を選択し、 **[追加]** を選択します。
 
-   [![[イベント ソース] を選択し、[追加] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png#lightbox)
+   [![[イベント ソース] を選択し、[追加] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png#lightbox)
 
 1. **[New event source] (新しいイベント ソース)** ウィンドウで、 **[イベント ソース名]** にこの Time Series Insights 環境の一意の名前を入力します。 たとえば、「**イベント ストリーム**」と入力します。
 
@@ -66,11 +66,11 @@ ms.locfileid: "67165687"
 
    * サブスクリプションのいずれかに IoT Hub が既にある場合は、 **[Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する)** を選択します。 このオプションが最も簡単な方法となります。
    
-     [![[New event source] (新しいイベント ソース) ウィンドウでオプションを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png#lightbox)
+     [![[New event source] (新しいイベント ソース) ウィンドウでオプションを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png#lightbox)
 
     * **[Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する)** オプションに必要なプロパティについて次の表に説明します。
 
-       [![[New event source] (新しいイベント ソース) ウィンドウ - [Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する) オプションで設定するプロパティ](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png#lightbox)
+       [![[New event source] (新しいイベント ソース) ウィンドウ - [Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する) オプションで設定するプロパティ](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png#lightbox)
 
        | プロパティ | 説明 |
        | --- | --- |
@@ -101,7 +101,7 @@ ms.locfileid: "67165687"
 
 1. **作成** を選択します。
 
-   [![[作成] ボタン](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png#lightbox)
+   [![[作成] ボタン](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png#lightbox)
 
 1. イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
 

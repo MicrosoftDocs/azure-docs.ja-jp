@@ -52,6 +52,10 @@
               href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
             - name: Python
               href: Quickstarts/get-answer-from-knowledge-base-python.md
+    - name: SDK の使用
+      items:
+        - name: 'C#'
+          href: ./Quickstarts/create-publish-kb-csharp-sdk.md
 - name: チュートリアル
   items:
     - name: KB を作成して回答する
@@ -88,7 +92,7 @@
           displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
         - name: おしゃべりの追加
           href: How-to/chit-chat-knowledge-base.md
-        - name: セキュリティで保護された Sharepoint ファイルの追加
+        - name: セキュリティで保護された SharePoint ファイルの追加
           href: How-To/add-sharepoint-datasources.md
           displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: ナレッジ ベースの管理
@@ -144,9 +148,16 @@
 - name: リファレンス
   items:
     - name: REST API リファレンス
+      items:
+        - name: API の作成
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
+        - name: GenerateAnswer API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
+        - name: Train API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: FAQ
-      href: faqs.md
+    - name: トラブルシューティング
+      href: troubleshooting.md
     - name: 制限
       href: limits.md
     - name: 用語集
@@ -162,7 +173,9 @@
       items:
         - name: 'C#'
           items:
-            - name: NuGet
+            - name: リファレンス ドキュメント
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+            - name: NuGet パッケージ
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
         - name: Go
           items:

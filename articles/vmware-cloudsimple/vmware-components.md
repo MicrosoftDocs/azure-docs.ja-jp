@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62511118edb4f8b5061f90138bac2aa2b5d3cfe3
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157949"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165153"
 ---
 # <a name="private-cloud-vmware-components"></a>プライベート クラウド VMware コンポーネント
 
@@ -37,7 +37,7 @@ ms.locfileid: "65157949"
 
 ## <a name="esxi"></a>ESXi
 
-プライベート クラウドを作成するときは、購入した CloudSimple ノード上に VMware ESXi をインストールします。  ESXi は、ワークロード仮想マシン (VM) をデプロイするためのハイパーバイザーです。  ノードは、プライベート クラウド上のハイパー コンバージド インフラストラクチャ (コンピューティングおよびストレージ) です。  これらのノードは、プライベート クラウド上で vSphere クラスターを構成する一部となります。  各ノードでは、4 つの物理ネットワーク インターフェイスがアンダーレイ ネットワークに接続されています。  2 つの物理ネットワーク インターフェイスを使用して、vCenter 上の **vSphere 分散スイッチ (VDS)** と、**NSX マネージド仮想分散スイッチ (N-VDS)** が作成されます。  高可用性を実現するため、ネットワーク インターフェイスは、アクティブ/アクティブ モードで構成されます。
+VMware ESXi は、プライベート クラウドを作成するときに、プロビジョニングされた CloudSimple ノード上にインストールされます。  ESXi は、ワークロード仮想マシン (VM) をデプロイするためのハイパーバイザーです。  ノードは、プライベート クラウド上のハイパー コンバージド インフラストラクチャ (コンピューティングおよびストレージ) です。  これらのノードは、プライベート クラウド上で vSphere クラスターを構成する一部となります。  各ノードでは、4 つの物理ネットワーク インターフェイスがアンダーレイ ネットワークに接続されています。  2 つの物理ネットワーク インターフェイスを使用して、vCenter 上の **vSphere 分散スイッチ (VDS)** と、**NSX マネージド仮想分散スイッチ (N-VDS)** が作成されます。  高可用性を実現するため、ネットワーク インターフェイスは、アクティブ/アクティブ モードで構成されます。
 
 VMware ESXi の詳細を確認してください。
 

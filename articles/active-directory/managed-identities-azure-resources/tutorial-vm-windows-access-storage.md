@@ -1,5 +1,5 @@
 ---
-title: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
+title: Windows VM システムに割り当てられたマネージド ID を使用して Azure Storage にアクセスする | Microsoft Docs
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1370b2d828aaddae61c32a663bd032b18e7b1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e7d7200dd89d51817a5d146ff4d33e2501ed2826
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801895"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278008"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
 
@@ -45,7 +45,7 @@ ms.locfileid: "58801895"
 このセクションでは、ストレージ アカウントを作成します。
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** ボタンをクリックします。
-2. **[ストレージ]**、**[ストレージ アカウント - Blob、File、Table、Queue]** の順にクリックします。
+2. **[ストレージ]** 、 **[ストレージ アカウント - Blob、File、Table、Queue]** の順にクリックします。
 3. **[名前]** で、ストレージ アカウントの名前を入力します。
 4. **[デプロイ モデル]** と **[アカウントの種類]** がそれぞれ **[Resource manager]** と **[ストレージ (汎用 v1)]** に設定されている必要があります。
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
@@ -60,13 +60,13 @@ ms.locfileid: "58801895"
 1. 新たに作成したストレージ アカウントに戻ります。
 2. **[Blob service]** の **[コンテナー]** をクリックします。
 3. ページの上部にある **[+ コンテナー]** をクリックします。
-4. **[新しいコンテナー]** で、コンテナーの名前を入力し、**[パブリック アクセス レベル]** で既定値を保持します。
+4. **[新しいコンテナー]** で、コンテナーの名前を入力し、 **[パブリック アクセス レベル]** で既定値を保持します。
 
     ![ストレージ コンテナーの作成](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. 任意のエディターを使用して、ローカル コンピューターに *hello world.txt* という名前のファイルを作成します。 ファイルを開き、"Hello world! :)" というテキストを (引用符なしで) 追加し、保存します。
 6. 新しく作成したコンテナーにファイルをアップロードします。コンテナー名をクリックしてから **[アップロード]** をクリックします。
-7. **[BLOB のアップロード]** ウィンドウの **[ファイル]** で、フォルダー アイコンをクリックし、ローカル コンピューターの **hello_world.txt** を参照してファイルを選択して、**[アップロード]** をクリックします。
+7. **[BLOB のアップロード]** ウィンドウの **[ファイル]** で、フォルダー アイコンをクリックし、ローカル コンピューターの **hello_world.txt** を参照してファイルを選択して、 **[アップロード]** をクリックします。
     ![テキスト ファイルをアップロードする](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>VM に Azure Storage コンテナーへのアクセスを許可する
@@ -77,9 +77,9 @@ VM のシステム割り当てマネージド ID を使用して、Azure Storage
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。
 3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します。
 4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者]** を選択します。
-5. 次のドロップダウンで、**[アクセスの割り当て先]** として **[仮想マシン]** を選択します。
-6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、**[リソース グループ]** を **[すべてのリソース グループ]** に設定します。
-7. **[選択]** で、VM を選択し、**[保存]** をクリックします。
+5. 次のドロップダウンで、 **[アクセスの割り当て先]** として **[仮想マシン]** を選択します。
+6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、 **[リソース グループ]** を **[すべてのリソース グループ]** に設定します。
+7. **[選択]** で、VM を選択し、 **[保存]** をクリックします。
 
     ![アクセス許可の割り当て](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
@@ -87,7 +87,7 @@ VM のシステム割り当てマネージド ID を使用して、Azure Storage
 
 Azure Storage は Azure AD 認証をネイティブにサポートするため、マネージド ID を使用して取得したアクセス トークンを直接受け入れることができます。 これは Azure Storage の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
 
-次に示すのは、アクセス トークンを使用して Azure Storage への接続を開き、以前に作成したファイルの内容を読み取る .NET コードの例です。 このコードは、VM のマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、.NET Framework 4.6 以降が必要です。 適宜、`<URI to blob file>` の値を置き換えます。 この値は、以前に作成して Blob Storage にアップロードしたファイルに移動し、**[概要]** ページの **[プロパティ]** で **URL** をコピーすることで取得できます。
+次に示すのは、アクセス トークンを使用して Azure Storage への接続を開き、以前に作成したファイルの内容を読み取る .NET コードの例です。 このコードは、VM のマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、.NET Framework 4.6 以降が必要です。 適宜、`<URI to blob file>` の値を置き換えます。 この値は、以前に作成して Blob Storage にアップロードしたファイルに移動し、 **[概要]** ページの **[プロパティ]** で **URL** をコピーすることで取得できます。
 
 ```csharp
 using System;

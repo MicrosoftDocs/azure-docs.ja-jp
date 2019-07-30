@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0147977307ec22134777d6c3e8242a4191362ada
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a78f342d7e4b14700224bb63598f41ca95322a5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66233837"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595420"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL Data Warehouse のワークロードの重要度
 

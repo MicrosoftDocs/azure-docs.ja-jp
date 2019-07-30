@@ -1,124 +1,121 @@
-items:
 - name: VM 拡張機能のドキュメント
   href: ../index.yml
 - name: 概要
   items:
-  - name: Azure 拡張機能について
-    href: overview.md
-  - name: Linux VM エージェント
-    href: agent-linux.md
-  - name: Windows VM エージェント
-    href: agent-windows.md
+    - name: Azure 拡張機能について
+      href: overview.md
+    - name: Linux VM エージェント
+      href: agent-linux.md
+    - name: Windows VM エージェント
+      href: agent-windows.md
 - name: クイック スタート
-  items:
-  - name: カスタム スクリプト拡張機能の使用
-    href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
-    maintainContext: true
   expanded: true
+  items:
+    - name: カスタム スクリプト拡張機能の使用
+      href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      maintainContext: true
 - name: 概念
   items:
-  - name: Linux
-    href: features-linux.md
-  - name: Windows
-    href: features-windows.md
+    - name: Linux
+      href: features-linux.md
+    - name: Windows
+      href: features-windows.md
 - name: ハウツー ガイド
   items:
-  - name: Azure Disk Encryption
-    items:
-    - name: Linux
-      href: azure-disk-enc-linux.md
-    - name: Windows
-      href: azure-disk-enc-windows.md
-  - name: カスタム スクリプト
-    items:
-    - name: Linux - バージョン 2
-      href: custom-script-linux.md
-    - name: Windows
-      href: custom-script-windows.md
-  - name: Windows の IaaS マルウェア対策
-    href: iaas-antimalware-windows.md
-  - name: VM スナップショット
-    items:
-    - name: Linux
-      href: vmsnapshot-linux.md
-    - name: Windows
-      href: vmsnapshot-windows.md
-  - name: Network Watcher Agent
-    items:
-    - name: Linux
-      href: network-watcher-linux.md
-    - name: Windows
-      href: network-watcher-windows.md
-  - name: NVIDIA GPU ドライバー
-    items:
-    - name: Linux
-      href: hpccompute-gpu-linux.md
-    - name: Windows
-      href: hpccompute-gpu-windows.md
-  - name: Log Analytics
-    items:
-    - name: Linux
-      href: oms-linux.md
-    - name: Windows
-      href: oms-windows.md
-  - name: VM に対する Azure Monitor
-    items:
-    - name: Linux の依存関係エージェント
-      href: agent-dependency-linux.md
-    - name: Windows の依存関係エージェント
-      href: agent-dependency-windows.md
-  - name: PowerShell DSC
-    href: dsc-overview.md
-    items:
-    - name: DSC と Windows
-      href: dsc-windows.md
-    - name: DSC と Linux
-      href: dsc-linux.md
-    - name: 資格情報のハンドル
-      href: dsc-credentials.md
-    - name: テンプレートの使用
-      href: dsc-template.md
-  - name: 仮想マシンへのアクセス
-    href: vmaccess.md
-  - name: 仮想マシンの診断
-    items:
-    - name: Linux
-      href: diagnostics-linux.md
-    - name: Windows
-      href: diagnostics-windows.md
-    - name: テンプレートの使用
-      href: diagnostics-template.md
-  - name: サードパーティ拡張機能
-    items:
-    - name: Chef
-      href: chef.md
-    - name: Stackify Retrace
-      href: stackify-retrace-linux.md
-    - name: Symantec
-      href: symantec.md
-  - name: 非推奨の拡張機能
-    items:
-    - name: ログ コレクター
-      href: log-collector.md
-    - name: Trend Micro Deep Security
-      href: trend.md
-    - name: Linux - バージョン 1 (OSTC)
-      href: custom-script-linuxOstc.md
-  - name: 拡張機能のインストールの制限
-    items:
-    - name: Linux
-      href: extensions-rmpolicy-howto-cli.md
-    - name: Windows
-      href: extensions-rmpolicy-howto-ps.md
-  - name: Linux エージェントの更新
-    href: update-linux-agent.md
-  - name: 拡張機能のエクスポート
-    href: export-templates.md
-  - name: トラブルシューティング
-    href: troubleshoot.md
-ms.openlocfilehash: 8c8e9347ed2b3b72f66b6a70cf8c8d1fa8409d48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101321"
+    - name: Azure Disk Encryption
+      items:
+        - name: Linux
+          href: azure-disk-enc-linux.md
+        - name: Windows
+          href: azure-disk-enc-windows.md
+    - name: SQL Server 用の Azure Backup
+      items:
+        - name: SQL Server 用の Azure Backup
+          href: backup-azure-sql-server-running-azure-vm.md
+    - name: カスタム スクリプト
+      items:
+        - name: Linux - バージョン 2
+          href: custom-script-linux.md
+        - name: Windows
+          href: custom-script-windows.md
+    - name: Windows の IaaS マルウェア対策
+      href: iaas-antimalware-windows.md
+    - name: VM スナップショット
+      items:
+        - name: Linux
+          href: vmsnapshot-linux.md
+        - name: Windows
+          href: vmsnapshot-windows.md
+    - name: Network Watcher Agent
+      items:
+        - name: Linux
+          href: network-watcher-linux.md
+        - name: Windows
+          href: network-watcher-windows.md
+    - name: NVIDIA GPU ドライバー
+      items:
+        - name: Linux
+          href: hpccompute-gpu-linux.md
+        - name: Windows
+          href: hpccompute-gpu-windows.md
+    - name: Log Analytics
+      items:
+        - name: Linux
+          href: oms-linux.md
+        - name: Windows
+          href: oms-windows.md
+    - name: VM に対する Azure Monitor
+      items:
+        - name: Linux の依存関係エージェント
+          href: agent-dependency-linux.md
+        - name: Windows の依存関係エージェント
+          href: agent-dependency-windows.md
+    - name: PowerShell DSC
+      href: dsc-overview.md
+      items:
+        - name: DSC と Windows
+          href: dsc-windows.md
+        - name: DSC と Linux
+          href: dsc-linux.md
+        - name: 資格情報のハンドル
+          href: dsc-credentials.md
+        - name: テンプレートの使用
+          href: dsc-template.md
+    - name: 仮想マシンへのアクセス
+      href: vmaccess.md
+    - name: 仮想マシンの診断
+      items:
+        - name: Linux
+          href: diagnostics-linux.md
+        - name: Windows
+          href: diagnostics-windows.md
+        - name: テンプレートの使用
+          href: diagnostics-template.md
+    - name: サードパーティ拡張機能
+      items:
+        - name: Chef
+          href: chef.md
+        - name: Stackify Retrace
+          href: stackify-retrace-linux.md
+        - name: Symantec
+          href: symantec.md
+    - name: 非推奨の拡張機能
+      items:
+        - name: ログ コレクター
+          href: log-collector.md
+        - name: Trend Micro Deep Security
+          href: trend.md
+        - name: Linux - バージョン 1 (OSTC)
+          href: custom-script-linuxOstc.md
+    - name: 拡張機能のインストールの制限
+      items:
+        - name: Linux
+          href: extensions-rmpolicy-howto-cli.md
+        - name: Windows
+          href: extensions-rmpolicy-howto-ps.md
+    - name: Linux エージェントの更新
+      href: update-linux-agent.md
+    - name: 拡張機能のエクスポート
+      href: export-templates.md
+    - name: トラブルシューティング
+      href: troubleshoot.md

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
-ms.openlocfilehash: f0dab3dc81c626e3e7f8c79b4142e5eb4f2a1276
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 2b9e56f8a0a023c8423426fee081a5a48ebda330
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093801"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593455"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Standard レベル
 > [!div class="op_single_selector"]
@@ -35,9 +35,9 @@ Azure コンテンツ配信ネットワーク (CDN) を使用すると、クエ�
 
 次の 3 つのクエリ文字列モードを使用できます。
 
-- **クエリ文字列を無視する**: 既定のモードです。 このモードでは、CDN Point-of-Presence (POP) ノードは、クエリ文字列を要求元から最初の要求の配信元サーバーに渡して、資産をキャッシュします。 POP から提供される資産の後続の要求はすべて、キャッシュされた資産の有効期限が切れるまで、クエリ文字列を無視します。
+- **クエリ文字列を無視**: 既定モード。 このモードでは、CDN Point-of-Presence (POP) ノードは、クエリ文字列を要求元から最初の要求の配信元サーバーに渡して、資産をキャッシュします。 POP から提供される資産の後続の要求はすべて、キャッシュされた資産の有効期限が切れるまで、クエリ文字列を無視します。
 
-- **クエリ文字列のキャッシュをバイパス**: このモードでは、クエリ文字列のある要求は CDN POP ノードでキャッシュされません。 POP ノードは配信元サーバーから直接資産を取得し、それを各要求により要求元に渡します。
+- **クエリ文字列に対するキャッシュをバイパス**: このモードでは、クエリ文字列を含む要求は CDN POP ノードでキャッシュされません。 POP ノードは配信元サーバーから直接資産を取得し、それを各要求により要求元に渡します。
 
 - **一意の URL をすべてキャッシュ**: このモードでは、クエリ文字列を含む一意の URL が指定された各要求は、独自のキャッシュがある一意の資産として扱われます。 たとえば、example.ashx?q=test1 の要求の配信元サーバーからの応答は POP ノードでキャッシュされ、後続のキャッシュではその同じクエリ文字列により返されます。 example.ashx?q=test2 の要求は、独自の有効期限設定を持つ個別の資産としてキャッシュされます。
    
@@ -49,11 +49,11 @@ Azure コンテンツ配信ネットワーク (CDN) を使用すると、クエ�
    
    ![CDN プロファイル エンドポイント](./media/cdn-query-string/cdn-endpoints.png)
    
-2. 左側のウィンドウの [設定] で、**[キャッシュ規則]** をクリックします。
+2. 左側のウィンドウの [設定] で、 **[キャッシュ規則]** をクリックします。
    
     ![CDN の [キャッシュ規則] ボタン](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
-3. **[クエリ文字列のキャッシュ動作]** 一覧でクエリ文字列モードを選択し、**[保存]** をクリックします。
+3. **[クエリ文字列のキャッシュ動作]** 一覧でクエリ文字列モードを選択し、 **[保存]** をクリックします。
    
    ![CDN クエリ文字列のキャッシュ オプション](./media/cdn-query-string/cdn-query-string.png)
 

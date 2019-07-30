@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ea99c7fe9bc7fd8d6e4e26baa0afe45505949098
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d6abf266d4af5c79333819f5077009124fa28247
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895649"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348227"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow、Logic Apps、Functions、および WebJobs の概要
 
@@ -89,10 +89,10 @@ Azure Functions は、WebJobs SDK の上に構築されているため、同じ�
 |[従量課金制の価格](functions-scale.md#consumption-plan)|✔||
 |[Logic Apps との統合](functions-twitter-email.md)|✔||
 | トリガー イベント |[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[ファイル システム](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| サポートされている言語  |C#<br>F#<br>JavaScript<br>Java (プレビュー) |C#<sup>1</sup>|
+| サポートされている言語  |C#<br>F#<br>JavaScript<br>Java (プレビュー)<br>Python (プレビュー) |C#<sup>1</sup>|
 |パッケージ マネージャー|NPM と NuGet|NuGet<sup>2</sup>|
 
-<sup>1</sup> (WebJobs SDK なしの) WebJobs では、C#、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python などがサポートされます。 これは、包括的な一覧ではありません。 WebJobs は、App Service のサンドボックス内で動作するあらゆるプログラムまたはスクリプトを実行できます。
+<sup>1</sup> (WebJobs SDK なしの) WebJobs では、C#、Java、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python などがサポートされます。 これは、包括的な一覧ではありません。 WebJobs は、App Service のサンドボックス内で動作するあらゆるプログラムまたはスクリプトを実行できます。
 
 <sup>2</sup> (WebJobs SDK なしの) WebJobs では NPM と NuGet がサポートされています。
 
@@ -119,8 +119,8 @@ Microsoft Flow、Logic Apps、および Functions の統合は、今後ますま
 
 統合サービスの詳細については、以下のリンクを参照してください。
 
-* [Christopher Anderson によるプレゼンテーション「Leveraging Azure Functions & Azure App Service for integration scenarios (統合シナリオで Azure Functions と Azure App Service を使用する)」](http://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
-* [Charles Lamanna によるプレゼンテーション「Integrations Made Simple (統合をもっとシンプルに)」](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
+* [Christopher Anderson によるプレゼンテーション「Leveraging Azure Functions & Azure App Service for integration scenarios (統合シナリオで Azure Functions と Azure App Service を使用する)」](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
+* [Charles Lamanna によるプレゼンテーション「Integrations Made Simple (統合をもっとシンプルに)」](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [Logic Apps のライブ Web キャスト](https://aka.ms/logicappslive)
 * [Microsoft Flow のよく寄せられる質問](https://flow.microsoft.com/documentation/frequently-asked-questions/)
 

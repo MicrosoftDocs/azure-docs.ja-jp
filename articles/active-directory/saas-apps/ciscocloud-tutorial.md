@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a59dbd934ba1a449f7671d433529513b9f14c80
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 251d3738cb5b18cfe98878b857b91a3689fb81a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282884"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>チュートリアル:Azure Active Directory と Cisco Cloud の統合
 

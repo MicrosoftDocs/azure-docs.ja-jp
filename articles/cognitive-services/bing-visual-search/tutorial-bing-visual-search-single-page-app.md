@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: aahi
 ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496558"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60829601"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>Visual Search のシングルページ Web アプリを作成する
 

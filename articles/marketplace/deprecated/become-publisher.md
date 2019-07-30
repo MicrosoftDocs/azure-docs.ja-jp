@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5e691dde92ac05b653cdafb22db9276c7a566008
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd9aa28703003d2e286197d57e9f00361e2b460d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259357"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654001"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -22,11 +22,11 @@ ms.locfileid: "66259357"
 
 |  | 登録手順 | Duration | 詳細 |  
 |:--- |:--- |:--- |:--- |  
-| 1 | Microsoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 15 分 | [Microsoft ID を作成する](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 1 | Microsoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#register-for-an-account-using-the-enrollment-page) |  
+| 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 15 分 | [Microsoft ID を作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 3 | パートナー センター アカウントを作成する | 15 分 | [パートナー センター アカウントを作成する](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
-| 4 |  Cloud パートナー ポータルにサインインする | 1 ～ 3 日 | [Cloud パートナー ポータルにサインインする](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
-| 5 | Microsoft デベロッパー センター (デベロッパー センター) に登録する (Azure Marketplace トランザクション オファーの場合) | 5 ～ 10 日 | [デベロッパー センターに登録する](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
+| 4 |  Cloud パートナー ポータルにサインインする | 1 ～ 3 日 | [Cloud パートナー ポータルにサインインする](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  
+| 5 | Microsoft デベロッパー センター (デベロッパー センター) に登録する (Azure Marketplace トランザクション オファーの場合) | 5 ～ 10 日 | [デベロッパー センターに登録する](/azure/marketplace/deprecated/register-dev-center) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1.Microsoft Partner Network に登録する  
@@ -50,9 +50,9 @@ MPN 登録に関する問題について、Microsoft [パートナー サポー�
 [! 重要] 職場の電子メールに関連付けられた Microsoft アカウントでは、ポータルにアクセスできないことに注意してください。
 
 > [!Note]
-> 既に Microsoft アカウントを所有している場合、[Microsoft ID を作成してマーケットプレース アカウントを管理するためのガイドライン](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)を確認して、マーケットプレースの公開に使用できるかどうかを判断してください。 
+> 既に Microsoft アカウントを所有している場合、[Microsoft ID を作成してマーケットプレース アカウントを管理するためのガイドライン](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-tenants)を確認して、マーケットプレースの公開に使用できるかどうかを判断してください。 
 > 
-> Azure Active Directory フェデレーション企業アカウントを持つユーザーは、既存の Microsoft アカウントの作成または使用を試行する前に、[こちらの記事](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)に目を通す必要があります。
+> Azure Active Directory フェデレーション企業アカウントを持つユーザーは、既存の Microsoft アカウントの作成または使用を試行する前に、[こちらの記事](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-users)に目を通す必要があります。
 
 *   Microsoft アカウントの作成または管理については、[Microsoft アカウントのヘルプ サポート ページ](https://support.microsoft.com/products/microsoft-account?category=manage-account)を確認してください。
 

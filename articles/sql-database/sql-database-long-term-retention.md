@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 0f764ebbad53185f46c7166011e05493ed261d6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 6549892bfd04065bf83ab50fa5f5b439c35c4238
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696658"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190544"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 
@@ -59,8 +59,8 @@ W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear
 
 このポリシーを変更して、W = 0 (毎週のバックアップなし) を設定すると、上記の表のバックアップ コピーの周期は、強調表示された日付のように変更されます。 それに応じて、これらのバックアップの保持に必要なストレージ容量は減ります。 
 
-> [!NOTE]
-> 個々 の LTR バックアップのタイミングは、Azure SQL Database によって制御されます。 手動で LTR バックアップを作成またはバックアップの作成タイミングを制御することはできません。
+> [!IMPORTANT]
+> 個々 の LTR バックアップのタイミングは、Azure SQL Database によって制御されます。 手動で LTR バックアップを作成またはバックアップの作成タイミングを制御することはできません。 LTR ポリシーを構成した後、最初の LTR バックアップが利用可能なバックアップの一覧に表示されるまで、最大 7 日かかる場合があります。  
 > 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>geo レプリケーションと長期のバックアップ リテンション期間

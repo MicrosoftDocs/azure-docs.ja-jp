@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437430"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60567216"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-azure-documentdb-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-azure-cosmos-db.md)
 
@@ -42,7 +42,7 @@ JSON ファイルまたは他の Cosmos DB コレクションとの間でデー�
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -124,8 +124,8 @@ Azure Cosmos DB などのスキーマのないデータ ストアの場合、Dat
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| query |データを読み取るためのクエリを指定します。 |Azure Cosmos DB でサポートされているクエリ文字列。 <br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ  <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
-| nestingSeparator |ドキュメントが入れ子であることを示す特殊文字 |任意の文字。 <br/><br/>Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、nestingSeparator で階層を示すことができます。 上記の例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 |いいえ  |
+| query |データを読み取るためのクエリを指定します。 |Azure Cosmos DB でサポートされているクエリ文字列。 <br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
+| nestingSeparator |ドキュメントが入れ子であることを示す特殊文字 |任意の文字。 <br/><br/>Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、nestingSeparator で階層を示すことができます。 上記の例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 |いいえ |
 
 **DocumentDbCollectionSink** では次のプロパティがサポートされます。
 
@@ -133,7 +133,7 @@ Azure Cosmos DB などのスキーマのないデータ ストアの場合、Dat
 | --- | --- | --- | --- |
 | nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、Cosmos DB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
 | writeBatchSize |Azure Cosmos DB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使って、Cosmos DB との間でデータをコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすと、Cosmos DB に送信される並列要求の数が増えるため、パフォーマンスを向上させることができます。 ただし、"要求レートが大きい" というエラー メッセージをスローする可能性のあるスロットルを回避する必要があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 |整数 |いいえ (既定値:5) |
-| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ  |
+| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
 
 ## <a name="importexport-json-documents"></a>JSON ドキュメントのインポート/エクスポート
 この Cosmos DB コネクタを使って、次の作業を簡単に実行できます。
@@ -143,7 +143,7 @@ Azure Cosmos DB などのスキーマのないデータ ストアの場合、Dat
 * 2 つの Cosmos DB コレクション間でそのままデータを移行する。
 
 このようなスキーマに依存しないコピーを実現するには、次のようにします。
-* コピー ウィザードを使う場合は、**[Export as-is to JSON files or Cosmos DB collection]\(JSON ファイルまたは Cosmos DB コレクションにそのままエクスポートする\)** オプションをオンにします。
+* コピー ウィザードを使う場合は、 **[Export as-is to JSON files or Cosmos DB collection]\(JSON ファイルまたは Cosmos DB コレクションにそのままエクスポートする\)** オプションをオンにします。
 * JSON の編集を使う場合は、コピー アクティビティで、Cosmos DB データセットの "structure" セクションも Cosmos DB ソース/シンクの "nestingSeparator" プロパティも指定しないでください。 JSON ファイルに対してインポート/エクスポートを行うには、ファイル ストア データセットで形式を "JsonFormat" に指定し、"filePattern" を構成し、その他の形式設定は省略します。詳細については、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」のセクションを参照してください。
 
 ## <a name="json-examples"></a>JSON の使用例

@@ -6,10 +6,15 @@
       href: ./apache-interactive-query-get-started.md
       maintainContext: true
 - name: クイック スタート
+  expanded: true
   items:
     - name: Apache Hive クエリの実行 - Apache Zeppelin
       href: ./hdinsight-connect-hive-zeppelin.md
-- name: 作業開始
+- name: チュートリアル
+  items:
+    - name: 対話型クエリを使用したデータの分析
+      href: ./interactive-query-tutorial-analyze-flight-data.md
+- name: 概念
   items:
     - name: HDInsight アプリをインストールする
       href: ../hdinsight-apps-install-applications.md
@@ -19,6 +24,9 @@
       maintainContext: true
 - name: 方法
   items:
+    - name: Hive ワークロードを HDInsight 4.0 に移行する
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
     - name: クラスター ストレージの使用
       items:
         - name: Azure Storage を使用する
@@ -96,6 +104,9 @@
         - name: Power BI を Apache Hadoop に接続する
           href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
           maintainContext: true
+        - name: PowerShell と ODBC を使用して Hive に対してクエリを実行する
+          href: apache-hive-query-odbc-driver-powershell.md
+          maintainContext: true
         - name: Excel を Apache Hadoop に接続する
           href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
           maintainContext: true
@@ -104,9 +115,6 @@
           maintainContext: true
         - name: 格納されたツイートを分析する
           href: ../hdinsight-analyze-twitter-data-linux.md
-          maintainContext: true
-        - name: フライト遅延データを分析する
-          href: ../hdinsight-analyze-flight-delay-data-linux.md
           maintainContext: true
     - name: クラスターを拡張する
       items:
@@ -246,9 +254,6 @@
         - name: HDInsight クラスター用の OS の修正プログラム
           href: ../hdinsight-os-patching.md
           maintainContext: true
-        - name: Hive ワークロードを HDInsight 4.0 に移行する
-          href: apache-hive-migrate-workloads.md
-          maintainContext: true
     - name: トラブルシューティング
       href: ../hdinsight-troubleshoot-guide.md
       maintainContext: true
@@ -293,7 +298,7 @@
     - name: エンタープライズ セキュリティ
       items:
         - name: 概要
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
           maintainContext: true
         - name: エンタープライズ セキュリティの計画
           href: ../domain-joined/apache-domain-joined-architecture.md
@@ -317,10 +322,14 @@
       items:
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight 用の VNET の計画
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight 用の VNET の作成
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG と UDR に必要な IP アドレス
+          href: ../hdinsight-management-ip-addresses.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet の HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
     - name: Azure Monitor ログを使用した監視

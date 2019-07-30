@@ -7,15 +7,15 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 6207808efb9bee327afd2de21ffa59535acf4e55
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006490"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704804"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Project Acoustics Unreal と Wwise の統合
 ここでは、既存の Unreal と Wwise のゲーム プロジェクトへの Project Acoustics プラグイン パッケージの詳しい統合手順を示します。 
@@ -26,7 +26,7 @@ ms.locfileid: "59006490"
 * [Unreal 用の Wwise プラグイン](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Wwise Unreal プラグインを使用する代わりに Wwise SDK の直接統合を使用する場合は、Project Acoustics Unreal プラグインを調べて、Wwise API 呼び出しを調整します。
 
-Wwise 以外のオーディオ エンジンと共に Project Acoustics を使用する場合は、[Project Acoustics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)に投稿してください。 Project Acoustics Unreal プラグインを使用して音響データのクエリを実行してから、エンジンに対して API 呼び出しを行うことができます。
+Wwise 以外のオーディオ エンジンと共に Project Acoustics を使用する場合は、[Project Acoustics ディスカッション フォーラム](https://github.com/microsoft/ProjectAcoustics/issues)で機能強化要求を行ってください。 Project Acoustics Unreal プラグインを使用して音響データのクエリを実行してから、エンジンに対して API 呼び出しを行うことができます。
 
 ## <a name="download-project-acoustics"></a>Project Acoustics のダウンロード
 まだ行っていない場合は、[Project Acoustics Unreal & Wwise プラグイン パッケージ](https://www.microsoft.com/download/details.aspx?id=58090)をダウンロードします。 
@@ -45,7 +45,7 @@ Unreal Engine プラグインと Wwise ミキサー プラグインをパッケ�
 7. Unreal でオーディオを設定する
 
 ## <a name="1-install-the-project-acoustics-mixer-plugin"></a>1.Project Acoustics ミキサー プラグインをインストールする
-* Wwise Launcher を開き、**[Plugins]\(プラグイン\)** タブの **[Install New Plugins]\(新しいプラグインのインストール\)** で、**[Add From Directory]\(ディレクトリから追加\)** を選択します。 
+* Wwise Launcher を開き、 **[Plugins]\(プラグイン\)** タブの **[Install New Plugins]\(新しいプラグインのインストール\)** で、 **[Add From Directory]\(ディレクトリから追加\)** を選択します。 
 
     ![Wwise ランチャーへのプラグインのインストールのスクリーンショット](media/wwise-install-new-plugin.png)
 
@@ -59,13 +59,13 @@ Wwise を既に統合している場合でも、ゲームに Wwise を再デプ�
 
 * **エンジン プラグイン:** Wwise を Unreal C++ プロジェクトにゲーム プラグインとしてインストールした場合は、この手順をスキップします。 たとえば Unreal プロジェクトがブループリント専用であるため Wwise をエンジン プラグインとしてインストールした場合、ミキサー プラグインを含む Wwise のデプロイはより複雑になります。 空のダミー Unreal C++ プロジェクトを作成し、Unreal エディターで開いている場合は閉じて、残りの手順に従って Wwise をこのダミー プロジェクトにデプロイします。 次に、デプロイされた Wwise プラグインをコピーします。
  
-* Wwise Launcher から、**[Unreal Engine]** タブをクリックし、**[Recent Unreal Engine Projects]\(最近使った Unreal Engine プロジェクト\)** の横にあるハンバーガー メニューをクリックして、**[Browse for project]\(プロジェクトの参照\)** を選択します。 ゲームの Unreal プロジェクト `.uproject` ファイルを開きます。
+* Wwise Launcher から、 **[Unreal Engine]** タブをクリックし、 **[Recent Unreal Engine Projects]\(最近使った Unreal Engine プロジェクト\)** の横にあるハンバーガー メニューをクリックして、 **[Browse for project]\(プロジェクトの参照\)** を選択します。 ゲームの Unreal プロジェクト `.uproject` ファイルを開きます。
 
     ![Wwise ランチャーの Unreal タブのスクリーンショット](media/wwise-unreal-tab.png)
 
-* 次に、**[Integrate Wwise in Project]\(プロジェクトでの Wwise の統合\)** または **[Modify Wwise in Project]\(プロジェクトでの Wwise の変更\)** をクリックします。 この手順では、Project Acoustics ミキサー プラグインを含むようになったプロジェクトに Wwise バイナリを (再) 統合します。
+* 次に、 **[Integrate Wwise in Project]\(プロジェクトでの Wwise の統合\)** または **[Modify Wwise in Project]\(プロジェクトでの Wwise の変更\)** をクリックします。 この手順では、Project Acoustics ミキサー プラグインを含むようになったプロジェクトに Wwise バイナリを (再) 統合します。
 
-* **エンジン プラグイン:** Wwise をエンジン プラグインとして Wwise を使用し、上記のようにダミー プロジェクトを作成した場合は、Wwise によってデプロイされたフォルダー: `[DummyUProject]\Plugins\Wwise` をコピーし、`[UESource]\Engine\Plugins\Wwise` に貼り付けます。 `[DummyUProject]`  は空の Unreal C++ プロジェクト パスで、`[UESource]` は Unreal Engine のソースをインストールした場所です。 コピーが完了したら、ダミー プロジェクトを削除することができます。
+* **エンジン プラグイン:** Wwise をエンジン プラグインとして Wwise を使用し、上記のようにダミー プロジェクトを作成した場合は、Wwise によってデプロイされたフォルダー: `[DummyUProject]\Plugins\Wwise` をコピーし、`[UESource]\Engine\Plugins\Wwise` に貼り付けます。 `[DummyUProject]` は空の Unreal C++ プロジェクト パスで、`[UESource]` は Unreal Engine のソースをインストールした場所です。 コピーが完了したら、ダミー プロジェクトを削除することができます。
 
 ## <a name="3-add-the-project-acoustics-unreal-plugin-to-your-game"></a>手順 3.ゲームに Project Acoustics Unreal プラグインを追加する
  
@@ -80,7 +80,7 @@ Wwise を既に統合している場合でも、ゲームに Wwise を再デプ�
 
     ![Wwise を修正するために提供されたスクリプトが強調表示されている Windows エクスプローラー ウィンドウのスクリーンショット](media/patch-wwise-script.png)
 
-* DirectX SDK がインストールされていない場合は、次の DXSDK_DIR を含む行をコメントアウトする必要があります。 `[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* DirectX SDK がインストールされていない場合は、`[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` の DXSDK_DIR を含む行をコメントアウトする必要があります
 
     ![DXSDK がコメント アウトされているコード エディターのスクリーンショット](media/directx-sdk-comment.png)
 

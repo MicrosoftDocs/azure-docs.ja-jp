@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96c1223cf15f1022e9e0a27180bd9cdeebcf8505
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792092"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449791"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -41,7 +41,7 @@ Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.micr
 -----------------------------------------------|-----------------------------------------------|-----------------
 [一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
-[Azure China](https://www.azure.cn/)                                                     | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[Azure China](https://azure.microsoft.com/global-infrastructure/china)                                                     | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
 [パブリック米国中西部](https://azure.microsoft.com/regions/)                           | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01
 
@@ -205,7 +205,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
     "location": "westus",
     "name": "jubilee",
     "offer": "Windows-10",
@@ -283,7 +283,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
     "location": "westus",
     "name": "SQLTest",
     "offer": "SQL2016SP1-WS2016",
@@ -537,8 +537,17 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 
 **応答**
 ```bash
-AZUREPUBLICCLOUD
+AzurePublicCloud
 ```
+
+リージョンと Azure 環境の値を以下に示します。
+
+ リージョン | Azure 環境
+---------|-----------------
+[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Azure China](https://azure.microsoft.com/global-infrastructure/china)                   | AzureChinaCloud
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>VM のタグの取得
 
@@ -619,11 +628,11 @@ vmId |  VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-an
 > [!NOTE]
 > パブリック クラウド用の証明書とソブリン クラウド用の証明書は異なります。
 
- リージョン | 証明書
+ クラウド | 証明書
 ---------|-----------------
 [一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China](https://www.azure.cn/)                                                           | metadata.azure.cn
+[Azure China](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
@@ -654,7 +663,7 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 route print
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > フェールオーバー クラスターが有効になっている Windows Server VM からの次の出力例には、わかりやすくするために IPv4 ルーティング テーブルのみが含まれています。
 
 ```bat

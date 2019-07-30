@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB で高可用性を実現する
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 06/28/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 74eee3d164e7ee3831f292568da9cf0620e576e5
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 928c943e21e7d00b87ac1e506b98d47107ac4348
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399282"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508563"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 
@@ -70,13 +70,16 @@ Azure Cosmos アカウントに複数リージョンの書き込みを構成す�
 
 * 英国南部
 * 東南アジア 
+* East US
+* 米国東部 2 
+* 米国中部
 
 > [!NOTE] 
 > 1 つのリージョンの Azure Cosmos アカウントに対して可用性ゾーンを有効にすると、アカウントにリージョンを追加することと同等の課金が発生します。 価格の詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)と[Azure Cosmos DB における複数リージョンのコスト](optimize-cost-regions.md)に関する記事を参照してください。 
 
 次の表に、さまざまなアカウント構成の高可用性機能をまとめています。 
 
-|KPI  |可用性ゾーンがない単一リージョン (非 AZ)  |可用性ゾーンがある単一リージョン (AZ)  |可用性ゾーンがある複数リージョン (AZ、2 リージョン) - 最も推奨される設定 |
+|KPI  |可用性ゾーンがない単一リージョン (非 AZ)  |可用性ゾーンがある単一リージョン (AZ)  |可用性ゾーンがある複数リージョン書き込み (AZ、2 リージョン) - 最も推奨される設定 |
 |---------|---------|---------|---------|
 |書き込み可用性 SLA     |   99.99%      |    99.99%     |  99.999%  |
 |読み取り可用性 SLA   |   99.99%      |   99.99%      |  99.999%       |
@@ -89,7 +92,10 @@ Azure Cosmos アカウントに複数リージョンの書き込みを構成す�
 |リージョンの障害 - 可用性  |  可用性の損失       |  可用性の損失       |  可用性の損失なし  |
 |スループット    |  X RU/秒 プロビジョニング スループット      |  X RU/秒 プロビジョニング スループット       |  2X RU/秒 プロビジョニング スループット <br/><br/> この構成モードでは、2 つのリージョンがあるため、可用性ゾーンがある単一のリージョンと比較した場合に、2 倍のスループットの量が必要です。   |
 
-新規または既存の Azure Cosmos アカウントにリージョンを追加すると、ゾーン冗長性を有効にできます。 現在、PowerShell または Azure Resource Manager テンプレートを使用した場合にのみ、ゾーン冗長性を有効にできます。 Azure Cosmos アカウントでゾーン冗長性を有効にするには、特定の場所 の`isZoneRedundant` フラグを `true` に設定する必要があります。 場所プロパティ内に、このフラグを設定できます。 たとえば、次の PowerShell スニペットでは、"東南アジア" リージョンのゾーン冗長性が有効になります。
+> [!NOTE] 
+> 可用性ゾーンのサポートを有効にするには、Azure Cosmos DB アカウントでマルチマスター/マルチ リージョン書き込みを有効にする必要があります。 
+
+新規または既存の Azure Cosmos アカウントにリージョンを追加すると、ゾーン冗長性を有効にできます。 現在、Azure portal、PowerShell、および Azure Resource Manager テンプレートを使用した場合にのみ、ゾーン冗長性を有効にできます。 Azure Cosmos アカウントでゾーン冗長性を有効にするには、特定の場所 の`isZoneRedundant` フラグを `true` に設定する必要があります。 場所プロパティ内に、このフラグを設定できます。 たとえば、次の PowerShell スニペットでは、"東南アジア" リージョンのゾーン冗長性が有効になります。
 
 ```powershell
 $locations = @( 
@@ -97,6 +103,10 @@ $locations = @(
     @{ "locationName"="East US"; "failoverPriority"=1 } 
 ) 
 ```
+
+Azure Cosmos アカウントを作成するときに Azure portal を使用して、可用性ゾーンを有効にすることができます。 アカウントを作成するときは、必ず **[geo 冗長性]** 、 **[マルチ リージョン書き込み]** を有効にして、可用性ゾーンがサポートされているリージョンを選択します。 
+
+![Azure portal を使用して可用性ゾーンを有効にする](./media/high-availability/enable-availability-zones-using-portal.png) 
 
 ## <a name="building-highly-available-applications"></a>高可用性アプリケーションの構築
 

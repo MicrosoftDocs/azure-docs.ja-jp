@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: f758007a0fa0d7fb619873d94d762e7019077e05
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 1ee4f89885bd10a116963d42e87766bcd05cc0b4
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427453"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67852737"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -33,6 +33,7 @@ ms.locfileid: "66427453"
 以下の詳細は、Microsoft Azure portal インターフェイスを使用してログ アラートを使用するためのステップ バイ ステップ ガイドです。
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Microsoft Azure portal でログ アラート ルールを作成する
+
 1. [ポータル](https://portal.azure.com/)で **[モニター]** を選び、[モニター] セクションで **[アラート]** を選びます。
 
     ![監視](media/alerts-log/AlertsPreviewMenu.png)
@@ -48,7 +49,6 @@ ms.locfileid: "66427453"
 1. **[リソースの選択]** のリンクを使用してターゲットを指定し、リソースを選択することで、アラートの条件を定義します。 _サブスクリプション_、_リソースの種類_ を選択し、必要な _リソース_ を選択して、フィルターを適用します。
 
    > [!NOTE]
-   > 
    > ログ アラートを作成する場合、続行する前に、選択したリソースに使用可能な**ログ** シグナルを確認します。
    >  ![リソースの選択](media/alerts-log/Alert-SelectResourceLog.png)
 
@@ -142,7 +142,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
     "variables": {
         "alertLocation": "southcentralus",
         "alertName": "samplelogalert",
-        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
         "alertDescription": "Sample log search alert",
         "alertStatus": "true",
         "alertSource":{
@@ -172,7 +171,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
         "type":"Microsoft.Insights/scheduledQueryRules",
         "apiVersion": "2018-04-16",
         "location": "[variables('alertLocation')]",
-        "tags":{"[variables('alertTag')]": "Resource"},
         "properties":{
             "description": "[variables('alertDescription')]",
             "enabled": "[variables('alertStatus')]",
@@ -204,9 +202,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 
 ```
 
-> [!IMPORTANT]
-> [スケジュール済みクエリ ルール](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)の API 呼び出しまたはリソース テンプレートを使用する際には、ターゲット リソースへの非表示のリンクが指定された Tag フィールドが必須です。
-
 上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
 
 
@@ -226,7 +221,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
         "alertName": "sample log alert",
         "alertDescr": "Sample log search alert",
         "alertStatus": "true",
-        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
         "alertSource":{
             "Query":"union workspace(\"servicews\").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
             "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
@@ -263,7 +257,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
         "type":"Microsoft.Insights/scheduledQueryRules",
         "apiVersion": "2018-04-16",
         "location": "[variables('alertLocation')]",
-        "tags":{"[variables('alertTag')]": "Resource"},
         "properties":{
             "description": "[variables('alertDescr')]",
             "enabled": "[variables('alertStatus')]",
@@ -304,7 +297,7 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 ```
 
 > [!IMPORTANT]
-> [スケジュール済みクエリ ルール](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)の API 呼び出しまたはリソース テンプレートを使用する際には、ターゲット リソースへの非表示のリンクが指定された Tag フィールドが必須です。 ログ アラートでリソース間クエリを使用する場合、[authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) の使用は必須であり、ユーザーには記載されているリソースの一覧へのアクセス権が必要です。
+> ログ アラートでリソース間クエリを使用する場合、[authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) の使用は必須であり、ユーザーには記載されているリソースの一覧へのアクセス権が必要です。
 
 上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
 

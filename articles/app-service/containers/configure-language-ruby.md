@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
+ms.author: cephalin
+ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 412efac3742acf7ad1cdc3d08f9d90c4d39bad3e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 95a848ff7d74d35203c7e8377405c709f7fc7bd7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956122"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617388"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service 向けの Linux Ruby アプリを構成する
 
@@ -65,7 +66,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
-App Service では、アプリ コードの外部で[アプリ設定を指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)できます。 その後、標準の [ENV['<path-name>']](https://ruby-doc.org/core-2.3.3/ENV.html) パターンを使用して、それらにアクセスできます。 たとえば、`WEBSITE_SITE_NAME` というアプリ設定にアクセスするには、次のコードを使用します。
+App Service では、アプリ コードの外部で[アプリ設定を指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)できます。 その後、標準の [ENV['\<path-name>']](https://ruby-doc.org/core-2.3.3/ENV.html) パターンを使用して、それらにアクセスできます。 たとえば、`WEBSITE_SITE_NAME` というアプリ設定にアクセスするには、次のコードを使用します。
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -92,7 +93,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="precompile-assets"></a>アセットをプリコンパイルする
 
-既定では、デプロイ後のステップでアセットがプリコンパイルされることはありません。 アセットのプリコンパイルを有効にするには、`ASSETS_PRECOMPILE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `true` に設定します。 これで、デプロイ後ステップの最後に `bundle exec rake --trace assets:precompile` コマンドが実行されます。 例: 
+既定では、デプロイ後のステップでアセットがプリコンパイルされることはありません。 アセットのプリコンパイルを有効にするには、`ASSETS_PRECOMPILE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `true` に設定します。 これで、デプロイ後ステップの最後に `bundle exec rake --trace assets:precompile` コマンドが実行されます。 例:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -121,7 +122,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 Ruby コンテナー内の Rails サーバーは、既定では実稼働モードで実行され、また、[アセットがプリコンパイル済みで Web サーバーから提供されることを想定](https://guides.rubyonrails.org/asset_pipeline.html#in-production)しています。 Rails サーバーから静的アセットを提供するには、次の 2 つのことを行う必要があります。
 
 - **アセットをプリコンパイルする** - [静的アセットをローカルでプリコンパイル](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation)し、それらを手動でデプロイします。 または、その処理をデプロイ エンジンで行います (「[アセットをプリコンパイルする](#precompile-assets)」を参照)。
-- **静的ファイルの提供を有効にする** - Ruby コンテナーから静的アセットを提供するには、`RAILS_SERVE_STATIC_FILES` [`RAILS_SERVE_STATIC_FILES` アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `true` に設定します。 例: 
+- **静的ファイルの提供を有効にする** - Ruby コンテナーから静的アセットを提供するには、`RAILS_SERVE_STATIC_FILES` [`RAILS_SERVE_STATIC_FILES` アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `true` に設定します。 例:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -135,15 +136,15 @@ Ruby コンテナー内の Rails サーバーは、既定では実稼働モー�
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-ただし、この設定だけを行った場合、Rails サーバーが開発モードで起動し、localhost 要求しか受け付けなくなるので、コンテナーの外部からアクセスすることができません。 リモートのクライアント要求を受け付けるには、`APP_COMMAND_LINE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `rails server -b 0.0.0.0` に設定してください。 このアプリ設定により、Ruby コンテナーでカスタム コマンドを実行することができます。 例: 
+ただし、この設定だけを行った場合、Rails サーバーが開発モードで起動し、localhost 要求しか受け付けなくなるので、コンテナーの外部からアクセスすることができません。 リモートのクライアント要求を受け付けるには、`APP_COMMAND_LINE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `rails server -b 0.0.0.0` に設定してください。 このアプリ設定により、Ruby コンテナーでカスタム コマンドを実行することができます。 例:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secretkeybase-manually"></a>secret_key_base を手動で設定する
+### <a name="set-secret_key_base-manually"></a> secret_key_base を手動で設定する
 
-`secret_key_base` の値を App Service で自動的に生成するのではなく独自の値を使用するには、`SECRET_KEY_BASE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)にその値を設定します。 例: 
+`secret_key_base` の値を App Service で自動的に生成するのではなく独自の値を使用するには、`SECRET_KEY_BASE` [アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)にその値を設定します。 例:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"

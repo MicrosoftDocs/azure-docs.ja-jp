@@ -2,17 +2,17 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) の基本的なスケジューラ機能
 description: Azure Kubernetes Service (AKS) でリソース クォータやポッド中断バジェットなどの基本的なスケジューラ機能を使用するための、クラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: f6e370442c9c359a38025762fb90269119ec0ea6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 3ce59784b2c7c1d145d99786b10927c230146c8b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074126"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614618"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での基本的なスケジューラ機能に関するベスト プラクティス
 
@@ -63,7 +63,7 @@ kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 
 アプリケーションの開発者や所有者と協力してニーズを把握し、適切なリソース クォータを適用します。
 
-使用可能なリソース オブジェクト、スコープ、および優先順位について詳しくは、[Kubernetes でのリソース クォータ][k8s-resource-quotas]に関する記事をご覧ください。
+使用可能なリソース オブジェクト、スコープ、優先順位について詳しくは、[Kubernetes でのリソース クォータ][k8s-resource-quotas]に関する記事をご覧ください。
 
 ## <a name="plan-for-availability-using-pod-disruption-budgets"></a>ポッド中断バジェットを使用して可用性を計画する
 
@@ -118,7 +118,7 @@ kubectl apply -f nginx-pdb.yaml
 
 アプリケーションの開発者や所有者と協力してニーズを把握し、適切なポッド中断バジェットを適用します。
 
-ポッド中断バジェットの使用について詳しくは、「[Specifying a Disruption Budget for your Application][k8s-pdbs]」(アプリケーションに対する中断バジェットの指定) をご覧ください。
+ポッド中断バジェットの使用について詳しくは、「[Specifying a Disruption Budget for your Application][k8s-pdbs]」 (アプリケーションに対する中断バジェットの指定) をご覧ください。
 
 ## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>kube-advisor を使用してクラスターの問題を定期的に確認する
 
@@ -134,9 +134,9 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 
 この記事では、Kubernetes の基本的なスケジューラ機能に注目しました。 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 
-* [マルチ テナント方式とクラスター分離][aks-best-practices-cluster-isolation]
+* [マルチ テナントとクラスター分離][aks-best-practices-cluster-isolation]
 * [Kubernetes スケジューラの高度な機能][aks-best-practices-advanced-scheduler]
-* [認証と承認][aks-best-practices-identity]
+* [認証と権限承認][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-quotas]: https://kubernetes.io/docs/concepts/policy/resource-quotas/

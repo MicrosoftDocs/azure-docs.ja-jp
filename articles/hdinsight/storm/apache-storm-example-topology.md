@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: b2407200b995ad956f233248f6cdd58488b583d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a535510ce56147f708f1cd8219cf898e6e0df36b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688790"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483790"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm 用 Apache Storm トポロジとコンポーネントの例
 
@@ -41,10 +41,10 @@ HDInsight 上の [Apache Storm](https://storm.apache.org/) で使用するため
 
 ### <a name="next-steps"></a>次の手順
 
-* [HDInsight での Apache Storm の使用][2b8c3488]
+* [Azure HDInsight で Apache Storm トポロジを作成、監視する](./apache-storm-quickstart.md)
 * [HDInsight 上の Apache Storm で Apache Storm トポロジをデプロイおよび管理する方法について][6eb0d3b8]
 
-[2b8c3488]:apache-storm-tutorial-get-started-linux.md "HDInsight クラスター上に Apache Storm を作成し、Storm ダッシュボードを使用してトポロジの例をデプロイする方法について説明します。"
+
 [6eb0d3b8]:apache-storm-deploy-monitor-topology-linux.md "Web ベースの Apache Storm ダッシュボードと Storm UI または HDInsight Tools for Visual Studio を使用してトポロジをデプロイおよび管理する方法について説明します。"
 [16fce2d1]:apache-storm-develop-csharp-visual-studio-topology.md "HDInsight Tools for Visual Studio を使用して C# Storm トポロジを作成する方法を説明します。"
 [5797064f]:apache-storm-develop-java-topology.md "基本的なワードカウント トポロジを作成し、Maven を使用して Java で Storm トポロジを作成する方法について説明します。"

@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: a4b21d67-1a72-40ec-bfce-d79a8707b4e1
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 40ee73b8cc9b95a4e2030ac38a6c322918dc878e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bcc9c9db3a89b5bd088f4c546a3415dba4f295e3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389089"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611363"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Palo Alto Networks のアプライアンスを接続する
 

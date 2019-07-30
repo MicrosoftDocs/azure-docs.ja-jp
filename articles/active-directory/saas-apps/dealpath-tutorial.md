@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5474af0fbc6b510d3667445bfdbe00fb45daebf
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d0808361acf762ac21281493b71f7c89c9eef228
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899826"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>チュートリアル:Azure Active Directory と Dealpath の統合
 
@@ -53,11 +53,11 @@ Azure AD への Dealpath の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Dealpath を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Dealpath の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Dealpath**」と入力し、結果ウィンドウで **Dealpath** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Dealpath**」と入力し、結果ウィンドウで **Dealpath** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Dealpath](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Dealpath で Azure AD のシングル サインオンを構成してテストす
 
 Dealpath で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Dealpath** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Dealpath** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -130,7 +130,7 @@ Dealpath で Azure AD シングル サインオンを構成するには、次の
 
 1. 別の Web ブラウザー ウィンドウで、Dealpath に管理者としてサインインします。
 
-2. 右上で **[管理ツール]** をクリックし、**[統合]** に移動して、**[SAML 2.0 Authentication]\(SAML 2.0 認証\)** セクションで **[設定の更新]** をクリックします。
+2. 右上で **[管理ツール]** をクリックし、 **[統合]** に移動して、 **[SAML 2.0 Authentication]\(SAML 2.0 認証\)** セクションで **[設定の更新]** をクリックします。
 
     ![Dealpath 構成](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
@@ -142,7 +142,7 @@ Dealpath で Azure AD シングル サインオンを構成するには、次の
 
     b. **[ID プロバイダーの発行者]** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    c. ダウンロードした**証明書 (Base64)** をメモ帳で開いて内容をコピーし、**[公開証明書]** ボックスに貼り付けます。
+    c. ダウンロードした**証明書 (Base64)** をメモ帳で開いて内容をコピーし、 **[公開証明書]** ボックスに貼り付けます。
 
     d. **[設定の更新]** をクリックします。
 
@@ -150,7 +150,7 @@ Dealpath で Azure AD シングル サインオンを構成するには、次の
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -175,7 +175,7 @@ Dealpath で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Dealpath へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Dealpath]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Dealpath]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -187,15 +187,15 @@ Dealpath で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-dealpath-test-user"></a>Dealpath テスト ユーザーの作成
 

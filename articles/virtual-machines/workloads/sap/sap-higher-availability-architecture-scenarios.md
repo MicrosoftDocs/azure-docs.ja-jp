@@ -4,7 +4,7 @@ description: Azure インフラストラクチャの VM 再起動を利用して
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d99f704d05dea88f7fa29afea99cbbdb00d09c24
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825667"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709882"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Azure インフラストラクチャの VM 再起動を利用して SAP システムの "高可用性" を実現する
 
@@ -239,7 +239,7 @@ Azure インフラストラクチャの高可用性とマネージド ディス�
 
 * SAP アプリケーション サーバーの高可用性
 
-    SAP アプリケーション サーバー インスタンスは、冗長コンポーネントです。 各 SAP アプリケーション サーバー インスタンスは独自の VM にデプロイされ、別々の Azure の障害ドメインとアップグレード ドメインで実行されます。 詳細については、「[障害ドメイン][planning-guide-3.2.1]」セクションと「[アップグレード ドメイン][planning-guide-3.2.2]」セクションを参照してください。 
+    SAP アプリケーション サーバー インスタンスは、冗長コンポーネントです。 各 SAP アプリケーション サーバー インスタンスは独自の VM にデプロイされ、別々の Azure の障害ドメインとアップグレード ドメインで実行されます。 詳細については、「[障害ドメイン][planning-guide-3.2.1]」and [Upgrade domains][planning-guide-3.2.2]を参照してください。 
 
     Azure 可用性セットを使用してこの構成を保証できます。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」を参照してください。 
 

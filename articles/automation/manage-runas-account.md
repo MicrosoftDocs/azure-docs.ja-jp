@@ -4,17 +4,17 @@ description: この記事では、PowerShell またはポータルを使用し�
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 140b1263047849e13a44441c368e6357078574d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240808"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798472"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -104,7 +104,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 1. ご使用のコンピューターに次のスクリプトを保存します。 この例では、*New-RunAsAccount.ps1* というファイル名で保存します。
 
-   スクリプトでは、複数の Azure Resource Manager コマンドレットを使用してリソースを作成します。 次の表に、必要なコマンドレットとそのアクセス許可を示します。
+   スクリプトでは、複数の Azure Resource Manager コマンドレットを使用してリソースを作成します。 前の[アクセス許可](#permissions)の表に、コマンドレットとその実行に必要なアクセス許可を示しています。
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -370,13 +370,35 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 ## <a name="limiting-run-as-account-permissions"></a>実行アカウントのアクセス許可の制限
 
-Azure Automation でのリソースに対するオートメーションのターゲットを制御するため、実行アカウントには、既定でサブスクリプションの共同作成者権限が与えられます。 RunAs サービス プリンシパルが実行できることを制限する必要がある場合は、サブスクリプションに対する共同作成者ロールからアカウントを削除し、指定するリソース グループに共同作成者として追加します。
+Azure 内のリソースに対する自動化の対象を制御するために、PowerShell ギャラリーの [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) スクリプトを実行し、既存の実行アカウントのサービス プリンシパルを変更して、カスタム ロールの定義を作成および使用できます。 このロールには、[Key Vault](https://docs.microsoft.com/azure/key-vault/) を除くすべてのリソースへのアクセス許可があります。 
 
-Azure Portal で、 **[サブスクリプション]** を選択し、Automation アカウントのサブスクリプションを選択します。 **[アクセス制御 (IAM)]** を選択した後、 **[ロールの割り当て]** タブを選択します。自分の Automation アカウント用のサービス プリンシパルを検索します (それは \<AutomationAccountName\>_unique identifier のようになっています)。 アカウントを選択し、 **[削除]** をクリックして、サブスクリプションから削除します。
+> [!IMPORTANT]
+> `Update-AutomationRunAsAccountRoleAssignments.ps1` スクリプトの実行後、実行アカウントを使用して key Vault にアクセスする Runbook は機能しなくします。 Azure key Vault を呼び出すには、アカウント内の Runbook を見直す必要があります。
+>
+> Azure Automation Runbook から key Vault にアクセスできるようにするには、[Key Vault のアクセス許可に 実行アカウントを追加する](#add-permissions-to-key-vault)必要があります。
 
-![サブスクリプションの共同作成者](media/manage-runas-account/automation-account-remove-subscription.png)
+実行サービス プリンシパルで実行できる内容をさらに制限する必要がある場合は、カスタム ロール定義の `NotActions` に他のリソースの種類を追加できます。 次の例では、`Microsoft.Compute` へのアクセスが制限されます。 これをロール定義の **NotActions** に追加すると、このロールはどのコンピューティング リソースにもアクセスできなくなります。 ロール定義の詳細については、「[Azure リソースのロール定義の概要](../role-based-access-control/role-definitions.md)」を参照してください。
 
-リソース グループにサービス プリンシパルを追加するには、Azure Portal でリソース グループを選択し、 **[アクセス制御 (IAM)]** を選択します。 **[ロールの割り当ての追加]** を選択すると、 **[ロールの割り当ての追加]** ページが開きます。 **[ロール]** で、 **[共同作成者]** を選択します。 **[選択]** テキスト ボックスに、実行アカウント用のサービス プリンシパルの名前を入力した後、一覧から選択します。 **[保存]** をクリックして変更を保存します。 Azure Automation の実行サービス プリンシパルへのアクセスを付与するリソース グループに対して、これらの手順を実行します。
+```powershell
+$roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
+$roleDefinition.NotActions.Add("Microsoft.Compute/*")
+$roleDefinition | Set-AzureRMRoleDefinition
+```
+
+実行アカウントによって使用されるサービス プリンシパルが**共同作成者**に含まれるか、あるいはカスタム ロール定義であるかを確認するには、Automation アカウントに移動し、 **[アカウント設定]** で **[実行アカウント]**  >  **[Azure 実行アカウント]** を選択します。 **[ロール]** の下に、使用されているロール定義が見つかります。 
+
+[![](media/manage-runas-account/verify-role.png "実行アカウントのロールを確認する")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+
+複数のサブスクリプションまたは Automation アカウントの Automation 実行アカウントによって使用されるロール定義を確認するには、PowerShell ギャラリーの [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) スクリプトを使用できます。
+
+### <a name="add-permissions-to-key-vault"></a>Key Vault へのアクセス許可を追加する
+
+Azure Automation で Key Vault を管理できるようにするときに、実行アカウントのサービス プリンシパルでカスタム ロール定義を使用している場合は、この動作が可能になるように追加の手順を実行する必要があります。
+
+* Key Vault へのアクセス許可を付与する
+* アクセス ポリシーを設定する
+
+PowerShell ギャラリーの [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) スクリプトを使用して、実行アカウントにKeyVault へのアクセス許可を付与することができます。または、[アプリケーションに対するキー コンテナーへのアクセスの付与](../key-vault/key-vault-group-permissions-for-apps.md)に関するページを参照して、KeyVault へのアクセス許可の設定の詳細をご確認ください。
 
 ## <a name="misconfiguration"></a>誤った構成
 

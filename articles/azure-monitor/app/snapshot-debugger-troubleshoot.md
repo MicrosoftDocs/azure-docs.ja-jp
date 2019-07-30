@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ccf20fc78a9ec00d4dfe23a60e824e96d12945
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783955"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444545"
 ---
 # <a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。
@@ -38,6 +38,10 @@ ms.locfileid: "60783955"
 ## <a name="verify-the-instrumentation-key"></a>インストルメンテーション キーの確認
 
 公開したアプリケーションで、正しいインストルメンテーション キーを使用していることを確認します。 通常、インストルメンテーション キーは、ApplicationInsights.config ファイルから読み取られます。 値が、ポータルに表示される Application Insights リソースのインストルメンテーション キーと同じであることを確認します。
+
+## <a name="preview-versions-of-net-core"></a>.NET Core のプレビュー バージョン
+アプリケーションにプレビュー バージョンの .NET Core が使用され、ポータルの [Application Insights ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)でスナップショット デバッガーが有効な場合、スナップショット デバッガーが起動しない場合があります。 まず「[その他の環境用にスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)」の手順を実行して [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含め、"***さらに***" [Application Insights ウィンドウで有効にします](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>最新バージョンの NuGet にアップグレードする
 

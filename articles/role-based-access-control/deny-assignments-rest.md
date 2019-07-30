@@ -12,26 +12,26 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0bc49456f5965846a2de542b4a063bab2d1838bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998412"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118286"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>REST API を使用して Azure リソースの拒否割り当てを一覧表示する
 
 [拒否割り当て](deny-assignments.md)を使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 この記事では、REST API を使用して拒否割り当てを一覧表示する方法を説明します。
 
 > [!NOTE]
-> 現時点では、Azure Blueprints を使用することが、独自の拒否割り当てを追加する唯一の方法となります。 詳細については、「[Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
+> 独自の拒否割り当てを直接作成することはできません。 割り当て拒否が作成されるしくみの詳細については、[拒否割り当て](deny-assignments.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-拒否割り当てに関する情報を取得するのに必要なものは次のとおりです: 
+拒否割り当てに関する情報を取得するのに必要なものは次のとおりです:
 
 - ほとんどの [Azure リソースの組み込みロール](built-in-roles.md)に含まれている `Microsoft.Authorization/denyAssignments/read` アクセス許可。
 
@@ -45,11 +45,11 @@ ms.locfileid: "57998412"
 
 1. URI の *{scope}* を、拒否割り当てを一覧表示するスコープに変更します。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{deny-assignment-id}* を、取得する拒否割り当て識別子に置き換えます。
 
@@ -69,11 +69,11 @@ ms.locfileid: "57998412"
 
 1. URI の *{scope}* を、拒否割り当てを一覧表示するスコープに変更します。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{filter}* には、拒否割り当て一覧をフィルター処理するために適用する条件を指定します。
 

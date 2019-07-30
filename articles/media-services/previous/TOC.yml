@@ -51,6 +51,9 @@
   items:
     - name: 管理
       items:
+        - name: アカウント
+          displayName: subscription
+          href: media-services-account-concept.md
         - name: エンティティ
           items:
             - name: .NET
@@ -251,7 +254,7 @@
         - name: 長時間実行される操作を処理する
           href: media-services-dotnet-long-operations.md
         - name: フラグメント化 MP4 ライブ取り込みの仕様
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: 使用の開始
           href: media-services-azure-media-clipper-getting-started.md
         - name: 動画の読み込み
@@ -455,11 +458,11 @@
     - name: 仕様
       items:
         - name: ライブ取り込み - フラグメント化 MP4 ライブ取り込みの仕様
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: ライブ取り込み - ライブ ストリーミングでの時限メタデータのシグナル発信
-          href: media-services-specifications-live-timed-metadata.md
+          href: ../media-services-specifications-live-timed-metadata.md
         - name: スムーズ ストリーミング HEVC
-          href: media-services-specifications-ms-sstr-amendment-hevc.md
+          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
 - name: リソース
   items:
     - name: Azure Media Services コミュニティ

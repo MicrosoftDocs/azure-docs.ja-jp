@@ -1,27 +1,27 @@
 ---
 title: Azure Database for MySQL のサーバー ログ
-description: Azure Database for MySQL で利用できるログと、さまざまなログ記録レベルを有効にするため利用可能なパラメーターについて説明します。
+description: Azure Database for MySQL で利用できる低速クエリ ログと、さまざまなログ記録レベルを有効にするため利用可能なパラメーターについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.date: 05/29/2019
+ms.openlocfilehash: 1a8956d40ef30e8d52fbdded3448019e14ab16a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417771"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062400"
 ---
-# <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバー ログ
-Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。 
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL での低速クエリ ログ
+Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
 
 MySQL の低速クエリ ログの詳細については、MySQL のリファレンス マニュアルの[低速クエリ ログに関するセクション](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)を参照してください。
 
-## <a name="access-server-logs"></a>サーバー ログへのアクセス
-Azure Portal と Azure CLI を使用して、Azure Database for MySQL のサーバー ログを一覧表示およびダウンロードできます。
+## <a name="access-slow-query-logs"></a>低速クエリ ログにアクセスする
+Azure portal と Azure CLI を使用して、Azure Database for MySQL の低速クエリ ログを一覧表示およびダウンロードできます。
 
-Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択します。 **[監視]** の見出しの下の、**[サーバー ログ]** ページを選択します。
+Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択します。 **[監視]** の見出しの下の、 **[サーバー ログ]** ページを選択します。
 
 Azure CLI の詳細については、「[Configure and access server logs using Azure CLI (Azure CLI を使用したサーバー ログの構成とアクセス)](howto-configure-server-logs-in-cli.md)」を参照してください。
 
@@ -30,8 +30,7 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 
 ログのローテーションは、24 時間ごとか 7 GB ごとのどちらか早い方のタイミングで行われます。
 
-
-## <a name="configure-logging"></a>ログの構成 
+## <a name="configure-slow-query-logging"></a>低速クエリ ログを構成する 
 既定では、低速クエリ ログは無効です。 有効にするには、slow_query_log をオンに設定します。
 
 調整できるその他のパラメーターは次のとおりです。

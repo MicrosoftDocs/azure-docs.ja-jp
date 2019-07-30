@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6820b44309ac2b3dbeb5ad6f0beb460c8712e9af
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912122"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203684"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>API の複数のバージョンを発行する 
 
@@ -38,19 +38,19 @@ API のすべての呼び出し元がまったく同じバージョンを使用�
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
 
 ## <a name="add-a-new-version"></a>新しいバージョンを追加する
 
 ![API コンテキスト メニュー - バージョンの追加](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
 1. API の一覧で **[Demo Conference API]\(デモ会議 API\)** を選択します。
-2. その横のコンテキスト メニュー (**[...]**) を選択します。
+2. その横のコンテキスト メニュー ( **[...]** ) を選択します。
 3. **[+ バージョンの追加]** を選択します。
 
 > [!TIP]
-> 新しい API を最初に作成したときに、複数のバージョンを有効にすることもできます。**[API の追加]** 画面で、**[この API をバージョン管理しますか?]** を選択します。
+> 新しい API を最初に作成したときに、複数のバージョンを有効にすることもできます。 **[API の追加]** 画面で、 **[この API をバージョン管理しますか?]** を選択します。
 
 ## <a name="choose-a-versioning-scheme"></a>バージョン管理スキームを選択する
 
@@ -58,7 +58,7 @@ Azure API Management では、呼び出し元が API の必要なバージョン
 
 ![[バージョンの追加] 画面](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
-1. **バージョン管理スキーム**として、**[パス]** が選択されたままにしておきます。
+1. **バージョン管理スキーム**として、 **[パス]** が選択されたままにしておきます。
 2. **[名前]** フィールドに「**demo-conference-api-v1**」と入力します。
 
     > [!NOTE]
@@ -70,7 +70,7 @@ Azure API Management では、呼び出し元が API の必要なバージョン
     > バージョン管理スキームとして **[ヘッダー]** または **[クエリ文字列]** を選択した場合は、追加の値 (ヘッダーの名前またはクエリ文字列パラメーター) を指定する必要があります。
 
 4. **[作成]** を選択して、新しいバージョンを設定します。
-5. API の一覧の **[Demo Conference API]** の下に、**[オリジナル]** と **[v1]** の 2 つの異なる API が表示されます。
+5. API の一覧の **[Demo Conference API]** の下に、 **[オリジナル]** と **[v1]** の 2 つの異なる API が表示されます。
 
     ![Azure Portal の API の下に表示された複数のバージョン](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
@@ -95,7 +95,7 @@ Azure API Management では、呼び出し元が API の必要なバージョン
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>開発者ポータルを参照してバージョンを確認する
 
 1. 上部のメニューから **[開発者ポータル]** を選択します。
-2. **[API]** を選択します。**[Demo Conference API]** に **[オリジナル]** と **[v1]** の各バージョンが示されていることがわかります。
+2. **[API]** を選択します。 **[Demo Conference API]** に **[オリジナル]** と **[v1]** の各バージョンが示されていることがわかります。
 3. **[v1]** を選択します。
 4. 一覧で最初の操作の **[要求 URL]** を確認します。 API の URL パスに "**v1**" が含まれています。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730321"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118779"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure Digital Twins で監視を構成する方法
 
@@ -68,11 +68,11 @@ Azure の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md)�
 インスタンスの診断ログを有効にするには、次の手順を実行します。
 
 1. Azure portal でリソースを開きます。
-1. **[診断設定]** をクリックします。
+1. **[診断設定]** を選択します。
 
     [![[診断設定] 1](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. **[診断をオンにする]** をクリックしてデータを収集します (前に有効にしていなかった場合)。
+1. **[診断をオンにする]** を選択してデータを収集します (前に有効にしていなかった場合)。
 1. 要求されたフィールドに入力し、データの保存場所と保存方法を選択します。
 
     [![[診断設定] 2](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
@@ -101,7 +101,7 @@ Azure Monitor には強力な Log Analytics サービスが含まれており、
 
     [![ログ分析](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. まだ **Log Analytics ワークスペース** インスタンスがない場合は、 **[追加]** ボタンをクリックしてワークスペースを作成できます。
+1. まだ **Log Analytics ワークスペース** インスタンスがない場合は、 **[追加]** ボタンを選択してワークスペースを作成できます。
 
     [![OMS の作成](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
@@ -114,7 +114,7 @@ Azure Monitor には強力な Log Analytics サービスが含まれており、
 > [!NOTE]
 > 初めて **Log Analytics ワークスペース** にイベントを送信するときに 5 分の遅延が発生することがあります。
 
-また、Azure Monitor ログにはエラーやアラートを通知する強力なサービスが用意されており、 **[問題の診断と解決]** をクリックすることで表示されます。
+また、Azure Monitor ログにはエラーやアラートを通知する強力なサービスが用意されており、 **[問題の診断と解決]** を選択することで表示されます。
 
    [![アラートとエラーの通知](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 

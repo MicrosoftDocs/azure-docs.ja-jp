@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 930da7367b3f5d7e20617afedef007efea97c51a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515941"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446735"
 ---
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box Heavy をデプロイする
 
@@ -57,7 +57,7 @@ ms.locfileid: "66515941"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="order"></a>順序
 
@@ -95,7 +95,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
 
 この手順の所要時間は 5 分から 7 分程度です。
 
-1. デバイスのパスワードを取得するには、[Azure Portal](http://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。 デバイスの両方のノードで同じパスワードが使用されます。
+1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。 デバイスの両方のノードで同じパスワードが使用されます。
 2. Data Box Heavy に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。
 3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
 4. 既定では、インターフェイス (MGMT を除く) のネットワーク設定は DHCP で構成されます。 必要に応じて、これらのインターフェイスを静的インターフェイスとして構成し、IP アドレスを指定することができます。

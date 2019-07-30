@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 614d7c0b58ee318461cf3c97e934a77c84221ef7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 020403268665633bf3d71cf43258ced87b4f837d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827604"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249714"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>C# を使用してナレッジ ベースから質問の回答を取得する
 

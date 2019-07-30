@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: willzhan, dwgeo
-ms.openlocfilehash: 64c5bff0e48f55406476e71c82763bd8f3c03afd
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: willzhan
+ms.reviewer: dwgeo
+ms.openlocfilehash: 694cdf054f74db50bcf1781e60df0f93810ae60c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937240"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875190"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング  
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/offline-widevine-for-android.md)
 > * [Version 2](offline-widevine-for-android.md)
 

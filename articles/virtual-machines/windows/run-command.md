@@ -3,17 +3,17 @@ title: Azure 内の Windows VM で PowerShell スクリプトを実行する
 description: このトピックでは、実行コマンドを使用して Azure Windows 仮想マシン内で PowerShell スクリプトを実行する方法について説明します。
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 23973445992ceaeb0cd3bc0589665f2fac5b64e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de45f2fe6230e48c3cffc999e2c84d6ee0a60edc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575346"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476769"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 

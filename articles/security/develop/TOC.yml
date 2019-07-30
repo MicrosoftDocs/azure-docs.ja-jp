@@ -1,5 +1,10 @@
 - name: 安全な開発に関するドキュメント
   href: index.yml
+- name: サンプル アプリ
+  expanded: true
+  items:
+    - name: Linux コンテナー内の Web アプリ
+      href: secure-web-app.md
 - name: 概念
   expanded: true
   items:

@@ -14,30 +14,28 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: a91c61edd773b5742b092f5d72a5a22f1d90e63b
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: e27635d153e58f96dad7db6870ed1dc3f640236a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393550"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326481"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して Java Spring アプリを作成する
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
 
-Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 これを使用すると、すべてのアプリケーション設定を、コードとは別の 1 つの場所に簡単に保存して管理することができます。 このクイック スタートでは、Java Spring アプリにサービスを組み込む方法を示します。
-
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
+このクイック スタートでは、コードとは別にアプリケーション設定のストレージと管理を一元化するために、Azure App Configuration を Java Spring アプリに組み込みます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、サポートされている [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) のバージョン 8 と [Apache Maven](https://maven.apache.org/) のバージョン 3.0 以降をインストールします。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk)。
+- [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)\**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | キー | 値 |
     |---|---|

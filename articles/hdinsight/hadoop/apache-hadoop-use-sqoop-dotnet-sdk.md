@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: ac0890be0abccb316bffc4d9bdd6868a80173e18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bdf1318f93697cd7b479d404f44b7617ad875dc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710117"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450151"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -25,12 +25,12 @@ Azure HDInsight .NET SDK を使用して、HDInsight クラスターと Azure SQ
 > この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。 他の方法を選択するには、この記事の上部にあるタブ セレクターを使用してください。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを開始する前に、次の項目を用意する必要があります。
+この記事の作業を始める前に、以下を用意する必要があります。
 
 * HDInsight 上の Apache Spark クラスター。 詳細については、[クラスターと SQL データベースの作成](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>.NET SDK を使って HDInsight クラスターで Sqoop を使用する
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 このセクションでは、C# コンソール アプリケーションを作成し、このチュートリアルで作成した Azure SQL Database テーブルに hivesampletable をエクスポートします。
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 このセクションでは、C# コンソール アプリケーションを作成し、この記事で作成した Azure SQL Database テーブルに hivesampletable をエクスポートします。
 
 ## <a name="submit-a-sqoop-job"></a>Sqoop ジョブの送信
 

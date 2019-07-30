@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a4bbb43cb00eeb5a9e741016e1648ce915935eb9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 931de532aa6e09b2cd00955df6ba1f05d7e4f42c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236588"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428510"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -47,16 +47,16 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
-   ![Application Insights リソースの追加](./media/dotnetcore-quick-start/1createresourceappinsight.png)
+   > [!NOTE]
+   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
 
     構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
-    | 設定        |  値           | 説明  |
+   | 設定        |  値           | 説明  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | ASP.NET Web アプリケーション | 監視しているアプリの種類 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
-   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **Create** をクリックしてください。
 

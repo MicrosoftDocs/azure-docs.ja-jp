@@ -84,7 +84,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの OutofM
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>クラスター上の Jupyter Notebook を使用して Apache Spark アプリケーションを構成する方法
 
@@ -98,7 +98,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの OutofM
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>クラスター上の Apache Livy を使用して Apache Spark アプリケーションを構成する方法
@@ -115,7 +115,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの OutofM
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>クラスター上の spark-submit を使用して Apache Spark アプリケーションを構成する方法
 
@@ -131,7 +131,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの OutofM
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[HDInsight クラスターでの Apache Spark ジョブの送信](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Apache Spark アプリケーションの OutOfMemoryError 例外の原因
@@ -216,7 +216,7 @@ java.lang.OutOfMemoryError
 ### <a name="additional-reading"></a>その他の情報
 
 - [Apache Spark のメモリ管理の概要](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [HDInsight クラスターでの Apache Spark アプリケーションのデバッグ](https://web.archive.org/web/20190112152909/ https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [HDInsight クラスターでの Apache Spark アプリケーションのデバッグ](https://web.archive.org/web/20190112152909/https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>関連項目

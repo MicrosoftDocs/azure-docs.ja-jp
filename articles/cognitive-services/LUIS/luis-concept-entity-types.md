@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141035"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080048"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>LUIS におけるエンティティの種類とその目的
 
@@ -109,6 +109,30 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 混合エンティティでは、エンティティの検出方法の組み合わせを使用します。
 
+## <a name="machine-learned-entities-use-context"></a>機械学習エンティティはコンテキストを使用する
+
+機械学習エンティティは、発話内のコンテキストから学習します。 これにより、発話例での配置の変動が顕著になります。 
+
+## <a name="non-machine-learned-entities-dont-use-context"></a>非機械学習エンティティはコンテキストを使用しない
+
+次の非機械学習エンティティは、エンティティの照合時に発話のコンテキストを考慮に入れません。 
+
+* [事前構築済みのエンティティ](#prebuilt-entity)
+* [正規表現エンティティ](#regular-expression-entity)
+* [リスト エンティティ](#list-entity) 
+
+これらのエンティティはモデルのラベル付けまたはトレーニングを必要としません。 エンティティを追加または構成すると、エンティティが抽出されます。 トレードオフは、コンテキストを考慮に入れなければ一致しなかったと考えられるケースで、これらのエンティティが過剰に一致する可能性があることです。 
+
+これは、新しいモデルでのリスト エンティティで頻繁に発生します。 リスト エンティティを使用してモデルを構築およびテストしますが、モデルを公開してエンドポイントからクエリを受信したときに、コンテキスト欠如のためモデルが過剰一致になっていることがわかります。 
+
+単語またはフレーズを照合した上でコンテキストも考慮に入れたい場合、2 つの選択肢があります。 1 つ目は、フレーズ リストとペアにしたシンプル エンティティを使用することです。 フレーズ リストは照合には使用されませんが、その代わりに、比較的似通った単語 (交換可能リスト) を知らせるために役立ちます。 フレーズ リストのバリエーションではなく完全一致が必要な場合は、以下で説明するロール付きのリスト エンティティを使用します。
+
+### <a name="context-with-non-machine-learned-entities"></a>非機械学習エンティティを伴ったコンテキスト
+
+非機械学習エンティティで発話のコンテキストを重視したい場合、[ロール](luis-concept-roles.md)を使用する必要があります。
+
+[事前構築済みエンティティ](#prebuilt-entity)、[正規表現](#regular-expression-entity)エンティティ、[リスト](#list-entity) エンティティのように、目的の実例を超えて一致する非機械学習エンティティがある場合は、2 つのロールを持つ 1 つのエンティティを作成することを検討してください。 1 つのロールは探しているものに対応し、1 つのロールは探していないものに対応します。 どちらのバージョンも発話例でラベル付けする必要があります。  
+
 ## <a name="composite-entity"></a>複合エンティティ
 
 複合エンティティは、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 
@@ -128,13 +152,14 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 ## <a name="list-entity"></a>リスト エンティティ
 
-リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、**[Recommend] (推奨)** 機能を使用します。 同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。 
+リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、 **[Recommend] (推奨)** 機能を使用します。 同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。 
 
 エンティティは、次のようなテキスト データに最適です。
 
 * 既知のセットである。
+* あまり変化しない。 リストを頻繁に変更する必要がある、またはリストを自己拡張させたい場合、フレーズ リストで強化したシンプル エンティティの方が良い選択肢です。 
 * セットがこのエンティティ型の最大 LUIS [境界](luis-boundaries.md)を超えていない。
-* 発話内のテキストがシノニムまたは正規名に完全に一致している。 LUIS では、完全なテキストの一致以外にリストは使用されません。 語幹抽出、複数形、その他のバリエーションは、リスト エンティティでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
+* 発話内のテキストがシノニムまたは正規名に完全に一致している。 LUIS では、完全なテキストの一致以外にリストは使用されません。 あいまい一致、大文字と小文字の区別なし、語幹抽出、複数形、その他のバリエーションは、リスト エンティティでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
 
 ![リスト エンティティ](./media/luis-concept-entities/list-entity.png)
 
@@ -158,10 +183,11 @@ Pattern.any は、エンティティの開始位置と終了位置を示すた�
 
 |発話|
 |--|
-|The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例) は、アメリカ人によって今年執筆されましたか?<br>「**The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例)**」は、アメリカ人によって今年執筆されましたか?|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
+|The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例) は、アメリカ人によって今年執筆されましたか?<br><br>「**The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例)** 」は、アメリカ人によって今年執筆されましたか?|
+|Half Asleep in Frog Pajamas (カエルのパジャマで夢うつつ) は、アメリカ人によって今年執筆されましたか?<br><br>「**Half Asleep in Frog Pajamas (カエルのパジャマで夢うつつ)** 」は、アメリカ人によって今年執筆されましたか?|
+|The Particular Sadness of Lemon Cake:A Novel (悲しきレモン ケーキ: 小説) は、アメリカ人によって今年執筆されましたか?<br><br>「**The Particular Sadness of Lemon Cake:A Novel (悲しきレモン ケーキ: 小説)** 」は、アメリカ人によって今年執筆されましたか?|
+|There's A Wocket In My Pocket! (ポケットにウォケットが!) は、アメリカ人によって今年執筆されましたか?<br><br>「**There's A Wocket In My Pocket! (ポケットにウォケットが!)** 」 は、アメリカ人によって今年執筆されましたか?|
+||
 
 ## <a name="prebuilt-entity"></a>事前構築済みのエンティティ
 
@@ -225,6 +251,18 @@ LUIS ポータルでは、事前構築済みエンティティがご自分のカ
 
 [チュートリアル](luis-quickstart-intents-regex-entity.md)<br>
 [エンティティの JSON 応答例](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
+
+正規表現は予想を超えて一致する場合があります。 `one` や `two` のような、数字を表す単語の一致がその例です。 次に示すのは、他の数字と共に数字 `one` に一致する正規表現の例です。
+
+```javascript
+(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
+``` 
+
+この正規表現は、`phone` のように、これらの数字で終わる単語にも一致します。 このような問題を修正するには、正規表現の一致が必ず、単語の境界を考慮に入れるようにします。 この例で単語の境界を使用するための正規表現は、次の正規表現で使用されます。
+
+```javascript
+\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
+```
 
 ## <a name="simple-entity"></a>シンプル エンティティ 
 

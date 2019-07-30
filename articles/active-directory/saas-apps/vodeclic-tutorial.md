@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a3e457ca29ebe086c6097528af5a9253446b757c
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: c9c860bf994dfeef57e8fd86329ed3a2b3f85e4c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990551"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル:Azure Active Directory と Vodeclic の統合
 

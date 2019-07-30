@@ -2,8 +2,8 @@
 title: アクセス レビューでグループまたはアプリケーションに対するアクセスをレビューする - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory アクセス レビューで、グループ メンバーのアクセスまたはアプリケーション アクセスをレビューする方法について説明します。
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/21/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3be5d6eb443d90d3413510576a9609fe43df7caa
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113236"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499634"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対するアクセスをレビューする
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対するアクセスをレビューするように求めるメールの例を次に示します。
 
-    ![アクセスのレビューの電子メール](./media/perform-access-review/access-review-email.png)
+    ![グループに対するアクセスをレビューするための Microsoft からのメールの例](./media/perform-access-review/access-review-email.png)
 
 1. **[レビューの開始]** リンクをクリックして、アクセス レビューを開きます。
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) から、MyApps ポータルにサインインします。
 
-    ![MyApps ポータル](./media/perform-access-review/myapps-access-panel.png)
+    ![アクセス許可があるアプリの一覧を示す MyApps ポータル](./media/perform-access-review/myapps-access-panel.png)
 
 1. ページの右上隅にあるユーザー アイコンをクリックすると、ユーザーの名前と既定の組織が表示されます。 複数の組織が一覧表示されている場合は、アクセス レビューの依頼元の組織を選択してください。
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
     このタイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
 
-    ![アクセス レビューのリスト](./media/perform-access-review/access-reviews-list.png)
+    ![アプリとグループについての保留中のアクセス レビューの一覧](./media/perform-access-review/access-reviews-list.png)
 
 1. 実行するアクセス レビューの **[レビューの開始]** リンクをクリックします。
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 自分のアクセスをレビューするように要求した場合は、ページの外観が異なります。 詳細については、「[グループまたはアプリケーションへの自分のアクセス権のレビュー](review-your-access.md)」を参照してください。
 
-![アクセス レビューを実行する](./media/perform-access-review/perform-access-review.png)
+![レビューする必要があるユーザーの一覧を示す、開かれたアクセス レビュー](./media/perform-access-review/perform-access-review.png)
 
 2 つの方法でアクセスを承認または拒否できます。
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. **[承認]** または **[拒否]** をクリックします。 不明な場合は、 **[不明]** をクリックできます。 これを行うと、ユーザーは自分のアクセスを維持できますが、その選択が監査ログに反映されます。
 
-    ![アクセス レビューを実行する](./media/perform-access-review/approve-deny.png)
+    ![[承認]、[拒否]、および [不明] のオプションを含むアクション ウィンドウ](./media/perform-access-review/approve-deny.png)
 
 1. 必要に応じて、 **[理由]** ボックスに理由を入力します。
 
@@ -102,11 +102,11 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. ページの下部にある青色のバーで、 **[推奨事項の承認]** をクリックします。
 
-    ![推奨事項を承認する](./media/perform-access-review/accept-recommendations.png)
+    ![[推奨事項の承認] ボタン表示する、開かれたアクセス レビューの一覧](./media/perform-access-review/accept-recommendations.png)
 
     推奨されているアクションの概要が表示されます。
 
-    ![推奨事項の概要を承認する](./media/perform-access-review/accept-recommendations-summary.png)
+    ![推奨されているアクションの概要を表示するウィンドウ](./media/perform-access-review/accept-recommendations-summary.png)
 
 1. **[OK]** をクリックして、推奨事項を承認します。
 

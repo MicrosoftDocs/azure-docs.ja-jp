@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136185"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718272"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
@@ -325,7 +325,6 @@ App Service Web Apps がない場合でも、ドメインを管理できます�
 
 **カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service 環境 v1 から V2 に移動できますか**
 
-はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/resource-group-move-resources.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
-)に関するページを参照してください。
+はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/resource-group-move-resources.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)に関するページを参照してください。
 
 Web アプリを移動した後、カスタム ドメイン設定内のドメインのホスト名バインディングは同じままになります。 ホスト名バインディングを構成するための追加の手順は必要ありません。

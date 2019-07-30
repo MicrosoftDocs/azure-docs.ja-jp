@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3dd1dde067a2ec745d7d60a78a50ab34ea30d0dd
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634347"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359807"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
 
@@ -42,7 +42,7 @@ import requests
 data_url = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json'
 
 # General data request; include other API keys and credentials as needed in the data argument
-response = requests.get(data_url, data={"limit" : "20"})
+response = requests.get(data_url, data={"limit": "20"})
 
 if response.status_code == 200:
     dataframe_rest2 = pandas.DataFrame.from_records(response.json())

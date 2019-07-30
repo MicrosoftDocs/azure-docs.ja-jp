@@ -4,7 +4,7 @@ description: Linux を実行する Azure VM の CoreMark コンピューティ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
-ms.author: cynthn;davberg
-ms.openlocfilehash: 7a302a3c6c32819f898cccc99cb83ed09ae03f2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: cynthn
+ms.reviewer: davberg
+ms.openlocfilehash: 662e8365ef3c5642df58f4cea8a7d831bbfa6970
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869839"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870885"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM のコンピューティング ベンチマーク スコア
 次の CoreMark ベンチマーク スコアは、Ubuntu を実行している、Azure の 高パフォーマンス VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。

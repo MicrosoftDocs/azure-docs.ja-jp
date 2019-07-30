@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8227ff0c56e147db66c4cdc93083d671b08d1d98
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142828"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433412"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -127,7 +127,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozi
 
    * `${hiveDataFolder}`:テーブルのデータ ファイルを保存する場所が格納されます。
 
-     ワークフロー定義ファイル (このチュートリアルでは workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
+     ワークフロー定義ファイル (この記事では workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
 
 4. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。  
 
@@ -708,12 +708,12 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Oozie ワークフローを定義する方法と Oozie ジョブを実行する方法について説明しました。 HDInsight の使用方法について詳しくは、次の記事をご覧ください。
+この記事では、Oozie ワークフローを定義する方法と Oozie ジョブを実行する方法について説明しました。 HDInsight の使用方法について詳しくは、次の記事をご覧ください。
 
 * [HDInsight で Apache Hadoop ジョブのデータをアップロードする][hdinsight-upload-data]
-* [HDInsight で Apache Sqoop と Apache Hadoop を使用する][hdinsight-use-sqoop]
-* [HDInsight で Apache Hive と Apache Hadoop を使用する][hdinsight-use-hive]
-* [HDInsight で Apache Pig と Apache Hadoop を使用する][hdinsight-use-pig]
+* [HDInsight 上の Apache Hadoop で Apache Sqoop を使用する][hdinsight-use-sqoop]
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する][hdinsight-use-hive]
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する][hdinsight-use-pig]
 * [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563

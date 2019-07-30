@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10ddf4c42ac5aa2d1cffd7cbca6930896103d2c5
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387470"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147779"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk のシステム要件
 
@@ -29,7 +29,7 @@ Data Box Disk に接続するクライアント経由でディスクのロック
 | **オペレーティング システム** | **テスト済みのバージョン** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
-| Windows |7、8、10 |
+| Windows (64 ビット) |7、8、10 |
 |Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04、16.04、18.04 <br> 8.11、9 <br> 7.0 <br> 6.5、6.9、7.0、7.5 |  
 
 ## <a name="other-required-software-for-windows-clients"></a>Windows クライアントに必要なその他のソフトウェア

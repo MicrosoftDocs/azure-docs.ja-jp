@@ -61,7 +61,7 @@ Azure Blockchain Workbench アプリケーションは、構成メタデータ�
 | Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい | |
 | StartState | ワークフローの初期状態の名前。 | はい | |
 | Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | はい | |
-| Constructorー | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい | |
+| Constructor | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい | |
 | Functions | ワークフローで実行できる[関数](#functions)のコレクション。 | はい | |
 | States | ワークフローの[状態](#states)のコレクション。 | はい | |
 
@@ -176,7 +176,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 |
 |-------|-------------|:--------:|
-| parameters | スマート コントラクトを開始するために必要な[識別子](#identifiers)のコレクション。 | はい |
+| Parameters | スマート コントラクトを開始するために必要な[識別子](#identifiers)のコレクション。 | はい |
 
 ### <a name="constructor-example"></a>コンストラクターの例
 
@@ -212,7 +212,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | Name | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | はい | 50 |
 | DisplayName | 関数のわかりやすい表示名。 | はい | 255 |
 | Description | 関数の説明。 | いいえ | 255 |
-| parameters | 関数のパラメーターに対応する[識別子](#identifiers)のコレクション。 | はい | |
+| Parameters | 関数のパラメーターに対応する[識別子](#identifiers)のコレクション。 | はい | |
 
 ### <a name="functions-example"></a>関数の例
 

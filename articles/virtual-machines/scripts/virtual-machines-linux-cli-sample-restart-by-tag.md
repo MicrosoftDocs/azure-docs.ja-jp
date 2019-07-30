@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: allclark
+ms.author: douge
 ms.custom: mvc
-ms.openlocfilehash: 94845573461d99fda9318f303d822abb6ca3f257
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: ae036d02f0655d046de8b284bfd196eda92c45db
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751142"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875407"
 ---
 # <a name="restart-vms"></a>VM の再起動
 
@@ -85,7 +85,7 @@ az group delete -n myResourceGroup --no-wait --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 仮想マシンを作成します。  |

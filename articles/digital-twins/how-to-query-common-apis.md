@@ -1,19 +1,19 @@
 ---
 title: Azure Digital Twins の一般的なクエリのパターン |Microsoft Docs
 description: Azure Digital Twins Management API にクエリを実行する一般的なパターンについて説明します。
-author: dsk-2015
+author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
-ms.author: dkshir
-ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/09/2019
+ms.author: v-adgera
+ms.openlocfilehash: eca355a51b516311d060df09905c1df769037ec5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60924738"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722843"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>一般的なタスクについて Azure Digital Twins API をクエリする方法
 
@@ -238,4 +238,4 @@ ms.locfileid: "60924738"
 
 Management API を使用して認証を行う方法については、[API を使用した認証](./security-authenticating-apis.md)に関するページを参照してください。
 
-すべての API エンドポイントを表示するには、[Digital Twins Swagger を使用する方法](./how-to-use-swagger.md)を参照してください。
+API エンドポイントの詳細については、「[Digital Twins Swagger の使用方法](./how-to-use-swagger.md)」に関するページをご覧ください。

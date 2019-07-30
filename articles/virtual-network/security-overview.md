@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
-ms.author: malop;kumud
-ms.openlocfilehash: 751a3a940dad74cbc8c7343ee70309736b381d5b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: malop
+ms.reviewer: kumud
+ms.openlocfilehash: ca4908e642644ccbf349841d143bfcc18e944025
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478873"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305832"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -35,8 +36,8 @@ ms.locfileid: "66478873"
 |Name|ネットワーク セキュリティ グループ内で一意の名前。|
 |優先順位 | 100 ～ 4096 の数値。 規則は、優先順位に従って処理され、数値が小さいほど優先順位が高いために、大きい数値の前に小さい数値が処理されます。 トラフィックが規則に一致すると、処理が停止します。 この結果、優先順位低く (数値が大きい)、優先順位が高い規則と同じ属性を持つ規則は処理されません。|
 |ソース/ターゲット| IP アドレス、クラスレス ドメイン間ルーティング (CIDR) ブロック (例: 10.0.0.0/24)、[サービス タグ](#service-tags)、または[アプリケーション セキュリティ グループ](#application-security-groups)。 Azure リソースのアドレスを指定する場合は、そのリソースに割り当てられているプライベート IP アドレスを指定します。 受信トラフィックの場合、ネットワーク セキュリティ グループが処理されるタイミングは、Azure でパブリック IP アドレスがプライベート IP アドレスに変換された後です。送信トラフィックの場合は、Azure でプライベート IP アドレスがパブリック IP アドレスに変換される前になります。 Azure IP アドレスの詳細については、[こちら](virtual-network-ip-addresses-overview-arm.md)を参照してください。 範囲、サービス タグ、またはアプリケーション セキュリティ グループを指定すると、作成するセキュリティ規則の数を減らせます。 規則内で複数の個別 IP アドレスと範囲 (複数のサービス タグまたはアプリケーション グループは指定できません) を指定する機能は、[拡張セキュリティ規則](#augmented-security-rules)と呼ばれています。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数の IP アドレスおよび IP アドレス範囲を指定することはできません。 Azure のデプロイ モデルの詳細については、[こちら](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。|
-|Protocol     | TCP、UDP、または Any。Any には TCP、UDP、ICMP が含まれます (これらだけではありません)。 ICMP だけを指定することはできないので、ICMP が必要な場合は、Any を使用します。 |
-|方向| 規則が受信トラフィックまたは送信トラフィックに適用されるかどうか。|
+|Protocol     | TCP、UDP、ICMP、または Any。|
+|Direction| 規則が受信トラフィックまたは送信トラフィックに適用されるかどうか。|
 |ポートの範囲     |個別のポートまたはポートの範囲を指定できます。 たとえば、80 や 10000-10005 などと指定できます。 範囲を指定すると、作成するセキュリティ規則の数を減らすことができます。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数のポートまたはポート範囲を指定することはできません。   |
 |Action     | 許可または拒否        |
 
@@ -51,42 +52,56 @@ ms.locfileid: "66478873"
 
 ## <a name="service-tags"></a>サービス タグ
 
- サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。 独自のサービス タグを作成したり、タグに含まれる IP アドレスを指定したりすることはできません。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 
- 
- Azure [パブリック](https://www.microsoft.com/download/details.aspx?id=56519)、[米国政府](https://www.microsoft.com/download/details.aspx?id=57063)、[中国](https://www.microsoft.com/download/details.aspx?id=57062)、[ドイツ](https://www.microsoft.com/download/details.aspx?id=57064) クラウドに対する以下の毎週の発行でサービス タグのリストとプレフィックスの詳細をダウンロードして、オンプレミスのファイアウォールと統合できます。
+サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。 独自のサービス タグを作成したり、タグに含まれる IP アドレスを指定したりすることはできません。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 
 
- セキュリティ規則の定義で使うことができるサービス タグは次のとおりです。 サービス タグの名前は、[Azure のデプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)により若干異なります。
+次のサービス タグを[ネットワーク セキュリティ グループ ルール](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)で使用できます。 末尾にアスタリスクが付いているサービス タグ (たとえば AzureCloud*) は、[Azure ファイアウォール ネットワーク ルール](https://docs.microsoft.com/azure/firewall/service-tags)でも使用できます。 
 
-* **VirtualNetwork** (Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**):このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、[ピアリング](virtual-network-peering-overview.md)された仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワーク、[ユーザーが定義したルート](virtual-networks-udr-overview.md)に使用されるアドレス プレフィックスが含まれます。
+* **VirtualNetwork** (Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**):このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、[ピアリング](virtual-network-peering-overview.md)された仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワーク、[ユーザーが定義したルート](virtual-networks-udr-overview.md)に使用されるアドレス プレフィックスが含まれます。 このタグには既定のルートが含まれる場合があることに注意してください。 
 * **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**):このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。
 * **Internet** (Resource Manager) (クラシックの場合は **INTERNET**):このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
-* **AzureCloud** (Resource Manager のみ):このタグは、すべての[データセンターのパブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)を含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして *AzureCloud.EastUS* と指定できます。 
-* **AzureTrafficManager** (Resource Manager のみ):このタグは、Azure Traffic Manager プローブ IP アドレスに対する IP アドレス空間を表します。 Traffic Manager プローブ IP アドレスについて詳しくは、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs) に関するページをご覧ください。 
-* **Storage** (Resource Manager のみ):このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージに対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure Storage へのアクセスのみを許可する場合は、サービス タグとして *Storage.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 
-* **Sql** (Resource Manager のみ):このタグは、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 
-* **AzureCosmosDB** (Resource Manager のみ):このタグは、Azure Cosmos Database サービスのアドレス プレフィックスを表します。 値として *AzureCosmosDB* を指定した場合、AzureCosmosDB へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCosmosDB へのアクセスのみを許可する場合は、AzureCosmosDB.[リージョン名] の形式でリージョンを指定できます。 
-* **AzureKeyVault** (Resource Manager のみ):このタグは、Azure KeyVault サービスのアドレス プレフィックスを表します。 値として *AzureKeyVault* を指定した場合、AzureKeyVault へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureKeyVault へのアクセスのみを許可する場合は、AzureKeyVault.[リージョン名] の形式でリージョンを指定できます。 
-* **EventHub** (Resource Manager のみ):このタグは、Azure EventHub サービスのアドレス プレフィックスを表します。 値として *EventHub* を指定した場合、EventHub へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の EventHub へのアクセスのみを許可する場合は、EventHub.[リージョン名] の形式でリージョンを指定できます。 
-* **ServiceBus** (Resource Manager のみ):このタグは、Premium サービス レベルを使用して、Azure ServiceBus サービスのアドレス プレフィックスを表します。 値として *ServiceBus* を指定した場合、ServiceBus へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の ServiceBus へのアクセスのみを許可する場合は、ServiceBus.[リージョン名] の形式でリージョンを指定できます。 
-* **MicrosoftContainerRegistry** (Resource Manager のみ):このタグは、Microsoft Container Registry サービスのアドレス プレフィックスを表します。 値として *MicrosoftContainerRegistry* を指定した場合、MicrosoftContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の MicrosoftContainerRegistry へのアクセスのみを許可する場合は、MicrosoftContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 
-* **AzureContainerRegistry** (Resource Manager のみ):このタグは、Azure Container Registry サービスのアドレス プレフィックスを表します。 値として *AzureContainerRegistry* を指定した場合、AzureContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureContainerRegistry へのアクセスのみを許可する場合は、AzureContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 
-* **AppService** (Resource Manager のみ):このタグは、Azure AppService サービスのアドレス プレフィックスを表します。 値として *AppService* を指定した場合、AppService へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AppService へのアクセスのみを許可する場合は、AppService.[リージョン名] の形式でリージョンを指定できます。 
-* **AppServiceManagement** (Resource Manager のみ):このタグは、Azure AppService Management サービスのアドレス プレフィックスを表します。 値として *AppServiceManagement* を指定した場合、AppServiceManagement へのトラフィックが許可または拒否されます。 
-* **ApiManagement** (Resource Manager のみ):このタグは、Azure Api Management サービスのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement の管理インターフェイスからのトラフィックが許可または拒否されます。  
-* **AzureConnectors** (Resource Manager のみ):このタグは、Azure Connectors サービスのアドレス プレフィックスを表します。 値として *AzureConnectors* を指定した場合、AzureConnectors へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureConnectors へのアクセスのみを許可する場合は、AzureConnectors.[リージョン名] の形式でリージョンを指定できます。 
-* **GatewayManager** (Resource Manager のみ):このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。  
-* **AzureDataLake** (Resource Manager のみ):このタグは、Azure Data Lake サービスのアドレス プレフィックスを表します。 値として *AzureDataLake* を指定した場合、AzureDataLake へのトラフィックが許可または拒否されます。 
-* **AzureActiveDirectory** (Resource Manager のみ):このタグは、AzureActiveDirectory サービスのアドレス プレフィックスを表します。 値として *AzureActiveDirectory* を指定した場合、AzureActiveDirectory へのトラフィックが許可または拒否されます。  
-* **AzureMonitor** (Resource Manager のみ): このタグは、AzureMonitor サービスのアドレス プレフィックスを表します。 値として *AzureMonitor* を指定した場合、AzureMonitor へのトラフィックが許可または拒否されます。 
-* **ServiceFabric** (Resource Manager のみ): このタグは、ServiceFabric サービスのアドレス プレフィックスを表します。 値として *ServiceFabric* を指定した場合、ServiceFabric へのトラフィックが許可または拒否されます。 
-* **AzureMachineLearning** (Resource Manager のみ): このタグは、AzureMachineLearning サービスのアドレス プレフィックスを表します。 値として *AzureMachineLearning* を指定した場合、AzureMachineLearning へのトラフィックが許可または拒否されます。 
-* **BatchNodeManagement** (Resource Manager のみ):このタグは、Azure BatchNodeManagement サービスのアドレス プレフィックスを表します。 値として *BatchNodeManagement* を指定した場合、Batch サービスからコンピューティング ノードへのトラフィックが許可または拒否されます。
+* **AzureCloud*** (Resource Manager のみ):このタグは、すべての[データセンターのパブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)を含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud へのアクセスのみを許可する場合は、AzureCloud.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureTrafficManager*** (Resource Manager のみ):このタグは、Azure Traffic Manager プローブ IP アドレスに対する IP アドレス空間を表します。 Traffic Manager プローブ IP アドレスについて詳しくは、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs) に関するページをご覧ください。 受信セキュリティ規則には、このタグをお勧めします。  
+* **Storage*** (Resource Manager のみ):このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージへのアクセスのみを許可する場合は、Storage.[リージョン名] の形式でリージョンを指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 送信セキュリティ規則には、このタグをお勧めします。 
+* **Sql*** (Resource Manager のみ):このタグは、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、Sql.[リージョン名] の形式でリージョンを指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureCosmosDB*** (Resource Manager のみ):このタグは、Azure Cosmos Database サービスのアドレス プレフィックスを表します。 値として *AzureCosmosDB* を指定した場合、AzureCosmosDB へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCosmosDB へのアクセスのみを許可する場合は、AzureCosmosDB.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureKeyVault*** (Resource Manager のみ):このタグは、Azure KeyVault サービスのアドレス プレフィックスを表します。 値として *AzureKeyVault* を指定した場合、AzureKeyVault へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureKeyVault へのアクセスのみを許可する場合は、AzureKeyVault.[リージョン名] の形式でリージョンを指定できます。 このタグは、**AzureActiveDirectory** タグに依存します。 送信セキュリティ規則には、このタグをお勧めします。  
+* **EventHub*** (Resource Manager のみ):このタグは、Azure EventHub サービスのアドレス プレフィックスを表します。 値として *EventHub* を指定した場合、EventHub へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の EventHub へのアクセスのみを許可する場合は、EventHub.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **ServiceBus*** (Resource Manager のみ):このタグは、Premium サービス レベルを使用して、Azure ServiceBus サービスのアドレス プレフィックスを表します。 値として *ServiceBus* を指定した場合、ServiceBus へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の ServiceBus へのアクセスのみを許可する場合は、ServiceBus.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **MicrosoftContainerRegistry*** (Resource Manager のみ):このタグは、Microsoft Container Registry サービスのアドレス プレフィックスを表します。 値として *MicrosoftContainerRegistry* を指定した場合、MicrosoftContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の MicrosoftContainerRegistry へのアクセスのみを許可する場合は、MicrosoftContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureContainerRegistry*** (Resource Manager のみ):このタグは、Azure Container Registry サービスのアドレス プレフィックスを表します。 値として *AzureContainerRegistry* を指定した場合、AzureContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureContainerRegistry へのアクセスのみを許可する場合は、AzureContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AppService*** (Resource Manager のみ):このタグは、Azure AppService サービスのアドレス プレフィックスを表します。 値として *AppService* を指定した場合、AppService へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AppService へのアクセスのみを許可する場合は、AppService.[リージョン名] の形式でリージョンを指定できます。 WebApps フロントエンドへの送信セキュリティ規則には、このタグをお勧めします。  
+* **AppServiceManagement*** (Resource Manager のみ):このタグは、App Service Environment 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *AppServiceManagement* を指定した場合、AppServiceManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
+* **ApiManagement*** (Resource Manager のみ):このタグは、APIM 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureConnectors*** (Resource Manager のみ):このタグは、プローブ/バックエンド接続の Logic Apps コネクタのアドレス プレフィックスを表します。 値として *AzureConnectors* を指定した場合、AzureConnectors へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureConnectors へのアクセスのみを許可する場合は、AzureConnectors.[リージョン名] の形式でリージョンを指定できます。 受信セキュリティ規則には、このタグをお勧めします。 
+* **GatewayManager** (Resource Manager のみ):このタグは、VPN/アプリ ゲートウェイ専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。 受信セキュリティ規則には、このタグをお勧めします。 
+* **AzureDataLake*** (Resource Manager のみ):このタグは、Azure Data Lake サービスのアドレス プレフィックスを表します。 値として *AzureDataLake* を指定した場合、AzureDataLake へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureActiveDirectory*** (Resource Manager のみ):このタグは、AzureActiveDirectory サービスのアドレス プレフィックスを表します。 値として *AzureActiveDirectory* を指定した場合、AzureActiveDirectory へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。
+* **AzureMonitor*** (Resource Manager のみ):このタグは、Log Analytics、App Insights、AzMon、およびカスタム メトリック (GiG エンドポイント) のアドレス プレフィックスを表します。 値として *AzureMonitor* を指定した場合、AzureMonitor へのトラフィックが許可または拒否されます。 Log Analytics では、このタグは **Storage** タグに依存します。 送信セキュリティ規則には、このタグをお勧めします。
+* **ServiceFabric*** (Resource Manager のみ):このタグは、ServiceFabric サービスのアドレス プレフィックスを表します。 値として *ServiceFabric* を指定した場合、ServiceFabric へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureMachineLearning*** (Resource Manager のみ):このタグは、AzureMachineLearning サービスのアドレス プレフィックスを表します。 値として *AzureMachineLearning* を指定した場合、AzureMachineLearning へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **BatchNodeManagement*** (Resource Manager のみ):このタグは、Azure Batch 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *BatchNodeManagement* を指定した場合、Batch サービスからコンピューティング ノードへのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureBackup*** (Resource Manager のみ):このタグは、AzureBackup サービスのアドレス プレフィックスを表します。 値として *AzureBackup* を指定した場合、AzureBackup へのトラフィックが許可または拒否されます。 このタグは、**Storage** および **AzureActiveDirectory** タグに依存します。送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureActiveDirectoryDomainServices*** (Resource Manager のみ):このタグは、Azure Active Directory Domain Services 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *AzureActiveDirectoryDomainServices* を指定した場合、AzureActiveDirectoryDomainServices へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。  
+* **SqlManagement*** (Resource Manager のみ):このタグは、SQL 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *SqlManagement* を指定した場合、SqlManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
+* **CognitiveServicesManagement** (Resource Manager のみ):このタグは、Cognitive Services のトラフィックのアドレス プレフィックスを表します。 値として *CognitiveServicesManagement* を指定した場合、CognitiveServicesManagement へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。  
+* **Dynamics365ForMarketingEmail** (Resource Manager のみ):このタグは、Dynamics 365 のマーケティング電子メール サービスのアドレス プレフィックスを表します。 値として *Dynamics365ForMarketingEmail* を指定した場合、Dynamics365ForMarketingEmail へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の Dynamics365ForMarketingEmail へのアクセスのみを許可する場合は、Dynamics365ForMarketingEmail.[リージョン名] の形式でリージョンを指定できます。
+* **AzurePlatformDNS** (Resource Manager のみ):このタグは、基本的なインフラストラクチャ サービスである DNS を表します。 値として *AzurePlatformDNS* を指定した場合、DNS に関する既定の [Azure プラットフォームの考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)を無効にできます。 このタグを使用する場合は注意してください。 このタグを使用する前に、テストをお勧めします。 
+* **AzurePlatformIMDS** (Resource Manager のみ):このタグは、基本的なインフラストラクチャ サービスである IMDS を表します。 値として *AzurePlatformIMDS* を指定した場合、IMDS に関する既定の [Azure プラットフォームの考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)を無効にできます。 このタグを使用する場合は注意してください。 このタグを使用する前に、テストをお勧めします。 
+* **AzurePlatformLKM** (Resource Manager のみ):このタグは、Windows のライセンスまたはキー管理サービスを表します。 値として *AzurePlatformLKM* を指定した場合、ライセンスに関する既定の [Azure プラットフォームの考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)を無効にできます。 このタグを使用する場合は注意してください。 このタグを使用する前に、テストをお勧めします。 
 
 > [!NOTE]
 > Azure サービスのサービス タグは、使用されている特定のクラウドからのアドレス プレフィックスを表します。 
 
 > [!NOTE]
 > Azure Storage や Azure SQL Database などのサービスの[仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)を実装する場合、Azure はサービスの仮想ネットワーク サブネットへの[ルート](virtual-networks-udr-overview.md#optional-default-routes)を追加します。 ルートのアドレス プレフィックスは、対応するサービス タグと同じアドレス プレフィックスまたは CIDR 範囲です。
+
+### <a name="service-tags-in-on-premises"></a>オンプレミスのサービス タグ  
+Azure [パブリック](https://www.microsoft.com/download/details.aspx?id=56519)、[米国政府](https://www.microsoft.com/download/details.aspx?id=57063)、[中国](https://www.microsoft.com/download/details.aspx?id=57062)、[ドイツ](https://www.microsoft.com/download/details.aspx?id=57064) クラウドに対する翌週のパブリケーションでサービス タグのリストとプレフィックスの詳細をダウンロードして、オンプレミスのファイアウォールと統合できます。
+
+**Service Tag Discovery API** (パブリック プレビュー)、[REST](https://aka.ms/discoveryapi_rest)、[Azure PowerShell](https://aka.ms/discoveryapi_powershell)、および [Azure CLI](https://aka.ms/discoveryapi_cli) を使用してこの情報をプログラムで取得することもできます。 
+
+> [!NOTE]
+> Azure [パブリック](https://www.microsoft.com/en-us/download/details.aspx?id=41653)、[中国](https://www.microsoft.com/en-us/download/details.aspx?id=42064)、および[ドイツ](https://www.microsoft.com/en-us/download/details.aspx?id=54770) クラウドに対する翌週のパブリケーション (古いバージョン) は、2020 年 6 月 30 日までに非推奨になります。 上記の説明に従い更新されたパブリケーションの使用を開始してください。 
 
 ## <a name="default-security-rules"></a>既定セキュリティ規則
 
@@ -98,19 +113,19 @@ ms.locfileid: "66478873"
 
 |優先順位|ソース|ソース ポート|変換先|ターゲット ポート|プロトコル|Access|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|All|ALLOW|
+|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|任意|ALLOW|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
 |優先順位|ソース|ソース ポート|変換先|ターゲット ポート|プロトコル|Access|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|All|ALLOW|
+|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|任意|ALLOW|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
 |優先順位|ソース|ソース ポート|変換先|ターゲット ポート|プロトコル|Access|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|All|拒否|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|任意|拒否|
 
 ### <a name="outbound"></a>送信
 
@@ -118,21 +133,21 @@ ms.locfileid: "66478873"
 
 |優先順位|ソース|ソース ポート| 変換先 | ターゲット ポート | プロトコル | Access |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | All | ALLOW |
+| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 任意 | ALLOW |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
 |優先順位|ソース|ソース ポート| 変換先 | ターゲット ポート | プロトコル | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | インターネット | 0-65535 | All | ALLOW |
+| 65001 | 0.0.0.0/0 | 0-65535 | インターネット | 0-65535 | 任意 | ALLOW |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
 |優先順位|ソース|ソース ポート| 変換先 | ターゲット ポート | プロトコル | Access |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | All | 拒否 |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 任意 | 拒否 |
 
-"**ソース**" 列と "**ターゲット**" 列の *VirtualNetwork*、*AzureLoadBalancer*、および *Internet* は、IP アドレスではなく[サービス タグ](#service-tags)です。 "プロトコル" 列で "**すべて**" は TCP、UDP、ICMP を含みます。 規則を作成するとき、TCP、UDP、またはすべてを指定できますが、ICMP だけを指定することはできません。 そのため、規則で ICMP が必要な場合は、プロトコルとして "*すべて*" を選択します。 "**ソース**" 列と "**ターゲット**" 列の *0.0.0.0/0* は、すべてのアドレスを表します。 Azure portal、Azure CLI、または Powershell などのクライアントでは * または any をこの式に使用できます。
+"**ソース**" 列と "**ターゲット**" 列の *VirtualNetwork*、*AzureLoadBalancer*、および *Internet* は、IP アドレスではなく[サービス タグ](#service-tags)です。 "プロトコル" 列で "**Any**" は TCP、UDP、ICMP を含みます。 規則を作成するときに、TCP、UDP、ICMP、または Any を指定できます。 "**ソース**" 列と "**ターゲット**" 列の *0.0.0.0/0* は、すべてのアドレスを表します。 Azure portal、Azure CLI、または Powershell などのクライアントでは * または any をこの式に使用できます。
  
 既定の規則は削除できませんが、優先順位の高い規則を作成することでオーバーライドできます。
 
@@ -158,7 +173,7 @@ ms.locfileid: "66478873"
 
 |優先順位|ソース|ソース ポート| 変換先 | ターゲット ポート | プロトコル | Access |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | All | 拒否 |
+| 120 | * | * | AsgDb | 1433 | 任意 | 拒否 |
 
 ### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 

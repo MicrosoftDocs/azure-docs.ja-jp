@@ -1,24 +1,21 @@
 ---
 title: Microsoft 顧客契約の課金管理ロールを理解する - Azure
 description: Microsoft 顧客契約の Azure での請求先アカウントの課金ロールについて説明します。
-services: billing
-documentationcenter: ''
 author: amberbhargava
 manager: amberbhargava
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12e492fee95192d0af49ff7b6a5be3144398fef8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370969"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490438"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure での Microsoft 顧客契約の管理ロールを理解する
 
@@ -46,7 +43,7 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 
 ## <a name="billing-account-roles-and-tasks"></a>請求先アカウントのロールとタスク
 
-請求先アカウントでは、組織の課金を管理できます。 請求先アカウントを使用して、コストの整理、料金および請求書の監視、および組織の請求アクセスの制御を行います。 詳細については、[請求先アカウントの理解](billing-mca-overview.md#understand-billing-account)に関するページを参照してください。
+請求先アカウントでは、組織の課金を管理できます。 請求先アカウントを使用して、コストの整理、料金および請求書の監視、および組織の請求アクセスの制御を行います。 詳細については、[請求先アカウントの理解](billing-mca-overview.md#your-billing-account)に関するページを参照してください。
 
 次の表では、請求先アカウントのコンテキストでタスクを完了するために必要なロールを示します。
 
@@ -92,7 +89,7 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 
 ## <a name="billing-profile-roles-and-tasks"></a>課金プロファイルのロールとタスク
 
-課金プロファイルでは、請求書と支払方法を管理することができます。 月次請求書は、Azure サブスクリプションと、課金プロファイルを使用して購入した他の製品に対して生成されます。 請求書に対して支払う支払方法を使用します。 詳細については、[課金プロファイルの理解](billing-mca-overview.md#understand-billing-profiles)に関するページを参照してください。
+課金プロファイルでは、請求書と支払方法を管理することができます。 月次請求書は、Azure サブスクリプションと、課金プロファイルを使用して購入した他の製品に対して生成されます。 請求書に対して支払う支払方法を使用します。 詳細については、[課金プロファイルの理解](billing-mca-overview.md#billing-profiles)に関するページを参照してください。
 
 次の表では、課金プロファイルのコンテキストでタスクを完了するために必要なロールを示します。
 
@@ -142,7 +139,7 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 
 ## <a name="invoice-section-roles-and-tasks"></a>請求書セクションのロールとタスク
 
-請求書セクションでは、請求書のコストを整理することができます。 セクションを作成して、部門別、開発環境別、または組織のニーズに基づいて、コストを整理できます。 セクションの Azure サブスクリプションを作成する他のアクセス許可を付与します。 サブスクリプションのすべての利用料金や購入が請求書のセクションに表示されます。 詳細については、[請求書セクションの理解](billing-mca-overview.md#understand-invoice-sections)に関するページを参照してください。
+請求書セクションでは、請求書のコストを整理することができます。 セクションを作成して、部門別、開発環境別、または組織のニーズに基づいて、コストを整理できます。 セクションの Azure サブスクリプションを作成する他のアクセス許可を付与します。 サブスクリプションのすべての利用料金や購入が請求書のセクションに表示されます。 詳細については、[請求書セクションの理解](billing-mca-overview.md#invoice-sections)に関するページを参照してください。
 
 次の表では、請求書セクションのコンテキストでタスクを完了するために必要なロールを示します。
 
@@ -185,7 +182,7 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[コストの管理と請求]** で検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-understand-mca-roles/billing-search-cost-management-billing.png)
 

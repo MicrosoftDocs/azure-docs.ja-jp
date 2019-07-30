@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT の前提条件 (プレビュー) | Microsoft Docs
 description: Azure Security Center for IoT サービスの使用を開始するために必要なすべてのことに関する前提条件の詳細。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 790cbcb7-1340-4cc1-9509-7b262e7c3181
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 973b0044844fbdf38eefde2072631586a8ace593
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 198459887ff19b16e897b2a8dde55bca1217c8ac
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192602"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616444"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center for IoT の前提条件
 

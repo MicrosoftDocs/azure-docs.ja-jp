@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure CLI を使用して、Azu
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1de2d40e107c03db8c0e406a7bb1a12c15d5c736
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171847"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708493"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した Linux VM の作成と管理
 
@@ -54,7 +54,7 @@ az group create --name myResourceGroupVM --location eastus
 
 仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm) コマンドを使用します。 
 
-仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 次の例では、Ubuntu Server を実行する *myVM* という名前の VM を作成します。 VM には、*azureuser* という名前のユーザー アカウントが作成されます。また、既定のキーの場所 (*~/.ssh*) に SSH キーが存在しない場合は、SSH キーが生成されます。
+仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 次の例では、Ubuntu Server を実行する *myVM* という名前の VM を作成します。 VM には、*azureuser* という名前のユーザー アカウントが作成されます。また、既定のキーの場所 ( *~/.ssh*) に SSH キーが存在しない場合は、SSH キーが生成されます。
 
 ```azurecli-interactive
 az vm create \
@@ -141,7 +141,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-特定のイメージを使用して VM をデプロイするために、*[Urn]* 列の値をメモに記録します。この値は、イメージを[識別](cli-ps-findimage.md#terminology)するための、発行元、プラン、SKU、およびオプションのバージョン番号で構成されます。 イメージを指定するときにイメージのバージョン数を "latest" で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。 この例では、`--image` 引数を使用して、CentOS 6.5 イメージの最新バージョンを指定します。  
+特定のイメージを使用して VM をデプロイするために、 *[Urn]* 列の値をメモに記録します。この値は、イメージを[識別](cli-ps-findimage.md#terminology)するための、発行元、プラン、SKU、およびオプションのバージョン番号で構成されます。 イメージを指定するときにイメージのバージョン数を "latest" で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。 この例では、`--image` 引数を使用して、CentOS 6.5 イメージの最新バージョンを指定します。  
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -155,14 +155,14 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 次の表は、ユース ケース別にサイズを分類したものです。  
 
-| Type                     | サイズ           |    説明       |
+| Type                     | 一般的なサイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [汎用](sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
-| [コンピューティングの最適化](sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
-| [メモリの最適化](../virtual-machines-windows-sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
-| [ストレージの最適化](../virtual-machines-windows-sizes-storage.md)      | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
-| [GPU](sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
-| [高性能](sizes-hpc.md) | H、A8 ～ 11          | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 
+| [汎用](sizes-general.md)         |B、Dsv3、Dv3、DSv2、Dv2、Av2、DC| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
+| [コンピューティングの最適化](sizes-compute.md)   | Fsv2          | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
+| [メモリの最適化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
+| [ストレージの最適化](sizes-storage.md)      | Lsv2、Ls              | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
+| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
+| [高性能](sizes-hpc.md) | H        | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 |
 
 
 ### <a name="find-available-vm-sizes"></a>使用可能な VM サイズを確認する

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c14362a220cc60b0b8956ca41950faecd0563b3e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: bc3ea2f6fddc233a69d96c0c885ab310ed1e77c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル:Azure Active Directory と Predictix Assortment Planning の統合
 
@@ -96,7 +96,7 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 

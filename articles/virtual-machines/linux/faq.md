@@ -4,7 +4,7 @@ description: Resource Manager モデルで作成された Linux 仮想マシン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-management
 ms.assetid: 3648e09c-1115-4818-93c6-688d7a54a353
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0623a7aff15184822ee8abde0b3c751f8a105b5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae636917a32aae823d0d31b415f9ef9ac16e9c2f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463579"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667784"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
@@ -29,7 +29,7 @@ ms.locfileid: "65463579"
 すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。 詳細については、「[Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
-各データ ディスクで最大 4 TB (4,095 GB) を利用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+各データ ディスクで最大 32,767 GiB を使用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 Azure Managed Disks は、Azure Virtual Machines でデータの永続的な記憶域として使用できる、お勧めのディスク ストレージ サービスです。 各仮想マシンで複数の管理ディスクを使用することができます。 Managed Disks には、次の 2 種類の耐久性ストレージ オプションがあります:Premium Managed Disks と Standard Managed Disks。 価格情報については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」を参照してください。
 
@@ -74,6 +74,7 @@ Secure Shell (SSH) を使用して、仮想マシンにサインオンするた�
 | `john`          | `owner`   | `root`             | `server` |
 | `sql`           | `support` | `support_388945a0` | `sys`    |
 | `test2`         | `test3`   | `user4`            | `user5`  |
+| `video`         |
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>VM を作成する際のパスワードの要件は何ですか。
 

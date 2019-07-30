@@ -4,7 +4,7 @@ description: C# と Azure Resource Manager を使用して、仮想マシンと�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 55b73f5f4e6998eb1eb8c5ebc873fa20f8722a3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b88bade886bf8cf22387e8733b8710414c944988
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304583"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361140"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
 
@@ -87,7 +87,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 1. 作成したプロジェクトの Program.cs ファイルを開きます。 次に、ファイルの先頭にある既存のステートメントに次の using ステートメントを追加します。
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -97,7 +97,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 2. 管理クライアントを作成するには、次のコードを Main メソッドに追加します。
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -116,7 +116,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 アプリケーションに値を指定し、リソース グループを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var vmName = "myVM";
 var location = Region.USWest;
@@ -133,7 +133,7 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 可用性セットを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Creating availability set...");
 var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
     .WithRegion(location)
@@ -148,7 +148,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 仮想マシンのパブリック IP アドレスを作成するには、次のコードを Main メソッドに追加します。
    
-```
+```csharp
 Console.WriteLine("Creating public IP address...");
 var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
     .WithRegion(location)
@@ -163,7 +163,7 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
 
 サブネットと仮想ネットワークを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Creating virtual network...");
 var network = azure.Networks.Define("myVNet")
     .WithRegion(location)
@@ -179,7 +179,7 @@ var network = azure.Networks.Define("myVNet")
 
 ネットワーク インターフェイスを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Creating network interface...");
 var networkInterface = azure.NetworkInterfaces.Define("myNIC")
     .WithRegion(location)
@@ -197,7 +197,7 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
 
 仮想マシンを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Creating virtual machine...");
 azure.VirtualMachines.Define(vmName)
     .WithRegion(location)
@@ -219,7 +219,7 @@ azure.VirtualMachines.Define(vmName)
 
 Marketplace イメージではなく、既存のディスクを使用する場合は、このコードを使用します。
 
-```
+```csharp
 var managedDisk = azure.Disks.Define("myosdisk")
     .WithRegion(location)
     .WithExistingResourceGroup(groupName)
@@ -244,7 +244,7 @@ azure.VirtualMachines.Define("myVM")
 
 VM で何かを実行する必要がある場合、そのインスタンスを取得する必要があります。
 
-```
+```csharp
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
@@ -252,7 +252,7 @@ var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 
 仮想マシンに関する情報を取得するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Getting information about the virtual machine...");
 Console.WriteLine("hardwareProfile");
 Console.WriteLine("   vmSize: " + vm.Size);
@@ -324,7 +324,7 @@ Console.ReadLine();
 
 仮想マシンの割り当てを解除せずに仮想マシンを停止するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Stopping vm...");
 vm.PowerOff();
 Console.WriteLine("Press enter to continue...");
@@ -333,7 +333,7 @@ Console.ReadLine();
 
 仮想マシンの割り当てを解除する場合は、PowerOff 呼び出しを次のコードに変更します。
 
-```
+```csharp
 vm.Deallocate();
 ```
 
@@ -341,7 +341,7 @@ vm.Deallocate();
 
 仮想マシンを起動するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Starting vm...");
 vm.Start();
 Console.WriteLine("Press enter to continue...");
@@ -354,7 +354,7 @@ Console.ReadLine();
 
 仮想マシンのサイズを変更するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Resizing vm...");
 vm.Update()
     .WithSize(VirtualMachineSizeTypes.StandardDS2) 
@@ -367,7 +367,7 @@ Console.ReadLine();
 
 仮想マシンにデータ ディスクを追加するには、Main メソッドに次のコードを追加します。 この例では、2 GB のサイズ、LUN が 0、キャッシュの種類が ReadWrite のデータ ディスクを追加します。
 
-```
+```csharp
 Console.WriteLine("Adding data disk to vm...");
 vm.Update()
     .WithNewDataDisk(2, 0, CachingTypes.ReadWrite) 
@@ -382,7 +382,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 リソース グループを削除するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -397,4 +397,3 @@ azure.ResourceGroups.DeleteByName(groupName);
 ## <a name="next-steps"></a>次の手順
 * テンプレートを使用して仮想マシンを作成する方法については、「 [C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 * [Azure libraries for .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet) の使用方法の詳細について学習します。
-

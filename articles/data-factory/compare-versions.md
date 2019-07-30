@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4cdb517e644d55504bfdafbd3bacdfd4bfa0b36c
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432704"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479293"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
 この記事では、Data Factory と Azure Data Factory バージョン 1 を比較します。 Data Factory の概要については、[Data Factory の概要](introduction.md)に関するページを参照してください。Data Factory バージョン 1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 
@@ -29,7 +29,7 @@ ms.locfileid: "57432704"
 | データセット | アクティビティで入力および出力として使用するデータを参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Azure Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。<br/><br/>**可用性**で、データセットの処理時間枠スライス モデル (時間単位、日単位など) を定義します。 | データセットは、現在のバージョンと同じです。 ただし、データセットの**可用性**スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 詳細については、「[トリガー](concepts-pipeline-execution-triggers.md#triggers)」と[データセット](concepts-datasets-linked-services.md)に関するページを参照してください。 | 
 | リンクされたサービス | リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 | リンクされたサービスは Data Factory V1 と同じですが、現在のバージョン の Data Factory の Integration Runtime コンピューティング環境を利用するための新しい **connectVia** プロパティがあります。 詳細については、[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)に関するページと、[Azure Blob Storage のリンクされたサービスのプロパティ](connector-azure-blob-storage.md#linked-service-properties)に関するページを参照してください。 |
 | パイプライン | データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプラインをスケジュールして実行するには、startTime、endTime、isPaused を使用します。 | パイプラインは、データに対して実行されるアクティビティのグループです。 ただし、パイプライン内のアクティビティのスケジュールは、新しいトリガー リソースに分割されています。 現在のバージョンの Data Factory のパイプラインは、むしろ、トリガーを介して個別にスケジュールされる "ワークフロー単位" として考えることができます。 <br/><br/>現在のバージョンの Data Factory では、パイプラインに実行時間の "枠" がありません。 Data Factory V1 の概念である startTime、endTime、isPaused は、現在のバージョンの Data Factory にはなくなりました。 詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページと、[パイプラインとアクティビティ](concepts-pipelines-activities.md)に関するページを参照してください。 |
-| Activities | アクティビティは、パイプライン内のデータに対して実行するアクションを定義します。 データ移動 (コピー アクティビティ) およびデータ変換アクティビティ (Hive、Pig、MapReduce など) がサポートされています。 | 現在のバージョンの Data Factory では、アクティビティは引き続き、パイプライン内に定義されたアクションです。現在のバージョンの Data Factory では、[制御フロー アクティビティ](concepts-pipelines-activities.md#control-activities)が新たに導入されています。 これらのアクティビティは、制御フロー (ループおよび分岐) で使用します。 V1 でサポートされていたデータ移動およびデータ変換アクティビティは、現在のバージョンでもサポートされています。 現在のバージョンでは、データセットを使用せずに変換アクティビティを定義できます。 |
+| Activities | アクティビティは、パイプライン内のデータに対して実行するアクションを定義します。 データ移動 (コピー アクティビティ) およびデータ変換アクティビティ (Hive、Pig、MapReduce など) がサポートされています。 | Data Factory の現在のバージョンでも、アクティビティはパイプライン内の定義されたアクションです。 Data Factory の現在のバージョンには、新しい[制御フロー アクティビティ](concepts-pipelines-activities.md#control-activities)が導入されています。 これらのアクティビティは、制御フロー (ループおよび分岐) で使用します。 V1 でサポートされていたデータ移動およびデータ変換アクティビティは、現在のバージョンでもサポートされています。 現在のバージョンでは、データセットを使用せずに変換アクティビティを定義できます。 |
 | ハイブリッド データ移動とアクティビティのディスパッチ | [Data Management Gateway](v1/data-factory-data-management-gateway.md) (現在は Integration Runtime と呼ばれます) は、オンプレミスとクラウドの間のデータ移動をサポートしていました。| Data Management Gateway は、セルフホステッド Integration Runtime と呼ばれるようになりました。 機能は V1 と同じです。 <br/><br/> 現在のバージョンの Data Factory の Azure-SSIS Integration Runtime では、クラウドでの SQL Server Integration Services (SSIS) パッケージのデプロイと実行もサポートされています。 詳細については、「[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)」を参照してください。|
 | parameters | NA | パラメーターは、パイプラインで定義されている、読み取り専用構成設定のキーと値のペアです。 パイプラインを手動で実行するときは、パラメーターの引数を渡すことができます。 スケジューラ トリガーを使用している場合は、トリガーでパラメーターの値を渡すこともできます。 パイプライン内のアクティビティは、パラメーターの値を使用します。  |
 | 式 | Data Factory V1 では、データ選択クエリやアクティビティ/データセットのプロパティに関数やシステム変数を使用できます。 | 現在のバージョンの Data Factory では、JSON 文字列値の任意の場所で式を使用できます。 詳細については、[現在のバージョンの Data Factory の式と関数](control-flow-expression-language-functions.md)に関するページを参照してください。|
@@ -130,11 +130,11 @@ V1 では、IDotNetActivity インターフェイスの Execute メソッドを�
 
 | &nbsp; | V2 | V1 |
 | ------ | -- | -- | 
-| Azure ポータル | [はい](quickstart-create-data-factory-portal.md) | [はい](data-factory-build-your-first-pipeline-using-editor.md) |
+| Azure ポータル | [はい](quickstart-create-data-factory-portal.md) | いいえ |
 | Azure PowerShell | [はい](quickstart-create-data-factory-powershell.md) | [はい](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [はい](quickstart-create-data-factory-dot-net.md) | [はい](data-factory-build-your-first-pipeline-using-vs.md) |
 | REST API | [はい](quickstart-create-data-factory-rest-api.md) | [はい](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python SDK | [はい](quickstart-create-data-factory-python.md) | いいえ  |
+| Python SDK | [はい](quickstart-create-data-factory-python.md) | いいえ |
 | Resource Manager テンプレート | [はい](quickstart-create-data-factory-resource-manager-template.md) | [はい](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可

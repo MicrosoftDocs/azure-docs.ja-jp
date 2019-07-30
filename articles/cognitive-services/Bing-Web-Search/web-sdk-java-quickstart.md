@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/25/2019
 ms.author: aahi
-ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d2c1ca439dbbbd79ddabd2ea7a4eb5298d1071a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863782"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500965"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>クイック スタート:Java 用の Bing Web Search SDK を使用する
 
@@ -127,7 +127,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-プロジェクトを Maven で作成した場合、パッケージは既に宣言されています。 それ以外の場合は、ここでパッケージを宣言します。 例: 
+プロジェクトを Maven で作成した場合、パッケージは既に宣言されています。 それ以外の場合は、ここでパッケージを宣言します。 例:
 
 ```java
 package com.bingwebsearch.app
@@ -300,4 +300,4 @@ mvn compile exec:java
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Java SDK リファレンス](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)
+* [Azure Java SDK リファレンス](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

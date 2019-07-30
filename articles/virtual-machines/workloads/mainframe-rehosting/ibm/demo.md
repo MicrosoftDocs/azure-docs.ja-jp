@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d527b08f3610531bef8e98a11998942411651d27
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925688"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621346"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
 
@@ -21,7 +21,7 @@ Azure Virtual Machines (VM) 上で、IBM Z Development and Test Environment (zD&
 
 この記事では、zD&T 環境の ADCD インスタンスを Azure 上に設定する方法を示します。 ADCD では、zD&T で実行される開発およびテスト環境向けの完全な Z Series オペレーティング システムの実装が作成されます。
 
-zD&T 同様、ADCD は IBM のお客様とパートナー様だけが利用でき、開発およびテストを行うことのみを目的としています。 それらは運用環境で使用されるものではありません。 [パスポート アドバンテージ](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html)または [IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd) を通して、多数の IBM インストール パッケージをダウンロードできます。
+zD&T 同様、ADCD は IBM のお客様とパートナー様だけが利用でき、開発およびテストを行うことのみを目的としています。 それらは運用環境で使用されるものではありません。 [パスポート アドバンテージ](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html)または [IBM PartnerWorld](https://www.ibm.com/partnerworld/public) を通して、多数の IBM インストール パッケージをダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ zD&T 同様、ADCD は IBM のお客様とパートナー様だけが利用で�
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>パスポート アドバンテージからインストール パッケージをダウンロードする
 
-ADCD メディアへのアクセスが必要です。 以下の手順は、IBM のお客様であり、パスポート アドバンテージを使用できることを前提としています。 IBM のパートナー様は [IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd) を利用できます。
+ADCD メディアへのアクセスが必要です。 以下の手順は、IBM のお客様であり、パスポート アドバンテージを使用できることを前提としています。 IBM のパートナー様は [IBM PartnerWorld](https://www.ibm.com/partnerworld/public) を利用できます。
 
 > [!NOTE]
 > この記事では、Windows PC を使用して Azure portal にアクセスし、IBM メディアをダウンロードすることを前提としています。 Mac または Ubuntu デスクトップを使用している場合は、IBM メディアを取得するためのコマンドとプロセスは若干異なる可能性があります。

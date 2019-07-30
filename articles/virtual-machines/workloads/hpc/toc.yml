@@ -1,12 +1,14 @@
 - name: ハイ パフォーマンス コンピューティングのドキュメント
   items:
     - name: 概要
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      items:
+        - name: H シリーズ VM の HPC
+          href: overview.md
     - name: 構成
       items:
         - name: Linux 向けの最適化
           href: configure.md
-        - name: Infiniband の有効化
+        - name: InfiniBand の有効化
           href: enable-infiniband.md
     - name: MPI の設定
       href: setup-mpi.md

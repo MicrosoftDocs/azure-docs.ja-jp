@@ -3,7 +3,7 @@ title: Azure で Service Fabric アプリをクラスターにデプロイする
 description: Visual Studio でアプリケーションをクラスターにデプロイする方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: msfussell
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/14/2019
-ms.author: aljo,mikhegn
+ms.date: 07/22/2019
+ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4b3922ea97391a83d729bcf8b25c489a45119046
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302448"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598812"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric アプリケーションをクラスターにデプロイする
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4bb99c8cbec88d23f9297dcbe8b13cc69cd0006c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240994"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070681"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法
 
@@ -557,7 +557,7 @@ function truncateFeed() {
 
 ### <a name="we-have-optimized-a-read-heavy-scenario"></a>読み取り負荷の高いシナリオの最適化
 
-お気付き書きかもしれませんが、ここでの作業では、書き込み要求 (コマンド) を犠牲にして、読み取り要求 (クエリ) のパフォーマンスを向上させることに集中しています。 多くの場合、書き込み操作では、変更フィードによって後続の非正規化がトリガーされるようになったため、計算の負荷は大きくなり、実現には時間がかかります。
+お気付きかもしれませんが、ここでの作業では、書き込み要求 (コマンド) を犠牲にして、読み取り要求 (クエリ) のパフォーマンスを向上させることに集中しています。 多くの場合、書き込み操作では、変更フィードによって後続の非正規化がトリガーされるようになったため、計算の負荷は大きくなり、実現には時間がかかります。
 
 これは、(多くのソーシャル アプリと同様) ブログ作成プラットフォームでは読み取り負荷が高いという事実によって正当化されます。つまり、対応する必要がある読み取り要求の量は、書き込み要求の量より桁違いに多いのが普通です。 そのため、読み取り要求を低コストで高パフォーマンスにするため、書き込み要求の実行コストを高くすることには意味があります。
 

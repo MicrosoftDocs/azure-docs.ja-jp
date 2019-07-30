@@ -5,23 +5,20 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33d5be20682c8341932a2a0021ccda27583775bd
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696761"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335971"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
 
 この記事では、ご利用のサーバーを Azure File Sync に正しく安全に接続するための具体的な要件と選択肢についての分析情報を提供します。
-
-> [!Important]
-> Azure File Sync はまだ、ストレージ アカウント用のファイアウォールおよび仮想ネットワークをサポートしていません。
 
 ## <a name="overview"></a>概要
 Azure File Sync は、Windows Server と Azure ファイル共有など各種 Azure サービスとの間のオーケストレーション サービスとして機能し、同期グループ内の定義に従ってデータを同期します。 Azure File Sync を正しく機能させるためには、次の Azure サービスと通信するための構成をサーバーに対して行う必要があります。
@@ -111,22 +108,33 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 | クラウド  | リージョン | プライマリ エンドポイントの URL | ペアのリージョン | 探索 URL |
 |--------|--------|----------------------|---------------|---------------|
-| パブリック |オーストラリア東部 | https://kailani-aue.one.microsoft.com | オーストラリア南東部 | https://kailani-aue.one.microsoft.com |
-| パブリック |オーストラリア南東部 | https://kailani-aus.one.microsoft.com | オーストラリア東部 | https://tm-kailani-aus.one.microsoft.com |
-| パブリック | カナダ中部 | https://kailani-cac.one.microsoft.com | カナダ東部 | https://tm-kailani-cac.one.microsoft.com |
-| パブリック | カナダ東部 | https://kailani-cae.one.microsoft.com | カナダ中部 | https://tm-kailani.cae.one.microsoft.com |
-| パブリック | 米国中部 | https://kailani-cus.one.microsoft.com | 米国東部 2 | https://tm-kailani-cus.one.microsoft.com |
-| パブリック | 東アジア | https://kailani11.one.microsoft.com | 東南アジア | https://tm-kailani11.one.microsoft.com |
-| パブリック | 米国東部 | https://kailani1.one.microsoft.com | 米国西部 | https://tm-kailani1.one.microsoft.com |
-| パブリック | 米国東部 2 | https://kailani-ess.one.microsoft.com | 米国中部 | https://tm-kailani-ess.one.microsoft.com |
-| パブリック | 北ヨーロッパ | https://kailani7.one.microsoft.com | 西ヨーロッパ | https://tm-kailani7.one.microsoft.com |
-| パブリック | 東南アジア | https://kailani10.one.microsoft.com | 東アジア | https://tm-kailani10.one.microsoft.com |
-| パブリック | 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
-| パブリック | 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
-| パブリック | 西ヨーロッパ | https://kailani6.one.microsoft.com | 北ヨーロッパ | https://tm-kailani6.one.microsoft.com |
-| パブリック | 米国西部 | https://kailani.one.microsoft.com | 米国東部 | https://tm-kailani.one.microsoft.com |
-| Government | 米国政府アリゾナ | https://usgovarizona01.afs.azure.us | 米国政府テキサス | https://tm-usgovarizona01.afs.azure.us |
-| Government | 米国政府テキサス | https://usgovtexas01.afs.azure.us | 米国政府アリゾナ | https://tm-usgovtexas01.afs.azure.us |
+| パブリック |オーストラリア東部 | https:\//kailani-aue.one.microsoft.com | オーストラリア南東部 | https:\//tm-kailani-aue.one.microsoft.com |
+| パブリック |オーストラリア南東部 | https:\//kailani-aus.one.microsoft.com | オーストラリア東部 | https:\//tm-kailani-aus.one.microsoft.com |
+| パブリック | ブラジル南部 | https:\//brazilsouth01.afs.azure.net | 米国中南部 | https:\//tm-brazilsouth01.afs.azure.net |
+| パブリック | カナダ中部 | https:\//kailani-cac.one.microsoft.com | カナダ東部 | https:\//tm-kailani-cac.one.microsoft.com |
+| パブリック | カナダ東部 | https:\//kailani-cae.one.microsoft.com | カナダ中部 | https:\//tm-kailani.cae.one.microsoft.com |
+| パブリック | インド中部 | https:\//kailani-cin.one.microsoft.com | インド南部 | https:\//tm-kailani-cin.one.microsoft.com |
+| パブリック | 米国中部 | https:\//kailani-cus.one.microsoft.com | 米国東部 2 | https:\//tm-kailani-cus.one.microsoft.com |
+| パブリック | 東アジア | https:\//kailani11.one.microsoft.com | 東南アジア | https:\//tm-kailani11.one.microsoft.com |
+| パブリック | East US | https:\//kailani1.one.microsoft.com | 米国西部 | https:\//tm-kailani1.one.microsoft.com |
+| パブリック | 米国東部 2 | https:\//kailani-ess.one.microsoft.com | 米国中部 | https:\//tm-kailani-ess.one.microsoft.com |
+| パブリック | 東日本 | https:\//japaneast01.afs.azure.net | 西日本 | https:\//tm-japaneast01.afs.azure.net |
+| パブリック | 西日本 | https:\//japanwest01.afs.azure.net | 東日本 | https:\//tm-japanwest01.afs.azure.net |
+| パブリック | 韓国中部 | https:\//koreacentral01.afs.azure.net/ | 韓国南部 | https:\//tm-koreacentral01.afs.azure.net/ |
+| パブリック | 韓国南部 | https:\//koreasouth01.afs.azure.net/ | 韓国中部 | https:\//tm-koreasouth01.afs.azure.net/ |
+| パブリック | 米国中北部 | https:\//northcentralus01.afs.azure.net | 米国中南部 | https:\//tm-northcentralus01.afs.azure.net |
+| パブリック | 北ヨーロッパ | https:\//kailani7.one.microsoft.com | 西ヨーロッパ | https:\//tm-kailani7.one.microsoft.com |
+| パブリック | 米国中南部 | https:\//southcentralus01.afs.azure.net | 米国中北部 | https:\//tm-southcentralus01.afs.azure.net |
+| パブリック | インド南部 | https:\//kailani-sin.one.microsoft.com | インド中部 | https:\//tm-kailani-sin.one.microsoft.com |
+| パブリック | 東南アジア | https:\//kailani10.one.microsoft.com | 東アジア | https:\//tm-kailani10.one.microsoft.com |
+| パブリック | 英国南部 | https:\//kailani-uks.one.microsoft.com | 英国西部 | https:\//tm-kailani-uks.one.microsoft.com |
+| パブリック | 英国西部 | https:\//kailani-ukw.one.microsoft.com | 英国南部 | https:\//tm-kailani-ukw.one.microsoft.com |
+| パブリック | 米国中西部 | https:\//westcentralus01.afs.azure.net | 米国西部 2 | https:\//tm-westcentralus01.afs.azure.net |
+| パブリック | 西ヨーロッパ | https:\//kailani6.one.microsoft.com | 北ヨーロッパ | https:\//tm-kailani6.one.microsoft.com |
+| パブリック | 米国西部 | https:\//kailani.one.microsoft.com | East US | https:\//tm-kailani.one.microsoft.com |
+| パブリック | 米国西部 2 | https:\//westus201.afs.azure.net | 米国中西部 | https:\//tm-westus201.afs.azure.net |
+| Government | 米国政府アリゾナ | https:\//usgovarizona01.afs.azure.us | 米国政府テキサス | https:\//tm-usgovarizona01.afs.azure.us |
+| Government | 米国政府テキサス | https:\//usgovtexas01.afs.azure.us | 米国政府アリゾナ | https:\//tm-usgovtexas01.afs.azure.us |
 
 - 使用しているストレージ アカウントがローカル冗長 (LRS) またはゾーン冗長 (ZRS) の場合、有効にする必要があるのは、"プライマリ エンドポイント URL" に記載された URL だけです。
 
@@ -134,9 +142,9 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 **例:** ストレージ同期サービスを `"West US"` にデプロイしてそこにサーバーを登録するとします。 この場合、サーバーには、次の URL との通信を許可することになります。
 
-> - [https://kailani.one.microsoft.com](https://kailani.one.microsoft.com ) (プライマリ エンドポイント: 米国西部)
-> - [https://kailani1.one.microsoft.com](https://kailani1.one.microsoft.com ) (ペア フェールオーバー リージョン: 米国東部)
-> - [https://tm-kailani.one.microsoft.com](https://tm-kailani.one.microsoft.com ) (プライマリ リージョンの検出 URL)
+> - https:\//kailani.one.microsoft.com (プライマリ エンドポイント: 米国西部)
+> - https:\//kailani1.one.microsoft.com (ペアのフェールオーバー リージョン: 米国東部)
+> - https:\//tm-kailani.one.microsoft.com (プライマリ リージョンの探索 URL)
 
 ## <a name="summary-and-risk-limitation"></a>概要とリスクの制限
 このドキュメントで前述したリストは、現時点で Azure File Sync が通信する URL を記載したものです。 ファイアウォールで、これらのドメインに向かうトラフィックを許可する必要があります。 Microsoft は、このリストを最新の内容に保つよう努めます。

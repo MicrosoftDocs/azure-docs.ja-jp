@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5915aa522fe06b432ca036553c7dd7da63836c9e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3ae1b1ba289957187d31f48e4adb1f1d80c7c068
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995117"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606004"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c-in-computer-vision"></a>クイック スタート:Computer Vision の REST API と C# を使用したサムネイルの生成
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用したサムネイルを生成する
 
 このクイック スタートでは、Computer Vision の REST API を使って、画像からサムネイルを生成します。 [サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドを使うと、画像のサムネイルを生成することができます。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 
@@ -35,9 +35,9 @@ Visual Studio でサンプルを作成するには、次の手順を実行しま
 
 1. Visual C# コンソール アプリ テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションを作成します。
 1. Newtonsoft.Json NuGet パッケージをインストールします。
-    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、**[検索]** ボックスに「Newtonsoft.Json」と入力します。
-    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
+    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+    1. **[参照]** タブをクリックし、 **[検索]** ボックスに「Newtonsoft.Json」と入力します。
+    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
 1. `Program.cs` のコードを次のコードに置き換えて、必要に応じてコードに次の変更を加えます。
     1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
     1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
@@ -212,10 +212,6 @@ StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.Stre
   Expires: -1
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になった場合は、Visual Studio ソリューションを削除します。 これを行うには、エクスプ ローラーを開き、Visual Studio ソリューションを作成したフォルダーに移動して、そのフォルダーを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

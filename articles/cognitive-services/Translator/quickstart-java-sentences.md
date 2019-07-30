@@ -3,25 +3,28 @@ title: クイック スタート:文の長さを取得する (Java) - Translator
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java と Translator Text API を使用して、文の長さを調べる方法について説明します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 748f8cfa1e105b5c6d7b9b3fc073eac9f38a63dd
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: e47bbd4f50a1521eebc15f3f812f31699a7ddf13
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514849"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704470"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>クイック スタート:Translator Text API と Java を使用して文の長さを調べる
 
 このクイック スタートでは、Java と Translator Text API を使用して、文の長さを調べる方法について説明します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,6 +111,7 @@ public class LengthSentence {
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
 ```
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="create-a-client-and-build-a-request"></a>クライアントを作成して要求をビルドする
 
@@ -201,10 +205,10 @@ gradle run
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートをはじめとする各種ドキュメントで翻訳と表記変換を含んだサンプル コードを詳しく見てみましょう。GitHub にある Translator Text の各種サンプル プロジェクトもご覧ください。
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
-> [GitHub で Java のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=java)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

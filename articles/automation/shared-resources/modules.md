@@ -3,22 +3,21 @@ title: Azure Automation でモジュールを管理する
 description: この記事では、Azure Automation でモジュールを管理する方法について説明します
 services: automation
 ms.service: automation
-ms.subservice: shared-resources
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/13/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fa7f5d3fb38eb1dbca51dec9b73dca3c998436aa
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: cd085164fc9804e0c1c822df1c72d3ef94093a07
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57905359"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672797"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
-Azure Automation では、PowerShell ベースの Runbook で使用するために Automation アカウントに PowerShell モジュールをインポートする機能が用意されています。 これらのモジュールは、PowerShell ギャラリーから作成したカスタム モジュールの場合も、Azure 用の AzureRM および Az モジュールの場合もあります。
+Azure Automation では、PowerShell ベースの Runbook で使用するために Automation アカウントに PowerShell モジュールをインポートする機能が用意されています。 これらのモジュールは、PowerShell ギャラリーから作成したカスタム モジュールの場合も、Azure 用の AzureRM および Az モジュールの場合もあります。 Automation アカウントを作成するときに一部のモジュールが既定でインポートされます。
 
 ## <a name="import-modules"></a>モジュールをインポートする
 
@@ -37,25 +36,41 @@ New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -Reso
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure portal で、Automation アカウントに移動し、**[共有リソース]** の下で **[モジュール]** を選択します。 **[+ モジュールの追加]** をクリックします。 モジュールを含んだ **.zip** ファイルを選択して、**[OK]** をクリックしてプロセスのインポートを開始します。
+Azure portal で、Automation アカウントに移動し、 **[共有リソース]** の下で **[モジュール]** を選択します。 **[+ モジュールの追加]** をクリックします。 モジュールを含んだ **.zip** ファイルを選択して、 **[OK]** をクリックしてプロセスのインポートを開始します。
 
 ### <a name="powershell-gallery"></a>PowerShell ギャラリー
 
 PowerShell ギャラリーからのモジュールは、直接 [PowerShell ギャラリー](https://www.powershellgallery.com)からか、Automation アカウントからインポートできます。
 
-PowerShell ギャラリーからモジュールをインポートするには、 https://www.powershellgallery.com に移動し、インポートするモジュールを検索します。 **[インストール オプション]** の下にある **[Azure Automation]** タブで **[Deploy to Azure Automation]**(Azure Automation にデプロイする) をクリックします。 このアクションにより Azure portal が開きます。 **[インポート]** ページで、Automation アカウントを選択し、**[OK]** をクリックします。
+PowerShell ギャラリーからモジュールをインポートするには、 https://www.powershellgallery.com に移動し、インポートするモジュールを検索します。 **[インストール オプション]** の下にある **[Azure Automation]** タブで **[Deploy to Azure Automation]** (Azure Automation にデプロイする) をクリックします。 このアクションにより Azure portal が開きます。 **[インポート]** ページで、Automation アカウントを選択し、 **[OK]** をクリックします。
 
 ![PowerShell ギャラリーのインポート モジュール](../media/modules/powershell-gallery.png)
 
-Automation アカウントから直接、PowerShell ギャラリーからモジュールをインポートすることもできます。 Automation アカウントで、**[共有リソース]** の下で **[モジュール]** を選択します。 [モジュール] ページで、**[ギャラリーの参照]** をクリックします。 これにより、**[ギャラリーの参照]** ページが開きます。 このページを使用して、PowerShell ギャラリーでモジュールを検索できます。 インポートするモジュールを選択し、**[インポート]** をクリックします。 **[インポート]** ページで **[OK]** をクリックしてインポート プロセスを開始します。
+Automation アカウントから直接、PowerShell ギャラリーからモジュールをインポートすることもできます。 Automation アカウントで、 **[共有リソース]** の下で **[モジュール]** を選択します。 [モジュール] ページで、 **[ギャラリーの参照]** をクリックします。 これにより、 **[ギャラリーの参照]** ページが開きます。 このページを使用して、PowerShell ギャラリーでモジュールを検索できます。 インポートするモジュールを選択し、 **[インポート]** をクリックします。 **[インポート]** ページで **[OK]** をクリックしてインポート プロセスを開始します。
 
 ![Azure portal からの PowerShell ギャラリーのインポート](../media/modules/gallery-azure-portal.png)
 
+## <a name="delete-modules"></a>モジュールを削除する
+
+モジュールに問題がある、またはモジュールの以前のバージョンにロールバックする必要がある場合は、そのモジュールを Automation アカウントから削除できます。 Automation アカウントを作成するときにインポートされた[既定のモジュール](#default-modules)の元のバージョンを削除することはできません。 削除したいモジュールが、インストールされている[既定のモジュール](#default-modules)の 1 つの新しいバージョンの場合、そのモジュールは Automation アカウント作成時にインストールされたバージョンにロールバックされます。 それ以外の場合、Automation アカウントから削除したモジュールはすべて削除されます。
+
+### <a name="azure-portal"></a>Azure ポータル
+
+Azure portal で、Automation アカウントに移動し、 **[共有リソース]** の下で **[モジュール]** を選択します。 削除するモジュールを選択します。 **[モジュール]** ページで、 **[削除]** をクリックします。 このモジュールが[既定のモジュール](#default-modules)の 1 つの場合、そのモジュールは Automation アカウントが作成されたときに存在したバージョンにロールバックされます。
+
+### <a name="powershell"></a>PowerShell
+
+PowerShell を使用してモジュールを削除するには、次のコマンドを実行します。
+
+```azurepowershell-interactive
+Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
+```
+
 ## <a name="internal-cmdlets"></a>内部コマンドレット
 
-以下に、すべての Automation アカウントにインポートされる内部 `Orchestrator.AssetManagement.Cmdlets` モジュール内のコマンドレットの一覧を示します。 これらのコマンドレットは、Runbook および DSC 構成でアクセスでき、Automation アカウント内のアセットを操作できるようにします。 さらに、内部コマンドレットは、暗号化された **[変数]** 値、**[資格情報]**、および暗号化された **[接続]** フィールドからシークレットを取得できるようにします。 Azure PowerShell コマンドレットはこれらのシークレットを取得できません。 これらのコマンドレットでは、使用するときに、暗黙的に Azure に接続する必要はありません。 これは、Azure に対する認証に使用する必要がある実行アカウントなど、接続しているシナリオに役立ちます。
+以下に、すべての Automation アカウントにインポートされる内部 `Orchestrator.AssetManagement.Cmdlets` モジュール内のコマンドレットの一覧を示します。 これらのコマンドレットは、Runbook および DSC 構成でアクセスでき、Automation アカウント内のアセットを操作できるようにします。 さらに、内部コマンドレットは、暗号化された **[変数]** 値、 **[資格情報]** 、および暗号化された **[接続]** フィールドからシークレットを取得できるようにします。 Azure PowerShell コマンドレットはこれらのシークレットを取得できません。 これらのコマンドレットでは、使用するときに、暗黙的に Azure に接続する必要はありません。 これは、Azure に対する認証に使用する必要がある実行アカウントなど、接続しているシナリオに役立ちます。
 
-|Name|説明|
+|EnableAdfsAuthentication|説明|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -209,6 +224,37 @@ Azure Automation で使用するための PowerShell モジュールを作成す
 * xcopy できるパッケージにモジュールを完全に含める。 Azure Automation のモジュールは、Runbook を実行する必要があるときに Automation の Sandbox に配布されます。 これらのモジュールは、実行元のホストから独立して動作する必要があります。 モジュール パッケージを zip 形式で圧縮して移動できるようにし、別のホストの PowerShell 環境にインポートしたときに通常通りに機能する状態にする必要があります。 これを実現するために、モジュールがモジュール フォルダーの外部のファイルに依存しないようにする必要があります。 このフォルダーは、モジュールを Azure Automation にインポートするときに、zip 形式で圧縮されるフォルダーです。 また、モジュールが、ホストの固有のレジストリ設定 (製品のインストール時に設定された設定など) に依存しないようにする必要があります。 モジュール内のすべてのファイルは、パスを 140 文字以下にする必要があります。 パスが 140 文字を超えた場合、Runbook のインポートで問題が発生します。 このベスト プラクティスに従わないと、モジュールを Azure Automation で使用できません。  
 
 * モジュールで [Azure Powershell Az モジュール](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)を参照する場合、`AzureRM` を参照していないことを確認してください。 `Az` モジュールは、`AzureRM` モジュールと併用できません。 `Az` は、Runbook でサポートされていますが、既定ではインポートされません。 `Az` モジュールおよび考慮事項について詳しくは、[Azure Automation での Az モジュールのサポート](../az-modules.md)に関するページを参照してください。
+
+## <a name="default-modules"></a>既定のモジュール
+
+次の表は、Automation アカウントが作成されるときに既定でインポートされるモジュールの一覧です。 以下の一覧にあるモジュールについては、新しいバージョンをインポートできます。ただし、元のバージョンは、新しいバージョンを削除した場合であっても、Automation アカウントから削除することはできません。
+
+|モジュール名|Version|
+|---|---|
+| AuditPolicyDsc | 1.1.0.0 |
+| Azure | 1.0.3 |
+| Azure.Storage | 1.0.3 |
+| AzureRM.Automation | 1.0.3 |
+| AzureRM.Compute | 1.2.1 |
+| AzureRM.Profile | 1.0.3 |
+| AzureRM.Resources | 1.0.3 |
+| AzureRM.Sql | 1.0.3 |
+| AzureRM.Storage | 1.0.3 |
+| ComputerManagementDsc | 5.0.0.0 |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
+| Microsoft.PowerShell.Utility |  |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
+| PSDscResources | 2.9.0.0 |
+| SecurityPolicyDsc | 2.1.0.0 |
+| StateConfigCompositeResources | 1 |
+| xDSCDomainjoin | 1.1 |
+| xPowerShellExecutionPolicy | 1.1.0.0 |
+| xRemoteDesktopAdmin | 1.1.0.0 |
 
 ## <a name="next-steps"></a>次の手順
 

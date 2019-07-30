@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba9deb00b885dad1d69eb38d4977aafd3d80ab91
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5638710c4c01d361d108cfef69869fad1a7dad1a
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201433"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304370"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 ## <a name="overview"></a>概要
@@ -34,7 +34,7 @@ ms.locfileid: "56201433"
 従来の共有のモデルには、以下に示すようないくつかの欠点があります。
 
 * 新しいアプリケーションへのアクセスを有効にするには、アクセスを必要としているすべてのユーザーに資格情報を配布する必要があります。
-* 各共有アプリケーションでそれぞれ固有の共有資格情報セットを必要とすることがあります。 このような場合、ユーザーは複数の資格情報セットを覚えておく必要があります  (たとえば、パスワードを書き留めるなど)。
+* 各共有アプリケーションでそれぞれ固有の共有資格情報セットを必要とすることがあります。 このような場合、ユーザーは複数の資格情報セットを覚えておく必要があります (たとえば、パスワードを書き留めるなど)。
 * どのユーザーがアプリケーションにアクセスできるのかはっきりしません。
 * アプリケーションに *アクセスした* ユーザーをはっきりさせることができません。
 * アプリケーションへのアクセス権を削除する必要がある場合は、資格情報を更新して、アプリケーションへのアクセスを必要としているすべてのユーザーに再配布する必要があります。
@@ -67,7 +67,6 @@ Azure AD を使ってアカウントを共有するには、次の操作が必�
 * アプリケーションを[アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/)または[カスタム アプリケーション](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に追加する
 * パスワード シングル サインオン (SSO) に対応するようにアプリケーションを構成する
 * [グループ ベースの割り当て](groups-saasapps.md)を使い、共有資格情報を入力するオプションを選ぶ
-* オプション: Facebook、Twitter、LinkedIn などの一部のアプリケーションでは、 [Azure AD 自動パスワード ロール オーバー](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
 
 Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](../authentication/concept-mfa-whichversion.md)」を参照) すると共に、[Azure AD のセルフ サービス](groups-self-service-management.md) グループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 

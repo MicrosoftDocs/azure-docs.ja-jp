@@ -19,6 +19,8 @@
     - name: アプリケーションを開発する
       expanded: true
       items:
+        - name: Draft の使用
+          href: kubernetes-draft.md
         - name: Java の使用 (VS Code と CLI)
           href: ../dev-spaces/quickstart-java.md
           maintainContext: true
@@ -124,6 +126,8 @@
           href: virtual-kubelet.md
         - name: クラスター オートスケーラーの使用 (プレビュー)
           href: cluster-autoscaler.md
+        - name: Availability Zones (プレビュー) の使用
+          href: availability-zones.md
         - name: 複数のノード プールの使用 (プレビュー)
           href: use-multiple-node-pools.md
         - name: Terraform を使用した AKS のデプロイ
@@ -153,6 +157,8 @@
               href: configure-azure-cni.md
         - name: 内部ロード バランサーを作成します。
           href: internal-lb.md
+        - name: Standard Load Balancer (プレビュー) の使用
+          href: load-balancer-standard.md
         - name: 静的 IP アドレスの使用
           href: static-ip.md
         - name: イングレス
@@ -187,6 +193,8 @@
           href: use-pod-security-policies.md
         - name: API サーバーの許可された IP 範囲の定義 (プレビュー)
           href: api-server-authorized-ip-ranges.md
+        - name: Azure Policy を使用したデプロイの制御 (プレビュー)
+          href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
         - name: クラスターのサービス プリンシパルの資格情報の更新
           href: update-credentials.md
         - name: クラスターのエグレス トラフィックの制限および制御 (プレビュー)
@@ -280,8 +288,6 @@
                   maintainContext: true
         - name: Helm を使用したアプリケーションの実行
           href: kubernetes-helm.md
-        - name: Draft を使用したアプリケーションの開発
-          href: kubernetes-draft.md
         - name: Open Service Broker for Azure の使用
           href: integrate-azure.md
         - name: MongoDB と OSBA に対する Cosmos DB API の使用
@@ -311,6 +317,8 @@
         - name: Azure DevOps プロジェクト
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
+        - name: デプロイ センター ランチャー
+          href: deployment-center-launcher.md
     - name: トラブルシューティング
       items:
         - name: 一般的な問題

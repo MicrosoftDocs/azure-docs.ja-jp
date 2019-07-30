@@ -1,19 +1,18 @@
 ---
 title: Azure Backup を使用して Azure に SAP HANA データベースをバックアップする | Microsoft Docs
 description: このチュートリアルでは、Azure Backup サービスを使用して、Azure に SAP HANA データベースをバックアップする方法について説明します。
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ac686484ddafc47410cddebea3f789332f9286a
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65238125"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465460"
 ---
 # <a name="back-up-an-sap-hana-database"></a>SAP HANA データベースをバックアップする
 
@@ -22,15 +21,13 @@ ms.locfileid: "65238125"
 > [!NOTE]
 > 現在、この機能はパブリック プレビュー段階にあります。 現在は、運用環境に対応しておらず、保証された SLA はありません。 
 
-
 ## <a name="scenario-support"></a>シナリオのサポート
 
 **サポート** | **詳細**
 --- | ---
-**サポートされている地域** | オーストラリア南東部、オーストラリア東部 <br> ブラジル南部 <br> カナダ中部、カナダ東部 <br> 東南アジア、東アジア <br> 米国東部、米国東部 2、米国中西部、米国西部、米国西部 2、米国中北部、米国中部、米国中南部<br> インド中部、インド南部 <br> 東日本、西日本<br> 韓国中部、韓国南部 <br> 北ヨーロッパ、西ヨーロッパ <br> 英国南部、英国西部
+**サポートされている地域** | オーストラリア南東部、オーストラリア東部 <br> ブラジル南部 <br> カナダ中部、カナダ東部 <br> 東南アジア、東アジア <br> 米国東部、米国東部 2、米国中西部、米国西部、米国西部 2、米国中北部、米国中部、米国中南部<br> インド中部、インド南部 <br> 東日本、西日本<br> 韓国中部、韓国南部 <br> 北ヨーロッパ、西ヨーロッパ <br> 英国南部、英国西部
 **サポートされている VM オペレーティング システム** | SLES 12 SP2 または SP3。
-**サポートされている HANA のバージョン** | HANA 1.x の場合は SSDC、HANA 2.x SPS03 以下の場合は MDC
-
+**サポートされている HANA のバージョン** | HANA 1.x の場合は SDC、HANA 2.x SPS03 以下の場合は MDC
 
 ### <a name="current-limitations"></a>現時点での制限事項
 
@@ -39,12 +36,9 @@ ms.locfileid: "65238125"
 - データベースはスケールアップ モードでのみバックアップできます。
 - データベースのログは、15 分ごとにバックアップできます。 ログ バックアップでは、データベースの完全バックアップが正常に完了した後にのみ、フローが開始されます。
 - 完全および差分バックアップを作成することができます。 増分バックアップは現在サポートされていません。
-- バックアップ ポリシーは、SAP HANA バックアップに対して適用した後、変更することはできません。 別の設定でバックアップする場合は、新しいポリシーを作成するか、別のポリシーを割り当てます。 
-    - 新しいポリシーを作成するには、コンテナーで、 **[ポリシー]**  >  **[バックアップ ポリシー]**  >  **[+ 追加]**  >  **[Azure VM の SAP HANA]** の順にクリックし、ポリシー設定を指定します。
-    - 別のポリシーを割り当てるには、データベースを実行している VM のプロパティで、現在のポリシー名をクリックします。 その後、 **[バックアップ ポリシー]** ページで、バックアップで使用する別のポリシーを選択できます。
-
-
-
+- バックアップ ポリシーは、SAP HANA バックアップに対して適用した後、変更することはできません。 別の設定でバックアップする場合は、新しいポリシーを作成するか、別のポリシーを割り当てます。
+  - 新しいポリシーを作成するには、コンテナーで、 **[ポリシー]**  >  **[バックアップ ポリシー]**  >  **[+ 追加]**  >  **[Azure VM の SAP HANA]** の順にクリックし、ポリシー設定を指定します。
+  - 別のポリシーを割り当てるには、データベースを実行している VM のプロパティで、現在のポリシー名をクリックします。 その後、 **[バックアップ ポリシー]** ページで、バックアップで使用する別のポリシーを選択できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,14 +51,16 @@ ms.locfileid: "65238125"
 
         ![パッケージのインストール オプション](./media/backup-azure-sap-hana-database/hana-package.png)
 
-2.  VM で、次のように zypper を使用して、公式の SLES パッケージ/メディアから ODBC ドライバー パッケージをインストールして有効にします。
+2. VM で、次のように zypper を使用して、公式の SLES パッケージ/メディアから ODBC ドライバー パッケージをインストールして有効にします。
 
-    ``` 
+    ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
-4.  以下の手順の説明に従って、Azure に到達できるように、VM からインターネットへの接続を許可します。
 
+3. [以下](#set-up-network-connectivity)の手順の説明に従って、Azure に到達できるように、VM からインターネットへの接続を許可します。
+
+4. HANA がルート ユーザーとしてインストールされている仮想マシンで事前登録スクリプトを実行します。 このスクリプトはフロー内の[ポータル](#discover-the-databases)で提供され、[適切なアクセス許可](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)を設定する必要があります。
 
 ### <a name="set-up-network-connectivity"></a>ネットワーク接続を設定する
 
@@ -80,7 +76,7 @@ ms.locfileid: "65238125"
 - ポータルで、[この記事に従って](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)、Recovery Services サービス プロバイダーにご利用のサブスクリプション ID を登録します。 
 - PowerShell では、このコマンドレットを実行します。 "登録済み" として完了するはずです。
 
-    ```
+    ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
@@ -89,7 +85,6 @@ ms.locfileid: "65238125"
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>データベースを検出する
-
 
 1. コンテナーの **[作業の開始]** で、 **[バックアップ]** をクリックします。 **[ワークロードはどこで実行されていますか?]** で、 **[Azure VM の SAP HANA]** を選択します。
 2. **[検出の開始]** をクリックします。 これで、コンテナー リージョン内の保護されていない Linux VM の検出が開始されます。
@@ -104,7 +99,7 @@ ms.locfileid: "65238125"
 6. Azure Backup によって、VM 上のすべての SAP HANA データベースが検出されます。 検出中に、Azure Backup によって VM がコンテナーに登録され、VM に拡張機能がインストールされます。 エージェントはデータベースにインストールされません。
 
     ![SAP HANA データベースを検出する](./media/backup-azure-sap-hana-database/hana-discover.png)
-    
+
 ## <a name="configure-backup"></a>バックアップの構成  
 
 ここでバックアップを有効にします。
@@ -116,6 +111,7 @@ ms.locfileid: "65238125"
 5. ポータルの  **[通知]**   領域で、バックアップ構成の進行状況を追跡します。
 
 ### <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成
+
 バックアップ ポリシーでは、バックアップが取得されるタイミングと、それらが保持される期間を定義します。
 
 - ポリシーはコンテナー レベルで作成されます。
@@ -189,6 +185,5 @@ Azure Backup でバックアップされているデータベースの (HANA Stu
 
 ## <a name="next-steps"></a>次の手順
 
+Azure VM で SAP HANA バックアップを使用しているときに、一般的なエラーをトラブルシューティングする方法について[学習します](backup-azure-sap-hana-database-troubleshoot.md)。
 Azure VM のバックアップについて[学習します](backup-azure-arm-vms-prepare.md)。
-
-

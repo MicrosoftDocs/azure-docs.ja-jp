@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: cafceb0c7ee6b165ee03727e1dff76db00d2863b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f38f1c313be17457c28c5b30fa743f7a0eae2cc0
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077335"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67621992"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>イベント ハブから Azure Data Explorer にデータを取り込む
 
@@ -187,7 +187,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     ![メッセージの結果セット](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > Azure Data Explorer には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 このポリシーは 5 分に構成されているため、待ち時間が生じることがあります。
+    > Azure Data Explorer には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 既定では、このポリシーは 5 分に構成されているため、待ち時間が生じることがあります。 集計オプションについては、[バッチ処理のポリシー](/azure/kusto/concepts/batchingpolicy)に関するページを参照してください。 集計なしでの取り込みについては、[ストリーミング ポリシー](/azure/kusto/concepts/streamingingestionpolicy)を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

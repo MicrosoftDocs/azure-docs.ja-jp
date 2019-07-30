@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: f78555b37cc82c1e97a6f51ec504bc47937ee8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: d09ed0585250d078f728aa4e7272cca147a40c38
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493414"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612376"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する
 
@@ -191,7 +191,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 ## <a name="define-a-query-to-analyze-input-data"></a>入力データを分析するようクエリを定義する
 
-次の手順では、リアルタイムでデータを分析する変換を作成します。 変換クエリの定義には、[Stream Analytics クエリ言語](https://msdn.microsoft.com/library/dn834998.aspx)を使用します。 このチュートリアルで使用されるクエリでは、電話データから不正な呼び出しを検出します。
+次の手順では、リアルタイムでデータを分析する変換を作成します。 変換クエリの定義には、[Stream Analytics クエリ言語](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を使用します。 このチュートリアルで使用されるクエリでは、電話データから不正な呼び出しを検出します。
 
 この例では、同じユーザーによって、5 秒以内に別々の場所から不正な呼び出しが行われます。 たとえば、合法的に同じユーザーが米国とオーストラリアで同時に呼び出しを行うことはできません。 Stream Analytics ジョブの変換クエリを定義するには:
 
@@ -212,7 +212,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   不正な呼び出しを確認するために、`CallRecTime` の値に基づいてストリーミング データを自己結合できます。 その後、`CallingIMSI` の値 (発信番号) は同じなのに `SwitchNum` の値 (発信国/地域) が異なる通話レコードを探すことができます。 ストリーミング データで JOIN 操作を使用する際は、一致する行と見なす最大時間差を結合で制限する必要があります。 ストリーミング データは無限であるため、リレーションシップの時間限界は、結合の **ON** 句内で [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) 関数を使用して指定されます。
+   不正な呼び出しを確認するために、`CallRecTime` の値に基づいてストリーミング データを自己結合できます。 その後、`CallingIMSI` の値 (発信番号) は同じなのに `SwitchNum` の値 (発信国/地域) が異なる通話レコードを探すことができます。 ストリーミング データで JOIN 操作を使用する際は、一致する行と見なす最大時間差を結合で制限する必要があります。 ストリーミング データは無限であるため、リレーションシップの時間限界は、結合の **ON** 句内で [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) 関数を使用して指定されます。
 
    このクエリは、**DATEDIFF** 関数を除けば、通常の SQL 結合と似ています。 このクエリで使用されている **DATEDIFF** 関数は、Stream Analytics に固有であり、`ON...BETWEEN` 句内で使用する必要があります。
 

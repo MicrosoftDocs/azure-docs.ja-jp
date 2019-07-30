@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 9c1426391edb42ecc3e74ee84649bb69196c45dd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8a34137c6d1d0d238d27c61d11012bf589b6ea0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686335"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657040"
 ---
 # <a name="migrate-media-resources-to-global-azure"></a>メディア リソースをグローバル Azure に移行する
 
@@ -26,7 +26,7 @@ Azure Media Services では、独自のストレージ アカウントとすべ�
 
 詳細:
 
-- [Media Services のチュートリアル](https://docs.microsoft.com/azure/media-services/#step-by-step-tutorials)を完了することによって知識を更新します。
+- [Media Services のチュートリアル](https://docs.microsoft.com/azure/media-services/previous/)を完了することによって知識を更新します。
 - [Media Services の概要](../media-services/previous/media-services-overview.md)を確認します。
 - [Media Services アカウントを作成する](../media-services/previous/media-services-portal-create-account.md)方法を確認します。
 

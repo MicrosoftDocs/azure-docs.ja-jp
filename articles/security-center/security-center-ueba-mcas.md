@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af7896ec4afaeefda7261542bf593a89a7bb9ae8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332399"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551801"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>Azure リソースおよびユーザーに対する UEBA 
 
@@ -55,8 +55,8 @@ Security Center では、次のような Cloud App Security による異常検�
 
 これらのアラートは既定で有効になっていますが、無効にすることもできます。
 
-1. [Security Center] ブレードで **[セキュリティ ポリシー]** を選択します。 変更するサブスクリプションに対して **[設定の編集]** をクリックします。
-2.  **[脅威検出]** をクリックします。
+1. [Security Center] ブレードで、 **[Pricing & settings]\(価格と設定\)** を選択し、適切なサブスクリプションを選択します。
+2. **[脅威検出]** をクリックします。
 3. **[Enable integrations]\(統合の有効化\)** で、 **[Allow Microsoft Cloud App Security]\(Microsoft Cloud App Security が自分のデータにアクセスすることを許可する\)** チェック ボックスをオフにし、 **[保存]** をクリックします。
 
    ![脅威検出アラート](./media/security-center-ueba-mcas/security-center-mcas-optout.png)

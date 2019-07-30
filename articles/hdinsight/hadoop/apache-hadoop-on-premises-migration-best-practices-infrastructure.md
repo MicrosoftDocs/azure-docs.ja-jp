@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1bd06507bd8a20cf504c1ff4cd9fe7e3b9196a3c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0707f08d7c1447ff9aaae919cabfe1a668b25e3d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687778"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404375"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -25,7 +25,7 @@ HDInsight クラスターの容量計画で行うべき重要な選択内容は�
 
 - **リージョンを選択する**: Azure リージョンによって、クラスターを物理的にプロビジョニングする場所が決まります。 読み取りと書き込みの待機時間を最小限に抑えるには、クラスターをデータと同じリージョンに配置する必要があります。
 - **ストレージの場所とサイズを選択する**: 既定のストレージはクラスターと同じリージョンにある必要があります。 48 ノードのクラスターの場合は、4 つから 8 つのストレージ アカウントを持つことをお勧めします。 既に十分な数のストレージが存在する場合もありますが、各ストレージ アカウントはコンピューティング ノードに追加のネットワーク帯域幅を提供します。 複数のストレージ アカウントがある場合は、各ストレージ アカウントにプレフィックスなしのランダムな名前を使用します。 ランダムな名前付けの目的は、すべてのアカウント間でストレージのボトルネック (調整) や共通モード エラーが発生する可能性を低減することです。 パフォーマンスを向上させるために、ストレージ アカウントごとにコンテナーを 1 つだけ使用します。
-- **VM のサイズと種類を選択する (現在は G シリーズをサポート)**:各クラスターの種類には一連のノード タイプがあり、各ノード タイプには VM のサイズと種類の固有のオプションがあります。 VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワーク待ち時間によって決まります。 シミュレートされたワークロードを使用して、ノードの種類ごとに最適な VM サイズと種類を決定することができます。
+- **VM のサイズと種類を選択する (現在は G シリーズをサポート)** :各クラスターの種類には一連のノード タイプがあり、各ノード タイプには VM のサイズと種類の固有のオプションがあります。 VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワーク待ち時間によって決まります。 シミュレートされたワークロードを使用して、ノードの種類ごとに最適な VM サイズと種類を決定することができます。
 - **ワーカー ノードの数を選択する**: シミュレートされたワークロードを使用して、ワーカー ノードの最初の数を決定できます。 ピーク時の負荷要求を満たすようにワーカー ノードを追加することによって、クラスターを後でスケールアップできます。 追加のワーカー ノードが不要な場合、クラスターは後で元のスケールに戻すことができます。
 
 詳細については、「[HDInsight クラスターの容量計画](../hdinsight-capacity-planning.md)」の記事を参照してください。
@@ -36,7 +36,7 @@ HDInsight クラスターの種類ごとに推奨される仮想マシンの種�
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>HDInsight での Hadoop コンポーネントの可用性を確認する
 
-HDInsight の各バージョンは、あるバージョンの Hortonworks Data Platform (HDP) のクラウド ディストリビューションで、一連の Hadoop エコシステムのコンポーネントで構成されています。 HDInsight のすべてのコンポーネントとその現在のバージョンの詳細については、[HDInsight のコンポーネントのバージョン管理](../hdinsight-component-versioning.md)を参照してください。
+HDInsight の各バージョンは、一連の Hadoop エコシステム コンポーネントのクラウド ディストリビューションです。 HDInsight のすべてのコンポーネントとその現在のバージョンの詳細については、[HDInsight のコンポーネントのバージョン管理](../hdinsight-component-versioning.md)を参照してください。
 
 また、Apache Ambari UI または Ambari REST API を使用して、HDInsight での Hadoop コンポーネントとバージョンを確認することもできます。
 
@@ -160,7 +160,7 @@ HDInsight で Azure Virtual Network を使用すると、次のシナリオが�
 - HDInsight を Azure Virtual Network 内のデータ ストアに接続する。
 - インターネット公開されていない Hadoop サービスに直接アクセスする。 たとえば、Kafka Api や HBase Java API にアクセスできます。
 
-HDInsight は、新規または既存の Azure Virtual Network に追加できます。 HDInsight を既存の仮想ネットワークに追加する場合は、既存のネットワーク セキュリティ グループとユーザー定義のルートを更新して、Azure データ センター内の[いくつかの IP アドレス](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)に無制限にアクセスできるようにする必要があります。 また、HDInsight サービスによって使用中の[ポート](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports)へのトラフィックをブロックしないようにしてください。
+HDInsight は、新規または既存の Azure Virtual Network に追加できます。 HDInsight を既存の仮想ネットワークに追加する場合は、既存のネットワーク セキュリティ グループとユーザー定義のルートを更新して、Azure データ センター内の[いくつかの IP アドレス](../hdinsight-management-ip-addresses.md)に無制限にアクセスできるようにする必要があります。 また、HDInsight サービスによって使用中の[ポート](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)へのトラフィックをブロックしないようにしてください。
 
 > [!Note]  
 > HDInsight は強制トンネリングを現在サポートしていません。 強制トンネリングとは、ログ記録と検査を目的として、送信インターネット トラフィックをデバイスに強制的に向かわせるサブネット設定です。 HDInsight をサブネットにインストールする前に強制トンネリングを削除するか、HDInsight 用の新しいサブネットを作成してください。 また、HDInsight は発信ネットワーク接続を制限できません。
@@ -168,7 +168,7 @@ HDInsight は、新規または既存の Azure Virtual Network に追加でき�
 詳細については、次の記事を参照してください。
 
 - [Azure 仮想ネットワークの概要](../../virtual-network/virtual-networks-overview.md)
-- [Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight-extend-hadoop-virtual-network.md)
+- [Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Azure 仮想ネットワーク サービス エンドポイントを使用して Azure サービスに安全に接続する
 

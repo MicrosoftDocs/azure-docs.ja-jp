@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99abcc70a81622e4efbe85722d457bd1846b6e15
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024314"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485210"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure Search のシノニム
 
@@ -25,7 +25,7 @@ Azure Search では、シノニムの拡張は、クエリ時に行われます�
 
 ## <a name="create-synonyms"></a>シノニムを作成する
 
-シノニムの作成はポータルでサポートされませんが、REST API または .NET SDK を使用できます。 REST を使い始めるときは、[Postman](search-fiddler.md)と、[シノニム マップの作成](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) API を使用する公式化された要求を使用することをお勧めします。 C# 開発者は、[C# を使用した Azure Search でのシノニムの追加に関するページ](search-synonyms-tutorial-sdk.md)から始めることができます。
+シノニムの作成はポータルでサポートされませんが、REST API または .NET SDK を使用できます。 REST を使い始めるときは、[Postman](search-get-started-postman.md)と、[シノニム マップの作成](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) API を使用する公式化された要求を使用することをお勧めします。 C# 開発者は、[C# を使用した Azure Search でのシノニムの追加に関するページ](search-synonyms-tutorial-sdk.md)から始めることができます。
 
 サービス側の暗号化の保存で[顧客管理のキー](search-security-manage-encryption-keys.md)を使用している場合は、その保護をシノニム マップのコンテンツに適用することもできます。
 

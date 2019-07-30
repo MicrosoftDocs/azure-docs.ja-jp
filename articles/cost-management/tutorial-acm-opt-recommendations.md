@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 81180d6930816a4a7715ce60313347019029fccd
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416100"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164484"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル: 推奨事項に従ってコストを最適化する
 

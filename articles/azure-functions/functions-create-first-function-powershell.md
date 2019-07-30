@@ -5,17 +5,18 @@ services: functions
 keywords: ''
 author: joeyaiello
 manager: jeconnoc
-ms.author: jaiello, glenga
+ms.author: jaiello
+ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.devlang: powershell
-ms.openlocfilehash: 24640c9013f7a5b81cd5b1b6f45de49c5baad0e6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: cb175191cb080cffb6feb52b724c29568fd549a5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473283"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706527"
 ---
 # <a name="create-your-first-powershell-function-in-azure-preview"></a>Azure で初めての PowerShell 関数を作成する (プレビュー)
 
@@ -36,7 +37,7 @@ ms.locfileid: "65473283"
 
 このクイック スタートを完了するには、以下が必要です。
 
-* [PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) をインストールします。
+* [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows) をインストールします。
 
 * [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかに [Visual Studio Code](https://code.visualstudio.com/) をインストールします。 
 
@@ -60,19 +61,19 @@ Visual Studio Code の Azure Functions プロジェクト テンプレートで�
 
     ![関数アプリ プロジェクトを作成する](./media/functions-create-first-function-powershell/create-function-app-project.png)
 
-1. Functions プロジェクト ワークスペースの場所を選択し、**[選択]** を選択します。
+1. Functions プロジェクト ワークスペースの場所を選択し、 **[選択]** を選択します。
 
     > [!NOTE]
     > この記事は、ワークスペースの外部で実行するように設計されています。 ここでは、ワークスペースに含まれるプロジェクト フォルダーは選択しないでください。
 
-1. 関数アプリ プロジェクトの言語として **[Powershell (プレビュー)]** を選択し、**[Azure Functions v2]** を選択します。
+1. 関数アプリ プロジェクトの言語として **[Powershell (プレビュー)]** を選択し、 **[Azure Functions v2]** を選択します。
 
 1. 初めての関数のテンプレートとして **[HTTP Trigger]\(HTTP トリガー\)** を選択し、関数名として `HTTPTrigger` を使用します。次に、承認レベルとして **[Function]\(関数\)** を選択します。
 
     > [!NOTE]
     > **関数**承認レベルでは、Azure で関数エンドポイントを呼び出すときに[関数キー](functions-bindings-http-webhook.md#authorization-keys)の値が必要です。 これにより、あらゆるユーザーによる関数の呼び出しを防ぎます。
 
-1. メッセージが表示されたら、**[Add to workspace]\(ワークスペースに追加\)** を選択します。
+1. メッセージが表示されたら、 **[Add to workspace]\(ワークスペースに追加\)** を選択します。
 
 Visual Studio Code により、新しいワークスペースに PowerShell 関数アプリ プロジェクトが作成されます。 このプロジェクトには、プロジェクト内のすべての関数に適用される [host.json](functions-host-json.md) および [local.settings.json](functions-run-local.md#local-settings-file) 構成ファイルが含まれます。 この [PowerShell プロジェクト](functions-reference-powershell.md#folder-structure)は、Azure で実行される関数アプリと同じです。
 

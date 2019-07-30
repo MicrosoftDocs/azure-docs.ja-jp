@@ -3,25 +3,28 @@ title: クイック スタート:2 か国語辞書で単語を検索する、C# 
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、.NET Core と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: a937ac1039d7a7552290257f42dd4bc45c8f0605
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 1f80f9b0f044fe8b32a555b0509e14cd2172dd0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514964"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704590"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>クイック スタート:C# を使用して 2 か国語辞書で単語を検索する
 
 このクイック スタートでは、.NET Core と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,6 +92,8 @@ System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
 
+
+
 ## <a name="instantiate-the-client-and-make-a-request"></a>クライアントをインスタンス化して要求を行う
 
 次の行によって `HttpClient` と `HttpRequestMessage` がインスタンス化されます。
@@ -144,6 +149,8 @@ static string PrettyPrint(string s)
 }
 ```
 
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
+
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
 最後の手順は、`Main` 関数での `AltTranslation()` の呼び出しです。 `static void Main(string[] args)` を探して、次の行を追加してください。
@@ -195,10 +202,10 @@ dotnet run
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートをはじめとする各種ドキュメントで表記変換と言語認識を含んだサンプル コードを詳しく見てみましょう。GitHub にある Translator Text の各種サンプル プロジェクトもご覧ください。
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
-> [GitHub で C# のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

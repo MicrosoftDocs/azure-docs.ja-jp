@@ -17,6 +17,8 @@
   items:
     - name: Docker コンテナーで稼働している SQL Server に対するクエリ
       href: vnet-injection-sql-server.md
+    - name: Azure Key Vault を使用したストレージへのアクセス
+      href: store-secrets-azure-key-vault.md
     - name: Cosmos DB サービス エンドポイントの使用
       href: service-endpoint-cosmosdb.md
     - name: ETL 操作の実行

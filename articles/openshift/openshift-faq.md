@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 2001b849e9c43d552889475ca237c52b141f3f04
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 32eb2c47ed46aed8e2e3755a83437a21391295c5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306262"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122962"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -49,7 +49,11 @@ Azure Red Hat OpenShift クラスターで使用できる仮想マシンのサ�
 
 既定では、保存時の暗号化があります。 Azure Storage プラットフォームは、永続化する前に自動的にデータを暗号化し、取得前にデータの暗号化を解除します。 詳細については、[保存データの Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) に関するページを参照してください。
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-containers-and-manage-capacity"></a>Prometheus/Grafana を使用して、コンテナーを監視して容量を管理できますか?
+## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Prometheus/Grafana を使用して自分のアプリケーションを監視できますか?
+
+はい、Prometheus を自分の名前空間にデプロイし、自分の名前空間内のアプリケーションを開始できます。
+
+## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Prometheus/Grafana を使用して、クラスターの正常性と容量に関連するメトリックを監視できますか?
 
 いいえ、現時点ではできません。
 
@@ -80,3 +84,7 @@ Docker レジストリは `https://docker-registry.apps.<clustername>.<region>.a
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>Open Service Broker for Azure (OSBA) はサポートされていますか?
 
 はい。 OSBA は Azure Red Hat OpenShift と共に使用できます。 詳細については、「[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template)」を参照してください。
+
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>別のサブスクリプションの仮想ネットワークを詳しく見ようとしていますが、`Failed to get vnet CIDR` エラーを取得します。
+
+仮想ネットワークを含むサブスクリプションでは、必ず `az provider register -n Microsoft.ContainerService --wait` を使用して `Microsoft.ContainerService` プロバイダーを登録してください。 

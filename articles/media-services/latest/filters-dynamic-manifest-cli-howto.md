@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c6007b66e31996db5c6b043219470968a7b05031
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26350479f0f066f45c143e1a35061b3a409de309
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67114688"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786494"
 ---
 # <a name="creating-filters-with-cli"></a>CLI を使用してフィルターを作成する 
 
@@ -88,7 +88,7 @@ ms.locfileid: "67114688"
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-[フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter)も参照してください。
+[フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)も参照してください。
 
 ## <a name="create-asset-filters"></a>資産フィルターの作成
 
@@ -98,7 +98,7 @@ az ams account-filter create -a amsAccount -g resourceGroup -n filterName --trac
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-[フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter)も参照してください。
+[フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)も参照してください。
 
 ## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 

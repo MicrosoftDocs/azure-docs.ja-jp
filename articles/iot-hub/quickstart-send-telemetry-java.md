@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: 12574dd6600004175ab85eead0f837544c6e5ebf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/21/2019
+ms.openlocfilehash: 52e221088a7b12551636ecdc81532448f38eb26c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59004801"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330464"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Java)
 
@@ -87,7 +87,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
     この値は、このクイック スタートの後の方で使います。
 
-3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブからの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_iothubowner 主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
+3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
      **YourIoTHubName: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
@@ -96,7 +96,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
     az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
 
-    az iot hub policy show --name iothubowner --query primaryKey --hub-name YourIoTHubName
+    az iot hub policy show --name service --query primaryKey --hub-name YourIoTHubName
     ```
 
     クイック スタートの後の方で使うので、これら 3 つの値をメモしておきます。
@@ -139,8 +139,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
     | -------- | ----------- |
     | `eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
     | `eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
-    | `iotHubSasKey`                | 変数の値を、前にメモした iothubowner 主キーに置き換えます。 |
-
+    | `iotHubSasKey`                | 変数の値を、前にメモしたサービス主キーに置き換えます。 |
 
 3. ローカル ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションをビルドします。
 

@@ -2,19 +2,19 @@
 title: ドキュメントの形式と名前付け規則 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: これは Custom Translator でのドキュメントの形式と名前付け規則に関するガイドです。 この概念を利用すると、ドキュメント名を管理しやすくなり、名前の競合を避けることができます。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 29b74aeaaae0bcfd5f6ae4a3c38cc00176292899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f7a83be510e608bb3f630a2fb1860502d8e4475
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66386924"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443421"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>ドキュメントの形式と名前付け規則のガイダンス
 
@@ -37,7 +37,7 @@ ms.locfileid: "66386924"
 
 ## <a name="dictionary-formats"></a>辞書の形式
 
-辞書の場合、Custom Translator はトレーニング セットでサポートされているすべてのファイル形式をサポートしています。 Excel の辞書を使用している場合は、スプレッドシートの最初の行に言語コードを指定する必要があります。
+辞書の場合、カスタム翻訳ツールはトレーニング セットでサポートされているすべてのファイル形式をサポートしています。 Excel の辞書を使用している場合は、スプレッドシートの最初の行に言語コードを指定する必要があります。
 
 ## <a name="zip-file-formats"></a>zip ファイル形式
 

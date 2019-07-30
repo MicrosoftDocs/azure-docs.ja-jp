@@ -8,14 +8,13 @@ ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: a13d1f843604025ee0f843c0770b3d11b53dd837
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bbd009d127eecc4df357fc1073ba4055d13a8b2c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762873"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569019"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>チュートリアル:SSMS を使用して Azure SQL Database 内の単一データベースでリレーショナル データベースを設計する
 
@@ -52,11 +51,11 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 空の単一データベースを作成するには、次の手順に従います。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-2. **[新規]** ページで、[Azure Marketplace] セクションで **[データベース]** を、**[おすすめ]** セクションで **[SQL Database]** をクリックします。
+2. **[新規]** ページで、[Azure Marketplace] セクションで **[データベース]** を、 **[おすすめ]** セクションで **[SQL Database]** をクリックします。
 
    ![空のデータベースを作成](./media/sql-database-design-first-database/create-empty-database.png)
 
-3. 前の画像で示されているように、**[SQL Database]** のフォームに次の情報を入力します。
+3. 前の画像で示されているように、 **[SQL Database]** のフォームに次の情報を入力します。
 
     | Setting       | 推奨値 | 説明 |
     | ------------ | ------------------ | ------------------------------------------------- |
@@ -65,25 +64,25 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
     | **リソース グループ** | *yourResourceGroup* | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
     | **[ソースの選択]** | 空のデータベース | 空のデータベースを作成するように指定します。 |
 
-4. **[サーバー]** をクリックして既存のデータベース サーバーを使用するか、新しいデータベース サーバーを作成して構成します。 既存のサーバーを選択するか、**[新しいサーバーの作成]** をクリックして **[新しいサーバー]** フォームに次の情報を入力します。
+4. **[サーバー]** をクリックして既存のデータベース サーバーを使用するか、新しいデータベース サーバーを作成して構成します。 既存のサーバーを選択するか、 **[新しいサーバーの作成]** をクリックして **[新しいサーバー]** フォームに次の情報を入力します。
 
     | Setting       | 推奨値 | 説明 |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が含まれていること、また、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が使用されていることが必要です。 |
-    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
+    | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 
     ![データベース サーバーの作成](./media/sql-database-design-first-database/create-database-server.png)
 
 5. **[選択]** をクリックします。
 6. **[価格レベル]** をクリックして、サービス レベル、DTU または仮想コア数、およびストレージの容量を指定します。 DTU または仮想コア数とストレージに関して、サービス レベルごとに利用できるオプションを確認してください。
 
-    サービス レベル、DTU または仮想コアの数、およびストレージの容量を選択したら、**[適用]** をクリックします。
+    サービス レベル、DTU または仮想コアの数、およびストレージの容量を選択したら、 **[適用]** をクリックします。
 
 7. 空のデータベースの**照合順序**を入力します (このチュートリアルでは既定値を使用)。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
 
-8. これで **SQL Database** フォームの入力が完了したので、**[作成]** をクリックして、単一データベースをプロビジョニングします。 この手順には数分かかることがあります。
+8. これで **SQL Database** フォームの入力が完了したので、 **[作成]** をクリックして、単一データベースをプロビジョニングします。 この手順には数分かかることがあります。
 
 9. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
 
@@ -110,7 +109,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
 5. **[Save]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルの IP ファイアウォール規則が作成されます。
 
-6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
+6. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
 これで IP アドレスが IP ファイアウォールを通過できるようになりました。 SQL Server Management Studio やその他の任意のツールを使用して、単一データベースに接続できます。 必ず、お客様が先ほど作成したサーバー管理者アカウントを使用してください。
 
@@ -160,7 +159,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
 ![テーブルのリレーションシップ](./media/sql-database-design-first-database/tutorial-database-tables.png)
 
-1. **オブジェクト エクスプローラー**で *yourDatabase* を右クリックし、**[新しいクエリ]** を選択します。 データベースに接続された空のクエリ ウィンドウが開きます。
+1. **オブジェクト エクスプローラー**で *yourDatabase* を右クリックし、 **[新しいクエリ]** を選択します。 データベースに接続された空のクエリ ウィンドウが開きます。
 
 2. クエリ ウィンドウで次のクエリを実行し、データベース内の 4 つのテーブルを作成します。
 
@@ -227,10 +226,10 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 4. 次のコマンドを実行して、サンプル データをテーブルに挿入します。*server*、*database*、*user*、*password* の各値は、お客様の環境の値に置き換えてください。
 
    ```cmd
-   bcp Course in SampleCourseData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Person in SamplePersonData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Student in SampleStudentData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Credit in SampleCreditData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Person in SamplePersonData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Student in SampleStudentData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Credit in SampleCreditData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
    ```
 
 これで、先ほど作成したテーブルにサンプル データが読み込まれました。

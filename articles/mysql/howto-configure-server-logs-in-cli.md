@@ -1,33 +1,33 @@
 ---
-title: Azure CLI を使用して Azure Database for MySQL のサーバー ログにアクセスする
-description: この記事では、Azure CLI コマンド ライン ユーティリティを使用して Azure Database for MySQL のサーバー ログにアクセスする方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+title: Azure CLI を使用して Azure Database for MySQL の低速クエリ ログにアクセスする
+description: この記事では、Azure CLI を使用して Azure Database for MySQL の低速クエリ ログにアクセスする方法について説明します。
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 207e9965f6600477e1df93845bc41bd33b5c028c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 06/12/2019
+ms.openlocfilehash: e6d25a4d8b470580626cab4a84f9d912a3f79f75
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547033"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612652"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLI を使用してサーバー ログを構成してアクセスする
-Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MySQL のサーバー ログをダウンロードできます。
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Azure CLI を使用して低速クエリ ログを構成してアクセスする
+Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MySQL の低速クエリ ログをダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。
 - [Azure Database for MySQL サーバー](quickstart-create-mysql-server-database-using-azure-cli.md)
 - ブラウザーでの [Azure CLI](/cli/azure/install-azure-cli) または Azure Cloud Shell
 
-## <a name="configure-logging-for-azure-database-for-mysql"></a>Azure Database for MySQL のログ記録の構成
+## <a name="configure-logging"></a>ログの構成
 以下の手順に従って、MySQL 低速クエリ ログにアクセスするサーバーを構成できます。
-1. **slow\_query\_log** パラメーターをオンに設定してログ記録を有効にします。
+1. **slow\_query\_log** パラメーターをオンに設定して低速クエリ ログ記録を有効にします。
 2. **long\_query\_time** や **log\_slow\_admin\_statements** などのパラメーターを調整します。
 
-これらのパラメーターの値を Azure CLI で設定する方法については、[サーバーのパラメーターを構成する方法](howto-configure-server-parameters-using-cli.md)に関する記事をご覧ください。 
+これらのパラメーターの値を Azure CLI で設定する方法については、[サーバーのパラメーターを構成する方法](howto-configure-server-parameters-using-cli.md)に関する記事をご覧ください。
 
 たとえば、次の CLI コマンドは低速クエリ ログをオンにし、長時間クエリを 10 秒に設定してから、低速管理ステートメントのログ記録をオフにします。 最後に、確認のために構成のオプションが一覧表示されます。
 ```azurecli-interactive
@@ -38,7 +38,7 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのログの一覧表示
-サーバーの利用可能なログ ファイルを一覧表示するには、[az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) コマンドを実行します。
+サーバーの利用可能な低速クエリ ログ ファイルを一覧表示するには、[az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) コマンドを実行します。
 
 リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mysql.database.azure.com** のログ ファイルを一覧表示できます。 その後、ログ ファイルの一覧を **log\_files\_list.txt** という名前のテキスト ファイルに送信します。
 ```azurecli-interactive
@@ -53,4 +53,4 @@ az mysql server-logs download --name 20170414-mydemoserver-mysql.log --resource-
 ```
 
 ## <a name="next-steps"></a>次の手順
-- [Azure Database for MySQL のサーバー ログ](concepts-server-logs.md)について学習します。
+- [Azure Database for MySQL の低速クエリ ログ](concepts-server-logs.md)について学習します。

@@ -9,12 +9,12 @@ ms.author: jonfan
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: f27e82e780917e00625ef6a14ab8317d1f5b8ae8
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f813cb5d8d5c442fc17f126c3a2ff6de7b0bdde1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124801"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61321255"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services から Azure Logic Apps への移行
 
@@ -50,7 +50,7 @@ BizTalk Services は、次の 2 つのサブサービスで構成されていま
 
 BizTalk Services には、数種類のアーティファクトがあります。 
 
-## <a name="connectors"></a>コネクタ
+## <a name="connectors"></a>Connectors
 
 BizTalk Services のコネクタにより、HTTP ベースの要求/応答の対話を可能にする双方向ブリッジを含め、各ブリッジはデータを送受信できます。 Logic Apps でも同じ用語が使用されており、さまざまなテクノロジやサービスに接続することで同じ目的を果たす 180 以上のコネクタがあります。 たとえば、クラウド SaaS および PaaS サービス (OneDrive、Office365、Dynamics CRM など) 用のコネクタに加え、オンプレミス データ ゲートウェイ (BizTalk Services の BizTalk Adapter サービスに代わるもの) を介したオンプレミス システム用のコネクタも用意されています。 BizTalk Services のソースは、FTP、SFTP、および Service Bus Queue または Topic サブスクリプションに制限されています。
 
@@ -106,7 +106,7 @@ BizTalk Services の処理では、強化段階で、受信したデータに関
 
 BizTalk Services では、独自のアセンブリでアップロードされた[カスタム コードを実行](https://msdn.microsoft.com/library/azure/dn232389.aspx)できます。 この機能は、[IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) インターフェイスによって実装されます。 ブリッジの各段階には、このインターフェイスを実装する作成済みの .NET 型を提供する、2 つのプロパティ ([On Enter Inspector]\(開始時の Inspector\) と [On Exit Inspector]\(終了時の Inspector\)) が含まれています。 カスタム コードを使用すると、データに対してより複雑な処理を実行したり、一般的なビジネス ロジックを実行するアセンブリ内の既存のコードを再利用したりできます。 
 
-Logic Apps には、カスタム コードを実行するための 2 つの主な方法である Azure Functions と API Apps が用意されています。 Azure Functions は作成して、ロジック アプリから呼び出すことができます。 「[Add and run custom code for logic apps through Azure Functions (Azure Functions を使用してロジック アプリのカスタム コードを追加して実行する)](../logic-apps/logic-apps-azure-functions.md)」を参照してください。 Azure App Service の一部である API Apps は、独自のトリガーやアクションを作成するために使用します。 Logic Apps で使用するカスタム API の作成の詳細については、[こちら](../logic-apps/logic-apps-create-api-app.md)をご覧ください。 
+Logic Apps には、カスタム コードを実行するための 2 つの主な方法が用意されています。Azure Functions と API Apps です。 Azure Functions は作成して、ロジック アプリから呼び出すことができます。 「[Add and run custom code for logic apps through Azure Functions (Azure Functions を使用してロジック アプリのカスタム コードを追加して実行する)](../logic-apps/logic-apps-azure-functions.md)」を参照してください。 Azure App Service の一部である API Apps は、独自のトリガーやアクションを作成するために使用します。 Logic Apps で使用するカスタム API の作成の詳細については、[こちら](../logic-apps/logic-apps-create-api-app.md)をご覧ください。 
 
 BizTalk Services から呼び出すアセンブリにカスタム コードが含まれている場合は、実装内容に応じて、このコードを Azure Functions に移動することも、API Apps でカスタム API を作成することもできます。 たとえば、Logic Apps にコネクタがない別のサービスをラップするコードがある場合は、API アプリを作成し、その API アプリが提供するアクションをロジック アプリ内で使用します。 ヘルパ関数またはライブラリがある場合は、Azure Functions が最も適している可能性があります。
 

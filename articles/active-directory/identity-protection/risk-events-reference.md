@@ -2,92 +2,73 @@
 title: Azure Active Directory Identity Protection のリスク イベント リファレンス | Microsoft Docs
 description: Azure Active Directory Identity Protection のリスク イベント リファレンス。
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/25/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08e27052c3583ddea7a2fb6fe96fa6b48cd6c372
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65191520"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333884"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection のリスク イベント リファレンス
 
 ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure Active Directory では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、リスク イベントと呼ばれるレコードに格納されます。
-
 
 ## <a name="anonymous-ip-address"></a>匿名 IP アドレス
 
 **検出の種類:** リアルタイム  
 **以前の名前:** 匿名の IP アドレスからのサインイン
 
-
 この種類のリスク イベントは、匿名 IP アドレス (たとえば、Tor ブラウザー、Anonymizer VPN) からのサインインを示します。
 これらの IP アドレスは、一般に、悪意のある可能性がある意図のためにログイン テレメトリ (IP アドレス、場所、デバイスなど) を隠したいアクターによって使用されます。
-
 
 ## <a name="atypical-travel"></a>特殊な移動
 
 **検出の種類:** オフライン  
 **以前の名前:** 特殊な場所へのあり得ない移動
 
-
 このリスク イベントの種類では、地理的に離れた 2 つの場所で行われたサインインを識別します。少なくとも 1 つの場所は、ユーザーの過去の行動から考えて、ユーザーが普通いそうにない場所でもあります。 さまざまな要素がある中、この機械学習アルゴリズムでは、2 回のサインインの間隔と、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間が考慮されます。これにより、異なるユーザーが同じ資格情報を使用していることが示唆されます。
 
 このアルゴリズムは、組織内の他のユーザーによって普通に使用される VPN や場所など、不可能な移動状況の原因になる明らかな "誤検知" を無視します。 システムには、最短で 14 日間または 10 回のログインの初期学習期間があり、その間に新しいユーザーのサインイン行動が学習されます。
-
 
 ## <a name="leaked-credentials"></a>資格情報の漏洩
 
 **検出の種類:** オフライン  
 **以前の名前:** 資格情報が漏洩したユーザー
 
-
 この種類のリスク イベントは、ユーザーの有効な資格情報が漏洩したことを示します。
 サイバー犯罪者によって正規ユーザーの有効なパスワードが漏洩すると、多くの場合、この資格情報は犯罪者で共有されます。 これは一般に、闇サイトや貼り付けサイトに公開したり、資格情報を闇市場で取引したり販売したりして行われます。 Microsoft の漏洩した資格情報サービスでは、パブリック サイトや闇サイトを監視したり、下記の人々と連携したりして、ユーザー名とパスワードのペアを取得します。
 
 - 研究者
-
 - 法執行機関
-
 - Microsoft のセキュリティ チーム
-
 - その他の信頼できる発行元
 
 サービスが、闇サイト、貼り付けサイト、または上記のソースからユーザー資格情報を取得すると、有効な一致を見つけるため、Azure AD ユーザーの現在の有効な資格情報に対してそれらがチェックされます。
-
 
 ## <a name="malware-linked-ip-address"></a>マルウェアにリンクした IP アドレス
 
 **検出の種類:** オフライン  
 **以前の名前:** 感染しているデバイスからのサインイン
 
-
 この種類のリスク イベントは、ボット サーバーと活発に通信していることが判明している、マルウェアに感染した IP アドレスからのサインインを示します。 これは、ボット サーバーがアクティブなときにボット サーバーと接触していた IP アドレスに対して、ユーザーのデバイスの IP アドレスを関連付けることによって判断されます。
-
 
 ## <a name="unfamiliar-sign-in-properties"></a>通常とは異なるサインイン プロパティ
 
 **検出の種類:** リアルタイム  
 **以前の名前:** 未知の場所からのサインイン
 
-
 このリスク イベントの種類は、過去のサインイン履歴 (IP、緯度/経度、および ASN) を考慮して、異常なサインインを判別します。システムは、ユーザーが過去に使用した場所に関する情報を保持し、これらを "既知の" 場所と考えます。 既知の場所のリストにまだ含まれない場所からサインインが行われると、リスク イベントがトリガーされます。 新しく作成されたユーザーは、しばらくの間 “学習モード” に置かれ、そのユーザーの行動がアルゴリズムによって学習されるまで、通常とは異なるサインイン プロパティ リスク イベントは停止されます。 学習モードの期間は動的であり、ユーザーのサインイン パターンに関する十分な情報をアルゴリズムが収集するためにかかる時間によって決まります。 最小期間は 5 日です。 無活動状態が長期間続いた場合、ユーザーは学習モードに戻る可能性があります。 また、システムは、既知のデバイスからのサインイン、および既知の場所と地理的に近い場所からのサインインも無視します。 
 
 この検出は、基本認証 (または従来のプロトコル) に対しても実行されます。 これらのプロトコルには、クライアント ID などの最新のプロパティがないため、誤検知を減らすためのテレメトリが限られています。 お客様には、最新の認証に移行することをお勧めしています。
-
 
 ## <a name="azure-ad-threat-intelligence"></a>Azure AD 脅威インテリジェンス
 

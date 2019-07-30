@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 6f6feceff234bed51bcf6adf34f51313fa348d77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370365"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056050"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -28,6 +28,9 @@ ms.locfileid: "58370365"
 
 ユーザー ポータルは、ご利用の環境に応じて、Azure Multi-Factor Authentication Server と同じサーバーにデプロイするか、またはインターネットに接続された別のサーバーにデプロイしてもかまいません。
 
+> [!IMPORTANT]
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+
 ![MFA Server ユーザー ポータルのログイン ページ](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
@@ -38,7 +41,7 @@ ms.locfileid: "58370365"
 どちらのシナリオにおいても、Azure Multi-Factor Authentication (MFA) Server に Azure Multi-Factor Authentication Web サービス SDK がまだインストールされて**いない**場合は、以下の手順を実行してください。
 
 1. Multi-Factor Authentication Server コンソールを開きます。
-2. **[Web Service SDK]** に移動し、**[Web サービス SDK のインストール]** を選択します。
+2. **[Web Service SDK]** に移動し、 **[Web サービス SDK のインストール]** を選択します。
 3. インストールは既定の設定で行ってください (何らかの理由で変更しなければならない場合を除く)。
 4. IIS 内のサイトに SSL 証明書をバインドします。
 
@@ -59,7 +62,7 @@ Azure Multi-Factor Authentication Server と**同じサーバー**にユーザ�
 
 ユーザー ポータルをデプロイするには、次の手順を実行します。
 
-1. Azure Multi-Factor Authentication Server コンソールを開いて、左側のメニューの **[ユーザー ポータル]** アイコンをクリックし、**[ユーザー ポータルのインストール]** をクリックします。
+1. Azure Multi-Factor Authentication Server コンソールを開いて、左側のメニューの **[ユーザー ポータル]** アイコンをクリックし、 **[ユーザー ポータルのインストール]** をクリックします。
 2. インストールは既定の設定で行ってください (何らかの理由で変更しなければならない場合を除く)。
 3. IIS 内のサイトに SSL 証明書をバインドします。
 
@@ -80,7 +83,7 @@ Azure Multi-Factor Authentication Server が実行されているサーバーが
 
 * v6.0 以上の Azure Multi-Factor Authentication Server を使用します。
 * Microsoft インターネット インフォメーション サービス (IIS) 6.x 以上を実行している、インターネットに接続された Web サーバーにユーザー ポータルをインストールします。
-* IIS 6.x を使用している場合は、ASP.NET v2.0.50727 がインストールおよび登録され、**[許可]** に設定されていることを確認します。
+* IIS 6.x を使用している場合は、ASP.NET v2.0.50727 がインストールおよび登録され、 **[許可]** に設定されていることを確認します。
 * IIS 7.x 以上を使用している場合は、IIS 基本認証、ASP.NET、IIS 6 メタベース互換が必要となります。
 * ユーザー ポータルを SSL 証明書でセキュリティ保護します。
 * Azure Multi-Factor Authentication Web サービス SDK を SSL 証明書でセキュリティ保護します。
@@ -113,8 +116,8 @@ IIS サーバーに SSL 証明書を構成する方法についてご不明な�
 
 ユーザー ポータルがインストールされたため、Azure Multi-Factor Authentication Server を構成してポータルと連携させる必要があります。
 
-1. Azure Multi-Factor Authentication Server コンソールで、**[ユーザー ポータル]** アイコンをクリックします。 [設定] タブで、**[ユーザー ポータル URL]** ボックスにユーザー ポータルの URL を入力します。 電子メール機能が有効な場合、この URL は、ユーザーが Azure Multi-Factor Authentication Server にインポートされるときに送信される電子メールに含まれます。
-2. ユーザー ポータルで使用する設定を選択します。 たとえば、認証方法の選択をユーザーに許可する場合は、ユーザーが選択できる方法と共に、**[ユーザーに認証方法の選択を許可する]** をオンにします。
+1. Azure Multi-Factor Authentication Server コンソールで、 **[ユーザー ポータル]** アイコンをクリックします。 [設定] タブで、 **[ユーザー ポータル URL]** ボックスにユーザー ポータルの URL を入力します。 電子メール機能が有効な場合、この URL は、ユーザーが Azure Multi-Factor Authentication Server にインポートされるときに送信される電子メールに含まれます。
+2. ユーザー ポータルで使用する設定を選択します。 たとえば、認証方法の選択をユーザーに許可する場合は、ユーザーが選択できる方法と共に、 **[ユーザーに認証方法の選択を許可する]** をオンにします。
 3. 管理者となるユーザーを **[管理者]** タブで定義します。追加/編集ボックスのドロップダウンとチェック ボックスを使用して管理アクセス許可を細かく設定できます。
 
 オプションの構成:
@@ -159,9 +162,9 @@ Azure Multi-Factor Authentication Server にはユーザー ポータル用の�
 
 ![代表電話番号と予備の電話番号の登録](./media/howto-mfaserver-deploy-userportal/backupphone.png)
 
-ユーザーの認証時に PIN を使用する必要がある場合は、PIN を作成するように求められます。 電話番号と PIN (該当する場合) を入力した後、**[今すぐ電話で認証]** ボタンをクリックします。 Azure Multi-Factor Authentication が、ユーザーの代表電話番号に対して電話による認証を実行します。 ユーザーは、自己登録プロセスの次の手順に進むには、電話に応答し、PINを入力する (該当する場合) 必要があります。
+ユーザーの認証時に PIN を使用する必要がある場合は、PIN を作成するように求められます。 電話番号と PIN (該当する場合) を入力した後、 **[今すぐ電話で認証]** ボタンをクリックします。 Azure Multi-Factor Authentication が、ユーザーの代表電話番号に対して電話による認証を実行します。 ユーザーは、自己登録プロセスの次の手順に進むには、電話に応答し、PINを入力する (該当する場合) 必要があります。
 
-ユーザーが認証方法としてテキスト メッセージを選択した場合、またはそのように事前に構成されている場合は、ページに携帯電話の番号を入力します。 ユーザーの認証時に PIN を使用する必要がある場合は、PIN の入力も求められます。  電話番号と PIN (該当する場合) を入力した後、**[今すぐテキスト メッセージで認証]** ボタンをクリックします。 Azure Multi-Factor Authentication が、ユーザーの携帯電話に対して SMS 認証を実行します。 ユーザーはワンタイム パスコード (OTP) を含むテキスト メッセージを受信し、その OTP と PIN (該当する場合) を使用してそのメッセージに返信します。
+ユーザーが認証方法としてテキスト メッセージを選択した場合、またはそのように事前に構成されている場合は、ページに携帯電話の番号を入力します。 ユーザーの認証時に PIN を使用する必要がある場合は、PIN の入力も求められます。  電話番号と PIN (該当する場合) を入力した後、 **[今すぐテキスト メッセージで認証]** ボタンをクリックします。 Azure Multi-Factor Authentication が、ユーザーの携帯電話に対して SMS 認証を実行します。 ユーザーはワンタイム パスコード (OTP) を含むテキスト メッセージを受信し、その OTP と PIN (該当する場合) を使用してそのメッセージに返信します。
 
 ![SMS を使用したユーザー ポータルの検証](./media/howto-mfaserver-deploy-userportal/text.png)
 
@@ -172,7 +175,7 @@ Azure Multi-Factor Authentication Server にはユーザー ポータル用の�
 
 アクティブ化コード、URL、およびバーコード画像がページに表示されます。 ユーザーの認証時に PIN を使用する必要がある場合は、PIN の入力も求められます。 Microsoft Authenticator アプリにアクティブ化コードと URL を入力するか、バーコード スキャナーを使用してバーコード画像をスキャンした後、[アクティブにする] ボタンをクリックします。
 
-アクティブ化が完了したら、**[今すぐ認証]** ボタンをクリックします。 Azure Multi-Factor Authentication がユーザーのモバイル アプリに対して認証を実行します。 ユーザーは、自己登録プロセスの次の手順に進むには、モバイル アプリに PINを入力し (該当する場合)、[認証] ボタンを押す必要があります。
+アクティブ化が完了したら、 **[今すぐ認証]** ボタンをクリックします。 Azure Multi-Factor Authentication がユーザーのモバイル アプリに対して認証を実行します。 ユーザーは、自己登録プロセスの次の手順に進むには、モバイル アプリに PINを入力し (該当する場合)、[認証] ボタンを押す必要があります。
 
 管理者がセキュリティの質問と回答を収集するように Azure Multi-Factor Authentication Server を構成している場合は [セキュリティの質問] ページが表示されます。 ユーザーは、4 つのセキュリティの質問を選択し、選択した質問への回答を入力する必要があります。
 

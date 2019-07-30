@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3edae23183896651efcbf7f867204a618a10c85d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4988d284bed46a918f85eec8d7b4a5b89fc6549e
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236897"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588485"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse のワークロード分類
 

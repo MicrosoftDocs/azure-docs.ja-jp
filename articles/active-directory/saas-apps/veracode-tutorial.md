@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 11f75f53adc9e8ce1dbf78ef7a7d58742b6bc839
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1024f0c09d6ab67b412a8f65d8964f3ac9d43254
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813410"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>チュートリアル:Azure Active Directory と Veracode の統合
 

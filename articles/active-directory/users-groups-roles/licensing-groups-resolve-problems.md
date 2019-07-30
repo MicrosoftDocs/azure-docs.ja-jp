@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2129405dfdc2585d29c35a0982c9823a4cd57f71
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65466277"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359999"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -105,7 +105,7 @@ Exchange Online を使用する場合は、テナント内の一部のユーザ�
 > [!TIP]
 > 重複したプロキシ アドレスの有無を確認するには、次の PowerShell コマンドレットを Exchange Online に対して実行します。
 > ```
-> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
 > この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)に関する情報も確認できます。
 

@@ -1,47 +1,42 @@
 ---
-title: Microsoft 顧客契約の Azure クレジット残高を追跡する | Microsoft Docs
-description: Microsoft 顧客契約の Azure クレジット残高を確認する方法を説明します。
-services: ''
-documentationcenter: ''
-author: amberbhargava
+title: Microsoft 顧客契約の Azure クレジット残高を追跡する
+description: Microsoft 顧客契約の Azure クレジット残高を追跡する方法を説明します。
+author: bandersmsft
 manager: amberb
-editor: banders
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
-ms.author: amberb
-ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.author: banders
+ms.openlocfilehash: 352737b3ea61a51a39e066d4211c8f4ceae74184
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372264"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490963"
 ---
-# <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
+# <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
 
-Azure portal で、Microsoft 顧客契約の Azure クレジット残高を確認することができます。 クレジットを使用して、クレジット対象製品の支払いを行います。
+Azure portal で、Microsoft 顧客契約の Azure クレジット残高を確認することができます。 クレジットを使用して、クレジット対象料金の支払いを行います。
 
-クレジットの対象ではない製品を使用した場合、または使用量がクレジットの残高を超えた場合は、お客様に対して請求されます。 詳しくは、「[Azure クレジットの対象ではない製品](#products-that-arent-covered-by-azure-credits)」をご覧ください。
+クレジットの対象ではない製品を使用した場合、または使用量がクレジットの残高を超えた場合は、お客様に対して請求されます。 詳しくは、Azure クレジットの対象ではない製品に関するページをご覧ください (#products-that-arent-covered-by-azure-credits)。
 
-この記事では、Microsoft 顧客契約の請求先アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認します](#check-access-to-a-microsoft-customer-agreement)。
+この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
 
-## <a name="check-credit-balance-in-the-azure-portal"></a>Azure portal でクレジット残高を確認する
+## <a name="check-your-credit-balance"></a>クレジット残高を確認する
 
 1. [Azure Portal]( https://portal.azure.com) にサインインします。
 
-2. **[コストの管理と請求]** で検索します。
+2. "**コスト管理 + 請求**" を検索します。
 
-   ![ポータルでのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![ポータルでのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. 課金プロファイルに移動します。 アクセス方法によっては、請求先アカウントを選択することが必要な場合があります。 請求先アカウントから **[課金プロファイル]** を選択し、課金プロファイルを選択します。
+3.  左側から **[Azure クレジット]** を選択します。 アクセス方法によっては、課金アカウントまたは請求先プロファイルを選択してから、 **[Azure クレジット]** を選択することが必要な場合があります。
 
-4. **[Azure クレジット]** を選択します。
-
-5. [Azure クレジット] ページには次の情報が表示されます。
+4. [Azure クレジット] ページには次の情報が表示されます。
 
    ![課金プロファイルのクレジット残高とトランザクションのスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
@@ -57,16 +52,18 @@ Azure portal で、Microsoft 顧客契約の Azure クレジット残高を確�
 
    ![課金プロファイルのクレジット一覧のスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | 期間                 | 定義                           |
-   |----------------------|--------------------------------------------------------|
-   | source               | クレジット取得の基になったもの |
-   | 開始日           | クレジットを取得した日付 |
-   | 有効期限      | クレジットの有効期限が切れる日付 |
-   | Balance              | 前回の請求時点での残高 |
-   | 元の金額      | クレジットの元の金額 |
-   | Status               | クレジットの現在の状態。 状態は、アクティブ、使用済み、期限切れ、または期限切れ間近です。 |
+   | 期間 | 定義 |
+   |---|---|
+   | 推定残高 | 現在の残高から未課金のクレジット対象料金を差し引いた後の Azure クレジットの金額|
+   | 現在の残高 | 未課金のクレジット対象料金を差し引く前の Azure クレジットの金額。 これは、受け取った新しい Azure クレジットを、前回請求時点のクレジット残高に追加することで計算されます|
+   | source | クレジット取得の基になったもの |
+   | 開始日 | クレジットを取得した日付 |
+   | 有効期限 | クレジットの有効期限が切れる日付 |
+   | Balance | 前回の請求時点での残高 |
+   | 元の金額 | クレジットの元の金額 |
+   | Status | クレジットの現在の状態。 状態は、アクティブ、使用済み、期限切れ、または期限切れ間近です。 |
 
-## <a name="how-credits-are-used-in-microsoft-customer-agreement"></a>Microsoft 顧客契約でのクレジットの使用方法
+## <a name="how-credits-are-used"></a>クレジットの使用方法
 
 Microsoft 顧客契約の請求先アカウントでは、請求書および支払い方法を管理するために課金プロファイルを使用します。 課金プロファイルに対して毎月の請求書が生成され、支払い方法を使用して請求書に対する支払いを行います。
 
@@ -78,7 +75,7 @@ Azure クレジットは、支払い方法の 1 つです。 プロモーショ�
 
 - Canonical
 - Citrix XenApp Essentials
-- Citrix XenDesktop 
+- Citrix XenDesktop
 - 登録ユーザー
 - OpenLogic
 - Remote Access Rights XenApp Essentials 登録ユーザー
@@ -93,7 +90,7 @@ Azure クレジットは、支払い方法の 1 つです。 プロモーショ�
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 

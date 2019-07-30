@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
-ms.topic: article
-ms.date: 06/10/2019
+ms.topic: conceptual
+ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 4d3f3e64e109d0b1dc010be39b62b4f0bdc0573d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84960e82e25f4b6cc59324f17ce46de7f9f7ac23
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063594"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704688"
 ---
 # <a name="install-and-run-face-containers"></a>Face コンテナーのインストールと実行
 
@@ -41,7 +41,6 @@ Face API コンテナーを使用する前に、次の前提条件を満たす�
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
-
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b2c7ca8699274b96f7f382dfe1958bf5babbbe99
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c217663c5752907e0b3d6372d4522f6aba982b3d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>チュートリアル:Azure Active Directory と Adaptive Insights の統合
 

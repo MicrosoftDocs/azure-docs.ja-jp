@@ -7,25 +7,25 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pabutler
-ms.openlocfilehash: 57efbfe12df8072d619cf71f4b08da2e2e5be3ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1a45af2cb5eed8daa4b50bb6f0b504f9653c827a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942954"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068955"
 ---
 # <a name="handling-review-feedback"></a>レビュー フィードバックの処理
 
 この記事では、Microsoft Azure Marketplace レビュー チームが使用する Azure DevOps 環境にアクセスする方法について説明します。  **Microsoft のレビュー** ステップで Azure アプリケーション オファーに重大な問題が見つかった場合は、このシステムにサインインして、それらの問題に関する詳細な情報 (レビュー フィードバック) を表示できます。  これらの問題をすべて修正した後、Azure Marketplace に引き続きオファーを発行するには、オファーを再送信する必要があります。  次の図は、このフィードバック プロセスと発行プロセスの関係を示しています。
 
-![発行手順と VSTS フィードバック](./media/pub-flow-vsts-access.png)
+![発行手順と Azure DevOps フィードバック](./media/pub-flow-vsts-access.png)
 
 通常、レビューの問題はプルリクエスト (PR) と呼ばれます。  各 PR は、問題に関する詳細を含むオンラインの [Azure DevOps](https://azure.microsoft.com/services/devops/) (旧称 Visual Studio Team Services (VSTS)) 項目にリンクされています。  次の図に、レビュー PR の参照の例を示します。  複雑な状況では、レビューおよびサポート チームからお客様にメールが送信されることもあります。 
 
 ![レビューのフィードバックが表示される [状態] タブ](./media/status-tab-ms-review.png)
 
 
-## <a name="vsts-access"></a>VSTS アクセス
+## <a name="azure-devops-access"></a>Azure DevOps アクセス
 
 レビュー フィードバックで参照されている PR 項目を表示するには、最初にパブリッシャーに適切な承認が付与されている必要があります。  そうしないと、新しいパブリッシャーは、PR を表示しようとしたときに `401 - Not Authorized` 応答ページを受け取ります。  この Azure DevOps リポジトリへのアクセスを要求するには、次の手順を実行します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "64942954"
     ![サポート チケットのカテゴリ](./media/support-incident1.png)
 
 4. **[手順 1/2]** ページに連絡先情報を入力し、 **[続行]** を選択します。
-5. **[手順 2/2]** ページにインシデントのタイトル (`Request VSTS access` など) を指定し、最初の手順 (前述) で収集した情報を入力します。  条項を読み、同意してから、 **[送信]** を選択します。
+5. **[手順 2/2]** ページにインシデントのタイトル (`Request Azure DevOps access` など) を指定し、最初の手順 (前述) で収集した情報を入力します。  条項を読み、同意してから、 **[送信]** を選択します。
 
 インシデントの作成に成功すると、確認ページが表示されます。  後で参照できるように、このページ上の確認情報を保存します。  Microsoft サポート チームは、数営業日以内にお客様のアクセス要求に返信します。
 

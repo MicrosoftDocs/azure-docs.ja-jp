@@ -1,31 +1,28 @@
 ---
-title: Azure 無料サービスの使用状況の監視および追跡 | Microsoft Docs
-description: 無料サービスの使用状況を確認する方法を説明します。 Azure Portal と使用状況データの csv を使用します。
-services: ''
-documentationcenter: ''
+title: Azure 無料サービスの使用状況を監視および追跡する
+description: Azure portal で無料サービスの使用状況と使用状況の CSV ファイルを確認する方法について説明します。
 author: amberbhargava
 manager: amberb
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2017
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 4e940a12cd57ef136cfd9ead298f9afcd2d6ad1f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3543bed7f699fd149ca7f2a6f61e9eb5aad5f1a3
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617793"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491421"
 ---
-# <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Azure 無料アカウントで無料サービスの使用状況を確認する 
+# <a name="check-free-service-usage-included-with-your-azure-free-account"></a>Azure 無料アカウントに含まれている無料サービスの使用状況を確認する
 
-Azure 無料アカウントに含まれる無料サービスは、使用制限を超過しない限りは課金されません。 使用制限内で使用するために、Azure Portal または使用状況ファイルを使用して、無料サービスの使用状況を監視および追跡できます。 
+Azure 無料アカウントに含まれる無料サービスは、使用制限を超過しない限りは課金されません。 制限内に収めるには、Azure portal または使用状況ファイルを使用して、無料サービスの使用状況を監視および追跡します。
 
-## <a name="check-usage-on-the-azure-portal"></a>Azure Portal で使用状況を確認する
+## <a name="check-usage-in-the-azure-portal"></a>Azure portal で使用状況を確認する
 
 1.  [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -37,15 +34,15 @@ Azure 無料アカウントに含まれる無料サービスは、使用制限�
 
     ![すべてのサブスクリプションを表示したスクリーンショット](./media/billing-check-usage-of-free-services/select-free-account-subscription.png)
 
-5.  [概要] セクションには、サブスクリプション ID、オファーの種類、サブスクリプション名などのサブスクリプションに関する重要な情報が表示されます。 無料アカウントのクレジットがいつごろ期限切れになるかの情報も、ここで確認できます。
+5.  概要セクションには、サブスクリプションに関する重要な情報が表示されます。 たとえば、サブスクリプション ID、オファーの種類、サブスクリプション名などです。 無料アカウントのクレジットが期限切れになるタイミングの情報もここで確認できます。
 
     ![サブスクリプションの重要な情報を表示したスクリーンショット](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
 
-6.  下にスクロールすると、現在のコストと今後の予想コストに関する情報が表示されます。 このコストには、無料アカウントに含まれていないサービスの使用量と、無料サービスの使用制限を超過した分の使用量が含まれています。 
+6.  下にスクロールすると、現在のコストと今後の予想コストに関する情報が表示されます。 このコストには、無料アカウントに含まれていないサービスの使用量と、無料サービスの使用制限を超過した分の使用量が含まれています。
 
     ![サブスクリプションのコスト情報を表示したスクリーンショット](./media/billing-check-usage-of-free-services/subscription-cost-information.png)
 
-7.  [概要] セクションの最後の部分に、無料サービスの使用状況に関する表があります。 
+7.  [概要] セクションの最後の部分に、無料サービスの使用状況が表示される表があります。
 
     ![無料サービスの使用状況を表示したスクリーンショット](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
 
@@ -59,14 +56,18 @@ Azure 無料アカウントに含まれる無料サービスは、使用制限�
   * **[超える可能性は低い]:** メーターの使用制限を超過する可能性が低い。
   * **[\<日付> に超えます]:** \<日付> にメーターの使用制限を超過する可能性がある。
 
-## <a name="check-usage-through-the-usage-file"></a>使用状況ファイルを使用して使用状況を確認する
+## <a name="check-usage-with-the-usage-file"></a>使用状況ファイルを使用して使用状況を確認する
 
 使用状況ファイルには、Azure サブスクリプションの詳しい情報が記載されています。 Azure アカウント センターから、毎月および毎日の使用状況のファイルをダウンロードできます。 使用状況ファイルのダウンロード方法と、必要なアクセス許可の詳細については、[請求書と使用状況の取得](billing-download-azure-invoice-daily-usage-date.md)に関するページをご覧ください。 使用状況ファイル内の列の詳細については、[使用状況の用語](billing-understand-your-usage.md)に関するページをご覧ください。
 
-使用状況ファイルには、無料サービスと有料サービス両方の使用状況に関する情報が含まれています。 無料サービスのメーターは、メーター名の末尾に **[Free]\(無料\)** という文字が付加されています。 無料のメーターを見つけるには、Excel でファイルを開き、 **[測定カテゴリ]** 列でフィルターをかけて **[- Free]\(- 無料)** というテキストを含むセルを見つけます ([テキスト フィルター] &rarr; [Contains]\(次を含む) を使用します)&nbsp;
+使用状況ファイルには、無料サービスと有料サービス両方の使用状況に関する情報が含まれています。 無料サービスのメーターは、メーター名の末尾に **[Free]\(無料\)** という文字が付加されています。 無料のメーターを見つけるには、Excel でファイルを開き、 **[測定カテゴリ]** 列でフィルターをかけて **[- Free]\(- 無料)** というテキストを含むセルを見つけます ([テキスト フィルター] &rarr; [Contains]\(次を含む) を使用します)
+
 
 ![無料サービスの使用状況を表示したスクリーンショット](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+
+## <a name="next-steps"></a>次の手順
+- [サブスクリプションをアップグレードする](billing-upgrade-azure-subscription.md)

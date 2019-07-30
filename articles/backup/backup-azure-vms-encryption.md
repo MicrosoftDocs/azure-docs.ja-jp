@@ -1,19 +1,18 @@
 ---
 title: 暗号化された Azure VM を Azure Backup でバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
-services: backup
 author: geetha
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
-ms.author: geetha
-ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.author: geg
+ms.openlocfilehash: 9da3e4d6f8043e8df0a448e1fb7b957849076868
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358235"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465300"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 

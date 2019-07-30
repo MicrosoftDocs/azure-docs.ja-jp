@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure での Linux VM の初回
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2543ffb20c4e7da840201cfd3be04505515458a6
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d56aa1c9b86542df3c2a7154669856686823e1dd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539362"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708600"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>チュートリアル - Azure での Linux 仮想マシンの初回の起動時に cloud-init を使用してカスタマイズする方法
 
@@ -45,7 +45,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 次の表は、Azure プラットフォーム イメージでの最新の cloud-init の可用性の概要を示しています。
 
-| エイリアス | Publisher | プラン | SKU | Version |
+| エイリアス | Publisher | プラン | SKU | バージョン |
 |:--- |:--- |:--- |:--- |:--- |
 | UbuntuLTS |Canonical |UbuntuServer |16.04 LTS |latest |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
@@ -110,7 +110,7 @@ VM を作成する前に、[az group create](/cli/azure/group#az-group-create) �
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myAutomatedVM* という名前の VM を作成します。
+ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myVM* という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \
@@ -131,7 +131,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>Web アプリのテスト
-Web ブラウザーを開き、アドレス バーに「*http:\/\/\<publicIpAddress>*」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 Node.js アプリは次の例のように表示されます。
+Web ブラウザーを開き、アドレス バーに「*http:\/\/\<publicIpAddress>* 」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 Node.js アプリは次の例のように表示されます。
 
 ![実行中の NGINX サイトの表示](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -262,7 +262,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>セキュリティで保護された Web アプリをテストする
-Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAddress>*」と入力できるようになりました。 前の VM 作成プロセスの出力で示されているように、独自のパブリック IP アドレスを提供します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
+Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAddress>* 」と入力できるようになりました。 前の VM 作成プロセスの出力で示されているように、独自のパブリック IP アドレスを提供します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
 
 ![Web ブラウザーのセキュリティ警告を受け入れる](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

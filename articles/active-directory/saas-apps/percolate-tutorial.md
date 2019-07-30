@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 83027e9fbc1826de727f123afe4507c2858c49ff
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560561"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094595"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>チュートリアル:Azure Active Directory と Percolate との統合
 
@@ -116,9 +116,9 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
     ![構成 URL をコピーする](common/copy-configuration-urls.png)
 
-    1. **ログイン URL**
+    1. **[ログイン URL]** 。
 
-    1. **Azure AD 識別子**
+    1. **[Azure AD 識別子]** 。
 
     1. **ログアウト URL**
 
@@ -156,11 +156,11 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
 1. Azure portal で、左側のウィンドウの **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-    ![[すべてのユーザー] の選択](common/users.png)
+    ![[すべてのユーザー] を選択する](common/users.png)
 
 2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![[新しいユーザー] の選択](common/new-user.png)
+    ![[新しいユーザー] を選択する](common/new-user.png)
 
 3. **[ユーザー]** ダイアログ ボックスで、次の手順を実行します。
 
@@ -170,7 +170,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
   
     1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
 
-    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックスの値を書き留めます。
+    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
     1. **作成** を選択します。
 

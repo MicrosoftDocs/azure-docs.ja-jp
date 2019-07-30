@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 20f0d6a88fead155225cff69ab89635de587a46d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66455134"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056493"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -40,11 +40,11 @@ ms.locfileid: "66455134"
 
 Azure では、次の 3 種類のポイント対サイト VPN オプションをサポートしています。
 
-* Secure Socket Tunneling Protocol (SSTP)。 SSTP は Microsoft 独自の SSL ベースのソリューションです。このソリューションは、ほとんどのファイアウォールが 443 SSL で使用する TCP ポートを開いていることを利用し、ファイアウォールを通過することができるようになっています。
+* Secure Socket Tunneling Protocol (SSTP)。 SSTP は、ほとんどのファイアウォールが 443 SSL で使用される送信 TCP ポートを開いているためにファイアウォールを通過できる、Microsoft 独自の SSL ベースのソリューションです。
 
-* OpenVPN。 OpenVPN は SSL ベースのソリューションであり、ほとんどのファイアウォールで 443 SSL で使用する TCP ポートを開いているため、ファイアウォールを通過することができます。
+* OpenVPN。 OpenVPN は、ほとんどのファイアウォールが 443 SSL で使用される送信 TCP ポートを開いているためにファイアウォールを通過できる、SSL ベースのソリューションです。
 
-* IKEv2 VPN。 IKEv2 VPN は、標準ベースの IPsec VPN ソリューションであり、UDP ポート 500 と 4500 のほか、IP プロトコル番号 50 を使用しています。 ファイアウォールでここに挙げたポートが必ずしも開いているとは限りません。このため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。
+* IKEv2 VPN。 IKEv2 VPN は標準ベースの IPsec VPN ソリューションであり、送信 UDP ポート 500 と 4500 のほか、IP プロトコル番号 50 を使用しています。 ファイアウォールでここに挙げたポートが必ずしも開いているとは限りません。このため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>ポイント対サイト接続用に構成されたクライアント コンピューターを再起動した場合、VPN は自動的に再接続されますか。
 

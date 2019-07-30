@@ -3,8 +3,8 @@ title: チュートリアル - Azure AD エンタイトルメント管理 (プ�
 description: Azure Active Directory エンタイトルメント管理 (プレビュー) で最初のアクセス パッケージを作成する方法に関するステップ バイ ステップ チュートリアル。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 04/27/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 354af736d5896214848205f41e429d9bf2c49863
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873534"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489168"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>チュートリアル:Azure AD エンタイトルメント管理 (プレビュー) で最初のアクセス パッケージを作成する
 
@@ -67,7 +67,7 @@ Azure AD のエンタイトルメント管理 (プレビュー) を使用する�
 
 1. 次の 2 人のユーザーを作成または構成します。 以下の名前を使用することも、別の名前を使用することもできます。 **Admin1** は、現在サインイン済みのユーザーで構いません。
 
-    | Name | ディレクトリ ロール | 説明 |
+    | EnableAdfsAuthentication | ディレクトリ ロール | 説明 |
     | --- | --- | --- |
     | **Admin1** | 全体管理者<br/>または<br/>制限付き管理者 (ユーザー管理者) | 管理者かつ承認者 |
     | **Requestor1** | User | 内部要求者 |

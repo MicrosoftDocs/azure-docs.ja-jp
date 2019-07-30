@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60683132"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps の特定の値に基づいてワークフロー アクションを実行する switch ステートメントを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "50232445"
 
 * この記事の例に従うには、Outlook.com や Office 365 の Outlook アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
-  1. 電子メールを送信するアクションを追加するときは、代わりに **[承認の電子メールを送信します]** を探して選択します。
+  1. 電子メールを送信するアクションを追加するときは、代わりに次のアクションを探して選択します。 **[承認の電子メールを送信します]**
 
      ![[承認の電子メールを送信します] を選択する](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
@@ -43,11 +43,11 @@ ms.locfileid: "50232445"
 
 ## <a name="add-switch-statement"></a>switch ステートメントを追加する
 
-1. この例では、サンプル ワークフローの末尾に switch ステートメントを追加します。 最後の手順の後ろで、**[新しいステップ]** を選択します。
+1. この例では、サンプル ワークフローの末尾に switch ステートメントを追加します。 最後の手順の後ろで、 **[新しいステップ]** を選択します。
 
-   ステップとステップの間に switch ステートメントを追加するときは、switch ステートメントを追加する場所で矢印の上にポインターを重ねます。 表示される**プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。
+   ステップとステップの間に switch ステートメントを追加するときは、switch ステートメントを追加する場所で矢印の上にポインターを重ねます。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
-1. 検索ボックスに、フィルターとして「switch」と入力します。 **[スイッチ - 制御]** アクションを選択します。
+1. 検索ボックスに、フィルターとして「switch」と入力します。 このアクションを選択: **[Switch - Control]\(スイッチ - 制御\)**
 
    ![switch を追加する](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "50232445"
 
    !["SelectedOption" を選択する](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. 承認者が `Approve` または `Reject` を選択したケースを処理するために、**[ケース]** と **[既定]** の間にもう 1 つのケースを追加します。 
+1. 承認者が `Approve` または `Reject` を選択したケースを処理するために、 **[ケース]** と **[既定]** の間にもう 1 つのケースを追加します。 
 
    ![別のケースを追加する](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
@@ -70,14 +70,14 @@ ms.locfileid: "50232445"
    |--------|--------------------|--------|
    | ケース 1 | **Approve** | 承認者が **[Approve]** を選択した場合のみ、RSS 項目の詳細を送信するために Outlook **[Send an email]\(電子メールの送信\)** アクションを追加します。 |
    | ケース 2 | **Reject** | RSS 項目が拒否されたことを他の承認者に通知するために、Outlook **[Send an email]\(電子メールの送信\)** アクションを追加します。 |
-   | 既定値 | なし | 対処不要です。 この例では、**[SelectedOption]\(SelectedOption\)** に 2 つしかオプションがないため、**[既定]** ケースは空です。 |
+   | 既定値 | なし | 対処不要です。 この例では、 **[SelectedOption]\(SelectedOption\)** に 2 つしかオプションがないため、 **[既定]** ケースは空です。 |
    |||
 
    ![完了した switch ステートメント](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
 
 1. ロジック アプリを保存し、 
 
-   この例を手動でテストするには、ロジック アプリが新しい RSS 項目を見つけて承認の電子メールを送信するまで、**[実行]** を選択します。 
+   この例を手動でテストするには、ロジック アプリが新しい RSS 項目を見つけて承認の電子メールを送信するまで、 **[実行]** を選択します。 
    **[Approve]** を選択して結果を確認します。
 
 ## <a name="json-definition"></a>JSON の定義

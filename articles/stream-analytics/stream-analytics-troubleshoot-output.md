@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a07ac40ad3adda486b5216e83d683e00ec93265d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761745"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620784"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -79,7 +79,7 @@ Stream Analytics ジョブが開始されると、入力イベントが読み取
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL Database の出力でのキー違反の警告
 
-Azure SQL データベースを Stream Analytics ジョブへの出力として構成すると、宛先テーブルにレコードが一括挿入されます。 通常、Azure Stream Analytics では、出力シンクに対して[最低 1 回の配信]( https://msdn.microsoft.com/azure/stream-analytics/reference/event-delivery-guarantees-azure-stream-analytics)が保証されますが、SQL テーブルで一意制約が定義されている場合は、[厳密に 1 回だけの配信を保証]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/)することもできます。 
+Azure SQL データベースを Stream Analytics ジョブへの出力として構成すると、宛先テーブルにレコードが一括挿入されます。 通常、Azure Stream Analytics では、出力シンクに対して[最低 1 回の配信](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)が保証されますが、SQL テーブルで一意制約が定義されている場合は、[厳密に 1 回だけの配信を保証]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/)することもできます。 
 
 SQL テーブルに一意キー制約が設定された後に、SQL テーブルに挿入される重複したレコードがあると、Azure Stream Analytics によって重複したレコードは削除されます。 データはバッチに分割され、単一の重複レコードが見つかるでバッチの再帰的な挿入が行われます。 ストリーミング ジョブに多数の重複行が含まれる場合は、この分割と挿入の処理で重複を 1 つずつ無視する必要があり、効率が低下して時間がかかってしまいます。 過去 1 時間以内のアクティビティ ログにキー違反の警告メッセージが複数ある場合は、SQL 出力によってジョブ全体の速度が低下している可能性があります。 
 
@@ -91,6 +91,10 @@ IGNORE_DUP_KEY を構成する際には、一部のインデックスに関す�
 * 一意なインデックスについては、IGNORE_DUP_KEY オプションを設定できます。このインデックスは、主キー/一意制約とは異なり、CREATE INDEX または INDEX 定義を使用して作成されます。  
 * IGNORE_DUP_KEY は、列ストア インデックスには適用されません (このようなインデックスに対して一意性を強制することはできないため)。  
 
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>列名は Azure Stream Analytics によって小文字に変換されます
+元の互換性レベル (1.0) を使用していたとき、Azure Stream Analytics は列名を小文字に変更するために使用していました。 この動作は、以降の互換性レベルで修正されました。 大文字と小文字を保持するためには、お客様が互換性レベル 1.1 以降に移行することをお勧めします。 詳細については、「[Azure Stream Analytics ジョブの互換性レベル](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)」を参照してください。
+
+
 ## <a name="get-help"></a>問い合わせ
 
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
@@ -100,5 +104,5 @@ IGNORE_DUP_KEY を構成する際には、一部のインデックスに関す�
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

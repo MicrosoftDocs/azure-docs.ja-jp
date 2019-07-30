@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub クエリ言語について | Microsoft Docs
 description: 開発者ガイド - デバイス/モジュール ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: rezas
-ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: robinsh
+ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442139"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450070"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
-IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン](iot-hub-devguide-device-twins.md)や[ジョブ](iot-hub-devguide-jobs.md)、および[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
+IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン](iot-hub-devguide-device-twins.md)、[モジュール ツイン](iot-hub-devguide-module-twins.md)、[ジョブ](iot-hub-devguide-jobs.md)、および[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
 
 * IoT Hub のクエリ言語の主な機能の説明
 * 言語の詳しい説明 メッセージ ルーティングにおけるクエリ言語の詳細については、[メッセージ ルーティングでのクエリ](../iot-hub/iot-hub-devguide-routing-query-syntax.md)に関するページを参照してください。
@@ -25,7 +25,7 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
 
 ## <a name="device-and-module-twin-queries"></a>デバイス ツインとモジュール ツインのクエリ
 
-[デバイス ツイン](iot-hub-devguide-device-twins.md)とモジュール ツインには、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、すべてのツイン情報を含む 1 つの JSON ドキュメントとしてデバイス ツインとモジュール ツインにクエリを実行できます。
+[デバイス ツイン](iot-hub-devguide-device-twins.md)と[モジュール ツイン](iot-hub-devguide-module-twins.md)には、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、すべてのツイン情報を含む 1 つの JSON ドキュメントとしてデバイス ツインとモジュール ツインにクエリを実行できます。
 
 たとえば、IoT Hub のデバイス ツインに、次の構造があるとします (モジュール ツインも同様で、追加の moduleId があるだけです)。
 
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>モジュール ツイン クエリ
 
-モジュール ツインに対するクエリはデバイス ツインに対するクエリと似ていますが、("from devices" の代わりに) 異なるコレクション/名前空間を使用して、device.modules にクエリを実行できます。
+モジュール ツインに対するクエリはデバイス ツインに対するクエリと似ていますが、別のコレクションと名前空間を使用して、**devices** からではなく、**device.modules** からクエリを実行します。
 
 ```sql
 SELECT * FROM devices.modules
@@ -315,7 +315,7 @@ SELECT * FROM devices.jobs
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT Hub クエリの基礎
 
-IoT Hub のすべてのクエリは、SELECT 句と FROM 句、およびオプションの WHERE 句と GROUP BY で構成されます。 各クエリは JSON ドキュメントのコレクション (デバイス ツインなど) で実行されます。 FROM 句は (**devices** や **devices.jobs**) で繰り返されるドキュメント コレクションを示します。 次に、WHERE 句でフィルター処理が適用されます。 集計により、この手順の結果は GROUP BY 句の指定に従ってグループ化されます。 グループごとに、SELECT 句で指定された行が生成されます。
+IoT Hub のすべてのクエリは、SELECT 句と FROM 句、およびオプションの WHERE 句と GROUP BY で構成されます。 各クエリは JSON ドキュメントのコレクション (デバイス ツインなど) で実行されます。 FROM 句は、反復対象のドキュメント コレクション (**devices**、**devices.modules**、または **devices.jobs**) を示します。 次に、WHERE 句でフィルター処理が適用されます。 集計により、この手順の結果は GROUP BY 句の指定に従ってグループ化されます。 グループごとに、SELECT 句で指定された行が生成されます。
 
 ```sql
 SELECT <select_list>
@@ -326,10 +326,10 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 句
 
-**FROM <from_specification>** 句では、デバイス ツインにクエリを実行するための **FROM devices**、またはジョブのデバイスごとの詳細にクエリを実行するための **FROM devices.jobs** の 2 つの値のみを想定できます。
-
+**FROM <from_specification>** 句では、3 つの値だけが想定されています。デバイス ツインに対するクエリのための **FROM devices**、モジュール ツインに対するクエリのための **FROM devices.modules**、またはジョブのデバイスごとの詳細に対するクエリのための **FROM devices.jobs** です。
 
 ## <a name="where-clause"></a>WHERE 句
+
 **WHERE <filter_condition>** 句はオプションです。 WHERE 句は、FROM コレクションの JSON ドキュメントを結果に含めるために満たす必要がある条件を指定します。 結果に含めるためには、指定された条件についてすべての JSON ドキュメントが "true" と評価される必要があります。
 
 使用できる条件は、「[式と条件](iot-hub-devguide-query-language.md#expressions-and-conditions)」セクションに記載されています。
@@ -366,6 +366,7 @@ SELECT [TOP <max number>] <projection list>
 現在のところ、**SELECT** * 以外の選択句は、デバイス ツインの集計クエリでのみサポートされています。
 
 ## <a name="group-by-clause"></a>GROUP BY 句
+
 **GROUP BY <group_specification>** 句はオプションの手順であり、WHERE 句で指定したフィルターの後か、SELECT で指定したプロジェクションの前に実行します。 属性の値に基づいてドキュメントをグループ化します。 これらのグループを使用すると、SELECT 句で指定した方法で、集計された値が生成されます。
 
 次は GROUP BY を使用したクエリの例です。
@@ -393,9 +394,9 @@ GROUP BY <group_by_element>
 > [!IMPORTANT]
 > `group` という単語は、現在、クエリで特殊なキーワードとして扱われています。 プロパティ名として `group` を使用する場合は、エラーを回避するために二重の角かっこで囲んでください (例: `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`)。
 >
->
 
 ## <a name="expressions-and-conditions"></a>式と条件
+
 *式* とはおおまかに次のように言い表すことができます。
 
 * JSON 型 (ブール値、数値、文字列、配列、オブジェクトなど) のインスタンスに対して評価を行う
@@ -443,6 +444,7 @@ GROUP BY <group_by_element>
 | string_literal |文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符または二重引用符で囲みます。 使用できるエスケープ: 4 つの 16 進数字によって定義された Unicode 文字の `\'`、`\"`、`\\`、`\uXXXX`。 |
 
 ### <a name="operators"></a>演算子
+
 次の演算子がサポートされています。
 
 | ファミリ | 演算子 |
@@ -452,6 +454,7 @@ GROUP BY <group_by_element>
 | 比較 |=、!=、<、>、<=、>=、<> |
 
 ### <a name="functions"></a>Functions
+
 ツインとジョブのクエリにおいて、サポートされている唯一の関数は次のとおりです。
 
 | Function | 説明 |

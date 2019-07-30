@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 583845b2ea63efd42f382c9c150de650f34bafed
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751985"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514114"
 ---
-# <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Azure Log Analytics エージェントを使用してログ データを収集する
+# <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
 Azure Log Analytics エージェント (旧称 Microsoft Monitoring Agent (MMA) または OMS Linux エージェント) は、オンプレミスのマシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) によって監視されるコンピューター、および任意のクラウドの仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、Azure Monitor にアタッチし、さまざまなソースから収集したログ データを、Log Analytics ワークスペースや、さらには任意の固有ログや、監視ソリューションで定義されているメトリックに格納します。 
 
@@ -34,11 +34,11 @@ Azure Log Analytics エージェント (旧称 Microsoft Monitoring Agent (MMA) 
 
 Linux および Windows 用エージェントは、Azure Monitor サービスに TCP ポート 443 経由で通信します。マシンがファイアウォールまたはプロキシ サーバーを経て接続し、インターネット経由で通信する場合は、必須のネットワーク構成を理解するために以下の要件を確認します。 インターネットに接続するネットワーク上のコンピューターが IT セキュリティ ポリシーで許可されていない場合、[Log Analytics ゲートウェイ](gateway.md)を設定し、エージェントをゲートウェイ経由で Azure Monitor ログに接続するように構成できます。 エージェントは構成情報を受信し、ワークスペースで有効にしたデータ収集ルールおよび監視ソリューションに従って収集されたデータを送信できます。 
 
-System Center Operations Manager 2012 R2 またはそれ以降でコンピューターを監視する場合は、Azure Monitor サービスでマルチホーミングして、[Operations Manager](../../azure-monitor/platform/om-agents.md) によってデータを収集し、サービスに転送し、引き続き監視できます。 Linux コンピューターでは、エージェントには Windows エージェントのような正常性サービス コンポーネントは含まれておらず、代わりに管理サーバーで情報を収集して処理します。 Linux コンピューターは異なる方法によって Operations Manager で監視されるため、Windows エージェント管理システムがするように、構成を受信したり、データを直接収集したり、管理グループを介して転送したりしません。 そのため、このシナリオは、Operations Manager に報告する Linux コンピューターではサポートされません。  
+System Center Operations Manager 2012 R2 またはそれ以降でコンピューターを監視する場合は、Azure Monitor サービスでマルチホーミングして、[Operations Manager](../../azure-monitor/platform/om-agents.md) によってデータを収集し、サービスに転送し、引き続き監視できます。 Linux コンピューターでは、エージェントには Windows エージェントのような正常性サービス コンポーネントは含まれておらず、代わりに管理サーバーで情報を収集して処理します。 Linux コンピューターは異なる方法によって Operations Manager で監視されるため、Windows エージェント管理システムがするように、構成を受信したり、データを直接収集したり、管理グループを介して転送したりしません。 そのため、Operations Manager に報告する Linux コンピューターではこのシナリオはサポートされません。2 段階で Log Analytics ワークスペースと [Operations Manager 管理グループに報告する](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)ように、Linux コンピューターを構成する必要があります。
 
 Windows エージェントは最大 4 つの Log Analytics ワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
 
-Linux および Windows 用エージェントは、Azure Monitor に接続するためだけでなく、Azure Automation もサポートして、Hybrid Runbook ワーカー ロールや、[Change Tracking](../../automation/change-tracking.md)および[Update Management](../../automation/automation-update-management.md)などの他のサービスもホストします。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
+Linux および Windows 用エージェントは、Azure Monitor に接続するためだけでなく、Azure Automation もサポートされており、Hybrid Runbook ワーカー ロールや、[Change Tracking](../../automation/change-tracking.md)、[Update Management](../../automation/automation-update-management.md)、[Azure Security Center](../../security-center/security-center-intro.md) などの他のサービスがホストされます。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
 
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
@@ -68,7 +68,7 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * Red Hat Enterprise Linux Server 6 (x86/x64) および 7 (x64)
 * Debian GNU/Linux 8 および 9 (x86/x64)
 * Ubuntu 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64)
-* SUSE Linux Enterprise Server 12 (x64)
+* SUSE Linux Enterprise Server 12 (x64) および 15 (x64)
 
 >[!NOTE]
 >OpenSSL 1.1.0 は x86_x64 プラットフォーム (64-bit) 上のみでサポートされ、1.x より前の OpenSSL は、どのプラットフォーム上でもサポートされません。

@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: azure-vs
-ms.date: 03/26/2018
+ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: d7c0f19d6680eef7492faaaab0d45e0c70011f01
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 02c77d1a34a4dec8732b5fa2edb4d7a55e079c28
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428083"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225194"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート:Service Fabric に .NET Reliable Services アプリケーションをデプロイする
 

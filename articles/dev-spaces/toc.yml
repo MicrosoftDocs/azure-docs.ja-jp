@@ -9,14 +9,18 @@
       items:
         - name: チーム開発
           href: quickstart-team-development.md
-        - name: Java (VS Code と CLI)
+        - name: アプリケーションの実行
+          href: quickstart-cli.md
+        - name: Dockerfile を使用してアプリケーションを実行する
+          href: quickstart-cli-dockerfile.md
+        - name: VS Code を使用して Java を実行およびデバッグする
           href: quickstart-java.md
-        - name: .NET Core (VS Code と CLI)
+        - name: VS Code を使用して .NET Core を実行およびデバッグする
           href: quickstart-netcore.md
-        - name: .NET Core (Visual Studio)
-          href: quickstart-netcore-visualstudio.md
-        - name: Node.js (VS Code と CLI)
+        - name: VS Code を使用して Node.js を実行およびデバッグする
           href: quickstart-nodejs.md
+        - name: Visual Studio を使用して .NET Core を実行およびデバッグする
+          href: quickstart-netcore-visualstudio.md
     - name: チュートリアル
       items:
         - name: Java (VS Code と CLI)
@@ -55,8 +59,12 @@
       items:
         - name: Dev Spaces のしくみ
           href: how-dev-spaces-works.md
+        - name: VS Code と Dev Spaces を連携させるしくみ
+          href: how-vs-code-works-with-dev-spaces.md
     - name: 方法
       items:
+        - name: Azure Dev Spaces をインストールする
+          href: how-to/install-dev-spaces.md
         - name: Azure Cloud Shell を使用して Kubernetes クラスターを作成する
           href: how-to/create-cluster-cloud-shell.md
         - name: Azure Dev Spaces を共有する
@@ -71,7 +79,11 @@
           href: how-to/upgrade-tools.md
         - name: Azure Dev Spaces と共に CI/CD を使用する
           href: how-to/setup-cicd.md
+        - name: Jenkins 用 Azure Dev Spaces プラグインを使用する
+          href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Azure Dev Spaces の事業継続とディザスター リカバリー
           href: how-to/dev-spaces-business-continuity.md
+        - name: Windows コンテナーを操作する
+          href: how-to/run-dev-spaces-windows-containers.md
     - name: トラブルシューティング
       href: troubleshooting.md

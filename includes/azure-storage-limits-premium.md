@@ -5,31 +5,23 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 03/23/2019
+ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e878ca23b9187fe3175ad0af1b4f27e59e1deef6
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181383"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509875"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Premium パフォーマンス ブロック BLOB ストレージ
 
 Premium パフォーマンス ブロック BLOB ストレージ アカウントは、キロバイト単位の小さなオブジェクトを使用するアプリケーションのために最適化されています。 高いトランザクション率、または、一貫して待ち時間の短いストレージが必要とされるアプリケーションに最適です。 Premium パフォーマンス ブロック BLOB ストレージは、アプリケーションに合わせて規模を変えられるように設計されています。 秒単位で非常に大量の要求が必要とされる、あるいはペタバイト単位のストレージ容量が必要とされるアプリケーションをデプロイする場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) でサポート リクエストを送信し、Microsoft にお問い合わせください。
 
-### <a name="premium-performance-filestorage-preview"></a>Premium パフォーマンス FileStorage (プレビュー)
+### <a name="premium-performance-filestorage"></a>Premium パフォーマンス FileStorage
 
-Premium ファイルは、**FileStorage (プレビュー)** と呼ばれる一意のストレージ アカウントを使用します。 このアカウントの種類は、高 IOPS、高スループットで、一貫して待機時間の短い のワークロード向けに設計されています。 Premium ファイル ストレージは、プロビジョニングされた共有サイズに合わせて拡大縮小されます。
-
-|領域  |ターゲット  |
-|---------|---------|
-|プロビジョニングされた最大サイズ     |100 TiB     |
-|共有   |無制限  |
-|IOPS     |100,000    |
-|イングレス|4,136 MiB/秒     |
-|エグレス|6,204 MiB/秒 |
+[!INCLUDE [azure-storage-limits-filestorage](azure-storage-limits-filestorage.md)]
 
  Premium ファイル共有のスケール ターゲットについては、[Premium ファイルのスケール ターゲット](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets)に関するセクションを参照してください。
 

@@ -2,7 +2,7 @@
 title: システム ビュー - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でサポートされるシステム ビューのドキュメントにリンクします。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6687a279b9992d31e3529aaf47054b3cb5c6d0eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3db694a74c87ff0b45e4e9ad7aa52945acda2c5e
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873446"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479410"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされるシステム ビュー
 Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
@@ -26,6 +26,9 @@ Azure SQL Data Warehouse でサポートされる T-SQL ステートメントの
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
 * [sys.pdw_loader_backup_run_details](https://msdn.microsoft.com/library/mt203877.aspx)
 * [sys.pdw_loader_backup_runs](https://msdn.microsoft.com/library/mt203884.aspx)
+* [sys.pdw_materialized_view_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-column-distribution-properties-transact-sql?view=azure-sqldw-latest) (プレビュー)
+* [sys.pdw_materialized_view_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-distribution-properties-transact-sql?view=azure-sqldw-latest) (プレビュー)
+* [sys.pdw_materialized_view_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-mappings-transact-sql?view=azure-sqldw-latest) (プレビュー)
 * [sys.pdw_nodes_column_store_dictionaries](https://msdn.microsoft.com/library/mt203902.aspx)
 * [sys.pdw_nodes_column_store_row_groups](https://msdn.microsoft.com/library/mt203880.aspx)
 * [sys.pdw_nodes_column_store_segments](https://msdn.microsoft.com/library/mt203916.aspx)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 10bcbb4c1957735b0ddad6c97325c32be19ddcdb
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383395"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868257"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 
@@ -369,7 +369,7 @@ searchItemRenderers = {
     }, // relatedSearches renderer omitted
 ```
 
-サムネイルの画像の `height` と `width` は、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 こうすることで、Bing は正確にそのサイズの[サムネイル](resize-and-crop-thumbnails.md)を返すことができます。
+サムネイルの画像の `height` と `width` は、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 こうすることで、Bing は正確にそのサイズの[サムネイル](../bing-web-search/resize-and-crop-thumbnails.md)を返すことができます。
 
 ## <a name="persisting-client-id"></a>クライアント ID の永続化
 
@@ -386,7 +386,7 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 > [!NOTE]
 > 運用環境の Web アプリケーションでは、いずれにしても要求サーバー側を実行する必要があります。 そうしないと、Web ページに Bing Search API キーを含める必要があり、ソースを表示した人ならだれでもキーを使用できるようになってしまいます。 権限のない者によって行われた要求であっても、すべての利用に対してユーザーの API サブスクリプション キーに基づいて料金が発生するため、キーは公開しないようにする必要があります。
 
-開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 そのようなプロキシからの応答には、応答ヘッダーを許可して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 

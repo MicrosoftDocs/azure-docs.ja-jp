@@ -4,7 +4,7 @@ description: 仮想マシン拡張機能を使用して、Linux 仮想マシン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: roiyz
-ms.openlocfilehash: 8b24af016349db0fcfb4106a1e69da395e3d0150
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d8192a3b6ff732481a4d48f6e188b4bb3989cda
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755142"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705931"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Linux 用の Azure Monitor 仮想マシン拡張機能
 
@@ -39,7 +39,7 @@ Azure Monitor ログは、クラウドとオンプレミスの資産全体にま
 
 Log Analytics Agent 拡張機能は、次の Linux ディストリビューションに対して実行することができます。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | CentOS Linux | 6 (x86/x64) および 7 (x64) |
 | Amazon Linux | 2017.09 (x64) | 
@@ -47,7 +47,7 @@ Log Analytics Agent 拡張機能は、次の Linux ディストリビューシ�
 | Red Hat Enterprise Linux Server | 6 (x86/x64) および 7 (x64) |
 | Debian GNU/Linux | 8 および 9 (x86/x64) |
 | Ubuntu | 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64) |
-| SUSE Linux Enterprise Server | 12 (x64) |
+| SUSE Linux Enterprise Server | 12 (x64) および 15 (x64) |
 
 >[!NOTE]
 >1\.x より前のバージョンの OpenSSL はどのプラットフォームでもサポートされていません。x86_64 プラットフォーム (64 ビット) でサポートされているバージョンは 1.10 のみです。  
@@ -73,7 +73,8 @@ Log Analytics Agent 拡張機能は、次の Linux ディストリビューシ�
 
 | Azure Monitor Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
-|1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
+| 1.11.9 | [1.11.0-7](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-7) |
+| 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
@@ -132,7 +133,7 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| EnableAdfsAuthentication | 値/例 |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |

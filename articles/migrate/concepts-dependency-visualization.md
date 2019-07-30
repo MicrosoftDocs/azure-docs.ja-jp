@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a0ceffbf4666ebc6bb5f95a6f3e2501f86095232
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201563"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305671"
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -29,7 +29,7 @@ Azure Migrate の依存関係可視化機能を使用すると、移行評価用
 Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)の [Service Map](../operations-management-suite/operations-management-suite-service-map.md) ソリューションを使用します。
 - 依存関係の視覚化を利用するために、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。
 - 移行プロジェクトが作成された同じサブスクリプション内にのみ、ワークスペースを作成またはアタッチできます。
-- プロジェクトに Log Analytics ワークスペースをアタッチするには、**プロジェクト概要ページで** Essentials **セクションに遷移し**、** 「構成が必要です」** をクリックします
+- プロジェクトに Log Analytics ワークスペースをアタッチするには、 **プロジェクト概要ページで** Essentials **セクションに遷移し**、 **「構成が必要です」** をクリックします
 
     ![Log Analytics ワークスペースを関連付ける](./media/concepts-dependency-visualization/associate-workspace.png)
 
@@ -77,4 +77,4 @@ Azure Migrate 以外で Log Analytics ワークスペースを使用できます
 
 ## <a name="next-steps"></a>次の手順
 - [マシンの依存関係マッピングを使用したマシンのグループ化](how-to-create-group-machine-dependencies.md)
-- [依存関係の可視化の詳細については](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)、よく寄せられる質問を確認します。
+- [依存関係の可視化の詳細については](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization)、よく寄せられる質問を確認します。

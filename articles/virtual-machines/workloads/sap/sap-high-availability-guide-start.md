@@ -4,7 +4,7 @@ description: Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガ
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7de46a534ea7920bcae4a5b2a3316117f090a7bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5e5493b3688c4de9dab971d58b58f85d00f8003b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265068"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709030"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -193,11 +193,11 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 * Azure Resource Manager デプロイ モデルを使用して Azure に高可用性 SAP システムをデプロイするための SAP のインストール手順
 
     > [!IMPORTANT]
-    > SAP のインストールには、Azure Resource Manager デプロイ モデルを使用することを強くお勧めします。 クラシック デプロイ モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
+    > SAP のインストールには、Azure Resource Manager デプロイ モデルを使用することを強くお勧めします。 クラシック デプロイ モデルにはない多くの利点があります。 Azure のデプロイメント モデルの詳細については、[こちら][virtual-machines-azure-resource-manager-architecture-benefits-arm]をご覧ください。   
     >
 * 次の環境での SAP の高可用性
-  * ![Windows][Logo_Windows]  **Windows**。**Windows Server フェールオーバー クラスター (WSFC)** を使用
-  * ![Linux][Logo_Linux] **Linux**。**Linux クラスター フレームワーク**を使用
+  * **Windows Server フェールオーバー クラスター (WSFC)** を使用する ![Windows][Logo_Windows] **Windows**
+  * **Linux クラスター フレームワーク**を使用する ![Linux][Logo_Linux] **Linux**
 
 これらの記事では、SAP Central Services (ASCS/SCS) やデータベース管理システム (DBMS) などの単一障害点 (SPOF) コンポーネントを保護する方法を学習します。 SAP アプリケーション サーバーなどの Azure での 冗長コンポーネントについても学びます。
 

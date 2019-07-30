@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0c1c4dcf7e4ff0c82157af83aa15544cf092e2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544741"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482163"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -42,7 +42,7 @@ OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサ�
 
 以降の手順は OBO フローを構成するものであり、次の図を使用して説明します。
 
-![OAuth2.0 の On-Behalf-Of フロー](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![OAuth2.0 の On-Behalf-Of フローを示します](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. クライアント アプリケーションは、トークン A (API A の `aud` 要求) を使用して API A に要求を発行します。
 1. API A が Microsoft ID プラットフォーム トークン発行エンドポイントに対して認証を行い、API B にアクセスするためのトークンを要求します。
@@ -163,7 +163,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ### <a name="error-response-example"></a>エラー応答の例
 
-ダウンストリーム API に多要素認証などの条件付きアクセス ポリシーが設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスはこのエラーをクライアント アプリケーションに示す必要があります。
+ダウンストリーム API に条件付きアクセス ポリシー (多要素認証など) が設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスでこのエラーをクライアント アプリケーションに示す必要があります。
 
 ```
 {

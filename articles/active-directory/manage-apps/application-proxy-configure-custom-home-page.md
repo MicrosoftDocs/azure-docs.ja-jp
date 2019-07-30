@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f4e71bd7fd7e0ed9a220619995ba108fdccabe4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51596e4db8999de5089748e40f9b24bd46c84e56
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66233760"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807832"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する
 
@@ -36,8 +36,8 @@ ms.locfileid: "66233760"
 - 既定の外部 URL は `https://ExpenseApp-contoso.msappproxy.net` ですが、外部ユーザーはここからサインイン ページには行けません。
 - 代わりに `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` をホーム ページ URL として設定します。それにより、外部ユーザーに対しては最初にサインインページが表示されます。
 
->[!NOTE]
->発行されたアプリにユーザーがアクセスできるようにすると、[Azure AD アクセス パネル](../user-help/my-apps-portal-end-user-access.md)と [Office 365 アプリ起動ツール](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)にアプリが表示されます。
+> [!NOTE]
+> 発行されたアプリにユーザーがアクセスできるようにすると、[Azure AD アクセス パネル](../user-help/my-apps-portal-end-user-access.md)と [Office 365 アプリ起動ツール](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)にアプリが表示されます。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -56,22 +56,22 @@ ms.locfileid: "66233760"
 Azure AD ポータルからご自分のアプリのホーム ページ URL を変更するには、次の手順に従ってください。
 
 1. [Azure Portal](https://portal.azure.com/) に管理者としてサインインします。
-2. **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。 登録済みのアプリの一覧が表示されます。
-3. 一覧からアプリを選択します。 登録済みのアプリの詳細を示すページが表示されます。
-4. **[管理]** 下にある **[ブランド]** を選択します。
-5. **[ホーム ページ URL]** をご自分の新しいパスで更新します。
+1. **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。 登録済みのアプリの一覧が表示されます。
+1. 一覧からアプリを選択します。 登録済みのアプリの詳細を示すページが表示されます。
+1. **[管理]** 下にある **[ブランド]** を選択します。
+1. **[ホーム ページ URL]** をご自分の新しいパスで更新します。
 
    ![[ホーム ページ URL] フィールドが表示された登録済みアプリのブランド ページ](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
- 
-6. **[保存]** を選択します。
+
+1. **[保存]** を選択します。
 
 ## <a name="change-the-home-page-with-powershell"></a>PowerShell でホーム ページを変更する
 
 PowerShell を使用してアプリのホーム ページを構成するには、次を実行する必要があります。
 
 1. Azure AD PowerShell モジュールをインストールします。
-2. アプリの ObjectId 値を見つけます。
-3. PowerShell のコマンドを使用してアプリのホーム ページの URL を更新します。
+1. アプリの ObjectId 値を見つけます。
+1. PowerShell のコマンドを使用してアプリのホーム ページの URL を更新します。
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Azure AD PowerShell モジュールをインストールする
 
@@ -87,7 +87,7 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
 
     コマンドを非管理者として実行している場合は、`-scope currentuser` オプションを使用します。
 
-2. インストール中に **Y** を選択して、Nuget.org から 2 つのパッケージをインストールします。両方のパッケージが必要です。
+1. インストール中に **Y** を選択して、Nuget.org から 2 つのパッケージをインストールします。両方のパッケージが必要です。
 
 ### <a name="find-the-objectid-of-the-app"></a>アプリの ObjectId を見つける
 
@@ -99,13 +99,13 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
    Import-Module AzureAD
    ```
 
-2. Azure AD モジュールにテナント管理者としてサインインします。
+1. Azure AD モジュールにテナント管理者としてサインインします。
 
    ```powershell
    Connect-AzureAD
    ```
 
-3. アプリを見つけます。 この例では、PowerShell を使用して、`SharePoint` の表示名でアプリを検索して ObjectId を検出しています。
+1. アプリを見つけます。 この例では、PowerShell を使用して、`SharePoint` の表示名でアプリを検索して ObjectId を検出しています。
 
    ```powershell
    Get-AzureADApplication | Where-Object { $_.DisplayName -eq "SharePoint" } | Format-List DisplayName, Homepage, ObjectId
@@ -135,31 +135,31 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
    $objguid = "8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4"
    ```
 
-2. 次のコマンドを実行して、正しいアプリを持っていることを確認します。 この出力は、前のセクション (「[アプリの Objectid を見つける](#find-the-objectid-of-the-app)」) で確認した出力と同じものになるはずです。
+1. 次のコマンドを実行して、正しいアプリを持っていることを確認します。 この出力は、前のセクション (「[アプリの Objectid を見つける](#find-the-objectid-of-the-app)」) で確認した出力と同じものになるはずです。
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
    ```
 
-3. 修正する変更箇所を保持しておくために、空のアプリケーション オブジェクトを作成します。
+1. 修正する変更箇所を保持しておくために、空のアプリケーション オブジェクトを作成します。
 
    ```powershell
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-4. ホーム ページの URL を目的の値に設定します。 この値は、発行済みアプリのサブドメイン パスである必要があります。 たとえば、ホーム ページの URL を `https://sharepoint-iddemo.msappproxy.net/` から `https://sharepoint-iddemo.msappproxy.net/hybrid/` に変更すると、アプリ ユーザーはカスタム ホーム ページに直接移動します。
+1. ホーム ページの URL を目的の値に設定します。 この値は、発行済みアプリのサブドメイン パスである必要があります。 たとえば、ホーム ページの URL を `https://sharepoint-iddemo.msappproxy.net/` から `https://sharepoint-iddemo.msappproxy.net/hybrid/` に変更すると、アプリ ユーザーはカスタム ホーム ページに直接移動します。
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
    ```
 
-5. ホーム ページの更新を行います。
+1. ホーム ページの更新を行います。
 
    ```powershell
    Set-AzureADApplication -ObjectId $objguid -Homepage $homepage
    ```
 
-6. 変更が成功したことを確認するには、手順 2 からの次のコマンドをもう一度実行します。
+1. 変更が成功したことを確認するには、手順 2 からの次のコマンドをもう一度実行します。
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
@@ -173,10 +173,10 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
-7. アプリを再起動して、想定どおりにホーム ページが最初の画面として表示されることを確認します。
+1. アプリを再起動して、想定どおりにホーム ページが最初の画面として表示されることを確認します。
 
->[!NOTE]
->アプリを変更すると、ホーム ページの URL がリセットされる可能性があります。 ホーム ページの URL がリセットされた場合は、このセクションの手順を繰り返して設定し直します。
+> [!NOTE]
+> アプリを変更すると、ホーム ページの URL がリセットされる可能性があります。 ホーム ページの URL がリセットされた場合は、このセクションの手順を繰り返して設定し直します。
 
 ## <a name="next-steps"></a>次の手順
 

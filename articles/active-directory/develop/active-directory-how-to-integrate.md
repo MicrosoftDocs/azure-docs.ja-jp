@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8804988387ba4a6cdc8dff5d93077de42ea2051
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4af8cdc1072678de7e34458fc4b54d52aae9eff1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546188"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111609"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 

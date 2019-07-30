@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840564"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60928082"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [現在のバージョン](transform-data-using-machine-learning.md)
 
@@ -66,7 +66,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning]
 
 JSON 定義のプロパティについては、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。
 
-Azure Machine Learning では、予測実験用にクラシック Web サービスと新しい Web サービスの両方をサポートします。 Data Factory から使用する適切なサービスを選択できます。 Azure Machine Learning のリンクされたサービスを作成するために必要な情報を取得するには、 https://services.azureml.net に移動します。ここには、(新しい) Web サービスとクラシック Web サービスがすべて表示されます。 アクセスする Web サービスをクリックし、**[使用]** ページをクリックします。 **apiKey** プロパティの**主キー**と、**mlEndpoint** プロパティの**バッチ要求**をコピーします。
+Azure Machine Learning では、予測実験用にクラシック Web サービスと新しい Web サービスの両方をサポートします。 Data Factory から使用する適切なサービスを選択できます。 Azure Machine Learning のリンクされたサービスを作成するために必要な情報を取得するには、 https://services.azureml.net に移動します。ここには、(新しい) Web サービスとクラシック Web サービスがすべて表示されます。 アクセスする Web サービスをクリックし、 **[使用]** ページをクリックします。 **apiKey** プロパティの**主キー**と、**mlEndpoint** プロパティの**バッチ要求**をコピーします。
 
 ![Azure Machine Learning Web サービス](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -127,12 +127,12 @@ Azure Machine Learning では、予測実験用にクラシック Web サービ�
 | プロパティ          | 説明                              | 必須 |
 | :---------------- | :--------------------------------------- | :------- |
 | name              | パイプラインのアクティビティの名前。     | はい      |
-| description       | アクティビティの動作を説明するテキスト。  | いいえ        |
+| description       | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type              | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **AzureMLBatchExecution** です。 | はい      |
 | linkedServiceName | Azure Machine Learning のリンクされたサービスにリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
-| webServiceInputs  | Azure Machine Learning Web サービスの入力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている入力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、入力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ        |
-| webServiceOutputs | Azure Machine Learning Web サービスの出力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている出力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、出力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ        |
-| globalParameters  | Azure Machine Learning Studio バッチ実行サービス エンドポイントに渡されるキーと値のペア。 キーは、公開済みの Azure Machine Learning Studio Web サービスで定義されている、Web サービスのパラメーターの名前と一致する必要があります。 値は、Azure Machine Learning Studio バッチ実行要求の GlobalParameters プロパティに渡されます | いいえ        |
+| webServiceInputs  | Azure Machine Learning Web サービスの入力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている入力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、入力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ       |
+| webServiceOutputs | Azure Machine Learning Web サービスの出力名をマップするキーと値のペア。 キーは、公開済みの Azure Machine Learning Web サービスで定義されている出力パラメーターと一致する必要があります。 値は、Azure Storage のリンクされたサービスと、出力 BLOB の場所を指定する FilePath プロパティのペアです。 | いいえ       |
+| globalParameters  | Azure Machine Learning Studio バッチ実行サービス エンドポイントに渡されるキーと値のペア。 キーは、公開済みの Azure Machine Learning Studio Web サービスで定義されている、Web サービスのパラメーターの名前と一致する必要があります。 値は、Azure Machine Learning Studio バッチ実行要求の GlobalParameters プロパティに渡されます | いいえ       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>シナリオ 1:Azure Blob Storage のデータを参照する Web サービスの入力/出力の使用を実験する
 

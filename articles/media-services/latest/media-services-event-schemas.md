@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2d1e648a9ea33beb1347a4a635388ee04e46215b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322235"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449751"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services 用の Azure Event Grid スキーマ
 
@@ -200,7 +200,7 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| 出力 | Array | ジョブ出力を取得します。|
+| outputs | Array | ジョブ出力を取得します。|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 

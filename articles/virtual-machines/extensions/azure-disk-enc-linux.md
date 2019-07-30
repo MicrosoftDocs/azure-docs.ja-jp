@@ -4,7 +4,7 @@ description: 仮想マシン拡張機能を使用して、Linux 用 Azure Disk E
 services: virtual-machines-linux
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 36e8875e91e2f04dbb60bab3211f07b2053e78f5
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414774"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706143"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -34,13 +34,48 @@ Azure Disk Encryption は、Linux の DM-Crypt サブシステムを活用して
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-現在、Azure Disk Encryption は、特定のディストリビューションとバージョンでサポートされています。  サポートされている Linux ディストリビューションの一覧については、「[Azure Disk Encryption に関する FAQ](../../security/azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)」を参照してください。
+現在、Azure Disk Encryption は、特定のディストリビューションとバージョンでサポートされています。  [Azure Disk Encryption がサポートされているオペレーティング システム: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) に関するセクションで、サポートされている Linux ディストリビューションの一覧をご覧ください。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
 Linux 用 Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッケージ管理エンドポイントにアクセスするためにインターネット接続が必要です。  詳細については、[Azure Disk Encryption の前提条件](../../security/azure-security-disk-encryption-prerequisites.md)に関するセクションを参照してください。
 
-## <a name="extension-schema"></a>拡張機能のスキーマ
+## <a name="extension-schemata"></a>拡張機能のスキーマ
+
+Azure Disk Encryption には 2 つのスキーマがあります。より新しい v1.1 は Azure Active Directory (AAD) のプロパティを使用しない推奨されるスキーマで、より古い v0.1 は AAD のプロパティを必要とします。 使用する拡張機能に対応するスキーマのバージョンを使用する必要があります。スキーマ v1.1 は AzureDiskEncryptionForLinux 拡張機能バージョン 1.1 用で、スキーマ v0.1 は AzureDiskEncryptionForLinux 拡張機能バージョン 0.1 用です。
+### <a name="schema-v11-no-aad-recommended"></a>スキーマ v1.1:AAD なし (推奨)
+
+V1.1 スキーマは推奨されていて、Azure Active Directory のプロパティを必要としません。
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2015-06-15",
+  "location": "[location]",
+  "properties": {
+        "publisher": "Microsoft.Azure.Security",
+        "settings": {
+          "DiskFormatQuery": "[diskFormatQuery]",
+          "EncryptionOperation": "[encryptionOperation]",
+          "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KeyVaultURL": "[keyVaultURL]",
+          "SequenceVersion": "sequenceVersion]",
+          "VolumeType": "[volumeType]"
+        },
+        "type": "AzureDiskEncryptionForLinux",
+        "typeHandlerVersion": "[extensionVersion]"
+  }
+}
+```
+
+
+### <a name="schema-v01-with-aad"></a>スキーマ v0.1: AAD を含む 
+
+0\.1 スキーマは、`aadClientID` と、`aadClientSecret` または `AADClientCertificate` のいずれかを必要とします。
+
+`aadClientSecret`コマンドを使用します。
 
 ```json
 {
@@ -70,25 +105,56 @@ Linux 用 Azure Disk Encryption では、Active Directory、Key Vault、Storage�
 }
 ```
 
+`AADClientCertificate`コマンドを使用します。
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2015-06-15",
+  "location": "[location]",
+  "properties": {
+    "protectedSettings": {
+      "AADClientCertificate": "[aadClientCertificate]",
+      "Passphrase": "[passphrase]"
+    },
+    "publisher": "Microsoft.Azure.Security",
+    "settings": {
+      "AADClientID": "[aadClientID]",
+      "DiskFormatQuery": "[diskFormatQuery]",
+      "EncryptionOperation": "[encryptionOperation]",
+      "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KeyVaultURL": "[keyVaultURL]",
+      "SequenceVersion": "sequenceVersion]",
+      "VolumeType": "[volumeType]"
+    },
+    "type": "AzureDiskEncryptionForLinux",
+    "typeHandlerVersion": "[extensionVersion]"
+  }
+}
+```
+
+
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 | データ型 |
+| EnableAdfsAuthentication | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | 文字列 |
-| type | AzureDiskEncryptionForLinux | 文字列 |
-| typeHandlerVersion | 0.1、1.1 (VMSS) | int |
-| AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
-| AADClientSecret | password | 文字列 |
-| AADClientCertificate | thumbprint | 文字列 |
+| publisher | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
+| typeHandlerVersion | 0.1、1.1 | int |
+| (0.1 スキーマ) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0.1 スキーマ) AADClientSecret | password | string |
+| (0.1 スキーマ) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 辞書 |
-| EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | 文字列 | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 文字列 |
-| KeyEncryptionKeyURL | url | 文字列 |
-| KeyVaultURL | url | 文字列 |
-| Passphrase | password | 文字列 | 
-| SequenceVersion | uniqueidentifier | 文字列 |
-| VolumeType | OS、Data、All | 文字列 |
+| EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | string |
+| KeyEncryptionKeyURL | url | string |
+| (省略可能) KeyVaultURL | url | string |
+| パスフレーズ | password | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | OS、Data、All | string |
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 

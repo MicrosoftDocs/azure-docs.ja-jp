@@ -21,6 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: .NET SDK の使用
       items:
+        - name: アプリの作成と管理
+          href: sdk-csharp-quickstart-authoring-app.md
         - name: 予測エンドポイントに対するクエリの実行
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
     - name: REST API の使用
@@ -258,7 +260,7 @@
           href: luis-migration-api-v1-to-v2.md
         - name: V3 REST API への移行
           href: luis-migration-api-v3.md
-          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference'
+          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行
@@ -266,6 +268,8 @@
           href: luis-container-howto.md
         - name: コンテナーを構成する
           href: luis-container-configuration.md
+        - name: Container Instances の使用
+          href: deploy-luis-on-container-instances.md
 - name: リファレンス
   items:
     - name: ユーザーのプライバシー
@@ -300,8 +304,10 @@
           href: luis-reference-prebuilt-keyphrase.md
         - name: number エンティティ
           href: luis-reference-prebuilt-number.md
-        - name: 序数エンティティ
+        - name: ordinal エンティティ
           href: luis-reference-prebuilt-ordinal.md
+        - name: ordinal V2 エンティティ
+          href: luis-reference-prebuilt-ordinal-v2.md
         - name: percentage エンティティ
           href: luis-reference-prebuilt-percentage.md
         - name: personName エンティティ
@@ -315,6 +321,18 @@
     - name: 事前構築済みのドメインのリファレンス
       href: luis-reference-prebuilt-domains.md
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
+    - name: カスタム エンティティのリファレンス
+      items:
+        - name: 複合エンティティ
+          href: reference-entity-composite.md
+        - name: リスト エンティティ
+          href: reference-entity-list.md
+        - name: Pattern.any エンティティ
+          href: reference-entity-pattern-any.md
+        - name: 正規表現エンティティ
+          href: reference-entity-regular-expression.md
+        - name: シンプル エンティティ
+          href: reference-entity-simple.md
     - name: Azure CLI
       href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: Azure RM PowerShell

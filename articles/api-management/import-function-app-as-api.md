@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2018
+ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: e5e8ffc18db902eeaa8484122e3844f35046191f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f9e5c531e387ba8d2c61c6d46b1e8935bc7d42cf
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243064"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67429040"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -69,7 +69,7 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
     ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
-    > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。 現時点では、Linux 関数アプリはサポートされていません。
+    > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。
 
 7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、他の事前に設定されているフィールドを編集します。
 

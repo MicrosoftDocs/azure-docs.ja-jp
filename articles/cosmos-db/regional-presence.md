@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB のリージョン プレゼ�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 787bcc8f0db60868008ec93fcacdec1283946d2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 775ca8c57a9a444df2f7d0a4df4224b7eba9d677
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243729"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384046"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB のリージョン プレゼンス
 

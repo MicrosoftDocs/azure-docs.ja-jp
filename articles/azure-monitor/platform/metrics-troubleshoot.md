@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: cff1bbefc3c54f7f9c02c646bd9eef528fe28c73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939568"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341971"
 ---
 # <a name="troubleshooting-metrics-charts"></a>メトリック グラフのトラブルシューティング
 
@@ -73,7 +73,7 @@ Azure では、メトリックへのアクセスは[ロールベースのアク�
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>ダッシュボードに "データの取得中にエラーが発生しました" というメッセージが表示される
 
-この問題は、ダッシュボードを作成するときに使ったメトリックが後で非推奨になって Azure から削除された場合によく発生します。 それに該当するかどうかを確認するには、リソースの **[メトリック]** タブを開き、メトリック ピッカーでメトリックを使用できるかどうかを調べます。 メトリックが表示されない場合、メトリックは Azure から削除されています。 通常、メトリックが非推奨になったときは、リソースの正常性について似た観点を提供する、さらに新しくて良いメトリックがあります。
+この問題は、ダッシュボードを作成するときに使ったメトリックが後で非推奨になって Azure から削除された場合に、発生することがあります。 それに該当するかどうかを確認するには、リソースの **[メトリック]** タブを開き、メトリック ピッカーでメトリックを使用できるかどうかを調べます。 メトリックが表示されない場合、メトリックは Azure から削除されています。 通常、メトリックが非推奨になったときは、リソースの正常性について似た観点を提供する、さらに新しくて良いメトリックがあります。
 
 **解決策:** ダッシュボードでグラフに対して別のメトリックを選択し、障害が発生したタイルを更新します。 [Azure サービスで使用可能なメトリックのリストを確認する](metrics-supported.md)ことができます。
 

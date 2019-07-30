@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 677a9d02493bf5fac1bfcbe8c40ce9efe2040be9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583865"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537711"
 ---
 # <a name="deploy-multiple-guest-executables"></a>複数のゲスト実行可能ファイルのデプロイ
 この記事では、複数のゲスト実行可能ファイルをパッケージ化して Azure Service Fabric にデプロイする方法について説明します。 単一の Service Fabric のパッケージを作成しデプロイする方法については、「[Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)」を参照してください。
@@ -33,7 +33,7 @@ Visual Studio を使用して、複数のゲスト実行可能ファイルを含
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>複数のゲスト実行可能アプリケーションを手動でパッケージ化する
-別の方法として、ゲスト実行可能ファイルを手動でパッケージ化することができます。 この記事では、手動のパッケージ化に、[https://aka.ms/servicefabricpacktool](https://aka.ms/servicefabricpacktool) にある Service Fabric パッケージ化ツールを使用します。
+別の方法として、ゲスト実行可能ファイルを手動でパッケージ化することができます。 詳細については、「[既存の実行可能ファイルの手動によるパッケージ化とデプロイ](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable)」を参照してください。
 
 ### <a name="packaging-the-nodejs-application"></a>Node.js アプリケーションのパッケージ化
 この記事は、Service Fabric クラスター内のノードに Node.js がインストールされていないことを前提としています。 そのため、パッケージ化する前に、ノード アプリケーションのルート ディレクトリに Node.exe を追加する必要があります。 (Express Web フレームワークと Jade テンプレート エンジンを使用する) Node.js アプリケーションのディレクトリ構造は、次のようになります。
@@ -207,7 +207,6 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 アプリケーションがローカル クラスターに正常に発行されると、Node.js アプリケーションのサービス マニフェストに入力したポート (たとえば http:\//localhost:3000) で Node.js アプリケーションにアクセスできます。
 
 このチュートリアルでは、2 つの既存のアプリケーションを 1 つの Service Fabric アプリケーションとして簡単にパッケージ化する方法について説明しました。 また、高可用性やヘルス システムとの統合など、Service Fabric の機能の一部を活用できるように、Service Fabric にデプロイする方法についても説明しました。
-
 
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Linux で Yeoman を使用した既存のアプリケーションへのゲスト実行可能ファイルの追加
 

@@ -2,7 +2,7 @@
 title: Azure モバイル アプリ (Xamarin.Forms) に対するオフライン同期の有効化 | Microsoft Docs
 description: App Service Mobile Apps を使用して、Xamarin.Forms アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: yochayk
 editor: ''
 services: app-service\mobile
@@ -12,24 +12,28 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/04/2016
-ms.author: crdun
-ms.openlocfilehash: 506c59ca24aeafbac59b1508bb78142051302765
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 53f339d5450965c992f6528ff294e0d37ec2f7f6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127881"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446291"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Xamarin.Forms モバイル アプリのオフライン同期の有効化
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-offline-data) を今すぐチェックしてください。
+>
+
 ## <a name="overview"></a>概要
 このチュートリアルでは、Xamarin.Forms 向けの Azure Mobile Apps のオフライン同期機能について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。 変更は、ローカル データベースに格納されます。 デバイスが再びオンラインになると、これらの変更がリモート サービスと同期されます。
 
-このチュートリアルは、チュートリアル「Xamarin.iOS アプリを作成する」を完了した際に作成される Mobile Apps 用の Xamarin.Forms クイック スタート ソリューションに基づいています。 この Xamarin.Forms のクイック スタート ソリューションには、オフライン同期をサポートするためのコードが含まれています。これを有効にする必要があります。 このチュートリアルでは、クイック スタート ソリューションを更新して、Azure Mobile Apps のオフライン機能をオンにします。 また、アプリのオフライン固有のコードについても取り上げます。 ダウンロードしたクイック スタート ソリューションを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][1]」を参照してください。
+このチュートリアルは、チュートリアル「Xamarin.iOS アプリを作成する」を完了した際に作成される Mobile Apps 用の Xamarin.Forms クイック スタート ソリューションに基づいています。 この Xamarin.Forms のクイック スタート ソリューションには、オフライン同期をサポートするためのコードが含まれています。これを有効にする必要があります。 このチュートリアルでは、クイック スタート ソリューションを更新して、Azure Mobile Apps のオフライン機能をオンにします。 また、アプリのオフライン固有のコードについても取り上げます。 ダウンロードしたクイック スタート ソリューションを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「 [Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)][1]」を参照してください。
 
-オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期][2]」を参照してください。
+オフラインの同期機能の詳細については、トピック「 [Azure Mobile Apps でのオフライン データ同期][2]」をご覧ください。
 
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>クイック スタート ソリューションでのオフライン同期機能の有効化
 オフライン同期コードは、C# プリプロセッサ ディレクティブを使用してプロジェクトにインクルードされます。 **OFFLINE\_SYNC\_ENABLED** シンボルを定義すると、これらのコード パスがビルドにインクルードされます。 Windows アプリの場合、SQLite プラットフォームもインストールする必要があります。
@@ -42,7 +46,7 @@ ms.locfileid: "62127881"
 
    * **Windows 8.1 ランタイム:** [SQLite for Windows 8.1][3] をインストールします。
    * **Windows Phone 8.1:** [SQLite for Windows Phone 8.1][4] をインストールします。
-   * **ユニバーサル Windows プラットフォーム:** [ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
+   * **ユニバーサル Windows プラットフォーム** : [ユニバーサル Windows プラットフォーム用 SQLite][5]をインストール。
 
      クイック スタートには、ユニバーサル Windows プロジェクトは含まれていませんが、ユニバーサル Windows プラットフォームは Xamarin フォームでサポートされます。
 4. (省略可能) それぞれの Windows アプリ プロジェクトで、 **[参照]**  >  **[参照の追加]** の順に右クリックして、**Windows** フォルダー、 **[拡張機能]** の順に展開します。
@@ -50,7 +54,7 @@ ms.locfileid: "62127881"
     Windows プラットフォームによって SQLite SDK の名前はわずかに異なります。
 
 ## <a name="review-the-client-sync-code"></a>クライアント同期コードの確認
-ここでは、 `#if OFFLINE_SYNC_ENABLED` ディレクティブ内のチュートリアル コードに既に含まれているものの概要を説明します。 オフライン同期機能は、ポータブル クラス ライブラリ プロジェクト内の TodoItemManager.cs プロジェクト ファイル内にあります。 機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期][2]」を参照してください。
+ここでは、 `#if OFFLINE_SYNC_ENABLED` ディレクティブ内のチュートリアル コードに既に含まれているものの概要を説明します。 オフライン同期機能は、ポータブル クラス ライブラリ プロジェクト内の TodoItemManager.cs プロジェクト ファイル内にあります。 機能の概念的な概要については、「 [Azure Mobile Apps でのオフライン データ同期][2]」をご覧ください。
 
 * テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。 ローカル ストア データベースは、次のコードを使用して **TodoItemManager** クラス コンストラクターで初期化されます。
 
@@ -118,7 +122,7 @@ ms.locfileid: "62127881"
 
 コンテキストによって追跡された保留中のローカル更新のあるテーブルに対してプルが実行される場合、そのプル操作は前のコンテキストのプッシュを自動的にトリガーします。 このサンプルの項目を更新、追加、完了するとき、明示的な **PushAsync** の呼び出しを省略できます。
 
-提供されたコードでは、リモートの TodoItem テーブルのすべてのレコードが照会されますが、クエリ ID とクエリを **PushAsync**に渡すことでレコードをフィルター処理することも可能です。 詳細については、「[Azure Mobile Apps でのオフライン データ同期][2]」の「*増分同期*」セクションを参照してください。
+提供されたコードでは、リモートの TodoItem テーブルのすべてのレコードが照会されますが、クエリ ID とクエリを **PushAsync**に渡すことでレコードをフィルター処理することも可能です。 詳細については、「 *Azure Mobile Apps でのオフライン データ同期* 」の「 [増分同期][2]」セクションを参照してください。
 
 ## <a name="run-the-client-app"></a>クライアント アプリの実行
 オフライン同期が有効になったので、各プラットフォームで少なくとも 1 回クライアント アプリケーションを実行して、ローカル ストア データベースにデータを設定します。 この後、オフラインのシナリオをシミュレートし、アプリがオフラインの間にローカル ストアのデータを変更します。

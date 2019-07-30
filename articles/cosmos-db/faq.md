@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 89c04a55138d57fd2ff37a96f2bc92b12d1780d9
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954149"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341227"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -163,7 +163,7 @@ SQL API アカウントでサポートされる SQL クエリ言語は、SQL Ser
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>SQL API は SQL 集計関数をサポートしていますか?
 
-SQL API は、SQL 文法の `COUNT`、`MIN`、`MAX`、`AVG`、`SUM` の各集計関数を使用した、あらゆるスケールでの低待機時間の集計をサポートしています。 詳細については、「[集計関数](how-to-sql-query.md#Aggregates)」をご覧ください。
+SQL API は、SQL 文法の `COUNT`、`MIN`、`MAX`、`AVG`、`SUM` の各集計関数を使用した、あらゆるスケールでの低待機時間の集計をサポートしています。 詳細については、「[集計関数](sql-query-aggregates.md)」をご覧ください。
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API はどのようにして同時実行を提供しますか?
 
@@ -744,11 +744,11 @@ CQLv3 を使用する Apache Cassandra SDK のクライアント ドライバー
 
 ### <a name="can-i-use-stable-loader-for-data-loading"></a>データの読み込みに stable ローダーを使うことはできますか?
 
-いいえ。プレビューでは、stable ローダーはサポートされていません。
+いいえ。stable ローダーはサポートされていません。
 
 ### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>オンプレミスの Apache Cassandra クラスターを Azure Cosmos DB の Cassandra API とペアにできますか?
 
-現在、Azure Cosmos DB では、操作のオーバーヘッドがないクラウド環境に合わせてエクスペリエンスが最適化されています。 ペアリングが必要な場合は、シナリオの説明を添えて [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせください。
+現在、Azure Cosmos DB では、操作のオーバーヘッドがないクラウド環境に合わせてエクスペリエンスが最適化されています。 ペアリングが必要な場合は、シナリオの説明を添えて [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせください。 現在、オンプレミスや別のクラウドの Cassandra クラスターと Cosomos DB の Cassandra API をペアリングする機能の提供に向けた作業を進めています。
 
 ### <a name="does-cassandra-api-provide-full-backups"></a>Cassandra API に完全バックアップ機能はありますか?
 
@@ -763,15 +763,12 @@ Azure Cosmos DB の Cassandra API は、Azure Cosmos DB のグローバルに分
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Apache Cassandra API では、既定でエンティティのすべての属性のインデックスが作成されますか?
 
-はい。エンティティのすべての属性のインデックスが、Azure Cosmos DB によって既定で作成されます。 詳細については、「[Azure Cosmos DB でのインデックス作成ポリシー](index-policy.md)」をご覧ください。 常に一貫したインデックス作成と永続的なクォーラム コミットされた書き込みにより、保証されたパフォーマンスのメリットを得られます。
+Cassandra API では、特定の属性に対する選択的インデックスを作成できるように、セカンダリ インデックスをサポートする計画を進めています。 
 
-### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>つまり、クエリを満たすために複数のインデックスを作成する必要はないということですか?
-
-はい。Azure Cosmos DB はすべての属性の自動インデックス作成機能を備えています。スキーマ定義は不要です。 この自動化により、開発者はインデックスの作成と管理ではなく、アプリケーションに注力できるようになります。 詳細については、「[Azure Cosmos DB でのインデックス作成ポリシー](index-policy.md)」をご覧ください。
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>エミュレーターで新しい Cassandra API SDK をローカルに使うことができますか?
 
-今後、この機能をサポートする予定です。
+はい、これはサポートされています。
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-change-feed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>プラットフォームとしての Azure Cosmos DB は、変更フィードなどの多数の機能を備えているようですが、 これらの機能が Cassandra API に追加される予定はありますか?
 

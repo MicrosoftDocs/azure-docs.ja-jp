@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 78ea29b9b37c55a588a44f8d4b69486b89ee2fee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48792a90a42d0cfe5c0b34c872b3d474d6a784f1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684823"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433502"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
@@ -536,9 +536,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 - Apache Spark での ML Server の使用について詳しくは、[概要のガイダンス](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)を参照してください。
 
-- ML Server の一般情報については、[R の基礎](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)に関する記事をご覧ください。
-
-- HDInsight での ML Services については、[HDInsight での ML Services の概要](r-server/r-server-overview.md)および[ Azure HDInsight での ML Services の基礎](r-server/r-server-get-started.md)に関するページをご覧ください。
+- HDInsight での ML Services については、[HDInsight での ML Services の概要](r-server/r-server-overview.md)に関するページをご覧ください。
 
 SparkR の使い方について詳しくは、次のドキュメントをご覧ください。
 

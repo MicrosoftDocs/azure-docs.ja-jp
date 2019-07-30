@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b1602af59cd46b4bbcefa6f1df3cd84c0d342b71
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a2d71330dcdac7054b20e0a6222b542fd8815705
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959701"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849563"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI 仕様のインポート
 
@@ -45,7 +45,7 @@ ms.locfileid: "52959701"
 1. **[API Management]** で **[API]** を選びます。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[OpenAPI の仕様]** を選択します。
     ![OpenAPI の仕様](./media/import-api-from-oas/oas-api.png)
-3. 適切な設定を入力します。 作成時に API のすべての値を設定できます。 また、**[設定]** タブに移動することで、一部の値を後で設定することもできます。 <br/> **Tab** キーを押すと、一部 (またはすべて) のフィールドに、指定したバックエンド サービスの情報が入力されます。
+3. 適切な設定を入力します。 作成時に API のすべての値を設定できます。 また、 **[設定]** タブに移動することで、一部の値を後で設定することもできます。 <br/> **Tab** キーを押すと、一部 (またはすべて) のフィールドに、指定したバックエンド サービスの情報が入力されます。
 
     ![API の作成](./media/api-management-get-started/create-api.png)
 
@@ -53,13 +53,16 @@ ms.locfileid: "52959701"
     |---|---|---|
     |**OpenAPI の仕様**|https://conferenceapi.azurewebsites.net?format=json|API を実装しているサービスを参照します。 要求は、API Management によってこのアドレスに転送されます。|
     |**[表示名]**|*Demo Conference API\(デモ会議 API\)*|サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。 <br/>この名前は開発者ポータルに表示されます。|
-    |**名前**|*demo-conference-api*|API の一意の名前を指定します。 <br/>サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。|
+    |**Name**|*demo-conference-api*|API の一意の名前を指定します。 <br/>サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。|
     |**説明**|API の任意の説明を指定します。|サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。|
     |**API URL サフィックス**|*conference*|サフィックスは、API Management サービスのベース URL に付加されます。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。|
     |**[URL スキーム]**|*HTTPS*|API へのアクセスに使用できるプロトコルを決定します。 |
     |**成果物**|*無制限*| API を成果物に関連付けることで API を公開します。 必要に応じてこの新しい API を成果物に追加するには、成果物名を入力します。 この手順を複数回繰り返して、API を複数の成果物に追加できます。<br/>成果物には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。<br/> すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。**スターター**と**無制限**。 |
 
-4. **作成**を選択します。
+4. **作成** を選択します。
+
+> [!NOTE]
+> API インポートの制限事項については、[別の記事](api-management-api-import-restrictions.md)で説明されています。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
 

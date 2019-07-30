@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Bing Spell Check SDK for C# を使用してスペルをチェックする
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: adbb60c7ddbc72b8b7e5cb31c6909117ce3a10cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d98d00275cbd89702e4bae0c93aa262805617e59
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798359"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500778"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>クイック スタート:Bing Spell Check SDK for C# を使用してスペルをチェックする
 

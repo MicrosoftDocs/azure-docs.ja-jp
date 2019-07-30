@@ -6,14 +6,15 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
-ms.author: cherylmc;ganesr
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366557"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846581"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
 
@@ -21,6 +22,7 @@ ms.locfileid: "60366557"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager テンプレート](expressroute-howto-circuit-resource-manager-template.md)
 > * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
@@ -121,7 +123,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 
 ## <a name="modify"></a>ExpressRoute 回線の変更
 
-ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 帯域幅、SKU、課金モデルを変更し、 **[構成]** ページの従来の操作を許可することができます。 制限と制約事項の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。 
+ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 帯域幅、SKU、課金モデルを変更し、 **[構成]** ページの従来の操作を許可することができます。 制限と制約事項の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
 ダウンタイムなく、次のタスクを実行できます。
 
@@ -139,9 +141,9 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 * *従来の操作の許可*を有効または無効にできます。
   > [!IMPORTANT]
   > 既存のポートの容量が不十分な場合、ExpressRoute 回線の再作成が必要になる可能性があります。 その場所に使用可能な追加の容量がない場合、回路をアップグレードすることはできません。
-  > 
+  >
   > 帯域幅はシームレスにアップグレードできますが、ExpressRoute 回線の帯域幅を中断なく減らすことはできません。 帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
-  > 
+  >
   > Standard 回線で許可されるリソースより多くのリソースを使用する場合、Premium アドオンの無効化操作が失敗することがあります。
 
 ExpressRoute 回線を変更するには、 **[構成]** をクリックします。

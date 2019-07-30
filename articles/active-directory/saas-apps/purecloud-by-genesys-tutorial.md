@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 764ad8f1ca19238e1986d1d187d19c405963a832
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac476e2a66f7fd1d315adb37258917b3ff47373f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868852"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory と PureCloud by Genesys の統合
 
@@ -52,11 +52,11 @@ Azure AD への PureCloud by Genesys の統合を構成するには、ギャラ�
 
 **ギャラリーから PureCloud by Genesys を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -64,7 +64,7 @@ Azure AD への PureCloud by Genesys の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**PureCloud by Genesys**」と入力し、結果パネルで **[PureCloud by Genesys]** を選び、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**PureCloud by Genesys**」と入力し、結果パネルで **[PureCloud by Genesys]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リストの PureCloud by Genesys](common/search-new-app.png)
 
@@ -88,15 +88,15 @@ PureCloud by Genesys で Azure AD のシングル サインオンを構成して
 
 PureCloud by Genesys で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **PureCloud by Genesys** アプリケーション統合ページで、**[シングル サインオン]** を選びます。
+1. [Azure portal](https://portal.azure.com/) の **PureCloud by Genesys** アプリケーション統合ページで、 **[シングル サインオン]** を選びます。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -124,7 +124,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
     | `https://login.mypurecloud.ie/saml` |
     | `https://login.mypurecloud.com.au/saml` |
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[PureCloud by Genesys のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -138,7 +138,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
     | `https://login.mypurecloud.ie` |
     | `https://login.mypurecloud.com.au` |
 
-6. PureCloud by Genesys アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
+6. PureCloud by Genesys アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -167,7 +167,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
     g. **[Save]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -185,7 +185,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
 1. 別の Web ブラウザー ウィンドウで、PureCloud by Genesys に管理者としてログインします。
 
-2. 上部の **[Admin]\(管理\)** をクリックし、**[Integrations]\(統合\)** の **[Single Sign-on]\(シングル サインオン\)** に移動します。
+2. 上部の **[Admin]\(管理\)** をクリックし、 **[Integrations]\(統合\)** の **[Single Sign-on]\(シングル サインオン\)** に移動します。
 
     ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure01.png)
 
@@ -199,7 +199,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
     c. **[Target URI]\(ターゲット URI\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[Relying Party Identifier]\(証明書利用者識別子\)** の値については、Azure portal に移動し、**PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブをクリックして、**[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier]\(証明書利用者識別子\)** ボックスに貼り付けます。 
+    d. **[Relying Party Identifier]\(証明書利用者識別子\)** の値については、Azure portal に移動し、**PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブをクリックして、 **[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier]\(証明書利用者識別子\)** ボックスに貼り付けます。 
 
     ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure06.png)
 
@@ -209,7 +209,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -234,11 +234,11 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
 このセクションでは、PureCloud by Genesys へのアクセスを許可して、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[PureCloud by Genesys]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[PureCloud by Genesys]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[PureCloud by Genesys]** を選択します。
+2. アプリケーションの一覧で、 **[PureCloud by Genesys]** を選択します。
 
     ![アプリケーションの一覧の PureCloud by Genesys リンク](common/all-applications.png)
 
@@ -246,15 +246,15 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-purecloud-by-genesys-test-user"></a>PureCloud by Genesys のテスト ユーザーの作成
 
@@ -264,11 +264,11 @@ Azure AD ユーザーが PureCloud by Genesys にログインできるように�
 
 1. PureCloud by Genesys に管理者としてログインします。
 
-2. 上部の **[Admin]\(管理\)** をクリックし、**[People & Permissions]\(ユーザーとアクセス許可\)** の **[People]\(ユーザー\)** に移動します。
+2. 上部の **[Admin]\(管理\)** をクリックし、 **[People & Permissions]\(ユーザーとアクセス許可\)** の **[People]\(ユーザー\)** に移動します。
 
     ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure03.png)
 
-3. [People]\(ユーザー\) ページで、**[Add Person]\(ユーザーの追加\)** をクリックします。
+3. [People]\(ユーザー\) ページで、 **[Add Person]\(ユーザーの追加\)** をクリックします。
 
     ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure04.png)
 

@@ -4,7 +4,7 @@ description: ご利用の Azure 環境で Oracle データベースを設計お�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,18 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebe6f27818df8407504e4254f16d952aa298b6cc
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836310"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348325"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
 ## <a name="assumptions"></a>前提条件
 
 - オンプレミスから Azure への Oracle データベースの移行を計画している
+- 移行先となる Oracle Database 用の[診断パック](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)がある
 - Oracle AWR レポートの各種メトリックを理解している
 - アプリケーションのパフォーマンスとプラットフォームの使用率に関する基礎知識がある
 
@@ -51,7 +52,7 @@ ms.locfileid: "60836310"
 > | **回復力** |MTBF (平均故障間隔) |MTTR (平均復旧時間)|
 > | **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (修正/更新プログラムは Azure によって管理) |
 > | **リソース** |専用  |他のクライアントと共有|
-> | **リージョン** |データ センター |[リージョンのペア](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
+> | **リージョン** |データ センター |[リージョンのペア](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
 > | **Storage** |記憶域ネットワーク/物理ディスク |[Azure 管理のストレージ](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **スケール** |垂直スケール |水平スケール|
 
@@ -72,11 +73,11 @@ Azure 環境でのパフォーマンスを向上させるために調整でき�
 
 ### <a name="generate-an-awr-report"></a>AWR レポートの生成
 
-既存の Oracle データベースがあるとき、Azure への移行を予定している場合は、選択肢がいくつかあります。 Oracle AWR レポートを実行して、メトリック (IOPS、Mbps、GiB など) を取得することができます。 その後、収集したメトリックに基づいて、VM を選択します。 または、自社のインフラストラクチャ チームに問い合わせて、同様の情報を取得することもできます。
+既存の Oracle データベースがあるとき、Azure への移行を予定している場合は、選択肢がいくつかあります。 Oracle インスタンス用の[診断パック](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)がある場合は、Oracle AWR レポートを実行して、メトリック (IOPS、Mbps、GiB など) を取得することができます。 その後、収集したメトリックに基づいて、VM を選択します。 または、自社のインフラストラクチャ チームに問い合わせて、同様の情報を取得することもできます。
 
 比較できるように、通常のワークロード時とピークのワークロード時の両方で AWR レポートを実行することを検討してください。 これらのレポートを参考に、平均のワークロードや最大のワークロードに基づいて、仮想マシンのサイズを決めることができます。
 
-AWR レポートを生成する方法の例を次に示します。
+AWR レポートを生成する方法の例を次に示します (現在のインストールに Oracle Enterprise Manager がある場合は、それを使用して AWR レポートを生成します)。
 
 ```bash
 $ sqlplus / as sysdba
@@ -143,6 +144,10 @@ VM を選択した後に、仮想マシンの ACU に注意を向けてくださ
 
 - オンプレミスのデプロイと比べて、ネットワーク待機時間が比較的長くなります。 ネットワークのラウンド トリップ数を削減すると、パフォーマンスが大幅に向上します。
 - ラウンドトリップ数を削減するには、同じ仮想マシン上のトランザクション数が多いアプリケーション、つまり "おしゃべりな" アプリを統合します。
+- ネットワーク パフォーマンスを向上させるには、[高速ネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)で仮想マシンを使用してください。
+- 特定の Linux ディストリビューションについては、[TRIM/UNMAP サポート](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)を有効にすることを検討してください。
+- 個別の仮想マシン上に [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) をインストールします。
+- Linux では、既定では大型のページは有効になっていません。 大型のページを有効にすることを検討し、Oracle DB で `use_large_pages = ONLY` を設定します。 これは、パフォーマンスの向上に役立ちます。 詳細については、 [こちら](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)で確認できます。
 
 ### <a name="disk-types-and-configurations"></a>ディスクの種類と構成
 
@@ -183,20 +188,21 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 - I/O 削減のためにデータ圧縮を使用します (データとインデックスの両方)。
 - REDO ログ、SYSTEM 表領域、TEMP 表領域、UNDO 表領域は、それぞれ別のデータ ディスクに分離します。
 - アプリケーション ファイルを既定の OS ディスク (/dev/sda) に保存しないでください。 これらのディスクは VM の高速起動用に最適化されていないため、アプリケーションに適切なパフォーマンスが提供されない可能性があります。
+- Premium ストレージで M シリーズの VM を使用する場合は、再実行ログ ディスクで[書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)を有効にします。
 
 ### <a name="disk-cache-settings"></a>ディスク キャッシュの設定
 
 ホスト キャッシュには次の 3 つのオプションがあります。
 
-- *読み取り専用*:今後の読み取りのためにすべての要求をキャッシュします。 すべての書き込みは、Azure Blob Strorage に直接保存されます。
+- *ReadOnly*: 今後の読み取りのためにすべての要求をキャッシュします。 すべての書き込みは、Azure Blob Strorage に直接保存されます。
 
-- *読み取り/書き込み*:これは "先読み" アルゴリズムです。 今後の読み取りのために読み取りと書き込みがキャッシュされます。 ライトスルー以外の書き込みは、最初にローカル キャッシュに保存されます。 SQL Server では、ライトスルーが使用されるため、書き込みは Azure Storage に保存されます。 また、軽量のワークロードでのディスク待機時間が最短になります。
+- *ReadWrite*: これは "先読み" アルゴリズムです。 今後の読み取りのために読み取りと書き込みがキャッシュされます。 ライトスルー以外の書き込みは、最初にローカル キャッシュに保存されます。 また、軽量のワークロードでのディスク待機時間が最短になります。 必要なデータの永続化を処理しないアプリケーションで ReadWrite キャッシュを使用すると、VM がクラッシュした場合にデータが失われる可能性があります。
 
 - *なし* (無効):このオプションを使用すると、キャッシュをバイパスすることができます。 すべてのデータはディスクに転送されて、Azure Storage に保存されます。 この方法を使用すると、I/O 集約型ワークロードで最も優れた I/O 率が実現します。 また、"トランザクション費用" も考慮する必要があります。
 
 **Recommendations (推奨事項)**
 
-スループットを最大化するには、ホスト キャッシュを **[なし]** で開始することをお勧めします。 Premium Storage では、 **[読み取り専用]** または **[なし]** のオプションでファイル システムをマウントするときに、"バリア" を無効にする必要があることに注意してください。 UUID を使用して、/etc/fstab ファイルをディスクに更新します。
+スループットを最大にするには、ホスト キャッシュを **[なし]** で開始することをお勧めします。 Premium Storage では、 **[読み取り専用]** または **[なし]** のオプションでファイル システムをマウントするときに、"バリア" を無効にする必要があることに注意してください。 UUID を使用して、/etc/fstab ファイルをディスクに更新します。
 
 ![マネージド ディスク ページのスクリーンショット](./media/oracle-design/premium_disk02.png)
 
@@ -206,12 +212,11 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 
 データ ディスクの設定が保存された後に、OS レベルでドライブのマウントを解除し、変更後に再マウントするまでは、ホストのキャッシュ設定を変更できません。
 
-
 ## <a name="security"></a>セキュリティ
 
 Azure 環境のセットアップと構成が完了した後に、今度はネットワークをセキュリティ保護します。 以下に、推奨事項をいくつか示します。
 
-- *NSG ポリシー*:NSG はサブネットまたは NIC で定義できます。 セキュリティとアプリケーション ファイアウォールなどの強制ルーティングの両方について、サブネット レベルでアクセスを簡単に制御できます。
+- *NSG ポリシー*:NSG はサブネットまたは NIC で定義できます。 アプリケーション ファイアウォールなどのセキュリティと強制ルーティングの両方について、サブネット レベルではアクセスをより簡単に制御できます。
 
 - *ジャンプボックス*: アクセスの安全性を高めるために、管理者がアプリケーション サービスやデータベースに直接接続することは推奨されません。 管理者のコンピューターと Azure リソース間の媒介役として、Jumpbox を使用します。
 ![Jumpbox トポロジ ページのスクリーンショット](./media/oracle-design/jumpbox.png)

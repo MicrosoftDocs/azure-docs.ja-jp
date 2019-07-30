@@ -6,13 +6,13 @@ author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 70801f7d616434df83a7fd3399780a73afde1f32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: de799780ecbfeb3cbe66c5cc57f0e6c3bd2d1350
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751685"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872000"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS アプリケーション プラン
 

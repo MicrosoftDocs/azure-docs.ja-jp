@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 04/26/2019
+ms.date: 06/18/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: b8b46db043113f29f559ad44855d19f0d6ca73c3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 06a450c47c7264bdecb663c9f71e3a9753df5e1e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244159"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273622"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル:Azure Time Series Insights 環境を作成する
 
@@ -40,14 +40,50 @@ ms.locfileid: "66244159"
 
 ## <a name="overview"></a>概要
 
-Time Series Insights 環境とは、デバイス データが収集、格納される場所のことです。 データが格納された後は、[Azure Time Series Insights エクスプローラー](time-series-quickstart.md)と [Time Series Insights クエリ API](/rest/api/time-series-insights/ga-query-api) を使用して、データのクエリおよび分析を行うことができます。 Azure IoT Hub は、Azure クラウドに安全に接続してデータを転送するために、すべての (シミュレートされた、または物理的な) デバイスによって使用される、コネクション ポイントです。 [Time Series Insights の概要](time-series-insights-overview.md)に関するページで説明されているように、Azure IoT Hub はデータを Time Series Insights 環境にストリーミングするためのイベント ソースとしても機能します。 このチュートリアルでは [IoT ソリューション アクセラレータ](/azure/iot-accelerators/)を使用し、サンプルのテレメトリ データを生成して IoT Hub にストリーミングします。
+Time Series Insights 環境とは、デバイス データが収集、格納される場所のことです。 格納された後は、[Azure Time Series Insights エクスプローラー](time-series-quickstart.md)と [Time Series Insights クエリ API](/rest/api/time-series-insights/ga-query-api) を使用して、データのクエリおよび分析を行うことができます。
+
+Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデータを転送するために、チュートリアルのすべての (シミュレートされた、または物理的な) デバイスによって使用される、イベント ソースです。
+
+また、このチュートリアルでは [IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com)を使用し、サンプルのテレメトリ データを生成して IoT Hub にストリーム配信します。
 
 >[!TIP]
-> IoT ソリューション アクセラレータによって、カスタム IoT ソリューションの開発を高速化するために使用できる、エンタープライズ レベルのあらかじめ構成されたソリューションが提供されます。
+> [IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com)によって、カスタム IoT ソリューションの開発を高速化するために使用できる、エンタープライズ レベルのあらかじめ構成されたソリューションが提供されます。
+
+## <a name="create-a-device-simulation"></a>デバイス シミュレーションを作成する
+
+最初に、Time Series Insights 環境に入力されるテスト データを生成する、デバイス シミュレーション ソリューションを作成します。
+
+1. 別のウィンドウまたはタブで [azureiotsolutions.com](https://www.azureiotsolutions.com) に移動します。 同じ Azure サブスクリプション アカウントを使用してサインインし、 **[デバイス シミュレーション]** アクセラレータを選択します。
+
+   [![デバイス シミュレーション アクセラレータを実行する](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+
+1. **[デバイス シミュレーション ソリューションの作成]** ページで、次の必須パラメーターを入力します。
+
+   パラメーター|説明
+   ---|---
+   **デプロイ名** | この一意の値は、新しいリソース グループを作成するために使用されます。 一覧の Azure リソースが作成され、リソース グループに割り当てられます。
+   **Azure サブスクリプション** | 前のセクションで Time Series Insights 環境の作成に使用したものと同じサブスクリプションを指定します。
+   **デプロイ オプション** | **[Provision new IoT Hub]\(新しい IoT ハブをプロビジョニングする\)** を選択して、このチュートリアル専用の新しい IoT ハブを作成します。
+   **Azure の場所** | 前のセクションで Time Series Insights 環境の作成に使用したものと同じリージョンを指定します。
+
+   完了したら、 **[ソリューションの作成]** を選択してソリューションの Azure リソースをプロビジョニングします。 このプロセスが完了するまでに最大で 20 分かかる場合があります。
+
+   [![デバイス シミュレーション ソリューションをプロビジョニングする](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+
+1. プロビジョニング完了後、新しいソリューションの上にあるテキストが "**プロビジョニング中...** " から "**準備完了**" に変わります。
+
+   >[!IMPORTANT]
+   > **[起動]** はまだ選択しないでください。 後で戻ってくるので、この Web ページは開いたままにしておきます。
+
+   [![デバイス シミュレーション ソリューションのプロビジョニング完了](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+
+1. ここで、Azure portal で新しく作成されたリソースを検査します。 **[リソース グループ]** ページで、最後の手順で指定した**ソリューション名**を使用して新しいリソース グループが作成されたことを確認します。 デバイス シミュレーション用に作成されたリソースをメモします。
+
+   [![デバイス シミュレーションのリソース](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>環境の作成
 
-まず、Azure サブスクリプションに Time Series Insights 環境を作成します。
+次に、お使いの Azure サブスクリプションに Time Series Insights 環境を作成します。
 
 1. Azure サブスクリプション アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。 
 1. 左上隅の **[+ リソースの作成]** を選択します。 
@@ -59,119 +95,36 @@ Time Series Insights 環境とは、デバイス データが収集、格納さ�
 
    パラメーター|説明
    ---|---
-   **環境名** | Time Series Insights 環境の一意の名前を選択します。 その名前は Time Series Insights エクスプローラーとクエリ API で使用されます。
+   **環境名** | Time Series Insights 環境の一意の名前を選択します。 その名前は Time Series Insights エクスプローラーと [Query API シリーズ](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)で使用されます。
    **サブスクリプション** | サブスクリプションとは、Azure リソース用のコンテナーです。 Time Series Insights 環境を作成するサブスクリプションを選択します。
    **リソース グループ** | リソース グループとは、Azure リソース用のコンテナーです。 Time Series Insights 環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。
-   **場所** | Time Series Insights 環境のデータ センター リージョンを選択します。 帯域幅のコストや待機時間の増加を防ぐために、Time Series Insights 環境は他の IoT リソースと同じリージョンにします。
-   **[Pricing SKU]\(価格 SKU\)** | 必要なスループットを選択します。 コストと初期容量を最小限に抑えるために、`S1` を選択します。
-   **Capacity** | 容量は、イングレス レート、ストレージ容量、選択した SKU に関連するコストに適用される乗数です。 この容量は、作成後に変更できます。 コストを最小限に抑えるために、容量として 1 を選択します。
+   **Location** | Time Series Insights 環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、Time Series Insights 環境を他の IoT リソースと同じリージョンに作成します。
+   **レベル** | 必要なスループットを選択します。 **[S1]** を選択します。
+   **Capacity** | 容量は、選択した SKU に関連するイングレス レートとストレージ容量に適用される乗数です。 この容量は、作成後に変更できます。 容量には **1** を選択します。
 
-   完了したら、 **[作成]** を選択してプロビジョニング プロセスを開始します。
+   終了したら、 **[Review + create]\(確認と作成\)** を選択して次のステップに進みます。
 
    [![Time Series Insights 環境リソースを作成する](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+
+1. 次に、Time Series Insights 環境を、ソリューション アクセラレータによって作成された IoT ハブに接続します。 **[ハブを選択]** を `Select existing` に設定します。 次に、**IoT ハブ名**を設定するときにソリューション アクセラレータによって作成された IoT ハブを選択します。
+
+   [![作成した IoT ハブに Time Series Insights 環境を接続する](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
 
 1. **[通知]** パネルを確認して、デプロイの完了を監視します。 
 
    [![Time Series Insights 環境のデプロイ成功](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="create-a-device-simulation"></a>デバイス シミュレーションを作成する
-
-次に、Time Series Insights 環境に入力されるテスト データを生成する、デバイス シミュレーション ソリューションを作成します。
-
-1. 別のウィンドウまたはタブで [azureiotsolutions.com](https://www.azureiotsolutions.com) に移動します。 同じ Azure サブスクリプション アカウントを使用してサインインし、 **[デバイス シミュレーション]** アクセラレータを選択します。
-
-   [![デバイス シミュレーション アクセラレータを実行する](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
-
-1. **[デバイス シミュレーション ソリューションの作成]** ページで、次の必須パラメーターを入力します。
-
-   パラメーター|説明
-   ---|---
-   **[ソリューション名]** | この一意の値は、新しいリソース グループを作成するために使用されます。 一覧の Azure リソースが作成され、リソース グループに割り当てられます。
-   **サブスクリプション** | 前のセクションで Time Series Insights 環境の作成に使用したものと同じサブスクリプションを指定します。
-   **[リージョン]** | 前のセクションで Time Series Insights 環境の作成に使用したものと同じリージョンを指定します。
-   **[オプションの Azure リソースをデプロイする]** | **[IoT Hub]** はオンのままにします。 シミュレートされたデバイスでは、それを使用してデータを接続またはストリーミングします。
-
-   完了したら、 **[ソリューションの作成]** を選択してソリューションの Azure リソースをプロビジョニングします。 この処理が完了するまでに 6 分から 7 分かかることがあります。
-
-   [![デバイス シミュレーション ソリューションをプロビジョニングする](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
-
-1. プロビジョニング完了後、新しいソリューションの上にあるテキストが "**プロビジョニング中...** " から "**準備完了**" に変わります。
-
-   >[!IMPORTANT]
-   > **[起動]** はまだ選択しないでください。 後で戻ってくるので、この Web ページは開いたままにしておきます。
-
-   [![デバイス シミュレーション ソリューションのプロビジョニング完了](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
-
-1. これで Azure portal に戻り、サブスクリプション内に新しく作成されたリソースを検査します。 ポータルの **[リソース グループ]** ページに、前の手順で指定した **[ソリューション名]** を使用して作成した新しいリソース グループを確認できます。 また、デバイス シミュレーション ソリューションをサポートするように作成されたすべてのリソースを確認できます。
-
-   [![デバイス シミュレーション ソリューションのリソース](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
-
-## <a name="connect-the-environment-to-the-iot-hub"></a>IoT Hub に環境を接続する
-
-ここまでで、2 セットのリソースを次のリソース グループ内に作成する方法について学習しました。
-
-- 空の Time Series Insights 環境。
-- ソリューション アクセラレータによって生成されたデバイス シミュレーション ソリューションのリソース (IoT ハブを含む)。
-
-シミュレートされたデバイスは、IoT Hub に接続してデバイス データをストリーミングする必要があります。 Time Series Insights 環境にデータが流れるようにするには、IoT ハブと Time Series Insights 環境の両方の構成を変更する必要があります。
-
-### <a name="iot-hub-configuration-define-a-consumer-group"></a>IoT ハブの構成:コンシューマー グループを定義する
-
-IoT Hub には、機能を他のアクターと共有する各種エンドポイントが用意されています。 "イベント" エンドポイントにより、データが IoT Hub のインスタンスにストリーミングされるときに、他のアプリケーションからそのデータを使用する方法が提供されます。 具体的には、"コンシューマー グループ" によって、IoT ハブからデータをリッスンしてプルするメカニズムがアプリケーションに提供されます。
-
-次に、デバイス シミュレーション ソリューションの IoT ハブの**イベント エンドポイント**上に、新しい "**コンシューマー グループ**" プロパティを定義します。
-
-1. Azure portal で、デバイス シミュレーション ソリューションに作成したリソース グループの **[概要]** ページに移動します。 IoT ハブ リソースを選択します。
-
-   [![デバイス シミュレーション ソリューションのリソース グループ](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-view-rg.png)](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-view-rg.png#lightbox)
-
-   ソリューション用に生成された IoT ハブ リソースの**名前**を書き留めておいてください。 後でそれを参照します。
-
-1. 下にスクロールして **[エンドポイント]** ページを選択し、 **[イベント]** エンドポイントを選択します。 エンドポイントの **[プロパティ]** ページで、[$Default] コンシューマー グループの下のエンドポイントに一意の名前を入力します。 **[保存]** を選択します。
-
-   [![デバイス シミュレーション ソリューションの IoT Hub のエンドポイント](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-create.png)](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-create.png#lightbox)
-
-### <a name="environment-configuration-define-an-event-source"></a>環境の構成: イベント ソースを定義する
-
-ここでは新しい IoT Hub **コンシューマー グループ**のイベント エンドポイントを Time Series Insights 環境に**イベント ソース**として接続します。
-
-1. Time Series Insights 環境に作成したリソース グループの **[概要]** ページに移動します。 Time Series Insights 環境を選択します。
-
-   [![Time Series Insights 環境のリソース グループと環境](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-view-rg.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-view-rg.png#lightbox)
-
-1. Time Series Insights 環境のページで、 **[イベント ソース]** を選択します。 次に、 **[+ 追加]** を選択します。
-
-   [![Time Series Insights 環境の概要](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add.png#lightbox)
-
-1. **[新しいイベント ソース]** ページで、次の必須パラメーターを入力します。
-
-   パラメーター|説明
-   ---|---
-   **[イベント ソース名]** | イベント ソースの名前に使用される一意の値が必要です。
-   **ソース** | **[IoT Hub]** を選択します。
-   **[インポート オプション]** | 既定の `Use IoT hub from available subscriptions` を選択します。 このオプションにより、次のドロップダウン リストに使用可能なサブスクリプションが表示されます。
-   **サブスクリプション** | Time Series Insights 環境とデバイス シミュレーションのリソースを作成したのと同じサブスクリプションを選択します。
-   **[IoT Hub 名]** | 既定で前にメモした IoT Hub の名前が指定されます。 されていない場合は、正しい IoT Hub を選択します。
-   **[IoT Hub ポリシー名]** | **[iothubowner]** を選びます。
-   **[Iot Hub コンシューマー グループ]** | 既定で前にメモした IoT Hub コンシューマー グループの名前が指定されます。 されていない場合は、正しいコンシューマー グループ名を選択します。
-   **イベントのシリアル化の形式** | 既定値の `JSON` をそのまま使用します。
-   **[タイムスタンプのプロパティ名]** | `timestamp` として指定します。
-
-   終わったら、 **[作成]** を選択してイベント ソースを追加します。 リソース グループの **[概要]** ページに戻ると、Time Series Insights 環境のリソースとともに、新しい「Time Series Insights イベント ソース」リソースが表示されます。
-
-   [![Time Series Insights 環境の新しいイベント ソース](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add-event-source.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add-event-source.png#lightbox)
-
 ## <a name="run-device-simulation-to-stream-data"></a>デバイス シミュレーションを実行してデータをストリーミングする
 
-これですべての構成作業が完了しました。次は、シミュレートされたデバイスからのサンプル データを Time Series Insights 環境に入力します。
+これでデプロイおよび初期構成が完了しました。次は、[アクセラレータによって作成されたシミュレートされたデバイス](#create-a-device-simulation)からのサンプル データを Time Series Insights 環境に入力します。
 
-「[デバイス シミュレーションを作成する](#create-a-device-simulation)」セクションで、ソリューションをサポートする複数の Azure リソースがアクセラレータによって作成されました。 前に説明した IoT Hub とともに、シミュレートされたデバイス テレメトリを作成して転送する Azure App Service Web アプリケーションが生成されました。
+IoT ハブに加えて、シミュレートされたデバイス テレメトリを作成して転送する Azure App Service Web アプリケーションが生成されました。
 
 1. [ソリューション アクセラレータのダッシュ ボード](https://www.azureiotsolutions.com/Accelerators#dashboard)に戻ります。 必要に応じて、このチュートリアルで使用している同じ Azure アカウントを使用して再度サインインします。 これで "デバイス シミュレーション" ソリューションの **[起動]** を選択できるようになります。
 
      [![ソリューション アクセラレータのダッシュボード](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
 
-1. この時点でデバイス シミュレーション Web アプリが起動します。初期読み込みに数秒かかる場合があります。 また、Web アプリケーションに "サインインとプロファイルの読み取り" アクセス許可を付与することに同意するよう求められます。 このアクセス許可により、アプリケーションがアプリケーションの機能をサポートするのに必要なユーザー プロファイル情報を取得することを許可します。
+1. デバイス シミュレーション Web アプリは、最初に Web アプリケーションに "サインインとプロファイルの読み取り" アクセス許可を付与することをユーザーに促します。 このアクセス許可により、アプリケーションがアプリケーションの機能をサポートするのに必要なユーザー プロファイル情報を取得することを許可します。
 
      [![デバイス シミュレーション Web アプリケーションの同意](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
@@ -219,7 +172,7 @@ IoT Hub には、機能を他のアクターと共有する各種エンドポイ
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアルでは、稼働する Azure サービスをいくつか作成し、Time Series Insights 環境とデバイス シミュレーション ソリューションをサポートします。 このチュートリアル シリーズの作業を中止または延期する場合は、不要なコストが発生しないようにすべてのリソースを削除してください。
+このチュートリアルでは、稼働する Azure サービスをいくつか作成し、Time Series Insights 環境とデバイス シミュレーション ソリューションをサポートします。 これらを削除するには、Azure portal に戻ります。
 
 Azure portal の左側のメニューで、次のようにします。
 

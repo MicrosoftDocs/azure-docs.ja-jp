@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
-ms.openlocfilehash: 4e7145570cbc906ea540c9d8f95f6c3cbde1c610
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: f82408a6aaa7cf3a492f3036a6db5d8666b6f160
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928627"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598056"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Database Machine Learning Services (プレビュー) に R パッケージを追加する
 
@@ -70,7 +70,7 @@ WITH RESULT SETS((
 
 ### <a name="install-sqlmlutils"></a>**sqlmlutils** をインストールする
 
-1. [https://github.com/Microsoft/sqlmlutils/tree/master/R/dist](https://github.com/Microsoft/sqlmlutils/tree/master/R/dist) からローカル コンピューターに、最新の **sqlmlutils** zip ファイルをダウンロードします。 ファイルを解凍する必要はありません。
+1. [https://github.com/Microsoft/sqlmlutils/tree/master/R/dist](https://github.com/Microsoft/sqlmlutils/tree/master/R/dist ) からローカル コンピューターに、最新の **sqlmlutils** zip ファイルをダウンロードします。 ファイルを解凍する必要はありません。
 
 1. **コマンド プロンプト**を開き、次のコマンドを実行して **RODBCext** と **sqlmlutils** をローカル コンピューターにインストールします。 完全パスを、ダウンロードした **sqlmlutils** zip ファイルに置き換えます (この例は、ファイルがドキュメント フォルダーにあることを前提としています)。
     
@@ -164,7 +164,7 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 ```
 
 > [!TIP]
-> Azure SQL Database に R パッケージをインストールするもう 1 つの方法は、**CREATE EXTERNAL LIBRARY** T-SQL ステートメントを使用してバイト ストリームから R パッケージをアップロードするというものです。 [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) 参照ドキュメント内の「[バイト ストリームからライブラリーを作成する](/sql/t-sql/statements/create-external-library-transact-sql#c-create-a-library-from-a-byte-stream)」をご覧ください。
+> Azure SQL Database に R パッケージをインストールするもう 1 つの方法は、**CREATE EXTERNAL LIBRARY** T-SQL ステートメントを使用してバイト ストリームから R パッケージをアップロードするというものです。 [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) 参照ドキュメント内の「[バイト ストリームからライブラリーを作成する](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

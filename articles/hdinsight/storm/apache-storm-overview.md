@@ -6,21 +6,19 @@ ms.reviewer: jasonh
 keywords: Apache Storm のユース ケース,Storm クラスター,Apache Storm とは
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 05/24/2019
+ms.topic: overview
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 42aaa91906319133fd2864cd836447fcf3ca3a07
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 00c536120ed9507d5ecc6fe930429d12514945b3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257782"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483814"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
 [Apache Storm](https://storm.apache.org/) は、分散型でフォールト トレランスに優れたオープンソースの計算システムです。 Storm を使用すると、データのストリームを [Apache Hadoop](https://hadoop.apache.org/) でリアルタイムに処理できます。 また、Storm のソリューションは、最初に正常に処理されなかったデータを再生する機能を備え、保証されたデータ処理を実現します。
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 ## <a name="why-use-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm を使用する理由
 
@@ -38,8 +36,7 @@ HDInsight における Storm の機能は次のとおりです。
 
 * **動的スケーリング**:Storm トポロジの実行に影響を与えることなく、worker ノードを追加または削除することができます。
 
-    > [!NOTE]  
-    > スケーリング操作を通じて追加された新しいノードを利用するためには、実行中のトポロジを非アクティブ化したり再アクティブ化したりする必要があります。
+    * スケーリング操作を通じて追加された新しいノードを利用するためには、実行中のトポロジを非アクティブ化したり再アクティブ化したりする必要があります。
 
 * **さまざまな Azure サービスを使ってストリーミング パイプラインを作成**:HDInsight の Storm は、Event Hubs、SQL Database、Azure Storage、Azure Data Lake Store など、他の Azure サービスと連携します。
 
@@ -47,7 +44,7 @@ HDInsight における Storm の機能は次のとおりです。
 
 リアルタイム分析ソリューションに Apache Storm を利用している企業の一覧については、[Apache Storm を使用している企業](https://storm.apache.org/documentation/Powered-By.html)に関するページを参照してください。
 
-Storm の使用を開始するには、[HDInsight での Apache Storm の使用開始](apache-storm-tutorial-get-started-linux.md)に関するページを参照してください。
+Storm を使い始めるには、「[Create and monitor an Apache Storm topology in Azure HDInsight (Azure HDInsight での Apache Storm トポロジの作成と監視)](apache-storm-quickstart.md)」を参照してください。
 
 ## <a name="how-does-apache-storm-work"></a>Apache Storm のしくみ
 
@@ -71,7 +68,7 @@ Apache Storm クラスターの既定の構成では、Nimbus ノードは 1 つ
 
 ## <a name="ease-of-creation"></a>作成のしやすさ
 
-HDInsight 上に新しい Storm クラスターを数分で作成できます。 Storm クラスターの作成の詳細については、[HDInsight での Storm の使用](apache-storm-tutorial-get-started-linux.md)に関する記事を参照してください。
+HDInsight 上に新しい Storm クラスターを数分で作成できます。 Storm クラスターの作成の詳細については、[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
 ## <a name="ease-of-use"></a>使いやすさ
 
@@ -149,7 +146,9 @@ Apache Storm では、さまざまなレベルでメッセージの処理が保�
 
 次の Java の例では、fieldsGrouping は、MyJoiner ボルトへの、コンポーネント "1"、"2"、"3" から発生したタプルのルーティングに使用されています。
 
-    builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2"));
+```java
+builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2"));
+```
 
 ### <a name="batches"></a>バッチ
 
@@ -177,5 +176,5 @@ Storm は、[Apache Log4j 2](https://logging.apache.org/log4j/2.x/) を使用し
 
 HDInsight 上の Apache Storm によるリアルタイム分析ソリューションの詳細を学習します。
 
-* [HDInsight での Apache Storm の使用](apache-storm-tutorial-get-started-linux.md)
+* [Azure HDInsight で Apache Storm トポロジを作成、監視する](apache-storm-quickstart.md)
 * [HDInsight での Apache Storm のトポロジ例](apache-storm-example-topology.md)

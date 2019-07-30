@@ -1,25 +1,25 @@
 ---
 title: クイック スタート:C# でテキストの内容を分析する - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Content Moderator SDK for .NET を使用してさまざまな好ましくない要素を検出するためにテキスト コンテンツを分析する方法
+description: Content Moderator SDK for .NET を使用して、さまざまな好ましくない素材のテキスト コンテンツを分析する方法
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f848ea0d1c86b9c12d26c59b8f0e92d1e5d70094
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756528"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604057"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート: C# で好ましくない要素を検出するためにテキストの内容を分析する
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート:C# で好ましくない要素を検出するためにテキストの内容を分析する
 
-この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 潜在的に好ましくない素材をモデレートすることを目的として、テキスト コンテンツの用語ベースのフィルター処理と分類を実行する方法を学習します。
+この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 好ましくない可能性がある素材のモデレートを目的として、テキスト コンテンツの用語ベースのフィルター処理と分類を実行する方法について学習します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**TextModeration** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
-1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - `Microsoft.Azure.CognitiveServices.ContentModerator`
     - `Microsoft.Rest.ClientRuntime`
     - `Newtonsoft.Json`
@@ -57,11 +57,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="set-up-input-and-output-targets"></a>入力と出力のターゲットを設定する
 
-次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらは、入力テキスト コンテンツと出力 JSON コンテンツ用のファイルを指定します。
+次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらのフィールドでは、入力テキスト コンテンツと出力 JSON コンテンツ用のファイルを指定します。
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-*TextFile.txt* 入力ファイルを作成し、それに合わせてパスを更新する必要があります (相対パスは実行ディレクトリを基準にしています)。 _TextFile.txt_ を開き、モデレートするテキストを追加します。 このクイック スタートでは、次のサンプル テキストを使用します。
+*TextFile.txt* 入力ファイルを作成し、そのパスを更新する必要があります (パスは実行ディレクトリを基準にしています)。 _TextFile.txt_ を開き、モデレートするテキストを追加します。 このクイック スタートでは、次のサンプル テキストを使用します。
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.

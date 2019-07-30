@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
 ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60399234"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 
@@ -64,7 +64,7 @@ END_NAMESPACE(WeatherStation);
 
 次のデータの型は、 **シリアライザー** ライブラリを使用して作成されたモデルでサポートされます。
 
-| type | 説明 |
+| Type | 説明 |
 | --- | --- |
 | double |倍精度浮動小数点数 |
 | int |32 ビット整数 |
@@ -194,7 +194,7 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-シリアル化は、**シリアライザー** ライブラリによって生成される形式である JSON で行われることに注意してください。 また、シリアル化された JSON オブジェクトの各メンバーとこのモデルで定義した **TestType** のメンバーが一致することにも注意してください。 値も、コードで使用されている値と正確に一致します。 ただし、バイナリ データが Base64 でエンコードされていることに注意してください。"AQID" は、{0x01、0x02、0x03} の Base64 エンコードです。
+シリアル化は、**シリアライザー** ライブラリによって生成される形式である JSON で行われることに注意してください。 また、シリアル化された JSON オブジェクトの各メンバーとこのモデルで定義した **TestType** のメンバーが一致することにも注意してください。 値も、コードで使用されている値と正確に一致します。 ただし、バイナリ データが Base64 でエンコードされていることに注意してください。"AQID" は {0x01、0x02、0x03} の Base64 エンコードです。
 
 この例から、**シリアライザー** ライブラリを使用する利点がわかります。これにより、アプリケーションでシリアル化を明示的に処理しなくても、クラウドに JSON を送信することができます。 必要なのは、このモデルにデータ イベントの値を設定し、クラウドにそれらのイベントを送信するためにシンプルな API を呼び出すことだけです。
 
@@ -233,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-モデルには、**Temperature** と **Humidity** という 2 つのデータ イベントが含まれることに注意してください。 これまでの例とは異なり、各イベントの型は、**DECLARE\_STRUCT** を使用して定義された構造体です。 **TemperatureEvent** には温度の測定値とタイムスタンプが含まれており、**HumidityEvent** には湿度の測定値とタイムスタンプが含まれています。 このモデルにより、自然な方法で上のシナリオのデータをモデル化できます。 イベントをクラウドに送信するとき、温度/タイムスタンプのペア、または湿度/タイムスタンプのペアを送信します。
+このモデルには、**Temperature** と **Humidity** の 2 つのデータ イベントが含まれていることに注意してください。 これまでの例とは異なり、各イベントの型は、**DECLARE\_STRUCT** を使用して定義された構造体です。 **TemperatureEvent** には温度の測定値とタイムスタンプが含まれており、**HumidityEvent** には湿度の測定値とタイムスタンプが含まれています。 このモデルにより、自然な方法で上のシナリオのデータをモデル化できます。 イベントをクラウドに送信するとき、温度/タイムスタンプのペア、または湿度/タイムスタンプのペアを送信します。
 
 次のようなコードを使用して、クラウドに温度のイベントを送信できます。
 
@@ -514,7 +514,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 {"Name" : "", "Parameters" : "" }
 ```
 
-2 つのプロパティを含むシリアル化された JSON オブジェクトを送信します。ここで、**Name** はアクション (メッセージ) の名前で、**Parameters** にはそのアクションのパラメーターが含まれています。
+次の 2 つのプロパティを含むシリアル化された JSON オブジェクトを送信します。**Name** はアクション (メッセージ) の名前であり、**Parameters** にはそのアクションのパラメーターが含まれています。
 
 たとえば、 **SetAirResistance** を呼び出すには、デバイスに次のメッセージを送信できます。
 

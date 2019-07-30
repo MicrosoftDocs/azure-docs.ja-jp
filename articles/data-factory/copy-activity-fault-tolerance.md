@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
 ms.openlocfilehash: ef0bb3716a32a0f25b90e74bc44d7291c146b431
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267465"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60808815"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [現在のバージョン](copy-activity-fault-tolerance.md)
 
@@ -73,10 +73,10 @@ Azure Data Factory のコピー アクティビティには、ソースとシン
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | コピー中に互換性のない行をスキップするかどうかを指定します。 | True<br/>False (既定値) | いいえ 
-redirectIncompatibleRowSettings | 互換性のない行をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ 
-linkedServiceName | スキップされる行が含まれたログを格納する [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) のリンク サービス。 | `AzureStorage` または `AzureDataLakeStore` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ 
-path | スキップした行を含むログ ファイルのパス。 | 互換性のないデータをログに記録するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ 
+enableSkipIncompatibleRow | コピー中に互換性のない行をスキップするかどうかを指定します。 | True<br/>False (既定値) | いいえ
+redirectIncompatibleRowSettings | 互換性のない行をログに記録するときに指定できるプロパティのグループ。 | &nbsp; | いいえ
+linkedServiceName | スキップされる行が含まれたログを格納する [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) のリンク サービス。 | `AzureStorage` または `AzureDataLakeStore` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
+path | スキップした行を含むログ ファイルのパス。 | 互換性のないデータをログに記録するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
 ## <a name="monitor-skipped-rows"></a>スキップされた行を監視する
 コピー アクティビティの実行が完了したら、コピー アクティビティの出力で、スキップされた行の数を次のように確認できます。

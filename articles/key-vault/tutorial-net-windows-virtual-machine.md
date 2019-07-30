@@ -7,14 +7,14 @@ manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 01/02/2019
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: c88977f465de6d9b89bd2d9c4cf67402fe6f563f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3bb4647b39a276e2dd54260c17eca1d700d5ba16
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228157"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874981"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>チュートリアル:.NET で Windows 仮想マシンを使用して Azure Key Vault を使用する
 
@@ -53,45 +53,46 @@ Azure サービス (Azure Virtual Machines、Azure App Service、Azure Functions
 
 次に、アクセス トークンを取得するために、Azure リソース上で利用可能なローカル メタデータ サービスがユーザーのコードによって呼び出されます。 Azure Key Vault サービスを認証するために、コードではローカルの MSI エンドポイントから取得したアクセス トークンを使用します。 
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="create-resources-and-assign-permissions"></a>リソースを作成してアクセス許可を割り当てる
 
-Azure CLI を使用して Azure にログインするには、次のように入力します。
+コーディングを開始する前に、いくつかのリソースを作成し、キー コンテナーにシークレットを配置し、アクセス許可を割り当てる必要があります。
+
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+Azure CLI を使用して Azure にサインインするには、次のように入力します。
 
 ```azurecli
 az login
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループの作成
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#az-group-create) コマンドを使ってリソース グループを作成します。 
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使ってリソース グループを作成します。 
-
-次にリソース グループ名を選択し、プレースホルダーを入力します。 次の例では、米国西部の場所にリソース グループを作成します。
+この例では、米国西部にリソース グループが作成されます。
 
 ```azurecli
 # To list locations: az account list-locations --output table
 az group create --name "<YourResourceGroupName>" --location "West US"
 ```
 
-新規に作成したリソース グループは、このチュートリアルの全体を通して使用します。
+このチュートリアル全体で、新規に作成したリソース グループを使用します。
 
-## <a name="create-a-key-vault"></a>Key Vault を作成します
+### <a name="create-a-key-vault-and-populate-it-with-a-secret"></a>キー コンテナーを作成してシークレットを設定する
 
-前の手順で作成したリソース グループにキー コンテナーを作成するには、次の情報を指定します。
+[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドで以下の情報を指定することで、リソース グループ内にキー コンテナーを作成します。
 
 * キー コンテナー名: 数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
 * リソース グループ名
-* 場所:**[米国西部]**
+* 場所: **[米国西部]**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
 この時点で、使用している Azure アカウントのみが、この新しいキー コンテナーに対して操作を実行することを許可されます。
 
-## <a name="add-a-secret-to-the-key-vault"></a>キー コンテナーにシークレットを追加する
+ここで、[az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) コマンドを使用して、シークレットをキー コンテナーに追加します。
 
-シークレットのしくみをよく理解できるように、シークレットを追加します。 シークレットとしては、SQL 接続文字列など、安全性と、アプリケーションから利用できる状態の両方を維持するために必要な情報が考えられます。
 
 **AppSecret** というキー コンテナーにシークレットを作成するには、次のコマンドを入力します。
 
@@ -101,15 +102,15 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 このシークレットには、**MySecret** という値が格納されます。
 
-## <a name="create-a-virtual-machine"></a>仮想マシンの作成
-次のいずれかの方法を使用して、仮想マシンを作成できます。
+### <a name="create-a-virtual-machine"></a>仮想マシンの作成
+次のいずれかの方法を使用して、仮想マシンを作成します。
 
 * [Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
 * [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
 * [Azure ポータル](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
-この手順では、Azure CLI で次のコマンドを実行して、仮想マシンに対するシステム割り当て ID を作成します。
+### <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
+[az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) コマンドを使用して、仮想マシン用のシステムによって割り当てられる ID を作成します。
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -124,31 +125,47 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 }
 ```
 
-## <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
-ここで、次のコマンドを実行して、以前に作成した ID アクセス許可をキー コンテナーに割り当てることができます。
+### <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
+[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを実行して、前に作成した ID アクセス許可をキー コンテナーに割り当てます。
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="log-on-to-the-virtual-machine"></a>仮想マシンへのログオン
+### <a name="sign-in-to-the-virtual-machine"></a>仮想マシンにサインインする
 
-仮想マシンにログオンするには、[Windows が実行されている Azure 仮想マシンへの接続とサインオン](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)に関する記事の手順に従ってください。
+仮想マシンにサインインするには、「[Windows が実行されている Azure 仮想マシンに接続してサインインする](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)」の手順に従ってください。
 
-## <a name="install-net-core"></a>.NET Core のインストール
+## <a name="set-up-the-console-app"></a>コンソール アプリを設定する
+
+コンソール アプリを作成し、`dotnet` コマンドを使用して必要なライブラリをインストールします。
+
+### <a name="install-net-core"></a>.NET Core のインストール
 
 .NET Core をインストールするには、[.NET のダウンロード](https://www.microsoft.com/net/download) ページに移動します。
 
-## <a name="create-and-run-a-sample-net-app"></a>サンプルの .NET アプリを作成して実行する
+### <a name="create-and-run-a-sample-net-app"></a>サンプルの .NET アプリを作成して実行する
 
 コマンド プロンプトを開きます。
 
 次のコマンドを実行して、コンソールに "Hello World" と出力できます。
 
-```batch
+```console
 dotnet new console -o helloworldapp
 cd helloworldapp
 dotnet run
+```
+
+### <a name="install-the-packages"></a>パッケージのインストール
+
+ コンソール ウィンドウで、このクイックスタートで必要な .NET パッケージをインストールします。
+
+ ```console
+dotnet add package System.IO;
+dotnet add package System.Net;
+dotnet add package System.Text;
+dotnet add package Newtonsoft.Json;
+dotnet add package Newtonsoft.Json.Linq;
 ```
 
 ## <a name="edit-the-console-app"></a>コンソール アプリを編集する

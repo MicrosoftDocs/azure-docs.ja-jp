@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0c9f1fcf2d9d7e806645f1bdf9e8a6c74245a60
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752830"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619333"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する方法 
 

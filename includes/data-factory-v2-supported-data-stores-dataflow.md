@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 3a7cc1ac3940104993e6643e92da923ad1c6a14a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70ffc91477d4a77619ba7df3b2ab121fea5f8bac
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66249012"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509879"
 ---
 | Category | データ ストア | [コピー アクティビティ](../articles/data-factory/copy-activity-overview.md) ソースとしてサポート | [コピー アクティビティ](../articles/data-factory/copy-activity-overview.md) シンクとしてサポート | [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) がサポート | [セルフホステッド IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) がサポート | [Data Flow](../articles/data-factory/concepts-data-flow-overview.md) がサポート
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -24,7 +24,7 @@ ms.locfileid: "66249012"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |✓  |
-| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-insance.md) | |✓ |✓ |✓  ||
+| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |✓  |
 | &nbsp; |[Azure Search インデックス](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  ||
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  ||
@@ -48,11 +48,11 @@ ms.locfileid: "66249012"
 | &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  ||
 | &nbsp; |[MDX を介した SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  ||
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  ||
-| &nbsp; |[SAP テーブル](../articles/data-factory/connector-sap-table.md) |✓ |✓ | |✓  ||
+| &nbsp; |[SAP テーブル](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  ||
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  ||
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |✓ | | |✓  ||
-| &nbsp; |[Teradata](../articles/data-factory/connector-teradata.md) |✓ | | |✓  ||
+| &nbsp; |[Teradata](../articles/data-factory/connector-teradata.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |✓ | |✓ |✓  ||
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Couchbase (プレビュー)](../articles/data-factory/connector-couchbase.md) |✓ | |✓ |✓  ||

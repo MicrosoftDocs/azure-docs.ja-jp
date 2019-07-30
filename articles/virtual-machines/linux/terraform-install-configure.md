@@ -4,7 +4,7 @@ description: Azure リソースを作成するための Terraform のインス�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: echuvyrov
-manager: jeconnoc
+manager: gwallace
 editor: na
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
-ms.author: echuvyrov
-ms.openlocfilehash: 71cf07b227a75e53119f2f35e79ccd7926b551e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 14bbbb6581d3e6d00db532e343f8362fc44d0044
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60418865"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876351"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>VM などのインフラストラクチャを Azure にプロビジョニングするための Terraform のインストールと構成
  

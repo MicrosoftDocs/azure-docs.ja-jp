@@ -10,14 +10,13 @@ ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 7e4c24c538bd72df6c3324ca7f8837ce481e6ea2
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.date: 06/25/2019
+ms.openlocfilehash: b378bef296f7cf6546887bcf760a4e14ed66a385
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833957"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569835"
 ---
 # <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>CLI を使用して Azure SQL Database のエラスティック プールをスケーリングします
 
@@ -38,7 +37,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明

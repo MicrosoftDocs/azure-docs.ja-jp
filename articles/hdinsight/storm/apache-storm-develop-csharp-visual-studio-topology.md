@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 14aa45808f44f7ca6fe34b70ef282a99f230bf0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d459f88cd252303384acb4a72d0af0cce6ee226
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687753"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428468"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -559,7 +559,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 ### <a name="test-a-topology-locally"></a>トポロジをローカルでテストする
 
-トポロジのクラスターへのデプロイは簡単ですが、状況によっては、トポロジをローカルでテストする必要が生じる場合があります。 次の手順を使用して、使用している開発環境のローカルでこのチュートリアルのサンプル トポロジを実行してテストします。
+トポロジのクラスターへのデプロイは簡単ですが、状況によっては、トポロジをローカルでテストする必要が生じる場合があります。 次の手順を使用して、使用している開発環境のローカルでこの記事のサンプル トポロジを実行してテストします。
 
 > [!WARNING]  
 > ローカル テストは、基本的な C# のみトポロジの場合にだけ機能します。 ハイブリッド トポロジまたは複数のストリームを使用するトポロジには、ローカル テストは使用できません。

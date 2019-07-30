@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 02ae9673f1dc402ee1500b466d7e259263ef3262
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.date: 06/30/2019
+ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494846"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537584"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>ODBC を使って Azure Data Explorer に接続する
 
@@ -20,7 +20,13 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) は、デ
 
 バックグラウンドでは、アプリケーションで ODBC インターフェイスの関数が呼び出され、*ドライバー* というデータベース固有のモジュールで実装されます。 Azure Data Explorer では SQL Server 通信プロトコル ([MS-TDS](/azure/kusto/api/tds/)) のサブセットがサポートされるため、SQL Server 用の ODBC ドライバーを使用することができます。
 
-この記事では、SQL Server ODBC ドライバーを使用して、ODBC をサポートするアプリケーションから Azure Data Explorer に接続できるようにする方法を学習します。
+次のビデオを使用して、ODBC 接続を作成する方法を確認できます。 
+
+> [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
+
+また、後述するように、[ODBC データ ソースを構成](#configure-the-odbc-data-source)することもできます。 
+
+この記事では、SQL Server ODBC ドライバーを使用して、ODBC をサポートするアプリケーションから Azure Data Explorer に接続できるようにする方法を説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 

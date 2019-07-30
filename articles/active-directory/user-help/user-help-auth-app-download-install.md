@@ -13,14 +13,15 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67393e19a72777d105f1f35a16986c52f52133be
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1ee54fac5a4c325ea5db3b97522fd2772b8dbd4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473823"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382416"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリのダウンロードとインストール
+
 >[!Important]
 >このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
@@ -36,13 +37,14 @@ Microsoft Authenticator アプリは次のようなさまざまな方法で使�
 
 > [!Important]
 > Microsoft Authenticator アプリは、2 要素認証を使用し、時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
-> 
+>
 > 組織では、サインインして組織のデータやドキュメントにアクセスするために、認証アプリの使用がユーザーに要求されている場合があります。 アプリにユーザー名が表示される場合でも、登録プロセスを完了するまで、アカウントは検証方法として機能するように実際に設定されてはいません。 詳しくは、「[職場または学校のアカウントを追加する](user-help-auth-app-add-work-school-account.md)」をご覧ください。
 > 
 > [!NOTE]
 > アカウントへのサインインに問題がある場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429)」をヘルプとして参照してください。  Microsoft アカウントにサインインしようとして、「[指定した Microsoft アカウントは登録されていません](https://support.microsoft.com/help/13811)」というメッセージを受け取った場合の対処方法の詳細を参照してください。
 
 ## <a name="download-and-install-the-app"></a>アプリのダウンロードとインストール
+
 オペレーティング システムに基づいて、最新バージョンの Microsoft Authenticator アプリをインストールします。
 
 - **Google Android**。 Android デバイスでは、Google Play に移動して、[Microsoft Authenticator アプリをダウンロードして、インストール](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator)します。

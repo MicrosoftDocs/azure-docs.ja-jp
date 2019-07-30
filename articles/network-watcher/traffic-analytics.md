@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: yagup;kumud
-ms.openlocfilehash: 07bff578b27df13c65eb912a64b6a44b97175d37
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: kumud
+ms.reviewer: yagup
+ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051669"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872488"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -60,7 +61,7 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 
 * カナダ中部
 * 米国中西部
-* 米国東部
+* East US
 * 米国東部 2
 * 米国中北部
 * 米国中南部
@@ -87,7 +88,7 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
 * カナダ中部
 * 米国中西部
-* 米国東部
+* East US
 * 米国東部 2
 * 米国中南部
 * 米国西部

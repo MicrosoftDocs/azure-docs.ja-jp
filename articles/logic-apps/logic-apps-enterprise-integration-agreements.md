@@ -8,16 +8,15 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 04/05/2019
-ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/22/2019
+ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720677"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330313"
 ---
-# <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps および Enterprise Integration Pack を使用して取引先契約を作成して管理します
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps で取引先契約を作成して管理する
 
 [取引先](../logic-apps/logic-apps-enterprise-integration-partners.md) 
 *契約*は、組織および企業が、企業間 (B2B) メッセージを交換するときに使用する特定の業界標準プロトコルを定義して互いにシームレスに通信するのに役立ちます。 契約には一般的に次のような利点があります。
@@ -27,6 +26,8 @@ ms.locfileid: "64720677"
 * エンタープライズ統合ソリューションを構築する際に、容易に作成、管理、および使用することができます。
 
 この記事では、[Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) および [Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して B2B シナリオ用のエンタープライズ統合ソリューションを構築するときに使用できる AS2、EDIFACT、または X12 の契約を作成する方法について説明します。 契約を作成したら、AS2、EDIFACT、または X12 コネクタを使用して B2B メッセージを交換できるようになります。
+
+RosettaNet メッセージを交換するための契約を作成するには、[RosettaNet メッセージの交換](../logic-apps/logic-apps-enterprise-integration-rosettanet.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,8 +66,8 @@ Azure のメイン メニューで、 **[すべてのサービス]** を選び�
    | **ホスト ID** | はい | <*host-partner-identifier*> | ホスト パートナーの ID |
    | **ゲスト パートナー** | はい | <*guest-partner-name*> | ゲスト パートナーは、ホスト パートナーと取引している組織を表します。 |
    | **ゲスト ID** | はい | <*guest-partner-identifier*> | ゲスト パートナーの ID |
-   | **受信設定** | 多様 | 多様 | これらのプロパティでは、契約に従って受信されるすべての受信メッセージを処理する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
-   | **送信の設定** | 多様 | 多様 | これらのプロパティでは、契約に従って送信されるすべての送信メッセージを処理する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
+   | **受信設定** | 多様 | 多様 | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーからすべての受信メッセージを受信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
+   | **送信の設定** | 多様 | 多様 | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーにすべての送信メッセージを送信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
    |||||
 
 1. 契約の作成が終了したら、 **[追加]** ページで、 **[OK]** を選択してご自分の統合アカウントに戻ります。

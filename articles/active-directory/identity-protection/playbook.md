@@ -2,27 +2,21 @@
 title: Azure Active Directory Identity Protection プレイブック | Microsoft Docs
 description: Azure AD Identity Protection を使用して、侵害された ID またはデバイスを攻撃者が悪用する能力を制限する方法、および以前に疑われた、または侵害を確認された ID またはデバイスを保護する方法について説明します。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697bb8a60861acb120e92d8fd1dda3892a957b57
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 273a6aca2050676650b955ec078b47b2ffcfe319
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518909"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333932"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
 
@@ -30,7 +24,6 @@ ms.locfileid: "58518909"
 
 * リスク イベントと脆弱性をシミュレートし、ID 保護環境にデータを入力する
 * リスクに基づく条件付きアクセス ポリシーを設定し、そのポリシーの影響をテストする
-
 
 ## <a name="simulating-risk-events"></a>リスク イベントのシミュレーション
 
@@ -67,7 +60,6 @@ ms.locfileid: "58518909"
 以下の手順では、次のものを新たに作成して使用します。
 
 - 新しい場所をシミュレートするための VPN 接続。
-
 - 新しいデバイスをシミュレートするための仮想マシン。
 
 以下の手順を完了するには、次のようなユーザー アカウントを使用する必要があります。
@@ -75,12 +67,10 @@ ms.locfileid: "58518909"
 - 30 日以上のサインイン履歴がある。
 - 多要素認証が有効になっている。
 
-
 **未知の場所からサインインをシミュレートするには、次の手順を実行します**。
 
 1. テスト アカウントでサインインするとき、MFA チャレンジをパスしないことで、MFA チャレンジを失敗させます。
 2. 新しい VPN を使用して、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動し、テスト アカウントの資格情報を入力します。
-   
 
 10 ～ 15 分以内に Identity Protection ダッシュボードにサインインが表示されます。
 
@@ -89,7 +79,6 @@ ms.locfileid: "58518909"
 このリスク イベントの詳細については、「[特殊な場所へのあり得ない移動](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations)」を参照してください。 
 
 アルゴリズムでは、機械学習を使用して、既知のデバイスからのあり得ない移動や、ディレクトリ内の他のユーザーによって使用される VPN からのサインインなどの誤検知が除去されるため、あり得ない移動の状態をシミュレートすることは困難です。 さらに、リスク イベントの生成を開始する前に、ユーザーには 14 日間のサインイン履歴と 10 回のログインが必要です。 複雑な機械学習モデルと上記のルールのため、次の手順ではリスク イベントが発生しないこともあります。 このリスク イベントを発行するには、複数の Azure AD アカウントでこの手順を繰り返してください。
-
 
 **特殊な場所へのあり得ない移動をシミュレートするには、次の手順を実行します**。
 
@@ -108,11 +97,9 @@ ms.locfileid: "58518909"
 * Azure AD [Cloud Discovery](https://docs.microsoft.com/cloud-app-security/)。
 * Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 
 
-
 ## <a name="testing-security-policies"></a>セキュリティ ポリシーのテスト
 
 このセクションでは、ユーザー リスクとサインイン リスクのセキュリティ ポリシーをテストする手順を示します。
-
 
 ### <a name="user-risk-security-policy"></a>ユーザーのリスク セキュリティ ポリシー
 
@@ -120,12 +107,11 @@ ms.locfileid: "58518909"
 
 ![ユーザーのリスク](./media/playbook/02.png "プレイブック")
 
-
 **ユーザーのリスク セキュリティ ポリシーをテストするには、次の手順に従います**。
 
 1. テナントのグローバル管理者の資格情報を使用して [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. **Identity Protection**に移動します。 
-3. **[Azure AD Identity Protection]** ページで、**[ユーザーのリスク ポリシー]** をクリックします。
+3. **[Azure AD Identity Protection]** ページで、 **[ユーザーのリスク ポリシー]** をクリックします。
 4. **[割り当て]** セクションで、目的のユーザー (およびグループ) とユーザーのリスク レベルを選択します。
 
     ![ユーザーのリスク](./media/playbook/03.png "プレイブック")
@@ -136,8 +122,6 @@ ms.locfileid: "58518909"
 7. 数分待った後、そのユーザーのユーザー レベルが "中" であることを確認します。 そうでない場合は、そのユーザーに対してリスク イベントをさらにシミュレートします。
 8. **[ポリシーを適用します]** で **[オン]** を選択します。
 9. これで、リスク レベルを上げたユーザーを使用してサインインすることで、ユーザーのリスクに基づく条件付きアクセスをテストできます。
-    
-    
 
 ### <a name="sign-in-risk-security-policy"></a>サインインのリスク セキュリティ ポリシー
 
@@ -145,34 +129,20 @@ ms.locfileid: "58518909"
 
 ![サインインのリスク](./media/playbook/01.png "プレイブック")
 
-
 **サインインのリスク ポリシーをテストするには、次の手順に従います。**
 
 1. テナントのグローバル管理者の資格情報を使用して [https://portal.azure.com](https://portal.azure.com) にサインインします。
-
 2. **Azure AD Identity Protection** に移動します。
-
-3. **[Azure AD Identity Protection]** メイン ページで、**[サインインのリスク ポリシー]** をクリックします。 
-
+3. **[Azure AD Identity Protection]** メイン ページで、 **[サインインのリスク ポリシー]** をクリックします。 
 4. **[割り当て]** セクションで、目的のユーザー (およびグループ) とサインインのリスク レベルを選択します。
 
     ![サインインのリスク](./media/playbook/04.png "プレイブック")
 
-
-5. **[コントロール]** セクションで、必要なアクセスの制御 (**[多要素認証を要求する]** など) を選択します。 
-
+5. **[コントロール]** セクションで、必要なアクセスの制御 ( **[多要素認証を要求する]** など) を選択します。 
 6. **[ポリシーを適用します]** で **[オン]** を選択します。
-
 7. **[Save]** をクリックします。
-
 8. これで、リスクの高いセッションを使用してサインインすることで (たとえば、Tor Browser を使用して)、サインインのリスクに基づく条件付きアクセスをテストできます。 
-
- 
-
-
-
 
 ## <a name="see-also"></a>関連項目
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-

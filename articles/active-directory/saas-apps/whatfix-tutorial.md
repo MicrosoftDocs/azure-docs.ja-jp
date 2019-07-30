@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa088aa331621409103997755b2344f2dd70c64
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 3bc061cca3a2c57d2ebccb0fc09f8168c2fad253
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992945"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163956"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>チュートリアル:Whatfix を Azure Active Directory と統合する
 
@@ -35,7 +35,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="prerequisites"></a>前提条件
 
-開始するには、次のものが必要です。
+開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
 * Whatfix でのシングル サインオン (SSO) が有効なサブスクリプション。
@@ -49,7 +49,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Azure AD への Whatfix の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Whatfix を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Whatfix**」と入力します。
@@ -105,7 +105,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順に従います。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** フィールドに「`Britta Simon`」と入力します。  
    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `BrittaSimon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
@@ -125,8 +125,8 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
     ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] リストから **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-whatfix-test-user"></a>Whatfix テスト ユーザーを作成する
@@ -141,6 +141,6 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

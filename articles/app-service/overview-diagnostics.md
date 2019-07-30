@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 3e304df51133d53adad50e672249bde6c9960712
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2f798be85e9c3aeb8d4b54cba89d8be059427e0
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539737"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147333"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要
 
@@ -103,12 +103,12 @@ Application Insights の例外と依存関係を表示するには、 **[Web App
 
 ![プロアクティブ自動復旧](./media/app-service-diagnostics/proactive-auto-healing-10.png)
 
-## <a name="change-analysis"></a>変更の分析
+## <a name="change-analysis-only-for-windows-app"></a>変更分析 (Windows アプリのみ)
 
-ペースの速い開発環境では、アプリに対して行われたすべての変更を継続的に追跡して、異常な動作の原因となった変更を単独で特定することは難しい場合があります。 変更分析を利用すると、アプリに対して行われた変更を絞り込み、トラブルシューティングのエクスペリエンスを円滑に進めることができます。 変更分析は、**アプリケーションのクラッシュ**などの診断レポートに埋め込まれているため、他のメトリックと同時に使用できます。
+ペースの速い開発環境では、アプリに対して行われたすべての変更を継続的に追跡して、異常な動作の原因となった変更を単独で特定することは難しい場合があります。 変更分析を利用すると、アプリに対して行われた変更を絞り込み、トラブルシューティングのエクスペリエンスを円滑に進めることができます。 変更分析は **[Application Changes]\(アプリケーションの変更\)** にあり、 **[アプリケーションのクラッシュ]** などの診断レポートにも埋め込まれるため、他のメトリックと同時に使用できます。
+
+変更分析は、機能を使用する前に、有効にする必要があります。 変更分析について詳しくは、「[Announcing the new change analysis experience in App Service Diagnostics (アプリ サービス診断における新しい変更分析エクスペリエンスの告知)](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)」をご覧ください。
 
 ![変更分析の既定のページ](./media/app-service-diagnostics/change-analysis-default-page-11.png)
 
 ![差分ビュー](./media/app-service-diagnostics/diff-view-12.png)
-
-変更分析は、機能を使用する前に、有効にする必要があります。 変更分析について詳しくは、「[Announcing the new change analysis experience in App Service Diagnostics (アプリ サービス診断における新しい変更分析エクスペリエンスの告知)](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)」をご覧ください。

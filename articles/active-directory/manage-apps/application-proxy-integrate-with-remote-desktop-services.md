@@ -16,12 +16,12 @@ ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233725"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108459"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -57,6 +57,8 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 - RD Web を発行するときは、内部 FQDN と外部 FQDN を同じにすることをお勧めします。 内部 FQDN と外部 FQDN が異なる場合は、クライアントが無効なリンクを受け取るのを避けるため、要求ヘッダー変換を無効にする必要があります。 
 
 - Internet Explorer で RDS ActiveX アドオンを有効にしてください。
+
+- Azure AD の事前認証フローでは、ユーザーは **[RemoteApp およびデスクトップ]** ウィンドウで自分に公開されているリソースにのみ接続できます。 ユーザーは **[リモート PC に接続]** ウィンドウを使用してデスクトップに接続できません。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>RDS とアプリケーション プロキシの共同デプロイのシナリオ
 

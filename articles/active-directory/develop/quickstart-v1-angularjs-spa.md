@@ -1,5 +1,5 @@
 ---
-title: サインインのための AngularJS シングルページ アプリを構築し、Azure Active Directory を使用してサインアウトする | Microsoft Docs
+title: Azure AD を使用したサインインおよびサインアウトを行う AngularJS シングルページ アプリを構築する | Microsoft Docs
 description: サインインに関して Azure AD と連携し、Azure AD で保護されている API を OAuth を使用して呼び出す AngularJS シングルページ アプリケーションを構築する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1fdbcd04504181a20f5245b6f2378be5b9d405
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001206"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380760"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>クイック スタート:Azure Active Directory を使用したサインインおよびサインアウトを行う AngularJS シングルページ アプリを構築する
 

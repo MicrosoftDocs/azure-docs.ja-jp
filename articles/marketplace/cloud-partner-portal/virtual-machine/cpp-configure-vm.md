@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d38efadfb8ad13d072056ef851be99d9540ad4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938430"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654034"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure でホストされる VM を構成する
 
@@ -66,7 +66,7 @@ Windows OS ディスクは [sysprep ツール](https://docs.microsoft.com/window
 > [!WARNING]
 >  更新プログラムは自動的に実行されることがあるため、sysprep を一度実行したら、デプロイされるまで VM をオフにする必要があります。  このシャットダウンにより、VHD の OS またはインストール済みサービスに、インスタンス固有の変更を加える操作を回避できます。
 
-sysprep の実行に関する詳細については、「[VHD を一般化する手順](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)」を参照してください。
+sysprep の実行に関する詳細については、「[VHD を一般化する手順](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)」を参照してください。
 
 ### <a name="linux"></a>Linux
 

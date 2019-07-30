@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: 4384bf658024f89664c5202ba10d793d7ad734e0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721013"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592921"
 ---
 # <a name="project-answer-search-v7-reference"></a>Project Answer Search v7 のリファレンス
 
@@ -131,7 +131,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|name|ライセンスの名前。|string|  
+|名前|ライセンスの名前。|string|  
 |url|ライセンスに関する詳しい情報を取得できる Web サイトへの URL。<br /><br /> 名前と URL を使用してハイパーリンクを作成します。|string|  
   
 
@@ -188,7 +188,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|name|公開元の名前。|string|  
+|名前|公開元の名前。|string|  
 |url|公開元の Web サイトへの URL。<br /><br /> 公開元が Web サイトを提供しない場合があることに注意してください。|string|  
   
   
@@ -198,7 +198,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
   
 |Name|値|Type|  
 |----------|-----------|----------|
-|name|ページ タイトル (必ずしも HTML タイトルではありません)|string|
+|名前|ページ タイトル (必ずしも HTML タイトルではありません)|string|
 |url|実際にクロールされた URL (要求はリダイレクトされた可能性があります)|string|  
 |description|ページとコンテンツの簡単な説明|string|  
 |isFamilyFriendly|Web インデックスの項目で最も正確です。この検出は、ページのコンテンツではなく URL のみに基づいて、リアルタイム フェッチによって実行されます|ブール値|

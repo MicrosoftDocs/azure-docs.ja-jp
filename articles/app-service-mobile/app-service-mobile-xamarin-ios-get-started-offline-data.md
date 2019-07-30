@@ -2,7 +2,7 @@
 title: Azure モバイル アプリ (Xamarin iOS) のオフライン同期を有効にする
 description: App Service Mobile App を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: cfowler
 editor: ''
 services: app-service\mobile
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 6a43ed0a50082cc37587752631c707bf9b5059ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: b87a1d86370e3abdb200b691d5216b1262512b3e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097465"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440041"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Xamarin iOS モバイル アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started-offline-data) を今すぐチェックしてください。
+>
 
 ## <a name="overview"></a>概要
 このチュートリアルでは、Xamarin iOS 向けの Azure モバイル アプリのオフライン同期機能について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。 変更は、ローカル データベースに格納されます。 デバイスが再びオンラインになると、これらの変更がリモート サービスと同期されます。
@@ -106,7 +110,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Azure Mobile Apps でのオフライン データ同期]
-* [Azure Mobile Apps .NET SDK HOWTO][8]
+* [Azure Mobile Apps .NET SDK の使用方法][8]
 
 <!-- Images -->
 

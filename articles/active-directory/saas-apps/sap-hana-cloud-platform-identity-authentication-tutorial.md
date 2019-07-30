@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e242e85525b446fcbe8a2ec05da539fb45acf487
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eff07f157f6011b9b561334c00b3a4d94989ff5a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868020"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>チュートリアル:Azure Active Directory と SAP Cloud Platform Identity Authentication の統合
 
@@ -72,11 +72,11 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
 **ギャラリーから SAP Cloud Platform Identity Authentication を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -84,7 +84,7 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SAP Cloud Platform Identity Authentication**」と入力して、結果パネルで **[SAP Cloud Platform Identity Authentication]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SAP Cloud Platform Identity Authentication**」と入力して、結果パネルで **[SAP Cloud Platform Identity Authentication]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの SAP Cloud Platform Identity Authentication](common/search-new-app.png)
 
@@ -108,15 +108,15 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
 [アプリケーション名] を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **SAP Cloud Platform Identity Authentication** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **SAP Cloud Platform Identity Authentication** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -131,7 +131,7 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[SAP Cloud Platform Identity Authentication クライアント サポート チーム](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)にお問い合わせください。 識別子の値がわからない場合は、[テナントの SAML 2.0 の構成](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)に関する SAP Cloud Platform Identity Authentication のドキュメントをお読みください。
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[SAP Cloud Platform Identity Authentication] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -140,11 +140,11 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
     > [!NOTE]
     > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 特定のビジネス アプリケーションのサインオン URL を使ってください。 わからないことがある場合は、[SAP Cloud Platform Identity Authentication クライアント サポート チーム](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)にお問い合わせください。
 
-6. SAP Cloud Platform Identity Authentication アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+6. SAP Cloud Platform Identity Authentication アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
-7. SAP アプリケーションで **firstName** などの属性が期待されている場合は、**[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションに **firstName** 属性を追加し、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+7. SAP アプリケーションで **firstName** などの属性が期待されている場合は、 **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションに **firstName** 属性を追加し、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -164,7 +164,7 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
     g. **[Save]** をクリックします。
 
-8. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
+8. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -186,7 +186,7 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
 3. 以降は、もう 1 つの SAP アプリケーションに対して SSO を追加して有効にする場合にのみ行います。 「**ギャラリーからの SAP Cloud Platform Identity Authentication の追加**」セクションの手順を繰り返してください。
 
-4. Azure Portal の **SAP Cloud Platform Identity Authentication** アプリケーション統合ページで、**[リンクされたサインオン]** を選択します。
+4. Azure Portal の **SAP Cloud Platform Identity Authentication** アプリケーション統合ページで、 **[リンクされたサインオン]** を選択します。
 
     ![リンクされたサインオンの構成](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
 
@@ -199,7 +199,7 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -224,11 +224,11 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
 このセクションでは、Britta Simon に SAP Cloud Platform Identity Authentication へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[SAP Cloud Platform Identity Authentication]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[SAP Cloud Platform Identity Authentication]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[SAP Cloud Platform Identity Authentication]** を選択します。
+2. アプリケーションの一覧で、 **[SAP Cloud Platform Identity Authentication]** を選択します。
 
     ![アプリケーションの一覧の [SAP Cloud Platform Identity Authentication] リンク](common/all-applications.png)
 
@@ -236,15 +236,15 @@ Azure AD への SAP Cloud Platform Identity Authentication の統合を構成す
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-sap-cloud-platform-identity-authentication-test-user"></a>SAP Cloud Platform Identity Authentication のテスト ユーザーの作成
 

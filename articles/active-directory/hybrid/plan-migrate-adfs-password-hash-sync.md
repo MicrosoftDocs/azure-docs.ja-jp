@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:Azure AD でフェデレーションからパスワード ハッシュ同期に移行する | Microsoft Docs
+title: Azure AD Connect:Azure AD でフェデレーションから PHS に移行する | Microsoft Docs
 description: この記事では、ハイブリッド ID 環境をフェデレーションからパスワード ハッシュ同期に移行する方法について説明します。
 services: active-directory
 author: billmath
@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 180464e22b34c7b378643e738ea0c30ee5a4b11e
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 9ce9c0c6d4f9002b061afd2ad09f02266d452979
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298887"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109264"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 
@@ -153,7 +153,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 **InsideCorporateNetwork** 要求は、ドメインがパスワード ハッシュ同期に変換された後は使用できません。 この機能の代わりに、[Azure AD の名前付きの場所](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)を使用できます。
 
-名前付きの場所を構成した後は、ネットワークの **[すべての信頼できる場所]** または **[MFA の信頼できる IP]** の値を含めるか除外するために構成されたすべての条件付きアクセス ポリシーを、新しい名前付きの場所を反映するように更新する必要があります。
+ネームド ロケーションを構成した後は、ネットワークの **[すべての信頼できる場所]** または **[MFA の信頼できる IP]** の値を含めるか除外するために構成されたすべての条件付きアクセス ポリシーを、新しいネームド ロケーションを反映するように更新する必要があります。
 
 条件付きアクセスでの**場所**の条件の詳細については、[Active Directory の条件付きアクセスの場所](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)に関するページを参照してください。
 

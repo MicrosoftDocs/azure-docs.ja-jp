@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 1e6c71a68c4357d82d086f3e2ca098e4039def5a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 25d58bdc5791de868c6302b4d2763fa34e98af17
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295759"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615037"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -30,13 +30,13 @@ ms.locfileid: "46295759"
 次に、Data Lake Analytics と Azure Data Lake Storage Gen1 アカウントを同時に作成します。  この手順は単純であり、所要時間は約 60 秒です。
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. **[リソースの作成]** >  **[データ + 分析]** > **[Data Lake Analytics]** の順にクリックします。
+2. **[リソースの作成]**  >   **[データ + 分析]**  >  **[Data Lake Analytics]** の順にクリックします。
 3. 次の項目の値を選択します。
-   * **名前**: Data Lake Analytics アカウントに名前を付けます (英小文字と数字のみ使用できます)。
-   * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
+   * **[名前]** :Data Lake Analytics アカウントに名前を付けます (小文字と数字のみが許可されています)。
+   * **サブスクリプション**:Analytics アカウントに使用される Azure サブスクリプションを選択します。
    * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。
    * **場所**。 Data Lake Analytics アカウントの Azure データ センターを選択します。
-   * **Data Lake Storage Gen1**: 以下の指示に従って、新しい Data Lake Storage Gen1 アカウントを作成するか、既存のものを選択します。 
+   * **[Data Lake Storage Gen1]** :手順に従って新しい Data Lake Storage Gen1 アカウントを作成するか、または既存のアカウントを選択します。 
 4. 必要に応じて、Data Lake Analytics アカウントの価格レベルを選択します。
 5. **Create** をクリックしてください。 
 
@@ -64,7 +64,7 @@ OUTPUT @a
 2. 上記の U-SQL スクリプトのテキストを貼り付けます。 ジョブに名前を付けます。 
 3. **[送信]** ボタンを選択して、ジョブを開始します。   
 4. ジョブの **[状態]** を監視して、ジョブの状態が **[成功]** に変わるまで待ちます。
-5. **[データ]** タブで、**[出力]** タブを選択します。`data.csv` という名前の出力ファイルを選択し、出力データを表示します。
+5. **[データ]** タブで、 **[出力]** タブを選択します。`data.csv` という名前の出力ファイルを選択し、出力データを表示します。
 
 ## <a name="see-also"></a>関連項目
 

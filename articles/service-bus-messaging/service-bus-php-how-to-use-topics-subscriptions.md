@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: f0ae734ac8814cc605ce03756fde5545c77c837d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 18aeaccef724ba94a9c18240fb77ea33897e8d26
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992069"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063867"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -51,7 +51,23 @@ Microsoft Azure Blob service にアクセスする PHP アプリケーション�
 この記事では、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできるサービス機能の使用方法について説明します。
 
 ## <a name="get-the-azure-client-libraries"></a>Azure クライアント ライブラリの入手
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+
+### <a name="install-via-composer"></a>Composer 経由でインストールする
+1. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
+   
+    ```json
+    {
+      "require": {
+        "microsoft/windowsazure": "*"
+      }
+    }
+    ```
+2. **[composer.phar][composer-phar]** をプロジェクトのルートにダウンロードします。
+3. コマンド プロンプトを開き、次のコマンドをプロジェクトのルートで実行します。
+   
+    ```
+    php composer.phar install
+    ```
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus API を使用するには、以下の手順を実行します。
@@ -67,7 +83,7 @@ Service Bus API を使用するには、以下の手順を実行します。
 > 
 
 ```php
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 

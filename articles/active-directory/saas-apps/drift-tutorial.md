@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e645dd40071416a28ced475e02c47688a5759eb4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 4728ad4fcd44c754a62ec19037562e63d92ec304
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304064"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656608"
 ---
 # <a name="tutorial-integrate-drift-with-azure-active-directory"></a>チュートリアル:Drift と Azure Active Directory の統合
 
@@ -88,7 +88,7 @@ Drift に対する Azure AD SSO を構成してテストするには、次の構
 
     d. **[サインオン URL]** テキスト ボックスに URL として「`https://start.drift.com`」と入力します。
 
-6. Drift アプリケーションでは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+6. Drift アプリケーションでは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 

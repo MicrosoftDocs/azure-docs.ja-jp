@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/28/2019
 ms.author: assafi
-ms.openlocfilehash: a8b41f6853e9c91e64de903960b880e44f22ed55
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 82297842a56930cec2b4de90998b4ffb904543bb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297809"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446966"
 ---
 # <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>クイック スタート:.NET SDK と C# を使用して Text Analytics サービスを呼び出す
 <a name="HOLTop"></a>
@@ -31,6 +31,7 @@ ms.locfileid: "66297809"
 
 * [Visual Studio 2017 以降] の任意のエディション
 * Text Analytics [SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 サインアップ中に自動的に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。

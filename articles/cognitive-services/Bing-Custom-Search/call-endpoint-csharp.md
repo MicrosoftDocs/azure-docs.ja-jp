@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:C# を使用して Bing Custom Search エンドポイントを呼び出す | Microsoft Docs
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# で Bing Custom Search インスタンスに検索結果を要求します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 07/15/2019
 ms.author: maheshb
-ms.openlocfilehash: 267b50e15d39fc5a0df763cea2e2b79f9b23d151
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: c1b118ec08e00705ad3eab9141d116fb9e6ef257
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595811"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405194"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>クイック スタート:C# を使用して Bing Custom Search エンドポイントを呼び出す 
 
@@ -25,9 +25,9 @@ ms.locfileid: "65595811"
 
 - Bing Custom Search インスタンス。 「[クイック スタート:初めての Bing Custom Search インスタンスを作成する](quick-start.md)」で詳細を確認する。
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- [Visual Studio 2017 またはそれ以降](https://www.visualstudio.com/downloads/)の任意のエディション
+- [[Visual Studio 2019 以降]](https://www.visualstudio.com/downloads/) の任意のエディション
 - Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
-- [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) パッケージがインストール済みであること。 
+- [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) の NuGet パッケージ 
     - Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、メニューから **[NuGet パッケージの管理]** を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージをインストールします。 NuGet Custom Search パッケージをインストールすると、次のアセンブリもインストールされます。
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
@@ -104,7 +104,7 @@ ms.locfileid: "65595811"
     ```
    ## <a name="process-and-view-the-results"></a>結果の処理と表示
 
-1. 応答オブジェクトを反復処理して、それぞれの検索結果についての情報 (名前、URL、Web ページが最後にクロールされた日付など) を表示します。
+3. 応答オブジェクトを反復処理して、それぞれの検索結果についての情報 (名前、URL、Web ページが最後にクロールされた日付など) を表示します。
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

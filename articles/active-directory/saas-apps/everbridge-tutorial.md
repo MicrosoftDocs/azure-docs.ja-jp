@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: f8dd11e7fb0b9fda0e0f1c7d3f794f6bfd766cdf
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231455"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103250"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>チュートリアル:Azure Active Directory と Everbridge の統合
 
@@ -52,11 +52,11 @@ Azure AD への Everbridge の統合を構成するには、Azure Marketplace �
 
 Azure Marketplace から Everbridge を追加するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** を選択します。
 
     ![[Azure Active Directory] ボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** を選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -64,7 +64,7 @@ Azure Marketplace から Everbridge を追加するには、次の手順に従�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Everbridge**」と入力します。 結果パネルで **[Everbridge]** を選択し、**[追加]** を選択します。
+4. 検索ボックスに「**Everbridge**」と入力します。 結果パネルで **[Everbridge]** を選択し、 **[追加]** を選択します。
 
      ![結果リスト内の Everbridge](common/search-new-app.png)
 
@@ -89,22 +89,22 @@ Everbridge で Azure AD のシングル サインオンを構成してテスト�
 
 Everbridge で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Everbridge** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Everbridge** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログ ボックスで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログ ボックスで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** を選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** を選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
     >[!NOTE]
     >Azure portal と Everbridge ポータルの両方で、アプリケーションを Manager Portal *または* Member Portal として構成します。
 
-4. **Everbridge** アプリケーションを **Everbridge Manager Portal** として構成するには、**[基本的な SAML 構成]** セクションで次の手順に従います。
+4. **Everbridge** アプリケーションを **Everbridge Manager Portal** として構成するには、 **[基本的な SAML 構成]** セクションで次の手順に従います。
 
     ![Everbridge のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
 
@@ -115,7 +115,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL の値でこれらの値を更新します。 これらの値を取得するには、[Everbridge サポート チーム](mailto:support@everbridge.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **Everbridge** アプリケーションを **Everbridge Member Portal** として構成するには、**[基本的な SAML 構成]** セクションで次の手順に従います。
+5. **Everbridge** アプリケーションを **Everbridge Member Portal** として構成するには、 **[基本的な SAML 構成]** セクションで次の手順に従います。
 
   * IDP 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
@@ -125,7 +125,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
 
     b. **[応答 URL]** ボックスに、次の形式で URL を入力します。`https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
 
-   * アプリケーションを SP 開始モードで構成する場合は、**[追加の URL を設定します]** を選択して次の手順に従います。
+   * アプリケーションを SP 開始モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順に従います。
 
      ![SP 開始モードでの Everbridge のドメインと URL のシングル サインオン情報](common/both-signonurl.png)
 
@@ -134,7 +134,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
      > [!NOTE]
      > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL の値で更新してください。 これらの値を取得するには、[Everbridge サポート チーム](mailto:support@everbridge.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** を選択して**フェデレーション メタデータ XML** をダウンロードします。 これをコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して**フェデレーション メタデータ XML** をダウンロードします。 これをコンピューターに保存します。
 
     ![証明書のダウンロード リンク](common/metadataxml.png)
 
@@ -152,7 +152,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
  
 1. 別の Web ブラウザー ウィンドウで、Everbridge に管理者としてサインインします。
 
-1. 上部のメニューで **[Settings]\(設定)\** タブを選択します。**[Serucity]\(セキュリティ)\** の下で **[Single Sign-On]\(シングル サインオン)\** を選択します。
+1. 上部のメニューで **[Settings]\(設定)\** タブを選択します。 **[Serucity]\(セキュリティ)\** の下で **[Single Sign-On]\(シングル サインオン)\** を選択します。
    
      ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
@@ -162,7 +162,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
    
      c. **[Choose File]\(ファイルの選択)\** を選択して、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
    
-     d. **[SAML Identity Location]\(SAML ID の場所\)** で、**[Identity is in the NameIdentifier element of the Subject statement]\(ID を Subject ステートメントの NameIdentifier 要素にする\)** をオンにします。
+     d. **[SAML Identity Location]\(SAML ID の場所\)** で、 **[Identity is in the NameIdentifier element of the Subject statement]\(ID を Subject ステートメントの NameIdentifier 要素にする\)** をオンにします。
    
      e. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
    
@@ -178,7 +178,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
 
 Azure portal で Britta Simon というテスト ユーザーを作成するには、次の手順に従います。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザー] と [すべてのユーザー] のリンク](common/users.png)
 
@@ -202,7 +202,7 @@ Azure portal で Britta Simon というテスト ユーザーを作成するに�
 
 Britta Simon に Everbridge へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で、**[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** >**[Everbridge]** の順に選択します。
+1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  > **[Everbridge]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -220,7 +220,7 @@ Britta Simon に Everbridge へのアクセスを許可することで、この�
 
 5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[Britta Simon]** を選択します。 画面の下部にある **[選択]** を選択します。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 画面の下部にある **[選択]** を選択します。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 画面の下部にある **[選択]** を選択します。
 
 7. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 

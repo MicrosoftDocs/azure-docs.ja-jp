@@ -11,12 +11,12 @@ ms.reviewer: seguler
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: b16bbeee299f4879c14856a8041e6517968efebf
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a971f2b4b63b3fd35777d1d890da8451b84bb086
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481113"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544040"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -222,7 +222,7 @@ const sasString = "<Add the SAS you generated earlier>";
 const containerName = "testcontainer";
 const containerURL = new azblob.ContainerURL(
     `https://${accountName}.blob.core.windows.net/${containerName}?${sasString}`,
-    azblob.StorageURL.newPipeline(new azblob.AnonymousCredential)));
+    azblob.StorageURL.newPipeline(new azblob.AnonymousCredential));
 ```
 
 このコードでは、アカウントの情報と SAS を使用して、ストレージ コンテナーの作成と操作に役立つ [ContainerURL](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL) インスタンスを作成します。
@@ -317,7 +317,7 @@ const uploadFiles = async () => {
 }
 
 selectButton.addEventListener("click", () => fileInput.click());
-fileInput.addEventListener("input", uploadFiles);
+fileInput.addEventListener("change", uploadFiles);
 ```
 
 このコードでは、 **[Select and upload files]\(ファイルを選択してアップロード\)** ボタンを非表示の `file-input` 要素に結び付けています。 こうすることで、ボタンの `click` イベントによりファイル入力の `click` イベントがトリガーされ、ファイル ピッカーが表示されます。 ファイルを選択してダイアログ ボックスを閉じると、`input` イベントが発生して `uploadFiles` 関数が呼び出されます。 この関数では、選択したファイルごとに、ブラウザー専用の [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) 関数を呼び出しています。 各呼び出しでは Promise が返されます。これを一覧に追加してすべてのファイルをまとめて待機状態にすることで、全ファイルを並列でアップロードしています。

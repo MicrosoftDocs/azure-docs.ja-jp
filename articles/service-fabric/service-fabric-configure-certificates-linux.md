@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
-ms.author: v-jamebr
-ms.openlocfilehash: c0580b75544a9613bc8caf2faaac11ba1ba6708e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: chackdan
+ms.openlocfilehash: 4a5a67133d52a0cdc0cc082ab85c1cc791c13ad5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60881370"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876560"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux クラスター上の証明書とセキュリティ
 

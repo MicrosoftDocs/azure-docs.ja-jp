@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60309115"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [現在のバージョン](connector-sap-business-warehouse.md)
 
@@ -167,27 +167,27 @@ SAP BW からデータをコピーするとき、SAP BW のデータ型から Az
 | SAP BW データ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | ACCP | int |
-| CHAR | String |
-| CLNT | String |
+| CHAR | string |
+| CLNT | string |
 | CURR | Decimal |
-| CUKY | String |
+| CUKY | string |
 | DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | int |
-| LANG | String |
-| LCHR | String |
+| LANG | string |
+| LCHR | string |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | String |
-| UNIT | String |
-| DATS | String |
-| NUMC | String |
-| TIMS | String |
+| STRING | string |
+| UNIT | string |
+| DATS | string |
+| NUMC | string |
+| TIMS | string |
 
 
 ## <a name="next-steps"></a>次の手順

@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2018
-ms.author: lyrana
-ms.openlocfilehash: f85ab05e785ea559962490b43e75b196d1602159
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/13/2018
+ms.author: lyhughes
+ms.openlocfilehash: 114edc072524552fab35e9cad6fc85573c4e8d0e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016218"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846542"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>API に接続および認証する
 
@@ -25,9 +25,9 @@ Azure AD の概要については、[基礎ページ](https://docs.microsoft.com
 
 Azure AD でサポートされる [5 つの主要なアプリケーション シナリオ](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types)は、次のとおりです。
 
-* シングル ページ アプリケーション (SPA): ユーザーは、Azure AD によって保護されたシングル ページ アプリケーションにサインインする必要があります。
+* シングルページ アプリケーション (SPA): ユーザーは、Azure AD によって保護されたシングルページ アプリケーションにサインインする必要があります。
 * Web ブラウザー対 Web アプリケーション: ユーザーは、Azure AD によって保護された Web アプリケーションにサインインする必要があります。
-* ネイティブ アプリケーション対 Web API: スマートフォン、タブレット、または PC で実行されるネイティブ アプリケーションは、Azure AD によって保護された Web API からリソースを取得するために、ユーザーを認証する必要があります。
+* ネイティブ アプリケーション対 Web API: 電話、タブレット、または PC 上で実行されるネイティブ アプリケーションは、Azure AD によって保護された Web API からリソースを取得するためにユーザーを認証する必要があります。
 * Web アプリケーション対 Web API: Web アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
 * デーモンまたはサーバー アプリケーション対 Web API: Web UI を備えていないデーモン アプリケーションまたはサーバー アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
 
@@ -35,39 +35,18 @@ Microsoft Azure 認証ライブラリでは、さまざまな方法で Active Di
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>中間層 Web API から Digital Twins を呼び出す
 
-開発者が Digital Twins ソリューションを設計する際、通常は中間層アプリケーションか API を作成します。 その後、アプリまたは API によって、ダウンストリームの Digital Twins API を呼び出します。 ユーザーはまず中間層アプリケーションに対して認証を行い、代理のトークン フローを使用して、ダウンストリームが呼び出されます。 代理フローを統合する方法については、[こちらのページ](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)をご覧ください。 なお、[こちらのページ](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/)でコード サンプルも参照できます。
+開発者が Digital Twins ソリューションを設計する際、通常は中間層アプリケーションか API を作成します。 その後、アプリまたは API によって、ダウンストリームの Digital Twins API を呼び出します。 この標準の Web ソリューション アーキテクチャをサポートするには、まずユーザーが次の手順を実行する必要があります。
 
+1. 中間層アプリケーションの認証を受けます
 
-## <a name="test-with-the-postman-client"></a>Postman クライアントでのテストの実行
+1. 認証中に OAuth 2.0 On-Behalf-Of トークンが取得されます
 
-Digital Twins API を起動して実行するには、API 環境として Postman などのクライアントを使用できます。 Postman は複雑な HTTP 要求をすばやく作成するのに役立ちます。 以下の手順は、Postman UI 内で Digital Twins を呼び出すために必要な Azure AD トークンの取得方法を示したものです。
+1. この取得されたトークンは、認証と、On-Behalf-Of フローを使用するさらにダウンストリームである API の呼び出しに使用されます
 
-
-1. https://www.getpostman.com/ に移動してアプリをダウンロードします。
-1. [こちらのクイック スタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順に従って、Azure AD アプリケーションを作成します。 なお、既存の登録を再利用することもできます。 
-1. **[必要なアクセス許可]** に "Azure Digital Twins" と入力して **[委任されたアクセス許可]** を選択します。 その後、**[アクセス許可の付与]** を選択します。
-1. アプリケーション マニフェストを開き、**oauth2AllowImplicitFlow** を true に設定します。
-1. 応答 URL を [https://www.getpostman.com/oauth2/callback](https://www.getpostman.com/oauth2/callback) に構成します。
-1. **[承認] タブ**を選択し、**[OAuth 2.0]** を選択して **[Get New Access Token]\(新しいアクセス トークンの取得\)** を選択します。
-
-    |**フィールド**  |**値** |
-    |---------|---------|
-    | [付与タイプ] | 暗黙 |
-    | コールバック URL | [https://www.getpostman.com/oauth2/callback](https://www.getpostman.com/oauth2/callback) |
-    | 認証 URL | https://login.microsoftonline.com/<Your Azure AD Tenant e.g. Contoso>.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0 |
-    | クライアント ID | 手順 2 で作成または別の用途のために作り変えた Azure AD アプリのアプリケーション ID を使用します。 |
-    | Scope (スコープ) | 空白のままにします。 |
-    | State (状態) | 空白のままにします。 |
-    | クライアント認証 | 基本 Auth ヘッダーとして送信します。 |
-
-1. **[Request Token]\(要求トークン\)** を選択します。
-
-    >[!NOTE]
-    >「OAuth 2 couldn’t be completed」(OAuth 2 を完了できませんでした) というエラー メッセージを受け取った場合は、次の操作を試してください。
-    > * Postman を閉じて再起動し、もう一度実行する。
-   
-1. 下へスクロールし、**[Use Token]\(トークンの使用\)** を選択します。
+On-Behalf-Of フローを調整する方法については、[OAuth 2.0 の On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)に関するページを参照してください。 また、コード サンプルについては、[ダウンストリーム Web API の呼び出し](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
+OAuth 2.0 の暗黙的な許可フローを使用して Azure Digital Twins を構成およびテストするには、[Postman の構成](./how-to-configure-postman.md)に関するページを参照してください。
 
 Azure Digital Twins のセキュリティについては、「[ロールの割り当てを作成および管理する](./security-create-manage-role-assignments.md)」をご覧ください。

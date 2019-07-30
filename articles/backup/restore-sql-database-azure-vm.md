@@ -1,19 +1,18 @@
 ---
 title: Azure Backup を使用して Azure VM 上でバックアップ済みの SQL Server データベースを復元する | Microsoft Docs
 description: この記事では、Azure VM 上で実行されており、Azure Backup でバックアップしてある SQL Server データベースを復元する方法について説明します。
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: d8ade598e4f1b6331367e8bd04ad59951ef5de8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6bd9ea70a3334fbf3843a6b5d44d10a929e20ae
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242364"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467209"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースを復元する
 
@@ -156,7 +155,7 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 ### <a name="restore-databases-with-large-number-of-files"></a>多数のファイルがあるデータベースを復元する
 
-データベース内のファイルの文字列サイズの合計が[特定の制限](backup-sql-server-azure-troubleshoot.md#files-size-limit-beyond-which-restore-happens-to-default-path)より大きい場合、Azure Backup で、データベース ファイルの一覧が、別の PIT コンポーネントに格納されるため、ユーザーは復元操作中にターゲット復元パスを設定できません。 代わりに、ファイルが SQL の既定のパスに復元されます。
+データベース内のファイルの文字列サイズの合計が[特定の制限](backup-sql-server-azure-troubleshoot.md#size-limit-for-files)より大きい場合、Azure Backup で、データベース ファイルの一覧が、別の PIT コンポーネントに格納されるため、ユーザーは復元操作中にターゲット復元パスを設定できません。 代わりに、ファイルが SQL の既定のパスに復元されます。
 
   ![大きなファイルがあるデータベースを復元する](./media/backup-azure-sql-database/restore-large-files.jpg)
 

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
-ms.author: vinynigam
-ms.openlocfilehash: d573b7ad9edac6b1502744b61e85cba3402a6f68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vinigam
+ms.openlocfilehash: 71eb789c92452353029613265fe97411c8c00649
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232662"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706329"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 

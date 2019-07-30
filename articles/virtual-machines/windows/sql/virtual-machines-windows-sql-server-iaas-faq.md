@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
-ms.author: v-shysun
-ms.openlocfilehash: 5299437dea18510fa5f85ee27240c8afc434d125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mathoma
+ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477265"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876192"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -37,7 +37,7 @@ ms.locfileid: "61477265"
 
 ## <a id="images"></a>イメージ
 
-1. **どのような SQL Server 仮想マシン ギャラリーのイメージを使用できますか?**
+1. **どのような SQL Server 仮想マシン ギャラリーのイメージを使用できますか?** 
 
    Azure では、Windows と Linux の両方のすべてのエディションで、SQL Server のサポートされているすべてのメジャー リリース用の仮想マシン イメージを保持します。 詳細については、[Windows VM イメージ](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)と [Linux VM イメージ](../../linux/sql/sql-server-linux-virtual-machines-overview.md#create) の完全な一覧を参照してください。
 
@@ -78,7 +78,6 @@ ms.locfileid: "61477265"
 1. **Azure VM に SQL Server のライセンス版をインストールするにはどうすればよいですか?**
 
    2 つの方法があります。 [ライセンスをサポートする仮想マシン イメージ](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)の 1 つをプロビジョニングできます。これは、ライセンス持ち込み (BYOL) とも呼ばれます。 SQL Server インストール メディアを Windows Server VM にコピーしてから、SQL Server を VM にインストールするオプションもあります。 ただし、SQL Server を手動でインストールする場合、ポータルは統合されず、SQL Server IaaS Agent 拡張機能はサポートされません。そのため、このシナリオでは、自動バックアップや自動修正などの機能は動作しません。 こうした理由から、BYOL ギャラリー イメージのいずれかを使用することをお勧めします。 Azure VM 上で BYOL または独自の SQL Server メディアを使用するには、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)が必要です。 詳細については、「[Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md)」(SQL Server Azure VM の料金ガイダンス) を参照してください。
-
 
 1. **スタンバイ/フェールオーバーのみ使用するために作成した Azure VM 上の SQL Server のライセンスに料金を支払う必要がありますか。**
 
@@ -147,9 +146,10 @@ ms.locfileid: "61477265"
    
 ## <a name="updating-and-patching"></a>更新プログラムと修正プログラムの適用
 
-1. **Azure VM で SQL Server の新しいバージョン/エディションに変更するにはどうすればよいですか?**
+1. **Azure VM で SQL Server の異なるバージョン/エディションに変更するにはどうすればよいですか?**
 
-   ソフトウェア アシュアランスをご契約いただいているお客様は、ボリューム ライセンス ポータルのインストール メディアを使用して、Azure VM で実行されている SQL Server のインプレース アップグレードを実行できます。 ただし、現時点では SQL Server インスタンスのエディションは変更できません。 目的の SQL Server エディションで新しい Azure 仮想マシンを作成し、標準の[データ移行方法](virtual-machines-windows-migrate-sql.md)を使用して、お使いのデータベースを新しいサーバーに移行します。
+   お客様は、SQL Server の目的のバージョンまたはエディションを含むセットアップ メディアを使用して、SQL Server のバージョン/エディションを変更できます。 エディションが変更されたら、Azure portal を使用して、VM の課金を正確に反映するように VM のエディション プロパティを変更してください。 詳細については、[SQL Server VM のエディションの変更](virtual-machines-windows-sql-change-edition.md)に関するページを参照してください。 
+
 
 1. **SQL Server VM に更新プログラムと Service Pack を適用するにはどうすればよいですか?**
 
@@ -170,7 +170,7 @@ ms.locfileid: "61477265"
 
 1. **Azure VM に SQL データ ツールをインストールするにはどうすればよいですか?**
 
-    「[Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=42313)」から、SQL データ ツールをダウンロードしてインストールします。
+    「[Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)」から、SQL データ ツールをダウンロードしてインストールします。
 
 1. **SQL Server VM では MSDTC を使用した分散トランザクションはサポートされていますか?**
    

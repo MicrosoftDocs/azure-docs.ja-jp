@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 4d4c37a31a279fab9af0f3d84575641d10ff09ce
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66236392"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181500"
 ---
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

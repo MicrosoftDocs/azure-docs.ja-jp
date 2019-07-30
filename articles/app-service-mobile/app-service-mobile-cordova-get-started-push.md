@@ -5,31 +5,35 @@ services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
 editor: ''
-author: conceptdev
+author: elamalani
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 40a7552ffd0bfcab173d2e35c52313a94ec3d0bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: e6755c3fb1fca342d94fdaa96c0dce614d762172
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62114336"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443552"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Apache Cordova アプリへのプッシュ通知の追加
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-push) を今すぐチェックしてください。
+>
+
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、[[Apache Cordova クイック スタート]][5] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにデバイスにプッシュ通知が送信されるようにします。
+このチュートリアルでは、[Apache Cordova クイックスタート][5] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにデバイスにプッシュ通知が送信されるようにします。
 
-ダウンロードされたクイック スタート サーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージが必要です。 詳細については、[Mobile Apps 用の .NET バックエンド サーバー SDK の操作][1]に関するページを参照してください。
+ダウンロードされたクイック スタート サーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージが必要です。 詳細については、「[Mobile Apps 用 .NET バックエンド サーバー SDK の操作][1]」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,12 +42,12 @@ ms.locfileid: "62114336"
 このチュートリアルを完了するには、次のものが必要です。
 
 * [Visual Studio Community 2015][2] 以降がインストールされた PC
-* [Visual Studio Tools for Apache Cordova][4]
+* [Apache Cordova の Visual Studio ツール][4]
 * [アクティブな Azure アカウント][3]
-* 完了した [[Apache Cordova クイック スタート]][5] プロジェクト
+* 完了した [Apache Cordova クイックスタート][5] プロジェクト
 * (Android) 確認済みのメール アドレスがある [Google アカウント][6]
 * (iOS) [Apple Developer Program メンバーシップ][7]と iOS デバイス (iOS シミュレーターはプッシュ通知をサポートしていません)
-* (Windows) A [Microsoft Store Developer Account][8]　およびと Windows 10 デバイス
+* (Windows) [Microsoft Store 開発者アカウント][8]と Windows 10 デバイス
 
 ## <a name="configure-hub"></a>通知ハブを構成する
 
@@ -70,7 +74,7 @@ Apache Cordova アプリ プロジェクトが確実にプッシュ通知を処�
 
 #### <a name="install-the-push-plugin"></a>プッシュ プラグインをインストールする
 
-Apache Cordova アプリケーションでは、デバイスやネットワークの機能をネイティブで処理しません。  これらの機能は、[npm][10] または GitHub で公開されているプラグインによって提供されます。 `phonegap-plugin-push` プラグインは、ネットワーク プッシュ通知を処理します。
+Apache Cordova アプリケーションでは、デバイスやネットワークの機能をネイティブで処理しません。  これらの機能は、 [npm][10] または GitHub で公開されているプラグインによって提供されます。 `phonegap-plugin-push` プラグインは、ネットワーク プッシュ通知を処理します。
 
 プッシュ プラグインは、次のいずれかの方法でインストールできます。
 
@@ -195,7 +199,7 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
 #### <a name="configure-your-cordova-app-for-android"></a>Android 用に Cordova アプリを構成する
 
-Cordova アプリで、**config.xml** を開きます。 次に、`Your_Project_ID` を [Google デベロッパー コンソール ][18]にあるアプリの数値プロジェクト ID に置き換えます。
+Cordova アプリで、**config.xml** を開きます。 次に、`Your_Project_ID` を、[Google デベロッパー コンソール][18]から入手したアプリの数値プロジェクト ID に置き換えます。
 
 ```xml
 <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
@@ -234,7 +238,7 @@ Android デバイスにアプリケーションをデプロイするには、USB
 
 2. **[Install Packages] (パッケージのインストール)** を選択します。 その後、インストールの完了を待ちます。
 
-最新の必要なライブラリは、[phonegap-plugin-push のインストール ドキュメント][19]に記載されています。
+最新の必要なライブラリは、 [phonegap-plugin-push のインストール ドキュメント][19]に記載されています。
 
 #### <a name="test-push-notifications-in-the-app-on-android"></a>Android 上のアプリでプッシュ通知をテストする
 
@@ -379,7 +383,7 @@ Visual Studio で、**Windows-x64** や **Windows-x86** などの Windows プラ
 
 ## <a name="next-steps"></a>次のステップ
 
-* プッシュ通知の詳細については、[Notification Hubs][17] に関する記事を参照してください。
+* プッシュ通知の詳細については、 [Notification Hubs][17] に関する記事を参照してください。
 * まだ実行していない場合は、チュートリアルを続行して Apache Cordova アプリに[認証を追加][14]してください。
 
 次の SDK を使用する方法を学習してください。

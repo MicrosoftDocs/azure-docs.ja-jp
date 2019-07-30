@@ -7,14 +7,14 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 7062bd2dbd8c375b8dd3fad348e5cc26de8f36d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8275bceca1a18f49eb7eeece66a3866d77c47635
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595126"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796175"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu 仮想マシン上で Azure IoT Edge を実行する
 
@@ -45,11 +45,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 Azure portal から、"Azure IoT Edge" を検索し、"**Ubuntu Server 16.04 LTS + Azure IoT Edge runtime**" を選択して VM の作成ワークフローを開始します。 そこから、上記の「Azure Marketplace からデプロイする」にある手順 3 と 4 を完了します。
 
 ## <a name="deploy-from-azure-cli"></a>Azure CLI からデプロイする
-1. CLI から仮想マシンをデプロイするのが初めての場合は、ご利用の Azure サブスクリプションで、プログラムによるデプロイを有効にする必要があります。
-   1. [Azure IoT Edge on Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) Marketplace オファーを開きます
-   1. **[今すぐ入手する]** を選択し、次のダイアログで **[続行]** を選択します
-   1. ポータル内のダイアログの下部で、 **[プログラムによるデプロイについて作業を開始する]** を選択します。
-   1. **[プログラムによるデプロイの構成]** ページの **[有効にする]** ボタンをクリックし、 **[保存]** をクリックします
+
 1. デスクトップで Azure CLI を使用している場合は、まずログインします。
 
    ```azurecli-interactive
@@ -63,8 +59,9 @@ Azure portal から、"Azure IoT Edge" を検索し、"**Ubuntu Server 16.04 LTS
       az account list --output table
       ```
     
-   1. 使用するサブスクリプションの SubscriptionID フィールドをコピーします
-   1. コピーした ID を使用して、次のコマンドを実行します。
+   1. 使用するサブスクリプションの SubscriptionID フィールドをコピーします。
+
+   1. コピーした ID で作業中のサブスクリプションを設定します。
     
       ```azurecli-interactive 
       az account set -s {SubscriptionId}
@@ -75,11 +72,17 @@ Azure portal から、"Azure IoT Edge" を検索し、"**Ubuntu Server 16.04 LTS
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
-    
+
+1. 仮想マシンの利用規約に同意します。 先に利用規約を確認したい場合は、「[Azure Marketplace からデプロイする](#deploy-from-the-azure-marketplace)」の手順に従ってください。
+
+   ```azurecli-interactive
+   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   ```
+
 1. 新しい仮想マシンを作成します。
 
    ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
 1. デバイス接続文字列を設定します (このプロセスに詳しくない場合は、[Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](how-to-register-device-cli.md)方法のハウツー ガイドをご覧ください)。

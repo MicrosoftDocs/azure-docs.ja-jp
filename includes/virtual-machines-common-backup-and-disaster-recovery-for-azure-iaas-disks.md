@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 570330f47d2c610032c9c6646231c2320b2257be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64732668"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181172"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS ディスクのバックアップとディザスター リカバリー
 
@@ -146,9 +146,9 @@ Azure Backup がスケジュールされた時刻にバックアップ ジョブ
 
     a. [Azure Portal](https://portal.azure.com/) を使用して、**すべてのリソース**を参照し、「**Recovery Services コンテナー**」を検索します。
 
-    b. **Recovery Services コンテナー** メニューで、**[追加]** をクリックし、VM と同じリージョンで新しいコンテナーを作成する手順に従います。 たとえば、VM が米国西部リージョンにある場合は、コンテナーに米国西部を選択します。
+    b. **Recovery Services コンテナー** メニューで、 **[追加]** をクリックし、VM と同じリージョンで新しいコンテナーを作成する手順に従います。 たとえば、VM が米国西部リージョンにある場合は、コンテナーに米国西部を選択します。
 
-1.  新しく作成されたコンテナーのストレージ レプリケーションを確認します。 **[Recovery Services コンテナー]** でコンテナーにアクセスし、**[設定]**  >  **[構成のバックアップ]** に移動します。 **[geo 冗長ストレージ]** オプションが既定で選択されていることを確認します。 このオプションを選択すると、コンテナーがセカンダリ データセンターに自動的にレプリケートされます。 たとえば、米国西部のコンテナーは、米国東部に自動的にレプリケートされます。
+1.  新しく作成されたコンテナーのストレージ レプリケーションを確認します。 **[Recovery Services コンテナー]** でコンテナーにアクセスし、 **[プロパティ]**  >  **[バックアップ構成]**  >  **[更新]** に移動します。 **[geo 冗長ストレージ]** オプションが既定で選択されていることを確認します。 このオプションを選択すると、コンテナーがセカンダリ データセンターに自動的にレプリケートされます。 たとえば、米国西部のコンテナーは、米国東部に自動的にレプリケートされます。
 
 1.  バックアップ ポリシーを構成し、同じ UI から VM を選択します。
 

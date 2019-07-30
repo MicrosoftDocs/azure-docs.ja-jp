@@ -2,34 +2,27 @@
 title: Azure Active Directory Identity Protection でユーザー リスク ポリシーを構成する方法 | Microsoft Docs
 description: Azure AD Identity Protection ユーザー リスク ポリシーを構成する方法について説明します。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b94e9b7267c956c07f4171f8cce46c6159affd90
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518407"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335445"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>方法:ユーザー リスク ポリシーを構成する
 
 ユーザー リスクでは、Azure AD はユーザー アカウントが侵害されている確率を検出します。 管理者は、特定のユーザー リスク レベルに自動的に対応するために、ユーザー リスクの条件付きアクセス ポリシーを構成できます。
  
 この記事では、ユーザー リスク ポリシーを構成するために必要な情報を提供します。
-
 
 ## <a name="what-is-a-user-risk-policy"></a>ユーザー リスク ポリシーとは
 
@@ -41,14 +34,11 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 
 ユーザー リスク ポリシーは、特定のユーザー リスク レベルに対して構成できる自動対応です。 ユーザー リスク ポリシーでは、リソースへのアクセスをブロックするか、またはユーザー アカウントをクリーンな状態に戻すにはパスワード変更を要求するようにできます。
 
-
 ## <a name="how-do-i-access-the-user-risk-policy"></a>ユーザー リスク ポリシーにどのようにアクセスするか
    
 サインイン リスク ポリシーは、[[Azure AD Identity Protection]](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) ページの **[構成]** セクションにあります。
    
 ![ユーザー リスクのポリシー](./media/howto-user-risk-policy/1014.png)
-
-
 
 ## <a name="policy-settings"></a>ポリシー設定
 
@@ -80,7 +70,6 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 
 ![ブロック](./media/howto-user-risk-policy/16.png)
 
-
 サインインをブロックすると、以下のことが行われます。
 
 * 影響を受けるユーザーに対して新しいユーザー リスク イベントが生成されなくなります。
@@ -110,9 +99,6 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 - **[Azure AD Identity Protection]** ブレードの **[構成]** セクションで **[ユーザーのリスク ポリシー]** をクリックします。
 
     ![ユーザーのリスク ポリシー](./media/howto-user-risk-policy/1009.png "User risk policy")
-
-
-
 
 ## <a name="next-steps"></a>次の手順
 

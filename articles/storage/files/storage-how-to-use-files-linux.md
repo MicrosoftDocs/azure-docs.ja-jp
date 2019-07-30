@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 06df5d403ba10489ea9a36a79a94f4b94782e4ef
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427929"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501327"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 
@@ -34,22 +34,22 @@ ms.locfileid: "66427929"
 
     SMB 3.0 暗号化サポートは、Linux カーネル バージョン 4.11 で導入され、普及している Linux ディストリビューションのより古いカーネル バージョンにバックポートされました。 このドキュメントの公開時点では、Azure ギャラリーの以下のディストリビューションでは、テーブル ヘッダーで指定されたマウント オプションをサポートしています。 
 
-* **該当のマウント機能で推奨される最低限のバージョン (SMB バージョン 2.1 と SMB バージョン 3.0)**    
+### <a name="minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30"></a>該当のマウント機能で推奨される最低限のバージョン (SMB バージョン 2.1 と SMB バージョン 3.0)
 
-    |   | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3 以降 |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+|   | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
+| --- | :---: | :---: |
+| Ubuntu Server | 14.04+ | 16.04+ |
+| RHEL | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
+| Debian | 8+ |   |
+| openSUSE | 13.2+ | 42.3 以降 |
+| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
-    お使いの Linux ディストリビューションがこの一覧にない場合は、次のコマンドを使用して Linux カーネル バージョンを参照し、チェックできます。
+お使いの Linux ディストリビューションがこの一覧にない場合は、次のコマンドを使用して Linux カーネル バージョンを参照し、チェックできます。
 
-   ```bash
-   uname -r
-   ```
+```bash
+uname -r
+```
 
 * <a id="install-cifs-utils"></a>**cifs-utils パッケージがインストールされている。**  
     cifs-utils パッケージは、選択した Linux ディストリビューションのパッケージ マネージャーを使用してインストールできます。 
@@ -75,7 +75,10 @@ ms.locfileid: "66427929"
 
     他のディストリビューションでは、適切なパッケージ マネージャーを使用するか、[ソースからコンパイル](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)します。
 
-* **マウントされた共有のディレクトリ/ファイルのアクセス許可について決定する**: 下記の例では、アクセス許可 `0777` を使用して、すべてのユーザーに読み取り、書き込み、および実行のアクセス許可を与えています。 必要に応じて、他の [chmod 権限](https://en.wikipedia.org/wiki/Chmod)に置き換えることができます。
+* **マウントされた共有のディレクトリ/ファイルのアクセス許可について決定する**: 下記の例では、アクセス許可 `0777` を使用して、すべてのユーザーに読み取り、書き込み、および実行のアクセス許可を与えています。 必要に応じて、他の [chmod アクセス許可](https://en.wikipedia.org/wiki/Chmod)に置き換えることができますが、それは潜在的にアクセスを制限することを意味します。 他のアクセス許可を使用する場合は、選択したローカルのユーザーとグループへのアクセスを保持するために、uid と gid の使用も検討する必要があります。
+
+> [!NOTE]
+> dir_mode と file_mode を使用してディレクトリとファイルのアクセス許可を明示的に割り当てない場合、それらは既定値の 0755 になります。
 
 * **ポート 445 が開いていることを確認する**: SMB は、TCP ポート 445 経由で通信します。ファイアウォールがクライアント マシンの TCP ポート 445 をブロックしていないことを確認してください。
 
@@ -89,7 +92,7 @@ ms.locfileid: "66427929"
     mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **mount コマンドを使用して Azure ファイル共有をマウントします**。 **<storage_account_name>** 、 **<share_name>** 、 **<smb_version>** 、 **<storage_account_key>** 、および **<mount_point>** を環境の適切な情報に置き換えることを忘れないでください。 Linux ディストリビューションで暗号化付き SMB 3.0 がサポートされている場合は (詳細については [SMB クライアントの要件の概要](#smb-client-reqs)を参照)、 **<smb_version>** として **3.0** を使用します。 暗号化付き SMB 3.0 をサポートしていない Linux ディストリビューションの場合は、 **<smb_version>** として **2.1** を使用します。 Azure ファイル共有は、SMB 3.0 がある Azure リージョン (オンプレミスを含むか、または別の Azure リージョン内にある) の外部でしかマウントできません。 
+1. **mount コマンドを使用して Azure ファイル共有をマウントします**。 **<storage_account_name>** 、 **<share_name>** 、 **<smb_version>** 、 **<storage_account_key>** 、および **<mount_point>** を環境の適切な情報に置き換えることを忘れないでください。 Linux ディストリビューションで暗号化付き SMB 3.0 がサポートされている場合は (詳細については [SMB クライアントの要件の概要](#smb-client-reqs)を参照)、 **<smb_version>** として **3.0** を使用します。 暗号化付き SMB 3.0 をサポートしていない Linux ディストリビューションの場合は、 **<smb_version>** として **2.1** を使用します。 Azure ファイル共有は、SMB 3.0 がある Azure リージョン (オンプレミスを含むか、または別の Azure リージョン内にある) の外部でしかマウントできません。 必要な場合は、マウントされた共有のディレクトリとファイルのアクセス許可を変更できますが、それはアクセスを制限することを意味します。
 
     ```bash
     sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino
@@ -129,7 +132,7 @@ ms.locfileid: "66427929"
 1. **後続のコマンドを使用して、`/etc/fstab`** に下記の行を追加します。 **<storage_account_name>** 、 **<share_name>** 、 **<smb_version>** 、および **<mount_point>** を環境の適切な情報に置き換えることを忘れないでください。 Linux ディストリビューションで暗号化付き SMB 3.0 がサポートされている場合は (詳細については [SMB クライアントの要件の概要](#smb-client-reqs)を参照)、 **<smb_version>** として **3.0** を使用します。 暗号化付き SMB 3.0 をサポートしていない Linux ディストリビューションの場合は、 **<smb_version>** として **2.1** を使用します。 Azure ファイル共有は、SMB 3.0 がある Azure リージョン (オンプレミスを含むか、または別の Azure リージョン内にある) の外部でしかマウントできません。
 
     ```bash
-    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs _netdev,nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
 
     sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
     ```

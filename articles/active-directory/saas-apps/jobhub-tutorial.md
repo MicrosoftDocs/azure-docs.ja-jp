@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cd8374bfce62184df5619b76f4b9e64dd86f900
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: bc5f7bf299465b6af272c9b417a62f121b9a4d82
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65874070"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164929"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>チュートリアル:JOBHUB と Azure Active Directory との統合
 
@@ -31,11 +31,11 @@ ms.locfileid: "65874070"
 * ユーザーが自分の Azure AD アカウントを使用して JOBHUB に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure portal) でアカウントを管理する。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始するには、次のものが必要です。
+開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションを持っていない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から1 か月間の無料試用版を入手できます。
 * JOBHUB のシングル サインオン (SSO) が有効になったサブスクリプション。
@@ -49,7 +49,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Azure AD への JOBHUB の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に JOBHUB を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに "**JOBHUB**" と入力します。
@@ -111,7 +111,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **ユーザー** プロパティで、以下の手順を実行します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** フィールドに「`Britta Simon`」と入力します。  
    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `BrittaSimon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
@@ -127,7 +127,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. **[ユーザーの追加]** を選択し、次に **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
@@ -147,7 +147,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -7,13 +7,13 @@ manager: nunoc
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: 0aa7cec4dcdb480555cd0ecb7dee8d00a5a9ec2c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937841"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870842"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 
@@ -39,14 +39,14 @@ ms.locfileid: "64937841"
 | 11 | ソリューションのサポートとヘルプ | 以下のうち、少なくとも 1 つへのリンク: <br>o   電話番号 <br>o 電子メールでのサポート <br>o チャット エージェント <br>o   コミュニティ フォーラム |<br>• 示したサポート方法すべて: 電話と電子メールでのサポート。 <br>•    試用版や体験版の期間中は有料サポートを無料で提供 | 
 | 12 | 法的情報 | ポリシーや条件をパブリック URL で参照可能 |  | 
 
-----
+---
 ## <a name="trial-offer-requirements"></a>試用版オファーの要件
 
 |  | 掲載する要素 | 基本要件 | 最適な要件 | 
 |:--- |:--- |:--- |:--- |
 |  | 一覧の状態 | リンクは顧客主導の試用エクスペリエンスにつながっている必要がある | その他の CTA (今すぐ購入など) も使用できる | 
 
-----
+---
 ## <a name="saas-apps-requirements"></a>SaaS アプリの要件
 
 |  | 掲載する要素 | 基本要件 | 最適な要件 | 
@@ -63,7 +63,7 @@ ms.locfileid: "64937841"
 | 10 | 連絡先:ソリューションのサポートとヘルプ | <br>• Engineering Contact (エンジニアリング連絡先):アプリのエンジニアリング関連の連絡先の名前を入力します。 この連絡先が、Microsoft から技術的な通信を受け取ることになります。<br>• Engineering Contact (エンジニアリング連絡先の電子メール):アプリのエンジニアリング関連の連絡先のメール アドレスを入力します。<br>• Engineering Contact (エンジニアリング連絡先の電話):エンジニアリング関連の電話番号を入力します。 ISO の電話番号表記がサポートされています。詳細については https://en.wikipedia.org/wiki/E.123 を参照してください。<br>• サポートの連絡先名:アプリのサポート連絡先の名前を入力します。 この連絡先が、Microsoft からサポート関連の通信を受け取ることになります。<br>• サポートの連絡先の電子メール:アプリのサポート連絡先のメール アドレスを入力します。 <br>• サポートの連絡先の電話:サポート連絡先の電話番号を入力します。 ISO の電話番号表記がサポートされています。詳細については https://en.wikipedia.org/wiki/E.123 を参照してください。 <br>• サポート URL:サポート ページへの URL を入力します。 | <br>•    示したサポート方法すべて: 電話と電子メールでのサポート。 <br>•    試用版や体験版の期間中は有料サポートを無料で提供 |
 | 11 | 法的情報 |<br>• プライバシー ポリシーの URL:CPP のプライバシー ポリシー URL のフィールドに、アプリのプライバシー ポリシーへの URL を入力します。 <br>• 使用条件:アプリの使用条件を入力します。 顧客は、アプリを試す前にこれらの条件を承諾する必要があります。 |  ポリシーや条件をパブリック URL のサイトで参照可能 |
 
-----
+---
 
 ## <a name="container-offer-requirements"></a>コンテナー オファーの要件
 
@@ -74,7 +74,7 @@ ms.locfileid: "64937841"
 | 3 | Marketplace の成果物 | ロゴが正しく表示される |<br>• ロゴに、Azure Portal での大判イメージである "ヒーロー イメージ" が含まれている <br>• ロゴ:小 (48 x 48) と大 (216 x 216) が必須です <br>• ヒーロー イメージの要件: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• スクリーンショット (最大 5):CPP には解像度 1280 x 720 の .png イメージが必要です。|
 | 4 | 見込み客管理 |<br>• 見込み客管理:潜在顧客を保存するシステムを選択する。 <br>•   CRM システムを接続する方法については[ここ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)を参照 | |
 
-----
+---
 
 ## <a name="consulting-offer-requirements"></a>コンサルティング オファーの要件
 
@@ -97,6 +97,3 @@ ms.locfileid: "64937841"
 ## <a name="next-steps"></a>次の手順
 * マーケットプレースでのさまざまなオファーの種類について学びます。 <br>[SaaS アプリ](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[コンサルティング サービス](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
-
- 
----

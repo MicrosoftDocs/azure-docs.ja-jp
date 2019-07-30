@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85a8840ccf6f6fe6390b5eeaccd715d87169f157
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209538"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476023"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>クイックスタート - プライベート クラウドの環境を構成する
 
@@ -33,7 +33,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 5. CloudSimple ポータルで、プライベート クラウドの名前を指定します
 6. プライベート クラウドの **[Location]\(場所\)** を選択します
-7. Azure で購入した **[Node type]\(ノードの種類\)** を選択します。  [CS28 または CS36 オプション](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)を選択できます。 後者のオプションには、コンピューティングとメモリの最大容量が含まれています。
+7. Azure でプロビジョニングした **[ノードの種類]** を選択します。  [CS28 または CS36 のオプション](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)を選択できます。 後者のオプションには、コンピューティングとメモリの最大容量が含まれています。
 8. **[Node count]\(ノードの数\)** を指定します。  プライベート クラウドを作成するには、少なくとも 3 つのノードが必要です
 
     ![プライベート クラウドを作成する - 基本情報](media/create-private-cloud-basic-info.png)
@@ -187,7 +187,10 @@ CloudSimple ポータルで、NSX Manager の完全修飾ドメイン名 (FQDN) 
 
     ![NSX Manager の FQDN を検索する](media/private-cloud-nsx-manager-fqdn.png)
 
-パスワードを変更するには、「[NSX Manager Installation ](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)」(NSX Manager のインストール) の手順に従ってください。
+パスワードを変更するには、「[Manage a User's Password (ユーザーのパスワードの管理)](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html)」の手順に従います。
+
+> [!WARNING]
+> 既定では、NSX 管理者のパスワードの有効期限は 90 日です。
 
 ## <a name="create-a-port-group"></a>ポート グループを作成する
 

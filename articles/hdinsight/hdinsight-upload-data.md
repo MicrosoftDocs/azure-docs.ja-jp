@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 0dbd5a886e2369d29a568eca47dda5558f43c8cd
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fceea6273f00fdf16d8934533f08bc3494795bc4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479142"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433281"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
@@ -82,7 +82,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
 | [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [Cerulea](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
-| [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
+| [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [Microsoft Azure 用の CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 

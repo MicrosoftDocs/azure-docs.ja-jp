@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254006"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853063"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>ユーザーをサインインさせる Web アプリ - コードの構成
 
@@ -36,6 +36,8 @@ Web アプリ (および Web API) を保護するために使用されるライ�
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identity Model Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | ASP.NET および ASP.NET Core によって直接使用される Microsoft Identity Extensions for .NET は、.NET Framework と .NET Core の両方で実行される DLL のセットを提案します。 ASP.NET/ASP.NET Core Web アプリから、**TokenValidationParameters** クラスを使用してトークン検証を制御できます (特に、一部の ISV シナリオで)。 |
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core 構成
+
+この記事および以下のコード スニペットは、[ASP.NET Core Web アプリ増分チュートリアルの第 1 章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg)から抽出されています。 完全な実装の詳細については、そのチュートリアルをご覧ください。
 
 ### <a name="application-configuration-files"></a>アプリケーション構成ファイル
 
@@ -56,7 +58,7 @@ ASP.NET Core では、Microsoft ID プラットフォームを使用してユー
     "Instance": "https://login.microsoftonline.com/",
 
     // Azure AD Audience among:
-    // - the tenant Id as a a GUID obtained from the azure portal to sign-in users in your organization
+    // - the tenant Id as a GUID obtained from the azure portal to sign-in users in your organization
     // - "organizations" to sign-in users in any work or school accounts
     // - "common" to sign-in users with any work and school account or Microsoft personal account
     // - "consumers" to sign-in users with Microsoft personal account only

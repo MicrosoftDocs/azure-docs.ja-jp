@@ -4,17 +4,17 @@ description: 変数アセットとは、Azure Automation のすべての Runbook
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0ac34f1d1e7fc2a967c7608f31f3b943f9380d01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39282e816be875e598d7e0599eeb358a79941be7
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786204"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478061"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
 
@@ -28,7 +28,7 @@ ms.locfileid: "65786204"
 
 Automation 変数は保存されるので、Runbook または DSC 構成でエラーが発生した場合でも使用できます。 この動作により、ある Runbook で設定された値を、別の Runbook で使用したり、同じ Runbook や DSC 構成を次に実行するときに使用したりすることができます。
 
-変数が作成されると、暗号化して保存するように指定できます。 暗号化された変数は、Azure Automation に安全に保存され、その値は Azure PowerShell モジュールに含まれている [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) コマンドレットからは取得できません。 暗号化された値は、Runbook または DSC 構成の **Get-AutomationVariable** アクティビティからのみ取得できます。
+変数が作成されると、暗号化して保存するように指定できます。 暗号化された変数は、Azure Automation に安全に保存され、その値は Azure PowerShell モジュールに含まれている [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) コマンドレットからは取得できません。 暗号化された値は、Runbook または DSC 構成の **Get-AutomationVariable** アクティビティからのみ取得できます。 暗号化された変数を暗号化されていない変数に変更するには、その変数を削除して暗号化されていない変数として再作成する必要があります。
 
 >[!NOTE]
 >Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは、システムで管理されたキー コンテナーに格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。 このプロセスは、Azure Automation によって管理されます。

@@ -75,7 +75,7 @@ $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPr
 $vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
-## <a name="gwsub"></a>3.Add the gateway subnet
+## <a name="gwsub"></a>3.ゲートウェイ サブネットを追加します
 
 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する予約済み IP アドレスが含まれます。 次の例を使用して、ゲートウェイ サブネットを追加し設定します。
 

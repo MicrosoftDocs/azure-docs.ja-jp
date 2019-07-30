@@ -4,25 +4,22 @@ description: Resource Manager テンプレートで Azure Deployment Manager を
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a42ccb1c0e60f5bf1568ccea13392186577f2875
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238848"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205717"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (パブリック プレビュー)
 
-[Azure Deployment Manager](./deployment-manager-overview.md) を使用して、アプリケーションを複数の地域に配備する方法を学習します。 Deployment Manager を使用するには、次の 2 つのテンプレートを作成する必要があります。
+[Azure Deployment Manager](./deployment-manager-overview.md) を使用して、アプリケーションを複数の地域に配備する方法を学習します。 高速化のアプローチを採用する場合は、[Azure Deployment Manager のクイック スタート](https://github.com/Azure-Samples/adm-quickstart)に従って、サブスクリプションに必要な構成を作成し、複数のリージョン全体に 1 つのアプリケーションをデプロイするように成果物をカスタマイズします。 このクイック スタートでは、このチュートリアルで実行するのと同じタスクを実行します。
+
+Deployment Manager を使用するには、次の 2 つのテンプレートを作成する必要があります。
 
 * **トポロジ テンプレート**: アプリケーションを構成する Azure リソースとその配備先を記述します。
 * **ロールアウト テンプレート**: アプリケーションを配備する際に行う手順を記述します。
@@ -44,7 +41,10 @@ ms.locfileid: "66238848"
 > * 新規バージョンの配備
 > * リソースのクリーンアップ
 
-Azure Deployment Manager REST API のリファレンスについては、[こちら](https://docs.microsoft.com/rest/api/deploymentmanager/)でご覧いただけます。
+その他のリソース:
+
+* [Azure Deployment Manager REST API リファレンス](https://docs.microsoft.com/rest/api/deploymentmanager/)
+* [チュートリアル:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -130,7 +130,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     </html>
     ```
 
-    html では場所とバージョン情報が示されます。 1.0.0.1 フォルダー内のバイナリ ファイルは、"Version 1.0.0.1" であることを示します。 サービスを配備し終えたら、これらのページを参照できます。
+    html では場所とバージョン情報が示されます。 1\.0.0.1 フォルダー内のバイナリ ファイルは、"Version 1.0.0.1" であることを示します。 サービスを配備し終えたら、これらのページを参照できます。
 5. その他の成果物ファイルをチェックアウトします。 これは、シナリオをさらに良く理解するのに役立ちます。
 
 テンプレート成果物はサービス トポロジ テンプレートで使用され、バイナリ成果物はロールアウト テンプレートで使用されます。 トポロジー テンプレートとロールアウト テンプレートは両方とも、成果物ソースの Azure リソースを定義します。これは、配備で使用されるテンプレート成果物とバイナリー成果物に、Resource Manager をポイントするために使用されるリソースです。 チュートリアルを簡略化するために、1 つのストレージ アカウントを使用して、テンプレート成果物とバイナリ成果物を両方とも格納します。 どちらの成果物ソースも、同じストレージ アカウントをポイントします。

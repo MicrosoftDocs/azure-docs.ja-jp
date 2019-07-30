@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
-ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2fd3d2f8fbc98d8c7b19cbcc365748cc088d76fd
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782062"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594092"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN での課金について
 

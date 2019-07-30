@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 3b33b4aa-7286-4d79-b461-8e1812edc2e1
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd45be69ec29fdcd00710b7366348846f325b151
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 33953c3a6b4244ec50ca5b1505b6d48621527d64
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921986"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620546"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Barracuda アプライアンスの接続 
 
@@ -41,7 +42,7 @@ Barracuda Web アプリケーション ファイアウォールは、Microsoft M
 2. Azure Sentinel ポータルで Azure Sentinel をデプロイしたワークスペースに移動し、行の末尾にある省略記号 (...) を選択して、 **[詳細設定]** を選択します。 
 1. **[データ]** 、 **[Syslog]** の順に選択します。
 1. Barracuda に設定したファシリティが存在することを確認して重大度を設定し、 **[保存]** をクリックします。
-6. Log Analytics で Barracuda イベントに関連するスキーマを使用するために、**CommonSecurityLog** を検索します。
+6. Log Analytics で Barracuda イベントに関連するスキーマを使用するために、**CommonSecurityLog** と **barracuda_CL** を検索します。
 
 
 ## <a name="validate-connectivity"></a>接続の検証

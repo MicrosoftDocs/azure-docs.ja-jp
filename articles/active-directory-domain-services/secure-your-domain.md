@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services のマネージド ドメインを
 description: マネージド ドメインをセキュリティで保護します
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: ab371553a96f3a8d393c8b773c4024d04fd171a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245410"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483276"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインをセキュリティで保護する
 この記事は、マネージド ドメインをセキュリティで保護するときに役に立ちます。 弱い暗号スイートの使用をオフにし、NTLM 資格情報ハッシュの同期を無効にすることができます。
@@ -56,6 +56,11 @@ $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPa
 // Apply the settings to the managed domain.
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
+
+> [!IMPORTANT]
+> Azure AD Domain Services インスタンスで NTLM パスワードハッシュ同期を無効にしている場合、ユーザー (およびサービス アカウント) は LDAP 簡易バインドを実行できません。  NTLM パスワード ハッシュ同期の無効化の詳細については、「[Azure AD Domain Services のマネージド ドメインをセキュリティで保護する](secure-your-domain.md)」をお読みください。
+>
+>
 
 ## <a name="next-steps"></a>次の手順
 * [Azure AD Domain Services での同期を理解する](synchronization.md)

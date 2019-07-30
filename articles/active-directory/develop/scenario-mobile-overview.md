@@ -3,7 +3,7 @@ title: Web API を呼び出すモバイル アプリ - 概要 | Microsoft ID プ
 description: Web API を呼び出すモバイル アプリを構築する方法 (概要) について説明します
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f007ad1d5bf99136328ec5706f7ccbb5f6593c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfc5e12bf1633c32a61e03c7df6d6c0320263d6e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111224"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325326"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>シナリオ: Web API を呼び出すモバイル アプリケーション
 

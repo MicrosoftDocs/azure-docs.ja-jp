@@ -6,13 +6,13 @@ author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfoulds
-ms.openlocfilehash: de3f8613c93715aecf7e9e066a8ad1d82e4379e3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: iainfou
+ms.openlocfilehash: 9cc06df5d2a66ede18af52c13201c731c12e2049
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475139"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614501"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする
 

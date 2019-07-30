@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89aa3b4ecf0c07cfbb579cdc18fac6e822bc047
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118068"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536236"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>仮想コアベースの購入モデルを使用した単一データベースに対するリソース制限
 
@@ -34,6 +34,9 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 > スケーリングのガイダンスと考慮事項については、[単一データベースのスケーリング](sql-database-single-database-scale.md)に関するページを参照してください。
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>General Purpose サービス レベル:ストレージ サイズとコンピューティング サイズ
+
+> [!IMPORTANT]
+> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>General Purpose サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 
@@ -157,6 +160,9 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 
 ## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>プロビジョニングされたコンピューティング レベルの Business Critical サービス レベル
 
+> [!IMPORTANT]
+> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
+
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Business Critical サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 
 |コンピューティング サイズ|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
@@ -268,7 +274,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |TempDB のサイズ (GB)|64|128|256|384|384|384|384|384|
 |ストレージの種類|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|
-|ターゲットの IOPS (64 KB)|未定|未定|未定|未定|未定|未定|未定|未定|
+|ターゲットの IOPS (64 KB)| [注 1](#note-1) |[注 1](#note-1)|[注 1](#note-1) |[注 1](#note-1) |[注 1](#note-1) |[注 1](#note-1) |[注 1](#note-1) | [注 1](#note-1) |
 |IO 待機時間 (概算)|未定|未定|未定|未定|未定|未定|未定|未定|
 |最大同時実行ワーカー (要求) 数|200|400|800|1600|2400|3200|4000|8000|
 |許可される最大セッション数|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -278,7 +284,11 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |含まれるバックアップ ストレージ |7|7|7|7|7|7|7|7|
 |||
 
-## <a name="next-steps"></a>次の手順
+### <a name="note-1"></a>注 1
+
+Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。
+
+### <a name="next-steps"></a>次の手順
 
 - 単一データベースに対する DTU リソースの制限については、[DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)に関するページを参照してください
 - エラスティック プールに対する仮想コア リソースの制限については、「[仮想コアベースの購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)」を参照してください

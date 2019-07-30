@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d31bde1a33d622c2c0b7aa716cbbbfbc8ef42ecf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 73ca740a4dcca3bdbb1951e55df4061364a5c646
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083918"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -91,22 +91,24 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Intune のすべての監査データの表示
   [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br> データ管理下のすべての組み込みレポートの表示
 
-<!--* **[Compliance Data Administrator](#compliance-data-administrator)**: Users with this role have permissions to protect and track data in the Microsoft 365 compliance center, Microsoft 365 admin center, and Azure. Users can also manage all features within the Exchange admin center, Compliance Manager, and Teams & Skype for Business admin center and create support tickets for Azure and Microsoft 365.
+* **[コンプライアンス データ管理者](#compliance-data-administrator)** :このロールのユーザーには、Microsoft 365 コンプライアンス センター、Microsoft 365 管理センター、および Azure のデータを保護および追跡するための権限があります。 また、ユーザーは、Exchange 管理センター、Compliance Manager 、Teams および Skype for Business の管理センター内のすべての機能を管理したり、Azure および Microsoft 365 のサポート チケットを作成したりすることもできます。
 
-  In | Can do
+  イン | できること
   ----- | ----------
-  [Microsoft 365 compliance center](https://protection.office.com) | Monitor compliance-related policies across Microsoft 365 services<br>Manage compliance alerts
-  [Compliance Manager](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Track, assign, and verify your organization's regulatory compliance activities
-  [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Manage data governance<br>Perform legal and data investigation<br>Manage Data Subject Request
-  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | View all Intune audit data
-  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Has read-only permissions and can manage alerts<br>Can create and modify file policies and allow file governance actions<br> Can view all the built-in reports under Data Management
--->
+  [Microsoft 365 コンプライアンス センター](https://protection.office.com) | Microsoft 365 サービス全体のコンプライアンス関連ポリシーの監視<br>コンプライアンス アラートの管理
+  [コンプライアンス マネージャー](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
+  [Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | データ ガバナンスの管理<br>法律およびデータ調査の実行<br>データ主体の要求の管理
+  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Intune のすべての監査データの表示
+  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br> データ管理下のすべての組み込みレポートの表示
+
 * **[条件付きアクセス管理者](#conditional-access-administrator)** :このロールのユーザーは、Azure Active Directory の条件付きアクセスの設定を管理できます。
   > [!NOTE]
   > Azure で Exchange ActiveSync の条件付きアクセス ポリシーをデプロイするには、ユーザーは、グローバル管理者である必要もあります。
   
 * **[カスタマー ロックボックスのアクセス承認者](#customer-lockbox-access-approver)** : 組織内の[カスタマー ロックボックス要求](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests)を管理します。 彼らはカスタマー ロックボックス要求の電子メール通知を受信し、Microsoft 365 管理センターから要求の承認と拒否を行うことができます。 カスタマー ロックボックス機能を有効または無効にすることもできます。 グローバル管理者のみが、このロールに割り当てられているユーザーのパスワードをリセットできます。
   <!--  This was announced in August of 2018. https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Customer-Lockbox-Approver-Role-Now-Available/ba-p/223393-->
+
+* **[デスクトップ Analytics 管理者](#desktop-analytics-administrator)** :このロールのユーザーは、デスクトップ Analytics および Office のカスタマイズとポリシーのサービスを管理できます。 デスクトップ Analytics の場合、これには、資産インベントリの表示、デプロイ プランの作成、デプロイと正常性の状態の表示に対する権限が含まれます。 Office のカスタマイズとポリシーのサービスの場合、このロールによりユーザーは Office のポリシーを管理することができます。
 
 * **[デバイス管理者](#device-administrators)** :この役割は、[デバイス設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)の追加のローカル管理者としてのみ割り当て可能です。 このロールのユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル マシン管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。 
 
@@ -210,19 +212,20 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます
   [Office 365 サービス正常性](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
 
-<!--* **[Security operator](#security-operator)**: Users with this role can manage alerts and have global read-only access on security-related feature, including all information in Microsoft 365 security center, Azure Active Directory, Identity Protection, Privileged Identity Management, as well as the ability to read Azure Active Directory sign-in reports and audit logs, and in Office 365 Security & Compliance Center.
+* **[セキュリティ オペレーター](#security-operator)** :このロールのユーザーはアラートを管理できるほか、Microsoft 365 セキュリティ センター、Azure Active Directory、Identity Protection、Privileged Identity Management、および Office 365 セキュリティ/コンプライアンス センター におけるすべての情報を含むセキュリティ関連機能への読み取り専用グローバル アクセス権があります。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)」をご覧ください。
 
-  In | Can do
+  どこで | できること
   --- | ---
-  [Microsoft 365 security center](https://protection.office.com) | All permissions of the Security Reader role<br>View, investigate, and respond to security threats alerts
-  Identity Protection Center | All permissions of the Security Reader role<br>Additionally, the ability to perform all Identity Protection Center operations except for resetting passwords
-  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | All permissions of the Security Reader role
-  [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | All permissions of the Security Reader role<br>View, investigate, and respond to security alerts
-  Windows Defender ATP and EDR | All permissions of the Security Reader role<br>View, investigate, and respond to security alerts
-  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | All permissions of the Security Reader role
-  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | All permissions of the Security Reader role
-  [Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health) | View the health of Office 365 services
--->
+  [Microsoft 365 セキュリティ センター](https://protection.office.com) | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティの脅威アラートの表示、調査、対応
+  Identity Protection Center | セキュリティ閲覧者ロールのすべてのアクセス許可<br>さらに、パスワードのリセットを除く Identity Protection センターのすべての操作を行う権限
+  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | セキュリティ閲覧者ロールのすべてのアクセス許可
+  [Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティ アラートの表示、調査、対応
+  Windows Defender ATP および EDR | セキュリティ閲覧者ロールのすべてのアクセス許可<br>セキュリティ アラートの表示、調査、対応
+  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | セキュリティ閲覧者ロールのすべてのアクセス許可
+  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | セキュリティ閲覧者ロールのすべてのアクセス許可
+  [Office 365 サービス正常性](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365 サービスの正常性の表示
+<!--* **[Security Operator](#security-operator)**: Users with this role can manage alerts and have global read-only access on security-related feature, including all information in Microsoft 365 security center, Azure Active Directory, Identity Protection, Privileged Identity Management.-->
+
 * **[セキュリティ閲覧者](#security-reader)** :このロールのユーザーには、Microsoft 365 セキュリティ センター、Azure Active Directory、Identity Protection、Privileged Identity Management におけるすべての情報を含むセキュリティ関連機能への読み取り専用グローバル アクセス権に加えて、Azure Active Directory サインイン レポートと監査ログ、および Office 365 セキュリティ/コンプライアンス センターで閲覧する権限があります。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
 
   どこで | できること
@@ -406,22 +409,6 @@ Identity Experience Framework での信頼フレームワーク ポリシーの�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-### <a name="desktop-analytics-administrator"></a>デスクトップ Analytics 管理者
-デスクトップ Analytics および Office のカスタマイズとポリシーのサービスを管理できます。 デスクトップ Analytics の場合、これには、資産インベントリの表示、デプロイ プランの作成、デプロイと正常性の状態の表示に対する権限が含まれます。 Office のカスタマイズとポリシーのサービスの場合、このロールによりユーザーは Office のポリシーを管理することができます。
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
-| microsoft.office365.desktopAnalytics/allEntities/allTasks | デスクトップ Analytics のすべての側面を管理します。 |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="cloud-application-administrator"></a>クラウド アプリケーション管理者
 アプリ登録とエンタープライズ アプリのすべての側面 (アプリ プロキシを除く) を作成して管理できます。
@@ -565,6 +552,28 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Skype for Business Online の全側面の管理。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
+### <a name="compliance-data-administrator"></a>コンプライアンス データ管理者
+コンプライアンス コンテンツを作成、管理します。
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Microsoft Cloud App Security の読み取りと構成。 |
+| microsoft.azure.informationProtection/allEntities/allTasks | Azure Information Protection の全側面の管理。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+| microsoft.office365.complianceManager/allEntities/allTasks | Office 365 コンプライアンス マネージャーの全側面の管理 |
+| microsoft.office365.exchange/allEntities/allTasks | Exchange Online の全側面の管理。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.sharepoint/allEntities/allTasks | microsoft.office365.sharepoint でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Skype for Business Online の全側面の管理。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+
 ### <a name="conditional-access-administrator"></a>条件付きアクセス管理者
 条件付きアクセスの機能を管理できます。
 
@@ -608,6 +617,23 @@ Microsoft サポートがお客様の組織データにアクセスする要求�
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.lockbox/allEntities/allTasks | Office 365 カスタマ― ロックボックスの全側面の管理 |
+
+### <a name="desktop-analytics-administrator"></a>デスクトップ Analytics 管理者
+デスクトップ Analytics および Office のカスタマイズとポリシーのサービスを管理できます。 デスクトップ Analytics の場合、これには、資産インベントリの表示、デプロイ プランの作成、デプロイと正常性の状態の表示に対する権限が含まれます。 Office のカスタマイズとポリシーのサービスの場合、このロールによりユーザーは Office のポリシーを管理することができます。
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+| microsoft.office365.desktopAnalytics/allEntities/allTasks | デスクトップ Analytics のすべての側面を管理します。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="device-administrators"></a>デバイス管理者
 このロールに割り当てられたユーザーは、Azure AD 参加済みデバイスのローカル管理者グループに追加されます。
@@ -1081,6 +1107,25 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 | microsoft.office365.protectionCenter/allEntities/update | microsoft.office365.protectionCenter でのすべてのリソースの更新。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
+### <a name="security-operator"></a>セキュリティ オペレーター
+セキュリティ イベントを作成、管理します。
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Microsoft Cloud App Security の読み取りと構成。 |
+| microsoft.aad.identityProtection/allEntities/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
+| microsoft.aad.privilegedIdentityManagement/allEntities/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
+| microsoft.azure.advancedThreatProtection/allEntities/read | Azure AD Advanced Threat Protection の読み取りと構成。 |
+| microsoft.intune/allEntities/allTasks | Intune の全側面の管理。 |
+| microsoft.office365.securityComplianceCenter/allEntities/allTasks | セキュリティ/コンプライアンス センターの読み取りと構成。 |
+| microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
+| microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Windows Defender Advanced Threat Protection の読み取りと構成。 |
+
 ### <a name="security-reader"></a>セキュリティ閲覧者
 Azure AD と Office 365 のセキュリティ情報とレポートを読み取ることができます。
 
@@ -1261,14 +1306,15 @@ B2C ユーザー フロー属性管理者 | B2C ユーザー フロー属性管�
 B2C IEF キーセット管理者 | B2C IEF キーセット管理者 | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C IEF ポリシー管理者 | B2C IEF ポリシー管理者 | 3edaf663-341e-4475-9f94-5c398ef6c070
 課金管理者 | 課金管理者 | b0f54661-2d74-4c50-afa3-1ec803f12efe
-デスクトップ Analytics 管理者 | デスクトップ Analytics 管理者 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 クラウド アプリケーション管理者 | クラウド アプリケーション管理者 | 158c047a-c907-4556-b7ef-446551a6b5f7
 クラウド デバイス管理者 | クラウド デバイス管理者 | 7698a772-787b-4ac8-901f-60d6b08affd2
 会社の管理者 | 全体管理者 | 62e90394-69f5-4237-9190-012177145e10
 コンプライアンス管理者 | コンプライアンス管理者 | 17315797-102d-40b4-93e0-432062caca18
+コンプライアンス データ管理者 | コンプライアンス データ管理者 | e6d1a23a-da11-4be4-9570-befc86d067a7
 条件付きアクセス管理者 | 条件付きアクセス管理者 | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 CRM サービス管理者 | Dynamics 365 管理者 | 44367163-eba1-44c3-98af-f5787879f96a
 カスタマー ロックボックスのアクセス承認者 | カスタマー ロックボックスのアクセス承認者 | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
+デスクトップ Analytics 管理者 | デスクトップ Analytics 管理者 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 デバイス管理者 | デバイス管理者 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 デバイスの参加 | デバイスの参加 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 デバイス マネージャー | デバイス マネージャー | 2b499bcd-da44-4968-8aec-78e1674fa64d
@@ -1295,6 +1341,7 @@ Power BI サービス管理者 | Power BI 管理者 | a9ea8996-122f-4c74-9520-8e
 Search 管理者 | Search 管理者 | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Search エディター | Search エディター | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 セキュリティ管理者 | セキュリティ管理者 | 194ae4cb-b126-40b2-bd5b-6091b380977d
+セキュリティ オペレーター | セキュリティ オペレーター | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 セキュリティ閲覧者 | セキュリティ閲覧者 | 5d6b6bb7-de71-4623-b4af-96380a352509
 サービス サポート管理者 | サービス管理者 | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint サービス管理者 | SharePoint 管理者 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c

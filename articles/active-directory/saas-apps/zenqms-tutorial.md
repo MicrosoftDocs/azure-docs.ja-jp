@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 72158b86e81fa90cb21c5af003fad05be69b470c
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 2104768f8842910bf83239e86106d288d7ad9baf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920595"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>チュートリアル:Azure Active Directory と ZenQMS の統合
 

@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833520"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706394"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -58,7 +59,7 @@ PSFunctionApp
 
 プロジェクトのルートには、関数アプリの構成に使用できる共有 [`host.json`](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.ps1) とバインディング構成ファイル (`function.json`) が含まれるフォルダーがあります。 function.json ファイルの親ディレクトリの名前は常に関数の名前です。
 
-特定のバインディングには、`extensions.csproj` ファイルが必要になります。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイルで定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+特定のバインディングには、`extensions.csproj` ファイルが必要になります。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイルで定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 PowerShell 関数アプリには、必要に応じて `profile.ps1` を含めることができます。これは、関数アプリの実行開始時 (" *[コールド スタート](#cold-start)* " とも呼ばれます) に実行されます。 詳細については、「[PowerShell プロファイル](#powershell-profile)」を参照してください。
 
@@ -133,9 +134,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 `Push-OutputBinding` の呼び出しに使用できる有効なパラメーターを次に示します。
 
-| Name | Type | 位置 | 説明 |
+| EnableAdfsAuthentication | Type | 位置 | 説明 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1 | 設定する出力バインディングの名前。 |
+| **`-Name`** | string | 1 | 設定する出力バインディングの名前。 |
 | **`-Value`** | Object | 2 | 設定する出力バインディングの値。パイプライン ByValue から受け取ります。 |
 | **`-Clobber`** | SwitchParameter | named | (省略可能) 指定した場合は、指定した出力バインディングに対して値が強制的に設定されます。 | 
 
@@ -242,7 +243,7 @@ PowerShell 関数におけるログは、通常の PowerShell のログと同様
 | ------------- | -------------- |
 | Error | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
-| 情報 | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | 情報 | "_情報_" レベル ログへの書き込み |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | "_情報_" レベル ログへの書き込み |
 | デバッグ | **`Write-Debug`** |
 | Trace | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
@@ -253,7 +254,7 @@ PowerShell 関数におけるログは、通常の PowerShell のログと同様
 
 ### <a name="configure-the-function-app-log-level"></a>関数アプリのログ レベルの構成
 
-Functions では、しきい値レベルを定義することで、ログへの書き込み方法を簡単に制御することができます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、[`host.json` ファイル][host.json]の `logging.logLevel.default` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。
+Azure Functions では、しきい値レベルを定義することで、関数によるログへの書き込み方法を簡単に制御することができます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、[`host.json` ファイル][host.json]の `logging.logLevel.default` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。
 
 次の例では、すべての関数の詳細ログが有効になるようしきい値を設定しますが、`MyFunction` という名前の関数についてはデバッグ ログが有効になるようしきい値を設定しています。
 
@@ -598,7 +599,7 @@ PowerShell 関数を使用するときは、以下のセクションに記載さ
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>`Install-Module` を使用せずにモジュールをバンドルする
 
-スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan-public-preview)に関数アプリをデプロイすることを検討してください。
+スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan)に関数アプリをデプロイすることを検討してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 1393d0bd1c31a2c9c24652e260ef7f3182d91367
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: nolachar
+ms.openlocfilehash: ed18d30a0c3f5d51cb3a07b8948863cdda16c1ae
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476350"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67845965"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>ENUM エンティティと SET ENTITY アクションを使用する場合
 

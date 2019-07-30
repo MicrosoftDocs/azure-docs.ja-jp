@@ -28,7 +28,7 @@ ms.locfileid: "65951922"
 > アプリケーションのバージョン 1.2.* は 2019 年 4 月 30 日にサポートが終了する予定です。 最新のバージョンにアップグレードしてください。
 
 
-[Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)は、Azure でオペレーティング システムに修正プログラムを適用させたままにするために最適で、Azure 以外でホストされるクラスターの OS パッチ スケジュールに基づいた構成を可能にする Service Fabrics RepairManager Systems サービスのラッパーです。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、アップグレード ドメインによる更新プログラムのインストールのスケジュール設定は、ダウンタイムなく Service Fabric クラスターのホストに修正プログラムを適用するために必要です。
+[Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)は、Azure でオペレーティング システムに修正プログラムを適用させたままにするために最適で、また Patch Orchestration Application (POA) は Azure 以外でホストされるクラスターの OS パッチ スケジュールに基づいた構成を可能にする Service Fabrics RepairManager Systems サービスのラッパーです。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、アップグレード ドメインによる更新プログラムのインストールのスケジュール設定は、ダウンタイムなく Service Fabric クラスターのホストに修正プログラムを適用するために必要です。
 
 POA は、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Azure Service Fabric アプリケーションです。
 

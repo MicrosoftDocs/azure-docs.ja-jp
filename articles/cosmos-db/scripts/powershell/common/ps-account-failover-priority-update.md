@@ -3,15 +3,15 @@ title: Azure PowerShell スクリプト - Azure Cosmos アカウントのフェ�
 description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントのフェールオーバー優先度を変更する
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2e6fefbbd3db23a41fc64021b19a412d7a12b322
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0aea4e8e01b5f65be0d0ca4bb08082e058cba311
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245564"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603976"
 ---
 # <a name="change-failover-priority-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントのフェールオーバー優先度を変更する
 
@@ -21,7 +21,7 @@ ms.locfileid: "66245564"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

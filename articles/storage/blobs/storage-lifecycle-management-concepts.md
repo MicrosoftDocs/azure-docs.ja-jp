@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a673621aa3c114f99479a6da97153dae44990d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001757"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696088"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -31,7 +31,7 @@ ms.locfileid: "66001757"
 
 ## <a name="storage-account-support"></a>ストレージ アカウントのサポート
 
-ライフサイクル管理ポリシーは、General Purpose v2 (GPv2) アカウントと Blob Storage アカウントの両方で利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。  
+ライフサイクル管理ポリシーは、General Purpose v2 (GPv2) アカウント、Blob Storage アカウント、Premium Block Blob Storage アカウントで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。  
 
 ## <a name="pricing"></a>価格
 
@@ -39,7 +39,7 @@ ms.locfileid: "66001757"
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-ライフサイクル管理機能は、すべてのグローバル Azure リージョンで使用できます。
+ライフサイクル管理機能は、世界中のあらゆる Azure リージョンと Azure Government リージョンで使用できます。
 
 ## <a name="add-or-remove-a-policy"></a>ポリシーを追加または削除する
 
@@ -131,7 +131,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {

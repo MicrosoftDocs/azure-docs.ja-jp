@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22be5509a93d0713b8113ba17debfda3cf576006
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304358"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508962"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事で説明するポリシー式の構文は C# 7 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -94,19 +94,19 @@ ms.locfileid: "66304358"
 |System.Byte|All|
 |System.Char|All|
 |System.Collections.Generic.Dictionary<TKey, TValue>|All|
-|System.Collections.Generic.HashSet<T>|All|
-|System.Collections.Generic.ICollection<T>|All|
+|System.Collections.Generic.HashSet\<T>|All|
+|System.Collections.Generic.ICollection\<T>|All|
 |System.Collections.Generic.IDictionary<TKey, TValue>|All|
-|System.Collections.Generic.IEnumerable<T>|All|
-|System.Collections.Generic.IEnumerator<T>|All|
-|System.Collections.Generic.IList<T>|All|
-|System.Collections.Generic.IReadOnlyCollection<T>|All|
+|System.Collections.Generic.IEnumerable\<T>|All|
+|System.Collections.Generic.IEnumerator\<T>|All|
+|System.Collections.Generic.IList\<T>|All|
+|System.Collections.Generic.IReadOnlyCollection\<T>|All|
 |System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|All|
-|System.Collections.Generic.ISet<T>|All|
+|System.Collections.Generic.ISet\<T>|All|
 |System.Collections.Generic.KeyValuePair<TKey, TValue>|All|
-|System.Collections.Generic.List<T>|All|
-|System.Collections.Generic.Queue<T>|All|
-|System.Collections.Generic.Stack<T>|All|
+|System.Collections.Generic.List\<T>|All|
+|System.Collections.Generic.Queue\<T>|All|
+|System.Collections.Generic.Stack\<T>|All|
 |System.Convert|All|
 |System.DateTime|(コンストラクター)、Add、AddDays、AddHours、AddMilliseconds、AddMinutes、AddMonths、AddSeconds、AddTicks、AddYears、Date、Day、DayOfWeek、DayOfYear、DaysInMonth、Hour、IsDaylightSavingTime、IsLeapYear、MaxValue、Millisecond、Minute、MinValue、Month、Now、Parse、Second、Subtract、Ticks、TimeOfDay、Today、ToString、UtcNow、Year|
 |System.DateTimeKind|Utc|
@@ -216,7 +216,7 @@ ms.locfileid: "66304358"
 |<a id="ref-context-lasterror"></a>context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|
 |<a id="ref-context-operation"></a>context.Operation|Id: 文字列<br /><br /> Method: 文字列<br /><br /> Name: 文字列<br /><br /> UrlTemplate: 文字列|
 |<a id="ref-context-product"></a>context.Product|Apis:IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: ブール値<br /><br /> Groups:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 文字列<br /><br /> Name: 文字列<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: ブール値|
-|<a id="ref-context-request"></a>context.Request|本文は次のようになります。[IMessageBody](#ref-imessagebody)<br /><br /> Certificate:System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Headers](#ref-context-request-headers):IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: 文字列<br /><br /> MatchedParameters:IReadOnlyDictionary<string, string><br /><br /> Method: 文字列<br /><br /> OriginalUrl:[IUrl](#ref-iurl)<br /><br /> Url:[IUrl](#ref-iurl)|
+|<a id="ref-context-request"></a>context.Request|本文は次のようになります。[IMessageBody](#ref-imessagebody) または `null` (要求に本文がない場合)。<br /><br /> Certificate:System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Headers](#ref-context-request-headers):IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: 文字列<br /><br /> MatchedParameters:IReadOnlyDictionary<string, string><br /><br /> Method: 文字列<br /><br /> OriginalUrl:[IUrl](#ref-iurl)<br /><br /> Url:[IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの要求ヘッダー値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
 |<a id="ref-context-response"></a>context.Response|本文は次のようになります。[IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers):IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: 整数<br /><br /> StatusReason: 文字列|
 |<a id="ref-context-response-headers"></a>string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの応答ヘッダー値、またはヘッダーが見つからない場合は `defaultValue` を返します。|

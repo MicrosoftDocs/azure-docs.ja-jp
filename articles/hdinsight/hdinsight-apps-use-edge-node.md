@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: ee9b5b651f440bc7d179b1a06c7ddbd3f9137a0d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 41313c7d484df5568fbf729b683a0e9df5325abc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165896"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433744"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する
 
@@ -108,7 +108,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
    * **クラスター ログイン パスワード**:HTTP ユーザー パスワードを入力します。
    * **SSH ユーザー名**:SSH ユーザー名を入力します。 既定の名前は **sshuser**です。
    * **SSH パスワード**:SSH ユーザー パスワードを入力します。
-   * **スクリプト アクションのインストール**:このチュートリアルでは既定値のままにします。
+   * **スクリプト アクションのインストール**:この記事では既定値のままにします。
      
      一部のプロパティは、テンプレートにハードコーディングされています:クラスターの種類、クラスターのワーカー ノード数、エッジ ノードのサイズ、およびエッジ ノードの名前。
 4. エッジ ノードを使用してクラスターを作成するには、 **[上記の使用条件に同意する]** をオンにし、 **[購入]** をクリックします。

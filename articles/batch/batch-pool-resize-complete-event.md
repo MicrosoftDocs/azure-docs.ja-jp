@@ -3,7 +3,7 @@ title: Azure Batch プールのサイズ変更の完了イベント | Microsoft 
 description: Batch プールのサイズ変更完了イベントのリファレンスです。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 87c98b89a49adbad88841dccbd4ba47d370b2be7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2544bd2be683b731c3dac0bea651d4b64dff75e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776424"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323201"
 ---
 # <a name="pool-resize-complete-event"></a>プールのサイズ変更の完了イベント
 

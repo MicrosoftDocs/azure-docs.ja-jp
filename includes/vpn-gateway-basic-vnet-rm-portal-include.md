@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 835f23f98ebe56e0b19081f07dc3302ef93b27b9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a601b0c40f84832101e97a7abf7dd7418a0a5c69
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181017"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673417"
 ---
 VNet は、Resource Manager デプロイ モデルと Azure portal を使用し、以下の手順に従って作成できます。 仮想ネットワークの詳細については、[Virtual Network の概要](../articles/virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
@@ -22,7 +22,7 @@ VNet は、Resource Manager デプロイ モデルと Azure portal を使用し�
 >
 >
 
-1. [Azure portal](http://portal.azure.com) にサインインして **[リソースの作成]** を選択します。 **[新規]** ページが開きます。
+1. [Azure portal](https://portal.azure.com) にサインインして **[リソースの作成]** を選択します。 **[新規]** ページが開きます。
 
 2. **[Marketplace を検索]** フィールドに「*仮想ネットワーク*」と入力し、返された一覧から **[仮想ネットワーク]** を選択します。 **[仮想ネットワーク]** ウィンドウが開きます。
 

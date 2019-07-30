@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:はじめに | Microsoft Docs
 description: Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: ergreenl
-ms.openlocfilehash: 637ad62744affa37630df9c841f3c7529674e788
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: fd6db8a9ac6759b55273940d4a100fc3c4df7692
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245356"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473641"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 この記事では、Azure Portal を使用して、Azure Active Directory Domain Services (Azure AD DS) を有効にする方法について説明します。

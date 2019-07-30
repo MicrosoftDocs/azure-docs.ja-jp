@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 35ac227bd420b614525d468f2d3332a2a02b5388
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18e60d8bc3feb1aa7ba76e5a0b39531d2f52c7dd
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390909"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312038"
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for PostgreSQL からデータをコピーする
 
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
 
 | プロパティ | 説明 | オプション | 必須 |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| ドライバーとデータベース サーバー間で送信されるデータを暗号化するためにドライバーが使用するメソッド。 例: `ValidateServerCertificate=<0/1/6>;`| 0 (暗号化なし) **(既定)** /1 (SSL)/6 (RequestSSL) | いいえ |
+| EncryptionMethod (EM)| ドライバーとデータベース サーバー間で送信されるデータを暗号化するためにドライバーが使用するメソッド。 例: `EncryptionMethod=<0/1/6>;`| 0 (暗号化なし) **(既定)** /1 (SSL)/6 (RequestSSL) | いいえ |
 | ValidateServerCertificate (VSC) | SSL 暗号化が有効 (Encryption Method=1) になっているときに、データベース サーバーによって送信される証明書をドライバーが検証するかどうかを決定します。 例: `ValidateServerCertificate=<0/1>;`| 0 (無効) **(既定)** / 1 (有効) | いいえ |
 
 **例:**

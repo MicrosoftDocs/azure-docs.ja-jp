@@ -3,7 +3,7 @@ title: Azure AD Domain Services - マネージド ドメインの正常性を確
 description: Azure Portal の正常性ページを使用して、マネージド ドメインの正常性を確認します。
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: c3ff0b7daeaef077ea0d83782aeac6cda56fc659
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 6b808126fe4366d3ca3cc19c674b489ec3055665
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245376"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234150"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインの正常性を確認する
 
@@ -43,10 +43,10 @@ Azure Portal の正常性ページを使用して、マネージド ドメイン
 
 | Status | アイコン | 説明 |
 | --- | :----: | --- |
-| 実行中 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | マネージド ドメインはスムーズに実行されています。重大なアラートまたは警告アラートはありません。 このドメインでは、情報アラートが発生している場合があります。 |
-| 要注意 (警告) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | マネージド ドメインに重大なアラートはありませんが、対処する必要がある 1 つ以上の警告アラートがあります。 |
-| 要注意 (重大) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | マネージド ドメインに 1 つ以上の重大なアラートがあります。 警告/情報アラートが発生している場合もあります。 |
-| デプロイ中 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | ドメインはデプロイ中です。 |
+| 実行中 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | マネージド ドメインはスムーズに実行されています。重大なアラートまたは警告アラートはありません。 このドメインでは、情報アラートが発生している場合があります。 |
+| 要注意 (警告) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | マネージド ドメインに重大なアラートはありませんが、対処する必要がある 1 つ以上の警告アラートがあります。 |
+| 要注意 (重大) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | マネージド ドメインに 1 つ以上の重大なアラートがあります。 警告/情報アラートが発生している場合もあります。 |
+| デプロイ中 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | ドメインはデプロイ中です。 |
 
 ## <a name="monitors"></a>モニター
 モニターは、Azure AD Domain Services が定期的に監視するマネージド ドメインの諸側面です。 モニターを正常な状態に保つには、マネージド ドメインのアクティブなアラートを解決するのが最も効果的です。

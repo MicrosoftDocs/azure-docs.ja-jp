@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: absha
-ms.openlocfilehash: 5b1c0212205575f1d40f320fb959d98e55d87fb9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: c5285ac95a2f5813949f22aae3849fd7f55b1ada
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65963593"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052095"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 
@@ -37,7 +37,7 @@ ms.locfileid: "65963593"
 
 
 ## <a name="configuration"></a>構成 
-Network Performance Monitor の構成を開くには、[Network Performance Monitor ソリューション](network-performance-monitor.md)を開き、**[構成]** を選びます。
+Network Performance Monitor の構成を開くには、[Network Performance Monitor ソリューション](network-performance-monitor.md)を開き、 **[構成]** を選びます。
 
 ![Network Performance Monitor の構成](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
 
@@ -62,10 +62,10 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 2. **[テストの追加]** を選び、テストの名前と説明を入力します。 ワークスペースごとに最大で 450 のテストを作成できます。 
 3. テストの種類を選択します。<br>
 
-    * HTTP/S 要求に応答するサービス (outlook.office365.com、bing.com など) への接続を監視するには、**[Web]** を選びます。<br>
-    * TCP 要求に応答し、HTTP/S 要求には応答しないサービス (SQL サーバー、FTP サーバー、SSH ポートなど) への接続を監視するには、**[ネットワーク]** を選びます。 
-    * 例: BLOB ストレージ アカウントに対する Web テストを作成するには、**[Web]** を選択し、対象として「*yourstorageaccount*.blob.core.windows.net」と入力します。 同様に、[こちらのリンク](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)を使用して、他のテーブル ストレージ、キュー ストレージ、および Azure Files に対するテストを作成できます。
-4. ネットワーク待機時間、パケット損失、トポロジ検出などのネットワーク測定を実行したくない場合は、**[ネットワークの測定を実行します]** チェック ボックスをオフにします。 この機能のメリットを最大限に得るには、オンにままにしておきます。 
+    * HTTP/S 要求に応答するサービス (outlook.office365.com、bing.com など) への接続を監視するには、 **[Web]** を選びます。<br>
+    * TCP 要求に応答し、HTTP/S 要求には応答しないサービス (SQL サーバー、FTP サーバー、SSH ポートなど) への接続を監視するには、 **[ネットワーク]** を選びます。 
+    * 例: BLOB ストレージ アカウントに対する Web テストを作成するには、 **[Web]** を選択し、対象として「*yourstorageaccount*.blob.core.windows.net」と入力します。 同様に、[こちらのリンク](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)を使用して、他のテーブル ストレージ、キュー ストレージ、および Azure Files に対するテストを作成できます。
+4. ネットワーク待機時間、パケット損失、トポロジ検出などのネットワーク測定を実行したくない場合は、 **[ネットワークの測定を実行します]** チェック ボックスをオフにします。 この機能のメリットを最大限に得るには、オンにままにしておきます。 
 5. **[ターゲット]** に、ネットワーク接続を監視する URL/FQDN/IP アドレスを入力します。
 6. **[ポート番号]** に、ターゲット サービスのポート番号を入力します。 
 7. **[テストの頻度]** に、テストを実行する頻度の値を入力します。 
@@ -74,7 +74,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
     >[!NOTE]
     > Windows サーバー ベースのノードの場合、この機能では、TCP ベースの要求を使用してネットワーク測定が実行されます。 Windows クライアント ベースのノードの場合、この機能では、ICMP ベースの要求を使用してネットワーク測定が実行されます。 ノードが Windows クライアント ベースのときに、対象アプリケーションが ICMP ベースの着信要求をブロックすることがあります。 ソリューションはネットワーク測定を実行できません。 このような場合は、Windows サーバー ベースのノードを使うことをお勧めします。 
 
-9. 選んだ項目の正常性イベントを作成したくない場合は、**[このテストでカバーされるターゲットで稼働状況の監視を有効にする]** をオフにします。 
+9. 選んだ項目の正常性イベントを作成したくない場合は、 **[このテストでカバーされるターゲットで稼働状況の監視を有効にする]** をオフにします。 
 10. 監視条件を選択します。 しきい値を入力して、正常性イベントの生成に関するカスタムしきい値を設定できます。 選択したネットワーク ペア/サブネットワーク ペアに対して選択したしきい値を条件の値が上回ると、正常性イベントが生成されます。 
 11. **[保存]** を選んで構成を保存します。 
 
@@ -84,11 +84,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 ## <a name="walkthrough"></a>チュートリアル 
 
-Network Performance Monitor のダッシュボード ビューに移動します。 作成したさまざまなテストの正常性の概要については、**[サービス接続の監視]** ページで確認できます。 
+Network Performance Monitor のダッシュボード ビューに移動します。 作成したさまざまなテストの正常性の概要については、 **[サービス接続の監視]** ページで確認できます。 
 
 ![サービス接続モニター ページ](media/network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
-タイルを選び、**[テスト]** ページでテストの詳細を確認します。 左側のテーブルでは、すべてのテストについて、特定の時点での正常性と、サービス応答時間、ネットワーク待機時間、およびパケット損失の値を確認できます。 過去の別の時点のスナップショットを表示するには、[ネットワーク状態の記録機能] コントロールを使います。 テーブルで調査するテストを選びます。 右側のウィンドウのグラフでは、損失、待機時間、および応答時間の値に関する過去の傾向を確認できます。 **[テストの詳細]** リンクを選ぶと、各ノードからのパフォーマンスを確認できます。
+タイルを選び、 **[テスト]** ページでテストの詳細を確認します。 左側のテーブルでは、すべてのテストについて、特定の時点での正常性と、サービス応答時間、ネットワーク待機時間、およびパケット損失の値を確認できます。 過去の別の時点のスナップショットを表示するには、[ネットワーク状態の記録機能] コントロールを使います。 テーブルで調査するテストを選びます。 右側のウィンドウのグラフでは、損失、待機時間、および応答時間の値に関する過去の傾向を確認できます。 **[テストの詳細]** リンクを選ぶと、各ノードからのパフォーマンスを確認できます。
 
 ![サービス接続モニターのテスト](media/network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
@@ -104,7 +104,7 @@ Network Performance Monitor のダッシュボード ビューに移動します
 
     ![サービス接続モニターのネットワークの問題](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
-問題の原因がネットワークであると判断した後は、**[トポロジ]** ビュー リンクを選び、トポロジ マップ上で問題のホップを確認します。 次の図に例を示します。 ノードとアプリケーション エンドポイント間の合計待機時間である 105 ミリ秒のうち、96 ミリ秒は赤で囲まれたホップに起因しています。 問題のホップを特定したら、是正措置を実行できます。 
+問題の原因がネットワークであると判断した後は、 **[トポロジ]** ビュー リンクを選び、トポロジ マップ上で問題のホップを確認します。 次の図に例を示します。 ノードとアプリケーション エンドポイント間の合計待機時間である 105 ミリ秒のうち、96 ミリ秒は赤で囲まれたホップに起因しています。 問題のホップを特定したら、是正措置を実行できます。 
 
 ![サービス接続モニターのテスト](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
@@ -124,7 +124,7 @@ Network Performance Monitor のダッシュボード ビューに移動します
     - サービスへのネットワーク接続のチェックに使用されたノードが Windows クライアント コンピューターである場合は、ターゲット サービスが ICMP 要求をブロックしているか、またはネットワーク ファイアウォールがノードからの ICMP 要求をブロックしている。
     - テスト構成で **[ネットワークの測定を実行します]** チェック ボックスがオフになっている。 
 
-* サービス応答時間が NA で、ネットワーク損失と待機時間が有効な場合は、ターゲット サービスが Web アプリケーションではないことが考えられます。 テスト構成を編集し、テストの種類として、**[Web]** ではなく **[ネットワーク]** を選んでください。 
+* サービス応答時間が NA で、ネットワーク損失と待機時間が有効な場合は、ターゲット サービスが Web アプリケーションではないことが考えられます。 テスト構成を編集し、テストの種類として、 **[Web]** ではなく **[ネットワーク]** を選んでください。 
 
 * アプリケーションの実行速度が遅い場合は、アプリケーション パフォーマンスの低下がネットワークに起因するものなのか、それともアプリケーション プロバイダー側の問題によるものなのかを確認します。
 

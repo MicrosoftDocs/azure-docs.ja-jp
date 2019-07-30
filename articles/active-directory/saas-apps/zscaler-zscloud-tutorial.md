@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 35886a65020d7cc5a77f9f413d2d65637cb18382
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f83fdf1b30e3b9d2a8dea9a4fe3c820e15a3ca39
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719339"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67085846"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル:Azure Active Directory と Zscaler ZSCloud の統合
 

@@ -153,14 +153,14 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 | パラメーター | value |
 | --- | --- |
 | Name |simpletestdiskwrite |
-| このアラート ルールの場所 |米国東部 |
+| このアラート ルールの場所 |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | 作成されたアラートの MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。正確なメトリック名を取得する方法については、`Get-MetricDefinitions` コマンドレットを参照してください。 |
 | operator |GreaterThan |
 | しきい値 (このメトリックの場合、数/秒) |1 |
 | WindowSize (hh:mm:ss 形式) |00:05:00 |
-| アグリゲーター (メトリックの統計。この例では Average を使用) |平均 |
+| アグリゲーター (メトリックの統計。この例では Average を使用) |Average |
 | カスタム電子メール (文字列配列) |'foo@example.com'、'bar@example.com' |
 | 所有者、共同作成者、および閲覧者への電子メールの送信 |-SendToServiceOwners |
 

@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 10/23/2018
+ms.date: 06/19/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8c4f670f3bb14610e7f29a9201b357e73dacf09b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60290760"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293218"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -129,6 +129,7 @@ Linux VM でマネージド ID を使用する方法については、以下の�
 * [アクセス キーを使用して Azure Storage にアクセスする](tutorial-linux-vm-access-storage.md)
 * [Shared Access Signature を使用して Azure Storage にアクセスする](tutorial-linux-vm-access-storage-sas.md)
 * [Azure Key Vault で Azure AD 以外のリソースにアクセスする](tutorial-linux-vm-access-nonaad.md)
+* [Azure Container Registry にアクセスする](../../container-registry/container-registry-authentication-managed-identity.md)
 
 その他の Azure サービスでマネージド ID を使用する方法については、以下のページをご覧ください。
 
@@ -139,6 +140,7 @@ Linux VM でマネージド ID を使用する方法については、以下の�
 * [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
+* [Azure Container Registry タスク](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
 
 ## この機能をサポートする Azure サービスは?<a name="which-azure-services-support-managed-identity"></a>
 

@@ -9,23 +9,20 @@ ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 61569159d83493bb5338f8eda5b9201ef9164143
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: ba1ec821bd25e3b9f4479c3d09fdf5ab981ab0a7
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734581"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305509"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET (プレビュー)](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [.NET Core (プレビュー)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.JS](sql-api-nodejs-get-started.md)
 > 
 
 開発者であれば、NoSQL ドキュメント データを使用するアプリケーションをお持ちかもしれません。 Azure Cosmos DB の SQL API アカウントを使用して、このドキュメント データを格納し、それにアクセスできます。 このチュートリアルでは、Azure Cosmos DB リソースを作成してそれらに対するクエリを実行する Node.js コンソール アプリケーションを構築する方法について説明します。
@@ -130,8 +127,9 @@ ms.locfileid: "66734581"
 > [!Note]
 > **Cosmos DB エミュレーター**に接続する場合は、カスタム接続ポリシーを作成して SSL 検証を無効にします。
 >   ```
->   const connectionPolicy = new cosmos.ConnectionPolicy ()
->   connectionPolicy.DisableSSLVerification = true
+>   const ConnectionPolicy = require('@azure/cosmos').ConnectionPolicy;
+>   const connectionPolicy = new ConnectionPolicy();
+>   connectionPolicy.DisableSSLVerification = true;
 >
 >   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey }, connectionPolicy });
 >   ```

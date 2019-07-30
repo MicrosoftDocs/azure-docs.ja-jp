@@ -7,12 +7,12 @@ ms.author: yizhon
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: 9180c27e64f26c05e6e16007b74f9aa8a98bcfe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 838d0cd4f40666bc3fced22a607b9f94f27b08d3
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440303"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67535504"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Azure IoT Hub device SDK を使用して、接続と信頼できるメッセージングを管理する
 
@@ -97,8 +97,8 @@ SDK では、3 つの再試行ポリシーが提供されています。
 次のコード サンプルでは、既定の再試行ポリシーを定義し、設定する方法を示しています。
 
    ```csharp
-   # define/set default retry policy
-   RetryPolicy retryPolicy = new ExponentialBackoff(int.MaxValue, TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(10), TimeSpan.FromMilliseconds(100));
+   // define/set default retry policy
+   IRetryPolicy retryPolicy = new ExponentialBackoff(int.MaxValue, TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(10), TimeSpan.FromMilliseconds(100));
    SetRetryPolicy(retryPolicy);
    ```
 
@@ -107,8 +107,8 @@ CPU の使用率が高くなるのを避けるため、コードがすぐに失�
 サービスが調整エラーで応答する場合は、再試行ポリシーが違っており、パブリック API からは変更できません。
 
    ```csharp
-   # throttled retry policy
-   RetryPolicy retryPolicy = new ExponentialBackoff(RetryCount, TimeSpan.FromSeconds(10), 
+   // throttled retry policy
+   IRetryPolicy retryPolicy = new ExponentialBackoff(RetryCount, TimeSpan.FromSeconds(10), 
      TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5)); SetRetryPolicy(retryPolicy);
    ```
 
@@ -120,7 +120,7 @@ CPU の使用率が高くなるのを避けるため、コードがすぐに失�
 
 * [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
 
-* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
+* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
 * [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 

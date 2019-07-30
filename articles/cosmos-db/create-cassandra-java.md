@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 968c43ed78c59e5c1f147aaaa5bb33484d95c7a9
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519034"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325472"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>クイック スタート:Java SDK と Azure Cosmos DB を使用して Cassandra アプリをビルドする
 
@@ -71,7 +71,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて `src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java` ファイルからのものです。  
+この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、*src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
 
 * Cassandra ホスト、ポート、ユーザー名、パスワード、および SSL オプションが設定されます。 接続文字列情報は、Azure Portal の [接続文字列] ページから取得されます。
 
@@ -85,7 +85,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     return cluster.connect();
     ```
 
-次のスニペットは、`src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java` ファイルからのものです。
+次のスニペットは、*src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
 
 * 新しいキースペースを作成します。
 

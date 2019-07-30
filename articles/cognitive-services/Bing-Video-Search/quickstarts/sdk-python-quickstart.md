@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: ae91deb5b49b0eb202175fdd242ef0d91975bb25
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5fb6b2b349712a04b79564f9b748538a5cc32d73
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798226"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446980"
 ---
-#  <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>クイック スタート:Bing Video Search SDK for Python で動画の検索を実行する
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>クイック スタート:Bing Video Search SDK for Python で動画の検索を実行する
 
-このクイック スタートを使用して、Bing Video Search SDK for Python を使ったニュース検索を始めましょう。 Bing Video Search には、ほとんどのプログラミング言語に対応した REST API がありますが、SDK を使用すれば、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) にあります。 そちらの方が注釈や機能が詳しく記載されています。
+このクイック スタートを使用して、Bing Video Search SDK for Python を使ったニュース検索を始めましょう。 Bing Video Search には、ほとんどのプログラミング言語に対応した REST API がありますが、SDK を使用すれば、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) にあり、追加の注釈と機能があります。
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -33,7 +33,7 @@ Python の[仮想環境](https://docs.python.org/3/tutorial/venv.html)を使用�
 ```console
 python -m venv mytestenv
 ```
-   
+
 次のようにして、Bing Video Search SDK をインストールします。
 
 ```console
@@ -50,8 +50,9 @@ python -m pip install azure-cognitiveservices-search-videosearch
     from azure.cognitiveservices.search.videosearch.models import VideoPricing, VideoLength, VideoResolution, VideoInsightModule
     from msrest.authentication import CognitiveServicesCredentials
     ```
+
 2. サブスクリプション キーの変数を作成します。 
-    
+
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
     ```
@@ -60,9 +61,9 @@ python -m pip install azure-cognitiveservices-search-videosearch
 
 `CognitiveServicesCredentials` のインスタンスを作成し、クライアントをインスタンス化します。
 
-    ```python
-    client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
-    ```
+```python
+client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
+```
 
 ## <a name="send-a-search-request-and-get-a-response"></a>検索要求を送信して応答を取得する
 
@@ -92,5 +93,5 @@ python -m pip install azure-cognitiveservices-search-videosearch
 
 ## <a name="see-also"></a>関連項目 
 
-* [Bing Video Search API とは](../overview.md)
-* [Cognitive Services の .NET 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+- [Bing Video Search API とは](../overview.md)
+- [Cognitive Services の .NET 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

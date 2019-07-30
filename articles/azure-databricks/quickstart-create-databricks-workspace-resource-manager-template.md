@@ -9,25 +9,25 @@ ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/12/2018
-ms.openlocfilehash: bee2be55ef34de90d7fec23844e5a2604e6a1294
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 07/12/2019
+ms.openlocfilehash: 612c249abc3124e33badebd545f7220dd4cfc593
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008954"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311719"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Databricks で Spark ジョブを実行する
 
-このクイック スタートでは、Azure Resource Manager テンプレートを使用して Azure Databricks ワークスペースを作成する方法について説明します。 そのワークスペースを使用して Apache Spark クラスターを作成し、Databricks クラスター上で Spark ジョブを実行します。 Azure Databricks の詳細については、「[Azure Databricks とは](what-is-azure-databricks.md)」を参照してください。
+このクイック スタートでは、Azure Resource Manager テンプレートを使用して、Apache Spark クラスターと共に Azure Databricks ワークスペースを作成します。 クラスターでジョブを実行して、カスタム グラフを使用し、人口統計データに基づいて無料または有料の使用状況からリアルタイムのレポートを作成します。
 
-このクイック スタートでは、Spark ジョブの一環として、ラジオ チャンネルのサブスクリプション データを分析し、人口統計学的属性に基づく無料/有料使用についての分析情報を取得します。
+## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 
-> [!Note]
-> **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
-> 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+
+[Azure Portal](https://portal.azure.com) にサインインします。 Azure 無料試用版サブスクリプションを使用してこのチュートリアルを実行することはできません。 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
    |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
-3. **[上記の使用条件に同意する]**、**[ダッシュボードにピン留めする]** の順に選択し、**[購入]** をクリックします。
+3. **[上記の使用条件に同意する]** 、 **[ダッシュボードにピン留めする]** の順に選択し、 **[購入]** をクリックします。
 
 4. ワークスペースの作成には数分かかります。 ワークスペース作成時に、ポータルの右側に **[Submitting deployment for Azure Databricks]\(Azure Databricks のデプロイを送信しています\)** タイルが表示されます。 このタイルを表示するために、ダッシュボードを右へスクロールしなければならない場合があります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks に Spark クラスターを作成する
 
-1. Azure Portal で、作成した Databricks ワークスペースに移動して、**[Launch Workspace]\(ワークスペースの起動\)** をクリックします。
+1. Azure Portal で、作成した Databricks ワークスペースに移動して、 **[Launch Workspace]\(ワークスペースの起動\)** をクリックします。
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** をクリックします。
 
@@ -89,7 +89,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次のタスクで、Databricks にノートブックを作成し、Azure BLOB ストレージ アカウントからデータを読み取るようにノートブックを構成して、データに対して Spark SQL ジョブを実行します。
 
-1. 左側のウィンドウで、**[ワークスペース]** をクリックします。 **[ワークスペース]** ドロップダウンの **[作成]** をクリックして、**[ノートブック]** をクリックします。
+1. 左側のウィンドウで、 **[ワークスペース]** をクリックします。 **[ワークスペース]** ドロップダウンの **[作成]** をクリックして、 **[ノートブック]** をクリックします。
 
    ![Databricks でノートブックを作成する](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Databricks でノートブックを作成する")
 
@@ -108,7 +108,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    次のスニペットで、`{YOUR CONTAINER NAME}`、`{YOUR STORAGE ACCOUNT NAME}`、および `{YOUR STORAGE ACCOUNT ACCESS KEY}` を Azure Storage アカウントの適切な値に置き換えてください。 スニペットをノートブックの空のセルに貼り付け、Shift + Enter キーを押してコードのセルを実行します。
 
-   * **DBFS を使用してストレージ アカウントにマウントする (推奨)**。 このスニペットでは、Azure Storage アカウントのパスが `/mnt/mypath` にマウントされています。 そのため、今後 Azure Storage アカウントにアクセスする場合は、完全なパスを指定する必要はありません。 単に `/mnt/mypath` を使用することができます。
+   * **DBFS を使用してストレージ アカウントにマウントする (推奨)** 。 このスニペットでは、Azure Storage アカウントのパスが `/mnt/mypath` にマウントされています。 そのため、今後 Azure Storage アカウントにアクセスする場合は、完全なパスを指定する必要はありません。 単に `/mnt/mypath` を使用することができます。
 
           dbutils.fs.mount(
             source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
@@ -153,7 +153,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    サンプルには、ラジオ チャンネルの視聴者の性別 (列名: **gender**) および登録が無料か有料か (列名: **level**) に関するデータが含まれます。
 
-7. このデータのビジュアル表現を作成し、各性別について、無料アカウント ユーザーの数と有料登録者の数がわかるようにします。 表形式の出力の下部で、**[Bar chart]\(棒グラフ\)** アイコンをクリックした後、**[Plot Options]\(プロット オプション\)** をクリックします。
+7. このデータのビジュアル表現を作成し、各性別について、無料アカウント ユーザーの数と有料登録者の数がわかるようにします。 表形式の出力の下部で、 **[Bar chart]\(棒グラフ\)** アイコンをクリックした後、 **[Plot Options]\(プロット オプション\)** をクリックします。
 
    ![棒グラフを作成する](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "棒グラフを作成する")
 
@@ -174,7 +174,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-記事を完了したら、クラスターを終了できます。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、**[クラスター]** を選択します。 終了するクラスターで、**[アクション]** 列の下にある省略記号をポイントし、**[終了]** アイコンを選択します。
+記事を完了したら、クラスターを終了できます。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、 **[クラスター]** を選択します。 終了するクラスターで、 **[アクション]** 列の下にある省略記号をポイントし、 **[終了]** アイコンを選択します。
 
 ![Databricks クラスターを停止する](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 

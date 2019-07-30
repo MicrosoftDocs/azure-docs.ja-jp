@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 03589745e6e9b40b937c49162e99035ce6c81423
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9046af82388f99cfdd82c8cb816d4cda1e5f8237
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800045"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206861"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android アプリを作成する
 
@@ -57,7 +57,7 @@ Android Studio を起動します。
 
 **[Open an existing Android Studio project]\(既存の Android Studio プロジェクトを開く\)**  を選択し、`Android/NDK/` にあるプロジェクトを選択します。
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>アカウント識別子とキーを構成する
 
@@ -65,7 +65,7 @@ Android Studio を起動します。
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-`Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`を開きます。
+`Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`を開きます。
 
 `SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 
@@ -79,7 +79,7 @@ Android Studio を起動します。
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>アプリを Android デバイスに配置する
 
@@ -89,7 +89,7 @@ Android Studio のツール バーから **[Run]\(実行\)** を選択します�
 
 ![Android Studio での配置と実行](./media/get-started-android/android-studio-deploy-run.png)
 
-**[Select Deployment Target]\(配置ターゲットの選択\)** ダイアログで Android デバイスを選択し、**[OK]** を選択して Android デバイス上でアプリを実行します。
+**[Select Deployment Target]\(配置ターゲットの選択\)** ダイアログで Android デバイスを選択し、 **[OK]** を選択して Android デバイス上でアプリを実行します。
 
 アプリの指示に従って、アンカーを配置し、呼び戻します。
 

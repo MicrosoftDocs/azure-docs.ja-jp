@@ -22,6 +22,8 @@
       items:
         - name: オンプレミスのワークロードのクラウド管理
           href: cloud-governed-management-for-on-premises.md
+        - name: 強固な ID 基盤を実現するための 4 つのステップ
+          href: four-steps.md
     - name: Azure AD Connect と Connect Health
       items:
         - name: Azure AD Connect と Connect Health とは
@@ -68,6 +70,8 @@
       items:
         - name: Azure AD Connect 同期とは
           href: how-to-connect-sync-whatis.md
+        - name: Azure ADSync サービス アカウント
+          href: concept-adsync-service-account.md
         - name: Azure AD Connect 同期機能
           href: how-to-connect-syncservice-features.md
         - name: Azure AD Connect 同期サービス マネージャーとは

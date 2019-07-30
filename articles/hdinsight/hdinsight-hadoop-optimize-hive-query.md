@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 7d26d4c924ba2b7116b95e0b396652e49ca1b8f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 218085d8d3969218be1a0557fdc477c730879cbe
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059389"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543708"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
@@ -195,7 +195,7 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Apache Hive を使用したフライトの遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)
+* [HDInsight の対話型クエリを使用したフライトの遅延データの分析](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 * [HDInsight での Apache Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data-linux.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png

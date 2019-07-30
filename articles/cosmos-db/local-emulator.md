@@ -3,15 +3,15 @@ title: Azure Cosmos Emulator を使用してローカルで開発する
 description: Azure Cosmos Emulator を使用すると、Azure サブスクリプションを作成せずに無料で、アプリケーションの開発とテストをローカルで行うことができます。
 ms.service: cosmos-db
 ms.topic: tutorial
-author: deborahc
-ms.author: dech
-ms.date: 05/20/2019
-ms.openlocfilehash: 9e7342ebcbcf536b26e6cf7fb89e3cf58666d24f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+author: markjbrown
+ms.author: mjbrown
+ms.date: 07/16/2019
+ms.openlocfilehash: 3a03829c39deb954a8baa908de63b9ff6f31238e
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953963"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297848"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -232,7 +232,7 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
 
-    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/?]
+    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `CosmosDB.Emulator.exe /?` 」と入力します。
 
@@ -244,18 +244,19 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 | Shutdown| Azure Cosmos Emulator をシャットダウンします。| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | データ ファイルを格納するパスを指定します。 既定値は %LocalAppdata%\CosmosDBEmulator です。 | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<datapath\>:アクセスできるパス |
 |Port | エミュレーターで使用するポート番号を指定します。 既定値は 8081 です。 |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>:単一のポート番号 |
-| MongoPort | MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10255 です。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>:単一のポート番号|
-| CassandraPort | Cassandra エンドポイントで使用するポート番号を指定します。 既定値は 10350 です。 | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>:単一のポート番号 |
 | ComputePort | Compute Interop Gateway サービスに使用するポート番号を指定します。 ゲートウェイの HTTP エンドポイント プローブ ポートのポート番号は、ComputePort に 79 を加えた値として計算されます。 このため、ComputePort と ComputePort に 79 を加えた番号のポートは、開いて利用可能な状態にしておく必要があります。 既定値は 8900 と 8979 です。 | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>:単一のポート番号 |
+| EnableMongoDbEndpoint | MongoDB API を有効にします | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| MongoPort | MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10255 です。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>:単一のポート番号|
 | EnableCassandraEndpoint | Cassandra API を有効にします | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
+| CassandraPort | Cassandra エンドポイントで使用するポート番号を指定します。 既定値は 10350 です。 | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>:単一のポート番号 |
 | EnableGremlinEndpoint | Gremlin API を有効にします | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
 | GremlinPort | Gremlin エンドポイントに使用するポート番号です。 既定値は 8901 です。 | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>:単一のポート番号 |
+|EnableTableEndpoint | Azure Table API を有効にします | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | Azure Table エンドポイントに使用するポート番号です。 既定値は 8902 です。 | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>:単一のポート番号|
 | KeyFile | 指定されたファイルから承認キーを読み取ります。 キーファイルの生成には、/GenKeyFile オプションを使用します | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>:ファイルへのパス |
 | ResetDataPath | 指定されたパスにある全部のファイルを、再帰的に削除します。 パスを指定しなかった場合には、既定値が %LOCALAPPDATA%\CosmosDbEmulator になります | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<path\>:ファイル パス  |
 | StartTraces  |  デバッグ トレース ログの収集を開始します。 | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | デバッグ トレース ログの収集を停止します。 | CosmosDB.Emulator.exe /StopTraces  | |
-|EnableTableEndpoint | Azure Table API を有効にします | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |FailOnSslCertificateNameMismatch | 証明書の SAN にエミュレーターのホストのドメイン名、ローカル IPv4 アドレス、"localhost"、"127.0.0.1" が含まれていない場合、既定では、エミュレーターにより自己署名 SSL 証明書が再生成されます。 このオプションを設定すると、その代わりにエミュレーターが起動に失敗します。 その後は /GenCert オプションを使って新しい自己署名 SSL 証明書を作成およびインストールする必要があります。 | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | 新しい自己署名 SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | CosmosDB.Emulator.exe /GenCert[ \<comma-separated list of additional dns-names\>] | |
 | DirectPorts |直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。 | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>:4 つのポートのコンマ区切りリスト |
@@ -276,17 +277,17 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 
 Azure Cosmos Emulator で作成できるコンテナーの数の既定値は、固定サイズのコンテナーであれば 25 個 (Azure Cosmos DB SDK を使用した場合にのみサポート)、容量無制限のコンテナーであれば 5 個までです。 **PartitionCount** の値を変更すると、固定サイズのコンテナーであれば 250 個、容量無制限のコンテナーであれば 50 個まで作成できるようになります。この 2 つの組み合わせは、固定サイズのコンテナー 250 個分を超えない範囲であれば、自由に決めることができます (容量無制限のコンテナーは、1 個につき固定サイズのコンテナー 5 個分として計算されます)。 ただし、固定サイズのコンテナーが 200 個以上の状態でエミュレーターを実行する設定にはしないことをお勧めします。 これは、ディスクの IO 操作にオーバーヘッドが加わり、エンドポイント API の使用中に予測し得ないタイムアウトが発生する原因となるためです。
 
-
 現在のパーティション数を超えた後にコンテナーを作成しようとすると、次のメッセージと共に ServiceUnavailable 例外がスローされます。
 
 "申し訳ありません。このリージョンでは現在需要が高まっており、要求にお応えすることができない状況です。 Microsoft では引き続きオンラインの容量を拡充し、もう一度お試しいただくご案内ができるよう取り組んでまいります。
-ご不明な点がありましたら、内容を問わずいつでも askcosmosdb@microsoft.com までメールをお送りください。 ActivityId:12345678-1234-1234-1234-123456789abc"
+ご不明な点がありましたら、内容を問わずいつでも askcosmosdb@microsoft.com までメールをお送りください。
+ActivityId:12345678-1234-1234-1234-123456789abc"
 
 Azure Cosmos Emulator で利用可能なコンテナーの数を変更する手順は次のとおりです。
 
-1. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、**[Reset Data]\(データのリセット\)** をクリックして、ローカルの Azure Cosmos Emulator データをすべて削除します。
+1. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、 **[Reset Data]\(データのリセット\)** をクリックして、ローカルの Azure Cosmos Emulator データをすべて削除します。
 2. フォルダー `%LOCALAPPDATA%\CosmosDBEmulator` にあるエミュレーターのデータをすべて削除します。
-3. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、**[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
+3. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、 **[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 4. 最新版の [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator) をインストールします。
 5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 (例: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`)。
 
@@ -352,12 +353,12 @@ PowerShell からエミュレーターを制御するためのコマンドの概
 
 Azure Cosmos Emulator は、Docker for Windows 上で実行できます。 エミュレーターは、Docker for Oracle Linux では機能しません。
 
-[Docker for Windows](https://www.docker.com/docker-windows) をインストールしたら、ツール バーの Docker アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択して Windows コンテナーに切り替えます。
+[Docker for Windows](https://www.docker.com/docker-windows) をインストールしたら、ツール バーの Docker アイコンを右クリックし、 **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択して Windows コンテナーに切り替えます。
 
 次に、普段利用しているシェルから次のコマンドを実行し、Docker Hub からエミュレーター イメージをプルします。
 
 ```bash
-docker pull microsoft/azure-cosmosdb-emulator
+docker pull mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 ```
 イメージを起動するには、次のコマンドを実行します。
 
@@ -366,15 +367,18 @@ docker pull microsoft/azure-cosmosdb-emulator
 
 md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
-docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 microsoft/azure-cosmosdb-emulator
+docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator --rm
 ```
+
+> [!NOTE]
+> docker run コマンドを実行するときにポートの競合エラー (指定されたポートが既に使用されている) が表示される場合は、ポート番号を変更してカスタム ポートを渡すことができます。 たとえば、"-p 8081:8081" を "-p 443:8081" に変更できます
 
 PowerShell から:
 ```powershell
 
 md $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount 2>null
 
-docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=$env:LOCALAPPDATA\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 microsoft/azure-cosmosdb-emulator
+docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=$env:LOCALAPPDATA\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 
 ```
 
@@ -413,6 +417,57 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+## Mac または Linux 上での実行<a id="mac"></a>
+
+現在、Cosmos エミュレーターは Windows でのみ実行できます。 Mac または Linux を実行するユーザーは、Windows 仮想マシンによってホストされる、Parallels や VirtualBox などのハイパーバイザー内でエミュレーターを実行できます。 これを有効にする手順は、次のとおりです。
+
+Windows VM 内で以下のコマンドを実行して、IPv4 アドレスをメモします。
+
+```cmd
+ipconfig.exe
+```
+
+アプリケーション内で、`ipconfig.exe` によって返される IPv4 アドレスを使用するには、DocumentClient オブジェクトの URI を変更する必要があります。 次の手順では、DocumentClient オブジェクトを構築するときに、CA 検証を回避します。 このためには、HttpClientHandler を、ServerCertificateCustomValidationCallback のその独自の実装を持つ DocumentClient コンストラクターに指定する必要があります。
+
+下は必要なコードの例です。
+
+```csharp
+using System;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using System.Net.Http;
+
+namespace emulator
+{
+    class Program
+    {
+        static async void Main(string[] args)
+        {
+            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
+            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+
+            //Work around the CA validation
+            var httpHandler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+            };
+
+            //Pass http handler to document client
+            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+            {
+                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
+                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
+            }
+        }
+    }
+}
+```
+
+最後に、Windows VM 内から、次のオプションを使用してコマンド ラインから Cosmos エミュレーターを起動します。
+
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -432,7 +487,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 - "**サービス利用不可**" というメッセージが表示された場合、エミュレーターがネットワーク スタックの初期化に失敗している可能性があります。 Pulse Secure クライアントまたは Juniper Networks クライアントのネットワーク フィルター ドライバーが問題の原因である可能性があるため、これらのクライアントがインストールされているかどうかを確認してください。 通常、サード パーティのネットワーク フィルター ドライバーをアンインストールすると、問題が解決されます。 このほか、/DisableRIO オプションを指定してエミュレーターを起動する方法もあります。このオプションを使うと、エミュレーターのネットワーク通信が通常の Winsock に切り替わります。 
 
-- エミュレーターの実行中に、ご利用のコンピューターがスリープ モードになった場合や、そのコンピューターで OS を更新した場合、"**サービスは現在使用できません**" というメッセージが表示される可能性があります。 Windows 通知トレイに表示されているアイコンを右クリックし、**[Reset Data]\(データのリセット\)** を選択して、エミュレーターのデータをリセットします。
+- エミュレーターの実行中に、ご利用のコンピューターがスリープ モードになった場合や、そのコンピューターで OS を更新した場合、"**サービスは現在使用できません**" というメッセージが表示される可能性があります。 Windows 通知トレイに表示されているアイコンを右クリックし、 **[Reset Data]\(データのリセット\)** を選択して、エミュレーターのデータをリセットします。
 
 ### <a id="trace-files"></a>トレース ファイルの収集
 
@@ -451,7 +506,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 1. システム トレイの Azure Cosmos Emulator アイコンを右クリックし、[終了] をクリックして、開いているローカル エミュレーターのインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 2. Windows 検索ボックスに「**アプリと機能**」と入力し、**アプリと機能 (システム設定)** の検索結果をクリックします。
-3. アプリの一覧で、**Azure Cosmos DB Emulator** までスクロールして選択し、**[アンインストール]** をクリックし、確認して再度、**[アンインストール]** をクリックします。
+3. アプリの一覧で、**Azure Cosmos DB Emulator** までスクロールして選択し、 **[アンインストール]** をクリックし、確認して再度、 **[アンインストール]** をクリックします。
 4. アプリがアンインストールされたら、`%LOCALAPPDATA%\CosmosDBEmulator` に移動して、フォルダーを削除します。
 
 ## <a name="next-steps"></a>次の手順

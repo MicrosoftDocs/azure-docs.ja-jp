@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 04/16/2019
-ms.author: aahi
-ms.openlocfilehash: 9cb6a40e6ce53a6d82d4129db876a1b24269f166
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 06/05/2019
+ms.author: raymondl
+ms.openlocfilehash: c803c85a0900a09b18909e2c81d52915a12cff1a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997718"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304072"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "59997718"
 
 この機能は、ドキュメントのコレクション内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、このサービスは話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
 
-現時点では、キー フレーズ抽出では、英語、ドイツ語、スペイン語、および日本語がサポートされています。 その他の言語はプレビュー段階です。 詳細については、[サポートされている言語](../text-analytics-supported-languages.md)に関するページを参照してください。
+詳細については、[サポートされている言語](../text-analytics-supported-languages.md)に関する記事を参照してください。 
 
 > [!TIP]
 > Text Analytics にはキー フレーズ抽出用の Linux ベースの Docker コンテナー イメージも用意されているため、データの近くに [Text Analytics コンテナーをインストールして実行](text-analytics-how-to-install-containers.md)することができます。
@@ -84,7 +84,7 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
-要求が受信されると分析が実行されます。 サービスは、1 分あたり最大 100 個の要求を受け付けます。 各要求の最大サイズは 1 MB です。
+要求が受信されると分析が実行されます。 分単位および秒単位で送信できる要求のサイズと数については、概要の「[データ制限](../overview.md#data-limits)」セクションを参照してください。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 

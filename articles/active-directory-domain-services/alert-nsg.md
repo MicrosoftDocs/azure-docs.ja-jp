@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:ネットワーク セキュリテ
 description: Azure AD Domain Services 向けの NSG 構成のトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: ''
 editor: ''
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
-ms.author: mstephen
-ms.openlocfilehash: 743f83fd25ff897492fda7103d3db1f4b961714d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 08875ec23740eab7787c4a919566df521deba9a5
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245388"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473924"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>マネージド ドメインの無効なネットワーク構成のトラブルシューティング
 この記事は、ネットワーク関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。

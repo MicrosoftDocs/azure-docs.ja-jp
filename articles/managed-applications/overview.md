@@ -4,14 +4,14 @@ description: Azure マネージド アプリケーションの概念について
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: overview
-ms.date: 05/31/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5b6cb030c6eba5d80dfd046f1c3950609da1ed73
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479824"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234750"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージド アプリケーションの概要
 
@@ -68,6 +68,8 @@ IT チームは、マネージド アプリケーションを使用して、組�
 ### <a name="managed-resource-group"></a>マネージド リソース グループ
 
 このリソース グループは、マネージド アプリケーションが必要とするすべてのリソースを保持します。 たとえば、このリソース グループには、仮想マシン、ストレージ アカウント、ソリューションの仮想ネットワークが含まれます。 ユーザーはマネージド アプリケーションの個々のリソースを管理しないため、このリソース グループへのアクセスは制限されます。 このリソース グループへの発行元のアクセスは、マネージド アプリケーション定義に指定されたロールに対応します。 たとえば、発行元は、このリソース グループの所有者または共同作成者ロールを要求できます。 このアクセスは永続的か、または特定の期間に制限されます。
+
+[マネージド アプリケーションをマーケットプレース](publish-marketplace-app.md)に発行する場合、発行者はマネージド リソース グループ内のリソースに対して特定のアクションを実行する機能をコンシューマーに付与できます。 たとえば、発行者は、コンシューマーが仮想マシンを再起動できることを指定できます。 読み取りアクション以外のすべてのアクションは、引き続き拒否されます。
 
 ユーザーがマネージド アプリケーションを削除すると、マネージド リソース グループも削除されます。
 

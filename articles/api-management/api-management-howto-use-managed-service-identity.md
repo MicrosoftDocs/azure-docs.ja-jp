@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 75a02abb6cce332daad12e1feb25fb425f89f7f4
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393379"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461603"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
@@ -51,28 +51,25 @@ ID を持った API Management インスタンスは、リソース定義に次�
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "0.9.0.0"
-    },
-    "resources": [
-        {
-            "apiVersion": "2017-03-01",
-            "name": "contoso",
-            "type": "Microsoft.ApiManagement/service",
-            "location": "[resourceGroup().location]",
-            "tags": {},
-            "sku": {
-                "name": "Developer",
-                "capacity": "1"
-            },
-            "properties": {
-                "publisherEmail": "admin@contoso.com",
-                "publisherName": "Contoso"
-            },
-            "identity": {
-                "type": "systemAssigned"
-            }
+    "contentVersion": "0.9.0.0",
+    "resources": [{
+        "apiVersion": "2017-03-01",
+        "name": "contoso",
+        "type": "Microsoft.ApiManagement/service",
+        "location": "[resourceGroup().location]",
+        "tags": {},
+        "sku": {
+            "name": "Developer",
+            "capacity": "1"
+        },
+        "properties": {
+            "publisherEmail": "admin@contoso.com",
+            "publisherName": "Contoso"
+        },
+        "identity": {
+            "type": "systemAssigned"
         }
-    ]
+    }]
 }
 ```
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>管理されたサービス ID を使用してその他のリソースにアクセスする

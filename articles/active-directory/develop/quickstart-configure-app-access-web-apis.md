@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b434e5b0c4524af642eb1255597cd3e7674571c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7e8b0e17248dff3c53b96fd240a7566f09b22fae
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545815"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482694"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>クイック スタート:Web API にアクセスするためのクライアント アプリケーションの構成
 
@@ -56,7 +56,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録]** を選択します。
+1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]** を選択します。
 1. 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** またはメイン登録ページが表示されます。
 1. Web API にアクセスするようにアプリケーションを構成するには、以下の手順を実行します。 
     * [リダイレクト URI をアプリケーションに追加する](#add-redirect-uris-to-your-application)
@@ -69,7 +69,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 リダイレクト URI をアプリケーションに追加するには:
 
-1. アプリの **[概要]** ページで、**[認証]** セクションを選択します。
+1. アプリの **[概要]** ページで、 **[認証]** セクションを選択します。
 
 1. Web アプリケーションとパブリック クライアント アプリケーションのカスタム リダイレクト URI を追加するには、次の手順を実行します。
 
@@ -90,7 +90,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 資格情報を Web アプリケーションに追加するには:
 
-1. アプリの **[概要]** ページで、**[証明書とシークレット]** セクションを選択します。
+1. アプリの **[概要]** ページで、 **[証明書とシークレット]** セクションを選択します。
 
 1. 証明書を追加するには、次の手順を実行します。
 
@@ -110,18 +110,18 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 ## <a name="add-permissions-to-access-web-apis"></a>Web API にアクセスするためのアクセス許可を追加する
 
-[![API のアクセス許可を追加する](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
+[![API アクセス許可を追加できる画面の画像](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
 
 クライアントからリソース API にアクセスするためのアクセス許可を追加するには:
 
-1. アプリの **[概要]** ページで、**[API のアクセス許可]** を選択します。
+1. アプリの **[概要]** ページで、 **[API のアクセス許可]** を選択します。
 1. **[アクセス許可の追加]** ボタンを選択します。
 1. 既定では、ビューで **[Microsoft API]** から選択することができます。 次の中から、目的の API のセクションを選択します。
     * **[Microsoft API]** - Microsoft Graph などの Microsoft API のアクセス許可を選択することができます。
     * **[所属する組織で使用している API]** - 組織によって公開されている API、または組織が統合した API のアクセス許可を選択することができます。
     * **[自分の API]** - 自分で公開した API のアクセス許可を選択することができます。
-1. API を選択すると、**[API アクセス許可の要求]** ページが表示されます。 委任されたアクセス許可とアプリケーションのアクセス許可の両方を API が公開している場合は、アプリケーションに必要なアクセス許可の種類を選択します。
-1. 完了したら、**[アクセス許可の追加]** を選択します。 **[API のアクセス許可]** ページに戻ります。アクセス許可は保存され、テーブルに追加されています。
+1. API を選択すると、 **[API アクセス許可の要求]** ページが表示されます。 委任されたアクセス許可とアプリケーションのアクセス許可の両方を API が公開している場合は、アプリケーションに必要なアクセス許可の種類を選択します。
+1. 完了したら、 **[アクセス許可の追加]** を選択します。 **[API のアクセス許可]** ページに戻ります。アクセス許可は保存され、テーブルに追加されています。
 
 ## <a name="next-steps"></a>次の手順
 

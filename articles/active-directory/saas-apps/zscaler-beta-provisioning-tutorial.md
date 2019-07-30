@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant-msft
-ms.openlocfilehash: 54cf2924a94dda1d29baf048c866f019b82e1402
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jeedes
+ms.openlocfilehash: 82f9746b8f2f6665506491c328841e6a88438472
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67049901"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672953"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Beta を構成し、自動ユーザー プロビジョニングに対応させる
 

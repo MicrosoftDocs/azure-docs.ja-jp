@@ -4,7 +4,7 @@ description: Batch サービスに関する Azure CLI の例
 services: batch
 documentationcenter: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: ''
 ms.date: 01/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 58e9799becd3f150f6fadd932ff4b599da9432d1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bbd0cea4be5322d97c3e45b5a9508a9e8cdc6db7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468157"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322544"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Azure Batch に関する Azure CLI の例
 

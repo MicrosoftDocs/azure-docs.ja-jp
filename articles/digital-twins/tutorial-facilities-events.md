@@ -2,18 +2,18 @@
 title: チュートリアル:Azure Digital Twins 空間からのイベントをキャプチャする | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins を Logic Apps に統合して空間から通知を受け取る方法について説明します。
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
-ms.author: dkshir
-ms.openlocfilehash: 524ca96687e9395b65ec513326ad0fd4f7c6d429
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: alinast
+ms.openlocfilehash: 2b84fa2fd8053ca4dc7ef0ad246d29b2bba3dae5
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528907"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484713"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
 
@@ -49,15 +49,15 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. 左側のウィンドウで、**[リソースの作成]** を選びます。 
+1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 
 
-1. **[Event Grid トピック]** を見つけて選択します。 **作成**を選択します。
+1. **[Event Grid トピック]** を見つけて選択します。 **作成** を選択します。
 
-1. Event Grid トピックの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用または作成した**リソース グループ**と**場所**を選択します。 **作成**を選択します。 
+1. Event Grid トピックの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用または作成した**リソース グループ**と**場所**を選択します。 **作成** を選択します。 
 
     ![Event Grid トピックを作成する](./media/tutorial-facilities-events/create-event-grid-topic.png)
 
-1. リソース グループから Event Grid トピックに移動します。**[概要]** を選択し、**[トピック エンドポイント]** の値を一時ファイルにコピーします。 この URL は次のセクションで必要になります。 
+1. リソース グループから Event Grid トピックに移動します。 **[概要]** を選択し、 **[トピック エンドポイント]** の値を一時ファイルにコピーします。 この URL は次のセクションで必要になります。 
 
 1. **[アクセス キー]** を選択し、**YOUR_KEY_1** と **YOUR_KEY_2** を一時ファイルにコピーします。 これらの値は、次のセクションでエンドポイントを作成するために必要になります。
 
@@ -76,16 +76,16 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
       - SpaceChange
       - TopologyOperation
       - UdfCustom
-      connectionString: Primary_connection_string_for_your_Event_Grid
-      secondaryConnectionString: Secondary_connection_string_for_your_Event_Grid
-      path: Event_Grid_Topic_Path
+      connectionString: <Primary connection string for your Event Grid>
+      secondaryConnectionString: <Secondary connection string for your Event Grid>
+      path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. プレースホルダー `Primary_connection_string_for_your_Event_Grid` を **YOUR_KEY_1** の値に置き換えます。
+1. プレースホルダー `<Primary connection string for your Event Grid>` を **YOUR_KEY_1** の値に置き換えます。
 
-1. プレースホルダー `Secondary_connection_string_for_your_Event_Grid` を **YOUR_KEY_2** の値に置き換えます。
+1. プレースホルダー `<Secondary connection string for your Event Grid>` を **YOUR_KEY_2** の値に置き換えます。
 
-1. プレースホルダー `Event_Grid_Topic_Path` を Event Grid トピックのパスに置き換えます。 このパスは、**[トピック エンドポイント]** URL から **https://** と末尾のリソース パスを削除することで取得できます。 これは *yourEventGridName.yourLocation.eventgrid.azure.net* のような形式になります。
+1. **path** のプレースホルダーを Event Grid トピックのパスに置き換えます。 このパスは、 **[トピック エンドポイント]** URL から **https://** と末尾のリソース パスを削除することで取得できます。 これは *yourEventGridName.yourLocation.eventgrid.azure.net* のような形式になります。
 
     > [!IMPORTANT]
     > 引用符なしですべての値を入力します。 YAML ファイル内のコロンの後に少なくとも 1 つの空白文字があることを確認してください。 YAML ファイルの内容は、[このツール](https://onlineyamltools.com/validate-yaml)のようなオンライン YAML 検証ツールを使用して検証することもできます。
@@ -104,17 +104,17 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) サービスを使用すると、他のサービスから受信したイベントに対する自動化されたタスクを作成できます。 このセクションでは、[Event Grid トピック](../event-grid/overview.md)を利用して、空間センサーからルーティングされたイベントに関するメール通知を作成するよう Logic Apps を設定します。
 
-1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、**[リソースの作成]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[リソースの作成]** を選択します。
 
-1. 新しい**ロジック アプリ** リソースを見つけて選択します。 **作成**を選択します。
+1. 新しい**ロジック アプリ** リソースを見つけて選択します。 **作成** を選択します。
 
-1. ロジック アプリ リソースの**名前**を入力し、**サブスクリプション**、**リソース グループ**、**場所**を選択します。 **作成**を選択します。
+1. ロジック アプリ リソースの**名前**を入力し、**サブスクリプション**、**リソース グループ**、**場所**を選択します。 **作成** を選択します。
 
     ![Logic Apps リソースを作成](./media/tutorial-facilities-events/create-logic-app.png)
 
-1. Logic Apps リソースがデプロイされたらこれを開き、**[ロジック アプリ デザイナー]** ウィンドウを開きます。 
+1. Logic Apps リソースがデプロイされたらこれを開き、 **[ロジック アプリ デザイナー]** ウィンドウを開きます。 
 
-1. **[When an Event Grid event occurs]\(Event Grid イベントが発生したとき\)** トリガーを選択します。 メッセージが表示されたら、Azure アカウントを使用して目的のテナントにサインインします。 メッセージが表示されたら、目的の Event Grid リソースへの **[アクセスを許可]** を選択します。 **[続行]** をクリックします。
+1. **[Event Grid のリソース イベントが発生するとき]** トリガーを選択します。 メッセージが表示されたら、Azure アカウントを使用して目的のテナントにサインインします。 メッセージが表示されたら、目的の Event Grid リソースへの **[アクセスを許可]** を選択します。 **[続行]** をクリックします。
 
 1. **[When a resource event occurs (Preview)]\(リソース イベントが発生したとき (プレビュー)\)** ウィンドウで、次の操作を行います。 
    
@@ -130,11 +130,11 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. **[アクションの選択]** ウィンドウで、次の操作を行います。
 
-   a. 「**JSON の解析**」という語句を検索し、**[JSON の解析]** アクションを選択します。
+   a. 「**JSON の解析**」という語句を検索し、 **[JSON の解析]** アクションを選択します。
 
-   b. **[Content]\(コンテンツ\)** フィールドで、**[動的なコンテンツ]** の一覧から **[Body]\(本文\)** を選択します。
+   b. **[Content]\(コンテンツ\)** フィールドで、 **[動的なコンテンツ]** の一覧から **[Body]\(本文\)** を選択します。
 
-   c. **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。 次の JSON ペイロードを貼り付け、**[完了]** を選択します。
+   c. **[サンプルのペイロードを使用してスキーマを生成する]** を選びます。 次の JSON ペイロードを貼り付け、 **[完了]** を選択します。
 
     ```JSON
     {
@@ -162,9 +162,9 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. **[アクションの選択]** ウィンドウで、次の操作を行います。
 
-   a. **[アクション]** の一覧から **[Control]\(コントロール\) > [条件]** を選択するか、**[条件]** を検索します。 
+   a. **[アクション]** の一覧から **[Control]\(コントロール\) > [条件]** を選択するか、 **[条件]** を検索します。 
 
-   b. 最初の **[値の選択]** テキスト ボックスで、**[JSON の解析]** ウィンドウの **[動的なコンテンツ]** の一覧で **[eventType]** を選択します。
+   b. 最初の **[値の選択]** テキスト ボックスで、 **[JSON の解析]** ウィンドウの **[動的なコンテンツ]** の一覧で **[eventType]** を選択します。
 
    c. 2 番目の **[値の選択]** ボックスに「`UdfCustom`」と入力します。
 
@@ -172,9 +172,9 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. **[true の場合]** ウィンドウで、次の操作を行います。
 
-   a. **[アクションの追加]** を選択し、**[Office 365 Outlook]** を選択します。
+   a. **[アクションの追加]** を選択し、 **[Office 365 Outlook]** を選択します。
 
-   b. **[アクション]** の一覧で、**[メールの送信]** を選択します。 **[サインイン]** をクリックし、自分のメール アカウントの資格情報を使用します。 メッセージが表示されたら、**[アクセスを許可]** を選択します。
+   b. **[アクション]** の一覧で、 **[メールの送信]** を選択します。 **[サインイン]** をクリックし、自分のメール アカウントの資格情報を使用します。 メッセージが表示されたら、 **[アクセスを許可]** を選択します。
 
    c. **[To]\(送信先\)** ボックスに、通知を受け取るためのメール ID を入力します。 **[件名]** にテキスト「**空間における空気の質の悪化に関する Digital Twins 通知**」を入力し、 **[JSON の解析]** の **[動的なコンテンツ]** の一覧で **[TopologyObjectId]** を選択します。
 
@@ -190,7 +190,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    ![電子メール通知](./media/tutorial-facilities-events/logic-app-notification.png)
 
-これらのメールの受信を停止するには、ポータルで目的の Logic Apps リソースに移動し、**[概要]** ウィンドウを選択します。 **[無効]** を選択します。
+これらのメールの受信を停止するには、ポータルで目的の Logic Apps リソースに移動し、 **[概要]** ウィンドウを選択します。 **[無効]** を選択します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

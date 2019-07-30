@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8db590c8c79db9bc47edbbef69a11d3b0e4b51f6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540360"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111081"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory のテナント
 

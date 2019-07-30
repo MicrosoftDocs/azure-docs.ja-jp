@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48955354baf86d84c0ddc6618a99f7e806c26c2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88f42a849d5c483feb9325072fd65769839672e4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862371"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル:Azure Active Directory と Clarizen の統合
 
@@ -53,11 +53,11 @@ Azure AD への Clarizen の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Clarizen を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Clarizen の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Clarizen**」と入力し、結果ウィンドウで **[Clarizen]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Clarizen**」と入力し、結果ウィンドウで **[Clarizen]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧の Clarizen](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
 
 Clarizen で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Clarizen** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Clarizen** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL を使用する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 実際の値を取得するには、[Clarizen サポート チーム](https://success.clarizen.com/hc/en-us/requests/new)に連絡してください。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -130,11 +130,11 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
 1. 別の Web ブラウザー ウィンドウで、Clarizen 企業サイトに管理者としてサインインします。
 
-1. 自分のユーザー名をクリックし、**[Settings (設定)]** をクリックします。
+1. 自分のユーザー名をクリックし、 **[Settings (設定)]** をクリックします。
 
     ![ユーザー名の下にある [Settings (設定)] のクリック](./media/clarizen-tutorial/tutorial_clarizen_001.png "設定")
 
-1. **[Global Settings (グローバル設定)]** タブをクリックします。次に、**[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
+1. **[Global Settings (グローバル設定)]** タブをクリックします。次に、 **[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
 
     ![[Global Settings (グローバル設定)] タブ](./media/clarizen-tutorial/tutorial_clarizen_002.png "グローバル設定")
 
@@ -158,7 +158,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -183,7 +183,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Clarizen へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Clarizen]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Clarizen]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -195,15 +195,15 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-clarizen-test-user"></a>Clarizen のテスト ユーザーの作成
 

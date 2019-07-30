@@ -8,13 +8,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/07/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 02b335de7f105d768168d5f798ec9109136d7430
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459710"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846259"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Azure Front Door での Web アプリケーション ファイアウォールのカスタム規則
 Front Door サービスで Azure Web アプリケーション ファイアウォール (WAF) を使用すると、ユーザーが定義した条件に基づいて Web アプリケーションへのアクセスを制御することができます。 カスタム WAF 規則は、優先順位番号、規則の種類、一致条件、およびアクションで構成されます。 カスタム規則には、一致規則とレート制限規則の 2 種類があります。 一致規則では一致条件に基づいてアクセスが制御されるのに対し、レート制限規則では一致条件と着信要求のレートに基づいてアクセスが制御されます。 カスタム規則を無効にして評価されないようにできますが、その場合でも構成は維持されます。 この記事では、http パラメーターに基づく一致規則について説明します。

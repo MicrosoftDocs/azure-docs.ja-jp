@@ -9,13 +9,13 @@ ms.date: 04/25/2019
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用したチーム Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-manager: jeconnoc
-ms.openlocfilehash: e9f9198f8e086bee6c6b02b67ae7dd9cf523416c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+manager: gwallace
+ms.openlocfilehash: cb1cc62125e668544eb4af9f84b477b273bfe30e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480368"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706254"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用した Kubernetes 上でのチーム開発
 
@@ -35,7 +35,7 @@ ms.locfileid: "66480368"
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
-AKS クラスターは、[サポートされているリージョン][supported-regions]に作成する必要があります。 下記のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
+[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 下記のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -90,7 +90,7 @@ Kubernetes でサンプル アプリケーションを実行するためのコ�
 ```cmd
 cd charts/
 helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
+helm install -n bikesharing . --dep-up --namespace dev --atomic 
 ```
 > [!Note]
 > **RBAC が有効になっているクラスターを使用している場合は**、必ず [Tiller のサービス アカウント](https://helm.sh/docs/using_helm/#role-based-access-control)を構成してください。 そうしなければ、`helm` コマンドは失敗します。
@@ -103,7 +103,7 @@ $ helm init --wait
 ...
 Happy Helming!
 
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
+$ helm install -n bikesharing . --dep-up --namespace dev --atomic
 
 Hang tight while we grab the latest from your chart repositories...
 ...

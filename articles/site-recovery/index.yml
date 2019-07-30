@@ -5,13 +5,12 @@ metadata:
   title: Azure Site Recovery のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
   services: site-recovery
-  author: czeumault
-  manager: carolz
+  author: carmonmills
+  manager: carmonm
   ms.service: site-recovery
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 11/27/2018
-  ms.author: carolz
+  ms.author: carmonm
 abstract:
   description: Azure Site Recovery では、Azure VM、オンプレミス VM、物理サーバーのディザスター リカバリーを調整および管理します。 Microsoft が提供するクイックスタートとチュートリアルを使用して、レプリケーション、フェールオーバー、フェールバックを実行する方法を確認してください。
 sections:

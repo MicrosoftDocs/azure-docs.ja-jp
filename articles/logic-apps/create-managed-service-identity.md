@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b157db5032bd62ab443209f201b4ceded6e44cb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65416116"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385557"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする
 
@@ -68,7 +68,7 @@ Azure portal から、ロジック アプリ用のシステム割り当てのマ
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
-ロジック アプリなどの Azure リソースの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)を利用できます。 テンプレートを使ってロジック アプリ用のシステム割り当てマネージド ID を作成するには、デプロイ テンプレートで、ロジック アプリのワークフロー定義に `"identity"` 要素と `"type"` プロパティを追加します。 
+ロジック アプリなどの Azure リソースの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)を利用できます。 テンプレートを使ってロジック アプリ用のシステム割り当てマネージド ID を作成するには、デプロイ テンプレートで、ロジック アプリのワークフロー定義に `"identity"` 要素と `"type"` プロパティを追加します。 
 
 ```json
 "identity": {

@@ -110,7 +110,7 @@ iOS バージョン 7 以降を実行している iPhone または iPad デバ�
 
 1. モバイル デバイスでは、Safari などの Web ブラウザー アプリを起動します。
 
-2. https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. [https://myapps.microsoft.com](https://myapps.microsoft.com ) に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
@@ -123,7 +123,7 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
 
 1. モバイル デバイスでは、Google Chrome などの Web ブラウザー アプリを起動します。
 
-2. https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. [https://myapps.microsoft.com](https://myapps.microsoft.com ) に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 

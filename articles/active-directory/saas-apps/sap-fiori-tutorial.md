@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e7993ee1cb439ebeaa9f64bee55429aa54f9cee
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 897685eb967e03cfd30182eec6b237e27386496c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903947"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>チュートリアル:Azure Active Directory と SAP Fiori の統合
 
@@ -158,7 +158,7 @@ SAP Fiori で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、 **[編集]** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -166,7 +166,7 @@ SAP Fiori で Azure AD のシングル サインオンを構成してテスト�
 
     1. **[メタデータ ファイルをアップロードする]** を選択します。
 
-        ![[メタデータ ファイルをアップロードする] オプション](common/upload-metadata.png)
+        ![[メタデータ ファイルをアップロードします] オプション](common/upload-metadata.png)
 
    1. メタデータ ファイルを選択するには、フォルダー アイコンを選択し、 **[アップロード]** を選択します。
 
@@ -314,7 +314,7 @@ SAP Fiori で Azure AD のシングル サインオンを構成してテスト�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**brittasimon\@\<自社のドメイン>.\<拡張子>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」と入力します。
+    1. **[ユーザー名]** ボックスに、「**brittasimon\@\<企業のドメイン>.\<extension>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」と入力します。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
@@ -342,9 +342,9 @@ SAP Fiori で Azure AD のシングル サインオンを構成してテスト�
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **[Britta Simon]** を選択します。 **[選択]** を選択します。
+1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **Britta Simon** を選択します。 **[選択]** を選択します。
 
-1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、一覧からユーザーに関連するロールを選択します。 **[選択]** を選択します。
+1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、ユーザーに関連したロールを一覧から選択します。 **[選択]** を選択します。
 
 1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
 

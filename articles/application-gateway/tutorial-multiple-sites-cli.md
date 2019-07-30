@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9c99b534a40b5c87cf511c75ccdb19df4d9aaf63
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: caf82fdab8a841e5c49616a40216a788d877a81b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955661"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501970"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLI を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -233,7 +233,7 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
+ブラウザーのアドレス バーにドメイン名を入力します。 例: http:\//www.contoso.com
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 

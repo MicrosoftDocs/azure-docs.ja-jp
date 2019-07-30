@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 23ba45804632163cc5de41ac2353091b7cf850c1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b49e7453079b848a273aa8c1c706b2d00fff921
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063196"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606538"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>カスタム音声を作成するためのデータを準備する
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 586ddb237144daddf0cbfd19785fcba7658469a0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60762481"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621469"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
@@ -25,11 +25,11 @@ ms.locfileid: "60762481"
     - **[クエリ]** タブで **[テスト]** を選択します。 ダウンロードしたサンプル データを使用して[クエリをテスト](stream-analytics-test-query.md)します。 すべてのエラーを調査し、修正を試みます。   
     - また、Visual Studio 用の Stream Analytics ツールを使用して、[ライブ入力でクエリを直接テスト](stream-analytics-live-data-local-testing.md)することもできます。
 
-2.  [**Timestamp By**](https://msdn.microsoft.com/library/azure/mt573293.aspx) を使用する場合は、イベントのタイムスタンプが[ジョブの開始時刻](stream-analytics-out-of-order-and-late-events.md)より後であることを確認します。
+2.  [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) を使用する場合は、イベントのタイムスタンプが[ジョブの開始時刻](stream-analytics-out-of-order-and-late-events.md)より後であることを確認します。
 
 3.  よくある次のような問題を解消する。
-    - クエリ内の [**WHERE**](https://msdn.microsoft.com/library/azure/dn835048.aspx) 句がイベントをすべて除外してしまっている。この場合、出力が生成されません。
-    - [**CAST**](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) 関数が失敗したため、ジョブが失敗する。 型キャスト エラーを回避するには、代わりに [**TRY_CAST**](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics) を使用します。
+    - クエリ内の [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 句がイベントをすべて除外してしまっている。この場合、出力が生成されません。
+    - [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) 関数が失敗したため、ジョブが失敗する。 型キャスト エラーを回避するには、代わりに [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) を使用します。
     - ウィンドウ関数を使用している場合に、ウィンドウ時間が終わっていない。ウィンドウ時間が完了し、クエリの出力が表示されるのを待つ必要があります。
     - イベントのタイムスタンプがジョブの開始時刻よりも前になっている。この状態だと、イベントがドロップされてしまいます。
 
@@ -99,5 +99,5 @@ Azure Stream Analytics ジョブの次のサンプル クエリには、1 つの
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

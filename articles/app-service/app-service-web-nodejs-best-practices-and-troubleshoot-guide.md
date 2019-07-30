@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dae268e2c659bcd39c7b274f2f12c64b4504353
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60853064"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719779"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -264,12 +264,12 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 
 | HTTP の状態 | HTTP の副状態 | 考えられる理由 |
 | --- | --- | --- |
-| 500 |1,000 |IISNODE に要求をディスパッチしているときに問題が発生しました。node.exe が起動されたかどうかを確認してください。 node.exe が起動時にクラッシュした可能性があります。 web.config 構成でエラーを確認してください。 |
+| 500 |1000 |IISNODE に要求をディスパッチしているときに問題が発生しました。node.exe が起動されたかどうかを確認してください。 node.exe が起動時にクラッシュした可能性があります。 web.config 構成でエラーを確認してください。 |
 | 500 |1001 |- Win32Error 0x2 - アプリが URL に応答していません。 URL 書き換えルールか、express アプリで正しいルートが定義されているかどうかを確認してください。 - Win32Error 0x6d – 名前付きパイプがビジー状態です。– パイプがビジーであるため、node.exe が要求を受け付けません。 高 CPU 使用率を確認してください。 - その他のエラー – node.exe がクラッシュしたかどうかを確認してください。 |
 | 500 |1002 |Node.exe がクラッシュしました。– d:\\home\\LogFiles\\logging-errors.txt でスタック トレースを確認してください。 |
 | 500 |1003 |パイプ構成問題 – 名前付きパイプの構成が正しくありません。 |
 | 500 |1004 ～ 1018 |要求の送信中、または node.exe との間の応答の処理中に、エラーが発生しました。 node.exe がクラッシュしたかどうかを確認してください。 d:\\home\\LogFiles\\logging-errors.txt でスタック トレースを確認してください。 |
-| 503 |1,000 |メモリ不足のため、名前付きパイプ接続をこれ以上割り当てられません。 アプリで大量のメモリが使用されている理由を確認してください。 MaxConcurrentRequestsPerProcess 設定値を確認してください。 この値が無制限になっておらず、要求が多数ある場合は、エラーを防ぐために、この値を大きくします。 |
+| 503 |1000 |メモリ不足のため、名前付きパイプ接続をこれ以上割り当てられません。 アプリで大量のメモリが使用されている理由を確認してください。 MaxConcurrentRequestsPerProcess 設定値を確認してください。 この値が無制限になっておらず、要求が多数ある場合は、エラーを防ぐために、この値を大きくします。 |
 | 503 |1001 |アプリケーションがリサイクルしているため、node.exe に要求をディスパッチできませんでした。 アプリケーションのリサイクル後、要求は通常どおりに処理されます。 |
 | 503 |1002 |実際の理由については、win32 エラー コードを確認してください。要求を node.exe にディスパッチできませんでした。 |
 | 503 |1003 |名前付きパイプがビジー状態です – ノードが CPU を大量に消費しているかどうかを確認してください。 |
@@ -281,7 +281,7 @@ NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります�
 Azure App Service での node.js アプリケーションの詳細については、以下のリンクを参照してください。
 
 * [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-get-started-nodejs.md)
-* [Azure App Service で Node.js Web アプリをデバッグする方法](app-service-web-tutorial-nodejs-mongodb-app.md)
+* [Azure App Service で Node.js Web アプリをデバッグする方法](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps:Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js デベロッパー センター](../nodejs-use-node-modules-azure-apps.md)

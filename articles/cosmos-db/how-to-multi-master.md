@@ -1,21 +1,24 @@
 ---
 title: Azure Cosmos DB でマルチマスターを構成する方法
 description: Azure Cosmos DB 内のアプリケーションでマルチマスターを構成する方法について説明します。
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: 1d9fa7380f62165d360888fd8cb03919f1736297
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 07/03/2019
+ms.author: mjbrown
+ms.openlocfilehash: a5232101d4e5d13fb4c95268311e06b56fa81e65
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244758"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356222"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションでマルチマスターを構成する
 
-アプリケーションでマルチマスター機能を使用するには、Azure Cosmos DB でマルチリージョンの書き込みを有効にし、マルチホーム機能を構成する必要があります。 マルチホーム機能を構成するには、アプリケーションがデプロイされているリージョンを設定します。
+複数の書き込みリージョンが有効なアカウントが作成されたら、お使いのアプリケーションで DocumentClient 用の ConnectionPolicy に対して 2 つの変更を行って、Azure Cosmos DB でマルチマスター機能とマルチホーミング機能を有効にする必要があります。 ConnectionPolicy の中で、UseMultipleWriteLocations を true に設定し、アプリケーションのデプロイ先となるリージョンの名前を SetCurrentLocation に渡します。 これにより、渡された場所との地理的な近接性に基づいて PreferredLocations プロパティが設定されます。 後で新しいリージョンがアカウントに追加された場合でも、アプリケーションの更新や再デプロイを行う必要はなく、近接するリージョンが自動的に検出され、リージョンのイベントが発生した場合は自動ホーミングが実行されます。
+
+> [!Note]
+> 初期構成が単一書き込みリージョンである Cosmos アカウントを、ダウンタイムなしで複数書き込みリージョン (つまりマルチマスター) に構成できます。 詳細については、[複数書き込みリージョンの構成](how-to-manage-database-account.md#configure-multiple-write-regions)に関する記事を参照してください。
 
 ## <a id="netv2"></a>.NET SDK v2
 
@@ -31,14 +34,25 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a id="netv3"></a>.NET SDK v3 (プレビュー)
+## <a id="netv3"></a>.NET SDK v3
 
-アプリケーションでマルチマスターを有効にするには、`UseCurrentRegion` を、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
+アプリケーションでマルチマスターを有効にするには、`ApplicationRegion` を、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
 ```csharp
-CosmosConfiguration config = new CosmosConfiguration("endpoint", "key");
-config.UseCurrentRegion("West US");
-CosmosClient client = new CosmosClient(config);
+CosmosClient cosmosClient = new CosmosClient(
+    "<connection-string-from-portal>", 
+    new CosmosClientOptions()
+    {
+        ApplicationRegion = Regions.WestUS2,
+    });
+```
+
+必要な場合は、`CosmosClientBuilder` と `WithApplicationRegion` を使用して同じ結果を得ることもできます。
+
+```csharp
+CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-string-from-portal>")
+            .WithApplicationRegion(Regions.WestUS2);
+CosmosClient client = cosmosClientBuilder.Build();
 ```
 
 ## <a id="java"></a>Java Async SDK
@@ -84,7 +98,8 @@ connection_policy = documents.ConnectionPolicy()
 connection_policy.UseMultipleWriteLocations = True
 connection_policy.PreferredLocations = [region]
 
-client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
+client = cosmos_client.CosmosClient(self.account_endpoint, {
+                                    'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
 ```
 
 ## <a name="next-steps"></a>次の手順

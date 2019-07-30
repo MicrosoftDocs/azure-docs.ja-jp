@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16e4a5f63ba80b02a967888ad76fedf165a576c8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 5e195a93209875b9eabfaa2ad00772281922443c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473401"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476108"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -39,7 +39,7 @@ PRT の要求と使用においては、次の Windows コンポーネントが�
 
 PRT には、どの Azure AD の更新トークンにも通常は含まれている要求が含まれます。 さらに、PRT に含まれるデバイス固有の要求がいくつか存在します。 制限事項は次のとおりです。
 
-* **デバイス ID**: PRT は特定のデバイス上のユーザーに発行されます。 デバイス ID 要求 `deviceID` は、PRT がユーザーに発行されたデバイスを判別します。 この要求は、PRT 経由で取得したトークンに対して後から発行されます。 デバイス ID 要求は、デバイス状態またはコンプライアンスに基づいた条件付きアクセスの認可を決定するために使用されます。
+* **デバイス ID**: PRT は特定のデバイス上のユーザーに発行されます。 デバイス ID 要求 `deviceID` は、PRT がユーザーに発行されたデバイスを判別します。 この要求は、PRT 経由で取得したトークンに対して後から発行されます。 デバイス ID 要求は、デバイスの状態またはコンプライアンスに基づいて条件付きアクセスの認可を決定するために使用されます。
 * **セッション キー**: セッション キーは、Azure AD 認証サービスによって生成され、PRT の一部として発行される暗号化対称キーです。 セッション キーは、他のアプリケーション用のトークンを取得するために PRT が使用されるときに、所有の証明として機能します。
 
 ### <a name="can-i-see-whats-in-a-prt"></a>PRT の内容を見ることはできますか?
@@ -62,7 +62,10 @@ PRT は Windows 10 デバイス上でのユーザー認証中に発行され、2
    * (Outlook などの) アプリにサインインした後、 **[Use this account everywhere on this device]\(このデバイス上のどこでもこのアカウントを使用する\)** のプロンプトからアカウントを追加する
    * **[設定]**  >  **[アカウント]**  >  **[Access Work or School]\(職場または学校にアクセスする\)**  >  **[接続]** からアカウントを追加する
 
-これらのシナリオでは、この Azure AD アカウントで Windows ログオンが発生していないため、Azure AD WAM プラグインが PRT のプライマリ機関です。
+Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカウントで Windows ログオンは発生しないため、Azure AD WAM プラグインが PRT のプライマリ機関です。
+
+> [!NOTE]
+> サード パーティの ID プロバイダーは、Windows 10 デバイスで PRT 発行を有効にするために、WS-Trust プロトコルをサポートする必要があります。 WS-Trust がサポートされていない場合、Hybrid Azure AD 参加済みデバイスまたは Azure AD 参加済みデバイスでユーザーに PRT を発行することはできません。
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT の有効期間はどれくらいですか?
 

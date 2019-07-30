@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 05/10/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 609d71898d8db027f1cfee9e1b73039367ec94f4
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: 03ce1047dd175ae4a676fa1461632a8e23122a8d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693379"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249723"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成、トレーニング、発行
 

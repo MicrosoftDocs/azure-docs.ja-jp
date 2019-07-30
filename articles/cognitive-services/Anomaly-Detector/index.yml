@@ -6,7 +6,7 @@ metadata:
   description: Anomaly Detector API を使用すると、データを経時的に監視し、機械学習により異常を検出できます。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
@@ -66,7 +66,7 @@ sections:
           - title: REST API
             html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">Anomaly Detector API</a></p>'
           - title: SDK
-            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090370">Python</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090788">Node.js</a></p>'
+            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090370">Python</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090788">Node.JS</a></p>'
           - title: PowerShell
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
           - title: CLI

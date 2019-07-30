@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 33d86ab8c88b45c7787620773f0df6e7fe888cf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850411"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625986"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
-[Istio][istio-github] は Kubernetes クラスターのマイクロサービス全体で重要な一連の機能を提供するオープンソースのサービス メッシュです。 これらの機能には、トラフィック管理、サービスの ID とセキュリティ、ポリシー適用、可観測性などがあります。 Istio の詳細については、公式ドキュメント「[What is Istio?][istio-docs-concepts]」 (Istio とは何か) を参照してください。
+[Istio][istio-github] is an open-source service mesh that provides a key set of functionality across the microservices in a Kubernetes cluster. These features include traffic management, service identity and security, policy enforcement, and observability. For more information about Istio, see the official [What is Istio?][istio-docs-concepts] ドキュメント。
 
 この記事では、Istio をインストールする方法について説明します。 Istio `istioctl` クライアント バイナリはクライアント コンピューターにインストールされます。それから、Istio コンポーネントが AKS の Kubernetes クラスターにインストールされます。
 
 > [!NOTE]
 > これらの手順は Istio バージョン `1.1.3` を参考にしています。
 >
-> Istio `1.1.x` リリースは、Istio チームによって Kubernetes バージョン `1.11`、`1.12`、`1.13` に対してテストされています。 Istio のその他のバージョンは「[GitHub - Istio Releases (GitHub - Istio リリース)][istio-github-releases]」、各リリースに関する情報は「[Istio - Release Notes (Istio - リリース ノート)][istio-release-notes]」を参照してください。
+> Istio `1.1.x` リリースは、Istio チームによって Kubernetes バージョン `1.11`、`1.12`、`1.13` に対してテストされています。 他の Istio バージョンは [GitHub - Istio Releases][istio-github-releases] and information about each of the releases at [Istio - Release Notes][istio-release-notes] で確認できます。
 
 この記事では、次のことについて説明します。
 
@@ -83,6 +83,8 @@ PowerShell の場合、`Invoke-WebRequest` を使用して Istio の最新版を
 $ISTIO_VERSION="1.1.3"
 
 # Windows
+# Use TLS 1.2
+[Net.ServicePointManager]::SecurityProtocol = "tls12"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-win.zip" -OutFile "istio-$ISTIO_VERSION.zip"
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
@@ -150,14 +152,19 @@ echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 
 ### <a name="windows"></a>Windows
 
-Windows で **Powershell** ベースのシェルで Istio `istioctl` クライアント バイナリをインストールするには、次のコマンドを使用します。 これらのコマンドによって、Istio フォルダーに `istioctl` クライアント バイナリがコピーされ、永続的に `PATH` 経由で利用できるようになります。 これらのコマンドの実行には昇格された特権(管理者)は必要ありません。
+Windows で **Powershell** ベースのシェルで Istio `istioctl` クライアント バイナリをインストールするには、次のコマンドを使用します。 これらのコマンドによって、Istio フォルダーに `istioctl` クライアント バイナリがコピーされ、即座 (現在のシェル内で) かつ永続的 (シェルの再起動により) に `PATH` 経由で利用できるようになります。 これらのコマンドの実行には昇格された (管理者) 特権は必要ありません。また、シェルを再起動する必要はありません。
 
 ```powershell
+# Copy istioctl.exe to C:\Istio
 cd istio-$ISTIO_VERSION
 New-Item -ItemType Directory -Force -Path "C:\Istio"
 Copy-Item -Path .\bin\istioctl.exe -Destination "C:\Istio\"
-$PATH = [environment]::GetEnvironmentVariable("PATH", "User")
-[environment]::SetEnvironmentVariable("PATH", $PATH + "; C:\Istio\", "User")
+
+# Add C:\Istio to PATH. 
+# Make the new PATH permanently available for the current User, and also immediately available in the current shell.
+$PATH = [environment]::GetEnvironmentVariable("PATH", "User") + "; C:\Istio\"
+[environment]::SetEnvironmentVariable("PATH", $PATH, "User") 
+[environment]::SetEnvironmentVariable("PATH", $PATH)
 ```
 
 次は [Istio CRD を AKS にインストールする](#install-the-istio-crds-on-aks)セクションに進みます。
@@ -208,7 +215,7 @@ Powershell
 > [!IMPORTANT]
 > このセクションの手順は、必ずダウンロードして展開した Istio リリースの最上位フォルダーから実行してください。
 
-[Grafana][grafana] と [Kiali][kiali] を Istio インストールの一部としてインストールします。 Grafana では分析と監視のダッシュボードが提供され、Kiali ではサービス メッシュ監視ダッシュボードが提供されます。 ご使用のセットアップでは、これらのコンポーネントそれぞれに資格情報が必要であり、[シークレット][kubernetes-secrets]として提供する必要があります。
+[Grafana][grafana] and [Kiali][kiali] を Istio インストールの一部としてインストールします。 Grafana では分析と監視のダッシュボードが提供され、Kiali ではサービス メッシュ監視ダッシュボードが提供されます。 このセットアップでは、これらのコンポーネントそれぞれに資格情報が必要であり、[シークレット][kubernetes-secrets] として提供する必要があります。
 
 Istio コンポーネントをインストールするには、前もって Grafana と Kiali 両方のシークレットを作成する必要があります。 ご使用の環境で適切なコマンドを実行してこれらのシークレットを作成します。
 
@@ -409,7 +416,7 @@ kiali-5c4cdbb869-s28dv                   1/1       Running     0          6m26s
 prometheus-67599bf55b-pgxd8              1/1       Running     0          6m26s
 ```
 
-`Completed` ステータスの 2 つの `istio-init-crd-*` ポッドがあります。 これらのポッドは、前の手順で CRD を作成したジョブの実行に使用されました。 他のすべてのポッドのステータスは `Running` と表示される必要があります。 ポッドのステータスが実行中ではない場合、実行中にナルまで数分待ってください。 ポッドから問題が報告された場合、[kubectl describe pod][kubectl-describe] コマンドを使用し、出力とステータスを確認してください。
+`Completed` ステータスの 2 つの `istio-init-crd-*` ポッドがあります。 これらのポッドは、前の手順で CRD を作成したジョブの実行に使用されました。 他のすべてのポッドのステータスは `Running` と表示される必要があります。 ポッドのステータスが実行中ではない場合、実行中にナルまで数分待ってください。 ポッドから問題が報告された場合、[kubectl describe pod][kubectl-describe] コマンドを使用し、出力と状態を確認してください。
 
 ## <a name="accessing-the-add-ons"></a>アドオンにアクセスする
 
@@ -534,7 +541,7 @@ Istio のインストール オプションと構成オプションを他にも�
 - [Istio - Helm インストール ガイド][istio-install-helm]
 - [Istio - Helm インストール オプション][istio-install-helm-options]
 
-[Istio Bookinfo Application 例][istio-bookinfo-example]を使用した追加のシナリオに沿って勧めることもできます。
+[Istio Bookinfo Application 例][istio-bookinfo-example]を使用した追加のシナリオに沿って進めることもできます。
 
 Application Insights と Istio を使用して AKS アプリケーションを監視する方法については、次の Azure Monitor のドキュメントを参照してください。
 - [Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視][app-insights]

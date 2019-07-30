@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/23/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5e5a186be19c0ecc9730bc79bddff41fb6bbb571
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 42240c7b45029684e51c25419eab7f4378785a4d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401655"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276154"
 ---
 # <a name="quickstart-get-intent-using-java"></a>クイック スタート: Java を使用した意図の取得
 

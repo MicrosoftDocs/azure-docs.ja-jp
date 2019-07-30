@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: f169f969a1acf4cefc8cee27f74a99730491176a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389409"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542758"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Bing Image Search API で Web から画像を取得する
 
@@ -31,10 +31,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
+URL エンコードされた検索語句には、[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) クエリ パラメーターを使用します。 たとえば、「*sailing dinghies*」と入力した場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
+
 > [!IMPORTANT]
 > * すべての要求は、クライアントからではなく、サーバーから実行する必要があります。
 > * いずれかの Bing Search API を初めて呼び出す場合は、クライアント ID ヘッダーを含めないでください。 クライアント ID を含めるのは、既に Bing API を呼び出してユーザーとデバイスの組み合わせに対応するクライアント ID が取得済みである場合だけです。
-> * 画像は、応答に含まれている順序で表示する必要があります。
 
 ## <a name="get-images-from-a-specific-web-domain"></a>特定の Web ドメインから画像を取得する
 
@@ -46,17 +47,6 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 
 > [!NOTE]
 > `site:` 演算子を使用したクエリへの応答には、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) の設定に関係なく成人向けのコンテンツが含まれることがあります。 `site:` の使用は、対象となるドメイン上のコンテンツを把握している場合に限定してください。
-
-次の例は、Bing が過去 1 週間以内に検出した小さな画像を ContosoSailing.com から取得する方法を示しています。  
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&size=small&freshness=week&mkt=en-us HTTP/1.1  
-Ocp-Apim-Subscription-Key: 123456789ABCDE  
-X-MSEdge-ClientIP: 999.999.999.999  
-X-Search-Location: lat:47.60357;long:-122.3295;re:100  
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
-Host: api.cognitive.microsoft.com  
-```
 
 ## <a name="filter-images"></a>イメージのフィルター
 
@@ -73,9 +63,6 @@ Host: api.cognitive.microsoft.com
 
 特定のドメインから画像を取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
 
- > [!NOTE]
- > `site:` 演算子を使用したクエリへの応答には、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) の設定に関係なく成人向けのコンテンツが含まれることがあります。 `site:` の使用は、対象となるドメイン上のコンテンツを把握している場合に限定してください。
-
 次の例は、Bing が過去 1 週間以内に検出した小さな画像を ContosoSailing.com から取得する方法を示しています。  
 
 ```http
@@ -90,6 +77,10 @@ Host: api.cognitive.microsoft.com
 ## <a name="bing-image-search-response-format"></a>Bing Image Search の応答の形式
 
 Bing からの応答メッセージには、クエリとの関連性が高いと Cognitive Services が判断した画像のリストを格納する [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 応答が含まれています。 このリスト内の各 [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) オブジェクトには、画像の URL、サイズ、大きさ、エンコード形式、画像のサムネイルの URL、サムネイルの大きさなどなど、画像に関するさまざまな情報が含まれています。
+
+> [!NOTE]
+> * 画像は、応答に含まれている順序で表示する必要があります。
+> * URL の書式とパラメーターは、予告なしで変更されることがあるため、すべての URL をそのまま使用してください。 明記されている場合を除いて、URL の書式またはパラメーターに依存しないでください。
 
 ```json
 {

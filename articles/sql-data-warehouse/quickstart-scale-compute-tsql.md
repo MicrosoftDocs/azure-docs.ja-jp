@@ -2,20 +2,20 @@
 title: クイック スタート:Azure SQL Data Warehouse のコンピューティングをスケールアウトする - T-SQL | Microsoft Docs
 description: T-SQL と SQL Server Management Studio (SSMS) を使用して、Azure SQL Data Warehouse のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: sql-data-warehouse
-author: kevinvngo
+author: Antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.subservice: manage
+ms.subservice: implement
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: Anthony.vanGemert
 ms.reviewer: igorstan
-ms.openlocfilehash: a734e0173a3432e03c5876d30cf54ea3fd23d4dc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b5f3eb8a8e323add287dba8d9c590e89ea4e1fa7
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460347"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479230"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>クイック スタート:T-SQL を使用して Azure SQL Data Warehouse のコンピューティングをスケーリングする
 
@@ -39,11 +39,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | 設定       | 推奨値 | 説明 | 
+   | Setting       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | たとえば、**mynewserver-20171113.database.windows.net** です。 |
-   | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+   | Authentication | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | ログイン | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
    | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
 
-5. オブジェクト エクスプローラーで、**[データベース]** を展開します。 **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
+5. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
 
     ![データベース オブジェクト](media/create-data-warehouse-portal/connected.png) 
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 データ ウェアハウスの現在の Data Warehouse ユニットを表示するには:
 
 1. **mynewserver-20171113.database.windows.net** への接続で、**System Databases** を展開します。
-2. **master** を右クリックし、**[新しいクエリ]** を選択します。 新しいクエリ ウィンドウが開きます。
+2. **master** を右クリックし、 **[新しいクエリ]** を選択します。 新しいクエリ ウィンドウが開きます。
 3. 次のクエリを実行して、sys.database_service_objectives 動的管理ビューから選択します。 
 
     ```sql
@@ -87,12 +87,12 @@ SQL Data Warehouse では、Data Warehouse ユニットを調整してコンピ�
 
 Data Warehouse ユニットを変更するには:
 
-1. **master** を右クリックし、**[新しいクエリ]** を選択します。
+1. **master** を右クリックし、 **[新しいクエリ]** を選択します。
 2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) T-SQL ステートメントを使用して、サービス目標を変更します。 次のクエリを実行して、サービス目標を DW300 に変更します。 
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
-    MODIFY (SERVICE_OBJECTIVE = 'DW300')
+    MODIFY (SERVICE_OBJECTIVE = 'DW300c')
     ;
     ```
 
@@ -101,7 +101,7 @@ Data Warehouse ユニットを変更するには:
 
 サービス オブジェクトの変更状態をポーリングするには:
 
-1. **master** を右クリックし、**[新しいクエリ]** を選択します。
+1. **master** を右クリックし、 **[新しいクエリ]** を選択します。
 2. 次のクエリを実行して、sys.dm_operation_status DMV をポーリングします。
 
     ```sql

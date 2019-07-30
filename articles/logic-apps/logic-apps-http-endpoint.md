@@ -5,19 +5,19 @@ services: logic-apps
 ms.service: logic-apps
 ms.workload: integration
 author: ecfan
-ms.author: klam; LADocs
+ms.author: klam
 ms.reviewer: jehollan, klam, LADocs
 manager: carmonm
 ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: f93e90ef442740e4fb17f166023fbe3d5f0bae66
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495055"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875952"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする
 

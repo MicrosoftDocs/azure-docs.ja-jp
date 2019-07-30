@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: 244a4ebe20863945bfc3b6236e70e786387c8909
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116675"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509097"
 ---
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -31,7 +31,7 @@ ms.locfileid: "67116675"
 
     1. **[新しい名前空間の作成]** に名前を入力します。 名前空間には、少なくとも 1 つのハブが存在します。
 
-    1. **[場所]** ドロップダウン リスト ボックスで値を選択します。 この値では、通知ハブを作成したい場所を指定します。
+    1. **[場所]** ドロップダウン リスト ボックスで値を選択します。 この値には、ハブを作成する場所を指定します。
 
     1. **[リソース グループ]** で既存のリソース グループを選択します。または、新しいリソース グループに名前を作成します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "67116675"
 
         ![Azure Portal - 通知ハブのプロパティを設定](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-1. **[通知]** (ベルのアイコン) を選択し、 **[リソースに移動]** を選択します。 **[Notification Hubs]** ページの一覧を最新の情報に更新して、お使いの通知ハブを選択してもかまいません。
+1. **[通知]** (ベルのアイコン) を選択し、 **[リソースに移動]** を選択します。 **[Notification Hubs]** ページの一覧を最新の情報に更新して、お使いの通知ハブを選択することもできます。
 
       ![Azure Portal > [通知] > [リソースに移動]](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 

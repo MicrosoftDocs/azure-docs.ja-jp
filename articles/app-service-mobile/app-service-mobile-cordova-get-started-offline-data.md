@@ -2,7 +2,7 @@
 title: Azure Mobile Apps (Cordova) に対するオフライン同期の有効化 | Microsoft Docs
 description: App Service Mobile App を使用して、Cordova アプリケーション内のオフライン データをキャッシュおよび同期する方法を説明します。
 documentationcenter: cordova
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 04c8e7b2b60a60f17c49862d5c17793c16456032
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110993"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443517"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Cordova モバイル アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-offline-data) を今すぐチェックしてください。
+>
+
+## <a name="overview"></a>概要
 このチュートリアルでは、Cordova 向けの Azure Mobile Apps のオフライン同期機能について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、&mdash;データの表示、追加、変更など、&mdash;モバイル アプリとやり取りできます。 変更は、ローカル データベースに格納されます。  デバイスが再びオンラインになると、これらの変更がリモート サービスと同期されます。
 
 このチュートリアルは、チュートリアル「 [Apache Cordova クイック スタート]」を完了した際に作成される Mobile Apps 用の Cordova クイック スタート ソリューションに基づいています。 このチュートリアルでは、クイックスタート ソリューションを更新して、Azure Mobile Apps のオフライン機能を追加します。  また、アプリのオフライン固有のコードについても取り上げます。

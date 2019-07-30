@@ -7,11 +7,11 @@ ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: fcc6c10419b46d31fde20001fefccb32b7a421ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58919865"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181760"
 ---
 ## <a name="putting-everything-together"></a>すべてをまとめる
 

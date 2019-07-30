@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 171593483fc94c1c67013ab520b0085ca98f3a82
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64710191"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Azure Portal でコンテナー レジストリ リポジトリを表示する
 
@@ -21,9 +21,9 @@ Azure Container Registry を使用すると、リポジトリに Docker コン�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **コンテナー レジストリ**: コンテナー レジストリを Azure サブスクリプションで作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
-* **Docker CLI**: [Docker][docker-install] をローカル コンピューターにインストールします。これで、Docker コマンド ライン インターフェイスを使用できるようになります。
-* **コンテナー イメージ**: コンテナー レジストリにイメージをプッシュします。 イメージのプッシュ方法とプル方法については、[イメージのプッシュとプル](container-registry-get-started-docker-cli.md)に関するページを参照してください。
+* **コンテナー レジストリ**:コンテナー レジストリを Azure サブスクリプションで作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
+* **Docker CLI**:[Docker][docker-install] をローカル コンピューターにインストールします。これで、Docker コマンド ライン インターフェイスを使用できるようになります。
+* **コンテナー イメージ**:コンテナー レジストリにイメージをプッシュします。 イメージのプッシュ方法とプル方法については、[イメージのプッシュとプル](container-registry-get-started-docker-cli.md)に関するページを参照してください。
 
 ## <a name="view-repositories-in-azure-portal"></a>Azure Portal でリポジトリを表示する
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358142"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483319"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -41,7 +41,9 @@ ms.locfileid: "60358142"
 [パススルー認証](../hybrid/how-to-connect-pta.md)を使用する場合は、以下を確認してください。
 
 * Azure AD のロックアウトしきい値が、Active Directory アカウント ロックアウトしきい値より**小さい**。 Active Directory アカウント ロックアウトしきい値が Azure AD のロックアウトしきい値より少なくとも 2 - 3 倍長くなるように値を設定します。 
-* Azure AD のロックアウト期間 **(秒単位)** が、Active Directory のロックアウト カウンターのリセットの期間 **(分単位)** より **長い**。
+* Azure AD のロックアウト期間は、Active Directory のロックアウト カウンターのリセットの期間より長い期間を設定する必要があります。 AD の期間は分単位で設定しますが、Azure AD の期間は秒単位で設定することに注意してください。 
+
+たとえば、Azure AD のカウンターが AD よりも高くなるようにしたい場合は、オンプレミス AD が 1 分 (60 秒) に設定されていても、Azure AD は 120 秒 (2 分) になります。
 
 > [!IMPORTANT]
 > 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。

@@ -6,14 +6,14 @@ manager: vicenterivera
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 940768f6b6921701a91107a809d6260aa2a51213
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8cacb443a9fc13d742f84b92136be7428375fc6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964963"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669229"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>C++/WinRT で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e8519bf436e1af19a22a840f48bf1bfccdae99b2
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657828"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341270"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 
@@ -44,7 +44,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="APIList"></a> API リスト  
+## <a name="APIList"></a> API リスト  
  **API リスト** テンプレートを使用すると、開発者ポータルで API リスト ページの本文をカスタマイズすることができます。  
   
  ![Developer Portal API List](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal Templates API List")  
@@ -112,7 +112,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="Product"></a> 操作  
+## <a name="Product"></a> 操作  
  **操作**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
   
  ![Developer Portal Operation page](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM Developer Portal templates Operation page")  
@@ -642,7 +642,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="CodeSamples"></a> コード サンプル  
+## <a name="CodeSamples"></a> コード サンプル  
  次のテンプレートを使用して、操作ページの個々のコード サンプルの本文をカスタマイズできます。  
   
  ![Developer Portal Templates Code samples](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Developer Portal Templates Code samples")  
@@ -663,7 +663,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a> Curl  
+### <a name="Curl"></a> Curl  
  **DocumentationSamplesCurl** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -716,12 +716,12 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="CSharp"></a> C#  
+### <a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```csharp  
 using System;  
 using System.Net.Http.Headers;  
 using System.Text;  
@@ -895,12 +895,12 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="Stub"></a> Java  
+### <a name="Stub"></a> Java  
  **DocumentationSamplesJava** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```java  
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
@@ -991,12 +991,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="JavaScript"></a> JavaScript  
+### <a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```html  
 <!DOCTYPE html>  
 <html>  
 <head>  
@@ -1080,12 +1080,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a> Objective C  
+### <a name="ObjectiveC"></a> Objective C  
  **DocumentationSamplesObjc** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```objective-c  
 #import <Foundation/Foundation.h>  
   
 int main(int argc, const char * argv[])  
@@ -1192,12 +1192,12 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="PHP"></a> PHP  
+### <a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```php  
 <?php  
 // This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
@@ -1282,12 +1282,12 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="Python"></a> Python  
+### <a name="Python"></a> Python  
  **DocumentationSamplesPython** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```python  
 ########### Python 2.7 #############  
 import httplib, urllib, base64  
   
@@ -1363,7 +1363,7 @@ except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))  
   
 ####################################  
-```  
+```
   
 #### <a name="controls"></a>コントロール  
  コード サンプル テンプレートでは、[ページ コントロール](api-management-page-controls.md)は使用できません。  
@@ -1400,12 +1400,12 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="Ruby"></a> Ruby  
+### <a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```ruby  
 require 'net/http'  
   
 uri = URI('{{scheme}}://{{host}}{{path}}')  

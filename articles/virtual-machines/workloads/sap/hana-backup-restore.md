@@ -4,7 +4,7 @@ description: SAP HANA on Azure で HANA のバックアップと復元を実行�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21232e5a678d6deed920e57cd0433a3b85ca4fdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e64c243e38c43c5eb543c3e2ec96d7cf8413cb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64987912"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709771"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 

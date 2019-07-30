@@ -17,18 +17,6 @@
       href: quickstart-php.md
     - name: Node.js アプリの作成
       href: quickstart-nodejs.md
-    - name: Docker と Visual Studio Code を使用した Node.js アプリの作成
-      items:
-        - name: 使用の開始
-          href: tutorial-javascript-vscode-get-started.md
-        - name: コンテナー レジストリの作成
-          href: tutorial-javascript-vscode-create-registry.md
-        - name: イメージの作成
-          href: tutorial-javascript-vscode-containerize-app.md
-        - name: イメージをデプロイする
-          href: tutorial-javascript-vscode-deploy-container.md
-        - name: ログの表示
-          href: tutorial-javascript-vscode-tail-logs.md
     - name: Java アプリの作成
       href: quickstart-java.md
     - name: Python アプリの作成

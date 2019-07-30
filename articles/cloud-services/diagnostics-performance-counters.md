@@ -3,23 +3,17 @@ title: Azure Cloud Services でパフォーマンス カウンターを収集す
 description: Azure Diagnostics および Application Insights を使用して、Cloud Services でパフォーマンス カウンターを検出、使用、作成する方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: georgewallace
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/02/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 68101be211335d51eb4bf99361ea36b73fa19218
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: d6b16b859b29ef835bca75c5fca0ea1a9d35a306
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653741"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358937"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 

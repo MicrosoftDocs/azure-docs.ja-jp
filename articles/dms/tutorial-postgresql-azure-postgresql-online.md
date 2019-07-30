@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 06/28/2019
+ms.openlocfilehash: 96bfb80602efe8e63f814fc9bf6cff3ae52e5983
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415699"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461535"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用して PostgreSQL をオンラインで Azure Database for PostgreSQ に移行する
 
@@ -24,6 +24,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
+>
 > * pg_dump ユーティリティを使用してサンプル スキーマを移行する。
 > * Azure Database Migration Service のインスタンスを作成する。
 > * Azure Database Migration Service を使用して移行プロジェクトを作成する。
@@ -65,11 +66,11 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 * Azure Database for PostgreSQL のサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNet のサブネット範囲を指定します。
 * CLI を呼び出すには、次の 2 つの方法があります。
 
-    * Azure Portal の右上隅にある [Cloud Shell] ボタンを選択します。
+  * Azure Portal の右上隅にある [Cloud Shell] ボタンを選択します。
 
        ![Azure Portal の [Cloud Shell] ボタン](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
-    * CLI をローカルにインストールして実行します。 CLI 2.0 は、Azure リソースを管理するためのコマンドライン ツールです。
+  * CLI をローカルにインストールして実行します。 CLI 2.0 は、Azure リソースを管理するためのコマンドライン ツールです。
 
        CLI をダウンロードするには、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」の記事の手順に従ってください。 この記事には、CLI 2.0 をサポートするプラットフォームも一覧表示されています。
 
@@ -77,9 +78,9 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 * postgresql.config ファイルで論理レプリケーションを有効にし、次のパラメーターを設定します。
 
-    * wal_level = **logical**
-    * max_replication_slots = [スロットの数]、 **5 スロット**に設定することをお勧めします
-    * max_wal_senders = [同時実行タスク数] - max_wal_senders パラメーターでは同時に実行できるタスクの数を設定します、**10 タスク**に設定することをお勧めします
+  * wal_level = **logical**
+  * max_replication_slots = [スロットの数]、 **5 スロット**に設定することをお勧めします
+  * max_wal_senders = [同時実行タスク数] - max_wal_senders パラメーターでは同時に実行できるタスクの数を設定します、**10 タスク**に設定することをお勧めします
 
 ## <a name="migrate-the-sample-schema"></a>サンプル スキーマを移行する
 
@@ -108,15 +109,14 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    例: 
+    例:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
     ```
 
 4. スキーマに外部キーが含まれている場合、移行の初回の読み込みと継続的同期は失敗します。 PgAdmin または psql で次のスクリプトを実行して、ドロップ外部キー スクリプトを抽出し、同期先 (Azure Database for PostgreSQL) に外部キースクリプトを追加します。
-
-    
+  
     ```
     SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
@@ -141,7 +141,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
           AND ccu.table_schema = tc.table_schema
     WHERE constraint_type = 'FOREIGN KEY') Queries
       GROUP BY Queries.tablename;
-     ```
+    ```
 
     クエリの結果内の外部キー削除 (2 列目) を実行します。
 
@@ -228,7 +228,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    例: 
+    例:
 
     ```
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
@@ -474,7 +474,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     az dms project task cutover -h
     ```
 
-    例: 
+    例:
 
     ```
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --database-name Inventory

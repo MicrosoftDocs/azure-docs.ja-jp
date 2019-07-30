@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 970eeb871775e24abb87c8b977e214645e514d3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47a8ee2c03e67d4fd9b34888430ed0cc702205f6
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789486"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273182"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics 用のイベント順序ポリシーの構成
 
@@ -73,7 +73,7 @@ Stream Analytics ジョブは、*イベント時間*または*到着時間*の�
 <br><code>
 {"message Time":"2/3/2019 8:54:16 PM UTC","message":"Input Partition [2] does not have additional data for more than [5] minute(s). Partition will not progress until either events arrive or late arrival threshold is met.","type":"InputPartitionNotProgressing","correlation ID":"2328d411-52c7-4100-ba01-1e860c757fc2"} 
 </code><br><br>
-このメッセージは、入力内の少なくとも 1 つのパーティションが空で、遅延到着しきい値で出力を遅延させることを通知するものです。 この問題を解決するには、以下のいずれかを実行することをお勧めします。 
+このメッセージは、入力内の少なくとも 1 つのパーティションが空で、遅延到着しきい値で出力を遅延させることを通知するものです。 この問題を解決するには、以下のいずれかを実行することをお勧めします。  
 1. イベント ハブ/IoT ハブのすべてのパーティションが入力を受け取るようにする。 
 2. クエリで Partition by PartitionId 句を使用する。 
 

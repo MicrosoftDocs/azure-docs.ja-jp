@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b210af2a70a3ce858d8f53102a181c75373b4176
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474685"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606940"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
@@ -37,7 +37,7 @@ ms.locfileid: "66474685"
 - [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の Web サイトにサインアップして、カスタム タグを作成します。 この手順に関するヘルプが必要な場合は、[タグの使用](Review-Tool-User-Guide/tags.md)に関する記事をご覧ください。
 
     ![ビデオ モデレーションのカスタム タグのスクリーンショット](images/video-tutorial-custom-tags.png)
-- サンプル アプリケーションを実行するには、Azure アカウント、Azure Media Services リソース、Azure Content Moderator リソース、および Azure Active Directory の資格情報が必要です。 これらを取得する方法については、[ビデオ モデレート API](video-moderation-api.md) ガイドをご覧ください。
+- サンプル アプリケーションを実行するには、Azure アカウント、Azure Media Services リソース、Azure Content Moderator リソース、および Azure Active Directory の資格情報が必要です。 これらを取得する方法については、[ビデオ モデレート API](video-moderation-api.md) に関するガイドを参照してください。
 - [ビデオ レビュー コンソール アプリケーション](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)を GitHub からダウンロードします。
 
 ## <a name="enter-credentials"></a>資格情報を入力する
@@ -225,7 +225,7 @@ ms.locfileid: "66474685"
 > [!NOTE]
 > コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
-## <a name="create-a-the-human-in-the-loop-review"></a>人間参加型レビューを作成する
+## <a name="create-a-human-review"></a>人間のレビューを作成する
 
 モデレーション プロセスは、ビデオからキー フレームの一覧を、オーディオ トラックのトランスクリプトと共に返します。 次の手順は、Content Moderator レビュー ツールでの人間のモデレーター用のレビューの作成です。 `Program.cs` 内の `ProcessVideo()` メソッドに戻ると、`CreateVideoReviewInContentModerator()` メソッドへの呼び出しがあることがわかります。 このメソッドは、次に示すように、`VideoReviewAPI.cs` 内の `videoReviewApi` クラス内にあります。
 

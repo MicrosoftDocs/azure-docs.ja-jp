@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89d652f440e97650b7e7ac63cccc7fde75d7204a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475509"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798278"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
@@ -72,7 +72,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
             "dataCollection": "enable"
         },
         "advancedOptions": {
-            "forcePullAndApply": false
+            "forcePullAndApply": false,
             "downloadMappings": {
                 "specificDependencyKey": "https://myCustomDependencyLocation"
             }

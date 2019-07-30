@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966821"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551856"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Azure Security Center で App Service を保護する
 この記事は、Azure Security Center を使用し、App Service 上で実行されているアプリケーションを監視し、保護する際に役立ちます。
@@ -47,9 +47,8 @@ Security Center は App Service とネイティブで統合されており、デ
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>App Service の監視と保護を有効にする
 
 1. Azure で Security Center を選択します。
-2. **[セキュリティ ポリシー]** に進み、サブスクリプションを選択します。
-3. サブスクリプションの行の終わりで、 **[設定の編集]** をクリックします。
-4. **[価格レベル]** の **[App Service]** 行でプランを **[有効]** に切り替えます。
+2. **[Pricing & settings]\(価格と設定\)** に移動し、サブスクリプションを選択します。
+3. **[価格レベル]** の **[App Service]** 行でプランを **[有効]** に切り替えます。
 
 ![アプリ サービスを切り替える](./media/security-center-app-services/app-services-toggle.png)
 

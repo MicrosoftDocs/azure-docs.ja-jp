@@ -5,21 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a78a9b8f0772a83e45ac2b926878e61e6ee2e61
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/12/2019
+ms.openlocfilehash: 7a517be49a249b0b73c901137381bd05946aa4cc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065700"
 ---
-# <a name="server-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのサーバー ログ
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での低速クエリ ログ
 Azure Database for MariaDB では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
 
 低速クエリ ログについて詳しくは、[低速クエリ ログ](https://mariadb.com/kb/en/library/slow-query-log-overview/)に関する MariaDB のドキュメントをご覧ください。
 
-## <a name="access-server-logs"></a>サーバー ログへのアクセス
-Azure portal と Azure CLI を使用して、Azure Database for MariaDB のサーバー ログを一覧表示およびダウンロードできます。
+## <a name="access-slow-query-logs"></a>低速クエリ ログにアクセスする
+Azure portal と Azure CLI を使用して、Azure Database for MariaDB の低速クエリ ログを一覧表示およびダウンロードできます。
 
 Azure portal で Azure Database for MariaDB サーバーを選択します。 **[監視]** の見出しの下の、 **[サーバー ログ]** ページを選択します。
 
@@ -30,7 +30,7 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 
 ログのローテーションは、24 時間ごとか 7 GB ごとのどちらか早い方のタイミングで行われます。
 
-## <a name="configure-logging"></a>ログの構成
+## <a name="configure-slow-query-logging"></a>低速クエリ ログを構成する
 既定では、低速クエリ ログは無効です。 有効にするには、slow_query_log をオンに設定します。
 
 調整できるその他のパラメーターは次のとおりです。

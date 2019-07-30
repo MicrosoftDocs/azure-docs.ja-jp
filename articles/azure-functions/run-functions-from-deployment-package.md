@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: 88e5f1ac7834caa32302a3817e1779d0d733a7b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83a98a493068d3427e34f3ac2ca5c24baa48dda1
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787542"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508250"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
 
@@ -45,7 +45,7 @@ Azure では、関数アプリのデプロイ パッケージ ファイルから
 | 値  | 説明  |
 |---------|---------|
 | **`1`**  | Windows 上で実行される関数アプリでは、推奨されています。 関数アプリの `d:\home\data\SitePackages` フォルダー内のパッケージ ファイルから実行します。 [Zip 配置を使って配置](#integration-with-zip-deployment)しない場合、このオプションでは、フォルダー内に `packagename.txt` という名前のファイルも含む必要があります。 このファイルには、フォルダー内のパッケージ ファイルの空白なしの名前のみが含まれます。 |
-|**`<url>`**  | 実行する特定のパッケージ ファイルの場所。 Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) 付きのプライベート コンテナーを使用して、Functions ランタイムがパッケージにアクセスできるようにする必要があります。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、パッケージ ファイルを Blob Storage アカウントにアップロードします。         |
+|**`<url>`**  | 実行する特定のパッケージ ファイルの場所。 Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 付きのプライベート コンテナーを使用して、Functions ランタイムがパッケージにアクセスできるようにする必要があります。 [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、パッケージ ファイルを Blob Storage アカウントにアップロードします。         |
 
 > [!CAUTION]
 > Windows 上で関数アプリを実行する場合、外部 URL のオプションではコールド スタートのパフォーマンスが悪化します。 関数アプリを Windows にデプロイするときは、`WEBSITE_RUN_FROM_PACKAGE` を `1` に設定して、zip 配置によって発行する必要があります。

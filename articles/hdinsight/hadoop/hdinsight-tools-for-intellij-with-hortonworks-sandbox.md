@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6ae271fc464e2a5735ef95a428b3070066058ddc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5234835f5fbfd5617e6b0440ff38fa900051470a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696142"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450123"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
@@ -24,7 +24,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、次の項目を用意する必要があります。
+この記事の操作を始める前に、以下を用意する必要があります。
 
 - ローカル コンピューターで実行されている Hortonworks Data Platform (HDP) 2.4 on Hortonworks Sandbox。 HDP をセットアップするには、[仮想マシンの Hadoop サンドボックスを使用した Apache Hadoop エコシステムの概要](apache-hadoop-emulator-get-started.md)に関する記事を参照してください。 
     > [!NOTE]
@@ -142,7 +142,7 @@ IntelliJ IDEA をエミュレーターにリンクしたら、プロジェクト
 2. 次の手順を完了します。
 
     1. **[Spark cluster (Linux only)]\(Spark クラスター (Linux のみ)\)** ドロップダウン リストで、ローカルの Hortonworks Sandbox を選択します。
-    2. **[Main class name]\(メイン クラス名\)** ボックスで、メイン クラス名を選択するか入力します。 このチュートリアルでは、名前は **GroupByTest** です。
+    2. **[Main class name]\(メイン クラス名\)** ボックスで、メイン クラス名を選択するか入力します。 この記事では、名前は **GroupByTest** です。
 
 3. **[Submit]\(送信\)** をクリックします。 ジョブ送信のログは、Spark の送信ツール ウィンドウに表示されます。
 

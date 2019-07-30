@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 8ed3b42c61456f110925e34473dbb326dafc1b80
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864529"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447724"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
-Azure Functions Tools for Visual Studio 2019 は Visual Studio の拡張機能です。C# 関数の開発、テスト、Azure へのデプロイを可能にします。 Azure Functions を初めて使用する場合は、詳細について、「[Azure Functions の概要](functions-overview.md)」を参照してください。
+Azure Functions Tools は、C# 関数の開発、テスト、Azure へのデプロイを可能にする Visual Studio の拡張機能です。 Azure Functions を初めて使用する場合は、詳細について、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 
 Azure Functions Tools には、次のような利点があります。 
 
@@ -42,13 +42,11 @@ Azure Functions Tools は、[Visual Studio 2017 ](https://www.visualstudio.com/v
 
 Visual Studio が最新であり、Azure Functions ツールの[最新バージョン](#check-your-tools-version)を使用していることを確認します。
 
-### <a name="other-requirements"></a>その他の要件
+### <a name="azure-resources"></a>Azure リソース
 
-関数を作成してデプロイするには、以下も必要になります。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* 有効な Azure サブスクリプション Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を利用できます。
-
-* Azure Storage のアカウント ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
+Azure Storage アカウントなど、他の必要なリソースは、発行プロセス中にサブスクリプションに作成されます。
 
 ### <a name="check-your-tools-version"></a>ツールのバージョンを確認する
 
@@ -80,16 +78,24 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 * **host.json**:Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、関数で必要な環境変数のアプリ設定を指定します。 プロジェクト内の関数のバインドで必要な各接続の **Values** 配列に新しい項目を追加します。 詳細については、Azure Functions Core Tools の記事の[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記事を参照してください。
+* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
 
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。 このファイルの **[出力ディレクトリにコピー]** 設定は、常に **[新しい場合はコピーする]** にする必要があります。 
 
 詳細については、「[関数クラス ライブラリ プロジェクト](functions-dotnet-class-library.md#functions-class-library-project)」を参照してください。
 
+[!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
+
+プロジェクトを発行しても local.settings.json の設定は自動的にアップロードされません。 これらの設定が Azure の関数アプリにも確実に存在するようにするには、プロジェクトを発行した後にそれらをアップロードする必要があります。 詳細については、「[Function App の設定](#function-app-settings)」を参照してください。
+
+**ConnectionStrings** 内の値は発行されません。
+
+関数アプリの設定値は、コードの中で環境変数として読み込むこともできます。 詳細については、「[環境変数](functions-dotnet-class-library.md#environment-variables)」を参照してください。
+
 ## <a name="configure-the-project-for-local-development"></a>ローカル開発用のプロジェクトを構成する
 
-Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 関数アプリで、プロジェクトに必要な **AzureWebJobsStorage** 接続設定に [Azure Storage エミュレーター](../storage/common/storage-use-emulator.md)を使用することもできます。 エミュレーターを使用するには、**AzureWebJobsStorage** の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイの前に実際のストレージ接続に変更する必要があります。
+Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 関数アプリで、プロジェクトに必要な **AzureWebJobsStorage** 接続設定に [Azure Storage エミュレーター](../storage/common/storage-use-emulator.md)を使用することもできます。 エミュレーターを使用するには、**AzureWebJobsStorage** の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイの前に実際のストレージ接続に変更します。
 
 ストレージ アカウントの接続文字列を設定するには、次のようにします。
 
@@ -133,8 +139,9 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
         }
     }
     ```
+
     バインド固有の属性は、エントリ ポイント メソッドに指定された各バインド パラメーターに適用されます。 属性ではパラメーターとしてバインド情報を取ります。 前の例では、最初のパラメーターに **QueueTrigger** 属性が適用されています。これは、キューによってトリガーされる関数を意味します。 キュー名および接続文字列の設定名は、パラメーターとして **QueueTrigger** 属性に渡されます。 詳細については、[Azure Functions での Azure Queue ストレージのバインド](functions-bindings-storage-queue.md#trigger---c-example)に関する記事を参照してください。
-    
+
 上記の手順を使用して、複数の関数を関数アプリ プロジェクトに追加できます。 プロジェクト内の各関数で異なるトリガーを使用できますが、1 つの関数には 1 つのトリガーのみを使用する必要があります。 詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」をご覧ください。
 
 ## <a name="add-bindings"></a>バインドの追加
@@ -182,6 +189,13 @@ For an example of how to test a queue triggered function, see the [queue trigger
 Azure Functions Core Tools の使用の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
 
 ## <a name="publish-to-azure"></a>Azure に発行する
+
+Visual Studio から発行するときは、2 つのデプロイ方法のいずれかが使用されます。
+
+* [Web 配置](functions-deployment-technologies.md#web-deploy-msdeploy): Windows アプリをパッケージ化して任意の IIS サーバーに配置します。
+* [Run-From-Package を有効にした Zip デプロイ](functions-deployment-technologies.md#zip-deploy): Azure Functions のデプロイに推奨されます。
+
+次の手順を使用して、プロジェクトを Azure 内の関数アプリに発行します。
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 

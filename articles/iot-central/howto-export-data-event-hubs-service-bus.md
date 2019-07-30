@@ -4,16 +4,16 @@ description: Azure IoT Central アプリケーションから Azure Event Hubs �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6f10352646350152c5aac795885231697e81fe7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463972"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850203"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central でデータをエクスポートする
 

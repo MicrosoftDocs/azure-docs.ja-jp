@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 582533d23757de748b9cc7d40e45acc00240d384
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 3bcdb667ee649b9bbf32ad33e74e876cdd2b5cbf
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570319"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144186"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する
 
@@ -145,6 +145,27 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 # Display the most recent report
 $reports[0]
 ```
+
+## <a name="removing-nodes-from-service"></a>サービスからのノードの削除
+
+Azure Automation State Configuration にノードを追加すると、Local Configuration Manager の設定はサービスに登録され、構成とマシンの構成に必要なモジュールがプルされるように設定されます。
+サービスからノードを削除することを選択した場合は、Azure portal または Az コマンドレットを使用して削除できます。
+
+> [!NOTE]
+> サービスからノードを登録解除しても、Local Configuration Manager 設定のみが設定されるため、ノードはサービスに接続しなくなります。
+> これは、現在ノードに適用されている構成には影響しません。
+> 現在の構成を削除するには、[PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) を使用するか、ローカル構成ファイルを削除します (これが Linux ノードの唯一のオプションです)。
+
+### <a name="azure-portal"></a>Azure ポータル
+
+Azure Automation から、目次の **[State configuration (DSC)]\(状態の構成 (DSC)\)** をクリックします。
+次に **[ノード]** をクリックしてサービスに登録されているノードの一覧を表示します。
+削除するノードの名前をクリックします。
+開いた [ノード] ビューで、 **[登録解除]** をクリックします。
+
+### <a name="powershell"></a>PowerShell
+
+PowerShell を使用して Azure Automation State Configuration サービスからノードを登録解除するには、コマンドレット [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0) のドキュメントに従ってください。
 
 ## <a name="next-steps"></a>次の手順
 

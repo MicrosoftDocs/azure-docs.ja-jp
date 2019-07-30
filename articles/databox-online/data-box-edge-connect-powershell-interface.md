@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717489"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448617"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Azure Data Box Edge デバイスを Windows PowerShell 経由で管理する
 
@@ -52,8 +52,9 @@ Azure Data Box Edge ソリューションにより、データを処理してネ
 このコマンドレットを使用して、IoT Edge 証明書をインストールする例を次に示します。
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
+このコマンドレットを実行するときは、ネットワーク共有のためのパスワードを指定するよう求められます。
 
 証明書の詳細については、[Azure IoT Edge 証明書](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs)に関するページまたは「[ゲートウェイに証明書をインストール](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway)」に移動してください。
 
@@ -75,13 +76,12 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
     このコマンドレットの使用例を次に示します。
 
     ```powershell
-    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
+    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
     このコマンドレットで使用されるパラメーターの説明を次に示します。
     - `Path`:コンピューティング ログ パッケージを作成する共有へのネットワーク パスを指定します。
-    - `Credential`:ネットワーク共有のユーザー名とパスワードを指定します。
-    - `RoleInstanceName`:このパラメーターには文字列 `IotRole` を指定します。
+    - `Credential`:ネットワーク共有のユーザー名を指定します。 このコマンドレットを実行するときには、共有のパスワードを指定する必要があります。
     - `FullLogCollection`:このパラメーターにより、ログ パッケージにすべてのコンピューティング ログが確実に含まれます。 既定では、ログ パッケージに含まれるものは、ログのサブセットのみです。
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>コンピューティング モジュールの監視とトラブルシューティングを行う

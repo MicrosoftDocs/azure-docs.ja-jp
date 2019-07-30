@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 157a421ce2cb4442597bfb0f75ae042a10a8ee03
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754990"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443750"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -68,7 +68,7 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 ブロック BLOB ストレージ アカウントは、ホット アクセス層、クール アクセス層、またはアーカイブ アクセス層への階層化を現在サポートしていません。
 
-### <a name="filestorage-preview-storage-accounts"></a>FileStorage (プレビュー) ストレージ アカウント
+### <a name="filestorage-storage-accounts"></a>FileStorage ストレージ アカウント
 
 FileStorage ストレージ アカウントは、Premium ファイル共有の格納と作成に特化したストレージ アカウントです。 FileStorage ストレージ アカウントは、IOPS バーストなど、固有のパフォーマンスに特化した特性を備えています。 これらの特性の詳細については、Files の計画に関するガイドの「[ファイル共有のパフォーマンス レベル](../files/storage-files-planning.md#file-share-performance-tiers)」セクションを参照してください。
 
@@ -88,7 +88,7 @@ FileStorage ストレージ アカウントは、Premium ファイル共有の�
 
 ブロック BLOB ストレージ アカウントは、ブロック BLOB および追加 BLOB を格納するための Premium パフォーマンス レベルを提供します。
 
-FileStorage (プレビュー) ストレージ アカウントは、Azure ファイル共有のための Premium パフォーマンス レベルを提供します。
+FileStorage ストレージ アカウントは、Azure ファイル共有のための Premium パフォーマンス レベルを提供します。
 
 ## <a name="access-tiers-for-block-blob-data"></a>ブロック BLOB 用のデータ アクセス層
 

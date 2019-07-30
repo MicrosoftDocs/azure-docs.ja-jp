@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f4ab484b76bb536dd4e9d3c4fff2c85d93e4a41
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 51fd5c8f406ea54c7fc8e81c674e41b30d7ad406
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235206"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482414"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 
@@ -38,7 +38,7 @@ OAuth 2.0 On-Behalf-Of (OBO) フローにより、サービスまたは Web API 
 
 OBO フローは、[OAuth 2.0 認証コード付与フロー](v1-protocols-oauth-code.md)を使用するアプリケーションでユーザーが認証された後に開始されます。 その時点で、アプリケーションは中間層の Web API (API A) に、API A にアクセスするためのユーザーの要求と同意を含むアクセス トークン (トークン A) を送信します。次に、API A はダウンストリームの Web API (API B) に認証済み要求を行います。
 
-On-Behalf-Of フローは次の手順で構成されます。![OAuth2.0 の On-Behalf-Of フロー](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+On-Behalf-Of フローは次の手順で構成されます。![OAuth2.0 の On-Behalf-Of フローの手順](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. クライアント アプリケーションは、トークン A を使用して API A に要求を発行します。
 1. API A が Azure AD トークン発行エンドポイントに対して認証処理を行い、API B にアクセスするためのトークンを要求します。
@@ -282,7 +282,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 | access_token |SAML アサーションを返すパラメーター。 |
 | refresh_token |更新トークン。 呼び出し元のサービスは、現在の SAML アサーションの期限が切れた後に、このトークンを使用して別のアクセス トークンを要求できます。 |
 
-- token_type:ベアラー
+- token_type:Bearer
 - expires_in:3296
 - ext_expires_in:0
 - expires_on:1529627844

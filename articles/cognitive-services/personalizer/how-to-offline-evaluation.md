@@ -1,21 +1,21 @@
 ---
-title: オフライン評価
-titleSuffix: Personalizer - Azure Cognitive Services
+title: オフライン評価 - Personalizer
+titleSuffix: Azure Cognitive Services
 description: オフライン評価で学習ループを分析する方法に関する説明
 services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: e99a8242e438ef5a8ab7fd917724450f8080bb41
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b719e6e693471415350007a4f4fabed917b8e12d
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025415"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722316"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>オフライン評価で学習ループを分析する方法
 

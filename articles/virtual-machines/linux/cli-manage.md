@@ -4,7 +4,7 @@ description: Azure Resource Manager モードで VM を管理する際に使用�
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: cf031ad2-654d-46aa-9da6-af22d97df1b7
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 3051c865d03e49964d01c09516bc76ae5ec55d0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d10ef965bdae3cd6ea54e315b220477b3fb6e934
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387241"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671750"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Azure リソースを管理するための一般的な Azure CLI コマンド
 [!INCLUDE [virtual-machines-common-cli-manage](../../../includes/virtual-machines-common-cli-manage.md)]

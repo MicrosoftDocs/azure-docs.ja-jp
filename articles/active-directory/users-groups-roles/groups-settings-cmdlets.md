@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c9b07e7524488d0336a55af6e1d5f36af59a870
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c5ccc4ef6c095eacd29590504d46756ead856574
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729824"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058605"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して、グループを作成し、更新する手順を説明します。 このコンテンツは、Office 365 グループ (統合グループと呼ばれることもあります) にのみ適用されます。 
@@ -78,7 +78,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
    ```
 6. 以下を使用して値を読み取ることができます。
 
-  ```powershell
+   ```powershell
    $Setting.Values
    ```  
 ## <a name="update-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の更新
@@ -86,7 +86,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
 
 UsageGuideLinesUrl の値を削除するには、上記の手順 4 を使用して URL が空の文字列になるように編集します。
 
- ```powershell
+   ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
 次に、手順 5 を実行して新しい値を設定します。
@@ -97,22 +97,22 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 | **設定** | **説明** |
 | --- | --- |
 |  <ul><li>EnableGroupCreation<li>型: Boolean<li>既定値はTrue |ディレクトリで管理者以外のユーザーによる Office 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GroupCreationAllowedGroupId<li>型: String<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
-|  <ul><li>UsageGuidelinesUrl<li>型: String<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
-|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、Classification は ClassificationList 内の文字列と一致します。|
-|  <ul><li>DefaultClassification<li>型: String<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>型: String<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
-| <ul><li>CustomBlockedWordsList<li>型: String<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
+|  <ul><li>GroupCreationAllowedGroupId<li>型: string<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
+|  <ul><li>UsageGuidelinesUrl<li>型: string<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
+|  <ul><li>ClassificationDescriptions<li>型: string<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、Classification は ClassificationList 内の文字列と一致します。|
+|  <ul><li>DefaultClassification<li>型: string<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。|
+|  <ul><li>PrefixSuffixNamingRequirement<li>型: string<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
+| <ul><li>CustomBlockedWordsList<li>型: string<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
 | <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 使用しないでください
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GuestUsageGuidelinesUrl<li>型: String<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
+|  <ul><li>GuestUsageGuidelinesUrl<li>型: string<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
 |  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
-|  <ul><li>ClassificationList<li>型: String<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
+|  <ul><li>ClassificationList<li>型: string<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>例:ディレクトリ レベルでグループのゲスト ポリシーを構成する
 1. すべての設定テンプレートを取得します。
-  ```powershell
+   ```powershell
    Get-AzureADDirectorySettingTemplate
    ```
 2. ディレクトリ レベルでグループのゲスト ポリシーを設定するには、Group.Unified テンプレートが必要です。
@@ -135,7 +135,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```
 6. 以下を使用して値を読み取ることができます。
 
-  ```powershell
+   ```powershell
    $Setting.Values
    ```   
 
@@ -143,9 +143,9 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 取得する設定の名前がわかっている場合、以下のコマンドレットを使って、現在の設定値を取得することができます。 この例では、"UsageGuidelinesUrl" という名前の設定の値を取得しています。 
 
-  ```powershell
-  (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
-  ```
+   ```powershell
+   (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
+   ```
 次の手順では、ディレクトリ内のすべての Office グループに適用される設定をディレクトリ レベルで読み取ります。
 
 1. 既存のディレクトリ設定をすべて読み取ります。
@@ -188,11 +188,11 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 ## <a name="remove-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の削除
 次の手順では、ディレクトリ内のすべての Office グループに適用される設定をディレクトリ レベルで削除します。
-  ```powershell
-  Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
-  ```
+   ```powershell
+   Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
+   ```
 
-## <a name="update-settings-for-a-specific-group"></a>特定のグループの設定の更新
+## <a name="create-settings-for-a-specific-group"></a>特定のグループに対する設定を作成する
 
 1. "Groups.Unified.Guest" という名前の Settings テンプレートを検索します。
    ```powershell
@@ -219,13 +219,49 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```powershell
    $SettingCopy["AllowToAddGuests"]=$False
    ```
-5. ディレクトリ内に、必要なグループ用の新しい設定を作成します。
+5. この設定を適用するグループの ID を取得します。
    ```powershell
-   New-AzureADObjectSetting -TargetType Groups -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -DirectorySetting $SettingCopy
+   $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
    ```
-6. 設定を確認するには、次のコマンドを実行します。
+6. ディレクトリ内に、必要なグループ用の新しい設定を作成します。
    ```powershell
-   Get-AzureADObjectSetting -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -TargetType Groups | fl Values
+   New-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -DirectorySetting $SettingCopy
+   ```
+7. 設定を確認するには、次のコマンドを実行します。
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
+   ```
+
+## <a name="update-settings-for-a-specific-group"></a>特定のグループの設定の更新
+1. 設定を更新するグループの ID を取得します。
+   ```powershell
+   $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
+   ```
+2. グループの設定を取得します。
+   ```powershell
+   $Setting = Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
+   ```
+3. 必要に応じて、グループの設定を更新します。たとえば次のようにします。
+   ```powershell
+   $Setting["AllowToAddGuests"] = $True
+   ```
+4. 次に、この特定のグループに対する設定の ID を取得します。
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
+   ```
+   次のような応答が取得されます。
+   ```powershell
+   Id                                   DisplayName            TemplateId                             Values
+   --                                   -----------            -----------                            ----------
+   2dbee4ca-c3b6-4f0d-9610-d15569639e1a Group.Unified.Guest    08d542b9-071f-4e16-94b0-74abb372e3d9   {class SettingValue {...
+   ```
+5. その後、この設定の新しい値を設定できます。
+   ```powershell
+   Set-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -Id 2dbee4ca-c3b6-4f0d-9610-d15569639e1a -DirectorySetting $Setting
+   ```
+6. 設定の値を読み取って、それが正しく更新されているかどうかを確認できます。
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>コマンドレット構文リファレンス

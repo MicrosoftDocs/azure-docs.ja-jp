@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5955b21ae405f15960974fcbc81b8383f3322509
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308768"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485716"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてパーティションとレプリカをスケーリングする
 [価格レベルを選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)したら、サービスで使用するレプリカまたはパーティションの数を必要に応じて増やします。 各レベルには固定された請求単位数が用意されています。 この記事では、こうした請求単位を、クエリの実行、インデックス作成、およびストレージの要件のバランスを考慮しながら割り当てて、最適な構成を実現する方法について説明します。
@@ -47,6 +47,7 @@ Azure Search では最初に、1 つのパーティションと 1 つのレプ�
 一般的に、検索アプリケーションでは、パーティションよりもレプリカの方が多く必要となります。特に、サービス操作でクエリ ワークロードの比重が高い場合は、その傾向が強まります。 その理由については、[高可用性](#HA)に関するセクションで説明します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインし、Search サービスを選択します。
+
 2. **[設定]** で、 **[スケール]** ページを開いてレプリカとパーティションの数を変更します。 
 
    次のスクリーンショットは、1 つのレプリカとパーティションでプロビジョニングされる標準のサービスを示しています。 下部の式は、使用される検索ユニットの数 (1) を示しています。 ユニットの価格が 100 ドル (実際の価格ではありません) の場合、このサービスを実行するための毎月のコストは平均 100 ドルになります。
@@ -108,6 +109,7 @@ SU、価格、および容量の詳細については、Azure Web サイトを�
 高可用性のための一般的な推奨事項は次のとおりです。
 
 * 読み取り専用ワークロード (クエリ) の高可用性を実現するには 2 つのレプリカ
+
 * 読み取り/書き込みワークロード (クエリに加え、個々のドキュメントを追加、更新、または削除するときのインデックス作成) の高可用性を実現するには 3 つ以上のレプリカ
 
 Azure Search のサービス レベル アグリーメント (SLA) は、クエリ操作と、ドキュメントの追加、更新、削除から成るインデックスの更新とを対象としています。

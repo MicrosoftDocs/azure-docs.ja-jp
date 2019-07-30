@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 499854bcf6774c3e4eee350c1dd4a2204885f3b1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: b52b0fffe9c32ab14600a3e296852faa626d794d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522472"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058522"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>オーサリングとエンドポイントのユーザー アクセス
-オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の LUIS アカウントを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
+オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の Azure [Cognitive Service](../cognitive-services-apis-create-account.md) または [LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) リソースを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
 
 ## <a name="access-to-authoring"></a>オーサリングへのアクセス
 [LUIS](luis-reference-regions.md#luis-website) Web サイトまたは[オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) からアプリへのアクセスは、そのアプリの所有者によって制御されます。 
@@ -40,7 +40,7 @@ ms.locfileid: "65522472"
 
 ## <a name="access-to-endpoint"></a>エンドポイントへのアクセス
 
-エンドポイントをクエリするためのアクセスは、**[管理]** セクションの **[アプリケーション情報]** ページの設定によってによって制御されます。 
+エンドポイントをクエリするためのアクセスは、 **[管理]** セクションの **[アプリケーション情報]** ページの設定によってによって制御されます。 
 
 ![アプリをパブリックに設定する](./media/luis-concept-security/set-application-as-public.png)
 

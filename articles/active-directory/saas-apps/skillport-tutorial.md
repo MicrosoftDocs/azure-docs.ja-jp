@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bf79907feb4ec3b3747316f62102d2c235d407c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689207"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090572"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル:Azure Active Directory と Skillport の統合
 

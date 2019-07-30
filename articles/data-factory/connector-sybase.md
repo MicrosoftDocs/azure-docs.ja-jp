@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 55ff6d37f18f4ffa2f12e17bd33dd196b77f79af
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025778"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61473061"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-onprem-sybase-connector.md)
 > * [現在のバージョン](connector-sybase.md)
 
@@ -55,7 +55,7 @@ Sybase のリンクされたサービスでは、次のプロパティがサポ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Sybase** | はい |
-| server | Sybase サーバーの名前です。 |はい |
+| サーバー | Sybase サーバーの名前です。 |はい |
 | database | Sybase データベースの名前です。 |はい |
 | authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows**。 |はい |
 | username | Sybase データベースに接続するユーザー名を指定します。 |はい |

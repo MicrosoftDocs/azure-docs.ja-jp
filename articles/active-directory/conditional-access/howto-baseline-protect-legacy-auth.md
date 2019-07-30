@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a313240685e539b613dee1c7ff8bd56bb24eb2ba
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235551"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227323"
 ---
-# <a name="baseline-policy-block-legacy-authentication-preview"></a>ベースライン ポリシー: レガシ認証をブロックする (プレビュー)
+# <a name="baseline-policy-block-legacy-authentication-preview"></a>ベースライン ポリシー:レガシ認証をブロックする (プレビュー)
 
 指定したユーザーがお使いのクラウド アプリに簡単にアクセスできるように、Azure Active Directory (Azure AD) ではレガシ認証を含め、幅広い認証プロトコルをサポートしています。 レガシ認証は、次のものによって行われる認証要求を指す用語です。
 
@@ -27,9 +27,7 @@ ms.locfileid: "66235551"
 
 現在、危険にさらそうとするすべてのサインイン試行の大部分はレガシ認証から来ています。 レガシ認証は、多要素認証 (MFA) をサポートしていません。 ディレクトリ上で MFA ポリシーが有効になっている場合でも、悪意のあるアクターはレガシ プロトコルを使用して認証し、MFA を迂回できます。
 
-レガシ プロトコルによって行われる悪意のある認証要求からアカウントを保護するための最善の方法は、これらの試行をすべてまとめてブロックすることです。 ユーザーがレガシ プロトコルによって行われるすべてのログイン要求をより簡単にブロックできるようにするために、Microsoft はそれを目的としたベースライン ポリシーを作成しました。
-
-![条件付きアクセスを使用してレガシ認証をブロックする](./media/howto-baseline-protect-legacy-auth/baseline-policy-block-legacy-authentication.png)
+レガシ プロトコルによって行われる悪意のある認証要求からアカウントを保護するための最善の方法は、これらの試行をすべてまとめてブロックすることです。 このベースライン ポリシーは、環境のセキュリティ保護を容易にするために、レガシ認証をブロックする目的で作成されたものです。
 
 **[レガシ認証をブロックする]** は、レガシ プロトコルから行われるすべての認証要求をブロックする[ベースライン ポリシー](concept-baseline-protection.md)です。 すべてのユーザーを正常にサインインさせるには、先進認証を使用する必要があります。 他のベースライン ポリシーと組み合わせて使用された場合、レガシ プロトコルから来るすべての要求がブロックされ、必要な場合は常に、すべてのユーザーが MFA を実行するよう求められます。 このポリシーは、Exchange ActiveSync をブロックしません。
 
@@ -80,13 +78,13 @@ SharePoint Online は、先進認証が既定で有効になっています。 2
 
 Skype for Business によって行われるレガシ認証要求を防止するには、Skype for Business Online の先進認証を有効にする必要があります。 2017 年 8 月 1 日の後に作成されたディレクトリの場合、Skype for Business の先進認証は既定で有効になっています。
 
-Skype for Business の先進認証を有効にするには、既定で先進認証をサポートする Microsoft Teams に移行することをお勧めします。 ただし、現時点で移行できない場合は、Skype for Business クライアントが先進認証の使用を開始できるように、Skype for Business Online の先進認証を有効にする必要があります。 Skype for Business の先進認証を有効にする手順については、「[先進認証でサポートされる Skype for Business トポロジ](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)」の記事にある手順に従ってください。
+既定で先進認証をサポートする Microsoft Teams に移行することをお勧めします。 ただし、現時点で移行できない場合は、Skype for Business クライアントが先進認証の使用を開始できるように、Skype for Business Online の先進認証を有効にする必要があります。 Skype for Business の先進認証を有効にするには、「[先進認証でサポートされる Skype for Business トポロジ](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)」の記事にある手順に従ってください。
 
 Skype for Business Online の先進認証の有効化に加えて、Skype for Business の先進認証を有効にするときに Exchange Online に対して先進認証を有効にすることをお勧めします。 このプロセスは Exchange Online と Skype for Business Online の先進認証の状態を同期するのに役立つと共に、Skype for Business クライアントに複数のサインイン プロンプトが表示されることを防止します。
 
 ### <a name="step-5-using-mobile-devices"></a>手順 5:モバイル デバイスの使用
 
-モバイル デバイス上のアプリケーションでも、レガシ認証をブロックする必要があります。 Outlook for Mobile を使用することをお勧めします。 Outlook Mobile は既定で先進認証をサポートし、他の MFA ベースライン保護ポリシーを満足します。
+モバイル デバイス上のアプリケーションでも、レガシ認証をブロックする必要があります。 Outlook for Mobile を使用することをお勧めします。 Outlook for Mobile は既定で先進認証をサポートし、他の MFA ベースライン保護ポリシーを満足します。
 
 ネイティブな iOS メール クライアントを使用するには、メール クライアントが確実にレガシ認証をブロックするように更新されるように、iOS バージョン 11.0 以降を実行している必要があります。
 
@@ -94,7 +92,8 @@ Skype for Business Online の先進認証の有効化に加えて、Skype for Bu
 
 Exchange Server と Skype for Business をオンプレミスで使用しているハイブリッドのお客様の場合は、先進認証を有効にするように両方のサービスを更新する必要があります。 ハイブリッド環境で先進認証を使用している場合も、引き続きオンプレミスでユーザーを認証します。 ユーザーのリソース (ファイルまたは電子メール) へのアクセスを承認する方法は変化します。
 
-オンプレミスでの先進認証の有効化を開始する前に、要件を満たしていることを確認してください。これらの要件を満たしている場合は、オンプレミスで先進認証を有効にする準備ができました。
+オンプレミスで先進認証の有効化を開始する前に、前提条件を満たしていることを確認してください。
+これで、オンプレミスで先進認証を有効にする準備ができました。
 
 先進認証を有効にする手順については、次の記事を参照してください。
 
@@ -103,7 +102,7 @@ Exchange Server と Skype for Business をオンプレミスで使用してい�
 
 ## <a name="enable-the-baseline-policy"></a>ベースライン ポリシーを有効にする
 
-ポリシー **[ベースライン ポリシー: レガシ認証をブロックする (プレビュー)]** は事前に構成されており、Azure portal の [条件付きアクセス] ブレードに移動すると一番上に表示されます。
+ポリシー **[ベースライン ポリシー: レガシ認証をブロックする (プレビュー)]** は事前に構成されており、Azure portal の [条件付きアクセス] ブレードに移動すると一番上に表示されます。 この設定が有効になるのはログインが成功した後なので、ユーザーにはレガシ認証の使用を試みる選択肢が残されます。
 
 このポリシーを有効にしてご自分の組織を保護するには:
 
@@ -111,7 +110,6 @@ Exchange Server と Skype for Business をオンプレミスで使用してい�
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
 1. ポリシーの一覧で、 **[ベースライン ポリシー: レガシ認証をブロックする (プレビュー)]** を選択します。
 1. **[ポリシーを有効にする]** を **[ポリシーをすぐに使用する]** に設定します。
-1. **[ユーザー]**  >  **[除外するユーザーの選択]** をクリックし、除外する必要があるユーザーを選択することによって、すべてのユーザー除外を追加します。 **[選択]** 、 **[完了]** の順にクリックします。
 1.  **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順

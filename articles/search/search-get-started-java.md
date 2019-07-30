@@ -1,6 +1,6 @@
 ---
-title: Java での Azure Search の使用 - Azure Search
-description: プログラミング言語として Java を使用して Azure でホスト型クラウド検索アプリケーションを作成する方法を説明します。
+title: 'Java のクイック スタート: Azure Search REST API を使用したインデックスの作成、読み込み、クエリの実行 - Azure Search'
+description: Java と Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 services: search
 author: jj09
 manager: jlembicz
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83f41f248d99ce55daef40e168e5f7b175e08107
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289885"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450093"
 ---
-# <a name="get-started-with-azure-search-in-java"></a>Java での Azure Search の使用
+# <a name="quickstart-create-an-azure-search-index-in-java"></a>クイック スタート:Java で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [ポータル](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -36,7 +36,7 @@ ms.locfileid: "61289885"
 ## <a name="about-the-data"></a>データについて
 このサンプル アプリケーションでは、 [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm)からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。 このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
-このアプリケーションでは、 **SearchServlet.java** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。 オンライン データ ソースに対する定義済みの資格情報と接続情報は、プログラム コードで提供されます。 データ アクセスに関しては、これ以上の構成は必要ありません。
+このアプリケーションでは、 **SearchServlet.java** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、Azure SQL Database からフィルター処理された USGS データセットを取得します。 オンライン データ ソースに対する定義済みの資格情報と接続情報は、プログラム コードで提供されます。 データ アクセスに関しては、これ以上の構成は必要ありません。
 
 > [!NOTE]
 > このデータセットにフィルターを提供し、無料価格レベルのドキュメントを 10,000 件未満に制限しました。 標準レベルを使用する場合は、この制限は適用されず、より大きなデータセットを使用するようにこのコードを変更できます。 各価格レベルの容量の詳細については、「 [制限および制約](search-limits-quotas-capacity.md)」を参照してください。
@@ -51,13 +51,13 @@ ms.locfileid: "61289885"
 * SearchServiceClient.java: HTTP 要求を処理します
 * SearchServiceHelper.java: 静的メソッドを提供するヘルパー クラスです
 * Document.java: データ モデルを提供します
-* config.properties: Search サービスの URL と API キーを設定します
+* config.properties: Search サービスの URL と `api-key` を設定します
 * pom.xml: Maven の依存関係です
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Azure Search サービスのサービス名と API キーの取得
-Azure Search へのすべての REST API 呼び出しで、サービスの URL と API キーを指定する必要があります。 
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Azure Search サービスのサービス名と `api-key` を取得します
+Azure Search へのすべての REST API 呼び出しで、サービスの URL と `api-key` を指定する必要があります。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ジャンプ バーで、 **[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
@@ -84,10 +84,10 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 3. **[完了]** をクリックします。
 4. **Project Explorer** を使用して、ファイルを表示および編集します。 まだ開いていない場合は、 **[Window (ウィンドウ)]**  >  **[Show View (ビューを表示)]**  >  **[Project Explorer]** の順にクリックするか、またはショートカットを使用して開きます。
 
-## <a name="configure-the-service-url-and-api-key"></a>サービスの URL と API キーの構成
-1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と API キーを含む構成設定を編集します。
-2. この記事で前述の手順を参照し、[Azure Portal](https://portal.azure.com) でサービスの URL と API キーを探して、**config.properties**に入力する値を取得します。
-3. **config.properties**で、「API キー」をサービスの API キーに置き換えます。 次に、サービス名 (URL https://servicename.search.windows.net) の最初のコンポーネント) で同じファイルの "サービス名" を置き換えます。
+## <a name="configure-the-service-url-and-api-key"></a>サービスの URL と `api-key` の構成
+1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と `api-key` を含む構成設定を編集します。
+2. この記事の前述の手順 ([Azure portal](https://portal.azure.com) でサービスの URL と `api-key` を見つけた手順) を参照して、**config.properties** に入力する値を取得します。
+3. **config.properties** で、"API キー" をサービスの `api-key` に置き換えます。 次に、サービス名 (URL https://servicename.search.windows.net) の最初のコンポーネント) で同じファイルの "サービス名" を置き換えます。
    
     ![][5]
 

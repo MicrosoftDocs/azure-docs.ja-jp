@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/30/2019
 ms.author: juliako
-ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735073"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488682"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -32,6 +32,8 @@ ms.locfileid: "66735073"
 |Name|定義|説明|
 |---|---|---|
 |widgets|コンマで区切られた文字列|レンダリングする分析情報を制御できます。 <br/>例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` の場合、人物とブランドの UI 分析情報のみがレンダリングされます<br/>使用可能なオプション: people、keywords、annotations、brands、sentiments、transcript、search。<br/>version=2 の場合は URL からはサポートされません<br/><br/>**注:** バージョン 2 では、widgets での URL パラメーターはサポートされません。 |
+|locale|省略形の言語コード|分析情報言語を制御します。 既定値は `en` です。 (例: `language=de`)。|
+|タブ|既定で選択されるタブ|既定で表示される [insights] タブを制御します。 `tab=timeline` では、選択されたタイムライン タブで分析情報が表示されます。|
 
 ### <a name="player-widget"></a>プレーヤー ウィジェット
 
@@ -39,12 +41,12 @@ ms.locfileid: "66735073"
 
 |Name|定義|説明|
 |---|---|---|
-|t|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/>例: t=60|
-|captions|言語コード|ウィジェットを読み込むときに指定された言語のキャプションを取り込んで、キャプション メニューで使用できるようにします。<br/>例: captions=en-US|
-|showCaptions|ブール値|既に有効になっているキャプションとともにプレーヤーを読み込みます。<br/>例: showCaptions=true|
-|type||オーディオ プレーヤーのスキンをアクティブにします (ビデオ部分は削除されます)。<br/>例: type=audio|
-|autoplay|ブール値|プレーヤーがビデオの読み込み時に、その再生を開始する必要があるかどうかを示します (既定値は true)。<br/>例: autoplay=false|
-|language|言語コード|プレーヤーの言語を制御します (既定値は EN-US)<br/>例: language=de-DE|
+|t|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/>例: `t=60`.|
+|captions|言語コード|ウィジェットを読み込むときに指定された言語のキャプションを取り込んで、キャプション メニューで使用できるようにします。<br/>例: `captions=en-US`.|
+|showCaptions|ブール値|既に有効になっているキャプションとともにプレーヤーを読み込みます。<br/>例: `showCaptions=true`.|
+|type||オーディオ プレーヤーのスキンをアクティブにします (ビデオ部分は削除されます)。<br/>例: `type=audio`.|
+|autoplay|ブール値|プレーヤーがビデオの読み込み時に、その再生を開始する必要があるかどうかを示します (既定値は true)。<br/>例: `autoplay=false`.|
+|language|言語コード|プレーヤーの言語を制御します (既定値は EN-US)<br/>例: `language=de-DE`.|
 
 ## <a name="embedding-public-content"></a>パブリック コンテンツの埋め込み
 

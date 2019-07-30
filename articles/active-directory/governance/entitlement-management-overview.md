@@ -3,8 +3,8 @@ title: Azure AD エンタイトルメント管理とは (プレビュー) - Azur
 description: Azure Active Directory のエンタイトルメント管理と、それを使用してグループ、アプリケーション、SharePoint Online サイトへの内部および外部ユーザーのアクセスを管理する方法の概要を説明します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/30/2019
-ms.author: rolyon
+ms.date: 07/10/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474057"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234654"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理とは (プレビュー)
 
@@ -129,41 +129,6 @@ Azure AD セキュリティ グループまたは Office 365 グループに依�
 | リソース ディレクトリ | 共有する 1 つ以上のリソースがあるディレクトリ。 |
 | 割り当てられたユーザー | ユーザーまたはグループへのアクセス パッケージの割り当て。 |
 | enable | アクセス パッケージをユーザーが要求できるようにするプロセス。 |
-
-## <a name="roles-and-permissions"></a>ロールとアクセス許可
-
-エンタイトルメント管理には、職務に応じたさまざまなロールがあります。
-
-| Role | 説明 |
-| --- | --- |
-| [ユーザー管理者](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) | エンタイトルメント管理のすべての側面を管理します。<br/>ユーザーとグループを作成します。 |
-| カタログ作成者 | カタログを作成および管理します。 通常は IT 管理者またはリソース所有者です。 カタログを作成する人物が、自動的にカタログの最初のカタログ所有者になります。 |
-| カタログ所有者 | 既存のカタログを編集および管理します。 通常は IT 管理者またはリソース所有者です。 |
-| アクセス パッケージ マネージャー | カタログ内のすべての既存アクセス パッケージを編集および管理します。 |
-| 承認者 | アクセス パッケージに対する要求を承認します。 |
-| 要求元 | アクセス パッケージを要求します。 |
-
-次の表に、これら各ロールのアクセス許可の一覧を示します。
-
-| タスク | ユーザー管理者 | カタログ作成者 | カタログ所有者 | アクセス パッケージ マネージャー | 承認者 |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| [新しいアクセス パッケージを一般カタログに作成する](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
-| [新しいアクセス パッケージをカタログに作成する](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
-| [リソース ロールをアクセス パッケージに追加/そこから削除する](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージを要求できるユーザーを指定する](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージにユーザーを直接割り当てる](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージに割り当てられているユーザーを表示する](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージの要求を表示する](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [要求の配信エラーを表示する](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [保留中の要求をキャンセルする](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージを非表示にする](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージを削除する](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス要求を承認する](entitlement-management-request-approve.md) |  |  |  |  | :heavy_check_mark: |
-| [カタログを作成する](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
-| [リソースを全般カタログに追加/そこから削除する](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  |  |  |  |
-| [リソースをカタログに追加/そこから削除する](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [カタログ所有者またはアクセス パッケージ マネージャーを追加する](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [カタログを編集/削除する](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 
 ## <a name="license-requirements"></a>ライセンスの要件
 

@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse で T-SQL ビューを使う | Microsoft Docs
 description: ソリューション開発のための、Azure SQL Data Warehouse での T-SQL ビューの使用に関するヒント。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d4321f8aef6e754d8a1c5b16ac82b4fa62c40949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a770e66120e69271744942899186ece39b2a3c3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873605"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479518"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のビュー
 ソリューション開発のための、Azure SQL Data Warehouse での T-SQL ビューの使用に関するヒント。 
@@ -23,12 +23,18 @@ ms.locfileid: "65873605"
 ## <a name="why-use-views"></a>ビューを使用する理由
 ビューをさまざまな方法で使用して、ソリューションの品質を向上させることができます。  この記事では、ビューによってソリューションを強化する方法の例をいくつか取り上げます。また、考慮する必要がある制限事項についても説明します。
 
+
+> [!IMPORTANT]
+> 新しい具体化されたビューの構文については、[CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) に関するページをご覧ください。  詳しくは、[リリース ノート](/azure/sql-data-warehouse/release-notes-10-0-10106-0)のページをご覧ください。
+>
+
+
 > [!NOTE]
 > この記事では CREATE VIEW の構文は説明していません。 詳細については、[CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql)のドキュメントを参照してください。
 > 
-> 
 
 ## <a name="architectural-abstraction"></a>アーキテクチャの抽象化
+
 一般的なアプリケーション パターンでは、データを読み込みながら、CREATE TABLE AS SELECT (CTAS) を使用し、その後にオブジェクトの名前変更パターンを使用してテーブルを再作成します。
 
 次の例では、日付ディメンションに新しい日付レコードを追加します。 新しいテーブルの DimDate_New が最初に作成され、名前が変更され、テーブルの最初のバージョンに代わることに注意してください。

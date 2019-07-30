@@ -1,0 +1,59 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Lighthouse ドキュメント
+metadata:
+  title: Azure Lighthouse ドキュメント
+  description: 大規模な顧客のリソースを管理する方法について説明します。
+  author: JnHs
+  manager: carmonm
+  ms.service: lighthouse
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/11/2019
+  ms.author: jenhayes
+abstract:
+  description: Azure Lighthouse からは、高度な自動化、拡張、統制機能を利用し、すべての顧客を対象に Azure を表示し、管理するための単一制御プレーンがサービス プロバイダーに与えられます。
+sections:
+  - title: 概念
+    items:
+      - type: paragraph
+        text: Azure Lighthouse の主要な側面について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="concepts/azure-delegated-resource-management">Azure の委任されたリソース管理</a>
+          - html: <a href="concepts/cross-tenant-management-experience">テナント間の管理エクスペリエンス</a>
+          - html: <a href="concepts/managed-services-offers">Azure Marketplace のマネージド サービス オファー</a>
+          - html: <a href="concepts/recommended-security-practices.md">推奨セキュリティ プラクティス</a>
+          - html: <a href="concepts/cloud-solution-provider.md">Cloud Solution Provider プログラムの考慮事項</a>
+  - title: ハウツー ガイド
+    items:
+      - type: paragraph
+        text: Azure の委任されたリソース管理のために顧客をオンボードする方法とそのリソースを管理する方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="how-to/onboard-customer">Azure の委任されたリソース管理に顧客をオンボードする</a>
+          - html: <a href="how-to/publish-managed-services-offers">Azure Marketplace にマネージド サービス オファーを公開する</a>
+          - html: <a href="how-to/view-manage-customers">顧客と委任されたリソースを表示し、管理する</a>
+          - html: <a href="how-to/view-manage-service-providers">サービス プロバイダーを表示し、管理する</a>
+  - title: サンプル
+    items:
+      - type: paragraph
+        text: Azure Lighthouse を利用する際に役立つサンプルやテンプレートを確認します。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="samples/index">サンプルの目次</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Languages
+            html: '<p><a href="/dotnet/api/Microsoft.Azure.Management.ManagedServices">Azure SDK for .NET</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/">Azure SDK for .NET (NuGet)</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-managedservices">Azure SDK for Python</a></p><p><a href="https://pypi.org/project/azure-mgmt-managedservices/">Azure SDK for Python (PyPi)</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/managedservices/">API リファレンス</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01">2019-06-01 (OpenAPI)</a></p>'

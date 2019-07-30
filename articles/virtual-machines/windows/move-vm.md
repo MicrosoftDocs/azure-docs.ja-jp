@@ -4,26 +4,24 @@ description: Resource Manager デプロイ モデルで Windows VM を他の Azu
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: ede2092be4e4eaf201e15307a7d9934ea267ae37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b189c4bfcc61084ed197649d376cae8fdf2eb56
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481515"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723092"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>他の Azure サブスクリプションまたはリソース グループへの Windows VM の移動
-この記事では、リソース グループまたはサブスクリプション間で Windows 仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動して作業を続ける場合に便利です。
+この記事では、リソース グループまたはサブスクリプション間で Windows 仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動して作業を続ける場合に便利です。 移動するために VM を開始する必要はありません。移動の間も、継続して実行される必要があります。
 
 > [!IMPORTANT]
 >移動の一環として新しいリソース ID が作成されます。 VM を移動したら、この新しいリソース ID を使用するために、ご使用のツールやスクリプトを更新する必要があります。 
@@ -37,7 +35,7 @@ ms.locfileid: "61481515"
 仮想マシンを他のリソース グループに移動するには、依存リソースも必ずすべて移動する必要があります。 これらのリソースごとにリソース ID を含むリストを取得するには、[Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) コマンドレットを使用します。
 
 ```azurepowershell-interactive
- Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
+ Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-list -wrap -Property ResourceId 
 ```
 
 [Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) に対し、リソース ID のコンマ区切りリストとして前のコマンドの出力を使用すると、各リソースを移動先に移動できます。 

@@ -3,20 +3,20 @@ title: チュートリアル - Node.js 向け Azure Batch クライアント ラ
 description: Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。
 services: batch
 author: shwetams
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: shwetams
-ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shg
+ms.openlocfilehash: a6895773e0109aa0fb643e4fadf8a31ac5b1a33a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775232"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323401"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 

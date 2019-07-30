@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 637feb855c7816dfb26229c5a65a069260a58cd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 279660d903b3b0e893c3ccddb89da7c6dc42fa09
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003089"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205073"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service 向けの Linux PHP アプリを構成する
 
@@ -167,7 +167,7 @@ php_value upload_max_filesize 10M
 
 *.htaccess* を使用する代わりに、アプリで [ini_set()](https://www.php.net/manual/function.ini-set.php) を使用して、これらの非 PHP_INI_SYSTEM ディレクティブをカスタマイズできます。
 
-### <a name="customize-phpinisystem-directives"></a>PHP_INI_SYSTEM ディレクティブをカスタマイズする
+### <a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM ディレクティブをカスタマイズする
 
 PHP_INI_SYSTEM ディレクティブをカスタマイズするには ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照)、 *.htaccess* アプローチは使用できません。 App Service は、`PHP_INI_SCAN_DIR` アプリ設定を使用して、別のメカニズムを提供します。
 

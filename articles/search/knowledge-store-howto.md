@@ -1,47 +1,46 @@
 ---
-title: ナレッジ ストアの使用を開始する方法 (プレビュー) - Azure Search
+title: ナレッジ マイニングの使用を開始する方法 (プレビュー) - Azure Search
 description: Azure Search 内で AI インデックス作成パイプラインによって作成されるエンリッチメントされたドキュメントを Azure ストレージ アカウント内のナレッジ ストアに送信する手順について説明します。 そこから、Azure Search および他のアプリケーション内のエンリッチメントされたドキュメントを表示、整形、および使用することができます。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/08/2019
+ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: e7be2dfc811caa087726339846a1de2516f1e2b2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e50dfcdc5ac2fbe2435066546a340874e1b8f682
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540722"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551069"
 ---
-# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Azure Search でナレッジ ストアの使用を開始する方法
+# <a name="how-to-get-started-with-knowledge-mining-in-azure-search"></a>Azure Search でナレッジ マイニングの使用を開始する方法
 
 > [!Note]
 > ナレッジ ストアはプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
 >
+[ナレッジ ストア](knowledge-store-concept-intro.md)には、他のアプリでのダウンストリーム ナレッジ マイニング用に Azure ストレージ アカウントにインデックスを付けている間に作成される、AI でエンリッチメントされたドキュメントが保存されます。 保存されているエンリッチメントを使用して、Azure Search インデックス作成パイプラインを理解し、絞り込むこともできます。 
 
-[ナレッジ ストア](knowledge-store-concept-intro.md)には、他のアプリでのダウンストリーム ナレッジ マイニング用に Azure Storage アカウントにインデックスを付けている間に作成された AI エンリッチメントが保存されます。 保存されているエンリッチメントを使用して、Azure Search インデックス作成パイプラインを理解し、絞り込むこともできます。
-
-ナレッジ ストアは、スキルセットによって定義されます。 Azure Search の通常のフルテキスト検索シナリオでは、スキルセットの目的は、コンテンツをより検索しやすくする AI エンリッチメントを提供することです。 ナレッジ マイニングのシナリオでは、スキルセットの役割は、他のアプリとプロセスでの分析やモデリングのために複数のデータ構造を作成、設定、保存することです。
+ナレッジ ストアは、"*スキルセット*" によって定義され、"*インデクサー*" によって作成されます。 ナレッジ ストアの物理表現は、ストレージ内のデータ構造を決定する "*プロジェクション*" を通じて指定されます。 このチュートリアルを完了すると、これらのオブジェクトの作成がすべて終わり、それらすべてがどのように組み合わされるのかがわかります。 
 
 この演習では、サンプル データ、サービス、およびツールから開始して、スキルセット定義に重点を置いて、最初のナレッジ ストアの作成と使用の基本的なワークフローを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、次のサービス、ツール、およびデータを使用します。 
+ナレッジ ストアは複数のサービスの中心にあり、そこでは物理ストレージを提供する Azure Blob Storage と Azure Table Storage のほか、オブジェクトの作成用および更新用の Azure Search と Cognitive Services が使用されます。 このチュートリアルでは、[基本のアーキテクチャ](knowledge-store-concept-intro.md)を理解していることが前提条件です。
+
+このクイック スタートでは、次のサービスとツールを使用します。 
+
++ Azure Search に HTTP 要求を送信するために使用される [Postman デスクトップ アプリを入手](https://www.getpostman.com/)します。
+
++ サンプル データとナレッジ ストアを格納するための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 ナレッジ ストアは、Azure ストレージ内に存在します。
+
++ [Cognitive Services リソースを](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) S0 従量課金制レベルで作成し、AI エンリッチメント内で使用されるさまざまなスキルに幅広くアクセスできるようにします。 コグニティブ サービスと自分の Azure Search サービスは同じリージョンに属している必要があります。
 
 + [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。 
 
-+ サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 ナレッジ ストアは、Azure ストレージ内に存在します。 
-
-+ [Cognitive Services リソースを](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) S0 従量課金制レベルで作成し、AI エンリッチメント内で使用されるさまざまなスキルに幅広くアクセスできるようにします。 このリソースと Azure Search サービスは同じリージョンに属している必要があります。
-
-+ Azure Search に要求を送信するための [Postman デスクトップ アプリ](https://www.getpostman.com/)。
-
-+ データ ソース、インデックス、スキルセット、およびインデクサーを作成するための要求が準備された [Postman コレクション](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Caselaw)。 いくつかのオブジェクト定義は、この記事に含めるには長すぎます。 インデックスとスキルセットの定義の全体を表示するには、このコレクションを取得する必要があります。
-
-+ [Caselaw アクセス プロジェクト](https://case.law/bulk/download/)の [Public Bulk Data download]\(パブリック一括データのダウンロード\) ページから取得した [Caselaw サンプル データ](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)。 具体的には、演習では最初のダウンロード (アーカンソー) の最初の 10 個のドキュメントを使用します。 この演習用に 10 ドキュメントのサンプルを GitHub にアップロードしました。
+サンプル JSON ドキュメントと Postman コレクション ファイルも必要です。 追加のファイルを探して読み込む手順は、「[サンプル データの準備](#prepare-sample-data)」セクションにあります。
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
@@ -51,15 +50,29 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-    ![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+    ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
-すべての要求では、サービスに送信されるすべての要求に API キーが必要です。
+すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 以下のセクションでは、各 HTTP 要求でサービス名と API キーを指定します。
+
+<a name="prepare-sample-data"></a>
 
 ## <a name="prepare-sample-data"></a>サンプル データの準備
 
+ナレッジ ストアには、エンリッチメント パイプラインの出力が含まれます。 入力は "使用できない" データで構成されます。これは、パイプラインを通過すると最終的に "使用できる" ようになります。 使用できないデータの例には、テキストまたは画像の特性について分析する必要がある画像ファイルや、エンティティ、キー フレーズ、またはセンチメントについて分析できる難解なテキスト ファイルなどがあります。 
+
+この演習では、難解なテキスト ファイル (判例の情報) を使用します。これは、[Caselaw Access Project](https://case.law/bulk/download/) の「Public Bulk Data (パブリック一括データ)」ダウンロード ページから取得したものです。 この演習用に 10 ドキュメントのサンプルを GitHub にアップロードしました。 
+
+このタスクでは、パイプラインへの入力として使用するそれらのドキュメント用に、Azure BLOB コンテナーを作成します。 
+
+1. [Azure Search のサンプル データ](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)のリポジトリをダウンロードして抽出し、[判例データ セット](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)を取得します。 
+
 1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 
-1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 コンテナー名 "caselaw-test" を使用します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
+1. サンプル データを含める [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)します。 
+
+   1. コンテナーに `caselaw-test` という名前を付けます。 
+   
+   1. パブリック アクセス レベルを有効な任意の値に設定します。
 
 1. コンテナーが作成されたら、コンテナーを開いてコマンド バーの **[アップロード]** を選択します。
 
@@ -67,88 +80,44 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. **caselaw-sample.json** サンプル ファイルを含むフォルダーに移動します。 ファイルを選択し、 **[アップロード]** をクリックします。
 
+1. Azure ストレージで、接続文字列とコンテナー名を取得します。  これらの文字列は、どちらも[データ ソースの作成](#create-data-source)で必要になります。
+
+   1. 概要ページで、 **[アクセス キー]** をクリックして、"*接続文字列*" をコピーします。 これは `DefaultEndpointsProtocol=https;` で始まり、`EndpointSuffix=core.windows.net` で終わります。 その間にアカウント名とキーが含まれています。 
+
+   1. コンテナー名は、`caselaw-test` または自分が割り当てた任意の名前です。
+
+
 
 ## <a name="set-up-postman"></a>Postman の設定
 
-Postman を起動して Caselaw Postman コレクションをインポートします。 または、一連の HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Search REST API を調べる方法](search-fiddler.md)に関するページを参照してください。
+Postman は、要求と JSON ドキュメントを Azure Search に送信するために使用するクライアント アプリです。 要求のいくつかは、この記事の情報のみを使用して作成できます。 ただし、最大の要求のうち 2 つ (インデックスの作成とスキルセットの作成) には、記事に埋め込むには大きすぎる詳細な JSON が含まれています。 
 
-+ このチュートリアルのすべての呼び出しの要求方法は **PUT** または **POST** です。
-+ 要求ヘッダー (2) には以下が含まれます:"application/json" に設定された "Content-type"、お使いの "admin key" に設定された "api-key" (admin key は、検索の主キーを表すプレースホルダーです)。 
-+ 要求本文は、呼び出しの実際のコンテンツを配置する場所です。 
+すべての JSON ドキュメントと要求を完全に使用可能にするために、Microsoft は Postman コレクション ファイルを作成しました。 このファイルをダウンロードしてインポートすることが、クライアントを設定するうえでの最初のタスクです。
 
-  ![半構造化検索](media/search-semi-structured-data/postmanoverview.png)
+1. [Azure Search の Postman サンプル](https://github.com/Azure-Samples/azure-search-postman-samples)のリポジトリをダウンロードして解凍します。
 
-Postman を使用して検索サービスに対して 4 つの API 呼び出しを行い、データ ソース、インデックス、スキルセット、およびインデクサーをこの順序で作成します。 データ ソースには、Azure ストレージ アカウントと JSON データへのポインターが含まれています。 データのインポート時に、検索サービスは接続を行います。
+1. Postman を起動して、Caselaw Postman コレクションをインポートします。
 
-[スキルセットの作成](#create-skillset)は、このチュートリアルの焦点です。これにより、エンリッチメント手順と、ナレッジ ストアにデータを永続化する方法を指定します。
+   1. **[Import]\(インポート\)**  >  **[Import files]\(ファイルのインポート\)**  >  **[Choose files]\(ファイルの選択\)** の順にクリックします。 
 
-URL エンドポイントでは API バージョンを指定する必要があり、各呼び出しで **201 Created** が返される必要があります。 ナレッジ ストアをサポートするスキルセットを作成するためのプレビュー api-version は `2019-05-06-Preview` です (大文字と小文字は区別されます)。
+   1. \azure-search-postman-samples-master\azure-search-postman-samples-master\Caselaw フォルダーに移動します。
 
-お使いの REST クライアントから次の API 呼び出しを実行します。
+   1. **Caselaw.postman_collection_v2.json** を選択します。 コレクション内に 4 つの **POST** 要求があることがわかります。
 
-## <a name="create-a-data-source"></a>データ ソースを作成する
-
-[データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) では、インデックス作成の対象データを指定する Azure Search オブジェクトが作成されます。
-
-この呼び出しのエンドポイントは `https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview` です 
-
-1. `[service name]` を検索サービスの名前に置き換えます。 
-
-2. この呼び出しでは、要求本文にストレージ アカウントの接続文字列と BLOB コンテナー名を含める必要があります。 接続は、Azure portal のストレージ アカウントの **[アクセス キー]** にあります。 
-
-   呼び出しを実行する前に、要求の本文内の接続文字列と BLOB コンテナー名を置換してください。
-
-    ```json
-    {
-        "name": "caselaw-ds",
-        "description": null,
-        "type": "azureblob",
-        "subtype": null,
-        "credentials": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
-        },
-        "container": {
-            "name": "<YOUR-BLOB-CONTAINER-NAME>",
-            "query": null
-        },
-        "dataChangeDetectionPolicy": null,
-        "dataDeletionDetectionPolicy": null
-    }
-    ```
-
-3. 要求を送信します。 応答は **201** である必要があり、応答本文は指定した要求ペイロードとほぼ同じである必要があります。
-
-    ```json
-    {
-        "name": "caselaw-ds",
-        "description": null,
-        "type": "azureblob",
-        "subtype": null,
-        "credentials": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your storage key>;EndpointSuffix=core.windows.net"
-        },
-        "container": {
-            "name": "<your blob container name>",
-            "query": null
-        },
-        "dataChangeDetectionPolicy": null,
-        "dataDeletionDetectionPolicy": null
-    }
-    ```
+   ![Caselaw デモ用の Postman コレクション](media/knowledge-store-howto/postman-collection.png "Caselaw デモ用の Postman コレクション")
+   
 
 ## <a name="create-an-index"></a>インデックスを作成する
     
-2 つ目の呼び出しは[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) であり、検索可能なすべてのデータを格納する Azure Search インデックスを作成します。 インデックスでは、すべてのフィールド、パラメーター、属性を指定します。
+最初の要求では、[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して、検索可能なすべてのデータを格納する Azure Search インデックスを作成します。 インデックスでは、すべてのフィールド、パラメーター、属性を指定します。
 
 ナレッジ マイニングにインデックスは必ずしも必要ではありませんが、インデックスを指定しないとインデクサーは実行されません。 
 
-この呼び出しの URL は `https://[service name].search.windows.net/indexes?api-version=2019-05-06-Preview` です
+1. URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexes?api-version=2019-05-06-Preview` の `YOUR-AZURE-SEARCH-SERVICE-NAME` を自分の検索サービスの名前に置き換えます。 
 
-1. `[service name]` を検索サービスの名前に置き換えます。
+1. ヘッダー セクションで、`<YOUR AZURE SEARCH ADMIN API-KEY>` を Azure Search の管理者 API キーに置き換えます。
 
-2. Postman コレクション内のインデックスの作成要求から要求本文にインデックス定義をコピーします。 インデックス定義は数百行あり、ここに出力するには長すぎます。 
-
-   インデックスの外側のシェルは、次の要素で構成されます。 
+1. 本文セクションでは、JSON ドキュメントはインデックス スキーマです。 見やすいように折りたたむと、インデックスの外側のシェルは次の要素で構成されています。 fields コレクションは、判例データ セットのフィールドに対応します。
 
    ```json
    {
@@ -166,9 +135,9 @@ URL エンドポイントでは API バージョンを指定する必要があ�
    }
    ```
 
-3. `fields` コレクションには、インデックス定義の大部分が含まれています。 これには、単純なフィールド、入れ子になったサブ構造体を持つ[複合型フィールド](search-howto-complex-data-types.md)、およびコレクションが含まれます。
+1. `fields` コレクションを展開します。 これには、単純なフィールド、入れ子になったサブ構造体を備える[複合型フィールド](search-howto-complex-data-types.md)、およびコレクションで構成された大量のインデックス定義が含まれています。
 
-   302 から 384 行目で、`casebody` のフィールド定義を確認します。 複合型フィールドでは、階層表現が必要な場合に他の複合型フィールドを含めることができることに注意してください。
+   少し時間を取って、行 302 から 384 にある `casebody` 複合型フィールドのフィールド定義を確認してください。 複合型フィールドでは、階層表現が必要な場合に他の複合型フィールドを含めることができることに注意してください。 階層構造は、ここに示すとおりインデックスでモデル化できるほか、スキルセットでプロジェクションとしてもモデル化できます。そのため、ナレッジ ストアで入れ子のデータ構造が作成されます。
 
    ```json
    {
@@ -258,59 +227,53 @@ URL エンドポイントでは API バージョンを指定する必要があ�
     . . .
    ```
 
-4. 要求を送信します。 
+1. **[送信]** をクリックして、要求を実行します。  "**状態: 201 Created**" というメッセージが、応答として表示されるはずです。
 
-   応答は **201** である必要があり、最初のいくつかのフィールドを示している次の例のようになります。
+<a name="create-data-source"></a>
+
+## <a name="create-a-data-source"></a>データ ソースを作成する
+
+2 つ目の要求では、[データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して、Azure Blob Storage に接続します。 
+
+1. URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/datasources?api-version=2019-05-06-Preview` の `YOUR-AZURE-SEARCH-SERVICE-NAME` を自分の検索サービスの名前に置き換えます。 
+
+1. ヘッダー セクションで、`<YOUR AZURE SEARCH ADMIN API-KEY>` を Azure Search の管理者 API キーに置き換えます。
+
+1. 本文セクションでは、JSON ドキュメントにストレージ アカウントの接続文字列と BLOB コンテナー名が含まれます。 接続文字列は、Azure portal のストレージ アカウントの **[アクセス キー]** にあります。 
 
     ```json
     {
-        "name": "caselaw",
-        "defaultScoringProfile": null,
-        "fields": [
-            {
-                "name": "id",
-                "type": "Edm.String",
-                "searchable": true,
-                "filterable": true,
-                "retrievable": true,
-                "sortable": true,
-                "facetable": true,
-                "key": true,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "synonymMaps": []
-            },
-            {
-                "name": "name",
-                "type": "Edm.String",
-                "searchable": true,
-                "filterable": true,
-                "retrievable": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "synonymMaps": []
-            },
-      . . .
+        "name": "caselaw-ds",
+        "description": null,
+        "type": "azureblob",
+        "subtype": null,
+        "credentials": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
+        },
+        "container": {
+            "name": "<YOUR-BLOB-CONTAINER-NAME>",
+            "query": null
+        },
+        "dataChangeDetectionPolicy": null,
+        "dataDeletionDetectionPolicy": null
+    }
     ```
+
+1. **[送信]** をクリックして、要求を実行します。  "**状態: 201 Created**" というメッセージが、応答として表示されるはずです。
+
+
 
 <a name="create-skillset"></a>
 
 ## <a name="create-a-skillset-and-knowledge-store"></a>スキルセットとナレッジ ストアの作成
 
-[スキルセットの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-skillset) では、Azure Search オブジェクトを作成します。Azure Search オブジェクトでは、呼び出すコグニティブ スキル、スキルをチェーンする方法、およびこのチュートリアルで最も重要な、ナレッジ ストアを指定する方法を指定します。
+3 つ目の要求では、[スキルセットの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-skillset) を使用して、Azure Search オブジェクトを作成します。これによって、呼び出すコグニティブ スキル、スキルをチェーンする方法、およびこのチュートリアルで最も重要な、ナレッジ ストアを指定する方法が指定されます。
 
-この呼び出しのエンドポイントは `https://[service name].search.windows.net/skillsets?api-version=2019-05-06-Preview` です
+1. URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/skillsets?api-version=2019-05-06-Preview` の `YOUR-AZURE-SEARCH-SERVICE-NAME` を自分の検索サービスの名前に置き換えます。 
 
-1. `[service name]` を検索サービスの名前に置き換えます。
+1. ヘッダー セクションで、`<YOUR AZURE SEARCH ADMIN API-KEY>` を Azure Search の管理者 API キーに置き換えます。
 
-2. Postman コレクション内のスキルセットの作成要求から要求本文にスキルセット定義をコピーします。 スキルセット定義は数百行あり、ここに出力するには長すぎますが、これはこのチュートリアルの焦点です。
-
-   スキルセットの外側のシェルは、次の要素で構成されます。 `skills` コレクションではメモリ内エンリッチメントを定義しますが、`knowledgeStore` 定義では出力を格納する方法を指定します。 `cognitiveServices` 定義は、AI エンリッチメント エンジンへの接続です。
+1. 本文セクションでは、JSON ドキュメントはスキルセット定義です。 見やすいように折りたたむと、スキルセットの外側のシェルは次の要素で構成されています。 `skills` コレクションではメモリ内エンリッチメントを定義しますが、`knowledgeStore` 定義では出力を格納する方法を指定します。 `cognitiveServices` 定義は、AI エンリッチメント エンジンへの接続です。
 
    ```json
    {
@@ -322,7 +285,11 @@ URL エンドポイントでは API バージョンを指定する必要があ�
    }
    ```
 
-3. 最初に、`cognitiveServices` および `knowledgeStore` キーと接続文字列を設定します。 この例では、これらの文字列は、スキルセットの定義の後の、要求本文の最後の方に配置されています。 S0 層にプロビジョニングされた、Azure Search と同じリージョンにある Cognitive Services リソースを使用します。
+1. 接続情報を指定できるように、`cognitiveServices` と `knowledgeStore` を展開します。 この例では、これらの文字列は、スキルセットの定義の後の、要求本文の最後の方に配置されています。 
+
+   `cognitiveServices` では、Azure Search と同じリージョンにある S0 レベルのリソースをプロビジョニングします。 cognitiveServices の名前とキーは、Azure portal の同じページから取得できます。 
+   
+   `knowledgeStore` では、判例 BLOB コンテナーに使用されているのと同じ接続文字列を使用できます。
 
     ```json
     "cognitiveServices": {
@@ -334,7 +301,7 @@ URL エンドポイントでは API バージョンを指定する必要があ�
         "storageConnectionString": "YOUR-STORAGE-ACCOUNT-CONNECTION-STRING",
     ```
 
-3. スキル コレクションを確認します。特に、85 行目と 170 行目のシェーパー スキルをそれぞれ確認します。 シェーパー スキルは、ナレッジ マイニングに必要なデータ構造をアセンブルするので重要です。 スキルセットの実行中には、これらの構造はメモリ内のみにありますが、次の手順に進むと、この出力をナレッジ ストアに保存してさらに探索する方法がわかります。
+1. skills コレクションを展開します (具体的には、85 行目および 179 行目の各シェーパー スキル)。 シェーパー スキルは、ナレッジ マイニングに必要なデータ構造をアセンブルするので重要です。 スキルセットの実行中には、これらの構造はメモリ内のみにありますが、次の手順に進むと、この出力をナレッジ ストアに保存してさらに探索する方法がわかります。
 
    次のコードは 217 行目のものです。 
 
@@ -370,7 +337,7 @@ URL エンドポイントでは API バージョンを指定する必要があ�
    . . .
    ```
 
-3. 262 行目以降の `knowledgeStore` の `projections` 要素を確認します。 プロジェクションでは、ナレッジ ストアの構成を指定します。 プロジェクションは、テーブルとオブジェクトのペアで指定されますが、現在は一度に 1 つのみ指定されます。 最初のプロジェクションでわかるように、`tables` が指定されていますが `objects` は指定されていません。 2 番目では、その逆になっています。
+1. 262 行から始まる、`knowledgeStore` の `projections` 要素を展開します。 プロジェクションでは、ナレッジ ストアの構成を指定します。 プロジェクションは、テーブルとオブジェクトのペアで指定されますが、現在は一度に 1 つのみ指定されます。 最初のプロジェクションでわかるように、`tables` が指定されていますが `objects` は指定されていません。 2 番目では、その逆になっています。
 
    Azure ストレージでは、作成する各テーブルの Table Storage 内にテーブルが作成され、各オブジェクトによって Blob Storage 内のコンテナーが取得されます。
 
@@ -406,7 +373,7 @@ URL エンドポイントでは API バージョンを指定する必要があ�
     ]
     ```
 
-5. 要求を送信します。 応答は **201** である必要があり、応答の最初の部分を示している次の例のようになります。
+1. **[送信]** をクリックして、要求を実行します。 応答は **201** である必要があり、応答の最初の部分を示している次の例のようになります。
 
     ```json
     {
@@ -439,13 +406,13 @@ URL エンドポイントでは API バージョンを指定する必要があ�
 
 ## <a name="create-and-run-an-indexer"></a>インデクサーの作成と実行
 
-[インデクサーの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-indexer) では、インデクサーを作成し、すぐに実行します。 これまでに作成したすべての定義は、この手順で実行されます。 インデクサーは、サービス内に存在しないのですぐに実行されます。 存在した後の既存のインデクサーへの POST 呼び出しは更新操作です。
+4 つ目の要求では、[インデクサーの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-indexer) を使用して、Azure Search インデクサーを作成します。 インデクサーは、インデックス作成パイプラインの実行エンジンです。 これまでに作成したすべての定義は、この手順で実行されます。
 
-この呼び出しのエンドポイントは `https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview` です
+1. URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexers?api-version=2019-05-06-Preview` の `YOUR-AZURE-SEARCH-SERVICE-NAME` を自分の検索サービスの名前に置き換えます。 
 
-1. `[service name]` を検索サービスの名前に置き換えます。 
+1. ヘッダー セクションで、`<YOUR AZURE SEARCH ADMIN API-KEY>` を Azure Search の管理者 API キーに置き換えます。
 
-2. この呼び出しでは、要求本文でインデクサー名を指定します。 インデクサーにはデータ ソースとインデックスが必要です。 スキルセットは、インデクサーでは省略可能ですが、AI エンリッチメントには必須です。
+1. 本文セクションでは、JSON ドキュメントによってインデクサー名が指定されます。 インデクサーにはデータ ソースとインデックスが必要です。 スキルセットは、インデクサーでは省略可能ですが、AI エンリッチメントには必須です。
 
     ```json
     {
@@ -456,47 +423,44 @@ URL エンドポイントでは API バージョンを指定する必要があ�
         "targetIndexName": "caselaw",
         "disabled": null,
         "schedule": null,
-        "parameters": {
-            "batchSize": 1,
-            "maxFailedItems": null,
-            "maxFailedItemsPerBatch": null,
-            "base64EncodeKeys": null,
-            "configuration": {
-                "parsingMode": "jsonLines"
-            }
-        },
+        "parameters": { },
         "fieldMappings": [],
-        "outputFieldMappings": [
-            {
-                "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/people/*",
-                "targetFieldName": "people",
-                "mappingFunction": null
-            },
-            {
-                "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/organizations/*",
-                "targetFieldName": "orginizations",
-                "mappingFunction": null
-            },
-            {
-                "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/locations/*",
-                "targetFieldName": "locations",
-                "mappingFunction": null
-            },
-            {
-                "sourceFieldName": "/document/Case/OpinionsSnippets/*/Entities/*",
-                "targetFieldName": "entities",
-                "mappingFunction": null
-            },
-            {
-                "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/keyPhrases/*",
-                "targetFieldName": "keyPhrases",
-                "mappingFunction": null
-            }
-        ]
-    }
+        "outputFieldMappings": [ ]
     ```
 
-3. 要求を送信します。 応答は **201** である必要があり、応答本文は指定した要求ペイロードとほぼ同じである必要があります (簡潔にするために切り取っています)。
+1. outputFieldMappings を展開します。 fieldMappings がデータ ソースのフィールドとインデックスのフィールドの間のカスタム マッピングに使用されるのに対して、outputFieldMappings は、(パイプラインによって作成および設定された) エンリッチメントされたフィールドをインデックスまたはプロジェクションの出力フィールドにマッピングするために使用されます。
+
+    ```json
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/people/*",
+            "targetFieldName": "people",
+            "mappingFunction": null
+        },
+        {
+            "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/organizations/*",
+            "targetFieldName": "orginizations",
+            "mappingFunction": null
+        },
+        {
+            "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/locations/*",
+            "targetFieldName": "locations",
+            "mappingFunction": null
+        },
+        {
+            "sourceFieldName": "/document/Case/OpinionsSnippets/*/Entities/*",
+            "targetFieldName": "entities",
+            "mappingFunction": null
+        },
+        {
+            "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/keyPhrases/*",
+            "targetFieldName": "keyPhrases",
+            "mappingFunction": null
+        }
+    ]
+    ```
+
+1. **[送信]** をクリックして、要求を実行します。 応答は **201** である必要があり、応答本文は指定した要求ペイロードとほぼ同じである必要があります (簡潔にするために切り取っています)。
 
     ```json
     {
@@ -507,23 +471,9 @@ URL エンドポイントでは API バージョンを指定する必要があ�
         "targetIndexName": "caselaw",
         "disabled": null,
         "schedule": null,
-        "parameters": {
-            "batchSize": 1,
-            "maxFailedItems": null,
-            "maxFailedItemsPerBatch": null,
-            "base64EncodeKeys": null,
-            "configuration": {
-                "parsingMode": "jsonLines"
-            }
-        },
+        "parameters": { },
         "fieldMappings": [],
-        "outputFieldMappings": [
-            {
-                "sourceFieldName": "/document/casebody/data/opinions/*/text/pages/*/people/*",
-                "targetFieldName": "people",
-                "mappingFunction": null
-            }
-        ]
+        "outputFieldMappings": [ ]
     }
     ```
 

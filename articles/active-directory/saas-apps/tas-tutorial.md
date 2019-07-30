@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 11ba7cd9be59f13081bdc5a543c52ca5f9d66e09
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 279f6970c34acbfea645366f7e965c830873fdbf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272497"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>チュートリアル:Azure Active Directory と TAS の統合
 
@@ -53,11 +53,11 @@ Azure AD への TAS の統合を構成するには、ギャラリーからマネ
 
 **ギャラリーから TAS を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -89,15 +89,15 @@ TAS で Azure AD のシングル サインオンを構成してテストする�
 
 TAS で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **TAS** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **TAS** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
     b. **[応答 URL]** ボックスに、`https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[TAS のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -118,7 +118,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
     > [!NOTE]
     > これらは実際の値ではありません。 これらを実際の識別子、応答 URL、およびサインオン URL に値を置き換えます。実際の値については、チュートリアルの後の方で説明します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -136,7 +136,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
 1. 別の Web ブラウザー ウィンドウで、TAS に管理者としてログインします。
 
-2. メニューの左側で **[Settings]\(設定\)** をクリックして、**[Administrator]\(管理者\)** に移動し、**[Manage Single sign on]\(シングル サインオンの管理\)** をクリックします。
+2. メニューの左側で **[Settings]\(設定\)** をクリックして、 **[Administrator]\(管理者\)** に移動し、 **[Manage Single sign on]\(シングル サインオンの管理\)** をクリックします。
 
     ![TAS の構成](./media/tas-tutorial/configure01.png)
 
@@ -150,7 +150,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
     c. **[Enter URL]\(URL の入力\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして  **[Enter Certification]\(証明書の入力\)**  ボックスに貼り付けます。
+    d. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして  **[Enter Certification]\(証明書の入力\)**   ボックスに貼り付けます。
 
     e. **[Enter New IP]\(新しい IP の入力\)** ボックスに、IP アドレスを入力します。
 
@@ -167,7 +167,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -181,7 +181,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -192,7 +192,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
 このセクションでは、Britta Simon に TAS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[TAS]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[TAS]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -204,15 +204,15 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-tas-test-user"></a>TAS テスト ユーザーの作成
 

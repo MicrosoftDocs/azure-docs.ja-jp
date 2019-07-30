@@ -8,20 +8,21 @@ manager: CelesteDG
 editor: ''
 ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15165bce70a9bc2fbf3eb840ca8bce4fd5073280
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 148324f293c36b88657f50a7405d85210b62dcc4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544634"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321238"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 

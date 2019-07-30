@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0acac29ee49bc94c195d0e13e55fff3a735ad36b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fbee86f09246684a0e553114e367907ddabfa16
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859810"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445497"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にカスタム Apache Hadoop アプリケーションをインストールする
 
@@ -107,7 +107,7 @@ HDInsight アプリケーションを削除する方法は複数あります。
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックします。  表示されない場合は、 **[参照]** をクリックし、 **[HDInsight クラスター]** をクリックしてください。
 3. アプリケーションをインストールしたクラスターをクリックします。
-4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。 インストールされているアプリケーションの一覧が表示されます。 このチュートリアルでは、 **[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
+4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。 インストールされているアプリケーションの一覧が表示されます。 この記事では、 **[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
 5. 削除するアプリケーションを右クリックし、 **[削除]** をクリックします。
 6. **[はい]** をクリックして確定します。
 

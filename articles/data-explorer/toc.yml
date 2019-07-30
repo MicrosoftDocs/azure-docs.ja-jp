@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: データ エクスプローラーとは
+    - name: Azure データ エクスプローラーとは
       href: data-explorer-overview.md
 - name: クイック スタート
   expanded: true
@@ -11,12 +11,8 @@
       href: create-cluster-database-portal.md
     - name: サンプル データを取り込む
       href: ingest-sample-data.md
-    - name: データのクエリを実行する
-      items:
-        - name: Web UI
-          href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
+    - name: Web UI を使用してデータに対してクエリを実行する
+      href: web-query-data.md
 - name: チュートリアル
   items:
     - name: コードを使用せずにデータを取り込む
@@ -68,12 +64,20 @@
       items:
         - name: クエリを作成する
           href: write-queries.md
-        - name: 時系列分析
-          href: time-series-analysis.md
-        - name: 異常検出と予測
-          href: anomaly-detection.md
-        - name: 機械学習
-          href: machine-learning-clustering.md
+        - name: Azure Data Lake でデータのクエリを実行する
+          href: data-lake-query-data.md
+        - name: Azure Monitor でデータのクエリを実行する
+          href: query-monitor-data.md
+        - name: Python
+          href: python-query-data.md
+        - name: 時系列分析と機械学習
+          items:
+            - name: 時系列分析
+              href: time-series-analysis.md
+            - name: 異常検出と予測
+              href: anomaly-detection.md
+            - name: 機械学習
+              href: machine-learning-clustering.md
     - name: データの視覚化
       items:
         - name: Power BI
@@ -84,24 +88,28 @@
               href: power-bi-imported-query.md
             - name: SQL クエリ
               href: power-bi-sql-query.md
-        - name: ODBC コネクタ
-          href: connect-odbc.md
-        - name: SiSense
-          href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: ODBC コネクタ
+          href: connect-odbc.md
         - name: Tableau
           href: tableau.md
+        - name: SiSense
+          href: sisense.md
     - name: 管理
       items:
-        - name: データベースのアクセス許可を管理する
-          href: manage-database-permissions.md
         - name: クラスターの正常性を確認する
           href: check-cluster-health.md
-        - name: クラスターのスケールアウトの管理
-          href: manage-cluster-scale-out.md
-        - name: クラスターのスケールアップの管理
-          href: manage-cluster-scale-up.md
+        - name: クラスター VM の SKU を選択する
+          href: manage-cluster-choose-sku.md
+        - name: クラスターの水平スケーリングを管理する
+          href: manage-cluster-horizontal-scaling.md
+        - name: クラスターの垂直スケーリングを管理する
+          href: manage-cluster-vertical-scaling.md
+        - name: クラスターのセキュリティを管理する
+          href: manage-cluster-security.md
+        - name: データベースのアクセス許可を管理する
+          href: manage-database-permissions.md
         - name: データの削除
           href: delete-data.md
         - name: 重複したデータを処理する

@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/13/2019
+ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 9838c6e31e3bb7031d98e615fd96049f22dd8d30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158035"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385282"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure 内で Service Fabric クラスターを監視する
 
@@ -236,13 +236,13 @@ Reliable Actors に対してより詳細なイベントを構成するには、�
 ## <a name="view-performance-counters-with-azure-monitor-logs"></a>Azure Monitor ログを使用してパフォーマンス カウンターを表示する
 パフォーマンス カウンターを表示するには、[Azure portal](https://portal.azure.com) に移動し、Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 
 
-リソースの **[ServiceFabric(mysfomsworkspace)]**、**[Log Analytics ワークスペース]**、**[詳細設定]** の順に選択します。
+リソースの **[ServiceFabric(mysfomsworkspace)]** 、 **[Log Analytics ワークスペース]** 、 **[詳細設定]** の順に選択します。
 
-**[データ]** をクリックし、**[Windows パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](/windows/desktop/PerfCtrs/specifying-a-counter-path)を参照してください。 **[保存]** をクリックし、**[OK]** をクリックします。
+**[データ]** をクリックし、 **[Windows パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](/windows/desktop/PerfCtrs/specifying-a-counter-path)を参照してください。 **[保存]** をクリックし、 **[OK]** をクリックします。
 
-[詳細設定] ブレードを閉じ、**[全般]** という見出しの下にある **[ワークスペースの概要]** を選択します。 有効なソリューションごとにグラフ形式のタイルがあります (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
+[詳細設定] ブレードを閉じ、 **[全般]** という見出しの下にある **[ワークスペースの概要]** を選択します。 有効なソリューションごとにグラフ形式のタイルがあります (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
 
-これらは、操作チャネルと Reliable Services のイベントのグラフ形式のタイルです。 選択したカウンターのデータ フローのグラフィック表現が、**[Node Metrics]\(ノード メトリック\)** の下に表示されます。 
+これらは、操作チャネルと Reliable Services のイベントのグラフ形式のタイルです。 選択したカウンターのデータ フローのグラフィック表現が、 **[Node Metrics]\(ノード メトリック\)** の下に表示されます。 
 
 **[Container Metric]\(コンテナー メトリック\)** グラフを選択すると、詳細が追加表示されます。 また、Kusto クエリ言語を使用して、イベントをクラスタリングし、ノード、パフォーマンス カウンター名および値をフィルタリングするために、同様にパフォーマンス カウンター データに対してクエリを実行できます。
 

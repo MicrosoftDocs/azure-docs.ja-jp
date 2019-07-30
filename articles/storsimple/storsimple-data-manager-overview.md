@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
-ms.author: vidarmsft
-ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: alkohli
+ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630678"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876101"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -48,7 +48,7 @@ Azure Functions、Azure Automation、Azure Data Factory で Data Manager を使�
 StorSimple Data Manager は、次の 7 つのリージョンで利用できます。
 
  - 東南アジア
- - 米国東部
+ - East US
  - 米国西部
  - 米国西部 2
  - 米国中西部

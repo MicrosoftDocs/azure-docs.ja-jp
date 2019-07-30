@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 7380cf6727817d99edbedf5552c8bea42f177074
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a7b38f26261625c6db8acb6653b3cd9353fdcc2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65744365"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル:Azure Active Directory と N2F - Expense reports の統合
 
@@ -52,11 +52,11 @@ Azure AD への N2F - Expense reports の統合を構成するには、マネー
 
 **ギャラリーから N2F - Expense reports を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -64,7 +64,7 @@ Azure AD への N2F - Expense reports の統合を構成するには、マネー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**N2F - Expense reports**」と入力し、結果ウィンドウで **N2F - Expense reports** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**N2F - Expense reports**」と入力し、結果ウィンドウで **N2F - Expense reports** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の N2F - Expense reports](common/search-new-app.png)
 
@@ -88,23 +88,23 @@ N2F - Expense reports で Azure AD のシングル サインオンを構成し�
 
 N2F - Expense reports で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **N2F - Expense reports** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **N2F - Expense reports** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、**[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
+4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
     ![[N2F - Expense reports のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[N2F - Expense reports のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -136,7 +136,7 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
     ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure2.png)
 
-4. **[Authentication]\(認証\)** を選択し、**[+ Add an authentication method]\(認証方法の追加\)** タブを選択します。
+4. **[Authentication]\(認証\)** を選択し、 **[+ Add an authentication method]\(認証方法の追加\)** タブを選択します。
 
     ![N2F - Expense reports の構成](./media/n2f-expensereports-tutorial/configure3.png)
 
@@ -158,7 +158,7 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -183,7 +183,7 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
 このセクションでは、Britta Simon に N2F - Expense reports へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[N2F - Expense reports]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[N2F - Expense reports]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -195,15 +195,15 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-n2f---expense-reports-test-user"></a>N2F - Expense reports テストユーザーの作成
 
@@ -235,7 +235,7 @@ Azure AD ユーザーが N2F - Expense reports にログインできるように
 
     c. **[Name]\(名前\)** ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
-    d. 組織の要件に応じて、**[Role]\(ロール\)、[Direct manager (N+1)]\(直属の上司\)** および **[Division]\(部門\)** を選択します。
+    d. 組織の要件に応じて、 **[Role]\(ロール\)、[Direct manager (N+1)]\(直属の上司\)** および **[Division]\(部門\)** を選択します。
 
     e. **[Validate and send invitation]\(検証して招待を送信\)** をクリックします。
 

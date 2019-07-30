@@ -3,23 +3,17 @@ title: クラウド サービスの構成方法 (ポータル) | Microsoft Docs
 description: Azure のクラウド サービスの構成方法について説明します。 クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7308f3c0-825e-499d-bfa5-c60f86371921
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: jeconnoc
-ms.openlocfilehash: 4d8d3b93ef2a6347076fada53932b5fc56838d20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 8b60a81e06b95c69a02f88ff3275743b056c191d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61435813"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359658"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services の構成方法
 

@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:SharePoint の User Profile Servic
 description: SharePoint Server のプロファイルの同期をサポートするように Azure Active Directory Domain Services のマネージド ドメインを構成します。
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: ergreenl
-ms.openlocfilehash: deef9b317f394213eabb5ce0ce31dd294bc0dfd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 4293052f19ad883c9df7f177456d55c0997072e1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245332"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473484"
 ---
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>SharePoint Server のプロファイルの同期をサポートするようにマネージド ドメインを構成する
 SharePoint Server には、ユーザー プロファイルの同期に使用する User Profile Service が用意されています。 User Profile Service を設定するには、Active Directory ドメインで適切なアクセス許可を付与する必要があります。 詳細については、「[SharePoint Server 2013 でプロファイルを同期するために Active Directory Domain Services のアクセス許可を付与する](https://technet.microsoft.com/library/hh296982.aspx)」をご覧ください。

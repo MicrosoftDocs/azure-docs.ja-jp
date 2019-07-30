@@ -2,17 +2,17 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) の ID
 description: Azure Kubernetes Service (AKS) でクラスターの認証と認可を管理する方法に関するクラスター オペレーター ベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: iainfou
-ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: mlearned
+ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074158"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614778"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス
 
@@ -42,7 +42,7 @@ Azure AD 統合クラスターを AKS を使用するとき、リソースへの
 1. Kubernetes のロールベースのアクセス制御 (RBAC) とクラスター ポリシーが適用されます。
 1. 先の Azure AD グループ メンバーシップの検証、Kubernetes RBAC、ポリシーに基づき、開発者の要求が通過するか、却下されます。
 
-Azure AD を使用する AKS クラスターを作成する方法については、[「Azure Active Directory と Azure Kubernetes Service を統合する][aks-aad]」を参照してください。
+Azure AD を使用する AKS クラスターを作成する方法については、「[Azure Active Directory と Azure Kubernetes Service を統合する][aks-aad]」を参照してください。
 
 ## <a name="use-role-based-access-controls-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用する
 
@@ -84,7 +84,7 @@ roleRef:
 
 *developer1\@contoso.com* が AKS クラスターに対して認証されると、*finance-app* 名前空間に対する完全アクセスが与えられます。 このように、リソースへのアクセスが論理的に分離されて制御されます。 Kubernetes RBAC は、前のセクションで説明したように、Azure AD 統合との連動で使用してください。
 
-RBAC で Azure AD グループを使用して Kubernetes クラスター リソースへのアクセスを制御するには、「[Control access to cluster resources using role-based access controls and Azure Active Directory identities in AKS][azure-ad-rbac]」(AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセス制御する) を参照してください。
+RBAC で Azure AD グループを使用して Kubernetes クラスター リソースへのアクセスを制御するには、「[Control access to cluster resources using role-based access controls and Azure Active Directory identities in AKS][azure-ad-rbac]」 (AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセス制御する) を参照してください。
 
 ## <a name="use-pod-identities"></a>ポッド ID を使用する
 
@@ -122,7 +122,7 @@ Azure リソース (関連付けられた AKS オープン ソース プロジ�
 
 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 
-* [マルチ テナント方式とクラスター分離][aks-best-practices-scheduler]
+* [マルチ テナントとクラスター分離][aks-best-practices-scheduler]
 * [Kubernetes スケジューラの基本的な機能][aks-best-practices-scheduler]
 * [Kubernetes スケジューラの高度な機能][aks-best-practices-advanced-scheduler]
 

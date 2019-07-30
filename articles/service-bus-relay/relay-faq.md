@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111478"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706183"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -39,7 +39,7 @@ ms.locfileid: "66111478"
 以前は Service Bus Relay サービスという名称でしたが、現在では [WCF リレー](relay-wcf-dotnet-get-started.md)と呼ばれています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続機能は、Azure BizTalk Services から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらもサポートが継続されます。
 
 ## <a name="pricing"></a>価格
-このセクションでは、Relay の価格体系についてよく寄せられる質問とその回答を紹介します。 Azure の価格に関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。 Relay の価格の詳細については、[Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。
+このセクションでは、Relay の価格体系についてよく寄せられる質問とその回答を紹介します。 Azure の価格に関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。 Relay の価格の詳細については、 [Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>ハイブリッド接続と WCF リレーの課金方法を教えてください。
 Relay の価格の詳細については、Service Bus の価格の詳細ページで、[ハイブリッド接続と WCF リレー][Pricing overview]の表をご覧ください。 このページで説明されている価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送にも料金が発生します。
@@ -106,7 +106,7 @@ Relay 名前空間名の長さは 6 ～ 50 文字である必要があります�
 
 #### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal を使用して、あるサブスクリプションから別のサブスクリプションに Azure Relay 名前空間を移行する方法については、[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md#use-portal)に関する記事を参照してください。 
+Azure Portal を使用して、あるサブスクリプションから別のサブスクリプションに Azure Relay 名前空間を移行する方法については、[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)に関する記事を参照してください。 
 
 #### <a name="powershell"></a>PowerShell
 

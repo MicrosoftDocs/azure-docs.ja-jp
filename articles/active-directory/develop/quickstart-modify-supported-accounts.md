@@ -1,5 +1,5 @@
 ---
-title: Microsoft ID プラットフォームの登録アプリケーションによってサポートされているアカウントの変更 | Azure
+title: Microsoft ID プラットフォーム アプリ アカウントの変更 | Azure
 description: Microsoft ID プラットフォームに登録されているアプリケーションの構成を通じて、アプリケーションにアクセスできるユーザー (アカウント) を変更できます。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d99ae48abfcb3e4d4abc0d63565994df45f746
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545723"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380780"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>クイック スタート:アプリケーションによってサポートされるアカウントを変更する
 
@@ -44,7 +44,7 @@ Microsoft ID プラットフォームにアプリケーションを登録する�
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録]** を選択します。
+1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]** を選択します。
 1. 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** またはメイン登録ページが表示されます。
 1. [異なるアカウントをサポートするようにアプリケーションの登録を変更する](#change-the-application-registration-to-support-different-accounts)ための手順に従います。
 1. シングルページ アプリケーションの場合は、[OAuth 2.0 の暗黙的な許可を有効](#enable-oauth-20-implicit-grant-for-single-page-applications)にします。
@@ -58,10 +58,10 @@ Microsoft ID プラットフォームにアプリケーションを登録する�
 
 ### <a name="to-change-who-can-access-your-application"></a>アプリケーションにアクセスできるユーザーを変更する
 
-1. アプリの **[概要]** ページから **[認証]** セクションを選択し、**[サポートされているアカウントの種類]** に選択されている値を変更します。
-    * 基幹業務 (LOB) アプリケーションを作成している場合は、**[このディレクトリ内のアカウントのみ]** を選択します。 アプリケーションがディレクトリに登録されていない場合、このオプションは選択できません。
-    * 企業および教育機関のすべてのユーザーを対象とする場合は、**[任意の組織のディレクトリ内のアカウント]** を選択します。
-    * 最も広範なユーザーを対象にしたければ、**[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント]** を選択します。
+1. アプリの **[概要]** ページから **[認証]** セクションを選択し、 **[サポートされているアカウントの種類]** に選択されている値を変更します。
+    * 基幹業務 (LOB) アプリケーションを作成している場合は、 **[このディレクトリ内のアカウントのみ]** を選択します。 アプリケーションがディレクトリに登録されていない場合、このオプションは選択できません。
+    * 企業および教育機関のすべてのユーザーを対象とする場合は、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
+    * 最も広範なユーザーを対象にしたければ、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント]** を選択します。
 1. **[保存]** を選択します。
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>シングル ページ アプリケーションで OAuth 2.0 の暗黙的な許可を有効にする
@@ -74,7 +74,7 @@ Microsoft ID プラットフォームにアプリケーションを登録する�
 
 ### <a name="to-enable-oauth-20-implicit-grant"></a>OAuth 2.0 Implicit Grant を有効にするには
 
-1. アプリの **[概要]** ページで、**[認証]** セクションを選択します。
+1. アプリの **[概要]** ページで、 **[認証]** セクションを選択します。
 1. **[詳細設定]** の **[暗黙的な許可]** セクションを探します。
 1. **[ID トークン]** と **[アクセス トークン]** の両方またはどちらか一方を選択します。
 1. **[保存]** を選択します。

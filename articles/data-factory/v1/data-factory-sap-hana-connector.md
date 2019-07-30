@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 96d16552cfadca9b345d0f0cd0a344249897f571
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020950"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61258438"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用した SAP HANA からのデータ移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](data-factory-sap-hana-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-sap-hana.md)
 
@@ -43,7 +43,7 @@ SAP HANA への接続を有効にするには、次のコンポーネントを�
 さまざまなツール/API を使用して、オンプレミスの SAP HANA データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
-- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -60,12 +60,12 @@ SAP HANA への接続を有効にするには、次のコンポーネントを�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | 文字列 | はい
+server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | string | はい
 authenticationType | 認証の種類。 | string。 "Basic" または"Windows" | はい 
-username | SAP サーバーにアクセスするユーザーの名前 | 文字列 | はい
-password | ユーザーのパスワード。 | 文字列 | はい
-gatewayName | Data Factory サービスが、オンプレミスの SAP HANA インスタンスへの接続に使用するゲートウェイの名前。 | 文字列 | はい
-encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 | いいえ 
+username | SAP サーバーにアクセスするユーザーの名前 | string | はい
+password | ユーザーのパスワード。 | string | はい
+gatewayName | Data Factory サービスが、オンプレミスの SAP HANA インスタンスへの接続に使用するゲートウェイの名前。 | string | はい
+encryptedCredential | 暗号化された資格情報の文字列。 | string | いいえ
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -292,15 +292,15 @@ REAL | Single
 DOUBLE | Single
 DECIMAL | Decimal
 BOOLEAN | Byte
-VARCHAR | String
-NVARCHAR | String
+VARCHAR | string
+NVARCHAR | string
 CLOB | Byte[]
-ALPHANUM | String
+ALPHANUM | string
 BLOB | Byte[]
-DATE | Datetime
-TIME | timespan
-TIMESTAMP | Datetime
-SECONDDATE | Datetime
+DATE | DateTime
+TIME | TimeSpan
+TIMESTAMP | DateTime
+SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>既知の制限事項
 SAP HANA からデータをコピーする場合、既知の制限事項がいくつかあります。

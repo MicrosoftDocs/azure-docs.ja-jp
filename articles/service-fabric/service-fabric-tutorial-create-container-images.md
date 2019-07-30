@@ -13,15 +13,15 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fe01d55b17c0f6f6dd6a621fbac0cf4d3a268ee3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306780"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385229"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル:Linux Service Fabric クラスターにコンテナー イメージを作成する
 

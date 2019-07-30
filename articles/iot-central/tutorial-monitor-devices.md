@@ -3,18 +3,18 @@ title: Azure IoT Central でデバイスを監視する | Microsoft Docs
 description: オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/01/2019
+ms.date: 06/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 561477d8bf3a64397e9964499339c368dec5470d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d6ad7631ae32f8bd04812093a0fef4fa3d575864
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760474"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067411"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>チュートリアル:Azure IoT Central を使用してデバイスを監視する
 
@@ -49,7 +49,7 @@ Azure IoT Central では、デバイスに関する通知を電子メール メ�
 
 ## <a name="investigate-an-issue"></a>問題の調査
 
-オペレーターは、**[Measurements]\(測定\)**、**[設定]**、**[プロパティ]**、**[ルール]**、および **[ダッシュボード]** の各ページでデバイスに関する情報を確認できます。 作成者は、コネクテッド空調デバイスに関する重要な情報が表示されるよう、**[ダッシュボード]** をカスタマイズしました。
+オペレーターは、 **[Measurements]\(測定\)** 、 **[設定]** 、 **[プロパティ]** 、 **[ルール]** 、および **[ダッシュボード]** の各ページでデバイスに関する情報を確認できます。 作成者は、コネクテッド空調デバイスに関する重要な情報が表示されるよう、 **[ダッシュボード]** をカスタマイズしました。
 
 **[ダッシュボード]** ビューを選択すると、デバイスに関する情報が表示されます。
 
@@ -59,7 +59,7 @@ Azure IoT Central では、デバイスに関する通知を電子メール メ�
 
 ## <a name="remediate-an-issue"></a>問題の修復
 
-デバイスの目標温度を変更するには、**[設定]** ページを使用します。
+デバイスの目標温度を変更するには、 **[設定]** ページを使用します。
 
 1. **[設定]** を選択します。 **[Set Temperature]** を 75 に変更します。 **[更新]** を選択して、新しい目標温度をデバイスに送信します。 デバイスで設定の変更が確認されると、設定の状態が **[同期済み]** に変わります。
 

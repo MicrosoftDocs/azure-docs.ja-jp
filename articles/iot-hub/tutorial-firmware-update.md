@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2019
+ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: 57ec4990447070d1889f7476b89abb742296c056
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597527"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485822"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 
@@ -51,7 +51,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+[https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip ) からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname -policy-name service -o table
 
 ```
 
@@ -95,8 +95,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 ```
 
 > [!TIP]
-> これらのコマンドを Windows コマンド プロンプトまたは PowerShell プロンプトで実行する場合は、JSON 文字列を引用符で囲む方法について、[azure-iot-cli-extension のヒント](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
-)に関するページを参照してください。
+> これらのコマンドを Windows コマンド プロンプトまたは PowerShell プロンプトで実行する場合は、JSON 文字列を引用符で囲む方法について、[azure-iot-cli-extension のヒント](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips)に関するページを参照してください。
 
 ## <a name="start-the-firmware-update"></a>ファームウェアの更新を開始する
 
@@ -187,7 +186,7 @@ node ServiceClient.js "{your service connection string}"
 
 ![バックエンド アプリケーション](./media/tutorial-firmware-update/BackEnd2.png)
 
-IoT Hub デバイス ID レジストリの待ち時間のため、バックエンド アプリケーションに送信されたすべての状態更新が表示されない場合があります。 ポータルの IoT ハブの **[Automatic device management]\(自動デバイス管理\) -> [IoT device configuration]\(IoT デバイス構成\)** セクションでメトリックを表示することもできます。
+デバイスの自動構成は、作成時に実行された後は 5 分ごとに実行されるため、バックエンド アプリケーションに送信されるすべての状態更新を確認できるわけではありません。 ポータルの IoT ハブの **[Automatic device management]\(自動デバイス管理\) -> [IoT device configuration]\(IoT デバイス構成\)** セクションでメトリックを表示することもできます。
 
 ![ポータルで構成を表示する](./media/tutorial-firmware-update/portalview.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Media Services のアセット - Azure | Microsoft Docs
+title: Azure Media Services の資産 | Microsoft Docs
 description: この記事では、アセットとは何かについて説明し、Azure Media Services によるそれらの使用方法についても説明します。
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551769"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670692"
 ---
 # <a name="assets"></a>アセット
 
@@ -87,9 +87,22 @@ curl -X PUT \
 
 完全な例については、「[ローカル ファイルからジョブの入力を作成する](job-input-from-local-file-how-to.md)」をご覧ください。 Media Services v3 では、ジョブの入力を HTTPS URL から作成することもできます (「[HTTPS URL からジョブの入力を作成する](job-input-from-http-how-to.md)」をご覧ください)。
 
-## <a name="filtering-ordering-paging"></a>フィルター処理、順序付け、ページング
+## <a name="map-v3-asset-properties-to-v2"></a>v3 と v2 の資産のプロパティのマッピング
 
-「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
+次の表は、v3 の[資産](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)のプロパティが v2 の資産のプロパティにどのようにマッピングされるかを示しています。
+
+|v3 のプロパティ|v2 のプロパティ|
+|---|---|
+|id - (一意) Azure Resource Manager の完全なパス。「[資産](https://docs.microsoft.com/rest/api/media/assets/createorupdate)」の例を参照してください||
+|name - (一意)「[名前付け規則](media-services-apis-overview.md#naming-conventions)」を参照してください ||
+|alternateId|AlternateId|
+|assetId|Id - (一意) 値は `nb:cid:UUID:` プレフィックスで始まります。|
+|created|作成されました|
+|description|EnableAdfsAuthentication|
+|lastModified|LastModified|
+|storageAccountName|StorageAccountName|
+|storageEncryptionFormat| Options (作成オプション)|
+|type||
 
 ## <a name="storage-side-encryption"></a>ストレージ側の暗号化
 
@@ -104,6 +117,10 @@ curl -X PUT \
 <sup>1</sup> Media Services は、クリアな、どのような形式でも暗号化されていないコンテンツの処理をサポートしますが、そうすることは推奨されません。
 
 <sup>2</sup> Media Services v3 では、ストレージの暗号化 (AES-256 暗号化) は、Media Services v2 で資産を作成した場合の下位互換性のためにのみサポートされています。 つまり、v3 は、既存のストレージの暗号化済み資産では動作しますが、そのような資産を新規作成することはできません。
+
+## <a name="filtering-ordering-paging"></a>フィルター処理、順序付け、ページング
+
+「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,7 +3,7 @@ title: Batch でのコンピューティング集中型 Azure VM の使用 | Mic
 description: Azure Batch プールで HPC および GPU の VM サイズを利用する方法
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 3974be886b57fbf685b211369094edf844d96ab6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 687783520b082cdfd1a6ffc91a8641ea35fafd68
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776526"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323346"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 

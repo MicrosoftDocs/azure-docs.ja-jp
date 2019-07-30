@@ -1,27 +1,24 @@
 ---
-title: 従量課金制サブスクリプションに適用される Azure の予約の使用状況について | Microsoft Docs
-description: 使用状況を読み、従量課金制サブスクリプションに Azure の予約がどのように適用されているかを把握する方法について説明します。
-services: billing
-documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
-editor: ''
+title: 従量課金制料金の個別サブスクリプションの Azure 予約の使用状況
+description: 使用状況を確認し、従量課金制料金の個別サブスクリプションに Azure の予約がどのように適用されているかを把握する方法について説明します。
+author: bandersmsft
+manager: yashr
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11f05c3de50f2f82173b6666d304887fbc2038cc
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370358"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490373"
 ---
-# <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>従量課金制サブスクリプションに適用される Azure の予約の使用状況について
+# <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>従量課金制料金のサブスクリプションの個別サブスクリプションの Azure 予約の使用状況について
 
 予約の使用状況を評価するには、[[予約] ページ](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) の ReservationId と [Azure アカウント ポータル](https://account.azure.com)の使用状況ファイルを使用します。
 
@@ -62,7 +59,7 @@ CSV ファイルのこのセクションには、予約の合計使用量が表�
 4. **Meter Id** は予約の測定 ID です。 この測定のコストは $0 です。 この測定 ID は、予約割引が適用される VM の場合に表示されます。
 5. Standard_DS1_v2 は、vCPU を 1 個搭載した VM です。この VM は、Azure ハイブリッド特典なしでデプロイされます。 そのため、Windows ソフトウェアに対する追加料金は、この測定で充当されます。 D シリーズの 1 コア VM に対応する測定の確認方法については、「[Azure 予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。 Azure ハイブリッド特典を利用している場合、この追加料金は適用されません。
 
-## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>SQL Database および Cosmos DB の予約容量の予約の使用状況
+## <a name="usage-for-sql-database--cosmos-db-reservations"></a>SQL Database および Cosmos DB の予約の使用状況
 
 以下のセクションでは、Azure SQL Database を例に使用して、使用状況に関するレポートについて説明します。 同じ手順を使用して、Azure Cosmos DB の使用状況を取得することもできます。
 

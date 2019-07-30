@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730696"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653382"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -30,46 +30,13 @@ Azure Disk Encryption GA は、Azure Resource Manager テンプレート、Azure
 
 Azure Disk Encryption を使用して VM ディスクを暗号化するための料金は発生しませんが、Azure Key Vault の使用に関連する料金が発生します。 Azure Key Vault のコストの詳細については、「[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)」ページを参照してください。
 
-
-## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Azure Disk Encryption は、どのレベルの仮想マシンをサポートしていますか。
-
-Azure Disk Encryption は、[A、D、DS、G、GS、および F](https://azure.microsoft.com/pricing/details/virtual-machines/) シリーズの IaaS VM を含む Standard レベルの VM で使用できます。 Premium Storage がある VM でも利用できます。 Basic レベルの VM では使用できません。
-
-## <a name="bkmk_LinuxOSSupport"></a>Azure Disk Encryption は、どの Linux ディストリビューションをサポートしていますか。
-
-Azure Disk Encryption は [Azure での動作が保証された一部の Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)でサポートされています。Azure での動作が保証された Linux ディストリビューションはそれ自体があらゆる Linux サーバー ディストリビューションの一部となります。
-
- ![Azure Disk Encryption をサポートする Linux サーバー ディストリビューションのベン図](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
-
-Azure での動作が保証されていない Linux サーバー ディストリビューションでは Azure Disk Encryption がサポートされておらず、動作が保証されているディストリビューションの中でも、次のディストリビューションとバージョンだけで Azure Disk Encryption がサポートされています。
-
-| Linux ディストリビューション | バージョン | 暗号化がサポートされているボリュームの種類|
-| --- | --- |--- |
-| Ubuntu | 18.04| OS とデータ ディスク |
-| Ubuntu | 16.04| OS とデータ ディスク |
-| Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
-| RHEL | 7.6 | OS とデータ ディスク (後述する注を参照してください) |
-| RHEL | 7.5 | OS とデータ ディスク (後述する注を参照してください) |
-| RHEL | 7.4 | OS とデータ ディスク (後述する注を参照してください) |
-| RHEL | 7.3 | OS とデータ ディスク (後述する注を参照してください) |
-| RHEL | 7.2 | OS とデータ ディスク (後述する注を参照してください) |
-| RHEL | 6.8 | データ ディスク (後述する注を参照してください) |
-| RHEL | 6.7 | データ ディスク (後述する注を参照してください) |
-| CentOS | 7.5 | OS とデータ ディスク |
-| CentOS | 7.4 | OS とデータ ディスク |
-| CentOS | 7.3 | OS とデータ ディスク |
-| CentOS | 7.2n | OS とデータ ディスク |
-| CentOS | 6.8 | データ ディスク |
-| openSUSE | 42.3 | データ ディスク |
-| SLES | 12-SP4 | データ ディスク |
-| SLES | 12-SP3 | データ ディスク |
-
-> [!NOTE]
-> RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい ADE の実装がサポートされます。 RHEL の BYOS (Bring-Your-Own-Subscription) イメージについては、現在 ADE はサポートされません。 詳細については、[Linux 用の Azure Disk Encryption](azure-security-disk-encryption-linux.md) に関するページを参照してください。
-
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Azure Disk Encryption の使用を開始するにはどうすればよいですか。
 
 最初に、[Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)をお読みください。
+
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Azure Disk Encryption がサポートされる VM サイズとオペレーティングシステムを教えてください。
+
+[Azure Disk Encryption の前提条件](azure-security-disk-encryption-prerequisites.md)の記事には、Azure Disk Encryption をサポートする [VM のサイズ](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes)と [VM オペレーティング システム](azure-security-disk-encryption-prerequisites.md#supported-operating-systems)の一覧が記載されています。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Azure Disk Encryption でブート ボリュームとデータ ボリュームの両方を暗号化できますか。
 
@@ -121,7 +88,9 @@ Azure Disk Encryption の前提条件があります。 Azure Active Directory �
 Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用してください。 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) の最新バージョンをダウンロードしてください。 Azure Disk Encryption は、Azure SDK Version 1.1.0 では*サポートされていません*。
 
 > [!NOTE]
-> Linux 用 Azure Disk Encryption プレビューの拡張機能は非推奨となっています。 詳細については、「[Deprecating Azure disk encryption preview extension for Linux IaaS VMs](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/)」(Linux IaaS VM 用 Azure Disk Encryption プレビューの拡張機能の非推奨化) を参照してください。
+> Linux 用 Azure Disk Encryption プレビューの拡張機能 "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" は非推奨となっています。 この拡張機能は、Azure Disk Encryption プレビュー リリース向けに公開されたものです。 テスト環境や運用環境のデプロイでプレビュー バージョンの拡張機能を使用することは避けてください。
+
+> Azure Resource Manager (ARM) などのデプロイ シナリオで、Linux IaaS VM の暗号化を有効にするために Linux VM 用の Azure Disk Encryption 拡張機能をデプロイする必要がある場合、Azure Disk Encryption の運用環境に対応した拡張機能 "Microsoft.Azure.Security.AzureDiskEncryptionForLinux" を使用する必要があります。
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>カスタム Linux イメージに対して Azure Disk Encryption を適用できますか。
 

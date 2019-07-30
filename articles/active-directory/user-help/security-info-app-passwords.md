@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d599607da6653d088f53490ea4d4b5f7f6d0f236
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475086"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382937"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>セキュリティ情報 (プレビュー) ページからアプリ パスワードを管理する
+
 Outlook 2010 などの特定のアプリでは、2 段階認証はサポートされていません。 このサポートの欠如は、組織で 2 段階認証を使用している場合、アプリが動作しないことを意味します。 この問題を回避するために、通常のパスワードとは別に、各非ブラウザー アプリで使用する自動生成パスワードを作成できます。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
@@ -39,12 +40,14 @@ Outlook 2010 などの特定のアプリでは、2 段階認証はサポート�
     >Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートしており、2 段階認証を使用できます。 このサポートは、2 段階認証が有効になれば、以降は Office 2013 クライアントに対するアプリ パスワードは必要なくなることを意味します。 詳細については、「[Office 2013 クライアント アプリと Office 2016 クライアント アプリでの先進認証のしくみ](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517)」記事を参照してください。
 
 ## <a name="create-new-app-passwords"></a>新しいアプリ パスワードを作成する
+
 職場または学校のアカウントで 2 段階認証を使用し、管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、 **[セキュリティ情報]** ページを使用してアプリ パスワードの作成と削除を実行できます。
 
 >[!Note]
 >管理者がセキュリティ情報エクスペリエンスを有効にしていない場合は、[2 段階認証用のアプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)に関するセクションの手順と情報に従う必要があります。
 
 ### <a name="to-create-a-new-app-password"></a>新しいアプリ パスワードを作成するには
+
 1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
 
     ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
@@ -64,10 +67,11 @@ Outlook 2010 などの特定のアプリでは、2 段階認証はサポート�
 5. **[パスワード]** ボックスのテキストをコピーし、そのパスワードを、アプリ (この例では Outlook 2010) のパスワード エリアに貼り付けた後、 **[完了]** を選択します。
 
     ![アプリの名前が表示されている [アプリ パスワード] ページ](media/security-info/securityinfo-myprofile-password-copytext.png)
-    
+
     パスワードが追加され、今後はアプリに正常にログインできます。
 
 ## <a name="delete-your-app-passwords"></a>アプリ パスワードを削除する
+
 アプリ パスワードを必要とするアプリの使用が不要になった場合は、関連付けられているアプリ パスワードを削除できます。 アプリ パスワードを削除すると、今後利用できるアプリ パスワードのいずれかのスポットが解放されまます。
 
 >[!Important]
@@ -82,4 +86,5 @@ Outlook 2010 などの特定のアプリでは、2 段階認証はサポート�
 2. 確認ボックスで **[はい]** を選択して、**アプリ パスワード**を削除します。 アプリ パスワードを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
 
 ## <a name="for-more-information"></a>BLOB の詳細
+
 - **[セキュリティ情報]** ページとその設定方法の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください。

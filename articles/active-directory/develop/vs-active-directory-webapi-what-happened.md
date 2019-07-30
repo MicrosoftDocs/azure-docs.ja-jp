@@ -4,6 +4,8 @@ description: Visual Studio を使用して Azure AD に接続した場合の Web
 services: active-directory
 author: ghogen
 manager: douge
+ms.service: active-directory
+ms.subservice: develop
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -13,12 +15,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19a36ca4b194d8031b4a263a092ecb52be74cdd0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353280"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324287"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>WebAPI プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 

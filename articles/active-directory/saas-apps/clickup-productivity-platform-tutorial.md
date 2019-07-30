@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a14b251df0bedbcd27ab4e9bf1abe9a27ad50d6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a6958e88e7e20b94a54216a92651c2f6d3fe650e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950918"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105313"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>チュートリアル:Azure Active Directory と ClickUp Productivity Platform の統合
 

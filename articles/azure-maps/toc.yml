@@ -5,6 +5,7 @@
     - name: Azure Maps とは
       href: about-azure-maps.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: Web アプリを作成する
       href: quick-demo-map-app.md

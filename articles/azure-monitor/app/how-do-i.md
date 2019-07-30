@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60902108"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795526"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -137,16 +137,25 @@ ms.locfileid: "60902108"
 ## <a name="disable-telemetry"></a>遠隔測定を無効にする
 サーバーからテレメトリの収集と送信を **動的に停止および開始** するには:
 
-```
+### <a name="aspnet-classic-applications"></a>ASP.NET Classic アプリケーション
 
+```csharp
     using  Microsoft.ApplicationInsights.Extensibility;
 
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
+### <a name="other-applications"></a>他のアプリケーション
+コンソールまたは ASP.NET Core アプリケーションで `TelemetryConfiguration.Active` シングルトンを使用することはお勧めしません。
+ご自分で `TelemetryConfiguration` インスタンスを作成した場合は、`DisableTelemetry` を `true` に設定します。
 
+ASP.NET Core アプリケーションの場合は、[ASP.NET Core の依存関係の挿入](/aspnet/core/fundamentals/dependency-injection/)を使用して `TelemetryConfiguration` インスタンスにアクセスできます。 詳細については、「[Application Insights for ASP.NET Core applications (ASP.NET Core アプリケーション用の Application Insights)](../../azure-monitor/app/asp-net-core.md)」を参照してください。
 
-**選択されている標準のコレクターを無効にする** には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、 [ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md)内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+## <a name="disable-selected-standard-collectors"></a>選択されている標準のコレクターを無効にする
+標準のコレクター (パフォーマンス カウンター、HTTP 要求、依存関係など) を無効にすることができます
+
+* **ASP.NET アプリケーション** - [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 内の該当する行を無効にするか、コメント アウトします
+* **ASP.NET Core アプリケーション** - [ASP.NET Core 用の Application Insights](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules) に関する記事のテレメトリ モジュールの構成オプションに従います
 
 ## <a name="view-system-performance-counters"></a>システム パフォーマンス カウンターの表示
 メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。 事前定義された **サーバー** というブレードに、それらのいくつかが表示されます。

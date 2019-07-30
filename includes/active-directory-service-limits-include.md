@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 3b1019d45f4fee60e0e197f283ef38f4f3fca875
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e6e1014ac20ef70f21344ec6ece5627eccb7ba66
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143063"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67148437"
 ---
 ここでは、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。
 
@@ -29,4 +29,4 @@ ms.locfileid: "66143063"
 | アクセス パネル |<ul><li>各ユーザーのアクセス パネルに表示できるアプリケーション数に制限はありません。 これは、Azure AD Premium または Enterprise Mobility Suite のライセンスが割り当てられているユーザーに適用されます。</li><li>最大で 10 個のアプリ タイルを各ユーザーのアクセス パネルに表示できます。 この制限は、Azure Active Directory の Free または Azure AD Basic エディションのライセンスが割り当てられているユーザーに適用されます。 アプリ タイルの例として、Box、Salesforce、Dropbox が挙げられます。 この制限は、管理者アカウントには適用されません。</li></ul> |
 | Reports | いずれのレポートでも、最大 1,000 行を表示またはダウンロードできます。 それを超えるデータは切り捨てられます。 |
 | 管理単位 | オブジェクトは最大 30 個の管理単位のメンバーにすることができます。 |
-| 管理者ロールとアクセス許可 | <li>グループを所有者として追加することはできません。<li>グループをロールに割り当てることはできません。<li>テナントのスイッチ (Azure AD でのユーザー設定) を除いて、既定のユーザー アクセス許可を変更することはできません。 |
+| 管理者ロールとアクセス許可 | <ul><li>グループを[所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)として追加することはできません。</li><li>グループを[ロール](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)に割り当てることはできません。</li><li>管理者以外のすべてのユーザーのすべてのディレクトリ情報へのアクセスを無効にするために、他のユーザーのディレクトリ情報を読み取るユーザーの能力をテナント全体のスイッチの外部に制限することはできません (お勧めできません)。 既定のアクセス許可の詳細については、[ここ](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |

@@ -11,16 +11,16 @@
       href: apache-hbase-phoenix-squirrel-linux.md
     - name: Apache HBase のクエリ - HBase シェル
       href: ./query-hbase-with-hbase-shell.md
-- name: 作業開始
+- name: チュートリアル
   items:
-    - name: Apache HBase & NoSQL の開始
+    - name: HDInsight での Apache HBase の使用
       href: apache-hbase-tutorial-get-started-linux.md
+- name: 概念
+  items:
     - name: HDInsight アプリをインストールする
       href: ../hdinsight-apps-install-applications.md
     - name: クラスターの容量計画
       href: ../hdinsight-capacity-planning.md
-- name: 概念
-  items:
     - name: HDInsight の Apache Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
@@ -238,10 +238,14 @@
       items:
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight 用の VNET の計画
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight 用の VNET の作成
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG と UDR に必要な IP アドレス
+          href: ../hdinsight-management-ip-addresses.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet の HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
         - name: Azure VNet での Apache HBase クラスターの作成

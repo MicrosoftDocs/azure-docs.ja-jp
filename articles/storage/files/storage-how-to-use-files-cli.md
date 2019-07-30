@@ -184,7 +184,7 @@ az storage file list \
     --output table
 ```
 
-`az storage file copy start` コマンドは、Azure ファイル共有と Azure Blob Storage コンテナーの間でのファイル移動に便利です。ただし、移動の規模が大きい場合は AzCopy の使用をお勧めします  (移動するファイルの数やサイズの点で規模が大きい場合)。[Linux 用の AzCopy](../common/storage-use-azcopy-linux.md) と [Windows 用の AzCopy](../common/storage-use-azcopy.md) についてご確認ください。 AzCopy はローカルにインストールする必要があります。 AzCopy は Cloud Shell では使用できません。 
+`az storage file copy start` コマンドは、Azure ファイル共有と Azure Blob Storage コンテナーの間でのファイル移動に便利です。ただし、移動の規模が大きい場合は AzCopy の使用をお勧めします (移動するファイルの数やサイズの点で規模が大きい場合)。[Linux 用の AzCopy](../common/storage-use-azcopy-linux.md) と [Windows 用の AzCopy](../common/storage-use-azcopy.md) についてご確認ください。 AzCopy はローカルにインストールする必要があります。 AzCopy は Cloud Shell では使用できません。 
 
 ## <a name="create-and-manage-share-snapshots"></a>共有スナップショットの作成と管理
 Azure ファイル共有で実行できるもう 1 つの便利なタスクとして、共有スナップショットの作成があります。 スナップショットでは、Azure ファイル共有の特定時点のコピーが保存されます。 共有スナップショットは、場合によっては既に使い慣れている、次のようなオペレーティング システム テクノロジに類似しています。
@@ -284,7 +284,7 @@ az group delete --name "myResourceGroup"
         --delete-snapshots include
     ```
 
-- ストレージ アカウント自体を削除するには、次のコマンドを使用します  (この場合、作成した Azure ファイル共有と、Azure Blob Storage コンテナーなど、作成したその他のストレージ リソースが暗黙的に削除されます)。
+- ストレージ アカウント自体を削除するには、次のコマンドを使用します (この場合、作成した Azure ファイル共有と、Azure Blob Storage コンテナーなど、作成したその他のストレージ リソースが暗黙的に削除されます)。
 
     ```azurecli-interactive
     az storage account delete \

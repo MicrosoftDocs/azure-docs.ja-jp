@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: c4052dd3b4c8f49b19193109eb5e8d2306646960
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a2a0ffd670a03aeaaa262b83127a385be9efc978
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888605"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088477"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>チュートリアル:Azure Active Directory と TOPdesk - Public の統合
 
@@ -53,11 +53,11 @@ Azure AD への TOPdesk - Public の統合を構成するには、管理対象�
 
 **ギャラリーから TOPdesk - Public を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への TOPdesk - Public の統合を構成するには、管理対象�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**TOPdesk - Public**」と入力して、結果パネルで **[TOPdesk - Public]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**TOPdesk - Public**」と入力して、結果パネルで **[TOPdesk - Public]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の TOPdesk - Public](common/search-new-app.png)
 
@@ -89,28 +89,28 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
 
 TOPdesk - Public で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Microsoft Azure portal](https://portal.azure.com/) の **TOPdesk - Public** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Microsoft Azure portal](https://portal.azure.com/) の **TOPdesk - Public** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4.  **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
 
     >[!NOTE]
-    >チュートリアルで後述する **[Configure TOPdesk - Public Single Sign-On]**(TOPdesk - Public シングル サインオンの構成) セクションから**サービス プロバイダー メタデータ ファイル**を取得します。
+    >チュートリアルで後述する **[Configure TOPdesk - Public Single Sign-On]** (TOPdesk - Public シングル サインオンの構成) セクションから**サービス プロバイダー メタデータ ファイル**を取得します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
     
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
@@ -123,13 +123,13 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
     e. **[識別子]** ボックスに、`https://<companyname>.topdesk.net/tas/public/login/verify` の形式で URL を入力します。
 
     > [!NOTE] 
-    > **[識別子]** と **[応答 URL]** の値が自動的に入力されない場合は、手動で入力する必要があります。 [識別子] については前述のパターンに従い、チュートリアルで後述する **[Configure TOPdesk - Public Single Sign-On]**(TOPdesk - Public シングル サインオンの構成) セクションから [応答 URL] の値を取得します。 この **[サインオン URL]** の値は実際のものとは異なるので、実際のサインオン URL で更新する必要があります。 この値を取得するには、[TOPdesk - Public クライアント サポート チーム](https://help.topdesk.com/saas/enterprise/user/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > **[識別子]** と **[応答 URL]** の値が自動的に入力されない場合は、手動で入力する必要があります。 [識別子] については前述のパターンに従い、チュートリアルで後述する **[Configure TOPdesk - Public Single Sign-On]** (TOPdesk - Public シングル サインオンの構成) セクションから [応答 URL] の値を取得します。 この **[サインオン URL]** の値は実際のものとは異なるので、実際のサインオン URL で更新する必要があります。 この値を取得するには、[TOPdesk - Public クライアント サポート チーム](https://help.topdesk.com/saas/enterprise/user/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[Set up TOPdesk - Public]**(TOPdesk - Public のセットアップ) セクションで、要件に従って適切な URL をコピーします。
+6. **[Set up TOPdesk - Public]** (TOPdesk - Public のセットアップ) セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -151,7 +151,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
    
     ![Login Settings](./media/topdesk-public-tutorial/ic790599.png "Login Settings")
 
-4. **[Login Settings]** メニューを展開し、**[General]** をクリックします。
+4. **[Login Settings]** メニューを展開し、 **[General]** をクリックします。
    
     ![General](./media/topdesk-public-tutorial/ic790600.png "General")
 
@@ -165,7 +165,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
     ![AssertionConsumerService](./media/topdesk-public-tutorial/ic790619.png "AssertionConsumerService")
    
-    c. **[AssertionConsumerService]** の値をコピーし、**[基本的な SAML 構成]** セクションの **[応答 URL]** テキストボックスにこの値を貼り付けます。      
+    c. **[AssertionConsumerService]** の値をコピーし、 **[基本的な SAML 構成]** セクションの **[応答 URL]** テキストボックスにこの値を貼り付けます。      
    
 6. 証明書ファイルを作成するには、次の手順を実行します。
     
@@ -179,7 +179,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
     
     d. コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
 
-7. **[Public]** セクションで、**[Add]** をクリックします。
+7. **[Public]** セクションで、 **[Add]** をクリックします。
     
     ![SAML ログイン](./media/topdesk-public-tutorial/ic790625.png "SAML ログイン")
 
@@ -187,11 +187,11 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
     
     ![SAML Configuration Assistant](./media/topdesk-public-tutorial/ic790608.png "SAML Configuration Assistant")
     
-    a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
+    a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、 **[Federation Metadata]** で **[Browse]** をクリックします。
 
-    b. 証明書ファイルをアップロードするには、**[Certificate (RSA)]** で **[Browse]** をクリックします。
+    b. 証明書ファイルをアップロードするには、 **[Certificate (RSA)]** で **[Browse]** をクリックします。
 
-    c. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
+    c. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、 **[Logo icon]** の下の **[Browse]** をクリックします。
 
     d. **[User name attribute]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
@@ -203,7 +203,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -227,7 +227,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に TOPdesk - Public へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[TOPdesk - Public]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[TOPdesk - Public]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -239,15 +239,15 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-topdesk---public-test-user"></a>TOPdesk - Public のテスト ユーザーの作成
 
@@ -257,7 +257,7 @@ Azure AD ユーザーが TOPdesk - Public にサインインできるように�
 
 1. **TOPdesk - Public** 企業サイトに管理者としてサインオンします。
 
-2. 上部のメニューで、**[TOPdesk]\>[New]\>[Support Files]\>[Person]** の順にクリックします。
+2. 上部のメニューで、 **[TOPdesk]\>[New]\>[Support Files]\>[Person]** の順にクリックします。
    
     ![Person](./media/topdesk-public-tutorial/ic790628.png "Person")
 

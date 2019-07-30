@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82f9d7090d7283e0b00b36e0928fffb3395ca4c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8bbb486b0dbf1a5e25f5ee4d1f8e5e01b999a8ba
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102637"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067388"
 ---
 # <a name="classroom-labs-concepts"></a>クラスルーム ラボの概念
 次の一覧に、Lab Services の主要な概念と定義を記載しています。
 
 ## <a name="quota"></a>Quota
-クォータとは、ラボ VM を使用するために先生が学生に対して設定できる時間制限 (時間単位) です。 これは、0、無制限、または特定の時間数に設定できます。 クォータが 0 に設定されている場合、学生が仮想マシンを使用できるのは、学生がその学生用の仮想マシンを実行しているとき、または先生がその仮想マシンを手動で有効にしたときのみになります。
+クォータとは、ラボ VM を使用するために先生が学生に対して設定できる時間制限 (時間単位) です。 これには、0 または特定の時間数を設定できます。 クォータが 0 に設定されている場合、学生が仮想マシンを使用できるのは、学生がその学生用の仮想マシンを実行しているとき、または先生がその仮想マシンを手動で有効にしたときのみになります。
  
 ## <a name="schedules"></a>スケジュール
 スケジュールは、先生がクラスに対して作成できる時間スロット (1 回のみ、または繰り返し) です。 ラボ内のすべての仮想マシンは、スケジュール開始時に自動的に開始され、スケジュール終了時に停止されます。 クォータ時間は、スケジュールが実行されているときは使用されません。

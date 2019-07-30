@@ -3,18 +3,18 @@ title: Azure Automation で Update Management、Change Tracking、および Inve
 description: Azure Automation に含まれる Update Management、Change Tracking、および Inventory ソリューションで、Azure Virtual Machine の配布準備を行う方法について説明します
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: a1bb5534d2f98a4e5143038ab1d5fbbcc76184fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 114ddf8f545f3f8d1f6c1a80725668d7875774f8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133184"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476640"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -22,7 +22,7 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-https://portal.azure.com で Azure にサインインします
+[https://portal.azure.com ](https://portal.azure.com) で Azure にサインインします
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 

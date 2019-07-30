@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 条件付きアクセスで認証セッションを構成する
+title: Azure Active Directory の条件付きアクセスを使用して認証セッション管理を構成する
 description: ユーザー サインインの頻度やブラウザー セッション永続化などの、Azure AD 認証のセッション構成をカスタマイズします。
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: e15cf9b2e10a581c72a5035b52be47c3e2c9dfda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988578"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112339"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスで認証セッション管理を構成する
+# <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
 複雑なデプロイでは、認証セッションの制限が必要になる場合があります。 次のようなシナリオがあります。
 
@@ -27,7 +27,7 @@ ms.locfileid: "65988578"
 * 影響の大きなユーザー
 * 重大なビジネス アプリケーション
 
-条件付きアクセス コントロールを使用すると、すべてのユーザーに影響を与えずに、組織内の特定のユース ケースを対象とするポリシーを作成できます。
+条件付きアクセス制御を使用すると、すべてのユーザーに影響を与えることなく、組織内の特定のユース ケースを対象とするポリシーを作成できます。
 
 ポリシーを構成する方法を詳しく説明する前に、既定の構成を調べてみましょう。
 
@@ -45,15 +45,15 @@ ms.locfileid: "65988578"
 
 永続的なブラウザー セッションでは、ユーザーはブラウザー ウィンドウを閉じてから再度開いた後でもサインインした状態を維持できます。
 
-ブラウザー セッション永続化に対し、Azure AD では既定で、認証が成功した後に「サインインの状態を維持しますか?」というプロンプトを表示して、個人用デバイスのユーザーがセッションを持続するかどうかを選択できるようにしています。 prompt after successful authentication. 「[AD FS シングル サイン オンの設定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-)」の記事のガイダンスを使用して AD FS でブラウザー永続化が構成されている場合、そのポリシーに従って、Azure AD セッションも永続化します。 [Azure AD サインイン ページのカスタマイズ](../fundamentals/customize-branding.md)に関する記事のガイダンスを使用して、Azure portal 内の企業ブランド ウィンドウで適切な設定を変更することにより、テナント内のユーザーに「サインインの状態を維持しますか?」というプロンプトを表示するかどうかも構成できます。 prompt by changing the appropriate setting in the company branding pane in Azure portal using the guidance in the article <bpt id="p1">[</bpt>Customize your Azure AD sign-in page<ept id="p1">](../fundamentals/customize-branding.md)</ept>.
+ブラウザー セッション永続化に対し、Azure AD では既定で、認証が成功した後に「サインインの状態を維持しますか?」というプロンプトを表示して、個人用デバイスのユーザーがセッションを持続するかどうかを 選択できるようにしています。 「[AD FS シングル サイン オンの設定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+)」の記事のガイダンスを使用して AD FS でブラウザー永続化が構成されている場合、そのポリシーに従って、Azure AD セッションも永続化します。 また、テナント内のユーザーに「サインインの状態を維持しますか?」というプロンプトを表示するかどうかを構成することもできます。 それには、[Azure AD サインイン ページのカスタマイズ](../fundamentals/customize-branding.md)に関する記事にあるガイダンスを使用して、Azure portal の企業ブランド ウィンドウで適切な設定を変更します。
 
 ## <a name="configuring-authentication-session-controls"></a>認証セッション コントロールの構成
 
-条件付きアクセスは、Azure AD Premium の機能であり、Premium ライセンスが必要です。 条件付きアクセスの詳細については、「[Azure Active Directory の条件付きアクセスの概要](overview.md#license-requirements)」を参照してください。
+条件付きアクセスは Azure AD Premium の機能であり、Premium ライセンスが必要です。 条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセスの概要](overview.md#license-requirements)に関するページを参照してください。
 
 > [!WARNING]
-> 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 マイクロソフトは、10 月 15 日に構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換える予定です。  
+> 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 マイクロソフトは、11 月 1 日に構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換える予定です。  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>ポリシー 1:サインイン頻度コントロール
 
@@ -86,10 +86,10 @@ Azure AD 登録済み Windows デバイスでは、デバイスへのサイン�
 1. ドロップダウンから値を選択します
 1. ポリシーを保存します
 
-![永続的ブラウザーに対して構成された条件付きアクセス ポリシー](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
+![永続的ブラウザーが構成された条件付きアクセス ポリシー](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
 
 > [!NOTE]
-> Azure AD 条件付きアクセスの永続的ブラウザー セッション構成は、両方のポリシーを構成している場合、同じユーザーの Azure portal の企業ブランド　ウィンドウの「サインインの状態を維持しますか?」設定を上書きします。 setting in the company branding pane in the Azure portal for the same user if you have configured both policies.
+> Azure AD 条件付きアクセスの永続的ブラウザー セッション構成は、 両方のポリシーが構成されている場合、同じユーザーの Azure portal の企業ブランド ウィンドウにある「サインインの状態を維持しますか?」の設定を上書きします。
 
 ## <a name="validation"></a>検証
 
@@ -99,9 +99,9 @@ What-If ツールを使用して、ポリシーをどのように構成するか
 
 ## <a name="policy-deployment"></a>ポリシーのデプロイ
 
-ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。
+ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して多要素認証 (MFA) を必要にする](app-based-mfa.md)」の記事を参照してください。
-* 環境に適用するした条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。
+* 条件付きアクセス ポリシーを構成する方法については、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」の記事を参照してください。
+* 環境のための条件付きアクセス ポリシーを構成する準備ができている場合は、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。

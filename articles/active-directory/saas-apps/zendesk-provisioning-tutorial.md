@@ -14,83 +14,79 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf747fb75ea663d2c64038d73f48adb19d9fb804
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 166b7727362549aaf054e3f0282c564eca687eb9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278583"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672877"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Zendesk にプロビジョニングまたは Zendesk からプロビジョニング解除するように構成するために、Replicon と Azure Active Directory (Azure AD) で実行される手順を示すことです。
+このチュートリアルでは、Zendesk に対するユーザーとグループのプロビジョニングとプロビジョニング解除を自動的に実行するように Azure AD を構成するために、Zendesk と Azure Active Directory (Azure AD) で実行する手順を示します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスで実行されること、しくみ、およびよく寄せられるについては、「[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
+このチュートリアルで説明するシナリオでは、以下を所有していることを前提としています。
 
-* Azure AD テナント
-* [Enterprise プラン](https://www.zendesk.com/product/pricing/)以上の有効な Zendesk テナント
-* Admin アクセス許可がある Zendesk のユーザー アカウント
+* Azure AD テナント。
+* [Enterprise](https://www.zendesk.com/product/pricing/) プラン以上の有効な Zendesk テナント。
+* 管理者アクセス許可がある Zendesk のユーザー アカウント。
 
 > [!NOTE]
-> Azure AD プロビジョニング統合では、Enterprise プラン以上の Zendesk チームで使用できる [Zendesk Rest API](https://developer.zendesk.com/rest_api/docs/core/introduction) が必要です。
+> Azure AD プロビジョニング統合は、[Zendesk Rest API](https://developer.zendesk.com/rest_api/docs/core/introduction) に依存しています。 この API は、Enterprise プラン以上で Zendesk チームが利用できるようになります。
 
-## <a name="adding-zendesk-from-the-gallery"></a>ギャラリーからの Zendesk の追加
+## <a name="add-zendesk-from-the-azure-marketplace"></a>Azure Marketplace からの Zendesk の追加
 
-Azure AD で自動ユーザー プロビジョニング用に Zendesk を構成する前に、Azure AD アプリケーション ギャラリーから Zendesk を管理対象の SaaS アプリケーションの一覧に追加する必要があります。
+Azure AD での自動ユーザー プロビジョニング用に Zendesk を構成する前に、Zendesk を Azure Marketplace から管理対象の SaaS アプリケーションの一覧に追加する必要があります。
 
-**Azure AD アプリケーション ギャラリーから Zendesk を追加するには、次の手順を実行します。**
+Marketplace から Zendesk を追加するには、次の手順に従います。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** を選択します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+    ![Azure Active Directory のアイコン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部の **[新しいアプリケーション]** を選択します。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Zendesk**」と入力し、結果ウィンドウで **[Zendesk]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Zendesk**」と入力し、結果パネルで **[Zendesk]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
 
     ![結果一覧の Zendesk](common/search-new-app.png)
 
-## <a name="assigning-users-to-zendesk"></a>Zendesk へのユーザーの割り当て
+## <a name="assign-users-to-zendesk"></a>ユーザーを Zendesk に割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
-自動ユーザー プロビジョニングを構成して有効にする前に、Zendesk へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Zendesk に割り当てることができます。
-
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
+自動ユーザー プロビジョニングを構成して有効にする前に、Zendesk にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Zendesk に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の指示に従います。
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>ユーザーを Zendesk に割り当てる際の重要なヒント
 
-* Zendesk のロールは、Azure portal UI で今すぐ、自動的かつ動的に設定されます。 Zendesk のロールをユーザーに割り当てる前に、必ず Zendesk との初期同期を完了して、お使いの Zendesk テナントの最新ロールを取得してください。
+* 現在、Zendesk のロールは、Azure portal UI で自動的かつ動的に設定されます。 Zendesk のロールをユーザーに割り当てる前に、必ず Zendesk との初期同期を完了して、お使いの Zendesk テナントの最新ロールを取得してください。
 
-* 単一の Azure AD ユーザーを Zendesk に割り当てて、初期自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 テストが成功すれば、後でユーザーやグループを追加で割り当てられます。
-  
-* 単一の Azure AD ユーザーを Zendesk に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを Zendesk に割り当てて、初期の自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 テストが成功した後で、追加のユーザーまたはグループを割り当てることができます。
 
-* Zendesk にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
+* Zendesk にユーザーを割り当てるとき、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログ ボックスで選択します。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
 
-## <a name="configuring-automatic-user-provisioning-to-zendesk"></a>Zendesk への自動ユーザー プロビジョニングの構成 
+## <a name="configure-automatic-user-provisioning-to-zendesk"></a>Zendesk への自動ユーザー プロビジョニングを構成する 
 
-このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Zendesk のユーザーやグループを作成、更新、無効化する手順について説明します。
+このセクションでは、Azure AD プロビジョニング サービスを構成する手順を説明します。 これを使用して、Azure AD でのユーザーまたはグループの割り当てに基づいて、Zendesk でのユーザーまたはグループの作成、更新、および無効化を行います。
 
 > [!TIP]
-> Zendesk では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Zendesk シングル サインオンのチュートリアル](zendesk-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Zendesk に対する SAML ベースのシングル サインオンを有効にすることもできます。 [Zendesk のシングル サインオンに関するチュートリアル](zendesk-tutorial.md)の手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
-### <a name="to-configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Azure AD で Zendesk の自動ユーザー プロビジョニングを構成するには:
+### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Azure AD で Zendesk の自動ユーザー プロビジョニングを構成する
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Zendesk]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zendesk]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -104,73 +100,73 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk1.png)
+    ![Zendesk のプロビジョニング モード](./media/zendesk-provisioning-tutorial/ZenDesk1.png)
 
-5. **[管理者資格情報]** セクションに、Zendesk アカウントの **[管理ユーザー名]**、**[シークレット トークン]**、**[ドメイン]** を入力します。 これらの値の例を次に示します。
+5. **[管理者資格情報]** セクションに、Zendesk アカウントの管理ユーザー名、シークレット トークン、ドメインを入力します。 これらの値の例を次に示します。
 
-   * **[管理ユーザー名]** フィールドには、Zendesk テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
+   * **[管理ユーザー名]** ボックスに、Zendesk テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com。
 
-   * **[シークレット トークン]** フィールドに、手順 6 で説明されているシークレット トークンを設定します。
+   * **[シークレット トークン]** ボックスに、手順 6 で説明されているシークレット トークンを入力します。
 
-   * **[ドメイン]** フィールドに、Zendesk テナントのサブドメインを設定します。
-     例: [https://my-tenant.zendesk.com](`https://my-tenant.zendesk.com`) のテナント URL があるアカウントの場合、サブドメインは **my-tenant** になります。
+   * **[ドメイン]** ボックスに、Zendesk テナントのサブドメインを入力します。 たとえば、テナント URL が `https://my-tenant.zendesk.com` のアカウントの場合、サブドメインは **my-tenant** になります。
 
-6. Zendesk アカウントの**シークレット トークン** は、**[管理者] > [API] > [設定]** に配置されています。
-   **[Token Access]\(トークン アクセス\)** が **[有効]** に設定されていることを確認します。
+6. Zendesk アカウントのシークレット トークンは、 **[管理者]**  >  **[API]**  >  **[設定]** に配置されています。 **[Token Access]\(トークン アクセス\)** が **[有効]** に設定されていることを確認します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
+    ![Zendesk の管理者設定](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
+    ![Zendesk のシークレット トークン](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 
-7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Zendesk に接続できることを確認します。 接続できない場合は、使用中の Zendesk アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 に示されているボックスに入力したら、 **[テスト接続]** を選択して、Azure AD が Zendesk に接続できることを確認します。 接続できない場合は、使用中の Zendesk アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
+    ![Zendesk のテスト接続](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
 
-8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを入力します。 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
+    ![Zendesk の通知用メール](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
 
-9. **[Save]** をクリックします。
+9. **[保存]** を選択します。
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Zendesk]\(Azure Active Directory ユーザーを Zenesk に同期する\)** を選びます。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk10.png)
+    ![Zendesk のユーザー同期](./media/zendesk-provisioning-tutorial/ZenDesk10.png)
 
-11. **[属性マッピング]** セクションで、Azure AD から Zendesk に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zendesk のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+11. **[属性マッピング]** セクションで、Azure AD から Zendesk に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zendesk のユーザー アカウントとの照合に使用されます。 すべての変更を保存するために、 **[保存]** を選択します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk11.png)
+    ![Zendesk の一致するユーザー属性](./media/zendesk-provisioning-tutorial/ZenDesk11.png)
 
-12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to ZenDesk]\(Azure Active Directory グループを ZenDesk に同期する\)** を選択します。
+12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Zendesk]\(Azure Active Directory グループを Zendesk に同期する\)** を選択します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk12.png)
+    ![Zendesk のグループの同期](./media/zendesk-provisioning-tutorial/ZenDesk12.png)
 
-13. **[属性マッピング]** セクションで、Azure AD から Zendesk に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新操作で Zendesk のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+13. **[属性マッピング]** セクションで、Azure AD から Zendesk に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新操作で Zendesk のグループとの照合に使用されます。 すべての変更を保存するために、 **[保存]** を選択します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
+    ![Zendesk の一致するグループ属性](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
-14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
-15. Zendesk に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+15. Zendesk に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
+    ![Zendesk のプロビジョニング状態](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
 
-16. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Zendesk にプロビジョニングするユーザーやグループを定義します。
+16. Zendesk にプロビジョニングするユーザーまたはグループを定義します。 **[設定]** セクションで、 **[スコープ]** として指定する値を選択します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk15.png)
+    ![Zendesk の [スコープ]](./media/zendesk-provisioning-tutorial/ZenDesk15.png)
 
-17. プロビジョニングの準備ができたら、**[保存]** をクリックします。
+17. プロビジョニングの準備ができたら、 **[保存]** を選択します。
 
-    ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk18.png)
+    ![Zendesk の [保存]](./media/zendesk-provisioning-tutorial/ZenDesk18.png)
 
-これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Zendesk に対して実行されたすべてのアクションが記載されています。
+この操作によって、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーまたはグループの初期同期が開始されます。 初期同期は、以降の同期よりも実行に時間がかかります。 それらは、Azure AD プロビジョニング サービスが実行されている限り、約 40 分ごとに発生します。 
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+**[同期の詳細]** セクションを使用して進行状況を監視し、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。 このレポートには、Azure AD プロビジョニング サービスによって Zendesk で実行されたすべてのアクションが記述されます。
+
+Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」を参照してください。
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* Zendesk は、エージェントの役割のみを持つユーザーのグループの使用をサポートしています。 詳しくは、[Zendesk のドキュメント](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)をご覧ください。
+* Zendesk は、**エージェント**の役割のみを持つユーザーのグループの使用をサポートしています。 詳細については、[Zendesk のドキュメント](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)を参照してください。
 
-* カスタム ロールがユーザーやグループに割り当てられると、Azure AD の自動ユーザー プロビジョニング サービスも既定のロールを**エージェント**に割り当てます。 **エージェント**のみにカスタム ロールを割り当てることができます。 詳細については、この [Zendesk API ドキュメント](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests)を参照してください。  
+* カスタム ロールがユーザーやグループに割り当てられると、Azure AD の自動ユーザー プロビジョニング サービスも既定のロールを**エージェント**に割り当てます。 エージェントのみにカスタム ロールを割り当てることができます。 詳細については、[Zendesk API のドキュメント](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests)を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -6,14 +6,12 @@ metadata:
   title: Kubernetes を伴う Azure Container Service のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes cluster. Learn how to use Azure Container Service in concert with Kubernetes with these quickstarts, tutorials, and samples.'
   services: container-service
-  author: carolz
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-service
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07-21-2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Azure Container Service を使用すると、運用環境で使用できる Kubernetes クラスターを迅速にデプロイすることができます。 以下のクイック スタート、チュートリアル、サンプルを使用して、Kubernetes と連携した Azure Container Service の使用方法を確認してください。
 sections:

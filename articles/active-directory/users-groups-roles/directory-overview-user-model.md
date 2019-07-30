@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775a03a82c1fc432e65ce45309a5af3febb448a9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428223"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083886"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大規模組織のユーザー、グループ、ライセンス、ロール
 
@@ -62,7 +62,7 @@ Azure AD では、ライセンスを付与されているグループにユー�
 
 Azure AD を使用すると、[Azure AD テナントにデプロイされたエンタープライズ アプリ](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)へのグループ アクセス権を割り当てることができます。 アプリへのグループ割り当てと動的グループを組み合わせれば、組織の規模拡大に伴って、ユーザーに対するアプリへのアクセス権の割り当てを自動化することができます。 エンタープライズ アプリへのアクセス権を割り当てるには、Azure Active Directory Premium P1 または Premium P2 ライセンスが必要です。
 
-また、Azure AD では、アクセス権の割り当て先となるグループとアプリの間を行き来するデータをきめ細かく制御することができます。 [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) でアプリを開き、**[プロビジョニング]** を選択して次の作業を実施できます。
+また、Azure AD では、アクセス権の割り当て先となるグループとアプリの間を行き来するデータをきめ細かく制御することができます。 [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) でアプリを開き、 **[プロビジョニング]** を選択して次の作業を実施できます。
 
 * 自動プロビジョニングをサポートするアプリに対してその設定を行う
 * アプリのユーザー管理 API に接続するための資格情報を指定する

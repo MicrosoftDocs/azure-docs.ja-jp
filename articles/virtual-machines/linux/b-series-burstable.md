@@ -4,7 +4,7 @@ description: 負荷の急増に対応できる B シリーズの Azure VM のサ
 services: virtual-machines-linux
 documentationcenter: ''
 author: ayshakeen
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/07/2017
+ms.date: 06/25/2019
 ms.author: ayshak
-ms.openlocfilehash: 7cbab5c6b3a724c2219648873fd45ca6bde90339
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2445ad4804755fb2bdc013f7ea819ed51a2f6480
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731798"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671814"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 

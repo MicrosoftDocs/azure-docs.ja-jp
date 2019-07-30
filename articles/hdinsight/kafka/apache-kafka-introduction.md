@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 05/16/2019
-ms.openlocfilehash: be2195092cf3890f754f875ea7bccc1f717eb95b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/13/2019
+ms.openlocfilehash: e500f08de414a5907a0f1aeeca90d8c2090adcdd
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762349"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137056"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka の概要
 

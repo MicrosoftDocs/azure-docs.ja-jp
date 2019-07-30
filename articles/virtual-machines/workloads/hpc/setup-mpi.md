@@ -4,7 +4,7 @@ description: Azure で HPC の MPI を設定する方法について説明しま
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 1717c0d95c00e13ae0d87ab920bc88cd4f0df978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 541e42a72ea604c4d71dc546b14dea2f0857bcc1
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809767"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797505"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC の Message Passing Interface を設定する
 
@@ -70,7 +70,7 @@ OpenMPI を実行します。
 MPICH をビルドします。
 
 ```bash
-wget http://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz
+wget https://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz
 tar -xvf mpich-3.3.tar.gz
 cd mpich-3.3
 ./configure --with-ucx=<ucx-install-path> --prefix=<mpich-install-path> --with-device=ch4:ucx
@@ -126,7 +126,7 @@ sudo ./platform_mpi-09.01.04.03r-ce.bin
 
 ## <a name="osu-mpi-benchmarks"></a>OSU MPI ベンチマーク
 
-[OSU MPI ベンチマークをダウンロード][http://mvapich.cse.ohio-state.edu/benchmarks/](http://mvapich.cse.ohio-state.edu/benchmarks/)し、解凍します。
+[OSU MPI ベンチマークをダウンロードし](http://mvapich.cse.ohio-state.edu/benchmarks/)、解凍します。
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -146,7 +146,7 @@ MPI ベンチマークは `mpi/` フォルダー下にあります。
 
 ## <a name="discover-partition-keys"></a>パーティション キーを検出する
 
-他の VM と通信するためのパーティション キー (p キー) を検出します。
+同じテナント (可用性セットまたは VM スケール セット) 内の他の VM と通信するために、パーティション キー (p キー) を検出します。
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -164,13 +164,15 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 
 既定 (0x7fff) のパーティション キー以外のパーティションを使用します。 UCX では、p キーの MSB をクリアする必要があります。 たとえば、0x800b の場合、UCX_IB_PKEY を 0x000b と設定します。
 
+テナント (AVSet または VMSS) が存在する限り、p キーは同じままであることにも注意してください。 これは、ノードが追加または削除された場合でも当てはまります。 新しいテナントには、別の p キーが割り当てられます。
+
 
 ## <a name="set-up-user-limits-for-mpi"></a>MPI のユーザー制限を設定する
 
 MPI のユーザー制限を設定します。
 
 ```bash
-cat << EOF >> /etc/security/limits.conf
+cat << EOF | sudo tee -a /etc/security/limits.conf
 *               hard    memlock         unlimited
 *               soft    memlock         unlimited
 *               hard    nofile          65535

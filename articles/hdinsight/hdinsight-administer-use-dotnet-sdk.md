@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 06e3178e344ee46f67cfd8a6feaf08d56d3c86e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724135"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508110"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 
@@ -256,10 +256,6 @@ foreach (var key in results.Configuration.Keys)
 **Apache Hive ジョブを送信するには** 
 
 [.NET SDK を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関するページを参照してください。
-
-**Apache Pig ジョブを送信するには**
-
-[.NET SDK を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関するページを参照してください。
 
 **Apache Sqoop ジョブを送信するには**
 

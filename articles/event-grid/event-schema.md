@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304246"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785846"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
@@ -104,6 +104,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [リソース グループ (管理操作)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
 
 カスタム トピックの場合、イベントの発行元がデータ オブジェクトを決定します。 最上位レベルのデータには、リソースによって定義された標準のイベントと同じフィールドを含める必要があります。
 

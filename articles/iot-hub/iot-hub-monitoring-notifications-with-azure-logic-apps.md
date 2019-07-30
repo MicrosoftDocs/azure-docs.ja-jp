@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/11/2018
+ms.date: 04/19/2019
 ms.author: robinsh
-ms.openlocfilehash: 5a277ac18bcbcb7e7acc6faf52f7bc72759c82a7
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 26637468f44e12f7ad66f907e0f6be3d907e578f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719311"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -22,17 +22,21 @@ ms.locfileid: "59678005"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Azure Logic Apps は、一連の手順として、プロセスを自動化する方法が用意されています。 ロジック アプリは、さまざまなサービスやプロトコル経由で接続できます。 ”アカウントが追加されたとき” などのトリガーによって開始され、その後に、”プッシュ通知の送信” などのアクションが組み合わされます。 この機能により、Logic Apps は、異常を常に警戒するなど、他の使用シナリオでも、IoT 監視のための完全な IoT ソリューションになります。
+[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) は、ワークフローをオンプレミスとクラウド サービス、1 つ以上のエンタープライズ、およびさまざまなプロトコルにわたって調整するのに役立ちます。 ロジック アプリはトリガーで始まり、その後に、条件や反復子などの組み込みのコントロールを使用して順序付けることができる 1 つ以上のアクションが実行されます。 この柔軟性により、Logic Apps は IoT の監視シナリオのための理想的な IoT ソリューションになります。 たとえば、デバイスからのテレメトリ データが IoT Hub エンドポイントに到着したら、そのデータを Azure Storage BLOB に格納するためにロジック アプリ ワークフローを開始したり、データの異常を警告するために電子メール アラートを送信したり、デバイスから障害が報告された場合は技術者の訪問をスケジュールしたりすることができます。
 
 ## <a name="what-you-learn"></a>学習内容
 
-温度の監視と通知のメールボックスと IoT Hub を接続するロジック アプリを作成する方法を学びます。 温度が 30℃を超えると、クライアント アプリケーションは、IoT Hub に送信するメッセージに `temperatureAlert = "true"` とマークします。 このメッセージにより、ロジック アプリがトリガーされ、メール通知が送信されます。
+温度の監視と通知のメールボックスと IoT Hub を接続するロジック アプリを作成する方法を学びます。
+
+デバイス上で実行されているクライアント コードは、IoT ハブに送信するすべてのテレメトリ メッセージ上にアプリケーション プロパティ `temperatureAlert` を設定します。 30 C を超える温度を検出すると、クライアント コードはこのプロパティを `true` に、それ以外の場合は `false` に設定します。
+
+このトピックでは、`temperatureAlert = true` であるメッセージを Service Bus エンドポイントに送信するように IoT ハブ上のルーティングを設定した後、Service Bus エンドポイントに到着したメッセージでトリガーされ、ユーザーに電子メール通知を送信するロジック アプリを設定します。
 
 ## <a name="what-you-do"></a>作業内容
 
-* Service Bus 名前空間を作成して、キューを追加します。
-* エンドポイントとルーティングの規則を IoT Hub に追加します。
-* ロジック アプリを作成、構成、およびをテストします。
+* Service Bus 名前空間を作成し、それに Service Bus キューを追加します。
+* 温度アラートを含むメッセージを Service Bus キューにルーティングするために、IoT ハブにカスタム エンドポイントとルーティング規則を追加します。
+* Service Bus キューからのメッセージを消費し、目的の受信者に通知電子メールを送信するロジック アプリを作成、構成、およびテストします。
 
 ## <a name="what-you-need"></a>必要なもの
 
@@ -40,155 +44,189 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 
   * 有効な Azure サブスクリプション
   * サブスクリプションの Azure IoT Hub。
-  * Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
+  * Azure IoT Hub にテレメトリ メッセージを送信する、デバイス上で実行されているクライアント アプリケーション。
 
-## <a name="create-service-bus-namespace-and-add-a-queue-to-it"></a>Service Bus 名前空間を作成してキューを追加する
+## <a name="create-service-bus-namespace-and-queue"></a>Service Bus の名前空間とキューを作成する
 
-### <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間の作成を作成する
+Service Bus の名前空間とキューを作成します。 このトピックの後の方では、温度アラートを含むメッセージを Service Bus キューに転送するための IoT ハブ内のルーティング規則を作成します。そこで、これらのメッセージはロジック アプリによって選択され、通知電子メールを送信するためにそのアプリをトリガーします。
 
-1. [Azure portal](https://portal.azure.com/) で、**[リソースの作成]** > **[エンタープライズ統合]** > **[Service Bus]** の順に選択します。
+### <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
 
-2. 次の情報を指定します。
+1. [Azure Portal](https://portal.azure.com/) で、 **[+ リソースの作成]**  >  **[統合]**  >  **[Service Bus]** の順に選択します。
 
-   **[名前]**:サービス バスの名前。
+1. **[名前空間の作成]** ウィンドウで、次の情報を指定します。
 
-   **価格レベル**:**[Basic]** > **[選択]** の順に選択します。 このチュートリアルでは、[基本] レベルで十分です。
+   **[名前]** :Service Bus 名前空間の名前。 この名前空間は Azure 全体で一意である必要があります。
 
-   **[リソース グループ]**:IoT ハブと同じリソース グループを使用します。
+   **価格レベル**:ドロップダウン リストから **[Basic]** を選択します。 このチュートリアルでは、[基本] レベルで十分です。
 
-   **[場所]**:IoT ハブで使用するものと同じ場所を使用します。
+   **[リソース グループ]** :IoT ハブと同じリソース グループを使用します。
 
-3. **作成** を選択します。
+   **[場所]** :IoT ハブで使用するものと同じ場所を使用します。
 
-   ![Azure Portal に Service Bus 名前空間を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1_create-service-bus-namespace-azure-portal.png)
+   ![Azure Portal に Service Bus 名前空間を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
 
-### <a name="add-a-service-bus-queue"></a>Service Bus キューを追加する
+1. **作成** を選択します。 デプロイが完了するまで待ってから次の手順に移動してください。
 
-1. サービス バスの名前空間を開き、**[+ キュー]** を選択します。
+### <a name="add-a-service-bus-queue-to-the-namespace"></a>名前空間に Service Bus キューを追加する
 
-1. キューの名前を入力して、**[作成]** を選択します。
+1. Service Bus 名前空間を開きます。 Service Bus 名前空間に移動するための最も簡単な方法として、リソース ウィンドウから **[リソース グループ]** を選択し、リソース グループを選択した後、リソースの一覧から Service Bus 名前空間を選択します。
 
-1. サービス バス キューを開き、**[共有アクセス ポリシー]** > **[+ 追加]** の順に選択します。
+1. **[Service Bus 名前空間]** ウィンドウで、 **[+ キュー]** を選択します。
 
-1. ポリシーの名前を入力し、**[管理]** をオンにし、**[作成]** を選択します。
+1. キューの名前を入力して、 **[作成]** を選択します。 キューが正常に作成されると、 **[キューの作成]** ウィンドウが閉じます。
 
-   ![Azure Portal で Service Bus キューを追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2_add-service-bus-queue-azure-portal.png)
+   ![Azure Portal で Service Bus キューを追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-## <a name="add-an-endpoint-and-a-routing-query-to-your-iot-hub"></a>エンドポイントとルーティング クエリを IoT ハブに追加する
+1. **[Service Bus 名前空間]** ウィンドウに戻り、 **[エンティティ]** で **[キュー]** を選択します。 一覧から Service Bus キューを開き、 **[共有アクセス ポリシー]**  >  **[+ 追加]** の順に選択します。
 
-エンドポイントとルーティング クエリを IoT ハブに追加します。
+1. ポリシーの名前を入力し、 **[管理]** をオンにし、 **[作成]** を選択します。
 
-### <a name="add-an-endpoint"></a>エンドポイントの追加
+   ![Azure Portal で Service Bus キュー ポリシーを追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2-add-service-bus-queue-azure-portal.png)
 
-1. IoT ハブを開き、**[エンドポイント]** > **[+ 追加]** の順に選択します。
+## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>IoT ハブにカスタム エンドポイントとルーティング規則を追加する
 
-1. 次の情報を入力します。
+IoT ハブに Service Bus キューのカスタム エンドポイントを追加し、温度アラートを含むメッセージをそのエンドポイントに転送するためのメッセージ ルーティング規則を作成します。そこで、これらのメッセージはロジック アプリによって選択されます。 このルーティング規則では、ルーティング クエリ `temperatureAlert = "true"` を使用して、デバイス上で実行されているクライアント コードによって設定された `temperatureAlert` アプリケーション プロパティの値に基づいてメッセージを転送します。 詳細については、「[メッセージ プロパティに基づいたメッセージ ルーティング クエリ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties)」を参照してください。
 
-   **[名前]**:エンドポイントの名前。
+### <a name="add-a-custom-endpoint"></a>カスタム エンドポイントを追加する
 
-   **[エンドポイントの種類]**:**[Service Bus キュー]** を選択します。
+1. IoT ハブを開きます。 IoT ハブに移動するための最も簡単な方法として、リソース ウィンドウから **[リソース グループ]** を選択し、リソース グループを選択した後、リソースの一覧から IoT ハブを選択します。
 
-   **[Service Bus 名前空間]**:作成した名前空間を選択します。
+1. **[メッセージング]** で、 **[メッセージ ルーティング]** を選択します。 **[メッセージ ルーティング]** ウィンドウで、 **[カスタム エンドポイント]** タブを選択して **[+ 追加]** を選択します。 ドロップダウン リストから、 **[Service bus queue] (Service Bus キュー)** を選択します。
 
-   **Service Bus キュー**:作成したキューを選択します。
+   ![Azure Portal で IoT Hub にエンドポイントを追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
-3. **[OK]** を選択します。
+1. **[Add a service bus endpoint] (Service Bus エンドポイントを追加する)** ウィンドウで、次の情報を入力します。
 
-   ![Azure Portal で IoT Hub にエンドポイントを追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3_add-iot-hub-endpoint-azure-portal.png)
+   **[エンドポイント名]** : エンドポイントの名前。
+
+   **[Service Bus 名前空間]** : 作成した名前空間を選択します。
+
+   **[Service bus queue] (Service Bus キュー)** : 作成したキューを選択します。
+
+   ![Azure Portal で IoT Hub にエンドポイントを追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
+
+1. **作成** を選択します。 エンドポイントが正常に作成されたら、次の手順に進みます。
 
 ### <a name="add-a-routing-rule"></a>ルーティングの規則を追加する
 
-1. IoT ハブで **[ルート]** > **[+ 追加]** の順に選択します。
+1. **[メッセージ ルーティング]** ウィンドウに戻り、 **[ルート]** タブを選択して **[+ 追加]** を選択します。
 
-2. 次の情報を入力します。
+1. **[ルートを追加する]** ウィンドウで、次の情報を入力します。
 
-   **[名前]**:ルーティング規則の名前。
-
-   **データ ソース**:**[DeviceMessages]** を選択します。
+   **[名前]** :ルーティング規則の名前。
 
    **エンドポイント**: 作成したエンドポイントを選択します。
 
-   **クエリ文字列**:「 `temperatureAlert = "true"` 」を入力します。
+   **データ ソース**: **[Device Telemetry Messages] (デバイス テレメトリ メッセージ)** を選択します。
 
-3. **[保存]** を選択します。
+   **ルーティング クエリ**:「 `temperatureAlert = "true"` 」を入力します。
 
-   ![Azure Portal でルーティングの規則を追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4_add-routing-rule-azure-portal.png)
+   ![Azure Portal でルーティングの規則を追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
+
+1. **[保存]** を選択します。 **[メッセージ ルーティング]** ウィンドウを閉じることができます。
 
 ## <a name="create-and-configure-a-logic-app"></a>ロジック アプリを作成して構成する
 
-次に、ロジック アプリを作成して構成します。
+前のセクションでは、温度アラートを含むメッセージを Service Bus キューにルーティングするように IoT ハブを設定しました。 ここでは、Service Bus キューを監視し、そのキューにメッセージが追加された場合は常に電子メール通知を送信するロジック アプリを設定します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 
-1. [Azure portal](https://portal.azure.com/) で、**[リソースの作成]** > **[エンタープライズ統合]** > **[ロジック アプリ]** の順に選択します。
+1. **[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** の順に選択します。
 
-2. 次の情報を入力します。
+1. 次の情報を入力します。
 
-   **[名前]**:ロジック アプリの名前。
+   **[名前]** :ロジック アプリの名前。
 
-   **[リソース グループ]**:IoT ハブと同じリソース グループを使用します。
+   **[リソース グループ]** :IoT ハブと同じリソース グループを使用します。
 
-   **[場所]**:IoT ハブで使用するものと同じ場所を使用します。
+   **[場所]** :IoT ハブで使用するものと同じ場所を使用します。
 
-3. **作成** を選択します。
+   ![Azure Portal でロジック アプリを作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
 
-### <a name="configure-the-logic-app"></a>ロジック アプリを構成する
+1. **作成** を選択します。
 
-1. Logic Apps デザイナーに表示されるロジック アプリを開きます。
+### <a name="configure-the-logic-app-trigger"></a>ロジック アプリのトリガーを構成する
 
-2. Logic Apps デザイナーで、**[空のロジック アプリ]** を選択します。
+1. ロジック アプリを開きます。 ロジック アプリに移動するための最も簡単な方法として、リソース ウィンドウから **[リソース グループ]** を選択し、リソース グループを選択した後、リソースの一覧からロジック アプリを選択します。 ロジック アプリを選択すると、Logic Apps デザイナーが開きます。
 
-   ![Azure Portal で空のロジック アプリを開始する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/5_start-with-blank-logic-app-azure-portal.png)
+1. Logic Apps デザイナーで、 **[テンプレート]** まで下へスクロールし、 **[空のロジック アプリ]** を選択します。
 
-3. **[Service Bus]** を選びます。
+   ![Azure Portal で空のロジック アプリを開始する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/5-start-with-blank-logic-app-azure-portal.png)
 
-   ![Service Bus を選択して、Azure Portal でロジック アプリの作成を開始する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6_select-service-bus-when-creating-blank-logic-app-azure-portal.png)
+1. **[すべて]** タブを選択して **[Service Bus]** を選択します。
 
-4. **[Service Bus - 1 つ以上のメッセージがキューに届いたとき (オートコンプリート)]** を選択します。
+   ![Service Bus を選択して、Azure Portal でロジック アプリの作成を開始する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
 
-5. Service Bus の接続を作成します。
+1. **[トリガー]** で、 **[キューで 1 つ以上のメッセージを受信したとき (オート コンプリート)]** を選択します。
 
-   1. 接続名を入力します。
+   ![Azure Portal でロジック アプリのトリガーを選択する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
 
-   2. [サービス バス名前空間] > [Service Bus ポリシー] > **[作成]** の順に選択します。
+1. Service Bus の接続を作成します。
+   1. 接続名を入力し、一覧から Service Bus 名前空間を選択します。 次の画面が開きます。
 
-      ![Azure Portal でロジック アプリ用の Service Bus 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7_create-service-bus-connection-in-logic-app-azure-portal.png)
+      ![Azure Portal でロジック アプリ用の Service Bus 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
-   3. サービス バス接続が作成されたら、**[続行]** を選択します。
+   1. Service Bus ポリシー (RootManageSharedAccessKey) を選択します。 次に、 **[作成]** を選択します。
 
-   4. 作成したキューを選択し、**[最大メッセージ数]** に「`175`」と入力します。
+      ![Azure Portal でロジック アプリ用の Service Bus 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 
-      ![ロジック アプリで Service Bus 接続の最大メッセージ数を指定する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8_specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
+   1. 最後の画面の **[キュー名]** で、ドロップダウンから前に作成したキューを選択します。 **[最大メッセージ数]** に「`175`」と入力します。
 
-   5. [保存] ボタンを選択して変更を保存します。
+      ![ロジック アプリで Service Bus 接続の最大メッセージ数を指定する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
 
-6. SMTP サービス接続を作成します。
+   1. Logic Apps デザイナーの上部にあるメニューで **[保存]** を選択して、変更内容を保存します。
 
-   1. **[新しいステップ]** > **[アクションの追加]** の順に選択します。
+### <a name="configure-the-logic-app-action"></a>ロジック アプリのアクションを構成する
 
-   2. 「`SMTP`」と入力し、検索結果の **[SMTP サービス]** を選択して **[SMTP - 電子メールの送信]** を選択します。
+1. SMTP サービス接続を作成します。
 
-      ![Azure Portal でロジック アプリの SMTP 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9_create-smtp-connection-logic-app-azure-portal.png)
+   1. **[新しいステップ]** を選択します。 **[アクションを選択する]** で、 **[すべて]** タブを選択します。
 
-   3. メールボックスの SMTP 情報を入力し、**[作成]** を選択します。
+   1. 検索ボックスに「`smtp`」と入力し、検索結果の **[SMTP]** サービスを選択して **[電子メールの送信]** を選択します。
 
-      ![Azure Portal でロジック アプリの SMTP 接続情報を入力する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10_enter-smtp-connection-info-logic-app-azure-portal.png)
+      ![Azure Portal でロジック アプリの SMTP 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9-create-smtp-connection-logic-app-azure-portal.png)
+
+   1. メールボックスの SMTP 情報を入力し、 **[作成]** を選択します。
+
+      ![Azure Portal でロジック アプリの SMTP 接続情報を入力する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10-enter-smtp-connection-info-logic-app-azure-portal.png)
 
       [Hotmail/Outlook.com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970)、[Gmail](https://support.google.com/a/answer/176600?hl=en)、[Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html) の SMTP 情報を入手します。
 
-   4. **[差出人]** と **[宛先]** にメール アドレス、**[件名]** と **[本文]** に `High temperature detected` を入力します。
+      > [!NOTE]
+      > 接続を確立するために SSL を無効にすることが必要になる場合があります。 このとき、接続が確立された後に SSL を再び有効にする場合は、このセクションの最後にある省略可能な手順を参照してください。
 
-   5. **[保存]** を選択します。
+   1. **[電子メールの送信]** 手順の **[新しいパラメーターの追加]** ドロップダウンから、 **[From] (差出人)** 、 **[To] (宛先)** 、 **[件名]** 、および **[本文]** を選択します。 画面上の任意の場所をクリックまたはタップして選択ボックスを閉じます。
 
-ロジック アプリは、保存時も動作しています。
+      ![SMTP 接続の電子メール フィールドを選択する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
+
+   1. **[差出人]** と **[宛先]** にメール アドレス、 **[件名]** と **[本文]** に `High temperature detected` を入力します。 **[Add dynamic content from the apps and connectors used in this flow] (このフローで使用されているアプリやコネクタから動的コンテンツを追加する)** ダイアログが開いた場合は、 **[非表示]** を選択してそれを閉じます。 このチュートリアルでは、動的コンテンツを使用しません。
+
+      ![SMTP 接続の電子メール フィールドに入力する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
+
+   1. **[保存]** を選択して SMTP 接続を保存します。
+
+1. (省略可能) 電子メール プロバイダーとの接続を確立するために SSL を無効にする必要があり、ここで再び有効にする場合は、次の手順に従います。
+
+   1. **[ロジック アプリ]** ウィンドウの **[開発ツール]** で、 **[API 接続]** を選択します。
+
+   1. API 接続の一覧から、SMTP 接続を選択します。
+
+   1. **[smtp API Connection] (SMTP API 接続)** ウィンドウの **[全般]** で、 **[API 接続の編集]** を選択します。
+
+   1. **[API 接続の編集]** ウィンドウで、 **[SSL を有効にしますか?]** を選択し、電子メール アカウントのパスワードを再入力して **[保存]** を選択します。
+
+      ![Azure Portal のロジック アプリで SMTP API 接続を編集する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/re-enable-smtp-connection-ssl.png)
+
+これで、ロジック アプリは Service Bus キューからの温度アラートを処理し、電子メール アカウントに通知を送信する準備ができました。
 
 ## <a name="test-the-logic-app"></a>ロジック アプリをテストする
 
-1. [[Connect ESP8266 to Azure IoT Hub]](iot-hub-arduino-huzzah-esp8266-get-started.md) \(Azure IoT Hub に ESP8266 を接続する) で、デバイスにデプロイするクライアント アプリケーションを開始します。
+1. デバイス上でクライアント アプリケーションを起動します。
 
-2. SensorTag の周囲でろうそくに火を付けるなど、SensorTag の周囲の環境の温度を 30 °C を超えるまで上昇させます。
+1. 物理デバイスを使用している場合は、温度が 30 度 C を超えるまで、熱源を慎重に熱センサーに近付けます。オンライン シミュレーターを使用している場合は、クライアント コードによって、30 C を超えるテレメトリ メッセージがランダムに出力されます。
 
-3. これにより、ロジック アプリからメール通知が送信されます。
+1. これにより、ロジック アプリによって送信された電子メール通知を受信し始めます。
 
    > [!NOTE]
    > メール サービス プロバイダーは、メールの送信者を送信者 ID で確認する必要が生じる場合があります。

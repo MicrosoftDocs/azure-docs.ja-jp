@@ -67,19 +67,17 @@
         - name: プライベート クラウドのリソースを管理する
           items:
             - name: プライベート クラウドを作成する
-              href: 'https://docs.azure.cloudsimple.com/create-private-cloud/'
+              href: create-private-cloud.md
             - name: プライベート クラウドを管理する
-              href: 'https://docs.azure.cloudsimple.com/manage-private-cloud/'
+              href: manage-private-cloud.md
             - name: プライベート クラウドを拡大する
-              href: 'https://docs.azure.cloudsimple.com/expand-private-cloud/'
+              href: expand-private-cloud.md
             - name: プライベート クラウドを縮小する
-              href: 'https://docs.azure.cloudsimple.com/shrink-private-cloud/'
-            - name: プライベート クラウド ラックの一覧を表示する
-              href: 'https://docs.azure.cloudsimple.com/view-cloud-racks/'
+              href: shrink-private-cloud.md
             - name: Azure サブスクリプションをマッピングする
-              href: 'https://docs.azure.cloudsimple.com/azure-subscription-mapping/'
+              href: azure-subscription-mapping.md
             - name: 権限をエスカレートする
-              href: 'https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges/'
+              href: escalate-private-cloud-privileges.md
         - name: CloudSimple アクティビティを監視する
           href: 'https://docs.azure.cloudsimple.com/activity/'
         - name: プライベート クラウドのネットワークを設定する

@@ -10,60 +10,54 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/02/2016
+ms.date: 06/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: 712004a1ae8a2a72854b7b2332449a019c0820c3
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 9da52e5a9dfa3b55431d66ed3162172226f71a40
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256258"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073302"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
-Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 多くの場合、リソースの作成は IDE によって自動的に行われます。 ただし、たとえば、アプリケーションの開発ビルドと運用ビルドそれぞれに個別にリソースを設定するために、リソースを手動で作成することがあります。
 
-リソースを作成した後、インストルメンテーション キーを取得し、それを使用してアプリケーション内の SDK を構成します。 リソース キーによって、テレメトリがリソースに紐付けられます。
+Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 新しいリソースを作成した後、そのインストルメンテーション キーを取得し、それを使用し Application Insights SDK を構成できます。 インストルメンテーション キーにより、リソースとテレメトリがリンクされます。
 
-## <a name="sign-up-to-microsoft-azure"></a>Microsoft Azure へのサインアップ
-取得していない場合、[Microsoft アカウントをここで取得してください](https://live.com)。 (Outlook.com、OneDrive、Windows Phone、XBox Live などのサービスを利用している場合、Microsoft アカウントを持っています。)
+## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure にサインインする
 
-[Microsoft Azure](https://azure.com)のサブスクリプションも必要になります。 チームまたは組織で Azure サブスクリプションを所有している場合、所有者は Windows Live ID を使用してあなたを追加できます。 課金対象となるのは、使用した分だけです。 既定の Basic プランでは、試験段階の一定量を無料で使用できます。
-
-サブスクリプションへのアクセスを取得したら、Application Insights ([https://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
-[portal.azure.com](https://portal.azure.com)で、Application Insights リソースを追加します。
 
-![[新規]、[Application Insights] の順にクリックする](./media/create-new-resource/01-new.png)
+[Azure portal](https://portal.azure.com) にサインインし、Application Insights リソースを作成します。
 
-* **アプリケーションの種類**に応じて、概要ブレードに表示されるものと、[メトリック エクスプローラー][metrics]で使用できるプロパティが決まります。 お使いの種類のアプリが表示されない場合は、[General (汎用)] を選択します。
-* **サブスクリプション** は、Azure での支払いアカウントです。
-* **リソース グループ** は、アクセス制御などのプロパティを管理するのに便利です。 その他の Azure リソースが既に作成されている場合、新しいリソースを同じグループに入れることもできます。
-* **場所** は、データの保存場所です。
-* **[ダッシュボードにピン留めする]** をオンにすると、Azure のホーム ページにそのリソースに対するクイック アクセス タイルを追加できます。 推奨。
+![左上隅にある + 記号をクリックします。 開発者ツールを選択し、Application Insights を選択する](./media/create-new-resource/new-app-insights.png)
 
-アプリが作成されると、新しいブレードが開きます。 そのブレードには、アプリに関するパフォーマンスと使用状況データが表示されます。 
+   | 設定        |  値           | 説明  |
+   | ------------- |:-------------|:-----|
+   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
+   | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループまたは既存のリソース グループの名前。 |
+   | **Location** | 米国東部 | お近くの場所か、アプリがホストされている場所の近くを選択します。 |
 
-次回 Azure にログインするときにそこへ戻るには、スタート画面 (ホーム画面) 上のアプリのクイック スタート タイルを探してください。 あるいは、[参照] ボタンをクリックして探します。
+必須フィールドに適切な値を入力し、 **[確認と作成]** を選択します。
+
+![必須フィールドに値を入力し、[確認と作成] を選択します。](./media/create-new-resource/review-create.png)
+
+アプリが作成されると、新しいウィンドウが開きます。 そのウィンドウには、監視対象アプリケーションに関するパフォーマンスと使用状況データが表示されます。 
 
 ## <a name="copy-the-instrumentation-key"></a>インストルメンテーション キーのコピー
-インストルメンテーション キーは作成したリソースを識別します。 これは、SDK に渡すために必要です。
 
-![Essentials、インストルメンテーション キーの順にクリックし、Ctrl キーを押しながら C キーを押します。](./media/create-new-resource/02-props.png)
+インストルメンテーション キーにより、利用統計情報と関連付けるリソースが識別されます。 インストルメンテーション キーをコピーしてアプリケーションのコードに追加する必要があります。
+
+![インストルメンテーション キーをクリックしてコピーする](./media/create-new-resource/instrumentation-key.png)
 
 ## <a name="install-the-sdk-in-your-app"></a>アプリケーションでの SDK のインストール
-アプリで Application Insights SDK をインストールします。 この手順は、アプリケーションの種類に大きく依存します。 
+
+アプリで Application Insights SDK をインストールします。 この手順は、アプリケーションの種類に大きく依存します。
 
 インストルメンテーション キーを使用して、[アプリケーションにインストールする SDK][start] を構成します。
 
-SDK には、コードを記述せずにテレメトリを送信する標準的なモジュールが含まれています。 ユーザーの操作を追跡したり、問題をより詳しく診断したりするには、[API を使用][api]して、独自のテレメトリを送信します。
-
-## <a name="monitor"></a>テレメトリ データを参照
-クイック スタート ブレードを閉じ、Azure Portal のアプリケーション ブレードに戻ります。
-
-[検索] タイルをクリックして [[診断検索]][diagnostic] を確認します。ここには、最初のイベントが表示されます。 
-
-大量のデータが予想される場合は、数秒後に **[最新の情報に更新]** をクリックします。
+SDK には、追加コードを記述せずにテレメトリを送信する標準的なモジュールが含まれています。 ユーザーの操作を追跡したり、問題をより詳しく診断したりするには、[API を使用][api]して、独自のテレメトリを送信します。
 
 ## <a name="creating-a-resource-automatically"></a>リソースの自動作成
 [PowerShell スクリプト](../../azure-monitor/app/powershell.md) を作成して、リソースを自動で作成できます。
@@ -79,4 +73,3 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

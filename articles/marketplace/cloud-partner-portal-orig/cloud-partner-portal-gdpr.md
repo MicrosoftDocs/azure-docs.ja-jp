@@ -7,17 +7,17 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 221f559dde2017c9b5d13dd4e06a140a6bcb5e2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91db369f9a2a0439bdbaf8600d1b329f0da00aa0
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935421"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786467"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud パートナー ポータルの GDPR コンプライアンス
 ====================================
 
-[一般データ保護規則 (GDPR)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm) は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR は、EU 内で人々に製品やサービスを提供したり、EU 居住者に関連するデータを収集および分析したりする企業、政府機関、非営利組織やその他の組織を対象とするルールです。
+[一般データ保護規則 (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR は、EU 内で人々に製品やサービスを提供したり、EU 居住者に関連するデータを収集および分析したりする企業、政府機関、非営利組織やその他の組織を対象とするルールです。
 
 Cloud パートナー ポータルには、顧客データの処理と、そのデータを保護するために使用するセキュリティ対策に関する詳細情報が提供されています。 この情報には、製品内エクスペリエンスを通してアクセスできます。
 

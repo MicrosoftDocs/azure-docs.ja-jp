@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 928338a911efae051df7164239dbd19f9317338a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 235d29c876616948516bbe4309ddd630bc3f6dca
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584609"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67852598"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure SQL Database での Azure メンテナンス イベントの計画
 
@@ -41,7 +41,7 @@ Azure SQL データベースに計画メンテナンス イベントを準備す
 
 ## <a name="resource-health"></a>リソース正常性
 
-SQL データベースでログイン エラーが発生している場合は、[Azure portal](https://portal.azure.com)の [[リソース正常性]](../service-health/resource-health-overview.md#getting-started) ウィンドウで、現在の状態を確認します。 [正常性の履歴] セクションには、(該当する場合は) イベントごとのダウンタイムの理由が含まれています。
+SQL データベースでログイン エラーが発生している場合は、[Azure portal](https://portal.azure.com)の [[リソース正常性]](../service-health/resource-health-overview.md#get-started) ウィンドウで、現在の状態を確認します。 [正常性の履歴] セクションには、(該当する場合は) イベントごとのダウンタイムの理由が含まれています。
 
 
 ## <a name="next-steps"></a>次の手順

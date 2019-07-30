@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7413fcf7992195753cba86a50b7d53a144b36023
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440629"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476441"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
 
@@ -143,7 +143,7 @@ Azure AD ロールの場合、組織では、ほとんどの管理者が 1 つ�
 
 1. 組織内の特権ロールを持つユーザーのリスト。 [PIM ウィザード](pim-security-wizard.md#run-the-wizard)を使用して、以下のようなページを表示することができます。
 
-    ![特権ロールを検出する](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![特権ロールがあるユーザーを示す [特権ロールの検出] ウィンドウ](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
 1. 組織内のすべてのグローバル管理者の場合、ロールが必要である理由を確認します。 前のドキュメントの内容に従って、ユーザーのジョブが 1 つ以上の詳細な管理者ロールによって実行できる場合は、グローバル管理者ロールから削除し、Azure Active Directory 内で適宜、割り当てを行う必要があります (参照:Microsoft には、現在、グローバル管理者ロールを持つ約 10 人の管理者のみが存在します。 詳細については、[Microsoft での PIM の使用方法](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)に関するページを参照してください)。
 
@@ -151,7 +151,7 @@ Azure AD ロールの場合、組織では、ほとんどの管理者が 1 つ�
 
 手順 3 と 4 を自動化する場合は、PIM 内でアクセス レビュー機能を利用できます。 [PIM での Azure AD ロールのアクセス レビューの開始](pim-how-to-start-security-review.md)に関するページの手順に従うことで、1 人以上のメンバーを持つ各 Azure AD ロールに対してアクセス レビューを設定できます。
 
-![アクセス レビューの作成](./media/pim-deployment-plan/create-access-review.png)
+![Azure AD ロールの [アクセス レビューを作成する] ウィンドウ](./media/pim-deployment-plan/create-access-review.png)
 
 レビュー担当者を **[メンバー (セルフ)]** に設定する必要があります。 これにより、ロール内のすべてのメンバーにメールが送信され、アクセスが必要かどうかを確認させることができます。 また、詳細設定で **[承認時に理由が必要]** をオンにし、ユーザーがロールを必要とする理由を示せるようにする必要があります。 この情報に基づき、不要なロールからユーザーを削除し、グローバル管理者の場合はより詳細な管理者のロールを委任することができます。
 

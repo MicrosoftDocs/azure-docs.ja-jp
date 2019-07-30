@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: 87fb35f06dcb1d1e3fb8c3ae3be64c7448162f14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f55171a177dfcbebb9bc6df5ce125a8f29494946
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025733"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606293"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Speech Devices SDK のトラブルシューティング
 

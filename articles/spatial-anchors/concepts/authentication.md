@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e641025d49dd42125aa692925c0697235489b1db
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: c7ffa432c9311ba9d4ecf4ba82c375e2dad988d0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307546"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478544"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -45,9 +45,45 @@ Azure AD 認証トークンは、次の 2 つの方法で取得できます。
 
 SDK には、アカウント キーを使用した認証の組み込みのサポートがあり、cloudSession オブジェクトに対して AccountKey プロパティを設定するだけで済みます。 
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 ```
+
+# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+
+```objc
+_cloudSession.configuration.accountKey = @"MyAccountKey";
+```
+
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+```swift
+_cloudSession!.configuration.accountKey = "MyAccountKey"
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
+```
+
+# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+
+```cpp
+auto configuration = cloudSession_->Configuration();
+configuration->AccountKey(R"(MyAccountKey)");
+```
+
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+
+```cpp
+auto configuration = m_cloudSession.Configuration();
+configuration.AccountKey(LR"(MyAccountKey)");
+```
+
+***
 
 これを完了すると、SDK で、アクセス トークンのためのアカウント キーの交換と、アプリのトークンの必要なキャッシュが処理されるようになります。 
 
@@ -56,7 +92,7 @@ this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD ユーザー認証
 
-Azure Active Directory ユーザーをターゲットとするアプリケーションに対して推奨される方法は、ユーザーに Azure AD トークンを使用することです。これは次のドキュメント (https://docs.microsoft.com/azure/active-directory/develop/v1-overview) で説明されているように、ADAL ライブラリを使用して取得できます。「Quick starts」 (クイック スタート) の下に記載されている手順に従う必要があります。これには次が含まれます。
+Azure Active Directory ユーザーをターゲットとするアプリケーションに対して推奨される方法は、ユーザーに Azure AD トークンを使用することです。これは次のドキュメント ([https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md)) で説明されているように、ADAL ライブラリを使用して取得できます。「Quick starts」 (クイック スタート) の下に記載されている手順に従う必要があります。これには次が含まれます。
 
 1. Azure portal での構成
     1.  Azure AD でアプリケーションを**ネイティブ アプリケーション**として登録します。 登録の一環として、アプリケーションをマルチ テナントにする必要があるかどうかを決定し、アプリケーションに許可するリダイレクト URL を提供する必要があります。  
@@ -77,9 +113,45 @@ Azure Active Directory ユーザーをターゲットとするアプリケーシ
 
 これで、アプリケーションが ADAL から Azure AD トークンを取得できるようになるはずです。その Azure AD トークンをクラウド セッション構成オブジェクトで **authenticationToken** として設定できます。 
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
 ```
+
+# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+
+```objc
+_cloudSession.configuration.authenticationToken = @"MyAuthenticationToken";
+```
+
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+```swift
+_cloudSession!.configuration.authenticationToken = "MyAuthenticationToken"
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+mCloudSession.getConfiguration().setAuthenticationToken("MyAuthenticationToken");
+```
+
+# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+
+```cpp
+auto configuration = cloudSession_->Configuration();
+configuration->AuthenticationToken(R"(MyAuthenticationToken)");
+```
+
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+
+```cpp
+auto configuration = m_cloudSession.Configuration();
+configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
+```
+
+***
 
 ## <a name="azure-ad-service-authentication"></a>Azure AD サービス認証
 
@@ -89,7 +161,7 @@ Azure Spatial Anchors を利用してアプリを運用環境にデプロイす�
 
 ここでは、アプリが独自のメカニズム (例:Microsoft アカウント、PlayFab、Facebook、Google ID、カスタムのユーザー名/パスワードなど) を使用してそのバックエンド サービスを認証することを前提としています。 ユーザーがバックエンド サービスに対して認証されると、そのサービスで Azure AD トークンを取得して、それを Azure Spatial Anchors のアクセス トークンと交換して、それをクライアント アプリケーションに返すことができます。
 
-Azure AD アクセス トークンは、次のドキュメント (https://docs.microsoft.com/azure/active-directory/develop/v1-overview) で説明されているように、ADAL ライブラリを使用して取得されます。「Quick starts」 (クイック スタート) の下に記載されている手順に従う必要があります。これには次が含まれます。
+Azure AD アクセス トークンは、次のドキュメント ([https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md)) で説明されているように、ADAL ライブラリを使用して取得されます。「Quick starts」 (クイック スタート) の下に記載されている手順に従う必要があります。これには次が含まれます。
 
 1.  Azure portal での構成:
     1.  Azure AD でアプリケーションを登録します。
@@ -132,9 +204,45 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
  
 その MR トークンは、その後、クライアントに返されます。 その後、クライアント アプリでそれをクラウド セッション構成でアクセス トークンとして設定できます。
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";
 ```
+
+# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+
+```objc
+_cloudSession.configuration.accessToken = @"MyAccessToken";
+```
+
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+```swift
+_cloudSession!.configuration.accessToken = "MyAccessToken"
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+mCloudSession.getConfiguration().setAccessToken("MyAccessToken");
+```
+
+# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+
+```cpp
+auto configuration = cloudSession_->Configuration();
+configuration->AccessToken(R"(MyAccessToken)");
+```
+
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+
+```cpp
+auto configuration = m_cloudSession.Configuration();
+configuration.AccessToken(LR"(MyAccessToken)");
+```
+
+***
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 

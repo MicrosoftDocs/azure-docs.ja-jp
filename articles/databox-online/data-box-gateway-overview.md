@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 07/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 2905cae6d5d97062d5a2fc1da41d55290d89fb4a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1b749df7c5b3badbc6e7eccd885cb953ab3d0afa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924498"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277382"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway とは
 
@@ -90,12 +90,7 @@ Data Box Gateway ソリューションは、Data Box Gateway リソース、Data
 
 Data Box Gateway 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じ地域にある必要はありません。
 
-- **リソースの可用性** - このリリースでは、Data Box Gateway リソースは、パブリック クラウドをサポートする次の地域で利用できます。
-    - **米国** - 米国東部
-    - **欧州連合** - 欧州西部
-    - **アジア太平洋** - 東南アジア
-
-    Data Box Gateway は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
+- **リソースの使用可能性** - Data Box Edge リソースを使用できるすべてのリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)」をご覧ください。 Data Box Gateway は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。
 

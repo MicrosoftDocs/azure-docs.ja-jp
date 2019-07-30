@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38d3c61acee9dca18ab1f863d878e02f7437a600
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707978"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433717"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
@@ -21,7 +21,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 クラスターのレプリケーションでは、ソース プッシュの手法が使用されます。 HBase クラスターは、ソースまたはターゲットになることも、両方のロールを同時に満たすこともできます。 レプリケーションは非同期です。 レプリケーションの目的は、最終的な一貫性です。 レプリケーションが有効になった列ファミリに対する編集をソースが受け取ると、その編集はすべてのターゲット クラスターに伝達されます。 クラスター間でデータがレプリケートされるときは、ソース クラスターとそのデータを既に消費しているすべてのクラスターが追跡されて、レプリケーション ループが防止されます。
 
-このチュートリアルでは、ソースとターゲット間のレプリケーションを設定します。 他のクラスター トポロジについては、[Apache HBase のリファレンス ガイド](https://hbase.apache.org/book.html#_cluster_replication)を参照してください。
+この記事では、ソースとターゲット間のレプリケーションを設定します。 他のクラスター トポロジについては、[Apache HBase のリファレンス ガイド](https://hbase.apache.org/book.html#_cluster_replication)を参照してください。
 
 次に示すのは、単一の仮想ネットワークでの HBase レプリケーションの使用例です。
 
@@ -39,7 +39,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 クラスターは、[GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) の[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)のスクリプトを使用してレプリケートできます。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+この記事を開始する前に、Azure サブスクリプションが必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 ## <a name="set-up-the-environments"></a>環境を設定する
 
@@ -85,7 +85,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| Location | 米国東部 |
+| Location | East US |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet2 |
 | アドレス空間プレフィックス | 10.2.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -396,7 +396,7 @@ sudo service bind9 status
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で Apache HBase レプリケーションを設定する方法を説明しました。 HDInsight と Apache HBase の詳細については、以下の記事を参照してください。
+この記事では、1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で Apache HBase レプリケーションを設定する方法を説明しました。 HDInsight と Apache HBase の詳細については、以下の記事を参照してください。
 
 * [HDInsight での Apache HBase の使用](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight Apache HBase の概要](./apache-hbase-overview.md)

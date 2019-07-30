@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 914513bc19cc81da29efef12d50a6485233d169f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84ad88ef738f798103a1d5bf8f9c8504433686a7
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236575"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653198"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのバックアップと復元
 
@@ -101,7 +101,7 @@ SQL Data Warehouse の価格の詳細については、「[SQL Data Warehouse �
 
 ## <a name="geo-redundant-restore"></a>geo 冗長復元
 
-選択したパフォーマンス レベルで、SQL Data Warehouse をサポートする任意のリージョンに[データ ウェアハウスを復元](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)できます。
+選択したパフォーマンス レベルで、SQL Data Warehouse をサポートする任意のリージョンに[データ ウェアハウスを復元](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region-using-powershell)できます。
 
 > [!NOTE]
 > geo 冗長復元を実行するには、この機能の使用を中止しないようにする必要があります。

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
-ms.author: msangapu;yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8d40b28103e24214ef00864b032266cc95889eff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6bca1b067f5ec667e8b5da92a182a5618582b2f3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780330"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617443"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -33,12 +33,12 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 | 言語 | サポートされているバージョン |
 |---|---|
-| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1,10.10、10.14 |
+| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、8.12、9.4、10.1、10.10、10.14 |
 | Java * | Tomcat 8.5、9.0、Java SE、WildFly 14 (いずれも JRE 8 を実行) |
-| PHP | 5.6、7.0、7.2 |
+| PHP | 5.6、7.0、7.2、7.3 |
 | Python | 2.7、3.6、3.7 |
 | .NET Core | 1.0、1.1、2.0、2.1、2.2 |
-| Ruby | 2.3、2.4 |
+| Ruby | 2.3、2.4、2.5、2.6 |
 
 ## <a name="deployments"></a>デプロイメント
 
@@ -77,12 +77,7 @@ App Service on Linux は [Free、Basic、Standard、および Premium](https://a
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。
-コンテナーから `stdout` および `stderr` をログ記録するには、 **[診断ログ]** で **[Docker Container ログ]** を有効にする必要があります。
-
-![ログ記録の有効化][2]
-
-設定はすぐに有効になります。 App Service により設定の変更が検出され、自動的にコンテナーが再起動されます。
+アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。 コンテナーから `stdout` および `stderr` をログに記録するには、 **[App Service ログ]** で **[Docker Container ログ]** を有効にする必要があります。 設定はすぐに有効になります。 App Service で変更が検出され、自動的にコンテナーが再起動されます。
 
 SCM サイトには、 **[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
 
@@ -94,7 +89,7 @@ SCM サイトには、 **[開発ツール]** メニューの **[Advanced Tools]*
 
 * [.NET Core](quickstart-dotnetcore.md)
 * [PHP](https://docs.microsoft.com/azure/app-service/containers/quickstart-php)
-* [Node.js](quickstart-nodejs.md)
+* [Node.JS](quickstart-nodejs.md)
 * [Java](quickstart-java.md)
 * [Python](quickstart-python.md)
 * [Ruby](quickstart-ruby.md)

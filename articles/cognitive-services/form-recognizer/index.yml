@@ -6,9 +6,9 @@ metadata:
   description: Form Recognizer を使用して、フォーム ドキュメントからキーと値のデータをインテリジェントに抽出する方法について説明します。
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
-  ms.subservice: form-recognizer
+  ms.subservice: forms-recognizer
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
@@ -43,6 +43,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: コンテナーのインストールと実行
+          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
+            html: <p>カスタム モデルをトレーニングするために最適化されたデータ セットの作成。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: トレーニング データ セットの作成
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
@@ -66,6 +71,8 @@ sections:
         items:
           - title: API
             html: '<p><a href="https://aka.ms/form-recognizer/api">Form Recognizer API</a></p>'
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview">.NET</a></p>'
           - title: PowerShell
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
           - title: CLI

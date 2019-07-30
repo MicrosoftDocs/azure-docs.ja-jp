@@ -3,8 +3,8 @@ title: Azure AD エンタイトルメント管理 (プレビュー) で既存の
 description: Azure Active Directory エンタイトルメント管理 (プレビュー) で既存のアクセス パッケージを編集および管理する方法を説明します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/16/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833314"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489199"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) で既存のアクセス パッケージを編集および管理する
 
@@ -348,4 +348,5 @@ Azure AD では、ユーザーにアクセス パッケージが割り当てら�
 
 ## <a name="next-steps"></a>次の手順
 
+- [カタログ所有者またはアクセス パッケージ マネージャーを追加する](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [要求プロセスとメール通知](entitlement-management-process.md)

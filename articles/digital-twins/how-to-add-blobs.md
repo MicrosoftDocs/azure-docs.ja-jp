@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9490772226ecdb90cdd2e0b98fe8336b91db6044
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c61544ce10c5a7d16b3ffc0009039e27f5feecb1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754519"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670798"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure Digital Twins 内のオブジェクトに BLOB を追加する
 
@@ -36,7 +36,7 @@ Azure Digital Twins では、デバイス、スペース、ユーザーへの BL
 
 4 つの主な JSON スキーマは次のとおりです。
 
-[![JSON スキーマ](media/how-to-add-blobs/blob-models.PNG)](media/how-to-add-blobs/blob-models.PNG#lightbox)
+[![JSON スキーマ](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
 
 JSON BLOB のメタデータは、次のモデルに準拠しています。
 
@@ -183,7 +183,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 最後に、[cURL](https://curl.haxx.se/) ユーザーは、同じ方法でマルチパート フォーム要求を行うことができます。
 
-[![デバイスの BLOB](media/how-to-add-blobs/curl.PNG)](media/how-to-add-blobs/curl.PNG#lightbox)
+[![デバイスの BLOB](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
 
 ```bash
 curl
@@ -211,7 +211,7 @@ POST が成功すると、新しい BLOB の ID が返されます (前に赤で
 
 BLOB をデバイスにアタッチできます。 次の図では、Management API に関する Swagger のリファレンス ドキュメントを示します。 BLOB を使用するためのデバイス関連の API エンドポイントと、それらに渡す必要があるパス パラメーターが指定されています。
 
-[![デバイスの BLOB](media/how-to-add-blobs/blobs-device-api.PNG)](media/how-to-add-blobs/blobs-device-api.PNG#lightbox)
+[![デバイスの BLOB](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
 
 たとえば、BLOB を更新または作成して、BLOB をデバイスにアタッチするために、以下に対して認証済みの HTTP PATCH 要求を行います。
 
@@ -229,7 +229,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 スペースに BLOB をアタッチすることもできます。 次の図では、BLOB を処理するすべてのスペース API エンドポイントの一覧を示します。 また、それらのエンドポイントに渡すすべてのパス パラメーターの一覧も示します。
 
-[![スペース BLOB](media/how-to-add-blobs/blobs-space-api.PNG)](media/how-to-add-blobs/blobs-space-api.PNG#lightbox)
+[![スペース BLOB](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
 
 たとえば、スペースにアタッチされている BLOB を返すには、以下に対して認証済みの HTTP GET 要求を行います。
 
@@ -249,7 +249,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 BLOB を (たとえば、プロファイル画像を関連付けるために) ユーザー モデルにアタッチできます。 次の図では、関連するユーザー API エンドポイントと、`id` などの必須のパス パラメーターを示します。
 
-[![ユーザー BLOB](media/how-to-add-blobs/blobs-users-api.PNG)](media/how-to-add-blobs/blobs-users-api.PNG#lightbox)
+[![ユーザー BLOB](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
 
 たとえば、ユーザーにアタッチされている BLOB をフェッチするには、必要なフォーム データを使用して認証済みの HTTP GET 要求を行います。
 

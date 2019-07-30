@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: df05bd984667283b0ccc143ba14fff6b35d69144
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d9019a6b4a32066480a70f72562bc5a7a9a1e8b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753182"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797647"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "66753182"
 
 実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。
 
-自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。 DNN アルゴリズムはトレーニング中に使用できますが、自動 ML は DNN モデルをビルドしません。
+自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。 
 
 分類 | 回帰 | 時系列予測
 |-- |-- |--
@@ -258,6 +258,20 @@ automl_config = AutoMLConfig(task='forecasting',
 ```
 
 ## <a name="run-experiment"></a>実験を実行する
+
+自動化された ML の場合は `Experiment` オブジェクトを作成する必要があります。これは、実験を実行するために使用される `Workspace` 内の名前付きオブジェクトです。
+
+```python
+from azureml.core.experiment import Experiment
+
+ws = Workspace.from_config()
+
+# Choose a name for the experiment and specify the project folder.
+experiment_name = 'automl-classification'
+project_folder = './sample_projects/automl-classification'
+
+experiment = Experiment(ws, experiment_name)
+```
 
 実験を送信して実行し、モデルを生成します。 モデルを生成するには、`AutoMLConfig` を `submit` メソッドに渡します。
 

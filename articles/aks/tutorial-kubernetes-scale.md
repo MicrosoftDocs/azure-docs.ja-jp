@@ -2,18 +2,18 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのスケーリング
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Kubernetes のノードとポッドをスケーリングする方法のほか、ポッドの水平自動スケーリングを導入する方法について説明します。
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 062e16c0d196cf91d6e0adde46ed973f1c0d1191
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304438"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614195"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -34,7 +34,7 @@ ms.locfileid: "66304438"
 
 ## <a name="manually-scale-pods"></a>ポッドを手動でスケーリングする
 
-前のチュートリアルで Azure Vote フロントエンドと Redis インスタンスをデプロイしたときに、レプリカを 1 つ作成しました。 クラスターに存在するポッドの数と状態を確認するには、次のように [kubectl get][kubectl-get]コマンドを使用します。
+前のチュートリアルで Azure Vote フロントエンドと Redis インスタンスをデプロイしたときに、レプリカを 1 つ作成しました。 ご利用のクラスターに存在するポッドの数と状態を確認するには、次のように [kubectl get][kubectl-get] コマンドを使用します。
 
 ```console
 kubectl get pods
@@ -54,7 +54,7 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-AKS によって新たにポッドが作成されていることを確認するために、もう一度 [kubectl get pods][kubectl-get] を実行します。 しばらくすると、追加したポッドがクラスターで利用できる状態になります。
+AKS によって追加のポッドが作成されていることを確認するために、もう一度 [kubectl get pods][kubectl-get] を実行します。 しばらくすると、追加したポッドがクラスターで利用できる状態になります。
 
 ```console
 $ kubectl get pods
@@ -70,13 +70,13 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>ポッドを自動スケールする
 
-Kubernetes は[ポッドの水平自動スケーリング][kubernetes-hpa]をサポートしており、CPU 使用率などの選ばれたメトリックに応じて、デプロイのポッドの数を調整します。 [Metrics Server][metrics-server] は、Kubernetes にリソース使用率を提供するために使用され、AKS クラスター バージョン 1.10 以降に自動的にデプロイされます。 AKS クラスターのバージョンを確認するには、次の例に示すように、[az aks show][az-aks-show] コマンドを使用します。
+Kubernetes では [ポッドの水平自動スケール][kubernetes-hpa]がサポートされており、CPU 使用率やその他の選択したメトリックに応じて、デプロイ内のポッドの数が調整されます。Metrics Server は Kubernetes にリソース使用率を提供するために使用され、バージョン 1.10 以降の AKS クラスターに自動的にデプロイされます。 ご利用の AKS クラスターのバージョンを確認するには、次の例に示すように、[az aks show][az-aks-show] コマンドを使用します。
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-AKS クラスターが *1.10* 未満の場合は、Metrics Server をインストールします。そうでない場合は、この手順をスキップします。 インストールするには、`metrics-server` GitHub リポジトリを複製し、サンプル リソース定義をインストールします。 これらの YAML 定義の内容を表示する場合は、[Metrics Server for Kuberenetes 1.8+][metrics-server-github] を参照してください。
+AKS クラスターが *1.10* 未満の場合は、Metrics Server をインストールします。そうでない場合は、この手順をスキップします。 インストールするには、`metrics-server` GitHub リポジトリを複製し、サンプル リソース定義をインストールします。 これらの YAML 定義の内容を表示する場合は、[Metrics Server for Kubernetes 1.8+][metrics-server-github] に関するページを参照してください。
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 201998168b0709b1608ffad2565518e15d47e52c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fa8e54a6a665b1bad91a87ca8e58f873df1ae8a
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234295"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672313"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure Disk Encryption の前提条件 (以前のリリース)
 
@@ -28,26 +28,64 @@ ms.locfileid: "66234295"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="bkmk_OSs"></a> サポートされているオペレーティング システム
-Azure Disk Encryption は、次のオペレーティング システムでサポートされています。
+## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 
-- Windows Server バージョン:Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016。
-  - Windows Server 2008 R2 の場合、Azure で暗号化を有効にする前に、.Net Framework 4.5 をインストールする必要があります。 Windows Update から、オプションの更新プログラムである Windows Server 2008 R2 x64 ベース システム用の Microsoft .NET Framework 4.5.2 ([KB2901983](https://support.microsoft.com/kb/2901983)) を使用してインストールすることができます。    
-- Windows クライアント バージョン:Windows 8 クライアントおよび Windows 10 クライアント。
-- Azure Disk Encryption は、Azure ギャラリー ベースの Linux サーバーのディストリビューションおよびバージョンでのみサポートされます。 現在サポートされているバージョンの一覧については、「[Azure Disk Encryption に関する FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)」を参照してください。
+### <a name="windows"></a>Windows
+
+- Windows クライアント: Windows 8 以降
+- Windows Server: Windows Server 2008 R2 以降  
+ 
+> [!NOTE] 
+> Windows Server 2008 R2 には、暗号化用に .NET Framework 4.5 をインストールする必要があります。Windows Update から、オプションの更新プログラムである Windows Server 2008 R2 x64 ベース システム用の Microsoft .NET Framework 4.5.2 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)) を使用してインストールすることができます。  
+>  
+> Windows Server 2012 R2 Core と Windows Server 2016 Core には、暗号化用に VM 上に bdehdcfg コンポーネントをインストールする必要があります。
+
+### <a name="linux"></a>Linux 
+
+Azure Disk Encryption は [Azure での動作が保証された一部の Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)でサポートされています。Azure での動作が保証された Linux ディストリビューションはそれ自体があらゆる Linux サーバー ディストリビューションの一部となります。
+
+![Azure Disk Encryption をサポートする Linux サーバー ディストリビューションのベン図](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+
+Azure での動作が保証されていない Linux サーバー ディストリビューションでは Azure Disk Encryption がサポートされておらず、動作が保証されているディストリビューションの中でも、次のディストリビューションとバージョンだけで Azure Disk Encryption がサポートされています。
+
+| Linux ディストリビューション | Version | 暗号化がサポートされているボリュームの種類|
+| --- | --- |--- |
+| Ubuntu | 18.04| OS とデータ ディスク |
+| Ubuntu | 16.04| OS とデータ ディスク |
+| Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
+| RHEL | 7.6 | OS とデータ ディスク (後述する注を参照してください) |
+| RHEL | 7.5 | OS とデータ ディスク (後述する注を参照してください) |
+| RHEL | 7.4 | OS とデータ ディスク (後述する注を参照してください) |
+| RHEL | 7.3 | OS とデータ ディスク (後述する注を参照してください) |
+| RHEL | 7.2 | OS とデータ ディスク (後述する注を参照してください) |
+| RHEL | 6.8 | データ ディスク (後述する注を参照してください) |
+| RHEL | 6.7 | データ ディスク (後述する注を参照してください) |
+| CentOS | 7.6 | OS とデータ ディスク |
+| CentOS | 7.5 | OS とデータ ディスク |
+| CentOS | 7.4 | OS とデータ ディスク |
+| CentOS | 7.3 | OS とデータ ディスク |
+| CentOS | 7.2n | OS とデータ ディスク |
+| CentOS | 6.8 | データ ディスク |
+| openSUSE | 42.3 | データ ディスク |
+| SLES | 12-SP4 | データ ディスク |
+| SLES | 12-SP3 | データ ディスク |
+
+> [!NOTE]
+> RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい ADE の実装がサポートされます。 RHEL の BYOS (Bring-Your-Own-Subscription) イメージについては、現在 ADE はサポートされません。 詳細については、[Linux 用の Azure Disk Encryption](azure-security-disk-encryption-linux.md) に関するページを参照してください。
+
 - Azure Disk Encryption では、Key Vault と VM が同じ Azure リージョンおよびサブスクリプションに属している必要があります。 リソースをそれぞれ別のリージョンで構成すると、Azure Disk Encryption 機能を有効にする場合にエラーが発生します。
 
-## <a name="bkmk_LinuxPrereq"></a> Linux IaaS VM のその他の前提条件 
+#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>Linux IaaS VM のその他の前提条件 
 
-- Linux 用の Azure Disk Encryption を使用する場合、[サポートされているイメージ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)で OS ディスクの暗号化を有効にするために、VM に 7 GB の RAM が必要です。 OS ディスクの暗号化プロセスが完了すると、より少ないメモリで VM を実行するように構成できます。
+- Azure Disk Encryption では、dm-crypt モジュールと vfat モジュールがシステムに存在している必要があります。 vfat を既定のイメージから削除したり無効にしたりすると、システムはキー ボリュームを読み取って、その後のリブートでディスクのロックを解除するために必要なキーを取得できなくなります。 vfat モジュールをシステムから削除するシステム強化手順は、Azure Disk Encryption とは互換性がありません。 
 - 暗号化を有効にする前に、暗号化するデータ ディスクを /etc/fstab に正しく登録する必要があります。 "/dev/sdX" 形式のデバイス名は、再起動後 (特に暗号化が適用された後) に同じディスクに関連付けられるとは限らないため、このエントリに永続的なブロック デバイス名を使用してください。 この動作の詳細については、次を参照してください:[Linux VM デバイス名の変更トラブルシューティング](../virtual-machines/linux/troubleshoot-device-names-problems.md)
-- /etc/fstab 設定がマウントに合わせて正しく構成されていることを確認します。 これらの設定を構成するには、mount -a コマンドを実行するか、VM を再起動してその方法での再マウントをトリガーします。 完了したら、lsblk コマンドの出力を調べて、目的のドライブがまだマウントされていることを確認します。 
-  - 暗号化を有効にする前に /etc/fstab ファイルがドライブに適切にマウントされない場合、Azure Disk Encryption でそれを適切にマウントできません。
+- /etc/fstab 設定がマウントに合わせて正しく構成されていることを確認します。 これらの設定を構成するには、mount -a コマンドを実行するか、VM を再起動してその方法での再マウントをトリガーします。 完了したら、lsblk コマンドの出力を調べて、ドライブがまだマウントされていることを確認します。 
+  - 暗号化を有効にする前に /etc/fstab ファイルによってドライブが適切にマウントされない場合、Azure Disk Encryption Azure でそれを適切にマウントできません。
   - Azure Disk Encryption プロセスは、暗号化プロセスの一部として、/etc/fstab から独自の構成ファイルにマウント情報を移動します。 データ ドライブの暗号化が完了した後、/etc/fstab からそのエントリがなくなっても気にする必要はありません。
-  -  再起動後、新しく暗号化されたディスクが Azure Disk Encryption プロセスによってマウントされる処理には時間がかかります。 再起動後すぐには利用できません。 このプロセスでは、他のプロセスがアクセスできるようになる前に、暗号化されたドライブを起動し、ロックを解除し、マウントする時間が必要です。 システムの特性によっては、再起動後に 1 分以上かかることがあります。
+  - マウントされたデータ ディスクに書き込みを行う可能性のあるサービスとプロセスは、暗号化を開始する前にすべて停止し、それらを無効にして、再起動後に自動的に再開することのないようにしてください。 それが原因でそれらのパーティション上のファイルが開いたままになっていると、暗号化手順で再マウントが阻害され、暗号化に失敗します。 
+  - 再起動後、新しく暗号化されたディスクが Azure Disk Encryption プロセスによってマウントされる処理には時間がかかります。 再起動後すぐには利用できません。 このプロセスでは、他のプロセスがアクセスできるようになる前に、暗号化されたドライブを起動し、ロックを解除し、マウントする時間が必要です。 システムの特性によっては、再起動後に 1 分以上かかることがあります。
 
-データ ディスクをマウントし、必要な /etc/fstab エントリを作成するために使用できるコマンドの例は、[このスクリプト ファイルの行 197-205](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L197-L205) にあります。 
-
+データ ディスクをマウントし、必要な /etc/fstab エントリを作成するために使用できるコマンドの例は、[このスクリプト ファイルの行 244 から 248](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248) にあります。 
 
 ## <a name="bkmk_GPO"></a> ネットワークとグループ ポリシー
 
@@ -71,7 +109,7 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 
 
 **グループ ポリシー:**
- - Azure Disk Encryption ソリューションでは、Windows IaaS VM に対して BitLocker 外部キー保護機能を使用します。 ドメインに参加している VM の場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。 "互換性のある TPM が装備されていない BitLocker を許可する" のグループ ポリシーについては、「[BitLocker Group Policy Reference](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup)」(BitLocker グループ ポリシー リファレンス) をご覧ください。
+ - Azure Disk Encryption ソリューションでは、Windows IaaS VM に対して BitLocker 外部キー保護機能を使用します。 ドメインに参加している VM の場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。 "互換性のある TPM が装備されていない BitLocker を許可する" のグループ ポリシーについては、「[BitLocker Group Policy Reference](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)」(BitLocker グループ ポリシー リファレンス) をご覧ください。
 
 -  ドメインに参加済みであり、カスタム グループ ポリシーを使用する仮想マシンでの BitLocker ポリシーには、次の設定を含める必要があります。[[BitLocker 回復情報のユーザー記憶域を構成する] -> [256 ビットの回復キーを許可する]](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 BitLocker のカスタム グループ ポリシー設定に互換性がない場合、Azure Disk Encryption は失敗します。 正しいポリシー設定がないマシンでは、新しいポリシーを適用し、新しいポリシーを強制的に更新して (gpupdate.exe /force)、再起動する処理が必要になる可能性があります。  
 

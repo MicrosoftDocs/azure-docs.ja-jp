@@ -4,7 +4,7 @@ description: 共有イメージ ギャラリーを使用して、組織全体で
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,14 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: ca625093ce85e63042a92dec07b6bcb8968f3fda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84e1909e426aab8c50dc433323cf83fe6de1cfe4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236007"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708938"
 ---
 # <a name="shared-image-galleries-overview"></a>共有イメージ ギャラリーの概要
 

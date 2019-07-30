@@ -2,18 +2,18 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションの更新
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、AKS にデプロイされている既存のアプリケーションを新しいバージョンのアプリケーション コードで更新する方法について説明します。
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 05eac7e673ad01e9d3e0fb25f261444fd7bc4e6d
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475501"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614373"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの更新
 
@@ -31,7 +31,7 @@ Kubernetes でアプリケーションをデプロイした後で、新しいコ
 
 これまでのチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化しました。 このイメージを Azure Container Registry にアップロードし、AKS クラスターを作成しました。 その後、AKS クラスターにアプリケーションをデプロイしました。
 
-アプリケーション リポジトリも複製しましたが、それにはアプリケーションのソース コードと、このチュートリアルで使用する事前作成された Docker Compose ファイルが含まれています。 リポジトリの複製を作成したこと、およびディレクトリを複製ディレクトリに変更したことを確認します。 これらの手順を実行しておらず、順番に進めたい場合は、[チュートリアル 1 – コンテナー イメージを作成する][aks-tutorial-prepare-app]に関するページから始めてください。
+アプリケーション リポジトリも複製しましたが、それにはアプリケーションのソース コードと、このチュートリアルで使用する事前作成された Docker Compose ファイルが含まれています。 リポジトリの複製を作成したこと、およびディレクトリを複製ディレクトリに変更したことを確認します。 これらの手順を行っておらず、順番に進めたい場合は、[チュートリアル 1 – コンテナー イメージを作成する][aks-tutorial-prepare-app]に関するページから始めてください。
 
 このチュートリアルでは、Azure CLI バージョン 2.0.53 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -85,7 +85,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-次に、[docker push][docker-push] を使用してレジストリにイメージをアップロードします。 `<acrLoginServer>` は、実際の ACR ログイン サーバー名に置き換えてください。
+次に、[docker push][docker-push] を使用してご利用のレジストリにイメージをアップロードします。 `<acrLoginServer>` は、実際の ACR ログイン サーバー名に置き換えてください。
 
 > [!NOTE]
 > ACR レジストリにプッシュする際に問題が発生する場合は、まだログインしていることを確認してください。 「[Azure Container Registry を作成する](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)」手順で作成した Azure Container Registry の名前を使用して [az acr login][az-acr-login] コマンドを実行します。 たとえば、「 `az acr login --name <azure container registry name>` 」のように入力します。
@@ -96,7 +96,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>更新したアプリケーションをデプロイする
 
-最大限のアップタイムを提供するには、アプリケーション ポッドの複数のインスタンスを実行する必要があります。 実行中のフロントエンド インスタンスの数を [kubectl get pods][kubectl-get] コマンドで確認します。
+最大限のアップタイムを提供するには、アプリケーション ポッドの複数のインスタンスを実行する必要があります。 実行中のフロントエンド インスタンスの数を [kubectl get pods][kubectl-get] コマンドを使用して確認します。
 
 ```
 $ kubectl get pods

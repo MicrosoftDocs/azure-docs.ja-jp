@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 31d4829c6adaf4bd5392ef393dcaefbeb7dc6255
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2ba1bb914dfc2edbe17d12cc58df097b60d1f94c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618457"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849739"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
@@ -127,9 +127,14 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 **MaintenanceRedeployStatus** では、次のプロパティが返されます。 
 
-| Value | Description   |
-
-|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | 現在 VM でメンテナンスを開始できるかどうかが示されます。 | | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 | | PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 | | MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 | | MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 | | LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
+| 値 | 説明   |
+|-------|---------------|
+| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
+| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
+| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 |
+| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 |
+| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 |
+| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
 
 
 
@@ -153,9 +158,14 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 **MaintenanceRedeployStatus** では、各 VM インスタンスについて次のプロパティが返されます。 
 
-| Value | Description   |
-
-|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | 現在 VM でメンテナンスを開始できるかどうかが示されます。 | | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 | | PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 | | MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 | | MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 | | LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
+| 値 | 説明   |
+|-------|---------------|
+| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
+| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
+| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 |
+| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 |
+| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 |
+| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
 
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>CLI を使用して VM インスタンスに対するメンテナンスを開始する
@@ -176,7 +186,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンでは、更新ドメインが使用されます。 メンテナンスを実行するときに、Azure では更新ドメインの制約が遵守され、(同じ可用性セット内の) 別の更新ドメインの VM は再起動されません。 また、Azure は VM の次のグループに移行する前に少なくとも 30 分待機します。 
 
-高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](../virtual-machines/windows/regions-and-availability.md)」を参照してください。
+高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](../virtual-machines/windows/availability.md)」を参照してください。
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 

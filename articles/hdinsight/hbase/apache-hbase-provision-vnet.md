@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 85eaa81a0cfd7ccfe8ad3ae818f89966280d279e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d81e5e69837f6074d94278f4e54f9178a656335
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730369"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433790"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
 [Azure 仮想ネットワーク][1]内に Azure HDInsight Apache HBase クラスターを作成する方法について説明します。
@@ -25,7 +25,7 @@ ms.locfileid: "64730369"
 * 機密情報は、パブリック エンドポイントに公開されることなく、より安全な方法で処理できます。
 
 ### <a name="prerequisites"></a>前提条件
-このチュートリアルを開始する前に、次の項目を用意する必要があります。
+この記事の操作を始める前に、以下を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **Azure PowerShell を実行できるワークステーション**。 [Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
@@ -63,7 +63,7 @@ ms.locfileid: "64730369"
    * **上記の使用条件に同意する**:(選択)
 3. **[購入]** をクリックします。 クラスターの作成には約 20 分かかります。 クラスターが作成されたら、ポータルのクラスター ブレードをクリックして開きます。
 
-チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 クラスターの削除手順については、「[Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](../hdinsight-administer-use-portal-linux.md#delete-clusters)」を参照してください。
+記事を完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 クラスターの削除手順については、「[Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](../hdinsight-administer-use-portal-linux.md#delete-clusters)」を参照してください。
 
 新しい HBase クラスターの使用を開始する場合は、[HDInsight の Apache Hadoop での Apache HBase の使用開始](./apache-hbase-tutorial-get-started-linux.md)に関する記事に記載されている手順を使用できます。
 
@@ -233,7 +233,7 @@ Java アプリケーションでこの情報を使用するには、[HDInsight (
 > 独自の DNS サーバーの使用方法を含め、Azure Virtual Network の名前解決の詳細については、「 [名前解決 (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Apache HBase クラスターの作成方法を学習しました。 詳細については、次を参照してください。
+この記事では、Apache HBase クラスターの作成方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight の概要](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight での空のエッジ ノードの使用](../hdinsight-apps-use-edge-node.md)

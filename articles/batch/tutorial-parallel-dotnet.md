@@ -3,7 +3,7 @@ title: 並列ワークロードの実行 - Azure Batch .NET
 description: チュートリアル - Batch .NET クライアント ライブラリを使用して、Azure Batch で ffmpeg を使用してメディア ファイルをトランスコードします。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: e450ca0ff2578c4ec2ce95c14a17735860044b59
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 4350cc215c776317d3bde24c7561c317a31fb4c3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595247"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321872"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル:.NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Visual Studio ソリューション ファイル `BatchDotNetFfmpegTutorial.sln` が含まれているディレクトリに移動します。
 
-Visual Studio でソリューション ファイルを開き、`Program.cs` 内の資格情報文字列を、お使いのアカウントに関して取得した値で更新します。 例: 
+Visual Studio でソリューション ファイルを開き、`Program.cs` 内の資格情報文字列を、お使いのアカウントに関して取得した値で更新します。 例:
 
 ```csharp
 // Batch account credentials

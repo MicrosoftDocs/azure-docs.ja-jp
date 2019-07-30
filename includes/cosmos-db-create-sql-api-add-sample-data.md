@@ -9,15 +9,15 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 127d67cc3b5dcd0ddd585470821eb1baa08c2388
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151396"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181721"
 ---
 これで、データ エクスプローラーを使用して、新しいコレクションにデータを追加できます。
 
-1. データ エクスプローラーで新しいデータベースが [コレクション] ウィンドウに表示されます。 **[タスク]** データベースを展開し、**[項目]** コレクションを展開して、**[ドキュメント]** をクリックし、**[新しいドキュメント]** をクリックします。 
+1. データ エクスプローラーで新しいデータベースが [コレクション] ウィンドウに表示されます。 **[タスク]** データベースを展開し、 **[項目]** コレクションを展開して、 **[ドキュメント]** をクリックし、 **[新しいドキュメント]** をクリックします。 
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
@@ -33,7 +33,7 @@ ms.locfileid: "66151396"
      }
      ```
 
-3. json を **[ドキュメント]** タブに追加したら、**[保存]** をクリックします。
+3. json を **[ドキュメント]** タブに追加したら、 **[保存]** をクリックします。
 
     ![json データをコピーし、Azure Portal のデータ エクスプローラーで [保存] をクリックします。](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 

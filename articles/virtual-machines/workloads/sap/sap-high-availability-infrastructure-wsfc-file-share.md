@@ -4,7 +4,7 @@ description: Windows フェールオーバー クラスターと SAP ASCS/SCS �
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3577128e66112bda5a5e3e08097d14604043cbd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409609"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708990"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
@@ -251,7 +251,7 @@ ms.locfileid: "65409609"
 
 Azure インフラストラクチャを準備するには、以下を完了します。
 
-* [アーキテクチャ テンプレート 1、2、および 3 向けのインフラストラクチャを準備します][sap-high-availability-infrastructure-wsfc-shared-disk]。
+* [アーキテクチャ テンプレート 1、2、3 向けのインフラストラクチャを準備します][sap-high-availability-infrastructure-wsfc-shared-disk]。
 
 * [Azure 仮想ネットワークを作成します][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]。
 
@@ -274,7 +274,7 @@ Azure インフラストラクチャを準備するには、以下を完了し�
 
 ## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>スケールアウト ファイル サーバー クラスターを手動でデプロイする 
 
-ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」(Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
+ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」 (Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
 
 
 ```powershell
@@ -319,7 +319,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 ### <a name="use-managed-disks"></a>マネージド ディスクの使用
 
-記憶域スペース ダイレクトと Azure Managed Disks を備えたスケールアウト ファイル サーバー をデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-managed-disks] から入手できます。
+記憶域スペース ダイレクトと Azure Managed Disks を備えたスケールアウト ファイル サーバーをデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-managed-disks] から入手できます。
 
 Managed Disks を使用することをお勧めします。
 
@@ -335,7 +335,7 @@ Managed Disks を使用することをお勧めします。
 
 ### <a name="use-unmanaged-disks"></a>非管理対象ディスクの使用
 
-記憶域スペース ダイレクトと Azure 非管理ディスクを備えたスケールアウト ファイル サーバー をデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-non-managed-disks] から入手できます。
+記憶域スペース ダイレクトと Azure 非管理ディスクを備えたスケールアウト ファイル サーバーをデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-non-managed-disks] から入手できます。
 
 ![図 2:マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8011]
 
@@ -345,7 +345,7 @@ Managed Disks を使用することをお勧めします。
 
 ## <a name="adjust-cluster-timeout-settings"></a>クラスターのタイムアウトの設定を調整する
 
-Windows スケールアウト ファイル サーバー クラスターのインストールが正常に終わったら、フェールオーバー検出のタイムアウトしきい値を Azure での条件に合わせて調整します。 変更するパラメーターについては、「[Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]」(フェールオーバー クラスター ネットワークのしきい値の調整) をご覧ください。 クラスター化された VM が同じサブネット内にあるとすると、以下のパラメーターを次の値に変更します。
+Windows スケールアウト ファイル サーバー クラスターのインストールが正常に終わったら、フェールオーバー検出のタイムアウトしきい値を Azure での条件に合わせて調整します。 変更するパラメーターについては、「[Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]」 (フェールオーバー クラスター ネットワークのしきい値の調整) をご覧ください。 クラスター化された VM が同じサブネット内にあるとすると、以下のパラメーターを次の値に変更します。
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15

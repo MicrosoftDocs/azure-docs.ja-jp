@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: jingwang
 ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008700"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60546574"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-salesforce-connector.md)
 > * [現在のバージョン](connector-salesforce.md)
 
@@ -63,7 +63,7 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type |type プロパティを **Salesforce** に設定する必要があります。 |はい |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ  |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、[セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
@@ -186,7 +186,7 @@ Salesforce からデータをコピーするには、コピー アクティビ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **SalesforceSource** に設定する必要があります。 | はい |
 | query |カスタム クエリを使用してデータを読み取ります。 [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリまたは SQL-92 クエリを使用できます。 その他のヒントについては、「[クエリのヒント](#query-tips)」セクションをご覧ください。 クエリが指定されていない場合は、データセット内の "objectApiName"で指定された Salesforce オブジェクトのすべてのデータが取得されます。 | いいえ (データセットの "objectApiName" が指定されている場合) |
-| readBehavior | 既存のレコード、または削除されたものを含むすべてのレコードの、どちらのクエリを行うかを示します。 指定しない場合の既定の動作は前者です。 <br>使用可能な値: **query** (既定値)、**queryAll**.  | いいえ  |
+| readBehavior | 既存のレコード、または削除されたものを含むすべてのレコードの、どちらのクエリを行うかを示します。 指定しない場合の既定の動作は前者です。 <br>使用可能な値: **query** (既定値)、**queryAll**.  | いいえ |
 
 > [!IMPORTANT]
 > カスタム オブジェクトには、**API 名**の "__c" の部分が必要となります。
@@ -300,7 +300,7 @@ Salesforce からデータをコピーするときは、SOQL クエリまたは 
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>DateTime 列で where 句を使用してデータを取得する
 
-SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の違いに注意してください。 例: 
+SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の違いに注意してください。 例:
 
 * **SOQL サンプル**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL の例**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
@@ -315,25 +315,25 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 
 | Salesforce のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| オート ナンバー |String |
+| オート ナンバー |string |
 | チェックボックス |Boolean |
 | 通貨 |Decimal |
 | Date |DateTime |
 | 日付/時刻 |DateTime |
-| Email |String |
-| Id |String |
-| 参照リレーションシップ |String |
-| 複数選択の候補リスト |String |
+| Email |string |
+| Id |string |
+| 参照リレーションシップ |string |
+| 複数選択の候補リスト |string |
 | Number |Decimal |
 | Percent |Decimal |
-| 電話 |String |
-| 候補リスト |String |
-| Text |String |
-| テキスト領域 |String |
-| テキスト領域 (ロング) |String |
-| テキスト領域 (リッチ) |String |
-| テキスト (暗号化) |String |
-| URL |String |
+| 電話 |string |
+| 候補リスト |string |
+| Text |string |
+| テキスト領域 |string |
+| テキスト領域 (ロング) |string |
+| テキスト領域 (リッチ) |string |
+| テキスト (暗号化) |string |
+| URL |string |
 
 ## <a name="next-steps"></a>次の手順
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

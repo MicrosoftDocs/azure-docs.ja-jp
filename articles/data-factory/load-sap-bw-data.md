@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c846ab3e81e7ab8a4948aa4ed96cfa75e8eb3f4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152412"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449699"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 
@@ -125,7 +125,7 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
     ![アクティビティ出力詳細ビュー](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="do-an-incremental-copy-from-sap-bw-open-hub"></a>SAP BW オープン ハブからの増分コピーを行う
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>SAP BW オープン ハブからの増分コピー
 
 > [!TIP]
 > Data Factory の SAP BW オープン ハブ コネクタによる SAP BW からのデータの増分コピー方法については、[SAP BW オープン ハブ コネクタのデルタ抽出フロー](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow)に関する記事をご覧ください。 この記事は、基本的なコネクタ構成の理解にも役立ちます。

@@ -7,20 +7,20 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: dc43e2ad2668a7d3a808e398857cbf1d28c9aa1c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9cc18c7442a55c14ad759201aaf195d2d1bf3309
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150871"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594061"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -50,7 +50,11 @@ ms.locfileid: "65150871"
 
 このチュートリアルの手順を完了するには、最初に CDN プロファイルと少なくとも 1 つの CDN エンドポイントを作成する必要があります。 詳細については、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。
 
-さらに、Azure CDN カスタム ドメインを CDN エンドポイントに関連付ける必要があります。 詳細については、[チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
+さらに、Azure CDN カスタム ドメインを CDN エンドポイントに関連付ける必要があります。 詳細については、[チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md) 
+
+> [!IMPORTANT]
+> CDN マネージド証明書は、ルートまたは頂点のドメインには使用できません。 Azure CDN カスタム ドメインがルートまたは頂点のドメインの場合、独自の証明書の持ち込み機能を使用する必要があります。 
+>
 
 ---
 
@@ -78,7 +82,7 @@ CDN で管理された証明書を使用する場合、HTTPS 機能は、数回�
 
     **[カスタム ドメイン]** ページが表示されます。
 
-4. [証明書の管理の種類] で、**[CDN 管理]** を選択します。
+4. [証明書の管理の種類] で、 **[CDN 管理]** を選択します。
 
 5. **[オン]** を選択して HTTPS を有効にします。
 
@@ -118,15 +122,15 @@ PowerShell を使用して、Azure Active Directory に Azure CDN をアプリ�
  
 Azure Key Vault アカウント内の証明書 (シークレット) にアクセスするには、Azure CDN のアクセス許可を付与します。
 
-1. キー コンテナー アカウントで、[設定] で **[アクセス ポリシー]**、**[新規追加]** の順に選択して新しいポリシーを作成します。
+1. キー コンテナー アカウントで、[設定] で **[アクセス ポリシー]** 、 **[新規追加]** の順に選択して新しいポリシーを作成します。
 
     ![新しいアクセス ポリシーの作成](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. **[プリンシパルの選択]** で、**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** を検索し、**[Microsoft.Azure.Cdn]** を選択します。 **[選択]** をクリックします。
+2. **[プリンシパルの選択]** で、**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** を検索し、 **[Microsoft.Azure.Cdn]** を選択します。 **[選択]** をクリックします。
 
     ![アクセス ポリシーの設定](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. **[シークレットのアクセス許可]** で、**[取得]** を選択して、CDN がこれらのアクセス許可を実行して証明書を取得し、一覧表示できるようにします。 
+3. **[シークレットのアクセス許可]** で、 **[取得]** を選択して、CDN がこれらのアクセス許可を実行して証明書を取得し、一覧表示できるようにします。 
 
 4. **[OK]** を選択します。 
 
@@ -140,7 +144,7 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
     **[カスタム ドメイン]** ページが表示されます。
 
-3. [証明書の管理の種類] で、**[Use my own certificate]\(独自の証明書を使用する\)** を選択します。 
+3. [証明書の管理の種類] で、 **[Use my own certificate]\(独自の証明書を使用する\)** を選択します。 
 
     ![証明書の構成](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
 
@@ -178,17 +182,17 @@ CNAME レコードの詳細については、[CNAME DNS レコードの作成](h
 
 CNAME レコードが正しい形式である場合、DigiCert は自動的にそのカスタム ドメイン名を検証し、ご利用のドメイン名に使用する専用の証明書を作成します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[伝達を待機する](#wait-for-propagation)」に進んでください。 
 
-自動検証には通常、数分かかります。 1 時間以内にドメインが検証されない場合、サポート チケットを開いてください。
+自動検証には通常、数時間かかります。 24 時間以内にドメインが確認されない場合は、サポート チケットを開いてください。
 
 >[!NOTE]
 >Certificate Authority Authorization (CAA) レコードに DNS プロバイダーが登録されている場合、そこには有効な CA として DigiCert が含まれている必要があります。 ドメイン所有者は CAA レコードで、その DNS プロバイダーとともに、ドメインの証明書を発行する権限のある CA を指定できます。 CA は、ドメインの証明書の依頼を受け取っても、そのドメインに CAA レコードがあり、そこに認証された発行者としてその CA がリストされていない場合は、そのドメインまたはサブドメインへの証明書の発行が禁じられます。 CAA レコードの管理については、「[Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/)」(CAA レコードを管理する) をご覧ください。 CAA レコード ツールについては、「[CAA Record Helper](https://sslmate.com/caa/)」(CAA レコード ヘルパー) をご覧ください。
 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>カスタム ドメインが CDN エンドポイントにマップされていない
 
-エンドポイントの CNAME レコード エントリがもう存在しない場合や、CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、この手順の残りの部分に従ってください。
-
 >[!NOTE]
->カスタム ドメイン所有権のメール検証は現在、**Azure CDN from Akamai** のプロファイルでは利用できません。 現在、この機能は未着手となっています。 
+>カスタム ドメイン所有権のメール検証は現在、**Azure CDN from Akamai** のプロファイルでは利用できません。 **Azure CDN from Akamai** を使用する場合は、カスタム ドメインは前述のように CNAME レコードによって cdn エンドポイントにマップされる必要があります。  現在、この機能は未着手となっています。 
+
+CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、この手順の残りの部分に従ってください。
 
 カスタム ドメインの HTTPS を有効にする要求が送信されると、DigiCert CA は、ドメインの [WHOIS](http://whois.domaintools.com/) 登録者情報に従って、ドメインの登録者に連絡し、ドメインの所有権を検証します。 連絡は、WHOIS に登録されているメール アドレス (既定) または電話番号で行われます。 HTTPS をカスタム ドメイン上でアクティブにする前に、ドメインの検証を完了する必要があります。 ドメインの承認には 6 営業日が必要です。 6 営業日以内に承認されない要求は、自動的に取り消されます。 
 
@@ -266,7 +270,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     ![カスタム ドメイン リスト](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. **[オフ]** をクリックして HTTPS を無効にした後、**[適用]** をクリックします。
+4. **[オフ]** をクリックして HTTPS を無効にした後、 **[適用]** をクリックします。
 
     ![カスタム HTTPS ダイアログ](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 

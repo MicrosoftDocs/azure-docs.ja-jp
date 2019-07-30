@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b97fb1956c75332c40e242484b9d94419a45eb92
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: dad99a7e3d0463263e912aa05b5312edbcb89c0b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242555"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597673"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -31,7 +31,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 次に、拡張機能のインストール先となる組織を選択します。 
 
 > [!NOTE]
-> 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
 ![拡張機能のインストール先となる Azure DevOps 組織を選択する](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
@@ -48,6 +48,9 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
    ![ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 
+
+> [!NOTE]
+> CI の一環として前のタスクで手動でインストールしていない場合、この CI 用に選択するエージェント プールには Docker for Windows をインストールしておく必要があります。 エージェント プールの選択については、[Microsoft によってホストされているエージェント](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)の記事を参照してください。`Hosted VS2017` または `Hosted VS2019` から始めることをお勧めします。 
 
 これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
 

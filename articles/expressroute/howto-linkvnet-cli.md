@@ -6,14 +6,15 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: anzaman,cherylmc
+ms.author: cherylmc
+ms.reviewer: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: 9a6f16df4b827538c1f8bdb9b7382ed06d543b62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d858c83fb6669e5348b4256931e080656be0ebad
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991513"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621061"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/07/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66126844"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798154"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
 
@@ -139,13 +139,13 @@ Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade
 2. 予約コストを取得します。 _Cost_ の値を合計して、予約インスタンスに支払った金額を取得します。 これには、予約の使用済みコストと未使用コストが含まれます。
 3. 従量課金制の概算コストから予約コストを減算して、削減されるコストの推定額を取得します。
 
-## <a name="reservation-purchases-and-amortization-in-azure-cost-analysis"></a>予約購入と Azure での償却コストの分析
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>予約購入と償却コストの分析
 
-予約インスタンスのコストは、[Azure コスト分析のプレビュー モード](https://preview.portal.azure.com/?feature.canmodifystamps=true&amp;microsoft_azure_costmanagement=stage2&amp;Microsoft_Azure_CostManagement_arm_canary=true&amp;Microsoft_Azure_CostManagement_apiversion=2019-04-01-preview&amp;Microsoft_Azure_CostManagement_amortizedCost=true#blade/Microsoft_Azure_CostManagement/Menu/costanalysis)で利用できます。 既定では、コスト データ ビューは実際のコスト用です。 分散コストに切り替えることができます。 次に例を示します。
+予約コストは、[コスト分析](https://aka.ms/costanalysis)で確認できます。 既定では、コスト分析には請求書に記載されるコストである **[実際のコスト]** が表示されます。 予約購入の内訳や特典を使用したリソースとの関連を確認するには、 **[分散コスト]** に切り替えます。
 
 ![コスト分析で分散コストを選択する場所を示す例](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-フィルターを適用して、予約または料金の種類別の料金を確認します。 予約別にコストの内訳を表示するには、予約名でグループ化します。
+料金タイプ別にグループ化して、利用状況、購入、および返金の内訳を確認します。または、予約別にグループ化して、予約およびオンデマンド コストの内訳を確認します。 実際のコストを表示したときに確認できる予約コストは購入のみですが、分散コストを表示したときに確認できるコストは、特典を使用した個々のリソースに割り当てられた状態となります。 また、分散コストを表示したときは、新しい **UnusedReservation** 料金タイプも確認できます。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

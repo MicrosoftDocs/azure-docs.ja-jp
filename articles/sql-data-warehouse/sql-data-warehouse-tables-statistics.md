@@ -2,7 +2,7 @@
 title: 統計の作成と更新 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: c5043d99dd130bc7dc7b35eaa5ecadf11d7644db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851539"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479163"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの統計
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/17/2019
+ms.openlocfilehash: b0d963e212e66bf96ec42ec2a5c0fd5005f7a889
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479161"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165891"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -34,7 +34,7 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 |Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
 |Azure Data Lake Storage Gen1| 該当なし | 階層構造 (ファイルシステム) | 該当なし | 該当なし | 該当なし | 3.6 のみ | HBase を除くすべて |
 
-* * HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみが型 BlobStorage になることができます。
+\* * HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみが型 BlobStorage になることができます。
 
 ストレージ アカウントの種類について詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 

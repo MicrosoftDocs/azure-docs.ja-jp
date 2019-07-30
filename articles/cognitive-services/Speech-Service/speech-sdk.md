@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 2bfe111cbe1e352c16c9cbdd6d2ecc999bbe444f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 120dd4a6a342732f3e07d87786009779d23be829
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003006"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606420"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
-Speech ソフトウェア開発キット (SDK) は、音声認識対応のソフトウェア開発を支援します。アプリケーションから SDK を利用することで、Speech Services の各種機能を利用することができます。 現在、これらの SDK は**音声テキスト変換**、**テキスト音声変換**、**音声翻訳**、および**意図認識**へのアクセスを提供しています。 機能やサポートされているプラットフォームについての概要は、[エントリ ページ](https://aka.ms/csspeech) ドキュメントで確認できます。
+Speech ソフトウェア開発キット (SDK) は、音声認識対応のソフトウェア開発を支援します。アプリケーションから SDK を利用することで、Speech Services の各種機能を利用することができます。 現在、これらの SDK は**音声テキスト変換**、**テキスト音声変換**、**音声翻訳**、**意図認識**、および **Bot Framework の Direct Line Speech チャネル**へのアクセスを提供しています。 機能やサポートされているプラットフォームについての概要は、[エントリ ページ](https://aka.ms/csspeech) ドキュメントで確認できます。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -33,7 +33,7 @@ Windows の場合、次の言語がサポートされています。
 
 * C# (UWP と .NET)、C++: Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。 パッケージには、32 ビットおよび 64 ビットのクライアント ライブラリとマネージ (.NET) ライブラリが含まれています。 この SDK は NuGet を使用して Visual Studio でインストールできます。 **Microsoft.CognitiveServices.Speech** を検索してください。
 
-* Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。これは Windows x64 のみをサポートします。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` を参照します。
+* Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。これは Windows x64 のみをサポートします。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` を参照します。
 
 ### <a name="linux"></a>Linux
 
@@ -59,10 +59,10 @@ sudo apt-get install libssl1.0.2 libasound2
 * C#:Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。 SDK を参照するには、プロジェクトに次のパッケージ参照を追加します。
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.5.1" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.6.0" />
   ```
 
-* Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` を参照します。
+* Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` を参照します。
 
 * C++: [.tar パッケージ](https://aka.ms/csspeech/linuxbinary)として SDK をダウンロードし、ファイルを任意のディレクトリにアンパックします。 SDK のフォルダー構造を次の表に示します。
 
@@ -78,7 +78,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-Android 用 Java SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。 これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` としてホストされます。
+Android 用 Java SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。 これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` としてホストされます。
 
 このパッケージを Android Studio プロジェクトから使用するには、次の変更を行います。
 
@@ -91,7 +91,7 @@ Android 用 Java SDK は、必要なライブラリと必要な Android アク�
 * モジュール レベルの build.gradle ファイルで、`dependencies` セクションに次を追加します。
 
   ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.5.1'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.6.0'
   ```
 
 Java SDK は [Speech Devices SDK](speech-devices-sdk.md) の一部でもあります。

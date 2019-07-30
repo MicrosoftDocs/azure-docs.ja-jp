@@ -5,17 +5,17 @@ keywords: Azure PowerShell, PowerShell スクリプトのチュートリアル, 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b08e1489cf337360e838a3b5d5531fa2d4c0073b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10b93e54bc3f13c72889ab7c75b0e4f6e280e7d8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60694262"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476738"
 ---
 # <a name="my-first-powershell-runbook"></a>初めての PowerShell Runbook
 
@@ -34,6 +34,7 @@ ms.locfileid: "60694262"
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * [Automation アカウント](automation-quickstart-create-account.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 * Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
+* 使用するコマンドレットに基づいて [Azure モジュールの更新](automation-update-azure-modules.md)が必要な場合もあります。
 
 ## <a name="create-new-runbook"></a>新しい Runbook を作成する
 

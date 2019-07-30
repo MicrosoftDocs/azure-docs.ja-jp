@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47b077dbb62088093c60a588660045529678c58f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310963"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318452"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
@@ -51,7 +51,7 @@ Service Bus を使用する JMS アプリケーションをビルドおよび実
 ### <a name="java-naming-and-directory-interface-jndi"></a>Java Naming and Directory Interface (JNDI)
 JMS では、Java Naming and Directory Interface (JNDI) を使用して論理名と物理名が関連付けられます。 JNDI を使用した名前解決には 2 種類の JMS オブジェクトが使用されます。ConnectionFactory と Destination です。 JNDI で使用されるプロバイダー モデルでは、さまざまなディレクトリ サービスに接続して、名前解決のタスクを処理できます。 Apache Qpid JMS AMQP 1.0 ライブラリには、次の形式のプロパティ ファイルを使用して構成されるシンプルなプロパティ ファイル ベースの JNDI Provider が付属しています。
 
-```
+```TEXT
 # servicebus.properties - sample JNDI configuration
 
 # Register a ConnectionFactory in JNDI using the form:
@@ -301,7 +301,7 @@ public class JmsQueueQuickstart {
 共有アクセス ポリシーから**接続文字列**を渡してアプリケーションを実行します。
 以下は、アプリケーションの実行によるフォームの出力です。
 
-```
+```Output
 > mvn clean package
 >java -jar ./target/jmsqueuequickstart-1.0.0-jar-with-dependencies.jar -c "<CONNECTION_STRING>"
 
@@ -333,7 +333,7 @@ Closing queue client.
 ## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP の disposition と Service Bus 操作のマッピング
 AMQP の disposition が Service Bus 操作にどのように変換されるかを次に示します。
 
-```
+```Output
 ACCEPTED = 1; -> Complete()
 REJECTED = 2; -> DeadLetter()
 RELEASED = 3; (just unlock the message in service bus, will then get redelivered)

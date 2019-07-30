@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: aschhab
-ms.openlocfilehash: 9df321980db3a2481f0d8cc007546822fea46f9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d4ece6b631882200c6f98f6de5daa543fdf7ce4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072134"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -39,7 +39,7 @@ Service Bus では、レシーバーがない場合にキューまたはサブ�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>共同作成者アクセスがあることの確認
-Service Bus 名前空間に移動して、**[アクセス制御 (IAM)]** を選択し、**[ロールの割り当て]** を選択します。名前空間への共同作成者アクセス権を持っていることを確認します。 
+Service Bus 名前空間に移動して、 **[アクセス制御 (IAM)]** を選択し、 **[ロールの割り当て]** を選択します。名前空間への共同作成者アクセス権を持っていることを確認します。 
 
 ### <a name="events-and-event-schemas"></a>イベントとイベント スキーマ
 
@@ -146,12 +146,14 @@ Service Bus 名前空間の Event Grid サブスクリプションは、次の 3
  ```azurecli-interactive
 az login
 
-az account set -s “THE SUBSCRIPTION YOU WANT TO USE”
+az account set -s "<Azure subscription name>"
 
-$namespaceid=(az resource show --namespace Microsoft.ServiceBus --resource-type namespaces --name “<yourNamespace>“--resource-group “<Your Resource Group Name>” --query id --output tsv)
+namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type namespaces --name "<service bus namespace>" --resource-group "<resource group that contains the service bus namespace>" --query id --output tsv
 
-az eventgrid event-subscription create --resource-id $namespaceid --name “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” --endpoint “<your_function_url>” --subject-ends-with “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
+az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
+
+BASH を使用している場合 
 
 ## <a name="powershell-instructions"></a>PowerShell の手順
 
@@ -168,7 +170,7 @@ Install-Module Az.ServiceBus
 $NSID = (Get-AzServiceBusNamespace -ResourceGroupName "<YOUR RESOURCE GROUP NAME>" -Na
 mespaceName "<YOUR NAMESPACE NAME>").Id
 
-New-AzEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
+New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
 ここから、他のセットアップ オプションを調べたり、イベントが送信されていることをテストしたりできます。

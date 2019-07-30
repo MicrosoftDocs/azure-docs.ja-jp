@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
-ms.author: rajraj
-ms.openlocfilehash: bab264769576b6e5478236c452d7de920d887c1a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: drewm
+ms.openlocfilehash: f97c7e6971fb9c58a3f08959c00c84e64e160916
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617981"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871951"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>仮想マシン スケール セットに対する障害ドメインの適切な数を選択する
 ゾーンのない Azure リージョンで仮想マシン スケール セットに対して既定で作成される障害ドメインの数は 5 個です。 仮想マシン スケール セットのゾーン展開がサポートされるリージョンでは、障害ドメインの数の既定値はゾーンごとに 1 個です。 この場合の FD = 1 とは、スケール セットに属する VM インスタンスがベスト エフォートで多くのラックに分散されることを意味します。
@@ -47,4 +47,4 @@ az vmss create \
 すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
 
 ## <a name="next-steps"></a>次の手順
-- Azure 環境での[可用性と冗長性の機能](../virtual-machines/windows/regions-and-availability.md)についてさらに理解してください。
+- Azure 環境での[可用性と冗長性の機能](../virtual-machines/windows/availability.md)についてさらに理解してください。

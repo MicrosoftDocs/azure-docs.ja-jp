@@ -58,7 +58,8 @@
     - name: トークンを使用した分析情報の取得
       href: use-insights-token.md
     - name: サムネイルのサイズ変更とトリミング
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: 画像の分析情報トークンを使用して画像を検索する
       href: tutorial-visual-search-insights-token.md
     - name: 単一ページの Web アプリを作成する
@@ -72,7 +73,7 @@
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python'
     - name: 使用と表示の要件

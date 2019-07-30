@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304100"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465830"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。
@@ -73,6 +73,9 @@ dmesg | grep SCSI
 [    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
+
+> [!NOTE]
+> ご使用のディストリビューションで利用できる最新バージョンの fdisk または parted を使用することをお勧めします。
 
 ここでは、*sdc* が対象のディスクです。 `parted` を使用してディスクをパーティション分割します。ディスクのサイズが 2 テビバイト (TiB) 以上の場合は、GPT パーティション分割を使用する必要があります。2 TiB 未満の場合は、MBR または GPT のパーティション分割を使用することができます。 MBR パーティション分割を使用している場合、`fdisk` を使用できます。 それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
 

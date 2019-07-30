@@ -7,16 +7,18 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65137856"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786545"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
 Azure Resource Graph は、Azure 環境内にあるリソースを操作し、リソースに関する情報を取得することを目的に設計されています。 Resource Graph を使用すると、数千レコードのクエリを実行する場合でも、このデータの取得が高速になります。 Resource Graph には、これらの大きなデータ セットを操作するための複数のオプションがあります。
+
+高頻度のクエリの操作に関するガイダンスについては、[スロットルされた要求に関するガイダンス](./guidance-for-throttled-requests.md)のページを参照してください。
 
 ## <a name="data-set-result-size"></a>データ セットの結果のサイズ
 
@@ -80,10 +82,10 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > [!IMPORTANT]
 > 改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに**反映する**必要があります。 それがクエリにないと、応答には **$skipToken** が含まれません。
 
-例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resources/resources#next_page_query)」をご覧ください。
+例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resources/resources#next-page-query)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [初歩的なクエリ](../samples/starter.md)で使用されている言語を参照してください
-- [高度なクエリ](../samples/advanced.md)で高度な使用方法を参照してください
-- [その他のリソース](explore-resources.md)
+- [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
+- [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。
+- [リソースの探索](explore-resources.md)について学習します。

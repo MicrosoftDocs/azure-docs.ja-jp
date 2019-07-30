@@ -6,12 +6,13 @@ author: vhorne
 ms.service: dns
 ms.date: 4/3/2019
 ms.author: victorh
-ms.openlocfilehash: 00ff5636f97b24c656ee4e5d8ceb2f6b22524538
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.topic: conceptual
+ms.openlocfilehash: b65b70e7a994d7d49b2282d7e193fe6e7b84cfca
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515345"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612766"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI を使用した DNS ゾーン ファイルのインポートとエクスポート
 

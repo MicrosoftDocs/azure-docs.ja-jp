@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: c72de0ef874659a5d7840689e38bd7857c25b840
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7893c8e8b8d67b4b63bd9d6bb5a71552e95c9125
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464094"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850242"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する
 

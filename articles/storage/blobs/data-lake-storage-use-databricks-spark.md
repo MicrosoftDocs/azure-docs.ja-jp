@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: b332c11e76ad335772cc607edcf569f896acb873
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a745ade33e5d9c493fed187bbd9a4309e1a2d0ff
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951396"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360105"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする
 
@@ -77,7 +77,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。  |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
-    |**場所**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。       |
+    |**Location**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。       |
     |**価格レベル**     |  **[Standard]** を選択します。     |
 
     ![Azure Databricks ワークスペースを作成する](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks サービスを作成する")
@@ -191,7 +191,8 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
 # Use the previously established DBFS mount point to read the data.
 # create a data frame to read data.
 
-flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/*.csv")
+flightDF = spark.read.format('csv').options(
+    header='true', inferschema='true').load("/mnt/flightdata/*.csv")
 
 # read the airline csv file and write the output to parquet format for easy query.
 flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
@@ -227,57 +228,61 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 * プレースホルダー `<csv-folder-path>` の値は、 *.csv* ファイルへのパスに置き換えます。
 
 ```python
-#Copy this into a Cmd cell in your notebook.
-acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time.csv")
+# Copy this into a Cmd cell in your notebook.
+acDF = spark.read.format('csv').options(
+    header='true', inferschema='true').load("/mnt/flightdata/On_Time.csv")
 acDF.write.parquet('/mnt/flightdata/parquet/airlinecodes')
 
-#read the existing parquet file for the flights database that was created earlier
-flightDF = spark.read.format('parquet').options(header='true', inferschema='true').load("/mnt/flightdata/parquet/flights")
+# read the existing parquet file for the flights database that was created earlier
+flightDF = spark.read.format('parquet').options(
+    header='true', inferschema='true').load("/mnt/flightdata/parquet/flights")
 
-#print the schema of the dataframes
+# print the schema of the dataframes
 acDF.printSchema()
 flightDF.printSchema()
 
-#print the flight database size
+# print the flight database size
 print("Number of flights in the database: ", flightDF.count())
 
-#show the first 20 rows (20 is the default)
-#to show the first n rows, run: df.show(n)
+# show the first 20 rows (20 is the default)
+# to show the first n rows, run: df.show(n)
 acDF.show(100, False)
 flightDF.show(20, False)
 
-#Display to run visualizations
-#preferably run this in a separate cmd cell
+# Display to run visualizations
+# preferably run this in a separate cmd cell
 display(flightDF)
 ```
 
 いくつかの基本的な分析クエリをデータに対して実行するために、次のスクリプトを入力します。
 
 ```python
-#Run each of these queries, preferably in a separate cmd cell for separate analysis
-#create a temporary sql view for querying flight information
+# Run each of these queries, preferably in a separate cmd cell for separate analysis
+# create a temporary sql view for querying flight information
 FlightTable = spark.read.parquet('/mnt/flightdata/parquet/flights')
 FlightTable.createOrReplaceTempView('FlightTable')
 
-#create a temporary sql view for querying airline code information
+# create a temporary sql view for querying airline code information
 AirlineCodes = spark.read.parquet('/mnt/flightdata/parquet/airlinecodes')
 AirlineCodes.createOrReplaceTempView('AirlineCodes')
 
-#using spark sql, query the parquet file to return total flights in January and February 2016
+# using spark sql, query the parquet file to return total flights in January and February 2016
 out1 = spark.sql("SELECT * FROM FlightTable WHERE Month=1 and Year= 2016")
 NumJan2016Flights = out1.count()
 out2 = spark.sql("SELECT * FROM FlightTable WHERE Month=2 and Year= 2016")
-NumFeb2016Flights=out2.count()
-print("Jan 2016: ", NumJan2016Flights," Feb 2016: ",NumFeb2016Flights)
-Total= NumJan2016Flights+NumFeb2016Flights
+NumFeb2016Flights = out2.count()
+print("Jan 2016: ", NumJan2016Flights, " Feb 2016: ", NumFeb2016Flights)
+Total = NumJan2016Flights+NumFeb2016Flights
 print("Total flights combined: ", Total)
 
 # List out all the airports in Texas
-out = spark.sql("SELECT distinct(OriginCityName) FROM FlightTable where OriginStateName = 'Texas'") 
+out = spark.sql(
+    "SELECT distinct(OriginCityName) FROM FlightTable where OriginStateName = 'Texas'")
 print('Airports in Texas: ', out.show(100))
 
-#find all airlines that fly from Texas
-out1 = spark.sql("SELECT distinct(Reporting_Airline) FROM FlightTable WHERE OriginStateName='Texas'")
+# find all airlines that fly from Texas
+out1 = spark.sql(
+    "SELECT distinct(Reporting_Airline) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
 

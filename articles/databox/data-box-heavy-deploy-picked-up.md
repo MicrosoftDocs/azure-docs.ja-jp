@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 31185900ede0fae74a04f98eaecee7379fb1c4fe
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 84db33e4c7ac612353c590ac9d2904ac3bc48d38
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427807"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592386"
 ---
-# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure-preview"></a>チュートリアル:Azure Data Box Heavy の返送と Azure へのデータ アップロードの確認 (プレビュー)
+# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box Heavy の返送と Azure へのデータ アップロードの確認
 
 
 このチュートリアルでは、Azure Data Box Heavy を返送し、Azure にアップロードされたデータを確認する方法について説明します。
@@ -43,11 +43,11 @@ ms.locfileid: "66427807"
 ## <a name="ship-data-box-heavy-back"></a>Data Box Heavy の返送
 
 1. デバイスの電源をオフにして、すべてのケーブル類を取り外します。 4 つの電源コードをまとめ、デバイスの背面からアクセスできるトレイにしっかりと格納します。
-2. デバイスを米国またはヨーロッパ内で発送する場合、運送業者は FedEx です。
+2. FedEx (米国) または DHL (EU) の小口トラック輸送でデバイスを返送します。
 
-    1. 運送業者の現地の電話番号にかけて、集荷のスケジュールを設定します。
-    2. [Data Box 運用チーム](mailto:DataBoxOps@microsoft.com)に連絡して集荷について通知し、返送ラベルを取得します。
-    3. 配送先住所ラベルは必ずデバイスの前面の透明なスクリーン上に表示してください。
+    1. [Data Box 運用チーム](mailto:DataBoxOps@microsoft.com)に連絡して集荷について通知し、返送ラベルを入手します。
+    2. 運送業者の現地の電話番号にかけて、集荷のスケジュールを設定します。
+    3. 返送ラベルは、必ず外箱の目立つ位置に貼付してください。
     4. 以前の出荷の古い配送先住所ラベルは必ずデバイスから取り除いてください。
 3. 運送業者によって Data Box Heavy が集荷され、スキャンされると、ポータルの注文状態は **[集荷されました]** に更新されます。 追跡 ID も表示されます。
 

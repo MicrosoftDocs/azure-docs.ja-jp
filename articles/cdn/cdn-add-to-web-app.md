@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602819"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594219"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
 
@@ -64,11 +64,11 @@ ms.locfileid: "53602819"
 
 ![ポータルで App Service アプリを選択](media/cdn-add-to-web-app/portal-select-app-services.png)
 
-**[App Service]** ページの **[設定]** セクションで、**[ネットワーク] の [アプリに Azure CDN を構成する]** を選択します。
+**[App Service]** ページの **[設定]** セクションで、 **[ネットワーク] の [アプリに Azure CDN を構成する]** を選択します。
 
 ![ポータルで CDN を選択](media/cdn-add-to-web-app/portal-select-cdn.png)
 
-**[Azure Content Delivery Network]** ページで、**[新しいエンドポイント]** の設定を以下の表に従って指定します。
+**[Azure Content Delivery Network]** ページで、 **[新しいエンドポイント]** の設定を以下の表に従って指定します。
 
 ![ポータルでプロファイルとエンドポイントを作成](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
@@ -76,9 +76,9 @@ ms.locfileid: "53602819"
 | ------- | --------------- | ----------- |
 | **[CDN プロファイル]** | myCDNProfile | CDN プロファイルは、同じ価格レベルの CDN エンドポイントをまとめたものです。 |
 | **[価格レベル]** | Standard Akamai | プロバイダーと使用可能な機能は、[価格レベル](cdn-features.md)によって規定されます。 このチュートリアルでは *Standard Akamai* を使用します。 |
-| **[CDN エンドポイント名]** | azureedge.net ドメイン内で一意となる任意の名前 | キャッシュされたリソースには、*&lt;エンドポイント名&gt;*.azureedge.net ドメインでアクセスします。
+| **[CDN エンドポイント名]** | azureedge.net ドメイン内で一意となる任意の名前 | キャッシュされたリソースには、 *&lt;エンドポイント名&gt;* .azureedge.net ドメインでアクセスします。
 
-CDN プロファイルを作成するには、**[作成]** を選択します。
+CDN プロファイルを作成するには、 **[作成]** を選択します。
 
 Azure によってプロファイルとエンドポイントが作成されます。 **[エンドポイント]** の一覧に新しいエンドポイントが表示され、プロビジョニングされた時点で **[実行中]** 状態になります。
 
@@ -268,6 +268,6 @@ http://<endpointname>.azureedge.net/index.html?q=1
 次の各記事に、CDN のパフォーマンスを最適化する方法が紹介されています。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
+> [チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9180c29b807ef26c6426aab75fe74870fef9669a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60868246"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318165"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに関連付けられているコストを追跡する
 この記事では、ラボのコストを追跡する方法について説明します。 ラボの現在のカレンダー月の推定コスト傾向を表示する方法を紹介します。 また、ラボのリソースごとの過去 1 か月間のコストを表示する方法も紹介します。
@@ -95,7 +95,7 @@ DevTest Labs を使用して支出目標を設定することで、コストの�
 
 この機能では、ラボの支出を削減する措置を講じるために、最もコストのかかるリソースを簡単に特定することができます。 たとえば、VM のコストは VM のサイズに基づいています。 VM のサイズが大きいほど、コストが大きくなります。 VM のサイズと所有者を簡単に確認できるので、VM 所有者に問い合わせて、このような VM サイズが必要な理由と、サイズを小さくできるかどうかを確認することができます。
 
-[自動シャットダウン ポリシー](devtest-lab-get-started-with-lab-policies.md#set-auto-shutdown)は、特定の時間帯にラボの VM をシャットダウンしてコストを削減するのに役立ちます。 しかし、ラボ ユーザーはシャットダウン ポリシーを適用外にしていることがあり、この場合、VM の実行コストが増加します。 テーブルで VM を選択すると、自動シャットダウン ポリシーの適用外になっているかどうかを確認できます。 適用外になっている場合は、VM 所有者に問い合わせて、VM がポリシーの適用外になっている理由を確認することができます。
+[自動シャットダウン ポリシー](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy)は、特定の時間帯にラボの VM をシャットダウンしてコストを削減するのに役立ちます。 しかし、ラボ ユーザーはシャットダウン ポリシーを適用外にしていることがあり、この場合、VM の実行コストが増加します。 テーブルで VM を選択すると、自動シャットダウン ポリシーの適用外になっているかどうかを確認できます。 適用外になっている場合は、VM 所有者に問い合わせて、VM がポリシーの適用外になっている理由を確認することができます。
  
 ## <a name="next-steps"></a>次の手順
 次に試す操作をいくつか以下に示します。

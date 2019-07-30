@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: e971fd160a43be088f6d3c4a9fb6fddc7dd769b0
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 09b90f4b53750b94c0ecee7290d6b5405c984ff9
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415671"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154879"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して RDS MySQL を Azure Database for MySQL にオンラインで移行する
 
@@ -116,7 +116,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
         WHERE
           KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
           AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
-      AND KCU.REFERENCED_TABLE_SCHEMA = ['SchemaName') Queries
+      AND KCU.REFERENCED_TABLE_SCHEMA = ('SchemaName') Queries
       GROUP BY SchemaName;
     ```
 
@@ -135,11 +135,11 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
-1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
+1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
 
    ![ポータルのサブスクリプションの表示](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-subscription1.png)
 
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、**[リソース プロバイダー]** を選びます。
+2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
 
     ![リソース プロバイダーの表示](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-resource-provider.png)
 
@@ -153,7 +153,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
     ![Azure Marketplace](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-marketplace.png)
 
-2. **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
+2. **[Azure Database Migration Service]** 画面で、 **[作成]** を選択します。
 
     ![Azure Database Migration Service インスタンスを作成する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-create1.png)
   
@@ -177,7 +177,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 サービスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
 
       ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-search.png)
 
@@ -186,8 +186,8 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
      ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-instance-search.png)
 
 3. **[+ 新しい移行プロジェクト]** を選択します。
-4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[MySQL]** を選択してから、**[ターゲット サーバーの種類]** テキスト ボックスで **[AzureDbForMySQL]** を選びます。
-5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
+4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、 **[ソース サーバーの種類]** テキスト ボックスで **[MySQL]** を選択してから、 **[ターゲット サーバーの種類]** テキスト ボックスで **[AzureDbForMySQL]** を選びます。
+5. **[アクティビティの種類を選択します]** セクションで、 **[オンライン データの移行]** を選択します。
 
     > [!IMPORTANT]
     > 必ず **[オンライン データの移行]** を選択してください。オフライン移行は、このシナリオではサポートされていません。
@@ -195,7 +195,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
     ![Database Migration Service プロジェクトを作成する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-create-project6.png)
 
     > [!NOTE]
-    > または、**[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
+    > または、 **[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
 
 6. **[保存]** を選択します。
 
@@ -212,17 +212,17 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 
-1. **[保存]** を選択し、**[ターゲットの詳細]** 画面で、事前プロビジョニングされており、MySQLDump を使用して **Employees** スキーマがデプロイされている、ターゲットの Azure Database for MySQL サーバーの接続の詳細を指定します。
+1. **[保存]** を選択し、 **[ターゲットの詳細]** 画面で、事前プロビジョニングされており、MySQLDump を使用して **Employees** スキーマがデプロイされている、ターゲットの Azure Database for MySQL サーバーの接続の詳細を指定します。
 
     ![ターゲットを選択する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-select-target5.png)
 
-2. **[保存]** を選択し、**[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
+2. **[保存]** を選択し、 **[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
 
     ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service では、既定でターゲット データベースが選択されます。
 
     ![ターゲット データベースにマップする](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-map-targets-activity5.png)
 
-3. **[保存]** を選択し、**[移行の概要]** 画面で、**[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
+3. **[保存]** を選択し、 **[移行の概要]** 画面で、 **[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
 
     ![移行の概要](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-migration-summary2.png)
 
@@ -238,7 +238,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
     ![アクティビティの状態 - 実行中](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-activity-status4.png)
 
-2. **[データベース名]** で、特定のデータベースを選択して、**[データ全体の読み込み]** 操作と **[増分データ同期]** 操作の移行状態を取得します。
+2. **[データベース名]** で、特定のデータベースを選択して、 **[データ全体の読み込み]** 操作と **[増分データ同期]** 操作の移行状態を取得します。
 
     **データ全体の読み込み** には初回の読み込みの移行状態が表示され、**増分データ同期** には変更データ キャプチャ (CDC) の状態が表示されます。
 
@@ -250,12 +250,12 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 初回の全体の読み込みが完了した後、データベースは **[一括準備完了]** とマークされます。
 
-1. データベースの移行を完了する準備ができたら、**[一括で開始]** を選択します。
+1. データベースの移行を完了する準備ができたら、 **[一括で開始]** を選択します。
 
     ![一括で開始](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-inventory-start-cutover.png)
 
-2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。**[保留中の変更]** カウンターが **0** を示すまで待ってください。
-3. **[確認]** を選択し、**[適用]** を選択します。
+2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。 **[保留中の変更]** カウンターが **0** を示すまで待ってください。
+3. **[確認]** を選択し、 **[適用]** を選択します。
 4. データベースの移行状態に **[完了]** が表示されたら、アプリケーションを新しいターゲット Azure Database for MySQL データベースに接続します。
 
 これで、MySQL のオンプレミス インスタンスの Azure Database for MySQL へのオンライン移行が完了しました。

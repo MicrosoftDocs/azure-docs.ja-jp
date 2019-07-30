@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 85d5fa1cc036737497e276413985e0828e3b51f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 298f7e90bb6848d7b0af032bdaff8724a69c227f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788717"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249669"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート:Java を使用して QnA Maker のナレッジ ベースを作成する
 
@@ -100,7 +100,7 @@ Post メソッドを呼び出すことによって KB を作成する次のメ�
 ```
 
 ## <a name="add-a-main-method"></a>main メソッドを追加する
-main メソッドで KB を作成した後、状態をポーリングします。 _create_ という**操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 **完了していない場合は、`while` ループで状態の取得を再試行します。
+main メソッドで KB を作成した後、状態をポーリングします。 POST 応答のヘッダー フィールド **Location** に操作 ID が返された後、GET 要求でルートの一部として使用されます。 完了していない場合は、`while` ループによって状態が再試行されます。
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

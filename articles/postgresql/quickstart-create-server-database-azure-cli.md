@@ -6,14 +6,14 @@ ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 05/06/2019
+ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: 5b16d87a69ecdac578da2a90be22013744c32bd7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: d8e5ddf0820c789150f264aa4f7d6bd291adb3af
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069070"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443130"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 
@@ -52,7 +52,7 @@ az group create --name myresourcegroup --location westus
 
 **設定** | **値の例** | **説明**
 ---|---|---
-name | mydemoserver | Azure Database for PostgreSQL サーバーを識別する一意の名前を選択します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
+名前 | mydemoserver | Azure Database for PostgreSQL サーバーを識別する一意の名前を選択します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
 resource-group | myresourcegroup | Azure リソース グループの名前を指定します。
 sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コンピューティング世代}\_{仮想コア} という規則に従います。 sku-name パラメーターの詳細については、この表の下方を参照してください。
 backup-retention | 7 | バックアップを保持する必要のある時間。 単位は日数です。 範囲は 7 ～ 35 です。 
@@ -145,6 +145,13 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
 
+   > [!TIP]
+   > Postgres への接続に URL パスを使用する場合は、`%40` を使用してユーザー名の @ 記号を URL エンコードします。 たとえば、psql の接続文字列は次のようになります。
+   > ```
+   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
+   > ```
+
+
 2. サーバーに接続したら、プロンプトで空のデータベースを作成します。
    ```sql
    CREATE DATABASE mypgsqldb;
@@ -161,7 +168,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
 1. クライアント コンピューターで pgAdmin アプリケーションを開きます。
 
-2. ツール バーから **[オブジェクト]** に移動し、**[作成]** をポイントして、**[サーバー]** を選択します。
+2. ツール バーから **[オブジェクト]** に移動し、 **[作成]** をポイントして、 **[サーバー]** を選択します。
 
 3. **[作成 - サーバー]** ダイアログ ボックスの **[全般]** タブに、サーバーの一意のフレンドリ名 (**mydemoserver** など) を入力します。
 
@@ -173,7 +180,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
     pgAdmin パラメーター |値|説明
     ---|---|---
-    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 Use the fully qualified domain name (**\*.postgres.database.azure.com**) as shown in the example. サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
+    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 Use the fully qualified domain name ( **\*.postgres.database.azure.com**) as shown in the example. サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     Port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
     メンテナンス データベース | *postgres* | システムによって生成される既定のデータベース名。
     ユーザー名 | サーバー管理者ログイン名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
@@ -187,7 +194,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
 7. サーバー ノードを展開し、その下の **[Databases]\(データベース\)** を展開します。 一覧には既存の *postgres* データベースと、作成した他のデータベースすべてを含める必要があります。 Azure Database for PostgreSQL では、サーバーごとに複数のデータベースを作成できます。
 
-8. **[データベース]** を右クリックし、**[作成]** メニューを選択して **[データベース]** を選択します。
+8. **[データベース]** を右クリックし、 **[作成]** メニューを選択して **[データベース]** を選択します。
 
 9. **[データベース]** フィールドに、任意のデータベース名 (**mypgsqldb2** など) を入力します。
 

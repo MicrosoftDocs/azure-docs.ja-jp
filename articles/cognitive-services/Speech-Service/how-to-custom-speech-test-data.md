@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6e1ffa11456fc6a021e370d674624d297463ac73
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237949"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603193"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -44,7 +44,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 データセットをアップロードした後は、いくつかの選択肢があります。
 
 * **[テスト]** タブに移動して、オーディオのみまたはオーディオ + 人間というラベルが付いた文字起こしデータを目視で検査できます。
-* **[トレーニング]** タブに移動して、オーディオ + 人間の文字起こしデータまたは関連するテキスト データを使用して、カスタム モデルをトレーニングできます。
+* **[トレーニング]** タブに移動し、オーディオ + 人間の文字起こしデータまたは関連するテキスト データを使用して、カスタム モデルをトレーニングできます。
 
 ## <a name="audio-data-for-testing"></a>テスト用のオーディオ データ
 
@@ -138,17 +138,17 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 
 これには、音声発話の例と、それぞれのカスタム発音が含まれます。
 
-| 音声フォーム | 認識される/表示されるフォーム |
+| 認識される/表示されるフォーム | 音声フォーム |
 |--------------|--------------------------|
-| three c p o | 3CPO |  
-| c n t k | CNTK |
-| i triple e | IEEE |
+| 3CPO | three c p o |  
+| CNTK | c n t k |
+| IEEE | i triple e |
 
 音声フォームは、スペル アウトされた表示フォームの音声シーケンスです。これは文字、単語、音節、または 3 つすべての組み合わせで構成できます。
 
 カスタマイズされた発音は、英語 (en-US) とドイツ語 (de-DE) で使用できます。 この表に、言語ごとにサポートされている文字を示します。
 
-| 言語 | ロケール | 文字 |
+| 言語 | Locale | 文字 |
 |----------|--------|------------|
 | 英語 | en-US | a、b、c、d、e、f、g、h、i、j、k、l、m、n、o、p、q、r、s、t、u、v、w、x、y、z |
 | ドイツ語 | de-DE | ä、ö、ü、a、b、c、d、e、f、g、h、i、j、k、l、m、n、o、p、q、r、s、t、u、v、w、x、y、z |

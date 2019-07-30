@@ -9,12 +9,12 @@ ms.date: 03/21/2018
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 519190b6aeb313f25eddd717bce1a72148c8c518
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32601fc15e6b6a25a1005b6d95499d4aae4fb0d2
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148445"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461177"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>C++ から BLOB ストレージを使用する方法
 
@@ -68,7 +68,7 @@ Azure ストレージ エミュレーターを起動するには、 **[スター
 
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。  
 
-## <a name="retrieve-your-connection-string"></a>接続文字列の取得
+## <a name="retrieve-your-storage-account"></a>ストレージ アカウントを取得する
 **cloud_storage_account** クラスを使用してストレージ アカウント情報を表すことができます。 ストレージ接続文字列からストレージ アカウント情報を取得するには、 **parse** メソッド使用します。  
 
 ```cpp

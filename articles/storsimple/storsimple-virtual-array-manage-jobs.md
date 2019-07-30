@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
-ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23109680"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60302501"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array のジョブを表示する
 ## <a name="overview"></a>概要
@@ -59,7 +59,7 @@ ms.locfileid: "23109680"
 #### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>仮想マシンがハイパーバイザーで一時停止しているときにジョブが失敗する
 StorSimple Virtual Array でジョブが進行しているときや、デバイス (ハイパーバイザーにプロビジョニングされた仮想マシン) が 15 分以上一時停止しているときにジョブが失敗します。 これは、StorSimple Virtual Array の時間と Microsoft Azure 時間との同期が失われてしまった場合に発生します。 
 
-次のエラーが表示されます: "デバイスの時刻と Microsoft Azure の時刻の差が 15 分を超えています。 ハイパーバイザーとデバイスの時刻を NTP サーバーと同期する必要があります。 接続の問題がないことを確認してください。 接続の問題のトラブルシューティングを行うには、仮想デバイスのローカル Web UI から診断テストを実行します。"
+次のエラーが表示されます。"デバイスの時刻と Microsoft Azure の時刻の差が 15 分を超えています。 ハイパーバイザーとデバイスの時刻を NTP サーバーと同期する必要があります。 接続の問題がないことを確認してください。 接続の問題のトラブルシューティングを行うには、仮想デバイスのローカル Web UI から診断テストを実行します。"
 
 これらのエラーは、ジョブのバックアップ、復元、更新、およびフェールオーバーで発生します。 仮想マシンが Hyper-V でプロビジョニングされている場合、コンピューターは最終的にハイパーバイザーと同期します。 このエラーが発生したら、ジョブの再起動をお試しください。
 

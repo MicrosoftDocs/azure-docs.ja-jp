@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 790d095cfb1b59aed1b9014fc474f9ad6e1b3328
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 19fd73dff045d6d784dd70d1f3ad539a22faf413
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075466"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Function App への カスタム ドメインのマッピング
 
-このサンプル スクリプトは、App Service プランに関数アプリを作成し、指定したカスタム ドメインにそれをマッピングします。 関数アプリが [Premium プラン](../functions-scale.md#premium-plan-public-preview)または [App Service プラン](../functions-scale.md#app-service-plan)でホストされている場合、CNAME または A レコードを使用してカスタム ドメインをマップできます。 [従量課金プラン](../functions-scale.md#consumption-plan)の関数アプリの場合、CNAME オプションのみがサポートされます。 このサンプルは、App Service プランを作成します。そのドメインにマッピングするための A レコードが必要となります。 
+このサンプル スクリプトは、App Service プランに関数アプリを作成し、指定したカスタム ドメインにそれをマッピングします。 関数アプリが [Premium プラン](../functions-scale.md#premium-plan)または [App Service プラン](../functions-scale.md#app-service-plan)でホストされている場合、CNAME または A レコードを使用してカスタム ドメインをマップできます。 [従量課金プラン](../functions-scale.md#consumption-plan)の関数アプリの場合、CNAME オプションのみがサポートされます。 このサンプルは、App Service プランを作成します。そのドメインにマッピングするための A レコードが必要となります。 
 
 このサンプル スクリプトを実行するには、Web アプリの既定のドメイン名を指し示す A レコードがカスタム ドメインに構成済みであることが必要です。 詳細については、[Azure App Service にカスタム ドメインをマップする方法](https://aka.ms/appservicecustomdns)に関するページを参照してください。 
 

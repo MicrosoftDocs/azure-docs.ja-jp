@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 5d6cce859aa26935f0b6007fe8e5ff2c2239b210
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193155"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109445"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -152,17 +152,17 @@ Azure AD Connect Health の使用を開始するには、次の手順に従い�
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health ポータル
-Azure AD Connect Health ポータルでは、アラート、パフォーマンスの監視、使用状況の分析に関するビューが表示されます。 https://aka.ms/aadconnecthealth URL で Azure AD Connect Health のメイン ブレードに移動することができます。 ブレードは、ウィンドウと考えることができます。 メイン ブレードでは、**[クイック スタート]**、Azure AD Connect Health で提供されるサービス、その他の構成オプションが表示されます。 次のスクリーンショットとそれに続く簡単な説明をご覧ください。 エージェントのデプロイ後、Azure AD Connect Health で監視されているサービスが、Health サービスによって自動的に識別されます。
+Azure AD Connect Health ポータルでは、アラート、パフォーマンスの監視、使用状況の分析に関するビューが表示されます。 https://aka.ms/aadconnecthealth URL で Azure AD Connect Health のメイン ブレードに移動することができます。 ブレードは、ウィンドウと考えることができます。 メイン ブレードでは、 **[クイック スタート]** 、Azure AD Connect Health で提供されるサービス、その他の構成オプションが表示されます。 次のスクリーンショットとそれに続く簡単な説明をご覧ください。 エージェントのデプロイ後、Azure AD Connect Health で監視されているサービスが、Health サービスによって自動的に識別されます。
 
 > [!NOTE]
 > ライセンスの情報については、[Azure AD Connect Health の FAQ](reference-connect-health-faq.md) または [Azure AD の価格に関するページ](https://aka.ms/aadpricing)を参照してください。
     
 ![Azure AD Connect Health ポータル](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **[クイック スタート]**:このオプションを選択すると、**[クイック スタート]** ブレードが開きます。 **[ツールの入手]** を選択することで、Azure AD Connect Health エージェントをダウンロードできます。 ドキュメントの利用とフィードバックの提供もできます。
-* **[Azure Active Directory Connect (Sync)]**: このオプションを選択すると、Azure AD Connect Health が現在監視している Azure AD Connect サーバーが表示されます。 **[同期エラー]** エントリは、カテゴリごとに、最初のオンボード同期サービスの基本的な同期エラーを示します。 **[同期サービス]** エントリを選択すると、ブレードが開いて Azure AD Connect サーバーに関する情報が表示されます。 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)に関するページで各種機能を参照してください。
-* **[Active Directory フェデレーション サービス]**: このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD FS サービスが表示されます。 インスタンスを選択すると、ブレードが開いてそのサービス インスタンスに関する情報が表示されます。 この情報には、概要、プロパティ、アラート、監視、使用状況の分析などが含まれます。 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)に関するページで各種機能を参照してください。
-* **[Active Directory Domain Services]**: このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD DS フォレストが表示されます。 フォレストを選択すると、ブレードが開いてそのフォレストに関する情報が表示されます。 この情報には、重要度のきわめて高い情報、ドメイン コントローラーのダッシュボード、レプリケーションの状態のダッシュボード、アラート、監視の概要が含まれます。 「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」で各種機能を参照してください。
+* **[クイック スタート]** :このオプションを選択すると、 **[クイック スタート]** ブレードが開きます。 **[ツールの入手]** を選択することで、Azure AD Connect Health エージェントをダウンロードできます。 ドキュメントの利用とフィードバックの提供もできます。
+* **[Azure Active Directory Connect (Sync)]** : このオプションを選択すると、Azure AD Connect Health が現在監視している Azure AD Connect サーバーが表示されます。 **[同期エラー]** エントリは、カテゴリごとに、最初のオンボード同期サービスの基本的な同期エラーを示します。 **[同期サービス]** エントリを選択すると、ブレードが開いて Azure AD Connect サーバーに関する情報が表示されます。 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)に関するページで各種機能を参照してください。
+* **[Active Directory フェデレーション サービス]** : このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD FS サービスが表示されます。 インスタンスを選択すると、ブレードが開いてそのサービス インスタンスに関する情報が表示されます。 この情報には、概要、プロパティ、アラート、監視、使用状況の分析などが含まれます。 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)に関するページで各種機能を参照してください。
+* **[Active Directory Domain Services]** : このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD DS フォレストが表示されます。 フォレストを選択すると、ブレードが開いてそのフォレストに関する情報が表示されます。 この情報には、重要度のきわめて高い情報、ドメイン コントローラーのダッシュボード、レプリケーションの状態のダッシュボード、アラート、監視の概要が含まれます。 「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」で各種機能を参照してください。
 * **構成する**:このセクションには、次の機能をオンまたはオフに切り替えるオプションがあります。
 
   - **[設定]** エントリには、エージェントの基本的な構成が含まれています。 自動アップグレード設定は、Azure AD Connect Health エージェントの最新バージョンへの自動更新を可能にします。Azure AD Connect Health Agent の最新バージョンが利用可能になると、自動的に更新されます。 この機能は、既定では有効になっています。 Microsoft がトラブルシューティングの目的でのみ Azure AD ディレクトリの正常性データにアクセスすることを許可する: この機能が有効になっていると、ユーザーに表示されているのと同じデータを Microsoft でも表示できます。 この情報は問題のトラブルシューティングと支援に役立ちます。 この機能は、既定では無効になっています。

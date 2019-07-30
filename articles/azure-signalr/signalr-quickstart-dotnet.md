@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: cda1eddc5fa40e97038274cf9b4c3c2cb9552871
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2020ee02d236ca13431adb736d9f48171d33b4f3
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154493"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147416"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>クイック スタート:ASP.NET と SignalR Service を使ってチャット ルームを作成する
 
@@ -107,7 +107,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 このクイックスタートの手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 このクイックスタートの手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
    
 ![削除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)

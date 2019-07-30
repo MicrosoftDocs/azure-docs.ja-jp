@@ -14,12 +14,12 @@ ms.date: 04/27/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a0680ddf2c9e654455933bf09699ab81e8ab65d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e69bebfaeb28709b43ea74b7d33289426371a2bf
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65141695"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476445"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールのアクセス レビューを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "65141695"
 
 1. [管理] の下の **[アクセス レビュー]** をクリックします。
 
-    ![Azure AD ロール - アクセス レビュー](./media/pim-how-to-start-security-review/access-reviews.png)
+    ![Azure AD ロール - すべてのレビューの状態を示す [アクセス レビュー] 一覧](./media/pim-how-to-start-security-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "65141695"
 
 アクセス レビューの設定を指定したら、 **[開始]** をクリックします。 アクセス レビューはステータスと共にリストに表示されます。
 
-![アクセス レビューのリスト](./media/pim-how-to-start-security-review/access-reviews-list.png)
+![開始されたレビューの状態を示す [アクセス レビュー] 一覧](./media/pim-how-to-start-security-review/access-reviews-list.png)
 
 既定では、レビューの開始直後に Azure AD からレビュー担当者宛てにメールが送信されます。 Azure AD からメールを送信することを選択しなかった場合は、アクセス レビューが実行待ちになっていることを必ずレビュー担当者に伝えてください。 レビュー担当者には、[Azure AD ロールのアクセス レビューを実行する](pim-how-to-perform-security-review.md)手順を案内できます。
 
@@ -59,7 +59,7 @@ ms.locfileid: "65141695"
 
 アクセス レビューの **[概要]** ページでは、レビュー担当者が完了したレビューの進捗状況を追跡できます。 ディレクトリのアクセス権は、[レビューが完了する](pim-how-to-complete-review.md)まで変更されません。
 
-![アクセス レビューの進捗状況](./media/pim-how-to-start-security-review/access-review-overview.png)
+![レビューの詳細を示す [アクセス レビューの概要] ページ](./media/pim-how-to-start-security-review/access-review-overview.png)
 
 これが 1 回限りのレビューである場合は、アクセス レビュー期間が終了するか、管理者がアクセス レビューを停止した後に、[Azure AD ロールのアクセス レビューを完了する](pim-how-to-complete-review.md)手順に従って結果を確認および適用します。  
 

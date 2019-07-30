@@ -12,14 +12,15 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/07/2017
-ms.author: msangapu;cephalin
+ms.author: msangapu
+ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: affdf22a3c4cb496983da557b415773f4274db48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c0306f9b9d89962a4dd3cb05c168db3ec1ba4c1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136925"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618832"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>CLI を使用して Web アプリをバックアップから復元する
 

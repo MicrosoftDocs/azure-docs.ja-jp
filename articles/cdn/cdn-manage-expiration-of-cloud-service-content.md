@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: c21ae227d74442be5701dd906180392b1e0fdf8b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636707"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593711"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN で Web コンテンツ有効期限を管理する
 > [!div class="op_single_selector"]

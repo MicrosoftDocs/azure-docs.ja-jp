@@ -4,17 +4,17 @@ description: Service Fabric Mesh シークレットの格納と使用。
 services: service-fabric-mesh
 keywords: secrets
 author: v-steg
-ms.author: v-steg
+ms.author: jeconnoc
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: 4268356db5f46e92862e19d6391cfe5a94511270
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: jeconnoc
+ms.openlocfilehash: b5cfa93298222d914069b6ab63deb8ba8a9b59c3
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810634"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875342"
 ---
 # <a name="service-fabric-mesh-application-secrets"></a>Service Fabric Mesh アプリケーションのシークレット
 Service Fabric Mesh では、Azure リソースとしてシークレットがサポートされています。 Service Fabric Mesh のシークレットには、格納や送信を安全に行う必要がある、機密性の高いテキスト情報を指定できます (ストレージ接続文字列やパスワードなど)。

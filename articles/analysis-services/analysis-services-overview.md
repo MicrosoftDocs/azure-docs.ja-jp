@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 443d6ca86f8ac40bd2df186fd189a333cb7b7425
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: ac27f3b1ea777e7a88a44a16edf8867f97381297
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416013"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508998"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -23,13 +23,13 @@ Azure Analysis Services は、完全に管理されたサービスとしての�
 
 ![データ ソース](./media/analysis-services-overview/aas-overview-overall.png)
 
-**ビデオ:**「[Azure Analysis Services Overview (Azure Analysis Services の概要)](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)」で、Azure Analysis Services が Microsoft の全体的な BI 機能とどのように調和しているかを確認してください。
+**ビデオ:** 「[Azure Analysis Services Overview (Azure Analysis Services の概要)](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)」で、Azure Analysis Services が Microsoft の全体的な BI 機能とどのように調和しているかを確認してください。
 
 ## <a name="get-up-and-running-quickly"></a>スピーディな起動と実行
 
 Azure Portal から数分で[サーバーを作成する](analysis-services-create-server.md)ことができます。 また、Azure Resource Manager [テンプレート](../azure-resource-manager/resource-manager-create-first-template.md)と PowerShell を使用して、宣言型のテンプレートを使用するサーバーを作成できます。 1 つのテンプレートを使用して、他の Azure コンポーネント (ストレージ アカウントや Azure Functions など) と共にサーバー リソースをデプロイできます。 
 
-**ビデオ:**「[Automating deployment (デプロイの自動化)](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)」で、Azure Automation を使用してサーバーを迅速に作成する方法を確認してください。
+**ビデオ:** 「[Automating deployment (デプロイの自動化)](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)」で、Azure Automation を使用してサーバーを迅速に作成する方法を確認してください。
 
 Azure Analysis Services とさまざまな Azure サービスを統合することにより、高度な分析ソリューションを構築できます。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) との統合によって、重要なデータのセキュリティをロールベースのアクセスによって確保することができます。 [Azure Data Factory](../data-factory/introduction.md) パイプラインには、モデルにデータを読み込むアクティビティを含めることによって統合します。 [Azure Automation](../automation/automation-intro.md) や [Azure Functions](../azure-functions/functions-overview.md) を使用すると、カスタム コードによるモデルの軽量オーケストレーションを行うことができます。 
 
@@ -74,13 +74,13 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 
 Azure Analysis Services は、世界中のリージョンでサポートされています。 サポートされているプランとクエリ レプリカの可用性は、選択したリージョンによって異なります。 プランとクエリ レプリカの可用性は、ニーズや各リージョンの利用可能なリソースに応じて変更することができます。 
 
-### <a name="americas"></a>アメリカ合衆国
+### <a name="americas"></a>アメリカ
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |ブラジル南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
-|米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
+|East US     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
 |米国東部 2     |     S8、S9   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |

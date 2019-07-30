@@ -12,14 +12,15 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 696b6b14b2a369e8b80ac615fc77fa7f48f51c57
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f2145811338200b38e84766459844b4c83e5a80
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474285"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382756"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>アプリにアカウントを手動で追加する
+
 カメラで QR コードをキャプチャできない場合は、2 要素検証のために Microsoft Authenticator アプリにご自分のアカウント情報を手動で追加できます。 この方法は、職場または学校アカウントと Microsoft 以外のアカウントに対して使用できます。
 
 アカウント用に提供されているコードでは大文字と小文字が区別されません。また、Microsoft Authenticator アプリに追加するときにスペースを入れる必要がありません。
@@ -30,7 +31,7 @@ ms.locfileid: "60474285"
 ## <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
 
 1. コンピューター上で、 **[モバイル アプリケーションの構成]** ページの **[コード]** と **[URL]** の情報を書き留めます。 このページを開いたままにして、コードと URL を確認できるようにします。
-    
+
     ![QR コードを提供する画面](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
 2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[職場または学校アカウント]** を選択します。
@@ -38,7 +39,7 @@ ms.locfileid: "60474285"
 3. **[またはコードを手動で入力]** を選択します。
 
     ![QR コードをスキャンする画面](./media/user-help-auth-app-add-account-manual/auth-app-manual-code.png)
-   
+
 4. 手順 1 の **[コード]** と **[URL]** を入力して、 **[完了]** を選択します。
 
     ![コードと URL を入力する画面](./media/user-help-auth-app-add-account-manual/auth-app-code-url.png)
@@ -78,6 +79,7 @@ ms.locfileid: "60474285"
     >2 要素検証と Facebook アカウントの詳細については、「[二段階認証の概要とそのしくみ](https://www.facebook.com/help/148233965247823)」に関するページを参照してください。
 
 ## <a name="add-your-amazon-account"></a>Amazon アカウントを追加する
+
 2 要素検証を有効にし、アプリにアカウントを追加して、Amazon アカウントを追加できます。
 
 1. コンピューター上で、QR コードが記載された **[Choose how you'll receive codes]\(コードの受信方法の選択\)** ページから **[Can't scan barcode]\(バーコードをスキャンできない\)** を選択します。

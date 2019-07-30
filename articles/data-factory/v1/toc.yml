@@ -20,10 +20,10 @@
     - name: データ コピー パイプラインの作成
       href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
       items:
-        - name: コピー ウィザード
-          href: data-factory-copy-data-wizard-tutorial.md
         - name: Azure ポータル
           href: data-factory-copy-activity-tutorial-using-azure-portal.md
+        - name: コピー ウィザード
+          href: data-factory-copy-data-wizard-tutorial.md
         - name: Visual Studio
           href: data-factory-copy-activity-tutorial-using-visual-studio.md
         - name: Azure PowerShell

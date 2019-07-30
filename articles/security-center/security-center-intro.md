@@ -3,7 +3,7 @@ title: Azure Security Center とは | Microsoft Docs
 description: Azure Security Center の主な機能とそのしくみについて説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 6/06/2019
+ms.author: v-mohabe
+ms.openlocfilehash: 28e85f2e9caacc0cc30dcc1a073414c34bc2ab0e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242039"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064330"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -125,6 +125,10 @@ Security Center は、ブルートフォース攻撃への露出を制限する�
 ### <a name="protect-data-services"></a>データ サービスの保護
 
 Security Center には、Azure SQL 内のデータの自動分類を実行するために役立つ機能が含まれています。 また、Azure SQL と Storage サービス全体の潜在的な脆弱性の評価と、それらを緩和する方法の推奨事項を取得することもできます。
+
+### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>IoT およびハイブリッド クラウド ワークロードを保護する (プレビュー)
+
+Azure Security Center for IoT (モノのインターネット) は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、およびインテリジェントな脅威の検出と対応を提供することによって、ハイブリッド ワークロード保護を簡素化します。 詳細については、[Azure Security Center for IoT (プレビュー)](https://docs.microsoft.com/azure/asc-for-iot/) に関するページを参照してください。
 
 ## <a name="get-secure-faster"></a>より迅速にセキュリティ保護
 

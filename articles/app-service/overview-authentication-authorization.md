@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: mahender,cephalin
+ms.author: cephalin
+ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e8bd60eab5853b121b9c08622914b9c62449f8f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835602"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618767"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
 
@@ -155,7 +156,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 * [Google ログインを使用するようにアプリを構成する方法][Google]
 * [Microsoft アカウント ログインを使用するようにアプリを構成する方法][MSA]
 * [Twitter ログインを使用するようにアプリを構成する方法][Twitter]
-* [方法:アプリケーションにカスタム認証を使用する][custom-auth]
+* [方法: アプリケーションにカスタム認証を使用する][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

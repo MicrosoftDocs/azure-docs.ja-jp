@@ -2,18 +2,18 @@
 title: Azure Automation Runbook のエラーをトラブルシューティングする
 description: Azure Automation Runbook のエラーをトラブルシューティングする方法を説明します。
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65de80004dd05e3eb29f3313bc17405c40450d7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a9bd554ec3b7ae4f84d6a0a4726af7ffea89e89
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397137"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477473"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 

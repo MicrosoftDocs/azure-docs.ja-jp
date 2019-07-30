@@ -1,20 +1,20 @@
 ---
-title: Bing Local Business Search API クエリと応答の送信と使用 | Microsoft Docs
+title: Bing Local Business Search API クエリと応答の送信と使用
 titleSuffix: Azure Cognitive Services
 description: この記事を使用して、Bing Local Business Search API で検索クエリを送信および使用する方法について学習します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh; v-gedod
-ms.openlocfilehash: 45f7adab684b7b6097328a42abb60c8d58c1acc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: quickstart
+ms.date: 06/26/2018
+ms.author: rosh
+ms.openlocfilehash: 5a26324f22ed46d0c06ecb0eb7ecaf74f589051e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796789"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423445"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing Local Business Search API クエリと応答の送信と使用
 
@@ -38,6 +38,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 
 Bing Local Business Search API からの JSON 応答には、`SearchResponse` オブジェクトが含まれます。 API では、`places` フィールドに関連する検索結果が返されます。 結果が見つからない場合、`places` フィールドは応答に含まれません。
 
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
+
 ```
 {
    "_type": "SearchResponse",
@@ -58,7 +60,7 @@ API によって返される JSON の結果には、次の属性が含まれま�
 * entityPresentationInfo
 * geo
 * id
-* name
+* 名前
 * routeablePoint
 * telephone
 * url

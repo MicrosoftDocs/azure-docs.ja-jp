@@ -9,11 +9,11 @@ ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 9971b16da42cdf1de0464857291c74a947535735
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151375"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181720"
 ---
 データ エクスプローラーでクエリを使用して、データを取得しフィルター処理できます。
 
@@ -21,7 +21,7 @@ ms.locfileid: "66151375"
    
    ![データ エクスプローラーの既定のクエリは `SELECT * FROM c`](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    
-1. クエリを変更するには、**[フィルターの編集]** を選択し、既定のクエリを `ORDER BY c._ts DESC` に置き換えてから、**[フィルターの適用]** を選択します。
+1. クエリを変更するには、 **[フィルターの編集]** を選択し、既定のクエリを `ORDER BY c._ts DESC` に置き換えてから、 **[フィルターの適用]** を選択します。
    
    ![ORDER BY c._ts DESC を追加し [フィルタの適用] をクリックすることで既定のクエリを変更](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48257cc8e10deb1ec922806f62a6c435069f66f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65961451"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467090"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -64,7 +64,7 @@ ms.locfileid: "65961451"
 
 仮想ネットワークで統合サービス環境 (ISE) を使用するとき、よくある設定の問題は、ブロックされたポートが 1 つ以上あるということです。 ISE と宛先システムとの間の接続を作成するために使用するコネクターにも独自のポート要件がある可能性があります。 たとえば、FTP コネクタを使用して FTP システムと通信する場合、その FTP システム上で使用するポート (コマンド送信用のポート 21 など) を使用できることを確認します。
 
-ISE をデプロイする仮想ネットワークのサブネット間のトラフィックを制御するには、[サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)して[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を設定できます。 ただし、ISE は、ネットワーク セキュリティ グループを使用する仮想ネットワークで特定のポートをオープンしておく必要があります。 そうすると、ISE はアクセス可能状態のままとなり、ISE へのアクセスを失わないように正しく機能することができます。 そうしないと、いずれかの必要なポートが使用できなった場合、ISE は機能を停止します。
+ISE をデプロイする仮想ネットワークのサブネット間でトラフィックを制御するには、[サブネット間のネットワーク トラフィックをフィルター処理する](../virtual-network/tutorial-filter-network-traffic.md)ことで、必要に応じて仮想ネットワークに[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md) を設定できます。 このルートを選択する場合は、次の表で説明するように、NSG を使用する仮想ネットワークで ISE が特定のポートを開くことを確認ください。 仮想ネットワークに既存の NSG またはファイアウォールがある場合は、これらのポートを開くことを確認してください。 そうすると、ISE はアクセス可能状態のままとなり、ISE へのアクセスを失わないように正しく機能することができます。 そうしないと、いずれかの必要なポートが使用できなった場合、ISE は機能を停止します。
 
 以下の表は、ISE で使用される仮想ネットワーク内のポートと、それらのポートが使用される場所を説明したものです。 [Resource Manager のサービス タグ](../virtual-network/security-overview.md#service-tags)は、IP アドレス プレフィックスのグループを表し、セキュリティ規則を作成する際の複雑さを最小限に抑えるために役立ちます。
 

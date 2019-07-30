@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc0042d6392891e8282c563afea2212031a0f49a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 600b6db1eb3d3b422d62e49c5bc816a1a56370f9
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121878"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798508"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデスクトップ アプリ - コードの構成
 
@@ -45,12 +45,12 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-前述のように、対話型認証を使用する場合は、`.WithRedirectUri` 修飾子を使用する必要が生じる可能性があります。
+前述のように、対話型認証またはデバイス コード フローを使用する場合は、`.WithRedirectUri` 修飾子を使用することが必要になる可能性があります。
 
 ```CSharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .WithDefaultRedirectUri()
         .Build();
 ```
 
@@ -61,7 +61,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 ```CSharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
-        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .WithDefaultRedirectUri()
         .Build();
 ```
 
@@ -72,7 +72,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 ```CSharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .WithDefaultRedirectUri()
         .WithAadAuthority(AzureCloudInstance.AzureUsGovernment,
                          AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
@@ -169,7 +169,7 @@ public class SampleConfiguration
 ```CSharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
-           .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+           .WithDefaultRedirectUri()
            .Build();
 ```
 

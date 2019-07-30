@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 91cc3f96f9cdd231c38232c972c2628d12b9f4b3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 6ac054bc9750e4297080c4ab64030c9c6a5fb55a
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476150"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312847"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Azure Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する 
 
@@ -94,7 +94,7 @@ Key Vault を使用してストレージ アカウント キーを管理する�
 1. Key Vault に "ストレージ アカウント キー オペレーターのサービス ロール" の RBAC ロールを割り当てます。 このロールは、アクセス スコープをお使いのストレージ アカウントに制限します。 従来のストレージ アカウントには、"従来のストレージ アカウント キー オペレーターのサービス ロール" のロールを使用します。
 
     ```
-    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope 93c27d83-f79b-4cb2-8dd4-4aa716542e74
+    az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>"
     ```
     
     `93c27d83-f79b-4cb2-8dd4-4aa716542e74` は、Azure パブリック クラウド内の Key Vault のオブジェクト ID です。 Azure Government クラウド内の Key Vault のオブジェクト ID を取得するには、「[サービス プリンシパルのアプリケーション ID](#service-principal-application-id)」をご覧ください。
@@ -158,7 +158,7 @@ Key Vault から [Shared Access Signature トークン](https://docs.microsoft.c
 - サービス プリンシパルと証明書を使用します。 
 - サービス プリンシパルとパスワードを使用します。 この方法は推奨されません。
 
-詳細については、「[Azure Key Vault:基本的な概念](key-vault-whatis.md#basic-concepts)」をご覧ください。
+詳細については、「[Azure Key Vault:基本的な概念](key-vault-whatis.md#basic-concepts)」を参照してください。
 
 次の例では、Shared Access Signature トークンをフェッチする方法を示します。 Shared Access Signature 定義を作成したら、トークンをフェッチします。 
 

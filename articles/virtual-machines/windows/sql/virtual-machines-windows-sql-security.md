@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d5d10562a70b7d37908bc272bf555fd967831009
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731718"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076990"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
 
@@ -42,11 +42,11 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 ## <a name="secure-connections"></a>セキュリティで保護された接続
 
-ギャラリー イメージを使って SQL Server 仮想マシンを作成するときに、**[SQL Server Connectivity]** オプションで、**[ローカル (VM 内のみ)]**、**[プライベート (Virtual Network 内)]**、または **[パブリック (インターネット)]** を選択できます。
+ギャラリー イメージを使って SQL Server 仮想マシンを作成するときに、 **[SQL Server Connectivity]** オプションで、 **[ローカル (VM 内のみ)]** 、 **[プライベート (Virtual Network 内)]** 、または **[パブリック (インターネット)]** を選択できます。
 
 ![SQL Server 接続](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
-セキュリティを最大限に強化するため、自分のシナリオで最も制限の厳しいオプションを選択します。 たとえば、同じ VM の SQL Server にアクセスするアプリケーションを実行している場合、最もセキュリティで保護された選択は **[ローカル]** です。 SQL Server へのアクセスを必要とする Azure アプリケーションを実行している場合、**[プライベート]** は指定した [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) 内でのみの SQL Server への通信をセキュリティで保護します。 SQL Server VM にアクセスする [**パブリック** (インターネット)] が必要な場合、危険を回避するために、このトピックの他のベスト プラクティスに従ってください。
+セキュリティを最大限に強化するため、自分のシナリオで最も制限の厳しいオプションを選択します。 たとえば、同じ VM の SQL Server にアクセスするアプリケーションを実行している場合、最もセキュリティで保護された選択は **[ローカル]** です。 SQL Server へのアクセスを必要とする Azure アプリケーションを実行している場合、 **[プライベート]** は指定した [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) 内でのみの SQL Server への通信をセキュリティで保護します。 SQL Server VM にアクセスする [**パブリック** (インターネット)] が必要な場合、危険を回避するために、このトピックの他のベスト プラクティスに従ってください。
 
 ポータルで選択されたオプションは、VM の[ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md) (NSG) の受信セキュリティ ルールを使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。 SQL Server ポート (既定値 1433) へのトラフィックを許可するには、受信 NSG ルールを変更または新規作成します。 また、このポートでの通信を許可する、特定の IP アドレスを指定することもできます。
 
@@ -60,11 +60,13 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 ## <a name="use-a-non-default-port"></a>既定以外のポートの使用
 
-既定では、SQL Server は既知のポート (1433) をリッスンします。 セキュリティ強化のために、既定以外のポート (1401 など) をリッスンするように、SQL Server を構成します。 Azure Portal で SQL Server のギャラリー イメージをプロビジョニングする場合、**[SQL Server 設定]** ブレードでこのポートを指定できます。
+既定では、SQL Server は既知のポート (1433) をリッスンします。 セキュリティ強化のために、既定以外のポート (1401 など) をリッスンするように、SQL Server を構成します。 Azure Portal で SQL Server のギャラリー イメージをプロビジョニングする場合、 **[SQL Server 設定]** ブレードでこのポートを指定できます。
+
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
 プロビジョニングした後に、これを構成するには、次の 2 つのオプションがあります。
 
-- Resource Manager VM の場合、VM の概要ブレードから **[SQL Server の構成]** を選択できます。 ここには、ポートを変更するオプションがあります。
+- Resource Manager VM の場合、[SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)から **[セキュリティ]** を選択できます。 ここには、ポートを変更するオプションがあります。
 
   ![ポータルの TCP ポートの変更](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 
@@ -75,7 +77,7 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 SQL Server が既定以外のポートをリッスンしている場合は、接続時のポートを指定する必要があります。 たとえば、サーバーの IP アドレスが 13.55.255.255 で、SQL Server がポート 1401 をリッスンしているシナリオを仮定します。 SQL Server に接続するには、接続文字列で `13.55.255.255,1401` を指定します。
 
-## <a name="manage-accounts"></a>[アカウントの管理]
+## <a name="manage-accounts"></a>アカウントの管理
 
 攻撃者に簡単にアカウント名やパスワードを推測されたくありません。 次のヒントを使用すると役立ちます。
 

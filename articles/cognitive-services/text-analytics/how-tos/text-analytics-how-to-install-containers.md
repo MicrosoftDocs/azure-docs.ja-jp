@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
-ms.topic: article
-ms.date: 06/10/2019
+ms.topic: conceptual
+ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: fc9e2b6e5ab2d2103cab2681fe603c1ca9b725c8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c4ef58f35b3d038f360ff962c70e92711bc205ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069212"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446504"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
-Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 エンティティ リンク設定は現在コンテナーでサポートされていません。 
+Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 エンティティ リンク設定は現在コンテナーでサポートされていません。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

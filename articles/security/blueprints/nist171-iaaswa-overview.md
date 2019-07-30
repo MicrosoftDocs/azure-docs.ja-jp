@@ -31,7 +31,7 @@ Azure Portal からお客様が構成する Azure Storage 上にソリューシ�
 
 セキュリティ強化のために、このソリューションのすべてのリソースは、Azure Resource Manager を通じてリソース グループとして管理されます。 デプロイされたリソースと Azure Key Vault のキーへのアクセスは､Azure の Active Directory (Azure AD) ロールベースのアクセス制御 (RBAC) を使って制御されます｡ システムの正常性は、Azure Monitor によって監視されます。 どちらの監視サービスについても､お客様はログをキャプチャするよう構成できます。 システム正常性は、使いやすい 1 つのダッシュ ボードに表示されます。
 
-管理要塞ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 *Microsoft では､参照アーキテクチャのサブネットに対する管理とデータ インポート用に VPN または Azure ExpressRoute 接続を構成することを推奨しています。*
+管理踏み台ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 *Microsoft では､参照アーキテクチャのサブネットに対する管理とデータ インポート用に VPN または Azure ExpressRoute 接続を構成することを推奨しています。*
 
 
 ![NIST SP 800-171 のための IaaS Web アプリケーションの参照アーキテクチャ ダイアグラム](images/nist171-iaaswa-architecture.png "NIST SP 800-171 のための IaaS Web アプリケーションの参照アーキテクチャ ダイアグラム")
@@ -39,7 +39,7 @@ Azure Portal からお客様が構成する Azure Storage 上にソリューシ�
 このソリューションでは、次の Azure サービスを使用します。 詳しくは、[deployment architecture](#deployment-architecture)セクションをご覧ください。
 
 - Azure Virtual Machines
-    - (1) 管理/要塞 (Windows Server 2016 Datacenter)
+    - (1) 管理/踏み台 (Windows Server 2016 Datacenter)
     - (2) Active Directory ドメイン コントローラー (Windows Server 2016 Datacenter)
     - (2) SQL Server クラスター ノード (Windows Server 2016 上の SQL Server 2017)
     - (2) Web/IIS (Windows Server 2016 Datacenter)
@@ -70,9 +70,9 @@ Azure Portal からお客様が構成する Azure Storage 上にソリューシ�
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
-**要塞ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
+**踏み台ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 踏み台ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
 
-このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
+このソリューションでは、次の構成を持つドメイン参加済み踏み台ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 -   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
@@ -88,7 +88,7 @@ Azure Portal からお客様が構成する Azure Storage 上にソリューシ�
 
 あらゆるサブネットのそれぞれに専用の NSG が 1 つあります。
 - Application Gateway 用 NSG (LBNSG)
-- 要塞ホスト (MGTNSG) 用 NSG (MGTNSG)
+- 踏み台ホスト (MGTNSG) 用 NSG (MGTNSG)
 - プライマリおよびバックアップ ドメイン コントローラー用 NSG (ADNSG)
 - SQL Server とクラウド監視用 NSG (SQLNSG)
 - Web 層用 NSG (WEBNSG)

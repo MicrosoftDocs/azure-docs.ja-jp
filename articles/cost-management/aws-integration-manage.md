@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64871152"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275709"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 
@@ -129,6 +129,8 @@ AWS API にアクセスすると、追加のコストが発生する場合があ
 
 ### <a name="no-permission-to-aws-linked-accounts"></a>AWS のリンクされたアカウントへのアクセス許可がない
 
+**エラー コード:** _Unauthorized_
+
 AWS のリンクされたアカウントのコストへのアクセス許可を取得するには、次の 2 つの方法があります。
 
 - AWS のリンクされたアカウントのある管理グループへのアクセスを取得する。
@@ -136,7 +138,11 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 
 既定では、AWS コネクタの作成者は、コネクタが作成したすべてのオブジェクトの所有者です。 AWS 統合アカウントと AWS のリンクされたアカウントが含まれます。
 
+コネクタの設定を確認するには、少なくとも共同作成者ロールが必要であり、閲覧者がコネクタの設定を確認することはできません。
+
 ### <a name="collection-failed-with-assumerole"></a>AssumeRole での収集の失敗
+
+**エラー コード:** _FailedToAssumeRole_
 
 このエラーは、Cost Management が AWS AssumeRole API を呼び出すことができないことを意味します。 この問題は、ロールの定義の問題が原因で発生する可能性があります。 次の条件が該当することを確認します。
 
@@ -147,11 +153,23 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 
 ### <a name="collection-failed-with-access-denied"></a>アクセス拒否で収集が失敗
 
-このエラー メッセージは、Cost Management が Amazon S3 バケットに格納されている CUR ファイルにアクセスできないことを意味します。 ロールに関連付けられている AWS JSON ポリシーが、「[AWS でのロールとポリシーの作成](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)」セクションの下部に示されている例と似たものであることを確認してください。
+- **エラー コード:** _AccessDeniedReportDefinitions_ 
+- **エラー コード:** _AccessDeniedReportDefinitions_ 
+- **エラー コード:** _AccessDeniedDownloadReport_ 
 
-### <a name="connector-error-with-failedtofindreport"></a>FailedToFindReport でのコネクタ エラー
+このエラー メッセージは、Cost Management で Amazon S3 バケットに格納されている CUR ファイルにアクセスできないことを意味します。 ロールに関連付けられている AWS JSON ポリシーが、「[AWS でのロールとポリシーの作成](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)」セクションの下部に示されている例と似たものであることを確認してください。
+
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>コストと使用状況レポートが見つからないための収集の失敗
+
+**エラー コード:** _FailedToFindReport_
 
 このエラーは、Cost Management がコネクタで定義されているコストと使用状況レポートを見つけられないことを意味します。 それが削除されておらず、ロールに関連付けられている AWS JSON ポリシーが、「[AWS でのロールとポリシーの作成](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)」セクションの下部に示されている例と似たものであることを確認してください。
+
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>コストと使用状況レポートの定義が一致しないため、コネクタを作成または確認できない
+
+**エラー コード:** _ReportIsNotValid_
+
+このエラーは、AWS のコストと使用状況レポートの定義に関連しています。このレポートには固有の設定が必要です。[AWS でのコストと使用状況レポートの作成](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)に記載されている要件を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,7 +4,7 @@ description: Azure の Cloud Foundry にアプリケーションをデプロイ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 5a43ce3f09ce9695fa5add58b52271a46e2a271a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe510865e687b6a44538627e4ef9025b41416841
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388507"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668349"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
@@ -31,16 +31,16 @@ ms.locfileid: "60388507"
 
 Azure に Cloud Foundry 環境を作成する方法はいくつかあります。
 
-- Azure Marketplace の [Pivotal Cloud Foundry オファー][pcf-azuremarketplace]を使用して、PCF Operations Manager と Azure Service Broker が含まれる標準環境を作成する。 マーケットプレースのオファーをデプロイする[全手順][pcf-azuremarketplace-pivotaldocs]は、Pivotal のドキュメントで確認できます。
+- Pivotal のドキュメントでマーケットプレースのオファーをデプロイするために、[Pivotal Cloud Foundry オファー][pcf-azuremarketplace] in the Azure Marketplace to create a standard environment that includes PCF Ops Manager and the Azure Service Broker. You can find [complete instructions][pcf-azuremarketplace-pivotaldocs] を使用します。
 - [Pivotal Cloud Foundry を手動でデプロイする][pcf-custom]ことでカスタマイズされた環境を作成する。
-- Cloud Foundry 環境のデプロイを調整する VM である [BOSH](https://bosh.io)ディレクターをセットアップすることで、[オープン ソースの Cloud Foundry パッケージを直接デプロイする][oss-cf-bosh]。
+- Cloud Foundry 環境のデプロイを調整する VM である [BOSH](https://bosh.io) ディレクターをセットアップすることで、[オープン ソースの Cloud Foundry パッケージを直接デプロイする][oss-cf-bosh]。
 
 > [!IMPORTANT] 
 > PCF を Azure Marketplace からデプロイする場合は、Pivotal Apps Manager にアクセスするために必要な SYSTEMDOMAINURL と管理者の資格情報をメモに取ります。両方ともマーケットプレースのデプロイ ガイドで説明されています。 それらはこのチュートリアルを完了するために必要です。 マーケットプレースのデプロイでは、SYSTEMDOMAINURL の形式は https://system.*ip-address*.cf.pcfazure.com です。
 
 ## <a name="connect-to-the-cloud-controller"></a>Cloud Controller に接続する
 
-Cloud Controller はアプリケーションをデプロイおよび管理するための Cloud Foundry 環境のプライマリ エントリ ポイントです。 Cloud Controller のコア API (CCAPI) は REST API ですが、さまざまなツールを使用してアクセスできます。 ここでは、[Cloud Foundry CLI][cf-cli] を使用してやり取りします。 この CLI は Linux、MacOS、または Windows にインストールできますが、インストールしなくても [Azure Cloud Shell][cloudshell-docs] にプリインストールされています。
+Cloud Controller はアプリケーションをデプロイおよび管理するための Cloud Foundry 環境のプライマリ エントリ ポイントです。 Cloud Controller のコア API (CCAPI) は REST API ですが、さまざまなツールを使用してアクセスできます。 ここでは、[Cloud Foundry CLI][cf-cli]. You can install the CLI on Linux, MacOS, or Windows, but if you'd prefer not to install it at all, it is available pre-installed in the [Azure Cloud Shell][cloudshell-docs] を使用してやり取りします。
 
 ログインするには、マーケットプレースのデプロイから取得した SYSTEMDOMAINURL に `api` を付加します。 既定のデプロイでは自己署名証明書が使用されるため、それも `skip-ssl-validation` スイッチに含めてください。
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
-ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c6ed546735058e330368151adb0df7323f943050
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093699"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593672"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Azure CDN によるメディア ストリーミングの最適化 
  
@@ -71,7 +71,7 @@ ms.locfileid: "49093699"
   
     ![新しいエンドポイント](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
-2. **[最適化対象]** ドロップダウン リストで、ビデオ オン デマンド資産の **[ビデオ オン デマンド メディア ストリーミング]** を選択します。 ライブとビデオ オン デマンド ストリーミングを組み合わせる場合は、**[一般的なメディア ストリーミング]** を選択します。
+2. **[最適化対象]** ドロップダウン リストで、ビデオ オン デマンド資産の **[ビデオ オン デマンド メディア ストリーミング]** を選択します。 ライブとビデオ オン デマンド ストリーミングを組み合わせる場合は、 **[一般的なメディア ストリーミング]** を選択します。
 
     ![選択したストリーミング](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
@@ -86,8 +86,8 @@ ms.locfileid: "49093699"
 
 |   | 一般的な Web 配信 | 一般的なメディア ストリーミング | ビデオ オン デマンド メディア ストリーミング  
 --- | --- | --- | ---
-キャッシュ: 正の値 <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |365 日 | 365 日   
-キャッシュ: 負の値 <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 | 1 秒
+キャッシュ:Positive <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |365 日 | 365 日   
+キャッシュ:Negative <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 | 1 秒
  
 ### <a name="deal-with-origin-failure"></a>配信元のエラーの処理  
 

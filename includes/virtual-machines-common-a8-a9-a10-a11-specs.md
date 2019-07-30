@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep;amverma
 ms.custom: include file
-ms.openlocfilehash: 5cbc19d5aade2bbcc8b8dca277352d1b17d1d35a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d9491bae1fcc6acb7ab631514aa4f6244f593d
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755196"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538011"
 ---
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 * **Azure サブスクリプション** – 多数のコンピューティング集中型インスタンスをデプロイするには、従量課金制サブスクリプションまたは他の購入オプションを検討してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
@@ -34,6 +34,6 @@ ms.locfileid: "66755196"
 このインターフェイスにより、RDMA 対応インスタンスは InfiniBand (IB) ネットワークを介して通信することができ、HB、HC では EDR のレートで、H16r、H16mr、および RDMA 対応 N シリーズの仮想マシンでは FDR のレートで、A8 と A9 の仮想マシンでは QDR のレートで動作します。 これらの RDMA 機能により、特定の Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。 速度の詳細については、このページの表の詳細情報を参照してください。
 
 > [!NOTE]
-> Azure では、IP over IB は、SR-IOV 対応の VM (現在は HB および HC) のみでサポートされています。 RDMA over IB は、RDMA 対応のすべてのインスタンスでサポートされています。
+> Azure では、IP over IB は、SR-IOV 対応の VM (InfiniBand の SR-IOV、現在は HB および HC) でのみサポートされています。 RDMA over IB は、RDMA 対応のすべてのインスタンスでサポートされています。
 >
 

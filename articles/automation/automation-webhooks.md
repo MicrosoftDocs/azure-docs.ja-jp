@@ -4,17 +4,17 @@ description: HTTP 呼び出しから Azure Automation の Runbook を開始す�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e0e0cdfd5bdda125ed38173df56e0fb7a84f71a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61305022"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477925"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 
@@ -30,7 +30,7 @@ ms.locfileid: "61305022"
 
 次のテーブルは、Webhook 用に構成する必要があるプロパティについて説明しています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--- |:--- |
 | Name |Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。 これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。 <br> ベスト プラクティスとして、webhook を使用するクライアントに関連した名前を webhook に付ける必要があります。 |
 | URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。 これは、Webhook を作成するときに自動的に生成されます。 カスタム URL を指定することはできません。 <br> <br> この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。 その理由で、これはパスワードと同じように扱う必要があります。 セキュリティ上の理由から、Webhook の作成時に Azure ポータルで表示できるのは URL だけです。 将来の使用に備えて、URL を安全な場所にメモしてください。 |

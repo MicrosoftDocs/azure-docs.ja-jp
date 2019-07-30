@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b08f9a85b8c9f52724e2cd08eaf13eb1faae0977
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89c81e978c5f3dbbb8fac1ea5e75fc506612308f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243561"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384907"
 ---
 # <a name="choose-the-right-consistency-level"></a>適切な整合性レベルの選択 
 

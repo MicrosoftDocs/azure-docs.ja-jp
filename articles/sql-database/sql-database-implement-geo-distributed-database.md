@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 6022c016b83ffe1362db4d826a5ee4397afd4128
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5be3efa5544e47f40ab9f0a31f6658b134977e2
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60338991"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444519"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>チュートリアル:地理的に分散したデータベースの実装
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルに取り組む前に、次のものがインストールされていることを確認してください。
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Azure SQL データベース。 次の方法で作成します。
+- Azure SQL Database 内の単一データベース。 次の方法で作成します。
   - [ポータル](sql-database-single-database-get-started.md)
   - [CLI](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)

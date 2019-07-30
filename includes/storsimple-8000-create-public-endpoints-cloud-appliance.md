@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159638"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181237"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>クラウド アプライアンス上にパブリック エンドポイントを作成するには
 

@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgan
-ms.openlocfilehash: 271e3c31c3e08d170add84ca4995f4876d4d3a33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: asgang
+ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753776"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875658"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 

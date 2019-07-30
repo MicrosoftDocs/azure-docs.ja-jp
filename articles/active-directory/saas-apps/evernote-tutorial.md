@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 2ce05e904484a6d773a0132734208b87e161f960
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 4185e9f5e1b411f95afacb80499db048769ea27b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59499922"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102964"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>チュートリアル:Azure Active Directory と Evernote の統合
 
@@ -53,19 +53,19 @@ Azure AD への Evernote の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Evernote を追加するには、次の手順に従います。**
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Evernote**」と入力し、結果ウィンドウで **[Evernote]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Evernote**」と入力し、結果ウィンドウで **[Evernote]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Evernote](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Evernote で Azure AD のシングル サインオンを構成してテストす
 
 Evernote で Azure AD のシングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Evernote** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Evernote** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -107,17 +107,17 @@ Evernote で Azure AD のシングル サインオンを構成するには、次
 
     **[識別子]** テキスト ボックスに、`https://www.evernote.com/saml2` という URL を入力します。
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![image](common/both-preintegrated-signon.png)
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://www.evernote.com/Login.action`」と入力します。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-7. **署名**オプションを変更するには、**[編集]** をクリックして **[SAML 署名証明書]** ダイアログを開きます。
+7. **署名**オプションを変更するには、 **[編集]** をクリックして **[SAML 署名証明書]** ダイアログを開きます。
 
     ![image](common/edit-certificate.png) 
 
@@ -145,7 +145,7 @@ Evernote で Azure AD のシングル サインオンを構成するには、次
 
     ![管理コンソール](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. **[管理コンソール]** から **[セキュリティ]** に移動し、**[シングル サインオン]** を選択します。
+3. **[管理コンソール]** から **[セキュリティ]** に移動し、 **[シングル サインオン]** を選択します。
 
     ![SSO の設定](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
@@ -153,11 +153,11 @@ Evernote で Azure AD のシングル サインオンを構成するには、次
 
     ![Certificate-Setting](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.  **SSO を有効にします。** SSO は既定で有効になっています (SSO の要件を削除する場合は、**[シングル サインオンを無効にする]** をクリックします)
+    a.  **SSO を有効にします。** SSO は既定で有効になっています (SSO の要件を削除する場合は、 **[シングル サインオンを無効にする]** をクリックします)
 
     b. Azure portal からコピーした **[ログイン URL]** の値を **[SAML HTTP Request URL]\(SAML HTTP 要求 URL\)** ボックスに貼り付けます。
 
-    c. Azure AD からダウンロードした証明書をメモ帳で開き、"BEGIN CERTIFICATE" および "END CERTIFICATE" を含む内容をコピーして、**[X.509 証明書]** ボックスに貼り付けます。 
+    c. Azure AD からダウンロードした証明書をメモ帳で開き、"BEGIN CERTIFICATE" および "END CERTIFICATE" を含む内容をコピーして、 **[X.509 証明書]** ボックスに貼り付けます。 
 
     d. **[変更の保存]** をクリックします。
 
@@ -165,7 +165,7 @@ Evernote で Azure AD のシングル サインオンを構成するには、次
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -189,7 +189,7 @@ Evernote で Azure AD のシングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に Evernote へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Evernote]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Evernote]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -201,15 +201,15 @@ Evernote で Azure AD のシングル サインオンを構成するには、次
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-evernote-test-user"></a>Evernote テスト ユーザーの作成
 
@@ -228,7 +228,7 @@ Evernote の場合、プロビジョニングは手動で行います。
 
     ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
 
-4. **[メール]** テキストボックスの **[チーム メンバーを追加]** にユーザー アカウントのメール アドレスを入力し、**[招待する]** をクリックします。
+4. **[メール]** テキストボックスの **[チーム メンバーを追加]** にユーザー アカウントのメール アドレスを入力し、 **[招待する]** をクリックします。
 
     ![Add-testUser](./media/evernote-tutorial/create_aaduser_0002.png)
     

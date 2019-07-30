@@ -4,7 +4,7 @@ description: Azure サービスの中断が Azure 仮想マシンに影響を与
 services: virtual-machines
 documentationcenter: ''
 author: kmouss
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
 ms.service: virtual-machines
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: kmouss;aglick
+ms.author: gwallace
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70aec41c885ab81371f5318f7557b0e628ac3308
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bc9ca5f5a638f0b36a28d58172fe8052b3d1522f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915417"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875450"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Azure サービスの中断が Azure VM に影響を与える場合の対処方法
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。
@@ -33,18 +33,18 @@ Azure には、可用性の高いアプリケーションをサポートする�
 
 こうした状況はほとんど発生しませんが、Azure 仮想マシンのアプリケーションがデプロイされているリージョン全体でサービス中断が発生した場合は、Azure 仮想マシンに関する次のガイダンスに従って対応してください。
 
-## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>オプション 1: Azure Site Recovery を使用してフェールオーバーを開始する
+## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>オプション 1:Azure Site Recovery を使用してフェールオーバーを開始する
 VM に Azure Site Recovery を構成して、1 回のクリックによってわずか数分でアプリケーションを復旧できるようにします。 任意の Azure リージョンにレプリケートでき、ペア リージョンに限定されません。 [仮想マシンのレプリケート](https://aka.ms/a2a-getting-started)から始めます。 [復旧計画を作成](../site-recovery/site-recovery-create-recovery-plans.md)して、アプリケーションのフェールオーバー プロセス全体を自動化できます。 運用アプリケーションや実行中のレプリケーションに影響を与えることなく、事前に[フェールオーバーをテスト](../site-recovery/site-recovery-test-failover-to-azure.md)できます。 プライマリ リージョンでの中断が発生した場合は、[フェールオーバーを開始](../site-recovery/site-recovery-failover.md)して、アプリケーションをターゲット リージョンに移すだけです。
 
 
-## <a name="option-2-wait-for-recovery"></a>オプション 2: 復旧を待つ
+## <a name="option-2-wait-for-recovery"></a>オプション 2:復旧を待つ
 この場合、ユーザーによる操作は必要ありません。 サービスを利用できるようにするために鋭意取り組んでいることをご理解ください。 現在のサービスの状態は、 [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)で確認できます。
 
 中断前に Azure Site Recovery、読み取りアクセス geo 冗長ストレージ、または geo 冗長ストレージを設定しなかった場合は、このオプションの使用をお勧めします。 VM 仮想ハード ドライブ (VHD) が格納されているストレージ アカウントに対して geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージを設定した場合は、基本イメージ VHD の回復を当てにして、そこから新しい VM のプロビジョニングを試みることができます。 データの同期が保証されないので、このオプションはお勧めできません。 そのため、このオプションの動作は保証されません。
 
 
 > [!NOTE]
-> ユーザーはこのプロセスを制御できないこと、およびリージョン全体のサービス中断の場合にのみ行われることに注意してください。 そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。 詳細については、 [ディザスター リカバリーのためのデータ戦略](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery)に関するセクションをご覧ください。
+> ユーザーはこのプロセスを制御できないこと、およびリージョン全体のサービス中断の場合にのみ行われることに注意してください。 そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。 詳細については、 [ディザスター リカバリーのためのデータ戦略](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)に関するセクションをご覧ください。
 >
 >
 

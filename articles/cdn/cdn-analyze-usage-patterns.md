@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 5a0d9018-8bdb-48ff-84df-23648ebcf763
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 88cbd942413757388278d69d728d407271e4c4a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606358"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594154"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon からのコア レポート
 

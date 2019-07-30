@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d02ec23e7e6ce936fdbcce63d1394e3a8681c65b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>チュートリアル:Azure Active Directory と Silverback の統合
 
@@ -53,11 +53,11 @@ Silverback の Azure AD への統合を構成するには、マネージド SaaS
 
 **ギャラリーから Silverback を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Silverback の Azure AD への統合を構成するには、マネージド SaaS
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Silverback**」と入力し、結果パネルで **[Silverback]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Silverback**」と入力し、結果パネルで **[Silverback]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Silverback](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Silverback で Azure AD のシングル サインオンを構成してテスト�
 
 Silverback で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Silverback** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Silverback** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -122,7 +122,7 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
 1. 別の Web ブラウザーで、Silverback Server に管理者としてログインします。
 
-2. **[Admin]\(管理者\)** > **[Authentication Provider]\(認証プロバイダー\)** に移動します。
+2. **[Admin]\(管理者\)**  >  **[Authentication Provider]\(認証プロバイダー\)** に移動します。
 
 3. **[Authentication Provider Settings]\(認証プロバイダーの設定\)** ページで、次の手順を行います。
 
@@ -130,13 +130,13 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
     a.  **[Import from URL]\(URL からインポートする\)** をクリックします。
 
-    b.  コピーしたメタデータ URL を貼り付け、**[OK]** をクリックします。
+    b.  コピーしたメタデータ URL を貼り付け、 **[OK]** をクリックします。
 
     c.  **[OK]** をクリックして確定すると、値が自動的に入力されます。
 
     d.  **[Show on Login Page]\(ログイン ページに表示する\)** をオンにします。
 
-    e.  (省略可能) Azure AD で承認されたユーザーを自動的に追加するには、**[Dynamic User Creation]\(動的なユーザー作成\)** をオンにします。
+    e.  (省略可能) Azure AD で承認されたユーザーを自動的に追加するには、 **[Dynamic User Creation]\(動的なユーザー作成\)** をオンにします。
 
     f.  [Self Service Portal]\(セルフサービス ポータル\) でボタンの **[Title]\(タイトル\)** を作成します。
 
@@ -150,7 +150,7 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -164,7 +164,7 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -175,7 +175,7 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Silverback へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Silverback]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Silverback]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -187,15 +187,15 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-silverback-test-user"></a>Silverback テスト ユーザーを作成する
 
@@ -217,7 +217,7 @@ Azure AD ユーザーが Silverback にログインできるようにするに�
 
     c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
-    d. **[E-mail Address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (例: **Brittasimon@contoso.com**)。
+    d. **[E-mail Address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (例: **Brittasimon@contoso.com** )。
 
     e. **[Password]\(パスワード\)** ボックスにパスワードを入力します。
 
@@ -226,7 +226,7 @@ Azure AD ユーザーが Silverback にログインできるようにするに�
     g. **[Save]** をクリックします。
 
 > [!NOTE]
-> 手動で各ユーザーを作成しない場合は、**[Admin]\(管理者\)** > **[Authentication Provider]\(認証プロバイダー\)** の **[Dynamic User Creation]\(動的ユーザーの作成\)** チェックボックスをオンにします。
+> 手動で各ユーザーを作成しない場合は、 **[Admin]\(管理者\)**  >  **[Authentication Provider]\(認証プロバイダー\)** の **[Dynamic User Creation]\(動的ユーザーの作成\)** チェックボックスをオンにします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

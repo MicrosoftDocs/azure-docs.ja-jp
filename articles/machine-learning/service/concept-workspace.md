@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 912c064fb5ca4e7ca311f60ed04a0122809cb0ff
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388950"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442372"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースとは
 
@@ -32,16 +32,16 @@ ms.locfileid: "66388950"
 
 + ワークスペースには、Azure Machine Learning の実行に必要な Python 環境で構成されたクラウド リソース、[Notebook VM](quickstart-run-cloud-notebook.md) を含めることができます。
 + [ユーザー ロール](how-to-assign-roles.md)を使用すると、お使いのワークスペースを、他のユーザー、チーム、またはプロジェクトと共有できます。
-+ [コンピューティング ターゲット](concept-azure-machine-learning-architecture.md#compute-target)は、ご自身の実験の実行に使用されます。
++ [コンピューティング ターゲット](concept-azure-machine-learning-architecture.md#compute-targets)は、ご自身の実験の実行に使用されます。
 + ワークスペースを作成すると、[関連するリソース](#resources)も自動的に作成されます。
-+ [実験](concept-azure-machine-learning-architecture.md#experiment)は、ご自身のモデルの構築に使用するトレーニング実行です。  以下を使用して、実験を作成および実行できます
++ [実験](concept-azure-machine-learning-architecture.md#experiments)は、ご自身のモデルの構築に使用するトレーニング実行です。  以下を使用して、実験を作成および実行できます
     + [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
     + Azure portal の[自動化された機械学習の実験 (プレビュー)](how-to-create-portal-experiments.md) セクション。
     + [ビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md)。
-+ [パイプライン](concept-azure-machine-learning-architecture.md#pipeline)は、お使いのモデルをトレーニングおよび再トレーニングするための再利用可能なワークフローです。
-+ [データセット](concept-azure-machine-learning-architecture.md#dataset)は、モデルのトレーニングとパイプラインの作成に使用するデータの管理に役立ちます。
-+ デプロイするモデルを作成したら、[登録済みモデル](concept-azure-machine-learning-architecture.md#model-registry)を作成します。
-+ 登録したモデルとスコアリング スクリプトを使用して、[デプロイ](concept-azure-machine-learning-architecture.md#image-registry)を作成します。
++ [パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)は、お使いのモデルをトレーニングおよび再トレーニングするための再利用可能なワークフローです。
++ [データセット](concept-azure-machine-learning-architecture.md#datasets-and-datastores)は、モデルのトレーニングとパイプラインの作成に使用するデータの管理に役立ちます。
++ デプロイするモデルを作成したら、登録済みモデルを作成します。
++ 登録したモデルとスコアリング スクリプトを使用して、[デプロイ](concept-azure-machine-learning-architecture.md#deployment)を作成します。
 
 ## <a name="tools-for-workspace-interaction"></a>ワークスペース操作のためのツール
 
@@ -83,7 +83,7 @@ ms.locfileid: "66388950"
 新しいワークスペースを作成すると、ワークスペースによって使用される複数の Azure リソースが自動的に作成されます。
 
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで**遅延読み込み**されます。
-+ [Microsoft Azure Storage アカウント](https://azure.microsoft.com/services/storage/):ワークスペースの既定のデータストアとして使用されます。
++ [Microsoft Azure Storage アカウント](https://azure.microsoft.com/services/storage/):ワークスペースの既定のデータストアとして使用されます。  ノートブック VM で使用される Jupyter ノートブックもここに格納されます。
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/):モデルに関する監視情報を格納します。
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/):コンピューティング先で使用されるシークレット、およびワークスペースで必要な他の機密情報を格納します。
 

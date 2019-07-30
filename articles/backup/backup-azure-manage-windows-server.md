@@ -1,19 +1,18 @@
 ---
 title: Azure Recovery Services コンテナーとサーバーの管理
 description: Azure Recovery Services コンテナーでジョブとアラートを管理します
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 5876ce4a511617d8465cdf008ea0ce14b3ad15d4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688899"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466368"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
@@ -260,21 +259,6 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 * コンテナーに関連付けられているクラウド LRS ストレージの利用状況
 * コンテナーに関連付けられているクラウド GRS ストレージの利用状況
 
-
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure バックアップ エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。
-Azure portal に Azure バックアップ エージェント ジョブの状態が反映されるまでには、最大で 15 分かかります。
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。
-アラートは、Azure のバックアップが失敗してから 20 分以内に発生します。
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>通知が設定されているのに、電子メールが送信されないことはありますか。
-はい。 次のような状況では、通知は送信されません。
-
-* 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した
-* ジョブが取り消された
-* 元のバックアップ ジョブが進行中のために、2 番目のバックアップ ジョブが失敗した
 
 ## <a name="troubleshooting-monitoring-issues"></a>監視に関する問題のトラブルシューティング
 

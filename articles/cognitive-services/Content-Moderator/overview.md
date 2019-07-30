@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: d814a943bc8dc789abe84b33583714beb998c0ef
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688859"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607014"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
@@ -65,7 +65,7 @@ Review API を使用すると、モデレーション パイプラインを人�
 
 ## <a name="the-review-tool"></a>レビュー ツール
 
-Content Moderator サービスには、ほかにも Web ベースの[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)が備わっています。このツールは、ヒューマン モデレーターによって処理されるコンテンツ レビューのホストとなります。 人間による入力がサービスに対するトレーニングになることはありませんが、このサービスの成果と目視レビュー チームの作業を組み合わせれば、開発者が効率性と正確性をうまく両立させることが可能になります。 また、レビュー ツールは、さまざまな Content Moderator リソース向けに、ユーザー フレンドリなフロントエンドを備えています。
+Content Moderator サービスには、ほかにも Web ベースの[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)が備わっています。このツールは、ヒューマン モデレーターによって処理されるコンテンツ レビューのホストとなります。 人間による入力がサービスに対するトレーニングになることはありませんが、このサービスの成果と目視レビュー チームの作業を組み合わせれば、開発者が効率性と正確性をうまく両立させることが可能になります。 また、レビュー ツールは、さまざまな Content Moderator リソース向けに、ユーザー フレンドリなフロントエンドも備えています。
 
 ![Content Moderator 目視レビュー ツールのホームページ](images/homepage.PNG)
 

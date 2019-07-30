@@ -15,22 +15,22 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 827c42763eee39c717cedc90469ae765cc331272
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c7ce8b79644a9ffc9481ba825ec5623a9268983
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66253833"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476328"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールに対するセキュリティの警告を構成する
 環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) によりアラートが生成されます。 アラートがトリガーされると、[アラート] ページに表示されます。 
 
-![Alerts page](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
+![アラート、リスク レベル、および数を一覧表示する [Azure リソース] - [アラート] ページ](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
 ## <a name="review-alerts"></a>アラートを確認する
 アラートを選択して、アラートをトリガーしたユーザーまたはロールの他に解決策のアドバイスを示すレポートを表示します。
 
-![アラート レポート](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
+![最終スキャン時刻、説明、軽減手順、タイプ、重大度、セキュリティへの影響、および次回の防止方法を示すアラート レポート](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>アラート
 | アラート: | Severity | トリガー | 推奨 |
@@ -47,10 +47,12 @@ ms.locfileid: "66253833"
 
 ## <a name="configure-security-alert-settings"></a>セキュリティ アラート設定の構成
 [アラート] ページから **[設定]** に移動します。
-![設定](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
+
+![[設定] が強調表示されている [アラート] ページ](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 
 環境で機能し、セキュリティの目標に合うようにさまざまなアラートの設定をカスタマイズします。
-![設定をカスタマイズする](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+
+![設定を有効化および構成するための、アラートの [設定] ページ](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
 ## <a name="next-steps"></a>次の手順
 

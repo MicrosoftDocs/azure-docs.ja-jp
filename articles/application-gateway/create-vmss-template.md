@@ -1,34 +1,26 @@
 ---
-title: Azure Application Gateway を作成する - テンプレート | Microsoft Docs
-description: このページでは、Azure リソース マネージャー テンプレートを使用して、Azure Application Gateway を作成する方法について説明します。
-documentationcenter: na
+title: Azure アプリケーション ゲートウェイを作成する - テンプレート
+description: この記事では、Azure Resource Manager テンプレートを使用して、Azure アプリケーション ゲートウェイを作成する方法について説明します
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 6/26/2019
 ms.author: victorh
-ms.openlocfilehash: 7ff6db5acb150207f975931155386a308c48888b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a762e8c9ed1981173f3729837456ac2cfea081b8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66134096"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449530"
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用した Application Gateway の作成
+# <a name="create-an-application-gateway-using-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Application Gateway を作成する
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](overview.md)」を参照してください。
+Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」を参照してください。
 
-この記事では、GitHub から既存の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)をダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
+この記事では、GitHub から既存の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)をダウンロードして変更し、そのテンプレートを GitHub、Azure PowerShell、Azure CLI からデプロイする方法を説明します。
 
-GitHub から直接テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+GitHub から直接テンプレートをデプロイするだけで、変更を加えない場合は、GitHub からのテンプレートのデプロイに進んでください。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -42,18 +34,18 @@ GitHub から直接テンプレートをデプロイするだけで、変更を�
 > [!NOTE]
 > これらの設定は、このテンプレートのパラメーターです。 テンプレートをカスタマイズするには、zuredeploy.json ファイルでルール、リスナー、SSL、およびその他のオプションを変更できます。
 
-![シナリオ](./media/create-vmss-template/scenario.png)
+![シナリオ](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
-## <a name="download-and-understand-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートのダウンロードと理解
+## <a name="download-and-understand-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのダウンロードと理解
 
 GitHub から既存の Azure リソース マネージャー テンプレートをダウンロードして仮想ネットワークと 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。 そのためには、次の手順を実行してください。
 
 1. 「[Web アプリケーション ファイアウォールが有効なアプリケーション ゲートウェイの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf)」に移動します。
 1. **[azuredeploy.json]** 、 **[RAW]** の順にクリックします。
 1. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
-1. Azure リソース マネージャー テンプレートを使用したことがある場合は、手順 7 に進みます。
-1. 保存したファイルを開き、5 行目にある **parameters** の内容を確認します。
-1. Azure リソース マネージャー テンプレートのパラメーターでは、デプロイメント中に入力できる、値のプレース ホルダーが用意されています。
+1. Azure Resource Manager テンプレートを使用したことがある場合は、手順 7 に進みます。
+2. 保存したファイルを開き、5 行目にある **parameters** の内容を確認します。
+3. Azure リソース マネージャー テンプレートのパラメーターでは、デプロイメント中に入力できる、値のプレース ホルダーが用意されています。
 
    | パラメーター | 説明 |
    | --- | --- |
@@ -70,7 +62,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 
    * **type**。 テンプレートによって作成されるリソースのタイプ。 この場合、タイプは `Microsoft.Network/applicationGateways` です。これは、アプリケーション ゲートウェイを表します。
    * **name**。 リソースの名前です。 `[parameters('applicationGatewayName')]` が使用されているため、名前はデプロイ中にユーザーまたはパラメーター ファイルによって入力されます。
-   * **properties**。 リソースのプロパティの一覧です。 このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。 テンプレート内のアプリケーション ゲートウェイの JSON 構文とプロパティについては、[Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways) に関するページを参照してください。
+   * **properties**。 リソースのプロパティの一覧です。 このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。
 
 1. [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf) に戻ります。
 1. **[azuredeploy-paremeters.json]** 、 **[RAW]** の順にクリックします。
@@ -116,21 +108,23 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
      }
      ```
 
-1. ファイルを保存します。 [JSlint.com](https://www.jslint.com/)などのオンライン JSON 検証ツールを使用して、JSON テンプレートとパラメーター テンプレートをテストできます。
+1. ファイルを保存します。 [JSlint.com](https://www.jslint.com/) などのオンライン JSON 検証ツールを使用して、JSON テンプレートとパラメーター テンプレートをテストできます。
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>PowerShell を使用した Azure リソース マネージャー テンプレートのデプロイ
+## <a name="deploy-the-azure-resource-manager-template-using-azure-powershell"></a>Azure PowerShell を使用して Azure Resource Manager テンプレートをデプロイする
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関するページを参照してください。手順に従って Azure にサインインし、ご自身のサブスクリプションを選択します。
 
-1. PowerShell にログイン
+1. Azure への接続
 
-    ```powershell
-    Login-AzAccount
+    ```azurepowershell
+    Connect-AzAccount
     ```
 
 1. アカウントのサブスクリプションを確認します。
 
-    ```powershell
+    ```azurepowershell
     Get-AzSubscription
     ```
 
@@ -138,24 +132,24 @@ Azure PowerShell を初めて使用する場合は、[Azure PowerShell のイン
 
 1. 使用する Azure サブスクリプションを選択します。
 
-    ```powershell
+    ```azurepowershell
     Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
-1. 必要に応じて、 **New-AzureResourceGroup** コマンドレットを使用してリソース グループを作成します。 以下の例では、米国東部に AppgatewayRG という名前のリソース グループを作成します。
+1. 必要に応じて、**New-AzureResourceGroup** コマンドレットを使用してリソース グループを作成します。 以下の例では、米国東部に AppgatewayRG という名前のリソース グループを作成します。
 
-    ```powershell
+    ```azurepowershell
     New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
 1. **New-AzResourceGroupDeployment** コマンドレットを実行し、先ほどダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。
     
-    ```powershell
+    ```azurepowershell
     New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>Azure CLI を使用した Azure リソース マネージャー テンプレートのデプロイ
+## <a name="deploy-the-azure-resource-manager-template-using-the-azure-cli"></a>Azure CLI を使用して Azure Resource Manager テンプレートをデプロイする
 
 Azure CLI を使用してダウンロードした Azure Resource Manager テンプレートをデプロイするには、次の手順に従います。
 
@@ -177,7 +171,7 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
     az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
     ```
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>"クリックしてデプロイ" を使用した Azure リソース マネージャー テンプレートのデプロイ
+## <a name="deploy-the-azure-resource-manager-template-using-click-to-deploy"></a>"クリックしてデプロイ" を使用して Azure Resource Manager テンプレートをデプロイする
 
 "クリックしてデプロイ" は、Azure リソース マネージャー テンプレートを使用するもう 1 つの方法です。 これは、Azure ポータルでテンプレートを使用する簡単な方法です。
 
@@ -185,21 +179,22 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
 
 1. **[Azure へのデプロイ]** をクリックします。
 
-    ![Deploy to Azure (Azure へのデプロイ)](./media/create-vmss-template/deploytoazure.png)
+    ![Deploy to Azure (Azure へのデプロイ)](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
 1. ポータルでのデプロイ テンプレートのパラメーターを入力し、 **[OK]** をクリックします。
 
-    ![parameters](./media/create-vmss-template/ibiza1.png)
+    ![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
     
 1. **[上記の使用条件に同意する]** を選択し、 **[購入]** をクリックします。
 
-1. [カスタム デプロイ] ブレードで、 **[作成]** をクリックします。
+1. [カスタム デプロイ] ページで、 **[作成]** をクリックします。
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>証明書データを Resource Manager テンプレートに提供する
 
 テンプレートを使って SSL を使用する場合、証明書をアップロードするのではなく、base64 文字列で指定する必要があります。 .pfx または .cer を base64 文字列に変換するには、以下のいずれかのコマンドを使用します。 これらのコマンドによって、証明書はテンプレートに提供できる base64 文字列に変換されます。 予測される出力は、変数に格納できる文字列、またテンプレートに貼り付けることのできる文字列です。
 
 ### <a name="macos"></a>macOS
+
 ```bash
 cert=$( base64 <certificate path and name>.pfx )
 echo $cert
@@ -214,9 +209,9 @@ echo $cert
 
 この記事で作成したリソースをすべて削除するには、次の手順の 1 つを実行します。
 
-### <a name="powershell"></a>PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell
 Remove-AzResourceGroup -Name appgatewayRG
 ```
 
@@ -228,12 +223,11 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>次の手順
 
-SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](tutorial-ssl-cli.md)に関するページを参照してください。
+SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
 
-内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](redirect-internal-site-cli.md)に関するページを参照してください。
+内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)に関するページを参照してください。
 
-負荷分散オプション全般の詳細については、次の記事をご覧ください。
+負荷分散のオプション全般の詳細については、次を参照してください。
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

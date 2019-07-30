@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT (プレビュー) のセキュリティ アラート ガイド | Microsoft Docs
 description: Azure Security Center for IoT とサービスを使用したセキュリティ アラートと推奨される修復方法について説明します。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: db3a955cd9e572d1daca044aed75048e394e8457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6168278a51cf5a73fec0387ab61f46e201d158f9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200752"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616943"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center for IoT のセキュリティ アラート
 

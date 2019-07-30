@@ -1,35 +1,44 @@
 ---
-title: Azure Data Factory Mapping Data Flow の集計変換
-description: Azure Data Factory Data Flow の集計変換
+title: Mapping Data Flow の集計変換 - Azure Data Factory | Microsoft Docs
+description: Azure Data Factory で Mapping Data Flow の集計変換を使用して、大規模なデータ集計を行う方法について説明します。
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7b488b243c0520befb6b5470598f460b5a759fed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21135b26d4bc840b3fcb091e675e5e6bd24d8548
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467379"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312107"
 ---
-# <a name="azure-data-factory-mapping-data-flow-aggregate-transformation"></a>Azure Data Factory Mapping Data Flow の集計変換
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>Mapping Data Flow の集計変換 
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-集計変換では、データ ストリームに含まれる列の集計を定義します。 式ビルダーで、さまざまな種類の集計 (SUM、MIN、MAX、COUNT など) を定義し、出力に新しいフィールドを作成して、これらの集計と省略可能な group-by フィールドを含めることができます。
-
-![集計変換のオプション](media/data-flow/agg.png "集計 1")
+集計変換では、データ ストリームに含まれる列の集計を定義します。 式ビルダーを使用して、既存の列または計算列によってグループ化できる、SUM、MIN、MAX、COUNT などのさまざまな種類の集計を定義できます。
 
 ## <a name="group-by"></a>グループ化
-(省略可能) 集計用に Group-by 句を選択し、既存の列の名前か新しい名前を使用します。 [列の追加] を使って group-by 句をさらに追加し、列名の横にあるテキスト ボックス内をクリックして式ビルダーを起動したら、グループ化のために、既存の列、列の組み合わせ、または式のいずれかを選択します。
+集計で句ごとのグループ化として使用するために、既存の列を選択するか、新しい計算列を作成します。 既存の列を使用するには、ドロップダウン から目的の列を選択します。 新しい計算列を作成するには、句をポイントし、[計算列] をクリックします。 これにより、[Data Flow 式ビルダー](concepts-data-flow-expression-builder.md)が開きます。 計算列を作成したら、[Name as]\(名前\) フィールドに出力列の名前を入力します。 句ごとのグループ化を追加するには、既存の句にカーソルを合わせ、[+] をクリックします。
 
-## <a name="the-aggregate-column-tab"></a>[集計列] タブ 
-(必須) [集計列] タブを選択して集計式を作成します。 集計で値を上書きする既存の列を選択するか、集計用の新しい名前で新しいフィールドを作成します。 集計に使用する式は、列名セレクターの横にある右側のボックスに入力します。 このテキスト ボックスをクリックすると、式ビルダーが開きます。
+![集計変換のグループ化設定](media/data-flow/agg.png "集計変換のグループ化設定")
 
-![集計変換のオプション](media/data-flow/agg2.png "アグリゲーター")
+> [!NOTE]
+> 集計変換では、句ごとのグループ化は省略可能です。
 
-## <a name="data-preview-in-expression-builder"></a>式ビルダーでのデータのプレビュー
+## <a name="aggregate-column"></a>列を集計する 
+[集計] タブを選択して、集計式を作成します。 既存の列を選択して集計で値を上書きするか、新しいフィールドを新しい名前で作成します。 集計式は、列名セレクターの右側のボックスに入力されます。 式を編集するには、テキスト ボックスをクリックして式ビルダーを開きます。 別の集計を追加するには、既存の式の上にカーソルを合わせ、[+] をクリックすると、新しい集計列または[列パターン](concepts-data-flow-column-pattern.md)が作成されます。
 
-デバッグ モードでは、式ビルダーで集計関数を使ったデータのプレビューを生成することはできません。 集計変換のデータのプレビューを表示するには、式ビルダーを終了し、データ フロー デザイナーからデータ プロファイルを確認します。
+![集計変換の集計設定](media/data-flow/agg2.png "集計変換の集計設定")
+
+> [!NOTE]
+> 各集計式には、少なくとも 1 つの集計関数が含まれている必要があります。
+
+> [!NOTE]
+> デバッグ モードでは、式ビルダーで集計関数を使用したデータのプレビューを生成することはできません。 集計変換のデータのプレビューを表示するには、式ビルダーを終了し、[データ のプレビュー] タブで確認します。
+
+## <a name="next-steps"></a>次の手順
+
+\- [ウィンドウ変換](data-flow-window.md)を使用してウィンドウベースの集計を定義する

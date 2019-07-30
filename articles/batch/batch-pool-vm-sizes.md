@@ -4,7 +4,7 @@ description: Azure Batch プールのコンピューティング ノード用に
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: fd88f8e9b32b3fe5a0d7ab0caf233098ea19fde0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417144"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323104"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -28,60 +28,54 @@ Azure Batch プールのノード サイズを選択するときは、Azure で�
 
 VM サイズを選択する際には次のような例外と制限事項があります。
 
-* いくつかの VM ファミリまたは VM サイズはバッチではサポートされていません。 
+* Batch ではサポートされていない VM シリーズまたは VM サイズもあります。
 * いくつかの VM サイズは制限されており、割り当てる前に個別に有効化する必要があります。
 
-## <a name="supported-vm-families-and-sizes"></a>サポートされている VM ファミリおよびサイズ
+## <a name="supported-vm-series-and-sizes"></a>サポートされている VM シリーズおよびサイズ
 
 ### <a name="pools-in-virtual-machine-configuration"></a>仮想マシン構成のプール
 
-仮想マシン構成のバッチ プールでは、次を "*除く*" すべての VM サイズ ([Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md)) がサポートされます。
+仮想マシン構成の Batch プールでは、ほぼすべての VM サイズ ([Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md)) がサポートされています。 サポートされているサイズと制限の詳細については、次の表を参照してください。
 
-| ファミリ  | サポートされないサイズ  |
-|---------|---------|
-| 基本の A シリーズ | Basic_A0 (A0) |
-| A シリーズ | Standard_A0 |
-| B シリーズ | All |
-| DC シリーズ | All |
-| 最大メモリ最適化 | All |
-| Hb シリーズ<sup>1、2</sup> | All |
-| Hc シリーズ<sup>1、2</sup> | All |
-| Lsv2 シリーズ | All |
-| NDv2 シリーズ<sup>1、2</sup> | All |
-| NVv2 シリーズ<sup>1</sup> | All |
-| SAP HANA | All |
+記載されていないプロモーション用またはプレビュー VM サイズのサポートは保証されていません。
 
+| VM シリーズ  | サポートされるサイズ | Batch アカウントのプール割り当てモード<sup>1</sup> |
+|------------|---------|-----------------|
+| 基本の A シリーズ | Basic_A0 (A0) を*除く*すべてのサイズ | 任意 |
+| A シリーズ | Standard_A0 を*除く*すべてのサイズ | 任意 |
+| Av2 シリーズ | すべてのサイズ | 任意 |
+| B シリーズ | なし | 使用できません。 |
+| DC シリーズ | なし | 使用できません。 |
+| Dv2/DSv2 シリーズ | すべてのサイズ | 任意 |
+| Dv3/DSv3 シリーズ | すべてのサイズ | 任意 |
+| [メモリ最適化済みのサイズ](../virtual-machines/linux/sizes-memory.md) | なし | 使用できません。 |
+| Fsv2 シリーズ | すべてのサイズ | 任意 |
+| H シリーズ | すべてのサイズ | 任意 |
+| HB シリーズ<sup>2</sup> | すべてのサイズ | 任意 |
+| HC シリーズ<sup>2</sup> | すべてのサイズ | 任意 |
+| Ls シリーズ | すべてのサイズ | 任意 |
+| Lsv2 シリーズ | なし | 使用できません。 |
+| M シリーズ | Standard_M64ms (低優先度のみ)、Standard_M128s (低優先度のみ) | 任意 |  
+| NCv2 シリーズ<sup>2</sup> | すべてのサイズ | 任意 |
+| NCv3 シリーズ<sup>2</sup> | すべてのサイズ | 任意 |
+| ND シリーズ<sup>2</sup> | すべてのサイズ | 任意 |
+| NDv2 シリーズ | すべてのサイズ | ユーザー サブスクリプション モード |
+| NV シリーズ | すべてのサイズ | 任意 |
+| NVv3 シリーズ | なし | 使用できません。 |
+| SAP HANA | なし | 使用できません。 |
 
-<sup>1</sup> サポートが計画されています。  
-<sup>2</sup> Batch アカウントがユーザー サブスクリプション モードで使用できます。ユーザー サブスクリプション モードの Batch アカウントでは、コア クォータが設定されている必要があります。 詳細については、「[ユーザー サブスクリプション モードのための構成](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)」を参照してください。
+<sup>1</sup> 一部の新しい VM シリーズは、最初は部分的にサポートされます。 これらの VM シリーズは、**プール割り当てモード**が**ユーザー サブスクリプション**に設定された Batch アカウントで割り当てることができます。 Batch アカウントの構成の詳細については、[Batch アカウントの管理](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)に関するセクションをご覧ください。 **ユーザー サブスクリプション**の Batch アカウントを対象とする、これらの部分的にサポートされた VM シリーズのクォータを要求する方法については、[クォータと制限](batch-quota-limit.md)に関する記事をご覧ください。  
 
-次の VM サイズは優先順位の低いノードでのみサポートされます。
-
-| ファミリ  | サポートされるサイズ  |
-|---------|---------|
-| M シリーズ | Standard_M64ms |
-| M シリーズ | Standard_M128s |
-
-M シリーズ ファミリの他の VM サイズは、現在サポートされていません。
+<sup>2</sup> これらの VM サイズは仮想マシン構成の Batch プールに割り当てることができますが、特定の[クォータ引き上げ](batch-quota-limit.md#increase-a-quota)を要求する必要があります。
 
 ### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
 
-クラウド サービス構成のバッチ プールでは、次を "*除く*" すべての [Cloud Services 向け VM サイズ](../cloud-services/cloud-services-sizes-specs.md)がサポートされます。
+クラウド サービス構成のバッチ プールでは、次を "**除く**" すべての [Cloud Services 向け VM サイズ](../cloud-services/cloud-services-sizes-specs.md)がサポートされます。
 
-| ファミリ  | サポートされないサイズ  |
-|---------|---------|
-| A シリーズ | ExtraSmall |
+| VM シリーズ  | サポートされないサイズ |
+|------------|-------------------|
+| A シリーズ   | XS       |
 | Av2 シリーズ | Standard_A1_v2、Standard_A2_v2、Standard_A2m_v2 |
-
-## <a name="restricted-vm-families"></a>制限される VM ファミリ
-
-次の VM ファミリはバッチ プールに割り当てることができますが、特定のクォータ引き上げを要求する必要があります ([この記事](batch-quota-limit.md#increase-a-quota)を参照)。
-
-* NCv2 シリーズ
-* NCv3 シリーズ
-* ND シリーズ
-
-これらのサイズは、仮想マシン構成のプールでのみ使用できます。
 
 ## <a name="size-considerations"></a>サイズの考慮事項
 
@@ -89,9 +83,9 @@ M シリーズ ファミリの他の VM サイズは、現在サポートされ�
 
 * **ノードあたりのタスク数** - ノードのサイズは、そこで一度に実行されるタスクが 1 つであるという想定で選択するのが一般的です。 しかしジョブの実行中に、コンピューティング ノードで複数のタスク (ひいては複数のアプリケーション インスタンス) が[並列実行](batch-parallel-node-tasks.md)できるとメリットがあります。 そのような場合は、タスクを並列に実行するという需要の増大に対応するために、マルチコア ノード サイズを選ぶことが基本です。
 
-* **さまざまなタスクの負荷水準** - プール内のすべてのノードは同じサイズです。 システム要件や負荷水準の異なる複数のアプリケーションを実行する場合は、プールを分けることをお勧めします。 
+* **さまざまなタスクの負荷水準** - プール内のすべてのノードは同じサイズです。 システム要件や負荷水準の異なる複数のアプリケーションを実行する場合は、プールを分けることをお勧めします。
 
-* **利用可能なリージョン** - VM ファミリまたはサイズが、Batch アカウントを作成したリージョンで使用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
+* **利用可能なリージョン** - Batch アカウントを作成したリージョンで、VM シリーズまたはサイズが利用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
 
 * **クォータ** - Batch アカウントの[コア クォータ](batch-quota-limit.md#resource-quotas)により、Batch プールに追加できる指定されたサイズのノードの数を制限できます。 クォータの引き上げを要求するには、[この記事](batch-quota-limit.md#increase-a-quota)をご覧ください。 
 

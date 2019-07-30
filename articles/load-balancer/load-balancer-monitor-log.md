@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: パブリックな Basic Load Balancer でアラート イベントとプローブの正常性状態のログを有効にする方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
-ms.author: kumud
-ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 1995ad5e8179fdee11e960c2ad0e7c03602ebd31
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861173"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274800"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 

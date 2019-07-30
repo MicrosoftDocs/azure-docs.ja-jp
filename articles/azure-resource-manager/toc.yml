@@ -63,18 +63,18 @@
       href: template-best-practices.md
     - name: クラウドの一貫性を実現するテンプレート
       href: templates-cloud-consistency.md
-    - name: リソース プロバイダーと種類
-      href: resource-manager-supported-services.md
-    - name: Deployment Manager
-      displayName: adm
-      href: deployment-manager-overview.md
-    - name: Deployment Manager の正常性チェック
-      displayName: adm
-      href: deployment-manager-health-check.md
     - name: デプロイ モード
       href: deployment-modes.md
     - name: リソースの削除
       href: resource-group-delete.md
+    - name: Deployment Manager
+      items:
+        - name: 概要
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: 正常性チェック
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: resource-manager-deployment-model.md
     - name: Azure の一般的なセキュリティ属性
@@ -130,6 +130,34 @@
           href: vs-resource-groups-project-devops-pipelines.md
     - name: テンプレートをエクスポートする
       href: export-template-portal.md
+    - name: Move
+      items:
+        - name: リソースの移動
+          href: resource-group-move-resources.md
+        - name: リソースのサポート
+          href: move-support-resources.md
+        - name: 移動のトラブルシューティング
+          href: troubleshoot-move.md
+        - name: サービスの移動ガイダンス
+          items:
+            - name: App Service
+              href: ./move-limitations/app-service-move-limitations.md
+            - name: Azure DevOps
+              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
+            - name: 従来のデプロイ
+              href: ./move-limitations/classic-model-move-limitations.md
+            - name: 復旧サービス
+              href: ../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtual Machines
+              href: ./move-limitations/virtual-machines-move-limitations.md
+            - name: 仮想ネットワーク
+              href: ./move-limitations/virtual-network-move-limitations.md
+    - name: Tags
+      items:
+        - name: リソースへのタグ付け
+          href: resource-group-using-tags.md
+        - name: タグのサポート
+          href: tag-support.md
     - name: 管理
       items:
         - name: リソース グループの管理
@@ -154,11 +182,6 @@
             - name: Azure PowerShell の使用
               displayName: 'open,delete,deploy,move,lock,tag'
               href: manage-resources-powershell.md
-        - name: リソースの移動
-          href: resource-group-move-resources.md
-        - name: リソースの編成
-          displayName: tags
-          href: resource-group-using-tags.md
         - name: リソースのロック
           href: resource-group-lock-resources.md
         - name: サブスクリプションにアクセスするための認証 API
@@ -205,6 +228,8 @@
           href: resource-manager-sku-not-available-errors.md
         - name: Windows デプロイの問題
           href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+    - name: リソース プロバイダーと種類
+      href: resource-manager-supported-services.md
     - name: スロットル リクエスト
       href: resource-manager-request-limits.md
     - name: 非同期操作の追跡
@@ -212,7 +237,7 @@
 - name: リファレンス
   items:
     - name: テンプレート リファレンス
-      href: subtoc/toc.yml
+      href: /azure/templates/
     - name: テンプレート関数
       items:
         - name: すべての関数
@@ -231,14 +256,8 @@
           href: resource-group-template-functions-resource.md
         - name: 文字列関数
           href: resource-group-template-functions-string.md
-    - name: リソースの機能
-      items:
-        - name: 完全モードの削除
-          href: complete-mode-deletion.md
-        - name: 移動のサポート
-          href: move-support-resources.md
-        - name: タグのサポート
-          href: tag-support.md
+    - name: 完全モードの削除
+      href: complete-mode-deletion.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
     - name: REST - Resource Manager

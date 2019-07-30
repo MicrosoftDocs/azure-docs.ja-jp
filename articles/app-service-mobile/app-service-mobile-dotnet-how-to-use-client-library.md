@@ -3,7 +3,7 @@ title: App Service Mobile Apps の管理されたクライアント ライブラ
 description: Windows および Xamarin アプリで Azure App Service Mobile Apps 用の .NET クライアント ライブラリを使用する方法について説明します。
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
@@ -12,24 +12,29 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119305"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446353"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library) を今すぐチェックしてください。
+>
+
 ## <a name="overview"></a>概要
-このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、[Azure Mobile Apps のクイックスタート チュートリアル][1]を完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] または [Node.js Server SDK][3] に関するドキュメントを参照してください。
+このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、 [Azure Mobile Apps のクイックスタート][1] チュートリアルを完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] or the
+[Node.js Server SDK][3] に関するドキュメントを参照してください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
 クライアント SDK のリファレンス ドキュメントは、[Azure Mobile Apps .NET クライアントのリファレンス][4]に関するページにあります。
-GitHub リポジトリの「[Azure Samples (Azure サンプル)][5]」にも、いくつかのクライアント サンプルがあります。
+GitHub リポジトリの「 [Azure Samples (Azure サンプル)][5]」にも、いくつかのクライアント サンプルがあります。
 
 ## <a name="supported-platforms"></a>サポートされているプラットフォーム
 .NET プラットフォームでは、次のプラットフォームをサポートしています。
@@ -43,7 +48,7 @@ GitHub リポジトリの「[Azure Samples (Azure サンプル)][5]」にも、�
 "サーバーフロー" の認証では、UI の表示に WebView を使用します。  デバイスで WebView UI を表示できない場合は、他の認証方法が必要になります。  そのため、この SDK は腕時計型デバイスのような制限付きデバイスには適していません。
 
 ## <a name="setup"></a>セットアップと前提条件
-テーブルを少なくとも 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。  このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、`Complete` の各列が含まれています。 このテーブルは、「[Azure Mobile Apps クイックスタート][1]」で作成したものと同じテーブルです。
+テーブルを少なくとも 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。  このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、`Complete` の各列が含まれています。 このテーブルは、 [Azure Mobile Apps クイックスタート][1]で作成したものと同じテーブルです。
 
 C# での対応する型指定されたクライアント側の型は次のクラスです。
 
@@ -62,10 +67,11 @@ public class TodoItem
 
 [JsonPropertyAttribute][6] を使用して、クライアントのフィールドとテーブルのフィールド間の *PropertyName* のマッピングが定義されます。
 
-Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 [Azure ポータル] で **Easy Tables**設定を使用することもできます。
+Mobile Apps バックエンドでテーブルを作成する方法については、[.NET Server SDK のトピック][7]
+or the [Node.js Server SDK topic][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 [Azure ポータル] で **Easy Tables**設定を使用することもできます。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>方法:マネージド クライアント SDK パッケージをインストールする
-[NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
+[NuGet][9]から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
 
 * **Visual Studio** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[インストール]** をクリックします。
 * **Xamarin Studio** でプロジェクトを右クリックし、 **[Add]\(追加\)** 、> **[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[Add Package]\(パッケージの追加\)** をクリックします。
@@ -80,7 +86,8 @@ using Microsoft.WindowsAzure.MobileServices;
 > Android プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 SDK には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
 ### <a name="symbolsource"></a>方法: Visual Studio でデバッグ シンボルを使用する
-Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] で入手できます。  SymbolSource を Visual Studio と統合する場合は、[SymbolSource の説明][11]をご覧ください。
+SymbolSource を Visual Studio と統合するには、Microsoft.Azure.Mobile 名前空間のシンボルを [SymbolSource][10].  Refer to the
+[SymbolSource instructions][11] に使用します。
 
 ## <a name="create-client"></a>Mobile Apps クライアントの作成
 次のコードでは、モバイル アプリ バックエンドへのアクセスに使用する [MobileServiceClient][12] オブジェクトを作成します。

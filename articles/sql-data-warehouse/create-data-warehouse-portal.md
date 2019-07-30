@@ -2,7 +2,7 @@
 title: クイック スタート:Azure SQL データ ウェアハウスの作成とクエリ - Azure portal | Microsoft Docs
 description: Azure Portal で Azure SQL Data Warehouse を使用してデータ ウェアハウスを作成し、クエリを実行します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: 9072caf29be0ebf47207266b7313e989034c3a18
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 2864acca443e3135ea0023070da95accf97fe2e9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428053"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479429"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure Portal で Azure SQL Data Warehouse を作成し、クエリを実行する
 
@@ -67,7 +67,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
-    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
+    | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
     ||||
 
     ![データベース サーバーを作成する](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)

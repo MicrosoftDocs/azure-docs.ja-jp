@@ -8,11 +8,13 @@
       href: iot-services-and-technologies.md
 - name: セキュリティ
   items:
-    - name: セキュリティのアーキテクチャ
-      href: iot-security-architecture.md
-    - name: セキュリティのベスト プラクティス
-      href: iot-security-best-practices.md
-    - name: セキュリティで保護されたデプロイ
-      href: iot-security-deployment.md
+    - name: Recommendations
+      href: security-recommendations.md
     - name: 徹底的なセキュリティ
       href: iot-security-ground-up.md
+    - name: セキュリティのベスト プラクティス
+      href: iot-security-best-practices.md
+    - name: セキュリティのアーキテクチャ
+      href: iot-security-architecture.md
+    - name: セキュリティで保護されたデプロイ
+      href: iot-security-deployment.md

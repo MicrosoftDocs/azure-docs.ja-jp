@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: eca5e4cc96996c35e7c2181746cdb3de2e5a602c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820064"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61259519"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) との間でデータを双方向にコピーする
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-azure-documentdb-connector.md)
 > * [現在のバージョン](connector-azure-cosmos-db.md)
 
@@ -59,7 +59,7 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
 |:--- |:--- |:--- |
 | type | **type** プロパティは **CosmosDb** に設定する必要があります。 | はい |
 | connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br />**メモ**:後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
-| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 このプロパティを指定しないと、既定の Azure Integration Runtime が使用されます。 |いいえ  |
+| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 このプロパティを指定しないと、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例**
 
@@ -168,8 +168,8 @@ Azure Cosmos DB (SQL API) からデータをコピーするには、コピー �
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティは **DocumentDbCollectionSource** に設定する必要があります。 |はい |
-| query |データを読み取る Azure Cosmos DB クエリを指定します。<br/><br/>例:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ  <br/><br/>指定しないと、SQL ステートメント `select <columns defined in structure> from mycollection` が実行されます |
-| nestingSeparator |ドキュメントが入れ子になっていることと、結果セットの入れ子を解除する方法を示す特殊文字。<br/><br/>たとえば、Azure Cosmos DB クエリで入れ子になった結果 `"Name": {"First": "John"}` が返される場合、コピー アクティビティは値が "John" である列名 `Name.First` として識別します (**nestedSeparator** の値が **.**  (ドット) のとき)。 |いいえ <br />(既定値は **.**  (ドット) です) |
+| query |データを読み取る Azure Cosmos DB クエリを指定します。<br/><br/>例:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ <br/><br/>指定しないと、SQL ステートメント `select <columns defined in structure> from mycollection` が実行されます |
+| nestingSeparator |ドキュメントが入れ子になっていることと、結果セットの入れ子を解除する方法を示す特殊文字。<br/><br/>たとえば、Azure Cosmos DB クエリで入れ子になった結果 `"Name": {"First": "John"}` が返される場合、コピー アクティビティは値が "John" である列名 `Name.First` として識別します (**nestedSeparator** の値が **.** (ドット) のとき)。 |いいえ<br />(既定値は **.** (ドット) です) |
 
 **例**
 
@@ -212,9 +212,9 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは **DocumentDbCollectionSink** に設定する必要があります。 |はい |
-| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**メモ**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ <br />(既定値は **insert** です) |
-| writeBatchSize | Data Factory では、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)を使用して Azure Cosmos DB にデータが書き込まれます。 **writeBatchSize** プロパティにより、ADF でライブラリに提供されるドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。以下のヒントをご覧ください。 |いいえ <br />(既定値は **10,000**) |
-| nestingSeparator |入れ子になった文書が必要であることを示す **source** 列名の特殊文字。 <br/><br/>たとえば、出力データセット構造内の `Name.First` は、**nestedSeparator** が **.**  (ドット) の場合は、次の JSON 構造を Azure Cosmos DB ドキュメント内に生成します。`"Name": {"First": "[value maps to this column from source]"}`  |いいえ <br />(既定値は **.**  (ドット) です) |
+| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**メモ**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBatchSize | Data Factory では、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)を使用して Azure Cosmos DB にデータが書き込まれます。 **writeBatchSize** プロパティにより、ADF でライブラリに提供されるドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。以下のヒントをご覧ください。 |いいえ<br />(既定値は **10,000**) |
+| nestingSeparator |入れ子になった文書が必要であることを示す **source** 列名の特殊文字。 <br/><br/>たとえば、出力データセット構造内の `Name.First` は、**nestedSeparator** が **.** (ドット) の場合は、次の JSON 構造を Azure Cosmos DB ドキュメント内に生成します。`"Name": {"First": "[value maps to this column from source]"}`  |いいえ<br />(既定値は **.** (ドット) です) |
 
 >[!TIP]
 >Cosmos DB では、1 つの要求のサイズは 2 MB に制限されます。 式は、"要求サイズ = 1 つのドキュメント サイズ * バッチ書き込みサイズ" です。 "**要求のサイズが大きすぎる**" というエラーが発生する場合は、コピー シンクの構成で **`writeBatchSize` の値を小さくします**。
@@ -261,7 +261,7 @@ Azure Cosmos DB (SQL API) コネクタを使用して簡単に次のことがで
 
 スキーマに依存しないコピーを実行するには:
 
-* データ コピー ツールを使うときに、**[Export as-is to JSON files or Cosmos DB collection]\(JSON ファイルまたは Cosmos DB コレクションにそのままエクスポートする\)** オプションを選択します。
+* データ コピー ツールを使うときに、 **[Export as-is to JSON files or Cosmos DB collection]\(JSON ファイルまたは Cosmos DB コレクションにそのままエクスポートする\)** オプションを選択します。
 * アクティビティの作成を使用するときは、Azure Cosmos DB データセットの **structure** (*schema* という名前のこともあります) セクションを指定しないでください。 また、コピー アクティビティの Azure Cosmos DB の source または sink で **nestingSeparator** プロパティを指定しないでください。 JSON ファイルをインポートまたはエクスポートするときは、対応するファイル ストアのデータセットで、**format** の種類を **JsonFormat** として指定し、**filePattern** を「[JSON 形式](supported-file-formats-and-compression-codecs.md#json-format)」セクションで説明されているように構成します。 そして、**structure** セクションを指定せず、書式設定の残りの部分をスキップします。
 
 ## <a name="next-steps"></a>次の手順

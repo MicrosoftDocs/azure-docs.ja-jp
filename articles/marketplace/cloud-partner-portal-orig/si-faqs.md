@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 2719b6b47225576f2eadeb5e5b40b3aa7b39444d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943066"
 ---
 <a name="seller-insights-faq"></a>Seller Insights に関する FAQ
@@ -29,7 +29,7 @@ ms.locfileid: "64943066"
 <a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>支払いがあったトランザクションの顧客の詳細を確認する
 -------------------------------------------------------------
 
-支払いモジュールからトランザクションをダウンロードした後、 **[Payout Status]\(支払いの状態\)** というラベルの付いた列を見つけ、[Paid Out]\(支払い済み\) という値のみを表示するフィルターを適用します。 顧客の詳細を含む **[会社名]** 、 **[Customer Email]\(顧客メール\)** 、 **[Customer Country]\(顧客の国\)** 、 **[Customer State]\(顧客の都道府県\)** 、および **[Customer Postal Code]\(顧客の郵便番号\)** の各列が表示されます。
+支払いモジュールからトランザクションをダウンロードした後、 **[Payout Status]\(支払いの状態\)** というラベルの付いた列を見つけ、[Paid Out]\(支払い済み\) という値のみを表示するフィルターを適用します。 顧客の詳細を含む次の列が表示されます。 **[Company Name]\(会社名\)** 、 **[Customer Email]\(顧客のメール\)** 、 **[Customer Country]\(顧客の国\)** 、 **[Customer State]\(顧客の州\)** 、および **[Customer Postal Code]\(顧客の郵便番号\)** 。
 
 
 <a name="calculate-my-open-accounts-receivable"></a>未決済の売掛金を計算する

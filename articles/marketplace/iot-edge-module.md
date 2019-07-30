@@ -7,13 +7,13 @@ manager: pabutler
 ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
-ms.author: qianw211
-ms.openlocfilehash: c734461f1a57c100b4a00ab5c309659f8b0e903a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964012"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874666"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 

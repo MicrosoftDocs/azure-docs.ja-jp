@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service で RBAC と Azure AD を使用してクラスター リソースを制御する
 description: Azure Kubernetes Service (AKS) でロールベースのアクセス制御 (RBAC) を使用してクラスター リソースへのアクセスを制限するために、Azure Active Directory グループのメンバーシップを使用する方法を学習します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: iainfou
-ms.openlocfilehash: e974c47d1dfb04f66b622c64a7143d00de87c4cb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: fba54fd23fefbe0029b9a809b23568490f05b23e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467546"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616162"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する
 
@@ -131,7 +131,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ad
 kubectl create namespace dev
 ```
 
-Kubernetes では、*Role* によって付与するアクセス許可が定義され、*RoleBinding* によってそれらが目的のユーザーまたはグループに適用されます。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、「[Using RBAC authorization (RBAC 認可の使用)][rbac-authorization]」を参照してください。
+Kubernetes では、*Role* によって付与するアクセス許可が定義され、*RoleBinding* によってそれらが目的のユーザーまたはグループに適用されます。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 認可の使用][rbac-authorization]に関するページを参照してください。
 
 最初に、*dev* 名前空間に Role を作成します。 このロールにより名前空間に完全なアクセス許可が付与されます。 運用環境では、さまざまなユーザーまたはグループに対してより細かくアクセス許可を指定できます。
 
@@ -392,9 +392,9 @@ az ad group delete --group opssre
 
 ## <a name="next-steps"></a>次の手順
 
-Kubernetes クラスターをセキュリティで保護する方法の詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][rbac-authorization]」のページを参照してください。
+Kubernetes クラスターをセキュリティ保護する方法の詳細については、[AKS でのアクセスと ID オプション][rbac-authorization]に関するページを参照してください。
 
-ID とリソース コントロールに関するベスト プラクティスについては、[Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス][operator-best-practices-identity]に関する記事を参照してください。
+ID とリソース管理に関するベスト プラクティスについては、[AKS の認証と認可のベスト プラクティス][operator-best-practices-identity]に関するページを参照してください。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

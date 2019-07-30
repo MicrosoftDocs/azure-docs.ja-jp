@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 1f5064cece32cfc38f149816961e5156ff20974a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536710"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60335336"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-amazon-simple-storage-service-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-amazon-simple-storage-service.md)
 
@@ -45,7 +45,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 簡単なチュートリアルについては、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -65,8 +65,8 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| accessKeyID |シークレット アクセス キーの ID。 |文字列 |[はい] |
-| secretAccessKey |シークレット アクセス キー自体。 |暗号化された秘密文字列 |[はい] |
+| accessKeyID |シークレット アクセス キーの ID。 |string |はい |
+| secretAccessKey |シークレット アクセス キー自体。 |暗号化された秘密文字列 |はい |
 
 >[!NOTE]
 >IAM アカウントが Amazon S3 からデータをコピーするには、このコネクタにアクセス キーが必要です。 [一時的なセキュリティ資格情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)はサポートされていません。
@@ -94,12 +94,12 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| bucketName |S3 バケットの名前。 |String |[はい] |
-| key |S3 オブジェクト キー。 |String |いいえ  |
-| prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |String |いいえ  |
-| version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |String |いいえ  |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 形式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 形式](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ  | |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされている型は次のとおりです。**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  | |
+| bucketName |S3 バケットの名前。 |string |はい |
+| key |S3 オブジェクト キー。 |string |いいえ |
+| prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |string |いいえ |
+| version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |string |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 形式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 形式](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ | |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされている型は次のとおりです。**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ | |
 
 
 > [!NOTE]
@@ -175,7 +175,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true または false |いいえ  |
+| recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true または false |いいえ |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON の使用例:Amazon S3 から Azure Blob Storage にデータをコピーする
 このサンプルは、Amazon S3 から Azure Blob Storage にデータをコピーする方法を示します。 Data Factory のコピー アクティビティを使用して、[サポートされている任意のシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)データを直接コピーすることもできます。

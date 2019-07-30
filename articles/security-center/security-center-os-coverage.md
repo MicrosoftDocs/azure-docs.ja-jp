@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
-ms.author: monhaber
-ms.openlocfilehash: e2d66db2ae3c379db86d40603d919489fdf15eed
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.author: v-mohabe
+ms.openlocfilehash: 02d993d760338356fa29ee58a03215e14d6583f1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144259"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295597"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Security Center でサポートされている機能とプラットフォーム
 
@@ -136,7 +136,7 @@ ms.locfileid: "67144259"
 |サブネット|✔| NA|
 |NIC|✔| NA|
 |NSG|✔| NA|
-|サブスクリプション|✔ **| ✔|
+|Subscription|✔ **| ✔|
 |Batch|✔| NA|
 |Service Fabric|✔| NA|
 |Automation アカウント|✔| NA|

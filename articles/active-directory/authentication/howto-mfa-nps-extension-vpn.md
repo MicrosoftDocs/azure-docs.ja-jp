@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4afe5c89a83f251ee354c955b6dc28b0bccc9e6c
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64570646"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561136"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -42,7 +42,7 @@ Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使�
 
 * デバイスにネットワーク リソースへの無制限のアクセスを許可するか制限付きアクセスを許可するかを決定する、ネットワーク アクセス保護 (NAP) クライアント正常性ポリシーを制定し、強制できます。
 
-* 802\.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を強制する方法を提供できます。
+* 802.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を強制する方法を提供できます。
   詳細については、「[Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」(ネットワーク ポリシー サーバー) を参照してください。
 
 組織がセキュリティを強化し、高水準のコンプライアンスを実現するには、NPS を Azure Multi-Factor Authentication と統合して、ユーザーが 2 段階認証を使用して VPN サーバーの仮想ポートに接続する方法があります。 ユーザーはアクセスの許可を得るために、ユーザー名とパスワードの組み合わせを、ユーザーが管理している他の情報と共に提供する必要があります。 これは、信頼できる、簡単に複製できない情報にする必要があります。 たとえば、携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなどです。
@@ -246,7 +246,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
     b. **[共有シークレット]** で **[変更]** を選択し、先ほど作成してメモしておいた共有シークレットのパスワードを入力します。
 
-    c. **[タイムアウト (秒)]** ボックスで **30** から **60** の値を選択します。  
+    c. **[タイムアウト (秒)]** ボックスで、値として「**30**」を入力します。  
     タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。
 
     ![タイムアウトを構成する [RADIUS サーバーの追加] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image16.png)
@@ -304,7 +304,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 ## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication の構成
 
-ユーザーに Multi-Factor Authentication を構成する方法については、「[ユーザーまたはグループに 2 段階認証を要求する方法](howto-mfa-userstates.md)」および「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」をご覧ください。
+ユーザーに Multi-Factor Authentication を構成する方法については、「[クラウドベースの Azure Multi-Factor Authentication のデプロイの計画](howto-mfa-getstarted.md#create-conditional-access-policy)」および「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください
 
 ## <a name="install-and-configure-the-nps-extension"></a>NPS 拡張機能のインストールと構成
 

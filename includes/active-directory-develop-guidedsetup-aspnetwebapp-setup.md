@@ -15,11 +15,11 @@ ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121815"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181782"
 ---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
@@ -31,7 +31,7 @@ ms.locfileid: "66121815"
 
 1. Visual Studio で、[`File`] > [`New`] > [`Project`] を選択します。
 2. *Visual C#\Web* で、[`ASP.NET Web Application (.NET Framework)`] \(ASP.NET Web アプリケーション (.NET Framework)) を選択します。
-3. アプリケーションに名前を付けて、*[OK]* をクリックします。
+3. アプリケーションに名前を付けて、 *[OK]* をクリックします。
 4. [`Empty`] を選択し、`MVC` 参照を追加するチェック ボックスを選択します。
 
 ## <a name="add-authentication-components"></a>認証コンポーネントの追加

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8937f4c47f0fa84d4ec371e951cff8a2fdaa8481
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 2426ecd9c480b0cc236295384ae04c60051f37ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476905"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442966"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Azure Data Box Edge のアクセス、電源、接続モードを管理する
 
@@ -66,7 +66,7 @@ Data Box Edge デバイスのアクティブ化キーを生成するとき、ま
 -  ストレージ アカウントが関連付けられた共有の作成。
 -  デバイス上の共有にアクセスできるユーザーの作成。
 
-`Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストの場合、アクティブ化キーの生成、Data Box Edge デバイス上の共有の作成、ユーザーの作成などの操作はすべて失敗します。
+`Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストである場合は、アクティブ化キーの生成、Data Box Edge デバイス上の共有の作成、ユーザーの作成、Edge コンピューティング ロールの構成、デバイス パスワードのリセットなどの操作はすべて失敗します。
 
 Azure Active Directory Graph API へのアクセス権をユーザーに付与する方法の詳細については、「[管理者、ユーザー、ゲスト ユーザーの既定アクセス](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)」を参照してください。
 

@@ -5,17 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4ff2fbd5976a8e203bbc43a87b31ddb1bed63402
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 06/11/2019
+ms.openlocfilehash: 3dbf7064e409230916668e62ef861c0ce149fdbb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548818"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065638"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Azure Portal でのサーバー ログの構成とアクセス
 
-Azure portal から [Azure Database for MariaDB のサーバー ログ](concepts-server-logs.md)の構成、一覧表示、ダウンロードを行うことができます。
+Azure portal から [Azure Database for MariaDB の低速クエリ ログ](concepts-server-logs.md)の構成、一覧表示、ダウンロードを行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。
@@ -28,32 +28,32 @@ Azure portal から [Azure Database for MariaDB のサーバー ログ](concepts
 
 2. Azure Database for MariaDB サーバーを選択します。
 
-3. サイドバーの **[監視]** セクションの下で、**[サーバー ログ]** を選択します。 
+3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 
    ![サーバー ログを選択し、クリックして構成](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
 
 4. サーバー パラメーターを表示するには、見出しの **[ログを有効にし、ログ パラメーターを構成するには、ここをクリックしてください]** を選択します。
 
 5. 調整する必要のあるパラメーターを変更します ("slow_query_log" を "ON" にする、など)。 このセッションで行ったすべての変更が紫色で強調表示されます。 
 
-   パラメーターを変更すると、**[保存]** をクリックできます。 または変更を **[破棄]** することができます。
+   パラメーターを変更すると、 **[保存]** をクリックできます。 または変更を **[破棄]** することができます。
 
    ![[保存] または [破棄] をクリック](./media/howto-configure-server-logs-portal/3-save-discard.png)
 
-6. ログのリストに戻るには、**[サーバー パラメーター]** ページの**閉じるボタン** (X のアイコン) をクリックします。
+6. ログのリストに戻るには、 **[サーバー パラメーター]** ページの**閉じるボタン** (X のアイコン) をクリックします。
 
 ## <a name="view-list-and-download-logs"></a>リストの表示とログのダウンロード
-ログ記録が開始されると、使用可能なログのリストを表示したり、[サーバー ログ] ウィンドウで個々のログ ファイルをダウンロードすることができます。 
+ログ記録が開始されると、使用可能な低速クエリ ログのリストを表示したり、[サーバー ログ] ウィンドウで個々のログ ファイルをダウンロードすることができます。 
 
 1. Azure Portal を開きます。
 
 2. Azure Database for MariaDB サーバーを選択します。
 
-3. サイドバーの **[監視]** セクションの下で、**[サーバー ログ]** を選択します。 ページには、次のようにログ ファイルのリストが表示されます。
+3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 ページには、次のようにログ ファイルのリストが表示されます。
 
    ![ログのリスト](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > ログの名前付け規則は、**-< your server name>-yyyymmddhh.log** です。 ファイル名に使用される日時は、ログが発行された時間です。 ログ ファイルのローテーションは、24 時間ごとか 7.5 GB ごとのどちらか早い方のタイミングで行われます。
+   > ログの名前付け規則は、 **-< your server name>-yyyymmddhh.log** です。 ファイル名に使用される日時は、ログが発行された時間です。 ログ ファイルのローテーションは、24 時間ごとか 7.5 GB ごとのどちらか早い方のタイミングで行われます。
 
 4. 必要に応じて、**検索ボックス**を使用して、日付/時刻に基づいて特定のログをすばやく絞り込みます。 検索はログの名前に対して行われます。
 
@@ -62,7 +62,7 @@ Azure portal から [Azure Database for MariaDB のサーバー ログ](concepts
    ![ダウンロード アイコンをクリック](./media/howto-configure-server-logs-portal/5-download.png)
 
 ## <a name="next-steps"></a>次の手順
-- Azure Database for MariaDB の[サーバー ログ](concepts-server-logs.md)の詳細について学習します。
+- Azure Database for MariaDB の[低速クエリ ログ](concepts-server-logs.md)の詳細について学習します。
 - パラメーターの定義とログ記録の詳細については、[ログ](https://mariadb.com/kb/en/library/slow-query-log-overview/) に関するページの MariaDB のドキュメントを参照してください。
 
-<!-- - See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->
+<!--- See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->

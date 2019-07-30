@@ -5,15 +5,15 @@ keywords: Ansible, Azure, DevOps, 仮想マシン
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
-manager: jeconnoc
+manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ce99b537dd5958c2bec43759c58a9c182dd05142
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 32d4486138f21bd99c3d75ee72ae5dd0df667e41
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237046"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668643"
 ---
 # <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>クイック スタート:Ansible を使用して Azure で Linux 仮想マシンを構成する
 
@@ -105,7 +105,7 @@ Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](/a
 サンプル Ansible プレイブックの次のセクションでは、作成した仮想ネットワーク リソースに接続された `myNIC` という名前の仮想ネットワーク インターフェイス カードが作成されます。
 
 ```yaml
-- name: Create virtual network inteface card
+- name: Create virtual network interface card
   azure_rm_networkinterface:
     resource_group: myResourceGroup
     name: myNIC
@@ -184,7 +184,7 @@ Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](/a
           access: Allow
           priority: 1001
           direction: Inbound
-  - name: Create virtual network inteface card
+  - name: Create virtual network interface card
     azure_rm_networkinterface:
       resource_group: myResourceGroup
       name: myNIC
@@ -270,7 +270,7 @@ Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](/a
    TASK [Create Network Security Group that allows SSH] **********************
    changed: [localhost]
 
-   TASK [Create virtual network inteface card] *******************************
+   TASK [Create virtual network interface card] *******************************
    changed: [localhost]
 
    TASK [Create VM] **********************************************************

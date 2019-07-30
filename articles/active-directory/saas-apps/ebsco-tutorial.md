@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2753daf225016d3bd8e07383193a1260b40a36d5
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: b6f1198334d8bd4ba58b4fbba02942fc8c54c578
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564977"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>チュートリアル:Azure Active Directory と EBSCO の統合
 
@@ -55,19 +55,19 @@ Azure AD への EBSCO の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから EBSCO を追加するには、次の手順を実行します。**
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**EBSCO**」と入力し、結果パネルで **[EBSCO]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**EBSCO**」と入力し、結果パネルで **[EBSCO]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の EBSCO](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ EBSCO で Azure AD のシングル サインオンを構成してテストする
 
 EBSCO で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **EBSCO** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **EBSCO** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -109,11 +109,11 @@ EBSCO で Azure AD シングル サインオンを構成するには、次の手
 
     **[識別子]** テキスト ボックスに、`pingsso.ebscohost.com` という URL を入力します。
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![image](common/both-preintegrated-signon.png)
 
-    **[サインオン URL]** ボックスに、`http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>` という形式で URL を入力します。
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 これらの値を取得するには、[EBSCO クライアント サポート チーム](mailto:sso@ebsco.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -124,7 +124,7 @@ EBSCO で Azure AD シングル サインオンを構成するには、次の手
 
     o   **[プロファイル]** = クライアントはリンクを調整して、ユーザーを (EBSCO から購入したものに基づいて) 特定のプロファイルに転送できます。 特定のプロファイル ID を入力できます。 メインの ID は eds (EBSCO Discovery Service) と ehost (EBSOCOhost データベース) です。 同じことに関する手順が[こちら](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile)にあります。
 
-6. EBSCO アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
+6. EBSCO アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -155,7 +155,7 @@ EBSCO で Azure AD シングル サインオンを構成するには、次の手
 
     f. **[Save]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -177,7 +177,7 @@ EBSCO で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -201,7 +201,7 @@ EBSCO で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションでは、Britta Simon に EBSCO へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[EBSCO]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[EBSCO]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -213,15 +213,15 @@ EBSCO で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-ebsco-test-user"></a>EBSCO のテスト ユーザーの作成
 
@@ -245,7 +245,7 @@ Azure AD によって必要なデータが EBSCO アプリケーションに渡�
 
     ![アプリケーションの一覧の EBSCO サインイン](./media/ebsco-tutorial/tutorial_ebsco_signin.png)
  
-3. 組織ログインまたは SAML ログインを、**[Link your existing MyEBSCOhost account to your institution account now]\(今すぐ既存の MyEBSCOhost アカウントを組織アカウントにリンクする\)** または **[Create a new MyEBSCOhost account and link it to your institution account]\(新しい MyEBSCOhost アカウントを作成して組織アカウントにリンクする\)** に関連付けることを求める 1 回限りのプロンプトが表示されます。 アカウントは、EBSCOhost アプリケーションのパーソナル化に使用されます。 **[新しいアカウントの作成]** オプションを選択すると、次のスクリーンショットのように、SAML 応答の値が事前入力されたパーソナル化用のフォームが表示されます。 **[続行]** をクリックしてこの選択を保存します。
+3. 組織ログインまたは SAML ログインを、 **[Link your existing MyEBSCOhost account to your institution account now]\(今すぐ既存の MyEBSCOhost アカウントを組織アカウントにリンクする\)** または **[Create a new MyEBSCOhost account and link it to your institution account]\(新しい MyEBSCOhost アカウントを作成して組織アカウントにリンクする\)** に関連付けることを求める 1 回限りのプロンプトが表示されます。 アカウントは、EBSCOhost アプリケーションのパーソナル化に使用されます。 **[新しいアカウントの作成]** オプションを選択すると、次のスクリーンショットのように、SAML 応答の値が事前入力されたパーソナル化用のフォームが表示されます。 **[続行]** をクリックしてこの選択を保存します。
     
      ![アプリケーションの一覧の EBSCO ユーザー](./media/ebsco-tutorial/tutorial_ebsco_user.png)
 

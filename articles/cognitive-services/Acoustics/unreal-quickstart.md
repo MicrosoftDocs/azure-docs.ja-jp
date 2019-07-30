@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a78df2d4d84487399da10ca722550639a92e71bf
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492409"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798141"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Project Acoustics Unreal/Wwise のクイック スタート
 このクイック スタートでは、Unreal Engine と Wwise 用に提供されるサンプル コンテンツを使用して、Project Acoustics の設計コントロールを試します。
@@ -31,12 +31,12 @@ ms.locfileid: "59492409"
 Project Acoustics Unreal/Wwise サンプル プロジェクトを設定するには、最初に Project Acoustics プラグインを Wwise にインストールする必要があります。 その後、Wwise バイナリを Unreal プロジェクトにデプロイし、Project Acoustics をサポートするために Wwise の Unreal プラグインを調整します。
 
 ### <a name="install-the-project-acoustics-wwise-plugin"></a>Project Acoustics Wwise プラグインをインストールする
-Wwise ランチャーを開き、**[Plugins]\(プラグイン\)** タブの **[Install New Plugins]\(新しいプラグインのインストール\)** で、**[Add From Directory]\(ディレクトリから追加\)** を選択します。 ダウンロードしたパッケージに含まれた `AcousticsWwisePlugin\ProjectAcoustics` ディレクトリを選択します。
+Wwise ランチャーを開き、 **[Plugins]\(プラグイン\)** タブの **[Install New Plugins]\(新しいプラグインのインストール\)** で、 **[Add From Directory]\(ディレクトリから追加\)** を選択します。 ダウンロードしたパッケージに含まれた `AcousticsWwisePlugin\ProjectAcoustics` ディレクトリを選択します。
 
 ![Wwise プラグインのインストール オプションを示している Wwise ランチャーのスクリーンショット](media/wwise-install-new-plugin.png)
 
 ### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>Wwise バイナリを Project Acoustics Unreal サンプル プロジェクトに追加する
-Wwise ランチャーから、**[Unreal Engine]** タブをクリックし、**[Recent Unreal Engine Projects]\(最近使った Unreal Engine プロジェクト\)** の横にあるハンバーガー メニューをクリックして、**[Browse for project]\(プロジェクトの参照\)** を選択します。 パッケージ `AcousticsSample\AcousticsGame\AcousticsGame.uproject` のサンプル Unreal プロジェクトの `.uproject` ファイルを開きます。
+Wwise ランチャーから、 **[Unreal Engine]** タブをクリックし、 **[Recent Unreal Engine Projects]\(最近使った Unreal Engine プロジェクト\)** の横にあるハンバーガー メニューをクリックして、 **[Browse for project]\(プロジェクトの参照\)** を選択します。 パッケージ `AcousticsSample\AcousticsGame\AcousticsGame.uproject` のサンプル Unreal プロジェクトの `.uproject` ファイルを開きます。
 
 ![Wwise ランチャーの Unreal タブのスクリーンショット](media/wwise-unreal-tab.png)
 
@@ -50,14 +50,16 @@ Project Acoustics Unreal プラグインでは、Wwise Unreal プラグイン AP
 
     ![Wwise プロジェクトを修正するスクリプトを示す Windows エクスプローラー ウィンドウのスクリーンショット](media/patch-wwise-script.png)
 
-* DirectX SDK がインストールされていない場合は、`AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` の DXSDK_DIR を含む行をコメントアウトする必要があります
+* DirectX SDK がインストールされていない場合、使っている Wwise のバージョンによっては、`AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` で `DXSDK_DIR` が含まれる行をコメントにすることが必要な場合があります。
 
     ![DXSDK がコメント アウトされているコード エディターのスクリーンショット](media/directx-sdk-comment.png)
 
 ### <a name="open-the-unreal-project"></a>Unreal プロジェクトを開きます。 
 モジュールの再構築を求められたら、[Yes]\(はい\) をクリックします。
 
-ビルド エラーでプロジェクトを開けない場合は、Project Acoustics Wwise プラグインが、Project Acoustics サンプル プロジェクトで使用したものと同じバージョンの Wwise にインストールされていることを確認します。
+>ビルド エラーでプロジェクトを開けない場合は、Project Acoustics Wwise プラグインが、Project Acoustics サンプル プロジェクトで使用したものと同じバージョンの Wwise にインストールされていることを確認します。
+
+>[AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6 を使っていない場合は、サンプル プロジェクトでオーディオを再生する前に、サウンド バンクを再生成する必要があります。
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Project Acoustics 設計コントロールを試す
 Unreal エディターの再生ボタンをクリックして、シーンがどのように聞こえるかを確認します。 デスクトップで、W、A、S、D、およびマウスを使用して場所を移動します。 その他のコントロールのキーボード ショートカットを表示するには、**F1** を押します。 試す設計アクティビティをいくつか以下に示します。
@@ -69,10 +71,10 @@ Unreal エディターの再生ボタンをクリックして、シーンがど�
 
 **[Occlusion]\(閉鎖\)** の乗数が 1 より大きい場合 (既定値は 1)、閉鎖は誇張されます。 1 未満に設定すると、閉鎖の効果はわずかになります。
 
-壁通過伝送を有効にするには、**[Transmission (dB)]\(伝送 (dB)\)** スライダーを最下位レベルまで下げます。 
+壁通過伝送を有効にするには、 **[Transmission (dB)]\(伝送 (dB)\)** スライダーを最下位レベルまで下げます。 
 
 ### <a name="modify-wetness-for-a-source"></a>ソースのウェットネスを変更する
-ウェットネスが距離に従ってどれだけ高速に変化するかを変更するには、**知覚距離ワープ**を使用します。 Project Acoustics では、シミュレーションからスペース全体でのウェット レベルを計算します。これは距離に応じてに滑らかに変化し、知覚距離の手がかりが提供されます。距離に関連するウエット レベルを増やして距離ワープを増やすと、この効果が誇張されます。 ワープ値を 1 未満にすると、距離ベースの残響の変化はわずかになります。 また、この効果は、**[Wetness (dB)]\(ウェットネス (dB)\)** を調整して、きめ細かく調整することもできます。
+ウェットネスが距離に従ってどれだけ高速に変化するかを変更するには、**知覚距離ワープ**を使用します。 Project Acoustics では、シミュレーションからスペース全体でのウェット レベルを計算します。これは距離に応じてに滑らかに変化し、知覚距離の手がかりが提供されます。距離に関連するウエット レベルを増やして距離ワープを増やすと、この効果が誇張されます。 ワープ値を 1 未満にすると、距離ベースの残響の変化はわずかになります。 また、この効果は、 **[Wetness (dB)]\(ウェットネス (dB)\)** を調整して、きめ細かく調整することもできます。
 
 **[Decay Time Scale]\(減衰時間スケール\)** を調整して、スペース全体にわたって減衰時間を長くします。 たとえば、シミュレーション結果の減衰時間が 1.5 秒であるとします。 **[Decay Time Scale]\(減衰時間スケール\)** を 2 に設定すると、減衰時間は 3 秒のソースに適用されます。
 

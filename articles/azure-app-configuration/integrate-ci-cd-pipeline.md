@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 26bd49af7245d6e6dde3162a2e1d95c54f13e35b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415943"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357019"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD パイプラインとの統合
 
@@ -50,7 +50,7 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
     ```xml
     <Target Name="Export file" AfterTargets="Build">
         <Message Text="Export the configurations to a temp file. " />
-        <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -f $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
+        <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
 

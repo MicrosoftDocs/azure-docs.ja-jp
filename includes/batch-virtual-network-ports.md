@@ -4,7 +4,7 @@ description: インクルード ファイル
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 04/10/2019
+ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 711b662c35b5f8fec96f1edee765696bc1028bf8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181527"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322650"
 ---
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -28,9 +28,9 @@ ms.locfileid: "67181527"
 
 * VNET を使用するプールには最大 4,096 ノードを含めることができます。
 
-* プールに指定されたサブネットには、プールの対象となる VM 数 (つまり、プールの `targetDedicatedNodes` および `targetLowPriorityNodes` プロパティの合計) に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、プールによってコンピューティング ノードが部分的に割り当てられ、サイズ変更エラーが発生します。 
+* プールに指定されたサブネットには、プールの対象となる VM 数 (つまり、プールの `targetDedicatedNodes` および `targetLowPriorityNodes` プロパティの合計) に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、プールによってコンピューティング ノードが部分的に割り当てられ、サイズ変更エラーが発生します。 
 
-* VNET を提供するカスタムの DNS サーバーが、Azure Storage エンドポイントを解決できることが必要です。 具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL を解決できる必要があります。 
+* VNET を提供するカスタムの DNS サーバーが、Azure Storage エンドポイントを解決できることが必要です。 具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL を解決できる必要があります。 
 
 その他の VNET 要件は、Batch プールが仮想マシンの構成にあるかクラウド サービスの構成にあるかによって異なります。 VNET に新しいプールをデプロイする場合は、仮想マシンの構成が推奨されます。
 
@@ -71,9 +71,9 @@ ms.locfileid: "67181527"
 
 **アウトバウンド セキュリティ規則**
 
-| source | ソース ポート | 宛先 | 宛先サービス タグ | Protocol | Action |
-| --- | --- | --- | --- | --- | --- |
-| 任意 | 443 | [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ご利用の Batch アカウントおよび VNET と同じリージョン内)  | 任意 | ALLOW |
+| source | ソース ポート | 宛先 | 宛先サービス タグ | ターゲット ポート | Protocol | Action |
+| --- | --- | --- | --- | --- | --- | --- |
+| 任意 | * | [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ご利用の Batch アカウントおよび VNET と同じリージョン内) | 443 | TCP | ALLOW |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>クラウド サービスの構成におけるプール
 
@@ -82,10 +82,10 @@ ms.locfileid: "67181527"
 **サブネット ID** - Batch API を使用してサブネットを指定するときに、そのサブネットの "*リソース識別子*" を使用します。 サブネット識別子の形式は次のとおりです。
 
   ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicVirtualNetwork /virtualNetworks/{network}/subnets/{subnet}
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
   ```
 
-**アクセス許可** - `MicrosoftAzureBatch` サービス プリンシパルに、指定された VNET に対する `Classic Virtual Machine Contributor` ロールベースのアクセス制御 (RBAC) のロールが付与されている必要があります。
+**アクセス許可** - `Microsoft Azure Batch` サービス プリンシパルに、指定された VNET に対する `Classic Virtual Machine Contributor` ロールベースのアクセス制御 (RBAC) のロールが付与されている必要があります。
 
 #### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 

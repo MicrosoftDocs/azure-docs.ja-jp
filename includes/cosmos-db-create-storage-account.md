@@ -9,11 +9,11 @@ ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: 692062b29bd22cb5b37cc6371f2908adcdb4b29d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120755"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "67180924"
 ---
 最初の Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../articles/storage/common/storage-quickstart-create-account.md)」を参照してください。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: e1f5a1c8229544d97d9ff64748390f0d5237ab97
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181548"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67333382"
 ---
 | Resource | 既定/上限 |
 | --- | --- |
@@ -25,6 +25,15 @@ ms.locfileid: "67181548"
 | ルーティング規則に関して一致するパス パターン数 | 25 |
 | ポリシーあたりのカスタム Web アプリケーション ファイアウォール規則数 | 10 |
 | リソースあたりの Web アプリケーション ファイアウォール ポリシー数 | 100 |
+| カスタム規則ごとの Web アプリケーション ファイアウォールの一致条件 | 10 |
+| 一致条件ごとの Web アプリケーション ファイアウォール IP アドレスの範囲 | 600 |
+| 一致条件ごとの Web アプリケーション ファイアウォール文字列の一致する値 | 10 |
+| Web アプリケーション ファイアウォール文字列の一致する値の長さ | 256 |
+| Web アプリケーション ファイアウォールの POST 本文のパラメーター名の長さ | 256 |
+| Web アプリケーション ファイアウォールの HTTP ヘッダー名の長さ | 256 |
+| Web アプリケーション ファイアウォールの Cookie 名の長さ | 256 |
+| Web アプリケーション ファイアウォールの検査対象の HTTP 要求本文のサイズ | 128 KB |
+| Web アプリケーション ファイアウォールのカスタム応答本文の長さ | 2 KB |
 
 ### <a name="timeout-values"></a>タイムアウト値
 #### <a name="client-to-front-door"></a>クライアントから Front Door
@@ -42,3 +51,6 @@ ms.locfileid: "67181548"
 | ---- | ------- | ------- |
 | **ダウンロード** | ダウンロード サイズに制限はありません。 | ダウンロード サイズに制限はありません。 |
 | **アップロード** |  各 CTE アップロードが 2 GB 未満である限り、制限はありません。 | このサイズが 2 GB を超えることはできません。 |
+
+### <a name="other-limits"></a>その他の制限
+- URL の最大サイズ - 8,192 バイト - 生の URL の最大長を指定します (URL のスキーム + ホスト名 + ポート + パス + クエリ文字列) - クエリ文字列の最大サイズ - 4,096 バイト - クエリ文字列の最大長 (バイト単位) を指定します。

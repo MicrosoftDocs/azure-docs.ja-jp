@@ -2,17 +2,17 @@
 title: 概念 - Azure Kubernetes サービス (AKS) におけるネットワーク
 description: Azure Kubernetes Service (AKS) におけるネットワークについて説明します。kubenet と Azure CNI ネットワーク、イングレス コントローラー、ロード バランサー、静的 IP アドレスの説明が含まれます。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.author: mlearned
+ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431320"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615893"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -74,19 +74,51 @@ AKS では、次の 2 つのネットワーク モデルのいずれかを使用
 
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI (高度) ネットワーク
 
-Azure CNI を使用して、すべてのポッドでサブネットから IP アドレスを取得します。ポッドには直接アクセスできます。 これらの IP アドレスは、ネットワーク空間全体で一意である必要があり、事前に計画する必要があります。 各ノードには、サポートされるポッドの最大数に対する構成パラメーターがあります。 ノードごとにそれと同じ数の IP アドレスが、そのノードに対して事前に予約されます。 この方法では詳細な計画が必要であり、多くの場合、IP アドレスが不足するか、アプリケーション需要の拡大に伴い、より大きなサブネットでのクラスターの再構築が必要になります。
+Azure CNI を使用して、すべてのポッドでサブネットから IP アドレスを取得します。ポッドには直接アクセスできます。 これらの IP アドレスは、ネットワーク空間全体で一意である必要があり、事前に計画する必要があります。 各ノードには、サポートされるポッドの最大数に対する構成パラメーターがあります。 ノードごとにそれと同じ数の IP アドレスが、そのノードに対して事前に予約されます。 この方法では詳細な計画が必要であり、そうでない場合、IP アドレスが不足するか、アプリケーション需要の拡大に伴い、より大きなサブネットでのクラスターの再構築が必要になる可能性があります。
 
 ノードでは [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインが使用されます。
 
 ![各ブリッジが 1 つの Azure VNet に接続している 2 つのノードを示す図][advanced-networking-diagram]
 
-Azure CNI では、kubenet ネットワーク経由で以下の機能が提供されます。
-
-- クラスター内のすべてのポッドに、仮想ネットワーク内の IP アドレスが割り当てられます。 ポッドは、クラスター内の他のポッドに加え、仮想ネットワーク内の他のノードと直接通信できます。
-- サービス エンドポイントが有効なサブネット内のポッドは、Azure サービス (Azure Storage や SQL DB など) に安全に接続できます。
-- ユーザー定義のルート (UDR) を使用して、ポッドのトラフィックをネットワーク仮想アプライアンスにルーティングできます。
-
 詳細については、[AKS クラスター用の Azure CNI の構成][aks-configure-advanced-networking]に関するページを参照してください。
+
+### <a name="compare-network-models"></a>ネットワーク モデルを比較する
+
+kubenet と Azure CNIは、両方とも AKS クラスターのネットワーク接続を提供します。 ただし、それぞれに長所と短所があります。 大まかに言えば、次の考慮事項が適用されます。
+
+* **kubenet**
+    * IP アドレス空間を節約します。
+    * クラスターの外部からのポッドに到達するには、Kubernetes の内部または外部ロード バランサーを使用します。
+    * ユーザー定義のルート (UDR) は、手動で管理および保守する必要があります。
+    * クラスターあたり最大 400 ノード。
+* **Azure CNI**
+    * ポッドは完全な仮想ネットワーク接続を取得するため、クラスターの外部から直接アクセスできます。
+    * より多くの IP アドレス空間を必要とします。
+
+kubenet と Azure CNI には、次のような動作の違いが存在します。
+
+| 機能                                                                                   | Kubenet   | Azure CNI |
+|----------------------------------------------------------------------------------------------|-----------|-----------|
+| 既存または新規の仮想ネットワークにクラスターをデプロイする                                            | サポートされています - UDR は手動で適用されます | サポートされています |
+| ポッド間接続                                                                         | サポートされています | サポートされています |
+| ポッドと VM の接続。同一仮想ネットワーク内の VM                                          | ポッドによって開始されたときに動作します | 両方の方法で動作します |
+| ポッドと VM の接続。ピアリングされた仮想ネットワーク内の VM                                            | ポッドによって開始されたときに動作します | 両方の方法で動作します |
+| VPN または Express Route を使用したオンプレミスへのアクセス                                                | ポッドによって開始されたときに動作します | 両方の方法で動作します |
+| サービス エンドポイントによって保護されているリソースへのアクセス                                             | サポートされています | サポートされています |
+| ロード バランサー サービス、App Gateway、またはイングレス コントローラーを使用して、Kubernetes サービスを公開する | サポートされています | サポートされています |
+| 既定の Azure DNS およびプライベート ゾーン                                                          | サポートされています | サポートされています |
+
+### <a name="support-scope-between-network-models"></a>ネットワーク モデル間のサポート範囲
+
+kubenet と Azure CNI は、両方とも、使用するネットワーク モデルに関係なく次のいずれかの方法でデプロイすることができます。
+
+* Azure プラットフォームは、AKS クラスターを作成したときに自動的に仮想ネットワーク リソースを作成して構成することができます。
+* 仮想ネットワーク リソースを手動で作成して構成し、AKS クラスターを作成するときにそれらのリソースにアタッチすることができます。
+
+サービス エンドポイントや UDR のような機能は kubenet と Azure CNI の両方でサポートされていますが、[AKS のサポート ポリシー][support-policies]は、どのような変更を行うことができるかを定義します。 例:
+
+* AKS クラスターの仮想ネットワーク リソースを手動で作成する場合は、独自の UDR またはサービス エンドポイントを構成するときにサポートされます。
+* Azure プラットフォームが AKS クラスター用の仮想ネットワーク リソースを自動的に作成する場合、それらの AKS 管理対象リソースを手動で変更して独自の UDR またはサービスエンドポイントを構成することはサポートされていません。
 
 ## <a name="ingress-controllers"></a>イングレス コントローラー
 
@@ -98,7 +130,7 @@ LoadBalancer 型のサービスを作成すると、基になる Azure ロード
 
 AKS では、NGINX などを使用してイングレス リソースを作成するか、AKS の HTTP アプリケーションのルーティング機能を使用できます。 AKS クラスターで HTTP アプリケーションのルーティングを有効にすると、Azure プラットフォームがイングレス コントローラーと*External-DNS* コントローラーを作成します。 新しいイングレス リソースが Kubernetes に作成されると、必要な DNS A レコードがクラスター固有のDNS ゾーンに作成されます。 詳細については、「[HTTP アプリケーション ルーティング][aks-http-routing]」を参照してください。
 
-イングレスのもう 1 つの一般的な機能は、SSL/TLS 終端です。 HTTPS 経由でアクセスされる大規模な Web アプリケーションでは、アプリケーション自体の中ではなく、イングレス リソースによって TLS 終端を処理できます。 TLS 証明書の自動生成と構成を提供することで、Let's Encrypt などのプロバイダーを使用するイングレス リソースを構成できます。 Let's Encrypt を使用した NGINX イングレス コントローラーの構成の詳細については、[イングレスと TLS][aks-ingress-tls]に関する記事を参照してください。
+イングレスのもう 1 つの一般的な機能は、SSL/TLS 終端です。 HTTPS 経由でアクセスされる大規模な Web アプリケーションでは、アプリケーション自体の中ではなく、イングレス リソースによって TLS 終端を処理できます。 TLS 証明書の自動生成と構成を提供することで、Let's Encrypt などのプロバイダーを使用するイングレス リソースを構成できます。 Let's Encrypt を使用した NGINX イングレス コントローラーの構成の詳細については、[イングレスと TLS][aks-ingress-tls] に関する記事を参照してください。
 
 イングレス コントローラーを構成して、クライアント ソース IP を AKS クラスター内のコンテナーへの要求上で保持することもできます。 クライアントの要求が、イングレス コントローラー経由で AKS クラスター内のコントローラーにルーティングされている場合、その要求の元のソース IP は、ターゲット コンテナーに対しては利用できません。 *クライアント ソース IP の保持*を有効にすると、クライアントに対するソース IP は、*X-Forwarded-For* 下にある要求ヘッダー内で利用できます。 クライアント ソース IP の保持機能をイングレス コントローラー上で使用している場合は、SSL パススルーを使用することはできません。 クライアント ソース IP の保持と SSL パススルーは、*LoadBalancer* 型など、他のサービスによって使用できます。
 
@@ -116,9 +148,9 @@ AKS では、NGINX などを使用してイングレス リソースを作成す
 
 ## <a name="next-steps"></a>次の手順
 
-AKS ネットワークの使用を開始するために、[kubenet][aks-configure-kubenet-networking] または [Azure CNI][aks-configure-advanced-networking] を使用して、独自の IP アドレス範囲で AKS クラスターを作成および構成します。
+AKS ネットワークの使用を開始するために、[kubenet][aks-configure-kubenet-networking] or [Azure CNI][aks-configure-advanced-networking] を使用して、独自の IP アドレス範囲で AKS クラスターを作成および構成します。
 
-関連付けられているベスト プラクティスについては、[AKS でのネットワーク接続とセキュリティに関するベスト プラクティス][operator-best-practices-network]のページを参照してください。
+関連付けられているベスト プラクティスについては、[AKS でのネットワーク接続とセキュリティに関するベスト プラクティス][operator-best-practices-network]に関するページを参照してください。
 
 Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
@@ -151,3 +183,4 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [aks-concepts-identity]: concepts-identity.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
+[support-policies]: support-policies.md

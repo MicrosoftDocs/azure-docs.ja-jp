@@ -2,17 +2,17 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) の高度なスケジューラ機能
 description: テイントと容認、ノード セレクターとアフィニティ、ポッド間アフィニティと非アフィニティなど、Azure Kubernetes Service (AKS) の高度なスケジューラ機能の使用に関する、クラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 5affcd5ee1e51ac754d8a9bb81560a6cc3626860
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055623"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614875"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -75,7 +75,7 @@ spec:
 
 テイントと容認について詳しくは、[テイントと容認の適用][k8s-taints-tolerations]に関する記事をご覧ください。
 
-AKS での複数のノード プールの使用方法について詳しくは、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
+AKS での複数のノード プールの使用方法の詳細については、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS でのテイントと容認の動作
 
@@ -130,7 +130,7 @@ spec:
 
 これらのスケジューラ オプションを使用するときは、アプリケーションの開発者および所有者と協力して、ポッドの仕様を正しく定義できるようにします。
 
-ノード セレクターの使用について詳しくは、「[Assigning Pods to Nodes][k8s-node-selector]」(ノードへのポッドの割り当て) をご覧ください。
+ノード セレクターの使用について詳しくは、「[Assigning Pods to Nodes][k8s-node-selector]」 (ノードへのポッドの割り当て) をご覧ください。
 
 ### <a name="node-affinity"></a>ノード アフィニティ
 
@@ -166,7 +166,7 @@ spec:
 
 設定の *IgnoredDuringExecution* の部分は、ノードのラベルが変更された場合でも、ポッドをノードから削除してはならないことを示します。 Kubernetes スケジューラでは、新しくスケジュールされるポッドに対してのみ更新されたノード ラベルが使用され、ノードで既にスケジュールされているポッドには使用されません。
 
-詳しくは、「[Affinity and anti-affinity][k8s-affinity]」(アフィニティと非アフィニティ) をご覧ください。
+詳しくは、「[Affinity and anti-affinity][k8s-affinity]」 (アフィニティと非アフィニティ) をご覧ください。
 
 ### <a name="inter-pod-affinity-and-anti-affinity"></a>ポッド間アフィニティと非アフィニティ
 
@@ -185,9 +185,9 @@ Kubernetes スケジューラでワークロードを論理的に分離する最
 
 この記事では、Kubernetes の高度なスケジューラ機能に注目しました。 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 
-* [マルチ テナント方式とクラスター分離][aks-best-practices-scheduler]
+* [マルチ テナントとクラスター分離][aks-best-practices-scheduler]
 * [Kubernetes スケジューラの基本的な機能][aks-best-practices-scheduler]
-* [認証と承認][aks-best-practices-identity]
+* [認証と権限承認][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-taints-tolerations]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

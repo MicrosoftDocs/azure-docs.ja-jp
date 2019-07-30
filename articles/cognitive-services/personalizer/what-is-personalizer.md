@@ -1,7 +1,7 @@
 ---
 title: Personalizer とは
 titleSuffix: Azure Cognitive Services
-description: Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウド ベースの API サービスです。
+description: Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
 services: cognitive-services
 author: edjez
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 7eb85aa38815b8fcdfbe68518122563e1b579e17
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150409"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253459"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
@@ -29,14 +29,14 @@ Azure Personalizer は、ユーザーのリアルタイムの動作から学習�
 
 ## <a name="how-does-personalizer-work"></a>Personalizer のしくみ
 
-Personalizer は、機械学習モデルを使用して、コンテキスト内で最上位に順位付けされるアクションを検出します。 クライアント アプリケーションは実行可能なアクションとアクションに関する情報の一覧と、コンテキストに関する情報 (ユーザーやデバイスなどに関する情報を含む場合がある) を提供します。Personalizer は、実行するアクションを決定します。 クライアント アプリケーションで選択されたアクションが使用されると、報酬スコアの形式で Personalizer にフィードバックが提供されます。 フィードバック ループが完了すると、Personalizer では、今後の順位付けのために、使用した独自のモデルが自動的に更新されます。
+Personalizer は、機械学習モデルを使用して、コンテキスト内で最上位に順位付けされるアクションを検出します。 クライアント アプリケーションは実行可能なアクションとアクションに関する情報の一覧と、コンテキストに関する情報 (ユーザーやデバイスなどに関する情報を含む場合がある) を提供します。Personalizer は、実行するアクションを決定します。 クライアント アプリケーションで選択されたアクションが使用されると、報酬スコアの形式で Personalizer にフィードバックが提供されます。 フィードバックの受信後、Personalizer によって、今後の順位付けのために使用される独自のモデルが自動的に更新されます。
 
 ## <a name="how-do-i-use-the-personalizer"></a>Personalizer の使用方法
 
 ![ユーザーに表示するビデオを選択するための Personalizer の使用](media/what-is-personalizer/personalizer-example-highlevel.png)
 
 1. アプリで個人用に設定するエクスペリエンスを選択します。
-1. Azure portal で個人用設定サービスを作成して構成します。
+1. Azure portal で個人用設定サービスのインスタンスを作成して構成します。 各インスタンスは、Personalizer ループです。
 1. SDK を使用して、ユーザーに関する情報 (_特徴_) とコンテンツ (_アクション_) で Personalizer を呼び出します。 Personalizer を使用する前にクリーンアップやラベル付けされたデータを提供する必要はありません。 
 1. クライアント アプリケーションで、Personalizer によって選択されたアクションをユーザーに表示します。
 1. SDK を使用して、ユーザーが Personalizer のアクションを選択したかどうかを示すフィードバックを Personalizer に提供します。 これは_報酬スコア_であり、通常は -1 と 1 の間です。

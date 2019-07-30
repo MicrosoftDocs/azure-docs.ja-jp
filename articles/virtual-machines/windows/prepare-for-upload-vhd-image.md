@@ -1,6 +1,6 @@
 ---
 title: Windows VHD の Azure へのアップロードの準備 | Microsoft Docs
-description: Azure にアップロードする前に Windows VHD または VHDX を準備する方法
+description: Azure にアップロードする Windows VHD または VHDX の準備方法について説明します
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
@@ -15,60 +15,63 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc942aeb34d17e8dff064c6a21a3c7b2099c742a
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65561352"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151025"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
-Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代および第 2 世代 VM の両方がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、「[Should I create a generation 1 or 2 VM in Hyper-V (Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか)](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」および「[Generation 2 VMs on Azure (Azure での第 2 世代 VM)](generation-2.md)」を参照してください。
+Windows 仮想マシン (VM) をオンプレミスから Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代および第 2 世代 VM の両方がサポートされています。 VHD のサイズの上限は、1,023 GB です。 
 
-Azure VM のサポート ポリシーの詳細については、[Microsoft Azure VM のマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)に関するページを参照してください。
+第 1 世代 VM では、VHDX ファイル システムを VHD に変換できます。 また、容量可変ディスクを容量固定ディスクに変換することもできます。 ただし、VM の世代を変更することはできません。 詳細については、「[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成すべきか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」および「[Azure での第 2 世代 VM (プレビュー) のサポート](generation-2.md)」を参照してください。
 
-> [!Note]
-> この記事の手順は、Windows Server 2008 R2 以降 （64 ビット版） の Windows サーバー オペレーティング システムに適用されます。 Azure での 32 ビット版オペレーティング システムの実行については、「[Support for 32-bit operating systems in Azure virtual machines (Azure 仮想マシンでの 32 ビット版オペレーティング システムのサポート)](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)」を参照してください。
+Azure VM のサポート ポリシーについては、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)」を参照してください。
 
-## <a name="convert-the-virtual-disk-to-vhd-and-fixed-size-disk"></a>仮想ディスクを VHD および容量固定ディスクに変換する 
-仮想ディスクを Azure に必要な形式に変換する必要がある場合は、このセクションのいずれかのメソッドを使用します。 仮想ディスクの変換プロセスを実行する前に仮想マシンをバックアップして、Windows VHD がローカル サーバー上で正しく動作するかどうかを確認します。 Azure に変換またはアップロードする前に、VM 自体に発生しているすべてのエラーを解決します。
+> [!NOTE]
+> この記事の手順は、Windows Server 2008 R2 以降 (64 ビット版) の Windows サーバー オペレーティング システムに適用されます。 Azure での 32 ビットのオペレーティング システムの実行については、「[Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)」を参照してください。
 
-ディスクを変換した後は、変換したディスクを使用する VM を作成します。 VM を起動してサインインし、VM アップロードの準備を完了します。
+## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>仮想ディスクを容量固定および VHD に変換する 
+仮想ディスクを Azure に必要な形式に変換する必要がある場合は、このセクションのいずれかのメソッドを使用します。 仮想ディスクを変換する前に VM をバックアップします。 Windows VHD がローカル サーバーで正しく動作していることを確認します。 次に、Azure に変換またはアップロードする前に、VM 自体に発生しているすべてのエラーを解決します。
 
-### <a name="convert-disk-using-hyper-v-manager"></a>Hyper-V マネージャーを使用したディスクの変換
-1. Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。 コンピューター リストの上にあるメニューで、 **[アクション]** 、 >  **[ディスクの編集]** の順にクリックします。
-2. **[仮想ハード ディスクの場所]** 画面で、お使いの仮想ディスクを見つけて選択します。
-3. **[操作の選択]** 画面で、 **[変換]** を選択し、 **[次へ]** をクリックします。
-4. VHDX から変換する必要がある場合は、 **[VHD]** を選択し、 **[次へ]** をクリックします。
-5. 容量可変ディスクから変換する必要がある場合は、 **[容量固定]** を選択し、 **[次へ]** をクリックします。
+ディスクを変換した後は、そのディスクを使用する VM を作成します。 VM を起動してサインインし、アップロードの準備を完了します。
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V マネージャーを使用してディスクを変換する 
+1. Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。 コンピューター リストの上にあるメニューで、 **[アクション]**  >  **[ディスクの編集]** の順に選択します。
+2. **[仮想ハード ディスクの場所]** ページで、お使いの仮想ディスクを選択します。
+3. **[アクションの選択]** ページで、 **[変換]**  >  **[次へ]** の順に選択します。
+4. VHDX から変換する必要がある場合は、 **[VHD]**  >  **[次へ]** の順に選択します。
+5. 容量可変ディスクから変換する必要がある場合は、 **[容量固定]**  >  **[次へ]** の順に選択します。
 6. 新しい VHD ファイルの保存先となるパスを見つけて選択します。
-7. **[完了]** をクリックします。
+7. **[完了]** を選択します。
 
->[!NOTE]
->この記事のコマンドは、管理者特権の PowerShell セッションで実行する必要があります。
+> [!NOTE]
+> この記事のコマンドを実行するには、管理者特権の PowerShell セッションを使用してください。
 
-### <a name="convert-disk-by-using-powershell"></a>PowerShell を使用したディスクの変換
+### <a name="use-powershell-to-convert-the-disk"></a>PowerShell を使用してディスクを変換する 
 仮想ディスクは、Windows PowerShell で [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) コマンドを使用して変換できます。 PowerShell の起動時に、 **[管理者として実行]** を選択します。 
 
-次の例では、VHDX から VHD に、および容量可変ディスクから容量固定ディスクに変換するコマンドを示します。
+次のコマンド例は、ディスクを VHDX から VHD に変換します。 また、このコマンドは、ディスクを容量可変ディスクを容量固定ディスクに変換します。
 
 ```Powershell
 Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
-このコマンドでは、"-Path" の値を、変換する仮想ハードディスクへのパスで置き換え、"-DestinationPath" の値を、新しいパスと変換されたディスクの名前で置き換えます。
+
+このコマンドで、`-Path` の値を、変換する仮想ハード ディスクのパスに置き換えてください。 `-DestinationPath` の値を、変換したディスクの新しいパスおよび名前に置き換えます。
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK ディスク フォーマットからの変換
-[VMDK ファイル形式](https://en.wikipedia.org/wiki/VMDK)の Windows VM イメージがある場合は、[Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497) を使用して VHD に変換できます。 詳細については、ブログ記事「[How to Convert a VMware VMDK to Hyper-V VHD (VMware VMDK から Hyper-V VHD への変換方法)](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx)」を参照してください。
+[VMDK ファイル形式](https://en.wikipedia.org/wiki/VMDK)の Windows VM イメージがある場合は、[Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) を使用して VHD 形式に変換できます。 詳細については、「[VMware VMDK から Hyper-V VHD への変換方法](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx)」を参照してください。
 
 ## <a name="set-windows-configurations-for-azure"></a>Azure 用の Windows 構成を設定する
 
-Azure にアップロードする予定の VM で、[管理者特権でのコマンド プロンプト ウィンドウ](https://technet.microsoft.com/library/cc947813.aspx)から、以下の手順にあるすべてのコマンドを実行します。
+Azure にアップロードする予定の VM で、[管理者特権でのコマンド プロンプト ウィンドウ](https://technet.microsoft.com/library/cc947813.aspx)から、次のコマンドを実行します。
 
 1. ルーティング テーブルの静的な固定ルートを削除します。
    
    * ルート テーブルを表示するには、コマンド プロンプト ウィンドウで `route print` を実行します。
-   * **[Persistence Routes (固定ルート)]** セクションを確認します。 固定ルートがある場合は、**route delete** コマンドを使ってルートを削除します。
+   * `Persistence Routes` セクションを確認します。 固定ルートがある場合は、`route delete` コマンドを使って削除します。
 2. WinHTTP プロキシを削除します。
    
     ```PowerShell
@@ -76,7 +79,7 @@ Azure にアップロードする予定の VM で、[管理者特権でのコマ
     ```
 
     VM で特定のプロキシを使用する必要がある場合は、Azure の IP アドレス ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
-)) にプロキシ例外追加する必要があります。これにより VM は Azure に接続できます。
+)) にプロキシ例外追加します。これにより VM は Azure に接続できます。
     ```
     $proxyAddress="<your proxy server>"
     $proxyBypassList="<your list of bypasses>;168.63.129.16"
@@ -84,7 +87,7 @@ Azure にアップロードする予定の VM で、[管理者特権でのコマ
     netsh winhttp set proxy $proxyAddress $proxyBypassList
     ```
 
-3. ディスク SAN ポリシーを [Onlineall](https://technet.microsoft.com/library/gg252636.aspx) に設定します。
+3. ディスク SAN ポリシーを [`Onlineall`](https://technet.microsoft.com/library/gg252636.aspx) に設定します。
    
     ```PowerShell
     diskpart 
@@ -96,19 +99,19 @@ Azure にアップロードする予定の VM で、[管理者特権でのコマ
     exit   
     ```
 
-4. Windows を世界協定時刻 (UTC) の時間に設定して、Windows タイム (w32time) サービスのスタートアップの種類を**自動**に設定します。
+4. Windows の協定世界時 (UTC) の時刻を設定します。 また、Windows Time サービス (`w32time`) の起動の種類を `Automatic` に設定します。
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" -Value 1 -Type DWord -force
 
     Set-Service -Name w32time -StartupType Automatic
     ```
-5. 電源プロファイルを **[高パフォーマンス]** に設定します。
+5. 電源プロファイルを高パフォーマンスに設定します。
 
     ```PowerShell
     powercfg /setactive SCHEME_MIN
     ```
-6. 環境変数の **TEMP** と **TMP** が既定値に設定されていることを確認します。
+6. 環境変数の `TEMP` と `TMP` が既定値に設定されていることを確認します。
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
@@ -117,7 +120,7 @@ Azure にアップロードする予定の VM で、[管理者特権でのコマ
     ```
 
 ## <a name="check-the-windows-services"></a>Windows サービスの確認
-次の各 Windows サービスが **Windows の既定値**に設定されていることを確認します。 これらは、VM を確実に接続可能にするためにセットアップする必要がある最小数のサービスです。 スタートアップの設定をリセットするには、次のコマンドを実行します。
+次の各 Windows サービスが Windows の既定値に設定されていることを確認します。 これらのサービスは、VM の接続を確保するために設定する必要がある最小のものになります。 スタートアップの設定をリセットするには、次のコマンドを実行します。
    
 ```PowerShell
 Set-Service -Name bfe -StartupType Automatic
@@ -134,12 +137,10 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>リモート デスクトップのレジストリ設定を更新する
-リモート デスクトップ接続に関して以下の設定が正しく構成されていることを確認します。
+リモート アクセスに関して次の設定が正しく構成されていることを確認します。
 
->[!Note] 
->以下の手順で **Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name &lt;オブジェクト名&gt; -value &lt;値&gt;** を実行すると、エラー メッセージを受け取ることがあります。 このエラー メッセージは安全に無視することができます。 このメッセージは、ドメインが、グループ ポリシー オブジェクトを介してその構成をプッシュしていないことのみを意味しています。
->
->
+>[!NOTE] 
+>`Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name &lt;object name&gt; -value &lt;value&gt;` を実行するときにエラー メッセージを受け取る場合があります。 このメッセージは無視してかまいません。 これが意味しているのは、ドメインが、グループ ポリシー オブジェクトを介してその構成をプッシュしていないことだけです。
 
 1. リモート デスクトップ プロトコル (RDP) が有効になっていることを確認します。
    
@@ -149,7 +150,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDenyTSConnections" -Value 0 -Type DWord -force
     ```
    
-2. RDP ポートが正しくセットアップされている (既定のポート 3389) ことを確認します。
+2. RDP ポートが正しくセットアップされています。 既定のポートは 3389 です。
    
     ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "PortNumber" -Value 3389 -Type DWord -force
@@ -161,7 +162,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "LanAdapter" -Value 0 -Type DWord -force
    ```
-4. RDP 接続のネットワーク レベル認証モードを構成します。
+4. RDP 接続のネットワーク レベル認証 (NLA) モードを構成します。
    
     ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1 -Type DWord -force
@@ -190,22 +191,22 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "MaxInstanceCount" -Value 4294967295 -Type DWord -force
     ```
-8. RDP リスナーに関連付けられている自己署名証明書がある場合は削除します。
+8. RDP リスナーに関連付けられている自己署名証明書をすべて削除します。
     
     ```PowerShell
     Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash" -force
     ```
-    これは、VM のデプロイ時に最初から接続できるようにするためです。 必要に応じて、Azure に VM をデプロイした後に、後続のステージでこれをレビューすることもできます。
+    このコードは、VM のデプロイ時に最初から接続できるようにします。 これを後で確認する必要がある場合は、VM が Azure にデプロイされた後に行うことができます。
 
-9. VM がドメインの一部になる場合は、以下の設定をすべてチェックし、前の設定が元に戻されていないことを確認します。 確認が必要なポリシーは以下のとおりです。
+9. VM がドメインの一部になる場合は、次のポリシーをチェックして、前の設定が元に戻されていないことを確認します。 
     
     | 目標                                     | ポリシー                                                                                                                                                       | 値                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP が有効になっている                           | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[接続]         | ユーザーがリモート デスクトップを使用してリモートで接続できるようにする                                  |
-    | NLA グループ ポリシー                         | [設定]\[管理用テンプレート]\[コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[セキュリティ]                                                    | ネットワーク レベル認証を使用してリモート接続用のユーザー認証を要求する |
+    | NLA グループ ポリシー                         | [設定]\[管理用テンプレート]\[コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[セキュリティ]                                                    | NLA を使ってリモート アクセスにユーザー認証を要求する |
     | キープ アライブ設定                      | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[Windows コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[接続] | キープアライブ接続間隔を構成する                                                 |
-    | 再接続設定                       | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[Windows コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[接続] | 自動再接続                                                                   |
-    | 接続数制限の設定 | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[Windows コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[接続] | 接続数を制限する                                                              |
+    | 再接続設定                       | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[Windows コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[接続] | 自動的に再接続する                                                                   |
+    | 限られた数の接続の設定 | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[Windows コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[接続] | 接続数を制限する                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>Windows ファイアウォール規則の構成
 1. 3 つのプロファイル (ドメイン、標準、パブリック) で Windows ファイアウォールを有効にします。
@@ -226,12 +227,12 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
    ```PowerShell
     Set-NetFirewallRule -DisplayGroup "Remote Desktop" -Enabled True
    ```   
-4. VM がVirtual Network 内部の ping コマンドに応答できるように、"ファイルとプリンターの共有" 規則を有効にします。
+4. VM が仮想ネットワーク内部の ping コマンドに応答できるように、"ファイルとプリンターの共有" 規則を有効にします。
 
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. VM がドメインの一部になる場合は、以下の設定をチェックし、前の設定が元に戻されていないことを確認します。 確認が必要な AD ポリシーは以下のとおりです。
+5. VM がドメインの一部になる場合は、次の Azure AD ポリシーをチェックして、前の設定が元に戻されていないことを確認します。 
 
     | 目標                                 | ポリシー                                                                                                                                                  | 値                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
@@ -241,8 +242,11 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     | ICMP-V4 を有効にする                       | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[ネットワーク]\[ネットワーク接続]\[Windows ファイアウォール]\[ドメイン プロファイル]\[Windows ファイアウォール]   | ICMP の例外を許可する                   |
     |                                      | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[ネットワーク]\[ネットワーク接続]\[Windows ファイアウォール]\[標準プロファイル]\[Windows ファイアウォール] | ICMP の例外を許可する                   |
 
-## <a name="verify-vm-is-healthy-secure-and-accessible-with-rdp"></a>VM が正常で安全であり、RDP でアクセスできることを確認する 
-1. ディスクが正常で一貫性があることを確認するには、次回の VM 再起動時にチェック ディスク操作を実行します。
+## <a name="verify-the-vm"></a>VM の確認 
+
+VM が正常であり、セキュリティで保護されており、RDP アクセス可能であることを確認します。 
+
+1. ディスクが正常で一貫性があることを確認するには、次回の VM 再起動時にディスクをチェックします。
 
     ```PowerShell
     Chkdsk /f
@@ -251,8 +255,8 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
 2. ブート構成データ (BCD) を設定します。 
 
-    > [!Note]
-    > これらのコマンドが、PowerShell 管理者特権ウィンドウで実行されていることを確認してください。
+    > [!NOTE]
+    > 管理者特権の PowerShell ウィンドウを使用してこれらのコマンドを実行します。
    
    ```powershell
     cmd
@@ -276,12 +280,12 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 3. Dump ログは、Windows のクラッシュの問題をトラブルシューティングするのに役立つ場合があります。 Dump ログ コレクションを有効にします。
 
     ```powershell
-    # Setup the Guest OS to collect a kernel dump on an OS crash event
+    # Set up the guest OS to collect a kernel dump on an OS crash event
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name CrashDumpEnabled -Type DWord -force -Value 2
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name DumpFile -Type ExpandString -force -Value "%SystemRoot%\MEMORY.DMP"
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name NMICrashDump -Type DWord -force -Value 1
 
-    #Setup the Guest OS to collect user mode dumps on a service crash event
+    # Set up the guest OS to collect user mode dumps on a service crash event
     $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
     if ((Test-Path -Path $key) -eq $false) {(New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting' -Name LocalDumps)}
     New-ItemProperty -Path $key -name DumpFolder -Type ExpandString -force -Value "c:\CrashDumps"
@@ -289,57 +293,60 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     New-ItemProperty -Path $key -name DumpType -Type DWord -force -Value 2
     Set-Service -Name WerSvc -StartupType Manual
     ```
-4. Windows Management Instrumentation リポジトリに一貫性があることを確認します。 これを行うには、次のコマンドを実行します。
+4. Windows Management Instrumentation (WMI) リポジトリに一貫性があることを確認します。
 
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    リポジトリが破損している場合は、「[WMI:Repository Corruption, or Not (WMI: リポジトリが破損しているかどうか)](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)」を参照してください。
+    リポジトリが破損している場合は、「[WMI:リポジトリが破損しているかどうか](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)」を参照してください。
 
-5. 他のアプリケーションでポート 3389 を使用していないことを確認します。 このポートは、Azure の RDP サービスに使用します。 **netstat -anob** を実行して、VM でどのポートが使用されているかを確認できます。
+5. 他にポート 3389 を使用しているアプリケーションがないことを確認します。 このポートは、Azure の RDP サービスに使用します。 VM で使用されているポートを確認するには、`netstat -anob` を実行します。
 
     ```PowerShell
     netstat -anob
     ```
 
-6. アップロードする Windows VHD がドメイン コントローラーである場合は、以下の手順に従ってください。
+6. ドメイン コントローラーである Windows VHD をアップロードするには、次のようにします。
 
-    1. [この追加の手順](https://support.microsoft.com/kb/2904015)に従って、ディスクを準備します。
+   * [この追加の手順](https://support.microsoft.com/kb/2904015)に従って、ディスクを準備します。
 
-    1. ある時点で DSRM 内の VM を起動する必要がある場合は、DSRM パスワードがわかっていることを確認します。 このリンクを参照して、[DSRM パスワード](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx)を設定することもできます。
+   * ある時点で Directory Services Restore Mode (DSRM) の VM を起動しなければならない場合に備えて、DSRM パスワードを把握していることを確認します。 詳細については、「[DSRM パスワードの設定](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx)」を参照してください。
 
-7. あらかじめ登録された Administrator アカウントとパスワードがわかっていることを確認します。 現在のローカル Administrator パスワードをリセットし、このアカウントを使用して RDP 接続を介して Windows にサインイン可能であることを確認することもできます。 このアクセス許可は、"リモート デスクトップ サービスを使ったログオンを許可" グループ ポリシー オブジェクトによって制御されています。 このオブジェクトは、次のリンクにあるローカル グループ ポリシー エディターで確認することができます。
+7. あらかじめ登録された Administrator アカウントとパスワードを把握していることを確認します。 現在のローカル Administrator パスワードをリセットし、このアカウントを使用して RDP 接続を介して Windows にサインイン可能であることを確認することもできます。 このアクセス許可は、"リモート デスクトップ サービスを使ったログオンを許可" グループ ポリシー オブジェクトによって制御されています。 このオブジェクトは、次の場所からローカル グループ ポリシー エディターで表示します。
 
     Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights Assignment
 
-8. 次の AD ポリシーで、RDP 経由とネットワークからの自分の RDP アクセスをブロックしていないことを確認します。
+8. 次の Azure AD ポリシーで、RDP 経由とネットワークからの自分の RDP アクセスをブロックしていないことを確認します。
 
     - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[ネットワーク経由のアクセスを拒否]
 
     - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[リモート デスクトップ サービスを使ったログオンを拒否]
 
 
-9. 次の AD ポリシーで、次の必要なアクセス アカウントのいずれも削除していないことを確認します。
+9. 次の Azure AD ポリシーで、必要なアクセス アカウントのいずれも削除していないことを確認します。
 
    - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[ネットワーク経由でコンピューターへアクセス]
 
-     このポリシーには、次のグループが表示されている必要があります。
+   ポリシーには次のグループが一覧表示されるはずです。
 
    - 管理者
+
    - Backup Operators
+
    - Everyone
+
    - ユーザー
 
-10. VM を再起動して、Windows が引き続き正常であり、RDP 接続を使用してアクセス可能であることを確認します。 この時点で、ローカル Hyper-V に VM を作成して、VM が完全に開始されていることを確認し、この VM が RDP でアクセス可能であるかどうかをテストできます。
+10. VM を再起動して、Windows が引き続き正常であり、RDP 接続を介してアクセス可能であることを確認します。 この時点で、ローカル Hyper-V に VM を作成して、VM が完全に起動することを確認できます。 次に、RDP を介して VM に到達できることを確認するためのテストを実行します。
 
-11. TCP パケットまたは追加のファイアウォールを分析するソフトウェアなど、余分な Transport Driver Interface フィルターを削除します。 必要に応じて、Azure に VM をデプロイした後に、後続のステージでこれをレビューすることもできます。
+11. 余分な Transport Driver Interface (TDI) フィルターはすべて削除します。 たとえば、TCP パケットや追加のファイアウォールを分析するソフトウェアは削除します。 これを後で確認する必要がある場合は、VM が Azure にデプロイされた後に行うことができます。
 
-12. 物理コンポーネントまたはその他の仮想化テクノロジに関連する、その他のサードパーティ ソフトウェアとドライバーをアンインストールします。
+12. 物理コンポーネントまたはその他の仮想化テクノロジに関連する、その他のサードパーティ ソフトウェアまたはドライバーをアンインストールします。
 
 ### <a name="install-windows-updates"></a>Windows 更新プログラムのインストール
-理想的な構成は、**マシンのパッチ レベルが最新である**構成です。 これが不可能である場合は、以下の構成プログラムがインストールされていることを確認してください。
+理想的には、継続して*パッチ レベル*でマシンを更新する必要があります。 これを実行できない場合は、以下の更新プログラムがインストールされていることを確認してください。
 
-| コンポーネント               | Binary         | Windows 7 SP1、Windows Server 2008 R2  SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 バージョン 1607、Windows Server 2016 バージョン 1607 | Windows 10 バージョン 1703    | Windows 10 1709、Windows Server 2016 バージョン 1709 | Windows 10 1803、Windows Server 2016 バージョン 1803 |
+| コンポーネント               | Binary         | Windows 7 SP1、Windows Server 2008 R2 SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 v1607、Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709、Windows Server 2016 v1709 | Windows 10 v1803、Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -377,54 +384,55 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 |                         | CVE-2018-0886  | KB4103718               | KB4103730                | KB4103725       | KB4103723                                               | KB4103731                  | KB4103727                                       | KB4103721                                       |
 |                         |                | KB4103712          | KB4103726          | KB4103715|                                                         |                            |                                                 |                                                 |
        
-### sysprep をいつ使用するか <a id="step23"></a>    
+### Sysprep を使用する状況の判断 <a id="step23"></a>    
 
-sysrep は、Windows インストールに組み込むことができるプロセスです。個人データをすべて削除し、いくつかのコンポーネントをリセットすることによって、システムのインストールをリセットし、"out of the box experience" を提供します。 このプロセスは通常、特定の構成を持つ複数の他の VM のデプロイ元となるテンプレートを作成する場合に行います。 このテンプレートは**一般化されたイメージ**と呼ばれます。
+システム準備ツール (Sysprep) は、Windows インストールをリセットするために使用できるプロセスです。 Sysprep は、個人データをすべて削除し、コンポーネントをいくつかリセットすることによって、"すぐに使用できる" エクスペリエンスを提供します。 
 
-そうではなく、1 つのディスクから 1 つの VM のみを作成する場合、sysprep を使用する必要はありません。 この状況では、**特殊化イメージ**として知られるイメージから VM を作成するだけです。
+Sysprep は通常、特定の構成を持つ他の複数の VM のデプロイ元となるテンプレートを作成するために実行します。 このテンプレートは、*一般化されたイメージ*と呼ばれます。
 
-特殊化されたディスクから VM を作成する方法の詳細については、以下を参照してください。
+1 つのディスクから 1 つの VM のみを作成する場合は、Sysprep を使用する必要はありません。 代わりに、*特殊化されたイメージ*から VM を作成することができます。 特殊化されたディスクから VM を作成する方法については、以下を参照してください。
 
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
 - [特殊化された VHD ディスクからの VM の作成](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-一般化されたイメージを作成する場合は、sysprep を実行する必要があります。 Sysprep の詳細については、「[How to Use Sysprep:An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
+一般化されたイメージを作成する場合は、Sysprep を実行する必要があります。 詳細については、「[Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
 
-Windows ベースのコンピューターにインストールされているロールまたはアプリケーションには、この一般化をサポートしていないものもあります。 そのため、この手順を実行する前に、以下の記事を参照して、そのコンピューターのロールが sysprep でサポートされていることを確認してください。 詳しくは、「[Sysprep Support for Server Roles (サーバー ロールの sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。
+Windows ベースのコンピューターにインストールされているロールまたはアプリケーションには、一般化されたイメージをサポートしていないものもあります。 したがって、この手順を実行する前に、Sysprep でお使いのコンピューターのロールがサポートされていることを確認してください。 詳しくは、「[Sysprep Support for Server Roles (サーバー ロールの sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。
 
-### <a name="steps-to-generalize-a-vhd"></a>VHD を一般化する手順
+### <a name="generalize-a-vhd"></a>VHD の一般化
 
 >[!NOTE]
-> 以下の手順で示されているように sysprep.exe を実行した後、VM をオフにしたら、Azure でその VM からイメージを作成するまで、その VM を再度オンにしないでください。
+> 次の手順で `sysprep.exe` を実行した後、VM をオフにします。 Azure でそれからイメージを作成するまでは再びオンにしないでください。
 
 1. Windows VM にサインインします。
-2. 管理者として**コマンド プロンプト**を実行します。 
-3. ディレクトリを **%windir%\system32\sysprep** に変更し、**sysprep.exe** を実行します。
-3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
+1. 管理者として**コマンド プロンプト**を実行します。 
+1. ディレクトリを `%windir%\system32\sysprep` に変更します 次に、`sysprep.exe` を実行します。
+1. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
 
     ![システム準備ツール](media/prepare-for-upload-vhd-image/syspre.png)
-4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
-5. Click **OK**.
-6. sysprep が完了したら、VM をシャットダウンします。 VM をシャットダウンするために **[再起動]** を使用しないでください。
-7. これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化した VHD のアップロードと Azure での新しい VM の作成](sa-upload-generalized.md)に関するページをご覧ください。
+1. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
+1. **[OK]** を選択します。
+1. Sysprep が完了したら、VM をシャットダウンします。 VM をシャットダウンするために **[再起動]** を使用しないでください。
+
+これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化された VHD のアップロードと Azure での新しい VM の作成](sa-upload-generalized.md)に関するページをご覧ください。
 
 
 >[!NOTE]
-> custom unattend.xml はサポートされていません。 additionalUnattendContent プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する unattend.xml に [microsoft-windows-shell-setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 例:  FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) を使用できます。 「[additionalUnattendContent FirstLogonCommands example (additionalUnattendContent FirstLogonCommands の例)](https://github.com/Azure/azure-quickstart-templates/issues/1407)」も参照してください。
+> カスタム *unattend.xml* ファイルはサポートされていません。 `additionalUnattendContent` プロパティはサポートされていますが、提供されるのは、Azure プロビジョニング エージェントで使用される *unattend.xml* ファイルに [microsoft-windows-shell-setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するための限定サポートのみになります。 たとえば、FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) を使用できます。 詳細については、「[additionalUnattendContent FirstLogonCommands の例](https://github.com/Azure/azure-quickstart-templates/issues/1407)」をご覧ください。
 
 
-## <a name="complete-recommended-configurations"></a>推奨される構成を完了する
+## <a name="complete-the-recommended-configurations"></a>推奨される構成を完了する
 次の設定は、VHD のアップロードに影響しません。 ただし、これらを構成しておくことを強くお勧めします。
 
-* [Azure VM エージェント](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。 その後で、VM 拡張機能を有効にできます。 VM 拡張機能によって、パスワードのリセットや RDP の構成など、VM で使用する重要な機能のほとんどが実装されます。 詳細については、「[Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)」を参照してください。
-* Azure で VM を作成した後は、パフォーマンスを向上させるために、ページ ファイルを "テンポラル ドライブ" ボリューム上に置くことをお勧めします。 これは以下のようにしてセットアップできます。
+* [Azure 仮想マシン エージェント](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。 その後で、VM 拡張機能を有効にできます。 VM 拡張機能によって、VM で使用する重要な機能のほとんどが実装されます。 たとえば、パスワードをリセットしたり、RDP を構成したりするには、拡張機能が必要です。 詳細については、「[Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)」を参照してください。
+* Azure で VM を作成した後は、パフォーマンスを向上させるために、ページ ファイルを "*テンポラル ドライブ ボリューム*" 上に置くことをお勧めします。 次のようにファイルの配置をセットアップできます。
 
    ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
    ```
-  VM に接続されているデータ ディスクがある場合、テンポラル ドライブ ボリュームのドライブ文字は通常 "D" になります。 この文字は、使用可能なドライブ数や行った設定に応じて異なる場合があります。
+  データ ディスクが VM に接続されている場合、テンポラル ドライブ ボリュームの文字は通常 *D* になります。この指定は、設定や使用可能なドライブ数に応じて異なる場合があります。
 
 ## <a name="next-steps"></a>次の手順
 * [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)
-* [Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング](troubleshoot-activation-problems.md)
+* [Azure Windows VM のライセンス認証に関する問題のトラブルシューティング](troubleshoot-activation-problems.md)
 

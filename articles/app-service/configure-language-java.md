@@ -11,14 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
 ms.date: 04/12/2019
-ms.author: jafreebe;cephalin
+ms.author: jafreebe
+ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 82e8936a888cbc99088ab18423e55dd57a3c2e77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25434360bcc0155411451dbac065e0b7fad9c3bf
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604174"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617480"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 

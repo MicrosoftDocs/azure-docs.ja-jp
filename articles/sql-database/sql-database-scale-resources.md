@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c918abdc635e7a4a831e367e159354bb752e95e6
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.date: 06/25/2019
+ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743104"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357144"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>最小限のダウンタイムでデータベースのリソースを動的にスケーリングする
 
-Azure SQL Database では、最小限のダウンタイムでデータベースにリソースを動的に追加することができます。
+Azure SQL Database では、最小限の[ダウンタイム](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)でデータベースにリソースを動的に追加できます。ただし、データベースへの接続が短時間失われる切り替え期間があります。これは、再試行ロジックを使用することで軽減できます。
 
 ## <a name="overview"></a>概要
 
@@ -41,7 +41,7 @@ Azure SQL Database には、[DTU ベースの購入モデル](sql-database-servi
 最初に Basic、Standard、または General Purpose サービス レベルで月額の安い小さな単一データベースにアプリをビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを Premium または Business Critical サービス レベルに変更できます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
 > [!NOTE]
-> 動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、ダウンタイムなしで手動スケールすることができます。
+> 動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、最小限のダウンタイムで手動スケールすることができます。
 
 単一の Azure SQL Database は、手動の動的スケーラビリティをサポートしますが、自動スケールはサポートしていません。 *自動*操作を増やすには、エラスティック プールの使用を検討してください。エラスティック プールを使用すると、データベースが個々のデータベースのニーズに基づいてプール内のリソースを共有できます。
 ただし、単一の Azure SQL Database のスケーラビリティを自動化できるスクリプトがあります。 例については、「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)」を参照してください。

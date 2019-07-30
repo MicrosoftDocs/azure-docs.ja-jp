@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
-ms.author: monhaber
-ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752578"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296529"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection と Azure Security Center
 
@@ -71,7 +71,7 @@ Security Center の Windows Defender ATP は、Standard サービス サブス�
 
 ## <a name="enable-windows-defender-atp-integration"></a>Windows Defender ATP の統合を有効にする
 
-Windows Defender ATP の統合が有効になっているかどうか確認するには、 **[セキュリティ センター]**  >  **[セキュリティ ポリシー]**  >  **[サブスクリプション]**  >  **[設定の編集]** の順に選択します。
+Windows Defender ATP の統合が有効になっているかどうかを確認するには、 **[セキュリティ センター]**  >  **[Pricing & settings]\(価格と設定\)** を選択し、ご利用のサブスクリプションをクリックします。
 
   ![Azure Security Center のポリシー管理](media/security-center-wdatp/policy-management.png)
 

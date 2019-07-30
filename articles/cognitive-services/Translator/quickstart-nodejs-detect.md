@@ -3,25 +3,28 @@ title: クイック スタート:テキストの言語を検出する (Node.js) 
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js と Translator Text REST API を使用して、指定されたテキストの言語を認識します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 2a22584cdace196287f5475536ac019d8dcfc15d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 59a779fe27dd9f83e50df34e5d2febd46011d4aa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515176"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705530"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>クイック スタート:Translator Text API と Node.js を使用してテキストの言語を検出する
 
 このクイック スタートでは、Node.js と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,10 +92,11 @@ let options = {
     json: true,
 };
 ```
+要求を認証する最も簡単な方法は、このサンプルで使用している `Ocp-Apim-Subscription-Key` ヘッダーとしてサブスクリプション キーを渡すことです。 または、アクセス トークンのサブスクリプション キーを交換し、アクセス トークンを一緒に `Authorization` ヘッダーとして渡して要求を検証することもできます。
 
-### <a name="authentication"></a>Authentication
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のヘッダーに `Ocp-Apim-Subscription-Region` も含める必要があります。
 
-要求を認証する最も簡単な方法は、このサンプルで使用している `Ocp-Apim-Subscription-Key` ヘッダーとしてサブスクリプション キーを渡すことです。 または、アクセス トークンのサブスクリプション キーを交換し、アクセス トークンを一緒に `Authorization` ヘッダーとして渡して要求を検証することもできます。 詳細については、[認証](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)に関するページをご覧ください。
+詳細については、[認証](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)に関するページをご覧ください。
 
 ## <a name="make-the-request-and-print-the-response"></a>要求の実行と応答の出力
 
@@ -152,8 +156,10 @@ node detect.js
 
 ## <a name="next-steps"></a>次の手順
 
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+
 > [!div class="nextstepaction"]
-> [GitHub で Node.js のコード例を詳しく見てみる](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

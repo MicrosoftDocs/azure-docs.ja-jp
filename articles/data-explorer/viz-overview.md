@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 85c37b6d626fc9942f5df956e738431d2727d282
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/30/2019
+ms.openlocfilehash: d1c73d8eb65ed5d67d5250b4a3bca3b80450001e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482053"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536726"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Azure Data Explorer でのデータの視覚化 
 
@@ -21,22 +21,42 @@ Azure Data Explorer は、膨大な量のデータの複雑な分析ソリュー
 
 データの視覚化とレポートは、データ分析プロセスの重要な手順です。 Azure Data Explorer では多数の BI サービスがサポートされているため、シナリオや予算に最適なものを使用することができます。
 
-* Azure Data Explorer での視覚化:[`render operator`](/azure/kusto/query/renderoperator) では、Kusto クエリ言語を使用して、クエリの結果を表すさまざまな視覚化の種類を提供しています。 クエリの視覚化は、異常検出、予測、機械学習などで役立ちます。
+## <a name="kusto-query-language-visualizations"></a>Kusto クエリ言語の視覚化
 
-* [Power BI](https://powerbi.microsoft.com): Azure Data Explorer には、さまざまな方法を使用して Power BI に接続する機能があります。 
+Kusto クエリ言語 [`render operator`](/azure/kusto/query/renderoperator) には、テーブル、円グラフ、棒グラフなど、クエリ結果を描写するさまざまな視覚化が用意されています。 クエリの視覚化は、異常検出、予測、機械学習などで役立ちます。
+
+## <a name="power-bi"></a>Power BI
+
+Azure Data Explorer には、さまざまな方法を使用して [Power BI](https://powerbi.microsoft.com) に接続する機能があります。 
 
   * [組み込みのネイティブ Power BI コネクタ](/azure/data-explorer/power-bi-connector)
 
   * [Azure Data Explorer から Power BI へのクエリのインポート](/azure/data-explorer/power-bi-imported-query)
  
-  * [SQL クエリ](/azure/data-explorer/power-bi-sql-query)
+  * [SQL query](/azure/data-explorer/power-bi-sql-query)
 
-* [Microsoft Excel](https://products.office.com/excel):Azure Data Explorer には、組み込みのネイティブ Excel コネクタを使用して Excel に接続したり、Azure Data Explorer から Excel にクエリをインポートしたりする機能があります。
+## <a name="microsoft-excel"></a>Microsoft Excel
 
-* [Grafana](https://grafana.com):Grafana には、Azure Data Explorer のデータを視覚化できる Azure Data Explorer プラグインがあります。 [Grafana のデータ ソースとして Azure Data Explorer を設定し、データを視覚化します](/azure/data-explorer/grafana)。
+Azure Data Explorer には、組み込みのネイティブ Excel コネクタを使用して [Microsoft Excel](https://products.office.com/excel) に接続したり、Azure Data Explorer から Excel にクエリをインポートしたりする機能があります。
 
-* [Sisense](https://www.sisense.com):Azure Data Explorer には、JDBC コネクタを使用して Sisense に接続する機能があります。 [Sisense のデータ ソースとして Azure Data Explorer を設定し、データを視覚化します](/azure/data-explorer/sisense)。
+## <a name="grafana"></a>Grafana
 
-* [Tableau](https://www.tableau.com):Azure Data Explorer には、Tableau に [ODBC コネクタを使用して接続し、Tableau でデータを視覚化する](/azure/data-explorer/connect-odbc)機能があります。
+[Grafana](https://grafana.com) には、Azure Data Explorer のデータを視覚化できる Azure Data Explorer プラグインがあります。 [Grafana のデータ ソースとして Azure Data Explorer を設定し、データを視覚化します](/azure/data-explorer/grafana)。 
 
-* [Qlik](https://www.qlik.com):Azure Data Explorer には、[ODBC コネクタ](/azure/data-explorer/connect-odbc)を使用して Qlik に 接続する機能があります。
+## <a name="odbc-connector"></a>ODBC コネクタ
+
+Azure Data Explorer には [Open Database Connectivity (ODBC) コネクタ](connect-odbc.md)が用意されているため、ODBC をサポートするすべてのアプリケーションが Azure Data Explorer に接続できます。
+
+## <a name="tableau"></a>Tableau
+
+Azure Data Explorer には、[ODBC コネクタ](/azure/data-explorer/connect-odbc)を使用して [Tableau](https://www.tableau.com) に接続し、[Tableau でデータを視覚化する](tableau.md)機能があります。
+
+## <a name="qlik"></a>Qlik
+
+Azure Data Explorer には、[ODBC コネクタ](/azure/data-explorer/connect-odbc)を使用して [Qlik](https://www.qlik.com) に接続し、Qlik Sense ダッシュボードを作成して、データを視覚化する機能があります。 次の動画を使用すると、Azure Data Explorer のデータを Qlik で視覚化する方法を学習できます。 
+
+> [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  
+
+## <a name="sisense"></a>SiSense
+
+Azure Data Explorer には、JDBC コネクタを使用して [Sisense](https://www.sisense.com) に接続する機能があります。 [Sisense のデータ ソースとして Azure Data Explorer を設定し、データを視覚化します](/azure/data-explorer/sisense)。

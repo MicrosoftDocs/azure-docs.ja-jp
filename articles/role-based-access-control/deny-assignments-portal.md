@@ -1,6 +1,6 @@
 ---
-title: Azure portal を使用して Azure リソースの拒否割り当てを表示する | Microsoft Docs
-description: Azure portal を使用して、特定のスコープの特定の Azure リソース アクションへのアクセスが拒否されているユーザー、グループ、サービス プリンシパル、およびマネージド ID を表示する方法について説明します。
+title: Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する | Microsoft Docs
+description: Azure portal を使用して、特定のスコープの特定の Azure リソース アクションへのアクセスが拒否されているユーザー、グループ、サービス プリンシパル、およびマネージド ID を一覧表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,36 +11,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 21ffb1a2539a2e724a91dd3b2818270a5e573ef8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005806"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127483"
 ---
-# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Azure portal を使用して Azure リソースの拒否割り当てを表示する
+# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する
 
-[拒否割り当て](deny-assignments.md)を使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 この記事では、Azure portal を使用して拒否割り当てを参照する方法を説明します。
+[拒否割り当て](deny-assignments.md)を使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 この記事では、Azure portal を使用して拒否割り当てを一覧表示する方法を説明します。
 
 > [!NOTE]
-> 現時点では、Azure Blueprints を使用することが、独自の拒否割り当てを追加する唯一の方法となります。 詳細については、「[Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
+> 独自の拒否割り当てを直接作成することはできません。 割り当て拒否が作成されるしくみの詳細については、[拒否割り当て](deny-assignments.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-拒否割り当てに関する情報を取得するのに必要なものは次のとおりです: 
+拒否割り当てに関する情報を取得するのに必要なものは次のとおりです:
 
 - ほとんどの [Azure リソースの組み込みロール](built-in-roles.md)に含まれている `Microsoft.Authorization/denyAssignments/read` アクセス許可。
 
-## <a name="view-deny-assignments"></a>拒否割り当てを表示する
+## <a name="list-deny-assignments"></a>拒否割り当てを一覧表示する
 
-サブスクリプションまたは管理グループのスコープで拒否割り当てを表示するには、次の手順に従います。
+サブスクリプションまたは管理グループのスコープで拒否割り当てを一覧表示するには、次の手順に従います。
 
-1. Azure portal で、**[すべてのサービス]**、**[管理グループ]** または **[サブスクリプション]** の順に選択します。
+1. Azure portal で、 **[すべてのサービス]** 、 **[管理グループ]** または **[サブスクリプション]** の順に選択します。
 
-1. 表示する管理グループまたはサブスクリプションをクリックします。
+1. 一覧表示する管理グループまたはサブスクリプションをクリックします。
 
 1. **[アクセス制御 (IAM)]** をクリックします。
 
@@ -65,15 +65,15 @@ ms.locfileid: "58005806"
     | **保護されているシステム** | Azure が拒否割り当てを管理しているかどうかです。 現時点では、常に [はい] です。 |
     | **スコープ** | 管理グループ、サブスクリプション、リソース グループ、またはリソースです。 |
 
-1. 有効になっている任意の項目のチェックマークをオンにし、**[OK]** をクリックして、選択した列を表示します。
+1. 有効になっている任意の項目のチェックマークをオンにし、 **[OK]** をクリックして、選択した列を表示します。
 
-## <a name="view-details-about-a-deny-assignment"></a>拒否割り当ての詳細を表示する
+## <a name="list-details-about-a-deny-assignment"></a>拒否割り当ての詳細を一覧表示する
 
-拒否割り当ての詳細をさらに表示するには、次の手順を実行します。
+拒否割り当ての詳細をさらに一覧表示するには、次の手順を実行します。
 
-1. 前のセクションの説明に従って、**[拒否割り当て]** ウィンドウを開きます。
+1. 前のセクションの説明に従って、 **[拒否割り当て]** ウィンドウを開きます。
 
-1. 拒否割り当て名をクリックし、**[ユーザー]** ブレードを開きます。
+1. 拒否割り当て名をクリックし、 **[ユーザー]** ブレードを開きます。
 
     ![拒否割り当て - ユーザー](./media/deny-assignments-portal/deny-assignment-users.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "58005806"
 
     **システム定義のプリンシパル**は、Azure AD ディレクトリのすべてのユーザー、グループ、サービス プリンシパルおよびマネージド ID を表します。
 
-1. 拒否されたアクセス許可の一覧を表示するには、**[拒否されたアクセス許可]** をクリックします。
+1. 拒否されたアクセス許可の一覧を表示するには、 **[拒否されたアクセス許可]** をクリックします。
 
     ![拒否割り当て - 拒否されたアクセス許可](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "58005806"
 
     - データ プレーンのすべての記憶域の操作は、計算の操作以外すべて拒否されます。
 
-1. 拒否割り当てのプロパティを表示するには、**[プロパティ]** をクリックします。
+1. 拒否割り当てのプロパティを表示するには、 **[プロパティ]** をクリックします。
 
     ![拒否割り当て - プロパティ](./media/deny-assignments-portal/deny-assignment-properties.png)
 
@@ -110,4 +110,4 @@ ms.locfileid: "58005806"
 ## <a name="next-steps"></a>次の手順
 
 * [Azure リソースの拒否割り当ての概要](deny-assignments.md)
-* [REST API を使用して Azure リソースの拒否割り当てを一覧表示する](deny-assignments-rest.md)
+* [Azure PowerShell を使用して Azure リソースの拒否割り当てを一覧表示する](deny-assignments-powershell.md)

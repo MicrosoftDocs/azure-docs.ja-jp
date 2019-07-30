@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: REST API を使用して Azure Load Balancer を作成する方法を説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
-ms.author: kumud
-ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60884981"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275555"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>REST API を使用して基本の Azure Load Balancer を作成する
 
@@ -33,7 +33,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
   ```
 ### <a name="uri-parameters"></a>URI パラメーター
 
-|Name  |イン  |必須 |Type |説明 |
+|EnableAdfsAuthentication  |イン  |必須 |Type |説明 |
 |---------|---------|---------|---------|--------|
 |subscriptionId   |  path       |  True       |   string      |  Microsoft Azure サブスクリプションを一意に識別するサブスクリプションの資格情報。 サブスクリプション ID は、全ての修理依頼についてURI の一部を生じさせます。      |
 |resourceGroupName     |     path    | True        |  string       |   リソース グループの名前。     |
@@ -46,7 +46,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
 
 要求される唯一のパラメーターは`location`です。 *SKU*のバージョンを定義しなければ、Basic Load Balancer が規定で作成されます。  [省略可能なパラメーター](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body)を使用してロード バランサ―をカスタマイズします。
 
-| Name | Type | 説明 |
+| EnableAdfsAuthentication | Type | 説明 |
 | :--- | :--- | :---------- |
 | location | string | リソースの場所。 [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作を使用して、最新の場所一覧を取得します。 |
 

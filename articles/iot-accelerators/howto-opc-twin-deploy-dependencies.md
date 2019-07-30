@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae9f2b05bfc6ea6315022d04c8d267d916cf282e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95c2130727c0cef889771c181fec53557a2a4b0f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61451601"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603712"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>ローカル開発の依存関係をデプロイする
 

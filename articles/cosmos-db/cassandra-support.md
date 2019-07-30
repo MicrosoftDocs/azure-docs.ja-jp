@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 46eea21e1eafce1696ed1cf77a1f334798f0bc17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848403"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155657"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -74,6 +74,8 @@ Azure Cosmos DB の Cassandra API では、次の CQL データ型がサポー�
 Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートされています。
 
 * トークン  
+* 集計関数
+  * min、max、avg、count
 * Blob 変換関数 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -88,7 +90,8 @@ Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートさ�
   * toDate(timestamp)  
   * toUnixTimestamp(timestamp)  
   * toTimestamp(date)  
-  * toUnixTimestamp(date)  
+  * toUnixTimestamp(date) 
+  
 
 
 ## <a name="cassandra-query-language-limits"></a>Cassandra クエリ言語の制限
@@ -154,11 +157,11 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>一貫性のマッピング 
 
-Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。 すべての書き込み操作は、アカウントの一貫性に関係なく、常に書き込みパフォーマンス SLA によって書き込まれます。
+Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選択することができます。  一貫性のマッピングについては、[こちら](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping) に詳しく説明されています。
 
 ## <a name="permission-and-role-management"></a>アクセス許可とロールの管理
 
-Azure Cosmos DB は、ロール ベース アクセス制御 (RBAC) と、[Azure portal](https://portal.azure.com) から取得できる読み取り/書き込みおよび読み取り専用のパスワードとキーをサポートしています。 Azure Cosmos DB では、データ プレーン アクティビティのためのユーザーとロールはまだサポートされていません。 
+Azure Cosmos DB は、プロビジョニングのためのロールベースのアクセス制御 (RBAC)、キーのローテーション、メトリックの表示、[Azure portal](https://portal.azure.com) から取得できる読み書きおよび読み取り専用のパスワードおよびキーをサポートしています。 Azure Cosmos DB では、CRUD アクティビティのためのユーザーとロールはまだサポートされていません。 
 
 ## <a name="planned-support"></a>計画されているサポート 
 * create keyspace コマンドのリージョン名は現在無視されます。データのディストリビューションは、基礎となる Cosmos DB プラットフォームに実装され、アカウントのポータルまたは PowerShell を介して公開されます。 

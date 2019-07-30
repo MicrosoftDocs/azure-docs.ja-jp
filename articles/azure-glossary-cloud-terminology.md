@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823860"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60325427"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
 Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウド用語をまとめた簡単な辞書です。 関連項目:
 
-* [Microsoft Azure とアマゾン ウェブ サービス](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) - 各種 Azure サービスと、対応する AWS サービスの定義<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
+* [Microsoft Azure とアマゾン ウェブ サービス](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) - Azure サービスとそれに対応する AWS サービスの定義。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [クラウド コンピューティング用語](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 業界における一般的なクラウド用語についての解説
 
 ## <a name="account"></a>アカウント
@@ -53,7 +53,7 @@ Windows、macOS、Linux から Azure サービスを管理するためのコマ�
 Windows PC からコマンド ラインを使って Azure サービスを管理するためのコマンド ライン インターフェイス。 サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。
 「[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
 
-## <a name="arm-model"></a>Azure Resource Manager デプロイ モデル 
+## <a name="arm-model"></a>Azure Resource Manager デプロイ モデル
 Microsoft Azure でリソースをデプロイするために使用される 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (もう一方はクラシック デプロイ モデル)。 Azure サービスには、Resource Manager デプロイ モデルだけをサポートするもの、クラシック デプロイ モデルだけをサポートするもの、その両方をサポートするものがあります。 各 Azure サービスでサポートされるモデルについては、該当するドキュメントをご覧ください。
 
 ## <a name="fault-domain"></a>障害ドメイン
@@ -66,8 +66,8 @@ Microsoft Azure でリソースをデプロイするために使用される 2 �
 
 ## <a name="geo-replication"></a>geo レプリケーション
 リージョン ペア内に存在する BLOB、テーブル、キューなどのコンテンツを自動的にレプリケートするプロセス。  
-[Azure SQL Database のアクティブ geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)
-<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->に関するページを参照してください。
+[Azure SQL Database のアクティブ geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)に関するページを参照してください。
+<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image
 任意の数の仮想マシンを作成するために使用できるアプリケーション構成とオペレーティング システムが含まれるファイル。 Azure には 2 種類のイメージがあります。VM イメージと OS イメージです。 VM イメージには、オペレーティング システムと、イメージの作成時に、仮想マシンにアタッチされているすべてのディスクが含まれています。 OS イメージには汎用オペレーティング システムのみが含まれ、データ ディスク構成はありません。  

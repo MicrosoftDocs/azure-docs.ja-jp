@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafa3974eb01b36015254307ba1a52a9bc221da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f970e9d43bc6dd67fe55ca9cdcfcae716c9f166a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798640"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110622"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
@@ -35,7 +35,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 Azure portal にサインインすると、組織の新しいテナントを作成できます。 新しいテナントは組織を表し、社内外のユーザー向けに特定インスタンスの Microsoft クラウド サービスを管理するために役立ちます。
 
 ### <a name="to-create-a-new-tenant"></a>新しいテナントを作成するには
-1. **[リソースの作成]**、**[ID]**、**[Azure Active Directory]** の順に選択します。
+1. **[リソースの作成]** 、 **[ID]** 、 **[Azure Active Directory]** の順に選択します。
 
     **[ディレクトリの作成]** ページが表示されます。
 
@@ -56,7 +56,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 このアプリケーションを引き続き使用しない場合は、次の手順を使用してテナントを削除することができます。
 
-- **[Azure Active Directory]** を選択し、**[Contoso - 概要]** ページで **[ディレクトリの削除]** を選択します。
+- **[Azure Active Directory]** を選択し、 **[Contoso - 概要]** ページで **[ディレクトリの削除]** を選択します。
 
     テナントとその関連情報は削除されます。
 

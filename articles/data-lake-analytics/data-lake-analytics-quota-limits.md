@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4629b52f3b2c9e351ddc2a68a40c5178a9a73950
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d3601fd8c32c70cf828cd08fada71258ec8fa5d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048257"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60812679"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のクォータと 制限を調整します
 
@@ -32,14 +32,14 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 
 ## <a name="default-adla-account-limits"></a>既定の ADLA アカウントの制限
 
-**アカウントあたりの Analytics ユニット (AU) の最大数:** 32
+**アカウントあたりの分析ユニット (AU) の最大数:** 32
 
-これは、アカウントで同時に実行できる AU の最大数です。 すべてのジョブで実行されている AU の総数がこの制限を超えている場合は、新しいジョブが自動的にキューに挿入されます。 例: 
+これは、アカウントで同時に実行できる AU の最大数です。 すべてのジョブで実行されている AU の総数がこの制限を超えている場合は、新しいジョブが自動的にキューに挿入されます。 例:
 
 * 32 個の AU を使用する 1 つのジョブのみ実行されているときに 2 つ目のジョブを送信した場合、そのジョブは 1 つ目のジョブが完了するまでジョブ キューで待機します。
 * 実行しているジョブが既に 4 つあり、それぞれが 8 AU を使用している場合に、8 個の AU 必要とする 5 番目のジョブを送信すると、そのジョブは、8 個の AU が使用可能になるまでジョブ キューで待機します。
 
-**ジョブあたりの Analytics ユニット (AU) の最大数:** 32
+**ジョブあたりの分析ユニット (AU) の最大数:** 32
 
 これは、アカウントで個別ジョブを割り当てられる AU の既定最大数です。 ジョブあたりでさらに多くの AU を割り当てるコンピューティング ポリシー (ジョブ送信制限) が送信元に適用されない限り、この限度を超えて割り当てられたジョブは拒否されます。 この値の上限は、アカウントの AU の制限です。
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c2f9a2a3d431e2948c7d50541b576b23c3ece6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e18157c95dac0de90c50b4b7e8591e32c5b76aaf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507534"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227230"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights を使用した Azure Active Directory B2C でのユーザー動作の追跡
 
@@ -166,7 +166,7 @@ Application Insights と Azure AD B2C を併用している場合、唯一の要
 ```
 
 > [!IMPORTANT]
-> `ApplicationInsights-Common` 技術プロファイルのインストルメンテーション キーをお使いの Application Insights が提供する GUID に変更します。
+> `AzureInsights-Common` 技術プロファイルのインストルメンテーション キーをお使いの Application Insights が提供する GUID に変更します。
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>技術プロファイルをオーケストレーション ステップとして追加する
 

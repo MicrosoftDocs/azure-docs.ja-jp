@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: fcb9171d2285efab0f65e6ab424908bc42c0ea2f
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 01e7ca184f2be755f23cd402e0694ea282e3b85e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391890"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441391"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -32,7 +32,7 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 * Office 2010 Professional Plus 以降または Excel 2010 以降を使用するワークステーション。
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
-ODBC ドライバーを使用するアプリケーションのバージョンに合致した [Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698) のバージョンをダウンロードしてインストールします。  このチュートリアルでは、Office Excel に対してこのドライバーを使用します。
+ODBC ドライバーを使用するアプリケーションのバージョンに合致した [Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698) のバージョンをダウンロードしてインストールします。  この記事では、Office Excel に対してこのドライバーを使用します。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC データ ソースを作成する
 次の手順に従って、Hive ODBC データ ソースを作成します。

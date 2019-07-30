@@ -3,23 +3,17 @@ title: Azure Cloud services の仮想マシンのサイズ | Microsoft Docs
 description: Azure のクラウド サービスの Web ロールと worker ロールのさまざまな仮想マシンのサイズ (および ID) の一覧を示します。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: jpconnock
-editor: ''
-ms.assetid: 1127c23e-106a-47c1-a2e9-40e6dda640f6
+author: georgewallace
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 21fbfe22901de677209b55639cd8871ab408375b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 0df9ee859ae8e341537f5e832d9ff90e9736cb0c
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719021"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443008"
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services のサイズ
 このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。 それぞれのサイズには、[サービス定義ファイル](cloud-services-model-and-package.md#csdef)に配置する ID があります。 サイズごとの価格は「[Cloud Services の価格](https://azure.microsoft.com/pricing/details/cloud-services/)」ページで表示されています。
@@ -68,7 +62,6 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | [D v2](#dv2-series) |160 - 190* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
-| [F](#f-series) |210 - 250*|
 | [G](#g-series) |180 ～ 240* |
 | [H](#h-series) |290 ～ 300* |
 
@@ -88,10 +81,10 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | ExtraSmall      | 1         | 0.768        | 20                   | 1/低 |
 | Small           | 1         | 1.75         | 225                  | 1/中 |
 | Medium          | 2         | 3.5          | 490                  | 1/中 |
-| Large           | 4         | 7            | 1,000                 | 2/高 |
+| Large           | 4         | 7            | 1000                 | 2/高 |
 | ExtraLarge      | 8         | 14           | 2040                 | 4/高 |
 | A5              | 2         | 14           | 490                  | 1/中 |
-| A6              | 4         | 28           | 1,000                 | 2/高 |
+| A6              | 4         | 28           | 1000                 | 2/高 |
 | A7              | 8         | 56           | 2040                 | 4/高 |
 
 ## <a name="a-series---compute-intensive-instances"></a>A シリーズ - コンピューティング集中型インスタンス
@@ -167,17 +160,6 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | Standard_E32_v3 | 32        | 256           | 800                  | 8/極めて高 |
 | Standard_E64_v3 | 64        | 432           | 1600                 | 8/極めて高 |
 
-## <a name="f-series"></a>F シリーズ
-
-
-| Size            | CPU コア数 | メモリ:GiB   | 一時ストレージ (SSD):GiB       | 最大 NIC/ネットワーク帯域幅 |
-|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standard_F1     | 1         | 2             | 16                   | 2/750  |
-| Standard_F2     | 2         | 4             | 32                   | 2/1,500 |
-| Standard_F4     | 4         | 8             | 64                   | 4/3,000 |
-| Standard_F8     | 8         | 16            | 128                  | 8/6,000 |
-| Standard_F16    | 16        | 32            | 256                  | 8/12,000|
-
 
 ## <a name="g-series"></a>G シリーズ
 | Size            | CPU コア数 | メモリ:GiB  | 一時ストレージ (SSD):GiB       | 最大 NIC/ネットワーク帯域幅 |
@@ -195,9 +177,9 @@ H シリーズのラインナップは強力な CPU パワーに加えて、FDR 
 
 | Size            | CPU コア数 | メモリ:GiB  | 一時ストレージ (SSD):GiB       | 最大 NIC/ネットワーク帯域幅 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_H8     | 8         | 56           | 1,000                 | 8/高 |
+| Standard_H8     | 8         | 56           | 1000                 | 8/高 |
 | Standard_H16    | 16        | 112          | 2000                 | 8/非常に高 |
-| Standard_H8m    | 8         | 112          | 1,000                 | 8/高 |
+| Standard_H8m    | 8         | 112          | 1000                 | 8/高 |
 | Standard_H16m   | 16        | 224          | 2000                 | 8/非常に高 |
 | Standard_H16r*  | 16        | 112          | 2000                 | 8/非常に高 |
 | Standard_H16mr* | 16        | 224          | 2000                 | 8/非常に高 |

@@ -19,12 +19,20 @@
       href: azure-netapp-files-resource-limits.md
     - name: Azure NetApp Files のメトリック
       href: azure-netapp-files-metrics.md
-    - name: Azure NetApp Files のパフォーマンス ベンチマーク
-      href: azure-netapp-files-performance-benchmarks.md
+    - name: パフォーマンス
+      items:
+        - name: Azure NetApp Files のパフォーマンス ベンチマーク
+          href: azure-netapp-files-performance-benchmarks.md
+        - name: Azure NetApp Files のパフォーマンスに関する考慮事項
+          href: azure-netapp-files-performance-considerations.md
+        - name: Azure NetApp Files を使用する際のボリュームのパフォーマンスとメトリックのベンチマーク テスト
+          href: azure-netapp-files-performance-metrics-volumes.md
     - name: Azure NetApp Files のコスト モデル
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files のネットワーク計画のガイドライン
       href: azure-netapp-files-network-topologies.md
+    - name: Azure NetApp Files を使用したソリューション アーキテクチャ
+      href: azure-netapp-files-solution-architectures.md
     - name: Azure NetApp Files についての FAQ
       href: azure-netapp-files-faqs.md
 - name: ハウツー ガイド
@@ -37,8 +45,10 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: サブネットを Azure NetApp Files に委任する
       href: azure-netapp-files-delegate-subnet.md
-    - name: Azure NetApp Files のボリュームを作成する
+    - name: Azure NetApp Files の NFS ボリュームを作成する
       href: azure-netapp-files-create-volumes.md
+    - name: Azure NetApp Files の SMB ボリュームを作成する
+      href: azure-netapp-files-create-volumes-smb.md
     - name: NFS ボリュームのエクスポート ポリシーを構成する
       href: azure-netapp-files-configure-export-policy.md
     - name: ボリュームを管理する

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 6b9c9500423392ec07482f049697d9b49dc060bf
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: dcd1ef5c54885b758ac9a301616d79a163999bc9
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603194"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509639"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル:Azure で Java EE と Postgres の Web アプリを構築する
 
@@ -38,7 +38,7 @@ ms.locfileid: "65603194"
 
 ## <a name="clone-and-edit-the-sample-app"></a>サンプル アプリを複製して編集する
 
-この手順では、サンプル アプリケーションを複製し、デプロイ用の Maven プロジェクト オブジェクト モデル (POM または pom.xml) を構成します。
+この手順では、サンプル アプリケーションを複製し、デプロイ用の Maven プロジェクト オブジェクト モデル (POM または *pom.xml)* を構成します。
 
 ### <a name="clone-the-sample"></a>サンプルを複製する
 
@@ -50,9 +50,9 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 ### <a name="update-the-maven-pom"></a>Maven POM を更新する
 
-希望する名前と App Service のリソース グループを指定して、Maven Azure プラグインを更新します。 App Service プランまたはインスタンスを事前に作成する必要はありません。 リソース グループとアプリ サービスがまだ存在しない場合は、Maven プラグインによって作成されます。 
+希望する名前と App Service のリソース グループを指定して、Maven Azure プラグインを更新します。 App Service プランまたはインスタンスを事前に作成する必要はありません。 リソース グループとアプリ サービスがまだ存在しない場合は、Maven プラグインによって作成されます。
 
-_pom.xml_ の `<plugins>` セクション (200 行目) まで下へスクロールして、変更を行います。 
+*pom.xml* の `<plugins>` セクション (200 行目) まで下へスクロールして、変更を行います。
 
 ```xml
 <!-- Azure App Service Maven plugin for deployment -->
@@ -67,6 +67,7 @@ _pom.xml_ の `<plugins>` セクション (200 行目) まで下へスクロー�
   ...
 </plugin>  
 ```
+
 `YOUR_APP_NAME` と `YOUR_RESOURCE_GROUP` を、App Service とリソース グループの名前に置き換えます。
 
 ## <a name="build-and-deploy-the-application"></a>アプリケーションをビルドしてデプロイする
@@ -103,13 +104,19 @@ mvn azure-webapp:deploy
 
 ## <a name="provision-a-postgres-database"></a>Postgres データベースをプロビジョニングする
 
-Postgres データベース サーバーをプロビジョニングするには、ターミナルを開いてから、サーバー名、ユーザー名、パスワード、場所の値を指定して次のコマンドを実行します。 お客様のアプリ サービスがあるのと同じリソース グループを使用します。 後で必要になるため、お客様のパスワードを書き留めておいてください。
+Postgres データベース サーバーをプロビジョニングするには、ターミナルを開き、次の例に示すように [az postgres server create](https://docs.microsoft.com/cli/azure/postgres/server) コマンドを使用します。 お使いの App Service インスタンスに対して前に指定したのと同じリソース グループを使用して、プレースホルダー (山かっこも含みます) と選択した値を配置します。 指定した管理者の資格情報によって今後のアクセスが有効になるため、後で使用するために必ずメモしておいてください。
 
 ```bash
-az postgres server create -n <desired-name> -g <same-resource-group> --sku-name GP_Gen4_2 -u <desired-username> -p <desired-password> -l <location>
+az postgres server create \
+    --name <server name> \
+    --resource-group <resource group> \
+    --location <location>
+    --sku-name GP_Gen5_2 \
+    --admin-user <administrator username> \
+    --admin-password <administrator password> \
 ```
 
-ポータルに移動し、お客様の Postgres データベースを探します。 ブレードが表示されたら、[サーバー名] と [サーバー管理者ログイン名] の値をコピーします。これらは、後で必要になります。
+このコマンドを実行した後、Azure portal を参照し、お使いの Postgres データベースに移動します。 ブレードが表示されたら、[サーバー名] と [サーバー管理者ログイン名] の値をコピーします。これらは、後で必要になります。
 
 ### <a name="allow-access-to-azure-services"></a>Azure サービスへのアクセスを許可する
 
@@ -123,7 +130,7 @@ az postgres server create -n <desired-name> -g <same-resource-group> --sku-name 
 
 ### <a name="add-postgres-credentials-to-the-pom"></a>POM に Postgres 資格情報を追加する
 
-_pom.xml_ で、大文字のプレースホルダーの値を、Postgres サーバー名、管理者ログイン名、およびパスワードに置き換えます。 これらのフィールドは、Azure Maven プラグイン内にあります  (`<name>` タグ内ではなく、`<value>` タグ内の `YOUR_SERVER_NAME`、`YOUR_PG_USERNAME`、および `YOUR_PG_PASSWORD` を置き換えてください)。
+*pom.xml* で、大文字のプレースホルダーの値を、Postgres サーバー名、管理者ログイン名、およびパスワードに置き換えます。 これらのフィールドは、Azure Maven プラグイン内にあります (`<name>` タグ内ではなく、`<value>` タグ内の `YOUR_SERVER_NAME`、`YOUR_PG_USERNAME`、および `YOUR_PG_PASSWORD` を置き換えてください)。
 
 ```xml
 <plugin>
@@ -148,36 +155,34 @@ _pom.xml_ で、大文字のプレースホルダーの値を、Postgres サー�
 
 ### <a name="update-the-java-transaction-api"></a>Java トランザクション API を更新する
 
-次に、目的の Java トランザクション API (JTA) 構成を編集する必要があります。これにより、目的の Java アプリケーションが、以前に使用していた H2 メモリ内データベースではなく、Postgres と通信するようになります。 エディターで _src/main/resources/META-INF/persistence.xml_ を開きます。 `<jta-data-source>` の値を `java:jboss/datasources/postgresDS` に置き換えます。 これで、お客様の JTA XML は次の設定になっているはずです。
+次に、目的の Java トランザクション API (JTA) 構成を編集する必要があります。これにより、目的の Java アプリケーションが、以前に使用していた H2 メモリ内データベースではなく、Postgres と通信するようになります。 エディターで *src/main/resources/META-INF/persistence.xml* を開きます。 `<jta-data-source>` の値を `java:jboss/datasources/postgresDS` に置き換えます。 これで、お客様の JTA XML は次の設定になっているはずです。
 
 ```xml
-...
 <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
-...
 ```
 
 ## <a name="configure-the-wildfly-application-server"></a>WildFly アプリケーション サーバーを構成する
 
 再構成した目的のアプリケーションをデプロイする前に、Postgres モジュールとその依存関係を設定して WildFly アプリケーション サーバーを更新する必要があります。 他の構成情報については、「[Configure WildFly server (WildFly サーバーの構成)](configure-language-java.md#configure-java-ee-wildfly)」を参照してください。
 
-サーバーを構成するには、`wildfly_config/` ディレクトリに 4 つのファイルが必要になります。
+サーバーを構成するには、*wildfly_config/* ディレクトリに 4 つのファイルが必要です。
 
 - **postgresql-42.2.5.jar**:この JAR ファイルは、Postgres 用の JDBC ドライバーです。 詳細については、[公式 Web サイト](https://jdbc.postgresql.org/index.html)を参照してください。
 - **postgres-module.xml**:この XML ファイルでは、Postgres モジュール (org.postgres) の名前が宣言されます。 また、モジュールを使用するために必要なリソースと依存関係が指定されます。
 - **jboss_cli_commands.cl**:このファイルには、JBoss CLI によって実行される構成コマンドが含まれています。 これらのコマンドでは、WildFly アプリケーション サーバーへの Postgres モジュールの追加、資格情報の指定、JNDI 名の宣言、タイムアウトのしきい値の設定などを行います。JBoss CLI を使い慣れていない場合は、[公式ドキュメント](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)を参照してください。
-- **startup_script.sh**:最後のこのシェル スクリプトは、お客様の App Service インスタンスが起動されるたびに実行されます。 このスクリプトで実行される機能は、`jboss_cli_commands.cli` 内のコマンドを JBoss CLI にパイプ処理することの 1 つだけです。
+- **startup_script.sh**:最後のこのシェル スクリプトは、お客様の App Service インスタンスが起動されるたびに実行されます。 このスクリプトで実行される機能は、*jboss_cli_commands.cli* 内のコマンドを JBoss CLI にパイプ処理することの 1 つだけです。
 
-これらのファイル、特に _jboss_cli_commands.cli_ の内容を読むことを強くお勧めします。
+これらのファイル、特に *jboss_cli_commands.cli* の内容を読むことを強くお勧めします。
 
 ### <a name="ftp-the-configuration-files"></a>構成ファイルを FTP で転送する
 
-`wildfly_config/` の内容を目的の App Service インスタンスに FTP で転送する必要があります。 お客様の FTP 資格情報を取得するには、Azure portal で [App Service] ブレードの **[発行プロファイルの取得]** ボタンをクリックします。 お客様の FTP ユーザー名とパスワードは、ダウンロードした XML ドキュメント内にあります。 発行プロファイルの詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)を参照してください。
+*wildfly_config/* の内容を目的の App Service インスタンスに FTP で転送する必要があります。 お客様の FTP 資格情報を取得するには、Azure portal で [App Service] ブレードの **[発行プロファイルの取得]** ボタンをクリックします。 お客様の FTP ユーザー名とパスワードは、ダウンロードした XML ドキュメント内にあります。 発行プロファイルの詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)を参照してください。
 
-任意の FTP ツールを使用して、`wildfly_config/` 内の 4 つのファイルを `/home/site/deployments/tools/` に転送します  (ディレクトリではなく、ファイル自体だけを転送することに注意してください)。
+任意の FTP ツールを使用して、*wildfly_config/* 内の 4 つのファイルを */home/site/deployments/tools/* に転送します (ディレクトリではなく、ファイル自体だけを転送することに注意してください)。
 
 ### <a name="finalize-app-service"></a>App Service を最終処理する
 
-[App Service] ブレードで [アプリケーションの設定] パネルに移動します。 [ランタイム] の下の [スタートアップ ファイル] フィールドを `/home/site/deployments/tools/startup_script.sh` に設定します。 こうすることで、App Service インスタンスが作成された後、WildFly サーバーが起動される前に、シェル スクリプトが確実に実行されるようになります。
+[App Service] ブレードで [アプリケーションの設定] パネルに移動します。 [ランタイム] の下の [スタートアップ ファイル] フィールドを */home/site/deployments/tools/startup_script.sh* に設定します。こうすることで、App Service インスタンスが作成された後、WildFly サーバーが起動される前に、シェル スクリプトが確実に実行されるようになります。
 
 最後に、お客様のアプリ サービスを再起動します。 ボタンは [概要] パネル内にあります。
 

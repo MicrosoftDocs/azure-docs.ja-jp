@@ -1,19 +1,18 @@
 ---
 title: PowerShell を使用して Windows Server を Azure にバックアップする
 description: PowerShell を使用して Microsoft Azure Backup をデプロイおよび管理する手順の説明
-services: backup
 author: pvrk
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
-ms.author: pvrk
-ms.openlocfilehash: eac7f6ec7ec41d257317d9d2a62f0bacc046dbab
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.author: shivamg
+ms.openlocfilehash: 5533b52ab984510b0e860f7fdfded8ac9005e5a8
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400194"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465234"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 

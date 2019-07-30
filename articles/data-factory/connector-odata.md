@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5a54892c1d6e05e27e349e519d41ebd937ff64c7
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550418"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509210"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-odata-connector.md)
 > * [現在のバージョン](connector-odata.md)
 
@@ -48,19 +48,19 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは **OData** に設定する必要があります。 |[はい] |
-| url | OData サービスのルート URL。 |[はい] |
-| authenticationType | OData ソースに接続するために使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**Windows**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 ユーザー ベースの OAuth はサポートされていません。 | [はい] |
-| userName | 基本認証または Windows 認証を使用する場合は、**userName** を指定します。 | いいえ  |
-| password | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ  |
-| servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | いいえ  |
-| aadServicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類を指定します。 使用できる値: `ServicePrincipalKey` または `ServicePrincipalCert`。 | いいえ  |
-| servicePrincipalKey | Azure Active Directory アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
-| servicePrincipalEmbeddedCert | Azure Active Directory に登録されているアプリケーションの、Base64 でエンコードされた証明書を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
-| servicePrincipalEmbeddedCertPassword | 証明書がパスワードで保護されている場合は、証明書のパスワードを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。  | いいえ |
-| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | いいえ  |
-| aadResourceId | 承認のために要求する AAD リソースを指定します。| いいえ  |
-| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを選択できます (データ ストアがプライベート ネットワークに配置されている場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
+| type | **type** プロパティは **OData** に設定する必要があります。 |はい |
+| url | OData サービスのルート URL。 |はい |
+| authenticationType | OData ソースに接続するために使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**Windows**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 ユーザー ベースの OAuth はサポートされていません。 | はい |
+| userName | 基本認証または Windows 認証を使用する場合は、**userName** を指定します。 | いいえ |
+| password | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
+| servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | いいえ |
+| aadServicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類を指定します。 使用できる値: `ServicePrincipalKey` または `ServicePrincipalCert`。 | いいえ |
+| servicePrincipalKey | Azure Active Directory アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| servicePrincipalEmbeddedCert | Azure Active Directory に登録されているアプリケーションの、Base64 でエンコードされた証明書を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| servicePrincipalEmbeddedCertPassword | 証明書がパスワードで保護されている場合は、証明書のパスワードを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。  | いいえ|
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | いいえ |
+| aadResourceId | 承認のために要求する AAD リソースを指定します。| いいえ |
+| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを選択できます (データ ストアがプライベート ネットワークに配置されている場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例 1: 匿名認証を使用する**
 
@@ -197,8 +197,8 @@ OData からデータをコピーするには、データセットの **type** �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | [はい] |
-| path | OData リソースへのパス。 | [はい] |
+| type | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | はい |
+| path | OData リソースへのパス。 | はい |
 
 **例**
 
@@ -232,8 +232,8 @@ OData からデータをコピーするには、コピー アクティビティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティは **RelationalSource** に設定する必要があります。 | [はい] |
-| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**メモ**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ  |
+| type | コピー アクティビティのソースの **type** プロパティは **RelationalSource** に設定する必要があります。 | はい |
+| query | データをフィルター処理するための OData クエリ オプション。 例: `"$select=Name,Description&$top=5"`.<br/><br/>**メモ**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
 
 **例**
 
@@ -257,7 +257,7 @@ OData からデータをコピーするには、コピー アクティビティ�
         "typeProperties": {
             "source": {
                 "type": "RelationalSource",
-                "query": "?$select=Name,Description&$top=5"
+                "query": "$select=Name,Description&$top=5"
             },
             "sink": {
                 "type": "<sink type>"
@@ -285,7 +285,7 @@ OData からデータをコピーする場合は、OData のデータ型と Azur
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | string |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

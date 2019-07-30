@@ -3,23 +3,18 @@ title: Cloud Services でのロールの通信 | Microsoft Docs
 description: Cloud Services のロール インスタンスには、外部または他のロール インスタンスとの通信用のエンドポイント (http、https、tcp、udp) を定義できます。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: jeconnoc
-ms.openlocfilehash: 4fa3885f9c273cf6aaf9173ebd3fee3d4499be34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808100"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359095"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure におけるロール インスタンスの通信の有効化
 クラウド サービスのロールは、内部接続および外部接続で通信します。 外部接続は**入力エンドポイント**と呼ばれ、内部接続は**内部エンドポイント**と呼ばれます。 このトピックでは、 [サービス定義](cloud-services-model-and-package.md#csdef) を変更してエンドポイントを作成する方法を説明します。

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 82eb9c895f016efe569651dc89885d2e4850fd59
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 2a9318317d5a01136a42b4fb6d580bafaf53ec4e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159093"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685743"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Azure Logic Apps における各種コンテンツの扱い
 
@@ -63,7 +63,7 @@ Logic Apps には、JSON コンテンツのプロパティをロジック アプ
   
   1. 要求トリガーで **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。  
   
-  2. **[サンプルの JSON ペイロードを入力するか、貼り付けます]** でサンプル ペイロードを指定し、**[完了]** を選択します。 例:  
+  2. **[サンプルの JSON ペイロードを入力するか、貼り付けます]** でサンプル ペイロードを指定し、 **[完了]** を選択します。 例: 
 
      ![サンプル JSON ペイロードの指定](./media/logic-apps-content-type/request-trigger.png)
 
@@ -111,7 +111,7 @@ Logic Apps には、JSON コンテンツのプロパティをロジック アプ
   その後、ロジック アプリのワークフローの至る所で、これらのプロパティを簡単に参照して使用することができます。 要求トリガーと同様、解析したい JSON コンテンツの JSON スキーマを指定または生成することができます。 
   これにより、Azure Service Bus や Azure Cosmos DB などのデータが利用しやすくなります。
 
-  ![Parse JSON](./media/logic-apps-content-type/parse-json.png)
+  ![JSON の解析](./media/logic-apps-content-type/parse-json.png)
 
 <a name="text-plain"></a>
 
@@ -140,15 +140,15 @@ Logic Apps は一部のデータ型について、その型を維持するため
 
 以下に示したのは、変換[関数](../logic-apps/workflow-definition-language-functions-reference.md)を使ったときに、Logic Apps によってコンテンツがどのように変換されるかを箇条書きにしたものです。
 
-* `json()`: データを `application/json` にキャスト
-* `xml()`: データを `application/xml` にキャスト
-* `binary()`: データを `application/octet-stream` にキャスト
-* `string()`: データを `text/plain` にキャスト
-* `base64()`: コンテンツを Base64 文字列に変換
-* `base64toString()`: Base64 でエンコードされた文字列を `text/plain` に変換
-* `base64toBinary()`: Base64 でエンコードされた文字列を `application/octet-stream` に変換
-* `encodeDataUri()`: 文字列を dataUri のバイト配列としてエンコード
-* `decodeDataUri()`: `dataUri` をバイト配列にデコード
+* `json()`:データを `application/json` にキャストします
+* `xml()`:データを `application/xml` にキャストします
+* `binary()`:データを `application/octet-stream` にキャストします
+* `string()`:データを `text/plain` にキャストします
+* `base64()`:コンテンツを Base64 文字列に変換します
+* `base64toString()`:Base64 でエンコードされた文字列を `text/plain` に変換します
+* `base64toBinary()`:Base64 でエンコードされた文字列を `application/octet-stream` に変換します
+* `encodeDataUri()`:文字列を dataUri のバイト配列としてエンコードします
+* `decodeDataUri()`:`dataUri` をバイト配列にデコードします
 
 たとえば `Content-Type` が `application/xml` に設定された、次のような内容の HTTP 要求を受信したとします。
 

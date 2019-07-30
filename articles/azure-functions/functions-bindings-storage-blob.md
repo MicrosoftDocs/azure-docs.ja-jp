@@ -4,19 +4,19 @@ description: Azure Functions で Azure Blob Storage のトリガーとバイン�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: f54da6e350b2cf9027b6e9e02ace2a90e292e1ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad927de0274d415ac268d3a29abf2c135ee22d52
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472348"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480222"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -211,6 +211,7 @@ Python コードを次に示します。
 ```python
 import logging
 import azure.functions as func
+
 
 def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
@@ -631,6 +632,7 @@ Python コードを次に示します。
 import logging
 import azure.functions as func
 
+
 def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
     logging.info('Python Queue trigger function processed %s', inputblob.name)
     return inputblob
@@ -735,7 +737,7 @@ public static void Run(
 |**direction** | 該当なし | `in` に設定する必要があります。 例外は、[使用方法](#input---usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。|
 |**path** |**BlobPath** | BLOB へのパス。 |
-|**connection** |**Connection**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-azure-storage-account)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** |**Connection**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -953,6 +955,7 @@ Python コードを次に示します。
 ```python
 import logging
 import azure.functions as func
+
 
 def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
          outputblob: func.Out[func.InputStream]):

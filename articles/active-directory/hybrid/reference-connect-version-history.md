@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 235877ac8f84e695e5f81770d33b6fed89a5f241
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: b13b23e59595acf8c637a2ef58c8098256920bea
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298790"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654058"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -408,7 +408,7 @@ Azure AD Connect バージョン 1.1.654.0 (以降) が強化され、Azure AD C
 *   SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。 SELF については、既定のアクセス許可を維持します。
 *   以下の特定のアクセス許可を割り当てます。
 
-Type     | Name                          | Access               | 適用対象
+Type     | EnableAdfsAuthentication                          | Access               | 適用対象
 ---------|-------------------------------|----------------------|--------------|
 ALLOW    | SYSTEM                        | フル コントロール         | このオブジェクト  |
 ALLOW    | Enterprise Admins             | フル コントロール         | このオブジェクト  |
@@ -889,7 +889,7 @@ Azure AD Connect Sync
 * Azure AD テナント上に、そのテナントで [パスワードの同期] 機能が有効になっているかどうかを示すサービス構成が存在します。 以前は、アクティブなステージング サーバーがある場合、Azure AD Connect はサービス構成を簡単に誤って構成しました。 現在、Azure AD Connect は、サービス構成をアクティブな Azure AD Connect サーバーだけと整合性のある状態に保持しようとします。
 * Azure AD Connect ウィザードは現在、オンプレミス AD で AD のごみ箱が有効になっていないかどうかを検出し、警告を返します。
 * 以前は、バッチ内のオブジェクトの合計サイズが特定のしきい値を超えている場合、Azure AD へのエクスポートはタイムアウトし、失敗しました。 現在、この問題が発生した場合、同期サービスは個別の、より小さなバッチでのオブジェクトの再送信を再度試みます。
-* 同期サービス キー管理アプリケーションが Windows の [スタート] メニューから削除されました。 暗号化キーの管理は、miiskmu.exe を使用してコマンド ライン インターフェイス経由で引き続きサポートされます。 暗号化キーの管理については、[Azure AD Connect 同期の暗号化キーの破棄](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-azure-ad-connect-sync-encryption-key)の記事を参照してください。
+* 同期サービス キー管理アプリケーションが Windows の [スタート] メニューから削除されました。 暗号化キーの管理は、miiskmu.exe を使用してコマンド ライン インターフェイス経由で引き続きサポートされます。 暗号化キーの管理については、[Azure AD Connect 同期の暗号化キーの破棄](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key)の記事を参照してください。
 * 以前は、Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 現在、このプロセスは必要なくなりました。
 
 デスクトップ SSO
@@ -1255,7 +1255,7 @@ AD FS の管理
 
 **AADSync 1.0 GA からのアップグレード**
 
-Azure AD Sync が既にインストールされている場合、標準の同期規則を変更したのであれば、追加の手順が 1 つ必要になります。 1.0.470.1023 リリースにアップグレードした後で、変更した同期規則は複製されます。 変更された各同期規則で、次の操作を行ってください。
+Azure AD Sync が既にインストールされている場合、標準の同期規則を変更したのであれば、追加の手順が 1 つ必要になります。 1\.0.470.1023 リリースにアップグレードした後で、変更した同期規則は複製されます。 変更された各同期規則で、次の操作を行ってください。
 
 1. 変更した同期規則を探して、変更内容をメモしておきます。
 1. 同期規則を削除します。

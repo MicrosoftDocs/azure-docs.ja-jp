@@ -14,18 +14,17 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f3ed7f64b817be64a332ebd65a94e588c836ae38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4d972620d03bb856f06040f0a9b2d6f53f5873b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66163768"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836614"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル:Azure Resource Manager テンプレートを使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -343,7 +342,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
 
 1. Azure アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
-2. 左側のメニューの **[データ ファクトリ]** をクリックするか、**[すべてのサービス]** をクリックし、**[インテリジェンス + 分析]** カテゴリの **[データ ファクトリ]** をクリックします。
+2. 左側のメニューの **[データ ファクトリ]** をクリックするか、 **[すべてのサービス]** をクリックし、 **[インテリジェンス + 分析]** カテゴリの **[データ ファクトリ]** をクリックします。
    
     ![[データ ファクトリ] メニュー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
 3. **[データ ファクトリ]** ページで、使用するデータ ファクトリ (AzureBlobToAzureSQLDatabaseDF) を検索して見つけます。 
@@ -352,7 +351,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
 4. 使用する Azure Data Factory をクリックします。 データ ファクトリのホーム ページが表示されます。
    
     ![データ ファクトリのホーム ページ](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. [データセットとパイプラインの監視](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline)に関するセクションの手順に従って、このチュートリアルで作成したパイプラインとデータセットを監視します。 現時点では、Visual Studio は Data Factory パイプラインの監視をサポートしていません。
+6. [データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションの手順に従って、このチュートリアルで作成したパイプラインとデータセットを監視します。 現時点では、Visual Studio は Data Factory パイプラインの監視をサポートしていません。
 7. スライスが**準備完了**状態になったら、Azure SQL データベースの **emp** テーブルにデータがコピーされていることを確認します。
 
 

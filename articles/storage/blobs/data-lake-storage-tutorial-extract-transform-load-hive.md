@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: be7ce4d96b7c1bd17853447448f06070637c7855
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: f28cae7ed56b694f4194adf78c288ffa87eb71d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939190"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447743"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、および読み込み
 
@@ -44,9 +44,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
 * **Secure Shell (SSH) クライアント**:詳細については、[SSH を使用した HDInsight (Hadoop) への接続](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-> [!IMPORTANT]
-> この記事の手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、Azure HDInsight バージョン 3.4 以降で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="download-the-flight-data"></a>フライト データのダウンロード
 
@@ -240,7 +237,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
     ![Azure SQL サーバーの詳細を取得](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL サーバーの詳細を取得")
 
-    SQL Database に接続してテーブルを作成するには、多くの方法があります。 次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
+    SQL Database に接続してテーブルを作成するには、多くの方法があります。 次の手順では、HDInsight クラスターから [FreeTDS](https://www.freetds.org/) を使用します。
 
 5. FreeTDS をインストールするには、クラスターへの SSH 接続から次のコマンドを使用します。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 878d9b40172313ac6c3d816cbf0da6aba5e18542
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: efde1f1dafc62576398c5225ad1c652438fc0c31
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904163"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>チュートリアル:Azure Active Directory と Periscope Data の統合
 
@@ -52,11 +52,11 @@ Azure AD への Periscope Data の統合を構成するには、ギャラリー�
 
 **ギャラリーから Periscope Data を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -64,7 +64,7 @@ Azure AD への Periscope Data の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Periscope Data**」と入力し、結果ウィンドウで **Periscope Data** を選択して、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Periscope Data**」と入力し、結果ウィンドウで **Periscope Data** を選択して、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Periscope Data](common/search-new-app.png)
 
@@ -88,15 +88,15 @@ Periscope Data で Azure AD のシングル サインオンを構成してテス
 
 Periscope Data で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Periscope Data** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Periscope Data** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -124,13 +124,13 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
 1. 別の Web ブラウザー ウィンドウで、管理者として Periscope Data にサインインします。
 
-2. 左下隅にあるギア メニューを開き、**[Billing]\(課金\)** > **[Security]\(セキュリティ\)** メニューの順に開いてから、次の手順を実行します。 これらの設定にアクセスできるのは管理者のみです。
+2. 左下隅にあるギア メニューを開き、 **[Billing]\(課金\)**  >  **[Security]\(セキュリティ\)** メニューの順に開いてから、次の手順を実行します。 これらの設定にアクセスできるのは管理者のみです。
 
     ![Periscope Data の構成情報](./media/periscope-data-tutorial/configure01.png)
 
     a. 手順 5 の **[SAML 署名証明書]** の **[アプリのフェデレーション メタデータ URL]** をコピーし、ブラウザーで開きます。 XML ドキュメントが開きます。
 
-    b. **[Single Sign-On]\(シングル サインオン\)** ボックスで、**[Azure Active Directory]** を選択します。
+    b. **[Single Sign-On]\(シングル サインオン\)** ボックスで、 **[Azure Active Directory]** を選択します。
 
     c. **SingleSignOnService** タグを見つけて、**Location** 値を **[SSO URL]\(SSO の URL\)** ボックスに貼り付けます。
 
@@ -138,13 +138,13 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
     e. インスタンスの **[Identifier]\(識別子\)** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
 
-    f. XML ファイルの最初のタグを見つけて、**entityID** の値をコピーし、**[Issuer]\(発行者\)** ボックスに貼り付けます。
+    f. XML ファイルの最初のタグを見つけて、**entityID** の値をコピーし、 **[Issuer]\(発行者\)** ボックスに貼り付けます。
 
-    g. SAML プロトコルで **IDPSSODescriptor** タグを見つけます。 そのセクション内で、**use=signing** を含む **KeyDescriptor** タグを見つけます。 **X509Certificate** の値をコピーして、**[Certificate]\(証明書\)** ボックスに貼り付けます。
+    g. SAML プロトコルで **IDPSSODescriptor** タグを見つけます。 そのセクション内で、**use=signing** を含む **KeyDescriptor** タグを見つけます。 **X509Certificate** の値をコピーして、 **[Certificate]\(証明書\)** ボックスに貼り付けます。
 
     h. 複数の領域を含むサイトでは、既定の領域を **[Default Space]\(既定の領域\)** ドロップダウンから選択できます。 これは、新しいユーザーが初めて Periscope Data にログインしたときに追加され、Active Directory シングル サインオンを介してプロビジョニングされる領域です。
 
-    i. 最後に、**[Save]\(保存\)** をクリックし、「**Logout**」と入力して SSO 設定を**確定**します。
+    i. 最後に、 **[Save]\(保存\)** をクリックし、「**Logout**」と入力して SSO 設定を**確定**します。
 
     ![Periscope Data の構成情報](./media/periscope-data-tutorial/configure02.png)
 
@@ -152,7 +152,7 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -177,7 +177,7 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
 このセクションでは、Britta Simon に Periscope Data へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Periscope Data]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Periscope Data]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -189,15 +189,15 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-periscope-data-test-user"></a>Periscope Data のテスト ユーザーの作成
 
@@ -207,7 +207,7 @@ Azure AD ユーザーが Periscope Data にログインできるようにする�
 
 1. Periscope Data に管理者としてログインします。
 
-2. メニューの左下にある **[Settings]\(設定\)** アイコンをクリックして、**[Permissions]\(権限\)** に移動します。
+2. メニューの左下にある **[Settings]\(設定\)** アイコンをクリックして、 **[Permissions]\(権限\)** に移動します。
 
     ![Periscope Data の構成情報](./media/periscope-data-tutorial/configure03.png)
 

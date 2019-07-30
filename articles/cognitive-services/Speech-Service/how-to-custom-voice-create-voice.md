@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6189ea2866d1c16f994179df0179e29353e6c47d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c2889cef01345f00d1669e7549a2fe25ac07b97
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410712"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603111"
 ---
 # <a name="create-a-custom-voice"></a>カスタム音声を作成する
 

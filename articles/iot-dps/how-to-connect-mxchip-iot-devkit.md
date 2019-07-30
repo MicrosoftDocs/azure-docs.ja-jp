@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning Service の自動プロビジョニン�
 description: Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録する方法。
 author: liydu
 ms.author: liydu
-ms.date: 12/18/2018
+ms.date: 06/25/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c809077b0ec14240d231e9b281285080f68596b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122830"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439501"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録します
 
@@ -30,7 +30,7 @@ ms.locfileid: "62122830"
 
 このチュートリアルを完了するには、最初に次のタスクを行います。
 
-* [クラウドの Azure IoT Hub への IoT DevKit AZ3166 の接続](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)に関するページの手順に従って、DevKit の Wi-Fi を構成し、開発環境を準備します。
+* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)」の「開発環境の準備」セクションの手順に従って、DevKit の Wi-Fi を構成し、開発環境を準備します。
 * 「[Update DevKit firmware](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)」(DevKit のファームウェアを更新する) チュートリアルで、最新のファームウェア (1.3.0 以降) にアップグレードします。
 * 「[Azure portal で IoT Hub Device Provisioning Service を設定する](/azure/iot-dps/quick-setup-auto-provision)」の手順に従って、IoT Hub を作成し、Device Provisioning Service インスタンスとリンクします。
 

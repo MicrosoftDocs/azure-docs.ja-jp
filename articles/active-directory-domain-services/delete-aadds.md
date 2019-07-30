@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services の無効化 | Microsoft Docs
 description: Azure Portal を使用して Azure Active Directory Domain Services を無効にする
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 89e407e1-e1e0-49d1-8b89-de11484eee46
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
-ms.author: mstephen
-ms.openlocfilehash: 122caddd73219060689ac8f6e3ab6408ea99a422
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 2f9b7f5342753c27bd8159056c8f162a5a4b78d3
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245342"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473545"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を無効にする
 この記事では、Azure ポータルを使用して、Azure AD ディレクトリの Azure Active Directory Domain Services を無効にする方法を示します。

@@ -4,15 +4,15 @@ description: VPN Gateway メトリックにアラートを構成する手順
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: e54dadbda0582095e8152ea30376d369177bfd86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65509903"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605229"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>VPN Gateway メトリックにアラートを設定する
 

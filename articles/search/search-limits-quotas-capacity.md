@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6940be7f64aa9ae16258fa936d197e2715235ab
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024636"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485409"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -29,7 +29,7 @@ ms.locfileid: "65024636"
 + **ストレージ最適化**は、**Standard** よりも多くの合計ストレージ、ストレージ帯域幅、およびメモリを備えた専用マシンで実行されます。 ストレージ最適化は 2 つのレベルがあります: L1 および L2
 
 > [!NOTE]
-> ストレージ最適化サービス レベルは、現在、フィードバックを収集するためのテストおよび実験の目的で、割引価格でプレビューとして使用できます。 最終的な価格は、これらのレベルが一般提供されるときに発表されます。 運用アプリケーションではこれらのレベルを使用しないことをお勧めします。
+> 7 月 1 日時点で、すべてのレベルは、ストレージ最適化レベルを含め、一般的に利用できます。 すべての価格は、[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページを参照してください。
 
   S3 高密度 (S3 HD) は、特定のワークロード ([マルチテナント](search-modeling-multitenant-saas-applications.md)と大量の小さなインデックス (インデックスあたり 100 万ドキュメント、サービスあたり 3000 インデックス)) 向けに設計されています。 このレベルでは、[インデクサー機能](search-indexer-overview.md)は用意されていません。 S3 HD では、データ インジェストがプッシュ アプローチを活用することで、API 呼び出しを使って、ソースからインデックスにデータをプッシュする必要があります。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "65024636"
 | Resource | 無料 | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | 最大インデックス |3 |5 または 15 |50 |200 |200 |パーティションあたり 1,000、またはサービスあたり 3,000 |10 |10 |
-| インデックスあたりの単純型フィールドの最大数 |1,000 |100 |1,000 |1,000 |1,000 |1,000 |1,000 |1,000 |
+| インデックスあたりの単純型フィールドの最大数 |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | インデックスあたりの複合コレクション フィールドの最大数 |40 |40 |40 |40 |40 |40 |40 |40 |
 | ドキュメントあたりの複合コレクション全体での最大要素数 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | 複合フィールドの最大深度 |10 |10 |10 |10 |10 |10 |10 |10 |

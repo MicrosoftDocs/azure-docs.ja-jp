@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure portal を使用して Az
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1efa76cf6bb29dfac473ad6ce31cefdfee0c52ec
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 3db1884fb80ce28dc58f09687ff16cc1ce904679
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808798"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708095"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>チュートリアル:Azure 内の Windows 仮想マシンのファイルをバックアップおよび復元する
 

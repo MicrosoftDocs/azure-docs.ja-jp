@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 491f1704cf08bd31a1b089d178afb3c281d636e6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898283"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442850"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル:Azure Active Directory と HR2day by Merces の統合
 
@@ -112,7 +112,7 @@ HR2day by Merces で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[HR2day by Merces クライアント サポート チーム](mailto:servicedesk@merces.nl)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. HR2day by Merces アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
+5. HR2day by Merces アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -218,7 +218,7 @@ HR2day by Merces で Azure AD シングル サインオンを構成するには�
 
 ### <a name="create-hr2day-by-merces-test-user"></a>HR2day by Merces テスト ユーザーの作成
 
-このセクションでは、HR2day by Merces で Britta Simon というユーザーを作成します。  [HR2day by Merces サポート チーム](mailto:servicedesk@merces.nl)と連携し、HR2day by Merces プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、HR2day by Merces で Britta Simon というユーザーを作成します。 [HR2day by Merces サポート チーム](mailto:servicedesk@merces.nl)と連携し、HR2day by Merces プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合は、[HR2day by Merces クライアント サポート チーム](mailto:servicedesk@merces.nl)にお問い合わせください。

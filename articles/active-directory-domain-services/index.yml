@@ -5,8 +5,8 @@ metadata:
   title: Azure AD Domain Services のドキュメント
   description: Active Directory Domain Services を使用して、ドメイン コントローラーをデプロイせずに、Azure 仮想マシンをドメインに参加させる方法について説明します。 チュートリアルなどのドキュメントでは、グループ ポリシーを使用して仮想マシンを管理する方法を紹介します。
   keywords: 'Azure AD, Azure, ドメイン参加, グループ ポリシー, LDAP, Kerberos, ドメイン コントローラー, DC, リフト アンド シフト'
-  author: MikeStephens-MS
-  ms.author: mstephen
+  author: iainfoulds
+  ms.author: iainfou
   manager: daveba
   ms.date: 05/22/2019
   ms.topic: landing-page

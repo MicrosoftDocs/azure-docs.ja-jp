@@ -7,7 +7,7 @@
 - name: クイック スタート
   items:
     - name: Service Health イベントのアラートの構成
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
 - name: 概念
   items:
     - name: Azure の状態のページ
@@ -19,9 +19,9 @@
 - name: 方法
   items:
     - name: Service Health イベントのアラートの構成
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: alerts-activity-log-service-notifications.md
     - name: Azure Portal を使用したサービス正常性通知の表示
-      href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: service-notifications.md
     - name: Webhook 経由でアラートを外部のシステムに送信する
       href: service-health-alert-webhook-guide.md
     - name: アラートを ServiceNow に送信する

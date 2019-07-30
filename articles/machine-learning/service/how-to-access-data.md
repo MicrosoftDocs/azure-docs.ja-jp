@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93fc9a4e9e44bd7e8db3d49fe390ebe273c45ce9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239038"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269306"
 ---
 # <a name="access-data-from-your-datastores"></a>データストアからデータにアクセスする
 
@@ -59,7 +59,19 @@ ds = ws.get_default_datastore()
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>ワークスペースで独自のデータストアを登録する
 
-既存の Azure Storage がある場合は、ワークスペース上のデータストアとして登録できます。   すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。 
+既存の Azure Storage がある場合は、ワークスペース上のデータストアとして登録できます。 
+
+<a name="store"></a>
+
+####  <a name="storage-guidance"></a>ストレージのガイダンス
+
+Blob Storage と BLOB データストアをお勧めします。 BLOB では Standard ストレージと Premium ストレージの両方を使用できます。 お勧めは Premium ストレージです。より高価になりますが、スループットの速度が上がるため、特に大規模なデータ セットに対するトレーニングでは、トレーニングの実行速度が向上する可能性があります。 ストレージ アカウントのコストの情報については、[Azure の料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)に関するページをご覧ください。
+
+>[!NOTE]
+> Azure Machine Learning service では、特定のシナリオで役立つ可能性のあるその他の種類のデータストアもサポートされています。 たとえば、データベースに格納されたデータを使用してトレーニングする必要がある場合、AzureSQLDatabaseDatastore または AzurePostgreSqlDatastore を使用できます。 使用可能なデータストアの種類については、[こちらのテーブル](#matrix)をご覧ください。
+
+#### <a name="register-your-datastore"></a>データストアの登録
+すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。
 
 次の例では、Azure BLOB コンテナーまたは Azure ファイル共有のデータストアとしての登録を示しています。
 
@@ -178,6 +190,7 @@ ds.path('./bar').as_download()
 > [!NOTE]
 > すべての `ds` または `ds.path` オブジェクトは、コンピューティング先でのマウント/ダウンロード パスを表す値を持つ、`"$AZUREML_DATAREFERENCE_XXXX"` という形式の環境変数名に解決されます。 コンピューティング先でのデータストア パスは、トレーニング スクリプトの実行パスと同じであるとは限りません。
 
+<a name="matrix"></a>
 ### <a name="training-compute-and-datastore-matrix"></a>トレーニング コンピューティングとデータストアのマトリックス
 
 次のマトリックスでは、トレーニング コンピューティング先とデータストアの異なる組み合わせのシナリオで使用可能なデータ アクセス機能を示します。 詳細については、[Azure Machine Learning のトレーニング コンピューティング先](how-to-set-up-training-targets.md#compute-targets-for-training)に関する記事を参照してください。
@@ -194,7 +207,7 @@ ds.path('./bar').as_download()
 | Azure Data Lake Analytics       |該当なし                                           |該当なし                                           |[ML&nbsp;パイプライン](concept-ml-pipelines.md)             |該当なし                                                                         |
 
 > [!NOTE]
-> [`as_mount()`] ではなく [`as_download()`] を使用して、高度に反復的で大規模なデータ処理を高速で実行するシナリオがある場合があります。これは実験的に検証することができます。
+> `as_mount()` ではなく `as_download()` を使用して、高度に反復的で大規模なデータ処理を高速で実行するシナリオがある場合があります。これは実験的に検証することができます。
 
 ### <a name="examples"></a>例 
 

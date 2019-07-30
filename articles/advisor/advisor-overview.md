@@ -10,12 +10,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069687"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -29,7 +29,7 @@ Advisor では、以下の項目を実行できます。
 * リソースのパフォーマンス、セキュリティ、および高可用性を向上させながら、総合的な Azure の支出を削減する機会を捉える。
 * アクション提案をインラインで含めた推奨事項を取得する。
 
-Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[すべてのサービス]** メニューで Advisor を検索します。
+Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、 **[すべてのサービス]** メニューで Advisor を検索します。
 
 Advisor ダッシュボードに、すべてのサブスクリプションの個人用に設定された推奨事項が表示されます。  フィルターを適用して、特定のサブスクリプションやリソースの種類の推奨事項を表示できます。  推奨事項は、4 つのカテゴリに分割されています。 
 
@@ -51,7 +51,7 @@ Advisor ダッシュボードに、すべてのサブスクリプションの個
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="how-do-i-access-advisor"></a>Advisor にアクセスする方法は?
-Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[すべてのサービス]** メニューで Advisor を検索します。
+Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、 **[すべてのサービス]** メニューで Advisor を検索します。
 
 仮想マシンのリソース インターフェイスを使用して、Advisor の推奨事項を表示することもできます。 仮想マシンを選択し、メニューで [Advisor の推奨事項] までスクロールします。 
 
@@ -61,11 +61,13 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Advisor が推奨事項を提供するリソースは?
 
-Advisor により、仮想マシン、可用性セット、アプリケーション ゲートウェイ、App Services、SQL Server、Azure Cache for Redis に関する推奨事項が提供されます。
+Advisor では、Application Gateway、App Services、可用性セット、Azure Cache、Azure Data Factory、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure ExpressRoute、Azure Cosmos DB、Azure パブリック IP アドレス、SQL Data Warehouse、SQL サーバー、ストレージ アカウント、Traffic Manager プロファイル、および仮想マシンに対する推奨事項が提供されます。
+
+Azure Advisor には、[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) からの推奨事項も含まれ、別のリソースの種類に対する推奨事項が含まれる可能性があります。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>推奨事項は延期したり無視したりできるか?
 
-推奨事項を延期するか無視するには、**[延期]** リンクをクリックします。 延期期間を指定するか、**[Never]** を選択して推奨事項を無視できます。
+推奨事項を延期するか無視するには、 **[延期]** リンクをクリックします。 延期期間を指定するか、 **[Never]** を選択して推奨事項を無視できます。
 
 ## <a name="next-steps"></a>次の手順
 

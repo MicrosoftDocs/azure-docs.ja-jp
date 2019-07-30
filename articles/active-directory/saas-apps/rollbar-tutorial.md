@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c3546dbadf64786b398610c19ee7f8e9e740d51
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: d76f4e9d61d8fd210fe9332084f9f44d19e54eed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>チュートリアル:Azure Active Directory と Rollbar の統合
 

@@ -1,21 +1,19 @@
 ---
 title: Azure Backup での VM へのファイルの復元
 description: Azure VM でバックアップおよび Recovery Services を使用して、ファイル レベルの復元を実行する方法について説明します。
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
-tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 905fce2be5de2fff371272efa79bdec5b3bef112
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 553f19a2cb621698cb5b47e56d7cb30d529cc243
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127639"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467054"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure の仮想マシンにファイルを復元する
 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体または個々のファイルを復元することができます。 この記事では、個々のファイルを復元する方法について詳しく説明します。 このチュートリアルで学習する内容は次のとおりです。
@@ -61,7 +59,7 @@ Azure でバックアップが開始されると、VM のバックアップ拡�
     ssh publicIpAddress
     ```
 
-4. 次のように、Web サーバーから既定のページ (*/var/www/html/index.nginx-debian.html*) を削除します。
+4. 次のように、Web サーバーから既定のページ ( */var/www/html/index.nginx-debian.html*) を削除します。
 
     ```bash
     sudo rm /var/www/html/index.nginx-debian.html
@@ -142,7 +140,7 @@ VM に回復スクリプトをコピーしたら、復旧ポイントを接続�
 
     スクリプトが実行されると、復旧ポイントにアクセスするためのパスワードの入力を求められます。 回復スクリプトを生成した前述の [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-mount-rp) コマンドからの出力に示されているパスワードを入力します。
 
-    スクリプトからの出力で復旧ポイントのパスを確認できます。 次の出力例では、*/home/azureuser/myVM-20170919213536/Volume1* で復旧ポイントがマウントされていることが示されています。
+    スクリプトからの出力で復旧ポイントのパスを確認できます。 次の出力例では、 */home/azureuser/myVM-20170919213536/Volume1* で復旧ポイントがマウントされていることが示されています。
 
     ```
     Microsoft Azure VM Backup - File Recovery

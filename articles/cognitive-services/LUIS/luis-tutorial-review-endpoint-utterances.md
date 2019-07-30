@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 118ac858103776e880e7304199279a7d50ad71b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2994f7b19d5a104b129dc4d7aff29dabbc89f0f4
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112281"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276001"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。 
@@ -60,7 +60,7 @@ ms.locfileid: "58112281"
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
-    このチュートリアル シリーズで使用したアプリのバージョンをすべてお持ちの方は、**[Review endpoint utterances]\(エンドポイントの発話の確認\)** リストがどのバージョンも変わらないことに気付いて意外に感じるかもしれません。 どのバージョンをアクティブに編集しているか、またはどのバージョンのアプリがエンドポイントで発行されたかには関係なく、確認すべき発話のプールが 1 つあります。 
+    このチュートリアル シリーズで使用したアプリのバージョンをすべてお持ちの方は、 **[Review endpoint utterances]\(エンドポイントの発話の確認\)** リストがどのバージョンも変わらないことに気付いて意外に感じるかもしれません。 どのバージョンをアクティブに編集しているか、またはどのバージョンのアプリがエンドポイントで発行されたかには関係なく、確認すべき発話のプールが 1 つあります。 
 
 ## <a name="review-endpoint-utterances"></a>エンドポイントの発言の確認
 
@@ -74,31 +74,22 @@ ms.locfileid: "58112281"
     
     [![[エンティティの表示] トグルを強調表示した [Review endpoint utterances]\(エンドポイントの発話の確認\) のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
+
+    この発話 `I'm looking for a job with Natural Language Processing` は、適切な意図内にありません。 
+
+    発話が適切に予測されなかった理由は、**GetJobInformation** の 7 個の発話と比較して、**ApplyForJob** の意図に 21 個の発話があるためです。 発話数が多い意図の方が、より高い予測が得られます。 意図の全体で発話の量と品質のバランスが取れていることが重要です。
+
+1.  この発話を調整するには、適切な意図を選択し、その中のジョブ エンティティをマークします。 緑色のチェックボックスをオンにして、変更した発話をアプリに追加します。 
+
     |発話|正しい意図|エンティティが不明|
     |:--|:--|:--|
-    |I'm looking for a job with Natural Language Processing|GetJobInfo|Job - "Natural Language Process"|
+    |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Job - "Natural Language Process"|
 
-    この発話は正しい意図には存在せず、スコアは 50% 未満となっています。 **ApplyForJob** 意図には 21 の発話があります。一方、**GetJobInformation** の発話は 7 個です。 エンドポイントの発話を正しくアラインメントすると共に、**GetJobInformation** 意図には、もっと発話を追加する必要があります。 この作業については各自が演習として行ってください。 それぞれの意図に割り当てられる発話の例は、**None** を除き、ほぼ同数となるようにする必要があります。 **None** 意図は、アプリ内の発話全体の 10% にすることをお勧めします。 
+    発話を追加すると、発話が **[Review endpoint utterances]\(エンドポイントの発話の確認\)** から **[GetJobInformation]** の意図に移されます。 これでエンドポイントの発話が、適切な意図の発話例になりました。 
 
-1. 意図 `I'm looking for a job with Natual Language Processing` について、**[Aligned intent]\(アラインメントされた意図\)** 列から、正しい意図である **[GetJobInformation]** を選択します。 
+    この発話を正しく配置すると共に、**GetJobInformation** 意図には、もっと発話を追加する必要があります。 この作業については各自が演習として行ってください。 それぞれの意図に割り当てられる発話の例は、**None** を除き、ほぼ同数となるようにする必要があります。 **None** 意図は、アプリ内の発話全体の 10% にすることをお勧めします。 
 
-    [![[Review endpoint utterances]\(エンドポイントの発話の確認\) で発話を意図にアラインメントする操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
-
-1. 同じ発話で、`Natural Language Processing` のエンティティが keyPhrase になっています。 これは **Job** エンティティに変更する必要があります。 [`Natural Language Processing`] を選択し、ボックスの一覧から **[Job]** エンティティを選択してください。
-
-    [![[Review endpoint utterances]\(エンドポイントの発話の確認\) で発話のエンティティをラベル付けする操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
-
-1. 同じ行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** 列にある円形のチェックマークをオンにします。 
-
-    [![意図に対する発話のアラインメントを確定する操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
-
-    この操作により、発話が **[Review endpoint utterances]\(エンドポイントの発話の確認\)** から **[GetJobInformation]** の意図に移されます。 これでエンドポイントの発話が、適切な意図の発話例になりました。 
-
-1. この意図に関して、残りの発話をレビューします。発話のラベル付けを行い、**[Aligned intent]\(アラインメントされた意図\)** が誤っていれば修正してください。
-
-1. すべての発話が正しければ、各行のチェック ボックスをオンにし、**[Add selected]\(選択項目の追加\)** を選択すると、発話が正しくアラインメントされます。 
-
-    [![アラインメントされた意図に残りの発話を確定する操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
+1. この意図に関して、残りの発話をレビューします。発話のラベル付けを行い、 **[Aligned intent]\(アラインメントされた意図\)** が誤っていれば修正してください。
 
 1. 前出の発話はリストから消えます。 さらに発話が表示された場合は、引き続きリストの項目を処理します。リストが空になるまで意図を修正し、不明なエンティティのラベル付けを行ってください。 
 
@@ -113,7 +104,7 @@ ms.locfileid: "58112281"
 
 2. **[Jobs]** フレーズ リストを選択します。
 
-3. `Natural Language Processing` を値として追加し、**[保存]** を選択します。 
+3. `Natural Language Processing` を値として追加し、 **[保存]** を選択します。 
 
 ## <a name="train"></a>トレーニング
 
@@ -123,7 +114,7 @@ LUIS は、トレーニングされてはじめて変更を認識します。
 
 ## <a name="publish"></a>発行
 
-このアプリをインポートした場合は、**[感情分析]** を選択する必要があります。
+このアプリをインポートした場合は、 **[感情分析]** を選択する必要があります。
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 

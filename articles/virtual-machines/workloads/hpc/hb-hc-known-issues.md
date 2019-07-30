@@ -4,7 +4,7 @@ description: Azure の HB シリーズの VM サイズに関する既知の問�
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: ff65f3937069be87e922dad9287ba22380632329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809793"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707794"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB シリーズおよび HC シリーズの VM に関する既知の問題
 
@@ -31,13 +31,13 @@ ms.locfileid: "66809793"
 
 現時点では Azure Accelerated Networking は有効ではありませんが、プレビュー期間中に進める予定です。 この機能がサポートされたら、お客様にお知らせします。
 
+## <a name="qp0-access-restriction"></a>qp0 アクセス制限
+
+セキュリティの脆弱性の原因となる可能性がある低レベルのハードウェア アクセスを防ぐために、Queue Pair 0 はゲスト VM からアクセスできません。 これは、通常、ConnectX-5 NIC の管理や、ibdiagnet などの InfiniBand 診断の実行に関連するアクションのみに影響します。エンド ユーザー アプリケーション自体には影響しません。
+
 ## <a name="ud-transport"></a>UD トランスポート
 
-初期の HB シリーズは動的接続トランスポート (DCT) をサポートしていません。 DCT のサポートは今後実装される予定です。 信頼性の高い接続 (RC) と信頼性の低いデータグラム (UD) のトランスポートがサポートされています。
-
-## <a name="azure-batch"></a>Azure Batch
-
-HB シリーズの仮想マシンがプレビュー段階では、サービス モードではなくユーザー サブスクリプション モードで Batch アカウントを使用します。
+初期の HB および HC シリーズは動的接続トランスポート (DCT) をサポートしていません。 DCT のサポートは今後実装される予定です。 信頼性の高い接続 (RC) と信頼性の低いデータグラム (UD) のトランスポートがサポートされています。
 
 ## <a name="gss-proxy"></a>GSS プロキシ
 

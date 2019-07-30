@@ -1,24 +1,25 @@
 ---
 title: Azure Monitor ログによるコンテナー インスタンスのログ記録
-description: コンテナーの出力 (STDOUT と STDERR) を Azure Monitor ログに送信する方法を説明します。
+description: Azure コンテナー インスタンスから Azure Monitor ログにログを送信する方法について学習します。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/17/2018
+ms.date: 07/09/2019
 ms.author: danlep
-ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4099bc0b15f02faade02f47aeb00fb7c4b4a3332
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879715"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325881"
 ---
 # <a name="container-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー インスタンスのログ記録
 
 Log Analytics ワークスペースは、Azure リソースだけでなくオンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、Azure Monitor ログにデータを送信するための組み込みサポートが含まれています。
 
-Azure Monitor ログにコンテナー インスタンスのデータを送信するには、Azure CLI (または Cloud Shell) と YAML ファイルを使用して、コンテナー グループを作成する必要があります。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成と、ログに対するクエリの実行について説明します。
+コンテナー インスタンス データを Azure Monitor ログに送信するには、コンテナー グループを作成するときに Log Analytics ワークスペース ID とワークスペース キーを指定する必要があります。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成と、ログに対するクエリの実行について説明します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -37,7 +38,7 @@ Azure Container Instances が Log Analytics ワークスペースにデータを
 
 1. Azure portal で Log Analytics ワークスペースに移動します
 1. **[設定]** で **[詳細設定]** を選択します
-1. **[接続されたソース]** > **[Windows サーバー]** (または **[Linux サーバー]** -- ID とキーはどちらの場合も同じです) を選択します
+1. **[接続されたソース]**  >  **[Windows サーバー]** (または **[Linux サーバー]** -- ID とキーはどちらの場合も同じです) を選択します
 1. 次の値を書き留めておきます。
    * **ワークスペース ID**
    * **プライマリ キー**
@@ -46,7 +47,7 @@ Azure Container Instances が Log Analytics ワークスペースにデータを
 
 ログ分析のワークスペース ID とプライマリ キーがわかったので、ログ記録が有効なコンテナー グループを作成できます。
 
-次の例は、1 つの [fluentd][fluentd] コンテナーが含まれたコンテナー グループを作成する 2 つの方法を示します。1 つは Azure CLI を使用する方法で、もう 1 つは Azure CLI と YAML テンプレートを使用する方法です。 Fluentd コンテナーは、既定の構成で複数の出力行を生成します。 この出力は Log Analytics ワークスペースに送信されるため、ログの表示とクエリのデモンストレーションに適しています。
+次の例は、1 つの [fluentd][fluentd] コンテナーが含まれたコンテナー グループを作成する 2 つの方法を示しています。1 つは Azure CLI を使用する方法で、もう 1 つは Azure CLI と YAML テンプレートを使用する方法です。 Fluentd コンテナーは、既定の構成で複数の出力行を生成します。 この出力は Log Analytics ワークスペースに送信されるため、ログの表示とクエリのデモンストレーションに適しています。
 
 ### <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
 
@@ -66,7 +67,7 @@ az container create \
 YAML でコンテナー グループをデプロイしたい場合にはこの方法を使用します。 次の YAML は、1 つのコンテナーが含まれたコンテナー グループを定義します。 YAML を新しいファイルにコピーしてから、`LOG_ANALYTICS_WORKSPACE_ID` と `LOG_ANALYTICS_WORKSPACE_KEY` を前の手順で取得した値に置き換えます。 ファイルを **deploy-aci.yaml** として保存します。
 
 ```yaml
-apiVersion: 2018-06-01
+apiVersion: 2018-10-01
 location: eastus
 name: mycontainergroup001
 properties:
@@ -90,7 +91,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-次に、以下のコマンドを実行してコンテナー グループを展開します。`myResourceGroup` は、サブスクリプション内のリソース グループに置き換えます (または、"myResourceGroup" という名前のリソース グループを最初に作成します)。
+次に、以下のコマンドを実行してコンテナー グループをデプロイします。 `myResourceGroup` をサブスクリプション内のリソース グループに置き換えます (または、"myResourceGroup" という名前のリソース グループを最初に作成します)。
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
@@ -100,12 +101,14 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 ## <a name="view-logs-in-azure-monitor-logs"></a>Azure Monitor ログのログを表示する
 
-コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 コンテナー グループのログを表示するには、Log Analytics ワークスペースを開いた後、次のようにします。
+コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 コンテナー グループのログを表示するには、次の手順を実行します。
 
-1. **[OMS ワークスペース]** の概要で、**[ログ検索]** を選択します。 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
-1. **[お試しいただけるクエリがほかにもいくつかあります]** で、**[収集されたすべてのデータ]** リンクを選択します
+1. Azure portal で Log Analytics ワークスペースに移動します
+1. **[全般]** で **[ログ]** を選択します  
+1. クエリ `search *` を入力します
+1. **[実行]** を選択します
 
-`search *` クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、**[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、ログ エントリは "一覧" ビューに表示されます。**[テーブル]** を選択すると、より圧縮された形式でログ エントリが表示されます。 その後、行を展開して個々のログ エントリの内容を表示できます。
+`search *` クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、 **[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、ログ エントリは**テーブル**形式で表示されます。 その後、行を展開して個々のログ エントリの内容を表示できます。
 
 ![Azure portal のログ検索の結果][log-search-01]
 
@@ -115,7 +118,7 @@ Azure Monitor ログには、何千行にもなる可能性があるログ出力
 
 Azure Container Instances のログ エージェントは、Log Analytics ワークスペースの `ContainerInstanceLog_CL` テーブルにエントリを送信します。 クエリの基本構造では、ソース テーブル (`ContainerInstanceLog_CL`) の後に、一連の演算子をパイプ文字 (`|`) で区切って記述します。 複数の演算子を連結して結果を絞り込み、高度な機能を実行できます。
 
-クエリ結果の例を見るには、次のクエリをクエリ テキスト ボックス ([レガシ言語コンバーターを表示します] の下) に貼り付けてから、**[実行]** ボタンを選択してクエリを実行します。 このクエリは、"Message" フィールドに "warn" という単語が含まれるすべてのログ エントリを表示します。
+クエリ結果の例を見るには、次のクエリをクエリ テキスト ボックス ([レガシ言語コンバーターを表示します] の下) に貼り付けてから、 **[実行]** ボタンを選択してクエリを実行します。 このクエリは、"Message" フィールドに "warn" という単語が含まれるすべてのログ エントリを表示します。
 
 ```query
 ContainerInstanceLog_CL

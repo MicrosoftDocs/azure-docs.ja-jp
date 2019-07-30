@@ -16,19 +16,18 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e9b043b27f624a3d9f38fb2299f9e49f0ffedda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783433"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807774"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams からのオンプレミス アプリケーションへのアクセス
 
-Azure Active Directory アプリケーション プロキシを使用すると、どこからでもシングル サインオンでオンプレミス アプリケーションにアクセスできます。 また、Microsoft Teams を使用すると共同作業が効率化します。 この 2 つを統合することで、あらゆる状況下でチームの生産性を向上させることができます。 
+Azure Active Directory アプリケーション プロキシを使用すると、どこからでもシングル サインオンでオンプレミス アプリケーションにアクセスできます。 また、Microsoft Teams を使用すると共同作業が効率化します。 この 2 つを統合することで、あらゆる状況下でチームの生産性を向上させることができます。
 
 ユーザーは[タブを使用](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US)して、Teams のチャネルにクラウド アプリを追加することができますが、使用する SharePoint サイトや計画ツールがオンプレミスでホストされている場合は、 アプリケーション プロキシを使用します。 アプリケーション プロキシを通じて公開したアプリは、そのアプリにリモートでアクセスするときと同じ外部 URL を使用して、チャネルに追加することができます。 また、アプリケーション プロキシは Azure Active Directory を通じて認証するので、ユーザーはシングル サインオンを使用できます。
-
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>アプリケーション プロキシ コネクタのインストールとアプリの公開
 
@@ -42,19 +41,19 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 1. アプリを追加する Teams チャネルに移動し、 **+** を選択してタブを追加します。
 
-   ![[タブの追加] の選択](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![[+] を選択し、Teams にタブを追加します。](./media/application-proxy-integrate-with-teams/add-tab.png)
 
-2. タブのオプションから **[Web サイト]** を選択します。
+1. タブのオプションから **[Web サイト]** を選択します。
 
-   ![Web サイトの追加](./media/application-proxy-integrate-with-teams/website.png)
+   ![タブの追加画面から Web サイトを選択します。](./media/application-proxy-integrate-with-teams/website.png)
 
-3. タブに名前を付けたら、URL としてアプリケーション プロキシの外部 URL を設定します。 
+1. タブに名前を付けたら、URL としてアプリケーション プロキシの外部 URL を設定します。
 
-   ![タブ名と URL の設定](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![タブの名前を指定し、外部 URL を追加します。](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
-チームのいずれかのメンバーがタブを追加すると、そのタブはチャネル内の全ユーザーに表示されます。 アプリへのアクセス権を持つすべてのユーザーが、Microsoft Teams の資格情報を使ったシングル サインオンでアクセスできます。 アプリへのアクセス権を持たないユーザーの場合、Teams にタブは表示されますが、オンプレミスのアプリケーションと Azure Portal の公開バージョンへのアクセス権が付与されるまで、アクセスはブロックされます。 
+チームのいずれかのメンバーがタブを追加すると、そのタブはチャネル内の全ユーザーに表示されます。 アプリへのアクセス権を持つすべてのユーザーが、Microsoft Teams の資格情報を使ったシングル サインオンでアクセスできます。 アプリへのアクセス権を持たないユーザーの場合、Teams にタブは表示されますが、オンプレミスのアプリケーションと Azure Portal の公開バージョンへのアクセス権が付与されるまで、アクセスはブロックされます。
 
 ## <a name="next-steps"></a>次の手順
 
 - アプリケーション プロキシで[オンプレミスの SharePoint サイトを公開する](application-proxy-integrate-with-sharepoint-server.md)方法を学びます。
-- 外部 URL に[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用するようアプリを構成します。 
+- 外部 URL に[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用するようアプリを構成します。

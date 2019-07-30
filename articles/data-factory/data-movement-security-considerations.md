@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3dab2da2d54efe73b7b782800b190ea8aac2b5cd
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153297"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460685"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 >
 > * [Version 1](v1/data-factory-data-movement-security-considerations.md)
 > * [現在のバージョン](data-movement-security-considerations.md)
@@ -46,7 +46,7 @@ Data Factory は、次の認証を取得しています。
 | **[SOC 1、2、3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://microsoft.com/en-us/trustcenter/default.aspx) にアクセスしてください。 すべての Azure コンプライアンス認証の最新の一覧については、「 https://aka.ms/AzureCompliance」を参照してください。
+Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://microsoft.com/en-us/trustcenter/default.aspx) にアクセスしてください。 すべての Azure コンプライアンス認証の最新の一覧については、「 https://aka.ms/AzureCompliance 」を参照してください。
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
@@ -119,7 +119,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイム上のリンクされたサービスの暗号化時に使用されるポート
-PowerShell は既定で、セキュリティで保護された通信にセルフホステッド統合ランタイムでコンピューター上のポート 8050 を使用します。 このポートは、必要に応じて変更できます。  
+PowerShell では既定で、セキュリティで保護された通信にセルフホステッド統合ランタイムでコンピューター上のポート 8060 を使用します。 このポートは、必要に応じて変更できます。  
 
 ![ゲートウェイの HTTPS ポート](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -135,7 +135,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとセルフホステッド統合ランタイムの構成の推奨事項がまとめてあります。
 
-| ソース      | 宛先                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
+| source      | 宛先                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | セルフホステッド統合ランタイムは、仮想ネットワークの Azure 仮想マシン上にインストールすることをお勧めします。  |
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング)           | セルフホステッド統合ランタイムは、仮想ネットワークの Azure 仮想マシン上にインストールすることをお勧めします。  |
@@ -197,7 +197,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 **セルフホステッド統合ランタイムの動作にはどのようなポートの要件がありますか?**
 
-セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (オンプレミスのファイアウォール レベルではない) でのみ受信ポート 8050 を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of-gateway)に関するセクションを参照してください。 
+セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (企業のファイアウォール レベルではない) でのみ受信ポート 8060 を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of-gateway)に関するセクションを参照してください。 
 
 
 ## <a name="next-steps"></a>次の手順

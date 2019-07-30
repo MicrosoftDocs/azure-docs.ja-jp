@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: de00c317483da9bcd93bb2e2505350d787385925
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: bbb8dcb410f17ba894210c9c090ec0975f83c0b3
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495390"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796133"
 ---
 # <a name="register-a-new-azure-iot-edge-device-with-azure-cli"></a>Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する
 
@@ -28,7 +28,7 @@ Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハ�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。
-* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
+* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az --version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
 * [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="create-a-device"></a>デバイスを作成する

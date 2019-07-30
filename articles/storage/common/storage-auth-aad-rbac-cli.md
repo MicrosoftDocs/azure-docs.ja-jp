@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 06/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: dc2beda1ae017b5e81fddf08d0c7e88c785bcdf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e29b8e23927ef2ff70416d1adc76e2b2b3f2d8a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153892"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443705"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>RBAC と Azure CLI を使用して Azure BLOB とキューのデータへのアクセスを付与する
 
-Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の組み込み RBAC ロールは、Azure Storage によって定義されます。 
+Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の組み込み RBAC ロールは、Azure Storage によって定義されます。
 
 RBAC ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスのスコープは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいは個別のコンテナーまたはキューのレベルで指定できます。 Azure AD ID セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
@@ -52,9 +52,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-user"></a>RBAC ロールをユーザーに割り当てる
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>セキュリティ プリンシパルへの RBAC ロールの割り当て
 
-RBAC ロールをユーザーに割り当てるには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) コマンドを使用します。 コマンドの形式は、割り当てのスコープによって異なります。 以降の例は、さまざまなスコープのユーザーへのロールの割り当て方法を示しています。
+セキュリティ プリンシパルに RBAC ロールを割り当てるには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) コマンドを使用します。 コマンドの形式は、割り当てのスコープによって異なります。 次の例は、さまざまなスコープでユーザーにロールを割り当てる方法を示していますが、同じコマンドを使用して、セキュリティ プリンシパルにロールを割り当てることができます。
 
 ### <a name="container-scope"></a>コンテナー スコープ
 

@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727070"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144131"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure 関数アクティビティ
 
@@ -64,6 +64,10 @@ Azure Functions は、設定で構成した`functionTimeout`設定に関係無�
 
 [この記事](../azure-functions/durable/durable-functions-overview.md)で Durable Functions について詳しく説明します。 Azure 関数のアクティビティを設定して Durable 関数を呼び出すことができます。これにより、[この例](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery)など異なる URI で応答を返します。 `statusQueryGetUri`は関数の実行中に HTTP ステータス 202 を返すため、Web アクティビティを使用して、関数の状態をポーリングできます。 Web アクティビティの`url`フィールドを`@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`に設定するだけです。 Durable 関数が完了したら、関数の出力は、Web アクティビティの出力になります。
 
+
+## <a name="sample"></a>サンプル
+
+Azure Functions を使用して tar ファイルのコンテンツを抽出する Data Factory のサンプルについては、[こちら](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

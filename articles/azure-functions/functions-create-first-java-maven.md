@@ -10,18 +10,19 @@ ms.service: azure-functions
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 08/10/2018
-ms.author: routlaw, glenga
+ms.author: routlaw
+ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ab705b6131bd43a7ab70bab16cef81d33f07c055
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827406"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323965"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Java と Maven を使用して初めての関数を作成する
 
-この記事では、Maven コマンド ライン ツールを使用して Java 関数を作成し、Azure Functions に公開する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
+この記事では、Maven コマンド ライン ツールを使用して Java 関数を作成し、Azure Functions に発行する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -52,7 +53,7 @@ mvn archetype:generate \
 > [!NOTE]
 > コマンドの実行で問題が発生した場合は、使用されている `maven-archetype-plugin` のバージョンを確認します。 `.pom` ファイルがない空のディレクトリでコマンドを実行しているため、Maven を古いバージョンからアップグレードした場合は、`~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` から古いバージョンのプラグインを使用しようとしている可能性があります。 その場合は、`maven-archetype-plugin` ディレクトリを削除した後、コマンドを再実行します。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 ```powershell
 mvn archetype:generate `
@@ -62,8 +63,8 @@ mvn archetype:generate `
 
 ```cmd
 mvn archetype:generate ^
-    -DarchetypeGroupId=com.microsoft.azure ^
-    -DarchetypeArtifactId=azure-functions-archetype
+    "-DarchetypeGroupId=com.microsoft.azure" ^
+    "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
 Maven によって、プロジェクトの生成を終了するために必要な値の入力を求めるメッセージが表示されます。 _groupId_、_artifactId_、_version_ の値については、[Maven の名前付け規則](https://maven.apache.org/guides/mini/guide-naming-conventions.html)をご覧ください。 _appName_ の値は Azure 全体で一意である必要があるため、Maven は既定値として前に入力された _artifactId_ を基にしてアプリ名を生成します。 _packageName_ の値により、生成される関数コードの Java パッケージが決まります。
@@ -71,17 +72,25 @@ Maven によって、プロジェクトの生成を終了するために必要�
 以下の `com.fabrikam.functions` および `fabrikam-functions` 識別子は例として使用されており、このクイック スタートの後の方の手順を読みやすくしています。 この手順では、Maven に独自の値を指定することをお勧めします。
 
 ```Output
-Define value for property 'groupId': com.fabrikam.functions
-Define value for property 'artifactId' : fabrikam-functions
+Define value for property 'groupId' (should match expression '[A-Za-z0-9_\-\.]+'): com.fabrikam.functions
+Define value for property 'artifactId' (should match expression '[A-Za-z0-9_\-\.]+'): fabrikam-functions
 Define value for property 'version' 1.0-SNAPSHOT : 
 Define value for property 'package': com.fabrikam.functions
 Define value for property 'appName' fabrikam-functions-20170927220323382:
+Define value for property 'appRegion' westus: :
+Define value for property 'resourceGroup' java-functions-group: :
 Confirm properties configuration: Y
 ```
 
-Maven は、この例 `fabrikam-functions` の場合、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルを作成します。 プロジェクトで生成される、すぐに実行できるコードは、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)、要求の本文をエコーする簡単な関数です。
+Maven は、この例 `fabrikam-functions` の場合、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルを作成します。 このプロジェクトで生成されたコードを実行できる準備が整っているのは、要求の本文をエコーする [HTTP トリガー](/azure/azure-functions/functions-bindings-http-webhook)関数です。 *src/main/java/com/fabrikam/functions/Function.java* を次のコードに置き換えます。 
 
 ```java
+package com.fabrikam.functions;
+
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
 public class Function {
     /**
      * This function listens at endpoint "/api/hello". Two ways to invoke it using "curl" command in bash:
@@ -108,7 +117,7 @@ public class Function {
 
 ```
 
-## <a name="reference-bindings"></a>参照バインディング
+## <a name="enable-extension-bundles"></a>拡張バンドルを有効にする
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -116,7 +125,7 @@ public class Function {
 
 新しく作成されたプロジェクト フォルダーにディレクトリを変更し、Maven で関数をビルドして実行します。
 
-```
+```CMD
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
@@ -138,7 +147,7 @@ Http Functions:
 
 新しいターミナル ウィンドウで curl を使用して、コマンド ラインから関数をトリガーします。
 
-```
+```CMD
 curl -w "\n" http://localhost:7071/api/hello -d LocalFunction
 ```
 
@@ -150,18 +159,18 @@ Hello LocalFunction!
 
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
-Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
 
 ```azurecli
 az login
 ```
 
-`azure-functions:deploy` Maven ターゲットを使用して、新しい関数アプリにコードをデプロイします。
+`azure-functions:deploy` Maven ターゲットを使用して、新しい関数アプリにコードをデプロイします。 これで、[Zip デプロイが [パッケージから実行する]](functions-deployment-technologies.md#zip-deploy) モードを有効にして実行されます。
 
 > [!NOTE]
 > Visual Studio Code を使用して関数アプリをデプロイするときは、無料サブスクリプション以外のサブスクリプションを選択してください。そうでないと、エラーが発生します。 IDE の左側で自分のサブスクリプションを確認することができます。
 
-```
+```azurecli
 mvn azure-functions:deploy
 ```
 
@@ -180,7 +189,7 @@ mvn azure-functions:deploy
 > [!NOTE]
 > **アクセス権**を `Anonymous` に設定していることを確認します。 `Function` の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](../azure-functions/functions-bindings-http-webhook.md#authorization-keys)を提示する必要があります。
 
-```
+```azurecli
 curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
@@ -205,7 +214,7 @@ return request.createResponse(200, "Hi, " + name);
 変更を保存します。 mvn クリーン パッケージを実行し、前と同様にターミナルから `azure-functions:deploy` を実行して再デプロイします。 関数アプリが更新されます。次の要求を実行してみましょう。
 
 ```bash
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello
 ```
 
 出力結果が更新されていることがわかります。

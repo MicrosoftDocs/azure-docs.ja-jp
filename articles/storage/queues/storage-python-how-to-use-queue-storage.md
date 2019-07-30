@@ -10,12 +10,12 @@ ms.date: 12/14/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 75f04893067d92813207bd656fc3368239ae9303
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 141999f4119ac92e2b8846477c50edf8fba027d0
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142789"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360029"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Python から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -98,10 +98,11 @@ for message in messages:
 1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。 2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。 次のコード例では、**get\_messages** メソッドを使って、1 回の呼び出しで 16 個のメッセージを取得します。 その後、for ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。
 
 ```python
-messages = queue_service.get_messages('taskqueue', num_messages=16, visibility_timeout=5*60)
+messages = queue_service.get_messages(
+    'taskqueue', num_messages=16, visibility_timeout=5*60)
 for message in messages:
     print(message.content)
-    queue_service.delete_message('taskqueue', message.id, message.pop_receipt)        
+    queue_service.delete_message('taskqueue', message.id, message.pop_receipt)
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>方法:キューに配置されたメッセージの内容を変更する
@@ -110,7 +111,8 @@ for message in messages:
 ```python
 messages = queue_service.get_messages('taskqueue')
 for message in messages:
-    queue_service.update_message('taskqueue', message.id, message.pop_receipt, 0, u'Hello World Again')
+    queue_service.update_message(
+        'taskqueue', message.id, message.pop_receipt, 0, u'Hello World Again')
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>方法:キューの長さを取得する

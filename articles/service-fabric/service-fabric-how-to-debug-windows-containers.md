@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: aljo, mikhegn
-ms.openlocfilehash: 15f288d5400b49ec05c9ffb936fd2097cc61bae8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.author: mikhegn
+ms.openlocfilehash: 07df215d9c3435d5ca3668b3c8d1587dbb99dca1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428148"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621950"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>方法:Visual Studio 2019 を使用して Azure Service Fabric で Windows コンテナーをデバッグする
 

@@ -141,7 +141,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 Cloud Shell で、[`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) コマンドを使用して Cosmos DB アカウントを作成します。
 
-次のコマンドで、*\<cosmosdb_name>* プレースホルダーを一意の Cosmos DB 名に置き換えます。 この名前は、Cosmos DB エンドポイント (`https://<cosmosdb_name>.documents.azure.com/`) の一部として使用されるため、Azure のすべての Cosmos DB アカウントで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。
+次のコマンドで、 *\<cosmosdb_name>* プレースホルダーを一意の Cosmos DB 名に置き換えます。 この名前は、Cosmos DB エンドポイント (`https://<cosmosdb_name>.documents.azure.com/`) の一部として使用されるため、Azure のすべての Cosmos DB アカウントで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
@@ -195,9 +195,9 @@ Azure CLI によって次の例のような情報が表示されます。
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js アプリケーションでの接続文字列の構成
 
-ローカルの MEAN.js リポジトリの "_config/env/_" フォルダーに、"_local-production.js_" という名前のファイルを作成します。 既定では、"_.gitignore_" は、リポジトリからこのファイルを保持するように構成されます。 
+ローカルの MEAN.js リポジトリの "_config/env/_ " フォルダーに、"_local-production.js_" という名前のファイルを作成します。 既定では、" _.gitignore_" は、リポジトリからこのファイルを保持するように構成されます。 
 
-ここに次のコードをコピーします。 2 つの "*\<cosmosdb_name>*" プレースホルダーを Cosmos DB データベース名で置換し、"*\<primary_master_key>*" プレースホルダーを前の手順でコピーしたキーで置換します。
+ここに次のコードをコピーします。 2 つの " *\<cosmosdb_name>* " プレースホルダーを Cosmos DB データベース名で置換し、" *\<primary_master_key>* " プレースホルダーを前の手順でコピーしたキーで置換します。
 
 ```javascript
 module.exports = {
@@ -272,7 +272,7 @@ MEAN.JS version: 0.5.0
 
 アプリ設定を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 
 
-次の例では、Azure アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app_name>*、*\<cosmosdb_name>*、および *\<primary_master_key>* プレースホルダーを置き換えます。
+次の例では、Azure アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app_name>* 、 *\<cosmosdb_name>* 、および *\<primary_master_key>* プレースホルダーを置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
@@ -447,7 +447,7 @@ node server.js
 
 ブラウザーで `http://localhost:8443` にアクセスし、サインインしていることを確認します。
 
-**[管理者] > [Manage Articles]\(記事の管理\)** を選択し、**+** ボタンを選択して記事を追加します。
+**[管理者] > [Manage Articles]\(記事の管理\)** を選択し、 **+** ボタンを選択して記事を追加します。
 
 新しい `Comment` テキスト ボックスが表示されます。
 

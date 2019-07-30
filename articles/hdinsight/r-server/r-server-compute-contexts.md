@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 9dac7aa19e428c964bd10c3ef62df949393e8d1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2c66c5c4f1abe535eb51dba9101757ce6d26157
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681784"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444342"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション
 
@@ -76,6 +76,5 @@ RevoScaleR コンピューティング コンテキストの詳細と例につ�
 この記事では、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて説明しました。 HDInsight クラスターで ML Services を使用する方法の詳細については、次のトピックを参照してください。
 
 * [Apache Hadoop 向け ML サービスの概要](r-server-overview.md)
-* [Apache Hadoop 向け ML サービスの使用を開始する](r-server-get-started.md)
 * [HDInsight 上の ML サービス向けの Azure Storage オプション](r-server-storage.md)
 

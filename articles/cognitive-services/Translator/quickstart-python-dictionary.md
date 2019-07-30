@@ -3,25 +3,28 @@ title: クイック スタート:2 か国語辞書で単語を検索する、Pyt
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Translator Text REST API を使用して、翻訳の代替候補を探す方法と特定のテキストの使用例を紹介します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: ef72e7f5a4974a9da96d03dc74bc7a8b01ff4d10
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: c95644dd0573bc7ad6ca78c5454288c811dd5d47
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515096"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704395"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>クイック スタート:Python を使用して 2 か国語辞書で単語を検索する
 
 このクイック スタートでは、Python と Translator Text REST API を使用して、翻訳の代替候補を探す方法と特定のテキストの使用例を紹介します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +39,10 @@ ms.locfileid: "66515096"
 
 ```python
 # -*- coding: utf-8 -*-
-import os, requests, uuid, json
+import os
+import requests
+import uuid
+import json
 ```
 
 > [!NOTE]
@@ -74,7 +80,7 @@ Translator Text のグローバル エンドポイントは、`base_url` とし�
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/dictionary/lookup?api-version=3.0'
-params = '&from=en&to=es';
+params = '&from=en&to=es'
 constructed_url = base_url + path + params
 ```
 
@@ -91,6 +97,8 @@ headers = {
     'X-ClientTraceId': str(uuid.uuid4())
 }
 ```
+
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="create-a-request-to-find-alternate-translations"></a>翻訳の代替候補を探す要求の作成
 
@@ -115,7 +123,8 @@ response = request.json()
 最後の手順では、結果を出力します。 このコード スニペットでは、キーを並べ替え、インデントを設定し、項目とキーの区切りを宣言することによって、結果を整形します。
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4,
+                 ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
@@ -162,8 +171,10 @@ python alt-translations.py
 
 ## <a name="next-steps"></a>次の手順
 
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+
 > [!div class="nextstepaction"]
-> [GitHub で Python のコード例を詳しく見てみる](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

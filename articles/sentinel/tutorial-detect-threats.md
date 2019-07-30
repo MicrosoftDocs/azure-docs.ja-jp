@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: b5fbc5ac-68b2-4024-9c1b-bd3cc41a66d0
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6cb40f8c9f1ee85848b5e3db311d0fb652ec1bc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e20f6fc0dc8dbe02b09490f62ce84af12aa31b87
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921816"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621226"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューを使用して脅威を検出する
 

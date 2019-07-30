@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7db66f6f4efa5e48f2af9380115de8bcfb75cb86
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861116"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786686"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Excel から Azure Machine Learning Studio に分析を移行する
 
@@ -111,7 +111,7 @@ Excel 内で Machine Learning Web サービスを使用したいと考えまし�
 ### <a name="optimization-and-further-experiments"></a>最適化と今後の実験
 これまで、Excel モデルを使用してベースラインを構築し、Machine Learning 線形回帰モデルの最適化を進めてきました。 [フィルターに基づく機能の選択][filter-based-feature-selection]モジュールを使用して初期データ要素の選択を改善することで、平均絶対誤差 4.6% のパフォーマンス向上の達成を実現しました。 今後のプロジェクトのために、データ属性に反復処理を行う数週間を節約できる可能性があるこの特徴を使用して、モデリングに使用する正しい特徴セットを検索します。 
 
-次は、パフォーマンスを比較するために、[ベイジアン][bayesian-linear-regression]や[ブースト デシジョン ツリー][boosted-decision-tree-regression]などのアルゴリズムを実験に含める予定です。 
+次は、パフォーマンスを比較するために、[ベイジアン][bayesian-linear-regression] or [Boosted Decision Trees][boosted-decision-tree-regression] などのアルゴリズムを実験に含める予定です。 
 
 回帰を試してみる場合に適切なデータセットは、多くの数値属性を持つエネルギー効率回帰のサンプル データセットです。 このデータセットは、Studio でサンプル データセットの一部として提供されています。 さまざまな学習モジュールを使用して、暖房負荷または冷房負荷のいずれかを予測できます。 次の表は、さまざまな回帰のパフォーマンスを比較したもので、エネルギー効率データセットに対する、ターゲット変数の冷房負荷の予測を示しています。 
 
@@ -133,7 +133,7 @@ Excel の回帰と Studio の実験を並列して実行することで、多く
 次のリソースは、回帰を使用する際に役立ちます。 
 
 * Excel での回帰。 Excel で回帰を試したことがない場合は、このチュートリアル ([https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)) を利用すれば、簡単にできます。
-* 回帰と予測。 Tyler Chessman 氏による、初心者向けの優れた線形回帰の説明が書かれた、Excel で時系列予測を実行する方法を説明するブログ記事。 [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* 回帰と予測。 Tyler Chessman 氏による、初心者向けの優れた線形回帰の説明が書かれた、Excel で時系列予測を実行する方法を説明するブログ記事。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
 * 通常の最小二乗法の線形回帰:欠点、問題、注意点。 回帰の概要とディスカッションについては、[https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/) を参照してください。
 
 <!-- Module References -->

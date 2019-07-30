@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: 9fd9eaf1e62d063026e0e656346baaaade87064f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60410339"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere クラスターの DNS 構成
 
@@ -74,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>クラスター DNS 設定
 
-vFXT クラスターが使用する DNS サーバーを、**[クラスター]** > **[Administrative Network]\(管理ネットワーク)** 設定ページで指定します。 このページでは、以下の内容を設定します。
+vFXT クラスターが使用する DNS サーバーを、 **[クラスター]**  >  **[Administrative Network]\(管理ネットワーク)** 設定ページで指定します。 このページでは、以下の内容を設定します。
 
 * DNS サーバー アドレス
 * DNS ドメイン名

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: monhaber
-ms.openlocfilehash: e403a9bd4d3f8668544dab1d81e9052b37839bef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: afc03baa71f17deb0b923f483fde214a86c5e9b4
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66358041"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296466"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>ファイルの整合性の監視 (FIM) を使用してベースラインを比較する
 

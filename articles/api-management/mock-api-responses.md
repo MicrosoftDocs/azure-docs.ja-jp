@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412746"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205319"
 ---
 # <a name="mock-api-responses"></a>API の応答の模擬テストを実行する
 
@@ -42,7 +42,7 @@ ms.locfileid: "50412746"
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
 + [Azure API Management のポリシーの概念](api-management-howto-policies.md)を理解します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
 
 ## <a name="create-a-test-api"></a>テスト API を作成する 
 
@@ -51,11 +51,11 @@ ms.locfileid: "50412746"
 ![空の API を作成](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
 1. **API Management** サービスから **[API]** を選択します。
-2. 左側のメニューで、**[+ API の追加]** を選びます。
+2. 左側のメニューで、 **[+ API の追加]** を選びます。
 3. 一覧から **[空の API]** を選択します。
 4. **[表示名]** に「*テスト API*」と入力します。
 5. **[製品]** に「*無制限*」と入力します。
-6. **作成**を選択します。
+6. **作成** を選択します。
 
 ## <a name="add-an-operation-to-the-test-api"></a>操作をテスト API に追加する
 
@@ -77,10 +77,10 @@ ms.locfileid: "50412746"
 3. URL、表示名、および説明の各フィールドの下にある **[応答]** タブを選択します。
 4. **[+ 応答の追加]** をクリックします。
 5. 一覧から **[200 OK]** を選択します。
-6. 右側の **[表現]** 見出しで、**[+ 表現の追加]** を選択します。
+6. 右側の **[表現]** 見出しで、 **[+ 表現の追加]** を選択します。
 7. 検索ボックスに「*application/json*」と入力し、コンテンツの種類として **application/json** を選択します。
 8. **[サンプル]** テキスト ボックスに「`{ 'sampleField' : 'test' }`」と入力します。
-9. **作成**を選択します。
+9. **作成** を選択します。
 
 ## <a name="enable-response-mocking"></a>応答のモック作成を有効にする
 
@@ -89,7 +89,7 @@ ms.locfileid: "50412746"
 1. 「テスト API を作成する」の手順で作成した API を選択します。
 2. 追加したテスト操作を選択します。
 3. 右側のウィンドウで **[デザイン]** タブをクリックします。
-4. **[受信処理]** ウィンドウで、**[+ ポリシーの追加]** をクリックします。
+4. **[受信処理]** ウィンドウで、 **[+ ポリシーの追加]** をクリックします。
 5. ギャラリーから **[Mock responses]\(モック応答\)** タイルを選択します。
 
     ![モック応答ポリシー タイル](./media/mock-api-responses/mock-responses-policy-tile.png)

@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: REST API を使用して Recovery Services コンテナーを作成する'
 description: REST API を使用して Azure VM Backup のバックアップ操作と復元操作を管理します
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0373098dd344df79be79871227f20c8a995958fa
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646709"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466938"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーを作成する
 
@@ -44,7 +43,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 要求本文を作成するには、以下の一般的な定義が使用されます。
 
-|Name  |必須  |Type  |説明  |
+|EnableAdfsAuthentication  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
 |eTag     |         |   string      |  省略可能な eTag       |
 |location     |  true       |string         |   リソースの場所      |
@@ -72,10 +71,10 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Recovery Services コンテナーの作成または更新操作には、2 種類の成功応答があります。
 
-|Name  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |   [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 Created     | [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成日時      |
+|201 Created     | [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成されました      |
 
 REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
 

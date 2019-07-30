@@ -3,7 +3,7 @@ title: Azure AD ドメイン サービスでのセキュリティで保護され
 description: Azure AD Domain Services のマネージド ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
-ms.author: ergreenl
-ms.openlocfilehash: e961b6c4b97103668c591e319a81d20f533b4acb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 1cb9ff70b41b63f4a3e3d45d744037195fdf28a7
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245362"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473769"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 この記事では、Azure AD Domain Services のマネージド ドメインに対して、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を有効にする方法について説明します。 セキュリティで保護された LDAP は、「Secure Sockets Layer (SSL)/トランスポート層セキュリティ (TLS) 経由のライトウェイト ディレクトリ アクセス プロトコル (LDAP)」としても知られています。

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9f911f70360c645f8077928a66978bd631e37160
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 94f73d323604fc49227b871d3419b2e48c25551b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006405"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604202"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Python を使用して印刷されたテキストを抽出する (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>クイック スタート:Computer Vision の REST API と Python を使用して印刷されたテキスト (OCR) を抽出する
 
 このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ```python
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
-#%matplotlib inline
+# %matplotlib inline
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from PIL import Image
@@ -75,8 +75,8 @@ image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" + \
     "Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
 
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
-params  = {'language': 'unk', 'detectOrientation': 'true'}
-data    = {'url': image_url}
+params = {'language': 'unk', 'detectOrientation': 'true'}
+data = {'url': image_url}
 response = requests.post(ocr_url, headers=headers, params=params, json=data)
 response.raise_for_status()
 
@@ -99,7 +99,8 @@ for word in word_infos:
     bbox = [int(num) for num in word["boundingBox"].split(",")]
     text = word["text"]
     origin = (bbox[0], bbox[1])
-    patch  = Rectangle(origin, bbox[2], bbox[3], fill=False, linewidth=2, color='y')
+    patch = Rectangle(origin, bbox[2], bbox[3],
+                      fill=False, linewidth=2, color='y')
     ax.axes.add_patch(patch)
     plt.text(origin[0], origin[1], text, fontsize=20, weight="bold", va="top")
 plt.axis("off")

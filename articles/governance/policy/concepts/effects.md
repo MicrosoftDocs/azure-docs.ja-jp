@@ -8,25 +8,26 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2bf19a2599d59b9ff2b3d189b26134f1528a878
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116201"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448571"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
 Azure Policy 内の各ポリシー定義には単一の効果があります。 その効果によって、ポリシー規則が一致すると評価されたときの動作が決まります。 効果の動作は、対象 (新しいリソース、更新されたリソース、または既存のリソース) によって異なります。
 
-現在、ポリシー定義では次の 6 つの効果がサポートされています。
+現在、ポリシー定義では次の効果がサポートされています。
 
-- Append
-- Audit
-- AuditIfNotExists
-- 拒否
-- DeployIfNotExists
-- Disabled
+- [Append](#append)
+- [監査](#audit)
+- [AuditIfNotExists](#auditifnotexists)
+- [Deny](#deny)
+- [DeployIfNotExists](#deployifnotexists)
+- [Disabled](#disabled)
+- [EnforceRegoPolicy](#enforceregopolicy) (プレビュー)
 
 ## <a name="order-of-evaluation"></a>評価の順序
 
@@ -38,6 +39,8 @@ Azure Resource Manager を通したリソースの作成または更新の要求
 - 次に、要求がリソース プロバイダーに移動する前に **Audit** が評価されます。
 
 リソース プロバイダーによって成功コードが返された後、**AuditIfNotExists** と **DeployIfNotExists** が評価され、追加のコンプライアンスのログ記録またはアクションが必要かどうかが判断されます。
+
+現在のところ、**EnforceRegoPolicy** 効果の評価順序はありません。
 
 ## <a name="disabled"></a>Disabled
 
@@ -332,6 +335,58 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
                     }
                 }
             }
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+この効果は、`Microsoft.ContainerService.Data` のポリシー定義*モード*で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) で定義されている受付制御規則を [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
+
+> [!NOTE]
+> [Kubernetes 用の Azure Policy](rego-for-aks.md) はパブリック プレビューで、組み込みのポリシー定義のみをサポートします。
+
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy の評価
+
+Open Policy Agent アドミッション コントローラーは、クラスター上の新しい要求をリアルタイムで評価します。
+5 分ごとにクラスターのフル スキャンが完了し、結果が Azure Policy に報告されます。
+
+### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy のプロパティ
+
+EnforceRegoPolicy 効果の **details** プロパティには、Rego 受付制御規則を記述するサブプロパティがあります。
+
+- **policyId** [必須]
+  - Rego 受付制御規則にパラメーターとして渡される一意の名前。
+- **policy** [必須]
+  - Rego 受付制御規則の URI を指定します。
+- **policyParameters** [省略可能]
+  - rego ポリシーに渡すパラメーターと値を定義します。
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy の例
+
+例:AKS で指定されたコンテナー イメージのみを許可する Rego 受付制御規則。
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "equals": "Microsoft.ContainerService/managedClusters"
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "EnforceRegoPolicy",
+    "details": {
+        "policyId": "ContainerAllowedImages",
+        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
+        "policyParameters": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
         }
     }
 }

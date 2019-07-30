@@ -36,6 +36,8 @@
   items:
     - name: ストリーミング分析テクノロジの選択
       href: streaming-technologies.md
+    - name: ジョブ開発ツールの選択
+      href: feature-comparison.md
     - name: ジョブの入力の種類
       items:
         - name: 入力の概要
@@ -88,14 +90,16 @@
           href: stream-analytics-test-query.md
         - name: ダッシュボードに結果を表示する
           href: stream-analytics-power-bi-dashboard.md
-        - name: ジョブをクリーンアップする
+        - name: ジョブを停止または削除する
           href: stream-analytics-clean-up-your-job.md
         - name: ジョブをペアリングして信頼性を高める
           href: stream-analytics-job-reliability.md
-        - name: マネージド ID による認証
+        - name: マネージド ID による認証 - ADLS Gen 1 の出力
           href: stream-analytics-managed-identities-adls.md
         - name: SQL リファレンス データを使用する
           href: sql-reference-data.md
+        - name: マネージド ID による認証 - BLOB の出力
+          href: blob-output-managed-identity.md
     - name: ソリューションを構築する
       items:
         - name: Twitter センチメントの分析
@@ -116,6 +120,9 @@
           href: stream-analytics-threshold-based-rules.md
         - name: Kafka イベントを処理する
           href: ../event-hubs/event-hubs-kafka-stream-analytics.md
+          maintainContext: true
+        - name: Event Hubs データの処理
+          href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
         - name: 地理空間のシナリオ
           href: geospatial-scenarios.md
@@ -141,6 +148,8 @@
               href: stream-analytics-scale-jobs.md
         - name: ML 関数を利用したスケーリング
           href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: 再パーティション分割によるスケーリング
+          href: repartition.md
     - name: 自動化
       items:
         - name: .NET SDK の使用
@@ -494,6 +503,9 @@
           maintainContext: true
         - name: JOIN
           href: /stream-analytics-query/join-azure-stream-analytics
+          maintainContext: true
+        - name: MATCH_RECOGNIZE
+          href: /stream-analytics-query/match-recognize-stream-analytics.md
           maintainContext: true
         - name: 参照データの JOIN
           href: /stream-analytics-query/reference-data-join-azure-stream-analytics

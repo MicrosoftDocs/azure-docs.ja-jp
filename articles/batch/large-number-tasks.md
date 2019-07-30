@@ -4,7 +4,7 @@ description: 1 つの Azure Batch ジョブで大量のタスクを効率的に�
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: ed04774969f72f1d6037a350f019d81d812d73f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f91d47e1f57fb74575fbdad0a76386b53fb38b1f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549667"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322517"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>1 つの Batch ジョブに多数のタスクを送信する
 
@@ -141,7 +141,8 @@ SDK 拡張機能を使用する `BatchExtensionsClient` を設定します。
 
 ```python
 
-client = batch.BatchExtensionsClient(base_url=BATCH_ACCOUNT_URL, resource_group=RESOURCE_GROUP_NAME, batch_account=BATCH_ACCOUNT_NAME)
+client = batch.BatchExtensionsClient(
+    base_url=BATCH_ACCOUNT_URL, resource_group=RESOURCE_GROUP_NAME, batch_account=BATCH_ACCOUNT_NAME)
 ...
 ```
 
@@ -149,10 +150,9 @@ client = batch.BatchExtensionsClient(base_url=BATCH_ACCOUNT_URL, resource_group=
 
 
 ```python
-tasks=list()
+tasks = list()
 # Populate the list with your tasks
 ...
-
 ```
 
 [task.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) を使用してタスク コレクションを追加します。 `threads` パラメーターを設定して同時実行操作数を増やします。
@@ -188,7 +188,7 @@ parameter_sweep = {
                 "repeatTask": {
                     "commandLine": "/bin/bash -c 'echo Hello world from task {0}'",
                     "constraints": {
-                        "retentionTime":"PT1H"
+                        "retentionTime": "PT1H"
                     }
                 }
             },

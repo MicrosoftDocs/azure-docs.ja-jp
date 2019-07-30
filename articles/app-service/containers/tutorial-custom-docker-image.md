@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8463ffcb9d9983ff435c01f75dd48f68bde31767
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: b48ec72a1f0a4178dad66ed31c544399e90c5293
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545604"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484497"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>チュートリアル:カスタム イメージを作成し、プライベート レジストリから App Service 内で実行する
 
-[App Service](app-service-linux-intro.md) は、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートする組み込みの Docker イメージを Linux 上で提供します。 App Service では、Docker コンテナー テクノロジを使用して、組み込みイメージとカスタム イメージの両方をサービスとしてのプラットフォームとしてホストします。 このチュートリアルでは、カスタム イメージを作成し、App Service 内で実行する方法について学習します。 このパターンは、組み込みイメージに選択した言語が含まれない場合や、アプリケーションで組み込みイメージで提供されない特定の構成が必要となる場合に便利です。
+[App Service](app-service-linux-intro.md) は、PHP 7.3 や Node.js 10.14 などの特定のバージョンをサポートする組み込みの Docker イメージを Linux 上で提供します。 App Service では、Docker コンテナー テクノロジを使用して、組み込みイメージとカスタム イメージの両方をサービスとしてのプラットフォームとしてホストします。 このチュートリアルでは、カスタム イメージを作成し、App Service 内で実行する方法について学習します。 このパターンは、組み込みイメージに選択した言語が含まれない場合や、アプリケーションで組み込みイメージで提供されない特定の構成が必要となる場合に便利です。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -155,7 +155,7 @@ docker login <azure-container-registry-name>.azurecr.io --username <registry-use
 
 ### <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-Azure Container Registry のコンテナー イメージをタグ付けします。 例: 
+Azure Container Registry のコンテナー イメージをタグ付けします。 例:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -186,7 +186,7 @@ az acr repository list -n <azure-container-registry-name>
 
 ### <a name="create-web-app"></a>Web アプリの作成
 
-Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app-name>_ を一意のアプリ名に置き換え、_\<azure-container-registry-name>_ を自分のレジストリ名に置き換えます。
+Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app-name>_ を一意のアプリ名に置き換え、 _\<azure-container-registry-name>_ を自分のレジストリ名に置き換えます。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -211,7 +211,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Web アプリにレジストリの資格情報を構成する
 
-App Service でプライベート イメージをプルするには、レジストリとイメージに関する情報が必要です。 Cloud Shell で、[`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用してそれらを提供します。 *\<app-name>*、*\<azure-container-registry-name>*、_\<registry-username>_、および _\<password>_ を置き換えます。
+App Service でプライベート イメージをプルするには、レジストリとイメージに関する情報が必要です。 Cloud Shell で、[`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用してそれらを提供します。 *\<app-name>* 、 *\<azure-container-registry-name>* 、 _\<registry-username>_ 、および _\<password>_ を置き換えます。
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -278,7 +278,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     > [!NOTE]
     > この構成では、コンテナーへの外部接続は許可されません。 SSH は Kudu/SCM サイトを通してのみ利用できます。 Kudu/SCM サイトは Azure アカウントにより認証されます。
 
-* この [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) では、[sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config file in the repository) を */etc/ssh/* ディレクトリにコピーしています。
+* この [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) では、リポジトリ内の [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーします。
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/

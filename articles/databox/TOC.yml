@@ -143,10 +143,20 @@
               items:
                 - name: SMB 経由
                   href: data-box-heavy-deploy-copy-data.md
+                - name: NFS 経由
+                  href: data-box-heavy-deploy-copy-data-via-nfs.md
+                - name: REST 経由
+                  href: data-box-heavy-deploy-copy-data-via-rest.md
+                - name: データ コピー サービス経由
+                  href: data-box-heavy-deploy-copy-data-via-copy-service.md
+                - name: マネージド ディスクへ
+                  href: data-box-heavy-deploy-copy-data-from-vhds.md
             - name: 4 - 返却、アップロード、確認
               href: data-box-heavy-deploy-picked-up.md
         - name: 概念
           items:
+            - name: 安全性のガイドラインを読む
+              href: data-box-heavy-safety.md
             - name: 追跡とログ記録を確認する
               href: data-box-logs.md
             - name: 要件を確認する

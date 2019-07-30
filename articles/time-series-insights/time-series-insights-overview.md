@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6ef965b9c22524df5893d5826548a0b07f077062
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ce18b0060fe0bd0f9d5a8308fe1358e300c04441
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237629"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165621"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 

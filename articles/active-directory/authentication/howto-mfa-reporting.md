@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 988e8982b6f06fb1210330c5cafdb696892794fe
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: dd4c6952aab1581a968fc671141792c0e16a7d46
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235525"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536962"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
 
@@ -59,7 +59,7 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 
 MFA のサインイン アクティビティ レポートから、次の情報にアクセスできます。
 
-**MFA の必要性:** サインインに MFA が必要かどうか。 ユーザーごとの MFA、条件付きアクセス、または他の理由で、MFA を必須にすることができます。 指定できる値は、**はい**または**いいえ**です。
+**MFA の必要性:** サインインに MFA が必要かどうか。 ユーザーごとの MFA、条件付きアクセス、または他の理由で、MFA が必要になる場合があります。 指定できる値は、**はい**または**いいえ**です。
 
 **MFA の結果:** MFA が満たされたか拒否されたかに関する詳細情報。
 
@@ -115,7 +115,7 @@ MFA のサインイン アクティビティ レポートから、次の情報�
 
 **MFA 認証の詳細:** スクラブ バージョンの電話番号 (例: +X XXXXXXXX64)。
 
-**条件付きアクセス** 以下を含む、サインイン試行に影響を与えた条件付きアクセス ポリシーに関する情報を確認します。
+**条件付きアクセス** 以下を含む、サインイン試行に影響を与えた条件付きアクセス ポリシーに関する情報を見つけます。
 
 - ポリシー名
 - 許可コントロール
@@ -188,5 +188,6 @@ MFA のサインイン アクティビティ レポートから、次の情報�
 
 ## <a name="next-steps"></a>次の手順
 
+* [SSPR と MFA の使用状況と分析情報のレポート](howto-authentication-methods-usage-insights.md)
 * [ユーザー向け](../user-help/multi-factor-authentication-end-user.md)
 * [デプロイする場所](concept-mfa-whichversion.md)

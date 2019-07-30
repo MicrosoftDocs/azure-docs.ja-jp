@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070351"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -276,6 +276,7 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント
 
+- Managed Instance では現在、SQL Server エージェントの有効化/無効化はサポートされていません。 SQL エージェントは常時稼動状態となります。
 - SQL Server エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、Managed Instance ではサポートされていません。 
 - [ジョブ]
   - T-SQL ジョブ ステップがサポートされています。
@@ -456,13 +457,13 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 - `Extended stored procedures` はサポートされておらず、これには `sp_addextendedproc`  および `sp_dropextendedproc` が含まれます。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
 
-## <a name="Environment"></a>環境制約
+## <a name="Environment"></a>環境の制約
 
 ### <a name="subnet"></a>Subnet
 - ご利用の Managed Instance 用に予約されているサブネットに、その他のリソース (仮想マシンなど) を配置することはできません。 これらのリソースはその他のサブネットに配置します。
 - サブネットには、十分な数の利用可能な [IP アドレス](sql-database-managed-instance-connectivity-architecture.md#network-requirements)が含まれている必要があります。 最小値は 16 ですが、サブネットに少なくとも 32 個の IP アドレスを含めることをお勧めします。
 - [マネージド インスタンスのサブネットにサービス エンドポイントを関連付けることはできません](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 仮想ネットワークの作成時に、サービス エンドポイント オプションが無効になっていることを確認してください。
-- サブネットに配置できるインスタンスの数と種類には、いくつかの[制約と制限](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)があります。
+- リージョンでデプロイできるインスタンスの仮想コア数と種類には、いくつかの[制約と制限](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)があります。
 - [サブネットで適用される必要があるセキュリティ規則](sql-database-managed-instance-connectivity-architecture.md#network-requirements)があります。
 
 ### <a name="vnet"></a>VNet

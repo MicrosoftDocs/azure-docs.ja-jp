@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf236bff2300129ec97d3b8946c4c2a2748bca77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7bb4aab4c217e20245a1f6ee9b2910a4558acad
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602133"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278225"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET を使用する Xamarin iOS に固有の考慮事項
 Xamarin iOS には、MSAL.NET を使用する場合に考慮する必要がある考慮事項がいくつかあります。
 
 - [iOS 12 と認証に関する既知の問題](#known-issues-with-ios-12-and-authentication)
 - [`AppDelegate` での `OpenUrl` 関数のオーバーライドと実装](#implement-openurl)
-- [キーチェーン グループの有効化](#enable-keychain-groups)
+- [キーチェーン グループの有効化](#enable-keychain-access)
 - [トークン キャッシュ共有の有効化](#enable-token-cache-sharing-across-ios-applications)
 - [キーチェーン アクセスの有効化](#enable-keychain-access)
 
@@ -44,7 +44,7 @@ Xamarin iOS 上での MSAL.NET アプリケーション開発時、iOS 12 から
 
 まず、`FormsApplicationDelegate` 派生クラスの `OpenUrl` メソッドをオーバーライドし、`AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` を呼び出す必要があります。
 
-```csharp
+```CSharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 {
     AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
@@ -52,20 +52,12 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 }
 ```
 
-また、URL スキームを定義し、別のアプリを呼び出すために自分のアプリ用にアクセス許可を要求すること、リダイレクト URL 用の特定の形式を作成し、このリダイレクト URL を [Azure portal](https://portal.azure.com) 上で登録することも必要です。
+また、URL スキームを定義し、別のアプリを呼び出すために自分のアプリ用にアクセス許可を要求すること、リダイレクト URL 用の特定の形式を作成し、このリダイレクト URL を [Azure portal](https://portal.azure.com) 上で登録することも必要になります。
 
-## <a name="enable-keychain-groups"></a>キーチェーン グループの有効化
+### <a name="enable-keychain-access"></a>キーチェーン アクセスの有効化
 
-トークン キャッシュを機能させるため、および `AcquireTokenSilentAsync` メソッドを機能させるためには、複数のステップに従う必要があります。
-1. *`* Entitlements.plist* ファイル内でキーチェーンを有効にし、バンドル識別子で**キーチェーン グループ**を指定します。
-2. iOS プロジェクト オプション ウィンドウの**バンドル署名ビュー**にある **[カスタム エンタイトルメント]** フィールドで、 *`*Entitlements.plist*`* ファイルを選択します。
-3. 証明書に署名するときは、XCode で同じ Apple ID を使用していることを確認してください。
-
-## <a name="enable-token-cache-sharing-across-ios-applications"></a>iOS アプリケーション間でのトークン キャッシュ共有の有効化
-
-MSAL 2.x 以降では、複数のアプリケーション間でトークン キャッシュを保持するために使用するキーチェーン セキュリティ グループを指定できます。 これにより、[ADAL.NET](https://aka.ms/adal-net) で開発されたアプリケーション、MSAL.NET Xamarin.iOS アプリケーション、[ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) または [MSAL.objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc) で開発されたネイティブ iOS アプリケーションを含め、同じキーチェーン セキュリティ グループを持つ複数のアプリケーション間でトークン キャッシュを共有できます。
-
-トークン キャッシュを共有すると、同じキーチェーン セキュリティ グループを使用するすべてのアプリケーション間でのシングル サインオン (SSO) が可能になります。
+キーチェーン アクセスを有効にするには、アプリケーションにキーチェーン アクセス グループが必要です。
+次に示すように、アプリケーションの作成時に `WithIosKeychainSecurityGroup()` API を使用してキーチェーン アクセス グループを設定できます。
 
 シングル サインオンを有効にするには、すべてのアプリケーションで `PublicClientApplication.iOSKeychainSecurityGroup` プロパティを同じ値に設定する必要があります。
 
@@ -77,34 +69,9 @@ var builder = PublicClientApplicationBuilder
      .Build();
 ```
 
-MSAL v2.7.x を使用したこの例は次のようになります。
+entitlements.plist を更新して、次の XML フラグメントのようにする必要があります。
 
-```csharp
-PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
-```
-
-> [!NOTE]
-> `KeychainSecurityGroup` プロパティは非推奨になりました。 以前、MSAL 2.x では、開発者は `KeychainSecurityGroup` プロパティを使用するときに TeamId プレフィックスを使用することを余儀なくされていました。 
-> 
-> MSAL 2.7.x より、MSAL では、`iOSKeychainSecurityGroup` プロパティを使用すると実行時に TeamId プレフィックスが解決されるようになりました。 このプロパティを使用するときは、値に TeamId プレフィックスを含めないでください。 
-> 
-> 新しい `iOSKeychainSecurityGroup` プロパティを使用します。これを使用すると開発者は TeamId を指定する必要がありません。 `KeychainSecurityGroup` プロパティは非推奨になりました。 
-
-## <a name="enable-keychain-access"></a>キーチェーン アクセスの有効化
-
-MSAL 2.x および ADAL 4.x では、キーチェーンにアクセスするために TeamId が使用されます。そのため、認証ライブラリによって同じ発行元のアプリケーション間でシングル サインオン (SSO) を提供できます。 
-
-[TeamIdentifierPrefix](/xamarin/ios/deploy-test/provisioning/entitlements?tabs=vsmac) (TeamId) とは何でしょうか。 それは、App Store における一意識別子 (会社または個人) です。 AppId はアプリに固有です。 複数のアプリがある場合、すべてのアプリの TeamId は同じになりますが、AppId は異なります。 キーチェーン アクセス グループには、システムによってグループごとに自動的に TeamId が付けられます。 これが、同じ発行元のアプリから共有キーチェーンにアクセスできるようにするために OS によって強制的に適用される方法です。 
-
-`PublicClientApplication` を初期化するときに `TeamId returned null from the iOS keychain...` というメッセージを伴う `MsalClientException` を受け取った場合は、iOS Xamarin アプリ内で次のことを行う必要があります。
-
-1. VS の [デバッグ] タブで nameOfMyApp.iOS プロパティに移動します。
-2. 次に、[iOS バンドル署名] に移動します。 
-3. [カスタム エンタイトルメント] の [...] をクリックし、ご自身のアプリの Entitlements.plist ファイルを選択します。
-4. iOS アプリの csproj ファイルにこの行が含まれているはずです: `<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>`
-5. プロジェクトを**リビルド**します。
-
-これは、`Entitlements.plist` ファイル内でキーチェーン アクセスを有効にすることに "*加えて*"、以下のまたはご自身のアクセス グループを使用して行います。
+この変更は、`Entitlements.plist` ファイル内でキーチェーン アクセスを有効にすることに "*加えて*"、以下のまたはご自身のアクセス グループを使用して行います。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -113,16 +80,44 @@ MSAL 2.x および ADAL 4.x では、キーチェーンにアクセスするた�
 <dict>
   <key>keychain-access-groups</key>
   <array>
-    <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
+    <string>$(AppIdentifierPrefix)com.microsoft.msalrocks</string>
   </array>
 </dict>
 </plist>
 ```
 
-## <a name="next-steps"></a>次の手順
+MSAL v4.x を使用したこの例は次のようになります。
+
+```csharp
+PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
+```
+
+`WithIosKeychainSecurityGroup()` API を使用する場合、MSAL はアプリケーションの "チーム ID" (AppIdentifierPrefix) の末尾にセキュリティ グループを自動的に追加しますが、これは、xcode を使用してアプリケーションをビルドする場合にも同じことを行うからです。 [詳細については iOS エンタイトルメントに関するドキュメントを参照してください](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)。 そのため、エンタイトルメントを更新して、entitlements.plist でキーチェーン アクセス グループの前に $(AppIdentifierPrefix) を含める必要があります。
+
+### <a name="enable-token-cache-sharing-across-ios-applications"></a>iOS アプリケーション間でのトークン キャッシュ共有の有効化
+
+MSAL 2.x から、複数のアプリケーション間でトークン キャッシュを保持するために使用するキーチェーン アクセス グループを指定できます。 この設定により、[ADAL.NET](https://aka.ms/adal-net) で開発されたアプリケーション、MSAL.NET Xamarin.iOS アプリケーション、[ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) または [MSAL.objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc) で開発されたネイティブ iOS アプリケーションを含め、同じキーチェーン アクセス グループを持つ複数のアプリケーション間でトークン キャッシュを共有できます。
+
+トークン キャッシュを共有すると、同じキーチェーン アクセス グループを使用するすべてのアプリケーション間でのシングル サインオンが可能になります。
+
+このキャッシュ共有を有効にするには、'WithIosKeychainSecurityGroup()' メソッドを使用して、前の例で示しているように、同じキャッシュを共有するすべてのアプリケーションでキーチェーン アクセス グループを同じ値に設定する必要があります。
+
+前に説明したように、`WithIosKeychainSecurityGroup()` API を使用するときは常に、MSAL によって $(AppIdentifierPrefix) が追加されていました。 これは、同じパブリッシャー製のアプリケーションのみがキーチェーン アクセスを共有できることを保証するために AppIdentifierPrefix または "チーム ID" が使用されるからです。
+
+#### <a name="note-keychainsecuritygroup-property-deprecated"></a>注:KeychainSecurityGroup プロパティは非推奨
+
+以前は、MSAL 2.x から、開発者は `KeychainSecurityGroup` プロパティを使用するときに TeamId プレフィックスを使用することを余儀なくされていました。
+
+MSAL 2.7.x からは、新しい `iOSKeychainSecurityGroup` プロパティを使用するとき、MSAL が実行時に TeamId プレフィックスを解決します。 このプロパティを使用するときは、値に TeamId プレフィックスを含めないでください。
+
+以前の `KeychainSecurityGroup` プロパティは古くなっているため、新しい `iOSKeychainSecurityGroup` プロパティを使用します。これを使用すると開発者は TeamId を指定する必要がありません。
+
+### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Xamarin iOS 固有のプロパティを示すサンプル
 
 詳細については、次に示すサンプルの readme.md ファイルの「[iOS Specific Considerations](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations)」(iOS に固有の考慮事項) の段落を参照してください。
 
-サンプル | プラットフォーム | 説明 
+サンプル | プラットフォーム | 説明
 ------ | -------- | -----------
-[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | MSAL を使用して AAD v2.0 エンドポイント経由で MSA と Azure AD を認証し、その結果得られたトークンを使用して Microsoft Graph にアクセスする方法を示す、単純な Xamarin Forms アプリ。 <br>![トポロジ](media/msal-net-xamarin-ios-considerations/topology.png)
+[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | Azure AD V2.0 エンドポイント経由で MSA と Azure AD を認証し、結果のトークンで Microsoft Graph にアクセスするための MSAL の使用方法を示す、単純な Xamarin Forms アプリ。
+
+<!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->

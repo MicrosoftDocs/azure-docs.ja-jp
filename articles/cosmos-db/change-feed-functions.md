@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 08429ca76823b9e6c80a197cc390a5964c4198e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: db3f1b6657ae455ae049eaffd6758fc7e6944fb9
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969011"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68001018"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレスなイベントベースのアーキテクチャ
 
@@ -20,7 +20,7 @@ Azure Functions には、[変更フィード](change-feed.md)に接続する最�
 
 ![Azure Cosmos DB トリガーと連携するサーバーレスなイベントベースの関数](./media/change-feed-functions/functions.png)
 
-[Azure Cosmos DB トリガー](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)を使用すると、[ワーカー インフラストラクチャ](./change-feed-processor.md#implementing-the-change-feed-processor-library)を維持することなく、[変更フィード プロセッサ](./change-feed-processor.md)のスケーリングと信頼性の高いイベント検出機能を活用できます。 イベントソーシング パイプラインの残りの部分を気にすることなく、自分の Azure 関数のロジックにのみ専念しましょう。 トリガーは、その他の [Azure Functions のバインド](../azure-functions/functions-triggers-bindings.md#supported-bindings)と組み合わせることもできます。
+[Azure Cosmos DB トリガー](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)を使用すると、[ワーカー インフラストラクチャ](./change-feed-processor.md)を維持することなく、[変更フィード プロセッサ](./change-feed-processor.md)のスケーリングと信頼性の高いイベント検出機能を活用できます。 イベントソーシング パイプラインの残りの部分を気にすることなく、自分の Azure 関数のロジックにのみ専念しましょう。 トリガーは、その他の [Azure Functions のバインド](../azure-functions/functions-triggers-bindings.md#supported-bindings)と組み合わせることもできます。
 
 > [!NOTE]
 > 現在、Azure Cosmos DB トリガーは、Core (SQL) API と共に使用する場合にのみサポートされます。

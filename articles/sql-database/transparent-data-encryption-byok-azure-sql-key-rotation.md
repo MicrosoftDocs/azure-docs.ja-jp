@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
 ms.date: 03/12/2019
-ms.openlocfilehash: 760b292e75b4cc64b85eaf51ffad0521b721dabf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3e982c0fc46ea72692d5fa7f27e14b88c6383df
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330858"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274258"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用して Transparent Data Encryption (TDE) 保護機能をローテーションする
 
@@ -71,36 +71,7 @@ ms.locfileid: "60330858"
    -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
-## <a name="option-2-manual-rotation"></a>オプション 2:手動ローテーション
 
-オプションでは、[Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレット、[Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) コマンドレット、および [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) コマンドレットを使用して、まったく新しいキーを追加します。これは新しいキー名の下または別のキー コンテナーに追加できます。 
-
->[!NOTE]
->キー コンテナー名とキー名を組み合わせた長さは 94 文字以下である必要があります。
->
-
-   ```powershell
-   # Add a new key to Key Vault
-   Add-AzKeyVaultKey `
-   -VaultName <KeyVaultName> `
-   -Name <KeyVaultKeyName> `
-   -Destination <HardwareOrSoftware>
-
-   # Add the new key from Key Vault to the server
-   Add-AzSqlServerKeyVaultKey `
-   -KeyId <KeyVaultKeyId> `
-   -ServerName <LogicalServerName> `
-   -ResourceGroup <SQLDatabaseResourceGroupName>   
-  
-   <# Set the key as the TDE protector for all resources 
-   under the server #>
-   Set-AzSqlServerTransparentDataEncryptionProtector `
-   -Type AzureKeyVault `
-   -KeyId <KeyVaultKeyId> `
-   -ServerName <LogicalServerName> `
-   -ResourceGroup <SQLDatabaseResourceGroupName>
-   ```
-  
 ## <a name="other-useful-powershell-cmdlets"></a>その他の便利な PowerShell コマンドレット
 
 - TDE 保護機能を Microsoft マネージドから BYOK モードに切り替えるには、[Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) コマンドレットを使用します。

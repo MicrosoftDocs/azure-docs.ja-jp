@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;dbgeorge
-ms.openlocfilehash: 058a1f964eb14d89628c92cbadd80511b7a27bae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: 7bb3db4861842e145689682035adc3c691538adf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61230581"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297796"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Haivision KB エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する  
 > [!div class="op_single_selector"]

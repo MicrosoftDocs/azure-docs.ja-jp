@@ -31,6 +31,8 @@
               maintainContext: true
             - name: 青/緑パターンを使用した AKS へのデプロイ
               href: jenkins-aks-blue-green-deployment.md
+            - name: CI/CD と Azure Dev Spaces
+              href: tutorial-jenkins-dev-spaces.md
         - name: App Service
           items:
             - name: パイプライン ジョブでの Azure リソースの作成

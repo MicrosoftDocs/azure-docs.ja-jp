@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123886"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442522"
 ---
-# <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>更新:LUIS アプリの API バージョン 3.x への移行
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>更新:LUIS アプリの API バージョン 3.x への移行
 
 クエリ予測エンドポイント API が変更されました。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。 
 
@@ -44,6 +44,27 @@ LUIS の次の機能は V3 API では**サポートされていません**。
 
 V3 の[リファレンス ドキュメント](https://aka.ms/luis-api-v3)をご利用いただけます。
 
+## <a name="endpoint-url-changes-by-slot-name"></a>スロット名によるエンドポイント URL の変更
+
+V3 エンドポイントの HTTP 呼び出しの形式が変更されました。
+
+|メソッド|URL|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
+|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
+|||
+
+## <a name="endpoint-url-changes-by-version-id"></a>バージョン ID によるエンドポイント URL の変更
+
+バージョンによってクエリを実行する場合、まず `"directVersionPublish":true` を使用して [API 経由で発行](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)する必要があります。 スロット名の代わりにバージョン ID を参照して、エンドポイントのクエリを実行します。
+
+
+|メソッド|URL|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
+|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict|
+|||
+
 ## <a name="prebuilt-entities-with-new-json"></a>事前構築済みエンティティの新しい JSON
 
 V3 の応答オブジェクトの変更には、[事前構築済みエンティティ](luis-reference-prebuilt-entities.md)も含まれています。 
@@ -54,11 +75,14 @@ V3 の応答オブジェクトの変更には、[事前構築済みエンティ�
 
 V3 API には異なるクエリ文字列パラメーターがあります。
 
-|パラメーター名|Type|バージョン|目的|
-|--|--|--|--|
-|`query`|string|V3 のみ|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
-|`show-all-intents`|ブール値|V3 のみ|すべての意図と対応するスコアを **prediction.intents** オブジェクトに返します。 意図は、親の `intents` オブジェクト内のオブジェクトとして返されます。 これにより、配列 `prediction.intents.give` 内で意図を探す必要はなく、プログラムによるアクセスが可能になります。 V2 では、これらは配列で返されていました。 |
-|`verbose`|ブール値|V2 および V3|**V2 では**、true に設定した場合、予測されたすべての意図が返されていました。 予測されたすべての意図が必要な場合は、V3 の `show-all-intents` パラメーターを使用します。<br><br>**V3 では**、このパラメーターではエンティティ予測のエンティティ メタデータの詳細のみが提供されます。  |
+|パラメーター名|Type|バージョン|既定値|目的|
+|--|--|--|--|--|
+|`log`|ブール値|V2 および V3|false|ログ ファイルにクエリを格納します。| 
+|`query`|string|V3 のみ|既定値なし - GET 要求では必須|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
+|`show-all-intents`|Boolean|V3 のみ|false|すべての意図と対応するスコアを **prediction.intents** オブジェクトに返します。 意図は、親の `intents` オブジェクト内のオブジェクトとして返されます。 これにより、配列 `prediction.intents.give` 内で意図を探す必要はなく、プログラムによるアクセスが可能になります。 V2 では、これらは配列で返されていました。 |
+|`verbose`|ブール値|V2 および V3|false|**V2 では**、true に設定した場合、予測されたすべての意図が返されていました。 予測されたすべての意図が必要な場合は、V3 の `show-all-intents` パラメーターを使用します。<br><br>**V3 では**、このパラメーターではエンティティ予測のエンティティ メタデータの詳細のみが提供されます。  |
+
+
 
 <!--
 |`multiple-segments`|boolean|V3 only|Break utterance into segments and predict each segment for intents and entities.|
@@ -71,12 +95,23 @@ V3 API には異なるクエリ文字列パラメーターがあります。
 {
     "query":"your utterance here",
     "options":{
-        "timezoneOffset": "-8:00"
+        "datetimeReference": "2019-05-05T12:00:00",
+        "overridePredictions": true
     },
     "externalEntities":[],
     "dynamicLists":[]
 }
 ```
+
+|プロパティ|Type|バージョン|既定値|目的|
+|--|--|--|--|--|
+|`dynamicLists`|array|V3 のみ|不要。|[動的リスト](#dynamic-lists-passed-in-at-prediction-time)を使用すると、既に LUIS アプリに存在し、トレーニングおよび発行済みの既存のリスト エンティティを拡張することができます。|
+|`externalEntities`|array|V3 のみ|不要。|[外部エンティティ](#external-entities-passed-in-at-prediction-time)を使用すると、LUIS アプリが実行時にエンティティを特定してラベル付けを行い、それを既存のエンティティの特徴として使用できるようになります。 |
+|`options.datetimeReference`|string|V3 のみ|既定値なし|[datetimeV2 オフセット](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)を決定するために使用されます。|
+|`options.overridePredictions`|ブール値|V3 のみ|false|予測にユーザーの[外部エンティティ (既存のエンティティと同じ名前)](#override-existing-model-predictions) を使用するか、それともモデル内の既存のエンティティを使用するかを指定します。 |
+|`query`|string|V3 のみ|必須。|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
+
+
 
 ## <a name="response-changes"></a>応答の変更
 
@@ -275,6 +310,67 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
 
 予測の応答には、この外部エンティティと、予測されたその他すべてのエンティティが含まれます (要求で定義されているため)。  
 
+### <a name="override-existing-model-predictions"></a>既存のモデルの予測をオーバーライドする
+
+`overridePredictions` オプションのプロパティは、同じ名前の予測されたエンティティと重複する外部エンティティをユーザーが送信する場合に、渡されたエンティティまたはモデル内に存在するエンティティを LUIS が選択することを指定します。 
+
+たとえば、クエリ `today I'm free` を考えます。 LUIS は `today` を datetimeV2 として検出し、応答は次のとおりです。
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+ユーザーが外部エンティティを送信する場合:
+
+```JSON
+{
+    "entityName": "datetimeV2",
+    "startIndex": 0,
+    "entityLength": 5,
+    "resolution": {
+        "date": "2019-06-21"
+    }
+}
+```
+
+`overridePredictions` が `false` に設定されている場合、LUIS は外部エンティティが送信されなかったかのように応答を返します。 
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+`overridePredictions` が `true` に設定されている場合、LUIS は次を含む応答を返します。
+
+```JSON
+"datetimeV2": [
+    {
+        "date": "2019-06-21"
+    }
+]
+```
+
+
+
 #### <a name="resolution"></a>解決策
 
 "_省略可能な_" `resolution` プロパティが予測応答で返されることで、この外部エンティティに関連付けられているメタデータを渡し、それを応答で再び受け取ることができます。 
@@ -287,6 +383,7 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
 * {"text": "value"}
 * 12345 
 * ["a", "b", "c"]
+
 
 
 ## <a name="dynamic-lists-passed-in-at-prediction-time"></a>予測時に渡される動的リスト

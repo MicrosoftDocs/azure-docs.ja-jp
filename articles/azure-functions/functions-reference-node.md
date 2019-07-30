@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: a021ed2be3a94add7500a98d71a962bb580078e9
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 9a7c186f7c5fb46078eaa5729e79fdcc256ecc6d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729477"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460211"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -52,7 +52,7 @@ FunctionsProject
 
 プロジェクトのルートには、関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.js) とバインド構成ファイル (function.json) が含まれるフォルダーがあります。 `function.json` の親ディレクトリの名前は常に関数の名前です。
 
-Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="exporting-a-function"></a>関数のエクスポート
 
@@ -421,7 +421,7 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 | Functions バージョン | Node.js バージョン | 
 |---|---|
 | 1.x | 6.11.2 (ランタイムによりロック) |
-| 2.x  | "_アクティブ LTS_" と偶数の "_現在の_" Node.js のバージョン (8.11.1 と 10.14.1 を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
+| 2.x  | _アクティブ LTS_ および_メンテナンス LTS_ Node.js バージョン (8.11.1 および 10.14.1 を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
 
 ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。
 
@@ -576,7 +576,7 @@ TypeScript プロジェクトからローカルで開発およびデプロイす
 
 Visual Studio Code 用の [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) の拡張機能を使用すると、TypeScript を使用して関数を開発することができます。 Core Tools は Azure Functions の拡張機能の要件です。
 
-Visual Studio Code で TypeScript 関数アプリを作成するには、関数アプリを作成し、言語の選択を求められる際に、`TypeScript` を選択するだけです。
+Visual Studio Code で TypeScript 関数アプリを作成するには、関数アプリを作成するときに言語として `TypeScript` を選択します。
 
 **F5** を押してアプリをローカルで実行すると、ホスト (func.exe) が初期化される前にトランスパイルが実行されます。 
 
@@ -584,7 +584,7 @@ Visual Studio Code で TypeScript 関数アプリを作成するには、関数�
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Core Tools を使用して TypeScript 関数アプリ プロジェクトを作成するには、関数アプリを作成するときに typescript 言語オプションを指定する必要があります。 これは、次の方法のいずれかで実行できます。
+Core Tools を使用して TypeScript 関数アプリ プロジェクトを作成するには、関数アプリを作成するときに TypeScript 言語オプションを指定する必要があります。 これは、次の方法のいずれかで実行できます。
 
 - `func init` コマンドを実行し、言語スタックとして `node` を選択してから `typescript` を選択してください。
 
@@ -614,6 +614,55 @@ App Service プランを使用する関数アプリを作成するときは、�
 ### <a name="connection-limits"></a>接続の制限
 
 Azure Functions アプリケーションでサービス固有のクライアントを使用する場合は、関数呼び出しごとに新しいクライアントを作成しないでください。 代わりに、グローバル スコープに 1 つの静的クライアントを作成してください。 詳細については、[Azure Functions での接続の管理](manage-connections.md)に関するページを参照してください。
+
+### <a name="use-async-and-await"></a>`async` と `await` を使用する
+
+Azure Functions を JavaScript で記述する場合、`async` と `await` のキーワードを使用してコードを記述することをお勧めします。 コールバックや Promise の `.then` および `.catch` の代わりに `async` と `await` を使用してコードを記述することにより、2 つの一般的な問題を回避できます。
+ - [Node.js プロセスをクラッシュさせる](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)、キャッチされない例外のスロー。他の関数の実行に影響する可能性があります。
+ - 適切に待機しない非同期呼び出しによって発生する、context.log からのログの欠落などの予期しない動作。
+
+以下の例では、その 2 番目のパラメーターとしてエラーファースト コールバック関数を使用して非同期メソッド `fs.readFile` が呼び出されます。 このコードは上記の両方の問題の原因となります。 正しいスコープでは明示的にキャッチされない例外によって、プロセス全体がクラッシュします (問題 1)。 コールバック関数のスコープ外で `context.done()` を呼び出すことは、ファイルが読み取られる前に関数呼び出しが終了する可能性があることを意味します (問題 2)。 この例では、`context.done()` の呼び出しが早すぎるため、結果として `Data from file:` で始まるログ エントリが欠落します。
+
+```javascript
+// NOT RECOMMENDED PATTERN
+const fs = require('fs');
+
+module.exports = function (context) {
+    fs.readFile('./hello.txt', (err, data) => {
+        if (err) {
+            context.log.error('ERROR', err);
+            // BUG #1: This will result in an uncaught exception that crashes the entire process
+            throw err;
+        }
+        context.log(`Data from file: ${data}`);
+        // context.done() should be called here
+    });
+    // BUG #2: Data is not guaranteed to be read before the Azure Function's invocation ends
+    context.done();
+}
+```
+
+`async` および `await` のキーワードを使用すると、これらの両方のエラーを回避しやすくなります。 Node.js のユーティリティ関数 [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) を使用して、エラーファースト コールバック スタイルの関数を、待機可能な関数に変更してください。
+
+次の例では、関数の実行中にスローされたハンドルされない例外により、例外を発生させた個々の呼び出しのみが失敗します。 `await` キーワードは、`readFileAsync` に続くステップが、`readFile` の完了後にのみ実行されることを意味しています。 `async` と `await` を使用することで、`context.done()` コールバックを呼び出す必要もありません。
+
+```javascript
+// Recommended pattern
+const fs = require('fs');
+const util = require('util');
+const readFileAsync = util.promisify(fs.readFile);
+
+module.exports = async function (context) {
+    try {
+        const data = await readFileAsync('./hello.txt');
+    } catch (err) {
+        context.log.error('ERROR', err);
+        // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation
+        throw err;
+    }
+    context.log(`Data from file: ${data}`);
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

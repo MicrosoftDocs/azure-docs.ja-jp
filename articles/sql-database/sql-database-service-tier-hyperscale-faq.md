@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49d1e171d4d4b2210a98c59332f4842e23a2f2b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791423"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537850"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -38,7 +38,7 @@ ms.locfileid: "65791423"
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>ハイパースケール サービス レベルと General Purpose サービス レベルおよび Business Critical サービス レベルとの違い
 
-仮想コア ベースのサービス レベルは、主に、可用性、ストレージの種類、IOP に基づいて区別されます。
+仮想コアベースのサービス レベルは、主に、可用性、ストレージの種類、IOP に基づいて区別されます。
 
 - General Purpose サービス レベルは、ほとんどのビジネス ワークロードに適しています。IO 待ち時間またはフェールオーバー回数が最優先ではない場合に、コンピューティングとストレージのオプションのバランスが取れた組み合わせを提供します。
 - ハイパースケール サービス レベルは、非常に大規模なデータベース ワークロードに対して最適化されています。
@@ -53,7 +53,7 @@ ms.locfileid: "65791423"
 | **ストレージの種類** | All |Premium リモート ストレージ (インスタンスあたり) | ローカル SSD キャッシュを使用して切り離したストレージ (インスタンスあたり) | 超高速ローカル SSD ストレージ (インスタンスあたり) |
 | **ストレージ サイズ** | 単一データベース/エラスティック プール | 5 GB – 4 TB | 最大 100 TB | 5 GB – 4 TB |
 | | マネージド インスタンス  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
-| **IO スループット** | 単一データベース ** | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | 現在不明 | 5000 IOPS (最大 200,000 IOPS)|
+| **IO スループット** | 単一データベース ** | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。 | 5000 IOPS (最大 200,000 IOPS)|
 | | マネージド インスタンス | ファイル サイズに依存 | 該当なし | Managed Instance:ファイル サイズに依存|
 |**可用性**|All|1 レプリカ、読み取りスケールなし、ローカル キャッシュなし | 複数のレプリカ、最大 15 の読み取りスケール、部分的ローカル キャッシュ | 3 レプリカ、1 読み取りスケール、ゾーン冗長 HA、完全ローカル キャッシュ |
 |**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 から 35 日 (既定では 7 日)、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
@@ -79,7 +79,7 @@ Azure SQL Database の Hyperscale レベルは現在、[Azure SQL Database の H
 
 はい。 論理サーバーあたりのハイパースケール データベース数の詳細や制約について詳しくは、「[SQL Database resource limits for single and pooled databases on a logical server](sql-database-resource-limits-logical-server.md)」(論理サーバー上の単一データベースおよびプールされたデータベースの SQL Database のリソース制限) をご覧ください。
 
-### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>ハイパースケール データベースのパフォーマンス特性とは
+### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>ハイパースケール データベースのパフォーマンス特性とは
 
 SQL Database ハイパースケール アーキテクチャは、大きなデータベース サイズをサポートする一方で高いパフォーマンスとスループットを提供します。 
 
@@ -92,9 +92,9 @@ SQL Database ハイパースケールでは、ワークロードの需要に基�
   ハイパースケールでは、CPU やメモリなどリソースの観点で主要なコンピューティング サイズをスケールアップしてから、一定時間でスケールダウンできます。 ストレージは共有されるため、スケールアップとスケールダウンはデータ操作の規模ではありません。  
 - **スケールイン/スケールアウト**
 
-  ハイパースケールでは、読み取り要求を処理するために使用できる 1 つ以上の追加計算ノードをプロビジョニングする機能も提供されます。 つまり、これらの追加計算ノードを読み取り専用ノードとして使用し、主なコンピューティングから読み取りワークロードをオフロードできます。 読み取り専用だけではなく、これらのノードは、プライマリからフェールオーバーする際のホット スタンバイとしても利用できます。
+  ハイパースケールでは、読み取り要求を処理するために使用できる 1 つ以上の追加計算ノードをプロビジョニングする機能も提供されます。 つまり、これらの追加計算ノードを読み取り専用ノードとして使用し、主なコンピューティングから読み取りワークロードをオフロードできます。 読み取り専用だけでなく、これらのノードは、プライマリからのフェールオーバーの場合にホット スタンバイとしても機能します。
 
-  これらの追加計算ノードそれぞれのプロビジョニングは、オンライン操作であり、一定時間で行うことができます。 これらの追加読み取り専用計算ノードに接続するには、接続文字列の `ApplicationIntent` 引数を `read_only` に設定してください。 `read-only` がマークされたすべての接続は、追加読み取り専用計算ノードのいずれかに自動的にルーティングされます。
+  これらの追加計算ノードそれぞれのプロビジョニングは、オンライン操作であり、一定時間で行うことができます。 これらの追加読み取り専用計算ノードに接続するには、接続文字列の `ApplicationIntent` 引数を `readonly` に設定してください。 `readonly` がマークされたすべての接続は、追加読み取り専用計算ノードのいずれかに自動的にルーティングされます。
 
 ## <a name="deep-dive-questions"></a>具体的な質問
 
@@ -120,7 +120,7 @@ SQL Database ハイパースケールはすべての SQL Server ワークロー�
 
 ### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>Azure SQL Data Warehouse と SQL Database ハイパースケールのどちらを選ぶべきか
 
-現在、SQL Server をデータ ウェアハウスとして使用して対話型分析クエリを実行している場合、SQL Database ハイパースケールがオプションとして優れています。比較的小さなデータ ウェアハウス (数 TB から最大でも数十 TB) をホスティングするコストを抑えることができ、T-SQL コードを変更せずにデータ ウェアハウス ワークロードを SQL Database ハイパースケールに移行できます。
+現在、SQL Server をデータ ウェアハウスとして使用して対話型分析クエリを実行している場合、SQL Database ハイパースケールがオプションとして優れています。比較的小さなデータ ウェアハウス (数 TB から最大でも数十 TB) をより低コストでホストでき、T-SQL コードを変更せずにデータ ウェアハウス ワークロードを SQL Database ハイパースケールに移行できるためです。
 
 Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロセッサー (MPP) データ ウェアハウスを使用して、複雑なクエリで大規模にデータ分析を実行している場合は、SQL Data Warehouse が最適な選択肢となるでしょう。
   
@@ -140,7 +140,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>サポートされる読み取りスケール レプリカの数
 
-ハイパースケール データベースは、既定で 1 つの読み取りスケール レプリカを含むように作成されます (合計 2 つのレプリカ)。 [Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) を使用して、読み取り専用のレプリカの数を 0 から 4 の間でスケールすることができます。
+ハイパースケール データベースは、既定で 1 つの読み取りスケール レプリカを含むように作成されます (合計 2 つのレプリカ)。 [Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) を使用して、読み取り専用レプリカの数を 0 から 4 の間でスケールすることができます。
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>高可用性のために追加の計算ノードをプロビジョニングできるか
 
@@ -349,7 +349,7 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 
 はい。 一時 db は、コンピューティングの拡張に合わせて自動的にスケールアップされます。  
 
-### <a name="can-i-provision-multiple-primary-computes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>複数のプライマリ コンピューティング ヘッドが高レベルの同時実行を推進できる、複数のプライマリ コンピューティング (マルチマスター システムなど) をプロビジョニングできるか
+### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>複数のプライマリ コンピューティング ヘッドでより高レベルの同時実行を推進できる、複数のプライマリ コンピューティング ノード (マルチマスター システムなど) をプロビジョニングできるか
 
 いいえ。 読み取り/書き込み要求を受け入れるのはプライマリ計算ノードのみです。 セカンダリ計算ノードは、読み取り専用要求のみを受け入れます。
 
@@ -361,7 +361,7 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>これらのセカンダリ コンピューティング ノードにどのように接続するか
 
-これらの追加読み取り専用計算ノードに接続するには、接続文字列の `ApplicationIntent` 引数を `read_only` に設定してください。 `read-only` がマークされたすべての接続は、追加読み取り専用計算ノードのいずれかに自動的にルーティングされます。  
+これらの追加読み取り専用計算ノードに接続するには、接続文字列の `ApplicationIntent` 引数を `readonly` に設定してください。 `readonly` がマークされたすべての接続は、追加読み取り専用計算ノードのいずれかに自動的にルーティングされます。  
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>読み取りスケール レプリカ専用のエンドポイントを作成できるか
 
@@ -373,7 +373,7 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>セカンダリ計算ノードをプライマリ コンピューティングと別にスケールアップ/スケールダウンできるか
 
-いいえ。 セカンダリ計算ノードは高可用性のためにも使用されるため、フェールオーバーの場合は、プライマリと同じ構成にする必要があります。
+いいえ。 セカンダリ コンピューティング ノードは HA のためにも使用されるため、フェールオーバーの場合は、プライマリと同じ構成にする必要があります。
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>プライマリ計算ノードと追加のセカンダリ計算ノードで異なる一時 db サイズを設定できるか
 

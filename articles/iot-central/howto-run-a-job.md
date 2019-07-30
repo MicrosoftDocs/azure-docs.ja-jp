@@ -5,15 +5,15 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 03/18/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ec7033719316bb186408ea78f6dabac43c383491
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 298770b1b2da816ddef9154fafb20d7c6cb82df3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519357"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849039"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでのジョブの作成と実行
 
@@ -106,4 +106,4 @@ Microsoft Azure IoT Central を使用して、ジョブを使用して大規模�
 
 - [デバイス セットを使用する](howto-use-device-sets.md)
 - [デバイスの管理](howto-manage-devices.md)
-- [バージョン、デバイス テンプレート](howto-version-devicetemplate.md)
+- [バージョン、デバイス テンプレート](howto-version-device-template.md)

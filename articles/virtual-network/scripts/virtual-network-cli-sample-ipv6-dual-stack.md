@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: a1c8f151a4c6459064d92ff2efb44fa8b74f8fc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3df475ce89a3b1f5a1acfb20dc427fdb7a9b7d16
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63761450"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248897"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>仮想ネットワークのサンプル スクリプト (プレビュー) で IPv6 エンドポイントを構成します。
 
@@ -32,11 +32,13 @@ Azure 仮想ネットワーク機能に IPv6 を使用するには、次のよ�
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 機能の登録が完了するまで、最長で 30 分かかります。 次の Azure CLI コマンドを実行することで、登録状態を確認できます。
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 登録が完了した後、次のコマンドを実行します。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 464d01b7b818b461024737a83d88c78947453c37
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: a256eb787d7e3dbd800ec2e630cac591b07ca0fc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428489"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444166"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
 
@@ -204,7 +204,7 @@ namespace ConsoleApp1
             //// ClientAssertionCertificate
             //// ApplicationTokenProvider.LoginSilentWithCertificateAsync
 
-            // Use ApplicationTokenProvider.LoginSilentAsync to get a token using a service principal with symetric key
+            // Use ApplicationTokenProvider.LoginSilentAsync to get a token using a service principal with symmetric key
             ClientCredential clientCredential = new ClientCredential(config.AadClientId, config.AadSecret);
             return await ApplicationTokenProvider.LoginSilentAsync(config.AadTenantId, clientCredential, ActiveDirectoryServiceSettings.Azure);
         }

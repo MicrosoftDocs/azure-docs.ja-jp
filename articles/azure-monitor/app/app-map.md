@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73cf6fd1c20f2e4208d1f7c28a756f28a2fad839
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964028"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302571"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -119,7 +119,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**アクティブな TelemetryConfiguration に初期化子を読み込む**
+**ASP.NET アプリ: アクティブな TelemetryConfiguration に初期化子を読み込む**
 
 ApplicationInsights.config:
 
@@ -132,9 +132,6 @@ ApplicationInsights.config:
       </TelemetryInitializers>
     </ApplicationInsights>
 ```
-
-> [!NOTE]
-> `ApplicationInsights.config` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。
 
 ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコード内で初期化子をインスタンス化することです。
 
@@ -149,15 +146,20 @@ ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコ�
     }
 ```
 
+> [!NOTE]
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+
+**ASP.NET Core アプリ: アクティブな TelemetryConfiguration に初期化子を読み込む**
+
 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
  using CustomInitializer.Telemetry;
  public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
-    }
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 ### <a name="nodejs"></a>Node.js
@@ -195,7 +197,7 @@ Java の相関関係と、SpringBoot 以外のアプリケーションにクラ�
 
 ```javascript
 appInsights.queue.push(() => {
-appInsights.context.addTelemetryInitializer((envelope) => {
+appInsights.addTelemetryInitializer((envelope) => {
   envelope.tags["ai.cloud.role"] = "your role name";
   envelope.tags["ai.cloud.roleInstance"] = "your role instance";
 });

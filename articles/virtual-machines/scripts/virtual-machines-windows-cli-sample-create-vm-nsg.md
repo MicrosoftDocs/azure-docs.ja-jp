@@ -4,7 +4,7 @@ description: Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG �
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: ''
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 0afdcef546d53c2caf13828576338c47e03c4fc9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cc2b7182b0e9191b830ffc32bcc479cc06c1718a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894827"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708250"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>仮想マシン間のネットワーク トラフィックのセキュリティ保護
 

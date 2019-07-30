@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99439c2b6bd4fdd271dda7a49850c5b6f44330b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d30d044a26e6a092eba267f223be9b10c3a238b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075859"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 Virtual Machines の自動バックアップ (Resource Manager)
 
@@ -77,21 +77,19 @@ Azure Portal を使用して、プロビジョニング中または既存の SQL
 
 Resource Manager デプロイ モデルで新しい SQL Server 2014 Virtual Machine を作成するときに、Azure Portal を使用して自動バックアップを構成します。
 
-**[SQL Server の設定]** ウィンドウで、**[自動バックアップ]** を選択します。 次の Azure Portal のスクリーンショットは、**SQL Automated Backup** の設定を示しています。
+**[SQL Server 設定]** タブで下にスクロールして **[自動バックアップ]** を見つけ、 **[有効にする]** を選択します。 保存期間とストレージ アカウントを指定できるだけでなく、暗号化を有効にしたり、システム データベースをバックアップしたり、バックアップ スケジュールを構成したりすることもできます。  次の Azure Portal のスクリーンショットは、**SQL Automated Backup** の設定を示しています。
 
 ![Azure ポータルの SQL 自動バックアップ構成](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
 ## <a name="configure-existing-vms"></a>既存の VM を構成する
 
-既存の SQL Server 仮想マシンの場合は、ご使用の SQL Server 仮想マシンを選択します。 次に、VM の **[設定]** の **[SQL Server の構成]** セクションを選択します。
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+既存の SQL Server 仮想マシンの場合、[[SQL 仮想マシン リソース]](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) に移動し、 **[バックアップ]** を選択します。 
 
 ![既存の VM の SQL 自動バックアップ](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
-**[SQL Server の構成]** ウィンドウの [自動バックアップ] にある **[編集]** ボタンをクリックします。
-
-![既存の VM の SQL 自動バックアップを構成する](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-configuration.png)
-
-完了したら、**[SQL Server の構成]** 設定の一番下にある **[OK]** ボタンをクリックして変更を保存します。
+完了したら、 **[バックアップ]** ページの下にある **[適用]** ボタンを選択して変更内容を保存します。
 
 自動バックアップを初めて有効にすると、バックグラウンドで SQL Server IaaS エージェントが構成されます。 この間、自動バックアップが構成されていることは、Azure ポータルに示されない可能性があります。 エージェントがインストールされ、構成されるまで数分待ちます。 その後、Azure ポータルに新しい設定が反映されます。
 
@@ -119,7 +117,7 @@ $resourcegroupname = "resourcegroupname"
 
 SQL Server IaaS Agent 拡張機能がインストールされている場合は、"SqlIaaSAgent" または "SQLIaaSExtension" として一覧に表示されます。 また拡張機能の **ProvisioningState** が "成功" と表示されます。
 
-インストールされていないかプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン (**$region**) を指定する必要があります。
+インストールされていないかプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン ( **$region**) を指定する必要があります。
 
 ```powershell
 $region = "EASTUS2"

@@ -4,17 +4,17 @@ description: クラウドにバーストすることで Azure Batch およびそ
 services: batch
 ms.service: batch
 author: davefellows
-manager: jeconnoc
+manager: gwallace
 ms.author: lahugh
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: ae4680c948ce8e1efd32207dc37821d61182f2d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa2d59b2a6d2dea72276ab38a5cb1ca7bfb579a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774161"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323121"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure レンダリング向け参照アーキテクチャ
 

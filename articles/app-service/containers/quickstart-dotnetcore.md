@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: da4d246e098751f650eb6315de3794ad957884d6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 21400355b2457d1a37bf2c139dfdfd29a104a074
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543895"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853796"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>App Service on Linux で ASP.NET Core アプリを作成する
 
@@ -95,10 +95,10 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-新しく作成されたアプリに移動します。 _&lt;app name>_ は、アプリの名前に置き換えます。
+新しく作成されたアプリに移動します。 _&lt;app_name>_ は、自分のアプリの名前に置き換えます。
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 新しいアプリは次のようになります。

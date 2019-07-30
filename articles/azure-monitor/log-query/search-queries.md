@@ -13,20 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: b5860243b6b605288aaf8d6dffe2260bc031a592
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b118740f3a57e168c5dfb071c199bcf424bd5113
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65560838"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295558"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor ログでの検索クエリ
-
-> [!NOTE]
-> このチュートリアルを完了する前に、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 Azure Monitor ログ クエリは、テーブル名または search コマンドで始めることができます。 このチュートリアルでは、検索ベースのクエリについて説明します。 それぞれの方法に利点があります。
 
 テーブル ベースのクエリは、クエリの範囲を設定することから始まるので、検索クエリよりも効率的になる傾向があります。 検索クエリはあまり構造化されていないため、複数の列やテーブル全体で特定の値を検索するときに適しています。 **search** を使用すると、指定されたテーブルまたはすべてのテーブルのすべての列をスキャンし、指定した値を見つけることができます。 処理されるデータの量は膨大になる可能性があります。そのため、このようなクエリの処理には時間がかかり、非常に多数の結果セットが返される可能性があります。

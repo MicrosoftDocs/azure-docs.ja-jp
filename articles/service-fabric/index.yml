@@ -5,16 +5,13 @@ metadata:
   title: Azure Service Fabric のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   meta.description: 'Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.'
   services: service-fabric
-  author: null
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   layout: LandingPage
-  ms.assetid: null
   ms.service: service-fabric
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/03/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Service Fabric の使用方法を確認してください。
 sections:

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e87bfad11eee5b86d35e6b4f2846b094c467e0ef
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734183"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479640"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>Status Monitor v2 API:Enable-ApplicationInsightsMonitoring (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>Status Monitor v2 API:Enable-ApplicationInsightsMonitoring (v0.3.1-alpha)
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -68,9 +68,9 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
     @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
+      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+      @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 
 ```
 
@@ -88,7 +88,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 > アプリは、規則が指定された順番で規則と照合されます。 そのため、最も具体的な規則を最初に指定し、最も一般的な規則を最後に指定する必要があります。
 
 #### <a name="schema"></a>スキーマ
-`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
+`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
 - **MachineFilter** は、コンピューターまたは VM 名に必要な C# の正規表現です。
     - ".*" はすべてに一致します
@@ -107,6 +107,12 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
 **省略可能。** ヘッドレス インストールでライセンスおよびプライバシーに関する声明に同意する場合は、このスイッチを使用します。
+
+### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
+Web サーバーのクラスターがある場合、[共有構成](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)を使用している可能性があります。
+HttpModule をこの共有構成に挿入することはできません。
+このスクリプトは失敗し、追加のインストール手順が必要であることを示すメッセージが表示されます。
+このチェックを無視し、前提条件のインストールを続行するには、このスイッチを使用します。 詳細については、[IIS 共有構成との既知の競合](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)に関するページをご覧ください。
 
 ### <a name="-verbose"></a>-Verbose
 **共通パラメーター。** 詳細なログを表示するにはこのスイッチを使用します。

@@ -3,15 +3,15 @@ title: Azure PowerShell スクリプト - Azure Cosmos DB MongoDB API の RU/秒
 description: Azure PowerShell スクリプト - Azure Cosmos DB MongoDB API の RU/秒を更新する
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4fc8a8c8cc8e5d516ace4a1523a0d1845b6f7edf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 517857116bf077814b936e5d7ecb54d841959657
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245502"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603882"
 ---
 # <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB - MongoDB API のデータベースまたはコレクションの RU/秒を更新する
 

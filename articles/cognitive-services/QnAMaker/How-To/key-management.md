@@ -3,20 +3,20 @@ title: リソースとキーの管理 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスは、サブスクリプション キーとエンドポイント キーの 2 種類のキーを扱います。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 458d587c7ac73f7c8dacdceae3c9f923263533b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9be1db9be1d4dd57994e101c07ed430425a5912
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792542"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447437"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>QnA Maker でキーを管理する方法
 

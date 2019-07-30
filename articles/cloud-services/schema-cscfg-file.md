@@ -3,22 +3,17 @@ title: Azure Cloud Services 定義スキーマ (.cscfg ファイル) | Microsoft
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
-ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
 ms.topic: reference
-ms.assetid: 3ddc7fea-3339-4fc0-bdf9-853c32b25f69
 caps.latest.revision: 35
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: 424381e2c243420cc2a68dc776d249cb17574f98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: georgewallace
+ms.author: gwallace
+ms.openlocfilehash: 0009f843f8de31b92817dc86ccd718fa5eeeb1ba
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130315"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358931"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services 構成のスキーマ (.cscfg ファイル)
 サービス構成ファイルは、サービスのロールごとに配置するロール インスタンスの数、すべての構成設定の値、ロールに関連付けられているすべての証明書のサムプリントを指定します。 サービスが仮想ネットワークの一部である場合は、仮想ネットワーク構成ファイルだけでなく、サービス構成ファイルでネットワークの構成情報を指定してください。 サービス構成ファイルの既定の拡張子は .cscfg です。

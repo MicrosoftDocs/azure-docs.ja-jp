@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 40c8cb41ad3bcd46e9973a5f96134ff1bfd02fd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 40ae634897361219c39e60d2161d3576cc44a400
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077512"
 ---
-VNet を簡単に作成するために、この記事の [使ってみる] をクリックして PowerShell コンソールを開くことができます。 値を調整し、コマンドをコピーしてコンソール ウィンドウに貼り付けます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](/powershell/azure/new-azureps-module-az)」を参照してください。 Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。
+VNet を簡単に作成するために、この記事の [使ってみる] をクリックして Azure Cloud Shell で PowerShell コンソールを開くことができます。 値を調整し、コマンドをコピーしてコンソール ウィンドウに貼り付けます。 
 
 作成する VNet のアドレス空間が接続する他の VNet のアドレス範囲やオンプレミス ネットワークのアドレス空間と重複しないことを確認してください。
 

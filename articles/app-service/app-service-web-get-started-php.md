@@ -62,7 +62,7 @@ php -S localhost:8080
 
 Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリに移動します。
 
-サンプル アプリケーションから "**Hello World!** "  というメッセージがページに表示されます。
+サンプル アプリケーションから "**Hello World!** " というメッセージがページに表示されます。
 
 ![ローカルで実行されるサンプル アプリ](media/app-service-web-get-started-php/localhost-hello-world-in-browser.png)
 

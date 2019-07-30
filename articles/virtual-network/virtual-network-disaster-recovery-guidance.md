@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
-ms.author: narayan;aglick
-ms.openlocfilehash: 68a9523dcc9c4dd84399c68fc7e31a692c011487
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: narayan
+ms.reviewer: aglick
+ms.openlocfilehash: 3f91d24bff0bec540ff0e7964f21c2f47c03638c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523267"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876169"
 ---
 # <a name="virtual-network--business-continuity"></a>Virtual Network – ビジネス継続性
 

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183222"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080448"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>コネクテッド ファクトリ IoT ソリューション アクセラレータとは
 
@@ -65,7 +65,4 @@ ms.locfileid: "58183222"
 
 ## <a name="next-steps"></a>次の手順
 
-コネクテッド ファクトリ事前構成済みソリューションの詳細については、次の記事をご覧ください。
-
-* [コネクテッド ファクトリ事前構成済みソリューションのチュートリアル](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [コネクテッド ファクトリのゲートウェイをデプロイする]( iot-accelerators-connected-factory-gateway-deployment.md)
+コネクテッド ファクトリ ソリューション アクセラレータについて詳しくは、クイック スタート「[工業用 IoT デバイスを管理するクラウドベースのソリューションを試す](quickstart-connected-factory-deploy.md)」をご覧ください。

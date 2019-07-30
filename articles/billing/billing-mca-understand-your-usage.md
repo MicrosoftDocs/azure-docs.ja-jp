@@ -1,42 +1,38 @@
 ---
-title: Microsoft 顧客契約の Azure の利用状況と料金を含む CSV に関する用語について理解します | Microsoft Docs
+title: Microsoft 顧客契約のAzure の利用状況と料金ファイルに関する用語
 description: 課金プロファイルの Azure の利用状況と料金を含む CSV のセクションを読んで理解する方法について説明します。
-services: ''
-documentationcenter: ''
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: jureid
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d11e31366ea5aa15cf7a790eaee800fa2ea6dabe
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371310"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490620"
 ---
-# <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の Azure の利用状況と料金を含む CSV に関する用語について理解します。
+# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約のAzure の利用状況と料金ファイルに関する用語
 
-この記事では、Microsoft 顧客契約の請求先アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
+この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
 
 Azure の利用状況および料金を含む CSV ファイルには、現在の請求期間を対象に毎日測定された利用料金が含まれています。
 
-Azure の利用状況と料金を含むファイルを入手する方法については、「[View and download Azure usage and charges for your Microsoft Customer Agreement (Microsoft 顧客契約の Azure の利用状況と料金の表示とダウンロード)](billing-download-azure-daily-usage.md)」を参照してください。
-このファイルは、スプレッドシート アプリケーションで開くことができるコンマ区切り値 (.csv) ファイル形式で入手できます。
+Azure の利用状況と料金を含むファイルを入手する方法については、「[View and download Azure usage and charges for your Microsoft Customer Agreement (Microsoft 顧客契約の Azure の利用状況と料金の表示とダウンロード)](billing-download-azure-daily-usage.md)」を参照してください。 このファイルは、スプレッドシート アプリケーションで開くことができるコンマ区切り値 (.csv) ファイル形式で入手できます。
 
 利用料金は、サブスクリプションの**月額**料金の合計です。 利用料金では、クレジットや割引は考慮されません。
 
-## <a name="changes-in-the-enterprise-agreement-azure-usage-and-charges-csv"></a>Enterprise Agreement における Azure の利用状況と料金を含む CSV の変更
+## <a name="changes-from-azure-ea-usage-and-charges"></a>Azure EA の利用状況と料金の変更
 
-EA のお客様であれば、課金プロファイル Azure の利用状況を含む CSV ファイルの用語は、EA Azure の利用状況を含む CSV ファイルの用語と異なることに気付かれるでしょう。 これは、課金プロファイル使用条件への EA の使用条件のマッピングです。
+EA のお客様であれば、Azure 課金プロファイルの利用状況を含む CSV ファイルの用語は、Azure EA の利用状況を含む CSV ファイルの用語と異なることに気付かれるでしょう。 これは、課金プロファイル使用条件への EA の使用条件のマッピングです。
 
-| EA Azure の利用状況を含む CSV | Microsoft 顧客契約の Azure の利用状況と料金を含む CSV |
+| Azure EA の利用状況を含む CSV | Microsoft 顧客契約の Azure の利用状況と料金を含む CSV |
 | --- | --- |
 | Date | date |
 | 月| date |
@@ -49,7 +45,7 @@ EA のお客様であれば、課金プロファイル Azure の利用状況を�
 | MeterRegion | meterRegion |
 | MeterName | meterName |
 | ConsumedQuantity | 数量 |
-| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ResourceRate | effectivePrice |
 | ExtendedCost | cost |
 | ResourceLocation | resourceLocation |
 | ConsumedService | consumedService |
@@ -59,17 +55,15 @@ EA のお客様であれば、課金プロファイル Azure の利用状況を�
 | AdditionalInfo: | additionalInfo |
 | Tags | tags |
 | StoreServiceIdentifier | 該当なし |
-| DepartmentName | invoiceSection | <!-- this was highlighted -->
+| DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
 | ResourceGroup | resourceGroup |
-| ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
+| ChargesBilledSeparately | isAzureCreditEligible |
 
-<!-- TO DO: Marketplace CSV? -->
+## <a name="detailed-terms-and-descriptions"></a>詳細な用語と説明
 
-## <a name="detailed-terms-and-descriptions-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と料金のファイルに含まれる詳細な用語と説明
-
-次のセクションでは、Azure の利用状況と料金のファイルにある重要な用語について説明します。
+Azure の利用状況と料金ファイルには、次の用語が出現します。
 
 期間 | 説明
 --- | ---
@@ -120,9 +114,9 @@ serviceInfo2 | これは、サービス固有の省略可能なメタデータ�
 additionalInfo | その他のサービス固有のメタデータ。
 tags | このリソースには、ユーザーが割り当てたタグが含まれます
 
-### <a name="how-do-i-make-sure-that-the-charges-in-my-azure-usage-and-charges-file-are-correct"></a>Azure の利用状況と料金を含むファイルの料金が正しいことを確認する方法
+### <a name="make-sure-that-charges-are-correct"></a>料金が正しいことを確認する
 
-詳細な利用状況を含むファイルに詳細を確認したい料金がある場合は、「[課金プロファイルの請求書の料金を理解する](billing-mca-understand-your-bill.md)」をご覧ください。
+詳細な利用状況ファイル内の料金が正しいことを確認する場合、それを検証できます。 「[課金プロファイルの請求書の料金を理解する](billing-mca-understand-your-bill.md)」をご覧ください。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 48c5804df53c084715cac872aa431cf8694c6d35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e4ba987393628af07f8a8a507f635047eb18cc5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65740299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102555"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>チュートリアル:Azure Active Directory と Flatter Files の統合
 
@@ -52,11 +52,11 @@ Azure AD への Flatter Files の統合を構成するには、ギャラリー�
 
 **ギャラリーから Flatter Files を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -64,7 +64,7 @@ Azure AD への Flatter Files の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Flatter Files**」と入力し、結果ウィンドウで **[Flatter Files]** を選択してから、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Flatter Files**」と入力し、結果ウィンドウで **[Flatter Files]** を選択してから、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Flatter Files](common/search-new-app.png)
 
@@ -88,23 +88,23 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 
 Flatter Files で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Flatter Files** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Flatter Files** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. アプリは Azure と事前に統合済みであるため、**[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
+4. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
     ![[Flatter Files のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -126,7 +126,7 @@ Flatter Files で Azure AD シングル サインオンを構成するには、�
    
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
-3. **[設定]** をクリックし、**[会社]** タブで次の手順に従います。 
+3. **[設定]** をクリックし、 **[会社]** タブで次の手順に従います。 
    
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
@@ -153,7 +153,7 @@ Flatter Files で Azure AD シングル サインオンを構成するには、�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -178,7 +178,7 @@ Flatter Files で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に Flatter Files へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Flatter Files]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Flatter Files]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -190,15 +190,15 @@ Flatter Files で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-flatter-files-test-user"></a>Flatter Files テスト ユーザーの作成
 
@@ -208,7 +208,7 @@ Flatter Files で Azure AD シングル サインオンを構成するには、�
 
 1. **Flatter Files** 企業サイトに管理者としてサインオンします。
 
-2. 左側のナビゲーション ウィンドウで、**[Settings]\(設定\)**、**[Users]\(ユーザー\)** タブの順にクリックします。
+2. 左側のナビゲーション ウィンドウで、 **[Settings]\(設定\)** 、 **[Users]\(ユーザー\)** タブの順にクリックします。
    
     ![Flatter Files ユーザーの作成](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 

@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する
 description: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する方法を説明します｡
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: iainfou
-ms.openlocfilehash: d2e4314948eeda0c82c004414f894dafc4d4cff6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9e32715766734bcbb150d70aeed2dc5b06a4bcbb
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61031649"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614464"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する
 
@@ -22,7 +22,7 @@ ms.locfileid: "61031649"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、AKS のクイックスタートの、[Azure CLI を使用][aks-quickstart-cli]に関するページと、Azure portal に関するページor [using the Azure portal][aks-quickstart-portal]を参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -64,7 +64,7 @@ az network public-ip create \
 }
 ```
 
-このパブリック IP アドレスは､後で [az network public ip list][ az-network-public-ip-list]コマンド を使用して取得することができます｡ 次の例に示すように、ノードのリソース グループ名と作成したパブリック IP を指定して、*ipAddress* に対するクエリを指定します。
+このパブリック IP アドレスは､後で [az network public ip list][az-network-public-ip-list] コマンドを使用して取得することができます。 次の例に示すように、ノードのリソース グループ名と作成したパブリック IP を指定して、*ipAddress* に対するクエリを指定します。
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --query ipAddress --output tsv
@@ -127,7 +127,7 @@ spec:
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-Kubernetes のサービス マニフェストの *loadBalancerIP* プロパティに定義されている静的 IP アドレスが存在しないか､ノード リソース グループ内に作成されておらず、追加の委任も構成されていない場合、ロード バランサーのサービスの作成は失敗します。 トラブルシューティングを行うには、[kubectl describe][kubectl-describe] コマンドを使用してサービス作成イベントを確認します｡ 次の例に示すように、YAML マニフェストで指定されているサービス名を指定します。
+Kubernetes のサービス マニフェストの *loadBalancerIP* プロパティに定義されている静的 IP アドレスが存在しないか､ノード リソース グループ内に作成されておらず、追加の委任も構成されていない場合、ロード バランサーのサービスの作成は失敗します。 トラブルシューティングを行うには、[kubectl describe][kubectl-describe] コマンドを使用してサービス作成イベントを確認します。 次の例に示すように、YAML マニフェストで指定されているサービス名を指定します。
 
 ```console
 kubectl describe service azure-load-balancer
@@ -159,7 +159,7 @@ Events:
 
 ## <a name="next-steps"></a>次の手順
 
-アプリケーションへのネットワーク トラフィックに対する制御を強化することを目的として、[イングレス コント ローラーを作成][aks-ingress-basic]することもできます｡ また[静的パブリック IP アドレスを使用してイングレス コント ローラーを作成する][aks-static-ingress]こともできます｡
+アプリケーションへのネットワーク トラフィックに対する制御を強化することを目的として、[イングレス コント ローラーを作成][aks-ingress-basic]することもできます. You can also [create an ingress controller with a static public IP address][aks-static-ingress]。
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

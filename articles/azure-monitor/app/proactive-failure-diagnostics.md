@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46944603fdf45a2a7a14641086959bf61b3f773e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61299111"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465877"
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、Web アプリで要求失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーに通知します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 通知には、問題のトリアージと診断に役立つよう、失敗の特性および関連するテレメトリの分析結果が記載されています。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
 
-この機能は、クラウドまたは独自のサーバーでホストされている Java と ASP.NET の Web アプリで利用できます。 また、[TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) または [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) を呼び出す worker ロールがある場合など、要求または依存関係のテレメトリを生成するあらゆるアプリで利用できます。
+この機能は、クラウドまたは独自サーバーでホストされ、要求または依存関係のテレメトリを生成するあらゆる Web アプリで利用できます。たとえば、[TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) または [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) を呼び出す worker ロールがある場合などです。
 
 [プロジェクト用に Application Insights](../../azure-monitor/app/app-insights-overview.md)を設定し、アプリケーションで特定の最少限のテレメトリを生成する場合、失敗の異常のスマート検出は、オンに切り替わり、アプリケーションの通常の動作を学習するため、アラートを送信できるようになるまでに 24 時間かかります。
 
@@ -43,6 +43,26 @@ ms.locfileid: "61299111"
 * エラーに関連付けられている特徴的パターン。 この例では、特定の応答コード、要求名 (操作)、およびアプリのバージョンがあります。 これにより、コードのどこから探すべきかすぐにわかります。 他には特定のブラウザーやクライアント オペレーティング システムなどが想定されます。
 * 特徴付けられた失敗に関連するように見える例外、ログ トレース、依存関係エラー (データベースやその他の外部コンポーネント)。
 * Application Insights の製品利用統計情報の関連検索に直接リンクします。
+
+## <a name="failure-anomalies-v2"></a>失敗の異常 v2
+失敗の異常アラート ルールの新しいバージョンが利用できるようになりました。 この新しいバージョンは、新しい Azure アラート プラットフォームで実行され、既存のバージョンに対するさまざまな改善を導入します。
+
+### <a name="whats-new-in-this-version"></a>このバージョンの新機能
+- 問題をより高速に検出
+- 豊富なアクション セット - アラート ルールは、電子メールと Webhook のアクションが含まれる "Application Insights スマート検出" という名前の関連する[アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)とともに作成され、アラート発生時に追加のアクションをトリガーするように拡張できます。
+- より焦点を絞った通知 - このアラート ルールから送信される電子メール通知が、サブスクリプションの監視閲覧者ロールおよび監視共同作業者ロールに関連付けられているユーザーに既定で送信されるようになりました。 この詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)を参照してください。
+- ARM テンプレートによる簡単な構成 - [こちら](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)の例を参照してください。
+- 共通アラート スキーマのサポート - このアラート ルールから送信される通知は、[共通アラート スキーマ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)に準拠します。
+- 統合された電子メール テンプレート - このアラート ルールから送信される電子メール通知は、他のアラートの種類と外観と動作が整合しています。 この変更により、詳細な診断情報を含む失敗の異常アラートを取得するオプションは利用できなくなりました。
+
+### <a name="how-do-i-get-the-new-version"></a>新しいバージョンの入手方法
+- 新しく作成された Application Insights リソースが、新しいバージョンの失敗の異常アラート ルールでプロビジョニングされるようになりました。
+- 失敗の異常アラート ルールの従来のバージョンを含む既存の Application Insights リソースは、[従来のアラートの提供終了プロセス](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)の一環として、ホストしているサブスクリプションが新しいアラート プラットフォームに移行されると新しいバージョンを取得します。
+
+> [!NOTE]
+> 新しいバージョの失敗の異常アラート ルールは引き続き無料です。 さらに、関連する "Application Insights スマート検出" アクション グループによってトリガーされる電子メール アクションと Webhook アクションも無料です。
+> 
+> 
 
 ## <a name="benefits-of-smart-detection"></a>スマート検出の利点
 通常の [メトリック アラート](../../azure-monitor/app/alerts.md) から、問題がある可能性がわかります。 ただし、スマート検出が自動的に診断作業を開始し、ユーザーの代わりにさまざまな分析を実行します。 結果はわかりやすくまとめられるので、問題の原因をすぐに把握できます。

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 086f55094474d4c06e52001d77630932cd04213c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: af20d555a83e8d229ed5d83d3b1d3f242de1e4a8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404095"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275804"
 ---
 # <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>クイック スタート:C# .NET SDK を使用した予測エンドポイントに対するクエリの実行
 
@@ -58,14 +58,14 @@ az cognitiveservices account create \
 Visual Studio Community 2017 で .NET Core コンソール プロジェクトを作成します。
 
 1. Visual Studio Community 2017 を開きます。
-1. 新しいプロジェクトを作成し、**[Visual C#]** セクションで **[コンソール アプリ (.NET Core)]** を選択します。
-1. プロジェクト名「`QueryPrediction`」を入力し、他の既定値はそのままにして、**[OK]** を選択します。
+1. 新しいプロジェクトを作成し、 **[Visual C#]** セクションで **[コンソール アプリ (.NET Core)]** を選択します。
+1. プロジェクト名「`QueryPrediction`」を入力し、他の既定値はそのままにして、 **[OK]** を選択します。
     これで、**Program.cs** という名前のプライマリ コード ファイルを含む簡単なプロジェクトが作成されます。
 
 ## <a name="add-sdk-with-nuget"></a>NuGet を使用して SDK を追加する
 
 1. **ソリューション エクスプローラー**のツリー ビューで、**QueryPrediction** という名前のプロジェクトを選択して右クリックします。 メニューから **[NuGet パッケージの管理]** を選択します。
-1. **[参照]** を選択し、「`Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`」と入力します。 パッケージ情報が表示されたら、**[インストール]** を選択してそのパッケージをプロジェクトにインストールします。 
+1. **[参照]** を選択し、「`Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`」と入力します。 パッケージ情報が表示されたら、 **[インストール]** を選択してそのパッケージをプロジェクトにインストールします。 
 1. **Program.cs** の先頭に次の _using_ ステートメントを追加します。 `System` の既存の _using_ ステートメントは削除しないでください。 
 
 ```csharp

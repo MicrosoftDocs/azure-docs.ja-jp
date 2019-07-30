@@ -8,7 +8,7 @@ metadata:
   author: cherylmc
   ms.service: Bastion
   ms.topic: landing-page
-  ms.date: 06/13/2019
+  ms.date: 07/02/2019
   ms.author: cherylmc
 abstract:
   description: Azure Bastion を使用して仮想マシンに接続する方法について説明します。 Azure portal 内で直接 SSL 経由でのご自分の仮想マシンへのセキュリティで保護されたシームレスな RDP または SSH 接続を構成します。 Azure Bastion 経由で接続する場合、ご自分の仮想マシンにパブリック IP アドレスは必要ありません。
@@ -30,14 +30,6 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/bastion/bastion-create-host-portal">Azure Bastion ホストを作成および変更する</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Windows 仮想マシンに接続する</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Linux 仮想マシンに接続する</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Windows 仮想マシンに接続する</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Linux 仮想マシンに接続する</a>
           - html: <a href="/azure/bastion/bastion-faq">Azure Bastion に関する FAQ を読む</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API リファレンス</a></p>'

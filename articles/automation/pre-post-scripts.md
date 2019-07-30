@@ -4,17 +4,17 @@ description: この記事では、更新プログラムの展開のための事�
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 94ec7c54e8e49685ad0289102f092516bcb0acfc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65913860"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478250"
 ---
 # <a name="manage-pre-and-post-scripts"></a>事前および事後スクリプトを管理する
 
@@ -239,9 +239,10 @@ if (<My custom error logic>)
     throw "There was an error, abort deployment"
 }
 ```
+
 ## <a name="known-issues"></a>既知の問題
 
-* 事前および事後スクリプトを使用している場合は、パラメーターにオブジェクトまたは配列を渡すことができません。 その Runbook が失敗します。
+* 事前および事後スクリプトを使用している場合は、パラメーターにブール値、オブジェクト、または配列を渡すことができません。 その Runbook が失敗します。 サポートされている型の完全な一覧については、[パラメーター](#passing-parameters)に関するセクションをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

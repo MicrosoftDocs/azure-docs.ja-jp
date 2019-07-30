@@ -4,15 +4,15 @@ description: Windows Virtual Desktop プレビュー ホスト プールの FSLo
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: f6516e37107a16d80c4d9eb9514782bdbcc44184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925208"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619103"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>ホスト プールのユーザー プロファイル共有を設定する
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f18b4793d205cfa019f501549dedfcd62f501e7
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459246"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348597"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs から通知を安全にプッシュする
 
@@ -57,12 +57,12 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 1. **NotifyUserWindowsPhone** プロジェクトで、次のコードを App.xaml.cs に追加して、プッシュ バックグラウンド タスクを登録します。 `OnLaunched()` メソッドの最後に次のコード行を追加します。
 
-    ```c#
+    ```csharp
     RegisterBackgroundTask();
     ```
 2. 引き続き App.xaml.cs で、 `OnLaunched()` の直後に次のコードを追加します。
 
-    ```c#
+    ```csharp
     private async void RegisterBackgroundTask()
     {
         if (!Windows.ApplicationModel.Background.BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name == "PushBackgroundTask"))
@@ -79,7 +79,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
     ```
 3. App.xaml.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
-    ```c#
+    ```csharp
     using Windows.Networking.PushNotifications;
     using Windows.ApplicationModel.Background;
     ```
@@ -147,7 +147,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 9. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。 **Json.NET** パッケージをインストールし、NuGet パッケージ マネージャーのウィンドウを閉じます。
 10. `PushBackgroundTask.cs` ファイルの先頭に、次の `using` ステートメントを追加します。
 
-    ```c#
+    ```csharp
     using Windows.ApplicationModel.Background;
     using Windows.Networking.PushNotifications;
     using System.Net.Http;

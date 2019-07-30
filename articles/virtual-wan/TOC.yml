@@ -10,8 +10,6 @@
       href: virtual-wan-site-to-site-portal.md
     - name: ExpressRoute 接続を作成する
       href: virtual-wan-expressroute-portal.md
-    - name: ポイント対サイト接続を作成する
-      href: virtual-wan-point-to-site-portal.md
 - name: 概念
   items:
     - name: 場所とパートナーについて

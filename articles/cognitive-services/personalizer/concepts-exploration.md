@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: edjez
-ms.openlocfilehash: 0e11dd962f4cc1ff9b1938b309a1b405dbf20232
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ebb59b6bb7c36f4558b2bd63d2d55fa95823c4c3
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606994"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722468"
 ---
 # <a name="exploration-and-exploitation"></a>探索とエクスプロイト
 

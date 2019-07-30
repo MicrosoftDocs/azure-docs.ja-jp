@@ -7,15 +7,15 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: resources
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e979db29f4a223b61580c48101c0d242fdbebbf
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317308"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616328"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Project Acoustics についてよく寄せられる質問
 
@@ -27,7 +27,7 @@ Project Acoustics のプラグイン スイートは、実行時よりも前に�
 
 [Project Acoustics Unity プラグイン](https://www.microsoft.com/download/details.aspx?id=57346)または [Project Acoustics Unreal プラグイン](https://www.microsoft.com/download/details.aspx?id=58090)をダウンロードできます。
 
-## <a name="does-project-acoustics-support-x-platform"></a>Project Acoustics は <x> プラットフォームをサポートしますか?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Project Acoustics は &lt;x&gt; プラットフォームをサポートしますか?
 
 Project Acoustics プラットフォームのサポートは、お客様のニーズに基づいて進化します。 追加のプラットフォームのサポートについては、[Project Acoustics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)にお問い合わせください。
 

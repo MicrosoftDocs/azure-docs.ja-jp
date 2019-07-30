@@ -4,7 +4,7 @@ description: Azure で Windows Server フェールオーバー クラスタリ�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbc21922be66c793e76882cbd145f19681684252
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27e75ac256cf71441e00a004bb2331277aa07b43
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143270"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710034"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -209,7 +209,7 @@ ms.locfileid: "66143270"
 > ![Windows][Logo_Windows] Windows
 >
 
-[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能が 2016 年 9 月にリリースされました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。 
+2016 年 9 月に、Microsoft では [Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能をリリースしました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。 
 
 SAP がデプロイされている場合は、内部ロード バランサーを使用して SAP Central Services (ASCS/SCS) インスタンスの Windows クラスター構成を作成できます。
 
@@ -223,7 +223,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]。
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -245,7 +245,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 
 ![Azure の複数の SAP ASCS/SCS クラスター化されたインスタンス][sap-ha-guide-figure-6002]
 
-ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -389,7 +389,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 1. 各クラスター ノードに追加のディスク、または同じサイズのディスク (ストライピングが必要なもの) を追加してフォーマットします。
 2. SIOS DataKeeper でストレージのレプリケーションを構成します。
 
-この手順では、WSFC クラスター マシン上に SIOS Datakeeper が既にインストールされていることを前提とします。 インストールしている場合は、それらのマシン間でのレプリケーションを構成する必要があります。 このプロセスについては、「[SAP ASCS/SCS クラスター共有ディスクのための SIOS DataKeeper Cluster Edition のインストール][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios]」で詳しく説明しています。  
+この手順では、WSFC クラスター マシン上に SIOS Datakeeper が既にインストールされていることを前提とします。 インストールしている場合は、それらのマシン間でのレプリケーションを構成する必要があります。 プロセスについては、「[SAP ASCS/SCS クラスター共有ディスクのための SIOS DataKeeper Cluster Edition のインストール][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios]」で詳しく説明しています。  
 
 ![新しい SAP ASCS/SCS 共有ディスクの DataKeeper 同期ミラーリング][sap-ha-guide-figure-6006]
 
@@ -402,16 +402,16 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 ## <a name="install-an-sap-netweaver-multi-sid-system"></a>SAP NetWeaver マルチ SID システムのインストール
 
-第 2 の SAP SID2 システムをインストールする完全なプロセスの説明については、[Windows フェールオーバー クラスターおよび SAP ASCS/SCS インスタンスの共有ディスクへの SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-shared-disk]に関するページをご覧ください。
+第 2 の SAP SID2 システムをインストールする完全なプロセスの説明については、「[SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクに SAP NetWeaver HA をインストールする][sap-high-availability-installation-wsfc-shared-disk]」をご覧ください。
 
 おおまかな手順は次のとおりです。
 
-1. [高可用性 ASCS/SCS インスタンスで SAP をインストールします][sap-high-availability-installation-wsfc-shared-disk-install-ascs]。  
+1. [高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします][sap-high-availability-installation-wsfc-shared-disk-install-ascs]。  
  このステップでは、既存の WSFC クラスター ノード 1 に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。
 
-2. [ASCS/SCS インスタンスの SAP プロファイルの変更][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile]
+2. [ASCS/SCS インスタンスの SAP プロファイルを変更します][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile]。
 
-3. [プローブ ポートの構成][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]  
+3. [プローブ ポートを構成します][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]。  
  このステップではPowerShell を使用して、SAP クラスター リソース SAP-SID2-IP プローブ ポートを構成します。 この構成は、SAP ASCS/SCS クラスター ノードのいずれかで実行します。
 
 4. データベース インスタンスをインストールします。  
@@ -421,19 +421,19 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  このステップでは、既存の WSFC クラスター ノード 2 に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。 第 2 のクラスター ノードをインストールするには、SAP インストール ガイドの手順に従います。
 
 6. SAP ASCS/SCS インスタンスとプローブ ポート用に Windows Firewall ポートを開きます。  
-    SAP ASCS/SCS インスタンスで使用する両方のクラスター ノードで、SAP ASCS/SCS ポートが使用するすべての Windows ファイアウォール ポートを開きます。 これらの SAP ASCS/SCS インスタンスのポートは、「[SAP ASCS/SCS ポート][sap-net-weaver-ports-ascs-scs-ports]」に一覧があります。
+    SAP ASCS/SCS インスタンスで使用する両方のクラスター ノードで、SAP ASCS/SCS ポートが使用するすべての Windows ファイアウォール ポートを開きます。 これらの SAP ASCS/SCS インスタンスのポートは、「[SAP ASCS/SCS のポート][sap-net-weaver-ports-ascs-scs-ports]」のセクションに一覧があります。
 
-    その他すべての SAP ポートの一覧については、「[TCP/IP Ports of All SAP Products (SAP の全製品の TCP/IP ポート)][sap-net-weaver-ports]」を参照してください。  
+    その他すべての SAP ポートの一覧については、「[TCP/IP Ports of All SAP Products (SAP の全製品の TCP/IP ポート)][sap-net-weaver-ports]」をご覧ください。  
 
-    また、Azure 内部ロード バランサー プローブ ポート (このシナリオでは 62350) を開きます。 これについては、[こちらの記事][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]に説明があります。
+    また、Azure 内部ロード バランサー プローブ ポート (このシナリオでは 62350) を開きます。 [こちらの記事][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]に説明があります。
 
-7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類を変更します][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
+7. [SAP evaluated receipt settlement (ERS) Windows サービス インスタンスのスタートアップの種類を変更します][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
 
 8. SAP インストール ガイドで記載されているように、新しい専用 VM に SAP プライマリ アプリケーション サーバーをインストールします。  
 
 9. SAP インストール ガイドで記載されているように、新しい専用 VM に追加の SAP アプリケーション サーバーをインストールします。
 
-10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションのテスト][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl]
+10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションをテストします][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl]。
 
 ## <a name="next-steps"></a>次の手順
 

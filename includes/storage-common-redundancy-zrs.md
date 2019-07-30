@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 037996385f34c5037e0386686e3bdf8dc1b7a37a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d25efa8c666fa91c7bd652a7cf931ea6ca379aa2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113778"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133400"
 ---
-ゾーン冗長ストレージ (ZRS) は、1 つのリージョン内の 3 つのストレージ クラスターにデータを同期してレプリケートします。 各ストレージ クラスターは物理的に他のストレージ クラスターと分離されており、それぞれの可用性ゾーン (AZ) 内にあります。 各可用性ゾーンは&mdash;その中の ZRS クラスターとともに&mdash;自律的であり、独立したユーティリティとネットワーク機能を備えています。
+ゾーン冗長ストレージ (ZRS) は、1 つのリージョン内の 3 つのストレージ クラスターにデータを同期してレプリケートします。 各ストレージ クラスターは物理的に他のストレージ クラスターと分離されており、それぞれの可用性ゾーン (AZ) 内にあります。 各可用性ゾーンは&mdash;その中の ZRS クラスターとともに&mdash;自律的であり、独立したユーティリティとネットワーク機能を備えています。 ZRS ストレージ アカウントへの書き込み要求は、3 つのクラスターにまたがってすべてのレプリカにデータが書き込まれた後にのみ、正常に返されます。
 
 ZRS レプリケーションを使用してストレージ アカウントにデータを格納した場合、可用性ゾーンが使用できなくなったときに、データに引き続きアクセスして管理することができます。 ZRS はパフォーマンスに優れ、短い待機時間です。 ZRS は、[ローカル冗長ストレージ (LRS)](../articles/storage/common/storage-redundancy-lrs.md) と同じ[スケーラビリティ ターゲット](../articles/storage/common/storage-scalability-targets.md)を実現します。
 

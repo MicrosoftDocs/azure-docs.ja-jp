@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0afbc6f28bab905f00e3713ddb012479c1c9c36f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 626ee2ca81967ab088ab4b5aceda15a99231d118
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009414"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604324"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-javascript-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と JavaScript を使用したサムネイルの生成
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>クイック スタート:Computer Vision の REST API と JavaScript を使用したサムネイルを生成する
 
 このクイック スタートでは、Computer Vision の REST API を使って、画像からサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 
@@ -40,7 +40,7 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
 1. `.html` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-thumbnail.html` 」のように入力します。
 1. ブラウザー ウィンドウを開きます。
 1. ブラウザーで、ブラウザー ウィンドウにファイルをドラッグ アンド ドロップします。
-1. ブラウザーに Web ページが表示されたら、**[Generate thumbnail]\(サムネイルの生成\)** ボタンをクリックします。
+1. ブラウザーに Web ページが表示されたら、 **[Generate thumbnail]\(サムネイルの生成\)** ボタンをクリックします。
 
 ```html
 <!DOCTYPE html>

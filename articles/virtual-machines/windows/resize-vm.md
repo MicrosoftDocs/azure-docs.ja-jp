@@ -4,7 +4,7 @@ description: Resource Manager デプロイ モデルで作成された Windows �
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 057ff274-6dad-415e-891c-58f8eea9ed78
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 3dc6ea7419e3ee1f24d19447a7a33e5556ffc70f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353bc3499f93eca72dd325c2114cd364145986c6
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688721"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722905"
 ---
 # <a name="resize-a-windows-vm"></a>Windows VM のサイズ変更
 

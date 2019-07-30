@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f8ffd321d6f49b3d31c2e0119e14538409812680
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e1cf2a1c5503f31a70bc654ae1a211d1ab64581
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713083"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203866"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -95,7 +95,7 @@ az network vnet peering create \
   --name myVirtualNetwork1-myVirtualNetwork2 \
   --resource-group myResourceGroup \
   --vnet-name myVirtualNetwork1 \
-  --remote-vnet-id $vNet2Id \
+  --remote-vnet $vNet2Id \
   --allow-vnet-access
 ```
 
@@ -106,7 +106,7 @@ az network vnet peering create \
   --name myVirtualNetwork2-myVirtualNetwork1 \
   --resource-group myResourceGroup \
   --vnet-name myVirtualNetwork2 \
-  --remote-vnet-id $vNet1Id \
+  --remote-vnet $vNet1Id \
   --allow-vnet-access
 ```
 

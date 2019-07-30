@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 435e5f2163270672ac5f1f5695ca2fe9be22ee6b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 5f89105abc21f5ef6cce53ea55622a808f947e86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388758"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357303"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する
 
@@ -88,5 +88,8 @@ Time Series Insights にイベントを送信する方法を確認できます�
 
 ## <a name="next-steps"></a>次の手順
 
+- [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
+
 - Time Series Insights プレビューの[ストレージとイングレス](./time-series-insights-update-storage-ingress.md)の詳細を確認する。
+
 - Time Series Insights プレビューの[データ モデリング](./time-series-insights-update-tsm.md)について学習する。

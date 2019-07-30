@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5d4657f87b0a6cbae0699c5a2f95773ff55f633
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235939"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798446"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -81,6 +81,10 @@ Azure で実行しているすべての Linux ノードで、オンボード中�
 * グローバル URL: *.azure-automation.net
 * 米国バージニア州 (政府機関向け) のグローバル URL: *.azure automation.us
 * エージェント サービス: https://\<workspaceId\>.agentsvc.azure-automation.net
+
+これにより、マネージド ノードが Azure Automation と通信するためのネットワーク接続が提供されます。
+ノード間で通信する DSC リソース ([WaitFor * リソース](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource)など) を使用している場合、ノード間のトラフィックを許可する必要もあります。
+これらのネットワーク要件を理解するには、各 DSC リソースのドキュメントを参照してください。
 
 #### <a name="proxy-support"></a>プロキシのサポート
 

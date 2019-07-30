@@ -2,29 +2,24 @@
 title: Azure AD Identity Protection を使用したサインイン エクスペリエンス| Microsoft Docs
 description: Identity Protection でユーザーの侵害が和らげられたか修正された場合、またはポリシーにより多要素認証が要求される場合のユーザー エクスペリエンスの概要を示します。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 449f808e98c4e0db2972071e160f5335153a88f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e513027eed44ec7649f41f8786882aed8511bc6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295300"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335500"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したサインイン エクスペリエンス
+
 Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。
 
 * 多要素認証での登録をユーザーに要求する
@@ -110,5 +105,5 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 ![修復](./media/flows/160.png "Remediation")
 
 ## <a name="see-also"></a>関連項目
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 
 
+* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 

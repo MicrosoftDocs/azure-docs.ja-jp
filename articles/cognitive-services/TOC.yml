@@ -5,6 +5,10 @@
   items:
     - name: Cognitive Services とは
       href: Welcome.md
+    - name: Cognitive Services のカスタム サブドメイン
+      href: cognitive-services-custom-subdomains.md
+    - name: Cognitive Services と機械学習
+      href: cognitive-services-and-machine-learning.md
     - name: 言語のサポート
       href: language-support.md
 - name: コンテナー サポート
@@ -31,8 +35,10 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: クイック スタート
   items:
-    - name: アカウントの作成
+    - name: Azure portal を使用して新しいリソースを作成する
       href: cognitive-services-apis-create-account.md
+    - name: Azure CLI を使用して新しいリソースを作成する
+      href: cognitive-services-apis-create-account-cli.md
     - name: Authentication
       href: authentication.md
     - name: 診断ログの記録

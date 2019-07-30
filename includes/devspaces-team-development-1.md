@@ -11,11 +11,11 @@ ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
 ms.openlocfilehash: 40c1be20df845b975c023616e38cbb932c985735
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157858"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181613"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したチーム開発
 
@@ -58,7 +58,7 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 
 1. [Dev Spaces サンプル アプリケーション](https://github.com/Azure/dev-spaces)を複製します。`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. リモート ブランチ *azds_updates* をチェックアウトします。`git checkout -b azds_updates origin/azds_updates`
-1. _dev_ 空間を選択します。`azds space select --name dev` 親 dev 空間を選択するように要求されたら、_\<なし\>_ を選択します。
+1. _dev_ 空間を選択します。`azds space select --name dev` 親 dev 空間を選択するように要求されたら、 _\<なし\>_ を選択します。
 1. _mywebapi_ ディレクトリに移動し、`azds up -d` を実行します。
 1. _webfrontend_ ディレクトリに移動し、`azds up -d` を実行します。
 1. `azds list-uris` を実行して _webfrontend_ のパブリック エンドポイントを確認します

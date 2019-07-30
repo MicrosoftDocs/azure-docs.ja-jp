@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 929977913fdbf0c6f59d69ec536a2638bca7b97c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 341f5a30fe03de4c69b5a7e18703931988d2d185
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232726"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063637"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する (非推奨)
 
@@ -84,7 +84,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 2. **[Phone and Tablet (電話とタブレット)]** フォーム ファクターを選択し、サポートする **[Minimum SDK (最低限の SDK)]** を選択します。 その後、 **[次へ]** をクリックします。
 
    ![Android Studio - project creation workflow][14]
-3. メイン アクティビティに **[Empty Activity (空のアクティビティ)]** を選択し、**[Next (次へ)]** をクリックして、**[Finish (完了)]** をクリックします。
+3. メイン アクティビティに **[Empty Activity (空のアクティビティ)]** を選択し、 **[Next (次へ)]** をクリックして、 **[Finish (完了)]** をクリックします。
 
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
 
@@ -110,7 +110,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 ### <a name="updating-the-projects-androidmanifestxml"></a>プロジェクトの AndroidManifest.xml を更新する
 
-1. GCM をサポートするには、[Google のインスタンス ID API](https://developers.google.com/instance-id/) を使用して、[登録トークンを取得する](https://developers.google.com/cloud-messaging/android/client#sample-register)ために使用されるインスタンス ID リスナー サービスをコード内に実装します。 このチュートリアルでは、クラスの名前は `MyInstanceIDService` です。
+1. GCM をサポートするには、[Google のインスタンス ID API](https://developers.google.com/instance-id/) を使用して、[登録トークンを取得する](https://developers.google.com/cloud-messaging/)ために使用されるインスタンス ID リスナー サービスをコード内に実装します。 このチュートリアルでは、クラスの名前は `MyInstanceIDService` です。
 
     次のサービス定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。 `<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。
   
@@ -144,7 +144,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
     ```
 4. 次の必要な GCM アクセス許可を `</application>` タグの下に追加します。 `<your package>` を `AndroidManifest.xml` ファイルの先頭に示されているパッケージ名に置き換えます。
 
-    これらのアクセス許可に関する詳細については、 [Android 用 GCM Client アプリの設定](https://developers.google.com/cloud-messaging/android/client#manifest)に関するページを参照してください。
+    これらのアクセス許可に関する詳細については、 [Android 用 GCM Client アプリの設定](https://developers.google.com/cloud-messaging/)に関するページを参照してください。
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -158,7 +158,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 ### <a name="adding-code"></a>コードを追加する
 
-1. [Project (プロジェクト)] ビューで、**[app]** > **[src]** > **[main]** > **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、**[New (新規)]**、**[Java Class (Java クラス)]** の順にクリックします。 `NotificationSettings`という名前の新しいクラスを追加します。
+1. [Project (プロジェクト)] ビューで、 **[app]**  >  **[src]**  >  **[main]**  >  **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、 **[New (新規)]** 、 **[Java Class (Java クラス)]** の順にクリックします。 `NotificationSettings`という名前の新しいクラスを追加します。
 
     ![Android Studio - new Java class][6]
 
@@ -447,7 +447,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
         }
     }
     ```
-14. Android Studio のメニュー バーで、**[Build (ビルド)]** > **[Rebuild Project (プロジェクトのリビルド)]** の順にクリックし、コードにエラーがないことを確認します。
+14. Android Studio のメニュー バーで、 **[Build (ビルド)]**  >  **[Rebuild Project (プロジェクトのリビルド)]** の順にクリックし、コードにエラーがないことを確認します。
 
 ## <a name="testing-your-app"></a>アプリケーションのテスト
 
@@ -468,8 +468,8 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 [Azure Portal] からプッシュ通知を送信することによって、それらの通知のアプリでの受信をテストできます。
 
-1. **[トラブルシューティング]** セクションで、**[テスト送信]** を選択します。
-2. **[プラットフォーム]** として、**[Android]** を選択します。
+1. **[トラブルシューティング]** セクションで、 **[テスト送信]** を選択します。
+2. **[プラットフォーム]** として、 **[Android]** を選択します。
 3. **[送信]** を選択してテスト通知を送信します。
 4. Android デバイスに通知メッセージが表示されることを確認します。
 
@@ -481,13 +481,13 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 エミュレーターの内部でプッシュ通知をテストする場合は、エミュレーター イメージがアプリケーション用に選択した Google API レベルをサポートしていることを確認してください。 イメージがネイティブの Google API をサポートしていない場合は、最終的に **SERVICE\_NOT\_AVAILABLE** 例外を受け取ることになります。
 
-さらに、**[設定]** > **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認します。 アカウントを追加していないと、GCM での登録の試行が **AUTHENTICATION\_FAILED** 例外につながる可能性があります。
+さらに、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認します。 アカウントを追加していないと、GCM での登録の試行が **AUTHENTICATION\_FAILED** 例外につながる可能性があります。
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(省略可能) アプリから直接プッシュ通知を送信する
 
 通常は、バックエンド サーバーを使用して通知を送信します。 場合によっては、クライアント アプリケーションから直接プッシュ通知を送信できることが必要になります。 このセクションでは、 [Azure Notification Hubs REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)を使用してクライアントから通知を送信する方法を説明します。
 
-1. Android Studio の [Project (プロジェクト)] ビューで **[app]** > **[src]** > **[main]** > **[res]** > **[layout]** の順に展開します。 `activity_main.xml` レイアウト ファイルを開き、**[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。 次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。 このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [Project (プロジェクト)] ビューで **[app]**  >  **[src]**  >  **[main]**  >  **[res]**  >  **[layout]** の順に展開します。 `activity_main.xml` レイアウト ファイルを開き、 **[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。 次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。 このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
     ```xml
     <Button
@@ -508,7 +508,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
-2. Android Studio の [Project (プロジェクト)] ビューで **[app]** > **[src]** > **[main]** > **[res]** > **[values]** の順に展開します。 `strings.xml` ファイルを開き、新しい `Button` コントロールと `EditText` コントロールで参照される文字列の値を追加します。 ファイルの一番下の `</resources>` の直前に次の行を追加します。
+2. Android Studio の [Project (プロジェクト)] ビューで **[app]**  >  **[src]**  >  **[main]**  >  **[res]**  >  **[values]** の順に展開します。 `strings.xml` ファイルを開き、新しい `Button` コントロールと `EditText` コントロールで参照される文字列の値を追加します。 ファイルの一番下の `</resources>` の直前に次の行を追加します。
 
     ```xml
     <string name="send_button">Send Notification</string>

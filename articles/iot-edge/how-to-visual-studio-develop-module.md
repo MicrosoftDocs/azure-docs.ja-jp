@@ -5,18 +5,18 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 05/27/2019
+ms.date: 07/01/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4014827366afc492d73757a0ac5e1acb64262c51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 953a549a44d224f9d196c6d6842bdcae04cca975
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474786"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485912"
 ---
-# <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge-preview"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする (プレビュー)
+# <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
 ビジネス ロジックを Azure IoT Edge のモジュールにすることができます。 この記事では、主なツールとして Visual Studio 2019 を使用してモジュールを開発してデバッグする方法を示します。
 
@@ -40,10 +40,10 @@ Azure IoT Edge Tools for Visual Studio の利点は次のとおりです。
 
 Visual Studio 2019 の準備ができたら、次のツールとコンポーネントも必要になります。
 
-- Visual Studio 2019 で IoT Edge プロジェクトを作成するために、Visual Studio Marketplace から [Azure IoT Edge Tools (プレビュー)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) をダウンロードしてインストールします。
+- Visual Studio 2019 で IoT Edge プロジェクトを作成するために、Visual Studio Marketplace から [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) をダウンロードしてインストールします。
 
 > [!TIP]
-> Visual Studio 2017 を使用している場合は、Visual Studio Marketplace から VS 2017 用の [Azure IoT Edge Tools (プレビュー)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) をダウンロードしてインストールしてください。
+> Visual Studio 2017 を使用している場合は、Visual Studio Marketplace から VS 2017 用の [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) をダウンロードしてインストールしてください。
 
 - モジュール イメージを作成して実行するために、開発用マシンに [Docker Community Edition](https://docs.docker.com/install/) をダウンロードしてインストールします。 Linux コンテナー モードまたは Windows コンテナー モードで実行するように Docker CE を設定する必要があります。
 

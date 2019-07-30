@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure PowerShell を使用し�
 documentationcenter: ''
 services: virtual-machines-windows
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: afc3e550f0a3d135f1c62ee321fff8d7afc5cae6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d9e3fc52b9cdf5126cb8d58778a59b8e8691f80a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785277"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708151"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
 
@@ -108,7 +108,7 @@ for ($i=1; $i -le 2; $i++)
 
 VM 2 台分の作成と構成が終わるまでには、数分かかります。 完了すると、基になるハードウェア全体に 2 つの仮想マシンが分散されています。 
 
-ポータルで **[リソース グループ]** > **myResourceGroupAvailability** > **myAvailabilitySet** の順に移動して可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
+ポータルで **[リソース グループ]**  > **myResourceGroupAvailability** > **myAvailabilitySet** の順に移動して可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
 
 ![ポータルの可用性セット](./media/tutorial-availability-sets/fd-ud.png)
 
@@ -126,7 +126,7 @@ Get-AzVMSize `
 
 Azure Advisor を使用して、VM の可用性を向上させる方法についてより多くの情報を取得することもできます。 Azure Advisor では、構成と使用状況のテレメトリが分析された後、Azure リソースの費用対効果、パフォーマンス、可用性、セキュリティを向上させるために役立つソリューションが推奨されます。
 
-[Azure Portal](https://portal.azure.com) にサインインし、**[すべてのサービス]** を選択して、「**Advisor**」と入力します。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 詳細については、「[Azure Advisor の使用を開始する](../../advisor/advisor-get-started.md)」を参照してください。
+[Azure Portal](https://portal.azure.com) にサインインし、 **[すべてのサービス]** を選択して、「**Advisor**」と入力します。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 詳細については、「[Azure Advisor の使用を開始する](../../advisor/advisor-get-started.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

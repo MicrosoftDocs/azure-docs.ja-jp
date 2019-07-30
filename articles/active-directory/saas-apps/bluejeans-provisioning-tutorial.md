@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8fedb372fb245b7bc35cb440bd758336ab2a68
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84870ef03e07cdabe994da7c04a103bead48d34f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60281972"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672994"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>チュートリアル:BlueJeans を構成し、自動ユーザー プロビジョニングに対応させる
 

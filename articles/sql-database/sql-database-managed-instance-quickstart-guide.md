@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 manager: craigg
-ms.date: 03/25/2019
-ms.openlocfilehash: 739afe52403633b1a37f57f0005a85972cc78a39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/11/2019
+ms.openlocfilehash: c2a468507c598c38b0b6b3b9f9c6a58a6ef4eff2
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360169"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67826964"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスの概要
 
@@ -33,12 +33,14 @@ ms.locfileid: "59360169"
 
 - [Azure portal を使用してマネージド インスタンスを作成します](sql-database-managed-instance-get-started.md)。 Azure portal で、必要なパラメーター (ユーザー名/パスワード、コア数、最大ストレージ容量) を構成します。また、Azure ネットワーク環境を自動的に作成できます。ネットワークの詳細やインフラストラクチャの要件を把握している必要はありません。 現在マネージド インスタンスを作成できる[タイプのサブスクリプション](sql-database-managed-instance-resource-limits.md#supported-subscription-types)を持っていることの確認のみが必要です。 独自のネットワークがあってそれを使用したい場合、またはネットワークをカスタマイズしたい場合は、「[Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する](sql-database-managed-instance-configure-vnet-subnet.md)」または「[Azure SQL Database Managed Instance の仮想ネットワークを作成する](sql-database-managed-instance-create-vnet-subnet.md)」をご覧ください。
 - マネージド インスタンスは、パブリック エンドポイントを持たない独自の VNet に作成されます。 クライアント アプリケーションのアクセスのために、以下のクイック スタートのいずれかを使用して、**同じ VNet (異なるサブネット) 内に VM を作成する**か、**クライアント コンピューターから VNet へのポイント対サイト VPN 接続を作成する**ことができます。
-
+  - 環境からデータに直接アクセスするには、お使いのマネージド インスタンスで[パブリック エンドポイント](sql-database-managed-instance-public-endpoint-configure.md)を有効にします。
   - SQL Server Management Studio などのクライアント アプリケーションの接続用に、[マネージド インスタンス VNet に Azure 仮想マシン](sql-database-managed-instance-configure-vm.md)を作成します。
   - SQL Server Management Studio およびその他のクライアント接続アプリケーションがあるクライアント コンピューターから[マネージド インスタンスへのポイント対サイト VPN 接続](sql-database-managed-instance-configure-p2s.md)を設定します。 これは、マネージド インスタンスとその VNet への接続に関する 2 つのオプションのうちのもう一方です。
 
   > [!NOTE]
   > ローカル ネットワークから Express Route またはサイト間接続を使用することもできますが、このような方法はこれらのクイック スタートでは扱いません。
+
+マネージド インスタンスを手動で作成する代わりに、[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)、[PowerShell と Resource Manager テンプレート](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)、または [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) を使用して、このプロセスのスクリプト化と自動化を行うことができます。
 
 ### <a name="migrate-your-databases"></a>データベースを移行する
 
@@ -61,21 +63,19 @@ ms.locfileid: "59360169"
 
 マネージド インスタンスをデプロイする VNet とサブネットが既にある場合は、その VNet とサブネットが[ネットワーク要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)を満たしていることを確認する必要があります。 この [PowerShell スクリプトを使用して、サブネットが正しく構成されていることを確認](sql-database-managed-instance-configure-vnet-subnet.md)します。 このスクリプトでは、ネットワークが検証され、問題がレポートされるだけでなく、変更が必要な点が示されるほか、VNet/サブネットに必要な変更を加えられるようになります。 VNet/サブネットを手動で構成しない場合は、このスクリプトを実行します。 ネットワーク インフラストラクチャの大規模な再構成後にも、これを実行できます。 独自のネットワークを作成および構成する場合は、[接続のアーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)に関するページや、この[マネージド インスタンス環境を作成および構成するための完全ガイド](https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01)を参照してください。
 
-## <a name="automating-creation-of-a-managed-instance"></a>マネージド インスタンスの自動作成
+## <a name="migrate-to-a-managed-instance"></a>マネージド インスタンスに移行する
 
- 前の手順での説明のようにネットワーク環境を作成していない場合は、Azure portal で自動的に作成できます。唯一の欠点は、後で変更できない既定のパラメーターをいくつか使用して構成されることです。 代替手段として、次のものを使用できます。
+これらのクイック スタートの記事を使用すると、マネージド インスタンスを簡単に設定し、ネイティブの `RESTORE` 機能を使用してデータベースを移行することができます。 これは、簡単な概念実証を完了し、ソリューションが Managed Instance で動作することを確認する場合の手始めとして適しています。 
 
-- [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)
-- [PowerShell と Resource Manager テンプレート](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)
-- [Azure CLI](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/)。
-- [Resource Manager テンプレート](sql-database-single-database-get-started-template.md)
+ただし、運用データベース移行する場合、または何らかのパフォーマンス テストに使用する開発/テスト データベースを移行する場合であっても、次のような追加の手法を使用することを検討する必要があります。
+- パフォーマンス テスト - ソース SQL Server インスタンスでベースライン パフォーマンスを測定し、データベースを移行した移行先のマネージド インスタンスでのパフォーマンスと比較する必要があります。 詳しくは、[best practices for performance comparison (パフォーマンス比較のベスト プラクティス)](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) に関する記事をご覧ください。
+- オンライン移行 - この記事で説明されているネイティブの `RESTORE` の場合、データベースが復元される (そして、まだ Azure Blob Storage に格納されていない場合は Azure Blob Storage にコピーされる) まで待つ必要があります。 このため、特に大規模なデータベースでは、アプリケーションに多少のダウンタイムが発生します。 運用データベースを移動するには、[データ移行サービス (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) を使用して、最小限のダウンタイムでデータベースを移行します。 DMS は、ソース データベースで行われた変更を、復元中のマネージド インスタンス データベースに増分的にプッシュすることで、これを実現します。 この方法であれば、最小限のダウンタイムでアプリケーションをソース データベースからターゲット データベースにすばやく切り替えることができます。
 
-## <a name="migrating-to-a-managed-instance-with-minimal-downtime"></a>最小限のダウンタイムでのマネージド インスタンスへの移行
-
-これらのクイック スタートの記事を使用すると、マネージド インスタンスを簡単に設定し、ネイティブの `RESTORE` 機能を使用してデータベースを移行することができます。 ただし、ネイティブの `RESTORE` の場合、データベースが復元される (そして、まだ Azure Blob Storage に格納されていない場合は Azure Blob Storage にコピーされる) まで待つ必要があります。 このため、特に大規模なデータベースでは、アプリケーションに多少のダウンタイムが発生します。 運用データベースを移動するには、[データ移行サービス (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) を使用して、最小限のダウンタイムでデータベースを移行します。 DMS は、ソース データベースで行われた変更を、復元中のマネージド インスタンス データベースに増分的にプッシュすることで、これを実現します。 この方法であれば、最小限のダウンタイムでアプリケーションをソース データベースからターゲット データベースにすばやく切り替えることができます。
+[推奨される移行プロセス](sql-database-managed-instance-migrate.md)の詳細を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 
 - [マネージド インスタンスでサポートされている機能の概要の一覧についてはこちら](sql-database-features.md)、[詳細情報と既知の問題についてはこちら](sql-database-managed-instance-transact-sql-information.md)を確認します。
 - [マネージド インスタンスの技術的な特性](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)を学びます。
 - 「[Azure SQL Database でマネージド インスタンスを作成する方法](sql-database-howto-managed-instance.md)」で、より高度な操作方法を参照します。
+- [オンプレミス データベースに適した Azure SQL Database/Managed Instance SKU を特定します](/sql/dma/dma-sku-recommend-sql-db/)。

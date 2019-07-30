@@ -66,10 +66,17 @@
     - name: Azure Resource Manager
       href: ../azure-resource-manager/resource-group-overview.md
       maintainContext: true
-    - name: リージョンと可用性
-      href: ../virtual-machines/windows/regions-and-availability.md
+    - name: リージョン
+      href: ../virtual-machines/windows/regions.md
+    - name: 可用性とパフォーマンス
       maintainContext: true
       items:
+        - name: 可用性
+          href: availability.md
+        - name: コロケーション
+          href: co-location.md
+        - name: ネットワーク パフォーマンス
+          href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: スケール セット内の障害ドメインを管理する
           href: virtual-machine-scale-sets-manage-fault-domains.md
     - name: VM の種類とサイズ
@@ -156,6 +163,8 @@
           maintainContext: true
     - name: スケール セットの FAQ
       href: virtual-machine-scale-sets-faq.md
+    - name: セキュリティ属性
+      href: virtual-machine-scale-sets-security-attributes.md
 - name: 方法
   items:
     - name: 計画と設計
@@ -243,6 +252,8 @@
               href: share-images-across-tenants.md
             - name: 共有イメージのトラブルシューティングを行う
               href: troubleshooting-shared-images.md
+        - name: 近接通信配置グループの作成
+          href: proximity-placement-groups.md
         - name: スケール セットの垂直スケール
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
         - name: DSC とスケール セットの使用

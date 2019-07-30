@@ -86,7 +86,7 @@ Azure portal の左上で、 **[リソースの作成]** をクリックして�
 | [Infrastructure Node Size]\(インフラストラクチャ ノード サイズ\) | 既定の VM サイズを受け入れるか、 **[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |
 | [Number of Application Nodes]\(アプリケーション ノードの数) | 既定の VM サイズを受け入れるか、 **[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |
 | [Application Node Size]\(アプリケーション ノード サイズ\) | 既定の VM サイズを受け入れるか、 **[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |
-| [Bastion Host Size]\(要塞ホスト サイズ\) | 既定の VM サイズを受け入れるか、 **[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |
+| [Bastion Host Size]\(踏み台ホスト サイズ\) | 既定の VM サイズを受け入れるか、 **[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |
 | [New or Existing Virtual Network]\(新規または既存の仮想ネットワーク) | 新しい vNet を作成する (既定) か、既存の vNet を使用します |
 | 既定の CIDR 設定を選択するか IP 範囲 (CIDR) をカスタマイズする | 既定の CIDR 範囲を受け入れるか、 **[Custom IP Range]\(カスタムの IP 範囲\)** を選択してカスタムの CIDR 情報を入力します。  既定の設定では、10.0.0.0/14 の CIDR で vNet が作成され、10.1.0.0/16 でマスター サブネット、10.2.0.0/16 でインフラストラクチャ サブネット、10.3.0.0/16 でコンピューティングおよび CNS サブネットがそれぞれ作成されます |
 | [Key Vault Resource Group Name]\(Key Vault リソース グループ名\) | Key Vault を含むリソース グループの名前 |
@@ -190,7 +190,7 @@ Azure portal の左上で、 **[リソースの作成]** をクリックして�
 
 ## <a name="connect-to-the-openshift-cluster"></a>OpenShift クラスターへの接続
 
-デプロイが完了したら、デプロイの出力セクションから接続を取得します。 **OpenShift コンソール URL** を使用して、ブラウザーで OpenShift コンソールに接続します。 要塞ホストに SSH 接続することもできます。 管理者のユーザー名は clusteradmin で、要塞のパブリック IP DNS FQDN は bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com である例を次に示します。
+デプロイが完了したら、デプロイの出力セクションから接続を取得します。 **OpenShift コンソール URL** を使用して、ブラウザーで OpenShift コンソールに接続します。 踏み台ホストに SSH 接続することもできます。 管理者のユーザー名は clusteradmin で、踏み台のパブリック IP DNS FQDN は bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com である例を次に示します。
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

@@ -3,20 +3,20 @@ title: REST API でメトリックを取得する
 titlesuffix: Azure Load Balancer
 description: Azure REST API を使用して、指定した期間の Load Balancer に対する正常性と使用率のメトリックを収集します。
 services: sql-database
-author: KumudD
+author: asudbring
 ms.reviewer: routlaw
 manager: jeconnoc
 ms.service: load-balancer
 ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
-ms.author: KumudD
-ms.openlocfilehash: 9f5206ef5348ee8fd7b3fe981a9cfe4afc1367fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 0d12dc04aff58dd6273d8d29d422bdbd9e7c886b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734543"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274538"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>REST API を使用して Load Balancer の使用率のメトリックを取得する
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
-| Name | 説明 |
+| EnableAdfsAuthentication | 説明 |
 | :--- | :---------- |
 | subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | resourceGroupName | リソースが含まれているリソース グループの名前。 この値は、Azure Resource Manager API、CLI、またはポータルから取得できます。 |

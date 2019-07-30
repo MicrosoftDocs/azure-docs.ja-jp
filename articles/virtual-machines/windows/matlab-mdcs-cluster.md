@@ -4,7 +4,7 @@ description: コンピューティング集中型の並列 MATLAB ワークロ�
 services: virtual-machines-windows
 documentationcenter: ''
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: 49824741facc8822a9417306794f1028fc180e16
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 857382c09192e71d9727a91274993091f2f903b2
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60555144"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718674"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM での MATLAB Distributed Computing Server クラスターの作成
 コンピューティング集中型の並列 MATLAB ワークロードを実行する 1 つ以上の MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します。 VM に MATLAB Distributed Computing Server ソフトウェアをインストールして基本イメージとして使用し、Azure のクイック スタート テンプレートまたは Azure PowerShell スクリプト ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)から入手可能) を使用してクラスターをデプロイおよび管理します。 デプロイ後には、クラスターに接続してワークロードを実行します。

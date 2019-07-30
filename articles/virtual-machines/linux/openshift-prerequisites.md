@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/19/2019
+ms.date: 06/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d8a9b82e51c837af6343ddf851545d02299aa527
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 834484278bb597bba4a5e1821d0b6572913a761d
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473887"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146997"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Azure で OpenShift をデプロイする場合の共通の前提条件
 
@@ -69,7 +69,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
-[az keyvault create](/cli/azure/keyvault) コマンドを使用して、クラスターの SSH キーを格納するキー コンテナーを作成します。 キー コンテナーの名前はグローバルに一意である必要があります。
+[az keyvault create](/cli/azure/keyvault) コマンドを使用して、クラスターの SSH キーを格納するキー コンテナーを作成します。 キー コンテナー名はグローバルに一意である必要があり、テンプレートのデプロイを有効にする必要があります。そうしないと、"KeyVaultParameterReferenceSecretRetrieveFailed" エラーが発生してデプロイに失敗します。
 
 次の例では、*keyvault* という名前のキー コンテナーを *keyvaultrg* リソース グループに作成します。
 

@@ -14,28 +14,21 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: e53f0bd1af3940b4d2f653b5ef43170212c09a43
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 600c808c0bda991bb7203bbf60c098918e274da6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408696"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326623"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
-Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 これを使用すると、すべてのアプリケーション設定を、コードとは別の 1 つの場所に簡単に保存して管理することができます。 このクイック スタートでは、ASP.NET Core Web アプリにサービスを組み込む方法を示します。 
-
-ASP.NET Core では、アプリケーションによって指定される 1 つ以上のデータ ソースからの設定を使用して、キーと値に基づく 1 つの構成オブジェクトが作成されます。 これらのデータ ソースは、"*構成プロバイダー*" と呼ばれます。 App Configuration の .NET Core クライアントはそのようなプロバイダーとして実装されるため、このサービスは他のデータ ソースと同じように表示されます。
-
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
-
-![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-app-launch-local.png)
+このクイック スタートでは、コードとは別にアプリケーション設定のストレージと管理を一元化するために、Azure App Configuration を ASP.NET Core アプリに組み込みます。 ASP.NET Core では、アプリケーションによって指定される 1 つ以上のデータ ソースからの設定を使用して、キーと値に基づく 1 つの構成オブジェクトが作成されます。 これらのデータ ソースは、"*構成プロバイダー*" と呼ばれます。 App Configuration の .NET Core クライアントはそのようなプロバイダーとして実装されるため、このサービスは他のデータ ソースと同じように表示されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- [.NET コア SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
@@ -86,9 +79,9 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
 ## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 
-1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet パッケージへの参照を追加します。
+1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
@@ -131,8 +124,6 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
     @using Microsoft.Extensions.Configuration
     @inject IConfiguration Configuration
 
-    <!DOCTYPE html>
-    <html lang="en">
     <style>
         body {
             background-color: @Configuration["TestApp:Settings:BackgroundColor"]
@@ -142,13 +133,8 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
             font-size: @Configuration["TestApp:Settings:FontSize"];
         }
     </style>
-    <head>
-        <title>Index View</title>
-    </head>
-    <body>
-        <h1>@Configuration["TestApp:Settings:Message"]</h1>
-    </body>
-    </html>
+
+    <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
 7. Views の Shared ディレクトリにある *_Layout.cshtml* を開いて、内容を次のコードに置き換えます。

@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: go
 ms.topic: quickstart
 author: David-Engel
-ms.author: v-daveng
+ms.author: craigg
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 25de6fc2d752020ea47913bf6a4666735026b96f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447867"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871675"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>クイック スタート:Golang を使用して Azure SQL データベースに照会する
 
@@ -328,7 +328,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="next-steps"></a>次の手順
 
-- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
+- [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)
 - [Microsoft SQL Server 用 Golang ドライバー](https://github.com/denisenkom/go-mssqldb)
 - [問題の報告と質問](https://github.com/denisenkom/go-mssqldb/issues)
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991380"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490106"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -100,19 +100,19 @@ Azure サブスクリプションは、加入契約アカウントの下に入�
 
 課金ユーザーは、特定の課金アカウントに明示的に属しているわけではないため、管理グループにアクセスすることはできません。 アクセス権は、管理グループに対して明示的に付与する必要があります。 管理グループでは、入れ子になったすべてのサブスクリプションのコストがロールアップされます。 ただし、含まれるのは使用量ベースの購入のみです。 予約やサード パーティの Marketplace オファリングなどの購入は含まれません。 これらのコストを表示するには、EA の課金アカウントを使用します。
 
-## <a name="individual-agreement-pay-as-you-go-scopes"></a>個々の契約 (従量課金制) のスコープ
+## <a name="individual-agreement-scopes"></a>個々の契約のスコープ
 
-従量課金制 (PAYG) サブスクリプションには、無料/試用版および開発/テスト プランなどの関連する種類も含めて、明示的な課金アカウントのスコープはありません。 代わりに、EA アカウント所有者のように、各サブスクリプションにアカウント所有者またはアカウント管理者がいます。
+従量課金制などの個々のプランと無料試用版や開発テスト用プランなどの関連する種類から作成された Azure サブスクリプションには、課金アカウントの明示的なスコープはありません。 代わりに、EA アカウント所有者のように、各サブスクリプションにアカウント所有者またはアカウント管理者がいます。
 
 - [**課金アカウント**](../billing/billing-view-all-accounts.md) - 1 つまたは複数の Azure サブスクリプションの 1 人のアカウント所有者を表します。 現在、複数のユーザーにアクセス権を付与することや、集計されたコスト ビューにアクセスすることはできません。
 
     リソースの種類:適用不可
 
-PAYG サブスクリプションのアカウント管理者は、[Azure アカウント センター](https://account.azure.com/subscriptions)から、請求や支払いなどの課金データを表示して管理することができます。 しかし、Azure portal でコスト データを表示したり、リソースを管理したりすることはできません。 アカウント管理者にアクセス権を付与するには、前述の Cost Management のロールを使用します。
+個々の Azure サブスクリプションのアカウント管理者は、[Azure アカウント センター](https://account.azure.com/subscriptions)から、請求や支払いなどの課金データを表示し、管理することができます。 しかし、Azure portal でコスト データを表示したり、リソースを管理したりすることはできません。 アカウント管理者にアクセス権を付与するには、前述の Cost Management のロールを使用します。
 
-PAYG サブスクリプションのアカウント管理者は、EA の場合とは異なり、Azure portal で請求書を表示することができます。 Cost Management 閲覧者と Cost Management 共同作成者のロールでは、請求書にアクセスできないことに注意してください。 詳しくは、[PAYG 請求書へのアクセス権を付与する方法](../billing/billing-manage-access.md#give-access-to-billing)に関する記事をご覧ください。
+EA とは異なり、個々の Azure サブスクリプションのアカウント管理者は、Azure portal で請求書を表示できます。 Cost Management 閲覧者と Cost Management 共同作成者のロールでは、請求書にアクセスできないことに注意してください。 詳細については、[請求書へのアクセス権を付与する方法](../billing/billing-manage-access.md##give-read-only-access-to-billing)に関する記事をご覧ください。
 
-## <a name="customer-agreement-scopes"></a>顧客契約のスコープ
+## <a name="microsoft-customer-agreement-scopes"></a>Microsoft Customer Agreement のスコープ
 
 Microsoft 顧客契約の課金アカウントには、次のスコープがあります。
 
@@ -148,7 +148,7 @@ Azure サブスクリプションは、EA 登録アカウントの下に入れ�
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Cost Management でスコープを切り替える
 
-Azure portal のすべての Cost Management ビューには、ビューの左上に **[スコープ]** ピルがあります。 これを使ってすばやくスコープを変更できます。 **[スコープ]** ピルをクリックして、スコープ選択ツールを開きます。 課金アカウント、ルート管理グループ、およびルート管理グループの下に入れ子になっていないすべてのサブスクリプションが表示されます。 スコープを選択するには、背景をクリックして強調表示し、下部にある **[選択]** をクリックします。 入れ子になったスコープを表示するには、サブスクリプション内のリソース グループの場合と同様に、スコープ名のリンクをクリックします。 入れ子になった任意のレベルの親スコープを選択するには、スコープ選択ツールの上部にある **[この &lt;スコープ&gt; の選択]** をクリックします。
+Azure portal のすべての Cost Management ビューには、ビューの左上に **[スコープ]** 選択ピルがあります。 これを使ってすばやくスコープを変更できます。 **[スコープ]** ピルをクリックして、スコープ選択ツールを開きます。 課金アカウント、ルート管理グループ、およびルート管理グループの下に入れ子になっていないすべてのサブスクリプションが表示されます。 スコープを選択するには、背景をクリックして強調表示し、下部にある **[選択]** をクリックします。 入れ子になったスコープを表示するには、サブスクリプション内のリソース グループの場合と同様に、スコープ名のリンクをクリックします。 入れ子になった任意のレベルの親スコープを選択するには、スコープ選択ツールの上部にある **[この &lt;スコープ&gt; の選択]** をクリックします。
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>スコープのリソース ID を特定する
 

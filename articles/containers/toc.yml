@@ -62,6 +62,19 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
         - name: Windows コンテナーについて
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
+    - name: Azure Red Hat OpenShift
+      href: 'https://docs.microsoft.com/azure/openshift/'
+      items:
+        - name: Azure Red Hat Openshift とは
+          href: ../openshift/intro-openshift.md
+        - name: チュートリアル - Azure Red Hat OpenShift クラスターの作成と管理
+          items:
+            - name: 1 - Azure Red Hat OpenShift クラスターを作成する
+              href: ../openshift/tutorial-create-cluster.md
+            - name: 2 - Azure Red Hat OpenShift クラスターをスケーリングする
+              href: ../openshift/tutorial-scale-cluster.md
+            - name: 3 - Azure Red Hat OpenShift クラスターを削除する
+              href: ../openshift/tutorial-delete-cluster.md
     - name: リファレンス
       items:
         - name: Azure Container Instances (az container)

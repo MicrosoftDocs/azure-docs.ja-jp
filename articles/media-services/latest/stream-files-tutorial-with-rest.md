@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 15b2408113d8bd19d2e988643442ac5e3b305237
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f9ca4b54db305a5c088b4dda27a6844c8439fa1a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055305"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -67,10 +67,10 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 ### <a name="configure-the-environment"></a>環境の構成 
 
 1. **Postman** を開きます。
-2. 画面の右側で、**[Manage environment]/(環境の管理/)** オプションを選択します。
+2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
-4. **[Manage environment]/(環境の管理/)** ダイアログで、**[インポート]** をクリックします。
+4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
 2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
 6. **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境が追加されています。
 
@@ -117,7 +117,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. 応答がトークンと共に返され、"AccessToken" 環境変数がトークン値に設定されます。 "AccessToken" を設定するコードを確認するには、**[Tests]\(テスト\)** タブをクリックします。 
+4. 応答がトークンと共に返され、"AccessToken" 環境変数がトークン値に設定されます。 "AccessToken" を設定するコードを確認するには、 **[Tests]\(テスト\)** タブをクリックします。 
 
     ![AAD トークンを取得する](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
@@ -236,7 +236,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 **ストリーミング ロケーター** を作成するプロセスは発行と呼ばれます。 既定では、**ストリーミング ロケーター** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
-[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアな (暗号化されていない) コンテンツをストリーム配信するので、定義済みのクリア ストリーミング ポリシー **PredefinedStreamingPolicy.ClearStreamingOnly** が使用されます。
+[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアな (暗号化されていない) コンテンツをストリーム配信するので、定義済みのクリア ストリーミング ポリシー "Predefined_ClearStreamingOnly" が使用されます。
 
 > [!IMPORTANT]
 > カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 

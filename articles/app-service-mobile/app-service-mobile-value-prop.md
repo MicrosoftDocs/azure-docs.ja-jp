@@ -3,7 +3,7 @@ title: Azure App Service の Mobile Apps について
 description: App Service が企業のモバイル アプリにもたらす利点について説明します。
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: yochayk
 editor: ''
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
@@ -12,16 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: f3eb781e7f84e8cf03a975f7cb77f6a7ef074d44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 55f33821a748789fb11b44dc08c367961b4258f4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861395"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440287"
 ---
 # <a name="getting-started"> </a>Azure App Service の Mobile Apps について
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-value-prop) を今すぐチェックしてください。
+>
+
 Azure App Service は、プロの開発者のためのフル マネージドの[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 製品であり、 Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。 
 
 Azure App Service の Mobile Apps 機能は、エンタープライズ開発者とシステム インテグレーター向けの、スケーラブルでグローバルに利用できるモバイル アプリケーション開発プラットフォームです。

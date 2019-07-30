@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09a2b616e2bba93be86241c64d37daec7d6dea3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ce3d86d37940f66065debce30b348371b7aa6af
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027841"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568244"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>アルゴリズムとモジュールに関する例外とエラー コードの参照
 
@@ -250,16 +250,17 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |モデルの種類|トレーニング モジュール| スコアリング モジュール|
 |----|----|----|
 |任意の分類子|[モデルのトレーニング](train-model.md) |[モデルのスコアリング](score-model.md)|
-|任意の回帰モデル|[モデルのトレーニング](train-model.md) |[モデルのスコアリング](score-model.md)|
-<!--| クラスタリング モデル| [クラスタリング モデルのトレーニング](train-clustering-model.md)または[クラスタリングのスイープ](sweep-clustering.md)| [クラスターへのデータの割り当て](assign-data-to-clusters.md)|
-| 異常検出 - 1 クラス SVM | [異常検出モデルのトレーニング](train-anomaly-detection-model.md) |[モデルのスコアリング](score-model.md)|
-| 異常検出 - PCA |[モデルのトレーニング](train-model.md) |[モデルのスコアリング](score-model.md) </br> モデルを評価するには、追加ステップがいくつか必要です。 |
-| 異常検出 - 時系列|  [時系列の異常検出](time-series-anomaly-detection.md) |モデルは、データからトレーニングされて、スコアを生成します。 モジュールでは、トレーニング済み学習器は作成されず、追加のスコアリングは必要ありません。 |
-| 推奨モデル| [マッチボックス レコメンダーのトレーニング](train-matchbox-recommender.md) | [マッチボックス レコメンダーのスコアリング](score-matchbox-recommender.md) |
-| 画像の分類 | [事前トレーニング済みカスケード画像分類](pretrained-cascade-image-classification.md) | [モデルのスコアリング](score-model.md) |
-|Vowpal Wabbit モデル| [Vowpal Wabbit バージョン 7-4 モデルのトレーニング](train-vowpal-wabbit-version-7-4-model.md) | [Vowpal Wabbit バージョン 7-4 モデルのスコアリング](score-vowpal-wabbit-version-7-4-model.md) |   
-|Vowpal Wabbit モデル| [Vowpal Wabbit バージョン 7-10 モデルのトレーニング](train-vowpal-wabbit-version-7-10-model.md) | [Vowpal Wabbit バージョン 7-10 モデルのスコアリング](score-vowpal-wabbit-version-7-10-model.md) |
-|Vowpal Wabbit モデル| [Vowpal Wabbit バージョン 8 モデルのトレーニング](score-vowpal-wabbit-version-8-model.md) | [Vowpal Wabbit バージョン 8 モデルのスコアリング](score-vowpal-wabbit-version-8-model.md) |-->
+|任意の回帰モデル|[モデルのトレーニング](train-model.md) |[モデルのスコア付け](score-model.md)|
+
+<!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
+| anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
+| anomaly detection - PCA |[Train Model](train-model.md) |[Score Model](score-model.md) </br> Some additional steps are required to evaluate the model. |
+| anomaly detection - time series|  [Time Series Anomaly Detection](time-series-anomaly-detection.md) |Model trains from data and generates scores. The module does not create a trained learner and no additional scoring is required. |
+| recommendation model| [Train Matchbox Recommender](train-matchbox-recommender.md) | [Score Matchbox Recommender](score-matchbox-recommender.md) |
+| image classification | [Pretrained Cascade Image Classification](pretrained-cascade-image-classification.md) | [Score Model](score-model.md) |
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) | [Score Vowpal Wabbit Version 7-4 Model](score-vowpal-wabbit-version-7-4-model.md) |   
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-10 Model](train-vowpal-wabbit-version-7-10-model.md) | [Score Vowpal Wabbit Version 7-10 Model](score-vowpal-wabbit-version-7-10-model.md) |
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) | [Score Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) |-->
   
 |例外メッセージ|  
 |------------------------|  
@@ -1680,7 +1681,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |------------------------|  
 |Module definition file contains errors. (モジュール定義ファイルにエラーが含まれます。)|  
 |Module definition file '{0}' contains errors. (モジュール定義ファイル '\{0\}' にエラーが含まれます。)|  
-|Module definition file '{0}' contains errors. (モジュール定義ファイル '\{0\}' にエラーが含まれます。) [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/]({1})|  
+|Module definition file '{0}' contains errors. (モジュール定義ファイル '\{0\}' にエラーが含まれます。) {1}|  
   
 
 ## <a name="error-0114"></a>エラー 0114  
@@ -2081,7 +2082,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|  
 |------------------------|  
 |GitHub access error. (GitHub アクセス エラー。)|  
-|GitHub access error. (GitHub アクセス エラー。) [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/]({0})|  
+|GitHub access error. (GitHub アクセス エラー。) {0}|  
   
 
 ## <a name="error-0148"></a>エラー 0148  

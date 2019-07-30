@@ -14,12 +14,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706a826d1b256e95e459d2a44cdb13ee56c70599
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 969d08888002c97453cb2af18f42371227676597
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499133"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109477"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -77,7 +77,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 
 ![ディレクトリの接続](./media/how-to-connect-install-custom/connectdir01.png)
 
-フォレスト名を入力し、**[ディレクトリの追加]** をクリックすると、ポップアップ ダイアログが表示され、次のオプションの指定が求められます。
+フォレスト名を入力し、 **[ディレクトリの追加]** をクリックすると、ポップアップ ダイアログが表示され、次のオプションの指定が求められます。
 
 | オプション | 説明 |
 | --- | --- |
@@ -107,7 +107,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 ![DomainOU フィルター処理](./media/how-to-connect-install-custom/domainoufiltering.png)  
 ウィザード内のこのページでは、ドメイン ベースおよび OU ベースのフィルター処理を構成します。 変更を予定している場合は、変更を行う前に、[ドメイン ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#domain-based-filtering)に関するトピックと [OU ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)に関するトピックを参照してください。 一部の OU はこの機能に不可欠であるため、選択解除しないでください。
 
-1.1.524.0 より前のバージョンの Azure AD Connect で OU ベースのフィルター処理を使用している場合、後で追加された新しい OU は、既定で同期されます。 新しい OU が同期されないようにする場合は、ウィザードの完了後に [OU ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で構成できます。 Azure AD Connect バージョン 1.1.524.0 以降では、新しい OU を同期するかどうかを指定できます。
+1\.1.524.0 より前のバージョンの Azure AD Connect で OU ベースのフィルター処理を使用している場合、後で追加された新しい OU は、既定で同期されます。 新しい OU が同期されないようにする場合は、ウィザードの完了後に [OU ベースのフィルター処理](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で構成できます。 Azure AD Connect バージョン 1.1.524.0 以降では、新しい OU を同期するかどうかを指定できます。
 
 [グループベースのフィルター処理](#sync-filtering-based-on-groups)を使用する予定の場合は、そのグループが属する OU が含まれており、OU ベースのフィルター処理によって除外されないようにしてください。 OU ベースのフィルター処理は、グループベースのフィルター処理の前に評価されます。
 
@@ -195,7 +195,7 @@ Azure AD に同期する属性を制限する場合、まずは使用してい�
 >
 
 ### <a name="directory-extension-attribute-sync"></a>ディレクトリ拡張属性の同期
-Azure AD のスキーマは、組織によって追加されたカスタム属性や Active Directory 内のその他の属性を使用して拡張することができます。 この機能を使用するには、**[オプション機能]** ページの **[Directory Extension attribute sync (ディレクトリ拡張機能の属性の同期)]** を選択します。 このページで、同期する属性をさらに選択できます。
+Azure AD のスキーマは、組織によって追加されたカスタム属性や Active Directory 内のその他の属性を使用して拡張することができます。 この機能を使用するには、 **[オプション機能]** ページの **[Directory Extension attribute sync (ディレクトリ拡張機能の属性の同期)]** を選択します。 このページで、同期する属性をさらに選択できます。
 
 >[!NOTE]
 >使用可能な属性のボックスでは、大文字と小文字は区別されます。
@@ -386,13 +386,13 @@ Azure AD Connect は、前の手順で PingFederate メタデータから取得�
 * 同期が完了したら、Azure AD Connect で [フェデレーション ログインの検証] 追加タスクを使用して、任意のオンプレミス ユーザー アカウントの認証を検証します。
 * イントラネット上のドメイン参加済みマシンのブラウザーからサインインできることを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
 * エクストラネット上のデバイスからサインインできることを検証する。 自宅にあるマシンまたはモバイル デバイスで https://myapps.microsoft.com に接続し、資格情報を入力します。
-* リッチ クライアントのサインインを検証する。 https://testconnectivity.microsoft.com に接続し、**[Office 365]** タブ、**[Office 365 シングル サインオン テスト]** の順に選択します。
+* リッチ クライアントのサインインを検証する。 https://testconnectivity.microsoft.com に接続し、 **[Office 365]** タブ、 **[Office 365 シングル サインオン テスト]** の順に選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 次のセクションには、Azure AD Connect のインストール時に問題が発生した場合に使用できるトラブルシューティングと情報が含まれています。
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>"The ADSync database already contains data and cannot be overwritten (ADSync データベースに既にデータが含まれており、上書きできません)"
-Azure AD Connect をカスタム インストールし、**[必須コンポーネントのインストール]** ページで **[既存の SQL サーバーを使用する]** オプションを選択すると、**"The ADSync database already contains data and cannot be overwritten. (ADSync データベースに既にデータが含まれており、上書きできません。) Please remove the existing database and try again. (既存のデータベースを削除してからやり直してください。)"** と表示されるエラーが発生することがあります。
+Azure AD Connect をカスタム インストールし、 **[必須コンポーネントのインストール]** ページで **[既存の SQL サーバーを使用する]** オプションを選択すると、 **"The ADSync database already contains data and cannot be overwritten. (ADSync データベースに既にデータが含まれており、上書きできません。) Please remove the existing database and try again. (既存のデータベースを削除してからやり直してください。)"** と表示されるエラーが発生することがあります。
 
 ![Error](./media/how-to-connect-install-custom/error1.png)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d35da4f1eaed91411c015ed7665944d886f9d79c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 714f46b7019b6e64c504c5925ef5eb5539558c2d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181030"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673418"
 ---
 Azure Portal を使用して Resource Manager デプロイ モデルで VNet を作成するには、次の手順に従います。 これらの手順をチュートリアルとして使用する場合は、[例として示されている値](#values)を使用してください。 これらの手順をチュートリアルとして使用しない場合は、必ず独自の値に置き換えてください。 仮想ネットワークの操作の詳細については、「 [仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
 
@@ -22,7 +22,7 @@ Azure Portal を使用して Resource Manager デプロイ モデルで VNet を
 >
 >
 
-1. ブラウザーから [Azure ポータル](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
+1. ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 2. **[リソースの作成]** をクリックします。 **[Marketplace を検索]** フィールドに「仮想ネットワーク」と入力します。 検索結果の一覧から **[仮想ネットワーク]** を探してクリックし、 **[仮想ネットワーク]** ページを開きます。
 3. [仮想ネットワーク] ページの下の方にある **[デプロイ モデルの選択]** の一覧で、 **[リソース マネージャー]** を選択し、 **[作成]** をクリックします。 [仮想ネットワークの作成] ページが開きます。
 

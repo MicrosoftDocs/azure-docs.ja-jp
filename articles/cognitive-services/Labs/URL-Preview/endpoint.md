@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 7cc52493ec0e2b9c81d52da4bb22102c2c7e5e5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: 43254db734a48f3e7aaa5a26a7fbf3981c9e9d87
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712487"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592863"
 ---
 # <a name="project-url-preview-endpoint"></a>Project URL Preview エンドポイント
 

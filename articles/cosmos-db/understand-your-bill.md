@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a097539e51aa2a2130dead236d553d60f2ebb89d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d30cd92456218284326263d7bd3c9c7820fa435c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965655"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621292"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 
@@ -21,6 +21,8 @@ ms.locfileid: "65965655"
 Azure Cosmos DB では、プロビジョニングされたスループットと使用ストレージに基づき、時間単位で課金されます。 プロビジョニングされたスループットの場合、課金単位は 1 時間あたり 100 RU/秒となり、1 時間あたり $0.008 で課金されます。これは、標準的な一般価格と仮定した場合です ([価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照)。 使用ストレージの場合、1 か月あたり $0.25/GB で課金されます ([価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照)。 
 
 この記事では、毎月の請求書に示される詳細を理解するのに役立つ例をいくつか使用します。 Azure Cosmos コンテナーにプロビジョニングされているスループットの量が異なる場合や、コンテナーが複数のリージョンにまたがっているか、1 か月に実行される対象が異なる場合は、例に示される数字が異なる可能性があります。
+
+>!注:課金は、60 分という期間ではなく、実測時間に対して行われます。
 
 ## <a name="billing-examples"></a>課金の例
 
@@ -236,7 +238,7 @@ Azure Cosmos DB の予約容量では、すべての Azure リージョンにわ
 
 |**[リージョン]**| **100 RU/秒あたりの時間単位の料金**|**単位 (RU/秒)**|**請求額 (時間単位)**| **請求額 (月単位)**|
 |----|----|----|----|----|
-|米国東部|$0.008 |50 K|$4|$2,880 |
+|East US|$0.008 |50 K|$4|$2,880 |
 |東日本|$0.009 |50 K| $4.50 |$3,240 |
 |合計|||$8.50|$6,120 |
 
@@ -250,7 +252,7 @@ Azure Cosmos DB の予約容量では、すべての Azure リージョンにわ
 
 |**[リージョン]**| **100 RU/秒あたりの時間単位の料金**|**単位 (RU/秒)**| **請求額 (時間単位)**| **請求額 (月単位)**|
 |----|----|----|----|----|
-|米国東部|$0.008 |50 K|$4|$2,880 |
+|East US|$0.008 |50 K|$4|$2,880 |
 |東日本|$0.009 |50 K| $4.50 |$3,240 |
 |||従量課金制|$8.50|$6120|
 |購入した予約容量|$0.0064 (20% の割引) |100 RU/秒または $8 分の事前購入済み容量 |-$8|-$5,760 |

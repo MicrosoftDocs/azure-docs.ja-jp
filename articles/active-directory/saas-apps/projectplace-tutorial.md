@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aae6de49a3df3f1e648b99aa9936d6af85fc020f
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 179721075484c35c5ebbb3d936b83bc407b75a8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093536"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>チュートリアル:Projectplace と Azure Active Directory の統合
 

@@ -12,11 +12,11 @@ ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104886"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204859"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して RSS フィードを管理する
 

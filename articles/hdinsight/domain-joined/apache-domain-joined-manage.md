@@ -8,19 +8,19 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 951bd74c67c77c944a17e41646c4fe49ef46b33f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fa215f843fd025d26ba0f583b96f3bb7e63c9ed
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725678"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488724"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザーとロール、および ESP クラスターを管理する方法について説明します。
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>VSCode を使用してドメイン参加済みクラスターにリンクする
 
-Apache Ambari マネージド ユーザー名を使用して、通常のクラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用して、セキュリティ保護された Apache Hadoop クラスターをリンクすることもできます。
+Apache Ambari マネージド ユーザー名を使用して、通常のクラスターをリンクできます。また、ドメイン ユーザー名 (`user1@contoso.com` など) を使用して、セキュリティ保護された Apache Hadoop クラスターをリンクすることもできます。
 1. **Ctrl + Shift + P** キーを押してコマンド パレットを開き、「**HDInsight: Link a cluster**」と入力します。
 
    ![リンク クラスターのコマンド](./media/apache-domain-joined-manage/link-cluster-command.png)
@@ -40,7 +40,7 @@ Apache Ambari マネージド ユーザー名を使用して、通常のクラ�
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>IntelliJ を使用してドメイン参加済みクラスターにリンクする
 
-Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。 
+Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (`user1@contoso.com` など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。 
 1. **Azure 用エクスプローラー**の **[Link a cluster]\(クラスターのリンク\)** をクリックします。
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
@@ -64,7 +64,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Eclipse を使用してドメイン参加済みクラスターにリンクする
 
-Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。
+Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (`user1@contoso.com` など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。
 1. **Azure 用エクスプローラー**の **[Link a cluster]\(クラスターのリンク\)** をクリックします。
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)

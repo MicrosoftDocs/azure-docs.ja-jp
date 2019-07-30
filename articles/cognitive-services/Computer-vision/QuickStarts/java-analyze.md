@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ba6c0c8627ce1e46f36f7a85a9e92d85236b7ee6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: eadf3aca848f1b8ad24cd387e1988cdf8ea55580
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009295"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604432"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>クイック スタート:Computer Vision の REST API と Java を使用してリモート画像を分析する
 
@@ -72,7 +72,7 @@ public class Main {
     // from the West US region, replace "westcentralus" in the URL
     // below with "westus".
     //
-    // Free trial subscription keys are generated in the "westus" region.
+    // Free trial subscription keys are generated in the "westcentralus" region.
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     private static final String uriBase =
@@ -203,10 +203,6 @@ REST Response:
   }]
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になった場合は、コンパイル済みのクラスやインポートされたライブラリを含む Java プロジェクトを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,14 +5,12 @@ metadata:
   title: Azure Container Instances のドキュメント - チュートリアル | Microsoft Docs
   description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。
   services: container-instances
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-instances
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、コンテナー インスタンスを作成および管理する方法を確認してください。<p>完全なコンテナー オーケストレーション ソリューションが必要な場合は、<a href="/azure/aks/">Azure Kubernetes Service (AKS) の ドキュメント</a>を参照してください。</p>
 sections:
@@ -66,6 +64,6 @@ sections:
           - title: コマンド ライン
             html: <p><a href="/cli/azure/container">Azure CLI</a></p><p><a href="/powershell/module/az.containerinstance">PowerShell</a></p>
           - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/containerinstance">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstances">Node.js</a></p>
+            html: <p><a href="/dotnet/api/overview/azure/containerinstance">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstances">Node.JS</a></p>
           - title: REST
             html: <p><a href="/rest/api/container-instances">REST API リファレンスに関するページ</a></p><p><a href="/azure/templates/microsoft.containerinstance/containergroups">Resource Manager テンプレート</a></p>

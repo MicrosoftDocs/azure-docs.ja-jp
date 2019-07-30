@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fdabd237fa128326673d84e889387d03f184b00
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>チュートリアル:Azure Active Directory と InsideView の統合
 
@@ -145,7 +145,7 @@ InsideView に対する Azure AD シングル サインオンを構成するに�
 
     1. **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 」と入力します。
 
-    1. **[Crm Email Mapping]\(Crm メール マッピング)\** ボックスに、「 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 」と入力します。
+    1. **[Crm Email Mapping]\(Crm メール マッピング\)** ボックスに、「 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 」と入力します。
 
     1. **[Crm First Name Mapping]\(Crm 名マッピング\)** ボックスに、「 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** 」と入力します。
 

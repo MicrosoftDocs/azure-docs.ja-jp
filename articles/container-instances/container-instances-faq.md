@@ -3,17 +3,17 @@ title: Azure Container Instances - よく寄せられる質問
 description: Azure Container Instances サービスに関連するよく寄せられる質問の回答
 services: container-instances
 author: dkkapur
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: dekapur
-ms.openlocfilehash: 99882bd23d7b94afc550247172e5b70deb23bec9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d31e2076e0ff5ddf4f84df13ac2eede482c052
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791393"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326010"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 

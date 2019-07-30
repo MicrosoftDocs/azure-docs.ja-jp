@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7055794860398ecc6296d0174a691e7fac4450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac3dbd3f2148c14780c380cc0c7f2fab2a41e165
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235244"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482398"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
@@ -106,7 +106,7 @@ Web API は、アクセス許可 ([スコープ](v2-permissions-and-consent.md)�
 
 Web API は、すべての種類のアプリ (Web サーバー アプリ、デスクトップ アプリとモバイル アプリ、シングル ページ アプリ、サーバー側のデーモン、さらにそれ以外の Web API など) からアクセス トークンを受信できます。 Web API 認証の大まかな流れは次のとおりです。
 
-![Web API 認証フロー](./media/v2-app-types/convergence-scenarios-webapi.svg)
+![Web API の認証フロー](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
 OAuth2 アクセス トークンを使用して Web API をセキュリティ保護する方法については、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの Web API コード サンプルを確認してください。
 

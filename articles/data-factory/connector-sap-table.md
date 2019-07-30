@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 06/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 4dee0e994c9e7be9677a8f1051481850990998e9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e54a69b6c2b48e50c089f8b6b7458cf91133dd85
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245468"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443300"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -29,7 +29,13 @@ SAP テーブルから、サポートされている任意のシンク データ
 
 具体的には、この SAP テーブル コネクタは以下をサポートします。
 
-- (2015 年よりも後にリリースされた最新の SAP サポート パッケージ スタックの) **SAP Business Suite バージョン 7.01 以上**、または **S/4HANA** の SAP テーブルからのデータ コピー。
+- 次の場所の SAP テーブルからのデータのコピー:
+
+    - **SAP ECC** バージョン 7.01 以降 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)
+    - **SAP BW** バージョン 7.01 以降
+    - **SAP S/4HANa**
+    - **SAP Business Suite の他の製品**のバージョン 7.01 以降 
+
 - **SAP 透過テーブル**と**ビュー**の両方からのデータ コピー。
 - **基本認証**または **SNC** (Secure Network Communications) (SNC が構成されている場合) を使用したデータ コピー。
 - **Application Server** または **Message Server** への接続。
@@ -200,21 +206,33 @@ SAP テーブルからのデータ コピーについては、次のプロパテ
 
 | プロパティ                         | 説明                                                  | 必須 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| type                             | type プロパティは **SapTableSource** に設定する必要があります。       | はい      |
+| type                             | type プロパティは **SapTableSource** に設定する必要があります。         | はい      |
 | rowCount                         | 取得する行の数。                              | いいえ       |
 | rfcTableFields                   | SAP テーブルからコピーするフィールド。 たとえば、「 `column0, column1` 」のように入力します。 | いいえ       |
-| rfcTableOptions                  | SAP テーブルの行をフィルター選択するオプション。 たとえば、「 `COLUMN0 EQ 'SOMEVALUE'` 」のように入力します。 | いいえ       |
-| customRfcReadTableFunctionModule | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。 | いいえ       |
+| rfcTableOptions                  | SAP テーブルの行をフィルター選択するオプション。 たとえば、「 `COLUMN0 EQ 'SOMEVALUE'` 」のように入力します。 この表の後にある詳細な説明を参照してください。 | いいえ       |
+| customRfcReadTableFunctionModule | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。<br>カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して ADF に返す方法を定義できます。 ただし、カスタム関数モジュールでは同様のインターフェイス (インポート、エクスポート、テーブル) を実装する必要があることに注意してください (ADF によって既定で使用される /SAPDS/RFC_READ_TABLE2 と似たもの)。 | いいえ       |
 | partitionOption                  | SAP テーブルから読み取るパーティション メカニズム。 サポートされているオプションは次のとおりです。 <br/>- **None**<br/>- **PartitionOnInt** (通常の整数値、または 0000012345 のように左側をゼロでパディングした整数値)<br/>- **PartitionOnCalendarYear** (4 桁の "YYYY" 形式)<br/>- **PartitionOnCalendarMonth** (6 桁の "YYYYMM" 形式)<br/>- **PartitionOnCalendarDate** (8 桁の "YYYYMMDD" 形式) | いいえ       |
-| partitionColumnName              | データを分割する列の名前。 | いいえ       |
+| partitionColumnName              | データを分割する列の名前。                | いいえ       |
 | partitionUpperBound              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最大値。 | いいえ       |
 | partitionLowerBound              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最小値。 | いいえ       |
-| maxPartitionsNumber              | データを分割するパーティションの最大数。 | いいえ       |
+| maxPartitionsNumber              | データを分割するパーティションの最大数。     | いいえ       |
 
 >[!TIP]
 >- 数十億行などの大量のデータが SAP テーブルにある場合、`partitionOption` と `partitionSetting` を使用してデータを小さなパーティションに分割します。その場合、データはパーティションによって読み取られ、各データ パーティションが単一の RFC 呼び出しによって SAP サーバーから取得されます。<br/>
 >- たとえば、`partitionOnInt` として `partitionOption` を受け取ると、各パーティションの行数は、*partitionUpperBound* と *partitionLowerBound* の間に収まる合計行数を *maxPartitionsNumber* で割って算出されます。<br/>
 >- コピーを高速化するためにさらにパーティションを並列実行したい場合は、`maxPartitionsNumber` を `parallelCopies` の値の倍数にすることを強くお勧めします (詳しくは[並列コピー](copy-activity-performance.md#parallel-copy)を参照)。
+
+`rfcTableOptions` では、たとえば次の一般的な SAP クエリ演算子を使用して、行をフィルター処理できます。 
+
+| Operator | 説明 |
+| :------- | :------- |
+| EQ | 等しい |
+| NE | 等しくない |
+| LT | より小さい |
+| LE | 以下 |
+| GT | より大きい |
+| GE | 以上 |
+| LIKE | LIKE 'Emma%' として |
 
 **例:**
 
@@ -260,14 +278,14 @@ SAP テーブルからデータをコピーするとき、次の SAP テーブ�
 
 | SAP ABAP の型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| C (String) | String |
+| C (String) | string |
 | I (Integer) | Int32 |
 | F (Float) | Double |
-| D (Date) | String |
-| T (Time) | String |
+| D (Date) | string |
+| T (Time) | string |
 | P (BCD Packed、Currency、Decimal、Qty) | Decimal |
-| N (Numeric) | String |
-| X (Binary および Raw) | String |
+| N (Numeric) | string |
+| X (Binary および Raw) | string |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

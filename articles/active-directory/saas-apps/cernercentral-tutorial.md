@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3595a946d930ca83b5d2f1f3d82b775bf8eb4855
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d530ce802b6735ffe0b45abdc97fe99a1a7e619b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712690"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>チュートリアル:Azure Active Directory と Cerner Central の統合
 

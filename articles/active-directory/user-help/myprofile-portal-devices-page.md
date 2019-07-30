@@ -12,19 +12,21 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9035d68e95798eb238c1836e617e485c39194c4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475857"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383036"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>マイ プロファイル (プレビュー) ポータルから接続されているデバイスを管理する
+
 **マイ プロファイル** ポータルの **[デバイス]** ページで、ご自分の職場または学校アカウントを使用して接続されているデバイスを管理して、もう所有していないものを無効にできます。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-connected-devices"></a>接続されているデバイスを表示する
+
 1. ご自分の職場または学校アカウントでサインインした後、 https://myprofile.microsoft.com/ ページに移動します。
 
 2. 左側のナビゲーション ウィンドウから **[デバイス]** を選択するか、 **[デバイス]** ブロックから **[デバイスの管理]** リンクを選択します。
@@ -36,6 +38,7 @@ ms.locfileid: "60475857"
     ![接続されているデバイスを表示している [デバイス] ページ](media/myprofile-portal/myprofile-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>デバイスを無効にする
+
 接続されているデバイスは、いつでも無効にできます。 これは、覚えがないデバイスがあったり、デバイスを紛失したり、盗難にあったりした場合に特に重要です。 デバイスは、無効にした後、ご自分の組織で認証できなくなり、ご自分の組織のリソースにアクセスすることもできなくなります。
 
 >[!Important]

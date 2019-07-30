@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bc53fadfb622794703deaff560c9083ca6a1a10
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61341707"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656834"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
 Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポートは、関数アプリ内での OpenAPI 2.0 定義の作成に使用できるプレビュー機能です。 関数アプリを使用して、そのファイルをホストできます。
@@ -75,7 +75,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
    1. **[API 定義のソース]** を **[関数]** に設定します。
    1. **[API 定義テンプレートを生成する]** をクリックし、 **[保存]** をクリックして、後で変更するためにテンプレートの定義を作成します。
    1. API 定義の URL とキーに注意してください。
-1. [継続的インテグレーションと継続的デプロイ (CI/CD) のセットアップ](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements)
+1. [継続的インテグレーションと継続的デプロイ (CI/CD) のセットアップ](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment)
 2. \site\wwwroot\.azurefunctions\swagger\swagger.json でソース管理の swagger.json を変更します。
 
 これで、リポジトリ内の swagger.json への変更は、API 定義 URL にある関数アプリ、および手順 1.c でメモしたキーでホストされるようになります。

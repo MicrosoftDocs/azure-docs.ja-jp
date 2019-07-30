@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 8ebd871c314d3ecbc0c89e6c9081926558b181fd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 684ddcd49d3cd3c3d4f0a8d6f4675e1e27bdb7b9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237109"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604883"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -49,7 +48,7 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 | カナダ中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東アジア | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 米国東部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国東部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | フランス中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | インド中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -181,7 +180,7 @@ Authorization: Bearer [Base64 access_token]
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ただし、24 khz の音声は `audio-16khz-16kbps-mono-siren` や `riff-16khz-16kbps-mono-siren` の出力形式をサポートしていません。
+> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ただし、24 kHz の音声では、`audio-16khz-16kbps-mono-siren` や `riff-16khz-16kbps-mono-siren` の出力形式はサポートされていません。
 
 ### <a name="request-body"></a>要求本文
 
@@ -213,7 +212,7 @@ Authorization: Bearer [Base64 access_token]
 
 * [.NET Core、C#](quickstart-dotnet-text-to-speech.md)
 * [Python](quickstart-python-text-to-speech.md)
-* [Node.js](quickstart-nodejs-text-to-speech.md)
+* [Node.JS](quickstart-nodejs-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP 状態コード
 
@@ -225,6 +224,7 @@ Authorization: Bearer [Base64 access_token]
 | 400 | 正しくない要求 | 必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。 |
 | 401 | 権限がありません | 要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。 |
 | 413 | 要求のエンティティが大きすぎます | SSML 入力が 1024 文字を超えています |
+| 415 | サポートされていないメディアの種類です | 間違った `Content-Type` が提供された可能性があります。 `Content-Type` は `application/ssml+xml` に設定する必要があります。 |
 | 429 | 要求が多すぎます | 使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。 |
 | 502 | 無効なゲートウェイ | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
 

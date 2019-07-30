@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67f2531b24796de1e00505fdc757f3c2244c5054
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 25f341d167cecd765fd89d9286708d0bd8df6dd2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002350"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603030"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する
 
@@ -34,14 +34,14 @@ ms.locfileid: "66002350"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.5.1` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.6.0` です。
 
 Mac 用の Cognitive Services Speech SDK は、フレームワーク バンドルとして配布されています。
 Xcode プロジェクトで [CocoaPod](https://cocoapods.org/) として使用することも、 https://aka.ms/csspeech/macosbinary からダウンロードして手動でリンクすることも可能です。 このガイドでは CocoaPod を使用します。
 
 ## <a name="create-an-xcode-project"></a>Xcode プロジェクトを作成する
 
-Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリックして新しいプロジェクトを開始します。
+Xcode を起動し、 **[File]**  >  **[New]**  >  **[Project]** の順にクリックして新しいプロジェクトを開始します。
 テンプレートの選択ダイアログで、"Cocoa App" テンプレートを選択します。
 
 以降のダイアログで、次のように選択します。
@@ -67,13 +67,7 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
 ## <a name="install-the-sdk-as-a-cocoapod"></a>SDK を CocoaPod としてインストールする
 
 1. CocoaPod 依存関係マネージャーをその[インストールの手順](https://guides.cocoapods.org/using/getting-started.html)に従ってインストールします。
-1. サンプル アプリのディレクトリに移動します (`helloworld`)。 そのディレクトリに、次の内容を含んだ `Podfile` という名前のテキスト ファイルを配置します。
-    ```
-    target 'helloworld' do
-        platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.1'
-    end
-    ```
+1. サンプル アプリのディレクトリに移動します (`helloworld`)。 そのディレクトリに、次の内容を含んだ `Podfile` という名前のテキスト ファイルを配置します。[!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
 1. ターミナルで `helloworld` ディレクトリに移動して、`pod install` コマンドを実行します。 これにより、サンプル アプリと依存関係としての Speech SDK の両方を含んだ、`helloworld.xcworkspace` という Xcode ワークスペースが生成されます。 以降、このワークスペースを使用します。
 
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
@@ -86,12 +80,11 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
 
 ## <a name="build-and-run-the-sample"></a>サンプルのビルドと実行
 
-1. デバッグ出力が表示されるようにします (**[View]** > **[Debug Area]** > **[Activate Console]**)。
-1. メニューから **[Product]\(製品\)** -> **[Run]\(実行\)** の順に選択するか、**[Play]\(プレイ\)** ボタンをクリックして、コード例をビルドし、実行します。
+1. デバッグ出力が表示されるようにします ( **[View]**  >  **[Debug Area]**  >  **[Activate Console]** )。
+1. メニューから **[Product]\(製品\)**  >  **[Run]\(実行\)** の順に選択するか、 **[Play]\(プレイ\)** ボタンをクリックして、コード例をビルドし、実行します。
 1. ボタンをクリックして何か話すと、発話した内容のテキストが画面の下部に表示されます。 アプリを初めて実行するときに、お使いのコンピューターのマイクの使用許可をアプリに与えるよう求められます。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [GitHub で Objective-C のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
-

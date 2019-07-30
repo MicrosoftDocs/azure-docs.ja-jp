@@ -3,18 +3,17 @@ title: Azure Data Factory のマッピング データ フローの [最適化] 
 description: '[最適化] タブのパーティション設定を使用した Azure Data Factory のマッピング データ フローの最適化'
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 3802a8475d8a39a2f275dbc7fcf21ce69892a117
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 40023931b2a0b3788a583a5b5240e7916b187e34
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728779"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190641"
 ---
-# <a name="mapping-data-flow-transformation-optimize-tab"></a>マッピング データ フロー 変換の [最適化] タブ
+# <a name="mapping-data-flow-transformation-optimize-tab"></a>マッピング データ フロー変換の [最適化] タブ
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -46,8 +45,13 @@ Azure Data Factory は、同様の値を持つ行が同じパーティション�
 
 ### <a name="fixed-range"></a>固定範囲
 
-パーティション分割されたデータ列内の値に対する固定の範囲を提供する式を作成する必要があります。 パーティションの傾斜を避けるため、このオプションを使用する際は、データについて十分に理解する必要があります。 式の入力値は、パーティション関数の一部として使用されます。 物理パーティションの数を設定できます。
+パーティション分割されたデータ列内の値に対する固定の範囲を提供する式を作成する必要があります。 パーティションの傾斜を避けるため、このオプションを使用する際は、データについて十分に理解する必要があります。 式に入力する値は、パーティション関数の一部として使用されます。 物理パーティションの数を設定できます。
 
 ### <a name="key"></a>キー
 
 データのカーディナリティを十分に理解している場合は、キー パーティション分割が適切なパーティション戦略になるでしょう。 キー パーティション分割では、列内の一意の値ごとにパーティションが作成されます。 パーティションの数は、データ内の一意の値に基づくため、設定することはできません。
+
+## <a name="next-steps"></a>次の手順
+
+[マッピング データ フロー パフォーマンス ガイド](concepts-data-flow-performance.md)
+[データ フローの監視](concepts-data-flow-monitoring.md)

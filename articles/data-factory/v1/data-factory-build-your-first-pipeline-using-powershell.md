@@ -14,17 +14,16 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9d273886b3add43818af80915e42b4aa7ca69a89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f18fc8a18cbcf5d85b68ed40790eda36d653812
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146881"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836589"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
@@ -164,8 +163,8 @@ ms.locfileid: "66146881"
 
    | プロパティ | 説明 |
    |:--- |:--- |
-   | ClusterSize |HDInsight クラスターのサイズを指定します。 |
-   | TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
+   | clusterSize |HDInsight クラスターのサイズを指定します。 |
+   | timeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
    | linkedServiceName |HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
 
     以下の点に注意してください。

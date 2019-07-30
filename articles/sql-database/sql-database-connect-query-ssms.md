@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b060c971218561f285dbd2292529e01a0069d357
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359985"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147738"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: SQL Server Management Studio を使用して Azure SQL データベースに接続しクエリを実行する
 
@@ -26,7 +26,7 @@ ms.locfileid: "59359985"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|
@@ -37,7 +37,6 @@ ms.locfileid: "59359985"
   |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
   |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
   |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
-  |||
 
   > [!IMPORTANT]
   > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
@@ -85,15 +84,15 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 4. **[接続]** を選択します。 オブジェクト エクスプローラー ウィンドウが開きます。
 
-5. データベースのオブジェクトを表示するには、**[データベース]** を展開して、**mySampleDatabase** を展開します。
+5. データベースのオブジェクトを表示するには、 **[データベース]** を展開して、**mySampleDatabase** を展開します。
 
-   ![データベース オブジェクトを表示する](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase オブジェクト](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>データのクエリを実行する
 
 次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL のコードを実行して、カテゴリごとに上位 20 個の製品を照会します。
 
-1. オブジェクト エクスプローラーで **mySampleDatabase** を右クリックし、**[新しいクエリ]** を選択します。 データベースに接続された新しいクエリ ウィンドウが開きます。
+1. オブジェクト エクスプローラーで **mySampleDatabase** を右クリックし、 **[新しいクエリ]** を選択します。 データベースに接続された新しいクエリ ウィンドウが開きます。
 
 2. クエリ ウィンドウに、この SQL クエリを貼り付けます。
 
@@ -104,9 +103,9 @@ SMSS で、Azure SQL Database サーバーに接続します。
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. ツールバーで、**[実行する]** を選択して、`Product` および `ProductCategory` テーブルからデータを取得します。
+3. ツールバーで、 **[実行する]** を選択して、`Product` および `ProductCategory` テーブルからデータを取得します。
 
-    ![2 つのテーブルからデータを取得するクエリ](./media/sql-database-connect-query-ssms/query2.png)
+    ![Product と ProductCategory のテーブルからデータを取得するためのクエリ](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>データを挿入する
 
@@ -133,7 +132,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
            ,GETDATE() );
    ```
 
-2. **[実行する]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
+2. **[実行する]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
 ## <a name="view-the-result"></a>結果を表示する
 
@@ -146,7 +145,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 2. **[Execute (実行)]** を選択します。 次の結果が表示されます。
 
-   ![result](./media/sql-database-connect-query-ssms/result.png)
+   ![Product テーブルに対するクエリの結果](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>データの更新
 
@@ -160,7 +159,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行する]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
+2. **[実行する]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
 ## <a name="delete-data"></a>データの削除
 
@@ -173,7 +172,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行する]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、**(1 行処理されました)** と表示されます。
+2. **[実行する]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

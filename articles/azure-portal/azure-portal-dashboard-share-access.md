@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: c07a9d92cac13d6325e66f44426f1a64e8ac53cb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fbbc8a4f636a95d18baa0dc5de541279ce36789b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096202"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60551998"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
 構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
@@ -70,11 +70,11 @@ ms.locfileid: "47096202"
    
      ![select user](./media/azure-portal-dashboard-share-access/select-user.png) 
 5. ユーザーまたはグループを追加したら、 **[OK]** を選択します。 
-6. 新しい割り当てがユーザーの一覧に追加されます。 対応する **[アクセス]** 欄が、**[継承済み]** ではなく **[割り当て済み]** になっていることに注目してください。
+6. 新しい割り当てがユーザーの一覧に追加されます。 対応する **[アクセス]** 欄が、 **[継承済み]** ではなく **[割り当て済み]** になっていることに注目してください。
    
      ![assigned roles](./media/azure-portal-dashboard-share-access/assigned-roles.png)
 
 ## <a name="next-steps"></a>次の手順
-* 一連のロールについては、「 [RBAC: 組み込みのロール](../role-based-access-control/built-in-roles.md)」を参照してください。
+* ロールの一覧については、[RBAC: 組み込みのロール](../role-based-access-control/built-in-roles.md)に関するページをご覧ください。
 * リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
 

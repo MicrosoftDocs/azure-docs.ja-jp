@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: f3dd4d20c6455e97b566ed435b14437d614e25b4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 9c445ea685518cec77089ce644a79305ff7f3e9e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466442"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606584"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>クイック スタート:.NET Core 用 Speech SDK を使用して音声を認識する
 
-クイック スタートは[音声翻訳](quickstart-translate-speech-dotnetcore-windows.md)にも使用できます。
+クイック スタートは[テキスト読み上げ](quickstart-text-to-speech-dotnetcore.md)と[音声翻訳](quickstart-translate-speech-dotnetcore-windows.md)にも使用できます。
 
 必要に応じて、別のプログラミング言語や環境を選択します。<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -57,11 +57,11 @@ ms.locfileid: "65466442"
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-1. アプリケーションをビルドします。 メニュー バーから、**[ビルド]** > **[ソリューションのビルド]** を選択します。 コードはエラーなくコンパイルされるはずです。
+1. アプリケーションをビルドします。 メニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 コードはエラーなくコンパイルされるはずです。
 
     ![[ソリューションのビルド] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-dotnetcore-windows-05-build.png "成功したビルド")
 
-1. アプリケーションを起動します。 メニュー バーから、**[デバッグ]** > **[デバッグの開始]** を選択するか、**F5** キーを押します。
+1. アプリケーションを起動します。 メニュー バーから、 **[デバッグ]**  >  **[デバッグの開始]** を選択するか、**F5** キーを押します。
 
     ![[デバッグの開始] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "アプリのデバッグの開始")
 

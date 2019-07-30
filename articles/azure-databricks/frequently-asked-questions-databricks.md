@@ -1,5 +1,5 @@
 ---
-title: 'Azure Databricks: 一般的な質問とヘルプ'
+title: Azure Databricks:一般的な質問とヘルプ
 description: Azure Databricks に関する一般的な質問の回答とトラブルシューティング情報を確認します。
 services: azure-databricks
 author: mamccrea
@@ -10,11 +10,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60784709"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
@@ -40,17 +40,17 @@ ms.locfileid: "50138363"
 
 ここでは、Databricks で発生する可能性がある問題について説明します。
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題: このサブスクリプションが名前空間 ‘Microsoft.Databricks’ を使用するように登録されていない
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題: このサブスクリプションは名前空間 "Microsoft.Databricks" を使うように登録されない
 
 #### <a name="error-message"></a>エラー メッセージ
 
-"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。 (コード: MissingSubscriptionRegistration)"
+"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。 (コード:MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>解決策
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-1. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
-1. リソース プロバイダーの一覧で、**[Microsoft.Databricks]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+1. **[サブスクリプション]** 、使っているサブスクリプション、 **[リソース プロバイダー]** の順に選びます。 
+1. リソース プロバイダーの一覧で、 **[Microsoft.Databricks]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
 
 
 ### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>問題: アカウント (電子メール アドレス) に、Azure Portal の Databricks ワークスペース リソースの所有者または共同作成者ロールがない
@@ -67,7 +67,7 @@ ms.locfileid: "50138363"
 
 * このエラーは、電子メール ドメイン名が Azure AD の複数のディレクトリに割り当てられている場合にも発生する可能性があります。 この問題を回避するには、Databricks ワークスペースを持つサブスクリプションを含むディレクトリで新しいユーザーを作成します。
 
-    a. Azure Portal で、Azure AD に移動します。 **[ユーザーとグループ]** > **[ユーザーの追加]** の順に選びます。
+    a. Azure Portal で、Azure AD に移動します。 **[ユーザーとグループ]**  >  **[ユーザーの追加]** の順に選びます。
 
     b. `@<your_domain>` というメール アドレスの代わりに、`@<tenant_name>.onmicrosoft.com` のメール アドレスでユーザーを追加します。 このオプションは、Azure Portal の Azure AD の **[カスタム ドメイン]** で確認できます。
     
@@ -78,7 +78,7 @@ ms.locfileid: "50138363"
     e. このユーザーとして Databricks ワークスペースを起動します。
 
 
-### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>問題: アカウント (電子メール) が Databricks に登録されていない 
+### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>問題: アカウント (メール アドレス) が Databricks に登録されていない 
 
 #### <a name="solution"></a>解決策
 
@@ -88,24 +88,24 @@ ms.locfileid: "50138363"
 
 #### <a name="error-message"></a>エラー メッセージ
 
-"クラウド プロバイダーの起動エラー: クラスターの設定中にクラウド プロバイダーのエラーが発生しました。 詳細については、Databricks ガイドを参照してください。 Azure エラー コード: PublicIPCountLimitReached。 Azure エラー メッセージ: このリージョンのこのサブスクリプションに 60 個を超えるパブリック IP アドレスを作成することはできません。"
+"Cloud Provider Launch Failure:A cloud provider error was encountered while setting up the cluster. 詳細については、Databricks ガイドを参照してください。 Azure error code:PublicIPCountLimitReached. Azure のエラー メッセージ:このリージョンのこのサブスクリプションに 60 個を超えるパブリック IP アドレスを作成することはできません。"
 
 #### <a name="solution"></a>解決策
 
-Databricks クラスターは、ノードごとに 1 つのパブリック IP アドレスを使用します。 サブスクリプションがすべてのパブリック IP を既に使用している場合は、[クォータを増やすよう要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)する必要があります。 **[問題の種類]** として **[クォータ]** を選び、**[クォータの種類]** として **[ネットワーク: ARM]** を選びます。 **[詳細]** で、パブリック IP アドレスのクォータの増量を要求します。 たとえば現在の上限が 60 で、100 個のノード クラスターを作成する場合は、上限を 160 に増やすよう要求します。
+Databricks クラスターは、ノードごとに 1 つのパブリック IP アドレスを使用します。 サブスクリプションがすべてのパブリック IP を既に使用している場合は、[クォータを増やすよう要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)する必要があります。 **[問題の種類]** として **[クォータ]** を選択し、 **[クォータの種類]** として **[ネットワーク: ARM]** を選択します。 **[詳細]** で、パブリック IP アドレスのクォータの増量を要求します。 たとえば現在の上限が 60 で、100 個のノード クラスターを作成する場合は、上限を 160 に増やすよう要求します。
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>問題: クラスターのセットアップ中に 2 番目の種類のクラウド プロバイダー起動エラーが発生する (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>エラー メッセージ
 
-"クラウド プロバイダーの起動エラー: クラスターの設定中にクラウド プロバイダーのエラーが発生しました。 詳細については、Databricks ガイドを参照してください。
-Azure のエラー コード: MissingSubscriptionRegistration Azure エラー メッセージ: サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません。 サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。
+"Cloud Provider Launch Failure:A cloud provider error was encountered while setting up the cluster. 詳細については、Databricks ガイドを参照してください。
+Azure error code:MissingSubscriptionRegistration Azure のエラー メッセージ:サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません サブスクリプションの登録方法については、 https://aka.ms/rps-not-found を参照してください。
 
 #### <a name="solution"></a>解決策
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-1. **[サブスクリプション]**、使っているサブスクリプション、**[リソース プロバイダー]** の順に選びます。 
-1. リソースプロバイダーの一覧で、**[Microsoft.Compute]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+1. **[サブスクリプション]** 、使っているサブスクリプション、 **[リソース プロバイダー]** の順に選びます。 
+1. リソースプロバイダーの一覧で、 **[Microsoft.Compute]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
 
 詳細な手順については、「[リソースプロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」をご覧ください。
 
@@ -117,10 +117,10 @@ Azure Databricks は、Azure Active Directory に統合されています。 Azu
 
 #### <a name="solution"></a>解決策
 
-グローバル管理者として Azure Portal にログインします。 Azure Active Directory で、**[ユーザー設定]** タブに移動し、**[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** が **[はい]** に設定されていることを確認します。
+グローバル管理者として Azure Portal にログインします。 Azure Active Directory で、 **[ユーザー設定]** タブに移動し、 **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** が **[はい]** に設定されていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [クイックスタート: Azure Databricks の使用を開始する](quickstart-create-databricks-workspace-portal.md)
+- [クイック スタート:Azure Databricks の概要](quickstart-create-databricks-workspace-portal.md)
 - [Azure Databricks とは](what-is-azure-databricks.md)
 

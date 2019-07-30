@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 49e8fbef7af16e109c1e9f1e0d8c9aab1a008e21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257996"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442067"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -133,7 +133,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari ユーザー、グループ、およびアクセス許可
 
-[ドメイン参加済み](./domain-joined/apache-domain-joined-introduction.md) HDInsight クラスターを使用する場合は、ユーザー、グループ、アクセス許可の管理がサポートされています。 ドメイン参加済みクラスターでの Ambari 管理 UI の使用の詳細については、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/apache-domain-joined-introduction.md)に関する記事を参照してください。
+[ドメイン参加済み](./domain-joined/hdinsight-security-overview.md) HDInsight クラスターを使用する場合は、ユーザー、グループ、アクセス許可の管理がサポートされています。 ドメイン参加済みクラスターでの Ambari 管理 UI の使用の詳細については、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/hdinsight-security-overview.md)に関する記事を参照してください。
 
 > [!WARNING]  
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。

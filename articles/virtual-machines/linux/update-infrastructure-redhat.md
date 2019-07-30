@@ -4,7 +4,7 @@ description: Microsoft Azure のオンデマンド Red Hat Enterprise Linux イ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 5/28/2019
+ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: e950a92925e77fa05708d2af3e04e7991243f613
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 2add03d68b00fb18fb4323a6acd04480b3770c1c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357745"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708417"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -31,27 +31,40 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
-* 現時点では、Azure RHUI は、各 RHEL ファミリ (RHEL6 または RHEL7) の最新のマイナー リリースのみをサポートしています。 RHUI に接続された RHEL VM インスタンスを最新のミラー バージョンにアップグレードするには、`sudo yum update` を実行します。
+* Azure RHUI は、Azure で作成されるすべての RHEL PAYG VM をサポートする更新インフラストラクチャです。 これは、お使いの PAYG RHEL VM を Subscription Manager や Satellite、またはその他の更新ソースに登録することを妨げるものではありませんが、PAYG VM でそれを行うと、間接的に二重請求が発生します。 詳しくは、以下の点を参照してください。
+* Azure でホストされている RHUI へのアクセスは、RHEL PAYG イメージの料金に含まれています。 Azure でホストされている RHUI から PAYG RHEL VM の登録を解除した場合は、仮想マシンが Bring-Your-Own-License (BYOL: ライセンス持ち込み) タイプの VM に変換されません。 そのため、別の更新ソースに同じ VM を登録した場合は、_間接_料金が二重に発生する可能性があります。 1 つ目は Azure RHEL ソフトウェア料金に対するものです。 2 つ目は、以前に購入した Red Hat のサブスクリプションに対するものです。 Azure でホストされている RHUI 以外の更新インフラストラクチャを常に使用する必要がある場合は、[RHEL BYOS イメージ](https://aka.ms/rhel-byos)を使用するための登録を検討してください。
+* RHUI の既定の動作では、`sudo yum update` を実行したときに RHEL VM は最新のマイナー バージョンにアップグレードされます。
 
     たとえば、RHEL 7.4 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.6 VM (RHEL7 ファミリ内の最新のマイナー バージョン) にアップグレードされます。
 
-    この動作を回避するには、[Azure 用の Red Hat ベースの仮想マシンの作成とアップロード](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事の説明に従って、独自のイメージを作成する必要があります。 その後、別の更新インフラストラクチャに接続する必要があります ([直接 Red Hat のコンテンツ配信サーバー](https://access.redhat.com/solutions/253273)または [Red Hat Satellite サーバーに](https://access.redhat.com/products/red-hat-satellite))。
+    この動作を回避するには、[拡張更新サポート チャネル](#rhel-eus-and-version-locking-rhel-vms)に切り替えるか、[Azure 用の Red Hat ベースの仮想マシンの作成とアップロード](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事の説明に従って、独自のイメージを作成することができます。 独自のイメージを構築する場合は、それを別の更新インフラストラクチャ ([直接 Red Hat のコンテンツ配信サーバー](https://access.redhat.com/solutions/253273)または [Red Hat Satellite サーバー](https://access.redhat.com/products/red-hat-satellite)) に接続する必要があります。
 
-* Azure でホストされている RHUI へのアクセスは、RHEL PAYG イメージの料金に含まれています。 Azure でホストされている RHUI から PAYG RHEL VM の登録を解除した場合は、仮想マシンが Bring-Your-Own-License (BYOL: ライセンス持ち込み) タイプの VM に変換されません。 そのため、別の更新ソースに同じ VM を登録した場合は、_間接_料金が二重に発生する可能性があります。 1 つ目は Azure RHEL ソフトウェア料金に対するものです。 2 つ目は、以前に購入した Red Hat のサブスクリプションに対するものです。 Azure でホストされている RHUI 以外の更新インフラストラクチャを常に使用する必要がある場合は、独自の (BYOL タイプの) イメージを作成してデプロイすることを検討してください。 このプロセスについては、[Azure 用の Red Hat ベースの仮想マシンの作成とアップロード](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+
 
 * Azure での RHEL SAP PAYG イメージ (RHEL for SAP、RHEL for SAP HANA、および RHEL for SAP Business Applications) は、SAP 認定に必要な特定の RHEL マイナー バージョンのままになっている専用の RHUI チャネルに接続されます。
 
 * Azure でホストされている RHUI へのアクセスは、[データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内の VM に限定されます。 すべての VM トラフィックをオンプレミスのネットワーク インフラストラクチャ経由でプロキシ処理している場合は、RHEL PAYG VM 用のユーザー定義のルートを設定して Azure RHUI にアクセスしなければならない場合があります。
 
 ## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS およびバージョン固定の RHEL VM
-一部の顧客は、RHEL VM を特定の RHEL マイナー リリースに固定したいと考える可能性があります。 リポジトリを Extended Update Support リポジトリを指すように更新することによって、RHEL VM を特定のマイナー バージョンに固定できます。 RHEL VM を特定のマイナー リリースに固定するには、次の手順を使用します。
+一部の顧客は、RHEL VM を特定の RHEL マイナー リリースに固定したいと考える可能性があります。 リポジトリを Extended Update Support リポジトリを指すように更新することによって、RHEL VM を特定のマイナー バージョンに固定できます。 また、EUS バージョン ロック操作を取り消すこともできます。
+
+>[!NOTE]
+> EUS は、RHEL Extras ではサポートされていません。 つまり、通常 RHEL Extras チャネルから利用できるパッケージをインストールする場合、EUS を使用している間はそれを実行できないことになります。 Red Hat Extras の成果物ライフサイクルの詳細については、[こちら](https://access.redhat.com/support/policy/updates/extras/)をご覧ください。
+
+本書の執筆時点では、RHEL <= 7.3 の EUS サポートは終了しています。 詳細については、[Red Hat ドキュメント](https://access.redhat.com/support/policy/updates/errata/)の「Red Hat Enterprise Linux の長期サポート アドオン」セクションを参照してください。
+* RHEL 7.4 EUS サポートは、2019 年 8 月 31 日に終了します
+* RHEL 7.5 EUS サポートは、2020 年 4 月 30 日に終了します
+* RHEL 7.6 EUS サポートは、2020 年 10 月 31 日に終了します
+
+### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM を EUS に切り替える (特定のマイナー バージョンにバージョン ロックする)
+RHEL VM を特定のマイナー リリースに固定するには、次の手順を使用します (ルートとして実行)。
 
 >[!NOTE]
 > このことは、EUS が利用できるバージョンの RHEL にのみ当てはまります。 この記事の作成時点で、これに該当するのは RHEL 7.2-7.6 です。 詳しくは、[Red Hat Enterprise Linux のライフ サイクル](https://access.redhat.com/support/policy/updates/errata)に関するページをご覧ください。
 
 1. EUS 以外のリポジトリを無効にします。
     ```bash
-    sudo yum --disablerepo='*' remove 'rhui-azure-rhel7'
+    yum --disablerepo='*' remove 'rhui-azure-rhel7'
     ```
 
 1. EUS リポジトリを追加します。
@@ -59,13 +72,30 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. releasever 変数をロックします。
+1. releasever 変数をロックします (ルートとして実行):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
 
     >[!NOTE]
     > 上の命令は、RHEL マイナー リリースを現在のマイナー リリースに固定します。 アップグレードに固定しており、最新ではない将来のマイナー リリースに固定する場合は、特定のマイナー リリースを入力します。 たとえば、`echo 7.5 > /etc/yum/vars/releasever` は RHEL バージョンを RHEL 7.5 に固定します。
+
+1. RHEL VM を更新します。
+    ```bash
+    sudo yum update
+    ```
+
+### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL VM を非 EUS に再び切り替える (バージョン ロックを削除)
+次をルートとして実行します。
+1. releasever ファイルを削除します。
+    ```bash
+    rm /etc/yum/vars/releasever
+     ```
+
+1. EUS リポジトリを無効にします。
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel7-eus'
+   ```
 
 1. RHEL VM を更新します。
     ```bash
@@ -121,9 +151,9 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
 
 1. Azure RHUI エンドポイントの VM 構成を確認します。
 
-    a. `/etc/yum.repos.d/rh-cloud.repo` ファイルの `[rhui-microsoft-azure-rhel*]` セクションの `baseurl` に `rhui-[1-3].microsoft.com` への参照が含まれているかどうかを確認します。 含まれていれば、新しい Aure RHUI を使用していることになります。
+    1. `/etc/yum.repos.d/rh-cloud.repo` ファイルの `[rhui-microsoft-azure-rhel*]` セクションの `baseurl` に `rhui-[1-3].microsoft.com` への参照が含まれているかどうかを確認します。 含まれていれば、新しい Aure RHUI を使用していることになります。
 
-    b. 次のパターン `mirrorlist.*cds[1-4].cloudapp.net` の場所をポイントしている場合、構成の更新が必要です。 古い VM スナップショットが使用されているため、新しい Azure RHUI をポイントするように更新する必要があります。
+    1. 次のパターン `mirrorlist.*cds[1-4].cloudapp.net` の場所をポイントしている場合、構成の更新が必要です。 古い VM スナップショットが使用されているため、新しい Azure RHUI をポイントするように更新する必要があります。
 
 1. Azure でホストされている RHUI へのアクセスは、[[Azure データセンターの IP 範囲]](https://www.microsoft.com/download/details.aspx?id=41653) 内の VM に限定されます。
 
@@ -142,7 +172,7 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
   ```bash
   yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel6.config' install 'rhui-azure-rhel6'
   ```
-        
+
 - RHEL 7 の場合:
   ```bash
   yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'

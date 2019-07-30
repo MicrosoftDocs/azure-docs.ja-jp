@@ -29,6 +29,8 @@
   items:
     - name: ASP.NET Core で動的な構成を有効にする
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: .NET Core アプリで動的な構成を有効にする
+      href: enable-dynamic-configuration-dotnet-core.md
     - name: .NET Core アプリ内で機能フラグを使用する
       href: use-feature-flags-dotnet-core.md
     - name: 機能フラグを管理する
@@ -73,10 +75,12 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework ビルダー
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: Java Spring プロバイダー
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
         - name: .NET Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
+        - name: Java Spring プロバイダー
+          href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
+        - name: Java Azure SDK
+          href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: 機能の管理

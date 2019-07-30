@@ -3,17 +3,17 @@ title: Azure Batch プールでノード エンドポイントを構成する | 
 description: Azure Batch プールの計算ノードで SSH ポートまたは RDP ポートへのアクセスを構成する方法と無効にする方法。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
-ms.openlocfilehash: 9b6b28b9f55623fbdff6ab80c889141c8815600f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071526"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322468"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールの計算ノードへのリモート アクセスを構成する/無効にする
 
@@ -53,7 +53,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 次の Python コードの抜粋からは、Linux プールの計算ノードに SSH エンドポイントを構成し、すべてのインターネット トラフィックを拒否する方法を確認できます。 このエンドポイントでは、範囲 *4000 - 4100* のポートのフロントエンド プールが使用されます。 
 
 ```python
-pool.network_configuration=batchmodels.NetworkConfiguration(
+pool.network_configuration = batchmodels.NetworkConfiguration(
     endpoint_configuration=batchmodels.PoolEndpointConfiguration(
         inbound_nat_pools=[batchmodels.InboundNATPool(
             name='SSH',
@@ -63,14 +63,14 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
             frontend_port_range_end=4100,
             network_security_group_rules=[
                 batchmodels.NetworkSecurityGroupRule(
-                priority=170,
-                access=batchmodels.NetworkSecurityGroupRuleAccess.deny,
-                source_address_prefix='Internet'
+                    priority=170,
+                    access=batchmodels.NetworkSecurityGroupRuleAccess.deny,
+                    source_address_prefix='Internet'
                 )
             ]
         )
         ]
-    ) 
+    )
 )
 ```
 
@@ -97,7 +97,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 次の Python コードの抜粋からは、Linux プールの計算ノードに SSH エンドポイントを構成し、サブネット *192.168.1.0/24* からのみアクセスを許可する方法を確認できます。 2 つ目の NSG ルールによって、このサブネットに一致しないトラフィックが拒否されます。
 
 ```python
-pool.network_configuration=batchmodels.NetworkConfiguration(
+pool.network_configuration = batchmodels.NetworkConfiguration(
     endpoint_configuration=batchmodels.PoolEndpointConfiguration(
         inbound_nat_pools=[batchmodels.InboundNATPool(
             name='SSH',
@@ -107,14 +107,14 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
             frontend_port_range_end=4100,
             network_security_group_rules=[
                 batchmodels.NetworkSecurityGroupRule(
-                priority=170,
-                access='allow',
-                source_address_prefix='192.168.1.0/24'
+                    priority=170,
+                    access='allow',
+                    source_address_prefix='192.168.1.0/24'
                 ),
                 batchmodels.NetworkSecurityGroupRule(
-                priority=175,
-                access='deny',
-                source_address_prefix='*'
+                    priority=175,
+                    access='deny',
+                    source_address_prefix='*'
                 )
             ]
         )

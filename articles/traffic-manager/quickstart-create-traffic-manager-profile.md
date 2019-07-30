@@ -2,7 +2,8 @@
 title: クイック スタート - アプリケーションの高可用性を実現する Traffic Manager プロファイルを Azure portal を使って作成する
 description: このクイック スタート記事では、高可用性 Web アプリケーションを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-author: KumudD
+author: asudbring
+manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: kumud
-ms.openlocfilehash: 2cd8830f4b2b7c972ba8972e686be984bb96fd04
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: allensu
+ms.openlocfilehash: 1f7fd3398c24eb82b1a2308f3b52df382c0aab7e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760666"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224690"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Traffic Manager プロファイルの作成
 
@@ -34,49 +35,32 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 このクイック スタートでは、2 つの異なる Azure リージョン ("*米国東部*" と "*西ヨーロッパ*") にデプロイされた、2 つの Web アプリケーション インスタンスが必要になります。 これらインスタンスは、それぞれ Traffic Manager のプライマリとフェールオーバーのエンドポイントとして機能します。
 
-1. 画面の左上で、**[リソースの作成]** > **[Web]** > **[Web アプリ]** を選択します。
-2. **[Web アプリ]** で、次の設定を入力または選択します。
+1. 画面の左上で、 **[リソースの作成]**  >  **[Web]**  >  **[Web アプリ]** を選択します。
 
-    | Setting | 値 |
-    | ------- | ----- |
-    | アプリの名前 | Web アプリの一意の名前を入力します。  |
-    | サブスクリプション | Web アプリの適用先となるサブスクリプションを選択します。 |
-    | リソース グループ | **[新規作成]** を選択し、「*myResourceGroupTM1*」と入力します。 |
-    | OS | オペレーティング システムとして、**[Windows]** を選択します。 |
-    | [発行] | 発行する形式として、**[コード]** を選択します。 |
+1. **[Web アプリの作成]** の **[基本]** タブで、次の値を入力または選択します。
 
-3. **[App Service プラン/場所]** を選択します。
-4. **[App Service プラン]** で、**[新規作成]** を選択します。
-5. **[新しい App Service プラン]** で、次の設定を入力または選択します。
+   - **[サブスクリプション]**  >  **[リソース グループ]** : **[新規作成]** を選択し、「**myResourceGroupTM1**」と入力します。
+   - **[インスタンスの詳細]**  >  **[名前]** :「*myWebAppEastUS*」と入力します。
+   - **[インスタンスの詳細]**  >  **[公開]** : **[コード]** を選択します。
+   - **[インスタンスの詳細]**  >  **[ランタイム スタック]** : **[ASP.NET V4.7]** を選択します。
+   - **[インスタンスの詳細]**  >  **[オペレーティング システム]** : **[Windows]** を選択します。
+   - **[インスタンスの詳細]**  >  **[リージョン]** : **[米国東部]** を選択します。
+   - **[App Service プラン]**  >  **[Windows Plan (East US)]\(Windows プラン (米国東部)\)** : **[新規作成]** を選択し、「**myAppServicePlanEastUS**」と入力します。
+   - **[App Service プラン]**  >  **[SKU とサイズ]** : **[Standard S1]** を選択します。
+   
+3. **[監視]** タブを選択するか、または **[Next:Monitoring]\(次へ: 監視\)** を選択します。  **[監視]** の下で **[Application Insights]**  >  **[Application Insights を有効にする]** を **[いいえ]** に設定します。
 
-    | Setting | 値 |
-    | ------- | ----- |
-    | App Service プラン | 「*myAppServicePlanEastUS*」と入力します。 |
-    | Location | 米国東部 |
-    | [価格レベル]  | S1 Standard |
+4. **[確認と作成]** を選択します。
 
-6. **[OK]** を選択します。
+5. 設定を確認し、 **[作成]** をクリックします。  Web アプリが正常にデプロイされると、既定の Web サイトが作成されます。
 
-7. **[Web アプリ]** で、**[作成]** を選択します。 Web アプリが正常にデプロイされると、既定の Web サイトが作成されます。
-
-8. 別の Azure リージョンに 2 つ目の Web サイトを作成するには、次の設定を使用して、手順 1. から手順 7. を繰り返します。
-
-    | Setting | 値 |
-    | --------| ----- |
-    | Name | Web アプリの一意の名前を入力します。 |
-    | サブスクリプション | Web アプリの適用先となるサブスクリプションを選択します。 |
-    | リソース グループ | **[新規作成]** を選択し、「*myResourceGroupTM2*」と入力します。 |
-    | OS | オペレーティング システムとして、**[Windows]** を選択します。 |
-    | [発行] | 発行する形式として、**[コード]** を選択します。 |
-    | App Service プラン/場所 | 「*myAppServicePlanWestEurope*」と入力します。 |
-    | Location | 西ヨーロッパ |
-    | [価格レベル]  | S1 Standard |
+6. 上記の手順に従って、Web アプリをもう 1 つ作成します。作成する Web アプリの名前は *myWebAppWestEurope*、 **[リソース グループ]** の名前は *myResourceGroupTM2*、 **[リージョン]** は " *[西ヨーロッパ]* "、 **[App Service プラン]** の名前は **myAppServicePlanWestEurope**、それ以外のすべての設定は *myWebAppEastUS* と同じです。
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 
 エンドポイントの優先度に基づいてユーザー トラフィックを誘導する Traffic Manager プロファイルを作成します。
 
-1. 画面の左上で、**[リソースの作成]** > **[ネットワーク]** > **[Traffic Manager プロファイル]** の順に選択します。
+1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]** の順に選択します。
 2. **[Traffic Manager プロファイルの作成]** ブレードで、次の設定を入力するか、選択します。
 
     | Setting | 値 |
@@ -95,7 +79,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を入力します。
 2. 検索結果からプロファイルを選択します。
-3. **[Traffic Manager プロファイル]** の **[設定]** セクションで、**[エンドポイント]** を選択し、**[追加]** を選択します。
+3. **[Traffic Manager プロファイル]** の **[設定]** セクションで、 **[エンドポイント]** を選択し、 **[追加]** を選択します。
 4. 次の設定を入力または選択します。
 
     | Setting | 値 |
@@ -103,7 +87,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | type | **[Azure エンドポイント]** を選択します。 |
     | Name | 「*myPrimaryEndpoint*」と入力します。 |
     | ターゲット リソースの種類 | **[App Service]** を選択します。 |
-    | ターゲット リソース | **[アプリ サービスの選択]** > **[米国東部]** を選択します。 |
+    | ターゲット リソース | **[アプリ サービスの選択]**  >  **[米国東部]** を選択します。 |
     | 優先順位 | **[1]** を選択します。 正常なトラフィックはすべてこのエンドポイントに送られます。 |
 
     ![Traffic Manager プロファイルにエンドポイントを追加する画面のスクリーンショット。](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
@@ -116,7 +100,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | type | **[Azure エンドポイント]** を選択します。 |
     | Name | 「*myFailoverEndpoint*」と入力します。 |
     | ターゲット リソースの種類 | **[App Service]** を選択します。 |
-    | ターゲット リソース | **[アプリ サービスの選択]** > **[西ヨーロッパ]** を選択します。 |
+    | ターゲット リソース | **[アプリ サービスの選択]**  >  **[西ヨーロッパ]** を選択します。 |
     | 優先順位 | **[2]** を選択します。 プライマリ エンドポイントが正常でない場合、すべてのトラフィックはこのフェールオーバー エンドポイントに送られます。 |
 
 7. **[OK]** を選択します。
@@ -145,8 +129,8 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     ![Traffic Manager プロファイルの可用性を確認する Web ページのスクリーン ショット](./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png)
 
 2. Traffic Manager のフェールオーバー動作を確認するために、次の手順でプライマリ サイトを無効にします。
-    1. [Traffic Manager プロファイル] ページで、**[概要]** セクションから **[myPrimaryEndpoint]** を選択します。
-    2. *[myPrimaryEndpoint]* で **[無効]** > **[保存]** を選択します。
+    1. [Traffic Manager プロファイル] ページで、 **[概要]** セクションから **[myPrimaryEndpoint]** を選択します。
+    2. *[myPrimaryEndpoint]* で **[無効]**  >  **[保存]** を選択します。
     3. **[myPrimaryEndpoint]** を閉じます。 状態が **[無効]** になったことを確認してください。
 3. 新しい Web ブラウザー セッションで Web サイトを表示するために、Traffic Manager プロファイルの DNS 名を前の手順からコピーします。
 4. Web アプリがまだ使用できることを確認します。

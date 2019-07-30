@@ -10,14 +10,13 @@ ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 064d55b96c8817f4b7ccc5f0925eeecfaf310424
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666794"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68550530"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
@@ -71,7 +70,7 @@ Get-Module Az.Sql
 
 エラスティック ジョブ エージェントを作成するには、[ジョブ データベース](sql-database-job-automation-overview.md#job-database)として使用するデータベース (S0 以上) が必要です。 
 
-"*次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。さらに、このスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーも作成されます。*"
+"*次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。さらに、このスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーも作成されます。* "
 
 エラスティック ジョブには特定の命名要件がないため、[Azure 要件](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に準拠している限り、任意の命名規則を使用できます。
 
@@ -285,6 +284,23 @@ $JobExecution | Get-AzSqlElasticJobStepExecution
 # Get the job target execution details
 $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
+
+### <a name="job-execution-states"></a>ジョブの実行状態
+
+可能なジョブの実行状態を次の表に示します。
+
+|状態|説明|
+|:---|:---|
+|**Created** | ジョブの実行は作成されたばかりで、まだ進行中ではありません。|
+|**InProgress** | ジョブの実行は現在進行中です。|
+|**WaitingForRetry** | ジョブ実行はそのアクションを完了できず、再試行を待機しています。|
+|**Succeeded** | ジョブの実行は正常に完了しました。|
+|**SucceededWithSkipped** | ジョブの実行は正常に完了しましたが、その子の一部がスキップされました。|
+|**Failed** | ジョブの実行は失敗し、再試行回数の上限に達しました。|
+|**TimedOut** | ジョブの実行はタイムアウトしました。|
+|**Canceled** | ジョブの実行は取り消されました。|
+|**Skipped** | 同じジョブ手順の別の実行が同じターゲットに対して既に実行されていたため、ジョブの実行はスキップされました。|
+|**WaitingForChildJobExecutions** | ジョブの実行は、その子の実行が完了するまで待機しています。|
 
 ## <a name="schedule-the-job-to-run-later"></a>ジョブを後で実行するようにスケジュールする
 

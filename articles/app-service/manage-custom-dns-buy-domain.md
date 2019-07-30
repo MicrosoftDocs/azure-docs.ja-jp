@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 6bba176a27cc70321915654e3e2e62320f22c16c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475219"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310137"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service のカスタム ドメイン名を購入する
 

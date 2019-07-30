@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330009"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60567233"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-azure-search-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-azure-search.md)
 
@@ -40,7 +40,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -79,8 +79,8 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。| マージ (既定値)<br/>アップロード| いいえ  |
-| WriteBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。 | 1 ～ 1,000。 既定値は 1,000 です。 | いいえ  |
+| WriteBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。| マージ (既定値)<br/>アップロード| いいえ |
+| WriteBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。 | 1 ～ 1,000。 既定値は 1,000 です。 | いいえ |
 
 ### <a name="writebehavior-property"></a>WriteBehavior プロパティ
 データを書き込むときに AzureSearchSink で upsert されます。 つまり、ドキュメントを書き込むときに Azure Search インデックスにそのドキュメントのキーが既に存在する場合は、Azure Search は競合の例外をスローするのではなく、既存のドキュメントを更新します。
@@ -100,7 +100,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 
 | Azure Search データ型 | Azure Search のシンクでサポートされている |
 | ---------------------- | ------------------------------ |
-| String | Y |
+| string | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |

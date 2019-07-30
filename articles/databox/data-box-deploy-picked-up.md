@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 7/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b43241be4e161cd6051dce02a3574fbdb580f28
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: db0f0ac3073687b7c1cd8ca60e459e4bb3aa03f4
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606232"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626352"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box の返送と Azure へのデータ アップロードの確認
 
@@ -41,9 +41,17 @@ ms.locfileid: "65606232"
 
 ## <a name="ship-data-box-back"></a>Data Box を返送する
 
-1. デバイスの電源をオフにして、ケーブル類を取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-2. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、またはラベルが電子インク ディスプレイに表示されていない場合、Microsoft サポートにお問い合わせください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。 
-3. デバイスを返送する場合は、UPS での集荷をスケジュールします。 集荷のスケジュールを設定するには:
+デバイスへのデータ コピーを確実に完了しさせ、 **[発送の準備をする]** の実行を正常終了させます。 デバイスを発送する地域によっては、手順が異なります。
+
+
+### <a name="ship-in-us-canada-europe"></a>米国、カナダ、ヨーロッパでの発送
+
+米国、カナダ、またはヨーロッパでデバイスを返送する場合は、次の手順を行います。
+
+1. 必ずデバイスの電源をオフにてケーブルを取り外します。 
+2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
+3. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、またはラベルが電子インク ディスプレイに表示されていない場合、Microsoft サポートにお問い合わせください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。 
+4. デバイスを返送する場合は、UPS での集荷をスケジュールします。 集荷のスケジュールを設定するには:
 
     - 最寄りの UPS (国/地域固有のフリー ダイヤル) に連絡します。
     - 電話で、電子インク ディスプレイまたは印刷ラベルに表示されている返送追跡番号を伝えます。
@@ -51,6 +59,72 @@ ms.locfileid: "65606232"
 
     集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box を持ち込むこともできます。
 4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
+
+### <a name="ship-in-asia-pacific-region"></a>アジア太平洋地域での発送
+
+#### <a name="ship-in-australia"></a>オーストラリアでの発送
+
+オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで発送するには、次の手順を行います。
+
+
+1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
+2. デバイスへのデータ コピーが完了し、 **[発送準備]** の実行が正常終了することを確認します。
+3. デバイスの電源をオフにして、ケーブルを取り外します。
+4. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
+5. メールで Quantium Solutions に集荷を依頼します。 Azure portal で指定されたサービス参照番号を参照してください。 次のメール テンプレートを使用します: - *TAU コードが記載された返送用の配送先住所ラベルの依頼*。 メールには、必ず次の詳細情報を含めてください。 
+
+    ```
+    To: Azure@quantiumsolutions.com
+    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
+    Body: 
+    - Company name：
+    - Address:
+    - Contact name:
+    - Contact number:
+    - Requested pickup date: mm/dd
+    ```
+6. Quantium Solutions Australia から返送ラベルがメールで送られてきます。
+7. 返品ラベルを印刷して、梱包箱に貼り付けます。
+8. 荷物を宅配業者に渡します。
+
+必要に応じて、Quantium Solutions のサポート (Azure@quantiumsolutions.com) にメールまたは電話でお問い合わせいただくことができます。
+
+
+電話でご注文についてお問い合わせする場合:
+
+- 最初に集荷に関するメールを送信します。
+- 電話で注文の名前を伝えます。
+
+#### <a name="ship-in-japan"></a>日本で発送する 
+
+1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
+2. デバイスの電源をオフにして、ケーブルを取り外します。
+3. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
+4. 伝票に送信元の情報としてお客様の会社名と住所の情報を記入します。
+5. 次のメール テンプレートを使用して Quantium Solutions にメールを送信します。
+
+    - 日本郵便の着払伝票が含まれていなかった場合、または紛失した場合は、このメールにそのことを記載します。 Quantium Solutions Japan が日本郵便に集荷を依頼し、集荷時に伝票を持って行くように伝えます。
+    - 複数の注文がある場合は、必ず個別に集荷するようにメールを送信します。
+
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box｜Job name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+    a. 08：00-13：00 
+    b. 13：00-15：00 
+    c. 15：00-17：00 
+    d. 17：00-19：00 
+    ```
+
+3. 集荷を予約した後、Quantium Solutions からメールの確認を受信します。 確認のメールには、着払伝票に関する情報も含まれています。
+
+必要に応じて、次の情報で Quantium Solutions のサポート (日本語) にお問い合わせください。 
+
+- メール: Customerservice.JP@quantiumsolutions.com 
+- 電話: 03-5755-0150 
+
 
 ## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: f3ba3eb12dc85a72c4e49c374e62209b83400d33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed4230969e81eee0d77b7e4b69eac3a264068388
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66134496"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449166"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを構成する
 
@@ -54,9 +54,9 @@ PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\my
 Thumbprint                                Subject
 ----------                                -------
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
-
-Use [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) with the Thumbprint that was returned to export a pfx file from the certificate:
 ```
+
+[Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートします。
 
 ```powershell
 $pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
@@ -73,8 +73,8 @@ Export-PfxCertificate \
 1. Azure portal の左上隅にある **[新規]** を選択します。
 2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 3. アプリケーション ゲートウェイの名前として「*myAppGateway*」を、新しいリソース グループとして「*myResourceGroupAG*」を入力します。
-4. 他の設定は既定値をそのまま使用し、**[OK]** を選択します。
-5. **[仮想ネットワークの選択]**、**[新規作成]** の順に選択し、次の仮想ネットワークの値を入力します。
+4. 他の設定は既定値をそのまま使用し、 **[OK]** を選択します。
+5. **[仮想ネットワークの選択]** 、 **[新規作成]** の順に選択し、次の仮想ネットワークの値を入力します。
 
    - *myVNet* - 仮想ネットワークの名前です。
    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
@@ -84,23 +84,23 @@ Export-PfxCertificate \
      ![Create virtual network](./media/create-ssl-portal/application-gateway-vnet.png)
 
 6. **[OK]** を選択して、仮想ネットワークとサブネットを作成します。
-7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順に選択し、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** を選択します。
+7. **[パブリック IP アドレスの選択]** 、 **[新規作成]** の順に選択し、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、 **[OK]** を選択します。
 8. リスナーのプロトコルとして **[HTTPS]** を選択し、ポートが **443** として定義されていることを確認します。
 9. フォルダー アイコンを選択し、前に作成したアップロードする *appgwcert.pfx* 証明書に移動します。
-10. 証明書の名前として「*mycert1*」を、パスワードとして「*Azure123456!*」 を入力し、**[OK]** を選択します。
+10. 証明書の名前として「*mycert1*」を、パスワードとして「*Azure123456!* 」 を入力し、 **[OK]** を選択します。
 
     ![新しいアプリケーション ゲートウェイの作成](./media/create-ssl-portal/application-gateway-create.png)
 
-11. 概要ページで設定を確認し、**[OK]** を選択して、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
+11. 概要ページで設定を確認し、 **[OK]** を選択して、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
 
 ### <a name="add-a-subnet"></a>サブネットの追加
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で **[myVNet]** を選びます。
-2. **[サブネット]** を選択し、**[サブネット]** を選択します。
+2. **[サブネット]** を選択し、 **[サブネット]** を選択します。
 
     ![サブネットの作成](./media/create-ssl-portal/application-gateway-subnet.png)
 
-3. サブネットの名前として「*myBackendSubnet*」と入力し、**[OK]** を選択します。
+3. サブネットの名前として「*myBackendSubnet*」と入力し、 **[OK]** を選択します。
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
@@ -115,13 +115,13 @@ Export-PfxCertificate \
     - *myVM* - 仮想マシンの名前です。
     - *azureuser* - 管理者のユーザー名です。
     - *Azure123456!* パスワードです。
-    - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
+    - **[既存のものを使用]** 、 *[myResourceGroupAG]* の順に選択します。
 
 4. **[OK]** を選択します。
-5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** を選択します。
+5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、 **[選択]** を選択します。
 6. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。 
 7. **[無効]** を選択して、ブート診断を無効にします。
-8. **[OK]** を選択し、概要ページの設定を確認して、**[作成]** を選択します。
+8. **[OK]** を選択し、概要ページの設定を確認して、 **[作成]** を選択します。
 
 ### <a name="install-iis"></a>IIS のインストール
 
@@ -157,7 +157,7 @@ Export-PfxCertificate \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-1. **[すべてのリソース]** を選択し、**[myAGPublicIPAddress]** を選択します。
+1. **[すべてのリソース]** を選択し、 **[myAGPublicIPAddress]** を選択します。
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/create-ssl-portal/application-gateway-ag-address.png)
 

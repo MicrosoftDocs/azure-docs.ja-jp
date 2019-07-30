@@ -4,17 +4,17 @@ description: この記事では、Azure Automation で既定で提供される�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 05/30/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c09c9df1b8af7adca5c0169cf31881121ba6cc99
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: a42fae4e7ff9ba9edc29c64480983987e41cf9c1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427490"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476798"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Automation の Azure PowerShell モジュールを更新する方法
 
@@ -35,9 +35,7 @@ Runbook やそれにより自動化されるプロセスに影響を与えない
 
 このプロセスを使用して Azure モジュールを更新するときの考慮事項を次に示します。
 
-* この Runbook は現在、**Azure** と **AzureRm** モジュールの更新のみをサポートしています。 [Azure PowerShell Az モジュール](/powershell/azure/new-azureps-module-az)は Automation アカウントでサポートされますが、この Runbook では更新できません。 Automation アカウントで `Az` モジュールを使用するときに考慮しなければならない重要な要素があります。詳しくは、[Automation アカウントでの Az モジュールの使用](az-modules.md)に関するページをご覧ください。
-
-* Az モジュールが含まれている Automation アカウントでは、この Runbook を開始しないでください。
+* この Runbook は、既定では **Azure** モジュールと **AzureRm** モジュールの更新のみをサポートしています。 この Runbook は **Az** モジュールの更新もサポートしています。 この Runbook による `Az` モジュールの更新について詳しくは、[Azure モジュールの更新 Runbook の README](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) に関するページを参照してください。 Automation アカウントで `Az` モジュールを使用するときに考慮しなければならないその他の重要な要素があります。詳しくは、[Automation アカウントでの Az モジュールの使用](az-modules.md)に関するページをご覧ください。
 
 * この Runbook を開始する前に、お使いの Automation アカウントに [Azure 実行アカウント資格情報](manage-runas-account.md)が作成されていることを確認すします。
 

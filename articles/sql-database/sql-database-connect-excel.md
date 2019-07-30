@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6e0adc6b4abbb58504b6f56c8def72440ad370d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103402"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061405"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースの単一データベースに接続してレポートを作成する
 
@@ -37,9 +37,9 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
    ![データ ソースを選択します。Excel を SQL データベースに接続します。](./media/sql-database-connect-excel/excel_data_source.png)
 
    データ接続ウィザードが開きます。
-3. **[データベース サーバーに接続]** ダイアログ ボックスで、接続する SQL データベースの**サーバー名**を <*servername*>**.database.windows.net** 形式で入力します。 たとえば、**msftestserver.database.windows.net** のようにします。 必要に応じて、データベースの名前を入力します。 **[OK]** を選択して資格情報ウィンドウを開きます。 
+3. **[データベース サーバーに接続]** ダイアログ ボックスで、接続する SQL データベースの**サーバー名**を <*servername*> **.database.windows.net** 形式で入力します。 たとえば、**msftestserver.database.windows.net** のようにします。 必要に応じて、データベースの名前を入力します。 **[OK]** を選択して資格情報ウィンドウを開きます。 
 
-   ![server-name.png](media/sql-database-connect-excel/server-name.png)
+   ![[データベース サーバー] ダイアログ ボックスに接続する](media/sql-database-connect-excel/server-name.png)
 
 4. **[SQL Server データベース]** ダイアログ ボックスで、左側の **[データベース]** を選択し、接続する SQL Database サーバーの **[ユーザー名]** と **[パスワード]** を入力します。 **[接続]** を選択して **[ナビゲーター]** を開きます。 
 
@@ -48,7 +48,7 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
    > [!TIP]
    > ネットワーク環境によっては、使用しているクライアント IP アドレスからのトラフィックを SQL Database サーバーが許可しない場合に、接続できないことまたは接続を失うことがあります。 [Azure ポータル](https://portal.azure.com/)に移動し、[SQL サーバー]、お使いのサーバー、設定の下のファイアウォールの順にクリックし、使用しているクライアント IP アドレスを追加します。 詳細については、 [ファイアウォール設定の構成方法](sql-database-configure-firewall-settings.md) に関するページを参照してください。
 
-5. **[ナビゲーター]** で、操作するデータベースを一覧から選択し、操作するテーブルまたはビューを選択し (**vGetAllCategories** を選択しました)、**[読み込み]** を選択して、データベースから Excel スプレッドシートにデータを移動します。
+5. **[ナビゲーター]** で、操作するデータベースを一覧から選択し、操作するテーブルまたはビューを選択し (**vGetAllCategories** を選択しました)、 **[読み込み]** を選択して、データベースから Excel スプレッドシートにデータを移動します。
 
     ![データベースとテーブルを選択します。](./media/sql-database-connect-excel/select-database-and-table.png)
 
@@ -56,7 +56,7 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
 
 接続を確立したので、複数の方法のいずれかでデータを読み込みます。 たとえば、次の手順は、SQL Database に見つかったデータに基づいてピボット グラフを作成します。 
 
-1. 前のセクションの手順に従いますが、**[読み込み]** を選択する代わりに、今回は **[Load to]**(読み込み先) を **[読み込み]** ドロップダウンから選択します。
+1. 前のセクションの手順に従いますが、 **[読み込み]** を選択する代わりに、今回は **[Load to]** (読み込み先) を **[読み込み]** ドロップダウンから選択します。
 2. 次に、ブックでこのデータを表示する方法を選択します。 ここでは **[ピボットグラフ​​]** を選択します。 **[新しいワークシート]** または **[このデータをデータ モデルに追加する]** を選択することもできます。 データ モデルの詳細については、「 [Excel でデータ モデルを作成する](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)」を参照してください。 
 
     ![Choosing the format for data in Excel](./media/sql-database-connect-excel/import-data.png)
@@ -67,18 +67,18 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
     ![データベース レポートの構成](./media/sql-database-connect-excel/power-pivot-results.png)
 
 > [!TIP]
-> 他の Excel ブックおよびワークシートをデータベースに接続する場合、**[データ]** タブを選択し、**[最近のソース]** を選択して **[最近のソース]** ダイアログ ボックスを開きます。 作成した接続を一覧から選択して **[開く]** をクリックします。
-> ![最近の接続](media/sql-database-connect-excel/recent-connections.png)
+> 他の Excel ブックおよびワークシートをデータベースに接続する場合、 **[データ]** タブを選択し、 **[最近のソース]** を選択して **[最近のソース]** ダイアログ ボックスを開きます。 作成した接続を一覧から選択して **[開く]** をクリックします。
+> ![[最近のリソース] ダイアログ ボックス](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>.odc ファイルを使用して永続的な接続を作成する
 
 接続の詳細を永続的に保存するために、.odc ファイルを作成し、この接続を **[既存の接続]** ダイアログ ボックス内で選択可能なオプションにすることができます。 
 
-1. ページ上部のメニュー バーで **[データ]** タブを選択し、**[既存の接続]** を選択して **[既存の接続]** ダイアログ ボックスを開きます。 
-   1. **[Browse for more]**(参照) を選択して **[データ ソースの選択]** ダイアログ ボックスを開きます。   
-   2. **+NewSqlServerConnection.odc** ファイルを選択し、**[開く]** をクリックして **[データ接続ウィザード]** を開きます。
+1. ページ上部のメニュー バーで **[データ]** タブを選択し、 **[既存の接続]** を選択して **[既存の接続]** ダイアログ ボックスを開きます。 
+   1. **[Browse for more]** (参照) を選択して **[データ ソースの選択]** ダイアログ ボックスを開きます。   
+   2. **+NewSqlServerConnection.odc** ファイルを選択し、 **[開く]** をクリックして **[データ接続ウィザード]** を開きます。
 
-      ![新しい接続](media/sql-database-connect-excel/new-connection.png)
+      ![[新しい接続] ダイアログ ボックス](media/sql-database-connect-excel/new-connection.png)
 
 2. **[データ接続ウィザード]** で、サーバー名と SQL Database 資格情報を入力します。 **[次へ]** を選択します。 
    1. データが含まれるデータベースをドロップダウンから選択します。 
@@ -87,7 +87,7 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
 
       ![データ接続ウィザード](media/sql-database-connect-excel/data-connection-wizard.png) 
 
-3. [データ接続ウィザード] の次の画面で、ファイルの場所、**[ファイル名]**、および **[フレンドリ名]** を選択します。 パスワードをファイルに保存することも選択できますが、これによりデータが望ましくないアクセスにさらされる可能性があります。 準備ができたら **[完了]** を選択します。 
+3. [データ接続ウィザード] の次の画面で、ファイルの場所、 **[ファイル名]** 、および **[フレンドリ名]** を選択します。 パスワードをファイルに保存することも選択できますが、これによりデータが望ましくないアクセスにさらされる可能性があります。 準備ができたら **[完了]** を選択します。 
 
     ![データ接続の保存](media/sql-database-connect-excel/save-data-connection.png)
 

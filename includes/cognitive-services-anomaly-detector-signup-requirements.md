@@ -4,11 +4,11 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/21/2019
-ms.openlocfilehash: b89814942efcddfeff82f4d08652ed83b35ae325
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5892b16c37272229e93c2f01cd1b5b23f1184697
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181510"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362554"
 ---
-Anomaly Detector API にアクセスできる [Cognitive Services API アカウント](../articles/cognitive-services/cognitive-services-apis-create-account.md)を所有している必要があります。 アカウントの作成後に、[Azure portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#access-your-resource) からサブスクリプション キーを取得できます。
+Anomaly Detector API にアクセスできる [Cognitive Services API アカウント](../articles/cognitive-services/cognitive-services-apis-create-account.md)を所有している必要があります。 アカウントの作成後に、[Azure portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) からサブスクリプション キーを取得できます。

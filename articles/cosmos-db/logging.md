@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 67a6eec938a4a18455e4063925e21e26fe362f76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41fa5a859e738c2bb70e4885aa856f247e922492
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243482"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448989"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB での診断ログ 
 
@@ -54,7 +54,7 @@ Azure アクティビティ ログは、Azure で発生したサブスクリプ�
 
 ### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
-Azure 診断ログはリソースによって出力され、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。 リソースレベルの診断ログは、ゲスト OS レベルの診断ログとも異なります。 ゲスト OS 診断ログは、仮想マシンの内部で実行されているエージェントや、他のサポートされるリソースの種類によって収集されるログです。 リソース レベルの診断ログは、エージェントを必要とせず、Azure プラットフォーム自体からリソースに固有のデータをキャプチャします。 ゲスト OS レベルの診断ログは、オペレーティング システムと、仮想マシンで実行しているアプリケーションから、データをキャプチャします。
+Azure 診断ログはリソースによって出力され、そのリソースの操作に関する豊富なデータを提供します。 これらのログは、要求ごとにキャプチャされます。 これらのログの内容は、リソースの種類によって異なります。 リソースレベルの診断ログは、ゲスト OS レベルの診断ログとも異なります。 ゲスト OS 診断ログは、仮想マシンの内部で実行されているエージェントや、他のサポートされるリソースの種類によって収集されるログです。 リソース レベルの診断ログは、エージェントを必要とせず、Azure プラットフォーム自体からリソースに固有のデータをキャプチャします。 ゲスト OS レベルの診断ログは、オペレーティング システムと、仮想マシンで実行しているアプリケーションから、データをキャプチャします。
 
 ![Storage、Event Hubs、または Azure Monitor ログに対する診断ログ記録](./media/logging/azure-cosmos-db-logging-overview.png)
 
@@ -68,26 +68,47 @@ Azure 診断ログはリソースによって出力され、そのリソース�
 <a id="#turn-on"></a>
 ## <a name="turn-on-logging-in-the-azure-portal"></a>Azure Portal でログを有効にする
 
-診断ログを有効にするには、次のリソースが必要です。
+以下の手順を使用して、Azure Portal で診断ログを有効にします。
 
-* 既存の Azure Cosmos DB アカウント、データベース、およびコンテナー。 これらのリソースの作成手順については、[Azure Portal を使用したデータベース アカウントの作成](create-sql-api-dotnet.md#create-account)、[Azure CLI サンプル](cli-samples.md)、または [PowerShell サンプル](powershell-samples.md)に関するページをご覧ください。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
 
-Azure Portal で診断ログを有効にするには、以下の手順を実行します。
-
-1. [Azure Portal](https://portal.azure.com) で、Azure Cosmos DB アカウントの左のナビゲーションから、 **[診断ログ]** を選び、 **[診断をオンにする]** を選びます。
+1. Azure Cosmos アカウントに移動します。 **[診断設定]** ウィンドウを開き、 **[診断設定の追加]** オプションを選択します。
 
     ![Azure Portal で Azure Cosmos DB の診断ログを有効にする](./media/logging/turn-on-portal-logging.png)
 
-2. **[診断設定]** ページで次の手順のようにします。 
+1. **[診断設定]** ページで以下の詳細情報をフォームに入力します。 
 
     * **[名前]** :作成するログの名前を入力します。
 
-    * **[ストレージ アカウントへのアーカイブ]** :このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 Portal で新しいストレージ アカウントを作成するには、[ストレージ アカウントの作成に関するページ](../storage/common/storage-create-storage-account.md)を参照し、Azure Resource Manager の汎用アカウントの作成手順を実行します。 その後、Portal でこのページに戻り、ストレージ アカウントを選びます。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
-    * **[イベント ハブへのストリーム]** :このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 Event Hubs 名前空間を作成するには、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 その後、Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選びます。
-    * **[Log Analytics への送信]** :このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 Azure Monitor ログでログを表示する方法については、「Azure Monitor ログでログを表示する」を参照してください。
-    * **[Log DataPlaneRequests]\(DataPlaneRequests のログを記録する\)** :SQL、Graph、MongoDB、Cassandra、および Table API アカウントについて、基盤の Azure Cosmos DB 分散プラットフォームからのバックエンド要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **[Log MongoRequests]\(MongoRequests をログに記録する\)** :Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントにサービスを提供するために、ユーザーが Azure Cosmos DB のフロントエンドから開始した要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **[Metric Requests]\(メトリック要求\)** :[Azure メトリックス](../azure-monitor/platform/metrics-supported.md)に詳細データを保存するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * 次のサービスにログを格納できます。
+
+      * **[ストレージ アカウントへのアーカイブ]** :このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 ポータルで新しいストレージ アカウントを作成するには、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md)」の記事を参照してください。 次に、ポータルの Azure Cosmos DB の診断設定ウィンドウに戻り、ストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
+
+      * **[イベント ハブへのストリーム]** :このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 Event Hubs 名前空間を作成するには、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 ポータルでこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
+
+      * **[Log Analytics への送信]** :このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 
+
+   * 次のデータを記録できます。
+
+      * **DataPlaneRequests**:SQL、Graph、MongoDB、Cassandra、および Azure Cosmos DB の Table API アカウントなど、すべての API へのバックエンド要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。 次の JSON データは、DataPlaneRequests を使用してログに記録された詳細情報の出力例です。 注意すべき重要なプロパティは、Requestcharge、statusCode、clientIPaddress、および partitionID です。
+
+       ```
+       { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
+       ```
+
+      * **MongoRequests**:Azure Cosmos DB の MongoDB 用 API の要求にサービスを提供するために、ユーザーがフロントエンドから開始した要求をログに記録するには、このオプションを選択します。 MongoDB 要求は、DataPlaneRequests に加えて MongoRequests にも表示されます。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。 次の JSON データは、MongoRequests を使用してログに記録された詳細情報の出力例です。 注意すべき重要なプロパティは、Requestcharge、opCode です。
+
+       ```
+       { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
+       ```
+
+      * **QueryRuntimeStatistics**:実行されたクエリ テキストをログに記録するには、このオプションを選択します。  次の JSON データは、QueryRuntimeStatistics を使用してログに記録された詳細情報の出力例です。
+
+       ```
+       { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
+       ```
+
+      * **[Metric Requests]\(メトリック要求\)** :[Azure メトリックス](../azure-monitor/platform/metrics-supported.md)に詳細データを保存するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
 3. **[保存]** を選択します。
 
@@ -230,7 +251,7 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 ```
 
 ### <a id="access"></a>ログへのアクセス
-**DataPlaneRequests** カテゴリの Azure Cosmos DB ログは、指定したストレージ アカウントの **insights-logs-data-plane-requests** コンテナーに格納されます。 
+**DataPlaneRequests** カテゴリの Azure Cosmos DB ログは、指定したストレージ アカウントの **insights-logs-dataplanerequests** コンテナーに格納されます。 
 
 最初に、コンテナー名の変数を作成します。 この変数は、チュートリアル全体で使われます。
 

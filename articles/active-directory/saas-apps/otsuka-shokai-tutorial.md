@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bec4cb17f2d25cd00ef115a78736c95eaf26d95f
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752449"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274195"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>チュートリアル:Otsuka Shokai と Azure Active Directory の統合
 
@@ -29,7 +29,6 @@ ms.locfileid: "66752449"
 
 * Otsuka Shokai にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Otsuka Shokai に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -112,17 +111,15 @@ Otsuka Shokai に対する Azure AD SSO を構成してテストするには、�
 
     g. **[Save]** をクリックします。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、メモ帳に保存します。
-
-   ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
-
-1. **[Set up Otsuka Shokai]\(Otsuka Shokai の設定\)** セクションで、要件に基づいて適切な URL をコピーします。
-
-   ![構成 URL のコピー](common/copy-configuration-urls.png)
-
 ### <a name="configure-otsuka-shokai"></a>Otsuka Shokai の構成
 
-**Otsuka Shokai** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Otsuka Shokai サポート チーム](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. SSO アプリからお客様のマイ ページに接続すると、SSO 設定のウィザードが起動します。
+
+2. Otsuka ID が未登録の場合は、Otsuka ID の新規登録に進みます。   Otsuka ID を登録している場合は、リンケージの設定に進みます。
+
+3. 最後まで進み、お客様のマイ ページにログインした後にトップ画面が表示されたら、SSO の設定は完了です。
+
+4. 次回 SSO アプリからお客様のマイ ページに接続するときは、ガイダンス画面が開きます。お客様のマイ ページにログインすると、トップ画面が表示されます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -156,7 +153,7 @@ Otsuka Shokai に対する Azure AD SSO を構成してテストするには、�
 
 ### <a name="create-otsuka-shokai-test-user"></a>Otsuka Shokai テスト ユーザーの作成
 
-このセクションでは、Otsuka Shokai で B.Simon というユーザーを作成します。 Otsuka Shokai プラットフォームにユーザーを追加するには、 [Otsuka Shokai サポート チーム](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)にお問い合わせください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+SaaS アカウントの新規登録は、Otsuka Shokai への最初のアクセス時に行われます。 また、新規作成時に Azure AD アカウントと SaaS アカウントも関連付けられます。
 
 ### <a name="test-sso"></a>SSO のテスト
 

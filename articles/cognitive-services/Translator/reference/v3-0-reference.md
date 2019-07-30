@@ -3,19 +3,19 @@ title: Translator Text API V3.0 リファレンス
 titlesuffix: Azure Cognitive Services
 description: Translator Text API V3.0 のリファレンス ドキュメント。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-pawal
-ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.author: swmachan
+ms.openlocfilehash: 9b8f3894062c34e743a39f28b5f079a67a285c84
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387513"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357677"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -31,20 +31,20 @@ Translator Text API のバージョン 3 には、最新の JSON ベースの We
 
 ## <a name="base-urls"></a>ベース URL
 
-Microsoft Translator のサービスは、複数のデータセンター拠点から提供されます。 現在、それらの拠点は、6 つの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions)に存在します。
+Microsoft Translator のサービスは、複数のデータセンター拠点から提供されます。 現在、それらの拠点は、6 つの [Azure 地域](https://azure.microsoft.com/global-infrastructure/regions)に存在します。
 
 * **アメリカ合衆国:** 米国西部 2 および米国中西部 
 * **アジア太平洋:** 東南アジアおよび韓国南部
 * **ヨーロッパ:** 北ヨーロッパおよび西ヨーロッパ
 
-Microsoft Translator Text API への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、そのリージョン以外に要求がルーティングされます。
+Microsoft Translator Text API への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その Azure 地域以外に要求がルーティングされます。
 
-要求を特定のデータセンターに強制的に処理させるには、API 要求内のグローバル エンドポイントを目的のリージョンのエンドポイントに変更します。
+要求を特定の Azure 地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的のリージョンのエンドポイントに変更します。
 
-|説明|リージョン|ベース URL|
+|説明|Azure 地域|ベース URL|
 |:--|:--|:--|
-|Azure|グローバル|  api.cognitive.microsofttranslator.com|
-|Azure|北米|   api-nam.cognitive.microsofttranslator.com|
+|Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
+|Azure|米国|   api-nam.cognitive.microsofttranslator.com|
 |Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
 |Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
 
@@ -154,6 +154,7 @@ Authorization: Bearer <Base64-access_token>
 | 400075| 言語ペアとカテゴリの組み合わせが無効です｡|
 | 400077| 要求の最大サイズを超えています。 「[要求の制限](../request-limits.md)」を参照してください。|
 | 400079| from 言語と to 言語間の翻訳に要求されたカスタム システムは存在しません｡|
+| 400080| 音訳は言語またはスクリプトに対してサポートされていません。|
 | 401000| 資格情報が見つからないか無効なため、要求は許可されません｡|
 | 401015| ｢指定された資格情報は Speech API に対するものです｡ この要求には､Text API に対する資格情報が必要です｡ Translator Text API のサブスクリプションを使用してください｡｣|
 | 403000| この操作は許可されていません｡|

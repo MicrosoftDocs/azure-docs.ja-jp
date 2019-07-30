@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519013"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296088"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの使用を開始する
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 
 
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "65519013"
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-このチュートリアルでは、Azure Monitor ログ クエリの記述方法について説明します。 以下の方法について説明します。
+このチュートリアルでは、Azure Monitor でログ クエリを記述する方法について説明します。 以下の方法について説明します。
 
 - クエリの構造の概要
 - クエリ結果を並べ替える
@@ -38,6 +38,8 @@ ms.locfileid: "65519013"
 - カスタム フィールドの定義と使用
 - 結果の集計とグループ化
 
+Azure portal での Log Analytics の使用に関するチュートリアルについては、[Azure Monitor Log Analytics の使用開始](get-started-portal.md)に関するページを参照してください。<br>
+Azure Monitor でのログ クエリの詳細については、[Azure Monitor でのログ クエリの概要](log-query-overview.md)に関するページを参照してください。
 
 ## <a name="writing-a-new-query"></a>新しいクエリの記述
 クエリは、テーブル名または *search* コマンドから始めることができます。 まずテーブル名から始めます。これは、テーブル名でクエリの明確な範囲が定義され、クエリのパフォーマンスと結果の関連性の両方が向上するためです。
@@ -71,8 +73,8 @@ search in (SecurityEvent) "Cryptographic"
 
 このクエリで、*SecurityEvent* テーブルの "Cryptographic" というフレーズが含まれるレコードが検索されます。 このようなレコードの中から、10 個のレコードが返され、表示されます。 `in (SecurityEvent)` の部分を省略して `search "Cryptographic"` を実行すると、*すべての*テーブルに対して検索が実行されます。この処理には時間がかかり、効率が良くありません。
 
-> [!NOTE]
-> 既定では、_過去 24 時間_ の時間の範囲が設定されています。 別の範囲を使用するには、時刻の選択ツール ( *[実行]* ボタンの横にあります) を使用するか、明示的な時間の範囲フィルターをクエリに追加します。
+> [!WARNING]
+> 検索クエリは通常、処理する必要のあるデータが増えるため、テーブル ベースのクエリより低速です。 
 
 ## <a name="sort-and-top"></a>sort と top
 **take** は少数のレコードを取得する場合に便利ですが、結果は順不同で選択され、表示されます。 順序が設定されたビューを取得するには、優先する列で**並べ替え**ます。

@@ -3,21 +3,20 @@ title: テンプレートを使用して Azure Firewall をデプロイする
 description: テンプレートを使用して Azure Firewall をデプロイする
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 7/9/2018
 ms.author: victorh
-ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b39174152e427e408e7dfbbc353baf5f96ec7c01
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115684"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657093"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>テンプレートを使用して Azure Firewall をデプロイする
 
-[[Create AzureFirewall]\(AzureFirewall の作成\) サンドボックス セットアップ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox)では、ファイアウォールを使用してテスト ネットワーク環境が作成されます。 ネットワークには、次の 3 つのサブネットを含む 1 つの仮想ネットワーク (VNet) があります。*AzureFirewallSubnet*、*ServersSubnet*、*JumpboxSubnet*。 *ServersSubnet* と *JumpboxSubnet* には、それぞれ 1 つの 2 コア Windows Server 仮想マシンがあります。
+[[Create AzureFirewall]\(AzureFirewall の作成\) サンドボックス セットアップ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox)では、ファイアウォールを使用してテスト ネットワーク環境が作成されます。 ネットワークには、次の 3 つのサブネットを含む 1 つの仮想ネットワーク (VNet) があります。*AzureFirewallSubnet*、*ServersSubnet*、*JumpboxSubnet*。 *ServersSubnet* と *JumpboxSubnet* には、それぞれ 1 つの 2 コア Windows Server 仮想マシンがあります。
 
 ファイアウォールは、*AzureFirewallSubnet* サブネット内にあり、*www.microsoft.com* へのアクセスを許可する単一のルールを含むアプリケーション ルール コレクションを備えています。
 
@@ -34,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **テンプレートを使用して Azure Firewall をインストールしてデプロイするには:**
 
-1. [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) でテンプレートにアクセスします。
+1. [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) でテンプレートにアクセスします。
    
 1. 概要を読み、デプロイする準備ができたら、 **[Azure へのデプロイ]** を選択します。
    

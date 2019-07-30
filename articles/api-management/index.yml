@@ -5,14 +5,12 @@ metadata:
   title: Azure API Management のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、任意の場所にホストされた既存のバックエンド サービスの最新型 API ゲートウェイを作成して管理する方法を紹介します。
   services: api-management
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: api-management
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/15/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、任意の場所にホストされた既存のバックエンド サービスの最新型 API ゲートウェイを作成して管理する方法を紹介します。
 sections:

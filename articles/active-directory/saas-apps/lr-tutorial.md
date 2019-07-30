@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccffef1af896f28eed8f7684a629aa41fbae522
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0087288bed06a09b3a78b190f3d60e8985d7ad29
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897782"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>チュートリアル:Azure Active Directory と LoginRadius の統合
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bc1ff022b1639c11ca244b5ea97118a0f06e7cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f192b402aebcaeb87e068a4248c0794484e6c313
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858118"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>チュートリアル:Azure Active Directory と Firstbird の統合
 
@@ -54,11 +54,11 @@ Azure AD への Firstbird の統合を構成するには、ギャラリーから
 
 **ギャラリーから Firstbird を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select_azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise_applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への Firstbird の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add_new_app.png)
 
-4. 検索ボックスに「**Firstbird**」と入力し、結果パネルで **[Firstbird]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Firstbird**」と入力し、結果パネルで **[Firstbird]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リスト内の Firstbird](common/search_new_app.png)
 
@@ -90,15 +90,15 @@ Azure AD への Firstbird の統合を構成するには、ギャラリーから
 
 [アプリケーション名] を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **[Firstbird]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **[Firstbird]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select_sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select_saml_option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit_urls.png)
 
@@ -110,7 +110,7 @@ Azure AD への Firstbird の統合を構成するには、ギャラリーから
 
     b. **[応答 URL]** ボックスに、`https://<company-domain>.auth.1brd.com/saml/callback` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[FileCloud のドメインと URL] のシングル サインオン情報](common/metadata_upload_additional_signon.png)
 
@@ -119,7 +119,7 @@ Azure AD への Firstbird の統合を構成するには、ギャラリーから
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Firstbird クライアント サポート チーム](mailto:support@firstbird.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. Firstbird アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+6. Firstbird アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit_attribute.png)
 
@@ -149,7 +149,7 @@ Azure AD への Firstbird の統合を構成するには、ギャラリーから
 
     g. **[Save]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードし、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードし、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -166,7 +166,7 @@ Firstbird によって構成がシステムに適宜保存され、アカウン�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -191,11 +191,11 @@ Firstbird によって構成がシステムに適宜保存され、アカウン�
 
 このセクションでは、Britta Simon に Firstbird へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Firstbird]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Firstbird]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise_applications.png)
 
-2. アプリケーションの一覧で、**[Firstbird]** を入力および選択します。
+2. アプリケーションの一覧で、 **[Firstbird]** を入力および選択します。
 
     ![アプリケーションの一覧の Firstbird のリンク](common/all_applications.png)
 
@@ -203,15 +203,15 @@ Firstbird によって構成がシステムに適宜保存され、アカウン�
 
     ![[ユーザーとグループ] リンク](common/users_groups_blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add_assign_user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-firstbird-test-user"></a>Firstbird のテスト ユーザーの作成
 

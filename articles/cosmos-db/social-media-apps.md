@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8206bff765b59ddc5d6be2388145bf51e1000241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45e27b37ca7a1718674914fbe9203b7dc64475b1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256875"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342106"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 
@@ -96,7 +96,7 @@ Azure Cosmos DB では、自動的なインデックス付けによって、す�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-作成日順に並べ替えられた投稿を含む "最新の" ストリームを作成できます。 または、過去 24 時間により多くの "いいね" を獲得した投稿を含む "最もホットな" ストリームを作成することもできます。 フォロワーや関心事などのロジックに基づいて、ユーザーごとにカスタム ストリームを実装することさえできます。 それもやはり投稿のリストです。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](how-to-sql-query.md#WhereClause)を使用して Cosmos DB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
+作成日順に並べ替えられた投稿を含む "最新の" ストリームを作成できます。 または、過去 24 時間により多くの "いいね" を獲得した投稿を含む "最もホットな" ストリームを作成することもできます。 フォロワーや関心事などのロジックに基づいて、ユーザーごとにカスタム ストリームを実装することさえできます。 それもやはり投稿のリストです。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN キーワード](sql-query-keywords.md#in)を使用して Cosmos DB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
 
 フィードのストリームは、[Azure App Service](https://azure.microsoft.com/services/app-service/) のバックグラウンド プロセス ([Webjobs](../app-service/webjobs-create.md)) を使用して構築できました。 投稿が作成されたら、[Azure Storage](https://azure.microsoft.com/services/storage/) [Queues](../storage/queues/storage-dotnet-how-to-use-queues.md) を使用してバックグラウンド処理をトリガーし、[Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) を使用して Webjobs をトリガーすることで、独自のカスタム ロジックに基づいてストリーム内での投稿の伝達を実装できます。
 

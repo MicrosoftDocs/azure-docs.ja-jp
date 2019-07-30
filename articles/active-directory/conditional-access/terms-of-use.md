@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1abae0a454e17e8f633f68bc5853bfb4a4b24d14
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: f891642761a2f692158efbd9111ff96444c4269d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383174"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476200"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -74,11 +74,11 @@ Azure AD Terms of Use は、PDF 形式で内容を提示します。 この PDF 
 1. Azure にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. [https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 
-   ![[使用条件] ブレード](./media/terms-of-use/tou-blade.png)
+   ![[条件付きアクセス] - [使用条件] ブレード](./media/terms-of-use/tou-blade.png)
 
 1. **[新しい条件]** をクリックします。
 
-   ![TOU の追加](./media/terms-of-use/new-tou.png)
+   ![使用条件設定を指定するための新しい [使用条件] ウィンドウ](./media/terms-of-use/new-tou.png)
 
 1. **[名前]** ボックスに、Azure portal で使用する利用規約の名前を入力します。
 1. **[表示名]** ボックスに、ユーザーがサインインしたときに表示されるタイトルを入力します。
@@ -88,7 +88,7 @@ Azure AD Terms of Use は、PDF 形式で内容を提示します。 この PDF 
 1. エンド ユーザーがアクセスするすべてのデバイスで利用規約に同意しなければならないようにする場合、 **[各デバイスでユーザーによる同意が必要]** を **[オン]** にします。 詳しくは、「[デバイスごとの利用規約](#per-device-terms-of-use)」をご覧ください。
 1. 定期的に利用規約への同意を期限切れにする場合、 **[期限切れの同意]** を **[オン]** にします。 オンに設定すると、2 つのスケジュール設定が追加表示されます。
 
-   ![期限切れの同意](./media/terms-of-use/expire-consents.png)
+   ![開始日、頻度、および期間を設定するための [期限切れの同意] 設定](./media/terms-of-use/expire-consents.png)
 
 1. **[以下の日付から期限切れになります]** および **[頻度]** 設定を使用して、利用規約の期限切れのスケジュールを指定します。 次の表に、いくつかの設定例とその結果を示します。
 
@@ -113,31 +113,31 @@ Azure AD Terms of Use は、PDF 形式で内容を提示します。 この PDF 
 
    **[期限切れの同意]** と **[Duration before re-acceptance requires (days)]\(再同意を要求するまでの日数)** の両方の設定を使用することもできますが、通常はどちらか一方を使用します。
 
-1. **[条件付きアクセス]** の下にある **[Enforce with conditional access policy template]** (条件付きアクセス ポリシーのテンプレートの適用) リストを使用して、利用規約を適用するテンプレートを選択します。
+1. **[条件付きアクセス]** の下にある **[Enforce with Conditional Access policy template]** \(条件付きアクセス ポリシーのテンプレートの適用\) リストを使用して、使用条件を適用するテンプレートを選択します。
 
-   ![条件付きアクセス テンプレート](./media/terms-of-use/conditional-access-templates.png)
+   ![ポリシー テンプレートを選択するための [条件付きアクセス] ドロップダウン リスト](./media/terms-of-use/conditional-access-templates.png)
 
    | Template | 説明 |
    | --- | --- |
    | **クラウド アプリへのアクセス (すべてのゲスト用)** | すべてのゲストとすべてのクラウド アプリに対して条件付きアクセス ポリシーが作成されます。 このポリシーは、Azure portal に影響します。 これが作成された後、サインアウトしてサインインし直さなければならないことがあります。 |
    | **クラウド アプリへのアクセス (すべてのユーザー用)** | すべてのユーザーとすべてのクラウド アプリに対して条件付きアクセス ポリシーが作成されます。 このポリシーは、Azure portal に影響します。 これが作成された後、サインアウトしてサインインし直す必要があります。 |
    | **カスタム ポリシー** | この利用規約が適用されるユーザー、グループ、およびアプリを選択します。 |
-   | **後で条件付きアクセス ポリシーを作成する** | この利用規約は、条件付きアクセス ポリシーを作成するときに、制御の許可一覧に表示されます。 |
+   | **後で条件付きアクセス ポリシーを作成する** | この使用条件は、条件付きアクセス ポリシーを作成するときに、制御の許可一覧に表示されます。 |
 
    >[!IMPORTANT]
    >条件付きアクセス ポリシー規制 (使用条件を含む) は、サービス アカウントに対する強制をサポートしていません。 サービス アカウントはすべて、条件付きアクセス ポリシーから除外することをお勧めします。
 
-    カスタム条件付きアクセス ポリシーを使うと、特定のクラウド アプリケーションやユーザー グループまで、きめ細かい利用規約を有効にできます。 詳細については、「[クイック スタート: クラウド アプリにアクセスする前に利用規約への同意を要求する](require-tou.md)を参照してください。
+    カスタム条件付きアクセス ポリシーを使うと、特定のクラウド アプリケーションやユーザー グループまで、きめ細かい使用条件を有効にできます。 詳細については、「[クイック スタート: クラウド アプリにアクセスする前に利用規約への同意を要求する](require-tou.md)を参照してください。
 
 1. **Create** をクリックしてください。
 
    カスタム条件付きアクセス テンプレートを選んだ場合、表示される新しい画面でカスタム条件付きアクセス ポリシーを作成できます。
 
-   ![カスタム ポリシー](./media/terms-of-use/custom-policy.png)
+   ![カスタム条件付きアクセス ポリシー テンプレートを選んだ場合の新しい [条件付きアクセス] ウィンドウ](./media/terms-of-use/custom-policy.png)
 
    新しい利用規約が表示されるようになります。
 
-   ![TOU の追加](./media/terms-of-use/create-tou.png)
+   ![[使用条件] ブレードに一覧表示される新しい使用条件](./media/terms-of-use/create-tou.png)
 
 ## <a name="view-report-of-who-has-accepted-and-declined"></a>同意したユーザーと拒否したユーザーのレポートの表示
 
@@ -145,19 +145,19 @@ Azure AD Terms of Use は、PDF 形式で内容を提示します。 この PDF 
 
 1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 
-   ![[使用条件] ブレード](./media/terms-of-use/view-tou.png)
+   ![同意したユーザーと拒否したユーザーの数を一覧表示する [使用条件] ブレード](./media/terms-of-use/view-tou.png)
 
 1. 利用規約について、 **[同意]** または **[拒否]** の下に表示される数値をクリックすると、現在のユーザーの状態が表示されます。
 
-   ![利用規約の同意](./media/terms-of-use/accepted-tou.png)
+   ![同意したユーザーを一覧表示する [利用規約の同意] ウィンドウ](./media/terms-of-use/accepted-tou.png)
 
 1. 個々のユーザーの履歴を表示するには、省略記号ボタン ( **...** )、 **[履歴の表示]** の順にクリックします。
 
-   ![履歴の表示メニュー](./media/terms-of-use/view-history-menu.png)
+   ![ユーザーの [履歴の表示] コンテキスト メニュー](./media/terms-of-use/view-history-menu.png)
 
    履歴の表示ウィンドウでは、すべての同意、拒否、および有効期限切れの履歴を確認できます。
 
-   ![履歴の表示ウィンドウ](./media/terms-of-use/view-history-pane.png)
+   ![[履歴の表示] ウィンドウには、ユーザーの同意、拒否、有効期限切れの履歴が一覧表示されます](./media/terms-of-use/view-history-pane.png)
 
 ## <a name="view-azure-ad-audit-logs"></a>Azure AD 監査ログの表示
 
@@ -169,31 +169,31 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 1. 利用規約を選択します。
 1. **[監査ログの表示]** をクリックします。
 
-   ![[使用条件] ブレード](./media/terms-of-use/audit-tou.png)
+   ![[監査ログの表示] オプションが強調表示されている [使用条件] ブレード](./media/terms-of-use/audit-tou.png)
 
 1. Azure AD の [監査ログ] 画面では、リストを使って情報をフィルターし、特定の監査ログ情報だけを対象にすることができます。
 
    **[ダウンロード]** をクリックして、.csv ファイルで情報をダウンロードしてローカルに使うこともできます。
 
-   ![監査ログ](./media/terms-of-use/audit-logs-tou.png)
+   ![日付、ターゲット ポリシー、開始者、およびアクティビティが一覧表示される Azure AD の [監査ログ] 画面](./media/terms-of-use/audit-logs-tou.png)
 
    ログをクリックすると、追加のアクティビティの詳細を含むウィンドウが表示されます。
 
-   ![アクティビティの詳細](./media/terms-of-use/audit-log-activity-details.png)
+   ![アクティビティ、アクティビティの状態、開始者、ターゲット ポリシーが表示されるログのアクティビティの詳細](./media/terms-of-use/audit-log-activity-details.png)
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>ユーザーに表示される利用規約の外観
 
 利用規約を作成して適用すると、対象ユーザーにはサインイン時に次の画面が表示されます。
 
-![ユーザーの Web サインイン](./media/terms-of-use/user-tou.png)
+![ユーザーがサインインすると表示される使用条件の例](./media/terms-of-use/user-tou.png)
 
 ユーザーは利用規約を表示し、必要な場合はボタンを使用して拡大/縮小できます。
 
-![ズーム ボタンを使って利用規約を表示する](./media/terms-of-use/zoom-buttons.png)
+![ズーム ボタンを使用して使用条件を表示する](./media/terms-of-use/zoom-buttons.png)
 
 次の画面は、利用規約がモバイル デバイス上でどのように表示されるかを示しています。
 
-![ユーザーのモバイル サインイン](./media/terms-of-use/mobile-tou.png)
+![ユーザーがモバイル デバイスにサインインすると表示される使用条件の例](./media/terms-of-use/mobile-tou.png)
 
 ユーザーは、利用規約に 1 回だけ同意すればよく、以降のサインインで利用規約が再び表示されることはありません。
 
@@ -204,11 +204,11 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 1. 右上隅に表示される自分の名前をクリックし、 **[プロファイル]** を選択します。
 
-   ![プロファイル](./media/terms-of-use/tou14.png)
+   ![ユーザーのウィンドウが開いた状態の MyApps サイト](./media/terms-of-use/tou14.png)
 
 1. [プロファイル] ページで、 **[使用条件の確認]** をクリックします。
 
-   ![プロファイル - 利用規約の確認](./media/terms-of-use/tou13a.png)
+   ![[使用条件の確認] リンクが表示されるユーザーの [プロファイル] ページ](./media/terms-of-use/tou13a.png)
 
 1. そこから同意した使用条件を確認できます。
 
@@ -221,9 +221,9 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 1. **[条件の編集]** をクリックします。
 1. [利用規約の編集] ウィンドウで、[名前]、[表示名]、または [require users to expand values]\(値の展開をユーザーに要求する\) を変更します。
 
-   PDF ドキュメント、各デバイスでユーザーによる同意が必要、期限切れの同意、再同意までの日数、条件付きアクセス ポリシーなど、その他の設定も変更したい場合は、新しい利用規約を作成する必要があります。
+   PDF ドキュメント、各デバイスでユーザーによる同意が必要、期限切れの同意、再同意までの日数、条件付きアクセス ポリシーなど、その他の設定も変更したい場合は、新しい使用条件を作成する必要があります。
 
-   ![利用規約の編集](./media/terms-of-use/edit-tou.png)
+   ![名前と拡張オプションが表示される [使用条件の編集] ウィンドウ](./media/terms-of-use/edit-tou.png)
 
 1. **[保存]** をクリックして変更を保存します。
 
@@ -237,12 +237,12 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 1. 編集する利用規約を選択します。
 1. [詳細] ウィンドウで、 **[言語]** タブをクリックします。
 
-   ![TOU の追加](./media/terms-of-use/languages-tou.png)
+   ![使用条件の選択と [詳細] ウィンドウでの [言語] タブの表示](./media/terms-of-use/languages-tou.png)
 
 1. **[言語の追加]** をクリックします。
 1. [Add terms of use language]\(利用規約の言語の追加\) ウィンドウで、ローカライズされた PDF をアップロードして、言語を選択します。
 
-   ![TOU の追加](./media/terms-of-use/language-add-tou.png)
+   ![ローカライズされた PDF をアップロードするためのオプションがある [Add terms of use language]\(使用条件の言語の追加\) ウィンドウ](./media/terms-of-use/language-add-tou.png)
 
 1. **[追加]** をクリックして、言語を追加します。
 
@@ -273,7 +273,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 ユーザーが Windows 10 と Microsoft Edge を使用している場合、[デバイスを参加させる](../user-help/user-help-join-device-on-network.md#to-join-an-already-configured-windows-10-device)ための次のようなメッセージを受信します。
 
-![Windows 10 および Microsoft Edge - デバイスの参加プロンプト](./media/terms-of-use/per-device-win10-edge.png)
+![Windows 10 および Microsoft Edge - デバイスを登録する必要があることを示すメッセージ](./media/terms-of-use/per-device-win10-edge.png)
 
 Chrome を使用している場合、[Windows 10 アカウント拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)のインストールを求められます。
 
@@ -281,7 +281,7 @@ Chrome を使用している場合、[Windows 10 アカウント拡張機能](ht
 
 ユーザーがサポートされていないブラウザーを使用している場合、別のブラウザーを使用するように依頼されます。
 
-![サポートされていないブラウザー](./media/terms-of-use/per-device-browser-unsupported.png)
+![デバイスを登録する必要があること、およびブラウザーがサポートされていないことを示すメッセージ](./media/terms-of-use/per-device-browser-unsupported.png)
 
 ## <a name="delete-terms-of-use"></a>利用規約を削除する
 
@@ -292,7 +292,7 @@ Chrome を使用している場合、[Windows 10 アカウント拡張機能](ht
 1. **[条件の削除]** をクリックします。
 1. 続行するかどうかを確認するメッセージが表示されたら、**はい** をクリックします。
 
-   ![利用規約を削除する](./media/terms-of-use/delete-tou.png)
+   ![使用条件の削除を確認するメッセージ](./media/terms-of-use/delete-tou.png)
 
    利用規約が表示されなくなります。
 
@@ -302,7 +302,7 @@ Chrome を使用している場合、[Windows 10 アカウント拡張機能](ht
 
 ## <a name="policy-changes"></a>ポリシーの変更
 
-条件付きアクセス ポリシーは直ちに有効になるためです。 このような場合、管理者には "不適切なクラウド" または "Azure AD トークンの問題" が表示されるようになります。 新しいポリシーを満たすには、管理者はサインアウトしてサインインし直す必要があります。
+条件付きアクセス ポリシーは直ちに有効になります。 このような場合、管理者には "不適切なクラウド" または "Azure AD トークンの問題" が表示されるようになります。 新しいポリシーを満たすには、管理者はサインアウトしてサインインし直す必要があります。
 
 > [!IMPORTANT]
 > 次の場合、新しいポリシーを満たすには、対象ユーザーはいったんサインアウトしてからサインインし直す必要があります。
@@ -312,11 +312,11 @@ Chrome を使用している場合、[Windows 10 アカウント拡張機能](ht
 
 ## <a name="b2b-guests-preview"></a>B2B ゲスト (プレビュー)
 
-ほとんどの組織は、従業員が組織の利用規約やプライバシーに関する声明に同意するためのプロセスを用意しています。 しかし、Azure AD 企業間 (B2B) ゲストが SharePoint または Teams 経由で追加された際に同じ同意を適用するには、どうすればよいでしょうか? 条件付きアクセスと利用規約を使用すると、B2B ゲスト ユーザーに直接ポリシーを適用できます。 招待の利用フロー中に、ユーザーに対して利用規約が表示されます。 このサポートは現在プレビューの段階です。
+ほとんどの組織は、従業員が組織の利用規約やプライバシーに関する声明に同意するためのプロセスを用意しています。 しかし、Azure AD 企業間 (B2B) ゲストが SharePoint または Teams 経由で追加された際に同じ同意を適用するには、どうすればよいでしょうか? 条件付きアクセスと使用条件を使用すると、B2B ゲスト ユーザーに直接ポリシーを適用できます。 招待の利用フロー中に、ユーザーに対して利用規約が表示されます。 このサポートは現在プレビューの段階です。
 
 利用規約は、ユーザーが Azure AD でゲスト アカウントを持っている場合にのみ表示されます。 現在の SharePoint Online には、ユーザーがゲスト アカウントを持っていなくてもドキュメントまたはフォルダーを共有できる[アドホック外部共有受信者エクスペリエンス](/sharepoint/what-s-new-in-sharing-in-targeted-release)があります。 この場合、利用規約は表示されません。
 
-![すべてのゲスト ユーザー](./media/terms-of-use/b2b-guests.png)
+![[すべてのゲスト ユーザー] オプションがオンになっている [ユーザーとグループ] ウィンドウ - [含める] タブ](./media/terms-of-use/b2b-guests.png)
 
 ## <a name="support-for-cloud-apps-preview"></a>クラウド アプリのサポート (プレビュー)
 
@@ -324,15 +324,15 @@ Chrome を使用している場合、[Windows 10 アカウント拡張機能](ht
 
 ### <a name="azure-information-protection"></a>Azure Information Protection
 
-Azure Information Protection アプリの条件付きアクセス ポリシーを構成し、ユーザーが保護されたドキュメントにアクセスするときに利用規約を強制します。 これにより、ユーザーが最初に保護されたドキュメントにアクセスする前に、利用規約がトリガーされます。
+Azure Information Protection アプリの条件付きアクセス ポリシーを構成し、ユーザーが保護されたドキュメントにアクセスするときに使用条件を強制することができます。 これにより、ユーザーが最初に保護されたドキュメントにアクセスする前に、利用規約がトリガーされます。
 
-![Azure Information Protection クラウド アプリ](./media/terms-of-use/cloud-app-info-protection.png)
+![Microsoft Azure Information Protection アプリが選択されている [クラウド アプリ] ウィンドウ](./media/terms-of-use/cloud-app-info-protection.png)
 
 ### <a name="microsoft-intune-enrollment"></a>Microsoft Intune Enrollment
 
-Microsoft Intune Enrollment アプリの条件付きアクセス ポリシーを構成し、Intune にデバイスを登録する前に利用規約を強制することができます。 詳しくは、[組織に適した利用規約ソリューションの選択に関するブログ投稿](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)をご覧ください。
+Microsoft Intune Enrollment アプリの条件付きアクセス ポリシーを構成し、Intune にデバイスを登録する前に使用条件を強制することができます。 詳しくは、[組織に適した利用規約ソリューションの選択に関するブログ投稿](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)をご覧ください。
 
-![Microsoft Intune クラウド アプリ](./media/terms-of-use/cloud-app-intune.png)
+![Microsoft Intune アプリが選択されている [クラウド アプリ] ウィンドウ](./media/terms-of-use/cloud-app-intune.png)
 
 > [!NOTE]
 > [デバイスごとの利用規約](#per-device-terms-of-use)では、Intune Enrollment アプリはサポートされていません。

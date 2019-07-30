@@ -7,13 +7,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
-ms.author: tylerfox
-ms.openlocfilehash: a7e129f43b957b271c77f451ab198a9068bb0797
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: tyfox
+ms.openlocfilehash: 2035f5c7666d93068fd8007555bfe1aadae58ff1
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718989"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873934"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -150,10 +150,6 @@ HTTP アクセスの付与/取り消しと同じ手順です。 クラスター�
 ## <a name="find-the-default-storage-account"></a>既定のストレージ アカウントの検索
 次の PowerShell スクリプトでは、既定のストレージ アカウント名と関連情報を取得する方法を示します。
 
-> [!IMPORTANT]  
-> ストレージ アカウントで[安全な転送](../storage/common/storage-require-secure-transfer.md)が有効になっている場合、`DefaultStorageAccount` および `DefaultStorageContainer` の値は [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) から返されません。
-
-
 ```powershell
 #Connect-AzAccount
 $clusterName = "<HDInsight Cluster Name>"
@@ -197,10 +193,6 @@ $resourceGroupName = $cluster.ResourceGroup
 **Apache Hive ジョブを送信するには**
 
 「[PowerShell を使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-powershell.md)」を参照してください。
-
-**Apache Pig ジョブを送信するには**
-
-[PowerShell を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-powershell.md)に関するページを参照してください。
 
 **Apache Sqoop ジョブを送信するには**
 

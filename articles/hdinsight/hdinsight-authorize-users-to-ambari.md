@@ -1,23 +1,23 @@
 ---
 title: Ambari Views のユーザー承認 - Azure HDInsight
 description: ESP が有効になっている HDInsight クラスターに対する Ambari ユーザーと Ambari グループのアクセス許可を管理する方法。
-author: maxluk
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
-ms.author: maxluk
-ms.openlocfilehash: 69ae1bd05b64912b3d53ca88b468a72a90ff5a74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: hrasheed
+ms.openlocfilehash: 28f30270ab0a6c057ee583ccebc2a8540980c6cc
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718312"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442183"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Apache Ambari ビューに対してユーザーを承認する
 
-[Enterprise セキュリティ パッケージ (ESP) が有効になっている HDInsight クラスター](./domain-joined/apache-domain-joined-introduction.md)には、エンタープライズ グレードの機能が備わっています。Azure Active Directory ベースの認証もその 1 つです。 クラスターへのアクセスが提供されている Azure AD グループに追加された[新しいユーザーを同期](hdinsight-sync-aad-users-to-cluster.md)して、特定のユーザーに特定のアクションの実行を許可できます。 [Apache Ambari](https://ambari.apache.org/) でのユーザー、グループ、およびアクセス許可の操作は、ESP HDInsight クラスターと標準 HDInsight クラスターの両方でサポートされています。
+[Enterprise セキュリティ パッケージ (ESP) が有効になっている HDInsight クラスター](./domain-joined/hdinsight-security-overview.md)には、エンタープライズ グレードの機能が備わっています。Azure Active Directory ベースの認証もその 1 つです。 クラスターへのアクセスが提供されている Azure AD グループに追加された[新しいユーザーを同期](hdinsight-sync-aad-users-to-cluster.md)して、特定のユーザーに特定のアクションの実行を許可できます。 [Apache Ambari](https://ambari.apache.org/) でのユーザー、グループ、およびアクセス許可の操作は、ESP HDInsight クラスターと標準 HDInsight クラスターの両方でサポートされています。
 
 Active Directory ユーザーは、自分のドメイン資格情報を使用してクラスター ノードにサインインできます。 また、クラスターと他の承認済みエンドポイント ([Hue](https://gethue.com/)、Ambari Views、ODBC、JDBC、PowerShell、REST API など) との対話も、ドメイン資格情報で認証することができます。
 

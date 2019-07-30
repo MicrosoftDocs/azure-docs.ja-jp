@@ -2,31 +2,25 @@
 title: Azure Active Directory Identity Protection | Microsoft Docs
 description: Azure AD Identity Protection を使用して、侵害された ID またはデバイスを攻撃者が悪用する能力を制限する方法、および以前に疑われた、または侵害を確認された ID またはデバイスを保護する方法について説明します。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 01/29/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d9b0c80522a988447b2753953c0c51b058fdd43
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66015206"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335399"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 
-Azure Active Directory Identity Protection を使用して、組織は、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成できます。
+Azure Active Directory [Identity](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) Protection を使用して、組織は、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成できます。
 
 ## <a name="get-started"></a>作業開始
 
@@ -37,7 +31,6 @@ Microsoft は 10 年以上にわたってクラウド ベースの ID を保護�
 このため、次が必要です。
 
 - 権限レベルにかかわらず、すべての ID を保護する
-
 - 侵害された ID が悪用されるのを事前に防止する
 
 侵害された ID を検出するのは簡単な作業ではありません。 Azure Active Directory は、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ID が侵害された可能性があることを示す、異常と疑わしいインシデントを検出します。 Identity Protection は、このデータを使用してレポートとアラートを生成し、これにより、ユーザーは検出された問題を評価し、適切な修復または軽減のアクションを実行することができます。
@@ -69,7 +62,7 @@ Azure Active Directory Identity Protection は単なる監視とレポート作�
 
 Identity Protection 実装の管理アクティビティの負荷を分散するため、いくつかのロールを割り当てることができます。 Azure AD Identity Protection は、3 つのディレクトリ ロールをサポートします。
 
-| ロール | できること | できないこと |
+| Role | できること | できないこと |
 | :-- | --- | --- |
 | 全体管理者 | Identity Protection へのフル アクセス、Identity Protection の配布準備| |
 | セキュリティ管理者 | Identity Protection へのフル アクセス | Identity Protection の配布準備、ユーザーのパスワードのリセット |

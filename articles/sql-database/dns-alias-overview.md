@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek, jrasnick
+ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: bb38f73308fb1eb67be310120cb589cb9412e737
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160800"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461825"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 
@@ -30,6 +30,7 @@ DNS エイリアスの一般的な使用法には、次のようなものがあ�
 - Azure SQL Server に覚えやすい名前を付ける。
 - 初期開発の時点ではエイリアスでテスト用 SQL Database サーバーを参照し、 アプリケーションの運用を開始するときに運用サーバーを参照するようエイリアスを変更する。 テストから運用に移行するために、データベース サーバーに接続する複数のクライアントの構成に変更を加える必要はありません。
 - アプリケーションのデータベースが 1 つだけ別の SQL Database サーバーに移動された。 この場合も、エイリアスを変更するだけでよく、複数のクライアントの構成を変更する必要はありません。
+- リージョンの停止時には、geo リストアを使用して、データベースを別のサーバーおよびリージョンで復旧します。 既存のエイリアスを変更して新しいサーバーを参照することで、既存のクライアント アプリケーションはサーバーに再接続できます。 
 
 ## <a name="domain-name-system-dns-of-the-internet"></a>インターネットのドメイン ネーム システム (DNS)
 
@@ -49,7 +50,7 @@ Azure SQL Database の DNS エイリアス機能は、次のようなシナリ�
 
 ### <a name="cross-region-support"></a>複数のリージョンへの対応
 
-ディザスター リカバリーによって、SQL Database サーバーが別のリージョンに移動される場合があります。 システムで DNS エイリアスを使用していれば、すべてのクライアントのすべての接続文字列を特定して更新する手間を省けます。 代わりに、データベースをホストする新しい SQL Database サーバーを参照するようにエイリアスを更新します。
+ディザスター リカバリーによって、SQL Database サーバーが別のリージョンに移動される場合があります。 システムで DNS エイリアスを使用していれば、すべてのクライアントのすべての接続文字列を見つけて更新する必要がなくなります。 代わりに、データベースをホストする新しい SQL Database サーバーを参照するようにエイリアスを更新します。
 
 ## <a name="properties-of-a-dns-alias"></a>DNS エイリアスのプロパティ
 
@@ -67,13 +68,6 @@ SQL Database サーバーの各 DNS エイリアスには次のプロパティ�
 DNS エイリアスをプログラムによって管理できるように、REST API と PowerShell コマンドレットの両方が用意されています。
 
 ### <a name="rest-apis-for-managing-your-dns-aliases"></a>DNS エイリアスを管理するための REST API
-
-<!-- TODO
-??2 "soon" in the following live sentence, is not the best situation.
-TODO update this subsection very soon after REST API docu goes live.
-Dev = Magda Bojarska
-Comment as of:  2018-01-26
--->
 
 REST API に関するドキュメントは、Web 上の次の場所で入手できます。
 
@@ -111,7 +105,7 @@ DNS エイリアスには、現在、次の制限事項があります。
 - *最大 2 分の遅延:* DNS エイリアスの更新または削除に最大 2 分かかります。
   - ただし、遅延の有無にかかわらず、エイリアスは元のサーバーへのクライアント接続の参照を直ちに停止します。
 - *DNS の参照:* 現時点では、特定の DNS エイリアスが参照しているサーバーを確認する正式な方法は、[DNS の参照](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)の実行だけです。
-- *[テーブルの監査はサポートされていない](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* データベースで*テーブル監査*が有効になっている Azure SQL Database サーバーでは DNS エイリアスを使用できません。
+- _テーブルの監査はサポートされていない:_ データベースで*テーブル監査*が有効になっている Azure SQL Database サーバーでは DNS エイリアスを使用できません。
   - テーブル監査は非推奨になりました。
   - [BLOB 監査](sql-database-auditing.md)に移行することをお勧めします。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: c79a4907e277c337509bd362653cfb100c4bd39c
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979509"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137436"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
 
@@ -69,7 +69,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
-|発行元|名前|バージョン|
+|Publisher|Name|バージョン|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -114,7 +114,8 @@ IP アドレス一覧では、[Microsoft Azure データセンターの IP 範�
 Azure Policy は、ゲスト構成リソースプロバイダーの **complianceStatus** プロパティを使用して**コンプライアンス** ノードでコンプライアンスを報告します。 詳細については、[コンプライアンス データを取得する](../how-to/getting-compliance-data.md)を参照してください。
 
 > [!NOTE]
-> 各ゲスト構成定義に、**DeployIfNotExists** と **Audit** ポリシーの両方が存在する必要があります。
+> **Audit** ポリシーから結果を返すには、**DeployIfNotExists** ポリシーが必要です。
+> **DeployIfNotExists** がない場合、**Audit** ポリシーは状態として"0 of 0" のリソースを示します。
 
 割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows の仮想マシン内での監査のパスワード セキュリティ設定*という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows 用に **DeployIfNotExists** と **Audit** の 6 つのペアがあり、Linux 用に 3 つのペアがあります。 いずれの場合も、定義内のロジックは、[ポリシー規則](definition-structure.md#policy-rule)の定義に基づいてターゲット オペレーティング システムのみが評価されることを検証します。
 

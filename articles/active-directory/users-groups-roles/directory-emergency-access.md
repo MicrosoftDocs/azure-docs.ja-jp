@@ -12,12 +12,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f430a832ffb35b95d0bf4eff2d82be5ecc3d865c
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 42de060d81539030ef1970e01e753383662e924f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224942"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083909"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管アカウントを管理する
 

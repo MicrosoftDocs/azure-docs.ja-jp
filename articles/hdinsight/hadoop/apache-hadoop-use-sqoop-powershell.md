@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: 49375b00607f1f23a99855f8b80f5f5c3c4dac22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f178d07666eda3552c18f581a926305e76ecb697
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686667"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450125"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>HDInsight で Azure PowerShell for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -22,7 +22,7 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL デー
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、次の項目を用意する必要があります。
+この記事の操作を始める前に、以下を用意する必要があります。
 
 * Azure PowerShell [AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)がインストールされているワークステーション。
 

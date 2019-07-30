@@ -10,14 +10,13 @@ ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 929ab995ea76fa0d1d5227e3a53c2b50bc43fdc0
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 32b3c3b45c627d8dfdb42642228a7f9d9786111e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729374"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569967"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>PowerShell を使用して Azure SQL Database マネージド インスタンスを作成する
 

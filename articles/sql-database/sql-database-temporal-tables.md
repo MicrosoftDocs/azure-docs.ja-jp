@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: fbb2458e73330a09124c00cebe3eb7bcaba5408d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: ac57e873a6948e85e78849bd4e22db85491c4bfb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951506"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441540"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL Database のテンポラル テーブルの概要
 
@@ -195,6 +195,7 @@ ALTER TABLE dbo.WebsiteUserInfo
 * [カスタム クリーンアップ スクリプト](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
 ## <a name="next-steps"></a>次の手順
-テンポラル テーブルの詳細については、 [MSDN のドキュメント](https://msdn.microsoft.com/library/dn935015.aspx)を参照してください。
-Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
+
+- テンポラル テーブルの詳細については、「チェック アウト[テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)」をご覧ください。
+- Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 

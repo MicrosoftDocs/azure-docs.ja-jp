@@ -8,19 +8,19 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 03f7f050e158ba30d2f89e79ffcc9e8723eb5268
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7af43d24b03a4c548925bdca4189fd0524c701a4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298687"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341637"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node.JS](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -123,7 +123,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * コレクションの作成直後の要求に対して "所有者リソースが見つかりません" という例外を引き起こす可能性のある、セッション コンテナー内のいくつかのバグを修正しました。
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](how-to-sql-query.md#Aggregates)に関するトピックを参照してください。
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-query-aggregates.md)に関するトピックを参照してください。
 * Change Feed のサポートを追加しました。
 * RequestOptions.setPopulateQuotaInfo を介したコレクション クォータ情報のサポートを追加しました。
 * RequestOptions.setScriptLoggingEnabled を介したストアド プロシージャ スクリプトのログ記録のサポートを追加しました。

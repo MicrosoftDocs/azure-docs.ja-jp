@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 6265a7f9f60b60d7b79e15a04feb0ec76dc59f6d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3a7155380a51273d376226c6be7a004f386181ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293120"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61035261"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>エンドポイント アクセス制御リストとは
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは Resource Manager デプロイ モデルを使用することをお勧めします。 
+> Azure には、リソースを作成および操作するための 2 つの異なる[デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)があります。Resource Manager とクラシックです。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは Resource Manager デプロイ モデルを使用することをお勧めします。 
 
 エンドポイント アクセス制御リスト (ACL) は、Azure デプロイメントに使用できるセキュリティ拡張機能です。 ACL を使用して、仮想マシン エンドポイントのトラフィックを選択して許可または拒否することができます。 このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。 エンドポイント用のネットワーク ACL のみを指定できます。 仮想ネットワーク、または仮想ネットワークに含まれる特定のサブネットの ACL は指定できません。 可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。 NSG を使用する場合、エンドポイントのアクセス制御リストは置き換えられ、適用されなくなります。 NSG の詳細については、「[ネットワーク セキュリティ グループの概要](security-overview.md)」を参照してください。
 

@@ -3,19 +3,19 @@ title: Azure クイック スタート - Batch ジョブの実行 - CLI
 description: Azure CLI で Batch ジョブを実行する方法を簡単に説明します。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72c3244fbd9c8d547e35c31f0cd6e659e367e21a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127486"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322508"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する
 
@@ -170,7 +170,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-`stdout.txt` の内容は、テキスト エディターで表示できます。 内容は、ノードで設定されている Azure Batch 環境変数を示します。 独自の Batch ジョブを作成すると、これらの環境変数は、タスクのコマンド ラインのほか、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。 例: 
+`stdout.txt` の内容は、テキスト エディターで表示できます。 内容は、ノードで設定されている Azure Batch 環境変数を示します。 独自の Batch ジョブを作成すると、これらの環境変数は、タスクのコマンド ラインのほか、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。 例:
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1

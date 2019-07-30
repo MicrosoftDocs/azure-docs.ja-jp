@@ -2,8 +2,8 @@
 title: アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする - Azure Active Directory | Microsoft Docs
 description: グループまたはアプリケーションに対する自分のアクセスを Azure Active Directory アクセス レビューでレビューする方法を学習します。
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/21/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4b48e035476e5381104b442f87dcac03ac11778
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113182"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499670"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
@@ -40,7 +40,7 @@ ms.locfileid: "66113182"
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対する自分のアクセスをレビューするように求めるメールの例を次に示します。
 
-    ![アクセスのレビューの電子メール](./media/review-your-access/access-review-email.png)
+    ![グループに対する自分のアクセスをレビューするための Microsoft からのメールの例](./media/review-your-access/access-review-email.png)
 
 1. **[アクセスのレビュー]** リンクをクリックして、アクセス レビューを開きます。
 
@@ -48,7 +48,7 @@ ms.locfileid: "66113182"
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) から、MyApps ポータルにサインインします。
 
-    ![MyApps ポータル](./media/review-your-access/myapps-access-panel.png)
+    ![アクセス許可があるアプリの一覧を示す MyApps ポータル](./media/review-your-access/myapps-access-panel.png)
 
 1. ページの右上隅にあるユーザー アイコンをクリックすると、ユーザーの名前と既定の組織が表示されます。 複数の組織が一覧表示されている場合は、アクセス レビューの依頼元の組織を選択してください。
 
@@ -56,7 +56,7 @@ ms.locfileid: "66113182"
 
     このタイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
 
-    ![アクセス レビューのリスト](./media/review-your-access/access-reviews-list.png)
+    ![アプリとグループについての保留中のアクセス レビューの一覧](./media/review-your-access/access-reviews-list.png)
 
 1. 実行するアクセス レビューの **[レビューの開始]** リンクをクリックします。
 
@@ -68,13 +68,13 @@ ms.locfileid: "66113182"
 
     他のユーザーのアクセスをレビューするように要求した場合は、ページの外観が異なります。 詳細については、[グループまたはアプリケーションに対するアクセスのレビュー](perform-access-review.md)に関するページを参照してください。
 
-    ![アクセス レビューを実行する](./media/review-your-access/perform-access-review.png)
+    ![グループへのアクセスが引き続き必要かどうかを確認する、開かれたアクセス レビュー](./media/review-your-access/perform-access-review.png)
 
 1. **[はい]** をクリックしてアクセスを維持するか、 **[いいえ]** をクリックしてアクセスを削除します。
 
 1. **[はい]** をクリックする場合は、 **[理由]** ボックスに正当性を指定する必要がある場合があります。
 
-    ![アクセス レビューを実行する](./media/review-your-access/perform-access-review-submit.png)
+    ![グループへのアクセスが引き続き必要かどうかを確認する、完了したアクセス レビュー](./media/review-your-access/perform-access-review-submit.png)
 
 1. **[送信]** をクリックします。
 

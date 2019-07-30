@@ -5,25 +5,28 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 01358d13d30358a9950cbe35622df065fc5a6de5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147116"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133188"
 ---
-この記事では、PowerShell コマンドレットを使用します。 コマンドレットを実行するには、Azure Cloud Shell を使用できます。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールがプリインストールされ、お客様のアカウントで使用するよう構成されています。 **[コピー]** をクリックしてコードをコピーし、Cloud Shell に貼り付けて Enter キーを押すだけで、コードを実行することができます。 Cloud Shell は、次のようにいくつかの方法で起動することができます。
+この記事では、PowerShell コマンドレットを使用します。 コマンドレットを実行するには、Azure でホストされ、ブラウザーを介して使用される対話型のシェル環境である Azure Cloud Shell を使用できます。 Azure Cloud Shell には、Azure PowerShell コマンドレットが事前にインストールされています。
+
+この記事に含まれるコードを Azure Cloud Shell で実行するには、Cloud Shell セッションを開き、コード ブロック上の **[コピー]** ボタンを使ってコードをコピーし、__Ctrl + Shift + V__ キー (Windows と Linux) または __command + Shift + V__ キー (macOS) を押して Cloud Shell セッションに貼り付けます。 テキストを貼り付けても自動的には実行されません。コードを実行するには、**Enter** キーを押します。
+
+Azure Cloud Shell は次の方法で起動できます。
 
 |  |   |
 |-----------------------------------------------|---|
-| コード ブロックの右上隅にある **[使ってみる]** をクリックします。 | ![この記事の Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-powershell-try-it.png) |
-| ブラウザーで Cloud Shell を開きます。 | [![https://shell.azure.com/powershell](./media/vpn-gateway-cloud-shell-powershell/launchcloudshell.png)](https://shell.azure.com/powershell) |
-| Azure Portal の右上のメニューの **[Cloud Shell]** ボタンをクリックします。 | [![ポータルの Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
-|  |  |
+| コード ブロックの右上隅にある **[使ってみる]** を選択します。 テキストが自動的に Cloud Shell にコピーされるわけでは__ありません__。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/cli-try-it.png) |
+| ブラウザーで [shell.azure.com](https://shell.azure.com) を開きます。 | [![Azure Cloud Shell の起動ボタン](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
+| [Azure Portal](https://portal.azure.com) の右上隅にあるメニューの **[Cloud Shell]** ボタンを選択します。 | ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 
 **ローカルでの PowerShell の実行**
 
-Azure PowerShell コマンドレットは、ローカルのコンピューターにインストールして実行することもできます。 PowerShell コマンドレットは、頻繁に更新されます。 最新バージョンを実行していないと、手順で指定されている値は失敗する場合があります。 ローカルで実行している PowerShell のバージョンを確認するには、`Get-Module -ListAvailable Az` コマンドレットを使用します。 インストールまたは更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/install-az-ps)」を参照してください。
+Azure PowerShell コマンドレットは、ローカルのコンピューターにインストールして実行することもできます。 PowerShell コマンドレットは、頻繁に更新されます。 最新バージョンを実行していないと、手順で指定されている値は失敗する場合があります。 コンピューターにインストールされている Azure PowerShell のバージョンを確認するには、`Get-Module -ListAvailable Az` コマンドレットを使用します。 インストールまたは更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/install-az-ps)」を参照してください。

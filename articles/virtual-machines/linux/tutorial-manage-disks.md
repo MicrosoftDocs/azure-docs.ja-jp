@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure CLI を使用して、仮
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -17,12 +17,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: aff00978178f63b7324168e9aca765b77decf2b4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 02dd1b293d250b1adf09325fa36e01f176722599
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922913"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708463"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
 
@@ -44,7 +44,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 **オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 2 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 OS ディスクには既定で */dev/sda* というラベルが付けられています。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 この構成のため、アプリケーションまたはデータ用に OS ディスクを**使用しないでください**。 アプリケーションとデータ用には、このチュートリアルの後半で説明するデータ ディスクを使用してください。
 
-**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは VM のサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、*/mnt* というマウント ポイントがあります。
+**一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは VM のサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、 */mnt* というマウント ポイントがあります。
 
 ## <a name="azure-data-disks"></a>Azure データ ディスク
 
@@ -105,7 +105,7 @@ az vm create \
 az vm disk attach \
     --resource-group myResourceGroupDisk \
     --vm-name myVM \
-    --disk myDataDisk \
+    --name myDataDisk \
     --size-gb 128 \
     --sku Premium_LRS \
     --new
@@ -146,7 +146,7 @@ sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 df -h
 ```
 
-出力には、*/datadrive* にマウントされた新しいドライブが示されます。
+出力には、 */datadrive* にマウントされた新しいドライブが示されます。
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
@@ -254,7 +254,7 @@ datadisk=$(az disk list \
 az vm disk attach \
    –g myResourceGroupDisk \
    --vm-name myVM \
-   --disk $datadisk
+   --name $datadisk
 ```
 
 ## <a name="next-steps"></a>次の手順

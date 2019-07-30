@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 364d4a11772e6bb72e2e258503f3cce49dc61453
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181870"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476239"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>1 つ以上のアクセス レビューを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "67181870"
 
 1. **[開始日]** を設定します。 既定では、アクセス レビューは 1 回実行されます。作成されたのと同じ時間に開始され、1 か月で終了します。 この開始日と終了日を変更することで、アクセス レビューを後で開始し、必要な日数を好きなだけ確保することができます。
 
-    ![アクセス レビューの作成 - 開始日と終了日](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
+    ![開始日、頻度、期間、終了、回数、および終了日](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
 1. アクセス レビューを繰り返すには、 **[頻度]** 設定を **[1 回]** から **[毎週]** 、 **[毎月]** 、 **[四半期に 1 回]** 、 **[毎年]** 、 **[Semi-annually]\(半年に 1 回\)** に変更します。 **[期間]** スライダーまたはテキスト ボックスを使用し、繰り返しの系列の各レビューでレビュー担当者からの入力を受け付ける日数を決めます。 たとえば、レビューの重複を避けるために、月 1 回のレビューに設定できる最大期間は 27 日です。
 
@@ -33,22 +33,22 @@ ms.locfileid: "67181870"
 
 1. **[ユーザー]** セクションで、メンバーシップをレビューする 1 つ以上のロールを選択します。
 
-    ![アクセス レビューの作成 - ユーザー](./media/active-directory-privileged-identity-management-access-reviews/users.png)
+    ![ロール メンバーシップをレビューするためのユーザー スコープ](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
     > 複数のロールを選択すると、複数のアクセス レビューが作成されます。 たとえば、5 つのロールを選択すると、5 つの別々のアクセス レビューが作成されます。
 
     Azure AD ロールのアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
 
-    ![アクセス レビューの作成 - レビューのロール メンバーシップ](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
+    ![選択できる Azure AD ロールを一覧表示する [レビューのメンバーシップ] ウィンドウ](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
     Azure リソース ロールのアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
 
-    ![アクセス レビューの作成 - レビューのロール メンバーシップ](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
+    ![選択できる Azure リソース ロールを一覧表示する [レビューのメンバーシップ] ウィンドウ](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
 1. **[レビュー担当者]** セクションで、全ユーザーをレビューする担当者 (複数可) を選びます。 メンバー自身にそのアクセス権をレビューしてもらうことができます。
 
-    ![アクセス レビューの作成 - レビュー担当者](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
+    ![選択したユーザーまたはメンバー (セルフ) のレビュー担当者の一覧](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **選択したユーザー** - アクセスする必要があるユーザーがわからない場合は、このオプションを使用します。 このオプションでは、リソース所有者またはグループ マネージャーにレビューを割り当て、完了してもらうことができます。
     - **メンバー (セルフ)** - ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
@@ -57,7 +57,7 @@ ms.locfileid: "67181870"
 
 1. レビュー完了後の動作を指定するには、 **[設定完了時]** セクションを展開します。
 
-    ![完了時の設定](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![適用を自動化するための [設定完了時] および [レビュー担当者からの応答なし]](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
 1. 拒否されたユーザーのアクセスを自動的に削除する場合は、 **[リソースへの結果の自動適用]** を **[有効]** に設定します。 レビューが完了したときに結果を手動で適用する場合は、スイッチを **[無効]** に設定します。
 
@@ -72,7 +72,7 @@ ms.locfileid: "67181870"
 
 1. 他の設定を指定するには、 **[詳細設定]** セクションを展開します。
 
-    ![詳細設定](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
+    ![推奨事項の表示、承認理由の必須化、メール通知、およびリマインダーのための [詳細設定]](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
 
 1. ユーザーの情報に基づくシステムの推奨事項をレビュー担当者に表示するには、 **[推奨事項を表示]** を **[有効]** に設定します。
 

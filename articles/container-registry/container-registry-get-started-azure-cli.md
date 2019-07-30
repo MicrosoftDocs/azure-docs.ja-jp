@@ -3,17 +3,18 @@ title: クイック スタート - Azure でのプライベート Docker レジ�
 description: Azure CLI を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 24bdd52673c65d039166dc28f9f0a0a784569a1a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 6c511c56ab8df14cc6ea81363772ae0fd6d61272
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678702"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309528"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用したプライベート コンテナー レジストリの作成
 
@@ -21,7 +22,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 このクイック スタートでは、Azure CLI を実行している必要があります (バージョン 2.0.55 以降を推奨)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
-Docker もローカルにインストールする必要があります。 Docker では、[macOS][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
+Docker もローカルにインストールする必要があります。 Docker では、[macOS][docker-mac], [Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
 Azure Cloud Shell には、必要な Docker コンポーネント (`dockerd` デーモン) すべてが含まれていないため、このクイックスタートで Cloud Shell を使用することはできません。
 
@@ -37,7 +38,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、「[Container Registry の SKU][container-registry-skus]」を参照してください。
+このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、[コンテナー レジストリの SKU][container-registry-skus] に関するページを参照してください。
 
 [az acr create][az-acr-create] コマンドを使用して ACR インスタンスを作成します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 次の例では、*myContainerRegistry007* を使用します。 これを一意の値に更新します。
 
@@ -116,7 +117,7 @@ v1
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete][az-group-delete] コマンドを使用して、リソース グループ、コンテナー レジストリ、およびそこに格納されているコンテナー イメージを削除できます。
+必要がなくなったら、[az group delete][az-group-delete] コマンドを使用して、リソース グループ、コンテナー レジストリ、そこに格納されているコンテナー イメージを削除できます。
 
 ```azurecli
 az group delete --name myResourceGroup

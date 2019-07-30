@@ -7,23 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb81c73f7946a10bae0470a55dcf1c0d55c2b847
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66159444"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330046"
 ---
-# <a name="clean-up-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブの削除
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを停止または削除する
 
-Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SDK for .Net または REST API を使用して簡単に削除できます。 削除した Stream Analytics ジョブは復旧できません。
+Azure Stream Analytics ジョブは、Azure portal、Azure PowerShell、Azure SDK for .Net または REST API を使用して簡単に停止または削除できます。 削除した Stream Analytics ジョブは復旧できません。
 
 >[!NOTE] 
 >Azure Stream Analytics ジョブを停止すると、Event Hubs または Azure SQL Database などの入力および出力ストレージのみでデータが永続化されます。 Azure からデータを削除する必要がある場合は、Stream Analytics ジョブの入力と出力のリソースの削除処理を実行してください。
 
 ## <a name="stop-a-job-in-azure-portal"></a>Azure Portal でジョブを停止する
+
+ジョブを停止すると、リソースがプロビジョニング解除され、イベントの処理が停止します。 このジョブに関連する課金も停止します。 ただし、構成はすべて保持され、後でジョブを再開できます。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 
@@ -35,6 +37,9 @@ Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SD
 
 
 ## <a name="delete-a-job-in-azure-portal"></a>Azure Portal でジョブを削除する
+
+>[!WARNING] 
+>削除した Stream Analytics ジョブは復旧できません。
 
 1. Azure ポータルにサインインします。 
 

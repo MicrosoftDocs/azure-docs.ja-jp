@@ -10,18 +10,18 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cceac260979b4322d41843038eab0998c8e8ba4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509743"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227165"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
 Azure Active Directory (Azure AD) B2C は、企業-消費者間の ID 管理サービスです。 このサービスを使用すると、ユーザーが Web、デスクトップ、モバイル、またはシングルページ アプリケーションと安全に対話する方法を、カスタマイズしたり制御したりできます。 Azure AD B2C を使用して、ユーザーは、サインアップ、サインイン、パスワードのリセット、およびプロファイルの編集を行うことができます。 Azure AD B2C では、OpenID Connect プロトコルと OAuth 2.0 プロトコルの一形式が実装されます。 これらのプロトコルの実装で重要な点は、リソースへのセキュリティ保護されたアクセスを提供できるようにする、セキュリティ トークンとそのクレームです。
 
-"*ユーザー体験*" は、Azure AD B2C とやり取りするユーザーとアプリケーションの動作を制御するポリシーが指定されている要求です。 Azure AD B2C では、ユーザー体験を定義するために 2 つのパスを使用できます。 
+"*ユーザー体験*" は、Azure AD B2C とやり取りするユーザーとアプリケーションの動作を制御するポリシーが指定されている要求です。 Azure AD B2C では、ユーザー体験を定義するために 2 つのパスを使用できます。
 
 ID の専門知識の有無に関わらず、アプリケーション開発者の場合は、Azure portal を使用して一般的な ID ユーザー フローを定義することをお勧めします。 ID の専門家、システム インテグレーター、コンサルタント、社内の ID チームで、OpenID Connect のフローに慣れており、ID プロバイダーおよびクレーム ベースの認証を理解している場合は、XML ベースのカスタム ポリシーを選択することをお勧めします。
 
@@ -29,7 +29,7 @@ ID の専門知識の有無に関わらず、アプリケーション開発者�
 
 ## <a name="protocols-and-tokens"></a>プロトコルとトークン
 
-Azure AD B2C では、ユーザー体験に対して、[OpenID Connect プロトコルと OAuth 2.0 プロトコル](active-directory-b2c-reference-protocols.md)がサポートされています。 Azure AD B2C の OpenID Connect の実装では、アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。 
+Azure AD B2C では、ユーザー体験に対して、[OpenID Connect プロトコルと OAuth 2.0 プロトコル](active-directory-b2c-reference-protocols.md)がサポートされています。 Azure AD B2C の OpenID Connect の実装では、アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。
 
 Azure AD B2C に対する要求の結果として、[ID トークンやアクセス トークン](active-directory-b2c-reference-tokens.md)などのセキュリティ トークンが作成されます。 このセキュリティ トークンでは、ユーザーの ID が定義されています。 トークンは、`/token` や `/authorize` などの Azure AD B2C エンドポイントから受信します。 これらのトークンからクレームにアクセスできます。クレームは、ID の検証や、セキュリティ保護されたリソースへのアクセスの許可に使用できます。
 
@@ -62,17 +62,17 @@ Web アプリケーションを登録するには、[アプリケーションを
 - ページのルック アンド フィール
 - アプリケーションに返される情報
 
-カスタム ポリシーは、Azure AD B2C テナントでの [Identity Experience Framework](trustframeworkpolicy.md) の動作を定義する構成ファイルです。 Identity Experience Framework は、マルチパーティの信頼を確立してユーザー体験の手順を完了する、基になるプラットフォームです。 
+カスタム ポリシーは、Azure AD B2C テナントでの [Identity Experience Framework](trustframeworkpolicy.md) の動作を定義する構成ファイルです。 Identity Experience Framework は、マルチパーティの信頼を確立してユーザー体験の手順を完了する、基になるプラットフォームです。
 
-カスタム ポリシーは、多くのタスクを完了するために変更できます。 カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルです。 カスタム ポリシーの[スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)を使用して、一般的な ID タスクを有効にすることができます。 
+カスタム ポリシーは、多くのタスクを完了するために変更できます。 カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルです。 カスタム ポリシーの[スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)を使用して、一般的な ID タスクを有効にすることができます。
 
 Azure AD B2C テナントでは必要に応じてさまざまな種類のカスタム ポリシーまたはユーザー フローが使用され、複数のアプリケーションでそれらを再利用できます。 この柔軟性により、最小限のコード変更で、またはコードをまったく変更せずに、ユーザー ID エクスペリエンスを定義および変更できます。 ポリシーは、HTTP 認証要求に特別なクエリ パラメーターを追加することによって使用されます。 独自のカスタム ポリシーを作成するには、「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」をご覧ください。
 
-## <a name="identity-providers"></a>ID プロバイダー 
+## <a name="identity-providers"></a>ID プロバイダー
 
-アプリケーションでは、ユーザーが異なる ID プロバイダーでサインインできるようにすることができます。 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 Azure portal を使用して、Azure AD B2C によってサポートされる ID プロバイダーを追加することができます。 
+アプリケーションでは、ユーザーが異なる ID プロバイダーでサインインできるようにすることができます。 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 Azure portal を使用して、Azure AD B2C によってサポートされる ID プロバイダーを追加することができます。
 
-通常、アプリケーションでは ID プロバイダーを 1 つだけ使用しますが、さらに追加することもできます。 Azure AD B2C テナントで ID プロバイダーを構成するには、最初に ID プロバイダーの開発者サイトでアプリケーションを作成した後、作成する ID プロバイダー アプリケーションからの、アプリケーション ID またはクライアント ID と、パスワードまたはクライアント シークレットを記録する必要があります。 この ID とパスワードはその後、アプリケーションを構成するのに使用されます。 
+通常、アプリケーションでは ID プロバイダーを 1 つだけ使用しますが、さらに追加することもできます。 Azure AD B2C テナントで ID プロバイダーを構成するには、最初に ID プロバイダーの開発者サイトでアプリケーションを作成した後、作成する ID プロバイダー アプリケーションからの、アプリケーション ID またはクライアント ID と、パスワードまたはクライアント シークレットを記録する必要があります。 この ID とパスワードはその後、アプリケーションを構成するのに使用されます。
 
 次の記事では、いくつかの一般的な ID プロバイダーをユーザー フローに追加する手順が説明されています。
 
@@ -90,7 +90,7 @@ Azure AD B2C テナントでは必要に応じてさまざまな種類のカス�
 
 ## <a name="page-customization"></a>ページのカスタマイズ
 
-ユーザー体験で顧客に表示される HTML および CSS コンテンツのほとんどを制御できます。 ページのカスタマイズを使用することで、ユーザー フローの任意のカスタム ポリシーの外観をカスタマイズできます。 このカスタマイズ機能を使用することで、アプリケーションと Azure AD B2C との間で、ブランドと視覚的な一貫性を維持することができます。 
+ユーザー体験で顧客に表示される HTML および CSS コンテンツのほとんどを制御できます。 ページのカスタマイズを使用することで、ユーザー フローの任意のカスタム ポリシーの外観をカスタマイズできます。 このカスタマイズ機能を使用することで、アプリケーションと Azure AD B2C との間で、ブランドと視覚的な一貫性を維持することができます。
 
 Azure AD B2C では、ユーザーのブラウザーでコードが実行され、クロス オリジン リソース共有 (CORS) と呼ばれる最新の手法が使用されます。 最初に、カスタマイズした HTML コンテンツを含むポリシーで URL を指定します。 Azure AD B2C により、ユーザー インターフェイス要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
 
@@ -121,7 +121,7 @@ Node.js を使用するシングルページ アプリケーションの開発�
 
 ### <a name="javascript"></a>JavaScript
 
-独自の JavaScript クライアント側コードを、Azure AD B2C のアプリケーションに追加できます。 アプリケーションで JavaScript を設定するには、ユーザー フローまたはカスタム ポリシーで[ページ コントラクト](page-contract.md)を定義して [JavaScript](javascript-samples.md) を有効にします。
+独自の JavaScript クライアント側コードを、Azure AD B2C のアプリケーションに追加できます。 アプリケーションで JavaScript を設定するには、ユーザー フローまたはカスタム ポリシーで[ページ レイアウト](page-layout.md)を定義し、[JavaScript](javascript-samples.md) を有効にします。
 
 ### <a name="user-accounts"></a>ユーザー アカウント
 

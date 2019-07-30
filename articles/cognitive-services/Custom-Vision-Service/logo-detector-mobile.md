@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 51b2cd42fabe6406f88388e99459a6f3dd3e69f5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b4b10591069b71a4e70769f5bdcd6149768c5007
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827650"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604017"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
-このチュートリアルでは、より大きなシナリオの一部として Azure Custom Vision を使用するサンプル アプリについて見ていきます。 モバイル プラットフォーム用の Xamarin.Forms アプリである AI Visual Provision アプリは、Azure サービスのロゴの写真を分析した後、実際のサービスをユーザーの Azure アカウントにデプロイします。 ここでは、このアプリで Custom Vision を他のコンポーネントと共に使用して便利なエンド ツー エンドのアプリケーションを提供する方法を学習します。 自分でアプリのシナリオ全体を実行するか、設定の Custom Vision 部分のみを完成させて、アプリでこの部分がどのように使用されているかを調べます。
+このチュートリアルでは、より大きなシナリオの一部として Azure Custom Vision を使用するサンプル アプリについて見ていきます。 モバイル プラットフォーム用の Xamarin.Forms アプリである AI Visual Provision アプリは、Azure サービスのロゴの写真を分析した後、実際のサービスをユーザーの Azure アカウントにデプロイします。 ここでは、このアプリで Custom Vision を他のコンポーネントと共に使用して便利なエンド ツー エンドのアプリケーションを提供する方法を学習します。 自分でアプリのシナリオ全体を実行するか、設定の Custom Vision 部分のみを完成させて、アプリでこの部分がどのように使用されているかを調べることができます。
 
 ここでは、次の操作方法について説明します。
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次に、Azure サービスのロゴの画像をアップロードして、手動でタグ付けすることで、ロゴ検出アルゴリズムをトレーニングします。 AIVisualProvision リポジトリには、開発者が使用できるトレーニング画像のセットが含まれています。 Web サイトで、 **[Training Images]\(トレーニング画像\)** タブの **[Add images]\(画像の追加\)** を選択します。次に、リポジトリの **Documents/Images/Training_DataSet** フォルダーに移動します。 各画像内のロゴに手動でタグを付ける必要があるため、このプロジェクトをテストするだけの場合は画像のサブセットのみをアップロードしてもかまいません。 使用する予定のタグごとに、少なくとも 15 個のインスタンスをアップロードします。
 
-トレーニング画像をアップロードしたら、ディスプレイ上の最初の 1 つを選択します。 これにより、タグ付けウィンドウが表示されます。 各画像内の各ロゴに対して四角形を描画し、タグを割り当てます。 
+トレーニング画像をアップロードしたら、ディスプレイ上の最初の 1 つを選択します。 タグ付けウィンドウが表示されます。 各画像内の各ロゴに対して四角形を描画し、タグを割り当てます。 
 
 ![Custom Vision Web サイトでのロゴのタグ付け](media/azure-logo-tutorial/tag-logos.png)
 
@@ -63,13 +63,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="train-the-object-detector"></a>オブジェクト検出器をトレーニングする
 
-左側のウィンドウで、 **[Tags]\(タグ\)** スイッチを **[Tagged]\(タグ付き\)** に設定し、画像を表示します。 次に、モデルをトレーニングするために、ページ上部にある緑色のボタンを選択します。 これで、新しい画像内の同じタグを認識するようにアルゴリズムに指示します。 さらに、既存の画像のいくつかでモデルがテストされ、精度スコアが生成されます。
+左側のウィンドウで、 **[Tags]\(タグ\)** スイッチを **[Tagged]\(タグ付き\)** に設定し、画像を表示します。 次に、モデルをトレーニングするために、ページ上部にある緑色のボタンを選択します。 このアルゴリズムによって、新しい画像内の同じタグを認識するようにトレーニングされます。 さらに、既存の画像のいくつかでモデルがテストされ、精度スコアが生成されます。
 
 ![Custom Vision Web サイトの [Training Images]\(トレーニング画像\) タブ。このスクリーンショットでは、トレーニング ボタンが枠で囲まれている](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>予測 URL を取得する
 
-モデルのトレーニングが完了したら、それをアプリに統合する準備が整ったことになります。 これを行うには、エンドポイント URL (アプリが照会するモデルのアドレス) と (アプリに予測要求へのアクセスを許可するための) 予測キーを取得する必要があります。 **[Performance]\(パフォーマンス\)** タブで、ページの上部にある **[Prediction URL]\(予測 URL\)** を選択します。
+モデルのトレーニングが完了したら、それをアプリに統合する準備が整ったことになります。 エンドポイント URL (アプリでクエリが実行されるモデルのアドレス) と (アプリに予測要求へのアクセスを許可するための) 予測キーを取得する必要があります。 **[Performance]\(パフォーマンス\)** タブで、ページの上部にある **[Prediction URL]\(予測 URL\)** を選択します。
 
 ![URL アドレスと API キーを示す Prediction API ウィンドウが表示されている Custom Vision Web サイト](media/azure-logo-tutorial/cusvis-endpoint.png)
 
@@ -113,7 +113,7 @@ az account list
 az account set --subscription "<subscription name or subscription id>"
 ```
 
-次に、サービス プリンシパルを作成します  (このプロセスは、完了するまでにしばらく時間がかかる場合があります)。
+次に、サービス プリンシパルを作成します (このプロセスは、完了するまでにしばらく時間がかかる場合があります)。
 
 ```console
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
@@ -160,7 +160,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
     
     ![サービス プリンシパルの資格情報のフィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-credentials.png)
 
-1. 次の画面で、ドロップダウン メニューから自分の Azure サブスクリプションを選択します  (このメニューには、サービス プリンシパルでアクセスできるすべてのサブスクリプションが含まれているはずです)。 **[Continue]\(続行\)** を選択します。 この時点で、デバイスのカメラと写真ストレージへのアクセスを許可するように求めるメッセージがアプリに表示される場合があります。 アクセス許可を付与します。
+1. 次の画面で、ドロップダウン メニューから自分の Azure サブスクリプションを選択します (このメニューには、サービス プリンシパルでアクセスできるすべてのサブスクリプションが含まれているはずです)。 **[Continue]\(続行\)** を選択します。 この時点で、デバイスのカメラと写真ストレージへのアクセスを許可するように求めるメッセージがアプリに表示される場合があります。 アクセス許可を付与します。
 
     ![ターゲット Azure サブスクリプションのドロップダウン フィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-az-subscription.png)
 

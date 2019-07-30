@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 83149a8422db25106a97b1711c0ae9ce3c6603eb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 78e80b276a13ee6e27fdf0515f2901fdeaa20c5d
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465680"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604921"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>クイック スタート:Speech SDK (Java) を使用して音声優先仮想アシスタントを作成する
 
@@ -30,14 +30,11 @@ ms.locfileid: "65465680"
 * オペレーティング システム:Windows (64 ビット)、Ubuntu Linux 16.04/18.04 (64 ビット)、または macOS 10.13 以降
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
 * Bot Framework バージョン 4.2 以上を使用して作成された事前構成済みのボット。 ボットは、音声入力を受信するために新しい "Direct Line Speech" チャネルに登録する必要があります。
 
     > [!NOTE]
-    > プレビューでは、Direct Line Speech チャネルは、現在 **westus2** リージョンのみをサポートしています。
-
-    > [!NOTE]
-    > 「[Speech Services を無料で試す](get-started.md)」に記載されている Standard 価格レベルの 30 日間の無料試用版は **westus** (**westus2** ではありません) に制限されているため、Direct Line Speech との互換性はありません。 Free および Standard レベルの **westus2** サブスクリプションには互換性があります。
+    > Direct Line Speech (プレビュー) は、Speech Services のリージョンのサブセットでのみ現在利用できます。 [音声優先仮想アシスタントをサポートしているリージョンの一覧](regions.md#Voice-first virtual assistants)を参照し、ご使用のリソースがそれらのリージョンのいずれかにデプロイされていることを確認します。
 
 Ubuntu 16.04 または 18.04 を実行している場合は、Eclipse を起動する前に、これらの依存関係がインストールされていることを確認してください。
 
@@ -69,9 +66,9 @@ Windows (64 ビット版) を実行している場合は、お使いのプラッ
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
-1. 新しい空のクラスを Java プロジェクトに追加するために、**[File]**  >  **[New]**  >  **[Class]** の順に選択します。
+1. 新しい空のクラスを Java プロジェクトに追加するために、 **[File]**  >  **[New]**  >  **[Class]** の順に選択します。
 
-1. **[New Java Class]** ウィンドウで、**[Package]** フィールドに **speechsdk.quickstart** と入力し、**[Name]** フィールドに **Main** と入力します。
+1. **[New Java Class]** ウィンドウで、 **[Package]** フィールドに **speechsdk.quickstart** と入力し、 **[Name]** フィールドに **Main** と入力します。
 
    ![[New Java Class] ウィンドウのスクリーンショット](media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -82,8 +79,8 @@ Windows (64 ビット版) を実行している場合は、お使いのプラッ
 
     import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
     import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-    import com.microsoft.cognitiveservices.speech.dialog.BotConnectorConfig;
-    import com.microsoft.cognitiveservices.speech.dialog.SpeechBotConnector;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
     import org.slf4j.Logger;
     import org.slf4j.LoggerFactory;
 
@@ -142,62 +139,59 @@ Windows (64 ビット版) を実行している場合は、お使いのプラッ
     }
     ```
 
-1. **main** メソッドでは、最初に `BotConnectorConfig` を構成し、それを使用して `SpeechBotConnector` インスタンスを作成します。 これにより、ボットと対話するために Direct Line Speech チャネルに接続されます。 `AudioConfig` インスタンスは、音声入力のソースを指定するためにも使用されます。 この例では、`AudioConfig.fromDefaultMicrophoneInput()` により既定のマイクが使用されます。
+1. **main** メソッドでは、最初に `DialogServiceConfig` を構成し、それを使用して `DialogServiceConnector` インスタンスを作成します。 これにより、ボットと対話するために Direct Line Speech チャネルに接続されます。 `AudioConfig` インスタンスは、音声入力のソースを指定するためにも使用されます。 この例では、`AudioConfig.fromDefaultMicrophoneInput()` により既定のマイクが使用されます。
 
     * 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。サブスクリプション キーは、[こちら](get-started.md)から入手できます。
     * 文字列 `YourServiceRegion` を、自分のサブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。
     * 文字列 `YourChannelSecret` を、Direct Line Speech チャネルのシークレットに置き換えます。
 
     > [!NOTE]
-    > プレビューでは、Direct Line Speech チャネルは、現在 **westus2** リージョンのみをサポートしています。
-
-    > [!NOTE]
-    > 「[Speech Services を無料で試す](get-started.md)」に記載されている Standard 価格レベルの 30 日間の無料試用版は **westus** (**westus2** ではありません) に制限されているため、Direct Line Speech との互換性はありません。 Free および Standard レベルの **westus2** サブスクリプションには互換性があります。
+    > Direct Line Speech (プレビュー) は、Speech Services のリージョンのサブセットでのみ現在利用できます。 [音声優先仮想アシスタントをサポートしているリージョンの一覧](regions.md#voice-first-virtual-assistants)を参照し、ご使用のリソースがそれらのリージョンのいずれかにデプロイされていることを確認します。
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
-    final String subscriptionKey = "YourSubscriptionKey"; // your subscription key
-    final String region = "YourServiceRegion"; // Your service region. Currently assumed to be westus2
-    final BotConnectorConfig botConnectorConfig = BotConnectorConfig.fromSecretKey(channelSecret, subscriptionKey, region);
+    final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
+    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only a subset of regions are currently supported
+    final DialogServiceConfig botConfig = DialogServiceConfig.fromBotSecret(channelSecret, subscriptionKey, region);
 
     // Configure audio input from microphone.
     final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a SpeechjBotConnector instance
-    final SpeechBotConnector botConnector = new SpeechBotConnector(botConnectorConfig, audioConfig);
+    // Create a DialogServiceConnector instance
+    final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `SpeechBotConnector` は、ボットのアクティビティ、音声認識の結果、およびその他の情報を伝達するために、いくつかのイベントに依存しています。 次に、これらのイベント リスナーを追加します。
+1. `DialogServiceConnector` は、ボットのアクティビティ、音声認識の結果、およびその他の情報を伝達するために、いくつかのイベントに依存しています。 次に、これらのイベント リスナーを追加します。
 
     ```java
     // Recognizing will provide the intermediate recognized text while an audio stream is being processed
-    botConnector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
+    connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
     // Recognized will provide the final recognized text once audio capture is completed
-    botConnector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
+    connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
     // SessionStarted will notify when audio begins flowing to the service for a turn
-    botConnector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
+    connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
         log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
     });
 
     // SessionStopped will notify when a turn is complete and it's safe to begin listening again
-    botConnector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
+    connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
         log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
     });
 
     // Canceled will be signaled when a turn is aborted or experiences an error condition
-    botConnector.canceled.addEventListener((o, canceledEventArgs) -> {
+    connector.canceled.addEventListener((o, canceledEventArgs) -> {
         log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
-        botConnector.disconnectAsync();
+        connector.disconnectAsync();
     });
 
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
-    botConnector.activityReceived.addEventListener((o, activityEventArgs) -> {
+    connector.activityReceived.addEventListener((o, activityEventArgs) -> {
         final String act = activityEventArgs.getActivity().serialize();
             log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
             if (activityEventArgs.hasAudio()) {
@@ -206,22 +200,22 @@ Windows (64 ビット版) を実行している場合は、お使いのプラッ
         });
     ```
 
-1. `connectAsync()` メソッドを呼び出して、`SpeechBotConnector` を Direct Line Speech に接続します。 ボットをテストするには、`listenOnceAsync` メソッドを呼び出してマイクから音声入力を送信します。 さらに、`sendActivityAsync` メソッドを使用して、カスタム アクティビティをシリアル化された文字列として送信することもできます。 これらのカスタム アクティビティを使用すると、ボットが会話に使用する追加データを提供できます。
+1. `connectAsync()` メソッドを呼び出して、`DialogServiceConnector` を Direct Line Speech に接続します。 ボットをテストするには、`listenOnceAsync` メソッドを呼び出してマイクから音声入力を送信します。 さらに、`sendActivityAsync` メソッドを使用して、カスタム アクティビティをシリアル化された文字列として送信することもできます。 これらのカスタム アクティビティを使用すると、ボットが会話に使用する追加データを提供できます。
 
     ```java
-    botConnector.connectAsync();
+    connector.connectAsync();
     // Start listening.
     System.out.println("Say something ...");
-    botConnector.listenOnceAsync();
+    connector.listenOnceAsync();
 
-    // botConnector.sendActivityAsync(...)
+    // connector.sendActivityAsync(...)
     ```
 
 1. 変更を `Main` ファイルに保存します。
 
-1. 応答の再生をサポートするために、getAudio() API から返される PullAudioOutputStream オブジェクトを処理しやすいように java InputStream に変換するクラスを追加します。 この ActivityAudioStream は、"Direct Line Speech チャネル" からの音声応答を処理する特別なクラスです。 再生の処理に必要なオーディオ形式の情報を取得するアクセサーが提供されます。そのために、**[ファイル]** > **[新規]** > **[クラス]** を選択します。
+1. 応答の再生をサポートするために、getAudio() API から返される PullAudioOutputStream オブジェクトを処理しやすいように java InputStream に変換するクラスを追加します。 この ActivityAudioStream は、"Direct Line Speech チャネル" からの音声応答を処理する特別なクラスです。 再生の処理に必要なオーディオ形式の情報を取得するアクセサーが提供されます。そのために、 **[ファイル]**  >  **[新規]**  >  **[クラス]** を選択します。
 
-1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、**[パッケージ]** フィールドに **speechsdk.quickstart** と入力し、**[名前]** フィールドに **ActivityAudioStream** と入力します。
+1. **[New Java Class]\(新しい Java クラス\)** ウィンドウで、 **[パッケージ]** フィールドに **speechsdk.quickstart** と入力し、 **[名前]** フィールドに **ActivityAudioStream** と入力します。
 
 1. 新しく作成した **ActivityAudioStream** クラスを開き、以下に示すコードに置き換えます。
 
@@ -469,7 +463,7 @@ Windows (64 ビット版) を実行している場合は、お使いのプラッ
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-F11 キーを押すか、**[Run]**  >  **[Debug]** の順に選択します。
+F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 コンソールに "Say something" というメッセージが表示されます。この時点で、ボットが理解できる英語の語句や文を話しかけることができます。 音声は Direct Line Speech チャネルを介してボットに送信されます。ボットによって音声が認識および処理された後、その応答がアクティビティとして返されます。 ボットが応答として音声を返す場合、音声は `AudioPlayer` クラスを使用して再生されます。
 
 ![認識が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-java-jre-08-console-output.png)
@@ -479,10 +473,12 @@ F11 キーを押すか、**[Run]**  >  **[Debug]** の順に選択します。
 オーディオ ファイルから音声を読み取る方法など、追加のサンプルは GitHub で入手できます。
 
 > [!div class="nextstepaction"]
-> [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
+> [基本ボットの作成とデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>関連項目
 
-- [クイック スタート:音声を翻訳する、Java (Windows、Linux)](quickstart-translate-speech-java-jre.md)
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [音声優先仮想アシスタントの概要](voice-first-virtual-assistants.md)
+- [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+- [カスタム ウェイク ワード](speech-devices-sdk-create-kws.md)
+- [ボットを Direct Line Speech に接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

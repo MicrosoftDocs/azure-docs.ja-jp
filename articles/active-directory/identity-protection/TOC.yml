@@ -17,6 +17,8 @@
       href: notifications.md
     - name: サインイン エクスペリエンスとは
       href: flows.md
+    - name: Identity Protection と B2B ユーザー
+      href: concept-identity-protection-b2b.md
 - name: ハウツー ガイド
   expanded: true
   items:
@@ -50,8 +52,6 @@
           href: howto-provide-risk-event-feedback.md
         - name: リスク ポリシーの構成
           href: howto-configure-risk-policies.md
-        - name: 検出精度の向上
-          href: howto-improve-detection-accuracy.md
         - name: FAQ と既知の問題
           href: known-issues.md
 - name: リファレンス

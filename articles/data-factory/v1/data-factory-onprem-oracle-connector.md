@@ -14,15 +14,15 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61462413"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-oracle.md)
 
@@ -55,7 +55,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 この Oracle コネクタでは、2 つのバージョンのドライバーがサポートされます。
 
-- **Oracle 用 Microsoft ドライバー (推奨)**: Data Management Gateway バージョン 2.7 から、Oracle 用 Microsoft ドライバーがゲートウェイと共に自動的にインストールされます。 Oracle との接続を確立するためにドライバーをインストールまたは更新する必要はありません。 また、このドライバーを使用すると、コピーのパフォーマンスも改善されます。 サポートされている Oracle データベースのバージョンは、以下のとおりです。
+- **Oracle 用 Microsoft ドライバー (推奨)** : Data Management Gateway バージョン 2.7 から、Oracle 用 Microsoft ドライバーがゲートウェイと共に自動的にインストールされます。 Oracle との接続を確立するためにドライバーをインストールまたは更新する必要はありません。 また、このドライバーを使用すると、コピーのパフォーマンスも改善されます。 サポートされている Oracle データベースのバージョンは、以下のとおりです。
   - Oracle 12c R1 (12.1)
   - Oracle 11g R1、R2 (11.1、11.2)
   - Oracle 10g R1、R2 (10.1、10.2)
@@ -83,7 +83,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 パイプラインを作成する最も簡単な方法は、コピー ウィザードを使用することです。 手順については、「[チュートリアル: データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルについては、コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)に関するチュートリアルを参照してください。
 
-**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのいずれかのツールを使用してパイプラインを作成することもできます。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API** などのいずれかのツールを使用してパイプラインを作成することもできます。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -102,10 +102,10 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |**type** プロパティを **OnPremisesOracle** に設定する必要があります。 |[はい] |
-| driverType | Oracle データベースとの間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** と **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ  |
-| connectionString | **connectionString** プロパティの Oracle データベース インスタンスに接続するために必要な情報を指定します。 | [はい] |
-| gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |[はい] |
+| type |**type** プロパティを **OnPremisesOracle** に設定する必要があります。 |はい |
+| driverType | Oracle データベースとの間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** と **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ |
+| connectionString | **connectionString** プロパティの Oracle データベース インスタンスに接続するために必要な情報を指定します。 | はい |
+| gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |はい |
 
 **例:Microsoft ドライバーの使用**
 
@@ -172,7 +172,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、"select \* from **MyTable**"。 <br/><br/>指定されていない場合、SQL ステートメント "select \* from **MyTable**" が実行されます |いいえ <br />(**データセット**の **tableName** が指定されている場合) |
+| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、"select \* from **MyTable**"。 <br/><br/>指定されていない場合、SQL ステートメント "select \* from **MyTable**" が実行されます |いいえ<br />(**データセット**の **tableName** が指定されている場合) |
 
 ### <a name="oraclesink"></a>パイプライン
 
@@ -180,10 +180,10 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |**timespan**<br/><br/> 例:00:30:00 (30 分) |いいえ  |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |**timespan**<br/><br/> 例:00:30:00 (30 分) |いいえ |
 | writeBatchSize |バッファー サイズが **writeBatchSize** の値に達したら、SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 100) |
-| sqlWriterCleanupScript |特定のスライスのデータを消去するようにコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ  |
-| sliceIdentifierColumnName |コピー アクティビティの列名を指定して、自動生成されたスライス識別子を入力します。 **sliceIdentifierColumnName** の値は、再実行時に特定のスライスのデータを消去するために使用されます。 |データ型が **binary(32)** の列の列名。 |いいえ  |
+| sqlWriterCleanupScript |特定のスライスのデータを消去するようにコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ |
+| sliceIdentifierColumnName |コピー アクティビティの列名を指定して、自動生成されたスライス識別子を入力します。 **sliceIdentifierColumnName** の値は、再実行時に特定のスライスのデータを消去するために使用されます。 |データ型が **binary(32)** の列の列名。 |いいえ |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Oracle データベースとの間でのデータのコピーに関する JSON の例
 
@@ -599,27 +599,27 @@ Oracle からデータを移行すると、Oracle データ型から .NET 型へ
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(Microsoft ドライバーを使用する場合は、Oracle 10g 以降のバージョンでのみサポートされています) |
-| CHAR |String |
-| CLOB |String |
+| CHAR |string |
+| CLOB |string |
 | DATE |DateTime |
 | FLOAT |Decimal、String (有効桁数が 28 を超える場合) |
 | INTEGER |Decimal、String (有効桁数が 28 を超える場合) |
 | INTERVAL YEAR TO MONTH |Int32 |
 | INTERVAL DAY TO SECOND |timespan |
-| LONG |String |
+| LONG |string |
 | LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
+| NCHAR |string |
+| NCLOB |string |
 | NUMBER |Decimal、String (有効桁数が 28 を超える場合) |
-| NVARCHAR2 |String |
+| NVARCHAR2 |string |
 | RAW |Byte[] |
-| ROWID |String |
+| ROWID |string |
 | TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
 | TIMESTAMP WITH TIME ZONE |DateTime |
 | 符号なし INTEGER |NUMBER |
-| VARCHAR2 |String |
-| XML |String |
+| VARCHAR2 |string |
+| XML |string |
 
 > [!NOTE]
 > Microsoft ドライバーを使用する場合、データ型 **INTERVAL YEAR TO MONTH** および **INTERVAL DAY TO SECOND** はサポートされません。

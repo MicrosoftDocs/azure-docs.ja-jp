@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure CLI を使用して、Azu
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7d372dfa845459a63de8ccc1b81e7b1319f47e34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 069a0310d1baca4f1be3b5cda0d1e75fbcdfa4c4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169386"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703466"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている SSL 証明書を使って Azure 内の Linux 仮想マシン上の Web サーバーをセキュリティ保護する
 Web サーバーをセキュリティ保護するには、Secure Sockets Layer (SSL) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの SSL 証明書は Azure Key Vault に格納できるため、Azure 上の仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -137,7 +137,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>セキュリティで保護された Web アプリをテストする
-Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAddress>*」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
+Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAddress>* 」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
 
 ![Web ブラウザーのセキュリティ警告を受け入れる](./media/tutorial-secure-web-server/browser-warning.png)
 

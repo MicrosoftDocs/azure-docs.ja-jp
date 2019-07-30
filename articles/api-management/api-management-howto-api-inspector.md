@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: ff3dde8ac95b678866ba6f5216ba23357b067765
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415884"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203540"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>要求トレースを使用して API をデバッグする
 
@@ -35,8 +35,8 @@ ms.locfileid: "50415884"
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
 
 ## <a name="trace-a-call"></a>呼び出しのトレース
 
@@ -53,7 +53,7 @@ ms.locfileid: "50415884"
 
 6. **[送信]** をクリックして、API 呼び出しを行います。 
 7. 呼び出しが完了するのを待ちます。 
-8. **API コンソール**の **[トレース]** タブに移動します。 詳細なトレース情報に移動するには、リンク (**[受信]**、**[バックエンド]**、**[送信]**) をクリックします。
+8. **API コンソール**の **[トレース]** タブに移動します。 詳細なトレース情報に移動するには、リンク ( **[受信]** 、 **[バックエンド]** 、 **[送信]** ) をクリックします。
 
     **[受信]** セクションには、API Management が呼び出し元から受信した元の要求と、要求に適用されるすべてのポリシー (手順 2. で追加した rate-limit、set-header ポリシーなど) が表示されます。
 

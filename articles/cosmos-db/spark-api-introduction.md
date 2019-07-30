@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/23/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: b392f7fd6438b25a741aecb86a72f142d785f0e3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 245df0632765c4000bdf5da3e428187d2b068866
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237889"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402118"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Azure Cosmos DB での Apache Spark を使用した組み込み運用分析 (プレビュー) 
 
@@ -57,7 +57,7 @@ Azure Cosmos DB での Apache Spark のサポートでは、Apache Spark ラン�
 
 マルチモデル データベースの Azure Cosmos DB では、OSS API 向けのサポートが拡張されました。**Apache Spark の統一サーバーレス体験**にキー/値、ドキュメント、グラフ、列ファミリー データ モデルが与えられるようになりました。 MongoDB、Cassandra、Gremlin、Etcd、SQL API を利用することで、さまざまなデータ モデルがサポートされます。すべて同じ基礎データ上で動作します。 
 
-Azure Cosmos DB での Apache Spark のサポートにより、Scala、Python、Java で記述されたアプリケーションをネイティブにサポートできるほか、SQL 用に緊密に統合された複数のライブラリを使用できます。 そのようなライブラリには、([Spark SQL](https://spark.apache.org/sql/))、機械学習 (Spark [MLlib](https://spark.apache.org/mllib/))、ストリーム処理 ([Spark Structured Streaming](https://spark.apache.org/streaming/))、グラフ処理 (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)) があります。 これらのツールにより、さまざまなユース ケースに Apache Spark を簡単に利用できます。 Spark や Spark クラスターを扱う必要はありません。 同じ基礎データ上で同時に、使い慣れた Apache Spark API と **Jupyter ノートブック**を分析と SQL API に、Cassandra など、OSS NoSQL API をトランザクション処理に使用できます。
+Azure Cosmos DB での Apache Spark のサポートにより、Scala、Python、Java で記述されたアプリケーションをネイティブにサポートできるほか、SQL 用に緊密に統合された複数のライブラリを使用できます。 そのようなライブラリには、([Spark SQL](https://spark.apache.org/sql/))、機械学習 (Spark [MLlib](https://spark.apache.org/mllib/))、ストリーム処理 ([Spark Structured Streaming](https://spark.apache.org/streaming/))、グラフ処理 (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)) があります。 これらのツールにより、さまざまなユース ケースに Apache Spark を簡単に使用できます。 Spark や Spark クラスターを扱う必要はありません。 同じ基礎データ上で同時に、使い慣れた Apache Spark API と **Jupyter ノートブック**を分析と SQL API に、Cassandra など、OSS NoSQL API をトランザクション処理に使用できます。
 
 ### <a name="no-schema-or-index-management"></a>スキーマやインデックスの管理が不要
 
@@ -75,6 +75,68 @@ Apache Spark ジョブには、業界をリードする包括的な [SLA](https:
 
 Apache Spark を Azure Cosmos DB に統合することで、分離していたトランザクションと分析がつながります。この分離は、クラウドネイティブのアプリケーションを世界規模で構築するとき、顧客にとって大きな難点の 1 つでした。 
 
+## <a name="scenarios-for-azure-cosmos-db-spark-support"></a>Azure Cosmos DB の Spark サポートのシナリオ
+
+### <a name="retail-and-consumer-goods"></a>小売/一般消費財
+
+Azure Cosmos DB の Spark サポートを使用して、リアルタイムのおすすめ候補とプランを提供できます。 リアルタイムのパーソナル化と製品のおすすめ候補を使用して、顧客が必要とする項目を検出できるよう支援できます。
+
+* Apache Spark ランタイムによって提供される組み込みの Machine Learning サポートを使用して、製品カタログ全体でリアルタイムのおすすめ候補を生成できます。
+
+* ストリーム データ、購入データ、および顧客データをマイニングしてクリックし、有効期間の値を指定する対象を絞ったおすすめ候補を提供することができます。
+
+* Azure Cosmos DB のグローバル配布機能を使用すると、複数のリージョンに分散されている大量の製品データをミリ秒単位で分析できます。
+
+* 地理的に分散されているユーザーやデータに関する分析情報をすばやく得られます。 適切な広告を適切なユーザーに適切なタイミングで提供することにより、プロモーション変換率を向上させることができます。
+
+* 組み込みの Spark ストリーミング機能を活用して、静的な顧客データと組み合わせてライブ データを強化することができます。 こうすることで、顧客が何をしているかに合わせて、よりパーソナライズされた広告や対象を絞った広告をリアルタイムで配信できます。
+
+次の図は Azure Cosmos DB Spark サポートを使用して価格とプロモーションを最適化する方法を示しています。
+
+![価格とプロモーションを最適化するための Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
+
+
+次の図は Azure Cosmos DB Spark サポートをリアルタイムのおすすめ候補エンジンで使用する方法を示しています。
+
+![リアルタイムのおすすめ候補エンジンでの Azure Cosmos DB Spark サポート](./media/spark-api-introduction/real-time-recommendation-engine.png)
+
+### <a name="manufacturing-and-iot"></a>製造と IoT
+
+Azure Cosmos DB の組み込みの分析プラットフォームを使用すると、世界規模で何百万ものデバイスからの IoT データをリアルタイムに分析できます。 気象パターンの予測、予測分析、エネルギーの最適化など、最新のイノベーションを行うことができます。
+
+* Azure Cosmos DB を使用すると、リアルタイム資産のメトリックや気象要因などのデータをマイニングし、スマート グリッド分析を適用して、フィールドで接続されているデバイスのパフォーマンスを最適化することができます。 スマート グリッド分析は、運用コストを制御し、グリッドの信頼性を向上させ、パーソナライズされたエネルギー サービスをコンシューマーに提供するための鍵です。
+
+次の図は、IoT デバイスからメトリックを読み取り、スマート グリッド分析を適用するために Azure Cosmos DB の Spark サポートを使用する方法を示しています。
+
+![IoT デバイスからメトリックを読み取るための Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
+
+
+### <a name="predictive-maintenance"></a>予測的なメンテナンス
+
+* 小規模なドリル マシンで使用される圧縮機のような資産を、深い水中のプラットフォームに維持することは複雑な作業です。 これらの資産は世界各地に配置され、ペタバイト単位のデータを生成します。 Azure Cosmos DB を使用すると、エンドツーエンドの予測データ パイプラインを構築できます。このパイプラインでは、Spark ストリーミングを使用して大量のセンサー テレメトリを処理し、資産パーツを保存し、マッピング データを検出します。
+
+* 機械学習モデルを構築およびデプロイして、資産の故障を発生前に予測し、障害が発生する前にメンテナンス作業を命令することができます。
+
+次の図は Azure Cosmos DB の Spark サポートを使用して予測メンテナンス システムを構築する方法を示しています。
+
+![予測メンテナンス システムを構築するための Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/predictive-maintenance-system.png)
+
+次の図は Azure Cosmos DB の Spark サポートを使用してリアルタイムの車両診断システムを構築する方法を示しています。
+
+![リアルタイムの車両診断システムを構築するための Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
+
+### <a name="gaming"></a>Gaming
+
+* Azure Cosmos DB では、組み込みの Spark サポートにより、高度な分析および機械学習モデルを数分で簡単にビルド、スケーリング、デプロイできるので、最適なゲーム エクスペリエンスをビルドできます。
+
+* プレーヤー、購入、行動データを分析して、関連するパーソナライズされたプランを作成し、高いコンバージョン率を得ることができます。
+
+* Spark 機械学習を使用して、ゲーム テレメトリ データを分析し、分析情報を得ることができます。 低速の読み込み時間とゲーム中の問題を診断して防止できます。
+
+次の図は Azure Cosmos DB の Spark サポートをゲーム分析で使用する方法を示しています。
+
+![ゲーム分析での Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/gaming-analytics.png)
+
 ## <a name="built-in-jupyter-notebooks-support"></a>組み込み Jupyter Notebook のサポート
 
 Azure Cosmos DB では、Cassandra、MongoDB、SQL、Gremlin、テーブルなど、すべての API の組み込み Jupyter Notebook がサポートされています。 Jupyter Notebook は Azure Cosmos アカウント内で実行され、これにより開発者エクスペリエンスが向上されます。 組み込み Notebook がすべての Azure Cosmos DB API とデータ モデルをサポートしているので、対話形式でクエリを実行できます。 機械学習モデルを実行し、Azure Cosmos データベースに格納されたデータを分析することもできます。 Jupyter Notebook エクスペリエンスを使用することにより、格納されたデータを分析し、機械学習モデルをビルドおよびトレーニングし、次の図に示すように Azure portal のデータに対して推論を実行できます。
@@ -84,7 +146,7 @@ Azure Cosmos DB では、Cassandra、MongoDB、SQL、Gremlin、テーブルな�
 ## <a name="next-steps"></a>次の手順
 
 * Azure Cosmos DB の長所については、[こちら](introduction.md)の概要の記事をご覧ください。
-* [Azure Cosmos DB の MongoDB 用 API の概要](mongodb-introduction.md)
+* [MongoDB 用の Azure Cosmos DB API を使ってみる](mongodb-introduction.md)
 * [Azure Cosmos DB Cassandra API を使ってみる](cassandra-introduction.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](graph-introduction.md)
 * [Azure Cosmos DB Table API を使ってみる](table-introduction.md)

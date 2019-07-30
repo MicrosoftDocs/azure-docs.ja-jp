@@ -4,7 +4,7 @@ description: SUSE Linux オペレーティング システムを格納した Azu
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 066d01a6-2a54-4718-bcd0-90fe7a5303a1
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2b0c01ee4b1d1bc5ce83fc0afc309abfcf25f33e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05731acd5e808075145c50281063e8990129d882
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419392"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708687"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE 仮想マシンの準備
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -99,7 +99,7 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
         # logout
 16. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-- - -
+---
 ## <a name="prepare-opensuse-131"></a>openSUSE 13.1 以上の準備
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。

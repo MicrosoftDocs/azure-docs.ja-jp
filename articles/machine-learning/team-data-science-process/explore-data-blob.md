@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3c399491f0a2048fe924e9ed9600dd5ce3899ca2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 23fef994d01917f5f120c7fcb80871f6f2c82ab2
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344650"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358608"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure BLOB ストレージのデータを探索する
 
@@ -56,7 +56,7 @@ print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 1. ダウンロードしたファイルから、Pandas データ フレームにデータを読み込みます。
 
 ```python
-#LOCALFILE is the file path
+# LOCALFILE is the file path
 dataframe_blobdata = pd.read_csv(LOCALFILE)
 ```
 
@@ -115,7 +115,8 @@ dataframe_blobdata_noNA.shape
 不足値を置き換えるを別の方法として、モード関数を使用した以下のものを実行します。
 
 ```python
-dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})
+dataframe_blobdata_mode = dataframe_blobdata.fillna(
+    {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
 1. 変数の分布をプロットする可変個の箱を使用して、 **ヒストグラム図** を作成します。
@@ -129,9 +130,9 @@ np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 1. scatterplot を使用して、または組み込みの相関関数を使用して、変数間の **関連付け** を確認します。
 
 ```python
-#relationship between column_a and column_b using scatter plot
+# relationship between column_a and column_b using scatter plot
 plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
 
-#correlation between column_a and column_b
+# correlation between column_a and column_b
 dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 ```

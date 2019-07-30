@@ -11,14 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: aaeee4238110faa7a842073af8431b30b885db3c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870023"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443197"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-function"></a>関数に Azure Storage キュー バインドを追加する
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python 関数に Azure Storage キュー バインドを追加する
 
 Azure Functions を使用すると、独自の統合コードを記述しなくても、Azure サービスやその他のリソースを関数に接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 トリガーは、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 
@@ -32,7 +32,7 @@ Azure Functions を使用すると、独自の統合コードを記述しなく�
 
 ## <a name="download-the-function-app-settings"></a>関数アプリの設定をダウンロードする
 
-前のクイック スタートの記事では、ストレージ アカウントと、Azure での関数アプリを作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 この記事では、同じアカウントのストレージ キューにメッセージを書き込みます。 関数をローカルで実行しているときにストレージ アカウントに接続するには、アプリ設定を local.settings.json ファイルにダウンロードする必要があります。 次の Azure Functions Core Tools コマンドを実行して、設定を local.settings.json にダウンロードし、`<APP_NAME>` を前の記事の関数アプリの名前に置き換えます。
+前のクイックスタートの記事では、必要なストレージ アカウントと、Azure での関数アプリを作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 この記事では、同じアカウントのストレージ キューにメッセージを書き込みます。 関数をローカルで実行しているときにストレージ アカウントに接続するには、アプリ設定を local.settings.json ファイルにダウンロードする必要があります。 次の Azure Functions Core Tools コマンドを実行して、設定を local.settings.json にダウンロードし、`<APP_NAME>` を前の記事の関数アプリの名前に置き換えます。
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
@@ -44,6 +44,12 @@ Azure アカウントへのサインインを求められる場合がありま�
 > local.settings.json ファイルは、機密情報が含まれているため、決して公開されず、ソース管理から除外される必要があります。
 
 ストレージ アカウントの接続文字列である、値 `AzureWebJobsStorage` が必要になります。 この接続を使用して、出力バインドが期待どおりに動作することを確認します。
+
+## <a name="enable-extension-bundles"></a>拡張バンドルを有効にする
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+これで、プロジェクトに Storage 出力バインディングを追加できるようになります。
 
 ## <a name="add-an-output-binding"></a>出力バインディングを追加する
 
@@ -117,8 +123,8 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
         return func.HttpResponse(f"Hello {name}!")
     else:
         return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
+            "Please pass a name on the query string or in the request body",
+            status_code=400
         )
 ```
 
@@ -133,7 +139,7 @@ func host start
 ```
 
 > [!NOTE]  
-> 前の記事では host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x)が自動的にダウンロードされ、インストールされました。
+> 前の記事では host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x)が他の Microsoft バインディング拡張機能と共に自動的にダウンロードされ、インストールされました。
 
 ランタイム出力から `HttpTrigger` 関数の URL をコピーして、それをブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 前の記事のときと同じ応答がブラウザーに表示されるはずです。
 

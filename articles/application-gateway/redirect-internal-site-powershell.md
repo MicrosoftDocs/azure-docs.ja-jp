@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
-ms.openlocfilehash: c887c5ea72a64828749bfc62756e59a8a22ea9df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e29966473a467ddf9d7e683a9d198ca692eab338
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729635"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785759"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -296,11 +296,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
+ブラウザーのアドレス バーにドメイン名を入力します。 http\://www.contoso.com などです。
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-アドレスを他のドメインに変更します (例: http://www.contoso.org )。トラフィックが www\. contoso.com のリスナーにリダイレクトされたことがわかります。
+他のドメイン (http\://www.contoso.org など) にアドレスを変更すると、www\.contoso.com に対するリスナーにトラフィックがリダイレクトされていることが表示されるはずです。
 
 ## <a name="next-steps"></a>次の手順
 

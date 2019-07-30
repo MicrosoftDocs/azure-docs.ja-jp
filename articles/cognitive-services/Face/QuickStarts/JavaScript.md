@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 70c496aef0ff2f34c917fd594767d464cab3e625
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538733"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603417"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>クイック スタート:REST API と JavaScript を使用して画像内の顔を検出する
 
@@ -41,7 +41,7 @@ ms.locfileid: "57538733"
 </html>
 ```
 
-さらに、ドキュメントの `body` 要素内に次のコードを追加します。 これにより、URL フィールドと **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
+さらに、ドキュメントの `body` 要素内に次のコードを追加します。 このコードにより、URL フィールド、 **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>JavaScript スクリプトを作成する
 
-ドキュメントの `h1` 要素のすぐ上に次のコードを追加します。 これは、Face API を呼び出す JavaScript コードを設定するものです。
+ドキュメントの `h1` 要素のすぐ上に次のコードを追加します。 このコードによって、Face API を呼び出す JavaScript コードが設定されます。
 
 ```html
 <script type="text/javascript">
@@ -140,7 +140,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-次に示したのは成功時の JSON 応答の例です。
+次のテキストは、成功時の JSON 応答の例です。
 
 ```json
 [

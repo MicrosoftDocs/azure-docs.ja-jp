@@ -2,18 +2,18 @@
 title: Apache Spark Machine Learning パイプラインを作成する - Azure HDInsight
 description: データ パイプラインを作成するには、Apache Spark Machine Learning ライブラリを使用します。
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: c539460177a0a85938b886d161803e1fdf0e9e68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/22/2019
+ms.openlocfilehash: 4ad68ef33eb469c7949c3f3efcd55d6765da4158
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730205"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441878"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark 機械学習パイプラインを作成する
 
@@ -56,19 +56,23 @@ from pyspark.sql import Row
 LabeledDocument = Row("BuildingID", "SystemInfo", "label")
 
 # Define a function that parses the raw CSV file and returns an object of type LabeledDocument
+
+
 def parseDocument(line):
     values = [str(x) for x in line.split(',')]
     if (values[3] > values[2]):
         hot = 1.0
     else:
-        hot = 0.0        
+        hot = 0.0
 
     textValue = str(values[4]) + " " + str(values[5])
 
     return LabeledDocument((values[6]), textValue, hot)
 
+
 # Load the raw HVAC.csv file, parse it using the function
-data = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+data = sc.textFile(
+    "wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()

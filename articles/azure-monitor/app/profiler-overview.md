@@ -30,7 +30,7 @@ Profiler は、以下の Azure サービスにデプロイされた .NET アプ�
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines と仮想マシン スケール セット](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* ASP.NET Core Azure Linux Web アプリ](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json)を[**プレビュー**する 
+* [ASP.NET Core Azure Linux Web アプリ](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json)を **プレビュー**する 
 
 Profiler を有効にして、トレースが表示されない場合は、[トラブルシューティング ガイド](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)を参照してください。
 

@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、JavaScript を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: a4e3d37b2eb32fa0384986e37781f21b906bed42
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab3d1e71515df80b5bdba1edf8cd16ba3ed6b0a9
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077311"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500113"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
 
@@ -23,7 +23,7 @@ ms.locfileid: "58077311"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Node.js](https://nodejs.org/en/download/)
+* [Node.JS](https://nodejs.org/en/download/)
 
 * JavaScript 用の要求モジュール
     * このモジュールは、`npm install request` を使用してインストールできます

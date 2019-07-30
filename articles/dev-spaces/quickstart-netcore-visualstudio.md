@@ -4,21 +4,20 @@ titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 ms.author: zarhoads
 ms.date: 03/22/2019
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-manager: jeconnoc
+manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 110962c03f0236ebb26c9ed586981b51f36c635f
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: bb23de0dfe2d717ee2e41d69eec211f1fde26687
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399216"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707196"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で .NET Core での開発を行う (Visual Studio)
 
@@ -35,7 +34,7 @@ ms.locfileid: "66399216"
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
-AKS クラスターは、[サポートされているリージョン][supported-regions]に作成する必要があります。 クラスターを作成するには:
+[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 クラスターを作成するには:
 
 1. [Azure ポータル](https://portal.azure.com)
 1. *+ [リソースの作成]、[Kubernetes サービス]* の順に選択します。 

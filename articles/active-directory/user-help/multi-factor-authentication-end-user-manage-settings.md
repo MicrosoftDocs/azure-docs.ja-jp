@@ -31,7 +31,7 @@ ms.locfileid: "60334490"
 
 **[追加のセキュリティ確認] ページに移動するには**
 
-- https://aka.ms/MFASetup にアクセスします。
+- [https://aka.ms/MFASetup](https://aka.ms/MFASetup ) にアクセスします。
 
     ![追加のセキュリティ確認](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
 

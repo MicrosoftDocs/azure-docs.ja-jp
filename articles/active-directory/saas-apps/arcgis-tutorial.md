@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037e01120a695b1bacf2b1d4bc47e9ca9ed3fbd2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: db56cd7551ef8179aeff575fdd1f2578cbee74ee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900367"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル:Azure Active Directory と ArcGIS Online の統合
 
@@ -53,11 +53,11 @@ ArcGIS Online の Azure AD への統合を構成するには、ArcGIS Online を
 
 **ギャラリーから ArcGIS Online を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ ArcGIS Online の Azure AD への統合を構成するには、ArcGIS Online を
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ArcGIS Online**」と入力し、結果パネルで **[ArcGIS Online]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ArcGIS Online**」と入力し、結果パネルで **[ArcGIS Online]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の ArcGIS Online](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
 
 ArcGIS Online で Azure AD のシングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **[ArcGIS Online]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **[ArcGIS Online]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,15 +112,15 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[ArcGIS Online クライアント サポート チーム](https://support.esri.com/en/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **ArcGIS Online** 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護されたサインイン拡張機能** をインストールする必要があります。
+6. **ArcGIS Online** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護されたサインイン拡張機能** をインストールする必要があります。
 
     ![image](./media/arcgis-tutorial/install_extension.png)
 
-7. ブラウザーに拡張機能を追加した後、**[setup ArcGIS Online]\(ArcGIS Online のセットアップ)** をクリックすると、ArcGIS Online アプリケーションに移動します。 そこから、管理者資格情報を提供して ArcGIS Online にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、「**ArcGIS Online シングル サインオンの構成**」セクションの手順が自動化されます。
+7. ブラウザーに拡張機能を追加した後、 **[setup ArcGIS Online]\(ArcGIS Online のセットアップ)** をクリックすると、ArcGIS Online アプリケーションに移動します。 そこから、管理者資格情報を提供して ArcGIS Online にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、「**ArcGIS Online シングル サインオンの構成**」セクションの手順が自動化されます。
 
 ### <a name="configure-arcgis-online-single-sign-on"></a>ArcGIS Online シングル サインオンの構成
 
@@ -134,7 +134,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
     ![Security (セキュリティ)](./media/arcgis-tutorial/ic784743.png "Security")
 
-4. **[Enterprise Logins] [エンタープライズ ログイン]** で、**[SET IDENTITY PROVIDER] \(ID プロバイダーの設定)** をクリックします。
+4. **[Enterprise Logins] [エンタープライズ ログイン]** で、 **[SET IDENTITY PROVIDER] \(ID プロバイダーの設定)** をクリックします。
 
     ![Enterprise Logins (エンタープライズ ログイン)](./media/arcgis-tutorial/ic784744.png "Enterprise Logins")
 
@@ -144,7 +144,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
     a. **[名前]** テキスト ボックスに組織の名前を入力します。
 
-    b. **[Metadata for the Enterprise Identity Provider will be supplied using]** で、**[A File]** を選択します。
+    b. **[Metadata for the Enterprise Identity Provider will be supplied using]** で、 **[A File]** を選択します。
 
     c. ダウンロードしたメタデータ ファイルをアップロードするには、 **[Choose file]** をクリックします。
 
@@ -154,7 +154,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -179,7 +179,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
 このセクションでは、ArcGIS Online へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[ArcGIS Online]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[ArcGIS Online]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -191,15 +191,15 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-arcgis-online-test-user"></a>ArcGIS Online のテスト ユーザーの作成
 
@@ -214,7 +214,7 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
    
     ![Invite Members (メンバーの招待)](./media/arcgis-tutorial/ic784747.png "Invite Members")
 
-3. **[Add members automatically without sending an email] \(電子メールを送信せずにメンバーを自動的に追加する)** を選択し、**[NEXT] \(次へ)** をクリックします。
+3. **[Add members automatically without sending an email] \(電子メールを送信せずにメンバーを自動的に追加する)** を選択し、 **[NEXT] \(次へ)** をクリックします。
    
     ![メンバーの自動追加](./media/arcgis-tutorial/ic784748.png "Add Members Automatically")
 
@@ -222,10 +222,10 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
    
      ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "Add and review")
     
-     a. プロビジョニングする有効な AAD アカウントの **[電子メール]**、**[名]**、および **[姓]** を入力します。
+     a. プロビジョニングする有効な AAD アカウントの **[電子メール]** 、 **[名]** 、および **[姓]** を入力します。
   
      b. **[ADD AND REVIEW] \(追加とレビュー)** をクリックします。
-5. 入力したデータを確認してから、**[ADD MEMBERS] \(メンバーの追加)** をクリックします。
+5. 入力したデータを確認してから、 **[ADD MEMBERS] \(メンバーの追加)** をクリックします。
    
     ![メンバーの追加](./media/arcgis-tutorial/ic784750.png "Add member")
         

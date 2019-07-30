@@ -4,20 +4,20 @@ description: この記事では、Azure Stream Analytics ジョブのクエリ �
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/21/2019
+ms.openlocfilehash: ed50dfd7e3c423c1c26a7dc19ae60dcb319f1850
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393133"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621613"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
-参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、参照の実行やデータ ストリームとの相互の関連付けに使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 
+
+参照データ (別名、ルックアップ テーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、データ ストリームのルックアップや増大を行うために使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 
 
 Stream Analytics は、参照データの格納レイヤーとして Azure BLOB ストレージおよび Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
 
@@ -43,7 +43,7 @@ Stream Analytics は、参照データの格納レイヤーとして Azure BLOB 
 
 ### <a name="static-reference-data"></a>静的参照データ
 
-参照データの変更が予期されない場合は、入力構成に静的パスを指定することで、静的参照データのサポートを有効にできます。 Azure Stream Analytics は、指定されたパスから BLOB を取得します。 置換トークン ({date} と {time}) は必要ありません。 参照データは、Stream Analytics では不変です。 このため、静的参照データ BLOB の上書きは推奨されません。
+参照データの変更が予期されない場合は、入力構成に静的パスを指定することで、静的参照データのサポートを有効にできます。 Azure Stream Analytics は、指定されたパスから BLOB を取得します。 置換トークン ({date} と {time}) は必要ありません。 参照データは Stream Analytics 内で不変であるため、静的参照データ BLOB の上書きは推奨されません。
 
 ### <a name="generate-reference-data-on-a-schedule"></a>スケジュールに従って参照データを生成する
 
@@ -54,7 +54,7 @@ Azure Stream Analytics は、更新された参照データ BLOB を、1 分間�
 > [!NOTE]
 > 現在、Stream Analytics のジョブは、コンピューター時間が、BLOB の名前でエンコードされた時刻まで進んだ場合にのみ、BLOB の更新を検索します。 たとえば、ジョブは、`sample/2015-04-16/17-30/products.csv` を、できるだけ早く、ただし、UTC タイム ゾーンの 2015 年 4 月 16 日午後 5 時 30 分以降に検索します。 BLOB のエンコードされた時刻が、検出された最新時刻よりも前の場合、その BLOB は "*決して*" 検索されません。
 > 
-> 例: たとえば、ジョブによって BLOB `sample/2015-04-16/17-30/products.csv` が検索されると、エンコードされた日付が 2015 年 4 月 16 日午後 5 時 30 分より前のファイルはすべて無視されます。したがって、到着が遅れた `sample/2015-04-16/17-25/products.csv` BLOB が同じコンテナーに作成されると、その BLOB はジョブでは使用されません。
+> たとえば、ジョブによって BLOB `sample/2015-04-16/17-30/products.csv` が検索されると、エンコードされた日付が 2015 年 4 月 16 日午後 5 時 30 分より前のファイルはすべて無視されるため、到着が遅れた `sample/2015-04-16/17-25/products.csv` BLOB が同じコンテナーに作成された場合でも、それはジョブでは使用されません。
 > 
 > 同様に、`sample/2015-04-16/17-30/products.csv` が 2015 年 4 月 16 日午後 10 時 03 分にのみ生成され、同じコンテナーに前の日付の BLOB が存在しない場合、2015 年 4 月 16 日午後 10 時 03 分以降はこのファイルを使用し、その時点までは前の参照データを使用します。
 > 
@@ -89,7 +89,7 @@ SQL Database 参照データを構成するには、まず**参照データ**入
 |**プロパティ名**|**説明**  |
 |---------|---------|
 |入力のエイリアス|この入力を参照するジョブ クエリで使用されるわかりやすい名前。|
-|サブスクリプション|サブスクリプションの選択|
+|Subscription|サブスクリプションの選択|
 |Database|参照データを含む Azure SQL Database。|
 |ユーザー名|Azure SQL Database に関連付けられているユーザー名。|
 |パスワード|Azure SQL Database に関連付けられているパスワード。|

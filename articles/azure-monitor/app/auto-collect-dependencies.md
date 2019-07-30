@@ -12,16 +12,16 @@ ms.topic: reference
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: 832f927f81b57fd16c202b855d8f1dbe0617ad56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 839ab291a99de646053b638520ce43f459d5c41f
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149890"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297016"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
-以下に示したのは、アプリケーションのコードに別途変更を加えなくても、現時点で依存関係として自動的に検出することができる依存関係呼び出しの一覧です。 通信ライブラリ、ストレージ クライアント、ログ ライブラリ、メトリック ライブラリに対する発信のほか、アプリケーション フレームワークやサーバーに対する着信で構成されています。 これらの依存関係は、Application Insights の [[アプリケーション マップ]](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) ビューと [[トランザクション診断]](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) ビューで視覚化されます。 必要な依存関係が以下の一覧にない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
+以下に示したのは、アプリケーションのコードに別途変更を加えなくても、現時点で依存関係として自動的に検出することができる依存関係呼び出しの一覧です。 これらの依存関係は、Application Insights の [[アプリケーション マップ]](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) ビューと [[トランザクション診断]](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) ビューで視覚化されます。 必要な依存関係が以下の一覧にない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
 
 ## <a name="net"></a>.NET
 
@@ -38,11 +38,6 @@ ms.locfileid: "65149890"
 | [ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>ストレージ クライアント</b>|  |
 | ADO.NET | 4.5 以降 |
-| <b>ログ ライブラリ</b> |  |
-| ILogger | 1.1 以降 |
-| System.Diagnostics.Trace | 4.5 以降 |
-| [nLog](https://www.nuget.org/packages/NLog/) | 4.4.12 以降 |
-| [log4net](https://www.nuget.org/packages/log4net/) | 2.0.8 以降 (NetStandard 1.3)、2.0.6 以降 (.NET 4.5 以降) |
 
 ## <a name="java"></a>Java
 | アプリケーション サーバー | バージョン |

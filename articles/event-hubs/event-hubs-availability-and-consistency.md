@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5cad797b633d43bcc9ead657a60fca8aa6679bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822375"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273690"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
 
 ## <a name="overview"></a>概要
-Azure Event Hubs は[パーティション分割モデル](event-hubs-features.md#partitions)を使用して、単一のイベント ハブで可用性と並列処理を向上させます。 たとえば、イベント ハブに 4 つのパーティションがあり、そのうちの 1 つが、負荷分散操作によってあるサーバーから別のサーバーに移動されても、残りの 3 つのパーティションで送受信ができます。 また、パーティションが増えると、より多くのリーダーがデータを同時に処理できるため、合計スループットが向上します。 分散システムでのパーティション分割と順序付けの意味合いを理解することは、ソリューション設計の重要な側面です。
+Azure Event Hubs は[パーティション分割モデル](event-hubs-scalability.md#partitions)を使用して、単一のイベント ハブで可用性と並列処理を向上させます。 たとえば、イベント ハブに 4 つのパーティションがあり、そのうちの 1 つが、負荷分散操作によってあるサーバーから別のサーバーに移動されても、残りの 3 つのパーティションで送受信ができます。 また、パーティションが増えると、より多くのリーダーがデータを同時に処理できるため、合計スループットが向上します。 分散システムでのパーティション分割と順序付けの意味合いを理解することは、ソリューション設計の重要な側面です。
 
 順序付けと可用性のトレードオフを理解するには、[CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)をご覧ください。これはブリュワーの定理とも呼ばれています。 この定理によると、一貫性、可用性、パーティション トレランスの中からの選択が考察されています。 ネットワークごとにパーティション分割されたシステムの場合、常に一貫性と可用性のトレードオフがあることが示されています。
 

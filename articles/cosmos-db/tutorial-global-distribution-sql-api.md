@@ -4,15 +4,15 @@ description: SQL API を使用して Azure Cosmos DB グローバル分散をセ
 author: rimman
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/10/2019
+ms.date: 07/15/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4f97d1f052cd8684674eecf479133051f2cfb76e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480556"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234596"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
 
@@ -47,7 +47,7 @@ PreferredLocations プロパティが設定されていない場合、すべて�
 ## <a name="net-sdk"></a>.NET SDK
 SDK はコードに変更を加えることなく使用できます。 この場合、SDK は読み取りと書き込みの両方を現在の書き込みリージョンに自動的に転送します。
 
-.NET SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations という名前のプロパティがあります。 このプロパティは、コレクション型 `<string>` であり、リージョン名のリストを含んでいる必要があります。 文字列値は、「[Azure のリージョン][regions]」ページのリージョン名の列ごとに書式設定されます。先頭と末尾の文字のそれぞれ前後にはスペースはありません。
+.NET SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations という名前のプロパティがあります。 このプロパティは、コレクション型 `<string>` であり、リージョン名のリストを含んでいる必要があります。 文字列値は、「[Azure のリージョン][regions]」ページのリージョン名の列に従って書式設定されます。先頭と末尾の文字のそれぞれ前後にはスペースはありません。
 
 現在の書き込みエンドポイントと読み取りエンドポイントはそれぞれ、DocumentClient.WriteEndpoint と DocumentClient.ReadEndpoint で使用できます。
 
@@ -78,10 +78,11 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS SDK、JavaScript SDK、Python SDK
+## <a name="nodejsjavascript"></a>Node.js と JavaScript
+
 SDK はコードに変更を加えることなく使用できます。 この場合、SDK は読み取りと書き込みの両方を現在の書き込みリージョンに自動的に転送します。
 
-各 SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに DocumentClient.ConnectionPolicy.PreferredLocations という名前の新しいプロパティがあります。 このパラメーターは、リージョン名のリストを受け取る文字列の配列です。 この名前は「[Azure のリージョン][regions]」ページのリージョン名の列ごとに書式設定されます。 便利なオブジェクト AzureDocuments.Regions で事前定義された定数を使用することもできます。
+各 SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに DocumentClient.ConnectionPolicy.PreferredLocations という名前の新しいプロパティがあります。 このパラメーターは、リージョン名のリストを受け取る文字列の配列です。 この名前は「[Azure のリージョン][regions]」ページのリージョン名の列に従って書式設定されます。 便利なオブジェクト AzureDocuments.Regions で事前定義された定数を使用することもできます。
 
 現在の書き込みエンドポイントと読み取りエンドポイントはそれぞれ、DocumentClient.getWriteEndpoint と DocumentClient.getReadEndpoint で使用できます。
 
@@ -90,7 +91,7 @@ SDK はコードに変更を加えることなく使用できます。 この場
 >
 >
 
-NodeJS/Javascript のコード例を以下に示します。 Python と Java では同じパターンを使用します。
+Node.js と Javascript のコード例を以下に示します。
 
 ```JavaScript
 // Creating a ConnectionPolicy object
@@ -106,7 +107,35 @@ connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
 ```
 
-## <a name="rest"></a>REST ()
+## <a name="python-sdk"></a>Python SDK
+
+次のコードは、Python SDK を使用して優先される場所を設定する方法を示しています。
+
+```python
+
+connectionPolicy = documents.ConnectionPolicy()
+connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
+client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
+
+```
+
+## <a name="java-v2-sdk"></a>Java V2 SDK
+
+次のコードは、Java SDK を使用して優先される場所を設定する方法を示しています。
+
+```java
+ConnectionPolicy policy = new ConnectionPolicy();
+policy.setUsingMultipleWriteLocations(true);
+policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
+AsyncDocumentClient client =
+        new AsyncDocumentClient.Builder()
+                .withMasterKeyOrResourceToken(this.accountKey)
+                .withServiceEndpoint(this.accountEndpoint)
+                .withConnectionPolicy(policy)
+                .build();
+```
+
+## <a name="rest"></a>REST
 データベース アカウントが複数リージョンで利用できるようになったら、クライアントは次の URI に対して GET 要求を実行してその可用性を照会できます。
 
     https://{databaseaccount}.documents.azure.com/

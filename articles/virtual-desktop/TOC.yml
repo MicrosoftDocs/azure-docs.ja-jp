@@ -58,6 +58,8 @@
       href: host-pool-load-balancing.md
     - name: FSLogix プロファイル コンテナーと Azure のファイル
       href: fslogix-containers-azure-files.md
+    - name: パートナー統合
+      href: partners.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
@@ -82,3 +84,5 @@
   items:
     - name: 技術コミュニティ サポート グループ
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
+    - name: UserVoice フォーラム
+      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'

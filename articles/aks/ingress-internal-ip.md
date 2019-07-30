@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) での内部ネットワーク用のイングレス コントローラーの作成
 description: Azure Kubernetes Service (AKS) クラスターで内部のプライベート ネットワーク用の NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: iainfou
-ms.openlocfilehash: f3986b68242d580d9a6bd0e0cc38ce2c9d3aeeb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 935b96bd553c9ae73b55086483baa0ea7c4aeaa4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430954"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615469"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部の仮想ネットワークにイングレス コントローラーを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "66430954"
 - [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [ご自身の TLS 証明書を使用するイングレス コントローラーを作成する][aks-ingress-own-tls]
-- Let's Encrypt を使用して、[動的パブリック IP アドレスを使用][aks-ingress-tls]または[静的パブリック IP アドレスを使用][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
+- Let's Encrypt を使用して[動的パブリック IP アドレス付き][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]の TLS 証明書を自動的に生成するイングレス コントローラーを作成する
 
 ## <a name="before-you-begin"></a>開始する前に
 

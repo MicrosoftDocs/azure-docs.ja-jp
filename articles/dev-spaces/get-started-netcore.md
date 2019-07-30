@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 323308b52874064658f65cf34abe18cc5ef208ff
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: e05dbc570836741a69ed229fc93eb32a7dfd01dd
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393443"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503175"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Azure Dev Spaces での .NET Core の使用
 
@@ -130,22 +130,46 @@ azds up
 > `up` コマンドを初めて実行する場合、以下の手順には時間がかかりますが、それ以降はもっと早く実行できます。
 
 ### <a name="test-the-web-app"></a>Web アプリをテストする
-コンソールの出力をスキャンして、`up` コマンドで作成されたパブリック URL に関する情報を探します。 形式は次のようになります。 
+コンソール出力で *Application started* というメッセージを探して、`up` コマンドが完了したことを確認します。
 
 ```
-(pending registration) Service 'webfrontend' port 'http' will be available at <url>
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Microsoft (R) Build Engine version 15.9.20+g88f5fadfbe for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  webfrontend -> /src/bin/Debug/netcoreapp2.2/webfrontend.dll
+  webfrontend -> /src/bin/Debug/netcoreapp2.2/webfrontend.Views.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.94
+[...]
+webfrontend-5798f9dc44-99fsd: Now listening on: http://[::]:80
+webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 ```
 
-ブラウザー ウィンドウでこの URL を開くと、Web アプリ ロードが表示されるはずです。 コンテナーが実行されると、`stdout` と `stderr` の出力がターミナル ウィンドウにストリーミングされます。
+`up` コマンドの出力で、サービスのパブリック URL を特定します。 これは `.azds.io` で終わります。 上記の例では、パブリック URL は `http://webfrontend.1234567890abcdef1234.eus.azds.io/` です。
+
+Web アプリを表示するには、ブラウザーでこのパブリック URL を開きます。 また、Web アプリを操作すると、`stdout` と `stderr` の出力が *azds trace* ターミナル ウィンドウにストリームされることに注目してください。 さらに、システムを通過する HTTP 要求の追跡情報を確認することもできます。 これにより、開発中に複雑なマルチ サービス呼び出しを追跡しやすくなります。 Dev Spaces で追加されるインストルメンテーションによって、この要求の追跡が提供されます。
+
+![azds trace ターミナル ウィンドウ](media/get-started-netcore/azds-trace.png)
+
 
 > [!Note]
-> 最初の実行では、パブリック DNS が準備されるまでに数分かかることがあります。 公開 URL が解決されない場合は、コンソール出力に表示される代替 `http://localhost:<portnumber>` URL を使用することができます。 localhost URL を使用する場合、コンテナーはローカルで実行されているように見えるかもしれませんが、実際には AKS で実行されています。 利便性を考慮し、また、ローカル コンピューターからのサービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。 後で DNS レコードが準備できたら、戻って公開 URL を試してみることができます。
+> パブリック URL に加えて、コンソール出力に表示される代替 `http://localhost:<portnumber>` URL を使用することができます。 localhost URL を使用する場合、コンテナーはローカルで実行されているように見えるかもしれませんが、実際には AKS で実行されています。 Azure Dev Spaces では、Kubernetes の *port-forward* 機能が使用され、AKS で実行されているコンテナーに localhost ポートがマップされます。 これにより、ローカル コンピューターからのサービスとの対話が容易になります。
 
 ### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
 Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
 
-1. `./Views/Home/Index.cshtml` ファイルを見つけ、HTML を編集します。 たとえば、70 行目の `<h2>Application uses</h2>` を `<h2>Hello k8s in Azure!</h2>` のように変更します。
+1. `./Views/Home/Index.cshtml` ファイルを見つけ、HTML を編集します。 たとえば、[73 行目の `<h2>Application uses</h2>`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) を次のように変更します。 
+
+    ```html
+    <h2>Hello k8s in Azure!</h2>
+    ```
+
 1. ファイルを保存します。 しばらくすると、ターミナル ウィンドウに、実行中のコンテナー内のファイルが更新されたことを示すメッセージが表示されます。
 1. ブラウザーに移動し、ページを更新します。 Web ページに更新された HTML が表示されます。
 
@@ -160,7 +184,6 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 1. ターミナル ウィンドウで `azds up` を実行します。 
 
 このコマンドにより、コンテナー イメージが再ビルドされ、Helm チャートが再デプロイされます。 コードの変更が実行中のアプリケーションに反映されていることを確認するには、Web アプリの [About]\(バージョン情報\) メニューに移動します。
-
 
 コードを開発するさらに "*迅速な方法*" があります。これについては、次のセクションで説明します。 
 
@@ -199,11 +222,11 @@ Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追�
 `up` コマンドと同様に、コードが開発空間に同期され、コンテナーがビルドされて Kubernetes にデプロイされます。 今回は、デバッガーがリモート コンテナーにアタッチされます。
 
 > [!Tip]
-> VS Code のステータス バーに、クリック可能な URL が表示されます。
+> VS Code のステータス バーが、デバッガーがアタッチされていることを示すオレンジ色に変化します。 また、サイトを開くために使用できるクリック可能な URL も表示されます。
 
 ![](media/common/vscode-status-bar-url.png)
 
-サーバー側のコード ファイル (たとえば、`Controllers/HomeController.cs` ソース ファイルの `Index()` 関数内) にブレークポイントを設定します。 ブラウザーのページを更新すると、ブレークポイントに到達します。
+サーバー側のコード ファイル (たとえば、`Controllers/HomeController.cs` ソース ファイルの `About()` 関数内) にブレークポイントを設定します。 ブラウザーのページを更新すると、ブレークポイントに到達します。
 
 コードがローカルで実行されている場合と同様に、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
 
@@ -218,9 +241,9 @@ public IActionResult About()
 }
 ```
 
-ファイルを保存し、**デバッグ操作ウィンドウ**で **[最新の情報に更新]** ボタンをクリックします。 
+ファイルを保存し、**デバッグ操作ウィンドウ**で **[再起動]** ボタンをクリックします。 
 
-![](media/get-started-netcore/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 コードを編集するたびに新しいコンテナー イメージを再構築して再展開すると、多くの場合、かなりの時間がかかります。Azure Dev Spaces では、代わりに既存のコンテナー内でコードの増分再コンパイルを実行することで、編集/デバッグ ループを高速化します。
 

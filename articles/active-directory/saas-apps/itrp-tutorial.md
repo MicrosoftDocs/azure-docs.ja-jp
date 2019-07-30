@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 626163bb512b7b3b651d016f21fc465c398a01e6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236738"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル:Azure Active Directory と ITRP の統合
 
@@ -153,9 +153,9 @@ ITRP に対する Azure AD シングル サインオンを構成するには、�
 
     1. **[Enabled]** を選択します。
 
-    1.  **[Remote logout URL]\(リモート ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
+    1. **[Remote logout URL]\(リモート ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    1.  **[SAML SSO URL]** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
+    1. **[SAML SSO URL]** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
     1. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** ボックスに、Azure portal からコピーした証明書の **[拇印]** の値を貼り付けます。
 

@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07259d90c7119dec4ca9139e10af2fb20a439425
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1760d0e0bd356a05d84c07eda005e0526da5d13
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289404"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476521"
 ---
 # <a name="assign-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールを割り当てる
 
@@ -42,17 +42,17 @@ ms.locfileid: "60289404"
 
 1. **[ロール]** または **[メンバー]** をクリックします。
 
-    ![Azure AD ロール](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![[ロール] と [メンバー] メニュー オプションが強調表示された Azure AD ロール](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. **[メンバーの追加]** をクリックして [管理されるメンバーの追加] を開きます。
 
 1. **[Select a role]\(ロールを選択する\)** をクリックして、管理するロールをクリックし、 **[選択]** をクリックします。
 
-    ![ロールを選択する](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
+    ![Azure AD ロールを一覧している [ロールの選択] ウィンドウ](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
 1. **[メンバーの選択]** をクリックしてロールに割り当てるユーザーを選択し、 **[選択]** をクリックします。
 
-    ![ロールを選択する](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![ユーザーを選択できる [メンバーの選択] ウィンドウ](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. [管理されるメンバーの追加] で **[OK]** をクリックし、ロールにユーザーを追加します。
 
@@ -60,7 +60,7 @@ ms.locfileid: "60289404"
 
      ロールが割り当てられると、選択したユーザーが、ロールの**候補**としてメンバー リストに表示されます。
 
-    ![ロールの候補となるユーザー](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
+    ![ロールのメンバーがアクティブ化の状態と共に一覧されている](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
 1. これで、ユーザーがロールの候補者になりました。「[PIM で自分の Azure AD ロールをアクティブにする](pim-how-to-activate-role.md)」の指示に従って、ロールをアクティブ化できることをユーザーに通知します。
 
@@ -76,17 +76,17 @@ ms.locfileid: "60289404"
 
 1. **[メンバー]** をクリックします。
 
-    ![メンバーの一覧](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+    ![Azure AD ロール - ロールとアクティブ化の状態を示すメンバーの一覧](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
 1. 永続化する**候補**ロールをクリックします。
 
 1. **[More]\(その他\)** をクリックして **[永続化]** をクリックします。
 
-    ![ロールの割り当てを永続化する](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
+    ![[その他] メニュー オプションが開いたロールの対象になるユーザーを一覧するウィンドウ](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
     ロールが**永続**として表示されています。
 
-    ![永続化されたメンバーの一覧が変化](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
+    ![現在、永続のロールとアクティブ化の状態を示すメンバーの一覧](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
 ## <a name="remove-a-user-from-a-role"></a>ユーザーをロールから削除する
 
@@ -100,17 +100,17 @@ ms.locfileid: "60289404"
 
 1. **[メンバー]** をクリックします。
 
-    ![メンバーの一覧](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+    ![Azure AD ロール - ロールとアクティブ化の状態を示すメンバーの一覧](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
 1. 削除するロールの割り当てをクリックします。
 
 1. **[More]\(その他\)** をクリックして **[削除]** をクリックします。
 
-    ![ロールの削除](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
+    ![[その他] メニュー オプションが開いた永続ロールを含むユーザーを一覧するウィンドウ](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
 
 1. 確認を求めるメッセージで **[はい]** をクリックします。
 
-    ![ロールの削除](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![ロールからメンバーを削除するかどうかを確認するメッセージ](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     ロールの割り当てが削除されました。
 
@@ -140,13 +140,13 @@ ms.locfileid: "60289404"
 
 1. **[選択]** リストで、 **[MS PIM]** サービス プリンシパルを見つけて選択します。
 
-   ![MS PIM のアクセス許可を追加する](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
+   ![[ロールの割り当ての追加] ウィンドウ - MS-PIM サービス プリンシパルにアクセス許可を追加する](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
 
 1. **[保存]** を選択して、ロールを割り当てます。
 
    しばらくすると、MS PIM サービス プリンシパルに、サブスクリプション スコープでユーザー アクセス管理者ロールが割り当てられます。
 
-   ![MS-PIM のユーザー アクセス管理者ロール](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
+   ![MS-PIM のユーザー アクセス管理者ロールの割り当てを示すアクセスの制御 (IAM) ブレード](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
 
 
 ## <a name="next-steps"></a>次の手順

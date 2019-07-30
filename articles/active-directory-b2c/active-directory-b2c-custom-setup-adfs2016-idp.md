@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4510074619ff513b7284819d88fdb2532e4ce33a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c469b333c6896d33b440bfadf0ebbdbeece71a3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510431"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272137"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
@@ -102,6 +102,10 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
 2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
 3. **[アップロード]** をクリックします。
 
+> [!NOTE]
+> Visual Studio Code B2C 拡張機能では、"socialIdpUserId" が使用されます。 ADFS にはソーシャル ポリシーも必要です。
+>
+
 ## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
 
 この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、それを ADFS ID プロバイダーも含まれるように変更します。
@@ -173,7 +177,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
     | Surname | family_name |
     | Given-Name | given_name |
     | E-Mail-Address | email |
-    | Display-Name | name |
+    | Display-Name | 名前 |
     
 12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、 **[詳細]** タブを選択して、 **[セキュア ハッシュ アルゴリズム]** を `SHA-256` に変更し、 **[OK]** をクリックします。  
 13. [サーバー マネージャー] で、 **[ツール]** を選択し、 **[ADFS Management]\(ADFS 管理\)** を選択します。

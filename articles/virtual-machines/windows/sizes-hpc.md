@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck;amverma
-ms.openlocfilehash: ad490084b34a8bf6e89c7feb14d5cd2e70a8138f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1eeabf66411117d700a558a2938fb8c1df0080b
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755322"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538014"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -53,7 +53,16 @@ A8 インスタンスと A9 インスタンスの特定のデプロイでは、H
   "typeHandlerVersion": "1.0",
   } 
   ```
-  
+
+  次のコマンドでは、*myResourceGroup* という名前のリソース グループにデプロイされた *myVMSS* という名前の既存の VM スケール セットのすべての RDMA 対応 VM に、最新バージョンの 1.0 の InfiniBandDriverWindows 拡張機能をインストールします。
+
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+
   詳しくは、[仮想マシン拡張機能とその機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 [クラシック デプロイ モデル](classic/manage-extensions.md)にデプロイされている VM にも拡張機能を使用できます。
 
 * **RDMA ネットワーク アドレス空間** - Azure の RDMA ネットワークでは、アドレス空間 172.16.0.0/16 は予約済みです。 Azure 仮想ネットワークにデプロイ済みのインスタンスで MPI アプリケーションを実行する場合、仮想ネットワークのアドレス空間が RDMA ネットワークと重複しないようにしてください。
@@ -66,6 +75,8 @@ Azure では、次のような、RDMA ネットワークを使用して通信で
 * **仮想マシン** - 同じ可用性セット内に RDMA 対応の HPC VM をデプロイします (Azure Resource Manager デプロイ モデルを使用する場合)。 クラシック デプロイ モデルを使用する場合は、同じクラウド サービス内に VM をデプロイします。 
 
 * **Virtual Machine Scale Sets** - 仮想マシン スケール セットで、単一の配置グループにデプロイを制限するようにします。 たとえば、Resource Manager テンプレートでは、`singlePlacementGroup` プロパティを `true` に設定します。 
+
+* **仮想マシン間の MPI** - 仮想マシン (VM) 間で MPI 通信が必要な場合は、VM が同じ可用性セットまたは仮想マシン スケール セットに含まれていることを確認します。
 
 * **Azure CycleCloud** - [Azure CycleCloud](/azure/cyclecloud/) で HPC クラスターを作成し、Windows ノード上で MPI ジョブを実行します。
 

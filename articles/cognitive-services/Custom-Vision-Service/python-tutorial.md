@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 47e2f2a03c08ae1e44dcba35b440880ce06f6f95
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 44d9c7fcaf855a52234ba851792440b805fa93b0
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484463"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606821"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>クイック スタート:Custom Vision Python SDK を使用して画像分類プロジェクトを作成する
 
@@ -139,11 +139,13 @@ from azure.cognitiveservices.vision.customvision.prediction import CustomVisionP
 predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
 
 with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents:
-    results = predictor.classify_image(project.id, publish_iteration_name, image_contents.read())
+    results = predictor.classify_image(
+        project.id, publish_iteration_name, image_contents.read())
 
     # Display the results.
     for prediction in results.predictions:
-        print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
+        print("\t" + prediction.tag_name +
+              ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行

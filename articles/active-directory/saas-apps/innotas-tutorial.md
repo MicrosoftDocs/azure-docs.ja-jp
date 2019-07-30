@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bcfdb5eb213547b12920a3ceb87f5b943946a7fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3671f948bb61a348492d89e9b4bf011400d1e986
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innotas"></a>チュートリアル:Azure Active Directory と Innotas の統合
 

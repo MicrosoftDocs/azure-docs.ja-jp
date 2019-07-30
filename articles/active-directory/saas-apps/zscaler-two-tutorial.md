@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: dd334a33b270a8101ea8bf2c369a8059d4d2dfa0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 45ef7c61cadbf38c2f106e1fdc087f801dbefb4c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715028"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67085902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>チュートリアル:Azure Active Directory と Zscaler Two の統合
 

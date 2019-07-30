@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8eedea2e867dd2a5e2d9cf7e92f47c007bc48af1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797623"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707085"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -343,6 +343,8 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 IoT Edge デーモンでは、セキュリティ上の理由から、edgeHub に接続するすべてのモジュールのプロセス識別が強制されます。 モジュールによって送信されているすべてのメッセージが、モジュールのメイン プロセス ID から来ていることが確認されます。 モジュールによって、最初に確立されたのと異なるプロセス ID からメッセージが送信されている場合、そのメッセージは 404 エラー メッセージで拒否されます。
 
 ### <a name="resolution"></a>解決策
+バージョン 1.0.7 時点では、モジュールのすべてのプロセスが接続を承認されています。 1\.0.7 へのアップグレードが不可能な場合は、次の手順を完了します。 詳しくは、[1.0.7 リリース 変更ログ](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)のページをご覧ください。
+
 カスタム IoT Edge モジュールによる edgeHub へのメッセージの送信で、常に同じプロセス ID が使用されるようにします。 たとえば、Docker ファイル内で、`CMD` コマンドではなく `ENTRYPOINT` を使用するようにします。`ENTRYPOINT` では単一のプロセス ID が使用されるのに対して、`CMD` ではモジュールに 1 つのプロセス ID が使用され、メイン プログラムを実行している bash コマンドには別のプロセス ID が使用されるためです。
 
 

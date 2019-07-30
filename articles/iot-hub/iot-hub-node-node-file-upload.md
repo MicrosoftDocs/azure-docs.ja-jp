@@ -9,29 +9,29 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: f60236163cd88822c384bd356a1770d616639174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d52e0e1093668a65e76bd6600329619240aee182
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596628"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612603"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-このチュートリアルは、[IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-node-node-c2d.md)に関するチュートリアル内のコードに基づいて、[IoT Hub のファイル アップロード機能](iot-hub-devguide-file-upload.md)を使用して [Azure Blob Storage](../storage/index.yml) にファイルをアップロードする方法を示しています。 このチュートリアルでは、次の操作方法について説明します。
+このチュートリアルでは、[IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-node-node-c2d.md)に関するチュートリアル内のコードに基づいて、[IoT Hub のファイル アップロード機能](iot-hub-devguide-file-upload.md)を使用して [Azure Blob Storage](../storage/index.yml) にファイルをアップロードする方法を示しています。 このチュートリアルでは、次の操作方法について説明します。
 
-- ファイルのアップロードで Azure BLOB URI を使用してデバイスをセキュリティで保護する。
-- 
-- IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
+* ファイルのアップロードで Azure BLOB URI を使用してデバイスをセキュリティで保護する。
 
-「[Azure IoT Hub の使用](quickstart-send-telemetry-node.md)」チュートリアルでは、IoT Hub のデバイスからクラウドへの基本的なメッセージング機能が説明されています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例:
+* IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
 
-*  イメージを含む大きなファイル
-*  ビデオ
-*  高頻度でサンプリングされる振動データ
-*  何らかの形式の前処理済みデータ。
+[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)に関するクイックスタートでは、IoT Hub のデバイスからクラウドへの基本的なメッセージング機能が示されます。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例:
+
+* イメージを含む大きなファイル
+* ビデオ
+* 高頻度でサンプリングされる振動データ
+* 何らかの形式の前処理済みデータ。
 
 これらのファイルは通常、[Azure Data Factory](../data-factory/introduction.md) や [Hadoop](../hdinsight/index.yml) スタックなどのツールを使用してクラウドでバッチ処理されます。 デバイスからファイルをアップロードする必要がある場合も、IoT Hub のセキュリティを信頼性を使用できます。
 
@@ -216,6 +216,8 @@ node SimulatedDevice.js
 
 このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
-*  [プログラムによる IoT Hub の作成](iot-hub-rm-template-powershell.md)
-*  [C SDK の概要](iot-hub-device-sdk-c-intro.md)
-*  [Azure IoT SDK](iot-hub-devguide-sdks.md)
+* [プログラムによる IoT Hub の作成](iot-hub-rm-template-powershell.md)
+
+* [C SDK の概要](iot-hub-device-sdk-c-intro.md)
+
+* [Azure IoT SDK](iot-hub-devguide-sdks.md)

@@ -13,18 +13,17 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ace2ffdacf775a3c0c5a579e9a4208641c20f661
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0d67e18182d44dc640c75d982ccb40f1d22f8b41
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025761"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836604"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル:コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -48,7 +47,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
 この手順では、Azure ポータルを使用して、 **ADFTutorialDataFactory**という名前の Azure データ ファクトリを作成します。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
-2. 左上隅の **[リソースの作成]**、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+2. 左上隅の **[リソースの作成]** 、 **[データ + 分析]** 、 **[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
@@ -86,7 +85,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    4. **[次へ]** をクリックします。  
       
       ![Copy Tool - Properties page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
-3. **[Source data store (ソース データ ストア)]** ページで、**[Azure Blob Storage]** タイルをクリックします。 このページを使用して、コピー タスクのソース データ ストアを指定します。 
+3. **[Source data store (ソース データ ストア)]** ページで、 **[Azure Blob Storage]** タイルをクリックします。 このページを使用して、コピー タスクのソース データ ストアを指定します。 
    
     ![Copy Tool - Source data store page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png)
 4. **[Specify the Azure Blob storage account (Azure BLOB ストレージ アカウントの指定)]** ページで次の操作を実行します。
@@ -94,25 +93,25 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    1. **[リンクされたサービス名]** に「**AzureStorageLinkedService**」と入力します。
    2. **[Account selection method (アカウントの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
    3. Azure **サブスクリプション**を選択します。  
-   4. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント**を選択します。 ストレージ アカウント設定を手動で入力することもできます。その場合は、**[Account selection method (アカウントの選択方法)]** で **[Enter manually (手動で入力)]** オプションを選択し、**[次へ]** をクリックします。 
+   4. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント**を選択します。 ストレージ アカウント設定を手動で入力することもできます。その場合は、 **[Account selection method (アカウントの選択方法)]** で **[Enter manually (手動で入力)]** オプションを選択し、 **[次へ]** をクリックします。 
       
       ![Copy Tool - Specify the Azure Blob storage account](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
 5. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
    
    1. **[adftutorial]** (フォルダー) をダブルクリックします。
-   2. **emp.txt** を選択し、**[選択]** をクリックします。
+   2. **emp.txt** を選択し、 **[選択]** をクリックします。
       
       ![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
-6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで、**[次へ]** をクリックします。 **[Binary copy (バイナリ コピー)]** は選択しないでください。 
+6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで、 **[次へ]** をクリックします。 **[Binary copy (バイナリ コピー)]** は選択しないでください。 
    
     ![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
-7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 区切り記号を手動で入力することで、コピー ウィザードによる自動検出を防止 (オーバーライド) することもできます。 区切り記号を確認し、データをプレビューしたら、**[次へ]** をクリックします。 
+7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 区切り記号を手動で入力することで、コピー ウィザードによる自動検出を防止 (オーバーライド) することもできます。 区切り記号を確認し、データをプレビューしたら、 **[次へ]** をクリックします。 
    
     ![Copy Tool - File format settings](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
-8. [Destination data store (ターゲット データ ストア)] ページで **[Azure SQL Database]** を選択し、**[次へ]** をクリックします。
+8. [Destination data store (ターゲット データ ストア)] ページで **[Azure SQL Database]** を選択し、 **[次へ]** をクリックします。
    
     ![Copy Tool - Choose destination store](./media/data-factory-copy-data-wizard-tutorial/choose-destination-store.png)
-9. **[Specify the Azure SQL database (Azure SQL Database の指定)]** ページで次の操作を実行します。
+9. **[Specify the Azure SQL database (Azure SQL データベースの指定)]** ページで次の操作を実行します。
    
    1. **[接続名]** フィールドに「**AzureSqlLinkedService**」と入力します。
    2. **[Server / database selection method (サーバー/データベースの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
@@ -122,16 +121,16 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    6. **[次へ]** をクリックします。  
       
       ![Copy Tool - Azure SQL データベースの指定](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
-10. **[テーブル マッピング]** ページで、**[ターゲット]** フィールドのドロップダウン リストから **[emp]** を選択します。**下向き矢印**をクリックすると (省略可能)、スキーマを表示し、データをプレビューできます。
+10. **[テーブル マッピング]** ページで、 **[ターゲット]** フィールドのドロップダウン リストから **[emp]** を選択します。**下向き矢印**をクリックすると (省略可能)、スキーマを表示し、データをプレビューできます。
     
      ![Copy Tool - Table mapping](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
-11. **[Schema mapping (スキーマ マッピング)]** ページで、**[次へ]** をクリックします。
+11. **[Schema mapping (スキーマ マッピング)]** ページで、 **[次へ]** をクリックします。
     
     ![Copy Tool - schema mapping](./media/data-factory-copy-data-wizard-tutorial/schema-mapping-page.png)
-12. **[Performance settings (パフォーマンス設定)]** ページで、**[次へ]** をクリックします。 
+12. **[Performance settings (パフォーマンス設定)]** ページで、 **[次へ]** をクリックします。 
     
     ![Copy Tool - performance settings](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
-13. **[概要]** ページの内容を確認し、**[完了]** をクリックします。 これにより、2 つのリンクされたサービス、2 つのデータセット (入力と出力)、1 つのパイプラインが (コピー ウィザードを起動した場所から) データ ファクトリに作成されます。 
+13. **[概要]** ページの内容を確認し、 **[完了]** をクリックします。 これにより、2 つのリンクされたサービス、2 つのデータセット (入力と出力)、1 つのパイプラインが (コピー ウィザードを起動した場所から) データ ファクトリに作成されます。 
     
     ![Copy Tool - performance settings](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 

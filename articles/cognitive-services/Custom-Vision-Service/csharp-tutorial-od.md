@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 6f4b13e5fb2dc8ed595999bfc8a2abe4db15dcbb
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 63f5853199e3ee266df298b9599c2933b7da0826
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393903"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606935"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>クイック スタート:Custom Vision .NET SDK を使用して物体検出プロジェクトを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "66393903"
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
 
-Custom Vision を使用する .NET アプリを作成するには、Custom Vision NuGet パッケージが必要となります。 これらは、これからダウンロードするサンプル プロジェクトに含まれていますが、次のページから個別にアクセスすることもできます。
+Custom Vision を使用する .NET アプリを作成するには、Custom Vision NuGet パッケージが必要となります。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
@@ -44,7 +44,7 @@ _Program.cs_ ファイルを開いて、コードを詳しく調べます。 **M
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=18-27)]
 
-Endpoint パラメーターは、Custom Vision リソースを含む Azure リソース グループが作成されたリージョンを指す必要があります。 この例では、米国中南部リージョンであると想定して、これを使用しています。
+Endpoint パラメーターは、Custom Vision リソースを含む Azure リソース グループが作成されたリージョンを指す必要があります。 この例では、米国中南部リージョンであると想定して、以下を使用しています。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=14-14)]
 
@@ -123,7 +123,7 @@ using (var stream = File.OpenRead(imageFile))
 
 アプリケーションを実行すると、コンソール ウィンドウが開いて、次の出力が書き込まれます。
 
-```
+```console
 Creating new project:
         Training
 Done!

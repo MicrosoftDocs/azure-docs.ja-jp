@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: fc5215f71af45d3273da437fc796bf0d396ba3f9
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393509"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798375"
 ---
-# <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>チュートリアル:.NET Core アプリ内で機能フラグを使用する
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
 .NET Core 機能管理ライブラリでは、.NET または ASP.NET Core アプリケーションで機能フラグを実装するための慣用的なサポートが提供されます。 これらのライブラリにより、機能フラグを宣言的にコードに追加できるため、それらに対するすべての `if` ステートメントを手動で記述する必要がなくなります。
 
@@ -86,30 +86,42 @@ public class Startup
 
 機能フラグはアプリケーションの外部で保持し、別々に管理することをお勧めします。 そうすることで、フラグの状態をいつでも変更して、アプリケーションにその変更をすぐに反映させることができます。 App Configuration は、専用のポータル UI を介してすべての機能フラグを一元的に整理および制御するための場所を提供します。 また、App Configuration は、その .NET Core クライアント ライブラリを介してお使いのアプリケーションに直接フラグを配信します。
 
-App Configuration に ASP.NET Core アプリケーションを接続する最も簡単な方法は、構成プロバイダー `Microsoft.Extensions.Configuration.AzureAppConfiguration` を使用することです。 この NuGet パッケージを使用するには、次のコードを *Program.cs* ファイルに追加します。
+App Configuration に ASP.NET Core アプリケーションを接続する最も簡単な方法は、構成プロバイダー `Microsoft.Azure.AppConfiguration.AspNetCore` を使用することです。 NuGet パッケージを使用するには次の手順に従います。
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+1. *Program.cs* ファイルを開いて、次のコードを追加します。
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
-機能フラグの値は、時間の経過とともに変化することが予想されます。 既定では、機能マネージャーは 30 秒ごとに機能フラグの値を更新します。 次のコードは、`options.UseFeatureFlags()` 呼び出しでポーリング間隔を 5 秒に変更する方法を示しています。
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. *Startup.cs* を開き、`Configure` メソッドを更新してミドルウェアを追加し、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できるようにします。
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+機能フラグの値は、時間の経過とともに変化することが予想されます。 既定では、機能フラグの値は 30 秒間キャッシュされるため、ミドルウェアで要求が受け取られるときにトリガーされる更新操作では、キャッシュされた値の有効期限が切れるまで、値は更新されません。 次のコードは、`options.UseFeatureFlags()` 呼び出しでキャッシュの有効期間またはポーリング間隔を 5 分に変更する方法を示しています。
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(5);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```
@@ -189,10 +201,10 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>コントローラー アクション
 
-MVC コントローラーでは、`Feature` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、コントローラー クラスに含まれるアクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
+MVC コントローラーでは、`FeatureGate` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、コントローラー クラスに含まれるアクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
     ...
@@ -202,7 +214,7 @@ public class HomeController : Controller
 次の `Index` アクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {
     return View();
@@ -218,6 +230,25 @@ MVC ビューでは、`<feature>` タグを使用して、機能フラグが有�
 ```html
 <feature name="FeatureA">
     <p>This can only be seen if 'FeatureA' is enabled.</p>
+</feature>
+```
+
+要件が満たされていないときに代替コンテンツを表示するには、`negate` 属性を使用できます。
+
+```html
+<feature name="FeatureA" negate="true">
+    <p>This will be shown if 'FeatureA' is disabled.</p>
+</feature>
+```
+
+一覧内のいずれかまたはすべての機能が有効になっている場合は、機能 `<feature>` タグを使用してコンテンツを表示することもできます。
+
+```html
+<feature name="FeatureA, FeatureB" requirement="All">
+    <p>This can only be seen if 'FeatureA' and 'FeatureB' are enabled.</p>
+</feature>
+<feature name="FeatureA, FeatureB" requirement="Any">
+    <p>This can be seen if 'FeatureA', 'FeatureB', or both are enabled.</p>
 </feature>
 ```
 

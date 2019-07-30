@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: eb405549ba2d1c97b16f5b465abf0dc54de3b80d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/02/2019
+ms.openlocfilehash: 7a6c42da3fb92dc7dda014faa64fb8daa8c58774
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000913"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359455"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する
 Azure Database for MySQL は、Secure Sockets Layer (SSL) を使用した、クライアント アプリケーションへの Azure Database for MySQL サーバーへの接続をサポートします。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -24,9 +24,18 @@ Azure Database for MySQL サーバーで SSL 経由で通信するために必�
 
 特定プログラミング言語の接続文字列については、下記の[サンプル コード](howto-configure-ssl.md#sample-code)を参照してください。
 
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>MySQL Workbench による SSL 経由でのサーバーへの接続
-SSL 経由で安全に接続するように MySQL Workbench を構成します。 [Setup New Connection]\(新しい接続のセットアップ\) ダイアログから、 **[SSL]** タブに移動します。 **[SSL CA File:]\(SSL CA ファイル:\)** フィールドに **BaltimoreCyberTrustRoot.crt.pem** ファイルの場所を入力します。 
-![カスタマイズされたタイル保存](./media/howto-configure-ssl/mysql-workbench-ssl.png) 既存の接続に SSL をバインドするには、接続アイコンを右クリックして編集を選択します。 次に **[SSL]** タブに移動して証明書ファイルをバインドします。
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>MySQL Workbench を使用した SSL 経由でのサーバーへの接続
+SSL 経由で安全に接続するように MySQL Workbench を構成します。 
+
+1. [Setup New Connection]\(新しい接続のセットアップ\) ダイアログから、 **[SSL]** タブに移動します。 
+
+1. **[SSL の使用]** フィールドを [必須] に更新します。
+
+1. **[SSL CA File:]\(SSL CA ファイル:\)** フィールドに **BaltimoreCyberTrustRoot.crt.pem** ファイルの場所を入力します。 
+    
+    ![SSL 構成の保存](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+
+既存の接続の場合、SSL をバインドするには、接続アイコンを右クリックして編集を選択します。 次に **[SSL]** タブに移動して証明書ファイルをバインドします。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>MySQL CLI による SSL 経由でのサーバーへの接続
 SSL 証明書をバインドする別の方法として、次のコマンドを実行して MySQL コマンド ライン インターフェイスを使用します。 
@@ -78,22 +87,22 @@ $db = new PDO('mysql:host=mydemoserver.mysql.database.azure.com;port=3306;dbname
 ### <a name="python-mysqlconnector-python"></a>Python (MySQLConnector Python)
 ```python
 try:
-    conn=mysql.connector.connect(user='myadmin@mydemoserver', 
-        password='yourpassword', 
-        database='quickstartdb', 
-        host='mydemoserver.mysql.database.azure.com', 
-        ssl_ca='/var/www/html/BaltimoreCyberTrustRoot.crt.pem')
+    conn = mysql.connector.connect(user='myadmin@mydemoserver',
+                                   password='yourpassword',
+                                   database='quickstartdb',
+                                   host='mydemoserver.mysql.database.azure.com',
+                                   ssl_ca='/var/www/html/BaltimoreCyberTrustRoot.crt.pem')
 except mysql.connector.Error as err:
     print(err)
 ```
 
 ### <a name="python-pymysql"></a>Python (PyMySQL)
 ```python
-conn = pymysql.connect(user = 'myadmin@mydemoserver', 
-        password = 'yourpassword', 
-        database = 'quickstartdb', 
-        host = 'mydemoserver.mysql.database.azure.com', 
-        ssl = {'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
+conn = pymysql.connect(user='myadmin@mydemoserver',
+                       password='yourpassword',
+                       database='quickstartdb',
+                       host='mydemoserver.mysql.database.azure.com',
+                       ssl={'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
 ```
 
 ### <a name="django-pymysql"></a>Django (PyMySQL)

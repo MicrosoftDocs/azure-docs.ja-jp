@@ -6,13 +6,13 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
-manager: jeconnoc
-ms.openlocfilehash: 1c3bade6425455c1bbe81987e52d170d46317ae4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: gwallace
+ms.openlocfilehash: 8c84f81a78ed1f367de0c77d752499f3d3fb40f5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157975"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722706"
 ---
 # <a name="preview-azure-image-builder-overview"></a>更新:Azure Image Builder の概要
 

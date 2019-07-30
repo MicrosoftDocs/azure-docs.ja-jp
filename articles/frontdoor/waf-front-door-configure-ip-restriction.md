@@ -10,13 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 4a0b4a7d088eb7e9d7e329b5a7a5ef9c9fb57335
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 611a52f43b5b0e076ae37df9df86479ec894c6f4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729913"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849165"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Azure Front Door Service 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 この記事では、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使って、Azure Front Door Service 用の Web アプリケーション ファイアウォール (WAF) で IP 制限規則を構成する方法を示します。
@@ -35,7 +36,7 @@ IP 制限ポリシーの構成を始める前に、ご自分の CLI 環境をセ
  2. Bash でローカルに CLI を使用している場合は、`az login` を使って Azure にサインインします。
 
 #### <a name="create-an-azure-front-door-service-profile"></a>Azure Front Door Service プロファイルを作成する
-Azure Front Door Service プロファイルを作成するには、「[クイック スタート:グローバル Web アプリケーションの高可用性を実現するフロント ドアを作成する](quickstart-create-front-door.md)」に記載されている手順に従ってください。
+Azure Front Door Service プロファイルを作成するには、「[クイック スタート: 高可用性グローバル Web アプリケーション向けのフロント ドアを作成する](quickstart-create-front-door.md)」で説明されている手順に従ってください。
 
 ### <a name="create-a-waf-policy"></a>WAF ポリシーを作成する
 
@@ -62,7 +63,7 @@ az network waf-policy custom-rule create \
   --name IPAllowListRule \
   --priority 1 \
   --rule-type MatchRule \
-  --match-condition RemoteAddr IPMatch ["<ip-address-range-1>","<ip-address-range-2>"] \
+  --match-condition RemoteAddr IPMatch ("<ip-address-range-1>","<ip-address-range-2>") \
   --action Allow \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI
@@ -129,7 +130,7 @@ Azure PowerShell には、Azure リソースを管理するために [Azure Reso
     Install-Module -Name Az.FrontDoor
     ```
 ### <a name="create-an-azure-front-door-service-profile"></a>Azure Front Door Service プロファイルを作成する
-Azure Front Door Service プロファイルを作成するには、「[クイック スタート:グローバル Web アプリケーションの高可用性を実現するフロント ドアを作成する](quickstart-create-front-door.md)」に記載されている手順に従ってください。
+Azure Front Door Service プロファイルを作成するには、「[クイック スタート: 高可用性グローバル Web アプリケーション向けのフロント ドアを作成する](quickstart-create-front-door.md)」で説明されている手順に従ってください。
 
 ### <a name="define-an-ip-match-condition"></a>IP の一致条件を定義する
 IP の一致条件を定義するには、[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) コマンドを使います。
@@ -138,7 +139,7 @@ IP の一致条件を定義するには、[New-AzFrontDoorWafMatchConditionObjec
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
 -OperatorProperty IPMatch `
--MatchValue ["ip-address-range-1", "ip-address-range-2"]
+-MatchValue "ip-address-range-1", "ip-address-range-2"
 ```
 次のコマンドを使用して、IP の*すべての条件に一致*規則を作成します。
 ```powershell

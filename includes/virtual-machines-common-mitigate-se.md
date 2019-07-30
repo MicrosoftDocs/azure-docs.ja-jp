@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 169e25aeb8503a11f768a2a3062022eef51a76b8
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735217"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659841"
 ---
 **ドキュメントの最終更新日**:2019 年 6 月 4 日午後 3:00 PST。
 
@@ -21,7 +21,7 @@ ms.locfileid: "66735217"
 
 Microsoft は、クラウド サービス全体に軽減策を展開しました。 Azure を実行し、顧客ワークロードを互いに分離するインフラストラクチャは保護されています。 つまり同じインフラストラクチャを使用する潜在的な攻撃者が、これらの脆弱性を利用してお客様のアプリケーションを攻撃することはできません。
 
-Azure では、可能な限り[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
+Azure では、可能な限り[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
 
 Azure にさまざまな角度から組み込まれているセキュリティについて詳しくは、「[Azure のセキュリティのドキュメント](https://docs.microsoft.com/azure/security/)」サイトをご覧ください。 
 

@@ -7,24 +7,30 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: e19523834c0ddb517fa9d15853411c1b58024b43
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: f692303140db1441aa34aacef62523d7f596dba1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834007"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204730"
 ---
-# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
+# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
 
 ホスト プールは、Windows Virtual Desktop プレビュー テナント環境内にある同一の仮想マシンをコレクションとしてまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
 
-この記事では、Microsoft Azure Marketplace オファリングを使用して Windows Virtual Desktop テナント内にホスト プールを作成する方法を説明します。 これには、Windows Virtual Desktop にホスト プールを作成する方法、Azure サブスクリプション内の VM を使用してリソース グループを作成する方法、VM を Active Directory ドメインに参加させる方法、VM を Windows Virtual Desktop に登録する方法が含まれます。
+このチュートリアルでは、Microsoft Azure Marketplace オファリングを使用して Windows Virtual Desktop テナント内にホスト プールを作成する方法を説明します。 具体的なタスクは次のとおりです。
+
+> [!div class="checklist"]
+> * Windows Virtual Desktop でホスト プールを作成する。
+> * Azure サブスクリプションで VM を含むリソース グループを作成する。
+> * Active Directory ドメインに VM を参加させる。
+> * Windows Virtual Desktop に VM を登録する。
 
 作業を開始する前に、PowerShell セッションで使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します (まだの場合のみ)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ( <https://portal.azure.com> ) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>新しいホスト プールをプロビジョニングするための Azure Marketplace オファリングを実行する
 
@@ -38,18 +44,18 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 ### <a name="basics"></a>基本
 
-[基本] ブレードで必要な操作は次のとおりです。
+**[基本]** ブレードで必要な操作は次のとおりです。
 
 1. ホスト プールの名前を入力します。入力する名前は、Windows Virtual Desktop テナント内で一意のものを指定してください。
 2. 個人用デスクトップに関する適切なオプションを選択します。 **[はい]** を選択した場合には、このホスト プールに接続するユーザーそれぞれに対して仮想マシンが 1 台、永久的に割り当てられます。
-3. Azure Marketplace オファリングが完成したら、Windows Virtual Desktop クライアントにサインインし、デスクトップにアクセスできるユーザーをコンマ区切りリストにして入力します。 たとえば、user1@contoso.com と user2@contoso.com に対してアクセス権を割り当てる場合であれば、「user1@contoso.com,user2@contoso.com」と入力します。
+3. Azure Marketplace オファリングが完成したら、Windows Virtual Desktop クライアントにサインインし、デスクトップにアクセスできるユーザーをコンマ区切りリストにして入力します。 たとえば、user1@contoso.com と user2@contoso.com に対してアクセス権を割り当てる場合、「user1@contoso.com,user2@contoso.com」と入力します。
 4. **[新規作成]** を選択して、新しいリソース グループの名前を指定します。
 5. **[場所]** には、Active Directory サーバーに接続している仮想ネットワークと同じ場所を選択します。
 6. **[OK]** を選択します。
 
 ### <a name="configure-virtual-machines"></a>仮想マシンの構成
 
-[Configure virtual machines]\(仮想マシンの構成\) ブレードで必要な操作は次のとおりです。
+**[Configure virtual machines]\(仮想マシンの構成\)** ブレードで必要な操作は次のとおりです。
 
 1. 既定値をそのまま使うか、VM の数とサイズをカスタマイズします。
 2. 仮想マシンの名前のプレフィックスを入力します。 たとえば、"prefix" という名前を入力する場合であれば、仮想マシンの名前は "prefix-0"、"prefix-1" などのようになります。
@@ -57,23 +63,23 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 ### <a name="virtual-machine-settings"></a>仮想マシンの設定
 
-[Virtual machine setting]\(仮想マシンの設定\) ブレードで必要な操作は次のとおりです。
+**[Virtual machine setting]\(仮想マシンの設定\)** ブレードで必要な操作は次のとおりです。
 
 >[!NOTE]
-> ご使用の VM を Azure AD Domain Services 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)のメンバーでもあることを確認します。
+> ご使用の VM を Azure Active Directory Domain Services (Azure AD DS) 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)のメンバーでもあることを確認します。
 
-1. **イメージ ソース**を選択し、その探し方と格納方法に関する適切な情報を入力します。 マネージド ディスクを使用しない場合には、.vhd ファイルが含まれるストレージ アカウントを選択します。
+1. **[イメージ ソース]** で、ソースを選択し、その探し方と格納方法に関する適切な情報を入力します。 マネージド ディスクを使用しない場合には、.vhd ファイルが含まれるストレージ アカウントを選択します。
 2. Active Directory ドメインに VM を参加させるドメイン アカウントのユーザー プリンシパル名とパスワードを入力します。 このユーザー名とパスワードは、仮想マシン上にローカル アカウントとして作成されます。 このローカル アカウントは、後でリセットできます。
 3. Active Directory サーバーに接続している仮想ネットワークを選択し、仮想マシンをホストするサブネットを選択します。
 4. **[OK]** を選択します。
 
 ### <a name="windows-virtual-desktop-preview-tenant-information"></a>Windows Virtual Desktop プレビューのテナント情報
 
-[Windows Virtual Desktop tenant information]\(Windows Virtual Desktop テナント情報\) ブレードで必要な操作は次のとおりです。
+**[Windows Virtual Desktop tenant information]\(Windows Virtual Desktop テナント情報\)** ブレードで必要な操作は次のとおりです。
 
-1. テナントが含まれるテナント グループの **Windows Virtual Desktop テナント グループ名**を入力します。 具体的なテナント グループ名を指定されていないかぎり、既定値のままにしてください。
-2. このホスト プールの作成先となるテナントの **Windows Virtual Desktop テナント名**を入力します。
-3. Windows Virtual Desktop テナントの RDS 所有者としての認証に使用する資格情報の種類を指定します。 「[PowerShell を使用してサービス プリンシパルとロールの割り当てを作成するチュートリアル](./create-service-principal-role-powershell.md)」を完了したら、 **[サービス プリンシパル]** を選択します。 次に、サービス プリンシパルを含む Azure Active Directory の **Azure AD テナント ID** を入力する必要があります。
+1. **[Windows Virtual Desktop tenant group name]\(Windows Virtual Desktop テナント グループ名\)** に、テナントが含まれるテナント グループの名前を入力します。 具体的なテナント グループ名を指定されていないかぎり、既定値のままにしてください。
+2. **[Windows Virtual Desktop tenant name]\(Windows Virtual Desktop テナント名\)** に、このホスト プールの作成先となるテナントの名前を入力します。
+3. Windows Virtual Desktop テナントの RDS 所有者としての認証に使用する資格情報の種類を指定します。 「[PowerShell を使用してサービス プリンシパルとロールの割り当てを作成するチュートリアル](./create-service-principal-role-powershell.md)」を完了したら、 **[サービス プリンシパル]** を選択します。 **[Azure AD tenant ID]\(Azure AD テナント ID\)** が表示されたら、サービス プリンシパルを含む Azure Active Directory インスタンスの ID を入力します。
 4. テナント管理者アカウントの資格情報を入力します。 パスワード資格情報が設定されているサービス プリンシパルのみサポートされます。
 5. **[OK]** を選択します。
 
@@ -89,7 +95,7 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 ## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>(オプション) デスクトップ アプリケーション グループに追加のユーザーを割り当てる
 
-Azure Marketplace オファリングが完成した後は、仮想マシン上でフル セッションのデスクトップのテストを始める前に、デスクトップ アプリケーション グループに追加のユーザーを割り当てることができます。 Azure Marketplace オファリングに既に既定のユーザーを追加しており、それ以上の追加が必要ない場合には、このセクションをスキップしてください。
+Azure Marketplace オファリングが終了した後、仮想マシン上でフル セッションのデスクトップのテストを始める前に、デスクトップ アプリケーション グループに追加のユーザーを割り当てることができます。 Azure Marketplace オファリングに既に既定のユーザーを追加しており、それ以上の追加が必要ない場合には、このセクションをスキップしてください。
 
 デスクトップ アプリケーション グループにユーザーを割り当てるためにはまず、PowerShell ウィンドウを開く必要があります。 その後、次の 2 つのコマンドレットを入力する必要があります。
 
@@ -99,7 +105,7 @@ Azure Marketplace オファリングが完成した後は、仮想マシン上�
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-この 2 つの作業が済んだら、次のコマンドレットを使用してデスクトップ アプリケーション グループにユーザーを追加します。
+次のコマンドレットを使用して、デスクトップ アプリケーション グループにユーザーを追加します。
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
@@ -119,7 +125,7 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 
 ## <a name="next-steps"></a>次の手順
 
-ホスト プールを作成し、そのデスクトップにアクセスするユーザーを割り当てたので、ホスト プールに RemoteApp を設定できるようになりました。 Windows Virtual Desktop 内でアプリを管理する方法に関する詳細については、アプリ グループの管理に関するチュートリアルを参照してください。
+ホスト プールを作成し、そのデスクトップにアクセスするユーザーを割り当てたので、ホスト プールに RemoteApp プログラムを設定できるようになりました。 Windows Virtual Desktop でアプリを管理する方法について詳しくは、次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
 > [アプリ グループの管理に関するチュートリアル](./manage-app-groups.md)

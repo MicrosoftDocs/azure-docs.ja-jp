@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 130ab6ee8e59b157d1fbdd8769f14814445dea18
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429757"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202753"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning での高度な分析のシナリオ
 この記事では、[Team Data Science Process (TDSP)](overview.md) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。 TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。 ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
@@ -239,7 +239,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 1. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
 ## <a name="decisiontree"></a>シナリオを選択するためのデシジョン ツリー
-- - -
+---
 次の図は、上記で説明したシナリオと、各シナリオを選択するための Advanced Analytics Process and Technology の選択肢をまとめたものです。 データ処理、探索、特徴エンジニアリング、およびサンプリングは、1 つ以上のメソッド/環境 (ソース、中間、またはターゲット環境) で発生する場合があり、必要に応じて繰り返し実行される可能性があります。 図は、考えられるフローの一部のみを示しており、すべてを網羅しているわけではありません。
 
 ![サンプル DS プロセスのチュートリアル シナリオ][8]

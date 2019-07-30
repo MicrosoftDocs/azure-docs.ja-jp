@@ -13,17 +13,16 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab36d475052aa71427427e1362c74abd031fa414
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146837"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839451"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル:Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
@@ -125,8 +124,8 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| ClusterSize |HDInsight クラスターのサイズ。 |
-| TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
+| clusterSize |HDInsight クラスターのサイズ。 |
+| timeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
 | linkedServiceName |HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
 
 以下の点に注意してください。
@@ -323,7 +322,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
   3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-* エラー "**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)**" が表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。
+* エラー "**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)** " が表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。
 
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
@@ -474,7 +473,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-Azure ポータルを使用して、スライスを監視し、問題のトラブルシューティングを行うこともできます。 詳細については、 [Azure ポータルを使用したパイプラインの監視](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) に関する記事を参照してください。
+Azure ポータルを使用して、スライスを監視し、問題のトラブルシューティングを行うこともできます。 詳細については、 [Azure ポータルを使用したパイプラインの監視](data-factory-monitor-manage-pipelines.md) に関する記事を参照してください。
 
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。 以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。

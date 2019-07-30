@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150707"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181842"
 ---
 次の手順に従ってストレージ アカウントに接続し、その接続を確認します。
 
-1. Storage Explorer で、**[Azure Storage へ接続]** ダイアログを開きます。 **[Azure Storage へ接続]** ダイアログで、**[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択します。
+1. Storage Explorer で、 **[Azure Storage へ接続]** ダイアログを開きます。 **[Azure Storage へ接続]** ダイアログで、 **[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択します。
 
     ![Data Box ダッシュボード](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 

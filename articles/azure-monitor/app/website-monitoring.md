@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/29/2018
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ece51892522721f7be3cdcadbb3b79705c9f83e4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9845329d30da40243751c00f7c0fa62fdcfe5a0d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384089"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990093"
 ---
 # <a name="start-monitoring-your-website"></a>Web サイトの監視を開始する
 
@@ -41,14 +41,16 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
 1. **[リソースの作成]**  >  **[管理ツール]**  >  **[Application Insights]** の順に選択します。
 
+   > [!NOTE]
+   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」の記事にアクセスして詳細を確認できます。
+
    構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
     | 設定        | 値           | 説明  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | 汎用アプリケーション | 監視しているアプリの種類 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
-   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **Create** をクリックしてください。
 

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: c72c4d21f948d6d6c4d1d4598efa0e13de9705a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4d056aacf8f3969b645747e2303574f3fea3bda
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926195"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357118"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する
 
@@ -172,7 +172,7 @@ EXEC sp_adddistpublisher
   @login = N'$(username)',
   @password = N'$(password)',
   @working_directory = N'$(file_storage)',
-  @storage_connection_string = N'$(file_storage_key)';
+  @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
 
 このスクリプトで、マネージド インスタンス上にローカル パブリッシャーを構成し、リンク サーバーを追加し、SQL Server エージェント用の一連のジョブを作成します。 

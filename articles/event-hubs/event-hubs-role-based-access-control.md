@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978310"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448136"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -29,10 +29,10 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs のロールとアクセス許可
 Azure では、Event Hubs 名前空間へのアクセスを承認するための次の組み込み RBAC ロールが提供されています。
 
-[Event Hubs データ所有者 (プレビュー)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) ロールでは、Event Hubs 名前空間とそのエンティティ (キュー、トピック、サブスクリプション、およびフィルター) へのデータ アクセスが可能です。
+[Azure Event Hubs データ所有者 (プレビュー)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) ロールでは、Event Hubs 名前空間とそのエンティティ (キュー、トピック、サブスクリプション、およびフィルター) へのデータ アクセスが可能です。
 
 >[!IMPORTANT]
-> 以前は、**所有者**または**共同作成者**ロールへのマネージド ID の追加がサポートされていました。 しかし、**所有者**ロールと**共同作成者**ロールのデータ アクセス特権は受け入れられなくなりました。 **所有者**または**共同作成者**ロールを使用している場合は、**Event Hubs データ所有者**ロールの使用に切り替えてください。
+> 以前は、マネージド ID を**所有者**ロールまたは**共同作成者**ロールに追加することをサポートしていました。 しかし、**所有者**ロールと**共同作成者**ロールのデータ アクセス特権は受け入れられなくなりました。 **所有者**ロールまたは**共同作成者**ロールを使用している場合は、**Azure Event Hubs データ所有者 (プレビュー)** ロールの使用に切り替えてください。
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Azure AD ドメイン ユーザー アカウントで Event Hubs を使用する

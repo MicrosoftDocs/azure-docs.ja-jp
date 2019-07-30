@@ -1,6 +1,6 @@
 ---
 title: Bing Custom Search API とは
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 03/4/2019
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 93af1cce37c69691fb39f62270f4de6c9c73cf32
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4b0b0d91af15912e1c64761351ba33acfd3e2725
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388600"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405158"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Custom Search API とは
 
@@ -48,6 +48,8 @@ Bing Custom Search API を使用すると、関心のあるトピックに合わ
 既存のサービスやアプリケーションにおける検索結果の使用については、[Bing の利用と表示の要件](./use-and-display-requirements.md)に関するページを必ずお読みください。
 
 各カスタム検索エンドポイントのリファレンス コンテンツをよく理解してください。 リファレンスには、検索結果を要求するときに使用するエンドポイント、ヘッダー、クエリ パラメーターが記載されています。 また、応答オブジェクトの定義も記載されています。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 - [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
 - [Custom Image API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)

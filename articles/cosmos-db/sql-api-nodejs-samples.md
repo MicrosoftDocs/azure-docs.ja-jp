@@ -5,14 +5,14 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 09/24/2018
-ms.author: deborahc
-ms.openlocfilehash: b5f79fccf040c893d02ed82a397f361ae9bf3fd2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 07/23/2019
+ms.author: dech
+ms.openlocfilehash: 640f6a12f3df1bb8ded69c66eda3b307e6bdb74c
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537543"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384864"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js のサンプル
 > [!div class="op_single_selector"]

@@ -1,23 +1,35 @@
 ---
-title: Azure Data Catalog 用の Azure Active Directory ポリシーを構成する方法
-description: Azure Data Catalog ポータルにはサインインできるものの、データ ソース登録ツールにサインインしようとするとエラー メッセージが表示されることがあります。
+title: Azure Data Catalog をトラブルシューティングする方法
+description: この記事では、Azure Data Catalog リソースのトラブルシューティングに関する一般的な考慮事項について説明します。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
-ms.date: 04/06/2019
-ms.openlocfilehash: e69a7e3bd104d0fb82b248b6560d4fd082c88426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: troubleshooting
+ms.date: 06/13/2019
+ms.openlocfilehash: ed74e90e5e8ed55b75968f51cb50e6a1b4cdd75d
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116603"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203503"
 ---
-# <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory ポリシーの構成
+# <a name="troubleshooting-azure-data-catalog"></a>Azure Data Catalog のトラブルシューティング
+
+この記事では、Azure Data Catalog リソースのトラブルシューティングに関する一般的な考慮事項について説明します。 
+
+## <a name="functionality-limitations"></a>機能上の制限
+
+Azure Data Catalog を使用しているときは、次の機能が制限されます。
+
+- **ゲスト ロール** タイプのアカウントはサポートされません。 Azure Data Catalog のユーザーとしてゲスト アカウントを追加することはできません。また、ゲスト ユーザーがポータル (www.azuredatacatalog.com) を使用することもできません。
+
+- Azure Resource Manager テンプレートまたは Azure PowerShell コマンドを使用した Azure Data Catalog リソースの作成はサポートされません。
+
+- Azure テナント間で Azure Data Catalog リソースを移動することはできません。
+
+## <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory ポリシーの構成
 
 Azure Data Catalog ポータルにはサインインできるものの、データ ソース登録ツールにサインインしようとするとエラー メッセージが表示され、サインインできないという状況に直面することがあります。 このようなエラーは、企業ネットワーク上にいる場合や、企業ネットワークの外部から接続している場合に発生する可能性があります。
-
-## <a name="registration-tool"></a>登録ツール
 
 登録ツールでは、" *フォーム認証* " を使用して、Azure Active Directory に対するユーザーのサインインを検証します。 サインインを成功させるためには、Azure Active Directory 管理者が、" *グローバル認証ポリシー*" でフォーム認証を有効にする必要があります。
 

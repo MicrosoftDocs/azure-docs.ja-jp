@@ -260,7 +260,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
+ブラウザーのアドレス バーにドメイン名を入力します。 [http://www.contoso.com](http://www.contoso.com ) など。
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
 

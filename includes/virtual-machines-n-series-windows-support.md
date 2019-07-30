@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0dda467c3906c217c18e1340f7dc2a464dcbccae
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 12f053d7255c21441d78dab8c7937bcf45ec48c2
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154848"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151819"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>サポートされているオペレーティング システムとドライバー
 
@@ -36,5 +36,5 @@ Microsoft では、仮想ワークステーションまたは仮想アプリケ�
 
 | OS | ドライバー |
 | -------- |------------- |
-| Windows Server 2016<br/><br/>Windows 10 (バージョン 1803 まで) | [GRID 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
+| Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 (バージョン 1809 まで。 パッチ未適用/1809 のパッチ レベル 0 はサポートされていません。) | [GRID 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
 | Windows Server 2012 R2 | [GRID 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874184) (.exe)  |

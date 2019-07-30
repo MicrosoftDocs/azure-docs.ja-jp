@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: sample
-ms.date: 03/14/2018
+ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: cf296d8bb494307dbb58b9de522d55a83892c6d5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bd0981de1464fb3458ed5d0e1d2967a667eaf2ff
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537322"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383947"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB の Python サンプル
 

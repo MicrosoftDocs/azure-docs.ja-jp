@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/03/2019
-ms.openlocfilehash: a3f72c2a55acfc53d7d8a07bd10250c6ed6102ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03a0f285b2e8c74070a30bfbaac50e9bd9c58f65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006904"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051483"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート:デバイスから IoT ハブへのテレメトリの送信 (iOS)
 
@@ -103,7 +103,7 @@ pod install
 3. XCode で編集するために **ViewController.swift** を開きます。 
 4. **connectionString** 変数を検索し、前の手順でメモしたデバイス接続文字列で値を更新します。
 5. 変更を保存します。 
-6. デバイス エミュレーターで、**[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
+6. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
 
    ![プロジェクトを実行する](media/quickstart-send-telemetry-ios/run-sample.png)
 
@@ -141,9 +141,3 @@ az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
 
 > [!div class="nextstepaction"]
 > [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-node.md)
-
-<!-- Links -->
-[lnk-process-d2c-tutorial]: tutorial-routing.md
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-connect-device]: https://azure.microsoft.com/develop/iot/

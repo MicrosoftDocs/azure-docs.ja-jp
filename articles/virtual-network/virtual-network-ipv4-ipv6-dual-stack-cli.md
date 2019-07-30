@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 12fbf2ae5387ac0a9350cc203f4a6f2587c8dafe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc89e9284e6dbb735aef08100c99a5a7fdb87549
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62131083"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248839"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする - CLI (プレビュー)
 
@@ -38,11 +38,13 @@ Azure 仮想ネットワークの IPv6 機能を使用するには、次のよ�
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 機能の登録が完了するまで、最長で 30 分かかります。 次の Azure CLI コマンドを実行することで、登録状態を確認できます。
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 登録が完了した後、次のコマンドを実行します。
 
@@ -166,7 +168,7 @@ az network lb rule create \
 --backend-pool-name dsLbBackEndPool_v4
 
 
-az network lb rule create \ 
+az network lb rule create \
 --lb-name dsLB  \
 --name dsLBrule_v6  \
 --resource-group DsResourceGroup01 \
@@ -350,7 +352,7 @@ VM を作成するには、[az vm create](https://docs.microsoft.com/cli/azure/v
 --nics dsNIC0 \
 --size Standard_A2 \
 --availability-set dsAVset \
---image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest  
+--image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest  
 ```
 仮想マシン *dsVM1* を以下のように作成します。
 
@@ -361,7 +363,7 @@ az vm create \
 --nics dsNIC1 \
 --size Standard_A2 \
 --availability-set dsAVset \
---image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest 
+--image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
 
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portal での IPv6 デュアル スタック仮想ネットワークの表示

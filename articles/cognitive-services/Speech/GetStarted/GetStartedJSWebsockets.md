@@ -42,7 +42,7 @@ Speech API は、Cognitive Services の一部です。 無料試用版のサブ�
 
 ### <a name="open-the-sample-directly"></a>サンプルを直接開く
 
-上記のようにサブスクリプション キーを取得します。 その後、 [サンプルへのリンク](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html) を開きます。 これにより、既定のブラウザーでページが読み込まれます ([htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) を使用してレンダリングされます)。
+上記のようにサブスクリプション キーを取得します。 その後、 [サンプルへのリンク](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html) を開きます。 これにより、既定のブラウザーでページが読み込まれます ([htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) を使用してレンダリングされます)。
 
 ### <a name="open-the-sample-from-a-local-copy"></a>ローカル コピーからサンプルを開く
 

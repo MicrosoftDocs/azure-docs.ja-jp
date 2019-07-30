@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: abaef0fb521d848134885a06591b0656c60c67e6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479068"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846384"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Azure portal を使用して Azure Front Door 用の WAF ポリシーを作成する
 
@@ -37,8 +38,8 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | サブスクリプション            |Front Door のサブスクリプションの名前を選択します。|
-    | リソース グループ          |Front Door のリソース グループの名前を選択します。|
+    | Subscription            |Front Door のサブスクリプションの名前を選択します。|
+    | Resource group          |Front Door のリソース グループの名前を選択します。|
     | ポリシー名             |WAF ポリシーの一意の名前を入力します。|
 
    ![WAF ポリシーを作成する](./media/waf-front-door-create-portal/basic.png)

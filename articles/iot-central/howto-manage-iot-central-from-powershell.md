@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 086c7d303fd199090de3be77b2456c4ebcd053a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23243324c64519094432ee0c80d3e0cad447ef8b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66726930"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849048"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 
@@ -67,7 +67,7 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |------------------|------------|
 |ResourceGroupName |そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
 |Location |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現在、IoT Central アプリケーションは**米国東部**、**米国西部**、**北ヨーロッパ**、または**西ヨーロッパ**のリージョンで作成できます。 |
-|Name              |Azure portal 内のアプリケーションの名前。 |
+|EnableAdfsAuthentication              |Azure portal 内のアプリケーションの名前。 |
 |Subdomain         |アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は https://mysubdomain.azureiotcentral.com です。 |
 |Sku               |現在使用できる値は **S1** (Standard レベル) のみです。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |
 |Template          | 使用するアプリケーション テンプレート。 詳細については、後の表を参照してください。 |

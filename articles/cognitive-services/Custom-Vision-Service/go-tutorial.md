@@ -6,16 +6,16 @@ services: cognitive-services
 author: areddish
 manager: daauld
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: f740974d17ad5f95bca6530a61619ee0283f819a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f2b43349b1060739b44ab34f463300dd62569252
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479989"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276470"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>クイック スタート:Custom Vision Go SDK を使って画像分類プロジェクトを作成する
 
@@ -29,12 +29,12 @@ ms.locfileid: "58479989"
 
 Custom Vision Service SDK for Go をインストールするには、PowerShell で次のコマンドを実行します。
 
-```
+```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-または、dep を使用している場合は、リポジトリ内で次を実行します。
-```
+または、`dep` を使用している場合は、リポジトリ内で次を実行します。
+```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
@@ -91,9 +91,9 @@ func main() {
 プロジェクトに分類タグを作成するため、*sample.go* の最後に次のコードを追加します。
 
 ```go
-    // Make two tags in the new project
-    hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree tag", string(training.Regular))
-    cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
+// Make two tags in the new project
+hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree tag", string(training.Regular))
+cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
 
 ### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
@@ -104,29 +104,29 @@ func main() {
 > 画像のパスは、事前に Cognitive Services Go SDK Samples プロジェクトをダウンロードした場所に応じて変更する必要があります。
 
 ```go
-    fmt.Println("Adding images...")
-    japaneseCherryImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Japanese Cherry"))
-    if err != nil {
-        fmt.Println("Error finding Sample images")
-    }
+fmt.Println("Adding images...")
+japaneseCherryImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Japanese Cherry"))
+if err != nil {
+    fmt.Println("Error finding Sample images")
+}
 
-    hemLockImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Hemlock"))
-    if err != nil {
-        fmt.Println("Error finding Sample images")
-    }
+hemLockImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Hemlock"))
+if err != nil {
+    fmt.Println("Error finding Sample images")
+}
 
-    for _, file := range hemLockImages {
-        imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Hemlock", file.Name()))
-        imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
+for _, file := range hemLockImages {
+    imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Hemlock", file.Name()))
+    imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
 
-        trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ hemlockTag.ID.String() })
-    }
+    trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ hemlockTag.ID.String() })
+}
 
-    for _, file := range japaneseCherryImages {
-        imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Japanese Cherry", file.Name()))
-        imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
-        trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ cherryTag.ID.String() })
-    }
+for _, file := range japaneseCherryImages {
+    imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Japanese Cherry", file.Name()))
+    imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
+    trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ cherryTag.ID.String() })
+}
 ```
 
 ### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
@@ -134,19 +134,19 @@ func main() {
 このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 ```go
-    fmt.Println("Training...")
-    iteration, _ := trainer.TrainProject(ctx, *project.ID)
-    for {
-        if *iteration.Status != "Training" {
-            break
-        }
-        fmt.Println("Training status: " + *iteration.Status)
-        time.Sleep(1 * time.Second)
-        iteration, _ = trainer.GetIteration(ctx, *project.ID, *iteration.ID)
+fmt.Println("Training...")
+iteration, _ := trainer.TrainProject(ctx, *project.ID)
+for {
+    if *iteration.Status != "Training" {
+        break
     }
     fmt.Println("Training status: " + *iteration.Status)
+    time.Sleep(1 * time.Second)
+    iteration, _ = trainer.GetIteration(ctx, *project.ID, *iteration.ID)
+}
+fmt.Println("Training status: " + *iteration.Status)
 
-    trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
+trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
 ### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>予測エンドポイントで公開されたイテレーションを取得して使用する
@@ -171,13 +171,13 @@ func main() {
 
 *sample.go* を実行します。
 
-```powershell
+```shell
 go run sample.go
 ```
 
 アプリケーションの出力は次のテキストのようになります。
 
-```
+```console
 Creating project...
 Adding images...
 Training...

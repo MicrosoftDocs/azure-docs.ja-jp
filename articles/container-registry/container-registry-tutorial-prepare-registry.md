@@ -3,17 +3,18 @@ title: チュートリアル - Azure に geo レプリケートされている D
 description: Azure Container Registry を作成し、geo レプリケーションを構成して、Docker イメージを準備し、それをレジストリにデプロイします。 3 部構成のシリーズのパート 1。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533666"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68309585"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
 
@@ -43,7 +44,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 [Azure Portal](https://portal.azure.com) にサインインします。
 
-**[リソースの作成]** > **[コンテナー]** > **[Azure Container Registry]** の順に選択します。
+**[リソースの作成]**  >  **[コンテナー]**  >  **[Azure Container Registry]** の順に選択します。
 
 ![Azure Portal でコンテナー レジストリを作成する][tut-portal-01]
 
@@ -69,7 +70,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 Premium レジストリを使用できるようになったので、geo レプリケーションを構成できます。 そうすると、次のチュートリアルで 2 つのリージョンで実行するように構成する Web アプリが、最も近いレジストリからそのコンテナー イメージをプルできるようになります。
 
-Azure Portal で新しいコンテナー レジストリに移動し、**[SERVICES]** (サービス) の下の **[レプリケーション]** を選択します。
+Azure Portal で新しいコンテナー レジストリに移動し、 **[SERVICES]** (サービス) の下の **[レプリケーション]** を選択します。
 
 ![Azure Portal のコンテナー レジストリ UI の [レプリケーション]][tut-portal-03]
 
@@ -77,7 +78,7 @@ Azure Portal で新しいコンテナー レジストリに移動し、**[SERVIC
 
  ![Azure Portal のリージョン マップ][tut-map-01]
 
-その緑色の六角形を選択して、米国東部リージョンにレジストリをレプリケートし、**[レプリケーションの作成]** で **[作成]** を選択します。
+その緑色の六角形を選択して、米国東部リージョンにレジストリをレプリケートし、 **[レプリケーションの作成]** で **[作成]** を選択します。
 
  ![Azure Portal の [レプリケーションの作成] UI][tut-portal-04]
 
@@ -114,7 +115,7 @@ cd acr-helloworld
 
 ## <a name="update-dockerfile"></a>Dockerfile の更新
 
-サンプルに含まれる Dockerfile は、コンテナーの構築方法を示しています。 公式の [aspnetcore][dockerhub-aspnetcore] イメージから開始し、アプリケーション ファイルをコンテナーにコピーし、依存関係をインストールして、公式の [aspnetcore-build][dockerhub-aspnetcore-build] イメージを使用して出力をコンパイルし、最後に、最適化された aspnetcore イメージを構築します。
+サンプルに含まれる Dockerfile は、コンテナーの構築方法を示しています。 公式の [aspnetcore][dockerhub-aspnetcore] イメージから開始し、アプリケーション ファイルをコンテナーにコピーし、依存関係をインストールして、公式の [aspnetcore-build][dockerhub-aspnetcore-build]イメージを使用して出力をコンパイルし、最後に、最適化された aspnetcore イメージを構築します。
 
 [Dockerfile][dockerfile] は複製されたソース内の `./AcrHelloworld/Dockerfile` にあります。
 

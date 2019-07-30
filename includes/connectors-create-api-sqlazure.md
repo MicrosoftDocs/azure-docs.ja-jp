@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: 4ffda692da0ab7b63f7376c36dfab0bec914e334
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138067"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181428"
 ---
 * Azure SQL Database を使用している場合は、「[Azure SQL Database に接続する](#connect-azure-sql-db)」の手順に従ってください。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "37138067"
    | パスワード | <*my-sql-password*> | データベースにアクセスするためのパスワード | 
    |||| 
 
-2. 操作が完了したら、**[作成]** を選択します。
+2. 操作が完了したら、 **[作成]** を選択します。
 
 3. 接続を作成した後で、[SQL トリガーの追加](#add-sql-trigger)または[ SQL アクションの追加](#add-sql-action)を続けて実行します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "37138067"
 
 1. SQL のトリガーまたはアクションから接続情報を求められた場合は、以下の手順に従います。
 
-   1. トリガーまたはアクションで、**[オンプレミスのデータ ゲートウェイ経由で接続]** を選択し、SQL Server のオプションが表示されるようにします。
+   1. トリガーまたはアクションで、 **[オンプレミスのデータ ゲートウェイ経由で接続]** を選択し、SQL Server のオプションが表示されるようにします。
 
    2. 接続の名前を作成します。
 
@@ -104,10 +104,10 @@ ms.locfileid: "37138067"
    | SQL データベース名 | <*my-sql-database*>  | SQL データベースの名前 |
    | ユーザー名 | <*my-sql-username*> | データベースにアクセスするためのユーザー名 |
    | パスワード | <*my-sql-password*> | データベースにアクセスするためのパスワード | 
-   | 認証の種類 | Windows または基本 | 省略可能: SQL server で使用される認証の種類 | 
+   | 認証の種類 | Windows または基本 | 省略可能:SQL Server で使用される認証の種類 | 
    | ゲートウェイ | <*my-data-gateway*> | オンプレミス データ ゲートウェイの名前 | 
    |||| 
 
-2. 操作が完了したら、**[作成]** を選択します。 
+2. 操作が完了したら、 **[作成]** を選択します。 
 
 3. 接続を作成した後で、[SQL トリガーの追加](#add-sql-trigger)または[ SQL アクションの追加](#add-sql-action)を続けて実行します。

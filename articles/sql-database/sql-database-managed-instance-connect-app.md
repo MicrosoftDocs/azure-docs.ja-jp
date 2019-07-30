@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297084"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274004"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -45,7 +45,7 @@ Vnet を接続するには、次の 2 つのオプションがあります。
 望ましいオプションはピアリングです。ピアリングでは Microsoft バックボーン ネットワークが使用されるため、接続の観点から言えば、ピアリングされた VNet 内の仮想マシンであっても、同じ VNet 内の仮想マシンであっても、待機時間に顕著な違いはありません。 VNet ピアリングは、同じリージョン内のネットワークに制限されます。  
 
 > [!IMPORTANT]
-> Managed Instance の VNet ピアリング シナリオは、[グローバル仮想ネットワーク ピアリングの制約](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。
+> Managed Instance の VNet ピアリング シナリオは、[グローバル仮想ネットワーク ピアリングの制約](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
 
 ## <a name="connect-an-on-premises-application"></a>オンプレミス アプリケーションを接続する
 

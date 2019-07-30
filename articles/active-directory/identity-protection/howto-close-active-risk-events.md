@@ -2,27 +2,21 @@
 title: Azure Active Directory Identity Protection でアクティブなリスク イベントをクローズする方法 | Microsoft Docs
 description: アクティブなリスク イベントをクローズすためのオプションについて説明します。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e003aec8fa5aeab587fa07acdae3a13b370a535
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f5e24c12b72852ee7009533c8dc24d231fe636f2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521161"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334004"
 ---
 # <a name="how-to-close-active-risk-events"></a>方法:アクティブなリスク イベントを閉じる
 
@@ -37,14 +31,9 @@ Azure Active Directory は、[リスク イベント](../reports-monitoring/conc
 アクティブなリスク イベントをクローズするには、次のオプションがあります。
 
 - ユーザーのリスク ポリシーによるパスワードのリセットが必要
-
 - パスワードの手動リセット
- 
 - すべてのリスク イベントを閉じる 
-
 - 個々のリスク イベントを手動でクローズする
-
-
 
 ## <a name="require-password-reset-with-a-user-risk-policy"></a>ユーザーのリスク ポリシーによるパスワードのリセットが必要
 
@@ -60,24 +49,19 @@ Azure Active Directory は、[リスク イベント](../reports-monitoring/conc
 - アクティブなリスク イベントが削除されているユーザー。
 - 報告されたリスク イベントが正当なユーザーによって実行されたことがわかっている調査。
 
-
 ## <a name="manual-password-reset"></a>パスワードの手動リセット
 
 ユーザーのリスク ポリシーを使用したパスワードのリセットの要求を選択できない場合は、手動によるパスワードのリセットを使用してユーザーのすべてのリスク イベントをクローズすることができます。
 
 ![[パスワードのリセット]](./media/howto-close-active-risk-events/04.png)
 
-
 関連するダイアログでは、2 つの方法でパスワードをリセットできます。
 
 ![[パスワードのリセット]](./media/howto-close-active-risk-events/05.png)
 
-
 **一時パスワードを生成する** - 一時パスワードを生成することによって、ID をすぐに安全な状態に戻すことができます。 この方法では、影響を受けるユーザーが一時的なパスワードを知っている必要があるために、ユーザーと対話する必要があります。 たとえば、ユーザーの連絡用メール アドレスまたはユーザーのマネージャーに、新しい一時パスワードを送信できます。 パスワードは一時的なので、ユーザーは次回サインイン時にパスワードの変更を求められます。
 
-
 **ユーザーにパスワードをリセットするよう要求する** - ユーザーにパスワードをリセットするよう要求すると、ヘルプ デスクや管理者に連絡せずに自己復旧することができます。 ユーザーのリスク ポリシーの場合と同様、この方法は MFA に登録されているユーザーにのみ適用されます。 MFA にまだ登録されていないユーザーの場合、このオプションは使用できません。
-
 
 ## <a name="dismiss-all-risk-events"></a>すべてのリスク イベントを閉じる
 
@@ -86,7 +70,6 @@ Azure Active Directory は、[リスク イベント](../reports-monitoring/conc
 ![[パスワードのリセット]](./media/howto-close-active-risk-events/03.png)
 
 **[Dismiss all events (すべてのイベントを閉じる)]** をクリックすると、すべてのイベントが閉じられ、影響を受けるユーザーは危険な状態ではなくなります。 ただし、この方法は既存のパスワードには影響しないため、関連する ID は安全な状態に戻りません。 この方法の推奨されるユース ケースは、アクティブなリスク イベントのある削除済みのユーザーです。 
-
 
 ## <a name="close-individual-risk-events-manually"></a>個々のリスク イベントを手動でクローズする
 
@@ -97,13 +80,9 @@ Azure Active Directory は、[リスク イベント](../reports-monitoring/conc
 ![Actions](./media/howto-close-active-risk-events/06.png)
 
 - **解決** - リスク イベントを調査した後、Identity Protection の外部で適切な修復アクションを行い、リスク イベントがクローズしたことが確実な場合、イベントを解決済みとしてマークします。 解決されたイベントはリスク イベントの状態をクローズに設定し、そのリスク イベントはユーザー リスクに対して考慮されなくなります。
-
 - **誤検知としてマーク** - 場合によっては、リスク イベントを調査した結果、誤って高リスクのフラグが設定されたことがわかる場合があります。 リスク イベントを誤検知としてマークすることにより、このようなことの発生を減らすことができます。 これは、今後機械学習アルゴリズムが同様のイベントの分類を向上させるのに役立ちます。 誤検知イベントの状態は [クローズ] になり、ユーザー リスクに対して考慮されなくなります。
-
 - **無視** - どのような修復アクションも行わずに、リスク イベントをアクティブ リストから削除する場合は、リスク イベントを無視に指定できます。イベントはクローズ状態になります。 無視されたイベントは、ユーザー リスクに対して考慮されません。 このオプションは、特殊な状況下でのみ使用する必要があります。
-
 - **Reactivate (再アクティブ化)** - [解決]、[誤検知]、または [無視] を選択することによって手動でクローズされたリスク イベントを再アクティブ化し、イベントの状態を [アクティブ] に戻すことができます。 再アクティブ化されたリスク イベントは、ユーザー リスク レベルの計算に対して考慮されます。 修復 (セキュリティ保護されたパスワードのリセットなど) によってクローズされたリスク イベントを再アクティブ化することはできません。
-  
 
 ## <a name="next-steps"></a>次の手順
 

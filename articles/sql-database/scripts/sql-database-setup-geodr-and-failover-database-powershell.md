@@ -10,14 +10,13 @@ ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 863f7fdcc083c5c6f24ce441268aea1b38e15650
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 4319a393382375b080c9d4c0d3c80aa3782c6afd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729260"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569810"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>PowerShell を使用して、Azure SQL Database の単一のデータベースに対してアクティブ geo レプリケーションを構成する
 

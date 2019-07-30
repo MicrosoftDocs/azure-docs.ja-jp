@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: f4facdf8fc530c35ba02620f451a00a8da36d982
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: fcc26d0d42576e8d39407f2af5bafe6de24db19f
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497106"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154497"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -382,13 +382,17 @@ Azure サービス アカウントの削除は独立した操作であり、ネ�
 Azure サービスに到達するには、NSG で送信接続を許可する必要があります。 NSG がすべてのインターネット送信トラフィックに対して開かれている場合、サービス エンドポイントのトラフィックは動作するはずです。 サービス タグを使用して、サービス IP にみに送信トラフィックを制限することもできます。  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>サービス エンドポイントを設定するにはどのようなアクセス許可が必要ですか。
-サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットの **Microsoft.Network/JoinServicetoaSubnet** へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。 組み込みロールと、特定のアクセス許可を[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
+サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットのアクセス許可 "**Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action**" を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。 組み込みロールと、特定のアクセス許可を[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>VNet サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することはできますか。 
 
 仮想ネットワーク (VNet) のサービス エンドポイント ポリシーでは、サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することができます。 エンドポイント ポリシーでは、Azure サービスへの仮想ネットワーク トラフィックから詳細なアクセス制御が提供されます。 サービス エンドポイント ポリシーについて詳しくは、[こちら](virtual-network-service-endpoint-policies-overview.md)をご覧ください。
- 
+
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) は VNet サービス エンドポイントをサポートしますか。
+
+サービス エンドポイントは Azure Active Directory (Azure AD) によってネイティブにサポートされていません。 VNet サービス エンドポイントをサポートする Azure サービスの完全な一覧は[こちら](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)で確認できます。 サービス エンドポイントをサポートするサービスの下にリストされている "Microsoft.AzureActiveDirectory" タグは、ADLS Gen 1 へのサービス エンドポイントをサポートするために使用されます。 ADLS Gen 1 の場合、Azure Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネットワークと Azure Active Directory (Azure AD) との間で仮想ネットワーク サービス エンドポイント セキュリティを利用して、アクセス トークン内に追加のセキュリティ要求が生成されます。 これらの要求は、ご利用の Data Lake Storage Gen1 アカウントに対して仮想ネットワークを認証し、アクセスを許可するために使用されます。 [Azure Data Lake Store Gen 1 VNet 統合]の詳細(../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>VNet から設定できる VNet サービス エンドポイントの数に制限はありますか。
 仮想ネットワーク内の VNet サービス エンドポイントの合計数に制限はありません。 Azure サービス リソース (Azure Storage アカウントなど) の場合、リソースへのアクセスに使用されるサブネットの数がサービスによって制限される場合があります。 制限の例を次の表に示します。 
 

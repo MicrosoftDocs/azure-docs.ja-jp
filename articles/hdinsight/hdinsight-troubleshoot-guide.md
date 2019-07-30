@@ -28,7 +28,7 @@ ms.locfileid: "66495735"
 
 | 対象 | 参照先 |
 | --- | --- |
-| Linux 上の HDInsight と最適化 | - [Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop のメモリとパフォーマンスのトラブルシューティング](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive クエリ パフォーマンスの向上](https://web.archive.org/web/20190217214250/ https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
+| Linux 上の HDInsight と最適化 | - [Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop のメモリとパフォーマンスのトラブルシューティング](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive クエリ パフォーマンスの向上](https://web.archive.org/web/20190217214250/https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | ログとダンプ | - [Linux での Apache Hadoop YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Linux での Apache Hadoop サービスのヒープ ダンプの有効化](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [HDInsight ログの分析](hdinsight-debug-jobs.md)|
 | Errors | - [WebHCat エラーの説明と解決策](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [OutofMemory エラーを解決するための Apache Hive 設定](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | ツール | - [Apache Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight IntelliJ ツール](./spark/apache-spark-intellij-tool-plugin.md)<br>- [HDInsight Eclipse ツール](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode ツール](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio ツール](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |

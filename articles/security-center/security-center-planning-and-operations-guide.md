@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 04cfe489e9eea53bf58dd64e0eac3e5a95033bcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966844"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706246"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center 計画および運用ガイド
 このガイドは、所属組織が Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -87,21 +87,21 @@ Security Center では[ロールベースのアクセス制御 (RBAC)](../role-b
 
 **Jeff (ワークロード所有者)**
 
-* リソース グループの所有者/共同作業者
+* リソース グループの所有者/共同作成者
 
 **David (IT セキュリティ担当者)**
 
-* サブスクリプションの所有者/共同作業者またはセキュリティ管理者
+* サブスクリプションの所有者/共同作成者またはセキュリティ管理者
 
 **Judy (セキュリティ運用担当者)**
 
 * サブスクリプションの閲覧者またはセキュリティ閲覧者 (アラートを表示する場合)
-* サブスクリプションの所有者/共同作業者またはセキュリティ管理者 (アラートを解除する場合は必須)
+* サブスクリプションの所有者/共同作成者またはセキュリティ管理者 (アラートを解除する場合は必須)
 
 **Sam (セキュリティ アナリスト)**
 
 * サブスクリプションの閲覧者 (アラートを表示する場合)
-* サブスクリプションの所有者/共同作業者 (アラートを解除する場合は必須)
+* サブスクリプションの所有者/共同作成者 (アラートを解除する場合は必須)
 * ワークスペースへのアクセスが必要な場合がある
 
 上記に加えて、次の点を考慮する必要があります。

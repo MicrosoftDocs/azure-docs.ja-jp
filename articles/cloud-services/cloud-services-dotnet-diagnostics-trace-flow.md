@@ -3,23 +3,18 @@ title: Azure Diagnostics で Cloud Services アプリケーションのフロー
 description: トレース メッセージを Azure アプリケーションに追加することにより、デバッグ、パフォーマンス測定、監視、トラフィック分析などを容易に行えるようになります。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 09934772-cc07-4fd2-ba88-b224ca192f8e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
-ms.author: jeconnoc
-ms.openlocfilehash: f597bc760a3f3825416912642ee66a53dfb91696
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: e3e34ff9b5ce1c3a7b45468d22faddddf0c9a913
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336866"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359151"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Azure Diagnostics で Cloud Services アプリケーションのフローをトレースする
 トレースは、アプリケーションの稼働中にアプリケーションの実行を監視する手段です。 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace)、[System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug)、および [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) の各クラスを使用すると、エラーとアプリケーションの実行に関する情報をログ、テキスト ファイル、またはその他のデバイスに記録して、後で分析することができます。 トレースの詳細については、「 [アプリケーションのトレースとインストルメント](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)」を参照してください。

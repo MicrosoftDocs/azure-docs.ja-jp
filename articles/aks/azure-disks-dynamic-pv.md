@@ -2,30 +2,30 @@
 title: Azure Kubernetes Service (AKS) 上で複数のポッドのディスク ボリュームを動的に作成する
 description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッドで使用するための Azure ディスクを含む永続ボリュームを動的に作成する方法について説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0641d613da86aeffa0c4abb0f82ce93c38283156
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956477"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "67616074"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
 永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 この記事では、Azure Kubernetes Service (AKS) クラスター内の単一のポッドによって使用するために Azure ディスクの永続ボリュームを動的に作成する方法を説明します。
 
 > [!NOTE]
-> Azure ディスクは、"*アクセス モード*" の種類を *ReadWriteOnce* としてのみマウントでき、この場合、ディスクの利用は、AKS 内の単一のポッドに限られます。 複数のポッド間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] を使用します。
+> Azure ディスクは、"*アクセス モード*" の種類を *ReadWriteOnce* としてのみマウントでき、この場合、ディスクの利用は、AKS 内の単一のポッドに限られます。 複数のポッド間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] を使用してください。
 
 Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -40,7 +40,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 * *managed-premium* ストレージ クラスは、プレミアムな Azure ディスクをプロビジョニングします。
     * Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 クラスター内の AKS ノードでプレミアム ストレージを使用する場合は、*managed-premium* クラスを選択します。
     
-これらの既定のストレージ クラスでは、作成後のボリューム サイズを更新できません。 この機能を有効にするには、*allowVolumeExpansion: true* 行を既定のストレージ クラスのいずれかに追加するか、独自のカスタム ストレージ クラスを作成します。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS のアプリケーションのストレージ オプション][storage-class-concepts]に関する記事を参照してください。
+これらの既定のストレージ クラスでは、作成後のボリューム サイズを更新できません。 この機能を有効にするには、*allowVolumeExpansion: true* 行を既定のストレージ クラスのいずれかに追加するか、独自のカスタム ストレージ クラスを作成します。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS でのアプリケーションのストレージ オプション][storage-class-concepts]に関するページを参照してください。
 
 事前作成されているストレージ クラスを確認するには、[kubectl get sc][kubectl-get] コマンドを使用します。 次の例は、AKS クラスター内で使用できる事前に作成されたストレージ クラスを示したものです。
 
@@ -53,7 +53,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> 固定ボリュームの要求は GiB 単位で指定されますが、Azure Managed Disks は SKU の特定のサイズによって課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 詳細については、「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
+> 固定ボリュームの要求は GiB 単位で指定されますが、Azure Managed Disks は SKU の特定のサイズによって課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 詳細については、[Managed Disks の価格とパフォーマンス][managed-disk-pricing-performance]に関するページを参照してください。
 
 ## <a name="create-a-persistent-volume-claim"></a>永続ボリューム要求の作成
 
@@ -78,7 +78,7 @@ spec:
 > [!TIP]
 > Standard ストレージを使用するディスクを作成するには、*managed-premium*ではなく、`storageClassName: default` を使用します。
 
-[kubectl apply][kubectl-apply] コマンドを使用して、*azure-premium.yaml*ファイルを指定することで、永続ボリューム要求を作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、*azure-premium.yaml* ファイルを指定することで、永続ボリューム要求を作成します。
 
 ```console
 $ kubectl apply -f azure-premium.yaml
@@ -253,7 +253,7 @@ Volumes:
 
 ## <a name="next-steps"></a>次の手順
 
-関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関するページを参照してください。
 
 Azure ディスクを使った Kubernetes 永続ボリュームについて、さらに詳しい情報を確認します。
 

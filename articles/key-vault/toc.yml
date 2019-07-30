@@ -22,7 +22,7 @@
       href: quick-create-template.md
 - name: チュートリアル
   items:
-    - name: 'Azure Web Apps '
+    - name: Azure Web Apps
       items:
         - name: .NET での Azure Web アプリ と Azure Key Vault
           href: tutorial-net-create-vault-azure-web-app.md
@@ -164,8 +164,6 @@
       href: common-parameters-and-headers.md
     - name: 顧客データ
       href: key-vault-customer-data.md
-    - name: リリース ノート
-      href: key-vault-versions.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: 利用可能なリージョン

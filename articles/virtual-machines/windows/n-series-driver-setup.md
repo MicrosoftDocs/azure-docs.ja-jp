@@ -3,7 +3,7 @@ title: Windows 用 Azure N シリーズ GPU ドライバーのセットアップ
 description: Azure で Windows Server または Windows を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法
 services: virtual-machines-windows
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: f3950c34-9406-48ae-bcd9-c0418607b37d
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6f0d79e773ac7b79c79e4be6206fe39928cd0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24189fa8e0f6c31d7fbd3779f666eb85e24dc8f7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127786"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723122"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする 
 

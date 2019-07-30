@@ -8,20 +8,20 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sahsan
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: ba787ccd51bf5ea9ec8e06e341a0f698afb5a7e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc82ace4c5bf1204075bfa5e34d0b1489a3acb98
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688077"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876268"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL データベースのコピーを作成する
 
-Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、トランザクション上一貫性のある、既存の Azure SQL データベースのコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、または T-SQL を使って、SQL Database をコピーできます。 
+Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、トランザクション上一貫性のある、既存の Azure SQL データベース ([単一データベース](sql-database-single-database.md)) のコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、または T-SQL を使って、SQL Database をコピーできます。 
 
 ## <a name="overview"></a>概要
 

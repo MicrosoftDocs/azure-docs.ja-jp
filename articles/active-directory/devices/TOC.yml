@@ -18,8 +18,14 @@
     - name: Windows 10 の初回実行時に Azure AD 参加を構成する
       href: azuread-joined-devices-frx.md
 - name: 概念
-  expanded: false
+  expanded: true
   items:
+    - name: Azure AD 登録済みデバイス
+      href: concept-azure-ad-register.md
+    - name: Azure AD 参加済みデバイス
+      href: concept-azure-ad-join.md
+    - name: ハイブリッド Azure AD 参加済みデバイス
+      href: concept-azure-ad-join-hybrid.md
     - name: オンプレミスのリソースへの SSO
       href: azuread-join-sso.md
     - name: プライマリ更新トークン
@@ -27,34 +33,40 @@
     - name: Azure マネージド ワークステーション
       href: concept-azure-managed-workstation.md
 - name: ハウツー ガイド
-  expanded: true
+  expanded: false
   items:
-    - name: デバイス ID を管理する
-      href: device-management-azure-portal.md
-    - name: 古いデバイスを管理する
-      href: manage-stale-devices.md
     - name: Azure AD Join の実装を計画する
       href: azureadjoin-plan.md
+    - name: Azure AD 参加済みデバイスにローカル管理者を割り当てる
+      href: assign-local-admin.md
     - name: ハイブリッド Azure AD 参加の実装を計画する
       href: hybrid-azuread-join-plan.md
     - name: ハイブリッド Azure AD 参加の検証を制御する
       href: hybrid-azuread-join-control.md
-    - name: Azure AD 参加済みデバイスにローカル管理者を割り当てる
-      href: assign-local-admin.md
+    - name: デバイス ID を管理する
+      href: device-management-azure-portal.md
+    - name: 古いデバイスを管理する
+      href: manage-stale-devices.md
     - name: Enterprise State Roaming を有効にする
       href: enterprise-state-roaming-enable.md
     - name: Azure マネージド ワークステーションをデプロイする
       href: howto-azure-managed-workstation.md
-    - name: ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う
-      href: troubleshoot-hybrid-join-windows-current.md
-    - name: ハイブリッド Azure AD 参加済みのレガシ Windows デバイスのトラブルシューティングを行う
-      href: troubleshoot-hybrid-join-windows-legacy.md
-    - name: Enterprise State Roaming に関する問題のトラブルシューティング
-      href: enterprise-state-roaming-troubleshooting.md
-    - name: FAQ
-      href: faq.md
-    - name: Enterprise State Roaming を有効にする
-      href: enterprise-state-roaming-faqs.md
+    - name: デバイス ID のトラブルシューティング
+      items:
+        - name: ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う
+          href: troubleshoot-hybrid-join-windows-current.md
+        - name: dsregcmd を使用したトラブルシューティング
+          href: troubleshoot-device-dsregcmd.md
+        - name: ハイブリッド Azure AD 参加済みのダウンレベル Windows デバイスのトラブルシューティング
+          href: troubleshoot-hybrid-join-windows-legacy.md
+        - name: Enterprise State Roaming に関する問題のトラブルシューティング
+          href: enterprise-state-roaming-troubleshooting.md
+    - name: よく寄せられる質問
+      items:
+        - name: FAQ
+          href: faq.md
+        - name: Enterprise State Roaming を有効にする
+          href: enterprise-state-roaming-faqs.md
 - name: リファレンス
   items:
     - name: Enterprise State Roaming GPO の設定

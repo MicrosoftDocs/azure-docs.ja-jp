@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ff198f55ff769667cfaef2dd8665d2c34314e9
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 231375c94163f098cce86bdbbf285a58957a9927
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987755"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056111"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>AD FS 2.0 と連携するように Azure Multi-Factor Authentication Server を構成する
 
 この記事は、現在 Azure Active Directory を使用しており、オンプレミスやクラウドに置かれたリソースをセキュリティで保護したいと考えている組織を対象としたものです。 Azure Multi-Factor Authentication Server を使用し、AD FS との連携を構成すれば、価値の大きなエンド ポイントに対して 2 段階認証をトリガーできるため、リソースを保護することができます。
 
 このドキュメントでは、Azure Multi-Factor Authentication Server と AD FS 2.0 の使用について説明します。 AD FS について詳しくは、「[Azure Multi-Factor Authentication Server と Windows Server 2012 R2 の AD FS を使用したクラウドとオンプレミスのリソースのセキュリティ保護](howto-mfaserver-adfs-2012.md)」をご覧ください。
+
+> [!IMPORTANT]
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイの MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用する必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ## <a name="secure-ad-fs-20-with-a-proxy"></a>プロキシを使って AD FS 2.0 を保護する
 
@@ -36,10 +39,10 @@ ms.locfileid: "65987755"
 
    ![MFA サーバー IIS 認証ウィンドウ](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. ユーザー名、パスワード、およびドメインの変数を自動的に検出するには、[フォームベースの Web サイトの自動構成] ダイアログ ボックス内でログイン URL (例: https://sso.contoso.com/adfs/ls)) を入力し、 **[OK]** をクリックします。
+4. ユーザー名、パスワード、およびドメインの変数を自動的に検出するには、[フォームベースの Web サイトの自動構成] ダイアログ ボックス内でログイン URL (例: https://sso.contoso.com/adfs/ls) ) を入力し、 **[OK]** をクリックします。
 5. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、 **[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または 2 段階認証から除外される場合、ボックスはオフのままにします。
 6. ページ変数を自動で検出できなかった場合には、[フォームベースの Web サイトの自動構成] ダイアログ ボックスの **[手動で指定...]** ボタンをクリックします。
-7. [フォームベースの Web サイトの追加] ダイアログ ボックスで、AD FS ログイン ページの URL (例: https://sso.contoso.com/adfs/ls)) を [送信 URL] フィールドに入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
+7. [フォームベースの Web サイトの追加] ダイアログ ボックスで、AD FS ログイン ページの URL (例: https://sso.contoso.com/adfs/ls) ) を [送信 URL] フィールドに入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 8. [要求の形式] を **[POST または GET]** に設定します。
 9. ユーザー名変数 (ctl00 $contentplaceholder1 $usernametextbox) とパスワード変数 (ctl00 $contentplaceholder1 $passwordtextbox) を入力します。 フォーム ベースのログイン ページにドメイン テキスト ボックスが表示される場合、[ドメイン変数] も入力します。 ログイン ページ内の入力ボックスの名前を検索するには、Web ブラウザーでログイン ページに移動し、ページを右クリックし、 **[ソースの表示]** を選択します。
 10. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、 **[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または 2 段階認証から除外される場合、ボックスはオフのままにします。
@@ -96,7 +99,7 @@ AD FS プロキシを使用しない場合でも、AD FS をセキュリティ�
 1. Azure Multi-factor Authentication Server 内で、左側のメニューの **[IIS 認証]** アイコンをクリックします。
 2. **[HTTP]** タブをクリックします。
 3. **[追加]** をクリックします。
-4. [ベース URL の追加] ダイアログ ボックスで、HTTP 認証が実行される AD FS Web サイトの URL (例: https://sso.domain.com/adfs/ls/auth/integrated)) を [ベース URL] フィールドに入力します。 入力が終わったら、アプリケーション名を入力します (省略可能)。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
+4. [ベース URL の追加] ダイアログ ボックスで、HTTP 認証が実行される AD FS Web サイトの URL (例: https://sso.domain.com/adfs/ls/auth/integrated) ) を [ベース URL] フィールドに入力します。 入力が終わったら、アプリケーション名を入力します (省略可能)。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 5. 必要な場合、アイドル状態のタイムアウトと最大セッション時間を調整します。
 6. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、 **[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または 2 段階認証から除外される場合、ボックスはオフのままにします。
 7. 必要な場合は、[クッキーのキャッシュ] ボックスをオンにします。

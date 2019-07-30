@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT プレビューのカスタム アラートの作成 | Microsoft Docs
 description: Azure Security Center for IoT のカスタム デバイス アラートを作成して割り当てます。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: d1757868-da3d-4453-803a-7e3a309c8ce8
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 3b4c5e4700b0ef718a6b079ecc6ab3ad80f4eab6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 12559af013d49e557ba0132bef24867867745c16
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786181"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618028"
 ---
 # <a name="quickstart-create-custom-alerts"></a>クイック スタート:カスタム アラートの作成
 

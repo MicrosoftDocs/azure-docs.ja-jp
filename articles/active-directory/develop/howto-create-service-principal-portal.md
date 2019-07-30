@@ -14,14 +14,14 @@ ms.workload: na
 ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.custom: seoapril2019
+ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5a16e2d5e3ac723675ebdb536a51d20412681f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 825966fbb0db537aad8de39e69e17418e6432b44
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235384"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324676"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -37,16 +37,10 @@ ms.locfileid: "66235384"
 1. [Azure Portal](https://portal.azure.com) で Azure アカウントにサインインします。
 1. **[Azure Active Directory]** を選択します。
 1. **[アプリの登録]** を選択します。
-
-   ![[アプリの登録] を選択する](./media/howto-create-service-principal-portal/select-app-registrations.png)
-
 1. **[新規登録]** を選択します。
+1. アプリケーションに名前を付ける サポートされているアカウントを選択します。これにより、アプリケーションを使用できるユーザーを決定します。 **[リダイレクト URI]** で、作成するアプリケーションの種類で **[Web]** を選択します。 アクセス トークンの送信先の URI を入力します。 [ネイティブ アプリケーション](../manage-apps/application-proxy-configure-native-client-application.md)の資格情報を作成することはできません。 そのタイプを自動化されたアプリケーションに使用することはできません。 値を設定したら、 **[登録]** を選択します。
 
-   ![アプリを追加する](./media/howto-create-service-principal-portal/select-add-app.png)
-
-1. アプリケーションの名前を入力します。 サポートされているアカウントを選択します。これにより、アプリケーションを使用できるユーザーを決定します。 **[リダイレクト URI]** で、作成するアプリケーションの種類で **[Web]** を選択します。 アクセス トークンの送信先の URI を入力します。  [ネイティブ アプリケーション](../manage-apps/application-proxy-configure-native-client-application.md)の資格情報を作成することはできません。 そのタイプを自動化されたアプリケーションに使用することはできません。 値を設定したら、 **[登録]** を選択します。
-
-   ![アプリケーションに名前を付ける](./media/howto-create-service-principal-portal/create-app.png)
+   ![アプリケーションの名前を入力する](./media/howto-create-service-principal-portal/create-app.png)
 
 Azure AD アプリケーションとサービス プリンシパルが作成されました。
 
@@ -58,22 +52,19 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 1. アプリケーションを割り当てるスコープのレベルに移動します。 たとえば、サブスクリプション スコープでロールを割り当てるには、 **[すべてのサービス]** および **[サブスクリプション]** を選択します。
 
-   ![サブスクリプションを選択します。](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![たとえば、サブスクリプションのスコープでロールを割り当て](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. アプリケーションを割り当てる特定のサブスクリプションを選択します。
 
    ![割り当てのためのサブスクリプションを選択する](./media/howto-create-service-principal-portal/select-one-subscription.png)
 
-   探しているサブスクリプションが表示されない場合は、**グローバル サブスクリプション フィルター**を選択します。 必要なサブスクリプションがポータルで選択されていることを確認してください。 
+   探しているサブスクリプションが表示されない場合は、**グローバル サブスクリプション フィルター**を選択します。 必要なサブスクリプションがポータルで選択されていることを確認してください。
 
 1. **[アクセス制御 (IAM)]** を選択します。
-1. **[ロール割り当ての追加]** を選択します。
-
-   ![[ロール割り当ての追加]を選択する](./media/howto-create-service-principal-portal/select-add.png)
-
+1. **[ロールの割り当ての追加]** を選択します。
 1. アプリケーションに割り当てるロールを選択します。 アプリケーションがインスタンスの**再起動**、**開始**、**停止**などのアクションを実行できるようにするには、 **[共同作成者]** ロールを選択します。 既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
 
-   ![Select role](./media/howto-create-service-principal-portal/select-role.png)
+   ![アプリケーションに割り当てるロールを選択します。](./media/howto-create-service-principal-portal/select-role.png)
 
 1. **[保存]** を選択して、ロールの割り当てを完了します。 該当のスコープのロールに割り当てられたユーザーの一覧にアプリケーションが表示されます。
 
@@ -84,50 +75,44 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 プログラムでサインインするときは、認証要求でテナント ID を渡す必要があります。 また、アプリケーションの ID と認証キーも必要です。 これらの値を取得するには、次の手順に従います。
 
 1. **[Azure Active Directory]** を選択します。
-
 1. Azure AD の **[アプリの登録]** から、アプリケーションを選択します。
-
-   ![アプリケーションの選択](./media/howto-create-service-principal-portal/select-app.png)
-
 1. ディレクトリ (テナント) ID をコピーし、アプリケーション コードに保存します。
 
-    ![テナント ID](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+    ![ディレクトリ (テナント ID) をコピーし、自分のアプリ コードに保存する](./media/howto-create-service-principal-portal/copy-tenant-id.png)
 
 1. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。
 
-   ![クライアント ID](./media/howto-create-service-principal-portal/copy-app-id.png)
+   ![アプリケーション (クライアント) ID をコピーする](./media/howto-create-service-principal-portal/copy-app-id.png)
 
 ## <a name="certificates-and-secrets"></a>証明書とシークレット
 デーモン アプリケーションでは、Azure AD で認証する 2 つの形式の資格情報 (証明書とアプリケーション シークレット) を使用できます。  証明書を使用するようお勧めしますが、新しいアプリケーション シークレットを作成することもできます。
 
 ### <a name="upload-a-certificate"></a>証明書のアップロード
 
-既存の証明書がある場合は、それを使用できます。  必要に応じて、テスト目的で自己署名証明書を作成することもできます。 PowerShell を開いて、次のパラメーターを使用して [New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行して、コンピューター上のユーザー証明書ストアに自己署名証明書を作成します: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`。  Windows コントロール パネルからアクセスできる [[Manage User Certificate](ユーザー証明書の管理)](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)MMC スナップインを使用して、この証明書をエクスポートします。
+既存の証明書がある場合は、それを使用できます。  必要に応じて、テスト目的で自己署名証明書を作成することもできます。 PowerShell を開いて、次のパラメーターを使用して [New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行して、コンピューター上のユーザー証明書ストアに自己署名証明書を作成します: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`。  Windows コントロール パネルからアクセスできる [[Manage User Certificate]\(ユーザー証明書の管理)](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)MMC スナップインを使用して、この証明書をエクスポートします。
 
 証明書をアップロードするには、次の手順に従います。
-1. **[証明書とシークレット]** を選択します。
 
-   ![[設定] の選択](./media/howto-create-service-principal-portal/select-certs-secrets.png)
-1. **[証明書のアップロード]** をクリックし、証明書 (既存の証明書、またはエクスポートした自己署名証明書) を選択します。
-    ![証明書のアップロード](./media/howto-create-service-principal-portal/upload-cert.png)
-1. **[追加]** をクリックします。
+1. **[証明書とシークレット]** を選択します。
+1. **[証明書のアップロード]** を選択し、証明書 (既存の証明書、またはエクスポートした自己署名証明書) を選択します。
+
+    ![[証明書のアップロード] を選択して、追加するものを選択する](./media/howto-create-service-principal-portal/upload-cert.png)
+
+1. **[追加]** を選択します。
 
 アプリケーション登録ポータルで証明書をアプリケーションに登録したら、クライアント アプリケーションで証明書を使用できるようにする必要があります。
 
 ### <a name="create-a-new-application-secret"></a>新しいアプリケーション シークレットを作成する
+
 証明書を使用しないように選択した場合は、新しいアプリケーション シークレットを作成できます。
+
 1. **[証明書とシークレット]** を選択します。
-
-   ![[設定] の選択](./media/howto-create-service-principal-portal/select-certs-secrets.png)
-
 1. **[クライアント シークレット] -> [新しいクライアント シークレット]** を選択します。
 1. シークレットの説明と期間を指定します。 完了したら、 **[追加]** をクリックします。
 
-   ![シークレットの保存](./media/howto-create-service-principal-portal/save-secret.png)
-
    クライアント シークレットを保存すると、クライアント シークレットの値が表示されます。 キーは後で取得できないため、この値をコピーしておきます。 キー値は、アプリケーションとしてサインインする際にアプリケーション ID と共に入力します。 アプリケーションが取得できる場所にキー値を保存します。
 
-   ![シークレットのコピー](./media/howto-create-service-principal-portal/copy-secret.png)
+   ![後からこれを取得することはできないので、このシークレット値をコピーする](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -138,15 +123,10 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 1. **[Azure Active Directory]** を選択します。
 1. 自分のロールを確認します。 **[ユーザー]** ロールを持っている場合は、管理者以外のユーザーがアプリケーションを登録できることを確認する必要があります。
 
-   ![ユーザーを見つける](./media/howto-create-service-principal-portal/view-user-info.png)
+   ![自分のロールを見つける。 ユーザーの場合、確実に管理者以外がアプリを登録できるようにする](./media/howto-create-service-principal-portal/view-user-info.png)
 
 1. **[ユーザー設定]** を選択します。
-
-   ![[ユーザー設定] を選択する](./media/howto-create-service-principal-portal/select-user-settings.png)
-
 1. **[アプリの登録]** 設定を確認します。 この値は、管理者だけが設定できます。 **[はい]** に設定されている場合は、Azure AD テナント内のすべてのユーザーがアプリを登録できます。
-
-   ![[アプリの登録] を表示する](./media/howto-create-service-principal-portal/view-app-registrations.png)
 
 アプリの登録の設定が **[いいえ]** に設定されている場合は、管理者ロールを持つユーザーのみが、これらの種類のアプリケーションを登録できます。 使用可能な管理者ロールと各ロールに与えられている Azure AD での具体的なアクセス許可については、[利用可能なロール](../users-groups-roles/directory-assign-admin-roles.md#available-roles)と[ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)に関するページを参照してください。 アカウントがユーザー ロールに割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、管理者に、アプリの登録のすべての側面を作成および管理できるいずれかの管理者ロールに自分を割り当てるか、ユーザーがアプリを登録できるようにするよう依頼してください。
 
@@ -158,15 +138,15 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 1. 右上隅にあるアカウントを選択し、 **[...] -> [アクセス許可]** を選択します。
 
-   ![ユーザーのアクセス許可を選択する](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![自分のアカウントとユーザーのアクセス許可を選択する](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
 1. ドロップダウン リストから、サービス プリンシパルを作成するサブスクリプションを選択します。 次に、 **[Click here to view complete access details for this subscription] (このサブスクリプションの完全なアクセスの詳細を表示するにはここをクリック)** を選択します。
 
-   ![ユーザーを見つける](./media/howto-create-service-principal-portal/view-details.png)
+   ![サービス プリンシパルを作成するサブスクリプションを選択する](./media/howto-create-service-principal-portal/view-details.png)
 
 1. **[ロールの割り当て]** を選択して割り当て済みのロールを表示し、AD アプリをロールに割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーは所有者ロールに割り当てられているので、このユーザーには適切なアクセス許可があります。
 
-   ![アクセス許可を表示する](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![この例では、ユーザーが所有者ロールに割り当てられています](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>次の手順
 

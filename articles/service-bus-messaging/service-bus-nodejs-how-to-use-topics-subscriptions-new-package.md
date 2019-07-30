@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.openlocfilehash: 7686014adb989494e6df277de4137b76c3125696
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65992132"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Service Bus のトピックとサブスクリプションを Node.js および azure/service-bus パッケージで使用する方法
-> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
@@ -152,7 +152,7 @@ Service Bus では、[サブスクリプションのフィルターとアクシ�
 詳細については、次のリソースを参照してください。
 
 - [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
-- [GitHub で Service Bus の Nodejs サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)を確認する
+- [GitHub で Service Bus の Nodejsサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)を確認する
 - [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)
 
 

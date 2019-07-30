@@ -1,18 +1,18 @@
 ---
 title: Azure Kubernetes Service (AKS) での API サーバーの許可された IP 範囲
-description: Azure Kubernetes Service (AKS) で API サーバーへのアクセスのための IP アドレス範囲を使用してクラスターをセキュリティで保護する方法について説明します。
+description: Azure Kubernetes Service (AKS) で API サーバーへのアクセスのための IP アドレス範囲を使用してクラスターをセキュリティで保護する方法について説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475142"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616252"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -23,7 +23,7 @@ Kubernetes では、API サーバーは、リソースの作成やノードの�
 > [!IMPORTANT]
 > AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
-> * [AKS サポート ポリシー][aks-support-policies]
+> * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -34,18 +34,22 @@ Azure CLI バージョン 2.0.61 以降がインストールされて構成さ�
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-API サーバーの許可された IP 範囲を構成するための CLI コマンドは、*aks-preview* CLI 拡張機能で使用できます。 次の例に示すように、[az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
+API サーバーの許可された IP 範囲を構成するには、*aks-preview* CLI 拡張機能バージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールしてから、az extension update コマンドを使用して使用可能な更新プログラムを確認します。
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> 以前に *aks-preview* 拡張機能をインストール済みの場合は、`az extension update --name aks-preview` コマンドを使用して、利用可能な更新プログラムをインストールできます。
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-feature-flag-for-your-subscription"></a>サブスクリプションの機能フラグを登録する
 
 API サーバーの許可された IP 範囲を使用するには、まずサブスクリプションで機能フラグを有効にします。 *APIServerSecurityPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
+
+> [!CAUTION]
+> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
@@ -127,7 +131,7 @@ az network vnet subnet create \
     --address-prefixes 10.200.0.0/16
 ```
 
-Azure Firewall を作成するには、[az extension add][az-extension-add] コマンドを使用して *azure-firewall* CLI 拡張機能をインストールします。 次に、[az network firewall create][az-network-firewall-create] コマンドを使用してファイアウォールを作成します。 次の例では、*myAzureFirewall* という名前の Azure Firewall を作成します。
+Azure Firewall を作成するには、[az extension add][az-extension-add] コマンドを使用して *azure-firewall* CLI 拡張機能をインストールします。次に、az network firewall create コマンドを使用してファイアウォールを作成します。 次の例では、*myAzureFirewall* という名前の Azure Firewall を作成します。
 
 ```azurecli-interactive
 # Install the CLI extension for Azure Firewall
@@ -139,7 +143,7 @@ az network firewall create \
     --name myAzureFirewall
 ```
 
-Azure Firewall には、エグレス トラフィックに使用されるパブリック IP アドレスが割り当てられます。 [az network public-ip create][az-network-public-ip-create] コマンドを使用してパブリック アドレスを作成した後、[az network firewall ip-config create][az-network-firewall-ip-config-create] を使用して、パブリック IP を適用するファイアウォール上の IP 構成を作成します。
+Azure Firewall には、エグレス トラフィックに使用されるパブリック IP アドレスが割り当てられます。 [az network public-ip create][az-network-public-ip-create] コマンドを使用してパブリック アドレスを作成した後、az network firewall ip-config create を使用して、パブリック IP を適用するファイアウォール上の IP 構成を作成します。
 
 ```azurecli-interactive
 # Create a public IP address for the firewall
@@ -238,7 +242,7 @@ az aks update \
 
 この記事では、API サーバーの許可された IP 範囲を有効にしました。 このアプローチは、セキュリティで保護された AKS クラスターをどのように実行できるかの一部です。
 
-詳細については、[AKS でのアプリケーションとクラスターのセキュリティの概念][concepts-security]に関するページおよび [AKS でのクラスターのセキュリティとアップグレードのベスト プラクティス][operator-best-practices-cluster-security]に関するページを参照してください。
+詳細については、[AKS でのアプリケーションとクラスターのセキュリティの概念][concepts-security]に関するページおよび AKS でのクラスターのセキュリティとアップグレードのベスト プラクティスに関するページを参照してください。
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
@@ -265,3 +269,5 @@ az aks update \
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

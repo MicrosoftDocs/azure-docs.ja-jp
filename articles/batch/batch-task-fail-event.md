@@ -3,7 +3,7 @@ title: Azure Batch タスク失敗イベント | Microsoft Docs
 description: Batch のタスク失敗イベントのリファレンスです。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68c57fbf510d923c4c87bc180a935965a511dc26
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549990"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322915"
 ---
 # <a name="task-fail-event"></a>タスク失敗イベント
 

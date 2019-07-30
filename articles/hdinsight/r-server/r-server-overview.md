@@ -6,20 +6,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 6fecd2278ddad4de3a2cff9035d60083101e873e
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: a5e4c7acd407cef1bb5fc43d7e40014a6b088a0a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393836"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448884"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
 
 Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、**ML Services** と呼ばれます。 この機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 HDInsight の ML Services は、Azure Blob Storage または Data Lake Storage に読み込まれた事実上すべてのサイズのデータセットで R ベースの分析を行うための最新の機能を備えています。 ML Services クラスターはオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、ScaleR (Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。
 
@@ -29,7 +27,7 @@ HDInsight の ML Services は、Azure Blob Storage または Data Lake Storage �
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight での ML Services の概要
 
-Azure HDInsight に ML Services クラスターを作成するには、Azure portal を使って HDInsight クラスターを作成するときに、**ML Services** クラスター タイプを選びます。 この ML Services クラスター タイプは、クラスターのデータ ノード上の ML Server と、ML Services ベースの分析用のランディング ゾーンとしてのエッジ ノードを組み込みます。 クラスターの作成手順については、[HDInsight での ML Services の使用](r-server-get-started.md)に関する記事をご覧ください。
+Azure HDInsight に ML Services クラスターを作成するには、Azure portal を使って HDInsight クラスターを作成するときに、**ML Services** クラスター タイプを選びます。 この ML Services クラスター タイプは、クラスターのデータ ノード上の ML Server と、ML Services ベースの分析用のランディング ゾーンとしてのエッジ ノードを組み込みます。 クラスターの作成方法のチュートリアルについては、[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>HDInsight で ML Services を選ぶ理由
 
@@ -70,13 +68,13 @@ HDInsight の ML Services には次の機能が含まれます。
 
 HDInsight クラスターの HDFS ファイル システムの既定のストレージを、Azure ストレージ アカウントまたは Azure Data Lake Storage と関連付けることができます。 この関連付けにより、分析中にクラスター ストレージにアップロードされるデータがどのようなものであっても確実に永続化され、クラスターが削除された後であってもデータを利用できます。 選択したストレージ オプションへのデータ転送を担うさまざまなツールが用意されています。これには、ストレージ アカウントのポータル ベースのアップロード機能や [AzCopy](../../storage/common/storage-use-azcopy.md) ユーティリティなどがあります。
 
-選択したプライマリ ストレージにかかわらず、クラスター プロビジョニング プロセス中に追加の BLOB および Data Lake Store へのアクセスを有効にすることができます。 アカウント アクセスの追加については、[HDInsight での ML Services の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started)に関する記事をご覧ください。 複数のストレージ アカウントの使用について詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage)に関する記事をご覧ください。
+選択したプライマリ ストレージにかかわらず、クラスター プロビジョニング プロセス中に追加の BLOB および Data Lake Store へのアクセスを有効にすることができます。  複数のストレージ アカウントの使用について詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage)に関する記事をご覧ください。
 
 エッジ ノードで使用するストレージ オプションとして、 [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。 Azure Files では、Azure Storage で作成されたファイル共有を Linux ファイル システムにマウントできます。 HDInsight クラスターの ML Services を対象としたこれらのデータ ストレージ オプションについて詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](r-server-storage.md)に関する記事をご覧ください。
 
 ## <a name="access-ml-services-edge-node"></a>ML Services エッジ ノードにアクセスする
 
-ブラウザーを使用して、エッジ ノードの Microsoft ML Server に接続することができます。 これは、クラスターの作成時に既定でインストールされます。 詳しくは、[HDInsight での ML Services の概要](r-server-get-started.md)に関する記事をご覧ください。 クラスター エッジ ノードには、コマンドラインから SSH/PuTTY を使用して R コンソールにアクセスすることによって接続することもできます。
+ブラウザーを使用して、エッジ ノードの Microsoft ML Server に接続することができます。 これは、クラスターの作成時に既定でインストールされます。  クラスター エッジ ノードには、コマンドラインから SSH/PuTTY を使用して R コンソールにアクセスすることによって接続することもできます。
 
 ## <a name="develop-and-run-r-scripts"></a>R スクリプトの開発と実行
 
@@ -144,6 +142,6 @@ ML Services HDInsight クラスターに関する価格は、他の HDInsight �
 
 HDInsight クラスターで ML Services を使用する方法の詳細については、次のトピックを参照してください。
 
-* [HDInsight での ML Services クラスターの使用開始](r-server-get-started.md)
+* [RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する](machine-learning-services-quickstart-job-rstudio.md)
 * [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
 * [HDInsight 上の ML Services クラスター向けのストレージ オプション](r-server-storage.md)

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 95e18b3c-b987-46c2-baa8-a27a029e3076
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: magattus
-ms.openlocfilehash: ef713c954d6eab05259547a277db12a1e9036bcf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 238dea3c136daf13d3db7be41bed103a0cbf7636
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636199"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593680"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
 

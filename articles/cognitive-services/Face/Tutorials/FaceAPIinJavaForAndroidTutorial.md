@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 02/06/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c7f2e86d6fe63d309c74d7304f1c19a714b6471
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 366c0c50cee521c5e70496403fd77211a875065f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312530"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606752"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル:画像の中にある顔を検出してフレームに収める Android アプリの作成
 
@@ -44,17 +44,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 新しい Android アプリケーション プロジェクトを作成するには、次の手順に従います。
 
-1. Android Studio で、**[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
-1. **[Create Android Project]\(Android プロジェクトの作成\)** 画面で、必要に応じて既定のフィールドに変更を加え、**[次へ]** をクリックします。
-1. **[Target Android Devices]\(ターゲットの Android デバイス\)** 画面で、ドロップダウン リストから **API 22** 以降を選択し、**[Next]\(次へ\)** をクリックします。
-1. **[Empty Activity]\(空のアクティビティ\)** を選択し、**[Next]\(次へ\)** をクリックします。
+1. Android Studio で、 **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
+1. **[Create Android Project]\(Android プロジェクトの作成\)** 画面で、必要に応じて既定のフィールドに変更を加え、 **[次へ]** をクリックします。
+1. **[Target Android Devices]\(ターゲットの Android デバイス\)** 画面で、ドロップダウン リストから **API 22** 以降を選択し、 **[Next]\(次へ\)** をクリックします。
+1. **[Empty Activity]\(空のアクティビティ\)** を選択し、 **[Next]\(次へ\)** をクリックします。
 1. **[Backwards Compatibility]\(下位互換性\)** チェック ボックスをオフにして **[Finish]\(完了\)** をクリックします。
 
 ## <a name="add-the-initial-code"></a>初期コードの追加
 
 ### <a name="create-the-ui"></a>UI を作成する
 
-*activity_main.xml* を開きます。 Layout Editor で、**[Text]\(テキスト\)** タブを選択し、その内容を次のコードに置き換えます。
+*activity_main.xml* を開きます。 Layout Editor で、 **[Text]\(テキスト\)** タブを選択し、その内容を次のコードに置き換えます。
 
 [!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?range=1-18)]
 
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="add-the-gradle-dependency"></a>Gradle の依存関係を追加する
 
-**[Project]\(プロジェクト\)** ウィンドウで、ドロップダウン リストから **[Android]** を選択します。 **[Gradle Scripts]\(Gradle スクリプト\)** を展開し、*[build.gradle (Module: app)]* を開きます。 次のスクリーンショットに示したように、Face クライアント ライブラリの依存関係 (`com.microsoft.projectoxford:face:1.4.3`) を追加し、**[Sync Now]\(今すぐ同期\)** をクリックします。
+**[Project]\(プロジェクト\)** ウィンドウで、ドロップダウン リストから **[Android]** を選択します。 **[Gradle Scripts]\(Gradle スクリプト\)** を展開し、 *[build.gradle (Module: app)]* を開きます。 次のスクリーンショットに示したように、Face クライアント ライブラリの依存関係 (`com.microsoft.projectoxford:face:1.4.3`) を追加し、 **[Sync Now]\(今すぐ同期\)** をクリックします。
 
 ![Android Studio スクリーンショット (App build.gradle ファイル)](../Images/face-tut-java-gradle.png)
 
@@ -94,13 +94,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 `<Subscription Key>` を実際のサブスクリプション キーに置き換える必要があります。 さらに、キーの適切なリージョン識別子を使用して、`<API endpoint>` を実際の Face API エンドポイントに置き換えます (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。
 
-**[Project]\(プロジェクト\)** ウィンドウで **[app]\(アプリ\)**、**[manifests]\(マニフェスト\)** を順に展開し、*AndroidManifest.xml* を開きます。 `manifest` 要素の直接の子として、次の要素を挿入します。
+**[Project]\(プロジェクト\)** ウィンドウで **[app]\(アプリ\)** 、 **[manifests]\(マニフェスト\)** を順に展開し、*AndroidManifest.xml* を開きます。 `manifest` 要素の直接の子として、次の要素を挿入します。
 
 [!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/AndroidManifest.xml?range=5)]
 
 ## <a name="upload-image-and-detect-faces"></a>画像をアップロードして顔を検出する
 
-このアプリでは、**FaceServiceClient.detect** メソッドを呼び出して顔を検出します。このメソッドは、[Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップし、**Face** インスタンスのリストを返します。
+このアプリでは、**faceClient.Face.DetectWithStreamAsync** メソッドを呼び出して顔を検出します。このメソッドは、[Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップし、**Face** インスタンスのリストを返します。
 
 返される **Face** にはそれぞれ、その場所を示す四角形と一連の任意の顔属性が含まれます。 この例では、顔の四角形のみが要求されています。
 

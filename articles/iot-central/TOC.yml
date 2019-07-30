@@ -62,7 +62,7 @@
         - name: デバイス セットを使用する
           href: howto-use-device-sets.md
         - name: デバイス テンプレートをバージョン管理する
-          href: howto-version-devicetemplate.md
+          href: howto-version-device-template.md
     - name: 監視と分析
       items:
         - name: テレメトリ ルールを作成する
@@ -105,6 +105,8 @@
           href: howto-prepare-images.md
         - name: アプリケーション ダッシュボードの構成
           href: howto-configure-homepage.md
+        - name: ダッシュボード タイルの使用
+          href: howto-use-tiles.md
         - name: アプリケーション UI のカスタマイズ
           href: howto-customize-ui.md
         - name: アプリケーション テンプレートの使用

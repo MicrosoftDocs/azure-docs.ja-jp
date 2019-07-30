@@ -1,20 +1,19 @@
 ---
-title: OpsGenie で Azure サービス正常性アラートを構成する |Microsoft Docs
+title: OpsGenie で webhook を使用して Azure サービス正常性アラートを構成する
 description: OpsGenie インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.workload: Supportability
-ms.date: 11/14/2017
-ms.openlocfilehash: 79a77fff206831c0f9b3bb73ad33f951d99e2c81
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/10/2019
+ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858832"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067163"
 ---
-# <a name="configure-service-health-alerts-with-opsgenie"></a>OpsGenie でサービス正常性アラートを構成する
+# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>OpsGenie で webhook を使用して Azure サービス正常性アラートを構成する
 
 この記事では、OpsGenie で webhook を使用して Azure サービス正常性アラートを設定する方法について説明します。 [OpsGenie](https://www.opsgenie.com/) の Azure Service Health Integration を使用することにより、Azure Service Health アラートを OpsGenie に転送できます。 OpsGenie は、オンコール スケジュールに基づいて適切な通知対象ユーザーを判断し、メール、テキスト メッセージ (SMS)、電話、iOS と Android のプッシュ通知によって通知した後、確認されるか閉じられるまでアラートをエスカレーションします。
 
@@ -29,9 +28,9 @@ ms.locfileid: "55858832"
 
     ![OpsGenie の[Azure Service Health] ボタン](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
 
-1.  **[Name (名前)]** にアラートの名前を入力し、**[Assigned to Team (チームに割り当て)]** フィールドを指定します。
+1.  **[Name (名前)]** にアラートの名前を入力し、 **[Assigned to Team (チームに割り当て)]** フィールドを指定します。
 
-1.  **[Recipients (受信者)]**、**[Enabled (有効)]**、**[Suppress Notifications (通知を抑制)]** などの他のフィールドに入力します。
+1.  **[Recipients (受信者)]** 、 **[Enabled (有効)]** 、 **[Suppress Notifications (通知を抑制)]** などの他のフィールドに入力します。
 
 1.  **[Integration URL (統合 URL)]** をコピーして保存します。これには既に `apiKey` が末尾に追加されています。
 
@@ -45,7 +44,7 @@ ms.locfileid: "55858832"
 
 1. **[アクション]** の一覧で以下を定義します。
 
-    a. **[アクションの種類]:***webhook*
+    a. **[アクションの種類]:** *webhook*
 
     b. **詳細:** 先ほど保存した OpsGenie の**統合 URL**。
 
@@ -54,7 +53,7 @@ ms.locfileid: "55858832"
 1. 完了したら **[保存]** を選択して、アラートを作成します。
 
 ### <a name="for-an-existing-action-group"></a>既存のアクション グループの場合:
-1. [Azure Portal](https://portal.azure.com/) で、**[モニター]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) で、 **[モニター]** を選択します。
 
 1. **[設定]** セクションで **[アクション グループ]** を選択します。
 
@@ -62,7 +61,7 @@ ms.locfileid: "55858832"
 
 1. **[アクション]** の一覧に以下を追加します。
 
-    a. **[アクションの種類]:***webhook*
+    a. **[アクションの種類]:** *webhook*
 
     b. **詳細:** 先ほど保存した OpsGenie の**統合 URL**。
 

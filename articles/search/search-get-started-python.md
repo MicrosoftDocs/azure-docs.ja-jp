@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Python と REST APIs - Azure Search
-description: Python、Jupyter Notebooks、および Azure Search REST API を使用してインデックスの作成、読み込み、クエリを実行する。
-ms.date: 05/23/2019
+title: 'Python のクイック スタート: Azure Search REST API を使用したインデックスの作成、読み込み、クエリの実行 - Azure Search'
+description: Python、Jupyter Notebook、Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
+ms.date: 06/20/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,23 +10,23 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244784"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485469"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>クイック スタート:Jupyter Python Notebooks を使用して Azure Search インデックスを作成する
+# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
-> * [Postman (REST)](search-fiddler.md)
+> * [Postman (REST)](search-get-started-postman.md)
 > * [ポータル](search-create-index-portal.md)
 > 
 
-Python と [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Search インデックスの作成、読み込み、およびクエリを実行する Jupyter ノートブックを作成します。 この記事では、ノートブックを一から作成する方法を順を追って説明します。 あるいは、完成したノートブックを実行することもできます。 コピーをダウンロードするには、[Azure Search Python サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-python-samples)に関するページを参照してください。
+Python と [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Search インデックスの作成、読み込み、およびクエリを実行する Jupyter ノートブックを作成します。 この記事では、ノートブックを一から作成する方法を順を追って説明します。 あるいは、完成したノートブックを実行することもできます。 コピーをダウンロードするには、[azure-search-python-samples リポジトリ](https://github.com/Azure-Samples/azure-search-python-samples)に移動します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -46,7 +46,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -88,22 +88,19 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
    一方、空のインデックス コレクションからは次の応答が返されます: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
-> [!Tip]
-> 無料サービスでは、3 つのインデックス、インデクサー、およびデータソースに制限されます。 このクイック スタートでは、それぞれについて、1 つずつ作成します。 先に進む前に、新しいオブジェクトを作成するための領域があることを確認してください。
-
 ## <a name="1---create-an-index"></a>1 - インデックスの作成
 
 ポータルを使用している場合を除き、データを読み込むには、サービスにインデックスが存在する必要があります。 このステップでは、[インデックス REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関するページを参照して、インデックス スキーマをサービスにプッシュします。
 
 インデックスの必要な要素には、名前、フィールド コレクション、およびキーが含まれます。 フィールド コレクションは*ドキュメント*の構造を定義します。 各フィールドには、名前、型、およびフィールドの使用方法を決定する属性 (たとえば、フルテキスト検索可能、フィルター可能、または検索結果で取得可能) があります。 インデックス内には、`Edm.String` 型のフィールドのいずれかをドキュメント ID の*キー*として指定する必要があります。
 
-このインデックスには "hotels-py" という名前が付けられ、次に示すフィールド定義が含まれています。 これは、他のチュートリアルで使用されている場合より大きい [Hotels インデックス](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)のサブセットです。 簡潔にするために、このクイックスタートではそれをトリミングしています。
+このインデックスは "hotels-quickstart" という名前で、次に示すフィールド定義が含まれています。 これは、他のチュートリアルで使用されている、より大きい [Hotels インデックス](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)のサブセットです。 簡潔にするために、このクイックスタートではそれをトリミングしています。
 
 1. 次のセルでは、スキーマを指定するセルに次の例を貼り付けます。 
 
     ```python
     index_schema = {
-       "name": "hotels-py",  
+       "name": "hotels-quickstart",  
        "fields": [
          {"name": "HotelId", "type": "Edm.String", "key": "true", "filterable": "true"},
          {"name": "HotelName", "type": "Edm.String", "searchable": "true", "filterable": "false", "sortable": "true", "facetable": "false"},
@@ -236,10 +233,10 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
     }
     ```   
 
-2. 別のセルで、要求を作成します。 この POST 要求では、hotels-py インデックスのドキュメント コレクションがターゲットとされ、前の手順で指定したドキュメントがプッシュされます。
+2. 別のセルで、要求を作成します。 この POST 要求では、hotels-quickstart インデックスのドキュメント コレクションがターゲットとされ、前の手順で指定したドキュメントがプッシュされます。
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs/index" + api_version
+   url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
    response  = requests.post(url, headers=headers, json=documents)
    index_content = response.json()
    pprint(index_content)
@@ -253,56 +250,63 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 この手順では、[Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用してインデックスのクエリを実行する方法を示します。
 
+1. セルでは、空の検索が実行され (search=*)、任意のドキュメントのランクなしのリスト (search score = 1.0) が返されるクエリ式を指定します。 既定では、Azure Search によって一度に 50 件の結果が返されます。 構造化されているので、このクエリではドキュメント全体の構造と値が返されます。 $count=true を追加して、結果に含まれるすべてのドキュメントの数を取得します。
 
-1. 新しいセルでは、クエリ式を指定します。 次の例では、"hotels" と "wifii" という用語を検索します。 また、一致するドキュメントの*数*を返し、検索結果に含めるフィールドを "*選択*" します。
+   ```python
+   searchstring = '&search=*&$count=true'
+   ```
+
+1. 新しいセルで、以下の例を指定して、"hotels" と "wifi" の用語を検索します。 $select を追加して、検索結果に含めるフィールドを指定します。
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. 別のセルで、要求を作成します。 この GET リクエストでは hotels-py インデックスの docs コレクションがターゲットとされ、前の手順で指定したクエリが添付されます。
+1. 別のセルで、要求を作成します。 この GET 要求では hotels-quickstart インデックスのドキュメント コレクションがターゲットとされ、前の手順で指定したクエリが添付されます。
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-3. 各手順を行います。 結果は次の出力のようになります。 
+1. 各手順を行います。 結果は次の出力のようになります。 
 
     ![インデックスの検索](media/search-get-started-python/search-index.png "インデックスの検索")
 
-4. 構文について大まかに把握するため、その他のクエリ例をいくつか試してください。 searchstring を次の例に置き換えてから、検索要求を再実行することができます。 
+1. 構文について大まかに把握するため、その他のクエリ例をいくつか試してください。 `searchstring` を次の例に置き換えてから、検索要求を再実行することができます。 
 
    フィルターを適用します。 
 
    ```python
-   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
    ```
 
    上位の 2 つの結果を取得します。
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
    ```
 
     特定のフィールドで並べ替えます。
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
 ## <a name="clean-up"></a>クリーンアップ 
 
-不要になった場合は、インデックスを削除する必要があります。 無料のサービスは、3 つのインデックスに制限されています。 他のチュートリアル用の領域を確保するために、積極的に使用していないインデックスがあれば削除することをお勧めします。
+不要になった場合は、インデックスを削除する必要があります。 無料のサービスは、3 つのインデックスに制限されています。 他のチュートリアル用の領域を確保するために、積極的に使用していないインデックスをすべて削除する必要があります。
+
+オブジェクトを削除する最も簡単な方法は、ポータルを使用する方法ですが、これは Python のクイック スタートであるため、次の構文で同じ結果が得られます。
 
    ```python
-  url = endpoint + "indexes/hotels-py" + api_version
+  url = endpoint + "indexes/hotels-quickstart" + api_version
   response  = requests.delete(url, headers=headers)
    ```
 
-既存のインデックスのリストを返すことでインデックスが削除されているか確認できます。 hotels-py がなくなっていれば、ご自分の要求が成功したことがとわかります。
+既存のインデックスのリストを要求することで、インデックスが削除されているか確認できます。 hotels-quickstart がなくなっていれば、自分の要求が成功したことがとわかります。
 
 ```python
 url = endpoint + "indexes" + api_version + "&$select=name"

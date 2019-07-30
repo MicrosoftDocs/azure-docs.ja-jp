@@ -1,5 +1,5 @@
 ---
-title: フィードバック ループ - Personalizer
+title: クイック スタート:フィードバック ループを作成する - Personalizer
 titleSuffix: Azure Cognitive Services
 description: Personalizer サービスを使用するこの C# クイック スタートでコンテンツをパーソナライズします。
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/08/2019
+ms.topic: quickstart
+ms.date: 06/11/2019
 ms.author: edjez
-ms.openlocfilehash: a7f6c6fe25bf9dff2f102080f93fc1e0024ac660
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 0b856b8d134cc160b8bb759fce0408204cf0ba61
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478629"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722442"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>クイック スタート:C# を使用してコンテンツをパーソナライズする 
 
@@ -54,6 +54,7 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 
 1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
 1. Personalizer クライアント ライブラリの NuGet パッケージをインストールします。 メニューで、 **[ツール]** を選択し、 **[Nuget パッケージ マネージャー]** を選択し、次に **[ソリューションの NuGet パッケージの管理]** を選択します。
+1. **[プレリリースを含める]** をオンにします。
 1. **[参照]** タブを選択し、 **[検索]** ボックスに「`Microsoft.Azure.CognitiveServices.Personalizer`」と入力します。
 1. **Microsoft.Azure.CognitiveServices.Personalizer** が表示されたら選択します。
 1. 自分のプロジェクト名の横のチェックボックスを選択し、 **[インストール]** を選択します。

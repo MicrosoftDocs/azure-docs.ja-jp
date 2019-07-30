@@ -34,6 +34,13 @@ sections:
             image:
               src: /media/common/i_learn-about.svg
             title: Microsoft Learn でスキルを身に付ける
+  - title: 安全なサンプル アプリ
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-web-app">Linux コンテナー内の Web アプリ</a>
   - title: 概念
     items:
       - type: list

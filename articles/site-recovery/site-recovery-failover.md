@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.author: raynew
-ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1471188999182623a57db50d3205a859c160a2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399964"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491791"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>VM と物理サーバーのフェールオーバー 
 
@@ -70,9 +70,9 @@ Site Recovery を使用して保護されている仮想マシン/物理サー�
 
 > [!NOTE]
 > オンプレミス サイト間で Hyper-V 仮想マシンをフェールオーバーしている間に、プライマリ オンプレミス サイトにフェールバックするには、まず仮想マシンをプライマリ サイトに逆レプリケーション (**レプリケーションの反転**) してからフェールオーバーを開始します。 プライマリ仮想マシンが利用できない場合は、**レプリケーションの反転**を実行する前に、バックアップから仮想マシンを復元してください。   
-> 
-> 
-> ## <a name="failover-job"></a>フェールオーバー ジョブ
+ 
+ 
+## <a name="failover-job"></a>フェールオーバー ジョブ
 
 ![フェールオーバー](./media/site-recovery-failover/FailoverJob.png)
 
@@ -111,7 +111,7 @@ Site Recovery を使用して保護されている仮想マシン/物理サー�
 ## <a name="post-failover-considerations"></a>フェールオーバー後の考慮事項
 フェールオーバー後には、次の推奨事項を考慮することができます。
 ### <a name="retaining-drive-letter-after-failover"></a>フェールオーバー後のドライブ文字の維持
-フェールオーバー後に仮想マシンのドライブ文字を維持するには、仮想マシンの **SAN ポリシー**を **OnlineAll** に設定します。 詳細については、[こちら](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)を参照してください。
+Azure Site Recovery では、ドライブ文字の保持を処理します。 一部のディスクを除外する場合の処理の詳細については、[こちら](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk)をご覧ください。
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
 

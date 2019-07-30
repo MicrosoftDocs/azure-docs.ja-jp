@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 7b0b637bdbab8f85c87d28473dda8f2e8f8a086e
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427137"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312060"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -74,7 +74,7 @@ Azure IR の作成と構成については、ハウツー ガイドで Azure IR 
 セルフホステッド IR により、次のことが可能になります。
 
 - クラウドのデータ ストアとプライベート ネットワーク内のデータ ストアの間でコピー アクティビティを実行する。
-- オンプレミスまたは Azure Virtual Network 内のコンピューティング リソースに対して次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ (BYOC-Bring Your Own Cluster)、HDInsight Pig アクティビティ (BYOC)、HDInsight MapReduce アクティビティ (BYOC)、HDInsight Spark アクティビティ (BYOC)、HDInsight Streaming アクティビティ (BYOC)、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.NET カスタム アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
+- オンプレミスまたは Azure Virtual Network 内のコンピューティング リソースに対して次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ (BYOC-Bring Your Own Cluster)、HDInsight Pig アクティビティ (BYOC)、HDInsight MapReduce アクティビティ (BYOC)、HDInsight Spark アクティビティ (BYOC)、HDInsight Streaming アクティビティ (BYOC)、Machine Learning バッチ実行アクティビティ、Machine Learning リソース更新アクティビティ、ストアド プロシージャ― アクティビティ、Data Lake Analytics U-SQL アクティビティ、カスタム アクティビティ (Azure Batch 上で実行)、ルックアップ アクティビティ、およびメタデータ取得アクティビティ。
 
 > [!NOTE] 
 > SAP Hana や MySQL などの独自ドライバーを必要とするデータ ストアをサポートするには、セルフホステッド統合ランタイムを使用します。詳細については、「[supported data stores (サポートされるデータ ストア)](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

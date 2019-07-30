@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e9e497c8f10108b8e05314f35546345f7f812524
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 041bcf32035ab6cdc3ee4df06050f75186759f5e
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507799"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835648"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Web アプリケーションで認証を有効にする
 
@@ -32,7 +32,7 @@ ms.locfileid: "66507799"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。 
+- [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。
 - **[ASP.NET および Web の開発]** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする。
 
 ## <a name="update-the-application"></a>アプリケーションの更新
@@ -76,9 +76,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 1. **[Sign up / Sign in]\(サインアップ/サインイン\)** をクリックして、アプリケーションのユーザーとしてサインアップします。 **b2c_1_signupsignin1** ユーザー フローが使用されます。
 2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[今すぐサインアップ]** を選択します。 サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
-3. 有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。 
+3. 有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。
 
-    ![サインアップ ワークフロー](media/active-directory-b2c-tutorials-web-app/sign-up-workflow.png)
+    ![サインインまたはサインアップ ワークフローの一部として表示されるサインアップ ページ](media/active-directory-b2c-tutorials-web-app/sign-up-workflow.PNG)
 
 4. **[作成]** をクリックして、Azure AD B2C テナントにローカル アカウントを作成します。
 

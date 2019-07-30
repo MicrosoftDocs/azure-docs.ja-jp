@@ -3,23 +3,26 @@ title: クイック スタート:サポートされている言語の一覧を�
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Node.js で Translator Text API を使った例を紹介します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 1341307ef3868e5398f8ee6583c8bec9759832f5
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: e31f30373349d4048f9021ab8eee7f39dcf5cd57
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515158"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705506"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>クイック スタート:Translator Text API と Node.js を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Node.js と Translator Text REST API を使用し、GET 要求を行うことによって、サポートされている言語の一覧を取得する方法を説明します。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,6 +66,8 @@ let options = {
     json: true,
 };
 ```
+
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="make-the-request-and-print-the-response"></a>要求の実行と応答の出力
 
@@ -183,8 +188,10 @@ node get-languages.js
 
 ## <a name="next-steps"></a>次の手順
 
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
+
 > [!div class="nextstepaction"]
-> [GitHub で Node.js のコード例を詳しく見てみる](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 06/28/2019
 ms.author: magoedte
-ms.openlocfilehash: a50f080ee4d72ad098ca87f5b3a62b42f8cd5907
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f2b74c4c091aed0a1b5889b0a07d44d450d1922
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142748"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477075"
 ---
 # <a name="configure-service-map-in-azure"></a>Azure で Service Map を構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "65142748"
 ## <a name="supported-azure-regions"></a>サポート対象の Azure リージョン
 
 Service Map は現在、次の Azure リージョンでご利用いただけます。
-- 米国東部
+- East US
 - 米国中西部
 - カナダ中部
 - 英国南部
@@ -100,18 +100,14 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
+#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | OS バージョン | カーネル バージョン
 |:--|:--|
-| 11 SP4 | 3.0.* |
-
-### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
-
-| OS バージョン | カーネル バージョン
-|:--|:--|
-| 12 SP2 | 4.4.* |
-| 12 SP3 | 4.4.* |
+|12 SP2 | 4.4.* |
+|12 SP3 | 4.4.* |
+|12 SP4 | 4.4.* |
+|12 SP4 | Azure で調整されたカーネル |
 
 ## <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
 

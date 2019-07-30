@@ -2,28 +2,21 @@
 title: Azure Active Directory Identity Protection の通知 | Microsoft Docs
 description: 通知が調査作業にどのように役立つのかを説明します。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 65ca79b9-4da1-4d5b-bebd-eda776cc32c7
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dcc7d2d03b3c4a3f4c8c772f38aa3785080d986
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784341"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335350"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 
@@ -34,7 +27,6 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 
 この記事では、両方の通知メールの概要を説明します。
 
-
 ## <a name="users-at-risk-detected-email"></a>危険な状態のユーザーが検出された電子メール
 
 危険な状態のアカウントが検出されると、Azure AD Identity Protection は **[Users at risk detected]\(危険な状態のユーザーが検出されました\)** という件名のアラート メールを生成します。 このメールには、 **[リスクのフラグ付きユーザー](../reports-monitoring/concept-user-at-risk.md)** レポートへのリンクが含まれます。 ベスト プラクティスとして、危険な状態のユーザーをすぐに調べる必要があります。
@@ -43,7 +35,6 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 
 ![危険な状態のユーザーが検出された電子メール](./media/notifications/01.png)
 
-
 ### <a name="configuration"></a>構成
 
 管理者は以下を設定することができます。
@@ -51,11 +42,9 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 - **このメールの生成をトリガーするユーザー リスク レベル** - 既定では、リスク レベルは "高" リスクに設定されます。
 - **このメールの受信者** - 既定では、受信者にはすべてのグローバル管理者が含まれます。 グローバル管理者は、受信者として他のグローバル管理者、セキュリティ管理者、セキュリティ閲覧者を追加することもできます。  
 
-
 関連するダイアログを開くには、 **[Identity Protection]** ページの **[設定]** セクションの **[アラート]** をクリックします。
 
 ![危険な状態のユーザーが検出された電子メール](./media/notifications/05.png)
-
 
 ## <a name="weekly-digest-email"></a>週間ダイジェスト電子メール
 
@@ -63,11 +52,8 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 次の情報が含まれます。
 
 - リスクのあるユーザー
-
 - 不審なアクティビティ
-
 - 検出された脆弱性
-
 - Identity Protection の関連するレポートへのリンク
 
     ![修復](./media/notifications/400.png "Remediation")
@@ -81,7 +67,6 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 関連するダイアログを開くには、 **[Identity Protection]** ページの **[設定]** セクションの **[週間ダイジェスト]** をクリックします。
 
 ![危険な状態のユーザーが検出された電子メール](./media/notifications/04.png)
-
 
 ## <a name="see-also"></a>関連項目
 

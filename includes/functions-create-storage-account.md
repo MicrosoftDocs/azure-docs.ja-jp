@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 889b9c0cf944085f5f42ece892d5cac747a27240
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 25cfcefb600bc12de3dad5b6fe2bcb76d00f0198
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132116"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444102"
 ---
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
@@ -19,24 +19,4 @@ Functions は、関数に関する状態その他の情報を維持するため�
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
-```
-
-ストレージ アカウントの作成後に、Azure CLI によって次の例のような情報が表示されます。
-
-```json
-{
-  "creationTime": "2017-04-15T17:14:39.320307+00:00",
-  "id": "/subscriptions/bbbef702-e769-477b-9f16-bc4d3aa97387/resourceGroups/myresourcegroup/...",
-  "kind": "Storage",
-  "location": "westeurope",
-  "name": "myfunctionappstorage",
-  "primaryEndpoints": {
-    "blob": "https://myfunctionappstorage.blob.core.windows.net/",
-    "file": "https://myfunctionappstorage.file.core.windows.net/",
-    "queue": "https://myfunctionappstorage.queue.core.windows.net/",
-    "table": "https://myfunctionappstorage.table.core.windows.net/"
-  },
-     ....
-    // Remaining output has been truncated for readability.
-}
 ```

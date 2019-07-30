@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190414"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606743"
 ---
 # <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
 
@@ -56,7 +55,7 @@ Batch 文字起こし API では、次の形式がサポートされています
 | MP3 | PCM 0 | 16 ビット | 8 または 16 kHz、モノラル、ステレオ |
 | OGG | OPUS | 16 ビット | 8 または 16 kHz、モノラル、ステレオ |
 
-ステレオ オーディオ ストリームの場合、Batch 文字起こし API は文字起こしの間に左チャンネルと右チャンネルを分離します。 各チャンネルから 2 つの JSON ファイルが作成されます。 発話に従うタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。 このサンプルの要求には、不適切な表現のフィルター、句読点、および単語レベルのタイムスタンプのプロパティが含まれます。 
+ステレオ オーディオ ストリームの場合、Batch 文字起こし API は文字起こしの間に左チャンネルと右チャンネルを分離します。 各チャンネルから 2 つの JSON ファイルが作成されます。 発話に従うタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。 このサンプルの要求には、不適切な表現のフィルター、句読点、および単語レベルのタイムスタンプのプロパティが含まれます。
 
 ### <a name="configuration"></a>構成
 
@@ -66,8 +65,8 @@ Batch 文字起こし API では、次の形式がサポートされています
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<local to us, for example en-US>",
-  "name": "<user define name of the transcription batch>",
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
     "ProfanityFilterMode": "Masked",
@@ -83,26 +82,58 @@ Batch 文字起こし API では、次の形式がサポートされています
 
 ### <a name="configuration-properties"></a>構成プロパティ
 
-| パラメーター | 説明 | 必須/省略可能 |
-|-----------|-------------|---------------------|
-| `ProfanityFilterMode` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`none` (不適切な表現のフィルターを無効にする)、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する) または `tags` ("不適切な表現" のタグを追加する) です。 既定の設定は `masked`です。 | 省略可能 |
-| `PunctuationMode` | 認識結果内の句読点をどう扱うかを指定します。 指定できる値は、`none` (句読点を無効にする)、`dictated` (明示的な句読点)、`automatic` (デコーダーで句読点を処理する)、`dictatedandautomatic` (指定された句読点、または自動) です。 | 省略可能 |
- | `AddWordLevelTimestamps` | 単語レベルのタイムスタンプを出力に追加するかどうかを指定します。 `true` を指定すると単語レベルのタイムスタンプが有効になり、`false` (既定値) を指定すると無効になります。 | 省略可能 |
- | `AddSentiment` | センチメントを発話に追加するかどうかを指定します。 `true` を指定すると発話ごとのセンチメントが有効になり、`false` (既定値) を指定すると無効になります。 | 省略可能 |
+次の省略可能なプロパティを使用して、文字起こしを構成します。
+
+| パラメーター | 説明 |
+|-----------|-------------|
+| `ProfanityFilterMode` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`none` (不適切な表現のフィルターを無効にする)、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する) または `tags` ("不適切な表現" のタグを追加する) です。 既定の設定は `masked`です。 |
+| `PunctuationMode` | 認識結果内の句読点をどう扱うかを指定します。 指定できる値は、`none` (句読点を無効にする)、`dictated` (明示的な句読点)、`automatic` (デコーダーで句読点を処理する)、`dictatedandautomatic` (指定された句読点、または自動) です。 |
+ | `AddWordLevelTimestamps` | 単語レベルのタイムスタンプを出力に追加するかどうかを指定します。 `true` を指定すると単語レベルのタイムスタンプが有効になり、`false` (既定値) を指定すると無効になります。 |
+ | `AddSentiment` | センチメントを発話に追加するかどうかを指定します。 `true` を指定すると発話ごとのセンチメントが有効になり、`false` (既定値) を指定すると無効になります。 |
+ | `AddDiarization` | 2 つの音声が含まれているモノラル チャンネルであることが想定される入力に対して、ダイアライゼーション分析を実行するように指定します。 指定できる値は、ダイアライゼーションを有効にする `true` と、それを無効にする `false` (既定値) です。 さらに、`AddWordLevelTimestamps` を true に設定する必要があります。|
 
 ### <a name="storage"></a>Storage
 
 Batch 文字起こしでは、オーディオの読み取りや、文字起こしのストレージへの書き込みに [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) をサポートしています。
 
-## <a name="webhooks"></a>Webhook 
+## <a name="webhooks"></a>webhooks
 
 文字起こし状態のポーリングでは、最も高いパフォーマンスを実現できない場合や、最適なユーザー エクスペリエンスを提供できない場合があります。 状態をポーリングするには、コールバックを登録して、実行時間の長い文字起こしタスクが完了したときにクライアントに通知することができます。
 
 詳細については、「[Webhook](webhooks.md)」を参照してください。
 
+## <a name="speaker-separation-diarization"></a>話者の分離 (ダイアライゼーション)
+
+ダイアライゼーションは、音声に含まれる話者を分離するプロセスです。 ダイアライゼーションはバッチ パイプラインによってサポートされ、モノラル チャンネル レコーディングの 2 人の話者を認識できます。
+
+音声文字起こし要求でダイアライゼーションを処理するように要求するには、次に示すように、HTTP 要求の中に関連するパラメーターを追加します。
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+単語レベルのタイムスタンプも、上の要求に示されているように、パラメーターとして "有効にする" 必要があります。
+
+対応する音声には、番号で識別された話者 (現時点では 2 つの音声のみがサポートされているため、話者は 'Speaker 1' と 'Speaker 2' として識別されます) と、文字起こしの出力が含まれます。
+
+ステレオ レコーディングではダイアライゼーションは使用できないことにも注意してください。 さらに、すべての JSON 出力には、話者のタグが含まれます。 ダイアライゼーションが使用されていない場合、JSON 出力には 'Speaker:Null' と表示されます。
+
+> [!NOTE]
+> すべてのリージョンとすべてのロケールでダイアライゼーションを利用できます。
+
 ## <a name="sentiment"></a>センチメント
 
-センチメントは Batch 文字起こし API の新機能であり、コール センター ドメインの重要な機能です。 お客様は自身の要求に対して `AddSentiment` パラメーターを使用して次のことを行えます。 
+センチメントは Batch 文字起こし API の新機能であり、コール センター ドメインの重要な機能です。 お客様は自身の要求に対して `AddSentiment` パラメーターを使用して次のことを行えます。
 
 1.  顧客満足度に関する分析情報を得る
 2.  エージェント (通話を受けるチーム) のパフォーマンスに関する分析情報を得る
@@ -110,7 +141,7 @@ Batch 文字起こしでは、オーディオの読み取りや、文字起こ�
 4.  ネガティブ通話がポジティブになったときに何が良かったのか特定する
 5.  製品やサービスについて、お客様が何を気に入り、何を好まないかを特定する
 
-センチメントは、オーディオのセグメントが発話 (オフセット) の開始とバイト ストリームの末尾の無音検出の間の時間経過として定義されているオーディオ セグメント単位でスコア付けされます。 そのセグメント内のテキスト全体が、センチメントの計算に使用されます。 各チャネルの通話全体または音声全体の集計センチメント値は計算されません。 これらは、さらに適用するためにドメインの所有者に残されます。
+センチメントは、オーディオのセグメントが発話 (オフセット) の開始とバイト ストリームの末尾の無音検出の間の時間経過として定義されているオーディオ セグメント単位でスコア付けされます。 そのセグメント内のテキスト全体が、センチメントの計算に使用されます。 各チャネルの通話全体または音声全体の集計センチメント値は計算されません。 これらの集計は、さらに適用するためにドメインの所有者に残されます。
 
 センチメントは、語彙形式で適用されます。
 
@@ -149,13 +180,13 @@ JSON の出力サンプルは、次のようになります。
   ]
 }
 ```
-機能では、現在ベータ版のセンチメント モデルが使用されます。
+この機能では、現在ベータ版であるセンチメント モデルが使用されます。
 
 ## <a name="sample-code"></a>サンプル コード
 
 完全なサンプルは、[GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の `samples/batch` サブディレクトリにあります。
 
-自分のサブスクリプション情報、サービス リージョン、文字起こしするオーディオ ファイルをポイントする SAS URI、カスタムの音響モデルまたは言語モデルを使用する場合のモデル ID で、サンプル コードをカスタマイズする必要があります。 
+自分のサブスクリプション情報、サービス リージョン、文字起こしするオーディオ ファイルをポイントする SAS URI、カスタムの音響モデルまたは言語モデルを使用する場合のモデル ID で、サンプル コードをカスタマイズする必要があります。
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 

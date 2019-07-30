@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure SQL Data Warehouse へのデータの読み込み | Microsoft Docs
-description: チュートリアルでは、Azure Portal と SQL Server Management Studio を使って、パブリック Azure Blob から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。
+description: チュートリアルでは、Azure portal と SQL Server Management Studio を使って、グローバル Azure BLOB から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8bca6c1e56595e4a7d64f9f388c9daca0b166ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4f52c2bd0040efef9e12a8feec0bfc779105ad4
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242921"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461863"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのデータの読み込み
 
@@ -38,9 +38,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) をダウンロードしてインストールします。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-[Azure Portal](https://portal.azure.com/) にログインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL Data Warehouse を作成する
 
@@ -132,7 +132,7 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 
 Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
 
@@ -158,7 +158,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
 
-5. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **[システム データベース]** 、 **[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
+5. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **[システム データベース]** 、 **[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **SampleDW** を展開して、新しいデータベースのオブジェクトを表示します。
 
     ![データベース オブジェクト](media/load-data-wideworldimportersdw/connected.png) 
 
@@ -217,7 +217,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接 SQL Data Warehouse に読み込む方法については、[読み込みの概要](sql-data-warehouse-overview-load.md)に関するページを参照してください。
 
-次の SQL スクリプトを実行して、読み込むデータに関する情報を指定します。 この情報には、データが置かれている場所、データの内容の形式、およびデータのテーブル定義が含まれます。 データは、パブリック Azure BLOB に存在します。
+次の SQL スクリプトを実行して、読み込むデータに関する情報を指定します。 この情報には、データが置かれている場所、データの内容の形式、およびデータのテーブル定義が含まれます。 データは、グローバル Azure BLOB に存在します。
 
 1. 前のセクションで、LoaderRC60 としてデータ ウェアハウスにログインしました。 SSMS で LoaderRC60 接続の **[SampleDW]** を右クリックして、 **[新しいクエリ]** を選びます。  新しいクエリ ウィンドウが表示されます。 
 
@@ -231,7 +231,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     CREATE MASTER KEY;
     ```
 
-4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部のタクシー データの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、 **[実行]** をクリックします。
+4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部の国際輸入業者のデータの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、 **[実行]** をクリックします。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -540,13 +540,13 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     );
     ```
 
-8. オブジェクト エクスプローラーで、SampleDW を展開して、先ほど作成した外部テーブルの一覧を表示します。
+8. オブジェクト エクスプローラーで、SampleDW を展開して、作成した外部テーブルの一覧を表示します。
 
     ![外部テーブルを表示する](media/load-data-wideworldimportersdw/view-external-tables.png)
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>データ ウェアハウスにデータを読み込む
 
-このセクションでは、先ほど定義した外部テーブルを使って、サンプル データを Azure BLOB から SQL Data Warehouse に読み込みます。  
+このセクションでは、定義した外部テーブルを使って、サンプル データを Azure BLOB から SQL Data Warehouse に読み込みます。  
 
 > [!NOTE]
 > このチュートリアルでは、最終テーブルにデータを直接読み込みます。 運用環境では、通常、CREATE TABLE AS SELECT を使用して、ステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 ステージング テーブルのデータを運用テーブルに追加するには、INSERT...SELECT ステートメントを使用します。 詳細については、「[運用テーブルにデータを挿入する](guidance-for-loading-data.md#inserting-data-into-a-production-table)」を参照してください。
@@ -554,7 +554,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントが外部テーブルから選択すると、SQL Data Warehouse はデータ ウェアハウスのリレーショナル テーブルにデータをインポートします。 
 
-このスクリプトでは、wwi.dimension_Date テーブルと wwi.fact_Sales テーブルへのデータの読み込みは行いません。 これらのテーブルは、大量の行を格納できるようにするため、後続の手順で生成されます。
+このスクリプトでは、wwi.dimension_Date テーブルと wwi.fact_Sale テーブルへのデータの読み込みは行いません。 これらのテーブルは、大量の行を格納できるようにするため、後続の手順で生成されます。
 
 1. データ ウェアハウス内の新しいテーブルにデータを読み込むには、次のスクリプトを実行します。
 
@@ -750,7 +750,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Date テーブルと Sales テーブルを生成するためのテーブルとプロシージャを作成する
 
-このセクションでは、wwi.dimension_Date テーブルと wwi.fact_Sales テーブルを作成します。 また、wwi.dimension_Date テーブルと wwi.fact_Sales テーブルに大量の行を生成するストアド プロシージャも作成します。
+このセクションでは、wwi.dimension_Date テーブルと wwi.fact_Sale テーブルを作成します。 また、wwi.dimension_Date テーブルと wwi.fact_Sale テーブルに大量の行を生成するストアド プロシージャも作成します。
 
 1. dimension_Date テーブルと fact_Sale テーブルを作成します。  
 
@@ -893,7 +893,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     DROP table #days;
     END;
     ```
-4. wwi.dimension_Date テーブルと wwi.fact_Sales テーブルを事前設定するプロシージャを作成します。 ここから [wwi].[PopulateDateDimensionForYear] が呼び出されて、wwi.dimension_Date が事前設定されます。
+4. wwi.dimension_Date テーブルと wwi.fact_Sale テーブルを事前設定するプロシージャを作成します。 ここから [wwi].[PopulateDateDimensionForYear] が呼び出されて、wwi.dimension_Date が事前設定されます。
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -949,7 +949,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     ```
 
 ## <a name="generate-millions-of-rows"></a>大量の行を生成する
-作成したストアド プロシージャを使用して、wwi.fact_Sales テーブル内に大量の行と、wwi.dimension_Date テーブル内に対応するデータを生成します。 
+作成したストアド プロシージャを使用して、wwi.fact_Sale テーブル内に大量の行と、wwi.dimension_Date テーブル内に対応するデータを生成します。 
 
 
 1. この手順を実行して、さらに多くの行を持つ [wwi].[seed_Sale] をシード処理します。
@@ -958,7 +958,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. このプロシージャを実行して、西暦 2000 年のすべての日について、1 日あたり 100,000 行を wwi.fact_Sales に事前設定します。
+2. このプロシージャを実行して、西暦 2000 年のすべての日について、1 日あたり 100,000 行を wwi.fact_Sale に事前設定します。
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -1094,7 +1094,7 @@ SQL Data Warehouse は、個々の計算ノードにデータをキャッシュ�
 
 必要に応じて、以下の手順でリソースをクリーンアップします。
 
-1. [Azure Portal](https://portal.azure.com) にログインし、お使いのデータ ウェアハウスをクリックします。
+1. [Azure Portal](https://portal.azure.com) にログインし、データ ウェアハウスをクリックします。
 
     ![リソースのクリーンアップ](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 

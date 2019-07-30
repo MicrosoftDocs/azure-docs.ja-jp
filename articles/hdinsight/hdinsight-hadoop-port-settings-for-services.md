@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 16041d2b7a971c9ba479c133261930b38d130792
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77e7aec1797a4b33068430371ba0969d1737746e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252779"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508798"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート
 
@@ -41,7 +41,7 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | sshd |23 |SSH |セカンダリ ヘッドノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
 | Ambari |443 |HTTPS |Ambari Web UI。 [Apache Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)に関するページをご覧ください |
 | Ambari |443 |HTTPS |Ambari REST API。 「[Apache Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md)」をご覧ください |
-| WebHCat |443 |HTTPS |HCatalog REST API。 [Curl での Apache Hive の使用](hadoop/apache-hadoop-use-pig-curl.md)、[Curl での Apache Pig の使用](hadoop/apache-hadoop-use-pig-curl.md)、[Curl での MapReduce の使用](hadoop/apache-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください |
+| WebHCat |443 |HTTPS |HCatalog REST API。 [MapReduce と Curl の使用](hadoop/apache-hadoop-use-mapreduce-curl.md)に関する記事を参照してください。 |
 | HiveServer2 |443 |ODBC |ODBC を使用して Hive に接続します。 [Microsoft ODBC ドライバーを使用した Excel から HDInsight への接続](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)に関する記事をご覧ください。 |
 | HiveServer2 |443 |JDBC |JDBC を使用して Apache Hive に接続します。 [Hive JDBC ドライバーを使用した HDInsight の Apache Hive への接続](hadoop/apache-hadoop-connect-hive-jdbc-driver.md)に関するページをご覧ください |
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe163fc2370e884bed58bfffe5baffa5642b6d90
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799118"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147994"
 ---
 # <a name="public-ip-address-prefix"></a>パブリック IP アドレス プレフィックス
 

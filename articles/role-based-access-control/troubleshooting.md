@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5dda2eafe86d037faab6284c2af0d8026c194d11
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 59ece9c37a563efba6329a30c06c1b596b1a5d57
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921148"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058153"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
@@ -53,6 +53,61 @@ ms.locfileid: "65921148"
 
 - アクセス許可エラー "オブジェクト ID のクライアントは、スコープに対するアクションの実行を承認されていません (コード: AuthorizationFailed)" が、リソースを作成しようとすると発生する場合は、選択したスコープでリソースへの書き込みアクセス許可を持つロールを割り当てられたユーザーで、現在サインインしていることを確認します。 たとえば、リソース グループ内の仮想マシンを管理するには、そのリソース グループ (または親スコープ) に対する[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを持っている必要があります。 各組み込みロールに対するアクセス許可の一覧については、「[Azure リソースの組み込みロール](built-in-roles.md)」を参照してください。
 - サポート チケットを作成または更新しようとすると "サポート要求を作成するためのアクセス許可がありません" というアクセス許可エラーが発生する場合は、現在サインインしているユーザーに、`Microsoft.Support/supportTickets/write` アクセス許可を持つロール ([サポート リクエスト共同作成者](built-in-roles.md#support-request-contributor)など) が割り当てられていることを確認します。
+
+## <a name="role-assignments-without-a-security-principal"></a>セキュリティ プリンシパルのないロールの割り当て
+
+Azure PowerShell を使ってロールの割り当てを一覧表示すると、空の `DisplayName` と、[Unknown]\(不明\) に設定された `ObjectType` を持つ割り当てが表示される場合があります。 たとえば、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) では、次のようなロールの割り当てが返されます。
+
+```azurepowershell
+RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
+Scope              : /subscriptions/11111111-1111-1111-1111-111111111111
+DisplayName        :
+SignInName         :
+RoleDefinitionName : Storage Blob Data Contributor
+RoleDefinitionId   : ba92f5b4-2d11-453d-a403-e96b0029c9fe
+ObjectId           : 33333333-3333-3333-3333-333333333333
+ObjectType         : Unknown
+CanDelegate        : False
+```
+
+同様に、Azure CLI を使ってロールの割り当てを一覧表示すると、空の `principalName` を持つ割り当てが表示される場合があります。 たとえば、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) では、次のようなロールの割り当てが返されます。
+
+```azurecli
+{
+    "canDelegate": null,
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222",
+    "name": "22222222-2222-2222-2222-222222222222",
+    "principalId": "33333333-3333-3333-3333-333333333333",
+    "principalName": "",
+    "roleDefinitionId": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+    "roleDefinitionName": "Storage Blob Data Contributor",
+    "scope": "/subscriptions/11111111-1111-1111-1111-111111111111",
+    "type": "Microsoft.Authorization/roleAssignments"
+}
+```
+
+これらのロールの割り当ては、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、または管理対象 ID) にロールを割り当てて、後でそのセキュリティ プリンシパルを削除したときに発生します。 これらのロールの割り当ては、Azure portal には表示されず、そのままにしておいても問題ありません。 ただし、必要であれば、これらのロールの割り当てを削除できます。
+
+これらのロールの割り当てを削除するには、[Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) コマンドまたは [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) コマンドを使用します。
+
+PowerShell では、オブジェクト ID とロール定義名を使ってロールの割り当てを削除しようとし、複数のロールの割り当てがパラメーターに一致する場合、次のエラー メッセージを受け取ります。"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません)。 エラー メッセージの例を次に示します。
+
+```Example
+PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
+
+Remove-AzRoleAssignment : The provided information does not map to a role assignment.
+At line:1 char:1
++ Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : CloseError: (:) [Remove-AzRoleAssignment], KeyNotFoundException
++ FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
+```
+
+このエラー メッセージを受け取る場合は、`-Scope` パラメーターまたは `-ResourceGroupName` パラメーターも指定するようにしてください。
+
+```Example
+PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
+```
 
 ## <a name="rbac-changes-are-not-being-detected"></a>RBAC の変更が検出されない
 

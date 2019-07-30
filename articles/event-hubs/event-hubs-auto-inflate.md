@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c12d3233d85a02f6eef8d63e5a4494b4f0cdfa
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822728"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273704"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
-Azure Event Hubs は、拡張性の高いデータ ストリーミング プラットフォームです。 そのため、Event Hubs の使用は、多くの場合、サービスの利用開始後に増えます。 このような使用では、Event Hubs のスケーリングとより大きな転送率の処理を行うために、事前に定義された[スループット単位](event-hubs-features.md#throughput-units)を増やす必要があります。 Event Hubs の**自動インフレ**機能は、使用量のニーズに合わせてスループット単位の数を増やすことで、自動的にスケールアップします。 スループット単位を増やすことで、以下の状況で必要になる調整シナリオを防ぐことができます。
+Azure Event Hubs は、拡張性の高いデータ ストリーミング プラットフォームです。 そのため、Event Hubs の使用は、多くの場合、サービスの利用開始後に増えます。 このような使用では、Event Hubs のスケーリングとより大きな転送率の処理を行うために、事前に定義された[スループット単位](event-hubs-scalability.md#throughput-units)を増やす必要があります。 Event Hubs の**自動インフレ**機能は、使用量のニーズに合わせてスループット単位の数を増やすことで、自動的にスケールアップします。 スループット単位を増やすことで、以下の状況で必要になる調整シナリオを防ぐことができます。
 
 * データの受信レートが、設定されたスループット単位を超えている。
 * データの送信要求レートが、設定されたスループット単位を超えている。
@@ -32,7 +32,7 @@ Azure Event Hubs は、拡張性の高いデータ ストリーミング プラ�
 
 ## <a name="how-auto-inflate-works"></a>自動インフレのしくみ
 
-Event Hubs のトラフィックは [スループット単位](event-hubs-features.md#throughput-units)で制御されます。 受信の場合、1 スループット単位は 1 MB/秒となり、送信の場合はその倍となります。 標準的なイベント ハブを構成するときのスループット単位は 1 ～ 20 です。 自動インフレを使用すると、自分で選択した最低限必要なスループット単位から小さく始めることができます。 その後、この機能は、トラフィックの増加に応じて、必要なスループット単位の上限を自動的にスケーリングします。 自動インフレには、次の利点があります。
+Event Hubs のトラフィックは [スループット単位](event-hubs-scalability.md#throughput-units)で制御されます。 受信の場合、1 スループット単位は 1 MB/秒となり、送信の場合はその倍となります。 標準的なイベント ハブを構成するときのスループット単位は 1 ～ 20 です。 自動インフレを使用すると、自分で選択した最低限必要なスループット単位から小さく始めることができます。 その後、この機能は、トラフィックの増加に応じて、必要なスループット単位の上限を自動的にスケーリングします。 自動インフレには、次の利点があります。
 
 - 小さく始めて、成長と共にスケールアップする効率的なスケーリング メカニズムです。
 - 調整問題なしで、指定された上限に自動的にスケーリングします。

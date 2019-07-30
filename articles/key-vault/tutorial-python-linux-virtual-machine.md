@@ -7,14 +7,14 @@ manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e5fbb4e6f6599d8f9560561fc219dbf57ac0cee1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f002a4d67ee782b11cd8f39784eb48b136328c89
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "66147754"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876702"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>チュートリアル:Linux VM と Python アプリを使用してシークレットを Azure Key Vault に格納する
 
@@ -99,7 +99,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 `az vm create` コマンドを使用して、VM を作成します。
 
-次の例では、**myVM** という名前の VM を作成し、**azureuser** という名前のユーザー アカウントを追加します。 `--generate-ssh-keys` パラメーターによって SSH キーが自動的に生成され、キーは既定のキーの場所 (**~/.ssh**) に配置されます。 代わりに特定のキーのセットを作成するには、`--ssh-key-value` オプションを使用します。
+次の例では、**myVM** という名前の VM を作成し、**azureuser** という名前のユーザー アカウントを追加します。 `--generate-ssh-keys` パラメーターによって SSH キーが自動的に生成され、キーは既定のキーの場所 ( **~/.ssh**) に配置されます。 代わりに特定のキーのセットを作成するには、`--ssh-key-value` オプションを使用します。
 
 ```azurecli-interactive
 az vm create \
@@ -207,7 +207,7 @@ python Sample.py
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-リソース グループと仮想マシン、関連するすべてのリソースは、不要になったら削除してください。 そのためには、VM のリソース グループを選択し、**[削除]** を選択します。
+リソース グループと仮想マシン、関連するすべてのリソースは、不要になったら削除してください。 そのためには、VM のリソース グループを選択し、 **[削除]** を選択します。
 
 `az keyvault delete` コマンドを使用して、キー コンテナーを削除します。
 

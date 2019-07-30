@@ -2,35 +2,38 @@
 title: Azure Kubernetes Service (AKS) でエグレス トラフィックを制限する
 description: Azure Kubernetes Service (AKS) でエグレス トラフィックを制御するために必要なポートとアドレスについて説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/14/2019
-ms.author: iainfou
-ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/06/2019
+ms.author: mlearned
+ms.openlocfilehash: 12922496bc97ad51d1cc96f7ffe8df05c1fd66ea
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475577"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614958"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でクラスター ノードのエグレス トラフィックを制限し、必要なポートとサービスへのアクセスを制御する
 
-既定で、AKS クラスターは、送信 (エグレス) インターネット アクセスが無制限です。 このレベルのネットワーク アクセスでは、実行しているノードやサービスから必要に応じて外部リソースにアクセスできます。 エグレス トラフィックを制限する場合は、正常なクラスター メンテナンス タスクを維持するために、アクセスできるポートとアドレスの数を制限する必要があります。 次に、外部パブリック リポジトリではなく、Microsoft Container Registry (MCR) または Azure Container Registry (ACR) のベース システム コンテナー イメージのみを使用するようにクラスターを構成します。
+既定で、AKS クラスターは、送信 (エグレス) インターネット アクセスが無制限です。 このレベルのネットワーク アクセスでは、実行しているノードやサービスから必要に応じて外部リソースにアクセスできます。 エグレス トラフィックを制限する場合は、正常なクラスター メンテナンス タスクを維持するために、アクセスできるポートとアドレスの数を制限する必要があります。 次に、外部パブリック リポジトリではなく、Microsoft Container Registry (MCR) または Azure Container Registry (ACR) のベース システム コンテナー イメージのみを使用するようにクラスターを構成します。 適切なファイアウォール規則とセキュリティ規則を構成し、これらの必要なポートとアドレスを許可する必要があります。
 
 この記事では、AKS クラスターでエグレス トラフィックを制限する場合に必要なネットワーク ポートと完全修飾ドメイン名 (FQDN) について説明します。  現在、この機能はプレビュー段階にあります。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 プレビューで、これらの機能は、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、'ベスト エフォート' のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
-> * [AKS サポート ポリシー][aks-support-policies]
+> * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.61 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+Azure CLI バージョン 2.0.66 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 エグレス トラフィックを制限できる AKS クラスターを作成するには、まずサブスクリプションの機能フラグを有効にします。 この機能の登録によって、作成する AKS クラスターは、MCR または ACR のベース システム コンテナー イメージを使用するように構成されます。 *AKSLockingDownEgressPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
+
+> [!CAUTION]
+> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService
@@ -54,7 +57,7 @@ az provider register --namespace Microsoft.ContainerService
 
 AKS クラスターのセキュリティを強化するために、エグレス トラフィックを制限する場合があります。 クラスターは、MCR または ACR からベース システム コンテナー イメージをプルするように構成されています。 この方法でエグレス トラフィックをロック ダウンする場合は、AKS ノードが必要な外部サービスと正しく通信できるように、特定のポートと FQDN を定義する必要があります。 このような承認済みのポートと FQDN がない場合、AKS ノードは API サーバーと通信できず、コア コンポーネントをインストールできません。
 
-[Azure Firewall][azure-firewall] またはサードパーティ製ファイアウォール アプライアンスを使用して、エグレス トラフィックをセキュリティで保護し、これらの必要なポートとアドレスを定義することができます。
+[Azure Firewall][azure-firewall] またはサードパーティ製ファイアウォール アプライアンスを使用して、エグレス トラフィックをセキュリティで保護し、これらの必要なポートとアドレスを定義することができます。 AKS では、これらの規則は自動的に作成されません。 次のポートとアドレスは参照用であり、お使いのネットワーク ファイアウォールで適切な規則を作成する必要があります。
 
 AKS には、2 組のポートとアドレスがあります。
 
@@ -70,23 +73,26 @@ AKS クラスターには、次の送信ポート/ネットワーク規則が必
 
 * TCP ポート *443*
 * トンネル フロント ポッドが API サーバー上のトンネルの終端と通信するための TCP ポート *9000* と TCP ポート *22*。
+    * より具体的な情報を得るには、次の表の * *.hcp.\<location\>.azmk8s.io* アドレスと * *.tun.\<location\>.azmk8s.io* アドレスを参照してください。
 
 次の FQDN/アプリケーション規則が必要です。
 
-| FQDN                      | Port      | 用途      |
-|---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS:443,22,9000 | このアドレスは API サーバー エンドポイントです。 |
-| aksrepos.azurecr.io       | HTTPS: 443 | このアドレスは、Azure Container Registry (ACR) 内のイメージにアクセスするために必要です。 |
-| *.blob.core.windows.net   | HTTPS: 443 | このアドレスは ACR に保存されているイメージのバックエンド ストアです。 |
-| mcr.microsoft.com         | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 |
-| management.azure.com      | HTTPS: 443 | このアドレスは、Kubernetes の GET/PUT 操作に必要です。 |
-| login.microsoftonline.com | HTTPS: 443 | このアドレスは Azure Active Directory 認証に必要です。 |
+| FQDN                       | Port      | 用途      |
+|----------------------------|-----------|----------|
+| *.hcp.\<location\>.azmk8s.io | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| *.tun.\<location\>.azmk8s.io | HTTPS: 443、TCP: 22、TCP: 9000 | このアドレスは API サーバー エンドポイントです。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
+| aksrepos.azurecr.io        | HTTPS: 443 | このアドレスは、Azure Container Registry (ACR) 内のイメージにアクセスするために必要です。 |
+| *.blob.core.windows.net    | HTTPS: 443 | このアドレスは ACR に保存されているイメージのバックエンド ストアです。 |
+| mcr.microsoft.com          | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 |
+| *.cdn.mscr.io              | HTTPS: 443 | このアドレスは、Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| management.azure.com       | HTTPS: 443 | このアドレスは、Kubernetes の GET/PUT 操作に必要です。 |
+| login.microsoftonline.com  | HTTPS: 443 | このアドレスは Azure Active Directory 認証に必要です。 |
+| api.snapcraft.io           | HTTPS: 443、HTTP: 80 | このアドレスは、Linux ノードにスナップ パッケージをインストールするために必要です。 |
+| ntp.ubuntu.com             | UDP: 123   | このアドレスは、Linux ノード上での NTP 時刻同期に必要です。 |
+| *.docker.io                | HTTPS: 443 | このアドレスは、トンネル フロントに必要なコンテナー イメージをプルするために必要です。 |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>AKS クラスターの省略可能な推奨されるアドレスとポート
 
-次の送信ポート/ネットワーク規則は、AKS クラスターが正常に機能するために必要ではありませんが、推奨されます。
-
-* NTP 時刻同期用の UDP ポート *123*
 * DNS 用の UDP ポート *53*
 
 AKS クラスターが正常に機能するためには、以下の FQDN/アプリケーション規則が推奨されます。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 65c5f4c79bfb68804e7a876dc14fb6feda04655e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: bad21019607c99964caa1712e50231705689aad2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146355"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055322"
 ---
 >[!NOTE]
->この記事で説明される機能は、IoT Hub の Standard レベルでのみ利用できます。 IoT Hub の Basic レベルおよび Standard レベルについて詳しくは、[適切な IoT Hub レベルの選び方](../articles/iot-hub/iot-hub-scaling.md)に関するページを参照してください。
+>この記事で説明されている機能は、Standard レベルの IoT Hub でのみ使用できます。 Basic および Standard レベルの IoT Hub の詳細については、[適切な IoT Hub レベルの選択](../articles/iot-hub/iot-hub-scaling.md)に関するページを参照してください。

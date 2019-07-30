@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761868"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621025"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "60761868"
         
     各入力の [ **[サンプル データ]** ](stream-analytics-sample-data-input.md) ボタンを使用して、入力のサンプル データをダウンロードします。
         
-    サンプル データを調べて、データの構造 (スキーマおよび[データ型](https://msdn.microsoft.com/library/azure/dn835065.aspx)) を理解します。
+    サンプル データを調べて、データの構造 (スキーマおよび[データ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)) を理解します。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>形式が正しくない入力イベントが原因の逆シリアル化エラー 
 Stream Analytics ジョブの入力ストリームに間違った形式のメッセージが含まれている場合は、逆シリアル化の問題が発生します。 たとえば、間違った形式のメッセ―ジは、JSON オブジェクト内でのかっこや中かっこの不足、または時間フィールドでの不正なタイム スタンプ形式によって発生する可能性があります。 
@@ -145,5 +145,5 @@ FROM data
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

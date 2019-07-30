@@ -41,6 +41,8 @@
           href: logic-apps-create-logic-apps-from-templates.md
         - name: BizTalk Services から移行する
           href: logic-apps-move-from-mabs.md
+        - name: Microsoft Flow からフローをエクスポートして Azure Logic Apps にデプロイする
+          href: export-from-microsoft-flow-logic-app-template.md
         - name: ワークフローの実行のコントロール
           items:
             - name: 条件付きステートメント
@@ -120,6 +122,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: UNH2.5 セグメントが含まれた EDIFACT ファイルの処理
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
+        - name: RosettaNet メッセージの交換
+          href: logic-apps-enterprise-integration-rosettanet.md
         - name: X12 メッセージの交換
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -151,6 +155,8 @@
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: 分離環境の仮想ネットワークに接続する
       href: connect-virtual-network-vnet-isolated-environment.md
+    - name: 成果物を統合サービス環境に追加する
+      href: add-artifacts-integration-service-environment-ise.md
     - name: オンプレミスのデータへのアクセス
       items:
         - name: データ ゲートウェイをインストールする
@@ -243,6 +249,8 @@
           href: ../connectors/connectors-native-recurrence.md
         - name: 要求/応答
           href: ../connectors/connectors-native-reqres.md
+        - name: RosettaNet
+          href: logic-apps-enterprise-integration-rosettanet.md
         - name: RSS
           href: ../connectors/connectors-create-api-rss.md
         - name: Salesforce
@@ -289,6 +297,8 @@
           href: manage-logic-apps-with-visual-studio.md
         - name: 統合アカウントを管理する
           href: logic-apps-enterprise-integration-accounts.md
+        - name: 統合サービス環境を管理する
+          href: ise-manage-integration-service-environment.md
         - name: 最新のスキーマに移行する
           href: ../connectors/connectors-schema-migration.md
     - name: テスト
@@ -297,10 +307,12 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: デプロイ
       items:
+        - name: 概要 - ロジック アプリ デプロイの自動化
+          href: logic-apps-azure-resource-manager-templates-overview.md
         - name: ロジック アプリ テンプレートの作成
-          href: logic-apps-create-deploy-template.md
+          href: logic-apps-create-azure-resource-manager-templates.md
         - name: ロジック アプリ テンプレートのデプロイ
-          href: logic-apps-create-deploy-azure-resource-manager-templates.md
+          href: logic-apps-deploy-azure-resource-manager-templates.md
     - name: 監視
       items:
         - name: ロジック アプリの監視
@@ -371,7 +383,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelogicapps'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter

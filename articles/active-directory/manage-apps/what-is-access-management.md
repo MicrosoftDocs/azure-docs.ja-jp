@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 851b9ab3604e851bcaf4f22d031c51558b15e0e6
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 99c7947b6469f64f2ea05b2290305710db1ee796
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825997"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477102"
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 継続的なアクセスの管理、使用状況の評価、レポート作成は、アプリが組織の ID システムに統合された後でも簡単な作業ではありません。 多くの場合、アプリへのアクセスの管理では、IT 管理者またはヘルプデスクが大きな役割を担う必要があります。 場合によっては、割り当ては一般的なまたは部門の IT チームによって実行されます。 割り当ての決定はビジネスの意思決定者に委ねられ、IT が割り当てを行う前に彼らの承認が求められることが一般的です。  他の組織は、既存の自動 ID との統合に投資し、ロール ベースの Access Control (RBAC)、属性ベースの Access Control (ABAC) などの管理システムにアクセスします。 統合とルールの開発はいずれも専門知識や高いコストが求められる傾向にあります。 いずれの管理方法での監視またはレポートも、個々にコストがかかる複雑な投資になります。
@@ -27,7 +27,7 @@ ms.locfileid: "65825997"
 ## <a name="how-does-azure-active-directory-help"></a>Azure Active Directory の機能
  Azure AD では、構成済みのアプリケーション用に広範なアクセスの管理がサポートされているため、組織は、属性に基づく自動的な割り当て (ABAC または RBAC シナリオ) から、委任、また管理者の管理までにわたり、適切なアクセス ポリシーを簡単に達成できます。 Azure AD を使用すると、1 つのアプリケーションに対して複数の管理モデルを組み合わせて複雑なポリシーを簡単に達成できるだけでなく、同じ対象ユーザーに対して、アプリケーション全体で管理ルールを再利用することもできます。
 
-* [新しいまたは既存のアプリケーションの追加](configure-single-sign-on-portal.md)
+* [新しいまたは既存のアプリケーションの追加](add-gallery-app.md)
 
   Azure AD のアプリケーション割り当ては、次の 2 つの主要な割り当てモードが中心となります。
 

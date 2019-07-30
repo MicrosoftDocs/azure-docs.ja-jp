@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT (プレビュー) を使用してデータにアクセスする | Microsoft Docs
 description: Azure Security Center for IoT を使用する場合に、セキュリティのアラートと推奨事項のデータにアクセスする方法について説明します。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: fbd96ddd-cd9f-48ae-836a-42aa86ca222d
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 1ec6a174d05f8707bbffcc9fb013a98c2eb9196c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d3f3c6ad194ff8c9582f0c9e71a29b37ba5d967
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200556"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616752"
 ---
 # <a name="access-your-security-data"></a>セキュリティ データにアクセスする 
 

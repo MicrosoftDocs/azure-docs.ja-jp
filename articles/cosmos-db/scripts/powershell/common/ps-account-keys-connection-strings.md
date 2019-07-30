@@ -3,15 +3,15 @@ title: Azure PowerShell スクリプト - Azure Cosmos アカウントのアカ�
 description: Azure PowerShell スクリプト サンプル - Azure Cosmos アカウントのアカウント キーと接続文字列の操作
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a7f86bfee0ee2472260b622dc709dc437e53414c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55f28ef6c6ff82f0b82b10ac1dd7931ac46aa2fc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245560"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602505"
 ---
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用する、Azure Cosmos アカウントの接続文字列とアカウント キーの操作
 

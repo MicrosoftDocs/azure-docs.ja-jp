@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417291"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622371"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -1127,6 +1127,8 @@ print(y_predict[:10])
 散布図を作成して、実績コスト値と比較した予測コスト値を視覚化します。 次のコードでは、特徴 (`distance`) が X 軸、交通費 (`cost`) が Y 軸として使用されています。 個々の乗車距離値における予測コストの差異を比較するために、最初の 100 個の予測コスト値と実績コスト値は別個の系列として作成されます。 このプロットを観察すると、距離とコストの関係がほぼ線形であり、同じ乗車距離であれば、ほとんどの場合、予測コスト値が実績コスト値にきわめて近いことがわかります。
 
 ```python
+%matplotlib inline
+
 import matplotlib.pyplot as plt
 
 fig = plt.figure(figsize=(14, 10))

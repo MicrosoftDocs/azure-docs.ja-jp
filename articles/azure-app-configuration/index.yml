@@ -67,6 +67,7 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core">ASP.NET Core で動的な構成を有効にする</a>
+          - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-dotnet-core">.NET Core アプリで動的な構成を有効にする</a>
           - html: <a href="/azure/azure-app-configuration/use-feature-flags-dotnet-core">.NET Core アプリ内で機能フラグを使用する</a>
           - html: <a href="/azure/azure-app-configuration/manage-feature-flags">機能フラグを管理する</a>
           - html: <a href="/azure/azure-app-configuration/integrate-ci-cd-pipeline">CI/CD パイプラインと統合する</a>

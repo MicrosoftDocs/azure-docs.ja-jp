@@ -1,18 +1,19 @@
 ---
 title: Azure Maps Search Service を使用して効率よく検索する方法 | Microsoft Docs
 description: Azure Maps Search Service を使用して検索するためのベスト プラクティスの使用方法について説明します。
+author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9cb0f89b4a48d7139adb35dcef48c0115b005c57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 996a084fd653b2100d94313e8801d915b4bf2cf3
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205621"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348182"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Azure Maps Search Service を使用するためのベスト プラクティス
 
@@ -265,7 +266,7 @@ encodeURIComponent(query)
 ```
 
 C#/VB:
-```C#
+```csharp
 Uri.EscapeDataString(query)
 ```
 

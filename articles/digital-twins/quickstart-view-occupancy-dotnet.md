@@ -8,14 +8,14 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 12/17/2018
+ms.date: 06/26/2019
 ms.author: alinast
-ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f88eccf1e488d52fbbbd064cc5d7f54c2eec32b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089703"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459217"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>クイック スタート: Azure Digital Twins を使用して空き部屋を探す
 
@@ -149,7 +149,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 チュートリアルに進む場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 進まない場合は、このクイック スタートで作成したすべてのリソースを削除してください。
 
 1. サンプル リポジトリのダウンロード時に作成したフォルダーを削除します。
-1. [Azure portal](https://portal.azure.com) の左側のメニューで、**[すべてのリソース]** を選択します。 次に、Digital Twins リソースを選択します。 **[すべてのリソース]** ウィンドウの上部にある **[削除]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[すべてのリソース]** を選択します。 次に、Digital Twins リソースを選択します。 **[すべてのリソース]** ウィンドウの上部にある **[削除]** を選択します。
 
     > [!TIP]
     > ご自分の Digital Twins インスタンスの削除で問題が発生していた場合は、サービス更新が修正と共にロールアウトされています。 ご自分のインスタンスの削除を再試行してください。

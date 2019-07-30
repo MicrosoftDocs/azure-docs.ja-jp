@@ -5,14 +5,14 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 06/25/2019
 ms.author: vinagara
-ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8183c7070b5d42e1c7a96fc0d64974658b2ec7d0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244951"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448921"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -24,16 +24,17 @@ ms.locfileid: "66244951"
 > [!IMPORTANT]
 > サービス正常性通知に対するアラートは、アクティビティ ログ アラート作成用のインターフェイスでは作成できません。 サービス正常性通知の作成および使用について詳しくは、[サービス正常性通知のアクティビティ ログ アラートの受け取り](alerts-activity-log-service-notifications.md)に関する記事をご覧ください。
 
+アラート ルールを作成する際は、次のことを確認してください。
+
+- スコープ内のサブスクリプションが、アラートが作成されているサブスクリプションと同じである。
+- 条件が、アラートが構成されているレベル/状態/呼び出し元/リソース グループ/リソース ID/リソースの種類/イベント カテゴリである必要があります。
+- アラートの構成 JSON に "anyOf" 条件または入れ子になった条件がない (基本的に許可されている allOf は 1 つだけで、それ以上 allOf/anyOf は含まれません)。
+- カテゴリが "管理" のとき。 アラートでは、上記の条件の少なくとも 1 つを指定する必要があります。 アクティビティ ログ内にイベントが作成されるたびにアクティブ化するアラートを作成することはできません。
+
+
 ## <a name="azure-portal"></a>Azure ポータル
 
-> [!NOTE]
-> 
->  アラート ルールを作成する際は、次のことを確認してください。
-> 
-> - スコープ内のサブスクリプションが、アラートが作成されているサブスクリプションと同じである。
-> - 条件が、アラートが構成されているレベル/状態/呼び出し元/リソース グループ/リソース ID/リソースの種類/イベント カテゴリである必要があります。
-> - アラートの構成 JSON に "anyOf" 条件または入れ子になった条件がない (基本的に許可されている allOf は 1 つだけで、それ以上 allOf/anyOf は含まれません)。
-> - カテゴリが "管理" のとき。 アラートでは、上記の条件の少なくとも 1 つを指定する必要があります。 アクティビティ ログ内にイベントが作成されるたびにアクティブ化するアラートを作成することはできません。
+Azure portal を使用して、ユーザーはアクティビティ ログ アラート ルールを作成および変更できます。 また、このエクスペリエンスは Azure アクティビティ ログに統合され、対象とする特定のイベントに対するシームレスなアラート作成が保証されます。
 
 ### <a name="create-with-azure-portal"></a>Azure Portal での作成
 
@@ -220,11 +221,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 アクティビティ ログ アラートでは、専用の PowerShell コマンドレットを使用できます。
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) :新しいアクティビティ ログ アラートを作成するか、既存のアクティビティ ログ アラートを有効にします。
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) :1 つ以上のアクティビティ ログ アラート リソースを取得します。
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) :既存のアクティビティ ログ アラートを有効にし、そのタグを設定します。
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) :既存のアクティビティ ログ アラートを無効にし、そのタグを設定します。
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    :アクティビティ ログ アラートを削除します。
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert) :新しいアクティビティ ログ アラートを作成するか、既存のアクティビティ ログ アラートを有効にします。
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert) :1 つ以上のアクティビティ ログ アラート リソースを取得します。
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert) :既存のアクティビティ ログ アラートを有効にし、そのタグを設定します。
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert) :既存のアクティビティ ログ アラートを無効にし、そのタグを設定します。
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert)    :アクティビティ ログ アラートを削除します。
 
 ## <a name="cli"></a>CLI
 

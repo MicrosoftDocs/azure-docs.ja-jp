@@ -43,7 +43,7 @@ Application Insights は、Azure Monitor ログを通して、リアルタイム
 このソリューションでは、次の Azure サービスを使用します。 詳しくは、[deployment architecture](#deployment-architecture)セクションをご覧ください。
 
 - Azure Virtual Machines
-    - (1) 管理/要塞 (Windows Server 2016 Datacenter)
+    - (1) 管理/踏み台 (Windows Server 2016 Datacenter)
 - Azure Virtual Network
     - (1) /16 ネットワーク
     - (4) /24 ネットワーク
@@ -73,9 +73,9 @@ Application Insights は、Azure Monitor ログを通して、リアルタイム
 
 **Azure Resource Manager**:[Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用して、ソリューション内の複数のリソースを 1 つのグループとして操作できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 お客様はデプロイ用のテンプレートを使用します。 テンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
-**要塞ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。
+**踏み台ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。
 
-このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
+このソリューションでは、次の構成を持つドメイン参加済み踏み台ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 -   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
@@ -106,7 +106,7 @@ App Service 環境は、単一のアプリケーションのみを実行する�
 - Application Gateway 用の 1 つの NSG
 - App Service Environment 用の 1 つの NSG
 - SQL Database 用の 1 つの NSG
-- 要塞ホスト用の 1 つの NSG
+- 踏み台ホスト用の 1 つの NSG
 
 各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される。

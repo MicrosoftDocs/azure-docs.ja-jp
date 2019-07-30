@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0295162acdf358bd798e86bd7d3479f5e78d72
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: eded8eb446d36a321acf46231eee3e764ba41504
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407901"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル:Azure Active Directory と TOPdesk - Secure の統合
 
@@ -53,11 +53,11 @@ Azure AD への TOPdesk - Secure の統合を構成するには、管理対象�
 
 **ギャラリーから TOPdesk - Secure を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への TOPdesk - Secure の統合を構成するには、管理対象�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**TOPdesk - Secure**」と入力して、結果パネルで **[TOPdesk - Secure]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**TOPdesk - Secure**」と入力して、結果パネルで **[TOPdesk - Secure]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の TOPdesk - Secure](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ TOPdesk - Secure で Azure AD のシングル サインオンを構成してテ�
 
 TOPdesk - Secure で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **TOPdesk - Secure** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **TOPdesk - Secure** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[TOPdesk - Secure クライアント サポート チーム](https://www.topdesk.com/us/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -140,7 +140,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     ![Login Settings](./media/topdesk-secure-tutorial/ic790599.png "Login Settings")
 
-4. **[Login Settings]** メニューを展開し、**[General]** をクリックします。
+4. **[Login Settings]** メニューを展開し、 **[General]** をクリックします。
 
     ![General](./media/topdesk-secure-tutorial/ic790600.png "General")
 
@@ -154,7 +154,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     ![Assertion Consumer Service](./media/topdesk-secure-tutorial/ic790856.png "Assertion Consumer Service")
 
-    c. **[AssertionConsumerService]** の値をコピーし、**[TOPdesk - Secure のドメインと URL]** セクションの [応答 URL] ボックスにこの値を貼り付けます。
+    c. **[AssertionConsumerService]** の値をコピーし、 **[TOPdesk - Secure のドメインと URL]** セクションの [応答 URL] ボックスにこの値を貼り付けます。
 
 6. 証明書ファイルを作成するには、次の手順を実行します。
 
@@ -168,7 +168,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     d. コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
 
-7. **[Public]** セクションで、**[Add]** をクリックします。
+7. **[Public]** セクションで、 **[Add]** をクリックします。
 
     ![Add](./media/topdesk-secure-tutorial/ic790607.png "Add")
 
@@ -176,15 +176,15 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     ![SAML Configuration Assistant](./media/topdesk-secure-tutorial/ic790608.png "SAML Configuration Assistant")
 
-    a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
+    a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、 **[Federation Metadata]** で **[Browse]** をクリックします。
 
-    b. 証明書ファイルをアップロードするには、**[Certificate (RSA)]** で **[Browse]** をクリックします。
+    b. 証明書ファイルをアップロードするには、 **[Certificate (RSA)]** で **[Browse]** をクリックします。
 
     c. **[Private key(RSA, PKCS8, DER)]** では、独自の秘密キーをアップロードするか、[TOPdesk - Secure Client サポート チーム](https://www.topdesk.com/us/support)に問い合わせて秘密キーを取得できます。
 
-    d. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
+    d. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、 **[Logo icon]** の下の **[Browse]** をクリックします。
 
-    e. **[User name attribute]** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+    e. **[User name attribute]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
     f. **[Display name]** テキスト ボックスに、構成の名前を入力します。
 
@@ -194,7 +194,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -219,7 +219,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に TOPdesk - Public へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[TOPdesk - Secure]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[TOPdesk - Secure]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -231,15 +231,15 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-topdesk---secure-test-user"></a>TOPdesk - Secure のテスト ユーザーの作成
 
@@ -250,7 +250,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 1. **TOPdesk - Secure** 企業サイトに管理者としてサインオンします。
 
-2. 上部のメニューで、**[TOPdesk]\>[New]\>[Support Files]\>[Operator]** の順にクリックします。
+2. 上部のメニューで、 **[TOPdesk]\>[New]\>[Support Files]\>[Operator]** の順にクリックします。
 
     ![Operator](./media/topdesk-secure-tutorial/ic790610.png "Operator")
 

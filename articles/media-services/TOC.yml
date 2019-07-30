@@ -7,6 +7,20 @@
   href: video-indexer/
 - name: Azure Media Player
   href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
+- name: 仕様
+  items:
+    - name: 時間指定メタデータ
+      items:
+        - name: RTMP とスムーズ ストリーミング
+          href: media-services-specifications-live-timed-metadata.md
+    - name: プロトコル
+      items:
+        - name: スムーズ ストリーミング (MS-SSTR)
+          items:
+            - name: HEVC サポート
+              href: media-services-specifications-ms-sstr-amendment-hevc.md
+            - name: スムーズ ストリーミングの取り込み
+              href: media-services-fmp4-live-ingest-overview.md
 - name: リソース
   items:
     - name: Azure のロードマップ

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: bwren
-ms.openlocfilehash: 244df90a9db2a2b0d5f6ca6e1874bce94fc7f5bf
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 13908706f8dcec0eb2d1773bcef2ee622b4ebcc1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506410"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048639"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -98,7 +98,7 @@ Azure Application Gateway 分析ソリューションのインストールと構
 3. *[診断を有効にする]* をクリックして、次のページを開きます。
 
    ![Azure Application Gateway リソースの画像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
-4. 診断を有効にするには、*[状態]* の下の *[オン]* をクリックします。
+4. 診断を有効にするには、 *[状態]* の下の *[オン]* をクリックします。
 5. *[Log Analytics への送信]* チェックボックスをオンにします。
 6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
 7. 収集するログの種類ごとに **[ログ]** の下のチェックボックスをオンにます。
@@ -169,7 +169,7 @@ Azure Networking Analytics ソリューションのインストールと構成�
 3. *[診断を有効にする]* をクリックして、次のページを開きます。
 
    ![Azure ネットワーク セキュリティ グループのリソースの画像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
-4. 診断を有効にするには、*[状態]* の下の *[オン]* をクリックします。
+4. 診断を有効にするには、 *[状態]* の下の *[オン]* をクリックします。
 5. *[Send to Log Analytics]* (Log Analytics に送信) のチェックボックスをクリックします。
 6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
 7. 収集するログの種類ごとに **[ログ]** の下のチェックボックスをクリックします。
@@ -221,8 +221,8 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
      | 代替のデータ型は次のとおりです。 | 次のコマンドを使用します。 |
      | --- | --- |
-     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
-     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=ApplicationGatewayPerformance |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124; where ResourceType=="NETWORKSECURITYGROUPS" |
 
    + 名前に \_s、\_d、または \_g のサフィックスがあるフィールドについては、最初の文字を小文字に変更します。

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f607ba68563aa92797f45cf77db0575ae6802fee
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60695994"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385605"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボのスケジュールを作成して管理する 
 スケジュールを使用すると、ラボの VM が指定した時刻に自動的に起動およびシャットダウンされるように、クラスルーム ラボを構成できます。 1 回限りのスケジュールや定期的なスケジュールを定義することができます。 クラスルーム ラボのスケジュールを作成および管理する手順を以下に示します。 
 
 > [!IMPORTANT]
-> スケジュールされている VM の実行時間は、[ユーザーに割り当てられるクォータ](how-to-configure-student-usage.md#set-quotas-per-user)にカウントされません。 クォータは、学生が VM で消費することをスケジュールされている時間以外の時間です。 
+> スケジュールされている VM の実行時間は、[ユーザーに割り当てられるクォータ](how-to-configure-student-usage.md#set-quotas-for-users)にカウントされません。 クォータは、学生が VM で消費することをスケジュールされている時間以外の時間です。 
 
 ## <a name="add-a-schedule-once"></a>スケジュールを追加する (1 回)
 

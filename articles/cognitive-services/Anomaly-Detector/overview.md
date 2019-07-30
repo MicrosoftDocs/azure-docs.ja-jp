@@ -1,20 +1,21 @@
 ---
-title: Anomaly Detector API とは | Microsoft Docs
+title: Anomaly Detector API とは
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API の高度なアルゴリズムを利用し、時系列データ内の異常を特定します。
 services: cognitive-services
 author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
-ms.topic: article
+ms.subservice: anomaly-detector
+ms.topic: overview
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 48dffb8853d3def590e434c1683ecf038e2a194e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80e0984deff83726fd96a462a1ae8a4375db9d2e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64415819"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721611"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 

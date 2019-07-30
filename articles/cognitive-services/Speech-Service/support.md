@@ -3,19 +3,19 @@ title: サポート オプションとヘルプ オプション
 titlesuffix: Azure Cognitive Services
 description: Speech Service と統合するアプリケーションを作成するときの疑問や問題に対するヘルプやサポートを入手する方法について説明します
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.author: wolfma
-ms.openlocfilehash: fc03db268ab05c6718fb323bc30574a36d0ca092
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 07/23/2019
+ms.author: jhakulin
+ms.openlocfilehash: 981851ab9c4bbc39a2bd5df9f97a080b4f6ea388
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138151"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404807"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
@@ -49,7 +49,7 @@ Cognitive Services に関するニュースは、[Cognitive Services ブログ](
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples)
 ```
 
-ここで、*{Your Search Terms}* は検索するキーワードです。
+ここで、 *{Your Search Terms}* は検索するキーワードです。
 
 ## <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -71,7 +71,7 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 |音声翻訳 |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |音声意図 |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| 音声優先仮想アシスタント (プレビュー) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) | 
+| 音声優先仮想アシスタント (プレビュー) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。  
@@ -83,7 +83,7 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 多くの場合、サンプルはオープン ソースとして投稿されます。 質問や問題の場合は、それぞれの GitHub リポジトリで "*問題*" を作成します。 pull request を送信することもできます。 次の一覧には、サンプル リポジトリへのリンクが含まれます。
 
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Speech Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 バグ レポート、機能要求、または一般的な質問を作成し、ベスト プラクティスを共有できます。 バグ レポートの場合は、提供されているテンプレートに従ってください。
 

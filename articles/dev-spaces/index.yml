@@ -8,23 +8,31 @@ metadata:
   author: zr-msft
   ms.service: azure-dev-spaces
   ms.topic: landing-page
-  ms.date: 04/29/2019
+  ms.date: 07/08/2019
   ms.author: zarhoads
-  manager: jeconnoc
+  manager: gwallace
 abstract:
   description: Azure Dev Spaces では、Azure Kubernetes Service (AKS) で実行されるマイクロサービス アプリケーション全体をテストして反復的に開発でき、依存関係を複製したりモックしたりする必要がありません。 Azure Dev Spaces では、Azure Kubernetes Service (AKS) 共有クラスターでのチームとのコラボレーションや、AKS でのコンテナーの直接的な実行およびデバッグについて、手間と複雑さを減らすことができます。 これらのクイック スタートを使って、Azure Dev Spaces の使用方法をご確認ください。
 sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: AKS でのチーム コラボレーションのために Azure Dev Spaces を使用する方法について説明します。
+        text: AKS での Azure Dev Spaces の使用方法を学習します。
       - type: list
         style: icon48
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI を使用したチーム開発
+            text: チームの一員として開発する
             href: quickstart-team-development.md
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: アプリケーションの実行
+            href: quickstart-cli.md
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Dockerfile を使用してアプリケーションを実行する
+            href: quickstart-cli-dockerfile.md
       - type: paragraph
         text: Azure Dev Spaces を使用して AKS で直接、反復的な開発とデバッグを行う方法について説明します。
       - type: list

@@ -5,12 +5,17 @@
 - name: サポート リクエストを作成して管理するためのアクセス権
   href: create-manage-support-requests-using-access-control.md
 - name: クォータの引き上げのリクエスト
-  href: resource-manager-core-quotas-request.md
   items:
-    - name: VM シリーズ vCPU の上限の引き上げ
-      href: per-vm-quota-requests.md
-    - name: リージョンにおける合計 vCPU の上限の引き上げ
-      href: regional-quota-requests.md
+    - name: コンピューティング vCPU の上限の引き上げ
+      items:
+        - name: Resource Manager デプロイ モデル
+          items:
+            - name: VM シリーズ vCPU の上限の引き上げ
+              href: per-vm-quota-requests.md
+            - name: リージョンにおける合計 vCPU の上限の引き上げ
+              href: regional-quota-requests.md
+        - name: クラシック デプロイ モデル
+          href: classic-deployment-model-quota-increase-requests.md
     - name: ネットワークの上限の引き上げ
       href: networking-quota-requests.md
 - name: リージョンまたは SKU に関するサブスクリプションの問題のトラブルシューティング

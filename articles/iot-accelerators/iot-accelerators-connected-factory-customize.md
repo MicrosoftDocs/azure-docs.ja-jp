@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080480"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>接続済みファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 
@@ -43,11 +43,11 @@ ms.locfileid: "57010074"
 
 ダッシュボードでは、接続された OPC UA サーバーからソリューションに送信されるデータ項目を参照できます。
 
-1. **[ブラウザー]** を選択して、**[Select an OPC UA server (OPC UA サーバーの選択)]** ビューに移動します。
+1. **[ブラウザー]** を選択して、 **[Select an OPC UA server (OPC UA サーバーの選択)]** ビューに移動します。
 
     ![[Select an OPC UA server (OPC UA サーバーの選択)] ビュー][img-select-server]
 
-1. サーバーを選択し、**[接続]** をクリックします。 セキュリティの警告が表示されたら、**[続行]** をクリックします。
+1. サーバーを選択し、 **[接続]** をクリックします。 セキュリティの警告が表示されたら、 **[続行]** をクリックします。
 
     > [!NOTE]
     > この警告はサーバーごとに 1 回だけ表示され、ソリューション ダッシュボードとサーバーの間の信頼関係を確立します。
@@ -79,8 +79,6 @@ ms.locfileid: "57010074"
 
 接続済みファクトリ ソリューション アクセラレータの詳細については、次の記事を参照してください。
 
-* [接続済みファクトリ ソリューション アクセラレータのチュートリアル][lnk-rm-walkthrough]
-* [接続済みファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
 * [azureiotsolutions.com サイトでのアクセス許可][lnk-permissions]
 * [接続済みファクトリに関する FAQ](iot-accelerators-faq-cf.md)
 * [FAQ][lnk-faq]
@@ -93,7 +91,5 @@ ms.locfileid: "57010074"
 [img-published]: ./media/iot-accelerators-connected-factory-customize/published.png
 
 
-[lnk-rm-walkthrough]:iot-accelerators-connected-factory-sample-walkthrough.md
-[lnk-connect-cf]:iot-accelerators-connected-factory-gateway-deployment.md
 [lnk-permissions]: iot-accelerators-permissions.md
 [lnk-faq]: iot-accelerators-faq.md

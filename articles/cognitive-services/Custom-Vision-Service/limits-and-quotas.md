@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 85abc4a50710629d3485d05115698e59a93fc96e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cff5fdac39be2338305cd37a4b2328a28a48255
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995633"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269267"
 ---
 # <a name="limits-and-quotas"></a>制限とクォータ
 
@@ -39,3 +39,5 @@ Custom Vision Service にはキーの層が 2 つあります。 Azure portal �
 |[その他の API 呼び出し](https://go.microsoft.com/fwlink/?linkid=865446) (秒あたりトランザクション)|10|10|
 |最大画像サイズ (トレーニング画像アップロード) |6 MB|6 MB|
 |最大画像サイズ (予測)|4 MB|4 MB|
+|物体検出のトレーニング画像あたりの最大領域|200|200|
+|分類画像あたりの最大タグ数|30|30|

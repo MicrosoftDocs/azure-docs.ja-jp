@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90dbb33fa516d3a831d4e60969ac6b6c8312d539
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074507"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574144"
 ---
 # <a name="azure-security-center-search"></a>Azure Security Center の検索機能
+
+> [!NOTE]
+> Security Center の検索ダッシュボードは 2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_search)」を参照してください。
+
 Azure Security Center では、[Azure Monitor ログ検索](../log-analytics/log-analytics-log-searches.md)を使用してセキュリティ データが取得され、分析されます。 Azure Monitor ログには、データをすばやく取得して統合するためのクエリ言語が用意されています。 Security Center から Azure Monitor ログ検索を活用してクエリを作成し、収集したデータを分析できます。
 
 検索機能は、Security Center の Free レベルと Standard レベルの両方で使用できます。  ログ検索に使用できるデータは、ワークスペースに適用されるレベルによって異なります。  詳細については、「[Security Center の価格](../security-center/security-center-pricing.md)」をご覧ください。
@@ -45,7 +49,7 @@ Azure Security Center では、[Azure Monitor ログ検索](../log-analytics/log
 
    SecurityEvent | where EventID == 4625 | summarize count() by TargetAccount
 
-   結果には、ログオンに失敗した (イベント 4625) すべてのアカウントが表示されます。
+   結果には、サインインに失敗した (イベント 4625) すべてのアカウントが表示されます。
 
    ![[検索結果]][3]
 

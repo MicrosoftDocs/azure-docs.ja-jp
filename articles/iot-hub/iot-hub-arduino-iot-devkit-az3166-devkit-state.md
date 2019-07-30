@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811054"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61369850"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -40,7 +40,7 @@ ms.locfileid: "55811054"
 
 ## <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
-1. Visual Studio Code で **[タスク]** ドロップダウン メニューをクリックし、**[タスクの実行]** - **[cloud-provision]** を選択します。
+1. Visual Studio Code で **[タスク]** ドロップダウン メニューをクリックし、 **[タスクの実行]**  -  **[cloud-provision]** を選択します。
 
 2. **[ようこそ]** パネルの **[端末]** タブに進行状況状況が表示されます。
 
@@ -55,21 +55,21 @@ ms.locfileid: "55811054"
 
 6. *関数アプリ: 関数アプリ名: xxx* のような内容が表示されます。 関数アプリ名を書き留めます。これは後の手順で使用します。
 
-7. Azure Resource Manager テンプレートのデプロイが完了するまで待ちます。完了すると、*"Resource Manager template deployment: Done"* (Resource Manager テンプレートのデプロイ: 完了) というメッセージが表示されます。
+7. Azure Resource Manager テンプレートのデプロイが完了するまで待ちます。完了すると、 *"Resource Manager template deployment:Done"* (Resource Manager テンプレートのデプロイ: 完了) というメッセージが表示されます。
 
 ## <a name="deploy-function-app"></a>関数アプリのデプロイ
 
-1. Visual Studio Code で **[タスク]** ドロップダウン メニューをクリックし、**[タスクの実行]** - **[cloud-deploy]** を選択します。
+1. Visual Studio Code で **[タスク]** ドロップダウン メニューをクリックし、 **[タスクの実行]**  -  **[cloud-deploy]** を選択します。
 
-2. 関数のアプリ コードのアップロード プロセスが完了するまで待ちます。*"function app deploys: Done"* (関数アプリのデプロイ: 完了) というメッセージが表示されます。
+2. 関数のアプリ コードのアップロード プロセスが完了するまで待ちます。 *"function app deploys:Done"* (関数アプリのデプロイ: 完了) というメッセージが表示されます。
 
 ## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>DevKit で IoT Hub デバイスの接続文字列を構成する
 
 1. MXChip IoT DevKit をコンピューターに接続します。
 
-2. Visual Studio Code で **[タスク]** ドロップダウン メニューをクリックし、**[タスクの実行]** - **[config-device-connection]** を選択します。
+2. Visual Studio Code で **[タスク]** ドロップダウン メニューをクリックし、 **[タスクの実行]**  -  **[config-device-connection]** を選択します。
 
-3. MXChip IoT DevKit で、**[A]** ボタンを押したまま **[リセット]** ボタンを押し、**[A]** ボタンを放すと、DekKit が構成モードに切り替わります。
+3. MXChip IoT DevKit で、 **[A]** ボタンを押したまま **[リセット]** ボタンを押し、 **[A]** ボタンを放すと、DekKit が構成モードに切り替わります。
 
 4. 接続文字列の構成プロセスが完了するまで待ちます。
 
@@ -77,9 +77,9 @@ ms.locfileid: "55811054"
 
 MXChip IoT DevKit がコンピューターに接続されている状態で、次の手順を実行します。
 
-1. Visual Studio Code で **[タスク]** ドロップダウン メニューをクリックし、**[ビルド タスクの実行]** を選択します。Arduino スケッチがコンパイルされ、DevKit にアップロードされます。
+1. Visual Studio Code で **[タスク]** ドロップダウン メニューをクリックし、 **[ビルド タスクの実行]** を選択します。Arduino スケッチがコンパイルされ、DevKit にアップロードされます。
 
-2. スケッチが正常にアップロードされると、*"Build & Upload Sketch: success"* (スケッチのビルドとアップロード: 成功) というメッセージが表示されます。
+2. スケッチが正常にアップロードされると、 *"Build & Upload Sketch: success"* (スケッチのビルドとアップロード: 成功) というメッセージが表示されます。
 
 ## <a name="monitor-devkit-state-in-browser"></a>ブラウザーで DevKit の状態を監視する
 
@@ -106,7 +106,7 @@ MXChip IoT DevKit がコンピューターに接続されている状態で、�
 ![テスト手順の例](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Azure Portal でデバイス ツインの生データを表示できます。[IoT Hub] -\> [IoT devices] (IoT デバイス) -\> *\<ご利用のデバイス\>* -\>[Device Twin] (デバイス ツイン) と移動します。
+> Azure portal でデバイス ツインの生データを表示できます。[IoT Hub] -\> [IoT デバイス] -\> *\<お使いのデバイス\>*  -\>[デバイス ツイン] の順に選択します。
 
 ## <a name="next-steps"></a>次の手順
 

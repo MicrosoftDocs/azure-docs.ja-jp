@@ -4,17 +4,17 @@ description: 簡単な Python Runbook を作成、テスト、および発行す
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e79f4b58582ab6643a7a13ffee25503060a2208c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a030005d73df61c31c5aa1c2e1b56e52b03a56e3
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60929271"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478503"
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -153,13 +153,14 @@ Compute クライアントを使用して、VM を起動します。 Runbook に
 ```python
 # Initialize the compute management client with the RunAs credential and specify the subscription to work against.
 compute_client = ComputeManagementClient(
-azure_credential,
-  str(runas_connection["SubscriptionId"])
+    azure_credential,
+    str(runas_connection["SubscriptionId"])
 )
 
 
 print('\nStart VM')
-async_vm_start = compute_client.virtual_machines.start("MyResourceGroup", "TestVM")
+async_vm_start = compute_client.virtual_machines.start(
+    "MyResourceGroup", "TestVM")
 async_vm_start.wait()
 ```
 
@@ -188,7 +189,8 @@ vm_name = str(sys.argv[2])
 ここでは Runbook の最後の 2 行を変更し、ハード コードされた値を使用する代わりに入力パラメーターの値をご利用いただけます。
 
 ```python
-async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_name)
+async_vm_start = compute_client.virtual_machines.start(
+    resource_group_name, vm_name)
 async_vm_start.wait()
 ```
 

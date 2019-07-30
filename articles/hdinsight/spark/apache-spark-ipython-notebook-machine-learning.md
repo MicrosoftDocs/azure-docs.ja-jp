@@ -1,31 +1,29 @@
 ---
 title: チュートリアル:Azure HDInsight で Spark Machine Learning アプリケーションを作成する
-description: Apache Spark Machine Learning アプリケーションを HDInsight Spark クラスター内に Jupyter Notebook を使用して作成するための詳細な手順。
+description: チュートリアル - Apache Spark Machine Learning アプリケーションを HDInsight Spark クラスター内に Jupyter Notebook を使用して作成するための詳細な手順。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 06/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: ed6a8f83d2ef31513aeadbc6741dd77c30c30070
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: e1a52072ab3309454742d2d3e8582b58a33666e3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252880"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448703"
 ---
-# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>チュートリアル:HDInsight で Apache Spark 機械学習アプリケーションを作成する 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Spark 機械学習アプリケーションを作成する 
 
-このチュートリアルでは、[Jupyter Notebook](https://jupyter.org/) を使用して、Azure HDInsight 用の [Apache Spark](https://spark.apache.org/) 機械学習アプリケーションを作成する方法について説明します。 
+このチュートリアルでは、[Jupyter Notebook](https://jupyter.org/) を使用して、Azure HDInsight 用の [Apache Spark](https://spark.apache.org/) 機械学習アプリケーションを作成する方法について説明します。
 
 [MLlib](https://spark.apache.org/docs/latest/ml-guide.html) は、分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Spark のスケーラブル Machine Learning ライブラリです。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Apache Spark 機械学習アプリケーションを開発する
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="understand-the-data-set"></a>データ セットを理解する
 
-このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。 ファイルは `\HdiSamples\HdiSamples\SensorSampleData\hvac` にあります。 データは、HVAC (Heating, Ventilating, Air Conditioning: 冷暖房空調設備) システムがインストールされているいくつかのビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、 **[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。 データを使用して、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測できます。
+このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル **HVAC.csv** データを使用します。 ファイルは `\HdiSamples\HdiSamples\SensorSampleData\hvac` にあります。 データは、HVAC (Heating, Ventilating, Air Conditioning: 冷暖房空調設備) システムがインストールされているいくつかのビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、 **[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。 データを使用して、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測できます。
 
 ![Spark Machine Learning サンプルで使用されるデータのスナップショット](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark Machine Learning サンプルで使用されるデータのスナップショット")
 
@@ -44,7 +42,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このアプリケーションでは、Spark [ML パイプライン](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)を使用して、ドキュメントの分類を実行します。 ML パイプラインでは、実用的な機械学習パイプラインの作成および調整に役立つデータ フレームを基盤とする、統一された高レベルの API 一式が提供されます。 パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。 アプリケーションを作成するには、次の手順を実行します。
 
 1. PySpark カーネルを使用して Jupyter Notebook を作成します。 手順については、[Jupyter Notebook の作成](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)に関するページをご覧ください。
-2. このシナリオに必要な型をインポートします。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。 
+
+1. このシナリオに必要な型をインポートします。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。 
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -86,9 +85,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     training = documents.toDF()
     ```
 
-    このコード スニペットでは、実際の温度と目標温度とを比較する関数を定義します。 実際の温度の方が高い場合、ビルは暑く、値 **1.0**で示されます。 それ以外の場合、ビルは寒く、値 **0.0** で示されます。 
+    このコード スニペットでは、実際の温度と目標温度とを比較する関数を定義します。 実際の温度の方が高い場合、ビルは暑く、値 **1.0**で示されます。 それ以外の場合、ビルは寒く、値 **0.0** で示されます。
 
-4. トークナイザー、hashingTF、lr という 3 つのステージで構成される Spark 機械学習パイプラインを構成します。 
+4. トークナイザー、hashingTF、lr という 3 つのステージで構成される Spark 機械学習パイプラインを構成します。
 
     ```PySpark
     tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -100,20 +99,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     パイプラインとそのしくみの詳細については、[Apache Spark 機械学習パイプライン](https://spark.apache.org/docs/latest/ml-pipeline.html)に関するページを参照してください。
 
 5. パイプラインをトレーニング ドキュメントに適合させます。
-   
+
     ```PySpark
     model = pipeline.fit(training)
     ```
 
 6. トレーニング ドキュメントを検証してアプリケーションでの進行状況をチェックポイントします。
-   
+
     ```PySpark
     training.show()
     ```
    
     次のように出力されます。
 
-    ```
+    ```output
     +----------+----------+-----+
     |BuildingID|SystemInfo|label|
     +----------+----------+-----+
@@ -147,8 +146,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     実際の温度は目標温度より低く、ビルが寒いことを示します。 そのため、トレーニングの出力では、最初の行の **label** の値は **0.0** であり、ビルが暑くないことを意味します。
 
 7. トレーニング済みのモデルを実行するようにデータ セットを準備します。 そのためには、システム ID とシステム経過年数 (トレーニング出力では **SystemInfo** として示されます) を渡し、モデルはそのシステム ID とシステム経過年数のビルが暑すぎるか (1.0 で示されます) または寒すぎるか (0.0 で示されます) を予測します。
-   
-    ```PySpark   
+
+    ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
     Document = Row("id", "SystemInfo")
     test = sc.parallelize([(1L, "20 25"),
@@ -157,10 +156,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
                     (4L, "9 22"),
                     (5L, "17 10"),
                     (6L, "7 22")]) \
-        .map(lambda x: Document(*x)).toDF() 
+        .map(lambda x: Document(*x)).toDF()
     ```
-8. 最後に、テスト データで予測を行います。 
-   
+
+8. 最後に、テスト データで予測を行います。
+
     ```PySpark
     # Make predictions on test documents and print columns of interest
     prediction = model.transform(test)
@@ -171,7 +171,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次のように出力されます。
 
-    ```   
+    ```output  
     Row(SystemInfo=u'20 25', prediction=1.0, probability=DenseVector([0.4999, 0.5001]))
     Row(SystemInfo=u'4 15', prediction=0.0, probability=DenseVector([0.5016, 0.4984]))
     Row(SystemInfo=u'16 9', prediction=1.0, probability=DenseVector([0.4785, 0.5215]))
@@ -179,16 +179,33 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Row(SystemInfo=u'17 10', prediction=1.0, probability=DenseVector([0.4925, 0.5075]))
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
-   
+
    予測の 1 行目からは、ID が 20 でシステム経過年数が 25 年の HVAC システムではビルが暑い (**prediction=1.0**) ことがわかります。 DenseVector の 1 番目の値 (0.49999) は予測 0.0 に対応し、2 番目の値 (0.5001) は予測 1.0 に対応します。 出力では、2 番目の値はわずかに高いだけですが、モデルは **prediction=1.0**を示します。
+
 10. Notebook をシャットダウンしてリソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 このアクションにより Notebook がシャットダウンされ、Notebook が閉じます。
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Spark Machine Learning での Anaconda scikit-learn ライブラリの使用
 HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。 これには、機械学習用の **scikit-learn** ライブラリも含まれます。 ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。 scikit-learn ライブラリの使用例については、「[ https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)」を参照してください。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このアプリケーションを引き続き使用しない場合は、次の手順で作成したクラスターを削除します。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+
+1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
+
+1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** を選択します。
+
+1. **[削除]** を選択します。 **[はい]** を選択します。
+
+![HDInsight クラスターの削除](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
+
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Jupyter Notebook を使用して、Azure HDInsight 用の Apache Spark 機械学習アプリケーションを作成する方法について説明しました。 次のチュートリアルに進み、Spark ジョブに IntelliJ IDEA を使用する方法を学習してください。 
+このチュートリアルでは、Jupyter Notebook を使用して、Azure HDInsight 用の Apache Spark 機械学習アプリケーションを作成する方法について説明しました。 次のチュートリアルに進み、Spark ジョブに IntelliJ IDEA を使用する方法を学習してください。
 
 > [!div class="nextstepaction"]
 > [IntelliJ を使用した Scala Maven アプリケーションの作成](./apache-spark-create-standalone-application.md)

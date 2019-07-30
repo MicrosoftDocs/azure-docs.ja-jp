@@ -6,14 +6,14 @@ author: jimzim
 ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
-ms.service: openshift
+ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: b25e17e7064006a1421142dfcd32997cb4426e8e
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: deb136a70c24cb7bd1b6c60505cc6ab0376a7b02
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305981"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672430"
 ---
 # <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターをスケーリングする
 

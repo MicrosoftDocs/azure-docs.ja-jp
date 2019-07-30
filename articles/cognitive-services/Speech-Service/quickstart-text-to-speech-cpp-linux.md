@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: b5b768e52a40652840e9e3d3069df8a9c895f77b
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: fbc5f21bb97eabb234e2b3905796ae01877ed89f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001614"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604934"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>クイック スタート:Linux で C++ と Speech SDK を使用して音声を合成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "66001614"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.5.1` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.6.0` です。
 
 Linux 用 Speech SDK は、64 ビット アプリケーションと 32 ビット アプリケーションのどちらの構築にも使用できます。 必要なライブラリとヘッダー ファイルは、 https://aka.ms/csspeech/linuxbinary から tar ファイルとしてダウンロードできます。
 

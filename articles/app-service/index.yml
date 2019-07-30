@@ -6,14 +6,12 @@ metadata:
   title: Azure App Service のドキュメント - チュートリアル、API リファレンス
   meta.description: 'Learn how to use App Service to build and host websites and web applications, including RESTful APIs and mobile back ends.'
   services: app-service
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: app-service
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Azure App Service を使用すると、インフラストラクチャを管理することなく、任意のプログラミング言語で Web アプリケーション、モバイル バックエンド、および RESTful API を構築し、ホストできます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Azure DevOps、または任意の Git リポジトリからの自動デプロイが可能になります。 クイック スタート、チュートリアル、およびサンプルを使用して、Azure App Service の使用方法を学習してください。
   aside:

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 06/24/2019
 ms.author: orspodek
-ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394508"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449647"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -140,6 +140,7 @@ Azure Data Explorer からデータをコピーするには、コピー アク�
 | type | コピー アクティビティのソースの **type** プロパティを、次の値に設定する必要があります:**AzureDataExplorerSource** | はい |
 | query | [KQL 形式](/azure/kusto/query/)で指定された読み取り専用要求。 参照としてカスタム KQL クエリを使用します。 | はい |
 | queryTimeout | クエリ要求がタイムアウトするまでの待機時間。既定値は 10 分 (00:10:00)、許容される最大値は 1 時間 (01:00:00) です。 | いいえ |
+| noTruncation | 返される結果セットを切り詰めるかどうかを示します。 既定では、結果は 500,000 件のレコードまたは 64 MB の後に切り詰められます。 アクティビティの適切な動作のためには、切り詰めを強くお勧めします。 |いいえ |
 
 >[!NOTE]
 >既定で、Azure Data Explorer ソースでは、500,000 レコードまたは 64 MB のサイズ制限があります。 切り捨てることなくすべてのレコードを取得するには、クエリの先頭に `set notruncation;` を指定します。 詳細については、「[Query limits (クエリの制限)](https://docs.microsoft.com/azure/kusto/concepts/querylimits)」を参照してください。

@@ -4,7 +4,7 @@ description: SR-IOV を使用して InfiniBand を有効にする方法につい
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,27 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 81acb804ed2ebb9e88bc7d8281a7fa52359d4455
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809799"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797526"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>SR-IOV を使用して InfiniBand を有効にする
-
 
 InfiniBand (IB) を使用してカスタム VM イメージを構成する最も簡単で推奨される方法は、InfiniBandDriverLinux または InfiniBandDriverWindows VM 拡張機能をデプロイに追加することです。
 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) および [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) でこれらの VM 拡張機能を使用する方法について説明します
 
-SR-IOV 対応の VM (現在は HB および HC シリーズ) 上で InfiniBand を手動で構成するには、次の手順を実行します。 これらの手順は RHEL/CentOS 専用です。 Ubuntu (16.04 および 18.04)、および SLES (12 SP4 および 15) の場合、受信トレイ ドライバーは適切に機能します。 Ubuntu の場合、 
-
+SR-IOV 対応の VM (現在は HB および HC シリーズ) 上で InfiniBand を手動で構成するには、次の手順を実行します。 これらの手順は RHEL/CentOS 専用です。 Ubuntu (16.04 および 18.04)、および SLES (12 SP4 および 15) の場合、受信トレイ ドライバーは適切に機能します。
 
 ## <a name="manually-install-ofed"></a>OFED を手動でインストールする
 
-[Mellanox](http://www.mellanox.com/page/products_dyn?product_family=26) から ConnectX-5 用の最新の MLNX_OFED ドライバーをインストールします。
+[Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26) から ConnectX-5 用の最新の MLNX_OFED ドライバーをインストールします。
 
 RHEL/CentOS の場合 (7.6 の場合の例は次のとおり):
+
 ```bash
 sudo yum install -y kernel-devel python-devel
 sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
@@ -42,7 +41,19 @@ tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
 sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
 ```
 
-Windows の場合、[Mellanox](http://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34) から ConnectX-5 用の WinOF-2 ドライバーをダウンロードしてインストールします。
+Windows の場合、[Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34) から ConnectX-5 用の WinOF-2 ドライバーをダウンロードしてインストールします。
+
+## <a name="enable-ipoib"></a>IPoIB を有効にする
+
+```bash
+sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
+sudo /etc/init.d/openibd restart
+if [ $? -eq 1 ]
+then
+  sudo modprobe -rv  ib_isert rpcrdma ib_srpt
+  sudo /etc/init.d/openibd restart
+fi
+```
 
 ## <a name="assign-an-ip-address"></a>IP アドレスを割り当てる
 

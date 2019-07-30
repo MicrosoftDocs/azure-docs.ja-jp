@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Bing Video Search REST API と C# を使用して動画を検索する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/19/2019
 ms.author: aahi
-ms.openlocfilehash: ea265ab876dffbb4140d8bbc48123eceaadfe34d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9ba2027641ef6cc9a86044850e8996f986992bf8
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798449"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500183"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>クイック スタート:Bing Video Search REST API と C# を使用して動画を検索する
 

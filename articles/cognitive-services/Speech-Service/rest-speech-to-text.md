@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: baaa7b1068e13863293e0968cb0bf1ffb198882b
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 9d967fa4d5ba54e4470dadc5e797067454e1769a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57894945"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606350"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
@@ -164,13 +163,13 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 > [!NOTE]
 > オーディオが不適切な表現のみで構成されており、`profanity` クエリ パラメーターが `remove` に設定されている場合、サービスは音声結果を返しません。
 
-`detailed` 形式には、`simple` 形式と同じデータに加え、`NBest` が含まれます。これは、同じ認識結果に対する他の解釈のリストです。 これらの結果は、可能性が最も高いものから順にランク付けされます。1 つ目のエントリは、メインの認識結果と同じです。  `detailed` 形式を使用しているときは、`NBest` リストに含まれるそれぞれの結果について、`DisplayText` が `Display` として返されます。
+`detailed` 形式には、`simple` 形式と同じデータに加え、`NBest` が含まれます。これは、同じ認識結果に対する他の解釈のリストです。 これらの結果は、最も可能性の高いものから最も可能性の低いものへと順位付けされます。 最初のエントリはメイン認識結果と同じです。  `detailed` 形式を使用しているときは、`NBest` リストに含まれるそれぞれの結果について、`DisplayText` が `Display` として返されます。
 
 `NBest` リスト内の各オブジェクトには以下のものが含まれます。
 
 | パラメーター | 説明 |
 |-----------|-------------|
-| `Confidence` | 0.0 (信頼度なし) から1.0 (完全信頼) までのエントリの信頼度スコア |
+| `Confidence` | 0\.0 (信頼度なし) から1.0 (完全信頼) までのエントリの信頼度スコア |
 | `Lexical` | 認識されたテキストの語彙形式: 認識された実際の単語。 |
 | `ITN` | 認識されたテキストの逆テキスト正規化 ("カノニカル") 形式。電話番号、数字、略語 (「doctor smith」から「dr smith」)、およびその他の変換を適用したものです。 |
 | `MaskedITN` | 要求された場合、不適切な表現のマスキングを適用した ITN 形式。 |

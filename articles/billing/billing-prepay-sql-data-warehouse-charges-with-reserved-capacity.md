@@ -1,19 +1,19 @@
 ---
-title: Azure の容量が予約された SQL Data Warehouse 料金の前払い | Microsoft Docs
+title: Azure の容量が予約された SQL Data Warehouse 料金を前払いする | Microsoft Docs
 description: コスト削減のために容量が予約された SQL Data Warehouse 料金を前払いする方法について説明します。
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 07/03/2019
 ms.author: banders
-ms.openlocfilehash: 3d56ee99f8056139a234477b6eed93d9fcbe2bbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cea2c8e6d476c3ea2799337ab2da1f9406731814
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371191"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565352"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>容量が予約された SQL Data Warehouse 料金の前払い
 
@@ -43,14 +43,15 @@ SQL Data Warehouse の予約サイズは、使用するコンピューティン�
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>SQL Data Warehouse の予約容量を購入する
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. サブスクリプションを選択します。 [サブスクリプション] リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量の初期コストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
   - エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。
   - 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
 4. スコープを選択します。 [スコープ] リストを使用して、サブスクリプション スコープを選択します。
-  - **[単一]** オプションを選択すると、選択したサブスクリプションでデプロイされた SQL Data Warehouse に予約割引が適用されます。
-  - **[共有]** オプションを選択すると、課金のコンテキスト内にある任意のサブスクリプションで実行されているインスタンスに予約割引が適用されます。
+  - **単一のリソース グループのスコープ** — 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
+  - **単一サブスクリプション** — 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
+  - **共有スコープ** — 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
     - エンタープライズのお客様の場合、課金コンテキストは EA 登録です。
     - 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。
 5. リージョンを選択して、予約容量でカバーされる Azure リージョンを選びます。

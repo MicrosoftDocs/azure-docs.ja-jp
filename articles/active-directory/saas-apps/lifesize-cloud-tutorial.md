@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42ba62dafd935da0cb43bdaa9cffa4960c571ffc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f751eb9dfb8ef65bea80993ddbd3a682b1d47111
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874746"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098049"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>チュートリアル:Azure Active Directory と Lifesize Cloud の統合
 
@@ -55,11 +55,11 @@ Azure AD への Lifesize Cloud の統合を構成するには、ギャラリー�
 
 **ギャラリーから Lifesize Cloud を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への Lifesize Cloud の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Lifesize Cloud**」と入力し、結果パネルで **[Lifesize Cloud]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Lifesize Cloud**」と入力し、結果パネルで **[Lifesize Cloud]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リスト内の Lifesize Cloud](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ Lifesize Cloud での Azure AD シングル サインオンを構成してテス
 
 Lifesize Cloud との Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Lifesize Cloud** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Lifesize Cloud** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、リレー状態でこれらの値を更新します。 サインオン URL と識別子の値は、[Lifesize Cloud クライアント サポート チーム](https://www.lifesize.com/en/support)に問い合わせます。リレー状態の値は、このチュートリアルで後述する SSO 構成から取得できます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -136,7 +136,7 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
 1. アプリケーション用に構成された SSO を取得するには、管理者権限で Lifesize Cloud アプリケーションにログインします。
 
-2. ページの右上にある自分の名前をクリックし、**[詳細設定]** をクリックします。
+2. ページの右上にある自分の名前をクリックし、 **[詳細設定]** をクリックします。
 
     ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
@@ -160,20 +160,20 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
     f. **[電子メール]** ボックスの SAML 属性マッピングに、値を「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
-5. 構成を確認するには、**[テスト]** ボタンをクリックします。
+5. 構成を確認するには、 **[テスト]** ボタンをクリックします。
 
     >[!NOTE]
     >テストを成功させるには、Azure AD の構成ウィザードを完了し、テストを実行するユーザーやグループにもアクセスを提供する必要があります。
 
 6. **[SSO を有効にする]** ボタンをクリックして、SSO を有効にします。
 
-7. **[更新]** ボタンをクリックして、すべての設定を保存します。 これにより、RelayState 値が生成されます。 テキスト ボックスに生成された RelayState の値をコピーし、**[Lifesize Cloud のドメインと URL]** セクションの **[リレー状態]** ボックスに貼り付けます。
+7. **[更新]** ボタンをクリックして、すべての設定を保存します。 これにより、RelayState 値が生成されます。 テキスト ボックスに生成された RelayState の値をコピーし、 **[Lifesize Cloud のドメインと URL]** セクションの **[リレー状態]** ボックスに貼り付けます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -187,7 +187,7 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -198,7 +198,7 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
 このセクションでは、Britta Simon に Lifesize Cloud へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Lifesize Cloud]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Lifesize Cloud]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -210,15 +210,15 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-lifesize-cloud-test-user"></a>Lifesize Cloud のテスト ユーザーの作成
 

@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) での基本的なイングレス コントローラーの作成
 description: Azure Kubernetes Service (AKS) クラスターで基本的な NGINX イングレス コントローラーをインストールして構成する方法について説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: iainfou
-ms.openlocfilehash: b0dfe69a77d236e7a811ca5c7407428327c62ff3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 1e5c3aa7ed4ec990dba07fb24830fae243141ad5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431001"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615592"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "66431001"
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
 - [ご自身の TLS 証明書を使用するイングレス コントローラーを作成する][aks-ingress-own-tls]
-- Let's Encrypt を使用して、[動的パブリック IP アドレスを使用][aks-ingress-tls]または[静的パブリック IP アドレスを使用][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
+- Let's Encrypt を使用して[動的パブリック IP アドレス付き][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]の TLS 証明書を自動的に生成するイングレス コントローラーを作成する
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -215,7 +215,7 @@ kubectl delete namespace ingress-basic
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
 - [ご自身の TLS 証明書を使用するイングレス コントローラーを作成する][aks-ingress-own-tls]
-- Let's Encrypt を使用して、[動的パブリック IP アドレスを使用][aks-ingress-tls]または[静的パブリック IP アドレスを使用][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
+- Let's Encrypt を使用して[動的パブリック IP アドレス付き][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]の TLS 証明書を自動的に生成するイングレス コントローラーを作成する
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 328da909449eb71df3139e06be2254eb302232a4
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692910"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514308"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -39,7 +39,9 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
 
 ## <a id="registermodel"></a> モデルを登録する
 
-機械学習モデルを Azure Machine Learning ワークスペースに登録します。 これらのモデルは、Azure Machine Learning から取得することも、どこか他の場所から取得することもできます。 次の例では、ファイルからモデルを登録する方法が示されています。
+登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、ワークスペースに単一モデルとしてそれらを登録できます。 登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
+
+機械学習モデルをご使用の Azure Machine Learning ワークスペースに登録します。 これらのモデルは、Azure Machine Learning から取得することも、どこか他の場所から取得することもできます。 次の例では、ファイルからモデルを登録する方法が示されています。
 
 ### <a name="register-a-model-from-an-experiment-run"></a>実験の実行からモデルを登録する
 
@@ -48,11 +50,18 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
+
+  > [!TIP]
+  > モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているディレクトリに設定します。
+
 + **CLI を使用する**
+
   ```azurecli-interactive
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
   ```
 
+  > [!TIP]
+  > モデルの登録に複数のファイルを含めるには、`--asset-path` を、それらのファイルが含まれているディレクトリに設定します。
 
 + **VS コードを使用する**
 
@@ -77,14 +86,22 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
                          description = "MNIST image classification CNN from ONNX Model Zoo",)
   ```
 
+  > [!TIP]
+  > モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているディレクトリに設定します。
+
 + **CLI を使用する**
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
+  > [!TIP]
+  > モデルの登録に複数のファイルを含めるには、`-p` を、それらのファイルが含まれているディレクトリに設定します。
+
 **推定所要時間**: 約 10 秒。
 
 詳細については、[Model クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)のリファレンス ドキュメントを参照してください。
+
+Azure Machine Learning service 以外でトレーニングされたモデルの使用の詳細については、[既存のモデルをデプロイする方法](how-to-deploy-existing-model.md)に関する記事を参照してください。
 
 <a name="target"></a>
 
@@ -92,14 +109,7 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
 
 次のコンピューティング ターゲット、またはコンピューティング リソースを使用して、Web サービスのデプロイをホストすることができます。 
 
-| コンピューティング ターゲット | 使用法 | 説明 |
-| ----- | ----- | ----- |
-| [ローカル Web サービス](#local) | テスト/デバッグ | 制限付きのテストとトラブルシューティングに最適。
-| [Azure Kubernetes Service (AKS)](#aks) | リアルタイムの推論 | 高スケールの運用デプロイに適しています。 自動スケール、および高速な応答時間を実現します。 |
-| [Azure Container Instances (ACI)](#aci) | テスト | CPU ベースの小規模なワークロードに最適。 |
-| [Azure Machine Learning コンピューティング](how-to-run-batch-predictions.md) | バッチ推論 | サーバーレス コンピューティングでバッチ推論を実行します。 優先順位が中程度または低い VM をサポートします。 |
-| [Azure IoT Edge](#iotedge) | (プレビュー) IoT モジュール | IoT デバイスに ML モデルをデプロイし、サービスを提供します。 |
-
+[!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
 ## <a name="prepare-to-deploy"></a>デプロイを準備する
 
@@ -115,6 +125,18 @@ Web サービスとしてデプロイするには、推論構成 (`InferenceConf
 * `init()`:通常は、この関数によってモデルがグローバル オブジェクトに読み込まれます。 この関数は、Web サービスの Docker コンテナーの起動時に 1 回だけ実行されます。
 
 * `run(input_data)`:この関数では、モデルを使用して、入力データに基づいて値が予測されます。 実行に対する入力と出力は、通常、JSON を使用してシリアル化およびシリアル化解除が実行されます。 また、未加工のバイナリ データも使用できます。 モデルに送信する前、またはクライアントに返す前のデータを変換することができます。
+
+#### <a name="what-is-getmodelpath"></a>Get_model_path とは何か
+
+モデルを登録するときに、レジストリ内のモデルを管理するために使用されるモデル名を指定します。 この名前は、ローカル ファイル システム上のモデル ファイルのパスを取得する [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) で使用します。 フォルダーまたはファイルのコレクションを登録した場合、この API では、これらのファイルを含むディレクトリのパスが返されます。
+
+モデルを登録する場合、ローカルに、またはサービスのデプロイ時に、モデルの配置場所に対応する名前を指定します。
+
+下の例では (`sklearn_mnist` という名前で登録された) `sklearn_mnist_model.pkl` という名前の単一のファイルのパスが返されます。
+
+```python
+model_path = Model.get_model_path('sklearn_mnist')
+``` 
 
 #### <a name="optional-automatic-swagger-schema-generation"></a>(任意) Automatic Swagger スキーマ生成
 
@@ -189,7 +211,7 @@ def run(data):
 
 #### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>ディクショナリ入力を使用したスクリプト例 (Power BI からの従量課金のサポート)
 
-次の例では、Dataframe を使用して、<キー: 値> ディクショナリとして入力データを定義する方法を示しています。 この方法は、Power BI からのデプロイされた Web サービスの使用でサポートされています ([Power BI から Web サービスを使用する方法について](https://docs.microsoft.com/en-us/power-bi/service-machine-learning-integration))。
+次の例では、Dataframe を使用して、<キー: 値> ディクショナリとして入力データを定義する方法を示しています。 この方法は、Power BI からのデプロイされた Web サービスの使用でサポートされています ([Power BI から Web サービスを使用する方法について](https://docs.microsoft.com/power-bi/service-machine-learning-integration))。
 
 ```python
 import json
@@ -239,13 +261,49 @@ def run(data):
 
 ### <a name="2-define-your-inferenceconfig"></a>2.InferenceConfig を定義する
 
-推論構成では、予測するモデルを構成する方法が説明されます。 次の例では、推論構成を作成する方法が示されています。
+推論構成では、予測するモデルを構成する方法が説明されます。 次の例では、推論構成を作成する方法が示されています。 この構成では、ランタイム、エントリ スクリプト、および (必要に応じて) Conda 環境ファイルを指定します。
 
 ```python
-inference_config = InferenceConfig(source_directory="C:/abc",
-                                   runtime= "python",
+inference_config = InferenceConfig(runtime= "python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
+```
+
+詳細については、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) クラスのリファレンスを参照してください。
+
+推論構成を利用したカスタム Docker イメージの使用については、[カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)に関するページを参照してください。
+
+### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig の CLI の例
+
+次の JSON ドキュメントは、Machine Learning CLI で使用する推定構成の例です。
+
+```JSON
+{
+   "entryScript": "x/y/score.py",
+   "runtime": "python",
+   "condaFile": "env/myenv.yml",
+   "sourceDirectory":"C:/abc",
+}
+```
+
+このファイルでは次のエンティティが有効です。
+
+* __entryScript__:イメージに対して実行するコードを含むローカル ファイルのパス。
+* __runtime__:イメージに使用するランタイム。 現在サポートされているランタイムは "spark-py" と "python" です。
+* __condaFile__ (省略可能):イメージに使用する Conda 環境定義を含むローカル ファイルのパス。
+* __extraDockerFileSteps__ (省略可能):イメージを設定するときに実行する追加の Docker 手順を含むローカル ファイルのパス。
+* __sourceDirectory__ (省略可能):イメージを作成するためのファイルをすべて含むフォルダーのパス。
+* __enableGpu__ (省略可能):イメージで GPU サポートを有効にするかどうか。 GPU イメージは、Azure Container Instances、Azure Machine Learning コンピューティング、Azure Virtual Machines、Azure Kubernetes Service などの Microsoft Azure サービス上で使用する必要があります。 既定値は False です。
+* __baseImage__ (省略可能):基本イメージとして使用するカスタム イメージ。 基本イメージが指定されていない場合、指定されたランタイム パラメーターに基づいた基本イメージが使用されます。
+* __baseImageRegistry__ (省略可能):基本イメージを含むイメージ レジストリ。
+* __cudaVersion__ (省略可能):GPU のサポートが必要なイメージにインストールする CUDA のバージョン。 GPU イメージは、Azure Container Instances、Azure Machine Learning コンピューティング、Azure Virtual Machines、Azure Kubernetes Service などの Microsoft Azure サービス上で使用する必要があります。 サポートされているバージョンは 9.0、9.1、10.0 です。 "enable_gpu" が設定されている場合、既定値は "9.1" です。
+
+これらのエンティティは [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) クラスのパラメーターにマップされています。
+
+次のコマンドでは、CLI を使用してモデルをデプロイする方法を示します。
+
+```azurecli-interactive
+az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```
 
 この例では、構成に次の項目が含まれています。
@@ -255,7 +313,7 @@ inference_config = InferenceConfig(source_directory="C:/abc",
 * [エントリ スクリプト](#script)。デプロイされたサービスに送信される Web 要求の処理に必要です。
 * 推論を行うために必要な Python パッケージを記述する conda ファイル
 
-InferenceConfig 機能の詳細については、「[詳細な構成設定](#advanced-config)」セクションを参照してください。
+推論構成を利用したカスタム Docker イメージの使用については、[カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)に関するページを参照してください。
 
 ### <a name="3-define-your-deployment-configuration"></a>手順 3.デプロイ構成を定義する
 
@@ -272,6 +330,14 @@ InferenceConfig 機能の詳細については、「[詳細な構成設定](#adv
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 次のセクションでは、デプロイ構成を作成し、それを利用して Web サービスをデプロイする方法が紹介されています。
+
+### <a name="optional-profile-your-model"></a>省略可能:モデルをプロファイリングする
+モデルをサービスとしてデプロイする前に、最適な CPU とメモリの要件を判断するためにプロファイリングを実行できます。 SDK または CLI を使用して、ご自分のモデルをプロファイリングできます。
+
+詳細は、こちらの SDK ドキュメントで確認できます: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
+
+モデルのプロファイル結果は、実行オブジェクトとして出力されます。
+モデル プロファイル スキーマの詳細については、こちらを参照してください: https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py
 
 ## <a name="deploy-to-target"></a>ターゲットにデプロイする
 
@@ -359,7 +425,7 @@ AKS クラスターが既にアタッチされている場合は、それにデ�
 AKS デプロイおよびオートスケーリングの詳細情報については、[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice) のリファレンスをご覧ください。
 
 #### 新しい AKS クラスターを作成する<a id="create-attach-aks"></a>
-**推定所要時間:** 約 5 分です。
+**推定所要時間**: 約 20 分です。
 
 AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。 複数の AKS クラスターをワークスペースに接続できます。
 
@@ -398,10 +464,11 @@ Azure Machine Learning SDK の外部で AKS クラスターを作成する方法
 
 > [!IMPORTANT]
 > [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) で、agent_count と vm_size にカスタム値を使用する場合は、agent_count と vm_size の積が 12 仮想 CPU 以上である必要があります。 たとえば、vm_size に "Standard_D3_v2" (4 仮想 CPU) を使用する場合、agent_count は 3 以上にする必要があります。
-
-**推定所要時間**: 約 20 分です。
+>
+> Azure Machine Learning SDK では、AKS クラスターのスケーリングのサポートは提供されません。 クラスター内のノードをスケーリングするには、Azure portal 内でご自分の AKS クラスターの UI を使用します。 クラスターの VM サイズではなく、ノード数のみを変更できます。
 
 #### <a name="attach-an-existing-aks-cluster"></a>既存の AKS クラスターをアタッチする
+**推定所要時間:** 約 5 分です。
 
 お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.12.## である場合は、それを使用してお客様のイメージをデプロイできます。
 
@@ -499,53 +566,33 @@ print(service.state)
 print(service.get_logs())
 ```
 
-<a id="advanced-config"></a>
+## <a name="continuous-model-deployment"></a>継続的なモデル デプロイ 
 
-## <a name="advanced-settings"></a>詳細設定 
+[Azure DevOps](https://azure.microsoft.com/services/devops/) 用の Machine Learning 拡張機能を使用して、モデルを継続的にデプロイできます。 Azure DevOps 用の Machine Learning 拡張機能を使用すると、新しい機械学習モデルが Azure Machine Learning service ワークスペースに登録されたときにデプロイ パイプラインをトリガーできます。 
 
-**<a id="customimage"></a> カスタム基本イメージを使用する**
+1. [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) にサインアップします。そうすると、任意のプラットフォームや任意のクラウドへのご自分のアプリケーションの継続的インテグレーションとデリバリーを実現できます。 Azure Pipelines は [ML パイプライン](concept-ml-pipelines.md#compare)とは異なります。 
 
-内部的には、InferenceConfig によって、サービスに必要なモデルと他のアセットが含まれる Docker イメージが作成されます。 指定されていない場合、既定の基本イメージが使用されます。
+1. [Azure DevOps プロジェクトを作成します。](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
 
-推論構成と共に使用するイメージを作成するとき、イメージは次の要件を満たす必要があります。
+1. [Azure Pipelines 用の Machine Learning 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList)をインストールします。 
 
-* Ubuntu 16.04 以上
-* Conda 4.5.# 以上
-* Python 3.5.# または 3.6.#
+1. ご自分のすべての成果物にアクセスするために、__サービス接続__を使用して、ご自分の Azure Machine Learning service ワークスペースへのサービス プリンシパル接続を設定します。 プロジェクト設定に移動し、[サービス接続] をクリックして、[Azure Resource Manager] を選択します。
 
-カスタム イメージを使用するには、推論構成の `base_image` プロパティをイメージのアドレスに設定します。 次の例は、パブリックとプライベートの両方の Azure Container Registry からイメージを使用する方法を示しています。
+    ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
 
-```python
-# use an image available in public Container Registry without authentication
-inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+1. __スコープ レベル__として AzureMLWorkspace を定義し、以降のパラメーターを入力します。
 
-# or, use an image available in a private Container Registry
-inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-inference_config.base_image_registry.address = "myregistry.azurecr.io"
-inference_config.base_image_registry.username = "username"
-inference_config.base_image_registry.password = "password"
-```
+    ![view-azure-resource-manager](media/how-to-deploy-and-where/resource-manager-connection.png)
 
-次のイメージ URI は Microsoft から提供されるイメージ向けであり、ユーザー名やパスワードの値を指定しなくても使用できます。
+1. 次に、Azure Pipelines を使用してご自分の機械学習モデルを継続的にデプロイするために、パイプラインの下で __[リリース]__ を選択します。 新しい成果物を追加し、AzureML Model 成果物と前の手順で作成したサービス接続を選択します。 デプロイをトリガーするモデルとバージョンを選択します。 
 
-* `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03`
+    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
 
-これらのイメージを使用するには、`base_image` を上記のリストにある URI に設定します。 `base_image_registry.address` を `mcr.microsoft.com` に設定します。
+1. ご自分のモデル成果物に対してモデル トリガーを有効にします。 トリガーをオンにすると、そのモデルの指定したバージョン (つまり 最新バージョン) がご自分のワークスペースに登録されるたびに、Azure DevOps のリリース パイプラインがトリガーされます。 
 
-> [!IMPORTANT]
-> CUDA または TensorRT を使用する Microsoft イメージを使用できるのは Microsoft Azure サービスのみです。
+    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
 
-Azure Container Registry に独自のイメージをアップロードする方法の詳細については、[プライベート Docker コンテナー レジストリへの最初のイメージのプッシュ](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli)に関するページを参照してください。
-
-モデルを Azure Machine Learning コンピューティングでトレーニングする場合、__バージョン 1.0.22 以上__の Azure Machine Learning SDK を使用して、トレーニング時にイメージが作成されます。 次の例は、このイメージを使用する方法を示しています。
-
-```python
-# Use an image built during training with SDK 1.0.22 or greater
-image_config.base_image = run.properties["AzureML.DerivedImageName"]
-```
+サンプル プロジェクトと例については、[MLOps リポジトリ](https://github.com/Microsoft/MLOps)をご確認ください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 デプロイされた Web サービスを削除するには、`service.delete()` を使用します。
@@ -554,6 +601,7 @@ image_config.base_image = run.properties["AzureML.DerivedImageName"]
 詳細については、[WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) と [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--) のリファレンス ドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次の手順
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

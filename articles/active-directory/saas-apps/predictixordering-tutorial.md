@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 79e9952aefc44b7c490bb9fe375487c1a3335fc8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>チュートリアル:Azure Active Directory と Predictix Ordering の統合
 
@@ -98,17 +98,17 @@ Predictix Ordering で Azure AD シングル サインオンを構成するに�
 
 3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
-    ![編集アイコン](common/edit-urls.png)
+    ![[編集] アイコン](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** ダイアログ ボックスで、次の手順を完了します。
 
     ![[基本的な SAML 構成] ダイアログ ボックス](common/sp-identifier.png)
 
-    1. **[サインオン URL]** ボックスに、このパターンで URL を入力します。
+    1. **[サイン オン URL]** ボックスに、次のパターンの URL を入力します。
 
        `https://<companyname-pricing>.ordering.predictix.com/sso/request`
 
-    1. **[識別子 (エンティティ ID)]** ボックスに、このパターンで URL を入力します。
+    1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンの URL を入力します。
 
         | |
         |--|
@@ -119,7 +119,7 @@ Predictix Ordering で Azure AD シングル サインオンを構成するに�
     > [!NOTE]
     > これらの値はプレースホルダーです。 実際のサインオン URL と識別子を使用する必要があります。 この値を取得するには、[Predictix Ordering サポート チーム](https://www.predix.io/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、実際の要件に従って、 **[証明書 (Base64)]** の横にある **[ダウンロード]** リンクを選択し、証明書を自分のコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、要件に従って **[証明書 (Base64)]** の横にある **[ダウンロード]** リンクを選択し、証明書をコンピューターに保存します。
 
     ![証明書のダウンロード リンク](common/certificatebase64.png)
 
@@ -139,15 +139,15 @@ Predictix Ordering 側でシングル サインオンを構成するには、ダ
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure portal で Britta Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal で Britta Simon という名前のテスト ユーザーを作成します。
 
-1. Azure portal で、左側のウィンドウで **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. Azure portal で、左側のウィンドウの **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-    ![[すべてのユーザー] の選択](common/users.png)
+    ![[すべてのユーザー] を選択する](common/users.png)
 
 2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![[新しいユーザー] の選択](common/new-user.png)
+    ![[新しいユーザー] を選択する](common/new-user.png)
 
 3. **[ユーザー]** ダイアログ ボックスで、次の手順を実行します。
 
@@ -157,7 +157,7 @@ Predictix Ordering 側でシングル サインオンを構成するには、ダ
   
     1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
 
-    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックスの値を書き留めます。
+    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
     1. **作成** を選択します。
 
@@ -181,7 +181,7 @@ Predictix Ordering 側でシングル サインオンを構成するには、ダ
 
     ![[ユーザーの追加] を選択する](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 6. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 画面の下部にある **[選択]** ボタンをクリックします。
 

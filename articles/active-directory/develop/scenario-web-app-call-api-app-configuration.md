@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784939"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785572"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web アプリ - コードの構成
 
@@ -44,7 +44,7 @@ Web アプリの認証コード フローをサポートするライブラリは
 
 ASP.NET Core では、`Startup.cs` ファイルで物事が行われます。 `OnAuthorizationCodeReceived` Open ID Connect イベントをサブスクライブし、このイベントから、MSAL.NET のメソッド `AcquireTokenFromAuthorizationCode` を呼び出します。これには、トークン キャッシュに格納する影響と、要求されたスコープに対するアクセス トークン、期限に近づいたときにアクセスを更新したり、別のリソースがない場合に同じユーザーの代理でトークンを取得したりするために使用される更新トークンがあります。
 
-以下のコードのコメントは、MSAL.NET と ASP.NET Core を組み込む難しい側面を理解するのに役立ちます。
+以下のコードのコメントは、MSAL.NET と ASP.NET Core を組み込む難しい側面を理解するのに役立ちます。 完全な詳細は、[ASP.NET Core Web アプリ増分チュートリアルの第 2 章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)で提供されています
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -151,9 +151,7 @@ private void ConfigureAuth(IAppBuilder app)
   Scope = Globals.BasicSignInScopes, // a basic set of permissions for user sign in & profile access
   TokenValidationParameters = new TokenValidationParameters
   {
-  // We'll inject our own issuer validation logic below.
-  ValidateIssuer = false,
-  NameClaimType = "name",
+   NameClaimType = "name",
   },
   Notifications = new OpenIdConnectAuthenticationNotifications()
   {

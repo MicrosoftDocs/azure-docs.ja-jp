@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 168a73ced039b9bced9a6aae6a138468b345b19d
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/24/2019
+ms.openlocfilehash: 8b8c200979b70e145fca64746547b37dee558848
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391683"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720436"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
@@ -37,7 +37,7 @@ HDInsight での仮想マシン (VM) は、指定されたドメインに参加�
 
 これらの点を総合すると、次の要素から成る環境をセットアップする必要があります。
 
-- Active Directory ドメイン (Azure AD DS で管理)。
+- Active Directory ドメイン (Azure AD DS で管理)。 **Azure HDInsight で使用するドメイン名は、39 文字以下である必要があります。**
 - Azure AD DS で有効になっている Secure LDAP (LDAPS)。
 - 個別の仮想ネットワークを選ぶ場合の HDInsight 仮想ネットワークから Azure AD DS 仮想ネットワークへの適切なネットワーク接続。 HDInsight 仮想ネットワーク内の VM は、仮想ネットワーク ピアリングを使用して Azure AD DS への通信経路を持つ必要があります。 HDInsight と Azure AD DS が同じ仮想ネットワーク内にデプロイされている場合、接続は自動的に提供されるので、これ以上アクションは必要ありません。
 
@@ -63,32 +63,50 @@ Azure AD と Azure AD DS を使用せずに、IaaS VM 単独でオンプレミ�
 
 フェデレーションの使用時、パスワード ハッシュが正常に同期されていても認証エラーが発生する場合は、PowerShell サービス プリンシパルのクラウド パスワード認証が有効かどうかを確認します。 有効でない場合は、Azure AD テナントに[ホーム領域の検出 (HRD) ポリシー](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)を設定する必要があります。 HRD ポリシーを確認し、設定するには:
 
-1. Azure AD PowerShell モジュールをインストールします。
+1. プレビューの [Azure AD PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)をインストールします。
 
-   ```
-   Install-Module AzureADPreview
+   ```powershell
+   Install-Module AzureAD
    ```
 
-2. グローバル管理者 (テナント管理者) の資格情報を使用して `Connect-AzureAD` を入力します。
+2. グローバル管理者 (テナント管理者) の資格情報を使用して接続します。
+   
+   ```powershell
+   Connect-AzureAD
+   ```
 
 3. Microsoft Azure PowerShell サービス プリンシパルが既に作成されているかどうかを確認します。
 
-   ```
-   $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+   ```powershell
+   Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
    ```
 
-4. 存在しない場合 (つまり `($powershellSPN -eq $null)` の場合) はサービス プリンシパルを作成します
+4. 存在しない場合は、サービス プリンシパルを作成します。
 
-   ```
+   ```powershell
    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
    ```
 
 5. ポリシーを作成し、このサービス プリンシパルにアタッチします
 
-   ```
-   $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+   ```powershell
+    # Determine whether policy exists
+    Get-AzureADPolicy | Where {$_.DisplayName -eq "EnableDirectAuth"}
 
-   Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+    # Create if not exists
+    $policy = New-AzureADPolicy `
+        -Definition @('{"HomeRealmDiscoveryPolicy":{"AllowCloudPasswordValidation":true}}') `
+        -DisplayName "EnableDirectAuth" `
+        -Type "HomeRealmDiscoveryPolicy"
+
+    # Determine whether a policy for the service principal exist
+    Get-AzureADServicePrincipalPolicy `
+        -Id $powershellSPN.ObjectId
+    
+    # Add a service principal policy if not exist
+    Add-AzureADServicePrincipalPolicy `
+        -Id $powershellSPN.ObjectId `
+        -refObjectID $policy.ID
    ```
 
 ## <a name="next-steps"></a>次の手順

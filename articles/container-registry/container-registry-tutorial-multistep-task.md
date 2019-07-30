@@ -3,23 +3,24 @@ title: チュートリアル - マルチステップ コンテナー タスク -
 description: このチュートリアルでは、ソース コードを Git リポジトリにコミットしたらクラウドでコンテナー イメージをビルド、実行、およびプッシュするマルチステップ ワークフローを自動的にトリガーするように Azure Container Registry タスクを構成する方法について説明します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 09b8e5d31bc6a4ec24633889920e2768bb7ce538
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c78c2c8279972108aee12b9b386175d0f27b7fee
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546556"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310408"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>チュートリアル:ソース コードをコミットしたらクラウドでマルチステップ コンテナー ワークフローを実行する
 
 [クイック タスク](container-registry-tutorial-quick-task.md)に加え、ACR タスクでは、ソース コードを Git リポジトリにコミットすると自動的にトリガーできる、マルチステップでマルチコンテナー ベースのワークフローをサポートしています。 
 
-このチュートリアルでは、ソース コードをコミットすると 1 つ以上のコンテナー イメージをビルド、実行、およびレジストリにプッシュするマルチステップ タスクを、サンプル YAML ファイルを使用して定義する方法について説明します。 コードのコミットで 1 つのイメージ ビルドの自動化のみを行うタスクを作成するには、「[チュートリアル:ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する](container-registry-tutorial-build-task.md)」を参照してください。 ACR タスクの概要については、「[ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する](container-registry-tasks-overview.md)」を参照してください。
+このチュートリアルでは、ソース コードをコミットすると 1 つ以上のコンテナー イメージをビルド、実行、およびレジストリにプッシュするマルチステップ タスクを、サンプル YAML ファイルを使用して定義する方法について説明します。 コードのコミットで 1 つのイメージ ビルドのみを自動化するタスクを作成するには、「[チュートリアル: ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する](container-registry-tutorial-build-task.md)」を参照してください。 ACR タスクの概要については、「[ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する](container-registry-tasks-overview.md)」を参照してください。
 
 このチュートリアルの内容:
 
@@ -79,7 +80,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-次に、次の [az acr task create][az-acr-task-create] コマンドを実行してタスクを作成します。
+次に、以下の [az acr task create][az-acr-task-create] コマンドを実行して、タスクを作成します。
 
 ```azurecli-interactive
 az acr task create \
@@ -152,7 +153,7 @@ az acr task create \
 
 ## <a name="test-the-multi-step-workflow"></a>マルチステップ ワークフローのテスト
 
-マルチステップ タスクをテストするには、[az acr task run][az-acr-task-run] コマンドを実行して手動でそれをトリガーします。
+複数ステップのタスクをテストするには、[az acr task run][az-acr-task-run] コマンドを実行して手動でそれをトリガーします。
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example1
@@ -220,7 +221,7 @@ Run ID: cf19 was successful after 18s
 
 手動実行によるタスクのテストが済んだので、次に、ソース コードを変更して自動的にトリガーします。
 
-最初に、[リポジトリ][sample-repo]のローカルな複製が含まれるディレクトリにいることを確認します。
+最初に、[リポジトリ][sample-repo]のローカルなクローンが含まれるディレクトリにいることを確実にします。
 
 ```azurecli-interactive
 cd acr-build-helloworld-node
@@ -323,7 +324,7 @@ steps:
 
 ### <a name="task-command"></a>タスクのコマンド
 
-前に定義されたシェル環境変数を使用して、次の [az acr task create][az-acr-task-create] コマンドを実行してタスクを作成します。 *mycontainerregistrydate* をご使用のレジストリの名前に置き換えます。
+前に定義されたシェル環境変数を使用して、次の [az acr task create][az-acr-task-create] コマンドを実行することで、タスクを作成します。 *mycontainerregistrydate* をご使用のレジストリの名前に置き換えます。
 
 ```azurecli-interactive
 az acr task create \
@@ -356,7 +357,7 @@ CLI は、追加したレジストリ ログイン サーバーの名前を返�
 
 ### <a name="test-the-multi-step-workflow"></a>マルチステップ ワークフローのテスト
 
-前の例と同様に、マルチステップ タスクをテストするには、[az acr task run][az-acr-task-run] コマンドを実行して手動でそれをトリガーします。 Git リポジトリへのコミットでタスクをトリガーするには、「[コミットでビルドをトリガーする](#trigger-a-build-with-a-commit)」セクションを参照してください。
+前の例と同様に、複数ステップのタスクをテストするには、[az acr task run][az-acr-task-run] コマンドを実行して手動でそれをトリガーします。 Git リポジトリへのコミットでタスクをトリガーするには、「[コミットでビルドをトリガーする](#trigger-a-build-with-a-commit)」セクションを参照してください。
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example2

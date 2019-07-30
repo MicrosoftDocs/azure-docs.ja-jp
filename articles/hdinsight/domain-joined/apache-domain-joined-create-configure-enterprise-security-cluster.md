@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: 7457c06f9f151cb310704a985c79572c7b770859
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8da50757182609402ecb035b6f3e92959758ef46
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166231"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442302"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -208,7 +208,7 @@ Azure Active Directory Domain Services (Azure AD-DS) の構成に使用される
 1. Azure ポータルにサインインします。
 1. **[リソースの作成]** をクリックし、「**Domain services**」と入力して **[Azure AD Domain Services]** を選択します。
 1. **[基本]** 画面で、以下の手順を実行します。
-    1. **[ディレクトリ名]** で、このチュートリアル用に作成した Azure Active Directory である **[HDIFabrikam]** を選択します。
+    1. **[ディレクトリ名]** で、この記事用に作成した Azure Active Directory である **[HDIFabrikam]** を選択します。
     1. **HDIFabrikam.com** の **[DNS ドメイン名]** を入力します。
     1. サブスクリプションを選択します。
     1. リソース グループ **[HDIFabrikam-CentralUS]** と **[場所]** の **[米国中部]** を指定します。
@@ -219,7 +219,7 @@ Azure Active Directory Domain Services (Azure AD-DS) の構成に使用される
 
     ![ネットワークを選択する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image086.png)
 
-1. **[管理者グループ]** 画面に、このグループを管理するために **AAD DC Administrators** という名前のグループが既に作成されているという通知が表示されます。 必要に応じてこのグループのメンバーシップを変更できますが、このチュートリアルの手順には必要ありません。 Click **OK**.
+1. **[管理者グループ]** 画面に、このグループを管理するために **AAD DC Administrators** という名前のグループが既に作成されているという通知が表示されます。 必要に応じて、このグループのメンバーシップを変更できますが、この記事の手順には必要ありません。 Click **OK**.
 
     ![管理者グループを表示する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image088.png)
 
@@ -306,12 +306,12 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         |---|---|
         | ソース | 任意 |
         | ソース ポート範囲 | * |
-        | 宛先 | 任意 |
+        | 宛先 | Any |
         | 送信先ポート範囲 | 636 |
-        | Protocol | 任意 |
-        | Action | ALLOW |
-        | 優先順位 | <Desired Number> |
-        | Name | Port_LDAP_636 |
+        | Protocol | Any |
+        | Action | Allow |
+        | 優先度 | \<指定する数字\> |
+        | EnableAdfsAuthentication | Port_LDAP_636 |
 
     ![受信セキュリティ規則](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -380,4 +380,4 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
 ## <a name="next-steps"></a>次の手順
 
-* [Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要](apache-domain-joined-introduction.md)
+* [Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要](hdinsight-security-overview.md)

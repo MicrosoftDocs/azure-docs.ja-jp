@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: fbf10e992843d9297363398ca5ea13b8e0aa10a6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/06/2019
+ms.openlocfilehash: ea8f14a7013a937ddd77baf0f50b8dca09cabad6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076327"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -39,16 +39,16 @@ HDInsight で Hive を使用するさまざまな方法を次の表に示しま�
 | **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
 | [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux、Unix、Mac OS X、または Windows |
-| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ | Windows |
+| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
 | [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |任意 (ブラウザー ベース) |
 | [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux、Unix、Mac OS X、または Windows |
 | [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ | Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
 
 ## <a name="hiveql-language-reference"></a>HiveQL 言語のリファレンス
 
-HiveQL 言語のリファレンスは、[言語マニュアル (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) で入手できます。
+HiveQL 言語のリファレンスは、[言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)で入手できます。
 
 ## <a name="hive-and-data-structure"></a>Hive とデータ構造
 
@@ -91,7 +91,7 @@ Hive で作成できるテーブルには、次の 2 種類があります。
     * 既定以外のストレージ アカウントなど、カスタムの場所が必要である。
     * データの形式、場所などが Hive 以外のプログラムによって管理される。
 
-詳細については、ブログ記事「[Hive Internal and External Tables Intro (Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
+詳細については、[Hive の内部テーブルと外部テーブルの概要](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)に関するブログ記事を参照してください。
 
 ## <a name="user-defined-functions-udf"></a>ユーザー定義関数 (UDF)
 
@@ -175,7 +175,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 * `STORED AS ORC`:Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
 
-* `INSERT OVERWRITE ... SELECT`:**[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにそのデータを挿入します。
+* `INSERT OVERWRITE ... SELECT`: **[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにそのデータを挿入します。
 
 > [!NOTE]  
 > 外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。
@@ -204,50 +204,20 @@ Azure Data Factory では、Data Factory パイプラインの一部として HD
 
 SQL Server Integration Services (SSIS) を使用して Hive ジョブを実行することができます。 Azure Feature Pack for SSIS には、HDInsight の Hive ジョブと連動する次のコンポーネントがあります。
 
-* [Azure HDInsight Hive タスク][hivetask]
+* [Azure HDInsight Hive タスク](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure サブスクリプション接続マネージャー][connectionmanager]
+* [Azure サブスクリプション接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-詳細については、[Azure Feature Pack][ssispack] のドキュメントをご覧ください。
+詳細については、[Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) のドキュメントをご覧ください。
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hive で Apache Oozie を使用する方法の詳細については、[Oozie を使用したワークフローの定義および実行](../hdinsight-use-oozie-linux-mac.md)に関するドキュメントをご覧ください。
 
-## <a id="nextsteps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、Hive と、HDInsight での Hadoop との使用方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
-* [HDInsight へのデータのアップロード][hdinsight-upload-data]
-* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
-* [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: https://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
-[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
-
-[hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-[hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
-
-
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: ../hdinsight-upload-data.md
-
-[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-
-
-[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md)
+* [HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する](./python-udf-hdinsight.md)
+* [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)

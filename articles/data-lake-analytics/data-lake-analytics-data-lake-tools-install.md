@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.openlocfilehash: 3269d38b691ec4dd9573a241c89dadc285787143
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254028"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60408137"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio のインストール
 
@@ -22,7 +22,7 @@ Visual Studio を使用して Azure Data Lake Analytics アカウントを作成
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Visual Studio**: Express を除くすべてのエディションがサポートされます。
+* **Visual Studio**:Express を除くすべてのエディションがサポートされます。
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013

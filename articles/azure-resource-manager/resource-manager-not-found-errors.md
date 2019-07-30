@@ -1,24 +1,17 @@
 ---
 title: Azure リソースが見つからないエラー | Microsoft Docs
 description: リソースが見つからない場合に、エラーを解決する方法について説明します。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0dfbfa73009b5fa47dd7bb0804b612d0c2ad0a5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c999a70ffdbed0c954cfc960b5febdaff06e4ae
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61062277"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206185"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure リソースが見つからないエラーを解決する
 

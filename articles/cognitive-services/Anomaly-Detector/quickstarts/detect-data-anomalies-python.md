@@ -1,6 +1,7 @@
 ---
-title: クイック スタート:Anomaly Detector REST API と Python を使用して異常を検出する | Microsoft Docs
-description: Anomaly Detector API を使用して、バッチとしてまたはストリーミング データに対してデータ系列内の以上を検出します。
+title: クイック スタート:Anomaly Detector REST API と Python を使用して異常を検出する
+titleSuffix: Azure Cognitive Services
+description: Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: cd37638b9bac2a1b48f0ef0abb7b18da440049f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c69bc4db35a198d73f9b29ee3ed2fa6b6f71be49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080743"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721455"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>クイック スタート:Anomaly Detector REST API および Python を使用し、時系列データ内の異常を検出する
 
@@ -82,8 +83,10 @@ ms.locfileid: "67080743"
 
 ```python
 def send_request(endpoint, url, subscription_key, request_data):
-    headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
-    response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
+    headers = {'Content-Type': 'application/json',
+               'Ocp-Apim-Subscription-Key': subscription_key}
+    response = requests.post(
+        endpoint+url, data=json.dumps(request_data), headers=headers)
     return json.loads(response.content.decode("utf-8"))
 ```
 
@@ -100,18 +103,20 @@ def send_request(endpoint, url, subscription_key, request_data):
 ```python
 def detect_batch(request_data):
     print("Detecting anomalies as a batch")
-    result = send_request(endpoint, batch_detection_url, subscription_key, request_data)
+    result = send_request(endpoint, batch_detection_url,
+                          subscription_key, request_data)
     print(json.dumps(result, indent=4))
 
     if result.get('code') != None:
-        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(result['code'], result['message']))
+        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(
+            result['code'], result['message']))
     else:
         # Find and display the positions of anomalies in the data set
         anomalies = result["isAnomaly"]
         print("Anomalies detected in the following data positions:")
         for x in range(len(anomalies)):
             if anomalies[x] == True:
-                print (x)
+                print(x)
 ```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>最新のデータ ポイントの異常状態を検出する
@@ -124,7 +129,8 @@ def detect_batch(request_data):
 def detect_latest(request_data):
     print("Determining if latest data point is an anomaly")
     # send the request, and print the JSON result
-    result = send_request(endpoint, latest_point_detection_url, subscription_key, request_data)
+    result = send_request(endpoint, latest_point_detection_url,
+                          subscription_key, request_data)
     print(json.dumps(result, indent=4))
 ```
 

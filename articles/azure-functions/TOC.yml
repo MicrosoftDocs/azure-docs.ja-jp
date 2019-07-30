@@ -45,12 +45,16 @@
           href: functions-add-output-binding-storage-queue-python.md
         - name: ストレージ - ポータル
           href: functions-integrate-storage-queue-output-binding.md
+        - name: ストレージ - Visual Studio Code
+          href: functions-add-output-binding-storage-queue-vs-code.md
 - name: チュートリアル
   items:
     - name: Functions と Logic Apps
       href: functions-twitter-email.md
     - name: サーバーレス API の作成
       href: functions-create-serverless-api.md
+    - name: VS Code での Python 関数の開発
+      href: tutorial-vs-code-serverless-python.md
     - name: OpenAPI 定義の作成
       href: functions-openapi-definition.md
     - name: 仮想ネットワークへの接続
@@ -115,7 +119,7 @@
         - name: Python
           href: functions-reference-python.md
     - name: 診断
-      href: ../app-service/overview-diagnostics.md
+      href: ../app-service/overview-diagnostics.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: パフォーマンスに関する考慮事項
       href: functions-best-practices.md
     - name: 関数プロキシ
@@ -136,6 +140,8 @@
           href: functions-test-a-function.md
         - name: ローカルでの開発とデバッグ
           href: functions-develop-local.md
+        - name: Visual Studio Code での開発
+          href: functions-develop-vs-code.md
         - name: Visual Studio 開発
           href: functions-develop-vs.md
         - name: コア ツールの開発
@@ -282,13 +288,10 @@
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
-    - name: host.json のリファレンス
+    - name: host.json 2.x のリファレンス
       href: functions-host-json.md
-      items:
-        - name: Functions 2.x
-          href: functions-host-json.md
-        - name: Functions 1.x
-          href: functions-host-json-v1.md
+    - name: host.json 1.x のリファレンス
+      href: functions-host-json-v1.md
     - name: ネットワークに関する FAQ
       href: functions-networking-faq.md
     - name: OpenAPI リファレンス

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fffa6784702f239e0af0e9e88a4b9937d20b86ed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685387"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488629"
 ---
 # <a name="registration-management"></a>登録管理
 
@@ -90,6 +90,9 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 > 既定では、登録とインストールに有効期限はありません。
 
 登録とインストールには、各デバイス/チャネルの有効な PNS ハンドルを含める必要があります。 PNS ハンドルはデバイスのクライアント アプリでのみ取得できるので、クライアント アプリを使用してそのデバイスに直接登録する方法があります。 一方、タグに関連するセキュリティの考慮事項とビジネス ロジックによっては、アプリのバックエンドでデバイス登録を管理する作業が必要になる可能性があります。
+
+> [!NOTE]
+> インストール API では Baidu サービスはサポートされていません (Registrations API ではサポートされています)。 
 
 ### <a name="templates"></a>テンプレート
 

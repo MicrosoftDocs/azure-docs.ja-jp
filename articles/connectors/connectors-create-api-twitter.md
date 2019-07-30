@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230661"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62104988"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Twitter の監視と管理を行う
 
@@ -54,12 +54,12 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 
    * 既存のロジック アプリの場合: 
    
-     * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+     * アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
        または
 
      * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
-     表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+     表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]**  を選択します。
      
        検索ボックスに、フィルターとして「Twitter」と入力します。 
        アクションの一覧で、目的のアクションを選択します。
@@ -70,7 +70,7 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 
 ## <a name="examples"></a>例
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter トリガー: 新しいツイートが投稿されたら
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter トリガー:When a new tweet is posted (新しいツイートの投稿時)
 
 このトリガーは、トリガーが新しいツイート (たとえば #Seattle というハッシュタグ付きのツイート) を検出すると、ロジック アプリ ワークフローを開始します。 このため、これらのツイートが検出されたときに、たとえばツイートの内容が含まれるファイルを Dropbox コネクタを使用して Dropbox アカウントなどのストレージに追加できます。 
 
@@ -78,7 +78,7 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 
 **企業での使用例**: このトリガーを使用して、自社に関するツイートを監視し、ツイートのコンテンツを SQL データベースにアップロードできます。
 
-### <a name="twitter-action-post-a-tweet"></a>Twitter アクション: ツイートを投稿する
+### <a name="twitter-action-post-a-tweet"></a>Twitter アクション:ツイートを投稿する
 
 このアクションは、ツイートを投稿しますが、そのツイートに既に説明したトリガーによって検出されたツイートのコンテンツが含まれるようにアクションを設定できます。 
 

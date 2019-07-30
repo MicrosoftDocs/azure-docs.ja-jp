@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: c5e58f7bc89fbe2d93f6610465abf4a92fd31406
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476121"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796994"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -83,7 +83,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元した場合のみです。
+2. `Non-authoritative answer` で返された IP アドレスをメモします。 これが変更されるのは、名前空間を別のクラスターに復元した場合のみです。
 
 名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
 

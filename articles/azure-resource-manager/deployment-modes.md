@@ -1,22 +1,17 @@
 ---
 title: Azure Resource Manager のデプロイ モード | Microsoft Docs
 description: Azure Resource Manager で完全デプロイ モードと増分デプロイ モードのどちらを使用するか指定する方法について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/14/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: b4d3a9c5e985949d813b638806f60bc86f5a163a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a53ed1eea66c976c46a21378a9c48a1ad5ce902
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789265"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508206"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
@@ -27,6 +22,8 @@ ms.locfileid: "65789265"
 ## <a name="complete-mode"></a>完全モード
 
 完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 テンプレートに指定されているが、[条件](resource-group-authoring-templates.md#condition)が false と評価されるためにデプロイされないリソースは、削除されません。
+
+[コピー ループ](resource-group-create-multiple.md)では完全モードを使用するように注意してください。 コピー ループを解決した後でテンプレートに指定されていないリソースはすべて削除されます。
 
 完全モードでは、リソースの種類に応じて削除の動作が多少異なります。 親リソースは、完全モードでデプロイされたテンプレートに含まれていない場合、自動的に削除されます。 一部の子リソースは、テンプレートに含まれていなければ、自動的には削除されません。 ただし、親リソースが削除されると、これらの子リソースも削除されます。 
 

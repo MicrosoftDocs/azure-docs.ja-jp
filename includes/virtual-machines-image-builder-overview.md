@@ -5,16 +5,16 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181157"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659849"
 ---
 組織で標準化された仮想マシン (VM) イメージを使用すると、クラウドに移行し、デプロイの一貫性を保つことができます。 通常、イメージには、事前に定義されたセキュリティと構成設定と、必要なソフトウェアが含まれています。 独自のイメージング パイプラインを設定するには、時間、インフラストラクチャ、設定が必要ですが、Azure VM Image Builder を使用すると、イメージを説明する単純な構成を用意し、それをサービスに送信するだけで、イメージが構築され、配布されます。
  
-Azure VM Image Builder (Azure Image Builder) を使用すると、Windows または Linux ベースの Azure Marketplace イメージ、既存のカスタム イメージ、または Red Hat Enterprise Linux (RHEL) ISO から始めて、独自のカスタマイズを追加することができます。 Image Builder は [HashiCorp Packer](https://packer.io/) 上に構築されているため、既存の Packer シェル プロビジョナー スクリプトをインポートすることもできます。 Azure 共有イメージ ギャラリー (virtual-machines-common-shared-image-galleries.md) で、イメージのホスト先としてマネージド イメージまたは VHD を指定することもできます。
+Azure VM Image Builder (Azure Image Builder) を使用すると、Windows または Linux ベースの Azure Marketplace イメージ、既存のカスタム イメージ、または Red Hat Enterprise Linux (RHEL) ISO から始めて、独自のカスタマイズを追加することができます。 Image Builder は [HashiCorp Packer](https://packer.io/) 上に構築されているため、既存の Packer シェル プロビジョナー スクリプトをインポートすることもできます。 [Azure Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) で、イメージのホスト先としてマネージド イメージまたは VHD を指定することもできます。
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -35,7 +35,7 @@ Azure VM Image Builder (Azure Image Builder) を使用すると、Windows また
 
 ## <a name="regions"></a>リージョン
 Azure Image Builder Service は、これらのリージョンでプレビューできるようになる予定です。 イメージは、これらのリージョン以外に配布できます。
-- 米国東部
+- East US
 - 米国東部 2
 - 米国中西部
 - 米国西部
@@ -50,6 +50,12 @@ AIB は Azure Marketplace のベース OS イメージをサポートします�
 - Windows 2016
 - Windows 2019
 
+AIB では、以下のソースとして RHEL ISO がサポートされます。
+- RHEL 7.3
+- RHEL 7.4
+- RHEL 7.5
+
+RHEL 7.6 ISO はサポートされていませんが、テスト中です。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -65,9 +71,9 @@ Azure Image Builder は、Azure リソース プロバイダーからアクセ�
 ![Azure Image Builder プロセスの概念図](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. .json ファイル形式でイメージ テンプレートを作成します。 この .json ファイルには、イメージ ソース、カスタマイズ、および配布に関する情報が含まれています。 [Azure Image Builder GitHub リポジトリ](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)には複数の例が掲載されています。
-1. サービスに送信すると、指定したリソース グループにイメージ テンプレート アーティファクトが作成されます。 バックグラウンドで、Image Builder によってソース イメージまたは ISO と、必要に応じてスクリプトがダウンロードされます。 これらは、サブスクリプションに自動的に作成される別のリソース グループに次の形式で格納されます。IT_<DestinationResourceGroup>_<TemplateName>。 
-1. イメージ テンプレートが作成されたら、次にイメージを作成できます。 バックグラウンドで、Image Builder ではテンプレートとソース ファイルを使用して、IT_<DestinationResourceGroup>_<TemplateName> リソース グループに VM、ネットワーク、およびストレージが作成されます。
-1. イメージ作成の一環として、Image Builder でテンプレートに従ってイメージが配布されてから、そのプロセス用に作成された IT_<DestinationResourceGroup>_<TemplateName> リソース グループ内の追加リソースが削除されます。
+1. サービスに送信すると、指定したリソース グループにイメージ テンプレート アーティファクトが作成されます。 バックグラウンドで、Image Builder によってソース イメージまたは ISO と、必要に応じてスクリプトがダウンロードされます。 これらは、サブスクリプションに自動的に作成される別のリソース グループに次の形式で格納されます。IT_\<DestinationResourceGroup>_\<TemplateName> 
+1. イメージ テンプレートが作成されたら、次にイメージを作成できます。 バックグラウンドで、Image Builder ではテンプレートとソース ファイルを使用して、IT_\<DestinationResourceGroup>_\<TemplateName> リソース グループに VM、ネットワーク、ストレージが作成されます。
+1. Image Builder では、イメージ作成の一環として、テンプレートに従ってイメージが配布されてから、そのプロセス用に作成された IT_\<DestinationResourceGroup>_\<TemplateName> リソース グループ内の追加リソースが削除されます。
 
 
 ## <a name="permissions"></a>アクセス許可

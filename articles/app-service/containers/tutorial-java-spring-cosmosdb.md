@@ -8,13 +8,13 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18
-ms.openlocfilehash: 069bc213695de813ad6b878db54f38a909efd1df
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.custom: seodec18, seo-java-july2019
+ms.openlocfilehash: 625e40b4dcb8ac558831508b292fd5cbcfb90b5b
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956039"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489450"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>チュートリアル:Spring と Azure Cosmos DB を使用して Java Web アプリを構築する
 
@@ -169,7 +169,7 @@ bash-3.2$ mvn package spring-boot:run
 
 アプリが開始されたら、リンク [http://localhost:8080/](http://localhost:8080/) を使用して Spring TODO アプリにローカルでアクセスできます。
 
- ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![Azure App Service で実行される Java アプリ](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 TODO アプリケーションを開始したというメッセージではなく、例外が表示される場合は、前の手順の `bash` スクリプトによって環境変数が正しくエクスポートされたかを確認し、値が、作成した Azure Cosmos DB データベースに対して正しいことを確認してください。
 
@@ -263,7 +263,7 @@ open https://spring-todo-app.azurewebsites.net
 
 アドレス バーにリモート URL が表示されて、実行されているアプリが表示されるはずです。
 
- ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![Azure App Service で実行される Java アプリ](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 

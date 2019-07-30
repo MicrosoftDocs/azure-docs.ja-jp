@@ -10,13 +10,13 @@ ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 487ad5c4f68f2fd965384a33aa9f6c0e8da351a4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
+ms.openlocfilehash: dd90dee2f973bb26a43706eb77f15778cb9116a0
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800743"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502964"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したマルチサービスの開発
 
@@ -28,7 +28,7 @@ ms.locfileid: "65800743"
 ![](media/common/multi-container.png)
 
 ### <a name="download-sample-code-for-mywebapi"></a>*mywebapi* のサンプル コードをダウンロードする
-時間を節約するために、GitHub リポジトリからサンプル コードをダウンロードしましょう。 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) に移動し、 **[Clone or download]** をクリックして GitHub リポジトリをダウンロードします。 このセクションのコードは、`samples/dotnetcore/getting-started/mywebapi` にあります。
+時間を節約するために、GitHub リポジトリからサンプル コードをダウンロードしましょう。 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces ) に移動し、 **[Clone or download]** をクリックして GitHub リポジトリをダウンロードします。 このセクションのコードは、`samples/dotnetcore/getting-started/mywebapi` にあります。
 
 ### <a name="run-mywebapi"></a>*mywebapi* を実行する
 1. "*別の Visual Studio ウィンドウ*" で `mywebapi` プロジェクトを開きます。
@@ -77,35 +77,6 @@ ms.locfileid: "65800743"
 1. F10 キーを押して続行します。 `mywebapi` プロジェクトのブレークポイントがトリガーされます。
 1. F5 キーを押して続行し、`webfrontend` プロジェクトのコードに戻ります。
 1. F5 キーをもう一度押すと要求が完了し、ブラウザーでページが返されます。 Web アプリの [About] ページに、2 つのサービスによって連結されたメッセージ "Hello from webfrontend and Hello from mywebapi" が表示されます。
-
-お疲れさまでした。 これで、各コンテナーを個別に開発して展開できる、複数コンテナー アプリケーションが作成されました。
-
-### <a name="automatic-tracing-for-http-messages"></a>HTTP メッセージの自動トレース
-お気付きかもしれませんが、*mywebapi* に対する HTTP 呼び出しを出力するための特別なコードが *webfrontend* に含まれていないにもかかわらず、出力ウィンドウに HTTP トレース メッセージが表示されます。
-```
-// The request from your browser
-default.webfrontend.856bb3af715744c6810b.eus.azds.io --gyk-> webfrontend:
-   GET /Home/About HTTP/1.1
-
-// *webfrontend* reaching out to *mywebapi*
-webfrontend-668b7ddb9f-n5rhj --pu5-> mywebapi:
-   GET /api/values/1 HTTP/1.1
-
-// Response from *mywebapi*
-webfrontend-668b7ddb9f-n5rhj <-pu5-- mywebapi:
-   HTTP/1.1 200 OK
-   Hello from mywebapi
-
-// Response from *webfrontend* to your browser
-default.webfrontend.856bb3af715744c6810b.eus.azds.io <-gyk-- webfrontend:
-   HTTP/1.1 200 OK
-   <!DOCTYPE html>
-   <html>
-   <head>
-       <meta charset="utf-8" />
-       <meta name="viewport" content="width=device-width, initial-sc...<[TRUNCATED]>
-```
-これは、Dev Spaces のインストルメンテーションから得られる "無料" の利点の 1 つです。 ここでは、開発中に複雑なマルチサービス呼び出しを追跡しやすくするために、システムを通過する HTTP 要求を追跡するコンポーネントを挿入します。
 
 ### <a name="well-done"></a>お疲れさまでした。
 これで、各コンテナーを個別に開発して展開できる、複数コンテナー アプリケーションが作成されました。

@@ -1,19 +1,18 @@
 ---
 title: Azure への SQL Server データベースのバックアップ | Microsoft Docs
 description: このチュートリアルでは、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 2a6319565aa05f34ce31a14c5fc57e591248f4ee
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 42a99c1be348a24a9325173dc275d0c416b975a2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399692"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465428"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -48,8 +47,19 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 **サポートされているデプロイ** | SQL Marketplace の Azure VM と、Marketplace 以外の (SQL Server が手動でインストールされる) VM がサポートされています。
 **サポートされている地域** | オーストラリア南東部 (ASE)、オーストラリア東部 (AE) <br> ブラジル南部 (BRS)<br> カナダ中部 (CNC)、カナダ東部 (CE)<br> 東南アジア (SEA)、東アジア (EA) <br> 米国東部 (EUS)、米国東部 2 (EUS2)、米国中西部 (WCUS)、米国西部 (WUS)、米国西部 2 (WUS 2)、米国中北部 (NCUS)、米国中部 (CUS)、米国中南部 (SCUS) <br> インド中部 (INC)、インド南部 (INS) <br> 東日本 (JPE)、西日本 (JPW) <br> 韓国中部 (KRC)、韓国南部 (KRS) <br> 北ヨーロッパ (NE)、西ヨーロッパ <br> 英国南部 (UKS)、英国西部 (UKW)
 **サポートされているオペレーティング システム** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012<br/><br/> Linux は現在サポートされていません。
-**サポートされる SQL Server のバージョン** | SQL Server 2017、SQL Server 2016、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
+**サポートされる SQL Server のバージョン** | SQL Server 2017 (詳細は[こちら](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017))、SQL Server 2016 および SP (詳細は[こちら](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack))、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
 **サポートされている .NET バージョン** | VM 内にインストールされている .NET Framework 4.5.2 以降
+
+### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>SQL Server 2008 および SQL Server 2008 R2 のサポート
+
+Azure Backup による [EOS SQL Sever](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) (SQL Server 2008 および SQL Server 2008 R2) のサポートが最近発表されました。 このソリューションは、現在、EOS SQL Server 用のプレビュー版であり、次の構成をサポートしています。
+
+1. Windows 2008 R2 SP1 で実行されている SQL Server 2008 および SQL Server 2008 R2
+2. .NET Framework 4.5.2 以降を VM にインストールする必要がある
+3. FCI とミラー化されたデータベースのバックアップはサポートされない
+
+この機能の一般提供が開始されるまで、ユーザーはこの機能について課金されません。 その他の[機能の考慮事項と制限事項](#feature-consideration-and-limitations)もすべてこれらのバージョンに適用されます。 [レジストリ キー](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration)の設定など、SQL Servers 2008 および 2008 R2 で保護を構成する前に、[前提条件](backup-sql-server-database-azure-vms.md#prerequisites)を参照してください (この機能が一般提供された場合、この手順は不要です)。
+
 
 ## <a name="feature-consideration-and-limitations"></a>機能の考慮事項と制限事項
 
@@ -65,7 +75,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 - コンテナーあたり**約 2,000 個**の SQL Server データベースをバックアップできます。 データベースの数が多い場合、複数のコンテナーを作成できます。
 - 一度に最大 **50** 個のデータベースのバックアップを構成できます。この制限により、バックアップの負荷が最適化されます。
 - サポートされているデータベースの最大サイズは **2 TB** です。これを超えるサイズの場合は、パフォーマンスの問題が生じる可能性があります。
-- サーバーあたりいくつのデータベースを保護できるかを把握するには、帯域幅、VM のサイズ、バックアップの頻度、データベースのサイズなどの要因を考慮する必要があります。Microsoft では、これらの数を自分で計算するのに役立つプランナーに取り組んでいます。 間もなく公開する予定です。
+- サーバーあたりいくつのデータベースを保護できるかを把握するには、帯域幅、VM のサイズ、バックアップの頻度、データベースのサイズなどの要因を考慮する必要があります。VM リソースとバックアップ ポリシーに基づいて、サーバーごとに使用できるデータベースの概数を算出する、リソース プランナーを[ダウンロード](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)します。
 - 可用性グループの場合は、バックアップはいくつかの要因に基づいて異なるノードから作成されます。 可用性グループのバックアップ動作を以下にまとめています。
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性グループの場合のバックアップ動作
@@ -114,9 +124,19 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 ログ |  セカンダリ
 コピーのみの完全 |  セカンダリ
 
-## <a name="fix-sql-sysadmin-permissions"></a>SQL sysadmin 権限を修正する
+## <a name="set-vm-permissions"></a>VM のアクセス許可を設定する
 
-  **UserErrorSQLNoSysadminMembership** エラーが理由でアクセス許可を修正する必要がある場合、以下の手順を実行してください。
+  SQL Server で検出を実行すると、Azure Backup により以下が行われます。
+
+* AzureBackupWindowsWorkload 拡張機能を追加します。
+* 仮想マシン上のデータベースを検出するために、NT SERVICE\AzureWLBackupPluginSvc アカウントが作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。
+* VM 上で実行されているデータベースを検出します。Azure Backup は NT AUTHORITY\SYSTEM アカウントを使用します。 このアカウントは SQL でのパブリック サインインである必要があります。
+
+Azure Marketplace で SQL Server VM を作成しなかった場合、または SQL 2008 および 2008 R2 を使用している場合、**UserErrorSQLNoSysadminMembership** エラーが発生する可能性があります。
+
+Windows 2008 R2 で **SQL 2008** および **2008 R2** を実行している場合にアクセス許可を付与するには、[こちら](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)を参照してください。
+
+その他のすべてのバージョンでは、次の手順を使用してアクセス許可を修正します。
 
   1. SQL Server sysadmin アクセス許可があるアカウントを使用して、SQL Server Management Studio (SSMS) にサインインします。 特殊な権限が必要でない限り、Windows 認証が機能するはずです。
   2. SQL Server で、**Security/Logins** フォルダーを開きます。
@@ -146,8 +166,72 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 > [!NOTE]
 > SQL Server に SQL Server の複数のインスタンスがインストールされている場合は、すべての SQL インスタンスに **NT Service\AzureWLBackupPluginSvc** アカウントに対する sysadmin アクセス許可を追加する必要があります。
 
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>SQL sysadmin に SQL 2008 および SQL 2008 R2 のアクセス許可を付与する
+
+SQL Server インスタンスに **NT AUTHORITY\SYSTEM** および **NT Service\AzureWLBackupPluginSvc** ログインを追加します。
+
+1. オブジェクト エクスプローラーで SQL Server インスタンスにアクセスします。
+2. [セキュリティ] -> [ログイン] に移動します
+3. [ログイン] を右クリックし、 *[新しいログイン]* をクリックします
+
+    ![SSMS を使用した新しいログイン](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+
+4. [全般] タブに移動し、ログイン名として「**NT AUTHORITY\SYSTEM**」と入力します。
+
+    ![SSMS のログイン名](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+
+5. *[サーバー ロール]* に移動し、 *[public]* および *[sysadmin]* ロールを選択します。
+
+    ![SSMS でのロールの選択](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+
+6. *[状態]* に移動します。 データベース エンジンに接続するためのアクセス許可を*付与*し、ログインを*有効*にします。
+
+    ![SSMS でのアクセス許可の付与](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+
+7. [OK] をクリックします。
+8. 同じ一連の手順 (上記の 1 から 7) を繰り返して、SQL Server インスタンスに NT Service\AzureWLBackupPluginSvc ログインを追加します。 ログインが既に存在する場合は、そのログインに sysadmin サーバー ロールがあることを確認します。また [状態] で、そのログインにデータベース エンジンに接続するためのアクセス許可が付与されていること、およびそのログインが有効になっていることを確認します。
+9. アクセス許可を付与した後、ポータルで **DB を再検出**します: コンテナー **->** バックアップ インフラストラクチャ **->** Azure VM でのワークロード。
+
+    ![Azure portal での DB の再検出](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+
+または、管理者モードで次の PowerShell コマンドを実行して、アクセス許可の付与を自動化できます。 インスタンス名は、既定では MSSQLSERVER に設定されます。 必要に応じて、スクリプトでインスタンス名引数を変更します。
+
+```powershell
+param(
+    [Parameter(Mandatory=$false)]
+    [string] $InstanceName = "MSSQLSERVER"
+)
+if ($InstanceName -eq "MSSQLSERVER")
+{
+    $fullInstance = $env:COMPUTERNAME   # In case it is the default SQL Server Instance
+}
+else
+{
+    $fullInstance = $env:COMPUTERNAME + "\" + $InstanceName   # In case of named instance
+}
+try
+{
+    sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT Service\AzureWLBackupPluginSvc', 'sysadmin'" # Adds login with sysadmin permission if already not available
+}
+catch
+{
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception|format-list -force
+}
+try
+{
+    sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT AUTHORITY\SYSTEM', 'sysadmin'" # Adds login with sysadmin permission if already not available
+}
+catch
+{
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception|format-list -force
+}
+```
+
+
 ## <a name="next-steps"></a>次の手順
 
-- SQL Server データベースのバックアップに[ついて学習します](backup-sql-server-database-azure-vms.md)。
-- バックアップされた SQL Server データベースの復元に[ついて学習します](restore-sql-database-azure-vm.md)。
-- バックアップされた SQL Server データベースの管理に[ついて学習します](manage-monitor-sql-database-backup.md)。
+* SQL Server データベースのバックアップに[ついて学習します](backup-sql-server-database-azure-vms.md)。
+* バックアップされた SQL Server データベースの復元に[ついて学習します](restore-sql-database-azure-vm.md)。
+* バックアップされた SQL Server データベースの管理に[ついて学習します](manage-monitor-sql-database-backup.md)。

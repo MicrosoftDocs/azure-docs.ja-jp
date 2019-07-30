@@ -49,7 +49,7 @@ az extension add --name azure-cli-iot-ext
 node --version
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip からサンプル デバイス シミュレーター Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+[https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip ) からサンプル デバイス シミュレーター Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

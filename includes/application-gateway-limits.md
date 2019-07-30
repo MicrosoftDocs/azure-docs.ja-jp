@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 592e1973344b231693077f8286a41dfd67a8d188
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 9a8d925e5d72500817028b913a80255a4339255c
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66689111"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67148438"
 ---
 | Resource | 既定/上限 | Note |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ ms.locfileid: "66689111"
 | バックエンドの HTTP 設定 |100<sup>1</sup> | |
 | ゲートウェイあたりのインスタンスの数 |32 | |
 | SSL 証明書の数 |100<sup>1</sup> |HTTP リスナーあたり 1 |
-| 最大 SSL 証明書サイズ |V1 SKU - 10 KB<br>V2 SKU - 25 KB| |
+| 最大 SSL 証明書サイズ |V1 SKU - 10 KB<br>V2 SKU - 16 KB| |
 | 認証証明書 |100 | |
 | 信頼されたルート証明書 |100 | |
 | 最小要求タイムアウト |1 秒 | |

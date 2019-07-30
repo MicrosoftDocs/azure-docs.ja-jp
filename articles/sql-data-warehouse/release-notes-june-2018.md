@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
-ms.openlocfilehash: 95c59d3e5504058e27cdb4eda311c3917d6c834a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65912234"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626147"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 6 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 6 月に導入された新しい機能と変更点について説明します。 
@@ -91,7 +91,7 @@ Central Standard Time             -05:00               1
 
 ## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>sys.dm_pdw_exec_requests に表示される Auto Stats 操作 (動作変更)
 
-[統計の自動作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics)の導入に伴い、Azure SQL Data Warehouse ではクエリの実行を最適化するために統計を生成します。 2018 年 6 月リリースには、 [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) 操作が実行されたときにレコードを [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) に追加することによって、統計が自動生成されるタイミングを監視する機能が追加されています。
+[統計の自動作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)の導入に伴い、Azure SQL Data Warehouse ではクエリの実行を最適化するために統計を生成します。 2018 年 6 月リリースには、 [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) 操作が実行されたときにレコードを [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) に追加することによって、統計が自動生成されるタイミングを監視する機能が追加されています。
 
 ```sql
 SELECT
@@ -111,7 +111,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>次の手順
-SQL Data Warehouse の概要について学習したので、次は[SQL Data Warehouse を簡単に作成する][create a SQL Data Warehouse]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
+SQL Data Warehouse の概要については学習したので、次は [SQL Data Warehouse の迅速な作成方法について学習してください。][create a SQL Data Warehouse]. If you are new to Azure, you may find the [Azure glossary][Azure glossary] が新しい用語を調べるには役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
 
 * [顧客の成功事例]
 * [ブログ]

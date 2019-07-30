@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center でのアラートの検証 | Microsoft Docs
+title: Azure Security Center でのアラートの検証 (EICAR テスト ファイル) | Microsoft Docs
 description: このドキュメントは、Azure Security Center でセキュリティ アラートを検証する場合に役立ちます。
 services: security-center
 documentationcenter: na
@@ -12,38 +12,56 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 7/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 009f5fe7243b8ce597c2be9f9c6874cdb56d103c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f65b4b74a1a91fa081bd9c0d8146d055cebb0de6
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60706065"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626309"
 ---
-# <a name="alerts-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
+# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure Security Center でのアラートの検証 (EICAR テスト ファイル)
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
 
 ## <a name="what-are-security-alerts"></a>セキュリティの警告とは何か
-Security Center は、脅威を検出して警告するために、Azure のリソース、ネットワーク、および接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) からログ データを自動的に収集、分析、および統合します。 セキュリティ アラートの詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)」を参照してください。さまざまなアラートのタイプについては、「[Azure Security Center のセキュリティ アラートの概要](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)」を参照してください。
+アラートは、Security Center がリソース上の脅威を検出したときに生成する通知です。 アラートに優先順位を付け、問題の迅速な調査に必要な情報と共に一覧表示します。 Security Center は、攻撃をどのように修復できるかに関する推奨事項も提供します。
+詳細については、「[Azure Security Center のセキュリティ アラート](security-center-alerts-overview.md)」および「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください
 
 ## <a name="alert-validation"></a>アラートの検証
+
+* [Windows](#validate-windows)
+* [Linux](#validate-linux)
+
+## Windows VM でのアラートの検証 <a name="validate-windows"></a>
+
 Security Center エージェントをコンピューターにインストールした後、アラートの攻撃対象リソースとして使用するコンピューターから次の手順を実行します。
 
-1. 実行可能ファイル (calc.exe など) をコンピューターのデスクトップまたは他の適切なディレクトリにコピーします。
-2. このファイルの名前を **ASC_AlertTest_662jfi039N.exe** に変更します。
-3. コマンド プロンプトを開き、引数 (単なるダミーの引数名) を指定してこのファイルを実行します。例: *ASC_AlertTest_662jfi039N.exe -foo*
-4. 5 ～ 10 分待って、Security Center のアラートを開きます。 次のようなアラートが表示されます。
-
-    ![アラートの検証](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
-
-このアラートを確認する際に、[Arguments Auditing Enabled]\(引数の監査が有効\) フィールドの値が [true] になっていることを確認してください。 値が [false] になっている場合は、コマンド ライン引数の監査を有効にする必要があります。 このオプションを有効にするには、次のコマンド ラインを使用します。
-
-*reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"*
-
+1. 実行可能ファイル (**calc.exe** など) をコンピューターのデスクトップまたは他の適切なディレクトリにコピーし、名前を **ASC_AlertTest_662jfi039N.exe** に変更します。
+1. コマンド プロンプトを開き、引数 (単なるダミーの引数名) を指定してこのファイルを実行します。例: ```ASC_AlertTest_662jfi039N.exe -foo```
+1. 5 ～ 10 分待って、Security Center のアラートを開きます。 以下の[例](#alert-validate)のようなアラートが表示されます。
 
 > [!NOTE]
-> この機能のデモンストレーションについては、動画「[Alert Validation in Azure Security Center (Azure Security Center でのアラート検証)](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center)」をご覧ください。
+> Windows のこのテスト アラートを確認する場合は、 **[Arguments Auditing Enabled]\(引数の監査が有効\)** フィールドが **[true]** であることを確認してください。 それが **[false]** である場合は、コマンド ライン引数の監査を有効にする必要があります。 これを有効にするには、次のコマンド ラインを使用します。
+>
+>```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
+
+## Linux VM でのアラートの検証 <a name="validate-linux"></a>
+
+Security Center エージェントをコンピューターにインストールした後、アラートの攻撃対象リソースとして使用するコンピューターから次の手順を実行します。
+1. 実行可能ファイルを任意の場所にコピーし、名前を **./asc_alerttest_662jfi039n** に変更します。例:
+
+    ```cp /bin/echo ./asc_alerttest_662jfi039n```
+
+1. コマンド プロンプトを開き、このファイルを実行します。
+
+    ```./asc_alerttest_662jfi039n testing eicar pipe```
+
+1. 5 ～ 10 分待って、Security Center のアラートを開きます。 以下の[例](#alert-validate)のようなアラートが表示されます。
+
+### アラートの例 <a name="alert-validate"></a>
+
+![アラートの検証の例](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
 
 ## <a name="see-also"></a>関連項目
 この記事では、アラートの検証プロセスについて説明しました。 この検証について理解できたら、次の記事をお読みください。

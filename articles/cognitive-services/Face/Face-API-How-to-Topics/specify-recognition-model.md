@@ -6,16 +6,16 @@ services: cognitive-services
 author: longl
 manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 88b0ac853c64e1e32a2d1c429bdf8655158f030d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411466"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68254357"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
@@ -45,36 +45,35 @@ AI による顔の検出と識別の概念を理解している必要があり�
 
 必要に応じて、_returnRecognitionModel_ パラメーター (既定値は **false**) を指定し、_recognitionModel_ が応答で返されるかどうかを指定できます。 したがって、[Face - Detect] REST API の要求 URL は次のようになります。
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
 クライアント ライブラリを使用している場合、バージョンを表す文字列を渡すことによって `recognitionModel` の値を割り当てることができます。
 未割り当てのままにした場合は、既定のモデル バージョン (_recognition_01_) が使用されます。 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceServiceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
 ```
 
 ## <a name="identify-faces-with-specified-model"></a>指定されたモデルで顔を識別する
 
-Face API は画像から顔データを抽出し、([Add face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API の呼び出しなどによって) それを **Person** オブジェクトに関連付けることができます。また、複数の **Person** オブジェクトを **PersonGroup** にまとめて格納することができます。 次に、([Face - 識別] の呼び出しによって) 新しい顔を **PersonGroup** と比較し、そのグループ内の一致した人物を識別することができます。
+Face API は画像から顔データを抽出し、([Add face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API の呼び出しなどによって) それを **Person** オブジェクトに関連付けることができます。また、複数の **Person** オブジェクトを **PersonGroup** にまとめて格納することができます。 次に、[Face - Identify] の呼び出しによって) 新しい顔を **PersonGroup** と比較し、そのグループ内の一致した人物を識別することができます
 
-**PersonGroup** は、すべての **Person** に対して 1 つの一意な認識モデルを持つ必要があります。これは、グループを作成する ([PersonGroup - 作成] または [LargePersonGroup - 作成]) ときに `recognitionModel` パラメーターを使用して指定できます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 グループは常に、その作成時に指定された認識モデルを使用します。新しい顔がグループに追加されると、その顔はこのモデルに関連付けられます。これはグループの作成後に変更することはできません。 **PersonGroup** に設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [PersonGroup - Get] API を使用します。
+**PersonGroup** は、すべての **Person** に対して 1 つの一意な認識モデルを持つ必要があります。これは、グループを作成する ([PersonGroup - Create] または [LargePersonGroup - Create]) ときに `recognitionModel` パラメーターを使用して指定できます。 このパラメーターを指定しない場合、元の `recognition_01` モデルが使用されます。 グループは常に、その作成時に指定された認識モデルを使用します。新しい顔がグループに追加されると、その顔はこのモデルに関連付けられます。これはグループの作成後に変更することはできません。 **PersonGroup** に設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [PersonGroup - Get] API を使用します。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
 // Create an empty PersonGroup with "recognition_02" model
 string personGroupId = "mypersongroupid";
-await faceServiceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
 ```
 
 このコードでは、`mypersongroupid` という ID の **PersonGroup** を作成し、_recognition_02_ モデルを使用して顔の特徴を抽出するように設定します。
 
 それに対応して、顔検出時に ([Face - Detect] API によって) この **PersonGroup** と比較するために使用するモデルを指定する必要があります。 使用するモデルは常に **PersonGroup** の設定と一致している必要があります。していない場合、互換性のないモデルが原因で操作が失敗します。
 
-[Face - 識別] API に変更はありません。検出でモデルのバージョンを指定することだけが必要です。
+[Face - Identify] API に変更はありません。検出でモデルのバージョンを指定することだけが必要です。
 
 ## <a name="find-similar-faces-with-specified-model"></a>指定されたモデルで似た顔を検索する
 
@@ -83,7 +82,7 @@ await faceServiceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
-await faceServiceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
 ```
 
 このコードは、特徴抽出のための _recognition_02_ モデルを使用して、`My face collection` という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が _recognition_02_ モデルを使用して検出 ([Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
@@ -99,8 +98,8 @@ await faceServiceClient.FaceList.CreateAsync(faceListId, "My face collection", r
 特定のデータに対して _recognition_01_ モデルと _recognition_02_ モデルのパフォーマンスを比較したい場合、次の手順を実行する必要があります。
 
 1. 2 つの **PersonGroup** を作成し、それぞれ _recognition_01_ と _recognition_02_ を指定します。
-1. 画像データを使用して顔を検出し、これら 2 つの **PersonGroup** の **Person** にそれらの顔を登録し、[PersonGroup - トレーニング] API でトレーニング プロセスをトリガーします。
-1. 両方の **PersonGroup** に対して [Face - 識別] でテストを実行し、結果を比較します。
+1. 画像データを使用して顔を検出し、これら 2 つの **PersonGroup** の **Person** にそれらの顔を登録し、[PersonGroup - Train] API でトレーニング プロセスをトリガーします。
+1. 両方の **PersonGroup** に対して [Face - Identify] でテストを実行し、結果を比較します。
 
 信頼度しきい値 (顔を識別するために要求されるモデルの信頼度を決定する 0 ～ 1 の値) をいつも指定する場合、モデルごとに異なるしきい値を使用することが必要な場合があります。 あるモデルのしきい値を別のモデルと共有することは想定されておらず、共有しても同じ結果が得られるとは限りません。
 
@@ -112,13 +111,13 @@ await faceServiceClient.FaceList.CreateAsync(faceListId, "My face collection", r
 
 [Face - Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
-[Face - 識別]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
+[Face - Identify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
 [Face - Verify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
-[PersonGroup - 作成]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244
+[PersonGroup - Create]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244
 [PersonGroup - Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246
 [PersonGroup Person - Add Face]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b
-[PersonGroup - トレーニング]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249
-[LargePersonGroup - 作成]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d
+[PersonGroup - Train]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249
+[LargePersonGroup - Create]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d
 [FaceList - Create]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b
 [FaceList - Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c
 [LargeFaceList - Create]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc

@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 11fbec81e88eec6c7daa9136eb5421387b79d71c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124336"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60998832"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure Logic Apps における B2B のエラーと解決策
 
@@ -34,7 +34,7 @@ ms.locfileid: "43124336"
 
 |   |   | 
 |---|---|
-| エラーの説明 | ID が 'AS2Identity'::'Partner1' および 'AS2Identity'::'Partner3' の契約が見つかりません | 
+| エラーの説明 | 次の ID の契約が見つかりません。'AS2Identity'::'Partner1' and'AS2Identity'::'Partner3' | 
 | ユーザー アクション | 契約に構成されている AS2-From または AS2-To が無効です。 </br>契約の構成で AS2 メッセージ ヘッダーの AS2 ID と一致するように、AS2 メッセージの "AS2-From" または "AS2-To" ヘッダーまたは契約を修正します。 |
 |   |   |     
 
@@ -64,7 +64,7 @@ ms.locfileid: "43124336"
 | ユーザー アクション | @base64ToBinary を AS2Message に追加してからパートナーに送信します。 |
 |||
 
-例: 
+例:
 
 ```json
 "HTTP": {
@@ -84,7 +84,7 @@ ms.locfileid: "43124336"
 | ユーザー アクション | @base64ToBinary を MDN に追加してからパートナーに送信します。 | 
 |||
 
-例: 
+例:
 
 ```json
 "Response": {
@@ -145,7 +145,7 @@ ms.locfileid: "43124336"
 
 |   |   | 
 |---|---|
-| エラーの説明 | InvalidTemplate。 行 '1'、列 '1902' のアクション 'Flat_File_Decoding' 入力でテンプレート言語式を処理できません: 'Required property 'content' expects a value but got null. Path ''.' (必須のプロパティ 'content' に値を指定する必要がありますが null です。パス ''。)。 |
+| エラーの説明 | InvalidTemplate。 行 '1'、列 '1902' のアクション 'Flat_File_Decoding' 入力でテンプレート言語式を処理できません。'Required property 'content' expects a value but got null. Path ''.' (必須のプロパティ 'content' に値を指定する必要がありますが null です。パス ''。)。 |
 | ユーザー アクション | このエラーは、入力メッセージに本文が含まれていないことを示します。 |
 |   |   | 
 

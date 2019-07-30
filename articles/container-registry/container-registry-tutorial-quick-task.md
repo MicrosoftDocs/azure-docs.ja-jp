@@ -3,17 +3,18 @@ title: チュートリアル - クラウドでコンテナー イメージをビ
 description: このチュートリアルでは、Azure Container Registry Task (ACR Task) 使用して Azure で Docker コンテナー イメージをビルドして、Azure Container Instances にデプロイする方法を説明します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66152127"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310453"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする
 
@@ -34,7 +35,7 @@ Dockerfile に関する専門知識をすべて、ACR Task に直接転送でき
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-ローカルで Azure CLI を使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] でログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+Azure CLI をローカルで使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] を使用してログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,7 +55,7 @@ Dockerfile に関する専門知識をすべて、ACR Task に直接転送でき
 
 リポジトリをフォークしたら、フォークを複製して、ローカル クローンを含むディレクトリを入力します。
 
-`git` を使用してリポジトリを複製し、**\<your-github-username\>** を GitHub のユーザー名に置き換えます。
+`git` を使用してリポジトリを複製し、 **\<your-github-username\>** を GitHub のユーザー名に置き換えます。
 
 ```azurecli-interactive
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -95,7 +96,7 @@ az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --loca
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
-[az acr build][az-acr-build] コマンドの出力は次の例のようになります。 ソース コード ("コンテキスト") の Azure へのアップロードと、クラウドで ACR Task によって実行された `docker build` 操作の詳細を表示できます。 ACR Task は `docker build` を使用してイメージをビルドするため、Dockerfile を変更することなく ACR Task の使用をすぐに開始できます。
+[az acr build][az-acr-build] コマンドの出力は、次のようになります。 ソース コード ("コンテキスト") の Azure へのアップロードと、クラウドで ACR Task によって実行された `docker build` 操作の詳細を表示できます。 ACR Task は `docker build` を使用してイメージをビルドするため、Dockerfile を変更することなく ACR Task の使用をすぐに開始できます。
 
 ```console
 $ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -175,7 +176,7 @@ ACR Task によって、既定でビルド イメージがレジストリに自�
 
 ### <a name="configure-registry-authentication"></a>レジストリの認証を構成する
 
-すべての運用環境では、[サービス プリンシパル][service-principal-auth]を使用して、Azure コンテナー レジストリにアクセスします。 サービス プリンシパルを使用すると、コンテナー イメージへのロールベースのアクセス制御を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
+すべての運用環境のシナリオでは、[サービス プリンシパル][service-principal-auth]を使用して、Azure コンテナー レジストリにアクセスする必要があります。 サービス プリンシパルを使用すると、コンテナー イメージへのロールベースのアクセス制御を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
 
 #### <a name="create-a-key-vault"></a>Key Vault を作成します
 
@@ -191,7 +192,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 今度は、サービス プリンシパルを作成し、その資格情報をキー コンテナーに格納する必要があります。
 
-[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドを使用してサービス プリンシパルを作成し、[az keyvault secret set][az-keyvault-secret-set] を使用して資格情報コンテナーにサービス プリンシパルの**パスワード**を格納します。
+[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set]コマンドを使用してサービス プリンシパルを作成し、サービス プリンシパルの**パスワード**を資格情報コンテナーに格納します。
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)

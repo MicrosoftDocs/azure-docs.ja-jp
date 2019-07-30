@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: f247142f26490e1899256917b64fbec7308fb281
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: chackdan
+ms.openlocfilehash: 193df34a092d9feea3e0cf370fe38543395dad92
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62107672"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871730"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>C# サービスでのサービス リモート処理通信をセキュリティで保護する
 > [!div class="op_single_selector"]

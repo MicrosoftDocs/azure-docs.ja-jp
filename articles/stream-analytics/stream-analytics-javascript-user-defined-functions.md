@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192277"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329376"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数
  
@@ -33,7 +33,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 JavaScript ユーザー定義関数は、外部との接続を必要としない、ステートレスの計算のみのスカラー関数をサポートします。 関数の戻り値には、スカラー (単一) 値のみを指定できます。 ジョブに JavaScript ユーザー定義関数を追加した後は、組み込みのスカラー関数と同様に、クエリ内の任意の場所で関数を使用できます。
 
 ここでは、JavaScript ユーザー定義関数が役立つ可能性があるシナリオをいくつか示します。
-* 正規表現関数を用いた文字列の解析と操作 (例: **Regexp_Replace()** and **Regexp_Extract()**)
+* 正規表現関数を用いた文字列の解析と操作 (例: **Regexp_Replace()** and **Regexp_Extract()** )
 * データのデコードとエンコード (例: バイナリから 16 進数への変換)
 * JavaScript の **Math** 関数を用いた数値計算の実行
 * 並び替え、結合、検索、塗りつぶしなどの配列操作の実行
@@ -55,9 +55,9 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 
 2. **[ジョブ トポロジ]** 見出しの下にある **[関数]** を選択します。 空の関数一覧が表示されます。
 
-3.  新しいユーザー定義関数を作成するには、**[追加]** を選択します。
+3.  新しいユーザー定義関数を作成するには、 **[追加]** を選択します。
 
-4.  **[新しい関数]** ブレードの **[関数の種類]** で、**[JavaScript]** を選択します。 既定の関数テンプレートがエディターに表示されます。
+4.  **[新しい関数]** ブレードの **[関数の種類]** で、 **[JavaScript]** を選択します。 既定の関数テンプレートがエディターに表示されます。
 
 5.  **[UDF alias (UDF エイリアス)]** に「**hex2Int**」と入力し、関数の実装を次のように変更します。
 
@@ -73,7 +73,7 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>クエリでの JavaScript ユーザー定義関数の呼び出し
 
-1. クエリ エディターで、**[ジョブ トポロジ]** 見出しの下にある **[クエリ]** を選択します。
+1. クエリ エディターで、 **[ジョブ トポロジ]** 見出しの下にある **[クエリ]** を選択します。
 2.  クエリを編集し、次のようにユーザー定義関数を呼び出します。
 
     ```SQL
@@ -87,7 +87,7 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
     ```
 
 3.  サンプル データ ファイルをアップロードするには、ジョブ入力を右クリックします。
-4.  クエリをテストするには、**[テスト]** を選択します。
+4.  クエリをテストするには、 **[テスト]** を選択します。
 
 
 ## <a name="supported-javascript-objects"></a>サポートされている JavaScript オブジェクト
@@ -102,8 +102,8 @@ Stream Analytics | JavaScript
 bigint | Number (JavaScript では最大 2^53 の精度の整数しか表現できません)
 DateTime | Date (JavaScript ではミリ秒のみサポートされています)
 double | Number
-nvarchar(MAX) | String
-レコード | Object
+nvarchar(MAX) | string
+Record | Object
 Array | Array
 NULL | Null
 
@@ -115,14 +115,16 @@ JavaScript | Stream Analytics
 --- | ---
 Number | Bigint (値が四捨五入され、long.MinValue と long.MaxValue の間の場合。それ以外の場合は double)
 Date | DateTime
-String | nvarchar(MAX)
-Object | レコード
+string | nvarchar(MAX)
+Object | Record
 Array | Array
-Null、未定義 | NULL
+Null, Undefined | NULL
 他のすべての種類 (関数やエラーなど) | サポート対象外 (ランタイム エラーが発生します)
 
+JavaScript 言語は大文字と小文字を区別し、JavaScript コード内のオブジェクト フィールドの大文字と小文字は、受信データのフィールドの大文字と小文字に一致する必要があります。 互換性レベル 1.0 のジョブは SQL SELECT ステートメントのフィールドを小文字に変換することに注意してください。 互換性レベル 1.1 以降では、SELECT ステートメントのフィールドが SQL クエリでの指定と同じ大文字と小文字になります。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
-JavaScript ランタイム エラーは致命的とみなされ、アクティビティ ログに表示されます。 Azure Portal からログを取得するには、ジョブに移動し、**[アクティビティ ログ]** を選択します。
+JavaScript ランタイム エラーは致命的とみなされ、アクティビティ ログに表示されます。 Azure Portal からログを取得するには、ジョブに移動し、 **[アクティビティ ログ]** を選択します。
 
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>その他の JavaScript ユーザー定義関数のパターン
@@ -155,7 +157,7 @@ FROM
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
+1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
 ## <a name="get-help"></a>問い合わせ

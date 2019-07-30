@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 07/12/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: c6979ce5cade09d4daa4e6eddd79fb69175ec902
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d92a96f928c859fba056f1d98c07ee4852aad0f1
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849397"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68002750"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Node.js Web アプリケーションの監視を開始する
 
@@ -41,21 +41,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Application Insights は、オンプレミスとクラウドのどちらで実行されているかに関係なく、インターネットに接続された任意のアプリケーションからテレメトリ データを収集できます。 このデータの表示を開始するには、次の手順を実行します。
 
-1. **[リソースの作成]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。
+1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
    ![Application Insights リソースの追加](./media/nodejs-quick-start/1createresourseappinsights.png)
 
-   ![Application Insights リソースの追加](./media/nodejs-quick-start/2createnodejs.png)
+   > [!NOTE]
+   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
 
-
-   構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
+   構成ページが表示されたら、次の表を使用して入力フィールドに入力します。 
 
     | 設定        | 値           | 説明  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
    | **アプリケーションの種類** | Node.js アプリケーション | 監視しているアプリの種類 |
-   | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
-   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **Create** をクリックしてください。
 
@@ -123,7 +122,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    </script>
    ```
 
-5. 左側の **[メトリック]** をクリックします。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。 **[Add new chart (新しいグラフを追加)]** をクリックして追加のカスタム ビューを作成したり、**[編集]** を選択して既存のグラフの種類、高さ、カラー パレット、グループ化、およびメトリックを変更したりできます。 たとえば、メトリックのドロップダウンの [ブラウザーのページ読み込み時間] を選択し、集計から [平均] を選択することで、ブラウザーの平均ページ読み込み時間を表示するグラフを作成できます。 Azure メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
+5. 左側の **[メトリック]** をクリックします。 メトリックス エクスプローラーを使用して、ご利用のソースの正常性と使用率を調べます。 **[Add new chart (新しいグラフを追加)]** をクリックして追加のカスタム ビューを作成したり、 **[編集]** を選択して既存のグラフの種類、高さ、カラー パレット、グループ化、およびメトリックを変更したりできます。 たとえば、メトリックのドロップダウンの [ブラウザーのページ読み込み時間] を選択し、集計から [平均] を選択することで、ブラウザーの平均ページ読み込み時間を表示するグラフを作成できます。 Azure メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
 
    ![サーバー メトリックのグラフ](./media/nodejs-quick-start/8metrics.png)
 
@@ -133,7 +132,7 @@ Node.js の監視に関する詳細については、[App Insights Node.js の�
 
 テストが完了したら、リソース グループとすべての関連リソースを削除できます。 これを行うには、次の手順に従います。
 
-1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。
+1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[myResourceGroup]** の順にクリックします。
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順

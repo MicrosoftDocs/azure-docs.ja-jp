@@ -8,6 +8,7 @@ manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63ff648f89a231f0077363c88709a17d157ae8c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: edda3b6d669bf78fc4febbe993bc30c244abeeeb
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190897"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334167"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -54,8 +55,8 @@ ms.locfileid: "65190897"
 > 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 >      - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `ASPNET-Quickstart`)。
->      - **[リダイレクト URI]** に `https://localhost:44368/` を追加して、**[登録]** をクリックします。
-**[認証]** メニューを選択し、**[暗黙の付与]** の **[ID トークン]** を設定して、**[保存]** を選択します。
+>      - **[リダイレクト URI]** に `https://localhost:44368/` を追加して、 **[登録]** をクリックします。
+**[認証]** メニューを選択し、 **[暗黙の付与]** の **[ID トークン]** を設定して、 **[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
@@ -82,6 +83,9 @@ ms.locfileid: "65190897"
     <add key="ClientId" value="Enter_the_Application_Id_here" />
     <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
     ```
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > このクイックスタートでは、Enter_the_Supported_Account_Info_Here をサポートしています。 
 
 > [!div renderon="docs"]
 > 各値の説明:
@@ -92,7 +96,7 @@ ms.locfileid: "65190897"
 >   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
 >
 > > [!TIP]
-> > *[アプリケーション ID]*、*[ディレクトリ (テナント) ID]*、*[サポートされているアカウントの種類]* の値を見つけるには、**[概要]** ページに移動します。
+> > *[アプリケーション ID]* 、 *[ディレクトリ (テナント) ID]* 、 *[サポートされているアカウントの種類]* の値を見つけるには、 **[概要]** ページに移動します。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -196,3 +200,8 @@ public void SignIn()
 > [サインインのチュートリアル](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
+
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

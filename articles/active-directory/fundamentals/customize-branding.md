@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef3960e5c117a131b59a65196214c51e01bd3c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441644"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204577"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Office 365 など) にユーザーが サインインするときに表示されます。
@@ -58,7 +58,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
         - **バナー ロゴ**。 ユーザーがユーザー名を入力した後のサインイン ページと **[マイ アプリ]** ポータル ページに表示するロゴの .png または .jpg のバージョンを選択します。
             
-            この画像は、高さ 36 ピクセル、幅 245 ピクセルを超えることはできません。 背景とロゴの背景が調和しない可能性があるため、透過画像を使用することをお勧めします。 さらに、画像の周囲にパディングを追加しないことをお勧めします。これを行うとロゴが小さくなる可能性があります。
+            この画像は、高さ 60 ピクセル、幅 280 ピクセルを超えることはできません。 背景とロゴの背景が調和しない可能性があるため、透過画像を使用することをお勧めします。 さらに、画像の周囲にパディングを追加しないことをお勧めします。これを行うとロゴが小さくなる可能性があります。
 
         - **ユーザー名のヒント**。 ユーザーがユーザー名を忘れた場合に表示されるヒント テキストを入力します。 このテキストは、リンクもコードも含まない Unicode にする必要があり、64 文字を超えることはできません。 ゲストがアプリにサインインする場合は、このヒントを追加しないことをお勧めします。
 

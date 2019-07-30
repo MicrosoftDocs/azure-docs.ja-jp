@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: victorh
-ms.openlocfilehash: 256fb42be8fec056ed7d10cfc4197a1b5a33fac1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66e4a578e3f443f4cbc3f6e5467cf9a86adf05fe
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807165"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297044"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>App Service などのマルチテナント バックエンドに対する Application Gateway のサポート
 
@@ -62,4 +62,4 @@ App Service からの応答内のホスト名によって、エンドユーザ�
 
 ## <a name="next-steps"></a>次の手順
 
-マルチテナント アプリケーション (Azure App Service の Web アプリなど) と共にアプリケーション ゲートウェイをバックエンド プール メンバーとして設定する方法については、[Application Gateway を使用する App Service の Web アプリ の構成](https://docs.microsoft.com/azure/application-gateway/create-web-app)に関するページを参照してください。
+マルチテナント アプリケーション (Azure App Service の Web アプリなど) と共にアプリケーション ゲートウェイをバックエンド プール メンバーとして設定する方法については、[Application Gateway を使用する App Service の Web アプリ の構成](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)に関するページを参照してください。

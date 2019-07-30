@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595982"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485189"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
 
@@ -29,7 +29,7 @@ Azure Search では、クエリにラウンドトリップ処理すべてが指�
 | 手法 | 説明 |
 |-------------|-------------|
 | [Search エクスプローラー (ポータル)](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
-| [Postman または Fiddler](search-fiddler.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Search で利用可能なすべての操作をサポートします。 この記事では、Azure Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について説明します。  |
+| [Postman または Fiddler](search-get-started-postman.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Search で利用可能なすべての操作をサポートします。 この記事では、Azure Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について説明します。  |
 | [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Search インデックスに対してクエリを実行する目的に使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
 

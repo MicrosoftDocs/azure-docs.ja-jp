@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0bc74ac0fe45f2502064340a0c3ce5b82694b06
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 414573a90e5a7b7de845b65e6e88715a26024f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245276"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125783"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>AzCopy を使用して Amazon S3 バケットからデータをコピーする
 
-AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。 この記事は、AzCopy を使用して Amazon Web Services (AWS) S3 から Azure BLOB ストレージにオブジェクト、フォルダー、およびバケットをコピーする際に役立ちます。
+AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。 この記事は、AzCopy を使用して Amazon Web Services (AWS) S3 から Azure BLOB ストレージにオブジェクト、ディレクトリ、およびバケットをコピーする場合に役立ちます。
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>認証資格情報の提供方法を選択する
 
@@ -46,9 +46,12 @@ AWS アクセス キーとシークレット アクセス キーを収集して�
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
-## <a name="copy-objects-folders-and-buckets"></a>オブジェクト、フォルダー、およびバケットをコピーする
+## <a name="copy-objects-directories-and-buckets"></a>オブジェクト、ディレクトリ、バケットをコピーする
 
 AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API が使用されます。そのため、データは AWS S3 とストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
+
+> [!IMPORTANT]
+> 現在、この機能はプレビュー段階にあります。 コピー操作後に S3 バケットからデータを削除する場合は、データを削除する前に、データがストレージ アカウントに適切にコピーされたことを確認します。
 
 ### <a name="copy-an-object"></a>オブジェクトをコピーする
 
@@ -62,14 +65,14 @@ AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/res
 >
 > また、仮想ホスト形式の URL も使用できます (例: `http://bucket.s3.amazonaws.com`)。 
 >
-> バケットの仮想ホスティングの詳細については、「バケットの仮想ホスティング」(https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)) を参照してください。
+> バケットの仮想ホスティングの詳細については、「バケットの仮想ホスティング」(https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) ) を参照してください。
 
-### <a name="copy-a-folder"></a>フォルダーをコピーする
+### <a name="copy-a-directory"></a>ディレクトリをコピーする
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<folder-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<folder-name>" --recursive=true` |
-| **例** | `azcopy cp "https://s3.amazonaws.com/mybucket/myfolder" "https://mystorageaccount.blob.core.windows.net/mycontainer/myfolder" --recursive=true` |
+| **構文** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
+| **例** | `azcopy cp "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>バケットをコピーする
 

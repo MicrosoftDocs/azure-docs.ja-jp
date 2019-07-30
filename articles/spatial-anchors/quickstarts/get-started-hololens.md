@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7a9eedfe851bb8b5519d0831f47cf6787345a1f8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 80dcdd666c1067f2fc9415a663f26b82d1335d5f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996290"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "67135276"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>クイック スタート:Azure Spatial Anchors を使用して HoloLens アプリを C++/WinRT と DirectX で作成する
 
@@ -32,9 +32,9 @@ ms.locfileid: "59996290"
 
 このクイック スタートを実行するには、以下が必要です。
 
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a>、**ユニバーサル Windows プラットフォーム開発**ワークロード、**Windows 10 SDK (10.0.17763.0 以降)** コンポーネント、および <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> がインストールされた Windows マシン。
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a>、**ユニバーサル Windows プラットフォーム開発**ワークロード、**Windows 10 SDK (10.0.17763.0 以降)** コンポーネント、および <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> がインストールされた Windows マシン。
 - [Visual Studio Marketplace](https://marketplace.visualstudio.com/) から Visual Studio 用の [C++/WinRT Visual Studio 拡張機能 (VSIX)](https://aka.ms/cppwinrt/vsix) をインストールする必要があります。
-- [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイス。 この記事では、[Windows 10 October 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (別名 RS5) が適用された HoloLens デバイスが必要です。 HoloLens を最新のリリースに更新するには、**[設定]** アプリを開き、**[更新とセキュリティ]** を選択し、**[更新プログラムの確認]** ボタンをクリックします。
+- [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイス。 この記事では、[Windows 10 October 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (別名 RS5) が適用された HoloLens デバイスが必要です。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** ボタンをクリックします。
 - アプリにより、その AppX マニフェストに **spatialPerception** 機能を設定する必要があります。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -57,19 +57,19 @@ Visual Studio で `HoloLens\DirectX\SampleHoloLens.sln` を開きます。
 
 ## <a name="deploy-the-app-to-your-hololens"></a>アプリを HoloLens にデプロイする
 
-**[ソリューション構成]** を **[リリース]** に変更し、**[ソリューション プラットフォーム]** を **[x86]** に変更し、デプロイ ターゲット オプションから **[デバイス]** を選択します。
+**[ソリューション構成]** を **[リリース]** に変更し、 **[ソリューション プラットフォーム]** を **[x86]** に変更し、デプロイ ターゲット オプションから **[デバイス]** を選択します。
 
-HoloLens 2 を使用している場合は、**[x86]** ではなく **[ARM]** を **[ソリューション プラットフォーム]** として使用します。
+HoloLens 2 を使用している場合は、 **[x86]** ではなく **[ARM]** を **[ソリューション プラットフォーム]** として使用します。
 
 ![Visual Studio の構成](./media/get-started-hololens/visual-studio-configuration.png)
 
 HoloLens デバイスの電源をオンにしてサインインし、USB ケーブルを使用して PC に接続します。
 
-**[デバッグ]** > **[デバッグの開始]** を選択して、アプリのデプロイとデバッグを開始します。
+**[デバッグ]**  >  **[デバッグの開始]** を選択して、アプリのデプロイとデバッグを開始します。
 
 アプリの指示に従って、アンカーを配置して再呼び出しします。
 
-Visual Studio で、**[デバッグの停止]** を選択するか、**Shift + F5** キーを押して、アプリを停止します。
+Visual Studio で、 **[デバッグの停止]** を選択するか、**Shift + F5** キーを押して、アプリを停止します。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

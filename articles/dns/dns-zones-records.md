@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 7f69d77ac7a6c2a17ef2568f0c7edaef2e1ee3f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 2b9c8f1bb7407dd36623fd8ad68f9489172a1caf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174293"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64712227"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "39174293"
 
 ## <a name="domain-names"></a>ドメイン名
 
-ドメイン ネーム システムはドメインの階層構造です。 階層は、"**.**" という名前の "root" ドメインから始まります。  その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。  さらに、これらの下には "org.uk" や "co.jp" などの第 2 レベル ドメインがあります。 DNS 階層のドメインはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
+ドメイン ネーム システムはドメインの階層構造です。 階層は、" **.** " という名前の "root" ドメインから始まります。  その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。  さらに、これらの下には "org.uk" や "co.jp" などの第 2 レベル ドメインがあります。 DNS 階層のドメインはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
 
 "contoso.com" などのドメイン名は、ドメイン名レジストラーという組織から購入できます。  ドメイン名を購入すると、"www.contoso.com" という名前で会社の Web サイトを表示するなど、そのドメイン名で DNS 階層を制御する権限が付与されます。 レジストラーが顧客に代わって自社のネーム サーバーでドメインをホストする場合もあれば、顧客が他のネーム サーバーを指定できる場合もあります。
 
@@ -59,7 +59,7 @@ Azure DNS は、[ワイルドカード レコード](https://en.wikipedia.org/wi
 ### <a name="caa-records"></a>CAA レコード
 
 ドメイン所有者は CAA レコードで、ドメインの証明書を発行する権限のある証明機関 (CA) を指定できます。 これにより、CA が状況によって証明書を誤発行することを防ぐことができます。 CAA レコードには、3 つのプロパティがあります。
-* **フラグ**: 0 ～ 255 の整数。[RFC](https://tools.ietf.org/html/rfc6844#section-3) ごとに特別な意味を持つ重要なフラグを表すために使われます。
+* **フラグ**:0 から 255 の整数。[RFC](https://tools.ietf.org/html/rfc6844#section-3) ごとに特別な意味を持つ重要なフラグを表すために使われます。
 * **タグ**: 次のいずれかの ASCII 文字列。
     * **issue**: 証明書 (すべての種類) の発行を許可されている CA を指定するときに使用します。
     * **issuewild**: 証明書 (ワイルドカード証明書のみ) の発行を許可されている CA を指定するときに使用します。
@@ -111,13 +111,13 @@ DNS レコード内の複数の文字列と TXT レコード セット内の複�
 
 ## <a name="tags-and-metadata"></a>タグとメタデータ
 
-### <a name="tags"></a>タグ
+### <a name="tags"></a>Tags
 
 タグは名前と値のペアのリストで、Azure Resource Manager でリソースのラベル付けに使用されます。  Azure Resource Manager ではこのタグを使用して、Azure の課金内容に関するフィルター ビューを表示したり、必須タグに関するポリシーを設定したりします。 タグの詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/resource-group-using-tags.md)を参照してください。
 
 Azure DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。  DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、この後説明する 'メタデータ' がサポートされます。
 
-### <a name="metadata"></a>メタデータ
+### <a name="metadata"></a>Metadata
 
 レコード セットのタグの代わりに、Azure DNS では "メタデータ" を使用してレコード セットに注釈を付けることができます。  メタデータを使用すると、タグと同じように、各レコード セットに名前と値のペアを関連付けることができます。  これは、各レコード セットの用途を記録しておきたい場合などに便利です。  タグと異なる点として、メタデータは、Azure の課金内容に関するフィルター ビューを提供するためには使用できず、Azure Resource Manager のポリシーで指定することもできません。
 
@@ -134,7 +134,7 @@ Azure DNS REST API のレベルでは、HTTP ヘッダーを使用して Etag �
 | ヘッダー | 動作 |
 | --- | --- |
 | なし |PUT は常に成功します (Etag チェックなし)。 |
-| If-match <etag> |PUT は、リソースが存在し、Etag が一致する場合にのみ成功します |
+| If-match \<etag> |PUT は、リソースが存在し、Etag が一致する場合にのみ成功します |
 | If-match * |PUT はリソースが存在する場合にのみ成功します |
 | If-none-match * |PUT はリソースが存在しない場合にのみ成功します |
 

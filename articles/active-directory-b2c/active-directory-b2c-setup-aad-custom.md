@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ade695f1930c11f2d2d7ab7e0430910bd6f8705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ae821dc9ae0d739526b91bad76bca544cad2fb0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508645"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203703"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する 
 
@@ -132,7 +132,7 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 5. **METADATA** の値を `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration` に設定します。`your-AD-tenant-name` は Azure AD テナント名です。 たとえば、`https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration` のように指定します。
 6. ブラウザーを開き、更新したばかりの **METADATA** URL に移動し、**issuer** オブジェクトを見つけてその値をコピーし、XML ファイル内の **ProviderName** の値の中に貼り付けます。
 8. **client_id** と **IdTokenAudience** を、アプリケーションの登録で取得したアプリケーション ID に設定します。
-9. **CryptograhicKeys** の下で、**StorageReferenceId** の値を、自分で定義したポリシー キーに変更します。 たとえば、「 `ContosoAppSecret` 」のように入力します。
+9. **CryptographicKeys** の下で、**StorageReferenceId** の値を、自分で定義したポリシー キーに変更します。 たとえば、「 `ContosoAppSecret` 」のように入力します。
 
 ### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
 

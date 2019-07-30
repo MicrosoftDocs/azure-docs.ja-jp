@@ -8,6 +8,8 @@
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: リリース ノート
       href: sql-database-release-notes.md
+    - name: ゲートウェイの IP 移行に関する更新情報
+      href: sql-database-gateway-migration.md
 - name: クイック スタート
   expanded: true
   items:
@@ -17,7 +19,7 @@
       href: sql-database-managed-instance-quickstart-guide.md
     - name: Create
       items:
-        - name: 単一データベース - ポータル
+        - name: 単一データベース
           href: sql-database-single-database-get-started.md
         - name: 単一データベース - テンプレート
           displayName: 'Azure Resource Manager template, ARM'
@@ -28,6 +30,8 @@
       items:
         - name: サーバーレベルの IP ファイアウォール規則
           href: sql-database-server-level-firewall-rule.md
+        - name: Managed Instance でのパブリック エンドポイントの構成
+          href: sql-database-managed-instance-public-endpoint-configure.md
         - name: マネージド インスタンスへのクライアント VM 接続
           href: sql-database-managed-instance-configure-vm.md
         - name: マネージド インスタンスへのポイント対サイト接続
@@ -87,10 +91,18 @@
       items:
         - name: DMS を使用して単一データベースまたはプールされたデータベースに移行する
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+        - name: フェールオーバー グループへの追加
+          href: sql-database-single-database-failover-group-tutorial.md
         - name: 地理的に分散したデータベースの実装
           href: sql-database-implement-geo-distributed-database.md
+        - name: アクティブ geo レプリケーションの構成
+          href: sql-database-active-geo-replication-portal.md
         - name: Azure SQL Data Sync の設定
           href: sql-database-get-started-sql-data-sync.md
+    - name: エラスティック プール
+      items:
+        - name: フェールオーバー グループへの追加
+          href: sql-database-elastic-pool-failover-group-tutorial.md
     - name: マネージド インスタンス
       items:
         - name: DMS を使用したオンライン移行
@@ -207,6 +219,8 @@
           href: sql-database-managed-instance-index.yml
         - name: マネージド インスタンスの機能
           href: sql-database-managed-instance.md
+        - name: マネージド インスタンスの FAQ
+          href: sql-database-managed-instance-faq.md
         - name: Management API リファレンス
           href: sql-database-managed-instance-create-manage.md
         - name: リソース制限
@@ -239,8 +253,6 @@
               href: sql-database-active-geo-replication.md
             - name: 自動フェールオーバー グループ
               href: sql-database-auto-failover-group.md
-            - name: アクティブ geo レプリケーションの構成 - ポータル
-              href: sql-database-active-geo-replication-portal.md
             - name: レプリカのセキュリティの構成
               href: sql-database-geo-replication-security-config.md
         - name: データベースの復旧オプション
@@ -508,10 +520,10 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: アプリケーションの接続
           href: sql-database-managed-instance-connect-app.md
-        - name: パブリック エンドポイントの構成
-          href: sql-database-managed-instance-public-endpoint-configure.md
     - name: データの読み込みと移動
       items:
+        - name: 新しいリージョンへのリソースの移動
+          href: sql-database-move-resources-across-regions.md
         - name: Azure 内でのデータベースのコピー
           href: sql-database-copy.md
         - name: BACPAC ファイルからのデータベースのインポート

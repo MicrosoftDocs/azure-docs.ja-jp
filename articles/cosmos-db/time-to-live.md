@@ -4,15 +4,15 @@ description: Microsoft Azure Cosmos DB では TTL を使って、一定期間経
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 692e0ec575904ff0a70b8c73268d2df62e776bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a29e9446a8c3b703c2ec3140711f44f3c81535f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978790"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467581"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL) 
 
@@ -45,6 +45,42 @@ Time to Live 値は秒数で設定され、項目が最後に変更された時�
 * コンテナーの TTL が -1 に設定されている場合、そのコンテナー内にある Time to Live が n に設定されている項目は n 秒後に期限切れになり、その他の項目は期限切れになりません。 
 
 TTL に基づいた項目の削除は無料です。 TTL 期限切れの結果として項目が削除されても追加コストは発生しません (つまり追加の RU は消費されません)。
+
+## <a name="examples"></a>例
+
+このセクションでは、異なる Time to Live 値がコンテナーおよびアイテムに割り当てられたいくつかの例を示します。
+
+### <a name="example-1"></a>例 1
+
+コンテナーの TTL を null に設定 (DefaultTimeToLive = null)
+
+|項目の TTL| 結果|
+|---|---|
+|ttl = null|    TTL は無効です。 項目は無期限に設定されます (既定)。|
+|ttl = -1   |TTL は無効です。 項目は無期限に設定されます。|
+|ttl = 2000 |TTL は無効です。 項目は無期限に設定されます。|
+
+
+### <a name="example-2"></a>例 2
+
+コンテナーの TTL を -1 に設定 (DefaultTimeToLive = -1)
+
+|項目の TTL| 結果|
+|---|---|
+|ttl = null |TTL は有効です。 項目は無期限に設定されます (既定)。|
+|ttl = -1   |TTL は有効です。 項目は無期限に設定されます。|
+|ttl = 2000 |TTL は有効です。 項目は、2000 秒後に期限切れになります。|
+
+
+### <a name="example-3"></a>例 3
+
+コンテナーの TTL を 1000 に設定 (DefaultTimeToLive = 1000)
+
+|項目の TTL| 結果|
+|---|---|
+|ttl = null|    TTL は有効です。 項目は、1,000 秒後に期限切れになります (既定)。|
+|ttl = -1   |TTL は有効です。 項目は無期限に設定されます。|
+|ttl = 2000 |TTL は有効です。 項目は、2000 秒後に期限切れになります。|
 
 ## <a name="next-steps"></a>次の手順
 

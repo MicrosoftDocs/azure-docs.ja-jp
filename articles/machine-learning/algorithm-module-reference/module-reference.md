@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 8825f1dc3b66a5c4981ba25a90813aec63975b1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e73d4ebd3eb05f7cf217573d8112e3dbbe6d3a37
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145134"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514082"
 ---
 # <a name="algorithm--module-reference-overview"></a>アルゴリズムとモジュールのリファレンスの概要
 
@@ -33,8 +33,8 @@ ms.locfileid: "65145134"
 | --- |--- | ---- |
 | データ形式の変換 | 機械学習で使用されるさまざまなファイル形式にデータを変換します。 | [CSV への変換](convert-to-csv.md) |
 | データの入力と出力 | クラウド ソースのデータを実験に移動します。 実験の実行中に、結果や中間データを Azure Storage、SQL データベース、または Hive に書き込みます。また、クラウド ストレージを使用して、複数の実験間でデータを交換します。  | [データのインポート](import-data.md)<br/>[データのエクスポート](export-data.md)<br/>[データの手動入力](enter-data-manually.md) |
-| データの変換 | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、特徴選択、次元削減など)。| [データセット内の列の選択](select-columns-in-dataset.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/> [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [データの分割](split-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md) |
-| Python モジュール | コードを記述してモジュール内に埋め込み、Python と実験を統合します。 | [Python スクリプトの実行](execute-python-script.md)   <br/> [Python モデルの作成](create-python-model.md)
+| データの変換 | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、特徴選択、次元削減など)。| [データセット内の列の選択](select-columns-in-dataset.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/> [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [データの結合](join-data.md) <br/> [データの分割](split-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md) |
+| Python および R モジュール | コードを記述し、それをモジュール内に埋め込み、Python および R と実験を統合します。 | [Python スクリプトの実行](execute-python-script.md)   <br/> [Python モデルの作成](create-python-model.md) <br/> [R スクリプトの実行](execute-r-script.md)
 |  | **機械学習のアルゴリズム**: | |
 | 分類 | クラスを予測します。  バイナリ (2 クラス) または多クラスのアルゴリズムを選択します。| [多クラス デシジョン フォレスト](multiclass-decision-forest.md) <br/> [多クラス ロジスティック回帰](multiclass-logistic-regression.md)  <br/> [多クラス ニューラル ネットワーク](multiclass-neural-network.md)  <br/>  [2 クラス ロジスティック回帰](two-class-logistic-regression.md)  <br/>[2 クラス平均化パーセプトロン](two-class-averaged-perceptron.md) <br/> [2 クラス &nbsp;ブースト &nbsp;デシジョン &nbsp;ツリー](two-class-boosted-decision-tree.md)  <br/> [2 クラス デシジョン フォレスト](two-class-decision-forest.md)  <br/> [2 クラス ニューラル ネットワーク](two-class-neural-network.md)  <br/> [2 クラス &nbsp;サポート &nbsp;ベクター &nbsp;マシン](two-class-support-vector-machine.md) 
 | クラスタリング | データをグループ化します。| [K-Means クラスタリング](k-means-clustering.md)

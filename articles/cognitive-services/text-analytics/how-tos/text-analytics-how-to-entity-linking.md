@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231423"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304193"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -31,7 +31,7 @@ Text Analytics の `entities` エンドポイントは、名前付きエンテ�
 ### <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 名前付きエンティティの認識 (NER) は、テキスト形式のさまざまなエンティティを識別して、事前に定義したクラスに分類する機能です。 サポートされているエンティティのクラスを以下に示します。
 
-Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) では、エンティティ リンク設定と名前付きエンティティ認識 (NER) の両方を利用できます。
+Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) では、さまざまな言語でエンティティ リンク設定と名前付きエンティティ認識 (NER) の両方を利用できます。 詳細については、[言語のサポート](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)に関する記事を参照してください。 
 
 ### <a name="language-support"></a>言語のサポート
 
@@ -105,7 +105,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
-要求が受信されると分析が実行されます。 このサービスは、毎秒 100 件/毎分 1000 件の要求を受け取ります。 各要求の最大サイズは 1 MB です。
+要求が受信されると分析が実行されます。 分単位および秒単位で送信できる要求のサイズと数については、概要の「[データ制限](../overview.md#data-limits)」セクションを参照してください。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 

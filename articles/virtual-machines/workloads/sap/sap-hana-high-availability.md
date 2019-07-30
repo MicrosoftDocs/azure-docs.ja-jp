@@ -4,7 +4,7 @@ description: SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922285"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709097"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 
@@ -71,9 +71,9 @@ Azure 仮想マシン (VM) 上では、Azure VM HANA システム レプリケ�
 * SAP Note [401162]: HANA システム レプリケーションの設定時に、"アドレスは既に使用中です" と表示された場合の回避方法に関する情報が記載されています。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
 * [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関するガイド。
-* [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide] (この記事)。
-* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関するガイド。
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関するガイド
+* [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide] (この記事)
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関するガイド
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 のベスト プラクティス ガイド][sles-for-sap-bp]
   * SAP HANA SR パフォーマンス最適化インフラストラクチャの設定 (SLES for SAP Applications 12 SP1) に関するガイド。 このガイドには、SAP HANA システム レプリケーションをオンプレミス開発で設定するときに必要なすべての情報が記載されています。 このガイドをベースラインとして使用します。
   * SAP HANA SR コスト最適化インフラストラクチャの設定 (SLES for SAP Applications 12 SP1) に関するガイド。
@@ -101,8 +101,8 @@ Azure Marketplace には、SUSE Linux Enterprise Server for SAP Applications 12 
 GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。
 テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure Portal で、[データベース テンプレート][template-multisid-db]または[集約型テンプレート][template-converged]を開きます。 
-    データベース テンプレートでは、データベース用の負荷分散規則のみが作成されます。 統合テンプレートでは、ASCS/SCS および ERS (Linux のみ) インスタンス用の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールして、同じコンピューターに ASCS/SCS インスタンスをインストールする場合は、[集約型テンプレート][template-converged]を使用します。
+1. Azure portal で[データベース テンプレート][template-multisid-db] or the [converged template][template-converged] on the Azure portal. 
+    The database template creates the load-balancing rules for a database only. The converged template also creates the load-balancing rules for an ASCS/SCS and ERS (Linux only) instance. If you plan to install an SAP NetWeaver-based system and you want to install the ASCS/SCS instance on the same machines, use the [converged template][template-converged]または集約型テンプレートを開きます。データベース テンプレートでは、データベース用の負荷分散規則のみが作成されます。統合テンプレートでは、ASCS/SCS および ERS (Linux のみ) インスタンス用の負荷分散規則も作成されます。SAP NetWeaver ベースのシステムをインストールして、同じコンピューターに ASCS/SCS インスタンスをインストールする場合は、集約型テンプレートを使用します。
 
 1. 次のパラメーターを入力します。
     - **[Sap System Id]\(SAP システム ID\)** :インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。

@@ -1,8 +1,8 @@
-- name: Analysis Services のドキュメント
+- name: Azure Analysis Services のドキュメント
   href: index.md
 - name: 概要
   items:
-    - name: Analysis Services とは
+    - name: Azure Analysis Services とは
       href: analysis-services-overview.md
 - name: クイック スタート
   items:

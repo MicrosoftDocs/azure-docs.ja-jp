@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482439"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464778"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric で構成ファイルをパラメーター化する方法
 
@@ -45,7 +45,7 @@ ms.locfileid: "60482439"
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. ApplicationManifest.xml ファイルの `ServiceManifestImport` セクションに `ConfigOverride` 要素を追加し、構成パッケージ、セクション、およびパラメーターを参照します。
+1. ApplicationManifest.xml ファイルの `ServiceManifestImport` セクションに `ConfigOverrides` と `ConfigOverride` 要素を追加し、構成パッケージ、セクション、およびパラメーターを参照します。
 
    ```xml
     <ConfigOverrides>

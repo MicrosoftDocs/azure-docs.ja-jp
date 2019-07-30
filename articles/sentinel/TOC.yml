@@ -52,6 +52,8 @@
           items:
             - name: 汎用 CEF の接続
               href: connect-common-event-format.md
+            - name: AWS の接続
+              href: connect-aws.md
             - name: Barracuda の接続
               href: connect-barracuda.md
             - name: Check Point の接続

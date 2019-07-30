@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure Resource Manager と Azure PowerShell モジュールを使用して、内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 521f8f29e2f8475ab7308f5646b94c6fc0f6a01f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: b53225334c6a7d61fcee70327df5979af1e424ee
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398810"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275403"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した内部ロード バランサーの作成
 

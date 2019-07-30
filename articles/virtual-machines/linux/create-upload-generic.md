@@ -4,7 +4,7 @@ description: Linux オペレーティング システムを格納した Azure �
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: d351396c-95a0-4092-b7bf-c6aae0bbd112
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f9512e4eabf76edecef594b6b6498782725c019
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105524"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671593"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -49,7 +49,7 @@ Azure で実行されているすべてのディストリビューションに�
 * VHD のサイズの上限は、1,023 GB です。
 * Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
 * UDF ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを使用して、プロビジョニング構成が Linux VM に渡されます。 Azure Linux エージェントは、その構成を読み取り、VM をプロビジョニングする UDF ファイル システムをマウントする必要があります。
-* 2.6.37 未満の Linux カーネル バージョンは、HYPER-V で大きい VM サイズの NUMA をサポートできません。 この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用した古いディストリビューションに影響し、Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) で修正されました。 2.6.37 より古いカスタム カーネルまたは2.6.32-504 より古い RHEL ベースのカーネルを実行しているシステムでは、grub.conf のカーネル コマンドラインで、ブート パラメーター `numa=off` を設定する必要があります。 詳細については、[Red Hat KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
+* 2\.6.37 未満の Linux カーネル バージョンは、HYPER-V で大きい VM サイズの NUMA をサポートできません。 この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用した古いディストリビューションに影響し、Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) で修正されました。 2\.6.37 より古いカスタム カーネルまたは2.6.32-504 より古い RHEL ベースのカーネルを実行しているシステムでは、grub.conf のカーネル コマンドラインで、ブート パラメーター `numa=off` を設定する必要があります。 詳細については、[Red Hat KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
 * OS ディスクにスワップ パーティションを構成しないでください。 次の手順で説明するように、Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 次の手順で説明するように、未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。
 
@@ -74,7 +74,7 @@ initrd または initramfs イメージの再構築のためのメカニズム�
 ### <a name="resizing-vhds"></a>VHD のサイズ変更
 Azure の VHD イメージは、1 MB に整列された仮想サイズが必要です。  通常、HYPER-V を使用して作成された VHD は正しく整列されています。  VHD が正しく整列されていない場合は、VHD からイメージを作成しようとすると、次のようなエラー メッセージが表示される場合があります。
 
-* The VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd にサポートされていない仮想サイズ 21475270656 バイトがあります)。 The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
+* The VHD http:\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. (VHD http:<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd にサポートされていない仮想サイズ 21475270656 バイトがあります。) The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
 
 この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 

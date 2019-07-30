@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0913e1877c63ed1a8e960676be02a12b45a34a7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12fd1b03e58d1c62157c6652ce96d8f0172dadb2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240094"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606108"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,7 +25,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
     - Azure File Sync の「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」
     - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
 * Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされている Windows Server バージョンの詳細については、[Windows Server との相互運用性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)に関するページをご覧ください。
-* Az PowerShell モジュールは、PowerShell 5.1 または PowerShell 6+ のどちらでも使用できます。 Azure File Sync 用の Az PowerShell モジュールは、サポートされているすべてのシステム (Windows 以外のシステムを含む) で使用できますが、サーバー登録コマンドレットは常に、登録している Windows Server インスタンスで直接実行する必要があります。 Windows Server 2012 R2 では、 **$PSVersionTable** オブジェクトの **PSVersion** プロパティの値を調べることによって、少なくとも PowerShell 5.1.\* を実行していることを確認できます。
+* Az PowerShell モジュールは、PowerShell 5.1 または PowerShell 6+ のどちらでも使用できます。 Azure File Sync 用の Az PowerShell モジュールは、サポートされているすべてのシステム (Windows 以外のシステムを含む) で使用できますが、サーバー登録コマンドレットは常に、登録している Windows Server インスタンスで実行する必要があります (これは直接、または PowerShell リモート処理経由で行うことができます)。 Windows Server 2012 R2 では、 **$PSVersionTable** オブジェクトの **PSVersion** プロパティの値を調べることによって、少なくとも PowerShell 5.1.\* を実行していることを確認できます。
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -39,17 +39,25 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
     > PowerShell から直接登録するのではなく、サーバー登録 UI を使用する予定がある場合は、PowerShell 5.1 を使用する必要があります。
 
 * PowerShell 5.1 を使用することを選択した場合は、少なくとも .NET 4.7.2 がインストールされていることを確認してください。 詳細については、使用しているシステムで「[.NET Framework のバージョンおよび依存関係](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)」を参照してください。
-* Az PowerShell モジュール。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。 
-* Az.StorageSync モジュール。これは現在、Az モジュールとは独立にインストールされます。
 
-    ```PowerShell
-    Install-Module Az.StorageSync -AllowClobber
-    ```
+    > [!Important]  
+    > Windows Server Core で .NET 4.7.2+ をインストールする場合は、`quiet` フラグと `norestart` フラグを指定してインストールする必要があります。そうしないと、インストールが失敗します。 たとえば、.NET 4.8 をインストールする場合、コマンドは次のようになります。
+    > ```PowerShell
+    > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
+    > ```
+
+* Az PowerShell モジュール。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
+     
+    > [!Note]  
+    > Az PowerShell モジュールをインストールするときに、Az.StorageSync モジュールが自動的にインストールされるようになりました。
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Azure File Sync で使用する Windows Server の準備
 フェールオーバー クラスターの各サーバー ノードなど、Azure File Sync で使用する各サーバーで、**Internet Explorer セキュリティ強化の構成**を無効にします。 これは、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+> [!Note]  
+> Windows Server Core で Azure File Sync をデプロイする場合は、この手順を省略できます。
+
 1. サーバー マネージャーを開きます。
 2. **[ローカル サーバー]** をクリックします。  
     ![サーバー マネージャー UI の左側にある [ローカル サーバー]](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
@@ -62,18 +70,23 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 Internet Explorer セキュリティ強化の構成を無効にするには、管理者特権の PowerShell セッションから次を実行します。
 
 ```powershell
-# Disable Internet Explorer Enhanced Security Configuration 
-# for Administrators
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+$installType = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\").InstallationType
 
-# Disable Internet Explorer Enhanced Security Configuration 
-# for Users
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
-
-# Force Internet Explorer closed, if open. This is required to fully apply the setting.
-# Save any work you have open in the IE browser. This will not affect other browsers,
-# including Microsoft Edge.
-Stop-Process -Name iexplore -ErrorAction SilentlyContinue
+# This step is not required for Server Core
+if ($installType -ne "Server Core") {
+    # Disable Internet Explorer Enhanced Security Configuration 
+    # for Administrators
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+    
+    # Disable Internet Explorer Enhanced Security Configuration 
+    # for Users
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
+    
+    # Force Internet Explorer closed, if open. This is required to fully apply the setting.
+    # Save any work you have open in the IE browser. This will not affect other browsers,
+    # including Microsoft Edge.
+    Stop-Process -Name iexplore -ErrorAction SilentlyContinue
+}
 ``` 
 
 ---
@@ -100,7 +113,14 @@ Azure File Sync のデプロイでは最初に、選択したサブスクリプ�
 **<Az_Region>** 、 **<RG_Name>** 、および **<my_storage_sync_service>** を独自の値に置き換え、以下のコマンドを使用してストレージ同期サービスを作成およびデプロイします。
 
 ```powershell
-Connect-AzAccount
+$hostType = (Get-Host).Name
+
+if ($installType -eq "Server Core" -or $hostType -eq "ServerRemoteHost") {
+    Connect-AzAccount -UseDeviceAuthentication
+}
+else {
+    Connect-AzAccount
+}
 
 # this variable holds the Azure region you want to deploy 
 # Azure File Sync into

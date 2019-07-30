@@ -4,19 +4,19 @@ description: サブスクリプションの上限に達したときに、Azure R
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: b382b9ae35d492b4c779b8f7ee360fb378d54e08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36e881fb9ba3ab81611b94a36ef0beed8748d5b1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399711"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705118"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 
-Resource Manager では、Azure のサブスクリプションおよびテナントごとに、最大で 1 時間あたり 12,000 件の読み取り要求と 1 時間あたり 1,200 件の書き込み要求が許可されています。 これらの制限は、要求を行うプリンシパル ID と、サブスクリプション ID またはテナント ID の範囲に設定されます。 複数のプリンシパル ID から要求が発信されると、サブスクリプションまたはテナント全体の制限は、1 時間あたり 12,000 件および 1,200 件を超えます。
+Resource Manager では、Azure のサブスクリプションおよびテナントごとに、最大で 1 時間あたり 12,000 件の読み取り要求と 1 時間あたり 1,200 件の書き込み要求が許可されています。 これらの制限は、要求を行うセキュリティ プリンシパル (ユーザーまたはアプリケーション) と、サブスクリプション ID またはテナント ID の範囲に設定されます。 複数のセキュリティ プリンシパルから要求が発信されると、サブスクリプションまたはテナント全体の制限は、1 時間あたり 12,000 件および 1,200 件を超えます。
 
 要求は、サブスクリプションまたはテナントに適用されます。 サブスクリプション要求 (サブスクリプション内のリソース グループの取得など) では、サブスクリプション ID を渡す必要があります。 テナント要求 (有効な Azure の場所の取得など) には、サブスクリプション ID は含まれません。
 

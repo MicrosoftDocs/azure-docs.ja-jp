@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 4ee91a91a20cbffebf7453ba573266962aa35806
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7dd6d3d30f34ba2c69b40111bb28d484ce572e7
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924732"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508736"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -65,25 +65,15 @@ Azure Storage Explorer の[リリース ノート](https://go.microsoft.com/fwli
 
 ## <a name="connect-to-a-storage-account-or-service"></a>ストレージ アカウントまたはサービスに接続する
 
-Storage Explorer には、ストレージ アカウントに対する接続方法がいくつか用意されています。 たとえば、次のようなことができます。
+Storage Explorer には、ストレージ アカウントに対する接続方法がいくつか用意されています。 一般的に次のいずれかを実行できます。
 
-* 自分の Azure サブスクリプションに関連付けられているストレージ アカウントに接続する。
-* 他の Azure サブスクリプションから共有されているストレージ アカウントとサービスに接続する。
-* Azure ストレージ エミュレーターを使ってローカル ストレージに接続し、そのローカル ストレージを管理する。
+* [Azure にサインインして自分のサブスクリプションとそのリソースにアクセスする](#sign-in-to-azure)
+* [特定のストレージまたは CosmosDB リソースをアタッチする](#attach-a-specific-resource)
 
-さらに、国内外の Azure のストレージ アカウントを使用できます。
-
-* [Azure サブスクリプションに接続する](#connect-to-an-azure-subscription):自分の Azure サブスクリプションに属するストレージ リソースを管理します。
-* [ローカル開発ストレージを操作する](#work-with-local-development-storage):Azure ストレージ エミュレーターを使ってローカル ストレージを管理する。
-* [外部ストレージにアタッチする](#attach-or-detach-an-external-storage-account):ストレージ アカウントの名前、キー、およびエンドポイントを使って、別の Azure サブスクリプションに属するストレージ リソースや国内の Azure クラウドにあるストレージ リソースを管理します。
-* [SAS を使ってストレージ アカウントをアタッチする](#attach-a-storage-account-by-using-a-shared-access-signature-sas):Shared Access Signature (SAS) を使って、別の Azure サブスクリプションに属するストレージ リソースを管理します。
-* [SAS を使ってサービスをアタッチする](#attach-a-service-by-using-a-shared-access-signature-sas):SAS を使って、別の Azure サブスクリプションに属する特定のストレージ サービス (BLOB コンテナー、キュー、またはテーブル) を管理します。
-* [接続文字列を使って Azure Cosmos DB アカウントに接続する](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string):接続文字列を使って Cosmos DB アカウントを管理します。
-
-## <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 > [!NOTE]
-> Azure アカウントを持っていない場合は、[無料試用版にサインアップする](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
+> サインインした後にリソースにフル アクセスするには、Storage Explorer で管理 (ARM) とデータ層の両方のアクセス許可が必要です。 つまり、ストレージ アカウント、アカウント内のコンテナー、およびコンテナー内のデータへのアクセスを提供する Azure AD のアクセス許可が必要です。 データ層でのアクセス許可しかない場合は、[Azure AD によるアタッチ](#add-a-resource-via-azure-ad)の使用を検討してください。 Storage Explorer で必要な正確なアクセス許可の詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#role-based-access-control-permission-issues)を参照してください。
 >
 >
 
@@ -103,182 +93,110 @@ Storage Explorer には、ストレージ アカウントに対する接続方�
 
     左側のウィンドウに、選択した Azure サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
-    ![Selected Azure subscriptions][4]
+    ![選択された Azure サブスクリプション][4]
 
-## <a name="work-with-local-development-storage"></a>ローカル開発ストレージを操作する
+### <a name="attach-a-specific-resource"></a>特定のリソースをアタッチする
+    
+リソースを Storage Explorer にアタッチするためのさまざまなオプションがあります。 次のようにすることができます。
 
-Storage Explorer では、エミュレーターを使用してローカル ストレージを操作できます。 この方法を使えば、Azure にデプロイされたストレージ アカウントがなくても、Azure Storage の操作をシミュレートすることができます。
+* [Azure AD 経由でリソースを追加する](#add-a-resource-via-azure-ad):データ層でのアクセス許可しかない場合は、このオプションを使用して、BLOB コンテナーまたは ADLS Gen2 BLOB コンテナーを追加することができます。
+* [接続文字列を使用する](#use-a-connection-string):ストレージ アカウントへの接続文字列がある場合。 Storage Explorer では、キーと [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) 接続文字列の両方がサポートされています。
+* [SAS URI を使用する](#use-a-sas-uri):BLOB コンテナー、ファイル共有、キュー、またはテーブルへの [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) URI がある場合。 SAS URI を取得するには、[Storage Explorer](#generate-a-sas-in-storage-explorer) または [Azure portal](https://portal.azure.com) のいずれかを使用できます。
+* [名前とキーを使用する](#use-a-name-and-key):ストレージ アカウントのいずれかのアカウント キーがわかっている場合は、このオプションを使用してすばやく接続することができます。 ストレージ アカウントのキーは、[Azure portal](https://portal.azure.com) のストレージ アカウントの **[アクセス キー]** ブレードにあります。
+* [ローカル エミュレーターにアタッチする](#attach-to-a-local-emulator):使用可能な Azure Storage エミュレーターのいずれかを使用している場合は、このオプションを使用して簡単にエミュレーターに接続することができます。
+* [接続文字列を使って Azure Cosmos DB アカウントに接続する](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string):CosmosDB インスタンスへの接続文字列がある場合。
+* [Azure Data Lake Store に URI で接続する](#connect-to-azure-data-lake-store-by-uri):Azure Data Lake Store への URI がある場合。
 
-バージョン 1.1.0 以降、Storage Explorer は、ローカル ストレージ エミュレーターのすべてのプラットフォームでの使用をサポートします。 Storage Explorer は、その既定のローカル ストレージ エンドポイントをリッスンしている任意のエミュレートされたサービスに接続できます。
+#### <a name="add-a-resource-via-azure-ad"></a>Azure AD 経由でリソースを追加する
 
-[Azure ストレージ エミュレーター](storage/common/storage-use-emulator.md)は現在のところ、Windows 上でのみ実行します。 Linux 用のストレージ エミュレーターをお探しの場合、コミュニティで管理されているオープン ソースのストレージ エミュレーター [Azurite](https://github.com/azure/azurite) が選択肢の 1 つとして挙げられます。
+1. 左側の垂直ツールバーにある**接続ボタン**をクリックして、**接続ダイアログ**を開きます。
 
-> [!NOTE]
-> ストレージ サービスと機能のサポートは、選択したエミュレーターによって大きく異なる可能性があります。 目的のサービスと機能をエミュレーターがサポートしていることを確認してください。
+    ![Connect to Azure storage option][9]
 
-1. 選択したエミュレーターのサービスを、未使用のポートをリッスンするように構成します。
+2. リソースへのアクセス権を持つ Azure アカウントにまだサインインしていない場合は、 **[Add an Azure Account]\(Azure アカウントの追加\)** オプションを使用してサインインします。 サインイン後、**接続ダイアログ**に戻ります。
 
-   エミュレートされたサービス | 既定のエンドポイント
-   -----------------|-------------------------
-   BLOB            | `http://127.0.0.1:10000`
-   キュー           | `http://127.0.0.1:10001`
-   テーブル           | `http://127.0.0.1:10002`
+3. **[Add a resource via Azure Active Directory (Azure AD)]\(Azure Active Directory (Azure AD) 経由でリソースを追加\)** オプションを選択し、 **[次へ]** をクリックします。
 
-2. エミュレーターを起動します。
+4. アタッチするストレージ リソースへのアクセス権を持つ Azure アカウントとリソースがあるサブスクリプションを選択し、 **[次へ]** をクリックします。
+
+5. アタッチするリソースの種類を選択し、接続に必要な情報を入力します。 このページでの入力は、追加するリソースの種類に応じて変わります。 適切なリソースの種類を選択してください。 必要な情報を入力したら、 **[次へ]** をクリックします。
+
+6. 接続の概要を確認し、すべての情報が正しいかどうかを確認します。 すべての情報が正しい場合は、 **[接続]** をクリックします。正しくない場合は、 **[戻る]** ボタンを使って前のページに戻り、間違った情報を修正します。
+
+接続が正常に追加されると、リソース ツリーが接続を表すノードに自動的に移動します。 何らかの理由でそうならない場合は、 **[Local and Attached]\(ローカルで接続済み\)** → **[ストレージ アカウント]** → **(アタッチされているコンテナー)** → **[BLOB コンテナー]** を確認してください。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に、自分のデータにアクセスできない場合は、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)でヘルプを参照してください。
+
+#### <a name="use-a-connection-string"></a>接続文字列を使用する
+
+1. 左側の垂直ツールバーにある**接続ボタン**をクリックして、**接続ダイアログ**を開きます。
+
+    ![Connect to Azure storage option][9]
+
+2. **[Use a connection string]\(接続文字列を使用する\)** オプションを選択し、 **[次へ]** をクリックします。
+
+3. 接続の表示名を選択し、接続文字列を入力します。 その後、 **[次へ]** をクリックします。
+
+4. 接続の概要を確認し、すべての情報が正しいかどうかを確認します。 すべての情報が正しい場合は、 **[接続]** をクリックします。正しくない場合は、 **[戻る]** ボタンを使って前のページに戻り、間違った情報を修正します。
+
+接続が正常に追加されると、リソース ツリーが接続を表すノードに自動的に移動します。 何らかの理由でそうならない場合は、 **[Local and Attached]\(ローカルで接続済み\)** → **[ストレージ アカウント]** を確認してください。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に、自分のデータにアクセスできない場合は、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)でヘルプを参照してください。
+
+#### <a name="use-a-sas-uri"></a>SAS URI を使用する
+
+1. 左側の垂直ツールバーにある**接続ボタン**をクリックして、**接続ダイアログ**を開きます。
+
+    ![Connect to Azure storage option][9]
+
+2. **[Use a shared access signature (SAS) URI]\(共有アクセス署名 (SAS) URI を使用する\)** オプションを選択し、 **[次へ]** をクリックします。
+
+3. 接続の表示名を選択し、SAS URI を入力します。 アタッチしているリソースの種類のサービス エンドポイントは、自動入力にする必要があります。 カスタム エンドポイントを使用している場合は、そうなっていない場合があります。 **[次へ]** をクリックします。
+
+4. 接続の概要を確認し、すべての情報が正しいかどうかを確認します。 すべての情報が正しい場合は、 **[接続]** をクリックします。正しくない場合は、 **[戻る]** ボタンを使って前のページに戻り、間違った情報を修正します。
+
+接続が正常に追加されると、リソース ツリーが接続を表すノードに自動的に移動します。 何らかの理由でそうならない場合は、 **[Local and Attached]\(ローカルで接続済み\)** → **[ストレージ アカウント]** → **(アタッチされているコンテナー)** → **アタッチしたコンテナーの種類のサービス ノード**を確認してください。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に、自分のデータにアクセスできない場合は、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)でヘルプを参照してください。
+
+#### <a name="use-a-name-and-key"></a>名前とキーを使用する
+
+1. 左側の垂直ツールバーにある**接続ボタン**をクリックして、**接続ダイアログ**を開きます。
+
+    ![Connect to Azure storage option][9]
+
+2. **[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** オプションを選択し、 **[次へ]** をクリックします。
+
+3. 接続の表示名を選択します。
+
+4. ストレージ アカウント名とそのいずれかのアクセス キーを入力します。
+
+5. 使用する**ストレージ ドメイン**を選択して、 **[次へ]** をクリックします。
+
+4. 接続の概要を確認し、すべての情報が正しいかどうかを確認します。 すべての情報が正しい場合は、 **[接続]** をクリックします。正しくない場合は、 **[戻る]** ボタンを使って前のページに戻り、間違った情報を修正します。
+
+接続が正常に追加されると、リソース ツリーが接続を表すノードに自動的に移動します。 何らかの理由でそうならない場合は、 **[Local and Attached]\(ローカルで接続済み\)** → **[ストレージ アカウント]** を確認してください。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に、自分のデータにアクセスできない場合は、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)でヘルプを参照してください。
+
+#### <a name="attach-to-a-local-emulator"></a>ローカル エミュレーターにアタッチする
+
+Storage Explorer では、すべてのプラットフォームでエミュレーターをサポートしています。 現在、次の 2 つの公式のエミュレーターが使用可能です。
+* [Azure ストレージ エミュレーター](storage/common/storage-use-emulator.md) (Windows のみ)
+* [Azurite](https://github.com/azure/azurite) (Windows、macOS、または Linux)
+
+エミュレーターが既定のポートで実行されている場合は、**エミュレーター - 既定のポート** ノード (これは **[Local and Attached]\(ローカルで接続済み\)** → **[ストレージ アカウント]** に常にあります) を使用してエミュレーターにすばやくアクセスすることができます。 接続に別の名前を使用する場合、またはエミュレーターが既定のポートで実行されていない場合は、次の手順に従います。
+
+1. エミュレーターを起動します。 このときに、エミュレーターがリッスンしているポートをサービスの種類ごとにメモします。 この情報は後で必要になります。
+
    > [!IMPORTANT]
    > Storage Explorer はエミュレーターを自動的に起動しません。 エミュレーターは自分で起動する必要があります。
 
-3. Storage Explorer で、 **[アカウントの追加]** ボタンをクリックします。 **[Attach to a local emulator]\(ローカル エミュレーターにアタッチ\)** を選択し、 **[次へ]** をクリックします。
-
-4. 前の手順で構成したサービスのポート番号を入力します (そのサービスを使用しない場合は空白のままにします)。 **[次へ]** をクリックして **[接続]** をクリックし、接続を作成します。
-
-5. **[Local & Attached]\(ローカルおよびアタッチ済み\)**  >  **[ストレージ アカウント]** > ノードの順に展開し、エミュレーターの接続に対応するノードの下にあるサービス ノードを展開します。
-
-   このノードを使用して、ローカル BLOB、キュー、およびテーブルを作成して操作できます。 それぞれの種類のストレージ アカウントを操作する方法については、次のガイドを参照してください。
-
-   * [Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
-   * [Azure File Storage リソースの管理](vs-azure-tools-storage-explorer-files.md)
-
-## <a name="attach-or-detach-an-external-storage-account"></a>外部ストレージ アカウントをアタッチまたはデタッチする
-
-Storage Explorer には、ストレージ アカウントを簡単に共有できるように、外部ストレージ アカウントにアタッチする機能が用意されています。 このセクションでは、外部ストレージ アカウントにアタッチ (または外部ストレージ アカウントからデタッチ) する方法について説明します。
-
-### <a name="get-the-storage-account-credentials"></a>ストレージ アカウントの資格情報を取得する
-
-外部ストレージ アカウントを共有するには、まずそのアカウントの所有者がアカウントの資格情報 (アカウント名とキー) を取得し、その情報を、そのアカウントへのアタッチを望んでいるユーザーと共有する必要があります。 Azure Portal からストレージ アカウントの資格情報を取得する手順は、以下のとおりです。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-
-2. **[参照]** を選択します。
-
-3. **[ストレージ アカウント]** を選択します。
-
-4. **[ストレージ アカウント]** の一覧で目的のストレージ アカウントを選択します。
-
-5. **[設定]** で **[アクセス キー]** を選択します。
-
-    ![Access Keys option][7]
-
-6. **[ストレージ アカウント名]** と **[Key1]** をコピーします。
-
-    ![[アクセス キー]][8]
-
-### <a name="attach-to-an-external-storage-account"></a>外部ストレージ アカウントにアタッチする
-
-外部ストレージ アカウントにアタッチするには、アカウントの名前とキーが必要になります。 「ストレージ アカウントの資格情報を取得する」セクションでは、Azure Portal からこれらの値を取得する方法を説明しました。 ただし、ポータルでは、アカウント キーが **key1** という名前になっています。 このため、Storage Explorer でアカウント キーの入力が必要な局面があれば、**key1** の値を入力してください。
-
-1. Storage Explorer で、**接続ダイアログ**を開きます。
+2. 左側の垂直ツールバーにある**接続ボタン**をクリックして、**接続ダイアログ**を開きます。
 
     ![Connect to Azure storage option][9]
 
-2. **接続**ダイアログで **[Use a storage account name and key]\(ストレージ アカウントの名前とキーを使用する\)** を選択します。
+3. **[Attach to a local emulator]\(ローカル エミュレーターにアタッチ\)** オプションを選択し、 **[次へ]** をクリックします。
 
-    ![名前とキーを使用して追加するオプション][10]
+4. 接続の表示名を選択し、エミュレーターがリッスンするポートをサービスの種類ごとに入力します。 既定では、テキスト ボックスにはほとんどのエミュレーターの既定ポートの値が含まれます。 どちらの公式のエミュレーターも Files サービスを現在サポートしていないため、**Files ポート**も既定では空白のままです。 ただし、使用しているエミュレーターでサポートしている場合は、使用されているポートを入力することができます。 **[次へ]** をクリックします。
 
-3. **[アカウント名]** ボックスにアカウント名を、 **[アカウント キー]** ボックスにアカウント キー (Azure Portal から得た **key1** の値) をそれぞれ貼り付けて、 **[次へ]** を選択します。
+5. 接続の概要を確認し、すべての情報が正しいかどうかを確認します。 すべての情報が正しい場合は、 **[接続]** をクリックします。正しくない場合は、 **[戻る]** ボタンを使って前のページに戻り、間違った情報を修正します。
 
-    ![名前とキーのページ][11]
+接続が正常に追加されると、リソース ツリーが接続を表すノードに自動的に移動します。 何らかの理由でそうならない場合は、 **[Local and Attached]\(ローカルで接続済み\)** → **[ストレージ アカウント]** を確認してください。 Storage Explorer で接続を追加できなかった場合、または接続を正常に追加した後に、自分のデータにアクセスできない場合は、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)でヘルプを参照してください。
 
-    > [!NOTE]
-    > 国内クラウドからの名前とキーを使用するには、 **[ストレージ エンドポイントのドメイン]** ボックスの一覧から適切なエンドポイント ドメインを選択してください。
-    >
-    >
-
-4. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 設定を変更する場合は、 **[戻る]** を選択し、必要な設定をもう一度入力します。
-
-5. **[接続]** を選択します。
-
-6. ストレージ アカウントが正常にアタッチされると、そのストレージ アカウントが、名前の後に " **(外部)** " を伴って表示されます。
-
-    ![Result of connecting to an external storage account][12]
-
-### <a name="detach-from-an-external-storage-account"></a>外部ストレージ アカウントからデタッチする
-
-1. デタッチする外部ストレージ アカウントを右クリックし、 **[デタッチ]** を選択します。
-
-    ![Detach from storage option][13]
-
-2. 確認メッセージで **[はい]** を選択して、外部ストレージ アカウントからのデタッチを確定します。
-
-## <a name="attach-a-storage-account-by-using-a-shared-access-signature-sas"></a>Shared Access Signature (SAS) を使用してストレージ アカウントをアタッチする
-
-Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md)) を使うと、Azure サブスクリプションの管理者が Azure サブスクリプションの資格情報を提供しなくても、ストレージ アカウントへのアクセスを一時的に許可できるようになります。
-
-このシナリオをわかりやすく説明するために、Azure サブスクリプションの管理者である UserA が UserB に特定のアクセス許可を付与し、一時的にストレージ アカウントへのアクセスを許可する場面を考えてみます。
-
-1. UserA は、目的のアクセス許可と一定の期間が設定された SAS 接続文字列を生成します。
-
-2. UserA は、ストレージ アカウントへのアクセスを希望しているユーザー (この例では UserB) と SAS を共有します。
-
-3. UserB は Storage Explorer からその SAS を使用し、UserA に属するアカウントにアタッチします。
-
-### <a name="generate-a-sas-query-string-for-the-account-you-want-to-share"></a>共有するアカウントの SAS クエリ文字列を生成する
-
-1. Storage Explorer で、共有するストレージ アカウントを右クリックし、 **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
-
-    ![Get SAS context menu option][14]
-
-2. **[Generate Shared Access Signature]\(Shared Access Signature の生成\)** ダイアログ ボックスで、アカウントに対して期間とアクセス許可を指定し、 **[作成]** をクリックします。
-
-    ![SAS の取得ダイアログ ボックス][15]
-
-3. **[クエリ文字列]** ボックスの横にある **[コピー]** を選択してクリップボードにコピーし、 **[閉じる]** をクリックします。
-
-### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>SAS 接続文字列を使用してストレージ アカウントにアタッチする
-
-1. Storage Explorer で、**接続ダイアログ**を開きます。
-
-    ![Connect to Azure storage option][9]
-
-2. **接続**ダイアログで **[Use a connection string or shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択し、 **[次へ]** をクリックします。
-
-    ![[Azure Storage へ接続] ダイアログ][16]
-
-3. **[Use a connection string]\(接続文字列を使用する\)** を選択し、実際の接続文字列を **[接続文字列]** フィールドに貼り付けます。 **[次へ]** をクリックします。
-
-    ![[Azure Storage へ接続] ダイアログ][17]
-
-4. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 変更する場合は、 **[戻る]** を選択して、必要な設定を入力します。
-
-5. **[接続]** を選択します。
-
-6. ストレージ アカウントが正常にアタッチされると、そのストレージ アカウントが、名前の後に " **(SAS)** " を伴って表示されます。
-
-    ![SAS を使ってアカウントをアタッチした結果][18]
-
-## <a name="attach-a-service-by-using-a-shared-access-signature-sas"></a>Shared Access Signature (SAS) を使用してサービスをアタッチする
-
-「SAS を使ってストレージ アカウントをアタッチする」セクションでは、Azure サブスクリプションの管理者がストレージ アカウントの SAS を生成および共有し、ストレージ アカウントへの一時的なアクセスを許可する方法を説明しました。 同様に、SAS は、ストレージ アカウント内の特定のサービス (BLOB コンテナー、キュー、テーブル、またはファイル共有) に対して生成できます。
-
-### <a name="generate-an-sas-for-the-service-that-you-want-to-share"></a>共有するサービスの SAS を生成する
-
-この場合のサービスは、BLOB、コンテナー、キュー、テーブル、またはファイル共有です。 表示されているサービスの SAS を生成するには、以下のいずれかを参照してください。
-
-* [BLOB コンテナーの SAS を取得する](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-
-### <a name="attach-to-the-shared-account-service-by-using-a-sas-uri"></a>SAS URI を使って共有アカウント サービスにアタッチする
-
-1. Storage Explorer で、**接続ダイアログ**を開きます。
-
-    ![Connect to Azure storage option][9]
-
-2. **接続**ダイアログ ボックスで **[Use a connection string or shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択し、 **[次へ]** をクリックします。
-
-    ![[Azure Storage へ接続] ダイアログ][16]
-
-3. **[Use a SAS URI]\(SAS URI を使用する\)** を選択し、実際の URI を **[URI]** フィールドに貼り付けます。 **[次へ]** をクリックします。
-
-    ![[Azure Storage へ接続] ダイアログ][19]
-
-4. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 変更する場合は、 **[戻る]** を選択して、必要な設定を入力します。
-
-5. **[接続]** を選択します。
-
-6. サービスが正常にアタッチされると、そのサービスが **[(SAS-Attached Services)]\((SAS アタッチ サービス)\)** ノードに表示されます。
-
-    ![SAS を使って共有サービスをアタッチした結果][20]
-
-## <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>接続文字列を使って Azure Cosmos DB アカウントに接続する
+#### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>接続文字列を使って Azure Cosmos DB アカウントに接続する
 
 Azure サブスクリプションを使って Azure Cosmos DB アカウントを管理する以外に、接続文字列を使って Azure Cosmos DB に接続することもできます。 接続文字列を使用して接続するには、次の手順を使用します。
 
@@ -290,7 +208,7 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
 
     ![connection-string][22]
 
-## <a name="connect-to-azure-data-lake-store-by-uri"></a>Azure Data Lake Store に URI で接続する
+#### <a name="connect-to-azure-data-lake-store-by-uri"></a>Azure Data Lake Store に URI で接続する
 
 リソースにアクセスしたいのですが、このリソースがサブスクリプションに存在しません。 ただし、他のユーザーはそのリソースの URI の取得を許可しています。 この場合、サインイン後に URI を使用して Data Lake Store に接続できます。 以下の手順を参照してください。
 
@@ -305,6 +223,25 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
     ![Data Lake Store への接続のダイアログ](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
 
     ![Data Lake Store への接続の結果](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-attach-finish.png)
+
+
+## <a name="generate-a-sas-in-storage-explorer"></a>Storage Explorer で SAS を生成する
+
+### <a name="account-level-sas"></a>アカウント レベル SAS
+
+1. 共有するストレージ アカウントを右クリックし、 **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
+
+    ![Get SAS context menu option][14]
+
+2. **[Generate Shared Access Signature]\(Shared Access Signature の生成\)** ダイアログ ボックスで、アカウントに対して期間とアクセス許可を指定し、 **[作成]** をクリックします。
+
+    ![SAS の取得ダイアログ ボックス][15]
+
+3. **接続文字列**または生**クエリ文字列**をクリップボードにコピーできるようになりました。
+
+### <a name="service-level-sas"></a>サービス レベル SAS
+
+[Storage Explorer で BLOB コンテナーの SAS を取得する方法](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
 
 ## <a name="search-for-storage-accounts"></a>ストレージ アカウントを検索する
 

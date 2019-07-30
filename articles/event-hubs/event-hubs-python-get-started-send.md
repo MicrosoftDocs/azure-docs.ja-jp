@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 6a8f0ddcfe6de904219059c6e761ead4c004732d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9018df73c85486f5ffc9b16c1dbb70d4d99fcc65
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461452"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360188"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Python を使用して Event Hubs との間でイベントを送受信する
 
@@ -144,7 +144,8 @@ last_sn = -1
 last_offset = "-1"
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 try:
-    receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+    receiver = client.add_receiver(
+        CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
     client.run()
     start_time = time.time()
     for event_data in receiver.receive(timeout=100):

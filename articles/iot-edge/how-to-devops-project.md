@@ -4,19 +4,19 @@ description: Azure DevOps Projects を利用すると、Azure を使い始める
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 01/22/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 109a7e327217a342f485dd61b53115569f2346cd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595495"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722985"
 ---
-# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Azure DevOps Projects (プレビュー) を使用して IoT Edge 用の CI/CD パイプラインを作成する
+# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Azure DevOps Projects を使用して IoT Edge 用の CI/CD パイプラインを作成する
 
 DevOps Projects を使用して、IoT Edge アプリケーション用に継続的インテグレーション (CI) と継続的デリバリー (CD) を構成します。 DevOps Projects によって、Azure Pipelines のビルドおよびリリース パイプラインの初期構成が簡略化されます。
 
@@ -38,7 +38,7 @@ DevOps Projects によって、Azure DevOps に CI/CD パイプラインが作�
 
    ![言語を選択して新しいアプリケーションを作成する](./media/how-to-devops-project/select-language.png)
 
-2. アプリケーション フレームワークとして **[単純な IoT (プレビュー)]** を選択し、 **[次へ]** を選択します。
+2. アプリケーション フレームワークとして **[単純な IoT]** を選択し、 **[次へ]** を選択します。
 
    ![単純な IoT フレームワークを選択する](media/how-to-devops-project/select-iot.png)
 

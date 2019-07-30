@@ -2,17 +2,16 @@
 title: Azure Resource Manager テンプレートの構造と構文 | Microsoft Docs
 description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。
 author: tfitzmac
-ms.assetid: 19694cb4-d9ed-499a-a2cc-bcfc4922d7f5
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: e3b8b6b969568fc15558002c268cdc4a16c2fadd
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: ab8e4f5f6506f80b62c112298f73f95bc7fedeaf
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431227"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204360"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
@@ -505,7 +504,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | condition | いいえ | このデプロイの間にリソースがプロビジョニングされるかどうかを示すブール値。 `true` の場合、デプロイ時にリソースが作成されます。 `false` の場合、このデプロイでは、リソースはスキップされます。 [条件](#condition)をご覧ください。 |
 | apiVersion |はい |リソースの作成に使用する REST API バージョン。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 |
 | type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 子リソースの場合、type の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 「[子リソース](#child-resources)」を参照してください。 |
-| name |はい |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスでは、名前が別の ID になりすますことがないように、その名前を検証します。 子リソースの場合、name の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 「[子リソース](#child-resources)」を参照してください。 |
+| 名前 |はい |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスでは、名前が別の ID になりすますことがないように、その名前を検証します。 子リソースの場合、name の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 「[子リソース](#child-resources)」を参照してください。 |
 | location |多様 |指定されたリソースのサポートされている地理的な場所。 利用可能な任意の場所を選択できますが、一般的に、ユーザーに近い場所を選択します。 また、通常、相互に対話するリソースを同じリージョンに配置します。 ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。 |
 | tags |いいえ |リソースに関連付けられたタグ。 サブスクリプション間でリソースを論理的に編成するためのタグを適用します。 |
 | コメント |いいえ |テンプレート内にドキュメント化するリソースについてのメモ。 詳しくは、[テンプレート内のコメント](resource-group-authoring-templates.md#comments)に関するページをご覧ください。 |

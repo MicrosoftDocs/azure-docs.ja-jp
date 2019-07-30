@@ -2,18 +2,18 @@
 title: Azure 間レプリケーションの問題とエラーに関する Azure Site Recovery トラブルシューティング | Microsoft Docs
 description: ディザスター リカバリーのために Azure 仮想マシンをレプリケートするとき発生するエラーや問題に関するトラブルシューティング
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: sujayt
-ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: asgang
+ms.openlocfilehash: 1e0450554597d99aa99d6df51f22bfc90c0d92ad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796426"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798588"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -175,7 +175,7 @@ Site Recovery レプリケーションを動作させるには、VM から特定
       - 今後、新しいアドレスが Azure Active Directory (AAD) に追加された場合は、新しい NSG ルールを作成する必要があります。
 
 > [!NOTE]
-> 仮想マシンは、**Standard** 内部ロード バランサーの背後にある場合、既定では O365 の IP、つまり login.micorsoftonline.com にアクセスできません。 これを **Basic** 内部ロード バランサーの種類に変更するか、この[記事](https://aka.ms/lboutboundrulescli)の説明に従ってアウトバインド アクセスを作成します。
+> 仮想マシンは、**Standard** 内部ロード バランサーの背後にある場合、既定では O365 の IP、つまり login.microsoftonline.com にアクセスできません。 これを **Basic** 内部ロード バランサーの種類に変更するか、この[記事](https://aka.ms/lboutboundrulescli)の説明に従ってアウトバインド アクセスを作成します。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
 - **考えられる原因** </br>
@@ -187,23 +187,23 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 
 ### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>問題 4:ネットワーク トラフィックがオンプレミス プロキシ サーバーを経由するときに A2A レプリケーションが失敗しました (151072)
 - **考えられる原因** </br>
-  - カスタム プロキシ設定が無効であり、ASR モビリティ サービス エージェントが IE からプロキシ設定を自動検出しませんでした。
+  - カスタム プロキシ設定が無効であり、Azure Site Recovery Mobility Service エージェントが IE からプロキシ設定を自動検出しませんでした
 
 
 - **解決策**
   1. モビリティ サービス エージェントは、Windows では IE から、Linux では /etc/environment からプロキシ設定を検出します。
-  2. プロキシを ASR モビリティ サービスにのみ設定する場合は、次の場所にある ProxyInfo.conf 内にプロキシの詳細を指定できます。</br>
+  2. プロキシを Azure Site Recovery Mobility Service にのみ設定する場合は、次の場所にある ProxyInfo.conf 内にプロキシの詳細を指定できます。</br>
      - ***Linux*** の場合は ``/usr/local/InMage/config/``
      - ***Windows*** の場合は ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
   3. ProxyInfo.conf 内のプロキシ設定は、次の INI 形式になっている必要があります。</br>
                 *[proxy]*</br>
                 *Address=http://1.2.3.4*</br>
                 *Port=567*</br>
-  4. ASR モビリティ サービス エージェントは、***認証されていないプロキシ***のみをサポートします。
+  4. Azure Site Recovery Mobility Service エージェントは、"***認証されていないプロキシ***" のみをサポートします。
 
 
 ### <a name="fix-the-problem"></a>問題の解決
-[必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または [必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)をホワイトリストに登録するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
+[必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または[必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)を許可するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>ディスクがマシンに見つかりません (エラー コード 150039)
 
@@ -232,17 +232,42 @@ VM に接続された新しいディスクを初期化する必要がありま�
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 2. 警告を無視するには、 [レプリケートされたアイテム] > [VM] に移動し、概要セクションで [アラートを無視] をクリックします。
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
-## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>"レプリケーションの有効化" で、選択する Azure VM またはリソース グループが表示されない
 
- **原因 1:リソース グループとソース仮想マシンが別々の場所にある** <br>
-Azure Site Recovery では現在、ソース リージョンのリソース グループと仮想マシンが同じ場所にあることが必須となっています。 そうでない場合、保護されている間に仮想マシンを見つけることができません。 この問題の回避策として、Recovery Services コンテナーではなく、VM からレプリケーションを有効にできます。 ソース VM > [プロパティ] > [ディザスター リカバリー] に移動し、レプリケーションを有効にします。
 
-**原因 2:このリソース グループが、選択されたサブスクリプションの一部でない** <br>
-特定のサブスクリプションの一部ではない場合、保護されたときにリソース グループを見つけられない可能性があります。 リソース グループが、使用されているサブスクリプションに属していることを確認します。
+## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>情報メッセージ (エラー コード 150225) が表示されて完了したコンテナーから仮想マシンを削除する
+仮想マシンを保護すると、Azure Site Recovery によって、ソース仮想マシンにいくつかのリンクが作成されます。 保護を削除するか、レプリケーションを無効にすると、Azure Site Recovery によるクリーンアップ ジョブの一環として、これらのリンクが削除されます。 仮想マシンにリソース ロックが設定されている場合、ジョブが完了するときに情報メッセージが表示されます。 そのメッセージには、仮想マシンが Recovery Services コンテナーから削除されたが、ソース マシンから古いリンクの一部をクリーンアップできなかったことが表示されます。
 
- **原因 3:構成が古い** <br>
-レプリケーションを有効にする VM が表示されない場合は、Azure VM 上に古い Site Recovery 構成が残されていることが原因である可能性があります。 古い構成は、次の場合に Azure VM に残る可能性があります。
+今後この仮想マシンを保護する予定がない場合、この警告は無視してもかまいません。 ただし、後でこの仮想マシンを保護する必要がある場合は、以下の手順の説明に従ってリンクをクリーンアップします。 
 
+**クリーンアップしないと、次のような事態が発生します。**
+
+1.  Recovery Services コンテナーを介したレプリケーションが有効になっている間、仮想マシンが表示されません。 
+2.  **仮想マシン > [設定] > [ディザスター リカバリー]** を使用して VM を保護しようとすると、"*VM の既存のリソース リンクが古いため、レプリケーションを有効にすることはできません*" というエラー メッセージが表示されて失敗します。
+
+
+### <a name="fix-the-problem"></a>問題の解決
+
+>[!NOTE]
+>
+>以下の手順の実行中は、Azure Site Recovery でソース仮想マシンを削除することも、何らかの方法でソース仮想マシンに影響を与えることもできません。
+>
+
+1. VM または VM リソース グループから、ロックを削除します。 例: VM 名 "MoveDemo" の下に、削除する必要があるリソース ロックがあります。
+
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. [古い Azure Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
+3. *Cleanup-stale-asr-config-Azure-VM.ps1* スクリプトを実行します。
+4. パラメーターとして、サブスクリプション ID、VM リソース グループ、および VM 名を指定します。
+5. Azure の資格情報を求められたら それを入力し、スクリプトがエラーなしに実行されたことを確認してください。 
+
+
+## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>VM に既存の古いリソース リンクがあるためレプリケーションを有効にできない (エラー コード 150226)
+
+**原因: 仮想マシンに、以前の Site Recovery 保護の古い構成が残されている**
+
+古い構成は、次の場合に Azure VM に残る可能性があります。
+
+- Site Recovery を使用して Azure VM のレプリケーションを有効にし、後でレプリケーションを無効にしたが、**ソース VM にリソース ロックが設定されていた**。
 - Site Recovery を使用して Azure VM のレプリケーションを有効にし、VM でレプリケーションを明示的に無効にせずに、Site Recovery コンテナーを削除した。
 - Site Recovery を使用して Azure VM のレプリケーションを有効にし、VM でレプリケーションを明示的に無効にせずに、Site Recovery コンテナーを含むリソース グループを削除した。
 
@@ -250,9 +275,52 @@ Azure Site Recovery では現在、ソース リージョンのリソース グ�
 
 >[!NOTE]
 >
->以下のスクリプトを使用する前に、""AzureRM.Resources"" モジュールを必ず更新するようにしてください。
+>以下の手順の実行中は、Azure Site Recovery でソース仮想マシンを削除することも、何らかの方法でソース仮想マシンに影響を与えることもできません。
 
-[古い ASR 構成を削除するスクリプト](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)を使用して、Azure VM で古い Site Recovery 構成を削除できます。 古い構成を削除すると、VM が表示されます。
+
+1. VM または VM リソース グループから、ロックを削除します (ロックが設定されている場合)。 *例:* VM 名 "MoveDemo" の下に、削除する必要があるリソース ロックがあります。
+   
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. [古い Azure Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
+3. *Cleanup-stale-asr-config-Azure-VM.ps1* スクリプトを実行します。
+4. パラメーターとして、サブスクリプション ID、VM リソース グループ、および VM 名を指定します。
+5. Azure の資格情報を求められたら それを入力し、スクリプトがエラーなしに実行されたことを確認してください。  
+
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>"レプリケーションの有効化" で、選択する Azure VM またはリソース グループが表示されない
+
+ **原因 1:リソース グループとソース仮想マシンが別々の場所にある**
+ 
+Azure Site Recovery では現在、ソース リージョンのリソース グループと仮想マシンが同じ場所にあることが必須となっています。 そうでない場合、保護されている間は、仮想マシンもリソース グループも見つけることができません。 
+
+**この問題の回避策として**、Recovery Services コンテナーではなく、VM からレプリケーションを有効にします。 ソース VM > [プロパティ] > [ディザスター リカバリー] に移動し、レプリケーションを有効にします。
+
+**原因 2:このリソース グループが、選択されたサブスクリプションの一部でない**
+
+特定のサブスクリプションの一部ではない場合、保護されたときにリソース グループを見つけられない可能性があります。 リソース グループが、使用されているサブスクリプションに属していることを確認します。
+
+ **原因 3:構成が古い**
+ 
+レプリケーションを有効にする VM が表示されない場合は、Azure VM 上に古い Site Recovery 構成が残されていることが原因である可能性があります。 古い構成は、次の場合に Azure VM に残る可能性があります。
+
+- Site Recovery を使用して Azure VM のレプリケーションを有効にし、VM でレプリケーションを明示的に無効にせずに、Site Recovery コンテナーを削除した。
+- Site Recovery を使用して Azure VM のレプリケーションを有効にし、VM でレプリケーションを明示的に無効にせずに、Site Recovery コンテナーを含むリソース グループを削除した。
+
+- Site Recovery を使用して Azure VM のレプリケーションを有効にし、後でレプリケーションを無効にしたが、ソース VM にリソース ロックが設定されていた。
+
+### <a name="fix-the-problem"></a>問題の解決
+
+> [!NOTE]
+>
+> 以下のスクリプトを使用する前に、""AzureRM.Resources"" モジュールを必ず更新するようにしてください。 以下の手順の実行中は、Azure Site Recovery でソース仮想マシンを削除することも、何らかの方法でソース仮想マシンに影響を与えることもできません。
+>
+
+1. VM または VM リソース グループから、ロックを削除します (ロックが設定されている場合)。 *例:* VM 名 "MoveDemo" の下に、削除する必要があるリソース ロックがあります。
+
+   ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+2. [古い構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
+3. *Cleanup-stale-asr-config-Azure-VM.ps1* スクリプトを実行します。
+4. パラメーターとして、サブスクリプション ID、VM リソース グループ、および VM 名を指定します。
+5. Azure の資格情報を求められたら それを入力し、スクリプトがエラーなしに実行されたことを確認してください。
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>保護対象の仮想マシンを選択できない
  **原因 1:仮想マシンの何らかの拡張機能のインストールが失敗したかまたは応答しない状態にある** <br>
@@ -294,7 +362,7 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 
 **エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
 --- | --- | ---
-151025<br></br>**メッセージ**:サイト回復拡張機能をインストールできませんでした | - COM+ システム アプリケーション サービスが無効になっています。</br></br>- ボリューム シャドウ コピー サービスが無効になっています。| COM+ システム アプリケーション サービスとボリューム シャドウ コピー サービスを、自動または手動スタートアップ モードに設定します。
+151025<br></br>**メッセージ**:Site Recovery 拡張機能をインストールできませんでした | - COM+ システム アプリケーション サービスが無効になっています。</br></br>- ボリューム シャドウ コピー サービスが無効になっています。| COM+ システム アプリケーション サービスとボリューム シャドウ コピー サービスを、自動または手動スタートアップ モードに設定します。
 
 ### <a name="fix-the-problem"></a>問題の解決
 
@@ -362,8 +430,8 @@ Few examples: </br>
 
 If the LVM device doesn't exist, fix either by creating it or remove the parameter for the same from the GRUB configuration files and then retry the enable protection. </br>
 
-## Site recovery mobility service update completed with warnings ( error code 151083)
-Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  site recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
+## Site Recovery mobility service update completed with warnings ( error code 151083)
+Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  Site Recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
 **Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
 
 

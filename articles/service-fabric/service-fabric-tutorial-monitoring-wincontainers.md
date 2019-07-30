@@ -3,7 +3,7 @@ title: Azure で Service Fabric 上の Windows コンテナーを監視および
 description: このチュートリアルでは、Azure Service Fabric 上の Windows コンテナーの監視と診断用に Azure Monitor ログを構成します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/08/2018
-ms.author: aljo, dekapur
+ms.date: 07/22/2019
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 11d913264e5920b90ea08d2a29a3651ab101ee64
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 856e2859c778c9f23bc093c2283571a1440ef701
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663164"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598772"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>チュートリアル:Azure Monitor ログを使用して Service Fabric で Windows コンテナーを監視する
 
@@ -86,7 +86,7 @@ ms.locfileid: "58663164"
     "omsSolution": "ServiceFabric"
     ```
 
-3. 仮想マシン拡張機能として Microsoft Monitoring Agent を追加します。 仮想マシン スケール セット リソース *resources* > *"apiVersion": "[variables('vmssApiVersion')]"* を見つけます。 *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* 以下の *ServiceFabricNode* 拡張機能以下に次の拡張機能の説明を追加します。 
+3. 仮想マシン拡張機能として Microsoft Monitoring Agent を追加します。 仮想マシン スケール セット リソース *resources* >  *"apiVersion": "[variables('vmssApiVersion')]"* を見つけます。 *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* 以下の *ServiceFabricNode* 拡張機能以下に次の拡張機能の説明を追加します。 
     
     ```json
     {
@@ -186,7 +186,7 @@ ms.locfileid: "58663164"
     },
     ```
 
-サンプル テンプレートは[こちら](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)です (このチュートリアルの第 1 部で使用されました)。これらの変更がすべて加えられており、必要に応じて参照できます。 これらの変更で、Log Analytics ワークスペースがリソース グループに追加されます。 [Microsoft Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)エージェントで構成されたストレージ テーブルから、Service Fabric プラットフォーム イベントを選択するようにワークスペースが構成されます。 Log Analytics エージェント (Microsoft Monitoring Agent) も、仮想マシン拡張機能としてクラスターの各ノードに追加されます。つまり、クラスターを拡大縮小すると、各マシンのエージェントは自動的に構成され、同じワークスペースに接続されます。
+サンプル テンプレートは[こちら](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)です (このチュートリアルの第 1 部で使用されました)。これらの変更がすべて加えられており、必要に応じて参照できます。 これらの変更で、Log Analytics ワークスペースがリソース グループに追加されます。 [Microsoft Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) エージェントで構成されたストレージ テーブルから、Service Fabric プラットフォーム イベントを選択するようにワークスペースが構成されます。 Log Analytics エージェント (Microsoft Monitoring Agent) も、仮想マシン拡張機能としてクラスターの各ノードに追加されます。つまり、クラスターを拡大縮小すると、各マシンのエージェントは自動的に構成され、同じワークスペースに接続されます。
 
 新しい変更を加えたテンプレートをデプロイして、現在のクラスターをアップグレードします。 処理が完了すると、リソース グループにログ分析リソースが表示されます。 クラスターの準備ができたら、コンテナー化されたアプリケーションをデプロイします。 次の手順では、コンテナーの監視を設定します。
 
@@ -196,7 +196,7 @@ ms.locfileid: "58663164"
 
 ![コンテナー ソリューションの追加](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-"*Log Analytics ワークスペース*" の入力を求められたら、リソース グループに作成したワークスペースを選択し、**[作成]** をクリックします。 "*コンテナー監視ソリューション*" がワークスペースに追加され、テンプレートによって Log Analytics エージェントがデプロイされ、Docker ログと統計情報の収集が開始されます。 
+"*Log Analytics ワークスペース*" の入力を求められたら、リソース グループに作成したワークスペースを選択し、 **[作成]** をクリックします。 "*コンテナー監視ソリューション*" がワークスペースに追加され、テンプレートによって Log Analytics エージェントがデプロイされ、Docker ログと統計情報の収集が開始されます。 
 
 *リソース グループ*に戻ると、新しく追加された監視ソリューションが表示されます。 ソリューションをクリックすると、ランディング ページに実行中のコンテナー イメージ数が表示されます。
 
@@ -221,9 +221,9 @@ ms.locfileid: "58663164"
 Log Analytics エージェントを使用するもう 1 つの利点として、Azure Diagnostics エージェントを構成し、毎回 Resource Manager テンプレート ベースのアップグレードを実行するのではなく、ログ分析の UI 操作で選択可能なパフォーマンス カウンターを変更できる点があります。 これを行うには、コンテナー監視 (または Service Fabric) ソリューションのランディング ページで **[OMS ワークスペース]** をクリックします。
 
 Log Analytics ワークスペースに移動します。ここでは、ソリューションの確認、カスタム ダッシュボードの作成、Log Analytics エージェントの構成を行うことができます。 
-* [詳細設定] メニューを開くには、**[詳細設定]** をクリックします。
-* **[接続されたソース]** > **[Windows Server]** の順にクリックし、*"5 台の Windows コンピューターが接続されています"* と表示されることを確認します。
-* **[データ]** > **[Windows パフォーマンス カウンター]** の順にクリックし、新しいパフォーマンス カウンターを検索して追加します。 この画面には、収集できるパフォーマンス カウンターの Azure Monitor ログのレコメンデーション一覧と、他のカウンターを検索するオプションが表示されます。 **Processor(_Total)\% Processor Time** カウンターと **Memory(*)\Available MBytes** カウンターが収集されていることを確認します。
+* [詳細設定] メニューを開くには、 **[詳細設定]** をクリックします。
+* **[接続されたソース]**  >  **[Windows Server]** の順にクリックし、 *"5 台の Windows コンピューターが接続されています"* と表示されることを確認します。
+* **[データ]**  >  **[Windows パフォーマンス カウンター]** の順にクリックし、新しいパフォーマンス カウンターを検索して追加します。 この画面には、収集できるパフォーマンス カウンターの Azure Monitor ログのレコメンデーション一覧と、他のカウンターを検索するオプションが表示されます。 **Processor(_Total)\% Processor Time** カウンターと **Memory(*)\Available MBytes** カウンターが収集されていることを確認します。
 
 数分後にコンテナー監視ソリューションを**更新**すると、*コンピューターのパフォーマンス* データが表示されるようになります。 このデータから、リソースの使用状況を把握することができます。 また、これらのメトリックを使用して、クラスターの拡大縮小に関する適切な判断を下すことができます。また、クラスターが期待どおりに負荷を分散しているかどうかを確認することができます。
 

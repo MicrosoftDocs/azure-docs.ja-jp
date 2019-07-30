@@ -55,34 +55,22 @@ sections:
         className: cardsM
         columns: 1
         items:
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>このチュートリアルでは、ローカルのビデオ ファイルをアップロードし、そのファイルをエンコードして、エンコードされたコンテンツをストリーム配信します。<p/>
+          - html: <p>このチュートリアルでは、ローカルのビデオ ファイルをアップロードし、そのファイルをエンコードして、エンコードされたコンテンツをストリーム配信します。<p/>
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: アップロードされたファイルのエンコードとビデオのストリーム配信
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>このチュートリアルでは、ライブ イベントに向けた設定方法について説明します。 その後、.NET を使用してライブ イベントのパススルー タイプを作成する方法について説明します。</p>
+          - html: <p>このチュートリアルでは、ライブ イベントに向けた設定方法について説明します。 その後、パススルー タイプのライブ イベントを作成する方法について説明します。</p>
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: ライブ ブロードキャスト
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>このチュートリアルでは、Azure Media Services API を使用してビデオを分析する方法について説明します。</p>
+          - html: <p>このチュートリアルでは、Azure Media Services API を使用してビデオを分析する方法について説明します。</p>
             href: /azure/media-services/latest/analyze-videos-tutorial-with-api
             title: ビデオの分析
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>AES-128 を使用してコンテンツを動的に暗号化するよう Media Services API シリーズを構成して使用する方法について説明します。</p>
+          - html: <p>AES-128 を使用してコンテンツを動的に暗号化するよう Media Services API シリーズを構成して使用する方法について説明します。</p>
             href: /azure/media-services/latest/protect-with-aes128
             title: AES-128 を使用した動的な暗号化
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>マルチ DRM (PlayReady、Widevine、FairPlay) を使用してコンテンツを動的に暗号化するよう Media Services API シリーズを構成して使用する方法について説明します。</p>
+          - html: <p>マルチ DRM (PlayReady、Widevine、FairPlay) を使用してコンテンツを動的に暗号化するよう Media Services API シリーズを構成して使用する方法について説明します。</p>
             href: /azure/media-services/latest/protect-with-drm
             title: マルチ DRM を使用した動的な暗号化
-          - image:
-              src: media/index/rest.svg
-            html: <p>このチュートリアルでは、リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する方法を説明します。</p>
+          - html: <p>このチュートリアルでは、リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する方法を説明します。</p>
             href: /azure/media-services/latest/stream-files-tutorial-with-rest
             title: リモート ファイルのエンコードとビデオのストリーム配信
   - title: サンプル
@@ -125,4 +113,4 @@ sections:
           - html: '<a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>'
           - html: '<a href="https://aka.ms/ams-v3-java-ref">Java</a>'
           - html: '<a href="https://aka.ms/ams-v3-python-ref">Python</a>'
-          - html: '<a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>'
+          - html: '<a href="https://aka.ms/ams-v3-nodejs-ref">Node.JS</a>'

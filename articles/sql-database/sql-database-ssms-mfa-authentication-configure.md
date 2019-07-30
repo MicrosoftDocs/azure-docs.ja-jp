@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 453a048bc9e7c2878c0730b9002b10bdeb8c22fa
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b12508fbd0aec3bc6c697c920cd8ff94e3ac3396
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316219"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119169"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 
@@ -37,13 +37,13 @@ ms.locfileid: "57316219"
 
 最新版の SSMS を使用して SQL Database または SQL Data Warehouse に接続する手順は、次のとおりです。
 
-1. ユニバーサル認証を使用して接続するには、**[サーバーに接続]** ダイアログ ボックスで、**[Active Directory - MFA サポートで汎用]** を選択します (**[Active Directory のユニバーサル認証]** と表示される場合、お使いのバージョンは最新の SSMS ではありません)。  
+1. ユニバーサル認証を使用して接続するには、 **[サーバーに接続]** ダイアログ ボックスで、 **[Active Directory - MFA サポートで汎用]** を選択します ( **[Active Directory のユニバーサル認証]** と表示される場合、お使いのバージョンは最新の SSMS ではありません)。  
    ![1mfa-universal-connect][1]  
 2. **[ユーザー名]** ボックスに、`user_name@domain.com` という形式で Azure Active Directory の資格情報を入力します。  
    ![1mfa-universal-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
-3. ゲスト ユーザーとして接続している場合は、**[オプション]** をクリックし、**[接続プロパティ]** ダイアログ ボックスで **[AD ドメイン名またはテナント ID]** ボックスに入力します。 詳細については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。
+3. ゲスト ユーザーとして接続している場合は、 **[オプション]** をクリックし、 **[接続プロパティ]** ダイアログ ボックスで **[AD ドメイン名またはテナント ID]** ボックスに入力します。 詳細については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
-4. SQL Database と SQL Data Warehouse では通常どおり、**[オプション]** をクリックし、**[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。 次いで **[接続]** をクリックします。  
+4. SQL Database と SQL Data Warehouse では通常どおり、 **[オプション]** をクリックし、 **[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。 次いで **[接続]** をクリックします。  
 5. **[アカウントにサインイン]** ダイアログ ボックスが開いたら、Azure Active Directory ID のアカウントとパスワードを入力します。 ユーザーが Azure AD とフェデレーションされているドメインに属している場合、パスワードは不要です。  
    ![2mfa-sign-in][2]  
 
@@ -55,7 +55,7 @@ ms.locfileid: "57316219"
    ![3mfa-setup][3]  
 7. 2 つ目に表示される可能性のある 1 度限りのダイアログ ボックスでは、認証方式の詳細を選択できます。 使用可能なオプションは、管理者によって構成されます。  
    ![4mfa-verify-1][4]  
-8. Azure Active Directory から確認用の情報が送信されます。 確認コードを受け取ったら、**[確認コードを入力する]** ボックスにコードを入力し、**[サインイン]** をクリックします。  
+8. Azure Active Directory から確認用の情報が送信されます。 確認コードを受け取ったら、 **[確認コードを入力する]** ボックスにコードを入力し、 **[サインイン]** をクリックします。  
    ![5mfa-verify-2][5]  
 
 確認が完了すると、有効な資格情報とファイアウォール アクセスが推定され、SSMS の接続が通常どおり行われます。
@@ -65,7 +65,7 @@ ms.locfileid: "57316219"
 - Azure SQL Database の多要素認証の概要については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。  
 - 自分のデータベースへのアクセス権を他のユーザーに付与する:[SQL Database の認証と承認:アクセス権の付与](sql-database-manage-logins.md)  
 - 他のユーザーがファイアウォール経由で接続できるようにする:[Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)  
-- **Active Directory - MFA で汎用**認証を使うとき、ADAL トレースは [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 以降で利用できます。 ADAL トレースは既定ではオフであり、オンにするには、**[ツール]** の **[オプション]** メニューで、**[Azure サービス]**、**[Azure クラウド]**、**[ADAL 出力ウィンドウのトレース レベル]** の順に選んで、**[表示]** メニューの **[出力]** を有効にします。 出力ウィンドウで **[Azure Active Directory option]\(Azure Active Directory オプション\)** を選ぶと、トレースが使用可能になります。   
+- **Active Directory - MFA で汎用**認証を使うとき、ADAL トレースは [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 以降で利用できます。 ADAL トレースは既定ではオフであり、オンにするには、 **[ツール]** の **[オプション]** メニューで、 **[Azure サービス]** 、 **[Azure クラウド]** 、 **[ADAL 出力ウィンドウのトレース レベル]** の順に選んで、 **[表示]** メニューの **[出力]** を有効にします。 出力ウィンドウで **[Azure Active Directory option]\(Azure Active Directory オプション\)** を選ぶと、トレースが使用可能になります。   
 
 
 [1]: ./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png

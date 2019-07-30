@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 08b6f803d6994015432bf68c7b3edae14af8f976
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b74c0d8dc0daa7bb86c2884f5e574fdc579ba44
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61095450"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442379"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -101,7 +101,7 @@ ms.locfileid: "61095450"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|EnableAdfsAuthentication|説明|必須|
 |----------|-----------------|--------------|
 |cache-lookup|ルート要素。|はい|
 |vary-by-header|指定されたヘッダーの値 (Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match など) ごとに応答をキャッシュに格納します。|いいえ|
@@ -109,7 +109,7 @@ ms.locfileid: "61095450"
 
 ### <a name="attributes"></a>属性
 
-| Name                           | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+| EnableAdfsAuthentication                           | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | allow-private-response-caching | `true` に設定すると、承認ヘッダーを含む要求をキャッシュできます。                                                                                                                                                                                                                                                                        | いいえ       | false             |
 | caching-type               | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
@@ -122,7 +122,7 @@ ms.locfileid: "61095450"
 このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound
-- **ポリシー スコープ:** API、操作、製品
+- **ポリシー スコープ:** すべてのスコープ
 
 ## <a name="StoreToCache"></a> キャッシュに格納
 `cache-store`ポリシーは、指定されたキャッシュ設定に従って応答をキャッシュに格納します。 このポリシーを適用できるのは、応答の内容が一定期間にわたって静的である場合です。 応答のキャッシュを使用すると、バックエンド Web サーバーの帯域幅および処理の要件が低減され、API コンシューマーによって認識される遅延が小さくなります。
@@ -180,13 +180,13 @@ ms.locfileid: "61095450"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|EnableAdfsAuthentication|説明|必須|
 |----------|-----------------|--------------|
 |cache-store|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+| EnableAdfsAuthentication             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | duration         | キャッシュに格納されたエントリの有効期間 (秒単位)。                                                                                                                                                                                                                                                                                                   | はい      | 該当なし               |
 
@@ -194,7 +194,7 @@ ms.locfileid: "61095450"
 このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 - **ポリシー セクション:** outbound
-- **ポリシー スコープ:** API、操作、製品
+- **ポリシー スコープ:** すべてのスコープ
 
 ## <a name="GetFromCacheByKey"></a> キャッシュから値を取得
 `cache-lookup-value` ポリシーを使用して、キーごとにキャッシュの検索を行い、キャッシュされている値を返します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。
@@ -223,13 +223,13 @@ ms.locfileid: "61095450"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|EnableAdfsAuthentication|説明|必須|
 |----------|-----------------|--------------|
 |cache-lookup-value|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+| EnableAdfsAuthentication             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
 | default-value    | キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。                                                                                                                                                                                                           | いいえ       | `null`            |
@@ -240,7 +240,7 @@ ms.locfileid: "61095450"
 このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound、outbound、backend、on-error
-- **ポリシー スコープ:** グローバル、API、操作、製品
+- **ポリシー スコープ:** すべてのスコープ
 
 ## <a name="StoreToCacheByKey"></a> 値をキャッシュに格納
 `cache-store-value` は、キーごとに記憶域のキャッシュを実行します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。
@@ -266,13 +266,13 @@ ms.locfileid: "61095450"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|EnableAdfsAuthentication|説明|必須|
 |----------|-----------------|--------------|
 |cache-store-value|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+| EnableAdfsAuthentication             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
 | duration         | 指定された期間 (秒単位)、値がキャッシュされます。                                                                                                                                                                                                                                                                                 | はい      | 該当なし               |
@@ -282,7 +282,7 @@ ms.locfileid: "61095450"
 このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound、outbound、backend、on-error
-- **ポリシー スコープ:** グローバル、API、操作、製品
+- **ポリシー スコープ:** すべてのスコープ
 
 ### <a name="RemoveCacheByKey"></a> キャッシュから値を削除
 `cache-remove-value` は、キーで指定された、キャッシュされている項目を削除します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。
@@ -305,13 +305,13 @@ ms.locfileid: "61095450"
 
 #### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|EnableAdfsAuthentication|説明|必須|
 |----------|-----------------|--------------|
 |cache-remove-value|ルート要素。|はい|
 
 #### <a name="attributes"></a>属性
 
-| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+| EnableAdfsAuthentication             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | caching-type | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` (「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ       | `prefer-external` |
 | key              | キャッシュから削除される、前にキャッシュされた値のキー。                                                                                                                                                                                                                                                                                        | はい      | 該当なし               |
@@ -320,7 +320,7 @@ ms.locfileid: "61095450"
 このポリシーは、ポリシーの以下の[セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound、outbound、backend、on-error
-- **ポリシー スコープ:** グローバル、API、操作、製品
+- **ポリシー スコープ:** すべてのスコープ
 
 ## <a name="next-steps"></a>次の手順
 

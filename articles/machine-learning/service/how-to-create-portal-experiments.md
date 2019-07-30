@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: tsikiksr
+ms.author: cgronlun
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990147"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871810"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Azure portal で自動化された機械学習の実験を作成および参照する (プレビュー)
 
@@ -96,16 +96,16 @@ ms.locfileid: "65990147"
 
 1. 予測の場合:
     1. 時間列の選択:この列には、使用する時間データが含まれています。
-    1. 予測期間を選択します。モデルで将来を予測できる時間単位 (分/時間/日/週/月/年) の数を示します。 モデルで将来を予測する期間が延びるほど、正確性が下がります。 [予測と予測期間の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/machine-learning/service/how-to-auto-train-forecast#configure-experiment)。
+    1. 予測期間を選択します。モデルで将来を予測できる時間単位 (分/時間/日/週/月/年) の数を示します。 モデルで将来を予測する期間が延びるほど、正確性が下がります。 [予測と予測期間の詳細については、こちらを参照してください](how-to-auto-train-forecast.md)。
 
 1. (省略可能) 詳細設定: トレーニング ジョブをより細かく制御するのに使用できる追加の設定です。
 
     詳細設定|説明
     ------|------
-    主要メトリック| モデルをスコアリングするために使用される主なメトリックです。 [モデルのメトリックの詳細については、こちらを参照してください](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics)。
+    主要メトリック| モデルをスコアリングするために使用される主なメトリックです。 [モデルのメトリックの詳細については、こちらを参照してください](how-to-configure-auto-train.md#explore-model-metrics)。
     終了基準| これらの基準のどれかが満たされると、トレーニング ジョブは完全に完了する前に終了します。 <br> *Training job time (minutes) (トレーニング ジョブ時間 (分))* : トレーニング ジョブを実行できる時間の長さ。  <br> *イテレーションの最大数*: トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。
     前処理| 自動化された機械学習によって行われる前処理を有効または無効にするように選択します。 前処理には、合成的特徴を生成するための自動データ クレンジング、準備、変換が含まれます。 [前処理の詳細については、こちらを参照してください](#preprocess)。
-    検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 [クロス検証の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options)。
+    検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 [クロス検証の詳細については、こちらを参照してください](how-to-configure-auto-train.md)。
     コンカレンシー| マルチコア コンピューティングの使用時に使用するマルチコアの制限を選択します。
     Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。
 
@@ -180,7 +180,7 @@ ms.locfileid: "65990147"
 
 ### <a name="view-training-run-details"></a>トレーニング実行の詳細の表示
 
-トレーニングのパフォーマンス メトリックと分布グラフと同様に、出力モデルのいずれかをドリル ダウンして、実行の詳細を表示します。 [グラフの詳細については、こちらを参照してください](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts)。
+トレーニングのパフォーマンス メトリックと分布グラフと同様に、出力モデルのいずれかをドリル ダウンして、実行の詳細を表示します。 [グラフの詳細については、こちらを参照してください](how-to-track-experiments.md#understanding-automated-ml-charts)。
 
 ![イテレーションの詳細](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "65990147"
 
 1. [Conda ファイル] ボックスの横にある **[参照]** を選択して、前にダウンロードした環境ファイル (condaEnv.yml) をアップロードします。
 
-    独自のスコアリング スクリプトと conda ファイルを使用できるほか、追加ファイルをアップロードすることもできます。 [スコアリング スクリプトの詳細をご確認ください](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script)。
+    独自のスコアリング スクリプトと conda ファイルを使用できるほか、追加ファイルをアップロードすることもできます。 [スコアリング スクリプトの詳細をご確認ください](how-to-deploy-and-where.md#script)。
 
       >[!Important]
       > ファイル名の文字数は 32 文字未満にする必要があります。先頭と末尾には英数字を使用してください。 先頭と末尾以外では、ダッシュ、アンダースコア、ピリオド、および英数字を使用できます。 スペースは使用できません。
@@ -228,7 +228,7 @@ ms.locfileid: "65990147"
     ![イメージを作成する](media/how-to-create-portal-experiments/create-image.png)
 
 1. [作成] を選択して、イメージの作成を開始します。 この作業を完了するには数分かかります。完了すると、上部のバーにメッセージが表示されます。
-1. [イメージ] タブに移動し、デプロイするイメージの横にあるチェックボックスをオンにして、[デプロイの作成] を選択します。 [デプロイの詳細をご確認ください](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)。
+1. [イメージ] タブに移動し、デプロイするイメージの横にあるチェックボックスをオンにして、[デプロイの作成] を選択します。 [デプロイの詳細をご確認ください](how-to-deploy-and-where.md)。
 
     デプロイには 2 つのオプションがあります。
      + Azure コンテナー インスタンス (ACI) - 大規模な運用デプロイではなく、テスト目的で使用されます。 "_CPU 予約容量_" については 1 つ以上のコア、"_メモリ予約容量_" については 1 ギガバイト (GB) 以上に対して値を入力します

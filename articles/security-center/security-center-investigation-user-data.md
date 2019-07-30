@@ -7,19 +7,19 @@ author: rkarlin
 manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
-ms.service: operations-management-suite
+ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fd979be117104186b2dfce47cc79947a092eb9e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60909215"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672327"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Security Center 調査で検出されたユーザー データの管理
 この記事では、Azure Security Center 調査機能で検出されたユーザー データの管理方法を説明します。 調査データは [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)に格納され、Azure Security Center で公開されます。 ユーザー データの管理には、データを削除したりエクスポートしたりする機能が含まれます。

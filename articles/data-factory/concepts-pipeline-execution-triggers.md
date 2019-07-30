@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
 ms.openlocfilehash: 21e66f962d1cc0bbbe8d780a702216d40abe2836
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155220"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
-> [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-scheduling-and-execution.md)
 > * [現在のバージョン](concepts-pipeline-execution-triggers.md)
 
@@ -281,9 +281,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | string | はい | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | はい | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | number | いいえ  | 1 | 1 から 1,000 | `"interval":10` |
+| **interval** | number | いいえ | 1 | 1 から 1,000 | `"interval":10` |
 | **endTime** | string | はい | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **schedule** | object | いいえ | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime プロパティ
 次の表に、**startTime** プロパティでトリガー実行を制御する方法を示します。
@@ -293,7 +293,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **開始時刻が過去** | 開始時刻より後の将来の最初の実行時刻を計算し、その時刻に実行されます。<br /><br />2 回目以降は、最後の実行時刻から計算して実行します。<br /><br />この表の後の例を参照してください。 | トリガーは、指定した開始時刻になると "_すぐに_" 起動します。 最初は、開始時刻から計算したスケジュールに基づいて実行されます。<br /><br />以降は、繰り返しのスケジュールに基づいて実行されます。 |
 | **開始時刻が将来または現在** | 指定した開始時刻に 1 回実行されます。<br /><br />2 回目以降は、最後の実行時刻から計算して実行します。 | トリガーは、指定した開始時刻になると "_すぐに_" 起動します。 最初は、開始時刻から計算したスケジュールに基づいて実行されます。<br /><br />以降は、繰り返しのスケジュールに基づいて実行されます。 |
 
-ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が 2017 年 4 月 8 日 13 時、開始時刻が 2017 年 4 月 7 日 14 時、繰り返しが 2 日ごとであると仮定します  (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
+ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が 2017 年 4 月 8 日 13 時、開始時刻が 2017 年 4 月 7 日 14 時、繰り返しが 2 日ごとであると仮定します (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
 
 これらの条件では、最初の実行は 2017 年 4 月 9 日の 14 時です。 Scheduler エンジンは、開始時刻から実行を計算します。 過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。 このシナリオでは、開始時刻は 2017 年 4 月 7 日の午後 2 時になります。 次回のインスタンスは 2 日後、つまり 2017 年 4 月 9 日の午後 2 時となります。
 

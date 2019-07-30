@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 4bb72bc3fe8b85a8d2aed88e02f5f3150abb6899
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9f76597a91c0e22f57d1ba66ff1a16eea9002af0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493677"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250082"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する
 
@@ -145,7 +145,7 @@ New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
-| Name | 詳細を取得する Blockchain Service メンバーの名前。 名前を入力すると、そのメンバーの詳細が返されます。 名前を省略すると、すべてのコンソーシアム メンバーの一覧が返されます。 | いいえ |
+| EnableAdfsAuthentication | 詳細を取得する Blockchain Service メンバーの名前。 名前を入力すると、そのメンバーの詳細が返されます。 名前を省略すると、すべてのコンソーシアム メンバーの一覧が返されます。 | いいえ |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
@@ -174,7 +174,7 @@ Role           : ADMIN
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
-| Name | 削除するメンバーの名前 | はい |
+| EnableAdfsAuthentication | 削除するメンバーの名前 | はい |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Account | Import-Web3Account で取得した Web3Account オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
@@ -191,12 +191,14 @@ $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $
 
 コンソーシアム管理者は、すべてのメンバーの **DisplayName** と **Role** を設定できます。 ユーザー ロールを持つコンソーシアム メンバーは、自分のメンバーの表示名のみを変更できます。
 
-`Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
- -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
+```
+Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
+ -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>
+```
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
-| Name | ブロックチェーン メンバーの名前 | はい |
+| EnableAdfsAuthentication | ブロックチェーン メンバーの名前 | はい |
 | DisplayName | 新しい表示名 | いいえ |
 | AccountAddress | アカウント アドレス | いいえ |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
@@ -217,8 +219,10 @@ $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Dis
 
 コンソーシアムに新しいメンバーを招待するには、このコマンドレットを使用します。
 
-`New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
- -Web3Account <IAccount> -Web3Client <IClient>`
+```
+New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
+ -Web3Account <IAccount> -Web3Client <IClient>
+```
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
@@ -264,8 +268,10 @@ SubscriptionId                       Role CorrelationId
 
 コンソーシアム メンバーの招待を取り消すには、このコマンドレットを使用します。
 
-`Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> -Web3Account <IAccount>
- -Web3Client <IClient>`
+```
+Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> -Web3Account <IAccount>
+ -Web3Client <IClient>
+```
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
@@ -284,8 +290,10 @@ $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscri
 
 既存の招待に対して**ロール**を設定するには、このコマンドレットを使用します。 招待を変更できるのはコンソーシアム管理者のみです。
 
-`Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
- -Web3Account <IAccount> -Web3Client <IClient>`
+```
+Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
+ -Web3Account <IAccount> -Web3Client <IClient>
+```
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|

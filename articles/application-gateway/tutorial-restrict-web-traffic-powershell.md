@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/25/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 71f621821e608ff660044208657696f47125330f
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: e962d76bc82edabf750af52c50ec45ed9ed76e17
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729534"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596838"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールを有効にする
 
@@ -102,7 +102,7 @@ $vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Name myVNet
 
-$subnet=$vnet.Subnets[0]
+$subnet=$vnet.Subnets[1]
 
 $gipconfig = New-AzApplicationGatewayIPConfiguration `
   -Name myAGIPConfig `

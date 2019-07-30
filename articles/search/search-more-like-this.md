@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 5723f1ab7258a9e0d672b5c0fd9fd0b9c4dc8721
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d1c691e570d3cfc7e0475c02e4c60ed6ffa8440
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522923"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485350"
 ---
 # <a name="morelikethis-in-azure-search"></a>Azure Search における moreLikeThis
 
@@ -50,4 +50,4 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 Web テスト ツールを使用して、この機能を実験します。  この演習では、Postman を使用することをお勧めします。
 
 > [!div class="nextstepaction"]
-> [Postman を使用して Azure Search REST API を調べる](search-fiddler.md)
+> [Postman を使用して Azure Search REST API を調べる](search-get-started-postman.md)

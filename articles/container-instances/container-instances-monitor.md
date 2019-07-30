@@ -3,20 +3,21 @@ title: Azure Container Instances のコンテナーを監視する
 description: Azure Container Instances のコンテナーによる CPU やメモリなどのコンピューティング リソースの使用状況を監視する方法の詳細。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 04/24/2019
 ms.author: danlep
-ms.openlocfilehash: 7b46ea0518038eeb908591b8438acc2a9095242c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c1208d8cbc795e53128df0ccf93e79dc427abad
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570904"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325850"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances のコンテナー リソースを監視する
 
-[Azure Monitor][azure-monitoring] は、コンテナー インスタンスによって使用されているコンピューティング リソースの分析情報を提供します。 このリソース使用量データは、コンテナー グループの最適なリソース設定を決定するために役立ちます。 Azure Monitor には、コンテナー インスタンスのネットワーク アクティビティを追跡するメトリックもあります。
+[Azure Monitor][azure-monitoring] によって、コンテナー インスタンスによって使用されているコンピューティング リソースの分析情報が提供されます。 このリソース使用量データは、コンテナー グループの最適なリソース設定を決定するために役立ちます。 Azure Monitor には、コンテナー インスタンスのネットワーク アクティビティを追跡するメトリックもあります。
 
 このドキュメントでは、Azure portal と Azure CLI の両方を使用して、コンテナー インスタンスの Azure Monitor メトリックを収集する方法について詳しく説明します。
 
@@ -43,7 +44,7 @@ Azure Monitor では、次の [Azure Container Instances 用のメトリック][
 
 ![2 つのグラフ][dual-chart]
 
-複数のコンテナーを含むコンテナー グループで、[ディメンション][monitor-dimension]を使用してコンテナーごとのメトリックを表示します。 個々のコンテナー メトリックを使用してグラフを作成するには、次の手順を実行します。
+複数のコンテナーを含むコンテナー グループで、[ディメンション][monitor-dimension]を使用してコンテナーごとのメトリックを表します。 個々のコンテナー メトリックを使用してグラフを作成するには、次の手順を実行します。
 
 1. **[概要]** ページで、**CPU** などのメトリック チャートを 1 つ選択します。 
 1. **[Apply splitting]\(分割の適用\)** を選択し、 **[コンテナー名]** を選択します。
@@ -136,9 +137,9 @@ Timestamp            Name          Containername             Average
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Monitoring の概要][azure-monitoring]に関するページで Azure Monitoring の詳細について学習します。
+[Azure Monitoring の概要][azure-monitoring]に関するページで Azure Monitoring について詳しく確認します。
 
-Azure Container Instances のメトリックがしきい値を超えたときに通知されるように[メトリック アラート][metric-alert]を作成する方法について学習します。
+Azure Container Instances のメトリックがしきい値を超えたときに通知されるように、[メトリック アラート][metric-alert]を作成する方法について学習します。
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png

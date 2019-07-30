@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b3d749eb3e2bc767889831b4c1ff01833a3f39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544679"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483174"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>方法:Azure AD Graph API を使用する
 
@@ -65,7 +65,7 @@ Azure AD Graph API 用の Azure AD Graph Explorer を使用して、アプリケ
 
 次に示すスクリーンショットは、Azure AD Graph Explorer に移動し、サインインして、サインインしたユーザー ディレクトリのすべてのユーザーを表示するために「`https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6`」と入力した場合に表示される出力です。
 
-![Azure AD Graph API Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
+![Azure AD Graph API Explorer の出力の例](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
 **Azure AD Graph Explorer を読み込む**:ツールを読み込むには、[https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) に移動します。 **[ログイン]** をクリックし、Azure AD アカウント資格情報でサインインし、テナントに対して Azure AD Graph Explorer を実行できます。 独自のテナントに対して Azure AD Graph Explorer を実行する場合は、ユーザー自身またはユーザーの管理者がサインイン中に同意する必要があります。 Office 365 サブスクリプションがある場合は、Azure AD テナントが自動的に設定されます。 Office 365 にサインインするための資格情報は、実際は Azure AD アカウントであり、これらの資格情報を Azure AD Graph Explorer で使用できます。
 

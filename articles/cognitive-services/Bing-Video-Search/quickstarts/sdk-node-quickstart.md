@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 07/18/2019
 ms.author: aahi
-ms.openlocfilehash: f00f4c90d529e95aa495f68802f4da9a097d3b2b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 12eafca9c673d95813eefcd58d2b3f9ba7b54fd3
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798006"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358894"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>クイック スタート:Bing Video Search SDK for Node.js で動画の検索を実行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "65798006"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Node.js](https://www.nodejs.org/)
+- [Node.JS](https://www.nodejs.org/)
 
 Bing Video Search SDK を使用してコンソール アプリケーションを設定するには:
 * 開発環境で `npm install ms-rest-azure` を実行します。
@@ -58,13 +58,6 @@ Bing Video Search SDK を使用してコンソール アプリケーションを
         throw err;
     });
     ```
-
-<!-- Remove until the response can be replace with a sanitized version.
-The code prints `result.value` items to the console without parsing any text. The results will be:
-- _type: 'VideoObjectElementType'
-
-![Video results](media/video-search-sdk-node-results.png)
--->
 
 ## <a name="next-steps"></a>次の手順
 

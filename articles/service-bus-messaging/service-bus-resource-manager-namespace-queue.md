@@ -14,20 +14,20 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 2952c446e2d66505ebaec42eb82e37be02035483
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d7e4253d37d5b50fc8c3de1c8c31636e59b2b9c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62111494"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444782"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
 
 この記事では、Service Bus の名前空間とその名前空間内のキューを作成する Azure Resource Manager テンプレートを使用する方法を示します。 この記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを指定する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成について詳しくは、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」を参照してください。
 
-完全なテンプレートについては、GitHub の [Service Bus の名前空間とキューのテンプレート][Service Bus namespace and queue template]に関するページを参照してください。
+完全なテンプレートについては、GitHub にある [Service Bus の名前空間とキューのテンプレート][Service Bus namespace and queue template] を参照してください。
 
 > [!NOTE]
 > 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。
@@ -137,7 +137,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>次の手順
-Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
+名前空間/キューの承認規則を作成する方法を説明している次のトピックを参照してください。[Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する](service-bus-resource-manager-namespace-auth-rule.md)
+
+次の記事を参照して、これらのリソースの管理方法を確認してください。
 
 * [PowerShell で Service Bus を管理する](service-bus-manage-with-ps.md)
 * [Service Bus リソースを Service Bus Explorer で管理する](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d62e972ddf23cbafe3f91a07947540bea99160
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c09752c1aa9840ab8dcdc1faa69222de4529644d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245124"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102125"
 ---
 # <a name="tutorial-integrate-foodee-with-azure-active-directory"></a>チュートリアル:Foodee と Azure Active Directory との統合
 

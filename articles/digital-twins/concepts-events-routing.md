@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7dfda00aca403f7f95f0c56d1db28c3c609bebd2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035697"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080656"
 ---
 # <a name="routing-events-and-messages"></a>ルーティング イベントおよびメッセージ
 
@@ -21,7 +21,7 @@ IoT ソリューションでは、多くの場合、ストレージ、分析、�
 
 ## <a name="route-types"></a>ルートの種類  
 
-Azure Digital Twins には、IoT イベントを他の Azure サービスやビジネス アプリケーションに統合するための 2 つの方法が用意されています。
+Azure Digital Twins には、IoT イベントを他の Azure サービスやビジネス アプリケーションと接続するための 2 つの方法が用意されています。
 
 * **Azure Digital Twins イベントのルーティング**:Azure Digital Twins イベントは、空間グラフ内のオブジェクトが変化したとき、テレメトリ データが受信されたとき、または事前定義された条件に基づいてユーザー定義関数が通知を作成したときにトリガーされます。 ユーザーは、さらに処理するために、これらのイベントを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure Service Bus トピック](https://azure.microsoft.com/services/service-bus/)、または [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に送信できます。
 

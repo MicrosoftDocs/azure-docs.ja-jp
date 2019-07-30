@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 0da95dbdca52232b4b24ad921bf2d9c78dc76d56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245542"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619682"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでの商用マーケットプレース向け分析
 
@@ -138,7 +138,7 @@ Microsoft Partner Center の分析レポートにアクセスして、売上を�
 
 - **Billed through Azure (Azure から請求)** :このライセンスの種類を使用して[マイクロソフト経由でオファーを販売する](./create-new-saas-offer.md#sell-through-microsoft)ことを選択した場合、マイクロソフトが代理で顧客に請求します。 支払いの種類には、クレジット カードによる従量課金制、または企業への請求書発行があります。
 - **Bring your own license (ライセンス持ち込み)** :この種類のマーケットプレース オファーの使用に対してマイクロソフトが顧客に請求することはありません。 マーケットプレースでは **[[Get it now (Free)]\(今すぐ入手 (無料)\)](./create-new-saas-offer.md#get-it-now-free)** と表示されます。
-- **Free**:この種類のマーケットプレース オファーの使用に対してマイクロソフトが顧客に請求することはありません。 マーケットプレースでは **[[Free trial]\(無料評価版\)](./create-new-saas-offer.md#free-trial)** と表示されます。
+- **Free**:この種類のマーケットプレース オファーの使用に対してマイクロソフトが顧客に請求することはありません。 マーケットプレースでは **[[Free trial]\(無料評価版\)](./create-new-saas-offer.md##free-trial-listing)** と表示されます。
 - **Microsoft as reseller (マイクロソフトがリセラー)** : **[クラウド ソリューション プロバイダー (CSP) プログラム](./create-new-saas-offer.md#csp-program-opt-in)** の一環として、マイクロソフトのリセラーによって販売されるオファーを表します。
 
 ![パートナー センターでのライセンスの種類別注文数の分析](./media/analyze-license-type.png)

@@ -11,11 +11,11 @@ ms.custom: ''
 manager: mtillman
 ms.author: kfollis
 ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60551669"
 ---
 # <a name="export-or-delete-user-settings"></a>ユーザー設定のエクスポートまたは削除
 
@@ -32,7 +32,7 @@ Azure portal の設定と機能を使って、カスタム エクスペリエン
 ## <a name="export-or-delete-your-portal-settings"></a>ポータル設定をエクスポートまたは削除する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ポータルのヘッダーで、**[設定]** を選択します。
+2. ポータルのヘッダーで、 **[設定]** を選択します。
 
     ![ポータル設定 (歯車) を示しているスクリーンショット](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
 
@@ -44,7 +44,7 @@ Azure portal の設定と機能を使って、カスタム エクスペリエン
 
       | Action | 説明 |
       | --- | --- |
-      | **すべての設定をエクスポートする** | 配色テーマ、お気に入り、プライベート ダッシュボードなどのユーザー設定が含まれる .json ファイルを作成します。|
+      | **すべての設定をエクスポート** | 配色テーマ、お気に入り、プライベート ダッシュボードなどのユーザー設定が含まれる .json ファイルを作成します。|
       | **すべての設定とプライベート ダッシュボードを削除** | プライベート ダッシュボードと、ポータルに対して行った他のカスタム設定へのすべてのリンクを削除します。 |
 
 > [!NOTE]

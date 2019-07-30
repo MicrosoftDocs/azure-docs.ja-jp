@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37acd88dbfe8ed1790f1bfa68d5e9762a861ddc7
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715664"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626401"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
@@ -88,7 +88,7 @@ Azure Event Hub は汎用的で、データを CSV または JSON 形式でハ�
 
 このドキュメントでは、データを取り込む方法について説明しませんが、Event Hub API を使用して、イベントやデータを Azure Event Hub に簡単に送信できます。
 
-### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+### <a name="azure-stream-analytics-1"></a>Azure Stream Analytics
 Azure Stream Analytics サービスを使用して、データ ストリームから読み取り、任意の数のソースにデータを出力することによって、ほぼリアルタイムで分析を行います。
 
 航空宇宙ソリューション テンプレートの予測メンテナンスの場合、Azure Stream Analytics クエリは、それぞれ Azure Event Hub サービスからのイベントを使用し、4 つの異なる場所に出力する 4 つのサブ クエリから構成されます。 これらの出力は、3 つの Power BI データセットと 1 つの Azure Storage の場所から構成されます。
@@ -103,7 +103,7 @@ Azure Stream Analytics クエリは次によって見つけることができま
   * クエリ自体を表示する場合は ***[クエリ]***
   * 別の出力を表示する場合は ***[出力]***
 
-Azure Stream Analytics クエリの構築については、MSDN の [Stream Analytics クエリ リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx) を参照してください。
+Azure Stream Analytics クエリの構築については、MSDN の [Stream Analytics クエリ リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) を参照してください。
 
 このソリューションでは、クエリは、このソリューション テンプレートの一部として提供されている Power BI ダッシュボードへの受信データ ストリームに関するほぼリアルタイムの分析情報を含む、3 つのデータセットを出力します。 受信データ形式に関する暗黙的知識があるため、これらのクエリはデータ形式に基づいて変更する必要があります。
 

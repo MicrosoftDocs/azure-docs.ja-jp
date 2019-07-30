@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4abf50e11070f2060309ae9b9cd045c874a2c52e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133452"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -33,7 +33,7 @@ ms.locfileid: "66147802"
 
 ## <a name="ultra-ssd-preview"></a>Ultra SSD (プレビュー)
 
-Azure Ultra SSD (プレビュー) では、Azure IaaS VM 用に高スループット、高 IOPS、一貫性のある低待機時間のディスク ストレージが提供されます。 Ultra SSD のその他のメリットとして、仮想マシンを再起動する必要なしに、ワークロードに合わせてディスクのパフォーマンスを動的に変更できます。 Ultra SSD は、SAP HANA、最上位層のデータベース、トランザクションの多いワークロードなど、データ集中型のワークロードに適しています。 Ultra SSD は、データ ディスクとしてのみ使用できます。 OS ディスクとしては Premium SSD を使用することをお勧めします。
+Azure Ultra SSD (プレビュー) は、Azure IaaS VM 用に高スループット、高 IOPS、一貫性のある低待機時間のディスク ストレージを提供します。 Ultra SSD のその他のメリットとして、仮想マシンを再起動する必要なしに、ワークロードに合わせてディスクのパフォーマンスを動的に変更できます。 Ultra SSD は、SAP HANA、最上位層のデータベース、トランザクションの多いワークロードなど、データ集中型のワークロードに適しています。 Ultra SSD は、データ ディスクとしてのみ使用できます。 OS ディスクとしては Premium SSD を使用することをお勧めします。
 
 ### <a name="performance"></a>パフォーマンス
 
@@ -73,7 +73,8 @@ Ultra SSD では、スループットが 256 KiB 以下の I/O 操作は、そ�
 - ES/DS v3 VM でのみサポートされています
 - データ ディスクとしてのみ使用可能であり、4k 物理セクター サイズのみをサポートしています  
 - 空のディスクとしてのみ作成できます  
-- 現在、デプロイには Azure Resource Manager テンプレート、CLI、および Python SDK のみを使用できます。
+- 現在、デプロイには Azure Resource Manager テンプレート、CLI、PowerShell、および Python SDK のみを使用できます。
+- Azure portal を使用してのデプロイは (まだ) できません。
 - ディスク スナップショット、VM イメージ、可用性セット、仮想マシン スケール セット、Azure Disk Encryption はサポートされていません。
 - Azure Backup または Azure Site Recovery との統合はまだサポートされていません。
 -  [ほとんどのプレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)と同様に、一般提供 (GA) されるまではこの機能を運用環境のワークロードに使用しないでください。

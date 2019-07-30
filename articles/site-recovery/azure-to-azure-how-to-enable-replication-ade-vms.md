@@ -2,18 +2,18 @@
 title: Azure Site Recovery を使用した Azure Disk Encryption 対応 VM のレプリケーションの構成 | Microsoft Docs
 description: この記事では、Site Recovery を使用して Azure Disk Encryption 対応 VM を Azure リージョン間でレプリケートするための構成方法について説明します。
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4943b730bb46ee00200d84faf95a7ccb069d3aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790993"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449210"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption 対応仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -22,7 +22,7 @@ ms.locfileid: "60790993"
 >[!NOTE]
 >現在、Azure Site Recovery でサポートされる Azure VM は、Windows OS を稼動しており、なおかつ [Azure Active Directory (Azure AD) を使用した暗号化に対応](https://aka.ms/ade-aad-app)しているものに限られています。
 
-## <a name="required-user-permissions"></a>必要なユーザー アクセス許可
+## <a id="required-user-permissions"></a>必要なユーザー アクセス許可
 Site Recovery では、ユーザーが、ターゲット リージョン内にキー コンテナーを作成し、そのリージョンにキーをコピーするアクセス許可を持っていることが必要です。
 
 Azure portal から Disk Encryption 対応 VM のレプリケーションを有効にするには、ユーザーに次のアクセス許可が必要です。
@@ -139,18 +139,25 @@ Site Recovery の既定のターゲット設定を変更するには、次の手
 
 ## <a id="trusted-root-certificates-error-code-151066"></a>Azure 間 VM レプリケーションの間のキー コンテナーのアクセス許可の問題のトラブルシューティング
 
-**原因 1:** キー コンテナーを Site Recovery に作成させるのではなく、必要なアクセス許可がない作成済みのキー コンテナーをターゲット リージョンから選択した可能性があります。 後述するように、必要なアクセス許可がキー コンテナーにあることを確認してください。
+Azure Site Recovery では、シークレットを読み取ってターゲット リージョンのキー コンテナーにコピーするために、ソース リージョンのキー コンテナーに対する読み取りアクセス許可と、ターゲット リージョンのキー コンテナーに対する書き込みアクセス許可が少なくとも必要です。 
+
+**原因 1:** **ソース リージョンのキー コンテナー**で、キーを読み取るための "GET" アクセス許可がない </br>
+**修正方法:** サブスクリプション管理者であるかどうかに関係なく、キー コンテナーで GET アクセス許可があることが重要です。
+
+1. ソース リージョンのキー コンテナーに移動します (この例では、"ContososourceKeyvault" > **[アクセス ポリシー]** ) 
+2. **[プリンシパルの選択]** で、ユーザー名を追加します (例: "dradmin@contoso.com")
+3. **[キーのアクセス許可]** で、GET を選択します 
+4. **[Secret Permission]\(シークレットのアクセス許可\)** で、GET を選択します 
+5. アクセス ポリシーを保存します
+
+**原因 2:** **ターゲット リージョンのキー コンテナー**で、キーを書き込むために必要なアクセス許可がない。 </br>
 
 *例*: ソース リージョン上のキー コンテナー *ContososourceKeyvault* を持つ VM をレプリケートしようとしました。
 ソース リージョンのキー コンテナーに対するすべてのアクセス許可は持っています。 しかし、保護中に、アクセス許可を持たない作成済みのキー コンテナーである ContosotargetKeyvault を選択しました。 エラーが発生しました。
 
-**修正方法:** **[ホーム]**  >  **[Keyvaults]\(Keyvault\)**  >  **[ContososourceKeyvault]**  >  **[アクセス ポリシー]** に移動して、適切なアクセス許可を追加します。
+[ターゲット キー コンテナー](#required-user-permissions)でのアクセス許可が必要です
 
-**原因 2:** キー コンテナーを Site Recovery に作成させるのではなく、暗号化解除 - 暗号化のアクセス許可がない作成済みのキー コンテナーをターゲット リージョンから選択した可能性があります。 ソース リージョン上でもキーを暗号化している場合は、暗号化解除 - 暗号化のアクセス許可があることを確認してください。</br>
-
-*例*: ソース リージョン上のキー コンテナー *ContososourceKeyvault* を持つ VM をレプリケートしようとしました。 ソース リージョンのキー コンテナーに対して必要なアクセス許可はすべて持っています。 しかし、保護中に、暗号化解除と暗号化のアクセス許可を持たない作成済みのキー コンテナーである ContosotargetKeyvault を選択しました。 エラーが発生しました。</br>
-
-**修正方法:** **[ホーム]**  >  **[Keyvaults]\(Keyvault\)**  >  **[ContososourceKeyvault]**  >  **[アクセス ポリシー]** に移動します。 **[キーのアクセス許可]**  >  **[暗号化操作]** の下でアクセス許可を追加します。
+**修正方法:** **[ホーム]**  >  **[Keyvaults]\(Keyvault\)**  >  **[ContosotargetKeyvault]**  >  **[アクセス ポリシー]** に移動して、適切なアクセス許可を追加します。
 
 ## <a name="next-steps"></a>次の手順
 

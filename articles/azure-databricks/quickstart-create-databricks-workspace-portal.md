@@ -10,24 +10,24 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 43133810c6f8b7cb9fdacb2503103e09f345acfc
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 3da0e5bb9ecb8557ac8b51b3aa6faf60a52dddf9
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551161"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312107"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Databricks で Spark ジョブを実行する
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Databricks 上で Spark ジョブを実行する
 
-このクイックスタートでは、Azure Databricks ワークスペースと、そのワークスペース内の Apache Spark クラスターを作成する方法を示します。 最後に、Databricks クラスターで Spark ジョブを実行する方法を説明します。 Azure Databricks の詳細については、「[Azure Databricks とは](what-is-azure-databricks.md)」を参照してください。
+このクイック スタートでは、Azure portal を使って Azure Databricks ワークスペースと Apache Spark クラスターを作成します。 クラスターでジョブを実行し、カスタム グラフを使用して、ボストンの安全データからリアルタイムのレポートを作成します。
 
-このクイック スタートでは、Spark ジョブの一部として、ボストンの安全に関するデータを分析してさまざまなレポート方法の分析情報を取得します。
+## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。 Azure 無料試用版サブスクリプションを使用してこのチュートリアルを実行することはできません。 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
-    |**場所**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
+    |**Location**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**価格レベル**     |  **Standard**、**Premium**、**Trial** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
     **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、 **[作成]** をクリックします。

@@ -4,22 +4,22 @@ description: SAP HANA on Azure (L インスタンス) への SAP HANA のイン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/05/2019
-ms.author: rclaus
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96acb2e7af797f2777cc751417f50eb21faa46da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5bfd278cc4252167aace3aca52fec65fb3c6367f
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60202951"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869137"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -35,7 +35,7 @@ HANA 2.0 をインストールする予定の場合は、「[SAP support note #2
 > [!IMPORTANT] 
 > Type II ユニットの場合、現在は SLES 12 SP2 OS バージョンのみがサポートされています。 
 
-HANA のインストールを開始する前に、以下について検証する必要があります。
+HANA のインストールを開始する前に、以下について検証します。
 - [HLI ユニット](#validate-the-hana-large-instance-units)
 - [オペレーティング システムの構成](#operating-system)
 - [ネットワーク構成](#networking)
@@ -46,15 +46,17 @@ HANA のインストールを開始する前に、以下について検証する
 
 Microsoft から HANA L インスタンス ユニットを受け取ったら、以下の設定を検証し、必要に応じて調整します。
 
-**手順 1**: HANA L インスタンスを受け取り、インスタンスへのアクセスと接続を確立したら、そのインスタンスの OS をご利用の OS プロバイダーに登録します。 この手順には、Azure の VM にデプロイされている SUSE SMT のインスタンスに SUSE Linux OS を登録することが含まれます。 
+**手順 1**: HANA L インスタンスを受信し、インスタンスへのアクセスと接続を確立した後に、Azure portal で、インスタンスが正しい SKU および OS と共に表示されているかどうかを確認します。 チェックを実行するために必要な手順については、「[Azure portal を介した Azure HANA L インスタンスの制御](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal)」をお読みください。
+
+**手順 2**: HANA L インスタンスを受け取り、インスタンスへのアクセスと接続を確立したら、そのインスタンスの OS をご利用の OS プロバイダーに登録します。 この手順には、Azure の VM にデプロイされている SUSE SMT のインスタンスに SUSE Linux OS を登録することが含まれます。 
 
 HANA L インスタンス ユニットは、この SMT インスタンスに接続できます。 (詳細については、[SUSE Linux 用 SMT サーバーの設定方法](hana-setup-smt.md)に関するページを参照してください。) 別の方法として、Red Hat OS を、接続先にする必要がある Red Hat Subscription Manager に登録する必要があります。 詳細については、[SAP HANA on Azure (L インスタンス) とは何であるか](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページの説明を参照してください。 
 
 この手順は、OS に修正プログラムを適用する際に必要で、ユーザー側で実行する必要があります。 SUSE については、[SMT のインストールに関するこのページ](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)で、SMT のインストールと構成についてのドキュメントを見つけてください。
 
-**手順 2**: 特定の OS リリース/バージョンに関する新しいパッチと修正プログラムの有無をチェックします。 HANA L インスタンスのパッチ レベルが最新の状態になっていることを確認してください。 最新のパッチが含まれていない場合があります。 HANA L インスタンス ユニットを引き継いだら、修正プログラムを適用する必要があるかどうかを必ず確認してください。
+**手順 3**: 特定の OS リリース/バージョンに関する新しいパッチと修正プログラムの有無をチェックします。 HANA L インスタンスのパッチ レベルが最新の状態になっていることを確認してください。 最新のパッチが含まれていない場合があります。 HANA L インスタンス ユニットを引き継いだら、修正プログラムを適用する必要があるかどうかを必ず確認してください。
 
-**手順 3**: 特定の OS リリース/バージョンへの SAP HANA のインストールと構成についての SAP ノートを確認します。 推奨事項は絶えず変化します。また SAP ノートや構成は個々のインストール シナリオによって異なるため、Microsoft が常に HANA L インスタンス ユニットを完璧に構成できるとは限りません。 
+**手順 4**: 特定の OS リリース/バージョンへの SAP HANA のインストールと構成についての SAP ノートを確認します。 推奨事項は絶えず変化します。また SAP ノートや構成は個々のインストール シナリオによって異なるため、Microsoft が常に HANA L インスタンス ユニットを完璧に構成できるとは限りません。 
 
 そのため、お客様ご自身でご使用の Linux リリースの SAP HANA に関する SAP ノートを確認することが必須となります。 また、OS リリース/バージョンの構成を確認し、まだ適用していない構成設定を適用します。
 
@@ -70,15 +72,15 @@ HANA L インスタンス ユニットは、この SMT インスタンスに接�
 
 SLES12 SP1 および RHEL 7.2 以降では、これらのパラメーターを /etc/sysctl.d ディレクトリにある構成ファイルで設定する必要があります。 たとえば、91-NetApp-HANA.conf という名前の構成ファイルを作成する必要があります。 それより前にリリースされた SLES と RHEL では、これらのパラメーターを /etc/sysctl.conf で設定する必要があります。
 
-RHEL 6.3 以降のすべての RHEL リリースについては、以下のことに留意してください。 
+RHEL 6.3 以降のすべての RHEL リリースについては、次のことに留意してください。 
 - /etc/modprobe.d/sunrpc-local.conf で、sunrpc.tcp_slot_table_entries = 128 パラメーターを設定する必要があります。 このファイルが存在しない場合は、最初に次のエントリを追加し、ファイルを作成する必要があります。 
     - options sunrpc tcp_max_slot_table_entries=128
 
-**手順 4**: HANA L インスタンス ユニットのシステム時刻をチェックします。 インスタンスは、システムのタイム ゾーンでデプロイされます。 このタイム ゾーンは、HANA L インスタンスのスタンプが位置する Azure リージョンの場所を表します。 インスタンスのシステム時刻やタイム ゾーンは、ユーザーが自由に変更できます。 
+**手順 5**: HANA L インスタンス ユニットのシステム時刻をチェックします。 インスタンスは、システムのタイム ゾーンでデプロイされます。 このタイム ゾーンは、HANA L インスタンスのスタンプが位置する Azure リージョンの場所を表します。 インスタンスのシステム時刻やタイム ゾーンは、ユーザーが自由に変更できます。 
 
 テナントにインスタンスを追加注文する場合は、新たに提供されるインスタンスのタイム ゾーンを調整する必要があります。 Microsoft では、提供後にお客様がインスタンスに設定したシステム タイム ゾーンについては情報を持っていません。 したがって、新たにデプロイされたインスタンスのタイム ゾーンは、お客様が変更したタイムゾーンと異なる場合があります。 提供されたインスタンスのタイム ゾーンは、必要に応じてお客様が適合させてください。 
 
-**手順 5**: etc/hosts をチェックします。 ブレードが提供されるときには、さまざまな目的のために割り当てられた、さまざまな IP アドレスが設定されています。 etc/hosts ファイルを確認します。 既存のテナントにユニットが追加されるときには、新しくデプロイされたシステムの etc/hosts が、以前に提供されたシステムの IP アドレスを指定して正しく管理されていると思わないでください。 お客様ご自身で、新しくデプロイされたインスタンスが、テナントに以前デプロイされたユニットとやり取りし、名前を解決できることを確認してください。 
+**手順 6**: etc/hosts をチェックします。 ブレードが提供されるときには、さまざまな目的のために割り当てられた、さまざまな IP アドレスが設定されています。 etc/hosts ファイルを確認します。 既存のテナントにユニットが追加されるときには、新しくデプロイされたシステムの etc/hosts が、以前に提供されたシステムの IP アドレスを指定して正しく管理されていると思わないでください。 お客様ご自身で、新しくデプロイされたインスタンスが、テナントに以前デプロイされたユニットとやり取りし、名前を解決できることを確認してください。 
 
 
 ## <a name="operating-system"></a>オペレーティング システム
@@ -143,7 +145,7 @@ Azure 仮想ネットワークの設計と、それらの仮想ネットワー�
 
 ## <a name="storage"></a>Storage
 
-SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP が推奨するガイドラインに従う SAP HANA on Azure のサービス管理によって構成されます。 これらのガイドラインについては、ホワイト ペーパー「[SAP HANA Storage Requirements (SAP HANA ストレージ要件)](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」に記載されています。 
+SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP が推奨するガイドラインに従う SAP HANA on Azure `service management` によって構成されます。 これらのガイドラインについては、ホワイト ペーパー「[SAP HANA Storage Requirements (SAP HANA ストレージ要件)](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」に記載されています。 
 
 各種 HANA L インスタンス SKU で提供されるさまざまなボリュームのおおよそのサイズについては、「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
@@ -171,7 +173,7 @@ HANA/log/backup ボリュームは、データベース バックアップ用の
 
 お客様は、提供されているストレージに加え、追加のストレージ容量を 1 TB 単位で購入することができます。 この追加ストレージは、新しいボリュームとして HANA L インスタンスに追加できます。
 
-SAP HANA on Azure サービス管理によるオンボード中、お客様は sidadm ユーザーと sapsys グループのユーザー ID (UID) とグループ ID (GID) を指定します (例: 1000,500)。 SAP HANA システムのインストール時には、これらと同じ値を使用する必要があります。 1 つのユニットに複数の HANA インスタンスをデプロイするために、複数のボリューム セット (インスタンスごとに 1 セット) を取得します。 そのため、デプロイ時には以下を定義する必要があります。
+SAP HANA on Azure `service management` によるオンボード中、お客様は sidadm ユーザーと sapsys グループのユーザー ID (UID) とグループ ID (GID) を指定します (例: 1000,500)。 SAP HANA システムのインストール時には、これらと同じ値を使用する必要があります。 1 つのユニットに複数の HANA インスタンスをデプロイするために、複数のボリューム セット (インスタンスごとに 1 セット) を取得します。 そのため、デプロイ時に以下を定義する必要があります。
 
 - 各 HANA インスタンスの SID (sidadm はそれからから派生されます)。
 - 各 HANA インスタンスのメモリ サイズ。 インスタンスごとのメモリ サイズによって、個々のボリューム セットのボリュームのサイズが定義されます。

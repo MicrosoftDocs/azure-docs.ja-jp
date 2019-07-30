@@ -11,11 +11,11 @@ ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
 ms.openlocfilehash: e0f768b876b49ec006ce98decf121d73d334b6d8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157865"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181614"
 ---
 ### <a name="run-the-service"></a>サービスを実行する
 

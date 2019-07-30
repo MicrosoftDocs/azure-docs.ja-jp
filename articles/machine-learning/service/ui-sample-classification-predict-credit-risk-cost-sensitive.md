@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787808"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606161"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>サンプル 4 - 分類:信用リスクを予測する (費用重視)
 
@@ -164,3 +164,4 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 - [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [サンプル 3 - 分類: 信用リスクを予測する](ui-sample-classification-predict-credit-risk-basic.md)
 - [サンプル 5 - 分類:顧客離れを予測する](ui-sample-classification-predict-churn.md)
+- [サンプル 6 - 分類:フライトの遅延を予測する](ui-sample-classification-predict-flight-delay.md)

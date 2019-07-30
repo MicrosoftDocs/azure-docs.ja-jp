@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: cdaae4e539d5216cf4950c15349f01b54ae8acd2
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5e42c36e6a321775e6017a2318857e20b7dcaf0d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496371"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876463"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -103,14 +103,15 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 作業の開始方法はいくつかあります。 目的に適した方法から始めてください。 後で、他のものを追加することもできます。
 
 * **実行時: サーバー上の Web アプリをインストルメント化します。** 既にデプロイ済みのアプリケーションに最適です。 コードを更新しなくて済みます。
-  * [**オンプレミスまたは VM の IIS でホストされる ASP.NET アプリケーション**](../../azure-monitor/app/monitor-performance-live-website-now.md)
   * [**Azure Web Apps でホストされる ASP.NET または ASP.NET Core アプリケーション**](../../azure-monitor/app/azure-web-apps.md)
+  * [**Azure VM または Azure 仮想マシン スケール セット上の IIS でホストされる ASP.NET アプリケーション**](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * [**IIS のオンプレミス VM でホストされる ASP.NET アプリケーション**](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * **開発時: コードに Application Insights を追加します。** テレメトリの収集をカスタマイズし、追加のテレメトリを送信できます。
   * [ASP.NET アプリケーション](../../azure-monitor/app/asp-net.md)
   * [ASP.NET Core アプリケーション](../../azure-monitor/app/asp-net-core.md)
   * [.NET コンソール アプリケーション](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
-  * [Node.js](../../azure-monitor/app/nodejs.md)
+  * [Node.JS](../../azure-monitor/app/nodejs.md)
   * [その他のプラットフォーム](../../azure-monitor/app/platforms.md)
 * ページ ビュー、AJAX、その他のクライアント側テレメトリ用に **[Web ページをインストルメント化](../../azure-monitor/app/javascript.md)** します。
 * Visual Studio App Center と統合することで、 **[モバイル アプリの使用状況を分析](../../azure-monitor/learn/mobile-center-quickstart.md)** します。
@@ -119,6 +120,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 ## <a name="next-steps"></a>次の手順
 実行時に開始する:
 
+* [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
@@ -131,7 +133,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 * 質問および問題点:
-  * [Troubleshooting][qna]
+  * [トラブルシューティング][qna]
   * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * ご提案:

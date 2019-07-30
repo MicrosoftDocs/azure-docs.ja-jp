@@ -548,8 +548,6 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Elastic Database ジョブで SSISDB のログをクリーンアップする
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
-        - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
-          href: ssis-integration-runtime-ssis-activity-faq.md
     - name: トリガーの作成
       items:
         - name: イベントベースのトリガーの作成
@@ -558,6 +556,8 @@
           href: how-to-create-schedule-trigger.md
         - name: タンブリング ウィンドウ トリガーの作成
           href: how-to-create-tumbling-window-trigger.md
+        - name: タンブリング ウィンドウ トリガーの依存関係の作成
+          href: tumbling-window-trigger-dependency.md
     - name: テンプレート
       items:
         - name: テンプレートの概要
@@ -566,12 +566,22 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: LastModifiedDate を基準に新しいファイルをコピーする
           href: solution-template-copy-new-files-lastmodifieddate.md
-        - name: 制御テーブルを使用した一括コピー
+        - name: データベースからの一括コピー
           href: solution-template-bulk-copy-with-control-table.md
-        - name: 制御テーブルを使用した差分コピー
+        - name: データベースからの差分コピー
           href: solution-template-delta-copy-with-control-table.md
+        - name: ファイルの移動
+          href: solution-template-move-files.md
         - name: Databricks を使用したデータ変換
           href: solution-template-databricks-notebook.md
+    - name: トラブルシューティング ガイド
+      items:
+        - name: アクティビティのトラブルシューティング
+          href: data-factory-troubleshoot-guide.md
+        - name: Azure SSIS IR の管理に関するトラブルシューティング
+          href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: リファレンス
   items:
     - name: .NET

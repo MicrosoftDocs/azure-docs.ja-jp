@@ -3,19 +3,19 @@ title: コラボレーション翻訳フレームワーク (CTF) レポート - 
 titlesuffix: Azure Cognitive Services
 description: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-pawal
-ms.openlocfilehash: 166c152828a91889d7d1d7eb6f8c03dac48172f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 79a645b0b41f200c384c165f244efa679be65171
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389386"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443456"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 

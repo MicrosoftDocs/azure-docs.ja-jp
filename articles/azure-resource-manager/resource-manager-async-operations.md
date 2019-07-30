@@ -1,24 +1,18 @@
 ---
 title: Azure Resource Manager の非同期操作の状態
 description: Azure での非同期操作を追跡する方法について説明します。 長時間実行の操作の状態を取得するために使用する値が表示されます。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 1b05ed50f08ddbf2eb5da8e08f5bf623596e1f9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56d55365a243a9e51e96985ee0035c43404f82f0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61061375"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206295"
 ---
 # <a name="track-asynchronous-azure-operations"></a>非同期 Azure 操作の追跡
 Azure の REST 操作の中には、操作を迅速に完了できないため、非同期的に実行されるものがあります。 この記事では、応答で返される値を通じて非同期操作の状態を追跡する方法について説明します。  

@@ -5,6 +5,7 @@
     - name: Azure Digital Twins について
       href: about-digital-twins.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: 使用可能な部屋を確認する
       href: quickstart-view-occupancy-dotnet.md
@@ -66,6 +67,8 @@
           href: how-to-navigate-apis.md
         - name: 一般的なクエリのパターン
           href: how-to-query-common-apis.md
+    - name: アプリを従来の AAD に登録する
+      href: how-to-use-legacy-aad.md
 - name: リファレンス
   items:
     - name: ユーザー定義関数クライアント ライブラリ

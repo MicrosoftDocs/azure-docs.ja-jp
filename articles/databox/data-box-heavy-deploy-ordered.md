@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/29/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8453a3592c1822489a3724dacdf8f0ff5e8492f1
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: c7fbd37ff8d40f27e0ca18a6f9816d3d96422ab9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427911"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592408"
 ---
-# <a name="tutorial-order-azure-data-box-heavy-preview"></a>チュートリアル:Azure Data Box Heavy を注文する (プレビュー)
+# <a name="tutorial-order-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy を注文する
 
 
 Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド ソリューションです。 お客様は、Microsoft 提供の 770 TB (おおよその使用可能容量) ストレージ デバイスにデータを転送した後、そのデバイスを Microsoft に戻します。 その後、このデータは Azure にアップロードされます。
@@ -36,7 +36,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
 開始する前に次の点を確認します。
 
-- デバイスが標準的な出入り口や通路を通過できること。 デバイスが搬入経路全体を問題なく通過できることを確認してください。 デバイスのサイズは次のとおりです。幅:26 インチ、長さ:48 インチ、高さ:28 インチ。
+- デバイスが標準的な出入り口や通路を通過できること。 デバイスが搬入経路全体を問題なく通過できることを確認してください。 デバイスのサイズは次のとおりです。幅:26 インチ、長さ: 48 インチ、高さ: 28 インチ。
 - 1 階以外のフロアに設置する場合、エレベーターまたはスロープからデバイスを搬入できること。 デバイスの重量は約 500 ポンドです。
 - データセンター内に、これだけの設置面積を占めるデバイスを収容可能な平らな場所があり、その近くに使用可能なネットワーク接続用設備があること。
 

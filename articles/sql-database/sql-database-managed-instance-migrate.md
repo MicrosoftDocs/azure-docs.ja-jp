@@ -1,6 +1,6 @@
 ---
-title: SQL Server インスタンスを Azure SQL Database Managed Instance に移行する | Microsoft Docs
-description: SQL Server インスタンスを Azure SQL Database Managed Instance に移行する方法を説明します。
+title: SQL Server インスタンスから Azure SQL Database マネージド インスタンスにデータベースを移行する | Microsoft Docs
+description: SQL Server インスタンスから Azure SQL Database マネージド インスタンスにデータベースを移行する方法を説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 1460b595e8887fc932d5be335ae51b07a000b9fb
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 9fe6ab797eaa325ad802702e95f5a0e5b8e4fef4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098359"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070422"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
@@ -49,9 +49,32 @@ ms.locfileid: "56098359"
 - 特定バージョンの SQL Server (たとえば 2012 など) を確実に維持する必要がある場合。
 - コンピューティング要件がマネージド インスタンスによって提供されるものよりはるかに低く (1 つの vCore など)、データベース統合が許容可能なオプションではない場合。
 
+すべての識別された移行阻害要因を解決し、マネージド インスタンスへの移行を続行する場合、変更の一部によってワークロードのパフォーマンスが影響を受ける可能性があることに注意してください。
+- 定期的に単純/一括ログ モデルを使っている場合、またはオンデマンドでバックアップを停止している場合、必須の完全復旧モデルと定期的な自動バックアップ スケジュールでは、ワークロードまたはメンテナンス/ETL 操作のパフォーマンスに影響する可能性があります。
+- トレース フラグや互換性レベルなど、サーバー レベルまたはデータベース レベルの異なる構成
+- Transparent Database Encryption (TDE) や自動フェールオーバー グループなどの新しい機能を使うと、CPU と IO の使用率が影響を受ける可能性があります。
+
+マネージド インスタンスでは、重要なシナリオであっても 99.99% の可用性が保証されるので、これらの機能によるオーバーヘッドを無効にすることはできません。 詳しくは、[the root causes that might cause different performance on SQL Server and Managed Instance (SQL Server と、マネージド インスタンスでパフォーマンスが異なる原因)](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/) に関するページをご覧ください。
+
+### <a name="create-performance-baseline"></a>パフォーマンスのベースラインを作成する
+
+マネージド インスタンスでのワークロードのパフォーマンスと SQL Server で実行されている元のワークロードのパフォーマンスを比較する必要がある場合は、比較に使われるパフォーマンス ベースラインを作成する必要があります。 SQL Server インスタンスで測定する必要のあるパラメーターの一部を次に示します。 
+- [SQL Server インスタンスでの CPU 使用率を監視](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)し、平均とピークの CPU 使用率を記録します。
+- [SQL Server インスタンスでのメモリ使用量を監視](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage)し、バッファー プール、プラン キャッシュ、列ストア プール、[インメモリ OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017) などのさまざまなコンポーネントで使用されるメモリの量を明らかにします。さらに、ページの予測保持期間メモリ パフォーマンス カウンターの平均値とピーク値を調べる必要があります。
+- [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) ビューまたは[パフォーマンス カウンター](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)を使って、ソース SQL Server インスタンスでのディスク IO 使用率を監視ます。
+- SQL Server 2016 以降のバージョンから移行する場合は、動的管理ビューまたはクエリ ストアを調べることで、ワークロードとクエリのパフォーマンスまたは SQL Server インスタンスを監視します。 ワークロードで最も重要なクエリの平均継続時間と CPU 使用率を特定し、マネージド インスタンスで実行されているクエリと比較します。
+
+> [!Note]
+> 高い CPU 使用率、メモリの常時不足、tempdb またはパラメーター化の問題など、SQL Server のワークロードで何らかの問題が検出された場合は、ベースラインを取得して移行を実行する前に、ソース SQL Server インスタンスでそれらを解決する必要があります。 既知の問題が新しいシステムに移行されると、予期しない結果が発生し、パフォーマンスの比較が無効になる可能性があります。
+
+このアクティビティの結果として、ソース システムでの CPU、メモリ、IO の使用率のピーク値と平均値、およびワークロードでの主要なクエリと最も重要なクエリの平均と最大の継続時間および CPU 使用率を、文書化する必要があります。 後でこれらの値を使って、マネージド インスタンスでのワークロードのパフォーマンスを、ソース SQL Server でのワークロードのベースライン パフォーマンスと比較する必要があります。
+
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>最適なサイズに設定されたマネージド インスタンスにデプロイする
 
-マネージド インスタンスは、クラウドへの移行を予定しているオンプレミスのワークロード向けに調整されます。 ワークロードのリソースの適切なレベルの選択において高い柔軟性を発揮する[新しい購入モデル](sql-database-service-tiers-vcore.md)が導入されます。 オンプレミスの世界では、物理コアと IO 帯域幅を使用して、これらのワークロードのサイズを設定することがおそらく一般的です。 マネージド インスタンスの購入モデルは仮想コア ("vCore") に基づいており、追加のストレージと IO を個別に使用できます。 仮想コア モデルは、クラウドのコンピューティング要件と現在オンプレミスで使用しているものを把握するためのシンプルな方法です。 この新しいモデルにより、クラウド内の移行先環境を適切にサイズ設定することができます。
+マネージド インスタンスは、クラウドへの移行を予定しているオンプレミスのワークロード向けに調整されます。 ワークロードのリソースの適切なレベルの選択において高い柔軟性を発揮する[新しい購入モデル](sql-database-service-tiers-vcore.md)が導入されます。 オンプレミスの世界では、物理コアと IO 帯域幅を使用して、これらのワークロードのサイズを設定することがおそらく一般的です。 マネージド インスタンスの購入モデルは仮想コア ("vCore") に基づいており、追加のストレージと IO を個別に使用できます。 仮想コア モデルは、クラウドのコンピューティング要件と現在オンプレミスで使用しているものを把握するためのシンプルな方法です。 この新しいモデルにより、クラウド内の移行先環境を適切にサイズ設定することができます。 適切なサービス レベルと特性を選択するために役立ついくつかの一般的なガイドラインを次に示します。
+- [SQL Server インスタンスでの CPU 使用率を監視](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)し、現在使っているコンピューティング能力を確認します (動的管理ビュー、SQL Server Management Studio、または他の監視ツールを使用)。 SQL Server で使っているコアの数と一致するマネージド インスタンスをプロビジョニングします。そのとき、[マネージド インスタンスがインストールされている VM の特性](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics)と一致するように CPU の特性をスケーリングすることが必要になる場合があることに留意します。
+- SQL Server インスタンスで使用可能なメモリの量を確認し、[対応するメモリを備えたサービス レベル](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics)を選択します。 SQL Server インスタンスでページの予測保持期間を測定して[メモリの追加が必要かどうか](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)を判断すると役に立ちます。
+- ファイル サブシステムの IO 待機時間を測定して、General Purpose サービス レベルまたは Business Critical サービス レベルを選択します。
 
 コンピューティング リソースとストレージ リソースをデプロイ時に選択し、後で [Azure portal](sql-database-scale-resources.md) を使用してアプリケーションのダウンタイムなしに変更できます。
 
@@ -111,18 +134,52 @@ SAS 資格情報を使用してデータベース バックアップをマネー
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
+
 ## <a name="monitor-applications"></a>アプリケーションの監視
 
-移行後のアプリケーションの動作とパフォーマンスを追跡します。 マネージド インスタンスでは、一部の変更は[データベースの互換性レベルが変更された](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)後でのみ有効になります。 Azure SQL Database へのデータベースの移行では、ほとんどの場合に元の互換性レベルが保持されます。 移行前のユーザー データベースの互換性レベルが 100 以上の場合は、移行後も同じままになります。 アップグレードされたデータベースで、ユーザー データベースの互換性レベルが移行の前に 90 であった場合、その互換性レベルは、マネージド インスタンスでサポートされる最も低い互換性レベルである 100 に設定されます。 システム データベースの互換性レベルは 140 です。
+マネージド インスタンスへの移行を完了した後は、アプリケーションの動作とワークロードのパフォーマンスを追跡する必要があります。 このプロセスには、次のアクティビティが含まれます。
+- [ソース SQL Server 上で作成したパフォーマンス ベースライン](#create-performance-baseline)と、[マネージド インスタンスで実行されているワークロードのパフォーマンスを比較](#compare-performance-with-the-baseline)します。
+- 継続的に[ワークロードのパフォーマンスを監視](#monitor-performance)し、問題と改善の可能性を明らかにします。
 
-移行に伴うリスクを軽減するには、パフォーマンスの監視後にのみ、データベース互換性レベルを変更します。 「[新しい SQL Server にアップグレードするときにパフォーマンスの安定性を維持する](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)」の説明に従って、データベースの互換性レベルの変更前と変更後のワークロードのパフォーマンスに関する情報を取得するための最適なツールとしてクエリ ストアを使用します。
+### <a name="compare-performance-with-the-baseline"></a>パフォーマンスとベースラインを比較する
 
-フル マネージドのプラットフォームで、SQL Database サービスの一部として自動的に提供される利点を享受できます。 たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 マネージド インスタンスでは、[特定の時点への復旧 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](sql-database-high-availability.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
+移行が成功した後すぐに実行する必要のある最初のアクティビティは、ワークロードのパフォーマンスとベースライン ワークロードのパフォーマンスの比較です。 このアクティビティの目的は、マネージド インスタンスでのワークロードのパフォーマンスがニーズを満たしていることを確認することです。 
 
-セキュリティを強化するために、利用可能ないくつかの機能の使用を検討してください。
+マネージド インスタンスへのデータベースの移行では、ほとんどの場合においてデータベースの設定と元の互換性レベルが保持されます。 ソース SQL Server と比較してパフォーマンスが低下するリスクを減らすため、可能な限り元の設定が保持されます。 移行前のユーザー データベースの互換性レベルが 100 以上の場合は、移行後も同じままになります。 アップグレードされたデータベースで、ユーザー データベースの互換性レベルが移行の前に 90 であった場合、その互換性レベルは、マネージド インスタンスでサポートされる最も低い互換性レベルである 100 に設定されます。 システム データベースの互換性レベルは 140 です。 マネージド インスタンスへの移行は、実際には最新の SQL Server データベース エンジンへの移行なので、パフォーマンスの問題に驚かないよう、ワークロードのパフォーマンスの再テストが必要であることに気付くはずです。
 
-- データベース レベルでの Azure Active Directory 認証
-- [監査](sql-database-managed-instance-auditing.md)、[脅威の検出](sql-database-advanced-data-security.md)、[行レベルのセキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)などの[高度なセキュリティ機能](sql-database-security-overview.md)を使用して、インスタンスをセキュリティで保護します。
+前提条件として、次のアクティビティを完了したことを確認します。
+- さまざまなインスタンス、データベース、temdb の設定、および構成を調べて、マネージ インスタンスでの設定を、ソース SQL Server インスタンスの設定と一致させます。 最初のパフォーマンス比較を実行する前に互換性レベルや暗号化などの設定が変更されていないことを確認するか、または有効にした新機能によってクエリが影響を受けるリスクを受け入れるます。 移行に伴うリスクを軽減するには、パフォーマンスの監視後にのみ、データベース互換性レベルを変更します。
+- 優れたパフォーマンスを実現するためのファイルのサイズの事前割り当てなど、[General Purpose に対するストレージのベスト プラクティスのガイドライン](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525)を実装します。
+- [マネージド インスタンスと SQL Server でのパフォーマンスの違いを引き起こす可能性のある重要な環境の違い]( https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)について学習し、パフォーマンスに影響する可能性のあるリスクを明らかにします。
+- マネージド インスタンスでクエリ ストアと自動チューニングが有効になっていることを確認します。 これらの機能を使用すると、ワークロードのパフォーマンスを測定し、可能性があるパフォーマンスの問題を自動的に修正できます。 「[新しい SQL Server にアップグレードするときにパフォーマンスの安定性を維持する](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)」の説明に従って、データベースの互換性レベルの変更前と変更後のワークロードのパフォーマンスに関する情報を取得するための最適なツールとしてクエリ ストアを使用する方法を学習します。
+オンプレミスの環境と可能な限り一致するように環境を準備した後は、ワークロードの実行を開始してパフォーマンスを測定できます。 測定プロセスには、[ソース SQL Server でワークロード測定のベースライン パフォーマンスを作成する](#create-performance-baseline)ときに測定したものと同じパラメーターを含める必要があります。
+結果として、パフォーマンス パラメーターをベースラインと比較し、重要な違いを特定する必要があります。
+
+> [!NOTE]
+> 多くの場合、マネージド インスタンスと SQL Server で完全に一致するパフォーマンスを得ることはできません。 マネージド インスタンスは SQL Server データベース エンジンですが、マネージド インスタンスでのインフラストラクチャと高可用性の構成により、いくつかの相違がもたらされる可能性があります。 速くなるクエリもあれば、遅くなるクエリもあります。 比較の目的は、マネージド インスタンスでのワークロードのパフォーマンスが SQL Server でのパフォーマンスと (平均で) 一致することを確認し、重要なクエリの中にパフォーマンスが元のパフォーマンスに匹敵しないものがあるかどうかを明らかにすることです。
+
+パフォーマンスの比較の結果は次のようになります。
+- マネージド インスタンスでのワークロードのパフォーマンスが、SQL Server でのワークロードのパフォーマンと同等かそれより優れています。 この場合、移行が成功したことを正常に確認しました。
+- ワークロードのパフォーマンス パラメーターとクエリの多くは問題なく動作していますが、一部の例外でパフォーマンスが低下しています。 この場合、相違と重要度を特定する必要があります。 重要なクエリでパフォーマンスが低下したものがある場合は、基になる SQL プランが変更されたか、またはクエリで何らかのリソースが制限に達しているかを調べる必要があります。 この場合の軽減策としては、重要なクエリ (変更された互換性レベル、レガシ カーディナリティ推定機能など) に対して直接的に、またはプラン ガイドを使ってヒントを適用するか、プランに影響を与える可能性がある統計情報とインデックスを再構築または作成します。 
+- ほとんどのクエリは、ソース SQL Server よりマネージド インスタンスでの方が実行速度が遅くなります。 この場合は、IO 制限、メモリ制限、インスタンス ログ レート制限のような[リソース制限への到達]( sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)など、違いの根本原因を明らかにしてみます。違いを引き起こす可能性のあるリソースの制限がない場合は、データベースの互換性レベルを変更したり、レガシ カーディナリティの推定などのデータベース設定を変更して、テストを再度開始します。 マネージド インスタンスまたはクエリ ストア ビューによって提供されるレコメンデーションを確認し、パフォーマンスを低下させたクエリを識別します。
+
+> [!IMPORTANT]
+> マネージド インスタンスには、既定で有効になる組み込みの自動プラン修正機能があります。 この機能を使用すると、過去に正常に機能していたクエリのパフォーマンスが将来も低下しないことが保証されます。 この機能が有効になっていること、およびマネージド インスタンスがベースライン パフォーマンスとプランについて学習できるよう、新しい設定に変更する前に、古い設定で十分な時間ワークロードを実行したことを確認します。
+
+ニーズに合ったワークロードのパフォーマンスが得られるまで、パラメーターを変更するか、サービス レベルをアップグレードして、最適な構成に近付けます。
+
+### <a name="monitor-performance"></a>パフォーマンスの監視
+
+フル マネージド プラットフォームに移行して、ワークロードのパフォーマンスが SQL Server のワークロードのパフォーマンスに匹敵することを確認した後、SQL Database サービスの一部として自動的に提供されるものを利用します。 
+
+移行の間にマネージド インスタンスで何も変更しない場合でも、インスタンスを運用するときに新しい機能を有効にして、最新のデータベース エンジンの機能強化を利用する機会があります。 一部の変更は[データベースの互換性レベルを変更した](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)後でのみ有効になります。
+
+
+たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 マネージド インスタンスでは、[特定の時点への復旧 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](sql-database-high-availability.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
+
+セキュリティを強化するには、[Azure Active Directory 認証](sql-database-security-overview.md)、[監査](sql-database-managed-instance-auditing.md)、[脅威の検出](sql-database-advanced-data-security.md)、[行レベル セキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)の使用を検討します。
+
+高度な管理とセキュリティの機能に加えて、マネージド インスタンスでは[ワークロードの監視とチューニング](sql-database-monitor-tune-overview.md)に役立つ高度なツールのセットが提供されます。 [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) では、マネージド インスタンスの大規模なセットを監視し、多数のインスタンスとデータベースの監視を一元化することができます。 マネージド インスタンスの[自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)では、SQL プランの実行統計のパフォーマンスが継続的に監視されて、識別されたパフォーマンスの問題が自動的に修正されます。
 
 ## <a name="next-steps"></a>次の手順
 

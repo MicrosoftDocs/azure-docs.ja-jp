@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235861"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471656"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フローの実行アクティビティ
 データ フローの実行アクティビティを使用して、パイプライン デバッグ (サンドボックス) 実行とパイプライン トリガー実行で ADF データ フローを実行します。
@@ -72,7 +72,7 @@ ms.locfileid: "66235861"
 
 ### <a name="staging-area"></a>ステージング領域
 
-データを Azure Data Warehouse にシンクする場合は、Polybase バッチ読み込み用のステージングの場所を選択する必要があります。
+データを Azure Data Warehouse にシンクする場合は、Polybase バッチ読み込み用のステージングの場所を選択する必要があります。 ステージング設定は Azure Data Warehous のワークロードにのみ適用できます。
 
 ## <a name="parameterized-datasets"></a>パラメーター化されたデータセット
 
@@ -80,11 +80,17 @@ ms.locfileid: "66235861"
 
 ![データ フローの実行のパラメーター](media/data-flow/params.png "パラメーター")
 
-### <a name="debugging-parameterized-data-flows"></a>パラメーター化されたデータ フローのデバッグ
+## <a name="parameterized-data-flows"></a>パラメーター化されたデータ フロー
 
-パラメーター化されたデータセットを使用するデータ フローは、データ フローの実行アクティビティを使用してパイプライン デバッグ実行からのみデバッグできます。 現時点では、ADF Data Flow での対話型デバッグ セッションは、パラメーター化されたデータセットでは機能しません。 パイプラインの実行とデバッグ実行では、パラメーターが使用されます。
+データ フロー内にパラメーターがある場合、データ フロー パラメーターの動的な値は、データ フローの実行アクティビティのパラメーター セクションで設定します。 ADF パイプラインの式言語 (文字列パラメーターの型についてのみ) またはデータ フローの式言語のいずれかを使用して、動的な式または静的なリテラル値を持つパラメーター値を設定することができます。
 
-設計時に完全なメタデータ列の伝達を利用できるように、静的データセットを使用してデータ フローを構築することをお勧めします。 その後、データ フロー パイプラインを運用化するときに、静的データセットを動的パラメーター化データセットに置き換えます。
+![データ フローの実行パラメーターの例](media/data-flow/parameter-example.png "パラメーターの例")
+
+### <a name="debugging-data-flows-with-parameters"></a>パラメーターを使用するデータ フローのデバッグ
+
+現時点では、パラメーターを使用するデータ フローのデバッグは、データ フローの実行アクティビティを使用するパイプライン デバッグ実行からのみ行うことができます。 ADF データ フローでの対話型デバッグ セッションはまもなく提供される予定です。 ただし、パイプラインの実行とデバッグ実行では、パラメーターが使用されます。
+
+トラブルシューティングのために設計時に完全なメタデータ列の伝達を利用できるように、静的コンテンツを使用してデータ フローを構築することをお勧めします。 その後、データ フロー パイプラインを運用化するときに、静的データセットを動的パラメーター化データセットに置き換えます。
 
 ## <a name="next-steps"></a>次の手順
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 

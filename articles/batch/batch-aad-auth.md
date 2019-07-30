@@ -4,7 +4,7 @@ description: Batch は、Batch サービスからの認証に Azure AD をサポ
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64921a2ab69306df0b7c3d968055e698dd6995e7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922443"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323938"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -324,31 +324,31 @@ from azure.common.credentials import ServicePrincipalCredentials
 サービス プリンシパルを使用する場合は、テナント ID を指定する必要があります。 テナント ID を取得するには、「[Azure Acitve Directory のテナント ID を取得する](#get-the-tenant-id-for-your-active-directory)」で概要を説明する手順に従ってください。
 
 ```python
-TENANT_ID = "<tenant-id>";
+TENANT_ID = "<tenant-id>"
 ```
 
 Batch サービスのリソース エンドポイントを次のように参照します。  
 
 ```python
-RESOURCE = "https://batch.core.windows.net/";
+RESOURCE = "https://batch.core.windows.net/"
 ```
 
 Batch アカウントを次のように参照します。
 
 ```python
-BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com"
 ```
 
 アプリケーションのアプリケーション ID (クライアント ID) を指定します。 アプリケーション ID は、Azure Portal のアプリの登録から入手できます。
 
 ```python
-CLIENT_ID = "<application-id>";
+CLIENT_ID = "<application-id>"
 ```
 
 Azure Portal からコピーした秘密キーを次のように指定します。
 
 ```python
-SECRET = "<secret-key>";
+SECRET = "<secret-key>"
 ```
 
 **ServicePrincipalCredentials** オブジェクトを作成します。

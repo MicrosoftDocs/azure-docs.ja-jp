@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Face API (C#)
 titleSuffix: Azure Cognitive Services
-description: Cognitive Services Face API を利用して画像の中にある顔の特徴を検出する単純な Windows アプリを作成します。
+description: Cognitive Services Face API を利用して画像内の顔の特徴を検出する Windows アプリを作成します。
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 07/03/2019
 ms.author: ghogen
-ms.openlocfilehash: 492161a9a47627db8a06686daf953e99ca652e02
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827658"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606811"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを使用して Cognitive Services Face API に接続する
 
@@ -147,7 +147,7 @@ Cognitive Services Face API を使用して、写真の中の顔を検出、分�
             });
         }
    ```
-    この手順のコードは、接続済みサービスの追加時に追加したキーを使用して、Face REST API の呼び出しと共に HTTP リクエストを作成します。
+    この手順のコードでは、接続済みサービスの追加時に追加したキーを使用して、Face REST API の呼び出しと共に HTTP 要求を構築します。
 
 1. ヘルパー関数 GetImageAsByteArray および JsonPrettyPrint を追加します。
 

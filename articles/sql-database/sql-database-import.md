@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 98b316f8a9c1c8ceba91870af4ff67b1aa854a9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0b92fb9c9bf022adce4cc0dd3e58ce8e476ed5b7
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785333"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303508"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>クイック スタート:BACPAC ファイルを Azure SQL Database 内のデータベースにインポートする
 
@@ -35,6 +35,9 @@ ms.locfileid: "65785333"
 > [!NOTE]
 > [マネージド インスタンス](sql-database-managed-instance.md)では現在、Azure portal を使用した BACPAC ファイルからインスタンス データベースへのデータベースの移行はサポートされていません。 マネージド インスタンスにインポートするには、SQL Server Management Studio または SQLPackage を使用します。
 
+> [!NOTE]
+> portal または Powershell から送信されたインポート/エクスポート要求を処理するマシンは、bacpac ファイルとデータ層アプリケーション フレームワーク (DacFX) によって生成された一時ファイルを格納する必要があります。 必要なディスク領域は、同じサイズの DB でも大きく異なり、最大 3 倍のデータベースのサイズが必要になります。 インポート/エクスポート要求のみを実行するマシンには、450 GB のローカル ディスク領域があります。 結果として、一部の要求が「十分なディスク領域が存在しない」のエラーで失敗する場合があります。 この場合の回避策は、十分なローカル ディスク領域を持つマシンで sqlpackage.exe を実行することです。 150 GB を超えるデータベースをインポート/エクスポートする場合は、[SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) を使用してこの問題を回避します。
+ 
 1. Azure portal を使用して新しい単一データベースに BACPAC ファイルからインポートするには、適切なデータベース サーバーのページを開き、 **[データベースのインポート]** を選択します。  
 
    ![データベース インポート 1](./media/sql-database-import/import1.png)
@@ -81,6 +84,8 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > [マネージド インスタンス](sql-database-managed-instance.md)では現在、Azure PowerShell を使用した BACPAC ファイルからインスタンス データベースへのデータベースの移行はサポートされていません。 マネージド インスタンスにインポートするには、SQL Server Management Studio または SQLPackage を使用します。
 
+> [!NOTE]
+> portal または Powershell から送信されたインポート/エクスポート要求を処理するマシンは、bacpac ファイルとデータ層アプリケーション フレームワーク (DacFX) によって生成された一時ファイルを格納する必要があります。 必要なディスク領域は、同じサイズの DB でも大きく異なり、最大 3 倍のデータベースのサイズが必要になります。 インポート/エクスポート要求のみを実行するマシンには、450 GB のローカル ディスク領域があります。 結果として、一部の要求が「十分なディスク領域が存在しない」のエラーで失敗する場合があります。 この場合の回避策は、十分なローカル ディスク領域を持つマシンで sqlpackage.exe を実行することです。 150 GB を超えるデータベースをインポート/エクスポートする場合は、[SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) を使用してこの問題を回避します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

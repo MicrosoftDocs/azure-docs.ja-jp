@@ -4,7 +4,7 @@ description: 仮想マシン拡張機能を使用して、Windows 仮想マシ�
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/29/2019
 ms.author: roiyz
-ms.openlocfilehash: 270b3ae49a815c9e12fce9377c8298192237f28a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b9d0e582b77dc06e1655a7bdb57ee232c603bc86
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790382"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706681"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Windows 用の Azure Monitor 仮想マシン拡張機能
 
@@ -38,17 +38,18 @@ Windows 用の Log Analytics エージェント拡張機能は、次のバージ
 - Windows Server 2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
-次の表は、Azure Monitor VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 
+次の表は、Windows Azure Monitor VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 
 
-| Azure Monitor Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | リリース日 | リリース ノート |
+| Log Analytics Windows Agent バンドルのバージョン | Azure Monitor Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 8.0.11049.0 | 1.0.11049.1 | 2017 年 2 月 | |
-| 8.0.11072.0 | 1.0.11072.1 | 2017 年 9 月 | |
-| 8.0.11081.0 | 1.0.11081.5 | 2017 年 11 月 | | 
-| 8.0.11103.0 | 該当なし |  2018 年 4 月 | |
-| 8.0.11136.0 | 該当なし | 2018 年 9 月 |  <ul><li> VM の移動時にリソース ID の変更を検出するサポートを追加しました </li><li> 非拡張インストールを使用するときにリソース ID を報告するためのサポートを追加しました </li></ul>| 
-| 10.19.10006.0 | 該当なし | 2018 年 12 月 | <ul><li> 軽微な安定化の修正 </li></ul> | 
-| 10.19.13515.0 | 1.0.13515.1 | 2019 年 3 月 | <ul><li>軽微な安定化の修正 </li></ul> |
+| 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> プロキシ接続時に既定の資格情報を無効にする機能を追加 (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH のサポート) </li></ul>|
+| 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>軽微な安定化の修正 </li></ul> |
+| 10.19.10006 | 該当なし | 2018 年 12 月 | <ul><li> 軽微な安定化の修正 </li></ul> | 
+| 8.0.11136 | 該当なし | 2018 年 9 月 |  <ul><li> VM の移動時にリソース ID の変更を検出するサポートを追加しました </li><li> 非拡張インストールを使用するときにリソース ID を報告するためのサポートを追加しました </li></ul>| 
+| 8.0.11103 | 該当なし |  2018 年 4 月 | |
+| 8.0.11081 | 1.0.11081 | 2017 年 11 月 | | 
+| 8.0.11072 | 1.0.11072 | 2017 年 9 月 | |
+| 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -86,7 +87,7 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 ```
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| EnableAdfsAuthentication | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |

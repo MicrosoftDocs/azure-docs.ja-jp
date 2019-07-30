@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: 41cb37eb9d96752d4732731d2a36d9bc892cbaa5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c3743c62dcbdccc2a119cfec570df96c622390c7
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159814"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540331"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>クイック スタート:.NET を使用して Azure Storage にキューを作成する
 
@@ -187,9 +187,9 @@ Console.WriteLine();
 
 次に、サンプルでは、キューの末尾にメッセージを追加します。 
 
-メッセージは、UTF-8 エンコードの XML 要求に格納できる形式でなければならず、最大 64 KB のサイズまで許容されます。 メッセージにバイナリ データが含まれる場合は、メッセージを Base64 でエンコードすることをお勧めします。
+メッセージは、UTF-8 エンコードの XML 要求に格納できる形式でなければならず、最大 64 KB のサイズまで許容されます。 メッセージにバイナリ データが含まれている場合は、メッセージを Base64 でエンコードすることをお勧めします。
 
-既定では、メッセージの最大 Time to Live は 7 日に設定されます。 メッセージの Time to Live には、任意の正の値と、メッセージが期限切れにならないことを示す -1 を設定できます。
+既定では、メッセージの最大 Time to Live は 7 日に設定されます。 メッセージの有効期限には、任意の正の数値を指定できます。
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -199,6 +199,12 @@ Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
 Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
 Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
 Console.WriteLine();
+```
+
+有効期限のないメッセージを追加するには、[AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
+
+```csharp
+await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
 ### <a name="peek-a-message-from-the-queue"></a>キューからメッセージをピークする

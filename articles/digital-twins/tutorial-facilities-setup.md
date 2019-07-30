@@ -2,22 +2,22 @@
 title: チュートリアル:Azure Digital Twins をデプロイする | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins のインスタンスをデプロイし、空間リソースを構成する方法について説明します。
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/17/2018
-ms.author: dkshir
-ms.openlocfilehash: 096df62305af91ac85ce9ddbcff5b0160aaa4e8a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 06/26/2019
+ms.author: alinast
+ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537459"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "67484684"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>チュートリアル: Azure Digital Twins をデプロイし、空間グラフを構成する
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>チュートリアル:Azure Digital Twins プレビューをデプロイし、空間グラフを構成する
 
-Azure Digital Twins サービスを使用すると、人、場所、デバイスを一貫した空間システムにまとめることができます。 この一連のチュートリアルでは、Azure Digital Twins を使用して、温度と空気の質が最適な状態の部屋の使用を検出する方法を示します。 
+Azure Digital Twins プレビューサービスを使用すると、人、場所、デバイスを一貫した空間システムにまとめることができます。 この一連のチュートリアルでは、Azure Digital Twins を使用して、温度と空気の質が最適な状態の部屋の使用を検出する方法を示します。 
 
 これらのチュートリアルでは、.NET コンソール アプリケーションを使用して、オフィス ビルのシナリオを構築する手順を説明します。 このビルには、複数のフロアがあり各フロアに部屋があります。 それぞれの部屋には、モーション、周囲温度、空気の質を検出するセンサーを備えたデバイスがあります。 
 

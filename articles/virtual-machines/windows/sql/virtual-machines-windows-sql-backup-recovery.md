@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c02daef31b29e9a95ddfdedea497604ad0777aa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563434"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442635"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines おける SQL Server のバックアップと復元
 
@@ -35,7 +35,7 @@ ms.locfileid: "60563434"
 | 戦略 | SQL のバージョン | 説明 |
 |---|---|---|
 | [自動化されたバックアップ](#automated) | 2014<br/> 2016<br/> 2017 | 自動バックアップを使用すると、SQL Server VM 上にあるすべてのデータベースの定期的なバックアップをスケジュールできます。 バックアップは Azure Storage に最大 30 日間保存されます。 SQL Server 2016 以降では、自動バックアップ v2 により、手動でのスケジュール設定の構成や完全バックアップとログ バックアップの頻度などの追加オプションが利用できます。 |
-| [SQL VM の Azure Backup](#azbackup) | 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup は、Azure VM 上で実行されている SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 このサービスを使用すると、複数のサーバーと数千のデータベースのバックアップを一元的に管理できます。 データベースは、ポータルで特定の時点に復元することができます。 これにより、数年間バックアップを維持できるカスタマイズ可能な保持ポリシーが提供されます。 現在、この機能はパブリック プレビュー段階にあります。 |
+| [SQL VM の Azure Backup](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup は、Azure VM 上で実行されている SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 このサービスを使用すると、複数のサーバーと数千のデータベースのバックアップを一元的に管理できます。 データベースは、ポータルで特定の時点に復元することができます。 これにより、数年間バックアップを維持できるカスタマイズ可能な保持ポリシーが提供されます。 |
 | [手動バックアップ](#manual) | All | Azure VM 上で実行されている SQL Server を手動でバックアップおよび復元する方法は、SQL Server のバージョンによってさまざまです。 このシナリオでは、あなたがデータベースのバックアップ方法に加え、そうしたバックアップの保存場所と管理を担当しているとします。 |
 
 以下のセクションでは、各オプションについて詳しく説明します。 この記事の最後のセクションでは、機能マトリックスの形式でまとめています。

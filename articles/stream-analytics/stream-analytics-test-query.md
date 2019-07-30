@@ -7,20 +7,20 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: fca76b632e9bcc27ed762886eaea696a5696ad3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad0e0ca75bf3d3a8d9d1029d42f8609b3c4c627b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761906"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620827"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>サンプル データを利用した Stream Analytics クエリのテスト
 
-Azure Stream Analytics を使用すると、ジョブの起動や停止をすることなく、Azureポータルでサンプル データのアップロードと クエリのテストができます。
+Azure Stream Analytics を使用すると、ジョブの起動や停止をすることなく、入力からデータをサンプリングしたり、サンプル データをアップロードして Azure portal でクエリをテストしたりすることができます。
 
-## <a name="upload-sample-data-and-test-the-query"></a>サンプル データのアップロードとクエリのテスト
+## <a name="upload-or-sample-data-from-a-live-source-to-test-the-query"></a>ライブ ソースのデータをアップロードまたはサンプリングしてクエリをテストする
 
 1. Azure ポータルにサインインします。 
 
@@ -28,11 +28,15 @@ Azure Stream Analytics を使用すると、ジョブの起動や停止をする
 
 3. [Stream Analytics ジョブ] ページの **ジョブ トポロジ** の見出しの部分から **クエリ** を選択し､クエリ エディター ウィンドウを開きます。 
 
-4. サンプルの入力データを使ってクエリをテストするには､入力のいずれかを右クリックします｡  **ファイルからサンプルデータをアップロード** を選択します｡ データは、JSON、CSV または AVRO でシリアル化する必要があります。 サンプル入力は、UTF-8 でエンコードされていて、圧縮されていない必要があります。 ポータルでの CSV 入力のテストでは、コンマ (,) 区切り記号のみがサポートされています。
+4. クエリをテストするには、ライブ入力からデータをサンプリングするか、ファイルからアップロードします。 データは、JSON、CSV または AVRO でシリアル化する必要があります。 サンプル入力は、UTF-8 でエンコードされていて、圧縮されていない必要があります。 ポータルでの CSV 入力のテストでは、コンマ (,) 区切り記号のみがサポートされています。
+
+    1. ライブ入力を使用する: 入力を右クリックします。 次に、 **[入力からのサンプル データ]** を選択します。 次の画面では、サンプルの期間を設定できます。 ライブ ソースからイベントをサンプリングすると、最大 1000 イベントまたは 1 MB (どちらか早い方) まで取得されるので、サンプリングされたデータは、指定した全期間を表していない可能性があります。
+
+    1. ファイルを使用する: 入力のいずれかを右クリックします。 **ファイルからサンプルデータをアップロード** を選択します｡ 
 
     ![Stream Analytics クエリ エディターでクエリをテストする](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-5. アップロードが完了したら、 **[テスト]** を選択して、用意したサンプル データでこのクエリをテストします。
+5. サンプリングまたはアップロードが完了したら、 **[テスト]** を選択して、用意したサンプル データでこのクエリをテストします。
 
     ![Stream Analytics クエリ エディターでサンプル データをテストする](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 
@@ -48,4 +52,4 @@ Azure Stream Analytics を使用すると、ジョブの起動や停止をする
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-> [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+> [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

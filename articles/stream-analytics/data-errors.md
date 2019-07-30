@@ -6,17 +6,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.openlocfilehash: b00eb12092838746f4bfe16f00eac55df9224b09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: ecc7077bf208adf1ac89adcce2f2e480ce34888e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65607110"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329599"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics データ エラー
 
-Azure Stream Analytics ジョブによって処理されたデータに不一致があるとき、Stream Analytics から診断ログにデータ エラー イベントが送信されます。 データ エラーが発生すると、Stream Analytics により、その診断ログに詳しい情報とサンプル イベントが書き込まれます。 一部のエラーに関しては、ポータル通知からもこの情報の概要が提供されます。
+データ エラーは、データの処理中に発生するエラーです。  これらのエラーはほとんどの場合、データの逆シリアル化、シリアル化、および書き込み操作が実行されている間に発生します。  データ エラーが発生すると、Stream Analytics により、その診断ログに詳しい情報とサンプル イベントが書き込まれます。  場合によっては、この情報の概要もポータル通知を介して提供されます。
 
 この記事では、入力および出力データ エラーについて、さまざまなエラーの種類、原因、診断ログの詳細を説明します。
 
@@ -45,6 +45,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: 選択された入力圧縮タイプがデータに一致しません。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:無効な圧縮の種類を含む、すべての逆シリアル化エラーを含むメッセージは入力から削除されます。
 * ログの詳細
    * 入力メッセージ ID。 Event Hub の場合、識別子はパーティション ID、オフセット、シーケンス番号になります。
 
@@ -59,6 +60,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: 入力データのヘッダーが無効です。 たとえば、CSV に名前が重複する列があります。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:無効なヘッダーを含む、すべての逆シリアル化エラーを含むメッセージは入力から削除されます。
 * ログの詳細
    * 入力メッセージ ID。 
    * 実際のペイロードは最大で数キロバイトです。
@@ -74,6 +76,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: CREATE TABLE または TIMESTAMP BY で定義された入力列が存在しません。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:列の欠落を含むイベントは入力から削除されます。
 * ログの詳細
    * 入力メッセージ ID。 
    * 不足している列の名前。 
@@ -94,6 +97,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: CREATE TABLE ステートメントで指定された型に入力を変換できません。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:型変換エラーを含むイベントは入力から削除されます。
 * ログの詳細
    * 入力メッセージ ID。 
    * 列の名前と予想される型。
@@ -113,6 +117,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: 入力データの形式が正しくありません。 たとえば、入力が有効な JSON ではありません。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:無効なデータ エラーが発生した後のメッセージ内のすべてのイベントは入力から削除されます。
 * ログの詳細
    * 入力メッセージ ID。 
    * 実際のペイロードは最大で数キロバイトです。
@@ -132,6 +137,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: TIMESTAMP BY 式の値を datetime に変換できません。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:無効な入力タイムスタンプを含むイベントは入力から削除されます。
 * ログの詳細
    * 入力メッセージ ID。 
    * エラー メッセージ。 
@@ -148,6 +154,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: TIMESTAMP BY OVER timestampColumn の値が NULL です。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:無効な入力タイムスタンプ キーを含むイベントは入力から削除されます。
 * ログの詳細
    * 実際のペイロードは最大で数キロバイトです。
 
@@ -162,6 +169,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: アプリケーション時間と到着時刻の差が到着遅延許容範期間を超えています。
 * ポータル通知提供:いいえ
 * 診断ログのレベル:情報
+* 影響:遅延入力イベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * アプリケーション時間と到着時刻 
    * 実際のペイロードは最大で数キロバイトです。
@@ -177,6 +185,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: アプリケーション時間と到着時刻の差が 5 分以上あります。
 * ポータル通知提供:いいえ
 * 診断ログのレベル:情報
+* 影響:早期入力イベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * アプリケーション時間と到着時刻 
    * 実際のペイロードは最大で数キロバイトです。
@@ -192,6 +201,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: 定義されている許容範囲が正しくないため、イベントが順序逸脱であると見なされます。
 * ポータル通知提供:いいえ
 * 診断ログのレベル:情報
+* 影響:順不同のイベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * 実際のペイロードは最大で数キロバイトです。
 
@@ -208,6 +218,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: 出力に必要な列が存在しません。 たとえば、Azure Table PartitionKey として定義されている列が存在しません。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:必須列の欠落を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
 * ログの詳細
    * 列の名前と、レコード ID またはレコードの一部。
 
@@ -222,6 +233,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: 列の値が出力に準拠していません。 たとえば、列名が有効な Azure テーブル列ではありません。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:無効な列名を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
 * ログの詳細
    * 列の名前と、レコード ID またはレコードの一部。
 
@@ -236,6 +248,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: 列を出力で有効な型に変換できません。 たとえば、列の値が、SQL テーブルに定義されている制約や型と互換性がありません。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:型変換エラーを含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
 * ログの詳細
    * 列の名前です。
    * レコード ID またはレコードの一部。
@@ -251,6 +264,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: メッセージの値がサポートされている出力サイズを超えています。 たとえば、イベント ハブ出力のレコードが 1 MB を超えています。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:レコードのサイズ制限超過を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
 * ログの詳細
    * レコード ID またはレコードの一部。
 
@@ -265,6 +279,7 @@ Azure Stream Analytics ジョブによって処理されたデータに不一致
 * 原因: あるレコードに、System 列と同じ名前の列が既に含まれています。 たとえば、CosmosDB 出力に ID という名前の列がありますが、ID 列は別の列の名前です。
 * ポータル通知提供:はい
 * 診断ログのレベル:警告
+* 影響:重複キーを含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
 * ログの詳細
    * 列の名前です。
    * レコード ID またはレコードの一部。

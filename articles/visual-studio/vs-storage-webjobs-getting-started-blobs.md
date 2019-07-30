@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254402"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62122925"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "51254402"
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>BLOB が作成または更新されたときに、関数を開始する方法
 このセクションでは、 **BlobTrigger** 属性を使用する方法を示しています。
 
- **注**: Web ジョブ SDK は、ログ ファイルをスキャンして新しい BLOB や変更された BLOB を監視します。 このプロセスは本質的に時間がかかります。関数は、blob が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります 。  アプリケーションで、BLOB をすぐに処理する必要がある場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB を処理する関数で **BlobTrigger** 属性の代わりにではなく、**QueueTrigger** 属性を使用することが推奨されます。
+ **注:** WebJobs SDK は、ログ ファイルをスキャンし、新しい BLOB や変更された BLOB を監視します。 このプロセスは本質的に時間がかかります。関数は、blob が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります 。  アプリケーションで、BLOB をすぐに処理する必要がある場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB を処理する関数で **BlobTrigger** 属性の代わりにではなく、**QueueTrigger** 属性を使用することが推奨されます。
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>拡張子を持つ BLOB 名の 1 つのプレース ホルダー
 次のコード サンプルは、*入力*コンテナーに表示される テキスト BLOB を *出力*コンテナーにコピーします。
@@ -144,7 +144,7 @@ Azure ストレージ アカウントを直接操作する場合は、メソッ�
 
 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
-* FunctionId (*{WebJob name}*.Functions.*{Function name}* の形式、たとえば、WebJob1.Functions.CopyBlob)
+* FunctionId ( *{WebJob name}* .Functions. *{Function name}* の形式、たとえば、WebJob1.Functions.CopyBlob)
 * BLOB の種類 ("BlockBlob" か "PageBlob")
 * コンテナー名
 * BlobName
@@ -193,7 +193,7 @@ Web ジョブ SDK では、 **BlobTrigger** 関数は、同一の新規または
 
 BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの *azure-webjobs-hosts* という名前のコンテナーに格納されています。 BLOB の配信確認メッセージには次の情報が含まれています。
 
-* BLOB に対して呼び出された関数 ("*{WebJob name}*.Functions.*{Function name}*"。たとえば、"WebJob1.Functions.CopyBlob")
+* BLOB に対して呼び出された関数 (" *{WebJob name}* .Functions. *{Function name}* "。たとえば、"WebJob1.Functions.CopyBlob")
 * コンテナーの名前
 * BLOB の種類 ("BlockBlob" か "PageBlob")
 * BLOB の名前

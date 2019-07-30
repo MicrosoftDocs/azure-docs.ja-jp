@@ -3,7 +3,7 @@ title: Azure Mobile Apps 向け iOS SDK の使用方法
 description: Azure Mobile Apps 向け iOS SDK の使用方法
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 38d992e55a8e1f0a057a96f3e13c93c9dbd0c4a9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122457"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440383"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=/app-service-mobile-ios-how-to-use-client-library) を今すぐチェックしてください。
+>
+
+## <a name="overview"></a>概要
 このガイドでは、最新の [Azure Mobile Apps iOS SDK][1] を使用して一般的なシナリオを実行する方法について説明します。 Azure Mobile Apps を初めて使用する場合は、まず、「 [Apache Cordova アプリの作成] 」を参照して、バックエンドの作成、テーブルの作成、構築済みの iOS Xcode プロジェクトのダウンロードを行ってください。 このガイドでは、クライアント側の iOS SDK に重点を置いています。 バックエンドのサーバー側 SDK の詳細については、サーバー SDK の使用方法に関する記事をご覧ください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
@@ -510,7 +515,7 @@ NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"aler
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
-セキュリティを確保するために、要求からすべてのタグが削除されます。  インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][4]」を参照してください。  これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs API][3] を使用します。
+セキュリティを確保するために、要求からすべてのタグが削除されます。  インストールまたはインストール内のテンプレートにタグを追加する方法については、「 [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][4]」を参照してください。  これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs API シリーズ][3]を使用します。
 
 ## <a name="errors"></a>方法:エラーを処理する
 
@@ -548,7 +553,7 @@ if (error.code == MSErrorPreconditionFailed) {
 
 Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。 ID プロバイダー SDK を使用したクライアント フローの認証は、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。  クライアント フローの認証により、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になります。
 
-1. [Active Directory ログイン用の App Service の構成方法][7]に関するチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。 iOS の場合、リダイレクト URI を `<app-scheme>://<bundle-id>` 形式にすることをお勧めします。 詳細については、[ADAL iOS のクイックスタート][8]に関する記事をご覧ください。
+1. 「 [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法][7] 」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。 iOS の場合、リダイレクト URI を `<app-scheme>://<bundle-id>` 形式にすることをお勧めします。 詳細については、[ADAL iOS のクイックスタート][8]に関する記事をご覧ください。
 2. Cocoapods を使用して ADAL をインストールします。 POD ファイルを編集して次の定義を含め、 **YOUR-PROJECT** を Xcode プロジェクトの名前に置き換えます。
 
         source 'https://github.com/CocoaPods/Specs.git'
@@ -636,7 +641,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 Facebook SDK for iOS を使用すると、Facebook でアプリケーションにユーザーをサインインさせることができます。  クライアント フローの認証の使用は、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。  クライアント フローの認証により、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になります。
 
 1. [Facebook ログイン用に App Service を構成する方法][9]に関するチュートリアルに従って、Facebook のサインイン用にモバイル アプリ バックエンドを構成します。
-2. [Facebook SDK for iOS の 概要][10]に関するページに従って Facebook SDK for iOS をインストールします。 アプリを作成する代わりに、既存の登録に iOS プラットフォームを追加できます。
+2. [Facebook SDK for iOS の概要][10]に関するページに従って Facebook SDK for iOS をインストールします。 アプリを作成する代わりに、既存の登録に iOS プラットフォームを追加できます。
 3. Facebook のドキュメントには、App Delegate での Objective-C コードが含まれます。 **Swift** を使用している場合は、AppDelegate.swift に次の変換を使用できます。
 
     ```swift

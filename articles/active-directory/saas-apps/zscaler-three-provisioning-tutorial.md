@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: v-ant-msft
-ms.openlocfilehash: d96444984c503da68ccbda3aef9fea0ede5c7ff9
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: jeedes
+ms.openlocfilehash: 43ae028e57578634c34c69357a264fdb180b8a1f
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579055"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515372"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Three を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -28,8 +28,6 @@ ms.locfileid: "59579055"
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスが実行する内容、しくみについての重要な情報と、よく寄せられる質問への回答については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
->
-> 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Azure 利用規約の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,11 +44,11 @@ ms.locfileid: "59579055"
 
 Azure AD で自動ユーザー プロビジョニング用に Zscaler Three を構成する前に、Zscaler Three を Azure AD アプリケーション ギャラリーからマネージド SaaS アプリケーションの一覧に追加する必要があります。
 
-[Azure portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Active Directory]** を選択します。
+[Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[Azure Active Directory]** を選択します。
 
 ![[Azure Active Directory] を選択します。](common/select-azuread.png)
 
-**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** を選択します。
+**[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
 ![エンタープライズ アプリケーション](common/enterprise-applications.png)
 
@@ -81,11 +79,11 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 > [!TIP]
 > Zscaler Three では、SAML ベースのシングル サインオンを有効にすることもできます。 その場合は、[Zscaler Three のシングル サインオンに関するチュートリアル](zscaler-three-tutorial.md)の手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** > **[Zscaler Three]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zscaler Three]** の順に選択します。
 
     ![エンタープライズ アプリケーション](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[Zscaler Three]** を選択します。
+2. アプリケーションの一覧で、 **[Zscaler Three]** を選択します。
 
     ![アプリケーションの一覧](common/all-applications.png)
 
@@ -99,7 +97,7 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
 5. **[管理者資格情報]** セクションで、次の手順で説明する Zscaler Three アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
-6. **[テナント URL]** と **[シークレット トークン]** を取得するには、Zscaler Three ポータルで **[管理]** > **[認証の設定]** の順に移動し、**[認証の種類]** で **[SAML]** を選択します。
+6. **[テナント URL]** と **[シークレット トークン]** を取得するには、Zscaler Three ポータルで **[管理]**  >  **[認証の設定]** の順に移動し、 **[認証の種類]** で **[SAML]** を選択します。
 
     ![Zscaler Three の認証の設定](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 
@@ -109,7 +107,7 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
     **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**ベース URL** と**ベアラー トークン**をコピーし、設定を保存します。 Azure portal で、**ベース URL** を **[テナント URL]** ボックスに、**ベアラー トークン**を **[シークレット トークン]** ボックスに貼り付けます。
 
-7. **[テナント URL]** ボックスと **[シークレット トークン]** ボックスに値を入力したら、**[テスト接続]** を選択して Azure AD が Zscaler Three に接続できることを確認します。 接続できない場合は、使用中の Zscaler Three アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. **[テナント URL]** ボックスと **[シークレット トークン]** ボックスに値を入力したら、 **[テスト接続]** を選択して Azure AD が Zscaler Three に接続できることを確認します。 接続できない場合は、使用中の Zscaler Three アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![接続をテストする](./media/zscaler-three-provisioning-tutorial/test-connection.png)
 
@@ -123,7 +121,7 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
     ![Azure AD ユーザーを同期する](./media/zscaler-three-provisioning-tutorial/user-mappings.png)
 
-11. **[属性マッピング]** セクションで、Azure AD から Zscaler Three に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler Three のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、**[保存]** を選択します。
+11. **[属性マッピング]** セクションで、Azure AD から Zscaler Three に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler Three のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
     ![属性マッピング](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
 
@@ -131,13 +129,13 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
     ![Azure AD グループを同期する](./media/zscaler-three-provisioning-tutorial/group-mappings.png)
 
-13. **[属性マッピング]** セクションで、Azure AD から Zscaler Three に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler Three のグループとの照合に使用されます。 すべての変更をコミットするには、**[保存]** を選択します。
+13. **[属性マッピング]** セクションで、Azure AD から Zscaler Three に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler Three のグループとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
     ![属性マッピング](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](./../active-directory-saas-scoping-filters.md)の手順を参照してください。
 
-15. Zscaler Three に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+15. Zscaler Three に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![プロビジョニング状態](./media/zscaler-three-provisioning-tutorial/provisioning-status.png)
 
@@ -145,11 +143,11 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
     ![スコープ値](./media/zscaler-three-provisioning-tutorial/scoping.png)
 
-17. プロビジョニングの準備ができたら、**[保存]** を選択します。
+17. プロビジョニングの準備ができたら、 **[保存]** を選択します。
 
     ![[保存] の選択](./media/zscaler-three-provisioning-tutorial/save-provisioning.png)
 
-これにより、**[設定]** セクションの **[スコープ]** で定義したユーザーやグループの初回の同期が開始されます。 初回の同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 進行状況は、**[同期の詳細]** セクションで監視できます。 また、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Zscaler Three に対して実行されたすべてのアクションが記載されています。
+これにより、 **[設定]** セクションの **[スコープ]** で定義したユーザーやグループの初回の同期が開始されます。 初回の同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 進行状況は、 **[同期の詳細]** セクションで監視できます。 また、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Zscaler Three に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」を参照してください。
 

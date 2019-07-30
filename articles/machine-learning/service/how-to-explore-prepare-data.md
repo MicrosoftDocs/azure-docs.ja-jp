@@ -11,19 +11,19 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80137c7f1ecebab4d2da0c4b7ba0ca9292dad22e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753048"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443965"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Dataset クラス (プレビュー) でデータを探索して準備する
 
 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) の azureml-datasets パッケージを使用して、データを探索して準備する方法について説明します。 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) クラス (プレビュー) では、サンプリング、概要統計情報およびインテリジェントな変換などの機能を提供することで、データを探索して準備することができます。 変換の手順は、拡張性の高い方法でさまざまなスキーマの複数の大きなファイルを処理する機能を使用して、[Dataset 定義](how-to-manage-dataset-definitions.md)に保存されます。
 
 > [!Important]
-> 一部の Dataset クラス (プレビュー) は [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージ (GA) に依存しています。 変換関数を GA の [Data Prep 関数](how-to-transform-data.md)で直接実行することはできますが、新しいソリューションを構築する場合は、この記事で説明されている Dataset パッケージ ラッパーをお勧めします。 Azure Machine Learning Datasets (プレビュー) ではデータを変換するだけでなく、[データのスナップショットを作成し](how-to-create-dataset-snapshots.md)、[バージョン管理されたデータセット定義](how-to-manage-dataset-definitions.md)を格納することもできます。 Datasets は、次のバージョンの Data Prep SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
+> 一部の Dataset クラス (プレビュー) は [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージ (GA) に依存しています。 変換関数を GA の [Data Prep 関数](how-to-transform-data.md)で直接実行することはできますが、新しいソリューションを構築する場合は、この記事で説明されている Dataset パッケージ ラッパーをお勧めします。 Azure Machine Learning Datasets (プレビュー) ではデータを変換するだけでなく、[データのスナップショットを作成し](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py)、[バージョン管理されたデータセット定義](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py)を格納することもできます。 Datasets は、次のバージョンの Data Prep SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +63,7 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|事件番号|Date|ブロック|IUCR|プライマリ タイプ|...|
+||id|事件番号|Date|ブロック|IUCR|プライマリ タイプ|...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|DECEPTIVE PRACTICE|...
 1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
@@ -80,7 +80,7 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|事件番号|Date|ブロック|IUCR|プライマリ タイプ|...|
+||id|事件番号|Date|ブロック|IUCR|プライマリ タイプ|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 1|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|DECEPTIVE PRACTICE|...
@@ -103,7 +103,7 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|事件番号|Date|ブロック|IUCR|プライマリ タイプ|...|
+||id|事件番号|Date|ブロック|IUCR|プライマリ タイプ|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|THEFT|...
@@ -119,7 +119,7 @@ dataset.get_profile()
 
 ||Type|Min|max|Count|Missing Count|Not Missing Count|Percent missing|Error Count|Empty count|0.1% Quantile|1% Quantile|5% Quantile|25% Quantile|50% Quantile|75% Quantile|95% Quantile|99% Quantile|99.9% Quantile|平均|標準偏差|variance|傾斜|尖度
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-ID|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
+id|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
 事件番号|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 ブロック|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -162,7 +162,7 @@ ds_def = ds_def.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
 ds_def.head(3)
 ```
 
-||ID|逮捕| Latitude|Longitude|
+||id|逮捕| Latitude|Longitude|
 -|---------|-----|---------|----------|
 |0|10498554|False|41.692834|-87.604319|
 |1|10516598|False| 41.744107 |-87.664494|
@@ -215,7 +215,7 @@ ds_def.head(3)
 
 次の出力テーブルに示されているように、欠損緯度は `Arrest==False` グループの `MEAN` 値で補間されており、欠損経度は -87 で補完されています。
 
-||ID|逮捕|Latitude|Longitude
+||id|逮捕|Latitude|Longitude
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
 1|10516598|False|41.744107|-87.664494
@@ -228,7 +228,7 @@ dataset = dataset.update_definition(ds_def, 'Impute Missing')
 dataset.head(3)
 ```
 
-||ID|逮捕|Latitude|Longitude
+||id|逮捕|Latitude|Longitude
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
 1|10516598|False|41.744107|-87.664494
@@ -258,7 +258,7 @@ ds_def.get_profile()
 
 ||Type|Min|max|Count|Missing Count|Not Missing Count|Percent missing|Error Count|Empty count|0.1% Quantile|1% Quantile|5% Quantile|25% Quantile|50% Quantile|75% Quantile|95% Quantile|99% Quantile|99.9% Quantile|平均|標準偏差|variance|傾斜|尖度
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-ID|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
+id|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
 逮捕|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Latitude|FieldType.DECIMAL|41.6928|41.9032|10.0|0.0|10.0|0.0|0.0|0.0|41.6928|41.7185|41.6928|41.78|41.78|41.78|41.9032|41.9032|41.9032|41.78|0.0517107|0.002674|0.837593|1.05
 Longitude|FieldType.INTEGER|-87|-87|10.0|0.0|10.0|0.0|3.0|0.0|-87|-87|-87|-87|-87|-87|-87|-87|-87|-87|0|0|(NaN)|(NaN)
@@ -288,7 +288,7 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID|事件番号|Date|ブロック|...|
+||id|事件番号|Date|ブロック|...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
 1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|...
@@ -310,7 +310,7 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 
 次の表の新しい列である Date_Time_Range に、指定された形式のレコードが含まれていることに注目してください。
 
-||ID|Date|Date_Time_Range
+||id|Date|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10PM-12AM
 1|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
@@ -376,8 +376,6 @@ dataset = dataset.update_definition(ds_def, 'fuzzy grouping')
 ```
 
 ## <a name="next-steps"></a>次の手順
-
-* [Dataset 定義のライフ サイクルを管理します](how-to-manage-dataset-definitions.md)。
 
 * 回帰モデルの例については、自動機械学習の[チュートリアル](tutorial-auto-train-models.md)を参照してください。
 

@@ -126,6 +126,8 @@
   items:
     - name: テンプレートの作成
       href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: プロバイダー
+      href: networking-partners-msp.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: コミュニティ テンプレート

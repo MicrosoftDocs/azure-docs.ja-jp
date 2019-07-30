@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:ニュース検索を実行する - Bing News Search SDK for C#
+title: クイック スタート:Bing News Search SDK for C# を使ってニュース検索を実行する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートをでは、Bing News Search SDK for C# を使用してニュースを検索し、応答を処理します。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9e0a4da2662b9d4b4b775631705e7b4fcc1eecea
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 626596cc88b1b3b1067d7d6d157a548f92fb621a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798667"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206012"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>クイック スタート:Bing News Search SDK for C# を使ってニュース検索を実行する
 

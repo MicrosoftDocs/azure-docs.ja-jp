@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743259"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67988283"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -24,9 +24,9 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)ことができます。
 
-* アクティブな Azure Cosmos DB SQL API アカウント。 まだ作成していない場合は、「[データベース アカウントの作成](../cosmos-db/create-sql-api-dotnet.md#create-an-azure-cosmos-db-account)」の手順を参照してください。
+* アクティブな Azure Cosmos DB SQL API アカウント。 まだ作成していない場合は、「[データベース アカウントの作成](../cosmos-db/create-sql-api-java.md#create-a-database-account)」の手順を参照してください。
 
-* データベース内のコレクション。 「[コレクションの追加](../cosmos-db/create-sql-api-dotnet.md#add-a-database-and-a-collection)」の手順を参照してください。 コレクションを作成するときに、パーティション キーに `/id` を使用します。
+* データベース内のコレクション。 「[コレクションの追加](../cosmos-db/create-sql-api-java.md#add-a-container)」の手順を参照してください。 コレクションを作成するときに、パーティション キーに `/id` を使用します。
 
 * Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](iot-hub-csharp-csharp-getstarted.md)」のチュートリアルをご覧ください。
 

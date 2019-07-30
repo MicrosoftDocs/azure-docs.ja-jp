@@ -3,7 +3,7 @@ title: Azure Mobile Apps SDK for Android の使用方法 | Microsoft Docs
 description: Azure Mobile Apps SDK for Android の使用方法
 services: app-service\mobile
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
@@ -11,16 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 03/07/2019
-ms.author: crdun
-ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 6a6db136926a7f9d631c717f5cab6c025d97fb48
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859394"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443536"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library) を今すぐチェックしてください。
+>
 
 このガイドでは、次のような一般的なシナリオを、Mobile Apps の Android クライアント SDK を使用して実装する方法について説明します。
 
@@ -29,11 +33,11 @@ ms.locfileid: "60859394"
 * エラーの処理
 * クライアントのカスタマイズ
 
-このガイドでは、クライアント側の Android SDK に注目します。  Mobile Apps 用のサーバー側 SDK の詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][10]」または「[Azure Mobile Apps Node.js SDK の使用方法][11]」を参照してください。
+このガイドでは、クライアント側の Android SDK に注目します。  Mobile Apps 用のサーバー側 SDK の詳細については、[.NET バックエンド SDK の操作][10]に関するページまたは [Node.js バックエンド SDK の使用方法][11]に関するページを参照してください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
 
-Android クライアント ライブラリの [API に関する javadoc リファレンス][12]は、GitHub にあります。
+Android クライアント ライブラリの [Javadocs API リファレンス][12]は、GitHub にあります。
 
 ## <a name="supported-platforms"></a>サポートされているプラットフォーム
 
@@ -45,7 +49,7 @@ Azure Mobile Apps SDK for Android では、タブレットとスマートフォ�
 
 クイックスタート チュートリアルを行わない場合は、次の作業を完了してください。
 
-* Andoroid アプリで使用する[モバイル アプリ バックエンド][13]を作成する。
+* Android アプリで使用する[モバイル アプリ バックエンド][13]を作成する。
 * Android Studio で [Gradle ビルド ファイルを更新する](#gradle-build)。
 * [インターネット アクセス許可を有効にする](#enable-internet)。
 
@@ -197,7 +201,7 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Mobile Apps バックエンドに追加のテーブルを作成する方法については、「[方法:テーブル コントローラーを定義する][15]」(.NET バックエンド) または「[方法: 動的スキーマを使用してテーブルを定義する][16]」(Node.js バックエンド) を参照してください。
+Mobile Apps バックエンドに追加のテーブルを作成する方法については、「[方法:テーブル コントローラーを定義する][15]」(.NET バックエンド) または「[動的スキーマを使用してテーブルを定義する][16]」(Node.js バックエンド) を参照してください。
 
 Azure Mobile Apps バックエンド テーブルでは 5 つの特別なフィールドが定義されます。そのうちの 4 つはクライアントで使用できます。
 
@@ -382,7 +386,7 @@ List<ToDoItem> results = mToDoTable
     .execute().get();
 ```
 
-フィルター処理の詳細と例については、「[Exploring the richness of the Android client query model (Android クライアント クエリ モデルの機能を調査する)][20]」を参照してください。
+フィルター処理の詳細と例については、「 [Exploring the richness of the Android client query model (Android クライアント クエリ モデルの機能を調査する)][20]」を参照してください。
 
 ### <a name="sorting"></a>返されるデータを並べ替える
 
@@ -1003,7 +1007,7 @@ dependencies {
 
 ### <a name="caching"></a>認証トークンをキャッシュする
 
-認証トークンをキャッシュするには、ユーザー ID と認証トークンをデバイスにローカルで保存する必要があります。 アプリケーションの次回起動時にキャッシュを確認してください。これらの値が存在する場合は、ログイン手順を省略してクライアントにこのデータを再び渡すことができます。 ただし、このデータは慎重な扱いを要する情報であり、電話の盗難に備えて安全のために暗号化して保存する必要があります。  認証トークンをキャッシュする方法の完全な例については、「[方法: 認証トークンをキャッシュする][7]」セクションを参照してください。
+認証トークンをキャッシュするには、ユーザー ID と認証トークンをデバイスにローカルで保存する必要があります。 アプリケーションの次回起動時にキャッシュを確認してください。これらの値が存在する場合は、ログイン手順を省略してクライアントにこのデータを再び渡すことができます。 ただし、このデータは慎重な扱いを要する情報であり、電話の盗難に備えて安全のために暗号化して保存する必要があります。  認証トークンをキャッシュする方法の完全な例については、「[認証トークンをキャッシュする][7]」を参照してください。
 
 期限切れトークンを使用しようとすると、" *401 権限がありません* " 応答が返されます。 認証エラーはフィルターを使用して処理することができます。  フィルターにより、App Service バックエンドへの要求が遮断されます。 フィルター コードは、401 の応答の有無をテストし、サインイン プロセスをトリガーしてから、401 を生成した要求を再開します。
 
@@ -1081,7 +1085,7 @@ MobileServiceUser user = mClient
 
 Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。 クライアント フロー ログインでは、よりネイティブなユーザー エクスペリエンスを提供でき、詳細なカスタマイズを行うこともできるため、多くの場合、 `loginAsync()` メソッドよりもこちらのログインを使用することをお勧めします。
 
-1. [Active Directory ログイン用の App Service の構成方法][22]に関するチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
+1. 「 [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法][22] 」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 2. build.gradle ファイルを変更して以下の定義を追加し、ADAL をインストールします。
 
     ```gradle

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d69271f65c326237a380624d994d8f5339537114
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 341d8dd712b858572ec5df76b176258ca87c8857
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869476"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル:Azure Active Directory と PingBoard の統合
 
@@ -55,11 +55,11 @@ Azure AD への PingBoard の統合を構成するには、ギャラリーから
 
 **ギャラリーから PingBoard を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への PingBoard の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Pingboard**」と入力し、結果パネルで **[Pingboard]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Pingboard**」と入力し、結果パネルで **[Pingboard]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の PingBoard](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
 Pingboard で Azure AD シングル サインオンを構成するには、次の手順を行います。
 
-1. [Azure portal](https://portal.azure.com/) の **Pingboard** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Pingboard** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
     b. **[応答 URL]** ボックスに、`https://<entity-id>.pingboard.com/auth/saml/consume` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[Pingboard のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -120,7 +120,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。 これらの値を取得するには、[PingBoard クライアント サポート チーム](https://support.pingboard.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -138,15 +138,15 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
 1. Pingboard 側で SSO を構成するには、新しいブラウザー ウィンドウを開き、Pingboard アカウントにサインインします。 シングル サインオンを設定するには、PingBoard 管理者である必要があります。
 
-2. 上部のメニューで、**[アプリ]、[統合]** の順に選択します。
+2. 上部のメニューで、 **[アプリ]、[統合]** の順に選択します。
 
     ![Configure single sign-on](./media/pingboard-tutorial/Pingboard_integration.png)
 
-3. **[Integrations]** ページで、**[Azure Active Directory]** タイルを探してクリックします。
+3. **[Integrations]** ページで、 **[Azure Active Directory]** タイルを探してクリックします。
 
     ![PingBoard シングル サインオン統合](./media/pingboard-tutorial/Pingboard_aad.png)
 
-4. 続いて表示されるモーダルで、**[Configure]** をクリックします。
+4. 続いて表示されるモーダルで、 **[Configure]** をクリックします。
 
     ![PingBoard 構成ボタン](./media/pingboard-tutorial/Pingboard_configure.png)
 
@@ -160,7 +160,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -184,7 +184,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に PingBoard へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Pingboard]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Pingboard]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -196,15 +196,15 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-pingboard-test-user"></a>Pingboard テスト ユーザーの作成
 
@@ -224,7 +224,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
     a. **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
 
-    b. **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
+    b. **[メール]** ボックスに、ユーザーのメール アドレス ( **brittasimon@contoso.com** など) を入力します。
 
     c. **[Job Title]** ボックスに、Britta Simon の役職を入力します。
 

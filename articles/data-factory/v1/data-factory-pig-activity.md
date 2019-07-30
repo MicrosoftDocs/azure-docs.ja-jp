@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 09fd569ebfe8bc7f287eeb2a0b830399250c3a7a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997016"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701490"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md) 
 > * [Pig アクティビティ](data-factory-pig-activity.md)
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
@@ -85,15 +85,15 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |アクティビティの名前 |はい |
-| description |アクティビティの用途を説明するテキストです。 |いいえ  |
+| 名前 |アクティビティの名前 |はい |
+| description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type |HDInsightPig |はい |
-| inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ  |
+| inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ |
 | outputs |Pig のアクティビティによって生成される 1 つ以上の出力 |はい |
 | linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |はい |
-| script |Pig スクリプトをインラインに指定します |いいえ  |
-| scriptPath |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
-| defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |
+| script |Pig スクリプトをインラインに指定します |いいえ |
+| scriptPath |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ |
+| defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ |
 
 ## <a name="example"></a>例
 ゲームのログ分析の例について考えてみましょう。ここでは、お客様の会社が発売したゲームをユーザーがプレイした時間を特定します。
@@ -211,7 +211,7 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
       }
     }
     ```
-* 次の例に示すように、'**$parameterName**' を使用するパラメーターを Pig スクリプトで参照します。
+* 次の例に示すように、' **$parameterName**' を使用するパラメーターを Pig スクリプトで参照します。
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

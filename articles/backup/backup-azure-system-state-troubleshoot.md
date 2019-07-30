@@ -1,24 +1,46 @@
 ---
 title: Azure Backup でのシステム状態のバックアップをトラブルシューティングする
 description: システム状態のバックアップに関する問題をトラブルシューティングします。
-services: backup
 author: srinathvasireddy
 manager: sivan
 keywords: バックアップ方法; システム状態のバックアップ
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: srinathvasireddy
-ms.openlocfilehash: 53b9f8fb58a6e70a4bd2cd02adb9ce824466d7de
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 07/22/2019
+ms.author: srinathv
+ms.openlocfilehash: 8996270acb1525697f29b4251bf4e11d2db62fdf
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482021"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465350"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
 この記事では、システム状態のバックアップを使用しているときに発生する可能性がある問題の解決方法について説明します。
+
+## <a name="basic-troubleshooting"></a>基本的なトラブルシューティング
+システム状態のバックアップのトラブルシューティングを開始する前に、以下の検証を実行することをお勧めします。
+
+- [Microsoft Azure Recovery Services (MARS) エージェントが最新であることを確認する](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](https://aka.ms/AB-A4dp50)
+- Microsoft Azure Recovery Services が (サービス コンソールで) 実行されていることを確認します。 必要に応じて、再起動して操作をやり直します
+- [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](https://aka.ms/AB-AA4dwtt)
+- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認する](https://aka.ms/AB-AA4dwtk)
+- [スケジュールされたバックアップが失敗したが、手動バックアップは機能する](https://aka.ms/ScheduledBackupFailManualWorks)
+- OS に最新の更新プログラムが適用されていることを確認する
+- [サポートされていない属性を持つサポートされていないドライブとファイルはバックアップから除外されることを確認する](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
+- 保護されているシステム上の**システム クロック**が適切なタイム ゾーンに構成されていることを確認します <br>
+- [サーバーに .Net Framework バージョン 4.5.2 以降がインストールされていることを確認します](https://www.microsoft.com/download/details.aspx?id=30653)<br>
+- コンテナーに**サーバーを再登録**する場合は、次のことを行います。 <br>
+  - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します <br>
+  - 最初にサーバーの登録に使用したのと同じパスフレーズを使用します <br>
+- オフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell バージョン 3.7.0 がインストールされていることを確認します
+- [Azure 仮想マシン (VM) 上で Backup エージェントが実行されている場合の考慮事項](https://aka.ms/AB-AA4dwtr)
+
+### <a name="limitation"></a>制限事項
+- Microsoft では、システム状態の回復を使用して別のハードウェアに回復することはお勧めしません。
+- 現在、システム状態のバックアップでは "オンプレミス" の Windows サーバーはサポートされていますが、この機能は Azure VM には使用できません。
 
 ## <a name="pre-requisite"></a>前提条件
 
@@ -95,7 +117,7 @@ Windows Server バックアップの状態を検証するには、以下を実�
 
   * 管理者特権でのコマンド プロンプトから次のコマンドを実行して、WSB バックアップが正しく動作していることを確認します。
 
-      ` wbadmin start systemstatebackup -backuptarget:X: -quiet `
+      `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 
       > [!NOTE]
       >X を、システム状態のバックアップ イメージを格納するボリュームのドライブ文字に置き換えてください。

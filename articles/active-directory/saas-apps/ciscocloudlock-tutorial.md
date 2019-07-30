@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c43a38a456eb0fce3f46409bd256f0fc42e8ade
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 70f4b900a1ccc2769e397c32b452ef939da00099
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-security-fabric"></a>チュートリアル:Azure Active Directory と Cloud Security Fabric の統合
 

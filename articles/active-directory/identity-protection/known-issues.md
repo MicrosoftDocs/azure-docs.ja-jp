@@ -2,40 +2,31 @@
 title: Azure Active Directory の Identity Protection (更新版) に関してよく寄せられる質問と既知の問題 | Microsoft Docs
 description: Azure Active Directory の Identity Protection (更新版) に関してよく寄せられる質問と既知の問題。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/24/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 392b7a08d9422658c5620f60e9c1caca074bc85e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d5aa50aec98b3944aed92b9da49182f0608f34c
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60452683"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333897"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory の Identity Protection (更新版) に関してよく寄せられる質問と既知の問題
-
 
 ## <a name="dismiss-user-risk-known-issues"></a>"ユーザー リスクを無視する" の既知の問題
 
 従来の Identity Protection で**ユーザー リスクを無視する**と、Identity Protection (更新版) のユーザーのリスク履歴のアクターが **Azure AD** に設定されます。
 
-
 Identity Protection (更新版) で**ユーザーのリスクを無視する**と、Identity Protection (更新版) のユーザーのリスク履歴のアクターが **\<ユーザーのブレードを指すハイパーリンクが付いた管理者の名前\>** に設定されます。
 
 現在、ユーザー リスクの無視フローに遅延が発生するという既知の問題があります。 "ユーザー リスク ポリシー" がある場合、このポリシーによって、[ユーザー リスクを無視する] をクリックしてから数分以内に、無視されたユーザーへの適用が停止されます。 ただし、無視されたユーザーの "リスク状態" が UX で更新されるまでに既知の遅延があります。 回避策としては、ブラウザー レベルでページを更新して最新のユーザーの "リスク状態" を確認します。
-
 
 ## <a name="risky-users-report-known-issues"></a>"危険なユーザー レポート" の既知の問題
 
@@ -45,11 +36,9 @@ Identity Protection (更新版) で**ユーザーのリスクを無視する**�
 
 従来の Identity Protection で**すべてのイベントを無視する**と、リスク イベントの状態が **[クローズ (解決済み)]** に設定されます。
 
-
 ## <a name="risky-sign-ins-report-known-issues"></a>"リスクの高いサインイン レポート" の既知の問題
 
 リスク イベントで **[解決]** をクリックすると、状態が **[ユーザーが、リスク ベースのポリシーに要求された MFA に成功しました]** に設定されます。
-
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -57,11 +46,9 @@ Identity Protection (更新版) で**ユーザーのリスクを無視する**�
 
 Identity Protection のリスク レベルは、検出の精度に基づいており、Microsoft の教師あり機械学習によって強化されています。 管理者は、ユーザー エクスペリエンスをカスタマイズするために、ユーザー リスク ポリシーとサインイン リスク ポリシーに対して特定のユーザーまたはグループを含めたり除外したりすることができます。
 
-
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>サインインの場所が、ユーザーが実際にサインインした場所と一致しないのはなぜですか?
 
 IP の地理的位置情報のマッピングについては、業界全体の課題となっています。 サインイン レポートに記載されている場所が実際の場所と一致しないと思われる場合は、サポートにご連絡ください。 
-
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Identity Protection のフィードバック メカニズムはどのように機能しますか?
 
@@ -82,8 +69,6 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 
     > [!NOTE]
     > ユーザーが侵害されていないと思われる場合は、サインイン レベルで **[安全であるとの確認済み]** を使用するのではなく、ユーザー レベルで **[ユーザー リスクを無視する]** を使用してください。 ユーザー レベルで **[ユーザー リスクを無視する]** を使用すると、ユーザーリスク、および過去に発生したリスクの高いサインインとリスク イベントがすべて閉じられます。
-
-
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>Identity Protection にリスクの高いサインインやリスク イベントが表示されていなくても、低 (またはそれ以上の) リスク スコアを持つユーザーが表示されるのはなぜですか?
 

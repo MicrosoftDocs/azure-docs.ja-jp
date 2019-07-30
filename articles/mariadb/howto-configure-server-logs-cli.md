@@ -6,13 +6,13 @@ ms.author: raagyema
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: 403f111882b1bd151b26af56fd614355e7ba88e3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 06/12/2019
+ms.openlocfilehash: 9fff9f13e5ce6bf8a7805f7794d3e71eb4030104
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539213"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065679"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLI を使用してサーバー ログを構成してアクセスする
 Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MariaDB のサーバー ログをダウンロードできます。
@@ -38,7 +38,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ```
 
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Azure Database for MariaDB サーバーのログを一覧表示する
-サーバーの利用可能なログ ファイルを一覧表示するには、[az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) コマンドを実行します。
+サーバーの利用可能な低速クエリ ログ ファイルを一覧表示するには、[az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) コマンドを実行します。
 
 リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** のログ ファイルを一覧表示できます。 その後、ログ ファイルの一覧を **log\_files\_list.txt** という名前のテキスト ファイルに送信します。
 ```azurecli-interactive
@@ -53,4 +53,4 @@ az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --
 ```
 
 ## <a name="next-steps"></a>次の手順
-- [Azure Database for MariaDB のサーバー ログ](concepts-server-logs.md)について学習します。
+- [Azure Database for MariaDB の低速クエリ ログ](concepts-server-logs.md)について学習します。

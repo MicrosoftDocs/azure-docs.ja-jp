@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1c4a0384342db82ee9c1f6b9e806188d5949681
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171214"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67235369"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
 | クォータ名 | Scope (スコープ) | メモ | 値 |
 | --- | --- | --- | --- |
 | Azure サブスクリプションごとの Basic または Standard 名前空間の最大数 |名前空間 |追加の Basic または Standard 名前空間に関する後続の要求は Azure portal で拒否されます。 |100|
-| Azure サブスクリプションごとの Premium 名前空間の最大数 |名前空間 |追加の Premium 名前空間に関する後続の要求はポータルで拒否されます。 |25 |
+| Azure サブスクリプションごとの Premium 名前空間の最大数 |名前空間 |追加の Premium 名前空間に関する後続の要求はポータルで拒否されます。 |50 |
 | キューまたはトピックのサイズ |エンティティ |キューまたはトピックの作成時に定義されます。 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元コードが例外を受け取ります。 |1、2、3、4、または 5 GB。<br /><br />Premium SKU と、[パーティション分割](/azure/service-bus-messaging/service-bus-partitioning)が有効な Standard SKU では、キューまたはトピックの最大サイズは 80 GB です。 |
 | 名前空間のコンカレント接続数 |名前空間 |追加の接続に関する後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。 |NetMessaging:1,000。<br /><br />AMQP:5,000。 |
 | キュー、トピック、またはサブスクリプション エンティティの同時受信要求数 |エンティティ |後続の受信要求が拒否され、呼び出し元コードが例外を受け取ります。 このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。 |5,000 |

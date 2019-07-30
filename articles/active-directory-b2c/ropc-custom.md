@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7a802354f20998c87ac8c2ef1f2c1dbdf47f6930
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: d01e8ce894bfb1ece3555eddc714d2d3a80e44b5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733643"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164846"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
@@ -255,7 +255,7 @@ ROPC フローでは次のオプションがサポートされています。
     ```
 
 5. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
-6. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
+6. **[ポリシーが存在する場合は上書きする]** を有効にし、*ROPC_Auth.xml* ファイルを参照して選択します。
 7. **[アップロード]** をクリックします。
 
 ## <a name="test-the-policy"></a>ポリシーをテストする

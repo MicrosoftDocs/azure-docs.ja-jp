@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f91d51bda4c41a314c7cc1c2cc895e36bde0500
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768220"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277996"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する
 

@@ -27,6 +27,8 @@
       href: tutorial-rendering-batchexplorer-blender.md
     - name: 並列 R シミュレーション
       href: tutorial-r-doazureparallel.md
+    - name: Batch と Functions を使用した OCR
+      href: tutorial-batch-functions.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -59,6 +61,8 @@
           href: batch-account-create-portal.md
         - name: Batch Management .NET で Batch アカウントを管理する
           href: batch-management-dotnet.md
+        - name: コスト分析と予算
+          href: budget.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD

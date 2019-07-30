@@ -63,6 +63,10 @@
               href: google-federation.md
             - name: ワンタイム パスコード認証
               href: one-time-passcode.md
+            - name: 直接フェデレーション
+              href: direct-federation.md
+            - name: AD FS を使用した直接フェデレーションの例
+              href: direct-federation-adfs.md
             - name: 招待を許可またはブロックする
               href: allow-deny-list.md
             - name: 招待を使用せずに B2B ユーザーを追加する

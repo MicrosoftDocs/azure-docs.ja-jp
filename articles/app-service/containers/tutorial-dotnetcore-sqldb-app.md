@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c90d0d2596eb6b8650e2d9809b23bb0e184d97c0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4837867188721b13b3f4cb64245ae85a1e32fe50
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547829"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656637"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での ASP.NET Core および SQL Database アプリの作成
 
@@ -100,7 +100,7 @@ SQL Database については、このチュートリアルでは [Azure SQL Data
 
 Cloud Shell で、[`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) コマンドを使用して SQL Database 論理サーバーを作成します。
 
-*\<server-name>* プレースホルダーを一意の SQL Database 名で置換します。 この名前は、SQL Database エンドポイント (`<server-name>.database.windows.net`) の一部として使用されるため、名前は Azure のすべての論理サーバーで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。 また、*\<db-username>* と *\<db-password>* を、選択したユーザー名とパスワードで置換します。 
+*\<server-name>* プレースホルダーを一意の SQL Database 名で置換します。 この名前は、SQL Database エンドポイント (`<server-name>.database.windows.net`) の一部として使用されるため、名前は Azure のすべての論理サーバーで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。 また、 *\<db-username>* と *\<db-password>* を、選択したユーザー名とパスワードで置換します。 
 
 
 ```azurecli-interactive
@@ -129,7 +129,7 @@ SQL Database 論理サーバーが作成されると、Azure CLI によって、
 
 ### <a name="configure-a-server-firewall-rule"></a>サーバーのファイアウォール規則の構成
 
-[`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) コマンドを使用して、[Azure SQL Database のサーバー レベルのファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
+[`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create)コマンドを使用して、[Azure SQL Database のサーバー レベルのファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -145,7 +145,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>接続文字列を作成する
 
-次の文字列を、前に使用した *\<server-name>*、*\<db-username>*、*\<db-password>* で置換します。
+次の文字列を、前に使用した *\<server-name>* 、 *\<db-username>* 、 *\<db-password>* で置換します。
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -171,7 +171,7 @@ Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-u
 
 ### <a name="configure-an-environment-variable"></a>環境変数の構成
 
-Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、*\<app-name>* および *\<connection-string>* パラメーターを、先ほど作成した接続文字列で置換します。
+Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、 *\<app-name>* および *\<connection-string>* パラメーターを、先ほど作成した接続文字列で置換します。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -344,7 +344,7 @@ _Views\Todos\Index.cshtml_ を開きます。
 dotnet run
 ```
 
-ブラウザーで `http://localhost:5000/` にアクセスします。 これで、To Do 項目を追加し、**[完了]** チェック ボックスをオンにすることができるようになります。 そうすると、完了済みの項目としてホームページに表示されます。 `Edit` ビューを変更していないため、`Edit` ビューには `Done` フィールドが表示されないことに注意してください。
+ブラウザーで `http://localhost:5000/` にアクセスします。 これで、To Do 項目を追加し、 **[完了]** チェック ボックスをオンにすることができるようになります。 そうすると、完了済みの項目としてホームページに表示されます。 `Edit` ビューを変更していないため、`Edit` ビューには `Done` フィールドが表示されないことに注意してください。
 
 ### <a name="publish-changes-to-azure"></a>Azure に変更を発行する
 
@@ -362,7 +362,7 @@ git push azure master
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
-サンプル プロジェクトは既に、[Azure における ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure)に関するページのガイダンスに従っています。ただし、次の 2 つの変更を構成に加えています。
+サンプル プロジェクトは既に、[Azure における ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider)に関するページのガイダンスに従っています。ただし、次の 2 つの変更を構成に加えています。
 
 - *DotNetCoreSqlDb.csproj* で `Microsoft.Extensions.Logging.AzureAppServices` への参照を追加しています。
 - *Startup.cs* で `loggerFactory.AddAzureWebAppDiagnostics()` を呼び出します。

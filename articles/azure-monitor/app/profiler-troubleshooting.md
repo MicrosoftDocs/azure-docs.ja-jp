@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731066"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341672"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -88,7 +88,7 @@ Profiler を正常に動作させるためには:
 
       ![profiler-webjob-log]
 
-Profiler が動作していない理由がわからない場合は、ログをダウンロードし、チームに送信して支援を受けることができます。 
+Profiler が動作していない理由がわからない場合は、ログをダウンロードし、チームに送信して支援を受けることができます (serviceprofilerhelp@microsoft.com)。 
     
 ### <a name="manual-installation"></a>手動のインストール
 

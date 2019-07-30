@@ -1,30 +1,29 @@
 ---
 title: 'チュートリアル:Apache Kafka Streams API の使用 - Azure HDInsight '
-description: HDInsight 上の Kafka で Apache Kafka Streams API を使用する方法を説明します。 この API を使用して、Kafka でトピック間のストリーム処理を実行できます。
+description: チュートリアル - HDInsight 上の Kafka で Apache Kafka Streams API を使用する方法を説明します。 この API を使用して、Kafka でトピック間のストリーム処理を実行できます。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: 9425af0f39d14287b49fe06a81172281feb24e83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/25/2019
+ms.openlocfilehash: 0639ecaa0e4ae0581a6c88e1ea9a47de870a8355
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715963"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446395"
 ---
-# <a name="tutorial-apache-kafka-streams-api"></a>チュートリアル:Apache Kafka Streams API
+# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Kafka Streams API を使用する
 
-Apache Kafka Streams API を使用するアプリケーションを作成し、HDInsight 上の Kafka でそれを実行する方法を説明します。 
+Apache Kafka Streams API を使用するアプリケーションを作成し、HDInsight 上の Kafka でそれを実行する方法を説明します。
 
 このチュートリアルで使うアプリケーションはストリーミング ワード カウントです。 Kafka トピックからテキスト データを読み取り、個々のワードを抽出してから、ワードとカウントを別の Kafka トピックに保存します。
 
-> [!NOTE]  
-> Kafka のストリーム処理は、多くの場合、Apache Spark または Apache Storm を使用して実行されます。 Kafka バージョン 1.1.0 (HDInsight 3.5 および 3.6 での) では、Kafka Streams API が導入されました。 この API を使用して、入力および出力トピック間でデータ ストリームを変換できます。 場合により、Spark または Storm ストリーミング ソリューションを作成する代わりになることがあります。 
->
-> Kafka Streams の詳細については、Apache.org の「[Intro to Streams](https://kafka.apache.org/10/documentation/streams/)」ドキュメントを参照してください。
+Kafka のストリーム処理は、多くの場合、Apache Spark または Apache Storm を使用して実行されます。 Kafka バージョン 1.1.0 (HDInsight 3.5 および 3.6 での) では、Kafka Streams API が導入されました。 この API を使用して、入力および出力トピック間でデータ ストリームを変換できます。 場合により、Spark または Storm ストリーミング ソリューションを作成する代わりになることがあります。
+
+Kafka Streams の詳細については、Apache.org の「[Intro to Streams](https://kafka.apache.org/10/documentation/streams/)」ドキュメントを参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -68,8 +67,7 @@ Apache Kafka Streams API を使用するアプリケーションを作成し、H
     </dependency>
     ```
 
-    > [!NOTE]  
-    > `${kafka.version}` エントリは `pom.xml` の `<properties>..</properties>` セクション内で宣言され、Kafka バージョンの HDInsight クラスターに構成されています。
+    `${kafka.version}` エントリは `pom.xml` の `<properties>..</properties>` セクション内で宣言され、Kafka バージョンの HDInsight クラスターに構成されています。
 
 * プラグイン:Maven プラグインはさまざまな機能を備えています。 このプロジェクトでは、次のプラグインが使用されます。
 
@@ -206,8 +204,7 @@ public class Stream
    * `RekeyedIntermediateTopic`:このトピックは、`countByKey` 演算子によってカウントが更新される場合にデータ パーティションを再作成するために使用されます。
    * `wordcount-example-Counts-changelog`:このトピックは、`countByKey` 演算で使用される状態ストアです
 
-     > [!IMPORTANT]  
-     > HDInsight 上の Kafka は、トピックを自動的に作成するように構成することもできます。 詳細については、[自動トピック作成の構成](apache-kafka-auto-create-topics.md)に関するドキュメントをご覧ください。
+    HDInsight 上の Kafka は、トピックを自動的に作成するように構成することもできます。 詳細については、[自動トピック作成の構成](apache-kafka-auto-create-topics.md)に関するドキュメントをご覧ください。
 
 ## <a name="run-the-code"></a>コードの実行
 
@@ -217,8 +214,7 @@ public class Stream
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    > [!NOTE]  
-    > Apache log4j に関する警告が表示されることがあります。 これは無視できます。
+    Apache log4j に関する警告が表示されることがあります。 これは無視できます。
 
 2. レコードを `test` トピックに送信するには、次のコマンドを使用してプロデューサー アプリケーションを起動します。
 
@@ -232,8 +228,7 @@ public class Stream
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer --from-beginning
     ```
 
-    > [!NOTE]  
-    > `--property` パラメーターはコンソール コンシューマーに、カウント (値) と共にキー (ワード) を出力するように指示します。 このパラメーターは、Kafka からこれらの値を読み取るときに使用するデシリアライザーも構成します。
+    `--property` パラメーターはコンソール コンシューマーに、カウント (値) と共にキー (ワード) を出力するように指示します。 このパラメーターは、Kafka からこれらの値を読み取るときに使用するデシリアライザーも構成します。
 
     出力は次のテキストのようになります。
    
@@ -250,8 +245,7 @@ public class Stream
         jumped  13640
         jumped  13641
    
-    > [!NOTE]  
-    > パラメーター `--from-beginning` は、トピックに保存されているレコードの先頭から開始するようにコンシューマーを構成します。 カウントはワードが検出されるたびに増加するため、トピックには、ワードごとにカウントが増加する複数のエントリが含まれます。
+    パラメーター `--from-beginning` は、トピックに保存されているレコードの先頭から開始するようにコンシューマーを構成します。 カウントはワードが検出されるたびに増加するため、トピックには、ワードごとにカウントが増加する複数のエントリが含まれます。
 
 4. __Ctrl + C__ キーを使用してプロデューサーを終了します。 引き続き __Ctrl + C__ キーを使用して、アプリケーションとコンシューマーを終了します。
 
@@ -264,9 +258,19 @@ public class Stream
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
+
+Azure Portal を使用してリソース グループを削除するには:
+
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 __[リソース グループ]__ を選択して、リソース グループの一覧を表示します。
+2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
+3. __[リソース グループの削除]__ を選択し、確認します。
+
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、HDInsight 上の Kafka で Apache Kafka Streams API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 
-* [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)
-* [Apache Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)
+> [!div class="nextstepaction"]
+> [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)

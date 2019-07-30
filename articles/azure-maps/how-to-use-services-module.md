@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: b56191bc93a91f944bb313b4ab9ad602da17dcf0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7baacd3bb64ad234e478d4c1f75e793c46ec321
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357652"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476765"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure Maps サービス モジュールの使用
 
@@ -26,7 +26,7 @@ Azure Maps の Web SDK は、*サービス モジュール*を提供します。
     - グローバルにホストされている Azure Maps サービス モジュールの Azure Content Delivery Network のバージョンを使用します。 次に、ファイルの `<head>` 要素にスクリプト参照を追加します。
 
         ```html
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
     - または、[azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest) NPM パッケージを使用して、Azure Maps Web SDK のソース コードをローカルに読み込み、アプリを使用してホストします。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。

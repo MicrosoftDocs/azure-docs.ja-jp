@@ -4,7 +4,7 @@ description: Azure で一般化された VM または VHD の管理対象イメ�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 3a6781387121a691c6599ffaeb5722ecc6e16132
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75f1d9b945eab49fb633f2cd3f99f498e686bfab
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704689"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719346"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
-ストレージ アカウントにマネージド ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 マネージド イメージの課金方法については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。 
+ストレージ アカウントにマネージド ディスクまたはアンマネージド ディスクとして格納されている一般化された仮想マシン (VM) からマネージド イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 マネージド イメージの課金方法については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 

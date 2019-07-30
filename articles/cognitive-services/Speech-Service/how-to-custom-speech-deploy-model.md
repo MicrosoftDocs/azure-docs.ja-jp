@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fc51c1d9d47340da85d42f7c398c8ee21c601beb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2b69bf3e5d536e7e813ef4a7c36b2937141fd43
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025689"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606621"
 ---
 # <a name="deploy-a-custom-model"></a>カスタム モデルをデプロイする
 

@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:デプロイ シナリオ | Micros
 description: Azure AD ドメイン サービスのデプロイ シナリオ
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/21/2017
-ms.author: ergreenl
-ms.openlocfilehash: 0659586512b36c51c5058271fa5e1bdb46efbc3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 9e8ac5e83fa3cc9b1e266a9009bad86f41233ed8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245422"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67472667"
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>デプロイ シナリオおよびユース ケース
 このセクションでは、Azure Active Directory (AD) ドメイン サービスから恩恵を受けられるいくつかのシナリオとユース ケースについて説明します。

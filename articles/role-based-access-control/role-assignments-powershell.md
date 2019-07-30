@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 002ebcbe8ba14b9f15ddea6deb21f0f2bc201ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: deb7864c9f59427d6da9d27ede349c7532bf40d5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160318"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074022"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>RBAC と Azure PowerShell を使用して Azure リソースへのアクセスを管理する
 
@@ -286,7 +286,7 @@ CanDelegate        : False
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-次の例では、*pharma-sales* リソース グループのスコープで、*alain@example.com* ユーザーに "[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)" ロールを割り当てます。 一意のロール ID を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用するか、「[Azure リソースの組み込みロール](built-in-roles.md)」を参照してください。
+次の例では、*pharma-sales* リソース グループのスコープで、 *alain@example.com* ユーザーに "[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)" ロールを割り当てます。 一意のロール ID を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用するか、「[Azure リソースの組み込みロール](built-in-roles.md)」を参照してください。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -366,6 +366,8 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
 ```
+
+"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません) というエラー メッセージが表示された場合、`-Scope` または `-ResourceGroupName` パラメーターも指定してください。 詳細については、「[Azure リソースの RBAC のトラブルシューティング](troubleshooting.md#role-assignments-without-a-security-principal)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

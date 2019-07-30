@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148194"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341853"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 [LUIS](https://www.luis.ai) ポータル内または LUIS オーサリング[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用して LUIS アプリを作成できます。
@@ -65,7 +65,7 @@ LUIS ポータルでは、新しいアプリをいくつかの方法で作成で
 
 次のエラーが発生する可能性があります。 
 
-* その名前のアプリは既に存在します。 アプリを再インポートし、**オプション名**を新しい名前に設定します。 
+* その名前のアプリは既に存在します。 これを修正するには、アプリを再インポートし、**オプション名**を新しい名前に設定します。 
 
 ## <a name="export-app-for-backup"></a>バックアップ用にアプリをエクスポートする
 

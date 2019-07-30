@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: b791d74c2b3e94465a1903299d5db0b281ec9355
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4a4196aa601fc8da79da3962faec026eff5ec87
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053315"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625058"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -148,7 +148,7 @@ ms.locfileid: "67053315"
 
 * export-input は、ストリーム入力に付けたエイリアスです。
 * pbi-output は、定義した出力エイリアスです。
-* イベントの名前は JSON 配列にネストされているため、[OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) を使います。 Select でイベント名と、期間内にその名前を持つインスタンスの個数を取得します。 [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) 句では、1 分の期間内に要素をグループ化します。
+* イベントの名前は JSON 配列にネストされているため、[OUTER APPLY GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) を使います。 Select でイベント名と、期間内にその名前を持つインスタンスの個数を取得します。 [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 句では、1 分の期間内に要素をグループ化します。
 
 ### <a name="query-to-display-metric-values"></a>メトリックの値を表示するためのクエリ
 ```SQL

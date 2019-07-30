@@ -74,6 +74,8 @@
           href: security-info-setup-text-msg.md
         - name: 音声通話の設定
           href: security-info-setup-phone-number.md
+        - name: セキュリティ キーの設定
+          href: security-info-setup-security-key.md
         - name: メールの設定
           href: security-info-setup-email.md
         - name: セキュリティの質問の設定

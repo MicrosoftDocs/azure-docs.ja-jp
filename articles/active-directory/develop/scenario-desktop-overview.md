@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44d31011ca70bbebaf994b5fb80a45eee8dbde40
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 476703b52813e6b3081dcfb3ab5a2fb4f3a7bfc5
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080377"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785636"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ: Web API を呼び出すデスクトップ アプリ
 
@@ -45,7 +45,11 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 
 デスクトップ アプリケーションを作成して、ユーザーをアプリケーションにサインインさせ、Microsoft Graph、他の Microsoft API、または独自の Web API などの Web API を呼び出します。 次のようにいくつかの可能性があります。
 
-- デスクトップ アプリケーションでグラフィカル コントロールがサポートされている場合、たとえば、Windows.Form アプリケーションや WPF アプリケーションの場合は、対話式のトークン取得を使用することができます。
+- 対話型トークン取得を使用できます。
+
+  - ご利用のデスクトップ アプリケーションでグラフィカル コントロールがサポートされている場合 (たとえば、Windows.Form アプリケーションや WPF アプリケーションの場合)。
+  - または、.NET Core アプリケーションであり、システム ブラウザーで Azure AD との認証のやり取りが発生することに同意している場合。
+
 - Windows でホストされているアプリケーションの場合、Windows ドメインに参加しているコンピューター、または AAD に参加しているコンピューターで実行されているアプリケーションが、統合 Windows 認証を使用して自動的にトークンを取得することも可能です。
 - 最後に、推奨されていませんが、パブリック クライアント アプリケーションではユーザー名/パスワードを使用することができます。 これは一部のシナリオ (DevOps など) ではまだ必要ですが、それを使用するとアプリケーションに制約が課せされることに注意してください。 たとえば、多要素認証 (条件付きアクセス) を実行する必要があるユーザーはサインインさせることができません。 また、アプリケーションはシングル サインオン (SSO) のメリットを受けられません。
 
@@ -53,7 +57,7 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 
   ![デスクトップ アプリケーション](media/scenarios/desktop-app.svg)
 
-- 移植可能なコマンド ライン ツール (おそらく、Linux または Mac で実行される .NET Core アプリケーション) を作成している場合は、(.NET Core では [Web ブラウザー](https://aka.ms/msal-net-uses-web-browser)が提供されていないため) 対話式認証を使用できず、また統合 Windows 認証も使用できません。 その場合の最善の選択肢は、デバイス コード フローを使用することです。 このフローは、iOT アプリケーションなどのブラウザーがないアプリケーションにも使用されます。
+- 移植可能なコマンド ライン ツール (おそらく、Linux または Mac で実行される .NET Core アプリケーション) を作成している場合、認証がシステム ブラウザーに委任されることに同意すると、対話式認証を使用できるようになります (.NET Core には [Web ブラウザー](https://aka.ms/msal-net-uses-web-browser)がまだ提供されておらず、そのため認証はシステム ブラウザーで行われます)。それ以外の場合、そのケースでの最良の選択肢は、デバイス コード フローを使用することです。 このフローは、IoT アプリケーションなどのブラウザーがないアプリケーションにも使用されます。
 
   ![ブラウザーレス アプリケーション](media/scenarios/device-code-flow-app.svg)
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Application Insights のクイック スタート | Microsoft docs
+title: クイック スタート:Java Web アプリの監視
 description: Application Insights で監視する Java Web アプリを迅速にセットアップする手順を説明します
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 04/18/2019
+ms.date: 07/15/2019
 ms.service: application-insights
-ms.custom: mvc
+ms.custom: mvc, seo-java-july2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: dd1644ad9b7fcee951b31997ab549f117530f635
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 160c0bd90e2e733cd2d57798c0e80f2df569cf0a
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808383"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489750"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web アプリケーションの監視を開始する
 
@@ -50,16 +50,13 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![Application Insights リソースの追加](./media/java-quick-start/1createresourseappinsights.png)
 
-   ![Application Insights リソースの追加](./media/java-quick-start/2createjavaapp.png)
-
    構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
     | 設定        | 値           | 説明  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | Java Web アプリケーション | 監視しているアプリの種類 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
-   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **Create** をクリックしてください。
 

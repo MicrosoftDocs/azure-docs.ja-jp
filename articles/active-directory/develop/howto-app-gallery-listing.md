@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 005e5c92a16760d8eec5dc37526f4b1f2dbd751c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540544"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482945"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>方法:アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -117,21 +117,21 @@ Azure AD アプリ ギャラリーの既存のアプリケーションを更新�
 
 顧客は、 **[App requests by Customers]\(顧客によるアプリ要求\)**  ->  **[Submit new request]\(新しい要求の送信\)** をクリックして、アプリケーションの一覧表示の要求を送信できます。
 
-![顧客が要求したアプリ タイル](./media/howto-app-gallery-listing/customer-submit-request.png)
+![顧客が要求したアプリ タイルを示します](./media/howto-app-gallery-listing/customer-submit-request.png)
 
 以下は、顧客が要求したアプリケーションのフローです
 
-![顧客が要求したアプリ フロー](./media/howto-app-gallery-listing/customer-request.png)
+![顧客が要求したアプリ フローを示します](./media/howto-app-gallery-listing/customer-request.png)
 
 ## <a name="timelines"></a>タイムライン
 
 SAML 2.0 または WS-Fed アプリケーションをギャラリーに公開するプロセスのタイムラインは、7 ～ 10 営業日です。
 
-   ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/timeline.png)
+   ![ギャラリーに SAML アプリケーションを一覧するタイムライン](./media/howto-app-gallery-listing/timeline.png)
 
 OpenID Connect アプリケーションをギャラリーに公開するプロセスのタイムラインは、2 ～ 5 営業日です。
 
-   ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/timeline2.png)
+   ![ギャラリーに SAML アプリケーションを一覧するタイムライン](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>エスカレーション
 

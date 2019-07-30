@@ -5,18 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 076c57f5415a4f6f19252fb5a3546e5e9a8a23f4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3293d08f63cf573c7833fae5dd15bfe3119fd6c7
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550245"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206525"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure CLI を使用した Azure リソースの管理
 

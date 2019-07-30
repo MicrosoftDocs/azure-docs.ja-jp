@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313619"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502960"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics とは
 Project Acoustics は、3D 対話型エクスペリエンス用の波動音響エンジンです。 複雑なシーンの回折などの波動効果、ポータリングおよびリバーブ効果をモデル化します。手動のゾーン マークアップは必要ありません。 ゲーム エンジンとオーディオ ミドルウェアの統合も含まれます。 Project Acoustics の理念は、静的ライティングに似ています。詳細な物理学をオフラインでベイクし、物理的なベースラインを提供し、表現豊かな設計コントロールで軽量ランタイムを使用して、芸術的目標を達成します。
@@ -41,7 +41,7 @@ Project Acoustics の重要な革新は、音響シミュレーションを従�
 
 ## <a name="platforms"></a>プラットフォーム
 Project Acoustics ランタイム プラグインは現在、以下のプラットフォームにデプロイできます。
-*  Windows
+* Windows
 * Android
 * Xbox One
 
@@ -51,7 +51,7 @@ Project Acoustics ランタイム プラグインは現在、以下のプラッ�
   * Xbox のバイナリとサポートについては、以下のサインアップ フォームを使用してお問い合わせください
 
 ## <a name="contact-us"></a>お問い合わせ
-* [Project Acoustics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)
+* [Project Acoustics のディスカッションと問題報告](https://github.com/microsoft/ProjectAcoustics/issues)
 * [サインアップして Project Acoustics の更新プログラムを受け取る](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>次の手順

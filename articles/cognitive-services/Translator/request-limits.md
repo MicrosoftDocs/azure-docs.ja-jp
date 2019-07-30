@@ -3,19 +3,19 @@ title: 要求の制限 - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: この記事では、Translator Text API に対する要求の制限を示します。 料金は、要求ごとに 5,000 文字に制限された要求の頻度ではなく、文字数に基づいて発生します。 文字の制限はサブスクリプションに基づき、F0 では 1 時間あたり 200 万文字に制限されます。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514654"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435031"
 ---
 # <a name="request-limits-for-translator-text"></a>Translator Text に対する要求の制限
 
@@ -38,7 +38,11 @@ ms.locfileid: "66514654"
 
 ## <a name="character-limits-per-hour"></a>時間あたりの文字制限
 
-時間あたりの文字制限は、Translator Text のサブスクリプション レベルに基づきます。 時間あたりのクォータは、時間全体で均等に使用する必要があります。 これらの制限に到達または超過した場合、または短期間にクォータの大きすぎる一部を送信した場合、クォータ不足の応答を受け取る可能性があります。
+時間あたりの文字制限は、Translator Text のサブスクリプション レベルに基づきます。 
+
+時間あたりのクォータは、時間全体で均等に使用する必要があります。 たとえば、200 万文字/時間の F0 レベルの制限では、1 分のスライディング ウィンドウあたり約 33,300 文字以下の速さで文字を消費する必要があります (200 万文字割る 60 分)。
+
+これらの制限に到達または超過した場合、または短期間にクォータの大きすぎる一部を送信した場合、クォータ不足の応答を受け取る可能性があります。 同時要求に制限はありません。
 
 | レベル | 文字数制限 |
 |------|-----------------|

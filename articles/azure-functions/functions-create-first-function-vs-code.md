@@ -9,15 +9,15 @@ keywords: Azure Functions, 関数, イベント処理, コンピューティン�
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fcf9f1d6420dbbde359d386bc3b67a0866aca30d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490535"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444613"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Visual Studio Code を使用した初めての関数の作成
 
@@ -27,25 +27,26 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ![Visual Studio プロジェクトの Azure Functions コード](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-現在、この拡張機能では、C#、JavaScript、Java 関数が完全にサポートされており、Python のサポートはプレビュー段階です。 この記事の手順は、Azure Functions プロジェクト用に選択した言語によって異なる場合があります。 この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
+現在、この拡張機能では、C#、JavaScript、Java 関数がサポートされており、Python のサポートはプレビュー段階です。 この記事と次の記事の手順では、JavaScript と C# の関数のみをサポートしています。 Visual Studio Code を使用して Python 関数を作成および発行する方法については、「[Deploy Python to Azure Functions (Azure Functions に Python をデプロイする)](https://code.visualstudio.com/docs/python/tutorial-azure-functions)」を参照してください。 Visual Studio Code を使用して PowerShell 関数を作成および発行する方法については、「[Azure で初めての PowerShell 関数を作成する](functions-create-first-function-powershell.md)」を参照してください。 
+
+この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
 
-* [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかに [Visual Studio Code](https://code.visualstudio.com/) をインストールします。 この記事は、macOS (High Sierra) を実行するデバイスに基づいて作成され、テストされました。
+* [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかに [Visual Studio Code](https://code.visualstudio.com/) をインストールします。
 
-* [Azure Functions Core Tools](functions-run-local.md#v2) のバージョン 2.x (現在プレビュー段階) をインストールします。
+* [Azure Functions Core Tools](functions-run-local.md#v2) のバージョン 2.x をインストールします。
 
 * 選択した言語に固有の要件をインストールします。
 
-    | 言語 | 拡張機能 |
+    | 言語 | 要件 |
     | -------- | --------- |
-    | **C#** | [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
-
-    \* Core Tools でも必要です。
+    | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
+ 
+    <sup>*</sup>アクティブ LTS およびメンテナンス LTS バージョン (8.11.1 および 10.14.1 を推奨)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,47 +54,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 [!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
 
-## <a name="create-an-http-triggered-function"></a>HTTP によってトリガーされる関数の作成
-
-1. **[Azure:Functions]** で [関数の作成] アイコンを選択します。
-
-    ![関数を作成する](./media/functions-create-first-function-vs-code/create-function.png)
-
-1. 関数アプリ プロジェクトが含まれたフォルダーを選択し、**[HTTP トリガー]** 関数テンプレートを選択します。
-
-    ![HTTP トリガー テンプレートを選択する](./media/functions-create-first-function-vs-code/create-function-choose-template.png)
-
-1. 関数名として「`HTTPTrigger`」と入力して Enter キーを押し、**[匿名]** 認証を選択します。
-
-    ![匿名認証を選択する](./media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
-
-    HTTP によってトリガーされる関数のテンプレートを使用して、選択した言語で関数が作成されます。
-
-    ![Visual Studio Code の HTTP によってトリガーされる関数のテンプレート](./media/functions-create-first-function-vs-code/new-function-full.png)
-
-function.json ファイルを変更することで、入力および出力バインディングを関数に追加できます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」をご覧ください。
-
-関数プロジェクトと、HTTP によってトリガーされる関数を作成できたので、この関数をローカル コンピューターでテストすることができます。
-
-## <a name="test-the-function-locally"></a>関数をローカルでテストする
-
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。  
-
-1. 関数をテストするには、関数コードにブレークポイントを設定し、F5 キーを押して関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
-
-1. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。
-
-    ![Azure のローカル出力](./media/functions-create-first-function-vs-code/functions-vscode-f5.png)
-
-1. HTTP 要求の URL をブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 ブレークポイントに到達すると、実行が一時停止されます。
-
-    ![Visual Studio Code でブレークポイントに到達した関数](./media/functions-create-first-function-vs-code/function-debug-vscode-js.png)
-
-1. 実行を続行したときの、GET 要求に対するブラウザーの応答を次に示します。
-
-    ![ブラウザーでの関数 localhost の応答](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
-
-1. デバッグを停止するには、Shift キーを押しながら F5 キーを押します。
+[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 
@@ -101,7 +62,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
+## <a name="run-the-function-in-azure"></a>Azure で関数を実行する
 
 1. **出力**パネルから HTTP トリガーの URL をコピーします。 前と同様に、この URL の末尾にクエリ文字列 `?name=<yourname>` を追加してから、要求を実行します。
 
@@ -115,10 +76,10 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="next-steps"></a>次の手順
 
-Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 Azure Functions Core Tools を使用した、[ターミナルまたはコマンド プロンプトからのローカルでの テストとデバッグ](functions-run-local.md)の詳細を確認することもできます。
+Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、出力バインディングを追加してその関数を拡張します。 このバインディングでは、HTTP 要求の文字列が Azure Queue Storage キュー内のメッセージに書き込まれます。 次の記事では、作成したリソース グループを削除してこれらの新しい Azure リソースをクリーンアップする方法も説明します。
 
 > [!div class="nextstepaction"]
-> [Application Insights との統合を有効にする](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [関数に Azure Storage キュー バインドを追加する](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Visual Studio Code 用 Azure Functions 拡張機能]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

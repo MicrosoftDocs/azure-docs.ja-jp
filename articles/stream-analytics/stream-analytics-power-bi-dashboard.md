@@ -7,16 +7,16 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/11/2019
+ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116183"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612286"
 ---
-# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>チュートリアル:Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
+
 Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである [Microsoft Power BI](https://powerbi.com/) を利用することができます。 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使ってビジネス インテリジェンス ツールを作成する方法について説明します。 リアルタイム ダッシュボードを作って使う方法についても説明します。
 
 この記事は、Stream Analytics による[リアルタイムでの不正検出](stream-analytics-real-time-fraud-detection.md)に関するチュートリアルに続くものです。 この記事では、前のチュートリアルで作成したワークフローに Power BI の出力を追加し、Streaming Analytics ジョブによって検出された不正な電話を視覚化できるようにします。 
@@ -38,41 +38,31 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 1. 前に作成した Streaming Analytics ジョブを Azure Portal で開きます。 推奨される名前を使った場合、ジョブの名前は `sa_frauddetection_job_demo` になっています。
 
-2. ジョブ ダッシュボードの中央にある **[出力]** ボックスを選び、**[+ 追加]** を選びます。
+2. 左側のメニューで、 **[ジョブ トポロジ]** の下にある **[出力]** を選択します。 次に、 **[+ 追加]** を選択し、ドロップダウン メニューから **[Power BI]** を選択します。
 
-3. **[出力エイリアス]** に「`CallStream-PowerBI`」と入力します。 別の名前を使用してもかまいません。 その場合、名前を書き留めておきます。後でこの名前が必要になります。 
+3. **[+ 追加]**  >  **[Power BI]** の順に選択します。 次に、フォームに次の詳細を入力して、 **[承認する]** を選択します。
 
-4. **[シンク]** で **[Power BI]** を選びます。
+   |**設定**  |**推奨値**  |
+   |---------|---------|
+   |出力エイリアス  |  CallStream-PowerBI  |
+   |データセットの名前  |   sa-dataset  |
+   |テーブル名 |  fraudulent-calls  |
 
-   ![Power BI 用の出力を作成する](./media/stream-analytics-power-bi-dashboard/create-power-bi-ouptut.png)
+   ![Stream Analytics の出力を構成する](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
-5. **[承認]** をクリックします。
+   > [!WARNING]
+   > この Stream Analytics ジョブで指定したものと同じ名前のデータセットとテーブルが Power BI に存在する場合は、既存のデータが上書きされます。
+   > このデータセットとテーブルは Power BI アカウントに明示的に作成しないことをお勧めします。 Stream Analytics ジョブを開始すると自動的に作成され、Power BI への出力が開始されます。 ジョブ クエリで結果が返されない場合、データセットとテーブルは作成されません。
+   >
 
-    職場または学校アカウントの Azure 資格情報を指定するウィンドウが開きます。 
-
-    ![Power BI にアクセスするための資格情報を入力する](./media/stream-analytics-power-bi-dashboard/power-bi-authorization-credentials.png)
-
-6. 資格情報を入力します。 資格情報を入力すると、Power BI 領域にアクセスする許可を Streaming Analytics ジョブに与えることにもなることに注意してください。
-
-7. **[新規出力]** ブレードに戻ったら、次の情報を入力します。
-
-   * **[グループ ワークスペース]**:データセットを作成する Power BI テナントのワークスペースを選びます。
-   * **[データセット名]**:「 `sa-dataset` 」を入力します。 別の名前を使用してもかまいません。 その場合は、後でわかるように書き留めておきます。
-   * **[テーブル名]**:「 `fraudulent-calls` 」を入力します。 現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に 1 つのテーブルのみを保持できます。
-
-     ![Power BI ワークスペースのデータセットとテーブル](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
-
-     > [!WARNING]
-     > この Stream Analytics ジョブで指定したものと同じ名前のデータセットとテーブルが Power BI に存在する場合は、既存のデータが上書きされます。
-     > このデータセットとテーブルは Power BI アカウントに明示的に作成しないことをお勧めします。 Stream Analytics ジョブを開始すると自動的に作成され、Power BI への出力が開始されます。 ジョブ クエリで結果が返されない場合、データセットとテーブルは作成されません。
-     >
+4. **[承認する]** を選択すると、ポップアップ ウィンドウが開き、Power BI アカウントに対する認証のための資格情報を入力するよう求められます。 認可が成功したら、設定を**保存**します。
 
 8. **Create** をクリックしてください。
 
 データセットは、次の設定で作成されます。
 
-* **defaultRetentionPolicy:BasicFIFO**:データは FIFO で、最大行数は 200,000 です。
-* **defaultMode: pushStreaming**:データセットは、ストリーミング タイルと従来のレポートベース ビジュアル (プッシュ) の両方をサポートしています 。
+* **defaultRetentionPolicy:BasicFIFO** - データは FIFO で、最大行数は 200,000 です。
+* **defaultMode: pushStreaming** - データセットは、ストリーミング タイルと従来のレポートベース ビジュアル (プッシュとも呼ばれます) の両方をサポートしています。
 
 現時点では、他のフラグでデータセットを作成することはできません。
 
@@ -90,54 +80,52 @@ Power BI データセットの詳細については、[Power BI REST API](https:
     >[!NOTE]
     >不正検出チュートリアルで入力 `CallStream` の名前を指定しなかった場合は、クエリの **FROM** 句と **JOIN** 句の `CallStream` を実際の名前に置き換えます。
 
-        ```SQL
-        /* Our criteria for fraud:
-        Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
+   ```SQL
+   /* Our criteria for fraud:
+   Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
-        SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
-        INTO "CallStream-PowerBI"
-        FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
-        JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+   SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+   INTO "CallStream-PowerBI"
+   FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+   JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
 
-        /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
-        ON CS1.CallingIMSI = CS2.CallingIMSI
+   /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
+   ON CS1.CallingIMSI = CS2.CallingIMSI
 
-        /* ...and date between CS1 and CS2 is between one and five seconds */
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
+   /* ...and date between CS1 and CS2 is between one and five seconds */
+   AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
 
-        /* Where the switch location is different */
-        WHERE CS1.SwitchNum != CS2.SwitchNum
-        GROUP BY TumblingWindow(Duration(second, 1))
-        ```
+   /* Where the switch location is different */
+   WHERE CS1.SwitchNum != CS2.SwitchNum
+   GROUP BY TumblingWindow(Duration(second, 1))
+   ```
 
 4. **[Save]** をクリックします。
 
 
 ## <a name="test-the-query"></a>クエリをテストする
+
 このセクションは省略可能ですが、実施することをお勧めします。 
 
 1. TelcoStreaming アプリが現在動いていない場合は、次の手順で開始します。
 
-    * コマンド ウィンドウを開きます。
+    * コマンド プロンプトを開きます。
     * telcogenerator.exe ファイルと変更された telcodatagen.exe.config ファイルが存在するフォルダーに移動します。
     * 次のコマンドを実行します。
 
        `telcodatagen.exe 1000 .2 2`
 
-2. **[クエリ]** ブレードで、`CallStream` 入力の横の点をクリックし、**[入力からのサンプル データ]** を選びます。
+2. ご利用の Stream Analytics ジョブの **[クエリ]** ページで、`CallStream` 入力の横の点をクリックしてから、 **[入力からのサンプル データ]** を選択します。
 
-3. 3 分間分のデータを指定して、**[OK]** をクリックします。 データがサンプリングされたことが通知されるまで待ちます。
+3. 3 分間分のデータを指定して、 **[OK]** をクリックします。 データがサンプリングされたことが通知されるまで待ちます。
 
-4. **[テスト]** をクリックし、結果が得られることを確認します。
-
+4. **[テスト]** をクリックして結果を確認します。
 
 ## <a name="run-the-job"></a>ジョブを実行する
 
-1. TelcoStreaming アプリが実行していることを確認します。
+1. TelcoStreaming アプリが実行されていることを確認します。
 
-2. **[クエリ]** ブレードを閉じます。
-
-3. ジョブ ブレードで、**[開始]** をクリックします。
+2. ご利用の Stream Analytics ジョブの **[概要]** ページに移動して、 **[開始]** を選択します。
 
     ![Stream Analytics ジョブの開始](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 
@@ -158,15 +146,15 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
     ![Power BI ワークスペースでダッシュボードを作成して名前を付ける](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
-4. ウィンドウの上部にある **[タイルの追加]** をクリックし、**[カスタム ストリーミング データ]** を選んで、**[次へ]** をクリックします。
+4. ウィンドウの上部にある **[タイルの追加]** をクリックし、 **[カスタム ストリーミング データ]** を選んで、 **[次へ]** をクリックします。
 
     ![Power BI でのカスタムのストリーミング データセットのタイル](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
-5. **[データセット]** でデータセットを選んで、**[次へ]** をクリックします。
+5. **[データセット]** でデータセットを選んで、 **[次へ]** をクリックします。
 
     ![Power BI でのストリーミング データセット](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
-6. **[視覚化タイプ]** で **[カード]** を選び、**[フィールド]** の一覧で **[fraudulentcalls]** を選びます。
+6. **[視覚化タイプ]** で **[カード]** を選び、 **[フィールド]** の一覧で **[fraudulentcalls]** を選びます。
 
     ![新しいタイルの視覚化の詳細](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
@@ -184,14 +172,14 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
 8. 手順 4 以降を繰り返してタイルを追加します。 今度は次のようにします。
 
-    * **[視覚化タイプ]** では、**[折れ線グラフ]** を選びます。 
-    * 軸を追加し、**[windowend]** を選びます。 
-    * 値を追加し、**[fraudulentcalls]** を選びます。
+    * **[視覚化タイプ]** では、 **[折れ線グラフ]** を選びます。 
+    * 軸を追加し、 **[windowend]** を選びます。 
+    * 値を追加し、 **[fraudulentcalls]** を選びます。
     * **[表示する時間枠]** で、過去 10 分間を選びます。
 
       ![Power BI で折れ線グラフのタイルを作成する](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
-9. **[次へ]** をクリックし、タイトルとサブタイトルを追加して、**[適用]** をクリックします。
+9. **[次へ]** をクリックし、タイトルとサブタイトルを追加して、 **[適用]** をクリックします。
 
      Power BI ダッシュボードに、ストリーミング データで検出された不正な呼び出しに関するデータの 2 つのビューが表示されるようになりました。
 
@@ -214,7 +202,7 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
 ![必要な期間 (秒) の値を計算するための数式](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-例: 
+例:
 
 * 1 秒間隔でデータを送信するデバイスが 1,000 台。
 * 1 時間あたり 1,000,000 行をサポートする Power BI Pro SKU を使用。
@@ -243,7 +231,7 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 ### <a name="renew-authorization"></a>承認の更新
 ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。 また、Azure Active Directory (Azure AD) テナント上で Azure Multi-Factor Authentication が構成されている場合は、Power BI の承認を 2 週間ごとに更新する必要があります。 更新しなかった場合、ジョブが出力されなかったり、操作ログに "`Authenticate user error`" が記録されたりする現象が生じる可能性があります。
 
-同様に、トークンの期限が切れた後でジョブが開始すると、エラーが発生し、ジョブは失敗します。 この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。 データの損失を避けるには、**[承認の更新]** リンクを選択し、**[最後に停止した時刻]** からジョブを再開します。
+同様に、トークンの期限が切れた後でジョブが開始すると、エラーが発生し、ジョブは失敗します。 この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。 データの損失を避けるには、 **[承認の更新]** リンクを選択し、 **[最後に停止した時刻]** からジョブを再開します。
 
 Power BI で承認が更新されると、承認の領域に緑色のアラートが表示され、問題が解決されたことがわかります。
 
@@ -254,5 +242,5 @@ Power BI で承認が更新されると、承認の領域に緑色のアラー�
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

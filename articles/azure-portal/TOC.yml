@@ -8,8 +8,6 @@
       href: azure-portal-supported-browsers-devices.md
 - name: 概念
   items:
-    - name: Azure ダッシュボードの作成と共有
-      href: azure-portal-dashboards.md
     - name: ロールベースのアクセス制御を使用したダッシュボードの共有
       href: azure-portal-dashboard-share-access.md
     - name: プログラムによる Azure ダッシュボードの作成
@@ -20,6 +18,8 @@
       href: azure-portal-change-theme-high-contrast.md
     - name: お気に入りの追加、削除、並べ替え
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Azure ダッシュボードの作成と共有
+      href: azure-portal-dashboards.md
     - name: カスタムのマークダウン タイルを使用する
       href: azure-portal-markdown-tile.md
     - name: ユーザー設定のエクスポートまたは削除
@@ -30,6 +30,8 @@
   items:
     - name: キーボード ショートカット
       href: azure-portal-keyboard-shortcuts.md
+    - name: Azure portal の URL をセーフリストに追加する
+      href: azure-portal-safelist-urls.md
     - name: Azure ダッシュボードの構造
       href: azure-portal-dashboards-structure.md
 - name: リソース

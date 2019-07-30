@@ -3,23 +3,26 @@ title: クイック スタート:サポートされている言語の一覧を�
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API を使用して、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: e5e57757fbd80ca8e90b9997440050a751914a8a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 4a1be3cd71a32210db8b3d5ef835af7b2d50667f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514948"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705664"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>クイック スタート:Translator Text API と C# を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Translator Text API を使用して、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -114,6 +117,8 @@ var jsonResponse = response.Content.ReadAsStringAsync().Result;
 Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
+
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 "Pretty Print" で応答を書式設定して出力するには、次の関数を Program クラスに追加します。
 ```
@@ -234,10 +239,10 @@ dotnet run
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートをはじめとする各種ドキュメントで表記変換と言語認識を含んだサンプル コードを詳しく見てみましょう。GitHub にある Translator Text の各種サンプル プロジェクトもご覧ください。
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
-> [GitHub で C# のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

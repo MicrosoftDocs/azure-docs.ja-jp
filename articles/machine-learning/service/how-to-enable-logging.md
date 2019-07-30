@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 02/20/2019
-ms.openlocfilehash: 0d75b983ad6d3b6256852335dc523b481bbe046f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/12/2019
+ms.openlocfilehash: 384cd2df9c629a73095cc55f4f6d65aa6a727225
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60819267"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360967"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Azure Machine Learning service でログ記録を有効にする
 
@@ -64,7 +64,7 @@ SDK では、トレーニングの特定のシナリオにおいて、既定の 
 from azureml.train.automl import AutoMLConfig
 import logging
 
-automated_ml_config = AutoMLConfig(task = 'regression',
+automated_ml_config = AutoMLConfig(task='regression',
                                    verbosity=logging.INFO,
                                    X=your_training_features,
                                    y=your_training_labels,
@@ -78,7 +78,8 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 ```python
 from azureml.core.compute import ComputeTarget
 
-compute_target = ComputeTarget.attach(workspace=ws, name="example", attach_configuration=config)
+compute_target = ComputeTarget.attach(
+    workspace=ws, name="example", attach_configuration=config)
 compute.wait_for_completion(show_output=True)
 ```
 
@@ -90,9 +91,10 @@ compute.wait_for_completion(show_output=True)
 from azureml.core.webservice import Webservice
 
 service = Webservice.deploy_from_image(deployment_config=your_config,
-                                            image=image,
-                                            name="example-image",
-                                            workspace=ws)
+                                       image=image,
+                                       name="example-image",
+                                       workspace=ws
+                                       )
 
 service.wait_for_deployment(show_output=True)
 ```

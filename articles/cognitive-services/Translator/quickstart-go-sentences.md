@@ -3,25 +3,28 @@ title: 'クイック スタート: 文の長さを取得する (Go) - Translator
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: erhopf
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 723e7e33a043f3700b562cf50a6f75539741507f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 574f70f8f091e0f0df65f7d52df5ca73ac00b2c0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515231"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704551"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>クイック スタート: Translator Text API と Python を使用して文の長さを調べる
 
 このクイック スタートでは、Go と Translator Text REST API を使用して、文の長さ (文字数) を調べる方法について説明します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -138,6 +141,8 @@ if err != nil {
 }
 ```
 
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
+
 ## <a name="handle-and-print-the-response"></a>応答を処理して出力する
 
 次のコードを `breakSentence` 関数に追加して、JSON 応答をデコードした後、結果を書式設定して出力します。
@@ -183,10 +188,10 @@ go run sentence-length.go
 
 ## <a name="next-steps"></a>次の手順
 
-GitHub の [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) から Cognitive Services API の Go パッケージを詳しく見てみましょう。
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
-> [GitHub で Go パッケージを詳しく見てみる](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

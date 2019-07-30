@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cb0fe056ff7ff4794667d6b28782daad100609f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 206e501860691cccc0578a0df4eec2b161b99b4c
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921036"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341365"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
@@ -50,24 +50,83 @@ Subscriptions | すべてのサブスクリプションを読み取る<br>サー
 アクセス許可 | 設定の説明
 ---------- | ------------
 ユーザーはアプリケーションを登録できる | このオプションを [いいえ] に設定すると、ユーザーはアプリケーション登録を作成できません。 この場合、特定のユーザーをアプリケーション開発者ロールに追加することで、そのユーザーにこの機能を付与できます。
-ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。  詳細については、「[LinkedIn アカウント接続のデータ共有と同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)」を参照してください。
+ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。 詳細については、「[LinkedIn アカウント接続のデータ共有と同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)」を参照してください。
 セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
 Office 365 グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーは Office 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Office 365 グループを作成できます。 その場合でも、全体管理者とユーザー管理者は Office 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
 Azure AD 管理ポータルへのアクセスを制限する | このオプションを [はい] に設定すると、ユーザーは Azure portal からのみ Azure Active Directory にアクセスできます。
-他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 これを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、これを $false に設定することは推奨されません。
+他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 このフラグを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、このフラグを $false に設定することは推奨されません。
 
 ## <a name="object-ownership"></a>オブジェクトの所有権
 
 ### <a name="application-registration-owner-permissions"></a>アプリケーション登録所有者のアクセス許可
 ユーザーがアプリケーションを登録すると、そのユーザーはアプリケーションの所有者として自動的に追加されます。 所有者は、名前やアプリが要求するアクセス許可など、アプリケーションのメタデータを管理できます。 また、SSO の構成やユーザーの割り当てなど、アプリケーションのテナント固有の構成も管理できます。 所有者は、他の所有者を追加または削除することもできます。 全体管理者とは異なり、所有者は、自分が所有するアプリケーションのみを管理できます。
 
-<!-- ### Enterprise application owner permissions
-
-When a user adds a new enterprise application, they are automatically added as an owner for the tenant-specific configuration of the application. As an owner, they can manage the tenant-specific configuration of the application, such as the SSO configuration, provisioning, and user assignments. An owner can also add or remove other owners. Unlike Global Administrators, owners can manage only the applications they own. <!--To assign an enterprise application owner, see *Assigning Owners for an Application*.-->
+### <a name="enterprise-application-owner-permissions"></a>エンタープライズ アプリケーション所有者のアクセス許可
+ユーザーがエンタープライズ アプリケーションを追加すると、そのユーザーは自動的に所有者として追加されます。 所有者は、SSO の構成、プロビジョニング、ユーザーの割り当てなど、アプリケーションのテナント固有の構成を管理できます。 所有者は、他の所有者を追加または削除することもできます。 全体管理者とは異なり、所有者は、自分が所有するアプリケーションのみを管理できます。
 
 ### <a name="group-owner-permissions"></a>グループ所有者のアクセス許可
-
 グループを作成したユーザーは、そのグループの所有者として自動的に追加されます。 所有者は、名前などのグループのプロパティおよびグループ メンバーシップを管理できます。 所有者は、他の所有者を追加または削除することもできます。 全体管理者およびユーザー管理者とは異なり、所有者が管理できるのは自分が所有するグループだけです。 グループ所有者の割り当てについては、「[グループの所有者の管理](active-directory-accessmanagement-managing-group-owners.md)」をご覧ください。
+
+### <a name="ownership-permissions"></a>所有者のアクセス許可
+以降の表では、Azure Active Directory メンバー ユーザーの特定のアクセス許可には所有するオブジェクトを超えるオブジェクトが含まれることを説明します。 ユーザーは、自分が所有するオブジェクトに対してのみこれらのアクセス許可を持ちます。
+
+#### <a name="owned-application-registrations"></a>所有しているアプリケーションの登録
+ユーザーは、所有するアプリケーションの登録で次のアクションを実行できます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.directory/applications/audience/update | Azure Active Directory での applications.audience property プロパティの更新。 |
+| microsoft.directory/applications/authentication/update | Azure Active Directory での applications.authentication プロパティの更新。 |
+| microsoft.directory/applications/basic/update | Azure Active Directory での applications の基本プロパティの更新。 |
+| microsoft.directory/applications/credentials/update | Azure Active Directory での applications.credentials プロパティの更新。 |
+| microsoft.directory/applications/delete | Azure Active Directory での applications の削除。 |
+| microsoft.directory/applications/owners/update | Azure Active Directory での applications.owners プロパティの更新。 |
+| microsoft.directory/applications/permissions/update | Azure Active Directory での applications.permissions プロパティの更新。 |
+| microsoft.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
+| microsoft.directory/applications/restore | Azure Active Directory での applications の復元。 |
+
+#### <a name="owned-enterprise-applications"></a>所有するエンタープライズ アプリケーション
+ユーザーは、所有するエンタープライズ アプリケーションで次のアクションを実行できます。 エンタープライズ アプリケーションは、サービス プリンシパル、1 つまたは複数のアプリケーション ポリシー、および場合によってはサービス プリンシパルと同じテナント内のアプリケーション オブジェクトで構成されます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
+| microsoft.directory/policies/basic/update | Azure Active Directory での policies の基本プロパティの更新。 |
+| microsoft.directory/policies/delete | Azure Active Directory での policies の削除。 |
+| microsoft.directory/policies/owners/update | Azure Active Directory での policies.owners プロパティの更新。 |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの更新。 |
+| microsoft.directory/servicePrincipals/appRoleAssignments/update | Azure Active Directory での users.appRoleAssignments プロパティの更新。 |
+| microsoft.directory/servicePrincipals/audience/update | Azure Active Directory での servicePrincipals.audience プロパティの更新。 |
+| microsoft.directory/servicePrincipals/authentication/update | Azure Active Directory での servicePrincipals.authentication プロパティの更新。 |
+| microsoft.directory/servicePrincipals/basic/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
+| microsoft.directory/servicePrincipals/credentials/update | Azure Active Directory での servicePrincipals.credentials プロパティの更新。 |
+| microsoft.directory/servicePrincipals/delete | Azure Active Directory での servicePrincipals の削除。 |
+| microsoft.directory/servicePrincipals/owners/update | Azure Active Directory での servicePrincipals.owners プロパティの更新。 |
+| microsoft.directory/servicePrincipals/permissions/update | Azure Active Directory での servicePrincipals.permissions プロパティの更新。 |
+| microsoft.directory/servicePrincipals/policies/update | Azure Active Directory での servicePrincipals.policies プロパティの更新。 |
+| microsoft.directory/signInReports/allProperties/read | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
+
+#### <a name="owned-devices"></a>所有するデバイス
+ユーザーは、所有するデバイスで次のアクションを実行できます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | Azure Active Directory での devices.bitLockerRecoveryKeys プロパティの読み取り。 |
+| microsoft.directory/devices/disable | Azure Active Directory での devices の無効化。 |
+
+#### <a name="owned-groups"></a>所有するグループ
+ユーザーは、所有するグループで次のアクションを実行できます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
+| microsoft.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。 |
+| microsoft.directory/groups/delete | Azure Active Directory での groups の削除。 |
+| microsoft.directory/groups/dynamicMembershipRule/update | Azure Active Directory での groups.dynamicMembershipRule プロパティの更新。 |
+| microsoft.directory/groups/members/update | Azure Active Directory での groups.members プロパティの更新。 |
+| microsoft.directory/groups/owners/update | Azure Active Directory での groups.owners プロパティの更新。 |
+| microsoft.directory/groups/restore | Azure Active Directory での groups の復元。 |
+| microsoft.directory/groups/settings/update | Azure Active Directory での groups.settings プロパティの更新。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393748"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537776"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して C# Service Fabric アプリケーションを開発する
 
@@ -77,6 +77,17 @@ sudo code . --user-data-dir='.'
 4. アプリケーションが実行されていることを確認したら、ブラウザーを起動して http:\//localhost:31002 のページを開きます。 これはアプリケーションの Web フロントエンドです。 カウンター値は増えるので、ページを更新して最新の値を表示します。
 
    ![ブラウザーのカウンター サービス アプリケーション](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターにアプリケーションを発行する
+ローカル クラスターにアプリケーションをデプロイするだけでなく、リモートの Azure Service Fabric クラスターにアプリケーションを発行することもできます。 
+
+1. 上記の手順を使用してアプリケーションをビルドしたことを確認します。 生成された構成ファイル `Cloud.json` を、発行先となるリモート クラスターの詳細で更新します。
+
+2. **コマンド パレット**から **Service Fabric: Publish Application\(Service Fabric: アプリケーションの発行\) コマンド**を選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
+
+   ![VS Code のアプリケーションの発行コマンド](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+
+3. デプロイが完了したら、ブラウザーを起動して Service Fabric Explorer を開きます (`https:<clusterurl>:19080/Explorer`)。 アプリケーションが実行中であることがわかります。 この処理には時間がかかる場合があります。 
 
 ## <a name="debug-the-application"></a>アプリケーションのデバッグ
 VS Code でアプリケーションをデバッグする場合、ローカル クラスター上でアプリケーションを実行する必要があります。 ブレークポイントをコードに追加することができます。

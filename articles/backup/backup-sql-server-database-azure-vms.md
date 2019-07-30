@@ -1,19 +1,18 @@
 ---
 title: Azure VM での SQL Server データベースのバックアップ | Microsoft Docs
 description: Azure VM で SQL Server データベースをバックアップする方法について説明します
-services: backup
 author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/23/2019
-ms.author: sachdevaswati
-ms.openlocfilehash: 0307dc5c83782119f6c10279563b8b9f0a999d28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/18/2019
+ms.author: vijayts
+ms.openlocfilehash: 9870acdebaa4bf700bb18b5fa1d3a26f6338a10b
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236878"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464983"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -34,9 +33,9 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 SQL Server データベースをバックアップする前に、次の基準を確認してください。
 
 1. SQL Server インスタンスをホストする VM として、同じリージョンまたはロケールの [Recovery Services コンテナー](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)を特定または作成する。
-2. SQL データベースをバックアップするために[必要な VM のアクセス許可](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)をチェックする。
-3. VM が[ネットワーク接続](backup-sql-server-database-azure-vms.md#establish-network-connectivity)を備えていることを確認する。
-4. SQL Server データベースが、[Azure Backup のためのデータベースの命名に関するガイドライン](#database-naming-guidelines-for-azure-backup)に従っていることを確認する。
+2. VM が[ネットワーク接続](backup-sql-server-database-azure-vms.md#establish-network-connectivity)を備えていることを確認する。
+3. SQL Server データベースが、[Azure Backup のためのデータベースの命名に関するガイドライン](#database-naming-guidelines-for-azure-backup)に従っていることを確認する。
+4. 特に SQL 2008 および 2008 R2 のためには、[レジストリ キーを追加](#add-registry-key-to-enable-registration)してサーバーの登録を有効にする。 機能が一般提供されている場合、この手順は必要ありません。
 5. データベースに対して有効になっているバックアップ ソリューションが他にないことをチェックする。 データベースをバックアップする前に、他のすべての SQL Server バックアップを無効にします。
 
 > [!NOTE]
@@ -79,16 +78,6 @@ NSG サービス タグを使用する | 範囲の変更が自動的にマージ
 Azure Firewall の FQDN タグを使用する | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能
 HTTP プロキシを使用する | 許可するストレージ URL をプロキシで詳細に制御可能 <br/><br/> VM に対するインターネット アクセスを単一の場所で実現 <br/><br/> Azure の IP アドレスの変更の影響を受けない | プロキシ ソフトウェアで VM を実行するための追加のコストが発生する
 
-### <a name="set-vm-permissions"></a>VM のアクセス許可を設定する
-
-SQL Server データベースのバックアップを構成するとき、Azure Backup によって以下の処理が行われます。
-
-- AzureBackupWindowsWorkload 拡張機能を追加します。
-- 仮想マシン上のデータベースを検出するために、NT SERVICE\AzureWLBackupPluginSvc アカウントが作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。
-- VM 上で実行されているデータベースを検出します。Azure Backup は NT AUTHORITY\SYSTEM アカウントを使用します。 このアカウントは SQL でのパブリック サインインである必要があります。
-
-SQL Server VM を Azure Marketplace で作成しなかった場合、UserErrorSQLNoSysadminMembership エラーが発生する可能性があります。 詳細については、[Azure VM での SQL Server Backup について](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)にある、機能面の考慮事項と制限に関するセクションを参照してください。
-
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure Backup のためのデータベースの命名に関するガイドライン
 
 データベースの名前に次の要素を使用しないでください。
@@ -101,6 +90,22 @@ SQL Server VM を Azure Marketplace で作成しなかった場合、UserErrorSQ
 
 サポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 詳細については、「 [Table サービス データ モデルについて](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)」を参照してください。
 
+### <a name="add-registry-key-to-enable-registration"></a>レジストリ キーを追加して登録を有効にする
+
+1. Regedit を開きます
+2. 次のレジストリ ディレクトリ パスを作成します: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook (Microsoft の下に WorkloadBackup を作成してから、その下に TestHook というキーを作成する必要があります)。
+3. このレジストリ ディレクトリ パスの下に、新しい "文字列値" を作成する必要があります。文字列名は **AzureBackupEnableWin2K8R2SP1** に、値は **True** にします
+
+    ![登録を有効にするため RegEdit](media/backup-azure-sql-database/reg-edit-sqleos-bkp.png)
+
+または、次のコマンドを使用して .reg ファイルを実行し、この手順を自動化できます。
+
+```csharp
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook]
+"AzureBackupEnableWin2K8R2SP1"="True"
+```
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -141,7 +146,7 @@ VM 上で稼働しているデータベースを検出する方法:
     - Azure Backup によって、サービス アカウント NT Service\AzureWLBackupPluginSvc が VM 上に作成されます。
       - すべてのバックアップおよび復元操作に、サービス アカウントを使用します。
       - NT Service\AzureWLBackupPluginSvc には、SQL sysadmin 権限が必要です。 Marketplace で作成されたすべての SQL Server VM には、SqlIaaSExtension が元からインストールされています。 AzureBackupWindowsWorkload 拡張機能は SQLIaaSExtension を使用して自動的に必要な権限を取得します。
-    - VM を Marketplace から作成しなかった場合、VM には SqlIaaSExtension がインストールされず、検出操作はエラー メッセージ UserErrorSQLNoSysAdminMembership と共に失敗します。 この問題を修正するには、[手順](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)に従います。
+    - VM を Marketplace から作成しなかった場合や、SQL 2008 および 2008 R2 を実行している場合、VM に SqlIaaSExtension がインストールされないことあり、検出操作はエラー メッセージ UserErrorSQLNoSysAdminMembership を示して失敗します。 この問題を修正するには、「[VM のアクセス許可を設定する](backup-azure-sql-database.md#set-vm-permissions)」の手順に従います。
 
         ![VM とデータベースを選択する](./media/backup-azure-sql-database/registration-errors.png)
 

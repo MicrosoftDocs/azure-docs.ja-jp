@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 70e478ac70b7ab53f1357394f3a3cb0d92f41f00
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075782"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure での SQL Server 仮想マシンへの接続
 
@@ -94,13 +94,15 @@ Server=mysqlvm;Integrated Security=true
 
 ## <a id="change"></a>SQL 接続の設定を変更する
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Azure Portal で、SQL Server 仮想マシンの接続設定を変更できます。
 
-1. Azure Portal で、**[仮想マシン]** を選択します。
+1. Azure portal で、 **[SQL 仮想マシン]** を選択します。
 
 2. SQL Server VM を選択します。
 
-3. **[設定]** で、**[SQL Server の構成]** をクリックします。
+3. **[設定]** で **[セキュリティ]** を選択します。
 
 4. **SQL 接続レベル**を必要な設定に変更します。 必要に応じて、この領域を使用して、SQL Server ポートまたは SQL 認証の設定を変更できます。
 

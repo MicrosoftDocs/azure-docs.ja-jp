@@ -1,43 +1,44 @@
 ---
-title: Azure Sentinel プレビューに Symantec ICDX データを接続する | Microsoft Docs
-description: Azure Sentinel に Symantec ICDX データを接続する方法について説明します。
+title: Azure Sentinel プレビューに Symantec ICDx データを接続する | Microsoft Docs
+description: Azure Sentinel に Symantec ICDx データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2019
+ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3b21371d6321b208b19ca8b2524308736c3ceca9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74169b4bd2654fb0ff7ec4cdb2f2b02c0f4cc6e8
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244337"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673752"
 ---
-# <a name="connect-your-symantec-icdx-appliance"></a>Symantec ICDX アプライアンスを接続する 
+# <a name="connect-your-symantec-icdx-appliance"></a>Symantec ICDx アプライアンスを接続する 
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Symantec ICDX コネクタを使用すると、Azure Sentinel にすべての Symantec セキュリティ ソリューションのログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 これにより、組織のネットワークに関するより詳しい分析情報が得られ、セキュリティ運用機能が向上します。 Symantec ICDX と Azure Sentinel との統合には、REST API を使用します。
+Symantec ICDx コネクタを使用すると、Azure Sentinel にすべての Symantec セキュリティ ソリューションのログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 これにより、組織のネットワークに関するより詳しい分析情報が得られ、セキュリティ運用機能が向上します。 Symantec ICDx と Azure Sentinel との統合には、REST API を使用します。
 
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
 
-## <a name="configure-and-connect-symantec-icdx"></a>Symantec ICDX の構成および接続 
+## <a name="configure-and-connect-symantec-icdx"></a>Symantec ICDx の構成および接続 
 
-Symantec ICDX では、ログを統合し、Azure Sentinel に直接エクスポートすることができます。
+Symantec ICDx では、ログを統合し、Azure Sentinel に直接エクスポートすることができます。
 
-1. ICDX 管理コンソールを開き、Microsoft Azure Sentinel (Log Analytics) フォワーダーを追加します。
+1. ICDx 管理コンソールを開き、Microsoft Azure Sentinel (Log Analytics) フォワーダーを追加します。
 2. あるいは、ICDx ナビゲーション バーで **[構成]** をクリックします。 
 3. **[構成]** 画面の上部で **[フォワーダー]** をクリックします。
 4. **[フォワーダー]** の下で、Microsoft Azure Sentinel (Log Analytics) の隣にある **[追加]** をクリックします。 
@@ -66,7 +67,7 @@ Symantec ICDX では、ログを統合し、Azure Sentinel に直接エクスポ
     - **カスタム ログの名前**:イベントの転送先とする Microsoft Azure portal Log Analytics ワークスペースにカスタム ログの名前を入力します。 既定値は SymantecICDx です。 このフィールドは必須です。
 8. *[保存]* をクリックし、フォワーダー構成を完了します。 
 9. フォワーダーを開始するには、 **[オプション]** の下で、 **[詳細]** をクリックし、 **[開始]** をクリックします。
-10. Log Analytics で Symantec ICDX イベントに関連するスキーマを使用するには、**SymantecICDX_CL** を検索します。
+10. Log Analytics で Symantec ICDx イベントに関連するスキーマを使用するには、**SymantecICDx_CL** を検索します。
 
 
 ## <a name="validate-connectivity"></a>接続の検証
@@ -76,7 +77,7 @@ Symantec ICDX では、ログを統合し、Azure Sentinel に直接エクスポ
 
 
 ## <a name="next-steps"></a>次の手順
-このドキュメントでは、Symantec ICDX を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Symantec ICDx を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

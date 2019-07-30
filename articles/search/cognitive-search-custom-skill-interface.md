@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 1bf42e5f418f99f5e5327d790c1adffe2357b84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e181aab3d92d8111a0a7d1d41bbddac20687a547
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021931"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668874"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>コグニティブ検索パイプラインにカスタム スキルを追加する方法
 
 Azure Search の [コグニティブ検索インデックス作成パイプライン](cognitive-search-concept-intro.md)は、[定義済みスキル](cognitive-search-predefined-skills.md)と、個人的に作成してパイプラインに追加する[カスタム スキル](cognitive-search-custom-skill-web-api.md)で組み立てることができます。 この記事では、コグニティブ検索パイプラインに含めることができるようにインターフェイスを公開するカスタム スキルの作成方法について説明します。 
 
-カスタム スキルを構築すると、コンテンツに固有の変換を挿入することができます。 カスタム スキルは独立して実行され、必要なすべてのエンリッチメント ステップが適用されます。 たとえば、フィールド固有のカスタム エンティティを定義して、ビジネスおよび財務の契約やドキュメントを区別するためのカスタム分類モデルを作成したり、音声認識スキルを追加して、関連するコンテンツのオーディオ ファイルを細かく調べたりすることができます。 手順の例については、[カスタム スキルの作成に関する例](cognitive-search-create-custom-skill-example.md)を参照してください。
+カスタム スキルを構築すると、コンテンツに固有の変換を挿入することができます。 カスタム スキルは独立して実行され、必要なすべてのエンリッチメント ステップが適用されます。 たとえば、フィールド固有のカスタム エンティティを定義して、ビジネスおよび財務の契約やドキュメントを区別するためのカスタム分類モデルを作成したり、音声認識スキルを追加して、関連するコンテンツのオーディオ ファイルを細かく調べたりすることができます。 手順の例については、[例: コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)に関する記事を参照してください。
 
  どのようなカスタム機能が必要な場合でも、カスタム スキルをエンリッチメント パイプラインの他の部分に接続するための単純でわかりやすいインターフェイスがあります。 [スキルセット](cognitive-search-defining-skillset.md)に含めるための唯一の要件は、入力を受け入れて、スキルセット内で全体として使用できる方法で出力を行うことです。 この記事で焦点となっているのは、エンリッチメント パイプラインが必要とする入力と出力の形式です。
 
@@ -156,7 +156,7 @@ Web API エンリッチャーを作成すると、HTTP ヘッダーとパラメ�
 
 ## <a name="next-steps"></a>次の手順
 
-+ [例:Translate Text API のカスタム スキルの作成](cognitive-search-create-custom-skill-example.md)
++ [例:コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

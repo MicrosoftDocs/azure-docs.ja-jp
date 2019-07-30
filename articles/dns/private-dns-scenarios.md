@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: victorh
-ms.openlocfilehash: d84da36ad6b1ef3e2a507a0944aac583861d5ccb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 409595febded7b242eae876ebb2cb35ae4999e5e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60686836"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private Zones のシナリオ
 Azure DNS Private Zones は、仮想ネットワーク内での名前解決と仮想ネットワーク間での名前解決を提供します。 この記事では、この機能を使用して実現できる一般的なシナリオについて説明します。 
@@ -53,7 +53,7 @@ Azure DNS Private Zones は、仮想ネットワーク内での名前解決と�
 
 Azure DNS で[プライベート DNS ゾーンを作成する](./private-dns-getstarted-powershell.md)方法を学びます。
 
-「[DNS ゾーンとレコードの概要](dns-zones-records.md)」でDNS ゾーンとレコードについて学びます。
+DNS ゾーンとレコードについて学びます [「DNS ゾーンとレコードの概要」](dns-zones-records.md)。
 
 Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
 

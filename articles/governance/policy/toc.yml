@@ -260,6 +260,9 @@
     - name: Policy の効果について
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Kubernetes 用の Azure Policy
+      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
+      href: ./concepts/rego-for-aks.md
     - name: ゲスト構成を使用した VM の監査
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
@@ -271,6 +274,9 @@
     - name: 配列プロパティのポリシーの作成
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: ゲスト構成ポリシーの作成
+      displayName: 'powershell, dsc, chef, linux, windows'
+      href: ./how-to/guest-configuration-create.md
     - name: コンプライアンス データの取得
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md

@@ -4,7 +4,7 @@ description: Azure portal を使用して、仮想マシン イメージを作�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2019
+ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 1b760612d8d9a5ed0817ce662ed190f3477cd125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea0a5961aff5935efea3eb98fd53904ce864ec2c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235854"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708907"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Azure portal を使用して共有イメージ ギャラリーを作成する
 
@@ -53,6 +53,10 @@ ms.locfileid: "65235854"
 ## <a name="create-vms-from-an-image"></a>イメージから VM を作成する
 
 イメージ バージョンが完成したら、新しい VM を作成することができます。 
+
+> [!IMPORTANT]
+> ポータルを使用して、別の Azure テナント内のイメージから VM をデプロイすることはできません。 テナント間で共有されているイメージから VM を作成するには、[Azure CLI](shared-images.md#create-a-vm) または [PowerShell](../windows/shared-images.md#create-vms-from-an-image) を使用する必要があります。
+
 
 この例では、"*米国東部*" のデータセンターにある *myResourceGroup* に、*myVMfromImage* という名前の VM を作成します。
 

@@ -49,11 +49,39 @@
         - name: デプロイ手順
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
-    - name: UK OFFICIAL
+    - name: NIST SP 800-53 Rev4
       items:
+        - name: 概要
+          displayName: 'standards, nist, 800-53, rev 4'
+          href: ./samples/nist-sp-800-53-rev4/index.md
         - name: コントロール マッピング
-          displayName: 'standards, uk official'
+          displayName: 'standards, nist, 800-53, rev 4'
+          href: ./samples/nist-sp-800-53-rev4/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, nist, 800-53, rev 4'
+          href: ./samples/nist-sp-800-53-rev4/deploy.md
+    - name: PCI-DSS v3.2.1
+      items:
+        - name: 概要
+          displayName: 'standards, Payment Card Industry Data Security Standard'
+          href: ./samples/pci-dss-3.2.1/index.md
+        - name: コントロール マッピング
+          displayName: 'standards, Payment Card Industry Data Security Standard'
+          href: ./samples/pci-dss-3.2.1/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, Payment Card Industry Data Security Standard'
+          href: ./samples/pci-dss-3.2.1/deploy.md
+    - name: UK OFFICIAL および UK NHS
+      items:
+        - name: 概要
+          displayName: 'standards, uk official, uk nhs'
+          href: ./samples/ukofficial/index.md
+        - name: コントロール マッピング
+          displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, uk official, uk nhs'
+          href: ./samples/ukofficial/deploy.md
 - name: 概念
   items:
     - name: ブループリントのライフサイクル

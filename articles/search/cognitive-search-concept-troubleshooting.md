@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c0de4d2b9ad0d009b9cd363d19a2de3f29d810d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961854"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303450"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>コグニティブ検索のトラブルシューティングのヒント
 
@@ -84,7 +84,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 コンテンツの不足は、インデックス作成中にドキュメントが削除された結果である可能性があります。 Free および Basic レベルでは、ドキュメントのサイズの制限が低く設定されています。 制限を超えるファイルは、インデックス作成中に削除されます。 削除されたドキュメントは、Azure portal で確認できます。 検索サービス ダッシュボードで、インデクサーのタイルをダブルクリックします。 インデックス付けが成功したドキュメントの割合を確認します。 100% でない場合は、割合をクリックすると詳細が表示されます。 
 
-問題がファイル サイズに関連している場合は、"The blob <file-name> has the size of <file-size> bytes, which exceeds the maximum size for document extraction for your current service tier."(BLOB <ファイル名> のサイズが <ファイル サイズ> バイトです。現在のサービス レベルでのドキュメント抽出の最大サイズを超えています。) のようなエラーが表示されることがあります。 インデクサーの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページを参照してください。
+問題がファイル サイズに関連している場合は、"The blob \<file-name> has the size of \<file-size> bytes, which exceeds the maximum size for document extraction for your current service tier."(BLOB <ファイル名> のサイズが <ファイル サイズ> バイトです。現在のサービス レベルでのドキュメント抽出の最大サイズを超えています。) のようなエラーが表示されることがあります。 インデクサーの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページを参照してください。
 
 コンテンツが表示されない 2 つ目の理由として考えられるのは、関連する入力/出力マッピング エラーです。 たとえば、出力ターゲットの名前が "People" で、インデックス フィールド名が小文字の "people" である場合です。 システムはパイプライン全体に対して 201 成功メッセージを返す場合があるため、インデックス作成が成功したと思っても、実際にはフィールドが空になっています。 
 
@@ -94,7 +94,10 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 最大実行時間は、レベルごとに異なります。Free レベルでは数分であり、請求対象のレベルでは 24 時間のインデックス作成です。 オンデマンド処理が 24 時間以内に完了しない場合は、スケジュールに切り替えて、インデクサーが処理を中断した箇所から開始するようにします。 
 
-スケジュールされたインデクサーは、スケジュールされた時間に、前回正常に処理されたドキュメントからインデックス作成を再開します。 定期的なスケジュールを使用することにより、インデクサーは数時間または数日にわたって、未処理の画像がすべて処理されるまで、画像のバックログに対する作業を続けることができます。 スケジュールの構文の詳細については、「[手順 3: インデクサーを作成する](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)」を参照してください。
+スケジュールされたインデクサーは、スケジュールされた時間に、前回正常に処理されたドキュメントからインデックス作成を再開します。 定期的なスケジュールを使用することにより、インデクサーは数時間または数日にわたって、未処理の画像がすべて処理されるまで、画像のバックログに対する作業を続けることができます。 スケジュールの構文の詳細については、「[手順 3: Create-an-indexer](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) または「[Azure Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)」を参照してください。
+
+> [!NOTE]
+> インデクサーが特定のスケジュールに設定されているが実行のたびに同じドキュメントに対して繰り返し失敗する場合、進捗が再び正常化するまでの間、インデクサーは (最大で 24 時間に 1 回に) 間隔を開けて実行頻度を下げます。  インデクサーが特定の箇所で停止する原因になっていた問題をすべて修正したと思われる場合、インデクサーをオンデマンドで実行できます。それによって進捗が正常になったら、インデクサーは設定されていたスケジュール間隔に復帰します。
 
 ポータル ベースのインデックス作成では (クイック スタートで説明したように)、[一度だけ実行する] のインデクサー オプションを選択すると、処理が 1 時間 (`"maxRunTime": "PT1H"`) に制限されます。 処理ウィンドウをもっと長い時間に拡張したい場合があります。
 

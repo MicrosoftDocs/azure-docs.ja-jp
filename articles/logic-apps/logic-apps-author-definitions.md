@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: daeb900abc3f24a408fc1b5f6e989e5181f2a463
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 121e2d2595b63a313d9307f7d47f90adacc30fc2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60427049"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296117"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Azure Logic Apps でのロジック アプリ定義の JSON の作成、編集、拡張
 
@@ -50,6 +50,9 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 3. ロジック アプリ定義とテンプレートのショートカット メニューを開きます。 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。
 
    ![Visual Studio ソリューションのロジック アプリを開く](./media/logic-apps-author-definitions/open-logic-app-designer.png)
+
+   > [!TIP]
+   > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
 
 4. デザイナーの下部で **[コード ビュー]** を選択します。 
 

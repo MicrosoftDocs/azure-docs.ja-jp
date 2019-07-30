@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aed341c50332b424a1149c129629cd451a4e5133
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146928"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-azure-table-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-azure-table-storage.md)
 
@@ -39,7 +39,7 @@ ms.locfileid: "66146928"
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
@@ -83,7 +83,7 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |いいえ。 azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
-| azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。 |TRUE<br/>FALSE |いいえ  |
+| azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。 |TRUE<br/>FALSE |いいえ |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery の例
 Azure テーブルの列が文字列型の場合:
@@ -102,12 +102,12 @@ Azure テーブルの列が datetime 型の場合:
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |文字列の値。 |いいえ  |
-| azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |列の名前。 |いいえ  |
-| azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |列の名前。 |いいえ  |
-| azureTableInsertType |Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 |merge (既定値)<br/>replace |いいえ  |
+| azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |文字列の値。 |いいえ |
+| azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |列の名前。 |いいえ |
+| azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |列の名前。 |いいえ |
+| azureTableInsertType |Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 |merge (既定値)<br/>replace |いいえ |
 | writeBatchSize |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値:10000) |
-| writeBatchTimeout |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |timespan<br/><br/>例:"00:20:00" (20 分) |No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒) |
+| writeBatchTimeout |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |TimeSpan<br/><br/>例:"00:20:00" (20 分) |No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 azureTablePartitionKeyName として宛先列を使用する前に、translator JSON プロパティを使用して、ソース列を宛先列にマップします。
@@ -484,7 +484,7 @@ Azure テーブル間でデータの移動時に、次の [Azure Table service �
 | Edm.Guid |Guid |グローバルで一意となる 128 ビットの識別子。 |
 | Edm.Int32 |Int32 |32 ビットの整数。 |
 | Edm.Int64 |Int64 |64 ビットの整数。 |
-| Edm.String |String |UTF-16 エンコードの値。 文字列値は最大 64 KB になります。 |
+| Edm.String |string |UTF-16 エンコードの値。 文字列値は最大 64 KB になります。 |
 
 ### <a name="type-conversion-sample"></a>型変換の例
 次は型変換で Azure BLOB から Azure テーブルにデータをコピーする操作のサンプルです。

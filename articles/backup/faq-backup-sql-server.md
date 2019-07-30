@@ -1,19 +1,18 @@
 ---
 title: Azure Backup による Azure VM での SQL Server データベースのバックアップについてよく寄せられる質問
 description: Azure Backup を使用した Azure VM 上での SQL Server データベースのバックアップに関する一般的な質問への回答を見つけてください。
-services: backup
 author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: sachdevaswati
-ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijayts
+ms.openlocfilehash: 082817899adc6ab9b4d57f7e0d4bc4e7c2f0a2ab
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700170"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464821"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -37,7 +36,7 @@ ms.locfileid: "64700170"
 機能としての自動回復は、すべてのユーザーに対して既定で有効になります。ただし、これを無効にすることを選択した場合は、次のことを実行してください。
 
   * SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーで **ExtensionSettingsOverrides.json** ファイルを作成または編集します。
-  *  **ExtensionSettingsOverrides.json** で、 *{"EnableAutoHealer": false}* を設定します。
+  *  **ExtensionSettingsOverrides.json** で、 *{"EnableAutoHealer":false}* を設定します。
   * 変更を保存し、ファイルを閉じます。
   * SQL Server インスタンスで、**タスク マネージャー**を開き、**AzureWLBackupCoordinatorSvc** サービスを再起動します。  
 

@@ -3,17 +3,18 @@ title: クイック スタート - Azure でのプライベート Docker レジ�
 description: Azure Portal を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f41d51981c4da9ee089282da8b8d4cc5f37a4aed
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c9e8c7fe4d32a44e8c0831154f02eda1f82aaff3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682986"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309481"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用したプライベート コンテナー レジストリの作成
 
@@ -21,7 +22,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 レジストリにログインし、コンテナー イメージを操作するために、このクイック スタートでは、Azure CLI を実行している必要があります (バージョン 2.0.55 以降を推奨)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
-Docker もローカルにインストールする必要があります。 Docker では、[Mac][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
+Docker もローカルにインストールする必要があります。 Docker では、[Mac][docker-mac], [Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -29,15 +30,15 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-**[リソースの作成]** > **[コンテナー]** > **[コンテナー レジストリ]** の順に選択します。
+**[リソースの作成]**  >  **[コンテナー]**  >  **[コンテナー レジストリ]** の順に選択します。
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-01]
 
-**[レジストリ名]** と **[リソース グループ]** に値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このクイック スタートでは、`myResourceGroup` という名前の新しいリソース グループを `West US` に作成し、**[SKU]** には [Basic] を選択します。 **[作成]** を選択して ACR インスタンスをデプロイします。
+**[レジストリ名]** と **[リソース グループ]** に値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このクイック スタートでは、`myResourceGroup` という名前の新しいリソース グループを `West US` に作成し、 **[SKU]** には [Basic] を選択します。 **[作成]** を選択して ACR インスタンスをデプロイします。
 
 ![Azure portal でコンテナー レジストリを作成する][qs-portal-03]
 
-このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、「[Container Registry の SKU][container-registry-skus]」を参照してください。
+このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、[コンテナー レジストリの SKU][container-registry-skus] に関するページを参照してください。
 
 **"デプロイメントに成功しました"** というメッセージが表示されたら、ポータルでコンテナー レジストリを選択します。 
 
@@ -59,9 +60,9 @@ az acr login --name <acrName>
 
 ## <a name="list-container-images"></a>コンテナー イメージの一覧表示
 
-レジストリ内のイメージを一覧表示するには、ポータルでレジストリに移動し、**[リポジトリ]** を選択してから、`docker push` で作成したリポジトリを選択します。
+レジストリ内のイメージを一覧表示するには、ポータルでレジストリに移動し、 **[リポジトリ]** を選択してから、`docker push` で作成したリポジトリを選択します。
 
-この例では、**hello-world** リポジトリを選択したので、**[タグ]** に `v1` タグが付いたイメージが表示されます。
+この例では、**hello-world** リポジトリを選択したので、 **[タグ]** に `v1` タグが付いたイメージが表示されます。
 
 ![Azure portal でコンテナー イメージを一覧表示する][qs-portal-09]
 
@@ -69,7 +70,7 @@ az acr login --name <acrName>
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-リソースをクリーンアップするには、ポータルで **myResourceGroup** リソース グループに移動します。 リソース グループが読み込まれたら、**[リソース グループの削除]** をクリックして、リソース グループ、コンテナー レジストリ、およびそこに格納されているコンテナー イメージを削除します。
+リソースをクリーンアップするには、ポータルで **myResourceGroup** リソース グループに移動します。 リソース グループが読み込まれたら、 **[リソース グループの削除]** をクリックして、リソース グループ、コンテナー レジストリ、およびそこに格納されているコンテナー イメージを削除します。
 
 ![Azure portal でリソース グループを削除する][qs-portal-08]
 

@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 6d26cedb0dd836846d7e9f00539fe101c944f478
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595743"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442208"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web アプリケーションの監視を開始する
 
@@ -63,13 +63,13 @@ Azure Portal で Application Insights を開いて、実行中のアプリケー
 
 1. ソリューション エクスプローラーの **[接続済みサービス]** フォルダー (クラウドとプラグのアイコン) を展開し、 **[Application Insights]** フォルダーを右クリックし、 **[Application Insights ポータルを開く]** をクリックします。  アプリケーションに関する情報とさまざまなオプションが表示されます。
 
-    ![アプリケーション マップ](media/quick-monitor-portal/4overview.png)
+    ![アプリケーション マップ](media/quick-monitor-portal/04-overview.png)
 
 2. **[アプリケーション マップ]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。  各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
 
-    ![アプリケーション マップ](media/quick-monitor-portal/5appmap.png)
+    ![アプリケーション マップ](media/quick-monitor-portal/05-appmap.png)
 
-3. いずれかのアプリケーション コンポーネントで、 **[アプリ分析]** のアイコン ![アプリケーション マップ](media/quick-monitor-portal/app-analytics-icon.png) **[分析で表示]** をクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。  この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3. いずれかのアプリケーション コンポーネントで、 **[アプリ分析]** のアイコン ![アプリケーション マップ](media/quick-monitor-portal/app-viewinlogs-icon.png) **[ログに表示 (Analytics)]** をクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **[ログ (Analytics)]** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
     ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 

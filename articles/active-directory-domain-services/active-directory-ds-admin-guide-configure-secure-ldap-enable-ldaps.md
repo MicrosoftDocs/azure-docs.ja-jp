@@ -3,7 +3,7 @@ title: Azure AD ドメイン サービスで Secure LDAP (LDAPS) を有効にす
 description: Azure AD Domain Services のマネージド ドメインに対して Secure LDAP (LDAPS) を有効にする
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: ergreenl
-ms.openlocfilehash: df189e405dcd5277c1ccbd94e9d5d302660be79b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: iainfou
+ms.openlocfilehash: 631689d28399c07330c7f57b08952961973d1a92
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359825"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67474321"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対してセキュリティで保護された LDAP (LDAPS) を有効にする
 

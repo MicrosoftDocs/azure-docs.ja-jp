@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b2b3d1ac0a7c0e917f87be1dd131120f63a70f8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b245661ab8f26c1f529a049d326d2c72838c7a17
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142808"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056730"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -20,7 +20,7 @@ Apache Hive Warehouse Connector (HWC) は、Apache Spark と Apache Hive をよ�
 
 Hive Warehouse Connector を使用すると、Hive および Spark の独自の機能を活用して、強力なビッグデータ アプリケーションを構築できます。 Apache Hive では、ACID (原子性、一貫性、分離性、持続性) なデータベース トランザクションがサポートされています。 Hive における ACID およびトランザクションの詳細については、「[Hive Transactions (Hive トランザクション)](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)」を参照してください。 Hive には、Apache Ranger を通じた詳細なセキュリティ コントロールと Apache Spark では使用できない Low Latency Analytical Processing も備わっています。
 
-Apache Spark には、Apache Hive では使用できないストリーミング機能を提供する Structured Streaming API があります。 Hortonworks Data Platform (HDP) 3.0 以降、Apache Spark と Apache Hive は個別の metastore を備えており、相互運用が困難な場合があります。 Hive Warehouse Connector によって、Spark と Hive を一緒に使用することが容易になります。 HWC ライブラリによって LLAP デーモンから Spark Executor にデータが並列で読み込まれるため、Spark から Hive への標準的な JDBC 接続を使用するよりも効率的でスケーラブルになります。
+Apache Spark には、Apache Hive では使用できないストリーミング機能を提供する Structured Streaming API があります。 HDInsight 4.0 以降、Apache Spark 2.3.1 と Apache Hive 3.1.0 は異なる metastore になっており、相互運用性が困難になることがあります。 Hive Warehouse Connector によって、Spark と Hive を一緒に使用することが容易になります。 HWC ライブラリによって LLAP デーモンから Spark Executor にデータが並列で読み込まれるため、Spark から Hive への標準的な JDBC 接続を使用するよりも効率的でスケーラブルになります。
 
 ![アーキテクチャ](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -47,7 +47,7 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 1. 次の手順に従って、Spark クラスターの設定を行います。 
     1. Azure portal に移動し、HDInsight クラスターを選択してから、自分のクラスターの名前をクリックします。
     1. 右側で**クラスター ダッシュボード**の下にある **[Ambari ホーム]** を選択します。
-    1. Ambari Web UI で、**[SPARK2]** > **[CONFIGS]\(構成\)** > **[Custom spark2-defaults]\(カスタム spark2 既定値\)** の順にクリックします。
+    1. Ambari Web UI で、 **[SPARK2]**  >  **[CONFIGS]\(構成\)**  >  **[Custom spark2-defaults]\(カスタム spark2 既定値\)** の順にクリックします。
 
         ![Spark2 Ambari の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
@@ -64,7 +64,7 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 
     1. `spark.datasource.hive.warehouse.load.staging.dir` を、HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるよう、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。 たとえば `wasb://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` だと、`STORAGE_ACCOUNT_NAME` はクラスターによって使用されているストレージ アカウントの名前で、`STORAGE_CONTAINER_NAME` はストレージ コンテナーの名前です。
 
-    1. 対話型クエリ クラスターの metastore URI の値を使用して、`spark.datasource.hive.warehouse.metastoreUri` を設定します。 自分の LLAP クラスターの metastoreUri を見つけるには、Ambari UI で、**[Hive]** > **[ADVANCED]\(詳細設定\)** > **[General]\(全般\)** にある LLAP クラスターの **hive.metastore.uris** プロパティを探します。 この値は次の URI のようになります。
+    1. 対話型クエリ クラスターの metastore URI の値を使用して、`spark.datasource.hive.warehouse.metastoreUri` を設定します。 自分の LLAP クラスターの metastoreUri を見つけるには、Ambari UI で、 **[Hive]**  >  **[ADVANCED]\(詳細設定\)**  >  **[General]\(全般\)** にある LLAP クラスターの **hive.metastore.uris** プロパティを探します。 この値は次の URI のようになります。
 
         ```
         thrift://hn0-hwclla.0iv2nyrmse1uvp2caa4e34jkmf.cx.internal.cloudapp.net:9083,
@@ -72,7 +72,7 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
         ```
 
     1. YARN クライアント デプロイ モードについて、`spark.security.credentials.hiveserver2.enabled` を `false` に設定します。
-    1. `spark.hadoop.hive.zookeeper.quorum` を自分の LLAP クラスターの Zookeeper クォーラムに設定します。 自分の LLAP クラスターの Zookeeper クォーラムを見つけるには、Ambari UI で、**[Hive]** > **[ADVANCED]\(詳細設定\)** > **[Advanced hive-site]\(高度な hive-site\)** にある LLAP クラスターの **hive.zookeeper.quorum** プロパティを探します。 この値は次の文字列のようになります。
+    1. `spark.hadoop.hive.zookeeper.quorum` を自分の LLAP クラスターの Zookeeper クォーラムに設定します。 自分の LLAP クラスターの Zookeeper クォーラムを見つけるには、Ambari UI で、 **[Hive]**  >  **[ADVANCED]\(詳細設定\)**  >  **[Advanced hive-site]\(高度な hive-site\)** にある LLAP クラスターの **hive.zookeeper.quorum** プロパティを探します。 この値は次の文字列のようになります。
 
         ```
         zk1-nkhvne.0iv2nyrmse1uvp2caa4e34jkmf.cx.internal.cloudapp.net:2181,
@@ -230,8 +230,8 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
     1. `https://CLUSTERNAME.azurehdinsight.net/ranger/` で Ranger 管理 UI に移動します。
     1. **[Hive]** の下にある自分のクラスターの Hive サービスをクリックします。
         ![Ranger ポリシーを適用する前のデモ テーブル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. **[Masking]\(マスク\)** タブ、**[Add New Policy]\(新しいポリシーの追加\)** の順にクリックします。![ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
-    1. 目的のポリシー名を入力します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、**[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
+    1. **[Masking]\(マスク\)** タブ、 **[Add New Policy]\(新しいポリシーの追加\)** の順にクリックします。![ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+    1. 目的のポリシー名を入力します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
                 ![ポリシー一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. テーブルの内容をもう一度表示します。 Ranger ポリシーの適用後は、列の最後の 4 文字だけを確認できます。
 

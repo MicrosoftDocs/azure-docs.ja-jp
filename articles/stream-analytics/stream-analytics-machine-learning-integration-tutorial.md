@@ -7,17 +7,17 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d74488f60f21e3644a7a04579bfab7e70882b01
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480810"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621539"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行
-この記事では、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
+# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Azure Stream Analytics と Azure Machine Learning Studio (プレビュー) を使用した感情分析の実行
+この記事では、Azure Machine Learning Studio を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
 
 この記事で学ぶ内容は、次のようなシナリオに適用できます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "61480810"
 大まかに言えば、この記事で説明するタスクを完了するには、以下の手順を実行します。
 
 1. Azure ストレージ アカウントと BLOB ストレージ コンテナーを作成し、そのコンテナーに CSV 形式の入力ファイルをアップロードします。
-3. Cortana Intelligence ギャラリーの感情分析モデルを Azure Machine Learning ワークスペースに追加し、このモデルを Web サービスとして Machine Learning ワークスペースにデプロイします。
+3. Cortana Intelligence ギャラリーの感情分析モデルを Azure Machine Learning Studio ワークスペースに追加し、このモデルを Web サービスとして Machine Learning ワークスペースにデプロイします。
 5. この Web サービスを、テキスト入力のセンチメントを決定するための関数として呼び出す Stream Analytics ジョブを作成します。
 6. Stream Analytics ジョブを開始し、出力をチェックします。
 
@@ -252,7 +252,7 @@ Azure Machine Learning 関数に関連するメトリックも表示できます
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics への Machine Learning の統合](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

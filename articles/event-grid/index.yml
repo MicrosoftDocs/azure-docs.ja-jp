@@ -5,14 +5,12 @@ metadata:
   title: Azure Event Grid のドキュメント - チュートリアル、API リファレンス
   description: Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。
   services: event-grid
-  author: czeumault
-  manager: carolz
+  author: dougeby
+  manager: dougeby
   ms.service: event-grid
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/10/2017
-  ms.author: carolz
+  ms.author: dougeby
 abstract:
   description: Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。
 sections:

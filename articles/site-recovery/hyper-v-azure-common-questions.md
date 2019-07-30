@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 9979cb97ec578a59ba8263f2eb1fe53d41db862f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36c109e083873e9c4ec63ebe34f5c5c0cfb6eeb1
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399458"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491821"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
@@ -26,6 +26,10 @@ ms.locfileid: "66399458"
 
 ### <a name="how-do-i-pay-for-azure-vms"></a>Azure VM の支払い方法
 レプリケーションの間に、データは Azure ストレージにレプリケートされ、VM 変更の料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。 その後は、Azure で消費するコンピューティング リソースに対して課金されます。
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>General Purpose v2 ストレージ アカウントにレプリケートする場合、コストに差はありますか?
+
+Azure Site Recovery のトランザクションは大量にあるため、通常は GPv2 ストレージ アカウントに対して発生するトランザクション コストが増加します。 差を見積もるには、[こちら](../storage/common/storage-account-upgrade.md#pricing-and-billing)をご覧ください。
 
 ## <a name="azure"></a>Azure
 

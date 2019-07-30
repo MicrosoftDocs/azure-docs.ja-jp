@@ -3,8 +3,8 @@ title: Azure AD エンタイトルメント管理 (プレビュー) でカタロ
 description: Azure Active Directory エンタイトルメント管理 (プレビュー) でリソースとアクセス パッケージの新しいコンテナーを作成する方法を説明します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: HANKI
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d9220cd2162b4c8cb77c1e7abd0372052f5454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e563d86abe3817e4c77cc0d5c8df928e41563f8
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64540680"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489089"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でカタログを作成および管理する
 
@@ -60,11 +60,11 @@ ms.locfileid: "64540680"
 
 ## <a name="add-resources-to-a-catalog"></a>カタログにリソースを追加する
 
-アクセス パッケージにリソースを含めるには、リソースがカタログ内に存在している必要があります。 追加できるリソースの種類は、グループ、アプリケーション、および SharePoint Online サイトです。
+アクセス パッケージにリソースを含めるには、リソースがカタログ内に存在している必要があります。 追加できるリソースの種類は、グループ、アプリケーション、および SharePoint Online サイトです。 追加できるグループは、クラウドで作成された Office 365 グループ、またはクラウドで作成された Azure AD セキュリティ グループです。 追加できるアプリケーションは Azure AD エンタープライズ アプリケーションで、これには SaaS アプリケーションと、Azure AD にフェデレーションされた独自アプリケーションの両方が含まれます。 追加できるサイトは、SharePoint Online サイトまたは SharePoint Online サイト コレクションです。
 
-**前提となるロール:** ユーザー管理者またはカタログ所有者
+**事前に必要なロール:** [リソースをカタログに追加するために必要なロール](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)に関するページを参照
 
-1. Azure portal で **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
+1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
 1. 左側のメニューで **[カタログ]** をクリックし、リソースを追加するカタログを開きます。
 
@@ -74,9 +74,7 @@ ms.locfileid: "64540680"
 
 1. リソースの種類として、 **[グループ]** 、 **[アプリケーション]** 、または **[SharePoint サイト]** のいずれかをクリックします。
 
-    カタログ作成者である場合は、所有するすべての Office 365 グループまたは Azure AD セキュリティ グループをカタログに追加できます。 ユーザーに割り当てるグループがあるが、そのグループを所有していない場合は、ユーザー管理者にそのグループをカタログに追加してもらう必要があります。
-
-    カタログ作成者である場合は、所有するすべての Azure AD エンタープライズ アプリケーション (SaaS アプリケーションと、Azure AD にフェデレーションされた独自のアプリケーションの両方を含む) をカタログに追加できます。 ユーザーに割り当てるアプリケーションがあるが、所有はしていない場合、ユーザー管理者にそのアプリケーションをカタログに追加してもらう必要があります。 アプリケーションがカタログに追加されると、アクセス パッケージ内のそのアプリケーションのロールをどれでも選択できるようになります。
+    追加するリソースが表示されない、またはリソースを追加できない場合は、必要な Azure AD ディレクトリ ロールおよびエンタイトルメント管理ロールを持っていることを確認してください。 必要なロールを持つ人物に、カタログへのリソース追加を依頼することが必要な場合があります。 詳細については、[リソースをカタログに追加するために必要なロール](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)に関するページを参照してください。
 
 1. カタログに追加する種類のリソースを 1 つ以上選択します。
 
@@ -88,9 +86,9 @@ ms.locfileid: "64540680"
 
 カタログからリソースを削除できます。 カタログからリソースを削除できるのは、そのリソースがカタログのどのアクセス パッケージでも使用されていない場合に限られます。
 
-**前提となるロール:** ユーザー管理者またはカタログ所有者
+**事前に必要なロール:** [リソースをカタログに追加するために必要なロール](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)に関するページを参照
 
-1. Azure portal で **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
+1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
 1. 左側のメニューで **[カタログ]** をクリックし、リソースを削除するカタログを開きます。
 
@@ -99,22 +97,6 @@ ms.locfileid: "64540680"
 1. 削除するリソースを選択します。
 
 1. **[削除]** をクリックします (または、省略記号 ( **...** ) をクリックして **[リソースの削除]** をクリックします)。
-
-## <a name="add-catalog-owners-or-access-package-managers"></a>カタログ所有者またはアクセス パッケージ マネージャーを追加する
-
-カタログまたはカタログ内のアクセス パッケージの管理を委任する場合は、カタログ所有者またはアクセス パッケージ マネージャーを追加します。 どのユーザーでも、カタログを作成すると、最初のカタログ所有者になります。
-
-**前提となるロール:** ユーザー管理者またはカタログ所有者
-
-1. Azure portal で **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
-
-1. 左側のメニューで **[カタログ]** をクリックし、管理者を追加するカタログを開きます。
-
-1. 左側のメニューで **[ロールと管理者]** をクリックします。
-
-1. **[所有者の追加]** または **[Add access package managers]\(アクセス パッケージ マネージャーの追加\)** をクリックして、それらのロールのメンバーを選択します。
-
-1. **[選択]** をクリックすると、これらのメンバーが追加されます。
 
 ## <a name="edit-a-catalog"></a>カタログを編集する
 
@@ -148,4 +130,5 @@ ms.locfileid: "64540680"
 
 ## <a name="next-steps"></a>次の手順
 
+- [カタログ作成者を追加する](entitlement-management-delegate.md#add-a-catalog-creator)
 - [アクセス パッケージを作成および管理する](entitlement-management-access-package-create.md)

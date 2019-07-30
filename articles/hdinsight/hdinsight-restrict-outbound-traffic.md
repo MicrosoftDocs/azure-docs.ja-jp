@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 35b9731d82f190cee142173ddf688a92ebf30a38
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730661"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405973"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>ファイアウォールを使用した Azure HDInsight クラスターの送信ネットワーク トラフィックの構成 (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "66730661"
 
 Azure HDInsight クラスターは、通常は独自の仮想ネットワークにデプロイされます。 クラスターには、その仮想ネットワークの外部にある、正常に機能するためにネットワーク アクセスを必要とするサービスへの依存関係があります。
 
-受信トラフィックを必要とする依存関係は複数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、[こちら](hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)で公開されています。 また、その情報を使用してネットワーク セキュリティ グループ (NSG) ルールを作成し、クラスターへの受信トラフィックをセキュリティで保護することもできます。
+受信トラフィックを必要とする依存関係は複数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、[こちら](hdinsight-management-ip-addresses.md)で公開されています。 また、その情報を使用してネットワーク セキュリティ グループ (NSG) ルールを作成し、クラスターへの受信トラフィックをセキュリティで保護することもできます。
 
 HDInsight の送信トラフィックの依存関係は、ほぼすべて、背後に静的 IP アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) を使用してクラスターからの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の名前解決に基づいてルールを設定し、それを使用して NSG ルールを設定することができません。
 
@@ -52,20 +52,22 @@ Azure portal で新しいファイアウォール「**Test-FW01**」を選択し
 
 **[アプリケーション ルール コレクションの追加]** 画面で、次の手順を完了します。
 
-1. **[名前]** 、 **[優先順位]** を入力し、 **[アクション]** ドロップダウン メニューで **[許可]** をクリックします。
-1. 次のルールを追加します。
-    1. HDInsight と Windows Update のトラフィックを許可するルール:
-        1. **[FQDN タグ]** セクションで、 **[名前]** を入力し、 **[ソース アドレス]** を「`*`」に設定します。
-        1. **[FQDN タグ]** ドロップダウン メニューで **[HDInsight]** と **[WindowsUpdate]** を選択します。
-    1. Windows ログイン アクティビティを許可するルール:
-        1. **[ターゲットの FQDN]** セクションで、 **[名前]** を入力し、 **[ソース アドレス]** を「`*`」に設定します。
-        1. **[プロトコル:ポート]** に「`https:443`」、 **[ターゲットの FQDN]** に「`login.windows.net`」と入力します。
-    1. クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。
-        1. **[ターゲットの FQDN]** セクションで、 **[名前]** を入力し、 **[ソース アドレス]** を「`*`」に設定します。
-        1. **[プロトコル:ポート]** に「`http:80,https:443`」、 **[ターゲットの FQDN]** にストレージ アカウントの URL を入力します。 形式は、<storage_account_name.blob.core.windows.net> のようになります。 https 接続のみを使用するには、[[安全な転送が必須](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer)] がストレージ アカウントで有効になっていることを確認します。
+1. **[名前]** 、 **[優先順位]** を入力し、 **[アクション]** ドロップダウン メニューで **[許可]** をクリックし、 **[FQDN タグ] セクション**で次のルールを入力します。
+
+   | **Name** | **ソース アドレス** | **FQDN タグ** | **メモ** |
+   | --- | --- | --- | --- |
+   | Rule_1 | * | HDInsight および WindowsUpdate | HDI サービスに必要 |
+
+1. 次のルールを **[ターゲット FQDN] セクション**に追加します。
+
+   | **Name** | **ソース アドレス** | **プロトコル:ポート** | **ターゲット FQDN** | **メモ** |
+   | --- | --- | --- | --- | --- |
+   | Rule_2 | * | https:443 | login.windows.net | Windows ログイン アクティビティを許可する |
+   | Rule_3 | * | https:443、http:80 | <storage_account_name.blob.core.windows.net> | クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。 https 接続のみを使用するには、[[安全な転送が必須](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)] がストレージ アカウントで有効になっていることを確認します。 |
+
 1. **[追加]** をクリックします。
 
-![タイトル:アプリケーション ルール コレクションの詳細を入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![タイトル:アプリケーション ルール コレクションの詳細を入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>ネットワーク ルールを使用してファイアウォールを構成する
 
@@ -74,43 +76,30 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 1. Azure portal で新しいファイアウォール「**Test-FW01**」を選択します。
 1. **[設定]**  >  **[ネットワーク ルール コレクション]**  >  **[ネットワーク ルール コレクションの追加]** で **[ルール]** をクリックします。
 1. **[ネットワーク ルール コレクションの追加]** 画面で、 **[名前]** 、 **[優先順位]** を入力し、 **[アクション]** ドロップダウン メニューで **[許可]** をクリックします。
-1. 次のルールを作成します。
-    1. クラスターで NTP を使用したクロック同期を実行できるようにする [IP アドレス] セクションのネットワーク ルール。
-        1. **[ルール]** セクションで、 **[名前]** を入力し、 **[プロトコル]** ドロップダウンから **[UDP]** を選択します。
-        1. **[ソース アドレス]** と **[宛先アドレス]** を「`*`」に設定します。
-        1. **[宛先ポート]** を「123」に設定します。
-    1. Enterprise セキュリティ パッケージ (ESP) を使用している場合は、ESP クラスター用に AAD DS との通信を許可するネットワーク ルールを [IP アドレス] セクションに追加します。
-        1. ドメイン コントローラーの 2 つの IP アドレスを決定します。
-        1. **[ルール]** セクションの次の行で、 **[名前]** を入力し、 **[プロトコル]** ドロップダウンで **[任意]** を選択します。
-        1. **[ソース アドレス]** を「`*`」に設定します。
-        1. **[宛先アドレス]** にドメイン コントローラーのすべての IP アドレスをコンマで区切って入力します。
-        1. **[宛先ポート]** を「`*`」に設定します。
-    1. Azure Data Lake Storage を使用している場合は、ADLS Gen1 と Gen2 での SNI の問題に対処するネットワーク ルールを [IP アドレス] セクションに追加することができます。 このオプションでは、トラフィックはファイアウォールにルーティングされ、大量のデータ読み込みのためにコストが上がる可能性がありますが、トラフィックはファイル ログに記録されて監査可能になります。
-        1. Data Lake Storage アカウントの IP アドレスを決定します。 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` などの powershell コマンドを使用して、FQDN を IP アドレスに解決できます。
-        1. **[ルール]** セクションの次の行で、 **[名前]** を入力し、 **[プロトコル]** ドロップダウンから **[TCP]** を選択します。
-        1. **[ソース アドレス]** を「`*`」に設定します。
-        1. **[宛先アドレス]** にストレージ アカウントの IP アドレスを入力します。
-        1. **[宛先ポート]** を「`*`」に設定します。
-    1. (省略可能) Log Analytics を使用している場合は、Log Analytics ワークスペースとの通信を可能にするネットワーク ルールを [IP アドレス] セクションに作成します。
-        1. **[ルール]** セクションの次の行で、 **[名前]** を入力し、 **[プロトコル]** ドロップダウンから **[TCP]** を選択します。
-        1. **[ソース アドレス]** を「`*`」に設定します。
-        1. **[宛先アドレス]** を「`*`」に設定します。
-        1. **[宛先ポート]** を「`12000`」に設定します。
-    1. ファイアウォールをバイパスする SQL Server のサービス エンドポイントを HDInsight サブネットに構成していない限り、SQL トラフィックをログに記録して監査できるようにする SQL のネットワーク ルールを [サービス タグ] セクションに構成します。
-        1. **[ルール]** セクションの次の行で、 **[名前]** を入力し、 **[プロトコル]** ドロップダウンから **[TCP]** を選択します。
-        1. **[ソース アドレス]** を「`*`」に設定します。
-        1. **[宛先アドレス]** を「`*`」に設定します。
-        1. **[サービス タグ]** ドロップダウンで **[Sql]** を選択します。
-        1. **[宛先ポート]** を「`1433,11000-11999,14000-14999`」に設定します。
+1. **[IP アドレス]** セクションで次のルールを作成します。
+
+   | **Name** | **プロトコル** | **ソース アドレス** | **宛先アドレス** | **宛先ポート** | **メモ** |
+   | --- | --- | --- | --- | --- | --- |
+   | Rule_1 | UDP | * | * | `123` | Time サービス |
+   | Rule_2 | 任意 | * | DC_IP_Address_1、DC_IP_Address_2 | `*` | Enterprise セキュリティ パッケージ (ESP) を使用している場合は、ESP クラスター用に AAD DS との通信を許可するネットワーク ルールを [IP アドレス] セクションに追加します。 ドメイン コントローラーの IP アドレスはポータルの [AAD-DS] セクションで確認できます | 
+   | Rule_3 | TCP | * | Data Lake Storage アカウントの IP アドレス | `*` | Azure Data Lake Storage を使用している場合は、ADLS Gen1 と Gen2 での SNI の問題に対処するネットワーク ルールを [IP アドレス] セクションに追加することができます。 このオプションでは、トラフィックはファイアウォールにルーティングされ、大量のデータ読み込みのためにコストが上がる可能性がありますが、トラフィックはファイル ログに記録されて監査可能になります。 Data Lake Storage アカウントの IP アドレスを決定します。 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` などの powershell コマンドを使用して、FQDN を IP アドレスに解決できます。|
+   | Rule_4 | TCP | * | * | `12000` | (省略可能) Log Analytics を使用している場合は、Log Analytics ワークスペースとの通信を可能にするネットワーク ルールを [IP アドレス] セクションに作成します。 |
+
+1. **[サービス タグ]** セクションで次のルールを作成します。
+
+   | **Name** | **プロトコル** | **ソース アドレス** | **サービス タグ** | **宛先ポート** | **メモ** |
+   | --- | --- | --- | --- | --- | --- |
+   | Rule_7 | TCP | * | SQL | `1433` | ファイアウォールをバイパスする SQL Server のサービス エンドポイントを HDInsight サブネットに構成していない限り、SQL トラフィックをログに記録して監査できるようにする SQL のネットワーク ルールを [サービス タグ] セクションに構成します。 |
+
 1. **[追加]** をクリックして、ネットワーク ルール コレクションの作成を完了します。
 
-![タイトル:アプリケーション ルール コレクションの詳細を入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![タイトル:アプリケーション ルール コレクションの詳細を入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>ルート テーブルを作成して構成する
 
 次のエントリを使用してルート テーブルを作成します。
 
-1. **インターネット**を次ホップとする[こちらの必要な HDInsight 管理 IP アドレスの一覧](../hdinsight/hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)にある 6 つのアドレス:
+1. **インターネット**を次ホップとする[こちらの必要な HDInsight 管理 IP アドレスの一覧](../hdinsight/hdinsight-management-ip-addresses.md)にある 6 つのアドレス:
     1. すべてのリージョンのすべてのクラスター用の 4 つの IP アドレス
     1. クラスターが作成されるリージョンに固有の 2 つの IP アドレス
 1. 次ホップが Azure Firewall プライベート IP アドレスである、IP アドレス 0.0.0.0/0 の 1 つの仮想アプライアンス ルート。
@@ -151,7 +140,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 ## <a name="logging"></a>ログの記録
 
-Azure Firewall は、いくつかの異なるストレージ システムにログを送信できます。 ファイアウォールのログ記録の構成手順については、「[チュートリアル: 「Azure Firewall のログとメトリックを監視する](../firewall/tutorial-diagnostics.md)」。
+Azure Firewall は、いくつかの異なるストレージ システムにログを送信できます。 ファイアウォールのログ記録の構成手順については、次のチュートリアルの手順に従ってください。「[チュートリアル: 「Azure Firewall のログとメトリックを監視する](../firewall/tutorial-diagnostics.md)」を参照してください。
 
 ログ記録のセットアップを完了した後、Log Analytics にデータをログ記録する場合は、次のようなクエリでブロックされたトラフィックを表示することができます。
 
@@ -162,7 +151,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に役立ちます。 Azure Monitor ログについて詳しくは、「[Azure Monitor でログ データを分析する](../azure-monitor/log-query/log-query-overview.md)」をご覧ください
 
 ## <a name="access-to-the-cluster"></a>クラスターへのアクセス
-ファイアウォールを正常にセットアップした後は、内部エンドポイント (https://<clustername>-int.azurehdinsight.net) を使用して VNET 内から Ambari にアクセスできます。 パブリック エンドポイント (https://<clustername>.azurehdinsight.net) または SSH エンドポイント (<clustername>-ssh.azurehdinsight.net) を使用するには、[こちら](https://docs.microsoft.com/en-us/azure/firewall/integrate-lb)で説明されている非対称ルーティングの問題を回避するために、必ずルート テーブルに正しいルートが指定されており、NSG ルールが設定されていることを確認します。
+ファイアウォールを正常にセットアップした後は、内部エンドポイント (`https://<clustername>-int.azurehdinsight.net`) を使用して VNET 内から Ambari にアクセスできます。 パブリック エンドポイント (`https://<clustername>.azurehdinsight.net`) または SSH エンドポイント (`<clustername>-ssh.azurehdinsight.net`) を使用するには、[こちら](https://docs.microsoft.com/azure/firewall/integrate-lb)で説明されている非対称ルーティングの問題を回避するために、必ずルート テーブルに正しいルートが指定されており、NSG ルールが設定されていることを確認します。
 
 ## <a name="configure-another-network-virtual-appliance"></a>別のネットワーク仮想アプライアンスの構成
 
@@ -190,7 +179,7 @@ Azure Firewall を Azure Monitor ログと統合すると、アプリケーシ�
 | **エンドポイント** | **詳細** |
 |---|---|
 | \*:123 | NTP クロック チェック。 トラフィックは、ポート 123 上の複数のエンドポイントでチェックされます |
-| [こちら](hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)で発行された IP | これらは HDInsight サービスです |
+| [こちら](hdinsight-management-ip-addresses.md)で発行された IP | これらは HDInsight サービスです |
 | ESP クラスター用の AAD DS プライベート IP |
 | \*:KMS Windows ライセンス認証の場合は 16800 |
 | \*Log Analytics の場合は 12000 |

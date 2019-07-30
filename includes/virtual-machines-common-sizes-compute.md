@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ec718449e9f9db3f816d327f3d2483de813d755c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 7bfb96a40dedf780920e6fdd6e08e1b583bea902
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391320"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67501248"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -38,9 +38,9 @@ Premium Storage キャッシュ:サポートされています
 | Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16,000/127 (128)        | 12,800/190              | 4/3500               |
 | Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32,000/255 (256)        | 25,600/380              | 4/7000               |
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64,000/512 (512)        | 51,200/750              | 8/14000              |
+| Standard_F48s_v2 | 48     | 96          | 384            | 32             | 96000/768 (768)        | 76800/1100             | 8/21000              |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128,000/1,024 (1024)     | 80,000/1,100             | 8/28000              |
 | Standard_F72s_v2<sup>2、3</sup> | 72 | 144 | 576         | 32             | 144,000/1,152 (1520)     | 80,000/1,100             | 8/30,000              |
-
 
 <sup>1</sup> Fsv2 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
 

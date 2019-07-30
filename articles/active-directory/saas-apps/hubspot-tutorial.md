@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d74cc1665867568032bb1343e4f2c26c50fe15a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3b2c765778fc2bdd8425cc3f375831c0d317e753
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65770184"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル:Azure Active Directory と HubSpot の統合
 
@@ -213,7 +213,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
 1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **Britta Simon** を選択します。 **[選択]** を選択します。
 
-1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、一覧からユーザーに関連するロールを選択します。 **[選択]** を選択します。
+1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、ユーザーに関連したロールを一覧から選択します。 **[選択]** を選択します。
 
 1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
 

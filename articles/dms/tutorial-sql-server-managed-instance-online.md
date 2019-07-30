@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 1229ff3221deb49601dec3cd40b556ea367fc4c9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/14/2019
+ms.openlocfilehash: 4e45251147561f2376ac4b044ebdf3a599092dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240714"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126100"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して、SQL Server を Azure SQL Database マネージド インスタンスにオンラインで移行する
 
@@ -72,6 +72,10 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 * 作成したネットワーク共有に対して、ソース SQL Server インスタンスを実行しているサービス アカウントが書き込み特権を持っていること、およびソース サーバーのコンピューター アカウントが読み取り/書き込みアクセス権を持っていることを確認します。
 * 作成したネットワーク共有に対するフル コントロール権限を持つ Windows ユーザー (とパスワード) をメモしておきます。 Azure Database Migration Service は、ユーザーの資格情報を借用して、復元操作のために、Azure ストレージ コンテナーにバックアップ ファイルをアップロードします。
 * Azure Active Directory のアプリケーション ID を作成します。これにより、DMS サービスがターゲットの Azure SQL Database マネージド インスタンスと Azure Storage Container に接続するために使用できる、アプリケーション ID キーが生成されます。 詳細については、[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照してください。
+
+  > [!NOTE]
+  > DMS では、指定されたアプリケーション ID のサブスクリプションに対する共同作成者アクセス許可が必要です。 これらのアクセス許可要件を削減するための取り組みが積極的に行われています。
+
 * DMS サービスがデータベース バックアップ ファイルをアップロードしてデータベースの移行に使用できるように、**標準パフォーマンス レベル**と Azure Storage Account のメモを作成します。  作成された DMS サービスと同じ地域で、Azure Storage Account を確実に作成します。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する

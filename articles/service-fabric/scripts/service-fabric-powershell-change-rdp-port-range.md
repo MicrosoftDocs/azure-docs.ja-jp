@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - RDP ポート範囲の
 description: Azure PowerShell のサンプル スクリプト - デプロイしたクラスターの RDP ポート範囲を変更します。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 001574cef8f0ea074b65fdc94f6d8b255f98bff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4470cf8898f1d174f8ec2bb6860e2e30aeff9fe2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159956"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592317"
 ---
 # <a name="update-the-rdp-port-range-values"></a>RDP ポート範囲の値の更新
 

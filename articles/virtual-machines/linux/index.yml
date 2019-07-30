@@ -6,14 +6,12 @@ metadata:
   title: Azure Linux 仮想マシンのドキュメント - チュートリアル、API リファレンス
   meta.description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
   services: virtual-machines\linux
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machines-linux
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: Azure Linux 仮想マシンでは、Red Hat、Ubuntu、または好みの Linux ディストリビューションを使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Linux VM の作成、構成、管理、更新、スケーリングを行う方法を確認してください。
   aside:

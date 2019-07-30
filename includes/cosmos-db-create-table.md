@@ -9,15 +9,15 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: a91c42ca32fb356b418dcd412c0690b01ff85789
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151305"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67181716"
 ---
 Azure Portal でデータ エクスプローラー ツールを使ってデータベースとテーブルを作成できるようになりました。 
 
-1. **[データ エクスプローラー]** > **[新しいテーブル]** をクリックします。 
+1. **[データ エクスプローラー]**  >  **[新しいテーブル]** をクリックします。 
     
     **[テーブルの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
 

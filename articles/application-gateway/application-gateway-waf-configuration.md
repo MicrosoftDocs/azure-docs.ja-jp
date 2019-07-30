@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 5/15/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 5ddcdeca41e2f21fa27db25f7e0721c7ef87e491
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 272c6d2de23b1e89caef3f9bee20a96c5c196cde
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65620282"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275183"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォール要求サイズ制限と除外リスト
 
@@ -35,16 +35,16 @@ WAF には、要求本文の検査を有効または無効にするための構�
 
 WAF の除外リストを使用すると、WAF の評価から特定の要求属性を省略できます。 一般的な例として、認証フィールドまたはパスワード フィールドにおいて使用される、Active Directory で挿入されたトークンが挙げられます。 このような属性には、WAF ルールに基づいて誤検知をトリガーする可能性がある特殊文字が含まれる傾向があります。 WAF 除外リストに属性を追加すると、その属性は、どの構成済みのアクティブな WAF ルールによっても考慮されなくなります。 除外リストはスコープ内でグローバルです。
 
-除外リストには以下の属性を追加できます。
+除外リストには以下の属性を追加できます。 選択したフィールドの値は、WAF ルールに対して評価されません。 除外リストにより、フィールドの値の検査が取り除かれます。
 
 * 要求ヘッダー
 * 要求 Cookie
-* 要求の属性名 (args)
+* 要求の属性名 (引数) は、次のような除外要素として追加できます。
 
-   * フォームのマルチパート データ
-   * XML
-   * JSON
-   * URL クエリ引数
+   * フォーム フィールド名
+   * XML エンティティ
+   * JSON エンティティ
+   * URL クエリ文字列引数
 
 要求ヘッダー、本文、cookie、またはクエリ文字列属性については完全一致を指定できます。  また、必要に応じて、部分一致を指定できます。 除外は常にヘッダー フィールドに適用され、その値には適用されません。 除外ルールは、スコープ内でグローバルであり、すべてのページとすべてのルールに適用されます。
 

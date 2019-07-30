@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180993"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659848"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
@@ -85,7 +85,7 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 はい。 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Azure VPN ゲートウェイでは、BGP ピア IP にどのようなアドレスが使用されますか。
-Azure VPN ゲートウェイでは、仮想ネットワークに対して定義されている GatewaySubnet 範囲から 1 つの IP アドレスを割り当てます。 既定では、範囲内で最後から 2 つ目のアドレスが使用されます。 たとえば、GatewaySubnet が 10.12.255.0/27 で、範囲が 10.12.255.0 から 10.12.255.31 となる場合、Azure VPN ゲートウェイの BGP ピア IP アドレスは 10.12.255.30 になります。 Azure VPN ゲートウェイの情報を表示すると、この情報を確認できます。
+Azure VPN ゲートウェイは、GatewaySubnet 範囲から 1 つの IP アドレスをアクティブ/スタンバイ VPN ゲートウェイに割り当てるか、2 つの IP アドレスをアクティブ/アクティブ VPN ゲートウェイに割り当てます。 PowerShell (Get-AzVirtualNetworkGateway、"bgpPeeringAddress" プロパティを探してください) を使用して、または Azure portal ([ゲートウェイの構成] ページの [BGP ASN の構成] プロパティの下) で、割り当てられた実際の BGP IP アドレスを取得できます。
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN デバイスの BGP ピア IP アドレスに関する要件はどんなものですか。
 オンプレミスの BGP ピア アドレスを VPN デバイスのパブリック IP アドレスと **同じにすることはできません** 。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイス上のループバック インターフェイスに割り当てられたアドレスを使用することもできますが、APIPA (169.254.x.x) アドレスは使用できません。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。

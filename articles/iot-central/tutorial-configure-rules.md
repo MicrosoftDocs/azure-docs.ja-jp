@@ -3,18 +3,18 @@ title: Azure IoT Central でルールとアクションを構成する | Microso
 description: このチュートリアルでは、作成者として Azure IoT Central アプリケーションでテレメトリベースのルールとアクションを構成する方法について説明します。
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 01/28/2019
+ms.date: 06/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2bd22dec13e2dba63c512276a0b36d4fc50e05f8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 56ced4f5e2fd0fbf829f72cff2413998398a7a09
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681567"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066008"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でデバイスのルールとアクションを構成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "59681567"
 
 2. デバイス テンプレートをカスタマイズするには、前のチュートリアルで作成した **Connected Air Conditioner** テンプレートを選択します。
 
-3. **[ルール]** ビューでテレメトリ ベースのルールを追加するには、**[ルール]** を選択し、**[+ 新しいルール]** を選択して、**[テレメトリ]** を選択します。
+3. **[ルール]** ビューでテレメトリ ベースのルールを追加するには、 **[ルール]** を選択し、 **[+ 新しいルール]** を選択して、 **[テレメトリ]** を選択します。
 
     ![[ルール] ビュー](media/tutorial-configure-rules/newrule.png)
 
@@ -57,13 +57,13 @@ ms.locfileid: "59681567"
 
     ![温度ルールの条件](media/tutorial-configure-rules/temperaturerule.png)
 
-    次に、**[保存]** を選択します。
+    次に、 **[保存]** を選択します。
 
 ## <a name="add-an-action"></a>アクションを追加する
 
 ルールを定義する場合、ルールの条件が満たされたときに実行されるアクションも定義します。 このチュートリアルでは、メール通知を送信するアクションに関するルールを作成します。
 
-1. **アクション**を追加するには、最初にルールを**保存**してから、**[Configure Telemetry Rule]\(テレメトリ ルールの構成\)** パネルを下にスクロールします。 **[アクション]** の隣にある **[+]** を選択して、**[電子メール]** を選択します。
+1. **アクション**を追加するには、最初にルールを**保存**してから、 **[Configure Telemetry Rule]\(テレメトリ ルールの構成\)** パネルを下にスクロールします。 **[アクション]** の隣にある **[+]** を選択して、 **[電子メール]** を選択します。
 
     ![温度ルールのアクション](media/tutorial-configure-rules/addaction.png)
 

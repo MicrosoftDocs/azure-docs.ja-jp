@@ -5,6 +5,7 @@
     - name: Spatial Anchors について
       href: overview.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: Unity アプリの作成
       href: unity-overview.yml

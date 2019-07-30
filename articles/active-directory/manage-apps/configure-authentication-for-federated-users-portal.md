@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18f7f6588cb4fb3b3b480402c3dad13be4a0ed2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0534037393f4634364b927020595aa21d8e1b7b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65781037"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440366"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -209,7 +209,13 @@ Get-AzureADPolicy
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>手順 2:ポリシーを割り当てるサービス プリンシパルを見つける  
 ポリシーを割り当てるサービス プリンシパルの **ObjectID** が必要となります。 サービス プリンシパルの **ObjectID** を検索するには、複数の方法があります。    
 
-ポータルを使うか、[Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) のクエリを行うことができます。 また、[Graph エクスプローラー ツール](https://developer.microsoft.com/graph/graph-explorer)に移動して Azure AD アカウントにサインインし、組織のすべてのサービス プリンシパルを表示することもできます。 PowerShell を使っているので、get-AzureADServicePrincipal コマンドレットを使ってサービス プリンシパルとその ID を一覧表示できます。
+ポータルを使うか、[Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) のクエリを行うことができます。 また、[Graph エクスプローラー ツール](https://developer.microsoft.com/graph/graph-explorer)に移動して Azure AD アカウントにサインインし、組織のすべてのサービス プリンシパルを表示することもできます。 
+
+PowerShell を使用しているため、次のコマンドレットを使用してサービス プリンシパルとその ID を一覧表示できます。
+
+``` powershell
+Get-AzureADServicePrincipal
+```
 
 #### <a name="step-3-assign-the-policy-to-your-service-principal"></a>手順 3:サービス プリンシパルにポリシーを割り当てる  
 自動高速化を構成するアプリケーションのサービス プリンシパルの **ObjectID** を入手した後、次のコマンドを実行します。 このコマンドは、手順 1 で作成した HRD ポリシーを、手順 2 で取得したサービス プリンシパルに関連付けます。
@@ -226,7 +232,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 HRD ポリシーがどのアプリケーションに構成されているかを確認するには、**Get-AzureADPolicyAppliedObject** コマンドレットを使用します。 そして、確認するポリシーの **ObjectID** を渡します。
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 #### <a name="step-5-youre-done"></a>手順 5:以上で終わりです。
 アプリケーションを実行して、新しいポリシーが機能していることを確認します。
@@ -244,7 +250,7 @@ Get-AzureADPolicy
 #### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>手順 2:ポリシーが割り当てられているサービス プリンシパルを一覧表示する  
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
 ### <a name="example-remove-an-hrd-policy-for-an-application"></a>例:アプリケーション用の HRD ポリシーを削除する
@@ -254,13 +260,13 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>手順 2:アプリケーション サービス プリンシパルからポリシーの割り当てを削除する  
 
 ``` powershell
-Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
+Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>手順 3:ポリシーが割り当てられているサービス プリンシパルを一覧表示して、削除を確認する 
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>次の手順
 - Azure AD での認証のしくみについて詳しくは、「[Azure AD の認証シナリオ](../develop/authentication-scenarios.md)」をご覧ください。

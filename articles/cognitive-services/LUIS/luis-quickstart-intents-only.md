@@ -3,20 +3,20 @@ title: 意図の予測
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ユーザーの意図を予測するカスタム アプリを作成します。 このアプリは、メール アドレスや日付などの発話テキストからさまざまなデータ要素を抽出しないため、最も単純な種類の LUIS アプリです。
 services: cognitive-services
-author: lingliw
-manager: digimobile
+author: diberry
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/19/19
-ms.author: v-lingwu
-ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/16/2019
+ms.author: diberry
+ms.openlocfilehash: 534aa678df69a4ef71296005922fa59bbe7bbcfa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123935"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277573"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -239,7 +239,3 @@ LUIS は、JSON 応答を返した後は、この要求の処理を終えてい�
 
 > [!div class="nextstepaction"]
 > [このアプリに事前構築済みの意図とエンティティを追加する](luis-tutorial-prebuilt-intents-entities.md)
-
-
-
-

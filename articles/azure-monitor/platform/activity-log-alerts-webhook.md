@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 63f59d59712d851f9bb7ace27335fe665a598f9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c91c1badaa4b1bc055859d700857cfd4d062babd
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66477918"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491514"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
@@ -33,6 +33,7 @@ webhook は、認証のためにトークンベースの承認を使用するこ
 POST 操作に含まれる JSON ペイロードは、ペイロードの data.context.activityLog.eventSource フィールドによって異なります。
 
 ### <a name="common"></a>一般
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -59,7 +60,9 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
     }
 }
 ```
+
 ### <a name="administrative"></a>管理
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -84,9 +87,96 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
         "properties": {}
     }
 }
-
 ```
+
+### <a name="security"></a>セキュリティ
+
+```json
+{
+    "schemaId":"Microsoft.Insights/activityLogs",
+    "data":{"status":"Activated",
+        "context":{
+            "activityLog":{
+                "channels":"Operation",
+                "correlationId":"2518408115673929999",
+                "description":"Failed SSH brute force attack. Failed brute force attacks were detected from the following attackers: [\"IP Address: 01.02.03.04\"].  Attackers were trying to access the host with the following user names: [\"root\"].",
+                "eventSource":"Security",
+                "eventTimestamp":"2017-06-25T19:00:32.607+00:00",
+                "eventDataId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "level":"Informational",
+                "operationName":"Microsoft.Security/locations/alerts/activate/action",
+                "operationId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "properties":{
+                    "attackers":"[\"IP Address: 01.02.03.04\"]",
+                    "numberOfFailedAuthenticationAttemptsToHost":"456",
+                    "accountsUsedOnFailedSignInToHostAttempts":"[\"root\"]",
+                    "wasSSHSessionInitiated":"No","endTimeUTC":"06/25/2017 19:59:39",
+                    "actionTaken":"Detected",
+                    "resourceType":"Virtual Machine",
+                    "severity":"Medium",
+                    "compromisedEntity":"LinuxVM1",
+                    "remediationSteps":"[In case this is an Azure virtual machine, add the source IP to NSG block list for 24 hours (see https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)]",
+                    "attackedResourceType":"Virtual Machine"
+                },
+                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/centralus/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "resourceGroupName":"contoso",
+                "resourceProviderName":"Microsoft.Security",
+                "status":"Active",
+                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+                "submissionTimestamp":"2017-06-25T20:23:04.9743772+00:00",
+                "resourceType":"MICROSOFT.SECURITY/LOCATIONS/ALERTS"
+            }
+        },
+        "properties":{}
+    }
+}
+```
+
+### <a name="recommendation"></a>推奨
+
+```json
+{
+    "schemaId":"Microsoft.Insights/activityLogs",
+    "data":{
+        "status":"Activated",
+        "context":{
+            "activityLog":{
+                "channels":"Operation",
+                "claims":"{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\":\"Microsoft.Advisor\"}",
+                "caller":"Microsoft.Advisor",
+                "correlationId":"123b4c54-11bb-3d65-89f1-0678da7891bd",
+                "description":"A new recommendation is available.",
+                "eventSource":"Recommendation",
+                "eventTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+                "httpRequest":"{\"clientIpAddress\":\"0.0.0.0\"}",
+                "eventDataId":"1bf234ef-e45f-4567-8bba-fb9b0ee1dbcb",
+                "level":"Informational",
+                "operationName":"Microsoft.Advisor/recommendations/available/action",
+                "properties":{
+                    "recommendationSchemaVersion":"1.0",
+                    "recommendationCategory":"HighAvailability",
+                    "recommendationImpact":"Medium",
+                    "recommendationName":"Enable Soft Delete to protect your blob data",
+                    "recommendationResourceLink":"https://portal.azure.com/#blade/Microsoft_Azure_Expert/RecommendationListBlade/recommendationTypeId/12dbf883-5e4b-4f56-7da8-123b45c4b6e6",
+                    "recommendationType":"12dbf883-5e4b-4f56-7da8-123b45c4b6e6"
+                },
+                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/microsoft.storage/storageaccounts/contosoStore",
+                "resourceGroupName":"CONTOSO",
+                "resourceProviderName":"MICROSOFT.STORAGE",
+                "status":"Active",
+                "subStatus":"",
+                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+                "submissionTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+                "resourceType":"MICROSOFT.STORAGE/STORAGEACCOUNTS"
+            }
+        },
+        "properties":{}
+    }
+}
+```
+
 ### <a name="servicehealth"></a>ServiceHealth
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -128,7 +218,10 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 }
 ```
 
+サービス正常性通知のアクティビティ ログ アラートの特定のスキーマについて詳しくは、「[サービス正常性通知](../../azure-monitor/platform/service-notifications.md)」をご覧ください。 また、[既存の問題管理ソリューションでサービス正常性の webhook 通知を構成する](../../service-health/service-health-alert-webhook-guide.md)方法についてご確認ください。
+
 ### <a name="resourcehealth"></a>ResourceHealth
+
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -165,17 +258,13 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 }
 ```
 
-サービス正常性通知のアクティビティ ログ アラートの特定のスキーマについて詳しくは、「[サービス正常性通知](../../azure-monitor/platform/service-notifications.md)」をご覧ください。 また、[既存の問題管理ソリューションでサービス正常性の webhook 通知を構成する](../../service-health/service-health-alert-webhook-guide.md)方法についてご確認ください。
-
-その他のすべてのアクティビティ ログ アラートの特定のスキーマについて詳しくは、[Azure アクティビティ ログの概要](../../azure-monitor/platform/activity-logs-overview.md)に関するページをご覧ください。
-
 | 要素名 | 説明 |
 | --- | --- |
 | status |メトリック アラートで使用されます。 アクティビティ ログ アラートでは常に "activated" に設定されます。 |
 | context |イベントのコンテキスト。 |
 | resourceProviderName |影響を受けるリソースのリソース プロバイダー。 |
 | conditionType |常に "Event" です。 |
-| name |アラート ルールの名前。 |
+| 名前 |アラート ルールの名前。 |
 | id |アラートのリソース ID。 |
 | description |アラートの作成時に設定したアラートの説明。 |
 | subscriptionId |Azure サブスクリプション ID。 |
@@ -197,7 +286,9 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | operationName |操作の名前。 |
 | properties |イベントのプロパティ。 |
 | status |文字列 をオンにします。 操作の状態。 一般的な値は Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
-| subStatus |通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。 また、subStatus を説明する他の文字列を含めることもできます。 一般的なサブステータス値には、OK (HTTP 状態コード:200)、作成済み (HTTP 状態コード:201)、受理 (HTTP 状態コード:202)、コンテンツなし (HTTP 状態コード:204)、無効な要求 (HTTP 状態コード:400)、見つかりません (HTTP 状態コード:404)、競合 (HTTP 状態コード:409)、内部サーバー エラー (HTTP 状態コード:500)、サービス利用不可 (HTTP 状態コード:503)、ゲートウェイ タイムアウト (HTTP 状態コード:504) が含まれます。 |
+| subStatus |通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。 また、subStatus を説明する他の文字列を含めることもできます。 一般的なサブステータス値には、OK (HTTP 状態コード:200)、作成済み (HTTP 状態コード:201)、受理 (HTTP 状態コード:202)、コンテンツなし (HTTP 状態コード:204)、無効な要求 (HTTP 状態コード:400)、見つかりません (HTTP 状態コード:404)、競合 (HTTP 状態コード:409)、内部サーバー エラー (HTTP 状態コード:500)、サービス利用不可 (HTTP 状態コード:503)、ゲートウェイ タイムアウト (HTTP 状態コード:504)。 |
+
+その他のすべてのアクティビティ ログ アラートの特定のスキーマについて詳しくは、[Azure アクティビティ ログの概要](../../azure-monitor/platform/activity-logs-overview.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 * [アクティビティ ログについて詳しく学習します](../../azure-monitor/platform/activity-logs-overview.md)。

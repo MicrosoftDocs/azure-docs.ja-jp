@@ -53,7 +53,17 @@
               href: QuickStarts/python-thumb.md
             - name: Ruby
               href: QuickStarts/ruby-thumb.md
-        - name: 印刷されたテキストの抽出
+        - name: テキストの抽出 (Read API)
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp-hand-text.md
+            - name: Java
+              href: QuickStarts/java-hand-text.md
+            - name: JavaScript
+              href: QuickStarts/javascript-hand-text.md
+            - name: Python
+              href: QuickStarts/python-hand-text.md
+        - name: 印刷されたテキストの抽出 (OCR)
           items:
             - name: 'C#'
               href: QuickStarts/CSharp-print-text.md
@@ -73,16 +83,6 @@
               href: QuickStarts/python-print-text.md
             - name: Ruby
               href: QuickStarts/ruby-print-text.md
-        - name: 手書きのテキストの抽出
-          items:
-            - name: 'C#'
-              href: QuickStarts/CSharp-hand-text.md
-            - name: Java
-              href: QuickStarts/java-hand-text.md
-            - name: JavaScript
-              href: QuickStarts/javascript-hand-text.md
-            - name: Python
-              href: QuickStarts/python-hand-text.md
         - name: ドメイン モデルの使用
           items:
             - name: PHP
@@ -137,8 +137,6 @@
           href: Tutorials/java-tutorial.md
         - name: JavaScript
           href: Tutorials/javascript-tutorial.md
-        - name: Python
-          href: Tutorials/PythonTutorial.md
     - name: Computer Vision API を呼び出す
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: コンテナーの使用
@@ -147,6 +145,8 @@
           href: computer-vision-how-to-install-containers.md
         - name: コンテナーを構成する
           href: computer-vision-resource-container-config.md
+        - name: Container Instances の使用
+          href: deploy-computer-vision-on-container-instances.md
     - name: Computer Vision Connected Service の使用
       href: vs-computer-vision-connected-service.md
     - name: リアルタイムでビデオを分析する

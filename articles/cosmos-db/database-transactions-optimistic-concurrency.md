@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB でのデータベース ト�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1da5dabad04d72c903072a33dfb7b0229f99c62d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b58255aa471fe78c84b5f6a7432c0f3d402f0875
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978987"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467905"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>トランザクションとオプティミスティック同時実行制御
 

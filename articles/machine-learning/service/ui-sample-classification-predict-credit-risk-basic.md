@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ec91ca83d7aa1bc5e6c290d35b573a60cc0ed19
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789397"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605767"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>サンプル 3 - 分類:信用リスクの予測
 
@@ -78,3 +78,4 @@ UC Irvine リポジトリの German Credit Card のデータセットを使用�
 - [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [サンプル 4 - 分類:信用リスクを予測する (費用重視)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [サンプル 5 - 分類:顧客離れを予測する](ui-sample-classification-predict-churn.md)
+- [サンプル 6 - 分類:フライトの遅延を予測する](ui-sample-classification-predict-flight-delay.md)

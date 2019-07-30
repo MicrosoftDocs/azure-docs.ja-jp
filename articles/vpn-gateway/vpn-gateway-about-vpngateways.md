@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 05/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0d4bba41170408b640b4e8d3809c77b7a6443c6a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480037"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798989"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 
@@ -51,7 +51,7 @@ Azure Portal などの構成ツールをどれか 1 つ使用して、リソー�
 
 ## <a name="gwsku"></a>ゲートウェイの SKU
 
-仮想ネットワーク ゲートウェイを作成するときには、使用するゲートウェイの SKU を指定します。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。 サポートされる機能、実稼働環境と開発テスト環境、構成手順など、ゲートウェイ SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
+仮想ネットワーク ゲートウェイを作成するときには、使用するゲートウェイの SKU を指定します。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。 サポートされる機能、実稼働環境と開発テスト環境、構成手順など、ゲートウェイ SKU について詳しくは、[VPN Gateway の設定のゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) に関する記事をご覧ください。 レガシ SKU については、[レガシ SKU の使用](vpn-gateway-about-skus-legacy.md)に関する記事をご覧ください。
 
 ### <a name="benchmark"></a>各ゲートウェイ SKU のトンネル数、接続数、およびスループット
 

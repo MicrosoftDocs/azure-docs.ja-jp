@@ -4,7 +4,7 @@ description: Azure の Windows 仮想マシンに接続できないリモート 
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: リモート デスクトップに接続できない, リモート デスクトップのトラブルシューティング, リモート デスクトップで接続できない, リモート デスクトップ エラー, リモート デスクトップのトラブルシューティング, リモート デスクトップの問題
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 56fa1363e9737a2ce06ba5f0215235a84ee70ce6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237154"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709910"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
@@ -40,7 +40,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-先に進む前に、前回 VM に正常にリモート デスクトップ接続できたとき以降、何を変更したかを思い返してみると、役に立つかもしれません。 例: 
+先に進む前に、前回 VM に正常にリモート デスクトップ接続できたとき以降、何を変更したかを思い返してみると、役に立つかもしれません。 例:
 
 * VM、または VM が含まれるクラウド サービスのパブリック IP アドレス (仮想 IP アドレス ( [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) とも呼ばれる) が変更されました。 この RDP 障害は、DNS 名について登録された *古い IP アドレス* が DNS クライアント キャッシュにまだ入っているために発生した可能性があります。 DNS クライアント キャッシュをフラッシュしてから、もう一度 VM に接続してみてください。 または、新しい VIP に直接接続してみてください。
 * Azure ポータルによって生成された接続を使用する代わりに、サード パーティのアプリケーションを使用してリモート デスクトップ接続を管理しています。 アプリケーションの構成にリモート デスクトップのトラフィック用の正しい TCP ポートが含まれていることを確認します。 クラシック仮想マシンのこのポートを確認するには、[Azure Portal](https://portal.azure.com) で VM の [設定]、[エンドポイント] の順にクリックします。
@@ -99,7 +99,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
-> リソース マネージャーで作成された仮想マシンについては、「 [ソース 4: ネットワーク セキュリティ グループ](#source-4-network-security-groups)」はスキップしてください。
+> Resource Manager で作成された仮想マシンの場合は、「[ソース 4:ネットワーク セキュリティ グループ](#source-4-network-security-groups)」に進んでください。
 
 同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合、作成します。 「[Azure 上で Windows を実行する仮想マシンの作成](../virtual-machines-windows-hero-tutorial.md)」の手順に従ってください。 テストが完了した後は、テスト用の仮想マシンを削除します。
 

@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 04/01/2019
-ms.openlocfilehash: 8600e9c9d8566d3b9f6cd0fbca60d7db904a6265
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/12/2019
+ms.openlocfilehash: 61ae6cdf7c31c9a6e40860eb1dc4628bb2d37496
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687172"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150909"
 ---
-# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>クイック スタート:HDInsight クラスター上に Apache Kafka を作成する
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
 Apache Kafka は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。 
 
@@ -22,16 +22,13 @@ Apache Kafka は、オープンソースの分散ストリーミング プラッ
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]  
-> Apache Kafka API は、同じ仮想ネットワーク内のリソースによってのみアクセスできます。 このクイック スタートでは、SSH を使って直接クラスターにアクセスします。 他のサービス、ネットワーク、または仮想マシンを Apache Kafka に接続するには、まず、仮想ネットワークを作成してから、ネットワーク内にリソースを作成する必要があります。
->
-> 詳しくは、[仮想ネットワークを使用した Apache Kafka への接続](apache-kafka-connect-vpn-gateway.md)に関するドキュメントをご覧ください。
+Apache Kafka API は、同じ仮想ネットワーク内のリソースによってのみアクセスできます。 このクイック スタートでは、SSH を使って直接クラスターにアクセスします。 他のサービス、ネットワーク、または仮想マシンを Apache Kafka に接続するには、まず、仮想ネットワークを作成してから、ネットワーク内にリソースを作成する必要があります。 詳しくは、[仮想ネットワークを使用した Apache Kafka への接続](apache-kafka-connect-vpn-gateway.md)に関するドキュメントをご覧ください。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
-* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka クラスターを作成する
 
@@ -39,7 +36,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. 左側のメニューから、**[+ リソースの作成]** > **[Analytics]** > **[HDInsight]** に移動します。
+2. 左側のメニューから、 **[+ リソースの作成]**  >  **[Analytics]**  >  **[HDInsight]** に移動します。
    
     ![HDInsight クラスターの作成](./media/apache-kafka-get-started/create-hdinsight.png)
 
@@ -52,7 +49,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     
    __[クラスターの種類]__ を選択して **[クラスターの構成]** を表示します。
    
-   ![HDInsight 基本構成の Apache Kafka クラスター](./media/apache-kafka-get-started/hdinsight-basic-configuration-1.png)
+   ![HDInsight 基本構成の Apache Kafka クラスター](./media/apache-kafka-get-started/custom-basics-kafka.png)
 
 4. __[クラスターの構成]__ から、次の値を選択します。
 
@@ -61,7 +58,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     | クラスターの種類 | Kafka |
     | バージョン | Kafka 1.1.0 (HDI 3.6) |
 
-    **[選択]** を選択してクラスターの種類の設定を保存し、__[基本]__ に戻ります。
+    **[選択]** を選択してクラスターの種類の設定を保存し、 __[基本]__ に戻ります。
 
     ![クラスターの種類の選択](./media/apache-kafka-get-started/kafka-cluster-type.png)
 
@@ -75,10 +72,9 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     | リソース グループ | クラスターが作成されるリソース グループ。 |
     | Location | クラスターが作成される Azure リージョン。 |
 
-    > [!TIP]  
-    > 各 Azure リージョン (場所) は "_障害ドメイン_" を提供します。 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
-    >
-    > データの高可用性を実現するために、__3 つの障害ドメイン__ を含むリージョン (場所) を選択します。 リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
+    各 Azure リージョン (場所) は "_障害ドメイン_" を提供します。 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
+
+    データの高可用性を実現するために、__3 つの障害ドメイン__ を含むリージョン (場所) を選択します。 リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
 
    ![サブスクリプションを選択します。](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
@@ -86,7 +82,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
 6. このクイック スタートでは、既定のセキュリティ設定をそのまま使用します。 Enterprise セキュリティ パッケージの詳細については、「[Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)」を参照してください。 Apache Kafka のディスク暗号化に独自のキーを使用する方法については、「[Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む](apache-kafka-byok.md)」を参照してください。
 
-   クラスターを仮想ネットワークに接続したい場合は、**[仮想ネットワーク]** ボックスの一覧からいずれかの仮想ネットワークを選択します。
+   クラスターを仮想ネットワークに接続したい場合は、 **[仮想ネットワーク]** ボックスの一覧からいずれかの仮想ネットワークを選択します。
 
    ![仮想ネットワークにクラスターを追加する](./media/apache-kafka-get-started/kafka-security-config.png)
 
@@ -98,22 +94,19 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
 9. __[クラスター サイズ]__ で __[次へ]__ を選択して、既定の設定で続行します。
 
-    > [!IMPORTANT]  
-    > HDInsight 上の Apache Kafka の可用性を確保するため、__worker ノード数__ エントリを 3 以上に設定する必要があります。 既定値は 4 ですが、
-    
-    > [!TIP]  
-    > **ワーカー ノードごとのディスクの数**は、HDInsight における Apache Kafka のスケーラビリティを構成する項目です。 HDInsight 上の Apache Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Apache Kafka は I/O が多いため、[Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Apache Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。
+    HDInsight 上の Apache Kafka の可用性を確保するため、__worker ノード数__ エントリを 3 以上に設定する必要があります。 既定値は 4 ですが、
+
+    **ワーカー ノードごとのディスクの数**は、HDInsight における Apache Kafka のスケーラビリティを構成する項目です。 HDInsight 上の Apache Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Apache Kafka は I/O が多いため、[Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Apache Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。
 
    ![Apache Kafka のクラスター サイズの設定](./media/apache-kafka-get-started/kafka-cluster-size.png)
 
 10. __[詳細設定]__ で __[次へ]__ を選択し、既存の設定で続行します。
 
-11. **[概要]** でクラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、**[作成]** を選択してクラスターを作成します。
-   
+11. **[概要]** でクラスターの構成を確認します。 間違った設定を変更するには、 __[編集]__ リンクを使用します。 最後に、 **[作成]** を選択してクラスターを作成します。
+
     ![クラスター構成の概要](./media/apache-kafka-get-started/kafka-configuration-summary.png)
-   
-    > [!NOTE]
-    > クラスターの作成には最大で 20 分かかります。
+
+    クラスターの作成には最大で 20 分かかります。
 
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 
@@ -176,17 +169,13 @@ Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" �
     echo $clusterName, $clusterNameA
     ```
 
-4. Zookeeper ホスト情報で環境変数を設定するには、次のコマンドを使用します。
-    
+4. Zookeeper ホスト情報で環境変数を設定するには、次のコマンドを使用します。 このコマンドはすべての Zookeeper ホストを取得してから、最初の 2 つのエントリのみを返します。 これは、1 つのホストに到達できない場合に、いくらかの冗長性が必要なためです。
+
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
-    > [!TIP]  
-    > このコマンドは、クラスター ヘッド ノード上の Ambari サービスを直接クエリします。 `https://$CLUSTERNAME.azurehdinsight.net:80/` のパブリック アドレスを使用して Ambari にアクセスすることもできます。 一部のネットワーク構成は、パブリック アドレスへのアクセスを阻止します。 たとえば、ネットワーク セキュリティ グループ (NSG) を使用して、仮想ネットワークで HDInsight へのアクセスを制限します。
-
-    > [!NOTE]  
-    > このコマンドはすべての Zookeeper ホストを取得してから、最初の 2 つのエントリのみを返します。 これは、1 つのホストに到達できない場合に、いくらかの冗長性が必要なためです。
+    このコマンドは、クラスター ヘッド ノード上の Ambari サービスを直接クエリします。 `https://$CLUSTERNAME.azurehdinsight.net:80/` のパブリック アドレスを使用して Ambari にアクセスすることもできます。 一部のネットワーク構成は、パブリック アドレスへのアクセスを阻止します。 たとえば、ネットワーク セキュリティ グループ (NSG) を使用して、仮想ネットワークで HDInsight へのアクセスを制限します。
 
 5. 環境変数が正しく設定されていることを確認するには、次のコマンドを使用します。
 
@@ -230,15 +219,13 @@ Kafka は、"*トピック*" にデータのストリームを格納します。
 
     * 各パーティションは、クラスター内の 3 つのワーカー ノード間でレプリケートされます。
 
-        > [!IMPORTANT]  
-        > 3 つの障害ドメインを提供する Azure リージョンにクラスターを作成した場合は、3 のレプリケーション係数を使います。 そうでない場合は、4 のレプリケーション係数を使います。
+        3 つの障害ドメインを提供する Azure リージョンにクラスターを作成した場合は、3 のレプリケーション係数を使います。 そうでない場合は、4 のレプリケーション係数を使います。
         
         3 つの障害ドメインがあるリージョンでは、3 のレプリケーション係数により、レプリカを障害ドメインに分散できます。 2 つの障害ドメインのリージョンでは、4 のレプリケーション係数により、ドメイン全体に均等にレプリカが分散されます。
         
         リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
 
-        > [!IMPORTANT]  
-        > Apache Kafka は、Azure 障害ドメインを認識しません。 トピック用にパーティションのレプリカを作成すると、レプリカが適切に分散されず、高可用性が実現しない場合があります。
+        Apache Kafka は、Azure 障害ドメインを認識しません。 トピック用にパーティションのレプリカを作成すると、レプリカが適切に分散されず、高可用性が実現しない場合があります。
 
         高可用性を確保するには、[Apache Kafka パーティション再調整ツール](https://github.com/hdinsight/hdinsight-kafka-tools)を使用してください。 このツールは、Apache Kafka クラスターのヘッド ノードへの SSH 接続から実行する必要があります。
 
@@ -290,15 +277,14 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 2. 空の行にテキスト メッセージを入力して、Enter キーを押します。 このようにメッセージをいくつか入力してから、**Ctrl + C** キーを使用して通常のプロンプトに戻ります。 各行が、個別のレコードとして Apache Kafka トピックに送信されます。
 
 3. トピックからレコードを読み取るには、SSH 接続から `kafka-console-consumer.sh` ユーティリティを使用します。
-   
+
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
-   
+
     このコマンドにより、レコードがトピックから取得され、表示されます。 `--from-beginning` を使用することで、すべてのレコードが取得されるように、コンシューマーにストリームの先頭から開始するように指示しています。
 
-    > [!NOTE]
-    > 以前のバージョンの Kafka を使っている場合、`--bootstrap-server $KAFKABROKERS` を `--zookeeper $KAFKAZKHOSTS` に置き換えます。
+    以前のバージョンの Kafka を使っている場合、`--bootstrap-server $KAFKABROKERS` を `--zookeeper $KAFKAZKHOSTS` に置き換えます。
 
 4. __Ctrl+C__ キーを使用してコンシューマーを停止します。
 
@@ -310,7 +296,7 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 
 Azure Portal を使用してリソース グループを削除するには:
 
-1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、__[リソース グループ]__ を選択して、リソース グループの一覧を表示します。
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 __[リソース グループ]__ を選択して、リソース グループの一覧を表示します。
 2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
 3. __[リソース グループの削除]__ を選択し、確認します。
 

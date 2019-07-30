@@ -13,15 +13,15 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0a3edac7638d8b63086482cdecf8d74bde426c35
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a13ce98eeebf60a6b61ee9aff01107c61fa94641
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665629"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385110"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル:Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングのデモンストレーション
 
@@ -57,13 +57,13 @@ Service Fabric コンテナーは、サービスに対する負荷に対応し�
 Web フロントエンドをスケーリングするには、次の手順のようにします。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `http://lin4hjim3l4.westus.cloudapp.azure.com:19080`)。
-2. ツリー ビューで **fabric:/TestContainer/azurevotefront** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケーリング\)** を選びます。
+2. ツリー ビューで **fabric:/TestContainer/azurevotefront** ノードの横にある省略記号 (3 つの点) をクリックし、 **[Scale Service]\(サービスのスケーリング\)** を選びます。
 
 ![sfxscale][sfxscale]
 
 これで Web フロントエンドのインスタンス数をスケーリングできる状態になりました。
 
-1. この数値を **2** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
+1. この数値を **2** に変更し、 **[Scale Service]\(サービスのスケール\)** をクリックします。
 1. ツリー ビューの **fabric:/TestContainer/azurevotefront** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
 
 ![sfxscaledone][sfxscaledone]

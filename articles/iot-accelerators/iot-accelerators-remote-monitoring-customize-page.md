@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094489"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447082"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム ページを追加する
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI に新しいページを追加する方法について説明します。 この記事では、次の内容について説明します。
 
-- ローカル開発環境を準備する方法。
+- ローカルの開発環境を準備する方法。
 - Web UI に新しいページを追加する方法。
 
 その他のハウツーガイドでこのシナリオを拡張し、追加するページにさらに機能を追加します。
@@ -154,7 +154,7 @@ Web UI のローカル インスタンスをソリューション アクセラ�
 
 1. **pcs** CLI を使用して、ソリューション アクセラレータの**基本**インスタンスをデプロイします。 デプロイの名前と仮想マシンに提供した資格情報をメモしておきます。 詳しくは、[CLI を使用したデプロイ](iot-accelerators-remote-monitoring-deploy-cli.md)に関するページをご覧ください。
 
-1. Azure portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にします。 例: 
+1. Azure portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にします。 例:
 
     ```sh
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -162,7 +162,7 @@ Web UI のローカル インスタンスをソリューション アクセラ�
 
     テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md)。
 
-1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例: 
+1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例:
 
     ```sh
     az resource list --resource-group {your solution name} -o table
@@ -180,7 +180,7 @@ Web UI のローカル インスタンスをソリューション アクセラ�
 
 1. コマンドが完了し、Web サイトが起動したことを確認したら、仮想マシンから切断できます。
 
-1. [Remote Monitoring WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) リポジトリのローカル コピーで、**.env** ファイルを編集し、デプロイ済みのソリューションの URL を追加します。
+1. [Remote Monitoring WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) リポジトリのローカル コピーで、 **.env** ファイルを編集し、デプロイ済みのソリューションの URL を追加します。
 
     ```config
     NODE_PATH = src/

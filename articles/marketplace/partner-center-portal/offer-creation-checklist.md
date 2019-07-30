@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 904058c2c98c8ded2ea9c91e8aa7ec595aa49b05
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: eb824eb67e84ec4bdb93bc355ac6a6afa844ceb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482001"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701165"
 ---
 # <a name="offer-creation-checklist"></a>オファー作成のチェックリスト
 
@@ -38,12 +38,12 @@ ms.locfileid: "66482001"
 
 ## <a name="new-offer-modal"></a>[新しいオファー] モーダル 
 
-最初に入力を求められる情報は、オファーの名前と ID です。 
+最初に入力を求められる情報は、オファーの ID と別名です。 
 
 | **フィールド名**    | **メモ**   |  
 | :---------------- | :-----------| 
 | プラン ID  | 必須。作成後に変更することはできません。 最大 50 文字。小文字の英数字、ハイフン、アンダースコアのみで構成する必要があります。 |
-| プラン名  | 必須。 |
+| オファーの別名  | 必須。 |
 
 ## <a name="offer-setup-page"></a>[オファーのセットアップ] ページ
 

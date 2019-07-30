@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 07/22/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f1576e963f9c25821b5e3f57907662e3d86df4e0
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336254"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406352"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
-Azure Virtual WAN は、Azure への、または Azure 経由での、最適化および自動化されたブランチ接続を提供するネットワーク サービスです。 Azure リージョンは、ブランチの接続先として選択できるハブとして機能します。 ブランチが接続されたら、Azure バックボーンを利用して、ブランチから VNet への接続およびブランチ間の接続を確立できます。 Virtual WAN VPN をサポートするパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
+Azure Virtual WAN は、Azure への、または Azure 経由での、最適化および自動化されたブランチ接続を提供するネットワーク サービスです。 Azure リージョンは、ブランチの接続先として選択できるハブとして機能します。 Azure バックボーンを利用してブランチを接続し、ブランチから VNet への接続を利用することもできます。 Azure Virtual WAN VPN による接続の自動化をサポートするパートナーの一覧があります。 詳細については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
-Azure Virtual WAN は、サイト間 VPN (一般提供)、ExpressRoute (プレビュー)、ポイント対サイト ユーザー VPN (プレビュー) など、多数の Azure クラウド接続サービスを 1 つの操作インターフェイスにまとめたものです。 Azure VNet への接続は、仮想ネットワーク接続を使用して確立されます。
+Azure Virtual WAN は、サイト間 VPN、ExpressRoute など、多数の Azure クラウド接続サービスを 1 つの操作インターフェイスにまとめたものです。 Azure VNet への接続は、仮想ネットワーク接続を使用して確立されます。
+
+Virtual WAN の ExpressRoute は、現在はプレビュー段階です。
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan1.png)
 
@@ -49,7 +51,7 @@ Azure Virtual WAN は、サイト間 VPN (一般提供)、ExpressRoute (プレ�
 
 ## <a name="connectivity"></a>接続
 
-Virtual WAN では、サイト間、ポイント対サイト (プレビュー)、および ExpressRoute (プレビュー) という 3 種類の接続が可能です。
+Virtual WAN では、次の 2 種類の接続を使用できます。サイト間と ExpressRoute (プレビュー)。
 
 ### <a name="s2s"></a>サイト間 VPN 接続
 
@@ -69,11 +71,6 @@ Virtual WAN パートナーと連携する場合のワークフローは、次�
 
 利用可能なパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
-### <a name="p2s"></a>ポイント対サイト VPN 接続 (プレビュー)
-
-ポイント対サイト (P2S) 接続では、個々のクライアント コンピューターから仮想ハブへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 このソリューションは、在宅勤務の人間が自宅や会議室など、リモートの場所から接続する場合に便利です。 P2S VPN は、接続する必要があるクライアントが数台のみの場合に、S2S VPN の代わりに使用するソリューションとしても便利です。
-
-接続を作成するには、[Virtual WAN を使用したポイント対サイト接続の作成](virtual-wan-point-to-site-portal.md)に関するページを参照してください。
 
 ### <a name="er"></a>ExpressRoute 接続 (プレビュー)
 

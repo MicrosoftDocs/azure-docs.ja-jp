@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e988724f842ff12cd599eba95c31006fe208fad
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123401"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422893"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST のチュートリアル
 このチュートリアルでは、REST ベースのインターフェイスを表示する簡易な Azure Relay ホスト アプリケーションを構築する方法について説明します。 REST を使用すると、Web ブラウザーなどの Web クライアントから HTTP 要求を介して Service Bus API にアクセスできるようになります。
@@ -259,7 +259,7 @@ REST スタイルの WCF Relay サービスを作成するには、まずコン�
     ```
    
     この手順では、以前に定義した既定の **webHttpRelayBinding** を使用するサービスを構成します。 また、既定の **sbTokenProvider** を使用します。この値は次の手順で定義します。
-4. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS_KEY" キーを、以前に [Azure Portal][Azure portal] から取得した *Shared Access Signature* (SAS) に置き換えます。
+4. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS_KEY" キーを、手順 1 で [Azure Portal][Azure portal] から取得した *Shared Access Signature* (SAS) に置き換えます。
    
     ```xml
     <behaviors>
@@ -578,6 +578,6 @@ namespace Microsoft.ServiceBus.Samples
 ここでは、Azure Relay サービスを使用するアプリケーションを構築しました。詳細については、次の記事を参照してください。
 
 * [Azure Relay の概要](relay-what-is-it.md)
-* [.NET で WCF リレー サービスを使用する方法](relay-wcf-dotnet-get-started.md)
+* [.NET で WCF リレー サービスを使用する方法](service-bus-relay-tutorial.md)
 
 [Azure portal]: https://portal.azure.com

@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ace42278269ff6af31902dbecead81329815af12
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111115"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181411"
 ---
 ## <a name="create-a-topic-using-the-azure-portal"></a>Azure Portal を使用したトピックの作成
 1. **[Service Bus 名前空間]** ページで、左側のメニューの **[トピック]** を選択します。
@@ -30,7 +30,7 @@ ms.locfileid: "66111115"
 2. **[Service Bus トピック]** ページで、左側のメニューの **[サブスクリプション]** を選択し、ツール バーの **[+ サブスクリプション]** を選択します。 
     
     ![サブスクリプションの追加ボタン](./media/service-bus-create-topics-subscriptions-portal/add-subscription-button.png)
-3. **[サブスクリプションの作成]** ページで、サブスクリプションの**名前**に「**S1**」と入力し、**[作成]** を選択します。 
+3. **[サブスクリプションの作成]** ページで、サブスクリプションの**名前**に「**S1**」と入力し、 **[作成]** を選択します。 
 
     ![[サブスクリプションの作成] ページ](./media/service-bus-create-topics-subscriptions-portal/create-subscription-page.png)
 4. 前の手順を 2 回繰り返して、**S2** と **S3** というサブスクリプションを作成します。

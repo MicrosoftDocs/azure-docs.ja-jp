@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 5/02/2019
+ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: a3be5d28ebe394771a2d8b492f1f6a9c8a82fb9e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515305"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606517"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト
 

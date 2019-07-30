@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 50bd9ecdd665cf72c146c63ae25efa6773934a3e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 840a010f8606387a250552d884621a96d0031f90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62106229"
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive コネクタの使用
 OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。 
@@ -54,7 +54,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
    > [!NOTE]
    > この例では、選択したフォルダー内のファイルが更新されたときに、ロジック アプリが実行されます。 このトリガーの結果を確認するには、自身に電子メールを送信する別のアクションを追加してください。 たとえば、Office 365 Outlook の "*電子メールを送信する*" アクションを追加します。これにより、ファイルが更新されると電子メールが送信されます。 
 
-3. **[編集]** を選択し、**[頻度]** と **[間隔]** の値を設定します。 たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、**[頻度]** を **[分]** に設定し、**[間隔]** を **15** に設定します。 
+3. **[編集]** を選択し、 **[頻度]** と **[間隔]** の値を設定します。 たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、 **[頻度]** を **[分]** に設定し、 **[間隔]** を **15** に設定します。 
    
     ![](./media/connectors-create-api-onedrive/trigger-properties.png)
 4. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。 ロジック アプリが保存され、場合によっては、自動的に有効になります。
@@ -62,21 +62,21 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 ## <a name="use-an-action"></a>アクションを使用する
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
 
-1. プラス記号を選択します。 **[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
+1. プラス記号を選択します。 いくつかの選択肢が表示されます。 **[アクションの追加]** 、 **[条件の追加]** 、 **[その他]** です。
    
     ![](./media/connectors-create-api-onedrive/add-action.png)
 2. **[アクションの追加]** を選択します。
 3. テキスト ボックスに「onedrive」と入力して、使用可能なすべてのアクションの一覧を取得します。
    
     ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
-4. この例では、**[OneDrive - Create file (OneDrive - ファイルを作成する)]** を選択します。 接続が既に存在する場合は、**[フォルダー パス]** で、ファイルを配置する場所を選択し、**[ファイル名]** に入力して、**目的のファイルのコンテンツ**を選択します。  
+4. この例では、 **[OneDrive - Create file (OneDrive - ファイルを作成する)]** を選択します。 接続が既に存在する場合は、 **[フォルダー パス]** で、ファイルを配置する場所を選択し、 **[ファイル名]** に入力して、**目的のファイルのコンテンツ**を選択します。  
    
     ![](./media/connectors-create-api-onedrive/sample-action.png)
    
     接続情報の入力を求められたら、詳細を入力して接続を作成します。 これらのプロパティについては、この記事の「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。 
    
    > [!NOTE]
-   > この例では、OneDrive フォルダーに新しいファイルを作成します。 別のトリガーからの出力を使用して、OneDrive ファイルを作成できます。 たとえば、Office 365 Outlook の "*When a new email arrives (新しい電子メールが届いたとき)*" トリガーを追加します。 次に、OneDrive の "*Create file (ファイルを作成する)*" アクションを追加します。このアクションは、ForEach 内の Attachments フィールドと Content-Type フィールドを使用して OneDrive に新しいファイルを作成します。 
+   > この例では、OneDrive フォルダーに新しいファイルを作成します。 別のトリガーからの出力を使用して、OneDrive ファイルを作成できます。 たとえば、Office 365 Outlook の "*When a new email arrives (新しい電子メールが届いたとき)* " トリガーを追加します。 次に、OneDrive の "*Create file (ファイルを作成する)* " アクションを追加します。このアクションは、ForEach 内の Attachments フィールドと Content-Type フィールドを使用して OneDrive に新しいファイルを作成します。 
    > 
    > ![](./media/connectors-create-api-onedrive/foreach-action.png)
 

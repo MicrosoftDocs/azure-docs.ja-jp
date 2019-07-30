@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b8f6a2d12e1a9920421e6491432b516520ae110b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 71a8a0e268c1b264a0a1a7f955f310bfddc830d2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493741"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439936"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -37,7 +37,7 @@ Application Insights Profiler は、App Services ランタイムの一部とし�
 
    ![App Service ポータルで App Insights を有効にする](./media/profiler/AppInsights-AppServices.png)
 
-1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションでは、Profiler を手動で有効にする手順を説明します。](#enable-profiler-manually-or-with-azure-resource-manager) 
+1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションには、Profiler を手動で有効にするための手順が含まれています。](#enable-profiler-manually-or-with-azure-resource-manager) 
 
    ![App Insights のサイト拡張機能を追加する][Enablement UI]
 
@@ -58,10 +58,18 @@ Profiler を有効にするために必要な設定は次のとおりです。
 
 これらの値は、[Azure Resource Manager テンプレート](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp) または [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest) を使用して設定できます。
 
+### <a name="enabling-profiler-for-other-clouds-manually"></a>他のクラウドに対して Profiler を手動で有効にする
+
+他のクラウドに対して Profiler を有効にする場合は、次のアプリ設定を使用できます。
+
+|アプリ設定    | 米国政府の値| China Cloud |   
+|---------------|---------------------|-------------|
+|ApplicationInsightsProfilerEndpoint         | https://agent.serviceprofiler.azure.us    | https://profiler.applicationinsights.azure.cn |
+|ApplicationInsightsEndpoint | https://dc.applicationinsights.us | https://dc.applicationinsights.azure.cn |
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
 
-個々の Web アプリのインスタンスで Profiler を停止または再起動するには、**[Web ジョブ]** で Web Apps リソースに移動します。 Profiler を削除するには、**[拡張機能]** に移動します。
+個々の Web アプリのインスタンスで Profiler を停止または再起動するには、 **[Web ジョブ]** で Web Apps リソースに移動します。 Profiler を削除するには、 **[拡張機能]** に移動します。
 
 ![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
 

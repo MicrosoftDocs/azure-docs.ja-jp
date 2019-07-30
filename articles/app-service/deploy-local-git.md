@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/14/2019
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e66c625c3f30580715762d2dd3f48eeaa6e548dc
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956063"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143947"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -52,47 +52,42 @@ Kudu ビルド サーバーを使用したアプリへのローカル Git のデ
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
+> [!NOTE]
+> アカウントレベルの資格情報ではなく、各アプリに対して自動的に生成されるアプリレベルの資格情報を使用してデプロイすることもできます。
+>
+
 ### <a name="enable-local-git-with-kudu"></a>Kudu を使用するローカル Git を有効にする
 
 Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にするには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) を実行します。
 
 ```azurecli-interactive
-az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
+az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
 
 Git 対応アプリを作成するには、Cloud Shell で `--deployment-local-git` パラメーターを指定して [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) を実行します。
 
 ```azurecli-interactive
-az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
+az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
 ```
 
-`az webapp create` コマンドの出力は次のようになります。
+### <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
-```json
-Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-### <a name="deploy-your-project"></a>プロジェクトをデプロイする
-
-"_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[アプリの Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL で置き換えます。
+"_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _\<username>_ は[デプロイ ユーザーの構成](#configure-a-deployment-user)のページのデプロイ ユーザーに、 _\<app-name>_ は[アプリ用の Git を有効にする](#enable-local-git-with-kudu)方法のページのアプリ名に置き換えます。
 
 ```bash
-git remote add azure <url>
+git remote add azure https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git
 ```
 
-アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 パスワードの入力を求められたら、Azure Portal へのログインに使用するパスワードではなく、「[デプロイ ユーザーの構成](#configure-a-deployment-user)」で作成したパスワードを入力するようにしてください。
+> [!NOTE]
+> 代わりにアプリレベルの資格情報を使用してデプロイするには、Cloud Shell で次のコマンドを実行してアプリに固有の資格情報を取得します。
+>
+> ```azurecli-interactive
+> az webapp deployment list-publishing-credentials -n <app-name> -g <group-name> --query scmUri --output tsv
+> ```
+>
+> 次に、コマンド出力を使用して上記のように `git remote add azure <url>` を実行します。
+
+アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 パスワードの入力を求められたら、Azure portal へのサインインに使用するパスワードではなく、「[デプロイ ユーザーの構成](#configure-a-deployment-user)」で作成したパスワードを入力するようにしてください。
 
 ```bash
 git push azure master

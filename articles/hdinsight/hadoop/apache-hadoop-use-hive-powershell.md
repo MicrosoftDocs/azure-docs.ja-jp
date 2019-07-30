@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 108a3e7d899eef4ca78ae7507bf4852b861e74d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 243713d7961c911cdda93d3d680a952d424da22b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078360"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell を使用して Apache Hive クエリを実行する
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -28,9 +28,6 @@ ms.locfileid: "64722172"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * バージョン 3.4 以上の HDInsight クラスター上の Linux ベースの Apache Hadoop。
-
-  > [!IMPORTANT]  
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * Azure PowerShell を搭載するクライアント。
 
@@ -60,7 +57,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
         .\hivejob.ps1
 
-    スクリプトの実行時に、クラスター名と HTTPS/クラスター管理者アカウントの資格情報を入力するように求められます。 Azure サブスクリプションへのログインが求められる場合もあります。
+    スクリプトの実行時に、クラスター名と HTTPS/クラスター管理者アカウントの資格情報を入力するように求められます。 Azure サブスクリプションへのサインインを求められる場合もあります。
 
 3. ジョブが完了すると、次のテキストのような情報が返されます。
 

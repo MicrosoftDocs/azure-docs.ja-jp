@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a0ff4190a1712b91bf58fafd80a03fc2737e7a4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475526"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383002"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>マイ プロファイル (プレビュー) ポータルから自分の組織を管理する
+
 **マイ プロファイル** ポータルの **[組織]** ページで、ご自分の組織を管理できます。
 
 **[組織]** ページに表示される組織には、次の 2 種類があります。
@@ -31,6 +32,7 @@ ms.locfileid: "60475526"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-organizations"></a>組織を表示する
+
 1. ご自分の職場または学校アカウントでサインインした後、 https://myprofile.microsoft.com/ ページに移動します。
 
 2. 左側のナビゲーション ウィンドウから **[組織]** を選択するか、 **[組織]** ブロックから **[組織の確認]** リンクを選択します。
@@ -41,9 +43,10 @@ ms.locfileid: "60475526"
 
     ![[組織] ページ](media/myprofile-portal/myprofile-portal-organization-page.png)
 
-3. 関連付けられているその他の組織を見直して、ご自分のアカウントに接続されているすべての組織に覚えがあることを確認します。
+4. 関連付けられているその他の組織を見直して、ご自分のアカウントに接続されているすべての組織に覚えがあることを確認します。
 
 ## <a name="leave-an-organization"></a>組織を脱退する
+
 ホーム組織以外の組織から脱退できます。
 
 >[!Important]

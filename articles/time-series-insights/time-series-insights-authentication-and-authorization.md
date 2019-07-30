@@ -1,99 +1,84 @@
 ---
-title: Azure Time Series Insights の API によって認証と承認を行う方法 | Microsoft Docs
+title: Azure Time Series Insights の API を使用して認証と承認を行う | Microsoft Docs
 description: この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 06/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b6cd993e9f6c6dbf173c161de638c6c4a8b18d3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 899bcffaf3a54bd541d488f99c35ec6721d751ca
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237050"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543998"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
-この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションで使用される認証と承認を構成する方法を説明します。
-
-> [!TIP]
-> Azure Active Directory の Time Series Insights 環境に対する[データ アクセスの許可](./time-series-insights-data-access.md)について参照します。
+このドキュメントでは、新しい Azure Active Directory ブレードを使用して Azure Active Directory にアプリを登録する方法について説明します。 Azure Active Directory に登録されたアプリを使用すると、ユーザーは、Time Series Insights 環境に関連付けられた Azure Time Series Insight API を使用する認証と承認を受けることができます。
 
 ## <a name="service-principal"></a>サービス プリンシパル
 
-このセクションと後続のセクションでは、アプリケーションを構成して、そのアプリケーションの代わりに Time Series Insights API にアクセスする方法について説明します。 このアプリケーションでは、ユーザー資格情報ではなくアプリケーションの資格情報を使って、Time Series Insights 環境にある参照データをクエリしたり公開したりすることができます。
+以下のセクションでは、アプリケーションを構成して、そのアプリの代わりに Time Series Insights API にアクセスする方法について説明します。 アプリケーションは、Azure Active Directory を介して独自のアプリケーション資格情報を使用し、Time Series Insights 環境で参照データをクエリまたは発行することができます。
 
-## <a name="best-practices"></a>ベスト プラクティス
+## <a name="summary-and-best-practices"></a>概要とベスト プラクティス
 
-Time Series Insights にアクセスする必要があるアプリケーションがある場合
+Azure Active Directory のアプリ登録フローには、主に 3 つの手順があります。
 
-1. Azure Active Directory アプリを設定します。
-1. Time Series Insights 環境に[データ アクセス ポリシーを割り当てます](./time-series-insights-data-access.md)。
+1. Azure Active Directory に[アプリケーションを登録する](#azure-active-directory-app-registration)。
+1. [Time Series Insights 環境へのデータ アクセス](#granting-data-access)をアプリケーションに承認します。
+1. [クライアント アプリ](#client-app-initialization)の  **からトークンを取得するには、** [申請 ID] **と**[クライアント シークレット]`https://api.timeseries.azure.com/` を使用します。 トークンは、Time Series Insights API の呼び出しに使用できます。
 
-以下のことから、ユーザーの資格情報ではなく、アプリケーションを使用することが望ましいです。
+**手順 3** に従い、アプリケーションとユーザーの資格情報を分離すると、次のことが可能になります。
 
 * 独自のアクセス許可とは異なるアクセス許可を、アプリ ID に割り当てることができます。 通常、こうしたアクセス許可はアプリで必要な操作のみに制限されます。 たとえば、アプリが特定の Time Series Insights 環境でデータの読み取りだけを行うようにすることが可能です。
-* お客様の責任が変わっても、アプリの資格情報を変更する必要はありません。
-* 無人インストール用スクリプトを実行するときに、証明書またはアプリケーション キーを使用して認証を自動化できます。
+* **クライアント シークレット**またはセキュリティ証明書を使用して、作成しているユーザーの認証資格情報から、アプリのセキュリティを分離します。 その結果、アプリケーションの資格情報は特定のユーザーの資格情報に依存しません。 ユーザーのロールが変わっても、アプリケーションは必ずしも新しい資格情報や追加の構成を必要としません。 ユーザーが自分のパスワードを変更した場合、アプリケーションへのすべてのアクセスに新しい資格情報やキーは必要ありません。
+* (存在する必要がある) 特定のユーザーの資格情報ではなく、**クライアント シークレット**またはセキュリティ証明書を使用して無人スクリプトを実行します。
+* Azure Time Series Insights API へのアクセスをセキュリティで保護するには、パスワードではなくセキュリティ証明書を使用します。
 
-以下のセクションでは、Azure portal でそれらの手順を行う方法を示します。 この記事では、シングルテナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 通常は、組織内で実行される基幹業務アプリケーションには、シングルテナント アプリケーションが使用されます。
+> [!IMPORTANT]
+> Azure Time Series Insights セキュリティ ポリシーを構成するときは、**懸念事項の分離** (このシナリオについては前述を参照) の原則に従います。
 
-## <a name="set-up-summary"></a>概要の設定
-
-セットアップ フローは、次の 3 つの手順で構成されます。
-
-1. Azure Active Directory にアプリケーションを作成する。
-1. このアプリケーションを承認して Time Series Insights 環境にアクセスする。
-1. アプリケーション ID とキーを使って、`https://api.timeseries.azure.com/` からトークンを取得する。 トークンは、Time Series Insights API の呼び出しに使用できます。
+> [!NOTE]
+> * この記事では、シングルテナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。
+> * 通常は、組織内で実行される基幹業務アプリケーションには、シングルテナント アプリケーションが使用されます。
 
 ## <a name="detailed-setup"></a>詳細なセットアップ
 
-1. Azure Portal で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新しいアプリケーションの登録]** の順に選びます。
+### <a name="azure-active-directory-app-registration"></a>Azure Active Directory のアプリ登録
 
-   [![Azure Active Directory での新しいアプリケーションの登録](media/authentication-and-authorization/active-directory-new-application-registration.png)](media/authentication-and-authorization/active-directory-new-application-registration.png#lightbox)
+[!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-1. アプリケーションに名前を付けて、種類として **[Web アプリ/API]** を選択し、 **[サインオン URL]** に任意の有効な URI を選択して、 **[作成]** をクリックします。
+### <a name="granting-data-access"></a>データ アクセスの許可
 
-   [![Azure Active Directory にアプリケーションを作成する](media/authentication-and-authorization/active-directory-create-web-api-application.png)](media/authentication-and-authorization/active-directory-create-web-api-application.png#lightbox)
-
-1. 新しく作成されたアプリケーションを選択し、アプリケーション ID を普段使用しているテキスト エディターにコピーします。
-
-   [![アプリケーション ID をコピーする](media/authentication-and-authorization/active-directory-copy-application-id.png)](media/authentication-and-authorization/active-directory-copy-application-id.png#lightbox)
-
-1. **[キー]** を選択してキー名を入力し、有効期限を選択して、 **[保存]** をクリックします。
-
-   [![アプリケーション キーを選択する](media/authentication-and-authorization/active-directory-application-keys.png)](media/authentication-and-authorization/active-directory-application-keys.png#lightbox)
-
-   [![キー名と有効期限を入力し、[保存] をクリックする](media/authentication-and-authorization/active-directory-application-keys-save.png)](media/authentication-and-authorization/active-directory-application-keys-save.png#lightbox)
-
-1. 普段使用しているテキスト エディターにキーをコピーします。
-
-   [![アプリケーション キーをコピーする](media/authentication-and-authorization/active-directory-copy-application-key.png)](media/authentication-and-authorization/active-directory-copy-application-key.png#lightbox)
-
-1. Time Series Insights 環境のための **[データ アクセス ポリシー]** を選択して、 **[追加]** をクリックします。
+1. Time Series Insights 環境のための **[データ アクセス ポリシー]** を選択して、 **[追加]** を選択します。
 
    [![Time Series Insights 環境に新しいデータ アクセス ポリシーを追加する](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
-1. **[ユーザーの選択]** ダイアログ ボックスに、アプリケーション名 (**手順 2** より) またはアプリケーション ID (**手順 3** より) を貼り付けます。
+1. **[ユーザーの選択]** ダイアログ ボックスで、Azure Active Directory のアプリ登録セクションの **[アプリケーション名]** または **[申請 ID]** のいずれかを貼り付けます。
 
    [![[ユーザーの選択] ダイアログ ボックスでアプリケーションを検索する](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. ロール (データを照会する場合は **[閲覧者]** 、データを照会して参照データを変更する場合は **[共同作成者]** ) を選択して、 **[OK]** をクリックします。
+1. ロールを選択します。 データのクエリを実行するには **[閲覧者]** を選択し、データのクエリを実行して参照データを変更するには **[共同作成者]** を選択します。 **[OK]** を選択します。
 
-   [![[ロールの選択] ダイアログ ボックスで、[閲覧者] または [共同作成者] を選択する](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
+   [![[ユーザー ロールの選択] ダイアログ ボックスで、[閲覧者] または [共同作成者] を選択する](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
-1. **[OK]** をクリックしてポリシーを保存します。
+1. **[OK]** を選択してポリシーを保存します。
 
-1. アプリケーション ID (**手順 3** より) とアプリケーション キー (**手順 5** より) を使用して、アプリケーションの代わりにトークンを取得します。 トークンは、アプリケーションが Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
+   > [!TIP]
+   > Azure Active Directory の Time Series Insights 環境に対する[データ アクセスの許可](./time-series-insights-data-access.md)について参照します。
 
-    C# を使用している場合は、次のコードを使って、アプリケーションのためのトークンを取得できます。 サンプルの詳細については、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
+### <a name="client-app-initialization"></a>クライアント アプリの初期化
+
+1. アプリケーションに代わってトークンを取得するには、Azure Active Directory のアプリ登録セクションの **[申請 ID]** と **[クライアント シークレット]** (アプリケーション キー) を使用します。
+
+    C# では、次のコードでアプリケーションに代わってトークンを取得できます。 サンプルの詳細については、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
 
     ```csharp
     // Enter your Active Directory tenant domain name
@@ -114,11 +99,13 @@ Time Series Insights にアクセスする必要があるアプリケーショ�
     string accessToken = token.AccessToken;
     ```
 
-ご利用のアプリケーションの**アプリケーション ID** と**キー**を使用し、Azure Time Series Insight で認証します。
+1. トークンは、アプリケーションが Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
 
 ## <a name="next-steps"></a>次の手順
 
-- Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
+- GA Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](./time-series-insights-query-data-csharp.md)に関する記事を参照してください。
+
+- プレビュー Time Series Insights API コード サンプルについては、[C# を使用したプレビュー データの照会](./time-series-insights-update-query-data-csharp.md)に関する記事を参照してください。
 
 - API リファレンスについては、[API リファレンスのクエリ](/rest/api/time-series-insights/ga-query-api)に関するページをご覧ください。
 

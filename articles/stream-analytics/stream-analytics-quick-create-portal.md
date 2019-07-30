@@ -4,20 +4,20 @@ description: このクイック スタートでは、Stream Analytic ジョブ�
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 06/03/2019
+ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 4efb8aa21622abddca1add3d8b2fcb523cf45da5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: e05d293760b88cd02fdffae60e762f040a4d1311
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493375"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449224"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Stream Analytics ジョブを作成する
 
-このクイック スタートでは、Stream Analytics ジョブの作成によって作業を開始する方法を示します。 このクイック スタートでは、リアルタイム ストリーミング データを読み取り、温度が 27 を超えるメッセージをフィルター処理する Stream Analytics ジョブを定義します。 お客様の Stream Analytics ジョブによって IoT Hub デバイスからデータが読み取られ、変換されて BLOB ストレージ内のコンテナーに書き戻されます。 このクイック スタートで使用される入力データは、Raspberry Pi オンライン シミュレーターによって生成されます。 
+このクイック スタートでは、Stream Analytics ジョブの作成によって作業を開始する方法を示します。 このクイック スタートでは、リアルタイム ストリーミング データを読み取り、温度が 27 を超えるメッセージをフィルター処理する Stream Analytics ジョブを定義します。 お客様の Stream Analytics ジョブによって IoT Hub からデータが読み取られ、変換されて BLOB ストレージ内のコンテナーに書き戻されます。 このクイック スタートで使用される入力データは、Raspberry Pi オンライン シミュレーターによって生成されます。 
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -27,7 +27,7 @@ ms.locfileid: "66493375"
 
 ## <a name="prepare-the-input-data"></a>入力データを準備する
 
-Stream Analytics ジョブを定義する前に、後でジョブの入力として構成されるデータを準備する必要があります。 ジョブで必要な入力データを準備するには、次の手順を完了します。
+Stream Analytics ジョブを定義する前に、入力データを準備する必要があります。 リアルタイムのセンサー データは、ジョブの入力として構成された IoT Hub に後で取り込まれます。 ジョブで必要な入力データを準備するには、次の手順を完了します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -179,7 +179,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
+リソース グループ、Stream Analytics ジョブ、およびすべての関連するリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
 
 1. Azure Portal の左側のメニューで **[リソース グループ]** を選択し、作成したリソースの名前を選択します。  
 

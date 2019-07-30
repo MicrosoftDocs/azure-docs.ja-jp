@@ -9,11 +9,11 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149039"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181731"
 ---
 ## <a name="push-image-to-registry"></a>レジストリにイメージをプッシュする
 
@@ -23,7 +23,7 @@ Azure Container Registry にイメージをプッシュするには、まずイ�
 docker pull hello-world
 ```
 
-イメージをレジストリにプッシュするには、ACR ログイン サーバーの完全修飾名を使用して、そのイメージにタグを付けておく必要があります。 ログイン サーバー名は、*\<registry-name\>.azurecr.io* (すべて小文字) という形式です。たとえば、*mycontainerregistry007.azurecr.io* などです。
+イメージをレジストリにプッシュするには、ACR ログイン サーバーの完全修飾名を使用して、そのイメージにタグを付けておく必要があります。 ログイン サーバー名は、 *\<registry-name\>.azurecr.io* (すべて小文字) という形式です。たとえば、*mycontainerregistry007.azurecr.io* などです。
 
 [docker tag][docker-tag] コマンドを使用してイメージにタグ付けします。 `<acrLoginServer>` を ACR インスタンスのログイン サーバー名で置き換えます。
 
@@ -37,7 +37,7 @@ docker tag hello-world <acrLoginServer>/hello-world:v1
 docker push <acrLoginServer>/hello-world:v1
 ```
 
-コンテナー レジストリにイメージをプッシュした後は、ローカルの Docker 環境から `hello-world:v1` イメージを削除します  (この [docker rmi][docker-rmi] コマンドは、Azure コンテナー リポジトリ内の **hello-world** リポジトリからイメージを削除しないことに注意してください)。
+コンテナー レジストリにイメージをプッシュした後は、ローカルの Docker 環境から `hello-world:v1` イメージを削除します (この [docker rmi][docker-rmi] コマンドは、Azure コンテナー リポジトリ内の **hello-world** リポジトリからイメージを削除しないことに注意してください)。
 
 ```
 docker rmi <acrLoginServer>/hello-world:v1

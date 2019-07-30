@@ -2,19 +2,19 @@
 title: 用語集 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Custom Translator 用語集
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: ae9b17dde20913c5d8d1201e66fcc924ce26a2b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3781969f74b8314ebb4633697b922f47c12196ae
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389327"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443390"
 ---
 # <a name="glossary"></a>用語集
 

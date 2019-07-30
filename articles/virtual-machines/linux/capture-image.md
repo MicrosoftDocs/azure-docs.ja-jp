@@ -4,7 +4,7 @@ description: Azure CLI を使用し、Azure VM のイメージをキャプチャ
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 96169f8f52ea9d45d8804a7d4fc08827a4f1ea03
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542872"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668409"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
 
@@ -30,7 +30,9 @@ ms.locfileid: "60542872"
 
 バックアップやデバッグのために既存の Linux VM のコピーを作成する方法、またはオンプレミス VM から特別な Linux VHD をアップロードする方法については、「[カスタム ディスク イメージをアップロードして Linux VM を作成する](upload-vhd.md)」を参照してください。  
 
-**Packer** を使用し、カスタム構成を作成することもできます。 詳細については、「[Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法](build-image-with-packer.md)」を参照してください。
+**Azure VM Image Builder (パブリック プレビュー)** サービスを使用して、ご自身のカスタム イメージを作成することができます。ツールの学習やビルド パイプラインのセットアップは必要なく、イメージ構成を用意するだけで、Image Builder によってイメージが作成されます。 詳細については、[Azure VM Image Builder の概要](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)に関する記事を参照してください。
+
+さらに、**Packer** を使用してカスタム構成を作成することもできます。 詳細については、「[Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法](build-image-with-packer.md)」を参照してください。
 
 イメージを作成する前に、次の項目が必要です。
 

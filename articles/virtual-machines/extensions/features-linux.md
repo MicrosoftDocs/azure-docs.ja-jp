@@ -4,7 +4,7 @@ description: Azure 仮想マシンに使用できる拡張機能について、�
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 3f22da9eabc6f539ef37009f565f073b9de89319
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036999"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706738"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -57,7 +57,7 @@ Azure VM エージェントは、Azure VM と Azure ファブリック コント
 Linux エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、 [こちらの記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
 )を参照してください。
 
-一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'*" が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
+一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'* " が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
 
 #### <a name="network-access"></a>ネットワーク アクセス
 
@@ -108,7 +108,7 @@ info:    vm extension set command OK
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-VM 拡張機能は、Azure Portal から既存の VM に適用できます。 ポータルで VM を選択し、**[拡張機能]** を選択してから、**[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。
+VM 拡張機能は、Azure Portal から既存の VM に適用できます。 ポータルで VM を選択し、 **[拡張機能]** を選択してから、 **[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。
 
 次の図は、Azure Portal からの Linux カスタム スクリプト拡張機能のインストールを示しています:
 
@@ -222,7 +222,7 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 更新プログラムが利用できる場合で、拡張機能への変更があり、次のような他の VM モデルが変更されるときは、更新プログラムは VM にのみインストールされます。
 
 - データ ディスク
-- 拡張機能
+- Extensions
 - ブート診断コンテナー
 - ゲスト OS のシークレット
 - VM サイズ
@@ -302,7 +302,7 @@ az vm show --resource-group myResourceGroup --name myVM
 
 #### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>autoUpgradeMinorVersion が行われたタイミングを識別する
 
-拡張機能への更新がいつ行われたかを判断するには、*/var/log/waagent.log* で VM 上のエージェント ログを確認します。
+拡張機能への更新がいつ行われたかを判断するには、 */var/log/waagent.log* で VM 上のエージェント ログを確認します。
 
 次の例では、VM には *Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9025* がインストールされていました。 *Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027* の修正プログラムが入手可能でした:
 
@@ -335,9 +335,9 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 次のトラブルシューティング手順は、すべての VM 張機能に適用されます。
 
-1. Linux エージェント ログをチェックするには、*/var/log/waagent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
+1. Linux エージェント ログをチェックするには、 */var/log/waagent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
 
-2. */var/log/azure/<extensionName>* で、実際の拡張機能のログをさらに詳しくチェックします
+2. */var/log/azure/\<extensionName>* で、実際の拡張機能のログをさらに詳しくチェックします
 
 3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。
 
@@ -382,7 +382,7 @@ az vm get-instance-view \
   }
 ```
 
-拡張機能の実行の状態は、Azure Portal で確認することもできます。 拡張機能の状態を表示するには、VM を選択し、**[拡張機能]** を選択して、目的の拡張機能を選択します。
+拡張機能の実行の状態は、Azure Portal で確認することもできます。 拡張機能の状態を表示するには、VM を選択し、 **[拡張機能]** を選択して、目的の拡張機能を選択します。
 
 ### <a name="rerun-a-vm-extension"></a>VM 拡張機能の再実行
 
@@ -408,7 +408,7 @@ az vm extension delete \
 | --- | --- | --- |
 | Linux 用カスタム スクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します。 |[Linux 用カスタム スクリプト拡張機能](custom-script-linux.md) |
 | VM アクセス拡張機能 |Azure 仮想マシンへのアクセスを回復します。 |[VM アクセス拡張機能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
-| Azure Diagnostics 拡張機能 |Azure Diagnostics を管理します |[Azure 診断拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Azure Diagnostics 拡張機能 |Azure Diagnostics を管理します |[Azure Diagnostics 拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します。 |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>次の手順

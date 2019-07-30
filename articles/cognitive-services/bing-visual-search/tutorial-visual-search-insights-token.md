@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 06/18/2019
 ms.author: rosh
-ms.openlocfilehash: ebe54f5319986f0588e06a980a6f914beb6adbcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78584c2c0419bb27fb58c07eb97b1aa38501951f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65909388"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204079"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>ImageInsightsToken を使用して以前の検索から似た画像を見つける
 
 Visual Search SDK を使用すると、前に実行された `ImageInsightsToken` を返す検索からオンラインで画像を検索できます。 このアプリケーションでは `ImageInsightsToken` を取得し、このトークンをその後の検索で使用します。 その後、`ImageInsightsToken` を Bing に送信し、Bing Search URL とオンラインで見つかった類似する画像の URL を含む結果を返します。
 
-このチュートリアルのソース コード全体は、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInisghtsTokens.cs) で入手できます。
+このチュートリアルのソース コード全体は、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,10 +38,10 @@ Visual Search SDK を使用すると、前に実行された `ImageInsightsToken
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Bing Image Search SDK から ImageInsightsToken を取得する
 
-このアプリケーションでは、[Bing Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) によって取得された `ImageInsightsToken` を使用します。 新しい C# コンソール アプリケーションで、`ImageSearchAPI()` を使用して API を呼び出すクライアントを作成します。 その後、クエリで `SearchAsync()` を使用します。
+このアプリケーションでは、[Bing Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) によって取得された `ImageInsightsToken` を使用します。 新しい C# コンソール アプリケーションで、`ImageSearchClient()` を使用して API を呼び出すクライアントを作成します。 その後、クエリで `SearchAsync()` を使用します。
 
 ```csharp
-var client = new ImageSearchAPI(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
+var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
 var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 ```

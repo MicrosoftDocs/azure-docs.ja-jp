@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ea95405f68938906ba010836753cd74ab0f775e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809363"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446744"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる
 Service Fabric クラスター リソース マネージャーは、動的な負荷の変更、ノードやサービスの追加や削除への応答をサポートしています。 また、制約違反を自動的に修正し、必要に応じてクラスターを再調整することもできます。 このような操作はどのくらいの頻度で実行されるでしょうか。また、何によってトリガーされるでしょうか。
@@ -36,9 +36,9 @@ Service Fabric クラスター リソース マネージャーは、動的な負
 Cluster Resource Manager が行うことのできる、これらの異なる修正はいずれも、その頻度を制御する別々のタイマーによって管理されています。 それぞれのタイマーが作動したとき、タスクがスケジュールされます。 既定では、Resource Manager では次の処理が実行されます。
 
 * 1/10 秒ごとに状態をスキャンして更新を適用する (例: ノードがダウンしたことを記録する)
-* 配置チェック フラグを設定する 
+* 配置チェック フラグを毎秒設定する
 * 制約チェック フラグを毎秒設定する
-* 5 秒ごとに分散フラグを設定する
+* 分散フラグを 5 秒ごとに設定する
 
 これらのタイマーを制御する構成例を次に示します。
 

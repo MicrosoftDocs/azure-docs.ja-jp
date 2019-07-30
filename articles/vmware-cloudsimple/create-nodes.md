@@ -1,5 +1,5 @@
 ---
-title: CloudSimple による VMware ソリューション - Azure
+title: CloudSimple による VMware ソリューション用のノードをプロビジョニングする - Azure
 description: CloudSimple 展開時に VMWare にノードを追加する方法について説明します
 author: dikamath
 ms.author: dikamath
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9f5108207c4f8debc65b9d1fe625ae7033ca4e70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33de07663c91f12d4e10c4661b841cd2dbe5a162
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64576837"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165254"
 ---
-# <a name="purchase-nodes-for-vmware-solution-by-cloudsimple---azure"></a>CloudSimple による VMware ソリューション - Azure
+# <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>CloudSimple による VMware ソリューション用のノードをプロビジョニングする - Azure
 
 Azure portal における VM のプロビジョニング 次に、CloudSimple プライベート クラウド環境に従量課金の容量をセットアップできます。
 
-## <a name="add-a-purchased-node-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドを に購入したノードを追加します。
+## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドにプロビジョニングしたノードを追加する
 
 1. **[すべてのサービス]** を選択します。
 2. **CloudSimple ノード** を検索します。
@@ -31,7 +31,7 @@ Azure portal における VM のプロビジョニング 次に、CloudSimple �
 
     ![CloudSimple ノードを追加します。](media/create-cloudsimple-node-add.png)
 
-5. CloudSimple ノードを購入するサブスクリプションを選択します。
+5. CloudSimple ノードをプロビジョニングするサブスクリプションを選択します。
 6. ノードのリソース グループを選択します。 リソース グループを新規に追加するには、 **[Create New]** (新規作成) をクリックします。
 7. ノードを識別するためにプレフィックスを入力します。
 8. ノード リソースの場所を選択します。

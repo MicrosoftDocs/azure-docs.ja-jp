@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: ed263fec271801ac9c46bbc3125c71ca15b9a330
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153969"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621975"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -111,7 +111,7 @@ Azure Security Center の [[セキュリティ アラート]](../../security-cen
 
 ### <a name="anomalous-access-pattern-alerts"></a>異常なアクセス パターンのアラート
 
-* **Access from unusual location (通常とは異なる場所からのアクセス)** :このアラートは、ストレージ アカウントへのアクセス パターンに変化が生じたときにトリガーされます。 たとえば、だれかが通常とは異なる地理的な場所からストレージ アカウントにアクセスした場合などです。
+* **Access from unusual location (通常とは異なる場所からのアクセス)** :このアラートは、だれかが通常とは異なる地理的な場所からストレージ アカウントにアクセスした場合にトリガーされます。
 考えられる原因は次のとおりです。
    * 攻撃者がストレージ アカウントにアクセスした
    * 正当なユーザーが新しい場所からストレージ アカウントにアクセスした
@@ -120,10 +120,16 @@ Azure Security Center の [[セキュリティ アラート]](../../security-cen
    * 攻撃者が新しいアプリケーションを使用してストレージ アカウントにアクセスした。
    * 正当なユーザーが新しいアプリケーション/ブラウザーを使用してストレージ アカウントにアクセスした。
 
-* **Anonymous access (匿名アクセス)** :このアラートは、ストレージ アカウントへのアクセス パターンに変化が生じたことを示します。 たとえば、このアカウントが匿名で (つまり認証なしで) アクセスされ、それがこのアカウントでの最近のアクセス パターンと比較して予期されていない場合などです。
+* **Anonymous access (匿名アクセス)** :このアラートは、このアカウントが匿名で (つまり認証なしで) アクセスされ、このアカウントでの最近のアクセス パターンと比較して予期されていないことであることを示します。
 考えられる原因は次のとおりです。
    * 攻撃者がコンテナーに対するパブリック読み取りアクセスを悪用した。
    * 正当なユーザーまたはアプリケーションがコンテナーに対するパブリック読み取りアクセスを使用した。
+
+* **Tor 異常**: このアラートは、このアカウントが Tor (匿名化プロキシ) のアクティブな出口ノードとして知られている IP アドレスから正常にアクセスされたことを示します。 このアラートの重大度では、使用された認証の種類 (ある場合) と、これがそのようなアクセスの最初のケースであるかどうかが考慮されます。
+考えられる原因は次のとおりです。
+   * 攻撃者が Tor を使用してストレージ アカウントにアクセスしました。
+   * 正当なユーザーが Tor を使用してストレージ アカウントにアクセスしました。
+
 
 ### <a name="anomalous-extractupload-alerts"></a>異常な抽出/アップロードのアラート
 

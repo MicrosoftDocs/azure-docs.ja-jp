@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 5ef653e825a5f1eb0f5df52f9c2544a5224b34cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003569"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434859"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>マネージド ID を持つ Azure マネージド アプリケーション
 
@@ -322,8 +322,23 @@ CreateUIDefinition の更新に加えて、メイン テンプレートも、渡
 これでマネージド アプリケーションのトークンに、パブリッシャー テナントから `listTokens` api を使用してアクセスできるようになりました。 要求の例は次のようになります。
 
 ``` HTTP
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}?api-version=2018-09-01-preview HTTP/1.1
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
+
+{
+    "authorizationAudience": "https://management.azure.com/",
+    "userAssignedIdentities": [
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userAssignedIdentityName}"
+    ]
+}
 ```
+
+要求本文のパラメーター:
+
+パラメーター | 必須 | 説明
+---|---|---
+authorizationAudience | *いいえ* | ターゲット リソースのアプリ ID URI。 発行されたトークンの `aud` (対象ユーザー) 要求でもあります。 既定値は "https://management.azure.com/" です
+userAssignedIdentities | *いいえ* | トークンを取得するためのユーザー割り当て済みマネージド ID のリスト。 指定しない場合、`listTokens` はシステム割り当てマネージド ID のトークンを返します。
+
 
 サンプルの応答は次のようになります。
 
@@ -345,6 +360,18 @@ Content-Type: application/json
     ]
 }
 ```
+
+応答では、`value` プロパティの下にトークンの配列が含まれます。
+
+パラメーター | 説明
+---|---
+access_token | 要求されたアクセス トークン。
+expires_in | アクセス トークンの残り有効秒数。
+expires_on | アクセス トークンが期限切れになるまでの期間。 これは、エポックからの秒数で表されます。
+not_before | アクセス トークンが有効になるまでの期間。 これは、エポックからの秒数で表されます。
+authorizationAudience | アクセス トークンが要求された `aud` (対象ユーザー)。 これは、`listTokens` 要求で指定されたものと同じです。
+resourceId | 発行されたトークンの Azure リソース ID。 これは、マネージド アプリケーション ID またはユーザー割り当て済み ID のどちらかです。
+token_type | トークンの種類。
 
 ## <a name="next-steps"></a>次の手順
 

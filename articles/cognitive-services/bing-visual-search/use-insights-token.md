@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1860b788b9f33a6a2ec806be68a67aa2df10cbd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65914276"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341719"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
@@ -434,7 +434,8 @@ function requestCallback(err, res, body) {
 # Run the following in a command console window
 # pip3 install requests
 
-import requests, json
+import requests
+import json
 
 BASE_URI = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch'
 
@@ -449,10 +450,11 @@ insightsToken = 'ccid_tmaGQ2eU*mid_D12339146CFEDF3D409CC7A66D2C98D0D71904D4*simi
 formData = '{"imageInfo":{"imageInsightsToken":"' + insightsToken + '"}}'
 
 
-file = {'knowledgeRequest' : (None, formData)}
+file = {'knowledgeRequest': (None, formData)}
+
 
 def main():
-    
+
     try:
         response = requests.post(BASE_URI, headers=HEADERS, files=file)
         response.raise_for_status()
@@ -465,7 +467,6 @@ def main():
 def print_json(obj):
     """Print the object as json"""
     print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
-
 
 
 # Main execution

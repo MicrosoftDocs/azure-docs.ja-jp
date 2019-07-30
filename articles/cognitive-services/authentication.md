@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 06cc5509598cb6227a64e2cf375a5686c89312eb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6de5711ca977612f01943f6aaf2c9d7061116090
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163669"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435928"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -28,7 +28,7 @@ Azure Cognitive Service に対する各要求には、認証ヘッダーが含�
 
 要求を実行する前に、Azure アカウントと Azure Cognitive Services サブスクリプションが必要です。 既にアカウントをお持ちの場合は、次のセクションまでスキップして進んでください。 アカウントをお持ちでない場合は、数分で設定を行えるガイドをご覧ください。[Azure の Cognitive Services アカウントの作成](cognitive-services-apis-create-account.md)に関するページを参照してください。
 
-アカウントを作成した後、または[無料試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)を有効にした後、[Azure portal](cognitive-services-apis-create-account.md#access-your-resource) からサブスクリプション キーを取得できます。
+アカウントを作成した後、または[無料試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)を有効にした後、[Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-subscription) からサブスクリプション キーを取得できます。
 
 ## <a name="authentication-headers"></a>認証ヘッダー
 

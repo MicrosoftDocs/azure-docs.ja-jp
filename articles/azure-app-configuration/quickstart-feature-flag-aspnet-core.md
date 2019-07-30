@@ -14,26 +14,23 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: f83283dbf2a78b3717ba719f21dd9249a8a09d1f
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393328"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347915"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
-アプリケーションを Azure App Configuration に接続することで、ASP.NET Core の機能管理を有効にできます。 この管理されたサービスを使用して、すべての機能フラグを格納し、その状態を一元的に制御できます。 このクイック スタートでは、App Configuration を ASP.NET Core Web アプリに組み込み、機能管理のエンド ツー エンド実装を作成します。
+このクイック スタートでは、Azure App Configuration を ASP.NET Core Web アプリに組み込み、機能管理のエンドツーエンド実装を作成します。 App Configuration サービスを使用し、すべての機能フラグを一箇所に格納し、その状態を制御できます。 
 
 .NET Core 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、.NET Core 構成システム上に構築されます。 また、.NET Core 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
 
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
-
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
 ## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
@@ -84,12 +81,10 @@ ms.locfileid: "66393328"
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
-1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` パッケージと `Microsoft.FeatureManagement` NuGet パッケージへの参照を追加します。
+1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
 
     ```
-    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
-
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-008560001-910
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
     ```
 
 1. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
@@ -137,7 +132,7 @@ ms.locfileid: "66393328"
 1. *Startup.cs* を開き、.NET Core 機能マネージャーへの参照を追加します。
 
     ```csharp
-    using Microsoft.FeatureManagement.AspNetCore;
+    using Microsoft.FeatureManagement;
     ```
 
 1. `services.AddFeatureManagement()` メソッドを呼び出して機能フラグ サポートを追加するように、`ConfigureServices` メソッドを更新します。 必要に応じて、`services.AddFeatureFilter<FilterType>()` を呼び出すことで、機能フラグで使用される任意のフィルターを含めることができます。
@@ -146,6 +141,16 @@ ms.locfileid: "66393328"
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddFeatureManagement();
+    }
+    ```
+
+1. `Configure` メソッドを更新してミドルウェアを追加し、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できるようにします。
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+        app.UseMvc();
     }
     ```
 
@@ -165,7 +170,8 @@ ms.locfileid: "66393328"
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.FeatureManagement.AspNetCore;
+    using Microsoft.FeatureManagement;
+    using Microsoft.FeatureManagement.Mvc;
 
     namespace TestFeatureFlags.Controllers
     {
@@ -178,7 +184,7 @@ ms.locfileid: "66393328"
                 _featureManager = featureManager;
             }
 
-            [Feature(MyFeatureFlags.Beta)]
+            [FeatureGate(MyFeatureFlags.Beta)]
             public IActionResult Index()
             {
                 return View();

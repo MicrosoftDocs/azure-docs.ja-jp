@@ -1,0 +1,54 @@
+- name: Azure Australia のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Australia とは
+      href: australia-overview.md
+- name: 概念
+  items:
+    - name: Azure Australia におけるセキュリティ
+      items:
+        - name: データのセキュリティ
+          href: secure-your-data.md
+        - name: Azure VPN Gateway の構成
+          href: vpn-gateway.md
+        - name: Azure Key Vault
+          href: azure-key-vault.md
+        - name: ID フェデレーション
+          href: identity-federation.md
+        - name: RBAC と PIM
+          href: role-privileged.md
+        - name: Essential 8 のための Site Recovery と Backup
+          href: recovery-backup.md
+        - name: Azure のシステム監視
+          href: system-monitor.md
+        - name: Azure Policy と Azure Blueprints
+          href: azure-policy.md
+    - name: Azure Australia におけるゲートウェイ
+      items:
+        - name: ゲートウェイのログ記録、監査、可視性
+          href: gateway-log-audit-visibility.md
+        - name: ゲートウェイの安全なリモート管理
+          href: gateway-secure-remote-administration.md
+        - name: ゲートウェイのデータ イングレス制御
+          href: gateway-ingress-traffic.md
+        - name: ゲートウェイのデータ エグレス制御
+          href: gateway-egress-traffic.md
+- name: リソース
+  items:
+    - name: Azure Australia のセキュリティの説明
+      href: security-explained.md
+    - name: Azure Australia のその他のリソース
+      href: reference-library.md
+    - name: Australian Cyber Security Centre (ACSC) の Web サイト
+      href: 'https://cyber.gov.au/'
+    - name: Australian Certified Cloud Services List (CCSL)
+      href: 'https://acsc.gov.au/infosec/irap/certified_clouds.htm'
+    - name: Microsoft Service Trust Portal 上のオーストラリアに関するページ
+      href: 'https://aka.ms/au-irap'
+    - name: IaaS および PaaS Web アプリケーション向けの AU-PROTECTED ブループリント
+      href: 'https://aka.ms/au-protected'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'

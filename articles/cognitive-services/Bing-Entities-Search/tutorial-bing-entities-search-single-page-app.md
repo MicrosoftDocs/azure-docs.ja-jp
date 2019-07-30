@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Bing Entity Search シングルページ Web アプリ
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 単一ページの Web アプリで Bing Entity Search API を使用する方法を説明します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 02/01/2019
+ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 1b8cf36c631755458bc0c531773a6b2aba7f1038
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406374"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423974"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
@@ -165,7 +165,7 @@ function bingSearchOptions(form) {
 
 Bing Maps API では、[ `locationQuery`メソッド](//msdn.microsoft.com/library/ff701711.aspx)を提供しています。これを使用して、ユーザーが入力した位置の緯度と経度を検索します。 これらの座標は、ユーザーの要求と共に Bing Entity Search API に渡されます。 検索結果では、指定した位置情報に近い順にエンティティと場所が優先度付けされます。
 
-Web アプリでは、通常の `XMLHttpRequest` クエリを使用して Bing Maps API にアクセスできません。これはサービスでクロス オリジン クエリをサポートしていないからです。 ただし、JSONP ("P" は "padded" (埋め込み)) はサポートされています。 JSONP 応答は、関数呼び出しでラップされる通常の JSON 応答です。 要求は `<script>` タグを使用してドキュメントに挿入することで作成されます  (スクリプトの読み込みは、ブラウザーのセキュリティ ポリシーの対象外です)。
+Web アプリでは、通常の `XMLHttpRequest` クエリを使用して Bing Maps API にアクセスできません。これはサービスでクロス オリジン クエリをサポートしていないからです。 ただし、JSONP ("P" は "padded" (埋め込み)) はサポートされています。 JSONP 応答は、関数呼び出しでラップされる通常の JSON 応答です。 要求は `<script>` タグを使用してドキュメントに挿入することで作成されます (スクリプトの読み込みは、ブラウザーのセキュリティ ポリシーの対象外です)。
 
 `bingMapsLocate()` 関数は、クエリの `<script>` タグを作成および挿入します。 クエリ文字列の `jsonp=bingMapsCallback` セグメントは、応答で呼び出される関数の名前を指定します。
 
@@ -390,7 +390,7 @@ function handleBingResponse() {
 
 ## <a name="displaying-search-results"></a>検索結果の表示
 
-Bing Entity Search API では、[指定した順序で結果を表示する必要があります](use-display-requirements.md)。 API は 2 つの異なる種類の応答を返す可能性があるため、JSON 応答内の最上位の `Entities` または `Places` コレクションを反復処理してそれらの結果を表示するだけでは不十分です  (1 種類の結果だけが必要な場合は、`responseFilter` クエリ パラメーターを使用します)。
+Bing Entity Search API では、[指定した順序で結果を表示する必要があります](use-display-requirements.md)。 API は 2 つの異なる種類の応答を返す可能性があるため、JSON 応答内の最上位の `Entities` または `Places` コレクションを反復処理してそれらの結果を表示するだけでは不十分です (1 種類の結果だけが必要な場合は、`responseFilter` クエリ パラメーターを使用します)。
 
 代わりに、検索結果で `rankingResponse` コレクションを使用して、表示の結果を順序付けします。 このオブジェクトは、`Entitiess` と `Places` の両方またはいずれかのコレクション内の項目を参照します。
 
@@ -535,7 +535,7 @@ CORS プロキシをインストールして、チュートリアル アプリ�
 
 次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。
 
-    https://localhost:9090/httpss://api.cognitive.microsoft.com/bing/v7.0/search
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
 最後に、次のコマンドを使用して、CORS プロキシを開始します。
 

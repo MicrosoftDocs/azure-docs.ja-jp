@@ -9,12 +9,12 @@ ms.date: 04/18/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b3c2ed7f2914374ac94783511f2992ae5755967
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65907200"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302331"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) の使用
 
@@ -23,7 +23,10 @@ Shared Access Signature (SAS) は、アカウント キーを知らせずに、�
 ここで紹介する以外の SAS を使用したコード例については、[.NET を使用して Azure Blob Storage を使用する](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)と [Azure のコード サンプル](https://azure.microsoft.com/documentation/samples/?service=storage) ライブラリにある他のサンプルをご覧ください。 サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。
 
 ## <a name="what-is-a-shared-access-signature"></a>Shared Access Signature とは
+
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS を使用すると、アカウント キーを共有することなく、ストレージ アカウントのリソースへのアクセス権をクライアントに付与できます。 これは、アプリケーションで Shared Access Signature を使用する際の重要な点になります。SAS は、アカウント キーを損なうことなく、ストレージ リソースを共有する安全な方法です。
+
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -35,6 +38,7 @@ SAS では、SAS を使用しているクライアントに付与する次のよ
 * SAS を受け入れる Azure Storage のプロトコル。 この省略可能なパラメーターを使用すると、HTTPS を使用したクライアントのアクセスを制限できます。
 
 ## <a name="when-should-you-use-a-shared-access-signature"></a>Shared Access Signature を使用するタイミング
+
 SAS は、自分のストレージ アカウントのアクセス キーを持たないクライアントに、自分のストレージ アカウント内のリソースへのアクセスを許可する場合に使用できます。 ストレージ アカウントには、プライマリ アクセス キーとセカンダリ アクセス キーの両方が含まれており、これらによって、アカウントとその中のすべてのリソースへの管理アクセスが付与されます。 これらのキーのいずれかを知らせると、悪意で、または誤ってアカウントが使用される可能性が生じます。 Shared Access Signature は、アカウント キーが不要で安全な代替方法です。この方法で、クライアントは、明示的に付与されたアクセス許可に従ってストレージ アカウント内のデータの読み取り、書き込み、削除を実行できます。
 
 SAS が役立つ一般的なシナリオは、ストレージ アカウント内でユーザーが自分のデータの読み取りや書き込みを行うサービスです。 ストレージ アカウントにユーザー データが格納されるシナリオには、2 種類の典型的な設計パターンがあります。
@@ -56,12 +60,14 @@ SAS が役立つ一般的なシナリオは、ストレージ アカウント内
 * BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合、同じストレージ アカウント内にコピー先とコピー元のオブジェクトがある場合でも、SAS を使用してソース オブジェクトへのアクセスを承認する必要があります。
 
 ## <a name="types-of-shared-access-signatures"></a>共有アクセス署名の種類
+
 次の 2 種類の共有アクセス署名を作成できます。
 
 * **サービス SAS。** サービス SAS は、1 つのストレージ サービス (BLOB、Queue、Table、または File サービスのいずれか) のリソースへのアクセスを委任します。 サービス SAS トークンの作成の詳細については、[サービス SAS の作成](https://msdn.microsoft.com/library/dn140255.aspx) に関するページおよび[ サービス SAS の例](https://msdn.microsoft.com/library/dn140256.aspx) に関するページを参照してください。
 * **アカウント SAS。** アカウント SAS では、1 つ以上のストレージ サービスのリソースへのアクセスを委任できます。 サービス SAS を使用して実行できるすべての操作は、アカウント SAS でも実行できます。 アカウント SAS では、**Get/Set Service Properties** や **Get Service Stats**など、特定のサービスに適用される操作へのアクセスも委任できます。サービス SAS で許可されていない BLOB コンテナー、テーブル、キューおよびファイル共有の読み取り、書き込みおよび削除操作へのアクセスも委任できます。 アカウント SAS トークンの作成の詳細については、「[アカウント SAS の作成](https://msdn.microsoft.com/library/mt584140.aspx)」をご覧ください。
 
 ## <a name="how-a-shared-access-signature-works"></a>Shared Access Signature の機能
+
 Shared Access Signature とは、特殊なクエリ パラメーターのセットを含むトークンを含む、1 つ以上のストレージ リソースをポイントする署名済み URI です。 このトークンは、リソースへのクライアントのアクセス方法を示します。 このクエリ パラメーターの 1 つである署名は、SAS パラメーターで作成されており、アカウント キーで署名されています。 この署名は、ストレージ リソースへのアクセスを承認するために、Azure Storage によって使用されます。
 
 たとえば、リソース URI と そのSAS トークンを示す SAS URI の例は以下のようになります。
@@ -73,9 +79,11 @@ SAS トークンは、*クライアント*側で生成される文字列です (
 クライアントが要求の一部として Azure Storage に SAS URI を提供するときに、サービスでは、SAS パラメーターと、要求の認証に対して有効であることを確認する署名が確認されます。 サービスによって署名が有効であることが確認されると、要求が承認されます。 それ以外の場合、要求はエラー コード 403 (Forbidden) で拒否されます。
 
 ## <a name="shared-access-signature-parameters"></a>Shared Access Signature パラメーター
+
 アカウント SAS とサービス SAS のトークンには共通のパラメーターがいくつかあります。また別のパラメーターをいくつか取ります。
 
 ### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>アカウント SAS とサービス SAS のトークンに共通するパラメーター
+
 * **API のバージョン。** 要求の実行に使用するストレージ サービスのバージョンを指定する省略可能なパラメーターです。
 * **サービスのバージョン。** 要求の承認に使用するストレージ サービスのバージョンを指定する必須パラメーターです。
 * **開始時刻。** この時刻に SAS が有効になります。 Shared Access Signature の開始時刻は省略できます。 開始時刻を省略した場合に、SAS はすぐに有効になります。 開始時刻は、`1994-11-05T13:15:30Z` など、特別な UTC 指定子 ("Z") を使用して、UTC (世界協定時刻) で表す必要があります。
@@ -86,6 +94,7 @@ SAS トークンは、*クライアント*側で生成される文字列です (
 * **署名。** 署名は、トークンの一部として指定されたその他のパラメーターから構成され、その後に暗号化されます。 署名は、指定されたストレージ リソースへのアクセスを承認するために使用されます。
 
 ### <a name="parameters-for-a-service-sas-token"></a>サービス SAS トークンのパラメーター
+
 * **ストレージ リソース。** サービス SAS を使用してアクセスを委任できるストレージ リソースには次があります。
   * コンテナーと BLOB
   * ファイル共有とファイル
@@ -93,6 +102,7 @@ SAS トークンは、*クライアント*側で生成される文字列です (
   * テーブルとテーブル エンティティの範囲
 
 ### <a name="parameters-for-an-account-sas-token"></a>アカウント SAS トークンのパラメーター
+
 * **単一または複数のサービス。** アカウント SAS では、1 つ以上のストレージ サービスにアクセスを委任できます。 たとえば、BLOB およびファイル サービスにアクセスを委任するアカウント SAS を作成できます。 または、(BLOB、キュー、テーブル、およびファイルの) 4 つのすべてのサービスにアクセスを委任する SAS を作成できます。
 * **ストレージ リソースの種類。** アカウント SAS は、特定のリソースではなく、ストレージ リソースの 1 つ以上のクラスに適用されます。 アカウント SAS を作成して、次へのアクセスを委任できます。
   * ストレージ アカウントのリソースを呼び出すサービスレベル API。 たとえば、**Get/Set Service Properties**、**Get Service Stats**、**List Containers/Queues/Tables/Shares** です。
@@ -139,6 +149,7 @@ https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015
 許可はサービス レベルに制限されているため、この SAS を使用してアクセスできる操作は、**Get Blob Service Properties** (読み取り) および **Set Blob Service Properties** (書き込み) になります。 ただし、別のリソース URI に同じ SAS トークンを使用し、 **Get BLOB Service Stats** (読み取り) へのアクセスを委任することもできます。
 
 ## <a name="controlling-a-sas-with-a-stored-access-policy"></a>保存されているアクセス ポリシーを使用した SAS の制御
+
 Shared Access Signature の形式は、次の 2 つのいずれかです。
 
 * **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。 この種類の SAS はアカウント SAS またはサービス SAS として作成できます。
@@ -158,12 +169,15 @@ Shared Access Signature の形式は、次の 2 つのいずれかです。
 > Shared Access Signature URI は、署名の作成に使用されたアカウント キーと、保存済みのアクセス ポリシー (存在する場合) に関連付けられます。 保存済みのアクセス ポリシーが指定されていない場合、Shared Access Signature を取り消すにはアカウント キーを変更する以外に方法はありません。
 
 ## <a name="authenticating-from-a-client-application-with-a-sas"></a>SAS を使用するクライアント アプリケーションからの認証
+
 SAS を所有しているクライアントは、アカウント キーのないストレージ アカウントに対する要求の承認に SAS を使用できます。 SAS は、接続文字列に含めるか、適切なコンストラクターまたはメソッドから直接使用できます。
 
 ### <a name="using-a-sas-in-a-connection-string"></a>接続文字列で SAS を使用する
+
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>コンストラクターまたはメソッドで SAS を使用する
+
 複数の Azure Storage クライアント ライブラリ コンストラクターとメソッドのオーバー ロードでは SAS パラメーターが提供されるため、SAS でサービスへの要求を承認できるようになります。
 
 たとえば、ここでは SAS URI を使用して、ブロック BLOB への参照を作成します。 SAS は、要求に必要な資格情報のみを提供します。 書き込み操作では、ブロック BLOB の参照が使用されます。
@@ -208,6 +222,7 @@ catch (StorageException e)
 ```
 
 ## <a name="best-practices-when-using-sas"></a>SAS を使用する際のベスト プラクティス
+
 アプリケーションで Shared Access Signature を使用する場合は、次の 2 つの潜在的なリスクに注意する必要があります。
 
 * SAS が漏えいすると、取得した人はだれでも使用できるため、ストレージ アカウントの安全性が損なわれるおそれがあります。
@@ -227,6 +242,7 @@ Shared Access Signature の使用に関する次の推奨事項に従うと、�
 10. **Storage Analytics を使用してアプリケーションを管理します。** SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を、ログやメトリックを使用して監視できます。 詳細については、 [Microsoft Azure Storage チームのブログ](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) を参照してください。
 
 ## <a name="sas-examples"></a>SAS の例
+
 次に、アカウント SAS とサービス SAS の 2 種類の Shared Access Signature の例をいくつか示します。
 
 これらの C# の例を実行するには、プロジェクト内の次の NuGet パッケージを参照する必要があります。
@@ -237,6 +253,7 @@ Shared Access Signature の使用に関する次の推奨事項に従うと、�
 SAS の作成とテストの例については、[Azure のコード サンプル](https://azure.microsoft.com/documentation/samples/?service=storage)を参照してください。
 
 ### <a name="example-create-and-use-an-account-sas"></a>例:アカウント SAS を作成して使用する
+
 次のコード例では、BLOB およびファイル サービスに有効なアカウント SAS を作成します。これでは、クライアントに、サービスレベルの API にアクセスするための、読み取り、書き込み、および一覧表示のアクセス許可を付与します。 アカウント SAS では、プロトコルを HTTPS に制限しているため、要求は HTTPS で行う必要があります。
 
 ```csharp
@@ -304,6 +321,7 @@ static void UseAccountSAS(string sasToken)
 ```
 
 ### <a name="example-create-a-stored-access-policy"></a>例:保存されているアクセス ポリシーを作成する
+
 次のコードでは、保存されているアクセス ポリシーをコンテナーに作成します。 アクセス ポリシーを使用して、コンテナーまたは blob のサービス SAS に制約を指定します。
 
 ```csharp
@@ -330,6 +348,7 @@ private static async Task CreateSharedAccessPolicyAsync(CloudBlobContainer conta
 ```
 
 ### <a name="example-create-a-service-sas-on-a-container"></a>例:サービス SAS をコンテナーに作成する
+
 次のコードでは、SAS をコンテナーに作成します。 既存の保存されているアクセス ポリシーの名前が指定されている場合、そのポリシーは、SAS に関連付けられます。 保存されているアクセス ポリシーがない場合、コードは、アドホック SAS をコンテナーに作成します。
 
 ```csharp
@@ -373,6 +392,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 ```
 
 ### <a name="example-create-a-service-sas-on-a-blob"></a>例:サービス SAS を Blob に作成する
+
 次のコードでは、 SAS を Blob に作成します。 既存の保存されているアクセス ポリシーの名前が指定されている場合、そのポリシーは、SAS に関連付けられます。 保存されているアクセス ポリシーがない場合、コードは、アドホック SAS を BLOB に作成します。
 
 ```csharp
@@ -419,9 +439,11 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 ```
 
 ## <a name="conclusion"></a>まとめ
+
 Shared Access Signature は、アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。 したがって、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。 ここに示すベスト プラクティスに従うと、アプリケーションのセキュリティを損なうことなく、SAS を使用して、ストレージ アカウントのリソースへのアクセスの柔軟性を高めることができます。
 
 ## <a name="next-steps"></a>次の手順
+
 * [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)
 * [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [テーブルおよびキュー SAS についての MSDN ブログ](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

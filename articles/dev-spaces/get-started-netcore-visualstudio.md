@@ -11,12 +11,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 9b529780387e1129dd7827e4d9c805d185a459d0
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4b37da8d31fc5ac605e59d9aceb456e996df438b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399249"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503056"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure Dev Spaces での .NET Core と Visual Studio の使用
 
@@ -125,9 +125,16 @@ Visual Studio は開発空間と通信してアプリケーションをビルド
 Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
 
 ### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
-1. `./Views/Home/Index.cshtml` ファイルを見つけ、HTML を編集します。 たとえば、70 行目の `<h2>Application uses</h2>` を `<h2>Hello k8s in Azure!</h2>` のように変更します。
-1. ファイルを保存します。
-1. ブラウザーに移動し、ページを更新します。 Web ページに更新された HTML が表示されます。
+
+
+1. `./Views/Home/Index.cshtml` ファイルを見つけ、HTML を編集します。 たとえば、[73 行目の `<h2>Application uses</h2>`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) を次のように変更します。 
+  
+    ```html
+    <h2>Hello k8s in Azure!</h2>`
+    ```
+
+2. ファイルを保存します。
+3. ブラウザーに移動し、ページを更新します。 Web ページに更新された HTML が表示されます。
 
 なぜでしょうか? HTML や CSS などのコンテンツ ファイルを編集しても、.NET Core Web アプリで再コンパイルする必要はありません。アクティブな F5 セッションによって、変更されたコンテンツ ファイルが AKS で実行中のコンテナーに自動的に同期されるので、編集後のコンテンツをすぐに確認できます。
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: fb9872d2fd41066899ff9198915d573bfb4a0b84
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 313dd07c2b8eeb5684310b57d74053d3cbc1b5e1
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240985"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356387"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos コンテナーの一意のキーを定義する
 
@@ -111,8 +111,8 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
     'id': 'container',
     'uniqueKeyPolicy': {
         'uniqueKeys': [
-            { 'paths': ['/firstName', '/lastName', '/emailAddress'] },
-            { 'paths': ['/address/zipCode'] }
+            {'paths': ['/firstName', '/lastName', '/emailAddress']},
+            {'paths': ['/address/zipCode']}
         ]
     }
 })

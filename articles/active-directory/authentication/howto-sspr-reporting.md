@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bc2acaa24637c3297af8e91f01b67e5d30f2931
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 794a99481d9394229e77168e75c48f4110735578
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60357540"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536932"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -175,6 +175,7 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 
 ## <a name="next-steps"></a>次の手順
 
+* [SSPR と MFA の使用状況と分析情報のレポート](howto-authentication-methods-usage-insights.md)
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
 * [セルフサービスによるパスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)

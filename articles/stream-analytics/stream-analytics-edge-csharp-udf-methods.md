@@ -10,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 40035b946d0f2b09929f8c7f1ac27231546e6746
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64692913"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Azure Stream Analytics Edge ジョブの .NET Standard ユーザー定義関数の開発 (プレビュー)
 
@@ -43,8 +43,8 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 |string  |  nvarchar(max)   |
 |dateTime  |  dateTime   |
 |struct  |  IRecord   |
-|オブジェクト  |  IRecord   |
-|Array<object>  |  IArray   |
+|object  |  IRecord   |
+|Array\<object>  |  IArray   |
 |dictionary<string, object>  |  IRecord   |
 
 ## <a name="codebehind"></a>分離コード
@@ -85,7 +85,7 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 
    ![ソリューション エクスプローラーにユーザー定義関数参照が表示される](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
 
-5. **[関数]** フォルダーを右クリックし、**[新しいアイテム]** を選択します。
+5. **[関数]** フォルダーを右クリックし、 **[新しいアイテム]** を選択します。
 
    ![Azure Stream Analytics Edge ソリューションの [関数] に新しいアイテムを追加する](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
 
@@ -97,7 +97,7 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 
    ![Visual Studio での C# 関数の構成](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png)
 
-8. C# 関数の構成で、**[Load from ASA Project Reference]\(ASA プロジェクト参照から読み込む\)** を選択し、ドロップダウン リストから関連するアセンブリ、クラス、メソッドの名前を選択します。 Stream Analytics Edge クエリでメソッド、型、関数を参照するには、クラスを *public* として定義し、オブジェクトを *static public* として定義する必要があります。
+8. C# 関数の構成で、 **[Load from ASA Project Reference]\(ASA プロジェクト参照から読み込む\)** を選択し、ドロップダウン リストから関連するアセンブリ、クラス、メソッドの名前を選択します。 Stream Analytics Edge クエリでメソッド、型、関数を参照するには、クラスを *public* として定義し、オブジェクトを *static public* として定義する必要があります。
 
    ![Stream Analytics の C# 関数の構成](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png)
 
@@ -114,7 +114,7 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
  |**設定**  |**推奨値**  |
  |---------|---------|
  |アセンブリ ソース  | クラウドの既存のアセンブリ パッケージ。    |
- |リソース  |  現在のアカウントからデータを選択します   |
+ |Resource  |  現在のアカウントからデータを選択します   |
  |サブスクリプション  |  サブスクリプションを選択します。   |
  |ストレージ アカウント  |  ストレージ アカウントを選択します。   |
  |コンテナー  |  ストレージ アカウントに作成したコンテナーを選択します。   |

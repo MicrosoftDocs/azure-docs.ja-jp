@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 59be8e0585f0bedcafc868ee42f5113509c9c4ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79118fb053c7064fa29730680feb0434f45f031a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417777"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491690"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -85,6 +85,10 @@ Site Recovery を使用している間は、[料金計算ツール](https://aka.
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>ストレージにレプリケートする場合とマネージド ディスクに直接レプリケートする場合との間にコストの差はありますか?
 
 マネージド ディスクに対する課金は、ストレージ アカウントに対するものとは若干異なります。 マネージド ディスクの価格に関する[詳細を参照](https://azure.microsoft.com/pricing/details/managed-disks/)してください。
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>General Purpose v2 ストレージ アカウントにレプリケートする場合、コストに差はありますか?
+
+Azure Site Recovery のトランザクションは大量にあるため、一般的には GPv2 ストレージ アカウントについて発生するトランザクション コストの増加が見られます。 差を見積もるには、[こちら](../storage/common/storage-account-upgrade.md#pricing-and-billing)をご覧ください。
 
 ## <a name="mobility-service"></a>モビリティ サービス
 
@@ -293,7 +297,7 @@ Recovery Services コンテナーで、 **[Site Recovery インフラストラ�
 
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>正確な正常性情報を得るためにバージョン 9.24 以降に更新するにはどうすればよいですか?
 
-[バージョン 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) 以降、プロセス サーバーの正常性を示すためにさらに多くのアラートが追加されました。 すべてのアラートが生成されるように、[Site Recovery コンポーネントをバージョン 9.24 以降に更新します](service-updates-how-to.md#links-to-currently-supported-update-rollups)。
+[バージョン 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) 以降、プロセス サーバーの正常性を示すためにさらに多くのアラートが追加されました。 すべてのアラートが生成されるように、[Site Recovery コンポーネントをバージョン 9.24 以降に更新](service-updates-how-to.md#links-to-currently-supported-update-rollups)してください。
 
 ## <a name="failover-and-failback"></a>フェールオーバーとフェールバック
 

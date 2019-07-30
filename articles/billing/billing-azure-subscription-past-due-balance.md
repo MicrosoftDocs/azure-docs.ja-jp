@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: 45b5d2c94a72cb23ef2b4a8db100623b0c58b0a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66023393"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491449"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>支払期限を過ぎた Azure サブスクリプション未払い額の支払い
 
@@ -34,7 +34,7 @@ ms.locfileid: "66023393"
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Azure portal で期限切れの残高を清算する
 
 1. [Azure portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. **[コストの管理と請求]** で検索します。
+1. "**コスト管理 + 請求**" を検索します。
 1. [概要] ページにサブスクリプションの一覧が表示されます。 サブスクリプションの状態が期限切れの場合は、 **[Settle balance]\(残高の清算\)** リンクをクリックします。
     ![[Settle balance]\(残高の清算\) リンクを示すスクリーン ショット](./media/billing-azure-subscription-past-due-balance/settle-balance-entry-point.png)
 1. 合計未払い残高には、失敗した支払い方法を使用するすべての Microsoft サービスの未払い料金が反映されます。

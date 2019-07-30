@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: eea4366ca19c01af1f79566a5ca6bcae8805b6c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242489"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985547"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
 
@@ -44,7 +44,7 @@ Qlik Sense は、さまざまなソースからのデータを 1 つのビュー
 
 * クイック スタート記事の「[アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 
-* [データベースとコレクションを作成](create-sql-api-dotnet.md#create-collection-database)します。コレクションのスループット値を 1000 RU/秒に設定できます。 
+* [データベースとコレクションを作成](create-sql-api-java.md#add-a-container)します。コレクションのスループット値を 1000 RU/秒に設定できます。 
 
 * サンプル ビデオ ゲームの売上データを Cosmos DB アカウントに読み込みます。 データをインポートするには Azure Cosmos DB データ移行ツールを使用できます。[順次](import-data.md#SQLSeqTarget)または[一括](import-data.md#SQLBulkTarget)のデータ インポートが可能です。 データが Cosmos DB アカウントにインポートされるまでに 3 分から 5 分かかります。
 

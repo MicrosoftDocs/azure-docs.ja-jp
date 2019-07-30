@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312397"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603352"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>クイック スタート:REST API と Ruby を使用して画像内の顔を検出する
 
@@ -28,7 +28,7 @@ ms.locfileid: "56312397"
 
 ## <a name="write-the-script"></a>スクリプトを作成する
 
-新しいファイル (_faceDetection.rb_) を作成して、次のコードを追加します。 これは、特定の画像の URL を対象に Face API を呼び出すものです。
+新しいファイル (_faceDetection.rb_) を作成して、次のコードを追加します。 このコードは、特定の画像の URL を対象に Face API を呼び出すものです。
 
 ```ruby
 require 'net/http'
@@ -74,7 +74,7 @@ puts response.body
 ruby faceDetection.rb
 ```
 
-検出された顔のデータの JSON 文字列がコンソールに出力されて表示されます。 次に示したのは成功時の JSON 応答の例です。
+検出された顔のデータの JSON 文字列がコンソールに出力されて表示されます。 次のテキストは、成功時の JSON 応答の例です。
 
 ```json
 [

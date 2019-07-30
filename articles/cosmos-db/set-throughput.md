@@ -4,14 +4,14 @@ description: Azure Cosmos のコンテナーとデータベースにプロビジ
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 2bcd428e2de90251d4d64111b1c3e6b6f812ac4c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389245"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467621"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>コンテナーとデータベースのスループットのプロビジョニング
 
@@ -72,6 +72,9 @@ Azure Cosmos データベースにスループットを設定することで、�
 
 * *K* RU のプロビジョニング済みスループットで、*Z* という名前の Azure Cosmos データベースを作成できます。 
 * 次に、データベース内に *A*、*B*、*C*、*D*、*E* という名前の 5 つのコンテナーを作成します。 コンテナー B を作成するときに、必ず **[Provision dedicated throughput for this container]\(このコンテナーの専用スループットをプロビジョニングする\)** オプションを有効にし、このコンテナーにプロビジョニングされているスループットの "*P*" RU を明示的に構成します。 共有および専用のスループットを構成できるのは、データベースとコンテナーを作成する場合のみであることに注意してください。 
+
+   ![コンテナーレベルでスループットを設定する](./media/set-throughput/coll-level-throughput.png)
+
 * *K* RU のスループットは、*A*、*C*、*D*、*E* の 4 つのコンテナーにわたって共有されます。使用可能なスループットの正確な量は、*A*、*C*、*D*、*E* のそれぞれで異なります。 個々のコンテナーのスループットに対する SLA はありません。
 * コンテナー *B* は常に *P* RU のスループットを取得することが保証されます。 それは SLA によって裏付けられます。
 
@@ -87,7 +90,7 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 .NET SDK を使用する場合、[DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) メソッドを使用して、コンテナーまたはデータベースの最小スループットを取得できます。 
 
-コンテナーまたはデータベースのプロビジョニング済みスループットはいつでもスケールできます。 
+コンテナーまたはデータベースのプロビジョニング済みスループットはいつでもスケールできます。 スループットを向上させるためにスケール操作を実行すると、必要なリソースをプロビジョニングするためのシステム タスクが原因で、より長い時間がかかる場合があります。 スケール操作の状態は、Azure portal で、または SDK を使用してプログラムで確認できます。 .NET SDK を使用する場合は、`DocumentClient.ReadOfferAsync` メソッドを使用して、スケール操作の状態を取得できます。
 
 ## <a name="comparison-of-models"></a>モデルの比較
 
@@ -95,7 +98,6 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 |---------|---------|---------|
 |最小 RU |400 (最初の 4 個のコンテナーの後は、コンテナーを追加するごとに少なくとも 100 RU/秒が必要になります。) |400|
 |コンテナーあたりの最小 RU|100|400|
-|1 GB のストレージを使用するために必要な最小の RU|40|40|
 |最大 RU|無制限、データベース上。|無制限、コンテナー上。|
 |特定のコンテナーに割り当てられた、または使用可能な RU|保証はありません。 特定のコンテナーに割り当てられる RU は、プロパティに依存します。 スループットを共有するコンテナーのパーティション キーの選択、ワークロードの分散、コンテナーの数などのプロパティです。 |コンテナー上に構成されるすべての RU は、そのコンテナー専用に予約されます。|
 |コンテナーの最大ストレージ|無制限。|無制限。|

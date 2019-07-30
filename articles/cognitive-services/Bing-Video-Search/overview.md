@@ -1,6 +1,6 @@
 ---
 title: Bing Video Search API とは
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Video Search API を使用して Web 全体から動画を検索する方法について説明します。
 services: cognitive-services
 author: swhite-msft
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 01/31/2019
+ms.date: 06/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2f6be01a3aee4e156b7af184fa2537455fc73f3f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4f3a52590a9a0c50bdc87f87792027333fc5269f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386534"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500165"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Search API とは
 
@@ -27,7 +27,7 @@ Bing Video Search API を使用すると、サービスやアプリケーショ�
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [検索用語をリアルタイムで提案する](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、アプリのエクスペリエンスを向上します。 |
 | [動画の結果をフィルター処理して制限する](concepts/get-videos.md#filtering-videos)                      | 返される動画を、クエリ パラメーターを編集してフィルター処理します。                                                                                                       |
-| [サムネイルのクロップ、サイズ変更、表示](resize-and-crop-thumbnails.md)                                                | Bing Video Search API から返された動画のサムネイル プレビューを編集して表示します。                                                                                      |
+| [サムネイルのクロップ、サイズ変更、表示](../bing-web-search/resize-and-crop-thumbnails.md)                                                | Bing Video Search API から返された動画のサムネイル プレビューを編集して表示します。                                                                                      |
 | [急上昇中の動画の取得](trending-videos.md) | 世界で注目を集めている動画を検索します。                                                                                                          |
 | [ビデオの分析情報の取得](video-insights.md) | 世界で注目を集めている動画の検索をカスタマイズします。                                                                                                          |
 

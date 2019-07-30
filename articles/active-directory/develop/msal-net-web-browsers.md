@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f91e6ab1fb12132068b839e66fafd3ab1bc73
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 061b8a9f16396841c3f0d650ccc2f2c4a907aab3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65543953"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111320"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>MSAL.NET で Web ブラウザーを使用する
 対話型の認証には Web ブラウザー が必要です。 MSAL.NET では、Xamarin.iOS と [Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser) での[システム Web ブラウザー](#system-web-browser-on-xamarinios-and-xamarinandroid)が既定でサポートされています。 ただし、[Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) および [Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) のアプリでは、要件に応じて (UX、シングル サインオン (SSO) の必要性、セキュリティ)、[埋め込み Web ブラウザーを有効にすることもできます](#enable-embedded-webviews)。 さらに、Android に Chrome または Chrome カスタム タブをサポートするブラウザーが存在するかどうかに基づいて、使用する Web ブラウザーを[動的に選択する](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)こともできます。
@@ -33,7 +33,7 @@ ms.locfileid: "65543953"
 
 - パスワード (入力された場合) がアプリケーションまたは認証ライブラリによって格納されることはありません。
 - 他の ID プロバイダーへのリダイレクトが有効になります (たとえば、MSAL での職場または学校アカウントや個人アカウントでのログイン、または Azure AD B2C でのソーシャル アカウントでのログイン)。
-- STS で条件付きアクセスを制御します。たとえば、ユーザーに認証フェーズの間に多要素認証 (MFA) を行わせる場合 (Windows Hello PIN の入力、電話での呼び出し、または携帯電話での認証アプリ)。 必要な多要素認証がまだ設定されていない場合、ユーザーは同じダイアログですぐに設定できます。  ユーザーは、携帯電話番号を入力すると、認証アプリケーションをインストールし、QR タグをスキャンして自分のアカウントを追加するよう指示されます。 このサーバー主導の対話は優れたエクスペリエンスです。
+- たとえば、ユーザーに認証フェーズの間に多要素認証 (MFA) を行わせることで (Windows Hello PIN の入力、電話での呼び出し、または携帯電話での認証アプリ)、STS で条件付きアクセスを制御します。 必要な多要素認証がまだ設定されていない場合、ユーザーは同じダイアログですぐに設定できます。  ユーザーは、携帯電話番号を入力すると、認証アプリケーションをインストールし、QR タグをスキャンして自分のアカウントを追加するよう指示されます。 このサーバー主導の対話は優れたエクスペリエンスです。
 - パスワードが期限切れのとき、ユーザーがこの同じダイアログでパスワードを変更できるようにします (古いパスワードと新しいパスワードのための追加フィールドを提供します)。
 - Azure AD テナント管理者/アプリケーション所有者によって制御されるテナントまたはアプリケーション (イメージ) のブランド化を有効にします。
 - ユーザーが認証の直後に自分の名前でアプリケーションがリソース/スコープにアクセスすることに同意できるようにします。

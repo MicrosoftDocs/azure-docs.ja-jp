@@ -9,12 +9,12 @@ ms.date: 09/06/2017
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: d7debbc760e103046ce9bb1a8bdf25a954d9891c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d80bc71c01d0f1c887d9161edee5516d6b0925b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138552"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443701"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage クライアント ツール
 Azure Storage のユーザーのご要望に多いのが、Azure Storage クライアント ツールを使用したデータの表示や処理についてです。 次の表に、これを実現するツールの一覧を示します。 データ抽象化を列挙できる場合、またはデータ抽象化にアクセスできる場合は、各ブロックに "X" を入力しました。 ツールの有料/無料も記載されています。 "試用版" とは、無料試用版があることを示します。ただし、完全な製品は有料です。 "Y/N" は、バージョンの有料/無料を示します。
@@ -178,7 +178,7 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://clumsyleaf.com">ClumsyLeaf:AzureXplorer、CloudXplorer、TableXplorer</a></td>
+    <td><a href="https://clumsyleaf.com">ClumsyLeaf:AzureXplorer、CloudXplorer、TableXplorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>

@@ -1,19 +1,18 @@
 ---
 title: Azure Backup による Azure VM のバックアップについてよく寄せられる質問
 description: Azure Backup による Azure VM のバックアップに関する一般的な質問への回答。
-services: backup
 author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/28/2019
 ms.author: sogup
-ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a26cc2fcdc381361912085b0980a736f040c5b0a
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966324"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465289"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -46,10 +45,6 @@ VM の共同作成者の場合は、VM でバックアップを有効にでき�
 Recovery Services コンテナーと VM が異なるリソース グループに属している場合は、Recovery Services コンテナーのリソース グループへの書き込みアクセス許可があることを確認してください。  
 
 
-### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Azure Backup ではどのような Azure VM をバックアップできますか。
-
-サポートの詳細と制限については、[サポート マトリックス](backup-support-matrix-iaas.md)をご確認ください。
-
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>オンデマンド バックアップ ジョブのリテンション期間のスケジュールは、スケジュールされたバックアップと同じですか。
 いいえ。 オンデマンド バックアップ ジョブのリテンション期間を指定してください。 ポータルからトリガーした場合、既定では 30 日間保存されます。
 
@@ -73,23 +68,23 @@ Azure Backup サービスによって作成されたリソース グループを
 
 将来のバックアップを成功させるために、ユーザーはロックを解除しリソース グループからの復元ポイント コレクションをクリアする必要があります。その場合は[次の手順に従って](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)復元ポイント コレクションを削除します。
 
-### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>バックアップ ポリシーでは夏時間 (DST) が考慮されますか。
-いいえ。 ローカル コンピューターの日時は、現在の夏時間が適用されたローカル時刻です。 スケジュールされているバックアップの時間は、DST のためにローカル タイムと異なる場合があります。
-
-### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Azure Backup によってバックアップされた VM には何台のデータ ディスクを接続できますか。
-Azure Backup では最大 16 台のディスクを搭載した VM をバックアップできます。 16 ディスクのサポートは、[インスタント リストア](backup-instant-restore-capability.md)で提供されています。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
 Azure Backup では、[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)がサポートされています。 SSD マネージド ディスクは、Azure VM に対して新しい種類の永続ストレージを提供します。 SSD マネージド ディスクのサポートは、[インスタント リストア](backup-instant-restore-capability.md)で提供されています。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>書き込みアクセラレータ (WA) 対応ディスクを使用して VM をバックアップできますか。
-WA 対応ディスクでスナップショットを作成することはできません。 ただし、Azure Backup サービスでは、WA 対応ディスクをバックアップから除外できます。 WA 対応ディスクでの VM ディスク除外は、インスタント リストアにアップグレードされたサブスクリプションでのみサポートされます。
+WA 対応ディスクでスナップショットを作成することはできません。 ただし、Azure Backup サービスでは、WA 対応ディスクをバックアップから除外できます。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>書き込みアクセラレータ (WA) ディスク と SAP HANA がインストールされている VM があります。 バックアップするには、どうすればよいですか。
 Azure Backup では WA 対応ディスクをバックアップできませんが、バックアップから除外することはできます。 ただし、バックアップによってデータベース整合性が維持されなくなります。WA 対応ディスクの情報がバックアップされないためです。 オペレーティング システム ディスクのバックアップ、および WA 対応ではないディスクのバックアップが必要な場合は、この構成でディスクをバックアップできます。
 
 RPO が 15 分の SAP HANA バックアップに対するプライベート プレビューを実行中です。 このプレビューは同様の方法で SQL DB バックアップに組み込まれていて、backInt インターフェイスが、SAP HANA 認定のサード パーティ ソリューションに対して使用されています。 関心をお持ちの場合は、"**Azure VM での SAP HANA バックアップのプライベート プレビューへのサインアップ**" という件名で、`AskAzureBackupTeam@microsoft.com` 宛てにメールでご連絡ください。
 
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>自分の VM バックアップ ポリシーで設定した、スケジュールされたバックアップ時刻からバックアップ開始時刻までの最大遅延時間はどれぐらいですか。
+スケジュールされたバックアップは、スケジュールされたバックアップ時刻から 2 時間以内にトリガーされます。 たとえば、 100 個の VM のバックアップ開始時刻が午前 2 時にスケジュールされている場合、最長で午前 4 時までに 100 個の VM すべてのバックアップ ジョブが進行中になります。 スケジュールされたバックアップが停電のために一時停止され、再開または再試行された場合、バックアップはこのスケジュールされた 2 時間の枠外で開始される可能性があります。
+
+### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>毎日のバックアップ ポイントに許容される最小リテンション期間の範囲はどれぐらいですか。
+Azure Virtual Machine のバックアップ ポリシーでは、最小リテンション期間の範囲として 7 日から 9999 日までがサポートされています。 7 日間未満に設定された既存の VM バックアップ ポリシーを変更するには、7 日間という最小リテンション期間の範囲を満たすように更新する必要があります。
 
 ## <a name="restore"></a>復元
 

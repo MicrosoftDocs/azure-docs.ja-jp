@@ -9,24 +9,24 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: cdc0f189daebcda592338b463954efab4fc2db96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79288f2204030790b2308905d90ff8e035fe2dd9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864428"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621864"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>.NET を使用して IoT Hub でデバイスからクラウドにファイルをアップロードする
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-このチュートリアルは、 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-csharp-csharp-c2d.md) に関するページ内のコードに基づいて作成されており、IoT Hub のファイル アップロード機能を使用する方法を説明します。 次の方法について説明します。
+このチュートリアルは、[IoT Hub を使用した cloud-to-device メッセージの送信](iot-hub-csharp-csharp-c2d.md)に関するページ内のコードに基づいて作成されており、IoT Hub のファイル アップロード機能を使用する方法を説明します。 次の方法について説明します。
 
-- ファイルのアップロードで Azure BLOB URI を使用してデバイスをセキュリティで保護する。
+* ファイルのアップロードで Azure BLOB URI を使用してデバイスをセキュリティで保護する。
 
-- IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
+* IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
 
-[デバイスから IoT ハブにテレメトリを送信する方法](quickstart-send-telemetry-dotnet.md)と [IoT Hub でクラウドからデバイスにメッセージを送信する方法](iot-hub-csharp-csharp-c2d.md)に関する記事には、IoT Hub のデバイスからクラウドへのメッセージングとクラウドからデバイスへのメッセージングの基本的な機能が示されています。 「[IoT Hub を使用してメッセージ ルーティングを構成する](tutorial-routing.md)」チュートリアルでは、Azure Blob Storage にデバイスからクラウドへのメッセージを確実に格納する方法を説明しています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例:
+[デバイスから IoT ハブにテレメトリを送信する方法](quickstart-send-telemetry-dotnet.md)のクイックスタートと [IoT Hub で cloud-to-device メッセージを送信する方法](iot-hub-csharp-csharp-c2d.md)のチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングと cloud-to-device メッセージの基本的な機能が示されています。 「[IoT Hub を使用してメッセージ ルーティングを構成する](tutorial-routing.md)」チュートリアルでは、Azure Blob Storage にデバイスからクラウドへのメッセージを確実に格納する方法を説明しています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例:
 
 * イメージを含む大きなファイル
 * ビデオ
@@ -37,7 +37,7 @@ ms.locfileid: "65864428"
 
 このチュートリアルの最後に、次の 2 つの .NET コンソール アプリを実行します。
 
-* **SimulatedDevice**: 「[チュートリアル: IoT Hub と .Net でクラウドからデバイスへのメッセージを送信する方法](iot-hub-csharp-csharp-c2d.md)」で作成したアプリの変更済みバージョンです。 このアプリは、IoT Hub によって提供された SAS URI を使用してストレージにファイルをアップロードします。
+* **SimulatedDevice**、[IoT Hub で cloud-to-device メッセージを送信する方法](iot-hub-csharp-csharp-c2d.md)のチュートリアルで作成したアプリの変更されたバージョンです。 このアプリは、IoT Hub によって提供された SAS URI を使用してストレージにファイルをアップロードします。
 
 * **ReadFileUploadNotification**: IoT Hub からファイル アップロード通知を受信します。
 
@@ -47,13 +47,14 @@ ms.locfileid: "65864428"
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio
+
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>デバイス アプリからのファイルのアップロード
 
-このセクションでは、[IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-csharp-csharp-c2d.md)に関するチュートリアルで作成したデバイス アプリを変更して、クラウドからデバイスへのメッセージを IoT Hub から受信するようにします。
+このセクションでは、[IoT Hub でクラウドからデバイスへのメッセージ送信](iot-hub-csharp-csharp-c2d.md)で作成したデバイス アプリを変更して、クラウドからデバイスへのメッセージを IoT Hub から受信するようにします。
 
 1. Visual Studio で **SimulatedDevice** プロジェクトを右クリックして **[追加]** をクリックし、 **[既存の項目]** をクリックします。 イメージ ファイルに移動し、プロジェクトに含めます。 このチュートリアルでは、イメージ名が `image.jpg`という前提で説明します。
 
@@ -144,7 +145,7 @@ ms.locfileid: "65864428"
 
             await notificationReceiver.CompleteAsync(fileUploadNotification);
         }
-    }   
+    }
     ```
 
     この受信パターンは、クラウドからデバイスへのメッセージをデバイス アプリから受信するために使用するものと同じであることに注意してください。
@@ -174,10 +175,11 @@ ms.locfileid: "65864428"
 このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
 * [プログラムによる IoT Hub の作成](iot-hub-rm-template-powershell.md)
+
 * [C SDK の概要](iot-hub-device-sdk-c-intro.md)
+
 * [Azure IoT SDK](iot-hub-devguide-sdks.md)
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
 * [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
-

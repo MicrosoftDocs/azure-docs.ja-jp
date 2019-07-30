@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63caf9a08acb04bab3712891701d32c21c22e9fc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190094"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449884"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure ファイル共有を作成する方法
-Premium ファイル共有 (プレビュー) は、ソリッド ステート ディスク (SSD) ストレージ メディアで提供され、データベースのホスティングやハイパフォーマンス コンピューティング (HPC) など IO 集中型のワークロードに役立ちます。 Premium ファイル共有は、FileStorage アカウントと呼ばれる、特殊用途のストレージ アカウントの種類でホストされます。 Premium ファイル共有は、ハイ パフォーマンスおよびエンタープライズ規模のアプリケーション向けに設計され、一貫性のある待機時間の短縮、高 IOPS、高スループット共有を提供します。
+Premium ファイル共有は、ソリッド ステート ディスク (SSD) ストレージ メディアで提供され、データベースのホスティングやハイパフォーマンス コンピューティング (HPC) など、IO 集中型のワークロードに役立ちます。 Premium ファイル共有は、FileStorage アカウントと呼ばれる、特殊用途のストレージ アカウントの種類でホストされます。 Premium ファイル共有は、ハイ パフォーマンスおよびエンタープライズ規模のアプリケーション向けに設計され、一貫性のある待機時間の短縮、高 IOPS、高スループット共有を提供します。
 
 この記事では、[Azure portal](https://portal.azure.com/)、Azure PowerShell、および Azure CLI を使用して、この新しいアカウントの種類を作成する方法を示します。
 
@@ -30,7 +30,7 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
-### <a name="create-a-filestorage-preview-storage-account"></a>FileStorage (プレビュー) ストレージ アカウントを作成する
+### <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
 
 ここまでで、ストレージ アカウントを作成する準備ができました。
 
@@ -47,10 +47,10 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 1. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
 1. ストレージ アカウントの場所を選択するか、または既定の場所を使います。
 1. **[パフォーマンス]** では **[Premium]** を選択します。
-1. **[アカウントの種類]** を選択し、 **[FileStorage (preview)]\(FileStorage (プレビュー)\)** を選択します。
+1. **[アカウントの種類]** を選択し、 **[FileStorage]** を選択します。
 1. **[レプリケーション]** の設定は、既定値の **[ローカル冗長ストレージ (LRS)]** のままにします。
 
-    ![Premium ファイル共有にストレージ アカウントを作成する方法](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
+    ![Premium ファイル共有にストレージ アカウントを作成する方法](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
 1. **作成** を選択します。
@@ -59,7 +59,7 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 ### <a name="create-a-premium-file-share"></a>Premium ファイル共有を作成する
 
-1. ストレージ アカウントの左側のメニューで、 **[File サービス]** セクションまでスクロールし、 **[Files (プレビュー)]** を選択します。
+1. ストレージ アカウントの左側のメニューで、 **[File サービス]** セクションまでスクロールし、 **[Files]** を選択します。
 1. **[+ ファイル共有]** を選択して、Premium ファイル共有を作成します。
 1. ファイル共有の名前と必要なクォータを入力し、 **[作成]** を選択します。
 
@@ -82,14 +82,14 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 ### <a name="upgrade-your-powershell-module"></a>PowerShell モジュールのアップグレード
 
-PowerShell で Premium ファイル共有を操作するには、最新の Az.Storage モジュールをインストールする必要があります。
+PowerShell で Premium ファイル共有を操作するには、Az.Storage モジュール バージョン 1.4.0 (最新の Az.Storage モジュール) をインストールする必要があります。
 
 最初に、引き上げられたアクセス許可を使って PowerShell セッションを開きます。
 
 Az.Storage モジュールをインストールします。
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインする
@@ -112,9 +112,9 @@ $location = "westus2"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>FileStorage (プレビュー) ストレージ アカウントを作成する
+### <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
 
-FileStorage (プレビュー) ストレージ アカウントを PowerShell から作成するには、[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) コマンドを使います。
+PowerShell を使用して FileStorage ストレージ アカウントを作成するには、[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) コマンドを使用します。
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -145,15 +145,11 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 Azure Cloud Shell を開始するには、[Azure portal](https://portal.azure.com) にサインインします。
 
-CLI のローカル インストールにログインする場合は、ログイン コマンドを実行します。
+CLI のローカル インストールにログインする場合は、まず最新バージョンを使用していることを確認してから、ログイン コマンドを実行します。
 
 ```cli
 az login
 ```
-
-### <a name="add-the-preview-storage-cli-extension"></a>プレビュー ストレージ CLI 拡張機能を追加する
-
-Premium ファイル共有はプレビュー機能であるため、シェルにプレビュー拡張機能を追加する必要があります。 そのためには、Cloud Shell またはローカル シェルを使用して、`az extension add --name storage-preview` コマンドを入力します。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 

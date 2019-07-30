@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1d13b52d253562a24946e6df2fc069f41b485fef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e7db970bee44d40831c05e8911b72841d027211
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707896"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442091"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - セキュリティおよび DevOps のベスト プラクティス
 
@@ -52,7 +52,7 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 
 詳細については、次の記事を参照してください。
 
-- [ドメイン参加済み HDInsight クラスターでの Apache Hadoop セキュリティの概要](../domain-joined/apache-domain-joined-introduction.md)
+- [ドメイン参加済み HDInsight クラスターでの Apache Hadoop セキュリティの概要](../domain-joined/hdinsight-security-overview.md)
 
 - [HDInsight で Azure のドメイン参加済み Apache Hadoop クラスターを計画する](../domain-joined/apache-domain-joined-architecture.md)
 - [Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)

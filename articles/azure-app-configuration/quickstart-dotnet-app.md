@@ -14,30 +14,28 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: f5837e06f347a4f822ac007dfe54c99fc7457dbb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872985"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326524"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して .NET Framework アプリを作成する
 
-Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 これを使用すると、すべてのアプリケーション設定を、コードとは別の 1 つの場所に簡単に保存して管理することができます。 このクイック スタートでは、.NET Framework ベースの Windows デスクトップ コンソール アプリにサービスを組み込む方法を示します。
-
-![クイック スタート完了 (ローカル)](./media/quickstarts/dotnet-fx-app-run.png)
+このクイック スタートでは、コードとは別にアプリケーション設定のストレージと管理を一元化するために、Azure App Configuration を .NET Framework ベースのコンソール アプリに組み込みます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、[Visual Studio 2019](https://visualstudio.microsoft.com/vs) および [.NET Framework 4.7.1](https://dotnet.microsoft.com/download) 以降をインストールします (まだインストールしていない場合)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
+- [.NET Framework 4.7.1](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)\**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | キー | 値 |
     |---|---|

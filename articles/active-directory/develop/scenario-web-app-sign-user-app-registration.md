@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f512911811535818f4ad857c5c3b956870f619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ae638f8cbef29c5d167a3ab59188169cbd934ef
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080057"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150224"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>ユーザーをサインインさせる Web アプリ - アプリの登録
 
@@ -48,14 +48,14 @@ ms.locfileid: "65080057"
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
 1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]**  >  **[新規登録]** を選択します。
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-   - アプリケーションに対してサポートされるアカウントの種類を選びます (「[Supported Account types](./v2-supported-account-types.md)」 (サポートされるアカウントの種類) を参照してください)
-   - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `AspNetCore-WebApp`)。
-   - **[応答 URL]** に自分のアプリに対する応答 URL (例: `https://localhost:44321/`) を追加し、 **[登録]** を選択します。
+   1. アプリケーションに対してサポートされるアカウントの種類を選びます (「[Supported Account types](./v2-supported-account-types.md)」 (サポートされるアカウントの種類) を参照してください)
+   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `AspNetCore-WebApp`)。
+   1. **[リダイレクト URI]** に、アプリケーションの種類、および認証に成功した後に返されたトークンの応答を受け入れる URI の接続先を追加します。 たとえば、「 `https://localhost:44321/` 」のように入力します。  **[登録]** を選択します。
 1. **[認証]** メニューを選択し、次の情報を追加します。
-- **[応答 URL]** に「`https://localhost:44321/signin-oidc`」を追加し、 **[登録]** を選択します。
-- **[詳細設定]** セクションの **[サインアウト URL]** に「`https://localhost:44321/signout-oidc`」を設定します。
-- **[暗黙的な許可]** の **[ID トークン]** チェック ボックスをオンにします。
-- **[保存]** を選択します。
+   1. **[応答 URL]** に「`https://localhost:44321/signin-oidc`」を追加します。
+   1. **[詳細設定]** セクションの **[ログアウト URL]** を「`https://localhost:44321/signout-oidc`」に設定します。
+   1. **[暗黙的な許可]** の **[ID トークン]** チェック ボックスをオンにします。
+   1. **[保存]** を選択します。
 
 ### <a name="register-an-app-using-powershell"></a>PowerShell を使用してアプリを登録する
 

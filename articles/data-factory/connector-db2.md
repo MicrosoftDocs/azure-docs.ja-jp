@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 797db8d0dd321676a3fa436a328a9981a3d3ca3b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019624"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312046"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-onprem-db2-connector.md)
 > * [現在のバージョン](connector-db2.md)
 
@@ -34,6 +34,7 @@ DB2 データベースのデータを、サポートされているシンク デ
 
 * IBM DB2 for z/OS 11.1
 * IBM DB2 for z/OS 10.1
+* IBM DB2 for i 7.3
 * IBM DB2 for i 7.2
 * IBM DB2 for i 7.1
 * IBM DB2 for LUW 11
@@ -62,12 +63,12 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Db2** | はい |
-| server |DB2 サーバーの名前です。 サーバー名に続けて、コロンで区切ってポート番号を指定できます (例: `server:port`)。 |はい |
+| サーバー |DB2 サーバーの名前です。 サーバー名に続けて、コロンで区切ってポート番号を指定できます (例: `server:port`)。 |はい |
 | database |DB2 データベースの名前です。 |はい |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
 | username |DB2 データベースに接続するユーザー名を指定します。 |はい |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
 
@@ -175,30 +176,30 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 |:--- |:--- |
 | BigInt |Int64 |
 | Binary |Byte[] |
-| BLOB |Byte[] |
-| Char |String |
-| Clob |String |
+| Blob |Byte[] |
+| Char |string |
+| Clob |string |
 | Date |DateTime |
-| DB2DynArray |String |
-| DbClob |String |
+| DB2DynArray |string |
+| DbClob |string |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Graphic |String |
+| Graphic |string |
 | Integer |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |String |
-| LongVarGraphic |String |
+| LongVarChar |string |
+| LongVarGraphic |string |
 | Numeric |Decimal |
 | Real |Single |
 | SmallInt |Int16 |
-| Time |timespan |
-| Timestamp |Datetime |
+| Time |TimeSpan |
+| Timestamp |DateTime |
 | VarBinary |Byte[] |
-| VarChar |String |
-| VarGraphic |String |
-| xml |Byte[] |
+| VarChar |string |
+| VarGraphic |string |
+| Xml |Byte[] |
 
 
 ## <a name="next-steps"></a>次の手順

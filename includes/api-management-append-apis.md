@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238126"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181691"
 ---
 ## <a name="append-other-apis"></a>その他の API の追加
 

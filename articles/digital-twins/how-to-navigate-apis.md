@@ -1,19 +1,19 @@
 ---
 title: Azure Digital Twins API の移動 | Microsoft Docs
 description: Azure Digital Twins 管理 API にクエリを実行する一般的なパターンについて説明します。
-author: dsk-2015
+author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
-ms.author: dkshir
-ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/09/2019
+ms.author: v-adgera
+ms.openlocfilehash: da1493d2d52f2c8a964df3b72c1622a9c6b66abf
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60924496"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719855"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Twins 管理 API の使用方法
 
@@ -113,4 +113,4 @@ $count、$expand、$search などの他のクエリ オプションはサポー�
 
 API のいくつかの一般的なクエリ パターンについては、「[一般的なタスクについて Azure Digital Twins API をクエリする方法](how-to-query-common-apis.md)」を参照してください。
 
-
+API エンドポイントの詳細については、[Digital Twins Swagger の使用方法](./how-to-use-swagger.md)に関するページをご覧ください。

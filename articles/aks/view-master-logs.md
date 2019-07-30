@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) コントローラー ログの表示
 description: Azure Kubernetes Service (AKS) で Kubernetes マスター ノードのログを有効にし、それらを表示する方法について説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.author: mlearned
+ms.openlocfilehash: ef77b991461c5d9640cbab9d53f8393540f47c9b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497244"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613920"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) では、*kube-apiserver* や *kube-controller-ma
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure Portal][portal-quickstart] を使用して AKS クラスターを作成してください。 Azure Monitor ログは、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
+この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] or [Azure portal][portal-quickstart] を使用して AKS クラスターを作成してください。 Azure Monitor ログは、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
 
 ## <a name="enable-diagnostics-logs"></a>診断ログの有効化
 
@@ -45,7 +45,7 @@ Azure Monitor ログの有効化と管理は、Azure portal で行います。 A
 >
 > `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
 >
-> 準備ができたら、[az provider register][az-provider-register] コマンドを使用して、AKS リソース プロバイダーの登録を更新します。
+> 準備ガできたら、[az provider register][az-provider-register] コマンドを利用し、AKS リソース プロバイダーの登録を更新します。
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
@@ -133,7 +133,7 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、AKS クラスターの Kubernetes マスター コンポーネントのログを有効にして表示する方法について説明しました。 さらに詳細な監視方法やトラブルシューティング方法については、[Kubelet ログの表示][kubelet-logs]と[SSH ノード アクセスの有効化][aks-ssh]に関する記事をご覧ください。
+この記事では、AKS クラスターの Kubernetes マスター コンポーネントのログを有効にして表示する方法について説明しました。 さらに詳細な監視方法やトラブルシューティング方法については、[Kubelet ログの表示][kubelet-logs]and [enable SSH node access][aks-ssh]に関する記事をご覧ください。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

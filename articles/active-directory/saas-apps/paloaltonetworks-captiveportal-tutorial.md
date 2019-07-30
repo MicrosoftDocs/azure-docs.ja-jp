@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c3651e81cd3916bccc859bc3bc010511b2a114a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095256"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>チュートリアル:Azure Active Directory と Palo Alto Networks Captive Portal の統合
 
@@ -56,11 +56,11 @@ Palo Alto Networks Captive Portal では、次のシナリオがサポートさ�
 
 まずは、ギャラリー内でマネージド SaaS アプリの一覧に Palo Alto Networks Captive Portal を追加します。
 
-1. [Azure Portal](https://portal.azure.com) の左側のメニューで、**[Azure Active Directory]** を選択します。
+1. [Azure Portal](https://portal.azure.com) の左側のメニューで、 **[Azure Active Directory]** を選択します。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
+2. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 
     ![メニューの [エンタープライズ アプリケーション] オプション](common/enterprise-applications.png)
 
@@ -68,7 +68,7 @@ Palo Alto Networks Captive Portal では、次のシナリオがサポートさ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Palo Alto Networks Captive Portal**」と入力します。 検索結果に表示される "**Palo Alto Networks - Captive Portal**" を選択し、**[追加]** を選択します。
+4. 検索ボックスに「**Palo Alto Networks Captive Portal**」と入力します。 検索結果に表示される "**Palo Alto Networks - Captive Portal**" を選択し、 **[追加]** を選択します。
 
      ![結果一覧の Palo Alto Networks - Captive Portal](common/search-new-app.png)
 
@@ -78,22 +78,22 @@ Palo Alto Networks Captive Portal では、次のシナリオがサポートさ�
 
 Palo Alto Networks Captive Portal を使った Azure AD のシングル サインオンを構成してテストするには、次の作業を完了してください。
 
-1. **[Azure AD のシングル サインオンの構成](#configure-azure-ad-single-sign-on)**: ユーザーがこの機能を利用できるようにします。
-2. **[Palo Alto Networks Captive Portal のシングル サインオンの構成](#configure-palo-alto-networks-captive-portal-single-sign-on)**: アプリケーションでシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)**: ユーザー *Britta Simon* を使用して Azure AD のシングル サインオンをテストします。
-4. **[Azure AD のテスト ユーザーの割り当て](#assign-the-azure-ad-test-user)**: Azure AD のシングル サインオンを使用するよう Britta Simon を設定します。
+1. **[Azure AD のシングル サインオンの構成](#configure-azure-ad-single-sign-on)** : ユーザーがこの機能を利用できるようにします。
+2. **[Palo Alto Networks Captive Portal のシングル サインオンの構成](#configure-palo-alto-networks-captive-portal-single-sign-on)** : アプリケーションでシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** : ユーザー *Britta Simon* を使用して Azure AD のシングル サインオンをテストします。
+4. **[Azure AD のテスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** : Azure AD のシングル サインオンを使用するよう Britta Simon を設定します。
 5. **Palo Alto Networks Captive Portal のテスト ユーザーの作成**: Palo Alto Networks Captive Portal 内で *Britta Simon* に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-6. **[シングル サインオンのテスト](#test-single-sign-on)**: 構成が機能することを確認します。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** : 構成が機能することを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 まずは、Azure portal 内で Azure AD のシングル サインオンを有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Palo Alto Networks - Captive Portal** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Palo Alto Networks - Captive Portal** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ウィンドウで、**[SAML]** を選択します。
+2. **[シングル サインオン方式の選択]** ウィンドウで、 **[SAML]** を選択します。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
@@ -112,7 +112,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
       > [!NOTE]
       > この手順に示したプレースホルダーの値は、実際の識別子と応答 URL に置き換えてください。 実際の値を取得するには、[Palo Alto Networks Captive Portal のクライアント サポート チーム](https://support.paloaltonetworks.com/support)にご連絡ください。
 
-5. **[SAML 署名証明書]** セクションで、**[フェデレーション メタデータ XML]** の隣にある **[ダウンロード]** を選択します。 ダウンロードしたファイルを、お使いのコンピューターに保存します。
+5. **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** の隣にある **[ダウンロード]** を選択します。 ダウンロードしたファイルを、お使いのコンピューターに保存します。
 
     ![フェデレーション メタデータ XML のダウンロード リンク](common/metadataxml.png)
 
@@ -126,7 +126,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
     ![Palo Alto Networks の Web サイトの [Device]\(デバイス\) タブ](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-3. メニューで **[SAML Identity Provider]\(SAML ID プロバイダー\)** を選択し、**[Import]\(インポート\)** を選択します。
+3. メニューで **[SAML Identity Provider]\(SAML ID プロバイダー\)** を選択し、 **[Import]\(インポート\)** を選択します。
 
     ![[Import]\(インポート\) ボタン](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
 
@@ -144,7 +144,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
 次は、Azure portal 内で *Britta Simon* というテスト ユーザーを作成します。
 
-1. Azure portal 内で、**[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** の順に選択します。
+1. Azure portal 内で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -158,7 +158,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
     1. **[名前]** に、「**BrittaSimon**」と入力します。
   
-    2. **[ユーザー名]** に、「**BrittaSimon\@\<your_company_domain\>**」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
+    2. **[ユーザー名]** に、「**BrittaSimon\@\<your_company_domain\>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
 
     3. **[パスワード]** に、パスワードを入力します。 入力するパスワードはどこかに記録しておくことをお勧めします。 **[パスワードを表示]** チェック ボックスをオンにして、パスワードを表示することもできます。
 
@@ -168,7 +168,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
 次は、Britta Simon が Azure のシングル サインオンを利用できるようにするために、Palo Alto Networks Captive Portal へのアクセスを許可します。
 
-1. Azure portal 内で、**[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に選択します。
+1. Azure portal 内で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
 
@@ -186,7 +186,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
 5. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。 **[選択]** を選択します。
 
-6. SAML アサーションにロールの値を追加するために、**[ロールの選択]** ウィンドウでユーザーに関連するロールを選択します。 **[選択]** を選択します。
+6. SAML アサーションにロールの値を追加するために、 **[ロールの選択]** ウィンドウでユーザーに関連するロールを選択します。 **[選択]** を選択します。
 
 7. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
 

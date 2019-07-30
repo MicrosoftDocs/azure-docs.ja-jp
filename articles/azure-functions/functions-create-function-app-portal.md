@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ad9c50953447c1effee48eec5b0cb9f64386e6cc
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900768"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155565"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から関数アプリを作成する
 
@@ -27,7 +27,7 @@ Azure Function App では、Azure App Service のインフラストラクチャ�
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
 
-関数アプリを作成するときに、有効な**アプリ名**を入力します。名前に使用できるのは文字、数字、およびハイフンだけです。 アンダースコア (**_**) は使用できません。
+関数アプリを作成するときに、有効な**アプリ名**を入力します。名前に使用できるのは文字、数字、およびハイフンだけです。 アンダースコア ( **_** ) は使用できません。
 
 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 ストレージ アカウント名は Azure 内で一意である必要があります。 
 
@@ -52,4 +52,7 @@ App Service で関数アプリを作成するときに、BLOB、キュー、お�
 
 ## <a name="next-steps"></a>次の手順
 
-[!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
+Azure portal を使用すると関数を簡単に作成したり試したりできますが、[ローカル開発](functions-develop-local.md)をお勧めします。 ポータルで関数アプリを作成した後、さらに関数を追加する必要があります。 
+
+> [!div class="nextstepaction"]
+> [HTTP によってトリガーされる関数の追加](functions-create-first-azure-function.md#create-function)

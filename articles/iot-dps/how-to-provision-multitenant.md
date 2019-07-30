@@ -300,7 +300,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 サンプル コードでは、Device Provisioning Services のインスタンスにプロビジョニング要求を送信するデバイスのブート シーケンスがシミュレートされます。 ブート シーケンスにより、デバイスが認識され、待機時間に基づいて最も近い IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

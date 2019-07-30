@@ -1,19 +1,17 @@
 ---
 title: Azure Data Catalog のよく寄せられる質問
 description: データ ソースの検出、注釈、管理など、Azure Data Catalog についてのよく寄せられる質問です。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 6ab5c67129b16cde5ca74e72effdf56ec0a22711
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61004043"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508892"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
@@ -36,7 +34,7 @@ Data Catalog は、次のような技術者と技術者以外のユーザーを�
 Data Catalog サービスは、現在、次のデータ センターで使用できます。
 
 * 米国西部
-* 米国東部
+* East US
 * 西ヨーロッパ
 * 北ヨーロッパ
 * オーストラリア東部
@@ -103,9 +101,6 @@ Data Catalog からオブジェクトを削除するには、ポータルでオ�
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>カタログは興味がある別のデータ ソースを処理しますか?
 Data Catalog へのデータ ソースの追加には積極的に取り組んでいるところです。 サポートされている具体的なデータ ソースを確認する場合は、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) に移動して、それを提案 (または、それが既に提案されている場合は、その支持を表明) してください。
-
-## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Azure Data Catalog は Power BI for Office 365 のデータ カタログとどのように関連しますか?
-Azure Data Catalog は、Power BI での Data Catalog の進化と考えることができます。 2017 年春以降、Excel 2016 および Power Query for Excel でのクエリの共有と検出を有効にするために Azure Data Catalog が使用されています。 Excel での Data Catalog の機能は、Power BI Pro ライセンスを持つユーザーが使用できます。
 
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>Data Catalog に資産を登録するには、どのようなアクセス許可が必要ですか?
 Data Catalog 登録ツールを実行するには、データ ソースに対し、そのソースからメタデータを読み取ることができるアクセス許可が必要です。 プレビューも含めるには、登録されるオブジェクトからのデータの読み取りができるアクセス許可が必要です。

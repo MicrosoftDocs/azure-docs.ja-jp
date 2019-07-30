@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure CLI で仮想マシン �
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2f2ebf5eb52c3e99e98fa5078182491a394cc6f0
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: afbb3ed022f0a4d0e59e7c3eca4da24737c4d0a6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882355"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695407"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを作成して Linux 上に高可用性アプリをデプロイする
 

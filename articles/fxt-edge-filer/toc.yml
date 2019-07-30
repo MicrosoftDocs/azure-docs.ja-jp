@@ -1,0 +1,38 @@
+- name: Azure FXT Edge Filer のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure FXT Edge Filer とは
+      href: fxt-overview.md
+- name: チュートリアル
+  items:
+    - name: 1 - ハードウェアをインストールする
+      href: fxt-install.md
+    - name: 2 - ネットワーク ポートにケーブルを接続して電源を供給する
+      href: fxt-network-power.md
+    - name: 3 - ハードウェア パスワードを設定する
+      href: fxt-node-password.md
+    - name: 4 - クラスターを作成する
+      href: fxt-cluster-create.md
+    - name: 5 - クラスター ノードを追加する
+      href: fxt-add-nodes.md
+    - name: 6 - バックエンド ストレージを追加して仮想名前空間を構成する
+      href: fxt-add-storage.md
+    - name: 7 - クラスターのネットワーク設定を構成する
+      href: fxt-configure-network.md
+- name: ハウツー ガイド
+  items:
+    - name: クライアントをマウントする
+      href: fxt-mount-clients.md
+    - name: Azure FXT Edge Filer ハードウェアを監視する
+      href: fxt-monitor.md
+    - name: ハードウェア ノードの電源を安全にオフにする
+      href: fxt-power-off.md
+- name: リソース
+  items:
+    - name: ハードウェア仕様
+      href: fxt-specs.md
+    - name: その他のドキュメント
+      href: fxt-additional-doc.md
+    - name: サポート チケットを開く
+      href: fxt-support-ticket.md

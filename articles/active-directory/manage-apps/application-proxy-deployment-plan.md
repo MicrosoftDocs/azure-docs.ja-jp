@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2e9968e8716818637a34adea86de88e1f848c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388303"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108482"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -64,7 +64,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 *  **Azure のオンボード**:アプリケーション プロキシをデプロイする前に、ユーザー ID をオンプレミス ディレクトリと同期するか、Azure AD テナント内に直接作成する必要があります。 ID 同期によって、Azure AD が、アプリケーション プロキシが発行したアプリケーションへのアクセス権をユーザーに付与する前にユーザーを事前に認証でき、シングル サインオン (SSO) を実行するために必要なユーザー ID 情報を得ることができます。
 
-* **条件付きアクセスの要件**: イントラネット アクセスにアプリケーション プロキシを使用することはお勧めできません。これによって、ユーザーに影響を与える待機時間が追加されるためです。 アプリケーション プロキシは、インターネットからのリモート アクセスを対象にした事前認証および条件付きアクセス ポリシーと一緒に使用することをお勧めします。  イントラネット用に条件付きアクセスを提供するアプローチとしては、AAD で直接認証できるようにアプリケーションを近代化することです。 詳細については、「[アプリケーションを AAD に移行するためのリソース](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)」を参照してください。 
+* **条件付きアクセスの要件**:イントラネット アクセスにアプリケーション プロキシを使用することはお勧めできません。これによって、ユーザーに影響を与える待機時間が追加されるためです。 アプリケーション プロキシは、インターネットからのリモート アクセスを対象にした事前認証および条件付きアクセス ポリシーと一緒に使用することをお勧めします。  イントラネット用に条件付きアクセスを提供するアプローチとしては、AAD で直接認証できるようにアプリケーションを近代化することです。 詳細については、「[アプリケーションを AAD に移行するためのリソース](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)」を参照してください。 
 
 * **サービスの制限**: 個々のテナントによるリソースの過剰消費から保護するために、アプリケーションおよびテナントごとにスロットリングの制限が設定されています。 これらの制限については、「[Azure AD サービスの制限と制約](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)」を参照してください。 このようなスロットルの制限は、通常の使用量をはるかに超えるベンチマークに基づいて行われます。これにより、ほとんどのデプロイに十分なバッファーが提供されます。
 

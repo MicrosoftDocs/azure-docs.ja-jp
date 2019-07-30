@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
-ms.author: v-jamebr
-ms.openlocfilehash: df3156688f018aee4717271557220396827dd9e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: chackdan
+ms.openlocfilehash: f1717cfb7980fc481f01c51c04d076aa2ca0f67d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306826"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876492"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 上で Apache Tomcat を実行して Service Fabric コンテナーを作成する
 Apache Tomcat は、Java サーブレットと Java サーバー テクノロジの一般的なオープンソースの実装です。 この記事では、Apache Tomcat とシンプルな Web アプリケーションでコンテナーをビルドし、Linux を実行している Service Fabric クラスターにコンテナーをデプロイして、Web アプリケーションに接続する方法を示します。  

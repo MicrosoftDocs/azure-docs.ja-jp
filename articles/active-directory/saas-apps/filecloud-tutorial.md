@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75c66a875dc3419e928da83811809bd0f6d5d054
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7271a1cf0520eef8aa9b64fab36349caf3c0ffcd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898847"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>チュートリアル:Azure Active Directory と FileCloud の統合
 
@@ -55,11 +55,11 @@ Azure AD への FileCloud の統合を構成するには、ギャラリーから
 
 **ギャラリーから FileCloud を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への FileCloud の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**FileCloud**」と入力し、結果ウィンドウで **[FileCloud]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**FileCloud**」と入力し、結果ウィンドウで **[FileCloud]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の FileCloud](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
 
 FileCloud で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **FileCloud** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **FileCloud** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ FileCloud で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[FileCloud クライアント サポート チーム](mailto:support@codelathe.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -140,7 +140,7 @@ FileCloud で Azure AD シングル サインオンを構成するには、次�
    
     ![アプリ側でのシングル サインオンの構成](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
-4. **[Single Sign On (SSO) Settings (シングル サインオン (SSO) 設定)]** パネルで、**[Default SSO Type (既定の SSO タイプ)]** として **[SAML]** を選択します。
+4. **[Single Sign On (SSO) Settings (シングル サインオン (SSO) 設定)]** パネルで、 **[Default SSO Type (既定の SSO タイプ)]** として **[SAML]** を選択します。
    
     ![アプリ側でのシングル サインオンの構成](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
@@ -148,7 +148,7 @@ FileCloud で Azure AD シングル サインオンを構成するには、次�
 
     ![アプリ側でのシングル サインオンの構成](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
-6. ダウンロードしたメタデータ ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[SAML Settings (SAML 設定)]** パネルの **[IdP Meta Data (IdP メタ データ)]** ボックスに貼りつけます。
+6. ダウンロードしたメタデータ ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[SAML Settings (SAML 設定)]** パネルの **[IdP Meta Data (IdP メタ データ)]** ボックスに貼りつけます。
 
     ![アプリ側でのシングル サインオンの構成](./media/filecloud-tutorial/tutorial_filecloud_004.png)
 
@@ -158,7 +158,7 @@ FileCloud で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -183,7 +183,7 @@ FileCloud で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に FileCloud へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[FileCloud]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[FileCloud]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -195,15 +195,15 @@ FileCloud で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-filecloud-test-user"></a>FileCloud のテスト ユーザーの作成
 

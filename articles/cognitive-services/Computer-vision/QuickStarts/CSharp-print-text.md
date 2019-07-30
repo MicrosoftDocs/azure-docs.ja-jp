@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6722fa103b3d48a8ca8ff4b96c9d179a4f743608
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 18a00c2aebd05d2ed2da54e436d245c70bf25051
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996851"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604459"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と C&#35; を使用して印刷されたテキストを抽出する (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用して印刷されたテキスト (OCR) を抽出する
 
 このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 機能を使って画像内の印字されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
@@ -35,9 +35,9 @@ Visual Studio でサンプルを作成するには、次の手順を実行しま
 
 1. Visual C# コンソール アプリ テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションを作成します。
 1. Newtonsoft.Json NuGet パッケージをインストールします。
-    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、**[検索]** ボックスに「Newtonsoft.Json」と入力します。
-    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
+    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+    1. **[参照]** タブをクリックし、 **[検索]** ボックスに「Newtonsoft.Json」と入力します。
+    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
 1. `Program.cs` のコードを次のコードに置き換えて、必要に応じてコードに次の変更を加えます。
     1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
     1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
@@ -247,10 +247,6 @@ namespace CSHttpClientSample
     ]
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になった場合は、Visual Studio ソリューションを削除します。 これを行うには、エクスプ ローラーを開き、Visual Studio ソリューションを作成したフォルダーに移動して、そのフォルダーを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

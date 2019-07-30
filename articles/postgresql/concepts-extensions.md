@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 962e2b10136cf1cbab7cc5d3d06059922c363b15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: 412ce3c5245f3f22bfb03740a0451670dc6a90a7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410267"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448108"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた拡張機能は、組み込み機能と同じように動作します。 PostgreSQL 拡張機能の詳細については、「 [Packaging Related Objects into an Extension (拡張機能への関連オブジェクトのパッケージ化)](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)」をご覧ください。
@@ -48,7 +48,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 時刻または ID によってパーティション テーブルを管理します。 |
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | trigram 一致に基づいて英数字テキストの類似性を特定する関数と演算子を提供します。 |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | クロス集計を含む、テーブル全体を操作する関数を提供します。 |
-> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 汎用一意識別子 (UUID) を生成します。 |
+> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 汎用一意識別子 (UUID) を生成します。 (この拡張機能に関する注意事項は下記を参照)。 |
 > | [orafce](https://github.com/orafce/orafce) | 商用データベースからエミュレートされている関数およびパッケージのサブセットを提供します。 |
 
 ### <a name="full-text-search-extensions"></a>フルテキスト検索の拡張機能
@@ -73,6 +73,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | **拡張機能** | **説明** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 読み込み可能な手続き型言語。 |
+> | [plv8](https://plv8.github.io/) | ストアド プロシージャ、トリガーなどに使用できる PostgreSQL の Javascript 言語拡張機能。 |
 
 ### <a name="miscellaneous-extensions"></a>その他の拡張機能
 
@@ -118,13 +119,17 @@ dblink および postgres_fdw を使用して、1 つの PostgreSQL サーバー
 
 現時点では、Azure Database for PostgreSQL からの送信接続は、他の Azure Database for PostgreSQL サーバーへの接続を除き、サポートされていません。
 
+## <a name="uuid"></a>uuid
+uuid-ossp 拡張機能の `uuid_generate_v4()` を使用する予定の場合、パフォーマンス上の利点について、pgcrypto 拡張機能の `gen_random_uuid()` と比較することを検討してください。
+
+
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時系列データベースです。 TimescaleDB は、時間指向の分析関数、最適化を提供し、時系列ワークロードに合わせて PostgreSQL を拡大縮小します。
 
 [TimescaleDB の詳細を参照](https://docs.timescale.com/latest) ([Timescale, Inc.](https://www.timescale.com/) の登録商標)
 
 ### <a name="installing-timescaledb"></a>TimescaleDB をインストールする
-TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の共有プリロード ライブラリへの変更を有効にするには、**サーバーの再起動**が必要です。
+TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、**サーバーの再起動**が必要です。 [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを変更できます。
 
 > [!NOTE]
 > TimescaleDB は、Azure Database for PostgreSQL バージョン 9.6 および 10 で有効にできます。
@@ -137,10 +142,7 @@ TimescaleDB をインストールするには、それをサーバーの共有�
 
 3. `shared_preload_libraries` パラメーターを検索します。
 
-4. 以下を `shared_preload_libraries` の値としてコピーして貼り付けます。
-   ```
-   timescaledb
-   ```
+4. **[TimescaleDB]** を選択します。
 
 5. **[保存]** を選択して変更を保存します。 変更が保存されると通知を受け取ります。 
 
@@ -158,4 +160,4 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 
 
 ## <a name="next-steps"></a>次の手順
-使用する拡張機能が見つからない場合は、お知らせください。 [顧客フィードバック フォーラム](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)では既存のリクエストに投票できます。また、新しいフィードバックやリクエストを作成することも可能です。
+使用する拡張機能が見つからない場合は、お知らせください。 [フィードバック フォーラム](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)で、既存のリクエストに投票することや、新しいフィードバック リクエストを作成することができます。

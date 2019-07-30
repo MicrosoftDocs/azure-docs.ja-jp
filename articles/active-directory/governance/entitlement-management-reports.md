@@ -3,8 +3,8 @@ title: レポートを表示し、Azure AD エンタイトルメント管理 (�
 description: ユーザーの割り当てレポートを表示する方法について説明し、Azure Active Directory のエンタイトルメント管理 (プレビュー) で監査ログに記録します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/19/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a61a581574c77a57939ea23fdadc7b060b82af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64540670"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489062"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>レポートを表示し、Azure AD エンタイトルメント管理 (プレビュー) にログインします。
 

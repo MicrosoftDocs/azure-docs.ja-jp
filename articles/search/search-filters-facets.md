@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 5/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8dffc5b87aefe23953d3a74f1d96b5ee03e0315d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88171487fd180931d4659390f0db3c8619fb2d62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597393"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653452"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Azure Search でファセット フィルターを作成する方法 
 
@@ -82,7 +82,7 @@ REST API を使用してインデックスを作成すると、ファセット �
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
-(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-create-index-dotnet#3---construct-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
+(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
 
 ## <a name="add-facet-filters-to-a-query"></a>クエリへのファセット フィルターの追加
 

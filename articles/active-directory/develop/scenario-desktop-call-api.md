@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fb240b54c3d698ead9d3427f603acca2b53745a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4abaf234d3b216e0f67501e5d2f2f5c3f874c5d7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080241"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111243"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出すデスクトップ アプリ - Web API の呼び出し
 

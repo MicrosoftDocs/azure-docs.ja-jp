@@ -2,24 +2,17 @@
 title: クラウド サービスの更新方法 | Microsoft Docs
 description: Azure のクラウド サービスの更新方法について説明します。 クラウド サービスで更新が処理され、可用性が確保されるしくみについて説明します。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653887"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360710"
 ---
 # <a name="how-to-update-a-cloud-service"></a>クラウド サービスの更新方法
 

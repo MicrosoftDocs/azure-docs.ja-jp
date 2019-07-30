@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 05/02/2019
+ms.topic: quickstart
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7eea978456ed565f8fc58647dc548d1a7bc76b27
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234524"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606359"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>クイック スタート:Android 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -37,7 +37,7 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 
 * [Speech Services 用の Azure サブスクリプション キー](get-started.md)を取得します。
 
-* 会話の文字起こしを使用する予定がある場合、[円形マイク デバイス](get-speech-devices-sdk.md)を使用する必要があり、サービスは現在、"centralus" および "eastasia" リージョンの "en-US" と "zh-CN" でのみ使用できます。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
+* 会話の文字起こしを使用する予定がある場合は、[円形マイク デバイス](get-speech-devices-sdk.md)を使用する 必要があります。この機能は現在、"centralus" および "eastasia" リージョンの "en-US" と "zh-CN" でのみ使用できます。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
 
 * Speech Services を使用してユーザーの発話から意図 (またはアクション) を識別する場合は、[Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要です。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。
 
@@ -95,7 +95,7 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    会話の文字起こしを使用している場合、conversation.java には Speech キーとリージョン情報も必要です。
+    会話の文字起こしを使用している場合は、conversation.java に Speech キーとリージョン情報も必要です。
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
@@ -145,7 +145,7 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 
    ![Speech Devices SDK のサンプル アプリケーションとオプション](media/speech-devices-sdk/qsg-8.png)
 
-1. 新しく追加されたものは、会話の文字起こしのデモです。 'セッションの開始' で文字起こしを開始します。 既定で全員がゲストですが、参加者の音声シグネチャがある場合、それらをデバイス上のファイル /video/participants.properties に配置できます。 音声シグネチャを生成するには、[会話の文字起こし (SDK)](how-to-use-conversation-transcription-service.md) に関するページを参照してください。
+1. 新しい会話の文字起こしのデモをお試しください。 'セッションの開始' で文字起こしを開始します。 既定では、すべてのユーザーがゲストになります。 ただし、参加者の声紋がある場合は、デバイス上のファイル `/video/participants.properties` に入れることができます。 声紋を生成するには、[会話の文字起こし (SDK)](how-to-use-conversation-transcription-service.md) に関するページを参照してください。
 
    ![会話の文字起こしアプリケーションのデモ](media/speech-devices-sdk/qsg-15.png)
 

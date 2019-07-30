@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/23/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062159"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -55,7 +55,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 ## <a name="build-the-luis-model"></a>LUIS モデルの構築
 モデルの構築には、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API または LUIS ポータルを使用します。
 
-LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを "**[意図](luis-concept-intent.md)**" といいます。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からさまざまなデータが得られますが、それらのデータは、**[エンティティ](luis-concept-entity-types.md)** を使って抽出する必要があります。 
+LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを " **[意図](luis-concept-intent.md)** " といいます。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からさまざまなデータが得られますが、それらのデータは、 **[エンティティ](luis-concept-entity-types.md)** を使って抽出する必要があります。 
 
 |ユーザーの発話例|意図|エンティティ|
 |-----------|-----------|-----------|
@@ -101,7 +101,7 @@ LUIS は、ツール、バージョン管理、および他の LUIS 作成者と
 LUIS は、REST API として、HTTP 要求を送信するあらゆる製品、サービス、フレームワークで使用できます。 以下に、LUIS で使用される Microsoft の代表的な製品とサービスを列挙しています。
 
 LUIS のトップ クライアント アプリケーション:
-* [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0): テキスト入力を介してユーザーと会話する LUIS 対応のチャット ボットをすばやく作成します。 完成度の高いボット エクスペリエンスを実現するために、[Bot Framework][bot-framework] バージョン [3.x](https://github.com/Microsoft/BotBuilder) または [4.x](https://github.com/Microsoft/botbuilder-dotnet) を使用してください。
+* [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0): テキスト入力を介してユーザーと会話する LUIS 対応のチャット ボットをすばやく作成します。 完成度の高いボット エクスペリエンスを実現するために、[Bot Framework][bot-framework] バージョン [4.x](https://github.com/Microsoft/botbuilder-dotnet) を使用してください。
 
 LUIS をボットですばやく簡単に使用するためのツール:
 * [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS): この NPM パッケージは、スタンドアロンのコマンド ライン ツールまたはインポートとして、作成と予測を提供します。 

@@ -1,6 +1,6 @@
 ---
 title: Bing News Search API とは
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing News Search API を使用して、ヘッドラインやトレンド トピックなど、複数のカテゴリにおける最新ヘッドラインについて Web 検索する方法について説明します。
 services: cognitive-services
 author: swhite-msft
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/10/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: e02f81ef6bdf8bf4dc39b70cb7a2d9330660d1d6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 577ce53b4667928d7eb5a870f57ff7180caaf6f5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390305"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423667"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing News Search API とは
 

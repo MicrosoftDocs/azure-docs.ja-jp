@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: kraigb
 ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608012"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60632140"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>Azure Notebooks のユーザー アカウント
 
@@ -43,7 +43,7 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 ![新しい Microsoft アカウントを作成するためのコマンド](media/accounts/create-new-microsoft-account.png)
 
 > [!Note]
-> 既にアカウントが関連付けられている電子メール アドレスで新しいアカウントを作成しようとすると、「職場または学校のメール アドレスではここにサインアップできません。Gmail や Yahoo! などの個人用メールを使用するか、新しい Outlook メールを取得してください」というメッセージが表示される場合があります。 Use a personal email, such as Gmail or Yahoo!, or get a new Outlook email." その場合は、新しいアカウントを作成せずに仕事用メール アドレスでサインインしてみてください。
+> 既にアカウントが関連付けられているメール アドレスで新しいアカウントを作成しようとすると、"職場または学校のメール アドレスではここにサインアップできません。 Gmail や Yahoo! などの個人用メールを使用するか、新しい Outlook メールを取得してください" というメッセージが表示される場合があります。 その場合は、新しいアカウントを作成せずに仕事用メール アドレスでサインインしてみてください。
 
 お子様が使用しているアカウントは、Azure Notebooks へのアクセスは既定でブロックされます。 お子様が使用しているアカウントでサインインすると、次のエラーが表示されます。
 
@@ -52,8 +52,8 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 アクセスを有効にするには、親は次の手順を実行する必要があります。
 
 1. `https://account.live.com/mk` にアクセスし、親のアカウントでサインインします。
-1. 該当するお子様のセクションで、**[このお子様によるサードパーティ製アプリへのアクセスを管理する]** を選択します。
-1. 次のページで、**[アクセスの有効化]** を選択します。
+1. 該当するお子様のセクションで、 **[このお子様によるサードパーティ製アプリへのアクセスを管理する]** を選択します。
+1. 次のページで、 **[アクセスの有効化]** を選択します。
 1. 次回にお子様のアカウントを使用して Azure Notebooks にログインするときに、表示されるアクセス許可プロンプトで **[はい]** を選択します。
 
 > [!Warning]
@@ -65,7 +65,7 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 
 職場または学校のアカウントで Azure Notebooks にサインインするには、管理者の同意が必要となる場合があります。Azure Notebooks はアカウントの電子メール アドレスやユーザーのブラウザー情報などの情報を収集または使用する (ただし公開はしない) からです (ブラウザーのデータは、一般的な用途に応じて機能を最適化するために使用されます)。
 
-組織アカウントの管理者は、ユーザーが個別に同意することが制限されている場合には、ユーザーに代わって同意する必要があります。 この場合、ユーザーには、「ユーザーは、このアプリケーションにアクセスできません」: 
+組織アカウントの管理者は、ユーザーが個別に同意することが制限されている場合には、ユーザーに代わって同意する必要があります。 この場合、ユーザーには、「ユーザーは、このアプリケーションにアクセスできません」:
 
 ![「ユーザーは、このアプリケーションにアクセスできません」というメッセージが職場または学校のアカウントを使用する場合に表示されます。](media/accounts/consent-permissions-denied.png)
 

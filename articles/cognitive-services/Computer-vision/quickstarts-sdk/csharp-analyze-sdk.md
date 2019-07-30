@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a88f1d0b2290bc4f5f52827960ea3bed94053c62
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 48c96ac55ca2192506f9190a9dd9be9c1ee0058f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997225"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603468"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# による画像の分析
 
@@ -34,9 +34,9 @@ ms.locfileid: "59997225"
 
 1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
 1. Computer Vision クライアント ライブラリの NuGet パッケージをインストールします。
-    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、**[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.ComputerVision」と入力します。
-    1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
+    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+    1. **[参照]** タブをクリックし、 **[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.ComputerVision」と入力します。
+    1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
 1. *Program.cs* の内容を次のコードに置き換えます。 `AnalyzeImageAsync` メソッドと `AnalyzeImageInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[画像分析 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) をラップします。
 
     ```csharp

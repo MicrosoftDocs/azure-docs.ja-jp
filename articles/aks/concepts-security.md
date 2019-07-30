@@ -2,17 +2,17 @@
 title: 概念 - Azure Kubernetes Service (AKS) におけるセキュリティ
 description: Azure Kubernetes Service (AKS) におけるセキュリティ (マスターとノードの通信、ネットワーク ポリシー、Kubernetes シークレットなど) について説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: mlearned
+ms.openlocfilehash: 1d100f17130594ace6169f5840915c88435cb9a8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074016"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615774"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -36,7 +36,7 @@ AKS では、Kubernetes マスター コンポーネントは、Microsoft で提
 
 AKS ノードは、ユーザーが管理および保守する Azure 仮想マシンです。 Linux ノードは、Moby コンテナー ランタイムを使用して、最適化された Ubuntu ディストリビューションを実行します。 Windows Server ノード (現在 AKS でプレビュー中) は、最適化された Windows Server 2019 リリースを実行し、同様に Moby コンテナー ランタイムを使用します。 AKS クラスターを作成またはスケールアップすると、ノードは自動的に、最新の OS セキュリティ更新プログラムと構成でデプロイされます。
 
-Azure プラットフォームでは、OS セキュリティ修正プログラムが夜間スケジュールで Linux ノードに自動的に適用されます。 Linux OS セキュリティ更新プログラムがホストの再起動を必要とする場合、再起動は自動的には実行されません。 Linux ノードは手動で再起動できますが、一般的な方法は [Kured][kured] (Kubernetes 用のオープン ソースの再起動デーモン) を使用する方法です。 Kured は [DaemonSet][aks-daemonsets] として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 再起動は、クラスター アップグレードと同じ[切断およびドレイン プロセス](#cordon-and-drain)を使用するクラスターで管理されます。
+Azure プラットフォームでは、OS セキュリティ修正プログラムが夜間スケジュールで Linux ノードに自動的に適用されます。 Linux OS セキュリティ更新プログラムがホストの再起動を必要とする場合、再起動は自動的には実行されません。 Linux ノードを手動で再起動することができます。また、一般的な方法は [Kured][kured], an open-source reboot daemon for Kubernetes. Kured runs as a [DaemonSet][aks-daemonsets] を使用することで、再起動が必要であることを示すファイルの存在を各ノードで監視します。 再起動は、クラスター アップグレードと同じ[切断およびドレイン プロセス](#cordon-and-drain)を使用するクラスターで管理されます。
 
 Windows Server ノード (現在、AKS でプレビュー中) では、Windows Update が自動的に実行されて最新の更新プログラムを適用することはありません。 Windows Update のリリース サイクルと独自の検証プロセス周辺の定期的スケジュールで、AKS クラスター内の Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server イメージと修正プログラムを実行するノードが作成されて、古いノードが削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 
@@ -73,13 +73,13 @@ Windows Server ノード (現在、AKS でプレビュー中) では、Windows U
 
 Kubernetes *シークレット*は、アクセス資格情報やキーなどの機密データをポッドに挿入するために使用します。 まず Kubernetes API を使用してシークレットを作成します。 ポッドまたはデプロイを定義するとき、特定のシークレットを要求できます。 シークレットは、シークレットを必要とするポッドがスケジュールされているノードのみに提供されます。シークレットは *tmpfs* に格納され、ディスクには書き込まれません。 シークレットを必要とする最後のポッドがノードから削除されると、シークレットはノードの tmpfs から削除されます。 シークレットは、指定した名前空間内に格納され、同じ名前空間内のポッドによってのみアクセスできます。
 
-シークレットを使用すると、ポッドやサービスの YAML マニフェストに定義されている機密情報が減少します。 代わりに、YAML マニフェストの一部として Kubernetes API サーバーに格納されたシークレットを要求します。 この方法により、シークレットへのアクセス権が特定のポッドにのみ提供されます。
+シークレットを使用すると、ポッドやサービスの YAML マニフェストに定義されている機密情報が減少します。 代わりに、YAML マニフェストの一部として Kubernetes API サーバーに格納されたシークレットを要求します。 この方法により、シークレットへのアクセス権が特定のポッドにのみ提供されます。 注意: 生のシークレット マニフェスト ファイルには、base64 形式の機密データが含まれています (詳細については、[公式ドキュメント][secret-risks]を参照してください)。 そのため、このファイルは機密情報として扱ってください。また、絶対にソース管理にはコミットしないでください。
 
 ## <a name="next-steps"></a>次の手順
 
 AKS クラスターのセキュリティでの保護を開始するには「[AKS クラスターのアップグレード][aks-upgrade-cluster]」を参照してください。
 
-関連付けられているベスト プラクティスについては、[AKS でのクラスターのセキュリティとアップグレードに関するベスト プラクティス][operator-best-practices-cluster-security]のページを参照してください。
+関連付けられているベスト プラクティスについては、[AKS でのクラスターのセキュリティとアップグレードに関するベスト プラクティス][operator-best-practices-cluster-security]に関するページを参照してください。
 
 Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
@@ -92,6 +92,7 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+[secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

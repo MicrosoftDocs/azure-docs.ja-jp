@@ -97,7 +97,7 @@
           href: container-instances-monitor.md
         - name: コンテナー ログとコンテナー イベントの取得
           href: container-instances-get-logs.md
-        - name: Azure Log Analytics によるログ記録
+        - name: Azure Monitor ログでのログ記録
           href: container-instances-log-analytics.md
     - name: トラブルシューティング
       items:
@@ -137,3 +137,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: FAQ
+      href: container-instances-faq.md

@@ -4,7 +4,7 @@ description: SAP HANA on Azure (L インスタンス) のSKU。
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b80f872c82061c0cb87f4f1e2714183e71cf02cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 043ecdcb83d2ee39e3373f029c00c6237f87601c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794043"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709703"
 ---
 # <a name="available-skus-for-hli"></a>HLI で利用可能な SKU
 

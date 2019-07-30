@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: d114a1e62ae0d28e7d4a3ad453d5d7bd3e1d5b7a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: aadfae9a7b74986fd0ac8857669dd3ccaf62af1f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427689"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67166059"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -59,9 +59,21 @@ Azure HDInsight Tools は、Visual Studio Code でサポートされている Wi
 
    ![[新しいファイル]](./media/hdinsight-for-vscode/new-file.png)
 
-3. ファイル拡張子 .hql (Hive クエリ) または .py (Spark スクリプト) のいずれかを使って、新しいファイルに名前を付けます。  この例では **HelloWorld.hql** を使用します。
+3. ファイル拡張子 `.hql` (Hive クエリ) または `.py` (Spark スクリプト) のいずれかを使って、新しいファイルに名前を付けます。  この例では **HelloWorld.hql** を使用します。
 
-## <a name="connect-to-hdinsight-cluster"></a>HDInsight クラスターへの接続
+## <a name="set-the-azure-environment"></a>Azure 環境を設定する
+
+1. Azure アカウントに[接続](#connect-to-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
+
+2. メニュー バーから、 **[表示]**  >  **[...コマンド パレット]** に移動し、「**HDInsight:Set Azure Environment**」と入力します。
+
+3. 既定のログイン エントリとして、環境を選択します。
+
+4. 一方、ツールによって既定のログイン エントリが **.VSCode\settings.json** に既に保存されています。 また、この構成ファイル内で直接、更新することもできます。 
+
+   ![既定のログイン エントリの構成を設定する](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
+
+## <a name="connect-to-azure-account"></a>Azure アカウントへの接続
 
 Visual Studio Code から HDInsight クラスターにスクリプトを送信するには、(Ambari のユーザー名/パスワードかドメイン参加アカウントを利用し) 先に Azure アカウントに接続するか、クラスターをリンクする必要があります。  次の手順を完了して Azure に接続します。
 
@@ -81,7 +93,9 @@ Visual Studio Code から HDInsight クラスターにスクリプトを送信�
    接続すると、Visual Studio Code ウィンドウの左下のステータス バーに Azure アカウント名が表示されます。  
   
 
-<h2 id="linkcluster">リンクを作成する:Azure HDInsight</h2>
+## <a name="link-a-cluster"></a>クラスターのリンク
+
+### <a name="link-azure-hdinsight"></a>リンク: Azure HDInsight
 
 [Apache Ambari](https://ambari.apache.org/) マネージド ユーザー名を使用して通常のクラスターをリンクするか、またはドメイン ユーザー名 (user1@contoso.com など) を使用して Enterprise Security Pack のセキュリティ保護された Hadoop クラスターをリンクできます。
 
@@ -105,7 +119,8 @@ Visual Studio Code から HDInsight クラスターにスクリプトを送信�
    > リンクされたユーザー名とパスワードは、クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合に使用されます。  
 
 
-## <a name="create-link-generic-livy-endpoint"></a>リンクを作成する:ジェネリック Livy エンドポイント
+
+### <a name="link-generic-livy-endpoint"></a>リンク: ジェネリック Livy エンドポイント
 
 1. メニュー バーから、 **[表示]**  >  **[...コマンド パレット]** に移動し、「**HDInsight:Link a cluster**」と入力します。
 
@@ -135,25 +150,13 @@ Visual Studio Code から HDInsight クラスターにスクリプトを送信�
 
 2. [以前に](#open-hdinsight-work-folder)作成した **HelloWorld.hql** ファイルを選択すると、ファイルがスクリプト エディターで開きます。
 
-3. Azure アカウントに[接続](#connect-to-hdinsight-cluster)します (まだ接続していない場合)。
+3. スクリプト エディターを右クリックして、 **[HDInsight:Set Default Cluster]** を選択します。  
 
-4. スクリプト エディターを右クリックして、 **[HDInsight:Set Default Cluster]** を選択します。  
+4. Azure アカウントに[接続](#connect-to-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
 5. 現在のスクリプト ファイルの既定のクラスターとしてクラスターを選択します。 構成ファイル ( **.VSCode\settings.json**) が自動的に更新されます。 
 
    ![既定のクラスター構成を設定する](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
-
-## <a name="set-the-azure-environment"></a>Azure 環境を設定する
-
-1. Azure アカウントに[接続](#connect-to-hdinsight-cluster)します (まだ接続していない場合)。
-
-2. メニュー バーから、 **[表示]**  >  **[...コマンド パレット]** に移動し、「**HDInsight:Set Azure Environment**」と入力します。
-
-3. 既定のログイン エントリとして、環境を選択します。
-
-4. 一方、ツールによって既定のログイン エントリが **.VSCode\settings.json** に既に保存されています。 また、この構成ファイル内で直接、更新することもできます。 
-
-   ![既定のログイン エントリの構成を設定する](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
 
 
 ## <a name="submit-interactive-hive-queries-hive-batch-scripts"></a>対話型 Hive クエリ、Hive バッチ スクリプトを送信する
@@ -164,13 +167,14 @@ HDInsight Tools for Visual Studio Code を使用すると、対話型 Hive ク�
 
 2. [以前に](#open-hdinsight-work-folder)作成した **HelloWorld.hql** ファイルを選択すると、ファイルがスクリプト エディターで開きます。
 
-3. Azure アカウントに[接続](#connect-to-hdinsight-cluster)します (まだ接続していない場合)。
 
-4. 次のコードをコピーし、Hive ファイルに貼り付けて保存します。
+3. 次のコードをコピーし、Hive ファイルに貼り付けて保存します。
 
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
+
+4. Azure アカウントに[接続](#connect-to-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
 5. スクリプト エディターを右クリックし、 **[HDInsight:Hive Interactive]** を選択してクエリを送信するか、ショートカット **Ctrl + Alt + I** を使用します。 **[HDInsight:Hive Batch]** を選択してスクリプトを送信するか、ショートカット**Ctrl + Alt + H** を使用します。  
 
@@ -184,17 +188,13 @@ HDInsight Tools for Visual Studio Code を使用すると、対話型 Hive ク�
 
 ## <a name="submit-interactive-pyspark-queries"></a>対話型 PySpark クエリの送信
 
+次の手順に従って、対話型 PySpark クエリを送信することができます。
+
 1. [以前に](#open-hdinsight-work-folder)作成した **HDexample** フォルダーを再び開きます (閉じている場合)。  
 
 2. [以前の](#open-hdinsight-work-folder)手順に従って、新しい **HelloWorld.py** ファイルを作成します。
 
-3. 前提条件の Python をインストールしなかった場合は、Python 拡張機能の推奨事項ダイアログが表示されます。  Visual Studio Code インストールして再読み込みし、インストールを完了します。
-
-    >![HDInsight for Visual Studio Code の Python のインストール](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
-
-4. Azure アカウントに[接続](#connect-to-hdinsight-cluster)します (まだ接続していない場合)。
-
-5. 以下のコードをコピーして、スクリプト ファイルに貼り付けます。
+3. 以下のコードをコピーして、スクリプト ファイルに貼り付けます。
    ```python
    from operator import add
    lines = spark.read.text("/HdiSamples/HdiSamples/FoodInspectionData/README").rdd.map(lambda r: r[0])
@@ -209,34 +209,31 @@ HDInsight Tools for Visual Studio Code を使用すると、対話型 Hive ク�
         print(sortedCollection[i])
    ```
 
-6. スクリプト エディターを右クリックし、 **[HDInsight:PySpark Interactive]** を選択してクエリを送信するか、ショートカット **Ctrl + Alt + I** を使用します。  
+4. Azure アカウントに[接続](#connect-to-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
-7. 既定のクラスターを指定していない場合は、クラスターを選択します。 また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。 しばらくすると、新しいタブにクエリの結果が表示されます。
+5. すべてのコードを選択し、スクリプト エディターを右クリックして、 **[HDInsight: PySpark Interactive]** を選択してクエリを送信するか、ショートカット **Ctrl + Alt + I** を使用します。
 
-   ![Python ジョブの送信の結果](./media/hdinsight-for-vscode/pyspark-interactive-result.png) 
+   ![PySpark Interactive: 右クリック](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-8. ツールでは **SQL 句**のクエリもサポートされています。
+6. 既定のクラスターを指定していない場合は、クラスターを選択します。 しばらくすると、新しいタブに **Python Interactive の結果**が表示されます。また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。 
 
-   ![Python ジョブの送信の結果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) 送信の状態は、クエリの実行時に下部のステータス バーの左側に表示されます。 **[PySpark Kernel (busy)]\(PySpark カーネル (ビジー)\)** 状態のときに他のクエリを送信しないでください。  
+   ![PySpark Interactive: PySpark Interactive ウィンドウ](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png) 
 
->[!NOTE]  
->クラスターはセッション情報を保持できます。 定義済みの変数、関数、対応する値がセッションで保持されるので、同じクラスターの複数のサービス呼び出しで参照できます。 
+7. 「 **%%info**」と入力し、**Shift + Enter** キーを押してジョブ情報を表示します。 (省略可能)
 
-### <a name="pyspark3-is-not-supported-with-spark2223"></a>Spark2.2/2.3 では PySpark3 はサポートされていません
+   ![ジョブ情報の表示](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
-Spark 2.2 クラスターと Spark2.3 クラスターでは PySpark3 はサポートされなくなりました。"PySpark" のみが Python 向けにサポートされています。 Python3 で Spark 2.2/2.3 への送信が失敗するのは既知の問題です。
+8. ツールでは **Spark SQL** クエリもサポートされています。
 
-   ![python3 への送信でエラーが発生する](./media/hdinsight-for-vscode/hdi-azure-hdinsight-py3-error.png)
+   ![PySpark Interactive: 結果の表示](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
 
-Python2.x を使用する手順に従います: 
+   送信の状態は、クエリの実行時に下部のステータス バーの左側に表示されます。 **[PySpark Kernel (busy)]\(PySpark カーネル (ビジー)\)** 状態のときに他のクエリを送信しないでください。  
 
-1. ローカル コンピューターに Python 2.7 をインストールし、システム パスに追加します。
-
-2. Visual Studio Code を再起動します。
-
-3. ステータス バーにある **[Python XXX]** をクリックして Python 2 に切り替えてから、ターゲットの Python を選択します。
-
-   ![Python のバージョンを選択する](./media/hdinsight-for-vscode/hdi-azure-hdinsight-select-python.png)
+   > [!NOTE] 
+   >
+   > 設定で **[Python Extension Enabled]\(Python 拡張機能が有効\)** チェック ボックスがオフ (既定の設定ではオン) の場合、送信される PySpark 対話結果は古いウィンドウを使用します。
+   >
+   > ![PySpark Interactive: Python 拡張機能が無効](./media/hdinsight-for-vscode/pyspark-interactive-python-extension-disabled.png)
 
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark バッチ ジョブの送信
@@ -245,9 +242,7 @@ Python2.x を使用する手順に従います:
 
 2. [以前の](#open-hdinsight-work-folder)手順に従って、新しい **BatchFile.py** ファイルを作成します。
 
-3. Azure アカウントに[接続](#connect-to-hdinsight-cluster)します (まだ接続していない場合)。
-
-4. 以下のコードをコピーして、スクリプト ファイルに貼り付けます。
+3. 以下のコードをコピーして、スクリプト ファイルに貼り付けます。
 
     ```python
     from __future__ import print_function
@@ -270,9 +265,11 @@ Python2.x を使用する手順に従います:
         spark.stop()
     ```
 
-4. スクリプト エディターを右クリックして、 **[HDInsight:PySpark Batch]** を選択するか、ショートカット **Ctrl + Alt + H** を使用します。 
+4. Azure アカウントに[接続](#connect-to-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
-5. PySpark ジョブの送信先のクラスターを選択します。 
+5. スクリプト エディターを右クリックして、 **[HDInsight:PySpark Batch]** を選択するか、ショートカット **Ctrl + Alt + H** を使用します。 
+
+6. PySpark ジョブの送信先のクラスターを選択します。 
 
    ![Python ジョブの送信の結果](./media/hdinsight-for-vscode/submit-pythonjob-result.png) 
 
@@ -312,7 +309,7 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     | args | アプリケーションのコマンド ライン引数 | string のリスト | 
     | jars | このセッションで使用される Jar | 文字列のリスト | 
     | pyFiles | このセッションで使用される Python ファイル | 文字列のリスト |
-    | ファイルのアップロード | このセッションで使用されるファイル | 文字列のリスト |
+    | files | このセッションで使用されるファイル | 文字列のリスト |
     | driverMemory | ドライバーのプロセスに使用するメモリの量 | string |
     | driverCores | ドライバーのプロセスに使用するコアの数 | int |
     | executorMemory | Executor プロセスごとに使用するメモリの量 | string |
@@ -329,7 +326,7 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     | name | description | type | 
     | :- | :- | :- | 
     | id | セッション ID | int | 
-    | appId | このセッションのアプリケーション ID |  String |
+    | appId | このセッションのアプリケーション ID |  string |
     | appInfo | アプリケーションの詳細情報 | キーと値のマップ |
     | log | ログの行 | string のリスト |
     | state |   バッチの状態 | string |
@@ -341,7 +338,7 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
 
 **Azure HDInsight** がエクスプローラー ビューに追加されました。 クラスターは、**Azure HDInsight** を通じて直接参照し、管理できます。
 
-1. Azure アカウントに[接続](#connect-to-hdinsight-cluster)します (まだ接続していない場合)。
+1. Azure アカウントに[接続](#connect-to-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
 2. メニュー バーから、 **[表示]**  >  **[エクスプローラー]** に移動します。
 
@@ -354,6 +351,38 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
    ![Azure HDInsight クラスター](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
 
 
+## <a name="preview-hive-table"></a>Hive テーブルのプレビュー
+**Azure HDInsight** のエクスプローラーから直接、クラスター内の Hive テーブルをプレビューできます。
+1. Azure アカウントに[接続](#connect-to-azure-account)します (まだ接続していない場合)。
+
+2. 左端の列の **[Azure]** アイコンをクリックします。
+
+3. 左側のウィンドウから、[AZURE HDINSIGHT] を展開します。 利用可能なサブスクリプションとクラスターが一覧表示されます。
+
+4. クラスターを展開して、Hive メタデータのデータベースとテーブルのスキーマを表示します。
+
+5. Hive テーブル (例: hivesampletable) を右クリックします。 **[Preview]\(プレビュー\)** を選択します。 
+
+   ![HDInsight for VSCode: Hive テーブルのプレビュー](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png)
+
+6. **[結果のプレビュー]** ウィンドウが開きます。
+
+   ![HDInsight for VSCode: [結果のプレビュー] ウィンドウ](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png)
+   
+- **[RESULTS]\(結果\)** パネル
+
+   結果全体を CSV、JSON、または Excel ファイルとしてローカル パスに保存したり、複数の行だけを選択したりできます。
+
+- **[MESSAGES]\(メッセージ\)** パネル
+   1. テーブルの行数が 100 行を超えると、次のメッセージが表示されます: **The first 100 rows are displayed for Hive table** (Hive テーブルの先頭から 100 行を表示しています)。
+   2. テーブルの行数が 100 行以下の場合、次のメッセージが表示されます: **60 rows are displayed for Hive table** (Hive テーブルの 60 行を表示しています)。
+   3. テーブルの中身がない場合、次のメッセージが表示されます: **0 row is displayed for Hive table** (Hive テーブルの 0 行を表示しています)。
+
+>[!NOTE]
+>
+>Linux でテーブル データをコピーするには、xclip をインストールします。
+>
+>![Linux の HDInsight for VSCode](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
 ## <a name="additional-features"></a>その他の機能
 
 HDInsight for Visual Studio Code では、次の機能をサポートしています。
@@ -366,6 +395,48 @@ HDInsight for Visual Studio Code では、次の機能をサポートしてい�
 
     ![HDInsight Tools for Visual Studio Code の構文の強調表示](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
 
+## <a name="reader-only-role"></a>閲覧者限定ロール
+
+クラスターの**閲覧者** **限定** **ロール**であるユーザーは、以後、HDInsight クラスターにジョブを送信することも、Hive データベースを表示することもできません。 クラスター管理者に連絡して、[Azure portal](https://ms.portal.azure.com/) で [**HDInsight** **Cluster** **Operator**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) にロールをアップグレードする必要があります。 Ambari の資格情報がわかっている場合、次の指示に従って手動でクラスターをリンクすることができます。
+
+### <a name="browse-hdinsight-cluster"></a>HDInsight クラスターを参照する  
+
+Azure HDInsight のエクスプローラー上でクリックして HDInsight クラスターを展開したときに、そのクラスターに対して閲覧者限定ロールである場合は、クラスターをリンクするよう求められます。 次の手順に従い、Ambari の資格情報を使ってクラスターにリンクします。 
+
+### <a name="submit-job-to-hdinsight-cluster"></a>HDInsight クラスターにジョブを送信する
+
+HDInsight クラスターにジョブを送信するときに、そのクラスターに対して閲覧者限定ロールである場合は、クラスターをリンクするように求められます。 次の手順に従い、Ambari の資格情報を使ってクラスターにリンクします。 
+
+### <a name="link-to-cluster"></a>クラスターにリンクする
+
+1.  Ambari のユーザー名を入力します 
+2.  Ambari ユーザーのパスワードを入力します。
+
+   ![HDInsight Tools for Visual Studio Code: ユーザー名](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png)
+
+   ![HDInsight Tools for Visual Studio Code: パスワード](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png)
+
+> [!NOTE]
+>
+>"HDInsight: List Cluster" を使用して、リンクされたクラスターを確認できます。
+>
+>![HDInsight Tools for Visual Studio Code: リンクされた閲覧者](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-reader-linked.png)
+
+## <a name="azure-data-lake-storage-gen2-adls-gen2"></a>Azure Data Lake Storage Gen2 (ADLS Gen2)
+
+### <a name="browse-an-adls-gen2-account"></a>ADLS Gen2 アカウントを参照する
+
+Azure HDInsight のエクスプローラー上でクリックして ADLS Gen2 アカウントを展開したときに、お使いの Azure アカウントに Gen2 ストレージへのアクセス権がない場合、ストレージの**アクセス キー**の入力を求められます。 アクセスキーが正常に検証されると、ADLS Gen2 アカウントは自動的に拡張されます。 
+
+### <a name="submit-jobs-to-hdinsight-cluster-with-adls-gen2"></a>ADLS Gen2 で HDInsight クラスターにジョブを送信する
+
+ADLS Gen2 で HDInsight クラスターにジョブを送信するときに、お使いの Azure アカウントに Gen2 ストレージへのアクセス権がない場合、ストレージの**アクセス キー**の入力を求められます。  アクセス キーが正常に検証されると、ジョブは正常に送信されます。 
+
+![HDInsight Tools for Visual Studio Code: アクセス キー](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)   
+
+> [!NOTE]
+> 
+>ストレージ アカウントのアクセス キーは Azure portal から入手できます。 詳細については、「[アクセス キーの表示とコピー](https://docs.microsoft.com/azure/storage/common/storage-account-manage#view-and-copy-access-keys)」を参照してください。
 
 ## <a name="unlink-cluster"></a>クラスターのリンクを解除する
 
@@ -375,8 +446,7 @@ HDInsight for Visual Studio Code では、次の機能をサポートしてい�
 
 3. 検証のため、 **[出力]** ビューを確認します。  
 
-
-## <a name="logout"></a>Logout  
+## <a name="sign-out"></a>サインアウトする  
 
 メニュー バーから、 **[表示]**  >  **[...コマンド パレット]** に移動し、「**HDInsight:Logout** コマンドを入力します。  **正常にログアウトした**ことを示すポップアップ メッセージが右下隅に表示されます。
 

@@ -3,7 +3,7 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/18/2018
-ms.author: aljo
-ms.openlocfilehash: 33f742c7de340df41f5d946c891e9896d7d2a012
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/08/2019
+ms.author: atsenthi
+ms.openlocfilehash: 66d668821c47854d006f2efa425d38f9bf1df7d0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66119076"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599504"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -41,8 +41,8 @@ ms.locfileid: "66119076"
 1. Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成します。
 2. Windows 10 でコンテナーを実行できるように、[Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) をインストールします。
 3. [Service Fabric ランタイムのバージョン 6.2 以降](service-fabric-get-started.md)と、[Service Fabric SDK のバージョン 3.1](service-fabric-get-started.md) 以降をインストールします。
-4. [Visual Studio 2017 のバージョン 15.7 以降](https://www.visualstudio.com/)をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
-5. [Azure PowerShell][link-azure-powershell-install] をインストールします。
+4. [Visual Studio 2019 のバージョン 16.1](https://www.visualstudio.com/) 以降をインストールし、**Azure の開発**ワークロードと **ASP.NET と Web 開発**ワークロードをインストールします。
+5. [Azure PowerShell][link-azure-powershell-install] をインストールする
  
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Fabrikam Fiber CallCenter をダウンロードして実行する
@@ -53,7 +53,7 @@ Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題な
 ![Fabrikam の Web のサンプル][fabrikam-web-page]
 
 ## <a name="containerize-the-application"></a>アプリケーションのコンテナー格納
-**FabrikamFiber.Web** プロジェクトを右クリックし、**[追加]** > **[コンテナー オーケストレーター サポート]** の順に選択します。  コンテナー オーケストレーターとして **[Service Fabric]** を選択し、**[OK]** をクリックします。
+**FabrikamFiber.Web** プロジェクトを右クリックし、 **[追加]**  >  **[コンテナー オーケストレーター サポート]** の順に選択します。  コンテナー オーケストレーターとして **[Service Fabric]** を選択し、 **[OK]** をクリックします。
 
 **[はい]** をクリックして Docker を Windows コンテナーに切り替えます。
 
@@ -127,7 +127,7 @@ Write-Host "Server name is $servername"
 >ローカル デバッグには、ホストからアクセスできる範囲であれば好きな SQL Server を使用できます。 ただし、**localdb** は `container -> host` 通信をサポートしていません。 Web アプリケーションのリリース ビルドを作成するときに別の SQL データベースを使用する場合は、*web.release.config* ファイルに別の接続文字列を追加します。
 
 ## <a name="run-the-containerized-application-locally"></a>コンテナーに格納されたアプリケーションをローカルで実行する
-**F5** キーを押し、ローカルの Service Fabric 開発クラスターのコンテナーの中にあるアプリケーションを実行およびデバッグします。 'ServiceFabricAllowedUsers' グループに Visual Studio プロジェクト ディレクトリの読み取りおよび実行アクセス許可を付与するように求めるメッセージ ボックスが表示された場合は、**[はい]** をクリックします。
+**F5** キーを押し、ローカルの Service Fabric 開発クラスターのコンテナーの中にあるアプリケーションを実行およびデバッグします。 'ServiceFabricAllowedUsers' グループに Visual Studio プロジェクト ディレクトリの読み取りおよび実行アクセス許可を付与するように求めるメッセージ ボックスが表示された場合は、 **[はい]** をクリックします。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 アプリケーションをローカルで実行できたので、Azure にデプロイする準備を始めましょう。  コンテナー レジストリにコンテナー イメージを格納する必要があります。  次のスクリプトを使って、[Azure コンテナー レジストリ](/azure/container-registry/container-registry-intro)を作成します。 コンテナー レジストリ名は他の Azure サブスクリプションからも表示できるため、一意にする必要があります。
@@ -157,11 +157,11 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 
 クラスターを作成する際は、次の手順に従います。 
 
-1. ソリューション エクスプローラーで **FabrikamFiber.CallCenterApplication** アプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
+1. ソリューション エクスプローラーで **FabrikamFiber.CallCenterApplication** アプリケーション プロジェクトを右クリックし、 **[発行]** を選択します。
 
 2. サブスクリプションにアクセスできるように、Azure アカウントを使用してサインインします。 
 
-3. **[接続のエンドポイント]** ドロップダウンを選択して、**[新しいクラスターの作成...]** オプションを選択します。    
+3. **[接続のエンドポイント]** ドロップダウンを選択して、 **[新しいクラスターの作成...]** オプションを選択します。    
         
 4. **[クラスターの作成]** ダイアログで、次のように設定を変更します。
 
@@ -178,7 +178,7 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 
     e. **[詳細]** タブで、クラスターをデプロイする際にロード バランサーで開放するアプリケーション ポートを列挙します。 これは、クラスターの作成を始める前にメモしておいたポートです。 さらに、アプリケーション ログ ファイルのルーティングに使用される既存の Application Insights キーを追加することもできます。
 
-    f. 設定の変更が完了したら、**[作成]** ボタンを選択します。 
+    f. 設定の変更が完了したら、 **[作成]** ボタンを選択します。 
 1. 作成の完了には数分かかります。クラスターが完全に作成されると、出力ウィンドウにその旨が表示されます。
     
 
@@ -231,7 +231,7 @@ $vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
   -VirtualNetworkSubnetId $subnetID;
 ```
 ## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
-これでアプリケーションの準備ができたので、Visual Studio から直接 Azure にあるクラスターにデプロイできるようになりました。  ソリューション エクスプローラーで **FabrikamFiber.CallCenterApplication** アプリケーション プロジェクトを右クリックし、**[発行]** を選択します。  **[接続エンドポイント]** では、以前に作成したクラスターのエンドポイントを選択します。  **[Azure Container Registry]** では、以前に作成したコンテナー レジストリを選択します。  **[発行]** をクリックして、Azure にあるクラスターにアプリケーションをデプロイします。
+これでアプリケーションの準備ができたので、Visual Studio から直接 Azure にあるクラスターにデプロイできるようになりました。  ソリューション エクスプローラーで **FabrikamFiber.CallCenterApplication** アプリケーション プロジェクトを右クリックし、 **[発行]** を選択します。  **[接続エンドポイント]** では、以前に作成したクラスターのエンドポイントを選択します。  **[Azure Container Registry]** では、以前に作成したコンテナー レジストリを選択します。  **[発行]** をクリックして、Azure にあるクラスターにアプリケーションをデプロイします。
 
 ![アプリケーションの発行][publish-app]
 

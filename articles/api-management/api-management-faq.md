@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: edc3c2ddcddaa8a51ae634a7abcd3a61aab530e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4140754afa8de994b227dc187cd73c9ccfa86f9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357251"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666023"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -65,7 +65,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 * HTTP 基本認証を使用します。 詳細については、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」を参照してください。
 * 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
-* バックエンド サービスで IP ホワイトリストを使用します。 API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままですが、いくつか[注意事項](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)があります。 この IP アドレスを許可するようにホワイトリストを設定できます。 API Management インスタンスの IP アドレスは、Azure Portal のダッシュボードで取得できます。
+* バックエンド サービスで IP ホワイトリストを使用します。 従量課金レベルを除く API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままですが、いくつか[注意事項](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)があります。 この IP アドレスを許可するようにホワイトリストを設定できます。 API Management インスタンスの IP アドレスは、Azure Portal のダッシュボードで取得できます。
 * API Management インスタンスを Azure Virtual Network に接続します。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。
@@ -87,7 +87,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
-3. API Management で、目的のユーザーに **API Management 共同作成者**ロールを割り当てます。
+3. API Management で、目的のユーザーに **API Management サービス共同作成者**ロールを割り当てます。
 
 新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用できます。 次の手順に従って、管理者としてサインインできます。
 

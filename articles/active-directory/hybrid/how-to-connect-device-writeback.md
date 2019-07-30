@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 977b599c26e8bb586cc47bd2f0aac80034f22834
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 632f6f80184c6ba3409bd30ae070cbaefc77f036
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785726"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109500"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect:デバイス ライトバックの有効化
 > [!NOTE]
@@ -32,9 +32,9 @@ ms.locfileid: "65785726"
 ここでは、Azure AD Connect においてデバイスの書き戻し機能を有効にする方法について説明します。 デバイスの書き戻しは、次のシナリオで使用されます。
 
 * [信頼証明書のハイブリッド展開を使用して Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration) を有効にします。
-* AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利用者の信頼) へのデバイスに基づく条件付きアクセスを有効にします。
+* ADFS (2012 R2 以降) で保護されたアプリケーション (証明書利用者の信頼) へのデバイスに基づく条件付きアクセスを有効にします。
 
-これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。 条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../../active-directory/active-directory-device-registration-on-premises-setup.md)」をご覧ください。
+これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。 条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../../active-directory/active-directory-device-registration-on-premises-setup.md)」を参照してください。
 
 > [!IMPORTANT]
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
@@ -44,14 +44,14 @@ ms.locfileid: "65785726"
 カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。 すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
 
 ## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>パート 2:Azure AD Connect でのデバイス ライトバックの有効化
-1. インストール ウィザードをもう一度実行します。 [追加のタスク] ページで **[デバイス オプションの構成]** を選び、**[次へ]** をクリックします。 
+1. インストール ウィザードをもう一度実行します。 [追加のタスク] ページで **[デバイス オプションの構成]** を選び、 **[次へ]** をクリックします。 
 
     ![デバイス オプションの構成](./media/how-to-connect-device-writeback/deviceoptions.png)
 
     >[!NOTE]
     > 新しい [デバイス オプションの構成] は、バージョン 1.1.819.0 以降でのみ使うことができます。
 
-2. デバイス オプション ページで、**[デバイス ライトバックの構成]** を選びます。 **[デバイス ライトバックの無効化]** オプションは、デバイス ライトバックを有効にするまで使用できません。 **[次へ]** をクリックして、ウィザードの次のページに移動します。
+2. デバイス オプション ページで、 **[デバイス ライトバックの構成]** を選びます。 **[デバイス ライトバックの無効化]** オプションは、デバイス ライトバックを有効にするまで使用できません。 **[次へ]** をクリックして、ウィザードの次のページに移動します。
     ![デバイスの操作の選択](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
 
 3. [書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。

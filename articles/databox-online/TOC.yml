@@ -47,6 +47,8 @@
           href: data-box-gateway-monitor.md
         - name: トラブルシューティング
           href: data-box-gateway-troubleshoot.md
+        - name: Microsoft サポートに問い合わせる
+          href: data-box-edge-contact-microsoft-support.md
     - name: リリース ノート
       items:
         - name: 1905 - 最新
@@ -105,9 +107,11 @@
               href: data-box-edge-connect-powershell-interface.md
         - name: トラブルシューティング
           href: data-box-edge-troubleshoot.md
+        - name: Microsoft サポートに問い合わせる
+          href: data-box-edge-contact-microsoft-support.md
         - name: 監視
           href: data-box-edge-monitor.md
-        - name: デバイスの返却
+        - name: デバイスの返却または交換
           href: data-box-edge-return-device.md
     - name: リリース ノート
       items:

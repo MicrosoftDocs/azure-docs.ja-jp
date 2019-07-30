@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 0a8f4a58-e96a-4883-adf3-6b8b49208e6a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 357435b8a4ac396c1548c89206f269730e871f6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5784101c9f2e0dc238ac48c5d0f6fbe4c0dc596f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204491"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620676"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Azure Active Directory からデータを接続する
 
@@ -34,6 +35,8 @@ Azure Sentinel では、[Azure Active Directory](../active-directory/fundamental
 - サインイン データを Active Directory からエクスポートするには、Azure AD P1 または P2 ライセンスが必要です。
 
 - ログからストリーミングするテナントに対してグローバル管理者アクセス許可またはセキュリティ管理者アクセス許可を持つユーザー。
+
+- 接続の状態を確認できるようにするには、Azure AD の診断ログにアクセスするためのアクセス許可が必要です。 
 
 
 ## <a name="connect-to-azure-ad"></a>Azure への接続

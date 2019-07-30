@@ -4,18 +4,18 @@ description: 一般的なパターンに基づいてさまざまな Azure Functi
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 0c1dbbae5e4be965f195b5ea4fc88b1bc5fb4f87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9a44bd058e6148c6210c5e3be93745d18d8cb74
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61437873"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480426"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 

@@ -158,7 +158,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 dotnet run
 ```
 
-`http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl` + `Shift` + `i`)、**[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
+`http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl` + `Shift` + `i`)、 **[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
 
 ![ブラウザー クライアントでの CORS エラー](./media/app-service-web-tutorial-rest-api/cors-error.png)
 

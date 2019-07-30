@@ -8,13 +8,13 @@ ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: agaiha
-ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710413"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871922"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -127,7 +127,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 }
 ```
 
-Name | 値
+EnableAdfsAuthentication | 値
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。
@@ -169,7 +169,7 @@ sinksConfig | (省略可能) メトリックとイベントの配信が可能な
 
 要素 | 値
 ------- | -----
-name | このシンクを拡張機能構成の他の場所で参照するために使用される文字列。
+名前 | このシンクを拡張機能構成の他の場所で参照するために使用される文字列。
 type | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
 
 Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob という 2 つのシンク型がサポートされています。

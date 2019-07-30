@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 2966f90dcb381e439c00a6540ef9a01bd24f8743
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299302"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561187"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
@@ -28,13 +28,13 @@ ms.locfileid: "66299302"
 
 *データがランダムに失われます。*
 
-* [テレメトリ チャネル](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost)でデータ損失がないか確認してください
+* [テレメトリ チャネル](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)でデータ損失がないか確認してください
 
 * テレメトリ チャネル [Github リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)で既知の問題がないか確認してください
 
 *アプリが停止する直前、コンソール アプリや Web アプリでデータが失われます。*
 
-* SDK チャネルでは、バッファにテレメトリが保存され、一括送信されます。 アプリケーションがシャットダウンするとき、場合によっては、[Flush()](api-custom-events-metrics.md#flushing-data) を明示的に呼び出す必要があります。 `Flush()` の動作は、使用されている実際の[チャネル](telemetry-channels.md#built-in-telemetrychannels)に依存します。
+* SDK チャネルでは、バッファにテレメトリが保存され、一括送信されます。 アプリケーションがシャットダウンするとき、場合によっては、[Flush()](api-custom-events-metrics.md#flushing-data) を明示的に呼び出す必要があります。 `Flush()` の動作は、使用されている実際の[チャネル](telemetry-channels.md#built-in-telemetry-channels)に依存します。
 
 ## <a name="no-data-from-my-server"></a>サーバーからデータを取得できない
 *Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。開発用コンピューターでは正常に機能していました。*
@@ -215,7 +215,9 @@ Application Insights をインストールしているとき、またはログ �
 
 ### <a name="net-core"></a>.NET Core
 
-1. NuGet から [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) パッケージをインストールします。 インストールするバージョンは、`Microsoft.ApplicationInsights` の現在インストールされているバージョンと一致する必要があります。
+1. NuGet から [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) パッケージをインストールします。 インストールするバージョンは、`Microsoft.ApplicationInsights` の現在インストールされているバージョンと一致する必要があります。
+
+Microsoft.ApplicationInsights.AspNetCore の最新バージョンは 2.7.1 であり、それは Microsoft.ApplicationInsights バージョン 2.10 を参照します。 そのため、インストールする Microsoft.AspNet.ApplicationInsights.HostingStartup のバージョンは 2.10.0 になります。
 
 2. `Startup.cs` クラスの `ConfigureServices` メソッドを変更します。
 
@@ -232,6 +234,27 @@ Application Insights をインストールしているとき、またはログ �
 3. プロセスを再起動して、SDK によってこれらの新しい設定が取得されるようにします。
 
 4. 完了したら、これらの変更を元に戻します。
+
+
+## <a name="PerfView"></a> PerfView でログを収集する
+[PerfView](https://github.com/Microsoft/perfview) は、多くのソースから診断情報を収集して視覚化することによって、CPU、メモリ、およびその他の問題を特定するために役立つ、無料の診断およびパフォーマンス分析ツールです。
+
+Application Insights SDK は、PerfView でキャプチャできる EventSource の自己トラブルシューティング ログを記録します。
+
+ログを収集するには、PerfView をダウンロードし、次のコマンドを実行します。
+```cmd
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
+```
+
+以下のパラメーターは、必要に応じて変更できます。
+- **MaxCollectSec**。 PerfView が無期限に実行され、サーバーのパフォーマンスに影響が及ぶのを防ぐには、このパラメーターを設定します。
+- **OnlyProviders**。 SDK だけからログを収集するには、このパラメーターを設定します。 特定の調査に基づいて、この一覧をカスタマイズすることができます。 
+- **NoGui**。 GUI なしでログを収集するには、このパラメーターを設定します。
+
+
+詳細については、以下を参照してください。
+- [PerfView でのパフォーマンス トレースの記録](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
+- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="still-not-working"></a>問題が解決しない場合
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

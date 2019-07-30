@@ -1,6 +1,6 @@
 ---
-title: Azure の第 2 世代 VM (プレビュー) | Microsoft Docs
-description: Azure 第 2 世代 VM の概要
+title: 第 2 世代 VM に対する Azure のサポート (プレビュー) | Microsoft Docs
+description: 第 2 世代 VM に対する Azure のサポートの概要
 services: virtual-machines-linux
 documentationcenter: ''
 author: laurenhughes
@@ -14,31 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 183e2144317bf3f1c9a60443d393bdcb3fd7c04a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 352df275742c38307065252d2f65bb4253d78e5d
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390562"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151268"
 ---
-# <a name="generation-2-vms-preview-on-azure"></a>Azure の第 2 世代 VM (プレビュー)
+# <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure での第 2 世代 VM (プレビュー) のサポート
 
 > [!IMPORTANT]
-> 第 2 世代 VM は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> 第 2 世代 VM に対する Azure のサポートは現在、プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。 
 
-Azure で第 2 世代 VM のサポートがパブリック プレビュー段階になりました。 作成後、仮想マシンの世代を変更することはできません。 そのため、世代を選択する前に[こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)にある考慮事項とこのページの情報を確認することをお勧めします。
+第 2 世代仮想マシン (VM) のサポートが、Azure でプレビューで使用できるようになりました。 仮想マシンを作成した後にその世代を変更することはできないため、世代を選択する前に、このページの考慮事項を確認してください。 
 
-第 2 世代 VM では、第 1 世代 VM でサポートされていない重要な機能がサポートされています。これには、メモリの増加、Intel® Software Guard Extensions (SGX)、仮想永続メモリ (vPMEM) などがあります。 また、第 2 世代 VM には、まだ Azure でサポートされていない機能がいくつかあります。 詳細については、「[特徴と機能](#features-and-capabilities)」セクションを参照してください。
+第 2 世代 VM では、第 1 世代 VM ではサポートされていない重要な機能がサポートされています。 これらの機能には、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。 また、第 2 世代 VM には、Azure ではまだサポートされていない機能もいくつか含まれています。 詳細については、「[特徴と機能](#features-and-capabilities)」セクションを参照してください。
 
-第 2 世代 VM では、第 1 世代 VM で使用された BIOS ベースのブート アーキテクチャではなく、新しい UEFI ベースのアーキテクチャが使用されます。 第 1 世代と比較し、第 2 世代 VM では、起動時間とインストール時間が改善されることがあります。 第 2 世代 VM の概要と、第 1 世代と第 2 世代の主な違いについては、「[Hyper-V では、第 1 世代と第 2 世代の仮想マシンのどちらを作成するべきですか?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」を参照してください。
+第 2 世代 VM では、第 1 世代 VM で使用されている BIOS ベースのアーキテクチャではなく、新しい UEFI ベースのブート アーキテクチャが使用されます。 第 1 世代 VM と比較して、第 2 世代 VM ではブート時間やインストール時間が改善されている可能性があります。 第 2 世代 VM の概要、および第 1 世代と第 2 世代のいくつかの違いについては、「[Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」(Hyper-V で第 1 世代または第 2 世代のどちらの仮想マシンを作成すべきか) をご覧ください。
 
 ## <a name="generation-2-vm-sizes"></a>第 2 世代 VM のサイズ
 
-第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure は現在、選ばれた次の VM シリーズに対してパブリック プレビュー段階で第 2 世代サポートを提供しています。
+第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure では現在、次の選択された VM シリーズに対して第 2 世代のプレビュー サポートが提供されています。
 
-* [Dsv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
+* [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series)および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
 * [Esv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
 * [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#gs-series)
@@ -47,16 +46,16 @@ Azure で第 2 世代 VM のサポートがパブリック プレビュー段階
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
 
-第 2 世代 VM では、次の Azure Marketplace イメージがサポートされています。
+第 2 世代 VM では、次の Marketplace イメージがサポートされています。
 
 * Windows Server 2019 Datacenter
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM
+## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 
-Azure では現在、第 2 世代 VM に対してオンプレミス Hyper-V でサポートされる一部の機能がサポートされています。
+Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対してサポートする機能の一部がサポートされていません。
 
 | 第 2 世代の機能                | オンプレミス Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
@@ -68,15 +67,15 @@ Azure では現在、第 2 世代 VM に対してオンプレミス Hyper-V で�
 
 ## <a name="features-and-capabilities"></a>特徴と機能
 
-### <a name="generation-1-vs-generation-2-features"></a>第 1 世代と第 2 世代の特徴
+### <a name="generation-1-vs-generation-2-features"></a>第 1 世代と第 2 世代の特徴の比較
 
 | 機能 | 第 1 世代 | 第 2 世代 |
 |---------|--------------|--------------|
 | ブート             | PCAT                      | UEFI                               |
 | ディスク コントローラー | IDE                       | SCSI                               |
-| VM サイズ         | すべての VM サイズで利用可能 | Premium Storage でサポートされる VM のみ |
+| VM サイズ         | すべての VM サイズ | Premium Storage をサポートする VM のみ |
 
-### <a name="generation-1-vs-generation-2-capabilities"></a>第 1 世代と第 2 世代の機能
+### <a name="generation-1-vs-generation-2-capabilities"></a>第 1 世代と第 2 世代の機能の比較
 
 | 機能 | 第 1 世代 | 第 2 世代 |
 |------------|--------------|--------------|
@@ -91,18 +90,18 @@ Azure では現在、第 2 世代 VM に対してオンプレミス Hyper-V で�
 
 ### <a name="marketplace-image"></a>Marketplace イメージ
 
-第 2 世代 VM は、Azure portal または Azure CLI を使用して (UEFI ブートをサポートする) Marketplace イメージから作成できます。
+Azure portal または Azure CLI では、UEFI ブートをサポートする Marketplace イメージから第 2 世代 VM を作成できます。
 
-`windowsserver-gen2preview` サービスには、Windows 第 2 世代イメージのみが含まれます。 これにより、第 1 世代と第 2 世代のイメージの混同が回避されます。 第 2 世代 VM を作成するには、このサービスから **[イメージ]** を選択し、標準の VM 作成プロセスに従います。
+`windowsserver-gen2preview` サービスには、Windows 第 2 世代イメージのみが含まれます。 このパッケージングにより、第 1 世代と第 2 世代のイメージの間の混乱が回避されます。 第 2 世代 VM を作成するには、このサービスから **[イメージ]** を選択し、標準のプロセスに従って VM を作成します。
 
-現在のところ、次の Windows 第 2 世代イメージが Azure Marketplace で公開されています。
+現在、Marketplace では、次の Windows 第 2 世代イメージが提供されています。
 
 * 2019-datacenter-gen2
 * 2016-datacenter-gen2
 * 2012-r2-datacenter-gen2
 * 2012-datacenter-gen2
 
-サポートされている Marketplace イメージの一覧については、「機能」セクションを参照してください。第 2 世代をサポートするイメージは引き続き追加されます。
+サポートされている Marketplace イメージの現在の一覧については、「[特徴と機能](#features-and-capabilities)」のセクションを参照してください。
 
 ### <a name="managed-image-or-managed-disk"></a>マネージド イメージまたはマネージド ディスク
 
@@ -110,45 +109,41 @@ Azure では現在、第 2 世代 VM に対してオンプレミス Hyper-V で�
 
 ### <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
 
-第 2 世代 VM は、仮想マシン スケール セットを利用して作成することもできます。 Azure CLI から Azure 仮想マシン スケール セットを利用し、第 2 世代 VM を作成できます。
+第 2 世代 VM はまた、仮想マシン スケール セットを使用して作成することもできます。 Azure CLI では、Azure スケール セットを使用して第 2 世代 VM を作成します。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 * **第 2 世代 VM はすべての Azure リージョンで利用できますか?**  
-    はい。ただし、すべての[第 2 世代 VM のサイズ](#generation-2-vm-sizes)がどのリージョンでも利用できるわけではありません。 第 2 世代 VM の可用性は VM サイズの可用性に依存します。
+    はい。 ただし、どのリージョンでも[第 2 世代 VM のサイズ](#generation-2-vm-sizes)のすべてを使用できるわけではありません。 第 2 世代 VM の可用性は、VM サイズの可用性によって異なります。
 
 * **第 1 世代 VM と第 2 世代 VM の価格に違いはありますか?**  
-    第 1 世代 VM と第 2 世代 VM の価格に違いはありません。
+    いいえ。
 
 * **OS ディスク サイズを増やすにはどうすればよいですか?**  
-  2 TB を超える OS ディスクが、第 2 世代 VM で新たに加わりました。 既定では、第 2 世代 VM のほとんどの OS ディスクは 2 TB 未満ですが、ディスク サイズは 4 TB の推奨最大値 まで増やすことができます。 Azure CLI または Azure portal を使用して OS ディスク サイズを増やすことができます。 プログラムによるディスクの拡張の詳細については、[ディスクのサイズの変更](expand-disks.md)に関する記事をご覧ください。
+  第 2 世代 VM の新規のものとして、2 TB を超える OS ディスクがあります。 既定では、第 2 世代 VM の OS ディスクは 2 TB 未満です。 ディスク サイズは、4 TB の推奨される最大サイズまで増やすことができます。 OS ディスク サイズを増やすには、Azure CLI または Azure portal を使用します。 プログラムでディスクを拡張する方法については、[ディスクのサイズ変更](expand-disks.md)に関するページを参照してください。
 
-  Azure portal を使用して OS ディスク サイズを増やすには:
+  Azure portal から OS ディスク サイズを増やすには:
 
-  * Azure portal の VM プロパティ ページに移動します。
+  1. Azure portal で、VM プロパティ ページに移動します。
+  1. VM をシャットダウンして割り当てを解除するには、 **[停止]** ボタンを選択します。
+  1. **[ディスク]** セクションで、サイズを増やす OS ディスクを選択します。
+  1. **[ディスク]** セクションで、 **[構成]** を選択し、 **[サイズ]** を目的の値に更新します。
+  1. VM プロパティ ページに戻り、VM を **[開始]** します。
 
-  * **[停止]** ボタンを使用して、VM をシャットダウンし、VM の割り当てを解除します。
+  2 TB を超える OS ディスクに対して警告が表示されることがあります。 この警告は、第 2 世代 VM には適用されません。 ただし、4 TB を超える OS ディスク サイズは "*お勧めできません*"。
 
-  * **[ディスク]** セクションで、増量する OS ディスクを選択します。
+* **第 2 世代 VM では高速ネットワークはサポートされていますか?**  
+    はい。 詳細については、[高速ネットワークを使用した VM の作成](../../virtual-network/create-vm-accelerated-networking-cli.md)に関するページを参照してください。
 
-  * **[ディスク]** セクションで **[構成]** を選択し、 **[サイズ]** を目的の値に更新します。
-  
-  * VM プロパティ ページに戻り、VM を**開始**します。
+* **第 2 世代では VHDX はサポートされていますか?**  
+    いいえ。第 2 世代 VM では VHD のみがサポートされています。
 
-  2 TB を超える OS ディスクに対する警告が表示されることがあります。 この警告は、第 2 世代 VM には該当しません。ただし、4 TB を超える OS ディスク サイズは**お勧めしません。**
+* **第 2 世代 VM では Azure Ultra Disk Storage はサポートされていますか?**  
+    はい。
 
-* **第 2 世代 VM は高速ネットワークに対応していますか?**  
-    はい。第 2 世代 VM は[高速ネットワーク](../../virtual-network/create-vm-accelerated-networking-cli.md)に対応しています。
-
-* **.vhdx は第 2 世代でサポートされていますか?**  
-    いいえ。第 2 世代 VM は .vhd にのみ対応しています。
-
-* **第 2 世代 VM は Ultra ソリッド ステート ドライブ (SSD) をサポートしていますか?**  
-    はい。第 2 世代 VM は Ultra SSD に対応しています。
-
-* **第 1 世代 VM から第 2 世代 VM に移行できますか?**  
-    いいえ。変更後、VM の世代を変更することはできません。 VM の世代を切り替える必要がある場合、別の世代で新しい VM を作成する必要があります。
+* **VM を第 1 世代から第 2 世代に移行できますか?**  
+    いいえ。VM を作成した後にその世代を変更することはできません。 VM の世代を切り替える必要がある場合は、異なる世代の新しい VM を作成してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* 詳細については、[Hyper-V の第 2 世代仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
+* [Hyper-V の第 2 世代仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)について学習します。

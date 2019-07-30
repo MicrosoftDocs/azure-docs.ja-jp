@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 195e7bf21fe1f6017705883f2ec692c182f15375
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 013e477b66d2772698ce5c9cc61a59f8a5a04a5a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560592"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル:Azure Active Directory と Pega Systems の統合
 
@@ -170,9 +170,9 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
     ![構成 URL をコピーする](common/copy-configuration-urls.png)
 
-    1. **ログイン URL**。
+    1. **[ログイン URL]** 。
 
-    1. **Azure AD 識別子**。
+    1. **[Azure AD 識別子]** 。
 
     1. **ログアウト URL**。
 
@@ -222,7 +222,7 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
 1. Azure portal で、左側のウィンドウの **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-    ![[すべてのユーザー] の選択](common/users.png)
+    ![[すべてのユーザー] を選択する](common/users.png)
 
 2. 画面の上部にある **[新しいユーザー]** を選択します。
 

@@ -1,6 +1,6 @@
 ---
 title: CloudSimple による Azure VMware ソリューションのクイック スタート - サービスの作成
-description: CloudSimple サービスの作成方法、ノードの購入方法、ノードの予約法について説明します。
+description: CloudSimple サービスを作成したり、ノードをプロビジョニングしたり、ノードを予約したりする方法について説明します。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b3b95db24f4b0f9a0cf8f5102dfeea5dc51e29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5732ea726bdecc10d0757224870ee5d8be83a2b2
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64576889"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164214"
 ---
 # <a name="quickstart---create-service"></a>クイック スタート - サービスの作成
 
@@ -21,7 +21,7 @@ ms.locfileid: "64576889"
 
 ## <a name="vmware-solution-by-cloudsimple---service-overview"></a>CloudSimple による VMware ソリューション - サービス概要
 
-CloudSimple サービスにより、CloudSimple によって Azure VMware ソリューションを使用できます。  サービスを作成すると、ノードの購入、予約、およびプライベート クラウドの作成が可能になります。  CloudSimple サービスが使用可能な各 Azure 領域に、CloudSimple サービスを追加します。  サービスは、CloudSimple による Azure VMware ソリューションのエッジ ネットワーク を定義します。  このエッジ ネットワークは、VPN、ExpressRoute、およびプライベート クラウドへのインターネット接続性などのサービスに使用されます。
+Azure VMware Solution by CloudSimple は、CloudSimple サービスを通じて利用できます。  このサービスを作成すると、ノードをプロビジョニングしたり、ノードを予約したり、プライベート クラウドを作成したりできます。  CloudSimple サービスが使用可能な各 Azure 領域に、CloudSimple サービスを追加します。  サービスは、CloudSimple による Azure VMware ソリューションのエッジ ネットワーク を定義します。  このエッジ ネットワークは、VPN、ExpressRoute、およびプライベート クラウドへのインターネット接続性などのサービスに使用されます。
 
 CloudSimple サービスを追加するには、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットはエッジ ネットワークを作成するときに使用し、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 これは、オンプレミス ネットワークのアドレス空間や Azure の仮想ネットワーク アドレス空間と重複できません。
 
@@ -47,9 +47,6 @@ CloudSimple サービスのリソース プロバイダーを有効にするに�
 
 ## <a name="create-the-service"></a>サービスの作成
 
->[!NOTE]
-> CloudSimple サービスは、サブスクリプションで有効にする必要があります。 サブスクリプションが無効であると、サービスを作成するときにエラーになります。  「[Enable CloudSimple service](https://docs.azure.cloudsimple.com/enable-cloudsimple-service)」アーティクルの手順に従ってサービスを有効にします。
-
 1. **[すべてのサービス]** を選択します。
 2. **CloudSimple サービス**を検索します。
 
@@ -71,7 +68,7 @@ CloudSimple サービスのリソース プロバイダーを有効にするに�
 
 サービスが作成され、サービスの一覧に追加されます。
 
-## <a name="purchase-nodes"></a>ノードの購入
+## <a name="provision-nodes"></a>ノードをプロビジョニングする
 
 CloudSimple プライベート クラウド環境に従量課金制の容量をセットアップするには、まず、Azure portal 内のノードをプロビジョニングします。
 
@@ -85,7 +82,7 @@ CloudSimple プライベート クラウド環境に従量課金制の容量を�
 
     ![CloudSimple ノードを追加します。](media/create-cloudsimple-node-add.png)
 
-5. CloudSimple ノードを購入するサブスクリプションを選択します。
+5. CloudSimple ノードをプロビジョニングするサブスクリプションを選択します。
 6. ノードのリソース グループを選択します。 リソース グループを新規に追加するには、 **[Create New]** (新規作成) をクリックします。
 7. ノードを識別するためにプレフィックスを入力します。
 8. ノード リソースの場所を選択します。

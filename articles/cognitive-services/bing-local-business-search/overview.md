@@ -1,5 +1,5 @@
 ---
-title: Bing Local Business Search API とは | Microsoft Docs
+title: Bing Local Business Search API とは
 titleSuffix: Azure Cognitive Services
 description: RESTful サービスである Bing Local Business Search API を使用すると、アプリケーションで検索クエリに基づいて地元の場所や企業に関する情報を検索できます。
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 3cc9ed4dd108e76da6430a450876b709be514356
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2078e4842f6b8af11fcf56760579ce1ec77dd23f
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796763"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423371"
 ---
 # <a name="what-is-bing-local-business-search"></a>Bing Local Business Search とは
 RESTful サービスである Bing Local Business Search API を使用すると、アプリケーションで検索クエリに基づいて地元企業に関する情報を検索できます。 たとえば、`q=<business-name> in Redmond, Washington`、または `q=Italian restaurants near me` です。 

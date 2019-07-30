@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629915"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603389"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート:Face REST API と C# を使用して画像から顔を検出する
 
@@ -77,7 +77,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>画像の入力を受け取る
 
-**Program** クラスの **Main** メソッドに次のコードを追加します。 これは、画像の URL を入力するようユーザーに要求するプロンプトをコンソールに出力するものです。 さらに、もう 1 つのメソッド **MakeAnalysisRequest** を呼び出して、指定された場所にある画像を処理します。
+**Program** クラスの **Main** メソッドに次のコードを追加します。 このコードによって、画像の URL を入力するようユーザーに要求するプロンプトがコンソールに出力されます。 さらに、もう 1 つのメソッド **MakeAnalysisRequest** を呼び出して、指定された場所にある画像を処理します。
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +162,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>入力画像データを処理する
 
-**Program** クラスに次のメソッドを追加します。 これは、指定された URL にある画像をバイト配列に変換するものです。
+**Program** クラスに次のメソッドを追加します。 このメソッドでは、指定された URL にある画像をバイト配列に変換します。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +179,7 @@ namespace DetectFace
 
 ### <a name="parse-the-json-response"></a>JSON 応答を解析します
 
-**Program** クラスに次のメソッドを追加します。 これは、JSON 入力を読みやすく書式設定するものです。 アプリからは、この文字列データをコンソールに書き込むことになります。 その後、クラスと名前空間を閉じることができます。
+**Program** クラスに次のメソッドを追加します。 このメソッドでは、JSON 入力を読みやすく書式設定します。 アプリからは、この文字列データをコンソールに書き込むことになります。 その後、クラスと名前空間を閉じることができます。
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -250,7 +250,7 @@ namespace DetectFace
 
 ## <a name="run-the-app"></a>アプリの実行
 
-実行に成功した場合、応答として顔データが、読みやすい JSON 形式で表示されます。 例: 
+実行に成功した場合、応答として顔データが、読みやすい JSON 形式で表示されます。 例:
 
 ```json
 [

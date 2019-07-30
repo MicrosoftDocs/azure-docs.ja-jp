@@ -13,22 +13,22 @@ ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: b8d57a2bbaa53a0291dc9c05ab234c3238322a71
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 4fbe3a5d308559a4ac9e1a781f3a4f385c767f90
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605446"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348196"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  
-Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、F#、Node.js、Java、PHP などの任意の開発言語を使用できます。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure で[サーバー不要](https://azure.microsoft.com/solutions/serverless/)のアプリケーションを作成できます。
+Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、Java、JavaScript、Python、PHP などの任意の開発言語を使用できます。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure で[サーバー不要](https://azure.microsoft.com/solutions/serverless/)のアプリケーションを作成できます。
 
 このトピックでは、Azure Functions の概要について説明します。 Functions の利用をすぐに開始する場合は、「 [初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。 Azure Functions の詳細な技術情報をお探しの場合は、 [開発者向けリファレンス](functions-reference.md)を参照してください。
 
 ## <a name="features"></a>機能
 Functions の主要な機能を次に示します。
 
-* **言語の選択** - C#、F#、Javascript など、好きな言語を使用して関数を記述できます。 他のオプションについては、[サポートされている言語](supported-languages.md)に関するページを参照してください。
+* **言語の選択** - C#、Java、Javascript、Python などから選んだ言語を使用して関数を記述できます。 完全な一覧が必要な場合、[サポートされている言語](supported-languages.md)に関するページを参照してください。
 * **従量課金制の価格モデル** - コードの実行に要した時間に対してのみ課金されます。 [価格に関するセクション](#pricing)にある従量課金ホスティング プラン オプションを確認してください。  
 * **独自の依存関係を使用** - Azure Functions では NuGet と NPM をサポートしているので、お気に入りのライブラリを使用できます。  
 * **セキュリティの統合** - Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる関数を保護できます。  

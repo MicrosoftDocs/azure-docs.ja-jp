@@ -58,6 +58,12 @@
       href: cross-network-connectivity.md
     - name: Azure の一般的なセキュリティ属性
       href: expressroute-security-attributes.md
+    - name: 高可用性を実現する設計
+      href: designing-for-high-availability-with-expressroute.md
+    - name: ディザスター リカバリーの設計
+      items:
+        - name: プライベート ピアリング
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: ハウツー ガイド
   items:
     - name: 回線の作成と変更
@@ -68,6 +74,9 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure CLI
           href: howto-circuit-cli.md
+        - name: Azure Resource Manager テンプレート
+          displayName: 'ARM,resource manager template'
+          href: expressroute-howto-circuit-resource-manager-template.md
     - name: ピアリング構成の作成と変更
       items:
         - name: Azure ポータル
@@ -184,6 +193,9 @@
       href: 'https://msdn.microsoft.com/library/azure/mt586720'
     - name: REST (クラシック)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
+    - name: Resource Manager テンプレート
+      displayName: 'ARM,resource manager template'
+      href: /azure/templates/microsoft.network/expressroutecircuits
 - name: リソース
   items:
     - name: ExpressRoute の FAQ

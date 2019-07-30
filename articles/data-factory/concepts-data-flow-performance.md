@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 7fca586083f70e0b0f7e593d5203392260cd2136
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66172442"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190618"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -29,15 +29,28 @@ Azure Data Factory の Mapping Data Flow では、大規模なデータ変換の
 
 ![[デバッグ] ボタン](media/data-flow/debugb1.png "デバッグ")
 
-## <a name="optimizing-for-azure-sql-database"></a>Azure SQL Database の最適化
+## <a name="monitor-data-flow-performance"></a>データ フローのパフォーマンスの監視
 
-![ソース部分](media/data-flow/sourcepart2.png "ソース部分")
+ブラウザーでマッピング データ フローを設計する際に、変換ごとに下部の設定ウィンドウの [Data Preview]\(データのプレビュー\) タブをクリックして、個々の変換の単体テストを実行できます。 次に行う手順では、パイプライン デザイナーでデータ フローをエンド ツー エンドでテストします。 データ フローの実行アクティビティを追加し、[デバッグ] ボタンを使用して、データ フローのパフォーマンスをテストします。 パイプライン ウィンドウの下部ウィンドウで、[アクション] の下に眼鏡アイコンが表示されます。
 
-### <a name="you-can-match-spark-data-partitioning-to-your-source-database-partitioning-based-on-a-database-table-column-key-in-the-source-transformation"></a>ソース変換のデータベース テーブルの列キーに基づいて、Spark データのパーティション分割をご使用のソース データベースのパーティション分割と一致させることができます。
+![データ フローの監視](media/data-flow/mon002.png "データ フローの監視 2")
+
+そのアイコンをクリックすると、データ フローの実行プランおよび後続のパフォーマンス プロファイルが表示されます。 この情報を使用して、サイズの異なるデータ ソースに対するデータ フローのパフォーマンスを見積もることができます。 全体的なパフォーマンス計算では 1 分間のクラスター ジョブ実行セットアップ時間を想定でき、既定の Azure Integration Runtime を使用している場合は、5 分間のクラスター起動時間も追加する必要が生じる場合があることに注意してください。
+
+![データ フローの監視](media/data-flow/mon003.png "データ フローの監視 3")
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL Database と Azure SQL Data Warehouse の最適化
+
+![ソース部分](media/data-flow/sourcepart3.png "ソース部分")
+
+### <a name="partition-your-source-data"></a>ソース データのパーティション分割
 
 * [最適化] に移動し、[ソース] を選択します。 クエリで特定のテーブル列または型のいずれかを設定します。
 * [列] を選択した場合は、パーティション列を選択します。
 * また、Azure SQL DB への最大接続数も設定します。 データベースへの並列接続を取得するために高い数値の設定を試すことができます。 ただし、場合によっては、接続の数を制限することでパフォーマンスが高速になることもあります。
+* ソース データベース テーブルはパーティション分割する必要はありません。
+* ソース変換でデータベース テーブルのパーティション分割スキームに一致するクエリを設定すると、ソース データベース エンジンでパーティション除外を利用できます。
+* ソースがまだパーティション分割されていない場合でも、ADF では、ソース変換でユーザーが選択したキーに基づいて、Spark 変換環境でデータのパーティション分割が使用されます。
 
 ### <a name="set-batch-size-and-query-on-source"></a>ソースでバッチ サイズとクエリを設定する
 
@@ -46,6 +59,12 @@ Azure Data Factory の Mapping Data Flow では、大規模なデータ変換の
 * バッチ サイズを設定することで、行単位ではなくメモリにセットでデータを格納するように ADF に指示します。 これは省略可能な設定で、適切にサイズを設定しないと、コンピューティング ノード上のリソースが不足する場合があります。
 * クエリを設定することで、処理のために Data Flow に到着するよりも前に、ソースで直接行をフィルターできます。これにより初期データの取得を高速化することができます。
 * クエリを使用する場合は、Azure SQL DB、つまり READ UNCOMMITTED に省略可能なクエリ ヒントを追加することができます。
+
+### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>SQL データセットのソース変換設定に関する分離レベルを設定する
+
+* [コミットされていないものを読み取り] は、ソース変換に関するより高速なクエリ結果を提供します。
+
+![分離レベル](media/data-flow/isolationlevel.png "分離レベル")
 
 ### <a name="set-sink-batch-size"></a>シンクのバッチ サイズを設定する
 
@@ -65,6 +84,13 @@ Azure Data Factory の Mapping Data Flow では、大規模なデータ変換の
 * コアの数を増やすと、ノードの数も増えるため、クエリの実行および Azure SQL DB への書き込みの処理能力が向上します。
 * ご利用のコンピューティング ノードにさらに多くのリソースを適用するには、[コンピューティング最適化] および [メモリ最適化] のオプションをお試しください。
 
+### <a name="unit-test-and-performance-test-with-debug"></a>デバッグを含む単体テストおよびパフォーマンス テスト
+
+* データ フローを単体テストするときは、[Data Flow Debug]\(データ フローのデバッグ\) ボタンを "ON" に設定します。
+* Data Flow デザイナー内で、変換の [Data Preview]\(データのプレビュー\) タブを使用して、変換ロジックの結果を表示します。
+* パイプライン デザイン キャンバスに Data Flow アクティビティを配置して、パイプライン デザイナーからデータ フローの単体テストを実行し、[デバッグ] ボタンを使用してテストします。
+* デバッグ モードのテストは、Just-In-Time クラスター起動を待機することなく、ウォーミングされたライブ クラスター環境に対して機能します。
+
 ### <a name="disable-indexes-on-write"></a>書き込み時にインデックスを無効にする
 * シンクからの書き込み先のターゲット テーブルでインデックスを無効にする Data Flow アクティビティの前に、ADF パイプラインのストアド プロシージャ アクティビティを使用します。
 * Data Flow アクティビティの後に、これらのインデックスを有効にする別のストアド プロシージャ アクティビティを追加します。
@@ -73,9 +99,37 @@ Azure Data Factory の Mapping Data Flow では、大規模なデータ変換の
 * DTU の制限に達したら、ソースおよびシンク Azure SQL DB のサイズ変更をスケジュールしてから、パイプラインを実行してスループットを増やし、Azure スロットルを最小化します。
 * パイプラインの実行が完了したら、データベースのサイズを変更して通常のラン レートに戻すことができます。
 
+## <a name="optimizing-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の最適化
+
+### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>ステージングを使用して、Polybase を介してデータを一括で読み込む
+
+* データ フローの行単位の処理を回避するためには、ADF が Polybase を利用して DW への行単位の挿入を回避できるように、シンク設定で [ステージング] オプションを設定します。 これによって、データを一括で読み込めるように、ADF での Polybase の使用が指示されます。
+* ステージングを有効にして、パイプラインからデータ フローのアクティビティを実行する場合は、一括読み込みにおけるステージング データの BLOB ストアの場所を選択する必要があります。
+
+### <a name="increase-the-size-of-your-azure-sql-dw"></a>Azure SQL DW のサイズを増やす
+
+* DWU の制限に達したら、ソースおよびシンク Azure SQL DW のサイズ変更をスケジュールしてから、パイプラインを実行してスループットを増やし、Azure スロットルを最小化します。
+
+* パイプラインの実行が完了したら、データベースのサイズを変更して通常のラン レートに戻すことができます。
+
+## <a name="optimize-for-files"></a>ファイルを最適化する
+
+* ADF で使用するパーティションの数を制御できます。 ソースとシンクの各変換および個々の変換に対してパーティション分割スキームを設定できます。 小さいファイルの場合は、[単一パーティション] を選択すると、小さいファイルをパーティション分割するように Spark に要求するよりも効果的で速い場合があります。
+* ソース データに関する十分な情報がない場合は、[ラウンド ロビン] パーティション分割を選択して、パーティションの数を設定できます。
+* データを探索して、ハッシュ キーに適した列があることが判明した場合は、ハッシュ パーティション分割のオプションを使用します。
+
+### <a name="file-naming-options"></a>ファイルの名前付けのオプション
+
+* ADF Mapping Data Flow で変換済みデータを書き込む既定の動作では、BLOB または ADLS のリンクされたサービスを含むデータセットに書き込みます。 名前付きファイルではなく、フォルダーまたはコンテナーを指すように、そのデータセットを設定する必要があります。
+* Data Flow は、実行に Azure Databricks Spark を使用します。これは、既定の Spark パーティション分割または明示的に選択したパーティション分割スキームに基づいて、出力が複数のファイルに分割されることを意味します。
+* ADF Data Flow では、すべての出力 PART ファイルが単一の出力ファイルにマージされるように "単一ファイルへの出力" を選択するのが一般的な操作です。
+* ただし、この操作では、出力を単一のクラスター ノード上の単一のパーティションに減らす必要があります。
+* この一般的なオプションを選択する場合は、この点に注意してください。 多数の大きなソース ファイルを単一の出力ファイル パーティションに結合する場合、クラスター ノードのリソースが不足することがあります。
+* 計算ノードのリソースを使い果たさないように、パフォーマンスを最適化する既定または明示的なパーティション分割スキームを ADF で保持し、その後、すべての PART ファイルを出力フォルダーから単一の新しいファイルにマージする後続のコピー アクティビティをパイプラインに追加できます。 基本的には、この手法は、変換の動作をファイルのマージから切り離し、"単一ファイルへの出力" を設定するのと同じ結果が得られます。
+
 ## <a name="next-steps"></a>次の手順
-他の Data Flow の記事を参照します。
+パフォーマンスに関連した他のデータ フローの記事を参照してください。
 
-- [Data Flow の概要](concepts-data-flow-overview.md)
+- [データ フローの [最適化] タブ](concepts-data-flow-optimize-tab.md)
 - [Data Flow のアクティビティ](control-flow-execute-data-flow-activity.md)
-
+- [データ フローのパフォーマンスの監視](concepts-data-flow-monitoring.md)

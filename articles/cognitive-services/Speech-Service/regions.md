@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 83cea56cecf9792c829e062965fe39b63201af3e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1ad618e9eb70fd75f433030584c0f6538532928f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020659"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466992"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 
@@ -36,7 +36,7 @@ Speech SDK は、以下のリージョンで**音声認識**、**テキスト読
  ------|-------|--------
  米国西部 | `westus` | https://westus.cris.ai
  米国西部 2 | `westus2` | https://westus2.cris.ai
- 米国東部 | `eastus` | https://eastus.cris.ai
+ East US | `eastus` | https://eastus.cris.ai
  米国東部 2 | `eastus2` | https://eastus2.cris.ai
  米国中部 | `centralus` | https://centralus.cris.ai
  米国中北部 | `northcentralus` | https://northcentralus.cris.ai
@@ -64,7 +64,7 @@ Speech SDK を介して**意図認識**を使用できるリージョンは以�
  オーストラリア | オーストラリア東部 | `australiaeast`
  ヨーロッパ | 北ヨーロッパ | `northeurope`
  ヨーロッパ | 西ヨーロッパ | `westeurope`
- 北米 | 米国東部 | `eastus`
+ 北米 | East US | `eastus`
  北米 | 米国東部 2 | `eastus2`
  北米 | 米国中南部 | `southcentralus`
  北米 | 米国中西部 | `westcentralus`
@@ -74,18 +74,32 @@ Speech SDK を介して**意図認識**を使用できるリージョンは以�
 
 これは、[Language Understanding サービス (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) でサポートされている公開リージョンのサブセットです。
 
+### <a name="voice-first-virtual-assistants"></a>音声優先仮想アシスタント
+
+[Speech SDK](speech-sdk.md) は、以下のリージョンで**音声優先仮想アシスタント**をサポートしています。
+
+リージョン | Speech SDK パラメーター
+-------|---------------------
+米国西部 | `westus`
+米国西部 2 | `westus2`
+East US | `eastus`
+米国東部 2 | `eastus2`
+西ヨーロッパ | `westeurope`
+北ヨーロッパ | `northeurope`
+東南アジア | `southeastasia`
+
 ## <a name="rest-apis"></a>REST API
 
 Speech Service は、音声テキスト変換要求とテキスト読み上げ要求用の REST エンドポイントも公開しています。
 
 ### <a name="speech-to-text"></a>音声テキスト変換
 
-音声テキスト変換のリファレンス ドキュメントについては、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) に関するページを参照してください。
+音声テキスト変換のリファレンス ドキュメントについては、「[Speech to Text REST API](rest-speech-to-text.md)」を参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 ### <a name="text-to-speech"></a>テキスト読み上げ
 
-テキスト読み上げのリファレンス ドキュメントについては、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) に関するページを参照してください。
+テキスト読み上げのリファレンス ドキュメントについては、「[Text to Speech REST API](rest-text-to-speech.md)」を参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

@@ -3,22 +3,17 @@ title: Azure Cloud Services NetworkConfiguration スキーマ | Microsoft Docs
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
-ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
 ms.topic: reference
-ms.assetid: c1b94a9e-46e8-4a18-ac99-343c94b1d4bd
 caps.latest.revision: 28
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: fb833904502c0c42b46201fd46a368de0376277c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: georgewallace
+ms.author: gwallace
+ms.openlocfilehash: 4c2a85daba259f2b676174176753af90dd489491
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130270"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360685"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services Config NetworkConfiguration スキーマ
 

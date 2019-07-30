@@ -3,20 +3,20 @@ title: Translator Speech API リファレンス
 titleSuffix: Azure Cognitive Services
 description: Translator Speech API のリファレンス ドキュメントです。
 services: cognitive-services
-author: Jann-Skotdal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
-ms.author: v-jansko
+ms.author: swmachan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f083a6ca3079128aad4aba3a53013df378a6106
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60539181"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446897"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 

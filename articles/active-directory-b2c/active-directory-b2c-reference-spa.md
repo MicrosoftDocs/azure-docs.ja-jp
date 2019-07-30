@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a66fa70f6f5615257554e98e40e605d6a7e981fe
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 1d415686e4d8a10043df59aa6bf58a5ed4be0149
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508968"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154026"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
-最新アプリケーションの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 アプリが、AngularJS、Ember.js、Durandal.js などのフレームワークを使用して記述されていることもよくあります。 主にブラウザーで実行される、シングル ページ アプリなどの JavaScript アプリには、認証に関していくつかの追加の課題があります。
+最新アプリケーションの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 アプリが、React、Angular、Vue.js などのフレームワークを使用して記述されていることもよくあります。 主にブラウザーで実行される、シングル ページ アプリなどの JavaScript アプリには、認証に関していくつかの追加の課題があります。
 
 - これらのアプリのセキュリティ特性は、従来のサーバーベースの Web アプリケーションとは異なります。
 - 多くの承認サーバーや ID プロバイダーでは、クロス オリジン リソース共有 (CORS) 要求をサポートしていません。

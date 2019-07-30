@@ -48,8 +48,6 @@
       items:
         - name: 名前空間の作成
           href: relay-create-namespace-portal.md
-        - name: WCF Relay を使用して WCF サービスを外部クライアントに公開する
-          href: relay-wcf-dotnet-get-started.md
         - name: 利用可能な API
           href: relay-api-overview.md
           items:

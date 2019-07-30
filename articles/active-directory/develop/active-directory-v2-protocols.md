@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b7ffef5c3a7c8dd21654b6364013b1718bea1292
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417656"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482982"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft ID プラットフォームのプロトコル
 
@@ -36,7 +36,7 @@ ms.locfileid: "66417656"
 
 OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
 
-![OAuth 2.0 Roles](./media/active-directory-v2-flows/protocols-roles.svg)
+![OAuth 2.0 ロールを示す図](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * **承認サーバー**は、Microsoft ID プラットフォーム エンドポイントとして、ユーザーの本人性確認、リソースへのアクセス権の付与と取り消し、トークンの発行という役割を担います。 承認サーバーは、ID プロバイダーと呼ばれることもあります。ユーザーの情報とそのアクセス、そしてフロー内の当事者間の信頼関係に関するすべてのことは、承認サーバーによって安全に処理されます。
 * **リソース所有者** とは通常、エンド ユーザーを指します。 データを所有し、そのデータ (またはリソース) へのアクセスをサード パーティに許可する権限を持つ当事者です。

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11cb309e6c49ed36247398909e5e1b7ad9f7bc42
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65891211"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>チュートリアル:Azure Active Directory と PageDNA の統合
 
@@ -171,7 +171,7 @@ PageDNA 側でシングル サインオンを構成するには、ダウンロ�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に PageDNA へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon というユーザーに PageDNA へのユーザー アクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[PageDNA]** の順に選択します。
 
@@ -212,3 +212,4 @@ PageDNA 側でシングル サインオンを構成するには、ダウンロ�
 * [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 * [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

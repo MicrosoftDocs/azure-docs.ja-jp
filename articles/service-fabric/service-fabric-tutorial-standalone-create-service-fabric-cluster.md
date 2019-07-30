@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1bcb7f9fadc79db0db17336f07f6d58302433c1f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664031"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385010"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターのインストールと作成
 
-Service Fabric で採用されている "すべての OS、すべてのクラウド" のアプローチの一環として、Service Fabric スタンドアロン クラスターには、独自の環境を選んでクラスターを作成する選択肢が用意されています。 このチュートリアル シリーズでは、AWS をホストとするスタンドアロン クラスターを作成し、そこにアプリケーションをインストールします。
+Service Fabric で採用されている "すべての OS、すべてのクラウド" のアプローチの一環として、Service Fabric スタンドアロン クラスターには、独自の環境を選んでクラスターを作成する選択肢が用意されています。 このチュートリアル シリーズでは、AWS または Azure 上でホストされるスタンドアロンのクラスターを作成し、そこにアプリケーションをインストールします。
 
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、Service Fabric スタンドアロン クラスターの作成手順について説明します。
 
@@ -37,9 +37,9 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Windows Server 用 Service Fabric パッケージをダウンロードする
 
-Service Fabric には、Service Fabric スタンドアロン クラスターを作成するためのセットアップ パッケージが用意されています。  ローカル コンピューターで[セットアップ パッケージ](https://go.microsoft.com/fwlink/?LinkId=730690)をダウンロードします。  正常にダウンロードされたら、EC2 インスタンスへの RDP 接続を介してそれをコピーし、デスクトップに貼り付けます。
+Service Fabric には、Service Fabric スタンドアロン クラスターを作成するためのセットアップ パッケージが用意されています。  ローカル コンピューターで[セットアップ パッケージ](https://go.microsoft.com/fwlink/?LinkId=730690)をダウンロードします。  正常にダウンロードされたら、RDP 接続を介して VM にコピーし、デスクトップに貼り付けます。
 
-zip ファイルを選択し、コンテキスト メニューを開いて、**[すべて展開]** > **[展開]** を選択します。  ファイルを展開すると、zip ファイルと同じ名前のフォルダーがデスクトップに生成されます。
+zip ファイルを選択し、コンテキスト メニューを開いて、 **[すべて展開]**  >  **[展開]** を選択します。  ファイルを展開すると、zip ファイルと同じ名前のフォルダーがデスクトップに生成されます。
 
 さらに詳しい情報が必要な場合は、[セットアップ パッケージの内容](service-fabric-cluster-standalone-package-contents.md)をご覧ください。
 

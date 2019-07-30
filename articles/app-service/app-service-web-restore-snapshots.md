@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.topic: article
 ms.date: 04/04/2018
-ms.author: aelnably;nicking
+ms.author: aelnably
+ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: 8d4290f1411749e2d8d3d27fbd792ceeeea47ef7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed659e95289665b6ce63ba6961e9f63650b4accf
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851335"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617537"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure でスナップショットからアプリケーションを復元する
 この記事では、[Azure App Service](../app-service/overview.md) でスナップショットからアプリを復元する方法について説明します。 アプリのスナップショットの 1 つに基づいて、アプリを以前の状態に復元することができます。 スナップショットのバックアップを有効にする必要はありません。データ復旧の目的で、すべてのアプリのスナップショットが自動的に保存されます。

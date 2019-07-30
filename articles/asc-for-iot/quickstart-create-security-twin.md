@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT プレビューのセキュリティ モジュール ツインを作成する | Microsoft Docs
 description: Azure Security Center for IoT と併用するための ASC for IoT モジュール ツインを作成する方法について説明します。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: c782692e-1284-4c54-9d76-567bc13787cc
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: af952b59a2f4924be79c0ac7dc728f1d9bd0d641
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0e042942be63fdcd97c7cda6003e6d55376ca1a1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200713"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616653"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 
@@ -56,7 +57,7 @@ _azureiotsecurity_ モジュール ツインは、次の 2 つの方法で作成
 デバイス用の新しい _azureiotsecurity_ モジュール ツインを手動で作成するには、次の手順を使用します。 
 
 1. IoT Hub で、セキュリティ モジュール ツインの作成対象のデバイスを探して選択します。
-1. デバイスをクリックし、**[モジュール ID の追加]** をクリックします。
+1. デバイスをクリックし、 **[モジュール ID の追加]** をクリックします。
 1. **[モジュール ID 名]** フィールドで、「**azureiotsecurity**」と入力します。
 
 1. **[Save]** をクリックします。 
@@ -65,8 +66,8 @@ _azureiotsecurity_ モジュール ツインは、次の 2 つの方法で作成
 
 特定のデバイスのセキュリティ モジュール ツインが存在するかどうかを確認するには、以下の操作を行います。
 
-1. Azure IoT Hub で、**[エクスプローラー]** メニューの **[IoT デバイス]** を選択します。    
-1. デバイス ID を入力するか、**[デバイスのクエリ] フィールド**のオプションを選択して、**[デバイスのクエリ]** をクリックします。 
+1. Azure IoT Hub で、 **[エクスプローラー]** メニューの **[IoT デバイス]** を選択します。    
+1. デバイス ID を入力するか、 **[デバイスのクエリ] フィールド**のオプションを選択して、 **[デバイスのクエリ]** をクリックします。 
     ![デバイスのクエリ](./media/quickstart/verify-security-module-twin.png)
 1. デバイスを選択するか、またはダブルクリックして、[デバイスの詳細] ページを開きます。 
 1. **[モジュール ID]** メニューを選択し、デバイスに関連付けられているモジュール ID の一覧に **azureiotsecurity** モジュールが存在することを確認します。 

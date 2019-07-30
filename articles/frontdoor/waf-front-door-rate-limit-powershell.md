@@ -10,13 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 903405c8fada6165b79e780a7828c6de3b95163e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478926"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846243"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのレート制限ルールを構成する
 Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) では、1 分間中に単一クライアント IP から送信できる要求数が制御されます。

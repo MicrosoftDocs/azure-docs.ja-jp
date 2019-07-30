@@ -4,7 +4,7 @@ description: Azure CLI による作成時に cloud-init を使用して Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 626fd4739daf2506854c42f16ac986a361ebab38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: adf03ea912a028c1059683c49350dea3743ee7a6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729819"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671699"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>cloud-init を使用して Linux VM 上のスワップファイルを構成する
 この記事では、[cloud-init](https://cloudinit.readthedocs.io) を使用してさまざまな Linux ディストリビューションのスワップファイルを構成する方法を示します。 従来、スワップファイルはそれを必要とするディストリビューションに基づいて Linux エージェント (WALA) によって構成されました。  このドキュメントでは、cloud-init を使用したプロビジョニング時にスワップファイルをオンデマンドで構築するプロセスを概説します。  cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法について詳しくは、「[cloud-init の概要](using-cloud-init.md)」をご覧ください

@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74607f6a746558238ead65036d708b515d370035
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84bd491d992ed15df288d9226b58bfe832e0692a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441409"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476506"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する
 
@@ -43,11 +43,11 @@ ms.locfileid: "60441409"
 
     日付ごとの Azure リソースに対するユーザー操作のグラフィカル ビューが表示されます。 その同じ期間での最近のロールのアクティブ化も表示されます。
 
-    ![ユーザーの詳細](media/azure-pim-resource-rbac/rbac-user-details.png)
+    ![リソース アクティビティの概要とロールのアクティブ化を含むユーザーの詳細](media/azure-pim-resource-rbac/rbac-user-details.png)
 
 1. 特定のロールのアクティブ化をクリックして、詳細およびそのユーザーがアクティブな間に発生した、対応する Azure リソース アクティビティを表示します。
 
-    ![ロールのアクティブ化の選択](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
+    ![選択されたロールのアクティブ化と日付別に表示されるアクティビティの詳細](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
 ## <a name="export-role-assignments-with-children"></a>子を含むロールの割り当てをエクスポートする
 
@@ -63,11 +63,11 @@ ms.locfileid: "60441409"
 
 1. **[エクスポート]** をクリックして [メンバーシップのエクスポート] ウィンドウを開きます。
 
-    ![[メンバーシップのエクスポート] ウィンドウ](media/azure-pim-resource-rbac/export-membership.png)
+    ![すべてのメンバーをエクスポートする [メンバーシップのエクスポート] ウィンドウ](media/azure-pim-resource-rbac/export-membership.png)
 
 1. **[すべてのメンバーのエクスポート]** をクリックして、すべてのロールの割り当てを CSV ファイルでエクスポートします。
 
-    ![CSV ファイルのエクスポート](media/azure-pim-resource-rbac/export-csv.png)
+    ![Excel に表示された CSV ファイルでエクスポートされたロールの割り当て](media/azure-pim-resource-rbac/export-csv.png)
 
 ## <a name="view-resource-audit-history"></a>リソースの監査履歴を表示する
 
@@ -83,15 +83,15 @@ ms.locfileid: "60441409"
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    ![リソースの監査のフィルター](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![フィルターを使用したリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. **[監査の種類]** で **[アクティブ化 (割り当て済み + アクティブ化済み)]** を選択します。
 
-    ![アクティビティの詳細](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    ![アクティブ化の監査の種類でフィルター処理されたリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. **[操作]** の下で、ユーザーの **[(アクティビティ)]** をクリックして、そのユーザーの Azure リソースに対するアクティビティの詳細を表示します。
 
-    ![ユーザーのアクティビティの詳細](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+    ![特定のアクションに対するユーザーのアクティビティの詳細](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
 ## <a name="view-my-audit"></a>自分の監査を表示する
 
@@ -107,7 +107,7 @@ ms.locfileid: "60441409"
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    ![個人のロール アクティビティ](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![現在のユーザーに対する監査の一覧](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>次の手順
 

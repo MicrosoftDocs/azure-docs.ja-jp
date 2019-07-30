@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
-ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: db3333aa52782ceb949ef3f46a903b618f6e3f2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: erikre
+ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
+ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60931230"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870910"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP から SendGrid 電子メール サービスを使用する方法
 
@@ -117,7 +118,7 @@ SendGrid SMTP API を使用して電子メールを送信するには、*Swift M
 ```
 
 ### <a name="web-api"></a>Web API
-PHP の [curl 関数][curl function]で SendGrid Web API を使用して電子メールを送信します。
+PHP の [curl 関数][curl function] で SendGrid Web API を使用して電子メールを送信します。
 
 ```php
 <?php

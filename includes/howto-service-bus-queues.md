@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: d3d33c87dc1adf65a53b71cc4c833e7f4a191670
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171284"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181415"
 ---
 ## <a name="what-are-service-bus-queues"></a>Service Bus キューとは
 Service Bus キューは、**ブローカー メッセージング通信**モデルをサポートしています。 キューを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者 (ブローカー) の役割を果たすキューを介してメッセージをやり取りすることになります。 メッセージ プロデューサー (送信者) はキューにメッセージを送信した後で、それまでの処理を引き続き実行します。 メッセージ コンシューマー (受信者) は、キューからメッセージを非同期に受信して処理します。 メッセージ プロデューサーは、それ以降のメッセージの処理と送信を続ける場合、メッセージ コンシューマーからの応答を待つ必要がありません。 キューでは、コンシューマーが競合している場合のメッセージ配信に**先入れ先出し法 (FIFO)** を使用します。 つまり、通常はキューに追加された順番にメッセージが受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。

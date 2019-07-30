@@ -3,19 +3,19 @@ title: チュートリアル:WPF (C#) を使って翻訳アプリを作成する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、単一サブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックに Cognitive Service API シリーズを利用する Windows Presentation Foundation (WPF) アプリを作成します。 この演習では、Translator Text API と Bing Spell Check API の機能を使用する方法について説明します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 2deaa0ed8b21d5e091fe5d3b3e6986eaf2340281
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 36d85e11133e7197212ae1b37609628689b68a13
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514721"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657933"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 
@@ -62,7 +62,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 1. Visual Studio を開きます。 次に、 **[ファイル] > [新規] > [プロジェクト]** の順に選択します。
 2. 左側のパネルで **[Visual C#]** を見つけて選択します。 次に、中央のパネルで **[WPF アプリ (.NET Framework)]** を選択します。
    ![Visual Studio で WPF アプリを作成する](media/create-wpf-project-visual-studio.png)
-3. プロジェクトに名前を付け、フレームワークのバージョンを **.NET Framework 4.5.2 以降**に設定し、 **[OK]** をクリックします。
+3. ご自分のプロジェクトに `MSTranslatorTextDemo` という名前を付け、フレームワークのバージョンを **.NET Framework 4.5.2 以降**に設定し、 **[OK]** をクリックします。
 4. プロジェクトが作成されます。 2 つのタブに `MainWindow.xaml` と `MainWindow.xaml.cs` が開いていることに注目してください。 このチュートリアルでは、これら 2 つのファイルにコードを追加していきます。 前者はアプリのユーザー インターフェイス用、後者は Translator Text と Bing Spell Check の呼び出し用です。
    ![環境を確認する](media/blank-wpf-project.png)
 
@@ -82,6 +82,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 3. これらの参照をプロジェクトに追加したら、 **[OK]** をクリックして、 **[参照マネージャー]** を閉じることができます。
 
 > [!NOTE]
@@ -197,7 +198,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
        // Endpoints for Translator Text and Bing Spell Check
-       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api- version=3.0";
+       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
        private string[] languageCodes;
@@ -211,7 +212,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
        {
            Exception e = (Exception)args.ExceptionObject;
            MessageBox.Show("Caught " + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-           System.Windows.app.Current.Shutdown();
+           System.Windows.Application.Current.Shutdown();
        }
        // MainWindow constructor
        public MainWindow()
@@ -224,7 +225,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
                MessageBox.Show("One or more invalid API subscription keys.\n\n" +
                    "Put your keys in the *_API_SUBSCRIPTION_KEY variables in MainWindow.xaml.cs.",
                    "Invalid Subscription Key(s)", MessageBoxButton.OK, MessageBoxImage.Error);
-               System.Windows.app.Current.Shutdown();
+               System.Windows.Application.Current.Shutdown();
            }
            else
            {
@@ -370,7 +371,7 @@ Translator Text API を使用して、ソース テキスト (テキスト領域
        HttpWebRequest detectLanguageWebRequest = (HttpWebRequest)WebRequest.Create(detectUri);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
-       detectLanguageWebRequest.ContentType = "app/json; charset=utf-8";
+       detectLanguageWebRequest.ContentType = "application/json; charset=utf-8";
        detectLanguageWebRequest.Method = "POST";
 
        // Send request
@@ -427,7 +428,7 @@ private string CorrectSpelling(string text)
     HttpWebRequest spellCheckWebRequest = (HttpWebRequest)WebRequest.Create(uri);
     spellCheckWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
     spellCheckWebRequest.Method = "POST";
-    spellCheckWebRequest.ContentType = "app/x-www-form-urlencoded"; // doesn't work without this
+    spellCheckWebRequest.ContentType = "application/x-www-form-urlencoded"; // doesn't work without this
 
     // Create and send the request
     string body = "text=" + System.Web.HttpUtility.UrlEncode(text);

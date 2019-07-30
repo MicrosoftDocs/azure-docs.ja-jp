@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: e578b3a6b3905569567b568b0130c1ed1b90d915
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60557768"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブルからデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-web-table-connector.md)
 > * [現在のバージョン](connector-web-table.md)
 
@@ -54,10 +54,10 @@ Web テーブルのリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**Web** |[はい] |
-| url | Web ソースへの URL |[はい] |
-| authenticationType | 使用可能な値:**Anonymous**。 |[はい] |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
+| type | type プロパティは、次のように設定する必要があります:**Web** |はい |
+| url | Web ソースへの URL |はい |
+| authenticationType | 使用可能な値:**Anonymous**。 |はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
 
@@ -86,9 +86,9 @@ Web テーブルからデータをコピーするには、データセットの 
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**WebTable** に設定する必要があります | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**WebTable** に設定する必要があります | はい |
 | path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
-| index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |[はい] |
+| index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |はい |
 
 **例:**
 
@@ -152,16 +152,16 @@ Web テーブルからデータをコピーするには、コピー アクティ
 
 [データセットのプロパティ](#dataset-properties)で構成する必要のあるテーブルのインデックスを取得するには、次のように、たとえば Excel 2016 をツールとして使用します。
 
-1. **Excel 2016** を起動し、**[データ]** タブに切り替えます。
-2. ツール バーの **[新しいクエリ]** をクリックし、**[その他のソースから]** をポイントし、**[Web から]** をクリックします。
+1. **Excel 2016** を起動し、 **[データ]** タブに切り替えます。
+2. ツール バーの **[新しいクエリ]** をクリックし、 **[その他のソースから]** をポイントし、 **[Web から]** をクリックします。
 
     ![Power Query メニュー](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. **[Web から]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/)、データセットに指定するパスを入力し (例: AFI%27s_100_Years...100_Movies)、**[OK]** をクリックします。
+3. **[Web から]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/) 、データセットに指定するパスを入力し (例: AFI%27s_100_Years...100_Movies)、 **[OK]** をクリックします。
 
     ![Web ダイアログから](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
     この例で使用される URL は https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies です。
-4. **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、**[接続]** をクリックします。
+4. **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、 **[接続]** をクリックします。
 
    ![[Access Web コンテンツ] ダイアログ ボックス](./media/copy-data-from-web-table/AccessWebContentDialog.png)
 5. ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。  

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: 3dead1bdedb75a1b6fafb947da9c88094f0c4de9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/24/2019
+ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724154"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446413"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル: Apache Kafka Producer および Consumer API の使用
 
@@ -65,8 +65,7 @@ API の詳細については、[Producer API](https://kafka.apache.org/documenta
     </dependency>
     ```
 
-    > [!NOTE]  
-    > `${kafka.version}` エントリは `pom.xml` の `<properties>..</properties>` セクション内で宣言され、Kafka バージョンの HDInsight クラスターに構成されています。
+    `${kafka.version}` エントリは `pom.xml` の `<properties>..</properties>` セクション内で宣言され、Kafka バージョンの HDInsight クラスターに構成されています。
 
 * プラグイン:Maven プラグインはさまざまな機能を備えています。 このプロジェクトでは、次のプラグインが使用されます。
 
@@ -220,10 +219,19 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 
 Kafka に格納されたレコードは、受信した順番でパーティション内に格納されます。 *パーティション内*のレコードの順次配信順を実現するには、コンシューマー インスタンスの数がパーティションの数と同じコンシューマー グループを作成します。 *トピック内*のレコードの順次配信を実現するには、コンシューマー インスタンスが 1 つのみのコンシューマー グループを作成します。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
+
+Azure Portal を使用してリソース グループを削除するには:
+
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 __[リソース グループ]__ を選択して、リソース グループの一覧を表示します。
+2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
+3. __[リソース グループの削除]__ を選択し、確認します。
+
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 
-* [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)
-* [Apache Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)
-* [HDInsight における Apache Kafka Streams API](apache-kafka-streams-api.md)
+> [!div class="nextstepaction"]
+> [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)

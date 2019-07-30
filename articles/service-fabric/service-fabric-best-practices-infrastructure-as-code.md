@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 2dfe1493c6611fb69a417895aaa1028ad5881b9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae1cd0912733116dce1b550dd937cc9fc5f8737b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237429"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359773"
 ---
 # <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 
@@ -86,13 +86,15 @@ Azure Resource Manager を使用してアプリケーションをデプロイす
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
-microservices_sfpkg = zipfile.ZipFile(self.microservices_app_package_name, 'w', zipfile.ZIP_DEFLATED)
+microservices_sfpkg = zipfile.ZipFile(
+    self.microservices_app_package_name, 'w', zipfile.ZIP_DEFLATED)
 package_length = len(self.microservices_app_package_path)
 
 for root, dirs, files in os.walk(self.microservices_app_package_path):
     root_folder = root[package_length:]
     for file in files:
-        microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
+        microservices_sfpkg.write(os.path.join(
+            root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
 ```

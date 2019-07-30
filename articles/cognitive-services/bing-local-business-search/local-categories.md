@@ -1,20 +1,20 @@
 ---
-title: Bing Local Business Search API の検索カテゴリ | Microsoft Docs
+title: Bing Local Business Search API の検索カテゴリ
 titleSuffix: Azure Cognitive Services
 description: この記事を使用して、Bing Local Business Search API エンドポイントの検索カテゴリを指定する方法について学習します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 61bd230ffdb79b31390e96179e5beb3646902142
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: e7088ac11556d8810c744ab4b56d2639865fb2f5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796740"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423418"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Bing Local Business Search API の検索カテゴリ
 

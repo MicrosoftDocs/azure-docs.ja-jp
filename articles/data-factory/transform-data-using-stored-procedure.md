@@ -11,14 +11,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575895"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60764409"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory での SQL Server ストアド プロシージャ アクティビティを使用したデータの変換
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-stored-proc-activity.md)
 > * [現在のバージョン](transform-data-using-stored-procedure.md)
 
@@ -68,11 +68,11 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | プロパティ                  | 説明                              | 必須 |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | アクティビティの名前                     | はい      |
-| description               | アクティビティの用途を説明するテキストです。 | いいえ        |
+| description               | アクティビティの用途を説明するテキストです。 | いいえ       |
 | type                      | ストアド プロシージャ アクティビティの場合、アクティビティの種類は **SqlServerStoredProcedure** です | はい      |
 | linkedServiceName         | Data Factory のリンクされたサービスとして登録されている **Azure SQL Database**、**Azure SQL Data Warehouse**、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
 | storedProcedureName       | 呼び出すストアド プロシージャの名前を指定します。 | はい      |
-| storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ        |
+| storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ       |
 
 ## <a name="error-info"></a>エラー情報
 

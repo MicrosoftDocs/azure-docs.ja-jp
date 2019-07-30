@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d58ef2716e2a432e1123d6b215b33fb2b688a32
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1e093c9065cf7372e329af68e0fb9867bb12782a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724461"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certent-equity-management"></a>チュートリアル:Azure Active Directory と Certent Equity Management の統合
 

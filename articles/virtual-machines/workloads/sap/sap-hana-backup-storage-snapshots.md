@@ -4,7 +4,7 @@ description: Azure 仮想マシン上の SAP HANA をバックアップする方
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 875060a59cf70d295534c3a4f56136010a560e74
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159929"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709926"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>ストレージ スナップショットに基づいた SAP HANA のバックアップ
 
@@ -52,7 +52,7 @@ SAP HANA には、ストレージのスナップショットを作成する機�
 
 SAP HANA がスナップショット準備モードの間、ストレージ スナップショットを実行する前にファイル システムの整合性も確保されるようにする必要があります。 関連記事「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」の「_ストレージ スナップショットを作成する際の SAP HANA データの整合性_」を参照してください。
 
-ストレージ スナップショット完了後の SAP HANA スナップショットの確認は、非常に重要です。 対応する SQL ステートメント BACKUP DATA CLOSE SNAPSHOT を実行します (「[BACKUP DATA CLOSE SNAPSHOT Statement (Backup and Recovery) (BACKUP DATA CLOSE SNAPSHOT ステートメント (バックアップと復旧))](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)」を参照)。
+ストレージ スナップショット完了後の SAP HANA スナップショットの確認は、非常に重要です。 BACKUP DATA CLOSE SNAPSHOT という、実行すべき対応する SQL ステートメントがあります ([BACKUP DATA CLOSE SNAPSHOT ステートメント (バックアップと復旧)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm) に関するページを参照)。
 
 > [!IMPORTANT]
 > HANA スナップショットを確認してください。 &quot;コピーオンライト&quot; 方式のため、スナップショット準備モードの SAP HANA に追加のディスク領域が必要でない場合があります。また、SAP HANA スナップショットを確認するまで、新しいバックアップを開始することはできません。

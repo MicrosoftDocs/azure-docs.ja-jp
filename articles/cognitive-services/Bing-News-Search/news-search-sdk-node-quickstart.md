@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:ニュース検索を実行する - Bing News Search SDK for Node.js
+title: クイック スタート:Bing News Search SDK for Node.js を使ってニュース検索を実行する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Bing News Search SDK for Node.js を使ってニュースを検索し、応答を処理します。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cf13fe5279be9606197abda624c33dbc4f233b34
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c71d76e93eb1a121163d40fe61dcd5a8546d63f8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798807"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203355"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>クイック スタート:Bing News Search SDK for Node.js を使ってニュース検索を実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "65798807"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Node.js](https://nodejs.org/en/)
+* [Node.JS](https://nodejs.org/en/)
 
 Bing News Search SDK を使用してコンソール アプリケーションを設定するには:
 1. 開発環境で `npm install ms-rest-azure` を実行します。

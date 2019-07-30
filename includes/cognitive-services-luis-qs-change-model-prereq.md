@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: 3e8130388b048f68788dbd018275b9b22db714bf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124134"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181489"
 ---
 * LUIS の **[オーサリング キー](../articles/cognitive-services/luis/luis-concept-keys.md#authoring-key)** 。 
 * [TravelAgent アプリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json)のインポート。cognitive-services-language-understanding GitHub リポジトリからインポートします。 

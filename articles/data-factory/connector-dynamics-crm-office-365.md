@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 07/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f7bf3ce8c01e82fa69b3b041b573b4b31a719d2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356973"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514097"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -27,7 +27,13 @@ ms.locfileid: "66356973"
 
 Dynamics 365 (Common Data Service) または Dynamics CRM から、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
 
-この Dynamics コネクタは、次の Dynamics のバージョンと認証の種類をサポートします (IFD は Internet Facing Deployment の省略形です)。
+この Dynamics コネクタでは、オンラインとオンプレミスの両方で Dynamics バージョン 7.x から 9.x がサポートされます。 具体的には次のとおりです。
+
+- バージョン 7.x は、Dynamics CRM 2015 にマップされます
+- バージョン 8.x は、Dynamics CRM 2016 および初期バージョンの Dynamics 365 にマップされます
+- バージョン 9.x は、以降のバージョンの Dynamics 365 にマップされます
+
+Dynamics のそれぞれのバージョン/製品でサポートされている認証の種類と構成については、次の表を参照してください。 (IFD は Internet Facing Deployment の省略形です)。
 
 | Dynamics のバージョン | 認証の種類 | リンクされたサービスの例 |
 |:--- |:--- |:--- |
@@ -43,6 +49,8 @@ Dynamics 365 (Common Data Service) または Dynamics CRM から、サポート�
 - Dynamics 365 for Marketing
 
 その他のアプリケーションの種類 (金融、運用、タレントなど) は、このコネクタではサポートされていません。
+
+この Dynamics コネクタは [Dynamics XRM ツール](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)に基づいて構築されています。
 
 >[!TIP]
 >**Dynamics 365 Finance and Operations** からデータをコピーするには、[Dynamics AX コネクタ](connector-dynamics-ax.md)を使用できます。
@@ -341,9 +349,8 @@ Dynamics からデータをコピーするとき、次の Dynamics のデータ�
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
-
 > [!NOTE]
-> Dynamics データ型の AttributeType.CalendarRules と AttributeType.PartyList はサポートされていません。
+> Dynamics データ型の AttributeType.CalendarRules、AttributeType.MultiSelectPicklist および AttributeType.PartyList はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

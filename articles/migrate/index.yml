@@ -14,13 +14,30 @@ metadata:
   ms.date: 11/22/2017
   ms.author: raynew
 abstract:
-  description: Azure Migrate は、オンプレミスのマシンを検出して Azure への移行についての適合性を評価する際に役立ちます。また、Azure VM を実行した場合のサイズとコストの見積りを示します。
+  description: Azure Migrate は、Azure クラウドへの移行に役立ちます。 Azure Migrate では、オンプレミスのワークロードとクラウド VM の検出、評価、および移行を追跡するための中央ハブが提供されます。 このハブには、評価および移行のための Azure Migrate ツールと、独立系ソフトウェア ベンダー (ISV) からの統合ツールが用意されています。
 sections:
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
-        text: Azure への移行について VMware VM を評価する方法について説明します
+        text: VMware VM を評価し、Azure に移行する方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-vmware">VMware VM の評価および Azure への移行の準備をする</a>
+          - html: <a href="tutorial-assess-vmware">Azure への移行のために VMware VM を評価する</a>
+          - html: <a href="tutorial-migrate-vmware">エージェントレス移行で VMware VM を Azure に移行する</a>
+          - html: <a href="tutorial-migrate-vmware-agent">エージェントベース移行で VMware VM を Azure に移行する</a>
+      - type: paragraph
+        text: Hyper-V VM を評価し、Azure に移行する方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-hyper-v">Hyper-V VM の評価および Azure への移行の準備をする</a>
+          - html: <a href="tutorial-assess-hyper-v">Azure への移行のために Hyper-V VM を評価する</a>
+          - html: <a href="tutorial-migrate-hyper-v">Hyper-V VM を Azure に移行する</a>
+      - type: paragraph
+        text: 物理サーバー、仮想マシン、およびクラウド VM を Azure に移行する方法について説明します
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial-assessment-vmware">オンプレミスの VMware VM の検出と評価</a>
+          - html: <a href="tutorial-migrate-physical-virtual-machines">物理サーバーまたは仮想化されたサーバーを Azure に移行する</a>

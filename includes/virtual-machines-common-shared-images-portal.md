@@ -5,15 +5,15 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/29/2019
+ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 291ec651061b7a8a3ea3c0645a6bd6581d529ef6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cae108a1d4226e8c0fe39f9cd1cedc1e6a024ffc
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245003"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465444"
 ---
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 

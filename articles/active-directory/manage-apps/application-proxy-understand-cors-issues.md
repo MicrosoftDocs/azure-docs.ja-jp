@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 2b6adcf4231aa44a4f28d277e963efa16de8af81
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399345"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440416"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory アプリケーション プロキシの CORS の問題を理解して解決する
 
-[クロス オリジン リソース共有 (CORS)](http://www.w3.org/TR/cors/)  が原因で、Azure Active Directory アプリケーション プロキシ経由で公開するアプリや API で問題が発生することがあります。 この記事では、Azure AD アプリケーション プロキシでの CORS の問題と解決策について説明します。
+[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/)  が原因で、Azure Active Directory アプリケーション プロキシ経由で公開するアプリや API で問題が発生することがあります。 この記事では、Azure AD アプリケーション プロキシでの CORS の問題と解決策について説明します。
 
 通常、ブラウザーのセキュリティ機能により、Web ページでは AJAX 要求を別のドメインに送信することはできません。 この制限は、*同一オリジン ポリシー*と呼ばれ、悪意のあるサイトが、別のサイトから機密データを読み取れないようにします。 ただし、他のサイトから Web API を呼び出したほうが良い場合もあります。 W3C 標準である CORS によって、サーバーは同一オリジン ポリシーを緩和したり、一部のクロスオリジン要求を許可して他の要求は拒否したりできます。
 

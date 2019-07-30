@@ -2,7 +2,7 @@
 title: データ型の定義 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse におけるテーブルのデータ型の定義に関する推奨事項。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 06a273d3bfd5d416039a992e36bd4b0f72a85f78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61bb977271186699b0a72389e1538573f978c56b
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851542"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479364"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルのデータ型
 Azure SQL Data Warehouse におけるテーブルのデータ型の定義に関する推奨事項。 

@@ -3,28 +3,32 @@ title: クイック スタート:テキストを翻訳する (C#) - Translator T
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# で Translator Text API を使ってテキストを別の言語に翻訳します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: e59e634b04a55a0c7a0fd555b09404545bd26c60
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.date: 06/13/2019
+ms.author: swmachan
+ms.openlocfilehash: 5b5451fc1c4b8127c4e2a561e25fe3eb730354a8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514942"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705643"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>クイック スタート:C# と Translator Text API を使用して文字列を翻訳する
 
-このクイック スタートでは、.NET Core と Translator Text REST API を使用して、テキスト文字列を英語からイタリア語とドイツ語に翻訳する方法を学習します。
+このクイックスタートでは、.NET Core、C#7.1 以降、および Translator Text REST API を使用して、テキスト文字列を英語からドイツ語、イタリア語、日本語、およびタイ語に変換する方法について説明します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
+
 ## <a name="prerequisites"></a>前提条件
 
+* C# 7.1 以降
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
@@ -47,6 +51,18 @@ cd translate-sample
 dotnet add package Newtonsoft.Json --version 11.0.2
 ```
 
+## <a name="select-the-c-language-version"></a>C# 言語のバージョンを選択する
+
+このクイック スタートでは、C# 7.1 以降が必要です。 プロジェクトに使用する C# のバージョンは、いくつかの方法で変更できます。 このガイドでは、`translate-sample.csproj` ファイルを調整する方法について説明します。 Visual Studio で言語を変更するなど、選択可能なすべての方法については、「[C# 言語のバージョンの選択](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version)」を参照してください。
+
+対象のプロジェクトを開いて、`translate-sample.csproj` を開きます。 `LangVersion` は必ず 7.1 以降に設定してください。 該当する言語バージョンのプロパティ グループが存在しない場合は、次の行を追加します。
+
+```xml
+<PropertyGroup>
+   <LangVersion>7.1</LangVersion>
+</PropertyGroup>
+```
+
 ## <a name="add-required-namespaces-to-your-project"></a>必要な名前空間をプロジェクトに追加する
 
 先ほど実行した `dotnet new console` コマンドによって、プロジェクトが作成されています。これには `Program.cs` が含まれています。 このファイルに、アプリケーション コードを記述することになります。 `Program.cs` を開いて、既存の using ステートメントを置き換えます。 これらのステートメントによって、サンプル アプリのビルドと実行に必要なすべての型に確実にアクセスすることができます。
@@ -55,15 +71,67 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+// Install Newtonsoft.Json with NuGet
 using Newtonsoft.Json;
+```
+
+## <a name="create-classes-for-the-json-response"></a>JSON 応答用のクラスを作成する
+
+次は、Translator Text API から返された JSON 応答を逆シリアル化するときに使用される一連のクラスを作成します。
+
+```csharp
+/// <summary>
+/// The C# classes that represents the JSON returned by the Translator Text API.
+/// </summary>
+public class TranslationResult
+{
+    public DetectedLanguage DetectedLanguage { get; set; }
+    public TextResult SourceText { get; set; }
+    public Translation[] Translations { get; set; }
+}
+
+public class DetectedLanguage
+{
+    public string Language { get; set; }
+    public float Score { get; set; }
+}
+
+public class TextResult
+{
+    public string Text { get; set; }
+    public string Script { get; set; }
+}
+
+public class Translation
+{
+    public string Text { get; set; }
+    public TextResult Transliteration { get; set; }
+    public string To { get; set; }
+    public Alignment Alignment { get; set; }
+    public SentenceLength SentLen { get; set; }
+}
+
+public class Alignment
+{
+    public string Proj { get; set; }
+}
+
+public class SentenceLength
+{
+    public int[] SrcSentLen { get; set; }
+    public int[] TransSentLen { get; set; }
+}
 ```
 
 ## <a name="create-a-function-to-translate-text"></a>テキストを翻訳するための関数を作成する
 
-`Program` クラス内に、`TranslateText` という関数を作成します。 このクラスには、Translate リソースを呼び出してその結果をコンソールに出力するコードがカプセル化されています。
+`Program` クラス内に、`TranslateTextRequest()` という非同期関数を作成します。 この関数は、`subscriptionKey`、`host`、`route`、および `inputText` という 4 つの引数を受け取ります。
 
 ```csharp
-static void TranslateText()
+// This sample requires C# 7.1 or later for async/await.
+// Async call to the Translator Text API
+static public async Task TranslateTextRequest(string subscriptionKey, string host, string route, string inputText)
 {
   /*
    * The code for your call to the translation service will be added to this
@@ -72,20 +140,12 @@ static void TranslateText()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>サブスクリプション キー、ホスト名、パスを設定する
+## <a name="serialize-the-translation-request"></a>変換要求をシリアル化する
 
-次の行を `TranslateText` 関数に追加します。 `route` には、`api-version` と共に別途 2 つのパラメーターが追加されていることがわかります。 翻訳の出力は、これらのパラメーターを使用して設定します。 このサンプルでは、ドイツ語 (`de`) とイタリア語 (`it`) に設定しています。 サブスクリプション キーの値は、確実に更新してください。
-
-```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
-string route = "/translate?api-version=3.0&to=de&to=it";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-```
-
-次に、翻訳対象のテキストを含む JSON オブジェクトを作成してシリアル化する必要があります。 `body` 配列には複数のオブジェクトを渡すことができる点に注目してください。
+次に、翻訳対象のテキストを含む JSON オブジェクトを作成してシリアル化する必要があります。 `body` には複数のオブジェクトを渡すことができる点に注目してください。
 
 ```csharp
-System.Object[] body = new System.Object[] { new { Text = @"Hello world!" } };
+object[] body = new object[] { new { Text = inputText } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
 
@@ -110,40 +170,63 @@ using (var request = new HttpRequestMessage())
 * 要求本文 (シリアル化した JSON オブジェクト) を挿入する
 * 必要なヘッダーを追加する
 * 非同期要求を実行する
-* 応答の出力
+* 以前に作成したクラスを使用して応答を出力する
 
 次のコードを `HttpRequestMessage` に追加します。
 
 ```csharp
-// Set the method to POST
+// Build the request.
+// Set the method to Post.
 request.Method = HttpMethod.Post;
-
-// Construct the full URI
+// Construct the URI and add headers.
 request.RequestUri = new Uri(host + route);
-
-// Add the serialized JSON object to your request
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-
-// Add the authorization header
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-// Send request, get response
-var response = client.SendAsync(request).Result;
-var jsonResponse = response.Content.ReadAsStringAsync().Result;
-
-// Print the response
-Console.WriteLine(jsonResponse);
-Console.WriteLine("Press any key to continue.");
+// Send the request and get response.
+HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+// Read response as a string.
+string result = await response.Content.ReadAsStringAsync();
+// Deserialize the response using the classes created earlier.
+TranslationResult[] deserializedOutput = JsonConvert.DeserializeObject<TranslationResult[]>(result);
+// Iterate over the deserialized results.
+foreach (TranslationResult o in deserializedOutput)
+{
+    // Print the detected input language and confidence score.
+    Console.WriteLine("Detected input language: {0}\nConfidence score: {1}\n", o.DetectedLanguage.Language, o.DetectedLanguage.Score);
+    // Iterate over the results and print each translation.
+    foreach (Translation t in o.Translations)
+    {
+        Console.WriteLine("Translated to {0}: {1}", t.To, t.Text);
+    }
+}
 ```
+
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順は、`Main` 関数での `TranslateText()` の呼び出しです。 `static void Main(string[] args)` を探して、次の行を追加してください。
+最後の手順は、`Main` 関数での `TranslateTextRequest()` の呼び出しです。 このサンプルでは、ドイツ語 (`de`)、イタリア語 (`it`)、日本語 (`ja`)、およびタイ語 (`th`) に翻訳しています。 `static void Main(string[] args)` を探してこのコードに置き換えます。
 
 ```csharp
-TranslateText();
-Console.ReadLine();
+static async Task Main(string[] args)
+{
+    // This is our main function.
+    // Output languages are defined in the route.
+    // For a complete list of options, see API reference.
+    // https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate
+    string host = "https://api.cognitive.microsofttranslator.com";
+    string route = "/translate?api-version=3.0&to=de&to=it&to=ja&to=th";
+    string subscriptionKey = "YOUR_TRANSLATOR_TEXT_KEY_GOES_HERE";
+    // Prompts you for text to translate. If you'd prefer, you can
+    // provide a string as textToTranslate.
+    Console.Write("Type the phrase you'd like to translate? ");
+    string textToTranslate = Console.ReadLine();
+    await TranslateTextRequest(subscriptionKey, host, route, textToTranslate);
+}
 ```
+
+`Main` では、`subscriptionKey`、`host`、および `route` を宣言されていることがわかります。 さらに、`Console.Readline()` を使用してユーザーに入力を求め、その値を `textToTranslate` に割り当てています。
 
 ## <a name="run-the-sample-app"></a>サンプル アプリを実行する
 
@@ -155,7 +238,19 @@ dotnet run
 
 ## <a name="sample-response"></a>応答のサンプル
 
-国/地域の省略形は、こちらの[言語一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)で確認してください。
+サンプルを実行すると、次のようにターミナルに出力されます。
+
+```bash
+Detected input language: en
+Confidence score: 1
+
+Translated to de: Hallo Welt!
+Translated to it: Salve, mondo!
+Translated to ja: ハローワールド！
+Translated to th: หวัดดีชาวโลก!
+```
+
+このメッセージは、次のように生の JSON からビルドされます。
 
 ```json
 [
@@ -172,6 +267,14 @@ dotnet run
       {
         "text": "Salve, mondo!",
         "to": "it"
+      },
+      {
+        "text": "ハローワールド！",
+        "to": "ja"
+      },
+      {
+        "text": "หวัดดีชาวโลก!",
+        "to": "th"
       }
     ]
   }
@@ -184,10 +287,10 @@ dotnet run
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートをはじめとする各種ドキュメントで表記変換と言語認識を含んだサンプル コードを詳しく見てみましょう。GitHub にある Translator Text の各種サンプル プロジェクトもご覧ください。
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
-> [GitHub で C# のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

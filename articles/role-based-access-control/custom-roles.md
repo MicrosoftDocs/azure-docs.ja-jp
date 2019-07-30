@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/13/2019
+ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25f0258b9e6b11e505bd48222dfbca176f963a5e
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 8b628086a67f1d76357fda4f753350b6411b8f15
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921050"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273717"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Azure リソースのカスタム ロール
 
@@ -84,7 +84,7 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 
     カスタム ロールを作成したら、それをテストして期待どおりに動作することを確認する必要があります。 後で調整する必要がある場合は、カスタム ロールを更新できます。
 
-カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する」か「チュートリアル:](tutorial-custom-role-powershell.md)もしくは「[チュートリアル:Azure CLI を使用してカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
+カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する」か「チュートリアル:](tutorial-custom-role-powershell.md)」か「[チュートリアル:Azure CLI を使用してカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
 
 ## <a name="custom-role-properties"></a>カスタム ロールのプロパティ
 
@@ -92,15 +92,15 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 
 | プロパティ | 必須 | Type | 説明 |
 | --- | --- | --- | --- |
-| `Name` | はい | String | カスタム ロールの表示名。 ロールの定義は、サブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
-| `Id` | はい | String | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
-| `IsCustom` | はい | String | これがカスタム ロールであるかどうかを示します。 カスタム ロールの場合は `true` に設定します。 |
-| `Description` | はい | String | カスタム ロールの説明。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 1024 文字です。 |
+| `Name` | はい | string | カスタム ロールの表示名。 ロールの定義は、サブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
+| `Id` | はい | string | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
+| `IsCustom` | はい | string | これがカスタム ロールであるかどうかを示します。 カスタム ロールの場合は `true` に設定します。 |
+| `Description` | はい | string | カスタム ロールの説明。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 1024 文字です。 |
 | `Actions` | はい | String[] | ロールで実行できる管理操作を指定する文字列の配列。 詳細については、「[Actions](role-definitions.md#actions)」を参照してください。 |
 | `NotActions` | いいえ | String[] | 許可された `Actions` から除外される管理操作を指定する文字列の配列。 詳細については、「[notActions](role-definitions.md#notactions)」を参照してください。 |
-| `DataActions` | いいえ | String[] | 対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定する文字列の配列。 詳細については、「[DataActions (プレビュー)](role-definitions.md#dataactions-preview)」を参照してください。 |
-| `NotDataActions` | いいえ | String[] | 許可された `DataActions` から除外されるデータ操作を指定する文字列の配列。 詳細については、「[NotDataActions (プレビュー)](role-definitions.md#notdataactions-preview)」を参照してください。 |
-| `AssignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 現在、ルート スコープ (`"/"`) または管理グループ スコープに設定することはできません。 詳細については、[AssignableScopes](role-definitions.md#assignablescopes) および [Azure 管理グループでリソースを整理する方法](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment)に関するページを参照してください。 |
+| `DataActions` | いいえ | String[] | 対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定する文字列の配列。 詳細については、「[DataActions](role-definitions.md#dataactions)」を参照してください。 |
+| `NotDataActions` | いいえ | String[] | 許可された `DataActions` から除外されるデータ操作を指定する文字列の配列。 詳細については、「[NotDataActions](role-definitions.md#notdataactions)」を参照してください。 |
+| `AssignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 カスタム ロールでは、現在のところルート スコープ (`"/"`) または管理グループ スコープに `AssignableScopes` を設定することはできません。 詳細については、[AssignableScopes](role-definitions.md#assignablescopes) および [Azure 管理グループでリソースを整理する方法](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment)に関するページを参照してください。 |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>カスタム ロールを作成、削除、更新、または表示できるユーザー
 

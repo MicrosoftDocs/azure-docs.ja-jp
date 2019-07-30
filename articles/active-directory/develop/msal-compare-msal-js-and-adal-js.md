@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b5169d3f06e265b3effa3ec18ad8e4f69959d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 328db116cebda5eb288f04cc89e2c85550c38083
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121970"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421195"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS と ADAL JS の相違点
 
@@ -59,9 +59,9 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
 
     v2.0 プロトコルでは、リソースではなくスコープが要求で使用されます。 つまり、アプリケーションが、MS Graph などのリソースのアクセス許可でトークンを要求する必要がある場合、ライブラリ メソッドに渡される値における差異は次のとおりです。
 
-    v1.0: リソース = https://graph.microsoft.com
+    v1.0: resource = https\://graph.microsoft.com
 
-    v2.0: スコープ = https://graph.microsoft.com/User.Read
+    v2.0: scope = https\://graph.microsoft.com/User.Read
 
     任意のリソース API のスコープを要求するには、この API の URI を appidURI/scope の形式 (例: https:\//mytenant.onmicrosoft.com/myapi/api.read) で使用します
 
@@ -77,7 +77,7 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
 
 * 増分同意のための動的スコープ。
 
-    v1.0 を使用してアプリケーションを構築するときは、ユーザーがログイン時に同意するよう、アプリケーションで必要なアクセス許可 (静的スコープ) の完全なセットを登録する必要がありました。 V2.0 では、スコープ パラメーターを使用して、必要なときにアクセス許可を要求できます。 これらを動的スコープといいます。 これにより、ユーザーは、スコープに増分同意を提供できます。 最初ユーザーにはアプリケーションへのサインインだけを行わせ、どのような種類のアクセスも必要としない場合、そうすることができます。 その後、ユーザーの予定表を読み取る機能が必要になった場合は、acquireToken メソッドで予定表のスコープを要求してユーザーの同意を得ることができます。 例: 
+    v1.0 を使用してアプリケーションを構築するときは、ユーザーがログイン時に同意するよう、アプリケーションで必要なアクセス許可 (静的スコープ) の完全なセットを登録する必要がありました。 V2.0 では、スコープ パラメーターを使用して、必要なときにアクセス許可を要求できます。 これらを動的スコープといいます。 これにより、ユーザーは、スコープに増分同意を提供できます。 最初ユーザーにはアプリケーションへのサインインだけを行わせ、どのような種類のアクセスも必要としない場合、そうすることができます。 その後、ユーザーの予定表を読み取る機能が必要になった場合は、acquireToken メソッドで予定表のスコープを要求してユーザーの同意を得ることができます。 例:
 
     ```javascript
     var request = {
@@ -89,7 +89,7 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
 
 * V1.0 API 用のスコープ
 
-    MSAL.js を使用して、V1.0 API のトークンを取得する場合は、スコープとして `.default` を API のアプリケーション ID URI に付加することで、API に登録されているすべての静的スコープを要求できます。 例: 
+    MSAL.js を使用して、V1.0 API のトークンを取得する場合は、スコープとして `.default` を API のアプリケーション ID URI に付加することで、API に登録されているすべての静的スコープを要求できます。 例:
 
     ```javascript
     var request = {

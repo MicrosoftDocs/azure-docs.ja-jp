@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 88fdaec9e19c082a6fe981dc4d9a0e015335f1e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f86dc92b4df45119930970acfe9e173f32f894fb
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60202975"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356055"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Python アプリケーションから Azure Event Hubs を使用する方法
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 詳しくは、[Event Hubs の概要](event-hubs-what-is-event-hubs.md)に関する記事をご覧ください。 
@@ -94,7 +94,8 @@ Python で記述されたアプリケーションからイベント ハブにイ
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 
 # Add a receiver to the client
-receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+receiver = client.add_receiver(
+    CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
 
 # Run the Event Hubs client
 client.run()
@@ -156,7 +157,6 @@ def startProcessing(accountName, key, container):
             os.remove(cleanName)
         block_blob_service.delete_blob(container, blob.name)
 startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
-
 ```
 
 Python で記述されたアプリケーションから、Azure BLOB ストレージ内のキャプチャされた Event Hubs データを読み取る方法についての完全なチュートリアルは、[こちらの記事](event-hubs-capture-python.md)をご覧ください

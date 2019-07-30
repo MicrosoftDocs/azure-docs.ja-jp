@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: 03c7da3e17e8e606b46c5c5e104a1271e8fbfd33
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c92b019e15c6a9ee5b2d38e240ae4f9891621f72
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873101"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360199"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Python)
 
@@ -40,11 +40,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 開発コンピューターに現在インストールされている Python のバージョンは、次のいずれかのコマンドを使って確認できます。
 
 ```python
-python --version
+python - -version
 ```
 
 ```python
-python3 --version
+python3 - -version
 ```
 
 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
@@ -112,6 +112,13 @@ https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip か
     次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT ハブに利用統計情報を送信したときの出力を示しています。
 
     ![シミュレートされたデバイスを実行する](media/quickstart-send-telemetry-python/SimulatedDevice.png)
+    
+### <a name="to-avoid-the-import-iothubclient-error"></a>import iothub_client エラーを回避するには
+Azure IoT SDK for Python の最新のバージョンは、[Microsoft の C SDK](https://github.com/azure/azure-iot-sdk-c) のラッパーです。 これは、[Boost](https://www.boost.org/) ライブラリを使用して生成されます。 そのため、いくつかの重要な制限事項があります。 詳細については、[こちら](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)を参照してください
+
+1. 適切なバージョンの [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) を使用していることを確認します。 このサンプルは特定のバージョンでのみ正常に機能することに注意してください。 
+2. 適切なバージョンの C++ ランタイム [Visual Studio 2019 の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)を使用していることを確認します。 (最新バージョンをお勧めします)。
+3. iothub クライアントがインストールされていることを確認します: `pip install azure-iothub-device-client`。
 
 ## <a name="read-the-telemetry-from-your-hub"></a>ハブから利用統計情報を読み取る
 

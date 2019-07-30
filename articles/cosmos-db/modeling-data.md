@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 956f63dd92c82df0998cfaca76c7ecf5b10f053e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47d519523c7ffd1c0b6329d6b4eb12b052466b35
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953860"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657374"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB のデータ モデリング
 
@@ -43,7 +43,7 @@ Azure Cosmos DB のデータのモデル化を開始する際、JSON ドキュ�
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
     JOIN ContactDetail cd ON cd.PersonId = p.Id
-    JOIN ContactDetailType on cdt ON cdt.Id = cd.TypeId
+    JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
     JOIN Address a ON a.PersonId = p.Id
 
 1 人の個人をその連絡先詳細や住所で更新すると、多数の個別のテーブルへの書き込み操作が必要になります。
@@ -176,9 +176,9 @@ Azure Cosmos DB でよく使われる方法は、すべてを非正規化して�
 
 ## <a name="referencing-data"></a>データの参照
 
-このように、データの埋め込みは多くの場合うまく機能しますが、データを非正規化すると、その効果よりも問題の方が多くなるシナリオがあることもまた事実です。 その場合は、どうすればよいでしょうか。
+データの埋め込みは多くの場合うまく機能しますが、データを非正規化すると、その効果よりも問題の方が多くなるシナリオがあります。 その場合は、どうすればよいでしょうか。
 
-エンティティ間のリレーションシップを作成できる場所は、リレーショナル データベースだけではありません。 ドキュメント データベース内で、あるドキュメント内の情報と、他のドキュメント内のデータを実際に関連付けることができます。 ここでは、Azure Cosmos DB のリレーショナル データベースや他のドキュメント データベースにより適したシステムを構築しようというわけではなく、シンプルなリレーションシップが適切であり役に立ちます。
+エンティティ間のリレーションシップを作成できる場所は、リレーショナル データベースだけではありません。 ドキュメント データベース内で、あるドキュメント内の情報と、他のドキュメント内のデータを関連付けることができます。 Azure Cosmos DB のリレーショナル データベースや他のドキュメント データベースにより適したシステムの構築は推奨しません。シンプルなリレーションシップが適切であり役に立ちます。
 
 以下の JSON では、前の株式ポートフォリオの例を使用していますが、ここでは株式に関する項目を埋め込むのではなく、ポートフォリオ上で参照しています。 これにより、株式の項目が終日頻繁に変更された場合でも、更新する必要があるのは 1 つの株式ドキュメントのみです。
 

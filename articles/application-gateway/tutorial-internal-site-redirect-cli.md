@@ -209,7 +209,7 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
+ブラウザーのアドレス バーにドメイン名を入力します。 [http://www.contoso.com](http://www.contoso.com ) など。
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/tutorial-internal-site-redirect-cli/application-gateway-nginxtest.png)
 

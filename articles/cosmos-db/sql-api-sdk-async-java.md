@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 3/5/2019
+ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cafa4d5aecaa4c8f3863c3269ec02793340e3e6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "57570098"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509265"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node.JS](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -43,6 +43,16 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 | **サポートされている最小ランタイム**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+* TCP モードが既定で有効になりました
+* クロス パーティションのクエリ メトリックで、すべてのパーティションが返されるようになりました
+* グローバルな "厳密" が正しく機能するようになりました
+* マルチマスターの場合、クエリのフェールオーバーが正しく再試行されません
+* セキュリティ修正プログラムの依存関係のバンプ
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* ハッシュ V2 のサポートのバグ修正
 
 ### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
 * client#close() におけるリソース リークのバグ修正 ([github #88](https://github.com/Azure/azure-cosmosdb-java/issues/88))。

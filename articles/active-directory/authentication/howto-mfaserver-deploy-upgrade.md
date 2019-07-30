@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c01c7a22800d633696382687feb7090a4ed8b60
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: dcafa3e2f2665e84856b80cc0911d2e83df1aa65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315663"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057345"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
 
 この記事では、Azure Multi-Factor Authentication (MFA) Server v6.0 以降をアップグレードする手順について説明します。 古いバージョンの PhoneFactor エージェントをアップグレードする必要がある場合は、「[PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード](howto-mfaserver-deploy-upgrade-pf.md)」をご覧ください。
 
 v6.x 以前から v7.x 以降にアップグレードする場合、すべてのコンポーネントが .NET 2.0 から .NET 4.5 に変わります。 また、すべてのコンポーネントに Microsoft Visual C++ 2015 再頒布可能 Update 1 以降が必要です。 これらのコンポーネントの x86 および x64 バージョンがまだインストールされていない場合、MFA Server のインストーラーは両方のバージョンをインストールします。 ユーザー ポータルとモバイル アプリ Web サービスが異なるサーバーで動いている場合、コンポーネントをアップグレードする前にこれらのパッケージをインストールする必要があります。 最新の Microsoft Visual C++ 2015 再頒布可能 Update は [Microsoft ダウンロード センター](https://www.microsoft.com/download/)で見つかります。 
+
+> [!IMPORTANT]
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 アップグレードの手順:
 
@@ -63,7 +66,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
 ## <a name="upgrade-the-mobile-app-web-service"></a>モバイル アプリ Web サービスをアップグレードする
 
 > [!NOTE]
-> 8.0 よりも前のバージョンから Azure MFA Server 8.0 以降にアップグレードするときは、アップグレード後にモバイル アプリ Web サービスをアンインストールできます
+> 8\.0 よりも前のバージョンから Azure MFA Server 8.0 以降にアップグレードするときは、アップグレード後にモバイル アプリ Web サービスをアンインストールできます
 
 ## <a name="upgrade-the-ad-fs-adapters"></a>AD FS アダプターをアップグレードする
 
@@ -95,7 +98,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
 
    "Microsoft Visual C++ 2015 再頒布可能 Update 1 以降が必要である" というエラーが発生する場合は、[Microsoft ダウンロード センター](https://www.microsoft.com/download/)から最新の更新プログラム パッケージをダウンロードしてインストールします。 X86 と x64 の両方のバージョンをインストールします。
 
-3. **[AD FS]** > **[認証ポリシー]** > **[グローバル多要素認証ポリシーの編集]** の順に移動します。 **WindowsAzureMultiFactorAuthentication** または **AzureMFAServerAuthentication** (現在インストールされているバージョンによって異なります) をオフにします。
+3. **[AD FS]**  >  **[認証ポリシー]**  >  **[グローバル多要素認証ポリシーの編集]** の順に移動します。 **WindowsAzureMultiFactorAuthentication** または **AzureMFAServerAuthentication** (現在インストールされているバージョンによって異なります) をオフにします。
 
    この手順が完了した後、手順 8 が完了するまで、この AD FS クラスターでは MFA Server による 2 段階認証を使用できません。
 
@@ -103,7 +106,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
 5. Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell スクリプトを実行して、新しい AD FS アダプターを登録します。 集中的な構成があるため、これは同じ AD FS クラスター内のすべてのサーバーに適用されます。
 6. AD FS ファームから削除した各サーバーで、AD FS サービスを再開します。
 7. 更新されたサーバーを AD FS ファームに追加して戻し、他のサーバーをファームから削除します。
-8. **[AD FS]** > **[認証ポリシー]** > **[グローバル多要素認証ポリシーの編集]** の順に移動します。 **AzureMfaServerAuthentication** を確認します。
+8. **[AD FS]**  >  **[認証ポリシー]**  >  **[グローバル多要素認証ポリシーの編集]** の順に移動します。 **AzureMfaServerAuthentication** を確認します。
 9. 手順 2 を繰り返して、AD FS ファームから削除したサーバーを更新し、それらのサーバーの AD FS サービスを再開します。
 10. これらのサーバーを AD FS ファームに追加して戻します。
 

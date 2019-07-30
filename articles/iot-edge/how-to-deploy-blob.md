@@ -1,24 +1,27 @@
 ---
 title: Azure Blob Storage モジュールをデバイスにデプロイする - Azure IoT Edge | Microsoft Docs
 description: Azure Blob Storage モジュールをご利用の IoT Edge デバイスにデプロイして、そのエッジにデータを格納します。
-author: kgremban
-ms.author: kgremban
-ms.date: 05/21/2019
+author: arduppal
+ms.author: arduppal
+ms.date: 06/19/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
-manager: philmea
-ms.openlocfilehash: d844e81de9cfb556e91ab5c0d5a8074c822cce0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: mchad
+ms.openlocfilehash: 468e4fca5e67850949e7d5826e4bc88fa504b9d6
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990467"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295184"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
 IoT Edge デバイスにモジュールをデプロイするにはいくつかの方法があり、これらすべてが IoT Edge モジュールの Azure Blob Storage で機能します。 2 つの最も簡単な方法では、Azure portal または Visual Studio Code テンプレートを使用します。
+
+> [!NOTE]
+> IoT Edge の Azure Blob Storage は、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -88,35 +91,35 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
      > [!IMPORTANT]
      > モジュールの特定の位置を指す、ストレージ ディレクトリのバインド値の後半を変更しないでください。 ストレージ ディレクトリ バインドは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
 
-    ![モジュール コンテナー作成オプション - ポータルの更新](./media/how-to-store-data-blob/edit-module.png)
-
-1. 次の JSON をコピーして、 **[モジュール ツインの必要なプロパティの設定]** ボックスに貼り付けて、モジュールの [tiering](how-to-store-data-blob.md#tiering-properties) プロパティと [time-to-live](how-to-store-data-blob.md#time-to-live-properties) プロパティを設定します。 各プロパティを適切な値で構成して保存し、デプロイを続行します。
+1. 次の JSON をコピーして、 **[モジュール ツインの必要なプロパティの設定]** ボックスに貼り付けて、モジュールの [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) プロパティと [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) プロパティを設定します。 各プロパティを適切な値で構成して保存し、デプロイを続行します。
 
    ```json
    {
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading":<true,false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload":<true,false>
        }
      }
    }
 
       ```
 
-   ![tiering プロパティと time-to-live プロパティの設定](./media/how-to-store-data-blob/iotedge_custom_module.png)
+   ![コンテナー作成オプション、deviceAutoDeleteProperties およびdeviceToCloudUploadProperties プロパティを設定する](./media/how-to-deploy-blob/iotedge-custom-module.png)
 
-   モジュールがデプロイされた後の、階層化と TTL の構成に関する情報については、「[Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)」 (モジュール ツインを編集する) を参照してください。 目的のプロパティに関する詳細情報は、「[必要なプロパティの定義または更新](module-composition.md#define-or-update-desired-properties)」をご覧ください。
+   モジュールがデプロイされた後に deviceToCloudUploadProperties と deviceAutoDeleteProperties を構成する方法については、[モジュール ツインの編集](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)に関する記事を参照してください。 目的のプロパティに関する詳細情報は、「[必要なプロパティの定義または更新](module-composition.md#define-or-update-desired-properties)」をご覧ください。
 
 1. **[保存]** を選択します。
 
@@ -158,7 +161,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
    | フォルダーの選択 | Visual Studio Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **既存のモジュール (完全なイメージの URL を入力)** を選択します。 |
-   | Provide a module name (モジュール名の指定) | **azureblobstorage** のようにすべて小文字でモジュールの名前を入力します。<br /><br />IoT Edge モジュール上の Azure Blob Storage に小文字の名前を使用することが重要です。 IoT Edge は、モジュールを参照するときに大文字と小文字を区別し、Storage SDK は既定で小文字になります。 |
+   | Provide a module name (モジュール名の指定) | **azureblobstorageoniotedge** のようにすべて小文字でモジュールの名前を入力します。<br /><br />IoT Edge モジュール上の Azure Blob Storage に小文字の名前を使用することが重要です。 IoT Edge は、モジュールを参照するときに大文字と小文字を区別し、Storage SDK は既定で小文字になります。 |
    | Provide Docker image for the module (モジュールの Docker イメージの指定) | イメージの URI: **mcr.microsoft.com/azure-blob-storage:latest** を指定します。 |
 
    Visual Studio Code は、指定された情報を取得し、IoT Edge ソリューションを作成して、それを新しいウィンドウに読み込みます。 ソリューション テンプレートによって、ご自分の BLOB ストレージ モジュール イメージを含む配置マニフェストのテンプレートが作成されますが、モジュールの作成オプションを構成する必要があります。
@@ -182,7 +185,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
       }
       ```
 
-      ![モジュール createOptions - Visual Studio Code の更新](./media/how-to-store-data-blob/create-options.png)
+      ![モジュール createOptions - Visual Studio Code の更新](./media/how-to-deploy-blob/create-options.png)
 
 1. `<your storage account name>` を覚えやすい名前に置き換えます。 アカウント名は、小文字と数字の 3 文字から 24 文字の長さにする必要があります。 スペースは含めません。
 
@@ -196,32 +199,34 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
       > [!IMPORTANT]
       > モジュールの特定の位置を指す、ストレージ ディレクトリのバインド値の後半を変更しないでください。 ストレージ ディレクトリ バインドは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
 
-1. 次の JSON を *deployment.template.json* ファイルに追加することで、モジュールに [tiering](how-to-store-data-blob.md#tiering-properties) プロパティと [time-to-live](how-to-store-data-blob.md#time-to-live-properties) プロパティを構成します。 各プロパティを適切な値で構成して、ファイルを保存します。
+1. 次の JSON を *deployment.template.json* ファイルに追加して、モジュールの [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) と [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) を構成します。 各プロパティを適切な値で構成して、ファイルを保存します。
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading": <true, false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload": <true, false>
        }
      }
    }
    ```
 
-   ![azureblobstorageoniotedge - Visual Studio Code に必要なプロパティを設定する](./media/how-to-store-data-blob/tiering_ttl.png)
+   ![azureblobstorageoniotedge - Visual Studio Code に必要なプロパティを設定する](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
 
-   モジュールがデプロイされた後の、階層化と TTL の構成に関する情報については、「[Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)」 (モジュール ツインを編集する) を参照してください。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](module-edgeagent-edgehub.md#edgeagent-desired-properties)」をご覧ください。
+   モジュールがデプロイされた後に deviceToCloudUploadProperties と deviceAutoDeleteProperties を構成する方法については、[モジュール ツインの編集](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)に関する記事を参照してください。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](module-edgeagent-edgehub.md#edgeagent-desired-properties)」をご覧ください。
 
 1. *deployment.template.json* ファイルを保存します。
 

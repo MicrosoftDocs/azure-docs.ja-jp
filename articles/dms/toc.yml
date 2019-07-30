@@ -54,8 +54,10 @@
       href: pre-reqs.md
     - name: Azure SQL DB Managed Instance への移行のネットワーク トポロジ
       href: resource-network-topologies.md
-    - name: 既知の問題
+    - name: トラブルシューティングと既知の問題
       items:
+        - name: ソース データベースの接続に関する問題のトラブルシューティング
+          href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: 一般的な問題とエラーのトラブルシューティング
           href: known-issues-troubleshooting-dms.md
         - name: 既知の問題 - Azure SQL DB へのオンライン移行

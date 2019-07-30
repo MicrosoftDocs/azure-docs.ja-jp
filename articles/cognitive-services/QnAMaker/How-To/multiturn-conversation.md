@@ -9,195 +9,191 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 7c7d7c480068b754413fd2309a2251d1e3855106
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10249375922b47a40f71a60938cdd12ffe0f9b54
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075189"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508143"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
 フォローアップ プロンプトとコンテキストを使用して、一連の質問についてボットの "_複数ターン_" と呼ばれる複数回のターンを管理します。
 
-次のデモンストレーション ビデオで、どのようなプロセスになるか確認してください。
+複数ターンの動作を確認するには、次のデモンストレーション ビデオをご覧ください。
 
-[![](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)。
+[![QnA Maker での複数ターン会話](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
 ## <a name="what-is-a-multi-turn-conversation"></a>複数ターン会話とは
 
-1 回のターンでは複数の質問に応答できません。 クライアント アプリケーション (チャット ボット) の会話を設計するにあたり、場合によっては、ユーザーが行う質問をフィルター処理または調整してから正しい応答を決定する必要があります。 質問のこのフローは、ユーザーに**フォローアップ プロンプト**を示すことで実現します。
+1 回のターンでは複数の質問に応答できません。 クライアント アプリケーション (チャット ボット) の会話を設計するにあたり、場合によっては、ユーザーが行う質問をフィルター処理または調整してから正しい応答を決定する必要があります。 質問のこのフローは、ユーザーに*フォローアップ プロンプト*を示すことで実現します。
 
-ユーザーが質問したとき、QnA Maker は応答 "_と_" フォローアップ プロンプトがあれば返します。 このようにフォローアップ質問を選択肢として提示できます。 
+ユーザーが質問したとき、QnA Maker は応答 "_と_" フォローアップ プロンプトがあれば返します。 この応答では、フォローアップ質問を選択肢として提示できます。 
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>チャット ボットとの複数ターン会話の例
 
-チャット ボットはユーザーとの会話を質問ごとに管理し、最後の応答を決定します。
+複数ターンでは、次の図のように、チャット ボットがユーザーとの会話を管理して最終的な応答を決定します。
 
-![会話フロー内で、会話を続けるためのオプションとして応答内に示すプロンプトを提供し、複数ターン ダイアログ システムで会話の状態を管理します。](../media/conversational-context/conversation-in-bot.png)
+![会話を通じてユーザーを案内するプロンプトが表示された複数ターン ダイアログ](../media/conversational-context/conversation-in-bot.png)
 
-上の画像では、ユーザーは `My account` を入力しました。 ナレッジ ベースには、リンクした QnA のペアが 3 組あります。 ユーザーは、3 つの選択肢から 1 つを選択して、応答を絞り込む必要があります。 ナレッジ ベースでは、質問 (#1) には 3 つのフォローアップ プロンプトがあり、チャット ボットで 3 つの選択肢 (#2) として提示されます。 
+上の画像では、ユーザーが「**My account**」と入力して会話を開始しました。 ナレッジ ベースには、3 つのリンクされた質問と応答のペアがあります。 答えを絞り込むために、ユーザーはナレッジ ベース内の 3 つの選択肢のうちの 1 つを選択します。 質問 (#1) には 3 つのフォローアップ プロンプトがあり、チャット ボットで 3 つのオプション (#2) として提示されます。 
 
-ユーザーが選択肢 (#3) を選ぶと、調整のための次の選択肢 (#4) が表示されます。 これが続き (#5)、正しい最終応答 (#6) が決まります。
+ユーザーがオプション (#3) を選ぶと、調整のための次のオプション (#4) が表示されます。 このシーケンスは、正しい最終応答 (#6) をユーザーが決定するまで続きます (#5)。
 
-上の画像では、プロンプトを表示するために、 **[Enable multi-turn]** (複数ターンの有効化) が選択されています。 
+> [!NOTE]
+> 上の画像では、プロンプトが確実に表示されるよう、 **[Enable multi-turn]\(複数ターンの有効化\)** チェック ボックスがオンになっています。 
 
-### <a name="using-multi-turn-in-a-bot"></a>ボットでの複数ターンの使用
+### <a name="use-multi-turn-in-a-bot"></a>ボットで複数ターンを使用する
 
-コンテキスト会話を管理するにはクライアント アプリケーションを変更する必要があります。 プロンプトを表示するには、[ボットにコード](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting)を追加する必要があります。  
+コンテキスト会話を管理するには、[コードをボットに追加](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting)してクライアント アプリケーションを変更します。 コードを追加すると、ユーザーにプロンプトが見えるようになります。  
 
 ## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>ドキュメントの構造から複数ターン会話を作成する
 
-ナレッジ ベースを作成するとき、複数ターン抽出を可能にするオプションのチェックボックスが表示されます。 
+ナレッジ ベースを教えて作成するとき、 **[Populate your KB]\(KB のポピュレート\)** セクションに **[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL や.pdf または .docx ファイルからの複数ターン抽出を有効にする\)** チェック ボックスが表示されます。 
 
-![ナレッジ ベースを作成するとき、複数ターン抽出を可能にするオプションのチェックボックスが表示されます。](../media/conversational-context/enable-multi-turn.png)
+![複数ターン抽出の有効化チェック ボックス](../media/conversational-context/enable-multi-turn.png)
 
-このオプションを選択すると、ドキュメントをインポートするときに、構造から複数ターン会話が暗黙に示されます。 その構造が存在する場合、QnA Maker によってフォローアップ プロンプトの QnA ペアが作成されます。 
+インポートされるドキュメントに対してこのオプションを選択すると、複数ターン会話をドキュメントの構造から暗黙に示すことができます。 その構造が存在する場合、QnA Maker はインポート プロセスの一環として、質問と応答をペアにしたフォローアップ プロンプトを作成します。 
 
-複数ターン構造を推論できるのは、URL、PDF、または DOCX ファイルのみです。 
+複数ターン構造は、URL、PDF ファイル、または DOCX ファイルからのみ推論できます。 構造の例として、[Microsoft Surface ユーザー マニュアル PDF ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)の画像を表示します。 この PDF ファイルのサイズのために、QnA Maker リソースには、**B** (15 インデックス) 以上の **Search の価格レベル**が必要です。 
 
-Microsoft Surface [PDF ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf) の次の図は、マニュアルとして使用するためのものです。 この PDF ファイルのサイズのために、Azure QnA Maker リソースには、B (15 インデックス) 以上の Search の価格レベルが必要です。 
-
-![![ドキュメントをインポートする場合、コンテキスト会話が構造から暗黙に示される場合があります。 その構造が存在する場合、ドキュメントのインポートの際に、QnA Maker によってフォローアップ プロンプトの QnA ペアが作成されます。](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![![ユーザー マニュアル内の構造の例](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
 この PDF ドキュメントをインポートすると、QnA Maker は構造からフォローアップ プロンプトを決定して、会話フローを作成します。 
 
-1. **手順 1** では、上部のナビゲーションで **[Create a knowledge base]** (ナレッジ ベースの作成) を選択します。
-1. **手順 2** では、QnA サービスを作成するか、既存のものを使用します。 必ず、B (15 インデックス) 以上の Search サービスで QnA サービスを使用してください。これより小さなレベルでは、Surface マニュアル PDF ファイルは大きすぎるためです。
-1. **手順 3** では、`Surface manual` などのナレッジ ベースの名前を入力します。
-1. **手順 4** では、 **[Enable multi-turn extraction from URLs, .pdf or .docx files]** (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする) を選択します。 Surface マニュアルの URL を選択します
-
-    ```text
-    https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf
-    ```
+1. QnA Maker で、 **[Create a knowledge base]\(ナレッジ ベースの作成\)** を選択します。
+1. QnA Maker サービスを作成するか、既存のものを使用します。 先の Microsoft Surface の例では、より下のレベルに対して PDF ファイルが大きすぎるため、**B** (15 インデックス) 以上の **Search サービス**で QnA Maker サービスを使用してください。
+1. ナレッジ ベースの名前 (例: **Surface manual**) を入力します。
+1. **[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL や.pdf または .docx ファイルからの複数ターン抽出を有効にする\)** チェック ボックスをオンにします。 
+1. Surface マニュアルの URL **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** を選択します。
 
 1. **[Create your KB]** (KB の作成) ボタンを選択します。 
 
-    ナレッジが作成されると、質問と応答のペアのビューが表示されます。
+    ナレッジ ベースが作成された後、質問と応答のペアのビューが表示されます。
 
 ## <a name="show-questions-and-answers-with-context"></a>コンテキストを使用して質問と応答を表示する
 
 表示される質問と応答のペアを減らして、コンテキスト会話の質問と応答のみにします。 
 
-1. **[オプションの表示]** を選択し、 **[Show context (PREVIEW)]\(コンテキストを表示 (プレビュー)\)** を選択します。 一覧には、フォローアップ プロンプトを含む質問と応答のペアが表示されます。 
+**[オプションの表示]** を選択し、 **[Show context (PREVIEW)]\(コンテキストを表示 (プレビュー)\)** を選択します。 一覧には、フォローアップ プロンプトを含む質問と応答のペアが表示されます。 
 
-    ![コンテキスト会話による質問と会話のペアのフィルター処理](../media/conversational-context/filter-question-and-answers-by-context.png)
+![コンテキスト会話による質問と応答のペアのフィルター処理](../media/conversational-context/filter-question-and-answers-by-context.png)
 
-2. 複数ターンのコンテキストが最初の列に表示されます。
+複数ターンのコンテキストが最初の列に表示されます。
 
-    ![![この PDF ドキュメントをインポートすると、QnA Maker は構造からフォローアップ プロンプトを決定して、会話フローを作成します。 ](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![!["Context (PREVIEW)" (コンテキスト (プレビュー)) 列](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-    上の画像では、#1 が列内で太字テキストで表示され、現在の質問を示しています。 親の質問は、行の最上位の項目です。 それより下のすべての質問は、リンクされた質問と応答のペアです。 これらの項目は選択できるので、直ちに他のコンテキスト項目に移動できます。 
+上の画像では、 **#1** が列内で太字テキストで表示され、現在の質問を示しています。 親の質問は、行の最上位の項目です。 それより下のすべての質問は、リンクされた質問と応答のペアです。 これらの項目は選択できるので、直ちに他のコンテキスト項目に移動できます。 
 
-## <a name="add-existing-qna-pair-as-follow-up-prompt"></a>フォローアップ プロンプトとして既存の QnA ペアを追加する
+## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>既存の質問と応答のペアをフォローアップ プロンプトとして追加する
 
-`My account` の元の質問には、`Accounts and signing in` などのフォローアップ プロンプトがあります。 
+元の質問 **My account** には、**Accounts and signing in** (アカウントとサインイン) のようなフォローアップ プロンプトがあります。 
 
-![`My account` の元の質問は、`Accounts and signing in` の応答が正しく返され、フォローアップ プロンプトが既にリンクされています。](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
+!["Accounts and signing in" の応答とフォローアップ プロンプト](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
 
-現在リンクされていない既存の QnA のペアにフォローアップ プロンプトを追加します。 質問がどの QnA ペアにもリンクされていないので、現在のビュー設定を変更する必要があります。
+現在リンクされていない既存の質問と応答のペアにフォローアップ プロンプトを追加します。 質問がどの質問と応答のペアにもリンクされていないので、現在のビュー設定を変更する必要があります。
 
-1. 既存の QnA ペアをフォローアップ プロンプトとしてリンクするには、質問と応答のペアの行を選択します。 Surface マニュアルの場合、`Sign out` を検索して一覧を減らします。
-1. `Signout` の行で、 **[Add follow-up prompt]** (フォローアップ プロンプトの追加) を **[応答]** 列から選択します。
-1. **[Follow-up prompt (PREVIEW)]** (フォローアッププロンプト (プレビュー)) ポップアップ ウィンドウで、次のように入力します。
+1. 既存の質問と応答のペアをフォローアップ プロンプトとしてリンクするには、質問と応答のペアの行を選択します。 Surface マニュアルの場合、**Sign out** を検索して一覧を減らします。
+1. **Signout** の行の **[応答]** 列で、 **[Add follow-up prompt]\(フォローアップ プロンプトの追加\)** を選択します。
+1. **[Follow-up prompt (PREVIEW)]\(フォローアップ プロンプト (プレビュー)\)** ポップアップ ウィンドウのフィールドに、次の値を入力します。
 
     |フィールド|値|
     |--|--|
-    |表示テキスト|`Turn off the device` これは、フォローアップ プロンプトに表示するように選択するカスタム テキストです。|
-    |Context-only (コンテキストのみ)|選択されています。 この応答は、質問がコンテキストを指定する場合にのみ返されます。|
-    |Link to answer (応答へのリンク)|`Use the sign-in screen` を入力して、既存の QnA ペアを見つけます。|
+    |表示テキスト|「**Turn off the device**」(デバイスの電源を切る) と入力します。 これは、フォローアップ プロンプトに表示するカスタム テキストです。|
+    |Context-only (コンテキストのみ)| このチェック ボックスをオンにします。 応答は、質問がコンテキストを指定する場合にのみ返されます。|
+    |Link to answer (応答へのリンク)|「**Use the sign-in screen**」(サインイン画面を使用する) と入力して、既存の質問と応答のペアを検索します。|
 
 
 1.  1 つの一致が返されます。 この応答をフォローアップとして選択し、 **[保存]** を選択します。 
 
-    ![フォローアップ プロンプトの [Link to answer]\(応答へのリンク\) ダイアログで、応答のテキストを使用して既存の応答を検索します。](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+    ![[Follow-up prompt (PREVIEW)] (フォローアップ プロンプト (プレビュー)) ページ](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
 
-1. フォローアップ プロンプトを追加したら、忘れずに上部のナビゲーションで **[Save and train]** (保存してトレーニング) を選択してください。
+1. フォローアップ プロンプトを追加した後、上部のナビゲーションで **[Save and train]\(保存してトレーニング\)** を選択します。
   
 ### <a name="edit-the-display-text"></a>表示テキストを編集する 
 
-フォローアップ プロンプトを作成し、既存の QnA ペアを **[Link to Answer]** (応答へのリンク) として選択すると、新しい **[表示テキスト]** を入力できます。 このテキストは、既存の質問を置き換えず、新しい代替質問を追加しません。 これらの値とは別になります。 
+フォローアップ プロンプトを作成し、既存の質問と応答のペアを **[Link to Answer]\(応答へのリンク\)** として入力したら、新しい **[表示テキスト]** を入力できます。 このテキストは、既存の質問を置き換えず、新しい代替質問を追加しません。 これらの値とは別になります。 
 
 1. 表示テキストを編集するには、 **[コンテキスト]** フィールドで質問を検索し選択します。
 1. その質問の行では、応答列でフォローアップ プロンプトを選択します。 
 1. 編集する表示テキストを選択し、 **[編集]** を選択します。
 
-    ![編集する表示テキストを選択し、[編集] を選択します。](../media/conversational-context/edit-existing-display-text.png)
+    ![表示テキストの編集コマンド](../media/conversational-context/edit-existing-display-text.png)
 
-1. **[Follow-up prompt]** (フォローアップ プロンプト) ポップアップでは、既存の表示テキスト変更できます。 
+1. **[Follow-up prompt]\(フォローアップ プロンプト\)** ポップアップ ウィンドウで、既存の表示テキストを変更します。 
 1. 表示テキストの編集が完了したら、 **[保存]** を選択します。 
-1. 忘れずに上部のナビゲーションで **[Save and train]** (保存してトレーニング) を選択してください。
+1. 上部のナビゲーション バーで、 **[Save and train]\(保存してトレーニング\)** を選択します。
 
 
 <!--
 
-## To find best prompt answer, add metadata to follow-up prompts 
+## To find the best prompt answer, add metadata to follow-up prompts 
 
-If you have several follow-up prompts for a given QnA pair, but you know as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base, then send the metadata from the client application as part of the GenerateAnswer request.
+If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
 
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, then the follow-ups are returned.
+In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
 
-1. For the two follow-up QnA pairs, add metadata to each one:
+1. Add metadata to each of the two follow-up question-and-answer pairs:
 
     |Question|Add metadata|
     |--|--|
-    |`Feedback on an QnA Maker service`|"Feature":"all"|
-    |`Feedback on an existing feature`|"Feature":"one"|
+    |*Feedback on a QnA Maker service*|"Feature":"all"|
+    |*Feedback on an existing feature*|"Feature":"one"|
     
-    ![Add metadata to follow-up prompt so it can be filtered in conversation response from service](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
+    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
 
-1. Save and train. 
+1. Select **Save and train**. 
 
-    When you send the question `Give feedback` with the metadata filter `Feature` with a value of `all`, only the QnA pair with that metadata will be returned. Both QnA pairs are not returned because they both do not match the filter. 
+    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
 
 -->
 
-## <a name="add-new-qna-pair-as-follow-up-prompt"></a>フォローアップ プロンプトとして新しい QnA ペアを追加する
+## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>新しい質問と応答のペアをフォローアップ プロンプトとして追加する
 
-ナレッジ ベースに新しい QnA ペアを追加します。 QnA ペアは、フォローアップ プロンプトとして既存の質問にリンクする必要があります。
+新しい質問と応答のペアをナレッジ ベースに追加すると、各ペアがフォローアップ プロンプトとして既存の質問にリンクされるはずです。
 
-1. ナレッジ ベースのツールバーから、`Accounts and Signing In` の既存の QnA ペアを検索して選択します。 
+1. ナレッジ ベースのツール バーで、「**Accounts and signing in**」(アカウントとサインイン) に対する既存の質問と応答のペアを検索して選択します。 
 
 1. この質問の **[応答]** 列で **[Add follow-up prompt]\(フォローアップ プロンプトの追加\)** を選択します。 
-1. **[Follow-up prompt (PREVIEW)]** (フォローアップ プロンプト (プレビュー)) で、次の値を入力して新しいフォローアップ プロンプトを作成します。 
+1. **[Follow-up prompt (PREVIEW)]\(フォローアップ プロンプト (プレビュー)\)** で、次の値を入力して新しいフォローアップ プロンプトを作成します。 
 
-    |テキスト フィールド|値|
+    |フィールド|値|
     |--|--|
-    |**[表示テキスト]**|`Create a Windows Account` これは、フォローアップ プロンプトに表示するように選択するカスタム テキストです。|
-    |**[Context-only]** (コンテキストのみ)|選択されています。 この応答は、質問がコンテキストを指定する場合にのみ返されます。|
-    |**[Link to answer]\(応答へのリンク\)**|応答として次のテキストを入力します。<br>`[Create](https://account.microsoft.com/) a Windows account with a new or existing email account.`<br>データベースを保存しトレーニングすると、このテキストは次のように変換されます |
+    |表示テキスト|「*Create a Windows Account*.」(Windows アカウントを作成する。) フォローアップ プロンプトに表示するカスタム テキスト。|
+    |Context-only (コンテキストのみ)|このチェック ボックスをオンにします。 この応答は、質問がコンテキストを指定する場合にのみ返されます。|
+    |Link to answer (応答へのリンク)|応答として次のテキストを入力します。<br>*「[Create](https://account.microsoft.com/) a Windows account with a new or existing email account*.」(新規または既存の電子メール アカウントを使用して Windows アカウントを作成します。)<br>データベースを保存してトレーニングすると、このテキストが変換されます。 |
     |||
 
-    ![新しいプロンプト QnA の作成](../media/conversational-context/create-child-prompt-from-parent.png)
+    ![新しいプロンプトの質問と応答を作成する](../media/conversational-context/create-child-prompt-from-parent.png)
 
 
-1. **[新規作成]** をクリックし、 **[保存]** を選択します。 
+1. **[新規作成]** を選択してから、 **[保存]** を選択します。 
 
-    これによって、新しい質問と応答のペアが作成され、選択した質問がフォローアップ プロンプトとしてリンクされました。 両方の質問の **[コンテキスト]** 列は、フォローアップ プロンプトの関係を示します。 
+    このアクションによって、新しい質問と応答のペアが作成され、選択した質問がフォローアップ プロンプトとしてリンクされます。 両方の質問の **[コンテキスト]** 列は、フォローアップ プロンプトの関係を示します。 
 
-1. 変更、 **[表示のオプション]** を [[show context]](#show-questions-and-answers-with-context) (コンテキストを表示) に変更します。
+1. **[オプションの表示]** を選択し、[ **[Show context (PREVIEW)]\(コンテキストを表示 (プレビュー)\)** ](#show-questions-and-answers-with-context) を選択します。
 
     新しい質問は、どのようにリンクされているかを示します。
 
-    ![新しいフォローアップ プロンプトを作成する ](../media/conversational-context/new-qna-follow-up-prompt.png)
+    ![新しいフォローアップ プロンプトを作成する](../media/conversational-context/new-qna-follow-up-prompt.png)
 
     親の質問は、その選択肢の 1 つとして新しい質問を表示します。
 
-    ![![両方の質問の [コンテキスト] 列は、フォローアップ プロンプトの関係を示します。](../media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![![両方の質問の [コンテキスト] 列は、フォローアップ プロンプトの関係を示します](../media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. フォローアップ プロンプトを追加したら、忘れずに上部のナビゲーションで **[Save and train]** (保存してトレーニング) を選択してください。
+1. フォローアップ プロンプトを追加した後、上部のナビゲーション バーで **[Save and train]\(保存してトレーニング\)** を選択します。
 
-## <a name="enable-multi-turn-when-testing-follow-up-prompts"></a>フォローアップ プロンプトのテスト時に複数ターンを有効にする
+## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>フォローアップ プロンプトのテスト中に複数ターンを有効にする
 
-**[テスト]** ウィンドウ内でフォローアップ プロンプトを使った質問をテストするときは、 **[Enable multi-turn]\(複数ターンの有効化\)** を選択して、質問を入力します。 応答には、フォローアップ プロンプトが含まれます。
+**[テスト]** ウィンドウ内でフォローアップ プロンプトを使った質問をテストするときは、 **[Enable multi-turn]\(複数ターンの有効化\)** を選択してから、質問を入力します。 応答には、フォローアップ プロンプトが含まれます。
 
-![[テスト] ウィンドウで質問をテストすると、応答にフォローアップ プロンプトが含まれます。](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
+![応答にはフォローアップ プロンプトが含まれる](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 
 複数ターンを有効にしない場合、応答は返されますが、フォローアップ プロンプトは返されません。
 
-## <a name="json-request-to-return-initial-answer-and-follow-up-prompts"></a>最初の応答とフォローアップ プロンプトを返す JSON 要求
+## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>最初の応答とフォローアップ プロンプトを返す JSON 要求
 
 空の `context` オブジェクトを使用して、ユーザーの質問に対する応答を要求し、フォローアップ プロンプトを含めます。 
 
@@ -211,9 +207,9 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
 }
 ```
 
-## <a name="json-response-to-return-initial-answer-and-follow-up-prompts"></a>最初の応答とフォローアップ プロンプトを返す JSON 応答
+## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>最初の応答とフォローアップ プロンプトを返す JSON 応答
 
-前のセクションでは、`Accounts and signing in` に対する応答とフォローアップ プロンプト (ある場合) を要求しました。 応答には、。`answers[0].context` にあるプロンプト情報とユーザーに表示するテキストが含まれます。 
+前のセクションでは、「**Accounts and signing in**」(アカウントとサインイン) に対する応答とフォローアップ プロンプト (ある場合) を要求しました。 応答には、*answers[0].context* にあるプロンプト情報と、ユーザーに表示するテキストが含まれます。 
 
 ```JSON
 {
@@ -235,24 +231,6 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Use the sign-in screen"
-                    },
-                    {
-                        "displayOrder": 1,
-                        "qnaId": 17,
-                        "qna": null,
-                        "displayText": "Use Windows Hello to sign in"
-                    },
-                    {
-                        "displayOrder": 2,
-                        "qnaId": 18,
-                        "qna": null,
-                        "displayText": "Sign out"
-                    },
-                    {
-                        "displayOrder": 0,
-                        "qnaId": 79,
-                        "qna": null,
-                        "displayText": "Create a Windows Account"
                     }
                 ]
             }
@@ -261,7 +239,7 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
             "questions": [
                 "Sign out"
             ],
-            "answer": "**Sign out**\n\nHere's how to sign out: \n\n Go to Start , and right-click your name. Then select Sign out. ",
+            "answer": "**Sign out**\n\nHere's how to sign out: \n\n Go to Start, and right-click your name. Then select Sign out. ",
             "score": 38.01,
             "id": 18,
             "source": "product-manual.pdf",
@@ -296,13 +274,19 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
 }
 ```
 
-`prompts` 配列によって `displayText` プロパティのテキストと `qnaId` 値が提供されるため、これらの応答を会話フローで次に表示される選択肢として示し、選択した値を次の要求で QnA Maker に送信できます。 
+`prompts` 配列によって `displayText` プロパティのテキストと `qnaId` の値が提供されます。 これらの応答を会話フローで次に表示される選択肢として示し、選択された `qnaId` を次の要求で QnA Maker に送り返すことができます。 
 
-## <a name="json-request-to-return-non-initial-answer-and-follow-up-prompts"></a>最初以外の応答とフォローアップ プロンプトを返す JSON 要求
+<!--
+
+The `promptsToDelete` array provides the ...
+
+-->
+
+## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>最初以外の応答とフォローアップ プロンプトを返す JSON 要求
 
 前のコンテキストを `context` オブジェクトに含めます。
 
-次の JSON 要求では、現在の質問は `Use Windows Hello to sign in`、前の質問は `Accounts and signing in` です。 
+次の JSON 要求では、現在の質問は「*Use Windows Hello to sign in*」(Windows Hello を使ってサインインする) であり、前の質問は「*accounts and signing in*」(アカウントとサインイン) でした。 
 
 ```JSON
 {
@@ -318,7 +302,7 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
 }
 ``` 
 
-##  <a name="json-response-to-return-non-initial-answer-and-follow-up-prompts"></a>最初以外の応答とフォローアップ プロンプトを返す JSON 応答
+##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>最初以外の応答とフォローアップ プロンプトを返す JSON 応答
 
 QnA Maker _GenerateAnswer_ JSON 応答は、`answers`オブジェクトの最初の項目にある `context` プロパティのフォローアップ プロンプトを含みます。
 
@@ -378,15 +362,15 @@ QnA Maker _GenerateAnswer_ JSON 応答は、`answers`オブジェクトの最初
 }
 ```
 
-## <a name="query-the-knowledge-base-with-the-qna-id"></a>QnA ID でナレッジ ベースをクエリする
+## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>QnA Maker ID でナレッジ ベースをクエリする
 
-最初の質問の応答で、フォローアップ プロンプトとそれに関連付けられた `qnaId` が返されます。 ID が付与されたので、フォローアップ プロンプトの要求本文でこれを渡すことができます。 要求本文に `qnaId` とコンテキスト オブジェクト (これには以前の QnA プロパティが含まれます) が含まれる場合、GenerateAnswer は、ランキング アルゴリズムを使用して質問テキストによる応答を見つけるのではなく、ID により正確な質問を返します。 
+最初の質問の応答で、フォローアップ プロンプトとそれに関連付けられた `qnaId` が返されます。 ID が付与されたので、フォローアップ プロンプトの要求本文でこれを渡すことができます。 要求本文に `qnaId` とコンテキスト オブジェクト (これには以前の QnA Maker プロパティが含まれます) が含まれる場合、GenerateAnswer は、ランキング アルゴリズムを使用して質問テキストによる応答を見つけるのではなく、ID により正確な質問を返します。 
 
-## <a name="displaying-prompts-and-sending-context-in-the-client-application"></a>クライアント アプリケーションでのプロンプトの表示とコンテキストの送信 
+## <a name="display-prompts-and-send-context-in-the-client-application"></a>クライアント アプリケーションでプロンプトを表示しコンテキストを送信する 
 
-ナレッジ ベースにプロンプトを追加し、テスト ウィンドウでフローをテストしました。 次にクライアント アプリケーションでこれらのプロンプトを使用する必要があります。 Bot framework の場合、プロンプトは自動的には、クライアント アプリケーションで表示し始めません。 この [Bot Framework のサンプル](https://aka.ms/qnamakermultiturnsample)をコードに含めることによって、クライアント アプリケーション内のユーザーのクエリへの応答の一部として、推奨されるアクションまたはボタンとしてプロンプトを表示できます。 クライアント アプリケーションは、現在の QnA ID およびユーザー クエリを格納し、次回のユーザー クエリのために [GenerateAnswer API のコンテキスト オブジェクト](#json-request-to-return-non-initial-answer-and-follow-up-prompts)に渡す必要があります。 
+ナレッジ ベースにプロンプトを追加し、テスト ウィンドウでフローをテストしました。 次にクライアント アプリケーションでこれらのプロンプトを使用する必要があります。 Bot Framework の場合、プロンプトは自動的にクライアント アプリケーションに表示されません。 この [Bot Framework のサンプル](https://aka.ms/qnamakermultiturnsample)をコードに含めることによって、クライアント アプリケーション内のユーザーのクエリへの応答の一部として、推奨されるアクションまたはボタンとしてプロンプトを表示できます。 クライアント アプリケーションは、現在の QnA Maker ID およびユーザー クエリを格納し、次回のユーザー クエリのために [GenerateAnswer API のコンテキスト オブジェクト](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts)に渡す必要があります。 
 
-## <a name="display-order-supported-in-api"></a>API でサポートされる表示の順序
+## <a name="display-order-is-supported-in-the-update-api"></a>更新 API では表示の順序がサポートされている
 
 JSON 応答で返される[表示テキストと表示の順序](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)は、[更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) による編集でサポートされています。 
 
@@ -396,9 +380,19 @@ FIX - Need to go to parent, then answer column, then edit answer.
 
 -->
 
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>作成 API を使用して複数ターンのプロンプトを持つナレッジ ベースを作成する
+
+[QnA Maker 作成 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用して、複数ターンのプロンプトを持つナレッジ ケースを作成できます。 プロンプトは `context` プロパティの `prompts` 配列に追加されます。 
+
+
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>更新 API を使用して複数ターンのプロンプトを追加または削除する
+
+[QnA Maker 更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) を使用して、複数ターンのプロンプトを追加または削除できます。  プロンプトは `context` プロパティの `promptsToAdd` 配列と `promptsToDelete` 配列に追加されます。 
+
+
 ## <a name="next-steps"></a>次の手順
 
-コンテキスト会話について詳しくは、[ダイアログのサンプル](https://aka.ms/qnamakermultiturnsample)に関するページまたは[複数ターン会話のボット設計の概要](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)に関するページをご覧ください。
+この[対話サンプル](https://aka.ms/qnamakermultiturnsample)のコンテキスト会話について、または[複数ターン会話のための概念的ボット設計](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)について詳しく学習します。
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースの移行](../Tutorials/migrate-knowledge-base.md)

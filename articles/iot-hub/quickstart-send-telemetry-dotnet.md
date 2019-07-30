@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: f339d2e3e329ae40ca8bb8bf651d698c73482a7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/21/2019
+ms.openlocfilehash: 1433e71a5e4f9d4effe82d489145c364355100d4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049270"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330438"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (C#)
 
@@ -81,7 +81,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
     この値は、このクイック スタートの後の方で使います。
 
-3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブからの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_iothubowner 主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
+3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
@@ -90,7 +90,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
     az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
 
-    az iot hub policy show --name iothubowner --query primaryKey --hub-name YourIoTHubName
+    az iot hub policy show --name service --query primaryKey --hub-name YourIoTHubName
     ```
 
     クイック スタートの後の方で使うので、これら 3 つの値をメモしておきます。
@@ -133,7 +133,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
     | `s_eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
-    | `s_iotHubSasKey`                | 変数の値を、前にメモした iothubowner 主キーに置き換えます。 |
+    | `s_iotHubSasKey`                | 変数の値を、前にメモしたサービス主キーに置き換えます。 |
 
 3. ローカル ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションに必要なライブラリをインストールします。
 

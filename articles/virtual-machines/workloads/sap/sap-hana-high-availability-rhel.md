@@ -4,7 +4,7 @@ description: Azure 仮想マシン (VM) 上で SAP HANA の高可用性を実現
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 1eca9dd82bec120e5554627ade71688c82be7763
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66e1e4603602835d6ed5be9af58eb09a24b00b63
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922131"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709118"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性
 
@@ -66,9 +66,9 @@ SAP HANA レプリケーション は、1 つのプライマリ ノードと、�
 * SAP Note [2243692]: Azure 上の Linux で動作する SAP のライセンスに関する情報が記載されています。
 * SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
-* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ (この記事)][deployment-guide]
-* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * [Pacemaker クラスターでの SAP HANA システム レプリケーション](https://access.redhat.com/articles/3004101)
 * 一般的な RHEL ドキュメント
   * [高可用性アドオンの概要](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636811"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593858"
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
 

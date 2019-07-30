@@ -2,7 +2,7 @@
 title: iOS モバイル アプリでオフライン同期を有効にする | Microsoft Docs
 description: Azure App Service Mobile Apps を使用して、iOS アプリケーション内のオフライン データをキャッシュし、同期する方法について説明します。
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f7ae3e7a33ae7df70214ed171b00cc2accbaccb5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62112652"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446372"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>iOS モバイル アプリでオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-offline-data) を今すぐチェックしてください。
+>
 
 ## <a name="overview"></a>概要
 このチュートリアルでは、iOS 向け Azure App Service Mobile Apps 機能を使用したオフライン同期について説明します。 オフライン同期により、エンド ユーザーはネットワークに接続していなくても、モバイル アプリを操作してデータを表示、追加、または変更できます。 変更は、ローカル データベースに格納されます。 デバイスが再びオンラインになると、変更がリモート バックエンドと同期されます。

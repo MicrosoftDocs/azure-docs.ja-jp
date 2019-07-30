@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 760aef6931cdd283382d72ae6de5e0865c95284c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2a772dfb1fb30e9de93afa91bd0485147029d88e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716168"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>チュートリアル:Azure Active Directory と Qumu Cloud の統合
 

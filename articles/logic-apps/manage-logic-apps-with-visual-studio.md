@@ -1,5 +1,5 @@
 ---
-title: Visual Studio でロジック アプリを管理する - Azure Logic Apps
+title: Visual Studio を使用してロジック アプリを管理する - Azure Logic Apps
 description: Visual Studio Cloud Explorer でロジック アプリとその他の Azure 資産を管理する
 services: logic-apps
 ms.service: logic-apps
@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 6a36770ff623e35c56a972a482e24ebb24849051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 694ff490d7623b2dff26a61ccae8106a276b84af
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467417"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447898"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -36,7 +36,8 @@ ms.locfileid: "65467417"
   このクイックスタートでは、無料の Visual Studio Community 2017 を使用します。
 
     > [!IMPORTANT]
-    > Visual Studio 2019 または 2017 をインストールする場合は、 **[Azure の開発]** ワークロードを選択してください。 Visual Studio 2019 の場合、Cloud Explorer は Azure portal でロジック アプリ デザイナーを開くことはできますが、まだ埋め込まれている Logic App Designer を開くことはできません。 詳細については、「[Visual Studio Cloud Explorer で Azure アカウントに関連付けられているリソースを管理する](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)」を参照してください。
+    > Visual Studio 2019 または 2017 をインストールする場合は、 **[Azure の開発]** ワークロードを選択してください。
+    > 詳細については、「[Visual Studio Cloud Explorer で Azure アカウントに関連付けられているリソースを管理する](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)」を参照してください。
 
     Cloud Explorer for Visual Studio 2015 をインストールするには、[Visual Studio Marketplace から Cloud Explorer をダウンロード](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)します。 
     詳細については、[Visual Studio Cloud Explorer での Azure アカウントに関連付けられているリソースの管理 (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015) に関するページをご覧ください。
@@ -90,6 +91,9 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 1. ロジック アプリのショートカット メニューで、 **[Logic App Editor で開く]** を選びます。
 
+   > [!TIP]
+   > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
+
    この例では、リソースの種類ごとに示されているので、ロジック アプリは **[Logic Apps]** セクションに表示されます。
 
    ![Azure Portal から展開済みのロジック アプリを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
@@ -105,10 +109,10 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 1. Visual Studio で Cloud Explorer を開き、Azure からダウンロードするロジック アプリを検索して選びます。
 
-   > [!NOTE]
-   > Visual Studio 2019 の場合、Cloud Explorer は Azure portal でロジック アプリ デザイナーを開くことはできますが、ロジック アプリをダウンロードするために、埋め込まれているロジック アプリ デザイナーを開くことはまだできません。
-
 2. アプリのショートカット メニューで、 **[Logic App Editor で開く]** を選びます。
+
+   > [!TIP]
+   > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
 
    ロジック アプリ デザイナーが開き、ロジック アプリが表示されます。 
    ロジック アプリの基になっている定義と構造を確認するには、デザイナーの下端で **[コード ビュー]** を選びます。 

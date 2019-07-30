@@ -4,14 +4,14 @@ description: Azure Cosmos コンテナーで合成パーティション キー�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: 1fd436746dcd2e93a1699ac5c68965213c74580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf60c674f9f43c01a3090efa3ac1f0e2e0674efa
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978876"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467832"
 ---
 # <a name="create-a-synthetic-partition-key"></a>合成パーティション キーの作成
 

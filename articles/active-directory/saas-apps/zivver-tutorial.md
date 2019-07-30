@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 51db52d5a5bfef6ef5a34fa9a0877516d5786236
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e18c5dfe3649f74a9f84c605785ca99748298bea
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143182"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>チュートリアル:Azure Active Directory と ZIVVER の統合
 

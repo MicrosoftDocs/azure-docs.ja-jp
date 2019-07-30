@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 140e6c338d12732d1e41ccd9dabef1de7d5cf8d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0172879ff2a2c351c4ca721a449e2e2839934baa
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068846"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854069"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>動的暗号化によるコンテンツ保護
 
@@ -73,7 +73,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
   
      [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使ってプレーヤーを作成できます。 異なる DRM プラットフォームで使う DRM テクノロジを指定するには、[Azure Media Player の ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) を使います。
 
-     AES または CENC (Widevine および PlayReady) で暗号化されたコンテンツをテストするには、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) を使用できます。 必ず [詳細オプション] をクリックし、暗号化オプションを確認します。
+     AES または CENC (Widevine および PlayReady) で暗号化されたコンテンツをテストするには、[Azure Media Player](https://aka.ms/azuremediaplayer) を使用できます。 必ず [詳細オプション] をクリックし、暗号化オプションを確認します。
 
      FairPlay で暗号化されたコンテンツをテストする場合は、[このテストプレイヤー](https://aka.ms/amtest)を使用してください。 プレーヤーは、Widevine、PlayReady、FairPlay DRM、および AES-128 クリア キー暗号化をサポートしています。 
     
@@ -136,7 +136,7 @@ MPEG-DASH プロトコルでは、次のコンテナー形式と暗号化スキ�
 
 一般的なブラウザーでは次の DRM クライアントがサポートされます。
 
-|ブラウザー|暗号化|
+|Browser|暗号化|
 |---|---|
 |Chrome|Widevine|
 |Edge、IE 11|PlayReady|

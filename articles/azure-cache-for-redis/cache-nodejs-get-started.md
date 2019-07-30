@@ -15,35 +15,23 @@ ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 739f0bd6381e872b5f989f9ecb4dd97fdbdb52c9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dc629133a393c4ff8f9193b02e9080d7f08f4958
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238098"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326457"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート: Node.js で Azure Cache for Redis を使用する方法
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート:Node.js で Azure Cache for Redis を使用する
 
-
-
-Azure Cache for Redis を使用すると、Microsoft によって管理されている、セキュリティで保護された専用の Azure Cache for Redis にアクセスできます。 キャッシュは、Microsoft Azure 内の任意のアプリケーションからアクセスできます。
-
-このトピックでは、Node.js を使用して Cache for Redis を使用する方法を示します。 
-
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
-
-![完了したキャッシュ アプリ](./media/cache-nodejs-get-started/cache-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Node.js アプリに組み込みます。
 
 ## <a name="prerequisites"></a>前提条件
-[node_redis](https://github.com/mranney/node_redis) をインストールします。
 
-    npm install redis
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- [node_redis](https://github.com/mranney/node_redis)。これは `npm install redis` コマンドでインストールできます。 
 
-このチュートリアルでは、[node_redis](https://github.com/mranney/node_redis) を使用します。 他の Node.js クライアントを使用する例については、 [Node.js Redis クライアント](https://redis.io/clients#nodejs)に関するセクションに記載されている Node.js クライアントの個々のドキュメントを参照してください。
-
+他の Node.js クライアントを使用する例については、 [Node.js Redis クライアント](https://redis.io/clients#nodejs)に関するセクションに記載されている Node.js クライアントの個々のドキュメントを参照してください。
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -57,7 +45,6 @@ Azure Cache for Redis を使用すると、Microsoft によって管理されて
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
-
 
 ## <a name="connect-to-the-cache"></a>キャッシュに接続する
 
@@ -128,7 +115,6 @@ node redistest.js
 
 ![完了したキャッシュ アプリ](./media/cache-nodejs-get-started/cache-app-complete.png)
 
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
@@ -141,15 +127,13 @@ node redistest.js
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
 ![削除](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
 
-リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
+リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** をクリックします。
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
-
-
 
 ## <a name="next-steps"></a>次の手順
 
@@ -157,6 +141,3 @@ node redistest.js
 
 > [!div class="nextstepaction"]
 > [Azure Cache for Redis を使用する ASP.NET Web アプリを作成する](./cache-web-app-howto.md)
-
-
-

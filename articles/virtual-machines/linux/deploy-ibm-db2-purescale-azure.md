@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
-ms.author: njray
-ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: edprice
+ms.openlocfilehash: 68fde09b1ee5f18aa784793cc19e9f547b19ed43
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60716049"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871878"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 上に IBM DB2 pureScale をデプロイする
 

@@ -4,7 +4,7 @@ description: Azure の Linux ハイ パフォーマンス コンピューティ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 003a14174ff65bab253f27a458d4f3e2c0a1a6db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 847f25d9be1a8654bbc0435d7874acb0ff793304
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069998"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695596"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>ハイ パフォーマンス コンピューティング仮想マシンのサイズ
 
@@ -56,7 +56,15 @@ Azure Marketplace には、RDMA 接続をサポートする多くの Linux デ�
   "typeHandlerVersion": "1.0",
   } 
   ```
- 
+  
+  次のコマンドでは、*myResourceGroup* という名前のリソース グループにデプロイされた *myVMSS* という名前の既存の VM スケール セットのすべての RDMA 対応 VM に、最新バージョンの 1.0 の InfiniBandDriverLinux 拡張機能をインストールします。
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+  
   > [!NOTE]
   > CentOS ベースの HPC イメージでは、 **yum** 構成ファイルでのカーネルの更新は無効にされています。 これは、Linux RDMA ドライバーが RPM パッケージとして配布されており、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があるためです。
   >
@@ -82,6 +90,8 @@ Azure には、次に示すような、RDMA ネットワークを使用して通
 * **仮想マシン** - 同じ可用性セット内に RDMA 対応の HPC VM をデプロイします (Azure Resource Manager デプロイ モデルを使用する場合)。 クラシック デプロイ モデルを使用する場合は、同じクラウド サービス内に VM をデプロイします。 
 
 * **Virtual Machine Scale Sets** - 仮想マシン スケール セットで、単一の配置グループにデプロイを制限するようにします。 たとえば、Resource Manager テンプレートでは、`singlePlacementGroup` プロパティを `true` に設定します。 
+
+* **仮想マシン間の MPI** - 仮想マシン (VM) 間で MPI 通信が必要な場合は、VM が同じ可用性セットまたは仮想マシン スケール セットに含まれていることを確認します。
 
 * **Azure CycleCloud** - [Azure CycleCloud](/azure/cyclecloud/) 内に HPC クラスターを作成して、Linux ノード上で MPI ジョブを実行します。
 

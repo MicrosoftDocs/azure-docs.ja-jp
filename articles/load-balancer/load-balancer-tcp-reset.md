@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: アイドル タイムアウト時に双方向 TCP RST パケットを使用するロード バランサー
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
-ms.author: kumud
-ms.openlocfilehash: 4a09492fcb8a7985fa27b6daae89aa5dec0fa6e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413857"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274157"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>アイドル時に TCP リセットを使用するロード バランサー (パブリック プレビュー)
 

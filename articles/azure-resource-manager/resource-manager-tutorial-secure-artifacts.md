@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fd68edcc727ab08ed9d3ba765bbe795e88de5fc9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391312"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069265"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>チュートリアル: Azure Resource Manager テンプレートのデプロイ時に成果物をセキュリティで保護する
 
@@ -75,9 +75,9 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
     * **サブスクリプション**:Azure サブスクリプションを選択します。
     * **リソース グループ**: **[新規作成]** を選択し、名前を付けます。 リソース グループは、管理目的で使用される Azure リソース用のコンテナーです。 このチュートリアルでは、ストレージ アカウントと Azure SQL Database で同じリソース グループを使用できます。 このリソース グループ名を書き留めておいてください。このチュートリアルの中で、後で Azure SQL Database を作成するときに必要です。
-    * **場所**: リージョンを選択します。 たとえば **[米国中部]** です。 
+    * **場所**: リージョンを選択します。 たとえば **[米国中部]** です。
     * **ストレージ アカウントの種類**: 既定値 (**Standard_LRS**) を使用します。
-    * **場所**: 既定値 (**[resourceGroup().location]**) を使用します。 これは、ストレージ アカウント用のリソース グループの場所を使用することを意味します。
+    * **場所**: 既定値 ( **[resourceGroup().location]** ) を使用します。 これは、ストレージ アカウント用のリソース グループの場所を使用することを意味します。
     * **上記の使用条件に同意する**: (選択済み)
 3. **[購入]** を選択します。
 4. ポータルの右上隅にある通知アイコン (ベル アイコン) を選択して、デプロイ状態を確認します。
@@ -87,7 +87,7 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
 ### <a name="create-a-blob-container"></a>BLOB コンテナーを作成する
 
-ファイルをアップロードする前に、BLOB コンテナーが必要です。 
+ファイルをアップロードする前に、BLOB コンテナーが必要です。
 
 1. ストレージ アカウントを選択して開きます。 リソース グループにストレージ アカウントが 1 つだけ表示されていることを確認できます。 ご自分のストレージ アカウント名は、次のスクリーン ショットに示されているものとは異なります。
 
@@ -99,8 +99,8 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 3. 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
 4. 次の値を入力します。
 
-    * **名前**: 「**sqlbacpac**と入力します。 
-    * **パブリック アクセス レベル**: 既定値 (**[プライベート (匿名アクセスなし)]**) を使用します。
+    * **名前**: 「**sqlbacpac**と入力します。
+    * **パブリック アクセス レベル**: 既定値 ( **[プライベート (匿名アクセスなし)]** ) を使用します。
 5. **[OK]** を選択します。
 6. **[sqlbacpac]** を選択して、新規作成されたコンテナーを開きます。
 
@@ -115,11 +115,11 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
 ### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />SAS トークンを生成する
 
-1. コンテナーの **SQLDatabaseExtension.bacpac** を右クリックした後、**[SAS の生成]** を選択します。
+1. コンテナーの **SQLDatabaseExtension.bacpac** を右クリックした後、 **[SAS の生成]** を選択します。
 2. 次の値を入力します。
 
     * **アクセス許可**: 既定値である **[読み取り]** を使用します。
-    * **開始日時と終了日時**: 既定値では、SAS トークンは 8 時間使用できます。 このチュートリアルを完了するためにもっと時間が必要な場合は、**[有効期限]** を更新します。
+    * **開始日時と終了日時**: 既定値では、SAS トークンは 8 時間使用できます。 このチュートリアルを完了するためにもっと時間が必要な場合は、 **[有効期限]** を更新します。
     * **使用できる IP アドレス**: このフィールドは空のままにします。
     * **許可されるプロトコル**: 既定値である **[HTTPS]** を使用します。
     * **署名キー**: 既定値である **[キー 1]** を使用します。
@@ -128,7 +128,7 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
    - **成果物の場所**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/ 場所の末尾が "/" であることを確認します。
    - **BACPAC ファイル名**: SQLDatabaseExtension.bacpac。
-   - **[Artifact location SAS token]\(成果物の場所の SAS トークン\)**: トークンの前に "?" があることを確認します。
+   - **[Artifact location SAS token]\(成果物の場所の SAS トークン\)** : トークンの前に "?" があることを確認します。
 
      これら 3 つの値は、「[テンプレートのデプロイ](#deploy-the-template)」で必要です。
 
@@ -136,7 +136,7 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
 このセッションでは、「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)」で作成したテンプレートを変更し、SAS トークンを使用して BACPAC ファイルを呼び出します。  SQL 拡張機能チュートリアルで開発されたテンプレートは、[https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json) で共有されます。
 
-1. Visual Studio Code から、**[ファイル]**>**[ファイルを開く]** を選択します。
+1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
@@ -153,7 +153,7 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
    * `Microsoft.SQL/server/databases/extensions`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions)をご覧ください。
 
      カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
-4. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+4. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
@@ -237,7 +237,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、SQL サーバーと SQL データベースをデプロイし、SAS トークンを使用して BACPAC ファイルをインポートしました。 複数のリージョンにわたって Azure リソースをデプロイする方法のほか、安全なデプロイの実践については、以下を参照してください
+このチュートリアルでは、SQL サーバーと SQL データベースをデプロイし、SAS トークンを使用して BACPAC ファイルをインポートしました。 Azure パイプラインを作成し、継続的に Resource Manager テンプレートを開発およびデプロイする方法については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Deployment Manager の使用](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Azure Pipelines を使用した継続的インテグレーション](./resource-manager-tutorial-use-azure-pipelines.md)

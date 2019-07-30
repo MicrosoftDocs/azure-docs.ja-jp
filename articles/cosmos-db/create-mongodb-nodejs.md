@@ -100,7 +100,7 @@ az login
 
 次の例は、西ヨーロッパ リージョンにリソース グループを作成します。 リソース グループには一意の名前を選択します。
 
-Azure Cloud Shell を使用する場合は、**[試してみる]** をクリックし、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
+Azure Cloud Shell を使用する場合は、 **[試してみる]** をクリックし、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"

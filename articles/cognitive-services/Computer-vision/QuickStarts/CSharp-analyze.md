@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7ad03d06325f45aacd53817d92202b07de7c26e9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 941478e8d09ea0a06139ba4ddf3ac14e5b52b9d6
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011165"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606030"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>クイック スタート:Computer Vision で REST API および C# を使用してローカル画像を分析する
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用してローカル画像を分析する
 
 このクイック スタートでは、Computer Vision の REST API を使用して、ローカルに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴情報を抽出できます。
 
@@ -35,9 +35,9 @@ Visual Studio でサンプルを作成するには、次の手順を実行しま
 
 1. Visual C# コンソール アプリ (.NET Framework) テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションを作成します。
 1. Newtonsoft.Json NuGet パッケージをインストールします。
-    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、**[検索]** ボックスに「Newtonsoft.Json」と入力します。
-    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
+    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+    1. **[参照]** タブをクリックし、 **[検索]** ボックスに「Newtonsoft.Json」と入力します。
+    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
 1. `Program.cs` のコードを次のコードに置き換えて、必要に応じてコードに次の変更を加えます。
     1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
     1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
@@ -64,7 +64,7 @@ namespace CSHttpClientSample
         // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the "westus" region.
+        // Free trial subscription keys are generated in the "westcentralus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =
@@ -246,10 +246,6 @@ namespace CSHttpClientSample
     }
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になった場合は、Visual Studio ソリューションを削除します。 これを行うには、エクスプ ローラーを開き、Visual Studio ソリューションを作成したフォルダーに移動して、そのフォルダーを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

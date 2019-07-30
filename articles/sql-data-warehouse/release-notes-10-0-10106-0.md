@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 05/13/2019
+ms.date: 07/03/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: ee01ebad9e03aaa34911db49ce344d51b6a756d8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417704"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798703"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
@@ -25,9 +25,20 @@ ms.locfileid: "66417704"
 
 新機能はすべてのリージョンにロールアウトされますので、機能の可用性については、ご使用のインスタンスにデプロイされているバージョン、および最新の Azure SQL DW のリリース ノートを確認してください。 お使いの Azure SQL DW のバージョンを確認するには、SQL Server Management Studio (SSMS) を介してデータ ウェアハウスに接続して `SELECT @@VERSION AS 'SQL Data Warehouse';` を実行すると、Azure SQL DW の現在のバージョンが返されます。
 
-出力例:![SQL Data Warehouse のバージョン](./media/release-notes/sql_data_warehouse_version.png)
+出力例:
+
+![SQL Data Warehouse のバージョン](./media/release-notes/sql_data_warehouse_version.png)
 
 示された日付を使用して、お使いの Azure SQL DW に適用されているリリースを確認してください。
+
+## <a name="july-2019"></a>2019 年 7 月
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**具体化されたビュー (プレビュー)**|具体化されたビューでは、ビュー定義クエリから返されるデータを保持し、基になるテーブルのデータが変更されると自動的に更新されます。 これによって、複雑なクエリ (一般に結合と集計を含むクエリ) のパフォーマンスが向上すると共に、メンテナンス操作が簡単になります。 詳細については、次を参照してください。 </br> - [CREATE MATERIALIZED VIEW AS SELECT &#40;Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) </br> - [Azure SQL Data Warehouse でサポートされる T-SQL ステートメント](/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)|
+|**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、次のサポートが含まれるようになりました。 </br> - [AT TIME ZONE](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql?view=azure-sqldw-latest)|
+|**結果セットのキャッシュ機能 (プレビュー)**|以前発表された結果セットのキャッシュを管理するために追加された DBCC コマンド。 詳細については、次を参照してください。 </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> 実行されたクエリが結果セットのキャッシュを使用した場合に表示される、[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) の新しい result_set_cache 列も確認してください。|
+|**順序指定クラスター化列ストア インデックス (プレビュー)**|順序付けされたクラスター化列ストア インデックス内の列の順序を識別するために、[sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=azure-sqldw-latest) に追加された新しい column_store_order_ordinal 列。|
 
 ## <a name="may-2019"></a>2019 年 5 月
 

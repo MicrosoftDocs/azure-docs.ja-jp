@@ -14,9 +14,6 @@
       href: apache-hadoop-linux-tutorial-get-started.md
 - name: チュートリアル
   items:
-    - name: ETL 操作の実行
-      href: ../hdinsight-analyze-flight-delay-data-linux.md
-      maintainContext: true
     - name: オンデマンド クラスターの作成
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
@@ -77,7 +74,7 @@
         - name: Apache Hive と Apache Hadoop
           href: hdinsight-use-hive.md
           items:
-            - name: HDInsight tools for VSCode を使用する
+            - name: Spark & Hive Tools for VSCode を使用する
               href: ../hdinsight-for-vscode.md
               maintainContext: true
             - name: HDInsight tools for Visual Studio を使用する
@@ -141,6 +138,10 @@
         - name: Tools for VSCode
           href: ../hdinsight-for-vscode.md
           maintainContext: true
+        - name: IntelliJ 用ツール
+          href: ../spark/apache-spark-intellij-tool-plugin.md
+        - name: Eclipse 用ツール
+          href: ../spark/apache-spark-eclipse-tool-plugin.md
         - name: Data Lake Tools と Hortonworks サンドボックス
           href: ../hdinsight-hadoop-emulator-visual-studio.md
           maintainContext: true
@@ -186,9 +187,6 @@
           maintainContext: true
         - name: スクリプト アクションを開発する
           href: ../hdinsight-hadoop-script-actions-linux.md
-          maintainContext: true
-        - name: Presto をインストールして使用する
-          href: ../hdinsight-hadoop-install-presto.md
           maintainContext: true
         - name: Apache Hive ライブラリを追加する
           href: ../hdinsight-hadoop-add-hive-libraries.md
@@ -399,7 +397,7 @@
     - name: エンタープライズ セキュリティ
       items:
         - name: 概要
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
           maintainContext: true
         - name: エンタープライズ セキュリティの計画
           href: ../domain-joined/apache-domain-joined-architecture.md
@@ -423,11 +421,14 @@
       items:
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight 用の VNET の計画
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight 用の VNET の作成
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG と UDR に必要な IP アドレス
+          href: ../hdinsight-management-ip-addresses.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet の HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
           maintainContext: true
@@ -467,15 +468,11 @@
     - name: Resource Manager テンプレート
       displayName: 'resource manager template, arm template, resource manager group'
       href: /azure/templates/microsoft.hdinsight/allversions
-- name: 関連項目
-  items:
-    - name: Windows クラスター
-      items:
-        - name: .NET ソリューションを Linux クラスターに移行する
-          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
-          maintainContext: true
 - name: リソース
   items:
+    - name: .NET ソリューションを Linux クラスターに移行する
+      href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
+      maintainContext: true
     - name: リリース ノート
       items:
         - name: 最新のリリース ノート

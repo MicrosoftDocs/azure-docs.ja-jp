@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 0355f121a09e1ba89f98a8af5037eb1371db2242
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 52abf17e869216e65780129a7b48df79bd79f67a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215640"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105056"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook コネクタの使用
 Office 365 Outlook コネクタを使用すると、Office 365 Outlook の操作が可能になります。 このコネクタを使用すると、連絡先と予定表アイテムの作成、編集、更新に加え、電子メールの取得、送信、返信を行うことができます。
@@ -60,7 +60,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
    > この例では、予定表のイベントが更新されたときにロジック アプリが実行されます。 このトリガーの結果を確認するには、自分にテキスト メッセージを送信する別のアクションを追加してください。 たとえば、15 分以内に予定表イベントが開始するときにテキスト メッセージを送信する Twilio "*メッセージの送信*" アクションを追加します。 
    > 
    > 
-3. **[編集]** を選択し、**[頻度]** と **[間隔]** の値を設定します。 たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、**[頻度]** を **[分]** に設定し、**[間隔]** を **15** に設定します。 
+3. **[編集]** を選択し、 **[頻度]** と **[間隔]** の値を設定します。 たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、 **[頻度]** を **[分]** に設定し、 **[間隔]** を **15** に設定します。 
    
     ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 4. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。 ロジック アプリが保存され、場合によっては、自動的に有効になります。
@@ -68,21 +68,21 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 ## <a name="use-an-action"></a>アクションを使用する
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
 
-1. プラス記号を選択します。 **[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
+1. プラス記号を選択します。 いくつかの選択肢が表示されます。 **[アクションの追加]** 、 **[条件の追加]** 、 **[その他]** です。
    
     ![](./media/connectors-create-api-office365-outlook/add-action.png)
 2. **[アクションの追加]** を選択します。
 3. テキスト ボックスに「office 365」と入力して、使用可能なすべてのアクションの一覧を取得します。
    
     ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
-4. この例では、**[Office 365 Outlook - Create contact (Office 365 Outlook - 連絡先を作成する)]** を選択します。 接続が既に存在する場合は、**[Folder ID (フォルダー ID)]**、**[名]**、およびその他のプロパティを指定します。  
+4. この例では、 **[Office 365 Outlook - Create contact (Office 365 Outlook - 連絡先を作成する)]** を選択します。 接続が既に存在する場合は、 **[Folder ID (フォルダー ID)]** 、 **[名]** 、およびその他のプロパティを指定します。  
    
     ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
    
     接続情報の入力を求められたら、詳細を入力して接続を作成します。 これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-office365-outlook.md#create-the-connection)」を参照してください。 
    
    > [!NOTE]
-   > この例では、Office 365 Outlook で新しい連絡先を作成します。 別のトリガーからの出力を使用して、連絡先を作成できます。 たとえば、SalesForce の "*When an object is created (オブジェクトが作成されたとき)*" トリガーを追加します。 次に、SalesForce のフィールドを使用して Office 365 で新しい連絡先を作成する Office 365 Outlook の "*Create contact (連絡先を作成する)*" アクションを追加します。 
+   > この例では、Office 365 Outlook で新しい連絡先を作成します。 別のトリガーからの出力を使用して、連絡先を作成できます。 たとえば、SalesForce の "*When an object is created (オブジェクトが作成されたとき)* " トリガーを追加します。 次に、SalesForce のフィールドを使用して Office 365 で新しい連絡先を作成する Office 365 Outlook の "*Create contact (連絡先を作成する)* " アクションを追加します。 
    > 
    > 
 5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。 ロジック アプリが保存され、場合によっては、自動的に有効になります。

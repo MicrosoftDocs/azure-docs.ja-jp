@@ -8,16 +8,29 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 30882899e5be4101ae3d77f9840d8bdef567e53f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 61c3d37f365034984231c780199e181872c010c6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66576679"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544125"
 ---
 # <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Azure portal から CloudSimple による Azure VMware ソリューションにアクセスする
 
 CloudSimple ポータルへのアクセスにはシングル サインオンがサポートされています。 Azure portal にサインインした後は、もう一度サインインしなくても CloudSimple ポータルにアクセスできます。 初めて CloudSimple ポータルにアクセスすると、[CloudSimple Service Authorization](#consent-to-cloudsimple-service-authorization-application) アプリケーションを承認するように求められます。  承認は、1 回限りの操作です。
+
+## <a name="before-you-begin"></a>開始する前に
+
+組み込みの**所有者**ロールを持っているユーザーと、組み込みの**共同作成者**ロールを持っているユーザーが、CloudSimple ポータルにアクセスできます。  ロールは、CloudSimple サービスがデプロイされているリソース グループに対して構成されている必要があります。  CloudSimple サービス オブジェクトに対してロールを構成することもできます。  ご自身のロールの確認について詳しくは、「[ロールの割り当てを表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」の記事を参照してください。
+
+カスタム ロールを使用している場合、そのロールの ```Actions``` に次のいずれかの操作が必要です。  カスタム ロールの詳細については、「[Azure リソースのカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。  いずれかの操作が ```NotActions``` に含まれている場合、ユーザーは CloudSimple ポータルにアクセスできません。 
+
+```
+Microsoft.VMwareCloudSimple/*
+Microsoft.VMwareCloudSimple/*/write
+Microsoft.VMwareCloudSimple/dedicatedCloudServices/*
+Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
+```
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

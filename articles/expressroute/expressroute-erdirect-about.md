@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 07/06/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d7add3d509427d72e23d61d1777db7941c7550a4
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367637"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657256"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
-ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 Gbps 接続が提供されます。
+ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 Gbps または 10 Gbps 接続が提供されます。
 
 以下に、ExpressRoute Direct で提供される主な機能の一部を示します。
 
@@ -38,9 +38,9 @@ ExpressRoute Direct を利用する前に、まず、サブスクリプション
 
 | **サービス プロバイダーを使用する ExpressRoute** | **ExpressRoute Direct** | 
 | --- | --- |
-| サービス プロバイダーを利用して、既存のインフラストラクチャへの高速オンボードと接続を有効にします | 100 Gbps インフラストラクチャとすべてのレイヤーの完全な管理が必要です
+| サービス プロバイダーを利用して、既存のインフラストラクチャへの高速オンボードと接続を有効にします | 100 Gbps/10 Gbps インフラストラクチャとすべてのレイヤーの完全な管理が必要です
 | イーサネットや MPLS を含む、何百ものプロバイダーと統合されます | 規制対象の業種と大量のデータ インジェストのための直接/専用容量 |
-| 50 Mbps ～ 10 Gbps 回線 SKU | 顧客は回線 SKU として 5 Gbps、10 Gbps、40 Gbps、100 Gbps の組み合わせを選択できますが、合計は 200 Gbps に制限されます
+| 50 Mbps ～ 10 Gbps 回線 SKU | 顧客は 100 Gbps ExpressRoute Direct で以下の回線 SKU の組み合わせを選択できます。 <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> 顧客は 10 Gbps ExpressRoute Direct で以下の回線 SKU の組み合わせを選択できます。<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 | シングル テナント用に最適化 | シングル テナント/クラウド サービス プロバイダー/複数のビジネス ユニット用に最適化
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct の回線
@@ -53,7 +53,12 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 
 ## <a name="circuit-skus"></a>回線 SKU
 
-ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。 物理ポートのペアは **100 Gbps** のみであり、5 Gbps、10 Gbps、40 Gbps、100 Gbps の帯域幅で、任意の組み合わせで最大 200 Gbps まで複数の仮想回線を持つことができます。 
+ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、100 ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。 物理ポート ペアは、**100 Gbps または 10 Gbps** のみであり、複数の仮想回線を備えることができます。 回線のサイズ:
+
+| **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
+| --- | --- |
+| **サブスクライブされた帯域幅**: 200 Gbps | **サブスクライブされた帯域幅**: 20 Gbps |
+| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="vlan-tagging"></a>VLAN タグ付け
 

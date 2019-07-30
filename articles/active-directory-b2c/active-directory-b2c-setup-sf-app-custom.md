@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する | Microsoft Docs
+title: Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する
 description: Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e565822c006191615dbc10b980da24dcd9ed787a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7cbde2beb03c174facbd145954387a31f6158a9a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508298"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654194"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
@@ -31,11 +31,11 @@ ms.locfileid: "66508298"
 
 ### <a name="set-up-salesforce-as-an-identity-provider"></a>ID プロバイダーとしての Salesforce のセットアップ
 
-1. [Salesforce にサインインします](https://login.salesforce.com/)。 
+1. [Salesforce にサインインします](https://login.salesforce.com/)。
 2. 左側のメニューで、 **[設定]** の下の **[ID]** を展開し、 **[ID プロバイダー]** を選択します。
 3. **[Enable Identity Provider]\(ID プロバイダーを有効にする\)** を選択します。
-4. **[Select the certificate] \(証明書の選択)** の下から、Azure AD B2C と通信するときに Salesforce で使用する証明書を選択します。 既定の証明書を使用できます。 
-5. **[Save]** をクリックします。 
+4. **[Select the certificate] \(証明書の選択)** の下から、Azure AD B2C と通信するときに Salesforce で使用する証明書を選択します。 既定の証明書を使用できます。
+5. **[Save]** をクリックします。
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Salesforce での接続されたアプリの作成
 
@@ -49,7 +49,7 @@ ms.locfileid: "66508298"
       ```
 
 6. **[ACS URL]** フィールドに、次の URL を入力します。 `your-tenant` の値を、Azure AD B2C テナントの名前に置き換えます。
-      
+
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
@@ -90,17 +90,17 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework - プレビュー]** を選択します。
+4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 6. **オプション**については、`Upload`を選択します。
 7. ポリシーの**名前**を入力します。 たとえば、SAMLSigningCert などです。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-8. 作成した B2CSigningCert.pfx 証明書を参照して選択します。 
+8. 作成した B2CSigningCert.pfx 証明書を参照して選択します。
 9. 証明書の **[パスワード]** を入力します。
 3. **Create** をクリックしてください。
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-ユーザーが Salesforce アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
+ユーザーが Salesforce アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 Salesforce アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
@@ -189,7 +189,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
     ```XML
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
-    
+
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `LinkedIn-OAUTH` 」のように入力します。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。

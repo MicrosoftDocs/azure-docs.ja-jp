@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 01/11/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: f5f777238b4682cfd5873ceeb34452218d4c46f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5a218db0527a5e1d5642cb485b75df894a275764
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068267"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605000"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>クイック スタート:Node.js を使用してテキストを音声に変換する
 

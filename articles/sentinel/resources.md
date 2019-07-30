@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52b9d64ebd4ab90d97a417f9296c424b9412aae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 601e4651962010f7ee94f2349deb57f60db7990c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209671"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621219"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Azure Sentinel プレビューの使用に便利なリソース| Preview
 

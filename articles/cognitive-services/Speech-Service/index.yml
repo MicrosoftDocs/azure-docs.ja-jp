@@ -7,7 +7,7 @@ metadata:
   description: Speech Services により、開発者はアプリケーションに強力な音声認識機能を簡単に追加できます。 例として、音声コマンド制御とダイアログ、自然な言葉での会話、文字起こしやディクテーション、音声翻訳があります。
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: speech-service
@@ -45,7 +45,7 @@ sections:
     items:
       - type: paragraph
         text: |
-          Speech SDK を使うと、アプリに次をはじめとする機能を追加できます&colon;。 
+          Speech SDK (<a href="releasenotes.md">リリース ノート</a>) を使うと、以下をはじめとする機能をアプリに追加できます。 
           <div class="row"><div class="column"><ul>
           <li><b><a href="speech-to-text.md">音声テキスト変換</a></b> (音声認識/SR)</li>
           <li><b><a href="speech-devices-sdk-create-kws.md">カスタム ウェイクワード</a></b> (キーワード認識/KWS)</li>
@@ -81,6 +81,8 @@ sections:
           - image:
               src: media/index/logo_objc.jpg
           - image:
+              src: media/index/logo_swift.jpg
+          - image:
               src: media/index/logo_nodejs.svg
           - image:
               src: media/index/logo_js.svg
@@ -97,6 +99,7 @@ sections:
               - href: quickstart-java-jre
               - href: quickstart-python
               - href: null
+              - href: null
               - href: quickstart-js-node
               - href: null
           - title: Windows 10 (x86)
@@ -108,6 +111,7 @@ sections:
               - href: quickstart-csharp-unity
               - href: null
               - href: quickstart-python
+              - href: null
               - href: null
               - href: quickstart-js-node
               - href: null
@@ -123,6 +127,7 @@ sections:
               - href: null
               - href: null
               - href: null
+              - href: null
           - title: Linux (x64)
             values:
               - href: null
@@ -133,6 +138,7 @@ sections:
               - href: quickstart-java-jre
               - href: quickstart-python
               - href: null
+              - href: null
               - href: quickstart-js-node
               - href: null
           - title: Linux (x86)
@@ -140,6 +146,7 @@ sections:
               - href: null
               - href: null
               - href: quickstart-cpp-linux
+              - href: null
               - href: null
               - href: null
               - href: null
@@ -159,6 +166,7 @@ sections:
               - href: null
               - href: null
               - href: null
+              - href: null
           - title: Android (x86/x64)
             values:
               - href: null
@@ -167,6 +175,7 @@ sections:
               - href: null
               - href: quickstart-csharp-unity
               - href: quickstart-java-android
+              - href: null
               - href: null
               - href: null
               - href: null
@@ -181,6 +190,7 @@ sections:
               - href: null
               - href: null
               - href: quickstart-objectivec-ios
+              - href: quickstart-swift-ios
               - href: null
               - href: null
           - title: macOS (x64)
@@ -193,6 +203,7 @@ sections:
               - href: quickstart-java-jre
               - href: quickstart-python
               - href: quickstart-objective-c-macos
+              - href: quickstart-swift-macos
               - href: quickstart-js-node
               - href: null
           - title: Devices SDK (ARM32)
@@ -207,8 +218,10 @@ sections:
               - href: null
               - href: null
               - href: null
-          - title: ブラウザー
+              - href: null
+          - title: Browser
             values:
+              - href: null
               - href: null
               - href: null
               - href: null
@@ -221,6 +234,7 @@ sections:
               - href: quickstart-js-browser
           - title: REST
             values:
+              - href: null
               - href: null
               - href: null
               - href: null

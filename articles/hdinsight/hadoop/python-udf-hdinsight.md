@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6f3140f412f9d36ca36cef440bd4e60f1a9197d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49fd69c124ff9053f3934aefd349e039b437df0d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702222"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68354965"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 
@@ -161,9 +161,6 @@ while True:
     ```
 
 ### <a name="upload-file-powershell"></a>ファイルをアップロードする (PowerShell)
-
-> [!IMPORTANT]  
-> [安全な転送](../../storage/common/storage-require-secure-transfer.md)が有効になっていると、これらの PowerShell スクリプトは機能しません。  シェル コマンドを使用するか、安全な転送を無効にしてください。
 
 PowerShell を使って、Hive クエリをリモートで実行することもできます。 作業ディレクトリに `hiveudf.py` があることを確認します。  `hiveudf.py` スクリプトを使う Hive クエリを実行するには、次の PowerShell スクリプトを使います。
 
@@ -326,6 +323,7 @@ DUMP DETAILS;
 # Uncomment the following if using C Python
 #from pig_util import outputSchema
 
+
 @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
 def create_structure(input):
     if (input.startswith('java.lang.Exception')):
@@ -433,9 +431,6 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
 
 
 ### <a name="upload-file-powershell"></a>ファイルをアップロードする (PowerShell)
-
-> [!IMPORTANT]  
-> [安全な転送](../../storage/common/storage-require-secure-transfer.md)が有効になっていると、これらの PowerShell スクリプトは機能しません。  シェル コマンドを使用するか、安全な転送を無効にしてください。
 
 PowerShell を使って、Hive クエリをリモートで実行することもできます。 作業ディレクトリに `pigudf.py` があることを確認します。  `pigudf.py` スクリプトを使う Hive クエリを実行するには、次の PowerShell スクリプトを使います。
 

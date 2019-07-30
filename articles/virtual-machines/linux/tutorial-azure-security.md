@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure 内の Linux 仮想マシ
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 671b7de8852b0aac30e35b76d89eb4489a206f91
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593303"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708544"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Linux 仮想マシンを監視する
 
@@ -49,7 +49,7 @@ Security Center の機能はデータを検出するだけではありません�
 
 VM のセキュリティ構成を可視化するためには、まず Security Center のデータ収集を設定する必要があります。 これには、データ収集をオンにすることが含まれます。これにより、ご利用のサブスクリプションのすべての VM に Microsoft Monitoring Agent が自動的にインストールされます。
 
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。 
+1. Security Center ダッシュボードで、 **[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。 
 2. **[データ収集]** の **[自動プロビジョニング]** で **[オン]** を選択します。
 3. **[既定のワークスペース構成]** を **[Security Center によって作成されたワークスペースを使用 (既定)]** のままにします。
 4. **[セキュリティ イベント]** で、既定のオプションの **[共通]** を保持します。
@@ -63,7 +63,7 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 サブスクリプション全体を対象とするセキュリティ ポリシーを設定するには、次の手順に従います。
 
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択し、ご利用のサブスクリプションを選択します。
+1. Security Center ダッシュボードで、 **[セキュリティ ポリシー]** を選択し、ご利用のサブスクリプションを選択します。
 2. **[セキュリティ ポリシー]** ブレードで **[セキュリティ ポリシー]** を選択します。 
 3. **[セキュリティ ポリシー - セキュリティ ポリシー]** ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
 4. 設定の選択が完了したら、ブレードの上部にある **[保存]** を選択します。 
@@ -78,7 +78,7 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 リソースの正常性を表示するには、次の手順に従います。
 
-1.  Security Center ダッシュボードの **[防止]** で、**[コンピューティング]** を選択します。 
+1.  Security Center ダッシュボードの **[防止]** で、 **[コンピューティング]** を選択します。 
 2.  **[コンピューティング]** ブレードで **[VM とコンピューター]** を選択します。 このビューでは、自分の VM すべてについて構成の状態の概要を確認できます。
 
 ![コンピューティングの正常性](./media/tutorial-azure-security/compute-health.png)
@@ -110,7 +110,7 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 
 価格レベルを変更する方法は、次のとおりです。  
 
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。
+1. Security Center ダッシュボードで、 **[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。
 2. **[価格レベル]** を選択します。
 3. **[Standard]** を選択し、ブレードの上部にある **[保存]** をクリックします。
 

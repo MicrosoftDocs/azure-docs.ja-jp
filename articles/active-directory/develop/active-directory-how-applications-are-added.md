@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84069fb80ac751cbde53b0febdac451b54cd2b29
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: e1b92b174d48c710a763857951d66d00956fa0f9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688755"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483071"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 
@@ -79,8 +79,10 @@ Azure AD には、2 つの表現のアプリケーションがあります。
 * Azure AD Graph API または PowerShell でプログラムを使用する
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>アプリケーション オブジェクトとサービス プリンシパルの相互の関係
+
 アプリケーションには、ホーム ディレクトリ内に 1 つのアプリケーション オブジェクトがあり、そのアプリケーション オブジェクトは、アプリケーションが動作する各ディレクトリ (アプリケーションのホーム ディレクトリを含む) 内の 1 つ以上のサービス プリンシパルから参照されます。
-![アプリケーション オブジェクトとサービス プリンシパルが相互および Azure AD インスタンスとやり取りする方法を示す図][apps_service_principals_directory]
+
+![アプリケーション オブジェクトとサービス プリンシパル間のリレーションシップの表示][apps_service_principals_directory]
 
 上の図では、Microsoft はアプリケーションを発行するために使用する 2 つのディレクトリを内部的に保持しています (左側)。
 
@@ -96,6 +98,7 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 * Azure AD アプリケーション プロキシを使用して発行したアプリ
 
 ### <a name="notes-and-exceptions"></a>エラーと例外
+
 * すべてのサービス プリンシパルがアプリケーション オブジェクトを逆参照するわけではありません。 Azure AD が最初に構築された時点では、アプリケーションに提供されるサービスははるかに限定的であり、サービス プリンシパルはアプリケーション ID を確立するのに十分でした。 元のサービス プリンシパルは、Windows Server Active Directory サービス アカウントとよく似ていました。 このため、現在でも、先にアプリケーション オブジェクトを作成せずに、Azure AD PowerShell を使用するなど、異なる経路でサービス プリンシパルを作成できます。 Azure AD Graph API では、サービス プリンシパルを作成する前に、アプリケーション オブジェクトが必要です。
 * 現在、このような情報の中にはプログラムによって公開されていないものがあります。 次の情報は UI でのみ使用できます。
   * 要求変換ルール
@@ -105,6 +108,7 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
   * [サービス プリンシパル](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>アプリケーションを Azure AD と統合する理由
+
 アプリケーションは、次のような Azure AD が提供するサービスを利用するために Azure AD に追加されます。
 
 * アプリケーションの認証と承認
@@ -116,6 +120,7 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 * アプリケーションの発行とプロキシ。プライベート ネットワークからインターネットにアプリケーションを発行します。
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Azure AD インスタンスにアプリケーションを追加する権限のあるユーザー
+
 グローバル管理者のみが実行できるタスクがいくつかありますが (アプリ ギャラリーからアプリケーションを追加する、アプリケーション プロキシを使用するようにアプリケーションを構成するなど)、既定で、ディレクトリ内のすべてのユーザーは、開発中のアプリケーション オブジェクトを登録する権利を持ち、組織のデータを共有し、アクセス権を付与するアプリケーションについて、同意によって決定することができます。 ディレクトリ内で、アプリケーションにサインインし、同意を許可した最初のユーザーの場合、テナントにサービス プリンシパルが作成されます。それ以外の場合、同意の許可情報は既存のサービス プリンシパルに格納されます。
 
 アプリケーションへの登録と同意をユーザーに許可することは、最初は心配かもいれませんが、以下の点に留意してください。
@@ -132,10 +137,11 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 
 * ユーザーが自分のためにアプリケーションに同意できないようにするには:
   1. Azure Portal で、エンタープライズ アプリケーションの [[ユーザー設定]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) セクションに移動します。
-  2. **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を **[いいえ]** に変更します。 
+  2. **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を **[いいえ]** に変更します。
      
      > [!NOTE]
-     > ユーザーの同意を無効にする場合、ユーザーが新しいアプリケーションを使用する必要があるとき、そのアプリケーションに管理者が同意する必要があります。    
+     > ユーザーの同意を無効にする場合、ユーザーが新しいアプリケーションを使用する必要があるとき、そのアプリケーションに管理者が同意する必要があります。
+
 * ユーザーが自分のアプリケーションを登録できないようにするには:
   1. Azure Portal で、Azure Active Directory の [[ユーザー設定]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) セクションに移動します。
   2. **[ユーザーはアプリケーションを登録できる]** を **[いいえ]** に変更します。
@@ -145,4 +151,3 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
-

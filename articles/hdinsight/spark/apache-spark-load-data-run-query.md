@@ -1,6 +1,6 @@
 ---
 title: 'チュートリアル:Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行 '
-description: Azure HDInsight で Spark クラスターにデータを読み込み、対話型のクエリを実行する方法を説明します。
+description: チュートリアル - Azure HDInsight で Spark クラスターにデータを読み込み、対話型のクエリを実行する方法を説明します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 05/16/2019
-ms.openlocfilehash: 09509b32320fb10b8ab3d563442b6d0fb44ad34e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e4ed8bb2631b4dc2f760dc4d92247377db591160
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65909208"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295704"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行
 

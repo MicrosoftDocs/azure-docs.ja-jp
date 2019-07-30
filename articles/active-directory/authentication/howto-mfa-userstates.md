@@ -11,23 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3928a47abf07ab7e6dad0e0a5883162363805df8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 54146927bf344eed63e24a3df073aa13f7fa0676
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235569"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68319908"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 
 2 段階認証を要求するには、2 つの方法のいずれかを使用できます。いずれの方法も、全体管理者アカウントを使用する必要があります。 1 つ目は、個々のユーザーに Azure Multi-Factor Authentication (MFA) を有効にする方法です。 ユーザーを個別に有効にした場合は、サインインするたびに 2 段階認証が実行されます (信頼済み IP アドレスからサインインするときや、_記憶されたデバイス_ の機能が有効なときなど、一部例外があります)。 2 つ目のオプションは、特定の条件の基で 2 段階認証を要求する条件付きアクセス ポリシーを設定することです。
 
 > [!TIP]
-> 2 段階認証を要求するには、これらの方法のうちの 1 つを選択してください。両方は選択できません。 ユーザーを Azure Multi-Factor Authentication に対して有効にすると、条件付きアクセス ポリシーがすべてオーバーライドされます。
+> 条件付きアクセス ポリシーを使って Azure Multi-Factor Authentication を有効にするのが推奨されるアプローチです。 ライセンスに条件付きアクセスが含まれていない場合 (この場合、ユーザーはサインインするたびに MFA を実行する必要があります) を除き、ユーザーの状態を変更することは推奨されなくなりました。
 
 ## <a name="choose-how-to-enable"></a>有効にする方法を選択する
 
-**ユーザーの状態を変更することで有効にする** - 2 段階認証を要求するための従来の方法であり、この記事の中で説明します。 これは、Azure MFA Server とクラウド内の Azure MFA の両方で機能します。 この方法を使用すると、ユーザーはサインインする**たびに** 2 段階認証を実行するよう求められ、条件付きアクセス ポリシーがオーバーライドされます。 これは、Office 365 または Microsoft 365 Business のどちらかのライセンスを持つユーザーのために使用される方法です。これらには、条件付きアクセス機能が含まれていないためです。
+**ユーザーの状態を変更することで有効にする** - 2 段階認証を要求するための従来の方法であり、この記事の中で説明します。 これは、Azure MFA Server とクラウド内の Azure MFA の両方で機能します。 この方法を使用すると、ユーザーはサインインする**たびに** 2 段階認証を実行するよう求められ、条件付きアクセス ポリシーがオーバーライドされます。
 
 条件付きアクセス ポリシーで有効にする - これは、ユーザーに対して 2 段階認証を有効にするための最も柔軟な手段です。 条件付きアクセス ポリシーを使用して有効にする方法は、クラウド内の Azure MFA に対してのみ機能し、Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](howto-mfa-getstarted.md)」を参照してください。
 
@@ -125,7 +125,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 MFA を無効にするには、次のスクリプトを使用します。
 
    ```PowerShell
-   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
    ```
 
 次のように短縮することもできます。

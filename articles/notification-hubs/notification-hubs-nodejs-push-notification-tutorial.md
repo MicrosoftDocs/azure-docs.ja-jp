@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bc5266bc37a0b58913feb08452e173949b64c112
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061597"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706226"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 
@@ -46,7 +46,7 @@ Azure Notification Hubs によって、モバイル デバイスにプッシュ�
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 
-このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]、[Node.js クラウド サービス][Node.js Cloud Service] (Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト][webmatrix]に関する各ページをご覧ください。
+このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite], [Node.js Cloud Service][Node.js Cloud Service] (Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト][webmatrix]に関する各ページをご覧ください。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>アプリケーションを構成して Notification Hubs を使用する
 
@@ -106,7 +106,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** - メッセージの JSON または未加工の文字列ペイロード
 - **Callback** - コールバック関数。
 
-ペイロード形式の詳細については、「 **Implementing GCM Server (GCM サーバーの実装)** 」ドキュメントの「 [Payload (ペイロード)](https://developers.google.com/cloud-messaging/) 」のセクションを参照してください。
+ペイロード形式の詳細については、[ペイロードに関するドキュメント](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)を参照してください。
 
 次のコードは、`NotificationHubService` によって公開されている `GcmService` インスタンスを使用して、登録されているすべてのクライアントにプッシュ通知を送信します。
 

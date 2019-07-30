@@ -6,20 +6,22 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 02/20/2019
-ms.author: ganesr;cherylmc
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 7594261fc8af4e7b392e2f229b28cfee36a52115
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2ff22a3c0087ff7e24517f792ba9abacbae76e3a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366319"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846638"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager テンプレート](expressroute-howto-circuit-resource-manager-template.md)
 > * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
@@ -52,7 +54,7 @@ Get-AzExpressRouteServiceProvider
 
 接続プロバイダーがそこにリストされているかどうかを確認します。 以下の項目は、回線を作成する際に後で必要になるため、書き留めておいてください。
 
-* Name
+* EnableAdfsAuthentication
 * PeeringLocations
 * BandwidthsOffered
 
@@ -78,8 +80,8 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
-> 
-> 
+>
+>
 
 応答にはサービス キーが含まれます。 次のコマンドを実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
@@ -208,8 +210,8 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 > [!IMPORTANT]
 > 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。 サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成して管理します。
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.ExpressRoute 回線への仮想ネットワークのリンク
 次に、ExpressRoute 回線に仮想ネットワークをリンクします。 Resource Manager デプロイ モデルを使用するときは、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
@@ -291,7 +293,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 ダウンタイムなく、次のタスクを実行できます。
 
 * ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にします。
-* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やします。 回線の帯域幅のダウングレードはサポートされていません。 
+* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やします。 回線の帯域幅のダウングレードはサポートされていません。
 * 課金プランを従量制課金データから無制限データに変更します。 無制限データから従量制課金データへの課金プランの変更はサポートされていません。
 * *従来の操作の許可*を有効または無効にできます。
 
@@ -314,8 +316,8 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ### <a name="to-disable-the-expressroute-premium-add-on"></a>ExpressRoute Premium アドオンを無効にするには
 > [!IMPORTANT]
 > 標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗することがあります。
-> 
-> 
+>
+>
 
 次の情報をメモしておきます。
 
@@ -341,7 +343,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 > 既存のポートの容量が不十分な場合、ExpressRoute 回線の再作成が必要になる可能性があります。 その場所に使用可能な追加の容量がない場合、回路をアップグレードすることはできません。
 >
 > 中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
-> 
+>
 
 必要なサイズを決定した後、次のコマンドを使用して、回線のサイズを変更できます。
 
@@ -369,7 +371,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>クラシック環境および Resource Manager 環境へのアクセスを制御するには
-「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。  
+「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
 
 ## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 次の情報をメモしておきます。

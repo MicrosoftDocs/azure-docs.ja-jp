@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: rajanaki
-ms.openlocfilehash: dc15c8935cd3c20037bbed01f0f24cd2b8642045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bde341063fb6742bbe2a92592981d4a2a437d214
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540924"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203429"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Azure Site Recovery のサービスの更新情報
 組織として、機能が停止したときに、それが計画されたものであれ、計画外のものであれ、どのような方法でデータの安全性を確保し、アプリやワークロードの実行状態を維持するかを把握しておく必要があります。 Azure Site Recovery は、サイトがダウンした場合でも利用可能な VM や物理サーバー上でアプリの実行状態を維持することで、BCDR 戦略に貢献します。 VM や物理サーバー上で実行されているワークロードは、プライマリ サイトが利用できなくなった場合でもセカンダリ ロケーションで利用できるように、Site Recovery によってレプリケートされます。 ワークロードは、プライマリ サイトが稼働状態に戻った時点でプライマリ サイトに復元されます。
@@ -33,6 +33,17 @@ Azure Site Recovery は、新機能の追加、サポート マトリックス�
 
 > [!IMPORTANT]
 > アップグレードの正式なサポートは N-4 から N までのバージョンです (N は最新バージョンです)。 N-6 を使用している場合は、まず N-4 にアップグレードしてから、N にアップグレードする必要があります。
+
+## <a name="expiry-of-components"></a>コンポーネントの有効期限
+Site Recovery のお客様は、コンポーネントの有効期限が近づいたとき、または期限が切れたときに、電子メール (登録している場合) またはポータルのコンテナー ダッシュボード上で通知を受け取ります。 Hyper-V VM を保護している場合、現時点ではコンテナー ダッシュボードの通知は利用できません。 また、お客様のシナリオの対応するインフラストラクチャ ビューに移動し、コンポーネントの横の [更新プログラムが利用可能です] ボタンをクリックすると、最新バージョンをダウンロードできるリンクにリダイレクトされます。
+
+コンポーネントの有効期限が近づいたときの電子メール通知の頻度を以下に示します。
+- コンポーネントの有効期限が切れる 60 日前: 2 週間に 1 回
+- 次の 53 日間: 1 週間に 1 回
+- 最終 7 日前:1 日 1 回
+- 有効期限が切れた後: 2 週間に 1 回
+
+
 
 ### <a name="upgrading-when-the-difference-between-current-version-and-latest-released-version-is-greater-than-4"></a>現在のバージョンとリリースされている最新のバージョンの差が 4 を超える場合のアップグレード
 
@@ -118,15 +129,16 @@ Azure Site Recovery は、新機能の追加、サポート マトリックス�
 
 |更新プログラム ロールアップ  |プロバイダー  |統合セットアップ| OVF  |MARS|
 |---------|---------|---------|---------|--------|
+|[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/update-rollup-37-for-azure-site-recovery)     |   5.1.4300.0  |  9.25.5241.1   |  5.1.4300.0  | 2.0.9163.0
 |[更新プログラム ロールアップ 36](https://support.microsoft.com/en-in/help/4503156)     |   5.1.4150.0  |  9.24.5211.1   |  5.1.4150.0  | 2.0.9160.0
 |[更新プログラム ロールアップ 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery)     |   5.1.4000.0  |  9.23.5163.1   |  5.1.4000.0  | 2.0.9156.0
 |[更新プログラム ロールアップ 34](https://support.microsoft.com/en-us/help/4490016/update-rollup-34-for-azure-site-recovery) - ホット フィックス     |   5.1.3950.0  |  9.22.5142.1   |  5.1.3950.0  | 2.0.9155.0
 |[更新プログラム ロールアップ 33](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
 |[更新プログラム ロールアップ 32](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
-|[更新プログラム ロールアップ 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 
 ## <a name="previous-update-rollups"></a>以前の更新プログラム ロールアップ
 
+- [更新プログラム ロールアップ 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)
 - [更新プログラム ロールアップ 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)
 - [更新プログラム ロールアップ 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)
 - [更新プログラム ロールアップ 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)

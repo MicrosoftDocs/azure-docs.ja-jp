@@ -5,7 +5,7 @@ metadata:
   title: データ サイエンス仮想マシンのドキュメント - Azure
   description: データ サイエンス仮想マシン (Azure クラウドでデータ サイエンス専用に構築された実験環境) です。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。
   services: machine-learning
-  author: gopitk
+  author: vijetajo
   manager: cgronlun
   ms.service: machine-learning
   ms.subservice: data-science-vm
@@ -13,7 +13,7 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: gokuma
+  ms.author: vijetaj
 abstract:
   description: データ サイエンスおよびディープ ラーニング仮想マシンは、Azure 上のカスタマイズされた VM イメージであり、高度な分析用のインテリジェントなアプリケーションを構築するためのデータ サイエンス ツールと共に読み込まれます。
 sections:

@@ -1,20 +1,20 @@
 ---
-title: Azure CLI を使用した Azure HDInsight での Apache Spark クラスターの作成
+title: クイック スタート:Azure CLI を使用した Azure HDInsight での Apache Spark クラスターの作成
 description: このクイック スタートでは、Azure CLI を使って、Azure HDInsight に Apache Spark クラスターを作成する方法を示します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 05/09/2019
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9478ca8e1b31c1761e063a6789e96043f9a2c68
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.openlocfilehash: 72bdab9d7fb5c3019d97ffc4c92257c49ec2b8e5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556815"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066244"
 ---
-# <a name="create-an-apache-spark-cluster-in-azure-hdinsight-with-azure-cli"></a>Azure CLI を使用した Azure HDInsight での Apache Spark クラスターの作成
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
 このクイックスタートでは、Azure CLI を使って Azure HDInsight に Apache Spark クラスターを作成する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 [Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
 

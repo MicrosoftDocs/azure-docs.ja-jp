@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:単一ページの Web アプリを作成する - Bing News Search API
-titlesuffix: Azure Cognitive Services
+title: チュートリアル:Bing News Search API を使用して単一ページの Web アプリを作成する
+titleSuffix: Azure Cognitive Services
 description: このチュートリアルを使用して、検索クエリを Bing News API に送信し、Web ページ内に結果を表示できる単一ページの Web アプリケーションを構築します。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 78a985180fb2b665aed75b39acfc4d39ccd04132
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798575"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423607"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>チュートリアル:単一ページの Web アプリの作成
 
@@ -319,7 +319,7 @@ Bing News Search API は、関連する結果を最大で 4 種類返します�
 |-|-|
 |`pivotSuggestions`|元の検索の軸語を別のものに置き換えるクエリです。 たとえば、"赤い花" を検索した場合、"赤" が軸語で、"黄色い花" が候補になる可能性があります。|
 |`queryExpansions`|複数の条件を追加することで、元の検索を絞り込むクエリです。 たとえば、"Microsoft Surface" を検索した場合、クエリが "Microsoft Surface Pro" に拡張される場合があります。|
-|`relatedSearches`|元の検索を入力した他のユーザーが他に入力したことのあるクエリです。 たとえば、"レーニア山" を検索した場合、関連する検索は "セント  ヘレンズ山" となる場合があります。|
+|`relatedSearches`|元の検索を入力した他のユーザーが他に入力したことのあるクエリです。 たとえば、"レーニア山" を検索した場合、関連する検索は "セント ヘレンズ山" となる場合があります。|
 |`similarTerms`|元の検索と似た意味を持つクエリです。 たとえば、"学校" を検索すると、似た用語として "教育" が挙げられる場合があります。|
 
 `renderSearchResults()` で確認したように、`relatedItems` の候補だけがレンダリングされ、結果のリンクはページのサイドバーに配置されます。
@@ -381,7 +381,7 @@ searchItemRenderers = {
 > * 画像およびその画像が含まれるページにリンクされる HTML `<a>` タグをビルドします。
 > * 画像およびその画像が存在するサイトに関する情報を示す説明をビルドします。
 
-サムネイルのサイズは、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 その後、[Bing サムネイル サービス](resize-and-crop-thumbnails.md)から、そのサイズのとおりのサムネイルが提供されます。
+サムネイルのサイズは、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 その後、[Bing サムネイル サービス](../bing-web-search/resize-and-crop-thumbnails.md)から、そのサイズのとおりのサムネイルが提供されます。
 
 ## <a name="persisting-client-id"></a>クライアント ID の永続化
 Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含まれることがあり、このヘッダーは後続の要求で API に送り返す必要があります。 複数の Bing Search API を使用している場合、可能であれば、それらすべてで同じクライアント ID を使用する必要があります。
@@ -397,7 +397,7 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 > [!NOTE]
 > 運用環境の Web アプリケーションでは、要求サーバー側を実行する必要があります。 そうしないと、Web ページに Bing Search API キーを含める必要があり、ソースを表示した人ならだれでもキーを使用できるようになってしまいます。 権限のない者によって行われた要求であっても、すべての利用に対してユーザーの API サブスクリプション キーに基づいて料金が発生するため、キーは公開しないようにする必要があります。
 
-開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 そのようなプロキシからの応答には、応答ヘッダーを許可して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47626cbd8d5b8a5ddf7cc5c6ea42fb9453e5bfb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 822990ebc2eb5edbdbc6611a4f3729bc5cfadc55
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540682"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482898"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
 
@@ -83,7 +83,7 @@ Azure AD テナントによってセキュリティ保護されているリソ�
 - **Contoso** - **HR アプリ**のコンシューマーである Contoso という組織が使用するテナント
 - **Fabrikam** - Contoso と同じく **HR アプリ**のコンシューマーである Fabrikam という組織が使用するテナント
 
-![Relationship between an application object and a service principal object](./media/app-objects-and-service-principals/application-objects-relationship.svg)
+![アプリ オブジェクトとサービス プリンシパル オブジェクトの間のリレーションシップ](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 このサンプル シナリオの内容:
 
@@ -96,8 +96,8 @@ Azure AD テナントによってセキュリティ保護されているリソ�
 ## <a name="next-steps"></a>次の手順
 
 - [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を使用して、アプリケーションとサービス プリンシパル オブジェクトの両方を照会できます。
-- Microsoft Graph API、[Azure portal][AZURE-Portal] のアプリケーション マニフェスト エディター、[Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を使用して、OData [Application エンティティ][MS-Graph-App-Entity]によって表されるアプリケーションのアプリケーション オブジェクトにアクセスできます。
-- Microsoft Graph API または [Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を通じて、OData [ServicePrincipal エンティティ][MS-Graph-Sp-Entity]によって表されるアプリケーションのサービス プリンシパル オブジェクトにアクセスできます。
+- Microsoft Graph API、[Azure portal][AZURE-Portal] のアプリケーション マニフェスト エディター、[Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を使用して、その OData [Application エンティティ][MS-Graph-App-Entity]によって表されるアプリケーションのアプリケーション オブジェクトにアクセスできます。
+- Microsoft Graph API または [Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を通じて、その OData [ServicePrincipal エンティティ][MS-Graph-Sp-Entity]によって表されるアプリケーションのサービス プリンシパル オブジェクトにアクセスできます。
 
 <!--Image references-->
 

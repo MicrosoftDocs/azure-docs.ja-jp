@@ -1,6 +1,6 @@
 ---
 title: Azure Files のパフォーマンスのトラブルシューティング ガイド
-description: Azure Premium ファイル共有 (プレビュー) のパフォーマンスに関する既知の問題と、関連付けられている回避策。
+description: Azure ファイル共のパフォーマンスに関する既知の問題と、関連する回避策。
 services: storage
 author: gunjanj
 ms.service: storage
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c35501f3afbeed519fb5304229f25be1cbd5f9b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190049"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445670"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure Files のパフォーマンスに関する問題のトラブルシューティング
 
-この記事では、Premium Azure ファイル共有 (プレビュー) に関連した一般的な問題を示します。 これらの問題が発生した場合に考えられる原因と回避策を提示します。
+この記事では、Azure ファイル共有に関連する一般的な問題を示します。 これらの問題が発生した場合に考えられる原因と回避策を提示します。
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高待機時間、低スループット、および全般的なパフォーマンスの問題
 
 ### <a name="cause-1-share-experiencing-throttling"></a>原因 1:共有でのスロットルの発生
 
-共有の既定のクォータは 100 GiB であり、これは 100 ベースライン IOPS (1 時間に最高 300 のバーストの可能性あり) を提供します。 プロビジョニングとその IOPS との関係の詳細については、プランニング ガイドの[プロビジョニング済みの共有](storage-files-planning.md#provisioned-shares)に関するセクションを参照してください。
+Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベースライン IOPS (1 時間に最高 300 のバーストの可能性あり) を提供します。 プロビジョニングとその IOPS との関係の詳細については、プランニング ガイドの[プロビジョニング済みの共有](storage-files-planning.md#provisioned-shares)に関するセクションを参照してください。
 
 共有がスロットルされているかどうかを確認するには、ポータルで Azure メトリックスを利用できます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "65190049"
 
 1. メトリックとして **[トランザクション]** を選択します。
 
-1. **ResponseType** のフィルターを追加し、要求に **SuccessWithThrottling** の応答コードがあるかどうかを調べます。
+1. **ResponseType** のフィルターを追加し、要求に **SuccessWithThrottling** (SMB の場合) または **ClientThrottlingError** (REST の場合) の応答コードがあるかどうかを調べます。
 
 ![Premium ファイル共有のメトリック オプション](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -72,11 +72,11 @@ ms.locfileid: "65190049"
 
 ### <a name="cause"></a>原因
 
-クライアント VM が、Premium ファイル共有と異なるリージョンに置かれている可能性があります。
+クライアント VM がファイル共有とは異なるリージョンに置かれている可能性があります。
 
 ### <a name="solution"></a>解決策
 
-- Premium ファイル共有と同じリージョンに配置されている VM からアプリケーションを実行します。
+- ファイル共有と同じリージョンに配置されている VM からアプリケーションを実行します。
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>ネットワークでサポートされている最大スループットを達成できないクライアント
 
@@ -121,6 +121,10 @@ CentOS/RHEL では、1 未満の IO の深さはサポートされていませ�
 
 - CentOS 8/RHEL 8 にアップグレードします。
 - Ubuntu に変更します。
+
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux で Azure Files との間でのファイルのコピーが遅い
+
+Azure Files との間で低速なファイルのコピーが発生する場合は、Linux トラブルシューティング ガイドの「[Linux で Azure Files との間でのファイルのコピーが遅い](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux)」というセクションに目を通してください。
 
 ## <a name="jitterysaw-tooth-pattern-for-iops"></a>IOPS のジッター/のこぎり歯パターン
 

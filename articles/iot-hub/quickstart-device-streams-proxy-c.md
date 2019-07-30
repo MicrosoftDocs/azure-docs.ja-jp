@@ -1,21 +1,20 @@
 ---
 title: SSH および RDP 用の Azure IoT Hub デバイス ストリームの C クイックスタート (プレビュー) | Microsoft Docs
 description: このクイックスタートでは、IoT Hub デバイス ストリームを介した SSH および RDP シナリオを有効にするためにプロキシとして機能するサンプル C アプリケーションを実行します。
-author: rezasherafat
-manager: briz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
-ms.author: rezas
-ms.openlocfilehash: e21d7381831553f8d82b00d9ed3be0b03f13bca9
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.author: robinsh
+ms.openlocfilehash: 23a005ebb16f4786c7dde9ec5b2a7ae7c5685cb8
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735120"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377233"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -150,7 +149,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-device-local-proxy-application"></a>デバイスローカルのプロキシ アプリケーションの実行
 
-1. *iothub_client/samples/iothub_client_c2d_streaming_sample* フォルダーの *iothub_client_c2d_streaming_sample.c* ソース ファイルを編集して、デバイス接続文字列、ターゲット デバイス IP またはホスト名、SSH ポート 22 を指定します。
+1. *iothub_client/samples/iothub_client_c2d_streaming_proxy_sample* フォルダーの *iothub_client_c2d_streaming_proxy_sample.c* ソース ファイルを編集して、デバイス接続文字列、ターゲット デバイス IP またはホスト名、SSH ポート 22 を指定します。
 
    ```C
    /* Paste in your iothub connection string  */

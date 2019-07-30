@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201512"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620524"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -138,7 +138,8 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 10. しばらく待つと、**デプロイが成功した**ことを確認する通知が表示されます。
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Azure Stream Analytics TollApp リソースの確認
-1. Azure Portal にログインする
+
+1. Azure portal にサインインします
 
 2. 前のセクションで名前を付けたリソース グループを見つけます。
 
@@ -163,7 +164,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
    このクエリの意図は、料金所ブースに入る車両の台数をカウントする必要があると言い換えることができます。 高速道路の料金所ブースには車両が次々と入ってくるため、これらの入り口イベントは、止まることがない流れに似ています。 この流れを定量化するには、測定する "期間" を定義する必要があります。 質問を "3 分間で料金所ブースに入る車両は何台あるか" に絞り込んでみましょう。 これを一般に "タンブリング カウント" といいます。
 
-   ご覧のとおり、Azure Stream Analytics には SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定するための拡張機能がいくつか追加されています。  詳細については、クエリで使われる[時間管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)と[時間枠](https://msdn.microsoft.com/library/azure/dn835019.aspx)コンストラクトをご覧ください。
+   ご覧のとおり、Azure Stream Analytics には SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定するための拡張機能がいくつか追加されています。  詳細については、クエリで使われる[時間管理](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)と[時間枠](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)コンストラクトをご覧ください。
 
 3. TollApp サンプル ジョブの入力を調べます。 現在のクエリでは、EntryStream 入力だけが使用されています。
    - **EntryStream** 入力は、車両が高速道路の料金所ブースに入ったことを表すデータをキュー処理する Event Hub 接続です。 このイベントは、サンプルの一部である Web アプリによって作成され、そのデータが Event Hub でキュー処理されます。 この入力がストリーミング クエリの FROM 句でクエリ処理されることに注意してください。
@@ -171,7 +172,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
    - **Registration** 入力は、Azure BLOB ストレージ接続であり、静的な registration.json ファイルを指し、必要に応じて検索で使用されます。 この参照データ入力は、後述するさまざまなクエリの構文で使用されます。
 
 4. TollApp サンプル ジョブの出力を調べます。
-   - **Cosmos DB** 出力は、出力シンク イベントを受信する Cosmos データベースのコレクションです。 この出力は、ストリーミング クエリの INTO 句で使用されることに注意してください。
+   - **Cosmos DB** 出力は、出力シンク イベントを受信する Cosmos データベースのコンテナーです。 この出力は、ストリーミング クエリの INTO 句で使用されることに注意してください。
 
 ## <a name="start-the-tollapp-streaming-job"></a>TollApp ストリーミング ジョブを開始する
 ストリーミング ジョブを開始するには、次の手順に従います。

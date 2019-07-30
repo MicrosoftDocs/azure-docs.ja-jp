@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 01/24/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 9aa5b85a00de495478897ec70393f6c22ee20fc5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 27471f07438bac7f40e6047306aac7d2658ee519
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788749"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249674"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート:Python を使用して QnA Maker のナレッジ ベースを作成する
 

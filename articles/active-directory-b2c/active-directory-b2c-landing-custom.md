@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 5/06/2017
+ms.date: 05/06/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e981905854f6810581f081689694d28c034f2f72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9090bb6fefd727595a3e2c05db5e86ec2df31c8c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509903"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654096"
 ---
 # <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタムポリシーを使用して、アプリケーションでコンシューマーのサインアップおよびサインインを実行する
 

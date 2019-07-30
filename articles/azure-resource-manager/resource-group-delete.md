@@ -1,23 +1,18 @@
 ---
 title: リソース グループとリソースを削除する - Azure Resource Manager
 description: リソース グループを削除するときに、Azure Resource Manager によってリソースの削除がどのように並べ替えられるかについて説明します。 応答コードと、削除が成功したかを判断するために Resource Manager によって応答コードが処理される方法について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: c38b1ccf7f7ccfe57e2b29f236f642238c4706a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18990b51b5ff2184197db48fd139d63750626663
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363656"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204203"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Azure Resource Manager によるリソース グループの削除
 

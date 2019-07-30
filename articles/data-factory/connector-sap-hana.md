@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60343768"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-sap-hana-connector.md)
 > * [現在のバージョン](connector-sap-hana.md)
 
@@ -59,7 +59,7 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**SapHana** | はい |
-| server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | はい |
+| サーバー | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | はい |
 | authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows** | はい |
 | userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |
 | password | ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
@@ -162,23 +162,23 @@ SAP HANA からデータをコピーするとき、次の SAP HANAのデータ�
 
 | SAP HANA のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| ALPHANUM | String |
+| ALPHANUM | string |
 | BIGINT | Int64 |
 | BLOB | Byte[] |
 | BOOLEAN | Byte |
 | CLOB | Byte[] |
-| DATE | Datetime |
+| DATE | DateTime |
 | DECIMAL | Decimal |
 | DOUBLE | Single |
 | INT | Int32 |
-| NVARCHAR | String |
+| NVARCHAR | string |
 | REAL | Single |
-| SECONDDATE | Datetime |
+| SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| TIME | timespan |
-| TIMESTAMP | Datetime |
+| TIME | TimeSpan |
+| TIMESTAMP | DateTime |
 | TINYINT | Byte |
-| VARCHAR | String |
+| VARCHAR | string |
 
 ## <a name="known-limitations"></a>既知の制限事項
 

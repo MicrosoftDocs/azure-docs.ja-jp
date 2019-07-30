@@ -3,17 +3,17 @@ title: 汎用の Node.js クライアント アプリケーションを Azure Io
 description: デバイス開発者として、汎用の Node.js デバイスを Azure IoT Central アプリケーションに接続する方法。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/05/2019
+ms.date: 06/14/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 90e4a061e38fdd3a13a640363069fae3a18e0b49
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888943"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444242"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
@@ -68,6 +68,18 @@ Azure IoT Central アプリケーションでは、次の測定値、デバイ�
 
 > [!NOTE]
 > イベント測定のデータ型は文字列です。
+
+### <a name="location-measurements"></a>場所測定
+
+**[Measurements]\(測定)** ページで、次の場所測定を追加します。
+
+| 表示名 | フィールド名  |
+| ------------ | ----------- |
+| Location     | location    |
+
+場所測定のデータ型は、経度と緯度用の 2 つの浮動小数点数と、高度用の省略可能な浮動小数点数で構成されています。
+
+デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、場所をアプリケーションに表示できません。
 
 ### <a name="device-properties"></a>デバイスのプロパティ
 
@@ -144,12 +156,14 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
     ```javascript
     var connectionString = '{your device connection string}';
     var targetTemperature = 0;
+    var locLong = -122.1215;
+    var locLat = 47.6740;
     var client = clientFromConnectionString(connectionString);
     ```
 
     プレースホルダー `{your device connection string}` を[デバイスの接続文字列](tutorial-add-device.md#generate-connection-string)に更新します。 このサンプルでは、`targetTemperature` を 0 に初期化します。デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。
 
-1. テレメトリ、状態、およびイベント測定を Azure IoT Central アプリケーションに送信するには、ファイルに次の関数を追加します。
+1. テレメトリ、状態、イベント、および場所測定を Azure IoT Central アプリケーションに送信するには、ファイルに次の関数を追加します。
 
     ```javascript
     // Send device measurements.
@@ -158,12 +172,18 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
       var humidity = 70 + (Math.random() * 10);
       var pressure = 90 + (Math.random() * 5);
       var fanmode = 0;
+      var locationLong = locLong - (Math.random() / 100);
+      var locationLat = locLat - (Math.random() / 100);
       var data = JSON.stringify({
         temperature: temperature,
         humidity: humidity,
         pressure: pressure,
         fanmode: (temperature > 25) ? "1" : "0",
-        overheat: (temperature > 35) ? "ER123" : undefined });
+        overheat: (temperature > 35) ? "ER123" : undefined,
+        location: {
+            lon: locationLong,
+            lat: locationLat }
+        });
       var message = new Message(data);
       client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
@@ -320,6 +340,10 @@ Azure IoT Central アプリケーションのオペレーターとして、実�
 * **[Measurements] (測定)** ページで、テレメトリを表示します。
 
     ![利用統計情報データを表示する](media/howto-connect-nodejs/viewtelemetry.png)
+
+* **[Measurements]\(測定\)** ページで、場所を表示します。
+
+    ![場所測定を表示する](media/howto-connect-nodejs/viewlocation.png)
 
 * **[プロパティ]** ページで、デバイスから送信されたデバイス プロパティ値を表示します。 デバイスを接続すると、デバイスのプロパティ タイルが更新されます。
 

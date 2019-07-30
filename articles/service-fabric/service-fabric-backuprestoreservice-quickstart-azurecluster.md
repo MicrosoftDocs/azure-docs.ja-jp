@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: e81cc1b3d80afd39a74c3046b1f8020e0a524ae4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237380"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059187"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元 
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 - バックアップの保有期間を管理する (予定)
 
 ## <a name="prerequisites"></a>前提条件
-* Service Fabric のバージョンが 6.2 以降の Fabric クラスター。 クラスターは、Windows Server 上に設定されている必要があります。 Azure リソース テンプレートを使用して Service Fabric クラスターを作成する手順については、こちらの[記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
+* Service Fabric のバージョンが 6.4 以降の Fabric クラスター。 Azure リソース テンプレートを使用して Service Fabric クラスターを作成する手順については、こちらの[記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得または作成する方法については、[こちらの記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
 * Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 .NET Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
 * アプリケーションのバックアップを保存するための Azure ストレージ アカウントを作成します。

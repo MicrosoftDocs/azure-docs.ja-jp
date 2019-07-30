@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca66a41f26c54bf04273682d14889a36b688c70
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2343a416bd810792e7267b94395f953aa4f880a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080135"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111200"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデスクトップ アプリ - 運用環境への移行
 

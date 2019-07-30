@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 5db2a1eebd5b2184ceff8793cb51f4e95b9dea38
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1dd54adeffab80d4334d8f08733cfd6603f673d3
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067589"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606315"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>クイック スタート: .NET Core を使用してテキストを音声に変換する
 

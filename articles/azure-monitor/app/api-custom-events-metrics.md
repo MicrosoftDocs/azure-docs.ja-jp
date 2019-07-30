@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6e20aef77625fe426526884c3fcee83019afd0c0
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299245"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154775"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 テレメトリは、[Application Insights Analytics](analytics.md) の `customEvents` テーブルにあります。 各行は、アプリでの `trackEvent(..)` に対する呼び出しを表します。
 
-[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、`customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
+[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、したがって `customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -249,7 +249,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric は、.NET SDK では非推奨です。 メトリックは送信される前に必ず、ある期間にわたって事前に集計される必要があります。 GetMetric(..) オーバーロードのいずれかを使用して、SDK の事前集計機能にアクセスするためのメトリック オブジェクトを取得します。 独自の事前集計ロジックを実装する場合は、Track(ITelemetry metricTelemetry) メソッドを使用して集計結果を送信できます。 アプリケーションで、一定時間にわたる集計を行わず、すべての機会に個別のテレメトリ項目を送信する必要がある場合は、おそらくイベント テレメトリのユース ケースに該当します。TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry) を参照してください。
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric は、メトリックを送信するための推奨されるメソッドではありません。 メトリックは送信される前に必ず、ある期間にわたって事前に集計される必要があります。 GetMetric(..) オーバーロードのいずれかを使用して、SDK の事前集計機能にアクセスするためのメトリック オブジェクトを取得します。 独自の事前集計ロジックを実装する場合は、TrackMetric() メソッドを使用して集計結果を送信できます。 アプリケーションで、一定時間にわたる集計を行わず、すべての機会に個別のテレメトリ項目を送信する必要がある場合は、おそらくイベント テレメトリのユース ケースに該当します。TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry) を参照してください。
 
 Application Insights では、特定のイベントに関連付けられていないメトリックをグラフ化できます。 たとえば、一定の間隔でキューの長さを監視できます。 メトリックでは、個々の測定値は変化と傾向よりも関心が薄いため、統計グラフが役に立ちます。
 

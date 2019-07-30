@@ -3,20 +3,20 @@ title: 信頼度スコア - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 信頼度スコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
+ms.date: 06/17/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4fb5d1e20c4c857dedcec2dc4695f82fccd9269d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c14c607e4c563bbeeaff02b2c2478cc4b4d96ee5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792742"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165137"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。 
@@ -56,6 +56,12 @@ ms.locfileid: "65792742"
 
 > [!NOTE]
 > QnA Maker の新しいバージョンにはスコアリング ロジックの機能強化が含まれ、しきい値に影響を与える可能性があります。 サービスを更新するときは常に、テストを行い、必要に応じてしきい値を調整してください。 お使いの QnA サービスのバージョンは、[こちら](https://www.qnamaker.ai/UserSettings)で確認できます。最新の更新プログラムの入手方法については、[こちら](../How-To/troubleshooting-runtime.md)をご覧ください。
+
+## <a name="set-threshold"></a>しきい値の設定 
+
+しきい値のスコアは、[GenerateAnswer API JSON 本文](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)のプロパティとして設定します。 つまり、GenerateAnswer を呼び出すたびに設定します。 
+
+ボット フレームワークからは、[C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) または [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs) で options オブジェクトの一部としてスコアを設定します。
 
 ## <a name="improve-confidence-scores"></a>信頼度スコアの向上
 ユーザー クエリに対する特定の応答の信頼度スコアを上げるには、その応答に対する代替質問として、ユーザー クエリをナレッジ ベースに追加できます。 大文字と小文字が区別される[単語変更](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)を使用して、KB のキーワードにシノニムを追加することもできます。

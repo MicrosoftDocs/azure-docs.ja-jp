@@ -4,7 +4,7 @@ description: Azure での Windows Server フェールオーバー クラスタ�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32905f6d505f83ead805550205df0daf6be501e5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60651717"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710122"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -199,7 +199,7 @@ ms.locfileid: "60651717"
 > ![Windows][Logo_Windows] Windows
 >
 
-[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できます。 
+[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して、複数の仮想 IP アドレスを管理できます。 
 
 SAP がデプロイされている場合は、内部ロード バランサーを使って SAP Central Services (ASCS/SCS) インスタンスの Windows クラスター構成を作成できます。
 
@@ -216,7 +216,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 > このドキュメントで紹介されている構成を [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) で使用することはまだサポートされていません
 > 
 
-ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。 Azure Load Balancer の Basic SKU の代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用することも検討してください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]。 Azure Load Balancer の Basic SKU の代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用することも検討してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -256,7 +256,7 @@ _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 * DNS サーバーのクラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名を作成します。
 * PowerShell を使って既存の Azure 内部ロード バランサーに IP アドレスを追加します。
 
-これらの手順については、「[SAP マルチ SID シナリオ用のインフラストラクチャの準備][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare]」をご覧ください。
+これらの手順については、[SAP マルチ SID シナリオ用のインフラストラクチャの準備][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare]に関するページをご覧ください。
 
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>既存の SAP グローバル ホストを使って SOFS クラスターでインフラストラクチャを準備する

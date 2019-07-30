@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/31/2019
+ms.date: 07/10/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 4795952faa91d62b76f267795660db5ab4075e79
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: ebc3d988afd9257bbdf045814877ab70012836aa
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734492"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225114"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート:Service Fabric に Windows コンテナーをデプロイする
 
@@ -44,7 +44,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 * Azure サブスクリプション ([無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成できます)。
 * 次のものを実行している開発コンピューター。
-  * Visual Studio 2015 または Windows 2019。
+  * Visual Studio 2019 または Windows 2019。
   * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
 
 ## <a name="package-a-docker-image-container-with-visual-studio"></a>Visual Studio で Docker イメージ コンテナーをパッケージ化する
@@ -53,7 +53,7 @@ Service Fabric SDK およびツールには、コンテナーを Service Fabric 
 
 "管理者" として Visual Studio を起動します。  **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
 
-**[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、 **[OK]** をクリックします。
+**[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、 **[作成]** をクリックします。
 
 **[ホスト コンテナーとアプリケーション]** テンプレートから **[コンテナー]** を選択します。
 

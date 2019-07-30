@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Node.js を使ってニュース検索を実行する - Bing News Search REST API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Node.js を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 86c00242d2d7dbb9441b09dc327e4ee8cbbd729b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 501ae6107232287011388bb67e64a1ae3fe5f7e3
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099969"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423730"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>クイック スタート:Node.js と Bing News Search REST API を使用してニュース検索を実行する
 

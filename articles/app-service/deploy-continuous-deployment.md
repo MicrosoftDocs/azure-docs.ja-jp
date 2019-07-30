@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
-ms.author: cephalin;dariagrigoriu
+ms.author: cephalin
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 384f709bb32f973efec39518eaa895e25136fe23
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 13aaccdbc07f7829d6ac9870fbc46f7d78381db8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390647"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617259"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 この記事では、[Azure App Service](overview.md) の継続的デプロイを構成する方法を示します。 App Service は、BitBucket、GitHub、および [Azure DevOps Services](https://www.visualstudio.com/team-services/) の既存のリポジトリから最新の更新プログラムをプルすることで、これらのサービスから継続的デプロイを実行できます。

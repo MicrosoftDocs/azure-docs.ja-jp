@@ -7,14 +7,14 @@ ms.service: storage
 ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: seguler
+ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 4b47af857fada453e36fcb0c23e6d89e5ad90e42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54e91d4df1109b9ece1150f8b44665789e4dfce1
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154340"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875881"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要

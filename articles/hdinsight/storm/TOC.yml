@@ -9,20 +9,20 @@
   items:
     - name: HDInsight での Apache Storm トポロジの作成
       href: ./apache-storm-quickstart.md
-- name: 作業開始
+- name: チュートリアル
   items:
-    - name: Apache Storm クラスターを作成する
-      href: apache-storm-tutorial-get-started-linux.md
-    - name: HDInsight アプリをインストールする
-      href: ../hdinsight-apps-install-applications.md
-    - name: 容量計画
-      href: ../hdinsight-capacity-planning.md
+    - name: Apache Storm を使用してストレージに書き込む
+      href: apache-storm-write-data-lake-store.md
 - name: 概念
   items:
     - name: HDInsight の Apache Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: HDInsight アプリをインストールする
+      href: ../hdinsight-apps-install-applications.md
+    - name: 容量計画
+      href: ../hdinsight-capacity-planning.md
 - name: 方法
   items:
     - name: Apache Storm トポロジの開発
@@ -47,10 +47,6 @@
           href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
         - name: 'Event Hubs と Apache Storm (C# および Java)'
           href: apache-storm-develop-csharp-event-hub-topology.md
-        - name: Azure Storage/Data Lake Storage (Java)
-          href: apache-storm-write-data-lake-store.md
-        - name: Event Hubs、Apache HBase (Java)
-          href: apache-storm-sensor-data-analysis.md
     - name: クラスターを拡張する
       items:
         - name: ブートストラップを使用してクラスターをカスタマイズする
@@ -220,10 +216,14 @@
       items:
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight 用の VNET の計画
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight 用の VNET の作成
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG と UDR に必要な IP アドレス
+          href: ../hdinsight-management-ip-addresses.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet の HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
     - name: Azure Monitor ログを使用した監視

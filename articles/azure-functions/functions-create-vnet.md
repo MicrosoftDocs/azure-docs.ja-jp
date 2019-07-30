@@ -7,13 +7,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
-ms.author: alkarche, glenga
-ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: alkarche
+ms.reviewer: glenga
+ms.openlocfilehash: 0a31b58a3c843a2add0c84dc1a3ad4ab6417815e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063279"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612883"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>チュートリアル: Functions を Azure 仮想ネットワークに統合する
 

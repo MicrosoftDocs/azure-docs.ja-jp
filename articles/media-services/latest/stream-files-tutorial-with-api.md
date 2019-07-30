@@ -1,6 +1,6 @@
 ---
-title: .NET を使用して Azure Media Services v3 でアップロード、エンコード、ストリーム配信する | Microsoft Docs
-description: .NET を使用して Media Services v3 によるファイルのアップロード、ビデオのエンコード、コンテンツのストリーム配信を行うには、このチュートリアルの手順のようにします。
+title: Azure Media Services v3 を使用してアップロード、エンコード、ストリーム配信する | Microsoft Docs
+description: Media Services v3 を使用してファイルのアップロード、ビデオのエンコード、コンテンツのストリーム配信を行うには、このチュートリアルの手順に従います。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,14 +12,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 66ee2c110edfdbd0e33c69d45dee8040654d421a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5b359b81de694c47151c95254b80f847db828aed
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149156"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653930"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する
+# <a name="tutorial-upload-encode-and-stream-videos"></a>チュートリアル:ビデオのアップロード、エンコード、ストリーミング
+
+> [!NOTE]
+> このチュートリアルでは [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) の例を使用していますが、全体的な手順は [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)、またはその他のサポートされている [SDK](media-services-apis-overview.md#sdks) で同じです。
 
 Azure Media Services では、メディア ファイルをさまざまなブラウザーおよびデバイスで再生できる形式にエンコードすることができます。 たとえば、Apple の HLS または MPEG DASH 形式のコンテンツをストリーム配信することが必要な場合があります。 ストリーム配信する前に、高品質のデジタル メディア ファイルをエンコードする必要があります。 エンコードのガイダンスについては、[エンコードの概念](encoding-concept.md)に関する記事をご覧ください。 このチュートリアルでは、ローカルのビデオ ファイルをアップロードし、アップロードされたファイルをエンコードします。 HTTPS URL を使用してアクセスできるようにするコンテンツをエンコードすることもできます。 詳しくは、「[HTTP URL からジョブの入力を作成する」](job-input-from-http-how-to.md)をご覧ください。
 
@@ -83,7 +86,7 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 後で示す関数は、次の処理を実行します。
 
 * **アセット**を作成する 
-* 書き込み可能な [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) をアセットの[ストレージ内のコンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)に取得する
+* 書き込み可能な [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) をアセットの[ストレージ内のコンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)に取得する
 * SAS URL を使用してストレージ内のコンテナーにファイルをアップロードする
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

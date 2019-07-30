@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: da59e9bb5cfffea734cb1dc4725cef9ea6296aa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a63914116f5ef9922ac05745764e0ad505dc3c91
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872928"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593945"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Azure CDN を使用した中国へのコンテンツ配信
 

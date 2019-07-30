@@ -6,12 +6,13 @@ author: vhorne
 ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
-ms.openlocfilehash: 7c30e0aa0ae9735f5d08e1a2c4d6e6d36d778e27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.openlocfilehash: 4c6ccce493ffb25d7a2237e0d98a2b71b35c92c1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410242"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620994"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う
 
@@ -38,7 +39,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * テスト ネットワーク環境を設定する
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
-> * www.google.com へのアクセスを許可するようにアプリケーションを構成する
+> * [www.google.com]\(www.google.com) へのアクセスを許可するようにアプリケーションを構成する
 > * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
 > * ファイアウォールをテストする
 

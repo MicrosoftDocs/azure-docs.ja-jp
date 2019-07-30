@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d364da9506124a35c724209c68ff72db4243e80
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952145"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341569"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
 
@@ -114,16 +114,18 @@ Security Center に組み込まれた次のアラート マップ機能を使用
 
 ## カスタムのアラート ルール (プレビュー)<a name="menu_customalerts"></a>
 
-基盤となるインフラストラクチャが廃止されることから、2019 年 6 月 30 日をもって[カスタム アラートは廃止](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)されます。 それまでは、既存のカスタム アラート規則の編集はできますが、新しい規則の追加はできません。 [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) を有効にして、既存のアラートを自動的に移行し、新しいアラートを作成することをお勧めします。 Azure Monitor のログ アラートを使用してアラートを作成することもできます。
+基盤となるインフラストラクチャが廃止されることから、2019 年 6 月 30 日をもって[カスタム アラートは廃止](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)されます。 それまでは、既存のカスタム アラート規則の編集はできますが、新しい規則の追加はできません。 廃止日以降、定義されているカスタム アラートは無効になり、これらの規則に基づくセキュリティ アラートは生成されません。
+[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) を有効にして、そこでカスタム アラートを再作成することをお勧めします。 Azure Monitor のログ アラートを使用してアラートを作成することもできます。
 
-既存のアラートを保持し、それらを Azure Sentinel に移行するには:
+既存のアラートを保持し、それらを Azure Sentinel で作成するには:
 
-1. Azure Sentinel を開き、カスタム アラートが保存されているワークスペースを選択します。
-1. メニューから **[Analytics]** を選択してアラートを自動的に移行します。
+1. [Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview) を開き、カスタム アラートが保存されているワークスペースを選択します
+1. メニューの **[分析]** を選択します
+1. Azure Sentinel でカスタム アラートを作成する方法については、次の[チュートリアル](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)の指示に従ってください
+
+Azure Sentinel の使用に関心がない場合は、Azure Monitor のログ アラートでアラートを作成できます。 手順については、「 [Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)」および「[Azure Monitor でのログ アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)」を参照してください。
 
 ![カスタム アラート][13]
-
-Azure Sentinel への移行に関心がない場合は、Azure Monitor のログ アラートを使用してアラートを作成することをお勧めします。 手順については、「 [Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)」および「[Azure Monitor でのログ アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)」を参照してください。
 
 カスタム アラートの廃止について詳しくは、「[Azure Security Center のカスタム アラート ルール (プレビュー)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)」を参照してください。
 

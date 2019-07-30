@@ -56,7 +56,7 @@
           href: active-directory-b2c-overview-custom.md
         - name: ユーザー アクセス
           href: manage-user-access.md
-    - name: JavaScript とページ コントラクト
+    - name: JavaScript とページ レイアウト
       href: user-flow-javascript-overview.md
     - name: OAuth 2.0
       href: active-directory-b2c-reference-oauth-code.md
@@ -142,8 +142,8 @@
               href: active-directory-b2c-custom-setup-msa-idp.md
             - name: Twitter
               href: active-directory-b2c-custom-setup-twitter-idp.md
-        - name: ページ コントラクト
-          href: page-contract.md
+        - name: ページ レイアウト
+          href: page-layout.md
         - name: パスワードの複雑さ
           href: active-directory-b2c-reference-password-complexity-custom.md
         - name: パスワードの変更

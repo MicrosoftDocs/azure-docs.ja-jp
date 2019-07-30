@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b6d38f7755ebd97791959a5a414b09fe4ac769b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574189"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718018"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -80,7 +80,7 @@ Web Apps には Basic 以上の価格レベルを使用してください。 Cle
 はい、Basic シリーズのデータベースはインプレース アップグレードできます (Basic 60 ～ Basic 500)。 Pro シリーズも、Pro 60 を除き、インプレース アップグレードできます (Pro 125 ～ Pro 1000)。 現在、Pro 60 データベースのアップグレードはサポートされていません。 
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>サブスクリプションから別のサブスクリプションにリソースを移行すると、ClearDB MySQL データベースも移行されますか。
-サブスクリプション間でリソースの移行を実行する場合、いくつかの [制限事項](azure-resource-manager/resource-group-move-resources.md#app-service-limitations) が適用されます。 ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。 Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。 事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。 
+サブスクリプション間でリソースの移行を実行する場合、いくつかの [制限事項](azure-resource-manager/move-support-resources.md) が適用されます。 ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。 Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。 事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。 
 
 ## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>サブスクリプションで使用制限に達しました。 制限を削除し、App Service はオンラインになっていますが、データベースにアクセスできません。 ClearDB データベースを再有効化するには、どうしたらいいですか。
 データベースを再有効化するには、[ClearDB サポート](https://www.cleardb.com/developers/help/support)にお問い合わせください。 その際、Azure サブスクリプションの情報とデータベース名をサポートに提供してください。

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8b96c38d5bb24a267ad0203083e485d1780f28c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9eb83c0c42bb1ba3de1aa81ab3d5f339f4d40233
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241478"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433678"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、Microsoft .NET Azure HDInsight アプリケーションを実行できます。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」をご覧ください。 
@@ -28,13 +28,13 @@ ms.locfileid: "66241478"
 * HDInsight クラスター。 [使用に関するチュートリアル](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)をご覧ください。
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Azure AD アプリケーションにロールを割り当てる
-Azure AD アプリケーションに[ロール](../role-based-access-control/built-in-roles.md)を割り当てて、アクションを実行するためのアクセス許可を付与します。 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションはリソース グループとその中のリソースを読み取ることができます)。このチュートリアルでは、リソース グループ レベルでスコープを設定します。 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+Azure AD アプリケーションに[ロール](../role-based-access-control/built-in-roles.md)を割り当てて、アクションを実行するためのアクセス許可を付与します。 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションはリソース グループとその中のリソースを読み取ることができます)。この記事では、リソース グループ レベルでスコープを設定します。 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 **Azure AD アプリケーションに所有者ロールを追加するには**
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[リソース グループ]** を選択します。
-3. このチュートリアルの後半で Hive クエリを実行する HDInsight クラスターを含むリソース グループを選択します。 多数のリソース グループがある場合は、フィルターを使って目的のものを見つけることができます。
+3. この記事の後半で Hive クエリを実行する HDInsight クラスターを含むリソース グループを選択します。 多数のリソース グループがある場合は、フィルターを使って目的のものを見つけることができます。
 4. リソース グループ メニューで **[アクセス制御 (IAM)]** を選択します。
 5. **[ロールの割り当て]** タブを選択して、現在のロールの割り当てを表示します。
 6. ページの上部で、 **[ロールの割り当ての追加]** を選択します。

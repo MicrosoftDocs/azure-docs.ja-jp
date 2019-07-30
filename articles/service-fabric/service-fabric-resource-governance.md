@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: aljo, subramar
-ms.openlocfilehash: e011554e61411fddca034f024c30c2270593e07b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: subramar
+ms.openlocfilehash: a2091ea1f8bf24468e41a88ba247a252c9445f2e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772537"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612805"
 ---
 # <a name="resource-governance"></a>リソース ガバナンス
 

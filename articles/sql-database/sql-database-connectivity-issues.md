@@ -12,13 +12,13 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.date: 06/14/2019
+ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66019816"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144048"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database の接続に関する問題と一時的なエラーに対応する
 
@@ -93,7 +93,7 @@ ADO.NET を使用するクライアントのブロック期間については、
 - **SqlException.Number** = 11001
 - メッセージ:"そのようなホストは不明です"
 
-最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
+最初の再試行の一環として、クライアント コンピューターをネットワークに再接続してから接続を試行することができます。
 
 このテストを実践するには、コンピューターをネットワークから切断した後でプログラムを起動します。 その後プログラムは、ランタイム パラメーターを通じて次の処理を行います。
 

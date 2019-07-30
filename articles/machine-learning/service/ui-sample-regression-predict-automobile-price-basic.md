@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 9dfa4b62f5cb79a5716f6f29651e85d0f8a3a409
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddc7ae10581075127f72dd020c59cf28bbfc9ae2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787856"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606134"
 ---
 # <a name="sample-1---regression-predict-price"></a>サンプル 1 - 回帰: 価格を予測する
 
@@ -88,3 +88,4 @@ ms.locfileid: "65787856"
 - [サンプル 3 - 分類: 信用リスクを予測する](ui-sample-classification-predict-credit-risk-basic.md)
 - [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [サンプル 5 - 分類:顧客離れを予測する](ui-sample-classification-predict-churn.md)
+- [サンプル 6 - 分類:フライトの遅延を予測する](ui-sample-classification-predict-flight-delay.md)

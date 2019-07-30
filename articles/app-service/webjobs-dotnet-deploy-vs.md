@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
-ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 9f4d3ff6fa02369c0e4a01949cc686b842a63a12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: glenga
+ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
+ms.openlocfilehash: e66a2ffa6578ed0c9eb5eb19659adf9ba253bbeb
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808473"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613366"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 

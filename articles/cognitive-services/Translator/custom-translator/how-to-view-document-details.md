@@ -2,19 +2,19 @@
 title: ドキュメントの詳細 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: ドキュメント一覧ページには、ワークスペースの最初の 10 個のドキュメントが表示されます。 各ドキュメントについて、名前、ペアリング、種類、言語、アップロードのタイム スタンプ、およびドキュメントをアップロードしたユーザーのメール アドレスが表示されます。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 0995d65dc9723922a691ff31a422dfa55b35c82c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 267d60c2e9941c66ab128f68bd7aaf1cc54fedd9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384076"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442509"
 ---
 # <a name="view-document-details"></a>ドキュメントの詳細の表示
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 47a573fd4ed4d058b9f9a265c8774f0856371b94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5380713af17a751ab695fee90895b4f6b0d2369b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390093"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542811"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
@@ -39,6 +39,8 @@ Bing Web Search に検索要求を送信すると、応答本文で [`SearchResp
 ```
 
 Bing Web Search から返されるのは、回答のサブセットであるのが一般的です。 たとえば、検索語が *sailing dinghies* であれば、応答には `webPages`、`images`、`rankingResponse` が含まれると考えられます。 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) を使って Web ページを除外した場合を除けば、応答には必ず回答として `webpages` と `rankingResponse` が含まれます。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ## <a name="webpages-answer"></a>webPages 回答
 
@@ -428,10 +430,6 @@ Query: What time is it in the U.S.
     }]
 }, ...
 ```
-
-Bing による修正候補の例を次に示します。
-
-![Bing による修正候補の例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
 ## <a name="response-headers"></a>応答ヘッダー
 

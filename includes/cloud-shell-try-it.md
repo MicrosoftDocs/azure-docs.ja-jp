@@ -2,25 +2,31 @@
 author: sptramer
 ms.service: azure
 ms.topic: include
-ms.date: 05/31/2019
+ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: 8eafa0a07f760c64c45aeaec8876a485ab95d5d7
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 8b2a9561a0933e435649c81334706481531c9ce9
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726747"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67836946"
 ---
-## <a name="open-azure-cloud-shell"></a>Azure Cloud Shell を開く
+## <a name="use-azure-cloud-shell"></a>Azure Cloud Shell を使用する
 
-Azure Cloud Shell は、Azure でホストされる対話型のシェル環境で、ブラウザーを介して使用されます。 Azure Cloud Shell では、`bash` または `PowerShell` のいずれかのシェルを使用して、Azure サービスで動作するさまざまなツールを実行できます。 Azure Cloud Shell にはコマンドがプレインストールされており、ローカル環境に何もインストールしなくても、この記事の内容を実行できるようになっています。
+Azure では、ブラウザーを介して使用できる対話型のシェル環境、Azure Cloud Shell がホストされています。 Cloud Shell では、`bash` と `PowerShell` のいずれかを使用して Azure サービスを操作できます。 ローカル環境に何もインストールしなくても、Cloud Shell にプレインストールされているコマンドを使用して、この記事のコードを実行できます。
 
-この記事に含まれるコードを Azure Cloud Shell で実行するには、Cloud Shell セッションを開き、コード ブロック上の **[コピー]** ボタンを使ってコードをコピーし、__Ctrl + Shift + V__ キー (Windows と Linux) または __command + Shift + V__ キー (macOS) を押して Cloud Shell セッションに貼り付けます。 テキストを貼り付けても自動的には実行されません。コードを実行するには、**Enter** キーを押します。
+Azure Cloud Shell を起動するには:
 
-Azure Cloud Shell は次の方法で起動できます。
-
-|  |   |
+| オプション | 例とリンク |
 |-----------------------------------------------|---|
-| コード ブロックの右上隅にある **[使ってみる]** を選択します。 テキストが自動的に Cloud Shell にコピーされるわけでは__ありません__。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/cli-try-it.png) |
-| ブラウザーで [shell.azure.com](https://shell.azure.com) を開きます。 | [![Azure Cloud Shell の起動ボタン](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
-| [Azure Portal](https://portal.azure.com) の右上隅にあるメニューの **[Cloud Shell]** ボタンを選択します。 | ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| コード ブロックの右上隅にある **[使ってみる]** を選択します。 **[試してみる]** を選択しても、コードは Cloud Shell に自動的にコピーされません。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/cli-try-it.png) |
+| [https://shell.azure.com](https://shell.azure.com) に移動するか、 **[Cloud Shell を起動する]** ボタンを選択して、ブラウザーで Cloud Shell を開きます。 | <a href="https://shell.azure.com" title="Azure Cloud Shell を起動する"><img name="launch-cloud-shell" src="https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/launchcloudshell.png" /></a> |
+| [Azure portal](https://portal.azure.com) の右上にあるメニュー バーの **[Cloud Shell]** ボタンを選択します。 | ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+
+Azure Cloud Shell でこの記事のコードを実行するには:
+
+1. Cloud Shell を起動します。
+1. **[コピー]** ボタンを選択して、コード ブロックをコードにコピーします。 
+1. Windows と Linux では **Ctrl** + **Shift** + **V** キー、macOS では **Cmd** + **Shift** + **V** キーを使用して、コードを Cloud Shell セッションに貼り付けます。 
+1. **Enter** キーを押して、コードを実行します。
+

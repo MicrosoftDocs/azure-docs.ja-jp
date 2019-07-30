@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/30/2019
-ms.openlocfilehash: 47bf59adb33f3685b31430c652b31880d383833e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80d01a360a2f80749bd7fbe7a9aadb9dda1189c6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232648"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706986"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL データベースの復旧
 
@@ -124,7 +124,7 @@ geo リストアは、ホスティング リージョンでのインシデント
 geo セカンダリでのポイントインタイム リストアは、現在はサポートされていません。 ポイントインタイム リストアは、プライマリ データベースでのみ実行できます。 geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](sql-database-disaster-recovery.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> geo リストアは、SQL Database で使用できる最も基本的なディザスター リカバリー ソリューションです。 geo リストアは、自動的に作成される geo レプリケートされたバックアップに依存し、その RPO は 1 時間、推定復旧時間は最大 12 時間です。 地域的な停止後は需要が急激に増加する可能性があるため、目的のデータベースを復元する容量がターゲット リージョンに確保される保証はありません。 比較的小規模なデータベースを使用する、ビジネスに不可欠ではないアプリケーションでは、geo リストアが適切なディザスター リカバリー ソリューションです。 大規模なデータベースを使用し、事業継続性を確保する必要があるビジネスに不可欠アプリケーションの場合は、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用する必要があります。 大幅に低い RPO と RTO が実現され、容量が常に保証されます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
+> geo リストアは、SQL Database で使用できる最も基本的なディザスター リカバリー ソリューションです。 geo リストアは、自動的に作成される geo レプリケートされたバックアップに依存し、その RPO は 1 時間、推定復旧時間は最大 12 時間です。 地域的な停止後は需要が急激に増加する可能性があるため、目的のデータベースを復元する容量がターゲット リージョンに確保される保証はありません。 比較的小規模なデータベースを使用する、ビジネスに不可欠ではないアプリケーションでは、geo リストアが適切なディザスター リカバリー ソリューションです。 大規模なデータベースを使用し、事業継続性を確保する必要があるビジネスに不可欠なアプリケーションの場合は、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用する必要があります。 大幅に低い RPO と RTO が実現され、容量が常に保証されます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Azure portal を使用した geo リストア
 

@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 10dc31e21f20618450de6d99b3fce40d63272d31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88c157c5f37bb0bd1e82225bdacfbd60806bbf8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204375"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620637"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Azure AD Identity Protection からデータを接続する
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 198fedbbd1e97dcda15c9124109e50664f58f8e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d31a6ee13965aa326ab8a71b5b5435025bc26057
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66139718"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705737"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 
@@ -28,7 +28,7 @@ ms.locfileid: "66139718"
 
 Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新しいオプションが `New-AzWebApp` に追加され、異なるリージョンまたは同じリージョンで新たに作成されたアプリに既存の App Service アプリを複製できるようになりました。 このオプションにより、リージョンをまたいでさまざまなアプリを迅速かつ簡単に展開できるようになります。
 
-アプリの複製は、現在、Premium レベルの App Service プランでのみサポートされています。 この新機能には App Service バックアップ機能と同じ制限が適用されます。[Azure App Service でのアプリのバックアップ](manage-backup.md)に関するページを参照してください。
+アプリの複製は、Standard、Premium、Premium V2、および Isolated の各 App Service プランでサポートされています。 この新機能には App Service バックアップ機能と同じ制限が適用されます。[Azure App Service でのアプリのバックアップ](manage-backup.md)に関するページを参照してください。
 
 ## <a name="cloning-an-existing-app"></a>既存のアプリの複製
 シナリオ: ユーザーは、米国中南部リージョンに既存のアプリを持っており、そのコンテンツを米国中北部の新しいアプリに複製したいと考えています。 これを実現するには、PowerShell コマンドレットの Azure Resource Manager バージョンを使って新しいアプリを作成します (`-SourceWebApp` オプションを指定)。
@@ -130,6 +130,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * TiP ルールは複製されない
 * データベースの内容は複製されない
 * 異なるスケール ユニットにクローニングした場合に送信 IP アドレスは変更されない
+* Linux アプリでは利用できない
 
 ### <a name="references"></a>参照
 * [App Service の複製](app-service-web-app-cloning.md)

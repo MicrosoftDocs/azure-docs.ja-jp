@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: enewman
-ms.openlocfilehash: 9848f197800c391285c4065685b910685f0ac64b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60312189"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325250"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Azure DevTest Labs で Service Fabric クラスターがある環境を作成する
 この記事では、Azure DevTest Labs で自己完結型 Service Fabric クラスターがある環境を作成する方法について説明します。 
@@ -87,7 +87,7 @@ DevTest ラボ ページ自体、または DevTest Labs によって提供され
     ![Service Fabric クラスター ページの [開始] コマンドと [停止] コマンド](./media/create-environment-service-fabric-cluster/start-stop-on-cluster-page.png)
 
 ## <a name="configure-auto-startup-and-auto-shutdown-schedule"></a>自動開始と自動シャットダウンのスケジュールを構成する
-Service Fabric クラスターは、スケジュールに従って開始または停止することもできます。 このエクスペリエンスは、ラボの仮想マシンに対するエクスペリエンスに似ています。 コストを削減するために、既定では、ラボで作成されるすべてのクラスターは、ラボの[シャットダウン ポリシー](devtest-lab-get-started-with-lab-policies.md#set-auto-shutdown)に定義された時刻に自動的にシャットダウンされます。 クラスターをシャットダウンするかどうかを指定する、またはクラスターのシャットダウン時刻を指定することで上書きできます。 
+Service Fabric クラスターは、スケジュールに従って開始または停止することもできます。 このエクスペリエンスは、ラボの仮想マシンに対するエクスペリエンスに似ています。 コストを削減するために、既定では、ラボで作成されるすべてのクラスターは、ラボの[シャットダウン ポリシー](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy)に定義された時刻に自動的にシャットダウンされます。 クラスターをシャットダウンするかどうかを指定する、またはクラスターのシャットダウン時刻を指定することで上書きできます。 
 
 ![自動開始と自動シャットダウンを実行する既存のスケジュール](./media/create-environment-service-fabric-cluster/existing-schedules.png)
 

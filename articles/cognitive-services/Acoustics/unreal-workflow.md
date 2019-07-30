@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784678"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477825"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Project Acoustics Unreal/Wwise のデザイン チュートリアル
 このチュートリアルでは、Unreal と Wwiseにおける Project Acoustics のデザイン セットアップとワークフローについて説明します。
@@ -90,7 +90,7 @@ Acoustics Space アクターは、システムの動作を変更し、デバッ�
 * **統計の描画:** UE の `stat Acoustics` は CPU 情報を提供しますが、この状態表示では、現在ロードされている ACE ファイル、RAM 使用量、およびその他の状態情報が画面の左上に表示されます。
 * **ボクセルの描画:** ランタイム補間中に使用されたボクセル グリッドを示す、リスナーに近いボクセルをオーバーレイします。 エミッタがランタイム ボクセル内にあると、音響クエリは失敗します。
 * **プローブの描画:** このシーンのすべてのプローブを表示します。 負荷状態に応じて異なる色があります。
-* **距離の描画:**[距離の更新] が有効になっている場合、リスナーの周囲の量子化された方向にいるリスナーに最も近いサーフェス上に、ボックスが表示されます。
+* **距離の描画:** [距離の更新] が有効になっている場合、リスナーの周囲の量子化された方向にいるリスナーに最も近いサーフェス上に、ボックスが表示されます。
 
 ## <a name="actor-specific-acoustics-design-controls"></a>アクター固有の音響設計コントロール
 これらの設計コントロールは、Unreal の個々のオーディオ コンポーネントを対象としています。
@@ -122,6 +122,11 @@ Acoustics Space アクターはブループリントからアクセス可能で�
 タイル サイズは [タイルの強制読み込み] を呼び出す前に設定されている必要があります。 たとえば、ACE ファイルをロードし、タイル サイズを設定し、領域でストリーミングするには、次のようにします。
 
 ![Unreal のストリーミング設定オプションのスクリーンショット](media/streaming-setup.png)
+
+この例で使用されている Load Acoustics Data ブループリント関数には、次のパラメーターがあります。
+
+* **ターゲット:** AcousticsSpace アクター。
+* **[New Bake]\(新しいベイク\):** 読み込む音響データ資産。 これを空白のままにするか、null に設定すると、新しいベイクが読み込まれず、現在のベイクがアンロードされます。
 
 ### <a name="optionally-query-for-surface-proximity"></a>オプションでサーフェスの近接をクエリする
 サーフェスがリスナーの周囲の特定の方向にどれだけ近づいているかを知りたい場合は、[距離のクエリ] 機能を使用できます。 この機能は、指向性の遅延反射を実施する場合や、サーフェスの近接によって実施されるその他のゲーム ロジックに役立ちます。 クエリは音響ルックアップ テーブルから取得されるため、クエリはレイキャストよりも低いコストになります。

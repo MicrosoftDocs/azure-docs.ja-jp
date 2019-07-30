@@ -8,14 +8,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882057"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567673"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
 
@@ -73,7 +72,7 @@ ms.locfileid: "58882057"
 
 1. [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) を使用して、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` を使ってマネージド インスタンスにログインします。
 
-2. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
+2. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
 3. クエリ ウィンドウで、次の構文を使用して、ローカルの Azure AD アカウント用のログインを作成します。
 
@@ -126,7 +125,7 @@ ms.locfileid: "58882057"
 
 1. マネージド インスタンスにもう一度ログインするか、`sysadmin` である SQL プリンシパルとの既存の接続を使用します。
 
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. 次の T-SQL 構文を使用して、Azure AD サーバー プリンシパル (ログイン) に `sysadmin` サーバー ロールを付与します。
 
@@ -160,7 +159,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
     ![mfa-login-prompt.png](media/sql-database-managed-instance-security-tutorial/mfa-login-prompt.png)
 
-1. SSMS の**オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
+1. SSMS の**オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 1. クエリ ウィンドウで、次の構文を使用して、別の Azure AD アカウント用のログインを作成します。
 
     ```sql
@@ -182,7 +181,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     ```
 
 1. [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) 構文を使用して、マネージド インスタンスにデータベースを作成します。 このデータベースは、次のセクションでユーザー ログインをテストする際に使用されます。
-    1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
+    1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
     1. クエリ ウィンドウで、次の構文を使用して、**MyMITestDB** という名前のデータベースを作成します。
 
         ```sql
@@ -228,7 +227,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 ### <a name="create-an-azure-ad-user-and-create-a-sample-table"></a>Azure AD ユーザーを作成してサンプル テーブルを作成する
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 1. クエリ ウィンドウで、次の構文を使用して、Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成します。
 
     ```sql
@@ -294,7 +293,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
 
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. 次の T-SQL 構文を使用して、Azure AD ユーザーに `db_datareader` データベース ロールを付与します。
 
@@ -346,7 +345,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
 
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. クエリ ウィンドウで、次のコマンドを使用して新しいストアド プロシージャを作成します。
 
@@ -386,7 +385,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 データベース間クエリは、Azure AD サーバー プリンシパル (ログイン) を使用する Azure AD アカウントのためにサポートされています。 Azure AD グループでデータベース間クエリをテストするには、データベースとテーブルをもう 1 つ作成する必要があります。 データベースとテーブルが既にもう 1 つ存在する場合はその作成をスキップできます。
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 1. クエリ ウィンドウで、次のコマンドを使用して、**MyMITestDB2** という名前のデータベースと **TestTable2** という名前のテーブルを作成します。
 
     ```sql

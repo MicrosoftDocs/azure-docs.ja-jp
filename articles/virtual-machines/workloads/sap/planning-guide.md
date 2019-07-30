@@ -4,7 +4,7 @@ description: SAP NetWeaver のための Azure Virtual Machines の計画と実�
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ddcf1f38d3d92f9d9bdd12203ebf99f20600478
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11a54dee653bcfa6c94a861e483183ac39f465bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409783"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710183"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -344,7 +344,7 @@ Microsoft Azure Virtual Machines サービスを通じて、マイクロソフ�
 * SAP 環境: 開発、QAS、トレーニング、DR、実稼働などのビジネス機能を実行するために論理的にグループ化された、1 つまたは複数の SAP コンポーネント。
 * SAP ランドスケープ:この用語は、お客様の IT 環境内にある SAP 資産全体を指します。 SAP ランドス ケープには、運用環境と非運用環境のすべてが含まれます。
 * SAP システム:DBMS 層とアプリケーション レイヤーを組み合わせたシステム (SAP ERP 開発システム、SAP BW テスト システム、SAP CRM 運用システムなど)。Azure のデプロイでは、オンプレミスと Azure 間でこれら 2 つの層を分割することはできません。 つまり、SAP システムはオンプレミスか Azure のいずれかにデプロイされます。 ただし、SAP ランドス ケープの異なるシステムを Azure かオンプレミスのいずれかにデプロイすることはできます。 たとえば、SAP CRM の開発システムとテスト システムを Azure にデプロイし、SAP CRM 運用システムをオンプレミスにデプロイすることは可能です。
-* クロスプレミスまたはハイブリッド:オンプレミスのデータ センターと Azure の間で、サイト間接続、マルチサイト接続、または ExpressRoute 接続を使用する Azure サブスクリプションに VM をデプロイするシナリオを指します。 一般的な Azure ドキュメントでは、この種のデプロイはクロスプレミス シナリオまたはハイブリッド シナリオとして説明されていることもあります。 この接続の目的は、オンプレミスのドメイン、オンプレミスの Active Directory/OpenLDAP、およびオンプレミスの DNS を、Azure 内に拡張することです。 オンプレミスのランドスケープが、サブスクリプションの Azure 資産に拡張されます。 この拡張により。VM はオンプレミス ドメインの一部になることができます。 オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM (DBMS サービスなど) 上でサービスを実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM の間では、通信と名前解決が可能です。 これは、ほぼ Azure に SAP 資産をデプロイする場合のみの最も一般的なケースです。 詳細については、[こちら][vpn-gateway-cross-premises-options]と[こちら][vpn-gateway-site-to-site-create]の記事を参照してください。
+* クロスプレミスまたはハイブリッド:オンプレミスのデータ センターと Azure の間で、サイト間接続、マルチサイト接続、または ExpressRoute 接続を使用する Azure サブスクリプションに VM をデプロイするシナリオを指します。 一般的な Azure ドキュメントでは、この種のデプロイはクロスプレミス シナリオまたはハイブリッド シナリオとして説明されていることもあります。 この接続の目的は、オンプレミスのドメイン、オンプレミスの Active Directory/OpenLDAP、およびオンプレミスの DNS を、Azure 内に拡張することです。 オンプレミスのランドスケープが、サブスクリプションの Azure 資産に拡張されます。 この拡張により。VM はオンプレミス ドメインの一部になることができます。 オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM (DBMS サービスなど) 上でサービスを実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM の間では、通信と名前解決が可能です。 これは、ほぼ Azure に SAP 資産をデプロイする場合のみの最も一般的なケースです。 詳しくは、[こちら][vpn-gateway-cross-premises-options]article and [this][vpn-gateway-site-to-site-create]をご覧ください。
 
 > [!NOTE]
 > SAP システムを実行する Azure Virtual Machines がオンプレミス ドメインのメンバーである SAP システムのクロスプレミスまたはハイブリッドのデプロイは、運用 SAP システムの場合にサポートされます。 クロスプレミスまたはハイブリッドの構成は、SAP ランドスケープの一部または全部を Azure にデプロイする場合にサポートされます。 Azure で完全な SAP ランドスケープを実行する場合でも、これらの VM をオンプレミス ドメインと ADS/OpenLDAP の一部に含める必要があります。 
@@ -411,7 +411,7 @@ Azure IaaS または一般的な IaaS のどちらかに SAP システムを正�
 * 各種 VM タイプの IOPS 帯域幅
 * 各種 VM タイプのネットワーク機能
 
-これらのデータの詳細については、[こちら (Linux)][virtual-machines-sizes-linux] と[こちら (Windows)][virtual-machines-sizes-windows] の記事を参照してください。
+これらのデータの多くは、[こちら (Linux)][virtual-machines-sizes-linux] and [here (Windows)][virtual-machines-sizes-windows] から確認できます。
 
 前述のリンクでリストした制限事項は、上限値です。 IOPS を含め、いずれのリソースについても、すべての状況で上限値が提供されるとは限りません。 ただし、選択した VM タイプの CPU およびメモリ リソースについては例外です。 SAP でサポートされている VM タイプについては、CPU とメモリのリソースが予約されるため、任意の時点で VM 内から消費できます。
 
@@ -474,7 +474,7 @@ Azure Virtual Machine Services では、カスタムのサーバー イメージ
 * 接続できる VHD の数
 * ネットワークとストレージの帯域幅
 
-提供される各種仮想マシンのサイズと制限事項については、[こちらの記事 (Linux)][virtual-machines-sizes-linux] と[こちらの記事 (Windows)][virtual-machines-sizes-windows] の表に記載されています。
+提供される各種仮想マシンのサイズと制限事項については、[こちらの記事 (Linux)][virtual-machines-sizes-linux] and [this article (Windows)][virtual-machines-sizes-windows] の表に記載されています。
 
 なお、各 Azure リージョンで、すべての VM シリーズが提供されるわけではありません (Azure リージョンについては、次の章を参照してください)。 また、すべての VM や VM シリーズが SAP に対して動作確認されているわけではありません。
 
@@ -499,7 +499,7 @@ Resource Manager テンプレートの使用方法の詳細については、次
 
 もう 1 つの面白い機能として、Virtual Machines からイメージを作成する機能があります。この機能を使用すれば、特定のリポジトリを準備して、そこから要件に合った仮想マシンをすばやくデプロイすることができます。
 
-Virtual Machines からイメージを作成する方法の詳細については、[こちらの記事 (Linux)][virtual-machines-linux-capture-image-resource-manager] または[こちらの記事 (Windows)][virtual-machines-windows-capture-image-resource-manager] を参照してください。
+仮想マシンからイメージを作成する方法の詳細については、[こちらの記事 (Linux)][virtual-machines-linux-capture-image-resource-manager] and [this article (Windows)][virtual-machines-windows-capture-image-resource-manager] に記載されています。
 
 #### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>障害ドメイン
 障害ドメインとは、障害の物理的単位のことです。これは、データ センターに含まれる物理インフラストラクチャと密接に関連します。物理的なブレードやラックは障害ドメインと見なすことができますが、2 つの障害ドメイン間に 1 対 1 の直接的なマッピングは存在しません。
@@ -524,7 +524,7 @@ Microsoft Azure Virtual Machines では、複数のストレージ タイプが�
 
 Azure VM は、VM をデプロイした後に非永続ディスクを提供します。 VM が再起動された場合、非永続ドライブ上のすべてのコンテンツは消去されます。そのため、データ ファイルとデータベースのログ/再実行ファイルが、どんな状況でも、非永続ドライブ上にないことが条件になります。 例外として、データベースによっては、tempdb や temp tablespaces などにこれらの非永続ドライブが適している場合があります。 ただし、非永続ドライブのスループットは、その VM ファミリーで制限されているために、A シリーズ VM にはこれらのドライブを使用しないでください。 詳しくは、「[Understanding the temporary drive on Windows VMs in Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)」(Azure での Windows VM 上の一時ドライブ) をご覧ください
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 > 
 > Azure VM の D:\ ドライブは、Azure の計算ノード上のいくつかのローカル ディスクによってサポートされる非永続ドライブです。 非永続であるということは、VM が再起動されると、D:\ ドライブ上のコンテンツに加えられた変更が失われることを意味します。 "変更" とは、保存されたファイル、作成されたディレクトリ、インストールされたアプリケーションなどを指します。
@@ -535,7 +535,7 @@ Azure VM は、VM をデプロイした後に非永続ディスクを提供し�
 > 
 > 
 
-- - -
+---
 
 Microsoft Azure Storage では、永続的ストレージが提供されます。保護機能は一般的なレベルで、冗長性は SAN ストレージと同様のものです。 Azure Storage に基づくディスクは、Azure Storage Services 内に置かれた仮想ハード ディスク (VHD) です。 ローカル OS ディスク (Windows C:\,Linux /dev/sda1) は Azure Storage に格納され、VM にマウントされたその他のボリューム/ディスクもそこに格納されます。
 
@@ -578,7 +578,7 @@ Premium Storage の場合、コスト単位はディスクに保存されてい�
 
 SAP で認定される Azure VM ファミリのほとんどは、Premium Storage で、または Azure Standard と Premium Storage の組み合わせで使用できます。
 
-[こちらの記事 (Linux)][virtual-machines-sizes-linux] と[こちらの記事 (Windows)][virtual-machines-sizes-windows] の DS シリーズの箇所でも説明されていますが、Premium Storage のディスクには、VM レベルの粒度に関してデータ量の制限があります。 また、DS シリーズや GS シリーズの VM では、マウントできるデータ ディスクの数についても、それぞれ異なる制限事項があります。 これらの制限事項も、上記の記事で説明されています。 ただし基本的に言って、たとえば 32 基の P30 ディスクを 1 つの DS14 VM にマウントした場合に、P30 ディスクの最大スループットが 32 倍になるわけではないということです。 記事でも説明されているように、データのスループットは、VM レベルの最大スループットによって制限されます。
+[こちらの記事 (Linux)][virtual-machines-sizes-linux] and [this article (Windows)][virtual-machines-sizes-windows] の DS シリーズ VM の箇所でも説明されていますが、Premium Storage のディスクには、VM レベルの粒度に関してデータ量の制限があります。 また、DS シリーズや GS シリーズの VM では、マウントできるデータ ディスクの数についても、それぞれ異なる制限事項があります。 これらの制限事項も、上記の記事で説明されています。 ただし基本的に言って、たとえば 32 基の P30 ディスクを 1 つの DS14 VM にマウントした場合に、P30 ディスクの最大スループットが 32 倍になるわけではないということです。 記事でも説明されているように、データのスループットは、VM レベルの最大スループットによって制限されます。
 
 Premium Storage に関する情報は、次のリンク <https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2> から参照できます。
 
@@ -652,7 +652,7 @@ Azure 内のすべての仮想マシンは、Virtual Network に接続される�
 仮想ネットワーク カードの MAC アドレスは、変更される可能性があります (たとえば、サイズ変更の後に、Windows または Linux のゲスト OS が新しいネットワーク カードを選択し、DHCP を自動的に使用して IP アドレスと DNS アドレスを割り当てた場合など)。
 
 ##### <a name="static-ip-assignment"></a>静的 IP 割り当て
-Azure Virtual Network 内の VM には、固定または予約済み IP アドレスを割り当てることができます。 Azure Virtual Network で VM を実行すると、特定のシナリオで必要になった場合に、この機能を使用する可能性が大いに高まります。 IP 割り当ては、VM が実行中かシャットダウン中かにかかわらず、VM が存在しているかぎり有効です。 そのため、Virtual Network 用の IP アドレスの範囲を定義する際には、全体的な VM の数 (実行中の VM と停止中の VM) を考慮に入れる必要があります。 IP アドレスは、VM とそのネットワーク インターフェイスが削除されるか、または IP アドレスの割り当てが再度解除されるまで、割り当てられたままになります。 詳細については、[こちらの記事][virtual-networks-static-private-ip-arm-pportal]を参照してください。
+Azure Virtual Network 内の VM には、固定または予約済み IP アドレスを割り当てることができます。 Azure Virtual Network で VM を実行すると、特定のシナリオで必要になった場合に、この機能を使用する可能性が大いに高まります。 IP 割り当ては、VM が実行中かシャットダウン中かにかかわらず、VM が存在しているかぎり有効です。 そのため、Virtual Network 用の IP アドレスの範囲を定義する際には、全体的な VM の数 (実行中の VM と停止中の VM) を考慮に入れる必要があります。 IP アドレスは、VM とそのネットワーク インターフェイスが削除されるか、または IP アドレスの割り当てが再度解除されるまで、割り当てられたままになります。 詳細については、[こちらの記事][virtual-networks-static-private-ip-arm-pportal]をご覧ください。
 
 > [!NOTE]
 > Azure を使用して個々の vNIC に静的 IP アドレスを割り当てる必要があります。 ゲスト OS 内の静的 IP アドレスを vNIC に割り当てないでください。 Azure Backup Service のような一部の Azure サービスは、少なくともプライマリ vNIC が、静的 IP アドレスではなく、DHCP に設定されていることに依存します。 「[Azure 仮想マシンのバックアップのトラブルシューティング](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking)」というドキュメントも参照してください。
@@ -742,7 +742,7 @@ ExpressRoute を使用した強制トンネリングは、ExpressRoute BGP ピ�
 >
 >
 
-SAP on Azure ソリューションを計画したり、サイズを設定する際には、各仮想マシン サイズに対するクォータを考慮する必要があります。 VM クォータの詳細については、[こちら (Linux)][virtual-machines-sizes-linux] と[こちら (Windows)][virtual-machines-sizes-windows] の記事を参照してください。
+SAP on Azure ソリューションを計画したり、サイズを設定する際には、各仮想マシン サイズに対するクォータを考慮する必要があります。 VM クォータの詳細については、[こちら (Linux)][virtual-machines-sizes-linux] and [here (Windows)][virtual-machines-sizes-windows] をご覧ください。
 
 記載されているクォータは、理論上の最大値を表します。  ディスクあたりの IOPS の制限は、小規模な IO (8 kb) で達成される場合もありますが、大規模な IO (1 Mb) でも達成されない場合もあります。  IOPS 制限は、1 つのディスクの粒度に対して適用されます。
 
@@ -758,7 +758,7 @@ Azure 上の SAP サイジングについては、このブログに加えドキ
 
 **手順 3**:DBMS サーバーの SAPS 要件を、Azure の別の VM タイプの SAPS と比較します。 別の Azure VM タイプの SAPS に関する情報は、SAP ノート [1928533]に記載されています。 データベース層は、大半のデプロイでスケールアウトされない、SAP NetWeaver システム内の層であるため、DBMS VM をまず最初に検討する必要があります。 これに対し、SAP アプリケーション層はスケール アウトが可能です。SAP でサポートされているいずれの Azure VM タイプでも、必要な SAPS を提供できない場合、計画した SAP システムのワークロードを Azure で実行することはできません。 システムをオンプレミスでデプロイするか、システムのワークロードのボリュームを変更する必要があります。
 
-**手順 4**:[こちら (Linux)][virtual-machines-sizes-linux] と[こちら (Windows)][virtual-machines-sizes-windows] の記事で説明されているように、Azure では、Standard Storage と Premium Storage のどちらを使用するかにかかわらず、ディスクあたりの IOPS クォータが強制的に適用されます。 マウントできるデータ ディスクの数は、VM タイプによって異なります。 そのため、達成できる最大 IOPS 数は、VM タイプごとに計算できます。 データベース ファイルのレイアウトによっては、複数のディスクをストライピングして、ゲスト OS 内で 1 つのボリュームにすることができます。 ただし、デプロイされた SAP システムの現在の IOPS ボリュームが、Azure の最大 VM タイプの計算済み制限を超えていて、メモリの追加によって対処することもできない場合は、SAP システムのワークロードに深刻な影響が及ぶ可能性があります。 このような場合は、Azure でのシステムのデプロイを断念せざるを得ない可能性があります。
+**手順 4**:[こちら (Linux)][virtual-machines-sizes-linux] and [here (Windows)][virtual-machines-sizes-windows] の記事で説明されているように、Azure では、Standard Storage と Premium Storage のどちらを使用するかにかかわらず、ディスクあたりの IOPS クォータが強制的に適用されます。 マウントできるデータ ディスクの数は、VM タイプによって異なります。 そのため、達成できる最大 IOPS 数は、VM タイプごとに計算できます。 データベース ファイルのレイアウトによっては、複数のディスクをストライピングして、ゲスト OS 内で 1 つのボリュームにすることができます。 ただし、デプロイされた SAP システムの現在の IOPS ボリュームが、Azure の最大 VM タイプの計算済み制限を超えていて、メモリの追加によって対処することもできない場合は、SAP システムのワークロードに深刻な影響が及ぶ可能性があります。 このような場合は、Azure でのシステムのデプロイを断念せざるを得ない可能性があります。
 
 **手順 5**:特に、2 層構成でオンプレミスにデプロイされている SAP システムについては、Azure では 3 層構成で構成しなければならない可能性があります。 この手順では、SAP アプリケーション層のコンポーネントの中に、スケールアウトすることができず、別の Azure VM タイプの CPU リソースとメモリ リソースにも適合しないコンポーネントがあるかどうかを確認する必要があります。 このようなコンポーネントがある場合、SAP システムとそのワークロードを Azure にデプロイすることはできません。 ただし、SAP アプリケーション コンポーネントを複数の Azure VM にスケールアウトできる場合は 、システムを Azure にデプロイできます。
 
@@ -817,7 +817,7 @@ CLI のインストール方法、構成方法、および CLI コマンドを�
 * [Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理][../../linux/create-ssh-secured-vm-from-template.md]
 * [Azure Resource Manager での Mac、Linux、および Windows 用 Azure クラシック CLI の使用][xplat-cli-azure-resource-manager]
 
-また、Azure CLI を使用して Azure Monitoring Extension for SAP をデプロイする方法については、[デプロイ ガイド][planning-guide]の「[Linux VM 向け Azure CLI][deployment-guide-4.5.2]」の章を参照してください。
+また、Azure CLI を使用して Azure Monitoring Extension for SAP をデプロイする方法については、in the [Deployment Guide][planning-guide]「[Linux VM 向け Azure CLI][deployment-guide-4.5.2]」の章を参照してください。
 
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Azure で SAP 用の VM をデプロイするためのさまざまな方法
 
@@ -829,13 +829,13 @@ Microsoft Azure では、VM および関連付けられているディスクを�
 
 #### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>汎用化されていないディスクを使用してオンプレミスから Microsoft Azure に VM を移動する
 
-オンプレミスから Azure に特定の SAP システムを移動することを計画します。 これは、OS、SAP バイナリ、DBMS バイナリを格納している VHD と、Azure への DBMS のデータおよびログ ファイルを格納している VHD をアップロードすることで行うことができます。 [2 番目のシナリオ][planning-guide-5.1.2]とは対照的に、ホスト名、SAP SID、および SAP ユーザー アカウントがオンプレミス環境で構成されているため、Azure VM でそれらを保持します。 そのため、イメージを一般化する必要はありません。 オンプレミスの準備手順と、一般化されていない VM や VHD を Azure にアップロードする方法については、このドキュメントの「[オンプレミスから汎用でないディスクを使用する Azure に VM を移動する準備][planning-guide-5.2.1]」の章を参照してください。 このようなイメージを Azure 上にデプロイするための詳細な手順については、「[シナリオ 3:SAP を含む汎用化されていない Azure VHD を使用してオンプレミス VM を移動する][deployment-guide-3.4]」([デプロイ ガイド][deployment-guide]) の章を参照してください。
+オンプレミスから Azure に特定の SAP システムを移動することを計画します。 これは、OS、SAP バイナリ、DBMS バイナリを格納している VHD と、Azure への DBMS のデータおよびログ ファイルを格納している VHD をアップロードすることで行うことができます。 [以下の 2 番目のシナリオ][planning-guide-5.1.2]とは対照的に、ホスト名、SAP SID、および SAP ユーザー アカウントがオンプレミス環境で構成されているため、Azure VM でそれらを保持します。そのため、イメージを一般化する必要はありません。オンプレミスの準備手順と、一般化されていない VM や VHD を Azure にアップロードする方法については、このドキュメントの「オンプレミスから汎用でないディスクを使用する Azure に VM を移動する準備」の章を参照してください。 このようなイメージを Azure 上にデプロイするための詳細な手順については、「[シナリオ 3:SAP を含む汎用化されていない Azure VHD を使用してオンプレミスから VM を移動する] ([deployment-guide-3.4])」([デプロイ ガイド][deployment-guide]) の章を参照してください。
 
 #### <a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>顧客固有のイメージを使用する VM のデプロイ
 
 OS または DBMS バージョンの固有のパッチ要件により、Azure Marketplace で提供されるイメージは、ニーズに適さない場合があります。 そのため、後で繰り返しデプロイできる、独自のプライベート OS/DBMS の VM イメージを使用して VM を作成する必要がある場合があります。 このようなプライベート イメージを複製用に準備するには、次の点について考慮する必要があります。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 詳細については、以下を参照してください。<https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed>Windows の設定 (Windows SID やホスト名など) は、sysprep コマンドを使用してオンプレミスの VM 上で抽象化または一般化する必要があります。
@@ -843,16 +843,16 @@ OS または DBMS バージョンの固有のパッチ要件により、Azure Ma
 >
 > ![Linux][Logo_Linux] Linux
 >
-> [SUSE][virtual-machines-linux-create-upload-vhd-suse]、[Red Hat][virtual-machines-linux-redhat-create-upload-vhd]、または [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle] に関する記事の手順に従って、Azure にアップロードする VHD を用意してください。
+> [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd]、または [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle] に関する記事の手順に従って、Azure にアップロードする VHD を用意してください。
 >
 >
 
-- - -
-使用しているオンプレミス VM (特に 2 層システム) に SAP コンテンツを既にインストールしている場合、SAP Software Provisioning Manager でサポートされているインスタンス名の変更手順に従って、Azure VM のデプロイ後に SAP システムの設定を調整できます (SAP ノート [1619720])。 オンプレミスの準備手順と、一般化された VM を Azure にアップロードする方法については、このドキュメントの「[SAP 用の顧客固有のイメージを使用する VM のデプロイの準備][planning-guide-5.2.2]」と「[オンプレミスから Azure への VHD のアップロード][planning-guide-5.3.2]」の章を参照してください。 このようなイメージを Azure 上にデプロイするための詳細な手順については、「[シナリオ 2:SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」([デプロイ ガイド][deployment-guide]) の章を参照してください。
+---
+使用しているオンプレミス VM (特に 2 層システム) に SAP コンテンツを既にインストールしている場合、SAP Software Provisioning Manager でサポートされているインスタンス名の変更手順に従って、Azure VM のデプロイ後に SAP システムの設定を調整できます (SAP ノート [1619720])。 オンプレミスの準備手順と、一般化された VM を Azure にアップロードする方法については、このドキュメントの「[SAP 用の顧客固有のイメージを使用する VM のデプロイの準備][planning-guide-5.2.2]」and [Uploading a VHD from on-premises to Azure][planning-guide-5.3.2]の章を参照してください。 このようなイメージを Azure 上にデプロイするための詳細な手順については、「[シナリオ 2:SAP のカスタム イメージを使用して VM をデプロイする] ([deployment-guide-3.3])」([デプロイ ガイド][deployment-guide]) の章を参照してください。
 
 #### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Azure Marketplace から VM をデプロイする
 
-Microsoft またはサード パーティが提供する VM イメージを Azure Marketplace から取得して VM をデプロイします。 Azure で VM をデプロイした後は、オンプレミス環境の場合と同じガイドラインおよびツールに従って VM 内に SAP ソフトウェアや DBMS をインストールします。 詳細なデプロイの説明については、「[シナリオ 1:SAP 用 Azure Marketplace から VM をデプロイする][deployment-guide-3.2]」([デプロイ ガイド][deployment-guide]) の章を参照してください。
+Microsoft またはサード パーティが提供する VM イメージを Azure Marketplace から取得して VM をデプロイします。 Azure で VM をデプロイした後は、オンプレミス環境の場合と同じガイドラインおよびツールに従って VM 内に SAP ソフトウェアや DBMS をインストールします。 詳細なデプロイの説明については、「[シナリオ 1:SAP 用 Azure Marketplace から VM をデプロイする][deployment-guide-3.2]」(in the [Deployment Guide][deployment-guide]) を参照してください。
 
 ### <a name="6ffb9f41-a292-40bf-9e70-8204448559e7"></a>Azure 用の VM と SAP の準備
 
@@ -870,7 +870,7 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 * 管理者特権を持つ別のローカル アカウントを追加します。VM がデプロイされ、より適切なユーザーが使用可能になるまで、このアカウントをマイクロソフトのサポートが使用したり、サービスやアプリケーションの実行コンテキストとして割り当てることができるようにします。
 * 特定のデプロイメント シナリオで必要となる可能性があるアカウントとして、他のローカル アカウントを追加します。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > このシナリオでは、Azure で VM をアップロードしてデプロイするために、VM の一般化 (sysprep) は必要ありません。
@@ -884,10 +884,10 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 >
 >
 
-- - -
+---
 #### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>SAP 用の顧客固有のイメージを使用する VM のデプロイの準備
 
-一般化された OS が含まれている VHD ファイルは、Azure Storage アカウントのコンテナー内に格納されるか、管理ディスク イメージとして格納されます。 このようなイメージからの新しい VM のデプロイは、デプロイ テンプレート ファイル内のソースとして VHD またはマネージド ディスク イメージを参照することで実行できます (「[シナリオ 2:SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」([デプロイ ガイド][deployment-guide]) の章を参照してください)。
+一般化された OS が含まれている VHD ファイルは、Azure Storage アカウントのコンテナー内に格納されるか、管理ディスク イメージとして格納されます。 このようなイメージからの新しい VM のデプロイは、デプロイ テンプレート ファイル内のソースとして VHD またはマネージド ディスク イメージを参照することで実行できます (「[シナリオ 2:SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」(of the [Deployment Guide][deployment-guide]) を参照)。
 
 独自の Azure VM イメージを準備する場合の要件は次のとおりです。
 
@@ -897,10 +897,10 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 * 特定のデプロイメント シナリオで必要となる可能性があるアカウントとして、他のローカル アカウントを追加します。
 * イメージに SAP NetWeaver のインストールが含まれていて、Azure のデプロイメント時にホスト名が元の名前から変更される可能性が高い場合には、SAP Software Provisioning Manager DVD の最新バージョンをテンプレート内にコピーすることをお勧めします。 そうすることで、新しいコピーが起動された後すぐに、デプロイされた VM イメージ内で、SAP の名前変更機能を簡単に使用して、変更されたホスト名を調整したり、SAP システムの SID を変更することができます。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
-> このドキュメントの「[アタッチされたディスクに対する自動マウントの設定][planning-guide-5.5.3]」の章で説明しているように、D:\ ドライブが、アタッチされたディスクを自動マウントするように設定されていないことを確認 してください。
+> このドキュメントの「[アタッチされたディスクに対する自動マウントの設定][planning-guide-5.5.3]」の章で説明しているように、D:\ ドライブが、アタッチされたディスクを自動マウントするように設定されていないことを確認してください。
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -908,14 +908,14 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 >
 >
 
-- - -
+---
 * SAP GUI (管理用または設定用) は、このようなテンプレートに事前インストールできます。
 * クロスプレミス シナリオで VM を正常に実行するために必要なその他のソフトウェアは、そのソフトウェアが VM の名前変更と連携できる限り、インストール可能です。
 
 VM を一般化して、対象の Azure デプロイメント シナリオでは使用できないアカウント/ユーザーへの依存性を最終的に解消する準備が十分にできている場合は、このようなイメージを一般化するための最後の準備手順が実行されます。
 
 ##### <a name="generalizing-a-vm"></a>VM の一般化
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 最後の手順は、管理者アカウントを使用して VM にサインインすることです。 *管理者*として Windows コマンド ウィンドウを開きます。 %windir%\windows\system32\sysprep に移動し、sysprep.exe を実行します。
@@ -924,11 +924,11 @@ VM を一般化して、対象の Azure デプロイメント シナリオでは
 >
 > ![Linux][Logo_Linux] Linux
 >
-> [Resource Manager のテンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]
+> [Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]
 >
 >
 
-- - -
+---
 ### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>オンプレミスと Azure 間での VM と VHD の転送
 Azure Portal では、VM イメージとディスクを Azure にアップロードすることはできないので、Azure PowerShell コマンドレットまたは CLI を使用する必要があります。 また、'AzCopy'.ツールを使用する方法もあります。 このツールでは、オンプレミスと Azure の間で VHD を (双方向に) コピーできます。 また、Azure リージョン間で VHD をコピーすることもできます。 AzCopy のダウンロードと使用方法については、[こちらのドキュメント][storage-use-azcopy]を参照してください。
 
@@ -1085,7 +1085,7 @@ az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resour
 次の場所に、Azure Storage エクスプローラーのプロフェッショナル エディションが用意されています。
 
 * <https://www.cerebrata.com/>
-* <http://clumsyleaf.com/products/cloudxplorer>
+* <https://clumsyleaf.com/products/cloudxplorer>
 
 ストレージ アカウント内の VHD 自体のコピーは、数秒しかかからないプロセスです (遅延コピーやコピー オン ライトを使用したスナップショットを作成する SAN ハードウェアと同様)。 VHD ファイルのコピーを入手したら、それを仮想マシンにアタッチするか、イメージとして使用して、VHD のコピーを仮想マシンにアタッチできます。
 
@@ -1136,7 +1136,7 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 このタスクは、Azure Portal で行うことはできません。 Azure PowerShell コマンドレット、Azure CLI、またはサードパーティのストレージ ブラウザーを使用することができます。 複数の Storage アカウント、また Azure サブスクリプション内のリージョンにまたがって非同期的に BLOB をコピーするための機能を持つ PowerShell コマンドレットまたは CLI コマンドにより、BLOB を作成および管理できます。
 
 ##### <a name="powershell"></a>Powershell
-サブスクリプション間で VHD をコピーすることもできます。 詳細については、[こちらの記事][storage-powershell-guide-full-copy-vhd]を参照してください。
+サブスクリプション間で VHD をコピーすることもできます。 詳細については、[こちらの記事][storage-powershell-guide-full-copy-vhd]をご覧ください。
 
 PS コマンドレット ロジックの基本的な流れは次のようになります。
 
@@ -1188,7 +1188,7 @@ VM とそれに関連付けられたディスクの構造は、簡単に操作�
 ![Reference Configuration of Azure IaaS VM for SAP (SAP 用 Azure IaaS VM のリファレンス構成)][planning-guide-figure-1300]
 
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 多くのお客様が、たとえば、OS がインストールされた c:\ drive に SAP および DBMS バイナリがインストールされていない構成を採用していました。 これにはさまざまな理由がありましたが、根本原因に戻ると、通常、ドライブが小さく、OS のアップグレードで追加の領域が必要でした。これは、10 ～ 15 年前のことです。 最近では、これらの両方の状況はもはやあてはまりません。 現在は、大量のディスクまたは VM 上で c:\ drive をマップできます。 構造上、デプロイメントをシンプルにするために、Azure での SAP NetWeaver システムのデプロイ パターンに従うことをお勧めします。
@@ -1197,7 +1197,7 @@ VM とそれに関連付けられたディスクの構造は、簡単に操作�
 >
 > ![Linux][Logo_Linux] Linux
 >
-> [この記事][virtual-machines-linux-agent-user-guide]に記載された説明のように、Linux swapfile を Linux 上の /mnt /mnt/resource に配置します。 スワップ ファイルは、Linux エージェント /etc/waagent.conf の構成ファイルで構成できます。 次の設定を追加または変更します。
+> [こちらの記事][virtual-machines-linux-agent-user-guide]に記載された説明のように、Linux swapfile を Linux 上の /mnt /mnt/resource に配置します。 スワップ ファイルは、Linux エージェント /etc/waagent.conf の構成ファイルで構成できます。 次の設定を追加または変更します。
 >
 >
 
@@ -1214,14 +1214,14 @@ sudo service waagent restart
 
 推奨されるスワップ ファイルのサイズについては、SAP ノート [1597355] をお読みください。
 
-- - -
-DBMS データ ファイルに使用されるディスクの数とでこれらのディスクがホストされる Azure Storage の種類は、IOPS 要件と必要な待機時間により決まります。 クォータの詳細については、[こちらの記事 (Linux)][virtual-machines-sizes-linux] と[こちらの記事 (Windows)][virtual-machines-sizes-windows] を参照してください。
+---
+DBMS データ ファイルに使用されるディスクの数とでこれらのディスクがホストされる Azure Storage の種類は、IOPS 要件と必要な待機時間により決まります。 正確なクォータについては、[こちらの記事 (Linux)][virtual-machines-sizes-linux] and [this article (Windows)][virtual-machines-sizes-windows] を参照してください。
 
 過去 2 年間にわたる SAP デプロイの経験から、次の教訓が得られました。
 
 * 異なるデータ ファイルへの IOPS トラフィックは常に同じではありません。これは、既存のお客様のシステムにその SAP データベースを表す異なるサイズのデータ ファイルがある場合があるためです。 結果として、複数のディスクに RAID 構成を使用して、これらから分割したデータ ファイル LUN を配置するのがより適切であることがわかりました。 特に Azure Standard Storage では、IOPS レートが DBMS トランザクション ログに対して単一のディスクのクォータの上限に達する場合がありました。 このようなシナリオでは、Premium Storage を使用することをお勧めします。あるいは、ソフトウェア ストライプで複数の Standard Storage ディスクを集計します。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス][virtual-machines-sql-server-performance-best-practices]
@@ -1234,7 +1234,7 @@ DBMS データ ファイルに使用されるディスクの数とでこれら�
 >
 >
 
-- - -
+---
 * Premium Storage では、パフォーマンスの大幅な向上が見られます。特に、重要なトランザクション ログの書き込みでのパフォーマンス向上が顕著です。 運用と同様のパフォーマンスの実現が期待される SAP のシナリオの場合は、Azure Premium Storage の機能を活用できる VM シリーズの使用を強くお勧めします。
 
 OS と、推奨する SAP のバイナリおよびデータベース (基本 VM) とを含むディスクは、上限が 127 GB ではなくなったことに留意してください。 現在は 1 TB が最大サイズです。 SAP バッチ ジョブのログを含め、必要なすべてのファイルを保持するのに十分な領域があります。
@@ -1255,30 +1255,30 @@ OS と、推奨する SAP のバイナリおよびデータベース (基本 VM)
 
 **重要**:Azure Standard Storage ではホスト キャッシュを使用**しない**でください。 ホスト キャッシュの設定は既定の [なし] のままにしてください。 Azure Premium Storage では、I/O 特性が主に読み取り (データベースのデータ ファイルに対する一般的な I/O トラフィックなど) である場合は、読み取りキャッシュを有効にする必要があります。 データベース トランザクションのログ ファイルについては、キャッシュなしをお勧めします。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
-> [Azure Portal でデータ ディスクを接続する方法][virtual-machines-linux-attach-disk-portal]
+> [Azure portal でデータ ディスクを接続する方法][virtual-machines-linux-attach-disk-portal]
 >
 > ディスクがアタッチされている場合は、VM にサインインして、Windows ディスク マネージャーを開きます。 「[アタッチされたディスクに対する自動マウントの設定][planning-guide-5.5.3]」の章で推奨されているように自動マウントが有効になっていない場合は、新しく接続されたボリュームはオンラインで初期化する必要があります。
 >
 > ![Linux][Logo_Linux] Linux
 >
-> ディスクが接続されている場合は、[この記事][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]で説明されているように、VM にサインインしてディスクを初期化する必要があります。
+> ディスクが接続されている場合は、[こちらの記事][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]で説明されているように、VM にサインインしてディスクを初期化する必要があります。
 >
 >
 
-- - -
+---
 新しいディスクが空のディスクの場合は、ディスクをフォーマットする必要もあります。 フォーマットについて、特に DBMS のデータ ファイルとログ ファイルに対しては、DBMS のベアメタル デプロイと同じ推奨事項が適用されます。
 
-「[Microsoft Azure Virtual Machine の概念][planning-guide-3.2]」の章で既に説明したとおり、Azure Storage アカウントは I/O ボリューム、IOPS、およびデータ ボリュームに関して無限のリソースを提供するものではありません。 通常、これによって DBMS VM が最も影響を受けます。 I/O ボリュームが高い VM をいくつかデプロイする場合は、Azure Storage アカウントのボリュームの制限内に収まるように、それぞれの VM に対して個別の Storage アカウントを使用することをお勧めします。 それ以外の場合は、異なる Storage アカウント間でいずれの Storage アカウントの上限にも達することなく、これらの VM を調整する方法を理解する必要があります。 詳しくは、[DBMS デプロイ ガイド][dbms-guide]で説明しています。 追加の VHD が必要になる可能性のある、純粋な SAP アプリケーション サーバー VM やその他の VM についても、これらの制限事項を覚えておく必要があります。 管理ディスクを使用する場合、これらの制限事項は適用されません。 Premium Storage を使用する場合は、管理ディスクを使用することをお勧めします。
+「[Microsoft Azure Virtual Machine の概念][planning-guide-3.2]」の章で既に説明されているように、, an Azure Storage account does not provide infinite resources in terms of I/O volume, IOPS, and data volume. Usually DBMS VMs are most affected by this. It might be best to use a separate Storage Account for each VM if you have few high I/O volume VMs to deploy in order to stay within the limit of the Azure Storage Account volume. Otherwise, you need to see how you can balance these VMs between different Storage accounts without hitting the limit of each single Storage Account. More details are discussed in the [DBMS Deployment Guide][dbms-guide]。 追加の VHD が必要になる可能性のある、純粋な SAP アプリケーション サーバー VM やその他の VM についても、これらの制限事項を覚えておく必要があります。 管理ディスクを使用する場合、これらの制限事項は適用されません。 Premium Storage を使用する場合は、管理ディスクを使用することをお勧めします。
 
 Storage アカウントに関連するもう 1 つのトピックは、Storage アカウント内の VHD が Geo レプリケートされているかどうかということです。 Geo レプリケーションは、VM レベルではなくストレージ アカウント レベルで有効または無効に設定します。 Geo レプリケーションを有効にすると、ストレージ アカウント内の VHD が、同じリージョン内の別の Azure データ センターにレプリケートされます。 これについて決定する前に、次の制限事項について検討する必要があります。
 
 Azure Geo レプリケーションは、VM 内の各 VHD においてローカルで機能し、VM 内の複数の VHD の間で時系列順に IO をレプリケートすることはありません。 そのため、基本 VM を表す VHD だけでなく、VM に接続されている追加の VHD は互いに独立してレプリケートされます。 つまり、異なる VHD での変更は同期されません。 IO が作成された順序で個別にレプリケートされるという事実は、Geo レプリケーションが複数の VHD に分散されているデータベースを持つデータベース サーバーに対しては価値がないことを意味しています。 DBMS に加えて、プロセスによって異なる VHD にデータが書き込まれたり操作されたりするアプリケーションや、変更の順番を維持することが重要なアプリケーションが他にある可能性もあります。 それが要件である場合は、Azure の Geo レプリケーションを有効にしないでください。 一連の VM に対して Geo レプリケーションが必要かどうかによって（ただし他のセットに対してではなく）、Geo レプリケーションが有効または無効な異なるストレージ アカウントに VM および関連する VHD を分類することができます。
 
 #### <a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>アタッチされたディスクに対する自動マウントの設定
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 独自のイメージまたはディスクから作成された VM の場合、自動マウント パラメーターを確認、また場合によっては設定する必要があります。 このパラメーターを設定することにより、VM は Azure での再起動または再デプロイ後、再アタッチ/マウントされたドライブを自動的に再マウントできるようになります。
@@ -1295,12 +1295,12 @@ Azure Geo レプリケーションは、VM 内の各 VHD においてローカ�
 >
 > ![Linux][Logo_Linux] Linux
 >
-> [この記事][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]で説明されているように、新しく接続した空のディスクを初期化する必要があります。
+> [こちらの記事][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]で説明されているように、新しく接続した空のディスクを初期化する必要があります。
 > また、新しいディスクを /etc/fstab に追加する必要があります。
 >
 >
 
-- - -
+---
 ### <a name="final-deployment"></a>最終デプロイメント
 
 最終デプロイと正確な手順、特に SAP Extended Monitoring のデプロイについては、[デプロイ ガイド][deployment-guide]を参照してください。
@@ -1315,10 +1315,10 @@ SAP GUI を使用してパブリック インターネット経由でこれら�
 
 Azure Resource Manager の場合、以前のクラシック モデルのように既定のエンドポイントはありません。 Azure Resource Manager VM のすべてのポートは、次の条件が満たされている場合には開いています。
 
-1. サブネットまたはネットワーク インターフェイスに対してネットワーク セキュリティ グループが定義されていない。 Azure VM へのネットワーク トラフィックは、いわゆる「ネットワーク セキュリティ グループ」を通じて保護できます。 詳細については、[ネットワーク セキュリティ グループ (NSG)][virtual-networks-nsg] に関するページを参照してください。
+1. サブネットまたはネットワーク インターフェイスに対してネットワーク セキュリティ グループが定義されていない。 Azure VM へのネットワーク トラフィックは、いわゆる「ネットワーク セキュリティ グループ」を通じて保護できます。 詳細については、「 [ネットワーク セキュリティ グループ (NSG) について][virtual-networks-nsg]
 2. ネットワーク インターフェイスに対して Azure Load Balancer が定義されていない   
 
-[この記事][virtual-machines-azure-resource-manager-architecture]で説明されている、クラシック モデルと ARM のアーキテクチャの違いを参照してください。
+[こちらの記事][virtual-machines-azure-resource-manager-architecture]で説明されている、クラシック モデルと ARM のアーキテクチャの違いを参照してください。
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>インターネット経由での SAP システムと SAP GUI 接続の構成
 
@@ -1328,7 +1328,7 @@ Azure Resource Manager の場合、以前のクラシック モデルのよう�
 
 SAP システムへの受信トラフィックを許可するには、仮想マシンでファイアウォールを構成する必要がある場合があります。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > 既定では、Azure によってデプロイされた VM 内の Windows Firewall は有効になっています。 次に SAP ポートを開くことを許可する必要があります。そうしないと SAP GUI は接続することができません。
@@ -1352,7 +1352,7 @@ SAP システムへの受信トラフィックを許可するには、仮想マ�
 >
 >
 
-- - -
+---
 #### <a name="security-recommendations"></a>セキュリティに関する推奨事項
 
 SAP GUI は、実行しているどの SAP インスタンス (ポート 32xx) にもすぐには接続しませんが、SAP メッセージ サーバー プロセス (ポート 36xx) に対して開いているポートを通じて最初に接続します。 以前は、同じポートが、メッセージ サーバーによってアプリケーション インスタンスへの内部通信用に使用されていました。 オンプレミスのアプリケーション サーバーが Azure のメッセージ サーバーと誤って通信するのを防ぐため、内部通信ポートは変更することができます。 SAP メッセージ サーバーとそのアプリケーション インスタンス間の内部通信を、プロジェクト テスト用の開発環境のクローンなどのオンプレミス システムから複製されたシステムの別のポート番号に変更することをお勧めします。これは、次の既定のプロファイル パラメーターで行うことができます。
@@ -1643,7 +1643,7 @@ SAP ランドスケープを実行し、ハイエンドの DBMS サーバー向�
 各種 SAP 製品に必要なポートや、SAP 製品別のサービスの詳細については、ここ <https://scn.sap.com/docs/DOC-17124> を参照してください。
 このドキュメントでは、特定の SAP 製品およびシナリオに必要な VPN デバイスで専用ポートを開くことができます。
 
-このようなシナリオで VM をデプロイする際のその他のセキュリティ対策として、[ネットワーク セキュリティ グループ][virtual-networks-nsg]を作成して、アクセス規則を定義します。
+このようなシナリオで VM をデプロイするときのその他のセキュリティ対策として、[ネットワーク セキュリティ グループ][virtual-networks-nsg]を作成して、アクセス規則を定義します。
 
 ### <a name="dealing-with-different-virtual-machine-series"></a>さまざまな仮想マシン シリーズの操作
 
@@ -1655,7 +1655,7 @@ vCPU の数、メモリ、またこれが実行されるハードウェアでの
 
 Azure VM におけるオンプレミス TCP/IP ベースのネットワーク プリンターの設定は、VPN サイト間トンネルまたは ExpressRoute 接続が確立されていることを前提として、企業のネットワークでの設定とほとんど変わりません。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > これを行うには、次の手順を実行します。
@@ -1674,7 +1674,7 @@ Azure VM におけるオンプレミス TCP/IP ベースのネットワーク �
 >
 >
 
-- - -
+---
 ![Network printing (ネットワーク印刷)][planning-guide-figure-2200]
 
 ##### <a name="host-based-printer-over-smb-shared-printer-in-cross-premises-scenario"></a>クロスプレミス シナリオでの SMB (共有プリンター) 経由のホスト ベース プリンター
@@ -1690,7 +1690,7 @@ Azure VM におけるオンプレミス TCP/IP ベースのネットワーク �
 
 方法:
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > ローカル プリンターを共有します。
@@ -1706,19 +1706,19 @@ Azure VM におけるオンプレミス TCP/IP ベースのネットワーク �
 >
 >
 
-- - -
+---
 ##### <a name="usb-printer-printer-forwarding"></a>USB プリンター (プリンターの転送)
 
 Azure では、リモート セッションでローカル プリンター デバイスへのアクセスをユーザーに提供するリモート デスクトップ サービスの機能は利用できません。
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Windows での印刷の詳細については、ここ <https://technet.microsoft.com/library/jj590748.aspx> を参照してください。
 >
 >
 
-- - -
+---
 #### <a name="integration-of-sap-azure-systems-into-correction-and-transport-system-tms-in-cross-premises"></a>クロスプレミスでの SAP Azure システムの Correction and Transport システム (TMS) への統合
 
 SAP Change and Transport System (TMS) は、ランドスケープでシステム全体の転送要求をエクスポートおよびインポートするように構成する必要があります。 SAP システム (DEV) の開発インスタンスは Azure に配置され、品質保証 (QA) と運用システム (PRD) はオンプレミスに配置されることを前提としています。 さらに、セントラル移送ディレクトリがあることを前提としています。
@@ -1800,7 +1800,7 @@ SAP 用 Azure 監視ソリューションの全体的なアーキテクチャは
 
 ![Azure monitoring solution for SAP NetWeaver (SAP NetWeaver 向け Azure 監視ソリューション)][planning-guide-figure-2500]
 
-**デプロイ中にこれらの PowerShell コマンドレットまたは CLI コマンドを使用する具体的な方法や詳しい手順については、[デプロイ ガイド][deployment-guide]の手順をご確認ください。**
+**デプロイ時にこれらの PowerShell コマンドレットまたは CLI コマンドを使用する具体的な方法や詳しい手順については、[デプロイ ガイド][deployment-guide]** の手順をご確認ください。
 
 ### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>Azure にある SAP インスタンスの SAProuter への統合
 
@@ -1910,7 +1910,7 @@ Azure インフラストラクチャ HA と Managed Disks を使用した SAP Ne
 
 * SAP アプリケーション サーバー (AS) の高可用性
 
-  SAP アプリケーション サーバー インスタンスは、冗長コンポーネントです。 各 SAP AS インスタンスは、異なる Azure 障害ドメインおよびアップグレード ドメインで実行されている独自の VM にデプロイされます (「[障害ドメイン][planning-guide-3.2.1]」の章と「[アップグレード ドメイン][planning-guide-3.2.2]」の章をご覧ください)。 これは、Azure 可用性セットを使用して確保できます (「[Azure 可用性セット][planning-guide-3.2.3]」の章をご覧ください)。 Azure 障害またはアップグレード ドメインの計画されたまたは計画外の潜在的な非可用性により、SAP AS インスタンスでの制限された数の VM の可用性が失われます。
+  SAP アプリケーション サーバー インスタンスは、冗長コンポーネントです。 各 SAP AS インスタンスは、異なる Azure 障害ドメインおよびアップグレード ドメインで実行されている独自の VM にデプロイされます (「[障害ドメイン][planning-guide-3.2.1]」and [Upgrade Domains][planning-guide-3.2.2]の章をご覧ください)。 これは、Azure 可用性セットを使用して確保できます (「[Azure 可用性セット]」([planning-guide-3.2.3]) の章を参照してください)。 Azure 障害またはアップグレード ドメインの計画されたまたは計画外の潜在的な非可用性により、SAP AS インスタンスでの制限された数の VM の可用性が失われます。
 
   各 SAP AS インスタンスは独自の Azure Storage アカウントに配置され、Azure Storage アカウントの非利用可能性により、その SAP AS での 1 つの VM のみの可用性が失われます。 ただし、1 つの Azure サブスクリプション内の Azure Storage アカウント数に制限があることに注意してください。 VM 再起動後の (A)SCS インスタンスを確実に自動開始するには、(A)SCS インスタンスの開始プロファイルで自動開始パラメーターを設定します。詳細については、「[SAP インスタンスでの自動開始の使用][planning-guide-11.5]」の章を参照してください。
   詳細については、「[SAP アプリケーション サーバーの高可用性][planning-guide-11.4.1]」の章もお読みください。
@@ -1932,7 +1932,7 @@ Azure インフラストラクチャ HA と Managed Disks を使用した SAP Ne
 
 #### <a name="5d9d36f9-9058-435d-8367-5ad05f00de77"></a>SAP アプリケーション サーバーの高可用性
 
-SAP アプリケーション サーバー/ダイアログ インスタンスの場合、特定の高可用性ソリューションについて考慮する必要はありません。 高可用性は冗長性によって実現され、さまざまな仮想マシンでこれらを多く使用できます。 これらはすべてに同じ Azure 可用性セットに配置する必要があります。これにより、計画された保守管理のためのダウンタイム時に VM が同時に更新されるのを回避できます。 Azure スケール ユニット内のさまざまなアップグレード ドメインと障害ドメインに組み込まれた基本的な機能については、「[アップグレード ドメイン][planning-guide-3.2.2]」の章で既に紹介しました。 Azure 可用性セットについては、本ドキュメントの「[Azure の可用性セット][planning-guide-3.2.3]」の章で説明しました。
+SAP アプリケーション サーバー/ダイアログ インスタンスの場合、特定の高可用性ソリューションについて考慮する必要はありません。 高可用性は冗長性によって実現され、さまざまな仮想マシンでこれらを多く使用できます。 これらはすべてに同じ Azure 可用性セットに配置する必要があります。これにより、計画された保守管理のためのダウンタイム時に VM が同時に更新されるのを回避できます。 Azure スケール ユニット内のさまざまなアップグレード ドメインと障害ドメインに組み込まれた基本的な機能については、「[アップグレード ドメイン][planning-guide-3.2.2]」の章で既に紹介しました。このドキュメントの. Azure Availability Sets were presented in chapter [Azure Availability Sets][planning-guide-3.2.3]。
 
 Azure スケール ユニット内の Azure 可用性セットが使用できる障害ドメインとアップグレード ドメインの数に制限はありません。 これは、多数の VM を 1 つの可用性セットにデプロイした場合、遅かれ早かれ 1 つ以上の VM が同じ障害またはアップグレード ドメインに配置されることになることを意味します。
 

@@ -4,23 +4,23 @@ description: Azure Functions で Azure Cosmos DB のトリガーとバインド�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 5762e934d7735dd9617cefc1f56105823d74312f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1a505fc5ef09fe9842e72488843155af7c0888cb
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782192"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480809"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択します。 "]
 > * [Version 1](functions-bindings-cosmosdb.md)
 > * [Version 2](functions-bindings-cosmosdb-v2.md)
 
@@ -1243,6 +1243,7 @@ Python コードを次に示します。
 ```python
 import azure.functions as func
 
+
 def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
     if documents:
         document = documents[0]
@@ -1296,6 +1297,7 @@ Python コードを次に示します。
 ```python
 import logging
 import azure.functions as func
+
 
 def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     if not todoitems:
@@ -1354,6 +1356,7 @@ Python コードを次に示します。
 ```python
 import logging
 import azure.functions as func
+
 
 def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     if not todoitems:
@@ -1729,7 +1732,7 @@ C# および F# 関数では、関数が正常に終了したときに、名前�
 
 JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 JavaScript の例を参照してください。
 
-## <a name="output"></a>出力
+## <a name="output"></a>Output
 
 Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azure Cosmos DB データベースに新しいドキュメントを記述できます。
 

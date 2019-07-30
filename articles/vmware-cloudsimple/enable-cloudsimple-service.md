@@ -8,31 +8,16 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cacd5510147ce997efec922f4b4656956a098d88
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 2553aa95d5028c510b4e1a1b7f51a9f410bcea51
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66576673"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154852"
 ---
 # <a name="register-the-microsoftvmwarecloudsimple-resource-provider-on-your-azure-subscription"></a>Azure サブスクリプションで Microsoft.VMwareCloudSimple リソース プロバイダーを登録する
 
-CloudSimple サービスにより、CloudSimple によって Azure VMware ソリューションを使用できます。 CloudSimple サービスを使用するには、最初にこれを Azure サブスクリプションで有効にする必要があります。 次に、Microsoft.VMwareCloudSimple サービスをリソース プロバイダーとして登録できます。
-
-## <a name="enable-the-cloudsimple-service"></a>CloudSimple サービスを有効にする
-
-Azure サブスクリプションで CloudSimple サービスを有効にするには、[Microsoft サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)でサポート要求を開きます。 要求を送信するときは、次のオプションを選択してください。
-
-* [問題の種類]: **テクニカル**
-* サブスクリプション:**ご使用のサブスクリプション ID**
-* サービスの種類:**VMware Solution by CloudSimple**
-* 問題の種類:**Dedicated Nodes quota (専用ノードのクォータ)**
-* 問題のサブタイプ:**Increase quota of dedicated nodes (専用ノードのクォータを増やす)**
-* 件名:**Enable CloudSimple service (CloudSimple サービスを有効にする)**
-
-また、お客様の Microsoft アカウント担当者に [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) から問い合わせることもできます。 お客様の Azure サブスクリプション ID をメールに記載してください。  
-
-サブスクリプションの CloudSimple サービスを有効にした後は、サブスクリプションでリソース プロバイダーを有効にすることができます。
+Azure VMware Solution by CloudSimple は、CloudSimple サービスを通じて利用できます。 Microsoft.VMwareCloudSimple サービスをリソース プロバイダーとして登録できます。
 
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 

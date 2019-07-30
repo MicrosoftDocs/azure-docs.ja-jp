@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 06/11/2019
+ms.topic: conceptual
+ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: 68ff6a156e0d159816b184452f1f945cbce65216
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86b23c5f69fd96fe5c5614d99483e1936895ad9e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052038"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537105"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -175,16 +175,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | 発行済み LUIS アプリに使用する LUIS アカウントのオーサリング キー。<br/>LUIS ポータルの **[ユーザー設定]** ページからオーサリング キーを取得できます。 |
 |{AZURE_REGION} | 適切な Azure リージョン:<br/><br/>```westus``` - 米国西部<br/>```westeurope``` - 西ヨーロッパ<br/>```australiaeast``` - オーストラリア東部 |
 
-発行済みパッケージをダウンロードするには、次の CURL コマンドを使用します。プレースホルダーは、お客様独自の値に置き換えてください。
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/slot/{APPLICATION_ENVIRONMENT}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_{APPLICATION_ENVIRONMENT}.gz
-```
-
-成功した場合、LUIS パッケージ ファイルが返されます。 コンテナーの入力マウントに指定した保存場所にファイルを保存してください。 
+発行済みパッケージをダウンロードする場合は、[こちらの API ドキュメント][download-published-package]を参照してください。 正常にダウンロードされた場合、LUIS パッケージ ファイルが返されます。 コンテナーの入力マウントに指定した保存場所にファイルを保存してください。 
 
 ### <a name="export-trained-apps-package-from-api"></a>API からトレーニング済みアプリのパッケージをエクスポートする
 
@@ -203,16 +194,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | 発行済み LUIS アプリに使用する LUIS アカウントのオーサリング キー。<br/>LUIS ポータルの **[ユーザー設定]** ページからオーサリング キーを取得できます。  |
 |{AZURE_REGION} | 適切な Azure リージョン:<br/><br/>```westus``` - 米国西部<br/>```westeurope``` - 西ヨーロッパ<br/>```australiaeast``` - オーストラリア東部 |
 
-トレーニング済みパッケージをダウンロードするには、次の CURL コマンドを使用します。
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/versions/{APPLICATION_VERSION}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_v{APPLICATION_VERSION}.gz
-```
-
-成功した場合、LUIS パッケージ ファイルが返されます。 コンテナーの入力マウントに指定した保存場所にファイルを保存してください。 
+トレーニング済みパッケージをダウンロードする場合は、[こちらの API ドキュメント][download-trained-package]を参照してください。 正常にダウンロードされた場合、LUIS パッケージ ファイルが返されます。 コンテナーの入力マウントに指定した保存場所にファイルを保存してください。 
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
@@ -237,11 +219,9 @@ Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
 
-* この例では、Windows 上のアクセス許可の競合を防ぐために、`c:` ドライブのディレクトリを使用しています。 特定のディレクトリを入力ディレクトリとして使用する必要がある場合は、Docker サービスのアクセス許可の付与が必要なことがあります。 
+* この例では、Windows 上のアクセス許可の競合を防ぐために、`C:` ドライブのディレクトリを使用しています。 特定のディレクトリを入力ディレクトリとして使用する必要がある場合は、Docker サービスのアクセス許可の付与が必要なことがあります。 
 * Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 * 別のオペレーティング システムを使用している場合は、正しいコンソール/ターミナル、マウント用のフォルダー構文、ご利用のシステムの行連結文字を使用します。 これらの例では、行連結文字 `^` を使用した Windows コンソールを想定しています。 コンテナーは Linux オペレーティング システムであるため、ターゲット マウントでは Linux スタイルのフォルダー構文を使用します。
-
-
 
 このコマンドは、次の操作を行います。
 
@@ -281,9 +261,9 @@ ApiKey={ENDPOINT_KEY}
 |--|--|--|
 |`q`|string|ユーザーの発話。|
 |`timezoneOffset`|number|timezoneOffset を使用すると、事前構築済みのエンティティ datetimeV2 で使用される[タイムゾーンを変更](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)できます。|
-|`verbose`|ブール値|true に設定すると、すべての意図とそのスコアが返されます。 既定値は false で、この場合、最上位の意図だけが返されます。|
-|`staging`|ブール値|true に設定した場合、ステージング環境の結果からクエリが返されます。 |
-|`log`|ブール値|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は true です。|
+|`verbose`|Boolean|true に設定すると、すべての意図とそのスコアが返されます。 既定値は false で、この場合、最上位の意図だけが返されます。|
+|`staging`|Boolean|true に設定した場合、ステージング環境の結果からクエリが返されます。 |
+|`log`|Boolean|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は true です。|
 
 ### <a name="query-published-app"></a>発行済みアプリに対してクエリを実行する
 
@@ -324,7 +304,6 @@ LUIS ポータルから、お客様のアプリを選択し、 **[Import endpoin
 
 ログがアップロードされたら、LUIS ポータルで[エンドポイント発話を確認](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances)します。
 
-
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -362,14 +341,13 @@ LUIS アプリケーションは、次の依存関係を一切**含んでいな�
 
 サポートされていないアプリ構成|詳細|
 |--|--|
-|サポートされていないコンテナー カルチャ| オランダ語 (nl-NL)<br>日本語 (ja-JP)<br>ドイツ語は、[1.0.1 トークナイザー以降](luis-language-support.md#custom-tokenizer-versions)でのみサポートされています。|
+|サポートされていないコンテナー カルチャ| オランダ語 (nl-NL)<br>日本語 (ja-JP)<br>ドイツ語は、[1.0.2 トークナイザー](luis-language-support.md#custom-tokenizer-versions)でのみサポートされています。|
 |サポートされていないエンティティ (全カルチャ)|[KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) 事前構築済みエンティティ (全カルチャ)|
 |サポートされていないエンティティ (英語 (en-US) カルチャ)|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) 事前構築済みエンティティ|
 |音声認識の準備|コンテナーでは、外部依存関係がサポートされません。|
 |センチメント分析|コンテナーでは、外部依存関係がサポートされません。|
 
-<!--blogs/samples/video coures -->
-
+<!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>まとめ
@@ -390,3 +368,7 @@ LUIS アプリケーションは、次の依存関係を一切**含んでいな�
 * 構成設定について、[コンテナーの構成](luis-container-configuration.md)を確認する
 * [トラブルシューティング](troubleshooting.md)に関するページを参照して、LUIS 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する
+
+<!-- Links - external -->
+[download-published-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip
+[download-trained-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip

@@ -9,11 +9,11 @@ ms.date: 08/10/2018
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: c1e5027b192f32b50af10a2bdfbadfeb123b39ce
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146664"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181291"
 ---
 ### <a name="delete-azure-resources"></a>Azure リソースを削除する 
 
@@ -21,8 +21,8 @@ Azure のリソースとリソース グループは、削除すると元に戻�
 
 リソースを削除するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[リソース グループ]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
 2. IoT Edge のテスト リソースを含んだリソース グループの名前を選択します。 
 
-3. リソース グループに含まれるリソースの一覧を確認します。 それらすべてを削除する場合は、**[リソース グループの削除]** を選択します。 一部だけを削除する場合は、削除する各リソースをクリックして個別に削除してください。 
+3. リソース グループに含まれるリソースの一覧を確認します。 それらすべてを削除する場合は、 **[リソース グループの削除]** を選択します。 一部だけを削除する場合は、削除する各リソースをクリックして個別に削除してください。 

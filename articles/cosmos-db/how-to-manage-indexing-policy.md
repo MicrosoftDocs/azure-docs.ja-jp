@@ -4,14 +4,14 @@ description: Azure Cosmos DB でインデックス作成ポリシーを管理す
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/27/2019
 ms.author: thweiss
-ms.openlocfilehash: 05fd369cfebba03c814507f82755fa6cb6a89400
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 0100be7eeacdcda5b123356e95e2510a365d0f22
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386796"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356445"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -155,7 +155,8 @@ container = client.ReadContainer(containerPath)
 # set the indexing mode to Consistent
 container['indexingPolicy']['indexingMode'] = 'consistent'
 # add an excluded path
-container['indexingPolicy']['excludedPaths'] = [{"path" : "/headquarters/employees/?"}]
+container['indexingPolicy']['excludedPaths'] = [
+    {"path": "/headquarters/employees/?"}]
 # update the container with our changes
 response = client.ReplaceContainer(containerPath, container)
 ```
@@ -357,7 +358,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
                     "path":"/age",
                     "order":"ascending"
                 }
-            ]
+            ],
             [  
                 {  
                     "path":"/name",

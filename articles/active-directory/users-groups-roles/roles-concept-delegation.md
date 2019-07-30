@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0cb6e2b1df062c3d056bd9a5aa0c1ff89f6636a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083768"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Azure Active Directory での管理の委任
 

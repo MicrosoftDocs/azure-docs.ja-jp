@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c24cbf8ad21c7dd5875a71532a5278e313774e66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 232742c9ca3f090e2900566c1e80f9720e284135
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883969"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>チュートリアル:Azure Active Directory と dmarcian の統合
 
@@ -53,11 +53,11 @@ Azure AD への dmarcian の統合を構成するに、ギャラリーから管�
 
 **ギャラリーから dmarcian を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への dmarcian の統合を構成するに、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**dmarcian**」と入力し、結果パネルから **[dmarcian]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**dmarcian**」と入力し、結果パネルから **[dmarcian]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の dmarcian](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ dmarcian で Azure AD のシングル サインオンを構成してテストす
 
 dmarcian で Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **dmarcian** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **dmarcian** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -121,7 +121,7 @@ dmarcian で Azure AD のシングル サインオンを構成するには、次
     | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
     | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[dmarcian Domain and URLs] (dmarcian のドメインと URL) のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -144,21 +144,21 @@ dmarcian で Azure AD のシングル サインオンを構成するには、次
 
 1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として dmarcian にサインインします。
 
-2. 右上隅にある **[プロファイル]** をクリックし、**[ユーザー設定]** に移動します。
+2. 右上隅にある **[プロファイル]** をクリックし、 **[ユーザー設定]** に移動します。
 
     ![[ユーザー設定]](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
-3. 下へスクロールして **[シングル サインオン]** セクションをクリックしてから、**[構成]** をクリックします。
+3. 下へスクロールして **[シングル サインオン]** セクションをクリックしてから、 **[構成]** をクリックします。
 
     ![シングル](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
-4. **[SAML シングル サインオン]** ページで、**[状態]** を **[有効]** に設定し、次の手順を実行します。
+4. **[SAML シングル サインオン]** ページで、 **[状態]** を **[有効]** に設定し、次の手順を実行します。
 
     ![認証](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、**[コピー]** をクリックしてインスタンスの **[Assertion Consumer Service URL]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション**にある **[応答 URL]** テキスト ボックスに貼り付けます。
+    * **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、 **[コピー]** をクリックしてインスタンスの **[Assertion Consumer Service URL]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション**にある **[応答 URL]** テキスト ボックスに貼り付けます。
 
-    * **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、**[コピー]** をクリックしてインスタンスの **[エンティティ ID]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション**にある **[識別子]** テキスト ボックスに貼り付けます。
+    * **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、 **[コピー]** をクリックしてインスタンスの **[エンティティ ID]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション**にある **[識別子]** テキスト ボックスに貼り付けます。
 
     * **[Set up Authentication] (認証の設定)** セクションの **[Identity Provider Metadata] (ID プロバイダーのメタデータ)** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** を貼り付けます。
 
@@ -175,7 +175,7 @@ dmarcian で Azure AD のシングル サインオンを構成するには、次
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -189,7 +189,7 @@ dmarcian で Azure AD のシングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -200,7 +200,7 @@ dmarcian で Azure AD のシングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に dmarcian へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[dmarcian]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[dmarcian]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -212,15 +212,15 @@ dmarcian で Azure AD のシングル サインオンを構成するには、次
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-dmarcian-test-user"></a>dmarcian のテスト ユーザーの作成
 
@@ -230,11 +230,11 @@ Azure AD ユーザーが dmarcian にサインインできるようにするに�
 
 1. セキュリティ管理者として dmarcian にサインインします。
 
-2. 右上隅にある **[プロファイル]** をクリックし、**[ユーザーの管理]** に移動します。
+2. 右上隅にある **[プロファイル]** をクリックし、 **[ユーザーの管理]** に移動します。
 
     ![ユーザー](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
-3. **[SSO Users] (SSO ユーザー)** セクションの右側で、**[新しいユーザーの追加]** をクリックします。
+3. **[SSO Users] (SSO ユーザー)** セクションの右側で、 **[新しいユーザーの追加]** をクリックします。
 
     ![ユーザーの追加](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
@@ -244,7 +244,7 @@ Azure AD ユーザーが dmarcian にサインインできるようにするに�
 
     a. **[New User Email]\(新しいユーザーの電子メール\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
-    b. そのユーザーに管理者権限を付与する場合は、**[Make User an Admin] (ユーザーを管理者にする)** を選択します。
+    b. そのユーザーに管理者権限を付与する場合は、 **[Make User an Admin] (ユーザーを管理者にする)** を選択します。
 
     c. **[ユーザーの追加]** をクリックします。
 

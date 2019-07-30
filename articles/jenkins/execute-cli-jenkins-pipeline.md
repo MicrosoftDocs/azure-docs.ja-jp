@@ -36,7 +36,7 @@ Jenkins マスターを持っていない場合は、[ソリューション テ�
 Azure 資格情報のプラグインでは、Jenkins に Microsoft Azure サービス プリンシパルの資格情報を格納できます。 バージョン 1.2 では、Jenkins パイプラインで Azure 資格情報を取得できるようにサポートを強化しました。 
 
 バージョン 1.2 以降を使用していることを確認します。
-* Jenkins ダッシュボード内で、**[Manage Jenkins]\(Jenkins の管理\) -> [プラグイン マネージャー] ->** の順にクリックして **[Azure 資格情報]** を検索します。 
+* Jenkins ダッシュボード内で、 **[Manage Jenkins]\(Jenkins の管理\) -> [プラグイン マネージャー] ->** の順にクリックして **[Azure 資格情報]** を検索します。 
 * バージョンが 1.2 以前である場合は、プラグインを更新します。
 
 Java JDK と Maven も Jenkins マスターで必要です。 インストールするには、SSH を使用して Jenkins マスターにサインインし、次のコマンドを実行します。
@@ -49,7 +49,7 @@ sudo apt-get install -y maven
 
 Azure CLI を実行するには、Azure の資格情報が必要です。
 
-* Jenkins ダッシュボードで、**[資格情報] -> [システム] ->** の順にクリックします。 **[Global credentials(unrestricted)]\(グローバル資格情報 (制限なし)\)** をクリックします。
+* Jenkins ダッシュボードで、 **[資格情報] -> [システム] ->** の順にクリックします。 **[Global credentials(unrestricted)]\(グローバル資格情報 (制限なし)\)** をクリックします。
 * **[資格情報の追加]** をクリックして、サブスクリプション ID、クライアント ID、クライアント シークレット、OAuth 2.0 トークン エンドポイントなどの値を入力し、[Microsoft Azure サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)を追加します。 後の手順で使用する ID を指定します。
 
 ![資格情報の追加](./media/execute-cli-jenkins-pipeline/add-credentials.png)
@@ -145,17 +145,17 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ```
 
 ## <a name="create-jenkins-pipeline"></a>Jenkins パイプラインを作成する
-Web ブラウザーで Jenkins を開き、**[新しい項目]** をクリックします。 
+Web ブラウザーで Jenkins を開き、 **[新しい項目]** をクリックします。 
 
-* ジョブの名前を指定し、**[パイプライン]** を選択します。 Click **OK**.
+* ジョブの名前を指定し、 **[パイプライン]** を選択します。 Click **OK**.
 * **[パイプライン]** タブをクリックします。 
-* **[定義]** で、**[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
-* **[SCM]** で、**[Git]** を選択します。
+* **[定義]** で、 **[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
+* **[SCM]** で、 **[Git]** を選択します。
 * フォークしたレポジトリの GitHub URL を入力します。https:\<分岐したレポジトリ\>.git
 * **[保存]**
 
 ## <a name="test-your-pipeline"></a>パイプラインをテストする
-* 作成したパイプラインに移動して、**[Build Now]\(ビルド実行\)** をクリックします
+* 作成したパイプラインに移動して、 **[Build Now]\(ビルド実行\)** をクリックします
 * ビルドは数秒後に成功し、ビルドに移動して **[コンソール出力]** をクリックし、詳細を確認します
 
 ## <a name="verify-your-web-app"></a>Web アプリを検証する

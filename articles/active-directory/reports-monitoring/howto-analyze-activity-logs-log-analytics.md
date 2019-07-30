@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1651bb2898a2bd1e3e0c3fbbce77dc4106d76e7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4145ea2162cdd56deb8bbdcfa81d5a90a2ed9382
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60438244"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611568"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
 

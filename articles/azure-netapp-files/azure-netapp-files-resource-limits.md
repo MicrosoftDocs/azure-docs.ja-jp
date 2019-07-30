@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: b-juche
 ms.openlocfilehash: b55467d77beb8f97b8e392b72682268ae0407e54
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826369"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
@@ -36,14 +36,14 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  容量プールあたりのボリュームの数     |    500   |    はい     |
 |  ボリュームあたりのスナップショット数       |    255     |    いいえ        |
 |  Azure Virtual Network あたりの Azure NetApp Files (Microsoft.NetApp/volumes) に委任されたサブネットの数    |   1   |    いいえ    |
-|  ボリュームに接続可能な VM (ピアリングされた VNet を含む) の最大数     |    1,000   |    いいえ   |
+|  ボリュームに接続可能な VM (ピアリングされた VNet を含む) の最大数     |    1000   |    いいえ   |
 |  単一の容量プールの最小サイズ   |  4 TiB     |    いいえ  |
 |  単一の容量プールの最大サイズ    |  500 TiB   |   いいえ   |
 |  単一のボリュームの最小サイズ    |    100 GiB    |    いいえ    |
 |  単一のボリュームの最大割り当てクォータ*   |   92 TiB   |    いいえ   |
 |  単一のボリュームの最大サイズ*     |    100 TiB    |    いいえ       |
 
-* ボリュームは、92 TiB まで手動で作成またはサイズ変更できます。 ただし、超過シナリオでは 100 TiB までボリュームを拡張できます。 容量の超過の詳細については、「[Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md)」を参照してください。 
+\* ボリュームは、92 TiB まで手動で作成またはサイズ変更できます。 ただし、超過シナリオでは 100 TiB までボリュームを拡張できます。 容量の超過の詳細については、「[Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md)」を参照してください。 
 
 ## <a name="request-limit-increase"></a>上限の引き上げを要求する 
 
@@ -56,7 +56,7 @@ Azure portal ナビゲーション プレーンから:
 3. [基本] タブで次の情報を指定します。 
     1. [問題の種類]: **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
     2. [サブスクリプション]:クォータの増加が必要なリソースのサブスクリプションを選択します。
-    3. [クォータの種類]: **[Storage:Azure NetApp Files limits]** (ストレージ: Azure NetApp Files の制限) を選択します。
+    3. [クォータの種類]: **[Storage:Azure NetApp Files limits]\(ストレージ: Azure NetApp Files の制限\)** を選択します。
     4. **次へ: 「解決方法」** を参照してください。
 4. [詳細] タブで次の操作を実行します。
     1. [説明] ボックスで、対応するリソースの種類に対して、次の情報を指定します。

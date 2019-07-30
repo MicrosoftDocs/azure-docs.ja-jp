@@ -4,15 +4,15 @@ description: Windows Virtual Desktop テナント環境の設定時に PowerShel
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: ad32f7ff883812830dbcf2ed900c4034bd90abfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 06b955365ffc7c0a1dff93db95932d8696293e9f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64928690"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605240"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell
 

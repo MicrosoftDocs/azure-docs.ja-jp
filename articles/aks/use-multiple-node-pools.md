@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 679d91da774b3e4d2c53c70cdc0abfd4da9c6953
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48fdb251fa0302c2755281644a804c74ae80a63e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059639"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491541"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>プレビュー: Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -23,7 +23,7 @@ Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プ�
 > [!IMPORTANT]
 > AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
-> * [AKS サポート ポリシー][aks-support-policies]
+> * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -32,18 +32,22 @@ Azure CLI バージョン 2.0.61 以降がインストールされて構成さ�
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-*aks-preview* CLI 拡張機能には、複数のノード プールを作成および管理する CLI コマンドがあります。 次の例に示すように、[az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
+複数のノード プールを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> 以前に *aks-preview* 拡張機能をインストール済みの場合は、`az extension update --name aks-preview` コマンドを使用して、利用可能な更新プログラムをインストールできます。
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>複数のノード プール機能のプロバイダーを登録する
 
 複数のノード プールを使用する AKS クラスターを作成するには、まずお使いのサブスクリプションで 2 つの機能フラグを有効にします。 複数のノード プール クラスターは、仮想マシン スケール セット (VMSS) を使用して、Kubernetes ノードのデプロイおよび構成を管理しています。 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、*MultiAgentpoolPreview* および *VMSSPreview* 機能フラグを登録します。
+
+> [!CAUTION]
+> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
@@ -74,16 +78,16 @@ az provider register --namespace Microsoft.ContainerService
 * 最初のノード プールは削除できません。
 * HTTP アプリケーションのルーティング アドオンは使用できません。
 * ほとんどの操作と同様に、既存の Resource Manager テンプレートを使用して、ノード プールを追加/更新/削除することはできません。 代わりに、[別の Resource Manager テンプレートを使用](#manage-node-pools-using-a-resource-manager-template)して、AKS クラスター内のノード プールに変更を加えます。
-* クラスター オートスケーラー (現在 AKS でプレビュー段階) は使用できません。
 
 この機能がプレビュー段階にある間は、追加で次の制限もあります。
 
 * AKS クラスターは、最大で 8 つノード プールを持つことができます。
 * AKS クラスターは、この 8 つのノード プール全体で最大 400 のノードを持つことができます。
+* すべてのノード プールは、同じサブネット内に存在する必要があります。
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
-まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。 次の手順では、*1.12.6* の *--kubernetes-version* を使用してノード プールの更新方法を示しています。 [Kubernetes のバージョンは、サポートされている任意のもの][supported-versions]を使用できます。
+まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。 次の手順では、*1.12.6* の *--kubernetes-version* を使用してノード プールの更新方法を示しています。 [Kubernetes のサポートされている任意のバージョン][supported-versions]を指定できます。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -141,7 +145,7 @@ VirtualMachineScaleSets  1        110        nodepool1   1.12.6                 
 
 ## <a name="upgrade-a-node-pool"></a>ノード プールのアップグレード
 
-最初の手順でご自分の AKS クラスターを作成したとき、`--kubernetes-version` として *1.12.6* を指定しました。 *mynodepool* を Kubernetes *1.12.7* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用しノード プールをアップグレードします。
+最初の手順でご自分の AKS クラスターを作成したとき、`--kubernetes-version` として *1.12.6* を指定しました。 *mynodepool* を Kubernetes *1.12.7* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -473,3 +477,5 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

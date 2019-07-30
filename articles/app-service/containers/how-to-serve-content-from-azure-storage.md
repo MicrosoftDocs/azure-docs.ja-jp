@@ -7,17 +7,17 @@ ms.service: app-service
 ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
-ms.author: msangapu-msft
-ms.openlocfilehash: 6b4e145a693aabbf1a00d732e2fd602e7c887a03
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: msangapu
+ms.openlocfilehash: 15cb31a3157b034089b1518a4e70eeb93ecc449e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956016"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617108"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux 上の App Service 内の Azure Storage からコンテンツを提供する
 
-このガイドでは、[Azure Storage](/azure/storage/common/storage-introduction) を使用して Linux 上の App Service 内の静的コンテンツを提供する方法を示します。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、複数のアプリへのアクセス、複数の転送方法などがあります。 
+このガイドでは、[Azure Storage](/azure/storage/common/storage-introduction) を使用して Linux 上の App Service 内の静的コンテンツを提供する方法を示します。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、複数のアプリへのアクセス、複数の転送方法などがあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,6 +28,8 @@ ms.locfileid: "65956016"
 
 > [!NOTE]
 > Azure Storage は、既定ではないストレージであり、別途請求され、Web アプリには含まれません。
+>
+> Bring Your Own Storage は、インフラストラクチャの制限により、Storage Firewall 構成の使用をサポートしていません。
 >
 
 [Azure ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)を作成します。

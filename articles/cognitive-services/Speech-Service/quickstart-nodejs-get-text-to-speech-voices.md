@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 08936ca0fe2fe10c332df146edd541c75df325e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d64f59b6b4439d79d64ee92cf23676ab1275c45a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067572"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602997"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>クイック スタート:Node.js を使用してテキスト読み上げ音声の一覧を取得する
 

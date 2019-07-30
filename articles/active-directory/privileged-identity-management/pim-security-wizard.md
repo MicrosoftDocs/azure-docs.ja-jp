@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6f978612cbbf0c326c3e66f25a0fbf4b749cc73
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4fd850ac2116dc7f353eea87845501fff020bb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286930"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476237"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>PIM での Azure AD ロール セキュリティ ウィザード
 
@@ -43,27 +43,27 @@ ms.locfileid: "60286930"
 
 1. **[Azure AD ロール]** をクリックし、 **[ウィザード]** をクリックします。
 
-    ![Azure AD ロール - ウィザード](./media/pim-security-wizard/wizard-start.png)
+    ![[Azure AD ロール] - ウィザードを実行するための 3 つの手順を示すウィザード ページ](./media/pim-security-wizard/wizard-start.png)
 
 1. **[1 特権ロールの検出]** をクリックします。
 
 1. 特権ロールの一覧で、どのユーザーが永続的または対象的であるかを確認します。
 
-    ![特権ロール ユーザーの検出](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![[特権ロールの検出] - 永続的メンバーと対象的メンバーを示すロール ウィンドウ](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
 1. **[次へ]** をクリックして、対象的にするメンバーを選択します。
 
-    ![メンバーを対象的に変換](./media/pim-security-wizard/convert-members-eligible.png)
+    ![ロールの対象にするメンバーを選択するためのオプションがある [メンバーを対象的に変換] ページ](./media/pim-security-wizard/convert-members-eligible.png)
 
 1. メンバーを選択したら、 **[次へ]** をクリックします。
 
-    ![変更の確認](./media/pim-security-wizard/review-changes.png)
+    ![変換される永続ロールが割り当てられているメンバーを示す [変更の確認] ページ](./media/pim-security-wizard/review-changes.png)
 
 1. **[OK]** をクリックして、永続的な割り当てを対象的に変換します。
 
     変換が完了したら、通知が表示されます。
 
-    ![通知](./media/pim-security-wizard/notification-completion.png)
+    ![変換の状態を示す通知](./media/pim-security-wizard/notification-completion.png)
 
 その他の特権ロールの割り当てを対象的に変換する必要がある場合は、もう一度ウィザードを実行できます。 ウィザードではなく、PIM インターフェイスを使用する場合は、「[Assign Azure AD roles in PIM (PIM で Azure AD ロールを割り当てる)](pim-how-to-add-role-to-user.md)」を参照してください。
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: ab3b742d50cc141420f9bffa1961a6e170b99d2a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234344"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441202"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine を使用する
 
@@ -51,11 +51,22 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>DSVM から Azure Notebooks ファイルへのアクセス
 
+ファイル システム アクセスは、DSVM バージョン 19.06.15 以降でサポートされています。 バージョンを確認するには、まず SSH を使用して DSVM に接続した後、次のコマンドを実行します: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (ここで示すように、正確な IP アドレスを使用する必要があります)。 バージョン番号は、"version" の出力で示されます。
+
 **無料のコンピューティング** レベルでファイル パスのパリティを保持するには、DSVM で一度に 1 つのプロジェクトしか開くことができません。 新しいプロジェクトを開くには、まず開いているプロジェクトをシャットダウンする必要があります。
+
+VM でプロジェクトが実行されると、ファイルは Jupyter サーバーのルート ディレクトリ (JupyterHub に表示されるディレクトリ) にマウントされ、既定の Azure Notebooks ファイルと置き換えられます。 Azure Notebooks UI の **[シャットダウン]** ボタンを使用して VM をシャットダウンすると、既定のファイルが復元されます。
 
 ![Azure Notebooks の [シャットダウン] ボタン](media/shutdown.png)
 
-VM でプロジェクトが実行されると、ファイルは Jupyter サーバーのルート ディレクトリ (JupyterHub に表示されるディレクトリ) にマウントされ、既定の Azure Notebooks ファイルと置き換えられます。 Azure Notebooks UI の **[シャットダウン]** ボタンを使用して VM をシャットダウンすると、既定のファイルが復元されます。
+## <a name="create-new-dsvm-users"></a>新しい DSVM ユーザーを作成する
+
+複数のユーザーで DSVM を共有する場合は、ノートブック ユーザーごとに DSVM ユーザーを作成して使用することで、相互のブロックを回避できます。
+
+1. [Azure portal](https://portal.azure.com) でお使いの仮想マシンに移動します。
+1. 左側の余白の **[サポート + トラブルシューティング]** で、 **[パスワードのリセット]** を選択します。
+1. 新しいユーザー名とパスワードを入力し、 **[更新]** を選択します。 (既存のユーザー名には影響ありません。)
+1. 他のユーザーに対し、前の手順を繰り返します。
 
 ## <a name="next-steps"></a>次の手順
 

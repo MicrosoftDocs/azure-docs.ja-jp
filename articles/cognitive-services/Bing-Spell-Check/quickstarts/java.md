@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: 0d6ea62f1d2c1e15dff13aa45c4923717dd9c2c4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 6680ddd65ce43a71873acb823f8ae57b449a56be
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390176"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423526"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
 
@@ -101,8 +101,9 @@ ms.locfileid: "66390176"
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
     }
+    ```
 
-1. Create a `BufferedReader` and read the response from the API. Print it to the console.
+1. `BufferedReader` を作成して、API から応答を読み取ります。 それをコンソールに出力します。
     
     ```java
     BufferedReader in = new BufferedReader(

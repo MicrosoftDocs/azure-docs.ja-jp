@@ -4,18 +4,18 @@ description: Azure REST API を使用して、仮想マシンの使用率メト�
 services: virtual-machines
 author: rloutlaw
 ms.reviewer: routlaw
-manager: jeconnoc
+manager: gwallace
 ms.service: load-balancer
 ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53e93d20f4a8c4877374d8242521ca97d481e15d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773266"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667457"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API を使用して仮想マシンの使用状況のメトリックを取得する
 

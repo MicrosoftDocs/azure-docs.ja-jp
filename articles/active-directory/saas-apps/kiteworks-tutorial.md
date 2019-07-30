@@ -13,37 +13,35 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/26/2019
+ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: b1789f0f6441da8a38440fc606a5748d48930a1a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897925"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248917"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>チュートリアル:Azure Active Directory と Kiteworks の統合
+# <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>チュートリアル:Kiteworks と Azure Active Directory の統合
 
-このチュートリアルでは、Kiteworks と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Kiteworks と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Kiteworks と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Kiteworks を統合すると、次のことができます。
 
-* Kiteworks にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Kiteworks に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Kiteworks にアクセスする Azure AD ユーザーを制御する。
+* ユーザーが自分の Azure AD アカウントを使用して Kiteworks に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Kiteworks と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* Kiteworks でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
+* Kiteworks でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Kiteworks では、**SP** によって開始される SSO がサポートされます
 * Kiteworks では、**Just In Time** ユーザー プロビジョニングがサポートされます
@@ -52,88 +50,61 @@ Kiteworks と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への Kiteworks の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Kiteworks を追加する必要があります。
 
-**ギャラリーから Kiteworks を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Kiteworks**」と入力します。
+1. 結果のパネルから **[Kiteworks]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
-
-    ![Azure Active Directory のボタン](common/select-azuread.png)
-
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
-
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
-
-4. 検索ボックスに「**Kiteworks**」と入力し、結果ウィンドウで **[Kiteworks]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
-
-     ![結果一覧の Kiteworks](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Kiteworks で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Kiteworks 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
+**B.Simon** というテスト ユーザーを使用して、Kiteworks に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Kiteworks の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Kiteworks で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Kiteworks で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Kiteworks シングル サインオンの構成](#configure-kiteworks-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+2. **[Kiteworks SSO の構成](#configure-kiteworks-sso)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[Kiteworks テスト ユーザーの作成](#create-kiteworks-test-user)** - Kiteworks で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-Kiteworks で Azure AD シングル サインオンを構成するには、次の手順に従います。
+1. [Azure portal](https://portal.azure.com/) の **Kiteworks** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
-1. [Azure portal](https://portal.azure.com/) の **Kiteworks** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    ![シングル サインオン構成のリンク](common/select-sso.png)
+1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<kiteworksURL>.kiteworks.com`
 
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
-
-    ![[Kiteworks のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
-
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.kiteworks.com`
-
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.kiteworks.com/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<kiteworksURL>/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Kiteworks クライアント サポート チーム](https://accellion.com/support)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-6. **[Kiteworks のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+1. **[Kiteworks のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
-
-### <a name="configure-kiteworks-single-sign-on"></a>Kiteworks シングル サインオンの構成
+### <a name="configure-kiteworks-sso"></a>Kiteworks SSO の構成
 
 1. Kiteworks 企業サイトに管理者としてサインオンします。
 
 1. 上部のツールバーで **[設定]** をクリックします。
 
-    ![Configure single sign-on](./media/kiteworks-tutorial/tutorial_kiteworks_06.png) 
+    ![Configure single sign-on](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. **[Authentication and Authorization (認証と承認)]** セクションで、 **[SSO Setup (SSO のセットアップ)]** をクリックします。
 
@@ -147,7 +118,7 @@ Kiteworks で Azure AD シングル サインオンを構成するには、次�
 
     b. **[Initiate AuthnRequest (AuthnRequest の開始)]** を選択します。
 
-    c. **[IDP Entity ID]\(IDP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。 
+    c. **[IDP Entity ID]\(IDP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
     d. **[Single Sign-On Service URL]\(シングル サインオン サービス URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -159,54 +130,33 @@ Kiteworks で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Kiteworks へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Kiteworks へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Kiteworks]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Kiteworks]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-2. アプリケーションの一覧で **[Kiteworks]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![アプリケーションの一覧の Kiteworks のリンク](common/all-applications.png)
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-kiteworks-test-user"></a>Kiteworks テスト ユーザーの作成
 
@@ -217,7 +167,7 @@ Kiteworks では、Just-In-Time プロビジョニングがサポートされて
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合は、[Kiteworks のサポート チーム](https://accellion.com/support)にお問い合わせください。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 

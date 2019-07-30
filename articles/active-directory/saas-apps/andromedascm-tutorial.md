@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d60ecfff4e634d6a92eaf1022761c2f23167918
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859154"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル:Azure Active Directory と Andromeda の統合
 
@@ -55,11 +55,11 @@ Azure AD への Andromeda の統合を構成するには、ギャラリーから
 
 **ギャラリーから Andromeda を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への Andromeda の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Andromeda** 」と入力し、結果パネルで **[Andromeda ]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Andromeda** 」と入力し、結果パネルで **[Andromeda ]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Andromeda](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 
 Andromeda で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Andromeda** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Andromeda** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     b. **[応答 URL]** ボックスに、`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[Andromeda のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -120,14 +120,14 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL に値を置き換えます。実際の値については後で説明します。
 
-6. Andromeda アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+6. Andromeda アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
     > [!Important]
     > これらの設定中に名前空間の定義をクリアします。
 
-7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
     | Name | ソース属性|
     | ------ | -----------|
@@ -156,7 +156,7 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     g. **[Save]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -174,11 +174,11 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
 1. Andromeda 企業サイトに管理者としてサインオンします。
 
-2. メニュー バーの上部にある **[Admin]\(管理者\)** をクリックし、**[Administration]\(管理\)** に移動します。
+2. メニュー バーの上部にある **[Admin]\(管理者\)** をクリックし、 **[Administration]\(管理\)** に移動します。
 
     ![Andromeda 管理者](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
 
-3. ツール バーの左側の **[Interfaces]\(インターフェイス\)** セクションで、**[SAML Configuration]\(SAML の構成\)** をクリックします。
+3. ツール バーの左側の **[Interfaces]\(インターフェイス\)** セクションで、 **[SAML Configuration]\(SAML の構成\)** をクリックします。
 
     ![Andromeda SAML](./media/andromedascm-tutorial/tutorial_andromedascm_saml.png)
 
@@ -188,17 +188,17 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     a. **[Enable SSO with SAML]\(SAML で SSO を有効にする\)** をオンにします。
 
-    b. **[Andromeda Information]\(Andromeda 情報\)** セクションで、**[SP Identity]\(SP ID\)** の値をコピーして、**[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
+    b. **[Andromeda Information]\(Andromeda 情報\)** セクションで、 **[SP Identity]\(SP ID\)** の値をコピーして、 **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    c. **[Consumer URL]\(コンシューマー URL\)** の値をコピーし、**[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
+    c. **[Consumer URL]\(コンシューマー URL\)** の値をコピーし、 **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
-    d. **[Logon URL]\(ログオン URL\)** の値をコピーし、**[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
+    d. **[Logon URL]\(ログオン URL\)** の値をコピーし、 **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
     e. **[SAML Identity Provider]\(SAML ID プロバイダー\)** セクションで、IDP 名を入力します。
 
     f. **[Single Sign On End Point]\(シングル サインオン エンドポイント\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    g. Azure Portal からダウンロードした **Base64 でエンコードされた証明書**をメモ帳で開き、**[X.509 証明書]** ボックスに貼り付けます。
+    g. Azure Portal からダウンロードした **Base64 でエンコードされた証明書**をメモ帳で開き、 **[X.509 証明書]** ボックスに貼り付けます。
     
     h. 以下の属性を対応する値にマップし、Azure AD からの SSO ログインを容易にします。 **ユーザー ID** 属性はログインに必要です。 プロビジョニングの場合は、**電子メール**、**会社**、**ユーザーの種類**、**ロール**が必要です。 このセクションでは、Azure Portal 内で定義されている値に関連付ける属性マッピング (名前と値) を定義します。
 
@@ -210,7 +210,7 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -234,7 +234,7 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Andromeda へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Andromeda]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Andromeda]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -246,15 +246,15 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-andromeda-test-user"></a>Andromeda のテスト ユーザーの作成
 

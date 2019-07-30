@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736668"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442893"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure Front Door Service についてよく寄せられる質問
 
@@ -24,7 +24,7 @@ ms.locfileid: "60736668"
 
 1. この記事のコメント セクション。
 2. [Azure Front Door Service の UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025)。
-3. **Microsoft のサポート:** 新しいサポート要求を作成するには、Azure Portal の [ヘルプ] タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
+3. **Microsoft のサポート:** 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
 
 ## <a name="general"></a>全般
 
@@ -75,29 +75,38 @@ Azure Front Door Service には、Microsoft からの Azure CDN と同じ POP (�
 
 ### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front Door Service はアプリケーション専用のデプロイメントですか? または、複数の顧客と共有されますか?
 
-Azure Front Door Service は、グローバルに分散されたマルチ テナント サービスです。 そのため、Front Door のインフラストラクチャは、すべての顧客間で共有されます。 ただし、Front Door を作成することで、アプリケーションに必要な特定の構成は定義されます。 
+Azure Front Door Service は、グローバルに分散されたマルチ テナント サービスです。 そのため、Front Door のインフラストラクチャは、すべての顧客間で共有されます。 ただし、ユーザーは Front Door のプロファイルを作成することで、アプリケーションに必要な特定の構成を定義します。Front Door に加えられた変更は、他の Front Door 構成に影響を与えません。
 
 ### <a name="is-http-https-redirection-supported"></a>HTTP から HTTPS へのリダイレクトはサポートされていますか?
 
-Front Door は現在、URL のリダイレクトをサポートしていません。
+はい。 実際には、Azure Front Door Service は、ホスト、パス、およびクエリ文字列のリダイレクトに加えて、URL リダイレクトの一部をサポートしています。 [URL リダイレクト](front-door-url-redirect.md)の詳細を確認してください。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>どのような順序でルーティング ルールは処理されますか?
 
 Front Door のルートには順序はなく、特定のルートは最適な一致に基づいて選択されます。 詳細については、「[Front Door が要求をルーティング規則と照合する方法](front-door-route-matching.md)」を参照してください。
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-service"></a>バックエンドへのアクセスを Azure Front Door Service のみにロックダウンするにはどうしたらよいですか?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>バックエンドへのアクセスを Azure Front Door のみにロックダウンするにはどうしたらよいですか?
 
-Azure Front Door Service からのトラフィックのみを受け入れるように、バックエンドの IP ACL 化を構成することができます。 Azure Front Door Service のバックエンド IP 空間のみからの着信接続を受け入れるようにアプリケーションを制限できます。 [Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合の方向で取り組んでいますが、今のところ IP 範囲は次のように表現しています。
+特定の Front Door からのみトラフィックを受け入れるようにアプリケーションをロックダウンするには、バックエンドの IP ACL を設定してから、Azure Front Door によって送信されるヘッダー "X-Forwarded-Host" について、受け入れられる値のセットを制限する必要があります。 以下に、これらの手順の詳細を示します。
+
+- 使用するバックエンドが、Azure Front Door のバックエンド IP アドレス空間と Azure のインフラストラクチャ サービスからのトラフィックのみを受け入れるように IP ACL 処理を構成します。 Microsoft は [Azure IP 範囲およびサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合に向けて作業を進めていますが、現在のところ、IP 範囲は次のように参照することができます。
  
-- **IPv4** - `147.243.0.0/16`
-- **IPv6** - `2a01:111:2050::/44`
+    - Front Door の**IPv4** バックエンド IP 空間: `147.243.0.0/16`
+    - Front Door の**IPv6** バックエンド IP 空間: `2a01:111:2050::/44`
+    - 仮想化されたホスト IP アドレスを通した Azure の[基本的なインフラストラクチャ サービス](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations): `168.63.129.16` および `169.254.169.254`
 
-> [!WARNING]
-> バックエンド IP 空間は後で変更される可能性があります。ただし、変更を行う前には必ず [Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合を行います。 変更または更新について知るために、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をサブスクライブすることをお勧めします。 
+    > [!WARNING]
+    > Front Door のバックエンド IP 空間は後で変更される可能性があります。ただし Microsoft はその前に、[Azure IP 範囲およびサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合が確実に行われるようにします。 変更または更新について知るために、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をサブスクライブすることをお勧めします。
+
+-   Front Door によって送信された受信ヘッダー "**X-Forwarded-Host**" の値をフィルター処理します。 ヘッダーの許可される値は、Front Door の構成で定義されているすべてのフロント エンド ホストだけにする必要があります。実際には、さらに具体的に言えば、複数ある実際のバックエンドのうち、この特定のバックエンドでトラフィックを受け入れたいホスト名のみにします。
+    - 例: Front Door の構成に、 _`contoso.azurefd.net`_ (A)、 _`www.contoso.com`_ (B)、_ (C)、 _`notifications.contoso.com`_ (D) というフロント エンド ホストがあるとします。 バックエンドは X と Y の 2 つがあると仮定します。 
+    - バックエンド X はホスト名 A および B からのトラフィックのみを受け取る必要があり、バックエンド Y は A、C、D からのトラフィックを受け取れます。
+    - そのため、バックエンド X では、ヘッダー "**X-Forwarded-Host**" が _`contoso.azurefd.net`_ または _`www.contoso.com`_ のいずれかに設定されているトラフィックのみを受け入れる必要があります。 バックエンド X は、その他のすべてのトラフィックを拒否する必要があります。
+    - 同様に、バックエンド Y では、ヘッダー "**X-Forwarded-Host**" が _`contoso.azurefd.net`_ 、 _`api.contoso.com`_ 、 _`notifications.contoso.com`_ のいずれかに設定されているトラフィックのみを受け入れる必要があります。 バックエンド Y は、その他のすべてのトラフィックを拒否する必要があります。
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>エニーキャスト IP は、Front Door の有効期間を通じて変更できますか?
 
-Front Door のフロントエンド エニーキャスト IP は、通常は変更すべきでなく、Front Door の有効期間を通じて静的のままにしておくことができます。 ただし、同じであることの**保証はありません**。 IP アドレスへの直接的な依存関係は存在しないようにしてください。  
+Front Door のフロントエンド エニーキャスト IP は、通常は変更すべきでなく、Front Door の有効期間を通じて静的のままにしておくことができます。 ただし、同じであることの**保証はありません**。 IP アドレスへの直接的な依存関係は存在しないようにしてください。
 
 ### <a name="does-azure-front-door-service-support-static-or-dedicated-ips"></a>Azure Front Door Service は静的または専用 IP アドレスをサポートしていますか?
 
@@ -141,6 +150,11 @@ Front Door では、TLS バージョン 1.0、1.1、1.2 がサポートされま
 
 Front Door のカスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、Azure Front Door Service によって管理されている証明書を使用するか、または独自の証明書を使用することを選択できます。
 Front Door マネージド オプションは、Digicert を介し、Front Door のキー コンテナーに格納される標準 SSL 証明書をプロビジョニングします。 独自の証明書を使用する場合、サポートされている CA から証明書をオンボードできます。証明書は、標準的な SSL、拡張検証証明書、またはワイルドカード証明書でも構いません。 自己署名証明書はサポートされていません。 [カスタム ドメインに対する HTTPS の有効化の方法](https://aka.ms/FrontDoorCustomDomainHTTPS)を説明します。
+
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Front Door は証明書のオートローテーションをサポートしていますか?
+
+Front Door が管理する証明書オプションの場合、証明書は Front Door によってオートローテーションされます。 Front Door が管理する証明書を使用していて、証明書の有効期限日が 60 日未満であることが確認された場合は、サポート チケットを送信します。
+</br>独自のカスタム SSL 証明書については、オートローテーションはサポートされません。 特定のカスタム ドメインに対して初めて設定が行われる方法と同様に、Front Door に Key Vault 内の適切な証明書のバージョンを参照させて、Front Door のサービス プリンシパルが引き続き Key Vault にアクセスできることを確認する必要があります。 Front Door による、この更新された証明書ロールアウト処理はアトミックであり、証明書のサブジェクト名や SAN が変更されない限り、運用環境への影響は一切発生しません。
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Azure Front Door Service でサポートされている最新の暗号スイートはどれですか?
 

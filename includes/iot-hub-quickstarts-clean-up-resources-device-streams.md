@@ -2,22 +2,22 @@
 title: インクルード ファイル (デバイス ストリーム)
 description: インクルード ファイル
 services: iot-hub
-author: rezas
+author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 01/15/2019
-ms.author: rezas
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 155e36bf4198eb18f5505483ea13a287f88a5022
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 46ab75f161692dd048c19698af7027d0e0622b37
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733281"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446012"
 ---
 次の推奨記事に進む予定の場合は、既に作成したリソースを維持して、再利用することができます。
 
-それ以外の場合は、課金されないようにするために、この記事で作成した Azure リソースを削除してもかまいません。 
+それ以外の場合は、課金されないようにするために、この記事で作成した Azure リソースを削除してもかまいません。
 
 > [!IMPORTANT]
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 IoT ハブを、保持したいリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、IoT ハブ リソースだけを削除してください。
@@ -27,7 +27,7 @@ ms.locfileid: "66733281"
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-1. **[名前でフィルター]** ボックスに、IoT ハブが含まれているリソース グループの名前を入力します。 
+1. **[名前でフィルター]** ボックスに、IoT ハブが含まれているリソース グループの名前を入力します。
 
 1. 結果一覧で、目的のリソース グループの右側にある省略記号 ( **[...]** ) を選択し、 **[リソース グループの削除]** を選択します。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c23e429966cf9a1e93ac46ea3ecd11744761872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0a03eee06ba114ab929c8c584f382861a006bbc
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148616"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360763"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
@@ -227,10 +227,12 @@ from azure.storage.blob import BlockBlobService
 from azure.storage.common.models import DeleteRetentionPolicy
 
 # Initialize a block blob service
-block_blob_service = BlockBlobService(account_name='<enter your storage account name>', account_key='<enter your storage account key>')
+block_blob_service = BlockBlobService(
+    account_name='<enter your storage account name>', account_key='<enter your storage account key>')
 
 # Set the blob client's service property settings to enable soft delete
-block_blob_service.set_blob_service_properties(delete_retention_policy = DeleteRetentionPolicy(enabled = True, days = 7))
+block_blob_service.set_blob_service_properties(
+    delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
 ### <a name="net-client-library"></a>.NET クライアント ライブラリ
@@ -274,13 +276,10 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="should-i-use-soft-delete"></a>論理的な削除を使用する必要があるかどうか
-アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 論理的な削除はデータ保護戦略の一部であり、不注意によるデータの損失を防ぐことができます。
+## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>論理的な削除を使用するための特殊な考慮事項は何かありますか?
+アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 これは、頻繁に上書きされるデータを論理的な削除が無効な別のストレージ アカウントに格納することによって緩和できます。 
 
 ## <a name="faq"></a>FAQ
-**論理的な削除を使用するための特殊な考慮事項は何かありますか?**  
-頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 これは、頻繁に上書きされるデータを論理的な削除が無効な別のストレージ アカウントに格納することによって緩和できます。 
-
 **論理的な削除を使用できるストレージの種類はどれですか?**  
 現時点では、論理的な削除を使うことができるのは BLOB (オブジェクト) ストレージだけです。
 

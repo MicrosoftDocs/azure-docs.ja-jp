@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 4f3fb624f5e6137c9edb0be97adc16d8c808ebd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f60a41c48b3e78b860dca0e93d399420900dbd46
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523069"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485433"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 この記事では、Azure Blob Storage 内の JSON ドキュメントから構造化コンテンツを抽出するように Azure Search BLOB [インデクサー](search-indexer-overview.md)を構成し、Azure Search で検索できるようにする方法について説明します。 このワークフローでは、Azure Search インデックスを作成し、JSON BLOB から抽出された既存のテキストとともに読み込みます。 
@@ -118,7 +118,7 @@ REST API を使用して、Azure Search のすべてのインデクサーに共�
 
 このセクションの最後にある [REST サンプル コード](#rest-example)で、3 つのオブジェクトをすべて作成する方法を確認できます。 このセクションには、[JSON 解析モード](#parsing-modes)、[単一 BLOB](#parsing-single-blobs)、[JSON 配列](#parsing-arrays)、および[入れ子になった配列](#nested-json-arrays)の詳細も含まれています。
 
-コードベースの JSON インデックスでは、[Postman](search-fiddler.md) と REST API を使用して、次のオブジェクトが作成されます。
+コードベースの JSON インデックスでは、[Postman](search-get-started-postman.md) と REST API を使用して、次のオブジェクトが作成されます。
 
 + [インデックス](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [データ ソース](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
@@ -136,7 +136,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 要求に対する入力をアセンブルする
 
-要求ごとに、Azure Search サービス名と管理者キーを (POST ヘッダーに) 指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-fiddler.md) を使用して、Azure Search に HTTP 要求を送信できます。
+要求ごとに、Azure Search サービス名と管理者キーを (POST ヘッダーに) 指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-get-started-postman.md) を使用して、Azure Search に HTTP 要求を送信できます。
 
 次の 4 つの値をメモ帳にコピーして、要求に貼り付けることができるようにします。
 

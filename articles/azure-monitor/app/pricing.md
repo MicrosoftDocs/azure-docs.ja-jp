@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 05/29/2019
 ms.author: dalek
-ms.openlocfilehash: ebcb0922335a2bdc5423ec4e4bfce7c1cd71c46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 188911fa3fb872c8db1612406bf3d4e9b36d837b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357276"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303843"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -38,11 +38,12 @@ Application Insights の課金のしくみについてご質問がある場合�
 * アプリケーションのデータ ボリューム料金は、2018 年 4 月から**データ インジェスト**という新しい課金メーターで報告されるようになりました。 この新しいメーターは Applications Insights や Log Analytics などの監視テクノロジで共有され、現在は **Log Analytics** というサービス名の下に表示されます。 
 * [ライブ メトリック ストリーム](../../azure-monitor/app/live-stream.md) データは、課金対象としてカウントされません。
 
-お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格][pricing]」をご覧ください。
+> [!NOTE]
+> この記事のスクリーンショットに表示されているすべての価格は、例を示す目的でのみ使用されています。 お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格][pricing]」をご覧ください。
 
 ### <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
-[複数ステップ Web テスト](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)に対しては、追加料金が発生します。 複数ステップ Web テストは、一連のアクションを実行する Web テストです。
+[複数ステップ Web テスト](../../azure-monitor/app/availability-multistep.md)に対しては、追加料金が発生します。 複数ステップ Web テストは、一連のアクションを実行する Web テストです。
 
 単一ページの "*ping テスト*" については、個別の料金はかかりません。 Ping テストと複数ステップ テストからのテレメトリについては、アプリの他のテレメトリと同じ料金が請求されます。
 
@@ -53,7 +54,7 @@ Application Insights では、最近の使用パターンに基づいてコス�
 ![価格の選択](./media/pricing/pricing-001.png)
 
 A. 該当の月のデータ量を確認します。 これには、サーバーおよびクライアント アプリから、また可用性テストから ([サンプリング](../../azure-monitor/app/sampling.md)の後に) 受信され保持されたすべてのデータが含まれます。  
-B. [複数ステップ Web テスト](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)で別料金が発生しています。 (これには、データ ボリューム料金に含まれるシンプルな可用性テストは含まれません。)  
+B. [複数ステップ Web テスト](../../azure-monitor/app/availability-multistep.md)で別料金が発生しています。 (これには、データ ボリューム料金に含まれるシンプルな可用性テストは含まれません。)  
 C. 過去 1 か月のデータ ボリュームの傾向を表示します。  
 D. データ インジェストの[サンプリング](../../azure-monitor/app/sampling.md)を有効にします。   
 E. 1 日のデータ ボリュームの上限を設定します。  

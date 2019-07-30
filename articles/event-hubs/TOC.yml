@@ -59,18 +59,22 @@
   items:
     - name: Event Hubs の用語
       href: event-hubs-features.md
+    - name: イベント プロセッサ ホスト
+      href: event-hubs-event-processor-host.md
     - name: 可用性と一貫性
       href: event-hubs-availability-and-consistency.md
     - name: スケーラビリティ
       href: event-hubs-scalability.md
+    - name: geo ディザスター リカバリー
+      items:
+        - name: geo ディザスター リカバリーと geo レプリケーション
+          href: event-hubs-geo-dr.md
     - name: セキュリティ
       items:
         - name: Azure リソースのマネージド ID
           href: event-hubs-managed-service-identity.md
         - name: ロールベースのアクセス制御 (プレビュー)
           href: event-hubs-role-based-access-control.md
-        - name: geo ディザスター リカバリーと geo レプリケーション
-          href: event-hubs-geo-dr.md
         - name: 認証とセキュリティ モデルの概要
           href: event-hubs-authentication-and-security-model-overview.md
         - name: セキュリティ属性
@@ -88,8 +92,10 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: プログラミング ガイド
           href: event-hubs-programming-guide.md
-        - name: イベント プロセッサ ホストを使用してイベントを受信する
-          href: event-hubs-event-processor-host.md
+    - name: データを処理する
+      items:
+        - name: Azure Stream Analytics を使用したデータの処理
+          href: process-data-azure-stream-analytics.md
     - name: クライアント ライブラリの使用
       items:
         - name: .NET Framework

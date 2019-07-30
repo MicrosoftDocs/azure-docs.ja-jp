@@ -4,7 +4,7 @@ description: CentOS ベースの Linux オペレーティング システムを�
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 0e518e92-e981-43f4-b12c-9cba1064c4bb
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 89dbdeb02e603602155b3b8b04294aaa757b6b11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72ed518af579bb6b95d3b13400f2fbf6679cd036
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241455"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248188"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -90,54 +90,54 @@ CentOS ベースの Linux オペレーティング システムを格納した A
 
 8. Azure データセンター内でホストされている OpenLogic のミラーを使用する場合は、`/etc/yum.repos.d/CentOS-Base.repo` ファイルを次のリポジトリに置き換えます。  これにより、Azure Linux エージェントなどの追加パッケージを含む **[openlogic]** リポジトリも追加されます。
 
-    ```console
-    [openlogic]
-    name=CentOS-$releasever - openlogic packages for $basearch
-    baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-    enabled=1
-    gpgcheck=0
+   ```console
+   [openlogic]
+   name=CentOS-$releasever - openlogic packages for $basearch
+   baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+   enabled=1
+   gpgcheck=0
 
-    [base]
-    name=CentOS-$releasever - Base
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+   [base]
+   name=CentOS-$releasever - Base
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+   gpgcheck=1
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-    #released updates
-    [updates]
-    name=CentOS-$releasever - Updates
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+   #released updates
+   [updates]
+   name=CentOS-$releasever - Updates
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+   gpgcheck=1
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-    #additional packages that may be useful
-    [extras]
-    name=CentOS-$releasever - Extras
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+   #additional packages that may be useful
+   [extras]
+   name=CentOS-$releasever - Extras
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+   gpgcheck=1
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-    #additional packages that extend functionality of existing packages
-    [centosplus]
-    name=CentOS-$releasever - Plus
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-    gpgcheck=1
-    enabled=0
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+   #additional packages that extend functionality of existing packages
+   [centosplus]
+   name=CentOS-$releasever - Plus
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+   gpgcheck=1
+   enabled=0
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-    #contrib - packages by Centos Users
-    [contrib]
-    name=CentOS-$releasever - Contrib
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
-    gpgcheck=1
-    enabled=0
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-    ```
+   #contrib - packages by Centos Users
+   [contrib]
+   name=CentOS-$releasever - Contrib
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
+   gpgcheck=1
+   enabled=0
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+   ```
 
     > [!Note]
     > これ以降の説明では、少なくとも `[openlogic]` リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
@@ -271,48 +271,48 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 6. Azure データセンター内でホストされている OpenLogic のミラーを使用する場合は、`/etc/yum.repos.d/CentOS-Base.repo` ファイルを次のリポジトリに置き換えます。  これにより、Azure Linux エージェント用のパッケージを含む **[openlogic]** リポジトリも追加されます。
 
-    ```console
-    [openlogic]
-    name=CentOS-$releasever - openlogic packages for $basearch
-    baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-    enabled=1
-    gpgcheck=0
+   ```console
+   [openlogic]
+   name=CentOS-$releasever - openlogic packages for $basearch
+   baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+   enabled=1
+   gpgcheck=0
     
-    [base]
-    name=CentOS-$releasever - Base
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+   [base]
+   name=CentOS-$releasever - Base
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+   gpgcheck=1
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
     
-    #released updates
-    [updates]
-    name=CentOS-$releasever - Updates
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+   #released updates
+   [updates]
+   name=CentOS-$releasever - Updates
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+   gpgcheck=1
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
     
-    #additional packages that may be useful
-    [extras]
-    name=CentOS-$releasever - Extras
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-    gpgcheck=1
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+   #additional packages that may be useful
+   [extras]
+   name=CentOS-$releasever - Extras
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+   gpgcheck=1
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
     
-    #additional packages that extend functionality of existing packages
-    [centosplus]
-    name=CentOS-$releasever - Plus
-    #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
-    baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-    gpgcheck=1
-    enabled=0
-    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-    ```
+   #additional packages that extend functionality of existing packages
+   [centosplus]
+   name=CentOS-$releasever - Plus
+   #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
+   baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+   gpgcheck=1
+   enabled=0
+   gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+   ```
     
-    > [!Note]
-    > これ以降の説明では、少なくとも `[openlogic]` リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
+   > [!Note]
+   > これ以降の説明では、少なくとも `[openlogic]` リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
 
 7. 次のコマンドを実行して、現在の yum メタデータをクリアし、更新をインストールします。
 

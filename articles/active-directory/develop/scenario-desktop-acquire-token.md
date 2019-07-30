@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d18c92cccac6bfb0bd359767ecdb51951268735
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ecf5b874345a94e8fd3d3a0783f8e48c7484377d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962539"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111267"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ - トークンの取得
 
@@ -304,7 +304,7 @@ AcquireTokenByIntegratedWindowsAuthentication で使用可能な修飾子の一�
 
 次の制約も適用されます。
 
-- ユーザー名/パスワードのフローは、条件付きアクセスおよび多要素認証との互換性がありません。その結果、テナント管理者が多要素認証を必要とする Azure AD テナントでアプリを実行する場合は、このフローを使用できません。 これは多くの組織に該当します。
+- ユーザー名/パスワードのフローは、条件付きアクセスと多要素認証との互換性がありません。その結果、テナント管理者が多要素認証を必要とする Azure AD テナントでアプリを実行する場合は、このフローを使用できません。 これは多くの組織に該当します。
 - 職場および学校アカウント (MSA ではありません) にのみ有効です。
 - このフローは、.NET デスクトップと .NET Core で使用できますが、UWP では使用できません。
 

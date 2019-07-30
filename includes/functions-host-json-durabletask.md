@@ -4,17 +4,17 @@ description: インクルード ファイル
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d79d1bd5ec244ad4399a02c349e2504516d06ccd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2e30184c7273fad2f9bc8adb34834ee14840733b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181744"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608263"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) の構成設定。
 
@@ -38,7 +38,7 @@ ms.locfileid: "67181744"
     "eventGridKeySettingName":  "EventGridKey",
     "eventGridPublishRetryCount": 3,
     "eventGridPublishRetryInterval": "00:00:30",
-    "eventGridPublishEventTypes": ["Started", "Pending", "Failed", "Terminated"]
+    "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
   }
 }
 ```

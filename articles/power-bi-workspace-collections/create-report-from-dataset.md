@@ -2,18 +2,18 @@
 title: Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成 | Microsoft Docs
 description: Power BI ワークスペース コレクション レポートをお使いのアプリケーションのデータセットから作成できるようになりました。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: e7499345f03e3deedb8972b0d51e8e676cb6c982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2034c62a17b71b92b43a7afd794c2c172288d58c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683451"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672450"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成
 

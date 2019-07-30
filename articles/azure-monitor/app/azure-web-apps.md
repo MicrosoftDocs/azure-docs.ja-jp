@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c447a14f72c56e3e1e244011aa215a33b3f222a6
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 5594c1f3517bf3d3f74841493df3c683304fa3f5
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65408233"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502091"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -274,7 +274,7 @@ Application Insights の設定をすべて既定の設定にして Azure Resourc
             "type": "string"
         }
     },
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0"
 }
 ```

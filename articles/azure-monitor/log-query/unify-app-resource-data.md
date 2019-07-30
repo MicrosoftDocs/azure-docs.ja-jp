@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 190b7f15a8ae0a5b9472188129f7116050fc831f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61424647"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466834"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 
 この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights アプリケーションのログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。  
@@ -107,16 +107,16 @@ applicationsScoping //this brings data from Application Insights resources
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | name |
+| AvailabilityTestName | 名前 |
 | AvailabilityTimestamp | timestamp |
-| ブラウザー | client_browser |
+| Browser | client_browser |
 | City | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
 | Country | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | name | 
+| CustomEventName | 名前 | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
@@ -128,20 +128,20 @@ applicationsScoping //this brings data from Application Insights resources
 | OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | name | 
+| PageViewName | 名前 | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
-| RequestName | name | 
-| RequestSuccess | 成功 | 
+| RequestName | 名前 | 
+| RequestSuccess | success | 
 | ResponseCode | resultCode | 
 | Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
-| URL | _url |
+| URL | url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>次の手順

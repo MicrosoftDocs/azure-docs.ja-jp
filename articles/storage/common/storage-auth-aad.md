@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する | Microsoft Docs
-description: Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証します。
+title: Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認する | Microsoft Docs
+description: Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認します。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,20 +9,20 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 66051bd0f8be349f748c72218d538bba273be8f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8033dda4059a52cea2b775fc8765a9f2a91b96dd
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147270"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302432"
 ---
-# <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する
+# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認します
 
-Azure Storage は、Azure Active Directory (AD) を使用して BLOB サービスと Queue サービスの認証と承認をサポートします。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、ユーザー、グループ、またはアプリケーションのサービス プリンシパルにアクセスを許可します。 
+Azure Storage では、Azure Active Directory (AD) を使用した BLOB および Queue Storage に対する要求の承認をサポートしています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 セキュリティ プリンシパルは、Azure AD によって認証されて、OAuth 2.0 トークンを返します。 トークンは、BLOB または Queue Storage のリソースにアクセスする要求を承認するために使用できます。
 
-Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。 Azure Storage アプリケーションでは、できる限り Azure AD 認証を使用することをお勧めします。
+Azure AD から返された OAuth 2.0 トークンを使用してユーザーまたはアプリケーションを承認する方法は、セキュリティと使いやすさの面で、共有キー承認や共有アクセス署名 (SAS) よりも優位です。 Azure AD を使用すれば、アカウント アクセス キーをコードに保存する必要がないため、潜在的なセキュリティ脆弱性のリスクを排除できます。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。 Azure Storage アプリケーションでは、できる限り Azure AD 承認機能を使用することをお勧めします。
 
-Azure AD の資格情報での認証と承認は、すべてのパブリック リージョンおよび国内クラウド内のすべての汎用および BLOB ストレージ アカウントに対して使用できます。 Azure AD の認可は、Azure Resource Manager デプロイ モデルで作成されたストレージ アカウントにおいてのみサポートされます。
+Azure AD での承認は、すべてのパブリック リージョンおよび国内クラウド内のすべての汎用および BLOB ストレージ アカウントに対して使用できます。 Azure AD の認可は、Azure Resource Manager デプロイ モデルで作成されたストレージ アカウントにおいてのみサポートされます。
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>BLOB とキューに対する Azure AD の概要
 
@@ -32,7 +32,7 @@ Azure AD の資格情報での認証と承認は、すべてのパブリック �
 
 承認の手順では、セキュリティ プリンシパルに 1 つ以上の RBAC ロールを割り当てる必要があります。 BLOB およびキューのデータへの一般的なアクセス許可セットを含む RBAC ロールは、Azure Storage によって提供されます。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure Storage 用の RBAC ロールの割り当てについては、[RBAC で Azure Storage データへのアクセス許可を管理する](storage-auth-aad-rbac.md)方法に関するページを参照してください。
 
-Azure BLOB サービスまたは Queue サービスに対する要求を作成するネイティブ アプリケーションと Web アプリケーションは、Azure AD で認証することもできます。 アクセス トークンを要求し、それを使用して BLOB またはキューのデータへの要求を認可する方法については、[Azure Storage アプリケーションからの Azure AD による認証](storage-auth-aad-app.md)に関する記事をご覧ください。
+Azure BLOB サービスまたは Queue サービスに対する要求を作成するネイティブ アプリケーションと Web アプリケーションは、Azure AD でアクセスを承認することもできます。 アクセス トークンを要求し、それを使用して BLOB またはキューのデータへの要求を認可する方法については、[Azure Storage アプリケーションからの Azure AD による Azure Storage へのアクセスの承認](storage-auth-aad-app.md)に関する記事をご覧ください。
 
 ## <a name="assigning-rbac-roles-for-access-rights"></a>アクセス権に対して RBAC ロールを割り当てる
 
@@ -50,7 +50,7 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 - [RBAC と Azure CLI を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-cli.md)
 - [RBAC と PowerShell を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-powershell.md)
 
-Azure Storage の組み込みロールの定義方法については、「[ロール定義について](../../role-based-access-control/role-definitions.md#management-and-data-operations-preview)」を参照してください。 カスタム RBAC ロールの作成の詳細については、[Azure のロールベースのアクセス制御のためにカスタム ロールを作成する方法](../../role-based-access-control/custom-roles.md)に関するページを参照してください。
+Azure Storage の組み込みロールの定義方法については、「[ロール定義について](../../role-based-access-control/role-definitions.md#management-and-data-operations)」を参照してください。 カスタム RBAC ロールの作成の詳細については、[Azure のロールベースのアクセス制御のためにカスタム ロールを作成する方法](../../role-based-access-control/custom-roles.md)に関するページを参照してください。
 
 ### <a name="access-permissions-for-data-operations"></a>データ操作用のアクセス許可
 
@@ -62,7 +62,7 @@ Azure Storage の組み込みロールの定義方法については、「[ロ�
 
 ## <a name="access-data-with-an-azure-ad-account"></a>Azure AD アカウントでのアクセス データ
 
-Azure portal、PowerShell、または Azure CLI 経由での BLOB またはキューのデータへのアクセスは、ユーザーの Azure AD アカウントを使用するか、アカウント アクセス キー (共有キー認証) を使用することによって承認できます。
+Azure portal、PowerShell、または Azure CLI 経由での BLOB またはキューのデータへのアクセスは、ユーザーの Azure AD アカウントを使用するか、アカウント アクセス キー (共有キーによる承認) を使用することによって承認できます。
 
 ### <a name="data-access-from-the-azure-portal"></a>Azure portal からのデータ アクセス
 
@@ -78,12 +78,12 @@ Azure Portal では、コンテナーまたはキューに移動すると、ど�
 
 Azure CLI と PowerShell では、Azure AD の資格情報を使ったサインインをサポートします。 サインインした後、セッションはその資格情報で実行されます。 詳細については、「[Azure AD ID を使用し、CLI または PowerShell で BLOB とキューのデータにアクセスする](storage-auth-aad-script.md)」を参照してください。
 
-## <a name="azure-ad-authentication-over-smb-for-azure-files"></a>Azure Files での SMB を使用した Azure AD 認証
+## <a name="azure-ad-authorization-over-smb-for-azure-files"></a>SMB を使用した Azure Files の Azure Active Directory 認証
 
-Azure Files はドメイン参加 VM に関してのみ SMB 経由での Azure AD 認証をサポートしています (プレビュー)。 Azure Files に対して SMB 経由で Azure AD を使用する詳細については、「[SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)](../files/storage-files-active-directory-overview.md)」を参照してください。
+Azure Files はドメイン参加 VM に関してのみ SMB 経由の Azure AD での承認をサポートしています (プレビュー)。 Azure Files に対して SMB 経由で Azure AD を使用する詳細については、「[SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)](../files/storage-files-active-directory-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure リソースに対するマネージド ID を使用して BLOB およびキューへのアクセスを認証する](storage-auth-aad-msi.md)
+- [Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを承認する](storage-auth-aad-msi.md)
 - [BLOB やキューにアクセスするためにアプリケーションから Azure Active Directory で認証を行う](storage-auth-aad-app.md)
 - [Azure Active Directory ベースのアクセス制御の Azure Storage によるサポートの一般提供](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)

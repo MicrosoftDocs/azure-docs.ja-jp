@@ -4,16 +4,16 @@ description: Azure IoT Central アプリケーションから Azure Blob Storage
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fcce6bd6ee9461790ca7618f65be9a20a821afc
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464640"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360328"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Azure Blob Storage にデータをエクスポートする
 
@@ -289,6 +289,7 @@ import json
 import pandavro as pdx
 import pandas as pd
 
+
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
     # where each record is a single row.
@@ -300,16 +301,17 @@ def parse(filePath):
 
     # The SystemProperties column contains a dictionary
     # with the device ID located under the connectionDeviceId key.
-    transformed["device_id"] = measurements["SystemProperties"].apply(lambda x: x["connectionDeviceId"])
+    transformed["device_id"] = measurements["SystemProperties"].apply(
+        lambda x: x["connectionDeviceId"])
 
     # The Body column is a series of UTF-8 bytes that is stringified
     # and parsed as JSON. This example pulls the humidity property
     # from each column to get the humidity field.
-    transformed["humidity"] = measurements["Body"].apply(lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
+    transformed["humidity"] = measurements["Body"].apply(
+        lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
 
     # Finally, print the new DataFrame with our device IDs and humidities.
     print(transformed)
-
 ```
 
 #### <a name="parse-a-devices-avro-file"></a>デバイスの Avro ファイルを解析する
@@ -318,6 +320,7 @@ def parse(filePath):
 import json
 import pandavro as pdx
 import pandas as pd
+
 
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
@@ -333,17 +336,19 @@ def parse(filePath):
 
     # The template ID and version are present in a dictionary under
     # the deviceTemplate column.
-    transformed["template_id"] = devices["deviceTemplate"].apply(lambda x: x["id"])
-    transformed["template_version"] = devices["deviceTemplate"].apply(lambda x: x["version"])
+    transformed["template_id"] = devices["deviceTemplate"].apply(
+        lambda x: x["id"])
+    transformed["template_version"] = devices["deviceTemplate"].apply(
+        lambda x: x["version"])
 
     # The fanSpeed setting value is located in a nested dictionary
     # under the settings column.
-    transformed["fan_speed"] = devices["settings"].apply(lambda x: x["device"]["fanSpeed"])
+    transformed["fan_speed"] = devices["settings"].apply(
+        lambda x: x["device"]["fanSpeed"])
 
     # Finally, print the new DataFrame with our device and template
     # information, along with the value of the fan speed.
     print(transformed)
-
 ```
 
 #### <a name="parse-a-device-templates-avro-file"></a>デバイス テンプレートの Avro ファイルを解析する
@@ -352,6 +357,7 @@ def parse(filePath):
 import json
 import pandavro as pdx
 import pandas as pd
+
 
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
@@ -368,7 +374,8 @@ def parse(filePath):
 
     # The fanSpeed setting value is located in a nested dictionary
     # under the settings column.
-    transformed["fan_speed"] = templates["settings"].apply(lambda x: x["device"]["fanSpeed"])
+    transformed["fan_speed"] = templates["settings"].apply(
+        lambda x: x["device"]["fanSpeed"])
 
     # Finally, print the new DataFrame with our device and template
     # information, along with the value of the fan speed.

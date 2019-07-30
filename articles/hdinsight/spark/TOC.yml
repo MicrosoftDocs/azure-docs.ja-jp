@@ -22,6 +22,8 @@
       href: apache-spark-load-data-run-query.md
     - name: IntelliJ を使用した Apache Spark クエリの実行
       href: apache-spark-intellij-tool-plugin.md
+    - name: IntelliJ での失敗した Spark ジョブのデバッグ (プレビュー)
+      href: apache-spark-intellij-tool-failure-debug.md
     - name: BI ツールを使用したデータの分析
       href: apache-spark-use-bi-tools.md
     - name: ストリーミング ジョブの実行
@@ -30,10 +32,6 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: IntelliJ での Apache Spark アプリの作成
       href: apache-spark-create-standalone-application.md
-    - name: VSCode を使用した Apache Spark クエリの実行
-      href: ../hdinsight-for-vscode.md
-    - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
-      href: ../hdinsight-cluster-availability.md
 - name: サンプル
   items:
     - name: .NET のサンプル
@@ -44,14 +42,14 @@
       href: ../hdinsight-sdk-python-samples.md
 - name: 概念
   items:
-    - name: IntelliJ を使用した Apache Spark クエリの実行
-      href: apache-spark-intellij-tool-plugin.md
     - name: VSCode を使用した Apache Spark クエリの実行
       href: ../hdinsight-for-vscode.md
     - name: HDInsight の Apache Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
+      href: ../hdinsight-cluster-availability.md
 - name: 方法
   items:
     - name: クラスター ストレージの使用
@@ -158,8 +156,6 @@
               href: ../hdinsight-hadoop-customize-cluster-linux.md
             - name: スクリプト アクションを開発する
               href: ../hdinsight-hadoop-script-actions-linux.md
-            - name: Presto をインストールして使用する
-              href: ../hdinsight-hadoop-install-presto.md
             - name: Apache Hive ライブラリを追加する
               href: ../hdinsight-hadoop-add-hive-libraries.md
             - name: Apache Giraph を使用する
@@ -360,7 +356,7 @@
     - name: エンタープライズ セキュリティ
       items:
         - name: 概要
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
         - name: エンタープライズ セキュリティの計画
           href: ../domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight でのエンタープライズ セキュリティの構成
@@ -377,10 +373,14 @@
       items:
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight 用の VNET の計画
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight 用の VNET の作成
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG と UDR に必要な IP アドレス
+          href: ../hdinsight-management-ip-addresses.md
         - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet の HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
     - name: Azure Monitor ログを使用した監視

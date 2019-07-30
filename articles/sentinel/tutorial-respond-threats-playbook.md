@@ -7,7 +7,8 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: d5f055ce337cb43e0813bc9ff295d0958e06f561
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 52346e2ff9c47e58f2bd040582bee29eaf08bb13
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205440"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621208"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューで脅威への自動対応を設定する
 
@@ -64,11 +65,11 @@ Azure Sentinel に新しいセキュリティ プレイブックを作成する�
 
    ![ロジック アプリ](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. **[Azure Sentinel - Playbooks (Preview)]\(Azure Sentinel - プレイブック (プレビュー)\)** ページで、**[追加]** ボタンをクリックします。
+3. **[Azure Sentinel - Playbooks (Preview)]\(Azure Sentinel - プレイブック (プレビュー)\)** ページで、 **[追加]** ボタンをクリックします。
 
    ![ロジック アプリを作成する](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 
-4. **[ロジック アプリの作成]** ページで、新しいロジック アプリを作成するために要求された情報を入力し、**[作成]** をクリックします。 
+4. **[ロジック アプリの作成]** ページで、新しいロジック アプリを作成するために要求された情報を入力し、 **[作成]** をクリックします。 
 
 5. [**ロジック アプリ デザイナー**](../logic-apps/logic-apps-overview.md)で、使用するテンプレートを選択します。 資格情報が必要なテンプレートを選択した場合は、それらを指定する必要があります。 または、新しい空白のプレイブックを一から作成できます。 **[空のロジック アプリ]** を選択します。 
 
@@ -76,7 +77,7 @@ Azure Sentinel に新しいセキュリティ プレイブックを作成する�
 
 6. ロジック アプリ デザイナーが開き、そこでテンプレートを新規作成するか、編集することができます。 [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md) でプレイブックを作成する方法の詳細をご確認ください。
 
-7. 空のプレイブックを作成する場合は、**[すべてのコネクタとトリガーを検索する]** フィールドに「*Azure Sentinel*」と入力し、**[When a response to an Azure Sentinel alert is triggered]\(Azure Sentinel 通知への応答がトリガーされるとき\)** を選択します。 <br>新しいプレイブックが作成されると、**[プレイブック]** 一覧に表示されます。 表示されない場合は、**[更新]** をクリックしてください。 
+7. 空のプレイブックを作成する場合は、 **[すべてのコネクタとトリガーを検索する]** フィールドに「*Azure Sentinel*」と入力し、 **[When a response to an Azure Sentinel alert is triggered]\(Azure Sentinel 通知への応答がトリガーされるとき\)** を選択します。 <br>新しいプレイブックが作成されると、 **[プレイブック]** 一覧に表示されます。 表示されない場合は、 **[更新]** をクリックしてください。 
 
 7. これで、プレイブックをトリガーしたときの動作を定義できます。 アクション、論理条件、スイッチ ケースの条件、またはループを追加できます。
 

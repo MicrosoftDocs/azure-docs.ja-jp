@@ -4,7 +4,7 @@ description: Azure PowerShell のサンプル スクリプト - NGINX
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: edf4a3fe1f21e65e266b74a7be530cf11b30d1dd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 98aa2b0ea1885afc1f78645ab5937bd3b5d34f31
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981816"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703422"
 ---
 # <a name="create-an-nginx-vm-with-powershell"></a>PowerShell で NGINX VM を作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "55981816"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

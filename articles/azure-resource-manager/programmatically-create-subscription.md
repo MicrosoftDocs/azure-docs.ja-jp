@@ -3,22 +3,16 @@ title: Azure Enterprise サブスクリプションをプログラムで作成 |
 description: 追加の Azure Enterprise または Enterprise Dev/Test サブスクリプションをプログラムで作成する方法について説明します。
 services: azure-resource-manager
 author: jureid
-manager: jureid
-editor: ''
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: 7985451eb2bb5e9fd4fbcfb3d2fcf35149122c15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf325b93c626e0c7f9584449154e2d531995cdc5
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796077"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204343"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションをプログラムで作成する (プレビュー)
 
@@ -202,7 +196,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 すべてのパラメーターの完全な一覧については、[az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) を参照してください。
 
-----
+---
 
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Enterprise のサブスクリプション作成 API の制限事項
 

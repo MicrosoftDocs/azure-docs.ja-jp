@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901290"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル:Azure Active Directory と AnswerHub の統合
 
@@ -193,7 +193,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に AnswerHub へのアクセスを許可することで、彼女が Azure AD シングル サインオンを使用できるように設定します。
+このセクションでは、Britta Simon というユーザーに AnswerHub へのアクセスを許可することで、このユーザーが Azure AD シングル サインオンを使用できるようにします。
 
 **Azure AD テスト ユーザーを割り当てるには:**
 

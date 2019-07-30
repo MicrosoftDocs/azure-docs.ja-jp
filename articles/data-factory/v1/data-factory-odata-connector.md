@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905632"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60824034"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-odata-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-odata.md)
 
@@ -69,7 +69,7 @@ OData ストアから、サポートされている任意のシンク データ 
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |はい (基本認証を使用している場合のみ) |
 | authorizedCredential |OAuth を使用している場合は、Data Factory コピー ウィザードまたはエディターの **[承認]** ボタンをクリックして資格情報を入力すると、このプロパティの値が自動生成されます。 |はい (OAuth 認証を使用している場合のみ) |
-| gatewayName |Data Factory サービスが、オンプレミスの OData サービスへの接続に使用するゲートウェイの名前。 オンプレミスの OData ソースからデータをコピーする場合にのみ指定します。 |いいえ  |
+| gatewayName |Data Factory サービスが、オンプレミスの OData サービスへの接続に使用するゲートウェイの名前。 オンプレミスの OData ソースからデータをコピーする場合にのみ指定します。 |いいえ |
 
 ### <a name="using-basic-authentication"></a>基本認証を使用する
 ```json
@@ -148,7 +148,7 @@ OData ストアから、サポートされている任意のシンク データ 
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| path |OData リソースへのパス |いいえ  |
+| path |OData リソースへのパス |いいえ |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
@@ -159,7 +159,7 @@ source の種類が **RelationalSource** (OData を含む) である場合は、
 
 | プロパティ | 説明 | 例 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |"?$select=Name, Description&$top=5" |いいえ  |
+| query |カスタム クエリを使用してデータを読み取ります。 |"?$select=Name, Description&$top=5" |いいえ |
 
 ## <a name="type-mapping-for-odata"></a>OData の型マッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
@@ -183,7 +183,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |String |
+| Edm.String |string |
 | Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 

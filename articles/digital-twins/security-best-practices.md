@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 07/08/2019
 ms.author: v-adgera
-ms.openlocfilehash: 1d7194beeac1f6f0034738c842e0fc3a58668a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966962"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849299"
 ---
 # <a name="security-best-practices"></a>セキュリティのベスト プラクティス
 

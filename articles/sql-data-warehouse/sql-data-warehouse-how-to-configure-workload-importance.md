@@ -5,17 +5,17 @@ services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 7121d2f022f9c9a5bbc02f04955d2857f3ec986f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e4d410f32068b4d3035dcab0c61b7b9205103690
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241233"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588680"
 ---
 # <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのワークロードの重要度の構成
 
@@ -53,4 +53,4 @@ CREATE WORKLOAD CLASSIFIER AdhocClassifier 
 - 重要度の詳細については、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
-> [ワークロードの重要度の管理と監視に移動する](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
+> [ワークロードの重要度の管理と監視に移動](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

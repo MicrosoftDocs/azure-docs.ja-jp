@@ -1,15 +1,15 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/07/2019
-ms.openlocfilehash: 327654ca06a3997855d904414fa4258491ee6c88
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 09aa5affefc576606984ea7116b3d9bda4ba83d5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181450"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704239"
 ---
 ### <a name="run-multiple-containers-on-the-same-host"></a>同じホスト上で複数のコンテナーを実行する
 

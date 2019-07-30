@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 042c3c2925e9d537847f16f02d841d793456fb03
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9dd3ff2f24660404a1ab0440668c4d4da1e7319
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58172820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080526"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータとは
 
@@ -42,7 +42,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 ### <a name="connected-factory"></a>接続済みファクトリ
 
-[接続済みファクトリ ソリューション アクセラレータ](iot-accelerators-connected-factory-sample-walkthrough.md)は、[OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) インターフェイスを使用して工業資産からテレメトリを収集し、それらを制御するために使用します。 工業資産には、工場の生産ラインで組み立てやテストを行う作業場が含まれる場合があります。
+[接続済みファクトリ ソリューション アクセラレータ](iot-accelerators-connected-factory-features.md)は、[OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) インターフェイスを使用して工業資産からテレメトリを収集し、それらを制御するために使用します。 工業資産には、工場の生産ラインで組み立てやテストを行う作業場が含まれる場合があります。
 
 接続済みファクトリのダッシュボードを使用して、産業用デバイスを監視および管理することができます。
 
