@@ -64,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
 
-*_ImageFiles.txt* 入力ファイルを作成し、それに合わせてパスを更新する必要があります (相対パスは実行ディレクトリを基準にしています)。 _ImageFiles.txt_ を開き、モデレートする画像の URL を追加します。 このクイック スタートでは、サンプル入力として次の URL を使用します。
+*ImageFiles.txt* 入力ファイルを作成し、それに合わせてパスを更新する必要があります (相対パスは実行ディレクトリを基準にしています)。 _ImageFiles.txt_ を開き、モデレートする画像の URL を追加します。 このクイック スタートでは、サンプル入力として次の URL を使用します。
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
