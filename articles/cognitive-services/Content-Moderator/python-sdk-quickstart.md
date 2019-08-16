@@ -131,7 +131,7 @@ This text contains the terms "term1" and "term2".
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
-### <a name="create-a-list"></a>リストを作成して
+### <a name="create-a-list"></a>リストを作成する
 
 次のコードを自分の Python スクリプトに追加して、カスタム用語リストを作成し、その ID 値を保存します。
 
