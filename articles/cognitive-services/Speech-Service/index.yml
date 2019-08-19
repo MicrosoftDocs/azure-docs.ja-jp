@@ -60,7 +60,7 @@ sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: 矢印リンクを <img src="media/index/link.jpg" height="15" width="15"></img> 選択すると、SDK をダウンロード、インストール、使用する方法について確認できます。。<br/>すべての矢印リンク <img src="media/index/link.jpg" height="15" width="15"></img> は、既定で音声テキスト変換のクイックスタートがリンク先になっています。 そこから、テキスト読み上げや音声優先仮想アシスタントなどの他のクイックスタート (<a href="scenario-availability.md">利用可能な場合のみ</a>) を選択できます。
+        text: 矢印リンク <img src="media/index/link.jpg" height="15" width="15"></img> を選択すると、SDK をダウンロード、インストール、使用する方法について確認できます。<br/>すべての矢印リンク <img src="media/index/link.jpg" height="15" width="15"></img> は、既定で音声テキスト変換のクイックスタートがリンク先になっています。そこから、テキスト読み上げや音声優先仮想アシスタントなどの他のクイックスタート (<a href="scenario-availability.md">利用可能な場合のみ</a>) を選択できます。
       - type: table
         style: dataMatrix
         columns:
