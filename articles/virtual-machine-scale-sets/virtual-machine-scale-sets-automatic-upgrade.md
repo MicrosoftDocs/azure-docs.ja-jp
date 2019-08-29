@@ -56,7 +56,7 @@ OS の自動アップグレードには、次の特徴があります。
 
 現時点では、次の SKU がサポートされています (定期的に追加される予定です)。
 
-| Publisher               | OS 製品      |  Sku               |
+| Publisher               | OS 製品       |  Sku               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04 LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
@@ -69,7 +69,7 @@ OS の自動アップグレードには、次の特徴があります。
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter |
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter-with-Containers |
-
+| Microsoft Corporation   | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>OS イメージの自動アップグレードを構成するための要件
 
