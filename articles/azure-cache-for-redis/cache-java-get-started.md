@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Java で Azure Cache for Redis を使用する方法 | Microsoft Docs'
+title: クイック スタート:Java で Azure Cache for Redis を使用する
 description: このクイック スタートでは、Azure Cache for Redis を使用する新しい Java アプリを作成します
 services: cache
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 01fb6f66ce71599a70a127a2b73eba6f848bf365
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: mvc, seo-java-august2019
+ms.openlocfilehash: 230bd4c0d53404ca5ac8d7e1385e8b0533880ca7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324139"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881130"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>クイック スタート:Java で Azure Cache for Redis を使用する
 
@@ -147,13 +147,13 @@ mvn exec:java -D exec.mainClass=example.demo.App
 > いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
 >
 
-[Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
+1. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
-![削除](./media/cache-java-get-started/cache-delete-resource-group.png)
+   ![削除](./media/cache-java-get-started/cache-delete-resource-group.png)
 
-リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** をクリックします。
+1. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** を選択します。
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 

@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 15a1e388b17a66bf22fc0fd51744cb0aaa1b36d4
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415536"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071513"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows コンテナー (プレビュー) を使用して Azure App Service に ASP.NET アプリを移行する
 
@@ -35,8 +34,8 @@ ms.locfileid: "65415536"
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows をインストールする</a>。
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
 - **ASP.NET と Web 開発**ワークロードと **Azure の開発**ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 をインストールする</a>。 Visual Studio 2019 を既にインストールしている場合:
-    - **[ヘルプ]** > **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
-    - **[ツール]** > **[ツールと機能を取得]** の順にクリックし、Visual Studio にワークロードを追加します。
+    - **[ヘルプ]**  >  **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
+    - **[ツール]**  >  **[ツールと機能を取得]** の順にクリックし、Visual Studio にワークロードを追加します。
 
 ## <a name="set-up-the-app-locally"></a>アプリをローカルでセットアップする
 
@@ -51,7 +50,7 @@ ms.locfileid: "65415536"
 
 ### <a name="install-the-font"></a>フォントをインストールする
 
-エクスプローラーで _custom-font-win-container-master/CustomFontSample_ に移動し、_FrederickatheGreat-Regular.ttf_ を右クリックして、**[インストール]** を選択します。
+エクスプローラーで _custom-font-win-container-master/CustomFontSample_ に移動し、_FrederickatheGreat-Regular.ttf_ を右クリックして、 **[インストール]** を選択します。
 
 このフォントは、[Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great) で一般公開されています。
 
@@ -67,11 +66,11 @@ ms.locfileid: "65415536"
 
 ### <a name="configure-windows-container"></a>Windows コンテナーを構成する
 
-ソリューション エクスプローラーで **CustomFontSample** を右クリックし、**[追加]** > **[Container Orchestration Support]\(コンテナー オーケストレーションのサポート\)** を選択します。
+ソリューション エクスプローラーで **CustomFontSample** を右クリックし、 **[追加]**  >  **[Container Orchestration Support]\(コンテナー オーケストレーションのサポート\)** を選択します。
 
 ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](media/app-service-web-tutorial-windows-containers-custom-fonts/enable-container-orchestration.png)
 
-**[Docker Compose]** > **[OK]** を選択します。
+**[Docker Compose]**  >  **[OK]** を選択します。
 
 プロジェクトが Windows コンテナーで実行するように設定されます。 _Dockerfile_ が **CustomFontSample** プロジェクトに追加され、**docker-compose** プロジェクトがソリューションに追加されます。 
 
@@ -97,30 +96,30 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 ### <a name="open-publish-wizard"></a>発行ウィザードを開く
 
-ソリューション エクスプローラーで **CustomFontSample** プロジェクトを右クリックし、**[発行]** を選択します。
+ソリューション エクスプローラーで **CustomFontSample** プロジェクトを右クリックし、 **[発行]** を選択します。
 
 ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](media/app-service-web-tutorial-windows-containers-custom-fonts/open-publish-wizard.png)
 
 ### <a name="create-registry-and-publish"></a>レジストリを作成して発行する
 
-発行ウィザードで **[コンテナー レジストリ]** > **[新しい Azure コンテナー レジストリを作成する]** > **[発行]** を選択します。
+発行ウィザードで **[コンテナー レジストリ]**  >  **[新しい Azure コンテナー レジストリを作成する]**  >  **[発行]** を選択します。
 
 ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](media/app-service-web-tutorial-windows-containers-custom-fonts/create-registry.png)
 
 ### <a name="sign-in-with-azure-account"></a>Azure アカウントでサインインする
 
-**[新しい Azure コンテナー レジストリを作成する]** ダイアログ ボックスで、**[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既にサインインしている場合は、目的のサブスクリプションを含んだアカウントをドロップダウンから選択します。
+**[新しい Azure コンテナー レジストリを作成する]** ダイアログ ボックスで、 **[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既にサインインしている場合は、目的のサブスクリプションを含んだアカウントをドロップダウンから選択します。
 
 ![Azure へのサインイン](./media/app-service-web-tutorial-windows-containers-custom-fonts/add-an-account.png)
 
 ### <a name="configure-the-registry"></a>レジストリを構成する
 
-次の表の推奨値に基づいて新しいコンテナー レジストリを構成します。 完了したら、**[作成]** をクリックします。
+次の表の推奨値に基づいて新しいコンテナー レジストリを構成します。 完了したら、 **[作成]** をクリックします。
 
 | Setting  | 推奨値 | BLOB の詳細 |
 | ----------------- | ------------ | ----|
 |**DNS プレフィックス**| 生成されたレジストリ名をそのまま使用するか、または別の一意名に変更します。 |  |
-|**リソース グループ**| **[新規]** をクリックし、「**myResourceGroup**」と入力して、**[OK]** をクリックします。 |  |
+|**リソース グループ**| **[新規]** をクリックし、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
 |**SKU**| Basic | [価格レベル](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**レジストリの場所**| 西ヨーロッパ | |
 
@@ -134,7 +133,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-左側のメニューから **[リソースの作成]** > **[Web]** > **[Web App for Containers]** を選択します。
+左側のメニューから **[リソースの作成]**  >  **[Web]**  >  **[Web App for Containers]** を選択します。
 
 ### <a name="configure-the-new-web-app"></a>新しい Web アプリを構成する
 
@@ -148,13 +147,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ### <a name="configure-app-service-plan"></a>App Service プランを構成する
 
-**[App Service プラン/場所]** > **[新規作成]** の順にクリックします。 新しいプランの名前を指定し、場所として **[西ヨーロッパ]** を選択して、**[OK]** をクリックします。
+**[App Service プラン/場所]**  >  **[新規作成]** の順にクリックします。 新しいプランの名前を指定し、場所として **[西ヨーロッパ]** を選択して、 **[OK]** をクリックします。
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-service-plan.png)
 
 ### <a name="configure-container"></a>コンテナーを構成する
 
-**[コンテナーの構成]** > **[Azure コンテナー レジストリ]** をクリックします。 レジストリ、イメージ、および前に「[Azure Container Registry に発行する](#publish-to-azure-container-registry)」で作成したタグを選択し、**[OK]** をクリックします。
+**[コンテナーの構成]**  >  **[Azure コンテナー レジストリ]** をクリックします。 レジストリ、イメージ、および前に「[Azure Container Registry に発行する](#publish-to-azure-container-registry)」で作成したタグを選択し、 **[OK]** をクリックします。
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-container.png)
 
@@ -170,7 +169,7 @@ Azure の処理が完了すると、通知ボックスが表示されます。
 
 1. **[リソースに移動]** をクリックします。
 
-2. アプリ ページで、**[URL]** の下にあるリンクをクリックします。
+2. アプリ ページで、 **[URL]** の下にあるリンクをクリックします。
 
 新しいブラウザー ページが開いて次のページが表示されます。
 
@@ -184,7 +183,7 @@ Azure の処理が完了すると、通知ボックスが表示されます。
 
 ## <a name="see-container-start-up-logs"></a>コンテナーの起動ログの表示
 
-Windows コンテナーが読み込まれるまでにしばらく時間がかかる場合があります。 進行状況を確認するには、*\<app_name>* をアプリの名前に置き換えて次の URL に移動します。
+Windows コンテナーが読み込まれるまでにしばらく時間がかかる場合があります。 進行状況を確認するには、 *\<app_name>* をアプリの名前に置き換えて次の URL に移動します。
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```

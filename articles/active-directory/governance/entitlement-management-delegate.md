@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e21fdef5be09148f001ab6f66f87dd270ccf54
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618269"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124908"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でのタスクの委任
 
@@ -30,13 +30,15 @@ ms.locfileid: "68618269"
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-既定では、グローバル管理者とユーザー管理者は、Azure AD エンタイトルメント管理のすべての側面を作成および管理できます。 ただし、これらのロールのユーザーが、アクセス パッケージが必要なすべてのシナリオを把握しているとは限りません。 通常、コラボレーションが必要な相手を把握しているのは、部署内のユーザーです。
+既定では、グローバル管理者とユーザー管理者は、Azure AD エンタイトルメント管理のすべての側面を作成および管理できます。 ただし、これらのロールのユーザーが、アクセス パッケージが必要なすべてのシナリオを把握しているとは限りません。 通常、コラボレーションが必要な相手を把握しているのは、部署内のユーザーです。 
 
-管理者以外のユーザーに無制限のアクセス許可を付与する代わりに、それぞれの業務に必要な最小限のアクセス許可を付与することで、競合の発生や不適切なアクセス許可を回避することができます。 この記事では、エンタイトルメント管理のさまざまなタスクを委任するために割り当てることができるロールについて説明します。
+管理者以外のユーザーに無制限のアクセス許可を付与する代わりに、それぞれの業務に必要な最小限のアクセス許可を付与することで、競合の発生や不適切なアクセス許可を回避することができます。 この記事では、エンタイトルメント管理のさまざまなタスクを委任するために割り当てることができるロールについて説明します。 
 
 ## <a name="delegate-example-for-departmental-adoption"></a>部門別導入の委任の例
 
-エンタイトルメント管理でタスクを委任する方法を理解するには、例を考えてみるとよいでしょう。 お客様の組織に次の 5 人のユーザーがいるとします。
+エンタイトルメント管理でタスクを委任する方法を理解するには、例を考えてみるとよいでしょう。 
+
+お客様の組織に次の 5 人のユーザーがいるとします。
 
 | User | 部署 | メモ |
 | --- | --- | --- |
@@ -59,6 +61,7 @@ ms.locfileid: "68618269"
 これで、研究とマーケティングの部署でエンタイトルメント管理を利用できるようになりました。 Bob、Carol、Dave、Elisa は、それぞれのカタログにアクセス パッケージを作成して管理できます。
 
 ![エンタイトルメント管理の委任の例](./media/entitlement-management-delegate/elm-delegate.png)
+
 
 ## <a name="entitlement-management-roles"></a>エンタイトルメント管理のロール
 
@@ -86,7 +89,7 @@ ms.locfileid: "68618269"
 | [カタログ所有者またはアクセス パッケージ マネージャーをカタログに追加する](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
 | [新しいアクセス パッケージをカタログに作成する](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
 | [アクセス パッケージ内のリソースのロールを管理する](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージを要求できるユーザーを指定する](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
+| [ポリシーの作成と編集](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [アクセス パッケージにユーザーを直接割り当てる](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [アクセス パッケージに割り当てられているユーザーを表示する](entitlement-management-access-package-edit.md#view-who-has-an-assignment) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [アクセス パッケージの要求を表示する](entitlement-management-access-package-edit.md#view-requests) |  | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -113,6 +116,7 @@ ms.locfileid: "68618269"
 | [アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md) | カタログ所有者 |  |  | :heavy_check_mark: |  |
 | [クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md) | カタログ所有者 |  |  | :heavy_check_mark: |  |
 | User | カタログ所有者 | グループ所有者の場合のみ | グループ所有者の場合のみ | アプリ所有者の場合のみ |  |
+
 
 ## <a name="add-a-catalog-creator"></a>カタログ作成者を追加する
 

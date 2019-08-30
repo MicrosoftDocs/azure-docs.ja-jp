@@ -1,19 +1,19 @@
 ---
 title: ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする
 description: Azure Data Lake Storage Gen2 を使用するようにソリューションをアップグレードします
-services: storage
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 4d5bf318a86e989ce66bffbd2aa72638ea477ab1
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.reviewer: rugopala
+ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673922"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016389"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする
 
@@ -82,7 +82,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 を使用するようにソ
 | |並列分析ワークロードに最適化されたパフォーマンス。 高スループットおよび高 IOPS。 | 並列分析ワークロードに最適化されたパフォーマンス。 高スループットおよび高 IOPS。 | "*既に使用可能*" |
 | Virtual Network (VNet) のサポート  | [仮想ネットワーク統合の使用](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [Azure Storage のサービス エンドポイントの使用](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | "*既に使用可能*" |
 | サイズ制限 | アカウント サイズ、ファイル サイズ、ファイル数に制限はありません。 | アカウント サイズまたはファイル数に制限なし。 ファイル サイズは 5 TB に制限。 | "*既に使用可能*"|
-| geo 冗長| ローカル冗長 (LRS) | ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、geo 冗長 (GRS)、読み取りアクセス geo 冗長 (RA-GRS)。詳しくは[こちら](https://docs.microsoft.com/azure/storage/common/storage-redundancy)を参照| "*既に使用可能*" |
+| geo 冗長| ローカル冗長 (LRS) | ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、geo 冗長 (GRS)、読み取りアクセス geo 冗長 (RA-GRS)。詳細については[こちら](https://docs.microsoft.com/azure/storage/common/storage-redundancy)を参照してください| "*既に使用可能*" |
 | リージョン別の提供状況 | 詳細については、 [こちら](https://azure.microsoft.com/regions/) | すべての [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | "*既に使用可能*"                                                                                                                           |
 | 料金                                       | 詳細については、 [価格](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | 詳細については、 [価格](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | 可用性 SLA                            | [SLA を参照](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/)                                                                   | [SLA を参照](https://azure.microsoft.com/support/legal/sla/storage/v1_3/)                                                                                                                                                                                                                                                                                                                                                | "*既に使用可能*"                                                                                                                           |

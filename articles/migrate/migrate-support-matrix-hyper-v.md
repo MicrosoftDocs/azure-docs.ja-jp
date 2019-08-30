@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640854"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952137"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 
@@ -27,23 +27,27 @@ ms.locfileid: "68640854"
 **Deployment** | **詳細***
 --- | ---
 **オンプレミスの Hyper-V VM を評価する** | 最初の評価を[設定](tutorial-prepare-hyper-v.md)します。<br/><br/> 大規模な評価を[実行](scale-hyper-v-assessment.md)します。
-**Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。
+**Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。 
 
-
+Azure Migrate のサーバー移行では、System Center Virtual Machine Manager (VMM) を使って管理している Hyper-V サーバーの移行をサポートしていません。 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate プロジェクト
 
 **サポート** | **詳細**
 --- | ---
 Azure のアクセス許可 | Azure Migrate プロジェクトを作成するには、サブスクリプションの共同作成者または所有者のアクセス許可が必要です。
-Hyper-V VM | 1 つのプロジェクトで最大 10,000 の Hyper-V VM を評価します。 1 つの Azure サブスクリプションに複数のプロジェクトを含めることができます。 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
+Hyper-V VM | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価します。 1 つの Azure サブスクリプションに複数のプロジェクトを含めることができます。 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
 [地理的な場所] | Azure Migrate プロジェクトは、いくつかの地域で作成できます。 プロジェクトを作成できるのは特定の地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
 
   **地理的な場所** | **メタデータ ストレージの場所**
   --- | ---
   Azure Government | 米国政府バージニア州
-  アジア太平洋 | 東南アジアまたは東アジア
-  ヨーロッパ | 南ヨーロッパまたは西ヨーロッパ
+  アジア太平洋 | 東アジアまたは東南アジア
+  オーストラリア | オーストラリア東部またはオーストラリア南東部
+  カナダ | カナダ中部またはカナダ東部
+  ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+  インド | インド中部またはインド南部
+  日本 |  東日本または西日本
   イギリス | 英国南部または英国西部
   米国 | 米国中部または米国西部 2
 
@@ -57,8 +61,8 @@ Hyper-V VM | 1 つのプロジェクトで最大 10,000 の Hyper-V VM を評価
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
 | **ホストのデプロイ**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 |
-| **アクセス許可**           | Hyper-V ホストに対する管理者のアクセス許可が必要です。 |
-| **ホスト オペレーティング システム** | Windows Server 2016 または Windows Server 2012 R2。<br/> Windows Server 2019 を実行している Hyper-V ホスト上にある VM を評価することはできません。 |
+| **アクセス許可**           | Hyper-V ホストに対する管理者のアクセス許可が必要です。 <br/> 管理者のアクセス許可を割り当てたくない場合には、代わりにローカルまたはドメインのユーザー アカウントを作成し、そのユーザーを Remote Management Users、Hyper-V Administrators、Performance Monitor Users のグループに追加します。 |
+| **ホスト オペレーティング システム** | Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2。<br/> Windows Server 2012 を実行している Hyper-V ホスト上にある VM を評価することはできません。 |
 | **PowerShell リモート処理**   | 各ホストで有効にする必要があります。 |
 | **Hyper-V レプリカ**       | Hyper-V レプリカを使用する (または、同じ VM 識別子を持つ複数の VM がある) 場合、Azure Migrate を使用して元の VM とレプリケートされた VM の両方を検出すると、Azure Migrate によって生成される評価が正確ではない可能性があります。 |
 
@@ -68,13 +72,8 @@ Hyper-V VM | 1 つのプロジェクトで最大 10,000 の Hyper-V VM を評価
 | **サポート**                  | **詳細**               
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システム。 |
-| **アクセス許可**           | 評価する各 Hyper-V VM に対する管理者のアクセス許可が必要です。 |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
-| **UEFI ブート**                  | UEFI ブートを使用した VM の移行はサポートされません。 |
-| **暗号化されたディスクまたはボリューム**    | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。 |
-| **RDM またはパススルー ディスク**      | RDM またはパススルー ディスクが VM に存在する場合、これらのディスクは Azure にレプリケートされません。 |
-| **NFS**                        | VM 上のボリュームとしてマウントされた NFS ボリュームはレプリケートされません。 |
-| **ターゲット ディスク**                | Azure Migrate の評価では、マネージド ディスクのみを含む Azure VM への移行が推奨されます。 |
+
 
 
 ## <a name="assessment-appliance-requirements"></a>評価 - アプライアンスの要件
@@ -84,7 +83,7 @@ Azure Migrate では評価のために軽量アプライアンスを実行して
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
 | **Azure Migrate プロジェクト**  |  単一のプロジェクトにアプライアンスを関連付けることができます。<br/> 単一のアプライアンスで最大 5,000 個の Hyper-V VM を検出できます。
-| **Hyper-V**    |  アプライアンスを Hyper-V VM としてデプロイします。<br/> 提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> VM ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> アプライアンス VM に 16 GB RAM、4 つの仮想プロセッサ、および 1 つの外部スイッチを割り当てるのに十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
+| **Hyper-V**    |  アプライアンスを Hyper-V VM としてデプロイします。<br/> 提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> VM ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> アプライアンス VM に 16 GB の RAM、8 つの vCPU、および 1 つの外部スイッチを割り当てるのに十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
 
 
 ## <a name="assessment-appliance-url-access"></a>評価 - アプライアンスの URL アクセス
@@ -99,8 +98,8 @@ VM を評価するには、Azure Migrate アプライアンスがインターネ
 **URL** | **詳細**  
 --- | ---
 *.portal.azure.com | Azure portal への移動
-*.windows.net | Azure サブスクリプションにサインインします。
-*.microsoftonline.com | アプライアンスからサービスへの通信のための Azure Active Directory アプリケーションの作成。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Azure サブスクリプションにサインインします。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスからサービスへの通信のための Azure Active Directory アプリケーションの作成。
 management.azure.com | アプライアンスからサービスへの通信のための Azure Active Directory アプリケーションの作成。
 dc.services.visualstudio.com | ログ記録と監視
 *.vault.azure.net | アプライアンスとサービス間の通信時の Azure Key Vault のシークレットを管理します。
@@ -115,7 +114,7 @@ https://download.microsoft.com/download/* | Microsoft ダウンロード サイ�
 
 **デバイス** | **Connection**
 --- | ---
-**アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/> ポート 443 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
+**アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/> ポート 443、5671、5672 で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
 **Hyper-V ホスト/クラスター** | Common Information Model (CIM) セッションを使用し、WinRM ポート 5985 (HTTP) と 5986 (HTTPS) で、Hyper-V VM の構成とパフォーマンスのメタデータをプルするための受信接続。
 
 ## <a name="migration-hyper-v-host-requirements"></a>移行 - Hyper-V ホストの要件

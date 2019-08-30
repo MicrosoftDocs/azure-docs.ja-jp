@@ -9,18 +9,17 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 3f22da9eabc6f539ef37009f565f073b9de89319
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1a3fe1f70143e2c33a3e4d309991f1174eb2d6dd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706738"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092391"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -86,7 +85,7 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) コマンドにより、Azure VM 拡張機能を既存の VM に対して実行できます。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して Custom Script 拡張機能を実行します:
+[az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) コマンドにより、Azure VM 拡張機能を既存の VM に対して実行できます。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して Custom Script 拡張機能を実行します。 例のリソース グループ名、VM 名、および実行するスクリプト (https:\//raw.githubusercontent.com/me/project/hello.sh) を実際の情報に置き換えます。 
 
 ```azurecli
 az vm extension set `

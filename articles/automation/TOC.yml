@@ -216,9 +216,6 @@
         - name: VM に対する変更のトラブルシューティング
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-        - name: インベントリ コレクションでの VM の管理
-          href: automation-vm-inventory.md
-          displayName: inventory
     - name: トラブルシューティング
       items:
         - name: オンボード
@@ -276,6 +273,22 @@
         - name: State Configuration (DSC) のトラブルシューティング
           href: troubleshoot/desired-state-configuration.md
           displayName: 'Desired State Configuration, troubleshoot'
+    - name: リファレンス
+      items:
+        - name: コミュニティ ソリューション
+          items:
+            - name: スケーリング対応の構成データ
+              href: automation-dsc-config-data-at-scale.md
+              displayName: 'DSC, Configuration Data, ConfigData'
+            - name: サーバーから構成を作成する
+              href: automation-dsc-config-from-server.md
+              displayName: 'DSC, ReverseDSC'
+            - name: STIG に基づく構成
+              href: automation-dsc-configuration-based-on-stig.md
+              displayName: 'DSC, Configuration'
+            - name: 構成を複合リソースに変換する
+              href: automation-dsc-create-composite.md
+              displayName: 'DSC, composite'
 - name: 共有リソースの管理
   items:
     - name: 証明書
@@ -318,6 +331,8 @@
       href: automation-deploy-template-runbook.md
     - name: Azure Automation を Event Grid および Microsoft Teams と統合する
       href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
+    - name: Azure-SSIS IR を開始/停止する Azure Automation Runbook を作成してスケジュールする
+      href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
 - name: 監視
   items:
     - name: Log Analytics に Azure Automation のジョブ データを転送する

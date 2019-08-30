@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494867"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950137"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する (プレビュー)
 
@@ -45,8 +45,11 @@ Azure Data Explorer は、Azure BLOB ストレージおよび Azure Data Lake St
     dataformat=csv (h@'http://storageaccount.blob.core.windows.net/container1;secretKey') 
     with (compressed = true)  
     ```
-
-    このクエリでは、日単位のパーティション *container1/yyyy/MM/dd/all_exported_blobs.csv* が作成されます。 細かいパーティション分割を使用することでパフォーマンスの向上が期待されます。 たとえば、上記のような日単位のパーティションを使用する外部テーブルでのクエリは、月単位のパーティション テーブルを使用したクエリよりもパフォーマンスが良くなります。
+    
+    > [!NOTE]
+    > * 細かいパーティション分割を使用することでパフォーマンスの向上が期待されます。 たとえば、日単位のパーティションを使用する外部テーブルでのクエリは、月単位のパーティション テーブルを使用したクエリよりもパフォーマンスが良くなります。
+    > * パーティションを使用する外部テーブルを定義するときは、ストレージ構造が同一であると想定します。
+たとえば、テーブルが yyyy/MM/dd 形式 (既定) の DateTime パーティションで定義されている場合、URI ストレージ ファイルのパスは *container1/yyyy/MM/dd/all_exported_blobs* である必要があります。 
 
 1. 外部テーブルは Web UI の左側のウィンドウに表示されます
 

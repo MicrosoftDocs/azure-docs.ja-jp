@@ -146,7 +146,7 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
 
 HDInsight は、HDInsight クラスターで次のコンポーネントをインストールするためのスクリプトを提供します。
 
-| EnableAdfsAuthentication | スクリプト |
+| 名前 | スクリプト |
 | --- | --- |
 | Azure Storage アカウントの追加 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh` 「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」をご覧ください。 |
 | Hue のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh` 「[HDInsight Hadoop クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」をご覧ください。 |
@@ -176,7 +176,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
     | プロパティ | 値 |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合は、用意されているスクリプトのいずれかを選択します。 |
-    | EnableAdfsAuthentication |スクリプト アクションの名前を指定します。 |
+    | 名前 |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
     | Head/Worker/ZooKeeper |スクリプトを実行するノードを指定します: **[Head]** 、 **[Worker]** 、または **[ZooKeeper]** 。 |
     | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
@@ -258,7 +258,7 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
     | プロパティ | 値 |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合、提供されているスクリプトを選択します。 |
-    | EnableAdfsAuthentication |スクリプト アクションの名前を指定します。 |
+    | 名前 |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
     | Head/Worker/Zookeeper |スクリプトを実行するノードを指定します: **[Head]** 、 **[Worker]** 、または **[ZooKeeper]** 。 |
     | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |

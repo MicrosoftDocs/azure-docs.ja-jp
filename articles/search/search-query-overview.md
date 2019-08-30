@@ -2,19 +2,19 @@
 title: クエリの種類と構成 - Azure Search
 description: Azure Search で検索結果のフィルター処理、選択、並べ替えを行うためのパラメーターを使って検索クエリを作成するための基本的な事柄について説明します。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: c2d40865857bc3ea8367199ed29e0220a0e7c557
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 30c3b233a1454d04fb281e049376b2b3aafe1879
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882594"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647964"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
 

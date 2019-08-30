@@ -89,6 +89,10 @@
           href: concepts-read-replicas.md
 - name: ハウツー ガイド
   items:
+    - name: サーバーを管理する
+      items:
+        - name: Azure ポータル
+          href: howto-create-manage-server-portal.md
     - name: ファイアウォール規則
       items:
         - name: Azure ポータル
@@ -123,6 +127,8 @@
       items:
         - name: Azure ポータル
           href: howto-auto-grow-storage-portal.md
+        - name: Azure CLI
+          href: howto-auto-grow-storage-cli.md
     - name: サーバー ログへのアクセス
       items:
         - name: 低速クエリ ログ

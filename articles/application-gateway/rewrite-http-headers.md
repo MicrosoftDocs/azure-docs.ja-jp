@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 08/08/2019
 ms.author: absha
-ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b6f26eca0592017306eaefd3f5fecb544dc6fb36
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476039"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932190"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Application Gateway で HTTP ヘッダーを書き換える
 
@@ -103,6 +103,8 @@ HTTP ヘッダーの書き換えを構成するには、次の手順のように
    - **書き換えセット**:要求ルーティング規則に関連付けられる複数の書き換え規則が含まれます。
 
 2. 書き換えセット (*rewriteRuleSet*) をルーティング規則にアタッチします。 書き換え構成が、ルーティング規則によってソース リスナーにアタッチされます。 基本ルーティング規則を使うと、ヘッダー書き換え構成はソース リスナーに関連付けられ、グローバルなヘッダーの書き換えになります。 パスベースのルーティング規則を使うと、ヘッダー書き換え構成は URL パス マップで定義されます。 その場合、サイトの特定のパス領域にのみ適用されます。
+   > [!NOTE]
+   > URL 書き換えではヘッダーが変更されます。パスの URL は変更されません。
 
 HTTP ヘッダーの書き換えセットを複数作成し、それぞれの書き換えセットを複数のリスナーに適用することができます。 ただし、特定のリスナーに対して適用できる書き換えセットは 1 つだけです。
 

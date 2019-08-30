@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a4949b12076ea7cdbbf882d199279410da95e005
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402510"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558652"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーに通知を送信する
 
@@ -31,7 +31,7 @@ ms.locfileid: "58402510"
 このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。 クライアントを認証するために ASP.NET WebAPI バックエンドが使用されます。 バックエンドは、クライアント アプリケーション ユーザーを認証すると、通知の登録にタグを自動的に追加します。 バックエンドは、このタグを使用して特定のユーザーに通知を送信します。
 
 > [!NOTE]
-> このチュートリアルの完成したコードは、[GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers) にあります。
+> このチュートリアルの完成したコードは、[GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) にあります。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -58,10 +58,10 @@ ms.locfileid: "58402510"
 このセクションでは、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」のチュートリアルで完成したプロジェクト内のコードを更新します。 このプロジェクトは、既に Windows ストアに関連付けられている必要があります。 また、通知ハブを使用するように構成されている必要があります。 このセクションでは、新しい WebAPI バックエンドを呼び出すコードを追加し、それを通知の登録および送信に使用します。
 
 1. Visual Studio で、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」で作成したソリューションを開きます。
-2. ソリューション エクスプローラーで、ユニバーサル Windows プラットフォーム (UWP) プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. 左側で、**[参照]** を選択します。
+2. ソリューション エクスプローラーで、ユニバーサル Windows プラットフォーム (UWP) プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+3. 左側で、 **[参照]** を選択します。
 4. **[検索]** ボックスに、「**Http Client**」と入力します。
-5. 結果の一覧で、**[System.Net.Http]** をクリックし、**[インストール]** をクリックします。 インストールを完了します。
+5. 結果の一覧で、 **[System.Net.Http]** をクリックし、 **[インストール]** をクリックします。 インストールを完了します。
 6. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。 **Newtonsoft.json** パッケージをインストールしてから、NuGet パッケージ マネージャー ウィンドウを閉じます。
 7. ソリューション エクスプローラーで、**WindowsApp** プロジェクトの **[MainPage.xaml]** をダブルクリックして、それを Visual Studio エディターで開きます。
 8. `MainPage.xaml` XML コードの `<Grid>` セクションを次のコードで置き換えます。このコードは、ユーザーを認証するためのユーザー名とパスワードのテキスト ボックスを追加します。 さらに、通知メッセージと通知を受け取るユーザー名タグのテキスト ボックスも追加します。
@@ -116,7 +116,7 @@ ms.locfileid: "58402510"
         </StackPanel>
     </Grid>
     ```
-9. ソリューション エクスプローラーで、**(Windows 8.1)** プロジェクトと **(Windows Phone 8.1)** プロジェクトの `MainPage.xaml.cs` ファイルを開きます。 次の `using` ステートメントを両方のファイルの先頭に追加します。
+9. ソリューション エクスプローラーで、 **(Windows 8.1)** プロジェクトと **(Windows Phone 8.1)** プロジェクトの `MainPage.xaml.cs` ファイルを開きます。 次の `using` ステートメントを両方のファイルの先頭に追加します。
 
     ```csharp
     using System.Net.Http;
@@ -131,11 +131,11 @@ ms.locfileid: "58402510"
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
-11. 次のコードを、**(Windows 8.1)** プロジェクトと **(Windows Phone 8.1)** プロジェクトの `MainPage.xaml.cs` 内の MainPage クラスに追加します。
+11. 次のコードを、 **(Windows 8.1)** プロジェクトと **(Windows Phone 8.1)** プロジェクトの `MainPage.xaml.cs` 内の MainPage クラスに追加します。
 
     `PushClick` メソッドは、 **[プッシュを送信する]** ボタン用のクリック ハンドラーです。 それは、バックエンドを呼び出して、ユーザー名タグが `to_tag` パラメーターと一致するすべてのデバイスへの通知をトリガーします。 通知メッセージは、要求本文で JSON コンテンツとして送信されます。
 
-    `LoginAndRegisterClick` メソッドは、**[ログインして登録]** ボタン用のクリック ハンドラーです。 これは、基本的な認証トークン (認証スキームで使用される任意のトークンを表します) をローカル ストレージ内に格納してから、`RegisterClient` を使用してバックエンドを使用した通知に登録します。
+    `LoginAndRegisterClick` メソッドは、 **[ログインして登録]** ボタン用のクリック ハンドラーです。 これは、基本的な認証トークン (認証スキームで使用される任意のトークンを表します) をローカル ストレージ内に格納してから、`RegisterClient` を使用してバックエンドを使用した通知に登録します。
 
     ```csharp
     private async void PushClick(object sender, RoutedEventArgs e)
@@ -220,7 +220,7 @@ ms.locfileid: "58402510"
     {
         //InitNotificationsAsync();
     ```
-13. **[WindowsApp]** プロジェクトを右クリックし、**[追加]** をクリックしてから、**[クラス]** をクリックします。 クラスに `RegisterClient.cs` という名前を付け、**[OK]** をクリックしてクラスを生成します。
+13. **[WindowsApp]** プロジェクトを右クリックし、 **[追加]** をクリックしてから、 **[クラス]** をクリックします。 クラスに `RegisterClient.cs` という名前を付け、 **[OK]** をクリックしてクラスを生成します。
 
     このクラスは、プッシュ通知用に登録するために、アプリ バックエンドに接続するために必要な REST 呼び出しをラップします。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](https://msdn.microsoft.com/library/dn743807.aspx)もローカルに格納されます。 **[ログインして登録]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
 14. 次の `using` ステートメントを、RegisterClient.cs file ファイルの先頭に追加します。
@@ -326,11 +326,11 @@ ms.locfileid: "58402510"
 ## <a name="test-the-application"></a>アプリケーションをテストする
 
 1. 両方の Windows でアプリケーションを起動します。
-2. 下の画面に示すように、**[ユーザー名]** と **[パスワード]** を入力します。 Windows Phone で入力するユーザー名とパスワードとは異なるユーザー名とパスワードを入力する必要があります。
-3. **[ログインして登録]** をクリックし、ログインしたことを示すダイアログを確認します。 このコードにより、**[プッシュを送信する]** ボタンも有効になります。
+2. 下の画面に示すように、 **[ユーザー名]** と **[パスワード]** を入力します。 Windows Phone で入力するユーザー名とパスワードとは異なるユーザー名とパスワードを入力する必要があります。
+3. **[ログインして登録]** をクリックし、ログインしたことを示すダイアログを確認します。 このコードにより、 **[プッシュを送信する]** ボタンも有効になります。
 
     ![][14]
-5. 次に、**[受信ユーザー タグ]** フィールドに、登録されているユーザー名を入力します。 通知メッセージを入力し、 **[プッシュを送信する]** をクリックします。
+5. 次に、 **[受信ユーザー タグ]** フィールドに、登録されているユーザー名を入力します。 通知メッセージを入力し、 **[プッシュを送信する]** をクリックします。
 6. 一致するユーザー名タグが登録されているデバイスだけが通知メッセージを受信します。
 
     ![][15]

@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230630"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073437"
 ---
 # <a name="about-api-management"></a>API Management について
 
@@ -91,14 +90,14 @@ API Management サービス インスタンスの基礎となるのは API で�
 
 管理者は、これらのシステム グループに加えてカスタム グループを作成できるほか、 [関連付けられている Azure Active Directory テナントの外部グループを活用する](api-management-howto-aad.md)こともできます。 カスタム グループと外部グループをシステム グループと共に使用することにより、開発者には API 成果物の可視性とアクセスが提供されます。 たとえば、特定のパートナー企業に所属する開発者向けにカスタム グループを 1 つ作成し、関連する API のみが含まれている成果物の API に対してアクセスを許可することができます。 ユーザーは 複数のグループのメンバーになることができます。
 
-詳細については、[グループを作成して使用する方法][How to create and use groups]に関するページを参照してください。
+詳細については、[グループを作成して使用する方法][How to create and use groups]に関するページをご覧ください。
 
 ## <a name="developers"> </a> 開発者
-開発者は、API Management サービス インスタンス内のユーザー アカウントです。 開発者アカウントは、管理者が作成したり参加を呼びかけたりすることができるほか、[開発者ポータル][Developer portal]からサインアップすることもできます。 それぞれの開発者はグループ (複数可) に所属し、そのグループに閲覧が認められている成果物をサブスクライブすることができます。
+開発者は、API Management サービス インスタンス内のユーザー アカウントです。 開発者は、管理者が作成したり参加を呼びかけたりすることができるほか、 [開発者ポータル][Developer portal]からサインアップすることもできます。 それぞれの開発者はグループ (複数可) に所属し、そのグループに閲覧が認められている成果物をサブスクライブすることができます。
 
 成果物のサブスクリプションを持つ開発者には、その成果物へのプライマリ キーとセカンダリ キーが付与されます。 成果物の API を呼び出す際は、このキーを使用することになります。
 
-詳細については、[開発者を作成または招待する方法][How to create or invite developers]に関するページと、[グループを開発者に関連付ける方法][How to associate groups with developers]に関するページを参照してください。
+詳細については、[開発者を作成または招待する方法][How to create or invite developers]に関するページと[グループを開発者に関連付ける方法][How to associate groups with developers]に関する記事を参照してください。
 
 ## <a name="policies"> </a> ポリシー
 ポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
@@ -106,7 +105,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](/azure/api-management/api-management-advanced-policies#choose) ポリシーや[変数の設定](/azure/api-management/api-management-advanced-policies#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](/azure/api-management/api-management-advanced-policies#AdvancedPolicies)」と「[ポリシーの式](/azure/api-management/api-management-policy-expressions)」をご覧ください。
 
 
-API Management の全ポリシー一覧については、[ポリシー リファレンス][Policy reference]に関するページを参照してください。 ポリシーの使用と構成の詳細については、[API Management のポリシー][API Management policies]に関するページを参照してください。 レート制限ポリシーとクォータ ポリシーを持つ成果物の作成に関するチュートリアルについては、[成果物の詳細設定を作成して構成する方法][How create and configure advanced product settings]に関するページを参照してください。
+API Management の全ポリシー一覧については、「 [Policy reference (ポリシー リファレンス)][Policy reference]」をご覧ください。 ポリシーの使用と構成の詳細については、「 [API Management policies (API Management のポリシー)][API Management policies]」を参照してください。 レート制限ポリシーとクォータ ポリシーを持った成果物の作成に関するチュートリアルについては、「 [Azure API Management で成果物を作成して詳細設定を行う方法][How create and configure advanced product settings]」をご覧ください。
 
 
 ## <a name="developer-portal"> </a> 開発者ポータル

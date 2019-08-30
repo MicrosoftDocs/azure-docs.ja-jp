@@ -6,17 +6,16 @@ manager: pablocas
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: dff0ffaed49d7e4b7ba8211827a26bc3e9a87d9d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 21a36988b31571f2110fe4fd2802aa5d84ee0216
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841119"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635924"
 ---
 #   <a name="conditional-skill"></a>条件付きスキル
 

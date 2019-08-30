@@ -1,5 +1,5 @@
 ---
-title: イメージへの分類 - Computer Vision
+title: 画像の分類 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API の画像分類機能に関連する概念について説明します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203324"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945310"
 ---
 # <a name="categorize-images-by-subject-matter"></a>主題によるイメージの分類
 

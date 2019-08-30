@@ -1,5 +1,5 @@
 ---
-title: Java を使用してイベントを送受信する - Azure Event Hubs | Microsoft Docs
+title: Java を使用して Azure Event Hubs との間でデータを送信する
 description: この記事では、Azure Event Hubs にイベントを送信する Java アプリケーションの作成に関するチュートリアルを提供します。
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -7,15 +7,15 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.custom: seodec18
+ms.custom: seodec18, seo-java-august2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 0487cac6a0cf7d37befdf0d7cfab33ad6a62cf7f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c85d69b823956a5cf5e7f9d6dfa3c39b918cd465
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822911"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034817"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する | Microsoft Docs
 
@@ -178,12 +178,12 @@ eventHubClient.closeSync();
 
 EventProcessorHost を使用するには、[Azure Storage アカウント][Azure Storage アカウント]が必要です。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、画面左側の **[+ Create a resource]\(+ リソースの作成\)** をクリックします。
-2. **[ストレージ]** 、 **[ストレージ アカウント]** の順にクリックします。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、 **[作成]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、画面左側の **[Create a resource]\(リソースの作成\)** を選択します。
+2. **[ストレージ]** を選択し、 **[ストレージ アカウント]** を選択します。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、 **[作成]** を選択します。
    
     ![ストレージ アカウントの作成](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
-3. 新しく作成したストレージ アカウントをクリックし、 **[アクセス キー]** をクリックします。
+3. 新しく作成したストレージ アカウントを選択し、 **[アクセス キー]** を選択します。
    
     ![アクセス キーを取得する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 

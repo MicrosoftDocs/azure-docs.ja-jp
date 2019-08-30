@@ -7,12 +7,12 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809730"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967802"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure のロールベースのアクセス制御 (RBAC) を使用してサポート要求を作成および管理するアクセス権を制御する
 
@@ -65,7 +65,7 @@ Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要�
 同僚の Joe は、このサブスクリプション内の一部のリソース グループのリソース所有者であり、サブスクリプションに対する読み取りアクセス許可を持っています。
 あなたは、このサブスクリプションでリソースのサポート チケットを作成および管理できるアクセス権を Joe に付与したいと考えています。
 
-1. まず、サブスクリプションの [設定] に移動すると、ユーザーの一覧が表示されます。 サブスクリプションに対する閲覧者アクセス権を持つユーザー Joe をクリックし、Joe に新しいカスタム ロールを割り当てましょう。
+1. 最初の手順は、サブスクリプションにアクセスすることです。 **[設定]** で、ユーザーの一覧を表示します。 サブスクリプションに対する閲覧者アクセス権を持つユーザー Joe を選択します。 新しいカスタム ロールを Joe に割り当ててみましょう。
 
     ![ロールの追加](./media/create-manage-support-requests-using-access-control/add-role.png)
 
@@ -85,7 +85,7 @@ Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要�
 
     ![追加されたユーザー](./media/create-manage-support-requests-using-access-control/user-added.png)
 
-    Joe がポータルにログインすると、Joe が追加されたサブスクリプションが表示されます。
+    Joe がポータルにサインインすると、Joe が追加されたサブスクリプションが Joe に表示されます。
 
 7. Joe は、[ヘルプとサポート] ブレードの [新しいサポート要求] をクリックし、"Visual Studio Ultimate with MSDN" のサポート要求を作成できます。
 
@@ -96,8 +96,8 @@ Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要�
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Azure Portal でのサポート要求アクセス権の削除
 
 サポート要求を作成および管理するアクセス権をユーザーに付与できるのと同様に、ユーザーのアクセス権を削除することもできます。
-サポート要求を作成および管理する権限を削除するには、サブスクリプションに移動して [設定] をクリックし、目的のユーザー (この例では Joe) をクリックします。
-ロール名 "Support Request Contributor" を右クリックし、[削除] をクリックします。
+
+サポート要求を作成および管理する権限を削除するには、サブスクリプションに移動して [設定] をクリックし、目的のユーザー (この例では Joe) をクリックします。 ロール名 "Support Request Contributor" を右クリックし、[削除] をクリックします。
 
 ![サポート要求アクセス権の削除](./media/create-manage-support-requests-using-access-control/remove-support-request-access.png)
 
@@ -105,6 +105,6 @@ Joe がポータルにログインし、サポート要求を作成しようと�
 
 ![サブスクリプション エラー 2](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
 
-Joe が [All support requests (すべてのサポート要求)] をクリックしても、サポート要求は表示されません。
+Joe が "All support requests" (すべてのサポート要求) を選択しても、サポート要求は表示されません
 
 ![サポート案件の詳細ビュー 2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)

@@ -9,18 +9,16 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/06/2019
-ms.openlocfilehash: cf35651f7dd839e8792029851b9bfe278036624c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eb84dc1b5bf3f756e484ef27aaa998ab6b94cc51
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181792"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891704"
 ---
 実験はコンピューティング先 (ワークスペースにアタッチされているコンピューティング リソース) で実行されます。  コンピューティング先を作成すると、将来の実行でそれを再利用できます。
 
 1. 下部の **[Run]\(実行\)** を選択して実験を実行します。
-
-     ![実験を実行する](./media/aml-ui-create-training-compute/run-experiment.png)
 
 1. ワークスペースに既にコンピューティング リソースがある場合は、 **[Setup Compute Targets]\(コンピューティング先の設定\)** ダイアログが表示されたら、それを選択できます。  そうでない場合は、 **[Create new]\(新規作成\)** を選択します。
 

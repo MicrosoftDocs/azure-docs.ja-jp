@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: bdbd45c2b10dec8f1c0a85110747a470e818dbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015606"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827392"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>クラシック アラート ルールの移行のためにロジック アプリと Runbook を準備する
 
@@ -52,7 +52,7 @@ ms.locfileid: "66015606"
 | アラート ルールの説明 | **context.description** | **data.context.description** |
 | アラート ルールの条件 | **context.condition** | **data.context.condition** |
 | メトリックの名前 | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
-| 時間の集計 (評価期間にメトリックが集計される方法)| **data.context.condition.timeAggregation** | **data.context.condition.timeAggregation** |
+| 時間の集計 (評価期間にメトリックが集計される方法)| **context.condition.timeAggregation** | **context.condition.timeAggregation** |
 | 評価期間 | **context.condition.windowSize** | **data.context.condition.windowSize** |
 | 演算子 (集計されたメトリック値がしきい値と比較される方法) | **context.condition.operator** | **data.context.condition.operator** |
 | Threshold | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |

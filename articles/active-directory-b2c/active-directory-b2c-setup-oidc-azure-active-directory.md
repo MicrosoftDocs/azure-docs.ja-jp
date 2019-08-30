@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b867a7f9ffeab3d243c8c094830aa0984cffd04a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 58c6d1b032f5b492c5641ff51da80426124069b1
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654195"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716774"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directo
 2. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 3. **[ID プロバイダー]** 、 **[追加]** の順に選択します。
 4. **[名前]** を入力します。 たとえば、「 `Contoso Azure AD`」のように入力します。
-5. **[ID プロバイダーの種類]** を選択し、 **[Open ID Connect (Preview)]\(Open ID Connect (プレビュー))** を選択して、 **[OK]** をクリックします。
+5. **[ID プロバイダーの種類]** を選択し、 **[OpenID Connect (プレビュー)]** を選択して、 **[OK]** をクリックします。
 6. **[この ID プロバイダーをセットアップします]** を選択します
 7. **Metadata url** には、次の URL を入力します。`your-AD-tenant-domain` は、Azure AD テナントのドメイン名で置き換えます。 例: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`
 

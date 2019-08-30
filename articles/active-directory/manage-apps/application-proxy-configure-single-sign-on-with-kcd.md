@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 08/13/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 545906af882be6e53297bf7a9ff2cd12e86d55f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859620"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032558"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -112,7 +112,7 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 非 Windows アプリは通常、ドメインのメール アドレスの代わりに、ユーザー名または SAM アカウント名を使います。 お使いのアプリケーションでこの状況が当てはまる場合、指定されたログイン ID フィールドを構成して、クラウド ID をアプリケーション ID に接続する必要があります。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>さまざまなオンプレミス ID とクラウド ID の操作
-アプリケーション プロキシは、ユーザーのクラウド ID とオンプレミス ID は完全に同じであるとみなします。 このようになっていない場合でも、シングル サインオンに KCD を使うことができます。 アプリケーションごとに**指定されたログイン ID** を構成し、シングル サインオンを実行するときに使う ID を指定します。  
+アプリケーション プロキシは、ユーザーのクラウド ID とオンプレミス ID は完全に同じであるとみなします。 しかし、環境によっては、企業ポリシーやアプリケーションの依存関係が原因で、サインインに代替 ID を使用する必要がある場合があります。 このような場合でも、シングル サインオンに引き続き KCD を使用できます。 アプリケーションごとに**指定されたログイン ID** を構成し、シングル サインオンを実行するときに使う ID を指定します。  
 
 この機能により、オンプレミス ID とクラウド ID が異なる多くの組織で、ユーザーに別のユーザー名とパスワードの入力を要求することなく、クラウドからオンプレミスのアプリに SSO させることができます。 次のような組織が含まれます。
 

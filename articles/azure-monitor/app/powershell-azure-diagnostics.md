@@ -1,8 +1,7 @@
 ---
 title: Azure での PowerShell を使用した Application Insights の設定 | Microsoft Docs
-description: Application Insights にパイプするための Azure Diagnostics の構成を自動化します。
+description: Application Insights にデータをパイプするための Azure Diagnostics の構成を自動化します。
 services: application-insights
-documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
@@ -10,18 +9,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/17/2015
+ms.date: 08/06/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3c0decaa89b4ecc503157a32fcb1e5b4d249ccfb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0c963e4cd7befffe69fef159542eabd29059e3d9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254627"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035186"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Azure Web アプリのための PowerShell を使用した Application Insights の設定
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>PowerShell を使用して Azure Cloud Services 向けの Application Insights を設定する
 
 [Microsoft Azure](https://azure.com) は、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) に [Azure Diagnostics を送信するように構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
 

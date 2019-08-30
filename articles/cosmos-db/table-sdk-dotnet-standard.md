@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: d3d99a9561bc7335fd219120ab97e076bfbc94c2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 22a27ba19670344f351205b6a4865bf85daf0bab
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693967"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900267"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -31,8 +31,16 @@ ms.locfileid: "68693967"
 |**クイックスタート**|[クイックスタート](create-table-dotnet.md)|
 |**チュートリアル**|[チュートリアル](tutorial-develop-table-dotnet.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
+|**問題の報告**|[問題を報告する](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
+* バグの修正
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* バグの修正
+* RestExecutorConfiguration に対して HttpClientTimeout オプションが提供されます。
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-preview
 * バグの修正
@@ -71,8 +79,10 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.0.5-preview](#1.0.5-preview) |2019 年 8 月 20 日 |--- |
+| [1.0.4](#1.0.4) |2019 年 8 月 12 日 |--- |
 | [1.0.4-preview](#1.0.4-preview) |2019 年 7 月 26 日 |--- |
-| [1.0.2-preview](#1.0.2-preview) |2019 年 5 月 2 日 |--- |
+| 1.0.2-preview |2019 年 5 月 2 日 |--- |
 | [1.0.1](#1.0.1) |2019 年 4 月 19 日 |--- |
 | [1.0.0](#1.0.0) |2019 年 3 月 13 日 |--- |
 | [0.11.0-preview](#0.11.0-preview) |2019 年 3 月 5 日 |--- |
@@ -86,4 +96,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
-Azure Cosmos DB Table API の詳細については、「[Introduction to Azure Cosmos DB Table API (Azure Cosmos DB Table API の概要)](table-introduction.md)」を参照してください。 
+Azure Cosmos DB Table API の詳細については、「[Introduction to Azure Cosmos DB Table API (Azure Cosmos DB Table API の概要)](table-introduction.md)」を参照してください。

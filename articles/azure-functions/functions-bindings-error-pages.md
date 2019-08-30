@@ -8,16 +8,15 @@ author: craigshoemaker
 manager: gwallace
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: cshoe
-ms.openlocfilehash: bc0ffec1bfe55ee81573feffc58e1adb11421eec
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: fdfee3442986322f242da730bb9ceccbc9f9e250
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667442"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097483"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions のエラー処理
 

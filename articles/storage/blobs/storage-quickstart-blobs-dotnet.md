@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ
-description: このクイックスタートでは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
+description: このクイック スタートでは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 40ee855aa01a9b24e35fb9863221e3607786d407
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b6348173f47b570efff25bf09e9a427ff2ba9b5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722023"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640993"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ
 
@@ -27,14 +27,14 @@ ms.locfileid: "68722023"
 * コンテナー内のすべての BLOB を一覧表示する
 * コンテナーを削除する
 
-[API のリファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+[API のリファレンスのドキュメント ](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [ ライブラリのソース コード ](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [ パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [ サンプル ](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="required-before-you-begin"></a>開始する前に必要なもの
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure サブスクリプション - [ 無料アカウントを作成する ](https://azure.microsoft.com/free/)
+* Azure Storage アカウント - [ ストレージ アカウントを作成する ](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 * 使用するオペレーティング システム用の [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) またはそれ以降。 ランタイムではなく、必ず SDK を入手してください。
 
 ## <a name="setting-up"></a>設定
@@ -129,7 +129,7 @@ namespace blob_quickstart
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Azure Portal で資格情報をコピーする
 
-サンプル アプリケーションは、ストレージ アカウントへのアクセスを認証する必要があります。 認証するには、ストレージ アカウントの資格情報を接続文字列としてアプリケーションに追加します。 次の手順に従って、ストレージ アカウントの資格情報を表示します。
+サンプル アプリケーションから Azure Storage に対して要求を実行するときは、承認されている必要があります。 要求を承認するには、ストレージ アカウントの資格情報を接続文字列としてアプリケーションに追加します。 次の手順に従って、ストレージ アカウントの資格情報を表示します。
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
 2. 自分のストレージ アカウントを探します。
@@ -179,7 +179,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 これらのリソースとやり取りするには、以下の .NET クラスを使用します。
 
 * [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): `CloudStorageAccount` クラスは、Azure Storage アカウントを表します。 アカウント アクセス キーを使用して BLOB ストレージへのアクセスを承認するには、このクラスを使用します。
-* [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): `CloudBlobClient` クラスは、実際のコード内の Blob service へのアクセス ポイントを提供します。
+* [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): `CloudBlobClient` クラスは、実際のコード内の BLOB service へのアクセス ポイントを提供します。
 * [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): `CloudBlobContainer` クラスは、実際のコード内の BLOB コンテナーを表します。
 * [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): `CloudBlockBlob` オブジェクトは、実際のコード内のブロック BLOB を表します。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
 
@@ -187,13 +187,13 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 以下のサンプル コード スニペットは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して以下を実行する方法を示します。
 
-   * [クライアントを認証する](#authenticate-the-client)
-   * [コンテナーの作成](#create-a-container)
-   * [コンテナーに対するアクセス許可を設定する](#set-permissions-on-a-container)
-   * [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
-   * [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
-   * [BLOB をダウンロードする](#download-blobs)
-   * [コンテナーの削除](#delete-a-container)
+   * [ クライアントを認証する ](#authenticate-the-client)
+   * [ コンテナーの作成 ](#create-a-container)
+   * [ コンテナーに対するアクセス許可を設定する ](#set-permissions-on-a-container)
+   * [ コンテナーに BLOB をアップロードする ](#upload-blobs-to-a-container)
+   * [ コンテナー内の BLOB を一覧表示する ](#list-the-blobs-in-a-container)
+   * [BLOB をダウンロードする ](#download-blobs)
+   * [ コンテナーの削除 ](#delete-a-container)
 
 ### <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -391,7 +391,7 @@ Press any key to delete the example files and example container.
 BLOB ストレージに画像をアップロードする Web アプリの作成方法を学習するには、続けて次の記事をご覧ください:
 
 > [!div class="nextstepaction"]
-> [画像をアップロードして処理する](storage-upload-process-images.md)
+> [ 画像をアップロードして処理する ](storage-upload-process-images.md)
 
 * .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://www.microsoft.com/net/learn/get-started/)」を参照してください。
 * Windows 用 Visual Studio からデプロイできるサンプル アプリケーションを調べるには、「[.NET Photo Gallery Web Application Sample with Azure Blob Storage (Azure Blob Storage を使用した .NET フォト ギャラリー Web アプリケーション サンプル)](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)」を参照してください。

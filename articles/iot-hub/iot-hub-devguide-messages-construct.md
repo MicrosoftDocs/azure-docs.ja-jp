@@ -6,14 +6,14 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: e2aafa195fa463a405e2132cd41fada8d6903961
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450082"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872481"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -47,26 +47,33 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 
 各種プロトコルを使用したメッセージのエンコードとデコードの方法の詳細については、[Azure IoT SDK](iot-hub-devguide-sdks.md) に関するページをご覧ください。
 
-次のテーブルは、IoT Hub メッセージ内の一連のシステム プロパティです。
+## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT Hub メッセージのシステム プロパティ
 
-| プロパティ | 説明 | ユーザーが設定可能 |
+| プロパティ | 説明  |ユーザーが設定可能|クエリをルーティング </br>するためのキーワード|
+| --- | --- | --- | --- |
+| message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式:ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  | はい | messageId |
+| iothub-enqueuedtime |IoT Hub が [Device-to-Cloud](iot-hub-devguide-d2c-guidance.md) メッセージを受信した日時。 | いいえ | enqueuedTime |
+| user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 | はい | userId |
+| iothub-connection-device-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **deviceId** が含まれます。 | いいえ | connectionDeviceId |
+| iothub-connection-module-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **moduleId** が含まれます。 | いいえ | connectionModuleId |
+| iothub-connection-auth-generation-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **connectionDeviceGenerationId** (「[デバイス ID のプロパティ](iot-hub-devguide-identity-registry.md#device-identity-properties)」を参照) が含まれています。 | いいえ |connectionDeviceGenerationId |
+| iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。| いいえ | connectionAuthMethod |
+
+## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub メッセージのシステム プロパティ
+
+| プロパティ | 説明  |ユーザーが設定可能|
 | --- | --- | --- |
-| message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式:ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 | はい |
-| sequence-number |IoT Hub によって各 C2D メッセージに割り当てられる数値 (デバイスとキューごとに一意)。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| to |[C2D](iot-hub-devguide-c2d-guidance.md) メッセージで指定される宛先。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| absolute-expiry-time |メッセージの有効期限の日時。 | はい |
-| iothub-enqueuedtime |IoT Hub が [Device-to-Cloud](iot-hub-devguide-d2c-guidance.md) メッセージを受信した日時。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| correlation-id |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 | はい |
-| user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 | いいえ |
-| iothub-ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | はい |
-| iothub-connection-device-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **deviceId** が含まれます。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| iothub-connection-auth-generation-id |IoT Hub で D2C メッセージに対して設定される ID。 ( **デバイス ID のプロパティ** に従って) メッセージを送信したデバイスの [generationId](iot-hub-devguide-identity-registry.md#device-identity-properties)が含まれています。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。 <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| iothub-creation-time-utc | デバイスでメッセージが作成された日時。 デバイスでこの値を明示的に設定する必要があります。 | はい |
+| message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式:ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  |はい|
+| sequence-number |IoT Hub によって各 C2D メッセージに割り当てられる数値 (デバイスとキューごとに一意)。 |いいえ|
+| to |[C2D](iot-hub-devguide-c2d-guidance.md) メッセージで指定される宛先。 |いいえ|
+| absolute-expiry-time |メッセージの有効期限の日時。 |いいえ|   |
+| correlation-id |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 |はい|
+| user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 |はい|
+| iothub-ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 |はい|
 
 ## <a name="message-size"></a>メッセージ サイズ
 
-IoT Hub では、メッセージのサイズは、プロトコルに関係なく実際のペイロードのみを考慮して測定されます。 バイト単位のサイズは次の和として計算されます。
+IoT Hub では、メッセージのサイズは、プロトコルに関係なく実際のペイロードのみを考慮して測定されます。 サイズ (バイト単位) は次の値の和として計算されます。
 
 * 本文のサイズ (バイト単位)
 * メッセージ システム プロパティの全値のサイズ (バイト単位)。

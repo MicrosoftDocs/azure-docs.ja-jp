@@ -8,17 +8,16 @@ manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: ef02c8120775aa119aff44ff7a06bccf2bc70a21
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 77fa97cd339b6498263e12eae9cea50187493a89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377330"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097111"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -125,7 +124,7 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
 ```java
 @FunctionName("keepAlive")
 public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
       ExecutionContext context
  ) {
      // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
@@ -225,7 +224,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 |**type** | 該当なし | "timerTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のタイマー オブジェクトを表す変数の名前。 | 
-|**schedule**|**ScheduleExpression**|[CRON 式](#cron-expressions)または [TimeSpan](#timespan) 値。 `TimeSpan` は、App Service プランで実行している関数アプリに対してのみ使うことができます。 スケジュール式をアプリ設定に含めて、たとえば "%ScheduleAppSetting%" のように、 **%** 記号で囲まれたアプリ設定名にこのプロパティを設定できます。 |
+|**schedule**|**ScheduleExpression**|[CRON 式](#ncrontab-expressions)または [TimeSpan](#timespan) 値。 `TimeSpan` は、App Service プランで実行している関数アプリに対してのみ使うことができます。 スケジュール式をアプリ設定に含めて、たとえば "%ScheduleAppSetting%" のように、 **%** 記号で囲まれたアプリ設定名にこのプロパティを設定できます。 |
 |**runOnStartup**|**runOnStartup**|`true` の場合、関数はランタイムの開始時に呼び出されます。 たとえば、ランタイムが開始するのは、関数アプリが非アクティブになってアイドル状態に移行した後で起動したとき、 関数が変化したために関数アプリが再起動するとき、関数アプリがスケールアウトするときなどです。`true` に設定されている場合でも、特に運用環境では、**runOnStartup** はほとんど呼び出されることはありません。 |
 |**useMonitor**|**UseMonitor**|`true` または `false` に設定し、スケジュールを監視する必要があるかどうかを示します。 スケジュールの監視はスケジュールの発生を維持し、関数アプリのインスタンスが再起動するときでもスケジュールが正しく維持されることを保証するのに役立ちます。 このプロパティを明示的に設定しない場合、繰り返し間隔が 1 分より長いスケジュールの既定値は `true` です。 1 分間に 2 回以上トリガーするスケジュールの既定値は `false` です。
 
@@ -253,9 +252,9 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 現在の関数の呼び出しがスケジュールより遅い場合、`IsPastDue` プロパティは `true` になります。 たとえば、関数アプリが再起動すると、呼び出しが行われない可能性があります。
 
-## <a name="cron-expressions"></a>CRON 式 
+## <a name="ncrontab-expressions"></a>NCRONTAB 式 
 
-Azure Functions では、CRON 式を解釈するのに [NCronTab](https://github.com/atifaziz/NCrontab) ライブラリが使用されます。 CRON 式には、次の 6 つのフィールドが含まれます。
+Azure Functions では、NCRONTAB 式を解釈するのに [NCronTab](https://github.com/atifaziz/NCrontab) ライブラリが使用されます。 NCRONTAB 式は CRON 式に似ていますが、秒単位の時間精度に使用するために、追加の 6 番目のフィールドが最初に含まれている点が異なります。
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -271,9 +270,9 @@ Azure Functions では、CRON 式を解釈するのに [NCronTab](https://github
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>CRON の例
+### <a name="ncrontab-examples"></a>NCRONTAB の例
 
-Azure Functions のタイマー トリガーに使用できる CRON 式の例をいくつか示します。
+Azure Functions のタイマー トリガーに使用できる NCRONTAB 式の例をいくつか示します。
 
 |例|トリガーのタイミング  |
 |---------|---------|
@@ -284,25 +283,24 @@ Azure Functions のタイマー トリガーに使用できる CRON 式の例を
 |`"0 30 9 * * *"`|毎日午前 9 時 30 分|
 |`"0 30 9 * * 1-5"`|平日の毎日午前 9 時 30 分|
 |`"0 30 9 * Jan Mon"`|1 月の毎週月曜日の午前 9時 30分|
->[!NOTE]   
->CRON 式の例はオンラインで見つかりますが、その多くでは `{second}` フィールドが省略されています。 それらのいずれかをコピーして、欠けている `{second}` フィールドを追加します。 通常、そのフィールドにはアスタリスクではなく 0 を設定します。
 
-### <a name="cron-time-zones"></a>CRON のタイム ゾーン
+
+### <a name="ncrontab-time-zones"></a>NCRONTAB タイム ゾーン
 
 CRON 式に出現する値は、時間間隔ではなく時刻と日付を示します。 たとえば、`hour` フィールドの 5 は、5 時間ごとではなく、午前 5 時 00 分を示します。
 
 CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) です。 別のタイム ゾーンに基づく CRON 式を使うには、Function App 用に `WEBSITE_TIME_ZONE` という名前のアプリ設定を作成します。 この値を、[Microsoft のタイム ゾーン インデックス](https://technet.microsoft.com/library/cc749073)に関するページに示されている目的のタイム ゾーンの名前に設定します。 
 
-たとえば、"*東部標準時*" は UTC-05:00 です。 タイマー トリガーが毎日東部標準時の 10:00 AM に発生するように設定するには、UTC タイム ゾーンを考慮した次の CRON 式を使用できます。
+たとえば、"*東部標準時*" は UTC-05:00 です。 タイマー トリガーが毎日東部標準時の午前 10 時に発生するように設定するには、UTC タイム ゾーンを考慮した次の NCRONTAB 式を使用できます。
 
-```json
-"schedule": "0 0 15 * * *"
+```
+"0 0 15 * * *"
 ``` 
 
-または、Function App のアプリ設定を `WEBSITE_TIME_ZONE` という名前で作成し、その値を "**東部標準時**" に設定します。  そして、次の CRON 式を使います。 
+または、Function App のアプリ設定を `WEBSITE_TIME_ZONE` という名前で作成し、その値を "**東部標準時**" に設定します。  そして、次の NCRONTAB 式を使います。 
 
-```json
-"schedule": "0 0 10 * * *"
+```
+"0 0 10 * * *"
 ``` 
 
 `WEBSITE_TIME_ZONE` を使用すると、夏時間などの特定のタイムゾーンでの時間変更に対応するように、時刻が調整されます。 

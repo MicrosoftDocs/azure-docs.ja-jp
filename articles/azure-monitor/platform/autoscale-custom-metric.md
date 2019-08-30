@@ -9,10 +9,10 @@ ms.date: 05/07/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: e6423f2ce3659fd3dd738dcc8a990261bc7bf60c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60334337"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Azure でのカスタム メトリックによる自動スケールの概要
@@ -23,7 +23,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 ## <a name="lets-get-started"></a>作業の開始
 この記事では、Application Insights が構成されている Web アプリがあることを前提としています。 Web アプリをまだ所有していない場合は、[ASP.NET Web サイト向けに Application Insights を設定する][1]ことができます。
 
-- [Azure Portal][2] を開きます。
+- [Azure portal][2] を開きます。
 - 左側のナビゲーション ウィンドウで、Azure Monitor のアイコンをクリックします。
   ![Azure Monitor の起動][3]
 - [自動スケール] 設定をクリックすると、自動スケールを適用できるすべてのリソースと、現在の自動スケールの状態が表示されます。![Azure Monitor での自動スケールの検出][4]

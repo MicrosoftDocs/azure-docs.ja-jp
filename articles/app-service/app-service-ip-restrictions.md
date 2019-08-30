@@ -10,17 +10,16 @@ ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d3c547fbc09aeb034df5b7ed579639e1ff4bc0b4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cee6fc9fb5cc10a2b3442e146ef5688ed74290bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705803"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088433"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限 #
 

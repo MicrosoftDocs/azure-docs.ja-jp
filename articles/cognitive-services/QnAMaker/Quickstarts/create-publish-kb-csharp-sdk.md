@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: diberry
-ms.openlocfilehash: 686bdf834efd637db49a7b51dc2bf7effa1eb4cb
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2902e63f65db3883d6d8f442db273d19f60e82a8
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839969"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012790"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>クイック スタート:.NET 用 QnA Maker クライアント ライブラリ
 
@@ -186,7 +186,7 @@ create や update などのメソッドの中には、プロセスが終了す�
 dotnet run
 ```
 
-[このクイックスタートのソース コード](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.css)は、QnA Maker C# のサンプル GitHub リポジトリから入手できます。
+[このクイックスタートのソース コード](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs)は、QnA Maker C# のサンプル GitHub リポジトリから入手できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -107,6 +107,8 @@
       items:
         - name: DMS を使用したオンライン移行
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: フェールオーバー グループへの追加
+          href: sql-database-managed-instance-failover-group-tutorial.md
         - name: トランザクション レプリケーションの構成
           href: replication-with-sql-database-managed-instance.md
     - name: SQL Database のセキュリティ
@@ -236,7 +238,7 @@
     - name: サービスとしてのプラットフォーム
       items:
         - name: サービスとしてのプラットフォームのドキュメント
-          href: sql-database-paas.yml
+          href: sql-database-paas-index.yml
         - name: ビジネス継続性
           href: sql-database-business-continuity.md
         - name: 高可用性

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: bb5a267d1c7058193f1d7c8ed4087f5c0ebab267
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9dcb8b2e9c1b75aac3c195f89777ac9c6eb030d7
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68425858"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575252"
 ---
 # <a name="user-defined-restore-points"></a>ユーザー定義の復元ポイント
 
@@ -61,7 +61,7 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 1. [Azure portal][Azure portal] アカウントにサインインします。
 
-2. 復元ポイントを作成する対象の SQL データ ウェアハウスに移動します。
+2. 復元ポイントを作成する SQL データ ウェアハウスに移動します。
 
 3. 左側のウィンドウで **[概要]** を選択し、 **[+ 新しい復元ポイント]** を選択します。 [新しい復元ポイント] ボタンが有効になっていない場合は、データ ウェアハウスが一時停止されていないことを確認します。
 

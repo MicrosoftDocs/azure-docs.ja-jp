@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689271"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954680"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -25,7 +25,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 - [Microsoft Azure Recovery Services (MARS) エージェントが最新であることを確認する](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](https://aka.ms/AB-A4dp50)
-- Microsoft Azure Recovery Services が (サービス コンソールで) 実行されていることを確認します。 必要に応じて、再起動して操作をやり直します。
+- Microsoft Azure Recovery Services が (サービス コンソールで) 実行されていることを確認します。 必要に応じて、再起動して操作をやり直します
 - [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](https://aka.ms/AB-AA4dwtt)
 - 登録が失敗する場合は、Azure Backup Server をインストールしようとしているサーバーが別のコンテナーにまだ登録されていないことを確認します。
 - プッシュ インストールが失敗する場合は、DPM エージェントが既に存在するかどうかを確認してください。 その場合は、エージェントをアンインストールしてからインストールをやり直してください。
@@ -61,7 +61,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 | Operation | エラーの詳細 | 対処法 |
 | --- | --- | --- |
-| バックアップ | VMware VM のオンライン復旧ポイント作成ジョブが失敗します。 DPM での ChangeTracking 情報の取得中に VMware でエラーが発生しました。 ErrorCode - FileFaultFault (ID 33621) |  <ol><li> 影響を受けた仮想マシンの VMWare で CTK をリセットします。</li> <li>独立したディスクが VMware 上にないことを確認します。</li> <li>影響を受けた仮想マシンの保護を停止し、 **[更新]** ボタンで再度保護します。 </li><li>影響を受けた仮想マシンに CC を実行します。</li></ol>|
+| バックアップ | VMware VM のオンライン復旧ポイント作成ジョブが失敗します。 DPM での ChangeTracking 情報の取得中に VMware でエラーが発生しました。 ErrorCode - FileFaultFault (ID 33621) |  <ol><li> 影響を受けた仮想マシンの VMWare で CTK をリセットします。</li> <li>独立したディスクが VMware 上にないことを確認します。</li> <li>影響を受けた仮想マシンの保護を停止し、 **[更新]** ボタンで再保護します。 </li><li>影響を受けた仮想マシンに CC を実行します。</li></ol>|
 
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>サーバー上の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました
@@ -102,7 +102,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | バックアップ | ジョブの実行中に予期しないエラーが発生しました。 デバイスの準備ができていません。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します:** <br> <ul><li>保護グループ内の項目でシャドウ コピーの記憶域の領域を無制限に設定してから、整合性チェックを実行します。<br></li> (または) <li>既存の保護グループを削除して、複数の新しいグループを作成します。 新しい保護グループのそれぞれに、個々 の項目が必要です。</li></ul> |
 | バックアップ | システム状態だけをバックアップする場合は、保護されたコンピューターにシステム状態のバックアップを格納するのに十分な空き領域があることを確認してください。 | <ol><li>保護されたマシンに Windows Server バックアップがインストールされていることを確認します。</li><li>保護されたコンピューターにシステム状態のための十分な領域があることを確認します。 これを確認する最も簡単な方法として、保護されたコンピューターに移動し、Windows Server バックアップを開き、選択項目をクリックして BMR を選択します。 必要な領域量が UI に表示されます。 **WSB** >  **[ローカル バックアップ]**  >  **[バックアップのスケジュール]**  >  **[バックアップの構成の選択]**  >  **[サーバー全体]** (サイズが表示される) と開きます。 このサイズを検証に使用します。</li></ol>
 | バックアップ | BMR のバックアップの失敗 | BMR サイズが大きい場合は、一部のアプリケーション ファイルを OS ドライブに移動して、再試行してください。 |
-| バックアップ | 新しい Microsoft Azure Backup Server 上の VMware VM を保護しなおすオプションが、追加可能と表示されません。 | VMware のプロパティが、Microsoft Azure Backup Server の提供終了になった古いインスタンスを参照しています。 この問題を解決するには:<br><ol><li>VCenter (SC-VMM に相当) で、 **[概要]** タブ、 **[カスタム属性]** と移動します。</li>  <li>**DPMServer** 値から、古い Microsoft Azure Backup Server 名を削除します。</li>  <li>新しい Microsoft Azure Backup Server に戻り、PG を変更します。  **[更新]** ボタンを選択すると、保護の追加に使用できるチェック ボックスが VM に表示されます。</li></ol> |
+| バックアップ | 新しい Microsoft Azure Backup Server 上の VMware VM を再保護するオプションが、追加可能と表示されません。 | VMware のプロパティが、Microsoft Azure Backup Server の提供終了になった古いインスタンスを参照しています。 この問題を解決するには:<br><ol><li>VCenter (SC-VMM に相当) で、 **[概要]** タブ、 **[カスタム属性]** と移動します。</li>  <li>**DPMServer** 値から、古い Microsoft Azure Backup Server 名を削除します。</li>  <li>新しい Microsoft Azure Backup Server に戻り、PG を変更します。  **[更新]** ボタンを選択すると、保護の追加に使用できるチェック ボックスが VM に表示されます。</li></ol> |
 | バックアップ | ファイル/共有フォルダーへのアクセス中のエラー | TechNet の記事「[DPM サーバーでのウイルス対策ソフトウェアの実行](https://technet.microsoft.com/library/hh757911.aspx)」で提案されているウイルス対策の設定を変更してみてください。|
 
 

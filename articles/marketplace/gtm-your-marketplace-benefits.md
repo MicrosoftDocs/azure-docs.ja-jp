@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 297a6f9058b220d1f2e3a0ca69d018858218b774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02fcda2d851ddefa1c592bf0b5b09d5e5d59828f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65909731"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128217"
 ---
 # <a name="your-marketplace-benefits"></a>Marketplace のベネフィット
 
@@ -67,7 +67,7 @@ GTM サポートには、パートナーのビジネスをプロモーション�
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>トランザクション パートナーに対する Marketplace 報酬
 
-Marketplace 報酬に対する特典の詳細な一覧については、[プログラムの概要のスライド](https://onedrive.live.com/view.aspx?resid=1900675C97CA6FE0!630&ithint=file%2cpptx&authkey=!APQ6LSnDenx2FKM)を参照してください。
+Marketplace 報酬に対する特典の詳細な一覧については、[プログラムの概要のスライド](https://aka.ms/marketplacerewards)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

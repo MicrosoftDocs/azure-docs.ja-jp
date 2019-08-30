@@ -107,7 +107,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 | データ型 | 
+| 名前 | 値/例 | データ型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute.Extensions | string |

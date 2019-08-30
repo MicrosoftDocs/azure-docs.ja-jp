@@ -8,18 +8,15 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233956"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991942"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Azure Stream Analytics を使用してイベント ハブからのデータを処理する (プレビュー)
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Azure Stream Analytics を使用してイベント ハブからのデータを処理する 
 Azure Stream Analytics サービスを利用すると、簡単に Azure Event Hubs からストリーミング データを取り込み、処理し、分析できるようになり、優れた分析情報を利用してリアルタイム操作を始動できます。 この統合によって、ホットパス分析パイプラインの迅速な作成が可能になります。 Azure portal を使用して、受信データを視覚化し、Stream Analytics クエリを記述できます。 クエリを準備できたら、数回のクリック操作だけで運用環境に移行できます。 
-
-> [!NOTE]
-> 現在、この機能はプレビュー段階にあります。 
 
 ## <a name="key-benefits"></a>主な利点
 Azure Event Hubs と Azure Stream Analytics の統合の主な利点を次に示します。 

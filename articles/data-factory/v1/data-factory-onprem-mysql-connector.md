@@ -69,7 +69,7 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesMySql** |はい |
-| サーバー |MySQL サーバーの名前です。 |はい |
+| server |MySQL サーバーの名前です。 |はい |
 | database |MySQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ |
 | authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |

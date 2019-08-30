@@ -134,7 +134,7 @@ Azure Security Center for IoT は、エージェントによって生成され�
 
 - セキュリティ エージェントからの生データは、Log Analytics アカウントにも格納できます。 このオプションの構成を変更する前に、サイズ、持続期間、ストレージの要件、および関連するコストを考慮してください。 
 
-## <a name="why-should-i-add-azure-security-center-for-iot-to-the-module-identity-what-is-it-used-for"></a>Azure Security Center for IoT をモジュール ID に追加する必要があるのはなぜですか? 用途
+## <a name="why-should-i-add-azure-security-center-for-iot-to-the-module-identity-what-is-it-used-for"></a>Azure Security Center for IoT をモジュール ID に追加する必要があるのはなぜですか? 用途を教えてください。
 
 Azure Security Center for IoT モジュールは、エージェントの構成と管理に使用されます。
 

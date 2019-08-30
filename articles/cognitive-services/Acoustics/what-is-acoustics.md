@@ -3,20 +3,20 @@ title: Project Acoustics の概要
 titlesuffix: Azure Cognitive Services
 description: Project Acoustics は、3D 対話型エクスペリエンス用の音響エンジンです。ベイクされた波動物理学シミュレーションを対話型設計コントロールに統合します。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704750"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932971"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics とは
 Project Acoustics は、3D 対話型エクスペリエンス用の波動音響エンジンです。 複雑なシーンの回折などの波動効果、ポータリングおよびリバーブ効果をモデル化します。手動のゾーン マークアップは必要ありません。 ゲーム エンジンとオーディオ ミドルウェアの統合も含まれます。 Project Acoustics の理念は、静的ライティングに似ています。詳細な物理学をオフラインでベイクし、物理的なベースラインを提供し、表現豊かな設計コントロールで軽量ランタイムを使用して、芸術的目標を達成します。
@@ -40,11 +40,17 @@ Project Acoustics の重要な革新は、音響シミュレーションを従�
 * **ベイク:** 分析の手順はローカルで行われます。その際に、前述の選択内容に基づいて、シーンでボクセル化とその他の幾何解析を行います。 シーンのセットアップを確認するために、エディターで結果が視覚化されます。 ベイク送信時に、ボクセル データが Azure に送信され、音響ゲーム資産が返されます。
 * **ランタイム:** 資産をご自分のレベルに読み込むと、そのレベルで音響を聴けるようになります。 エディターで詳細なソースごとのコントロールを使用して、音響ライブを設計します。 コントロールはレベル スクリプトから実行することもできます。
 
-## <a name="platforms"></a>プラットフォーム
+## <a name="runtime-platforms"></a>ランタイムのプラットフォーム
 Project Acoustics ランタイム プラグインは現在、以下のプラットフォームにデプロイできます。
 * Windows
+* MacOS
 * Android
 * Xbox One
+
+## <a name="editor-platforms"></a>エディターのプラットフォーム
+Project Acoustics エディター プラグインは、次のプラットフォームで利用できます。
+* Windows
+* MacOS (Unity のみ)
 
 ## <a name="download"></a>ダウンロード
 * [Project Acoustics Unity プラグインとサンプル](https://www.microsoft.com/en-us/download/details.aspx?id=57346)

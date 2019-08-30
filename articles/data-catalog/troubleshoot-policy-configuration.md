@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: f37110138ae62272e56b155b7e8a9aac2f80cdf8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734595"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879554"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Azure Data Catalog のトラブルシューティング
 
@@ -21,7 +21,7 @@ ms.locfileid: "68734595"
 
 Azure Data Catalog を使用しているときは、次の機能が制限されます。
 
-- **ゲスト ロール** タイプのアカウントはサポートされません。 Azure Data Catalog のユーザーとしてゲスト アカウントを追加することはできません。また、ゲスト ユーザーがポータル (www.azuredatacatalog.com) を使用することもできません。
+- **ゲスト ロール** タイプのアカウントはサポートされません。 Azure Data Catalog のユーザーとしてゲスト アカウントを追加することはできません。また、ゲスト ユーザーがポータル ([https://www.azuredatacatalog.com](https://www.azuredatacatalog.com)) を使用することもできません。
 
 - Azure Resource Manager テンプレートまたは Azure PowerShell コマンドを使用した Azure Data Catalog リソースの作成はサポートされません。
 

@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729234"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900362"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>中速から高速のネットワーク帯域幅での大規模なデータセットのデータ転送
  
@@ -108,4 +108,4 @@ ms.locfileid: "60729234"
 - REST API を使用してデータ転送する
 
     - [.NET の場合](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [Java の場合](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [Java の場合](https://docs.microsoft.com/java/api/overview/azure/storage)

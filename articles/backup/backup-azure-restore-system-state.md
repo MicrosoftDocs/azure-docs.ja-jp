@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 83c4d8a90bf9ae348026c14beaec4975636b29b5
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689139"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018800"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -124,9 +124,9 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
 1. 次のコマンドを使用して、"*ディレクトリ サービスの修復モード*" でサーバーを再起動します。 管理者特権でのコマンド プロンプトで、次のように入力します。
 
-    ```
-    PS C:\> Bcdedit /set safeboot dsrepair
-    PS C:\> Shutdown /r /t 0
+    ```cmd
+    Bcdedit /set safeboot dsrepair
+    Shutdown /r /t 0
     ```
 
 2. 再起動後に、Windows Server バックアップ スナップインを開きます。 スナップインがインストールされている場所がわからない場合は、コンピューターまたはサーバーで **Windows Server バックアップ**を検索します。
@@ -189,14 +189,14 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
 5. コマンド プロンプトを管理者モードで開いたら、次のコマンドを実行して、システム状態バックアップのバージョンを取得します。
 
-    ```
+    ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
     ![システム状態バックアップのバージョンを取得する](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. 次のコマンドを実行して、バックアップの使用可能なすべてのボリュームを取得します。
 
-    ```
+    ```cmd
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
@@ -204,7 +204,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
 7. 次のコマンドは、システム状態バックアップに含まれているすべてのボリュームを回復します。 この手順では、システム状態に含まれている重要なボリュームだけが回復されることに注意してください。 システム データ以外のデータはすべて消去されます。
 
-    ```
+    ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
      ![システム状態バックアップのバージョンを取得する](./media/backup-azure-restore-system-state/winre-6.png)

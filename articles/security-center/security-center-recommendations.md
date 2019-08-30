@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2019
+ms.date: 07/29/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fe1d4bf27f3c4bb1f70c1c1fa9767c27f8767998
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 229b8949facae34a809c0789154a3b56264ee2c5
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064212"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779021"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
 このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
@@ -29,25 +29,26 @@ ms.locfileid: "67064212"
 >
 
 ## <a name="what-are-security-recommendations"></a>セキュリティに関する推奨事項とは
-セキュリティ センターは、Azure リソースのセキュリティの状態を定期的に分析します。 セキュリティ センターでは、潜在的なセキュリティの脆弱性が特定されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。
 
-## <a name="implementing-security-recommendations"></a>セキュリティに関する推奨事項の実装
-### <a name="set-recommendations"></a>推奨事項の設定
-「 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」では、次のことを学習します。
+推奨事項とは、リソースを保護するために実行する操作です。
 
-* セキュリティ ポリシーを構成する。
-* データ収集を有効にする。
-* セキュリティ ポリシーの一部として表示する推奨事項を選択する。
+Security Center は Azure リソースのセキュリティの状態を定期的に分析して、潜在的なセキュリティ脆弱性を特定します。 その後、それらを削除する方法の推奨事項を提供します。
 
-現在のポリシーの推奨事項は、システムの更新プログラム、基準規則、マルウェア対策プログラム、サブネットとネットワーク インターフェイス上の[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)、SQL データベースの監査、SQL データベースの透過的なデータ暗号化、Web アプリケーション ファイアウォールを軸として展開しています。  [セキュリティ ポリシーの設定](tutorial-security-policy.md) では、推奨事項の各オプションについて説明します。
+それぞれの推奨事項の内容は次のとおりです。
 
-### <a name="monitor-recommendations"></a>推奨事項の監視
-セキュリティ ポリシーを設定すると、セキュリティ センターではリソースのセキュリティの状態が分析され、潜在的な脆弱性が特定されます。 **[概要]** の **[推奨事項]** タイルには、Security Center で特定された推奨事項の総数が表示されます。
+- 推奨されている内容の簡単な説明。
+- 推奨事項を実装するために実行する修復手順。 <!-- In some cases, one-click remediation is available. -->
+- 推奨される操作を実行するために必要なリソース。
+- **セキュリティ スコアの影響**。これは、この推奨事項を実装した場合に、セキュリティ スコアが上昇する量です。
+
+## 推奨事項の監視<a name="monitor-recommendations"></a>
+
+Security Center はリソースのセキュリティの状態を分析して、潜在的な脆弱性を特定します。 **[概要]** の **[推奨事項]** タイルには、Security Center で特定された推奨事項の総数が表示されます。
 
 ![Security Center の概要](./media/security-center-recommendations/asc-overview.png)
 
 1. **[概要]** で **[推奨事項]** タイルを選択します。 **[推奨事項]** リストが開きます。
-    
+
       ![推奨事項の表示](./media/security-center-recommendations/view-recommendations.png)
 
     推奨事項をフィルター処理できます。 推奨事項をフィルター処理するには、 **[推奨事項]** ブレードで **[フィルター]** を選択します。 **[フィルター]** ブレードが開いたら、確認する重要度と状態の値を選択します。
@@ -68,19 +69,9 @@ ms.locfileid: "67064212"
 
 >[!NOTE] 
 > Azure リソースの詳細については、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)に関するページを参照してください。
-  
- ### <a name="apply-recommendations"></a>推奨事項の適用
-> すべての推奨事項を確認したら、最初に適用する推奨事項を決定します。 セキュリティ スコアの影響を利用し、最初に適用する推奨事項を評価することをお勧めします。
-
-1. 一覧から、推奨事項をクリックします。
-1. 「*修復の手順*」セクションの指示に従ってください。
-
+ 
 ## <a name="next-steps"></a>次の手順
-このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。 Security Center の詳細については、次のトピックを参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-* [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。 推奨事項を修正する方法については、次を参照してください。
+
+* [推奨事項の修正](security-center-remediate-recommendations.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.author: mlearned
-ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614576"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639808"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する
 
@@ -24,7 +24,7 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、Windows Server ノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して Windows コンテナーと共に AKS クラスターを作成する][aks-windows-cli]方法に関する記事を参照してください。. You need the Windows administrator username and password for the Windows Server node you want to troubleshoot. You also need an RDP client such as [Microsoft Remote Desktop][rdp-mac]。
+この記事は、Windows Server ノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して Windows コンテナーと共に AKS クラスターを作成する][aks-windows-cli]方法に関する記事を参照してください。 トラブルシューティングを行う Windows Server ノードに対して、Windows 管理者のユーザー名とパスワードが必要です。 [Microsoft リモート デスクトップ][rdp-mac]などの RDP クライアントも必要です。
 
 また、Azure CLI バージョン 2.0.61 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -63,6 +63,27 @@ az vm create \
 ```
 
 仮想マシンのパブリック IP アドレスを書き留めます。 このアドレスは、後の手順で使用します。
+
+## <a name="allow-access-to-the-virtual-machine"></a>仮想マシンへのアクセスを許可する
+
+AKS ノード プールのサブネットは、既定で NSG (ネットワーク セキュリティ グループ) によって保護されます。 仮想マシンへのアクセスを取得するには、NSG でアクセスを有効にする必要があります。
+
+> [!NOTE]
+> NSG は、AKS サービスによって制御されます。 NSG に加えた変更は、コントロール プレーンによっていつでも上書きされます。
+>
+
+まず、ルールを追加する nsg のリソース グループと nsg 名を取得します。
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+次に、NSG ルールを作成します。
+
+```azurecli-interactive
+az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --priority 100 --destination-port-range 3389 --protocol Tcp --description "Temporary RDP access to Windows nodes"
+```
 
 ## <a name="get-the-node-address"></a>ノード アドレスを取得する
 
@@ -119,9 +140,20 @@ aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67
 az vm delete --resource-group myResourceGroup --name myVM
 ```
 
+また、NSG ルールは次のようになります。
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+```azurecli-interactive
+az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --name tempRDPAccess
+```
+
 ## <a name="next-steps"></a>次の手順
 
-トラブルシューティング データがさらに必要な場合は、[Kubernetes マスター ノードのログ][view-master-logs]or [Azure Monitor][azure-monitor-containers] を表示できます。
+トラブルシューティング データがさらに必要な場合は、[Kubernetes マスター ノードのログ][view-master-logs]または [Azure Monitor][azure-monitor-containers] を表示できます。
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

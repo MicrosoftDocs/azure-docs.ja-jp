@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: mlearned
 ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67614760"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
@@ -99,7 +99,7 @@ spec:
          servicePort: 80
 ```
 
-イングレス コントローラーは、AKS ノードで実行され、着信要求を監視するデーモンです。 その後、トラフィックは、イングレス リソースで定義されたルールに基づいて分散されます。 最も一般的なイングレス コントローラーは、[NGINX] に基づいています。 AKS では特定のコントローラーに限定されないので、[Contour][contour], [HAProxy][haproxy]、[Traefik][traefik] などのその他のコントローラーを使用できます。
+イングレス コントローラーは、AKS ノードで実行され、着信要求を監視するデーモンです。 その後、トラフィックは、イングレス リソースで定義されたルールに基づいて分散されます。 最も一般的なイングレス コントローラーは、[NGINX] に基づいています。 AKS では特定のコントローラーに限定されないので、[Contour][contour]、[HAProxy][haproxy]、[Traefik][traefik] などのその他のコントローラーを使用できます。
 
 イングレス コントローラーは Linux ノード上でスケジュールする必要があります。 Windows Server ノード (現在は AKS でプレビュー段階) では、イングレス コントローラーを実行しないでください。 YAML マニフェストまたは Helm グラフのデプロイでノード セレクターを使用して、リソースが Linux ベースのノード上で実行されるように指示します。 詳細については、[ノード セレクターを使用して AKS でポッドをスケジュールする場所を制御する][concepts-node-selectors]方法に関する記事を参照してください。
 
@@ -108,7 +108,7 @@ spec:
 * [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
 * [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
 * [ご自身の TLS 証明書を使用するイングレス コントローラーを作成する][aks-ingress-own-tls]
-* Let's Encrypt を使用して[動的パブリック IP アドレス付き][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]の TLS 証明書を自動的に生成するイングレス コントローラーを作成する
+* Let's Encrypt を使用して、[動的パブリック IP アドレスを指定][aks-ingress-tls]または[静的パブリック IP アドレスを指定][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>Web アプリケーション ファイアウォール (WAF) を使用してトラフィックをセキュリティで保護する
 
@@ -158,7 +158,7 @@ AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubern
 
 ![踏み台ホスト (jump box) を使用して AKS ノードに接続する](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-踏み台ホストの管理ネットワークは、セキュリティで保護する必要もあります。 [Azure ExpressRoute][expressroute] or [VPN gateway][vpn-gateway] を使用してオンプレミスのネットワークに接続し、ネットワーク セキュリティ グループを使用してアクセスを制御します。
+踏み台ホストの管理ネットワークは、セキュリティで保護する必要もあります。 [Azure ExpressRoute][expressroute] または [VPN Gateway][vpn-gateway] を使用してオンプレミス ネットワークに接続し、ネットワーク セキュリティ グループを使用してアクセスを制御します。
 
 ## <a name="next-steps"></a>次の手順
 

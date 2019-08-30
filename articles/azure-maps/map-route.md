@@ -1,6 +1,6 @@
 ---
 title: Azure Maps を使った道順の表示 | Microsoft Docs
-description: 2 つの場所の間の道順を Javascript マップ上に表示する方法
+description: Azure Maps Web SDK を使用してマップ上の 2 つの場所の間の方向を表示する方法。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 65f8337585e0a4d1077897274fd07505024af22c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cf997d4ae120f3e9309892b112f9954bde97bc76
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638949"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976485"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する
 
@@ -39,7 +39,7 @@ ms.locfileid: "68638949"
 
 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。 5 つ目のコード ブロックでは、シンボル レイヤーが作成され、マップに追加されます。
 
-6 つ目のコード ブロックでは、[サービス モジュール](how-to-use-services-module.md)の一部である Azure Maps ルーティング サービスのクエリが実行されます。 RouteURL の [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) メソッドは、開始点と終了点の間のルートを取得するために使用されます。 `geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。 次に、応答はマップ上にルートとしてレンダリングされます。 マップに線を追加する方法については、[マップへの線の追加](./map-add-shape.md#addALine)に関するページを参照してください。
+6 つ目のコード ブロックでは、[サービス モジュール](how-to-use-services-module.md)の一部である Azure Maps ルーティング サービスのクエリが実行されます。 RouteURL の [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) メソッドは、開始点と終了点の間のルートを取得するために使用されます。 `geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。 次に、応答はマップ上にルートとしてレンダリングされます。 マップに線を追加する方法については、[マップへの線の追加](map-add-line-layer.md)に関するページを参照してください。
 
 最後のコード ブロックでは、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップの境界が設定されます。
 
@@ -62,7 +62,7 @@ ms.locfileid: "68638949"
 
 次のコード ブロックでは、開始点と終了点から `SouthWest` と `NorthEast` のポイントが作成され、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップの境界が設定されます。
 
-最後のコード ブロックでは、[Fetch API](https://fetch.spec.whatwg.org/) を使用して、[Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に対して検索要求を行います。 その後、応答が解析されます。 成功応答の場合は、緯度と経度の情報を使用し、それらのポイントを結んで線の配列が作成されます。 その線データがデータ ソースに追加されて、マップ上にルートがレンダリングされます。 手順については、「[線を追加する](./map-add-shape.md#addALine)」をご覧ください。
+最後のコード ブロックでは、[Fetch API](https://fetch.spec.whatwg.org/) を使用して、[Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に対して検索要求を行います。 その後、応答が解析されます。 成功応答の場合は、緯度と経度の情報を使用し、それらのポイントを結んで線の配列が作成されます。 その線データがデータ ソースに追加されて、マップ上にルートがレンダリングされます。 手順については、「[線を追加する](map-add-line-layer.md)」をご覧ください。
 
 マップの読み込みが完了した後に結果が表示されるように、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内でルート クエリ、データ ソース、シンボル、および線レイヤーとカメラ境界が作成および設定されます。
 

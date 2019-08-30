@@ -9,19 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 39f38af601888f847cd1a82da9e2e03e6893c28e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607277"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100655"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -421,7 +420,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
    - **[正常性プローブ]** : 先ほど構成した正常性プローブを使用します。
    - **[セッション永続化]** : なし。
    - **[アイドル タイムアウト (分)]** : 4.
-   - **[フローティング IP]\(ダイレクト サーバー リターン\)** : Enabled
+   - **[フローティング IP]\(ダイレクト サーバー リターン\)** : 有効
 
 1. Click **OK**.
 

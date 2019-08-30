@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a5ced51eabe708dc7883fc91e5b6fa67f9211381
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b95affd08c989a9d1cdee53c0a4e6df16af106
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559633"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892034"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
-[Custom Speech](https://aka.ms/custom-speech) は、ご利用のアプリケーション、ツール、製品に使用する Microsoft の音声テキスト変換の正確性を評価して改善することのできる一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のテスト オーディオ ファイルだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスを作成してみましょう。
+[Custom Speech](https://aka.ms/customspeech) は、ご利用のアプリケーション、ツール、製品に使用する Microsoft の音声テキスト変換の正確性を評価して改善することのできる一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のテスト オーディオ ファイルだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスを作成してみましょう。
 
 ## <a name="whats-in-custom-speech"></a>Custom Speech の内容
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinigam
-ms.openlocfilehash: 71eb789c92452353029613265fe97411c8c00649
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706329"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782123"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -147,7 +147,17 @@ NPM は、traceroute の修正バージョンを使用して、ソース エー�
 * ネットワーク デバイスが ICMP_TTL_EXCEEDED トラフィックを許可していない。
 * ネットワーク デバイスからの ICMP_TTL_EXCEEDED 応答がファイアウォールによってブロックされている。
 
-### <a name="why-does-my-link-show-unhealthy-but-the-topology-does-not"></a>リンクに異常が表示されますが、トポロジには表示されません 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>異常なテストに関するアラートが表示されますが、NPM の損失と待機時間のグラフに高い値が表示されません。 何が異常であるかをどのように確認すればよいですか?
+NPM は、ソースと宛先の間のエンドツーエンドの待機時間が、それらの間の任意のパスのしきい値を超えた場合にアラートを生成します。 ネットワークによっては、同じソースと宛先を接続する複数のパスが存在する場合があります。 いずれかのパスに異常があると、NPM はアラートを生成します。 グラフに表示される損失と待機時間は、すべてのパスの平均値であるため、1 つのパスの正確な値を示すとは限りません。 しきい値を超えた場所を把握するには、アラートの "サブタイプ" 列を確認します。 パスによって問題が発生した場合は、サブタイプ値が NetworkPath (パフォーマンス モニター テストの場合)、EndpointPath (サービス接続モニター テストの場合)、および ExpressRoutePath (ExpressRotue モニター テストの場合) になります。 
+
+パスが異常であることを検索するサンプル クエリ:
+
+    NetworkMonitoring 
+    | where ( SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
+    | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
+
+### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>テストに異常が表示されるのに、トポロジには表示されないのはなぜですか 
 NPM は、エンドツーエンドの損失、待ち時間、およびトポロジをさまざまな間隔で監視します。 損失と待ち時間は 5 秒に 1 回測定され、3 分ごとに集計されます (Performance Monitor と Express Route Monitor の場合)。一方、トポロジは、10 分に 1 回 traceroute を使用して計算されます。 たとえば、3 時 44 分から 4 時 04 分の間では、トポロジは 3 回更新されます (3 時 44 分、3 時 54 分、4 時 04 分) が、損失と待ち時間は約 7 回更新されます (3 時 44 分、3 時 47 分、3 時 50 分、3 時 53 分、3 時 56 分、3 時 59 分、4 時 02 分)。 3 時 54 分に生成されるトポロジは、3 時 56 分、3 時 59 分、および 4 時 02 分に計算される損失と待ち時間に対してレンダリングされます。 たとえば、3 時 59 分に ER 回線の異常を示すアラートを受け取ったとします。 あなたは、NPM にログオンし、トポロジの時刻を 3 時 59 分に設定します。 NPM には、3 時 54 分に生成されたトポロジがレンダリングされます。 ネットワークの最後の既知のトポロジを理解するには、TimeProcessed (損失と待ち時間が計算された時刻) フィールドと TracerouteCompletedTime (トポロジが計算された時刻) を比較します。 
 
 ### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>NetworkMonitoring テーブルの E2EMedianLatency フィールドと AvgHopLatencyList フィールドの違いは何ですか

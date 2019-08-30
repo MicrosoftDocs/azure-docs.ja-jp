@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: mlearned
-ms.openlocfilehash: ef77b991461c5d9640cbab9d53f8393540f47c9b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613920"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812816"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) では、*kube-apiserver* や *kube-controller-ma
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] or [Azure portal][portal-quickstart] を使用して AKS クラスターを作成してください。 Azure Monitor ログは、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
+この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure portal][portal-quickstart] を使用して作成します。 Azure Monitor ログは、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
 
 ## <a name="enable-diagnostics-logs"></a>診断ログの有効化
 
@@ -35,19 +35,6 @@ Azure Monitor ログの有効化と管理は、Azure portal で行います。 A
 1. 既存のワークスペースを選択するか、新しいワークスペースを作成します。 ワークスペースを作成する場合は、ワークスペースの名前、リソース グループ、および場所を指定します。
 1. 使用可能なログの一覧から、有効にするログを選択します。 一般的なログには、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* が含まれます。 *kube-audit* および *cluster-autoscaler* などの追加のログを有効にすることが可能です。 Log Analytics ワークスペースが有効になった後、構成画面に戻り、収集されるログを変更することもできます。
 1. 準備ができたら **[保存]** を選択し、選択したログの収集を有効にします。
-
-> [!NOTE]
-> AKS では、機能フラグがサブスクリプション上で有効された後に作成またはアップグレードされたクラスターの監査ログのみがキャプチャされます。 *AKSAuditLog* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
->
-> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
->
-> status (状態) に *Registered (登録済み)* が表示されるまで待ちます。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
->
-> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
->
-> 準備ガできたら、[az provider register][az-provider-register] コマンドを利用し、AKS リソース プロバイダーの登録を更新します。
->
-> `az provider register --namespace Microsoft.ContainerService`
 
 次に示すポータルのスクリーン ショットは、 *[診断設定]* ウィンドウの例です。
 
@@ -131,9 +118,17 @@ AzureDiagnostics
 | *properties.pod*         | ログの取得元のポッド名 |
 | *properties.containerID* | このログの取得元の docker コンテナーの ID |
 
+## <a name="log-roles"></a>ログのロール
+
+| Role                     | 説明 |
+|--------------------------|-------------|
+| *aksService*             | コントロール プレーン操作に対する監査ログの表示名 (hcpService から) |
+| *masterclient*           | az aks get-credentials から取得する証明書 MasterClientCertificate に対する監査ログの表示名 |
+| *nodeclient*             | エージェント ノードによって使用される ClientCertificate に対する表示名 |
+
 ## <a name="next-steps"></a>次の手順
 
-この記事では、AKS クラスターの Kubernetes マスター コンポーネントのログを有効にして表示する方法について説明しました。 さらに詳細な監視方法やトラブルシューティング方法については、[Kubelet ログの表示][kubelet-logs]and [enable SSH node access][aks-ssh]に関する記事をご覧ください。
+この記事では、AKS クラスターの Kubernetes マスター コンポーネントのログを有効にして表示する方法について説明しました。 さらに詳細な監視方法やトラブルシューティング方法については、[Kubelet ログの表示][kubelet-logs]と [SSH ノード アクセスの有効化][aks-ssh]に関する記事をご覧ください。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

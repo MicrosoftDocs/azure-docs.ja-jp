@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2556887008ecbe081168d3fc81fa07b45cda4bcb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639602"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617362"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -130,7 +130,6 @@ VM ディスクの追加や交換など、VM 管理タスク中のバックア�
 既存の VM に復元する | ディスクの交換オプションを使用します。
 Azure Storage Service Encryption (SSE) に対して有効になっているストレージ アカウントを使用してディスクを復元する | サポートされていません。<br/><br/> SSE が有効になっていないアカウントに復元します。
 混合ストレージ アカウントに復元する | サポートされていません。<br/><br/> ストレージ アカウントの種類に基づいて、復元されるすべてのディスクは Premium または Standard になり、混合することはありません。
-ゾーン冗長ストレージ (ZRS) を使用してストレージ アカウントに復元する | サポートされています ([可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な、2019 年 1 月以降にバックアップされた VM)
 VM を可用性セットに直接復元する | マネージド ディスクでは、ディスクを復元し、テンプレートで可用性セット オプションを使用できます。<br/><br/> アンマネージド ディスクでは、サポートされていません。 アンマネージド ディスクでは、ディスクを復元し、可用性セットで VM を作成します。
 マネージド VM にアップグレードした後、アンマネージド VM のバックアップを復元する| サポートされています。<br/><br/> ディスクを復元し、その後、マネージド VM を作成できます。
 VM がマネージド ディスクに移行されたときよりも前の復元ポイントにその VM を復元する | サポートされています。<br/><br/> アンマネージド ディスク (既定) に復元し、復元したディスクをマネージド ディスクに変換し、そのマネージド ディスクを使用して VM を作成します。
@@ -151,15 +150,16 @@ VM サイズ |   少なくとも 2 つの CPU コアと 1 GB の RAM を備え�
 Azure に移行済みの VM をバックアップする  | サポートされています。<br/><br/> VM をバックアップするには、移行済みマシンに VM エージェントをインストールする必要があります。
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でデータとアプリケーションに整合性はありません。
 [[診断設定]](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
+ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、ゾーンが使用できない場合、復元は失敗します。
 
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
 **コンポーネント** | **サポート**
 --- | ---
-Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。 <br/><br/> 最大 4 TB のディスク サイズがサポートされます。
-データ ディスク サイズ | ディスクごとに最大で 4,095 GB。<br/><br/> コンテナーが最新バージョンの Azure Backup (別名: インスタント リストア) を実行している場合、最大 4 TB のディスク サイズがサポートされます。 [詳細情報](backup-instant-restore-capability.md)。  
-ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。 <br/><br/> Standard SSD は、コンテナーが最新バージョンの Azure VM バックアップ (別名: インスタント リストア) にアップグレードされている場合にサポートされます。 [詳細情報](backup-instant-restore-capability.md)。
+Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。 <br/><br/> 最大 4 TB のディスク サイズがサポートされます。<br/><br/>4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[こちらの記事](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)を参照してください。
+データ ディスク サイズ | ディスクごとに最大で 4,095 GB。<br/><br/>4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[こちらの記事](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)を参照してください。
+ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
 暗号化されたディスク | サポートされています。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。
 書き込みアクセラレータが有効になっているディスク | サポートされていません。<br/><br/> Azure Backup は、バックアップ中に書き込みアクセラレータが有効になっているディスクを自動的に除外します。 これらはバックアップされないため、VM の復旧ポイントからこれらのディスクを復元することはできません。
@@ -167,7 +167,6 @@ Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。
 共有ストレージ| クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバーを使用して VM をバックアップすることはお勧めできません。 バックアップ中に CSV ライターが失敗する可能性があります。 また、復元時に CSV ボリュームを含むディスクが起動しない可能性があります。
-
 
 
 ## <a name="vm-network-support"></a>VM ネットワークのサポート

@@ -27,6 +27,8 @@
           href: howto-aad-app-configuration.md
     - name: Azure Red Hat OpenShift クラスターでスタンドアロンの Prometheus をデプロイする
       href: howto-deploy-prometheus.md
+    - name: Azure Red Hat OpenShift クラスター内でプロジェクトを管理する
+      href: howto-manage-projects.md
 - name: リファレンス
   items:
     - name: Azure Red Hat OpenShift CLI

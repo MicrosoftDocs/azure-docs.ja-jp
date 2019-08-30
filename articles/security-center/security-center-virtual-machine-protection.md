@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 4e0a8473dfadc151ab861a4d749d9ff5e1622fb9
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: cb6025b47aec50121a0f96f7b6cba7ad726db291
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428392"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907968"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Security Center でのマシンとアプリケーションの保護
 Azure Security Center は、Azure リソース、Azure 以外のサーバー、および仮想マシンのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
@@ -238,7 +238,7 @@ Microsoft Monitoring Agent をインストールするには
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
 
 
-* [仮想マシンに関する Azure Security Center の推奨事項を理解する](security-center-virtual-machine-recommendations.md)
+* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center での ID とアクセスの監視](security-center-identity-access.md)
 * [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
 * [Azure Security Center での Azure SQL サービスの保護](security-center-sql-service-recommendations.md)

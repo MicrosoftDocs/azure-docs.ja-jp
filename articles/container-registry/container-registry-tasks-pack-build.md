@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: danlep
-ms.openlocfilehash: 5100418651e24d74ad747e8c436ffce53c899a92
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500907"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839900"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpacks を使用して、アプリからイメージをビルドしてプッシュする
 
@@ -44,11 +44,13 @@ Cloud Native Buildpacks を使用してコンテナー イメージをビルド�
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
 この例では、`1.0` タグを使用して `node-app` イメージをビルドし、これを *myregistry* コンテナー レジストリにプッシュします。 ここで、ターゲット レジストリ名はイメージ名の前に明示的に指定します。 指定しない場合、レジストリ URL がイメージ名の前に自動的に付加されます。
+
+`--pull` パラメーターでは、コマンドによって最新のビルダー イメージをプルすることを指定します。
 
 コマンドの出力には、イメージのビルドおよびプッシュの進行状況が表示されます。 
 
@@ -80,7 +82,7 @@ az acr pack build \
 
 この例では、コマンドの実行 ID でタグ付けされた `java-app` イメージをビルドし、これを *myregistry* コンテナー レジストリにプッシュします。
 
-`--pull` パラメーターは、コマンドが最新のビルダー イメージをプルすることを指定します。これが必要なのは、Heroku ビルダー イメージが ACR タスクによってキャッシュされていないためです。
+`--pull` パラメーターでは、コマンドによって最新のビルダー イメージをプルすることを指定します。
 
 コマンドの出力には、イメージのビルドおよびプッシュの進行状況が表示されます。 
 

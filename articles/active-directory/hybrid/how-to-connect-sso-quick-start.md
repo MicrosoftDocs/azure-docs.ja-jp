@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06566ab81b6af847a7eb174731105b7f43a7197f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 87764ed30182dc548fc3a260582174f121e27e24
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60242684"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965212"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -144,7 +144,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. **[ユーザーの構成]**  >  **[管理用テンプレート** **ポリシー]** > **> **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]**  >  **[イントラネット ゾーン]** の順に移動します。 次に、 **[スクリプトを介したステータス バーの更新を許可する]** を選択します。
+6. **[ユーザーの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]**  >  **[イントラネット ゾーン]** の順に移動します。 次に、 **[スクリプトを介したステータス バーの更新を許可する]** を選択します。
 
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso11.png)
 

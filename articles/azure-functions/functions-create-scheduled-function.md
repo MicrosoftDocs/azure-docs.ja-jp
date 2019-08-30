@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 7ac87000a6bbe7515106b42f57f9184396ed4168
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 13aa1f8cd643d579734cc603bbc81519a690fe59
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735681"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085862"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
@@ -57,7 +56,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
     | Setting | 推奨値 | Description |
     |---|---|---|
-    | **Name** | 既定値 | タイマーによってトリガーされる関数の名前を定義します。 |
+    | **Name** | Default | タイマーによってトリガーされる関数の名前を定義します。 |
     | **スケジュール** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](functions-bindings-timer.md#ncrontab-expressions)。 |
 
 4. **Create** をクリックしてください。 選択した言語で、毎分実行する関数が作成されます。

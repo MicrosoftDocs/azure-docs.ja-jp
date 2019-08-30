@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/30/2019
+ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 7ee7d6434058da63883f8db0eae6a3f91c778338
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325127"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742320"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する
 
@@ -39,7 +39,7 @@ Azure IaaS VM 上またはオンプレミスの SQL Server。| [フェールオ�
 Azure IaaS VM 上またはオンプレミスの SQL Server。| [データベース ミラーリング (高パフォーマンス モード)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | サービスを強制するためにかかる時間。この場合、ミラー サーバーがウォーム スタンバイ サーバーとして使用されます。 | レプリケーションは非同期です。 ミラー データベースは、プリンシパル データベースよりやや遅れることがあります。 この遅れは通常、短時間です。 ただし、プリンシパルまたはミラー サーバーのシステムの負荷が高い場合は長くなることがあります。<br/><br/>ログ配布がデータベース ミラーリングの補足になる場合があります。 これは、非同期データベース ミラーリングの適切な代替手段になります。
 Azure 上のサービスとしてのプラットフォーム (PaaS) としての SQL。<br/><br/>このデプロイの種類には、エラスティック プールと Azure SQL Database サーバーが含まれます。 | アクティブ geo レプリケーション | フェールオーバーがトリガーされてから 30 秒。<br/><br/>セカンダリ データベースのいずれかに対してフェールオーバーがアクティブ化されると、その他のすべてのセカンダリが新しいプライマリに自動的にリンクされます。 | 5 秒の RPO。<br/><br/>アクティブ geo レプリケーションは、SQL Server の Always On テクノロジを使用します。 これは、スナップショット分離を使用して、プライマリ データベース上のコミットされたトランザクションをセカンダリ データベースに非同期的にレプリケートします。<br/><br/>セカンダリ データには部分トランザクションが含まれないことが保証されます。
 Azure 上のアクティブ geo レプリケーションが構成された PaaS としての SQL。<br/><br/>このデプロイの種類には、SQL Database マネージド インスタンス、エラスティック プール、および SQL Database サーバーが含まれます。 | 自動フェールオーバー グループ | 1 時間の RTO。 | 5 秒の RPO。<br/><br/>自動フェールオーバー グループは、アクティブ geo レプリケーションの上にグループ セマンティクスを提供します。 ただし、同じ非同期レプリケーション メカニズムが使用されます。
-Azure IaaS VM 上またはオンプレミスの SQL Server。| Azure Site Recovery を使用したレプリケーション | RTO は通常 15 分未満です。 詳細については、[Site Recovery によって提供される RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/) に関するページを参照してください。 | アプリケーション整合性では 1 時間、クラッシュ整合性では 5 分です。
+Azure IaaS VM 上またはオンプレミスの SQL Server。| Azure Site Recovery を使用したレプリケーション | RTO は通常 15 分未満です。 詳細については、[Site Recovery によって提供される RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/) に関するページを参照してください。 | アプリケーション整合性では 1 時間、クラッシュ整合性では 5 分です。 より低い RPO を求めている場合は、別の BCDR テクノロジを使用してください。
 
 > [!NOTE]
 > Site Recovery を使用して SQL ワークロードを保護する場合のいくつかの重要な考慮事項。

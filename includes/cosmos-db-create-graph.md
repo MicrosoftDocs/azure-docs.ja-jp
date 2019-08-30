@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: a24159a482c55496bb1e6031be951196258a6796
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 837231ca07abcfdbd6ce932bb24bd890d91506a8
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565468"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541503"
 ---
 Azure Portal でデータ エクスプローラー ツールを使用してグラフ データベースを作成できるようになりました。 
 
-1. **[データ エクスプローラー]**  >  **[New Graph]\(新しいグラフ\)** をクリックします。
+1. **[データ エクスプローラー]** 、 **[New Graph]\(新しいグラフ\)** の順に選択します。
 
     **[グラフの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
 
@@ -32,4 +32,4 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     グラフ ID|sample-graph|新しいコレクションの名前として「*sample-graph*」と入力します。 グラフ名の文字要件はデータベース ID と同じです。
     パーティション キー| /pk |すべての Cosmos DB アカウントには、水平方向にスケーリングするために、パーティション キーが必要です。 適切なパーティション キーを選択する方法については、[グラフ データのパーティション分割に関する記事](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning)を確認してください。
 
-3. フォームに入力したら、 **[OK]** をクリックします。
+3. フォームに入力したら、 **[OK]** を選択します。

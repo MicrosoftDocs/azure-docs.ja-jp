@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: c53e2c383739b717a5ce94c872b4616bbd1b3f26
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9ae21e2bf71789d0b0dd19e3dd7a65ad10fae241
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639942"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018968"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -102,10 +102,10 @@ ms.locfileid: "68639942"
 
 ### <a name="disable-https-certificate-validation"></a>HTTPS 証明書の検証の無効化
 
-組織内にセキュリティ保護された境界があり、VMware サーバーと Azure Backup Server マシンの間で HTTPS プロトコルを使いたくない場合は、次のように HTTPS を無効にします。
+組織内にセキュリティ保護された境界があり、VMware サーバーと Azure Backup Server マシンの間で HTTPS プロトコルを使いたくない場合は、次のように HTTPS を無効にします。 
 1. 以下のテキストをコピーして、.txt ファイルに貼り付けます。
 
-      ```
+      ```text
       Windows Registry Editor Version 5.00
       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
       "IgnoreCertificateValidation"=dword:00000001
@@ -289,7 +289,7 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 1. **[グループ メンバーの選択]** で、バックアップする VM (または VM フォルダー) を選択します。 その後、 **[次へ]** をクリックします。
 
     - フォルダーを選択すると、そのフォルダー内の VM またはフォルダーもバックアップ対象に選択されます。 バックアップしたくないフォルダーや VM はオフにすることができます。
-1. VM またはフォルダーが既にバックアップされている場合、それを選択することはできません。 これにより、1 つの VM に足して重複する復旧ポイントが作成されないことが保証されます。 。
+1. VM またはフォルダーが既にバックアップされている場合、それを選択することはできません。 これにより、1 つの VM に足して重複する復旧ポイントが作成されないことが保証されます。
 
      ![グループ メンバーの選択](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 

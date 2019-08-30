@@ -1,15 +1,15 @@
 ---
-author: davidmu1
+author: mmacy
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 03/19/2019
-ms.author: davidmu
-ms.openlocfilehash: 0a913c0e94f2cf00ff9ff4ba6f4a27198c9550b9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 08/08/2019
+ms.author: marsma
+ms.openlocfilehash: adca65cf1cdfff51df2ff04d7c43aebafc119972
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181758"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622127"
 ---
 > [!NOTE]
 > この機能はパブリック プレビュー段階にあります。

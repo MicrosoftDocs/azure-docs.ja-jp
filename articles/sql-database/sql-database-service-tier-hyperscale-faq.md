@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 70ba6c5507cf31732d679a61c3e185a520b4c5f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566675"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515361"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -44,7 +44,7 @@ ms.locfileid: "68566675"
 - Business Critical サービス レベルは、IO 待ち時間が最優先されるビジネス ワークロードに適しています。
 
 | | リソースの種類 | 汎用 |  ハイパースケール | Business Critical |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | **最適な用途** |All|  ほとんどのビジネス ワークロード。 予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。 | 大きなデータ容量要件のデータ アプリケーション、および柔軟性の高いストレージの自動スケーリングとコンピューティングのスケーリングの機能。 | トランザクション レートが高く、待ち時間 IO が最低のOLTP アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|
 |  **リソースの種類** ||単一データベース/エラスティック プール/マネージド インスタンス | 単一データベース | 単一データベース/エラスティック プール/マネージド インスタンス |
 | **コンピューティング サイズ**|単一データベース/エラスティック プール * | 1 - 80 の仮想コア | 1 - 80 の仮想コア * | 1 - 80 の仮想コア |
@@ -55,7 +55,7 @@ ms.locfileid: "68566675"
 | **IO スループット** | 単一データベース ** | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。 | 5000 IOPS (最大 200,000 IOPS)|
 | | マネージド インスタンス | ファイル サイズに依存 | 該当なし | Managed Instance:ファイル サイズに依存|
 |**可用性**|All|1 レプリカ、読み取りスケールなし、ローカル キャッシュなし | 複数のレプリカ、最大 15 の読み取りスケール、部分的ローカル キャッシュ | 3 レプリカ、1 読み取りスケール、ゾーン冗長 HA、完全ローカル キャッシュ |
-|**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 から 35 日 (既定では 7 日)、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
+|**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 日、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
 
 \*エラスティック プールはハイパースケール サービス レベルではサポートされていません。
 
@@ -131,7 +131,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>メモリ集中型ワークロードのために RAM を増やしてコンピューティングをプロビジョニングできるか
 
-いいえ。 RAM を増やすには、コンピューティング サイズをアップグレードして上げる必要があります。 詳しくは、[ハイパースケールのストレージ サイズおよびコンピューティング サイズ](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier)をご覧ください。
+いいえ。 RAM を増やすには、コンピューティング サイズをアップグレードして上げる必要があります。 詳しくは、[ハイパースケールのストレージ サイズおよびコンピューティング サイズ](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute)をご覧ください。
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>サイズが違う複数の計算ノードをプロビジョニングできるか
 

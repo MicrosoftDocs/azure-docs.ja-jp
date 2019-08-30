@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 05/21/2019
-ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.date: 08/06/2019
+ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772749"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856210"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースとは
 
@@ -65,6 +65,9 @@ ms.locfileid: "68772749"
 + 実験、パイプライン、モデル、デプロイなどの機械学習の成果物を表示します。
 + モデルを追跡および監視します。
 
+
+
+
 ## <a name="workspace-management"></a>ワークスペースの管理
 
 次のワークスペース管理タスクを実行することもできます。
@@ -76,7 +79,14 @@ ms.locfileid: "68772749"
 | ワークスペース アクセスの管理    | **&check;**   | |  **&check;**    |
 | ノートブック VM を作成する | **&check;**   | |     |
 
-[ワークスペースを作成](setup-create-workspace.md)してサービスの使用を開始します。
+### <a name='create-workspace'></a> ワークスペースを作成する
+
+ワークスペースは、さまざまな方法で作成できます。
+
+* ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md) を使用します。
+* Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) を使用します。
+* 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
+* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning)を使用します。
 
 ## <a name="resources"></a> 関連するリソース
 
@@ -95,6 +105,6 @@ ms.locfileid: "68772749"
 Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
 
 + [Azure Machine Learning service の概要](overview-what-is-azure-ml.md)
-+ [ワークスペースを作成する](setup-create-workspace.md)
++ [ワークスペースを作成する](how-to-manage-workspace.md)
 + [ワークスペースを管理する](how-to-manage-workspace.md)
 + [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88e3c0514861da0bd11acffd26cced54717e4418
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6f41263bfb930d3aab41fd8ace86cd6afb0ace26
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478483"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850585"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -271,7 +271,7 @@ sudo gpg --generate-key
 
 GPG に従って操作すると、キー ペアを作成できます。 名前、メール アドレス、有効期限、パスフレーズを指定して、生成されるキーに対してマシン上のエントロピが十分になるまで待つ必要があります。
 
-GPG ディレクトリは sudo を使って生成されるため、その所有者を `nxautomation` に変更する必要があります。 
+GPG ディレクトリは sudo を使って生成されるため、その所有者を `nxautomation` に変更する必要があります。
 
 次のコマンドを実行して、所有者を変更します。
 
@@ -312,3 +312,4 @@ gpg –-clear-sign <runbook name>
 * Runbook を開始するために使用できるさまざまな方法の詳細については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照して下さい。
 * テキスト エディターを使用して、Azure Automation で PowerShell Runbook を操作するためのさまざまな方法については、[Azure Automation での Runbook の編集](automation-edit-textual-runbook.md)に関する記事を参照してください。
 * Runbook が正常に完了しない場合は、[Runbook の実行エラー](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)に関するトラブルシューティング ガイドを参照してください。
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/en-us/powershell/scripting/overview)に関するページを参照してください。

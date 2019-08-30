@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 144a991eb911fa6a337b6711515bd5760456fc10
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787693"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996385"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
 Azure Data Factory のデータのコピー ツールを使うと、通常はエンド ツー エンドのデータ統合シナリオの最初の手順である、Data Lake へのデータの取り込みプロセスが容易になり、最適化されます。  時間が短縮され、Azure Data Factory を使って初めてデータ ソースからデータを取り込むときに特に効果があります。 このツールには次のような利点があります。
@@ -95,7 +95,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 
 ![ファイルまたはフォルダーのフィルター処理](./media/copy-data-tool/filter-file-or-folder.png)
 
-データのコピー ツールでは、式、関数、システム変数でパラメーターを生成し、パイプラインを作成するときにそれを使って {year}、{month}、{day}、{hour}、{minute} を表すことができます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関する記事をご覧ください。
+データのコピー ツールでは、式、関数、システム変数でパラメーターを生成し、パイプラインを作成するときにそれを使って {year}、{month}、{day}、{hour}、{minute} を表すことができます。
 
 ## <a name="scheduling-options"></a>スケジュール オプション
 コピー操作は 1 回だけ実行することも、スケジュールに従って (毎時、毎日など) 実行することもできます。 これらのオプションは、オンプレミス、クラウド、ローカル デスクトップといった異なる環境のコネクタに使うことができます。 

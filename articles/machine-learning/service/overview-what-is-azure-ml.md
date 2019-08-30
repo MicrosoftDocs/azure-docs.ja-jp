@@ -1,6 +1,5 @@
 ---
-title: 概要
-titleSuffix: Azure Machine Learning service
+title: Azure Machine Learning service とは
 description: Azure Machine Learning service の概要。これは、高度な分析アプリケーションの開発、実験、デプロイをクラウド規模で行うプロフェッショナルなデータ サイエンティスト向けの統合されたエンドツーエンドのデータ サイエンス ソリューションです。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828109"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018243"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
@@ -50,15 +49,15 @@ Azure Machine Learning service には、機械学習モデルのデータの準�
 
 SDK を使用して、[モデルのトレーニングと調整を自動化](tutorial-auto-train-models.md)することもできます。
 
-### <a name="code-free--low-code-experience"></a>コーディングなし/少量のコードのエクスペリエンス
+### <a name="ui-based-low-code-experience"></a>UI ベースのローコード エクスペリエンス
 
 コーディング不要のトレーニングの場合は、以下を試してください。
 
-+ ドラッグ アンド ドロップの実験およびデプロイ用のビジュアル インターフェイス
++ 使いやすいインターフェイスで[自動化された ML 実験](tutorial-first-experiment-automated-ml.md)を作成する。
++ [ビジュアル インターフェイスでのドラッグ アンド ドロップの実験](ui-tutorial-automobile-price-train-score.md)。
+  ![Azure Machine Learning service 用のビジュアル インターフェイス](media/overview-what-is-azure-ml/visual-interface.png)
 
-    ![Azure Machine Learning service 用のビジュアル インターフェイス](media/overview-what-is-azure-ml/visual-interface.png)
 
-+ 自動化された ML 実験用の Azure portal オプション
 
 ### <a name="operationalization-mlops"></a>運用化 (MLOps)
 
@@ -106,7 +105,7 @@ Azure サービスを使用するクレジットを取得できます。 この�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Machine Learning service ワークスペースを作成](setup-create-workspace.md)します。
+- [Machine Learning service ワークスペースを作成](how-to-manage-workspace.md)します。
 
 - 詳細なチュートリアルに従ってください。
   + [Azure Machine Learning service でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)

@@ -7,13 +7,13 @@ services: time-series-insights
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 07/02/2019
-ms.openlocfilehash: a463e3cf475909c34054717460dc10dbba4ad8f0
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 08/08/2019
+ms.openlocfilehash: ed5cd9424630a90b989b8a4d76959961f82a53ec
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543934"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935248"
 ---
 > [!IMPORTANT]
 > * 従来の **[Azure Active Director]**  >  **[アプリの登録 (レガシー)]** ブレードは、2019 年 5 月に新しい **[Azure Active Directory]**  >  **[アプリの登録]** ブレードに差し替えられています。
@@ -51,6 +51,15 @@ ms.locfileid: "67543934"
    [![新しいクライアント シークレットを生成する](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
    **[Save]** をクリックします。
+
+1. **[証明書とシークレット]** を選択し、 **[新しいクライアント シークレット]** を選択して、クライアントがその ID を証明する際に使用できるアプリケーション パスワードを作成します。
+
+   [![新しいクライアント シークレットを生成する](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
+
+   クライアント シークレット パスワードが表示されます。 普段使用しているテキスト エディターにキーをコピーします。
+
+   > [!NOTE]
+   > 代わりに証明書をインポートすることもできます。 セキュリティを強化するには、証明書をお勧めします。 証明書を使用する場合は、 **[証明書のアップロード]** を選択してください。
 
 1. お使いの Azure Active Directory アプリを Azure Time Series Insights に関連付けます。 **[API のアクセス許可]**  >  **[アクセス許可の追加]**  >  **[所属する組織で使用している API]** を選択します。 
 

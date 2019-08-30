@@ -194,6 +194,8 @@
       items:
         - name: Azure ポータル
           href: howto-auto-grow-storage-portal.md
+        - name: Azure ポータル
+          href: howto-auto-grow-storage-cli.md
     - name: サーバー ログへのアクセス
       items:
         - name: Azure ポータル

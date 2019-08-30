@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: b0057815bee46d6708886302ff5b598c89b47e8f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335735"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68964123"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -121,6 +121,12 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
   ...
 ]
 ```
+
+**削除されたデバイスに対する保留中のフィードバック**
+
+デバイスが削除されると、保留中のフィードバックも削除されます。 デバイスのフィードバックはバッチで送信されます。 デバイスがメッセージの受信を確認してから次のフィードバック バッチが準備されるまでの短い期間 (多くの場合、1 秒未満) の間にデバイスが削除された場合、フィードバックは発生しません。
+
+デバイスを削除する前に、保留中のフィードバックが到着するまでしばらく待つことによって、この動作に対処できます。 デバイスが削除されると、関連するメッセージ フィードバックは失われたと見なされます。
 
 ## <a name="cloud-to-device-configuration-options"></a>C2D の構成オプション
 

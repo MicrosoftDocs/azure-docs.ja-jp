@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 744c954c9192f75489911f09a1ef7195c5bbd1fa
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: d564cc16a1261cdf71d783ce9f40e577177ff74c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689366"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954799"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 この記事では、Azure Backup を使用して SQL Server データベースのバックアップを構成する手順について説明します。
@@ -43,12 +43,12 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     ![Select SQL DB](./media/backup-azure-backup-sql/pg-databases.png)
 6. 保護グループの名前を指定し、 **[オンライン保護を利用する]** チェック ボックスをオンにします。
 
-    ![Data Protection Method - short term disk & Online Azure](./media/backup-azure-backup-sql/pg-name.png)
+    ![Data Protection Method - short-term disk & Online Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. **[短期的な目標値の指定]** 画面で、ディスクへのバックアップ ポイントを作成するために必要な入力を含めます。
 
     ここで、 **[保有期間の範囲]** が *5 日間*、 **[同期の頻度]** (バックアップが実行される頻度) が *15 分*ごとに設定されていることを確認します。 **[高速完全バックアップ]** は *午後 8 時 00 分*に設定されています。
 
-    ![Short term goals](./media/backup-azure-backup-sql/pg-shortterm.png)
+    ![短期的な目標値](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
    > (画面の入力に従って) 毎日午後 8 時 00 分に、前日午後 8 時 00 分のバックアップ ポイントから変更されているデータを転送することにより、バックアップ ポイントが作成されます。 このプロセスは、 **高速完全バックアップ**と呼ばれます。 トランザクション ログは 15 分ごとに同期されますが、午後 9 時 00 分にデータベースを回復する必要がある場合は、最新の高速完全バックアップ ポイント (この例では午後 8 時) からログを再生することでポイントが作成されます。

@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/27/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 325915aae43c905236910382f650730a6daa127a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ff1bd3c6e1f3cf98e92e10eecf972681ed6c7819
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595336"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816182"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple のセキュリティの概要
 
@@ -29,7 +29,7 @@ Azure のインフラストラクチャ セキュリティでは、たとえば�
 
 ### <a name="datacenter-security"></a>データセンターのセキュリティ 
 
-Microsoft には、Azure をサポートしている物理的な施設の設計、建設、および運営を一手に引き受けている部門があります。 このチームは、最先端の物理セキュリティの維持に注力しています。 物理的なセキュリティの詳細については、「[Azure の施設、建物、および物理上のセキュリティ](https://docs.microsoft.com/azure/security/azure-physical-security)」を参照してください。
+Microsoft には、Azure をサポートしている物理的な施設の設計、建設、および運営を一手に引き受けている部門があります。 このチームは、最先端の物理セキュリティの維持に注力しています。 物理的なセキュリティの詳細については、「[Azure の施設、建物、および物理上のセキュリティ](https://docs.microsoft.com/azure/security/fundamentals/physical-security )」を参照してください。
 
 ### <a name="equipment-location"></a>機器の場所
 

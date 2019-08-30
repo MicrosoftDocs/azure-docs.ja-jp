@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: b1a7e64cf6b85b517bc027d6541d63c9be729734
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80d3eaaf7e588766d62f5e5885d75e61c590970e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773980"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881196"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure データ エクスプローラーのクエリを記述する
 
@@ -146,7 +146,7 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[**top**](https://docs.microsoft.com/azure/kusto/query/topoperator):指定の列で並べ替えられたレコードが先頭から  *N*  個まで返されます。
+[**top**](https://docs.microsoft.com/azure/kusto/query/topoperator):指定された列で並べ替えられた、先頭の *N* 個のレコードを返します。
 
 次のクエリでは上と同じ結果が返されますが、演算子が 1 つ少なくなっています。
 
@@ -317,7 +317,7 @@ MyData
 
 このクエリでは **let** ステートメントが使用されますが、このステートメントにより名前 (この場合、`MyData`) が式にバインドされます。 **let** ステートメントが現れる残りのスコープについては (グローバル スコープまたは関数本体のスコープ)、この名前を使用してそのバインドされている値を参照できます。
 
-### <a name="parsejson"></a>parse_json()
+### <a name="parse_json"></a>parse_json()
 
 [**parse_json()** ](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction):文字列が JSON 値として解釈され、値が dynamic として返されます。 複合 JSON オブジェクトの複数の要素を抽出する必要がある場合、**extractjson()** 関数の使用より優れています。
 
@@ -567,9 +567,9 @@ StormEvents
 | summarize Sources = dcountif(Source, DamageProperty < 5000) by State
 ```
 
-### <a name="dcounthll"></a>dcount_hll()
+### <a name="dcount_hll"></a>dcount_hll()
 
-[**dcount_hll()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction):( [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)  または  [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction) によって生成される) HyperLogLog 結果から  **dcount**  が計算されます。
+[**dcount_hll()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction):([**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) または [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction) によって生成される) HyperLogLog 結果から **dcount** が計算されます。
 
 次のクエリでは、HLL アルゴリズムを使用してカウントが生成されます。
 
@@ -582,7 +582,7 @@ StormEvents
 | project dcount_hll(hllMerged)
 ```
 
-### <a name="argmax"></a>arg_max()
+### <a name="arg_max"></a>arg_max()
 
 [**arg_max()** ](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction):グループ内で式を最大化する行を見つけ、別の式の値を返します (* の場合、式全体が返されます)。
 
@@ -631,7 +631,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction):式により定義される人口について、指定の [**最も近いランクのパーセンタイル**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) に対する見積もりを返します。 精度は、パーセンタイル リージョンの人口密度によって異なります。  [**summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) 内の集計というコンテキストでのみ使用できます。
+[**percentiles()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction):式により定義される人口について、指定の[**最も近いランクのパーセンタイル**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)に対する見積もりを返します。 精度は、パーセンタイル リージョンの人口密度によって異なります。 [**summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) 内の集計というコンテキストでのみ使用できます。
 
 次のクエリでは、嵐の継続時間に対してパーセンタイルが計算されます。
 
@@ -684,7 +684,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**join**](https://docs.microsoft.com/azure/kusto/query/joinoperator):各テーブルの指定の列で値を照合することで、2 つのテーブルの行を結合し、新しいテーブルを形成します。 Kusto は、**fullouter**、 **inner**、 **innerunique**、 **leftanti**、 **leftantisemi**、**leftouter**、 **leftsemi**、 **rightanti**、 **rightantisemi**、 **rightouter**、 **rightsemi** というすべての結合型に対応しています。
+[**join**](https://docs.microsoft.com/azure/kusto/query/joinoperator):各テーブルの指定の列で値を照合することで、2 つのテーブルの行を結合し、新しいテーブルを形成します。 Kusto では、**fullouter**、**inner**、**innerunique**、**leftanti**、**leftantisemi**、**leftouter**、**leftsemi**、**rightanti**、**rightantisemi**、**rightouter**、**rightsemi** というすべての結合型に対応しています。
 
 次の例では、内部結合を使用して 2 つのテーブルが結合されます。
 
@@ -754,7 +754,7 @@ cluster("MyCluster").database("Wiki").PageViews
 
 このセクションには、Kusto ではいかに簡単にユーザーの行動を分析できるかということを示す要素とクエリが含まれています。
 
-### <a name="activitycountsmetrics-plugin"></a>activity_counts_metrics プラグイン
+### <a name="activity_counts_metrics-plugin"></a>activity_counts_metrics プラグイン
 
 [**activity_counts_metrics プラグイン**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin):有用なアクティビティ指標が計算されます (合計カウント値、個別カウント値、新しい値の個別カウント、集計個別カウント)。 指標は時間枠ごとに計算され、比較され、前のすべての時間枠と共に集計されます。
 
@@ -788,7 +788,7 @@ T
 window)
 ```
 
-### <a name="activityengagement-plugin"></a>activity_engagement プラグイン
+### <a name="activity_engagement-plugin"></a>activity_engagement プラグイン
 
 [**activity_engagement プラグイン**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin):変化するタイムライン ウィンドウを対象に、ID 列に基づいてアクティビティ エンゲージメント率が計算されます。 **activity_engagement プラグイン**は、DAU、WAU、MAU (毎日、毎週、毎月のアクティブ ユーザー) の計算に利用できます。
 
@@ -814,7 +814,7 @@ range _day from _start to _end step 1d
 > [!TIP]
 > DAU/MAU を計算するとき、エンド データと移動ウィンドウ期間 (OuterActivityWindow) を変更します。
 
-### <a name="activitymetrics-plugin"></a>activity_metrics プラグイン
+### <a name="activity_metrics-plugin"></a>activity_metrics プラグイン
 
 [**activity_metrics プラグイン**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin):現在の期間と前の期間に基づいて、有用なアクティビティ指標 (個別カウント値、新しい値の個別カウント、保有率、解約率) を計算し、比較します。
 
@@ -839,9 +839,9 @@ range _day from _start to _end step 1d
 | render timechart
 ```
 
-### <a name="newactivitymetrics-plugin"></a>new_activity_metrics プラグイン
+### <a name="new_activity_metrics-plugin"></a>new_activity_metrics プラグイン
 
-[**new_activity_metrics プラグイン**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin):新しいユーザーの集合に対して有用なアクティビティ指標 (個別カウント値、新しい値の個別カウント、保有率、解約率) を計算し、比較します。 このプラグインの概念は  [**activity_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin) に似ていますが、新しいユーザーに焦点が置かれます。
+[**new_activity_metrics プラグイン**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin):新しいユーザーの集合に対して有用なアクティビティ指標 (個別カウント値、新しい値の個別カウント、保有率、解約率) を計算し、比較します。 このプラグインの概念は [**activity_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin) に似ていますが、新しいユーザーに焦点が置かれます。
 
 次のクエリでは、新しいユーザーの集合 (最初の週に現れたユーザー) を対象に、週単位の保有率と解約率が計算されます。
 
@@ -861,7 +861,7 @@ range Day from _start to _end step 1d
 | project from_Day, to_Day, retention_rate, churn_rate
 ```
 
-### <a name="sessioncount-plugin"></a>session_count プラグイン
+### <a name="session_count-plugin"></a>session_count プラグイン
 
 [**session_count プラグイン**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin):あるタイムラインを対象に ID 列に基づいてセッションの数が計算されます。
 
@@ -881,7 +881,7 @@ _data
 | render linechart
 ```
 
-### <a name="funnelsequence-plugin"></a>funnel_sequence プラグイン
+### <a name="funnel_sequence-plugin"></a>funnel_sequence プラグイン
 
 [**funnel_sequence プラグイン**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin):ある一連の状態を経たユーザーの個別カウントが計算されます。その連続につながった、あるいはその連続が後に続いた前の状態と次の状態の分布が表示されます。
 
@@ -897,11 +897,11 @@ StormEvents
 | evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, dynamic(['Tornado']))
 ```
 
-### <a name="funnelsequencecompletion-plugin"></a>funnel_sequence_completion プラグイン
+### <a name="funnel_sequence_completion-plugin"></a>funnel_sequence_completion プラグイン
 
 [**funnel_sequence_completion プラグイン**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin):異なる期間内で完了したシーケンス ステップのフィルターが計算されます。
 
-次のクエリでは、1 時間、4 時間、1 日 (`[1h, 4h, 1d]`) という "全体" 時間を対象に、 `Hail -> Tornado -> Thunderstorm -> Wind` という順序の完了したフィルターが確認されます。
+次のクエリでは、1 時間、4 時間、1 日 (`[1h, 4h, 1d]`) という "全体" 時間を対象に、`Hail -> Tornado -> Thunderstorm -> Wind` という順序の完了したフィルターが確認されます。
 
 **\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA) **\]**
 
@@ -917,7 +917,7 @@ StormEvents
 
 ## <a name="functions"></a>Functions
 
-このセクションでは、[**関数**](https://docs.microsoft.com/azure/kusto/query/functions)を扱います。サーバー上に保管される再利用可能なクエリです。 関数はクエリや他の関数で呼び出すことができます (再帰関数はサポートされていません)。
+このセクションでは、[**関数**](https://docs.microsoft.com/azure/kusto/query/functions)を扱います。サーバー上に保管される再利用可能なクエリです。 関数はクエリや他の関数で呼び出すことができます (再帰関数はサポートされていません)。
 
 > [!NOTE]
 > ヘルプ センターで関数を作成することはできません。読み取り専用です。 この部分には独自のテスト クラスターを使用します。

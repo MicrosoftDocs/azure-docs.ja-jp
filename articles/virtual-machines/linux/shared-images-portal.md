@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: ea0a5961aff5935efea3eb98fd53904ce864ec2c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8be4890f01ae2c0d893bb7c45f29c6f8178844f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708907"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082110"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Azure portal を使用して共有イメージ ギャラリーを作成する
 

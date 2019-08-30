@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
-ms.openlocfilehash: b06e3366224b90899dd3f9f9439edf897de82794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 563416418b3f387f103fddc88b3ba9ad4c93fdd4
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65524057"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030796"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp Files のコスト モデル 
 
@@ -27,7 +27,7 @@ Azure NetApp Files のコスト モデルを理解すると、サービスから
 
 ## <a name="calculation-of-capacity-consumption"></a>容量消費の計算
 
-Azure NetApp Files は、プロビジョニングされたストレージ容量に対して課金されます。  プロビジョニングされる容量は、容量プールを作成することによって割り当てられます。  容量プールは、プロビジョニングされた GiB/月あたりの料金に基づいて、1 時間単位で課金されます。 1 つの容量プールの最小サイズは 4 TiB であり、容量プールを後から 1 TiB 単位で拡張することができます。 ボリュームは容量プール内に作成されます。  各ボリュームには、プールでプロビジョニングされた容量からデクリメントするクォータが割り当てられます。 ボリュームに割り当てることができるクォータは、最小 100 GiB から最大 92 TiB の範囲です。  
+Azure NetApp Files は、プロビジョニングされたストレージ容量に対して課金されます。  プロビジョニングされる容量は、容量プールを作成することによって割り当てられます。  容量プールは、プロビジョニングされた GiB/月あたりの料金に基づいて、1 時間単位で課金されます。 1 つの容量プールの最小サイズは 4 TiB であり、容量プールを後から 1 TiB 単位で拡張することができます。 ボリュームは容量プール内に作成されます。  各ボリュームには、プールでプロビジョニングされた容量からデクリメントするクォータが割り当てられます。 ボリュームに割り当てることができるクォータは、最小 100 GiB から最大 100 TiB の範囲です。  
 
 アクティブなボリュームでは、クォータに対する容量消費は論理 (有効) 容量に基づきます。
 

@@ -1,21 +1,21 @@
 ---
 title: Azure Active Directory (Azure AD) 認証
 titleSuffix: Azure Cognitive Services
-description: Immersive Reader SDK のリファレンス
+description: この記事では、カスタム サブドメインを含む新しいイマーシブ リーダー リソースを作成した後、Azure テナントで Azure AD を構成する方法について説明します。
 services: cognitive-services
 author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688788"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990141"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>イマーシブ リーダー サービスで Azure Active Directory (Azure AD) 認証を使用する
 
@@ -134,5 +134,7 @@ ms.locfileid: "68688788"
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル](./tutorial.md)を見て、Immersive Reader SDK で他にできることを確認する
+* [Node.js チュートリアル](./tutorial-nodejs.md)で、Node.js と Immersive Reader SDK を使用して他にできることを確認する
+* [Python チュートリアル](./tutorial-python.md)で、Python と Immersive Reader SDK を使用して他にできることを確認する
+* [Swift チュートリアル](./tutorial-ios-picture-immersive-reader.md)で、Swift と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する

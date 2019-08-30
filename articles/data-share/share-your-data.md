@@ -50,7 +50,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | EnableAdfsAuthentication | *datashareacount* | Data Share アカウントの名前を指定します。 |
+    | Name | *datashareacount* | Data Share アカウントの名前を指定します。 |
     | Subscription | 該当するサブスクリプション | Data Share アカウントに使う Azure サブスクリプションを選択します。|
     | Resource group | *test-resource-group* | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
     | Location | *米国東部 2* | Data Share アカウントのリージョンを選択します。

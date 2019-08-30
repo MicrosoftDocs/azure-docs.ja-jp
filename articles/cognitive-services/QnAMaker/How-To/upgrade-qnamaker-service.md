@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2fdbb245f838d92e84d1247faa610a2f1a66c532
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439765"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640482"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>QnA Maker サービスの共有またはアップグレード
 リソースの管理を強化するために、QnA Maker サービスを共有するかアップグレードします。 
@@ -52,7 +52,7 @@ QnA Maker 管理 SKU をアップグレードするには、次の手順に従�
 
  ナレッジ ベースでクライアント アプリの要求をより多く提供する必要がある場合は、アプリ サービスの価格レベルをアップグレードします。
 
-App Service は、[スケールアップ](https://docs.microsoft.com/azure/app-service/web-sites-scale)またはスケールダウンすることができます。
+App Service は、[スケールアップ](https://docs.microsoft.com/azure/app-service/manage-scale-up)またはスケールダウンすることができます。
 
 1. Azure portal で App Service リソースに移動し、必要に応じて **[スケールアップ]** と **[スケールダウン]** のどちらかのオプションを選択します。
 

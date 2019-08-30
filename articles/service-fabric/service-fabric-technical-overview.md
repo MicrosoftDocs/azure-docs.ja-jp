@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: 085d5e560eec090ab76c263f8f93140786f2d734
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82672114722db843fcb5d0bdff28cf14cddb1aef
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543208"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68811930"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  [Service Fabric クラスターは任意の場所でホスト](service-fabric-deploy-anywhere.md)できます。具体的には、Azure、オンプレミスのデータセンター、任意のクラウド プロバイダー上などです。  Service Fabric は [Azure Service Fabric Mesh](/azure/service-fabric-mesh) の動力となるオーケストレーターです。 あらゆるフレームワークを利用してサービスを記述したり、複数の環境からアプリケーションを実行する場所を選択したりできます。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
@@ -142,7 +142,7 @@ Service Fabric リソースは、アプリケーション、サービス、ネ�
 
 **コンテナー**:Service Fabric では、Linux での Docker コンテナーのデプロイと、Windows Server 2016 での Windows Server コンテナーのデプロイをサポートしています。また、Hyper-V の分離モードもサポートしています。 Service Fabric の [アプリケーション モデル](service-fabric-application-model.md)では、コンテナーは複数のサービス レプリカが配置されたアプリケーション ホストを表します。 Service Fabric は任意のコンテナーを実行でき、そのシナリオは、コンテナーの内部で既存のアプリケーションをパッケージ化するゲスト実行可能ファイルのシナリオと同様です。 さらに、[コンテナーの内部で Service Fabric サービスを実行する](service-fabric-services-inside-containers.md)こともできます。
 
-**ゲスト実行可能ファイル**:Node.js、Java、C++ など、あらゆる種類のコードをサービスとして Azure Service Fabric 内で実行できます。 Service Fabric では、これらの種類のサービスはゲスト実行可能ファイルと呼ばれます。これは、ステートレス サービスとして処理されます。 Service Fabric クラスターでゲスト実行可能ファイルを実行する利点には、高可用性、正常性の監視、アプリケーション ライフサイクル管理、高密度、および見つけやすさが含まれます。
+**ゲスト実行可能ファイル**:Node.js、Python、Java、C++ など、あらゆる種類のコードをサービスとして Azure Service Fabric 内で実行できます。 Service Fabric では、これらの種類のサービスはゲスト実行可能ファイルと呼ばれます。これは、ステートレス サービスとして処理されます。 Service Fabric クラスターでゲスト実行可能ファイルを実行する利点には、高可用性、正常性の監視、アプリケーション ライフサイクル管理、高密度、および見つけやすさが含まれます。
 
 詳細については、[サービスのプログラミング モデルの選択](service-fabric-choose-framework.md)に関する記事をご覧ください。
 

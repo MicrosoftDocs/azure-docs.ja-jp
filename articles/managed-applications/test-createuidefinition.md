@@ -4,18 +4,18 @@ description: ポータルを使用してご自身の Azure マネージド ア�
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: conceptual
-ms.date: 05/26/2019
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 99ca319910be2cb20214172826eb40361abe72f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54eb2df06df56c33e1a3cd74e7a4a93c07aab682
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257665"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575670"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure Managed Applications 用のポータル インターフェイスをテストする
 
-マネージド アプリケーション用の [createUiDefinition.json ファイルを作成](create-uidefinition-overview.md)したら、ユーザー エクスペリエンスをテストする必要があります。 テストを簡素化するには、ポータルにファイルを読み込むサンドボックス環境を使用します。 マネージド アプリケーションを実際に展開する必要はありません。 サンドボックスでは、最新の全画面表示ポータル エクスペリエンスでユーザー インターフェイスが表示されます。 または、インターフェイスのテスト用の PowerShell スクリプトを使用することもできますが、ポータルの従来のビューが使われます。 この記事では、両方の方法を紹介します。 インターフェイスのプレビューには、サンドボックスがお勧めの方法です。
+マネージド アプリケーション用の [createUiDefinition.json ファイルを作成](create-uidefinition-overview.md)したら、ユーザー エクスペリエンスをテストする必要があります。 テストを簡素化するには、ポータルにファイルを読み込むサンドボックス環境を使用します。 マネージド アプリケーションを実際に展開する必要はありません。 サンドボックスでは、最新の全画面表示ポータル エクスペリエンスでユーザー インターフェイスが表示されます。 または、スクリプトを使用してインターフェイスをテストすることもできます。 この記事では、両方の方法を紹介します。 インターフェイスのプレビューには、サンドボックスがお勧めの方法です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +51,8 @@ ms.locfileid: "66257665"
 
 ポータルでご自身のインターフェイスをテストするには、お使いのローカル コンピューターに次のスクリプトのいずれかをコピーします。
 
-* [PowerShell side-load スクリプト](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
+* [PowerShell side-load スクリプト - Az モジュール](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-AzCreateUIDefinition.ps1)
+* [PowerShell side-load スクリプト - Azure モジュール](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
 * [Azure CLI side-load スクリプト](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
 
 ポータルでご自身のインターフェイス ファイルを確認するには、ダウンロードしたスクリプトを実行します。 スクリプトによりストレージ アカウントがご自身の Azure サブスクリプションに作成され、該当する createUiDefinition.json ファイルがそのストレージ アカウントにアップロードされます。 ストレージ アカウントが作成されるのは、最初にスクリプトを実行したとき、またはストレージ アカウントが削除されている場合です。 ストレージ アカウントが Azure サブスクリプション内に存在している場合は、そのアカウントが再利用されます。 スクリプトによって、ポータルが開き、ストレージ アカウントから該当するファイルが読み込まれます。
@@ -61,7 +62,7 @@ ms.locfileid: "66257665"
 PowerShell では、次を使用します。
 
 ```powershell
-.\SideLoad-CreateUIDefinition.ps1 `
+.\SideLoad-AzCreateUIDefinition.ps1 `
   -StorageResourceGroupLocation southcentralus `
   -ArtifactsStagingDirectory .\100-Marketplace-Sample
 ```
@@ -79,7 +80,7 @@ createUiDefinition.json ファイルがスクリプトと同じフォルダー�
 PowerShell では、次を使用します。
 
 ```powershell
-.\SideLoad-CreateUIDefinition.ps1
+.\SideLoad-AzCreateUIDefinition.ps1
 ```
 
 Azure CLI では、次を使用します。
@@ -90,9 +91,7 @@ Azure CLI では、次を使用します。
 
 スクリプトによって、ブラウザーで新しいタブが開きます。 マネージド アプリケーションを作成するためのインターフェイスでポータルが表示されます。
 
-![ポータルの表示](./media/test-createuidefinition/view-portal.png)
-
-フィールドの値を指定します。 完了したら、テンプレートに渡された値が表示されます。
+フィールドの値を指定します。 完了すると、テンプレートに渡される値を、ブラウザーの開発者ツール コンソールで確認できます。
 
 ![値の表示](./media/test-createuidefinition/show-json.png)
 

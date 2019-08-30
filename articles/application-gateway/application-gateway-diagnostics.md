@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 39317c0448168bc2ed8fdd0455a210254887d496
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655385"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850992"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
 
@@ -172,52 +172,8 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |sentBytes| 送信したパケットのサイズ (バイト単位)。|
 |timeTaken| 要求の処理および応答の送信にかかった時間 (ミリ秒単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
 |sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
-```json
-{
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
-    "operationName": "ApplicationGatewayAccess",
-    "time": "2017-04-26T19:27:38Z",
-    "category": "ApplicationGatewayAccessLog",
-    "properties": {
-        "instanceId": "ApplicationGatewayRole_IN_0",
-        "clientIP": "191.96.249.97",
-        "clientPort": 46886,
-        "httpMethod": "GET",
-        "requestUri": "/phpmyadmin/scripts/setup.php",
-        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
-        "userAgent": "-",
-        "httpStatus": 404,
-        "httpVersion": "HTTP/1.0",
-        "receivedBytes": 65,
-        "sentBytes": 553,
-        "timeTaken": 205,
-        "sslEnabled": "off"
-    }
-}
-```
-Application Gateway と WAF v2 の場合、ログにはさらにいくつかの情報が表示されます。
-
-|値  |説明  |
-|---------|---------|
-|instanceId     | 要求を処理した Application Gateway のインスタンス。        |
-|clientIP     | 要求の送信元 IP。        |
-|clientPort     | 要求の送信元ポート。       |
-|httpMethod     | 要求で使用される HTTP メソッド。       |
-|requestUri     | 受信した要求の URI。        |
-|RequestQuery     | **Server-Routed**:要求が送信されたバックエンド プールのインスタンス。</br>**X-AzureApplicationGateway-LOG-ID**:要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 </br>**SERVER-STATUS**:Application Gateway がバックエンドから受信した HTTP 応答コード。       |
-|UserAgent     | HTTP 要求ヘッダーからのユーザー エージェント。        |
-|httpStatus     | Application Gateway からクライアントに返される HTTP 状態コード。       |
-|httpVersion     | 要求の HTTP バージョン。        |
-|receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
-|sentBytes| 送信したパケットのサイズ (バイト単位)。|
-|timeTaken| 要求の処理および応答の送信にかかった時間 (ミリ秒単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
-|sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
-|sslCipher| SSL 通信に使用されている暗号スイート (SSL が有効な場合)|
-|sslProtocol| 使用されている SSL プロトコル (SSL が有効な場合)|
-|serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
-|serverStatus| バックエンド サーバーの HTTP 状態コード。|
-|serverResponseLatency| バックエンド サーバーからの応答の待機時間。|
-|host| 要求のホスト ヘッダーに表示されているアドレス。|
+|host| 要求がバックエンド サーバーに送信されたときに使用されたホスト名。 バックエンドのホスト名が上書きされている場合、この名前にそのことが反映されます。|
+|originalHost| Application Gateway がクライアントから要求を受信したときに使用されたホスト名。|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -238,12 +194,58 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
         "sentBytes": 553,
         "timeTaken": 205,
         "sslEnabled": "off",
+        "host": "www.contoso.com",
+        "originalHost": "www.contoso.com"
+    }
+}
+```
+Application Gateway と WAF v2 の場合、ログにはさらにいくつかの情報が表示されます。
+
+|値  |説明  |
+|---------|---------|
+|instanceId     | 要求を処理した Application Gateway のインスタンス。        |
+|clientIP     | 要求の送信元 IP。        |
+|clientPort     | 要求の送信元ポート。       |
+|httpMethod     | 要求で使用される HTTP メソッド。       |
+|requestUri     | 受信した要求の URI。        |
+|UserAgent     | HTTP 要求ヘッダーからのユーザー エージェント。        |
+|httpStatus     | Application Gateway からクライアントに返される HTTP 状態コード。       |
+|httpVersion     | 要求の HTTP バージョン。        |
+|receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
+|sentBytes| 送信したパケットのサイズ (バイト単位)。|
+|timeTaken| 要求の処理および応答の送信にかかった時間 (ミリ秒単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
+|sslEnabled| バックエンド プールへの通信に SSL を使用するかどうか。 有効な値は on と off です。|
+|sslCipher| SSL 通信に使用されている暗号スイート (SSL が有効な場合)|
+|sslProtocol| 使用されている SSL プロトコル (SSL が有効な場合)|
+|serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
+|serverStatus| バックエンド サーバーの HTTP 状態コード。|
+|serverResponseLatency| バックエンド サーバーからの応答の待機時間。|
+|host| 要求のホスト ヘッダーに表示されているアドレス。|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "appgw_1",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
         "serverStatus": "200",
         "serverResponseLatency": "0.023",
-        "host": "52.231.230.101"
+        "host": "www.contoso.com",
     }
 }
 ```

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: 9b68b9d0bbac984c29759cf4b7b026a559a9d819
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809017"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882303"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 
@@ -122,15 +122,44 @@ JavaScript/TypeScript クライアントは、接続ネゴシエーションを�
 }
 ```
 
-#### <a name="azure"></a>Azure
+#### <a name="cloud---azure-functions-cors"></a>クラウド - Azure Functions CORS
 
 Azure 関数アプリ上で CORS を有効にするには、Azure portal の関数アプリの *[プラットフォーム機能]* タブの下にある CORS 構成画面に移動します。
+
+> [!NOTE]
+> CORS の構成は、Azure Functions Linux 従量課金プランではまだ使用できません。 [Azure API Management](#cloud---azure-api-management) を使用して、CORS を有効にします。
 
 SignalR クライアントが negotiate 関数を呼び出すために、Access-Control-Allow-Credentials を持つ CORS を有効にする必要があります。 有効にするにはチェックボックスをオンにします。
 
 *[許可されたオリジン]* セクションで、Web アプリケーションの元のベース URL を持つエントリを追加します。
 
 ![CORS の構成](media/signalr-concept-serverless-development-config/cors-settings.png)
+
+#### <a name="cloud---azure-api-management"></a>クラウド - Azure API Management
+
+Azure API Management は、既存のバックエンド サービスに機能を追加する API ゲートウェイを提供します。 これを使用して、CORS を関数アプリに追加することができます。 アクションごとの支払い価格と月あたりの無料提供を含む従量課金レベルを提供します。
+
+[Azure 関数アプリをインポートする](../api-management/import-function-app-as-api.md)方法については、API Management のドキュメントを参照してください。 インポートした後、インバウンド ポリシーを追加して、Access-Control-Allow-Credentials をサポートする CORS を有効にすることができます。
+
+```xml
+<cors allow-credentials="true">
+  <allowed-origins>
+    <origin>https://azure-samples.github.io</origin>
+  </allowed-origins>
+  <allowed-methods>
+    <method>GET</method>
+    <method>POST</method>
+  </allowed-methods>
+  <allowed-headers>
+    <header>*</header>
+  </allowed-headers>
+  <expose-headers>
+    <header>*</header>
+  </expose-headers>
+</cors>
+```
+
+API Management URL を使用するように SignalR クライアントを構成します。
 
 ### <a name="using-app-service-authentication"></a>App Service 認証の使用
 

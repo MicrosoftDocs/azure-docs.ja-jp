@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: d4a77fc1756b0fa9decb6d3a84760beb1e700863
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 46e44804ddbabd8bf5620ad9516f1ca2d5017bfa
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614890"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019304"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -26,7 +26,7 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際には、ワ�
 > * AKS クラスターを最新の Kubernetes バージョンにアップグレードする
 > * ノードを最新の状態に保ち、セキュリティ パッチを自動的に適用する
 
-また、[コンテナー イメージの管理][best-practices-container-image-management]と and for [pod security][best-practices-pod-security]に関するベスト プラクティスを参照できます。
+また、[コンテナー イメージの管理][best-practices-container-image-management]と[ポッドのセキュリティ][best-practices-pod-security]に関するベスト プラクティスも参照できます。
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>API サーバーとクラスター ノードへのアクセスをセキュリティで保護する
 
@@ -188,10 +188,10 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 次に、[az aks upgrade][az-aks-upgrade] コマンドを使用して AKS クラスターをアップグレードすることができます。 このアップグレード プロセスでは、ノードの遮断と解放を一度に 1 つずつ安全に実行し、残りのノード上のポッドをスケジュールに設定してから、最新の OS および Kubernetes バージョンを実行している新しいノードを展開します。
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
 ```
 
-AKS のアップグレードの詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]と and [Upgrade an AKS cluster][aks-upgrade]に関する記事を参照してください。
+AKS のアップグレードの詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]と [AKS クラスターのアップグレード][aks-upgrade]に関する記事を参照してください。
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>kured を使用して Linux ノードの更新と再起動を処理する
 

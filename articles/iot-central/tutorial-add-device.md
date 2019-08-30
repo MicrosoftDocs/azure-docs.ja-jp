@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b073a270fabb8657be19b79601fa90f1b9a0351b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 03fd31333a97290a5e8a00029867fc4e73a0cdd7
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015223"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875600"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションに実デバイスを追加する
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 このチュートリアルでは、実デバイスを Microsoft Azure IoT Central アプリケーションに追加して構成する方法について説明します。
 
@@ -36,11 +38,8 @@ ms.locfileid: "66015223"
 
 ## <a name="prerequisites"></a>前提条件
 
-始める前に、作成者が少なくとも Azure IoT Central アプリケーションを作成する最初の作成者向けチュートリアルを完了する必要があります。
+始める前に、作成者が少なくとも Azure IoT Central アプリケーションを作成する最初の作成者向けチュートリアルを完了する必要があります。[新しいデバイスの種類を定義する](tutorial-define-device-type.md) (必須)
 
-* [新しいデバイスの種類を定義する](tutorial-define-device-type.md) (必須)
-* [デバイスのルールとアクションを構成する](tutorial-configure-rules.md) (オプション)
-* [オペレーターのビューをカスタマイズする](tutorial-customize-operator.md) (オプション)
 
 開発用コンピューターに [Node.js](https://nodejs.org/) バージョン 8.0.0 以降をインストールします。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
 

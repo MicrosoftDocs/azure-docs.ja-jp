@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1bd1882218630aca0707a792d120045c06dea127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552682"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855097"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML)
 
@@ -413,8 +413,8 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 |-----------|-------------|---------------------|
 | src | バックグラウンド オーディオ ファイルの場所/URL を指定します。 | SSML ドキュメントでバックグラウンド オーディオを使用している場合は必須です。 |
 | ボリューム | バックグラウンド オーディオ ファイルのボリュームを指定します。 **指定可能な値**: `0` から `100`。 既定値は `1` です。 | 省略可能 |
-| fadein | バックグラウンド オーディオのフェードインの期間を指定します。 **指定可能な値**: `0` から `10000`。  | 省略可能 |
-| fadeout | バックグラウンド オーディオのフェードアウトの期間を指定します。**指定可能な値**: `0` から `10000`。  | 省略可能 |
+| fadein | バックグラウンド オーディオのフェードインの期間をミリ秒単位で指定します。 既定値は `0` で、"フェードインなし" に相当します。 **指定可能な値**: `0` から `10000`。  | 省略可能 |
+| fadeout | バックグラウンド オーディオのフェードアウトの期間をミリ秒単位で指定します。 既定値は `0` で、"フェードアウトなし" に相当します。**指定可能な値**: `0` から `10000` まで。  | 省略可能 |
 
 **例**
 

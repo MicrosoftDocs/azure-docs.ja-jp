@@ -92,7 +92,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
-1. Visual Studio または Visual Studio Code で *B2C-WebApi/**appsettings.json*** ファイルを開きます。
+1. Visual Studio または Visual Studio Code で *B2C-WebApi/**appsettings.json***  ファイルを開きます。
 1. 実際のテナント名、Web API アプリケーションのアプリケーション ID、サインアップ ポリシーまたはサインイン ポリシーの名前、前に定義したスコープを反映するように `AzureAdB2C` ブロックを変更します。 ブロックは次の例のようになります (`Tenant` と `ClientId` には適切な値が入力されます)。
 
     ```json

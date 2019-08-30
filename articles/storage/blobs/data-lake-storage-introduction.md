@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3dea4dfc58bf087b8f6bc0a3f45646da5cb597ad
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de2dc5068dc454925744688a43f49a855aac42f3
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847234"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991850"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -63,8 +63,8 @@ Data Lake Storage Gen2 は、Azure Blob ストレージに基づいて構築さ�
 
 | 概念                                | 最上位レベルの組織 | 下位レベルの組織                                            | データ コンテナー |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
-| BLOB - 汎用オブジェクト ストレージ | コンテナー              | 仮想ディレクトリ (SDK のみ - アトミック操作を提供しない) | Blob           |
-| ADLS Gen2 - Analytics ストレージ          | ファイル システム             | Directory                                                           | ファイル           |
+| BLOB - 汎用オブジェクト ストレージ | コンテナー              | 仮想ディレクトリ (SDK のみ - アトミック操作を提供しない) | BLOB           |
+| ADLS Gen2 - Analytics ストレージ          | コンテナー            | Directory                                                           | ファイル           |
 
 ## <a name="supported-open-source-platforms"></a>サポートされるオープン ソース プラットフォーム
 

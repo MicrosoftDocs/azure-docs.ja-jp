@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 27610280bafa6d8e9e33f84af2d3e9f6c2c9ea5c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226822"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967812"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -91,7 +91,7 @@ Spring フレームワークの方がよければ、[Spring Boot 初期化子ア
 ```
 
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Eclipse を使用して動的 Web プロジェクトを作成している場合:
-[Application Insights SDK for Java プラグイン][eclipse]を使用します。 注意: (Maven/Gradle を使用していないとの想定において) このプラグインを使用することで Application Insights をより迅速に実行できるとしても、それは依存関係管理システムではありません。 そのため、プラグインが更新されても、プロジェクトの Application Insights ライブラリは自動的に更新されません。
+Application Insights SDK for Java プラグインを使用します。 注意: (Maven/Gradle を使用していないとの想定において) このプラグインを使用することで Application Insights をより迅速に実行できるとしても、それは依存関係管理システムではありません。 そのため、プラグインが更新されても、プロジェクトの Application Insights ライブラリは自動的に更新されません。
 
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `version:'2.0.n'`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
 * "*新しい SDK に更新するには*" プロジェクトの依存関係を更新します。
@@ -473,7 +473,6 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: ../../azure-monitor/learn/java-quick-start.md
 [javalogs]: java-trace-logs.md
 [metrics]: ../../azure-monitor/app/metrics-explorer.md
 [usage]: javascript.md

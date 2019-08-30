@@ -1,21 +1,21 @@
 ---
-title: 回帰価格を予測し、アルゴリズムを比較する
+title: 'ビジュアル インターフェイスの例 #3: 価格を予測しアルゴリズムを比較するための回帰'
 titleSuffix: Azure Machine Learning service
 description: この記事では、コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: aa0a1fc2acdc9687030040c23cdb1781e9529169
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605685"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990001"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>サンプル 2 - 回帰:価格を予測し、アルゴリズムを比較する
 

@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/03/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 43fe0047022173cc20f58688920fa95b95cc6c22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d20256381eab155d4b7532591cea85e43080ec0
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65473439"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019797"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>CSP として、顧客に代わって Azure IoT Central アプリケーションを作成して管理する 
 
@@ -69,7 +69,7 @@ Azure サブスクリプションがない場合は、Microsoft パートナー 
 
 詳細については、[Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) に関するページを参照してください。
 
-## <a name="region"></a>リージョン
+## <a name="region"></a>Region
 
 Azure IoT Central アプリケーションを作成するリージョンを選択します。 通常、最適なパフォーマンスを得るには、デバイスに物理的に最も近いリージョンを選択する必要があります。
 

@@ -4,24 +4,23 @@ description: Azure App Service の認証/認可の機能の概念リファレン
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 53733774968f94ac95d9b3fea6d8fcb422b4e02c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515184"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087978"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
 
@@ -119,17 +118,17 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 ## <a name="authorization-behavior"></a>認可の動作
 
-[Azure Portal](https://portal.azure.com) では、複数の動作で App Service の認可を構成することができます。
+[Azure portal](https://portal.azure.com) では、受信要求が認証されていない場合、複数の動作で App Service の認可を構成することができます。
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 以下の見出しではそれらのオプションを説明します。
 
-### <a name="allow-all-requests-default"></a>すべての要求を許可する (既定値)
+### <a name="allow-anonymous-requests-no-action"></a>匿名要求を許可する (操作不要)
 
-認証と認可は App Service によって管理されません (オフ)。 
+このオプションでは、認証されていないトラフィックの認証がアプリケーション コードに委ねられます。 認証された要求について、App Service は HTTP ヘッダーで認証情報も渡します。 
 
-認証と認可を必要としない場合、または認証と認可のコードを独自に記述する場合は、このオプションを選びます。
+このオプションでは、匿名要求をいっそう柔軟に処理できます。 たとえば、ユーザーに[複数のサインイン プロバイダーを提示する](app-service-authentication-how-to.md#use-multiple-sign-in-providers)ことができます。 ただし、コードを記述する必要があります。 
 
 ### <a name="allow-only-authenticated-requests"></a>認証された要求のみを許可する
 
@@ -137,11 +136,8 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 このオプションを使用すると、アプリで認証コードを記述する必要はまったくありません。 役割固有の認可などのさらに細かい認可は、ユーザーの要求を調べることで処理できます (「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください)。
 
-### <a name="allow-all-requests-but-validate-authenticated-requests"></a>すべての要求を許可するが、認証された要求を検証する
-
-オプションは **[匿名要求を許可する]** です。 このオプションは、App Service での認証と認可を有効にしますが、認可の決定をアプリケーション コードまで延期します。 認証された要求について、App Service は HTTP ヘッダーで認証情報も渡します。 
-
-このオプションでは、匿名要求をいっそう柔軟に処理できます。 たとえば、ユーザーに[複数のサインイン プロバイダーを提示する](app-service-authentication-how-to.md#use-multiple-sign-in-providers)ことができます。 ただし、コードを記述する必要があります。 
+> [!CAUTION]
+> この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページを必要とするアプリには適切でない場合があります。
 
 ## <a name="more-resources"></a>その他のリソース
 

@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Form Recognizer のドキュメント
 metadata:
-  title: API ドキュメント - Form Recognizer - Azure Cognitive Services | Microsoft Docs
+  title: API ドキュメント - Form Recognizer
+  titleSuffix: Azure Cognitive Services
   description: Form Recognizer を使用して、フォーム ドキュメントからキーと値のデータをインテリジェントに抽出する方法について説明します。
   services: cognitive-services
   author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/16/2019
   ms.author: pafarley

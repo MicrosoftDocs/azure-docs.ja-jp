@@ -1,43 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD Authentication のドキュメント
+### YamlMime:Landing
+title: Azure Active Directory 認証のドキュメント
+summary: Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの管理と展開を行う方法について説明します。
 metadata:
-  document_id: null
   title: Azure Active Directory 認証のドキュメント
   description: Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの管理と展開を行う方法について説明します。
   services: active-directory
-  ms.subservice: authentication
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: authentication
   ms.topic: landing-page
-  ms.date: 07/19/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの展開と管理を行う方法について説明します。 これらの機能が組み合わさることで、シンプルなサインイン プロセスが組織に提供されると同時に、さまざまな検証方法による強力な認証が実現されます。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: セルフサービスのパスワード リセットを有効にして、ユーザーからのヘルプデスク呼び出しを減らす方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_protect.png
-            text: セルフ サービスのパスワード リセットを有効にする
-            href: 'https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: 組織でシンプルで安全なサインイン プロセスを有効にする方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/authentication/tutorial-sspr-pilot">セルフサービスのパスワード リセットのパイロットを有効にする</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-mfa-applications">Azure portal で MFA を要求する</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-enable-writeback">セルフサービスのパスワード リセットのオンプレミス統合を有効にする</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-sspr-windows">Windows 10 のパスワード リセットを有効にする</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa">Azure Identity Protection と統合する</a>
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 4ae9515bf7926eca305f77eff4bae3ab53d1dfa0
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874384"
+landingContent:
+- title: 認証について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 認証とは
+      url: overview-authentication.md
+    - text: 認証方法とは
+      url: concept-authentication-methods.md
+    - text: セキュリティ情報の登録
+      url: concept-registration-mfa-sspr-combined.md
+    - text: パスワードなしとは
+      url: concept-authentication-passwordless.md
+- title: セルフサービスのパスワード リセットのデプロイ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: パスワード リセットのセルフサービスのしくみ
+      url: concept-sspr-howitworks.md
+    - text: パスワードの書き戻し
+      url: concept-sspr-writeback.md
+  - linkListType: quickstart
+    links:
+    - text: パスワード リセットのセルフサービスに関するクイックスタート
+      url: quickstart-sspr.md
+  - linkListType: deploy
+    links:
+    - text: Azure AD のパスワード リセットのセルフサービスをデプロイする
+      url: howto-sspr-deployment.md
+    - text: パスワード ライトバックの有効化
+      url: howto-sspr-writeback.md
+    - text: Windows のログイン画面からパスワードをリセットできるようにする
+      url: howto-sspr-windows.md
+- title: Azure Multi-Factor Authentication の有効化
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Multi-Factor Authentication のしくみ
+      url: concept-mfa-howitworks.md
+  - linkListType: tutorial
+    links:
+    - text: 特定のアプリケーションに対して Azure MFA をパイロット運用する
+      url: tutorial-mfa-applications.md
+    - text: リスク イベントを使用して多要素認証とパスワード変更をトリガーする
+      url: tutorial-risk-based-sspr-mfa.md
+  - linkListType: deploy
+    links:
+    - text: Azure Multi-Factor Authentication をデプロイする
+      url: howto-mfa-getstarted.md
+    - text: NPS 拡張機能を使用してオンプレミス アプリケーションを統合する
+      url: howto-mfa-nps-extension.md
+- title: Azure AD のパスワード保護をデプロイする
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: クラウドで脆弱なパスワードを排除する
+      url: concept-password-ban-bad.md
+    - text: オンプレミスで脆弱なパスワードを排除する
+      url: concept-password-ban-bad-on-premises.md
+  - linkListType: get-started
+    links:
+    - text: 禁止パスワード リストを構成する
+      url: howto-password-ban-bad-configure.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD のパスワード保護をデプロイする
+      url: howto-password-ban-bad-on-premises-deploy.md

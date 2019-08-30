@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 836a17051aee4e6a9ac3089f60da30673783e408
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875965"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989182"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -146,3 +146,4 @@ Azure Monitor のメトリックとログの読み取りや書き込み、生成
 * [メトリックとログ](platform/data-platform.md) Azure Monitor によって収集されたデータについては、こちらをご覧ください。
 * [データ ソース](platform/data-sources.md) アプリケーションのさまざまなコンポーネントでテレメトリを送信する方法については、こちらをご覧ください。
 * [ログ クエリ](log-query/log-query-overview.md) 収集したデータを分析する場合は、こちらをご覧ください。
+* クラウドのアプリケーションとサービスを監視するための[ベスト プラクティス](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。

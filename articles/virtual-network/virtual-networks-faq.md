@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610207"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892021"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -29,9 +29,11 @@ Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自
 
 VNet を使用して次のことが行えます。
 
-* プライベート クラウドのみの専用 VNet を作成します。ソリューションがクロスプレミス構成が必要ない場合もあります。 VNet を作成するとき、ご使用のサービスと VNet 内の VMが、クラウド内で互いに直接かつ安全に通信することができます。 VM と、ソリューションの一部としてインターネット通信を必要とするサービスとのエンドポイント接続を構成することができます。
-* データ センターを安全に拡張します。VNet を使用すると、従来のサイト間 (S2S) VPN を構築して、データセンターの容量を安全に拡張できます。 S2S VPN は、IPSEC を使用して、社内の VPN ゲートウェイと Azure 間の安全な接続を提供します。
-* ハイブリッド クラウドのシナリオを有効にします。VNet は、さまざまなハイブリッド クラウド シナリオをサポートする柔軟性を提供します。 メインフレームなどのオンプレミス システムと Unix システムの任意の型へのクラウド ベースのアプリケーションを安全に接続することができます。
+* 専用プライベート クラウドのみの VNet を作成します。 場合によって、ソリューションの、クロスプレミス構成は必要ありません。 VNet を作成するとき、ご使用のサービスと VNet 内の VMが、クラウド内で互いに直接かつ安全に通信することができます。 VM と、ソリューションの一部としてインターネット通信を必要とするサービスとのエンドポイント接続を構成することができます。
+
+* データ センターを安全に拡張します。 VNet については、データ センターの容量を安全にスケールできるよう従来のサイト間 (S2S) VPN を構築できます。 S2S VPN は、IPSEC を使用して、社内の VPN ゲートウェイと Azure 間の安全な接続を提供します。
+
+* ハイブリッド クラウドのシナリオを有効にします。 VNet は、さまざまなハイブリッド クラウド シナリオをサポートする柔軟性を提供します。 メインフレームなどのオンプレミス システムと Unix システムの任意の型へのクラウド ベースのアプリケーションを安全に接続することができます。
 
 ### <a name="how-do-i-get-started"></a>開始するには?
 「[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)」にアクセスし、開始します。 このコンテンツには、すべての VNet 機能の概要とデプロイに関する情報が示されています。
@@ -67,9 +69,11 @@ VNet を使用して次のことが行えます。
 はい。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事をご覧ください。 サブネットのアドレス空間は、互いに重複することはできません。
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>これらのサブネット内の IP アドレスの使用に関する制限はありますか。
-はい。 Azure では、各サブネット内で 5 つの IP アドレスが予約されています。 これらは x.x.x.0 から x.x.x.3 とサブネットの最後のアドレスです。    
-- x.x.x.0 とサブネットの最後のアドレスは、プロトコル準拠用に予約されています。
-- 各サブネットの x.x.x.1 から x.x.x.3 は Azure サービス用に予約されています。
+はい。 Azure では、各サブネット内で 5 つの IP アドレスが予約されています。 これらは x.x.x.0 から x.x.x.3 とサブネットの最後のアドレスです。 各サブネットの x.x.x.1 から x.x.x.3 は Azure サービス用に予約されています。   
+- x.x.x.0:ネットワーク アドレス
+- x.x.x.1:既定のゲートウェイ用に Azure によって予約されています
+- x.x.x.2、x.x.x.3:Azure DNS IP を VNet 空間にマッピングするために Azure によって予約されています
+- x.x.x.255:ネットワーク ブロードキャスト アドレス
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet およびサブネットは、どれくらい小規模に、また、大規模になるのでしょうか。
 サポートされる最小のサブネットは /29、最大は /8 です (CIDR サブネット定義を使用)。

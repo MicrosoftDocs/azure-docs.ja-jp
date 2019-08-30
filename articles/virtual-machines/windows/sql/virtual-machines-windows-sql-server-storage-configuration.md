@@ -3,23 +3,22 @@ title: SQL Server VM のストレージの構成 | Microsoft Docs
 description: このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるかを説明します (Resource Manager デプロイ モデル)。 また、既存の SQL Server VM のストレージを構成する方法についても説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: ninarn
-manager: craigg
+author: MashaMSFT
+manager: jroth
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
-ms.author: ninarn
-ms.openlocfilehash: 8d197bbf464038918dd083d14a1befa740c8ce0e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.author: mathoma
+ms.openlocfilehash: e28478d31a674d742870344b33eac6b84c3ae584
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846106"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123836"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 
@@ -127,8 +126,8 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 | ディスク サイズ |各 1 TB |
 | キャッシュ |読み取り |
 | アロケーション サイズ |64 KB NTFS アロケーション ユニット サイズ |
-| ファイルの瞬時初期化 |Enabled |
-| メモリ内のページのロック |Enabled |
+| ファイルの瞬時初期化 |有効 |
+| メモリ内のページのロック |有効 |
 | 復旧 |シンプルな復元 (回復性なし) |
 | 列数の合計 |データ ディスクの数<sup>1</sup> |
 | TempDB の場所 |データ ディスクに格納<sup>2</sup> |

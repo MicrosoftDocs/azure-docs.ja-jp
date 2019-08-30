@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ce326d7284e22a8734f6be671a277795ba659522
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720525"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557871"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -43,7 +43,9 @@ Teradata データベースから、サポートされている任意のシン�
 
 ## <a name="prerequisites"></a>前提条件
 
-お使いの Teradata にパブリックにアクセスできない場合は、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)を設定する必要があります。 この統合ランタイムには、バージョン3.18 以降、組み込みの Teradata ドライバーが用意されています。 ドライバーを手動でインストールする必要はありません。 このドライバーでは、セルフホステッド統合ランタイム マシンに "Visual C++ 再頒布可能パッケージ 2012 Update 4" が必要です。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)からダウンロードしてください。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+この統合ランタイムには、バージョン3.18 以降、組み込みの Teradata ドライバーが用意されています。 ドライバーを手動でインストールする必要はありません。 このドライバーでは、セルフホステッド統合ランタイム マシンに "Visual C++ 再頒布可能パッケージ 2012 Update 4" が必要です。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)からダウンロードしてください。
 
 セルフホステッド統合ランタイムのバージョンが 3.18 より前の場合は、統合ランタイム マシンに [.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以降をインストールしてください。 
 
@@ -61,9 +63,9 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 |:--- |:--- |:--- |
 | type | type プロパティは **Teradata** に設定する必要があります。 | はい |
 | connectionString | Teradata Database インスタンスに接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
-| userName | Teradata データベースに接続するユーザー名を指定します。 Windows 認証の使用時に適用されます。 | いいえ |
+| username | Teradata データベースに接続するユーザー名を指定します。 Windows 認証の使用時に適用されます。 | いいえ |
 | password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)ことも選択できます。 <br>Windows 認証の使用時、または基本認証で Key Vault のパスワードを参照するときに適用されます。 | いいえ |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |はい |
 
 **基本認証を使用した例**
 
@@ -184,11 +186,10 @@ Teradata からデータをコピーするために、次のプロパティが�
 
 このセクションでは、Teradata ソースでサポートされるプロパティの一覧を示します。 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関するページを参照してください。 
 
-### <a name="teradata-as-a-source-type"></a>ソース タイプとしての Teradata
+### <a name="teradata-as-source"></a>ソースとしての Teradata
 
-> [!TIP]
->
-> データのパーティション分割を使用して Teradata からデータを効率的に読み込むには、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。
+>[!TIP]
+>データのパーティション分割を使用して Teradata からデータを効率的に読み込むには、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。
 
 Teradata からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
@@ -200,7 +201,7 @@ Teradata からデータをコピーするために、コピー アクティビ�
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | partitionColumnName | 並列コピーの範囲パーティション分割で使用される**整数型**のソース列の名前を指定します。 指定されていない場合は、テーブルの主キーが自動検出され、パーティション列として使用されます。 <br>パーティション オプションが `Hash` または `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfHashPartitionCondition` または `?AdfRangePartitionColumnName` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
 | partitionUpperBound | データをコピーするパーティション列の最大値。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionUpbound` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
-| PartitionLowerBound | データをコピーするパーティション列の最小値。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionLowbound` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
+| partitionLowerBound | データをコピーするパーティション列の最小値。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionLowbound` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
 
 > [!NOTE]
 >
@@ -294,7 +295,7 @@ Teradata からデータをコピーするときには、次のマッピング�
 | ByteInt |Int16 |
 | Char |string |
 | Clob |string |
-| Date |Datetime |
+| Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
@@ -321,12 +322,12 @@ Teradata からデータをコピーするときには、次のマッピング�
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| Timestamp |Datetime |
-| Timestamp With Time Zone |Datetime |
+| Timestamp |DateTime |
+| Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
 | VarChar |string |
 | VarGraphic |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
-| Xml |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
+| xml |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
 
 
 ## <a name="next-steps"></a>次の手順

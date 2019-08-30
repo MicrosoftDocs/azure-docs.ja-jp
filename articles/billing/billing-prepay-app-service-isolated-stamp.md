@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 40ccee7a993ce39a9b4c7a86309b0554daa56026
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298167"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779994"
 ---
 # <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>予約容量を含む Azure App Service Isolated スタンプ料金の前払い
 
@@ -62,13 +62,9 @@ Isolated スタンプの予約容量は [Azure portal](https://portal.azure.com/
 
 購入後は、いつでも [[予約]](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) に移動して購入の状態を確認および監視できます。
 
-## <a name="cancellations-and-exchanges"></a>キャンセルと交換
+## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-Isolated スタンプの予約容量をキャンセルする必要がある場合は、12% の中途解約料が発生する可能性があります。 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいています。 払い戻し額の上限は年額 50,000.00 ドルです。 日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルするには、Azure portal の予約に移動し、 **[払い戻し]** を選択します。
-
-Isolated スタンプの予約容量を別のリージョンに移動する必要がある場合は、同等以上の値の別の予約と交換できます。 新しい予約期間の開始日は、元の予約からは引き継がれません。 3 年の予約期間は、新しい予約を作成した時点から始まります。 交換するには、Azure portal に移動し、交換する予約を選択し、 **[交換]** を選択します。
-
-予約を交換または返金する方法の詳細については、[予約の交換と返金](billing-azure-reservations-self-service-exchange-and-refund.md)に関するページを参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
 
 ## <a name="discount-application-shown-in-usage-data"></a>使用状況データに表示される割引の適用
 

@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
 ms.openlocfilehash: 6a6db136926a7f9d631c717f5cab6c025d97fb48
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67443536"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
 > [!NOTE]
-> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library) を今すぐチェックしてください。
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library) を今すぐチェックしてください。
 >
 
 このガイドでは、次のような一般的なシナリオを、Mobile Apps の Android クライアント SDK を使用して実装する方法について説明します。
@@ -33,7 +33,7 @@ ms.locfileid: "67443536"
 * エラーの処理
 * クライアントのカスタマイズ
 
-このガイドでは、クライアント側の Android SDK に注目します。  Mobile Apps 用のサーバー側 SDK の詳細については、[.NET バックエンド SDK の操作][10]に関するページまたは [Node.js バックエンド SDK の使用方法][11]に関するページを参照してください。
+このガイドでは、クライアント側の Android SDK に注目します。  Mobile Apps 用のサーバー側 SDK の詳細については、[.NET バックエンド SDK の操作][10]または [Node.js バックエンド SDK の使用方法][11]に関するページを参照してください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
 
@@ -201,7 +201,7 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Mobile Apps バックエンドに追加のテーブルを作成する方法については、「[方法:テーブル コントローラーを定義する][15]」(.NET バックエンド) または「[動的スキーマを使用してテーブルを定義する][16]」(Node.js バックエンド) を参照してください。
+Mobile Apps バックエンドに追加のテーブルを作成する方法については、「[方法:テーブル コントローラーを定義する][15]」(.NET バックエンド) または[動的スキーマを使用してテーブルを定義する方法][16]に関するセクション (Node.js バックエンド) を参照してください。
 
 Azure Mobile Apps バックエンド テーブルでは 5 つの特別なフィールドが定義されます。そのうちの 4 つはクライアントで使用できます。
 

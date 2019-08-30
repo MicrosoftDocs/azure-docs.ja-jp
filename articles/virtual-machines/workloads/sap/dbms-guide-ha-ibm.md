@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 754eb063f82344e72bece8fb0ac5708dbc8ab791
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 4571b0e1a2c9207ce913901f11157f5155201393
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249125"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100033"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -133,7 +132,7 @@ IBM Db2 構成をデプロイするには、これらの手順に従う必要が
 | 仮想ネットワークまたはサブネットの定義 | IBM Db2 の VM と Azure Load Balancer のデプロイ先。 既存のものでも、新たに作成したものでもかまいません。 |
 | IBM Db2 LUW をホストしている仮想マシン | VM サイズ、ストレージ、ネットワーク、IP アドレス。 |
 | IBM Db2 データベースの仮想ホスト名と仮想 IP| SAP アプリケーション サーバーの接続に使用される仮想 IP またはホスト名。 **db-virt-hostname**、**db-virt-ip**。 |
-| Azure フェンス | Azure フェンスまたは SBD フェンス (強く推奨)。 スプリット ブレインの状況を回避するための方法が防止されます。 |
+| Azure フェンス | Azure フェンスまたは SBD フェンス (強く推奨)。 スプリット ブレインの状況を回避するための方法。 |
 | SBD VM | SBD 仮想マシンのサイズ、ストレージ、ネットワーク。 |
 | Azure Load Balancer | Basic または Standard (推奨)、Db2 データベース向けのプローブ ポート **probe-port** (62500 を推奨) の使用。 |
 | 名前解決| その環境における名前解決のしくみ。 DNS サービスを強くお勧めします。 ローカル ホスト ファイルを使用できます。 |
@@ -404,10 +403,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 # <a name="full-list-of-resources"></a>Full list of resources:
 
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-sbd    (stonith:external/sbd):Started azibmdb02
-#  <a name="resource-group-gipdb2ptrptr"></a>Resource Group: g_ip_db2ptr_PTR
-#      <a name="rscipdb2ptrptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):     Started azibmdb02
-#      <a name="rscncdb2ptrptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):    Started azibmdb02
-#  <a name="masterslave-set-msldb2db2ptrptr-rscdb2db2ptrptr"></a>Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
+#  <a name="resource-group-g_ip_db2ptr_ptr"></a>Resource Group: g_ip_db2ptr_PTR
+#      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR  (ocf::heartbeat:IPaddr2):     Started azibmdb02
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR  (ocf::heartbeat:anything):    Started azibmdb02
+#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Master/Slave Set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Masters: [ azibmdb02 ]
 #      <a name="slaves--azibmdb01-"></a>Slaves: [ azibmdb01 ]
 </pre>

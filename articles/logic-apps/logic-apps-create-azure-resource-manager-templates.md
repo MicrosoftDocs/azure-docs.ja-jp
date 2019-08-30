@@ -9,25 +9,27 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 7d216a3706c13a5fff312850e244a521ab22ae9e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386740"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706523"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps でのデプロイを自動化するために Azure Resource Manager テンプレートを作成する
 
-この記事では、ロジック アプリの作成とデプロイを自動化するために、ロジック アプリ用の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)を作成する方法について説明します。 デプロイに必要なワークフロー定義やその他のリソースを含むテンプレートの構造と構文の概要については、[Azure Resource Manager テンプレートを使用したロジック アプリのデプロイの自動化について概説](logic-apps-azure-resource-manager-templates-overview.md)しているページを参照してください。
+この記事では、ロジック アプリの作成とデプロイを自動化するために、ロジック アプリ用の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)を作成する方法について説明します。 デプロイに必要なワークフロー定義やその他のリソースを含むテンプレートの構造と構文の概要については、「[Overview: Automate deployment for logic apps with Azure Resource Manager templates](logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
 
-Azure Logic Apps には、ロジック アプリの作成だけでなく、デプロイに使用するリソースとパラメーターの定義にも再利用できる[事前構築済みのロジック アプリ Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)が用意されています。 このテンプレートを独自のビジネス シナリオで使用することも、要件に合わせてカスタマイズすることもできます。 Azure Resource Manager テンプレートの詳細については、これらのトピックを参照してください。
+Azure Logic Apps には、ロジック アプリの作成だけでなく、デプロイに使用するリソースとパラメーターの定義にも再利用できる[あらかじめ構築されたロジック アプリ Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)が用意されています。 このテンプレートを独自のビジネス シナリオで使用することも、要件に合わせてカスタマイズすることもできます。
+
+> [!IMPORTANT]
+> テンプレート内の接続で使用する Azure のリソース グループと場所が、ロジック アプリと同じものであることを確認してください。
+
+Azure Resource Manager テンプレートの詳細については、これらのトピックを参照してください。
 
 * [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 * [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates-cloud-consistency.md)
-
-> [!IMPORTANT]
-> テンプレート内の接続で使用する Azure のリソース グループと場所は、ロジック アプリと同じものである必要があります。
 
 <a name="visual-studio"></a>
 
@@ -47,6 +49,13 @@ Azure Logic Apps には、ロジック アプリの作成だけでなく、デ�
 Resource Manager テンプレートを作成するには、Azure PowerShell と [LogicAppTemplate モジュール](https://github.com/jeffhollan/LogicAppTemplateCreator)を使用します。 このオープン ソース モジュールは、最初にロジック アプリとロジック アプリで使用している接続を評価します。 次に、モジュールは、デプロイに必要なパラメーターでテンプレート リソースを生成します。
 
 たとえば、Azure Service Bus キューからメッセージを受信し、Azure SQL データベースにデータをアップロードするロジック アプリがあるとします。 このモジュールは、オーケストレーション ロジック全体を保存し、SQL および Service Bus の接続文字列をパラメーター化することで、それらの値をデプロイのニーズに応じて提供し、変更できるようにします。
+
+これらのサンプルでは、Azure Resource Manager テンプレート、Azure DevOps の Azure Pipelines、および Azure PowerShell を使用してロジック アプリを作成およびデプロイする方法が示されています。
+
+* [サンプル: Azure Logic Apps から Azure Service Bus キューへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps から Azure Storage アカウントへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps に対する関数アプリ アクションの設定](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps から統合アカウントへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>PowerShell モジュールをインストールする
 

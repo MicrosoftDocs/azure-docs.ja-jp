@@ -5,20 +5,45 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 07/30/2019
 ms.author: raynew
-ms.openlocfilehash: 0bfaf848b0b700c8d745acf8c6a63c898dc91140
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272876"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717669"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、継続的に更新され、改善されています。 最新情報を入手し続ける助けになるように、この記事では、最新のリリース、新機能、および新しいコンテンツに関する情報を提供します。 このページは定期的に更新されます。
 
 Site Recovery の機能について提案がおありの場合は、ぜひ[フィードバックをお聞かせください](https://feedback.azure.com/forums/256299-site-recovery)。
+
+
+## <a name="installing-updates"></a>更新プログラムのインストール
+
+Site Recovery の更新プログラムのサポートと手順については、[この記事を参照](service-updates-how-to.md)してください。
+
+## <a name="updates-july-2019"></a>更新 (2019 年 7 月)
+
+### <a name="update-rollup-38"></a>更新プログラム ロールアップ 38
+
+[更新プログラム ロールアップ 38](https://support.microsoft.com/help/4513507/) では、以下の更新が提供されます。
+
+**Update** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+
+### <a name="general"></a>全般
+
+Site Recovery では、キャッシュ ストレージまたはターゲット ストレージで汎用 v2 ストレージ アカウントの使用がサポートされるようになりました。 以前は v1 のみがサポートされていました。
+
+### <a name="vmware-to-azure-disaster-recovery"></a>VMware から Azure へのディザスター リカバリー
+
+マネージド ディスクがある Azure VM へのレプリケートで、最大 8 TB のディスクをレプリケートできるようになりました。
 
 
 ## <a name="updates-june-2019"></a>更新プログラム (2019年 6 月)
@@ -94,7 +119,7 @@ Site Recovery の機能について提案がおありの場合は、ぜひ[フ�
 **機能** | **詳細**
 --- | ---
 **マネージド ディスク** | オンプレミスの VMware VM および物理サーバーが、Azure のマネージド ディスクに直接レプリケートされるようになりました。 オンプレミス データは Azure のキャッシュ ストレージ アカウントに送信され、復旧ポイントはターゲットの場所のマネージド ディスクで作成されます。 これにより、複数のターゲット ストレージ アカウントを管理する必要がなくなります。
-**構成サーバー** | Site Recovery で、複数の NIC がある構成サーバーがサポートされるようになりました。 コンテナーに構成サーバーを登録する前に、構成サーバー VM にさらにアダプターを追加する必要があります。 後で追加する場合は、サーバーをコンテナーに再登録する必要があります。
+**構成サーバー** | Site Recovery で、複数の NIC がある構成サーバーがサポートされるようになりました。 コンテナーに構成サーバーを登録する前に、構成サーバー VM にさらにアダプターを追加してください。 後で追加する場合は、サーバーをコンテナーに再登録する必要があります。
 
 
 ## <a name="updates-february-2019"></a>更新プログラム (2019 年 2 月)
@@ -267,7 +292,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-### <a name="azure-vms-disaster-recovery"></a>Azure VM のディザスター リカバリー 
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー 
 今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
@@ -296,7 +321,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-### <a name="azure-vms-disaster-recovery"></a>Azure VM のディザスター リカバリー 
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー 
 
 今月追加された機能は、表にまとめられています。
 

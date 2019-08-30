@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11c3ded45e87e815b6c694f0a3f9c0ccb96f8750
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922774"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813913"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Azure Monitor にログ データを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Azure Monitor に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -61,7 +61,7 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 | Authorization |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
 | Log-Type |送信中のデータのレコード型を指定します。 このパラメーターのサイズ制限は 100 文字です。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
-| x-ms-AzureResourceId | データを関連付ける必要がある Azure リソースのリソース ID。 これにより、[_ResourceId](log-standard-properties.md#_resourceid) プロパティに値が設定され、[リソース中心の](manage-access.md#access-modes)クエリにデータを含めることができます。 このフィールドが指定されない場合、リソース中心のクエリにデータは含まれません。 |
+| x-ms-AzureResourceId | データを関連付ける必要がある Azure リソースのリソース ID。 これにより、[_ResourceId](log-standard-properties.md#_resourceid) プロパティに値が設定され、[リソース コンテキスト](design-logs-deployment.md#access-mode) クエリにデータを含めることができます。 このフィールドが指定されない場合、リソース コンテキスト クエリにデータは含まれません。 |
 | time-generated-field | データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
 
 ## <a name="authorization"></a>Authorization

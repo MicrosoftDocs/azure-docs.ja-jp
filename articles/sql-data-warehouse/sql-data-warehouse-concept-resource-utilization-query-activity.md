@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 06/20/2019
+ms.date: 08/09/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5038ae99a804b456c2cc388f07899278cc0f9a24
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 7f7575daa91cef5cb5be6274a699323fafe67a68
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312877"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935134"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのリソース使用状況とクエリ アクティビティを監視する
 Azure portal 内にある Azure SQL Data Warehouse のリッチな監視エクスペリエンスでは、データ ウェアハウスのワークロードに関する分析情報が表示されます。 データ ウェアハウスを監視するときの推奨されるツールである Azure portal では、構成可能なリテンション期間、アラート、推奨事項、およびメトリックとログのカスタマイズ可能なグラフとダッシュボードが提供されます。 ポータルでは、Operations Management Suite (OMS) や Azure Monitor (ログ) などの他の Azure 監視サービスと統合して、お使いのデータ ウェアハウスだけでなく、統合された監視エクスペリエンスに対する Azure 分析プラットフォーム全体も含む、総合的な監視エクスペリエンスを提供することもできます。 このドキュメントでは、SQL Data Warehouse で分析プラットフォームの最適化と管理に使用できる監視機能について説明します。 
@@ -23,8 +23,6 @@ Azure portal 内にある Azure SQL Data Warehouse のリッチな監視エク�
 ## <a name="resource-utilization"></a>リソース使用率 
 Azure portal では、SQL Data Warehouse に対して以下のメトリックを使用できます。 これらのメトリックは、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) を通じて表示できます。
 
-> [!NOTE]
-> 現在のところ、ノード レベル CPU および IO メトリックには、データ ウェアハウスの使用状況が正しく反映されません。 近い将来、チームによって SQL Data Warehouse の監視とトラブルシューティングのエクスペリエンスが改善されれば、これらのメトリックは削除されます。 
 
 | メトリックの名前             | 説明                                                  | 集計の種類 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -41,6 +39,10 @@ Azure portal では、SQL Data Warehouse に対して以下のメトリックを
 | 使用されたキャッシュの割合   | (使用されたキャッシュ/キャッシュ容量) * 100: 使用されたキャッシュは全ノードのローカル SSD キャッシュでの全バイト数の合計、キャッシュ容量は全ノードのローカル SSD キャッシュのストレージ容量の合計 | 最大値          |
 | ローカル tempdb の割合 | すべてのコンピューティング ノードでの、ローカル tempdb の使用率 - 値は 5 分ごとに出力されます | 最大値          |
 
+> メトリックを表示してアラートを設定するときに考慮が必要な事項は次のとおりです。
+>
+> - 接続の失敗と成功がレポートされるのは、特定のデータ ウェアハウスについてです。論理サーバーについてはレポートされません
+
 ## <a name="query-activity"></a>クエリ アクティビティ
 T-SQL を使用して SQL Data Warehouse を監視するときのプログラム エクスペリエンスでは、動的管理ビュー (DMV) のセットがサービスによって提供されます。 これらのビューは、アクティブのトラブルシューティングを行うときと、ワークロードでパフォーマンスのボトルネックを特定するときに役に立ちます。
 
@@ -54,4 +56,3 @@ SQL Data Warehouse で提供される DMV の一覧を表示するのには、[�
 次のハウツー ガイドでは、データ ウェアハウスを監視および管理するときの一般的なシナリオとユース ケースについて説明されています。
 
 - [DMV を利用してデータ ウェアハウスのワークロードを監視する](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)
-

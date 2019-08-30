@@ -95,7 +95,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 1. その他に、iLMS アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | EnableAdfsAuthentication | ソース属性|
+    | Name | ソース属性|
     | --------|------------- |
     | division | user.department |
     | region | user.state |

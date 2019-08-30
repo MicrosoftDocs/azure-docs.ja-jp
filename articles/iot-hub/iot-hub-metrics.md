@@ -7,18 +7,21 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 6afebfe9a5db713e31fed0acd2e8ad7244f30037
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274925"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877089"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub メトリックの理解
 
 IoT Hub メトリックは、Azure サブスクリプション内の Azure IoT リソースの状態に関する有用なデータを提供します。 IoT Hub メトリックにより、ユーザーは IoT Hub サービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 ユーザー向けの統計情報は重要です。この情報は、IoT Hub で起こっていることを確認するのに役立ち、また、Azure サポートに連絡することなく問題の根本原因を特定するための有用な情報となります。
 
 メトリックは既定で有効になっています。 IoT Hub メトリックは Azure Portal で表示できます。
+
+> [!NOTE]
+> IoT Hub メトリックを使用して、お使いの IoT ハブに接続されている IoT プラグ アンド プレイ デバイスに関する情報を表示できます。 IoT プラグ アンド プレイ デバイスは、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部です。
 
 ## <a name="how-to-view-iot-hub-metrics"></a>IoT Hub メトリックを表示する方法
 

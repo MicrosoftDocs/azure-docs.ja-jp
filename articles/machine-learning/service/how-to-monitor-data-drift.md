@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 9852ec450b6da3814a3bd2bfc6aae7d19acaf584
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370395"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128278"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) にデプロイされたモデルのデータの誤差 (プレビュー) を検出する
 
@@ -40,18 +40,20 @@ Azure Machine Learning service では、AKS にデプロイされたモデルへ
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning service でデータの誤差が監視される仕組み
 
-Azure Machine Learning service を使用すると、データの誤差はデータセットまたはデプロイを通して監視されます。 データの誤差を監視するには、基準データセット (通常は、モデルのトレーニング データセット) を指定します。 基準データセットに対して 2 番目のデータセット (通常はデプロイから収集されたモデル入力データ) がテストされます。 両方のデータセットが[プロファイリング](how-to-explore-prepare-data.md#explore-with-summary-statistics)され、データの誤差の監視サービスに入力されます。 2 つのデータセット間の違いを検出するために、機械学習モデルがトレーニングされます。 モデルのパフォーマンスは、2 つのデータセット間の誤差の大きさを測定するドリフト係数に変換されます。 [モデルの解釈可能性](machine-learning-interpretability-explainability.md)を使用して、ドリフト係数に寄与するフィーチャーが計算されます。 データセットのプロファイルから、各フィーチャーに関する統計情報が追跡されます。 
+Azure Machine Learning service を使用すると、データの誤差はデータセットまたはデプロイを通して監視されます。 データの誤差を監視するには、基準データセット (通常は、モデルのトレーニング データセット) を指定します。 基準データセットに対して 2 番目のデータセット (通常はデプロイから収集されたモデル入力データ) がテストされます。 両方のデータセットがプロファイリングされ、データの誤差の監視サービスに入力されます。 2 つのデータセット間の違いを検出するために、機械学習モデルがトレーニングされます。 モデルのパフォーマンスは、2 つのデータセット間の誤差の大きさを測定するドリフト係数に変換されます。 [モデルの解釈可能性](machine-learning-interpretability-explainability.md)を使用して、ドリフト係数に寄与するフィーチャーが計算されます。 データセットのプロファイルから、各フィーチャーに関する統計情報が追跡されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
-- Azure Machine Learning サービス ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md#sdk)」の手順を使用して、次のことを実行します。
+- Azure Machine Learning SDK for Python がインストールされている場合。 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) の手順を使用して、次のことを実行します。
 
     - Miniconda 環境を作成する
     - Azure Machine Learning SDK for Python をインストールする
-    - ワークスペースの作成
-    - ワークスペース構成ファイル (aml_config/config.json) を記述する。
+
+- [Azure Machine Learning service ワークスペース](how-to-manage-workspace.md)。
+
+- ワークスペース[構成ファイル](how-to-configure-environment.md#workspace)。
 
 - 次のコマンドを使用して、データの誤差 SDK をインストールします。
 
@@ -160,9 +162,9 @@ datadrift.disable_schedule()
 
 ![Azure portal のデータの誤差の構成](media/how-to-monitor-data-drift/drift_config.png)
 
-## <a name="view-results-in-azure-ml-workspace-ui"></a>Azure ML ワークスペース UI での結果の表示
+## <a name="view-results-in-azure-portal"></a>Azure portal で結果を表示する
 
-Azure ML ワークスペース UI で結果を表示するには、モデル ページに移動します。 モデルの詳細タブに、データの誤差の構成が表示されます。 データの誤差のメトリックを視覚化する [Data Drift (Preview)]/(データの誤差 (プレビュー)/) タブが現在利用できます。 
+[Azure portal](https://portal.azure.com) でワークスペースに結果を表示するには、モデル ページに移動します。 モデルの詳細タブに、データの誤差の構成が表示されます。 データの誤差のメトリックを視覚化する [Data Drift (Preview)]/(データの誤差 (プレビュー)/) タブが現在利用できます。 
 
 ![Azure portal のデータの誤差](media/how-to-monitor-data-drift/drift_ui.png)
 
@@ -176,16 +178,7 @@ Azure ML ワークスペース UI で結果を表示するには、モデル ペ
 
 ## <a name="retrain-your-model-after-drift"></a>誤差の後にモデルを再トレーニングする
 
-データの誤差がデプロイされたモデルのパフォーマンスに悪影響を与える場合は、そのモデルを再トレーニングする必要があります。 次の [`diff()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
-) メソッドは、古いトレーニング データ セットと新しいトレーニング データ セットの間で変更された内容の概要を示します。 
-
-```python
-from azureml.core import Dataset
-
-old_training_dataset.diff(new_training_dataset)
-```
-
-前のコードの出力に基づいて、モデルの再トレーニングが必要になることがあります。 それを行うには、次の手順に進みます。
+データの誤差がデプロイされたモデルのパフォーマンスに悪影響を与える場合は、そのモデルを再トレーニングする必要があります。 それを行うには、次の手順に進みます。
 
 * 収集されたデータを調査し、新しいモデルをトレーニングするためのデータを準備します。
 * それをトレーニング/テスト データに分割します。
@@ -195,6 +188,6 @@ old_training_dataset.diff(new_training_dataset)
 
 ## <a name="next-steps"></a>次の手順
 
-* データの誤差を使用した完全な例については、[Azure ML データの誤差のノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/data-drift/azure-ml-datadrift.ipynb)に関する記事を参照してください。 この Jupyter Notebook では、[Azure Open Dataset](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) を使用して、天気を予測するモデルをトレーニングし、それを AKS にデプロイし、データの誤差を監視する方法を示します。 
+* データの誤差を使用した完全な例については、[Azure ML データの誤差のノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb)に関する記事を参照してください。 この Jupyter Notebook では、[Azure Open Dataset](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) を使用して、天気を予測するモデルをトレーニングし、それを AKS にデプロイし、データの誤差を監視する方法を示します。 
 
 * データの誤差を一般提供に移行するにあたり、ご質問、ご意見、ご提案をお待ちしております。 以下の製品フィードバック ボタンをご利用ください。 

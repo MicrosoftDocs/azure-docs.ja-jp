@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: bb23ee1e51be178f93e05b728f7b8c2e9bb18e0d
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: ad5e78638f920401a83dd431c33a68b6d80144d7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414494"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988628"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
@@ -262,6 +262,8 @@ journalctl -u iotedge --no-pager --no-full
 ```bash
 sudo iotedge list
 ```
+
+デバイスに IoT Edge をインストールした後、実行されているモジュールは **edgeAgent** だけです。 最初のデプロイを作成した後は、その他のシステム モジュール **$edgeHub** もデバイスで起動します。 詳細については、[IoT Edge モジュールのデプロイ](how-to-deploy-modules-portal.md)に関する記事を参照してください。
 
 ## <a name="tips-and-troubleshooting"></a>ヒントとトラブルシューティング
 

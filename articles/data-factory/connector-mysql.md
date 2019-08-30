@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: e05e2f2d04aeb572307f8114ca80f148b3d50e3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b17b6d12dc60546a29d37cfa12fe1f11186579e1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61370718"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967470"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -34,7 +34,9 @@ MySQL データベースのデータを、サポートされているシンク �
 
 ## <a name="prerequisites"></a>前提条件
 
-お使いの MySQL データベースにパブリックにアクセスできない場合は、セルフホステッド Integration Runtime を設定する必要があります。 セルフホステッド統合ランタイムの詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事を参照してください。 Integration Runtime のバージョン 3.7 以降には MySQL ドライバーが組み込まれているため、ドライバーを手動でインストールする必要はありません。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+Integration Runtime のバージョン 3.7 以降には MySQL ドライバーが組み込まれているため、ドライバーを手動でインストールする必要はありません。
 
 バージョン 3.7 より前のセルフホステッド IR では、Integration Runtime コンピューターに、[MySQL Connector/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) のバージョン 6.6.5 から 6.10.7 までをインストールします。 この 32 ビット ドライバーは 64 ビット IR と互換性があります。
 
@@ -52,7 +54,7 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**MySql** | はい |
 | connectionString | Azure Database for MySQL インスタンスに接続するために必要な情報を指定します。<br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 一般的な接続文字列は `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` です。 ケースごとにさらに多くのプロパティを設定できます。
 

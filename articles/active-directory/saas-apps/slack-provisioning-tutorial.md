@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036112027fcf210f0ac2ff1e631c8b0bd4b5e9ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964398"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932481"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル: Slack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -120,7 +120,9 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
   
   * Slack のワークプレイスまたは組織内でこれらの 2 つの設定が構成されている場合のみ、更新を行います。**プロファイル同期が有効**、**ユーザーが表示名を変更できない**。
   
-  * Slack の **userName** 属性は 21 文字未満で、一意の値を持つ必要があります。
+* Slack の **userName** 属性は 21 文字未満で、一意の値を持つ必要があります。
+
+* Slack では、属性 **userName** と **email** との照合のみが許可されます。  
 
 ## <a name="additional-resources"></a>その他のリソース
 

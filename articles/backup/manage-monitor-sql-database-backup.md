@@ -1,5 +1,5 @@
 ---
-title: Azure Backup によってバックアップされる Azure VM 上の SQL Server データベースを管理および監視する | Microsoft Docs
+title: Azure Backup を使用した Azure VM 上で SQL Server データベースを管理および監視する
 description: この記事では、Azure VM 上で実行されている SQL Server データベースを管理し、監視する方法について説明します。
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639585"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019032"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -92,9 +92,9 @@ Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手�
 
 > [!NOTE]
 >
-データ削除オプションの詳細については、次の FAQ を参照してください。
-* [自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
-* [自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>データ削除オプションの詳細については、以下の FAQ を参照してください。
+>* [自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>* [自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
 
@@ -120,7 +120,7 @@ SQL Database の保護を再開するには:
 * 差分バックアップ
 * ログ バックアップ
 
-コピーのみの完全バックアップにはリテンション期間を指定する必要がありますが、その他のバックアップの種類のリテンション範囲は、自動的に現在の時刻から 30 日間に設定されます。 <br/>
+コピーのみの完全バックアップのリテンション期間を指定する必要がありますが、アドホック完全バックアップのリテンション範囲は、自動的に現在の時間から 45 日間に設定されます。 <br/>
 詳細については、[SQL Server バックアップの種類](backup-architecture.md#sql-server-backup-types)に関するページをご覧ください。
 
 ## <a name="unregister-a-sql-server-instance"></a>SQL Server インスタンスを登録解除する
@@ -145,7 +145,7 @@ SQL Database の保護を再開するには:
 
 VM のワークロード拡張が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録**操作によって、操作を続行させるために、VM にワークロード バックアップ拡張が再インストールされます。  <br>
 
-このオプションは慎重に使用することをお勧めします。正常な拡張の VM 上でこの操作がトリガーされると、拡張が再起動します。 その結果、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-sql-server-azure-troubleshoot.md#re-registration-failures)がないか確認してください。
+このオプションは慎重に使用する必要があります。正常な拡張の VM 上でこの操作がトリガーされると、拡張が再起動します。 その結果、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-sql-server-azure-troubleshoot.md#re-registration-failures)がないか確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

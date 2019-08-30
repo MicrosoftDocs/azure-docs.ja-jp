@@ -6,14 +6,14 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: heidist
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
-ms.openlocfilehash: da1d39c23106b2218700e7a2707b824e240448d3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 387248b2dac7c10ec0e96454f26964ca7f15c56e
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883037"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650007"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
 

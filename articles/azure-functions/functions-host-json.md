@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4688cf6fb82eb8f726205d54d0c852fd3daf8dfb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564783"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096398"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
@@ -114,7 +113,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 > [!NOTE]
 > ログ サンプリングが原因で、一部の実行が Application Insights の [モニター] ブレードに表示されない場合があります。
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |isEnabled|true|サンプリングを有効または無効にします。| 
 |maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
@@ -174,7 +173,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |enabled|true|機能が有効かどうかを指定します。 | 
 |healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
@@ -208,7 +207,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
 |logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
@@ -231,7 +230,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |isEnabled|false|コンソール ログ記録を有効または無効にします。| 
 
@@ -263,7 +262,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 

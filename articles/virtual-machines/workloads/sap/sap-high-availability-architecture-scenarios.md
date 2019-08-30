@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6c329a2b50c946e873391db431c1cd5ff30ab4f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f4352fbf71b23aedc1dddd3e454b58196d4f5a6e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709086"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078468"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -396,7 +395,7 @@ WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを�
 
 > ![Linux][Logo_Linux] Linux
 > 
-> SUSE クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングについて詳しくは、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性][sap-suse-ascs-ha]」をご覧ください。. For alternative HA architecture on SLES, which doesn't require highly available NFS see [High-availability guide for SAP NetWeaver on SUSE Linux Enterprise Server with Azure NetApp Files for SAP applications][sap-suse-ascs-ha-anf]。
+> SUSE クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングについて詳しくは、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性][sap-suse-ascs-ha]」をご覧ください。 可用性の高い NFS が必要でない、SLES での代替 HA アーキテクチャについては、[SAP アプリケーション用に Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の SAP NetWeaver に関する高可用性ガイド][sap-suse-ascs-ha-anf]を参照してください。
 
 Red Hat クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングの詳細については、「[Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)」を参照してください
 

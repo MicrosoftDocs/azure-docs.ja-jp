@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 109c2817b95f535acfb3d6987a7dad57135ee7a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478620"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952994"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -34,7 +34,7 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
 
-次の Linux ディストリビューションは公式にサポートされています。 ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。 記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。  
+次の Linux ディストリビューションは公式にサポートされています。 ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。 記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。
 
 ### <a name="64-bit"></a>64 ビット
 
@@ -68,6 +68,24 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 ソリューションにコンピューターをオンボードする方法については、[Automation ソリューションのオンボード](automation-onboard-solutions-from-automation-account.md)に関するページを参照してください。 Change Tracking と Inventory ソリューションでのマシンのオンボードが完了したら、追跡する項目を構成できます。新しいファイルまたはレジストリ キーの追跡を有効にすると、Change Tracking と Inventory の両方に対して有効になります。
 
 Windows と Linux の両方でファイルの変更を追跡する場合、ファイルの MD5 ハッシュが使用されます。 これらのハッシュは、前回のインベントリから変更が加えられたかどうかを検出するために使用されます。
+
+### <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
+
+Azure Security Center は、Azure Change Tracking 上に構築されたファイルの整合性の監視 (FIM) を追加しました。 FIM はファイルとレジストリのみを監視しますが、完全な Change Tracking ソリューションには次のものも含まれます。
+
+- ソフトウェアの変更
+- Windows サービス
+- Linux デーモン
+
+FIM が既に有効になっていて、完全な Change Tracking ソリューションを試したい場合は、次の手順を実行する必要があります。 お使いの設定はこの処理によって削除されません。
+
+> [!NOTE]
+> 完全な Change Tracking ソリューションを有効にすると、追加料金が発生することがあります。詳細については、「[Automation の価格](https://azure.microsoft.com/en-us/pricing/details/automation/)」を参照してください。
+
+1. ワークスペースに移動し、[インストールされている監視ソリューションの一覧](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)から監視ソリューションを見つけて削除します。
+2. 「[監視ソリューションを削除する](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)」で説明されているように、ソリューション名をクリックして [概要] ページを開き、 [削除] をクリックします。
+3. Automation アカウントに移動し、 **[構成管理]** のリソース メニューから **[Change Tracking]\(変更の追跡\)** を選択して、ソリューションを再度有効にします。
+4. ワークスペースの設定の詳細を確認し、 **[Enable]\(有効にする\)** をクリックします。
 
 ### <a name="configure-linux-files-to-track"></a>追跡する Linux ファイルを構成する
 
@@ -197,7 +215,7 @@ Windows サービスに対する既定の収集の頻度は 30 分です。 こ�
 
 > [!NOTE]
 > エージェントは変更を 10 秒の間隔まで追跡できますが、データがポータルに表示されるにはまだ数分かかります。 ポータルに表示される期間中の変更も引き続き追跡され、ログに記録されます。
-  
+
 ### <a name="registry-key-change-tracking"></a>レジストリ キーの変更追跡
 
 レジストリ キーへの変更を監視する目的は、サード パーティのコードやマルウェアがアクティブ化できる拡張性のポイントを正確に特定することです。 次の一覧は、事前構成されたレジストリ キーを示しています。 これらのキーは構成されていますが、有効にはなっていません。 これらのレジストリ キーを追跡するには、それぞれを有効にする必要があります。
@@ -278,7 +296,7 @@ Change Tracking には次のアドレスが明示的に必要です。 このア
 
 ## <a name="alert-on-changes"></a>変更に関するアラート
 
-Change Tracking と Inventory の重要な機能は、構成の状態と、ハイブリッド環境の構成の状態に対する変更のアラートを生成する機能です。  
+Change Tracking と Inventory の重要な機能は、構成の状態と、ハイブリッド環境の構成の状態に対する変更のアラートを生成する機能です。
 
 次の例では、スクリーンショットで、マシン上でファイル `C:\windows\system32\drivers\etc\hosts` が変更されていることを示しています。 Hosts ファイルは Windows でホスト名を IP アドレスに解決して DNS にも優先するようにするために使用され、それによって接続の問題や、悪質な Web サイトや危険な Web サイトへのトラフィックのリダイレクトが生じる可能性があるため、このファイルは重要です。
 

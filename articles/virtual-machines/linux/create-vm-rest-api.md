@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: a7f624bc85d35048a8f9afa0f527ae592a24fbf1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667946"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083474"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -63,7 +62,7 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 要求本文を作成するには、以下の一般的な定義が使用されます。
 
-| Name                       | 必須 | Type                                                                                | 説明  |
+| 名前                       | 必須 | Type                                                                                | 説明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | リソースの場所。 |
 | 名前                       |          | string                                                                              | 仮想マシンの名前。 |
@@ -137,7 +136,7 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 仮想マシンの作成または更新操作には、2 種類の成功応答があります。
 
-| Name        | Type                                                                              | 説明 |
+| 名前        | Type                                                                              | 説明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成されました     |

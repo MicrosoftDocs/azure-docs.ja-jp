@@ -21,7 +21,7 @@ ms.locfileid: "68705085"
 # <a name="author-entity"></a>著者エンティティ
 <sub> *次の属性は、著者エンティティに固有です。(Ty = '1') </sub>
 
-名前    |説明                            |Type       | Operations
+EnableAdfsAuthentication    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 AuN     |著者の標準化名                 |string     |等しい
@@ -33,7 +33,7 @@ E       |拡張メタデータ (「拡張メタデータの属性」の表をご
 
 ## <a name="extended-metadata-attributes"></a>拡張メタデータの属性 ##
 
-名前    | 説明               
+EnableAdfsAuthentication    | 説明               
 --------|---------------------------    
 LKA.Afn     | 著者に関連付けられている所属の表示名  
 LKA.AfId        | 著者に関連付けられている所属のエンティティ ID

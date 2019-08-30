@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6e61ed5a18e69b107b78bf2042de21d14cd6beb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bd3433db92767f2d0d733ab71e4298fc5e618f8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027757"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128820"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 

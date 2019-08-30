@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a029135da79d1a0b24b2941873a0fe3187ac9f7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a763f15b57bf7f23eeb52c81dd48de7f02adc5e4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414802"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853555"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD パスワード保護の監視とログ記録
 
@@ -271,6 +271,27 @@ HeartbeatUTC の値が古い場合は、そのドメイン コントローラー
 
 PasswordPolicyDateUTC の値が古い場合は、そのマシンの Azure AD パスワード保護 DC エージェントが正しく動作していないことを示している可能性があります。
 
+## <a name="dc-agent-newer-version-available"></a>DC エージェントの新しいバージョンが使用可能
+
+DC エージェント サービスは、新しいバージョンの DC エージェント ソフトウェアがあることを検出すると、30034 警告イベントを操作ログに記録します。その例を次に示します。
+
+```text
+An update for Azure AD Password Protection DC Agent is available.
+
+If autoupgrade is enabled, this message may be ignored.
+
+If autoupgrade is disabled, refer to the following link for the latest version available:
+
+https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
+
+Current version: 1.2.116.0
+```
+
+前述のイベントには、新しいソフトウェアのバージョンが明記されていません。 その情報については、イベント メッセージに記載されたリンク先にアクセスする必要があります。
+
+> [!NOTE]
+> 前述のイベント メッセージでは自動アップグレード ("autoupgrade") について触れられていますが、現在 DC エージェント ソフトウェアでは、その機能はサポートされません。
+
 ## <a name="proxy-service-event-logging"></a>プロキシ サービス イベント ログ
 
 プロキシ サービスでは、次のイベント ログに最小セットのイベントが生成されます。
@@ -339,6 +360,27 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 コマンドレットのクエリの範囲は、-Forest パラメーターまたは -Domain パラメーターの使用の影響を受ける可能性があります。
 
 HeartbeatUTC の値が古い場合は、そのコンピューターの Azure AD パスワード保護プロキシが実行されていないか、アンインストールされていることを示している可能性があります。
+
+## <a name="proxy-agent-newer-version-available"></a>プロキシ エージェントの新しいバージョンが使用可能
+
+プロキシ エージェント サービスは、新しいバージョンのプロキシ ソフトウェアがあることを検出すると、20002 警告イベントを操作ログに記録します。その例を次に示します。
+
+```text
+An update for Azure AD Password Protection Proxy is available.
+
+If autoupgrade is enabled, this message may be ignored.
+
+If autoupgrade is disabled, refer to the following link for the latest version available:
+
+https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
+
+Current version: 1.2.116.0
+.
+```
+
+前述のイベントには、新しいソフトウェアのバージョンが明記されていません。 その情報については、イベント メッセージに記載されたリンク先にアクセスする必要があります。
+
+自動アップグレードを有効にしてプロキシ エージェントを構成した場合でも、このイベントは生成されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/13/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5b410032004bce7b97e036216c922201e1ac80c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a6a8c0118e8179da570ce91b9fa7e3523bae1d3f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068289"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650561"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Node.js で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>

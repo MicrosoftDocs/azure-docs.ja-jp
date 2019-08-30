@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 10b93e54bc3f13c72889ab7c75b0e4f6e280e7d8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9718185b41795da6d95486972441ee20bc250316
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476738"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850695"
 ---
 # <a name="my-first-powershell-runbook"></a>初めての PowerShell Runbook
 
@@ -53,7 +53,7 @@ Runbook に直接コードを入力するか、ライブラリ コントロー�
 
 1. 作成した Runbook は現在空であるため、「*Write-Output "Hello World."* 」と スクリプトの本文に入力します。
 
-   ![Hello World](media/automation-first-runbook-textual-powershell/automation-helloworld.png)  
+   ![Hello World](media/automation-first-runbook-textual-powershell/automation-helloworld.png)
 
 2. **[保存]** をクリックして Runbook を保存します。
 
@@ -65,11 +65,11 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 2. **[開始]** をクリックしてテストを開始します。 有効なオプションはこれだけです。
 3. [Runbook ジョブ](automation-runbook-execution.md) が作成され、その状態が表示されます。
 
-   最初のジョブの状態は "*キューに設定*" であり、クラウドの runbook worker が使用できるようになるのを待っていることを示します。 ワーカーがジョブを要求すると "*開始中*" になり、Runbook が実際に実行を開始すると "*実行中*" になります。  
+   最初のジョブの状態は "*キューに設定*" であり、クラウドの runbook worker が使用できるようになるのを待っていることを示します。 ワーカーがジョブを要求すると "*開始中*" になり、Runbook が実際に実行を開始すると "*実行中*" になります。
 
 4. Runbook ジョブが完了すると、その出力が表示されます。 この場合は、*Hello World* です。
 
-   ![テスト ウィンドウの出力](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)  
+   ![テスト ウィンドウの出力](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)
 
 5. テスト ウィンドウを閉じてキャンバスに戻ります。
 
@@ -79,7 +79,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
 1. ここで **[Runbook]** ウィンドウで左へスクロールして Runbook を表示すると、 **[編集状態]** は **[発行済み]** になっています。
-1. 右へスクロールして戻り、 **MyFirstRunbook-PowerShell**のウィンドウを表示します。  
+1. 右へスクロールして戻り、 **MyFirstRunbook-PowerShell**のウィンドウを表示します。
    上部のオプションを使用すると、Runbook の開始、Runbook の表示、将来の開始スケジュールの設定を行ったり、HTTP 呼び出しで開始できるように [webhook](automation-webhooks.md) を作成したりすることができます。
 1. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ページが開いたら **[OK]** をクリックします。
 1. 作成した Runbook ジョブのジョブ ページが開きます。 このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
@@ -99,7 +99,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 1. ストリーム ページとジョブ ページを閉じると、MyFirstRunbook-PowerShell ページに戻ります。
 1. **[詳細]** の **[ジョブ]** をクリックして、この Runbook のジョブ ウィンドウを開きます。 このページには、この Runbook によって作成されたジョブの一覧が表示されます。 ジョブを 1 回実行しただけであるため、一覧に表示されるジョブは 1 つだけです。
 
-   ![ジョブ リスト](media/automation-first-runbook-textual-powershell/runbook-control-job-tile.png)  
+   ![ジョブ リスト](media/automation-first-runbook-textual-powershell/runbook-control-job-tile.png)
 
 1. このジョブをクリックすると、Runbook を開始したときに表示されたのと同じジョブ ウィンドウが開きます。 このアクションにより、前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
 
@@ -110,7 +110,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
    ```powershell
    # Ensures you do not inherit an AzureRMContext in your runbook
    Disable-AzureRmContextAutosave –Scope Process
-   
+
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
@@ -145,7 +145,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。 仮想マシンを起動するコマンドを追加します。 Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前を Runbook にハードコーディングします。
 
-1. *Connect-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* 」と入力します。  
+1. *Connect-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* 」と入力します。
 
    ```powershell
    # Ensures you do not inherit an AzureRMContext in your runbook
@@ -184,7 +184,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 1. テスト ウィンドウを閉じます。
 1. **[発行]** をクリックして、新しいバージョンの Runbook を発行します。
 1. 前の手順で開始した仮想マシンを停止します。
-1. **[OK]** をクリックして Runbook を開始します。 起動する仮想マシンの **VMName** と **ResourceGroupName** を入力します。<br><br> ![Pass Parameter](media/automation-first-runbook-textual-powershell/automation-pass-params.png)<br>  
+1. **[OK]** をクリックして Runbook を開始します。 起動する仮想マシンの **VMName** と **ResourceGroupName** を入力します。<br><br> ![Pass Parameter](media/automation-first-runbook-textual-powershell/automation-pass-params.png)<br>
 1. Runbook が完了したら、仮想マシンが開始されたことを確認します。
 
 ## <a name="differences-from-powershell-workflow"></a>PowerShell Workflow との違い
@@ -198,6 +198,7 @@ PowerShell Runbook のライフサイクル、機能、管理は、PowerShell Wo
 
 ## <a name="next-steps"></a>次の手順
 
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](/powershell/scripting/overview)に関するページを参照してください。
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)

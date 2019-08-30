@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse の操作について | Microsoft Docs
 description: 'SQL Data Warehouse の柔軟性により、Data Warehouse ユニット (DWU) のスライディング スケールを使用してコンピューティング機能を拡大、縮小、または一時停止できます。 この記事では、データ ウェアハウスのメトリックと、それらが DWU とどのように関連するのかを説明します。 '
 services: sql-data-warehouse
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47e04cb6b58a185e84120fe73a8468834d2e57fd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531163"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907921"
 ---
 # <a name="data-warehouse-workload"></a>データ ウェアハウスのワークロード
 データ ウェアハウスのワークロードは、データ ウェアハウスに対して発生するすべての操作を指します。 データ ウェアハウスのワークロードには、ウェアハウスへのデータの読み込み、データ ウェアハウスでの分析の実行とレポート作成、データ ウェアハウスでのデータの管理、およびデータ ウェアハウスからのデータのエクスポートというプロセス全体が含まれます。 これらのコンポーネントの深度や幅は、多くの場合データ ウェアハウスの成熟度レベルと比例します。

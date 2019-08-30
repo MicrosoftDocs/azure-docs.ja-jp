@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/29/2019
+ms.date: 08/16/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9d4fd798309398dff38081cc66b4071c5dd1f5bf
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1344b86b9fa922dc22870dda495ff367a511b8ca
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670780"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640254"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -102,7 +102,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | EnableAdfsAuthentication  | 置換後の文字列 | 例 |
+    | Name  | 置換後の文字列 | 例 |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | ポータルで見つかった Management REST API ドキュメントの URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 

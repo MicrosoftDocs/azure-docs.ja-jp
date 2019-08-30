@@ -1,7 +1,7 @@
 ---
-title: PyTorch モデルのトレーニングと登録
+title: PyTorch を使用したディープ ラーニング ニューラル ネットワークのトレーニング
 titleSuffix: Azure Machine Learning service
-description: この記事では、Azure Machine Learning service を使用して PyTorch モデルをトレーニングおよび登録する方法について説明します。
+description: Azure Machine Learning の PyTorch 推定クラスを使用して、PyTorch トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。  このサンプル スクリプトは、PyTorch の転移学習チュートリアルに基づいてニワトリと七面鳥の画像を分類し、ディープ ラーニング ニューラル ネットワークを構築します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,39 +9,41 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: peterlu
-ms.date: 06/18/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9c953eeecedf14a8f3fae43c5d4713252d58b4c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840079"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966782"
 ---
-# <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して PyTorch モデルを大規模にトレーニングおよび登録する
+# <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする
 
-この記事では、Azure Machine Learning service を使用して PyTorch モデルをトレーニングおよび登録する方法について説明します。 これは、鶏と七面鳥の画像のためのディープ ニューラル ネットワーク (DNN) 分類器を構築する、[PyTorch の転移学習チュートリアル](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)に基づいています。
+この記事では、Azure Machine Learning の [PyTorch 推定](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)クラスを使用して、[PyTorch](https://pytorch.org/) トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。  
 
-[PyTorch](https://pytorch.org/) は、ディープ ニューラル ネットワーク (DNN) の作成に一般的に使用されている、オープン ソースのコンピューティング フレームワークです。 Azure Machine Learning service を利用すると、エラスティック クラウド コンピューティング リソースを使用して、オープン ソースのトレーニング ジョブを迅速にスケールアウトできます。 トレーニングの実行、モデルのバージョン管理、モデルのデプロイなどを追跡することもできます。
+この記事のサンプル スクリプトは、PyTorch の転移学習[チュートリアル](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)に基づいてニワトリと七面鳥の画像を分類し、ディープ ラーニング ニューラル ネットワークを構築するために使用されます。 
 
-PyTorch モデルをゼロから開発する場合でも、既存のモデルをクラウドに導入する場合でも、Azure Machine Learning service は運用環境対応モデルの構築に役立ちます。
+PyTorch のディープ ラーニング モデルを一からトレーニングする場合でも、既存のモデルをクラウドに持ち込む場合でも、Azure Machine Learning のエラスティック クラウド コンピューティング リソースを使用して、オープンソースのトレーニング ジョブをスケールアウトできます。 Azure Machine Learning を使用して、運用レベルのモデルをビルド、デプロイ、バージョン管理、および監視することができます。 
+
+[ディープ ラーニングと機械学習の比較](concept-deep-learning-vs-machine-learning.md)の詳細を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-次のいずれかの環境で、このコードを実行してください。
+このコードは、次の環境のいずれかで実行してください。
 
- - Azure Machine Learning Notebook VM - ダウンロードとインストールが不要
+ - Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 
-    - [クラウドベースのノートブックによるクイックスタート](quickstart-run-cloud-notebook.md)を完了して、SDK とサンプル リポジトリが事前に読み込まれている専用のノートブック サーバーを作成します。 Notebook サーバーを作成します。
-    - Notebook サーバー上の samples フォルダーで、**how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-pytorch** の順に移動して、次の完了および展開済みノートブックを見つけます。 
+    - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+    - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-pytorch** の順に移動して、次の完了および展開済みノートブックを見つけます。 
  
  - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK for Python をインストールする](setup-create-workspace.md#sdk)
-    - [ワークスペース構成ファイルを作成する](setup-create-workspace.md#write-a-configuration-file)
+    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - [サンプル スクリプト ファイル `pytorch_train.py` をダウンロードする](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
      
-    このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb)は、GitHub サンプル ページにもあります。 このノートブックには、高度なハイパーパラメーターの調整、モデル デプロイ、およびノートブック ウィジェットについて説明するセクションがあります。
+    このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb)は、GitHub サンプル ページにもあります。 このノートブックには、インテリジェントなハイパーパラメーター調整、モデル デプロイ、およびノートブックのウィジェットを示す展開済みセクションが含まれています。
 
 ## <a name="set-up-the-experiment"></a>実験を設定する
 
@@ -73,7 +75,7 @@ from azureml.train.dnn import PyTorch
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>実験の作成
+### <a name="create-a-deep-learning-experiment"></a>ディープ ラーニングの実験を作成する
 
 トレーニング スクリプトを保存するための実験とフォルダーを作成します。 この例では、"pytorch-birds" という実験を作成します。
 
@@ -158,7 +160,7 @@ run.wait_for_completion(show_output=True)
 
 - **準備**:docker イメージは PyTorch エスティメーターに従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。
 
-- **拡大縮小**:Batch AI クラスターで実行の実施に現在使用できる数よりも多くのノードが必要な場合、スケールアップが試行されます。
+- **拡大縮小**:Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
 
 - **Running**: script フォルダー内のすべてのスクリプトがコンピューティング先にアップロードされ、データ ストアがマウントまたはコピーされ、entry_script が実行されます。 stdout および ./logs フォルダーの出力は実行履歴にストリーミングされ、実行を監視するために使用できます。
 
@@ -220,10 +222,11 @@ import horovod
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Machine Learning service で PyTorch モデルをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
+この記事では、Azure Machine Learning service 上で PyTorch を使用して、ディープ ラーニング ニューラル ネットワークをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
 
 > [!div class="nextstepaction"]
 > [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
 * [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 * [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
+* [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

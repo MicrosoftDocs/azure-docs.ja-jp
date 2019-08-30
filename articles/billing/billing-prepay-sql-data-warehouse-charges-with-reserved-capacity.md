@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 08c9f958f5103da9961f4c2d29be97f455cecc4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359271"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779980"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>容量が予約された SQL Data Warehouse 料金の前払い
 
@@ -50,8 +50,8 @@ SQL Data Warehouse の予約サイズは、使用するコンピューティン�
    - 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
 4. スコープを選択します。 [スコープ] リストを使用して、サブスクリプション スコープを選択します。
    - **単一のリソース グループのスコープ** — 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
-   - **単一サブスクリプション** — 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
-   - **共有スコープ** — 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
+   - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
+   - **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
    - エンタープライズのお客様の場合、課金コンテキストは EA 登録です。
    - 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。
 5. リージョンを選択して、予約容量でカバーされる Azure リージョンを選びます。
@@ -61,13 +61,9 @@ SQL Data Warehouse の予約サイズは、使用するコンピューティン�
 8. **[購入]** を選択します。
 9. **[この予約を表示する]** を選択すると、購入の状態が表示されます。
 
-## <a name="cancellations-and-exchanges"></a>キャンセルと交換
+## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-SQL Data Warehouse の予約容量をキャンセルする必要がある場合は、12% の中途解約料が発生する可能性があります。 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいています。 払い戻し額の上限は年額 50,000.00 ドルです。 日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルするには、Azure portal の予約に移動し、 **[払い戻し]** を選択します。
-
-ご自身の SQL Data Warehouse 予約容量を別のリージョンまたは期間に変更する必要がある場合は、同等以上の価値がある別の予約に交換できます。 新しい予約期間の開始日は、元の予約からは引き継がれません。 1 年または 3 年の予約期間は、新しい予約を作成した時点から始まります。 交換するには、Azure portal の予約を開き、 **[交換]** を選択します。
-
-予約を交換または返金する方法の詳細については、[予約の交換と返金](billing-azure-reservations-self-service-exchange-and-refund.md)に関するページを参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
 
 予約割引は、SQL Data Warehouse の予約容量のスコープとリージョンに一致する複数の SQL Data Warehouse インスタンスに自動的に適用されます。 SQL Data Warehouse の予約容量のスコープは、[Azure portal](https://portal.azure.com/)、PowerShell、CLI、または API で更新できます。
 

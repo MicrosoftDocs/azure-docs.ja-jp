@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39b359ef7feeaec541ba17e98a5d1e9b74c6403a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0da4c6b1c1434dae564ab4876a3ab3f341a87097
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957578"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891950"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>アンマネージド Azure Active Directory の職場または学校アカウントを削除する
 

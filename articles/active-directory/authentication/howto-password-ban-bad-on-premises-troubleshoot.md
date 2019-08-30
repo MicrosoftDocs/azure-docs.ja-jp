@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d96f5bb189dfd20c65fc6fc6ddcb8fff66d52ff
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666236"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952799"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD パスワード保護のトラブルシューティング
 
@@ -32,7 +32,7 @@ Azure AD パスワード保護をデプロイした後、トラブルシュー�
 
 この問題の主な症状は、DC エージェント管理イベント ログ内の 30018 イベントに相当します。 この問題には、次に示すいくつかの原因が考えられます。
 
-1. DC エージェントが、登録されているプロキシへのネットワーク接続を許可しない、ネットワークの分離された部分にあります。 そのため、この問題は、DC エージェントが Azure からパスワード ポリシーをダウンロードするためにプロキシと通信でき、それによって sysvol 共有内のポリシー ファイルのレプリケーションを使用して分離された DC によって取得される限り、無害である可能性があります。
+1. DC エージェントが、登録されているプロキシへのネットワーク接続を許可しない、ネットワークの分離された部分にあります。 この問題は、Azure からパスワード ポリシーをダウンロードするために他の DC エージェントがプロキシと通信できる限りは、問題にならない可能性があります。 ダウンロードが完了すると、これらのポリシーは、sysvol 共有内のポリシー ファイルのレプリケーションを介して、分離された DC によって取得されます。
 
 1. プロキシ ホスト コンピューターが RPC エンドポイント マッパー エンドポイント (ポート 135) へのアクセスをブロックしている
 
@@ -41,6 +41,8 @@ Azure AD パスワード保護をデプロイした後、トラブルシュー�
 1. プロキシ ホスト コンピューターがプロキシ サービスによってリッスンされる RPC エンドポイント (動的または静的) へのアクセスをブロックしている
 
    Azure AD パスワード保護プロキシのインストーラーでは、Azure AD パスワード保護プロキシ サービスによってリッスンされる受信ポートへのアクセスを許可する Windows ファイアウォールの受信規則が、自動的に作成されます。 このルールを後で削除したり無効にしたりすると、DC エージェントはプロキシ サービスと通信できなくなります。 別のファイアウォール製品ではなく組み込みの Windows ファイアウォールを無効にしている場合は、そのファイアウォールを、Azure AD パスワード保護プロキシ サービスによってリッスンされる受信ポートへのアクセスを許可するように構成する必要があります。 この構成は、より具体的には、(`Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用して) プロキシ サービスが特定の静的な RPC ポートをリッスンするように構成されている場合に行われることがあります。
+
+1. プロキシ ホスト コンピューターは、ドメイン コントローラーがコンピューターにログオンする機能を許可するようには構成されていません。 この動作は、"ネットワーク経由でコンピューターへアクセス" ユーザー特権の割り当てによって制御されます。 フォレスト内のすべてのドメインのすべてのドメイン コントローラーに、この特権を付与する必要があります。 多くの場合、この設定は、より大きなネットワーク強化作業の一部として制約されます。
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>プロキシ サービスが Azure と通信できない
 
@@ -69,6 +71,8 @@ KDS サービスを開始できない最も一般的な根本原因は、Active 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>脆弱なパスワードが受け入れられているが、受け入れるべきではない
 
 この問題にはいくつかの原因が考えられます。
+
+1. DC エージェントで実行されているパブリック プレビュー版ソフトウェアの有効期限が切れています。 「[パブリック プレビュー DC エージェント ソフトウェアの有効期限切れ](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)」を参照してください。
 
 1. DC エージェントがポリシーをダウンロードできないか、既存のポリシーの暗号化を解除できません。 上記のトピックで考えられる原因を確認してください。
 
@@ -99,7 +103,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Azure AD パスワード保護で Active Directory DSRM パスワードのパスワード検証イベント ログ イベントがログに記録されるとき、イベント ログ メッセージにユーザー名が含まれないことが予想されます。 これは、DSRM アカウントが実際の Active Directory ドメインの一部ではないローカル アカウントであるために発生します。  
+Azure AD パスワード保護で Active Directory DSRM パスワードのパスワード検証イベント ログ イベントがログに記録されるとき、イベント ログ メッセージにユーザー名が含まれないことが予想されます。 この動作は、DSRM アカウントが実際の Active Directory ドメインの一部ではないローカル アカウントであるために発生します。  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>弱い DSRM パスワードが原因でドメイン コントローラー レプリカの昇格が失敗する
 
@@ -119,7 +123,67 @@ DC エージェント ソフトウェアを実行中でもドメイン コント
 
 ## <a name="booting-into-directory-services-repair-mode"></a>ディレクトリ サービス修復モードでの起動
 
-ドメイン コントローラーがディレクトリ サービスの修復モードで起動された場合、DC エージェント サービスでこの条件が検出され、現在アクティブなポリシー構成に関係なく、すべてのパスワード検証または適用アクティビティが無効にされます。
+ドメイン コントローラーがディレクトリ サービスの修復モードで起動された場合、DC エージェントのパスワード フィルター DLL でこの条件が検出され、現在アクティブなポリシー構成に関係なく、すべてのパスワード検証または適用アクティビティが無効にされます。 DC エージェントのパスワード フィルター DLL は、管理者のイベント ログに 10023 警告イベントを記録します。次に例を示します。
+
+```text
+The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
+```
+## <a name="public-preview-dc-agent-software-has-expired"></a>パブリック プレビュー DC エージェント ソフトウェアの有効期限切れ
+
+Azure AD パスワード保護のパブリック プレビュー期間中、次の日付になったらパスワード検証要求の処理を停止するよう、DC エージェント ソフトウェアがハードコードされています。
+
+* バージョン 1.2.65.0 は、2019 年 9 月 1 日にパスワード検証要求の処理を停止します。
+* バージョン 1.2.25.0 およびそれ以前は、2019 年 7 月 1 日にパスワード検証要求の処理を停止しました。
+
+期限が近づくと、時間制限のあるすべての DC エージェント バージョンは、起動時に DC エージェント管理イベント ログに 10021 イベントを出力します。これは次のようになります。
+
+```text
+The password filter dll has successfully loaded and initialized.
+
+The allowable trial period is nearing expiration. Once the trial period has expired, the password filter dll will no longer process passwords. Please contact Microsoft for an newer supported version of the software.
+
+Expiration date:  9/01/2019 0:00:00 AM
+
+This message will not be repeated until the next reboot.
+```
+
+期限が過ぎると、時間制限のあるすべての DC エージェント バージョンは、起動時に DC エージェント管理イベント ログに 10022 イベントを出力します。これは次のようになります。
+
+```text
+The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
+
+No further messages will be logged until after the next reboot.
+```
+
+期限は初回起動時にしかチェックされないため、カレンダーの期限が過ぎてからも長期間、これらのイベントが記録されない場合があります。 期限が認識された後、ドメイン コントローラーまたはより大規模な環境への悪影響は、すべてのパスワードが自動的に承認されることを除いては発生しません。
+
+> [!IMPORTANT]
+> Microsoft では、有効期限が切れたパブリック プレビュー DC エージェントを、すぐに最新バージョンにアップグレードすることをお勧めします。
+
+アップグレードが必要な環境内の DC エージェントを検出する簡単な方法は、`Get-AzureADPasswordProtectionDCAgent` コマンドレットを実行することです。次に例を示します。
+
+```powershell
+PS C:\> Get-AzureADPasswordProtectionDCAgent
+
+ServerFQDN            : bpl1.bpl.com
+SoftwareVersion       : 1.2.125.0
+Domain                : bpl.com
+Forest                : bpl.com
+PasswordPolicyDateUTC : 8/1/2019 9:18:05 PM
+HeartbeatUTC          : 8/1/2019 10:00:00 PM
+AzureTenant           : bpltest.onmicrosoft.com
+```
+
+このトピックに関して、SoftwareVersion フィールドは明らかに、注目すべき重要なプロパティです。 PowerShell のフィルターを使用して、既に必要なベースライン バージョン以上である DC エージェントを除外することもできます。次に例を示します。
+
+```powershell
+PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
+PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
+```
+
+Azure AD パスワード保護プロキシ ソフトウェアでは、どのバージョンでも期間が制限されません。 Microsoft では、DC エージェントとプロキシ エージェントのどちらも、最新バージョンがリリースされたらすぐ、そのバージョンにアップグレードすることもお勧めします。 上記の DC エージェントの例と同様に、`Get-AzureADPasswordProtectionProxy` コマンドレットを使用して、アップグレードが必要なプロキシ エージェントを見つけることができます。
+
+具体的なアップグレード手順の詳細については、[DC エージェントのアップグレード](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)および[プロキシ エージェントのアップグレード](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent)に関する項目を参照してください。
 
 ## <a name="emergency-remediation"></a>緊急時の修復
 

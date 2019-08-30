@@ -26,7 +26,7 @@ ms.locfileid: "66299162"
 
 **ストリーミング ロケーター**を作成するときに、**アセット**名と**ストリーミング ポリシー**名を指定する必要があります。 詳細については、次のトピックを参照してください。
 
-* [資産](assets-concept.md)
+* [アセット](assets-concept.md)
 * [ストリーミング ポリシー](streaming-policy-concept.md)
 * [コンテンツ キー ポリシー](content-key-policy-concept.md)
 
@@ -83,9 +83,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
 
-## <a name="list-streaming-locators-by-asset-name"></a>資産名別のストリーミング ロケーターの一覧
+## <a name="list-streaming-locators-by-asset-name"></a>アセット名別のストリーミング ロケーターの一覧
 
-関連する資産名に基づくストリーミング ロケーターを取得するには、次の操作を使用します。
+関連するアセット名に基づくストリーミング ロケーターを取得するには、次の操作を使用します。
 
 |言語|API|
 |---|---|
@@ -97,7 +97,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ## <a name="also-see"></a>関連トピック
 
-* [資産](assets-concept.md)
+* [アセット](assets-concept.md)
 * [ストリーミング ポリシー](streaming-policy-concept.md)
 * [コンテンツ キー ポリシー](content-key-policy-concept.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (Java) | Microsoft Docs
+title: クイック スタート:Java を使用して Azure IoT Hub に利用統計情報を送信する
 description: このクイック スタートでは、2 つのサンプル Java アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT ハブから利用統計情報を読み取ります。
 author: wesmc7777
 manager: philmea
@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, seo-java-august2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 52e221088a7b12551636ecdc81532448f38eb26c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 15d9447d7078fd4858a7957448dd30d07049d6e9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330464"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68958615"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Java)
 
@@ -55,7 +55,7 @@ mvn --version
 az extension add --name azure-cli-iot-ext
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip からサンプル Java プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+[https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip ) からサンプル Java プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

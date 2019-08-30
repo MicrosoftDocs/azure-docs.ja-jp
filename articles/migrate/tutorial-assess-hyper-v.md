@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828329"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639982"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して Hyper-V VM を評価する
 
@@ -128,13 +128,17 @@ Azure Migrate Server Assessment では、軽量の Hyper-V VM アプライアン
 
 ダウンロードしたファイルをインポートし、VM を作成します。
 
-1. アプライアンス VM をホストする Hyper-V ホスト上のフォルダーに、圧縮された VHD ファイルを抽出します。 3 つのフォルダーが抽出されます。
+1. アプライアンス VM の配置先となる Hyper-V ホストに zip 圧縮済みの VHD ファイルをダウンロードしたら、その ZIP ファイルを展開します。
+    - 展開先で、**AzureMigrateAppliance_VersionNumber** というフォルダーにファイルが解凍されます。
+    - このフォルダーにも、**AzureMigrateAppliance_VersionNumber** というサブフォルダーが格納されています。
+    - このサブフォルダーには、さらに **Snapshots**、**Virtual Hard Disks**、**Virtual Machines** という 3 つのサブフォルダーが格納されています。
+
 2. Hyper-V マネージャーを開きます。 **[アクション]** で **[仮想マシンのインポート]** をクリックします。
 
     ![VHD をデプロイする](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. 仮想マシンのインポート ウィザードの **[開始する前に]** で、 **[次へ]** をクリックします。
-3. **[フォルダーの検索]** で、抽出された VHD が含まれているフォルダーを指定します。 その後、 **[次へ]** をクリックします。
+3. **[フォルダーの検索]** で、 **[Virtual Machines]\(仮想マシン\)** フォルダーを選択します。 その後、 **[次へ]** をクリックします。
 1. **[仮想マシンを選択します]** で、 **[次へ]** をクリックします。
 2. **[インポートの種類の選択]** で、 **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 その後、 **[次へ]** をクリックします。
 3. **[移動先の選択]** は、既定の設定のままにします。 **[次へ]** をクリックします。

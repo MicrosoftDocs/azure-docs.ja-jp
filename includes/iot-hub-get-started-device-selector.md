@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
-ms.openlocfilehash: ed001c74d0a351bc1fb687810177cfcd76178b31
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 943e3e153411459a66aaffac68658e0780a25734
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181271"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638287"
 ---
 > [!div class="op_single_selector"]
 > * [Raspberry Pi Web シミュレーター](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)   
@@ -20,5 +20,4 @@ ms.locfileid: "67181271"
 > * [VS Code での IoT DevKit AZ3166](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Node.js での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [C での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-c-get-started.md)
-> * [Arduino IDE での Adafruit Feather HUZZAH ESP8266](../articles/iot-hub/iot-hub-arduino-huzzah-esp8266-get-started.md)
 > * [Swift での iOS](../articles/iot-hub/quickstart-send-telemetry-ios.md)

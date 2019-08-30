@@ -101,7 +101,7 @@ Cognitive Services は次の場合に使用します。
 |[Immersive Reader](./immersive-reader/overview.md)|x|||
 |[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
-|[Personalizer](./personalizer/what-is-personalizer.md)|x*|x*|x|
+|[Personalizer](./personalizer/what-is-personalizer.md)|○*|○*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[Speaker Recognizer](./speaker-recognition/home.md)||x||
 |[Speech のテキスト読み上げ (TTS)](speech-service/text-to-speech.md)|x|x||

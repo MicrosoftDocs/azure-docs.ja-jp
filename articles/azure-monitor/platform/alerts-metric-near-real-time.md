@@ -5,15 +5,15 @@ author: snehithm
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 07/17/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 965d1ace2afdad21a069193b508fc2b10fdf4700
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37ef1cda37e1799a4dc488947e6c9ed4c9ad4055
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697228"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636182"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
@@ -87,11 +87,13 @@ Azure Monitor が[新しいタイプのメトリック アラート](../../azure
       "name": "StorageCheck",
       "description": "",
       "conditionType": "SingleResourceMultipleMetricCriteria",
+      "severity":"3",
       "condition": {
         "windowSize": "PT5M",
         "allOf": [
           {
             "metricName": "Transactions",
+            "metricNamespace":"microsoft.storage/storageAccounts",
             "dimensions": [
               {
                 "name": "AccountResourceId",

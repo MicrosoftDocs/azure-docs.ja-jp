@@ -3,15 +3,15 @@ title: Azure Cosmos DB の要求ユニット (RU) 使用量を確認する
 description: Azure Cosmos コンテナーに対して実行した操作の要求ユニット (RU) 使用量を確認する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 96c36067456a49a5760d6fde488dcb4ad8311a90
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 682273524269682f62cd386de1c9161888747f16
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356465"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093740"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
 

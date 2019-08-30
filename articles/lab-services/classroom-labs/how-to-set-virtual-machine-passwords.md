@@ -11,22 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: c1564fadef35a20d0d87db8439ae1cc3dc923318
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: a4cb2abec429a790f493f95d3d16b2ff7b3eb445
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144089"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69645027"
 ---
-# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs"></a>クラスルーム ラボで仮想マシンのパスワードを設定またはリセットする
-この記事では、クラスルーム ラボで VM にアクセスするためのパスワードを設定およびリセットするさまざまな方法について説明します。 
-
-## <a name="lab-owners-teachers"></a>ラボ所有者 (教師)
+# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-instructor"></a>クラスルーム ラボの仮想マシンに対するパスワードを設定またはリセットする (インストラクター)
 ラボ所有者 (教師) は、ラボの作成時 (ラボ作成ウィザードで) またはラボの作成後に (ダッシュボードで) VM のパスワードを設定/リセットできます。 
 
-### <a name="set-password-at-the-time-of-lab-creation"></a>ラボの作成時にパスワードを設定する
+## <a name="set-password-at-the-time-of-lab-creation"></a>ラボの作成時にパスワードを設定する
 ラボ所有者 (教師) は、ラボ作成ウィザードの **[資格情報の設定]** ページでラボ内の VM のパスワードを設定できます。
 
 ![資格情報の設定](../media/tutorial-setup-classroom-lab/set-credentials.png)
@@ -39,7 +36,7 @@ ms.locfileid: "67144089"
 
 ラボ所有者は、ラボの作成後にダッシュボードでパスワードをリセットすることもできます。 
 
-### <a name="reset-password-on-the-dashboard"></a>ダッシュボードのパスワードのリセット
+## <a name="reset-password-on-the-dashboard"></a>ダッシュボードのパスワードのリセット
 
 1. ラボ タイルのオーバーフロー メニュー (縦 3 つのドット) を選択し、 **[Reset password]\(パスワードのリセット\)** を選択します。 
 
@@ -48,14 +45,7 @@ ms.locfileid: "67144089"
     
     ![[Set password]\(パスワードの設定\) ダイアログ ボックス](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
-## <a name="lab-users-students"></a>ラボ ユーザー (学生)
-ラボの作成時に、ラボ所有者は **[Use same password for all virtual machines]\(すべての仮想マシンに同じパスワードを使用する\)** を有効または無効にすることができます。 このオプションが有効な場合、学生はパスワードをリセットできません。 ラボ内のすべての VM のパスワードは、教師が設定したパスワードと同じです。 
-
-このオプションを無効にすると、ユーザーが初めて VM に接続するときにパスワードを設定する必要があります。 ユーザー (学生) が **[My virtual machines]\(自分の仮想マシン\)** ページのラボ タイルで **[Connect]\(接続\)** ボタンを選択すると、VM のパスワードを設定する次のダイアログ ボックスが表示されます。 
-
-![学生のパスワードのリセット](../media/how-to-set-virtual-machine-passwords/student-set-password.png)
-
-学生は、ラボ タイルのオーバーフロー メニュー (**縦の 3 つのドット**) をクリックして、 **[Reset password]\(パスワードのリセット\)** を選択してパスワードを設定することもできます。 
-
 ## <a name="next-steps"></a>次の手順
 (ラボ所有者として) 構成できる他の学生の使用オプションの詳細については、次の記事を参照してください。[学生の使用の構成](how-to-configure-student-usage.md)
+
+学生が各自の VM のパスワードをリセットする方法については、「[クラスルーム ラボの仮想マシンに対するパスワードを設定またはリセットする (学生)](how-to-set-virtual-machine-passwords-student.md)」を参照してください。

@@ -104,7 +104,7 @@ Azure Monitor の**アラート** ランディング ページから **[アク�
 ### <a name="action-rule-details"></a>アクション ルールの詳細
 
 最後に、アクション ルールに対して次の詳細を構成します。
-* EnableAdfsAuthentication
+* 名前
 * 保存先のリソース グループ
 * 説明 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files を使用する際のボリュームのパフォーマンスとメトリックのベンチマーク テスト | Microsoft Docs
+title: Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション | Microsoft Docs
 description: Azure NetApp Files を使用する際のボリュームのパフォーマンスとメトリックのベンチマーク テストに関する推奨事項を示します。
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 12ae9e313655924f11799152b5e58b77776c135c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1969b3c237a4133df6f53bd6426ca4d50581cbcb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479076"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881729"
 ---
-# <a name="benchmark-testing-for-volume-performance-and-metrics-using-azure-netapp-files"></a>Azure NetApp Files を使用する際のボリュームのパフォーマンスとメトリックのベンチマーク テスト
+# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション
 
 この記事では、Azure NetApp Files を使用する際のボリュームのパフォーマンスとメトリックのベンチマーク テストに関する推奨事項を示します。
 

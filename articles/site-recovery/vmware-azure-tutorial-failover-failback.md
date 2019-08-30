@@ -6,15 +6,15 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 854e09600440c28f7505a016566ea0f05e994f5f
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 852193e137eab10d1e46c5ba6ae6636d530095be
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418317"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972191"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms"></a>VMware VM のフェールオーバーとフェールバック
 
@@ -61,7 +61,7 @@ ms.locfileid: "66418317"
 
 3. **[コンピューティングとネットワーク]** で、必要に応じて、これらのプロパティを変更することができます。
     * Azure の名前
-    * リソース グループ
+    * Resource group
     * ターゲット サイズ
     * [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)
     * マネージド ディスクの設定
@@ -86,7 +86,7 @@ ms.locfileid: "66418317"
 
 一部のシナリオでは、フェールオーバーで追加処理が必要です。これが完了するまで約 8 分から 10 分かかります。 以下の場合は、テスト フェールオーバーの時間が長くなることがあります。
 
-* 9.8 よりも前のバージョンのモビリティ サービスを実行している VMware VM。
+* 9\.8 よりも前のバージョンのモビリティ サービスを実行している VMware VM。
 * 物理サーバー。
 * VMware Linux VM。
 * 物理サーバーとして保護されている Hyper-V VM。

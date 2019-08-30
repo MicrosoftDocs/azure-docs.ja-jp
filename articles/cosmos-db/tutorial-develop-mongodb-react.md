@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: 1bb8779db51a3fdc3af4a9169ce5123ebf6e3f50
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477752"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614103"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
 
@@ -69,7 +69,7 @@ ms.locfileid: "66477752"
 
 ## <a name="read-and-create-heroes-in-the-app"></a>アプリでのヒーローの読み取りと作成
 
-この動画では、Cosmos DB データベースにヒーローを作成したり、ヒーローを読み取ったりする方法のほか、Postman と React UI でそれらのメソッドをテストする方法について紹介します。 
+この動画では、Cosmos データベースにヒーローを作成したり、ヒーローを読み取ったりする方法のほか、Postman と React UI でそれらのメソッドをテストする方法について紹介します。 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 

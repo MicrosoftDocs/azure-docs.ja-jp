@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 6fe2e63138ce9e0f4e8980e4f37330228ac2bdb6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369431"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036137"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -82,7 +82,7 @@ ThinPrint は、Windows Virtual Desktop の付加価値サービス プロバイ
 ThinPrint の ezeep ソリューションにより、企業の既存の印刷インフラストラクチャへの接続が可能になり、Windows Virtual Desktop の価値が拡大します。 ezeep を使用すると、ユーザーはどこにいても企業の印刷を制御できます。 ezeep を使用すると、ユーザーは、Windows Virtual Desktop と印刷用ハードウェアの間のギャップを埋めることができます。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [パートナーの Web サイトにアクセスする。](http://www.ezeep.com/wvd-printing)
+- [パートナーの Web サイトにアクセスする。](https://www.ezeep.com/wvd-printing)
 
 ## <a name="workspot"></a>Workspot
 

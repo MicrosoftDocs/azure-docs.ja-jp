@@ -9,16 +9,16 @@ ms.date: 06/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0f73871d8248b2f52bab5934eef03d883c72ed79
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985399"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640506"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
-接続文字列には、アプリケーションの実行時に共有キーによる承認を使用して Azure Storage アカウント内のデータにアクセスするために必要な認証情報が格納されています。 接続文字列は、次の目的に構成できます。
+接続文字列には、アプリケーションの実行時に共有キーによる承認を使用して Azure Storage アカウント内のデータにアクセスするために必要な承認情報が格納されています。 接続文字列は、次の目的に構成できます。
 
 * Azure ストレージ エミュレーターに接続する。
 * Azure のストレージ アカウントにアクセスする。

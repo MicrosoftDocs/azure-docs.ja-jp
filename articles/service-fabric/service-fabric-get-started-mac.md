@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
-ms.devlang: linux
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 84d1f52b5fb8f18d3578bad28930f74534b1409f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ce8d944e7334b071a4a48f38f8c4fafaeff4c47
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60947596"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035278"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -174,8 +173,9 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
     brew install gradle
     ```
 
-    >[!TIP]
-    > 正しいバージョンの JDK がインストールされていることを確認してください。 
+    > [!IMPORTANT]
+    > 現在のバージョンの `brew cask install java` では、より新しいバージョンの JDK がインストールされる場合があります。
+    > 必ず JDK 8 をインストールしてください。
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>ターミナルから Mac にアプリケーションをデプロイする
 

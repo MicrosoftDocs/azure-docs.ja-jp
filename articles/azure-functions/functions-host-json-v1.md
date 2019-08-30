@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c169d9cc774a2c6264ba1520240005f13ba9d2da
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62107076"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096450"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x の host.json のリファレンス
 
@@ -163,7 +162,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |enabled|true|機能が有効かどうかを指定します。 | 
 |healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
@@ -210,7 +209,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |categoryFilter|該当なし|カテゴリ別のフィルターを指定します| 
 |defaultLevel|Information|`categoryLevels` 配列に指定されていないカテゴリの場合、このレベル以上のログを Application Insights に送信します。| 
@@ -232,7 +231,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |maxPollingInterval|60000|キューのポーリングの最大間隔 (ミリ秒)。| 
 |visibilityTimeout|0|メッセージの処理が失敗したときの再試行間隔。| 
@@ -254,7 +253,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、`maxConcurrentCalls` を 1 に設定します。 | 
 |prefetchCount|該当なし|基になる MessageReceiver に使用される既定の PrefetchCount。| 
@@ -276,7 +275,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
@@ -299,7 +298,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |consoleLevel|info|コンソール ログのトレース レベル。 オプションは、`off`、`error`、`warning`、`info`、および `verbose` です。|
 |fileLoggingMode|debugOnly|ファイルのログ記録のトレース レベル。 オプションは、`never`、`always`、`debugOnly` です。| 

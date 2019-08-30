@@ -10,17 +10,16 @@ ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 312f6746cb02aa66b0e7f8b47cb10e52558fa542
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1e7d64aabba19f04fb98bd208389dc0b2077bfe4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323156"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094693"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -70,6 +69,7 @@ Batch サービスによって設定される追加の制限。 [リソース �
 | アプリケーションあたりのアプリケーション パッケージ数 | 40 |
 | プールあたりのアプリケーション パッケージ数 | 10 |
 | タスクの最長有効期間 | 180 日<sup>1</sup> |
+| コンピューティング ノードあたりの[マウント](virtual-file-mount.md)数 | 10 |
 
 <sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、180 日間です。 完了したタスクは 7 日間保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 

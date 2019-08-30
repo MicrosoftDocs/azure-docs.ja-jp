@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
-ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53ead1caed47ae442670f0b6bcd54cd84956a759
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60716898"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720613"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
 Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
@@ -133,6 +133,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 特定のパイプラインの実行について、再実行履歴を確認することもできます。
 
 ![パイプラインの実行履歴の表示](media/monitor-visually/rerun-history-image2.png)
+
+## <a name="gantt-views"></a>ガント ビュー
+
+ガント ビューを使用すると、パイプラインとアクティビティの実行をすばやく可視化できます。 ガント ビューをパイプラインごとに表示することも、パイプラインで作成した注釈やタグでグループ化することもできます。
+
+![ガント チャート](media/monitor-visually/gantt1.png)
+
+![ガント チャートの注釈](media/monitor-visually/gantt2.png)
+
+バーの長さはパイプラインの期間を示します。 バーをクリックして詳細を表示することもできます。
+
+![ガント チャートの期間](media/monitor-visually/gantt3.png)
 
 ## <a name="guided-tours"></a>ガイド ツアー
 左下の [情報] アイコンをクリックし、[Guided Tours]\(ガイド ツアー\) をクリックすると、パイプラインとアクティビティの実行を監視する方法に関する手順が表示されます。

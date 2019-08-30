@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: c9f2f011acb9d815202aa6c6a38ed364ffb0f9cd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0c37d6167012af46204cbca29397f5d226b9649b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619645"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611906"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Azure Sentinel プレビューをオンボードする
 
@@ -58,7 +58,6 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
    ![検索](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
-   > - **ワークスペースの場所**  Azure Sentinel にストリーミングするすべてのデータが、選択したワークスペースの地理的な場所に保管されることを理解することは重要です。  
    > - Azure Security Center で作成した既定のワークスペースが一覧に表示されない場合、そこに Azure Sentinel をインストールすることはできません。
    > - Azure Sentinel は、次のいずれかのリージョンにデプロイされているワークスペースで実行できます。オーストラリア南東部、カナダ中部、インド中部、米国東部、米国東部 2 EUAP (カナリア)、東日本、東南アジア、英国南部、西ヨーロッパ、米国西部 2。
 

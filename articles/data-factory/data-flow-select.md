@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678526"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774989"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>マッピング データ フローの選択変換
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -35,6 +35,8 @@ ms.locfileid: "68678526"
 * 入力または出力メタデータから重複している列を排除するには、[Skip Duplicates]\(重複をスキップ\) を選択します。
 
 ![重複をスキップ](media/data-flow/select-skip-dup.png "重複をスキップ")
+
+* 重複のスキップを選択すると、[Inspect]\(検査\) タブに結果が表示されます。ADF では列の最初の出現が保持され、ユーザーにはそれ以降の同じ列の出現がフローから削除されたように見えます。
 
 > [!NOTE]
 > マッピング ルールを消去するには、 **[リセット]** を押します。

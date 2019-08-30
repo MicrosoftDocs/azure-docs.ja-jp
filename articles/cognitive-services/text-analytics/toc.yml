@@ -12,6 +12,18 @@
 - name: クイック スタート
   expanded: true
   items:
+    - name: Client
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Python
+          href: quickstarts/python-sdk.md
+        - name: Go
+          href: quickstarts/go-sdk.md
+        - name: Ruby
+          href: quickstarts/ruby-sdk.md
+        - name: Node.js
+          href: quickstarts/nodejs-sdk.md
     - name: REST API
       items:
         - name: Go
@@ -26,18 +38,6 @@
           href: quickstarts/python.md
         - name: Ruby
           href: quickstarts/ruby.md
-    - name: Client
-      items:
-        - name: 'C#'
-          href: quickstarts/csharp.md
-        - name: Python
-          href: quickstarts/python-sdk.md
-        - name: Go
-          href: quickstarts/go-sdk.md
-        - name: Ruby
-          href: quickstarts/ruby-sdk.md
-        - name: Node.js
-          href: quickstarts/nodejs-sdk.md
 - name: チュートリアル
   items:
     - name: Power BI を統合して顧客からのフィードバックを分析する
@@ -69,15 +69,9 @@
         - name: コンテナーを構成する
           href: text-analytics-resource-container-config.md
         - name: Container Instances の使用
-          items:
-            - name: センチメント分析
-              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
+          href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes サービス (AKS) の使用
-          items:
-            - name: 言語検出
-              href: how-tos/use-language-detection-on-aks.md
-            - name: センチメント分析
-              href: how-tos/use-sentiment-analysis-on-aks.md
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
     - name: Text Analytics 接続済みサービスを使用する
       href: vs-text-connected-service.md
 - name: リファレンス

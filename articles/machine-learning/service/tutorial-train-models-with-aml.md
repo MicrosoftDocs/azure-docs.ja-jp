@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033014"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534800"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>チュートリアル:Azure Machine Learning で MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする
 
@@ -40,33 +40,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-「[開発環境を設定する](#start)」にスキップしてノートブックの手順を読むか、以下の手順に従ってノートブックを入手し、Azure Notebooks または独自のノートブック サーバーで実行します。  ノートブックを実行するには、以下のものが必要です。
+* 「[チュートリアル: 初めての ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)」を完了することで、以下の操作を行います。
+    * ワークスペースの作成
+    * クラウド ノートブック サーバーの作成
+    * Jupyter Notebook ダッシュボードの起動
 
-* 以下のものがインストールされている Python 3.6 ノートブック サーバー。
-    * Azure Machine Learning SDK for Python
-    * `matplotlib` と `scikit-learn`
-* チュートリアル ノートブックと **utils.py** ファイル
-* 機械学習ワークスペース
-* ノートブックと同じディレクトリにある、ワークスペースの構成ファイル
+* Jupyter Notebook のダッシュボードを起動したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを開きます。
 
-以下のいずれかのセクションから、これらすべての前提条件を入手します。
+チュートリアルと付随する **utils.py** ファイルは、独自の[ローカル環境](how-to-configure-environment.md#local)で使用する場合、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。  `matplotlib` と `scikit-learn` が環境にインストールされていることを確認してください。
 
-* [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する
-* [独自のノートブック サーバー](#server)を使用する
-
-### <a name="azure"></a>ワークスペース内のクラウド ノートブックサーバーを使用する
-
-独自のクラウドベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* ノートブックの Web ページを起動したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを開きます。
-
-### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
- 以下の手順を完了したら、複製されたディレクトリから **tutorials/img-classification-part1-training.ipynb** ノートブックを実行します。
 
 ## <a name="start"></a>開発環境を設定する
 

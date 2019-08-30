@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: 12cc584b27134c5c109f1a95eb4ccf8a7b2f0c64
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2ff5d760579c31c4bd11252e09da1cbb94576229
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689217"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954655"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -181,7 +181,7 @@ MARS エージェントの操作を成功させるには、キャッシュ フ�
 - [キャッシュ フォルダーへのアクセスを制限する他のプロセス (ウイルス対策ソフトウェアなど) がないことを確認します](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
 
 ### <a name="increase-shadow-copy-storage"></a>シャドウ コピーの記憶域を増やす
-データ ソースを保護するために必要なシャドウ コピーの記憶域が不足している場合、バックアップ操作が失敗することがあります。 この問題を解決するには、次に示すように vssadmin を使用して、保護されたボリューム上のシャドウ コピー記憶域を増やします。
+データ ソースを保護するために必要なシャドウ コピーの記憶域が不足している場合、バックアップ操作が失敗することがあります。 この問題を解決するには、次に示すように vssadmin を使用して、保護されたボリューム上のシャドウ コピーのストレージ スペースを増やします。
 - 管理者特権でのコマンド プロンプトから、現在のシャドウ記憶域を確認します。<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
 - 次のコマンドを使用してシャドウ記憶域を増やします。<br/>

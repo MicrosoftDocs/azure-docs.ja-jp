@@ -1,24 +1,21 @@
 ---
 title: Azure Functions のスケールとホスティング | Microsoft Docs
 description: Azure Functions の従量課金プランと Premium プランの選択方法について説明します。
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 関数, 従量課金プラン, Premium プラン, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94ef85836ef524b34cd1c51e4eda83695bc70507
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443949"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874947"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -51,7 +48,7 @@ App Service プランでは、お客様が管理している専用のインフ�
 | | 従量課金プラン | Premium プラン | 専用プラン |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | 一般公開 | preview | 一般公開 |
-| Linux | preview | preview | 一般公開 |
+| Linux | 一般公開 | preview | 一般公開 |
 
 ## <a name="consumption-plan"></a>従量課金プラン
 
@@ -101,7 +98,7 @@ Premium プランで JavaScript 関数を実行する場合は、vCPU の少な�
 
 App Service プランの関数アプリに対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/overview-hosting-plans.md)」を参照してください。
 
-App Service プランでは、VM インスタンスを追加して、手動でスケールアウトできます。 自動スケーリングを有効にすることもできます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/web-sites-scale.md) に関するページを参照してください。 
+App Service プランでは、VM インスタンスを追加して、手動でスケールアウトできます。 自動スケーリングを有効にすることもできます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/manage-scale-up.md) に関するページを参照してください。 
 
 App Service プランで JavaScript 関数を実行する場合は、CPUの少ないプランを選択してください。 詳細については、[シングルコア App Service プランの選択](functions-reference-node.md#choose-single-vcpu-app-service-plans)に関するページをご覧ください。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
@@ -143,9 +140,6 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 従量課金プランと Premium プランでは、関数がトリガーされるイベントの数に基づいて Functions ホストのインスタンスを追加することで、Azure Functions インフラストラクチャによって CPU とメモリのリソースがスケーリングされます。 従量課金プランの Functions ホストの各インスタンスは、1.5 GB のメモリと 1 個の CPU に制限されています。  ホストのインスタンスは関数アプリ全体です。つまり、関数アプリ内のすべての関数がインスタンス内のリソースを共有し、同時にスケールされます。 同じ従量課金プランを共有する関数アプリは、個別にスケーリングされます。  Premium プランでは、プランのサイズにより、そのインスタンス上のそのプランのすべてのアプリで使用可能なメモリと CPU が決まります。  
 
 関数コード ファイルは、関数のメイン ストレージ アカウントの Azure Files 共有に格納されます。 関数アプリのメイン ストレージ アカウントを削除すると、関数コード ファイルは削除され、復元できません。
-
-> [!NOTE]
-> 従量課金プランで BLOB トリガーを使用しているとき、新しい BLOB の処理が最大で 10 分遅延する場合があります。 このような遅延が発生するのは、関数アプリがアイドルになったときです。 関数アプリが実行されると、BLOB は直ちに処理されます。 このようなコールド スタートの遅延を回避するには、Premium プランを使用するか、または [Event Grid トリガー](functions-bindings-event-grid.md)を使用します。 詳しくは、[BLOB トリガー バインディングのリファレンス記事](functions-bindings-storage-blob.md#trigger)をご覧ください。
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 

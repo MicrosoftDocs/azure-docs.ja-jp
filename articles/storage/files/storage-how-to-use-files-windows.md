@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2bad808d0bcbbd5dc8052db0f8fd32fc4c1180a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699469"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816641"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -33,8 +33,8 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 | Windows 7              | SMB 2.1     | はい                   | いいえ                   |
 | Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                   |
 
-<sup>1</sup>Windows 10 バージョン 1507、1607、1703、1709、1803、1809。  
-<sup>2</sup>Windows Server バージョン 1709 および 1803。
+<sup>1</sup> Windows 10 バージョン 1507、1607、1703、1709、1803、1809、1903。  
+<sup>2</sup>Windows Server バージョン 1803、1809、1903。
 
 > [!Note]  
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。

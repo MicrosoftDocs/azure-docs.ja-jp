@@ -8,22 +8,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 76962975705ff53a292f41a0a54e42c5f2991a2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c090d9a864bfb5218836627a5579cd3089387af8
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002778"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013883"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 
+## <a name="overview"></a>概要
+
 継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的デリバリーは、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
 
-Azure Data Factory では、継続的インテグレーションと継続的デリバリーとは、Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動することを意味します。 継続的インテグレーションと継続的デリバリーを行うために、Data Factory UI 統合と Azure Resource Manager テンプレートを使用できます。 **ARM テンプレート** オプションを選択すると、Data Factory UI によって Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、実稼働) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
+Azure Data Factory では、継続的インテグレーションと継続的デリバリーとは、Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動することを意味します。 継続的インテグレーションと継続的デリバリーを行うために、Data Factory UX 統合と Azure Resource Manager テンプレートを使用できます。 Data Factory UX では、 **[ARM テンプレート]** ドロップダウンから Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、運用) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
 
 この機能の概要とデモンストレーションについては、以下の 9 分間の動画を視聴してください。
 
@@ -31,102 +33,112 @@ Azure Data Factory では、継続的インテグレーションと継続的デ�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+## <a name="continuous-integration-lifecycle"></a>継続的インテグレーションのライフサイクル
+
+Azure Repos Git で構成された Azure Data Factory での継続的インテグレーションと継続的デリバリーのライフサイクルのサンプル概要を以下に示します。 Git リポジトリを構成する方法の詳細については、[Azure Data Factory でのソース管理](source-control.md)に関する記事を参照してください。
+
+1.  開発データ ファクトリは Azure Repos Git で作成および構成されます。ここでは、すべての開発者に、パイプラインやデータセットなどの Data Factory リソースを作成するアクセス許可があります。
+
+1.  開発者は、各自の機能ブランチに変更を加える過程で、各自の最新の変更を使用して各自のパイプライン実行をデバッグします。 パイプライン実行をデバッグする方法の詳細については、「[Azure Data Factory での反復開発とデバッグ](iterative-development-debugging.md)」を参照してください。
+
+1.  開発者は、変更の結果に満足したら、各自の機能ブランチからマスターまたはコラボレーション ブランチへの pull request を作成して、同僚が変更をレビューできるようにします。
+
+1.  pull request が承認され、変更がマスター ブランチにマージされたら、開発ファクトリに発行できます。
+
+1.  チームは、変更をテスト ファクトリに、次に運用ファクトリにデプロイする準備ができたら、マスター ブランチから Resource Manager テンプレートをエクスポートします。
+
+1.  エクスポートされた Resource Manager テンプレートは、異なるパラメーター ファイルを使用してテスト ファクトリと運用ファクトリにデプロイされます。
+
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>各環境用の Resource Manager テンプレートを作成する
-**[ARM テンプレートのエクスポート]** を選択して、データ ファクトリ用の Resource Manager テンプレートを開発環境にエクスポートします。
+
+**[ARM テンプレート]** ドロップダウンから、 **[ARM テンプレートのエクスポート]** を選択して、データ ファクトリ用の Resource Manager テンプレートを開発環境にエクスポートします。
 
 ![](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-次に、テスト データ ファクトリと実稼働データ ファクトリに移動し、 **[ARM テンプレートのインポート]** を選択します。
+テストおよび運用データ ファクトリで、 **[Import ARM template]\(ARM テンプレートのインポート\)** を選択します。 このアクションによって Azure Portal に移動して、エクスポートされたテンプレートをインポートできます。 **[Build your own template in the editor]\(エディターで独自のテンプレートを作成する\)** を選択して、Resource Manager テンプレート エディターを開きます。
 
-![](media/continuous-integration-deployment/continuous-integration-image2.png)
+![](media/continuous-integration-deployment/continuous-integration-image3.png) 
 
-このアクションによって Azure Portal に移動して、エクスポートされたテンプレートをインポートできます。 **[Build your own template in the editor]\(エディターで独自のテンプレートをビルド\)** 、 **[ファイルの読み込み]** の順に選択し、生成された Resource Manager テンプレートを選択します。 設定を入力します。データ ファクトリとパイプライン全体が、実稼働環境にインポートされます。
-
-![](media/continuous-integration-deployment/continuous-integration-image3.png)
+**[ファイルの読み込み]** をクリックし、生成された Resource Manager テンプレートを選択します。
 
 ![](media/continuous-integration-deployment/continuous-integration-image4.png)
 
-**[ファイルの読み込み]** を選択して、エクスポートされた Resource Manager テンプレートを選択し、すべての構成値 (たとえば、リンクされたサービス) を指定します。
+設定ウィンドウで、リンクされたサービスの資格情報などの構成値を入力します。 完了したら、 **[購入]** をクリックして Resource Manager テンプレートをデプロイします。
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
 
-**[接続文字列]** 。 接続文字列の作成に必要な情報は、各コネクタに関する記事で見つかります。 たとえば、Azure SQL Database の場合は、「[Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー](connector-azure-sql-database.md)」をご覧ください。 正しい接続文字列は、Data Factory UI でリソースに対するコード ビューを開いて確認することもできます (リンクされたサービスの場合など)。 ただし、コード ビューでは、接続文字列のパスワードまたはアカウント キーの部分は削除されます。 コード ビューを開くには、次のスクリーンショットで強調表示されているアイコンを選択します。
+### <a name="connection-strings"></a>Connection strings
+
+接続文字列の構成方法については、各コネクタの記事を参照してください。 たとえば、Azure SQL Database の場合は、「[Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー](connector-azure-sql-database.md)」をご覧ください。 接続文字列を検証するために、Data Factory UX でリソースのコード ビューを開くことができます。 コード ビューでは、接続文字列のパスワードまたはアカウント キーの部分は削除されます。 コード ビューを開くには、次のスクリーンショットで強調表示されているアイコンを選択します。
 
 ![コード ビューを開いて接続文字列を確認する](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
-## <a name="continuous-integration-lifecycle"></a>継続的インテグレーションのライフサイクル
-Data Factory UI で Azure Repos Git 統合を有効にした後で使用できる継続的インテグレーションと継続的デリバリーのライフサイクル全体を次に示します。
-
-1.  すべての開発者がパイプラインやデータセットなどの Data Factory リソースを作成できる開発データ ファクトリを Azure Repos で設定します。
-
-1.  開発者は、パイプラインなどのリソースを変更できます。 開発者は、変更を行った後、 **[デバッグ]** を選択して、最新の変更を行ったパイプラインがどのように実行されるかを確認できます。
-
-1.  開発者は、変更の結果に満足したら、各自のブランチからマスター ブランチ (または、コラボレーション ブランチ) への pull request を作成して、同僚が変更をレビューできるようにします。
-
-1.  変更がマスター ブランチに反映されたら、開発者は、 **[発行]** を選択して、開発ファクトリに発行できます。
-
-1.  チームは、変更をテスト ファクトリと実稼働ファクトリにレベル上げする準備ができたら、マスター ブランチから Resource Manager テンプレートをエクスポートできます。マスター ブランチがライブ開発 Data Factory に戻っている場合は、他のブランチからエクスポートできます。
-
-1.  エクスポートされた Resource Manager テンプレートは、異なるパラメーター ファイルを使用してテスト ファクトリと実稼働ファクトリにデプロイできます。
-
 ## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>Azure Pipelines リリースを使用して継続的インテグレーションを自動化する
 
-データ ファクトリの複数の環境へのデプロイを自動化できるように Azure Pipelines リリースを設定する手順を次に示します。
+次に示すのは、Azure Pipelines リリースを設定し、複数の環境へのデータ ファクトリのデプロイを自動化するためのガイドです。
 
 ![Azure Pipelines を使用した継続的インテグレーションの図](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>必要条件
 
--    [*Azure Resource Manager サービス エンドポイント*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
+-    [Azure Resource Manager サービス エンドポイント](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
 
--   Azure Repos Git 統合が構成されたデータ ファクトリ。
+-   Azure Repos Git 統合が構成された Data Factory。
 
--   シークレットを格納する  [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 。
+-   各環境用のシークレットを格納する  [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
 ### <a name="set-up-an-azure-pipelines-release"></a>Azure Pipelines リリースをセットアップする
 
-1.  Data Factory で構成したのと同じプロジェクトの Azure Repos ページに移動します。
+1.  [Azure DevOps ユーザー エクスペリエンス](https://dev.azure.com/)で、Data Factory で構成したプロジェクトを開きます。
 
-1.  上部メニューの **[Azure Pipelines]** &gt; **[リリース]** &gt; **[リリース定義の作成]** をクリックします。
+1.  ページの左側で、 **[パイプライン]** をクリックして **[リリース]** を選択します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  **[空のプロセス]** テンプレートを選択します。
+1.  **[新しいパイプライン]** を選択するか、既存のパイプラインがある場合は **[New]\(新規作成\)** 、 **[新しいリリース パイプライン]** の順に選択します。
 
-1.  環境の名前を入力します。
+1.  **[空のジョブ]** テンプレートを選択します。
 
-1.  Git 成果物を追加し、Data Factory で構成したのと同じリポジトリを選択します。 最新の既定のバージョンを使用する既定のブランチとして `adf_publish`を選択します。
+    ![](media/continuous-integration-deployment/continuous-integration-image13.png)
+
+1.  **[ステージ名]** フィールドに、環境の名前を入力します。
+
+1.  **[成果物の追加]** を選択し、Data Factory で構成したものと同じリポジトリを選択します。 最新の既定のバージョンを使用する既定のブランチとして `adf_publish`を選択します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
 1.  Azure Resource Manager デプロイ タスクを追加します。
 
-    a.  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
+    a.  ステージ ビューで、 **[View stage tasks]\(ステージ タスクの表示\)** リンクをクリックします。
 
-    b.  デプロイ タスクでは、サブスクリプション、リソース グループ、およびターゲットの Data Factory の場所を選択し、必要に応じて資格情報を指定します。
+    ![](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    c.  **[リソース グループの作成または更新]** アクションを選択します。
+    b.  新しいタスクを作成します。 **[Azure Resource Group Deployment]\(Azure リソース グループの配置\)** を探して **[追加]** をクリックします。
 
-    d.  **[…]** を選択します ( **[テンプレート]** フィールドにあります)。 ポータルでの発行操作によって作成された Resource Manager テンプレートを参照します (*ARMTemplateForFactory.json*)。 `adf_publish` ブランチの `<FactoryName>` フォルダーでこのファイルを探します。
+    c.  デプロイ タスクでは、サブスクリプション、リソース グループ、およびターゲットの Data Factory の場所を選択し、必要に応じて資格情報を指定します。
 
-    e.  パラメーター ファイルに対して同じことを行います。 コピーを作成したか既定のファイル *ARMTemplateParametersForFactory.json* を使用しているかに応じて、適切なファイルを選択します。
+    d.  アクション ドロップダウンで、 **[Create or update resource group]\(リソース グループの作成または更新\)** を選択します。
 
-    f.  **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** フィールドの横にあります)。ターゲットの Data Factory の情報を入力します。 キー コンテナー の資格情報については、シークレットと同じ名前を次の形式で使用します。たとえばシークレットの名前が `cred1` の場合は、`"$(cred1)"` と入力します (引用符で囲みます)。
+    e.  **[…]** を選択します ( **[テンプレート]** フィールドにあります)。 「[各環境用の Resource Manager テンプレートを作成する](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)」の **ARM テンプレートのインポート**の手順を通じて作成した Azure Resource Manager テンプレートを参照します。 `adf_publish` ブランチの `<FactoryName>` フォルダーでこのファイルを探します。
+
+    f.  **[…]** を選択します **[テンプレート パラメーター]** フィールドでこれを行って、 パラメーター ファイルを選択します。 コピーを作成したか既定のファイル *ARMTemplateParametersForFactory.json* を使用しているかに応じて、適切なファイルを選択します。
+
+    g.  **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** フィールドの横にあります)。ターゲットの Data Factory の情報を入力します。 キー コンテナーから取得した資格情報の場合は、シークレット名を二重引用符で囲んで入力します。 たとえば、シークレットの名前が `cred1` の場合、その値として `"$(cred1)"` と入力します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-    g. **[増分]** デプロイ モードを選択します。
+    h. **[増分]** デプロイ モードを選択します。
 
     > [!WARNING]
     > **[完全]** デプロイ モードを選択すると、Resource Manager テンプレートに定義されていないターゲット リソース グループ内のすべてのリソースを含む既存のリソースが削除される可能性があります。
 
 1.  リリース パイプラインを保存します。
 
-1.  このリリース パイプラインから新しいリリースを作成します。
+1. リリースをトリガーするには、 **[Create release]\(リリースの作成\)** を選択します。
 
-    ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
-### <a name="optional---get-the-secrets-from-azure-key-vault"></a>省略可能 - Azure Key Vault からシークレットを取得する
+### <a name="get-secrets-from-azure-key-vault"></a>Azure Key Vault からシークレットを取得する
 
 Azure Resource Manager テンプレートに渡すシークレットがある場合は、Azure Pipelines リリースで Azure Key Vault を使うことをお勧めします。
 
@@ -163,13 +175,15 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines エージェントにアクセス許可を与える
-Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗する可能性があります。 リリースのログをダウンロードし、Azure Pipelines エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます (必要な最低限のアクセス許可は、*Get*と*List* です)。
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines エージェントにアクセス許可を与える
+
+適切なアクセス許可が存在しない場合、Azure Key Vault タスクがアクセス拒否エラーで失敗することがあります。 リリースのログをダウンロードし、Azure Pipelines エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます 必要な最低限のアクセス許可は、**Get** と **List** です。
 
 ### <a name="update-active-triggers"></a>アクティブなトリガーを更新する
-アクティブなトリガーを更新しようとした場合、デプロイは失敗します。 アクティブなトリガーを更新するには、手動でそれらを停止し、デプロイ後に起動する必要があります。 次の例に示すように、この目的のための Azure Powershell タスクを追加できます。
 
-1.  リリースの [タスク] タブで、 **[Azure Powershell]** を探します。
+アクティブなトリガーを更新しようとした場合、デプロイは失敗します。 アクティブなトリガーを更新するには、手動でそれらを停止し、デプロイ後に起動する必要があります。 これは、Azure Powershell タスクを使用して実行できます。
+
+1.  リリースの [タスク] タブで、 **[Azure PowerShell]** タスクを追加します。
 
 1.  接続の種類として **[Azure Resource Manager]** を選択し、サブスクリプションを選択します。
 
@@ -183,552 +197,12 @@ Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗す�
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-同様の手順と同様のコード (`Start-AzDataFactoryV2Trigger` 関数) を使用して、デプロイ後にトリガーを再起動できます。
+(`Start-AzDataFactoryV2Trigger` 関数を使用して) 同様の手順に従うことで、デプロイ後にトリガーを再起動できます。
 
 > [!IMPORTANT]
 > 継続的インテグレーションと継続的デプロイ シナリオでは、Integration Runtime の種類は異なる環境間で同じである必要があります。 たとえば、開発環境に "*セルフホステッド*" Integration Runtime (IR) がある場合、テストや運用などの他の環境環境でも、IR の種類は "*セルフホステッド*" である必要があります。 同様に、複数のステージ間で統合ランタイムを共有している場合は、開発、テスト、運用のすべての環境で、統合ランタイムを "*リンクされたセルフホステッド*" として構成する必要があります。
 
-## <a name="sample-deployment-template"></a>デプロイ テンプレートの例
-
-Azure Pipelines にインポートできるサンプル デプロイ テンプレートを次に示します。
-
-```json
-{
-    "source": 2,
-    "id": 1,
-    "revision": 51,
-    "name": "Data Factory Prod Deployment",
-    "description": null,
-    "createdBy": {
-        "displayName": "Sample User",
-        "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "uniqueName": "sampleuser@microsoft.com",
-        "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-    },
-    "createdOn": "2018-03-01T22:57:25.660Z",
-    "modifiedBy": {
-        "displayName": "Sample User",
-        "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "uniqueName": "sampleuser@microsoft.com",
-        "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-    },
-    "modifiedOn": "2018-03-14T17:58:11.643Z",
-    "isDeleted": false,
-    "path": "\\",
-    "variables": {},
-    "variableGroups": [],
-    "environments": [{
-        "id": 1,
-        "name": "Prod",
-        "rank": 1,
-        "owner": {
-            "displayName": "Sample User",
-            "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "uniqueName": "sampleuser@microsoft.com",
-            "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-        },
-        "variables": {
-            "factoryName": {
-                "value": "sampleuserprod"
-            }
-        },
-        "variableGroups": [],
-        "preDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 1
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 1
-            }
-        },
-        "deployStep": {
-            "id": 2
-        },
-        "postDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 3
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 2
-            }
-        },
-        "deployPhases": [{
-            "deploymentInput": {
-                "parallelExecution": {
-                    "parallelExecutionType": "none"
-                },
-                "skipArtifactsDownload": false,
-                "artifactsDownloadInput": {
-                    "downloadInputs": []
-                },
-                "queueId": 19,
-                "demands": [],
-                "enableAccessToken": false,
-                "timeoutInMinutes": 0,
-                "jobCancelTimeoutInMinutes": 1,
-                "condition": "succeeded()",
-                "overrideInputs": {}
-            },
-            "rank": 1,
-            "phaseType": 1,
-            "name": "Run on agent",
-            "workflowTasks": [{
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "param\n(\n    [parameter(Mandatory = $false)] [String] $rootFolder=\"C:\\Users\\sampleuser\\Downloads\\arm_template\",\n    [parameter(Mandatory = $false)] [String] $armTemplate=\"$rootFolder\\arm_template.json\",\n    [parameter(Mandatory = $false)] [String] $armTemplateParameters=\"$rootFolder\\arm_template_parameters.json\",\n    [parameter(Mandatory = $false)] [String] $domain=\"microsoft.onmicrosoft.com\",\n    [parameter(Mandatory = $false)] [String] $TenantId=\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n    [parame",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $true",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": "5.*"
-                }
-            }, {
-                "taskId": "1e244d32-2dd4-4165-96fb-b7441ca9331e",
-                "version": "1.*",
-                "name": "Azure Key Vault: sampleuservault",
-                "refName": "secret1",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "KeyVaultName": "sampleuservault",
-                    "SecretsFilter": "*"
-                }
-            }, {
-                "taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
-                "version": "2.*",
-                "name": "Azure Deployment:Create Or Update Resource Group action on sampleuser-datafactory",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "action": "Create Or Update Resource Group",
-                    "resourceGroupName": "sampleuser-datafactory",
-                    "location": "East US",
-                    "templateLocation": "Linked artifact",
-                    "csmFileLink": "",
-                    "csmParametersFileLink": "",
-                    "csmFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json",
-                    "csmParametersFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateParametersForFactory.json",
-                    "overrideParameters": "-factoryName \"$(factoryName)\" -linkedService1_connectionString \"$(linkedService1-connectionString)\" -linkedService2_connectionString \"$(linkedService2-connectionString)\"",
-                    "deploymentMode": "Incremental",
-                    "enableDeploymentPrerequisites": "None",
-                    "deploymentGroupEndpoint": "",
-                    "project": "",
-                    "deploymentGroupName": "",
-                    "copyAzureVMTags": "true",
-                    "outputVariable": "",
-                    "deploymentOutputs": ""
-                }
-            }, {
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "# You can write your azure powershell scripts inline here. \n# You can also pass predefined and custom variables to this script using arguments",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $false",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }]
-        }],
-        "environmentOptions": {
-            "emailNotificationType": "OnlyOnFailure",
-            "emailRecipients": "release.environment.owner;release.creator",
-            "skipArtifactsDownload": false,
-            "timeoutInMinutes": 0,
-            "enableAccessToken": false,
-            "publishDeploymentStatus": true,
-            "badgeEnabled": false,
-            "autoLinkWorkItems": false
-        },
-        "demands": [],
-        "conditions": [{
-            "name": "ReleaseStarted",
-            "conditionType": 1,
-            "value": ""
-        }],
-        "executionPolicy": {
-            "concurrencyCount": 1,
-            "queueDepthCount": 0
-        },
-        "schedules": [],
-        "retentionPolicy": {
-            "daysToKeep": 30,
-            "releasesToKeep": 3,
-            "retainBuild": true
-        },
-        "processParameters": {
-            "dataSourceBindings": [{
-                "dataSourceName": "AzureRMWebAppNamesByType",
-                "parameters": {
-                    "WebAppKind": "$(WebAppKind)"
-                },
-                "endpointId": "$(ConnectedServiceName)",
-                "target": "WebAppName"
-            }]
-        },
-        "properties": {},
-        "preDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "postDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "badgeUrl": "https://sampleuser.vsrm.visualstudio.com/_apis/public/Release/badge/19749ef3-2f42-49b5-9696-f28b49faebcb/1/1"
-    }, {
-        "id": 2,
-        "name": "Staging",
-        "rank": 2,
-        "owner": {
-            "displayName": "Sample User",
-            "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "uniqueName": "sampleuser@microsoft.com",
-            "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-        },
-        "variables": {
-            "factoryName": {
-                "value": "sampleuserstaging"
-            }
-        },
-        "variableGroups": [],
-        "preDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 4
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 1
-            }
-        },
-        "deployStep": {
-            "id": 5
-        },
-        "postDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 6
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 2
-            }
-        },
-        "deployPhases": [{
-            "deploymentInput": {
-                "parallelExecution": {
-                    "parallelExecutionType": "none"
-                },
-                "skipArtifactsDownload": false,
-                "artifactsDownloadInput": {
-                    "downloadInputs": []
-                },
-                "queueId": 19,
-                "demands": [],
-                "enableAccessToken": false,
-                "timeoutInMinutes": 0,
-                "jobCancelTimeoutInMinutes": 1,
-                "condition": "succeeded()",
-                "overrideInputs": {}
-            },
-            "rank": 1,
-            "phaseType": 1,
-            "name": "Run on agent",
-            "workflowTasks": [{
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "# You can write your azure powershell scripts inline here. \n# You can also pass predefined and custom variables to this script using arguments",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $true",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }, {
-                "taskId": "1e244d32-2dd4-4165-96fb-b7441ca9331e",
-                "version": "1.*",
-                "name": "Azure Key Vault: sampleuservault",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "KeyVaultName": "sampleuservault",
-                    "SecretsFilter": "*"
-                }
-            }, {
-                "taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
-                "version": "2.*",
-                "name": "Azure Deployment:Create Or Update Resource Group action on sampleuser-datafactory",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "action": "Create Or Update Resource Group",
-                    "resourceGroupName": "sampleuser-datafactory",
-                    "location": "East US",
-                    "templateLocation": "Linked artifact",
-                    "csmFileLink": "",
-                    "csmParametersFileLink": "",
-                    "csmFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json",
-                    "csmParametersFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateParametersForFactory.json",
-                    "overrideParameters": "-factoryName \"$(factoryName)\" -linkedService1_connectionString \"$(linkedService1-connectionString)\" -linkedService2_connectionString \"$(linkedService2-connectionString)\"",
-                    "deploymentMode": "Incremental",
-                    "enableDeploymentPrerequisites": "None",
-                    "deploymentGroupEndpoint": "",
-                    "project": "",
-                    "deploymentGroupName": "",
-                    "copyAzureVMTags": "true",
-                    "outputVariable": "",
-                    "deploymentOutputs": ""
-                }
-            }, {
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "16a37943-8b58-4c2f-a3d6-052d6f032a07",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "param(\n$x,\n$y,\n$z)\nwrite-host \"----------\"\nwrite-host $x\nwrite-host $y\nwrite-host $z | ConvertTo-SecureString\nwrite-host \"----------\"",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $false",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }]
-        }],
-        "environmentOptions": {
-            "emailNotificationType": "OnlyOnFailure",
-            "emailRecipients": "release.environment.owner;release.creator",
-            "skipArtifactsDownload": false,
-            "timeoutInMinutes": 0,
-            "enableAccessToken": false,
-            "publishDeploymentStatus": true,
-            "badgeEnabled": false,
-            "autoLinkWorkItems": false
-        },
-        "demands": [],
-        "conditions": [{
-            "name": "ReleaseStarted",
-            "conditionType": 1,
-            "value": ""
-        }],
-        "executionPolicy": {
-            "concurrencyCount": 1,
-            "queueDepthCount": 0
-        },
-        "schedules": [],
-        "retentionPolicy": {
-            "daysToKeep": 30,
-            "releasesToKeep": 3,
-            "retainBuild": true
-        },
-        "processParameters": {
-            "dataSourceBindings": [{
-                "dataSourceName": "AzureRMWebAppNamesByType",
-                "parameters": {
-                    "WebAppKind": "$(WebAppKind)"
-                },
-                "endpointId": "$(ConnectedServiceName)",
-                "target": "WebAppName"
-            }]
-        },
-        "properties": {},
-        "preDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "postDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "badgeUrl": "https://sampleuser.vsrm.visualstudio.com/_apis/public/Release/badge/19749ef3-2f42-49b5-9696-f28b49faebcb/1/2"
-    }],
-    "artifacts": [{
-        "sourceId": "19749ef3-2f42-49b5-9696-f28b49faebcb:a6c88f30-5e1f-4de8-b24d-279bb209d85f",
-        "type": "Git",
-        "alias": "Dev",
-        "definitionReference": {
-            "branches": {
-                "id": "adf_publish",
-                "name": "adf_publish"
-            },
-            "checkoutSubmodules": {
-                "id": "",
-                "name": ""
-            },
-            "defaultVersionSpecific": {
-                "id": "",
-                "name": ""
-            },
-            "defaultVersionType": {
-                "id": "latestFromBranchType",
-                "name": "Latest from default branch"
-            },
-            "definition": {
-                "id": "a6c88f30-5e1f-4de8-b24d-279bb209d85f",
-                "name": "Dev"
-            },
-            "fetchDepth": {
-                "id": "",
-                "name": ""
-            },
-            "gitLfsSupport": {
-                "id": "",
-                "name": ""
-            },
-            "project": {
-                "id": "19749ef3-2f42-49b5-9696-f28b49faebcb",
-                "name": "Prod"
-            }
-        },
-        "isPrimary": true
-    }],
-    "triggers": [{
-        "schedule": {
-            "jobId": "b5ef09b6-8dfd-4b91-8b48-0709e3e67b2d",
-            "timeZoneId": "UTC",
-            "startHours": 3,
-            "startMinutes": 0,
-            "daysToRelease": 31
-        },
-        "triggerType": 2
-    }],
-    "releaseNameFormat": "Release-$(rev:r)",
-    "url": "https://sampleuser.vsrm.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_apis/Release/definitions/1",
-    "_links": {
-        "self": {
-            "href": "https://sampleuser.vsrm.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_apis/Release/definitions/1"
-        },
-        "web": {
-            "href": "https://sampleuser.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_release?definitionId=1"
-        }
-    },
-    "tags": [],
-    "properties": {
-        "DefinitionCreationSource": {
-            "$type": "System.String",
-            "$value": "ReleaseNew"
-        }
-    }
-}
-```
-
-## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>トリガーの停止と再起動およびクリーンアップを行うサンプル スクリプト
+#### <a name="sample-prepostdeployment-script"></a>サンプルのデプロイ前/デプロイ後スクリプト
 
 デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 最新バージョンの Azure PowerShell をインストールするには、「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
 
@@ -860,7 +334,7 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>カスタム パラメーター ファイルの構文
 
-カスタム パラメーター ファイルの作成時に使用するいくつかのガイドラインを次に示します。 ファイルは、エンティティ型 (trigger、pipeline、linkedservice、dataset、integrationruntime など) ごとのセクションで構成されています。
+カスタム パラメーター ファイルの作成時に使用するいくつかのガイドラインを次に示します。 ファイルは、(トリガー、パイプライン、リンクされたサービス、データセット、統合ランタイムなどの) エンティティの種類ごとのセクションで構成されています。
 * 関連するエンティティ型の下にプロパティ パスを入力します。
 * プロパティ名を "\*" に設定する場合は、その下 (最初のレベルに至るまで、再帰的にではない) にあるすべてのプロパティをパラメーター化することを指示します。 また、これに例外を指定することもできます。
 * プロパティの値を文字列として設定した場合、プロパティをパラメーター化することを指示します。  `<action>:<name>:<stype>` の形式を使用します。
@@ -874,7 +348,9 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
 * リソース インスタンス固有の定義を含めることはできません。 定義はその型のすべてのリソースに適用されます。
 * 既定では、Key Vault シークレットなどのセキュリティで保護されたすべての文字列と、接続文字列、キー、トークンなどのセキュリティで保護された文字列がパラメーター化されます。
  
-## <a name="sample-parameterization-template"></a>サンプルのパラメーター化テンプレート
+### <a name="sample-parameterization-template"></a>サンプルのパラメーター化テンプレート
+
+パラメーター化テンプレートの内容例を次に示します。
 
 ```json
 {
@@ -935,35 +411,35 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
     }
 }
 ```
-
-### <a name="explanation"></a>説明:
+以下、上記のテンプレートがどのように構築されるかについて、リソースの種類別に説明します。
 
 #### <a name="pipelines"></a>パイプライン
     
-* パス activities/typeProperties/waitTimeInSeconds 内のすべてのプロパティがパラメーター化されます。 つまり、`waitTimeInSeconds` という名前のコードレベルのプロパティを持つパイプライン内のアクティビティ (たとえば、`Wait` アクティビティ) は、既定の名前を持つ数としてパラメーター化されます。 ただし、Resource Manager テンプレートは既定値を保持しません。 これは Resource Manager デプロイ時に必須の入力になります。
+* パス activities/typeProperties/waitTimeInSeconds 内のすべてのプロパティがパラメーター化されます。 `waitTimeInSeconds` という名前のコードレベルのプロパティを持つパイプライン内のアクティビティ (たとえば、`Wait` アクティビティ) はすべて、既定の名前を使用して数値としてパラメーター化されます。 ただし、Resource Manager テンプレートにその既定値はありません。 これは Resource Manager デプロイ時に必須の入力になります。
 * 同様に、`headers` というプロパティ (たとえば、`Web` アクティビティ内の) は、型 `object` (JObject) でパラメーター化されます。 これは、ソース ファクトリと同じ値である既定値を保持します。
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* 唯一のプロパティ、およびすべてのプロパティが、パス `typeProperties` の下で、それぞれ既定値でパラメーター化されます。 たとえば、現時点のスキーマでは、**IntegrationRuntimes** 型のプロパティの下には `computeProperties` と `ssisProperties` という 2 つのプロパティがあります。 両方のプロパティの型は、それぞれの既定の値と型 (Object) で作成されます。
+* パス `typeProperties` の下にあるすべてのプロパティは、それぞれの既定値を使用してパラメーター化されます。 たとえば、**IntegrationRuntimes** 型のプロパティの下には `computeProperties` と `ssisProperties` という 2 つのプロパティがあります。 両方のプロパティの型は、それぞれの既定の値と型 (Object) で作成されます。
 
 #### <a name="triggers"></a>トリガー
 
-* `typeProperties` の下では、2 つのプロパティがパラメーター化されます。 1 つ目は `maxConcurrency` で、既定値を保持するよう指定されていて、型は `string` です。 既定のパラメーター名前 `<entityName>_properties_typeProperties_maxConcurrency` を持ちます。
+* `typeProperties` の下では、2 つのプロパティがパラメーター化されます。 1 つ目は `maxConcurrency` で、既定値を持つように指定されていて、型は `string` です。 既定のパラメーター名前 `<entityName>_properties_typeProperties_maxConcurrency` を持ちます。
 * `recurrence` プロパティもパラメーター化されます。 その下にあるそのレベルのすべてのプロパティは、既定の値とパラメーター名を持つ文字列としてパラメーター化されるよう指定されます。 例外は `interval` プロパティで、数値型として、`<entityName>_properties_typeProperties_recurrence_triggerSuffix` のサフィックスが付いたパラメーターでパラメーター化されます。 同様に、`freq` プロパティは文字列であり、文字列としてパラメーター化されます。 ただし、`freq` プロパティは既定値なしでパラメーター化されます。 名前は短縮され、サフィックスが付けられます。 たとえば、「 `<entityName>_freq` 」のように入力します。
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* リンクされたサービスは一意です。 リンクされたサービスとデータセットには複数の型がある可能性があるため、型固有のカスタマイズを行うことができます。 たとえば、型 `AzureDataLakeStore` のすべてのリンクされたサービスには特定のテンプレートが適用され、それ以外には (\* を使用して) 別のテンプレートが適用されることになります。
-* 前の例では、`connectionString` プロパティは値 `securestring` としてパラメーター化され、既定値は保持せず、`connectionString` のサフィックスが付いた短縮されたパラメーター名を持つことになります。
-* ただし、プロパティ `secretAccessKey` は `AzureKeyVaultSecret` となります (たとえば、リンクされたサービス `AmazonS3`)。 そのため、Azure Key Vault シークレットとして自動的にパラメーター化され、ソース ファクトリ内で構成されたキー コンテナーからフェッチされます。 キー コンテナー自体もパラメーター化できます。
+* リンクされたサービスは一意です。 リンクされたサービスとデータセットにはさまざまな型があるため、型固有のカスタマイズを行うことができます。 この例では、型 `AzureDataLakeStore` のすべてのリンクされたサービスには特定のテンプレートが適用され、それ以外には (\* を使用して) 別のテンプレートが適用されます。
+* `connectionString` プロパティは値 `securestring` としてパラメーター化され、既定値はなく、`connectionString` のサフィックスが付いた短縮されたパラメーター名を持つことになります。
+* プロパティ `secretAccessKey` は (たとえば、リンクされたサービス `AmazonS3` において) たまたま `AzureKeyVaultSecret` になります。 Azure Key Vault シークレットとして自動的にパラメーター化され、構成済みのキー コンテナーからフェッチされます。 キー コンテナー自体もパラメーター化できます。
 
 #### <a name="datasets"></a>データセット
 
-* データセットに型固有のカスタマイズを使用できる場合でも、\* レベルの構成を明示的に指定せずに構成を指定できます。 前の例では、`typeProperties` の下にあるすべてのデータセット プロパティがパラメーター化されます。
+* データセットに型固有のカスタマイズを使用できますが、\* レベルの構成を明示的に指定しなくても構成を指定できます。 上の例では、`typeProperties` の下にあるすべてのデータセット プロパティがパラメーター化されます。
 
-既定のパラメーター化のテンプレートは変更できますが、これは現在のテンプレートです。 これは、その他のプロパティをパラメーターとして 1 つだけ追加する必要がある場合だけでなく、既存のパラメーター化を失わずに再作成する必要がある場合にも役立ちます。
+### <a name="default-parameterization-template"></a>既定のパラメーター化テンプレート
 
+次に、現在の既定のパラメーター化テンプレートを示します。 1 つまたは複数のパラメーターを追加するだけであれば、これを直接編集すると、既存のパラメーター化構造が失われないので便利な場合があります。
 
 ```json
 {
@@ -1070,9 +546,9 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
 }
 ```
 
-**例**:Databricks インタラクティブ クラスター ID を、(Databricks のリンクされたサービスから) パラメーター ファイルに追加します。
+既定のパラメーター化テンプレートに 1 つの値を追加する方法の例を次に示します。 Databricks のリンクされたサービスの既存の Databricks インタラクティブ クラスター ID をパラメーター ファイルに追加したいだけです。 次のファイルは、`Microsoft.DataFactory/factories/linkedServices` の properties フィールドに `existingClusterId` が含まれること以外は、上記のファイルと同じであることに注意してください。
 
-```
+```json
 {
     "Microsoft.DataFactory/factories/pipelines": {
     },
@@ -1178,36 +654,59 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
 }
 ```
 
-
 ## <a name="linked-resource-manager-templates"></a>リンクされた Resource Manager テンプレート
 
-お使いのデータ ファクトリに対して継続的インテグレーションと継続的デプロイ (CI/CD) を設定している場合、ファクトリが大きくなったときに、Resource Manager テンプレート内のリソースの最大数や最大ペイロードなどの Resource Manager テンプレートの限界に達したことに気付くことがあります。 このようなシナリオ向けに、Data Factory では、ファクトリ用の完全な Resource Manager テンプレートの生成と共に、リンクされた Resource Manager テンプレートも生成されるようになりました。 その結果、ファクトリのペイロード全体を複数のファイルに分解して、前述の制限に達しないようにすることができます。
+データ ファクトリの継続的インテグレーションと継続的デプロイ (CI/CD) を設定済みの場合、ファクトリが大規模になるにつれて Azure Resource Manager テンプレートの制限に達する可能性があります。 制限の例には、Resource Manager テンプレート内のリソースの最大数があります。 大規模なファクトリに対応するために、Data Factory では、ファクトリ用の完全な Resource Manager テンプレートの生成と共に、リンクされた Resource Manager テンプレートが生成されるようになりました。 この機能を使用すると、ファクトリのペイロード全体が複数のファイルに分割されるので、制限に達することはありません。
 
 Git が構成されている場合は、リンクされたテンプレートが生成され、完全な Resource Manager テンプレートと共に、`adf_publish` ブランチの `linkedTemplates` という名前の新しいフォルダーに保存されます。
 
 ![リンクされた Azure Resource Manager テンプレートのフォルダー](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-通常、リンクされた Resource Manager テンプレートには、マスター テンプレートと、マスターにリンクされた一連の子テンプレートがあります。 親テンプレートは `ArmTemplate_master.json` と呼ばれ、子テンプレートには、`ArmTemplate_0.json``ArmTemplate_1.json`… というパターンで名前が付けられます。 完全な Resource Manager テンプレートからリンクされたテンプレートの使用に移行するには、`ArmTemplateForFactory.json` (つまり、完全な Resource Manager テンプレート) ではなく、`ArmTemplate_master.json` をポイントするように CI/CD タスクを更新します。 Resource Manager では、リンクされたテンプレートをストレージ アカウントにアップロードして、デプロイ時に Azure によってアクセスできるようにする必要もあります。 詳細については、「[Deploying Linked ARM Templates with VSTS (リンクされた ARM テンプレートの VSTS を使用したデプロイ)](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)」を参照してください。
+通常、リンクされた Resource Manager テンプレートには、マスター テンプレートと、マスターにリンクされた一連の子テンプレートがあります。 親テンプレートは `ArmTemplate_master.json` と呼ばれ、子テンプレートには、`ArmTemplate_0.json``ArmTemplate_1.json`… というパターンで名前が付けられます。 完全な Resource Manager テンプレートではなくリンクされたテンプレートを使用するには、`ArmTemplateForFactory.json` (完全な Resource Manager テンプレート) ではなく `ArmTemplate_master.json` をポイントするように CI/CD タスクを更新します。 Resource Manager では、リンクされたテンプレートをストレージ アカウントにアップロードして、デプロイ時に Azure によってアクセスできるようにする必要もあります。 詳細については、「[Deploying Linked ARM Templates with VSTS (リンクされた ARM テンプレートの VSTS を使用したデプロイ)](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)」を参照してください。
 
 Data Factory のスクリプトは、必ず CI/CD パイプラインのデプロイ タスクの前後に追加してください。
 
 Git が構成されていない場合は、 **[ARM テンプレートのエクスポート]** によって、リンクされたテンプレートにアクセスできます。
 
+## <a name="hot-fix-production-branch"></a>運用ブランチへの修正プログラムの適用
+
+ファクトリを運用環境にデプロイし、すぐに修正が必要なバグがあることが判明したが現在のコラボレーション ブランチをデプロイできない場合、修正プログラムのデプロイが必要なことがあります。
+
+1.  Azure DevOps で、運用環境にデプロイされたリリースに移動し、デプロイされた最後のコミットを見つけます。
+
+2.  コミット メッセージから、コラボレーション ブランチのコミット ID を取得します。
+
+3.  そのコミットから新しい修正プログラム ブランチを作成します。
+
+4.  Azure Data Factory UX に移動し、このブランチに切り替えます。
+
+5.  Azure Data Factory UX を使用して、バグを修正します。 変更をテストします。
+
+6.  修正が検証されたら、 **[Export ARM template]\(ARM テンプレートのエクスポート\)** をクリックして、修正プログラムの Resource Manager テンプレートを取得します。
+
+7.  このビルドを adf_publish ブランチに手動でチェックインします。
+
+8.  adf_publish のチェックインに基づいて自動的にトリガーするようにリリース パイプラインを構成している場合、新しいリリースは自動的に開始します。 それ以外の場合は、手動でリリースをキューに配置します。
+
+9.  テスト ファクトリと運用ファクトリに修正プログラム リリースをデプロイします。 このリリースには、以前の運用ペイロードに加えて、手順 5 で行った修正が含まれています。
+
+10. 修正プログラムでの変更を開発ブランチに追加して、今後のリリースで同じバグが発生しないようにします。
+
 ## <a name="best-practices-for-cicd"></a>CI/CD のベスト プラクティス
 
 データ ファクトリとの Git 統合を使用していて、変更を開発環境からテスト環境を経て運用環境に移動する CI/CD パイプラインがある場合は、次のベスト プラクティスお勧めします。
 
--   **Git 統合**。 Git 統合で構成する必要があるのは開発環境のデータ ファクトリのみです。 テスト環境と運用環境への変更は CI/CD を介してデプロイされるので、Git 統合を使用する必要はありません。
+-   **Git 統合**。 Git 統合で構成する必要があるのは開発環境のデータ ファクトリのみです。 テスト環境と運用環境への変更は CI/CD を介してデプロイされるので、Git 統合は必要ありません。
 
--   **データ ファクトリの CI/CD スクリプト**。 CI/CD での Resource Manager デプロイ ステップの前に、トリガーの停止や、その他の種類のファクトリ クリーンアップなどの処理を行う必要があります。 これらのことをすべて行う[こちらのスクリプト](#sample-script-to-stop-and-restart-triggers-and-clean-up)を使用することをお勧めします。 デプロイの前と後に 1 回ずつ、適切なフラグを使用してスクリプトを実行します。
+-   **データ ファクトリの CI/CD スクリプト**。 CI/CD の Resource Manager デプロイ手順の前に、トリガーの停止/開始やクリーンアップなどの特定のタスクが必要です。 デプロイの前後に PowerShell スクリプトを使用することをお勧めします。 詳細については、「[アクティブなトリガーを更新する](#update-active-triggers)」を参照してください。 
 
--   **統合ランタイムと共有**。 統合ランタイムは、データ ファクトリのインフラストラクチャ コンポーネントの 1 つであり、あまり変更されず、CI/CD のすべてのステージで似ています。 そのため、Data Factory では、CI/CD のすべてのステージで統合ランタイムの名前と種類を同じにすることが期待されています。 すべてのステージで統合ランタイムを共有しようと考えている場合 (たとえば、セルフホステッド統合ランタイム)、共有方法の 1 つは、共有する統合ランタイムを格納するためだけに、三項ファクトリでセルフホステッド IR をホストすることです。 そうすれば、リンクされた IR の種類として開発/テスト/運用でそれを使用できます。
+-   **統合ランタイムと共有**。 統合ランタイムは頻繁には変更されず、CI/CD のすべてのステージで類似しています。 そのため、Data Factory では、CI/CD のすべてのステージで統合ランタイムの名前と種類を同じにすることが期待されています。 すべてのステージで統合ランタイムを共有するつもりの場合は、共有の統合ランタイムを含めるためだけに三項ファクトリを使用することを検討してください。 この共有ファクトリは、すべての環境で、リンクされた統合ランタイムの種類として使用できます。
 
--   **Key Vault**。 推奨される Azure Key Vault ベースのリンクされたサービス使用する場合は、開発/テスト/運用に個別のキー コンテナーを使用することで、さらに有効に活用できます。個別にアクセス許可レベルを構成することもできます。 運用環境のシークレットへのアクセス許可をチーム メンバーに持たせたくない場合があります。 また、すべてのステージでシークレット名を同じにすることもお勧めします。 同じ名前にすると、CI/CD を通して Resource Manager テンプレートを変更する必要がなくなります。なぜなら、変更する必要がある項目はキー コンテナーの名前だけであり、これは Resource Manager テンプレートのパラメーターの 1 つです。
+-   **Key Vault**。 Azure Key Vault ベースのリンクされたサービスを使用する場合は、異なる環境用に個別のキー コンテナーを保持することで、さらに有効に活用できます。 個別にアクセス許可レベルを構成することもできます。 たとえば、運用環境のシークレットへのアクセス許可をチーム メンバーに持たせたくない場合があります。 このアプローチに従う場合は、すべてのステージで同じシークレット名を保持することをお勧めします。 同じ名前にすると、CI/CD 環境を通して Resource Manager テンプレートを変更する必要がなくなります。なぜなら、変わる項目はキー コンテナーの名前だけであり、これは Resource Manager テンプレートのパラメーターの 1 つです。
 
 ## <a name="unsupported-features"></a>サポートされていない機能
 
--   データ ファクトリのエンティティは相互に依存しているため、リソースを個別に発行することはできません。 たとえば、トリガーはパイプラインに依存し、パイプラインはデータセットや他のパイプラインに依存します。変化する依存関係を追跡するのは困難です。 発行するリソースを手動で選択できたとしても、変更のセット全体のサブセットしか選択していない可能性があり、発行後に予期しない動作が発生します。
+-   個々のリソースを発行することはできません。 データ ファクトリ エンティティは相互に依存しており、依存関係の変化を追跡することは困難で、予期しない動作につながる可能性があります。 たとえば、トリガーはパイプラインに依存し、パイプラインはデータセットや他のパイプラインに依存します。 変更セット全体のサブセットのみを発行できるとした場合、特定の予期しないエラーが発生する可能性があります。
 
 -   非公開のブランチから発行することはできません。
 

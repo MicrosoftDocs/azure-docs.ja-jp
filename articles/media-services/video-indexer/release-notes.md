@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: fd67e867b5eac58838551ac29e1fca5e860b15ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414217"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845889"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -27,6 +27,16 @@ ms.locfileid: "68414217"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="july-2019"></a>2019 年 7 月
+
+### <a name="editor-as-a-widget"></a>ウィジェットとしてのエディター
+
+Video Indexer AI エディターが、お客様のアプリケーションに埋め込むためのウィジェットとして提供されています。
+
+### <a name="update-custom-language-model-from-closed-caption-file-from-the-portal"></a>ポータルでクローズド キャプション ファイルからカスタム言語モデルを更新する
+
+お客様は、ポータルのカスタマイズ ページから、言語モデルの入力として VTT、SRT、TTML の各ファイル形式を指定できます。
 
 ## <a name="june-2019"></a>2019 年 6 月
 

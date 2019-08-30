@@ -10,20 +10,31 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/28/2019
+ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 99c19223841748850ecc92fe08ebc09f563aff5d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2482fb4ab74a3c1e032a32890c3dc2c3920b5e6b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700215"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725621"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>更新:Azure PowerShell を使用して専用ホストに VM をデプロイする
 
 この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
 
-最新の Azure PowerShell モジュールがインストールされ、`Connect-AzAccount` を使用して Azure アカウントにサインインしていることを確認します。 
+Azure PowerShell バージョン 2.4.2 以降がインストールされ、`Connect-AzAccount` を使用して Azure アカウントにサインインしていることを確認します。 バージョン2.4.2 をインストールするには、PowerShell プロンプトを開き、次のように入力します。
+
+```powershell
+Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrelease
+```
+
+PowerShell でプレビュー モジュールの機能を有効にするには、PowerShellGet モジュールのバージョン 1.6.0 以降が必要です。 PowerShell Core の最新バージョンにはこの機能が自動的に組み込まれていますが、前のバージョンの PowerShell では、次のコマンドを実行して最新バージョンに更新することができます。
+
+```powershell
+Install-Module -Name PowerShellGet -Repository PSGallery -Force
+```
+
 
 > [!IMPORTANT]
 > 現在、専用ホストはパブリック プレビュー段階にあります。

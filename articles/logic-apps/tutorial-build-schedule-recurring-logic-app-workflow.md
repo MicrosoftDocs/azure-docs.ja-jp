@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec29eef7e733155b205d4feda844883bbc4496c9
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884688"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051750"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Azure Logic Apps を使用してスケジュールに従ってトラフィックをチェックする
 
@@ -35,25 +36,25 @@ ms.locfileid: "58884688"
 
 ![ロジック アプリの概観](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-Azure サブスクリプションがない場合は、始める前に<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+Azure サブスクリプションがない場合は、始める前に[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](https://docs.microsoft.com/connectors/)してください。 このクイックスタートでは、Outlook.com アカウントを使います。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
-* ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Bing 地図のキーを取得する方法</a>に関するページの手順に従ってください。 
+* ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、[Bing 地図のキーを取得する方法](https://msdn.microsoft.com/library/ff428642.aspx)に関するページの手順に従ってください。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
+Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
-1. Azure のメイン メニューで、**[リソースの作成]** > **[Enterprise Integration]** > **[Logic App]** の順に選択します。
+1. Azure のメイン メニューで、 **[リソースの作成]**  >  **[Enterprise Integration]**  >  **[Logic App]** の順に選択します。
 
    ![ロジック アプリを作成する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
 
-2. **[ロジック アプリの作成]** で、ロジック アプリに関する情報を次のように入力します。 終了したら、**[ダッシュボードにピン留めする]** > **[作成]** を選びます。
+2. **[ロジック アプリの作成]** で、ロジック アプリに関する情報を次のように入力します。 終了したら、 **[ダッシュボードにピン留めする]**  >  **[作成]** を選びます。
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
@@ -62,7 +63,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | **Name** | LA-TravelTime | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
    | **リソース グループ** | LA-TravelTime-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
-   | **場所** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
+   | **Location** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
 
@@ -78,7 +79,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    !["スケジュール-繰り返し" トリガーを探して追加](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. **[繰り返し]** シェイプの**省略記号** (**...**) ボタンを選択し、**[名前の変更]** を選択します。 トリガーの名前をわかりやすく「```Check travel time every weekday morning```」に変更します。
+2. **[繰り返し]** シェイプの**省略記号** ( **...** ) ボタンを選択し、 **[名前の変更]** を選択します。 トリガーの名前をわかりやすく「```Check travel time every weekday morning```」に変更します。
 
    ![トリガーの名前変更](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -107,7 +108,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![シェイプを折りたたんで詳細を非表示](./media/tutorial-build-scheduled-recurring-logic-app-workflow/collapse-trigger-shape.png)
 
-6. ロジック アプリを保存し、 デザイナーのツール バーで、**[保存]** を選択します。 
+6. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。 
 
 この時点でロジック アプリは稼働していますが、定期実行すること以外は何もしていません。 そこで、トリガーが起動したときに反応するアクションを追加します。
 
@@ -115,7 +116,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 トリガーが完成したら、2 地点間の移動時間を取得する[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加します。 Logic Apps には Bing Maps API 用のコネクタが用意されているため、この情報を簡単に取得することができます。 このタスクを開始する前に、このチュートリアルの前提条件で触れた Bing Maps API キーを用意しておいてください。
 
-1. Logic Apps デザイナーのトリガーで、**[+ 新しいステップ]** > **[アクションの追加]** の順に選択します。
+1. Logic Apps デザイナーのトリガーで、 **[+ 新しいステップ]**  >  **[アクションの追加]** の順に選択します。
 
 2. "地図" を検索し、次のアクションを選択します: **[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\)**
 
@@ -126,7 +127,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | Setting | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
-   | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">キーの取得方法</a>に関するページを参照してください。 | 
+   | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、[キーの取得方法](https://msdn.microsoft.com/library/ff428642.aspx)に関するページを参照してください。 | 
    | | | |  
 
 4. アクションの名前をわかりやすく「```Get route and travel time with traffic```」に変更します。
@@ -159,7 +160,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 前出の **[Get route]\(ルートを取得する\)** アクションからは、交通量を加味した最新の移動時間が **[Travel Duration Traffic]\(交通量を加味した移動時間\)** フィールドを介して返されます。このときの時間の単位は、既定では "秒" です。 この値を "分" に変換して格納しておけば、後で同じ変換を繰り返さずに済み、再利用しやすくなります。
 
-1. **[Get route]\(ルートを取得する\)** アクションで、**[+ 新しいステップ]** > **[アクションの追加]** を選択します。
+1. **[Get route]\(ルートを取得する\)** アクションで、 **[+ 新しいステップ]**  >  **[アクションの追加]** を選択します。
 
 2. "変数" を検索し、次のアクションを選択します: **変数 - 変数を初期化する**
 
@@ -194,7 +195,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![「div(,60)」という式を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
-   3. 式の左かっこ (**(**) とコンマ (**,**) の間にカーソルを置きます。 
+   3. 式の左かっこ ( **(** ) とコンマ ( **,** ) の間にカーソルを置きます。 
    **[動的なコンテンツ]** を選択します。
 
       ![カーソルを置き、[動的なコンテンツ] を選択します。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
@@ -217,7 +218,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="compare-travel-time-with-limit"></a>移動時間と上限を比較する
 
-1. 直前のアクションの下で、**[+ 新しいステップ]** > **[条件の追加]** の順に選択します。 
+1. 直前のアクションの下で、 **[+ 新しいステップ]**  >  **[条件の追加]** の順に選択します。 
 
 2. 条件の名前をわかりやすく「```If travel time exceeds limit```」に変更します。
 
@@ -225,7 +226,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    1. 条件内で **[値の選択]** ボックス内をクリックします。このボックスは、ブラウザーの表示幅が広い場合は左側に、表示幅が狭い場合は上部に表示されます。
 
-   2. 動的コンテンツ リストまたはパラメーター リストから、**[変数]** の **[travelTime]** フィールドを選択します。
+   2. 動的コンテンツ リストまたはパラメーター リストから、 **[変数]** の **[travelTime]** フィールドを選択します。
 
    3. 比較ボックスで、演算子として **[次の値より大きい]** を選択します。
 
@@ -243,7 +244,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 今度は、指定した移動時間の上限を超えたときにメールで通知を受けるためのアクションを追加します。 このメールには、指定されたルートで移動するために必要な最新の移動時間と超過時間が記載されます。 
 
-1. 条件の **[true の場合]** 分岐で、**[アクションの追加]** を選択します。
+1. 条件の **[true の場合]** 分岐で、 **[アクションの追加]** を選択します。
 
 2. "メールの送信" を検索し、目的のメール コネクタと "メールの送信アクション" を選択します。
 
@@ -283,7 +284,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![移動にかかる超過時間 (分) を計算するための式を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   4. 式の左かっこ (**(**) とコンマ (**,**) の間にカーソルを置きます。 **[動的なコンテンツ]** を選択します。
+   4. 式の左かっこ ( **(** ) とコンマ ( **,** ) の間にカーソルを置きます。 **[動的なコンテンツ]** を選択します。
 
       ![移動にかかる超過時間を計算するための式を引き続き作成](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 
@@ -324,7 +325,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、ロジック アプリと関連リソースを含んだリソース グループを削除しましょう。 Azure のメイン メニューから **[リソース グループ]** に移動し、対象のロジック アプリのリソース グループを選択します。 **[リソース グループの削除]** を選択します。 確認のためにリソース グループ名を入力し、**[削除]** を選択します。
+必要がなくなったら、ロジック アプリと関連リソースを含んだリソース グループを削除しましょう。 Azure のメイン メニューから **[リソース グループ]** に移動し、対象のロジック アプリのリソース グループを選択します。 **[リソース グループの削除]** を選択します。 確認のためにリソース グループ名を入力し、 **[削除]** を選択します。
 
 ![[概要] > [リソース グループの削除]](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 

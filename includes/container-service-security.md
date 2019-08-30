@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c7b9e3a9eb5c906fa598da9c8c547cb542ecb719
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181728"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036734"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(非推奨) Azure Container Service での Docker コンテナーのセキュリティ保護
 
@@ -34,7 +34,7 @@ ms.locfileid: "67181728"
 
 プライベート レジストリを使用している場合でも、追加のセキュリティ確認のためにイメージ スキャン ソリューションを使用することをお勧めします。 コンテナー イメージの各ソフトウェア レイヤーは、コンテナー イメージの他のレイヤーとは関係なく、脆弱になる傾向にあります。 コンテナー テクノロジに基づいて運用環境のワークロードをデプロイする企業が増えると、組織へのセキュリティの脅威を確実に防ぐために、イメージ スキャンがますます重要になってきます。 
 
-特に [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry)、[Aqua Security](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) などのセキュリティの監視とスキャン ソリューションを使用すると、プライベート レジストリでコンテナー イメージをスキャンし、潜在的な脆弱性を特定できます。 さまざまなソリューションのスキャンの深さを理解することが重要です。 たとえば、ソリューションの中には、既知の脆弱性に対してはイメージ レイヤーのクロス検証しか行わないものがあります。 こうしたソリューションでは、特定のパッケージ マネージャー ソフトウェアによって組み込まれているイメージ レイヤー ソフトウェアを検証できない可能性があります。 また、スキャンがより緊密に統合され、すべてのパッケージのソフトウェアの脆弱性を見つけることができるソリューションもあります。
+特に [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry)、[Aqua Security](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) などのセキュリティの監視とスキャン ソリューションを使用すると、プライベート レジストリでコンテナー イメージをスキャンし、潜在的な脆弱性を特定できます。 さまざまなソリューションのスキャンの深さを理解することが重要です。 たとえば、ソリューションの中には、既知の脆弱性に対してはイメージ レイヤーのクロス検証しか行わないものがあります。 こうしたソリューションでは、特定のパッケージ マネージャー ソフトウェアによって組み込まれているイメージ レイヤー ソフトウェアを検証できない可能性があります。 また、スキャンがより緊密に統合され、すべてのパッケージのソフトウェアの脆弱性を見つけることができるソリューションもあります。
 
 ### <a name="production-deployment-rules-and-audit"></a>運用環境デプロイのルールと監査
 運用環境でアプリケーションがデプロイされたら、その運用環境で使用されているイメージのセキュリティを確保し、脆弱性を確実に排除するためのルールをいくつか設定することが重要です。

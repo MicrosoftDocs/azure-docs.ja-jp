@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c76ad0739edea4c0541ace76ca2311453de71d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30fd1ebf8a59c80764335be47c986ea77f5d1438
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963029"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879167"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 | Error | 解決策 |
 | --- | --- |
-| Azure Portal で Azure AD の下に **[パスワードのリセット]** セクションが表示されません。 | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。|
+| Azure Portal で Azure AD の下に **[パスワードのリセット]** セクションが表示されません。 | これは、この操作を実行する管理者に割り当てられる Azure AD ライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。|
 | 特定の構成オプションが表示されません。 | UI の多くの要素は、必要になるまで表示されません。 表示する必要のあるすべてのオプションを有効にしてください。 |
 | **[オンプレミスの統合]** タブが表示されません。 | このオプションは、Azure AD Connect をダウンロードし、パスワード ライトバックを構成した場合にのみ表示されます。 詳細については、[簡単設定を使用した Azure AD Connect の開始](../hybrid/how-to-connect-install-express.md)に関する記事をご覧ください。 |
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 | Error | 解決策 |
 | --- | --- |
-| **[Self-Service Password Management]\(セルフサービスのパスワード管理\)** 監査イベント カテゴリに、パスワード管理アクティビティの種類が表示されません。 | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てることで、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。 |
+| **[Self-Service Password Management]\(セルフサービスのパスワード管理\)** 監査イベント カテゴリに、パスワード管理アクティビティの種類が表示されません。 | これは、この操作を実行する管理者に割り当てられる Azure AD ライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てることで、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。 |
 | ユーザー登録が何回も表示されます。 | 現時点では、ユーザーが登録を行うと、登録される各データを個別のイベントとして記録しています。 <br> <br> このデータを集計してデータの表示方法をより柔軟なものにするには、レポートをダウンロードして Excel のピボット テーブルでデータを開きます。
 
 ## <a name="troubleshoot-the-password-reset-registration-portal"></a>パスワード リセット登録ポータルのトラブルシューティング
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 | Error | 解決策 |
 | --- | --- |
 | このディレクトリでは、パスワードのリセットが有効になっていません。 **管理者が、この機能を使用できるようにしていません。** | **[セルフ サービスによるパスワードのリセットが有効]** フラグを **[選択]** または **[すべて]** に切り替えて、 **[保存]** を選択します。 |
-| ユーザーに Azure AD Premium または Azure AD Basic のライセンスが割り当てられていません。 **管理者が、この機能を使用できるようにしていません。** | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てることで、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。|
+| ユーザーに Azure AD のライセンスが割り当てられていません。 **管理者が、この機能を使用できるようにしていません。** | これは、この操作を実行する管理者に割り当てられる Azure AD ライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てることで、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。|
 | 要求の処理中に発生したエラーがあります。 | このエラーはさまざまな問題が原因で発生することがありますが、一般的にサービスの停止や構成の問題が原因で発生します。 このエラーが表示されてビジネスに影響がある場合は、Microsoft サポートにお問い合わせください。 |
 
 ## <a name="troubleshoot-the-password-reset-portal"></a>パスワード リセット ポータルのトラブルシューティング
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 | Error | 解決策 |
 | --- | --- |
 | このディレクトリでは、パスワードのリセットが有効になっていません。 | **[セルフ サービスによるパスワードのリセットが有効]** フラグを **[選択]** または **[すべて]** に切り替えて、 **[保存]** を選択します。 |
-| ユーザーに Azure AD Premium または Azure AD Basic のライセンスが割り当てられていません。 | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てれば、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。 |
+| ユーザーに Azure AD のライセンスが割り当てられていません。 | これは、この操作を実行する管理者に割り当てられる Azure AD ライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てれば、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。 |
 | ディレクトリでパスワードのリセットが有効になっていますが、ユーザーの認証情報が見つからない、または認証情報の形式が正しくありません。 | 続行する前に、ユーザーがディレクトリ内のファイルに正しい形式の連絡先データを指定していることを確認します。 詳しくは、[Azure AD のセルフサービスによるパスワードのリセットで使われるデータ](howto-sspr-authenticationdata.md)に関するページをご覧ください。 |
 | ディレクトリでパスワードのリセットが有効になっていますが、ポリシーが 2 つの検証方法を要求するように設定されている場合に、ユーザーがファイルに 1 つの連絡先データしか指定していません。 | 続行する前に、ユーザーが少なくとも 2 つの連絡方法を正しく構成していることを確認します。 たとえば、携帯電話番号*と*会社の電話番号などです。 |
 | ディレクトリでパスワードのリセットが有効になっており、ユーザーが正しく構成されていますが、ユーザーに連絡できません。 | 一時的なサービス エラーが発生したか、連絡先データが正しくない可能性があるため、正しく検出できませんでした。 <br> <br> 10 秒待つと、[もう一度お試しください] と [管理者に連絡してください] のリンクが表示されます。 [もう一度お試しください] を選択した場合、呼び出しをもう一度試します。 ユーザーが [管理者に連絡してください] を選択すると、そのユーザーのアカウントに対してパスワードのリセットを実行するよう管理者に要求するフォーム メールが送信されます。 |
@@ -275,7 +275,7 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
    * このユーザーは、パススルー認証ユーザーですか。
    * このユーザーは、パスワード ハッシュ同期ユーザーですか。
    * このユーザーは、クラウド限定ユーザーですか。
-* **ライセンス**: ユーザーには Azure AD Premium または Azure AD Basic ライセンスが割り当てられていますか。
+* **ライセンス**: ユーザーに Azure AD のライセンスが割り当てられていますか。
 * **アプリケーション イベント ログ**: パスワード ライトバックの使用中に、ご利用のオンプレミスのインフラストラクチャでエラーが発生した場合は、Azure AD Connect サーバーからのアプリケーション イベント ログのコピーを圧縮してお送りください。
 
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Azure AD Sync サービスを再起動する"

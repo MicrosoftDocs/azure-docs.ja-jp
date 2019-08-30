@@ -4,14 +4,14 @@ description: Apache Hadoop YARN と Azure HDInsight の操作についてよく�
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 8396f682558b71ca99af845bd51f7b2c8059f79b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072015"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573716"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング
 
@@ -19,9 +19,9 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>クラスターで新しい YARN キューを作成する方法
 
-### <a name="resolution-steps"></a>解決手順 
+### <a name="resolution-steps"></a>解決手順
 
-新しい YARN キューを作成し、すべてのキューの間で容量の割り当てのバランスを取るには、Ambari で次の手順を実行します。 
+新しい YARN キューを作成し、すべてのキューの間で容量の割り当てのバランスを取るには、Ambari で次の手順を実行します。
 
 この例では、次の 2 つの既存のキュー (**default** と **thriftsvr**) 両方の容量を 50% から 25% に変更し、新しいキュー (Spark) が容量の 50% を使用できるようにします。
 
@@ -61,19 +61,18 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 - [Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
-
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>クラスターから YARN ログをダウンロードする方法
-
 
 ### <a name="resolution-steps"></a>解決手順 
 
 1. Secure Shell (SSH) クライアントで HDInsight クラスターに接続します。 詳細については、「[参考資料](#additional-reading-2)」をご覧ください。
 
-2. 現在実行しているすべての YARN アプリケーションのアプリケーション ID を一覧で表示するには、次のコマンドを実行します。
+1. 現在実行しているすべての YARN アプリケーションのアプリケーション ID を一覧で表示するには、次のコマンドを実行します。
 
     ```apache
     yarn top
     ```
+
     ID が **APPLICATIONID** 列に一覧で表示されます。 ログを **APPLICATIONID** 列からダウンロードできます。
 
     ```apache
@@ -89,42 +88,42 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. すべてのアプリケーション マスターの YARN コンテナー ログをダウンロードするには、次のコマンドを使用します。
-   
+1. すべてのアプリケーション マスターの YARN コンテナー ログをダウンロードするには、次のコマンドを使用します。
+
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    このコマンドによって、amlogs.txt という名前のログ ファイルが作成されます。 
+    このコマンドによって、amlogs.txt という名前のログ ファイルが作成されます。
 
-4. 最新のアプリケーション マスターの YARN コンテナー ログだけをダウンロードするには、次のコマンドを使用します。
+1. 最新のアプリケーション マスターの YARN コンテナー ログだけをダウンロードするには、次のコマンドを使用します。
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    このコマンドによって、latestamlogs.txt という名前のログ ファイルが作成されます。 
+    このコマンドによって、latestamlogs.txt という名前のログ ファイルが作成されます。
 
-4. 最初の 2 つのアプリケーション マスターの YARN コンテナー ログをダウンロードするには、次のコマンドを使用します。
+1. 最初の 2 つのアプリケーション マスターの YARN コンテナー ログをダウンロードするには、次のコマンドを使用します。
 
     ```apache
-    yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
+    yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    このコマンドによって、first2amlogs.txt という名前のログ ファイルが作成されます。 
+    このコマンドによって、first2amlogs.txt という名前のログ ファイルが作成されます。
 
-5. すべての YARN コンテナー ログをダウンロードするには、次のコマンドを使用します。
+1. すべての YARN コンテナー ログをダウンロードするには、次のコマンドを使用します。
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    このコマンドによって、logs.txt という名前のログ ファイルが作成されます。 
+    このコマンドによって、logs.txt という名前のログ ファイルが作成されます。
 
-6. 特定のコンテナーの YARN コンテナー ログをダウンロードするには、次のコマンドを使用します。
+1. 特定のコンテナーの YARN コンテナー ログをダウンロードするには、次のコマンドを使用します。
 
     ```apache
-    yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
+    yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
     このコマンドによって、containerlogs.txt という名前のログ ファイルが作成されます。
@@ -134,6 +133,12 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 - [SSH を使用して HDInsight (Apache Hadoop) に接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN の概念とアプリケーション](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
+## <a name="next-steps"></a>次の手順
 
-### <a name="see-also"></a>関連項目
-[Azure HDInsight を使用したトラブルシューティング](hdinsight-troubleshoot-guide.md)
+問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
+
+- [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
+
+- [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
+
+- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

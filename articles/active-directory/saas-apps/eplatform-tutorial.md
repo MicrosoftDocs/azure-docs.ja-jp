@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 61946f77ddffe999e55acd09e3957d91c621492b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 557f07f3e99365bbfca7f0b0d70c0c0cd928c2e6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103232"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eplatform"></a>チュートリアル:Azure Active Directory と ePlatform の統合
 
@@ -117,13 +117,13 @@ ePlatform で Azure AD シングル サインオンを構成するには、次�
 
     ![[Thumbprint]\(拇印\) の値をコピーする](common/copy-thumbprint.png)
 
-7. ePlatform アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
+7. ePlatform アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
 8. その他に、ePlatform アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性 |
+    | EnableAdfsAuthentication | ソース属性 |
     | ---------------| --------------- |
     | upn | user.userprincipalname |
 
@@ -212,7 +212,7 @@ ePlatform で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-eplatform-test-user"></a>ePlatform のテスト ユーザーの作成
 
-このセクションでは、ePlatform で Britta Simon というユーザーを作成します。  [ePlatform サポート チーム](https://help.eplatform.co/hc/en-us)と連携し、ePlatform プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ePlatform で Britta Simon というユーザーを作成します。 [ePlatform サポート チーム](https://help.eplatform.co/hc/en-us)と連携し、ePlatform プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

@@ -118,7 +118,7 @@ Opal で Azure AD シングル サインオンを構成するには、次の手�
 
 6. その他に、Opal アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | EnableAdfsAuthentication | ソース属性|
+    | Name | ソース属性|
     | ---------------| --------------- |
     | firstname           | User.givenname |
     | lastname        | User.surname |

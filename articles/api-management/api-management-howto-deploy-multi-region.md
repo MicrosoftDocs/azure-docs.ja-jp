@@ -9,34 +9,33 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7cd0533dcbc9b367fa9a1e138b1aa1257989a3d7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658201"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072424"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 
-Azure API Management では複数リージョンのデプロイメントがサポートされており、API パブリッシャーは 1 つの Azure API Management サービスを任意の数の Azure リージョンに分散できます。 これにより、地理的に分散した API コンシューマーによって認識される要求待ち時間が短くなり、1 つのリージョンがオフラインになった場合でもサービスの可用性を向上できます。
+Azure API Management では複数リージョンのデプロイがサポートされています。これにより、API パブリッシャーは 1 つの Azure API Management サービスを任意の数のサポートされる Azure リージョンに分散できます。 複数リージョン機能により、地理的に分散した API コンシューマーによって認識される要求待ち時間が短くなり、1 つのリージョンがオフラインになった場合でもサービスの可用性を向上できます。
 
-新しい Azure API Management サービスには、最初は単一の Azure リージョン (プライマリ リージョン) 内に 1 つの[ユニット][unit]のみが含まれています。 リージョンは Azure Portal で簡単に追加できます。 各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは、待ち時間の観点から最も近いゲートウェイにルーティングされます。 リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。
+新しい Azure API Management サービスには、最初は単一の Azure リージョン (プライマリ リージョン) 内に 1 つの[ユニット][unit]のみが含まれています。 追加のリージョンは、プライマリ リージョンまたはセカンダリ リージョンに追加できます。 API Management ゲートウェイ コンポーネントは、選択されたすべてのプライマリ リージョンとセカンダリ リージョンにデプロイされます。 受信 API 要求は、最も近いリージョンに自動的に送られます。 リージョンがオフラインになった場合、API 要求は、障害が発生したリージョンを迂回して、次に最も近いゲートウェイに自動的にルーティングされます。
 
 > [!NOTE]
-> Azure API Management は、リージョン間で API ゲートウェイ コンポーネントのみをレプリケートします。 サービス管理コンポーネントは、プライマリ リージョンでのみホストされます。 プライマリ リージョンでシステム停止が発生した場合、設定またはポリシーの更新プログラムを含む構成の変更を Azure API Management サービス インスタンスに適用することはできません。
+> すべてのリージョンにデプロイされるのは、API Management のゲートウェイ コンポーネントのみです。 サービス管理コンポーネントと開発者ポータルは、プライマリ リージョンでのみホストされます。 このため、プライマリ リージョンの停止時には、プライマリ リージョンがオンラインに戻るまで、開発者ポータルへのアクセス、および構成を変更する機能 (API の追加、ポリシーの適用など) が損なわれます。 プライマリ リージョンがオフラインの間、使用可能なセカンダリ リージョンは、使用可能な最新の構成を使用して引き続き API トラフィックを処理します。
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
 ## <a name="add-region"> </a>新しいリージョンに API Management サービス インスタンスをデプロイする
 
 > [!NOTE]
-> API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][Create an API Management service instance]に関するページを参照してください。
+> API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][create an api management service instance]に関するページを参照してください。
 
-Azure Portal で API Management サービス インスタンスの **[スケールと料金]** ページに移動します。 
+Azure Portal で API Management サービス インスタンスの **[スケールと料金]** ページに移動します。
 
 ![[スケール] タブ][api-management-scale-service]
 
@@ -48,13 +47,13 @@ Azure Portal で API Management サービス インスタンスの **[スケー�
 
 ![ユニットの指定][api-management-select-location-units]
 
-**[追加]** をクリックすると、選択した内容が場所のテーブルに記載されます。 
+**[追加]** をクリックすると、選択した内容が場所のテーブルに記載されます。
 
 すべての場所が構成されるまでこのプロセスを繰り返したら、ツールバーの **[保存]** をクリックして、デプロイ プロセスを開始します。
 
 ## <a name="remove-region"> </a>場所から API Management サービス インスタンスを削除する
 
-Azure Portal で API Management サービス インスタンスの **[スケールと料金]** ページに移動します。 
+Azure Portal で API Management サービス インスタンスの **[スケールと料金]** ページに移動します。
 
 ![[スケール] タブ][api-management-scale-service]
 
@@ -111,7 +110,7 @@ Azure API Management は、バックエンド サービスの URL が 1 つだ�
 
 ## <a name="custom-routing"> </a>API Management リージョン ゲートウェイへのカスタム ルーティングを使用する
 
-API Management は、[最短の待ち時間](../traffic-manager/traffic-manager-routing-methods.md#performance)に基づいてリージョン "*ゲートウェイ*" に要求をルーティングします。 API Management でこの設定をオーバーライドすることはできませんが、カスタム ルーティング規則を持った独自の Traffic Manager を使用することはできます。
+API Management は、[最短の待ち時間](../traffic-manager/traffic-manager-routing-methods.md#performance)に基づいてリージョン "_ゲートウェイ_" に要求をルーティングします。 API Management でこの設定をオーバーライドすることはできませんが、カスタム ルーティング規則を持った独自の Traffic Manager を使用することはできます。
 
 1. 独自の [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) を作成します。
 1. カスタム ドメインを使用している場合、API Management サービスではなく、[Traffic Manager と共に使用](../traffic-manager/traffic-manager-point-internet-domain.md)します。
@@ -119,19 +118,14 @@ API Management は、[最短の待ち時間](../traffic-manager/traffic-manager-
 1. [Traffic Manager に API Management のリージョン状態エンドポイントを構成](../traffic-manager/traffic-manager-monitoring.md)します。 リージョン状態エンドポイントは、`https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` という URL パターンに従います (例: `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`)。
 1. Traffic Manager の[ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)を指定します。
 
-
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-
 [api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
 [api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
 [api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
 [api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
-
-[Create an API Management service instance]: get-started-create-service-instance.md
-[Get started with Azure API Management]: get-started-create-service-instance.md
-
-[Deploy an API Management service instance to a new region]: #add-region
-[Delete an API Management service instance from a region]: #remove-region
-
+[create an api management service instance]: get-started-create-service-instance.md
+[get started with azure api management]: get-started-create-service-instance.md
+[deploy an api management service instance to a new region]: #add-region
+[delete an api management service instance from a region]: #remove-region
 [unit]: https://azure.microsoft.com/pricing/details/api-management/
-[Premium]: https://azure.microsoft.com/pricing/details/api-management/
+[premium]: https://azure.microsoft.com/pricing/details/api-management/

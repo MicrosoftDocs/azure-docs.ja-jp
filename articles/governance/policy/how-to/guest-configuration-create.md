@@ -7,16 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5e707fb004af7bbce915baf4b059514fcae8e52b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725938"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543514"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
 ゲスト構成では [Desired State Configuration](/powershell/dsc) (DSC) リソース モジュールを使って、Azure 仮想マシンの監査用の構成を作成します。 DSC 構成では、仮想マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **audit** がトリガーされて、仮想マシンは**非準拠**と見なされます。
+
+[Azure Policy のゲスト構成](/azure/governance/policy/concepts/guest-configuration)は、仮想マシン内の設定を監査するためにのみ使用できます。 仮想マシン内の設定の修復はまだ利用できません。
 
 Azure 仮想マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 
@@ -321,6 +323,14 @@ Azure で作成されるポリシー定義とイニシアティブ定義に関�
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。
 このようにすると、すべてのプロパティが正しく更新されることが保証されます。
+
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows グループ ポリシー コンテンツから Azure Policy ゲスト構成への変換
+
+Windows マシンを監査する場合のゲスト構成は、PowerShell Desired State Configuration 構文の実装です。
+DSC コミュニティでは、エクスポートしたグループ ポリシー テンプレートを DSC 形式に変換するためのツールが公開されています。
+このツールを前述のゲスト構成コマンドレットと共に使用することで、Windows グループ ポリシーのコンテンツを変換し、Azure Policy 用にパッケージ化および公開して監査することができます。
+ツールの使用の詳細については、[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
+コンテンツの変換後は、パッケージを作成して Azure Policy として公開する上記の手順は、他の DSC コンテンツと同じです。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>省略可能:ゲスト構成パッケージに署名する
 

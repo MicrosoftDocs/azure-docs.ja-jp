@@ -210,7 +210,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 </tr>
 <tr>
 <td width="162">
-<p><b>削除中</b>。</p>
+<p><b>削除中</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>

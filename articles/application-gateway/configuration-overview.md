@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 86b41bb2554dbefeaeb724e746bcaf757463f8ae
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 65cf71140d1706b8607e721ac323b1a97ae272fa
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795915"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898443"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -62,7 +62,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 このシナリオでは、Application Gateway サブネット上の NSG を使用します。 次の制約は、この優先順位でサブネットに適用します。
 
 1. ソース IP と IP 範囲からの着信トラフィックを許可します。
-2. [バックエンド ヘルス通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)用にポート 65503 ~ 65534 のすべてのソースからの着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
+2. Application Gateway v1 SKU の場合はポート 65503 から 65534 への、[バックエンドの正常性通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)用の v2 SKU の場合はポート 65200 から 65535 への、すべてのソースからの着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
 3. [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)で着信 Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と受信仮想ネットワーク トラフィック (*VirtualNetwork* タグ) を許可します。
 4. すべて拒否規則を使用して、その他すべての着信トラフィックをブロックします。
 5. インターネットのすべての宛先への送信トラフィックを許可します。

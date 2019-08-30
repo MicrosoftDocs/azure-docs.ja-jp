@@ -11,17 +11,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ab04d1288eb3a851774128b8aaaae03868c2ffa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839013"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066743"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
@@ -32,14 +31,13 @@ App Service では、アプリは "_App Service プラン_" で実行されま�
 - リージョン (米国西部、米国東部など)
 - VM インスタンスの数
 - VM インスタンスのサイズ (小、中、大)
-- 価格レベル (Free、Shared、Basic、Standard、Premium、PremiumV2、Isolated、従量課金)
+- 価格レベル (Free、Shared、Basic、Standard、Premium、PremiumV2、Isolated)
 
 App Service プランの "_価格レベル_" は、取得する App Service の機能とプランの価格を決定します。 価格レベルにはいくつかのカテゴリがあります。
 
 - **共有コンピューティング**: 2 つの基本レベルである **Free** と **Shared** は、他のお客様のアプリを含む他の App Service アプリと同じ Azure VM 上でアプリを実行します。 これらのレベルは共有リソースで実行される各アプリに CPU クォータを割り当て、リソースはスケールアウトできません。
 - **専用のコンピューティング**: **Basic**、**Standard**、**Premium**、**PremiumV2** のレベルはアプリを専用の Azure VM 上で実行します。 同じ App Service プラン内のアプリのみが同じコンピューティング リソースを共有します。 レベルが高いほど、スケールアウトに使用できる VM インスタンスが多くなります。
-- **Isolated**: このレベルは、専用の Azure VM を専用の Azure 仮想ネットワーク上で実行し、コンピューティングの分離の上のネットワークの分離をアプリに提供します。 最大のスケールアウト機能を提供します。
-- **従量課金**: このレベルは[関数アプリ](../azure-functions/functions-overview.md)にのみ使用できます。 ワークロードに応じて関数を動的にスケーリングします。 詳しくは、「[Azure Functions のホスティング プラン](../azure-functions/functions-scale.md)」をご覧ください。
+- **Isolated**: このレベルでは、専用の Azure 仮想ネットワーク上で専用の Azure VM が実行されます。 アプリに対して、コンピューティングの分離の上にネットワークの分離を提供されます。 最大のスケールアウト機能を提供します。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -80,8 +78,7 @@ App Service でアプリを作成すると、App Service プランに入れら�
 
 - **Shared** レベルでは、それぞれのアプリが CPU の分単位のクォータを受け取るので、"_各アプリ_" は CPU クォータの時間単位で課金されます。
 - 専用コンピューティング レベル (**Basic**、**Standard**、**Premium**、**PremiumV2**) では、App Service プランはアプリがスケールされる VM インスタンスの数を定義するので、App Service プランの "_各 VM インスタンス_" には時間単位の料金があります。 これらの VM インスタンスには、実行されているアプリの数にかかわらず同じ料金が課金されます。 予期しない課金を避けるには、[App Service プランのクリーンアップ](app-service-plan-manage.md#delete)に関するページをご覧ください。
-- **Isolated** レベルでは、App Service 環境は、アプリを実行する分離された worker の数を定義し、"_各 worker_" は時間単位で課金されます。 さらに、App Service 環境自体の実行に時間単位の基本料金があります。 
-- (Azure Functions の場合のみ) **従量課金**レベルは、VM インスタンスを動的に割り当てて関数アプリのワークロードを処理し、Azure によって 1 秒ごとに動的に課金されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。
+- **Isolated** レベルでは、App Service 環境は、アプリを実行する分離された worker の数を定義し、"_各 worker_" は時間単位で課金されます。 さらに、App Service 環境自体の実行に時間単位の基本料金があります。
 
 使用可能な App Service 機能 (カスタム ドメインの構成、SSL 証明書、デプロイ スロット、バックアップなど) の使用には課金されません。 ただし、次のような例外があります。
 
@@ -102,7 +99,7 @@ App Service プランは、いつでもスケールアップまたはスケー�
 
 逆も同じように動作します。 上位レベルの能力や機能が不要になったと感じる場合は、下位レベルにスケールダウンして、コストを節約できます。
 
-App Service プランのスケールアップについては、「[Azure でのアプリのスケールアップ](web-sites-scale.md)」をご覧ください。
+App Service プランのスケールアップについては、「[Azure でのアプリのスケールアップ](manage-scale-up.md)」をご覧ください。
 
 アプリが他のアプリと同じ App Service プランにある場合は、コンピューティング リソースを分離すると、アプリのパフォーマンスが向上します。 これを行うには、アプリを別の App Service プランに移動します。 詳しくは、「[Move an app to another App Service plan (アプリを別の App Service プランに移動する)](app-service-plan-manage.md#move)」をご覧ください。
 

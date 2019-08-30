@@ -5,14 +5,14 @@ author: roygara
 ms.service: virtual-machines-windows
 ms.workload: storage
 ms.topic: conceptual
-ms.date: 06/15/2017
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: bcbd6b590e0b436044166a8a573df4f23cbd0c52
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: edd9ca4b00031351c5cfcc8e6971653df267268d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698708"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516068"
 ---
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

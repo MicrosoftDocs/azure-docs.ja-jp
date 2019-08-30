@@ -10,17 +10,16 @@ ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: db29d0761084e32d601dc9c6d94082cd09bc5d18
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 950818d08cb654bad969deaede24231cab9bcbe2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655461"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098566"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 

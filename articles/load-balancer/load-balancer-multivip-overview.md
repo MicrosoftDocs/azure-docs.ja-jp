@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.date: 08/07/2019
 ms.author: chkuhtz
-ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594197"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884211"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数フロントエンド
 
@@ -132,7 +132,7 @@ Floating IP 規則タイプは、いくつかのロード バランサーの構�
 ## <a name="limitations"></a>制限事項
 
 * 複数フロントエンドの構成は、IaaS VM でのみサポートされます。
-* Floating IP 規則の場合、ご利用のアプリケーションでは送信フローにプライマリ IP 構成を使用する必要があります。 ご利用のアプリケーションがゲスト OS のループバック インターフェイスに構成されているフロントエンド IP アドレスにバインドされると、Azure の SNAT が送信フローを書き換えることができないため、フローが失敗します。
+* Floating IP 規則の場合、ご利用のアプリケーションではアウトバウンド SNAT フローにプライマリ IP 構成を使用する必要があります。 ご利用のアプリケーションがゲスト OS のループバック インターフェイスに構成されているフロントエンド IP アドレスにバインドされると、Azure のアウトバウンド SNAT がアウトバウンド フローを書き換えることができないため、フローが失敗します。  [アウトバウンドのシナリオ](load-balancer-outbound-connections.md)を確認してください。
 * パブリック IP アドレスは課金に影響します。 詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * サブスクリプションの制限が適用されます。 詳細については、「 [サービスの制限](../azure-subscription-service-limits.md#networking-limits) 」を参照してください。
 

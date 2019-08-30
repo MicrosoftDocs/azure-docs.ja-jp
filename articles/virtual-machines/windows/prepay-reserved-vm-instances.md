@@ -5,17 +5,16 @@ services: virtual-machines-windows
 author: yashar
 manager: yashar
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 5e043d3e226a34cf0837ef37eceee0689d4c6037
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 48bf009572cdc8323ee4626e868a0808b96c0310
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781260"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102548"
 ---
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]

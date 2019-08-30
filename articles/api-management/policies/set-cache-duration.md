@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 042fab72da2d4b890314b6ee9c7237241b492fba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67d2f334e2088d96543fabd3b99cac71d95630eb
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859159"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071971"
 ---
 # <a name="set-response-cache-duration"></a>応答のキャッシュ期間を設定する
 

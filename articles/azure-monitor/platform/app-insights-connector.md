@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606745"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849186"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -195,7 +195,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | Country | 要求元の国や地域 |
 | Province | 要求元の都道府県またはロケール |
 | City | 要求元の市町村 |
-| isSynthetic | 要求がユーザーによって作成されたか、自動化された方法で作成されたかを示します。 True = ユーザーが生成、false = 自動化された方法 |
+| isSynthetic | 要求がユーザーによって作成されたか、自動化された方法で作成されたかを示します。 true = 自動化された方法、false = ユーザーが生成 |
 | SamplingRate | ポータルに送信される、SDK によって生成されたテレメトリの割合。 範囲 0.0 ～ 100.0。 |
 | SampledCount | 100/(SamplingRate)。 例: 4 =&gt; 25% |
 | IsAuthenticated | ｔrue または false |

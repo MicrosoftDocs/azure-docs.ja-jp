@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 1/9/2019
+ms.date: 8/2/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d7a4a54f979cd4b14e12c5a57792241f1b2388d2
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60522557"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734699"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 この記事では、Azure Data Factory (ADF) を使用して、Azure-SSIS Integration Runtime (IR) の開始と停止のスケジュールを設定する方法を説明します。 Azure-SSIS IR は、SQL Server Integration Services (SSIS) パッケージの実行専用の ADF コンピューティング リソースです。 Azure-SSIS IR を実行するには、それに関連するコストがあります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 ADF のユーザー インターフェイス (UI)/アプリまたは Azure PowerShell を使用して、[IR を手動で開始または停止する](manage-azure-ssis-integration-runtime.md)ことができます。
@@ -346,6 +346,8 @@ Azure Automation アカウントをまだ持っていない場合は、この手
     
 7. 前の 2 つの手順を繰り返し、今度は **OPERATION** の値として **STOP** を使用します。 ツール バーの **[開始]** ボタンを選択して、再び Runbook を開始します。 リソース グループ、ADF、Azure-SSIS IR の名前を入力します。 **[OPERATION]** には「**STOP**」を入力します。 出力ウィンドウで、メッセージ " **##### Completed #####** " が " **##### Stopping #####** " の後に表示されるまで待機します。 Azure-SSIS IR の停止には、開始ほどは時間がかかりません。 **[ジョブ]** ウィンドウを閉じて、 **[Runbook]** ウィンドウに戻ります。
 
+8. **[Webhook]** メニュー項目を選択することで作成できる Webhook、または次に示す **[スケジュール]** メニュー項目を選択することで作成できるスケジュールを使用して、Runbook をトリガーすることもできます。  
+
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Azure-SSIS IR を開始/停止する Rrunbook のスケジュールを作成する
 
 前のセクションでは、Azure-SSIS IR を開始または停止する Azure Automation Runbook を作成しました。 このセクションでは、Runbook の 2 つのスケジュールを作成します。 1 つ目のスケジュールを構成するときは、**OPERATION** に **START** を指定します。 同様に、2 つ目のスケジュールを構成するときは、**OPERATION** パラメーターに **STOP** を指定します。 スケジュールを作成する手順について詳しくは、「[スケジュールを作成する](../automation/shared-resources/schedules.md#creating-a-schedule)」をご覧ください。
@@ -380,7 +382,7 @@ Azure Automation アカウントをまだ持っていない場合は、この手
 
 ## <a name="next-steps"></a>次の手順
 次のブログ記事を参照してください。
--   [ADF パイプラインでの SSIS アクティビティを含む ETL/ELT ワークフローの最新化と拡張](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)
+-   [ADF パイプラインでの SSIS アクティビティを含む ETL/ELT ワークフローの最新化と拡張](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
 
 SSIS ドキュメントの次の記事をご覧ください。 
 

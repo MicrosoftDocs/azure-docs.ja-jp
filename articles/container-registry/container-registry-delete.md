@@ -1,21 +1,21 @@
 ---
 title: Azure Container Registry のイメージ リソースを削除する
-description: コンテナー イメージ データを削除することによって、レジストリのサイズを効果的に管理する方法について詳しく説明します。
+description: Azure CLI コマンドを使用してコンテナー イメージ データを削除することによって、レジストリのサイズを効果的に管理する方法について詳しく説明します。
 services: container-registry
 author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: eaf3b3e591ca2ddbd29fd5547d334ef90b24fc5e
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 12c1b5f9fa9620622b31f22c701d58ae237bcbf2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309642"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035144"
 ---
-# <a name="delete-container-images-in-azure-container-registry"></a>Azure Container Registry のコンテナー イメージを削除する
+# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLI を使用して Azure Container Registry 内のコンテナー イメージを削除する
 
 Azure コンテナー レジストリのサイズを管理するには、古いイメージ データを定期的に削除する必要があります。 運用環境にデプロイされるコンテナー イメージには、長期間保存する必要があるものと、通常は短期間で削除できるものがあります。 たとえば、ビルドとテストの自動化シナリオでは、デプロイされない可能性のあるイメージでレジストリが短時間のうちにいっぱいになることがあります。このようなイメージは、ビルドとテスト パスが完了したらすぐに消去できるものです。
 
@@ -113,7 +113,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 古いマニフェスト ダイジェストを特定した後、次の Bash スクリプトを実行することで、指定のタイムスタンプより古いマニフェスト ダイジェストを削除することができます。 Azure CLI と **xargs** が必要です。 既定では、このスクリプトは削除を実行しません。 イメージの削除を有効にするには、`ENABLE_DELETE` の値を `true` に変更します。
 
 > [!WARNING]
-> 次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。 (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、これらのスクリプトを実行しないでください。 そのようなシステムでは、マニフェスト ダイジェストを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス][tagging-best-practices]を採用することを検討してください。 
+> 次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。 (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、これらのスクリプトを実行しないでください。 そのようなシステムでは、マニフェスト ダイジェストを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス](container-registry-image-tag-version.md)を採用することを検討してください。 
 
 ```bash
 #!/bin/bash
@@ -201,7 +201,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 スクリプトでこのコマンドを使用すると、リポジトリ内のタグ付けされていないすべてのイメージを削除できます。
 
 > [!WARNING]
-> 次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。 (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、これらのスクリプトを実行しないでください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス][tagging-best-practices]を採用することを検討してください。
+> 次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。 (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、これらのスクリプトを実行しないでください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス](container-registry-image-tag-version.md)を採用することを検討してください。
 
 **Bash での Azure CLI**
 
@@ -260,6 +260,10 @@ if ($enableDelete) {
 }
 ```
 
+## <a name="automatically-purge-tags-and-manifests-preview"></a>タグとマニフェストの自動消去 (プレビュー)
+
+Azure CLI コマンドのスクリプト作成の代わりに、オンデマンドまたはスケジュールされた ACR タスクを実行して、特定の期間よりも古い、または指定した名前フィルターに一致するすべてのタグを削除します。 詳細については、「[Azure コンテナー レジストリからイメージを自動的に消去する](container-registry-auto-purge.md)」を参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
 Azure Container Registry でのイメージ ストレージの詳細については、「[Azure Container Registry へのコンテナー イメージの保存](container-registry-storage.md)」を参照してください。
@@ -270,7 +274,6 @@ Azure Container Registry でのイメージ ストレージの詳細について
 <!-- LINKS - External -->
 [docker-manifest-inspect]: https://docs.docker.com/edge/engine/reference/commandline/manifest/#manifest-inspect
 [portal]: https://portal.azure.com
-[tagging-best-practices]: https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete

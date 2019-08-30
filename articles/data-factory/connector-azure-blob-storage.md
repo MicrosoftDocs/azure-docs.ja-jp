@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 3be075b78d8388b7146a9a3180ca825fc6476108
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 56d332ca00cbd47448b7e3fb8d3ab2d141380b70
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206045"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061530"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -76,6 +76,9 @@ Azure BLOB コネクタは、次の認証の種類をサポートします。詳
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 >[!NOTE]
+>アカウント キー認証を使用する場合、セカンダリ Blob service エンドポイントはサポートされません。 ほかの認証の種類を使用できます。
+
+>[!NOTE]
 >"AzureStorage" タイプのリンクされたサービスを使用していた場合は、まだそのままサポートされていますが、今後は新しい "AzureBlobStorage" のリンクされたサービス タイプを使用することをお勧めします。
 
 **例:**
@@ -133,7 +136,7 @@ Azure BLOB コネクタは、次の認証の種類をサポートします。詳
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 Shared Access Signature を使用して、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間を指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature について詳しくは、[Shared Access Signature のモデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
 
 > [!NOTE]
->- Data Factory で、**サービスの Shared Access Signature** と**アカウントの Shared Access Signature** がサポートされるようになりました。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。
+>- Data Factory で、**サービスの Shared Access Signature** と**アカウントの Shared Access Signature** がサポートされるようになりました。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。
 >- 後のデータセットの構成では、フォルダーのパスはコンテナー レベルから始まる絶対パスです。 SAS URI のパスに揃えて構成する必要があります。
 
 > [!TIP]
@@ -312,12 +315,12 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-- **Parquet 形式と区切りテキスト形式**については、「[Parquet 形式と区切りテキスト形式のデータセット](#parquet-and-delimited-text-format-dataset)」セクションを参照してください。
-- **ORC/Avro/JSON/バイナリ形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
+- **Parquet 形式、区切りテキスト形式およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
+- **ORC/Avro/JSON 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
 
-### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet 形式と区切りテキスト形式のデータセット
+### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット
 
-Blob Storage をコピー先またはコピー元として Parquet 形式または区切りテキスト形式のデータをコピーする場合は、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Azure BLOB では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+Blob Storage をコピー先またはコピー元として Parquet 形式、区切りテキスト形式およびバイナリ形式のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Azure BLOB では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -359,7 +362,7 @@ Blob Storage をコピー先またはコピー元として Parquet 形式また�
 
 ### <a name="other-format-dataset"></a>他の形式のデータセット
 
-Blob Storage をコピー先またはコピー元として ORC/Avro/JSON/Binary 形式でデータをコピーするには、データセットの type プロパティを **AzureBlob** に設定します。 次のプロパティがサポートされています。
+Blob Storage をコピー先またはコピー元として ORC/Avro/JSON 形式のデータをコピーするには、データセットの type プロパティを **AzureBlob** に設定します。 次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -410,12 +413,12 @@ Blob Storage をコピー先またはコピー元として ORC/Avro/JSON/Binary 
 
 ### <a name="blob-storage-as-a-source-type"></a>ソースの種類として Blob Storage を設定する
 
-- コピー元から **Parquet 形式および区切りテキスト形式**でコピーする場合は、「[Parquet 形式と区切りテキスト形式のソース](#parquet-and-delimited-text-format-source)」セクションを参照してください。
-- コピー元から **ORC/Avro/JSON/バイナリ形式**などの他の形式でコピーする場合は、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+- コピー元から **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
+- コピー元から **ORC/Avro/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
 
-#### <a name="parquet-and-delimited-text-format-source"></a>Parquet 形式と区切りテキスト形式のソース
+#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のソース
 
-Parquet 形式または区切りテキスト形式のデータを Blob Storage からコピーする場合は、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 Azure BLOB では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+Blob Storage をコピー先またはコピー元として **Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Azure BLOB では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -473,7 +476,7 @@ Parquet 形式または区切りテキスト形式のデータを Blob Storage �
 
 #### <a name="other-format-source"></a>他の形式のソース
 
-Blob Storage から ORC/Avro/JSON/Binary 形式でデータをコピーするには、コピー アクティビティのソースの種類を **BlobSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+**ORC、Avro、または JSON 形式** のデータを Blob Storage からコピーするには、コピー アクティビティのソースの種類を **BlobSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -515,12 +518,12 @@ Blob Storage から ORC/Avro/JSON/Binary 形式でデータをコピーするに
 
 ### <a name="blob-storage-as-a-sink-type"></a>シンクの種類として Blob Storage を設定する
 
-- コピー先に **Parquet 形式および区切りテキスト形式**でコピーする場合は、「[Parquet 形式と区切りテキスト形式のシンク](#parquet-and-delimited-text-format-sink)」セクションを参照してください。
-- コピー先に **ORC/Avro/JSON/バイナリ形式**などの他の形式でコピーする場合は、「[他の形式のシンク](#other-format-sink)」セクションを参照してください。
+- コピー元から **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
+- コピー元から **ORC/Avro/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
 
-#### <a name="parquet-and-delimited-text-format-sink"></a>Parquet 形式と区切りテキスト形式のシンク
+#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のソース
 
-Parquet 形式または区切りテキスト形式のデータを Blob Storage にコピーする場合は、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのコピー アクティビティのシンクと、サポートされる設定について参照してください。 Azure BLOB では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
+**Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータを Blob Storage からコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 Azure BLOB では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -568,7 +571,7 @@ Parquet 形式または区切りテキスト形式のデータを Blob Storage �
 
 #### <a name="other-format-sink"></a>他の形式のシンク
 
-データを Blob Storage にコピーするには、コピー アクティビティのシンクの種類を **BlobSink** に設定します。 **sink** セクションでは、次のプロパティがサポートされます。
+**ORC/Avro/JSON 形式**のデータを Blob Storage にコピーするには、コピー アクティビティのシンクの種類を **BlobSink** に設定します。 **sink** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

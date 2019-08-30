@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d74eb91b5122f63088f3344836eab8decf5c57d2
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 98101973627750f87fd06d3f617a1af764a837ee
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227366"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774250"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -63,9 +63,6 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 >[!Note] 
 >元の MD4 ハッシュは Azure AD に送信されません。 代わりに、元の MD4 ハッシュの SHA256 ハッシュが送信されます。 その結果、Azure AD に格納されているハッシュを取得しても、このハッシュをオンプレミスの Pass-the-Hash 攻撃で使用することはできません。
 
-### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード ハッシュ同期のしくみ
-パスワード ハッシュ同期機能を使用して、オンプレミス パスワードを [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) に同期することもできます。 このシナリオでは、Azure Active Directory Domain Services インスタンスは、オンプレミスの Active Directory インスタンスで使用できるすべての方法を使用して、クラウドでユーザーを認証します。 このシナリオのエクスペリエンスは、オンプレミス環境で Active Directory 移行ツール (ADMT) を使用する場合に似ています。
-
 ### <a name="security-considerations"></a>セキュリティに関する考慮事項
 パスワードを同期するとき、ユーザーのプレーンテキスト形式のパスワードは、パスワード ハッシュ同期機能にも、Azure AD や関連するどのサービスにも公開されません。
 
@@ -104,6 +101,39 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 - 通常、パスワード ハッシュ同期は、フェデレーション サービスよりも実装が簡単です。 パスワード同期は追加のサーバーを必要としないため、ユーザーを認証するために高可用性フェデレーション サービスに依存するという状況を解消できるからです。
 - フェデレーションだけでなく、パスワード ハッシュ同期を有効にすることもできます。 これは、フェデレーション サービスで障害が発生した場合に、フォールバックとして使用できます。
+
+## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Azure AD Domain Services のパスワード ハッシュ同期プロセス
+
+Azure AD Domain Services を使用して、Keberos、LDAP、または NTLM を使用する必要があるアプリケーションやサービスにレガシ認証を提供する場合、追加のプロセスがパスワード ハッシュ同期フローに含まれます。 Azure AD Connect は、次の追加プロセスを使用して、Azure AD Domain Services で使用するためにパスワード ハッシュを Azure AD に同期します。
+
+> [!IMPORTANT]
+> Azure AD Connect によってレガシ パスワード ハッシュが同期されるのは、Azure AD DS を Azure AD テナントに対して有効にしたときだけです。 Azure AD Connect を使用してオンプレミス AD DS 環境と Azure AD の同期しか行わない場合、次の手順は使用されません。
+>
+> レガシ アプリケーションが NTLM 認証または LDAP simple bind を使用していない場合は、Azure AD DS の NTLM パスワード ハッシュ同期を無効にすることをお勧めします。 詳しくは、「[弱い暗号スイートと NTLM 資格情報ハッシュの同期を無効にする](../../active-directory-domain-services/secure-your-domain.md)」をご覧ください。
+
+1. Azure AD Connect はテナントの Azure AD Domain Services インスタンスの公開キーを取得します。
+1. ユーザーがパスワードを変更すると、オンプレミスのドメイン コントローラーは、パスワード変更 (ハッシュ) の結果を次の 2 つの属性に格納します。
+    * *unicodePwd*: NTLM パスワード ハッシュ。
+    * *supplementalCredentials*: Kerberos パスワード ハッシュ。
+1. Azure AD Connect では、ディレクトリ レプリケーション チャネル 介してパスワードの変更が検出されます (他のドメイン コントローラーにレプリケートする必要がある属性の変更)。
+1. パスワードが変更されたユーザーごとに、Azure AD Connect が次の手順を実行します。
+    * ランダムな AES 256 ビット対称キーを生成します。
+    * 暗号化の最初のラウンドに必要なランダムな初期化ベクターを生成します。
+    * Kerberos パスワードハッシュを *supplementalCredentials* 属性から抽出します。
+    * Azure AD Domain Services セキュリティ構成の *SyncNtlmPasswords* 設定を確認します。
+        * この設定が無効になっている場合、ランダムな高エントロピ NTLM ハッシュ (ユーザーのパスワードとは異なる) が生成されます。 このハッシュは、*supplementalCrendetials* 属性から抽出された Kerberos パスワード ハッシュと結合されて 1 つのデータ構造になります。
+        * 有効になっている場合は、*unicodePwd*属性の値と *supplementalCredentials* から抽出された Kerberos パスワード ハッシュが結合されて 1 つのデータ構造になります。
+    * AES 対称キーを使用して 1 つのデータ構造を暗号化します。
+    * テナントの Azure AD Domain Services 公開キーを使用して AES 対称キーを暗号化します。
+1. Azure AD Connect は、暗号化された AES 対称キー、暗号化されたデータ構造 (パスワード ハッシュを含む)、および初期化ベクターを Azure AD に送信します。
+1. Azure AD は、暗号化された AES 対称キー、暗号化されたデータ構造、および初期化ベクターをユーザーについて格納します。
+1. Azure AD は、暗号化された HTTP セッション上で内部同期メカニズムを使用して、暗号化された AES 対称キー、暗号化されたデータ構造、および初期化ベクターを Azure AD Domain Services にプッシュします。
+1. Azure AD Domain Services は、テナントのインスタンスの秘密キーを Azure Key Vault から取得します。
+1. 暗号化されたデータのセット (1 人のユーザーのパスワード変更を表す) ごとに、Azure AD Domain Services は次の手順を実行します。
+    * 秘密キーを使用して AES 対称キーを復号化します。
+    * AES 対称キーを初期化ベクターと共に使用し、暗号化されたデータ構造 (パスワード ハッシュが含まれる) を復号化します。
+    * 受け取った Kerberos パスワード ハッシュを Azure AD Domain Services ドメイン コントローラーに書き込みます。 ハッシュは、ユーザー オブジェクトの *supplementalCredentials* 属性 (Azure AD Domain Services ドメイン コントローラーの公開キーに暗号化される) に保存されます。
+    * Azure AD Domain Services は、受け取った NTLM パスワード ハッシュを Azure AD Domain Services ドメイン コントローラーに書き込みます。 ハッシュは、ユーザー オブジェクトの *unicodePwd* 属性 (Azure AD Domain Services ドメイン コントローラーの公開キーに暗号化される) に保存されます。
 
 ## <a name="enable-password-hash-synchronization"></a>パスワード ハッシュ同期を有効にする
 

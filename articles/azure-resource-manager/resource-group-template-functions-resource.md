@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートで、リソースに関�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/31/2019
+ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7548b75f201c896e3a5248cb9d0154a9a676a86f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698198"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650431"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -342,8 +342,8 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 |
-| apiVersion |いいえ |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
+| resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 現在のテンプレート内のリソースを参照する場合は、パラメーターとしてリソース名のみを指定します。 以前にデプロイされたリソースを参照する場合は、リソース ID を指定します。 |
+| apiVersion |いいえ |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 リソースに有効な API のバージョンについては、[テンプレート リファレンス](/azure/templates/)を参照してください。 |
 | 'Full' |いいえ |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
 
 ### <a name="return-value"></a>戻り値
@@ -352,17 +352,7 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
 
 ### <a name="remarks"></a>解説
 
-reference 関数は、以前にデプロイされたリソースまたは現在のテンプレートにデプロイされたリソースのいずれかのランタイム状態を取得します。 この記事では、両方のシナリオの例を示します。 現在のテンプレート内のリソースを参照する場合は、パラメーターとしてリソース名のみを指定します。 以前にデプロイされたリソースを参照する場合は、リソースのリソース ID と API バージョンを指定します。 リソースに有効な API バージョンは、[テンプレート リファレンス](/azure/templates/)で確認することができます。
-
-reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](resource-group-create-multiple.md#property-iteration)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して reference 関数を使用できます。 これを `count` と一緒に使用することはできません。カウントは、reference 関数が解決される前に決定される必要があるためです。
-
-[入れ子になったテンプレート](resource-group-linked-templates.md#nested-template)の出力に reference 関数を使用して、入れ子になったテンプレートにデプロイされたリソースを返すことはできません。 その場合は、[リンク済みテンプレート](resource-group-linked-templates.md#external-template-and-external-parameters)を使用してください。
-
-参照されているリソースを同じテンプレート内でプロビジョニングし、(リソース ID ではなく) 名前でリソースを参照する場合は、reference 関数を使用することにより、あるリソースが他のリソースに依存することを暗黙的に宣言します。 dependsOn プロパティを一緒に使用する必要はありません。 参照先のリソースがデプロイを完了するまで、関数は評価されません。
-
-**reference** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。  **reference** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースのデプロイ中にのみこの関数が評価されるようにするには、**if** 関数を使用します。 条件付きでデプロイされるリソースで if と reference を使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
-
-ある種類のリソースによって返されるプロパティの名前と値を確認するには、outputs セクションでオブジェクトを返すテンプレートを作成します。 その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。 
+reference 関数は、以前にデプロイされたリソースまたは現在のテンプレートにデプロイされたリソースのいずれかのランタイム状態を取得します。 この記事では、両方のシナリオの例を示します。
 
 通常、**reference** 関数は、BLOB エンドポイント URI や完全修飾ドメイン名などのオブジェクトから特定の値を返すために使用します。
 
@@ -403,7 +393,45 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
     ...
 ```
 
-前のテンプレートの完全な例については、[Windows での Key Vault](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json) に関するページを参照してください。 同様の例を [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json) についても利用できます。
+### <a name="valid-uses"></a>有効な使用方法
+
+reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](resource-group-create-multiple.md#property-iteration)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して reference 関数を使用できます。 これを `count` と一緒に使用することはできません。カウントは、reference 関数が解決される前に決定される必要があるためです。
+
+[入れ子になったテンプレート](resource-group-linked-templates.md#nested-template)の出力に reference 関数を使用して、入れ子になったテンプレートにデプロイされたリソースを返すことはできません。 その場合は、[リンク済みテンプレート](resource-group-linked-templates.md#external-template-and-external-parameters)を使用してください。
+
+**reference** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。  **reference** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースのデプロイ中にのみこの関数が評価されるようにするには、**if** 関数を使用します。 条件付きでデプロイされるリソースで if と reference を使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
+
+### <a name="implicit-dependency"></a>暗黙の依存関係
+
+参照されているリソースを同じテンプレート内でプロビジョニングし、(リソース ID ではなく) 名前でリソースを参照する場合は、reference 関数を使用することにより、あるリソースが他のリソースに依存することを暗黙的に宣言します。 dependsOn プロパティを一緒に使用する必要はありません。 参照先のリソースがデプロイを完了するまで、関数は評価されません。
+
+### <a name="resource-name-or-identifier"></a>リソースの名前または識別子
+
+同じテンプレートでデプロイされるリソースを参照するときは、リソースの名前を指定します。
+
+```json
+"value": "[reference(parameters('storageAccountName'))]"
+```
+
+同じテンプレートでデプロイされないリソースを参照するときは、リソース ID を指定します。
+
+```json
+"value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
+```
+
+参照しているリソースがあいまいにならないようにするには、完全修飾リソース名を指定します。
+
+```json
+"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+```
+
+リソースに対する完全修飾参照を作成する場合、種類と名前からセグメントを結合する順序は、単に 2 つの連結ではありません。 名前空間の後に、"*種類/名前*" のペアを具体性の低いものから高いものへの順に使用します。
+
+**{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
+
+例:
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`は正しい`Microsoft.Compute/virtualMachines/extensions/myVM/myExt`は正しくない
 
 ### <a name="example"></a>例
 
@@ -539,7 +567,9 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 {
   "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
   "name": "{resourceGroupName}",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "{resourceGroupLocation}",
+  "managedBy": "{identifier-of-managing-resource}",
   "tags": {
   },
   "properties": {
@@ -547,6 +577,8 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
   }
 }
 ```
+
+**managedBy** プロパティは、別のサービスによって管理されているリソースを含むリソース グループに対してのみ返されます。 Managed Applications、Databricks、および AKS の場合、プロパティの値は管理しているリソースのリソース ID になります。
 
 ### <a name="remarks"></a>解説
 
@@ -592,6 +624,7 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 {
   "id": "/subscriptions/{subscription-id}/resourceGroups/examplegroup",
   "name": "examplegroup",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "southcentralus",
   "properties": {
     "provisioningState": "Succeeded"
@@ -601,7 +634,7 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 リソースの一意の識別子を返します。 リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。 
 
@@ -613,43 +646,46 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 | resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |
-| resourceName2 |いいえ |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
+| resourceName2 |いいえ |string |次のリソース名セグメント (必要な場合)。 |
+
+さらに他のセグメントがリソースの種類に含まれる場合は、続けてリソース名をパラメーターとして追加します。
 
 ### <a name="return-value"></a>戻り値
 
 識別子は、次の形式で返されます。
 
-```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-```
+**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+
 
 ### <a name="remarks"></a>解説
 
-`resourceId()` 関数を[サブスクリプション レベルのデプロイ](deploy-to-subscription.md)で使用した場合、そのレベルでデプロイされたリソースの ID のみを取得できます。 たとえば、ポリシー定義またはロール定義の ID は取得できますが、ストレージ アカウントの ID は取得できません。 リソース グループへのデプロイの場合は、その逆になります。 サブスクリプション レベルでデプロイされたリソースのリソース ID を取得することはできません。
+指定するパラメーターの数は、リソースが親であるか子であるか、また、リソースが同じサブスクリプション (またはリソース グループ) にあるかどうかで異なります。
 
-指定するパラメーター値は、リソースが現在のデプロイと同じサブスクリプションおよびリソース グループに含まれるかどうかによって異なります。 同じサブスクリプションとリソース グループ内にあるストレージ アカウントのリソース ID を取得するには、次のようにします。
-
-```json
-"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-サブスクリプションは同じでもリソース グループが異なるストレージ アカウントのリソース ID を取得するには、次のようにします。
+同じサブスクリプションおよび同じリソース グループに存在する親リソースの ID を取得するには、リソースの種類と名前を指定します。
 
 ```json
-"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+"[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-サブスクリプションとリソース グループが異なるストレージ アカウントのリソース ID を取得するには、次のようにします。
+子リソースのリソース ID を取得するには、リソースの種類に含まれるセグメント数に注目します。 リソースの種類を構成するセグメントごとにリソース名を指定してください。 セグメントの名前は、その階層部分に存在するリソースと対応関係にあります。
+
+```json
+"[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
+```
+
+同じサブスクリプションで、リソース グループが異なるリソースの ID を取得するには、リソース グループの名前を指定します。
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
+```
+
+サブスクリプションもリソース グループも異なるリソースの ID を取得するには、サブスクリプション ID とリソース グループ名を指定します。
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-異なるリソース グループ内のデータベースのリソース ID を取得するには、次のようにします。
-
-```json
-"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
-```
+`resourceId()` 関数を[サブスクリプション レベルのデプロイ](deploy-to-subscription.md)で使用した場合、そのレベルでデプロイされたリソースの ID のみを取得できます。 たとえば、ポリシー定義またはロール定義の ID は取得できますが、ストレージ アカウントの ID は取得できません。 リソース グループへのデプロイの場合は、その逆になります。 サブスクリプション レベルでデプロイされたリソースのリソース ID を取得することはできません。
 
 サブスクリプション スコープでデプロイするときにサブスクリプション レベルのリソースのリソース ID を取得するには、次のようにします。
 
@@ -733,7 +769,7 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | string | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | string | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

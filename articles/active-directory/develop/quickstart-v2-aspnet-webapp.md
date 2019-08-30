@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed57f581db593a288e62d25a2f0b8ee42c28114
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10911e5100add2dca84475857a6909fb20d452c4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852965"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891539"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -55,11 +55,13 @@ ms.locfileid: "68852965"
 > 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 >      - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `ASPNET-Quickstart`)。
->      - **[リダイレクト URI]** に `https://localhost:44368/` を追加して、 **[登録]** をクリックします。
-**[認証]** メニューを選択し、 **[暗黙の付与]** の **[ID トークン]** を設定して、 **[保存]** を選択します。
+>      - **[リダイレクト URI]** に `http://localhost:44368/` を追加して、 **[登録]** をクリックします。
+>      - 左側のナビゲーション ウィンドウの [管理] セクションから、 **[認証]** を選択します。
+>          - **[暗黙の付与]** サブセクションで、 **[ID トークン]** を選択します。
+>          - その後、 **[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
 > このクイック スタートのサンプル コードを動作させるには、応答 URL として `https://localhost:44368/` を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
@@ -91,12 +93,13 @@ ms.locfileid: "68852965"
 > 各値の説明:
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 > - `Enter_the_Tenant_Info_Here` - 以下のいずれかのオプション。
->   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を **[テナント ID]** または **[テナント名]** (例: contoso.microsoft.com) に置き換えます。
+>   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を**テナント ID** または**テナント名** (例: contoso.onmicrosoft.com) に置き換えます
 >   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
 >   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
 >
 > > [!TIP]
-> > *[アプリケーション ID]* 、 *[ディレクトリ (テナント) ID]* 、 *[サポートされているアカウントの種類]* の値を見つけるには、 **[概要]** ページに移動します。
+> > - *[アプリケーション ID]* 、 *[ディレクトリ (テナント) ID]* 、 *[サポートされているアカウントの種類]* の値を見つけるには、 **[概要]** ページに移動します。
+> > - **Web.config** 内の `redirectUri` の値と、Azure AD でアプリ登録用に定義された**リダイレクト URI** が確実に対応するようにします (対応していない場合、アプリ登録の **[認証]** メニューに移動し、**リダイレクト URI** を一致するように更新します)。
 
 ## <a name="more-information"></a>詳細情報
 

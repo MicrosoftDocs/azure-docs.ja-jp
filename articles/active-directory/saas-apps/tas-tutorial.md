@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 279f6970c34acbfea645366f7e965c830873fdbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089170"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943272"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>チュートリアル:Azure Active Directory と TAS の統合
 
@@ -150,7 +150,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
     c. **[Enter URL]\(URL の入力\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして  **[Enter Certification]\(証明書の入力\)**   ボックスに貼り付けます。
+    d. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[Enter Certification]\(証明書の入力\)** ボックスに貼り付けます。
 
     e. **[Enter New IP]\(新しい IP の入力\)** ボックスに、IP アドレスを入力します。
 
@@ -216,7 +216,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
 ### <a name="create-tas-test-user"></a>TAS テスト ユーザーの作成
 
-このセクションでは、TAS で Britta Simon というユーザーを作成します。  [TAS サポート チーム](mailto:support@combtas.com)と連携し、TAS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、TAS で Britta Simon というユーザーを作成します。 [TAS サポート チーム](mailto:support@combtas.com)と連携し、TAS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 95c2130727c0cef889771c181fec53557a2a4b0f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb07899b51280cff8613d637640c0da23debbc8e
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603712"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016509"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>ローカル開発の依存関係をデプロイする
 
@@ -21,7 +21,7 @@ ms.locfileid: "67603712"
 
 ## <a name="deploy-azure-platform-services"></a>Azure Platform サービスをデプロイする
 
-1. PowerShell および [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0) 拡張機能がインストールされていることを確認します。  コマンド プロンプトまたはターミナルを開き、次を実行します。
+1. PowerShell および [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 拡張機能がインストールされていることを確認します。  コマンド プロンプトまたはターミナルを開き、次を実行します。
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components
@@ -44,7 +44,7 @@ ms.locfileid: "67603712"
 
 ### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory (AAD) の登録
 
-デプロイ スクリプトでは、Azure Active Directory への AAD アプリケーションの登録が試みられます。  選択した AAD テナントに対する権限によっては、これが失敗する可能性があります。   3 つのオプションがあります。
+デプロイ スクリプトでは、Azure Active Directory への AAD アプリケーションの登録が試みられます。  選択した AAD テナントに対する権限によっては、これが失敗する可能性があります。   次の 3 つのオプションがあります。
 
 1. テナントの一覧から AAD テナントを選択した場合は、スクリプトを再起動して別のものを一覧から選択します。
 2. または、プライベート AAD テナントをデプロイし、スクリプトを再起動して、それを使用することを選択します。

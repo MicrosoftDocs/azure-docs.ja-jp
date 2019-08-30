@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/14/2019
-ms.openlocfilehash: 9fd37a8343858f44719fe4422b3b9994db42f8af
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 4c186787af08a565dc100dfbd79d166688d89d8f
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672464"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013436"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -140,7 +140,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 ```
 
 > [!NOTE]
-> ホスト名が使用できないというエラーが発生する場合は、クラスター名が一意でない可能性があります。 元のアプリ登録を削除し、別のクラスター名を使用して「Create a new app registration (新しいアプリ登録を作成する)」 (howto-aad-app-configuration.md#create-a-new-app-registration) の手順をもう一度行ってみてください。新しいユーザーとセキュリティ グループの作成手順は省略します。
+> ホスト名が使用できないというエラーが発生する場合は、クラスター名が一意でない可能性があります。 元のアプリ登録を削除し、別のクラスター名を使用して、[新しいアプリ登録の作成](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)に関するページの手順をもう一度行ってみてください。新しいユーザーとセキュリティ グループの作成手順は省略します。
 
 数分後、`az openshift create` が完了します。
 

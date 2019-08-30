@@ -22,20 +22,6 @@
       href: release-notes-10-0-10106-0.md
     - name: Gen2 のリージョンのアップグレード スケジュール
       href: gen2-migration-schedule.md
-    - name: アーカイブされたリリース ノート
-      items:
-        - name: 2018 年 9 月
-          href: release-notes-september-2018.md
-        - name: 2018 年 8 月
-          href: release-notes-august-2018.md
-        - name: 2018 年 7 月
-          href: release-notes-july-2018.md
-        - name: 2018 年 6 月
-          href: release-notes-june-2018.md
-        - name: 2018 年 5 月
-          href: release-notes-may-2018.md
-        - name: 2018 年 4 月
-          href: release-notes-april-2018.md
 - name: クイック スタート
   expanded: true
   items:
@@ -267,14 +253,22 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Connection strings
           href: sql-data-warehouse-connection-strings.md
-        - name: sqlcmd
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
-        - name: SSMS を使用したクエリ
-          href: sql-data-warehouse-query-ssms.md
-        - name: Visual Studio を使用したクエリ
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: Visual Studio のインストール
-          href: sql-data-warehouse-install-visual-studio.md
+        - name: 変更管理とデプロイ
+          items:
+            - name: Visual Studio SSDT のインストール
+              href: sql-data-warehouse-install-visual-studio.md
+            - name: ソース管理の統合
+              href: sql-data-warehouse-source-control-integration.md
+            - name: 継続的インテグレーションとデプロイ
+              href: sql-data-warehouse-continuous-integration-and-deployment.md
+        - name: 接続とクエリ
+          items:
+            - name: Visual Studio SSDT
+              href: sql-data-warehouse-query-visual-studio.md
+            - name: SSMS
+              href: sql-data-warehouse-query-ssms.md
+            - name: sqlcmd
+              href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: ワークロード管理
       items:
         - name: ワークロードの分析
@@ -287,6 +281,8 @@
       items:
         - name: Gen2 へのアップグレード
           href: upgrade-to-latest-generation.md
+        - name: コンピューティングの管理
+          href: manage-compute-with-azure-functions.md
         - name: ワークロードの監視 - ポータル
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: ワークロードの監視 - DMV

@@ -1,5 +1,5 @@
 ---
-title: Azure で Service Fabric 上に Spring Boot アプリを作成する | Microsoft Docs
+title: クイック スタート:Azure Service Fabric 上に Spring Boot アプリを作成する
 description: このクイック スタートでは、Spring Boot サンプル アプリケーションを使用して、Azure Service Fabric 用の Spring Boot アプリケーションをデプロイします。
 services: service-fabric
 documentationcenter: java
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: mvc, devcenter, seo-java-august2019
+ms.openlocfilehash: 403eec7bf4d45b5b210009588c783cc244d24387
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327163"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977086"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>クイック スタート:Java Spring Boot アプリケーションを Service Fabric にデプロイする
 
@@ -149,7 +149,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     
     ![正常なローカル クラスター](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-1. `gs-spring-boot/SpringServiceFabric` フォルダーに移動します。
+1. `gs-spring-boot/SpringServiceFabric` フォルダーを開きます。
 1. 次のコマンドを実行して、ローカル クラスターに接続します。
 
     ```bash
@@ -176,13 +176,13 @@ Service Fabric Explorer は、すべての Service Fabric クラスターで動�
 Web フロントエンド サービスをスケーリングするには、以下を実行します。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
-1. ツリー ビューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 (3 つの点) をクリックし、 **[Scale Service]\(サービスのスケール\)** を選択します。
+1. ツリービューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 ( **...** ) を選択し、 **[サービスのスケール]** を選択します。
 
     ![Service Fabric Explorer スケール サービス](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     次に、スケーリングするサービスのインスタンス数を選択します。
 
-1. 数値を **3** に変更し、 **[Scale Service]\(サービスのスケール\)** をクリックします。
+1. 数値を **3** に変更し、 **[サービスのスケール]** を選択します。
 
     または、次のコマンドラインを使用してサービスを拡張することもできます。
 
@@ -194,7 +194,7 @@ Web フロントエンド サービスをスケーリングするには、以下
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. ツリー ビューの **fabric:/SpringServiceFabric/SpringGettingStarted** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
+1. ツリー ビューの **fabric:/SpringServiceFabric/SpringGettingStarted** ノードを選択し、パーティション ノード (GUID で表されます) を展開します。
 
     ![Service Fabric Explorer スケール サービスの完了](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -207,7 +207,7 @@ Web フロントエンド サービスをスケーリングするには、以下
 サービスのフェールオーバーを示すために、Service Fabric Explorer を使用して、ノードの再起動をシミュレートします。 サービス インスタンスが 1 つのみ実行されていることを確認してください。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
-1. サービスのインスタンスを実行しているノードの横にある省略記号 (3 つのドット) をクリックし、ノードを再起動します。
+1. サービスのインスタンスを実行しているノードの横にある省略記号 ( **...** ) を選択し、ノードを再起動します。
 
     ![Service Fabric Explorer でのノードの再起動](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
 1. サービスのインスタンスは別のノードに移動され、アプリケーションにはダウンタイムは発生しません。

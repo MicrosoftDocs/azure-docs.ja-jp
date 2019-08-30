@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Azure のサポートに関するドキュメント
+summary: Azure ユーザーが Azure portal でサポート リクエストを作成して管理する方法について説明します。
+metadata:
+  title: Azure のサポートに関するドキュメント
+  description: Azure ユーザーが Azure portal でサポート リクエストを作成して管理する方法について説明します。
+  services: azure supportability
+  ms.service: azure-supportability
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: 
+  author: arob98
+  ms.author: angrobe
+  ms.date: 08/24/2019
+  ms.openlocfilehash: 4ee8de0f591618be7eb3a08c04f5820faeebaf4a
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70052139"
+landingContent:
+- title: サポート要求の作成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure サポート要求を作成する方法
+      url: how-to-create-azure-support-request.md
+  - linkListType: get-started
+    links:
+    - text: Azure portal でのサポート リクエストの作成
+      url: https://portal.azure.com/#create/Microsoft.Support
+- title: クォータの引き上げのリクエスト
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VM シリーズ vCPU の上限の引き上げ
+      url: per-vm-quota-requests.md
+    - text: リージョンにおける合計 vCPU の上限の引き上げ
+      url: regional-quota-requests.md
+    - text: ネットワークの上限の引き上げ
+      url: networking-quota-requests.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: リージョンまたは SKU が利用できない
+      url: sku-series-unavailable.md

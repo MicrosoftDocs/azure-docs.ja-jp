@@ -99,7 +99,7 @@ Azure Stream Analytics では、次の 2 つのカテゴリの診断ログをキ
 
 すべてのログは JSON 形式で格納されます。 各エントリには、次の一般的な文字列フィールドが含まれています。
 
-EnableAdfsAuthentication | 説明
+名前 | 説明
 ------- | -------
 time | ログのタイムスタンプ (UTC)。
 resourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
@@ -117,7 +117,7 @@ properties | ログ エントリ固有の詳細。JSON 文字列としてシリ�
 
 ジョブがデータを処理している間に発生したエラーはすべて、ログのこのカテゴリに含まれます。 これらのログはほとんどの場合、データ読み取り、シリアル化、書き込み操作が実行されている間に作成されます。 ここには接続エラーが含まれません。 接続エラーは汎用イベントとして扱われます。 さまざまな[入力および出力データ エラー](https://docs.microsoft.com/azure/stream-analytics/data-errors)の原因についてさらに学習することができます。
 
-EnableAdfsAuthentication | 説明
+名前 | 説明
 ------- | -------
 source | エラーが発生したジョブ入出力の名前。
 Message | エラーに関連付けられているメッセージ。
@@ -138,7 +138,7 @@ Type | エラーの種類。 たとえば、**DataConversionError**、**CsvParse
 
 汎用イベントには、上に挙げた以外のあらゆるイベントが含まれます。
 
-EnableAdfsAuthentication | 説明
+名前 | 説明
 -------- | --------
 Error | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
 Message| ログ メッセージ。

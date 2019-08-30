@@ -69,7 +69,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
-|Publisher|EnableAdfsAuthentication|バージョン|
+|Publisher|名前|バージョン|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|

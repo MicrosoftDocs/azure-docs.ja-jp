@@ -96,7 +96,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則
 
-| EnableAdfsAuthentication       |Port                        |Protocol|source           |宛先|Action|
+| 名前       |Port                        |Protocol|source           |宛先|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |Any              |MI SUBNET  |Allow |
 |mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -104,7 +104,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
-| EnableAdfsAuthentication       |Port          |Protocol|source           |宛先|Action|
+| 名前       |Port          |Protocol|source           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -121,7 +121,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="user-defined-routes"></a>ユーザー定義のルート
 
-|EnableAdfsAuthentication|アドレス プレフィックス|次ホップ|
+|名前|アドレス プレフィックス|次ホップ|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|仮想ネットワーク|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|インターネット|

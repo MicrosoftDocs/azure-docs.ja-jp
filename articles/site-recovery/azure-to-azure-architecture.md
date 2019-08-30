@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 2ed93846e0a1ab98b25bdfbe33b34779996da82b
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782639"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872754"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -139,6 +139,7 @@ VM の送信アクセスが URL で制御されている場合は、次の URL �
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
 IP アドレスを使用して VM の送信接続を制御するには、次のアドレスを許可します。
+ネットワーク接続要件の詳細は[ネットワークに関するホワイトペーパー](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)に記載されていることに注意してください 
 
 #### <a name="source-region-rules"></a>ソース リージョンのルール
 

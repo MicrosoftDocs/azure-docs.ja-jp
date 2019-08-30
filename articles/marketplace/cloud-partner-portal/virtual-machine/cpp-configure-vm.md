@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654034"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880355"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure でホストされる VM を構成する
 
@@ -70,7 +70,7 @@ sysprep の実行に関する詳細については、「[VHD を一般化する�
 
 ### <a name="linux"></a>Linux
 
-2 段階プロセスに従うことで、Linux VM を一般化して別の VM として再デプロイします。  詳細については、[仮想マシンまたは VHD のイメージの作成方法](../../../virtual-machines/linux/capture-image.md)に関するページを参照してください。 
+次の 2 段階プロセスでは、Linux VM を一般化して別の VM として再デプロイします。 これら 2 つの手順はプロセスの要点にすぎません。 これらの 2 つの手順の詳細と、その実行が必要な理由の詳細については、「[仮想マシンまたは VHD のイメージを作成する方法](../../../virtual-machines/linux/capture-image.md)」を参照してください。 Azure Marketplace プラン用の VHD を作成するために、「キャプチャしたイメージから VM を作成する」セクションまで進んだところで停止することができます。
 
 #### <a name="remove-the-azure-linux-agent"></a>Azure Linux エージェントを削除する
 1.  SSH クライアントを使って Linux VM に接続します。
@@ -95,4 +95,4 @@ VM のコピーを作成すると、ソリューションのさまざまな構�
 
 ## <a name="next-steps"></a>次の手順
 
-VM が構成されたら、[仮想ハード ディスクから仮想マシンをデプロイ](./cpp-deploy-vm-vhd.md)できます。
+VM が一般化されて、割り当てが解除され、VM のイメージを作成したので、[仮想ハード ディスクから仮想マシンをデプロイ](./cpp-deploy-vm-vhd.md)する準備が整いました。

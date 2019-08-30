@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8a12c9e5d569092440552958554681c0b1d79590
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f77a95af1edcd37043ea1e067560577140a81a04
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552554"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967607"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>音声優先仮想アシスタント プレビューの概要
 
@@ -36,14 +36,25 @@ Direct Line Speech とカスタムの音声優先仮想アシスタントのた�
 |[テキスト読み上げ](text-to-speech.md) | ボットからのテキスト応答は、Azure Speech Services の[テキスト読み上げ](text-to-speech.md)を使用して合成されます。 この合成は、クライアント アプリケーションでオーディオ ストリームとして利用できるようになります。 Microsoft では、独自のカスタム高品質ニューラル TTS 音声を構築してブランドに音声を加える機能を提供しています。詳しくは、[こちらにお問い合わせください](mailto:mstts@microsoft.com)。
 |[Direct Line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Bot Framework 内のチャネルとして Direct Line Speech を使用すると、クライアント アプリケーション、互換性のあるボット、および Azure Speech Services の機能間をスムーズかつシームレスに接続できます。 Direct Line Speech チャネルを使用するようにボットを構成する方法の詳細については、[Bot Framework ドキュメントの関連するページ](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)を参照してください。
 
+## <a name="get-started-with-virtual-assistants"></a>仮想アシスタントの概要
+
+10 分もかからずにコードを実行できるように設計されたクイック スタートが用意されています。 以下の表は、音声優先仮想アシスタントのクイックスタートの一覧を言語別に整理して示しています。
+
+| クイック スタート | プラットフォーム | API リファレンス |
+|------------|----------|---------------|
+| C#、UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
+
 ## <a name="sample-code"></a>サンプル コード
 
 音声優先仮想アシスタントを作成するためのサンプル コードは GitHub から入手できます。 これらのサンプルは、いくつかの一般的なプログラミング言語でボットに接続するためのクライアント アプリケーションに対応しています。
 
 * [音声優先仮想アシスタントのサンプル (SDK)](https://aka.ms/csspeech/samples)
-* [クイックスタート: 音声優先仮想アシスタント (C#)](quickstart-virtual-assistant-csharp-uwp.md)
-* [クイックスタート: 音声優先仮想アシスタント (Java)](quickstart-virtual-assistant-java-jre.md)
-* [Direct Line Speech クライアント (C#、WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
+* [チュートリアル:Speech SDK を使用して音声でボットを有効にする (C#)](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="tutorial"></a>チュートリアル
+[Speech SDK および Direct Line Speech チャネルを使用して、ボットを音声対応にする](tutorial-voice-enable-your-bot-speech-sdk.md)方法についてのチュートリアルです。
 
 ## <a name="customization"></a>カスタマイズ
 

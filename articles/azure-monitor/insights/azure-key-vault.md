@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
-ms.openlocfilehash: b7d9ff760bac06602d8d770a358c8a2e22a72c81
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849198"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997700"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure Key Vault Analytics ソリューション
 
@@ -103,28 +103,28 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 ## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
 Azure Key Vault ソリューションによって分析されるのは、Azure Diagnostics の [AuditEvent ログ](../../key-vault/key-vault-logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--- |:--- |
-| Type |*AzureDiagnostics* |
-| SourceSystem |*Azure* |
-| CallerIpAddress |要求を行ったクライアントの IP アドレス |
-| Category | *AuditEvent* |
-| CorrelationId |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
-| DurationMs |REST API 要求を処理するのにかかった時間 (ミリ秒単位) です。 この時間にはネットワーク待機時間が含まれません。したがって、クライアント側で測定する時間はこの時間と一致しない場合があります。 |
-| httpStatusCode_d |要求によって返された HTTP 状態コード (例: *200*) |
-| id_s |要求の一意の ID |
-| identity_claim_appid_g | アプリケーション ID の GUID |
-| OperationName |操作の名前 (「[Azure Key Vault のログ記録](../../key-vault/key-vault-logging.md)」を参照) |
-| OperationVersion |クライアントによって要求された REST API バージョン (例: *2015-06-01*) |
-| requestUri_s |要求の URI |
-| Resource |Key Vault の名前 |
-| ResourceGroup |Key Vault のリソース グループ |
-| ResourceId |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、Key Vault リソース ID となります。 |
-| ResourceProvider |*MICROSOFT.KEYVAULT* |
-| ResourceType | *VAULTS* |
-| ResultSignature |HTTP の状態 (例: *OK*) |
-| ResultType |REST API 要求の結果 (例: *Success*) |
-| SubscriptionId |Key Vault を含んでいるサブスクリプションの Azure サブスクリプション ID |
+| `Type` |*AzureDiagnostics* |
+| `SourceSystem` |*Azure* |
+| `CallerIpAddress` |要求を行ったクライアントの IP アドレス |
+| `Category` | *AuditEvent* |
+| `CorrelationId` |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
+| `DurationMs` |REST API 要求を処理するのにかかった時間 (ミリ秒単位) です。 この時間にはネットワーク待機時間が含まれません。したがって、クライアント側で測定する時間はこの時間と一致しない場合があります。 |
+| `httpStatusCode_d` |要求によって返された HTTP 状態コード (例: *200*) |
+| `id_s` |要求の一意の ID |
+| `identity_claim_appid_g` | アプリケーション ID の GUID |
+| `OperationName` |操作の名前 (「[Azure Key Vault のログ記録](../../key-vault/key-vault-logging.md)」を参照) |
+| `OperationVersion` |クライアントによって要求された REST API バージョン (例: *2015-06-01*) |
+| `requestUri_s` |要求の URI |
+| `Resource` |Key Vault の名前 |
+| `ResourceGroup` |Key Vault のリソース グループ |
+| `ResourceId` |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、Key Vault リソース ID となります。 |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceType` | *VAULTS* |
+| `ResultSignature` |HTTP の状態 (例: *OK*) |
+| `ResultType` |REST API 要求の結果 (例: *Success*) |
+| `SubscriptionId` |Key Vault を含んでいるサブスクリプションの Azure サブスクリプション ID |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>古い Key Vault ソリューションからの移行
 2017 年 1 月に、Key Vault から Log Analytics へのログ送信のサポート方法が変更されました。 これらの変更には次の利点があります。

@@ -8,16 +8,18 @@ ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: d9d7b2d189c6a1533be2d1cae4989669787c3f2a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: ad5f660ff72eceecbb6db2e9557b023ed2c6ea99
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849001"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875809"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>1 つまたは複数のルールから実行する複数のアクションをグループ化する
 
 *この記事はビルダーと管理者に適用されます。*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Azure IoT Central では、条件に一致したとき、アクションを実行するルールを作成します。 ルールはデバイスのテレメトリやイベントに基づきます。 たとえば、デバイスの温度がしきい値を超えたとき、オペレーターに通知できます。 この記事では、[Azure Monitor](../azure-monitor/overview.md) *アクション グループ*を使用し、複数のアクションを IoT Central ルールに関連付ける方法について説明します。 複数のルールにアクション グループを関連付けることができます。 [アクション グループ](../azure-monitor/platform/action-groups.md)は、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。
 

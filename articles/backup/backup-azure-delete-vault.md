@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: 34484c309cb186aabec519e54269fefae316165e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9c63170b60a871182042acab8a35e505c603f260
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639913"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018887"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 
@@ -47,15 +47,15 @@ MABS (Microsoft Azure Backup Server) または Azure への DPM (System Center D
 
 ## <a name="delete-protected-items-in-cloud"></a>クラウド内の保護された項目の削除
 
-作業を進める前に、 **[この](#before-you-start)** セクションを読み、依存関係とコンテナーの削除プロセスを理解してください。
+続行する前に、 **[この](#before-you-start)** セクションを読み、依存関係とコンテナーの削除プロセスを理解してください。
 
 保護を停止してバックアップ データを削除するには、以下の手順を実行します。
 
-1. ポータルから、 **[Recovery Services コンテナー]**  >  **[バックアップ項目]** で、クラウド内の保護された項目 (サンプルの Azure Virtual Machine、Azure Storage (Azure Files)、Azure VM 内の SQL など) を選択します。
+1. ポータルから、 **[Recovery Services コンテナー]**  >  **[バックアップ項目]** で、クラウド内の保護された項目 (AzureVirtual Machine、Azure Storage (Azure Files)、SQL on Azure VM など) を選択します。
 
     ![バックアップの種類を選択する](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. バックアップ項目を右クリックすると、バックアップ項目が保護されているかどうかに応じて、メニューに **[バックアップの停止]** または **[バックアップ データの削除]** が表示されます。
+2. バックアップ項目を右クリックします。 バックアップ項目が保護されているかどうかに応じて、メニューに **[バックアップの停止]** または **[バックアップ データの削除]** が表示されます。
 
     - **[バックアップの停止]** では、ドロップ ダウンから **[バックアップ データの削除]** を選択します。 バックアップ項目の**名前** (大文字と小文字を区別する) を入力し、**理由**を選択して、**コメント**を入力し、 **[バックアップの停止]** をクリックします。
 
@@ -126,7 +126,7 @@ MARS 管理コンソールからバックアップ項目を削除するには
 - セキュリティ PIN の入力を求められます。 PIN を生成するには、次の手順を実行します。
   - Azure ポータルにサインインします。
   - **[Recovery Services コンテナー]**  >  **[設定]**  >  **[プロパティ]** の順に参照します。
-  - **[セキュリティ PIN]** の下にある **[生成]** をクリックします。 この PIN をコピーします (この PIN は 5 分間だけ有効です)。
+  - **[セキュリティ PIN]** の下にある **[生成]** をクリックします。 この PIN をコピーします。 (この PIN は 5 分間だけ有効です。)
 - 管理コンソール (クライアント アプリ) に PIN を貼り付けて **[OK]** をクリックします。
 
   ![セキュリティ PIN](./media/backup-azure-delete-vault/security-pin.png)
@@ -202,12 +202,12 @@ ARMClient コマンドの詳細については、この[ドキュメント](http
 
 1. ご利用のサブスクリプション ID、リソース グループ名、コンテナー名を使用して、次のコマンドを実行します。 このコマンドを実行すると、依存関係がなければ、そのコンテナーが削除されます。
 
-   ```
+   ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
 2. コンテナーが空ではない場合、"内部にリソースが存在するため、コンテナーを削除できません" という内容のエラーが発生します。 コンテナー内にある保護されたアイテムまたはコンテナーを削除するには、次の操作を行います。
 
-   ```
+   ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 

@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 10/06/2017
-ms.openlocfilehash: 243f4e63cc04bca018c2bf69492dccf163e92b73
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/16/2019
+ms.openlocfilehash: 0a89cd2c576a3539d7b1b6a282a2287551e8265a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780851"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877096"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>ジョブのスケジュールとブロードキャスト (Node.js)
 
@@ -48,9 +48,11 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 * **scheduleJobService.js**。シミュレート対象デバイス アプリでダイレクト メソッドを呼び出し、ジョブを使用してデバイス ツインの必要なプロパティを更新します。
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="prerequisites"></a>前提条件
 
-* Node.js バージョン 10.0.x 以降。「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
+このチュートリアルを完了するには、次のものが必要です。
+
+* Node.js バージョン 10.0.x 以降。 「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
@@ -68,39 +70,39 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 1. **simDevice** という名前の新しい空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**simDevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
 
-   ```
+   ```console
    npm init
    ```
 
 2. コマンド プロンプトで、**simDevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** Device SDK パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
-   
-   ```
+
+   ```console
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
 3. テキスト エディターを使用して、**simDevice** フォルダーに新しい **simDevice.js** ファイルを作成します。
 
 4. **simDevice.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
-   
-    ```
+
+    ```javascript
     'use strict';
-   
+
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  
-   
-    ```
-    var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。 `{yourDeviceConnectionString}` プレースホルダーの値は、前にコピーしたデバイス接続文字列に置き換えてください。
+
+    ```javascript
+    var connectionString = '{yourDeviceConnectionString}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
 6. **lockDoor** メソッドを処理する次の関数を追加します。
-   
-    ```
+
+    ```javascript
     var onLockDoor = function(request, response) {
-   
+
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
             if (err) {
@@ -109,14 +111,14 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }
         });
-   
+
         console.log('Locking Door!');
     };
     ```
 
 7. **lockDoor** メソッドのハンドラーを登録する次のコードを追加します。
 
-   ```
+   ```javascript
    client.open(function(err) {
         if (err) {
             console.error('Could not connect to IotHub client.');
@@ -145,30 +147,30 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 1. **scheduleJobService** という名前の新しい空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**scheduleJobService** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
 
-    ```
+    ```console
     npm init
     ```
 
 2. コマンド プロンプトで、**scheduleJobService** フォルダーに移動し、次のコマンドを実行して、**azure-iothub** Device SDK パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
-   
-    ```
+
+    ```console
     npm install azure-iothub uuid --save
     ```
 
 3. テキスト エディターを使用して、**scheduleJobService** フォルダーに新しい **scheduleJobService.js** ファイルを作成します。
 
-4. **dmpatterns_gscheduleJobServiceetstarted_service.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
-   
-    ```
+4. **scheduleJobService.js** ファイルの先頭に、次の "require" ステートメントを追加します。
+
+    ```javascript
     'use strict';
-   
+
     var uuid = require('uuid');
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. 次の変数宣言を追加して、プレース ホルダーの値を置き換えます。
-   
-    ```
+5. 次の変数宣言を追加します。 `{iothubconnectionstring}` プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた値に置き換えます。 **myDeviceId** とは異なるデバイスを登録した場合は、クエリ条件内の値を変更してください。
+
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     var queryCondition = "deviceId IN ['myDeviceId']";
     var startTime = new Date();
@@ -177,8 +179,8 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ```
 
 6. ジョブの実行を監視するために使用する次の関数を追加します。
-   
-    ```
+
+    ```javascript
     function monitorJob (jobId, callback) {
         var jobMonitorInterval = setInterval(function() {
             jobClient.getJob(jobId, function(err, result) {
@@ -197,14 +199,14 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ```
 
 7. 次のコードを追加して、デバイス メソッドを呼び出すジョブをスケジュールします。
-   
-    ```
+  
+    ```javascript
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
         responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
     };
-   
+
     var methodJobId = uuid.v4();
     console.log('scheduling Device Method job with id: ' + methodJobId);
     jobClient.scheduleDeviceMethod(methodJobId,
@@ -228,8 +230,8 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ```
 
 8. 次のコードを追加して、デバイス ツインを更新するようにジョブをスケジュールします。
-   
-    ```
+
+    ```javascript
     var twinPatch = {
        etag: '*',
        properties: {
@@ -239,9 +241,9 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
            }
        }
     };
-   
+
     var twinJobId = uuid.v4();
-   
+
     console.log('scheduling Twin Update job with id: ' + twinJobId);
     jobClient.scheduleTwinUpdate(twinJobId,
                                 queryCondition,
@@ -270,18 +272,26 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 これで、アプリケーションを実行する準備が整いました。
 
 1. コマンド プロンプトで、**simDevice** フォルダーに移動し、次のコマンドを実行して再起動のダイレクト メソッドのリッスンを開始します。
-   
-    ```
+
+    ```console
     node simDevice.js
     ```
 
 2. コマンド プロンプトで、**scheduleJobService** フォルダーに移動し、次のコマンドを実行して、ドアをロックしてツインを更新するジョブをトリガーします。
-   
-    ```
+
+    ```console
     node scheduleJobService.js
     ```
 
-3. ダイレクト メソッドに対するデバイスの応答がコンソールに表示されます。
+3. ダイレクト メソッドに対するデバイスの応答とジョブの状態がコンソールに表示されます。
+
+   ダイレクト メソッドに対するデバイスの応答を次に示します。
+
+   ![シミュレートされたデバイス アプリの出力](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
+
+   ダイレクト メソッドとデバイス ツインの更新に対するサービス スケジュール ジョブと、実行中のジョブ、および完了したジョブを次に示します。
+
+   ![シミュレーション済みデバイス アプリを実行する](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
 ## <a name="next-steps"></a>次の手順
 

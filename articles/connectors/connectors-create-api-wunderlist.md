@@ -11,12 +11,12 @@ ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57ab4a7b655a7d49a7120d358dccc627099e5fd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105668"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050662"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Wunderlist の監視と管理を行う
 
@@ -31,7 +31,7 @@ Azure Logic Apps と Wunderlist コネクターを使用して、Wunderlist ア�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * Wunderlist アカウントとユーザー資格情報。
 

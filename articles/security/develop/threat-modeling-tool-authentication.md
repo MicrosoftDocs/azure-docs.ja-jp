@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d7fb9fadcfac0b57fb98dc54f40ff0d2f07c6827
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728388"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967947"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
 
@@ -435,7 +435,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **手順** | <p>Azure AD 認証ライブラリ (ADAL) を使用すると、クライアント アプリケーション開発者は、クラウドまたはオンプレミスの Active Directory (AD) に対して簡単にユーザーを認証し、API 呼び出しを保護するためのアクセス トークンを取得できます。</p><p>ADAL には、非同期のサポート、アクセス トークンと更新トークンを格納する構成可能なトークン キャッシュ、アクセス トークンの有効期限が切れたときに更新トークンを使用できる場合のトークンの自動更新など、開発者向けに認証を容易にする多くの機能が用意されています。</p><p>複雑な部分のほとんどが ADAL によって処理されるため、開発者はアプリケーションでビジネス ロジックに集中し、セキュリティの専門家でなくても簡単にリソースを保護できます。 個別のライブラリは、.NET、JavaScript (クライアントと Node.js)、iOS、Android、および Java で使用できます。</p>|
+| **手順** | <p>Azure AD 認証ライブラリ (ADAL) を使用すると、クライアント アプリケーション開発者は、クラウドまたはオンプレミスの Active Directory (AD) に対して簡単にユーザーを認証し、API 呼び出しを保護するためのアクセス トークンを取得できます。</p><p>ADAL には、非同期のサポート、アクセス トークンと更新トークンを格納する構成可能なトークン キャッシュ、アクセス トークンの有効期限が切れたときに更新トークンを使用できる場合のトークンの自動更新など、開発者向けに認証を容易にする多くの機能が用意されています。</p><p>複雑な部分のほとんどが ADAL によって処理されるため、開発者はアプリケーションでビジネス ロジックに集中し、セキュリティの専門家でなくても簡単にリソースを保護できます。 個別のライブラリは、.NET、JavaScript (クライアントと Node.js)、Python、iOS、Android、および Java で使用できます。</p>|
 
 ## <a id="authn-devices-field"></a>フィールド ゲートウェイに接続しているデバイスを認証する
 

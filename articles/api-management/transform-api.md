@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 68c516ee7ca2d76339760ce0ad95590686250603
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521939"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067464"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する
 
@@ -58,7 +57,7 @@ ms.locfileid: "59521939"
 
 元の応答を表示するには:
 
-1. APIM サービス インスタンスで **[API]** (**[API 管理]** の下) を選択します。
+1. APIM サービス インスタンスで **[API]** ( **[API 管理]** の下) を選択します。
 2. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
 3. 画面の上部にある **[テスト]** タブをクリックします。
 4. **[GetSpeakers]** 操作を選択します。
@@ -75,9 +74,9 @@ ms.locfileid: "59521939"
 1. **[Demo Conference API]\(デモ会議 API)** を選択します。
 2. 画面の上部の **[デザイン]** タブを選択します。
 3. **[すべての操作]** を選択します。
-4. **[送信処理]** セクションで、**[</>]** アイコンをクリックします。
+4. **[送信処理]** セクションで、 **[</>]** アイコンをクリックします。
 5. **&lt;outbound&gt;** 要素内にカーソルを配置します。
-6. 右側のウィンドウの **[変換ポリシー]** で、**[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
+6. 右側のウィンドウの **[変換ポリシー]** で、 **[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
 
    ![ポリシー](./media/transform-api/transform-api.png)
 
@@ -112,10 +111,10 @@ ms.locfileid: "59521939"
 1.  **[Demo Conference API]\(デモ会議 API\)** を選択します。
 2.  **[すべての操作]** を選択します。
 3.  画面の上部の **[デザイン]** タブを選択します。
-4.  **[送信処理]** セクションで、**[</>]** アイコンをクリックします。
+4.  **[送信処理]** セクションで、 **[</>]** アイコンをクリックします。
 5.  **&lt;outbound&gt;** 要素内にカーソルを配置します。
-6.  右側のウィンドウの **[変換ポリシー]** で、**[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
-7.  **find-and-replace** コード (**\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 例: 
+6.  右側のウィンドウの **[変換ポリシー]** で、 **[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
+7.  **find-and-replace** コード ( **\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 例:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -128,10 +127,10 @@ ms.locfileid: "59521939"
 1.  **[Demo Conference API]\(デモ会議 API)** を選択します。
 2.  **[すべての操作]** を選択します。
 3.  画面の上部の **[デザイン]** タブを選択します。
-4.  **[受信処理]** セクションで、**[</>]** アイコンをクリックします。
+4.  **[受信処理]** セクションで、 **[</>]** アイコンをクリックします。
 5.  **&lt;inbound&gt;** 要素内にカーソルを配置します。
-6.  右側のウィンドウの **[アクセス制限ポリシー]** で、**[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
-7.  **rate-limit-by-key** コード (**\<inbound\>** 要素内) を次のコードに変更します。
+6.  右側のウィンドウの **[アクセス制限ポリシー]** で、 **[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
+7.  **rate-limit-by-key** コード ( **\<inbound\>** 要素内) を次のコードに変更します。
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
@@ -192,7 +191,7 @@ ms.locfileid: "59521939"
 
     要求を 3 回送信すると、"**429 要求が多すぎます**" 応答が返されます。
 
-5. 15 秒ほど待ち、**[送信]** をもう一度クリックします。 今度は "**200 OK**" 応答が返されます。
+5. 15 秒ほど待ち、 **[送信]** をもう一度クリックします。 今度は "**200 OK**" 応答が返されます。
 
     ![Throttling](./media/transform-api/test-throttling.png)
 

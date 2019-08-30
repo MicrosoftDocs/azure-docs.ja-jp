@@ -65,7 +65,7 @@ ms.locfileid: "67612927"
 
     ![HTTP スターター テンプレートを選択する](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. 名前を既定値の `DurableFunctionsHttpStart` のままにして **** Enter ** キーを押し、 **[匿名]** 認証を選択します。
+3. 名前を既定値の `DurableFunctionsHttpStart` のままにして ** **Enter** キーを押し、 **[匿名]** 認証を選択します。
 
     ![匿名認証を選択する](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

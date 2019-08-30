@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 08/08/2019
 ms.author: sbowles
-ms.openlocfilehash: 2f2245b4f6e4b38e0b071678ac0f3bddeb72f7ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 502523e3c62f993af4484c8ab922c36fa51a60f1
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277521"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945883"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>クイック スタート:画像内の顔を検出してフレームに収める Python スクリプトの作成
 
@@ -34,29 +34,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Face Python SDK をインストールするには、コマンド プロンプトを開いて次のコマンドを実行します。
 
 ```shell
-pip install cognitive_face
+pip install azure-cognitiveservices-vision-face
 ```
 
 ## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
 
 _FaceQuickstart.py_ という名前の新しい Python スクリプトを作成し、次のコードを追加します。 このコードでは、顔検出のコア機能を処理します。 `<Subscription Key>` は、実際のキーの値に置き換える必要があります。 また、`BASE_URL` の値も、実際のキーに合った正しいリージョン識別子を使用するように変更する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 必要に応じて、`img_url` を、使用する任意の画像の URL に設定します。
 
-このスクリプトでは、**cognitive_face.face.detect** メソッドを呼び出して顔を検出します。これは、[Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップし、顔のリストを返します。
+このスクリプトでは、**FaceClient.face.detect_with_url** メソッドを呼び出して顔を検出します。このメソッドには [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API がラップされていて、顔のリストが返されます。
 
 ```python
-import cognitive_face as CF
+from azure.cognitiveservices.vision.face import FaceClient
 
 # Replace with a valid subscription key (keeping the quotes in place).
 KEY = '<Subscription Key>'
-CF.Key.set(KEY)
 
 # Replace with your regional Base URL
-BASE_URL = 'https://westus.api.cognitive.microsoft.com/face/v1.0/'
-CF.BaseUrl.set(BASE_URL)
+BASE_URL = 'https://westus.api.cognitive.microsoft.com/'
+
+faceClient = FaceClient(BASE_URL, CognitiveServicesCredentials(KEY))
 
 # You can use this example JPG or replace the URL below with your own URL to a JPEG image.
 img_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
-faces = CF.face.detect(img_url)
+faces = faceClient.face.detect_with_url(img_url)
 print(faces)
 ```
 

@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de7066004c4baa6e3086f2909d9d5150b50d8e41
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b0aea4dddef65600fe30f36499d4ad2a4f461245
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570543"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077932"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) の監視方法
 

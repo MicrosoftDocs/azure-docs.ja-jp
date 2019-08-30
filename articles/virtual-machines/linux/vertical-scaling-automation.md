@@ -11,17 +11,16 @@ ms.assetid: dcee199e-fa25-44d5-9b25-df564cee9b45
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0317344fd8ee1eb415b61d4f5035219e649b18d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e08d0e2084f2310623391a3b20f0f09df4c419e8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695478"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103517"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Azure Automation で Azure Linux 仮想マシンを垂直方向にスケーリングする
 垂直方向のスケーリングは、ワークロードに応じてコンピューターのリソースを増減するプロセスです。 Azure では、仮想マシンのサイズを変更することで実行できます。 これは、次のようなシナリオで役立ちます。
@@ -35,6 +34,7 @@ ms.locfileid: "67695478"
 2. サブスクリプションに Azure Automation の垂直スケールの Runbook をインポートする
 3. Webhook を Runbook に追加する
 4. 仮想マシンにアラートを追加する
+
 
 ## <a name="scale-limitations"></a>スケールの制限
 
@@ -223,6 +223,8 @@ ms.locfileid: "67695478"
 | Standard_NV12 | Standard_NV24 |
 | Standard_NV6s_v2 | Standard_NV12s_v2 |
 | Standard_NV12s_v2 | Standard_NV24s_v2 |
+| Standard_NV12s_v3 |Standard_NV48s_v3 |
+
 
 ## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Azure Automation をセットアップして、Virtual Machines にアクセスする
 最初に、VM スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。 最近、Automation サービスでは、ユーザーの代わりに非常に簡単に Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能が導入されました。 詳しくは、次の記事を参照してください。

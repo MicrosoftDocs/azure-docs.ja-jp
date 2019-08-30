@@ -12,16 +12,20 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 1e55d1878b1a5616d467f2fa27b1b20132d5e77c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 51f67667caa9e0e564709de40c145b107c619b59
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516998"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016004"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
-この記事では、Azure Data Factory (ADF) のマネージド ID を使用して Azure Active Directory (Azure AD) 認証を有効にし、それを SQL 認証の代わりに使用して、Azure SQL Database サーバー/Managed Instance 内に SSIS カタログ データベース (SSISDB) をユーザーに代わってプロビジョニングする Azure-SSIS Integration Runtime (IR) を作成する方法について説明します。
+この記事では、Azure Active Directory (Azure AD) 認証と Azure Data Factory (ADF) のマネージド ID を有効にし、従来の認証方法 (SQL 認証など) の代わりにそれを使用して以下を行う方法について説明します。
+
+- お客様に代わって Azure SQL Database サーバー/Managed Instance で SSIS カタログ データベース (SSISDB) をプロビジョニングする Azure SSIS Integration Runtime (IR) を作成します。
+
+- Azure SSIS IR で SSIS パッケージを実行するときに、さまざまな Azure リソースに接続します。
 
 ADF のマネージド ID について詳しくは、「[Data Factory のマネージド ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
 
@@ -214,4 +218,14 @@ PowerShell を使用して Azure-SSIS IR をプロビジョニングするには
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                  -DataFactoryName $DataFactoryName `
                                                  -Name $AzureSSISName
-   ```
+    ```
+
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>マネージド ID 認証を使用して SSIS パッケージを実行する
+
+Azure SSIS IR で SSIS パッケージを実行するときに、マネージド ID 認証を使用してさまざまな Azure リソースに接続できます。 現在、次の接続マネージャーでマネージド ID 認証が既にサポートされています。
+
+- [OLE DB 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [ADO.NET 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Azure Storage 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

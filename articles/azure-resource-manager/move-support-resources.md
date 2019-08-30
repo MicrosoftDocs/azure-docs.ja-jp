@@ -4,14 +4,14 @@ description: 新しいリソース グループまたはサブスクリプショ
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 7/9/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 73f4b6fe4714d21c12d2c7bd387cd30f6f711d5a
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226812"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624324"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 また、リソースを移動するときに考慮すべき特別な条件に関する情報も提供します。
@@ -263,7 +263,7 @@ ms.locfileid: "68226812"
 | redis | はい | はい |
 
 > [!IMPORTANT]
-> 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks move limitations (仮想ネットワークの移動の制限)](./move-limitations/virtual-network-move-limitations.md) に関する記事をご覧ください。
+> 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks move limitations (仮想ネットワークの移動の制限)](./move-limitations/networking-move-limitations.md) に関する記事をご覧ください。
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | リソースの種類 | Resource group | Subscription |
@@ -765,7 +765,7 @@ ms.locfileid: "68226812"
 | webapplicationfirewallpolicies | はい | はい |
 
 > [!IMPORTANT]
-> [Virtual Networks move guidance (仮想ネットワークの移動のガイダンス)](./move-limitations/virtual-network-move-limitations.md) に関する記事をご覧ください。
+> [ネットワークの移動ガイダンス](./move-limitations/networking-move-limitations.md)をご覧ください。
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | リソースの種類 | Resource group | Subscription |

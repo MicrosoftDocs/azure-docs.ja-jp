@@ -251,6 +251,8 @@
           href: mitigate-se.md
         - name: スケジュールされたイベント
           href: scheduled-events.md
+        - name: スケジュール化されたイベントの監視
+          href: scheduled-event-service.md
         - name: メタデータの監視
           href: instance-metadata-service.md
         - name: 入れ子になった仮想化の有効化
@@ -388,7 +390,7 @@
           items:
             - name: 書き込みアクセラレータを有効にする
               href: how-to-enable-write-accelerator.md
-            - name: ウルトラ SSD を有効にする
+            - name: ウルトラ ディスクの使用
               href: disks-enable-ultra-ssd.md
             - name: ディスクのベンチマークの実行
               href: disks-benchmarks.md

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: e33f195ea821b34147c748e9c0aa64cb63b58fdc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a72a0e26c2af34942faaa6a7e62feef86082e196
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249976"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034830"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 
@@ -98,9 +98,9 @@ Azure Database Migration Service プロジェクト ウィザードでソース�
 | ------------- | ------------- |
 | [ExpressRoute](https://azure.microsoft.com/services/expressroute/) を使用している場合、Azure Database Migration Service では、そのサービスに関連付けられた仮想ネットワーク サブネット上に次の 3 つのサービス エンドポイントをプロビジョニングする[必要があります](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)。<br> -- サービス バス エンドポイント<br> -- ストレージ エンドポイント<br> -- ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)<br><br><br><br><br> | ソースと Azure Database Migration Service の間の ExpressRoute 接続に必要なサービス エンドポイントを[有効](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)にします。 <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>MySQL データベースを Azure MySQL に移行するときのタイムアウト エラー
+## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL データベースを Azure DB for MySQL に移行するときのロック待機タイムアウト エラー
 
-Azure Database Migration Service を介して MySQL データベースを Azure Database for MySQL インスタンスに移行すると、次のタイムアウト エラーが発生して、移行が失敗します。
+Azure Database Migration Service を介して MySQL データベースを Azure Database for MySQL インスタンスに移行すると、次のロック待機タイムアウト エラーが発生して、移行が失敗します。
 
 * **エラー**: Database migration error - Failed to load file - Failed to start load process for file 'n' (データベースの移行エラー - ファイルを読み込めませんでした - ファイル 'n' の読み込みプロセスを開始できませんでした) RetCode: SQL_ERROR SqlState:HY000 NativeError: 1205 メッセージ: [MySQL][ODBC Driver][mysqld] Lock wait timeout exceeded; try restarting transaction (ロック待機のタイムアウトを超えました。トランザクションを再開してみてください)
 

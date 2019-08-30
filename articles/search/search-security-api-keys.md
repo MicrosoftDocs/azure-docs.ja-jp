@@ -2,7 +2,7 @@
 title: 管理者 API キーとクエリ API キーの作成、管理、およびセキュリティ保護 - Azure Search
 description: API キーは、サービス エンドポイントへのアクセスを制御します。 管理者キーは、書き込みアクセス権を付与します。 読み取り専用アクセスのために、クエリ キーを作成できます。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d3880ed367ebe33e04f37b139927b75e3d01b178
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a148ccccd156b0bf637a134758b3a1c8b9db70a7
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855777"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647902"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Azure Search サービスの管理者 API キーを作成する
 

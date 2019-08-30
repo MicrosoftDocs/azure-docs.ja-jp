@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a29d20c434a7306b016fe9a549415242f5977a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e00cc46385f5d60b28607bfc08b9ca9540f152c6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101110"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944975"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>チュートリアル:Azure Active Directory と HeyBuddy の統合
 
@@ -113,7 +113,7 @@ HeyBuddy で Azure AD シングル サインオンを構成するには、次の
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子 (エンティティ ID) でこれらの値を更新してください。 サインオン URL の `Entity ID` は、組織ごとに自動的に生成されます。 これらの値を取得するには、[HeyBuddy クライアント サポート チーム](mailto:support@heybuddy.com)に問い合わせてください。
 
-5. HeyBuddy アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+5. HeyBuddy アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -122,7 +122,7 @@ HeyBuddy で Azure AD シングル サインオンを構成するには、次の
 
 6. その他に、HeyBuddy アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name |  ソース属性|
+    | EnableAdfsAuthentication |  ソース属性|
     | -------- | --------- |
     | ロール  | user.assignedroles |
     | | |
@@ -209,7 +209,7 @@ HeyBuddy で Azure AD シングル サインオンを構成するには、次の
 このセクションでは、Britta Simon というユーザーを HeyBuddy に作成します。 HeyBuddy では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 HeyBuddy にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、 [HeyBuddy サポート チーム](mailto:support@heybuddy.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、[HeyBuddy のサポート チーム](mailto:support@heybuddy.com)にお問い合わせください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

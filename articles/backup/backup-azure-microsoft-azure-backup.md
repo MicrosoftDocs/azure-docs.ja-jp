@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: f5367e1ca3e950126766e788323cb1d4749e9b0c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688401"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575146"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 > [!div class="op_single_selector"]
@@ -78,12 +78,14 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
-1. コンテナーを選択して、コンテナーのダッシュボードと [設定] メニューを開きます。 **[設定]** メニューが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
-2. **[設定]** メニューで、 **[バックアップ インフラストラクチャ]**  >  **[バックアップ構成]** をクリックして **[バックアップ構成]** ブレードを開きます。 **[バックアップ構成]** メニューで、コンテナーのストレージ レプリケーション オプションを選択します。
+1. **[Recovery Services コンテナー]** ブレードで、新しいコンテナーをクリックします。 **[設定]** セクションの **[プロパティ]** をクリックします。
+2. **[プロパティ]** で、 **[バックアップ構成]** の **[更新]** をクリックします。
 
-    ![バックアップ コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+3. ストレージのレプリケーションの種類を選択し、 **[保存]** をクリックします。
 
-    コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
+     ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+
+ 
 
 ## <a name="software-package"></a>ソフトウェア パッケージ
 ### <a name="downloading-the-software-package"></a>ソフトウェア パッケージのダウンロード
@@ -153,7 +155,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 1. **[Microsoft Azure Backup]** をクリックしてセットアップ ウィザードを起動します。
 
     ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. ようこそ画面で **[次へ]** をクリックします。 *[前提条件の確認]* セクションが表示されます。 この画面で **[確認]** をクリックして、Azure Backup Server のハードウェアとソフトウェアの前提条件が満たされているかどうかを確認します。 前提条件がすべて正常に満たされている場合は、マシンが要件を満たしていることを示すメッセージが表示されます。 **[次へ]** をクリックします。
+2. ようこそ画面で、 **[次へ]** をクリックします。 *[前提条件の確認]* セクションが表示されます。 この画面で **[確認]** をクリックして、Azure Backup Server のハードウェアとソフトウェアの前提条件が満たされているかどうかを確認します。 前提条件がすべて正常に満たされている場合は、マシンが要件を満たしていることを示すメッセージが表示されます。 **[次へ]** をクリックします。
 
     ![Azure Backup Server - Welcome and Prerequisites check](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 3. Microsoft Azure Backup Server には、SQL Server Enterprise が必要です。 また、Azure Backup Server のインストール パッケージには、独自の SQL を使用しない場合に必要となる適切な SQL Server バイナリがバンドルされています。 新しい Azure Backup Server のインストールを開始するには、 **[Install new Instance of SQL Server with this Setup (このセットアップを使用して、SQL Server の新しいインスタンスをインストールします)]** をオンにし、 **[確認してインストール]** をクリックします。 前提条件が正常にインストールされたら、 **[次へ]** をクリックします。
@@ -173,12 +175,11 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     SQL 2017 の独自のインスタンスを使用するときは、手動で SSRS を構成する必要があります。 SSRS の構成の後で、SSRS の *IsInitialized* プロパティが *True* に設定されていることを確認します。 これが True に設定されていると、MABS は SSRS が既に構成されていると見なして SSRS 構成をスキップします。
 
-    SSRS 構成では次の値を使用します。
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    SSRS 構成では次の値を使用します。 
+    - サービス アカウント:‘組み込みアカウントの使用’ はネットワーク サービスにする必要があります
+    - Web サービスの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
+    - データベース: DatabaseName は ReportServer$<SQLInstanceName> にする必要があります
+    - Web ポータルの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
 
     SSRS の構成について詳しくは、[こちら](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
 
@@ -295,7 +296,7 @@ Azure への接続と Azure サブスクリプションの状態がわかれば�
 Azure Backup Server マシンが Azure に接続できるようになると、実行可能な操作が Azure サブスクリプションの状態に応じて決まります。 マシンが "接続中" になった場合に許可される操作の詳細は、上記の表に記載されています。
 
 ### <a name="handling-subscription-states"></a>サブスクリプションの状態の処理
-Azure サブスクリプションの状態が "*有効期限切れ*" または "*プロビジョニング解除済み*" である場合、"*アクティブ*" 状態にすることができます。 ただし、状態が " *アクティブ*" でない間は、製品の動作に次のような影響があります。
+Azure サブスクリプションの状態が "*有効期限切れ*" または "*プロビジョニング解除済み*" である場合、"*アクティブ*" 状態にすることができます。 ただし、状態が "*アクティブ*" でない間は、製品の動作に次のような影響があります。
 
 * サブスクリプションが " *プロビジョニング解除済み* " の場合、プロビジョニングが解除されている期間は機能を使用できません。 " *アクティブ*" になると、製品のバックアップ/復元機能を使用できるようになります。 ローカル ディスクのバックアップ データが十分に長い間保持されている場合は、それらのデータも回復できます。 ただし、Azure に保持されるバックアップ データは、サブスクリプションが " *プロビジョニング解除済み* " 状態になると失われ、回復できなくなります。
 * サブスクリプションが "*有効期限切れ*" になった場合は、再び "*アクティブ*" になるまで機能を使用できなくなるだけです。 サブスクリプションが " *有効期限切れ* " になった期間に予定されていたバックアップは実行されません。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b993b34f81298b40c8849084380b2d1770708351
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482363"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843254"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -223,7 +223,7 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 **Azure Site Recovery で Azure から Azure へのレプリケーションによって保護されている Azure VM に、何か移行の影響はありますか?**
 
-はい。 現在、Azure Site Recovery の Azure から Azure への Managed Disks を使用した VM の保護は、GA サービスとして利用できます。
+いいえ。 Azure Site Recovery の Azure から Azure への Managed Disks を使用した VM の保護を利用できます。
 
 **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されているアンマネージド ディスクを持つ VM をマネージド ディスクに移行できますか?**
 

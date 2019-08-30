@@ -1,7 +1,7 @@
 ---
 title: 'Python のチュートリアル: AI エンリッチメント パイプラインで Cognitive Services を呼び出す - Azure Search'
 description: Jupyter Python ノートブックを使用した Azure Search でのデータ抽出、自然言語、画像の AI 処理の例を順に確認します。 抽出されたデータにはインデックスが付けられ、クエリで簡単にアクセスできるようになります。
-manager: cgronlun
+manager: nitinme
 author: LisaLeib
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: af355ec353e12c30723597927883cb23dfa31e71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840928"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648881"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python のチュートリアル: Azure Search のインデックス パイプラインで Cognitive Services API を呼び出す
 

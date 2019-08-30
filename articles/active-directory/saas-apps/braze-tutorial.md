@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8d4a4bd21e0f7a7f483e139beb1840b5c3cc7f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a32548bdafa999fe72e8b2f8e3b80961ebe3c9a
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165087"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>チュートリアル:Azure Active Directory と Braze の統合
 
@@ -115,7 +115,7 @@ Braze で Azure AD シングル サインオンを構成するには、次の手
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.braze.com/sign_in` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Braze クライアント サポート チーム](mailto:support@braze.com)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サブドメインの場合は、Braze インスタンスの URL に一覧表示されている調整サブドメインを使用します。 たとえば、インスタンスが US-01 の場合、URL は https://dashboard-01.braze.com です。 これは、サブドメインが dashboard-01 になることを意味します。
 
 6. Braze アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
@@ -123,7 +123,7 @@ Braze で Azure AD シングル サインオンを構成するには、次の手
 
 7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | Name | ソース属性|
+    | EnableAdfsAuthentication | ソース属性|
     | -----| --------------- |
     | email | user.userprincipalname |
     | first_name| User.givenname|
@@ -164,7 +164,7 @@ Braze で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="configure-braze-single-sign-on"></a>Braze シングル サインオンの構成
 
-**Braze** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Braze サポート チーム](mailto:support@braze.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Braze** 側でシングル サインオンを構成するには、Braze アカウント マネージャーによって対象のアカウントの SAML SSO が有効に設定されていることを確認する必要があります。 有効な場合は、[Company Settings]\(会社の設定\) > [Security Settings]\(セキュリティの設定\) に移動し、[SAML SSO] セクションを [ON]\(オン\) に切り替えることができます。 このセクションでは、ダウンロードした**証明書 (Base64)** をコピーして貼り付け、SAML 名を追加する必要があります。 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -218,7 +218,7 @@ Braze で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="create-braze-test-user"></a>Braze のテスト ユーザーの作成
 
-このセクションでは、Braze で Britta Simon というユーザーを作成します。  [Braze サポート チーム](mailto:support@braze.com)と連携して、Braze プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Braze で Britta Simon というユーザーを作成します。 Braze プラットフォームにユーザーを追加できます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

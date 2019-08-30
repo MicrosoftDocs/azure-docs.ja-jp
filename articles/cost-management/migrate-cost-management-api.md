@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c2041984ffa2c455ea4d60a756fcb4142219d91
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967239"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981456"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
@@ -60,7 +60,7 @@ EA API は、認証と承認に API キーを使用します。 MCA API は Azur
 | Price Sheet | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
 | 予約購入 | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
 | Reservation recommendations | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
-| 予約の使用状況 | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
+| 予約の使用状況 | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
 <sup>1</sup> Azure サービスとサード パーティ製 Marketplace の使用状況は、[Usage Details API](/rest/api/consumption/usagedetails) で利用できます。
 
@@ -130,8 +130,8 @@ Usage Details API は、すべての Cost Management API と同様に複数の�
 | --- | --- |
 | 請求先アカウント | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | 請求プロファイル | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
-| サブスクリプション | `/subscriptions/{subscriptionId}` |
-| リソース グループ | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
+| Subscription | `/subscriptions/{subscriptionId}` |
+| Resource group | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
 任意のプログラミング コードを更新するには、次のクエリ文字列パラメーターを使用します。
 
@@ -500,7 +500,7 @@ Reserved Instance Usage API を使用して、加入契約での予約の使用�
 
 以下が含まれます。
 
-- [Reserved Instance 使用量の詳細](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)
+- [Reserved Instance 使用量の詳細](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
 - [Reserved Instance 使用量の概要](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
 
 すべての Consumption API は、認証と承認に Azure AD を使用するネイティブ Azure API に置き換えられます。 呼び出し元の Azure REST API の詳細については、[REST の作業開始](/rest/api/azure/#create-the-request)に関するページを参照してください。 前述の Reservation Recommendations API は、[Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails) および [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) API に置き換えられました。

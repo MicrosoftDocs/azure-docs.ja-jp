@@ -7,14 +7,14 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934364"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639480"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -45,7 +45,7 @@ ms.locfileid: "68934364"
 
     ![Key Vault アクセス ポリシーを追加する](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. Azure Portal で、シークレットを Key Vault に追加します。 入れ子になった構成設定の場合は、':' を '--' に置き換えます。これにより、Key Vault シークレット名が有効になります。 ':' は、Key Vault シークレットの名前には使用できません。
+3. Azure portal で、シークレットを Key Vault に追加します。 入れ子になった構成設定の場合は、':' を '--' に置き換えます。これにより、Key Vault シークレット名が有効になります。 ':' は、Key Vault シークレットの名前には使用できません。
 
     ![Key Vault シークレットを追加する](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "68934364"
 
 1. プロジェクトに次の NuGet パッケージをインストールします
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
 2. 次のようなファイルを作成します。 プロジェクト フォルダーの外部の場所に保存します。
@@ -123,7 +123,7 @@ ms.locfileid: "68934364"
     </configBuilders>
     ```
 
-4. appSettings セクションで、そのシークレット構成ビルダーを使用することを指定します。 シークレット設定に、ダミーの値をもつエントリがあることを確認します。
+4. appSettings セクションで、そのシークレット構成ビルダーを使用することを指定します。 シークレット設定に、ダミーの値を含むエントリがあることを確認します。
 
     ```xml
         <appSettings configBuilders="Secrets">

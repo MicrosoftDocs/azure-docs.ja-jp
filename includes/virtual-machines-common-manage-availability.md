@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: f57c2cacca9bb3e4526ec6261b8aa0ff6c18448a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 0879cb33a0796e19724bd143e57780d6ce27bfcf
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181152"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657819"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -21,7 +21,7 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 * **計画外のハードウェア メンテナンス イベント**は、物理マシンに関連するハードウェアまたはプラットフォーム コンポーネントの故障が起こることを Azure プラットフォームが予測した場合に発生します。 プラットフォームが故障を予測すると、そのハードウェアでホストされている仮想マシンへの影響を軽減するために、計画外のハードウェア メンテナンス イベントが発生します。 Azure では、[ライブ マイグレーション](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) テクノロジを使用して、障害が発生したハードウェアから正常な物理マシンに仮想マシンを移行します。 ライブ マイグレーションは、仮想マシンを短時間一時停止するだけの VM 保持操作です。 メモリ、開いているファイル、ネットワーク接続は保持されますが、イベントの前後にパフォーマンスが低下する可能性があります。 ライブ マイグレーションを使用できない場合、以下で説明する VM で予期しないダウンタイムが発生します。
 
 
-* **予期しないダウンタイム**は、ハードウェアまたは仮想マシンの物理インフラストラクチャが予期せず失敗した場合に発生します。 こうした不具合には、ネットワーク障害、ローカル ディスク障害、またはその他のラック レベルでの障害が挙げられます。 障害が検知されると、Azure プラットフォームは、同じデータセンター内の正常な物理マシンに仮想マシンを自動的に移行 (復旧) します。 復旧中に、仮想マシンでダウンタイム (再起動) が発生し、場合によっては一時ドライブが失われることがあります。 接続されている OS とデータ ディスクは常に保持されます。 
+* **予期しないダウンタイム**は、ハードウェアまたは仮想マシンの物理インフラストラクチャが予期せず失敗した場合に発生します。 こうした不具合には、ネットワーク障害、ローカル ディスク障害、またはその他のラック レベルでの障害が挙げられます。 障害が検知されると、Azure プラットフォームは、同じデータセンター内の正常な物理マシンに仮想マシンを自動的に移行 (復旧) します。 復旧中に、仮想マシンでダウンタイム (再起動) が発生し、場合によっては一時ドライブが失われることがあります。 接続されている OS とデータ ディスクは常に保持されます。
 
   仮想マシンでも、データセンター全体やリージョン全体に影響する停電や災害といった予期しない事象によってダウンタイムが発生することがあります。 こうしたシナリオにおいて、Azure は[可用性ゾーン](../articles/availability-zones/az-overview.md)や[リージョン ペア](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)といった保護オプションを提供します。
 
@@ -37,8 +37,20 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 * [ロード バランサーと可用性セットを結合する]
 * [可用性ゾーンを使ってデータセンター レベルの障害から保護する]
 
+## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>可用性ゾーンを使ってデータセンター レベルの障害から保護する
+
+[可用性ゾーン](../articles/availability-zones/az-overview.md)は、VM 上のアプリケーションとデータの可用性を維持するための制御レベルを拡張します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones は 1 リージョン内で物理的に分離されているため、データセンターで障害が発生した場合でもアプリケーションとデータを保護できます。 ゾーン冗長サービスによって、単一障害点から保護されるように Availability Zones 全体でアプリケーションとデータがレプリケートされます。
+
+Azure リージョン内の可用性ゾーンは、**障害ドメイン**と**更新ドメイン**を組み合わせたものです。 たとえば、Azure リージョンの 3 つのゾーンに 3 つ以上の VM を作成する場合、VM は実際には 3 つの障害ドメインと 3 つの更新ドメインに分散されます。 Azure プラットフォームは更新ドメインへのこの分散を認識し、異なるゾーン内の VM が同時に更新されないようにします。
+
+Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。 複数のゾーンにレプリケートされた VM を使用するソリューションを構築することで、1 つのデータセンターで障害が発生してもアプリケーションとデータを保護することができます。 1 つのゾーンが侵害された場合、レプリケートされたアプリとデータが別のゾーンですぐに利用可能になります。
+
+![可用性ゾーン](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
+
+可用性ゾーンに [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) または [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) の VM をデプロイする方法の詳細をご覧ください。
+
 ## <a name="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy"></a>冗長性実現のために複数の仮想マシンを可用性セット内に構成する
-アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 データセンター内のこのような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 詳細については、「 [Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください。
+可用性セットは、VM の冗長性と可用性を提供するもう 1 つのデータセンター構成です。 データセンター内のこのような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 詳細については、「 [Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください。
 
 > [!IMPORTANT]
 > 可用性セット内の仮想マシンが 1 つだけにならないようにしてください。 この構成の VM は、SLA 保証の対象とはならず、単一の VM が [Azure Premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd) を使用している場合を除き、Azure の計画的メンテナンス イベント時にダウンタイムが発生します。 Premium SSD を使用する単一の VM では、Azure SLA が適用されます。
@@ -71,32 +83,26 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
 [スケジュール化されたイベント](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)をサブスクライブすると、VM に影響する可能性のある将来のメンテナンス イベントについて VM に通知されます。 スケジュール化されたイベントを有効にすると、仮想マシンでメンテナンス アクティビティが実行されるまでの時間が最小限になります。 たとえば、VM に影響を与える可能性があるホスト OS の更新プログラムは、影響と、アクションが何も行われない場合にメンテナンスが実行される日時が指定されたイベントとして、キューに登録されます。 スケジュール化されたイベントは、VM に影響を与える可能性がある差し迫ったハードウェア障害が Azure で検出されたときも、キューに登録されます。これにより、復旧をいつ実行するかを決定できます。 お客様は、イベントを使用して、状態の保存やセカンダリへのフェールオーバーなどのタスクを、メンテナンスの前に実行できます。 メンテナンス イベントを適切に処理するロジックを完了した後、未処理のスケジュール化されたイベントを承認して、プラットフォームによるメンテナンスを続行させることができます。
 
-## <a name="configure-each-application-tier-into-separate-availability-sets"></a>各アプリケーション層に対して別々の可用性セットを構成する
-仮想マシンがすべてほぼ同一で、アプリケーションに対する役割が同じである場合は、アプリケーションの各層に対して別々の可用性セットを構成することをお勧めします。  同じ可用性セットの中に 2 つの異なる層を配置した場合、同じアプリケーション層内にあるすべての仮想マシンを一度に再起動できます。 各層に対する別々の可用性セット内に少なくとも 2 つの仮想マシンを構成することで、各層あたり 1 つ以上の仮想マシンの可用性が確保されます。
+## <a name="configure-each-application-tier-into-separate-availability-zones-or-availability-sets"></a>各アプリケーション層に対して別々の可用性ゾーンまたは可用性セットを構成する
+仮想マシンがすべてほぼ同一で、アプリケーションに対する役割が同じである場合は、アプリケーションの各層に対して別々の可用性ゾーンまたは可用性セットを構成することをお勧めします。  同じ可用性ゾーンまたはセットの中に 2 つの異なる層を配置した場合、同じアプリケーション層内にあるすべての仮想マシンを一度に再起動できます。 各層に対する別々の可用性ゾーンまたはセット内に少なくとも 2 つの仮想マシンを構成することで、層あたり 1 つ以上の仮想マシンの可用性が確保されます。
 
-たとえば、ISS、Apache、Nginx を実行しているアプリケーションのフロントエンド内のすべての仮想マシンを、1 つの可用性セットに配置します。 このとき、フロントエンド仮想マシンのみが同じ可用性セット内に配置されるようにします。 同様に、別の可用性セットには、複製された SQL Server 仮想マシンまたは MySQL 仮想マシンのように、データ層の仮想マシンのみが配置されるようにします。
+たとえば、IIS、Apache、および Nginx を実行しているアプリケーションのフロントエンド内のすべての仮想マシンを、1 つの可用性ゾーンまたはセットに配置します。 このとき、フロントエンド仮想マシンのみが同じ可用性ゾーンまたはセット内に配置されるようにします。 同様に、別の可用性ゾーンまたはセットには、レプリケートされた SQL Server 仮想マシンまたは MySQL 仮想マシンのように、データ層の仮想マシンのみが配置されるようにします。
 
 <!--Image reference-->
    ![アプリケーション層](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
-## <a name="combine-a-load-balancer-with-availability-sets"></a>ロード バランサーと可用性セットを結合する
-[Azure Load Balance](../articles/load-balancer/load-balancer-overview.md) と可用性セットを結合することで、アプリケーションの復元性を最大化できます。 Azure Load Balanceは、複数の仮想マシンにトラフィックを振り分けます。 当社の標準層の仮想マシンには Azure Load Balanceが含まれています。 すべての仮想マシン層に Azure Load Balancer が含まれているわけではありません。 仮想マシンの負荷分散の詳細については、「 [仮想マシンの負荷分散](../articles/virtual-machines/virtual-machines-linux-load-balance.md)」を参照してください。
+## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>ロード バランサーと可用性ゾーンまたはセットを結合する
+[Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) と可用性ゾーンまたはセットを結合することで、アプリケーションの回復性を最大化できます。 Azure Load Balanceは、複数の仮想マシンにトラフィックを振り分けます。 当社の標準層の仮想マシンには Azure Load Balanceが含まれています。 すべての仮想マシン層に Azure Load Balancer が含まれているわけではありません。 仮想マシンの負荷分散の詳細については、「 [仮想マシンの負荷分散](../articles/virtual-machines/virtual-machines-linux-load-balance.md)」を参照してください。
 
 複数の仮想マシン間でトラフィックを分散するためのロード バランサーが構成されていない場合、計画的メンテナンス イベントによって、トラフィックを提供している仮想マシンのみに影響が生じ、アプリケーション層の機能停止が生じます。 同じ層の複数の仮想マシンを、同じロード バランサーと可用性セット以下に配置することで、少なくとも 1 つのインスタンスによってトラフィックの提供を継続することができます。
 
-## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>可用性ゾーンを使ってデータセンター レベルの障害から保護する
-
-[可用性ゾーン](../articles/availability-zones/az-overview.md)は可用性セットに代わる機能で、よりきめ細やかな制御により VM 上のアプリケーションとデータの可用性を維持します。 可用性ゾーンとは、Azure リージョンの物理的に独立したゾーンのことです。 サポートされている Azure リージョンごとに 3 つの可用性ゾーンがあります。 可用性ゾーンはそれぞれ異なる供給源、ネットワーク、および冷却装置を持ち、Azure リージョン内で他の可用性ゾーンから論理的に分離されています。 複数のゾーンにレプリケートされた VM を使用するソリューションを構築することで、1 つのデータセンターで障害が発生してもアプリケーションとデータを保護することができます。 1 つのゾーンが侵害された場合、レプリケートされたアプリとデータが別のゾーンですぐに利用可能になります。 
-
-![可用性ゾーン](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
-
-可用性ゾーンに [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) または [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) の VM をデプロイする方法の詳細をご覧ください。
+可用性ゾーン間で負荷を分散する方法のチュートリアルについては、「[Azure CLI を使用してすべての可用性ゾーン間で VM の負荷を分散する](../articles/load-balancer/load-balancer-standard-public-zone-redundant-cli.md)」を参照してください。
 
 
 <!-- Link references -->
 [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets
-[ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-sets
+[各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-zones-or-availability-sets
+[ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [可用性セット内の VM にマネージド ディスクを使用する]: #use-managed-disks-for-vms-in-an-availability-set
 [可用性ゾーンを使ってデータセンター レベルの障害から保護する]: #use-availability-zones-to-protect-from-datacenter-level-failures

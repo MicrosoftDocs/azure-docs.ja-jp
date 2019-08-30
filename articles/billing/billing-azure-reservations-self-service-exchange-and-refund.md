@@ -1,23 +1,21 @@
 ---
-title: Azure の予約のセルフサービスによる交換と払戻 | Microsoft Docs
+title: Azure の予約のセルフサービスによる交換と払戻
 description: Azure の予約を交換または払い戻す方法について説明します。
-documentationcenter: ''
 author: yashesvi
 manager: yashesvi
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615982"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814100"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -58,10 +56,19 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 元の請求書は取り消され、新しい請求書が作成されます。 元の購入に使用されたクレジット カードに金額が払い戻されます。 カードを変更した場合は、[サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
-## <a name="exchange-policies"></a>交換ポリシー
+## <a name="cancel-exchange-and-refund-policies"></a>キャンセル、交換、払戻ポリシー
+
+Azure には、キャンセル、交換、払戻に関して次のポリシーがあります。
+
+**キャンセル ポリシー**
+
+- 予約をキャンセルする場合は、12% の中途解約料が発生する可能性があります。
+- キャンセルに対しては、日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルするには、Azure portal の予約に移動し、 **[払い戻し]** を選択します。
+
+**交換ポリシー**
 
 - 既存の複数の予約を返金して、同じ種類の新しい予約を購入できます。 別の種類の予約と交換することはできません。 たとえば、VM の予約を返金して、SQL の予約を購入することはできません。
-- 交換を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
+- 交換を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
 - 交換は払戻と再購入として処理されます。キャンセルと新しい購入には、異なるトランザクションが作成されます。 日割り計算された予約金額が、交換する予約に払い戻されます。 新しい購入は全額請求されます。 日割り計算された予約金額は、返金される予約の日割り計算された残余値です。
 - 予約を購入するために使用したエンタープライズ契約の有効期限が切れて、新しい契約として更新された場合も、予約を交換または払い戻すことができます。
 - 交換により、サイズ、リージョン、数量、期間などの予約のプロパティを変更できます。
@@ -69,9 +76,9 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 - 交換の一部として購入された新しい予約には、交換の時点から開始される新しい期間が適用されます。
 - 交換に対するペナルティや年間制限はありません。
 
-## <a name="refund-policies"></a>払戻ポリシー
-
+**払戻ポリシー**
 - 12 か月間のローリング ウィンドウ内に合計払戻金額が 50,000 米国ドルを超えることはできません。
+- 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
 - 払戻を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
 - Microsoft は返金に対して 12% のペナルティを課す権利を留保します。ただし、現在、このペナルティは課金されていません。
 

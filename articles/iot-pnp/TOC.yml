@@ -1,0 +1,83 @@
+- name: IoT プラグ アンド プレイのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: IoT プラグ アンド プレイとは
+      href: overview-iot-plug-and-play.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: デバイス機能モデルを使用してデバイスを作成する
+      href: quickstart-create-pnp-device.md
+    - name: デバイスを IoT Hub に接続する
+      href: quickstart-connect-pnp-device.md
+    - name: デバイスを IoT Central に接続する
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: ソリューション内のデバイスに接続する
+      href: quickstart-connect-pnp-device-solution.md
+- name: チュートリアル
+  items:
+    - name: VS Code を使用してデバイスを作成する
+      href: tutorial-pnp-visual-studio-code.md
+    - name: 認定に対応したデバイスを構築する
+      href: tutorial-build-device-certification.md
+    - name: デバイスの認定を受ける
+      href: tutorial-certification-test.md
+- name: 概念
+  items:
+    - name: 用語集
+      href: iot-plug-and-play-glossary.md
+    - name: 開発者ガイド
+      href: concepts-developer-guide.md
+    - name: 共通インターフェイス
+      href: concepts-common-interfaces.md
+    - name: モデルの検出
+      href: concepts-model-discovery.md
+    - name: 制限とクォータ
+      href: concepts-limits-quotas.md
+- name: ハウツー ガイド
+  items:
+    - name: IoT Device Workbench を使用する
+      href: howto-use-iot-device-workbench.md
+    - name: IoT エクスプローラーをインストールする
+      href: howto-install-iot-explorer.md
+    - name: IoT ポータルにオンボードする
+      href: howto-onboard-portal.md
+    - name: モデルを管理する
+      href: howto-manage-models.md
+    - name: デバイスに接続して対話する
+      href: howto-develop-solution.md
+- name: リファレンス
+  items:
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: REST セキュリティ トークンを生成する
+      href: howto-generate-sas-token.md
+- name: 関連項目
+  items:
+    - name: 解決方法
+      items:
+        - name: IoT Central
+          href: /azure/iot-central
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+    - name: プラットフォーム サービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: マップ
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

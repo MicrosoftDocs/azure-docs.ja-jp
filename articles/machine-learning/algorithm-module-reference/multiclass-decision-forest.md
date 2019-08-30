@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 10364d014431a500e7c38a02d47f432cd464feb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b56f08dfd1a14ffedffb612bb8974086ee08ede7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411488"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128618"
 ---
 # <a name="multiclass-decision-forest-module"></a>多クラス デシジョン フォレスト モジュール
 

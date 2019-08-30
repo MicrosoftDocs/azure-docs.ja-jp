@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: fe8d46c897ef68563f2e0e5a1da106174ae504c5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424091"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515850"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -36,14 +36,12 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  容量プールあたりのボリュームの数     |    500   |    はい     |
 |  ボリュームあたりのスナップショット数       |    255     |    いいえ        |
 |  Azure Virtual Network あたりの Azure NetApp Files (Microsoft.NetApp/volumes) に委任されたサブネットの数    |   1   |    いいえ    |
-|  Azure NetApp Files による VNet (ピアリング VNet も含めて) で使用される IP の最大数    |    1000   |    いいえ   |
+|  Azure NetApp Files にアクセスできる (ピアリング VNet を含む) VNet 内の同時 IP 数   |    1000   |    いいえ   |
 |  単一の容量プールの最小サイズ   |  4 TiB     |    いいえ  |
 |  単一の容量プールの最大サイズ    |  500 TiB   |   いいえ   |
 |  単一のボリュームの最小サイズ    |    100 GiB    |    いいえ    |
-|  単一のボリュームの最大割り当てクォータ*   |   92 TiB   |    いいえ   |
-|  単一のボリュームの最大サイズ*     |    100 TiB    |    いいえ       |
-
-\* ボリュームは、92 TiB まで手動で作成またはサイズ変更できます。 ただし、超過シナリオでは 100 TiB までボリュームを拡張できます。 容量の超過の詳細については、「[Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md)」を参照してください。 
+|  単一のボリュームの最大サイズ     |    100 TiB    |    いいえ       |
+|  ボリュームあたりのファイル (inode) の最大数     |    5 千万    |    いいえ    |    
 
 ## <a name="request-limit-increase"></a>上限の引き上げを要求する 
 
@@ -54,7 +52,7 @@ Azure portal ナビゲーション プレーンから:
 1. **[ヘルプとサポート]** をクリックします。
 2. **[+ New support request]** (新しいサポート要求) をクリックします。
 3. [基本] タブで次の情報を指定します。 
-    1. [問題の種類]: **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
+    1. [問題の種類]\: **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
     2. [サブスクリプション]:クォータの増加が必要なリソースのサブスクリプションを選択します。
     3. [クォータの種類]: **[Storage:Azure NetApp Files limits]\(ストレージ: Azure NetApp Files の制限\)** を選択します。
     4. **次へ: 「解決方法」** を参照してください。

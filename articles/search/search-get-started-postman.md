@@ -2,19 +2,19 @@
 title: REST クイックスタート:Postman を使用してインデックスの作成、読み込み、クエリの実行を行う - Azure Search
 description: Postman、サンプル データ、および定義を使用して Azure Search REST API を呼び出す方法について説明します。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.author: heidist
-ms.openlocfilehash: 5ad1708475200475669c5de8f4fbd316f04ebd04
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840793"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656779"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>クイック スタート:REST API を使用して Postman に Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ Postman でこれを行うには:
 
 1. 動詞を **PUT** に変更します。
 
-2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06` をコピーします。
+2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06` をコピーします。
 
 3. 要求の本文にインデックス定義 (コピーできるコードを下に示します) を指定します。
 
@@ -298,6 +298,7 @@ API バージョンの構文が異なる点に注目してください。 この
 
 ## <a name="next-steps"></a>次の手順
 
-REST クライアントは即時の探索にとても有効です。この記事で REST API のしくみを理解したら、次はコードに進みましょう。 次のステップについては、以下のリンクを参照してください。
+これで主要タスクを実行する方法がわかったため、インデクサーや[認知検索パイプラインの設定](cognitive-search-tutorial-blob.md)など、より高度な機能のための追加の REST API 呼び出しに進むことができます。 次のステップについては、以下のリンクをお勧めします。
 
-+ [クイック スタート:.NET SDK を使用してインデックスを作成する](search-get-started-dotnet.md)
+> [!div class="nextstepaction"]
+> [REST チュートリアル: Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索](search-semi-structured-data.md)

@@ -9,17 +9,16 @@ ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4b41772a4e904603309f45244cf4df22af876a32
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 08a18dc115990ad7d44a8b20412e07995c9af390
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812745"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069508"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
 

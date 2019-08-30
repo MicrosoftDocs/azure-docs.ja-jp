@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 7f9c5b702c0da8de4476508114be911a9d74f78a
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62095449"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531453"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Security Center でシステムの更新プログラムを適用する
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) およびコンピューターの監視が毎日行われています。 Security Center は、Windows コンピューターに構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムにおける最新の更新プログラムについても確認します。 VM またはコンピューターでシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。
@@ -71,16 +71,6 @@ Azure Security Center では、オペレーティング システムに不足し
 
     ![Azure Monitor ログ検索][5]
 
-## <a name="reboot-after-system-updates"></a>システムの更新後に再起動する
-1. **[推奨事項]** ブレードに戻ります。 システムの更新プログラムを適用した後は、 **[システムの更新後に再起動する]** という新しいエントリが生成されています。 このエントリは、システムの更新プログラムの適用プロセスを完了するために、VM の再起動が必要であることを示しています。
-
-   ![システムの更新後に再起動する][6]
-2. **[システムの更新後に再起動する]** を選択します。 これにより、 **[システムの更新を完了するために、再起動は保留中です]** ブレードが開き、システムの更新プログラムの適用プロセスを完了するために再起動が必要な VM の一覧が表示されます。
-
-   ![Restart pending][7]
-
-Azure から VM を再起動して、プロセスを完了します。
-
 ## <a name="next-steps"></a>次の手順
 セキュリティ センターの詳細については、次を参照してください。
 
@@ -98,5 +88,3 @@ Azure から VM を再起動して、プロセスを完了します。
 [3]: ./media/security-center-apply-system-updates/detail-on-missing-update.png
 [4]: ./media/security-center-apply-system-updates/log-search.png
 [5]: ./media/security-center-apply-system-updates/search-details.png
-[6]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
-[7]: ./media/security-center-apply-system-updates/restart-pending.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 0dac2730bcc13b979de6a8faaaa53c0aaf15e902
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621889"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900533"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Azure Service Fabric と API Management の概要
 
@@ -54,7 +54,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 ## <a name="send-traffic-to-a-stateless-service"></a>ステートレス サービスにトラフィックを送信する
 
-最も簡単なケースでは、トラフィックはステートレス サービスのインスタンスに転送されます。 そのため API Management 操作には、Service Fabric バックエンドの特定のステートレス サービス インスタンスに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれています。 このサービスに送信された要求は、ステートレス サービス インスタンスのランダムなレプリカに送信されます。
+最も簡単なケースでは、トラフィックはステートレス サービスのインスタンスに転送されます。 そのため API Management 操作には、Service Fabric バックエンドの特定のステートレス サービス インスタンスに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれています。 このサービスに送信された要求は、サービスのランダムなインスタンスに送信されます。
 
 #### <a name="example"></a>例
 次のシナリオでは、Service Fabric アプリケーションに `fabric:/app/fooservice` という名前のステートレス サービスがあり、そこで内部 HTTP API を公開しています。 サービス インスタンスの名前は既にわかっているので、API Management の受信処理ポリシーに直接ハードコードすることができます。 
@@ -77,7 +77,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 より高度なシナリオでは、複数のサービス インスタンスに要求をマップする API Management 操作を定義できます。 この場合、各操作には、受信 HTTP 要求からの値 (URL パスやクエリ文字列など) に基づいて特定のサービス インスタンスに要求をマップし、ステートフル サービスの場合はサービス インスタンス内のパーティションに要求をマップするポリシーが含まれています。 
 
-そのため API Management 操作には、受信 HTTP 要求から取得した値に基づいて Service Fabric バックエンドのステートレス サービス インスタンスに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれています。 サービス インスタンスへの要求は、サービス インスタンスのランダムなレプリカに送信されます。
+そのため API Management 操作には、受信 HTTP 要求から取得した値に基づいて Service Fabric バックエンドのステートレス サービス インスタンスに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれています。 サービスへの要求は、サービスのランダムなインスタンスに送信されます。
 
 #### <a name="example"></a>例
 

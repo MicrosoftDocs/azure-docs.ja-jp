@@ -7,16 +7,15 @@ manager: jeconnoc
 keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 7220c72625697490d9c42dab7e18ca4bf64d3f43
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619596"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085626"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -607,14 +606,21 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ## <a name="streaming-logs"></a>ストリーミング ログ
 
-アプリケーションの開発中に、ログ情報をほぼリアルタイムで参照すると役立つことがよくあります。 関数によって生成されているログ ファイルのストリームは、Azure Portal またはローカル コンピューター上のコマンド ライン セッションで表示できます。
+アプリケーションの開発中、Azure 内での実行時にログに書き込まれている内容がほぼリアルタイムで必要になることがよくあります。
 
-これは、[ローカル開発](functions-develop-local.md)中に関数をデバッグするときに見られる出力と同等です。 詳細については、[Azure App Service の Web アプリの診断ログの有効化](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)に関するページをご覧ください。
+関数実行によって生成されているログ ファイルのストリームを表示する方法は 2 つあります。
 
-> [!NOTE]
-> ストリーミング ログでは、Functions ホストの 1 つのインスタンスしかサポートされません。 関数が複数のインスタンスにスケール調整されている場合、他のインスタンスからのデータはログ ストリームに表示されません。 Application Insights の [Live Metrics Stream](../azure-monitor/app/live-stream.md) では、複数のインスタンスがサポートされます。 これもほぼリアルタイムですが、ストリーミング分析は[サンプリングされたデータ](#configure-sampling)にも基づいています。
+* **組み込みのログ ストリーミング**: App Service プラットフォームでは、アプリケーション ログ ファイルのストリームを表示できます。 これは、[ローカル開発](functions-develop-local.md)中に関数をデバッグするときや、ポータル内の **[テスト]** タブを使用するときに見られる出力と同等です。 すべてのログベース情報が表示されます。 詳細については、[Azure App Service の Web アプリの診断ログの有効化](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)に関するページをご覧ください。 このストリーミング方法でサポートされるインスタンスは 1 つだけです。従量課金プランの Linux 上で実行されているアプリでは、この方法を使用できません。
+
+* **Live Metrics Stream**: 関数アプリが [Application Insights に接続されている](#enable-application-insights-integration)場合、[Live Metrics Stream](../azure-monitor/app/live-stream.md) を使用して Azure portal 内でログ データやその他のメトリックをほぼリアルタイムで表示できます。 この方法は、複数のインスタンス上または従量課金プランの Linux 上で実行されている関数を監視する場合に使用します。 このメソッドでは、[サンプリングされたデータ](#configure-sampling)が使用されます。
+
+ログ ストリームは、ポータル内とほとんどのローカル開発環境内の両方で表示できます。 
 
 ### <a name="portal"></a>ポータル
+
+ポータル上では、両方の種類のログ ストリームを表示できます。
+
+#### <a name="built-in-log-streaming"></a>組み込みのログ ストリーミング
 
 ポータルでストリーミング ログを表示するには、関数アプリで **[プラットフォーム機能]** タブを選択します。 次に、 **[監視]** の **[ログ ストリーミング]** を選択します。
 
@@ -624,9 +630,21 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ![ポータルでストリーミング ログを表示する](./media/functions-monitoring/streaming-logs-window.png)
 
+#### <a name="live-metrics-stream"></a>ライブ メトリック ストリーム
+
+アプリの Live Metrics Stream を表示するには、関数アプリの **[概要]** タブを選択します。 Application Insights 有効にすると、 **[構成済みの機能]** の下に **[Application Insights]** リンクが表示されます。 このリンクをクリックすると、アプリの Application Insights ページに移動します。
+
+Application Insights で、 **[Live Metrics Stream]** を選択します。 [サンプリングされたログ エントリ](#configure-sampling)が、 **[Sample Telemetry]\(サンプル テレメトリ\)** の下に表示されます。
+
+![ポータル上で Live Metrics Stream を表示する](./media/functions-monitoring/live-metrics-stream.png) 
+
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
+
+### <a name="core-tools"></a>Core Tools
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 

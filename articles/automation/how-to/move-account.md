@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a82358a2194f10a2112ed89109f0f2933dfd5fe2
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8187e4c6f2c7dc721c178bad50b6c3ada2a65367
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478605"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717243"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation アカウントを別のサブスクリプションに移動する
 
-Azure では、新しいリソース グループまたはサブスクリプションに一部のリソースを移動する機能を提供しています。 Azure portal、PowerShell、Azure CLI、または REST API を使用して、リソースを移動できます。 方法の詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/resource-group-move-resources.md)」を参照してください。 
+Azure では、新しいリソース グループまたはサブスクリプションに一部のリソースを移動する機能を提供しています。 Azure portal、PowerShell、Azure CLI、または REST API を使用して、リソースを移動できます。 方法の詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
 
 Azure の Automation アカウントは、移動できるリソースの 1 つです。 この記事では、Automation アカウントを別のリソースまたはサブスクリプションに移動する手順について説明します。
 
@@ -34,8 +34,8 @@ Automation アカウントを移行する手順の概要は次のとおりです
 
 Automation アカウントからワークスペースのリンクを解除するには、これらのソリューションをワークスペースから削除する必要があります。
 - **変更履歴とインベントリ**
-- **更新管理** 
-- **勤務時間外の VM の起動/停止** 
+- **更新管理**
+- **勤務時間外の VM の起動/停止**
 
 リソース グループで、各ソリューションを検索して **[削除]** を選択します。 **[リソースの削除]** ページで、削除するリソースを確認し、 **[削除]** を選択します。
 
@@ -127,7 +127,7 @@ Azure portal で、 **[Automation アカウント]**  >  **[関連リソース]*
 
 勤務時間外ソリューション中に **[Start/Stop VMs]** \(VM の開始/停止) を有効にするには、ソリューションを再デプロイする必要があります。 **[関連リソース]** の下で、 **[Start/Stop VMs]\(VM の開始/停止)**  >  **[Learn more about and enable the solution]\(ソリューションの詳細と有効化)**  >  **[作成]** の順に選択してデプロイを開始します。
 
-**[ソリューションの追加]** ページで、Log Analytics ワークスペースと Automation アカウントを選択します。  
+**[ソリューションの追加]** ページで、Log Analytics ワークスペースと Automation アカウントを選択します。
 
 ![[ソリューションの追加] メニュー](../media/move-account/add-solution-vm.png)
 
@@ -140,9 +140,10 @@ Azure portal で、 **[Automation アカウント]**  >  **[関連リソース]*
 |機能|テスト|トラブルシューティング リンク|
 |---|---|---|
 |Runbooks|Runbook が正常に実行し、Azure リソースに接続できる。|[Runbook のトラブルシューティング](../troubleshoot/runbooks.md)
-| ソース管理|ソース管理リポジトリで手動同期を実行できる。|[ソース管理の統合](../source-control-integration.md)|
+|ソース管理|ソース管理リポジトリで手動同期を実行できる。|[ソース管理の統合](../source-control-integration.md)|
 |変更履歴とインベントリ|マシンから現在のインベントリ データを表示を確認する。|[Change Tracking とインベントリのトラブルシューティング](../troubleshoot/change-tracking.md)|
 |更新管理|マシンを表示し、正常な状態であることを確認する。</br>テスト ソフトウェア更新プログラムのデプロイを実行する。|[Update Management の問題をトラブルシューティングする](../troubleshoot/update-management.md)|
+|共有リソース|[資格情報](../shared-resources/credentials.md)や[変数](../shared-resources/variables.md)などのすべての共有リソースが表示されていることを確認します。|
 
 ## <a name="next-steps"></a>次の手順
 

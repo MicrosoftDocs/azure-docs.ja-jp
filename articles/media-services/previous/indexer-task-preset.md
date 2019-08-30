@@ -30,7 +30,7 @@ Azure Media Indexer はメディア プロセッサであり、メディア フ�
 
 次の表では、構成 XML の要素と属性について説明します。
 
-|EnableAdfsAuthentication|必須|説明|
+|名前|必須|説明|
 |---|---|---|
 |入力|true|インデックスの対象となるアセット ファイル。<br/>Azure Media Indexer は、メディア ファイル形式としてMP4、MOV、WMV、MP3、M4A、WMA、AAC、WAV をサポートしています。 <br/><br/>**input** 要素の **name** または **list** 属性で、ファイル名を指定できます (後述参照)。 インデックスを付ける資産ファイルを指定しないと、プライマリ ファイルが選ばれます。 プライマリ資産ファイルが設定されていない場合は、入力資産の 1 つ目のファイルのインデックスが作成されます。<br/><br/>資産ファイル名を明示的に指定するには、次を実行します。<br/>```<input name="TestFile.wmv" />```<br/><br/>複数の資産ファイルのインデックスを一度に作成することもできます (最大 10 ファイル)。 これを行うには、次の手順を実行します。<br/>- テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。<br/>- 入力資産に含まれるすべての資産ファイルの名前をこのマニフェスト ファイルに追加します。<br/>- マニフェスト ファイルを資産に追加 (アップロード) します。<br/>- マニフェスト ファイルの名前を input の list 属性に指定します。<br/>```<input list="input.lst">```<br/><br/>**注:** マニフェスト ファイルに 10 個を超えるファイルを追加すると、インデックス作成ジョブが 2006 エラー コードで失敗します。|
 |metadata|false|指定した資産ファイルのメタデータです。<br/>```<metadata key="..." value="..." />```<br/><br/>事前定義済みのキーに対して値を指定できます。 <br/><br/>現在サポートされているキーは次のとおりです。<br/><br/>**title**、**description** - 言語モデルを更新して音声認識の精度を向上させるために使われます。<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**username**、**password** - http または https でインターネット ファイルをダウンロードするときの認証に使われます。<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>username と password の値は、入力マニフェストのすべてのメディア URL に適用されます。|

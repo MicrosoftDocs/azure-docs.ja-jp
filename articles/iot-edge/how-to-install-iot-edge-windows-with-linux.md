@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: b7386cbbe18d7e05c2fbffb96f6214b468956192
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151702"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034201"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Windows で IoT Edge を使用し、Linux コンテナーを実行する
 
@@ -30,9 +30,7 @@ Windows コンピューターを使用し、Linux デバイス向けの IoT Edge
 
 ### <a name="supported-windows-versions"></a>サポートされている Windows バージョン
 
-Linux コンテナーを使用する Azure IoT Edge は、次のバージョンの Windows で実行できます。 
-* Windows 10 Anniversary Update (ビルド 14393) 以降
-* Windows Server 2016 以降
+Linux コンテナーを使用する Azure IoT Edge は、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす任意のバージョンの Windows で実行できます。
 
 IoT Edge の最新バージョンの内容の詳細については、 [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に関する記事を参照してください。
 
@@ -106,7 +104,8 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)したら、他のモジュールが表示されます。 
+実行中のモジュールを一覧表示します。 新規インストール後、実行されているモジュールは **edgeAgent** だけです。 初めて [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)した後、別のシステム モジュール **edgeHub** もデバイスで起動します。 
+
 
 ```powershell
 iotedge list

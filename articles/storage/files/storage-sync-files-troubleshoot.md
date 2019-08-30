@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 98f8ce49e42858c5d8d019905887e7ed24a2459e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3395159e1427fa3d174b62c74c777d2f2ddd4900
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699237"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721680"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -116,13 +116,13 @@ Reset-StorageSyncServer
     * **[ロールの割り当て]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
     * **[ロール定義]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
 
-<a id="server-endpoint-createjobfailed"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134375898 または 0x80c80226)** というエラーで失敗する  
+<a id="-2134375898"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134375898 または 0x80c80226)** というエラーで失敗する  
 このエラーは、サーバー エンドポイントのパスがシステム ボリューム上にあり、クラウドを使った階層化が有効な場合に発生します。 システム ボリュームでは、クラウドの階層化はサポートされていません。 システム ボリュームにサーバー エンドポイントを作成するには、サーバー エンドポイントを作成するときにクラウドの階層化を無効にします。
 
-<a id="server-endpoint-createjobfailed-invalidpath"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2147024894 または 0x80070002)** というエラーで失敗する  
+<a id="-2147024894"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2147024894 または 0x80070002)** というエラーで失敗する  
 このエラーは、指定したサーバー エンドポイントのパスが有効でない場合に発生します。 指定したサーバー エンドポイントのパスがローカルに接続された NTFS ボリュームであることを確認します。 Azure File Sync は、サーバー エンドポイント パスとして、マップされたドライブをサポートしていないことに注意してください。
 
-<a id="server-endpoint-createjobfailed-compression"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134347507 または 0x80c8710d)** というエラーで失敗する  
+<a id="-2134347507"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134347507 または 0x80c8710d)** というエラーで失敗する  
 このエラーは、Azure File Sync が、圧縮されたシステム ボリューム情報フォルダーがあるボリューム上でサーバー エンドポイントをサポートしていないことが原因で発生します。 この問題を解決するには、システム ボリューム情報フォルダーを圧縮解除します。 システム ボリューム情報フォルダーがボリュームにある唯一の圧縮フォルダーである場合は、次の手順を実行します。
 
 1. [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) ツールをダウンロードします。
@@ -131,10 +131,13 @@ Reset-StorageSyncServer
     **cd /d "drive letter:\System Volume Information"**  
     **compact /u /s**
 
-<a id="server-endpoint-createjobfailed-limitreached"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134376345 または 0x80C80067)** というエラーで失敗する  
+<a id="-2134376345"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134376345 または 0x80C80067)** というエラーで失敗する  
 このエラーは、サーバーあたりのサーバー エンドポイント数が制限に達した場合に発生します。 Azure File Sync は、現在、サーバーあたり最大で 30 のサーバー エンドポイントをサポートしています。 詳細については、「[Azure File Sync のスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-file-sync-scale-targets)」をご覧ください。
 
-<a id="server-endpoint-deletejobexpired"></a>**サーバー エンドポイントの削除が "MgmtServerJobExpired" (エラー コード: -2134347757 または 0x80c87013)** というエラーで失敗する  
+<a id="-2134376427"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134376427 または 0x80c80015) というエラーで失敗する**  
+このエラーは、指定したサーバー エンドポイント パスが別のサーバー エンドポイントによって既に同期されている場合に発生します。 Azure File Sync では、同じディレクトリまたはボリュームを複数のサーバー エンドポイントで同期することはサポートされていません。
+
+<a id="-2134347757"></a>**サーバー エンドポイントの削除が "MgmtServerJobExpired" (エラー コード: -2134347757 または 0x80c87013)** というエラーで失敗する  
 このエラーは、サーバーがオフラインの場合、またはネットワークに接続されていない場合に発生します。 サーバーを使用できなくなったら、ポータルでサーバーの登録を解除します。これで、サーバー エンドポイントが削除されます。 サーバー エンドポイントを削除するには、[Azure File Sync 使用したサーバーの登録解除](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)に関するセクションで説明されている手順を実行します。
 
 <a id="server-endpoint-provisioningfailed"></a> **[サーバー エンドポイントのプロパティ] ページが開かない、またはクラウドの階層化ポリシーを更新できない**  
@@ -305,7 +308,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x0010FFFE、0x0010FFFF | 2 |
 
 ### <a name="common-sync-errors"></a>一般的な同期エラー
-<a id="-2147023673"></a>**同期セッションは取り消されました。**  
+<a id="-2147023673"></a>**同期セッションが取り消されました。**  
 
 | | |
 |-|-|
@@ -761,6 +764,25 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 3. システム アカウントで実行されているコマンド プロンプトで、次のコマンドを実行して NT AUTHORITY\SYSTEM アカウントにシステム ボリューム情報フォルダーへのアクセス許可がないかどうか確認します: **cacls "drive letter:\system volume information" /T /C**
 4. NT AUTHORITY\SYSTEM アカウントにシステム ボリューム情報フォルダーへのアクセス許可がない場合は、次のコマンドを実行します: **cacls  "drive letter:\system volume information" /T /E /G "NT AUTHORITY\SYSTEM:F"**
     - アクセス拒否により手順 #4 が失敗した場合は、次のコマンドを実行して、システム ボリューム情報フォルダーの所有権を取得し、その後、手順 #4 を繰り返します: **takeown /A /R /F "drive letter:\System Volume Information"**
+
+<a id="-2134375810"></a>**Azure ファイル共有が削除されて再作成されたため、同期に失敗しました。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027e |
+| **HRESULT (10 進値)** | -2134375810 |
+| **エラー文字列** | ECS_E_SYNC_REPLICA_ROOT_CHANGED |
+| **修復が必要か** | はい |
+
+このエラーは、Azure File Sync では同じ同期グループ内の Azure ファイル共有の削除と再作成がサポートされていないために発生します。 
+
+この問題を解決するには、次の手順のようにして、同期グループを削除して再作成します。
+
+1. 同期グループ内のすべてのサーバー エンドポイントを削除します。
+2. クラウド エンドポイントを削除します。 
+3. 同期グループを削除します。
+4. サーバー エンドポイントでクラウドを使った階層化が有効になっていた場合は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」セクションの手順を実行して、サーバー上の孤立した階層化ファイルを削除します。
+5. 同期グループを作成し直します。
 
 ### <a name="common-troubleshooting-steps"></a>一般的なトラブルシューティング手順
 <a id="troubleshoot-storage-account"></a>**ストレージ アカウントが存在することを確認します。**  

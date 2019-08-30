@@ -149,6 +149,8 @@
           href: display-feature-information-android.md
         - name: タイル レイヤーを追加する
           href: how-to-add-tile-layer-android-map.md
+    - name: データのフィードバックを提供する
+      href: how-to-use-feedback-tool.md
 - name: リファレンス
   items:
     - name: API とパラメーターの拡張子
@@ -231,6 +233,8 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: マップ

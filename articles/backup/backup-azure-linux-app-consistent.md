@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
 ms.author: dacurwin
-ms.openlocfilehash: dae2268abc3771e43d717c65c19eed37b9f48e8e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bb764cfa14b4bc8e53f25629961a1baecd6a6c1f
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689250"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954687"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM のアプリケーション整合性バックアップ
 
@@ -24,7 +24,7 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 
 このフレームワークは、VM スナップショットの作成中にカスタム事前/事後スクリプトを実行する機能が備わっています。 事前スクリプトは VM スナップショットの作成直前に実行され、事後スクリプトは VM スナップショットの作成直後に実行されます。 事前/事後スクリプトにより、VM スナップショットの作成中にアプリケーションと環境を柔軟に制御することができます。
 
-事前スクリプトは、ネイティブ アプリケーション API を呼び出します。これにより IO が休止し、メモリ内のコンテンツがディスクにフラッシュされます。 これらのアクションにより、スナップショットのアプリケーション整合性が確保されます。 事後スクリプトは、ネイティブ アプリケーション API を使用して IO を解放します。これにより、VM スナップショット後にアプリケーションは通常操作を再開できます。
+事前スクリプトは、ネイティブ アプリケーション API を呼び出します。これにより IO が休止し、メモリ内のコンテンツがディスクにフラッシュされます。 これらのアクションにより、スナップショットのアプリケーション整合性が確保されます。 事後スクリプトは、ネイティブ アプリケーション API を使用して IO を解放します。これにより、VM スナップショット後にアプリケーションで通常の操作を再開できます。
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>事前スクリプトと事後スクリプトを構成する手順
 

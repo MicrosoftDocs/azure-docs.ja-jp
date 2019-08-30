@@ -11,16 +11,15 @@ keywords: spectre,メルトダウン,スペクター
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 8f025331e12dfd748f95f629a01a240913017e6f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 91e2fbe6ef8ea448205528aaec3be343f261ce89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935348"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089118"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Azure での予測実行のサイドチャネルの脆弱性を軽減するためのガイダンス
 

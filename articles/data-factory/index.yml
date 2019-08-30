@@ -5,8 +5,8 @@ metadata:
   title: Azure Data Factory のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: 分析用のデータを移動して処理するために、Data Factory を使用してオンプレミスやクラウドのソースとの間で自動化データ パイプラインを設定する方法について説明します。
   services: data-factory
-  author: sharonlo101
-  ms.author: shlo
+  author: djpmsft
+  ms.author: daperlov
   manager: craigg
   ms.service: data-factory
   ms.tgt_pltfrm: na

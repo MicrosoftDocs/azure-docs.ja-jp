@@ -121,7 +121,7 @@ Virtual Network 関連の問題がある場合は、次のいずれかのエラ�
 
 このエラーは、さまざまな理由で発生する可能性があります。 トラブルシューティングを行うには、「[Forbidden](#forbidden)」、「[InvalidPropertyValue](#invalidpropertyvalue)」、および「[MisconfiguredDnsServerOrNsgSettings](#misconfigureddnsserverornsgsettings)」の各セクションを参照してください。
 
-### <a name="forbidden"></a>許可されていません
+### <a name="forbidden"></a>Forbidden
 
 この種のエラーは次のようになります。"現在のアカウントでは subnetId が有効になっていません。 Microsoft.Batch リソース プロバイダーが VNet の同じサブスクリプションに登録されていません。"
 

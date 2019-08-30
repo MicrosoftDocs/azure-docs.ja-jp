@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33f595dd36ac9448cc1276647f9943326b0b74c1
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 5710ccfe5d6450714e029827a795b484b1bcd2b4
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655218"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716658"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する
 
@@ -98,7 +98,7 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** 、 **[追加]** の順に選択します。
 1. **[名前]** を入力します。 たとえば､「*Contoso Azure AD*」と入力します。
-1. **[ID プロバイダーの種類]** を選択し、 **[Open ID Connect (Preview)]\(Open ID Connect (プレビュー))** を選択して、 **[OK]** をクリックします。
+1. **[ID プロバイダーの種類]** を選択し、 **[OpenID Connect (プレビュー)]** を選択して、 **[OK]** をクリックします。
 1. **[この ID プロバイダーをセットアップします]** をクリックします。
 1. **[メタデータ URL]** には、次の URL を入力します。`your-AD-tenant-domain` は、Azure AD テナントのドメイン名で置き換えます。
 

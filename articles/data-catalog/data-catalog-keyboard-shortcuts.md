@@ -1,20 +1,22 @@
 ---
 title: Azure Data Catalog 用のキーボード ショートカット
-description: この記事では、Azure Data Catalog 用のキーボード ショートカットについて説明します。
+description: この記事では、Azure Data Catalog で使用できるキーボード ショートカットの一覧を示します。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 499067f33bddbede6510f61e2cb5da3fb33a5e7c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736307"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014448"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Azure Data Catalog 用のキーボード ショートカット
+
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Data Catalog データ ソース登録ツール用のキーボード ショートカット
+
 ### <a name="general-keyboard-shortcuts"></a>一般的なキーボード ショートカット
 | Operation | 押すキー |
 | --- | --- |

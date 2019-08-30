@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: a828d03093c73d5c65a92ccf899fbaa1ef622bd6
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217189"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016506"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
@@ -88,7 +89,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 以下に、一般的なライブ ストリーミング アプリケーションを作成する場合に関係する標準的な手順を示します。
 
 > [!NOTE]
-> 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。 ライブ エンコードは課金に影響するため、ライブ エンコード チャネルを "実行中" 状態のままにしておくと時間料金が発生します。  余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。 
+> 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amshelp@microsoft.com にお問い合わせください。 ライブ エンコードは課金に影響するため、ライブ エンコード チャネルを "実行中" 状態のままにしておくと時間料金が発生します。  余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。 
 
 1. ビデオ カメラをコンピューターに接続します。 オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーでは、**シングル** ビットレート ストリームを次のいずれかのプロトコルで出力できます:RTMP またはスムーズ ストリーミング。 
 
@@ -210,7 +211,7 @@ ISO 639-2 に準拠している、オーディオ ストリームの言語識別
 ### <a id="preset"></a>システム プリセット
 このチャネル内のライブ エンコーダーが使用するプリセットを指定します。 現在、唯一の許容されている値は **Default720p** (既定値) です。
 
-カスタム プリセットが必要な場合は、amslived@microsoft.com にお問い合わせください。
+カスタム プリセットが必要な場合は、amshelp@microsoft.com にお問い合わせください。
 
 **Default720p** では、次の 6 つのレイヤーにビデオがエンコードされます。
 
@@ -330,7 +331,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 * 既定では、Media Services アカウントに追加できるチャネル数は 5 つのみです。 これは、すべての新しいアカウントに関するソフト クォータです。 詳しくは、「 [クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
 * チャネルやチャネルに関連付けられたプログラムの実行中は、入力プロトコルを変更できません。 別のプロトコルが必要な場合は、入力プロトコルごとに別のチャネルを作成します。
 * チャネルが **実行中** 状態のときにのみ課金されます。 詳しくは、 [こちら](media-services-manage-live-encoder-enabled-channels.md#states) のセクションを参照してください。
-* 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
+* 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amshelp@microsoft.com にお問い合わせください。
 * コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
 * エンコードのプリセットでは、「最大フレーム レート」 30 fps の概念が使用されます。 したがって、入力が 60fps/59.94i の場合、入力フレームは 30/29.97 fps にドロップ/インターレース解除されます。 入力が 50fps/50i の場合は、入力フレームは 25 fps にドロップ/インターレース解除されます。 入力が 25 fps の場合は、出力は 25 fps のままです。
 * 終了したら、忘れずにチャネルを停止してください。 そうしないと、課金が続行されます。
@@ -359,7 +360,7 @@ Media Services のラーニング パスを確認します。
 
 [Media Services の概念](media-services-concepts.md)
 
-[Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)
+[Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
 

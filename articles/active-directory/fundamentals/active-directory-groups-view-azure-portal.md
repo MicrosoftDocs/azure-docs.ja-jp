@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3719e63b19066d61647b90ccae03ed841f3c6c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561901"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942878"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -53,7 +53,7 @@ _MDM policy - West_ という名前の新しいグループを作成します。
 3. **作成** を選択します。
 
 ## <a name="create-a-new-user"></a>新しいユーザーを作成する
-_Alain Charon_ という名前の新しいユーザーを作成します。 ユーザーは、グループ メンバーとして追加される前に存在している必要があります。 ユーザーの作成に関する詳細については、[ユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページを参照してください。
+_Alain Charon_ という名前の新しいユーザーを作成します。 ユーザーは、グループ メンバーとして追加される前に存在している必要があります。 まず [カスタム ドメイン名] タブをチェックして、ユーザーの作成先となる検証済みのドメイン名を入手します。 ユーザーの作成に関する詳細については、[ユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページを参照してください。
 
 1. **[Azure Active Directory]** 、 **[ユーザー]** 、 **[新しいユーザー]** と選択します。
 

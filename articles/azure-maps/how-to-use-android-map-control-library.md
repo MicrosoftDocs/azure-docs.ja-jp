@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9df5eb9fa4493f82c6efd4a8e30eee324e4eac2a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: a3423635ab226693e0b3b057e2c2cb441861ea1b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273838"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839410"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -28,11 +28,11 @@ Azure Maps Android SDK は、Android 用のベクター マップ ライブラ�
 
 ### <a name="download-android-studio"></a>Android Studio をダウンロードする
 
-Azure Maps Android SDK をインストールする前に、Android Studio をダウンロードして、空のアクティビティを含むプロジェクトを作成する必要があります。 Google から無料で [Android Studio をダウンロードする](https://developer.android.com/studio/)ことができます。 
+Azure Maps Android SDK をインストールする前に、Android Studio をダウンロードして、空のアクティビティを含むプロジェクトを作成します。 Google から無料で [Android Studio をダウンロードする](https://developer.android.com/studio/)ことができます。 
 
 ## <a name="create-a-project-in-android-studio"></a>Android Studio でプロジェクトを作成する
 
-まず、空のアクティビティを含む新しいプロジェクトを作成する必要があります。 Android Studio プロジェクトを作成するには、次の手順を完了します。
+まず、空のアクティビティを含む新しいプロジェクトを作成します。 Android Studio プロジェクトを作成するには、次の手順を完了します。
 
 1. **[Choose your project]\(プロジェクトの選択\)** で、 **[Phone and Tablet]\(電話およびタブレット\)** を選択します。 このフォーム ファクターでアプリケーションが実行されます。
 2. **[Phone and Tablet]\(電話およびタブレット\)** タブで、 **[Empty Activity]\(空のアクティビティ\)** 、 **[次へ]** の順に選択します。
@@ -84,7 +84,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     > [!Note]
     > Azure Maps Android SDK は定期的にアップグレードされ、強化されています。 最新の Azure Maps 実装のバージョン番号は、[Android マップ コントロールの概要](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)ドキュメントで確認できます。 また、バージョン番号を「0.2」から「0+」に設定して、常に最新バージョンをポイントするようにできます。
 
-3. **res** > **layout** > **activity_main.xml** を編集して、次に置き換えます。
+3. **res** > **layout** > **activity_main.xml** を編集して、次のコードに置き換えます。
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -198,6 +198,55 @@ Android Studio でアプリケーションをビルドするには、数秒か�
 <center>
 
 ![Android マップ](./media/how-to-use-android-map-control-library/android-map.png)</center>
+
+## <a name="localizing-the-map"></a>マップのローカライズ
+
+Azure Maps Android SDK には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 次のコードは、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定する方法を示しています。 
+
+最初のオプションでは、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用して、言語とビューの地域情報を `AzureMaps` クラスに渡します。 これにより、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域ビューが設定されます。
+
+```Java
+static {
+    //Set your Azure Maps Key.
+    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+
+    //Set the language to be used by Azure Maps.
+    AzureMaps.setLanguage("fr-FR");
+
+    //Set the regional view to be used by Azure Maps.
+    AzureMaps.setView("auto");
+}
+```
+
+2 つ目のオプションでは、言語とビュー情報をマップ コントロール XML に渡します。
+
+```XML
+<com.microsoft.azure.maps.mapcontrol.MapControl
+    android:id="@+id/myMap"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:mapcontrol_language="fr-FR"
+    app:mapcontrol_view="auto"
+    />
+```
+
+3 つ目のオプションでは、マップの `setStyle` メソッドを使用して、マップの言語と地域ビューをプログラムで設定します。 これは、マップの言語と地域ビューを変更するときにいつでも実行できます。
+
+```Java
+mapControl.onReady(map -> {
+    map.setStyle(StyleOptions.language("fr-FR"));
+    map.setStyle(StyleOptions.view("auto"));
+});
+```
+
+言語が "fr-FR" に設定され、地域ビューが "auto" に設定されている Azure Maps の例を次に示します。
+
+<center>
+
+![ラベルをフランス語で表示するマップ イメージ](./media/how-to-use-android-map-control-library/android-localization.png)
+</center>
+
+サポートされている言語と地域ビューの完全な一覧については、[こちら](supported-languages.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -62,7 +62,7 @@ OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Di
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | EnableAdfsAuthentication  | 置換後の文字列 | 例 |
+    | Name  | 置換後の文字列 | 例 |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | テナントまたは組織の名前 | `microsoft` |
 

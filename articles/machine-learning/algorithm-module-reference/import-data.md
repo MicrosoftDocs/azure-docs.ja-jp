@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ed51c4e7b6c7d226c7827d1ba00bc96a7be1e6b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8522c759efb0cc599bbcf8e7569f6045da571a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027671"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128786"
 ---
 # <a name="import-data-module"></a>データのインポート モジュール
 

@@ -193,6 +193,8 @@
           href: api-management-howto-create-groups.md
         - name: 複数の Azure リージョンにデプロイする
           href: api-management-howto-deploy-multi-region.md
+        - name: IP アドレスを取得する
+          href: api-management-howto-ip-addresses.md
         - name: イベントを Azure Event Hubs にログ記録する
           href: api-management-howto-log-event-hubs.md
         - name: Azure Application Insights でログを要求する
@@ -205,6 +207,8 @@
           href: api-management-configuration-repository-git.md
         - name: ロールベースのアクセス制御を使用する
           href: api-management-role-based-access-control.md
+        - name: API Management インスタンスを移行する
+          href: api-management-howto-migrate.md
         - name: Azure リソースのマネージド ID を使用する
           href: api-management-howto-use-managed-service-identity.md
         - name: Service Fabric と統合する

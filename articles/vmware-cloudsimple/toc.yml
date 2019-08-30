@@ -72,7 +72,7 @@
               href: create-private-cloud.md
             - name: プライベート クラウドを管理する
               href: manage-private-cloud.md
-            - name: プライベート クラウドを拡大する
+            - name: プライベート クラウドを拡張する
               href: expand-private-cloud.md
             - name: プライベート クラウドを縮小する
               href: shrink-private-cloud.md
@@ -87,80 +87,86 @@
         - name: プライベート クラウドのネットワークを設定する
           items:
             - name: VLAN とサブネットを作成して管理する
-              href: 'https://docs.azure.cloudsimple.com/create-vlan-subnet/'
+              href: create-vlan-subnet.md
             - name: ファイアウォール テーブルおよび規則を設定する
-              href: 'https://docs.azure.cloudsimple.com/firewall/'
+              href: firewall.md
             - name: パブリック IP アドレスを割り当てる
-              href: 'https://docs.azure.cloudsimple.com/public-ips/'
+              href: public-ips.md
             - name: VPN 接続を設定する
-              href: 'https://docs.azure.cloudsimple.com/vpn-gateway/'
+              href: vpn-gateway.md
             - name: CloudSimple への仮想ネットワーク接続に関するピア情報を取得する
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+              href: virtual-network-connection.md
             - name: 管理タスクのために vSphere クライアント エスカレーション特権にアクセスする
               href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: CloudSimple ポータル アカウントを管理する
           items:
             - name: アカウントの概要を表示する
-              href: 'https://docs.azure.cloudsimple.com/account/'
+              href: account.md
             - name: ユーザーの一覧を表示する
-              href: 'https://docs.azure.cloudsimple.com/users/'
-            - name: 使用状況ログを表示する
-              href: 'https://docs.azure.cloudsimple.com/usage/'
+              href: users.md
             - name: プライベート クラウドへの仮想ネットワーク接続を設定する
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
-            - name: ユーザー プロファイルを編集する
-              href: 'https://docs.azure.cloudsimple.com/editprofile/'
+              href: virtual-network-connection.md
         - name: VMware 仮想マシンをプライベート クラウド用に設定する
           items:
             - name: Azure で VM を作成する
-              href: 'https://docs.azure.cloudsimple.com/azure-create-vm/'
+              href: azure-create-vm.md
+            - name: Azure で VM を管理する
+              href: azure-manage-vm.md
     - name: ハウツー ガイド
       items:
         - name: 環境のセキュリティ保護
-          href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
+          href: private-cloud-secure.md
         - name: プライベート クラウドの管理
           items:
+            - name: プライベート クラウドの権限のエスカレート
+              href: escalate-privileges.md
             - name: ワークロードの DNS と DHCP の設定
-              href: 'https://docs.azure.cloudsimple.com/dns-dhcp-setup/'
-            - name: 移行のための NSX レイヤー 2 VPN
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+              href: dns-dhcp-setup.md
+            - name: レイヤー 2 拡張済みネットワークを使用したワークロードの移行
+              href: migration-layer-2-vpn.md
         - name: プライベート クラウド ネットワーク
           items:
             - name: オンプレミスとプライベート クラウドの間の VPN 接続
-              href: 'https://docs.azure.cloudsimple.com/set-up-vpn/'
+              href: set-up-vpn.md
             - name: ExpressRoute を使用したオンプレミス ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: ExpressRoute を使用した Azure 仮想ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md
         - name: VMware プラットフォーム
           items:
             - name: プライベート クラウドのアクセス許可モデルについて
-              href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
+              href: learn-private-cloud-permissions.md
             - name: vCenter の ID ソース
-              href: 'https://docs.azure.cloudsimple.com/set-vcenter-identity/'
+              href: set-vcenter-identity.md
             - name: Azure Application Gateway と VMware VM
-              href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
-            - name: プライベート クラウドの vCenter サーバーを vRealize Automation エンドポイントとして構成する
-              href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
+              href: azure-application-gateway.md
+            - name: vRealize Automation エンドポイントとしてのプライベート クラウドの vCenter サーバーの構成
+              href: configure-server-vrealize-automation-endpoint.md
             - name: プライベート クラウドへのワークロード VM の移行
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+              href: migrate-workloads.md
             - name: Azure 上の VMware におけるアプリケーション高可用性の確保
-              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+              href: ensuring-high-availability.md
+            - name: 負荷分散ソリューションの選択
+              href: load-balancers.md
         - name: VMware のエコシステム
           items:
             - name: ワークロード仮想マシンのバックアップ
-              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
+              href: backup-workloads-veeam.md
+            - name: Zerto を使用したディザスター リカバリー サイトとしてのプライベート クラウドの構成
+              href: disaster-recovery-zerto.md
+            - name: VMware SRM を使用したディザスター リカバリー サイトとしてのプライベート クラウドの構成
+              href: disaster-recovery-site-recovery-manager.md
             - name: VMware Horizon ソリューションのガイド
-              href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
+              href: horizon-guide.md
             - name: プライベート クラウドの vSAN 暗号化の構成
-              href: 'https://docs.azure.cloudsimple.com/vsan-encryption/'
-            - name: CloudSimple プライベート クラウドでの Oracle RAC のデプロイ
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+              href: vsan-encryption.md
+            - name: プライベート クラウドの Oracle RAC 向けの最適化
+              href: oracle-real-application-clusters.md
         - name: Azure コア統合
           items:
             - name: プライベート クラウド vCenter の Azure AD ID ソース
-              href: 'https://docs.azure.cloudsimple.com/azure-ad/'
+              href: azure-ad.md
             - name: ExpressRoute を使用したオンプレミス ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: ExpressRoute を使用した Azure 仮想ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md

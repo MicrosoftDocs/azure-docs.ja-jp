@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bd59257c1136f52beaf217c1f983c8aeb7bd81d5
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ea8f3f1860223e102aeccf81f72b5294283b83f6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671127"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640750"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
@@ -60,9 +60,9 @@ Ubuntu Cloud Image では、cloud-init を使用してスワップ パーティ�
 
 cloud-init のサポートがないイメージの場合、Azure Marketplace からデプロイされた VM イメージで VM Linux エージェントが OS と統合されています。 このエージェントにより、VM がさまざまな Azure サービスと対話できるようになります。 Azure Marketplace から標準イメージをデプロイしたことを想定すると、Linux スワップ ファイルの設定を正しく構成するには、次の操作を行う必要があります。
 
-**/etc/waagent.conf** ファイル内で 2 つのエントリを探して変更します。 これらのエントリは、専用のスワップ ファイルの存在と、そのスワップ ファイルのサイズを制御します。 変更しようとしているパラメーターは `ResourceDisk.EnableSwap=N` と `ResourceDisk.SwapSizeMB=0` です 
+**/etc/waagent.conf** ファイル内で 2 つのエントリを探して変更します。 これらのエントリは、専用のスワップ ファイルの存在と、そのスワップ ファイルのサイズを制御します。 確認する必要のあるパラメーターは `ResourceDisk.EnableSwap` と `ResourceDisk.SwapSizeMB` です。 
 
-次の設定のパラメーターを変更します。
+適切に有効化されたディスクとマウントされたスワップファイルを有効にするには、パラメーターの設定が次のようになっていることを確認します。
 
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk.SwapSizeMB={ニーズに合わせたサイズ (MB)} 

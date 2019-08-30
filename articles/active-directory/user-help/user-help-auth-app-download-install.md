@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1ee54fac5a4c325ea5db3b97522fd2772b8dbd4
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382416"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616047"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリのダウンロードとインストール
 
@@ -52,7 +52,7 @@ Microsoft Authenticator アプリは次のようなさまざまな方法で使�
 - **Apple iOS**。 Apple iOS デバイスでは、App Store に移動して、[Microsoft Authenticator アプリをダウンロードして、インストール](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)します。
 
 >[!Important]
->現在モバイル デバイスに接続していない場合でも、[Microsoft Authenticator のページ](https://www.microsoft.com/en-us/account/authenticator)から自分にダウンロード リンクを送信して Microsoft Authenticator アプリを入手できます。
+>現在モバイル デバイスに接続していない場合でも、[Microsoft Authenticator のページ](https://www.microsoft.com/account/authenticator)から自分にダウンロード リンクを送信して Microsoft Authenticator アプリを入手できます。
 
 ## <a name="next-steps"></a>次の手順
 

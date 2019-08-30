@@ -5,37 +5,44 @@ services: iot-hub
 author: chrissie926
 ms.service: iot-hub
 ms.topic: include
-ms.date: 04/26/2018
+ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
-ms.openlocfilehash: e78c9a490d2ad02fb132d62b0ab0b55f15d3d4ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181828"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883850"
 ---
 ## <a name="create-a-module-identity"></a>モジュール ID を作成する
 
-このセクションでは、IoT ハブの ID レジストリにデバイス ID とモジュール ID を作成する .NET コンソール アプリケーションを作成します。 IoT ハブに接続するデバイスまたはモジュールは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイドの ID レジストリ](../articles/iot-hub/iot-hub-devguide-identity-registry.md)に関するセクションを参照してください。 このコンソール アプリを実行すると、デバイスとモジュール両方に対して一意のデバイス ID とキーが生成されます。 デバイスとモジュールは、IoT ハブに device-to-cloud メッセージを送信するときにこれらの値を使用して自分自身を識別します。 ID には大文字と小文字の区別があります。
+このセクションでは、ご自身のハブの ID レジストリにデバイス ID とモジュール ID を作成する .NET コンソール アプリを作成します。 ハブに接続するデバイスまたはモジュールは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイドの ID レジストリ](../articles/iot-hub/iot-hub-devguide-identity-registry.md)に関するセクションを参照してください。
 
+このコンソール アプリを実行すると、デバイスとモジュール両方に対して一意のデバイス ID とキーが生成されます。 デバイスとモジュールでは、IoT ハブに device-to-cloud メッセージを送信するときにこれらの値を使用して自分自身を識別します。 ID には大文字と小文字の区別があります。
 
-1. **Visual Studio プロジェクトを作成する** - Visual Studio で、**コンソール アプリ (.NET Framework)** プロジェクト テンプレートを使用して、新しいソリューションに Visual C# Windows Classic Desktop プロジェクトを追加します。 .NET Framework のバージョンが 4.6.1 以降であることを確認します。 プロジェクトに **CreateIdentities** という名前を付け、ソリューションに **IoTHubGetStarted** という名前を付けます。
+1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
 
-    ![Visual Studio ソリューションを作成する](./media/iot-hub-get-started-create-module-identity-csharp/create-identities-csharp1.JPG)
+1. **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択します。
 
-2. **Azure IoT Hub .NET service SDK V1.16.0-preview-001 をインストールする** - 現在、モジュール ID とモジュール ツインはパブリック プレビュー段階です。 これらは、IoT Hub のプレリリース サービス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 バージョン 1.16.0-preview-001 を選択してインストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
+1. **[次へ]** を選択して、 **[新しいプロジェクトの構成]** を開きます。 プロジェクトに *CreateIdentities* という名前を付け、ソリューションに *IoTHubGetStarted* という名前を付けます。 .NET Framework のバージョンが 4.6.1 以降であることを確認します。
 
-    ![Azure IoT Hub .NET service SDK V1.16.0-preview-001 をインストールする](./media/iot-hub-get-started-create-module-identity-csharp/install-sdk.png)
+    ![Visual Studio ソリューションの名前とフレームワークの入力](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-3. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** を開きます。 **[参照]** タブを選択します。
+
+1. **Microsoft.Azure.Devices** を検索します。 これを選択してから、 **[インストール]** を選択します。
+
+    ![Azure IoT Hub .NET service SDK の現在のバージョンをインストールする](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
+
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Common.Exceptions;
    ```
 
-4. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
 
    ```csharp
    const string connectionString = "<replace_with_iothub_connection_string>";
@@ -43,8 +50,8 @@ ms.locfileid: "67181828"
    const string moduleID = "myFirstModule";
    ```
 
-5. 次の操作を行うコードを **Main** クラスに追加します。
-   
+1. 次の操作を行うコードを **Main** クラスに追加します。
+
    ```csharp
    static void Main(string[] args)
    {
@@ -53,7 +60,7 @@ ms.locfileid: "67181828"
    }
    ```
 
-6. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp
     private static async Task AddDeviceAsync()
@@ -95,13 +102,13 @@ ms.locfileid: "67181828"
     }
     ```
 
-    AddDeviceAsync() メソッドでは、**myFirstDevice** という ID でデバイス ID が作成されます。 (そのデバイス ID が既に ID レジストリに存在する場合は、単にその既存のデバイス情報を取得します)。続けてその ID のプライマリ キーが表示されます。 シミュレーション対象デバイス アプリでこのキーを使用し、IoT Hub に接続します。
+    `AddDeviceAsync` メソッドでは、**myFirstDevice** という ID でデバイス ID が作成されます。 そのデバイス ID が既に ID レジストリに存在する場合は、コードにより単にその既存のデバイス情報が取得されます。 続けてその ID のプライマリ キーが表示されます。 シミュレーション対象デバイス アプリ内でこのキーを使用して、ハブに接続します。
 
-    AddModuleAsync() メソッドでは、デバイス **myFirstDevice** の下で、**myFirstModule** という ID でモジュール ID が作成されます。 (そのモジュール ID が既に ID レジストリに存在する場合は、単にその既存のモジュール情報を取得します。)続けてその ID のプライマリ キーが表示されます。 シミュレートされたモジュール アプリでこのキーを使用し、IoT ハブに接続します。
+    `AddModuleAsync` メソッドでは、デバイス **myFirstDevice** の下で、**myFirstModule** という ID でモジュール ID が作成されます。 そのモジュール ID が既に ID レジストリに存在する場合は、単にその既存のモジュール情報を取得します。 続けてその ID のプライマリ キーが表示されます。 シミュレートされたモジュール アプリ内でこのキーを使用し、ハブに接続します。
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-7. このアプリケーションを実行し、デバイス キーとモジュール キーを書き留めておきます。
+1. このアプリを実行し、デバイス キーとモジュール キーを書き留めておきます。
 
 > [!NOTE]
-> IoT ハブの ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID とモジュール ID のみが格納されます。 ID レジストリには、セキュリティ資格情報として使用されるデバイス ID とキーが格納されます。 ID レジストリには、そのデバイスのアクセスを無効にするために使用できる各デバイスの有効/無効フラグも格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 モジュール ID 用の有効/無効フラグはありません。 詳細については、[IoT Hub 開発者ガイド](../articles/iot-hub/iot-hub-devguide-identity-registry.md)をご覧ください。
+> IoT ハブの ID レジストリには、ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID とモジュール ID のみが格納されます。 ID レジストリには、セキュリティ資格情報として使用されるデバイス ID とキーが格納されます。 ID レジストリには、そのデバイスのアクセスを無効にするために使用できる各デバイスの有効/無効フラグも格納されます。 その他デバイス固有のメタデータをアプリで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 モジュール ID 用の有効/無効フラグはありません。 詳細については、[IoT Hub 開発者ガイド](../articles/iot-hub/iot-hub-devguide-identity-registry.md)をご覧ください。

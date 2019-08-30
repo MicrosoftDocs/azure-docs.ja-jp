@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564584"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034490"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>テキスト認識コンテナーをインストールして実行する
 
-Computer Vision のテキスト認識部分も Docker コンテナーとして利用できます。 レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを検出して、抽出できます。  
+Computer Vision のテキスト認識部分も Docker コンテナーとして利用できます。 レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを検出して、抽出できます。
+
 > [!IMPORTANT]
 > テキスト認識コンテナーは現在のところ、英語でのみ機能します。
 
@@ -34,11 +35,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つのリソース キーのうちのどちらか。<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。|
+|Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。|
 
 ## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
@@ -46,16 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
-次の表に、各テキスト認識コンテナーに割り当てる CPU コアとメモリの最小値と推奨値を示します。
-
-| コンテナー | 最小値 | 推奨 |TPS<br>(最小、最大)|
-|-----------|---------|-------------|--|
-|テキスト認識|1 コア、8 GB メモリ、0.5 TPS|2 コア、8 GB メモリ、1 TPS|0.5、1|
-
-* 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
-* TPS - 1 秒あたりのトランザクション数
-
-コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 

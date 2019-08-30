@@ -43,7 +43,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | ---                     | ---                                                |
     | Subscription               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*myResourceGroupSLB*」と入力します。|
-    | EnableAdfsAuthentication                   | *myLoadBalancer*                                   |
+    | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
     | Type          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
@@ -75,7 +75,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
     
     | Setting | 値 |
     | ------- | ----- |
-    | EnableAdfsAuthentication | 「*myHealthProbe*」と入力します。 |
+    | 名前 | 「*myHealthProbe*」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
     | Port | 「*80*」と入力します。|
     | Interval | プローブの試行の**間隔**を示す秒数として、「*15*」を入力します。 |
@@ -92,7 +92,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
     
     | Setting | 値 |
     | ------- | ----- |
-    | EnableAdfsAuthentication | 「*myHTTPRule*」と入力します。 |
+    | 名前 | 「*myHTTPRule*」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
     | Port | 「*80*」と入力します。|
     | バックエンド ポート | 「*80*」と入力します。 |
@@ -112,7 +112,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 
     | Setting | 値 |
     | ------- | ----- |
-    | EnableAdfsAuthentication | 「*myVNet*」と入力します。 |
+    | 名前 | 「*myVNet*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | Subscription | サブスクリプションを選択します。|
     | Resource group | 既存のリソース *[myResourceGroupSLB]* を選択します。 |
@@ -154,7 +154,7 @@ Standard Load Balancer は、バックエンド プール内の Standard IP ア�
 
     | Setting | VM 2| VM 3|
     | ------- | ----- |---|
-    | EnableAdfsAuthentication |  *myVM2* |*myVM3*|
+    | 名前 |  *myVM2* |*myVM3*|
     | 可用性ゾーン | 2 |3|
     |パブリック IP| **Standard** SKU|**Standard** SKU|
     | パブリック IP - 可用性ゾーン| **ゾーン冗長** |**ゾーン冗長**|

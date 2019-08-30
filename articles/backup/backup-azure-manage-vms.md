@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: bfc9d01284bb5623989676afbdeadc1c91c14ab0
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 025052a5005702232eb9eaf255e6aac2c58fec98
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688391"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735570"
 ---
-# <a name="manage-azure-vm-backups"></a>Azure VM のバックアップを管理する
+# <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
 この記事では、[Azure Backup サービス](backup-overview.md)を使用してバックアップされている Azure 仮想マシン (VM) を管理する方法を説明します。 また、コンテナーのダッシュボードで確認できるバックアップ情報の概要も示します。
 

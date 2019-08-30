@@ -11,17 +11,16 @@ ms.assetid: 891c852a-84c0-4940-a61e-ada6e185bf37
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 914efbed2d65468cbbbccb3f62f9c21b52c38e42
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ab269bcd56a5e60fdc8434a58b61163cb8769763
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667693"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082923"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux 仮想マシンの可用性管理
 

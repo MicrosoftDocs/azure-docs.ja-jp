@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d27e36e9bd571aa9c42500451787fd94d4a8a90
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688148"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534709"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -23,7 +23,7 @@ Azure Automation の Update Management ソリューションを使用すると�
 仮想マシンの Update Management は、Azure Automation アカウントから直接有効にすることができます。 Automation アカウントから仮想マシンの Update Management を有効にする方法については、[複数の仮想マシンの更新管理](manage-update-multi.md)に関するページを参照してください。 また、Azure portal の仮想マシン ページから仮想マシンの Update Management を有効にすることもできます。 このシナリオは、[Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) および [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) の仮想マシンに対して使用できます。
 
 > [!NOTE]
-> Update Management ソリューションでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings ] を参照してください。 リージョン マッピングは、Automation アカウントとは別のリージョンの仮想マシンを管理する機能には影響しません。
+> Update Management ソリューションでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[Azure でのワークスペースのマッピング](./how-to/region-mappings.md)に関する記事をご覧ください。 リージョン マッピングは、Automation アカウントとは別のリージョンの仮想マシンを管理する機能には影響しません。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -84,6 +84,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 > [!NOTE]
 > Azure 仮想マシン スケール セットは、Update Management で管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 一度にすべての VM インスタンスを更新しない場合、段階的に更新をスケジュールする必要があります。
+> 「[Azure 以外のマシンの配布準備](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)」の手順に従って、VMSS ノードを追加することができます。
 
 ### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
 
@@ -93,12 +94,18 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 |---------|---------|
 |Windows クライアント     | クライアント オペレーティング システム (Windows 7 や Windows 10 など) はサポートされません。        |
 |Windows Server 2016 Nano Server     | サポートされていません。       |
+|Azure Kubernetes Service ノード | サポートされていません。 「[Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します](../aks/node-updates-kured.md)」で詳しく説明されている修正プログラム適用プロセスを使用します。|
 
 ### <a name="client-requirements"></a>クライアントの要件
 
 #### <a name="windows"></a>Windows
 
 Windows エージェントは、WSUS サーバーと通信するように構成するか、Microsoft Update にアクセスできる必要があります。 System Center Configuration Manager と Update Management を統合して使用できます。 統合シナリオの詳細については、「[System Center Configuration Manager と Update Management の統合](oms-solution-updatemgmt-sccmintegration.md#configuration)」を参照してください。 [Windows エージェント](../azure-monitor/platform/agent-windows.md)が必要です。 Azure 仮想マシンのオンボードを実行すると、このエージェントは自動的にインストールされます。
+
+> [!NOTE]
+> ユーザーは、グループ ポリシーを変更して、システムではなくユーザーだけがコンピューターの再起動を実行できるようにすることができます。 Update Management にユーザーによる手動操作なしでコンピューターを再起動する権限がない場合、管理対象のコンピューターが停止する可能性があります。
+>
+> 詳しくは、「[自動更新のグループ ポリシー設定を構成する](https://docs.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)」をご覧ください。
 
 #### <a name="linux"></a>Linux
 
@@ -244,6 +251,15 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 更新プログラムのデプロイはプログラムで作成することもできます。 REST API を使用して更新プログラムのデプロイを作成する方法については、「[Software Update Configurations - Create](/rest/api/automation/softwareupdateconfigurations/create)」(ソフトウェア更新プログラムの構成 - 作成) をご覧ください。 週単位の更新プログラムのデプロイを作成するために使用できるサンプル Runbook もあります。 この Runbook について詳しくは、「[Create a weekly update deployment for one or more VMs in a resource group](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)」(リソース グループ内の VM に対して週単位の更新プログラムのデプロイを作成する) をご覧ください。
 
+### <a name="maintenance-windows"></a>メンテナンス期間
+
+メンテナンス期間によって、更新プログラムをインストールするために許容される時間を制御します。 メンテナンス期間を指定するときは、次の点を考慮してください。
+
+* メンテナンス期間によって、インストールを試みる更新プログラムの数が制御されます。
+* メンテナンス期間の終了が近づいている場合でも、Update Management では、新しい更新プログラムのインストールは停止されません。
+* メンテナンス期間を超過した場合でも、Update Management では、進行中の更新は終了されません。
+* Windows でメンテナンス期間が超過する理由は、多くの場合、Service Pack の更新プログラムのインストールに時間がかかるためです。
+
 ### <a name="multi-tenant"></a>テナント間の更新プログラムのデプロイ
 
 修正プログラムを適用する必要がある Update Management に報告する別の Azure テナントにマシンが存在する場合は、次の対処法を使用して、スケジュールを設定する必要があります。 スケジュールは、[New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) コマンドレットと `-ForUpdate` スイッチを使用して作成できます。[New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
@@ -354,6 +370,10 @@ Update Management には次のアドレスが明示的に必要です。 この�
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*.azure-automation.us|
+
+Windows コンピューターの場合は、Windows Update で必要なすべてのエンドポイントへのトラフィックも許可する必要があります。  必要なエンドポイントの更新された一覧は、「[HTTP/プロキシに関連する問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)」で確認できます。 ローカル環境に [Windows Update サーバー](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)がある場合は、[WSUS キー](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)で指定されているサーバーへのトラフィックも許可する必要があります。
+
+Red Hat Linux コンピューターで必要なエンドポイントについては、「[RHUI コンテンツ配信サーバーの IP アドレス](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers)」をご覧ください。 他の Linux ディストリビューションについては、プロバイダーのドキュメントをご覧ください。
 
 Hybrid Runbook Worker で必要なポートの詳細については、[ハイブリッド worker ロールのポート](automation-hybrid-runbook-worker.md#hybrid-worker-role)に関するページをご覧ください。
 

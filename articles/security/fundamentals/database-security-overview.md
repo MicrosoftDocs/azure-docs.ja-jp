@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 9053866b76ec1cc409c3f00d0af59bf3761d3936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e5ed60ea59dc8cf19b8f9ca7e96777dbc6980171
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927978"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906056"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -206,7 +206,7 @@ SQL Advanced Threat Protection (ATP) は、データの探索と分類、脆弱�
 
 [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
 
-すべてのサーバーとデータベースのセキュリティを [Security Center](../../security-center/security-center-sql-database.md) で可視化することによって、SQL Database に格納されているデータを保護することができます。 Security Center では、次のことを実行できます。
+すべてのサーバーとデータベースのセキュリティを [Security Center](../../security-center/security-center-alerts-data-services.md) で可視化することによって、SQL Database に格納されているデータを保護することができます。 Security Center では、次のことを実行できます。
 
 - SQL Database の暗号化と監査のポリシーを定義する。
 - 利用しているすべてのサブスクリプションを対象に SQL Database リソースのセキュリティを監視する。

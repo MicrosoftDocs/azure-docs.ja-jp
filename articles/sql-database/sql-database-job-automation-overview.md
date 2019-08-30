@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 677d9b5a8ca837288755ab098fbccd8a5b7ddacd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567856"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935186"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>データベース ジョブを使用して管理タスクを自動化する
 
@@ -44,7 +44,7 @@ Azure SQL Database では、T-SQL クエリを実行してメンテナンス タ
 Azure SQL Database では、次のジョブ スケジュール テクノロジが利用できます。
 
 - **SQL エージェント ジョブ**: 従来から使われている実績のある SQL Server ジョブ スケジューリング コンポーネントです。Managed Instance で利用できます。 SQL エージェント ジョブは、単一のデータベースでは利用できません。
-- **Elastic Database ジョブ**: 1 つまたは多数の Azure SQL データベース上でカスタム ジョブを実行するジョブ スケジューリング サービスです。
+- **Elastic Database ジョブ (プレビュー)** : 1 つまたは多数の Azure SQL データベース上でカスタム ジョブを実行するジョブ スケジューリング サービスです。
 
 SQL エージェント (オンプレミスでも SQL Database Managed Instance の一部としても利用可能) と Database Elastic ジョブ エージェント (Azure SQL データベース内の単一のデータベースと SQL Data Warehouse 内のデータベースで利用可能) の間には、いくつかの点で違いがあります。
 
@@ -158,17 +158,17 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 Managed Instance では、SQL Server で利用できる一部の SQL エージェント機能がサポートされません。
 - SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、マネージド インスタンスではサポートされていません。
-- Managed Instance では現在、エージェントの有効化/無効化がサポートされていません。 SQL エージェントは常時稼動状態となります。
+- Managed Instance では現在、SQL エージェントの有効化と無効化がサポートされていません。 SQL エージェントは常時稼動状態となります。
 - 通知は部分的にサポートされています。
   - ポケットベルはサポートされていません。
   - NetSend はサポートされていません。
-  - アラートはまだサポートされていません。
+  - アラートはサポートされていません。
 - プロキシはサポートされていません。
 - Eventlog はサポートされていません。
 
 SQL Server エージェントについては、「[SQL Server エージェント](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)」をご覧ください。
 
-## <a name="elastic-database-jobs"></a>Elastic Database ジョブ
+## <a name="elastic-database-jobs-preview"></a>Elastic Database ジョブ (プレビュー)
 
 **Elastic Database ジョブ**は、多数のデータベースを対象に T-SQL スクリプトを並列実行できる機能です。一定のスケジュールに従って実行することも、オンデマンドで実行することもできます。
 
@@ -248,7 +248,7 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 ![ターゲット グループの例](media/elastic-jobs-overview/targetgroup-examples2.png)
 
-**例 5** と "**例 6**" は、包含ルールと除外ルールを使用して Azure SQL Server、エラスティック プール、およびデータベースを結合できる高度なシナリオを示しています。<br>
+**例 5** と**例 6** は、包含ルールと除外ルールを使用して Azure SQL Server、エラスティック プール、およびデータベースを結合できる高度なシナリオを示しています。<br>
 **例 7** は、シャード マップ内のシャードをジョブ実行時にも評価できることを示しています。
 
 #### <a name="job"></a>ジョブ

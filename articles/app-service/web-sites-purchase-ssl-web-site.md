@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: e7768eb29caf66fd8f666a9475ac0787826a47e0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7675a22b4b2d8b13524f06f45d6bb805c1e2fad1
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618910"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019129"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -50,10 +50,10 @@ ms.locfileid: "67618910"
 
 | Setting | 説明 |
 |-|-|
-| Name | App Service 証明書のフレンドリ名。 |
-| ネイキッド ドメインのホスト名 | ここでルート ドメインを指定する場合は、ルート ドメインと `www` サブドメインの*両方*をセキュリティで保護する証明書を取得します。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。 |
-| サブスクリプション | Web アプリがホストされているデータ センターです。 |
-| リソース グループ | 証明書が含まれるリソース グループ。 新しいリソース グループを使用するか、App Service アプリと同じリソース グループなどを選択できます。 |
+| EnableAdfsAuthentication | App Service 証明書のフレンドリ名。 |
+| ネイキッド ドメインのホスト名 | ルート ドメインはここで指定します。 発行された証明書によって、ルート ドメインと `www` サブドメインの "*両方*" が保護されます。 発行された証明書の [共通名] フィールドにはルート ドメインが含まれ、[サブジェクトの別名] フィールドには `www` ドメインが含まれています。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。|
+| Subscription | Web アプリがホストされているデータ センターです。 |
+| Resource group | 証明書が含まれるリソース グループ。 新しいリソース グループを使用するか、App Service アプリと同じリソース グループなどを選択できます。 |
 | 証明書 SKU | 作成する証明書の種類 (標準の証明書または[ワイルドカード証明書](https://wikipedia.org/wiki/Wildcard_certificate)) を決定します。 |
 | 法律条項 | クリックして法律条項に同意したことを確認します。 証明書は GoDaddy から取得されます。 |
 
@@ -71,8 +71,8 @@ ms.locfileid: "67618910"
 
 | Setting | 説明 |
 |-|-|
-| Name | 英数字とダッシュで構成される一意の名前。 |
-| リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
+| EnableAdfsAuthentication | 英数字とダッシュで構成される一意の名前。 |
+| Resource group | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
 | Location | App Service アプリと同じ場所を選択します。 |
 | 価格レベル | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |

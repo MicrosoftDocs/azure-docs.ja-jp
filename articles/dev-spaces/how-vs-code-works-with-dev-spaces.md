@@ -9,12 +9,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Visual Studio Code と Azure Dev Spaces が連動するしくみ
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 0d80643b366b6d7313f24e73258056e492eb56fc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7809f0215137b0c473e13143404a031497906ebf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68297865"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725813"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code と Azure Dev Spaces が連動するしくみ
 
@@ -52,9 +52,9 @@ AKS クラスターを作成し、Visual Studio Code の外でクラスターの
 
 Visual Studio Code と Azure Dev Spaces 拡張機能の Azure Dev Spaces との連動は次のクイックスタートで確認できます。
 
-* [Java を使用した開発][quickstart-java]
-* [.NET を使用した開発][quickstart-netcore]
-* [Node.js を使用した開発][quickstart-node]
+* [Visual Studio Code と Java を使用した迅速な反復処理とデバッグ][quickstart-java]
+* [Visual Studio Code と .NET を使用した迅速な反復処理とデバッグ][quickstart-netcore]
+* [Visual Studio Code と Node.js を使用した迅速な反復処理とデバッグ][quickstart-node]
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works.md#prepare-your-code

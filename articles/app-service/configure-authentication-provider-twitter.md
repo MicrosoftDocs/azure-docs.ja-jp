@@ -10,17 +10,16 @@ ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 51a2ac93fd2d863855c820ba147418c5397c2a89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 728eacdcb0ee0d0bee878ff4764b1ca5e430c59c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851559"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088197"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Twitter ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -35,7 +34,7 @@ ms.locfileid: "60851559"
 3. 新しいアプリの **[Name (名前)]** と **[Description (説明)]** を入力します。 **[Website (Web サイト)]** 値にアプリケーションの **URL** を貼り付けます。 次に、 **[Callback URL (コールバック URL)]** に先ほどコピーした**コールバック URL** を貼り付けます。 この URL は、モバイル アプリ ゲートウェイの後にパス */.auth/login/twitter/callback* を追加したフォーマットです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/twitter/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。
 4. ページの下部で、条項を読み、同意します。 **[Create your Twitter application]** をクリックします。 これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 5. **[Settings (設定)]** タブをクリックし、 **[Allow this application to be used to sign in with Twitter (このアプリケーションが Twitter でのサインインに使用されることを許可する)]** チェック ボックスをオンにして、 **[Update Settings (設定の更新)]** をクリックします。
-6. **[Keys and Access Tokens]** タブをクリックします。[Consumer Key (API Key) (コンシューマー キー (API キー))] と **[Consumer secret (API Secret) (コンシューマー シークレット (API シークレット))]** の値を書き留めます。
+6. **[Keys and Access Tokens]** タブをクリックします。 **[Consumer Key (API Key) (コンシューマー キー (API キー))]** と **[Consumer secret (API Secret) (コンシューマー シークレット (API シークレット))]** の値を書き留めます。
    
    > [!NOTE]
    > コンシューマー シークレットは、重要なセキュリティ資格情報です。 このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
@@ -51,6 +50,10 @@ ms.locfileid: "60851559"
    
    App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
 4. (省略可能) Twitter によって認証されたユーザーしかサイトにアクセスできないように制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Twitter]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Twitter にリダイレクトされます。
+
+> [!CAUTION]
+> この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページを必要とするアプリには適切でない場合があります。 このようなアプリケーションの場合は、[ここ](overview-authentication-authorization.md#authentication-flow)で説明しているように、アプリが手動で自身のログインを開始する、 **[匿名要求を許可する (操作不要)]** が望ましいと考えられます。
+
 5. **[Save]** をクリックします。
 
 これで、アプリケーションで認証に Twitter を使用する準備ができました。

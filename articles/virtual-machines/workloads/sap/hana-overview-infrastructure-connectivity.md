@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a1df7406ab4f4d7137d12dd7131a4c26b617cb2
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 4fa0fe072fe98d565ad9d6f947540b7e1b039732
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869214"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101155"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA (L インスタンス) のデプロイ 
 

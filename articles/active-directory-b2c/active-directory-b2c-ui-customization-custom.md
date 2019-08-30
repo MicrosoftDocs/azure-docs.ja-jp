@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a051b0e853b60dfc1f5b6c3453d9ed8361f1748
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438816"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927306"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -52,6 +52,9 @@ ms.locfileid: "67438816"
    ```
 
 2. コピーしたスニペットをテキスト エディターに貼り付け、*customize-ui.html* という名前を付けてファイルを保存します。
+
+> [!NOTE]
+> login.microsoftonline.com を使用すると、セキュリティ上の制限により HTML の form 要素が削除されます。 カスタム HTML コンテンツで HTML の form 要素を使用する場合は、b2clogin.com を使用してください。 他の特典については、[b2clogin.com の使用](b2clogin.md)に関する記事を参照してください。
 
 ## <a name="create-an-azure-blob-storage-account"></a>Azure BLOB ストレージ アカウントを作成する
 

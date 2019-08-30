@@ -4,14 +4,14 @@ description: Azure Migrate についてよく寄せられる質問に対応し�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bf591306220b2c8c1e6c8166686836d96432fc7d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372491"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856275"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -71,7 +71,8 @@ Azure Migrate に送信されるデータの量は、いくつかのパラメー
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>同じアプライアンスを複数の vCenter Server に接続できますか。
 
-はい。1 台の Azure Migrate アプライアンスを使用して複数の vCenter Server を検出できますが、同時には実行できません。 1 つずつ検出を実行する必要があります。
+いいえ。 アプライアンスと vCenter Server との間には一対一のマッピングが存在します。 複数の vCenter Server 上の VM を検出する必要がある場合は、複数のアプライアンスをデプロイする必要があります。 
+
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>マシン サイズを変更しました。 評価を再実行できますか。
 

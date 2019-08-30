@@ -10,17 +10,16 @@ ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b9e910f24503f6bbf86e8ed8cdcb6f422d2490d9
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60832568"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073991"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[Azure portal](https://portal.azure.com) 上で Web アプリ、モバイル バック エンド、API アプリに対する組み込みの監視機能が提供されます。

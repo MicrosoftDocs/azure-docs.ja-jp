@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318190"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016365"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
 
@@ -66,6 +66,6 @@ ms.locfileid: "60318190"
 
 ## <a name="next-steps"></a>次の手順
 
-モビリティ サービスがインストールされたら、Azure portal で、 **[+ レプリケート]** を選択し、これらの VM の保護を開始します。 [VMware VM]\(vmware-azure-enable-replication.md) および[物理サーバー](physical-azure-disaster-recovery.md#enable-replication)でレプリケーションを有効にする方法についてさらに学習します。
+モビリティ サービスがインストールされたら、Azure portal で、 **[+ レプリケート]** を選択し、これらの VM の保護を開始します。 [VMware VM](vmware-azure-enable-replication.md) と[物理サーバー](physical-azure-disaster-recovery.md#enable-replication)のレプリケーションを有効にする方法の詳細を学習します。
 
 

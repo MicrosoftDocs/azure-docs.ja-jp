@@ -10,22 +10,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
+ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 7baa5e4c113e6c21c6123ac7c8399533a7dfb358
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410297"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129033"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure DevTest Labs での仮想マシン (VM) および 環境の作成の失敗に関するトラブルシューティング
 DevTest Labs は、マシン名が無効であるか、ラボ ポリシーに違反する可能性がある場合に警告を表示します。 問題が発生したことを伝えるラボ VM または環境のステータスの隣に、赤色の `X` が表示されることがあります。  この記事では、根本的な問題を検索し、できれば今後の問題を回避するために使用できるいくつかのこつを示します。
 
 ## <a name="portal-notifications"></a>Azure portal の通知
-Azure portal を使用している場合、最初に表示される場所が**通知パネル**です。  **ベルのアイコン**をクリックすることによりメイン コマンド バーで使用できる通知パネルには、ラボ VM または環境の作成が成功したかどうかが表示されます。  失敗した場合、作成エラーに関連付けられているエラー メッセージを参照してください。 多くの場合、問題解決に役立つ追加情報はこの詳細から得られます。 次の例では、仮想マシンの作成は、コアを使い果たしたために失敗しました。 詳細メッセージには、問題を修正し、コア クォータの引き上げを要求する方法が示されています。
+Azure portal を使用している場合、最初に表示される場所が**通知パネル**です。  **ベルのアイコン**をクリックすることによりメイン コマンド バーで使用できる通知パネルには、ラボ VM または環境の作成が成功したかどうかが表示されます。  失敗した場合、作成エラーに関連付けられているエラー メッセージを参照してください。 多くの場合、問題解決に役立つ追加情報はこの詳細から得られます。 次の例では、仮想マシンの作成は、コアを使い果たしたために失敗しました。 詳細メッセージには、問題を修正し、コア クォータの引き上げを要求する方法が示されています。
 
 ![Microsoft Azure portal 通知](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
+
+### <a name="vm-in-corruption-state"></a>破損状態の VM
+ラボ内の VM の状態が **[破損]** の場合、基になる VM が **[仮想マシン]** ページから削除されている可能性があります。ユーザーはこのページに **[仮想マシン]** ページから移動できます ([DevTest Labs] ページからではありません)。 [DevTest Labs] で、ラボから VM を削除してクリーンアップします。 次に、ラボで VM を再作成します。 
+
+![破損状態の VM](./media/troubleshoot-vm-environment-creation-failures/vm-corrupted-state.png)
+
 
 
 ## <a name="activity-logs"></a>アクティビティ ログ

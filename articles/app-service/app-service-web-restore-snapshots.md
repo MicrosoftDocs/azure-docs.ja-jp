@@ -15,12 +15,12 @@ ms.date: 04/04/2018
 ms.author: aelnably
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: ed659e95289665b6ce63ba6961e9f63650b4accf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 4b3b10177b119c9362f807206a915d4b0b367e16
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617537"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639745"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure でスナップショットからアプリケーションを復元する
 この記事では、[Azure App Service](../app-service/overview.md) でスナップショットからアプリを復元する方法について説明します。 アプリのスナップショットの 1 つに基づいて、アプリを以前の状態に復元することができます。 スナップショットのバックアップを有効にする必要はありません。データ復旧の目的で、すべてのアプリのスナップショットが自動的に保存されます。
@@ -30,7 +30,7 @@ ms.locfileid: "67617537"
 - ストレージ サイズの制限がありません。
 - 構成が必要ありません。
 
-スナップショットからの復元は、**Premium** レベル以上で実行されているアプリで利用できます。 アプリのスケーリングについて詳しくは、「 [Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」をご覧ください。
+スナップショットからの復元は、**Premium** レベル以上で実行されているアプリで利用できます。 アプリのスケーリングについて詳しくは、「 [Azure App Service の Web アプリをスケーリングする](manage-scale-up.md)」をご覧ください。
 
 ## <a name="limitations"></a>制限事項
 

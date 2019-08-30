@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 08/09/2019
 ms.author: victorh
-ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314461"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946895"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -29,7 +29,7 @@ Azure DNS ゾーンでは、エイリアス レコード セットとして、�
 
 ## <a name="capabilities"></a>機能
 
-- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。 パブリック IP アドレスが変更されるか削除されると、DNS レコード セットが自動的に変更されます。 正しくない IP アドレスをポイントする未解決の DNS レコードは回避されます。
+- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソース (Standard または Basic) をポイントするエイリアス レコード セットにすることができます。 パブリック IP アドレスが変更されるか削除されると、DNS レコード セットが自動的に変更されます。 正しくない IP アドレスをポイントする未解決の DNS レコードは回避されます。
 
    現在、リソースあたりのエイリアス レコード セット数は 20 に制限されています。
 

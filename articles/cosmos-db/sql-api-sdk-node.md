@@ -8,27 +8,27 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27b548d03e6b05179da744e636a5c887e6b01ad5
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626742"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624676"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Node.js SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node.JS](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |Resource  |Link  |
 |---------|---------|
@@ -39,9 +39,212 @@ ms.locfileid: "60626742"
 | サンプル | [Node.js コード サンプル](sql-api-nodejs-samples.md)
 | 概要チュートリアル | [JavaScript SDK の開始](sql-api-nodejs-get-started.md)
 | Web アプリ チュートリアル | [Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](sql-api-nodejs-application.md)
-| 現在サポートされているプラットフォーム | [Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - SDK バージョン 2.0.0 以上が必要です。<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
+| 現在サポートされているプラットフォーム | [Node.js v12.x](https://nodejs.org/en/blog/release/v12.7.0/) - SDK バージョン 3.x.x<br/>[Node.js v10.x](https://nodejs.org/en/blog/release/v10.6.0/) - SDK バージョン 3.x.x<br/>[Node.js v8.x](https://nodejs.org/en/blog/release/v8.16.0/) - SDK バージョン 3.x.x<br/>[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - SDK バージョン 2.x.x<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)- SDK バージョン 1.x.x<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)- SDK バージョン 1.x.x<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/)- SDK バージョン 1.x.x
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="3.1.0"/>3.1.0</a>
+* 既定の ResponseContinuationTokenLimitInKB を 1kb に設定しました。 既定では、長いヘッダーを避けるために、これを 1kb に制限しています (Node.js にはグローバルなヘッダー サイズ制限があります)。 ユーザーは、このフィールドを設定して長いヘッダーを許可することができます。これは、バックエンドによるクエリ実行の最適化に役立つ場合があります。
+* disableSSLVerification を削除しました。 このオプションには、[#388](https://github.com/Azure/azure-cosmos-js/pull/388) で説明されている新しい代替手段があります
+
+### <a name="3.0.4"/>3.0.4</a>
+* initialHeaders でパーティション キー ヘッダーを明示的に設定できるようにしました
+* package.json#files を使用して、余分なファイルが公開されないようにしました
+* 以前のバージョンの node+v8 でのルーティング マップの並べ替えエラーを修正しました
+* ユーザーが部分再試行オプションを指定したときのバグを修正しました
+
+### <a name="3.0.3"/>3.0.3</a>
+* require で呼び出されたモジュールが Webpack によって解決されないようにしました
+
+### <a name="3.0.2"/>3.0.2</a>
+* RU が集計クエリに対して常に 0 として報告されるという、長い間未処理だったバグを修正しました
+
+### <a name="3.0.0"/>3.0.0</a>
+
+🎉 v3 をリリースしました。 🎉 多くの新機能、バグ修正、いくつかの破壊的変更があります。 このリリースの主な目標:
+
+* 主要な新機能を実装します
+  * DISTINCT クエリ
+  * LIMIT/OFFSET クエリ
+  * ユーザーが取り消し可能な要求
+* すべてのコンテナーに無制限のスケールがある最新の Cosmos REST API バージョンに更新します
+* ブラウザーから Cosmos を簡単に使用できるようにします
+* 新しい Azure JS SDK ガイドラインとの連携を強化します
+
+#### <a name="migration-guide-for-breaking-changes"></a>破壊的変更のための移行ガイド
+##### <a name="improved-client-constructor-options"></a>強化されたクライアント コンストラクター オプション
+
+コンストラクター オプションが簡略化されました。
+
+* masterKey はキーの名前が変更され、最上位レベルに移動されました
+* 以前は options.auth の下にあったプロパティが最上位レベルに移動されました
+
+``` js
+// v2
+const client = new CosmosClient({
+    endpoint: "https://your-database.cosmos.azure.com",
+    auth: {
+        masterKey: "your-primary-key"
+    }
+})
+
+// v3
+const client = new CosmosClient({
+    endpoint: "https://your-database.cosmos.azure.com",
+    key: "your-primary-key"
+})
+```
+
+##### <a name="simplified-queryiterator-api"></a>簡素化された QueryIterator API
+V2 には、クエリからの結果を反復処理または取得する方法が数多くありました。 v3 API を簡略化し、類似または重複する API を削除しようとしました。
+
+* iterator.next() と iterator.current() を削除しました。 fetchNext() を使用して結果のページを取得します。
+* iterator.forEach() を削除しました。 代わりに、非同期反復子を使用します。
+* iterator.executeNext() の名前が iterator.fetchNext() に変更されました
+* iterator.toArray() の名前が iterator.fetchAll() に変更されました
+* ページは、プレーンな JS オブジェクトではなく、適切な応答オブジェクトになりました
+* const container = client.database(dbId).container(containerId)
+
+``` js
+// v2
+container.items.query('SELECT * from c').toArray()
+container.items.query('SELECT * from c').executeNext()
+container.items.query('SELECT * from c').forEach(({ body: item }) => { console.log(item.id) })
+
+// v3
+container.items.query('SELECT * from c').fetchAll()
+container.items.query('SELECT * from c').fetchNext()
+for await(const { result: item } in client.databases.readAll().getAsyncIterator()) {
+    console.log(item.id)
+}
+```
+
+##### <a name="fixed-containers-are-now-partitioned"></a>パーティション分割されるようになった固定コンテナー
+Cosmos サービスでは、以前に固定コンテナーとして作成されたものも含め、すべてのコンテナー上でパーティション キーがサポートされるようになりました。 v3 SDK は、この変更を実装する最新の API バージョンに更新されますが、破壊的ではありません。 操作用のパーティション キーを指定しない場合、既定では、既存のすべてのコンテナーとドキュメントを操作するシステム キーが使用されます。
+
+##### <a name="upsert-removed-for-stored-procedures"></a>ストアド プロシージャの upsert の削除
+以前は、パーティション分割されていないコレクションに対して upsert が許可されていましたが、API バージョンを更新すると、すべてのコレクションがパーティション分割されるので、これを完全に削除しました。
+
+##### <a name="item-reads-will-not-throw-on-404"></a>項目の読み取りで 404 がスローされない
+const container = client.database(dbId).container(containerId)
+
+``` js
+// v2
+try {
+    container.items.read(id, undefined)
+} catch (e) {
+    if (e.code === 404) { console.log('item not found') }
+}
+
+// v3
+const { result: item }  = container.items.read(id, undefined)
+if (item === undefined) { console.log('item not found') }
+```
+
+##### <a name="default-multi-region-write"></a>既定のマルチリージョンの書き込み
+SDK では、Cosmos 構成でサポートされている場合に、既定で複数のリージョンに書き込まれるようになりました。 これは、以前はオプトイン動作でした。
+
+##### <a name="proper-error-objects"></a>適切なエラー オブジェクト
+失敗した要求では、適切なエラーまたはエラーのサブクラスがスローされるようになりました。 以前は、プレーン JS オブジェクトがスローされていました。
+
+#### <a name="new-features"></a>新機能
+##### <a name="user-cancelable-requests"></a>ユーザーが取り消し可能な要求
+内部でのフェッチへの移行により、ブラウザーの AbortController API を使用して、ユーザーが取り消し可能な操作をサポートできます。 複数の要求が進行中の可能性がある操作 (クロス パーティション クエリなど) の場合、操作に対するすべての要求が取り消されます。 最新ブラウザーのユーザーには、既に AbortController があります。 Node.js ユーザーはポリフィル ライブラリを使用する必要があります
+
+``` js
+ const controller = new AbortController()
+ const {result: item} = await items.query('SELECT * from c', { abortSignal: controller.signal});
+ controller.abort()
+```
+
+##### <a name="set-throughput-as-part-of-dbcontainer-create-operation"></a>db/コンテナー作成操作の一環としてのスループットの設定
+``` js
+const { database }  = client.databases.create({ id: 'my-database', throughput: 10000 })
+database.containers.create({ id: 'my-container', throughput: 10000 })
+```
+
+##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
+ヘッダー トークンの生成が新しいライブラリ @azure/cosmos-sign に分割されました。 Cosmos REST API を直接呼び出すすべてのユーザーは、これを使用して、内部の @azure/cosmos を呼び出したのと同じコードを使用してヘッダーに署名できます。
+
+##### <a name="uuid-for-generated-ids"></a>生成された ID の UUID
+v2 には、項目 ID を生成するためのカスタム コードがありました。 既知の管理されたコミュニティ ライブラリ uuid に切り替えました。
+
+##### <a name="connection-strings"></a>Connection strings
+Azure portal からコピーした接続文字列を渡すことができるようになりました。
+
+``` js
+const client = new CosmosClient("AccountEndpoint=https://test-account.documents.azure.com:443/;AccountKey=c213asdasdefgdfgrtweaYPpgoeCsHbpRTHhxuMsTaw==;")
+Add DISTINCT and LIMIT/OFFSET queries (#306)
+ const { results } = await items.query('SELECT DISTINCT VALUE r.name FROM ROOT').fetchAll()
+ const { results } = await items.query('SELECT * FROM root r OFFSET 1 LIMIT 2').fetchAll()
+```
+
+#### <a name="improved-browser-experience"></a>ブラウザー エクスペリエンスの向上
+ブラウザー内で v2 SDK を使用することはできましたが、理想的なエクスペリエンスではありませんでした。 いくつかの node.js 組み込みライブラリをポリフィルし、Webpack やパーセルなどのバンドラーを使用する必要がありました。 v3 SDK を使用すると、ブラウザー ユーザーがすぐに利用できるエクスペリエンスが大幅に向上します。
+
+* 要求の内部構造を fetch に置き換えました (#245)
+* バッファーの使用を削除しました (#330)
+* ユニバーサル パッケージ/API を優先してノードの組み込みの使用法を削除しました (#328)
+* node-abort-controller に切り替えました (#294)
+
+#### <a name="bug-fixes"></a>バグの修正
+* オファーの読み取りを修正し、オファーのテストを戻しました (#224)
+* EnableEndpointDiscovery を修正しました (#207)
+* ページ分割された結果で不足している RU を修正しました (#360)
+* SQL クエリ パラメーターの種類を拡張しました (#346)
+* ttl を ItemDefinition に追加しました (#341)
+* CP クエリ メトリックを修正しました (#311)
+* activityId を FeedResponse に追加しました (#293)
+* _ts の型を文字列から数値に切り替えました (#252)(#295)
+* 要求の課金の集計を修正しました (#289)
+* 空の文字列パーティション キーを許可しました (#277)
+* 競合するクエリの種類に文字列を追加しました (#237)
+* uniqueKeyPolicy をコンテナーに追加しました (#234)
+
+#### <a name="engineering-systems"></a>エンジニアリング システム
+常に最も目立つ変更であるとは限りませんが、チームがより優れたコードをより迅速に提供するのに役立ちます。
+
+* 運用ビルドのロールアップを使用しました (#104)
+* Typescript 3.5 に更新しました (#327)
+* TS プロジェクト参照に変換しました。 テスト フォルダーを抽出しました (#270)
+* noUnusedLocals と noUnusedParameters を有効にしました (#275)
+* CI ビルドのための Azure Pipelines YAML (#298)
+
+### <a name="2.1.5"/>2.1.5</a>
+* コードの変更はありません。 2\.1.4 パッケージに余分なファイルが含まれていた問題を修正しました。
+
+### <a name="2.1.4"/>2.1.4</a>
+* 再試行ポリシー内のリージョン内フェールオーバーを修正しました
+* ChangeFeed hasMoreResults プロパティを修正しました
+* 開発の依存関係を更新しました
+* PolicheckExclusions.txt を追加しました
+
+### <a name="2.1.3"/>2.1.3</a>
+* _ts の型を文字列から数値に切り替えました
+* 既定のインデックス作成テストを修正しました
+* uniqueKeyPolicy を v2 にバックポートしました
+* デモとデモのデバッグを修正しました
+
+### <a name="2.1.2"/>2.1.2</a>
+* v3 ブランチからオファーの修正をバックポートしました
+* executeNext() 型シグネチャのバグを修正しました
+* 入力ミスを修正しました
+
+### <a name="2.1.1"/>2.1.1</a>
+* ビルドを再構築中です。 ビルド時に SDK のバージョンをプルできるようにします。
+
+### <a name="2.1.0"/>2.1.0</a>
+#### <a name="new-features"></a>新機能
+* ChangeFeed サポートを追加しました (#196)
+* インデックス作成用の MultiPolygon データ型を追加しました (#191)
+* masterKey (#202) のエイリアスとしてコンストラクターに "key" プロパティを追加しました
+
+#### <a name="fixes"></a>修正
+* next() が反復子で間違った値を返すバグを修正しました
+
+#### <a name="engineering-improvements"></a>エンジニアリングの強化
+* Typescript 消費の統合テストを追加しました (#199)
+* GitHub からの直接インストールを有効にしました (#194)
 
 ### <a name="2.0.5"/>2.0.5</a>
 * エージェントの種類ノードのインターフェイスを追加しました。 Typescript ユーザーは @types/node を依存関係としてインストールする必要がなくなりました
@@ -212,7 +415,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2018 年 8 月 2 日 |--- |
 | [1.14.4](#1.14.4) |2018 年 5 月 3 日 |--- |

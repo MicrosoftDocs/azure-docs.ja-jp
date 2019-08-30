@@ -2,15 +2,15 @@
 documentType: LandingData
 title: Anomaly Detector API のドキュメント
 metadata:
-  title: Anomaly Detector API - チュートリアル、クイック スタート、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  title: Anomaly Detector API - チュートリアル、クイックスタート、API リファレンス
+  titleSuffix: Azure Cognitive Services
   description: Anomaly Detector API を使用すると、データを経時的に監視し、機械学習により異常を検出できます。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
   services: cognitive-services
   author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: anomaly-detector
   ms.topic: landing-page
   ms.date: 03/26/2019
   ms.author: aahi

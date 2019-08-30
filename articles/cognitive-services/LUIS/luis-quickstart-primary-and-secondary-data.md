@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560334"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648604"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>チュートリアル:Simple エンティティとフレーズ リストを使用して名前を抽出する
 
@@ -75,11 +75,11 @@ Simple エンティティがこのデータの種類に適しているのは次�
 
 この LUIS アプリには、複数の意図にジョブ名があります。 すべての意図の発話で、これらの単語にラベルを付けることで、ジョブ自体と、そのジョブ名が発話のどこに出現するかを LUIS に認識させることができます。
 
-発話例でエンティティがマークされたら、フレーズ リストを追加して、Simple エンティティのシグナルを強化することが重要です。 フレーズ リストは正確な一致として使用**されず**、期待するすべての可能な値である必要はありません。 
+発話例でエンティティがマークされたら、フレーズ リストを追加して、Simple エンティティのシグナルを強化することが重要です。 フレーズ リストは正確な一致として使用 **されず**、期待するすべての可能な値である必要はありません。 
 
 ## <a name="import-example-app"></a>サンプル アプリをインポートする
 
-1.  意図のチュートリアルから [app JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json)をダウンロードして保存します。
+1.  意図のチュートリアルから [app JSON ファイル ](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) をダウンロードして保存します。
 
 2. JSON を新しいアプリにインポートします。
 
@@ -93,7 +93,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
 
 1. 発話 `I want to apply for the new accounting job` で、`accounting` を選択し、ポップアップ メニューの一番上のフィールドに「`Job`」と入力して、 **[新しいエンティティの作成]** を選択します。 
 
-    [![エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![ エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット ](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png " エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット ")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 1. ポップアップ ウィンドウでエンティティ名と型を確認し、 **[Done]\(完了\)**  を選択します。
 
@@ -101,7 +101,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
 
 1. 残りの発話で、ジョブに関連する単語を **Job** エンティティでマークします。これを行うには、単語またはフレーズを選択してから、ポップアップ メニューで **Job** を選択します。 
 
-    [![ジョブ エンティティのラベル付けが強調表示されたLUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "ジョブ エンティティのラベル付けが強調表示されたLUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![ ジョブ エンティティのラベル付けが強調表示された LUIS のスクリーンショット ](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png " ジョブ エンティティのラベル付けが強調表示された LUIS のスクリーンショット ")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
 ## <a name="add-more-example-utterances-and-mark-entity"></a>発話例をさらに追加してエンティティにマークを付ける
@@ -151,7 +151,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. アドレスの URL の末尾に移動し、「`Here is my c.v. for the engineering job`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`ApplyForJob` 発話が返される必要があります。
+2. アドレスの URL の末尾に移動し、「`Here is my c.v. for the engineering job`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の **クエリ** です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`ApplyForJob` 発話が返される必要があります。
 
     ```json
     {
@@ -231,15 +231,15 @@ Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://gi
 
 1. 新しいフレーズ リスト `JobNames` に名前を付けて、そのリストを jobs-phrase-list.csv から **[値]** テキスト ボックスにコピーします。
 
-    [![新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![ 新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット ](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png " 新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット ")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     フレーズ リストに単語をさらに追加したい場合は、 **[推奨]** を選択してから、新しい **[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
 
-    これらの値は、すべてがジョブのシノニムとして扱われる必要があるため、 **[These values are interchangeable]\(これらの値は交換可能\)** をオンのままにしておきます。 交換可能と交換不能の[フレーズ リストの概念](luis-concept-feature.md#how-to-use-phrase-lists)について学習してください。
+    これらの値は、すべてがジョブのシノニムとして扱われる必要があるため、 **[These values are interchangeable]\(これらの値は交換可能\)** をオンのままにしておきます。 交換可能と交換不能の [ フレーズ リストの概念 ](luis-concept-feature.md#how-to-use-phrase-lists) について学習してください。
 
 1. **[完了]** を選択して、フレーズ リストをアクティブにします。
 
-    [![フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![ フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット ](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png " フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット ")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 1. フレーズ リストが使用されるように、アプリを再度トレーニングして発行します。
 
@@ -286,12 +286,12 @@ Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://gi
 
 ## <a name="related-information"></a>関連情報
 
-* [意図のチュートリアル (エンティティなし)](luis-quickstart-intents-only.md)
-* [Simple エンティティ](luis-concept-entity-types.md)の概念に関する情報
-* [フレーズ リスト](luis-concept-feature.md)の概念に関する情報
-* [トレーニング方法](luis-how-to-train.md)
-* [発行方法](luis-how-to-publish-app.md)
-* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
+* [ 意図のチュートリアル (エンティティなし)](luis-quickstart-intents-only.md)
+* [Simple エンティティ ](luis-concept-entity-types.md) の概念に関する情報
+* [ フレーズ リスト ](luis-concept-feature.md) の概念に関する情報
+* [ トレーニング方法 ](luis-how-to-train.md)
+* [ 発行方法 ](luis-how-to-publish-app.md)
+* [LUIS ポータルでのテスト方法 ](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>次の手順
@@ -299,4 +299,4 @@ Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://gi
 このチュートリアルでは、Human Resources アプリで、機械学習された Simple エンティティを使用して発話からジョブ名を見つけます。 ジョブ名はさまざまな単語または語句である可能性があるため、ジョブ名の語を強化するためのフレーズ リストがアプリに必要でした。 
 
 > [!div class="nextstepaction"]
-> [事前構築済みの KeyPhrase エンティティを追加する](luis-quickstart-intent-and-key-phrase.md)
+> [ 事前構築済みの KeyPhrase エンティティを追加する ](luis-quickstart-intent-and-key-phrase.md)

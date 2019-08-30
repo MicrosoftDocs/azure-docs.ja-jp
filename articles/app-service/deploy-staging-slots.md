@@ -11,16 +11,15 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: cephalin
-ms.openlocfilehash: fd488d475e24bc1aeebfa49b9d81b04ebae449ff
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445596"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070592"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -102,38 +101,8 @@ ms.locfileid: "67445596"
 スワップ操作のどの時点でも、スワップされるアプリを初期化するすべての作業はソース スロットで発生しています。 ソース スロットが準備され、ウォームアップされている間、スワップがどこで成功するか失敗するかに関わらず、ターゲット スロットはオンライン状態に留まります。 ステージング スロットと運用スロットを入れ換える場合は常に、運用スロットがターゲット スロットであるようにします。 こうすることで、スワップ操作が運用アプリに影響を及ぼしません。
 
 ### <a name="which-settings-are-swapped"></a>スワップされる設定
-別のデプロイ スロットから構成を複製する場合、複製された構成を編集することができます。 構成要素には、スワップを経ても内容が反映される (スロット固有でない) ものもあれば、スワップ後に同じスロットに残されている (スロット固有の) ものもあります。 次の一覧では、スロットのスワップ時に変更される設定を示します。
 
-**スワップされる設定**:
-
-* 一般設定 (フレームワーク バージョン、32/64 ビット、Web ソケットなど)
-* アプリ設定 (スロット固有として構成可能)
-* 接続文字列 (スロット固有として構成可能)
-* ハンドラー マッピング
-* 監視と診断の設定
-* パブリック証明書
-* Web ジョブ コンテンツ
-* ハイブリッド接続 *
-* Virtual Network 統合 *
-* サービス エンドポイント *
-* Azure Content Delivery Network *
-
-アスタリスク (*) 記号付きの機能は、スロット固有とされる予定です。 
-
-**スワップされない設定**:
-
-* 発行エンドポイント
-* カスタム ドメイン名
-* プライベート証明書と SSL のバインド
-* スケールの設定
-* Web ジョブ スケジューラ
-* IP 制限
-* 常時接続
-* プロトコル設定 (HTTPS、TLS バージョン、クライアント証明書)
-* 診断ログの設定
-* クロスオリジン リソース共有 (CORS)
-
-<!-- VNET and hybrid connections not yet sticky to slot -->
+[!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
 特定のスロットに固有の (スワップされない) アプリ設定や接続文字列を構成するには、そのスロットの **[構成]** ページに移動します。 設定を追加または編集し、 **[deployment slot setting]\(スロット設定のデプロイ\)** を選択します。 このチェック ボックスを選択して、設定がスワップ可能ではないことを App Service に指示します。 
 

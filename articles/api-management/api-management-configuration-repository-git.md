@@ -9,16 +9,15 @@ editor: mattfarm
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: c371333dcc7db0b60ffa5f94d6e2d55ae500a4f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4ee4ca2ede2e0a2d6d1af906cc34051c76353bd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241181"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073751"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -165,7 +164,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 | --- | --- |
 | json |各エンティティの構成情報 |
 | html |エンティティについての説明 (多くの場合、開発者ポータルに表示されます) |
-| Xml |ポリシー ステートメント |
+| xml |ポリシー ステートメント |
 | css |開発者ポータルのカスタマイズのスタイル シート |
 
 これらのファイルは、ローカル ファイル システム上で作成、削除、編集、管理できます。また、変更は API Management サービス インスタンスにデプロイして戻すことができます。

@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Cassandra API と Java - Azure Cosmos DB'
+title: Cassandra API と Java を使用してアプリを作成する - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure Portal と Java でプロファイル アプリケーションを作成する方法を示します
 ms.service: cosmos-db
 author: SnehaGunda
@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 968c43ed78c59e5c1f147aaaa5bb33484d95c7a9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-august2019
+ms.openlocfilehash: 7a76ed943a9c3f7312653d1ea4d714e4c02a5294
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325472"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615615"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>クイック スタート:Java SDK と Azure Cosmos DB を使用して Cassandra アプリをビルドする
 
@@ -203,7 +204,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     ターミナル ウィンドウに、キースペースとテーブルが作成されたという通知が表示されます。 その後、テーブル内のすべてのユーザーが選択されて戻されます。次に、出力が表示され、ID で行が選択されて値が表示されます。  
 
-    Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。
+    **Ctrl + C** キーを選択してプログラムの実行を停止し、コンソール ウィンドウを閉じます。
 
 4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
@@ -219,7 +220,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、データ エクスプローラーを使って Azure Cosmos DB アカウント、Cassandra データベース、コンテナーを作成する方法について説明しました。また、同じことを行うアプリをプログラムから実行する方法についても説明しました。 これで、Azure Cosmos DB コンテナーに追加のデータをインポートできます。 
+このクイックスタートでは、データ エクスプローラーを使って Azure Cosmos DB アカウント、Cassandra データベース、コンテナーを作成する方法について説明しました。また、同じことを行うアプリをプログラムから実行する方法についても説明しました。 これで、Azure Cosmos コンテナーに追加のデータをインポートできるようになりました。 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB への Cassandra データのインポート](cassandra-import-data.md)

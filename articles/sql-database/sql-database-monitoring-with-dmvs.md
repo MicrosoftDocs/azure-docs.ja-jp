@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 5bddcb89d26566bd2024cbde086b6e35ddaf94ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567187"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881554"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用して Azure SQL Database のパフォーマンスを監視する
 
@@ -28,7 +28,7 @@ SQL Database は、次に示す 3 つの動的管理ビューを一部サポー�
 - 実行関連の動的管理ビュー。
 - トランザクション関連の動的管理ビュー。
 
-動的管理ビューの詳細については、SQL Server オンライン ブックの「 [動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) 」を参照してください。
+動的管理ビューの詳細については、SQL Server オンライン ブックの「 [動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) 」を参照してください。 
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -334,7 +334,7 @@ ORDER BY start_time ASC;
 
 上位の待機の種類が `RESOURCE_SEMAHPORE` であり、なおかつ高 CPU 使用率の問題がない場合は、メモリ許可待機に関する問題が発生している可能性があります。
 
-### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>`RESOURCE_SEMAHPORE` 待機が上位の待機であるかどうかの確認
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>`RESOURCE_SEMAHPORE` 待機が上位の待機であるかどうかの確認
 
 `RESOURCE_SEMAHPORE` 待機が上位の待機であるかどうかを確認するには、次のクエリを使用します
 
@@ -512,7 +512,7 @@ WHERE c.session_id = @@SPID;
 - [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) ビューは、すべての SQL データベースで使用できます。 **sys.dm_db_resource_stats** ビューには、サービス レベルに関連した最近のリソース使用率データが表示されます。 CPU、データ IO、ログ書き込み、メモリの平均 (%) が 15 秒ごとに記録され、1 時間保持されます。
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 その他のクエリについては、[sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) の例を参照してください。
 
-### <a name="sysresourcestats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 **master** データベースの [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) ビューには、特定のサービス レベルとコンピューティング サイズで SQL データベースのパフォーマンス監視に役立つ追加情報があります。 データは 5 分ごとに集められ、約 14 日間保持されます。 このビューは、過去に SQL データベースでリソースがどのように使用されたかを長期にわたり分析する際に役立ちます。
 

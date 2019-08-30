@@ -3,17 +3,17 @@ title: Azure IoT Central に対するデバイスの接続文字列を生成す�
 description: デバイスの開発者は、IoT Central アプリケーションに接続する必要のあるデバイスのための接続文字列を生成する方法を知る必要があります。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f302cbfa7152ae30be434f560c0c39056d40f9f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97c0332656b75c3c8d0cddecb41c7a15ac2f218c
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60885650"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019788"
 ---
 # <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>Azure IoT Central アプリケーションに接続するためのデバイスの接続文字列を生成する
 

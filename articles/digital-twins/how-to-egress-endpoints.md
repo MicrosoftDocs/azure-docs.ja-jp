@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 08/12/2019
 ms.author: alinast
-ms.openlocfilehash: 478fe1859dd9067e8097df0384657793602c1378
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071456"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013938"
 ---
 # <a name="egress-and-endpoints"></a>エグレスとエンドポイント
 
@@ -246,7 +246,7 @@ Event Grid イベント スキーマの詳細については、
 >[!IMPORTANT]
 > **eventTypes** 属性に注意してください。 これはエンドポイントによって処理されるイベントの種類を定義するため、ルーティングを決定します。
 
-認証済みの HTTP POST 要求
+認証済みの HTTP POST 要求:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints

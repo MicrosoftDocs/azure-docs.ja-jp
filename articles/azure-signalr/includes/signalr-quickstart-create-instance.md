@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 4e8bdc63daa7450a88c2fcf4b7e878e18cea260d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ac77f0b6a1d90fd78db64618c1e03ade198a67c0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181543"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882136"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service のインスタンスを作成する
 
@@ -34,6 +34,7 @@ ms.locfileid: "67181543"
     | **Location** | 米国西部 | 近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
     | **[価格レベル]** | 無料 | Azure SignalR Service を無料試用します。 |
     | **[ユニット数]** |  適用不可 | ユニット数は、SignalR Service インスタンスで受け付けることができる接続の数を指定します。 Standard レベルでのみ構成可能です。 |
+    | **サービス モード** |  サーバーレス | Azure Functions または REST API で使用するため。 |
 
     ![SignalR Service の作成](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 

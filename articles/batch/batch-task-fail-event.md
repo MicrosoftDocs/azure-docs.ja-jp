@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
+ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 68c57fbf510d923c4c87bc180a935965a511dc26
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0a96bbbd9166d501e6824a8875e9505a4a715e8b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322915"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094409"
 ---
 # <a name="task-fail-event"></a>タスク失敗イベント
 

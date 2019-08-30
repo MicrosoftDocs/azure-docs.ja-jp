@@ -11,16 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 289b05a2c50a2b4af50eb2114515a49bb653cf1a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736583"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742386"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
-それぞれの Front Door 環境では、各バックエンドの正常性を確認するために、構成されている各バックエンドに合成 HTTP/HTTPS 要求を定期的に送信します。 Front Door は、これらのプローブからの応答を使用して、実際のクライアント要求のルーティング先として "最適な" バックエンドを決定します。
+それぞれの Front Door 環境では、各バックエンドの正常性を確認するために、構成されている各バックエンドに合成 HTTP/HTTPS 要求を定期的に送信します。 Front Door は、これらのプローブからの応答を使用して、実際のクライアント要求のルーティング先として "最適な" バックエンドを決定します。 Front Door は世界中に多くのエッジ環境があるので、バックエンドに対する正常性プローブ要求の量は、1 秒あたり複数の要求に達することがあり、構成された正常性プローブ頻度によって異なります。 
+
 
 
 ## <a name="supported-protocols"></a>サポートされるプロトコル

@@ -42,7 +42,7 @@ ms.locfileid: "67807401"
 
 2. ページで、すべてのフィールドをクリアしてから、次の値を選択します。
 
-   | EnableAdfsAuthentication | 値 |
+   | 名前 | 値 |
    | --- | --- |
    | Filter Year |2019 |
    | Filter Period |January |

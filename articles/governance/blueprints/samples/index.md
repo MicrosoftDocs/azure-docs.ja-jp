@@ -5,14 +5,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 06/26/2019
+ms.date: 08/20/2019
 ms.author: dacoulte
-ms.openlocfilehash: e1bafdaa2883afb44aa3c609c0ccba0ce9d0a4ab
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dbfecdc4f7545746694fbd0996d3281395ad47df
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934162"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013014"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -22,14 +23,27 @@ ms.locfileid: "68934162"
 
 |  |  |
 |---------|---------|
-|[IRS 1075](./irs-1075/index.md)| IRS 1075 に準拠するための規定を提供します。|
+| [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| CIS Microsoft Azure Foundations Benchmark の推奨事項に準拠する際に役立つ一連のポリシーを提供します。 |
+| [IRS 1075](./irs-1075/index.md)| IRS 1075 に準拠するための規定を提供します。|
 | [ISO 27001](./iso27001/index.md) | ISO 27001 に準拠するための規定を提供します。 |
 | [ISO 27001 共有サービス](./iso27001-shared/index.md) | ISO 27001 構成証明に役立つ一連の準拠インフラストラクチャ パターンおよびポリシー ガードレールを提供します。 |
 | [ISO 27001 App Service Environment/SQL Database ワークロード](./iso27001-ase-sql-workload/index.md) | [ISO 27001 共有サービス](./iso27001-shared/index.md) ブルー プリントのサンプルへの追加のインフラストラクチャを提供します。 |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | NIST SP 800-53 R4 に準拠するための規定を提供します。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | PCI-DSS v3.2.1 へのコンプライアンスに役立つ一連のポリシーを提供します。 |
 | [UK OFFICIAL および UK NHS のガバナンス](./ukofficial/index.md) | UK OFFICIAL および UK NHS の構成証明に役立つ一連の準拠インフラストラクチャ パターンおよびポリシー ガードレールを提供します。 |
+| [CAF 基盤](./caf-foundation/index.md) | [Microsoft Cloud Adoption Framework for Azure (CAF)](/azure/architecture/cloud-adoption/governance/journeys/index) と連携して、クラウド資産の管理に役立つ一連のコントロールを提供します。 |
+| [CAF 移行ランディング ゾーン](./caf-migrate-landing-zone/index.md) | [Microsoft Cloud Adoption Framework for Azure (CAF)](/azure/architecture/cloud-adoption/migrate/index) と連携して、最初のワークロードの移行の設定とクラウド資産の管理に役立つ一連のコントロールを提供します。 |
 
+## <a name="samples-strategy"></a>サンプルの戦略
+
+![ブループリント サンプルの戦略](../media/blueprint-samples-strategy.png)
+
+CAF 基盤ブループリントと CAF 移行ランディング ゾーン ブループリントは、オンプレミスの資産またはワークロードを Azure に移行させるための既存のクリーンな単一サブスクリプションが顧客側で準備されていることを前提としています
+(上の図の領域 A および B)。  
+
+サンプル ブループリントを繰り返し使ってみて、顧客が適用するカスタマイズのパターンを探すことができます。 金融サービスや eコマースなどの業界に特有のブループリントにあらかじめ取り組むこともできます (領域 B の最上位)。 同様に、複数のサブスクリプション、高可用性、リージョン間リソース、既存のサブスクリプションとリソースに対するコントロールを実装しているお客様など、アーキテクチャに関する複雑な考慮事項を前提としたブループリントの構築も想定しています (領域 C および D)。
+
+コンプライアンス要件が高く、アーキテクチャの複雑性も高い顧客シナリオに対応したサンプル ブループリントをご用意しています (上の図の領域 E)。 上の領域 F は、顧客およびパートナーがサンプル ブループリントをカスタマイズして活用し、独自のニーズに対応する領域を示しています。
 
 ## <a name="next-steps"></a>次の手順
 

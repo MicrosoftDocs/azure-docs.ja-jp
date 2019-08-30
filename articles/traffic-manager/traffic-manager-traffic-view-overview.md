@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 39d6090b14a16f505413154df2a78d42b3fb3f3c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333702"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035452"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager の Traffic View
 
@@ -44,6 +44,8 @@ Traffic View は、この機能が有効になっているプロファイルで�
 ## <a name="visual-overview"></a>視覚的な概要
 
 Traffic Manager のページで **[トラフィック ビュー]** セクションに移動すると、地理的マップにトラフィック ビューの詳細情報がオーバーレイ表示されています。 このマップは、ユーザー ベースと、Traffic Manager プロファイルのエンドポイントに関する情報を提供しています。
+
+![Traffic Manager トラフィック ビューの地理的ビュー][1]
 
 ### <a name="user-base-information"></a>ユーザー ベースの情報
 
@@ -94,3 +96,5 @@ Traffic View を使用する場合は、提示される洞察の作成に使用�
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
 - [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
 
+<!--Image references-->
+[1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

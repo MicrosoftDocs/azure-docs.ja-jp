@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eaaeba8a36bcba8134d605889185fb8827dd05c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128102"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851186"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 
@@ -372,7 +372,7 @@ azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] �
 
 | アプリ設定 | azureMobile.js setting | 説明 | 有効な値 |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |アプリの名前 |string |
+| **MS_MobileAppName** |名前 |アプリの名前 |string |
 | **MS_MobileLoggingLevel** |logging.level |ログ記録するメッセージの最小ログ レベル |error、warning、info、verbose、debug、silly |
 | **MS_DebugMode** |debug |デバッグ モードを有効または無効にします |true、false |
 | **MS_TableSchema** |data.schema |SQL テーブルの既定のスキーマ名 |string (既定: dbo) |
@@ -891,7 +891,7 @@ api.get.access = 'authenticated';
 module.exports = api;
 ```
 
-## <a name="Debugging"></a>デバッグ、Easy Tables、Easy API
+## <a name="Debugging"></a>デバッグ
 
 ### <a name="howto-diagnostic-logs"></a>Mobile Apps をデバッグ、診断、およびトラブルシューティングする
 
@@ -903,47 +903,6 @@ Node.js Mobile Apps バックエンドのトラブルシューティングを開
 * [Visual Studio での Azure App Service のトラブルシューティング]
 
 Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。 Mobile Apps Node.js SDK は、内部で診断ログに [Winston] を使用します。 デバッグ モードを有効にするか、[Azure Portal] で `MS_DebugMode` アプリ設定を true に設定すると、ログは自動的に有効になります。 生成されたログは、[Azure Portal] の診断ログに表示されます。
-
-### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Azure Portal で Easy Tables を使用する
-
-[テーブルの簡単操作] を使用すると、ポータル内でテーブルをすぐに作成して操作できます。 CSV 形式で、Easy Tables にデータセットをアップロードできます。 Mobile Apps バックエンドのシステム プロパティ名と競合するプロパティ名 (お使いの CSV データセット内) は使用できないことに注意してください。 システム プロパティ名は次のとおりです。
-* createdAt
-* updatedAt
-* deleted
-* version
-
-App Service Editor を使用してテーブルの操作を編集することもできます。 バックエンド サイトの設定で **[Easy Tables]** を選択すると、テーブルを追加、変更、または削除できます。 さらに、テーブル内のデータを表示することもできます。
-
-![Work with Easy Tables](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
-
-テーブル用のコマンド バーには、次のコマンドが用意されています。
-
-* **[アクセス許可の変更]** :テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。
- 匿名アクセスを許可するオプション、認証を要求するオプション、操作に対するすべてのアクセスを無効にするオプションがあります。
-* **[スクリプトの編集]** :テーブルのスクリプト ファイルは、App Service Editor で開きます。
-* **[スキーマの管理]** :列の追加または削除やテーブルのインデックスの変更を実行します。
-* **[テーブルのクリア]** :既存のテーブルですべてのデータ行が削除されるように切り捨てます。ただし、スキーマは変更されません。
-* **[行の削除]** :個々のデータ行を削除します。
-* **[ストリーミング ログの表示]** :サイトのストリーミング ログ サービスに接続します。
-
-### <a name="work-easy-apis"></a>Azure Portal で [API の簡単操作] を使用する
-
-[API の簡単操作] を使用すると、ポータル内でカスタム API をすぐに作成して操作できます。 App Service Editor を使用して、API のスクリプトを編集できます。
-
-バックエンド サイトの設定で **[API の簡単操作]** を選択すると、カスタム API エンドポイントを追加、変更、または削除できます。
-
-![Work with Easy APIs](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
-
-ポータルでは、HTTP アクションのアクセス許可を変更できます。また、App Service Editor で API スクリプト ファイルを編集したり、ストリーミング ログを表示したりできます。
-
-### <a name="online-editor"></a>App Service Editor でコードを編集する
-
-Azure Portal では、ローカル コンピューターにプロジェクトをダウンロードする必要なく、App Service Editor を使用して Node.js バックエンド スクリプト ファイルを編集できます。 オンライン エディターでスクリプト ファイルを編集するには、次の手順に従います。
-
-1. Mobile Apps バックエンドのウィンドウで、 **[すべての設定]** を選択し、 **[Easy Tables]** または **[API の簡単操作]** を選択します。 テーブルまたは API を選択し、 **[スクリプトの編集]** を選択します。 App Service Editor でスクリプト ファイルが開きます。
-
-   ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
-1. オンライン エディターで、コード ファイルを変更します。 変更内容は、入力時に自動的に保存されています。
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png

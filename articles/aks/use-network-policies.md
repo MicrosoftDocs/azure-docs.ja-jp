@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: c9bf2c2c459999813c7fc30f95be653168d270ad
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613961"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114459"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -76,7 +76,7 @@ Azure には、ネットワーク ポリシーを実装する 2 つの方法が�
 
 最初に、ネットワーク ポリシーをサポートする AKS クラスターを作成しましょう。 ネットワーク ポリシー機能を有効にできるのは、クラスターの作成時のみになります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。
 
-AKS クラスターでネットワーク ポリシーを使用するには、[Azure CNI プラグイン][azure-cni]を使用し、and define your own virtual network and subnets. For more detailed information on how to plan out the required subnet ranges, see [configure advanced networking][use-advanced-networking]。
+AKS クラスターでネットワーク ポリシーを使用するには、[Azure CNI プラグイン][azure-cni]を使用し、独自の仮想ネットワークとサブネットを定義する必要があります。 必要なサブネット範囲を計画する方法の詳細については、[高度なネットワークの構成][use-advanced-networking]に関するページを参照してください。
 
 次のサンプル スクリプトでは、
 
@@ -89,7 +89,6 @@ AKS クラスターでネットワーク ポリシーを使用するには、[Az
 独自の安全な *SP_PASSWORD* を指定してください。 *RESOURCE_GROUP_NAME* および *CLUSTER_NAME* 変数を置き換えることができます。
 
 ```azurecli-interactive
-SP_PASSWORD=mySecurePassword
 RESOURCE_GROUP_NAME=myResourceGroup-NP
 CLUSTER_NAME=myAKSCluster
 LOCATION=canadaeast
@@ -106,7 +105,9 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP=$(az ad sp create-for-rbac --output json)
+SP_ID=$(echo $SP | jq -r .appId)
+SP_PASSWORD=$(echo $SP | jq -r .password)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."

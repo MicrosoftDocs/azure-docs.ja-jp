@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 094641baaa1472b481140072cd5d3d35d27d5ed7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390519"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877186"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -39,9 +39,11 @@ IoT ハブには、Event Hubs との互換性がある、既定の組み込み�
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub では、[Apache Avro](https://avro.apache.org/) 形式と JSON 形式での Azure Blob Storage へのデータの書き込みをサポートしています。 JSON 形式にエンコードする機能は一般に、IoT Hub が提供されているすべてのリージョンで使用できます。 既定値は AVRO です。 エンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。 既存のエンドポイントに対して形式を編集することはできません。 JSON エンコードを使用する場合は、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を JSON に設定し、contentEncoding を UTF-8 に設定する必要があります。 これが設定されていない場合、IoT Hub は Base 64 エンコード形式でメッセージを書き込みます。 エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0) を使用して選択できます。 次の図は、Azure portal でエンコード形式を選択する方法を示しています。
+IoT Hub では、[Apache Avro](https://avro.apache.org/) 形式と JSON 形式での Azure Blob Storage へのデータの書き込みをサポートしています。 JSON 形式にエンコードする機能は一般に、IoT Hub が提供されているすべてのリージョンで使用できます。 既定値は AVRO です。 エンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。 既存のエンドポイントに対して形式を編集することはできません。 JSON エンコードを使用する場合は、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのどちらの値でも大文字と小文字は区別されません。 コンテンツのエンコードが設定されていない場合、IoT Hub では Base 64 エンコード形式でメッセージが書き込まれます。 エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0) を使用して選択できます。 次の図は、Azure portal でエンコード形式を選択する方法を示しています。
 
 ![Blob Storage エンドポイントのエンコード](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
+
+IoT Hub は、ADLS Gen2 アカウントへのメッセージのルーティングもサポートしています。これは、BLOB ストレージ上に構築された[階層的な名前空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)対応のストレージ アカウントです。 この機能はパブリック プレビュー段階であり、米国西部 2 と米国中西部で新しい ADLS Gen2 アカウントに使用できます。 この機能は、近日中にすべてのクラウド リージョンにデプロイする予定です。
 
 IoT Hub は、バッチが特定のサイズに達するか、一定の時間が経過した時点で、メッセージを一括処理して BLOB にデータを書き込みます。 IoT Hub の既定のファイル名前付け規則は次のとおりです。
 
@@ -51,7 +53,7 @@ IoT Hub は、バッチが特定のサイズに達するか、一定の時間が
 
 任意のファイル名前付け規則を使用可能ですが、一覧で示されているすべてのトークンを使う必要があります。 書き込むデータがない場合、IoT ハブは空の BLOB に書き込みます。
 
-Blob Storage にルーティングするときは、パーティションを想定せずにすべてのコンテナーを確実に読み取るために、BLOB を確保したうえでそれらを反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover-preview)中にパーティションの範囲が変わる可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用して、BLOB のリストを列挙できます。 ガイダンスとして次のサンプルを参照してください。
+Blob Storage にルーティングするときは、パーティションを想定せずにすべてのコンテナーを確実に読み取るために、BLOB を確保したうえでそれらを反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover)中にパーティションの範囲が変わる可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用して、BLOB のリストを列挙できます。 ガイダンスとして次のサンプルを参照してください。
 
    ```csharp
         public void ListBlobsInContainer(string containerName, string iothub)
@@ -101,7 +103,7 @@ Azure portal の [メッセージ ルーティング] ブレードで、フォ�
 
 ## <a name="non-telemetry-events"></a>非テレメトリ イベント
 
-メッセージ ルーティングでは、デバイス テレメトリのほかに、デバイス ツイン変更イベントとデバイス ライフサイクル イベントの送信を有効にすることもできます。 たとえば、データ ソースを**デバイス ツイン変更イベント**に設定してルートを作成した場合、IoT Hub は、デバイス ツインの変更が含まれているメッセージをエンドポイントに送信します。 同様に、データ ソースを**デバイス ライフサイクル イベント**に設定してルートを作成した場合、IoT Hub は、デバイスが削除または作成されたかどうかを示すメッセージを送信します。 
+メッセージ ルーティングでは、デバイス テレメトリのほかに、デバイス ツイン変更イベント、デバイス ライフサイクル イベント、およびデバイス ツイン変更イベントの送信を有効にすることもできます (パブリック プレビューの場合)。 たとえば、データ ソースを**デバイス ツイン変更イベント**に設定してルートを作成した場合、IoT Hub は、デバイス ツインの変更が含まれているメッセージをエンドポイントに送信します。 同様に、データ ソースを**デバイス ライフサイクル イベント**に設定してルートを作成した場合、IoT Hub は、デバイスが削除または作成されたかどうかを示すメッセージを送信します。 最後に、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として、開発者は、データ ソースを**デジタル ツイン変更イベント**に設定したルートを作成できます。IoT Hub は、デジタル ツインの[プロパティ](../iot-pnp/iot-plug-and-play-glossary.md)が設定または変更されたとき、[デジタル ツイン](../iot-pnp/iot-plug-and-play-glossary.md)が置き換えられたとき、または基になるデバイス ツインで変更イベントが発生したときに、メッセージを送信します。
 
 [IoT Hub は Azure Event Grid とも統合](iot-hub-event-grid.md)されているため、デバイス イベントを発行して、それらのイベントに基づくワークフローのリアルタイムの統合と自動化をサポートできます。 ご自分のシナリオにどれが最適かについては、[メッセージ ルーティングと Event Grid の主な違い](iot-hub-event-grid-routing-comparison.md)に関するページを参照してください。
 

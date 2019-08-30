@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d99f704d05dea88f7fa29afea99cbbdb00d09c24
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 64db278807b40f8b142513ac06247e916be74f4b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709882"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078035"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Azure インフラストラクチャの VM 再起動を利用して SAP システムの "高可用性" を実現する
 
@@ -239,7 +238,7 @@ Azure インフラストラクチャの高可用性とマネージド ディス�
 
 * SAP アプリケーション サーバーの高可用性
 
-    SAP アプリケーション サーバー インスタンスは、冗長コンポーネントです。 各 SAP アプリケーション サーバー インスタンスは独自の VM にデプロイされ、別々の Azure の障害ドメインとアップグレード ドメインで実行されます。 詳細については、「[障害ドメイン][planning-guide-3.2.1]」and [Upgrade domains][planning-guide-3.2.2]を参照してください。 
+    SAP アプリケーション サーバー インスタンスは、冗長コンポーネントです。 各 SAP アプリケーション サーバー インスタンスは独自の VM にデプロイされ、別々の Azure の障害ドメインとアップグレード ドメインで実行されます。 詳細については、「[障害ドメイン][planning-guide-3.2.1]」セクションと「[アップグレード ドメイン][planning-guide-3.2.2]」セクションを参照してください。 
 
     Azure 可用性セットを使用してこの構成を保証できます。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」を参照してください。 
 
@@ -280,7 +279,6 @@ VM 内に 1 つの SAP アプリケーション サーバー インスタンス�
 
   * [Start or stop SAP along with your Unix Server Start/Stop](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop) (Unix サーバーの開始/停止に伴う SAP の開始/停止)
   * [Starting and stopping SAP NetWeaver management agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm) (SAP NetWeaver 管理エージェントの開始と停止)
-  * [How to enable autostart of the HANA database](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html) (HANA データベースの自動開始を有効にする方法)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 312e39ff1b699bb3c7f2baea3c66cbf8999ee44b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814522"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933692"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Jupyter Notebook と Kqlmagic 拡張機能を使用して、Azure Data Explorer 内のデータを分析します。
 
@@ -39,7 +39,9 @@ Jupyter Notebook はオープン ソースの Web アプリケーションであ
     ```python
     %reload_ext Kqlmagic
     ```
-
+    > [!NOTE]
+    > [カーネル] > [カーネルの変更] > [Python 3.6] の順にクリックして、カーネルのバージョンを Python 3.6 に変更します
+    
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Azure Data Explorer のヘルプ クラスターに接続する
 
 次のコマンドを使用して、*Help* クラスターでホストされている *Samples* データベースに接続します。 Microsoft 以外の AAD ユーザーの場合は、テナント名 `Microsoft.com` をお使いの AAD テナントに置き換えてください。

@@ -3,15 +3,15 @@ title: Azure Cosmos DB でストアド プロシージャ、トリガー、お�
 description: Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を定義する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mjbrown
-ms.openlocfilehash: 66e0a7e13df9eddcd722492c9c894721517af5f9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968921"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092839"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -48,11 +48,11 @@ var helloWorldStoredProc = {
 
 ### <a id="create-an-item"></a>ストアド プロシージャを使用して項目を作成する
 
-ストアド プロシージャを使用して項目を作成すると、項目は Azure Cosmos DB コンテナーに挿入され、新しく作成された項目の ID が返されます。 項目の作成は非同期操作で、JavaScript コールバック関数に依存します。 コールバック関数には、操作が失敗した場合のエラー オブジェクト用と戻り値用 (この例では作成されたオブジェクト用) の 2 つのパラメーターがあります。 コールバック内では、例外を処理することも、エラーをスローすることもできます。 コールバックが提供されていない場合にエラーが発生すると、Azure Cosmos DB ランタイムはエラーをスローします。 
+ストアド プロシージャを使用して項目を作成すると、項目は Azure Cosmos コンテナーに挿入され、新しく作成された項目の ID が返されます。 項目の作成は非同期操作で、JavaScript コールバック関数に依存します。 コールバック関数には、操作が失敗した場合のエラー オブジェクト用と戻り値用 (この例では作成されたオブジェクト用) の 2 つのパラメーターがあります。 コールバック内では、例外を処理することも、エラーをスローすることもできます。 コールバックが提供されていない場合にエラーが発生すると、Azure Cosmos DB ランタイムはエラーをスローします。 
 
 ストアド プロシージャには、説明を設定するパラメーターも含まれており、このパラメーターはブール値です。 パラメーターが true に設定されているときに説明が存在しないと、ストアド プロシージャは例外をスローします。 そうでない場合、ストアド プロシージャの残りの部分が引き続き実行されます。
 
-次のサンプル ストアド プロシージャは、新しい Azure Cosmos DB 項目を入力として受け取り、Azure Cosmos DB コンテナーに挿入し、新しく作成された項目の ID を返します。 この例では、[クイック スタート .NET SQL API](create-sql-api-dotnet.md) のToDoList サンプルを使用します。
+次のサンプル ストアド プロシージャは、新しい Azure Cosmos 項目を入力として受け取り、Azure Cosmos コンテナーに挿入し、新しく作成された項目の ID を返します。 この例では、[クイック スタート .NET SQL API](create-sql-api-dotnet.md) のToDoList サンプルを使用します。
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -87,7 +87,7 @@ function sample(arr) {
 
 ### <a id="transactions"></a>ストアド プロシージャ内でのトランザクション
 
-ストアド プロシージャを使用して、コンテナー内の項目にトランザクションを実装できます。 次の例では、架空のフットボール ゲーム アプリ内で、 2 つのチームのプレーヤーを 1 回の操作でトレードするトランザクションを使用します。 このストアド プロシージャは、引数として渡されたプレーヤー ID にそれぞれ対応する 2 つの Azure Cosmos DB 項目の読み取りを試行します。 両方のプレーヤーが見つかると、ストアド プロシージャはプレーヤーのチームを交換して項目を更新します。 処理の途中でエラーが発生した場合は、ストアド プロシージャは JavaScript 例外をスローし、トランザクションが暗黙的に中止されます。
+ストアド プロシージャを使用して、コンテナー内の項目にトランザクションを実装できます。 次の例では、架空のフットボール ゲーム アプリ内で、 2 つのチームのプレーヤーを 1 回の操作でトレードするトランザクションを使用します。 このストアド プロシージャは、引数として渡されたプレーヤー ID にそれぞれ対応する 2 つの Azure Cosmos 項目の読み取りを試行します。 両方のプレーヤーが見つかると、ストアド プロシージャはプレーヤーのチームを交換して項目を更新します。 処理の途中でエラーが発生した場合は、ストアド プロシージャは JavaScript 例外をスローし、トランザクションが暗黙的に中止されます。
 
 ```javascript
 // JavaScript source code
@@ -214,7 +214,7 @@ Azure Cosmos DB は、プリトリガーとポストトリガーをサポート�
 
 ### <a id="pre-triggers"></a>プリトリガー
 
-次の例に、プリトリガーを使用して、作成する Azure Cosmos DB 項目のプロパティを検証する方法を示します。 この例では、[クイック スタート .NET SQL API](create-sql-api-dotnet.md) のToDoList サンプルを使用して、新しく追加された項目にタイムスタンプ プロパティが含まれていない場合にタイムスタンプ プロパティを追加します。
+次の例に、プリトリガーを使用して、作成する Azure Cosmos 項目のプロパティを検証する方法を示します。 この例では、[クイック スタート .NET SQL API](create-sql-api-dotnet.md) のToDoList サンプルを使用して、新しく追加された項目にタイムスタンプ プロパティが含まれていない場合にタイムスタンプ プロパティを追加します。
 
 ```javascript
 function validateToDoItemTimestamp() {
@@ -235,7 +235,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-プリトリガーは入力パラメーターを持つことができません。 トリガー内の要求オブジェクトを使用して、操作に関連付けられた要求メッセージを操作します。 前の例では、Azure Cosmos DB 項目を作成するときにプリトリガーが実行され、要求メッセージの本文に、作成する項目が JSON 形式で含まれています。
+プリトリガーは入力パラメーターを持つことができません。 トリガー内の要求オブジェクトを使用して、操作に関連付けられた要求メッセージを操作します。 前の例では、Azure Cosmos 項目を作成するときにプリトリガーが実行され、要求メッセージの本文に、作成する項目が JSON 形式で含まれています。
 
 トリガーが登録されたら、ユーザーは実行できる操作を指定できます。 このトリガーは `TriggerOperation` 値 `TriggerOperation.Create` によって作成される必要があります。つまり、次のコードで示す置換操作でのこのトリガーの使用は許可されません。
 

@@ -3,7 +3,7 @@ title: トークンの管理 (Microsoft Authentication Library) | Azure
 description: Microsoft Authentication Library (MSAL) を使用したトークンの取得とキャッシュについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6148f6f9d449dc5aa55da2f041119a8b706491b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d4f7914744073f82d8a35d3679a1c65459e10b2f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835079"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532890"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>MSAL を使用したトークンの取得とキャッシュ
 [アクセス トークン](access-tokens.md)により、クライアントは Azure によって保護された Web API を安全に呼び出すことができます。 Microsoft Authentication Library (MSAL) を使用してトークンを取得する方法はたくさんあります。 一部の方法では、Web ブラウザーを通じたユーザー操作が必要です。 ユーザー操作の必要がない方法もあります。 一般に、トークンを取得する方法は、アプリケーションがパブリック クライアント アプリケーション (デスクトップ アプリまたはモバイル アプリ) か、機密クライアント アプリケーション (Web アプリ、Web API、または Windows サービスのようなデーモン アプリケーション) かによって異なります。

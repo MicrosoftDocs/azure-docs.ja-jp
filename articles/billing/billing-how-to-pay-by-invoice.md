@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9ca726ef737ce4750018d2461bc4bcd6c7ebb5f5
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491230"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774672"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -34,9 +34,11 @@ ms.locfileid: "67491230"
 
 2. **[問題の種類]** で **[課金]** を選択します。 *[問題の種類]* は、サポート要求のカテゴリです。 請求書で支払うサブスクリプションを選択します。サポート プランを選択し、 **[次へ]** を選択します。
 
-3. **[問題の種類]** ボックスで **[Pay by Invoice (請求書による支払い)]** オプションを選択します。 *[問題の種類]* は、サポート要求のサブカテゴリです。
+3. **[お支払]** を **[問題の種類]** として選択します。 *[問題の種類]* は、サポート要求のサブカテゴリです。
 
-4. **[詳細]** ボックスに次の情報を入力し、 **[次へ]** を選択します。
+4. **[Switch to Pay by Invoice]\(請求書による支払いに切り替える\)** を **[問題のサブタイプ]** として選択します。
+
+5. **[詳細]** ボックスに次の情報を入力し、 **[次へ]** を選択します。
 
          New or existing customer:
          If existing, current payment method:
@@ -64,7 +66,7 @@ ms.locfileid: "67491230"
     - **[会社名]** と **[会社の住所]** は、Azure アカウントに指定した情報と一致させる必要があります。 情報を表示または更新するには、「[Azure アカウントのプロファイル情報を変更する](billing-how-to-change-azure-account-profile.md)」を参照してください。
     - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加する必要があります。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure アカウント センター](https://account.azure.com/Profile)に移動します。
 
-5. 連絡先情報と優先連絡方法を確認し、 **[作成]** をクリックします。
+6. 連絡先情報と優先連絡方法を確認し、 **[作成]** をクリックします。
 
 必要とするクレジット総額によっては与信審査が必要になることがあります。この場合は、カスタマー サポートから与信審査申込書をお送りします。
 

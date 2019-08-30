@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2019
 ms.author: bwren
-ms.openlocfilehash: 8f645f7d569546a8362d0149806a2b4636567fd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8a86c0b71a5248164ea522472f9f2ecb2ce36bc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086750"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827362"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor の名称と用語の変更
 最近、Azure Monitor に大きな変更が加えられ、Azure のお客様が監視を簡単に行えるようにするためにさまざまなサービスが統合されました。 この記事では、Azure Monitor のドキュメント内で最近行われた名称と用語の変更について説明します。
@@ -26,7 +26,7 @@ ms.locfileid: "61086750"
 Azure Monitor にさまざまなサービスを統合した後、次の段階として、Azure Monitor サービスとそのさまざまなコンポーネントをよりわかりやすく説明するためにドキュメント内の用語を変更しています。 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集および分析されますが、_Log Analytics_ という用語は多くの場所で _Azure Monitor ログ_ に変更されています。 この用語は、Azure Monitor におけるその役割をより適切に反映するものであり、[Azure Monitor のメトリック](platform/data-platform-metrics.md)の一貫性を向上させます。
+Azure Monitor ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集および分析されますが、_Log Analytics_ という用語は多くの場所で _Azure Monitor ログ_ に変更されています。 この用語は、Azure Monitor におけるその役割をより適切に反映するものであり、[Azure Monitor のメトリック](platform/data-platform-metrics.md)との一貫性を向上させます。
 
 現在、_ログ分析_ という用語は、クエリの記述と実行およびログ データの分析に使用する Azure portal 内のページに主に適用されています。 これは、メトリック データの分析に使用する Azure portal 内のページである[メトリックス エクスプローラー](platform/metrics-charts.md)と同等の機能です。
 

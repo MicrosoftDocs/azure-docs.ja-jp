@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d902a65c4e36ff698e486e2af899d055de1afca0
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da75ca43a2576e3214d4b67f9eb61c7bad3bd5cc
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638541"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073510"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Azure API Management での新しい開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -78,6 +77,10 @@ ms.locfileid: "68638541"
 
 例外は、古いポータルの "*アプリケーション*" と "*問題*" であり、新しいポータルでは使用できません。 以前のポータルで "*問題*" を使用していて、新しいポータルでも必要な場合は、[専用の GitHub の問題](https://github.com/Azure/api-management-developer-portal/issues/122)にコメントを投稿してください。
 
+### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>バグを見つけました。または機能のリクエストがあります。
+
+これでセットアップは終了です。 [GitHub リポジトリの [Issues]\(問題\) セクション](https://github.com/Azure/api-management-developer-portal/issues)で、フィードバックの提供、機能のリクエストの送信、バグ報告の提出を行うことができます。 ここでは、`community` ラベルでマークされている問題についてフィードバックもぜひお寄せください。
+
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>新しいポータルのコンテンツを環境間で移動する必要があります。 どのようにすればよいですか。またセルフホステッド バージョンを使用する必要がありますか。
 
 この動作はポータルのバージョン管理型とセルフホステッド型の両方で実行できます。 新しい開発者ポータルでは、API Management サービスの管理 API を使用したコンテンツの抽出がサポートされています。 API については、[GitHub リポジトリの wiki セクション](https://github.com/Azure/api-management-developer-portal/wiki/)に記載されています。 また、[スクリプト](https://github.com/Azure/api-management-developer-portal/blob/master/scripts/migrate.bat)も作成しました。これは作業の開始に役立つ場合があります。
@@ -91,10 +94,6 @@ ms.locfileid: "68638541"
 ### <a name="why-doesnt-the-interactive-developer-console-work"></a>対話型の開発者コンソールが動作しないのはなぜですか。
 
 CORS に関連している可能性があります。 対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定したり (たとえば、配信元 https://contoso.com) 、またはワイルドカード値 `*` を使用したりできます。
-
-### <a name="where-can-i-file-bugs"></a>バグをどこに登録できますか。
-
-[GitHub リポジトリ内](http://aka.ms/apimdevportal)です。
 
 ## <a name="next-steps"></a>次の手順
 

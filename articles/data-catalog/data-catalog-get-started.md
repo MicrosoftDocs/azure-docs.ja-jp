@@ -1,17 +1,17 @@
 ---
 title: Azure データ カタログを作成する
-description: Azure Data Catalog を作成する方法についてのクイック スタート。
+description: このクイックスタートでは、Azure portal を使用して Azure Data Catalog を作成する方法について説明します。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 08/01/2019
-ms.openlocfilehash: df2f536dc95dd74dbae1c8bda1a9934a73fd1fe0
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736488"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976855"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>クイック スタート:Azure データ カタログを作成する
 
@@ -36,7 +36,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
 1. [Azure portal](https://portal.azure.com) >  **[リソースの作成]** の順に移動し、 **[データ カタログ]** を選択します。
 
-    ![データ カタログの作成](media/data-catalog-get-started/data-catalog-create.png)
+    ![Azure Data Catalog の作成ボタン](media/data-catalog-get-started/data-catalog-create.png)
 
 2. データ カタログの**名前**、使用する**サブスクリプション**、カタログの**場所**、および**価格レベル**を指定します。 **[作成]** を選択します。
 

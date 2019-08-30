@@ -4,17 +4,17 @@ description: このチュートリアルでは、Linux コンテナーを使用�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/10/2019
+ms.date: 08/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e5499afebf29df2942e74148b33797844fa9c880
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30b1af29d1a7e3a01659353b27d8c997e739e702
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051936"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031001"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 
@@ -42,7 +42,7 @@ Visual Studio Code を使用して、コードを開発して、IoT Edge を実�
 
 IoT Edge モジュールを開発する場合は、開発マシンと、モジュールが最終的にデプロイされるターゲット IoT Edge デバイスの違いを理解することが重要です。 モジュール コードを保持するためにビルドするコンテナーは、*ターゲット デバイス*のオペレーティング システム (OS) と一致している必要があります。 たとえば、最も一般的なシナリオは、ある人が Windows コンピューターでモジュールを開発しているが、そのターゲットとして、IoT Edge を実行している Linux デバイスを予定している場合です。 その場合、コンテナーのオペレーティング システムは Linux になります。 このチュートリアルを進めていくときには、*開発マシンの OS* と*コンテナーの OS* の違いに留意してください。
 
-このチュートリアルでは、IoT Edge を実行している Linux デバイスをターゲットとしています。 ご使用の開発マシンが Linux コンテナーを実行できる限り、自分の好きな開発マシンのオペレーティング システムを使用することができます。 Linux デバイス用の開発には Visual Studio Code を使用することをお勧めします。そのため、このチュートリアルでもそれを使用します。 Visual Studio も使用できますが、この 2 つのツールの間にはサポートに違いがあります。
+このチュートリアルでは、IoT Edge を実行している Linux デバイスをターゲットとしています。 ご使用の開発マシンが Linux コンテナーを実行できる限り、自分の好きなオペレーティング システムを使用することができます。 Linux デバイス用の開発には Visual Studio Code を使用することをお勧めします。そのため、このチュートリアルでもそれを使用します。 Visual Studio も使用できますが、この 2 つのツールの間にはサポートに違いがあります。
 
 次の表に、**Linux コンテナー**に関して Visual Studio Code と Visual Studio でサポートされる開発シナリオを示します。
 
@@ -52,6 +52,9 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
 | **Azure サービス** | Azure Functions <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Languages** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
 | **詳細情報** | [Visual Studio Code 用の Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Visual Studio 2017 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Visual Studio 2019 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+
+>[!NOTE]
+>Linux ARM64 デバイスのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)でご利用いただけます。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
 
 このチュートリアルでは、Visual Studio Code の開発手順を説明します。 Visual Studio を使用する場合は、「[Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする](how-to-visual-studio-develop-module.md)」に記載されている手順を参照してください。
 
@@ -190,11 +193,11 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 7. $edgeAgent の必要なプロパティの **modules** プロパティを見つけます。 
 
-   ここには 2 つのモジュールがリストされているはずです。 1 つ目は **tempSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 2 つ目は、このソリューションの一部として作成した **SampleModule** モジュールです。
+   ここには 2 つのモジュールがリストされているはずです。 1 つ目は **SimulatedTemperatureSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 2 つ目は、このソリューションの一部として作成した **SampleModule** モジュールです。
 
 7. ファイルの下部には、 **$edgeHub** モジュールの必要なプロパティがあります。 
 
-   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 **routes** プロパティの値を確認します。 最初のルートである **SampleModuleToIoTHub** は、ワイルドカード文字 ( **\*** ) を使用して、SampleModule モジュール内のどの出力キューからのメッセージも示します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 番目のルートである sensorToSampleModule は、tempSensor モジュールから来たメッセージを取得し、SampleModule コードで初期化されているのを確認した *input1* 入力キューにルーティングします。 
+   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 **routes** プロパティの値を確認します。 最初のルートである **SampleModuleToIoTHub** は、ワイルドカード文字 ( **\*** ) を使用して、SampleModule モジュール内のどの出力キューからのメッセージも示します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 番目のルートである sensorToSampleModule は、SimulatedTemperatureSensor モジュールからのメッセージを受け取り、SampleModule コードで初期化されているのを確認した *input1* 入力キューにルーティングします。 
 
    ![deployment.template.json でルートを確認する](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -278,7 +281,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 
 4. IoT Edge デバイスの詳細を展開し、次に、使用するデバイスの**モジュール**一覧を展開します。 
 
-5. tempSensor と SampleModule モジュールがデバイスで実行されているのを確認できるまで、[最新の情報に更新] ボタンを使用してデバイス ビューを更新してください。 
+5. SimulatedTemperatureSensor と SampleModule モジュールがデバイスで実行されているのを確認できるまで、[最新の情報に更新] ボタンを使用してデバイス ビューを更新してください。 
 
    両方のモジュールが開始するまでに数分かかる場合があります。 IoT Edge ランタイムは、新しい配置マニフェストを受け取り、コンテナー ランタイムからモジュール イメージを取得して、それぞれの新しいモジュールを開始する必要があります。 
 
@@ -286,7 +289,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 
 ## <a name="view-messages-from-device"></a>デバイスからのメッセージを表示する
 
-SampleModule コードは、入力キューを介してメッセージを受け取り、出力キューを介してそれらを渡します。 配置マニフェストは、メッセージを tempSensor から SampleModule に渡し、次に SampleModule から IoT Hub にメッセージを転送したルートを宣言しました。 Visual Studio Code 用の Azure IoT ツールを使用すると、個々のデバイスから IoT Hub に到着したメッセージを表示できます。 
+SampleModule コードは、入力キューを介してメッセージを受け取り、出力キューを介してそれらを渡します。 配置マニフェストは、メッセージを SimulatedTemperatureSensor から SampleModule に渡し、次に SampleModule から IoT Hub にメッセージを転送したルートを宣言しました。 Visual Studio Code 用の Azure IoT ツールを使用すると、個々のデバイスから IoT Hub に到着したメッセージを表示できます。 
 
 1. Visual Studio Code のエクスプローラーで、監視する IoT Edge デバイスを右クリックして、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。 
 
@@ -306,7 +309,7 @@ SampleModule コードは、入力キューを介してメッセージを受け�
    iotedge list
    ```
 
-   4 つのモジュール (2 つの IoT Edge ランタイム モジュール、tempSensor、および SampleModule) が表示されるはずです。 4 つすべてが実行中として一覧に表示されるはずです。
+   4 つのモジュール (2 つの IoT Edge ランタイム モジュール、SimulatedTemperatureSensor、および SampleModule) が表示されるはずです。 4 つすべてが実行中として一覧に表示されるはずです。
 
 * 次のように、特定のモジュールのログを検査します。
 
@@ -316,7 +319,7 @@ SampleModule コードは、入力キューを介してメッセージを受け�
 
    IoT Edge モジュールでは大文字と小文字の区別があります。 
 
-   TempSensor と SamplModule のログには、処理しているメッセージが表示されるはずです。 edgeAgent モジュールには、他のモジュールを開始する責任があります。そのため、そのログには、配置マニフェストの実装に関する情報が含まれます。 いずれかのモジュールが一覧に表示されていない、または実行されていない場合は、おそらく edgeAgent のログにエラーが書き込まれます。 edgeHub モジュールは、モジュールと IoT Hub 間の通信を担当します。 モジュールは稼働しているが、メッセージが IoT ハブに到着していない場合は、おそらく edgeHub のログにエラーが書き込まれます。 
+   SimulatedTemperatureSensor と SampleModule のログには、処理しているメッセージが表示されるはずです。 edgeAgent モジュールには、他のモジュールを開始する責任があります。そのため、そのログには、配置マニフェストの実装に関する情報が含まれます。 いずれかのモジュールが一覧に表示されていない、または実行されていない場合は、おそらく edgeAgent のログにエラーが書き込まれます。 edgeHub モジュールは、モジュールと IoT Hub 間の通信を担当します。 モジュールは稼働しているが、メッセージが IoT ハブに到着していない場合は、おそらく edgeHub のログにエラーが書き込まれます。 
 
 ## <a name="next-steps"></a>次の手順
 

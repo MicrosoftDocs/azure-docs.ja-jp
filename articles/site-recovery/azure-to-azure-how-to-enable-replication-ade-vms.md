@@ -6,21 +6,24 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516500"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884125"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption 対応仮想マシンを別の Azure リージョンにレプリケートする
 
 この記事では、Azure Disk Encryption 対応 VM を Azure リージョン間でレプリケートする方法について説明します。
 
 >[!NOTE]
->現在、Azure Site Recovery でサポートされる Azure VM は、Windows OS を稼動しており、なおかつ [Azure Active Directory (Azure AD) を使用した暗号化に対応](https://aka.ms/ade-aad-app)しているものに限られています。
+>現在、Azure Site Recovery では、Windows OS を実行する Azure Disk Encryption 対応の VM のみがサポートされています。 Azure AD アプリを含まない Azure Disk Encryption 対応の VM は、マネージド ディスクを使用している場合にのみサポートされます。 アンマネージド ディスクを含む VM はサポートされていません。
+
+>[!NOTE]
+>(Azure AD アプリを含む) ADE V1 から (Azure AD アプリを含まない) ADE V2 に切り替える場合は、レプリケーションを無効にし、ADE V2 を有効にした後でレプリケーションを有効にする必要があります。
 
 ## <a id="required-user-permissions"></a>必要なユーザー アクセス許可
 Site Recovery では、ユーザーが、ターゲット リージョン内にキー コンテナーを作成し、ソース リージョンのキー コンテナーからターゲット リージョンのキー コンテナーにキーをコピーするアクセス許可を持っていることが必要です。

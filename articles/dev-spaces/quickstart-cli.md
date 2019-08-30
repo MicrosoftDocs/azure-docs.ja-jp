@@ -11,10 +11,10 @@ description: Azure Dev Spaces を使用して AKS にマイクロサービスを
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 39fb7658140a2eda948cd0dc0e58d71b0b9a053b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67710675"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes でアプリケーションを開発する
@@ -72,7 +72,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="prepare-the-application"></a>アプリケーションを準備する
 
-Azure Dev Spaces でアプリケーションを実行するには、Dockerfile と Helm チャートが必要です。 [Java][java-quickstart]、, [.NET core][netcore-quickstart]、[Node.js][nodejs-quickstart] などの一部の言語では、必要なすべての資産を Azure Dev Spaces クライアント ツールで生成できます。 Go、PHP、Python など、他の多くの言語では、有効な Dockerfile を提供できる限り、クライアント ツールで Helm チャートを生成できます。
+Azure Dev Spaces でアプリケーションを実行するには、Dockerfile と Helm チャートが必要です。 [Java][java-quickstart]、[.NET core][netcore-quickstart]、[Node.js][nodejs-quickstart] などの一部の言語では、必要なすべての資産を Azure Dev Spaces クライアント ツールで生成できます。 Go、PHP、Python など、他の多くの言語では、有効な Dockerfile を提供できる限り、クライアント ツールで Helm チャートを生成できます。
 
 `azds prep` コマンドを使用して、Kubernetes でアプリケーションを実行するための Docker 資産と Helm チャート資産を生成します。
 

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a545f1e0fd1360d9147280454fb8b75bf216152
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507389"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874092"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
-"*アクセス トークン*" には、Azure Active Directory (Azure AD) B2C で API に付与されているアクセス許可を識別するために使用できる要求が含まれています。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。 アクセス トークンは、Azure AD B2C からの応答で、**access_token** として示されます。 
+"*アクセス トークン*" には、Azure Active Directory (Azure AD) B2C で API に付与されているアクセス許可を識別するために使用できる要求が含まれています。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。 アクセス トークンは、Azure AD B2C からの応答で、**access_token** として示されます。
 
 この記事では、Web アプリケーションと Web API に対してアクセス トークンを要求する方法を示します。 Azure AD B2C でのトークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](active-directory-b2c-reference-tokens.md)」を参照してください。
 
@@ -67,13 +67,13 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - `<application-ID>` - ユーザー フローをサポートするために登録した Web アプリケーションのアプリケーション識別子。
 - `<redirect-uri>` - クライアント アプリケーションを登録したときに入力した**リダイレクト URI**。
 
-```
+```HTTP
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms
 &scope=https://tenant-name>.onmicrosoft.com/api/read
-&response_type=code 
+&response_type=code
 ```
 
 承認コードを含む応答は、次の例のようになります。
@@ -84,9 +84,9 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 
 承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。
 
-```
+```HTTP
 POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
-Host: https://<tenant-name>.b2clogin.com
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code
@@ -99,7 +99,7 @@ grant_type=authorization_code
 
 次の応答に似た内容が表示されます。
 
-```
+```JSON
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -113,7 +113,7 @@ grant_type=authorization_code
 
 [https://jwt.ms](https://jwt.ms ) を使用して、返されたアクセス トークンを調べると、次の例に似た内容が表示されるはずです。
 
-```
+```JSON
 {
   "typ": "JWT",
   "alg": "RS256",

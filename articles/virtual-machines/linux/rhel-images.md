@@ -3,22 +3,21 @@ title: Azure の Red Hat Enterprise Linux イメージ | Microsoft Docs
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 6/6/2019
+ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: f7ae82b0376489e21b35e4e94dce32805bea69c6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e18f1db80b8fcb2c8846ce0c7294e1766cfa1ca3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708377"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091379"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
@@ -99,13 +98,15 @@ RedHat:RHEL:7.4:7.4.2019041718
 
 >[!NOTE]
 > この記事の執筆時点で EUS をサポートしているのは、RHEL 7.4 以降のマイナー バージョンのみです。 EUS は、RHEL 7.3 以前ではサポートされなくなりました。
+>
+> RHEL EUS の可用性の詳細については、[こちら](https://access.redhat.com/support/policy/updates/errata)を参照してください。
 
 マイナー バージョン |EUS イメージの例              |EUS の状態                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | 2019 年 4 月以降に発行されたイメージは、既定で EUS になります|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | 2019 年 6 月以降に発行されたイメージは、既定で EUS になります |
 RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | 2019 年 5 月以降に発行されたイメージは、既定で EUS になります  |
-RHEL 8.0      |該当なし                            | EUS イメージは現在使用できません                 |
+RHEL 8.0      |該当なし                            | Red Hat から使用可能な EUS はありません                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>利用可能な RHEL イメージの一覧
@@ -132,6 +133,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Linux エージェント | RHEL 6.7 for SAP 
 |             | 7.3      | LVM    | Linux エージェント | RHEL 7.3 for SAP HANA
 RHEL-SAP-APPS | 6.8      | RAW    | Linux エージェント | RHEL 6.8 for SAP Business Applications
 |             | 7.3      | LVM    | Linux エージェント | RHEL 7.3 for SAP Business Applications
+RHEL-HA       | 7.4      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.4
+|             | 7.5      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.5
+|             | 7.6      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.6
+RHEL-SAP-HA   | 7.4      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.4 for SAP
+|             | 7.5      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.5 for SAP
+|             | 7.6      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.6 for SAP
 
 ### <a name="old-naming-convention"></a>以前の名前付け規則
 RHEL 7 イメージ ファミリと RHEL 6 イメージ ファミリでは、前述の名前付け規則の変更が行われるまで、SKU の特定のバージョンが使用されていました。

@@ -1,5 +1,5 @@
 ---
-title: Recovery Services コンテナーを Azure サブスクリプションをまたいで移動するか、別のリソース グループに移動します。
+title: Recovery Services コンテナーを Azure サブスクリプションまたはリソース グループをまたいで移動する - Azure Backup
 description: Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動するための手順。
 ms.reviewer: sogup
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 83c1c19490470ba88837af4c1ced6352c62e36f4
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 6ca07a6ba96aa271241271dcba264c1ea2ceefbb
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689159"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018821"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -112,7 +112,7 @@ Recovery Services コンテナーとその関連リソースを別のサブス�
 
 Recovery Services コンテナーを別のリソース グループに移動するには、`Move-AzureRMResource` コマンドレットを使用します。 `Move-AzureRMResource` ではリソース名とリソースの種類が必要です。 どちらも `Get-AzureRmRecoveryServicesVault` コマンドレットから取得できます。
 
-```
+```powershell
 $destinationRG = "<destinationResourceGroupName>"
 $vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
 Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
@@ -120,7 +120,7 @@ Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $v
 
 リソースを他のサブスクリプションに移動するには、`-DestinationSubscriptionId` パラメーターを含めます。
 
-```
+```powershell
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
@@ -130,7 +130,7 @@ Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -D
 
 Recovery Services コンテナーを別のリソース グループに移動するには、次のコマンドレットを使用します。
 
-```
+```azurecli
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 

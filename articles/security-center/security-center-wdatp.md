@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2018
+ms.date: 08/21/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 5342ec14e32b87c5cccdb36206122ce1168aeb56
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296529"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061423"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection と Azure Security Center
 
@@ -51,7 +51,7 @@ Windows Defender ATP にピボットすることによって、アラートを�
 
 ## <a name="platform-support"></a>プラットフォームのサポート
 
-Security Center の Windows Defender ATP は、Standard サービス サブスクリプションに属する Windows Server 2012 R2 および Windows Server 2016 オペレーティング システムでの検出をサポートしています。
+Security Center の Windows Defender ATP は、Standard サービス サブスクリプションの Windows Server 2016、2012 R2、および 2008 R2 SP1 オペレーティング システムでの検出をサポートしています。
 
 > [!NOTE]
 > Azure Security Center を使用してサーバーを監視すると、Windows Defender ATP テナントが自動的に作成され、Windows Defender ATP データが既定ではヨーロッパに格納されます。 データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットする必要があります。
@@ -117,6 +117,7 @@ Windows Defender ATP で無害なテスト アラートを生成するには:
 
 ## <a name="next-steps"></a>次の手順
 
+- [Azure Security Center でサポートされている機能とプラットフォーム](security-center-os-coverage.md)
 - [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
 - [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md):推奨事項を Azure リソースの保護に活かす方法について説明します。
 - [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md):Azure リソースの正常性を監視する方法について説明しています。

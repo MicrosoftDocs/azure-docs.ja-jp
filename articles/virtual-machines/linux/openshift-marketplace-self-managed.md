@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 9b981924dcaf715dd1d05d452b756a40b63f8dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87b5c4ab006d9129d7530b06d8b31df35e288c75
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233083"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091911"
 ---
 # <a name="configure-prerequisites"></a>構成の前提条件
 
@@ -68,7 +67,7 @@ Azure portal の左上で、 **[リソースの作成]** をクリックして�
 |-----------------------|-----------------|
 | [VM Admin User Name]\(VM 管理者ユーザー名\) | すべての VM インスタンスで作成される管理者ユーザー |
 | [SSH Public Key for Admin User]\(管理者ユーザー用の SSH 公開キー\) | VM にログインするために使用される SSH 公開キー - パスフレーズを設定することはできません |
-| サブスクリプション | クラスターをデプロイする対象の Azure サブスクリプション |
+| Subscription | クラスターをデプロイする対象の Azure サブスクリプション |
 | リソース グループ | 新しいリソース グループを作成するか、クラスター リソースの既存の空のリソース グループを選択します |
 | Location | クラスターをデプロイする対象の Azure リージョン |
 

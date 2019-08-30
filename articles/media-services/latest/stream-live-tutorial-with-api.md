@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 5028fd4179f19634b41bb46a5f6df40f36cc8e29
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b69bd62cb9bbe44fb37b3f3660c2f20f3965384e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275574"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051584"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>チュートリアル:Media Services によるライブ ストリーム配信
 
@@ -113,17 +113,17 @@ previewEndpoint を使用して、エンコーダーからの入力が実際に�
 
 ### <a name="create-and-manage-live-events-and-live-outputs"></a>ライブ イベントとライブ出力を作成して管理する
 
-ストリームがライブ イベントに流れ始めると、資産、ライブ出力、ストリーミング ロケーターを作成することにより、ストリーミング イベントを開始できます。 これにより、ストリームがアーカイブされ、ストリーミング エンドポイントを介して視聴者がストリームを使用できるようになります。 
+ストリームがライブ イベントに流れ始めると、アセット、ライブ出力、ストリーミング ロケーターを作成することにより、ストリーミング イベントを開始できます。 これにより、ストリームがアーカイブされ、ストリーミング エンドポイントを介して視聴者がストリームを使用できるようになります。 
 
-#### <a name="create-an-asset"></a>資産を作成する
+#### <a name="create-an-asset"></a>アセットを作成する
 
-ライブ出力が使用する資産を作成します。
+ライブ出力が使用するアセットを作成します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateAsset)]
 
 #### <a name="create-a-live-output"></a>ライブ出力を作成する
 
-ライブ出力は作成すると開始され、削除されると停止します。 ライブ出力を削除しても、基になる資産と資産のコンテンツは削除されません。
+ライブ出力は作成すると開始され、削除されると停止します。 ライブ出力を削除しても、基になるアセットとアセットのコンテンツは削除されません。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveOutput)]
 
@@ -132,7 +132,7 @@ previewEndpoint を使用して、エンコーダーからの入力が実際に�
 > [!NOTE]
 > Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
 
-ストリーミング ロケーターを使用してライブ出力資産を発行した場合、ライブ イベント (DVR ウィンドウの長さまで) は、ストリーミング ロケーターの有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
+ストリーミング ロケーターを使用してライブ出力アセットを発行した場合、ライブ イベント (DVR ウィンドウの長さまで) は、ストリーミング ロケーターの有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateStreamingLocator)]
 
@@ -163,10 +163,6 @@ foreach (StreamingPath path in paths.StreamingPaths)
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLiveEventAndOutput)]
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLocatorAssetAndStreamingEndpoint)]
-
-次のコードは、すべてのライブ イベントのアカウントをクリーンアップする方法を示しています。
-
-[!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupAccount)]   
 
 ## <a name="watch-the-event"></a>イベントの視聴
 

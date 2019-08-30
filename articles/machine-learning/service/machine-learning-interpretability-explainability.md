@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 1e742c278b9356c7501964541802e0c96dc74b09
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358649"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872401"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用したモデルの解釈可能性
 
@@ -69,7 +69,7 @@ __Direct Explainer__ は統合されたライブラリからのものです。 S
 * **Permutation Feature Importance Explainer**:Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい低下するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。
 
 * **LIME Explainer** (`contrib`):LIME に基づく LIME Explainer は、最新の LIME (Local interpretable model-agnostic explanations) アルゴリズムを使用して、ローカル サロゲート モデルを作成します。 グローバル サロゲート モデルとは異なり、LIME はローカル サロゲート モデルをトレーニングして個別の予測を説明することに着目します。
-* **HAN Text Explainer** (`contrib`):HAN Text Explainer は、特定のブラック ボックス テキスト モデルに対するテキスト データからモデルの説明を取得するために Hierarchical Attention Network を使用します。 特定の教師モデルの予測された出力で HAN サロゲート モデルをトレーニングします。 テキスト コーパス全体でグローバルにトレーニングした後、説明の正確性を向上させるため、特定のドキュメントに対する微調整ステップを追加しました。 HAN は、文と単語のアテンションに対する 2 つのアテンション レイヤーで双方向 RNN を使用します。 DNN が教師モデルでトレーニングされて、特定のドキュメントで微調整された後、アテンション レイヤーから単語の重要性を抽出できます。 テキスト データについては HAN は LIME や SHAP より正確ですが、トレーニング時間に関していっそうコストがかかります。 ただし、GloVe 単語埋め込みを使用してネットワークを初期化するオプションをユーザーに提供することで、トレーニング時間を改善しましたが、まだ時間がかかります。 HAN をリモート Azure GPU VM で実行することで、トレーニング時間を大幅に改善できます。 HAN の実装については、「Hierarchical Attention Networks for Document Classification (ドキュメントの分類に対する階層型アテンション ネットワーク)」 (Yang 他、2016) ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)) で説明されています。
+* **HAN Text Explainer** (`contrib`):HAN Text Explainer は、特定のブラック ボックス テキスト モデルに対するテキスト データからモデルの説明を取得するために Hierarchical Attention Network を使用します。 特定の教師モデルの予測された出力で HAN サロゲート モデルをトレーニングします。 テキスト コーパス全体でグローバルにトレーニングした後、説明の正確性を向上させるため、特定のドキュメントに対する微調整ステップを追加しました。 HAN は、文と単語のアテンションに対する 2 つのアテンション レイヤーで双方向 RNN を使用します。 DNN が教師モデルでトレーニングされて、特定のドキュメントで微調整された後、アテンション レイヤーから単語の重要性を抽出できます。 テキスト データについては HAN は LIME や SHAP より正確ですが、トレーニング時間に関していっそうコストがかかります。 ただし、GloVe 単語埋め込みを使用してネットワークを初期化するオプションをユーザーに提供することで、トレーニング時間を改善しましたが、まだ時間がかかります。 HAN をリモート Azure GPU VM で実行することで、トレーニング時間を大幅に改善できます。 HAN の実装については、「[Hierarchical Attention Networks for Document Classification (ドキュメントの分類に対する階層型アテンション ネットワーク)」 (Yang 他、2016)](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification) で説明されています。
 
 
 __Meta Explainer__ は、自動的に適切な Direct Explainer を選択し、特定のモデルとデータ セットに基づいて最適な説明情報を生成します。 Meta Explainer は、統合または開発したすべてのライブラリ (SHAP、LIME、Mimic など) を利用します。 以下は、SDK で使用可能な Meta Explainer です。

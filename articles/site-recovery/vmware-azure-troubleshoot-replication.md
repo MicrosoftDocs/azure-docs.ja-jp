@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: ed04c21fc5f3aecb91483dbd1eb7ca5fbf47c3e9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805973"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742561"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -93,7 +93,13 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
 
 この問題を解決するには:
 - ターゲットのストレージ アカウントの種類 (Standard または Premium) が、ソースのチャーン レート要件に従ってプロビジョニングされていることを確認します。
+- Premium マネージド ディスク (asrseeddisk タイプ) に既にレプリケートしている場合、Site Recovery 制限に従って、ディスクのサイズが、測定されたチャーン レートをサポートしていることを確認します。 必要に応じて、asrseeddisk のサイズを増やすことができます。 次の手順に従ってください。
+    - 影響を受けたレプリケーション対象のマシンの [ディスク] ブレードに移動し、レプリカ ディスク名をコピーします
+    - このレプリカ マネージド ディスクに移動します
+    - [概要] ブレードに、SAS URL が生成されていることを示すバナーが表示される場合があります。 このバナーをクリックして、エクスポートをキャンセルします。 バナーが表示されない場合は、この手順を無視してください。
+    - SAS URL が取り消されたらすぐに、マネージド ディスクの [構成] ブレードにアクセスし、ASR がソース ディスク上で測定済みチャーン レートをサポートできるように、サイズを増やします
 - 観察されたチャーンが一時的なものである場合は、保留中のデータ アップロード処理が進行し復旧ポイントが作成されるまで、数時間待機します。
+- ディスクに一時ログやテスト データなどの重要ではないデータが含まれている場合は、このデータを他の場所に移動するか、このディスクをレプリケーションから完全に除外することを検討してください
 - 問題が解決しない場合は、レプリケーションの計画に役立つ Site Recovery [デプロイ プランナー](site-recovery-deployment-planner.md#overview)を使用します。
 
 ### <a name="source-machines-with-no-heartbeat-error-78174"></a>ソース マシンにハートビートがない [エラー 78174]
@@ -140,7 +146,7 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
 #### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1:SQL Server 2008/2008 R2 での既知の問題 
 **修正方法**: SQL Server 2008/2008 R2 には、既知の問題があります。 サポート技術情報の「[Azure Site Recovery Agent or other non-component VSS backup fails for a server hosting SQL Server 2008 R2 (SQL Server 2008 R2 をホストしているサーバーで Azure Site Recovery エージェントまたはその他の非コンポーネント VSS バックアップが失敗する)](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)」を参照してください
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>原因 2:AUTO_CLOSE DB があるいずれかのバージョンの SQL Server インスタンスをホストするサーバーで Azure Site Recovery ジョブが失敗します 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因 2:AUTO_CLOSE DB があるいずれかのバージョンの SQL Server インスタンスをホストするサーバーで Azure Site Recovery ジョブが失敗します 
 **修正方法**: サポート技術情報の[記事](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)を参照してください 
 
 
@@ -177,7 +183,7 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
         - Azure Site Recovery VSS プロバイダー
         - VDS サービス
 
-####  <a name="vss-provider-notregistered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - エラー 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - エラー 2147754756
 
 **修正方法**: アプリケーション整合性タグを生成するために、Azure Site Recovery では Microsoft ボリューム シャドウ コピー サービス (VSS) が使用されます。 Azure Site Recovery VSS プロバイダー サービスがインストールされているかどうかを確認してください。 </br>
 

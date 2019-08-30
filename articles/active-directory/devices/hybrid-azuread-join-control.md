@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59104bf9c7675fdac2c245fff89ab1483b96b67
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481718"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851790"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の検証を制御する
 
@@ -72,14 +72,17 @@ AD で SCP オブジェクトを変更するには、Active Directory サービ�
       1. キー パス:**SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. 値の名前:**TenantName**
       1. 値の型:**REG_SZ**
-      1. 値のデータ:Azure AD で確認済みの**ドメイン名** (`contoso.onmicrosoft.com` など、またはディレクトリ内の任意の確認済みのドメイン名)
+      1. 値のデータ:AD FS などのフェデレーション環境を使用している場合は、確認済みの**ドメイン名**。 マネージド環境を使用している場合は、確認済みの**ドメイン名**または onmicrosoft.com のドメイン名 (たとえば、`contoso.onmicrosoft.com`)。
    1. **[OK]**
 1. 新しく作成された GPO のエディターを閉じます
 1. 制御されたロールアウト群に属している、ドメインに参加しているコンピューターを含む目的の OU に、新しく作成した GPO をリンクします
 
 ### <a name="configure-ad-fs-settings"></a>AD FS 設定を構成する
 
-AD FS を使用している場合は、まず、上記の手順を使用して、ただし GPO を AD FS サーバーにリンクして、クライアント側の SCP を構成する必要があります。 Azure AD としてデバイス ID のソースを設定するには、AD FS にこの構成が必要です。
+AD FS を使用している場合は、まず、上記の手順を使用して、ただし GPO を AD FS サーバーにリンクして、クライアント側の SCP を構成する必要があります。 SCP オブジェクトで、デバイス オブジェクトの権限のソースを定義します。 オンプレミスまたは Azure AD を指定できます。 これが AD FS 用に構成されている場合、デバイス オブジェクトのソースは Azure AD として確立されます。
+
+> [!NOTE]
+> AD FS サーバー上でクライアント側の SCP を構成できなかった場合、デバイス ID のソースはオンプレミスと見なされ、指定された期間の後に、AD FS ではオンプレミスのディレクトリからデバイス オブジェクトの削除が開始されます。
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>ダウンレベルの Windows デバイスでハイブリッド Azure AD 参加の制御された検証
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: dfd0a04da9f4f728bd43d8d3fcd4c671e9b95a47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81492dcdd095762127baabda14da602c6698ef6
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562894"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647001"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
 
@@ -30,7 +30,7 @@ ms.locfileid: "68562894"
 > * Curl を使用してナレッジ ベースを照会する
 
 
-このクイック スタートで呼び出す QnA Maker API は次のとおりです。
+このクイックスタートで呼び出す QnA Maker REST API は次のとおりです。
 
 * [ナレッジ ベース (KB) を作成する](https://go.microsoft.com/fwlink/?linkid=2092179)
 * [取得操作の詳細](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)

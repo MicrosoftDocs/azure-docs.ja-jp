@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 24e340d25cb57f9a35f06f6dbd5a394d60a14fad
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/20/2019
+ms.openlocfilehash: 7ff7712130372dcfd277750e881cccce23b36465
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566428"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648360"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
@@ -118,6 +118,12 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ### <a name="general-requirements"></a>一般的な要件
 
 - 各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 主キーの値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
+
+> [!IMPORTANT]
+> 既存の主キーの値を変更すると、次の動作不良が生じます。   
+>   - 同期の問題がレポートされなくても、ハブとメンバーとの間でデータの損失が生じる可能性があります。
+> - 同期に失敗する可能性があります。主キーの変更で、追跡しているテーブルに、同期元からの存在しない行が含まれることが原因です。
+
 - スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
 
 ### <a name="general-limitations"></a>一般的な制限事項

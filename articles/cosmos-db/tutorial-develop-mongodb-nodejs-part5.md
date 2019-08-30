@@ -12,12 +12,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075477"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616421"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Mongoose を使用して Cosmos DB に接続する
 
@@ -232,13 +232,13 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 次に、以下の手順を使用してアプリを実行します。
 
-1. Visual Studio Code ですべての変更を保存します。 左側にある **[デバッグ]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) を選択し、**[デバッグ開始]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) を選択します。
+1. Visual Studio Code ですべての変更を保存します。 左側にある **[デバッグ]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) を選択し、 **[デバッグ開始]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) を選択します。
 
-1. ここでブラウザーに切り替えます。 **開発者ツール**を開き、**[ネットワーク]** タブを開きます。`http://localhost:3000` に移動すると、このアプリケーションが表示されます。
+1. ここでブラウザーに切り替えます。 **開発者ツール**を開き、 **[ネットワーク]** タブを開きます。`http://localhost:3000` に移動すると、このアプリケーションが表示されます。
 
     ![Azure Portal の新しい Azure Cosmos DB アカウント](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
-アプリにはヒーローがまだ格納されていません。 このチュートリアルの次のパートでは、プット、プッシュ、削除の機能を追加します。 そうすれば、Azure Cosmos DB データベースへの Mongoose 接続を使用して、UI からヒーローを追加、更新、削除することができます。 
+アプリにはヒーローがまだ格納されていません。 このチュートリアルの次のパートでは、プット、プッシュ、削除の機能を追加します。 そうすれば、Azure Cosmos データベースへの Mongoose 接続を使用して、UI からヒーローを追加、更新、削除することができます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -246,7 +246,7 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
  1. Azure Cosmos DB アカウントを作成したリソース グループに移動します。
  1. **[リソース グループの削除]** を選択します。
- 1. 削除するリソース グループの名前を確認し、**[削除]** を選択します。
+ 1. 削除するリソース グループの名前を確認し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

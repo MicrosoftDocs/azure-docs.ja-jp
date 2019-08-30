@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
 ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67615856"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
@@ -42,7 +42,7 @@ Azure Active Directory (AD) の統合によって、AKS クラスターのセキ
 
 Azure AD が統合された AKS クラスターでは、名前空間内またはクラスター間での Kubernetes リソースへのアクセス権をユーザーまたはグループに付与できます。 `kubectl` 構成コンテキストを取得するには、ユーザーは、[az aks get-credentials][az-aks-get-credentials] コマンドを実行します。 その後、ユーザーが `kubectl` を使用して AKS クラスターにアクセスすると、Azure AD 資格情報でサインインするように求められます。 このアプローチでは、ユーザー アカウントの管理とパスワードの資格情報のために 1 つのソースが提供されます。 ユーザーは、クラスター管理者によって定義されているリソースにのみアクセスできます。
 
-AKS クラスターでの Azure AD 認証では、OAuth 2.0 プロトコル上に構築された ID 層である OpenID Connect を使用します。 OAuth 2.0 が保護されたリソースにアクセスするためのアクセス トークンの取得と使用を行うメカニズムを定義し、OpenID Connect が OAuth 2.0 承認プロセスの拡張機能として認証を実装します。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][openid-connect]. To verify the authentication tokens obtained from Azure AD through OpenID Connect, AKS clusters use Kubernetes Webhook Token Authentication. For more information, see the [Webhook Token Authentication documentation][webhook-token-docs]を参照してください。
+AKS クラスターでの Azure AD 認証では、OAuth 2.0 プロトコル上に構築された ID 層である OpenID Connect を使用します。 OAuth 2.0 が保護されたリソースにアクセスするためのアクセス トークンの取得と使用を行うメカニズムを定義し、OpenID Connect が OAuth 2.0 承認プロセスの拡張機能として認証を実装します。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][openid-connect]を参照してください。 OpenID Connect を通して Azure AD から取得された認証トークンを検証するには、AKS クラスターでは Kubernetes Webhook トークン認証を使用します。 詳細については、[Webhook トークン認証のドキュメント][webhook-token-docs]を参照してください。
 
 ## <a name="role-based-access-controls-rbac"></a>ロールベースのアクセス制御
 

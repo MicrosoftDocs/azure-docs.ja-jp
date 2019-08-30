@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/08/2019
+ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 8a3be6420a91093e060850459ff22fc5823b8cf2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 656bc8329d6273695e4da24a7e7d13c9df6a1080
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710599"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846595"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
 GRUB とは GRand Unified Bootloader です。これは、VM を起動したときにおそらく最初に表示されるものです。 オペレーティング システムが起動する前に表示されるため、SSH からはアクセスできません。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
@@ -132,6 +132,7 @@ GRUB にアクセスするには、VM の起動中に Enter キーを長押し�
 1. `GRUB_TIMEOUT` 値を 0 以外の値に変更します
 1. お好みのテキスト エディターで `/etc/default/grub` を開きます
 1. `GRUB_HIDDEN_TIMEOUT=1` の行をコメント アウトします
+1. `GRUB_TIMEOUT_STYLE=menu` という行があることを確認します
 1. `sudo update-grub` を実行します。
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu でのシングル ユーザー モード
@@ -193,7 +194,7 @@ SLES が正常に起動できない場合は、自動的に緊急シェルが開
 Red Hat Enterprise Linux と同様に、Oracle Linux のシングル ユーザー モードを使用するには、GRUB が必要であり、root ユーザーを有効にする必要があります。
 
 ### <a name="grub-access-in-oracle-linux"></a>Oracle Linux での GRUB アクセス
-Oracle Linux には GRUB が付属しており、すぐに使用できます。 GRUB を開始するには、`sudo reboot` を使用して VM を再起動し、Esc キーを押します。 GRUB 画面が表示されます。
+Oracle Linux には GRUB が付属しており、すぐに使用できます。 GRUB を開始するには、`sudo reboot` を使用して VM を再起動し、Esc キーを押します。 GRUB 画面が表示されます。 GRUB が表示されない場合は、`GRUB_TERMINAL` 行の値に "serial console" が含まれることを確認してください (例: `GRUB_TERMINAL="serial console"`)。
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux でのシングル ユーザー モード
 Oracle Linux でシングル ユーザー モードを有効にするには、前述の RHEL の手順を実行します。

@@ -6,18 +6,18 @@ ms.author: jahender
 ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 017a26d5672f666d4d8eaf629a0f53fe0cfe517f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a27eac3d4609f1054b0ef6a9417fe2f1ca53ae4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963241"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656642"
 ---
 # <a name="secure-azure-computing-architecture"></a>Secure Azure Computing Architecture
 
 米国Azure にワークロードをデプロイする国防総省 (DoD) の顧客は、セキュリティで保護された仮想ネットワークをセットアップし、DoD の標準と慣行で規定されているセキュリティ ツールとサービスを構成するためのガイダンスを求めています。 
 
-国防情報システム局 (DISA) は 2017 年、[セキュア クラウド コンピューティング アーキテクチャ (SCCA) 機能要件文書 (FRD)](https://iasecontent.disa.mil/stigs/pdf/SCCA_FRD_v2-9.pdf) を発行しました。 SCCA では、国防情報システム ネットワーク (DISN) と商用クラウド プロバイダーの接続ポイントをセキュリティで保護するための機能目標を説明しています。 SCCA では、ミッション所有者が接続境界でクラウド アプリケーションをセキュリティで保護する方法についても説明しています。 商用クラウドに接続するすべての DoD エンティティは、SCCA FRD で規定されているガイドラインに従う必要があります。
+国防情報システム局 (DISA) は 2017 年、[セキュア クラウド コンピューティング アーキテクチャ (SCCA) 機能要件文書 (FRD)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/SCCA_FRD_v2-9.pdf) を発行しました。 SCCA では、国防情報システム ネットワーク (DISN) と商用クラウド プロバイダーの接続ポイントをセキュリティで保護するための機能目標を説明しています。 SCCA では、ミッション所有者が接続境界でクラウド アプリケーションをセキュリティで保護する方法についても説明しています。 商用クラウドに接続するすべての DoD エンティティは、SCCA FRD で規定されているガイドラインに従う必要があります。
  
 SCCA には 4 つのコンポーネントがあります。
  

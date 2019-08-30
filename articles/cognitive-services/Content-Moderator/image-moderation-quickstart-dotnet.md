@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9bfe5f21da6418f82b2099a5da4ba8c3c32c25f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564495"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946232"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>クイック スタート:画像を分析して好ましくない内容を検出する (C#)
 
@@ -49,20 +49,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 *Program.cs* ファイルの先頭に次の `using` ステートメントを追加します。
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator クライアントを作成する
 
 サブスクリプション用の Content Moderator クライアント プロバイダーを作成するために、*Program.cs* ファイルに次のコードを追加します。 コードは、同じ名前空間内の **Program** クラスの近くに追加します。 **AzureRegion** フィールドと **CMSubscriptionKey** フィールドを、リージョン識別子とサブスクリプション キーの値で更新する必要があります。
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=84-107)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>入力と出力のターゲットを設定する
 
 次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらのフィールドでは、入力画像コンテンツ用および出力 JSON コンテンツ用のファイルを指定します。
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
 
 *ImageFiles.txt* 入力ファイルを作成し、それに合わせてパスを更新する必要があります (相対パスは実行ディレクトリを基準にしています)。 _ImageFiles.txt_ を開き、モデレートする画像の URL を追加します。 このクイック スタートでは、サンプル入力として次の URL を使用します。
 
@@ -75,20 +75,20 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 次のコードを *Program.cs* に追加します (同じ名前空間内の **Program** クラスの近く)。 レビューした各画像のモデレーション結果は、このクラスのインスタンスを使用して記録することになります。
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=109-124)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>画像の評価メソッドを定義する
 
 **Program** クラスに次のメソッドを追加します。 このメソッドでは、3 つの異なる方法で単一の画像が評価され、評価結果が返されます。 個々の操作について詳しく知りたい場合は、「[次の手順](#next-steps)」セクションのリンク先に進んでください。
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=55-81)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
 
 ### <a name="load-the-input-images"></a>入力画像を読み込む
 
 **Program** クラスの **Main** メソッドに次のコードを追加します。 このコードにより、入力ファイル内の各画像 URL に関する評価データを取得するようにプログラムが設定されます。 これで、このデータが単一の出力ファイルに書き込まれます。
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
 
 ## <a name="run-the-program"></a>プログラムの実行
 

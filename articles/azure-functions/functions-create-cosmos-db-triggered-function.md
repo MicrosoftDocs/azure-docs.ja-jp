@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 941a35084ba811e3bf9224087336db9abbd5b5d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cd09349ae37d11e4d01bc308162512ebfa03dfc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137846"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086349"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -50,17 +49,17 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Azure Cosmos DB のトリガーの作成
 
-1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、**[ポータル内]**、**[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
+1. Function App を展開し、 **[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
 
    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
-1. **[その他のテンプレート]**、**[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
+1. **[その他のテンプレート]** 、 **[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
 
     ![Functions のクイック スタート: [その他のテンプレート] を選択する](./media/functions-create-cosmos-db-triggered-function/add-first-function.png)
 
 1. 検索フィールドに「`cosmos`」と入力し、**Azure Cosmos DB トリガー** テンプレートを選択します。
 
-1. プロンプトが表示されたら、**[インストール]** を選択して Azure Cosmos DB 拡張機能を関数アプリにインストールします。 インストールが正常に完了したら、**[続行]** を選択します。
+1. プロンプトが表示されたら、 **[インストール]** を選択して Azure Cosmos DB 拡張機能を関数アプリにインストールします。 インストールが正常に完了したら、 **[続行]** を選択します。
 
     ![バインディング拡張機能をインストールする](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -70,8 +69,8 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
     | Setting      | 推奨値  | Description                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Name** | 既定値 | テンプレートに示されている既定の関数名を使用します。|
-    | **Azure Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択し、使用する**サブスクリプション**、前の手順で作成した**データベース アカウント**、**[選択]** の順に選択します。 これにより、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
+    | **Name** | Default | テンプレートに示されている既定の関数名を使用します。|
+    | **Azure Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択し、使用する**サブスクリプション**、前の手順で作成した**データベース アカウント**、 **[選択]** の順に選択します。 これにより、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
     | **[コレクション名]** | 項目 | 監視するコレクションの名前。 |
     | **[Create lease collection if it doesn't exist]\(リース コレクションが存在しない場合は作成する\)** | オン | コレクションはまだ存在していないため、作成します。 |
     | **データベース名** | タスク | 監視するコレクションのデータベース名。 |
@@ -88,13 +87,13 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 1. ブラウザーの新しいタブで、[Azure Portal](https://portal.azure.com) の 2 つ目のインスタンスを開きます。
 
-1. ポータルの左側のアイコン バーを展開し、検索フィールドに「`cosmos`」と入力して、**[Azure Cosmos DB]** を選択します。
+1. ポータルの左側のアイコン バーを展開し、検索フィールドに「`cosmos`」と入力して、 **[Azure Cosmos DB]** を選択します。
 
     ![Azure Cosmos DB サービスの検索](./media/functions-create-cosmos-db-triggered-function/functions-search-cosmos-db.png)
 
-1. Azure Cosmos DB アカウントを選択してから、**[データ エクスプローラー]** を選択します。 
+1. Azure Cosmos DB アカウントを選択してから、 **[データ エクスプローラー]** を選択します。 
 
-1. **[コレクション]** で、**[taskDatabase]**、**[新しいコレクション]** の順に選択します。
+1. **[コレクション]** で、 **[taskDatabase]** 、 **[新しいコレクション]** の順に選択します。
 
     ![コレクションの作成](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
 
@@ -116,11 +115,11 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 ## <a name="test-the-function"></a>関数をテストする
 
-1. データ エクスプローラーで新しい **[taskCollection]** を展開し、**[ドキュメント]**、**[新しいドキュメント]** の順に選択します。
+1. データ エクスプローラーで新しい **[taskCollection]** を展開し、 **[ドキュメント]** 、 **[新しいドキュメント]** の順に選択します。
 
     ![TaskCollection でのドキュメント作成](./media/functions-create-cosmos-db-triggered-function/create-document-in-collection.png)
 
-1. 新しいドキュメントの内容を次の内容に置き換えて、**[保存]** を選択します。
+1. 新しいドキュメントの内容を次の内容に置き換えて、 **[保存]** を選択します。
 
         {
             "id": "task1",
@@ -132,7 +131,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
     ![ログ内のメッセージを表示します。](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-view-logs.png)
 
-1. (省略可能) ドキュメントに戻り、変更を加え、**[更新]** をクリックします。 次に、関数ログに戻り、この更新によっても関数がトリガーされたことを確認します。
+1. (省略可能) ドキュメントに戻り、変更を加え、 **[更新]** をクリックします。 次に、関数ログに戻り、この更新によっても関数がトリガーされたことを確認します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

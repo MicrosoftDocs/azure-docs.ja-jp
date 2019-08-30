@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/14/2019
+ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: c673fd43abe6808256eb74f435aad48ed8d41539
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359846"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036212"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>チュートリアル:Azure Container Instances に画像分類モデルをデプロイする
 
@@ -38,10 +38,10 @@ Container Instances は、ワークフローをテストして理解するうえ
 > この記事のコードは、Azure Machine Learning SDK バージョン 1.0.41 を使用してテストされました。
 
 ## <a name="prerequisites"></a>前提条件
-[開発環境の設定](#start)に関するセクションに進み、ノートブックの手順に目を通してください。  
 
-ノートブックを実行するにはまず、「[チュートリアル (パート 1): Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。   次に、同じノートブック サーバーを使用して **tutorials/img-classification-part2-deploy.ipynb** ノートブックを実行します。
+ノートブックを実行するにはまず、「[チュートリアル (パート 1): 画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」を参照してください。   次に、同じノートブック サーバーを使用して **tutorials/img-classification-part2-deploy.ipynb** ノートブックを開きます。
 
+このチュートリアルは、独自の[ローカル環境](how-to-configure-environment.md#local)で使用する場合は、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。  `matplotlib` と `scikit-learn` が環境にインストールされていることを確認してください。 
 
 ## <a name="start"></a>環境をセットアップする
 
@@ -223,7 +223,7 @@ def run(raw_data):
 次に、**myenv.yml** という環境ファイルを作成します。このファイルには、すべてのスクリプトのパッケージ依存関係が指定されています。 このファイルは、すべての依存関係を Docker イメージに確実にインストールするために使用されます。 このモデルには `scikit-learn` と `azureml-sdk` が必要です。
 
 ```python
-from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.conda_dependencies import CondaDependencies 
 
 myenv = CondaDependencies()
 myenv.add_conda_package("scikit-learn")
@@ -245,9 +245,9 @@ with open("myenv.yml", "r") as f:
 ```python
 from azureml.core.webservice import AciWebservice
 
-aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
-                                               memory_gb=1,
-                                               tags={"data": "MNIST",
+aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
+                                               memory_gb=1, 
+                                               tags={"data": "MNIST",  
                                                      "method": "sklearn"},
                                                description='Predict MNIST with sklearn')
 ```
@@ -270,18 +270,17 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 ```python
 %%time
 from azureml.core.webservice import Webservice
-from azureml.core.image import ContainerImage
+from azureml.core.model import InferenceConfig
 
-# configure the image
-image_config = ContainerImage.image_configuration(execution_script="score.py", 
-                                                  runtime="python", 
-                                                  conda_file="myenv.yml")
+inference_config = InferenceConfig(runtime= "python", 
+                                   entry_script="score.py",
+                                   conda_file="myenv.yml")
 
-service = Webservice.deploy_from_model(workspace=ws,
-                                       name='sklearn-mnist-svc',
-                                       deployment_config=aciconfig,
-                                       models=[model],
-                                       image_config=image_config)
+service = Model.deploy(workspace=ws, 
+                       name='sklearn-mnist-svc',
+                       models=[model], 
+                       inference_config=inference_config,
+                       deployment_config=aciconfig)
 
 service.wait_for_deployment(show_output=True)
 ```
@@ -327,14 +326,14 @@ for s in sample_indices:
     plt.subplot(1, n, i + 1)
     plt.axhline('')
     plt.axvline('')
-
+    
     # use different color for misclassified sample
     font_color = 'red' if y_test[s] != result[i] else 'black'
     clr_map = plt.cm.gray if y_test[s] != result[i] else plt.cm.Greys
-
+    
     plt.text(x=10, y=-10, s=result[i], fontsize=18, color=font_color)
     plt.imshow(X_test[s].reshape(28, 28), cmap=clr_map)
-
+    
     i = i + 1
 plt.show()
 ```
@@ -356,7 +355,7 @@ headers = {'Content-Type': 'application/json'}
 
 # for AKS deployment you'd need to the service key in the header as well
 # api_key = service.get_key()
-# headers = {'Content-Type':'application/json',  'Authorization':('Bearer '+ api_key)}
+# headers = {'Content-Type':'application/json',  'Authorization':('Bearer '+ api_key)} 
 
 resp = requests.post(service.scoring_uri, input_data, headers=headers)
 

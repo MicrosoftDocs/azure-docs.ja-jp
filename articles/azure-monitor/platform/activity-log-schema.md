@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: ba5e0f696f54f46fb14086b542dc3b2e64155975
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abe2ed0d50ce26ddebeeeccb87c49fc20db43b2a
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244934"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515382"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 **Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](activity-log-export.md)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure 診断ログ スキーマ](diagnostic-logs-schema.md)へのマッピングについては、この記事の最後で紹介します。
@@ -566,7 +566,7 @@ ms.locfileid: "66244934"
 | resourceId |セキュリティ アラートのリソース ID。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
-| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 これらのプロパティは、セキュリティ アラートの種類によって異なります。 Security Center から送られてくるアラートの種類について詳しくは、[こちらのページ](../../security-center/security-center-alerts-type.md)をご覧ください。 |
+| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 これらのプロパティは、セキュリティ アラートの種類によって異なります。 Security Center から送られてくるアラートの種類について詳しくは、[こちらのページ](../../security-center/security-center-alerts-overview.md)をご覧ください。 |
 | properties.Severity |重大度のレベル。 可能性のある値は、"High"、"Medium"、"Low" です。 |
 | status |操作の状態を説明する文字列。 いくつかの一般的な値は次のとおりです: Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 通常、セキュリティ イベントの場合は null です。 |
@@ -790,7 +790,7 @@ Azure アクティビティ ログをストレージ アカウントまたは Ev
 | identity | 要求と承認プロパティ |  |
 | Level | Level |  |
 | location | 該当なし | イベントが処理される場所。 *これは、リソースの場所ではなく、イベントが処理される場所です。このプロパティは、今後の更新で削除されます。* |
-| Properties | properties.eventProperties |  |
+| properties | properties.eventProperties |  |
 | properties.eventCategory | category | properties.eventCategory が存在しない場合、カテゴリは "Administrative" |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |

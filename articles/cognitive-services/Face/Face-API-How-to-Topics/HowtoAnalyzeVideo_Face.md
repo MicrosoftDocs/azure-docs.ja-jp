@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: b175e68277ab456bea7eaa7b82619d61e45bf722
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442735"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114344"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>例:リアルタイムでビデオを分析する方法
 
@@ -36,7 +36,7 @@ ms.locfileid: "67442735"
 
 ほぼリアルタイムの分析システムに対応する最も単純な設計は、無限ループであり、ここでは繰り返しごとに、フレームを取り込み、分析し、続いて結果を消費します。
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -54,7 +54,7 @@ while (true)
 
 単純な単一スレッドのループは、軽量のクライアント側アルゴリズムに適していますが、クラウド API 呼び出しに関わる待ち時間には十分には適合しません。 この問題の解決策は、実行時間の長い API 呼び出しを、フレームの取り込みと並列に実行できるようにすることです。 C# の場合、タスクベースの並列化を使用して実現できます。
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -75,7 +75,7 @@ while (true)
 
 最後の「プロデューサー/コンシューマー」システムでは、以前の無限ループに類似したプロデューサー スレッドを使用します。 ただし、プロデューサーは、利用できるようになるとすぐに分析結果を消費するのではなく、単にタスクをキュー入れて追跡します。
 
-```CSharp
+```csharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
      
@@ -112,7 +112,7 @@ while (true)
 
 また、コンシューマー スレッドもあり、これはタスクをキューから取り出し、タスクが完了するのを待機して、結果を表示するか、スローされた例外を発生させます。 キューの使用により、システムの最大フレーム レートを制限せずに一度に 1 つずつ正しい順序で結果が使用されることを保証できます。
 
-```CSharp
+```csharp
 // Consumer thread. 
 while (true)
 {
@@ -144,7 +144,7 @@ while (true)
 
 いくつかの可能性を示すため、ライブラリを使用する 2 つのサンプル アプリを取り上げます。 1 つは、単純なコンソール アプリであり、その簡略化バージョンを下に再現しています。 これは既定の Web カメラからのフレームを取得し、それらを顔検出のために Face API に送信します。
 
-```CSharp
+```csharp
 using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;

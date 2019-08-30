@@ -62,9 +62,6 @@
           href: active-directory-b2c-reference-tokens.md
         - name: アクセス トークンの要求
           href: active-directory-b2c-access-tokens.md
-        - name: 複数のトークン発行者のサポート
-          href: multiple-token-endpoints.md
-          displayName: 'migrate, b2clogin, owin, jwt'
     - name: ユーザー フローとポリシー
       items:
         - name: ユーザー フロー
@@ -307,7 +304,12 @@
             - name: RelyingParty
               href: relyingparty.md
     - name: b2clogin.com の使用
-      href: b2clogin.md
+      items:
+        - name: b2clogin.com の概要
+          href: b2clogin.md
+        - name: Web API を b2clogin.com に移行する
+          href: multiple-token-endpoints.md
+          displayName: 'migrate, b2clogin, owin, jwt'
     - name: Automation
       items:
         - name: 使用状況レポートのエクスポート

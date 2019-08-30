@@ -1,5 +1,5 @@
 ---
-title: ドメイン固有のコンテンツを検出する - Computer Vision
+title: ドメイン固有のコンテンツ - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: 画像に関する詳細な情報を返すための画像分類ドメインを指定する方法について説明します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e4b64e00f71768a8821c83a73b019f77089e1b3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368079"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946341"
 ---
 # <a name="detect-domain-specific-content"></a>ドメイン固有のコンテンツの検出
 
@@ -100,7 +100,7 @@ ms.locfileid: "60368079"
 
 現在、Computer Vision では、次のドメイン固有モデルがサポートされています。
 
-| Name | 説明 |
+| EnableAdfsAuthentication | 説明 |
 |------|-------------|
 | celebrities | 著名人の認識、`people_` カテゴリに分類された画像についてサポート |
 | landmarks | ランドマークの認識、`outdoor_` または `building_` カテゴリに分類された画像についてサポート |

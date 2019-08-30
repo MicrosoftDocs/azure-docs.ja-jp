@@ -2,17 +2,17 @@
 title: Azure Marketplace 向けの VHD からの VM のデプロイ
 description: Azure にデプロイされた VHD からの VM を登録する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.author: evansma
+ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938301"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934961"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD からの VM のデプロイ
 
@@ -59,7 +59,7 @@ Azure PowerShell と Azure CLI をまだインストールしていない場合�
    |  -------------              |   ---------------                                                            |
    | ユーザー ストレージ アカウント名   | 汎用化された VHD が配置されているストレージ アカウント名                    |
    | ユーザー ストレージ コンテナー名 | 汎用化された VHD が配置されているコンテナー名                          |
-   | パブリック IP の DNS 名      | パブリック IP DNS 名                                                           |
+   | パブリック IP の DNS 名      | パブリック IP DNS 名。 DNS 名は VM のもので、プランがデプロイされると、Azure portal でこれを定義します。  |
    | 管理ユーザー名             | 新しい VM の管理者アカウントのユーザー名                                  |
    | 管理パスワード              | 新しい VM の管理者アカウントのパスワード                                  |
    | [OS Type]\(OS の種類\)                     | VM オペレーティング システム: `Windows` \| `Linux`                                    |

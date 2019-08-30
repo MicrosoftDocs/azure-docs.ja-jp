@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166b7727362549aaf054e3f0282c564eca687eb9
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9f9d819533b97a126a324ab867b7185fd6415847
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672877"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851978"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,11 +35,8 @@ ms.locfileid: "67672877"
 このチュートリアルで説明するシナリオでは、以下を所有していることを前提としています。
 
 * Azure AD テナント。
-* [Enterprise](https://www.zendesk.com/product/pricing/) プラン以上の有効な Zendesk テナント。
+* Professional プラン以上が有効な Zendesk テナント。
 * 管理者アクセス許可がある Zendesk のユーザー アカウント。
-
-> [!NOTE]
-> Azure AD プロビジョニング統合は、[Zendesk Rest API](https://developer.zendesk.com/rest_api/docs/core/introduction) に依存しています。 この API は、Enterprise プラン以上で Zendesk チームが利用できるようになります。
 
 ## <a name="add-zendesk-from-the-azure-marketplace"></a>Azure Marketplace からの Zendesk の追加
 

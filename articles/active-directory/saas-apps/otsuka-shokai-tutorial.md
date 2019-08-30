@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: f558b33079821efcf56731eb95073e0170a72795
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274195"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943552"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>チュートリアル:Otsuka Shokai と Azure Active Directory の統合
 
@@ -80,13 +80,13 @@ Otsuka Shokai に対する Azure AD SSO を構成してテストするには、�
 
 1. **[SAML でシングル サインオンをセットアップします]** ページでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
-1. Otsuka Shokai アプリケーションは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier**  は  **user.userprincipalname** にマップされています。 Otsuka Shokai アプリケーションでは、 **nameidentifier**  が  **user.objectid** にマップされると想定されているため、 **[編集]**   アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Otsuka Shokai アプリケーションは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Otsuka Shokai アプリケーションでは、**nameidentifier** が **user.objectid** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
 1. その他に、Otsuka Shokai アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性|
+    | EnableAdfsAuthentication | ソース属性|
     | ---------------| --------------- |
     | Appid | `<Application ID>` |
 

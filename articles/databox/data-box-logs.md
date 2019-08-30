@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: ba08cd7fdecda99c04d5bb1007b3e5f61cd1bd5c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446766"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535181"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy の追跡とイベントのログ記録
 
@@ -28,7 +28,7 @@ Data Box または Data Box Heavy の注文は、注文、設定、データの�
 | デバイスを設定する              | [アクティビティ ログ](#query-activity-logs-during-setup)に記録されたデバイスの資格情報へのアクセス                                              |
 | デバイスへのデータのコピー        | データのコピー用の [*error.xml* ファイルを確認する](#view-error-log-during-data-copy)                                                             |
 | 発送の準備をする            | デバイス上のマニフェスト ファイルまたは [BOM ファイルを検査する](#inspect-bom-during-prepare-to-ship)                                      |
-| Azure へのデータのアップロード       | Azure データセンターでのデータのアップロード中のエラーについて [*copylogs* を確認する](#review-copy-log-during-upload-to-azure)                         |
+| Azure へのデータのアップロード       | Azure データセンターでのデータのアップロード中のエラーについて[コピー ログを確認する](#review-copy-log-during-upload-to-azure)                         |
 | デバイスからのデータの消去   | 監査ログと注文履歴を含む[生産物流管理ログを表示する](#get-chain-of-custody-logs-after-data-erasure)                |
 
 この記事では、Data Box または Data Box Heavy の注文の追跡と監査に使用できるさまざまなメカニズムやツールの詳細について説明します。 この記事の情報は、Data Box と Data Box Heavy の両方に適用されます。 後続のセクションにおいて、Data Box への言及はすべて、Data Box Heavy にも適用されます。
@@ -64,7 +64,7 @@ Azure Data Box サービスに対して定義できる 2 つのロールは次�
 
 - Data Box は、お客様のオンプレミスにロックされた状態で届きます。 ご注文には Azure portal で使用可能なデバイスの資格情報を使用できます。  
 
-    Data Box が設定されている場合は、デバイスの資格情報にアクセスしたすべてのユーザーがわかっている必要がある場合があります。 **[デバイスの資格情報]** ブレードにアクセスしたユーザーを調べるには、アクティビティ ログに対してクエリを実行することができます。   **[デバイスの詳細] > [資格情報]** ブレードへのアクセスに関連するアクションは、`ListCredentials` アクションとしてとしてアクティビティ ログに記録されます。
+    Data Box が設定されている場合は、デバイスの資格情報にアクセスしたすべてのユーザーがわかっている必要がある場合があります。 **[デバイスの資格情報]** ブレードにアクセスしたユーザーを調べるには、アクティビティ ログに対してクエリを実行することができます。  **[デバイスの詳細] > [資格情報]** ブレードへのアクセスに関連するアクションは、`ListCredentials` アクションとしてとしてアクティビティ ログに記録されます。
 
     ![アクティビティ ログのクエリ](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Data Box または Azure Data Box Heavy へのデータのコピー中に、コ�
 
 ### <a name="errorxml-file"></a>Error.xml ファイル
 
-コピー ジョブがエラーなしで完了したことを確認してください。 コピー プロセス中にエラーがある場合は、 **[接続とコピー]**   ページからログをダウンロードします。
+コピー ジョブがエラーなしで完了したことを確認してください。 コピー プロセス中にエラーがある場合は、 **[接続とコピー]** ページからログをダウンロードします。
 
 - 512 バイトにアラインされていないファイルを Data Box のマネージド ディスク フォルダーにコピーした場合、そのファイルはステージング用のストレージ アカウントにページ BLOB としてアップロードされません。 ログにエラーが表示されます。 そのファイルを削除し、512 バイトにアラインされているファイルをコピーします。
 - VHDX、動的 VHD、または差分 VHD (これらのファイルはサポートされていません) をコピーした場合は、ログにエラーが表示されます。
@@ -195,23 +195,25 @@ BOM またはマニフェスト ファイルは Azure ストレージ アカウ�
 
 ## <a name="review-copy-log-during-upload-to-azure"></a>Azure へのアップロード中にコピー ログを確認する
 
-Azure へのデータのアップロード中に、*copylog* が作成されます。
+Azure へのデータのアップロード中に、コピー ログが作成されます。
 
-### <a name="copylog"></a>Copylog
+### <a name="copy-log"></a>コピー ログ
 
-Data Box サービスでは、処理される注文ごとに、関連付けられたストレージ アカウント内に *copylog* が作成されます。 *copylog* には、アップロードされたファイルの総数と、Data Box から Azure Storage アカウントへのデータのコピー中にエラーが出力されたファイルの数が含まれています。
+Data Box サービスでは、処理される注文ごとに、関連付けられたストレージ アカウント内にコピー ログが作成されます。 コピー ログには、アップロードされたファイルの総数と、Data Box から Azure Storage アカウントへのデータのコピー中にエラーが出力されたファイルの数が含まれています。
 
 巡回冗長検査 (CRC) の計算は、Azure へのアップロード中に行われます。 データのコピーからの CRC とデータのアップロード後の CRC が比較されます。 CRC の不一致は、対応するファイルがアップロードに失敗したことを示します。
 
-既定では、ログは  `copylog` という名前のコンテナーに書き込まれます。 ログは、次の命名規則を使用して保存されます。
+既定では、ログは `copylog` という名前のコンテナーに書き込まれます。 ログは、次の命名規則を使用して保存されます。
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`
 
-copylog パスは、ポータルの **[概要]** ブレードにも表示されます。
+コピー ログ パスは、ポータルの **[概要]** ブレードにも表示されます。
 
-![完了時に [概要] ブレードに表示されている copylog へのパス](media/data-box-logs/copy-log-path-1.png)
+![完了時に [概要] ブレードに表示されているコピー ログへのパス](media/data-box-logs/copy-log-path-1.png)
 
-次のサンプルは、正常に完了した Data Box のアップロード用の copylog ファイルの一般的な形式を示しています。
+### <a name="upload-completed-successfully"></a>アップロードが正常に完了した 
+
+次のサンプルは、正常に完了した Data Box のアップロード用のコピー ログの一般的な形式を示しています。
 
 ```
 <?xml version="1.0"?>
@@ -222,11 +224,13 @@ copylog パスは、ポータルの **[概要]** ブレードにも表示され�
 </CopyLog>
 ```
 
+### <a name="upload-completed-with-errors"></a>アップロードがエラーで完了した 
+
 Azure へのアップロードも、エラーで完了する場合があります。
 
-![エラーで完了したときに [概要] ブレードに表示されている copylog へのパス](media/data-box-logs/copy-log-path-2.png)
+![エラーで完了したときに [概要] ブレードに表示されているコピー ログへのパス](media/data-box-logs/copy-log-path-2.png)
 
-次に、アップロードがエラーで完了した場合の copylog の例を示します。
+次に、アップロードがエラーで完了した場合のコピー ログの例を示します。
 
 ```xml
 <ErroredEntity Path="iso\samsungssd.iso">
@@ -245,9 +249,15 @@ Azure へのアップロードも、エラーで完了する場合がありま�
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
-次に、Azure の命名規則に準拠していないコンテナーが、Azure へのデータ アップロード中に名前変更された場合の `copylog` の例を示します。
+### <a name="upload-completed-with-warnings"></a>アップロードが警告で完了した
 
-コンテナーの新しい固有名は `DataBox-GUID` という形式で、コンテナーのデータは、名前が変更された新しいコンテナーに配置されます。 この `copylog` では、コンテナーの古い名前と新しい名前が指定されています。
+Azure へのアップロードが警告で完了するのは、Azure の名前付け規則に準拠していないコンテナー/BLOB/ファイルの名前がデータに含まれており、Azure にデータをアップロードするために名前が変更された場合です。
+
+![警告で完了したときに [概要] ブレードに表示されているコピー ログへのパス](media/data-box-logs/copy-log-path-3.png)
+
+次に、Azure の名前付け規則に準拠していないコンテナーが、Azure へのデータ アップロード中に名前変更された場合のコピー ログの例を示します。
+
+コンテナーの新しい固有名は `DataBox-GUID` という形式で、コンテナーのデータは、名前が変更された新しいコンテナーに配置されます。 このコピー ログでは、コンテナーの古い名前と新しい名前が指定されています。
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -258,7 +268,7 @@ Azure へのアップロードも、エラーで完了する場合がありま�
 </ErroredEntity>
 ```
 
-次に、Azure の命名規則に準拠していない BLOB またはファイルが、Azure へのデータ アップロード中に名前変更された場合の `copylog` の例を示します。 新しい BLOB 名またはファイル名は、コンテナーへの相対パスの SHA256 ダイジェストに変換され、宛先の種類に基づいてパスにアップロードされます。 宛先として、ブロック BLOB、ページ BLOB、または Azure Files を指定できます。
+次に、Azure の名前付け規則に準拠していない BLOB またはファイルが、Azure へのデータ アップロード中に名前変更された場合のコピー ログの例を示します。 新しい BLOB 名またはファイル名は、コンテナーへの相対パスの SHA256 ダイジェストに変換され、宛先の種類に基づいてパスにアップロードされます。 宛先として、ブロック BLOB、ページ BLOB、または Azure Files を指定できます。
 
 この `copylog` では、BLOB またはファイルの古い名前と新しい名前、および Azure でのパスが指定されています。
 
@@ -287,7 +297,7 @@ NIST SP 800-88 リビジョン 1 のガイドラインに従って Data Box デ�
 
 ### <a name="audit-logs"></a>監査ログ
 
-監査ログには、Azure データセンターの外部にあるときの Data Box または Data Box Heavy の電源投入と共有へのアクセスに関する情報が含まれます。 これらのログは、`storage-account/azuredatabox-chainofcustodylogs` にあります
+監査ログには、Azure データセンターの外部にあるときの Data Box または Data Box Heavy の電源投入と共有へのアクセス方法に関する情報が含まれます。 これらのログは、`storage-account/azuredatabox-chainofcustodylogs` にあります
 
 Data Box からの監査ログのサンプルを次に示します。
 
@@ -344,13 +354,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>注文履歴のダウンロード
 
-注文履歴は Azure portal で利用できます。 注文が完了し、デバイスのクリーンアップ (ディスクからのデータ消去) が完了したら、デバイスの注文に移動し、次に **[注文の詳細]** に移動します。 **[注文履歴のダウンロード]**   オプションが使用可能になっています。 詳細については、「[注文履歴のダウンロード](data-box-portal-admin.md#download-order-history)」を参照してください。
+注文履歴は Azure portal で利用できます。 注文が完了し、デバイスのクリーンアップ (ディスクからのデータ消去) が完了したら、デバイスの注文に移動し、次に **[注文の詳細]** に移動します。 **[注文履歴のダウンロード]** オプションが使用可能になっています。 詳細については、「[注文履歴のダウンロード](data-box-portal-admin.md#download-order-history)」を参照してください。
 
 注文履歴をスクロールすると、以下の内容が表示されます。
 
 - デバイスの運送業者の追跡情報。
 - *SecureErase* アクティビティのイベント。 これらのイベントは、ディスク上のデータの消去に対応します。
-- Data Box ログのリンク。 *監査ログ*、*copylog*、および *BOM* ファイルのパスが表示されます。
+- Data Box ログのリンク。 *監査ログ*、*コピー ログ*、および *BOM* ファイルのパスが表示されます。
 
 次に、Azure portal からの注文履歴ログのサンプルを示します。
 

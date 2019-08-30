@@ -5,15 +5,15 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 08/21/2019
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: fe6c6d461fd6b99ce2ce57ebdd61a3f3e961489c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 42e965b188db2b84579ab322fbe19781000dff7e
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181338"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894076"
 ---
 ## <a name="storage"></a>Storage
 
@@ -24,4 +24,3 @@ ms.locfileid: "67181338"
 | [ストレージ アカウントのクール アクセス層の拒否](../articles/governance/policy/samples/deny-cool-access-tiering.md) | BLOB ストレージ アカウントでのクール アクセス層の使用を禁止します。  |
 | [ストレージ アカウントのみに対する https トラフィックの確認](../articles/governance/policy/samples/ensure-https-storage-account.md) | HTTPS トラフィックを使用するストレージ アカウントが必要です。  |
 | [ストレージ ファイルの暗号化の確認](../articles/governance/policy/samples/ensure-storage-file-encryption.md) | ファイルの暗号化がストレージ アカウントに対して有効になっている必要があります。  |
-| [ストレージ アカウントの暗号化が必要](../articles/governance/policy/samples/require-storage-account-encryption.md) | ストレージ アカウントで BLOB 暗号化を使用する必要があります。  |

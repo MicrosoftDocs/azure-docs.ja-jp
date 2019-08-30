@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bc4e8e02c5b44c63ee531a295f2b59e91c056bd
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934708"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900464"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -114,7 +114,7 @@ Azure ネットワーク セキュリティ アプライアンスを使用する
 利用可能な Azure Virtual Network セキュリティ アプライアンスを見つける場合は、[Azure Marketplace](https://azure.microsoft.com/marketplace/) に移動し、"security" や "network security" で検索してください。
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>セキュリティ ゾーン用の境界ネットワークをデプロイする
-[境界ネットワーク](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (DMZ ともいう) は、資産とインターネットの間に追加のセキュリティ層を提供する物理的または論理的なネットワーク セグメントです。 境界ネットワークの端にある特殊なネットワーク アクセス制御デバイスでは、ご利用の仮想ネットワークへの必要なトラフィックのみが許可されます。
+[境界ネットワーク](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (DMZ ともいう) は、資産とインターネットの間に追加のセキュリティ層を提供する物理的または論理的なネットワーク セグメントです。 境界ネットワークの端にある特殊なネットワーク アクセス制御デバイスでは、ご利用の仮想ネットワークへの必要なトラフィックのみが許可されます。
 
 境界ネットワークは、Azure Virtual Network の端にあるデバイスでのネットワーク アクセス制御の管理、監視、ログ記録、レポート作成に集中できるため便利です。 境界ネットワークは、通常は分散型サービス拒否 (DDoS) 防止、侵入検出/侵入防止システム (IDS/IPS)、ファイアウォール ルールとポリシー、Web フィルタリング、ネットワーク マルウェア対策などを有効にする場所です。 ネットワーク セキュリティ デバイスは、インターネットと Azure Virtual Network の間に配置され、両方のネットワークに対するインターフェイスが備わっています。
 

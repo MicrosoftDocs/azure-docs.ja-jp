@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b21c5f8630598a4b7117d23ad7c8da46de07d2fa
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204490"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900040"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同期: 関数参照
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  
@@ -82,7 +82,7 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 | **プログラム フロー** | | | | |
 | [エラー](#error) |[IIF](#iif) |[選択肢](#select) |[Switch](#switch) | |
 | [Where](#where) |[With](#with) | | | |
-| **テキスト** | | | | |
+| **Text** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
 | [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[*Views\\Home\\AllDates.cshtml*](#replace) | |
@@ -102,7 +102,7 @@ BitAnd 関数は、値に指定のビットを設定します。
 **解説:**  
 この関数は両方のパラメーターをバイナリ表現に変換し、ビットを次に設定します。
 
-* 0 - "*マスク*" と "*フラグ*" で対応するビットの 1 つまたは両方が 0 の場合
+* 0 - *value1* と *value2* 内の対応するビットの 1 つまたは両方が 0 の場合
 * 1 - 対応するビットの両方が 1 の場合。
 
 つまり、両方のパラメーターの対応するビットが 1 の場合を除くすべてのケースで 0 を返します。
@@ -133,7 +133,7 @@ CBool 関数は、式の評価結果に基づいてブール値を返します�
 `bool CBool(exp Expression)`
 
 **解説:**  
-式の評価結果が 0 以外の値の場合、CBool は True を返し、それ以外の場合は False を返します。
+式の評価結果が 0 以外の値の場合は CBool によって True が返され、それ以外の場合は False が返されます。
 
 **例:**  
 `CBool([attrib1] = [attrib2])`  

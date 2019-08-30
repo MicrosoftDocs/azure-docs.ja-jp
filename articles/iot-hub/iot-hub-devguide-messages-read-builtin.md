@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363998"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950409"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -26,7 +26,7 @@ ms.locfileid: "61363998"
 
 IoT Hub では、組み込みの Event Hubs に最大 7 日間データを保持できます。 保持期間は IoT Hub の作成時に設定できます。 IoT Hub でのデータ保持期間は、お使いの IoT Hub のレベルとユニットの種類によって異なります。 サイズに関しては、組み込みの Event Hubs では、最大メッセージ サイズのメッセージを少なくとも 24 時間のクォータまで保持できます。 たとえば、1 つの S1 ユニットの IoT Hub では、それぞれ 4K サイズのメッセージを少なくとも 400,000 件保持できるだけのストレージが提供されます。 デバイスが送信するメッセージのサイズが小さい場合、使用されているストレージ容量に応じて、メッセージが保持される期間が長くなる (最大 7 日間) 可能性があります。 少なくとも指定された保持期間はデータが保持されることが保証されています。
 
-IoT Hub では、組み込みの D2C 受信エンドポイントでコンシューマー グループを管理ができます。
+IoT Hub では、組み込みの D2C 受信エンドポイントでコンシューマー グループを管理ができます。 IoT Hub ごとに最大 20 個のコンシューマー グループを持つことができます。
 
 [メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用していて、[フォールバック ルート](iot-hub-devguide-messages-d2c.md#fallback-route)が有効になっている場合、ルートに関するクエリに一致しないメッセージはすべて、組み込みのエンドポイントに送信されます。 このフォールバック ルートを無効にすると、どのクエリにも一致しないメッセージは破棄されます。
 
@@ -50,7 +50,7 @@ IoT Hub を認識しない Event Hubs SDK や製品統合を使用している�
 
 ポータルの [イベント ハブ互換エンドポイント] フィールドには、Event Hubs の完全な接続文字列 (例: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**) が含まれています。 使用している SDK で他の値が必要な場合、値は次のようになります。
 
-| Name | 値 |
+| EnableAdfsAuthentication | 値 |
 | ---- | ----- |
 | エンドポイント | sb://abcd1234namespace.servicebus.windows.net/ |
 | ホスト名 | abcd1234namespace.servicebus.windows.net |

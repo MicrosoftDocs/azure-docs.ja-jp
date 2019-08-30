@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 7/5/2019
+ms.date: 8/21/2019
 ms.author: dapine
-ms.openlocfilehash: d9f226213215f66b53eb1ef248fd47f7b6dfee5a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c12e64fc51eb53aebffbef1ad886b7cc404cf699
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705373"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051224"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 
@@ -29,15 +29,9 @@ Azure Cognitive Services でのコンテナーのサポートを使用すると�
 * [Speech Service API][sp-containers]
 * [Text Analytics][ta-containers]
 
-<!--
-* [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
--->
+> [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
 コンテナー化とは、アプリケーションまたはサービスとその依存関係や構成をコンテナー イメージとしてパッケージ化するソフトウェア配布のアプローチです。 コンテナー イメージは、ほとんどまたはまったく変更せずに、コンテナー ホストにデプロイできます。 コンテナーは、相互および基になるオペレーティング システムから分離され、仮想マシンよりもフット プリントが小さくなります。 短期間のタスクに対してコンテナーをコンテナー イメージからインスタンス化し、不要になったら削除できます。
-
-次のビデオでは、Cognitive Services コンテナーを使用するデモンストレーションを行っています。
-
-[![Cognitive Services のコンテナーのデモ](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
 
 Cognitive Services リソースは [Microsoft Azure](https://azure.microsoft.com) 上で使用できます。 これらのサービス用の Azure リソースを作成して調べるには、[Azure portal](https://portal.azure.com/) にサインインしてください。
 

@@ -1,46 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Data Box のドキュメント - オフライン転送
+summary: 時間、ネットワーク、またはコストが限られている場合は、オフライン データ転送用の Azure Data Box デバイスを使用します。 ご利用のデータ サイズに応じて、Data Box Disk、Data Box、Data Box Heavy の中から選択します。
 metadata:
   title: Azure Data Box のドキュメント - オフライン転送
-  description: 時間、ネットワーク、またはコストによって制限されている場合は、Azure へのオフライン データ転送に Data Box デバイスを使用します。
+  description: 時間、ネットワーク、またはコストが限られている場合は、Azure へのオフライン データ転送に Data Box デバイスを使用します。
   services: databox
-  author: alkohli
-  manager: twooley
   ms.service: databox
   ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 07/03/2019
+  ms.collection: collection
+  author: alkohli
   ms.author: alkohli
-abstract:
-  description: Azure Data Box ファミリーでは、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に転送できます。 時間、ネットワーク、またはコストによって制限されている場合は、オフライン データ転送用の Data Box デバイスを使用します。<p>ご利用のデータ サイズに応じて、Data Box Disk、Data Box、Data Box Heavy の中から選択します。 各デバイスについて、データの注文、データの受信、デバイスへのデータのコピー、Azure へのデバイスの返却という、4 つの簡単な手順で Azure への転送を行います。 Azure データ センターでは、データはアップロードされてから消去されます。</p><p>Microsoft が提供するクイック スタートとチュートリアルを使用して、オフライン データ転送のために Data Box を活用する方法を学習します。</p>
-sections:
-  - title: クイック スタート
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Azure portal で Data Box を設定する
-            href: /azure/databox/data-box-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Azure portal で Data Box Disk を設定する
-            href: /azure/databox/data-box-disk-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: Azure portal で Data Box Heavy を設定する
-            href: /azure/databox/data-box-heavy-quickstart-portal
-  - title: チュートリアル
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Data Box の場合
-            html: <p><a href="/azure/databox/data-box-deploy-ordered">Azure Data Box の注文</a></p><p><a href="/azure/databox/data-box-deploy-set-up">ケーブルを使用して Azure Data Box を接続する</a></p><p><a href="/azure/databox/data-box-deploy-copy-data">Azure Data Box にデータをコピーする</a></p><p><a href="/azure/databox/data-box-deploy-picked-up">Azure Data Box を返却し、アップロードを確認する</a></p>
-          - title: Data Box Disk の場合
-            html: <p><a href="/azure/databox/data-box-disk-deploy-ordered">Azure Data Box Disk</a> の注文</p><p><a href="/azure/databox/data-box-disk-deploy-set-up">Azure Data Box Disk の開梱、接続、ロック解除</a></p><p><a href="/azure/databox/data-box-disk-deploy-copy-data">データを Data Box Disk にコピーする</a></p><p><a href="/azure/databox/data-box-disk-deploy-picked-up">Azure Data Box Disk を返却し、アップロードを確認する</a></p>
-          - title: Data Box Heavy
-            html: <p><a href="/azure/databox/data-box-heavy-deploy-ordered">Azure Data Box Heavy を注文する</a></p><p><a href="/azure/databox/data-box-heavy-deploy-set-up">ケーブルを使用して Azure Data Box Heavy を接続する</a></p><p><a href="/azure/databox/data-box-heavy-deploy-copy-data">Azure Data Box Heavy にデータをコピーする</a></p><p><a href="/azure/databox/data-box-heavy-deploy-picked-up">Azure Data Box Heavy を返却し、アップロードを確認する</a></p>
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650367"
+landingContent:
+- title: Data Box ファミリについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Data Box とは
+      url: data-box-overview.md
+    - text: Data Box ディスクとは
+      url: data-box-disk-overview.md
+    - text: Data Box Heavy とは
+      url: data-box-heavy-overview.md
+  - linkListType: architecture
+    links:
+    - text: Azure のデータ転送オプションの選択
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Data Box を設定する
+      url: data-box-quickstart-portal.md
+    - text: Data Box Disk を設定する
+      url: data-box-disk-quickstart-portal.md
+    - text: Data Box Heavy を設定する
+      url: data-box-heavy-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: Data Box を使用してオフラインでデータをインポートする
+      url: https://docs.microsoft.com/learn/modules/move-data-with-azure-data-box/
+- title: 要件を確認する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Data Box の場合
+      url: data-box-system-requirements.md
+    - text: Data Box Disk の場合
+      url: data-box-disk-system-requirements.md
+    - text: Data Box Heavy
+      url: data-box-heavy-system-requirements.md
+- title: 注文、設定、コピー、返送
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Data Box
+      url: data-box-deploy-ordered.md
+    - text: Data Box Disk
+      url: data-box-disk-deploy-ordered.md
+    - text: Data Box Heavy
+      url: data-box-heavy-deploy-ordered.md
+- title: デバイスを管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Box (Azure 内)
+      url: data-box-portal-admin.md
+    - text: Data Box Disk (Azure 内)
+      url: data-box-portal-ui-admin.md
+    - text: Data Box Heavy (Azure 内)
+      url: data-box-portal-admin.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Box
+      url: data-box-troubleshoot.md
+    - text: Data Box Disk
+      url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Data Box の FAQ を使用
+      url: data-box-faq.md
+    - text: Data Box Disk の FAQ を使用
+      url: data-box-disk-faq.md
+    - text: サポート チケットを開く
+      url: data-box-disk-contact-microsoft-support.md

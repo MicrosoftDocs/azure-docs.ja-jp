@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートを使用して SQL (コ�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b4d121e0628512f7bbd6aedc0a9067b31d46d0ed
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500517"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814977"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB SQL (コア) API リソースを管理する
 
@@ -23,6 +23,7 @@ Azure Resource Manager テンプレートを使用して Azure Cosmos DB リソ�
 >
 > - 現時点では、Resource Manager テンプレートを使用してユーザー定義関数 (UDF)、ストアド プロシージャおよびトリガーをデプロイすることはできません。
 > - Azure Cosmos アカウントの場所の追加または削除と他のプロパティの変更を同時に行うことはできません。 これらは別の操作として行う必要があります。
+> - アカウント名は小文字とし、31 文字未満にする必要があります。
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

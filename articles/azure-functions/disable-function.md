@@ -7,25 +7,57 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: a32b4815a2716428ceeec034ddc5589e3aa062e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60710583"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650493"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
 この記事では、Azure Functions で関数を無効にする方法について説明します。 関数を*無効にする*には、その関数用に定義された自動トリガーをランタイムが無視するようにします。 そのための方法は、ランタイムのバージョンとプログラミング言語によって異なります。
 
-* Functions 1.x
-  * スクリプト言語
-  * C# クラス ライブラリ
-* Functions 2.x
+* Functions 2.x:
   * すべての言語について方法は 1 つ
   * C# クラス ライブラリについてはオプションの方法あり
+* Functions 1.x:
+  * スクリプト言語
+  * C# クラス ライブラリ
+
+## <a name="functions-2x---all-languages"></a>Functions 2.x - すべての言語
+
+Functions 2.x で関数を無効にするには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` の形式でアプリの設定を使用します。 このアプリケーション設定は、[Azure CLI](/cli/azure/) を使用したり、[Azure portal](https://portal.azure.com) で関数の **[管理]** タブを使用したりするなど、さまざまな方法で作成または編集できます。 
+
+### <a name="azure-cli"></a>Azure CLI
+
+Azure CLI でアプリの設定を作成および変更するには、[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドを使います。 `AzureWebJobs.QueueTrigger.Disabled` という名前のアプリの設定を作成して `true` に設定することにより `QueueTrigger` という名前の関数を無効にするコマンドを次に示します。 
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> \
+--settings AzureWebJobs.QueueTrigger.Disabled=true
+```
+
+関数を再度有効にするには、値 `false` を指定して同じコマンドを再実行します。
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> \
+--settings AzureWebJobs.QueueTrigger.Disabled=false
+```
+
+### <a name="portal"></a>ポータル
+
+関数の **[管理]** タブにある **[関数の状態]** スイッチを使用することもできます。このスイッチを機能させるには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定を作成および削除します。
+
+![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
+
+## <a name="functions-2x---c-class-libraries"></a>Functions 2.x - C# クラス ライブラリ
+
+Functions 2.x のクラス ライブラリでは、すべての言語に対して有効な方法を使用することをお勧めします。 ただし、必要に応じて、[Functions 1.x の場合と同様の Disable 属性を使用する](#functions-1x---c-class-libraries)ことができます。
 
 ## <a name="functions-1x---scripting-languages"></a>Functions 1.x - スクリプト言語
 
@@ -102,18 +134,6 @@ public static class QueueFunctions
 > **[管理]** タブの **[関数の状態]** スイッチについても同様です。このスイッチを機能させるには、*function.json* ファイルを変更する必要があるためです。
 >
 > また、無効でない関数が無効であるとポータルに表示される可能性があることに注意してください。
-
-
-
-## <a name="functions-2x---all-languages"></a>Functions 2.x - すべての言語
-
-Functions 2.x で関数を無効にするには、アプリ設定を使用します。 たとえば、`QueueTrigger` という関数を無効にするには、`AzureWebJobs.QueueTrigger.Disabled` という名前のアプリ設定を作成して、それを `true` に設定します。 関数を有効にするには、アプリ設定を `false` に設定します。 関数の **[管理]** タブにある **[関数の状態]** スイッチを使用することもできます。このスイッチを機能させるには、`AzureWebJobs.<functionname>.Disabled` アプリ設定を作成および削除します。
-
-![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
-
-## <a name="functions-2x---c-class-libraries"></a>Functions 2.x - C# クラス ライブラリ
-
-Functions 2.x のクラス ライブラリでは、すべての言語に対して有効な方法を使用することをお勧めします。 ただし、必要に応じて、[Functions 1.x の場合と同様の Disable 属性を使用する](#functions-1x---c-class-libraries)ことができます。
 
 ## <a name="next-steps"></a>次の手順
 

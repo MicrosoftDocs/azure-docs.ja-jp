@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 10419240f730a6b68f1161f158f7f903a98a9933
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: dc3384821ddfba0a137a74297bc44903b6ed5d1d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035608"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650579"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric のアプリケーションとサービス マニフェストの例
 このセクションでは、アプリケーションとサービス マニフェストの例を示します。 これらの例は、重要なシナリオを示すことを意図しているわけではなく、利用可能なさまざまな設定とその使用方法を示します。 
@@ -39,7 +39,7 @@ ms.locfileid: "69035608"
 |[データ パッケージを宣言する](service-fabric-application-and-service-manifests.md)|[VotingData サービス マニフェスト](service-fabric-manifest-example-reliable-services-app.md#votingdata-service-manifest)|
 |[環境変数をオーバーライドする](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[コンテナー ポートからホストへのマッピングを構成する](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)| [コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
-|[コンテナー レジストリ認証を構成する](service-fabric-get-started-containers.md#configure-container-registry-authentication)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
+|[コンテナー レジストリ認証を構成する](service-fabric-get-started-containers.md#configure-container-repository-authentication)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[分離モードを設定する](service-fabric-get-started-containers.md#configure-isolation-mode)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[OS ビルド固有のコンテナー イメージを指定する](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[環境変数を設定する](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[コンテナー FrontEndService サービス マニフェスト](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)、[コンテナー BackEndService サービス マニフェスト](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)|

@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950030"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562975"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Core Tools と Azure CLI を使用して Linux でホストされる初めての関数を作成する (プレビュー)
+# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>Core Tools と Azure CLI を使用して Linux でホストされる初めての関数を作成する
 
-Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.com/serverless)の Linux 環境でコードを実行できます。 Linux でのホストには、[Functions 2.0 ランタイム](functions-versions.md)が必要です。 サーバーレス[従量課金プラン](functions-scale.md#consumption-plan)内の Linux での関数アプリの実行のサポートは、現在プレビュー段階です。 詳細については、[プレビューの考慮事項に関するこちらの記事](https://aka.ms/funclinux)をご覧ください。
+Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.com/serverless)の Linux 環境でコードを実行できます。 Linux でのホストには、[Functions 2.x ランタイム](functions-versions.md)が必要です。 サーバーレス関数は[従量課金](functions-scale.md#consumption-plan)プランで実行されます。
 
 このクイック スタート記事では、Linux 上で動作する初めての関数アプリを Azure CLI を使用して作成する方法について説明します。 [Azure Functions Core Tools](functions-run-local.md) を使用して、関数のコードをローカルで作成し、その後 Azure にデプロイします。
 
-次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。 この記事では、JavaScript または C# で関数を作成する方法について説明します。 Python 関数を作成する方法については、[Core Tools と Azure CLI を使用した最初の Python 関数の作成 (プレビュー)](functions-create-first-function-python.md) に関するページを参照してください。
+次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。 この記事では、JavaScript または C# で関数を作成する方法について説明します。 Python 関数を作成する方法については、[Core Tools と Azure CLI を使用した最初の Python 関数の作成](functions-create-first-function-python.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

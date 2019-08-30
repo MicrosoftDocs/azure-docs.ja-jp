@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6884cb7b10da3996977f2aea7693625bc45c3139
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 8683169e0f8464cdcf52600968f67f3622e61445
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369564"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509579"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションで認証を有効にする
 
@@ -49,7 +49,7 @@ ms.locfileid: "68369564"
 前提条件の一環として完了した 2 番目のチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 チュートリアルのサンプルとの通信を有効にするには、Azure AD B2C のアプリケーションにリダイレクト URI を 追加する必要があります。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション]** フィルターを選択して、お使いのテナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリケーション]** を選択し、*webapp1* アプリケーションを選択します。
 1. **[応答 URL]** に「`http://localhost:6420`」を追加します。
@@ -115,17 +115,17 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
-1. **[Login]\(ログイン\)** をクリックして、前の手順で指定した *B2C_1_signupsignin1* ユーザー フローを開始します。
-1. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[Sign up now]\(今すぐサインアップ\)** リンクをクリックします。
+1. **[Login]\(ログイン\)** を選択して、前の手順で指定した *B2C_1_signupsignin1* ユーザー フローを開始します。
+1. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[Sign up now]\(今すぐサインアップ\)** リンクを選択します。
 1. サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
 
     有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。
 
     ![サインインまたはサインアップ ユーザー フローによって表示されるサインアップ ページ](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
-1. **[作成]** をクリックして、Azure AD B2C ディレクトリにローカル アカウントを作成します。
+1. **[作成]** を選択して、Azure AD B2C ディレクトリにローカル アカウントを作成します。
 
-**[作成]** をクリックすると、サインアップ ページが閉じてサインイン ページが再び表示されます。
+**[作成]** を選択すると、サインアップ ページが閉じてサインイン ページが再び表示されます。
 
 これで、ご利用のメール アドレスとパスワードを使用してアプリケーションにサインインできるようになりました。
 

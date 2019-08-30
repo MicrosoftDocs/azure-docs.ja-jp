@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c5c133fe728126ea07834c8ff5b02b1203ec326
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62bc550a809d596b5378c03aa95877db5e15febb
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112689"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019508"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 
@@ -46,7 +46,7 @@ Azure AD B2B では、パートナーが各自の ID 管理ソリューション
 ![[アクセス許可の確認] ページのスクリーンショット](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>ポリシーを使用してアプリとサービスを安全に共有する
-貴社のコンテンツを保護する承認ポリシーを使用できます。 多要素認証などの条件付きアクセス ポリシーを次のように適用できます。
+承認ポリシーを使用して、会社のコンテンツを保護できます。 多要素認証などの条件付きアクセス ポリシーを次のように適用できます。
 - テナント レベルで。
 - アプリケーション レベルで。
 - 会社のアプリケーションとデータを保護する特定のユーザーに対して。

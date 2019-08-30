@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: bc93dcea74f0660a4f56aec237eaae5a4e3eeb9a
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667957"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904520"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>ジョブのスケジュールとブロードキャスト (Python)
 
@@ -47,15 +47,15 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 **scheduleJobService.py**。シミュレートされたデバイス アプリでダイレクト メソッドを呼び出し、ジョブを使用してデバイス ツインの必要なプロパティを更新します。
 
+> [!NOTE]
+> **Azure IoT SDK for Python** では、**ジョブ**機能は直接サポートされません。 代わりに、このチュートリアルでは、非同期スレッドとタイマーを利用する代替ソリューションを提供します。 さらに更新するには、[Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) に関するページで**サービス クライアント SDK** 機能の一覧をご覧ください。
+>
+
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
 前提条件のインストール手順は次のとおりです。
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
-> [!NOTE]
-> **Azure IoT SDK for Python** では、**ジョブ**機能は直接サポートされません。 代わりに、このチュートリアルでは、非同期スレッドとタイマーを利用する代替ソリューションを提供します。 さらに更新するには、[Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) に関するページで**サービス クライアント SDK** 機能の一覧をご覧ください。
->
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -74,6 +74,10 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > azure-iothub-service-client と azure-iothub-device-client の pip パッケージは、現在 Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
+   >
 
 2. テキスト エディターを使用して、作業ディレクトリに新しい **simDevice.py** ファイルを作成します。
 
@@ -158,9 +162,27 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
+この記事では、デバイス上でダイレクト メソッドを呼び出し、デバイス ツインを更新するバックエンド サービスを作成します。 デバイス上でダイレクト メソッドを呼び出すには、サービスに**サービス接続**アクセス許可が必要です。 また、このサービスで ID レジストリの読み取りと書き込みを行うために、**レジストリ読み取り**および**レジストリ書き込み**アクセス許可も必要です。 これらのアクセス許可だけを含んだ既定の共有アクセス ポリシーは存在しないため、共有アクセス ポリシーを独自に作成する必要があります。
 
-[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+**サービス接続**、**レジストリ読み取り**、および**レジストリ書き込み**のアクセス許可を付与する共有アクセス ポリシーを作成し、そのポリシーの接続文字列を取得するには、次の手順を実行します。
+
+1. [Azure portal](https://portal.azure.com) で IoT ハブを開きます。 IoT ハブに移動するための最も簡単な方法は、 **[リソース グループ]** を選択し、IoT ハブがあるリソース グループを選択した後、リソースの一覧から目的の IoT ハブを選択することです。
+
+2. IoT ハブの左側のウィンドウで、 **[共有アクセス ポリシー]** を選択します。
+
+3. ポリシーの一覧の上にあるトップ メニューから **[追加]** を選択します。
+
+4. **[共有アクセス ポリシーを追加]** ウィンドウで、対象のポリシーのわかりやすい名前を入力します (例: *serviceAndRegistryReadWrite*)。 **[アクセス許可]** で、 **[サービス接続]** と **[レジストリ書き込み]** を選択します ( **[レジストリ書き込み]** を選択すると、 **[レジストリ読み取り]** が自動的に選択されます)。 **[作成]** を選択します。
+
+    ![新しい共有アクセス ポリシーを追加する方法を示す画面](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+
+5. **[共有アクセス ポリシー]** ウィンドウに戻り、ポリシーの一覧から新しいポリシーを選択します。
+
+6. **[共有アクセス キー]** で、 **[接続文字列 - プライマリ キー]** のコピー アイコンを選択してその値を保存します。
+
+    ![接続文字列を取得する方法を示す画面](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+
+IoT Hub の共有アクセス ポリシーとアクセス許可の詳細については、「[アクセス制御とアクセス許可](./iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>ダイレクト メソッドを呼び出し、デバイス ツインのプロパティを更新するジョブのスケジュール
 
@@ -172,9 +194,13 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     pip install azure-iothub-service-client
     ```
 
+   > [!NOTE]
+   > azure-iothub-service-client と azure-iothub-device-client の pip パッケージは、現在 Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
+   >
+
 2. テキスト エディターを使用して、作業ディレクトリに新しい **scheduleJobService.py** ファイルを作成します。
 
-3. **scheduleJobService.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
+3. **scheduleJobService.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。 `{IoTHubConnectionString}` プレースホルダーを、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。 `{deviceId}` プレースホルダーを、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」で登録したデバイス ID に置き換えます。
 
     ```python
     import sys

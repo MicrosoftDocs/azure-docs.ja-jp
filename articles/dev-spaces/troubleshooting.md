@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277399"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019644"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -445,7 +445,14 @@ azure-cli                         2.0.60 *
 
 ### <a name="reason"></a>理由
 
-開発スペースでサービスを実行すると、そのサービスのポッドが[インストルメンテーション用の追加のコンテナーと共に挿入されます](how-dev-spaces-works.md#prepare-your-aks-cluster)。 このようなコンテナーにはリソースの要求または制限が定義されていないため、ポッドの水平オートスケーラーはポッドに対して無効になります。
+開発スペースでサービスを実行すると、そのサービスのポッドが[インストルメンテーション用の追加のコンテナーと共に挿入されます](how-dev-spaces-works.md#prepare-your-aks-cluster)。また、ポッド内のすべてのコンテナーでは、ポッドの水平オートスケール機能に対してリソース制限と要求を設定する必要があります。 
+
+
+ポッド仕様に `azds.io/proxy-resources` 注釈を追加することで、挿入されたコンテナー (devspaces-proxy) にリソースの要求と制限を適用できます。この値は、プロキシのコンテナー仕様の resources セクションを表す JSON オブジェクトに設定する必要があります。
 
 ### <a name="try"></a>試す
-開発空間が有効ではない名前空間でポッドの水平オートスケーラーを実行します。
+
+ポッド仕様に適用される proxy-resources 注釈の例を次に示します。
+```
+azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
+```

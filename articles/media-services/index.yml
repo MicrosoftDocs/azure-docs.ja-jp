@@ -15,7 +15,7 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Azure Media Services は、エンコード、パッケージ化、コンテンツ保護、ライブ イベント ブロードキャストが必要なソリューションを構築できる、クラウドベースのメディア ワークフロー プラットフォームです。 Azure Media Services では、Azure CDN とシームレスに統合して、Akamai および Verizon の CDN サービスによってデリバリーをスケーリングできます。そのため、お客様はコンテンツ配信ネットワークをまたぐ負荷分散など、ニーズに合ったソリューションを選ぶことができます。 Azure Media Services Video Indexer では、AI と組み込みのビデオおよびオーディオ アナライザー プリセットを使用して、メタデータと分析情報を抽出できます。 Video Indexer API を使用して所与の AI モデルを独自のコンテンツでトレーニングして、精度を簡単に向上させることができます。
+  description: Azure Media Services はクラウドベースのメディアワークフロープラットフォームであり、エンコード・パッケージ化・コンテンツ保護・ライブ配信など必要なソリューションが提供されています。 Azure Media Services では、 Azure CDN とシームレスに統合されており、 CDN を横断したロードバランシングも可能で、Akamai 及び Verizon の CDN サービスによるスケーラブルな配信を行うことが出来ます。 Azure Media Services Video Indexer では、AI と組み込みのビデオおよびオーディオ アナライザー プリセットを使用して、メタデータと分析情報を抽出できます。 Video Indexer API を使用して所与の AI モデルを独自のコンテンツでトレーニングして、精度を簡単に向上させることができます。
 sections:
   - items:
       - type: list

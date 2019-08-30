@@ -304,14 +304,14 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
         | プロパティ | 値 |
         |---|---|
-        | ソース | 任意 |
-        | ソース ポート範囲 | * |
-        | 宛先 | Any |
-        | 送信先ポート範囲 | 636 |
+        | Source | Any |
+        | Source port ranges | * |
+        | Destination | Any |
+        | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
         | 優先度 | \<指定する数字\> |
-        | EnableAdfsAuthentication | Port_LDAP_636 |
+        | Name | Port_LDAP_636 |
 
     ![受信セキュリティ規則](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 

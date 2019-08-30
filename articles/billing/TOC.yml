@@ -179,12 +179,14 @@
   items:
     - name: サブスクリプションが見つからない
       href: billing-no-subscriptions-found.md
+    - name: 支払いに関する問題
+      href: billing-troubleshoot-azure-payment-issues.md
     - name: 拒否されたカード
-      href: 'https://support.microsoft.com/en-us/help/4042960'
+      href: billing-troubleshoot-declined-card.md
     - name: サインアップの問題
-      href: 'https://support.microsoft.com/en-us/help/4042959'
-    - name: サインインの問題
-      href: 'https://support.microsoft.com/en-us/help/4042961'
+      href: billing-troubleshoot-azure-sign-up.md
+    - name: サブスクリプションのサインインの問題
+      href: billing-troubleshoot-sign-in-issue.md
     - name: エンタープライズ コスト ビューが無効になっている
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: サポートにお問い合せください

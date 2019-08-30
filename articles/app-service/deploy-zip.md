@@ -9,18 +9,17 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 6cf46f96e84e8a00a478c3ad3edece10a36ce0bd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b69488c971d6ab10e0a95e3825be097f8713016d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617006"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070438"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
@@ -102,23 +101,18 @@ HTTP BASIC 認証では、App Service 展開資格情報が必要です。 自�
 
 ### <a name="with-curl"></a>cURL を使用する
 
-次の例は cURL ツールを使用して .war ファイルを展開します。 プレースホルダー `<username>`、`<war_file_path>`、`<app_name>` を置き換えます。 cURL によって要求されたら、パスワードを入力します。
+次の例は cURL ツールを使用して .war ファイルを展開します。 プレースホルダー `<username>`、`<war-file-path>`、`<app-name>` を置き換えます。 cURL によって要求されたら、パスワードを入力します。
 
 ```bash
-curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
+curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
 ```
 
 ### <a name="with-powershell"></a>PowerShell の場合
 
-次の例では、[Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)を使って、.war ファイルを含む要求を送信します。 プレースホルダー `<deployment_user>`、`<deployment_password>`、`<zip_file_path>`、`<app_name>` を置き換えます。
+次の例では、[Publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) を使用して .war ファイルをアップロードします。 プレースホルダー `<group-name>`、`<app-name>`、`<war-file-path>` を置き換えます。
 
 ```powershell
-$username = "<deployment_user>"
-$password = "<deployment_password>"
-$filePath = "<war_file_path>"
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
-$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "application/octet-stream"
+Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <war-file-path>
 ```
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]

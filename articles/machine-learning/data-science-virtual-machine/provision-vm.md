@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 488dc7db01bd865268e143b68cdaccd989010912
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591824"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534936"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows Data Science Virtual Machine のプロビジョニング
 
@@ -48,6 +48,7 @@ DSVM には次のツールが含まれています。
   * [Apache Drill](https://drill.apache.org/) - Apache Hadoop、NoSQL、およびクラウド ストレージ向けのスキーマフリーの SQL クエリ エンジン。 ODBC と JDBC のインターフェイスをサポートし、Power BI、Microsoft Excel、Tableau などの標準の BI ツールから NoSQL やファイルに対してクエリを実行できます。
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
 * GitHub、Azure DevOps を含むソース コード リポジトリを操作する Git Bash を含む Git。 Git では、いくつかの一般的な Linux コマンド ライン ユーティリティが提供されており、Git Bash とコマンド プロンプトの両方でアクセスできます。 awk、sed、perl、grep、find、wget、curl などです。
+* 開発ツールとエディター (RStudio、PyCharm)
 
 ### <a name="about-data-science"></a>データ サイエンスについて
 

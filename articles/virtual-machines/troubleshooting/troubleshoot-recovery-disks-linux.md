@@ -13,32 +13,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: e1e91ec4393072a7da78c0de800cab26608c74d6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b1aca591437738b29786f50c2a5291ab456f3416
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709334"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876694"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Azure CLI で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う
 Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、`/etc/fstab` 内の無効なエントリによって VM の正常な起動が妨げられている場合が挙げられます。 この記事では、Azure CLI で仮想ハード ディスクを別の Linux VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 
 
-
 ## <a name="recovery-process-overview"></a>回復プロセスの概要
 トラブルシューティングのプロセスは次のとおりです。
 
-1. 仮想ハード ディスクを保持して、問題が発生している VM を削除します。
-2. トラブルシューティングのために、仮想ハード ディスクを別の Linux VM に接続してマウントします。
-3. トラブルシューティング用 VM に接続します。 元の仮想ハード ディスクで、ファイルを編集するか、任意のツールを実行して問題を解決します。
-4. 仮想ハード ディスクのマウントを解除し、トラブルシューティング用 VM から切断します。
-5. 元の仮想ハード ディスクを使用して VM を作成します。
-
-マネージド ディスクを使用する VM の場合は、「[新しい OS ディスクを接続することでマネージド ディスク VM のトラブルシューティングを行う](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk)」をご覧ください。
+1. 影響を受けている VM を停止します。
+1. VM の OS ディスクのスナップショットを作成します。
+1. OS ディスクのスナップショットからディスクを作成します。
+1. トラブルシューティングのために、新しい OS ディスクを別の Linux VM に接続してマウントします。
+1. トラブルシューティング用 VM に接続します。 ファイルを編集するか任意のツールを実行して、新しい OS ディスクの問題を解決します。
+1. 新しい OS ディスクのマウントを解除し、トラブルシューティング用 VM から切断します。
+1. 影響を受けている VM の OS ディスクを変更します。
 
 上記のトラブルシューティングの手順を行うには、[Azure CLI](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしておく必要があります。
 
-以下の例では、パラメーター名を独自の値に置き換えてください。 `myResourceGroup`、`mystorageaccount`、`myVM` などは、例として使われているパラメーター名です。
+> [!Important]
+> この記事のスクリプトは、[マネージド ディスク](../linux/managed-disks-overview.md)を使用している VM にのみ適用されます。 
 
+以下の例では、パラメーター名を `myResourceGroup` や `myVM` などの独自の値に置き換えてください。
 
 ## <a name="determine-boot-issues"></a>起動の問題を特定する
 シリアル出力を調べて、VM が正常に起動できない理由を特定します。 一般的な例として、`/etc/fstab` に無効なエントリがある場合や、基になる仮想ハード ディスクが削除または移動されている場合が挙げられます。
@@ -51,44 +52,75 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 
 シリアル出力を調べて、VM が起動できない理由を特定します。 シリアル出力に何も示されていない場合は、仮想ハード ディスクをトラブルシューティング用 VM に接続した後に、`/var/log` にあるログ ファイルを確認することが必要な場合があります。
 
+## <a name="stop-the-vm"></a>VM を停止する
 
-## <a name="view-existing-virtual-hard-disk-details"></a>既存の仮想ハード ディスクの詳細を表示する
-仮想ハード ディスク (VHD) を別の VM に接続するには、OS ディスクの URI を特定しておく必要があります。 
-
-[az vm show](/cli/azure/vm) を使用して、VM に関する情報を表示します。 OS ディスクの URI を抽出するには、`--query` フラグを使用します。 次の例では、`myResourceGroup` という名前のリソース グループにある `myVM` という名前の VM のディスク情報を取得します。
+次の例では、`myResourceGroup` という名前のリソース グループから `myVM` という名前の VM を停止します。
 
 ```azurecli
-az vm show --resource-group myResourceGroup --name myVM \
-    --query [storageProfile.osDisk.vhd.uri] --output tsv
+az vm stop --resource-group MyResourceGroup --name MyVm
 ```
+## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>影響を受けている VM の OS ディスクのスナップショットを作成する
 
-URI は **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** のようになります。
-
-## <a name="delete-existing-vm"></a>既存の VM を削除する
-Azure では、仮想ハード ディスクと VM は 2 つの異なるリソースです。 仮想ハード ディスクには、オペレーティング システム自体、アプリケーション、構成が格納されています。 VM 自体は、サイズや場所を定義し、仮想ハード ディスクや仮想ネットワーク インターフェイス カード (NIC) などのリソースを参照するメタデータにすぎません。 各仮想ハード ディスクには、VM に接続されたときにリースが割り当てられています。 データ ディスクは、VM の実行中でも接続および切断できますが、OS ディスクは、VM リソースを削除しない限り、切断することはできません。 VM が停止され、割り当てが解除された状態であっても、リースによって OS ディスクは引き続きその VM に関連付けられています。
-
-VM を回復するには、まず VM リソース自体を削除します。 VM を削除しても、仮想ハード ディスクはストレージ アカウントに残されます。 VM を削除したら、仮想ハード ディスクを別の VM に接続してトラブルシューティングを行い、エラーを解決します。
-
-[az vm delete](/cli/azure/vm) を使用して VM を削除します。 次の例では、`myResourceGroup` という名前のリソース グループから `myVM` という名前の VM を削除します。
+スナップショットは、VHD の完全な読み取り専用コピーです。 これを VM にアタッチすることはできません。 次の手順で、このスナップショットからディスクを作成します。 次の例は、'myVM' という名前の VM の OS ディスクから `mySnapshot` という 名前のスナップショットを作成します。 
 
 ```azurecli
-az vm delete --resource-group myResourceGroup --name myVM 
+#Get the OS disk Id 
+$osdiskid=(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+#creates a snapshot of the disk
+az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --name mySnapshot
 ```
+## <a name="create-a-disk-from-the-snapshot"></a>スナップショットからディスクを作成する
 
-VM の削除が完了するまで待ってから、仮想ハード ディスクを別の VM に接続します。 仮想ハード ディスクを別の VM に接続するには、仮想ハード ディスクを VM に関連付けているリースを解放しておく必要があります。
-
-
-## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>既存の仮想ハード ディスクを別の VM に接続する
-次のいくつかの手順では、トラブルシューティングのために別の VM を使用します。 ディスクの内容を参照して編集するために、既存の仮想ハード ディスクをこのトラブルシューティング用 VM に接続します。 このプロセスにより、構成エラーの修正や、その他のアプリケーション ログ ファイルまたはシステム ログ ファイルの確認などが可能になります。 トラブルシューティングに使用する別の VM を選択または作成します。
-
-[az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk) を使用して、既存の仮想ハード ディスクを接続します。 既存の仮想ハード ディスクを接続する場合は、前述の `az vm show` コマンドで取得したディスクの URI を指定します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVMRecovery` という名前のトラブルシューティング用 VM に既存の仮想ハード ディスクを接続します。
+このスクリプトは、`mySnapshot` という名前のスナップショットから `myOSDisk` という名前のマネージド ディスクを作成します。  
 
 ```azurecli
-az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
-    --vhd-uri https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd
+#Provide the name of your resource group
+$resourceGroup=myResourceGroup
+
+#Provide the name of the snapshot that will be used to create Managed Disks
+$snapshot=mySnapshot
+
+#Provide the name of the Managed Disk
+$osDisk=myNewOSDisk
+
+#Provide the size of the disks in GB. It should be greater than the VHD file size.
+$diskSize=128
+
+#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+$storageType=Premium_LRS
+
+#Provide the OS type
+$osType=linux
+
+#Provide the name of the virtual machine
+$virtualMachine=myVM
+
+#Get the snapshot Id 
+$snapshotId=(az snapshot show --name $snapshot --resource-group $resourceGroup --query [id] -o tsv)
+
+# Create a new Managed Disks using the snapshot Id.
+
+az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType --size-gb $diskSize --source $snapshotId
+
 ```
 
+リソース グループとソース スナップショットが同じリージョンにない場合、`az disk create` を実行すると "リソースが見つかりません" というエラーが表示されます。 この場合は、`--location <region>` を指定して、ソース スナップショットと同じリージョンにディスクを作成する必要があります。
 
+これで、元の OS ディスクのコピーが用意できました。 トラブルシューティングのために、この新しいディスクを別の Windows VM にマウントできます。
+
+## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>新しい仮想ハード ディスクを別の VM に接続する
+次のいくつかの手順では、トラブルシューティングのために別の VM を使用します。 ディスクの内容を参照して編集するために、ディスクをこのトラブルシューティング用 VM に接続します。 このプロセスにより、すべての構成エラーを修正したり、追加のアプリケーションまたはシステム ログ ファイルを確認したりできるようになります。
+
+このスクリプトでは、ディスク `myNewOSDisk` を VM `MyTroubleshootVM` にアタッチしています。
+
+```azurecli
+# Get ID of the OS disk that you just created.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+# Attach the disk to the troubleshooting VM
+az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 --sku Standard_LRS --vm-name MyTroubleshootVM
+```
 ## <a name="mount-the-attached-data-disk"></a>接続されたデータ ディスクをマウントする
 
 > [!NOTE]
@@ -128,11 +160,11 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
     > 仮想ハード ディスクの汎用一意識別子 (UUID) を使用して、Azure の VM にデータ ディスクをマウントするのがベスト プラクティスです。 この短いトラブルシューティング シナリオでは、UUID を使用して仮想ハード ディスクをマウントする必要はありません。 ただし、通常の使用時に、`/etc/fstab` を編集し、UUID ではなくデバイス名を使用して仮想ハード ディスクをマウントすると、VM の起動に失敗する場合があります。
 
 
-## <a name="fix-issues-on-original-virtual-hard-disk"></a>元の仮想ハード ディスクで問題を修正する
+## <a name="fix-issues-on-the-new-os-disk"></a>新しい OS ディスクの問題を修正する
 既存の仮想ハード ディスクをマウントすることで、必要に応じてメンテナンスやトラブルシューティングの手順を実行できるようになります。 問題に対処したら、次の手順に進みます。
 
 
-## <a name="unmount-and-detach-original-virtual-hard-disk"></a>元の仮想ハード ディスクのマウントを解除して切断する
+## <a name="unmount-and-detach-the-new-os-disk"></a>新しい OS ディスクのマウントを解除して切断する
 エラーが解決したら、既存の仮想ハード ディスクのマウントを解除し、トラブルシューティング用 VM から切断します。 仮想ハード ディスクをトラブルシューティング用 VM に接続しているリースを解放するまで、仮想ハード ディスクを他の VM で使用することはできません。
 
 1. トラブルシューティング用 VM の SSH セッションから、既存の仮想ハード ディスクのマウントを解除します。 まず、マウント ポイントの親ディレクトリを変更します。
@@ -147,52 +179,31 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
     sudo umount /dev/sdc1
     ```
 
-2. 仮想ハード ディスクを VM から切断します。 トラブルシューティング用 VM の SSH セッションを終了します。 [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk) を使用して、トラブルシューティング用 VM に接続されているデータ ディスクの一覧を表示します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVMRecovery` という名前の VM に接続されているデータ ディスクを表示します。
+2. 仮想ハード ディスクを VM から切断します。 トラブルシューティング用 VM の SSH セッションを終了します。
 
     ```azurecli
-    azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
-        --query '[].{Disk:vhd.uri}' --output table
+    az vm disk detach -g MyResourceGroup --vm-name MyTroubleShootVm --name myNewOSDisk
     ```
 
-    既存の仮想ハード ディスクの名前を書き留めます。 たとえば、URI が **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** のディスクの名前は **myVHD** です。 
+## <a name="change-the-os-disk-for-the-affected-vm"></a>影響を受けている VM の OS ディスクを変更する
 
-    [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk) を使用して、VM からデータ ディスクを切断します。 次の例では、`myResourceGroup` リソース グループ内の `myVMRecovery` という名前の VM から `myVHD` という名前のディスクを切断します。
+Azure CLI を使用して、OS ディスクを交換できます。 VM を削除して再作成する必要はありません。
 
-    ```azurecli
-    az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
-        --name myVHD
-    ```
-
-
-## <a name="create-vm-from-original-hard-disk"></a>元のハード ディスクから VM を作成する
-元の仮想ハード ディスクから VM を作成するには、[この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd)を使用します。 実際の JSON テンプレートは次のリンクにあります。
-
-- https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
-
-このテンプレートでは、前述のコマンドの VHD URI を使用して VM をデプロイします。 [az group deployment create](/cli/azure/group/deployment) を使用して、テンプレートをデプロイします。 元の VHD の URI を指定した後、次のように OS の種類、VM サイズ、VM 名を指定します。
+この例では、`myVM` という名前の VM を停止し、`myNewOSDisk` という名前のディスクを新しい OS ディスクとして割り当てます。
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup --name myDeployment \
-  --parameters '{"osDiskVhdUri": {"value": "https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd"},
-    "osType": {"value": "Linux"},
-    "vmSize": {"value": "Standard_DS1_v2"},
-    "vmName": {"value": "myDeployedVM"}}' \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
+# Stop the affected VM
+az vm stop -n myVM -g myResourceGroup
+
+# Get ID of the OS disk that is repaired.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+# Change the OS disk of the affected VM to "myNewOSDisk"
+az vm update -g myResourceGroup -n myVM --os-disk $myNewOSDiskid
+
+# Start the VM
+az vm start -n myVM -g myResourceGroup
 ```
-
-## <a name="re-enable-boot-diagnostics"></a>ブート診断を再度有効にする
-既存の仮想ハード ディスクから VM を作成したときに、ブート診断が自動的に有効にならない場合があります。 [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics) を使用して、ブート診断を有効にします。 次の例では、`myResourceGroup` という名前のリソース グループの `myDeployedVM` という名前の VM で診断拡張機能を有効にします。
-
-```azurecli
-az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
-```
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>新しい OS ディスクを接続することでマネージド ディスク VM のトラブルシューティングを行う
-1. 影響を受けている VM を停止します。
-2. マネージド ディスク VM の OS ディスクの[マネージド ディスク スナップショットを作成](../linux/snapshot-copy-managed-disk.md)します。
-3. [スナップショットから新しいマネージド ディスクを作成](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)します。
-4. [マネージド ディスクを VM のデータ ディスクとして接続](../windows/attach-disk-ps.md)します。
-5. [手順 4 のデータ ディスクを OS ディスクに変更](../windows/os-disk-swap.md)します。
 
 ## <a name="next-steps"></a>次の手順
 VM への接続の問題が発生した場合は、[Azure VM への SSH 接続のトラブルシューティング](troubleshoot-ssh-connection.md)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Linux VM でのアプリケーションの接続の問題のトラブルシューティング](troubleshoot-app-connection.md)に関する記事をご覧ください。

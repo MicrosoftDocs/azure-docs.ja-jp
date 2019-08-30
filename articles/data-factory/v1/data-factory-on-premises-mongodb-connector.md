@@ -67,7 +67,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |はい |
-| サーバー |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
+| server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
 | authenticationType |Basic または Anonymous。 |はい |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |

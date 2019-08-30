@@ -3,15 +3,15 @@ title: Azure Cosmos DB で Time to Live を構成および管理する方法を�
 description: Azure Cosmos DB で Time to Live を構成および管理する方法を学習する
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 618e7e19b20f361aa0a8c668e9621a29db43772d
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: bb67e6e4fbef51a0fbd26efd2618be8cc9896beb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797749"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092988"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する
 

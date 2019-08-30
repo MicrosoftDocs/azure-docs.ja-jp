@@ -8,18 +8,17 @@ manager: craigg
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9c8379787619608421256120139f07c8dbd8d14
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326108"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102251"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Azure の AlwaysOn 可用性グループに使用するロード バランサーの構成
 この記事では、Azure Resource Manager で動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
@@ -73,7 +72,7 @@ ms.locfileid: "60326108"
    | **プライベート IP アドレス** |サブネット内の利用可能な IP アドレスを指定します。 この IP アドレスは、クラスターにリスナーを作成するときに使用します。 この記事で後ほど示す PowerShell スクリプトの `$ILBIP` 変数には、このアドレスを使用してください。 |
    | **サブスクリプション** |複数のサブスクリプションを所有している場合、このフィールドが表示されます。 このリソースに関連付けられているサブスクリプションを選択します。 通常は、可用性グループのすべてのリソースについて同じサブスクリプションを選択してください。 |
    | **リソース グループ** |SQL Server インスタンスが存在するリソース グループを選択します。 |
-   | **場所** |Azure において SQL Server インスタンスが存在する場所を選択します。 |
+   | **Location** |Azure において SQL Server インスタンスが存在する場所を選択します。 |
 
 6. **Create** をクリックしてください。 
 
@@ -246,7 +245,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
     |**正常性プローブ** |作成したプローブを選択します。
     |**セッション永続化** |なし
     |**アイドル タイムアウト (分)** |既定値 (4)
-    |**フローティング IP (ダイレクト サーバー リターン)** | Enabled
+    |**フローティング IP (ダイレクト サーバー リターン)** | 有効
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>新しい IP アドレスを使用して可用性グループを構成する
 
@@ -295,7 +294,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
    |**正常性プローブ** |作成したプローブを選択します。
    |**セッション永続化** |なし
    |**アイドル タイムアウト (分)** |既定値 (4)
-   |**フローティング IP (ダイレクト サーバー リターン)** | Enabled
+   |**フローティング IP (ダイレクト サーバー リターン)** | 有効
 
 分散可用性グループに参加している他の可用性グループのロード バランサーについても、これらの手順を繰り返します。
 

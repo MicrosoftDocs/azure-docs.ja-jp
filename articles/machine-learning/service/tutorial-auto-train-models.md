@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 04/11/2019
+ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 49f46c09cfcfef2ab1e74ae7c08d9a54289293ac
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371039"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534824"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -42,36 +42,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-「[開発環境を設定する](#start)」にスキップしてノートブックの手順を読むか、以下の手順に従ってノートブックを入手し、Azure Notebooks または独自のノートブック サーバーで実行します。 ノートブックを実行するには、以下のものが必要です。
+* パート 1 の[データ準備のチュートリアル](tutorial-data-prep.md)を完了してください。
 
-* [データ準備のチュートリアルを実行する](tutorial-data-prep.md)。
-* 以下のものがインストールされている Python 3.6 ノートブック サーバー。
-    * Azure Machine Learning SDK for Python と `automl` および `notebooks` の追加機能
-    * `matplotlib`
-* チュートリアル ノートブック
-* 機械学習ワークスペース
-* ノートブックと同じディレクトリにある、ワークスペースの構成ファイル
+* パート 1 を完了したら、同じノートブック サーバーを使用して、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを開きます。
 
-以下のいずれかのセクションから、これらすべての前提条件を入手します。
-
-* [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する 
-* [独自のノートブック サーバー](#server)を使用する
-
-### <a name="azure"></a>ワークスペース内のクラウド ノートブックサーバーを使用する
-
-独自のクラウドベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。
-
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
-
-* ノートブックの Web ページを起動したら、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
-
-### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
-
-次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  ご利用の環境に `matplotlib` および `automl` と `notebooks` の追加機能をインストールしていることを確認してください。
-
-[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
-
-手順を完了したら、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
+このチュートリアルは、独自の[ローカル環境](how-to-configure-environment.md#local)で使用する場合は、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。  Azure Machine Learning SDK の `matplotlib` と、`automl` および `notebooks` extras がインストールされていることを確認してください。
 
 ## <a name="start"></a>開発環境を設定する
 
@@ -688,6 +663,9 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    **automl_settings)
 ```
 
+> [!NOTE]
+> 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
+
 ### <a name="train-the-automatic-regression-model"></a>自動回帰モデルをトレーニングする
 
 ローカルで実験の実行を開始します。 定義済みの `automated_ml_config` オブジェクトを実験に渡します。 出力を `True` に設定して実験中の進行状況を表示します。
@@ -764,7 +742,7 @@ RunDetails(local_run).show()
 ```
 local_run.get_portal_url()
 ```
-  
+
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>オプション 2:Python ですべての実行イテレーションを取得して調査する
 

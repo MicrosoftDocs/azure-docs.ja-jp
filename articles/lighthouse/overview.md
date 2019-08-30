@@ -3,16 +3,16 @@ title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
 author: JnHs
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: eb55af5a1121eb193bb76efc9f9e0b833f4b5a1f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810796"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011897"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 
@@ -42,3 +42,8 @@ Azure Lighthouse には、顧客エンゲージメントと顧客管理を効率
 
 > [!NOTE]
 > ここで説明した機能は現在、パブリック クラウドで提供されています。 各サービスのリージョン別の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure の委任されたリソース管理](concepts/azure-delegated-resource-management.md)について学習してください。
+- [テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)について学習します。

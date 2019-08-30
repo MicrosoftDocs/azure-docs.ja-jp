@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839674"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575199"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
@@ -42,11 +42,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
-## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL Data Warehouse を作成する
+## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL データ ウェアハウスを作成する
 
-Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソースリソース](memory-and-concurrency-limits.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
+Azure SQL データ ウェアハウスは、定義された一連の[コンピューティング リソース](memory-and-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
 
-空の SQL Data Warehouse を作成するには、次のようにします。 
+空の SQL データ ウェアハウスを作成するには、次の手順に従います。 
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 

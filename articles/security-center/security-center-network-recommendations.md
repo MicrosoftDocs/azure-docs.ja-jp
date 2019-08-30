@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fb91d6a9cdc56c88b424b7e0382f283c8b55dac9
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234324"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101021"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Security Center 上のネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -152,8 +152,7 @@ DDoS Protection Standard を有効にする必要がある|DDoS Protection Stand
 ## <a name="see-also"></a>関連項目
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
 
-* [Azure Security Center での仮想マシンの保護](security-center-virtual-machine-recommendations.md)
-* [Azure Security Center でのアプリケーションの保護](security-center-application-recommendations.md)
+* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center での Azure SQL サービスの保護](security-center-sql-service-recommendations.md)
 
 セキュリティ センターの詳細については、次を参照してください。

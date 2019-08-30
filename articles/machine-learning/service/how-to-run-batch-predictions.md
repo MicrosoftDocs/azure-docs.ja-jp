@@ -1,5 +1,5 @@
 ---
-title: 大規模なデータでバッチ予測を実行する
+title: パイプラインを使用して大規模なデータに対してバッチ予測を実行する
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service を使用して大量のデータで非同期にバッチ予測を行う方法について説明します。
 services: machine-learning
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 689ee003e0923a65d3ca3f2d13c1a2d05c299dbd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358711"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963015"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Azure Machine Learning service で大規模なデータ セットのバッチ予測を実行する
+# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインを使用して大規模なデータ セットに対してバッチ予測を実行する
 
-この記事では、Azure Machine Learning service を使用して、大量のデータの予測を非同期的に行う方法を学習します。
+この記事では、ML パイプラインと Azure Machine Learning service を使用して、大量のデータに対して予測を非同期的に行う方法を学習します。
 
 バッチ予測 (または、バッチ スコアリング) では、非同期アプリケーションの比類のないスループットで、コスト効率のよい推論が提供されます。 テラバイト規模の運用データで推論を実行するように、バッチ予測パイプラインをスケーリングできます。 バッチ予測は、大規模なデータ コレクションに対する高スループットのファイア アンド フォーゲット予測に対して最適化されています。
 
@@ -358,7 +358,4 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>次の手順
 
-このエンド ツー エンドの動作を確認するには、[GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) にあるバッチ スコアリング ノートブックを試してください。
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
-
+エンドツーエンドでこの動作を確認するには、[GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) のバッチ スコアリング ノートブックを試すか、[Azure アーキテクチャ センター](/azure/architecture/reference-architectures/ai/batch-scoring-python)にアクセスしてサンプル ソリューション アーキテクチャを確認してください。

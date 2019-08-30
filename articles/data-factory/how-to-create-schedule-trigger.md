@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 09f80f69857ae17a0136229fe9bf13d4f63e7096
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b38e85994fc99272a649b9e529380cb953d1bca
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151085"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996372"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 この記事では、スケジュール トリガーの概要と、スケジュール トリガーを作成、起動、監視する手順について説明します。 他の種類のトリガーについては、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。
@@ -254,9 +254,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 "parameters": {
     "scheduledRunTime": "@trigger().scheduledTime"
 }
-```    
-
-詳細については、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関する記事をご覧ください。
+```
 
 ## <a name="json-schema"></a>JSON スキーマ
 次の JSON 定義は、スケジュールと繰り返しを指定してスケジュール トリガーを作成する方法を示しています。
@@ -325,7 +323,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 
 ### <a name="schema-defaults-limits-and-examples"></a>スキーマの既定値、制限、例
 
-| JSON プロパティ | Type | 必須 | Default value | 有効な値 | 例 |
+| JSON プロパティ | Type | 必須 | 既定値 | 有効な値 | 例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | string | はい | なし | ISO-8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Object | はい | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |

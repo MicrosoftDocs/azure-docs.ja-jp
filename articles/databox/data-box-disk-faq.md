@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 05/23/2019
+ms.date: 08/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 69068304a6bc72f503ed85edf05229f10e4a8bc0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1361224fb59a32ca227c5ea1e6cc92a4b0fdff6e
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236346"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541805"
 ---
-# <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
 Microsoft Azure Data Box Disk クラウド ソリューションを使用すると、迅速かつ安価な信頼性の高い方法で、数テラバイトのデータを Azure に送信できます。 この FAQ では、Azure portal での Data Box Disk の使用に関して多く寄せられる質問とその回答を紹介しています。 
 

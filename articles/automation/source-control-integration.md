@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1ae61af2ad857068950e2b2cdb6f058a33f57186
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477568"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990241"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -172,6 +172,13 @@ Source Control Sync Summary:
 ## <a name="encoding"></a>エンコード
 
 ソース管理リポジトリで複数のユーザーがさまざまなエディターを使用して Runbook を編集しているとき、エンコードの問題が発生する可能性があります。 このような状況では、正しくない文字が Runbook に含まれることがあります。 詳しくは、「[エンコード問題の一般的な原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)」をご覧ください。
+
+## <a name="updating-the-access-token"></a>アクセス トークンを更新する
+
+現時点では、ソース管理のアクセス トークンをポータルから更新する方法はありません。 個人用アクセス トークンの有効期限が切れたか失効した後、次の方法で新しいアクセス トークンを使用してソース管理を更新できます。
+
+* [REST API](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update) を使用する。
+* [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) コマンドレットを使用する。
 
 ## <a name="next-steps"></a>次の手順
 

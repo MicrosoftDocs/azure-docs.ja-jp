@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Go SDK を使用して Text Analytics サービスを呼び出す
+title: クイック スタート:Go 用 Text Analytics クライアント ライブラリ | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: laramume
 manager: assafi
@@ -10,27 +10,84 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d3644022e1877369368953b9f147c64aaae2d459
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 25d8052cda422c185d49c36c5daff9ac4582e66c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697643"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881021"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>クイック スタート:Go SDK を使用して Text Analytics サービスを呼び出す 
-<a name="HOLTop"></a>
+# <a name="quickstart-text-analytics-client-library-for-go"></a>クイック スタート:Go 用 Text Analytics クライアント ライブラリ
 
-このクイック スタートを使用して、Go 用 Text Analytics SDK を使用した言語の分析を開始します。 この記事では、言語の検出、センチメント分析、キー フレーズの抽出、およびリンクされているエンティティの識別を行う方法について説明します。 REST API は、ほとんどのプログラミング言語に対応しますが、この SDK を使用すれば、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices) にあります。
+Go 用 Text Analytics クライアント ライブラリの概要を紹介します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 
+
+Go 用 Text Analytics クライアント ライブラリを使って次のことを実行します。
+
+* センチメント分析
+* 言語検出
+* エンティティの認識
+* キー フレーズの抽出
+
+[リファレンスのドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [パッケージ (Github)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Text Analytics [SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* 最新バージョンの [Go](https://golang.org/dl/)
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+## <a name="setting-up"></a>設定
 
-## <a name="set-up-a-new-project"></a>新しいプロジェクトの設定
+### <a name="create-a-text-analytics-azure-resource"></a>Text Analytics Azure リソースを作成する 
 
-任意のコード エディターまたは IDE で新しい Go プロジェクトを作成します。 次に、以下の import ステートメントを Go ファイルに追加します。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に Text Analytics のリソースを作成します。 さらに、以下を実行できます。
+
+* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。
+* [Azure portal](https://portal.azure.com) でご利用のリソースを表示する。
+
+試用版のサブスクリプションまたはリソースからキーを取得した後、`TEXT_ANALYTICS_SUBSCRIPTION_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+
+### <a name="create-a-new-go-project"></a>新しい Go プロジェクトを作成する
+
+コンソール ウィンドウ (cmd、PowerShell、ターミナル、Bash) で、Go プロジェクト用に新しいワークスペースを作成し、そこに移動します。 ワークスペースには次の 3 つのフォルダーが格納されます。 
+
+* **src** - このディレクトリには、ソース コードとパッケージが格納されます。 `go get` コマンドを使用してインストールされるパッケージはすべてここに存在します。
+* **pkg** - このディレクトリには、コンパイル済みの Go パッケージ オブジェクトが格納されます。 これらのファイルにはいずれも `.a` という拡張子が付きます。
+* **bin** - このディレクトリには、`go install` を実行するときに作成されたバイナリ実行可能ファイルが格納されます。
+
+> [!TIP]
+> [Go ワークスペース](https://golang.org/doc/code.html#Workspaces)の構造についての詳細情報をご覧いただけます。 このガイドには、`$GOPATH` と `$GOROOT` の設定に関する情報が記載されています。
+
+`my-app` というワークスペースと必須のサブディレクトリ (`src`、`pkg`、`bin`) を作成します。
+
+```console
+$ mkdir -p my-app/{src, bin, pkg}  
+$ cd my-app
+```
+
+### <a name="install-the-text-analytics-client-library-for-go"></a>Go 用 Text Analytics クライアント ライブラリをインストールする
+
+Go 用クライアント ライブラリをインストールします。 
+
+```console
+$ go get -u <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
+```
+
+または、dep を使用している場合は、リポジトリ内で次を実行します。
+
+```console
+$ dep ensure -add <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
+```
+
+### <a name="create-your-go-application"></a>Go アプリケーションを作成する
+
+次に、`src/quickstart.go` という名前のファイルを作成します。
+
+```bash
+$ cd src
+$ touch quickstart.go
+```
+
+普段使用している IDE またはテキスト エディターで `quickstart.go` を開きます。 次に、パッケージの名前を追加し、次のライブラリをインポートします。
 
 ```golang
 import (
@@ -56,25 +113,47 @@ func BoolPointer(v bool) *bool {
 }
 ```
 
-## <a name="create-text-analytics-client-and-authenticate-credentials"></a>Text Analytics クライアントの作成と資格情報の認証
+プロジェクトの main 関数で、リソースの Azure エンドポイントおよびキー用の変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 
-プロジェクトの main 関数で、新しい `TextAnalytics` オブジェクトを作成します。 自分の Text Analytics サブスクリプションに適した Azure リージョンを使用してください。 (例: `https://eastus.api.cognitive.microsoft.com`)。 試用版のキーを使用している場合は、場所を更新する必要はありません。
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```golang
-//Replace 'eastus' with the correct region for your Text Analytics subscription
-textAnalyticsClient := textanalytics.New("https://eastus.api.cognitive.microsoft.com")
+// This sample assumes you have created an environment variable for your key
+subscriptionKey := os.Getenv("TEXT_ANALYTICS_SUBSCRIPTION_KEY")
+// replace this endpoint with the correct one for your Azure resource. 
+endpoint := "https://eastus.api.cognitive.microsoft.com"
 ```
 
-キーに対する変数を作成し、関数 `autorest.NewCognitiveServicesAuthorizer` に渡します。これがさらに、クライアントの `authorizer` プロパティに渡されます。
+## <a name="object-model"></a>オブジェクト モデル 
+
+Text Analytics クライアントは、ご利用のキーを使用して Azure に対して認証を行う [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) オブジェクトです。 このクライアントには、テキストを単一の文字列として、またはバッチとして分析するためのメソッドがいくつか備わっています。 
+
+テキストは、`documents` (使用したメソッドに応じて `id`、`text`、`language` の各属性の組み合わせを保持する `dictionary` オブジェクト) のリストとして API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。 
+
+応答オブジェクトは、各ドキュメントの分析情報を格納するリストです。 
+
+## <a name="code-examples"></a>コード例
+
+これらのコード スニペットでは、Python 用 Text Analytics クライアント ライブラリを使用して次のことを実行する方法が示されています。
+
+* [クライアントを認証する](#authenticate-the-client)
+* [感情分析](#sentiment-analysis)
+* [言語検出](#language-detection)
+* [エンティティの認識](#entity-recognition)
+* [キー フレーズ抽出](#key-phrase-extraction)
+
+## <a name="authenticate-the-client"></a>クライアントを認証する
+
+プロジェクトの main 関数で、新しい [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) オブジェクトを作成します。 ご利用のキーを [autorest.NewCognitiveServicesAuthorizer()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) 関数に渡すと、そのキーがクライアントの `authorizer` プロパティに渡されます。
 
 ```golang
-subscriptionKey := "<<subscriptionKey>>"
+textAnalyticsClient := textanalytics.New(endpoint)
 textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(subscriptionKey)
 ```
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 
-上記で作成したクライアントを受け取る `SentimentAnalysis()` という新しい関数を作成します。 分析するドキュメントを含む `MultiLanguageInput` オブジェクトの一覧を作成します。 各オブジェクトには、`id`、`Language`、および `text` 属性が含まれます。 `text` 属性には分析対象のテキストが格納され、`language` はドキュメントの言語であり、`id` には任意の値を指定できます。 
+上記で作成したクライアントを受け取る `SentimentAnalysis()` という新しい関数を作成します。 分析するドキュメントを含む [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) オブジェクトの一覧を作成します。 各オブジェクトには、`id`、`Language`、および `text` 属性が含まれます。 `text` 属性には分析対象のテキストが格納され、`language` はドキュメントの言語であり、`id` には任意の値を指定できます。 
 
 ```golang
 func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
@@ -86,28 +165,13 @@ func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
             ID:StringPointer("0"),
             Text:StringPointer("I had the best day of my life."),
         },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("en"),
-            ID:StringPointer("1"),
-            Text:StringPointer("This was a waste of my time. The speaker put me to sleep."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("2"),
-            Text:StringPointer("No tengo dinero ni nada que dar..."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("it"),
-            ID:StringPointer("3"),
-            Text:StringPointer("L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."),
-        },
     }
 
     batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
 }
 ```
 
-同じ関数内で、`textAnalyticsclient.Sentiment()` を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID とセンチメント スコアを印刷します。 0 に近いスコアは否定的センチメント、1 に近いスコアは肯定的センチメントを示します。
+同じ関数内で、クライアントの [Sentiment()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) 関数を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID とセンチメント スコアを印刷します。 0 に近いスコアは否定的センチメント、1 に近いスコアは肯定的センチメントを示します。
 
 ```golang
 result, _ := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
@@ -134,14 +198,11 @@ for _,error := range *batchResult.Errors {
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
-Document ID: 2 , Sentiment Score: 0.11
-Document ID: 3 , Sentiment Score: 0.44
-Document ID: 4 , Sentiment Score: 1.00
 ```
 
 ## <a name="language-detection"></a>言語検出
 
-上記で作成したクライアントを受け取る `LanguageDetection()` という新しい関数を作成します。 分析するドキュメントを含む `LanguageInput` オブジェクトの一覧を作成します。 各オブジェクトには、`id` および `text` 属性が含まれます。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
+上記で作成したクライアントを受け取る `LanguageDetection()` という新しい関数を作成します。 分析するドキュメントを含む [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) オブジェクトの一覧を作成します。 各オブジェクトには、`id` および `text` 属性が含まれます。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
 
 ```golang
 func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
@@ -152,21 +213,13 @@ func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
             ID:StringPointer("0"),
             Text:StringPointer("This is a document written in English."),
         },
-        textanalytics.LanguageInput {
-            ID:StringPointer("1"),
-            Text:StringPointer("Este es un document escrito en Español."),
-        },
-        textanalytics.LanguageInput {
-            ID:StringPointer("2"),
-            Text:StringPointer("这是一个用中文写的文件"),
-        },
     }
 
     batchInput := textanalytics.LanguageBatchInput{Documents:&inputDocuments}
 }
 ```
 
-同じ関数内で、`textAnalyticsclient.DetectLanguage()` を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID と検出された言語を出力します。
+同じ関数内で、クライアントの [DetectLanguage()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID と検出された言語を出力します。
 
 ```golang
 result, _ := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
@@ -193,14 +246,12 @@ for _,error := range *result.Errors {
 ### <a name="output"></a>Output
 
 ```console
-Document ID: 0 Detected Languages with Score: English 1.000000,
-Document ID: 1 Detected Languages with Score: Spanish 1.000000,
-Document ID: 2 Detected Languages with Score: Chinese_Simplified 1.000000,
+Document ID: 0 Detected Languages with Score: English 1.000000
 ```
 
 ## <a name="entity-recognition"></a>エンティティの認識
 
-上記で作成したクライアントを受け取る `ExtractEntities()` という新しい関数を作成します。 分析するドキュメントを含む `MultiLanguageInput` オブジェクトの一覧を作成します。 各オブジェクトには、`id`、`language`、および `text` 属性が含まれます。 `text` 属性には分析対象のテキストが格納され、`language` はドキュメントの言語であり、`id` には任意の値を指定できます。 
+上記で作成したクライアントを受け取る `ExtractEntities()` という新しい関数を作成します。 分析するドキュメントを含む [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) オブジェクトの一覧を作成します。 各オブジェクトには、`id`、`language`、および `text` 属性が含まれます。 `text` 属性には分析対象のテキストが格納され、`language` はドキュメントの言語であり、`id` には任意の値を指定できます。 
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -211,19 +262,14 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
             Language: StringPointer("en"),
             ID:StringPointer("0"),
             Text:StringPointer("Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("1"),
-            Text:StringPointer("La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."),
-        },
+        }
     }
 
     batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
 }
 ```
 
-同じ関数内で、`call textAnalyticsclient.Entities()` を実行し、結果を取得します。 次に、結果を反復処理し、各ドキュメントの ID と抽出されたエンティティ スコアを出力します。
+同じ関数内で、クライアントの [Entities()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) を呼び出して結果を取得します。 次に、結果を反復処理し、各ドキュメントの ID と抽出されたエンティティ スコアを出力します。
 
 ```golang
     result, _ := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
@@ -274,23 +320,11 @@ Document ID: 0
             Offset: 89  Length: 5   Score: 0.800000
         Name: Altair 8800   Type: Other
             Offset: 116 Length: 11  Score: 0.800000
-
-Document ID: 1
-    Extracted Entities:
-        Name: Microsoft Type: Organization
-            Offset: 21  Length: 9   Score: 0.999756
-        Name: Redmond (Washington)  Type: Location
-            Offset: 60  Length: 7   Score: 0.991128
-        Name: 21 kilómetros Type: Quantity  Sub-Type: Dimension
-
-            Offset: 71  Length: 13  Score: 0.800000
-        Name: Seattle   Type: Location
-            Offset: 88  Length: 7   Score: 0.999878
 ```
 
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 
-上記で作成したクライアントを受け取る `ExtractKeyPhrases()` という新しい関数を作成します。 分析するドキュメントを含む `MultiLanguageInput` オブジェクトの一覧を作成します。 各オブジェクトには、`id`、`language`、および `text` 属性が含まれます。 `text` 属性には分析対象のテキストが格納され、`language` はドキュメントの言語であり、`id` には任意の値を指定できます。
+上記で作成したクライアントを受け取る `ExtractKeyPhrases()` という新しい関数を作成します。 分析するドキュメントを含む [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) オブジェクトの一覧を作成します。 各オブジェクトには、`id`、`language`、および `text` 属性が含まれます。 `text` 属性には分析対象のテキストが格納され、`language` はドキュメントの言語であり、`id` には任意の値を指定できます。
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -298,24 +332,9 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
     ctx := context.Background()
     inputDocuments := []textanalytics.MultiLanguageInput {
         textanalytics.MultiLanguageInput {
-            Language: StringPointer("ja"),
-            ID:StringPointer("0"),
-            Text:StringPointer("猫は幸せ"),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("de"),
-            ID:StringPointer("1"),
-            Text:StringPointer("Fahrt nach Stuttgart und dann zum Hotel zu Fu."),
-        },
-        textanalytics.MultiLanguageInput {
             Language: StringPointer("en"),
-            ID:StringPointer("2"),
+            ID:StringPointer("0"),
             Text:StringPointer("My cat might need to see a veterinarian."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("3"),
-            Text:StringPointer("A mi me encanta el fútbol!"),
         },
     }
 
@@ -323,7 +342,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-同じ関数内で textAnalyticsclient.KeyPhrases() を呼び出して、結果を取得します。 結果を反復処理し、各ドキュメントの ID と抽出されたキー フレーズを出力します。
+同じ関数内で、クライアントの [KeyPhrases()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID と抽出されたキー フレーズを出力します。
 
 ```golang
     result, _ := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
@@ -352,30 +371,27 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 ```console
 Document ID: 0
     Extracted Key Phrases:
-        幸せ
-
-Document ID: 1
-    Extracted Key Phrases:
-        Stuttgart
-        Hotel
-        Fahrt
-        Fu
-
-Document ID: 2
-    Extracted Key Phrases:
         cat
         veterinarian
-
-Document ID: 3
-    Extracted Key Phrases:
-        fútbol
 ```
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+
+* [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>次の手順
+
 
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>関連項目
 
- [Text Analytics の概要](../overview.md) [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)
+* [Text Analytics の概要](../overview.md)
+* [感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [エンティティの認識](../how-tos/text-analytics-how-to-entity-linking.md)
+* [言語を検出する](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [言語の認識](../how-tos/text-analytics-how-to-language-detection.md)
+* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices) にあります。

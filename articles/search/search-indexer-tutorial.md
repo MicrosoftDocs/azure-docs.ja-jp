@@ -2,20 +2,18 @@
 title: 'C# のチュートリアル: Azure SQL データベースのデータにインデックスを付ける - Azure Search'
 description: C# コード例で、Azure SQL データベースに接続し、検索可能なデータを抽出して、それを Azure Search インデックスに読み込む方法を示します。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: c88ff0d7e408e03216707ff9282d640fb7d28500
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840696"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640648"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C# のチュートリアル: Azure Search インデクサーを使用して Azure SQL データベースをクロールする
 

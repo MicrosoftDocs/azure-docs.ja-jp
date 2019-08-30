@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: f000f10a3b20fda04c908a6dea0cc9799b49ef76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 33f08f22c3f09539dbe44098e3747f0ed7a8fe8c
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181722"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541502"
 ---
 1. 新しいウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左側のメニューで、 **[リソースの作成]** 、 **[データベース]** の順にクリックし、 **[Azure Cosmos DB]** の下にある **[作成]** をクリックします。
+2. 左側のメニューで、 **[リソースの作成]** 、 **[データベース]** の順に選択し、 **[Azure Cosmos DB]** の下にある **[作成]** を選択します。
    
    ![その他のサービスと Azure Cosmos DB が強調表示された Azure portal のスクリーンショット](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png)
 
@@ -24,7 +24,7 @@ ms.locfileid: "67181722"
  
     設定|値|説明
     ---|---|---
-    サブスクリプション|該当するサブスクリプション|この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。 
+    Subscription|該当するサブスクリプション|この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。 
     リソース グループ|新規作成<br><br>その後、ID で指定したものと同じ一意の名前を入力|**[新規作成]** を選択します。 その後、自分のアカウントの新しいリソースグループの名前を入力します。 簡略化するには、ID と同じ名前を使用します。 
     アカウント名|一意の名前を入力します|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 指定した ID に *documents.azure.com* が付加されて URI が作成されるので、一意の ID を使用してください。<br><br>ID に使用できるのは、英小文字、数字、ハイフン (-) のみです。 長さは 3 文字から 31 文字でなければなりません。
     API|Azure Cosmos DB の MongoDB 用 API|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB には、5 種類の API が用意されています。ドキュメント データベース用の Core(SQL)、グラフ データベース用の Gremlin、ドキュメント データベース用の Azure Cosmos DB の MongoDB 用 API、Azure Table、Cassandra です。 現在は、API ごとに別のアカウントを作成する必要があります。 <br><br>このクイック スタートでは MongoDB に対応するテーブルを作成するので、**MongoDB** を選択します。|

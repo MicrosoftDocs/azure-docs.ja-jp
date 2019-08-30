@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: b7bf9943afa2a79f98fd28d15e5ea46fa63af732
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688639"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872904"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -51,22 +51,29 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 - **Azure データセンターの IP 範囲を許可する**。 このオプションは、ダウンロードで [IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を許可します。 ネットワーク セキュリティ グループ (NSG) にアクセスするには、Set-AzureNetworkSecurityRule コマンドレットを使用します。 安全な受信者がリージョン固有 IP のみをリストに登録する場合は、認証を有効にするために Azure Active Directory (Azure AD) サービス タグで信頼できる宛先のリストを更新する必要があります。
 
-- **NSG タグを使用してアクセスを許可する**。 NSG を使用して接続を制限する場合、このオプションは、AzureBackup タグを使用して、Azure Backup への発信アクセスを許可する規則を NSG に追加します。 認証とデータ転送のための接続を許可するには、このタグに加えて、Azure AD と Azure Storage に対応する[規則](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)も必要です。 AzureBackup タグは現在、PowerShell でのみ使用可能です。 AzureBackup タグを使用して規則を作成するには:
+- **NSG タグを使用してアクセスを許可する**。  NSG を使用して接続を制限する場合は、AzureBackup サービス タグを使用して Azure Backup への発信アクセスを許可する必要があります。 さらに、Azure AD と Azure Storage に対して[規則](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用することで、認証とデータ転送のための接続を許可する必要もあります。 これは、ポータルまたは PowerShell から実行できます。
 
-    - Azure アカウントの資格情報を追加して各国のクラウドを更新する<br/>
-    `Add-AzureRmAccount`
+    ポータルを使用してルールを作成するには、次のようにします。
+    
+    - **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
+    - **[設定]** で **[送信セキュリティ規則]** を選択します。
+    - **[追加]** を選択します。 [セキュリティ規則の設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が **[サービス タグ]** に、 **[宛先サービス タグ]** が **[AzureBackup]** に設定されていることを確認します。
+    - **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
+    
+   PowerShell を使用してルールを作成するには、次のようにします。
 
-    - NSG サブスクリプションを選択する<br/>
-    `Select-AzureRmSubscription "<Subscription Id>"`
-
-     - NSG を選択する<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
-
-    - Azure Backup サービス タグの発信許可規則を追加する<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
-
+   - Azure アカウントの資格情報を追加して各国のクラウドを更新する<br/>
+    ``Add-AzureRmAccount``
+  - NSG サブスクリプションを選択する<br/>
+    ``Select-AzureRmSubscription "<Subscription Id>"``
+  - NSG を選択する<br/>
+    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
+  - Azure Backup サービス タグの発信許可規則を追加する<br/>
+   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
   - NSG を保存する<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+
+   
 - **Azure Firewall タグを使用してアクセスを許可する**。 Azure Firewall を使用している場合は、AzureBackup [FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)を使用してアプリケーション規則を作成します。 これにより、Azure Backup への発信アクセスを許可します。
 - **トラフィックをルーティングするために HTTP プロキシ サーバーをデプロイする**。 Azure VM 上の SQL Server データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 パブリック インターネットにアクセスできるように構成されたコンポーネントはバックアップ拡張機能のみです。
 
@@ -168,7 +175,7 @@ VM 上で稼働しているデータベースを検出する方法:
    バックアップの負荷を最適化するために、Azure Backup では、1 つのバックアップ ジョブにおけるデータベースの最大数が 50 個に設定されています。
 
      * 50 個を超えるデータベースを保護するには、複数のバックアップを構成します。
-     * [](#enable-auto-protection)インスタンス全体または Always On 可用性グループを有効にします。 **[AUTOPROTECT]\(自動保護\)** ドロップダウン リストで、 **[ON]\(オン\)** を選択してから **[OK]** を選択します。
+     * インスタンス全体または AlwaysOn 可用性グループを[有効にする](#enable-auto-protection)には、 **[AUTOPROTECT]\(自動保護\)** ドロップダウン リストで **[オン]** を選択し、 **[OK]** を選択します。
 
     > [!NOTE]
     > [自動保護](#enable-auto-protection)機能では、既存のすべてのデータベースの保護が一度に有効になるだけでなく、そのインスタンスまたは可用性グループに追加されたすべての新しいデータベースも自動的に保護されます。  
@@ -177,7 +184,7 @@ VM 上で稼働しているデータベースを検出する方法:
 
     ![Always On 可用性グループで自動保護を有効にする](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. **[バックアップ ポリシー]** で、ポリシーを選択してから  **[OK]** を選択します。
+5. **[バックアップ ポリシー]** で、ポリシーを選択してから **[OK]** を選択します。
 
    - 既定のポリシーを HourlyLogBackup として選択します。
    - SQL 用に以前に作成された既存のバックアップ ポリシーを選択する。
@@ -185,11 +192,11 @@ VM 上で稼働しているデータベースを検出する方法:
 
      ![[バックアップ ポリシー] を選択する](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6.  **[バックアップ]** で、 **[バックアップの有効化]** を選択します。
+6. **[バックアップ]** で、 **[バックアップの有効化]** を選択します。
 
     ![選択したバックアップ ポリシーを有効にする](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. ポータルの  **[通知]**   領域で構成の進行状況を追跡します。
+7. ポータルの **[通知]** 領域で構成の進行状況を追跡します。
 
     ![[通知] 領域](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -273,7 +280,7 @@ VM 上で稼働しているデータベースを検出する方法:
 
 - 自動保護のために一度に選択できるデータベースの数に制限はありません。
 - 自動保護を有効化するときに、インスタンス内のデータベースを選んで保護したり保護から除外したりすることはできません。
-- 保護されているデータベースが既にインスタンスに含まれる場合は、自動保護を有効にした後でも、それぞれのポリシーに従って保護されたままです。 後から追加された、保護されていないすべてのデータベースには、自動保護の有効化の時点で定義し、 **[バックアップの構成]** で一覧に表示される 1 つのポリシーのみが適用されます。 ただし、自動保護データベースに関連付けたポリシーは後から変更できます。  
+- 保護されているデータベースが既にインスタンスに含まれる場合は、自動保護を有効にした後でも、それぞれのポリシーに従って保護されたままです。 後から追加された、保護されていないすべてのデータベースには、自動保護の有効化の時点で定義し、 **[バックアップの構成]** で一覧に表示される 1 つのポリシーのみが適用されます。 ただし、自動保護データベースに関連付けたポリシーは後から変更できます。  
 
 自動保護を有効にするには:
 
@@ -288,7 +295,7 @@ VM 上で稼働しているデータベースを検出する方法:
 
 ![そのインスタンスの自動保護を無効にする](./media/backup-azure-sql-database/disable-auto-protection.png)
 
- 
+ 
 ## <a name="next-steps"></a>次の手順
 
 以下の項目について説明します。

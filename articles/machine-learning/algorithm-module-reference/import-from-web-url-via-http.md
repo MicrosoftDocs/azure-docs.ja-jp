@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: bff913efb38c9e5589c795386dfbbc480d799a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411438"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128753"
 ---
 # <a name="import-from-web-url-via-http-module"></a>HTTP 経由の Web URL からのインポート モジュール
 

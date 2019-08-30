@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d24eb81361a337ed00d719a7fb5895e73583030
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106459"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096317"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
 
@@ -37,7 +36,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 このセクションでは、Portal UI を使用して、前に作成した関数にキュー ストレージの出力バインディングを追加します。 このバインディングにより、最小限のコードの記述でキューにメッセージを作成できるようになります。 ストレージ接続のオープン、キューの作成、キューへの参照の取得などのタスクのためにコードを記述する必要はありません。 Azure Functions ランタイムおよびキューの出力バインディングが、ユーザーに代わってこれらのタスクを処理します。
 
-1. Azure Portal で、「[Azure Portal で初めての関数を作成する](functions-create-first-azure-function.md)」で作成した Function App の Function App ページを開きます。 そのためには、**[すべてのサービス]、[Function App]** の順に選択して、関数アプリを選択します。
+1. Azure Portal で、「[Azure Portal で初めての関数を作成する](functions-create-first-azure-function.md)」で作成した Function App の Function App ページを開きます。 そのためには、 **[すべてのサービス]、[Function App]** の順に選択して、関数アプリを選択します。
 
 1. 前のクイックスタートで作成した関数を選択します。
 
@@ -47,7 +46,7 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-1. メッセージ "**拡張機能がインストールされていません**" が表示された場合は、**[インストール]** を選択して、関数アプリに Storage バインディング拡張機能をインストールします。 これには 1 ～ 2 分ほどかかることがあります。
+1. メッセージ "**拡張機能がインストールされていません**" が表示された場合は、 **[インストール]** を選択して、関数アプリに Storage バインディング拡張機能をインストールします。 これには 1 ～ 2 分ほどかかることがあります。
 
     ![Storage バインディング拡張機能をインストールする](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
 
@@ -106,7 +105,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 ## <a name="test-the-function"></a>関数をテストする
 
-1. コードの変更が保存されたら、**[実行]** を選択します。 
+1. コードの変更が保存されたら、 **[実行]** を選択します。 
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
@@ -122,11 +121,11 @@ Azure Functions では、入力および出力バインディングによって�
 
 ストレージ エクスプ ローラーが既にインストールされていて、このクイックスタートで使用するストレージ アカウントに接続されている場合は、このセクションをスキップしてください。
 
-1. [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択し、**[次へ]** を選択します。
+1. [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、 **[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択し、 **[次へ]** を選択します。
 
     ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
-1. Azure Portal の Function App ページで、関数を選択し、**[統合]** を選択します。
+1. Azure Portal の Function App ページで、関数を選択し、 **[統合]** を選択します。
 
 1. 前の手順で追加した **Azure Queue Storage** 出力バインディングを選択します。
 
@@ -138,7 +137,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. Portal の **[アカウント名]** の値をコピーして、ストレージ エクスプローラ－の **[アカウント名]** ボックスに貼り付けます。
  
-1. **[アカウント キー]** の横にある表示/非表示アイコンをクリックして値を表示し、**[アカウント キー]** の値をコピーして、ストレージ エクスプローラーの **[アカウント キー]** ボックスに貼り付けます。
+1. **[アカウント キー]** の横にある表示/非表示アイコンをクリックして値を表示し、 **[アカウント キー]** の値をコピーして、ストレージ エクスプローラーの **[アカウント キー]** ボックスに貼り付けます。
   
 1. **[次へ] > [接続]** の順に選択します。
 

@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: bc6a7505ab09e929e5add61eea687f871aedf242
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93f27458a2571b2e26a090c06b01d8abe3e79c2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027781"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128589"
 ---
 # <a name="neural-network-regression-module"></a>ニューラル ネットワーク回帰モジュール
 

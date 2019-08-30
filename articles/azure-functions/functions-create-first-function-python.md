@@ -11,16 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722794"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575446"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure で HTTP によってトリガーされる関数を作成する
-
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 この記事では、コマンドライン ツールを使用し、Azure Functions で実行される Python プロジェクトを作成する方法を紹介します。 作成する関数は、HTTP 要求によってトリガーされます。 最後に、プロジェクトを公開し、Azure で[サーバーレス関数](functions-scale.md#consumption-plan)として実行します。
 
@@ -32,7 +30,7 @@ ms.locfileid: "68722794"
 
 + [Python 3.6](https://www.python.org/downloads/) のインストール。
 
-+ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.1071 以降をインストールします。
++ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.7.1575 以降をインストールします。
 
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.x 以降のバージョンをインストールします。
 
@@ -40,9 +38,9 @@ ms.locfileid: "68722794"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment"></a>仮想環境を作成してアクティブにする
+## <a name="create-and-activate-a-virtual-environment-optional"></a>仮想環境を作成してアクティブにする (任意)
 
-Python 関数をローカルで開発し、テストするには、Python 3.6 環境で作業する必要があります。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
+Python 関数をローカルで開発し、テストするには、Python 3.6 環境を利用することが推奨されます。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
 
 ### <a name="bash"></a>Bash:
 
@@ -81,8 +79,6 @@ _MyFunctionProj_ という名前のフォルダーが作成されます。これ
 ```console
 cd MyFunctionProj
 ```
-
-次に、host.json ファイルを更新し、拡張バンドルを有効にします。  
 
 ## <a name="create-a-function"></a>関数を作成する
 
@@ -165,15 +161,19 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 --consumption-plan-location westeurope  --runtime python \
 --name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
-
 > [!NOTE]
-> Azure Functions の Linux 向け従量課金プランは現在、プレビュー段階であり、使用できるのは次のリージョンだけです: 米国西部、米国東部、西ヨーロッパ、東アジア。 さらに、Linux アプリと Windows アプリは同じリソース グループ内でホストすることができません。 Windows の関数アプリまたは Web アプリで `myResourceGroup` という名前のリソース グループが存在する場合、別のリソース グループを使用する必要があります。
+> Linux アプリと Windows アプリは同じリソース グループ内でホストすることができません。 Windows の関数アプリまたは Web アプリで `myResourceGroup` という名前のリソース グループが存在する場合、別のリソース グループを使用する必要があります。
+
+また、このコマンドでは、ログの監視と表示に利用できる同じリソース グループ内で、関連 Application Insights インスタンスがプロビジョニングされます。
 
 これで、Azure でローカル関数プロジェクトを関数アプリに公開できます。
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+> [!NOTE]
+> 公開された Python アプリのほぼリアルタイムのログを表示するには、[Application Insights Live Metrics Stream](functions-monitoring.md#streaming-logs) の使用をお勧めします。
 
 ## <a name="next-steps"></a>次の手順
 

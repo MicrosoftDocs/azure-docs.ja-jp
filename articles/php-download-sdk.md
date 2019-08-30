@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: yaya
 ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67873892"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Azure SDK for PHP をダウンロードする
@@ -45,7 +45,7 @@ Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発
 
 Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。 これらのライブラリは、Composer からインストールできます。
 
-Azure 用 PHP クライアント ライブラリを使用する方法については、それぞれ [BLOB サービスの使用方法][blob-service], [How to Use the Table Service][table-service]、テーブル サービスの使用方法、[キュー サービスの使用方法][queue-service]に関するページを参照してください。
+Azure 用 PHP クライアント ライブラリを使用する方法については、[BLOB サービスの使用方法][blob-service]、[テーブル サービスの使用方法][table-service]、[キュー サービスの使用方法][queue-service]に関する説明を参照してください。
 
 ### <a name="install-via-composer"></a>Composer 経由でインストールする
 

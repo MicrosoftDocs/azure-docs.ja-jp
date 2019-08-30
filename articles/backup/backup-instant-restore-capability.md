@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0f31320a638dd4741d940d0b459575b66149b829
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: aad3ca34ab9db5ec910e70e70ba5a31afa94e417
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698406"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611986"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
@@ -24,7 +24,7 @@ ms.locfileid: "68698406"
 
 * コンテナーへのデータ転送の終了を待たずに、復旧に利用できるバックアップ ジョブの一環として取得されるスナップショットを使用できます。 これにより、復元をトリガーする前にスナップショットをコンテナーにコピーする待機時間が短縮されます。
 * スナップショットを既定で 2 日間ローカルに保持することで、バックアップと復元の時間が短縮されます。 この既定のスナップショット リテンション期間の値は、1 から 5 日の間の任意の値に構成できます。
-* 最大 4 TB のディスク サイズがサポートされます。 Azure Backup では、ディスクのサイズ変更は推奨されません。
+* 最大 4 TB のディスク サイズがサポートされます。 Azure Backup では、ディスクのサイズ変更は推奨されません。 4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、「[ディスク サイズが最大 30 TB の VM のバックアップ](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)」を参照してください。
 * Standard HDD ディスクおよび Premium SSD ディスクと共に Standard SSD ディスクがサポートされます。
 * 復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
 * インスタント リストアで Premium Storage を使用している VM のバックアップについては、割り当てられた合計ストレージ領域の *50%* の空き領域 (最初のバックアップに**のみ**必要) を割り当てることをお勧めします。 最初のバックアップが完了すると、バックアップに 50% の空き領域は不要になります。

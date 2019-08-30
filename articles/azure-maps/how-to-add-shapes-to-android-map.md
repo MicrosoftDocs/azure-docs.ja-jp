@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c53a3e01d471f2ca9b0878c374b00ce83848ca28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e3f16b939d05a4c055fba3a9f1ab5e47e54070
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64871240"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976592"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用したマップへの図形の追加
 
@@ -82,6 +82,7 @@ ms.locfileid: "64871240"
     
     ```Java
     package com.example.myapplication;
+
     import android.app.Activity;
     import android.os.Bundle;
     import com.mapbox.geojson.LineString;
@@ -96,8 +97,7 @@ ms.locfileid: "64871240"
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
     import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-    
-    
+        
     public class MainActivity extends AppCompatActivity {
     
         static{
@@ -133,8 +133,7 @@ ms.locfileid: "64871240"
                 map.layers.add(new LineLayer(dataSource,
                     strokeColor("blue"),
                     strokeWidth(5f)));
-            });
-    
+            });    
         }
     
         @Override
@@ -171,8 +170,7 @@ ms.locfileid: "64871240"
         protected void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
-        }
-    
+        }    
     }
     ```
 
@@ -307,8 +305,7 @@ ms.locfileid: "64871240"
                 map.layers.add(new LineLayer(dataSource,
                     strokeColor("blue"),
                     strokeWidth(2f)));
-            });
-    
+            });    
         }
     
         @Override
@@ -345,8 +342,7 @@ ms.locfileid: "64871240"
         protected void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
-        }
-    
+        }    
     }
     ```
 
@@ -359,7 +355,13 @@ ms.locfileid: "64871240"
 
 ## <a name="next-steps"></a>次の手順
 
-マップのスタイルを設定する方法の詳細については、次の記事を参照してください。
+マップにさらにデータを追加するには:
 
 > [!div class="nextstepaction"]
-> [Android マップでのマップ スタイルの変更](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [シンボル レイヤーを追加する](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [タイル レイヤーを追加する](how-to-add-tile-layer-android-map.md)
+
+> [!div class="nextstepaction"]
+> [フィーチャーの情報を表示する](display-feature-information-android.md)

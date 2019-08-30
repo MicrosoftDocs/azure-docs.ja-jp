@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648501"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087450"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions でのチェックポイントと再生 - (Azure Functions)
 
@@ -78,7 +77,7 @@ Durable Task Framework は、`await` (C#) または `yield` (JavaScript) ステ�
 
 完了すると、Azure Table Storage の上記の関数の履歴は次のようになります (わかりやすくするために一部省略されています)。
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | Name             | 結果                                                    | Status |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | 名前             | 結果                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
@@ -145,7 +144,7 @@ Durable Task Framework は、`await` (C#) または `yield` (JavaScript) ステ�
 
   オーケストレーターに遅延が必要な場合は、[CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) または `createTimer` (JavaScript) API を使用できます。
 
-* オーケストレーター コードで**非同期操作を開始しないでください** ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API または `context.df` オブジェクトの APIを使用する場合を除く)。 たとえば、.NET では `Task.Run`、`Task.Delay`、または `HttpClient.SendAsync` を開始せず、JavaScript では `setTimeout()` および `setInterval()` を開始しません。 Durable Task Framework は、オーケストレーター コードを 1 つのスレッドで実行しており、他の非同期 API でスケジュールされている他のスレッドとは対話できません。
+* オーケストレーター コードで**非同期操作を開始しないでください** ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API または `context.df` オブジェクトの APIを使用する場合を除く)。 たとえば、.NET では `Task.Run`、`Task.Delay`、または `HttpClient.SendAsync` を開始せず、JavaScript では `setTimeout()` および `setInterval()` を開始しません。 Durable Task Framework は、オーケストレーター コードを 1 つのスレッドで実行しており、他の非同期 API でスケジュールされている他のスレッドとは対話できません。 これが発生すると、`InvalidOperationException` 例外がスローされます。
 
 * オーケストレーター コードでは**無限ループが発生しないようにしてください**。 Durable Task Framework では、オーケストレーション関数の進行状況に応じて実行履歴が保存されるため、無限ループが発生すると、オーケストレーター インスタンスによってメモリが不足する可能性があります。 無限ループ シナリオでは、[ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) または `continueAsNew` (JavaScript) などの API を使用して、関数の実行を再開して、前の実行履歴を破棄してください。
 

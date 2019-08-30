@@ -1,33 +1,34 @@
 ---
 title: デバイスでのブロック blob の格納 -Azure IoT Edge | Microsoft Docs
 description: 階層化機能と Time-To-Live 機能を理解してから、サポートされている Blob Storage の操作を確認し、その後、ご自身の Blob Storage アカウントに接続します。
-author: arduppal
+author: kgremban
 manager: mchad
-ms.author: arduppal
-ms.reviewer: arduppal
-ms.date: 06/19/2019
+ms.author: kgremban
+ms.reviewer: kgremban
+ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5932d51ecaca3c827ae6de268711c7f4d1b28d0a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 861b5c3ee6d5661339788e7a27ba70557d0ea267
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640658"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947034"
 ---
-# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)
+# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する
 
 IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure のブロック BLOB サービスのように動作しますが、そのブロック BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れているブロック BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナー上の Azure Blob Storage に関連する概念について説明します。
 
-このモジュールは、データを処理するかクラウドに転送できる状態になるまでデータをローカルに格納する必要のあるシナリオで役立ちます。 そうしたデータには、動画、画像、ファイナンス データ、病院データなど、あらゆる非構造化データが考えられます。
-
-> [!NOTE]
-> IoT Edge の Azure Blob Storage は、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中です。
+このモジュールは、次のシナリオで役立ちます。
+* データを処理するかクラウドに転送できる状態になるまでデータをローカルに格納する必要のある場合。 そうしたデータには、動画、画像、ファイナンス データ、病院データなど、あらゆる非構造化データが考えられます。
+* 接続が制限されている場所にデバイスが配置されている場合。
+* 緊急事態にできるだけ迅速に対応できるように、データをローカルで効率的に処理し、データに短い待機時間でアクセスしたい場合。
+* 帯域幅のコストを削減し、テラバイト単位のデータをクラウドに転送しないようにする場合。 データをローカルで処理し、処理されたデータのみをクラウドに送信することができます。
 
 概要紹介のビデオを見る
-> [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
+> [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
 このモジュールには、**deviceToCloudUpload** 機能と **deviceAutoDelete** 機能が付属しています。
 
@@ -60,16 +61,11 @@ Azure IoT Edge デバイス:
 
 - [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って、開発マシンまたは仮想マシンを IoT Edge デバイスとして使用できます。
 
-- IoT Edge モジュールの Azure Blob Storage では、次のデバイスの構成がサポートされます。
-
-  | オペレーティング システム | AMD64 | ARM32v7 | ARM64 |
-  | ---------------- | ----- | ----- | ---- |
-  | Raspbian-stretch | いいえ | はい | いいえ |  
-  | Ubuntu Server 16.04 | はい | いいえ | はい |
-  | Ubuntu Server 18.04 | はい | いいえ | はい |
-  | Windows 10 IoT Enterprise ビルド 17763 | はい | いいえ | いいえ |
-  | Windows Server 2019 ビルド 17763 | はい | いいえ | いいえ |
-  
+- サポートされているオペレーティング システムおよびアーキテクチャの一覧については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。 IoT Edge モジュールの Azure Blob Storage では、次のアーキテクチャがサポートされます。
+    - Windows AMD64
+    - Linux AMD64
+    - Linux ARM32
+    - Linux ARM64 (プレビュー)
 
 クラウド リソース:
 
@@ -104,7 +100,10 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 
 ## <a name="using-smb-share-as-your-local-storage"></a>ローカル ストレージとして SMB 共有を使用する
 Windows ホストにこのモジュールの Windows コンテナーをデプロイするときに、ローカル ストレージ パスとして SMB 共有を指定できます。
-`New-SmbGlobalMapping` PowerShell コマンドを実行して、Windows を実行している IoT デバイス上でローカルに SMB 共有をマップすることができます。 IoT デバイスがリモート SMB 共有に対して読み取りおよび書き込みできることを確認します。
+
+SMB 共有と IoT デバイスが相互に信頼されたドメインにあることを確認してください。
+
+`New-SmbGlobalMapping` PowerShell コマンドを実行して、Windows を実行している IoT デバイス上でローカルに SMB 共有をマップすることができます。
 
 構成手順は次のとおりです。
 ```PowerShell
@@ -112,12 +111,44 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 例: <br>
-`$creds = Get-Credentials` <br>
+`$creds = Get-Credential` <br>
 `New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
 
 このコマンドは、資格情報を使用してリモート SMB サーバーで認証を行います。 次に、リモート共有パスを G: ドライブ文字にマップします (他の使用可能なドライブ文字を指定できます)。 これで、IoT デバイスのデータ ボリュームが G: ドライブのパスにマップされました。 
 
-実際のデプロイでは、`<storage directory bind>` の値として **G:/ContainerData:C:/BlobRoot** を指定できます。
+IoT デバイスのユーザーがリモート SMB 共有に対して読み取りおよび書き込みできることを確認してください。
+
+実際のデプロイでは、`<storage mount>` の値として **G:/ContainerData:C:/BlobRoot** を指定できます。 
+
+## <a name="granting-directory-access-to-container-user-on-linux"></a>Linux のコンテナー ユーザーにディレクトリ アクセスを許可する
+Linux コンテナーの作成オプションでストレージに[ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用した場合は、追加の手順を実行する必要はありませんが、[バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用した場合は、サービスを正しく実行するために次の手順が必要になります。
+
+ユーザーのアクセス権を作業の実行に必要な最小限のアクセス許可に制限する最小限の特権の原則に従って、このモジュールには、ユーザー (名前: absie、ID:11000) とユーザー グループ (名前: absie、ID:11000) が含まれています。 コンテナーが**ルート**として開始された場合 (既定のユーザーは**ルート**)、サービスは低い特権の **absie** ユーザーとして開始されます。 
+
+この動作により、サービスが正常に動作するために、ホスト パス バインドのアクセス許可の構成が重要になります。構成によっては、アクセス拒否エラーが発生してサービスがクラッシュします。 ディレクトリ バインディングで使用されるパスには、コンテナー ユーザー (例: absie 11000) がアクセスできる必要があります。 ホストで次のコマンドを実行して、コンテナー ユーザーにディレクトリへのアクセス権を付与できます。
+
+```terminal
+sudo chown -R 11000:11000 <blob-dir> 
+sudo chmod -R 700 <blob-dir> 
+```
+
+例:<br>
+`sudo chown -R 11000:11000 /srv/containerdata` <br>
+`sudo chmod -R 700 /srv/containerdata `
+
+
+**absie** 以外のユーザーとしてサービスを実行する必要がある場合は、配置マニフェストの createOptions の "User" プロパティでカスタム ユーザー ID を指定できます。 このような場合は、既定値またはルート グループ ID `0` を使用する必要があります。
+
+```json
+“createOptions”: { 
+  “User”: “<custom user ID>:0” 
+} 
+```
+ここで、コンテナー ユーザーにディレクトリへのアクセスを許可します。
+```terminal
+sudo chown -R <user ID>:<group ID> <blob-dir> 
+sudo chmod -R 700 <blob-dir> 
+```
 
 ## <a name="configure-log-files"></a>ログ ファイルを構成する
 
@@ -142,9 +173,9 @@ Azure Blob Storage のドキュメントには、複数の言語のクイック 
 次のクイック スタート サンプルでは IoT Edge からもサポートされる言語を使用するため、BLOB ストレージ モジュールと共に IoT Edge モジュールとして言語をデプロイできます。
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Java](../storage/blobs/storage-quickstart-blobs-java.md)
+- [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-- [Node.JS](../storage/blobs/storage-quickstart-blobs-nodejs.md)
+- [Node.JS](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Azure Storage Explorer を使用してお使いのローカル ストレージに接続する
 
@@ -239,3 +270,5 @@ absiotfeedback@microsoft.com までお寄せください
 ## <a name="next-steps"></a>次の手順
 
 [Azure Blob Storage を IoT Edge にデプロイする](how-to-deploy-blob.md)方法を学習する
+
+[IoT Edge 上のAzure Blob Storage ブログ](https://aka.ms/abs-iot-blogpost)の最新の更新とお知らせによって最新情報を得る

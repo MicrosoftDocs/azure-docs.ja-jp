@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 32da92fb3c5573d24eb18a01a4ede8fe6a0bf36a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9bc6cfdcbc67761e99150c730adeb23602232632
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567445"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032956"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
@@ -36,8 +36,7 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 ## <a name="where-can-i-find-known-issues-and-bugs"></a>既知の問題やバグはどこで確認できますか?
 
-バグと既知の問題については、「[動作の変更](sql-database-managed-instance-transact-sql-information.md#Changes)」と[既知の問題](sql-database-managed-instance-transact-sql-information.md#Issues)に関するページを参照してください。
-
+バグや既知の問題については、「[既知の問題](sql-database-managed-instance-transact-sql-information.md#Issues)」をご覧ください。
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>マネージド インスタンスにオンプレミスの SQL Server と同じ名前を付けることはできますか?
 
@@ -79,9 +78,9 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか? 
 
-General Purpose マネージド インスタンスでは、データおよびログ ファイルのサイズがパフォーマンスにとって重要であるため、リモート ストレージが使用されます。 General Purpose サービス レベルのパフォーマンスを調整するには、このブログ記事の手順に従います。
+General Purpose マネージド インスタンスでは、データおよびログ ファイルのサイズがパフォーマンスにとって重要であるため、リモート ストレージが使用されます。 詳しくは、「[General Purpose Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」をご覧ください。
 
-IO 集中型のワークロードには Gen 5 ハードウェア、コンピューティング集中型のワークロードには Gen 4 ハードウェアを使用することを検討してください。 詳細については、ハードウェア世代の選択に関する FAQ セクションを参照してください。
+IO 集中型のワークロードには Gen 5 ハードウェア、コンピューティング集中型のワークロードには Gen 4 ハードウェアを使用することを検討してください。 詳しくは、[Gen 4 と Gen 5 のどちらかを選択する方法](#how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance)に関する説明をご覧ください。
 
 ワークロードが多数の小さなトランザクションで構成されている場合は、接続の種類をプロキシからリダイレクト モードに切り替えることを検討してください。
 
@@ -125,9 +124,9 @@ IO 集中型のワークロードには Gen 5 ハードウェア、コンピュ�
 
 マネージド インスタンスのケース スタディ:
 
-- [Komatsu](http://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [powerdetails](http://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](http://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
+- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+- [powerdetails](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
 Azure SQL Database マネージド インスタンスのデプロイに関連する利点、コスト、リスクについて理解を深めるために、次の Forrester による調査結果もあります: [MI の総合的な経済効果](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
 
 

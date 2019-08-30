@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1591f4f1e96bbb2bffb80a2c652963faa5dca5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ceefb565a82301d2ddedf70d12c0fc564b801229
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077641"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101201"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -173,7 +172,7 @@ SAP HANA スケールアウトの VM ノードの基本構成は、次のよう�
 約 2 TB メモリを備えた SAP HANA スケールアウトの認定 M128 Azure VM を利用していると仮定した場合、SAP の推奨事項は次のようにまとめることができます。
 
 - 1 個のマスター ノードと最大 4 個のワーカー ノード。 **/hana/shared** ボリュームのサイズは 2 TB にする必要があります。 
-- 1 個のマスター ノードと 5 個および 8 個のワーカー ノード。 **/hana/shared** のサイズは、4 TB になります。 
+- 1 個のマスター ノードと 5 ～ 8 個のワーカー ノード。 **/hana/shared** のサイズは、4 TB になります。 
 - 1 個のマスター ノードと 9 ～ 12 個のワーカー ノード。 **/hana/shared** には、6 TB のサイズが必要になります。 
 - 1 個のマスター ノードと、12 ～ 15 個のワーカー ノードの使用。 **/hana/shared** ボリュームには、8 TB のサイズを提供することが求められます。
 
@@ -216,7 +215,7 @@ SAP HANA 構成間で高可用性 NFS クラスターを共有したい場合は
 ### <a name="installing-sap-hana-scale-out-n-azure"></a>SAP HANA スケールアウトの Azure へのインストール
 スケールアウト SAP 構成をインストールするには、次のおおまかな手順を実行する必要があります。
 
-- 新しい Azure VNet インフラストラクチャをデプロイするか、または新しく適用する。
+- 新しい Azure VNet インフラストラクチャをデプロイするか、または既存のものを適用する。
 - Azure マネージド Premium Storage ボリュームを使用して、新しい VM をデプロイする。
 - 高可用性 NFS クラスターを新しくデプロイするか、または既存のクラスターを適用する。
 - VM 間のイントラノード通信などが、確実に[NVA](https://azure.microsoft.com/solutions/network-appliances/) 経由でルーティングされないネットワーク ルーティングを適用する。 VM と高可用性 NFS クラスター間のトラフィックについても、同じことが言えます。

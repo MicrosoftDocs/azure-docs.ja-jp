@@ -11,17 +11,16 @@ ms.assetid: 4f964713-fb67-4bcc-8246-3431452ddf7d
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d255662f7db12537365f57eb71355ca2e11cc51
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 71af54f0a1dd7ecd4d4f0dc6f7a465439993db39
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947254"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100166"
 ---
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>Azure Automation を使用して Windows VM を垂直方向にスケーリングする
 

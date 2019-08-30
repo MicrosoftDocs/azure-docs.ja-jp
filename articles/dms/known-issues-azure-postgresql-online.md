@@ -10,19 +10,20 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/23/2019
-ms.openlocfilehash: 2c8a3f36e04fbedfdd127939d55fab376e3e6b30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/06/2019
+ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "64691947"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855011"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
-PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に関する既知の問題点と制限事項について、後続のセクションで説明します。 
+PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に関する既知の問題点と制限事項について、後続のセクションで説明します。
 
 ## <a name="online-migration-configuration"></a>オンライン移行の構成
+
 - ソースの PostgreSQL サーバーは、バージョン 9.5.11、9.6.7、または 10.3 以降を実行している必要があります。 詳しくは、「[サポートされている PostgreSQL Database バージョン](../postgresql/concepts-supported-versions.md)」の記事をご覧ください。
 - 同じバージョンの移行のみがサポートされています。 たとえば、PostgreSQL 9.5.11 から Azure Database for PostgreSQL 9.6.7 への移行はサポートされていません。
 
@@ -30,14 +31,14 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
     > PostgreSQL バージョン 10 では、現在、バージョン 10.3 から Azure Database for PostgreSQL への移行をサポートしているのは DMS のみです。 近日中に PostgreSQL の新しいバージョンをサポートする予定です。
 
 - **ソース PostgreSQL の postgresql.conf** ファイルで論理レプリケーションを有効にするには、次のパラメーターを設定します。
-    - **wal_level** = logical
-    - **max_replication_slots** = [移行対象のデータベースの最大数]。4 つのデータベースを移行する場合は、値を 4 に設定します
-    - **max_wal_senders** = [同時に実行されるデータベース数]。推奨値は 10 です
-- ソース PostgresSQL の pg_hba.conf に DMS エージェント IP を追加します
-    1. DMS のインスタンスのプロビジョニングが完了したら、DMS の IP アドレスをメモしておきます。
-    2. 次に示すように、pg_hba.conf ファイルに IP アドレスを追加します。
+  - **wal_level** = logical
+  - **max_replication_slots** = [移行対象のデータベースの最大数]。4 つのデータベースを移行する場合は、値を 4 に設定します
+  - **max_wal_senders** = [同時に実行されるデータベース数]。推奨値は 10 です
+- ソース PostgreSQL の pg_hba.conf に DMS エージェント IP を追加します
+  1. DMS のインスタンスのプロビジョニングが完了したら、DMS の IP アドレスをメモしておきます。
+  2. 次に示すように、pg_hba.conf ファイルに IP アドレスを追加します。
 
-        host    all     172.16.136.18/10    md5  host    replication postgres    172.16.136.18/10    md5
+        host    all     172.16.136.18/10    md5    host    replication postgres    172.16.136.18/10    md5
 
 - ユーザーには、ソース データベースをホストしているサーバーに対するスーパー ユーザー権限が必要です
 - ソース データベース スキーマに ENUM があることに加えて、ソースとターゲットのデータベース スキーマが一致する必要があります。
@@ -89,6 +90,7 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
     **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 
 ## <a name="lob-limitations"></a>LOB に関する制限事項
+
 ラージ オブジェクト (LOB) 列は、サイズが大きくなる可能性のある列です。 PostgreSQL では、LOB データ型の例として、XML、JSON、IMAGE、TEXT などがあります。
 
 - **制限事項**:LOB のデータ型を主キーとして使用すると、移行は失敗します。
@@ -108,6 +110,7 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
     **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10 の対処法
+
 PostgreSQL 10.x では pg_xlog フォルダー名にさまざまな変更が加えられているので、移行が期待どおりに実行されないことがあります。 PostgreSQL 10.x から Azure Database for PostgreSQL 10.3 に移行する場合は、ソース PostgreSQL データベースに対して次のスクリプトを実行して、pg_xlog 関数の周囲にラッパー関数を作成します。
 
 ```
@@ -148,7 +151,32 @@ ALTER USER PG_User SET search_path = fnRenames, pg_catalog, "$user", public;
 COMMIT;
 ```
 
+## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>AWS RDS PostgreSQL からオンラインで移行するときの制限事項
+
+AWS RDS PostgreSQL から Azure Database for PostgreSQL へのオンライン移行を実行しようとすると、次のエラーが発生する場合があります。
+
+- **エラー**: The Default value of column '{column}' in table '{table}' in database '{database}' is different on source and target servers.\(データベース '{database}' のテーブル '{table}' にある列 '{column}' の既定値が、ソース サーバーとターゲット サーバーで異なります。\) It's '{value on source}' on source and '{value on target}' on target.\(ソースでは '{value on source}'、ターゲットでは '{value on target}' です。\)
+
+  **制限事項**:このエラーは、列スキーマの既定値がソース データベースとターゲット データベースで異なる場合に発生します。
+  **対処法**: ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+
+- **エラー**: ターゲット データベース '{database}' には '{number of tables}' 個のテーブルが含まれていますが、ソース データベース '{database}' に含まれるテーブルは '{number of tables}' 個です。 ソース データベースとターゲット データベースのテーブル数は同じでなければなりません。
+
+  **制限事項**:このエラーは、ソース データベースとターゲット データベースのテーブル数が異なる場合に発生します。
+  **対処法**: ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+
+- **エラー:** ソース データベース {database} が空です。
+
+  **制限事項**:このエラーは、ソース データベースが空の場合に発生します。 これは、間違ったデータベースをソースとして選択したことが原因と考えられます。
+  **対処法**: 移行用に選択したソース データベースを再確認して、再試行してください。
+
+- **エラー:** ターゲット データベース {database} が空です。 スキーマを移行してください。
+
+  **制限事項**:このエラーは、ターゲット データベースにスキーマがない場合に発生します。 ターゲットのスキーマがソースのスキーマと一致していることを確認してください。
+  **対処法**: ターゲットのスキーマがソースのスキーマと一致していることを確認してください。 スキーマの移行の詳細については、[Azure PostgreSQL のオンライン移行に関するドキュメント](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)をご覧ください。
+
 ## <a name="other-limitations"></a>その他の制限事項
+
 - データベース名にセミコロン (;) を含めることはできません。
 - 開く中かっこと閉じる中かっこ {  } を含むパスワード文字列はサポートされていません。 この制限は、ソース PostgreSQL とターゲット Azure Database for PostgreSQL の両方への接続に適用されます。
 - キャプチャしたテーブルには主キーが必要です。 テーブルに主キーがない場合、DELETE および UPDATE レコード操作の結果は予測できません。
@@ -168,7 +196,9 @@ COMMIT;
     ```
 
 - TRUNCATE 操作の変更処理 (継続的同期) はサポートされていません。 パーティション テーブルの移行はサポートされていません。 パーティション テーブルが検出されると、次の処理が行われます。
-    - データベースによって、親と子のテーブルの一覧がレポートされます。
-    - テーブルは、選択したテーブルと同じプロパティを持つ通常のテーブルとしてターゲット上に作成されます。
-    - ソース データベース内の親テーブルに、その子テーブルと同じ主キー値がある場合は、「重複するキー」エラーが生成されます。
+
+  - データベースによって、親と子のテーブルの一覧がレポートされます。
+  - テーブルは、選択したテーブルと同じプロパティを持つ通常のテーブルとしてターゲット上に作成されます。
+  - ソース データベース内の親テーブルに、その子テーブルと同じ主キー値がある場合は、「重複するキー」エラーが生成されます。
+
 - DMS では、1 回の移行アクティビティで移行できるデータベースは最大で 4 個です。

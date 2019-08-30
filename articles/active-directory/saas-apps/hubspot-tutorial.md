@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b2c765778fc2bdd8425cc3f375831c0d317e753
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100885"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル:Azure Active Directory と HubSpot の統合
 
@@ -161,7 +161,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     1. HubSpot の **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** ボックスに、Azure portal でコピーした **[ログイン URL]** の値を貼り付けます。
 
-    1. メモ帳で、ダウンロードした証明書 (Base64) ファイルを開きます。 ファイルの内容を選択してコピーします。 次に、HubSpot でそれを  **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+    1. Windows のメモ帳で、ダウンロードした証明書 (Base64) ファイルを開きます。 ファイルの内容を選択してコピーします。 次に、HubSpot でそれを **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
 
     1. **[認証]** を選択します。
 

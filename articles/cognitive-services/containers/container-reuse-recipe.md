@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 37fa972d52c564c4d61e5923c2b3dc48bde9d2ee
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a8162f96051a73b9f6e6a6fe3ece020e0a94f08f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445804"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068821"
 ---
 # <a name="create-containers-for-reuse"></a>再利用するためのコンテナーを作成する
 
@@ -116,7 +116,7 @@ Dockerfile を使用して新しいイメージをプライベート コンテ�
 
 1. コンソールから Azure CLI にサインインします。 このコマンドでブラウザーが開かれ、認証が要求されます。 認証されると、ブラウザーを閉じてコンソールで作業を続行することができます。
 
-    ```azure-cli
+    ```azurecli
     az login
     ```
 
@@ -124,7 +124,7 @@ Dockerfile を使用して新しいイメージをプライベート コンテ�
 
     山かっこ `<my-registry>` 内の値をご自分のレジストリ名に置き換えます。  
 
-    ```azure-cli
+    ```azurecli
     az acr login --name <my-registry>
     ```
 

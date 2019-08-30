@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fddb0f7cceea167885f56cf6ff5e8639bec1d937
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 75d4c4e38069cb192917f275245d87bb4c63d502
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710352"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078160"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
@@ -73,7 +72,7 @@ Azure 内部ロード バランサーを使用して複数の仮想 IP アドレ
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager]。
+ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager] にある「ロード バランサーごとのプライベート フロント エンド IP」をご覧ください。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 

@@ -19,7 +19,7 @@ ms.locfileid: "68361327"
 
 この記事は、どちらも Azure Data Box Edge/Azure Data Box Gateway サービスによって管理されている Azure Data Box Edge と Azure Data Box Gateway に適用されます。 お使いのサービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
-* サポート要求を作成する方法
+* サポート リクエストを作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法
 
 ## <a name="create-a-support-request"></a>サポート要求の作成

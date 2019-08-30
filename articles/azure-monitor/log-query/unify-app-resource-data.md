@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 190b7f15a8ae0a5b9472188129f7116050fc831f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466834"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650129"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 
-この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights アプリケーションのログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。  
+この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights のログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>複数の Application Insights リソースに対してクエリを実行するための推奨される方法 
 複数の Application Insights リソースを 1 つのクエリの中に指定するのは面倒であり、管理が難しくなる可能性があります。 代わりに、関数を活用して、クエリのロジックとアプリケーションのスコープを分離できます。  
@@ -32,7 +32,14 @@ ApplicationInsights
 | summarize by ApplicationName
 ```
 
-union 演算子とアプリケーションの一覧を使用して関数を作成した後、クエリを *applicationsScoping* というエイリアスの関数としてワークスペースに保存します。  
+union 演算子とアプリケーションの一覧を使用して関数を作成した後、クエリを *applicationsScoping* というエイリアスの関数としてワークスペースに保存します。 
+
+アプリケーションの一覧は、ポータルでワークスペースのクエリ エクスプローラーに移動して、編集する関数を選択して保存するか、または `SavedSearch` PowerShell コマンドレットを使用することで、いつでも変更できます。 
+
+>[!NOTE]
+>この方法は、ログ アラートには使用できません。アラート ルール リソース (ワークスペース、アプリケーションなど) のアクセス検証がアラートの作成時に実行されるためです。 アラートの作成後に新しいリソースを関数に追加することはサポートされません。 ログ アラートにおけるリソースの範囲指定に関数を使用したい場合は、ポータルまたは Resource Manager テンプレートでアラート ルールを編集して、リソースの範囲指定を更新する必要があります。 または、リソースのリストをログ アラート クエリに含めることもできます。
+
+`withsource= SourceApp` コマンドを使用すると、ログを送信したアプリケーションを示す列が結果に追加されます。 この例では、SourceApp プロパティからアプリケーション名を抽出する parse 演算子は省略できます。 
 
 ```
 union withsource=SourceApp 
@@ -43,13 +50,6 @@ app('Contoso-app4').requests,
 app('Contoso-app5').requests 
 | parse SourceApp with * "('" applicationName "')" *  
 ```
-
->[!NOTE]
->アプリケーションの一覧は、ポータルでワークスペースのクエリ エクスプローラーに移動して、編集する関数を選択して保存するか、または `SavedSearch` PowerShell コマンドレットを使用することで、いつでも変更できます。 `withsource= SourceApp` コマンドを使用すると、ログを送信したアプリケーションを示す列が結果に追加されます。 
->
->このクエリでは、Application Insights のスキーマが使用されます。ただし、applicationsScoping 関数で Application Insights データ構造が返されるため、クエリはワークスペース内で実行されます。 
->
->この例では、SourceApp プロパティからアプリケーション名を抽出する parse 演算子は省略できます。 
 
 これで、リソース間クエリで applicationsScoping 関数を使用する準備が整いました。  
 
@@ -62,7 +62,7 @@ applicationsScoping
 | render timechart
 ```
 
-関数のエイリアスによって、定義したすべてのアプリケーションからの要求の和集合が返されます。 このクエリによって、失敗した要求がフィルター処理され、アプリケーション別に傾向が視覚化されます。
+このクエリでは、Application Insights のスキーマが使用されます。ただし、applicationsScoping 関数で Application Insights データ構造が返されるため、クエリはワークスペース内で実行されます。 関数のエイリアスによって、定義したすべてのアプリケーションからの要求の和集合が返されます。 このクエリによって、失敗した要求がフィルター処理され、アプリケーション別に傾向が視覚化されます。
 
 ![クロスクエリの結果の例](media/unify-app-resource-data/app-insights-query-results.png)
 

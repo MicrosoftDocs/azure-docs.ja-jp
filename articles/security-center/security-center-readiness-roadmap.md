@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 1527dbd1df3e4a10a68a5949d9e0bca11628bdd2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 989d438ad2c5ec80b89540eb7ddfc80d69a9d0e6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781133"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100916"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -67,9 +67,8 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
 記事    
 * [Azure Security Center でのセキュリティ ヘルスの監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Azure Security Center での仮想マシンの保護](https://docs.microsoft.com/azure/security-center/security-center-virtual-machine-recommendations)
+* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center でのネットワークの保護](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Azure Security Center でのアプリケーションの保護](https://docs.microsoft.com/azure/security-center/security-center-application-recommendations)
 * [Azure Security Center での Azure SQL サービスとデータの保護](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 

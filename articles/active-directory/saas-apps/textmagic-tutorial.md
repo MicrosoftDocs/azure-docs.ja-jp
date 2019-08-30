@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1184e282c8dc52cb616bcc47068d96fe61651da9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53711a80f35177c911b754a0ce3f189ac106adb2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088873"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943305"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>チュートリアル:Azure Active Directory と TextMagic の統合
 
@@ -114,7 +114,7 @@ TextMagic で Azure AD シングル サインオンを構成するには、次�
 
 6. その他に、TextMagic アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name |   ソース属性| 名前空間  |
+    | EnableAdfsAuthentication |   ソース属性| 名前空間  |
     | --------------- | --------------- | --------------- |
     | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | firstName               | User.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
@@ -166,13 +166,13 @@ TextMagic で Azure AD シングル サインオンを構成するには、次�
 
     ![TextMagic の構成](./media/textmagic-tutorial/config2.png)
 
-    a.  **[Identity Provider Entity ID:]\(ID プロバイダー エンティティ ID\)**   ボックスに、Azure portal からコピーした  **Azure AD 識別子**の値を貼り付けます。
+    a. **[Identity Provider Entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    b.  **[Identity provider SSO URL:]\(ID プロバイダー SSO URL\)**   ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
+    b. **[Identity provider SSO URL]\(ID プロバイダーの SSO URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    c.  **[Identity provider SLO URL:]\(ID プロバイダー SLO URL\)**   ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
+    c. **[Identity provider SLO URL]\(ID プロバイダーの SLO URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    d. Azure portal からダウンロードした **base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを  **[Public x509 certificate:]\(パブリック x509 証明書:\)**   ボックスに貼り付けます。
+    d. Azure Portal からダウンロードした **base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Public x509 certificate]\(パブリック x509 証明書\)** ボックスに貼り付けます。
 
     e. **[Save]** をクリックします。
 

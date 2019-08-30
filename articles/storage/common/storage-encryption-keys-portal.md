@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: baabc5a8e1d063cb51a3edea3a7218591e85aa1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8ec6b1e90eb6638c99ca43715c5e8bea6e48c22
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154166"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030946"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>Azure portal から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
 
@@ -25,6 +25,7 @@ ms.locfileid: "65154166"
 
 > [!IMPORTANT]
 > Azure Storage 暗号化でカスタマー マネージド キーを使うには、キー コンテナーで 2 つの必須プロパティ **[論理的削除]** と **[Do Not Purge]\(削除しない\)** が構成されている必要があります。 Azure portal で新しいキー コンテナーを作成すると、これらのプロパティは既定で有効になります。 ただし、既存のキー コンテナーでこれらのプロパティを有効にする必要がある場合は、PowerShell または Azure CLI を使う必要があります。
+> RSA キーで 2048 のキー サイズのみがサポートされています。
 
 ## <a name="enable-customer-managed-keys"></a>カスタマー マネージド キーを有効にする
 

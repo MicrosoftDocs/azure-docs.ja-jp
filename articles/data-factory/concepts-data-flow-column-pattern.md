@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640242"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775209"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>マッピング データ フローの列パターンの
 
@@ -45,6 +45,16 @@ Azure Data Factory のデータ フロー変換によっては、"列パター�
 ソースと選択の変換内の列をマッピングする場合、[Fixed mapping]\(固定マッピング\) または [Rule-based mapping]\(ルール ベースのマッピング\) を選択できます。 データのスキーマがわかっていて、ソース データセットの特定の列が常に特定の静的な名前と一致することが予想される場合は、固定マッピングを使用できます。 ただし、柔軟性の高いスキーマを操作する場合は、ルール ベースのマッピングを使用します。 上記のルールを使用して、パターン マッチを作成できます。
 
 ![ルール ベースのマッピング](media/data-flow/rule2.png "ルール ベースのマッピング")
+
+式ビルダーを使用してルールを作成します。 式では、一致列 (true) または除外列 (false) に対するブール値が返されます。
+
+## <a name="pattern-matching-special-columns"></a>特殊列のパターン マッチング
+
+* `$$` は、デバッグ モードでのデザイン時およびランタイムでの実行時に、各一致の名前に変換されます
+* `name` は、受信した各列の名前を表します
+* `type` は、受信した各列のデータ型を表します
+* `stream` は、フロー内の各ストリームまたは変換に関連付けられた名前を表します
+* `position` は、データ フロー内の列の序数位置です
 
 ## <a name="next-steps"></a>次の手順
 * ADF Mapping Data Flow の[式言語](http://aka.ms/dataflowexpressions)に関する記事で、データ変換の詳細を確認します。

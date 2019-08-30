@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8d90f1c03a9ed892a9dc8a4fecbeb9815c2dd376
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e655e286c3aebe28bcb09c8723516c2ff52ad20e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476900"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850354"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
@@ -34,11 +34,11 @@ Azure Automation がサポートする数種類の Runbook について次の表
 
 ### <a name="advantages"></a>長所
 
-* 視覚的な insert-link-configure 作成モデル  
-* プロセスを介したデータの流れに専念  
-* 管理プロセスを視覚的に表現  
-* 他の Runbook を子 Runbook として含めることで、高度なワークフローが作成可能  
-* モジュール プログラミングを促進  
+* 視覚的な insert-link-configure 作成モデル
+* プロセスを介したデータの流れに専念
+* 管理プロセスを視覚的に表現
+* 他の Runbook を子 Runbook として含めることで、高度なワークフローが作成可能
+* モジュール プログラミングを促進
 
 ### <a name="limitations"></a>制限事項
 
@@ -119,4 +119,4 @@ Python Runbook は Python 2 でコンパイルします。  Azure portal でテ�
 * グラフィカル Runbook 作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 * Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「 [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 * Runbook を作成またはインポートする方法については、「 [Runbook の作成またはインポート](manage-runbooks.md)
-
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/en-us/powershell/scripting/overview)に関するページを参照してください。

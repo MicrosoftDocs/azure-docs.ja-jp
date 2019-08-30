@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 07/16/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b6ca43616a2e7e7611b122bce5c95084e1fd5012
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 55cdd864d73ce084d994c64233e79d5a58b17def
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402393"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558450"
 ---
 <!-- This tells how to get the connection string for the service shared access policy of your IoT hub -->
 
 **サービス** ポリシーの IoT Hub 接続文字列を取得するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) で IoT ハブを開きます。  IoT ハブに移動するための最も簡単な方法は、 **[リソース グループ]** を選択し、IoT ハブがあるリソース グループを選択した後、リソースの一覧から目的の IoT ハブを選択することです。
+1. [Azure portal](https://portal.azure.com) で、 **[リソース グループ]** を選択します。 ハブが配置されているリソース グループを選択し、リソースの一覧からハブを選択します。
 
-2. IoT ハブの左側のウィンドウで、 **[共有アクセス ポリシー]** を選択します。
+1. IoT ハブの左側のウィンドウで、 **[共有アクセス ポリシー]** を選択します。
 
-3. ポリシーの一覧から、**サービス** ポリシーを選択します。
+1. ポリシーの一覧から、**サービス** ポリシーを選択します。
 
-4. **[共有アクセス キー]** で、 **[接続文字列 - プライマリ キー]** のコピー アイコンを選択し、その値を保存します。
+1. **[共有アクセス キー]** で、 **[接続文字列 - プライマリ キー]** のコピー アイコンを選択し、その値を保存します。
 
     ![接続文字列を取得する方法を示す画面](./media/iot-hub-include-find-service-connection-string/iot-hub-get-connection-string.png)
 

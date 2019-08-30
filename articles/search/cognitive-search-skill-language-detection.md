@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: bf683ad54fb75ad666a4635e942d8d0a51f19caf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 14163b959a6e91406133ca2f5a125c7e2df967ad
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841011"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635808"
 ---
 #   <a name="language-detection-cognitive-skill"></a>言語検出コグニティブ スキル
 

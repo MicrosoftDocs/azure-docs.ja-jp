@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3e1e1266122ebcccc0149ca8e0421577becd6708
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181732"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036735"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(非推奨) Container Service についてよく寄せられる質問
 
@@ -37,7 +37,7 @@ ms.locfileid: "67181732"
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Azure Container Service と ACS Engine の違いは何ですか。 
 Azure Container Service は SLA による保証が付いた Azure サービスで、Azure Portal の各種機能、Azure コマンドライン ツール、Azure API が付属しています。 Azure Container Service を使用すると、比較的少ない選択肢を選んで構成するだけで、標準のコンテナー オーケストレーション ツールを実行するクラスターを簡単に実装して管理できます。 
 
-[ACS Engine](http://github.com/Azure/acs-engine) はオープンソース プロジェクトで、パワー ユーザーがクラスター構成を各レベルでカスタマイズするのに適しています。 インフラとソフトウェアの両方の構成に変更を加えることができるため、ACS Engine には SLA が用意されていません。 サポートは、Microsoft の公式チャネルではなく、GitHub のオープンソース プロジェクトを通じて提供されます。 
+[ACS Engine](https://github.com/Azure/acs-engine) はオープンソース プロジェクトで、パワー ユーザーがクラスター構成を各レベルでカスタマイズするのに適しています。 インフラとソフトウェアの両方の構成に変更を加えることができるため、ACS Engine には SLA が用意されていません。 サポートは、Microsoft の公式チャネルではなく、GitHub のオープンソース プロジェクトを通じて提供されます。 
 
 詳細については、[コンテナーのサポート ポリシー](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers)を参照してください。
 

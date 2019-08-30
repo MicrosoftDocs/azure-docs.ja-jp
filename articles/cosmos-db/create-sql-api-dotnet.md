@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: c738b2d44c5faca1ef95b2da8fd1f90a1b3af919
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: cbf039a932c16269f703818e9f0ffef4ce852686
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371014"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018738"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>クイック スタート:Azure Cosmos DB SQL API リソースを管理する .NET コンソール アプリを構築する
 
@@ -165,6 +165,8 @@ export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 * [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet) - このメソッドによって、非同期操作としてコンテナーが (存在しない場合は) 作成されるか、(既に存在する場合は) 取得されます。 応答から状態コードを確認して、コンテナーが新しく作成された (201) か、既存のコンテナーが返された (200) かを判断できます。 
 * [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) - このメソッドによって、コンテナー内に項目が作成されます。 
 
+* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet) - このメソッドでは、アイテムがまだ存在しない場合、コンテナー内にアイテムが作成され、既に存在する場合、アイテムが置換されます。 
+
 * [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
 ) - このメソッドにより、SQL ステートメントとパラメーター化された値を利用して Azure Cosmos データベースのコンテナーの下でアイテムに対するクエリが作成されます。 
 
@@ -188,6 +190,7 @@ namespace todo
         public Child[] Children { get; set; }
         public Address Address { get; set; }
         public bool IsRegistered { get; set; }
+        // The ToString() method is used to format the output, it's used for demo purpose only. It's not required by Azure Cosmos DB
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);
@@ -294,7 +297,7 @@ public class Program
 
 ### <a name="create-a-database"></a>データベースを作成する 
 
-`program.cs` クラス内に `CreateDatabaseAsync` メソッドを定義します。 このメソッドによって、`FamilyDatabase` が作成されます (まだ存在しない場合)。 
+`program.cs` クラス内に `CreateDatabaseAsync` メソッドを定義します。 このメソッドによって、`FamilyDatabase` が作成されます (まだ存在しない場合)。
 
 ```csharp
 private async Task CreateDatabaseAsync()
@@ -322,7 +325,7 @@ private async Task CreateContainerAsync()
 
 ### <a name="create-an-item"></a>項目を作成する
 
-次のコードを使用して、`AddItemsToContainerAsync` メソッドを追加してファミリ項目を作成します。
+次のコードを使用して、`AddItemsToContainerAsync` メソッドを追加してファミリ項目を作成します。 `CreateItemAsync` または `UpsertItemAsync` のメソッドを使用し、アイテムを作成できます。
 
 ```csharp
 private async Task AddItemsToContainerAsync()

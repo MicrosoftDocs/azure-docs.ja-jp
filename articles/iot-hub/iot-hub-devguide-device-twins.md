@@ -182,7 +182,7 @@ ms.locfileid: "68640622"
 
   - properties
 
-    | EnableAdfsAuthentication | 値 |
+    | 名前 | 値 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  通知が送信された時刻 |

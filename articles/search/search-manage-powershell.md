@@ -2,19 +2,19 @@
 title: Az.Search モジュールを使用した PowerShell スクリプト - Azure Search
 description: PowerShell を使用して Azure Search サービスを作成および構成します。 サービスをスケールアップまたはスケールダウンしたり、管理者とクエリの API キーを管理したり、システム情報のクエリを実行したりできます。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 8f07468ccff4431e1afdf66aedc72599ddc0c25b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6090881cc2b94fa42fdac22220c858a0153ccc5c
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194276"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648091"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>PowerShell を使用して Azure Search サービスを管理する
 > [!div class="op_single_selector"]

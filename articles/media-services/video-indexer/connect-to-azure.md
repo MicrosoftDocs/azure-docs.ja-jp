@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: 33493f1bdff6071737aad4bfb8c7d0e5e22896db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f67b2e37e264febf11f3fa55b4469d392c59712
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799843"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815670"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -33,7 +33,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
     Azure AD ドメインがない場合は、Azure サブスクリプションを使用して作成してください。 詳細については、「[Azure Active Directory のカスタム ドメイン名の管理](../../active-directory/users-groups-roles/domains-manage.md)」を参照してください。
 
-* Azure AD ドメインのユーザーとメンバー。 このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
+* **アプリケーション管理者**のロールを持つ、Azure AD ドメイン内のユーザー。 このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
 
     このユーザーは、outlook.com、live.com、hotmail.com などの個人用アカウントではなく、職場または学校アカウントを持つ Azure AD ユーザーである必要があります。
 
@@ -58,6 +58,9 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
 ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Azure への接続
+
+> [!NOTE]
+> Azure サブスクリプションが証明書ベースの多要素認証を使用する場合、必要な証明書がインストールされているデバイスで次の手順を実行することが重要です。
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 

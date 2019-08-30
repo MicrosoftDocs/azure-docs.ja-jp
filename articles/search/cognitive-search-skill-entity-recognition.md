@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 1328edfd9a049daf9244df992b55f4fb1585c8ba
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 25f6075d1e026745d4db1a60149e109a0f9636a4
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841075"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635953"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
 

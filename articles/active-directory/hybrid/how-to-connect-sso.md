@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c34d8de3dfd06540dd50542ab19da0c1d9b1567
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86895ab315784c49c2b240badb249dce57ae958a
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60242262"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622574"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -83,7 +83,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ## <a name="next-steps"></a>次の手順
 
 - [**クイック スタート**](how-to-connect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
-- [**デプロイ計画**](https://aka.ms/AuthenticationDeploymentPlan) - 詳細なデプロイ計画です。
+- [**デプロイ計画**](https://aka.ms/deploymentplans/sso) - 詳細なデプロイ計画です。
 - [**技術的な詳細**](how-to-connect-sso-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](how-to-connect-sso-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](tshoot-connect-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。

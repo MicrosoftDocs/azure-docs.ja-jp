@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 89d652f440e97650b7e7ac63cccc7fde75d7204a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: ee5a6c732bcb48cd347b8d87b95d2896d7230a08
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798278"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092370"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
@@ -98,7 +97,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2018 年 10 月 1 日 | date |
 | publisher | Microsoft.Powershell.DSC | string |
@@ -107,7 +106,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 ### <a name="settings-property-values"></a>設定のプロパティ値
 
-| Name | データ型 | 説明
+| 名前 | データ型 | 説明
 | ---- | ---- | ---- |
 | settings.wmfVersion | string | VM にインストールする Windows Management Framework のバージョンを指定します。 このプロパティを "latest" に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0 か 5.0、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は "latest" です。 |
 | settings.configuration.url | string | DSC 構成 zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationUrlSasToken プロパティに SAS トークンの値を設定する必要があります。 settings.configuration.script または settings.configuration.function を定義する場合、このプロパティは必須です。
@@ -121,7 +120,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 ### <a name="protected-settings-property-values"></a>保護された設定のプロパティ値
 
-| Name | データ型 | 説明
+| 名前 | データ型 | 説明
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます｡ |
 | protectedSettings.configurationUrlSasToken | string | configuration.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |

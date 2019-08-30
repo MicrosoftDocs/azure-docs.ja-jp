@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 05/31/2019
+ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: bb170b53946a014d4aa69ce628c2e4bef7459b93
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: a1433139695eb59fa3fd721852fae3181b8f892b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595580"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882473"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータ読み込みのベスト プラクティス
 
@@ -69,8 +69,8 @@ staticRC20 リソース クラスのリソースで読み込みを実行する�
 たとえば、部門 A に schema_A、部門 B に schema_B というデータベース スキーマがあるとします。データベース ユーザーの user_A と user_B を、部門 A と B のそれぞれで読み込みを行う PolyBase のユーザーにします。 両方のユーザーには CONTROL データベースのアクセス許可が付与されています。 スキーマ A と B の作成者はここで、次のように DENY を使用してスキーマをロックダウンします。
 
 ```sql
-   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
-   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
+   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
+   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
 user_A と user_B は、他の部門のスキーマからロックアウトされるようになりました。
@@ -87,6 +87,9 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 - 最大圧縮率を達成するための十分なメモリを読み込みユーザーが確実に持つようにするには、中規模または大規模なリソース クラスのメンバーである読み込みユーザーを使用します。 
 - 新しい行グループを完全に埋められるように、十分な行を読み込みます。 一括読み込みでは、1,048,576 行ごとに、1 つの完全な行グループとして列ストアに直接圧縮されます。 102,400 行未満の読み込みの場合、行はデルタストアに送信され、行は b ツリー インデックスに保持されます。 読み込みの行が少なすぎる場合は、すべての行がデルタストアに移動され、すぐには列ストア形式に圧縮されません。
+
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SQLBulkCopy API または BCP を使用するときはバッチ サイズを増やす
+前述のように、PolyBase を使用して読み込むと、SQL Data Warehouse で最高のスループットが得られます。 PolyBase を使用して読み込みを行うことができず、SQLBulkCopy API (または BCP) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。 
 
 ## <a name="handling-loading-failures"></a>読み込みエラーを処理する
 
@@ -128,7 +131,7 @@ Azure Storage のアカウント キーを切り替えるには:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
-``` 
+```
 
 key 1 から key 2 にキーを交換します。
 
@@ -143,6 +146,3 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 - PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[SQL Data Warehouse の ELT の設計](design-elt-data-loading.md)に関するページを参照してください。
 - 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」を参照してください。
 - データの読み込みの監視については、「[DMV を利用してワークロードを監視する](sql-data-warehouse-manage-monitor.md)」を参照してください。
-
-
-

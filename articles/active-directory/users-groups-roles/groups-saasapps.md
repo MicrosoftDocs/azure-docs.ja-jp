@@ -9,26 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 08/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 873863016d6dc54c7439ec1f46180b3c063bda19
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75fdd0fcd4ceeeb0f680b2cbdb743d30d236c93d
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60470417"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736503"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>SaaS アプリケーションへのアクセスをグループで管理する
 
-Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは Azure AD Basic ライセンスでは、Azure AD と連携する SaaS アプリケーションへのアクセス権を、グループを使って割り当てることができます。 たとえばマーケティング部門を対象に 5 つの SaaS アプリケーションを使用するためのアクセス権を割り当てる場合、同部門のユーザーから成るグループを作成したうえで、マーケティングで必要となる 5 つの SaaS アプリケーションにそのグループを割り当てます。 このようにマーケティング部門のメンバーシップを一元的に管理することで時間を節約することが可能です。 この場合アプリケーションに対するユーザーの割り当ては、そのユーザーがマーケティング グループのメンバーとして追加されたときに行われます。同様に、マーケティング グループからユーザーが削除されると、アプリケーションからもその割り当てが削除されます。 この機能は、Azure AD アプリケーション ギャラリー内から追加できる多数のアプリケーションで利用することができます。
+Azure Active Directory (Azure AD) の Azure AD Premium ライセンス プランでは、グループを使用して Azure AD に統合されている SaaS アプリケーションへのアクセス権を割り当てることができます。 たとえばマーケティング部門を対象に 5 つの SaaS アプリケーションを使用するためのアクセス権を割り当てる場合、同部門のユーザーから成るグループを作成したうえで、マーケティングで必要となる 5 つの SaaS アプリケーションにそのグループを割り当てます。 このようにマーケティング部門のメンバーシップを一元的に管理することで時間を節約することが可能です。 この場合アプリケーションに対するユーザーの割り当ては、そのユーザーがマーケティング グループのメンバーとして追加されたときに行われます。同様に、マーケティング グループからユーザーが削除されると、アプリケーションからもその割り当てが削除されます。 この機能は、Azure AD アプリケーション ギャラリー内から追加できる多数のアプリケーションで利用することができます。
 
 > [!IMPORTANT]
-> この機能は、Azure AD Premium の試用版の使用を開始するか、Azure AD Premium または Azure AD Basic のライセンスを購入した後に限り使用できます。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていません。
+> この機能は、Azure AD Premium の試用版の使用を開始するか、Azure AD Premium ライセンス プランを購入した後にのみ使用できます。
+> グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。
+> 現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていません。
 
-**SaaS アプリケーションにユーザーまたはグループに対するアクセス権を割り当てるには**
+## <a name="to-assign-access-for-a-user-or-group-to-a-saas-application"></a>SaaS アプリケーションに対するアクセス権をユーザーまたはグループに割り当てるには
 
 1. [Azure AD 管理センター](https://aad.portal.azure.com)で、 **[エンタープライズ アプリケーション]** を選択します。
 2. アプリケーション ギャラリーから追加したアプリケーションをクリックして開きます。
@@ -37,7 +39,7 @@ Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは 
 6. 必要な数のグループまたはユーザーを選択して **[選択]** をクリックまたはタップし、 **[割り当ての追加]** リストに追加します。 ユーザーに対するロールの割り当ても、この段階で行います。
 7. **[割り当て]** を選択し、選択したエンタープライズ アプリケーションにユーザーまたはグループを割り当てます。
 
-### <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)

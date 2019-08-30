@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 0e1127d90aeb4c59687ac4df7fb7ebae1901cee8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 912a063a5a831f2eade4678719723a56548b57ee
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228426"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967523"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -40,6 +40,10 @@ ms.locfileid: "65228426"
 - **基本**または**匿名**認証を使用したファイルのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用したファイルの解析。
 
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>作業開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -60,7 +64,7 @@ FTP のリンクされたサービスでは、次のプロパティがサポー�
 | authenticationType | 認証の種類を指定します。<br/>使用できる値は、以下のとおりです。**Basic** **Anonymous** | はい |
 | userName | FTP サーバーへのアクセスを持つユーザーを指定します。 | いいえ |
 | password | ユーザー (username) のパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 >[!NOTE]
 >FTP コネクタでは、暗号化なしまたは明示的な SSL/TLS 暗号化での FTP サーバーへのアクセスがサポートされています。暗黙的な SSL/TLS 暗号化はサポートされていません。
@@ -118,12 +122,12 @@ FTP のリンクされたサービスでは、次のプロパティがサポー�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-- **Parquet 形式と区切りテキスト形式**については、「[Parquet 形式と区切りテキスト形式のデータセット](#parquet-and-delimited-text-format-dataset)」セクションを参照してください。
-- **ORC/Avro/JSON/バイナリ形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
+- **Parquet 形式、区切りテキスト形式およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
+- **ORC/Avro/JSON 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
 
-### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet 形式と区切りテキスト形式のデータセット
+### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット
 
-**Parquet 形式または区切りテキスト形式**のデータを FTP からコピーする場合は、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 FTP では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+**Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 FTP では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -162,7 +166,7 @@ FTP のリンクされたサービスでは、次のプロパティがサポー�
 
 ### <a name="other-format-dataset"></a>他の形式のデータセット
 
-**ORC/Avro/JSON/バイナリ形式**のデータを FTP からコピーする場合、次のプロパティがサポートされます。
+**ORC/Avro/JSON 形式**のデータを FTP からコピーする場合、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -213,12 +217,12 @@ FTP のリンクされたサービスでは、次のプロパティがサポー�
 
 ### <a name="ftp-as-source"></a>ソースとしての FTP
 
-- コピー元から **Parquet 形式および区切りテキスト形式**でコピーする場合は、「[Parquet 形式と区切りテキスト形式のソース](#parquet-and-delimited-text-format-source)」セクションを参照してください。
-- コピー元から **ORC/Avro/JSON/バイナリ形式**などの他の形式でコピーする場合は、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+- コピー元から **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
+- コピー元から **ORC/Avro/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
 
-#### <a name="parquet-and-delimited-text-format-source"></a>Parquet 形式と区切りテキスト形式のソース
+#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のソース
 
-**Parquet 形式または区切りテキスト形式**のデータを FTP からコピーする場合は、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 FTP では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+**Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 FTP では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -277,7 +281,7 @@ FTP のリンクされたサービスでは、次のプロパティがサポー�
 
 #### <a name="other-format-source"></a>他の形式のソース
 
-**ORC/Avro/JSON/バイナリ形式**のデータを FTP からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+**ORC/Avro/JSON 形式**のデータを FTP からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

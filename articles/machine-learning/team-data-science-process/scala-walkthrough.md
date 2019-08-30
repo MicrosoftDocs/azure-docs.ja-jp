@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589573"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907705"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Scala および Azure 上の Spark を使用したデータ サイエンス
 この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
@@ -32,7 +32,7 @@ ms.locfileid: "60589573"
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) は、Azure でホストされるオープンソースの Spark サービスです。 Spark クラスターの Jupyter Scala Notebook もサポートされており、Spark SQL の対話型クエリを実行して、Azure BLOB ストレージに保管されているデータを変換、フィルター処理、視覚化することができます。 この記事でソリューションを提供したり、関連するプロットを表示してデータを視覚化したりする Scala コード スニペットは、Spark クラスターにインストールされた Jupyter Notebook で実行されます。 各トピックのモデリング手順には、各種モデルをトレーニング、評価、保存、および使用する方法を示すコードも含まれています。
 
-この記事のセットアップ手順およびコードは、Azure HDInsight 3.4 Spark 1.6 向けのものです。 ただし、この記事および [Scala Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb) のコードは汎用的であり、あらゆる Spark クラスターで機能します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、この記事に記載されている内容と若干異なります。
+この記事のセットアップ手順およびコードは、Azure HDInsight 3.4 Spark 1.6 向けのものです。 ただし、この記事および [Scala Jupyter Notebook](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) のコードは汎用的であり、あらゆる Spark クラスターで機能します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、この記事に記載されている内容と若干異なります。
 
 > [!NOTE]
 > Scala ではなく Python を使用してエンドツーエンドのデータ サイエンス プロセスのタスクを実行する方法については、 [Azure HDInsight での Spark を使用したデータ サイエンス](spark-overview.md)に関する記事をご覧ください。

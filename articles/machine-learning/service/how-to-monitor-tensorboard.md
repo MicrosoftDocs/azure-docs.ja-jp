@@ -5,16 +5,16 @@ description: TensorBoard を起動して実験の実行履歴を視覚化し、�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: fde2b6d1d298e89227951c376d584452fbff2679
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2e4527ba167076935505b668a7879e5f1446b25e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707062"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856070"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 
@@ -33,18 +33,18 @@ Azure Machine Learning の実験で TensorBoard を起動する方法は、実�
 
 * この記事のコードは、次のいずれの環境でも実行できます。 
 
-    * Azure Machine Learning Notebook VM - ダウンロードとインストールが不要
+    * Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 
-        * [クラウドベースのノートブックによるクイックスタート](quickstart-run-cloud-notebook.md#create-notebook)を完了して、SDK とサンプル リポジトリが事前に読み込まれている専用のノートブック サーバーを作成します。
+        * 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
 
         * ノートブック サーバー上の samples フォルダーで、**how-to-use-azureml > training-with-deep-learning** の順にディレクトリを移動して、次の完成したノートブックと展開されたノートブックの 2 つを見つけます。
         * export-run-history-to-run-history.ipynb
         * tensorboard.ipynb
 
     * 独自の Jupyter Notebook サーバー
-      * [ワークスペースの作成に関する記事](setup-create-workspace.md)に従って以下を行います
           * `tensorboard` extra を使用して [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) をインストールする
-          * ワークスペースと構成ファイル (config.json) を作成する
+          * [Azure Machine Learning service ワークスペースを作成する](how-to-manage-workspace.md)  
+          * [ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)。
   
 <a name="direct"></a>
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>オプション 1:実行履歴を TensorBoard で直接表示する

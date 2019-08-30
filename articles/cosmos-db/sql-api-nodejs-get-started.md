@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/05/2019
+ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: ba1ec821bd25e3b9f4479c3d09fdf5ab981ab0a7
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 5de0fe47d8ca6372c35cc4f148f97b366a1a742c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305509"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971393"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -81,7 +81,7 @@ ms.locfileid: "68305509"
 
 1. 普段使用しているテキスト エディターで ```config.js``` を開きます。
 
-1. 以下のコード スニペットをコピーして貼り付け、プロパティ ```config.endpoint``` と ```config.primaryKey``` を Azure Cosmos DB エンドポイント URI と主キーに設定します。 これらの構成はどちらも [Azure ポータル](https://portal.azure.com)にあります。
+1. 以下のコード スニペットをコピーして貼り付け、プロパティ ```config.endpoint``` と ```config.key``` を Azure Cosmos DB エンドポイント URI と主キーに設定します。 これらの構成はどちらも [Azure ポータル](https://portal.azure.com)にあります。
 
    ![Azure portal からキーを取得するスクリーンショット][keys]
 
@@ -90,10 +90,10 @@ ms.locfileid: "68305509"
    var config = {}
 
    config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
-   config.primaryKey = "~your primary key here~";
+   config.key = "~your primary key here~";
    ``` 
 
-1. ```database```、```container```、および ```items``` データをコピーして ```config``` オブジェクトに貼り付けます。```config.endpoint``` プロパティと ```config.primaryKey``` プロパティの設定に続けて追加してください。 データベースに保存するデータが既にある場合は、データをここに定義する代わりに、Azure Cosmos DB のデータ移行ツールを使用できます。 config.js ファイルには、次のコードが必要です。
+1. ```database```、```container```、および ```items``` データをコピーして ```config``` オブジェクトに貼り付けます。```config.endpoint``` プロパティと ```config.key``` プロパティの設定に続けて追加してください。 データベースに保存するデータが既にある場合は、データをここに定義する代わりに、Azure Cosmos DB のデータ移行ツールを使用できます。 config.js ファイルには、次のコードが必要です。
 
    [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
 
@@ -112,26 +112,23 @@ ms.locfileid: "68305509"
    const config = require('./config');
    ```
 
-1. 先ほど保存した ```config.endpoint``` と ```config.primaryKey``` を使用して新しい CosmosClient を作成するために、以下のコードをコピーして貼り付けます。
+1. 先ほど保存した ```config.endpoint``` と ```config.key``` を使用して新しい CosmosClient を作成するために、以下のコードをコピーして貼り付けます。
 
    ```javascript
    const config = require('./config');
 
    // ADD THIS PART TO YOUR CODE
    const endpoint = config.endpoint;
-   const masterKey = config.primaryKey;
+   const key = config.key;
 
-   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const client = new CosmosClient({ endpoint, key });
    ```
    
 > [!Note]
-> **Cosmos DB エミュレーター**に接続する場合は、カスタム接続ポリシーを作成して SSL 検証を無効にします。
+> **Cosmos DB エミュレーター**に接続する場合は、ノード プロセスの SSL 検証を無効にします。
 >   ```
->   const ConnectionPolicy = require('@azure/cosmos').ConnectionPolicy;
->   const connectionPolicy = new ConnectionPolicy();
->   connectionPolicy.DisableSSLVerification = true;
->
->   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey }, connectionPolicy });
+>   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+>   const client = new CosmosClient({ endpoint, key });
 >   ```
 
 Azure Cosmos DB クライアントを初期化するためのコードは以上で完成です。続いて、Azure Cosmos DB リソースの使用方法について説明します。
@@ -141,7 +138,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 1. データベース ID およびコンテナー ID を設定するために、以下のコードをコピーして貼り付けます。 Azure Cosmos DB クライアントは、これらの ID を通じて適切なデータベースとコンテナーを検出します。
 
    ```javascript
-   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const client = new CosmosClient({ endpoint, key });
 
    // ADD THIS PART TO YOUR CODE
    const HttpStatusCodes = { NOTFOUND: 404 };
@@ -168,7 +165,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    * Read the database definition
    */
    async function readDatabase() {
-      const { body: databaseDefinition } = await client.database(databaseId).read();
+      const { resource: databaseDefinition } = await client.database(databaseId).read();
       console.log(`Reading database:\n${databaseDefinition.id}\n`);
    }
    ```
@@ -203,9 +200,9 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    const config = require('./config');
 
    const endpoint = config.endpoint;
-   const masterKey = config.primaryKey;
+   const key = config.key;
 
-   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const client = new CosmosClient({ endpoint, key });
 
    const HttpStatusCodes = { NOTFOUND: 404 };
 
@@ -225,7 +222,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    * Read the database definition
    */
    async function readDatabase() {
-     const { body: databaseDefinition } = await client.database(databaseId).read();
+     const { resource: databaseDefinition } = await client.database(databaseId).read();
     console.log(`Reading database:\n${databaseDefinition.id}\n`);
    }
 
@@ -279,7 +276,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
     * Read the container definition
    */
    async function readContainer() {
-      const { body: containerDefinition } = await client.database(databaseId).container(containerId).read();
+      const { resource: containerDefinition } = await client.database(databaseId).container(containerId).read();
     console.log(`Reading container:\n${containerDefinition.id}\n`);
    }
    ```
@@ -307,9 +304,9 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    const config = require('./config');
 
    const endpoint = config.endpoint;
-   const masterKey = config.primaryKey;
+   const key = config.key;
 
-   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const client = new CosmosClient({ endpoint, key });
 
    const HttpStatusCodes = { NOTFOUND: 404 };
 
@@ -347,7 +344,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
     * Read the container definition
    */
    async function readContainer() {
-      const { body: containerDefinition } = await client.database(databaseId).container(containerId).read();
+      const { resource: containerDefinition } = await client.database(databaseId).container(containerId).read();
     console.log(`Reading container:\n${containerDefinition.id}\n`);
    }
 
@@ -441,8 +438,8 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
         ]
     };
 
-    const { result: results } = await client.database(databaseId).container(containerId).items.query(querySpec, {enableCrossPartitionQuery:true}).toArray();
-    for (var queryResult of results) {
+    const { resources } = await client.database(databaseId).container(containerId).items.query(querySpec, {enableCrossPartitionQuery:true}).fetchAll();
+    for (var queryResult of resources) {
         let resultString = JSON.stringify(queryResult);
         console.log(`\tQuery returned ${resultString}\n`);
     }

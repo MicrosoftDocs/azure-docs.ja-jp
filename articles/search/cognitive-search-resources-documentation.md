@@ -2,20 +2,19 @@
 title: コグニティブ検索のドキュメント リソース - Azure Search
 description: Azure Search でのコグニティブ検索ワークロードに関する記事、チュートリアル、サンプル、およびブログ記事の注釈付きの一覧です。
 services: search
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.subservice: cognitive-search
-ms.openlocfilehash: c7c0d22944726959ae3eaf036d30bcde3ca86900
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 88e9db6526733960045e9a7f49e1f73fcaca8cf6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841132"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639098"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>コグニティブ検索ワークロードに関するドキュメント リソース
 

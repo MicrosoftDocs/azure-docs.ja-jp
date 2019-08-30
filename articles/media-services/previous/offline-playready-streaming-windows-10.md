@@ -52,7 +52,7 @@ Azure Media Services は、DRM 保護を適用したオフラインでのダウ�
 
 プログレッシブ ダウンロード用の、PlayReady で保護された MP4 をホストするためのオプションが 2 つあります。
 
-* プログレッシブ ダウンロードのために、この MP4 を同じコンテナー/メディア サービス資産に配置し、Azure Media Services ストリーミング エンドポイントを利用できます。
+* プログレッシブ ダウンロードのために、この MP4 を同じコンテナー/メディア サービスアセットに配置し、Azure Media Services ストリーミング エンドポイントを利用できます。
 * Azure Storage からの直接プログレッシブ ダウンロードのために SAS ロケーターを使用し、Azure Media Services をバイパスできます。
  
 2 種類の PlayReady ライセンス配信を使用できます。
@@ -62,12 +62,12 @@ Azure Media Services は、DRM 保護を適用したオフラインでのダウ�
 
 以下に、2 セットのテスト用資産を示します。1 つ目は AMS で PlayReady ライセンス配信を使用しており、2 つ目は Azure VM でホストされた PlayReady ライセンス サーバーを使用しています。
 
-資産 1:
+アセット 1:
 
 * プログレッシブ ダウンロードの URL: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
-資産 2:
+アセット 2:
 
 * プログレッシブ ダウンロードの URL: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (オンプレミス): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)

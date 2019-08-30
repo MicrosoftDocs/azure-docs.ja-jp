@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: f1059fac4d44138a4e9bc04c858501234974dc43
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 08/08/2019
+ms.openlocfilehash: 5d7414d13b3fb1390b12084f0480e0549a380264
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350974"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931618"
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Python を使った接続とデータの照会
 このクイックスタートでは、[Python](https://python.org) を使用して Azure Database for MySQL に接続する方法を紹介します。 Mac OS、Ubuntu Linux、Windows の各プラットフォームから、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除しています。 このトピックでは、Python を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
@@ -30,9 +30,9 @@ ms.locfileid: "58350974"
 > このクイック スタートでは、未加工の SQL クエリの手法を使用して、MySQL に接続し、クエリを実行します。 Web フレームワークを使用している場合は、それらのフレームワークに対して推奨されているコネクタを使用します。 たとえば、Django と共に使用するには、[mysqlclient](https://pypi.org/project/mysqlclient/) が推奨されています。
 >
 
-### <a name="windows"></a> Windows
-1. Python 2.7 を [python.org](https://www.python.org/downloads/windows/) からダウンロードしてインストールします。 
-2. コマンド プロンプトを起動して Python のインストールを確認します。 大文字の V スイッチを使用して `C:\python27\python.exe -V` コマンドを実行し、バージョン番号を確認してください。
+### <a name="windows"></a>Windows
+1. Python 3.7 を [Python.org](https://www.python.org/downloads/windows/) からダウンロードしてインストールします。 
+2. コマンド プロンプトを起動して Python のインストールを確認します。 大文字の V スイッチを使用して `C:\python37\python.exe -V` コマンドを実行し、バージョン番号を確認してください。
 3. ご使用のバージョンの Python に対応する Python Connector for MySQL を [mysql.com](https://dev.mysql.com/downloads/connector/python/) からインストールします。
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
@@ -65,7 +65,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
 3. サーバー名をクリックします。
-4. サーバーの **[概要]** パネルから、**[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
+4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
  ![Azure Database for MySQL サーバー名](./media/connect-python/1_server-overview-name-login.png)
 
 ## <a name="run-python-code"></a>Python コードの実行

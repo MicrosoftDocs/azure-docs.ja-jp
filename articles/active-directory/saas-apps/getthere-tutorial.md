@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 499b7f5761c97f6986ca0291af2242d694b609d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7c1a59e3b0650badd75a1170a4daaa6561bd23c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101745"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getthere"></a>チュートリアル:Azure Active Directory と GetThere の統合
 
@@ -120,13 +120,13 @@ GetThere で Azure AD シングル サインオンを構成するには、次の
     | `https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act` |
     | `https://wx1.getthere.net/login/saml/ssoaavalidate.act` |
 
-5. GetThere アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+5. GetThere アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
 6. その他に、GetThere アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name |  ソース属性 |  名前空間 |
+    | EnableAdfsAuthentication |  ソース属性 |  名前空間 |
     | ---------------| --------------- | --------------- |
     | サイト名 | "組織に応じて値を指定" | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
     | ユーザー名 |  User.mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |
@@ -220,7 +220,7 @@ GetThere で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-getthere-test-user"></a>GetThere のテスト ユーザーの作成
 
-このセクションでは、GetThere で Britta Simon というユーザーを作成します。  [GetThere サポート チーム](mailto:dataintegration@sabre.com)と連携して、GetThere プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、GetThere で Britta Simon というユーザーを作成します。 [GetThere サポート チーム](mailto:dataintegration@sabre.com)と連携し、GetThere プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

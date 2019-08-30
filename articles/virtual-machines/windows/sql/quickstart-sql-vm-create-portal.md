@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb35cc99164cc8da047e8309d63bf7909abf4815
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 3ba804f76f8d443c0b49a9b4e5425333f01f0b9a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846025"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102327"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで SQL Server 2017 Windows 仮想マシンを作成する
 
@@ -42,16 +41,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
-1. Azure Portal で、 **[リソースの作成]** を選択します。 
+1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択してから、検索ボックスに「*Azure SQL*」と入力します。
+1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[SQL 仮想マシン]** タイル上の **[詳細の表示]** を選択することで、追加情報を表示できます。
+1. **Free SQL Server License: ドロップダウンから SQL Server 2017 Developer on Windows Server 2016** イメージを選択します。
 
-1. 検索フィールドに「`SQL Server 2017 Developer on Windows Server 2016`」と入力し、Enter キーを押します。 Windows Server 2016 のオプションで SQL Server 2017 を展開します。 
-
-1. **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** イメージを選択します。 このチュートリアルで Developer エディションを使用するのは、このエディションが SQL Server の完全版であり、開発テストを無料で実行できるためです。 ユーザーは VM を実行するコストに対してのみ課金されます。 料金に関する考慮事項については、「[SQL Server Azure VM の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
-
-   ![新規検索ウィンドウ](./media/quickstart-sql-vm-create-portal/newsearch.png)
-
+   ![新規検索ウィンドウ](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
 1. **作成** を選択します。
+
+   ![新規検索ウィンドウ](./media/quickstart-sql-vm-create-portal/create-sql-2017-vm-image.png)
 
 ## <a id="configure"></a>基本的な詳細を指定する
 

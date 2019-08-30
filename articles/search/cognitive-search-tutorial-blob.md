@@ -5,17 +5,16 @@ manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: d431f0ced5b417e178e064dca347ae8d78f14e5d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 07fd1bbab68dc9abcd6e7f8df7f36f7977ff5b3a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840877"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638919"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST チュートリアル:Azure Search のインデックス パイプラインで Cognitive Services API を呼び出す
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 50779f8a37713bda8b27c1cfd2ca37eed4edbd11
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b7feb1b980054ba224173d5054907879a88cdd5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054703"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952874"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Monitor ログへの Azure Automation State Configuration レポート データの転送
 
@@ -39,8 +39,9 @@ Azure Monitor ログへの Automation State Configuration レポートの送信�
 - Azure Automation アカウント。 詳しくは、「[Azure Automation の概要](automation-offering-get-started.md)」をご覧ください。
 - **Automation &amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの概要](../log-analytics/log-analytics-get-started.md)に関するページを参照してください。
 - 1 つ以上の Azure Automation State Configuration ノード。 詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
+- [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) モジュール、バージョン 2.7.0.0 以上。 インストール手順については、[ノードでの DSC ログの表示](./troubleshoot/desired-state-configuration.md#steps-to-troubleshoot-desired-state-configuration-dsc)に関するページを参照してください。
 
-## <a name="set-up-integration-with-azure-monitor-logs"></a>Azure Monitor ログとの統合を設定する
+## <a name="set-up-integration-with-azure-monitor-logs"></a>Azure Monitor ログとの統合の設定
 
 Azure Automation DSC から Azure Monitor ログへのデータのインポートを開始するには、次の手順を実行します。
 
@@ -98,8 +99,8 @@ State Configuration のログを検索するには、次のクエリを入力し
 1. Log Analytics ワークスペースの [概要] ページで、 **[ログ]** をクリックします。
 1. クエリ フィールドに次のように入力して、アラートに対するログ検索クエリを作成します。`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-   複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。  
-   Automation アカウント名は DscNodeStatusData の検索のリソース フィールドから派生していることもあります。  
+   複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。
+   Automation アカウント名は DscNodeStatusData の検索のリソース フィールドから派生していることもあります。
 1. **[ルールの作成]** 画面を開くには、ページの上部にある **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックします。 アラートの構成オプションについて詳しくは、[アラート ルールの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関する記事をご覧ください。
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>すべてのノードで失敗した DSC リソースを検索する
@@ -112,10 +113,10 @@ Azure Monitor ログを使用する利点の 1 つは、失敗したチェック
 
 ### <a name="view-historical-dsc-node-status"></a>DSC ノードの状態の履歴を表示する
 
-最後に、DSC ノードの状態の履歴を時系列で視覚化できます。  
+最後に、DSC ノードの状態の履歴を時系列で視覚化できます。
 次のクエリを使うと、DSC ノードの状態を時系列で検索できます。
 
-`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=DscNodeStatus NOT(ResultType="started") | measure Count() by ResultType interval 1hour`  
+`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=DscNodeStatus NOT(ResultType="started") | measure Count() by ResultType interval 1hour`
 
 これにより、ノードの状態が時系列でグラフに表示されます。
 
@@ -190,7 +191,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 Automation State Configuration のデータを Azure Monitor ログに送信し、次の対応を行うことで、Automation State Configuration のノードの状態をより理解できるようになります。
 
 - 問題が発生した場合に通知するアラートの設定
-- カスタム ビューと検索クエリを使用した Runbook の結果、Runbook ジョブの状態、その他の関連する主要な指標やメトリックの視覚化。  
+- カスタム ビューと検索クエリを使用した Runbook の結果、Runbook ジョブの状態、その他の関連する主要な指標やメトリックの視覚化。
 
 Azure Monitor ログによって、Automation State Configuration のデータの状態をさらに詳しく把握でき、インシデントにより迅速に対処できるようになります。
 

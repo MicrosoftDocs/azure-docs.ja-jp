@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: ed3c5790dcb51d12a38b85aa95e9c9178b6f44cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bafd5ed5f2d7080b0f2a2db71ac96e4f97a1f76
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65408856"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774936"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスのアップグレードとスケーリングを行う  
 
@@ -66,6 +66,10 @@ Azure API Management (APIM) インスタンスは、ユニットを追加する�
 4. 追加する**ユニット**の数を指定します。 スライダーを使用するか、ユニットの数を入力できます。  
     **Premium** レベルを選択した場合は、最初にリージョンを選択する必要があります。
 5. **[保存]** をクリックします。
+
+## <a name="downtime-during-scaling-up-and-down"></a>スケールアップおよびスケールダウンの際のダウンタイム
+Developer レベルからのスケールダウンまたは Developer レベルへのスケールアップを行うとき、ダウンタイムが発生します。 それ以外の場合、ダウンタイムはありません。 
+
 
 ## <a name="next-steps"></a>次の手順
 

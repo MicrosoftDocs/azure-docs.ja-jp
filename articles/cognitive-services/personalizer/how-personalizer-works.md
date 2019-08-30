@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: diberry
-ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663911"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034374"
 ---
 # <a name="how-personalizer-works"></a>Personalizer のしくみ
 
@@ -163,7 +163,7 @@ Personalizer は、レコメンデーション エンジンと併用できます
 
 ## <a name="adding-content-safeguards-to-your-application"></a>アプリケーションへのコンテンツ保護の追加
 
-ユーザーに提示するコンテンツに大きな差異があるアプリケーションがあり、一部のユーザーにとって安全でないまたは不適切なコンテンツが含まれる可能性がある場合は、ユーザーが許容できないコンテンツを目にすることがないように、あらかじめ適切な保護手段を計画する必要があります。 保護手段を実装する最適なパターンは次のとおりです。保護手段を実装する最適なパターンは次のとおりです。
+ユーザーに提示するコンテンツに大きな差異があるアプリケーションがあり、一部のユーザーにとって安全でないまたは不適切なコンテンツが含まれる可能性がある場合は、ユーザーが許容できないコンテンツを目にすることがないように、あらかじめ適切な保護手段を計画する必要があります。 保護手段を実装する最適なパターンは次のとおりです。
     * ランク付けするアクションの一覧を取得します。
     * 対象ユーザーが使用できないものを除外します。
     * 使用できるアクションのみをランク付けします。

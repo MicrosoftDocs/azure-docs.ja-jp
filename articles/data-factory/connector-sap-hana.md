@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e9b024fc3c07670201cf72cf80c0b69bf68f1cc8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343768"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725996"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -33,10 +33,10 @@ SAP HANA データベースから、サポートされている任意のシン�
 具体的には、この SAP HANA コネクタは以下をサポートします。
 
 - SAP HANA データベースの任意のバージョンからのデータのコピー。
-- SQL クエリを使用した、**HANA 情報モデル** (分析ビューや計算ビューなど) および**行/列のテーブル**からのデータのコピー。
+- **HANA 情報モデル** (分析ビューや計算ビューなど) および**行/列のテーブル**からのデータのコピー。
 - **基本**または **Windows** 認証を使用したデータのコピー。
 
-> [!NOTE]
+> [!TIP]
 > データを SAP HANA データ ストア**に**コピーするには、汎用 ODBC コネクタを使用します。 詳細については、「[SAP HANA シンク](connector-odbc.md#sap-hana-sink)」を参照してください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -59,11 +59,53 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**SapHana** | はい |
-| server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | はい |
-| authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows** | はい |
-| userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |
-| password | ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| connectionString | **基本認証**または **Windows 認証**のいずれかを使用して SAP HANA に接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br>接続文字列には、サーバー/ポートが必要です (既定のポートは 30015)。基本認証を使用する場合は、ユーザー名とパスワードが必要です。 詳細設定については、[SAP HANA ODBC の接続プロパティ](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)に関する記事を参照してください。<br/>パスワードを Azure Key Vault に格納し、接続文字列からパスワード構成を引き出すこともできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
+| userName | Windows 認証を使用する場合は、ユーザー名を指定します。 例: `user@domain.com` | いいえ |
+| password | ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
+
+**例: 基本認証を使用する**
+
+```json
+{
+    "name": "SapHanaLinkedService",
+    "properties": {
+        "type": "SapHana",
+        "typeProperties": {
+            "connectionString": "SERVERNODE=<server>:<port (optional)>;UID=<userName>;PWD=<Password>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**例: Windows 認証を使用する**
+
+```json
+{
+    "name": "SapHanaLinkedService",
+    "properties": {
+        "type": "SapHana",
+        "typeProperties": {
+            "connectionString": "SERVERNODE=<server>:<port (optional)>;",
+            "userName": "<username>", 
+            "password": { 
+                "type": "SecureString", 
+                "value": "<password>" 
+            } 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+以下のペイロードで SAP HANA のリンクされたサービスを使用していた場合、現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 **例:**
 
@@ -93,7 +135,13 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、SAP HANA データセット でサポートされるプロパティの一覧を示します。
 
-SAP HANA からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 RelationalTable 型の SAP HANA データセットに対してサポートされる型固有のプロパティはありません。
+SAP HANA からのデータ コピーについては、次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります:**SapHanaTable** | はい |
+| schema | SAP HANA データベース内のスキーマの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
+| table | SAP HANA データベース内のテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例:**
 
@@ -101,15 +149,21 @@ SAP HANA からデータをコピーするには、データセットの type �
 {
     "name": "SAPHANADataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SapHanaTable",
+        "typeProperties": {
+            "schema": "<schema name>",
+            "table": "<table name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP HANA linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+`RelationalTable` 型のデータセットを使用していた場合、現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
@@ -117,12 +171,13 @@ SAP HANA からデータをコピーするには、データセットの type �
 
 ### <a name="sap-hana-as-source"></a>ソースとしての SAP HANA
 
-SAP HANA からデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+SAP HANA からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SapHanaSource** | はい |
 | query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | はい |
+| packetSize | データを複数のブロックに分割するためのネットワーク パケット サイズ (KB 単位) を指定します。 大量のデータをコピーする場合、パケット サイズを大きくすると、ほとんどの場合、SAP HANA からの読み取り速度が向上する可能性があります。 パケット サイズを調整する場合は、パフォーマンス テストを行うことをお勧めします。 | いいえ。<br>既定値は 2,048 (2 MB)です。 |
 
 **例:**
 
@@ -145,7 +200,7 @@ SAP HANA からデータをコピーするには、コピー アクティビテ�
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SapHanaSource",
                 "query": "<SQL query for SAP HANA>"
             },
             "sink": {
@@ -156,39 +211,41 @@ SAP HANA からデータをコピーするには、コピー アクティビテ�
 ]
 ```
 
+`RelationalSource` 型のコピー ソースを使用していた場合、現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
+
 ## <a name="data-type-mapping-for-sap-hana"></a>SAP HANA のデータ型マッピング
 
 SAP HANA からデータをコピーするとき、次の SAP HANAのデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
 | SAP HANA のデータ型 | Data Factory の中間データ型 |
-|:--- |:--- |
-| ALPHANUM | string |
-| BIGINT | Int64 |
-| BLOB | Byte[] |
-| BOOLEAN | Byte |
-| CLOB | Byte[] |
-| DATE | DateTime |
-| DECIMAL | Decimal |
-| DOUBLE | Single |
-| INT | Int32 |
-| NVARCHAR | string |
-| REAL | Single |
-| SECONDDATE | DateTime |
-| SMALLINT | Int16 |
-| TIME | TimeSpan |
-| TIMESTAMP | DateTime |
-| TINYINT | Byte |
-| VARCHAR | string |
-
-## <a name="known-limitations"></a>既知の制限事項
-
-SAP HANA からデータをコピーする場合、既知の制限事項がいくつかあります。
-
-- NVARCHAR 文字列は、Unicode 文字の最大文字数である 4,000 文字に切り詰められます
-- SMALLDECIMAL はサポートされていません
-- VARBINARY はサポートされていません
-- 有効な日付は 1899/12/30 ～ 9999/12/31 です
-
+| ------------------ | ------------------------------ |
+| ALPHANUM           | string                         |
+| BIGINT             | Int64                          |
+| BINARY             | Byte[]                         |
+| BINTEXT            | string                         |
+| BLOB               | Byte[]                         |
+| BOOL               | Byte                           |
+| CLOB               | string                         |
+| DATE               | Datetime                       |
+| DECIMAL            | Decimal                        |
+| DOUBLE             | DOUBLE                         |
+| FLOAT              | Double                         |
+| INTEGER            | Int32                          |
+| NCLOB              | string                         |
+| NVARCHAR           | string                         |
+| REAL               | Single                         |
+| SECONDDATE         | Datetime                       |
+| SHORTTEXT          | string                         |
+| SMALLDECIMAL       | Decimal                        |
+| SMALLINT           | Int16                          |
+| STGEOMETRYTYPE     | Byte[]                         |
+| STPOINTTYPE        | Byte[]                         |
+| TEXT               | string                         |
+| TIME               | TimeSpan                       |
+| TINYINT            | Byte                           |
+| VARCHAR            | string                         |
+| TIMESTAMP          | Datetime                       |
+| VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

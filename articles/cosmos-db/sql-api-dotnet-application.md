@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: sngun
-ms.openlocfilehash: b1d8d2539ae89dfdb8feb2e38f00bf4440411d8a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9824e1468604763834e37abe94290d68d81077ab
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815144"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020121"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する 
 
@@ -120,22 +120,6 @@ ms.locfileid: "68815144"
    
    Azure Cosmos DB に保存されているデータは、JSON 形式でネットワーク越しに渡され、保存されます。 JSON.NET によってオブジェクトをシリアル化または逆シリアル化する方法を制御するには、作成した **Item** クラスで示したとおり、**JsonProperty** 属性を使用します。 JSON に渡されるプロパティ名の形式を制御できるだけでなく、**Completed** プロパティに対して行ったように、.NET プロパティの名前を変更することもできます。 
 
-### <a name="add-a-controller"></a>コントローラーを追加する
-
-1. **ソリューション エクスプローラー**から、**Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。 **[スキャフォールディングの追加]** ダイアログ ボックスが表示されます。
-
-1. **[MVC コントローラー - 空]** を選択し、 **[追加]** を選択します。
-
-   ![[MVC コントローラー - 空] オプションが強調表示されている [スキャフォールディングの追加] ダイアログ ボックスのスクリーンショット](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
-
-1. 新しいコントローラーに **ItemController** という名前を付け、そのファイル内のコードを次のコードに置き換えます。
-
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
-
-   **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法の例については、[クロスサイト リクエスト フォージェリの防止][Preventing Cross-Site Request Forgery]に関するページを参照してください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
-
-   メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、[ASP.NET MVC での基本的な CRUD 操作][Basic CRUD Operations in ASP.NET MVC]に関するページを参照してください。
-
 ### <a name="add-views"></a>ビューを追加する
 
 次は、次の 3 つのビューを作成しましょう。 
@@ -190,6 +174,22 @@ ms.locfileid: "68815144"
    * **[追加]** を選択します。
 
 この作業が済んだら、Visual Studio に表示されている cshtml ドキュメントをすべて閉じてください。これらのビューは後で使用します。
+
+### <a name="add-a-controller"></a>コントローラーを追加する
+
+1. **ソリューション エクスプローラー**から、**Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。 **[スキャフォールディングの追加]** ダイアログ ボックスが表示されます。
+
+1. **[MVC コントローラー - 空]** を選択し、 **[追加]** を選択します。
+
+   ![[MVC コントローラー - 空] オプションが強調表示されている [スキャフォールディングの追加] ダイアログ ボックスのスクリーンショット](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+
+1. 新しいコントローラーに **ItemController** という名前を付け、そのファイル内のコードを次のコードに置き換えます。
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+
+   **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法の例については、[クロスサイト リクエスト フォージェリの防止][Preventing Cross-Site Request Forgery]に関するページを参照してください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
+
+   メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、[ASP.NET MVC での基本的な CRUD 操作][Basic CRUD Operations in ASP.NET MVC]に関するページを参照してください。
 
 ## <a name="connect-to-cosmosdb"></a>手順 5: Azure Cosmos DB への接続 
 

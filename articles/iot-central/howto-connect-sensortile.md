@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce0c5abe6e89094623c07afa2d1c85903e0e7ee7
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472246"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877440"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>SensorTile.box デバイスを Azure IoT Central アプリケーションに接続する
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 この記事では、デバイス開発者として、SensorTile.box デバイスを Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
@@ -89,9 +91,9 @@ SensorTile.box デバイス テンプレートから作成された、次の特�
 | 湿度       | %      | 30       | 90     | 1              |
 | temp           | °C     | 0     | 40     | 1              |
 | pressure       | mbar    | 900     | 1100    | 2              |
-| magnetometerX  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1,000    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg     | -2000   | 2000    | 0              |
 | accelerometerY | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |

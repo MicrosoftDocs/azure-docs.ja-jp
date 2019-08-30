@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678156"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032543"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理とは (プレビュー)
 
@@ -33,6 +33,10 @@ ms.locfileid: "68678156"
 組織の従業員は、業務を遂行するためにさまざまなグループ、アプリケーション、サイトにアクセスする必要があります。 このアクセスを管理することは困難です。 ほとんどの場合、プロジェクトのためにユーザーに必要なすべてのリソースを整理した一覧はありません。 プロジェクト マネージャーは、必要なリソース、関係する人物、プロジェクトが続く期間をよく理解しています。 ただし、プロジェクト マネージャーには通常、他のユーザーに対してアクセスを承認または許可する権限がありません。 外部の個人または会社と仕事をしようとすると、このシナリオはさらに複雑になります。
 
 Azure Active Directory (Azure AD) のエンタイトルメント管理は、内部ユーザーだけでなく組織外のユーザーを対象に、グループ、アプリケーション、SharePoint Online サイトへのアクセスを管理するために役立ちます。
+
+このビデオでは、エンタイトルメント管理とそのビジネス価値の概要について示します。
+
+>[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
 ## <a name="why-use-entitlement-management"></a>エンタイトルメント管理を使用する理由
 

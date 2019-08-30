@@ -6,14 +6,14 @@ author: stevelas
 manager: gwallace
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: e17b70843fcda1d183de1b81a98da53138835340
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309603"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574388"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -105,6 +105,14 @@ ACR は、構成済みのレプリカ間でイメージの同期を開始しま�
 geo レプリケーションは、Azure Container Registry の [Premium SKU](container-registry-skus.md) の機能です。 レジストリを目的のリージョンにレプリケートすると、リージョンごとに Premium レジストリ料金が発生します。
 
 前の例では、Contoso は、米国東部、カナダ中部、西ヨーロッパにレプリカを追加して、2 つのレジストリを 1 つに統合しました。 Contoso には、1 か月あたり 4 倍の Premium 料金が課金されます。追加の構成や管理は不要です。 各リージョンではイメージをローカルでプルできるようになったため、米国西部からカナダおよび米国東部へのネットワーク エグレス料金が発生することなく、パフォーマンスと信頼性が向上します。
+
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>geo レプリカ レジストリでプッシュ操作の問題を解決する
+ 
+geo レプリカ レジストリにイメージをプッシュする Docker クライアントでは、イメージ層とそのマニフェストの一部が 1 つのレプリカ リージョンにプッシュされないことがあります。 これは、Azure Traffic Manager ではネットワークで一番近いレプリカ レジストリに要求がルーティングされることが原因で発生することがあります。 レジストリに*近くの*レプリケーション リージョンが 2 つある場合、イメージ層とマニフェストはその 2 つのサイトに分配されることがあり、マニフェストの有効性が検証されると、プッシュ操作に失敗します。 この問題は、レジストリの DNS 名が一部の Linux ホストで解決される方法に起因して発生します。 クライアント側 DNS キャッシュが提供される Windows 上ではこの問題は起こりません。
+ 
+この問題が発生する場合、Linux ホスト上で、`dnsmasq` など、クライアント側 DNS キャッシュを適用することが 1 つの解決策です。 これでレジストリ名の解決に一貫性が与えられます。 Azure で Linux VM を使用してレジストリにプッシュしている場合、「[Azure での Linux 仮想マシンの DNS 名前解決のオプション](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns)」を参照してください。
+
+イメージをプッシュするとき、DNS 解決を最も近くのレプリカに求めることで最適化するには、プッシュ操作のソースと同じ Azure リージョンか、Azure 外での作業となる場合、最も近くのリージョンで geo レプリカ レジストリを構成します。
 
 ## <a name="next-steps"></a>次の手順
 

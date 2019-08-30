@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 72f9e11e3582d804eecc7479ea079276564bd12f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79cd6fe9156a785d82e303007d02ce58506dcfcf
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027777"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128545"
 ---
 # <a name="partition-and-sample-module"></a>Partition and Sample (パーティションとサンプル) モジュール
 

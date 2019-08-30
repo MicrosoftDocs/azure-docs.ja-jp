@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2a98748f4fef69b4fd6e3b32d15560641a6336
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737055"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976810"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Azure Data Catalog での検索条件の保存とデータ資産のピン留め
 ## <a name="introduction"></a>はじめに
@@ -37,7 +37,7 @@ Data Catalog の保存された検索条件とは、再利用可能な、ユー�
 ### <a name="manage-saved-searches"></a>保存された検索条件の管理
 1 つ以上の検索条件を保存すると、 **[保存された検索条件]** オプションが **[現在の検索]** ボックスの下に表示されます。 リストを展開すると、保存された検索条件がすべて表示されます。
 
- ![List of saved searches](./media/data-catalog-how-to-save-pin/03-list.png)
+ ![Data Catalog - 保存された検索の一覧](./media/data-catalog-how-to-save-pin/03-list.png)
 
 次のいずれかを実行します。
 
@@ -56,18 +56,18 @@ Data Catalog の保存された検索条件とは、再利用可能な、ユー�
 ### <a name="organizational-saved-searches"></a>組織の保存した検索条件
 組織内のすべてのユーザーが、独自の検索条件を保存できます。 Data Catalog 管理者は、組織内のすべてのユーザーの検索条件を保存することもできます。 管理者が検索条件を保存する場合は、 **[会社内で共有します]** オプションが表示されます。 このオプションを選択すると、保存された検索条件が組織内のすべてのユーザーに共有されます。
 
- ![組織の保存した検索条件](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![Data Catalog - 組織の保存した検索条件](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>ピン留めされたデータ資産
 保存された検索条件を使用して、検索の定義を保存して再利用できます。 検索によって返されるデータ資産は、カタログ内容の変更により時間の経過と共に変更される可能性があります。 データ資産をピン留め使用すると、特定のデータ資産を明示的に識別して、検索条件を使用しなくても、より簡単にアクセスできるようになります。
 
 データ資産をピン留めすることは簡単です。 **[ピン留めする]** アイコンをクリックするだけで、データ資産をピン留めされたリストに追加できます。 このアイコンは、タイル ビューの資産タイルの隅と、Azure Data Catalog ポータルのリスト ビューの一番左の列に表示されます。
 
-![データ資産の [ピン留めする] アイコン](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Data Catalog - データ資産の [ピン留め] アイコン](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
 データ資産のピン留めを外すのも簡単です。 **[ピン留めを外す]** アイコンをクリックするだけで、選択した資産の設定を切り替えられます。
 
-![データ資産の [ピン留めを外す] アイコン](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Data Catalog - データ資産の [ピン留めを外す] アイコン](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
 ## <a name="the-my-assets-section"></a>[マイ アセット] セクション
 Data Catalog ポータルのホーム ページには **[マイ アセット]** セクションがあり、現在のユーザーにとって関心のある資産が表示されます。 このセクションには、ピン留めされた資産と保存した検索条件の両方が表示されます。

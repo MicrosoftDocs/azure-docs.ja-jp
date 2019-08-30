@@ -1,24 +1,23 @@
 ---
-title: Azure API Management を使用した関数の OpenAPI 定義の作成
+title: Azure API Management を使用してサーバーレス API の OpenAPI 定義を作成する
 description: 他のアプリやサービスが Azure で関数を呼び出せるようにする OpenAPI 定義を作成します。
-services: functions
 keywords: OpenAPI, Swagger, クラウド アプリ, クラウド サービス,
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 54a4c6eba094231e8e73cdef87b911dfba20f657
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510483"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533545"
 ---
-# <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Azure API Management を使用した関数の OpenAPI 定義の作成
+# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Azure API Management を使用してサーバーレス API の OpenAPI 定義を作成する
 
 REST API は、多くの場合、OpenAPI 定義を使用して記述されます。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。
 
@@ -47,15 +46,15 @@ REST API は、多くの場合、OpenAPI 定義を使用して記述されます
 
 この関数は、修復コストと、タービンによってもたらされる 24 時間あたり収益を計算します。 HTTP によってトリガーされる関数を [Azure portal](https://portal.azure.com) 内で作成します。
 
-1. Function App を展開し、**[関数]** の横にある **[+]** ボタンを選択します。 **[ポータル内]** > **[続行]** の順に選択します。
+1. Function App を展開し、 **[関数]** の横にある **[+]** ボタンを選択します。 **[ポータル内]**  >  **[続行]** の順に選択します。
 
-1. **[その他のテンプレート]** を選択した後、**[テンプレートの完了と表示]** を選択します。
+1. **[その他のテンプレート]** を選択した後、 **[テンプレートの完了と表示]** を選択します。
 
-1. [HTTP トリガー] を選択し、関数の**名前**として「`TurbineRepair`」と入力し、**[[認証レベル]](functions-bindings-http-webhook.md#http-auth)** で [`Function`] を選択し、**[作成]** を選択します。  
+1. [HTTP トリガー] を選択し、関数の**名前**として「`TurbineRepair`」と入力し、 **[[認証レベル]](functions-bindings-http-webhook.md#http-auth)** で [`Function`] を選択し、 **[作成]** を選択します。  
 
     ![OpenAPI 用の HTTP 関数を作成する](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
-1. この run.csx C# スクリプト ファイルの内容を次のコードに置き換えて、**[保存]** を選択します。
+1. この run.csx C# スクリプト ファイルの内容を次のコードに置き換えて、 **[保存]** を選択します。
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -110,7 +109,7 @@ REST API は、多くの場合、OpenAPI 定義を使用して記述されます
 
     この関数コードは、応急修復がコスト効率に優れているかを示すメッセージ `Yes` または `No` のほか、タービンによって創出される収益機会とタービンの修復コストを返します。
 
-1. 関数をテストするには、一番右の **[テスト]** をクリックして、テスト タブを展開します。**要求本文**で次の値を入力し、**[実行]** をクリックします。
+1. 関数をテストするには、一番右の **[テスト]** をクリックして、テスト タブを展開します。**要求本文**で次の値を入力し、 **[実行]** をクリックします。
 
     ```json
     {
@@ -133,7 +132,7 @@ REST API は、多くの場合、OpenAPI 定義を使用して記述されます
 
 OpenAPI 定義を生成する準備ができています。
 
-1. 関数アプリを選択した後、**[プラットフォーム機能]** で **[API Management]** を選択し、**[API Management]** で **[新規作成]** を選択します。
+1. 関数アプリを選択した後、 **[プラットフォーム機能]** で **[API Management]** を選択し、 **[API Management]** で **[新規作成]** を選択します。
 
     ![プラットフォーム機能で API Management を選択する](media/functions-openapi-definition/select-all-settings-openapi.png)
 
@@ -146,14 +145,14 @@ OpenAPI 定義を生成する準備ができています。
     | **Name** | グローバルに一意の名前 | お使いの関数アプリの名前に基づいて名前が生成されます。 |
     | **サブスクリプション** | 該当するサブスクリプション | この新しいリソースが作成されるサブスクリプション。 |  
     | **[リソース グループ](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | お使いの関数アプリと同じリソース。自動的に設定されます。 |
-    | **場所** | 米国西部 | 場所には [米国西部] を選びます。 |
+    | **Location** | 米国西部 | 場所には [米国西部] を選びます。 |
     | **組織名** | Contoso | 開発者ポータルとメール通知で使用する組織の名前。 |
     | **管理者のメール アドレス** | ご自分のメール アドレス | API Management からのシステム通知を受信したメール アドレス。 |
     | **[価格レベル]** | Consumption (プレビュー) | 従量課金レベルはプレビュー段階であり、すべてのリージョンで使うことはできません。 価格の詳細については、[API Management の価格に関するページ](https://azure.microsoft.com/pricing/details/api-management/)を参照してください。 |
 
 1. **[作成]** を選択して、API Management インスタンスを作成します。これには数分かかる場合があります。
 
-1. **[Application Insights を有効にする]** を選択して、関数アプリケーションと同じ場所にログを送信します。次に、残りの既定値をそのまま使用し、**[API のリンク]** を選択します。
+1. **[Application Insights を有効にする]** を選択して、関数アプリケーションと同じ場所にログを送信します。次に、残りの既定値をそのまま使用し、 **[API のリンク]** を選択します。
 
 1. **[Azure Functions のインポート]** が開き、**TurbineRepair** 関数が強調表示されます。 **[選択]** を選択して続行します。
 

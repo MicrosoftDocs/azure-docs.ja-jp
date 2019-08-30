@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 3555ec74b7e7c8a0f7606f24f8c6f2c4fe36b52d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: bbccb9beab374a4a514d527c22b3861f0752d5fd
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477098"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782385"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Update Management での Windows エージェント チェック結果について
 
@@ -55,15 +55,15 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008 R2 RTM、Windows Server 2008 | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降 |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です ([Windows Management Framework 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします  ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 以降 |.NET Framework 4.6.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5.1 が必要です。  ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
-### <a name="net-451"></a>.NET 4.5.1
+### <a name="net-461"></a>.NET 4.6.1 以降
 
-.NET Framework チェックでは、最小要件の [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653) がインストールされているかどうかを検証します。
+.NET Framework のチェックでは、最小要件の [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) がインストールされているかどうかが検証されます。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF チェックでは、必要なバージョンの Windows Management Framework (WMF) がシステムに存在するかどうかを検証します。 サポートされる最小バージョンは [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) です。 Hybrid Runbook Worker の信頼性を向上させるには [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) をインストールすることをお勧めします。
+WMF のチェックでは、必要なバージョンの Windows Management Framework (WMF) がシステムに存在するかどうかが検証されます ([Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616))。
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -144,7 +144,7 @@ RuleId                      : AutomationAgentServiceConnectivityCheck1
 RuleGroupId                 : connectivity
 RuleName                    : Registration endpoint
 RuleGroupName               : connectivity
-RuleDescription             : 
+RuleDescription             :
 CheckResult                 : Failed
 CheckResultMessage          : Unable to find Workspace registration information in registry
 CheckResultMessageId        : AutomationAgentServiceConnectivityCheck1.Failed.NoRegistrationFound

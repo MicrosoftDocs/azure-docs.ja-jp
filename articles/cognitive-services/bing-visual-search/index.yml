@@ -3,15 +3,14 @@ documentType: LandingData
 title: Bing Visual Search API のドキュメント
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: Bing Visual Search API のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  title: Bing Visual Search API のドキュメント - チュートリアル、クイックスタート、API リファレンス
+  titleSuffix: Azure Cognitive Services
   description: Bing Visual Search API を使用して画像に関する分析情報を取得する方法について説明します。
   services: cognitive-services
   author: swhite-msft
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
   ms.author: scottwhi

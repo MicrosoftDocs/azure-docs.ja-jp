@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1e17afb2f06265975442c127baecc8cab75d63f7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f90bb86632886d8a2ca6c6e8c60d3b79f5d0b9e9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611258"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780436"
 ---
 # <a name="enable-fusion"></a>Fusion の有効化
 
@@ -31,7 +31,7 @@ ms.locfileid: "67611258"
 
 Azure Sentinel 内の Machine Learning は最初から組み込まれています。 セキュリティ アナリスト、セキュリティ データ サイエンティスト、セキュリティ データ エンジニアの生産性向上を目的として、ML の革新的技術でシステムを周到に設計しています。 このような革新的技術の 1 つが、特にアラートによる疲労を軽減するために組み込まれている Azure Sentinel Fusion です。
 
-Fusion は、グラフ駆動型の機械学習アルゴリズムを使用して、Azure AD Identity Protection や Microsoft Cloud App Security などのさまざまな製品から発生する数百万件もの忠実性の低い異常アクティビティを関連付け、管理しやすい数の有用なセキュリティ ケースにまとめます。
+Fusion では、グラフ駆動型の機械学習アルゴリズムを使用して、Azure AD Identity Protection や Microsoft Cloud App Security などのさまざまな製品から発生する数百万件もの忠実性の低い異常アクティビティが関連付けられ、管理しやすい数の有用なセキュリティ インシデントにまとめられます。
 
 ## <a name="enable-fusion"></a>Fusion の有効化
 

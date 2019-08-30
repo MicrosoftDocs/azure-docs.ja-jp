@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3bc06a8903fbc431d991e6ef2a4aad8fbaff2365
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 3e5490a4d74f10532764029f7a83788e3e39b592
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736860"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636215"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
-ネットワーク セキュリティ グループ (NSG) により、仮想マシン (VM) への着信トラフィックと 送信トラフィックをフィルターできます。 Network Watcher の NSG フロー ログ機能により、NSG を通過するネットワーク トラフィックをログに記録できます。 このチュートリアルでは、以下の内容を学習します。
+ネットワーク セキュリティ グループ (NSG) により、仮想マシン (VM) への着信トラフィックと送信トラフィックをフィルターできます。 Network Watcher の NSG フロー ログ機能により、NSG を通過するネットワーク トラフィックをログに記録できます。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * ネットワーク セキュリティ グループで VM 作成する
@@ -35,7 +35,7 @@ ms.locfileid: "68736860"
 > * ログに記録されたデータをダウンロードする
 > * ログに記録されたデータを表示する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [ 無料アカウント ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -45,11 +45,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     |Setting|値|
     |---|---|
-    |EnableAdfsAuthentication|myVm|
+    |Name|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
-    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[ 定義された複雑さの要件 ](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) を満たす必要があります。|
     |Subscription| サブスクリプションを選択します。|
-    |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
+    |Resource group| **[新規作成]** を選択し、「**myResourceGroup** と入力します。|
     |Location| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
@@ -60,7 +60,7 @@ VM の作成には数分かかります。 VM の作成が完了するまで、�
 
 ## <a name="enable-network-watcher"></a>Network Watcher を有効にする
 
-米国東部リージョンで既に Network Watcher を有効にしている場合は、「[Insights プロバイダーの登録](#register-insights-provider)」に進んでください。
+米国東部リージョンで既に Network Watcher を有効にしている場合は、「[Insights プロバイダーの登録 ](#register-insights-provider)」に進んでください。
 
 1. ポータルで **[すべてのサービス]** を選択します。 **[フィルター]** ボックスに、「*Network Watcher*」と入力します。 結果に **[Network Watcher]** が表示されたら、それを選択します。
 2. 次の図に示すように、 **[リージョン]** を選択して展開し、 **[米国東部]** の右側の **[...]** を選択します。
@@ -88,14 +88,15 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 
     | Setting        | 値                                                        |
     | ---            | ---   |
-    | EnableAdfsAuthentication           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
+    | Name           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
     | Location       | **[米国東部]** を選択します。                                           |
     | Resource group | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します |
 
     ストレージ アカウントの作成には、しばらくかかる場合があります。 ストレージ アカウントが作成されるまで、残りの手順を続行しないでください。 ストレージ アカウントを作成せずに、既存のものを使う場合は、ストレージ アカウントの **[設定]** の **[ファイアウォールと仮想ネットワーク]** で **[すべてのネットワーク]** (既定値) が選択されているストレージ アカウントを選択してください。 どのような場合でも、ストレージ アカウントは、NSG と同じリージョンに存在する必要があります。 
     
     > [!NOTE]
-    > Microsoft.Insight と Microsoft.Network のプロバイダーは、Azure Storage 向けの信頼された Microsoft サービスとして現在サポートされていますが、NSG フロー ログはまだ完全にオンボードされているわけではありません。 NSG フロー ログの記録を有効にするには、この機能が完全にオンボードされるまで、**すべてのネットワーク**を引き続き選択する必要があります。 
+    > Microsoft.Insight と Microsoft.Network のプロバイダーは、[Azure Storage 向けの信頼できる Microsoft サービス](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)として現在サポートされていますが、NSG フロー ログはまだ完全にオンボードされているわけではありません。 NSG フロー ログを有効にするには、前述のように **[すべてのネットワーク]** を選択する必要があります。
+    
 4. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 5. 次の図に示すように、 **[ログ]** の　 **[NSG フロー ログ]** を選択します。
 
@@ -103,12 +104,19 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 
 6. NSG の一覧から **myVm-nsg** という名前の NSG を選択します。
 7. **[フローのログ設定]** の下で **[オン]** を選択します。
-8. フロー ログのバージョンを選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。
+8. フロー ログのバージョンを選択します。 バージョン 2 には、フロー セッションの統計 (バイトおよびパケット) が含まれます。
 
    ![フロー ログのバージョンの選択](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. 手順 3 で作成したストレージ アカウントを選択します。
+   > [!NOTE]
+   > 次に該当する場合、NSG フロー ログがストレージ アカウントで正しく機能しません。
+   > * ストレージ アカウントのファイアウォールが有効になっている。
+   > * ストレージ アカウントの [ 階層型名前空間 ](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) が有効になっている。
+1. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 10. **[リテンション期間 (日数)]** を 5 に設定し、 **[保存]** を選択します。
+    > [!IMPORTANT]
+    > 現在、Network Watcher の[ネットワーク セキュリティ グループ (NSG) フロー ログ](network-watcher-nsg-flow-logging-overview.md)がアイテム保持ポリシー設定に基づいて BLOB ストレージから自動的に削除されないという問題があります。 0 以外のアイテム保持ポリシーが存在する場合は、保持期間を過ぎているストレージ BLOB を定期的に削除して、課金が発生しないようにすることをお勧めします。 NSG フロー ログ ストレージ BLOB を削除する方法の詳細については、「[Delete NSG flow log storage blobs](network-watcher-delete-nsg-flow-log-blobs.md)」 (NSG フロー ログ ストレージ BLOB の削除) を参照してください。
 
 ## <a name="download-flow-log"></a>フロー ログのダウンロード
 
@@ -117,7 +125,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 
    ![フロー ログをダウンロードする](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
-3. 「[NSG フロー ログの有効化](#enable-nsg-flow-log)」の手順 2 で構成したストレージ アカウントを選択します。
+3. 「[NSG フロー ログの有効化 ](#enable-nsg-flow-log)」の手順 2 で構成したストレージ アカウントを選択します。
 4. **[Blob service]** で **[BLOB]** を選択し、 **[insights-logs-networksecuritygroupflowevent]** コンテナーを選択します。
 5. 次の図に示すように、コンテナー内のフォルダー階層を PT1H.json ファイルに到達するまで移動します。 ログ ファイルは、次の名前規則に従ってフォルダー階層に書き込まれます。 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
@@ -203,7 +211,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 | サンプル データ | データが表す内容   | 説明                                                                              |
 | ---          | ---                    | ---                                                                                      |
 | 1542110377   | タイム スタンプ             | UNIX EPOCH 形式でフローが発生した際のタイム スタンプ。 前の例では、日付は 2018 年 5 月 1 日午後 2:59:05 GMT に変換されます。                                                                                    |
-| 10.0.0.4  | 送信元 IP アドレス      | フローが発生したソース IP アドレス。 10.0.0.4 は、「[VM の作成](#create-a-vm)」で作成した VM のプライベート IP アドレスです。
+| 10.0.0.4  | 送信元 IP アドレス      | フローが発生したソース IP アドレス。 10.0.0.4 は、「[VM の作成 ](#create-a-vm)」で作成した VM のプライベート IP アドレスです。
 | 13.67.143.118     | 宛先 IP アドレス | フローが送信された宛先 IP アドレス。                                                                                  |
 | 44931        | 発信元ポート            | フローが発生したソース ポート。                                           |
 | 443         | 宛先ポート       | フローが送信された宛先ポート。 トラフィックの送信先はポート 443 であったため、ログ ファイルの **UserRule_default-allow-rdp** という規則によって、フローが処理されました。                                                |
@@ -212,10 +220,10 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 | A            | Action                 | トラフィックが許可された (A) かまたは拒否された (D) か。  
 | C            | フロー状態 (**バージョン 2 のみ**) | フローの状態をキャプチャします。 次の状態があります。**B**: 開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**:終了。フローが終了した時点です。 統計が提供されます。 |
 | 30 | 送信済みパケット数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットの総数。 |
-| 16978 | 送信済みバイト数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。 | 
+| 16978 | 送信済みバイト数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。 |
 | 24 | 送信済みパケット数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP または UDP パケットの総数。 |
 | 14008| 送信済みバイト数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP および UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。|
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、NSG の NSG フローのログ記録を有効にする方法について説明しました。 また、ファイルに記録されたデータをダウンロードし、表示する方法も説明しました。 Json ファイル内の生データは解釈が難しい場合があります。 データを視覚化するため、Network Watcher [トラフィック分析](traffic-analytics.md)、Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)、およびその他のツールを使用できます。
+このチュートリアルでは、NSG の NSG フローのログ記録を有効にする方法について説明しました。 また、ファイルに記録されたデータをダウンロードし、表示する方法も説明しました。 Json ファイル内の生データは解釈が難しい場合があります。 データを視覚化するため、Network Watcher [ トラフィック分析 ](traffic-analytics.md)、Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)、およびその他のツールを使用できます。

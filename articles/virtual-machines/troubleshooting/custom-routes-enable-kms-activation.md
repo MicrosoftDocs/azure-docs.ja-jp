@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 6557649eb1b97ad4d88876906737f8249e18b958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399798"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990353"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制トンネリングを使用したライセンス認証の問題
 
@@ -52,6 +52,9 @@ Azure Global クラウドの KMS サーバーの IP アドレスは、23.102.135
 ### <a name="for-resource-manager-vms"></a>Resource Manager VM の場合
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+
+> [!NOTE] 
+> アクティブ化ではパブリック IP アドレスが使用され、Standard SKU の Load Balancer の構成による影響を受けます。 要件については、「[Azure の送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)」を慎重に確認してください。
 
 1. Azure PowerShell を開き、[Azure サブスクリプションにサインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
 2. 次のコマンドを実行します。

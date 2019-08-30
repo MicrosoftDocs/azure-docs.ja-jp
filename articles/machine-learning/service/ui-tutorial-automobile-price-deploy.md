@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: dd28fb51a4fc3fbf3dfc893f2f5f159ccafdb4b3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839303"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891613"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで機械学習モデルをデプロイする
 
@@ -83,11 +83,9 @@ ms.locfileid: "67839303"
 
 1. 追加情報を表示する Web サービスの名前を選択します。
 
-     ![Web サービス ビューに表示された追加情報を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/web-service-details.png)
-
 1. **[テスト]** を選択します。
 
-    ![Web サービスのテスト ページを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
+    [![Web サービスのテスト ページを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
 
 1. テスト データを入力するか、自動入力されたサンプル データを使用し、 **[テスト]** を選択します。
 
@@ -105,8 +103,6 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 
 **[API Doc]\(API ドキュメント\)** タブに移動すると、API の追加情報が表示されます。
 
-  ![[API Doc]\(API ドキュメント\) タブに表示される API の追加情報を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
-
 ## <a name="manage-models-and-deployments"></a>モデルとデプロイの管理
 
 ビジュアル インターフェイスで作成したモデルおよび Web サービスのデプロイは、Azure Machine Learning service ワークスペースからも管理できます。
@@ -119,11 +115,9 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 
     このページに、モデルに関する追加情報が表示されます。
 
-    ![Azure portal での実験の統計情報の概要を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/model-details.png)
-
 1. **[デプロイ]** を選択すると、モデルを使用するすべての Web サービスが一覧表示されます。 Web サービスの名前を選択すると、Web サービスの詳細ページに移動します。 このページでは、Web サービスのより詳細な情報を取得できます。
 
-    ![詳細な実行レポートを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)
+    [![詳細な実行レポートを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

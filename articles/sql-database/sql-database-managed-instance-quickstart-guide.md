@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: 97f7393622311103d94d3067205f902e3eec6843
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8dfe0db5277a995b6e6675381ebeb5aeb243c9b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567356"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647215"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスの概要
 
@@ -55,8 +55,6 @@ ms.locfileid: "68567356"
 ## <a name="customize-network-environment"></a>ネットワーク環境をカスタマイズする
 
 [Azure portal](sql-database-managed-instance-get-started.md) を使用してインスタンスを作成するときに VNet/サブネットを自動的に構成できますが、VNet およびサブネットのパラメーターを構成できるので、マネージド インスタンスの作成を開始する前に作成することをお勧めします。 ネットワーク環境を作成および構成する場合、最も簡単な方法は、[Azure リソース デプロイ](sql-database-managed-instance-create-vnet-subnet.md) テンプレートを使用することです。このテンプレートで、インスタンスが配置されるネットワークとサブネットを作成および構成します。 必要な操作は、Azure Resource Manager のデプロイ ボタンを押し、フォームにパラメーターを入力することのみです。
-
-別の方法として、[PowerShell スクリプト](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/)を使用してネットワークの作成を自動化することもできます。
 
 別の方法として、この [PowerShell スクリプト](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/)を使用してネットワークの作成を自動化することもできます。
 

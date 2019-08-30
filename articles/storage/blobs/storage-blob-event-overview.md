@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 13eef9beb6c86683c56efc744dc42b4614b84fe9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946481"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648793"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -29,9 +29,11 @@ Blob Storage イベントの一般的なシナリオとしては、画像やビ�
 
 |使うツール:    |参照する記事: |
 |--|-|
-|Azure Portal    |[クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure ポータル    |[クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[クイック スタート:PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+
+このチュートリアルでは、ご利用のアカウントに階層型名前空間が使用されている場合に、Event Grid サブスクリプションと Azure Functions、Azure Databricks 内の[ジョブ](https://docs.azuredatabricks.net/user-guide/jobs.html)を 1 つに接続する方法を紹介します: [Azure Data Lake Storage Gen2 イベントを使用して Databricks Delta テーブルを更新する](data-lake-storage-events.md)
 
 ## <a name="the-event-model"></a>イベント モデル
 

@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 77fe6f1ce416df049928697d2c166e2aba0abfe2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a106984bc60d0ccfe29a1956213aec6f87ad30dd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935214"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090181"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows コマンド - CMD と PowerShell
 

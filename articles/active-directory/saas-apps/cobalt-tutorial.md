@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc2cb6e3aa23ffef03dc129f1f8cea520d1025
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eda55cbdaf87d80d239ed284919394f83c7e69b4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105259"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944766"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cobalt"></a>チュートリアル:Azure Active Directory と Cobalt の統合
 
@@ -111,13 +111,13 @@ Cobalt で Azure AD シングル サインオンを構成するには、次の�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Cobalt クライアント サポート チーム](https://www.cobalt.net/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Cobalt アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+5. Cobalt アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
 6. その他に、Cobalt アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 [ユーザー属性] ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性|
+    | EnableAdfsAuthentication | ソース属性|
     | ---------------| --------- |
     | Mail | User.mail |
     | Othermail | user.othermail |
@@ -210,7 +210,7 @@ Cobalt で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-cobalt-test-user"></a>Cobalt テスト ユーザーの作成
 
-このセクションでは、Cobalt で Britta Simon というユーザーを作成します。  [Cobalt サポート チーム](https://www.cobalt.net/support/)と連携し、Cobalt プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Cobalt で Britta Simon というユーザーを作成します。 [Cobalt サポート チーム](https://www.cobalt.net/support/)と連携し、Cobalt プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

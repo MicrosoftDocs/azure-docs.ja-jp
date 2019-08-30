@@ -49,6 +49,8 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: ストレージ オプションの比較
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: 方法
   items:
     - name: クラスター ストレージの使用
@@ -311,8 +313,6 @@
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Apache Spark ジョブが失敗する - InvalidClassException
           href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Apache Spark ジョブが遅い - listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Apache Spark ジョブが遅い - ストレージ コンテナー
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException 例外
@@ -327,6 +327,8 @@
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
         - name: Apache Spark のイベント ログ - RequestBodyTooLarge
           href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
+        - name: Apache ZooKeeper がクォーラムを形成できない
+          href: ./zookeeper-troubleshoot-quorum-fails.md
 - name: リファレンス
   items:
     - name: コード サンプル

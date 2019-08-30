@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 23275bc639b445b55cafb72c929514541ba00660
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3955b84df401e5832668fa091274caea9af2466e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61333466"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876601"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 
@@ -65,11 +65,11 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
     var env = require('dotenv').load();    //Use the .env file to load the variables
     ```
 
-1. Cosmos DB の接続文字列と Cosmos DB の名前を ```.env``` ファイルに追加します。
+1. Cosmos DB の接続文字列と Cosmos DB の名前を ```.env``` ファイルに追加します。 プレースホルダー {cosmos-account-name} および {dbname} を独自の Cosmos アカウント名およびデータベース名に置き換えます。このとき、中かっこ記号は入力しません。
 
     ```JavaScript
-    COSMOSDB_CONNSTR=mongodb://{cosmos-user}.documents.azure.com:10255/{dbname}
-    COSMODDB_USER=cosmos-user
+    COSMOSDB_CONNSTR=mongodb://{cosmos-account-name}.documents.azure.com:10255/{dbname}
+    COSMODDB_USER=cosmos-account-name
     COSMOSDB_PASSWORD=cosmos-secret
     ```
 

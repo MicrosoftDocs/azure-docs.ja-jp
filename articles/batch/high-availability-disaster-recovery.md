@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: lahugh
-ms.openlocfilehash: 3c76a5100e6ac1db067ccdbd582ddf9adba946c1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 11446f5f23d470234b5dba641dc16e0bf71d9b72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322581"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094042"
 ---
 # <a name="design-your-application-for-high-availability"></a>高可用性を実現するようにアプリケーションを設計する
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 55af6d17f18efd11fe2d6f89b9b87ca9f407ec25
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 26ba811eba1a25dacddd04814f8e0d2805360920
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688656"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018773"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -45,14 +45,14 @@ ms.locfileid: "68688656"
 
 ## <a name="pre-requisite"></a>前提条件
 
-Azure Backup でシステム状態のバックアップをトラブルシューティングする前に、以下の前提条件の確認を必ず実行してください。  
+Azure Backup でシステム状態のバックアップをトラブルシューティングする前に、以下の前提条件の確認を実行してください。  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Windows Server バックアップがインストールされていることを確認する
 
 Windows Server バックアップがインストールされ、サーバーで有効になっていることを確認します。 インストールの状態を確認するには、次の PowerShell コマンドを実行します。
 
- ```
- PS C:\> Get-WindowsFeature Windows-Server-Backup
+ ```powershell
+Get-WindowsFeature Windows-Server-Backup
  ```
 出力で、**Install State** が **available** と表示される場合は、Windows Server バックアップ機能をインストールできるが、サーバーにはインストールされていないことを意味します。 Windows Server バックアップがインストールされていない場合は、以下のいずれかの方法でインストールします。
 
@@ -60,15 +60,15 @@ Windows Server バックアップがインストールされ、サーバーで�
 
 PowerShell を使用して Windows Server バックアップをインストールするには、次のコマンドを実行します。
 
-  ```
-  PS C:\> Install-WindowsFeature -Name Windows-Server-Backup
+  ```powershell
+  Install-WindowsFeature -Name Windows-Server-Backup
   ```
 
 **方法 2: サーバー マネージャーを使用して Windows Server バックアップをインストールする**
 
-サーバー マネージャーを使用して Windows Server バックアップをインストールするには、以下を実行します。
+サーバー マネージャーを使用して Windows Server バックアップをインストールするには、次の手順を実行します。
 
-1. **サーバー マネージャー**で、 **[役割と機能の追加]** をクリックします。 **役割と機能の追加ウィザード**が表示されます。
+1. **サーバー マネージャー**で **[役割と機能の追加]** をクリックします。 **役割と機能の追加ウィザード**が表示されます。
 
     ![ダッシュボード](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
@@ -141,14 +141,14 @@ Windows Server バックアップの状態を検証するには、以下を実�
 
 | 症状 | 解決策
 | -- | --
-| - MARS エージェントが次のエラー メッセージで失敗する:システム ファイルが格納されているボリュームのディスク領域の不足により、シャドウ コピーのボリュームを拡大できなかったため、バックアップに失敗しました <br/><br/> - volsnap システム イベント ログに次のエラー/警告ログが存在する:"There was insufficient disk space on volume C: to grow the shadow copy storage for shadow copies of C: due to this failure all shadow copies of volume C: are at risk of being deleted" (C: のシャドウ コピー用のシャドウ コピー ストレージを拡大するための十分なディスク領域がボリューム C: 上に存在しません。このエラーのせいで、ボリューム C: のすべてのシャドウコピーが削除される恐れがあります) | - 強調表示されているボリュームの領域を解放して、バックアップの進行中にシャドウ コピー コピーを拡大するための十分な領域が存在するようにします <br/><br/> - シャドウ コピーの領域の構成中に、シャドウ コピー用に使用される領域の量を制限できます。詳細については、[こちらの記事](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)を参照してください
+| - MARS エージェントが次のエラー メッセージで失敗する:システム ファイルが格納されているボリュームのディスク領域の不足により、シャドウ コピーのボリュームを拡大できなかったため、バックアップに失敗しました <br/><br/> - volsnap システム イベント ログに次のエラー/警告ログが存在する:"There was insufficient disk space on volume C: to grow the shadow copy storage for shadow copies of C: due to this failure all shadow copies of volume C: are at risk of being deleted" (C: のシャドウ コピー用のシャドウ コピー ストレージを拡大するための十分なディスク領域がボリューム C: 上に存在しません。このエラーのせいで、ボリューム C: のすべてのシャドウコピーが削除される恐れがあります) | - 強調表示されているボリュームの領域を解放して、バックアップの進行中にシャドウ コピー コピーを拡大するための十分な領域が存在するようにします <br/><br/> - シャドウ コピーの領域の構成中に、シャドウ コピー用に使用される領域の量を制限できます。 詳細については、こちらの[記事](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)を参照してください
 
 
 ### <a name="efi-partition-locked"></a>EFI パーティションがロックされている
 
 | 症状 | 解決策
 | -- | --
-| MARS エージェントが次のエラー メッセージで失敗する:"System state back up failed as the EFI system partition is locked. This can be due to system partition access by a third-party security or back up software" (EFI システム パーティションがロックされているため、システム状態のバックアップが失敗しました。これは、サードパーティのセキュリティまたはバックアップ ソフトウェアによるシステム パーティションへのアクセスが原因である可能性があります) | - 問題の原因がサードパーティのセキュリティ ソフトウェアの場合は、MARS エージェントを許可できるようにウイルス対策ベンダーに連絡する必要があります <br/><br/> - サードパーティのバックアップ ソフトウェアが実行されている場合は、それが終了するまで待機した後、バックアップを再試行します
+| MARS エージェントが次のエラー メッセージで失敗する:"System state backup failed as the EFI system partition is locked. This can be due to system partition access by a third-party security or back up software" (EFI システム パーティションがロックされているため、システム状態のバックアップが失敗しました。これは、サードパーティのセキュリティまたはバックアップ ソフトウェアによるシステム パーティションへのアクセスが原因である可能性があります) | - 問題の原因がサードパーティのセキュリティ ソフトウェアの場合は、MARS エージェントを許可できるようにウイルス対策ベンダーに連絡する必要があります <br/><br/> - サードパーティのバックアップ ソフトウェアが実行されている場合は、それが終了するまで待機した後、バックアップを再試行します
 
 
 ## <a name="next-steps"></a>次の手順

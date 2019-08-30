@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a45e2af6f2cb9c105c084585a03a6de615fa1397
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac9c9a73e52c678c8a6d9b1e1779d9ec75cab2c8
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573049"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69016444"
 ---
 # <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要  
 
@@ -28,7 +28,7 @@ ms.locfileid: "64573049"
 
 Microsoft Azure Media Services (AMS) では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 Media Services は、シームレスな Azure CDN 統合もサポートしています。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリーム、ビデオ オンデマンド、または Media Services アカウントの資産のプログレッシブ ダウンロードを使用します。 各 Azure Media Services アカウントには、既定の StreamingEndpoint が含まれています。 追加の StreamingEndpoint をアカウントで作成できます。 StreamingEndpoint には、1.0 および 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日から、新しく作成された AMS アカウントには、バージョン 2.0 が**既定**の StreamingEndpoint として含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントに影響しません。既存の StreamingEndpoint はバージョン 1.0 になり、バージョン 2.0 にアップグレードすることができます。 この変更により、動作、課金および機能が変更されます (詳細については、以下で説明する「**ストリーミングのタイプとバージョン**」のセクションを参照してください)。
 
-Azure Media Services では、ストリーミング エンドポイントのエンティティに次のプロパティが追加されました。**CdnProvider**、**CdnProfile**、**FreeTrialEndTime**、**StreamingEndpointVersion**。 これらのプロパティについて詳しくは、[こちら](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)をご覧ください。 
+Azure Media Services では、ストリーミング エンドポイントのエンティティに次のプロパティが追加されました。**CdnProvider**、**CdnProfile**、**StreamingEndpointVersion**。 これらのプロパティについて詳しくは、[こちら](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)をご覧ください。 
 
 Azure Media Services アカウントを作成すると、既定の標準ストリーミング エンドポイントが**停止**状態で作成されます。 既定のストリーミング エンドポイントは削除できません。 対象のリージョンで使用できる Azure CDN によっては、新しく作成された既定のストリーミング エンドポイントに "StandardVerizon" CDN プロバイダー統合も既定で含まれます。 
                 
@@ -86,19 +86,17 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 
 機能|Standard|Premium
 ---|---|---
-最初の 15 日間無料 <sup>1</sup>| はい |いいえ
 スループット |最大 600 Mbps であり、CDN を使用した場合に実効スループットが大幅に向上します。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN を使用した場合に実効スループットが大幅に向上します。
 CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
 課金は日割り計算| 毎日|毎日
 動的な暗号化|はい|はい
 動的パッケージ|はい|はい
 スケール|対象スループットまで自動スケールアップ。|追加のストリーミング ユニット
-IP フィルタリング/G20/カスタム ホスト <sup>2</sup>|はい|はい
+IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 プログレッシブ ダウンロード|はい|はい
 推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。 
 
-<sup>1</sup> 無料試用版は、新しく作成したメディア サービス アカウントと既定のストリーミング エンドポイントにのみ適用されます。<br/>
-<sup>2</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
+<sup>1</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
 
 SLA については、[価格と SLA](https://azure.microsoft.com/pricing/details/media-services/) に関する記事をご覧ください。
 

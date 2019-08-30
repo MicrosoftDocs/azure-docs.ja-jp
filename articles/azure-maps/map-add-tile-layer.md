@@ -1,6 +1,6 @@
 ---
 title: Azure Maps にタイル レイヤーを追加する | Microsoft Docs
-description: JavaScript マップにタイル レイヤーを追加する方法
+description: Azure Maps Web SDK にタイル レイヤーを追加する方法。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e288e03b9e2c02ba963595f192dea7225c6d5762
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638990"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976449"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 
@@ -40,20 +40,28 @@ ms.locfileid: "68638990"
 
 ## <a name="add-a-tile-layer"></a>タイル レイヤーを追加する
 
- このサンプルは、x、y、ズーム タイル システムを使用するタイルのセットを指すタイル レイヤーを作成する方法を示しています。 このタイル レイヤーのソースは、[アイオワ州立大学の Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) の気象レーダー オーバーレイです。
+ このサンプルは、x、y、ズーム タイル システムを使用するタイルのセットを指すタイル レイヤーを作成する方法を示しています。 このタイル レイヤーのソースは、[アイオワ州立大学の Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) の気象レーダー オーバーレイです。 最適な方法でレーダー データを表示すると、ユーザーはマップを操作するときに市区町村のラベルをはっきりと確認できます。これを行うには、`labels` レイヤーの下にタイル レイヤーを挿入します。
+
+```javascript
+//Create a tile layer and add it to the map below the label layer.
+//Weather radar tiles from Iowa Environmental Mesonet of Iowa State University.
+map.layers.add(new atlas.layer.TileLayer({
+    tileUrl: 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png',
+    opacity: 0.8,
+    tileSize: 256
+}), 'labels');
+```
+
+上記の機能の完全な実行コード サンプルを以下に示します。
 
 <br/>
 
 <iframe height='500' scrolling='no' title='X、Y、Z を使用するタイル レイヤー' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/BGEQjG/'>Tile Layer using X, Y, and Z</a>」Pen を表示します。
 </iframe>
 
-上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
-
-2 番目のコード ブロックでは、タイル サービスを指す形式の URL、タイル サイズ、および半透明にする不透明度を渡して [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) を作成しています。 また、タイル レイヤーをマップに追加すると、`labels` レイヤーの下に追加されるので、ラベルが明瞭に見えます。
-
 ## <a name="customize-a-tile-layer"></a>タイル レイヤーをカスタマイズする
 
-多数のスタイル オプションがあるのはタイル レイヤーのみです。 それらを試すツールを次に紹介します。
+タイル レイヤー クラスには多くのスタイル オプションがあります。 次のツールでそれらをお試しください。
 
 <br/>
 

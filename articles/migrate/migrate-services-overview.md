@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5409ed799454a6bb64077ee884065fc518556142
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 03918976935f9071ba2a7951e29195118943a8ef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227805"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845841"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -30,7 +30,7 @@ Azure Migrate は、Azure への移行に役立ちます。 Azure Migrate には
 
 ## <a name="azure-migrate-versions"></a>Azure Migrate のバージョン
 
-Azure Migrate サービスには次の 2 つのバージョンがあります。
+Azure Migrate サービスのバージョンには、次の 2 つがあります。
 
 - **最新バージョン**:Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 このバージョンの新機能については[こちらを参照してください](whats-new.md)。
 - **前のバージョン**:前バージョンの Azure Migrate (評価のサポート対象がオンプレミスの VMware VM のみ) を使用している場合、今後は最新バージョンを使用してください。 前のバージョンを使用して Azure Migrate プロジェクトを作成することはできなくなりました。新しい検出を実行しないことをお勧めします。 既存のプロジェクトにアクセスするには、Azure portal > **[すべてのサービス]** で **Azure Migrate** を検索します。 Azure Migrate ダッシュボードに、通知と、過去の Azure Migrate プロジェクトにアクセスするためのリンクが表示されます。
@@ -50,7 +50,7 @@ Azure ネイティブ ツールに加え、Azure Migrate は多数の ISV オフ
 
 ### <a name="selecting-an-isv-tool"></a>ISV ツールの選択
 
-Azure Migrate プロジェクトに ISV ツールを追加した後は、ISV ポリシーに従って、ライセンスを取得するか、無料試用版にサインアップすることでツールの使用を開始します。 各ツールには、Azure Migrate に接続するためのオプションがあります。 ツールの指示とドキュメントに従って、ツールを Azure Migrate に接続します。
+Azure Migrate プロジェクトに ISV ツールを追加した後は、ISV ポリシーに従って、ライセンスを取得するか、無料試用版にサインアップすることでツールの使用を開始します。 各ツールには、Azure Migrate に接続するためのオプションがあります。 ツールの指示とドキュメントに従って、ツールを Azure Migrate に接続します。 ISV ツールのライセンスは、ISV ライセンス モデルに準拠しています。
 
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate Server Assessment
 

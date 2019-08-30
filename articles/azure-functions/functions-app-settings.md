@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 4426b83ee62f4a894f72e197cbe541b8b669695d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667165"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086809"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -29,7 +28,7 @@ ms.locfileid: "68667165"
 
 Application Insights を使用している場合の Application Insights インストルメンテーション キーです。 「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
 
@@ -41,7 +40,7 @@ Functions ランタイムのバージョン 2.x では、ランタイム環境�
 
 ログの保存と、それらをポータルの **[モニター]** タブに表示する、オプションのストレージ アカウントの接続文字列です。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](functions-create-function-app-portal.md#storage-account-requirements)」を参照してください。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
@@ -52,7 +51,7 @@ Functions ランタイムのバージョン 2.x では、ランタイム環境�
 
 `true` は、関数アプリのルート URL 用に表示される既定のランディング ページを無効にすることを意味します。 既定値は `false` です。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |AzureWebJobsDisableHomepage|true|
 
@@ -64,7 +63,7 @@ Functions ランタイムのバージョン 2.x では、ランタイム環境�
 
 `true` は、.NET コードのコンパイルにリリース モードを使用することを意味し、`false` は、デバッグ モードを使用することを意味します。 既定値は `true` です。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |AzureWebJobsDotNetReleaseCompilation|true|
 
@@ -72,7 +71,7 @@ Functions ランタイムのバージョン 2.x では、ランタイム環境�
 
 有効にするベータ機能のコンマ区切りの一覧です。 これらのフラグで有効となるベータ機能は本番には適しませんが、公開前の実験的な使用には有効にすることができます。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1,feature2|
 
@@ -80,7 +79,7 @@ Functions ランタイムのバージョン 2.x では、ランタイム環境�
 
 キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点でサポートされているリポジトリは、BLOB ストレージ ("Blob") およびローカル ファイル システム ("Files") です。 既定では、バージョン 2 では BLOB、バージョン 1 ではファイル システムが使用されます。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |AzureWebJobsSecretStorageType|ファイル|
 
@@ -88,7 +87,7 @@ Functions ランタイムのバージョン 2.x では、ランタイム環境�
 
 Azure Functions ランタイムは、HTTP によってトリガーされる関数を除くすべての関数で、このストレージ アカウントの接続文字列を使用します。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](functions-create-function-app-portal.md#storage-account-requirements)」を参照してください。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |AzureWebJobsStorage|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
@@ -96,7 +95,7 @@ Azure Functions ランタイムは、HTTP によってトリガーされる関�
 
 Typescript で使用されるコンパイラへのパスです。 必要に応じて、既定値はオーバーライドできます。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
@@ -104,7 +103,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 
 Azure portal での編集が有効になっているかどうかを決定します。 有効な値は "readwrite" および "readonly" です。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |FUNCTION\_APP\_EDIT\_MODE|readonly|
 
@@ -112,15 +111,24 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 この関数アプリで使用する Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (例: "~2") は、そのメジャー バージョンの最新バージョンを使用することを意味します。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "2.0.12345") を使用します。 既定値は "~2" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
+
+## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
+
+言語ワーカー プロセスの最大数を指定します。既定値は `1` です。 許容される最大値は `10` です。 関数呼び出しは、言語ワーカー プロセス間で均等に分散されます。 言語ワーカー プロセスは、FUNCTIONS\_WORKER\_PROCESS\_COUNT によって設定されたカウントに達するまで、10 秒ごとに生成されます。 複数の言語ワーカー プロセスの使用は、[スケーリング](functions-scale.md)と同じではありません。 CPU にバインドされた呼び出しと I/O にバインドされた呼び出しがワークロードに混在している場合は、この設定を使用することを検討してください。 この設定はすべての非 .NET 言語に適用されます。
+
+|Key|値の例|
+|---|------------|
+|FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
+
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
 ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、`powershell` (PowerShell)、`python` (Python) です。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
@@ -128,7 +136,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 使用量および Premium プランのみ。 関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
@@ -136,7 +144,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 使用量および Premium プランのみ。 関数アプリ コードと構成へのファイル パスです。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
@@ -147,7 +155,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 > [!NOTE]
 > この設定は、プレビュー機能です。5 以下の値を設定した場合にのみ、信頼して使用できます。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
 
@@ -155,7 +163,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 既定値は "8.11.1" です。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |WEBSITE\_NODE\_DEFAULT_VERSION|8.11.1|
 
@@ -163,7 +171,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 マウントされたパッケージ ファイルから関数アプリを実行できるようにします。
 
-|キー|値の例|
+|Key|値の例|
 |---|------------|
 |WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
@@ -173,7 +181,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 既定では、Functions プロキシは新しい HTTP 要求を作成するのではなく、同じ Function App 内の関数にプロキシから直接 API 呼び出しを送信するためのショートカットを使用します。 この設定を使用すると、その動作を無効にすることができます。
 
-|キー|値|説明|
+|Key|値|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、関数に直接送信されるのではなく、Function App の HTTP フロント エンドに戻されるようになります|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|これが既定値です。 ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されるようになります|
@@ -183,7 +191,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 この設定は、スラッシュがバックエンド URL に挿入されたときに、%2F をルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
 
-|キー|値|説明|
+|Key|値|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュがルート パラメーターに含まれている場合、それらがデコードされます。 `example.com/api%2ftest` は `example.com/api/test` になります。|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|これは既定の動作です。 すべてのルート パラメーターが、変更されることなく渡されます|

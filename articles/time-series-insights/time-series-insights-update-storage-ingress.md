@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: a37021d11de86fc0958f330f4f594e25e3aa00bd
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 98baa8d3f951a8922bcd1f40449fa26840f3a3c4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618200"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051477"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 

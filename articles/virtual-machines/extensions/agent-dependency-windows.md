@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 5913e33bc29541adfa1599ad5413ad3702635740
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: b6b1292e4c8874da826740d303cd0de26f9f46ee
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775434"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092770"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Windows 用 Azure Monitor Dependency 仮想マシン拡張機能
 
@@ -76,7 +75,7 @@ Windows 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs �
 
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |

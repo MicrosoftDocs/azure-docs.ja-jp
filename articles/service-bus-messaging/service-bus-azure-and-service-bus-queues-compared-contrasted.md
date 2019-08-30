@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: dbbc43bc7a2f42f8a72ce12d84da1ae406a588d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799349"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69017789"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -52,7 +52,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 * アプリケーションでメッセージを実行時間の長い並列ストリームとして処理する必要がある場合 (メッセージは、自身の [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) プロパティを使用してストリームに関連付けられます)。 このモデルでは、処理を行うアプリケーションの各ノードは、メッセージではなくストリームに対して競合します。 処理を行うノードにストリームが渡されると、そのノードはトランザクションを使用してアプリケーション ストリームの状態を確認できます。
 * 複数のメッセージをキューに送信したりキューから受信したりする際にトランザクション動作と原子性が必要な場合。
 * アプリケーションで処理するメッセージのサイズが 64 KB を超えることはあっても 256 KB の制限に到達することはないと考えられる場合。
-* ロールベースのアクセス モデルを提供して、キューの送信側と受信側に異なる権限/アクセス許可を与える必要がある場合。
+* ロールベースのアクセス モデルを提供して、キューの送信側と受信側に異なる権限/アクセス許可を与える必要がある場合。 詳細については、「[Active Directory のロールベースのアクセス制御 (プレビュー)](service-bus-role-based-access-control.md)」を参照してください。
 * キューのサイズが 80 GB を超えることはない場合。
 * AMQP 1.0 標準ベースのメッセージング プロトコルを使用する必要がある場合。 AMQP の詳細情報については「[Service Bus AMQP の概要](service-bus-amqp-overview.md)」をご覧ください。
 * いずれは、キュー ベースのポイント ツー ポイントの通信から、キューに送信されたメッセージの一部またはすべての独立したコピーを受信する追加の受信側 (サブスクライバー) をシームレスに統合できるメッセージ交換パターンに移行することを考えている場合。 後者は、Service Bus によってネイティブで提供される発行/サブスクライブ機能を指します。

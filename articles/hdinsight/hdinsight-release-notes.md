@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 1c8bdd0ca715b6dfd00dc9876a074c61711990af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/08/2019
+ms.openlocfilehash: 7c31520efd881e8e0b5ed309f62d273bac59c0e3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67117822"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945031"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
+# <a name="release-notes"></a>リリース ノート
 
 この記事では、**最近**の Azure HDInsight リリース更新に関する情報を提供します。 以前のリリースについて詳しくは、「[HDInsight リリース ノートのアーカイブ](hdinsight-release-notes-archive.md)」を参照してください。
 
@@ -38,14 +38,14 @@ HDInsight 4.0 での重要な変更の詳細については、「[HDI 4.0 の新
 - Apache Hadoop 3.1.1
 - Apache HBase 2.0.0
 - Apache Hive 3.1.0
-- Apache Kafka 1.1.1
+- Apache Kafka 1.1.1、2.1.0
 - Apache Mahout 0.9.0+
 - Apache Oozie 4.2.0
 - Apache Phoenix 4.7.0
 - Apache Pig 0.16.0
 - Apache Ranger 0.7.0
 - Apache Slider 0.92.0
-- Apache Spark 2.3.2
+- Apache Spark 2.3.1、2.4.0
 - Apache Sqoop 1.4.7
 - Apache TEZ 0.9.1
 - Apache Zeppelin 0.8.0

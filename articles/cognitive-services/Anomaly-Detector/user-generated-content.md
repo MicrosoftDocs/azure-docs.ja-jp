@@ -7,19 +7,24 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: aahi
-ms.openlocfilehash: 7fc1ed9928bd988faca4537202ac57fee74b0b00
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 32728b5c1ede303cc4000ef8c10e4456e784df9b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721414"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882459"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Anomaly Detector API のおすすめのユーザー生成コンテンツ
 
 この記事を使用して、他のユーザーが Anomaly Detector API をどのように考え、使用しているかを確認してください。 次のリソースは、Anomaly Detector ユーザーのコミュニティによって作成されました。 これには、テクニカル ブログ、オープンソース プロジェクト、および Microsoft とサードパーティの両方のユーザーによって作成されたその他の投稿が含まれます。 次のリンクの一部は、Microsoft の外部の Web サイトでホストされており、Microsoft はそのコンテンツに責任を負いません。 これらのリソースを参照するときは慎重に行ってください。
+
+## <a name="demos"></a>デモ
+
+* [アニメーションを使用した対話型デモ](https://aka.ms/adDemo)
+* [Azure Notebook のデモ](https://aka.ms/adNotebook)
 
 ## <a name="technical-blogs"></a>テクニカル ブログ
 

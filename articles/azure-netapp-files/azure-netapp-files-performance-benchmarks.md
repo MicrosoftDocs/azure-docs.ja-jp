@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files のパフォーマンス ベンチマーク | Microsoft Docs
+title: Azure NetApp Files のパフォーマンス ベンチマークのテスト結果 | Microsoft Docs
 description: ボリューム レベルでの Azure NetApp Files のパフォーマンス ベンチマーク テストの結果について説明します。
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 14081daf1f45a84bc8ad19bf0239db1281d9e624
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1d6b43110046f26d8c8070b19587366588eee7b6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449504"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881749"
 ---
-# <a name="performance-benchmarks-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマーク
+# <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマークのテスト結果
 
 この記事では、ボリューム レベルでの Azure NetApp Files のパフォーマンス ベンチマーク テストの結果について説明します。 
 

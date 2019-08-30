@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 06194537a0c0cce3a52510e6f426a9c2904387b2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694343"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847974"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
 
@@ -31,9 +31,9 @@ ms.locfileid: "68694343"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 詳細については、「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md)」を参照してください。
+* Azure Machine Learning ワークスペース。 詳細については、「[Azure Machine Learning service ワークスペースを作成する](how-to-manage-workspace.md)」を参照してください。
 
-* Azure Machine Learning SDK がインストールされた Python 開発環境。 詳細については、ワークスペースの作成に関する記事の「[Python SDK](setup-create-workspace.md#sdk)」のセクションを参照してください。
+* Azure Machine Learning SDK がインストールされた Python 開発環境。 詳細については、[Azure Machine Learning Web サービス](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関するページを参照してください。  
 
 * GPU を使用する登録済みのモデル。
 
@@ -48,7 +48,7 @@ ms.locfileid: "68694343"
 既存のワークスペースに接続するには、次のコードを使用します。
 
 > [!IMPORTANT]
-> このコード スニペットでは、ワークスペースの構成が現在のディレクトリまたはその親に保存されていることを想定しています。 ワークスペースを作成して、その構成をファイルに保存する方法の詳細については、「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md)」を参照してください。
+> このコード スニペットでは、ワークスペースの構成が現在のディレクトリまたはその親に保存されていることを想定しています。 ワークスペースの作成方法について詳しくは、「[Azure Machine Learning service ワークスペースを作成し、管理する](how-to-manage-workspace.md)」を参照してください。   構成をファイルに保存する方法について詳しくは、「[ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)」を参照してください。
 
 ```python
 from azureml.core import Workspace

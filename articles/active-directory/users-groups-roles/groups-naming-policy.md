@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12bb01abadaf5bc9e7e1b221763ae38890922145
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734780"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013426"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory での Office 365 グループに対する名前付けポリシーの強制
 
@@ -78,7 +78,7 @@ ms.locfileid: "66734780"
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal で名前付けポリシーを構成する
 
-1. ユーザー管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. 全体管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]** を選択し、 **[名前付けポリシー]** を選択して [名前付けポリシー] ページを開きます。
 
     ![管理センターで [名前付けポリシー] ページを開く](./media/groups-naming-policy/policy.png)

@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 07/26/2019
 ms.author: larryfr
-ms.openlocfilehash: d59482c04c4875cb6b17ceb405e9d3ab97a741d6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565147"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68729350"
 ---
 `deploymentconfig.json` ドキュメントのエントリは、[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
 
@@ -24,7 +24,8 @@ ms.locfileid: "68565147"
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | オートスケーラーがこの web サービスに対してメンテナンスを試行する目標使用率 (最大 100%)。 既定値、`70`。 |
 | `dataCollection` | NA | データ収集の構成要素が含まれます。 |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Web サービスに対してモデル データ収集を有効にするかどうか。 既定値、`False`。 |
-| `authEnabled` | `auth_enabled` | Web サービスに対して認証を有効にするかどうか。 既定値、`True`。 |
+| `authEnabled` | `auth_enabled` | Web サービスに対してキー認証を有効にするかどうかを指定します。 `tokenAuthEnabled` と `authEnabled` の両方を `True` にすることはできません。 既定値、`True`。 |
+| `tokenAuthEnabled` | `token_auth_enabled` | Web サービスに対してトークン認証を有効にするかどうかを指定します。 `tokenAuthEnabled` と `authEnabled` の両方を `True` にすることはできません。 既定値、`False`。 |
 | `containerResourceRequirements` | NA | CPU およびメモリ エンティティのコンテナー。 |
 | &emsp;&emsp;`cpu` | `cpu_cores` | この Web サービスに割り当てる CPU コアの数。 既定値、`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | この Web サービスに割り当てるメモリの量 (GB 単位)。 既定値、`0.5` |

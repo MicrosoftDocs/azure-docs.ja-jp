@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: iainfou
-ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 923ecae9dc649b8f5cdcfd447b78fdec0805927a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483276"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879162"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインをセキュリティで保護する
 この記事は、マネージド ドメインをセキュリティで保護するときに役に立ちます。 弱い暗号スイートの使用をオフにし、NTLM 資格情報ハッシュの同期を無効にすることができます。
@@ -36,9 +36,12 @@ ms.locfileid: "67483276"
 
 ## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>弱い暗号スイートと NTLM 資格情報ハッシュの同期を無効にする
 次の PowerShell スクリプトを使用して以下のことを行います。
+
 1. マネージド ドメインで NTLM v1 のサポートを無効にする。
 2. オンプレミスの AD からの NTLM パスワード ハッシュの同期を無効にする。
 3. マネージド ドメインで TLS v1 を無効にする。
+
+`Get-AzResource` コマンドで "*Microsoft.AAD/DomainServices* resource doesn't exist (Microsoft.AAD/DomainServices リソースが存在しません)" というエラーを受け取った場合は、[アクセス権を昇格して、すべての Azure サブスクリプションと管理グループを管理できるようにします](../role-based-access-control/elevate-access-global-admin.md)。
 
 ```powershell
 // Login to your Azure AD tenant

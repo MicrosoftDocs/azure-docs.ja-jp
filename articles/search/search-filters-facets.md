@@ -2,19 +2,19 @@
 title: アプリ内の検索ナビゲーション用ファセット フィルター - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 5/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 88171487fd180931d4659390f0db3c8619fb2d62
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a2fe29cf1d7c183aa62e6b86a4b29479d1f34ff8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653452"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649886"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Azure Search でファセット フィルターを作成する方法 
 

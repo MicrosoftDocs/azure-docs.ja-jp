@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6c8f9c98d645f60ea9281d1ca2aa15731c9c1e80
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424119"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955003"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
@@ -34,13 +34,21 @@ Azure Log Analytics エージェント (旧称 Microsoft Monitoring Agent (MMA) 
 
 Linux および Windows 用エージェントは、Azure Monitor サービスに TCP ポート 443 経由で通信します。マシンがファイアウォールまたはプロキシ サーバーを経て接続し、インターネット経由で通信する場合は、必須のネットワーク構成を理解するために以下の要件を確認します。 インターネットに接続するネットワーク上のコンピューターが IT セキュリティ ポリシーで許可されていない場合、[Log Analytics ゲートウェイ](gateway.md)を設定し、エージェントをゲートウェイ経由で Azure Monitor ログに接続するように構成できます。 エージェントは構成情報を受信し、ワークスペースで有効にしたデータ収集ルールおよび監視ソリューションに従って収集されたデータを送信できます。 
 
-System Center Operations Manager 2012 R2 またはそれ以降でコンピューターを監視する場合は、Azure Monitor サービスでマルチホーミングして、[Operations Manager](../../azure-monitor/platform/om-agents.md) によってデータを収集し、サービスに転送し、引き続き監視できます。 Linux コンピューターでは、エージェントには Windows エージェントのような正常性サービス コンポーネントは含まれておらず、代わりに管理サーバーで情報を収集して処理します。 Linux コンピューターは異なる方法によって Operations Manager で監視されるため、Windows エージェント管理システムがするように、構成を受信したり、データを直接収集したり、管理グループを介して転送したりしません。 そのため、Operations Manager に報告する Linux コンピューターではこのシナリオはサポートされません。2 段階で Log Analytics ワークスペースと [Operations Manager 管理グループに報告する](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)ように、Linux コンピューターを構成する必要があります。
+Log Analytics エージェントを使用してデータを収集している場合は、エージェントのデプロイを計画するために次のことを理解しておく必要があります。
 
-Windows エージェントは最大 4 つの Log Analytics ワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
+* Windows エージェントからデータを収集するには、[1 つまたは複数のワークスペースにレポートするように各エージェントを構成](agent-windows.md)できます。これは、System Center Operations Manager 管理グループにレポートしている場合でも同様です。 Windows エージェントでは、最大 4 つのワークスペースを報告できます。
+* Linux エージェントでは、マルチホームがサポートされず、1 つのワークスペースにしかレポートできません。
+
+System Center Operations Manager 2012 R2 以降を使用している場合:
+
+* 各 Operations Manager 管理グループは、[1 つのワークスペースにのみ接続](om-agents.md)できます。
+* 管理グループにレポートしている Linux コンピューターは、Log Analytics ワークスペースに直接レポートするように構成する必要があります。 Linux コンピューターが既にワークスペースに直接レポートしており、それらを Operations Manager で監視する場合は、次の手順に従って、[Operations Manager の管理グループにレポート](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)します。
+* Windows コンピューターに Log Analytics Windows エージェントをインストールし、ワークスペースに統合された Operations Manager と別のワークスペースの両方にレポートさせることができます。
 
 Linux および Windows 用エージェントは、Azure Monitor に接続するためだけでなく、Azure Automation もサポートされており、Hybrid Runbook ワーカー ロールや、[Change Tracking](../../automation/change-tracking.md)、[Update Management](../../automation/automation-update-management.md)、[Azure Security Center](../../security-center/security-center-intro.md) などの他のサービスがホストされます。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
 
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
+
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
 * Windows Server 2019

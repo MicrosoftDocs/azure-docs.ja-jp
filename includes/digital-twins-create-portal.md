@@ -5,15 +5,15 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 08/16/2019
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: e34325094060e31f9915a04c7aabdeee6aa33ef2
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 87599c6e0c4bd4313eac154b4d07110cbe4389a0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012185"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622918"
 ---
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 

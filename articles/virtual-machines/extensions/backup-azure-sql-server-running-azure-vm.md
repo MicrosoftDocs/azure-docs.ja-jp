@@ -85,7 +85,7 @@ Azure Backup では、NSG タグ、プロキシ サーバーの展開、また�
 
 ### <a name="property-values"></a>プロパティ値
 
-EnableAdfsAuthentication | 値/例 | データ型
+名前 | 値/例 | データ型
  --- | --- | ---
 locale | en-us  |  string
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | string

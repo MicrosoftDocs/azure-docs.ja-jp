@@ -4,213 +4,142 @@ description: Azure Active Directory と SafeConnect の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f9aaac2e-cdba-4f01-a57f-2c5c26287085
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/08/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbb94c28d56b0492fe3488d7c9e2e1257a8b9388
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 701e4ef37e9508923409a7ce65991b9174678f4f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60624353"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880203"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>チュートリアル:Azure Active Directory と SafeConnect の統合
+# <a name="tutorial-integrate-safeconnect-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と SafeConnect の統合
 
-このチュートリアルでは、SafeConnect と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、SafeConnect と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と SafeConnect を統合すると、次のことができます。
 
-SafeConnect と Azure AD の統合には、次の利点があります。
+* SafeConnect にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して SafeConnect に自動的にサインインできるようにします。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
 
-- SafeConnect にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に SafeConnect にサインオン (シングル サインオン) できるように、設定が可能です。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-SafeConnect と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-- Azure AD サブスクリプション
-- SafeConnect へのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* SafeConnect でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの SafeConnect の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+
+* SafeConnect では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-safeconnect-from-the-gallery"></a>ギャラリーからの SafeConnect の追加
+
 Azure AD への SafeConnect の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SafeConnect を追加する必要があります。
 
-**ギャラリーから SafeConnect を追加するには、次の手順に従います。**
-
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
-
-    ![Azure Active Directory のボタン][1]
-
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
-
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
-
-    ![[新しいアプリケーション] ボタン][3]
-
-4. 検索ボックスに「**SafeConnect**」と入力し、結果パネルで **[SafeConnect]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
-
-    ![結果一覧の SafeConnect](./media/safeconnect-tutorial/tutorial_safeconnect_addfromgallery.png)
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SafeConnect**」と入力します。
+1. 結果ウィンドウで **[SafeConnect]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、SafeConnect で Azure AD のシングル サインオンを構成し、テストします。
+**B.Simon** というテスト ユーザーを使用して、SafeConnect に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと SafeConnect の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する SafeConnect ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと SafeConnect の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SafeConnect で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
-SafeConnect で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+2. **[SafeConnect SSO の構成](#configure-safeconnect-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[SafeConnect テスト ユーザーの作成](#create-safeconnect-test-user)** - Azure AD の B.Simon にリンクさせるために、対応するユーザーを SafeConnect で作成します。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[SafeConnect のテスト ユーザーの作成](#create-a-safeconnect-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを SafeConnect で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、SafeConnect アプリケーションでシングル サインオンを構成します。
+1. [Azure portal](https://portal.azure.com/) の **SafeConnect** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
-**SafeConnect で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. Azure Portal の **SafeConnect** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
+1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    ![シングル サインオン構成のリンク][4]
+    **[サインオン URL]** ボックスに、`https://portal.myweblogon.com:8443/saml/login` という形式で URL を入力します。
 
-2. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/safeconnect-tutorial/tutorial_safeconnect_samlbase.png)
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
 
-3. **[SafeConnect のドメインと URL]** セクションで、次の手順に従います。
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-    ![[SafeConnect のドメインと URL] のシングル サインオン情報](./media/safeconnect-tutorial/tutorial_safeconnect_url.png)
+1. **[SafeConnect のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-     **[サインオン URL]** ボックスに、「`https://portal.myweblogon.com:8443/saml/login`」と入力します。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-4. **[SAML 署名証明書]** セクションで、 **[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+### <a name="configure-safeconnect-sso"></a>SafeConnect SSO の構成
 
-    ![証明書のダウンロードのリンク](./media/safeconnect-tutorial/tutorial_safeconnect_certificate.png) 
-
-5. **[保存]** ボタンをクリックします。
-
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/safeconnect-tutorial/tutorial_general_400.png)
-
-6. **SafeConnect** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [SafeConnect サポート チーム](mailto:support@impulse.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SafeConnect** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と Azure portal からコピーした適切な URL を [SafeConnect サポート チーム](mailto:support@impulse.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-   ![Azure AD のテスト ユーザーの作成][100]
-
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
-
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
-
-    ![Azure Active Directory のボタン](./media/safeconnect-tutorial/create_aaduser_01.png)
-
-2. ユーザーの一覧を表示するには、 **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックします。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/safeconnect-tutorial/create_aaduser_02.png)
-
-3. **[ユーザー]** ダイアログ ボックスを開くには、 **[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
-
-    ![[追加] ボタン](./media/safeconnect-tutorial/create_aaduser_03.png)
-
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/safeconnect-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
- 
-### <a name="create-a-safeconnect-test-user"></a>SafeConnect テスト ユーザーの作成
-
-このセクションでは、SafeConnect で Britta Simon というユーザーを作成します。  [SafeConnect サポート チーム](mailto:support@impulse.com)と協力して、SafeConnect プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に SafeConnect へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に SafeConnect へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[SafeConnect]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-**SafeConnect に Britta Simon を割り当てるには、次の手順に従います。**
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-2. アプリケーションの一覧で **[SafeConnect]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-    ![アプリケーションの一覧の SafeConnect のリンク](./media/safeconnect-tutorial/tutorial_safeconnect_app.png)  
+### <a name="create-safeconnect-test-user"></a>SafeConnect テスト ユーザーの作成
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+このセクションでは、SafeConnect で Britta Simon というユーザーを作成します。  [SafeConnect サポート チーム](mailto:support@impulse.com)と協力して、SafeConnect プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-    ![[ユーザーとグループ] リンク][202]
-
-4. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ][203]
-
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SafeConnect] タイルをクリックすると、自動的に SafeConnect アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネルで [SafeConnect] タイルをクリックすると、SSO を設定した SafeConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/safeconnect-tutorial/tutorial_general_01.png
-[2]: ./media/safeconnect-tutorial/tutorial_general_02.png
-[3]: ./media/safeconnect-tutorial/tutorial_general_03.png
-[4]: ./media/safeconnect-tutorial/tutorial_general_04.png
-
-[100]: ./media/safeconnect-tutorial/tutorial_general_100.png
-
-[200]: ./media/safeconnect-tutorial/tutorial_general_200.png
-[201]: ./media/safeconnect-tutorial/tutorial_general_201.png
-[202]: ./media/safeconnect-tutorial/tutorial_general_202.png
-[203]: ./media/safeconnect-tutorial/tutorial_general_203.png
-
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

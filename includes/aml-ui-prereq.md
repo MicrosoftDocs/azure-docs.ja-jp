@@ -8,14 +8,14 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 05/06/2019
-ms.openlocfilehash: 43232dd181f9375b3f3eedc74fc499b0a8cc2965
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5313c7be52beed7095bf019f74dcc811147ede77
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181591"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845938"
 ---
-1. [Azure Machine Learning ワークスペースを作成](../articles/machine-learning/service/setup-create-workspace.md#portal)します (まだない場合)。
+1. [Azure Machine Learning service ワークスペースを作成](../articles/machine-learning/service/how-to-manage-workspace.md)します (まだない場合)。
 
 1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  ポータルでワークスペースを見つける方法がわからない場合は、[ワークスペースを探す](../articles/machine-learning/service/how-to-manage-workspace.md#view)方法に関するページを参照してください。
 

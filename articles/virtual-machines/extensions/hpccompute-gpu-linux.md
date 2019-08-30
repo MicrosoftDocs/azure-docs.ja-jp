@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: c15948fd9e9acc1e1efeb536939002f179402d5a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 167780971ec59efd1ca197958798564d1ef2d596
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706715"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092328"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 
@@ -37,7 +36,7 @@ NVIDIA GPU ドライバーを [Windows の N シリーズ VM](hpccompute-gpu-win
 
 この拡張機能では、特定の OS バージョンのドライバー サポートに応じて、次の OS ディストリビューションをサポートしています。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | Linux:Ubuntu | 16.04 LTS、18.04 LTS |
 | Linux:Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6 |
@@ -73,7 +72,7 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 
 ### <a name="properties"></a>properties
 
-| Name | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
@@ -84,7 +83,7 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 
 すべての設定は省略可能です。 既定の動作では、ドライバーのインストールに必要ない場合はカーネルを更新せず、サポートされている最新のドライバーと (必要に応じて) CUDA Toolkit をインストールします。
 
-| Name | 説明 | Default value | 有効な値 | データ型 |
+| 名前 | 説明 | Default value | 有効な値 | データ型 |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | ドライバーのインストールに必要ない場合でも、カーネルを更新します。 | false | true、false | ブール値 |
 | driverVersion | NV: GRID ドライバーのバージョン<br> NC/ND: CUDA Toolkit のバージョン。 選択した CUDA の最新のドライバーが自動的にインストールされます。 | latest | GRID: "430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA: "10.0.130"、"9.2.88"、"9.1.85" | string |

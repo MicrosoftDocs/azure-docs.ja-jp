@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
+ms.date: 08/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4af30a24c5913abec1c2c2287e1b0f145470f42c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607872"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828365"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -34,20 +34,8 @@ Azure for SAP HANA の独自性は、Azure を一線を画すものにしてい�
 
 また、Azure で SAP ワークロード シナリオをホストすると、ID の統合およびシングル サインオンの要件を作成できます。 この状況は、さまざまな SAP コンポーネントおよび SAP のサービスとしてのソフトウェア (SaaS) またはサービスとしてのプラットフォーム (PaaS) のオファーに接続するために Azure Active Directory (Azure AD) を使用した場合に、発生する可能性があります。 Azure AD と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
 
-## <a name="change-log"></a>変更履歴
-
-- [Azure のファイル共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスター化](sap-high-availability-guide-wsfc-file-share.md)での、Azure Site Recovery による記憶域スペース ダイレクトのサポートを反映するための変更
-- [SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)のリリース
-- [Red Hat Enterprise Server の IBM Db2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) に関する新しいガイドのリリース
-- [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines](high-availability-guide-rhel-netapp-files.md) のリリース
-- [SAP HANA (L インスタンス) ネットワーク アーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)の HANA L インスタンス向けに ExpressRoute Fast Path と Global Reach および関連するドキュメントを導入
-- [Azure portal を介した Azure HANA Large Instances の制御](hana-li-portal.md)のリリース
-- [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server にある Azure VM 上の SAP NetWeaver の高可用性](high-availability-guide-suse-netapp-files.md)のリリース
-- 「[Azure NetAppFiles (ANF) BETA への SAP NetWeaver ASCS for SAP HANA のインストール](lama-installation.md)」のリリース
-
-
-
-
+## <a name="changes-to-the-sap-workload-section"></a>SAP ワークロード セクションの変更
+この記事の最後には、SAP on Azure ワークロード セクションでのドキュメントへの変更が記載されています。
 
 
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス)
@@ -132,5 +120,13 @@ SAP コンポーネントへの Azure サービスの統合については、以
 - [Azure Data Factory による SAP HANA と Business Warehouse データの統合](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
+## <a name="change-log"></a>変更履歴
+
+- 2019/08/01:「[Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)」を変更して、SLES 15 固有の変更を統合しました 
+- 2019/07/23:[Azure のファイル共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスター化](sap-high-availability-guide-wsfc-file-share.md)での、Azure Site Recovery による記憶域スペース ダイレクトのサポートを反映するための変更
+- 2019/07/14:[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)のリリース
+- 2019/07/11:HANA Large Instances のリビジョン 4 に対応して、HANA Large Instances に関するさまざまなドキュメントを変更しました
+- 2019/07/09:[Red Hat Enterprise Server の IBM Db2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) に関する新しいガイドのリリース
+- 2019/06/13:[SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines](high-availability-guide-rhel-netapp-files.md) のリリース
 
 

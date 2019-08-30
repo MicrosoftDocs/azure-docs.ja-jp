@@ -7,14 +7,13 @@ metadata:
   description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist
 abstract:
-  description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。 <p/><a href="/azure/search/cognitive-search-concept-intro"><b>コグニティブ検索</b></a>は、インデックス作成、画像ファイルのテキストと特性の検出、構造化されていないテキストの大きなブロック内でのパターンの検索に対して AI 処理を接続する Azure Search の機能です。<p/><a href="/azure/search/knowledge-store-concept-intro"><b>ナレッジ ストア (プレビュー)</b></a> は Cognitive Search を拡張します。 AI エンリッチメントをストレージに保存して、クライアント アプリや下流のプロセスでそれらを表示、再形成、使用できます。 今すぐ<a href="/azure/search/knowledge-store-howto"><b>お試しください</b></a>。
+  description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。 <p/><a href="/azure/search/cognitive-search-concept-intro"><b>コグニティブ検索</b></a>は、インデックス作成、画像ファイルのテキストと特性の検出、構造化されていないテキストの大きなブロック内でのパターンの検索に対して AI 処理を接続する Azure Search の機能です。 AI プロセスは Cognitive Services によってサポートされます。<p/><a href="/azure/search/knowledge-store-concept-intro"><b>ナレッジ ストア (プレビュー)</b></a> によりコグニティブ検索が拡張され、AI エンリッチメントはストレージに保存されます。それらは、クライアント アプリや下流のプロセスで表示、再形成、使用できます。
   aside:
     image:
       alt: null

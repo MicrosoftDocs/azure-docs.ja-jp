@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b8ce08c662e1615b62160e0c681a2fe8dbcb2be1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 40b3e0260e08ab5a8870c726042d06d80393fb15
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447035"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849081"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="onboard-to-app-center"></a>App Center へのオンボード
 
-モバイル アプリで Application Insights を使用する前に、アプリを [App Center](https://docs.microsoft.com/mobile-center/) にオンボードする必要があります。 Application Insights は、モバイル アプリから直接テレメトリを受信しません。 その代わりに、アプリが App Center にカスタム イベント テレメトリを送信します。 App Center は、イベントを受信すると、これらのカスタム イベントのコピーを Application Insights に継続的にエクスポートします。
+モバイル アプリで Application Insights を使用する前に、アプリを [App Center](https://docs.microsoft.com/mobile-center/) にオンボードする必要があります。 Application Insights は、モバイル アプリから直接テレメトリを受信しません。 その代わりに、アプリが App Center にカスタム イベント テレメトリを送信します。 App Center は、イベントを受信すると、これらのカスタム イベントのコピーを Application Insights に継続的にエクスポートします。 (このことは、テレメトリが Application Insights に直接送信される [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS) または [React Native プラグイン](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native)には適用されません)。
 
 アプリをオンボードするには、アプリでサポートされている各プラットフォームの App Center クイックスタートに従ってください。 プラットフォームごとに個別の App Center インスタンスを作成します。
 

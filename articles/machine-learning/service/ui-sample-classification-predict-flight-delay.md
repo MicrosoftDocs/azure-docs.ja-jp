@@ -1,21 +1,21 @@
 ---
-title: '分類: フライトの遅延を予測する'
+title: 'ビジュアル インターフェイスの例 #6: フライト遅延を予測するための分類'
 titleSuffix: Azure Machine Learning service
 description: この記事では、ドラッグアンドドロップのビジュアル インターフェイスとカスタム R コードを利用してフライトの遅延を予測する機会学習モデルを構築する方法を紹介します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 773e55fe4b5ca5acf27ba1765e5a16075f625187
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607383"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990019"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>サンプル 6 - 分類:R を利用してフライトの遅延を予測する
 

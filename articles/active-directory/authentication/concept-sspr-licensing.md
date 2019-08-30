@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b74e6a9f1d83798b557c48eb78242d70e85dfc
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612626"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622714"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 
-Azure Active Directory (Azure AD) には、Free、Basic、Premium P1、および Premium P2 の 4 つのエディションが用意されています。 セルフサービスのパスワード リセットには、その構成要素として、変更、リセット、ロック解除、書き戻しなど、Azure AD の各種エディションに用意されているいくつかの異なる機能が存在します。 この記事では、その相違点について説明します。 各 Azure AD エディションに備わっている機能の詳細は、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory/)でご覧いただけます。
+Azure Active Directory (Azure AD) には、いくつかのエディションがあります。それは、Free、Premium P1、および Premium P2 です。 セルフサービスのパスワード リセットには、その構成要素として、変更、リセット、ロック解除、書き戻しなど、Azure AD の各種エディションに用意されているいくつかの異なる機能が存在します。 この記事では、その相違点について説明します。 各 Azure AD エディションに備わっている機能の詳細は、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory/)でご覧いただけます。
 
 ## <a name="compare-editions-and-features"></a>エディションと機能の比較
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) には、Free、Basic、Premium P1、および
 * クラウド ユーザーに対するセルフサービスのパスワード リセット
    * 私は**クラウド限定ユーザー**で、自分のパスワードを忘れてしまいました。
       * 自分が把握しているパスワードに**リセット**したいと考えています。
-   * この機能は、Azure AD の Basic、Premium P1、または Premium P2、あるいは Microsoft 365 Business に備わっています。
+   * この機能は、Azure AD の Premium P1 または Premium P2、Microsoft 365 Business、Office 365 に備わっています。
 
 * セルフサービスによるパスワードのリセット/変更/ロック解除 (**オンプレミスの書き戻しが可能**)
    * 私は**ハイブリッド ユーザー**です。オンプレミスの Active Directory ユーザー アカウントは、Azure AD Connect を使用して Azure AD アカウントと同期されています。 パスワードを変更したいと思っています/パスワードを忘れてしまいました/ロック アウトされてしまいました。

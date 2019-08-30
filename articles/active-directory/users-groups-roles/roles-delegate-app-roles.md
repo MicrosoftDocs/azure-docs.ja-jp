@@ -1,6 +1,6 @@
 ---
-title: アプリケーション管理者ロールを委任する - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory でアクセス権を付与するためにトールを委任するアプリケーション アクセス管理
+title: アプリケーション管理者の作成および管理のアクセス許可を委任する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory でアプリケーション アクセス管理のアクセス許可を付与する
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,95 +10,99 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469130"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837880"
 ---
-# <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Azure Active Directory でアプリ管理者ロールを委任する
+# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory でアプリ登録のアクセス許可を委任する
 
- Azure AD では、アプリケーション アクセスの管理を組み込みの管理ロールのセットに委任することができます。 グローバル管理者のオーバーヘッドを減らすだけでなく、アプリケーション アクセスのタスクを管理するための特殊な特権を委任すると、セキュリティの体制を強化し、未承認アクセスの可能性を減らすことができます。 委任に関する問題と一般的なガイドラインについては、「[Azure Active Directory での管理の委任](roles-concept-delegation.md)」をご覧ください。
+この記事では、Azure Active Directory (Azure AD) のカスタム ロールでアプリのアクセス許可を使用して、アプリケーション管理のニーズに対応する方法について説明します。 Azure Active Directory (Azure AD) では、アプリケーションの作成と管理のアクセス許可を次の方法で委任できます。
 
-## <a name="delegate-app-administration"></a>アプリの管理を委任する
+- [アプリケーションを作成できるユーザーを制限](#restrict-who-can-create-applications)し、作成されたアプリケーションを管理できるユーザーを制限する。 Azure AD の既定では、すべてのユーザーがアプリケーションを登録し、作成されたアプリケーションのすべての側面を管理できます。 この権限は、選択されたユーザーのみがそのアクセス許可を持つように制限できます。
+- [アプリケーションに 1 人以上の所有者を割り当てる](#assign-application-owners)。 これは、特定のアプリケーションについての Azure AD 構成のすべての側面を管理する能力を一部のユーザーに付与するための簡単な方法です。
+- すべてのアプリケーションに対する Azure AD での構成を管理するためのアクセス権を付与する、[組み込みの管理ロールを割り当てる](#assign-built-in-application-admin-roles)。 これは、IT エキスパートに、幅広いアプリケーション構成を管理するためのアクセス権を付与しつつ、アプリケーション構成に関連しない Azure AD の他の部分を管理するためのアクセス権を付与しないようにするための推奨される方法です。
+- 非常に限定されたアクセス許可を定義する[カスタム ロールを作成](#create-and-assign-a-custom-role-preview)し、それを一部のユーザーに、限定された所有者として 1 つのアプリケーションのスコープに対して割り当てるか、または制限付き管理者としてディレクトリ スコープ (すべてのアプリケーション) で割り当てます。
 
-以下のロールでは、アプリケーションの登録、シングル サインオンの設定、ユーザーおよびグループの割り当てを管理し、委任されたアクセス許可とアプリケーションのアクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意するためのアクセス許可が付与されます。 唯一の違いは、アプリケーション管理者ロールでは、アプリケーション プロキシの設定を管理するアクセス許可も付与されることです。 いずれのロールでも、条件付きアクセスの設定の管理権限は付与されません。
-> [!IMPORTANT]
-> このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID のこのような偽装は、ユーザーが Azure AD の他のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 このロールに割り当てられたユーザーは、アプリケーションを偽装している間に、ユーザーや他のオブジェクトを作成または更新する可能性があります。
+上記の方法のいずれかを使用してアクセス権を付与することを検討することは、2 つの理由から重要です。 まず、管理タスクを実行する機能を委任することで、グローバル管理者のオーバーヘッドを減らすことができます。 2 番目の理由として、制限付きアクセス許可を使用することでセキュリティ体制が改善され、未承認アクセスの可能性が減少します。 委任に関する問題と一般的なガイドラインについては、「[Azure Active Directory での管理の委任](roles-concept-delegation.md)」をご覧ください。
 
-Azure portal でアプリケーションのアクセスを管理する権限を付与するには:
+## <a name="restrict-who-can-create-applications"></a>アプリケーションを作成できるユーザーを制限する
 
-1. テナントのグローバル管理者ロールに適したアカウントを使用して、[Azure AD テナント](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
-2. 十分なアクセス許可がある場合は、[ロールと管理者のページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)を開きします。
-3. 次のロールのいずれかを開いて、そのメンバー割り当てを表示します。
-   * **アプリケーション管理者**
-   * **クラウド アプリケーション管理者**
-4. ロールの **[メンバー]** ページで、 **[メンバーの追加]** を選択します。
-5. ロールに追加する 1 人以上のメンバーを選択します。 <!--Members can be users or groups.-->
+Azure AD の既定では、すべてのユーザーがアプリケーションを登録し、作成されたアプリケーションのすべての側面を管理できます。 また、すべてのユーザーは、アプリがユーザーの代わりに会社のデータにアクセスすることに同意することができます。 グローバル スイッチを [いいえ] に設定し、選択したユーザーをアプリケーション開発者ロールに追加することで、これらのアクセス許可を選択的に付与することができます。
 
-これらのロールの説明は、「[使用可能なロール](directory-assign-admin-roles.md#available-roles)」で見ることができます。
+### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>アプリケーション登録またはアプリケーションへの同意を作成する既定の機能を無効にするには
 
-## <a name="delegate-app-registration"></a>アプリの登録を委任する
+1. Azure AD 組織のグローバル管理者ロールに適したアカウントを使用して、Azure AD 組織にサインインします。
+1. 十分なアクセス許可を取得したら、次の一方または両方を設定します。
 
-既定では、すべてのユーザーがアプリケーションの登録を作成できますが、アプリケーションの登録を作成するアクセス許可、またはアプリの承認に同意するアクセス許可を、選択的に付与することができます。
+    -  [組織の [ユーザー設定] ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)で、 **[ユーザーはアプリケーションを登録できる]** 設定を [いいえ] に設定します。 これにより、ユーザーがアプリケーション登録を作成する既定の機能が無効になります。
+    -  [エンタープライズ アプリケーションのユーザー設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)で、 **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** 設定を [いいえ] に設定します。 これにより、アプリケーションがユーザーの代わりに会社のデータにアクセスすることにユーザーが同意する既定の機能が無効になります。
 
-1. テナントのグローバル管理者ロールに適したアカウントを使用して、[Azure AD テナント](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
-2. 十分なアクセス許可を取得したら、次の一方または両方を設定します。
-   * [テナントの [ユーザー設定] ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)で、 **[ユーザーはアプリケーションを登録できる]** を [いいえ] に設定します。
-   * [エンタープライズ アプリケーションのユーザー設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)で、 **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を [いいえ] に設定します。
-3. 次に、必要に応じて、このアクセス許可を必要とするユーザーを、アプリケーション開発者ロールのメンバーとして割り当てます。
+### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>既定の機能が無効になっている場合にアプリケーションを作成して同意するための個々のアクセス許可を付与する
 
-ユーザーがアプリケーションを登録すると、そのユーザーはアプリケーションの最初の所有者として自動的に追加されます。
+**[ユーザーはアプリケーションを登録できる]** 設定が [いいえ] に設定されている場合に、アプリケーション登録を作成できる能力を付与するためのアプリケーション開発者ロールを割り当てます。 さらにこのロールでは、 **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** 設定が [いいえ] に設定されている場合に、代わりに同意する権限を付与します。 システム動作として、ユーザーが新しいアプリケーション登録を作成すると、そのユーザーは最初の所有者として自動的に追加されます。 所有者のアクセス許可は、ユーザーが所有するアプリケーション登録またはエンタープライズ アプリケーションのすべての側面を管理する能力をユーザーに付与します。
 
-## <a name="delegate-app-ownership"></a>アプリの所有権を委任する
+## <a name="assign-application-owners"></a>アプリケーションの所有者を割り当てる
 
-アプリの所有者とアプリの登録所有者は、それぞれ、自分が所有するアプリケーションまたはアプリの登録のみを管理できます。 たとえば、Salesforce アプリケーションに所有者を追加すると、その所有者は、Salesforce へのアクセスと Salesforce の構成を管理できますが、他のアプリケーションについては管理できません。 1 つのアプリが多くの所有者を持つことができ、1 人のユーザーが多くのアプリの所有者になることができます。
+所有者を割り当てることは、特定のアプリケーション登録またはエンタープライズ アプリケーションについての Azure AD 構成のすべての側面を管理する能力を付与するための簡単な方法です。 システム動作として、ユーザーが新しいアプリケーション登録を作成すると、そのユーザーは最初の所有者として自動的に追加されます。 所有者のアクセス許可は、ユーザーが所有するアプリケーション登録またはエンタープライズ アプリケーションのすべての側面を管理する能力をユーザーに付与します。 元の所有者を削除して、追加の所有者を追加することができます。
 
-アプリケーションの所有者は、次のことを行うことができます。
+### <a name="enterprise-application-owners"></a>エンタープライズ アプリケーション所有者
 
-* 名前や、アプリが要求するアクセス許可など、アプリケーションのプロパティを変更する
-* 資格情報を管理する
-* Configure single sign-on
-* ユーザー アクセスを割り当てる
-* 他の所有者を追加または削除する
-* アプリのマニフェストを編集する
-* アプリをアプリ ギャラリーに発行する
+ユーザーは所有者として、シングル サインオン構成、プロビジョニング、ユーザーの割り当てなど、エンタープライズ アプリケーションの組織固有の構成を管理できます。 所有者は、他の所有者を追加または削除することもできます。 全体管理者とは異なり、所有者は、自分が所有するエンタープライズ アプリケーションのみを管理できます。
+
+場合によっては、アプリケーション ギャラリーから作成されたエンタープライズ アプリケーションには、エンタープライズ アプリケーションとアプリケーション登録の両方が含まれます。 これに該当する場合、エンタープライズ アプリケーションに所有者を追加すると、その所有者は対応するアプリケーション登録に所有者として自動的に追加されます。
+
+### <a name="to-assign-an-owner-to-an-enterprise-application"></a>エンタープライズ アプリケーションに所有者を割り当てるには
+
+1. 組織のアプリケーション管理者またはクラウド アプリケーション管理者に適したアカウントを使用して、[Azure AD 組織](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) にサインインします。
+1. 組織の [アプリ登録ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) で、アプリを選択して、アプリの [概要] ページを開きます。
+1.  **[所有者]**   を選択して、アプリの所有者の一覧を表示します。
+1.  **[追加]**   を選択し、アプリに追加する所有者を 1 人以上選択します。
 
 > [!IMPORTANT]
-> このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID のこのような偽装は、ユーザーが Azure AD の他のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 このロールに割り当てられたユーザーは、アプリケーションを偽装している間に、ユーザーや他のオブジェクトを作成または更新する可能性があります。
+> ユーザーおよびサービス プリンシパルは、アプリケーション登録の所有者になることができます。 エンタープライズ アプリケーションの所有者になることができるのはユーザーのみです。 グループはいずれの所有者としても割り当てることはできません。
+>
+> 所有者は、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションは、所有者よりも多くのアクセス許可を持つことができるため、所有者がユーザーまたはサービス プリンシパルとして持つアクセス許可を上回る特権の昇格が可能です。 アプリケーション所有者は、アプリケーションのアクセス許可に応じて、アプリケーションの偽装中にユーザーや他のオブジェクトを作成または更新する可能性があります。
 
-アプリ登録の所有者は、アプリの登録を表示および編集することができます。
+## <a name="assign-built-in-application-admin-roles"></a>組み込みのアプリケーション管理者ロールを割り当てる
 
-<!-- ### To assign an enterprise app ownership role to a user
+Azure AD には、すべてのアプリケーションに対する Azure AD での構成を管理するためのアクセス権を付与する、一連の組み込みの管理者ロールがあります。 これらのロールは、IT エキスパートに、幅広いアプリケーション構成を管理するためのアクセス権を付与しつつ、アプリケーション構成に関連しない Azure AD の他の部分を管理するためのアクセス権を付与しないようにするための推奨される方法です。
 
-1. Sign in to your [Azure AD tenant](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with an account that is the Global Administrator for the tenant.
-2. On the [Roles and administrators page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators), open one of the following roles to see its member assignments:
-  * **Enterprise Application Owner**
-  * **Application Registration Owner**
-3. On the **Members** page for the role, select **Add member**.
-4. Select one or more members to add to the role. -->
+- アプリケーション管理者:このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
+- クラウド アプリケーション管理者:このロールのユーザーは、(アプリケーション プロキシを管理する権限を除き) アプリケーション管理者ロールと同じアクセス許可を持ちます。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 
-### <a name="to-assign-an-owner-to-an-application"></a>アプリケーションに所有者を割り当てるには
+詳細およびこれらのロールの説明については、「 [使用可能なロール](directory-assign-admin-roles.md#available-roles)」を参照してください。
 
-1. テナントのアプリケーション管理者またはクラウド アプリケーション管理者に適したアカウントを使用して、[Azure AD テナント](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
-2. テナントの[アプリ登録ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)で、アプリを選択して、アプリの **[概要]** ページを開きます。
-3. **[所有者]** を選択して、アプリの所有者の一覧を表示します。
-4. **[追加]** を選択し、アプリに追加する所有者を 1 人以上選択します。
+[Azure Active Directory を使用してユーザーにロールを割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)ことに関するハウツーガイドに記載されている手順に従って、アプリケーション管理者またはクラウド アプリケーション管理者のロールを割り当てます。
 
-### <a name="to-assign-an-owner-to-an-application-registration"></a>アプリケーション登録に所有者を割り当てるには
+> [!IMPORTANT]
+> アプリケーション管理者およびクラウド アプリケーション管理者は、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションは、管理者ロールのアクセス許可を上回る特権の昇格となるアクセス許可を持つことができます。 このロールの管理者は、アプリケーションのアクセス許可に応じて、アプリケーションの偽装中にユーザーや他のオブジェクトを作成または更新する可能性があります。
+> いずれのロールでも、条件付きアクセスの設定の管理権限は付与されません。
 
-1. テナントのアプリケーション管理者ロールまたはクラウド アプリケーション管理者ロールに適したアカウントを使用して、[Azure AD テナント](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
-2. 十分なアクセス許可がある場合は、テナントの [[エンタープライズ アプリケーション] ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)で、アプリの登録を選択して開きます。
-3. **[設定]** を選択します。
-4. **[設定]** ページで **[所有者]** を選択し、アプリの所有者の一覧を表示します。
-5. **[所有者の追加]** を選択し、アプリに追加する所有者を 1 人以上選択します。
+## <a name="create-and-assign-a-custom-role-preview"></a>カスタム ロールの作成と割り当て (プレビュー)
+
+カスタム ロールの作成とカスタム ロールの割り当ては別々の手順です。
+
+- [カスタムの*ロール定義*を作成](roles-create-custom.md)し、[あらかじめ設定されている一覧からアクセス許可をその定義に追加](roles-custom-available-permissions.md)します。 これらは、組み込みロールで使用されるものと同じアクセス許可です。
+- [*ロールの割り当て*を作成](roles-assign-powershell.md)し、カスタム ロールを割り当てます。
+
+この分離により、1 つのロール定義を作成し、それを異なる*スコープ*で何度も割り当てることができます。 カスタム ロールは、組織全体のスコープで割り当てることも、単一の Azure AD オブジェクトの場合はそのスコープで割り当てることもできます。 オブジェクト スコープの例としては、単一のアプリ登録があります。 異なるスコープを使用すると、組織内のすべてのアプリ登録に対して同じロール定義を Sally に割り当て、次に Contoso Expense Reports アプリ登録に対してのみ Naveen に割り当てることができます。
+
+アプリケーション管理の委任のためにカスタム ロールを作成して使用する場合のヒント:
+- カスタム ロールは、Azure AD ポータルの最新のアプリ登録ブレードでのみアクセス権を付与します。 レガシ アプリ登録ブレードではアクセス権は付与されません。
+- [Azure AD 管理ポータルへのアクセスを制限する] ユーザー設定が [はい] に設定されている場合、カスタム ロールは Azure AD ポータルへのアクセス権を付与しません。
+- ロールの割り当てを使用してユーザーがアクセス権を持っているアプリ登録は、アプリの登録ページの [すべてのアプリケーション] タブにのみ表示されます。 これらは [所有しているアプリケーション] タブには表示されません。
+
+カスタム ロールの基本の詳細については、[カスタム ロールの概要](roles-custom-overview.md)に関するページと、[カスタム ロールの作成](roles-create-custom.md)方法と[ロールの割り当て](roles-assign-powershell.md)方法に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure AD 管理者ロールのリファレンス](directory-assign-admin-roles.md)
+- [アプリケーション登録のサブタイプとアクセス許可](roles-custom-available-permissions.md)
+- [Azure AD 管理者ロールのリファレンス](directory-assign-admin-roles.md)

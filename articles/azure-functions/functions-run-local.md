@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: cee91de9e0a5d75be258705f636248a6a6213664
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444049"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096152"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -93,7 +92,7 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 次の手順では [APT ](https://wiki.debian.org/Apt)を使用して、Ubuntu/Debian Linux ディストリビューションに Core Tools をインストールします。 他の Linux ディストリビューションについては、[Core Tools の readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux) に関するページを参照してください。
 
-1. 次のコマンドを使って、Microsoft プロダクト キーを信頼済みとして登録します。
+1. パッケージの整合性を検証するには、Microsoft パッケージ リポジトリの GPG キーをインストールします。
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -135,15 +134,19 @@ func init MyFunctionProj
 ```
 
 プロジェクト名を指定すると、その名前の新しいフォルダーの作成と初期化が実行されます。 それ以外の場合は、現在のフォルダーが初期化されます。  
-バージョン 2.x では、コマンドを実行するときにプロジェクトのランタイムを選択する必要があります。 JavaScript 関数を開発する場合は、**node** を選択します。
+バージョン 2.x では、コマンドを実行するときにプロジェクトのランタイムを選択する必要があります。 
 
 ```output
 Select a worker runtime:
 dotnet
 node
+python (preview)
+powershell (preview)
 ```
 
-上/下方向キーを使用して言語を選択し、Enter キーを押します。 出力は、次の JavaScript プロジェクトの例のようになります。
+上/下方向キーを使用して言語を選択し、Enter キーを押します。 JavaScript または TypeScript 関数の開発を計画している場合は、**ノード**を選択し、言語を選択します。 TypeScript には[いくつかの追加要件](functions-reference-node.md#typescript)があります。 
+
+出力は、次の JavaScript プロジェクトの例のようになります。
 
 ```output
 Select a worker runtime: node
@@ -269,15 +272,40 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 ## <a name="start"></a>関数をローカルで実行する
 
-Functions プロジェクトを実行するには、Functions ホストを実行します。 ホストによって、プロジェクトのすべての関数に対するトリガーが有効になります。
+Functions プロジェクトを実行するには、Functions ホストを実行します。 ホストによって、プロジェクトのすべての関数に対するトリガーが有効になります。 
 
-```bash
+### <a name="version-2x"></a>バージョン 2.x
+
+ランタイムのバージョン 2.x では、開始コマンドはプロジェクトの言語によって異なります。
+
+#### <a name="c"></a>C\#
+
+```command
+func start --build
+```
+
+#### <a name="javascript"></a>JavaScript
+
+```command
+func start
+```
+
+#### <a name="typescript"></a>TypeScript
+
+```command
+npm install
+npm start     
+```
+
+### <a name="version-1x"></a>バージョン 1.x
+
+Functions ランタイムのバージョン 1.x では、次の例のように `host` コマンドが必要です。
+
+```command
 func host start
 ```
 
-`host` コマンドは、バージョン 1.x でのみ必要です。
-
-`func host start` では、次のオプションがサポートされています。
+`func start` では、次のオプションがサポートされています。
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
@@ -293,8 +321,6 @@ func host start
 | **`--script-root --prefix`** | 実行または展開される関数アプリのルートへのパスを指定するために使用されます。 これは、サブフォルダーにプロジェクト ファイルを生成するコンパイル済みプロジェクトに使用されます。 たとえば、C# クラス ライブラリ プロジェクトをビルドすると、host.json、local.settings.json、および function.json ファイルが、`MyProject/bin/Debug/netstandard2.0` のようなパスの "*ルート*" サブフォルダーに生成されます。 この場合は、プレフィックスを `--script-root MyProject/bin/Debug/netstandard2.0` と設定します。 これは、Azure で実行する場合の関数アプリのルートです。 |
 | **`--timeout -t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値は20 秒。|
 | **`--useHttps`** | `http://localhost:{port}` ではなく `https://localhost:{port}` にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
-
-C# クラス ライブラリ プロジェクト (.csproj) の場合は、ライブラリの .dll を生成するための `--build` オプションを含める必要があります。
 
 Functions ホストの起動時、HTTP によってトリガーされる関数の URL が出力されます。
 
@@ -314,7 +340,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 関数をローカルでテストするには、[Functions ホストを起動](#start)し、HTTP 要求を使用してローカル サーバーでエンドポイントを呼び出します。 呼び出すエンドポイントは、関数の種類によって異なります。
 
 >[!NOTE]
-> このトピックの例では、cURL ツールを使用して端末またはコマンド プロンプトから HTTP 要求を送信します。 お好みのツールを使用して HTTP 要求をローカル サーバーに送信できます。 Linux ベースのシステムでは既定で cURL ツールを使用できます。 Windows では、最初にダウンロードし、[cURL ツール](https://curl.haxx.se/)をインストールする必要があります。
+> このトピックの例では、cURL ツールを使用して端末またはコマンド プロンプトから HTTP 要求を送信します。 お好みのツールを使用して HTTP 要求をローカル サーバーに送信できます。 Linux ベースのシステムと Windows 10 ビルド 17063 以降では既定で cURL ツールを使用できます。 以前の Windows では、最初に [cURL ツール](https://curl.haxx.se/)をダウンロードし、インストールする必要があります。
 
 関数のテストの全般的な情報については、「[Azure Functions のコードをテストするための戦略](functions-test-a-function.md)」を参照してください。
 
@@ -446,11 +472,25 @@ func deploy
 
 ## <a name="monitoring-functions"></a>関数の監視
 
-関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 また、ローカル コンピューターに実行ログをストリーミングすることもできます。 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
+
+### <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
+
+Azure portal で関数アプリを作成する場合、Application Insights との統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
+### <a name="enable-streaming-logs"></a>ストリーミング ログを有効にする
+
+関数によって生成されているログ ファイルのストリームは、ローカル コンピューター上のコマンド ライン セッションで表示できます。 
+
+#### <a name="native-streaming-logs"></a>ネイティブ ストリーミング ログ
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
+
+この種類のストリーミング ログを使用するには、関数アプリの [Application Insights との統合](#enable-application-insights-integration)を有効にする必要があります。   
+
+
 ## <a name="next-steps"></a>次の手順
 
 Azure Functions Core Tools は[オープン ソースであり、GitHub でホストされています](https://github.com/azure/azure-functions-cli)。  

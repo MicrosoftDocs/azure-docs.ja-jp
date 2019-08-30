@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663465"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827325"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -42,7 +42,7 @@ Hyper-V VM | Azure Migrate Assessment ツールを使用した Hyper-V VM の評
 
 **エージェント** | **詳細**
 --- | ---
-検出エージェント | オンプレミス VM から構成データを収集します。
+検出エージェント | オンプレミスの仮想マシンの構成データを収集します
 評価エージェント | VM のパフォーマンス データを収集するために、オンプレミス環境をプロファイルします。
 移行アダプター | VM のレプリケーションを調整し、VM と Azure 間の通信を調整します。
 移行ゲートウェイ | レプリケートされた VM のデータを Azure に送信します。
@@ -200,8 +200,8 @@ NIC MAC ID (レガシ NIC) | MsvmEmulatedEthernetPortSetting データ | Address
 
 - アプライアンスでは既定で自動更新が有効になっているため、これは自動的に行われます。
 - エージェントを手動で更新するために、この既定の設定を変更できます。
-- 自動更新を無効にするには、HKLM\SOFTWAREMicrosoft\Azure でレジストリ キー Appliance Auto Update を設定します。
-
+- 自動更新を無効にするには、レジストリ エディターで HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance にアクセスし、レジストリ キー "AutoUpdate" を 0 (DWORD) に設定します。
+ 
 ### <a name="set-agent-updates-to-manual"></a>エージェントの更新を手動に設定する
 
 手動で更新する場合は、アプライアンスの古いエージェントごとに **[更新]** ボタンを使用して、アプライアンスのすべてのエージェントを同時に更新してください。 更新設定は、いつでも自動更新に戻すことができます。

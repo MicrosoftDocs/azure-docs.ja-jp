@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 999bffe9650f3d2f2a04dba728a9aa41fa46a6b0
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e7a170eaf74531cf4bd8c28aafaa5873f2459d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593401"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982412"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 
@@ -44,7 +44,7 @@ SAS トークンが生成されたら、URL の末尾に `?sv=<SAS token>` を�
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
-パラメーターの設定について詳しくは、「[SAS parameter considerations](#sas-parameter-considerations)」(SAS パラメーターの考慮事項) と「[Shared Access Signature パラメーター](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#shared-access-signature-parameters)」をご覧ください。
+パラメーターの設定について詳しくは、「[SAS parameter considerations](#sas-parameter-considerations)」(SAS パラメーターの考慮事項) と「[Shared Access Signature パラメーター](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)」をご覧ください。
 
 ![CDN SAS 設定](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 

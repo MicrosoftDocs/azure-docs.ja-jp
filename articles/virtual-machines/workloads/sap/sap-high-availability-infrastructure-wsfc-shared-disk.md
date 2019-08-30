@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: ec976257-396b-42a0-8ea1-01c97f820fa6
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4e107da9d8e5019ba51769d283f3faa34839380
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 63a2a3a68adaa2e389cc2af173c8f75a18fbc36d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709256"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078706"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -295,7 +294,7 @@ _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定�
 
 ASCS/SCS テンプレートは、複数の ASCS/SCS インスタンスをホストする Windows Server フェールオーバー クラスターの作成に使用できる 2 つの仮想マシンをデプロイします。
 
-ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image] or [ASCS/SCS multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md] で、次のパラメーターの値を入力します。
+ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image]または [Managed Disks を使った ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image-md]で、次のパラメーターの値を入力します。
 
 - **[リソース プレフィックス]** : リソース プレフィックスを設定します。これは、デプロイ中に作成されるすべてのリソースのプレフィックスとして使われます。 リソースは 1 つの SAP システムのみに属するわけではないため、リソースのプレフィックスは 1 つの SAP システムの SID ではありません。  プレフィックスは、3 から 6 文字でなければなりません。
 - **[スタックの種類]** :SAP システムのスタックの種類を選びます。 スタックの種類に応じて、Azure Load Balancer には、SAP システムごとに 1 つ (ABAP または Java のみ) または 2 つ (ABAP+ Java) のプライベート IP アドレスがあります。
@@ -333,7 +332,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 データベース テンプレートは、1 つの SAP システムのリレーショナル データベース管理システム (RDBMS) のインストールに使用できる 1 つまたは 2 つの仮想マシンをデプロイします。 たとえば、5 つの SAP システムに ASCS/SCS テンプレートをデプロイする場合は、このテンプレートを 5 回デプロイする必要があります。
 
-データベース マルチ SID テンプレートを設定するには、[データベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image] or [database multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md] で、次のパラメーターの値を入力します。
+データベース マルチ SID テンプレートを設定するには、[データベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image]または [Managed Disks を使ったデータベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image-md]で、次のパラメーターの値を入力します。
 
 - **[Sap System Id]\(SAP システム ID\)** : インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。
 - **[OS Type]\(OS の種類\)** :仮想マシンのオペレーティング システムを選びます。
@@ -350,7 +349,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 アプリケーション サーバー テンプレートは、1 つの SAP システムの SAP アプリケーション サーバー インスタンスとして使用できる 2 つ以上の仮想マシンをデプロイします。 たとえば、5 つの SAP システムに ASCS/SCS テンプレートをデプロイする場合は、このテンプレートを 5 回デプロイする必要があります。
 
-アプリケーション サーバー マルチ SID テンプレートを設定するには、[アプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image] or [application servers multi-SID template  by using Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md] で、次のパラメーターの値を入力します。
+アプリケーション サーバー マルチ SID テンプレートを設定するには、[アプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image]または [Managed Disks を使ったアプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image-md]で、次のパラメーターの値を入力します。
 
   -  **[Sap System Id]\(SAP システム ID\)** : インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。
   -  **[OS Type]\(OS の種類\)** :仮想マシンのオペレーティング システムを選びます。
@@ -374,7 +373,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 1. Azure Portal の **[DNS サーバー]** ウィンドウで、仮想ネットワークの **[DNS サーバー]** オプションが **[カスタム DNS]** に設定されていることを確認します。
 2. ネットワークの種類に基づいて設定を選択します。 詳細については、次のリソースを参照してください。
-   * [企業ネットワーク接続 (クロスプレミス)][planning-guide-2.2]:オンプレミスの DNS サーバーの IP アドレスを追加します。  
+   * [企業ネットワーク接続 (クロスプレミス)][planning-guide-2.2]: オンプレミスの DNS サーバーの IP アドレスを追加します。  
    Azure で実行されている仮想マシンにオンプレミスの DNS サーバーを拡張できます。 その場合、DNS サービスを実行する Azure Virtual Machines の IP アドレスを追加できます。
    * Azure 内の分離された VM デプロイの場合:DNS サーバーとして機能する別の仮想マシンを同じ Virtual Network インスタンスにデプロイします。 DNS サービスを実行するように設定した Azure Virtual Machines の IP アドレスを追加します。
 
@@ -525,7 +524,7 @@ SAP ASCS または SCS インスタンスに別の番号を使う場合は、そ
 1. Azure Portal で、 **\<[\>** SID > -lb-ascs ロード バランサー] **[負荷分散規則]** の順に選びます。
 2. SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
-   * Name
+   * 名前
    * Port
    * バックエンド ポート
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 0d91458c555c819c4bcf97215a712719ebc5eb71
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 92844f0fe3a851802836015a1340983eb4633ed2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588952"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900546"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続アーキテクチャ
 この記事では、Azure Database for PostgreSQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for PostgreSQL データベース インスタンスに転送されるかについて説明します。

@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | ---                     | ---                                                |
     | Subscription               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
-    | EnableAdfsAuthentication                   | *myLoadBalancer*                                   |
+    | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
     | Type          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Basic]** を選択します。                          |

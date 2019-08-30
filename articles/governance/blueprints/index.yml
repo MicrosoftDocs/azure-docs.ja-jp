@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 06/14/2019
   ms.author: dacoulte
 abstract:
   description: Azure Blueprints は、コンポーザブルな成果物 (リソース、ロールベースのアクセス制御、ポリシーをプロビジョニングするための Azure Resource Manager テンプレートなど) を使用して、繰り返し可能な方法でクラウド環境をデプロイおよび更新する際に役立ちます。
@@ -25,6 +25,11 @@ sections:
               src: ./media/portal.svg
             text: Azure Portal
             href: create-blueprint-portal.md
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: create-blueprint-powershell.md
           - image:
               alt: REST
               src: ./media/rest.svg

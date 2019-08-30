@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 535b96a2bb86f1996e6ff0aba19339b55a18ee50
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67147277"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515856"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>ハイブリッド環境の Linux コンピューターを対象とした Log Analytics エージェントの構成
 [Azure Log Analytics](../platform/agent-windows.md) は、詳細な分析と相関のために、データセンターやその他のクラウド環境内の物理的または仮想的な Linux コンピューターから直接データを 1 つのリポジトリに収集することができます。 このクイック スタートでは、いくつかの簡単な手順で、Linux コンピューターを構成し、データを収集する方法を示します。  Azure Linux VM の場合は、次のトピック「[Collect data about Azure Virtual Machines](quick-collect-azurevm.md)」 (Azure Virtual Machines に関するデータを収集する) を参照してください。  
@@ -32,11 +32,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
-1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 
     ![Azure ポータル](media/quick-collect-linux-computer/azure-portal-01.png) 
 
-2. **[作成]** をクリックし、次の項目について選択します。
+2. **[作成]** を選択し、次の項目について選択します。
 
    * 新しい **Log Analytics ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。   
    * 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
@@ -46,7 +46,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
         ![Log Analytics リソース ブレードの作成](media/quick-collect-linux-computer/create-loganalytics-workspace-02.png)<br>  
 
-3. **[Log Analytics ワークスペース]** ウィンドウで必要な情報を入力したら、 **[OK]** をクリックします。  
+3. **[Log Analytics ワークスペース]** ウィンドウで必要な情報を入力したら、 **[OK]** を選択します。  
 
 情報が検証され、ワークスペースが作成されている間、メニューの **[通知]** でその進行状況を追跡することができます。 
 
@@ -55,7 +55,7 @@ Linux 用 Log Analytics エージェントをインストールする前に、Lo
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure Portal の左上隅にある **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、前の手順で作成した *DefaultLAWorkspace* を選択します。
 3. **[詳細設定]** を選択します。
 
@@ -107,23 +107,23 @@ Linux コンピューターと Log Analytics との通信をプロキシ サー�
 Log Analytics は、イベントを Linux Syslog から収集でき、長期分析およびレポートのために指定されたパフォーマンス カウンターからも収集できます。また、特定の条件が検出された場合はアクションを実行できます。  まず、以下の手順に従って、Linux Syslog およびいくつかの一般的なパフォーマンス カウンターからのイベント収集を構成します。  
 
 1. **[Syslog]** を選択します。  
-2. イベント ログを追加するには、ログの名前を入力します。 「**Syslog**」と入力し、プラス記号 **+** をクリックします。  
+2. イベント ログを追加するには、ログの名前を入力します。 「**Syslog**」と入力し、プラス記号 **+** を選択します。  
 3. テーブルで、重大度の **[情報]** 、 **[通知]** および **[デバッグ]** の各チェック ボックスをオフにします。 
-4. ページの上部にある **[保存]** をクリックして構成を保存します。
+4. ページの上部にある **[保存]** を選択して構成を保存します。
 5. **[Linux パフォーマンス データ]** を選択して、Linux コンピューターでのパフォーマンス カウンターの収集を有効にします。 
-6. 新しい Log Analytics ワークスペースの Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。 
+6. 新しい Log Analytics ワークスペースの Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれの横には、チェック ボックスが表示されます。 
 
     ![既定の Windows パフォーマンス カウンターが選択されている状態](media/quick-collect-linux-computer/linux-perfcounters-default.png)
     
-    **[選択したパフォーマンス カウンターを追加する]** をクリックします。 カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。
+    **[選択したパフォーマンス カウンターを追加する]** を選択します。 カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。
 
-7. ページの上部にある **[保存]** をクリックして構成を保存します。
+7. ページの上部にある **[保存]** を選択して構成を保存します。
 
 ## <a name="view-data-collected"></a>収集されたデータを表示する
 これでデータ収集は有効になりました。次は、簡単なログ検索の例を実行して、ターゲット コンピューターのデータを表示してみましょう。  
 
 1. Azure Portal で Log Analytics に移動し、前の手順で作成したワークスペースを選択します。
-2. **[ログ検索]** タイルをクリックし、[ログ検索] ウィンドウのクエリ フィールドに「`Perf`」と入力してから Enter キーを押すか、クエリ フィールドの右側にある検索ボタンをクリックします。
+2. **[ログ検索]** タイルを選択し、[ログ検索] ウィンドウのクエリ フィールドに「`Perf`」と入力してから Enter キーを押すか、クエリ フィールドの右側にある検索ボタンを選択します。
 
     ![Log Analytics のログ検索クエリの例](media/quick-collect-linux-computer/log-analytics-portal-queryexample.png)
 
@@ -138,7 +138,7 @@ Log Analytics は、イベントを Linux Syslog から収集でき、長期分�
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
-ワークスペースを削除するには、作成した Log Analytics ワークスペースを選択し、リソース ページで **[削除]** をクリックします。
+ワークスペースを削除するには、作成した Log Analytics ワークスペースを選択し、リソース ページで **[削除]** を選択します。
 
 ![Log Analytics リソースを削除する](media/quick-collect-linux-computer/log-analytics-portal-delete-resource.png)
 

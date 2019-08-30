@@ -1,5 +1,5 @@
 - name: Azure Analysis Services のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: Azure Analysis Services とは

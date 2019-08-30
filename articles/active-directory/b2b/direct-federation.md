@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 08/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 113e178d39ec776b63a0b38c55035f3493586ea2
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f3aea108ed87debac56b18b5959d492f2bcb291d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233867"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853596"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 |     |
@@ -46,7 +46,7 @@ ms.locfileid: "68233867"
 ## <a name="limitations"></a>制限事項
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD での DNS 検証済みドメイン
-直接フェデレーションは、Azure AD での DNS 検証の***対象外***であるドメインに対してのみ使用できます。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントに対してのみ使用できます。理由は、それらが DNS で検証されないためです。
+フェデレーションを行うドメインは、Azure AD で DNS 検証済み***でない***ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
 ### <a name="authentication-url"></a>認証 URL
 直接フェデレーションをポリシーで使用できるのは、認証 URL のドメインがターゲット ドメインと一致する場合か、認証 URL がこれらの許可されている ID プロバイダーのうちの 1 つである場合のみです (この一覧は変更される場合があります)。
 -   accounts.google.com
@@ -66,7 +66,7 @@ ID プロバイダーの設定でメタデータ URL を指定した場合、署
 現在のところ、最大 1000 のフェデレーション リレーションシップがサポートされています。 この制限には、[内部フェデレーション](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)と直接フェデレーションの両方が含まれます。
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>アンマネージド (電子メールで検証) テナントが存在するドメインとの直接フェデレーションを設定することはできますか。 
-はい。 ドメインが検証されておらず、テナントで[管理者の引き継ぎ](../users-groups-roles/domains-admin-takeover.md)が実施されていない場合は、直接フェデレーションを設定することができます。 アンマネージドまたは電子メールで検証済みのテナントは、ユーザーが B2B の招待を利用したとき、または現時点で存在しないドメインを使用して Azure AD のセルフサービス サインアップを実行したときに作成されます。 これらのドメインとの直接フェデレーションを設定することができます。 Azure portal 上で、または PowerShell を使用して、DNS で検証済みのドメインとの直接フェデレーションを設定しようとすると、エラーが表示されます。
+はい。 ドメインが検証されておらず、テナントで[管理者の引き継ぎ](../users-groups-roles/domains-admin-takeover.md)が実施されていない場合は、そのドメインとの直接フェデレーションを設定することができます。 アンマネージドまたは電子メールで検証済みのテナントは、ユーザーが B2B の招待を利用したとき、または現時点で存在しないドメインを使用して Azure AD のセルフサービス サインアップを実行したときに作成されます。 これらのドメインとの直接フェデレーションを設定することができます。 Azure portal 上で、または PowerShell を使用して、DNS で検証済みのドメインとの直接フェデレーションを設定しようとすると、エラーが表示されます。
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>直接フェデレーションと電子メールのワンタイム パスコード認証の両方が有効な場合、どちらの方法が優先されますか。
 取引先組織との直接フェデレーションが確立すると、その組織に属する新しいゲスト ユーザーに対して、電子メールのワンタイム パスコード認証よりも直接フェデレーションが優先されます。 直接フェデレーションを設定する前に、ゲスト ユーザーがワンタイム パスコード認証を使用して招待を利用した場合、それらのゲスト ユーザーは引き続きワンタイム パスコード認証を使用することになります。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>直接フェデレーションは、部分的に同期されたテナントに起因するサインインの問題に対応していますか。

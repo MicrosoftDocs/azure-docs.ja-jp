@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 9a7c186f7c5fb46078eaa5729e79fdcc256ecc6d
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460211"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949883"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -453,7 +453,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>Kudu を使用する
-1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
+1. [https://aka.ms/MFASetup](`https://<function_app_name>.scm.azurewebsites.net`) にアクセスします。
 
 2. **[デバッグ コンソール]**  >  **[CMD]** をクリックします。
 
@@ -584,20 +584,44 @@ Visual Studio Code で TypeScript 関数アプリを作成するには、関数�
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
+Core Tools の使用に関して、TypeScript プロジェクトと JavaScript プロジェクトでは異なる点がいくつかあります。
+
+#### <a name="create-project"></a>Create project
+
 Core Tools を使用して TypeScript 関数アプリ プロジェクトを作成するには、関数アプリを作成するときに TypeScript 言語オプションを指定する必要があります。 これは、次の方法のいずれかで実行できます。
 
 - `func init` コマンドを実行し、言語スタックとして `node` を選択してから `typescript` を選択してください。
 
 - `func init --worker-runtime typescript` コマンドを実行します。
 
-Core Tools を使用して関数アプリのコードをローカルで実行するには、`func host start` ではなく `npm start` コマンドを使用してください。 `npm start` コマンドは次のコマンドと同等です。
+#### <a name="run-local"></a>ローカルで実行する
+
+Core Tools を使用して関数アプリのコードをローカルで実行するには、`func host start` ではなく次のコマンドを使用します。 
+
+```command
+npm install
+npm start
+```
+
+`npm start` コマンドは次のコマンドと同等です。
 
 - `npm run build`
 - `func extensions install`
 - `tsc`
 - `func start`
 
-[`func azure functionapp publish`] コマンドを使用して Azure にデプロイする前に、`npm run build:production` コマンドを実行する必要があります。 このコマンドは、TypeScript ソースファイルから、[`func azure functionapp publish`] を使用してデプロイできる JavaScript ファイルの実稼働可能なビルドを作成します。
+#### <a name="publish-to-azure"></a>Azure に発行する
+
+[`func azure functionapp publish`] コマンドを使用して Azure にデプロイする前に、TypeScript ソース ファイルから JavaScript ファイルの運用対応のビルドを作成します。 
+
+Core Tools を使用し、次のコマンドで TypeScript プロジェクトを準備して発行します。 
+
+```command
+npm run build:production 
+func azure functionapp publish <APP_NAME>
+```
+
+このコマンドでは、`<APP_NAME>` を実際の関数アプリの名前に置き換えます。
 
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 関数に関する考慮事項
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189e4f280e8aba28c4d1af449aa8a3428e303911
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4aa8f9a7c6807a2f9505559ea13fb0b4f410346d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298211"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987164"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>dsregcmd コマンドを使用したデバイスのトラブルシューティング
 
@@ -295,6 +295,9 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 ## <a name="ngc-prerequisite-check"></a>NGC の前提条件チェック
 
 このセクションでは、NGC キーのプロビジョニングのための前提条件チェックを実行します。 
+
+> [!NOTE]
+> ユーザーが既に NGC 資格情報を適切に構成している場合は、dsregcmd /status で NGC の前提条件チェックの詳細が表示されないことがあります。
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>NGC の前提条件チェックの出力例
 

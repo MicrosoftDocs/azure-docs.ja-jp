@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: e7325282c6442a927f47df3e50efbfda481754fd
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667907"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742579"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
@@ -69,7 +69,7 @@ VHD を既存の VM の新しいインスタンス用のディスクまたはデ
 VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
 
 1.  VM のブレードのメニューで、 **[ディスク]** をクリックします。
-2.  VM のオペレーティング システム ディスクを選択し、 **[エクスポート]** をクリックします。
+2.  VM のオペレーティング システム ディスクを選択し、 **[Disk Export]** (ディスク エクスポート) をクリックします。
 3.  **[URL の生成]** をクリックします。
 
     ![URL の生成](./media/download-vhd/export-generate.png)

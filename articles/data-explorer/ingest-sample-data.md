@@ -5,21 +5,21 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: quickstart
+ms.date: 08/12/2019
+ms.openlocfilehash: c803de599f6be98512b15e927c6d15f1c7d95ff1
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759291"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515745"
 ---
-# <a name="ingest-sample-data-into-azure-data-explorer"></a>Azure のデータ エクスプローラーにサンプル データを取り込む
+# <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>クイック スタート:Azure のデータ エクスプローラーにサンプル データを取り込む
 
 この記事では、Azure のデータ エクスプローラー データベースにサンプル データ (負荷) を取り込む方法を示します。 [データを取り込む方法はいくつかあります](ingest-data-overview.md)｡ 今回は、テスト目的に適した基本的なアプローチに注目します。
 
 > [!NOTE]
-> 「[クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)」を終えている場合､サンプル データは既にあります。
+> 「[Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)」を終えている場合、サンプル データは既にあります｡
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,11 +56,6 @@ ms.locfileid: "60759291"
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
-
-> [!div class="nextstepaction"]
-> [クエリを作成する](write-queries.md)
-
-> [!div class="nextstepaction"]
-> [Azure のデータ エクスプローラーへのデータの取り込み](ingest-data-overview.md)
+* [Azure Data Explorer でのデータ インジェスト](ingest-data-overview.md)には、インジェスト メソッドに関する詳細があります。
+* [クイック スタート:Azure Data Explorer](web-query-data.md) の Web UI でデータにクエリを実行します。
+* Kusto クエリ言語で[クエリを記述します](write-queries.md)。

@@ -66,7 +66,11 @@
         - name: コンテナー イメージのロック
           href: container-registry-image-lock.md
         - name: コンテナー イメージの削除
-          href: container-registry-delete.md
+          items:
+            - name: イメージ データの削除 - CLI
+              href: container-registry-delete.md
+            - name: タグとマニフェストの自動消去 (プレビュー)
+              href: container-registry-auto-purge.md
         - name: クラシック レジストリのアップグレード
           href: container-registry-upgrade.md
         - name: ACR webhook の使用

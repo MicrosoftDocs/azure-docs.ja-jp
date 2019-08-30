@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688835"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018978"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -120,6 +120,19 @@ ms.locfileid: "68688835"
 |---|---|---|
 | 自動保護の意図が削除されたか、有効でなくなりました。 | SQL Server インスタンスで自動保護を有効にすると、そのインスタンス内のすべてのデータベースに対して **[バックアップの構成]** のジョブが実行されます。 ジョブの実行中に自動保護を無効にした場合、 **[In-Progress]\(進行中\)** のジョブはこのエラー コードでキャンセルされます。 | 残りすべてのデータベースを保護するために、自動保護をもう一度有効にしてください。 |
 
+### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+24 時間に許容されている操作数の上限に達したため、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 <br> 例: 1 日にトリガーできるバックアップ ジョブの構成数の上限に達した場合、新しい項目に対してバックアップを構成しようとすると、このエラーが表示されます。 | 通常、24 時間経過してから操作を再試行すると、この問題は解決します。 ただし、問題が解決しない場合は、Microsoft サポートにお問い合わせください。
+
+### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 通常、このエラーが発生するのは、ポリシーの変更や自動保護などの大規模な操作が発生した場合です。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決することはできません。実際、Azure Backup サービスでは、対象のすべての項目について内部的に操作が再試行されます。<br> 例: ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。 
+
+
 ## <a name="re-registration-failures"></a>再登録エラー
 
 再登録操作をトリガーする前に、次の兆候が 1 つ以上ないか確認してください。
@@ -150,7 +163,7 @@ ms.locfileid: "68688835"
 
 ファイルの文字列の合計サイズは、ファイル数のみでなく、それらの名前とパスによっても決まります。 データベース ファイルごとに、論理ファイル名と物理パスを取得します。 この SQL クエリを使用できます。
 
-```
+```sql
 SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files mf
                INNER JOIN sys.databases db ON db.database_id = mf.database_id
                WHERE db.name = N'<Database Name>'"
@@ -158,13 +171,13 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 次に、それらを次の形式に調整します。
 
-```
+```json
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
 次に例を示します。
 
-```
+```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
 ```
 
@@ -175,7 +188,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 復元操作時に、データベース ファイルと、ターゲット復元のパスとのマッピングが含まれる JSON ファイルを配置することで、ターゲット復元ファイルのパスをオーバーライドできます。 `database_name.json` ファイルを作成し、*C:\Program Files\Azure Workload Backup\bin\plugins\SQL* の場所に配置します。
 
 このファイルの内容は、次の形式である必要があります。
-```
+```json
 [
   {
     "Path": "<Restore_Path>",
@@ -192,7 +205,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 次に例を示します。
 
-```
+```json
 [
   {
    "Path": "F:\\Data\\testdb2_1546408741449456.mdf",
@@ -209,7 +222,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 前の内容で、次の SQL クエリを使用してデータベース ファイルの論理名を取得できます。
 
-```
+```sql
 SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"

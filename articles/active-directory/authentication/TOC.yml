@@ -25,7 +25,7 @@
       href: concept-authentication-methods.md
     - name: パスワードなしの認証
       href: concept-authentication-passwordless.md
-    - name: 統合された登録
+    - name: セキュリティ情報の登録
       href: concept-registration-mfa-sspr-combined.md
     - name: パスワード リセット
       items:
@@ -103,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: 統合された登録
+    - name: セキュリティ情報の登録
       items:
         - name: 統合された登録の有効化
           href: howto-registration-mfa-sspr-combined.md

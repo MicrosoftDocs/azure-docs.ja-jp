@@ -1,91 +1,90 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Traffic Manager
+### YamlMime:Landing
+title: Traffic Manager のドキュメント
+summary: Azure Traffic Manager の使い方を紹介します。 クイック スタート、チュートリアル、サンプルなどを使用し、受信トラフィックを管理してアプリケーションに最適なパフォーマンスを実現する方法と、Azure または外部のサービス エンドポイントにトラフィックを分散させる方法を紹介します。
 metadata:
-  document_id: null
-  title: Traffic Manager
-  meta.description: 'Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.'
+  title: Traffic Manager のドキュメント
+  description: 最適なアプリケーション パフォーマンスと信頼性のために、Traffic Manager を使用して着信トラフィックをルーティングする方法について説明します。 クイックスタートやチュートリアル、サンプルなどで、Azure または外部サービス エンドポイントに対するトラフィックを管理する方法を紹介します。
   services: traffic-manager
-  author: asudbring
-  manager: twooley
-  layout: LandingPage
   ms.service: traffic-manager
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/28/2019
+  ms.collection: collection
+  author: asudbring
   ms.author: allensu
-abstract:
-  description: Azure Traffic Manager の使い方を紹介します。 クイック スタート、チュートリアル、サンプルなどを使用し、受信トラフィックを管理してアプリケーションに最適なパフォーマンスを実現する方法と、Azure または外部のサービス エンドポイントにトラフィックを分散させる方法を紹介します。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Traffic Manager を使用してサービス エンドポイントに対する Web トラフィックを管理する方法を説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure ポータル
-            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile-powershell
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Traffic Manager で利用できるさまざまなルーティング方法に基づいてトラフィックをルーティングする方法を紹介します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">エンドポイントの地理的な場所に基づいてトラフィックをルーティングする</a>
-          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">トラフィックをルーティングして待ち時間を削減する</a>
-          - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">一定のエンドポイントにトラフィックを分散させる</a>
-          - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">優先エンドポイントにトラフィックをルーティングする</a>
-          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">エンドポイントに重み付けしてトラフィックを制御する</a>
-          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">ユーザーのサブネットに基づくトラフィックのルーティング</a>
-  - title: 無料の Pluralsight ビデオ トレーニング
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 管理者
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure ソリューション アーキテクト
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: AWS 管理者向け Azure 管理
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 一般的なタスクのサンプル スクリプトです。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/traffic-manager/cli-samples">Azure CLI</a>
-          - html: <a href="/azure/traffic-manager/powershell-samples">PowerShell</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>'
-          - title: Languages
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/trafficmanager/">REST API リファレンス</a></p>
+  ms.date: 08/19/2019
+  ms.openlocfilehash: e0990e15a10d18d836daddc1d5fba83af95948d8
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70051973"
+landingContent:
+- title: Traffic Manager の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Traffic Manager について
+      url: traffic-manager-overview.md
+  - linkListType: concept
+    links:
+    - text: Traffic Manager のルーティング方法
+      url: traffic-manager-routing-methods.md
+  - linkListType: learn
+    links:
+    - text: サービスの可用性とデータの局所性を高める
+      url: https://docs.microsoft.com/learn/modules/distribute-load-with-traffic-manager/
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal を使用した Traffic Manager プロファイルの作成
+      url: quickstart-create-traffic-manager-profile.md
+  - linkListType: tutorial
+    links:
+    - text: Web サイトの応答性を向上させる
+      url: tutorial-traffic-manager-improve-website-response.md
+    - text: 地理的トラフィック ルーティング方法を構成する
+      url: traffic-manager-configure-geographic-routing-method.md
+    - text: 重み付けによるトラフィック ルーティング方法を構成する
+      url: traffic-manager-configure-weighted-routing-method.md
+    - text: 優先順位によるトラフィック ルーティング方法を構成する
+      url: traffic-manager-configure-priority-routing-method.md
+    - text: ユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
+      url: tutorial-traffic-manager-subnet-routing.md
+- title: 管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 入れ子になった Traffic Manager プロファイル
+      url: traffic-manager-nested-profiles.md
+    - text: Traffic Manager エンドポイント
+      url: traffic-manager-endpoint-types.md
+    - text: Traffic Manager エンドポイントの監視
+      url: traffic-manager-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: エンドポイントの追加、削除、有効化、無効化
+      url: traffic-manager-manage-endpoints.md
+    - text: Traffic Manager プロファイルの管理
+      url: traffic-manager-manage-profiles.md
+    - text: Azure で負荷分散サービスを使用する
+      url: traffic-manager-load-balancing-azure.md
+    - text: 会社のインターネット ドメインで Azure Traffic Manager ドメインが参照されるようにする
+      url: traffic-manager-point-internet-domain.md
+    - text: パフォーマンスに関する考慮事項
+      url: traffic-manager-performance-considerations.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 診断ログの有効化
+      url: traffic-manager-diagnostic-logs.md
+    - text: 機能低下状態のトラブルシューティング
+      url: traffic-manager-troubleshooting-degraded.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.trafficmanager/?view=azps-2.5.0
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/network/traffic-manager?view=azure-cli-latest

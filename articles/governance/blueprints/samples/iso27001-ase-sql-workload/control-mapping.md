@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 59e47c448f58235114c8fb3147637b77dd5fcf23
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: de043e682fea5cb629a127763515b162c3ad4943
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226059"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515927"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール マッピング
 
@@ -118,13 +118,13 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 - \[プレビュー\]:ストレージ アカウントでの BLOB 暗号化の欠落の監査
 - \[プレビュー\]:VM 拡張機能をデプロイして、Windows VM で暗号化を元に戻せる状態でパスワードが保存されないことを監査
 - \[プレビュー\]:Windows VM で暗号化を元に戻せる状態でパスワードが保存されないことの監査
-- \[プレビュー\]:暗号化されていない SQL データベースの Azure Security Center での監視
 - \[プレビュー\]:暗号化されていない VM ディスクの Azure Security Center での監視
 - Automation アカウント変数の暗号化が有効であることの監査
 - Redis Cache に対してセキュリティで保護された接続のみが有効であることの監査
 - ストレージ アカウントへの安全な転送の監査
 - Service Fabric で ClusterProtectionLevel プロパティが EncryptAndSign に設定されていることの監査
 - Transparent Data Encryption の状態の監査
+- SQL データベースで Transparent Data Encryption を有効にする必要がある
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 イベント ログ
 
@@ -135,9 +135,9 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 - \[プレビュー\]:VMSS の Dependency Agent デプロイの監査 - VM イメージ (OS) が一覧にない
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
-- \[プレビュー\]:未監査の SQL データベースの Azure Security Center での監視
 - 診断設定の監査
 - SQL サーバー レベルの監査設定の監査
+- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 
 ## <a name="a1243-administrator-and-operator-logs"></a>A.12.4.3 管理者とオペレーターのログ
 
@@ -147,9 +147,9 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 - \[プレビュー\]:VMSS の Dependency Agent デプロイの監査 - VM イメージ (OS) が一覧にない
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
-- \[プレビュー\]:未監査の SQL データベースの Azure Security Center での監視
 - 診断設定の監査
 - SQL サーバー レベルの監査設定の監査
+- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 
 ## <a name="a1244-clock-synchronization"></a>A.12.4.4 時計の同期
 
@@ -159,9 +159,9 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 - \[プレビュー\]:VMSS の Dependency Agent デプロイの監査 - VM イメージ (OS) が一覧にない
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
-- \[プレビュー\]:未監査の SQL データベースの Azure Security Center での監視
 - 診断設定の監査
 - SQL サーバー レベルの監査設定の監査
+- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 
 ## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 運用システムへのソフトウェアのインストール
 

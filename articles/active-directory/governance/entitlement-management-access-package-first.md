@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 76ba284ec1a30322a24c762a1829b399f2583c6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489168"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032924"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>チュートリアル:Azure AD エンタイトルメント管理 (プレビュー) で最初のアクセス パッケージを作成する
 
@@ -44,7 +44,9 @@ ms.locfileid: "68489168"
 > * 内部ユーザーがどのようにしてアクセス パッケージを要求できるかを示す
 > * アクセス要求を承認する
 
-Azure AD Premium P2 または Enterprise Mobility + Security E5 ライセンスをお持ちでない場合は、無料の [Enterprise Mobility + Security E5 Trial](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1) を作成してください。
+最初のアクセス パッケージの作成など、Azure Active Directory のエンタイトルメント管理をデプロイするプロセスのステップバイステップのデモンストレーションについては、次のビデオを参照してください。
+
+>[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,6 +54,8 @@ Azure AD のエンタイトルメント管理 (プレビュー) を使用する�
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5 ライセンス
+
+Azure AD Premium P2 または Enterprise Mobility + Security E5 ライセンスをお持ちでない場合は、無料の [Enterprise Mobility + Security E5 Trial](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1) を作成してください。
 
 ## <a name="step-1-set-up-users-and-group"></a>手順 1:ユーザーとグループを設定する
 

@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: ExpressRoute Global Reach について
       href: expressroute-global-reach.md
+    - name: Azure をパブリック クラウドに接続する
+      href: expressroute-connect-azure-to-public-cloud.md
     - name: バックエンド接続の相互運用性
       items:
         - name: 前書きとテスト セットアップ

@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: d78c640f4269c799d3d371e6dd9db477faf96694
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: faad0a0166c1b11f51f814bb6ce3351d7a017239
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807404"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900022"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
 
@@ -62,6 +62,9 @@ Resource Graph を使用するためには、最低限、照会したいリソ�
 
 > [!NOTE]
 > Resource Graph では、プリンシパルがログイン中に利用できるサブスクリプションが使用されます。 アクティブなセッション中に追加された新しいサブスクリプションのリソースを表示するには、プリンシパルがコンテキストを更新する必要があります。 ログアウトしてから再度ログインすると、このアクションが自動的に実行されます。
+
+Azure CLI と Azure PowerShell はユーザーがアクセスできるサブスクリプションを使用します。 REST API を直接使用すると、サブスクリプションの一覧がユーザーごとに提供されます。 一覧内のいずれかのサブスクリプションにユーザーがアクセスできる場合は、ユーザーがアクセス権を持っているサブスクリプションに対するクエリ結果が返されます。 この動作は、[リソース グループ - 一覧](/rest/api/resources/resourcegroups/list)を呼び出す場合と同じです \- アクセス権を持っているリソース グループが取得されますが、この結果が部分的な可能性があるということは示されません。
+ユーザーに適切な権限があるサブスクリプションがサブスクリプション一覧にない場合の応答は、_403_ (禁止) です。
 
 ## <a name="throttling"></a>Throttling
 

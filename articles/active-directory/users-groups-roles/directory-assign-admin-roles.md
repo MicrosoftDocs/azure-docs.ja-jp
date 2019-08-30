@@ -9,23 +9,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 08/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d3da81fabf55bc0c3944f0c03829dee4fcce46
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: a4d692110a304cbfbbfda69bb2b10e3a065b2450
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304409"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851524"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
 Azure Active Directory (Azure AD) を使用して、特権が低いロールで ID のタスクを管理する限定された管理者を指定できます。 ユーザーの追加または変更、管理ロールの割り当て、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理などの目的で管理者を割り当てることができます。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
 
-全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 管理者ロールを委任できるのは全体管理者と特権ロール管理者だけです。 ビジネスに対するリスクを軽減するには、このロールを、社内の少数のユーザーにのみ割り当てることをお勧めします。
+## <a name="limit-the-use-of-global-administrator"></a>グローバル管理者の使用を制限する
+
+グローバル管理者ロールに割り当てられているユーザーは、Azure AD 組織内のすべての管理設定の読み取りと変更を行うことができます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、Azure AD 組織のグローバル管理者ロールが割り当てられます。 管理者ロールを委任できるのはグローバル管理者と特権ロール管理者だけです。 ビジネスに対するリスクを軽減するには、このロールを割り当てる組織内のユーザーの数をできる限り少なくすることをお勧めします。
+
+## <a name="best-practices"></a>ベスト プラクティス
+
+ベスト プラクティスとして、組織内でこのロールを割り当てるユーザーは 5 人未満にすることをお勧めします。 組織内でグローバル管理者ロールを割り当てるユーザーが 5 人以上になる場合は、次の方法で数を減らすことができます。
+
+### <a name="find-the-role-you-need"></a>必要なロールを調べる
+
+多くのロールのリストから必要なロールを見つけるのが面倒な場合は、Azure AD でロールのカテゴリに基づく短いリストを提供できます。 選択した種類のロールだけが表示される、[Azure AD ロールと管理者](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)に対する新しい**種類**フィルターを確認してください。
+
+### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>グローバル管理者ロールを割り当てたときには存在していなかったロールが存在する
+
+一部のユーザーをグローバル管理者に昇格させたときには選択できなかった、よりきめ細かいアクセス許可が提供されるロールが、Azure AD に追加されている可能性があります。 時間の経過と共に、以前はグローバル管理者ロールだけが実行できたタスクを遂行する新しいロールがロールアウトされています。 これらは、次の「[使用可能なロール](#available-roles)」に反映されています。
 
 ## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
 
@@ -138,24 +152,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[ゲスト招待元](#guest-inviter)** :このロールが割り当てられたユーザーは、 **[メンバーは招待ができる]** ユーザー設定が [いいえ] に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
 
-* **[Intune 管理者](#intune-service-administrator)** :このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)」を参照してください。
-  > [!NOTE]
-  > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Intune サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Intune 管理者" になります。
-  
- * **[Kaizala 管理者](#kaizala-administrator)** :このロールが割り当てられたユーザーは、Microsoft Kaizala 内で設定を管理するグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。
-さらに、このユーザーは、組織のメンバーによる Kaizala の導入と使用法に関連したレポート、および Kaizala アクションを使用して生成されるビジネス レポートにもアクセスできます。 
-
-* **[ライセンス管理者](#license-administrator)** :このロールのユーザーは、ユーザーに対するライセンス割り当ての追加、削除、更新、グループに対する (グループベースのライセンスを使用した) ライセンス割り当ての追加、削除、更新に加え、ユーザーに対する利用場所の管理を行うことができます。 このロールでは、サブスクリプションの購入と管理、グループの作成と管理を行う権限は与えられません。また、利用場所を超える範囲でのユーザーの作成と管理を行う権限も与えられません。 このロールには、サポート チケットの表示、作成、管理のためのアクセス権がありません。
-
-* **[メッセージ センターのプライバシー閲覧者](#message-center-privacy-reader)** :このロールのユーザーは、データのプライバシー メッセージを含め、メッセージ センター内のすべての通知を監視できます。 メッセージ センターのプライバシー閲覧者は、データのプライバシーに関連したものも含めてメール通知を受け取り、メッセージ センターの設定を使用して登録を解除することができます。 データのプライバシー メッセージを読み取ることができるのは、グローバル管理者とメッセージ センターのプライバシー閲覧者のみになります。 さらに、このロールには、グループ、ドメイン、サブスクリプションを表示する権限が含まれています。 このロールには、サービス要求を表示、作成、または管理するアクセス許可はありません。
-
-* **[メッセージ センター閲覧者](#message-center-reader)** :このロールのユーザーは、自分の組織の Exchange、Intune、Microsoft Teams などのサービス構成に対する [Office 365 メッセージ センター](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)の通知や、正常性に関して注意を促す更新情報を監視できます。 メッセージ センター閲覧者は、投稿の毎週のメール ダイジェストを受け取り、Office 365 でメッセージ センターの投稿を共有できます。 Azure AD では、このロールに割り当てられているユーザーはユーザーやグループなどの読み取り専用アクセスのみを持ちます。 このロールには、サポート チケットの表示、作成、管理のためのアクセス権がありません。
-
-* **[パートナー レベル 1 のサポート](#partner-tier1-support)** :使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
-
-* **[パートナー レベル 2 のサポート](#partner-tier2-support)** :使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
-
-* **[ヘルプデスク (パスワード) 管理者](#helpdesk-administrator)** : このロールが割り当てられたユーザーは、パスワードの変更、更新トークンの無効化、サービス要求の管理、サービス正常性の監視を行うことができます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。 ヘルプデスク管理者は、管理者ではない他のユーザーまたは次のロールのみが割り当てられているユーザーについて、パスワードをリセットし、更新トークンを無効にすることができます。
+* **[ヘルプデスク管理者](#helpdesk-administrator)** : このロールが割り当てられたユーザーは、パスワードの変更、更新トークンの無効化、サービス要求の管理、サービス正常性の監視を行うことができます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。 ヘルプデスク管理者は、管理者ではない他のユーザーまたは次のロールのみが割り当てられているユーザーについて、パスワードをリセットし、更新トークンを無効にすることができます。
   * ディレクトリ リーダー
   * ゲスト招待元
   * ヘルプデスク管理者
@@ -175,16 +172,35 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 
   > [!NOTE]
-  > このロールは、[Azure portal](https://portal.azure.com/) で以前は "パスワード管理者" と呼ばれていました。 Azure AD PowerShell、Azure AD Graph API、および Microsoft Graph API での名前に一致するように、この名前は "ヘルプデスク管理者" に変更される予定です。 Azure portal では、"ヘルプデスク管理者" に名前が変更されるまでの短い期間、"ヘルプデスク (パスワード) 管理者" に変更されます。
+  > このロールは、[Azure portal](https://portal.azure.com/) で以前は "パスワード管理者" と呼ばれていました。 Azure AD PowerShell、Azure AD Graph API、および Microsoft Graph API での名前に一致するように、この名前は "ヘルプデスク管理者" に変更されています。
 
+* **[Intune 管理者](#intune-service-administrator)** :このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。 詳細については、「[Microsoft Intune でのロール ベースの管理制御 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)」を参照してください。
+  > [!NOTE]
+  > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Intune サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Intune 管理者" になります。
+  
+ * **[Kaizala 管理者](#kaizala-administrator)** :このロールが割り当てられたユーザーは、Microsoft Kaizala 内で設定を管理するグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。
+さらに、このユーザーは、組織のメンバーによる Kaizala の導入と使用法に関連したレポート、および Kaizala アクションを使用して生成されるビジネス レポートにもアクセスできます。 
+
+* **[ライセンス管理者](#license-administrator)** :このロールのユーザーは、ユーザーに対するライセンス割り当ての追加、削除、更新、グループに対する (グループベースのライセンスを使用した) ライセンス割り当ての追加、削除、更新に加え、ユーザーに対する利用場所の管理を行うことができます。 このロールでは、サブスクリプションの購入と管理、グループの作成と管理を行う権限は与えられません。また、利用場所を超える範囲でのユーザーの作成と管理を行う権限も与えられません。 このロールには、サポート チケットの表示、作成、管理のためのアクセス権がありません。
+
+* **[メッセージ センターのプライバシー閲覧者](#message-center-privacy-reader)** :このロールのユーザーは、データのプライバシー メッセージを含め、メッセージ センター内のすべての通知を監視できます。 メッセージ センターのプライバシー閲覧者は、データのプライバシーに関連したものも含めてメール通知を受け取り、メッセージ センターの設定を使用して登録を解除することができます。 データのプライバシー メッセージを読み取ることができるのは、グローバル管理者とメッセージ センターのプライバシー閲覧者のみになります。 さらに、このロールには、グループ、ドメイン、サブスクリプションを表示する権限が含まれています。 このロールには、サービス要求を表示、作成、または管理するアクセス許可はありません。
+
+* **[メッセージ センター閲覧者](#message-center-reader)** :このロールのユーザーは、自分の組織の Exchange、Intune、Microsoft Teams などのサービス構成に対する [Office 365 メッセージ センター](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)の通知や、正常性に関して注意を促す更新情報を監視できます。 メッセージ センター閲覧者は、投稿の毎週のメール ダイジェストを受け取り、Office 365 でメッセージ センターの投稿を共有できます。 Azure AD では、このロールに割り当てられているユーザーはユーザーやグループなどの読み取り専用アクセスのみを持ちます。 このロールには、サポート チケットの表示、作成、管理のためのアクセス権がありません。
+
+* **[パートナー レベル 1 のサポート](#partner-tier1-support)** :使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
+
+* **[パートナー レベル 2 のサポート](#partner-tier2-support)** :使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
+
+* **[パスワード管理者](#password-administrator)** : このロールのユーザーは、制限付きでパスワードを管理することができます。 このロールでは、サービス要求を管理したり、サービスの正常性を監視したりすることはできません。 パスワード管理者は、管理者ではない他のユーザーまたは次のロールのメンバーについてのみ、パスワードをリセットすることができます。
+  * ディレクトリ リーダー
+  * ゲスト招待元
+  * パスワード管理者
 
 * **[Power BI 管理者](#power-bi-service-administrator)** :このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Power BI 管理者の役割について](https://docs.microsoft.com/power-bi/service-admin-role)」を参照してください。
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Power BI サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Power BI 管理者" になります。
 
-* **[特権認証管理者](#privileged-authentication-administrator)** :このロールのユーザーは、グローバル管理者を含むすべてのユーザーに対して、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 特権認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに強制することができます。また、"このデバイスに MFA を記憶する" 機能を取り消して、すべてのユーザーが次回ログインするときに MFA の入力を求めることができます。 特権認証管理者ができることは次のとおりです。
-  * パスワード以外の既存の資格情報 (例: MFA、FIDO) に対する再登録をユーザーに強制する
-  * "このデバイスに MFA を記憶する" 機能を取り消し、次回ログイン時に MFA の入力を求める
+* **[特権認証管理者](#privileged-authentication-administrator)** :このロールのユーザーは、グローバル管理者を含むすべてのユーザーに対して、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 特権認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに強制することができます。また、"このデバイスに MFA を記憶する" 機能を取り消して、すべてのユーザーが次回ログインするときに MFA の入力を求めることができます。
 
 * **[特権ロール管理者](#privileged-role-administrator)** :このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 さらに、このロールは、Privileged Identity Management と管理単位のすべての側面を管理できます。
 
@@ -984,6 +1000,14 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
+### <a name="password-administrator"></a>パスワード管理者
+管理者以外とパスワード管理者のパスワードをリセットできます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.directory/users/password/update | Azure Active Directory でのすべてのユーザーのパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+
 ### <a name="power-bi-service-administrator"></a>Power BI サービス管理者
 Power BI 製品のすべての側面を管理できます。
 
@@ -1333,6 +1357,7 @@ Lync サービス管理者 | Skype for Business 管理者 | 75941009-915a-4869-a
 メッセージ センター閲覧者 | メッセージ センター閲覧者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 パートナー レベル 1 のサポート | パートナー レベル 1 のサポート | 4ba39ca4-527c-499a-b93d-d9b492c50246
 パートナー レベル 2 のサポート | パートナー レベル 2 のサポート | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+パスワード管理者 | パスワード管理者 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI サービス管理者 | Power BI 管理者 | a9ea8996-122f-4c74-9520-8edcd192826c
 特権認証管理者 | 特権認証管理者 | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 特権ロール管理者 | 特権ロール管理者 | e8611ab8-c189-46e8-94e1-60213ab1f814

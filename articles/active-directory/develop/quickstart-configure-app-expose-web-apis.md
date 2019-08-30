@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f770539e2f60a960a52a877dd4eaa79c60a1af4a
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482673"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989268"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
 
@@ -116,8 +116,9 @@ UI を通じて新しいスコープを公開するには:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>他のアプリケーションに Web API が公開されているかどうかを確認する
 
 1. Azure AD テナントに戻って、 **[アプリの登録]** を選択し、構成するクライアント アプリケーションを見つけて選択します。
-1. Web API にアクセスするためのクライアント アプリケーションの構成に関するページで説明されている手順をもう一度実行します。
-1. **API の選択**の手順で、リソースを選択します。 新しいスコープが表示されていれば、クライアントのアクセス許可の要求で利用できる状態です。
+1. [Web API にアクセスするためのクライアント アプリケーションの構成](quickstart-configure-app-access-web-apis.md)に関するページで説明されている手順をもう一度実行します。
+1. [API の選択](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+)の手順で、リソースを選択します。 新しいスコープが表示されていれば、クライアントのアクセス許可の要求で利用できる状態です。
 
 ## <a name="more-on-the-application-manifest"></a>アプリケーション マニフェストの詳細
 

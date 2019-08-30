@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell クイックスタートのPowerShell | Microsoft Docs
-description: Cloud Shell の PowerShell のクイックスタート
+title: Azure Cloud Shell のクイックスタート | Microsoft Docs
+description: Azure Cloud Shell のクイックスタート
 services: Azure
 documentationcenter: ''
 author: maertendmsft
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 36683d04b6f087f1d326458a07b043a0932191f1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199529"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742000"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -147,7 +147,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
 ```
 
-詳しくは、「[Windows で Azure ファイル共有をマウントして共有にアクセスする][azmount]」をご覧ください。
+詳細については、[Windows で Azure ファイル共有をマウントして共有にアクセスする][azmount]方法に関するページを参照してください。
 
 次のようにして、Azure ファイル共有の下のディレクトリ間を移動することもできます。
 
@@ -334,7 +334,7 @@ Cloud Shell で PowerShell を次に使用するときは、`helloworld.ps1` フ
 PowerShell プロファイル (`profile.ps1` または `Microsoft.PowerShell_profile.ps1`) を作成することで、PowerShell 環境をカスタマイズできます。
 それを `$profile.CurrentUserAllHosts` (または `$profile.CurrentUserAllHosts`) に保存して、Cloud Shell セッションのすべての PowerShell で読み込めるようにします。
 
-プロファイルの作成方法については、「[About Profiles][profile]」(プロファイルについて) を参照してください。
+プロファイルの作成方法については、「[プロファイルについて][profile]」を参照してください。
 
 ## <a name="use-git"></a>Git を使う
 

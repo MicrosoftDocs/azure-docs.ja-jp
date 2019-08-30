@@ -3,15 +3,14 @@ documentType: LandingData
 title: Bing Autosuggest のドキュメント
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: Bing Autosuggest のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  title: Bing Autosuggest のドキュメント - チュートリアル、クイックスタート、API リファレンス
+  titleSuffix: Azure Cognitive Services
   description: Bing Autosuggest API を使用して、部分クエリに基づいてクエリ候補を取得する方法について説明します。 チュートリアルでは、このサービスを使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 39d39b313cd2e65989989080d4cb0729b0be1e65
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561450"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012942"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
@@ -97,11 +97,11 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 
     |Setting  |値  |
     |---------|---------|
-    |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しいリソース グループを作成します。 既存のリソース グループを使用するのは、Data Box サービスによってマネージド ディスク用にそのグループが Data Box Disk 注文に対して作成された場合だけにしてください。 <br> サポートされているリソース グループは 1 つのみです。|
+    |Resource group     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しいリソース グループを作成します。 既存のリソース グループを使用するのは、Data Box サービスによってマネージド ディスク用にそのグループが Data Box Disk 注文に対して作成された場合だけにしてください。 <br> サポートされているリソース グループは 1 つのみです。|
 
     ![マネージド ディスクの Data Box Disk 注文](media/data-box-disk-deploy-ordered/order-managed-disks.png)
 
-    マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 Data Box サービスで、VHD がステージング ストレージ アカウントにアップロードされ、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
+    マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 Data Box サービスで、VHD がステージング ストレージ アカウントにアップロードされ、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure)」を参照してください。
 
 13. **[次へ]** をクリックします。
 

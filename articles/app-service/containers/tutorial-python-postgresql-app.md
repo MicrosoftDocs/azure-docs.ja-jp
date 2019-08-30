@@ -1,39 +1,38 @@
 ---
-title: Linux 上の PostgreSQL を使用した Python (Django) - Azure App Service | Microsoft Docs
-description: PostgreSQL データベースに接続するデータ駆動型の Python アプリを Azure 上で実行する方法について説明します。 このチュートリアルでは Django を使用します。
+title: Linux 上の PostgreSQL を使用した Python (Django) Web アプリ - Azure App Service | Microsoft Docs
+description: PostgreSQL データベースに接続するデータ駆動型の Python (Django) Web アプリを Azure 上で実行する方法について説明します。
 services: app-service\web
 documentationcenter: python
 author: cephalin
-manager: jeconnoc
+manager: gwallace
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.reviewer: beverst
 ms.custom: seodec18
-ms.openlocfilehash: 3fbc9429da393f4df14ade57d6bd20219b5fcfa2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617521"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951903"
 ---
-# <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Azure App Service で Python と PostgreSQL アプリを構築する
+# <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>PostgreSQL を使用した Python (Django) Web アプリを Azure App Service で作成する
 
-[App Service on Linux](app-service-linux-intro.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、PostgreSQL をデータベース バックエンドとして使用する、データ駆動型の Python アプリを作成する方法について説明します。 完了すると、App Service on Linux 上で実行される Django アプリケーションが完成します。
+[App Service on Linux](app-service-linux-intro.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、PostgreSQL をデータベース バックエンドとして使用する、データ駆動型の Python (Django) Web アプリを作成する方法について説明します。 完了すると、Azure App Service on Linux 上で実行される Django Web アプリが完成します。
 
-![App Service on Linux での Python Django アプリ](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![App Service on Linux での Python Django Web アプリ](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で PostgreSQL データベースを作成する
-> * Python アプリを PostgreSQL に接続する
-> * Azure にアプリケーションをデプロイする
+> * Python Web アプリを PostgreSQL に接続する
+> * Python Web アプリを Azure にデプロイする
 > * 診断ログを表示する
-> * Azure Portal でアプリを管理する
+> * Azure portal で Python Web アプリを管理する
 
 > [!NOTE]
 > Azure Database for PostgreSQL を作成する前に、[ご利用のリージョンで提供されているコンピューティング世代](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores)を確認してください。
@@ -93,7 +92,7 @@ git clone https://github.com/Azure-Samples/djangoapp.git
 cd djangoapp
 ```
 
-このサンプル リポジトリに、[Django](https://www.djangoproject.com/) アプリケーションが含まれています。 これは、[Django ドキュメントの使用開始チュートリアル](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)に従って取得できるデータ駆動型アプリと同じです。 このチュートリアルでは、Django について詳しく説明しません。App Service に Django アプリ (または別のデータ駆動型の Python アプリ) をデプロイして実行する方法だけを示します。
+このサンプル リポジトリに、[Django](https://www.djangoproject.com/) アプリケーションが含まれています。 これは、[Django ドキュメントの使用開始チュートリアル](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)に従って取得できるデータ駆動型アプリと同じです。 このチュートリアルでは、Django について詳しく説明しません。Azure App Service に Django Web アプリ (または別のデータ駆動型の Python アプリ) をデプロイして実行する方法だけを示します。
 
 ### <a name="configure-environment"></a>環境の構成
 
@@ -129,7 +128,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-アプリが完全に読み込まれると、次のようなメッセージが表示されます。
+Django Web アプリが完全に読み込まれると、次のようなメッセージが表示されます。
 
 ```bash
 Performing system checks...
@@ -216,7 +215,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ## <a name="connect-python-app-to-production-database"></a>Python アプリを運用データベースに接続する
 
-この手順では、作成した Azure Database for PostgreSQL サーバーに、Django サンプル アプリを接続します。
+この手順では、作成した Azure Database for PostgreSQL サーバーに、Django Web アプリを接続します。
 
 ### <a name="create-empty-database-and-user-access"></a>空のデータベースおよびユーザー アクセスを作成する
 
@@ -284,11 +283,10 @@ python manage.py runserver
 
 ### <a name="configure-repository"></a>リポジトリの構成
 
-Django では、受信要求の `HTTP_HOST` ヘッダーが検証されます。 App Service 上で Django アプリを動作させるには、許可されるホストにアプリの完全修飾ドメイン名を追加する必要があります。 _azuresite/settings.py_ を開き、`ALLOWED_HOSTS` 設定を見つけます。 その行を次のように変更します。
+Django では、受信要求の `HTTP_HOST` ヘッダーが検証されます。 App Service 上で Django Web アプリを動作させるには、許可されるホストにアプリの完全修飾ドメイン名を追加する必要があります。 _azuresite/settings.py_ を開き、`ALLOWED_HOSTS` 設定を見つけます。 その行を次のように変更します。
 
 ```python
-ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net',
-                 '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
 次に、Django では[運用環境での静的ファイルの使用](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)はサポートされないため、これを手動で有効にする必要があります。 このチュートリアルでは、[WhiteNoise](https://whitenoise.evans.io/en/stable/) を使用します。 WhiteNoise パッケージは _requirements.txt_ に既に含まれています。 必要なのは、それを使用するように Django を構成することだけです。 
@@ -386,13 +384,13 @@ http://<app-name>.azurewebsites.net
 
 先ほど作成したポーリングの質問が表示されます。 
 
-各サブディレクトリ内で _wsgi.py_ (`manage.py startproject` によって既定で作成されます) を探すことで、App Service によってリポジトリ内の Django プロジェクトが検出されます。 ファイルが見つかると、Django アプリが読み込まれます。 App Service による Python アプリのロード方法の詳細については[組み込みの Python イメージの構成](how-to-configure-python.md)に関する記事を参照してください。
+各サブディレクトリ内で _wsgi.py_ (`manage.py startproject` によって既定で作成されます) を探すことで、App Service によってリポジトリ内の Django プロジェクトが検出されます。 ファイルが見つかると、Django Web アプリが読み込まれます。 App Service による Python アプリのロード方法の詳細については[組み込みの Python イメージの構成](how-to-configure-python.md)に関する記事を参照してください。
 
 `<app-name>.azurewebsites.net` に移動し、作成済みの管理者ユーザーを使用してサインインします。 必要に応じて、いくつかのポーリングの質問を追加で作成します。
 
 ![ローカルで実行される Python Django アプリケーション](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
-**お疲れさまでした。** App Service for Linux で Python アプリが実行されています。
+**お疲れさまでした。** Azure App Service for Linux で Python (Django) Web アプリが実行されています。
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
@@ -418,10 +416,10 @@ http://<app-name>.azurewebsites.net
 
 > [!div class="checklist"]
 > * Azure で PostgreSQL データベースを作成する
-> * Python アプリを PostgreSQL に接続する
-> * Azure にアプリケーションをデプロイする
+> * Python Web アプリを PostgreSQL に接続する
+> * Python Web アプリを Azure にデプロイする
 > * 診断ログを表示する
-> * Azure Portal でアプリを管理する
+> * Azure portal で Python Web アプリを管理する
 
 次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 

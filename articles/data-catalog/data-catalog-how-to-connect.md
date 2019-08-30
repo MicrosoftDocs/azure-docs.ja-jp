@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: c91c09da31e4ecf42257b8f9c86f25c6ec39b9df
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734634"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976783"
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法
 ## <a name="introduction"></a>はじめに
@@ -28,7 +28,7 @@ ms.locfileid: "68734634"
 
 リスト ビューを使用すると、ポータル ウィンドウの上部にある検索バーにメニューが表示されます。
 
- ![検索バーからレポート マネージャーで SQL Server Reporting Services レポートを開く](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![レポート マネージャーで SQL Server Reporting Services レポートを開く](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>サポートされているクライアント アプリケーション
 Azure Data Catalog ポータルでデータ ソースの "開く" メニューを使用する場合は、 適切なクライアント アプリケーションがクライアント コンピューターにインストールされている必要があります。

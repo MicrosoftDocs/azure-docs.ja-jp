@@ -1,6 +1,6 @@
 ---
-title: Azure DevOps のビルドとリリースのパイプライン内で DevTest Labs を使用する | Microsoft Docs
-description: Azure DevOps のビルドとリリースのパイプライン内で Azure DevTest Labs を使用する方法について説明します。
+title: Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する | Microsoft Docs
+description: Azure Pipelines のビルドとリリースのパイプライン内で Azure DevTest Labs を使用する方法について説明します。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 606563cd7d7adcdd79bf9561876eb0640fb68b21
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620623"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774479"
 ---
-# <a name="use-devtest-labs-in-azure-devops-build-and-release-pipelines"></a>Azure DevOps のビルドとリリースのパイプライン内で DevTest Labs を使用する
-この記事では、Azure DevOps のビルドとリリースのパイプライン内で DevTest Labs を使用する方法について説明します。 
+# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
+この記事では、Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する方法について説明します。 
 
 ## <a name="overall-flow"></a>全体的なフロー
 基本的なフローは、次のタスクを実行する**ビルド パイプライン**を持つことです。
@@ -49,7 +49,7 @@ ms.locfileid: "68620623"
 ビルド パイプラインにより、DevTest Labs 環境が作成され、テスト用のコードがデプロイされます。
 
 ## <a name="set-up-a-build-pipeline"></a>ビルド パイプラインの設定
-Azure DevOps で、「[チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)」のコードを使用してビルド パイプラインを作成します。 **ASP.NET Core** テンプレートを使用します。これにより、コードをビルド、テスト、発行するために必要なタスクが設定されます。
+Azure Pipelines で、「[チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)」のコードを使用してビルド パイプラインを作成します。 **ASP.NET Core** テンプレートを使用します。これにより、コードをビルド、テスト、発行するために必要なタスクが設定されます。
 
 ![ASP.NET テンプレートの選択](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
@@ -85,7 +85,7 @@ DevTest Labs で環境を作成し、環境にデプロイするには、3 つ�
 
 ![App Service のデプロイ タスク](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
-## <a name="setup-release-pipeline"></a>リリース パイプラインの設定
+## <a name="set-up-release-pipeline"></a>リリース パイプラインの設定
 リリース パイプラインを作成するには、次の 2 つのタスクを実行します。**Azure のデプロイ:リソース グループの作成または更新**と **Azure App Service のデプロイ**です。 
 
 最初のタスクでは、リソース グループの名前と場所を指定します。 テンプレートの場所は、リンクされた成果物です。 Resource Manager テンプレートにリンクされたテンプレートが含まれている場合は、カスタム リソース グループのデプロイを実装する必要があります。 テンプレートは、パブリッシュされたドロップの成果物に含まれています。 Resource Manager テンプレートのテンプレート パラメーターをオーバーライドします。 残りの設定は既定値のままでかまいません。 
@@ -98,5 +98,5 @@ DevTest Labs で環境を作成し、環境にデプロイするには、3 つ�
 ## <a name="next-steps"></a>次の手順
 次の記事を参照してください。
 
-- [Azure DevOps 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合](devtest-lab-integrate-ci-cd-vsts.md)
-- [環境を Azure DevOps CI/CD パイプラインに統合する](integrate-environments-devops-pipeline.md)
+- [Azure Pipelines の継続的インテグレーションと配信パイプラインに Azure DevTest Labs を統合する](devtest-lab-integrate-ci-cd-vsts.md)
+- [環境を Azure Pipelines CI/CD パイプラインに統合する](integrate-environments-devops-pipeline.md)

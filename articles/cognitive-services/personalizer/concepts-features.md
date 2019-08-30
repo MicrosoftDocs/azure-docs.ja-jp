@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663840"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989083"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -25,7 +25,7 @@ Personalizer では、**現在のコンテキスト**に関する情報である
 
 **フィーチャー**の例:
 
-* `UserID` など、_ユーザー_。 
+* `Sports_Shopper` などの_ユーザーのペルソナ_。 個々のユーザー ID を指定することはできません。 
 * _コンテンツ_。動画が `Documentary`、`Movie`、または `TV Series` であるかどうかや、ある品物を店舗で利用できるかどうかなど。
 * _現在_の期間。現在の曜日など。
 
@@ -150,7 +150,7 @@ Artificial Intelligence や、すぐに実行できる Cognitive Services は Pe
 
 各アクション:
 
-* ID があります。
+* _イベント_ ID があります。 イベント ID が既にある場合は、それを送信する必要があります。 イベント ID を持っていない場合は送信しないでください。Personalizer によってイベント ID が作成され、Rank 要求の応答で返されます。 ID はユーザーではなく Rank イベントに関連付けられています。 ID を作成する場合は、GUID が最適です。 
 * フィーチャーの一覧があります。
 * フィーチャーの一覧は大規模 (数百単位) になることがありますが、フィーチャーの効果を評価し、リワードに貢献しないフィーチャーを取り除くことが推奨されます。 
 * **アクション**のフィーチャーは、Personalizer によって使用される**コンテキスト**のフィーチャーとの間に相関関係がある場合とない場合があります。

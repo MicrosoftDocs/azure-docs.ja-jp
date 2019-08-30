@@ -5,13 +5,13 @@ author: arramac
 ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 74df0038676e8459028084890da569ed3b75a682
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 08/05/2019
+ms.openlocfilehash: d3d09d466e05c97de215542c66987aa6b723afce
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797281"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827992"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -23,8 +23,8 @@ ms.locfileid: "67797281"
 
 | Resource | 既定の制限 |
 | --- | --- |
-| コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)か、または [Ask Cosmos DB](mailto:askcosmosdb@microsoft.com) 経由で Microsoft に連絡することによって増やすことができます |
-| データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)か、または [Ask Cosmos DB](mailto:askcosmosdb@microsoft.com) 経由で Microsoft に連絡することによって増やすことができます |
+| コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます |
+| データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます |
 | (論理) パーティション キーあたりの最大 RU | 10,000 |
 | (論理) パーティション キーあたりのすべての項目にまたがる最大ストレージ| 10 GB |
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
@@ -37,10 +37,16 @@ ms.locfileid: "67797281"
 
 Cosmos コンテナー (または共有スループット データベース) には、400 RU の最小スループットが必要です。 コンテナーが大きくなるにつれ、サポートされる最小スループットは次の要因にも依存するようになります。
 
-* これまでにコンテナーにプロビジョニングされた最大スループット。 このサービスでは、コンテナーのスループットをプロビジョニングされた最大値の 10% まで下げることがサポートされます。 たとえば、スループットが 10000 RU まで増やされた場合、可能性のある最も低いプロビジョニング スループットは 1000 RU になります。
-* これまでに共有スループット データベース内に作成したコンテナーの総数 (コンテナーあたり 100 RU で測定されます)。 たとえば、共有スループット データベース内に 5 つのコンテナーを作成した場合、スループットは少なくとも 500 RU である必要があります。
+* コンテナーに設定できる最小スループットは、コンテナーに対してプロビジョニングされた最大スループットによって決まります。 このサービスでは、コンテナーのスループットをプロビジョニングされた最大値の 10% まで下げることがサポートされます。 たとえば、スループットが 10000 RU まで増やされた場合、可能性のある最も低いプロビジョニング スループットは 1000 RU になります。
+* 共有スループット データベース上の最小スループットも、これまでに共有スループット データベース内に作成したコンテナーの総数 (コンテナーあたり 100 RU で測定) によって決まります。 たとえば、共有スループット データベース内に 5 つのコンテナーを作成した場合、スループットは少なくとも 500 RU である必要があります。
 
-コンテナーまたはデータベースの現在のスループットと最小スループットは、Azure portal または SDK から取得できます。 詳細については、「[コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)」を参照してください。 要約すると、最小プロビジョニング済み RU の制限を次に示します。 
+コンテナーまたはデータベースの現在のスループットと最小スループットは、Azure portal または SDK から取得できます。 詳細については、「[コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)」を参照してください。 
+
+> [!NOTE]
+> 場合によっては、スループットを 10% 未満に減らすことができます。 API を使用して、コンテナーごとの最小 RU を正確に取得します。
+>
+
+要約すると、最小プロビジョニング済み RU の制限を次に示します。 
 
 | Resource | 既定の制限 |
 | --- | --- |
@@ -56,13 +62,21 @@ Azure portal、Azure PowerShell、Azure CLI、および Azure Resource Manager �
 
 | Resource | 既定の制限 |
 | --- | --- |
-| サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)か、または [Ask Cosmos DB](mailto:askcosmosdb@microsoft.com) 経由で Microsoft に連絡することによって増やすことができます|
-| リージョン内フェールオーバーの最大数 | 既定では 1 回/時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)か、または [Ask Cosmos DB](mailto:askcosmosdb@microsoft.com) 経由で Microsoft に連絡することによって増やすことができます|
+| サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます|
+| リージョン内フェールオーバーの最大数 | 既定では 1 回/時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます|
 
 > [!NOTE]
 > リージョン内フェールオーバーは、単一リージョン書き込みのアカウントにのみ適用されます。 複数リージョン書き込みのアカウントには、書き込みリージョンの変更に関する制限は必要ないか、または存在しません。
 
 Cosmos DB は、データのバックアップを一定の間隔で自動的に取得します。 バックアップ保有期間の間隔とウィンドウの詳細については、「[Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元](online-backup-and-restore.md)」を参照してください。
+
+## <a name="per-account-limits"></a>アカウントあたりの制限
+
+| Resource | 既定の制限 |
+| --- | --- |
+| データベースの最大数 | 無制限 |
+| データベース (またはアカウント) あたりのコンテナーの最大数 | 無制限 |
+| リージョンの最大数 | 制限なし (すべての Azure リージョン) |
 
 ## <a name="per-container-limits"></a>コンテナーあたりの制限
 
@@ -77,7 +91,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 | コンテナーあたりの一意キーの最大数|10 <sup>*</sup>|
 | 一意キー制約あたりのパスの最大数|16 <sup>*</sup>|
 
-<sup>*</sup> これらのコンテナーあたりの制限はいずれも、Azure Support に連絡するか、または [Ask Cosmos DB](mailto:askcosmosdb@microsoft.com) 経由で Microsoft に連絡することによって増やすことができます。
+<sup>*</sup> これらのコンテナーあたりの制限はいずれも、Azure サポートに連絡することによって増やすことができます。
 
 ## <a name="per-item-limits"></a>項目あたりの制限
 
@@ -115,7 +129,7 @@ Cosmos DB は HMAC を承認のために使用します。 コンテナー、パ
 | --- | --- |
 | マスター トークンの最大有効期限 | 15 分  |
 | リソース トークンの最小有効期限 | 10 分  |
-| リソース トークンの最大有効期限 | 既定では 24 時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)か、または [Ask Cosmos DB](mailto:askcosmosdb@microsoft.com) 経由で Microsoft に連絡することによって増やすことができます|
+| リソース トークンの最大有効期限 | 既定では 24 時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます|
 | トークン承認の最大クロック スキュー| 15 分 |
 
 Cosmos DB は、書き込み中のトリガーの実行をサポートしています。 このサービスでは、書き込み操作あたり最大 1 つのプリトリガーと 1 つのポストトリガーがサポートされます。 
@@ -134,7 +148,7 @@ Cosmos DB は、[SQL](how-to-sql-query.md) を使用した項目のクエリを�
 | IN 式あたりの最大引数| 6000 <sup>*</sup>|
 | 多角形あたりの最大ポイント| 4096 <sup>*</sup>|
 
-<sup>*</sup> これらの SQL クエリの制限はいずれも、Azure Support に連絡するか、または [Ask Cosmos DB](mailto:askcosmosdb@microsoft.com) 経由で Microsoft に連絡することによって増やすことができます。
+<sup>*</sup> これらの SQL クエリの制限はいずれも、Azure サポートに連絡することによって増やすことができます。
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API に固有の制限
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: bc0681a8ea15f736a7b253d6bd7ba2f7928d2a32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439396"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848510"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
 
@@ -38,7 +38,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 これらは、コンテナーと共有の名前に関連するエラーです。
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
+### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
 **エラーの説明:** コンテナーまたは共有の名前は、3 文字から 63 文字で指定する必要があります。 
 
@@ -57,7 +57,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
     詳細については、[コンテナー名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
 
 
-### <a name="errorcontainerorsharenamealphanumericdash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
+### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
 **エラーの説明:** コンテナーまたは共有の名前に使用できるのは、英字、数字、またはハイフンだけです。
 
@@ -75,7 +75,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
     詳細については、[コンテナー名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
 
-### <a name="errorcontainerorsharenameimproperdash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
+### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
 **エラーの説明:** コンテナー名と共有名では、先頭または末尾をハイフンにすることはできず、連続するハイフンを含めることもできません。
 
@@ -97,7 +97,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 これらは、コンテナーまたは共有で許容されるデータのサイズを超過したデータに関連するエラーです。
 
-### <a name="errorcontainerorsharecapacityexceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
+### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
 **エラーの説明:** Azure ファイル共有では、1 つの共有につき 5 TB のデータに制限されています。 一部の共有でこの制限を超えています。
 
@@ -110,7 +110,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 これらは、Azure で許可されているオブジェクトまたはファイルの最大サイズを超過したデータに関連するエラーです。 
 
-### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
+### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
 **エラーの説明:** ファイル サイズがアップロードできる最大ファイル サイズを超えています。
 
@@ -123,7 +123,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 これらは、コンテナーまたは共有で検出されたサポートされていないファイルの種類またはデータの種類に関連するエラーです。 
 
-### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
+### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
 **エラーの説明:** BLOB またはファイルが正しくアラインされていません。
 
@@ -133,7 +133,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 詳細については、[ページ BLOB の概要](../storage/blobs/storage-blob-pageblob-overview.md)に関するページを参照してください。
 
-### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
+### <a name="error_blob_or_file_type_unsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
 
 **エラーの説明:** マネージド ディスク共有に、サポートされていないファイルの種類が存在します。 容量固定の VHD のみが許可されます。
 
@@ -142,7 +142,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 - 容量固定の VHD のみをアップロードしてマネージド ディスクを作成していることを確認します。
 - VHDX ファイル、**動的**および**差分** VHD はサポートされていません。
 
-### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
+### <a name="error_directory_disallowed_for_type"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
 
 **エラーの説明:** ディレクトリは、マネージド ディスク用の既存のフォルダーでは許可されません。 これらのフォルダーでは、容量固定の VHD のみが許可されます。
 
@@ -153,7 +153,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 詳細については、[マネージド ディスクへのコピー](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)に関するページを参照してください。
 
-### <a name="reparsepointerror"></a>REPARSE_POINT_ERROR
+### <a name="reparse_point_error"></a>REPARSE_POINT_ERROR
 
 **エラーの説明:** シンボリック リンクは、Linux では許可されません。 
 
@@ -162,9 +162,9 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 ## <a name="non-critical-blob-or-file-errors"></a>BLOB またはファイルの重大ではないエラー
 
-以降のセクションでは、データのコピー中に表示されるすべてのエラーついて簡単に説明します。
+次のセクションでは、データのコピー中に表示される、BLOB、ファイル、またはコンテナーの名前に関連する重大ではないエラーがすべてまとめられています。 これらのエラーが存在する場合は、Azure の名前付け規則に従って名前が変更されます。 データ アップロードの対応する注文の状態は、**完了 (警告あり)** になります。  
 
-### <a name="errorbloborfilenamecharactercontrol"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
+### <a name="error_blob_or_file_name_character_control"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
 **エラーの説明:** BLOB またはファイルの名前に、サポートされていない制御文字が含まれています。
 
@@ -175,7 +175,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 詳細については、[BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
 
-### <a name="errorbloborfilenamecharacterillegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
+### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
 **エラーの説明:** BLOB またはファイルの名前に、無効な文字が含まれています。
 
@@ -187,7 +187,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 詳細については、[BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
 
 
-### <a name="errorbloborfilenameending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
+### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
 
 **エラーの説明:** BLOB またはファイルの名前が、無効な文字で終わっています。
 
@@ -199,7 +199,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 詳細については、[BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
 
 
-### <a name="errorbloborfilenamesegmentcount"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
+### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
 
 **エラーの説明:** BLOB またはファイルの名前に含まれるパスのセグメントが多すぎます。
 
@@ -208,7 +208,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 - ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
 - [BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)が Azure 名前付け規則に準拠していることを確認します。
 
-### <a name="errorbloborfilenameaggregatelength"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
+### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
 **エラーの説明:** BLOB またはファイルの名前が長すぎます。
 
@@ -220,7 +220,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 詳細については、BLOB 名とファイル名の Azure 名前付け規則を参照してください。
 
-### <a name="errorbloborfilenamecomponentlength"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
+### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
 **エラーの説明:** BLOB またはファイルの名前のセグメントの 1 つが長すぎます。
 
@@ -230,7 +230,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 - [BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)が Azure 名前付け規則に準拠していることを確認します。
 
 
-### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
+### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
 **エラーの説明:** マネージド ディスク共有に不適切なコンテナー名が指定されています。
 

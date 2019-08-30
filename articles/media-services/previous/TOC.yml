@@ -49,6 +49,15 @@
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
 - name: 方法
   items:
+    - name: レガシ コンポーネント
+      href: legacy-components.md
+      items:
+        - name: Azure Media Encoder から移行する
+          href: migrate-azure-media-encoder.md
+          displayName: AME
+        - name: Windows Azure Media Encoder から移行する
+          href: migrate-windows-azure-media-encoder.md
+          displayName: WAME
     - name: 管理
       items:
         - name: アカウント
@@ -72,7 +81,7 @@
             - name: ストレージ アクセス キーをローリングした後に Media Services を更新する
               href: media-services-roll-storage-access-keys.md
             - name: 複数のストレージ アカウントにわたって資産を管理する
-              href: meda-services-managing-multiple-storage-accounts.md
+              href: media-services-managing-multiple-storage-accounts.md
         - name: クォータと制限
           href: media-services-quotas-and-limitations.md
     - name: Postman を構成する
@@ -92,10 +101,10 @@
               href: media-services-portal-upload-files.md
             - name: .NET
               href: media-services-dotnet-upload-files.md
+              displayName: invalid character
             - name: REST
               href: media-services-rest-upload-files.md
-        - name: Aspera を使用した大きなファイルのアップロード
-          href: media-services-upload-files-with-aspera.md
+              displayName: invalid character
         - name: StorSimple を使用したファイルのアップロード
           href: media-services-upload-files-from-storsimple.md
         - name: 既存の BLOB をコピーする

@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 2420fc25795ec74939649fb8a17ead7c8cfdd1df
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489062"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032448"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>レポートを表示し、Azure AD エンタイトルメント管理 (プレビュー) にログインします。
 
@@ -29,6 +29,12 @@ ms.locfileid: "68489062"
 > Azure Active Directory (Azure AD) のエンタイトルメント管理は現在パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+ユーザーの割り当てレポートと Azure Active Directory の監査ログでは、ご利用のディレクトリ内のユーザーに関する追加情報が提供されます。 管理者は、ユーザーがアクセス権を持っているリソースを表示し、監査目的で要求ログを表示したり、ユーザーの要求の状態を確認したりすることができます。 この記事では、ユーザーの割り当てレポートと Azure AD の監査ログを使用する方法について説明します。
+
+次のビデオを視聴して、Azure Active Directory でエンタイトルメント管理を使用して、ユーザーのアクセス権を管理する方法について学習します。
+
+>[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-resources-a-user-has-access-to"></a>ユーザーがアクセスするリソースの表示
 

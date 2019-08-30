@@ -134,7 +134,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 `Push-OutputBinding` の呼び出しに使用できる有効なパラメーターを次に示します。
 
-| EnableAdfsAuthentication | Type | 位置 | 説明 |
+| 名前 | Type | 位置 | 説明 |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | string | 1 | 設定する出力バインディングの名前。 |
 | **`-Value`** | Object | 2 | 設定する出力バインディングの値。パイプライン ByValue から受け取ります。 |

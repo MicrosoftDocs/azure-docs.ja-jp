@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e18c5dfe3649f74a9f84c605785ca99748298bea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc78b08c25ada2bf1ed67f4c27246bc873823516
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086133"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>チュートリアル:Azure Active Directory と ZIVVER の統合
 
@@ -107,13 +107,13 @@ ZIVVER で Azure AD シングル サインオンを構成するには、次の�
 
     **[識別子]** テキスト ボックスに、`https://app.zivver.com/SAML/Zivver` という URL を入力します。
 
-5. ZIVVER アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier**  は  **user.userprincipalname** にマップされています。 ZIVVER アプリケーションでは、 **nameidentifier**  が  **user.mail** にマップされると想定されているため、 **[編集]**   アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+5. ZIVVER アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 ZIVVER アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
 6. その他に、ZIVVER アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | 名前空間 | ソース属性|
+    | EnableAdfsAuthentication | 名前空間 | ソース属性|
     | ---------------| --------------- |
     | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
@@ -218,7 +218,7 @@ ZIVVER で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-zivver-test-user"></a>ZIVVER テスト ユーザーの作成
 
-このセクションでは、ZIVVER で Britta Simon というユーザーを作成します。  [ZIVVER サポート チーム](https://support.zivver.com/)と連携し、ZIVVER プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ZIVVER で Britta Simon というユーザーを作成します。 [ZIVVER サポート チーム](https://support.zivver.com/)と連携し、ZIVVER プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

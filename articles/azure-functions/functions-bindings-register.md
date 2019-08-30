@@ -6,16 +6,15 @@ documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 5969c3e0d270b45347f8132b2d655ba2e56cb2c0
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 93ced443a73d5499d8b305770c3c866c26d540f0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625896"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086461"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 

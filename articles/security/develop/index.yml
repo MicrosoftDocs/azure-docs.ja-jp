@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Linux コンテナー内の Web アプリ</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">ペイメント カード業界</a>
   - title: 概念
     items:
       - type: list

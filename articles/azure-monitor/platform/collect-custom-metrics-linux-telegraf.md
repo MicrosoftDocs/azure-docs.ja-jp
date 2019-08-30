@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 14415b88cd6036642442ef9ae23e8dee301bb908
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8164a111b9ad5ebcc67c248586e2576046334b0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741557"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883239"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -33,23 +33,23 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 
 新しい Linux VM を作成するには、次の手順を実行します。 
 
-1. 左側のナビゲーション ウィンドウで  **[リソースの作成]**   オプションを選択します。 
-1. 「**仮想マシン**」を検索します。  
+1. 左側のナビゲーション ウィンドウの **[リソースの作成]** オプションを選択します。 
+1. 「**仮想マシン**」を検索します。  
 1. **[Ubuntu 16.04 LTS]** を選択し、 **[作成]** を選択します。 
-1. VM 名 ( **MyTelegrafVM** など) を指定します。  
-1. ディスクの種類を **SSD** のままにしておきます。  **azureuser** のように、**ユーザー名**を指定します。 
-1.  **[認証の種類]** で  **[パスワード]** を選択します。 次に、この VM への SSH に後から使用する予定のパスワードを入力します。 
-1.  **[新しいリソース グループの作成]** を選択します。  **myResourceGroup** のように、名前を指定します。 使用している  **[場所]** を選択します。  **[OK]** をクリックします。 
+1. VM 名 (**MyTelegrafVM** など) を指定します。  
+1. ディスクの種類を **SSD** のままにしておきます。 次に、**azureuser** のように、**ユーザー名**を指定します。 
+1. **[認証の種類]** で、 **[パスワード]** を選択します。 次に、この VM への SSH に後から使用する予定のパスワードを入力します。 
+1. **[新しいリソース グループの作成]** を選択します。 **myResourceGroup** のように、名前を指定します。 **[場所]** を選択します。 **[OK]** をクリックします。 
 
     ![Ubuntu VM を作成する](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
-1. VM のサイズを選択します。  **[コンピューティングの種類]**   や  **[ディスクの種類]** などで、フィルター処理できます。 
+1. VM のサイズを選択します。 たとえば、"**計算の種類**" または "**ディスクの種類**" でフィルター処理することができます。 
 
     ![Telegraph エージェントの概要の仮想マシンのサイズ](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1.  **[設定]**   ページの  **[ネットワーク]**  > **[ネットワーク セキュリティ グループ]**  > **[Select public inbound ports]\(パブリック受信ポートの選択)** を選択し、 **[HTTP]**  と  **[SSH (22)]** を選択します。 残りの部分は既定値のままにし、 **[OK]** を選択します。 
+1. **[設定]** ページの **[ネットワーク]**  >  **[ネットワーク セキュリティ グループ]**  >  **[Select public inbound ports]\(パブリック受信ポートの選択\)** の順に移動し、 **[HTTP]** と **[SSH (22)]** を選択します。 残りの部分は既定値のままにし、 **[OK]** を選択します。 
 
-1. 概要ページで、 **[作成]**   を選択して、VM のデプロイを開始します。 
+1. 概要ページで、 **[作成]** を選択して、VM のデプロイを開始します。 
 
 1. 対応する VM が、Azure portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。 
 
@@ -59,11 +59,11 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
  
 ## <a name="connect-to-the-vm"></a>VM に接続します 
 
-VM との SSH 接続を作成します。 VM の概要ページの  **[接続]**   ボタンを選択します。 
+VM との SSH 接続を作成します。 VM の概要ページの **[接続]** ボタンを選択します。 
 
 ![Telegraf VM の概要ページ](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
- **[Connect to virtual machine]\(仮想マシンへの接続\)**   ページで、ポート 22 を介して DNS 名で接続する既定のオプションをそのまま使用します。  **[VM ローカル アカウントを使用してログインする]** に、接続コマンドが表示されます。 ボタンをクリックして、このコマンドをコピーします。 SSH 接続コマンドの例を次に示します。 
+**[Connect to virtual machine]\(仮想マシンへの接続\)** ページで、ポート 22 を介して DNS 名で接続する既定のオプションをそのまま使用します。 **[VM ローカル アカウントを使用してログインする]** に、接続コマンドが表示されます。 ボタンをクリックして、このコマンドをコピーします。 SSH 接続コマンドの例を次に示します。 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -77,7 +77,7 @@ VM に Telegraf Debian パッケージをインストールするには、SSH �
 
 ```cmd
 # download the package to the VM 
-wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb 
+wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb 
 # install the package 
 sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
 ```
@@ -108,7 +108,7 @@ sudo systemctl start telegraf
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 
 
-1. 新しい  **[モニター]**   タブに移動します。  **[メトリック]** を選択します。  
+1. 新しい **[監視]** タブに移動します。次に、 **[メトリック]** を選択します。  
 
      ![[モニター] - [メトリック] (プレビュー)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
@@ -128,7 +128,7 @@ sudo systemctl start telegraf
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 
-必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 そのためには、仮想マシンのリソース グループを選択し、 **[削除]** を選択します。 削除するリソース グループの名前を確認します。 
+必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 そのためには、仮想マシンのリソース グループを選択し、 **[削除]** を選択します。 削除するリソース グループの名前を確認します。 
 
 ## <a name="next-steps"></a>次の手順
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。

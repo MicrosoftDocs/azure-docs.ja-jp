@@ -6,10 +6,9 @@ metadata:
   description: Translator Text を使用してテキストを複数の言語で翻訳する方法について説明します。
   services: cognitive-services
   author: swmachan
-  manager: Chris.Wendt
+  manager: nitinme
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: translator-text
   ms.topic: landing-page
   ms.date: 06/04/2019
   ms.author: swmachan

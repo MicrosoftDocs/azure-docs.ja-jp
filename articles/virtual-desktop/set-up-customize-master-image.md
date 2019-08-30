@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 2413a380adf32755452482d2b68d2055f7db666d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: abde79ab131719fe4f2963db98c7a6daa3419424
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620436"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876852"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -91,7 +91,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoam
 
 ### <a name="set-up-user-profile-container-fslogix"></a>ユーザー プロファイル コンテナーを設定する (FSLogix)
 
-FSLogix コンテナーをイメージの一部として含めるには、「[ホスト プールのユーザー プロファイル共有を設定する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start)を使用して FSLogix コンテナーの機能をテストできます。
+FSLogix コンテナーをイメージの一部として含めるには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)を使用して FSLogix コンテナーの機能をテストできます。
 
 ### <a name="configure-windows-defender"></a>Windows Defender を構成する
 
@@ -227,5 +227,5 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 - [Azure Resource Manager テンプレートを使用してホスト プールを作成する](create-host-pools-arm-template.md)
 - [チュートリアル:](create-host-pools-azure-marketplace.md)Azure Marketplace を使用してホスト プールを作成する
 - [PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)
-- [ホスト プールのユーザー プロファイル共有を設定する](create-host-pools-user-profile.md)
+- [ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)
 - [Windows Virtual Desktop の負荷分散方法を構成する](configure-host-pool-load-balancing.md)

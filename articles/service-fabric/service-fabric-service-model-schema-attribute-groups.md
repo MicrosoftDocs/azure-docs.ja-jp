@@ -548,12 +548,12 @@ ETW イベントをフィルター処理するレベル。 指定したレベル
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 オーバーライドする設定の名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 ##### <a name="xml-source"></a>XML ソース
@@ -864,12 +864,12 @@ ApplicationInstance ドキュメントと ServicePackage ドキュメントの�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 バージョン管理される項目の名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 ##### <a name="xml-source"></a>XML ソース

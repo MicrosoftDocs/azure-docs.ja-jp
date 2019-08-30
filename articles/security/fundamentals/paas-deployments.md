@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a562630ef19c134c227ef44b944c1dd921ff2e46
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726822"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098623"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -139,7 +139,7 @@ App Service 使用時のベスト プラクティスを次に示します。
 **詳細**: [App Service Environment](/azure/app-service/environment/intro) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](/azure/app-service/web-sites-integrate-with-vnet)」を参照してください。
 
 **ベスト プラクティス**: App Service 環境のセキュリティ状態を監視する。   
-**詳細**: Azure Security Center を使用して App Service 環境を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](/azure/security-center/security-center-virtual-machine-recommendations)を作成します。
+**詳細**: Azure Security Center を使用して App Service 環境を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/security-center-virtual-machine-protection.md)を作成します。
 
 > [!NOTE]
 > App Service の監視はプレビュー段階であり、Security Center の [Standard レベル](/azure/security-center/security-center-pricing)でのみ利用できます。

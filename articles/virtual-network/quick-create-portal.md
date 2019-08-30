@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
     | Setting | 値 |
     | ------- | ----- |
-    | EnableAdfsAuthentication | 「*myVirtualNetwork*」と入力します。 |
+    | 名前 | 「*myVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | Subscription | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -102,7 +102,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
     | Setting | 値 |
     | ------- | ----- |
-    | EnableAdfsAuthentication | 「*myvmstorageaccount*」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
+    | 名前 | 「*myvmstorageaccount*」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
     | アカウントの種類 | 既定値 **[ストレージ (汎用 v1)]** のままにします。 |
     | パフォーマンス | 既定値 **[標準]** のままにします。 |
     | レプリケーション | 既定値 **[ローカル冗長ストレージ (LRS)]** のままにします。 |

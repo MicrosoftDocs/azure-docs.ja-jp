@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: a7395280ed9a2e9dcb94a081f0b3bf10a28da719
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31612e10e7978e94f1ed467b5ffbecde40910ef9
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027793"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128462"
 ---
 # <a name="split-data-module"></a>Split Data (データの分割) モジュール
 

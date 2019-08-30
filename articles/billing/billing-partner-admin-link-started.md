@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 0448ffbccddc913bd6359f5f6bbf42988239afb4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502683"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706403"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -54,7 +54,7 @@ Microsoft パートナーは、お客様が Microsoft 製品を使用してビ�
 
 ### <a name="use-powershell-to-link-to-a-new-partner-id"></a>PowerShell を使用して新しいパートナー ID にリンクする
 
-1. [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) PowerShell モジュールをインストールします。
+1. [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) PowerShell モジュールをインストールします。
 
 2. ユーザー アカウントまたはサービス プリンシパルで顧客のテナントにサインインします。 詳細については、[PowerShell を使用したサインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)に関するページを参照してください。
 

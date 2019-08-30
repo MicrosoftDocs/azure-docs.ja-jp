@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 16659a335ef6126e75f5a9a99784e71afa056bef
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 08/05/2019
+ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479253"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816035"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
@@ -105,6 +105,10 @@ HDInsight では、Azure Monitor ログに追加できるクラスター固有�
 ![HDInsight 監視ソリューションのビュー](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
 クラスターは新規のクラスターであるため、レポートにはアクティビティが表示されません。
+
+## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
+
+Azure Monitor では、クラスター内のノードのパフォーマンス メトリックの収集と分析もサポートしています。 この機能の有効化および構成の詳細については、[Azure Monitor での Linux パフォーマンス データ ソース](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

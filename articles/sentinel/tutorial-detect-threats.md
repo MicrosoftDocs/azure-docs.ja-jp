@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad9c752898733286701db2d0f0b1fc40029b7521
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 2cc33a9ac55ae9e906d88b72476d4b5ee244d2c8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370712"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780421"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューを使用して脅威を検出する
 
@@ -28,7 +28,7 @@ ms.locfileid: "68370712"
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Azure Sentinel では高度なアラート ルールを作成して、環境での異常や脅威を詳しく調査するために割り当てて使用できるケースを生成できます。 
+Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Azure Sentinel では高度なアラート ルールを作成して、環境での異常や脅威を詳しく調査するために割り当てて使用できるインシデントを生成できます。 
 
 このチュートリアルは、Azure Sentinel で脅威を検出するためのものです。
 > [!div class="checklist"]
@@ -37,7 +37,7 @@ Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後
 
 ## <a name="create-detection-rules"></a>検出ルールの作成
 
-ケースを調査するには、最初に検出ルールを作成する必要があります。 
+インシデントを調査するには、最初に検出ルールを作成する必要があります。 
 
 > [!NOTE]
 > Azure Sentinel で生成されたアラートは、[Microsoft Graph Security](https://aka.ms/securitygraphdocs) を通じて使用できます。 詳細および統合パートナーについては、[Microsoft Graph Security アラートのドキュメント](https://aka.ms/graphsecurityreferencebetadocs)を参照してください。
@@ -77,9 +77,9 @@ Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後
 
 8. クエリを **[Set alert rule]** (アラート ルールの設定) フィールドに貼り付けると、直後に **[Logic alert simulation]** (ロジック アラート シミュレーション) の下でアラートのシミュレーションを確認でき、作成したアラートの特定の時間間隔を超えて生成されるデータの量を把握できます。 これは、 **[頻度]** と **[しきい値]** に対して設定したものに応じて異なります。 アラートが平均して過度に頻繁にトリガーされることがわかった場合は、平均のベースラインの上になるように、結果の数をより高く設定できます。
 
-9. **[作成]** をクリックして、アラート ルールを初期化します。 アラートが作成されると、アラートが含まれるケースが作成されます。 **[Security Analytics]** (Security Analytics) タブで、定義された検出ルールを行として確認できます。各ルールの一致 (トリガーされるアラート) 数も確認できます。 この一覧から、各ルールを有効にしたり、無効にしたり、削除したりできます。 また、各アラートの行の末尾の省略記号 (...) を右クリックで選択して、一致結果の編集、無効化、複製、表示、またはルールの削除を行えます。 **[Analytics]** ページは、有効にするテンプレートやテンプレートに基づいて作成するアラート ルールを含むアクティブなアラート ルールすべてのギャラリーです。
+9. **[作成]** をクリックして、アラート ルールを初期化します。 アラートが作成されると、アラートが含まれるインシデントが作成されます。 **[Security Analytics]** (Security Analytics) タブで、定義された検出ルールを行として確認できます。各ルールの一致 (トリガーされるアラート) 数も確認できます。 この一覧から、各ルールを有効にしたり、無効にしたり、削除したりできます。 また、各アラートの行の末尾の省略記号 (...) を右クリックで選択して、一致結果の編集、無効化、複製、表示、またはルールの削除を行えます。 **[Analytics]** ページは、有効にするテンプレートやテンプレートに基づいて作成するアラート ルールを含むアクティブなアラート ルールすべてのギャラリーです。
 
-1. アラート ルールの結果を **[ケース]** ページで確認できます。このページではトリアージを行い、[ケースを調査](tutorial-investigate-cases.md)し、脅威を修復できます。
+1. アラート ルールの結果を **[インシデント]** ページで確認できます。このページではトリアージを行い、[インシデントを調査](tutorial-investigate-cases.md)し、脅威を修復できます。
 
 
 

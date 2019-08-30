@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 0c50a321cbeb0d07a5039038ff796df00463ac8a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 964ecca015e440439885bbbd85cb720a3abd10a9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385674"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883513"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -114,8 +114,8 @@ ms.locfileid: "68385674"
 
 1. ページがまだアクティブになっていない場合は、左側のメニューで **[ユーザー]** を選択します。 
 2. ツール バーで **[Quota per user: 10 hours]\(ユーザーあたりのクォータ: 10 時間\)** を選択します。 
-3. **[ユーザーあたりのクォータ:]** ページで、各ユーザー (受講者) に付与する時間数を指定します。 
-    1. **[Total number of lab hours per user]\(ユーザーごとのラボ時間の合計数\)** 。 ユーザーは、**スケジュールされた時間**に加え、設定された時間数 (このフィールドに指定された時間) の間、各自の VM を使用できます。 このオプションを選ぶ場合は、テキスト ボックスに**時間数**を入力します。 
+3. **[ユーザーあたりのクォータ:]** ページで、各ユーザー (学生) に付与する時間数を指定します。 
+    1. **[Total number of lab hours per user]\(ユーザーごとのラボ時間の合計数\)** 。 ユーザーは、**スケジュールされた時間に加え**、設定された時間数 (このフィールドに指定された時間) の間、各自の VM を使用できます。 このオプションを選ぶ場合は、テキスト ボックスに**時間数**を入力します。 
 
         ![ユーザーあたりの時間数](../media/how-to-configure-student-usage/number-of-hours-per-user.png)。 
     1. **[0 hours (schedule only)]\(0 時間 (スケジュールされた時間のみ)\)** 。 ユーザーは、スケジュールされた時間、またはラボの所有者がユーザーのために VM をオンにしたときのみ、各自の VM を使用できます。

@@ -8,23 +8,87 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5a9bd554ec3b7ae4f84d6a0a4726af7ffea89e89
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477473"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850319"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
+この記事では、Runbook に関する一般的な問題とその解決方法について詳しく説明します。
+
+## <a name="steps-to-troubleshoot-runbooks"></a>Runbook のトラブルシューティング手順
+
+Azure Automation で Runbook を実行しているときにエラーが発生した場合は、次の手順を使用すると、問題が診断しやすくなります。
+
+1. **ローカル コンピューターで Runbook スクリプトが正常に実行されることを確認する:** 言語リファレンスと学習モジュールについては、[PowerShell のドキュメント](/powershell/scripting/overview)または [Python のドキュメント](https://docs.python.org/3/)を参照してください。
+
+   次のような一般的なエラーは、スクリプトをローカルで実行することによって検出し、解決することができます。
+
+   - **モジュールの不足**
+   - **構文エラー**
+   - **論理エラー**
+
+2. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** ご使用の Runbook でなんらかのモジュールをインポートする場合は、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に記載された手順に従い、それらのモジュールを Automation アカウントに取り込む必要があります。 詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
+
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Azure Automation Runbook の使用時に発生する認証エラー
+
+### <a name="login-azurerm"></a>シナリオ:Login-AzureRMAccount を実行してログインする
+
+#### <a name="issue"></a>問題
+
+Runbook を実行すると、次の例外を受け取ります。
+
+```error
+Run Login-AzureRMAccount to login.
+```
+
+#### <a name="cause"></a>原因
+
+このエラーには、次の 2 つの主要な原因があります。
+
+* AzureRM モジュールのバージョンが異なります。
+* 別のサブスクリプションのリソースにアクセスしようとしています。
+
+#### <a name="resolution"></a>解決策
+
+1 つの AzureRM モジュールを更新した後でこのエラーが発生する場合は、すべての AzureRM モジュールを同じバージョンに更新する必要があります。
+
+別のサブスクリプションのリソースにアクセスしようとしている場合は、次の手順に従ってアクセス許可を構成できます。
+
+1. Automation アカウントの実行アカウントにアクセスし、アプリケーション ID とサムプリントをコピーします。
+  ![アプリケーション ID とサムプリントをコピーする](../media/troubleshoot-runbooks/collect-app-id.png)
+1. Automation アカウントがホストされていないサブスクリプションの Access Control に移動し、新しいロールの割り当てを追加します。
+  ![アクセス制御](../media/troubleshoot-runbooks/access-control.png)
+1. 前のステップで収集したアプリケーション ID を追加します。 共同作成者のアクセス許可を選択します。
+   ![ロールの割り当てを追加する](../media/troubleshoot-runbooks/add-role-assignment.png)
+1. 次のステップのためにサブスクリプションの名前をコピーします。
+1. 次の Runbook コードを使用して、Automation アカウントから他のサブスクリプションへのアクセス許可をテストできるようになります。
+
+    "\<CertificateThumbprint\>" はステップ #1 でコピーした値に置き換え、"\<SubscriptionName\>" はステップ #4 でコピーした値に置き換えます。
+
+    ```powershell
+    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint "<CertificateThumbprint>"
+    #Select the subscription you want to work with
+    Select-AzureRmSubscription -SubscriptionName '<YourSubscriptionNameGoesHere>'
+
+    #Test and get outputs of the subscriptions you granted access.
+    $subscriptions = Get-AzureRmSubscription
+    foreach($subscription in $subscriptions)
+    {
+        Set-AzureRmContext $subscription
+        Write-Output $subscription.Name
+    }
+    ```
 
 ### <a name="sign-in-failed"></a>シナリオ:Azure アカウントにサインインできない
 
 #### <a name="issue"></a>問題
 
 `Add-AzureAccount` または `Connect-AzureRmAccount` コマンドレットを使用するときに、次のエラーを受け取ります。
-:
 
 ```error
 Unknown_user_type: Unknown User Type
@@ -36,20 +100,20 @@ Unknown_user_type: Unknown User Type
 
 #### <a name="resolution"></a>解決策
 
-次の手順で原因を突き止めます。  
+次の手順で原因を突き止めます。
 
-1. 特殊文字が使用されていないことを確認します。 このような特殊文字とは、Azure に接続するために使用している Automation 資格情報資産名に含まれる **\@** 文字などです。  
-2. ローカル PowerShell ISE エディターで、Azure Automation に保存されているユーザー名とパスワードを使用できることを確認します。 PowerShell ISE で次のコマンドレットを実行して、ユーザー名とパスワードが正しいことを確認できます。  
+1. 特殊文字が使用されていないことを確認します。 このような特殊文字とは、Azure に接続するために使用している Automation 資格情報資産名に含まれる **\@** 文字などです。
+2. ローカル PowerShell ISE エディターで、Azure Automation に保存されているユーザー名とパスワードを使用できることを確認します。 PowerShell ISE で次のコマンドレットを実行して、ユーザー名とパスワードが正しいことを確認できます。
 
    ```powershell
-   $Cred = Get-Credential  
+   $Cred = Get-Credential
    #Using Azure Service Management
-   Add-AzureAccount –Credential $Cred  
-   #Using Azure Resource Manager  
+   Add-AzureAccount –Credential $Cred
+   #Using Azure Resource Manager
    Connect-AzureRmAccount –Credential $Cred
    ```
 
-3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。 Azure Active Directory アカウントを正しく設定する方法については、「 [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) 」 (Azure Active Directory を使用して Azure を認証する) というブログ投稿を参照してください。  
+3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。 Azure Active Directory アカウントを正しく設定する方法については、「 [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) 」 (Azure Active Directory を使用して Azure を認証する) というブログ投稿を参照してください。
 
 4. 一時的なエラーと思われる場合は、認証をより強固にするために認証ルーチンに再試行ロジックを追加してみてください。
 
@@ -95,10 +159,10 @@ The subscription named <subscription name> cannot be found.
 
 #### <a name="resolution"></a>解決策
 
-次の手順に従って、Azure で認証されていること、および選択しようとしているサブスクリプションにアクセスできることを確認します。  
+次の手順に従って、Azure で認証されていること、および選択しようとしているサブスクリプションにアクセスできることを確認します。
 
 1. スクリプトがスタンドアロンで機能することを確認するには、Azure Automation の外部でそれをテストします。
-2. `Select-AzureSubscription` コマンドレットを実行する前に、必ず `Add-AzureAccount` コマンドレットを実行してください。 
+2. `Select-AzureSubscription` コマンドレットを実行する前に、必ず `Add-AzureAccount` コマンドレットを実行してください。
 3. Runbook の先頭に `Disable-AzureRmContextAutosave –Scope Process` を追加します。 このコマンドレットにより、すべての資格情報が現在の Runbook の実行にのみ適用されるようになります。
 4. それでもエラー メッセージが表示される場合は、`Add-AzureAccount` コマンドレットの後に **-AzureRmContext** パラメーターを追加してコードを変更してから、コードを実行します。
 
@@ -180,9 +244,9 @@ $jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRec
 ジョブ ストリームで、次のメッセージと共に Runbook のエラーが表示されます。
 
 ```error
-Connect-AzureRMAccount : Method 'get_SerializationSettings' in type 
-'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 
-'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 
+Connect-AzureRMAccount : Method 'get_SerializationSettings' in type
+'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly
+'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'
 does not have an implementation.
 At line:16 char:1
 + Connect-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
@@ -272,8 +336,8 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 このエラーは、次のいずれかの理由により発生する可能性があります。
 
-1. コマンドレットを含むモジュールが、Automation アカウントにインポートされていない
-2. コマンドレットを含むモジュールはインポートされているが、最新ではない
+* コマンドレットを含むモジュールが、Automation アカウントにインポートされていない
+* コマンドレットを含むモジュールはインポートされているが、最新ではない
 
 #### <a name="resolution"></a>解決策
 
@@ -297,15 +361,15 @@ The job was tried three times but it failed
 
 このエラーは、次のいずれかの問題のために発生します。
 
-1. メモリの制限。 サンドボックスに割り当てられるメモリの制限については、[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。 400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
+* メモリの制限。 サンドボックスに割り当てられるメモリの制限については、[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。 400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
 
-2. ネットワーク ソケット。 「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
+* ネットワーク ソケット。 「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
 
-3. モジュールに互換性がない。 このエラーは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
+* モジュールに互換性がない。 このエラーは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
 
-4. Runbook で、Azure サンドボックス内で実行されている Runbook 内の実行可能ファイルまたはサブプロセスを呼び出そうとしました。 このシナリオは Azure サンドボックスではサポートされていません。
+* Runbook で、Azure サンドボックス内で実行されている Runbook 内の実行可能ファイルまたはサブプロセスを呼び出そうとしました。 このシナリオは Azure サンドボックスではサポートされていません。
 
-5. Runbook により、例外データの出力ストリームへの書き込みが過剰に試行されました。
+* Runbook により、例外データの出力ストリームへの書き込みが過剰に試行されました。
 
 #### <a name="resolution"></a>解決策
 
@@ -313,7 +377,7 @@ The job was tried three times but it failed
 
 * メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータと同量のデータを処理しない、Runbook からの不要な出力を書き込まない、PowerShell Workflow Runbook に書き込むチェックポイントの数を検討する、などがあります。 `$myVar.clear()` などの clear メソッドを使用して変数をクリアし、`[GC]::Collect()` を使用してガベージ コレクションをすぐに実行できます。 これにより、実行時の Runbook のメモリ専有領域が小さくなります。
 
-* 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新します。  
+* 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新します。
 
 * 別の解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker には、Azure サンドボックスのようなメモリとネットワークの制限はありません。
 
@@ -341,9 +405,9 @@ Runbook が PowerShell ワークフローの場合、ワークフローが中断
 
 次の 3 つの解決策のいずれでもこの問題は解決されます。
 
-1. コマンドレット間で複雑なオブジェクトをパイプ処理する場合、これらのコマンドレットを InlineScript でラップします。
-2. オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。
-3. PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
+* コマンドレット間で複雑なオブジェクトをパイプ処理する場合、これらのコマンドレットを InlineScript でラップします。
+* オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。
+* PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
 
 ### <a name="runbook-fails"></a>シナリオ:Runbook が失敗するが、ローカルで実行すると動作する
 
@@ -355,21 +419,21 @@ Runbook として実行すると失敗するスクリプトが、ローカルで
 
 次のいずれかの理由により、Runbook として実行するとスクリプトが失敗する可能性があります。
 
-1. 認証の問題
-2. 必要なモジュールがインポートされていないか、または期限切れです。
-3. スクリプトでユーザーの操作が求められている場合があります。
-4. 一部のモジュールで、Windows コンピューター上にライブラリが存在することが想定されています。 これらのライブラリが、サンドボックスに存在しない可能性があります。
-5. 一部のモジュールが、サンドボックスで使用できるものとは異なるバージョンの .NET に依存します。
+* 認証の問題
+* 必要なモジュールがインポートされていないか、または期限切れです。
+* スクリプトでユーザーの操作が求められている場合があります。
+* 一部のモジュールで、Windows コンピューター上にライブラリが存在することが想定されています。 これらのライブラリが、サンドボックスに存在しない可能性があります。
+* 一部のモジュールが、サンドボックスで使用できるものとは異なるバージョンの .NET に依存します。
 
 #### <a name="resolution"></a>解決策
 
 次のいずれかの解決策でこの問題を解決できます。
 
-1. 適切に [Azure で認証されている](../manage-runas-account.md)ことを確認します。
-2. [Azure モジュールがインポートされて最新の状態である](../automation-update-azure-modules.md)ことを確認します。
-3. どのコマンドレットでも情報の入力が求められていないことを確認します。 この動作は、Runbook ではサポートされていません。
-4. モジュールの一部が、モジュールに含まれていないものに依存しているかどうかを確認します。
-5. Azure サンドボックスでは .NET Framework 4.7.2 が使用されており、それより後のバージョンを使用しているモジュールは動作しません。 この場合は、[Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) を使用する必要があります
+* 適切に [Azure で認証されている](../manage-runas-account.md)ことを確認します。
+* [Azure モジュールがインポートされて最新の状態である](../automation-update-azure-modules.md)ことを確認します。
+* どのコマンドレットでも情報の入力が求められていないことを確認します。 この動作は、Runbook ではサポートされていません。
+* モジュールの一部が、モジュールに含まれていないものに依存しているかどうかを確認します。
+* Azure サンドボックスでは .NET Framework 4.7.2 が使用されており、それより後のバージョンを使用しているモジュールは動作しません。 この場合は、[Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) を使用する必要があります
 
 これらの解決策のいずれでも問題が解決しない場合は、[ジョブのログ](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)で詳細を調べて、Runbook が失敗する原因を確認してください。
 
@@ -389,10 +453,10 @@ The quota for the monthly total job run time has been reached for this subscript
 
 #### <a name="resolution"></a>解決策
 
-毎月 500 分以上の処理を使用する場合、サブスクリプションを Free レベルから Basic レベルに変更する必要があります。 次の手順で Basic レベルにアップグレードできます。  
+毎月 500 分以上の処理を使用する場合、サブスクリプションを Free レベルから Basic レベルに変更する必要があります。 次の手順で Basic レベルにアップグレードできます。
 
-1. Azure サブスクリプションにサインインします。  
-2. アップグレードする Automation アカウントを選択します。  
+1. Azure サブスクリプションにサインインします。
+2. アップグレードする Automation アカウントを選択します。
 3. **[設定]**  >  **[価格]** の順にクリックします。
 4. ページ下部にある **[有効]** をクリックして、アカウントを **Basic** レベルにアップグレードします。
 
@@ -412,11 +476,11 @@ Runbook ジョブがエラーで失敗します。
 
 #### <a name="resolution"></a>解決策
 
-次の解決策のいずれでもこの問題は解決されます。  
+次の解決策のいずれでもこの問題は解決されます。
 
-* コマンドレット名を正しく入力していることを確認します。  
-* Automation アカウントにコマンドレットが存在し、競合がないことを確認します。 コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、`Get-Command <CommandName>` を実行します。 コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。  
-* 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで、この問題を解決できます。 たとえば、**ModuleName\CmdletName** を使用できます。  
+* コマンドレット名を正しく入力していることを確認します。
+* Automation アカウントにコマンドレットが存在し、競合がないことを確認します。 コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、`Get-Command <CommandName>` を実行します。 コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。
+* 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで、この問題を解決できます。 たとえば、**ModuleName\CmdletName** を使用できます。
 * ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュールとコマンドレットがハイブリッド worker をホストしているマシンにインストールされていることを確認します。
 
 ### <a name="long-running-runbook"></a>シナリオ:実行時間の長い Runbook が完了しない

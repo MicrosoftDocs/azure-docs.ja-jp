@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 93a6d0a42d6d7f07dd8947ce9f8ae99a39d44475
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564143"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114847"
 ---
 # <a name="install-and-run-face-containers"></a>Face コンテナーのインストールと実行
 
@@ -32,7 +32,7 @@ Face API コンテナーを使用する前に、次の前提条件を満たす�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> Windows では、Linux コンテナーをサポートするように Docker を構成しておく必要もあります。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の基本的概念を理解しておく必要があります。 また、基本的な `docker` コマンドの知識も必要です。| 
-|Face リソース |コンテナーを使用するには、以下が必要です。<br><br>Azure **Face** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの **[概要]** ページと **[キー]** ページで確認できます。 これらは、コンテナーの起動に必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つのリソース キーのうちのどちらか。<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。
+|Face リソース |コンテナーを使用するには、以下が必要です。<br><br>Azure **Face** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの **[概要]** ページと **[キー]** ページで確認できます。 これらは、コンテナーの起動に必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。
 
 ## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
 
@@ -118,7 +118,7 @@ ApiKey={API_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-コンテナーの API のホストとしては `https://localhost:5000` を使用します。
+コンテナーの API のホストとしては `http://localhost:5000` を使用します。
 
 
 <!--  ## Validate container is running -->
@@ -150,7 +150,6 @@ Face API コンテナーにより、Azure アカウントの Face API リソー�
 
 この記事では、Face API コンテナーをダウンロード、インストール、および実行する方法の概念とワークフローについて説明しました。 要約すると:
 
-* Face API には、キー フレーズ抽出、言語検出、感情分析を提供する、Docker 用の 3 つの Linux コンテナーが用意されています。
 * コンテナー イメージは Azure Container Registry からダウンロードされます。
 * コンテナー イメージを Docker で実行します。
 * REST API または SDK のいずれかを使用して、コンテナーのホスト URI を指定することによって、Face API コンテナーの操作を呼び出すことができます。

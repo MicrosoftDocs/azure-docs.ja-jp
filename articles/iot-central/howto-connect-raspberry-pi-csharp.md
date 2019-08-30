@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3feb0b2b50851903bbd6799f46d489879e62bf43
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714422"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876218"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 この記事では、デバイス開発者として、C# プログラミング言語を使用して Raspberry Pi を Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
@@ -44,7 +46,7 @@ ms.locfileid: "64714422"
   - Current
   - ファン速度
   - IR 切り替え。
-- Properties
+- properties
   - Die number デバイス プロパティ
   - Location クラウド プロパティ
 
@@ -326,9 +328,9 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1,000    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg     | -2000   | 2000    | 0              |
 | accelerometerY | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
@@ -344,7 +346,7 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
 | Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
-| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
+| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 トグル設定
 
@@ -352,7 +354,7 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | オフ     |
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
 | Type            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |

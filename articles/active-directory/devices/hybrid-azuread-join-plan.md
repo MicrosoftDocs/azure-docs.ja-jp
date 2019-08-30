@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562128"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562103"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -101,7 +101,7 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>ID インフラストラクチャに基づいてシナリオを選択する
 
-ハイブリッド Azure AD 参加は、マネージド環境とフェデレーション環境の両方で動作します。  
+Hybrid Azure AD 参加は、UPN がルーティング可能かどうかに応じて、マネージド環境とフェデレーション環境の両方で動作します。 サポートされるシナリオについては、ページ下部の表を参照してください。  
 
 ### <a name="managed-environment"></a>マネージド環境
 
@@ -111,12 +111,18 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 
 ### <a name="federated-environment"></a>フェデレーション環境
 
-フェデレーション環境には、以下の要件をサポートする ID プロバイダーが必要です。
+フェデレーション環境には、以下の要件をサポートする ID プロバイダーが必要です。 Active Directory フェデレーション サービス (AD FS) を使用しているフェデレーション環境がある場合は、以下の要件は既にサポートされています。
 
-- **WS-Trust プロトコル:** このプロトコルは、Windows の現在のハイブリッド Azure AD 参加デバイスを Azure AD で認証するために必要です。
 - **WIAORMULTIAUTHN 要求:** この要求は、Windows ダウンレベル デバイスに対してハイブリッド Azure AD 参加を行うために必要です。
+- **WS-Trust プロトコル:** このプロトコルは、Windows の現在のハイブリッド Azure AD 参加デバイスを Azure AD で認証するために必要です。 AD FS を使用している場合は、次の WS-Trust エンドポイントを有効にする必要があります。`/adfs/services/trust/2005/windowstransport`  
+`/adfs/services/trust/13/windowstransport`  
+  `/adfs/services/trust/2005/usernamemixed` 
+  `/adfs/services/trust/13/usernamemixed`
+  `/adfs/services/trust/2005/certificatemixed` 
+  `/adfs/services/trust/13/certificatemixed` 
 
-Active Directory フェデレーション サービス (AD FS) を使用しているフェデレーション環境がある場合は、上記の要件は既にサポートされています。
+> [!WARNING] 
+> **adfs/services/trust/2005/windowstransport** と **adfs/services/trust/13/windowstransport** はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとして公開することはできません。 WS-Trust WIndows エンドポイントを無効にする方法の詳細については、[プロキシの WS-Trust Windows エンドポイントを無効にする方法](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)に関するセクションを参照してください。 どのエンドポイントが有効になっているかは、AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** で確認できます。
 
 > [!NOTE]
 > Azure AD は、マネージド ドメインでのスマートカードや証明書をサポートしていません。
@@ -130,7 +136,7 @@ Active Directory フェデレーション サービス (AD FS) を使用して�
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加でのオンプレミス AD UPN サポートを確認する
 
-ときには、オンプレミスの AD UPN が Azure AD UPN と異なる場合があります。 このような場合、Windows 10 の Hybrid Azure AD 参加では、[認証方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、オンプレミスの AD UPN のサポートが提供されます。 環境内に存在できるオンプレミスの AD UPN は 2 種類あります。
+ときには、オンプレミスの AD UPN が Azure AD UPN と異なる場合があります。 このような場合、Windows 10 の Hybrid Azure AD 参加では、[認証方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、オンプレミスの AD UPN のサポートが提供されます。 環境内に存在できるオンプレミスの AD UPN は 2 種類あります。
 
 - ルーティング可能な UPN:ルーティング可能な UPN には、ドメイン レジストラーに登録されている有効な確認済みドメインがあります。 たとえば、contoso.com が Azure AD 内のプライマリ ドメインの場合、contoso.org は、Contoso 社によって所有され、[Azure AD で確認](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)されているオンプレミスの AD 内のプライマリ ドメインです。
 - ルーティング不可能な UPN:ルーティング不可能な UPN には、確認済みドメインはありません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com が Azure AD 内のプライマリ ドメインの場合、contoso.local はオンプレミスの AD 内のプライマリ ドメインですが、インターネットで確認可能なドメインではなく、Contoso 社のネットワーク内でのみ使用されます。

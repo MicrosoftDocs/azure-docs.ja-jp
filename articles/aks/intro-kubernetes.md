@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 5515951a9bde596935f4c603ffd9e088f74dee45
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67615155"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
@@ -23,7 +23,7 @@ Azure portal では、Azure CLI、または Resource Manager テンプレート�
 
 Kubernetes の基礎の詳細については、[AKS における Kubernetes の中心概念][concepts-clusters-workloads]に関するページを参照してください。
 
-まず、AKS のクイック スタートを完了、[Azure portal で][aks-portal] or [with the Azure CLI][aks-cli]します。
+開始するには、[Azure portal][aks-portal] で、または [Azure CLI][aks-cli] を使用して、AKS のクイックスタートを完了します。
 
 ## <a name="access-security-and-monitoring"></a>アクセス、セキュリティ、および監視
 
@@ -57,7 +57,7 @@ AKS ノードは Azure 仮想マシンで実行されます。 ストレージ�
 
 Azure Kubernetes Service では、複数の Kubernetes バージョンを提供しています。 AKS で新しいバージョンが使用できるようになると、Azure portal または Azure CLI を使用してクラスターをアップグレードできます。 アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に切断およびドレインされます。
 
-ライフ サイクルのバージョンの詳細については、[AKS でサポートされている Kubernetes のバージョン][aks-supported versions]. For steps on how to upgrade, see [Upgrade an Azure Kubernetes Service (AKS) cluster][aks-upgrade]に関するページを参照してください。
+ライフ サイクルのバージョンの詳細については、[AKS でサポートされている Kubernetes のバージョン][aks-supported versions]に関するページを参照してください。 アップグレードする方法の手順については、「[Azure Kubernetes Service (AKS) クラスターのアップグレード][aks-upgrade]」を参照してください。
 
 ### <a name="gpu-enabled-nodes"></a>GPU 対応ノード
 
@@ -71,7 +71,7 @@ AKS は GPU 対応ノード プールの作成をサポートしています。 
 
 詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
-使用して動的の永続ボリュームの概要[Azure Disks][azure-disk] or [Azure Files][azure-files]します。
+[Azure Disks][azure-disk] または [Azure Files][azure-files] を使用して、動的な永続ボリュームの利用を開始してください。
 
 ## <a name="virtual-networks-and-ingress"></a>仮想ネットワークとイングレス
 

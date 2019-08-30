@@ -3,19 +3,21 @@ title: Azure IoT Central のデバイス接続機能 | Microsoft Docs
 description: この記事では、Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 533327ca1d202f15376e580d20317ddaf0b1d302
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0088cc2c2bd30748a8a62217c76f962dd1b174f8
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693193"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019981"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 この記事では、Microsoft Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 
@@ -87,7 +89,7 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 - [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) のサンプル実装。
 
-- [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)。
+- [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)。
 
 ### <a name="for-testing-purposes-only"></a>テスト目的のみ
 

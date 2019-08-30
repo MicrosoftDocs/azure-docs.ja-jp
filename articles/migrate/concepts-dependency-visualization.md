@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312217"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102888"
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -27,8 +27,8 @@ Server Assessment の依存関係可視化機能を使用すると、移行評�
 ## <a name="before-you-start"></a>開始する前に
 
 - Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
-- プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールです。
-- マシンが Azure Migrate で検出されていることを確認します。これは、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に Azure Migrate アプライアンスを設定することで実行できます。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成できる評価には、2 つの種類があります。 [詳細情報](migrate-appliance.md)。
+- プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
+- マシンが Azure Migrate で検出されていることを確認します。これは、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に Azure Migrate アプライアンスを設定することで実行できます。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment にメタデータとパフォーマンス データを送信します。 [詳細情報](migrate-appliance.md)。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
@@ -36,7 +36,7 @@ Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](
 - 依存関係の視覚化を利用するために、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。
 - Azure Migrate プロジェクトが作成されている同じサブスクリプションのみに、ワークスペースを作成するか、アタッチすることができます。
 - Log Analytics ワークスペースをプロジェクトにアタッチするには:
-    1. **[サーバー]** タブの **[Azure Migrate: Server Assessment]** タイルで、 **[概要]** をクリックします。
+    1. **[サーバー]** タブの **[Azure Migrate:Server Assessment]** タイルで、 **[概要]** をクリックします。
     2. **[概要]** で下矢印をクリックして、 **[Essentials]** を展開します。
     3. **[OMS ワークスペース]** で、 **[構成が必要]** をクリックします。
     4. **[ワークスペースの構成]** で、新しいワークスペースを作成するか、または既存のものを使用するかを指定します。
@@ -58,7 +58,7 @@ Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](
 依存関係の視覚化を使用するには、分析するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。  
 
 - 各マシンに [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) をインストールする必要があります。 MMA エージェントのインストール方法の詳細については、[こちら](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)をご覧ください。
-- 各マシンに [Dependency Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) をインストールする必要があります。 依存関係エージェントのインストール方法の詳細については、[こちら](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)をご覧ください。
+- 各マシンに [Dependency Agent](../azure-monitor/platform/agents-overview.md#dependency-agent) をインストールする必要があります。 依存関係エージェントのインストール方法の詳細については、[こちら](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)をご覧ください。
 - また、インターネットに接続されていないマシンの場合、それらに Log Analytics ゲートウェイをダウンロードしてインストールする必要があります。
 
 依存関係の視覚化を使用している場合を除き、評価するマシンにこれらのエージェントは不要です。

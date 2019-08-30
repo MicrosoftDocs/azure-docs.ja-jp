@@ -9,18 +9,17 @@ editor: ''
 tags: azure-service-management
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9c0306f9b9d89962a4dd3cb05c168db3ec1ba4c1
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0ff8527fc7a811ffc77c7807899bf6ee1dac9924
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618832"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098435"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>CLI を使用して Web アプリをバックアップから復元する
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/15/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: c466c11cc51ca8d8efcf9ff4e86a9dbd2fd4930c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2a6f12bfe7aa3de028039d00c259a606d028a0e5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985652"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614597"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>チュートリアル:Async Java SDK を使って Java アプリを構築し SQL API アカウントに格納されているデータを管理する
 
@@ -114,7 +114,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>データベースを作成する
 
-DocumentClient クラスの `createDatabaseIfNotExists()` メソッドを使用して、Azure Cosmos DB データベースを作成します。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
+DocumentClient クラスの `createDatabaseIfNotExists()` メソッドを使用して、ご自分の Azure Cosmos データベースを作成します。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 

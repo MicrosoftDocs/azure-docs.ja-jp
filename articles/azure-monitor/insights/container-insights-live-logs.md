@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 968ee4c8bb5d7e09ef3c345c46f6c7b839e0e25a
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990031"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035358"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>ログとイベントをリアルタイムで表示する方法 (プレビュー)
 コンテナー用 Azure Monitor (現在、プレビュー段階) には、kubectl コマンドを実行せずに、Azure Kubernetes Service (AKS) コンテナーのログ (stdout と stderr) とイベントのライブ ビューを提供する機能が含まれています。 いずれかのオプションを選択すると、 **[ノード]** 、 **[コントローラー]** 、 **[コンテナー]** ビューのパフォーマンス データ テーブルの下に新しいウィンドウが表示されます。 ここにはコンテナー エンジンによって生成されたライブ ログおよびイベントが表示され、リアルタイムでの問題のトラブルシューティングに一層役立てることができます。
@@ -72,7 +72,7 @@ Kubernetes RBAC 認証を有効にした場合は、クラスター ロール �
 
 ユーザー認証に Azure Active Directory (AD) を使うように AKS を構成できます。 これを初めて構成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/azure-ad-integration.md)」を参照してください。 その手順の中で[クライアント アプリケーション](../../aks/azure-ad-integration.md#create-the-client-application)を作成するには、次のものを指定します。
 
-- **リダイレクト URI (省略可能)** : これは **Web** アプリケーションの種類であり、ベース URL の値は `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` である必要があります。
+-  **リダイレクト URI**:**Web** アプリケーションの種類を 2 つ作成する必要があります。 最初のベース URL の値は `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`、2番目のベース URL の値は `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にする必要があります。
 - アプリケーションを登録した後、 **[概要]** ページの左側のウィンドウから **[認証]** を選択します。 **[認証]** ページで、 **[詳細設定]** の **[アクセス トークン]** と **[ID トークン]** を暗黙的に許可してから、変更内容を保存します。
 
 >[!NOTE]

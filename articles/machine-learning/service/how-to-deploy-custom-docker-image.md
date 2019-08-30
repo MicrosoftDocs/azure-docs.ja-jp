@@ -10,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638429"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990525"
 ---
-# <a name="deploy-a-model-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをデプロイする
+# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをデプロイする
 
 Azure Machine Learning service を使用してトレーニング済みモデルをデプロイするときにカスタム Docker イメージを使用する方法について説明します。
 
@@ -40,12 +40,12 @@ Azure Machine Learning service には既定の Docker イメージが用意さ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning service ワークグループ。 詳細については、[ワークスペースの作成](setup-create-workspace.md)に関する記事を参照してください。
-* Azure Machine Learning SDK。 詳細については、「[ワークスペースの作成](setup-create-workspace.md#sdk)」の記事の Python SDK のセクションを参照してください。
+* Azure Machine Learning service ワークグループ。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 * インターネット上でアクセスできる [Azure Container Registry](/azure/container-registry) またはその他の Docker レジストリ。
-* このドキュメントの手順は、モデルのデプロイの一部として__推論構成__オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイ先と方法](how-to-deploy-and-where.md#prepare-to-deploy)に関するページの「デプロイを準備する」セクションを参照してください。
+* このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイ先と方法](how-to-deploy-and-where.md#prepare-to-deploy)に関するページの「デプロイを準備する」セクションを参照してください。
 
 ## <a name="create-a-custom-image"></a>カスタム イメージを作成する
 
@@ -53,14 +53,14 @@ Azure Machine Learning service には既定の Docker イメージが用意さ�
 
 * Azure Machine Learning service ワークスペース用に作成された Azure Container Registry と、スタンドアロンの Azure Container Registry のどちらを使用しますか。
 
-    __ワークスペースのコンテナー レジストリ__に格納されているイメージを使用するときは、そのレジストリの認証を受ける必要はありません。 認証はワークスペースによって処理されます。
+    __ワークスペースのコンテナー レジストリ__ に格納されているイメージを使用するときは、そのレジストリの認証を受ける必要はありません。 認証はワークスペースによって処理されます。
 
     > [!WARNING]
-    > ワークスペースの Azure Container Registry は、ワークスペースを使用して__モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
+    > ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
 
     ワークスペースの Azure Container Registry の名前を取得する方法については、この記事の [コンテナー レジストリ名の取得](#getname)のセクションを参照してください。
 
-    __スタンドアロン コンテナー レジストリ__に格納されているイメージを使用する場合は、少なくとも読み取りアクセス権を持つサービス プリンシパルを構成する必要があります。 次に、レジストリのイメージを使用するユーザーにサービス プリンシパル ID (ユーザー名) とパスワードを提供します。 例外は、コンテナー レジストリを一般にアクセス可能にする場合です。
+    __スタンドアロン コンテナー レジストリ__ に格納されているイメージを使用する場合は、少なくとも読み取りアクセス権を持つサービス プリンシパルを構成する必要があります。 次に、レジストリのイメージを使用するユーザーにサービス プリンシパル ID (ユーザー名) とパスワードを提供します。 例外は、コンテナー レジストリを一般にアクセス可能にする場合です。
 
     プライベート Azure Container Registry の作成については、[プライベート コンテナー レジストリの作成](/azure/container-registry/container-registry-get-started-azure-cli)に関するページを参照してください。
 
@@ -81,7 +81,7 @@ Azure Machine Learning service には既定の Docker イメージが用意さ�
 このセクションでは、Azure Machine Learning service ワークスペースの Azure Container Registry の名前を取得する方法について説明します。
 
 > [!WARNING]
-> ワークスペースの Azure Container Registry は、ワークスペースを使用して__モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
+> ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
 
 Azure Machine Learning service を使用してモデルのトレーニングまたはデプロイを既に行っている場合は、ワークスペース用のコンテナー レジストリが作成されています。 このコンテナー レジストリの名前を確認するには、次の手順を実行します。
 
@@ -98,6 +98,8 @@ Azure Machine Learning service を使用してモデルのトレーニングま�
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
     ```
+
+    [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
     次のテキストのような情報が返されます。
 
@@ -165,10 +167,10 @@ Azure Container Registry に既存のイメージをアップロードする詳�
 カスタム イメージを使用するには、次の情報が必要です。
 
 * __イメージ名__。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` は Microsoft が提供する基本的な Docker イメージへのパスです。
-* イメージが__プライベート リポジトリ__内にある場合は、次の情報が必要です。
+* イメージが __プライベート リポジトリ__ 内にある場合は、次の情報が必要です。
 
-    * レジストリの__アドレス__。 たとえば、「 `myregistry.azureecr.io` 」のように入力します。
-    * レジストリへの読み取りアクセス権を持つサービス プリンシパルの__ユーザー名__および__パスワード__。
+    * レジストリの __アドレス__。 たとえば、「 `myregistry.azureecr.io` 」のように入力します。
+    * レジストリへの読み取りアクセス権を持つサービス プリンシパルの __ユーザー名__ および __パスワード__。
 
     この情報がわからない場合は、イメージを含む Azure Container Registry の管理者に相談してください。
 
@@ -190,7 +192,7 @@ Microsoft は、一般公開されているリポジトリにいくつかの doc
 > CUDA または TensorRT を使用する Microsoft イメージを使用できるのは Microsoft Azure サービスのみです。
 
 > [!TIP]
->__モデルを Azure Machine Learning コンピューティングでトレーニングする場合__、__バージョン 1.0.22 以降__の Azure Machine Learning SDK を使用して、トレーニング時にイメージが作成されます。 このイメージの名前を見つけるには、`run.properties["AzureML.DerivedImageName"]` を使用します。 次の例は、このイメージを使用する方法を示しています。
+>__モデルを Azure Machine Learning コンピューティングでトレーニングする場合__、__バージョン 1.0.22 以降__ の Azure Machine Learning SDK を使用して、トレーニング時にイメージが作成されます。 このイメージの名前を見つけるには、`run.properties["AzureML.DerivedImageName"]` を使用します。 次の例は、このイメージを使用する方法を示しています。
 >
 > ```python
 > # Use an image built during training with SDK 1.0.22 or greater
@@ -213,7 +215,7 @@ inference_config.base_image = "myregistry.azurecr.io/myimage:v1"
 inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-ワークスペース内にない__プライベート コンテナー レジストリ__のイメージを使用するには、リポジトリのアドレスとユーザー名とパスワードを指定する必要があります。
+ワークスペース内にない __プライベート コンテナー レジストリ__ のイメージを使用するには、リポジトリのアドレスとユーザー名とパスワードを指定する必要があります。
 
 ```python
 # Use an image available in a private Container Registry

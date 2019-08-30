@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: b2670ec844df192bb73e8b1e76b1ebf611b2539e
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ab573d1d9ca9d9db39135ea76e555bb0720d7b68
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619379"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68878794"
 ---
 # <a name="supported-languages"></a>サポートされている言語
 
@@ -57,4 +57,4 @@ ms.locfileid: "68619379"
 * [Stream Analytics](../../azure-monitor/app/export-power-bi.md)
 
 ## <a name="unsupported-sdks"></a>サポートされていない SDK
-Microsoft は、コミュニティでサポートされている他の SDK がいくつか存在することを認識しており、その一部に寄稿も行ってきました。 ただし、Azure Monitor では、このページに記載されているサポート対象の SDK を使用した場合のサポートのみが提供されます。 Microsoft は、他の言語のサポートを拡大する機会を常に評価していますので、[GitHub のお知らせ](https://github.com/microsoft/ApplicationInsights-Announcements/issues)ページに従って、最新の SDK ニュースをぜひ受信してください。
+Microsoft は、コミュニティでサポートされている他の SDK がいくつか存在することを認識しています。 ただし、Azure Monitor では、このページに記載されているサポート対象の SDK を使用した場合のサポートのみが提供されます。 Microsoft は、他の言語のサポートを拡大する機会を常に評価していますので、[GitHub のお知らせ](https://github.com/microsoft/ApplicationInsights-Announcements/issues)ページに従って、最新の SDK ニュースをぜひ受信してください。 

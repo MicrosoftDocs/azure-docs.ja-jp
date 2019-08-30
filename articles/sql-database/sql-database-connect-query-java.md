@@ -10,15 +10,15 @@ author: ajlam
 ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.custom: seo-java-july2019
-ms.openlocfilehash: 273f8ad080b80a58b63e70ab2aa311c9c498d491
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.custom: seo-java-july2019. seo-java-august2019
+ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640072"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624077"
 ---
-# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>クイック スタート:Java を使用して Azure SQL データベースに照会する
+# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>クイック スタート:Java を使用して Azure SQL データベースに接続し、クエリを実行します。
 
 この記事では、[Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) を使用して Azure SQL データベースに接続する方法を紹介します。 その後、T-SQL ステートメントを使用してデータを照会することができます。
 
@@ -30,12 +30,12 @@ ms.locfileid: "68640072"
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|
-  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  | Create| [ ポータル ](sql-database-single-database-get-started.md) | [ ポータル ](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
-  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
-  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  | 構成 | [ サーバー レベルの IP ファイアウォール規則 ](sql-database-server-level-firewall-rule.md)| [VM からの接続 ](sql-database-managed-instance-configure-vm.md)|
+  |||[ オンサイトからの接続 ](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する ](sql-database-managed-instance-get-started-restore.md)
   |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
   
   > [!IMPORTANT]
@@ -43,11 +43,11 @@ ms.locfileid: "68640072"
 
 - ご使用のオペレーティング システムに対応した、以下の Java 関連のソフトウェアをインストール済みであること。
 
-  - **MacOS** では、Homebrew と Java をインストールした後、Maven をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) を参照してください。
+  - **MacOS** では、Homebrew と Java をインストールした後、Maven をインストールします。 [ 手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) を参照してください。
 
-  - **Ubuntu** では、Java と Java Development Kit をインストールした後、Maven をインストールします。 [手順 1.2.、手順 1.3.、手順 1.4.](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) を参照してください。
+  - **Ubuntu** では、Java と Java Development Kit をインストールした後、Maven をインストールします。 [ 手順 1.2.、手順 1.3.、手順 1.4.](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) を参照してください。
 
-  - **Windows** では、Java をインストールした後、Maven をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) を参照してください。
+  - **Windows** では、Java をインストールした後、Maven をインストールします。 [ 手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) を参照してください。
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
@@ -55,7 +55,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+2. **[SQL データベース]** を選択するか、 **[SQL マネージド インスタンス]** ページを開きます。
 
 3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。 
 
@@ -167,8 +167,8 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="next-steps"></a>次の手順
 
-- [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)  
+- [ 最初の Azure SQL データベースの設計 ](sql-database-design-first-database.md)  
 
-- [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)  
+- [SQL Server 用 Microsoft JDBC ドライバー ](https://github.com/microsoft/mssql-jdbc)  
 
-- [問題の報告/質問](https://github.com/microsoft/mssql-jdbc/issues)  
+- [ 問題の報告/質問 ](https://github.com/microsoft/mssql-jdbc/issues)  

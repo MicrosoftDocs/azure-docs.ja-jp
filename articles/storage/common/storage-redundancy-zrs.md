@@ -5,21 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5fefe469bfac4816a67c6ceb344f12c1e52de60c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550453"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016424"
 ---
-# <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション
+# <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>高可用 Azure Storage アプリケーションを構築するためのゾーン冗長ストレージ (ZRS)
+
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>サポート範囲とリージョンの可用性
+
 現在、ZRS は標準の汎用 v2 のアカウントの種類をサポートしています。 ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。
 
 ZRS は、ブロック BLOB、非ディスク ページ BLOB、ファイル、テーブル、およびキューに使用できます。
@@ -45,6 +47,7 @@ Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予�
 - マネージド ディスクでは ZRS はサポートされていません。 Standard SSD Managed Disks のスナップショットとイメージを、Standard HDD ストレージに保存できます。また、[LRS オプションと ZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>ゾーンが利用不可になった場合
+
 データは、ゾーンが使用できなくなった場合でも読み取り操作と書き込み操作の両方にアクセスできます。 一時的な障害の処理の方法に従うことをお勧めします。 これらの方法には、指数バックオフを使用した再試行ポリシーの実行などがあります。
 
 ゾーンが利用不可になると、Azure は DNS の再指定などのネットワークの更新を実行します。 このような更新は、更新が完了する前にデータにアクセスしている場合、アプリケーションに影響を与える可能性があります。
@@ -52,6 +55,7 @@ Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予�
 ZRS は、複数のゾーンが永続的に影響を受けるリージョンの災害からデータを保護することはできませんが、 データが一時的に利用できなくなった場合は、そのデータの回復性を提供します。 リージョンの災害から保護するには、geo 冗長ストレージ (GRS) を使用することをお勧めします。 GRS について詳しくは、「[geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)」をご覧ください。
 
 ## <a name="converting-to-zrs-replication"></a>ZRS レプリケーションへの変換
+
 LRS、GRS、および RA-GRS 間の移行は簡単です。 アカウントの冗長性の種類を変更するには、Azure portal またはストレージ リソース プロバイダー API を使用します。 その後 Azure は、データを適宜レプリケートします。 
 
 ZRS へのデータ移行には別の戦略が必要です。 ZRS 移行には、リージョン内の 1 つのストレージ スタンプから複数のスタンプへのデータの物理的移動が含まれます。
@@ -61,14 +65,14 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
 - 既存のアカウントから新しい ZRS アカウントにデータを手動でコピーまたは移動する。
 - ライブ マイグレーションを要求する。
 
-手動の移行を実行することを強くお勧めします。 手動の移行はライブ マイグレーションよりも高い柔軟性を備えています。 手動の移行では、タイミングを制御できます。
+特定の日付までに移行を完了する必要がある場合は、手動の移行を実行することを検討してください。 手動の移行はライブ マイグレーションよりも高い柔軟性を備えています。 手動の移行では、タイミングを制御できます。
 
 手動の移行を実行する場合は、次の選択肢があります。
 - AzCopy のような既存のツール、Azure Storage クライアント ライブラリのいずれか、 または信頼できるサード パーティ製ツールを使用します。
 - Hadoop または HDInsight に詳しい場合は、ソースと宛先 (ZRS) の両方のアカウントをクラスターにアタッチします。 次に、DistCp などのツールを使用してデータ コピー処理を並列化します。
 - Azure Storage クライアント ライブラリのいずれかを使用して、独自のツールをビルドします。
 
-手動の移行ではアプリケーションのダウンタイムが発生することがあります。 アプリケーションが高可用性を必要とする場合、Microsoft はライブ マイグレーションのオプションも提供します。 ライブ マイグレーションはインプレース移行です。 
+手動の移行ではアプリケーションのダウンタイムが発生することがあります。 アプリケーションが高可用性を必要とする場合、Microsoft はライブ マイグレーションのオプションも提供します。 ライブ マイグレーションは、ダウンタイムのないインプレース移行です。 
 
 ライブ マイグレーション中は、データがソースと宛先のストレージ スタンプ間で移行中にストレージ アカウントを使用できます。 移行プロセス中は、通常と同じレベルの持続性と可用性の SLA を維持できます。
 
@@ -137,9 +141,9 @@ ZRS クラシックを利用できるのは、汎用 V1 (GPv1) ストレージ �
 
 LRS、ZRS クラシック、GRS、または RA-GRS アカウントとの間で ZRS アカウント データを手動で移行するには、次のいずれかのツールを使用します:AzCopy、Azure Storage Explorer、Azure PowerShell、または Azure CLI。 また、Azure Storage クライアント ライブラリのいずれかを使用して、独自の移行ソリューションを構築することもできます。
 
-また、ZRS が利用できるリージョンであれば、ポータルで、あるいは Azure PowerShell または Azure CLI を使用し、ZRS Classic アカウントを ZRS にアップグレードできます。
+また、ZRS が利用できるリージョンであれば、ポータルで、あるいは Azure PowerShell または Azure CLI を使用し、ZRS Classic アカウントを ZRS にアップグレードできます。 Azure portal で ZRS にアップグレードするには、アカウントの **[構成]** セクションに移動し、 **[アップグレードする]** を選択します。
 
-ポータルで ZRS にアップグレードするには、アカウントの構成セクションに移動し、[アップグレードする] を選択します。![ポータルで ZRS Classic を ZRS にアップグレードする](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+![ポータルで ZRS Classic を ZRS にアップグレードする](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.png)
 
 PowerShell を利用して ZRS にアップグレードするには、次のコマンドを呼び出します。
 ```powershell

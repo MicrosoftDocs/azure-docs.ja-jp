@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 8707a9cb90afe1bf72f3aef6377f8ada409a1c64
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837761"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927690"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>概要
@@ -27,6 +27,10 @@ ms.locfileid: "60837761"
 
 ## <a name="endpoints"></a>エンドポイント
 サービス マニフェストにエンドポイント リソースが定義されているが、ポートが明示的に指定されていない場合、Service Fabric は、予約済みのアプリケーション ポートの範囲からポートを割り当てます。 たとえば、この後のマニフェスト スニペットで指定されているエンドポイント *ServiceEndpoint1* をご覧ください。 さらに、サービスでリソースの特定のポートを要求することもできます。 別のクラスター ノードで実行されているサービスのレプリカには、異なるポート番号を割り当てることができます。一方、同じノードで実行されているサービスのレプリカはポートを共有します。 その後、サービス レプリカは、レプリケーションやクライアント要求のリッスンのために、必要に応じてこのポートを使用できます。
+
+> [!WARNING] 
+> 設計上、静的ポートは、ClusterManifest で指定されたアプリケーションのポート範囲と重複しないようにします。 静的ポートを指定する場合は、アプリケーションのポート範囲外に割り当てる必要があります。そうしないと、ポートの競合が発生します。 リリース 6.5CU2 では、このような競合が検出された場合に**正常性に関する警告**が発行されますが、デプロイは配布された 6.5 の動作と同期して続行されます。 ただし、次のメジャー リリースからはアプリケーションをデプロイできなくなる可能性があります。
+>
 
 ```xml
 <Resources>

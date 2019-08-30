@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: absha
-ms.openlocfilehash: 2d808548ef91ed416f27b0dbb3e3e93d79ade30c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382044"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774785"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway でバックエンドを許可する証明書を作成する
 
@@ -73,7 +73,7 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>信頼されたルート証明書をエクスポートする (V2 SKU の場合)
 
-信頼されたルート証明書は、Application Gateway v2 SKU でバックエンド インスタンスを許可するために必要です。 このルート証明書は､バックエンド サーバー証明書からの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 この例では、バックエンド証明書として SSL 証明書を使用し、その公開キーをエクスポートします。 その後、base64 エンコード形式の公開キーから信頼された CA のルート証明書をエクスポートして、信頼されたルート証明書を取得します。 
+信頼されたルート証明書は、Application Gateway v2 SKU でバックエンド インスタンスをホワイトリスト登録するために必要です。 このルート証明書は､バックエンド サーバー証明書からの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 この例では、バックエンド証明書の SSL 証明書を使用し、その公開キーをエクスポートし、base64 エンコード形式の公開キーから信頼された CA のルート証明書をエクスポートして、信頼されたルート証明書を取得します。 中間証明書は、サーバー証明書とバンドルして、バックエンド サーバーにインストールする必要があります。
 
 次の手順で、証明書のための .cer ファイルをエクスポートします。
 
@@ -105,4 +105,5 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
 ## <a name="next-steps"></a>次の手順
 
-Base-64 エンコード X.509(.CER) 形式の認証証明書/信頼されたルート証明書を入手しました。 これを Application Gateway に追加して、エンド ツー エンド SSL 暗号化に対してバックエンド サーバーを許可できます。 [エンド ツー エンド SSL 暗号化の構成方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)に関するページをご覧ください。
+Base-64 エンコード X.509(.CER) 形式の認証証明書/信頼されたルート証明書を入手しました。 これを Application Gateway に追加して、エンド ツー エンド SSL 暗号化に対してバックエンド サーバーをホワイトリスト登録できます。 [エンド ツー エンド SSL 暗号化の構成方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)に関するページをご覧ください。
+

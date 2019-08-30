@@ -10,16 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 7cd938369cdc4f4ca711a442d89cd6ef3d6d08e8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: fd794662ef41112cb04bdfde087253c8abdb6983
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477071"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079378"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure での第 2 世代 VM (プレビュー) のサポート
 
@@ -32,14 +31,14 @@ ms.locfileid: "68477071"
 
 第 2 世代 VM では、第 1 世代 VM ではサポートされていない重要な機能がサポートされています。 これらの機能には、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。 また、第 2 世代 VM には、Azure ではまだサポートされていない機能もいくつか含まれています。 詳細については、「[特徴と機能](#features-and-capabilities)」セクションを参照してください。
 
-第 2 世代 VM では、第 1 世代 VM で使用されている BIOS ベースのアーキテクチャではなく、新しい UEFI ベースのブート アーキテクチャが使用されます。 第 1 世代 VM と比較して、第 2 世代 VM ではブート時間やインストール時間が改善されている可能性があります。 第 2 世代 VM の概要、および第 1 世代と第 2 世代のいくつかの違いについては、[Hyper-V で第 1 世代または第 2 世代のどちらの仮想マシンを作成すべきか](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
+第 2 世代 VM では、第 1 世代 VM で使用されている BIOS ベースのアーキテクチャではなく、新しい UEFI ベースのブート アーキテクチャが使用されます。 第 1 世代 VM と比較して、第 2 世代 VM ではブート時間やインストール時間が改善されている可能性があります。 第 2 世代 VM の概要、および第 1 世代と第 2 世代のいくつかの違いについては、「[Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」(Hyper-V で第 1 世代または第 2 世代のどちらの仮想マシンを作成すべきか) をご覧ください。
 
 ## <a name="generation-2-vm-sizes"></a>第 2 世代 VM のサイズ
 
-第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure は現在、次の選択された VM シリーズに対して第 2 世代のプレビュー サポートを提供しています。
+第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure では現在、次の選択された VM シリーズに対して第 2 世代のプレビュー サポートが提供されています。
 
 * [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
+* [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series)および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
 * [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
@@ -98,7 +97,7 @@ Azure portal または Azure CLI では、UEFI ブートをサポートする Ma
 
 `windowsserver-gen2preview` サービスには、Windows 第 2 世代イメージのみが含まれます。 このパッケージングにより、第 1 世代と第 2 世代のイメージの間の混乱が回避されます。 第 2 世代 VM を作成するには、このサービスから **[イメージ]** を選択し、標準のプロセスに従って VM を作成します。
 
-現在、Marketplace は、次の Windows 第 2 世代イメージを提供しています。
+現在、Marketplace では、次の Windows 第 2 世代イメージが提供されています。
 
 * 2019-datacenter-gen2
 * 2016-datacenter-gen2
@@ -134,7 +133,7 @@ Azure portal または Azure CLI では、UEFI ブートをサポートする Ma
   1. **[ディスク]** セクションで、 **[構成]** を選択し、 **[サイズ]** を目的の値に更新します。
   1. VM プロパティ ページに戻り、VM を **[開始]** します。
   
-  2 TB を超える OS ディスクに対して警告が表示されることがあります。 この警告は、第 2 世代 VM には適用されません。 ただし、4 TB を超える OS ディスク サイズは*お勧めできません*。
+  2 TB を超える OS ディスクに対して警告が表示されることがあります。 この警告は、第 2 世代 VM には適用されません。 ただし、4 TB を超える OS ディスク サイズは "*お勧めできません*"。
 
 * **第 2 世代 VM では高速ネットワークはサポートされていますか?**  
     はい。 詳細については、[高速ネットワークを使用した VM の作成](../../virtual-network/create-vm-accelerated-networking-cli.md)に関するページを参照してください。

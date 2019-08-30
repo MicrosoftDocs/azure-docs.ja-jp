@@ -1,39 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Data Box のドキュメント - オンライン転送
+summary: ネットワーク経由で高パフォーマンスのデータ転送を行うには、Azure Data Box Gateway および Azure Data Box Edge デバイスを使用します。 クラウド アーカイブ、ディザスター リカバリー、またはクラウド規模でのデータ処理のためにデータを送信する場合は、Data Box Gateway を選択します。 データを Azure に移動する前に、そのデータのフィルター処理、分析、変換を行う場合は Data Box Edge を使用します。
 metadata:
-  title: Azure へのネットワーク経由のデータ転送に関する Data Box Gateway と Data Box Edge のドキュメント
-  description: 信頼性が高く、迅速かつ安価な方法で Azure に対してネットワーク経由でハイ パフォーマンスなデータ転送を行うために Data Box Edge と Data Box Gateway を使用します。
+  title: Azure Data Box のドキュメント - オンライン転送
+  description: Azure に対してネットワーク経由で高パフォーマンスのデータ転送を行うための Data Box Gateway と Data Box Edge のドキュメント。
   services: databox
-  author: alkohli
-  manager: twooley
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 03/25/2019
+  ms.collection: collection
+  author: alkohli
   ms.author: alkohli
-abstract:
-  description: Azure Data Box ファミリーでは、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に転送できます。 ネットワーク経由でハイ パフォーマンスなデータ転送を行うには、Data Box Edge および Data Box Gateway デバイスを使用します。<p>クラウド アーカイブ、ディザスター リカバリー、またはクラウド規模でのデータ処理のためにデータを送信する場合は、Data Box Gateway を選択します。  データを Azure に移動するときに、データのフィルター処理、分析、変換を行う場合は、Data Box Edge を使用します。</p><p>Microsoft が提供するチュートリアルを利用して、Data Box Gateway と Data Box Edge をネットワーク ベースの転送に活用する方法を学習してください。</p>
-sections:
-  - title: チュートリアル
-    items:
-      - type: paragraph
-        text: <b>Data Box Gateway 向け</b>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="data-box-gateway-deploy-prep">Azure Data Box Gateway のデプロイを準備する</a>
-          - html: <a href="data-box-gateway-deploy-provision-hyperv">Hyper-V で Azure Data Box Gateway をプロビジョニングする</a>
-          - html: <a href="data-box-gateway-deploy-provision-vmware">VMware で Azure Data Box Gateway をプロビジョニングする</a>
-          - html: <a href="data-box-gateway-deploy-connect-setup-activate">Azure Data Box Gateway を接続、設定、アクティブ化する</a>
-          - html: <a href="data-box-gateway-deploy-add-shares">Azure Data Box Gateway を使用してデータを転送する</a>
-      - type: paragraph
-        text: <b>Data Box Edge 向け</b>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="data-box-edge-deploy-prep">Azure Data Box Edge のデプロイを準備する</a>
-          - html: <a href="data-box-edge-deploy-install">Azure Data Box Edge をインストールする</a>
-          - html: <a href="data-box-edge-deploy-connect-setup-activate">Azure Data Box Edge を接続、設定、アクティブ化する</a>
-          - html: <a href="data-box-edge-deploy-add-shares">Azure Data Box Edge を使用してデータを転送する</a>
-          - html: <a href="data-box-edge-deploy-configure-compute">Azure Data Box Edge を使用してデータを変換する</a>
+  ms.date: 08/15/2019
+  ms.openlocfilehash: f1b3c4f8473807b7bbffa2b40f1d3a89b6acff5a
+  ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/23/2019
+  ms.locfileid: "70012862"
+landingContent:
+- title: Data Box ファミリについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Data Box Gateway とは
+      url: data-box-gateway-overview.md
+    - text: Data Box Edge とは
+      url: data-box-edge-overview.md
+  - linkListType: architecture
+    links:
+    - text: Azure のデータ転送オプションの選択
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: ネットワーク転送またはオフライン転送の使用
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: 1905 リリース ノート
+      url: data-box-gateway-1905-release-notes.md
+- title: 要件と制限
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Data Box Gateway の要件
+      url: data-box-gateway-system-requirements.md
+    - text: Data Box Edge の要件
+      url: data-box-edge-system-requirements.md
+    - text: Data Box Gateway の制限
+      url: data-box-gateway-limits.md
+    - text: Data Box Edge の制限
+      url: data-box-edge-limits.md
+- title: デプロイ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Data Box Gateway
+      url: data-box-gateway-deploy-prep.md
+    - text: Data Box Edge
+      url: data-box-edge-deploy-prep.md
+- title: 開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: C# Edge コンピューティング モジュール
+      url: data-box-edge-create-iot-edge-module.md
+  - linkListType: download
+    links:
+    - text: サンプル - Data Box Edge 向けの C#
+      url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Box Gateway の共有
+      url: data-box-gateway-manage-shares.md
+    - text: Data Box Edge の共有
+      url: data-box-edge-manage-shares.md
+    - text: Edge コンピューティング
+      url: data-box-edge-manage-compute.md
+    - text: Edge コンピューティングのネットワーク
+      url: data-box-edge-extend-compute-access-modules.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Box Gateway
+      url: data-box-gateway-troubleshoot.md
+    - text: Data Box Edge
+      url: data-box-edge-troubleshoot.md
+    - text: Edge コンピューティング モジュール
+      url: data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
+    - text: Data Box Edge の返却と交換
+      url: data-box-edge-return-device.md
+    - text: サポート チケットを開く
+      url: data-box-edge-contact-microsoft-support.md

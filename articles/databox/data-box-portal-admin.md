@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 5ece12e117db7b334bce8edfd49a5a622e46e13c
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427725"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987470"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure portal を使用して Azure Data Box および Azure Data Box Heavy を管理する
 
@@ -123,7 +123,7 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 2. **[注文履歴のダウンロード]** をクリックします。 ダウンロードした履歴には、運送業者の追跡ログの記録が含まれています。 Data Box Heavy 上の 2 つのノードに対応する 2 セットのログがあります。 このログの一番下までスクロールすると、次の項目へのリンクが表示されます。
     
    - **コピー ログ** - Data Box から Azure Storage アカウントへのデータのコピー中にエラーが出力されたファイルのリストが含まれています。
-   - **監査ログ** - Data Box が Azure データセンターの外部にあるときの Data Box の電源投入と共有へのアクセスに関する情報が含まれています。
+   - **監査ログ** - Azure データセンターの外部にあるときの Data Box の電源投入と共有へのアクセス方法に関する情報が含まれます。
    - **BOM ファイル** - **発送の準備**中にダウンロードでき、ファイル名、ファイル サイズ、およびファイル チェックサムを持つファイルの一覧 (ファイル マニフェストとも呼ばれます) が含まれています。
 
        ```
@@ -207,7 +207,8 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 |受取済み     | デバイスは Azure データ センターで受け取られてスキャンされます。 <br> 出荷が検査されると、デバイスのアップロードが開始されます。      |
 |データのコピー     | データのコピーが進行中です。 Azure portal で、注文のコピーの進行状況を追跡します。 <br> データのコピーが完了するまでお待ちください。 |
 |完了       |注文が正常に完了しました。<br> オンプレミスのデータをサーバーから削除する前に、データが Azure に存在することを確認してください。         |
-|完了 (エラーあり)| データのコピーが完了しましたが、コピー中にエラーが発生しました。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。   |
+|完了 (エラーあり)| データのコピーが完了しましたが、コピー中にエラーが発生しました。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。 [アップロードがエラーで完了したときのコピー ログの例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)を参照してください。   |
+|完了 (警告あり)| データのコピーは完了しましたが、データは変更されました。 このデータには、ファイル名または BLOB 名を変更することによって修正された、重大ではない BLOB 名またはファイル名のエラーがあります。 <br> Azure portal に示されているパスを使用してコピー ログを確認してください。 データの変更をメモします。 [アップロードが警告で完了したときのコピー ログの例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)を参照してください。   |
 |Canceled            |注文はキャンセルされました。 <br> お客様によって注文がキャンセルされたか、またはエラーが発生したために、サービスによって注文がキャンセルされました。 注文を 90 日以内に満たすことができない場合も、注文が取り消されて通知されます。     |
 |クリーンアップ | デバイスディスク上のデータは消去されます。 デバイスのクリーンアップは、注文履歴が Azure portal でダウンロード可能なときに完了したと見なされます。|
 

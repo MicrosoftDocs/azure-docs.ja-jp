@@ -10,18 +10,19 @@ ms.author: robreed
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 64588829cec964e52dcb44465869e0090f36f9f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e153186a3917be3aa94cb663dec58bc3db46aae9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61303967"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850409"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Azure Automation State Configuration (DSC) で複合リソースを使用して DSC 構成を作成する
 
 リソースを複数の Desired State Configuration (DSC) 構成で管理する必要がある場合に最適な方法は、[複合リソース](/powershell/dsc/authoringresourcecomposite)を使用することです。 複合リソースは、別の構成内の DSC リソースとして使用されている、入れ子になったパラメーター化された構成です。 これにより、基礎となる複合リソース (パラメーター化された構成) を個別に管理および構築しながら、複雑な構成を作成することができます。
 
-Azure Automation により、[複合リソースのインポートとコンパイル](automation-dsc-compile.md#composite-resources)が可能になります。 複合リソースが Automation アカウントにインポートされると、 **[状態の構成 (DSC)]** ページで **[構成の作成]** エクスペリエンスを使用できるようになります。
+Azure Automation により、[複合リソースのインポートとコンパイル](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources)が可能になります。
+複合リソースが Automation アカウントにインポートされると、 **[状態の構成 (DSC)]** ページで **[構成の作成]** エクスペリエンスを使用できるようになります。
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>複合リソースから構成を作成する
 

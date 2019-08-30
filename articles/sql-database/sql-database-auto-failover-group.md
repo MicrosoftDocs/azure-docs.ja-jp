@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/18/2019
-ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/16/2019
+ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640096"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575778"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -25,7 +25,9 @@ ms.locfileid: "68640096"
 > [!NOTE]
 > SQL Database サーバー上の単一またはプールされたデータベースの操作時に、同じまたは異なるリージョンで複数のセカンダリが必要な場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使用します。 
 
-自動フェールオーバー グループ ポリシーで自動フェールオーバー グループを使用しているときに、グループ内で 1 つ以上のデータベースに影響する機能停止が発生すると、自動フェールオーバーが行われます。 さらに、自動フェールオーバー グループには、フェールオーバー中にそのまま残る読み取り/書き込みリスナー エンドポイントと読み取り専用リスナー エンドポイントが用意されています。 手動または自動フェールオーバーのどちらをアクティブ化するにしても、フェールオーバーはグループ内のすべてのデータベースをプライマリに切り替えます。 データベースのフェールオーバーが完了した後、DNS レコードが自動的に更新され、エンドポイントが新しいリージョンにリダイレクトされます。 特定の RPO および RTO データについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
+自動フェールオーバー グループ ポリシーで自動フェールオーバー グループを使用しているときに、グループ内で 1 つ以上のデータベースに影響する機能停止が発生すると、自動フェールオーバーが行われます。 通常、これらは、組み込みの自動高可用性操作では自己軽減できないインシデントです。 フェールオーバー トリガーの例には、複数のコンピューティング ノードでの OS カーネル メモリ リークによる SQL テナント リングまたは制御リングのダウンが原因で発生するインシデントや、所定のハードウェアの使用停止中に間違ったネットワーク ケーブルが切断されたことによる 1 つ以上のテナント リングのダウンが原因で発生するインシデントがあります。  詳細については、[SQL Database の高可用性](sql-database-high-availability.md)に関する記事を参照してください。
+
+さらに、自動フェールオーバー グループには、フェールオーバー中にそのまま残る読み取り/書き込みリスナー エンドポイントと読み取り専用リスナー エンドポイントが用意されています。 手動または自動フェールオーバーのどちらをアクティブ化するにしても、フェールオーバーはグループ内のすべてのデータベースをプライマリに切り替えます。 データベースのフェールオーバーが完了した後、DNS レコードが自動的に更新され、エンドポイントが新しいリージョンにリダイレクトされます。 特定の RPO および RTO データについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
 
 自動フェールオーバー グループ ポリシーで自動フェールオーバー グループを使用しているときに、SQL Database サーバーまたはマネージド インスタンス内のデータベースに影響する機能停止が発生すると、自動フェールオーバーが行われます。 自動フェールオーバー グループは、以下を使用して管理できます。
 
@@ -133,9 +135,13 @@ ms.locfileid: "68640096"
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールでフェールオーバー グループを使用する場合のベスト プラクティス
 
-自動フェールオーバー グループはプライマリ SQL Database サーバーに構成する必要があり、それを別の Azure リージョンのセカンダリ SQL Database サーバーに接続します。  グループには、これらのサーバーのすべてまたは一部のデータベースを含めることができます。 次の図に、複数のデータベースと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
+自動フェールオーバー グループはプライマリ SQL Database サーバーに構成する必要があり、それを別の Azure リージョンのセカンダリ SQL Database サーバーに接続します。 グループには、これらのサーバーのすべてまたは一部のデータベースを含めることができます。 次の図に、複数のデータベースと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
 ![自動フェールオーバー](./media/sql-database-auto-failover-group/auto-failover-group.png)
+
+> [!NOTE]
+> フェールオーバー グループに単一データベースを追加する詳細な手順については、[単一データベースをフェールオーバー グループに追加する](sql-database-single-database-failover-group-tutorial.md)方法のページを参照してください。 
+
 
 ビジネス継続性を考慮してサービスを設計する場合は、次の一般的なガイドラインに従います。
 
@@ -167,12 +173,17 @@ ms.locfileid: "68640096"
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>マネージド インスタンスでフェールオーバー グループを使用する場合のベスト プラクティス
 
-自動フェールオーバー グループはプライマリ インスタンスに構成する必要があり、それを別の Azure リージョンのセカンダリ インスタンスに接続します。  インスタンス内のすべてのデータベースは、セカンダリ インスタンスにレプリケートされます。 次の図に、マネージド インスタンスと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
+> [!IMPORTANT]
+> マネージド インスタンスの自動フェールオーバー グループは、パブリック プレビュー段階です。
+
+自動フェールオーバー グループはプライマリ インスタンスに構成する必要があり、それを別の Azure リージョンのセカンダリ インスタンスに接続します。  インスタンス内のすべてのデータベースは、セカンダリ インスタンスにレプリケートされます。 
+
+次の図に、マネージド インスタンスと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
 ![自動フェールオーバー](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
-> [!IMPORTANT]
-> マネージド インスタンスの自動フェールオーバー グループは、パブリック プレビュー段階です。
+> [!NOTE]
+> マネージド インスタンスを追加してフェールオーバー グループを使用する詳細な手順については、[フェールオーバー グループにマネージド インスタンスを追加する](sql-database-managed-instance-failover-group-tutorial.md)方法のページを参照してください。 
 
 アプリケーションでデータ層としてマネージド インスタンスを使用する場合は、ビジネス継続性を考慮して設計する際に以下の一般的なガイドラインに従います。
 
@@ -367,6 +378,10 @@ ms.locfileid: "68640096"
 
 ## <a name="next-steps"></a>次の手順
 
+- 詳細なチュートリアルについては、以下を参照してください
+    - [フェールオーバー グループへの単一データベースの追加](sql-database-single-database-failover-group-tutorial.md)
+    - [エラスティック プールをフェールオーバー グループに追加する](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [マネージド インスタンスをフェールオーバー グループに追加する](sql-database-managed-instance-failover-group-tutorial.md)
 - サンプル スクリプトは、以下を参照してください。
   - [PowerShell を使用して、Azure SQL Database の単一のデータベースに対してアクティブ geo レプリケーションを構成する](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [PowerShell を使用して、Azure SQL Database のプールされたデータベースに対してアクティブ geo レプリケーションを構成する](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

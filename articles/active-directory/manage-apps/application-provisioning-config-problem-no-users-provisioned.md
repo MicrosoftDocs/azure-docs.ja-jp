@@ -16,17 +16,17 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaeb97f88c2482cb9d091afb1c205e9b09a85ce0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b80539181e6614283b6170b9cd9d4db85f812a5f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784582"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879890"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
 アプリケーションで自動プロビジョニングが構成された後 (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認を含む)、そのアプリに対してユーザーまたはグループ、あるいはその両方がプロビジョニングされます。 プロビジョニングは、次のものによって決定されます。
 
--   どのユーザーとグループがアプリケーションに**割り当てられている**か。 割り当ての詳細については、「[Azure Active Directory プレビューでエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)」を参照してください。
+-   どのユーザーとグループがアプリケーションに**割り当てられている**か。 入れ子になったグループまたは Office 365 グループのプロビジョニングはサポートされていません。 割り当ての詳細については、「[Azure Active Directory プレビューでエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)」を参照してください。
 -   **属性マッピング**が有効になっているかどうか、および有効な属性を Azure AD からアプリに同期するように構成されているかどうか。 属性マッピングの詳細については、「[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)」を参照してください。
 -   特定の属性値に基づいてユーザーをフィルター処理する**スコープ フィルター**が存在するかどうか。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](define-conditional-rules-for-provisioning-user-accounts.md)」を参照してください。
   

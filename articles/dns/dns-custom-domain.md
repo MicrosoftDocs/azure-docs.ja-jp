@@ -40,7 +40,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|EnableAdfsAuthentication     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|Name     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -65,7 +65,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|EnableAdfsAuthentication     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -92,7 +92,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|EnableAdfsAuthentication     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -128,13 +128,13 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|EnableAdfsAuthentication     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|Name     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる asverify.adatumfunctiona9ed.blob.core.windows.net という DNS 名です。        |
 
-**[Storage] \(ストレージ)**  >  **[Storage Accounts] \(ストレージ アカウント)** をクリックしてストレージ アカウントに戻り、ストレージ アカウントを選択して **[Custom domain] \(カスタム ドメイン)** をクリックします。 作成した別名から asverify プレフィックスを除いたものをテキスト ボックスに入力し、[**Use indirect CNAME] \(**間接 CNAME を使用) 検証をチェックし、 **[Save] \(保存)** をクリックします。 この手順が完了したら、DNS ゾーンに戻り、asverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。
+**[Storage] \(ストレージ)**  >  **[Storage Accounts] \(ストレージ アカウント)** をクリックしてストレージ アカウントに戻り、ストレージ アカウントを選択して **[Custom domain] \(カスタム ドメイン)** をクリックします。 作成した別名から asverify プレフィックスを除いたものをテキスト ボックスに入力し、[**Use indirect CNAME] \(間接 CNAME を使用) 検証をチェックし、 **[Save] \(保存)** をクリックします。 この手順が完了したら、DNS ゾーンに戻り、asverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。
 
 ![BLOB ストレージのカスタム ドメイン](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -156,7 +156,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|EnableAdfsAuthentication     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|Name     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |

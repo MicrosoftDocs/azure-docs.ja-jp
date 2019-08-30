@@ -15,6 +15,8 @@
       href: ./interactive-query-tutorial-analyze-flight-data.md
 - name: 概念
   items:
+    - name: ストレージ オプションの比較
+      href: ../hdinsight-hadoop-compare-storage-options.md
     - name: HDInsight アプリをインストールする
       href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
     - name: 容量計画
@@ -193,6 +195,8 @@
       items:
         - name: Apache Tez アプリケーションがハングする
           href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Apache Ambari Tez ビューの読み込みに時間がかかる
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Apache Hive LLAP クエリのパフォーマンス
           href: ./interactive-query-troubleshoot-query-performance.md
         - name: レジューサーの速度が遅い
@@ -203,24 +207,14 @@
           href: ./interactive-query-troubleshoot-permission-error-create-table.md
         - name: GC オーバーヘッド制限を超過
           href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
-        - name: Apache Ambari Tez ビューの読み込みに時間がかかる
-          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Apache Hive ビューに表示されないエラー メッセージ
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: Apache Hive ビューにアクセスできない
           href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
         - name: ZooKeeperHiveClientException - HiveServer2 構成
           href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
-        - name: Apache Hive LLAP クエリのパフォーマンス
-          href: ./interactive-query-troubleshoot-query-performance.md
         - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
           href: ../hdinsight-troubleshoot-failed-cluster.md
-        - name: Apache Hadoop HDFS のトラブルシューティング
-          href: ../hdinsight-troubleshoot-hdfs.md
-        - name: Apache HIVE のトラブルシューティング
-          href: ../hdinsight-troubleshoot-hive.md
-        - name: Apache Hadoop YARN のトラブルシューティング
-          href: ../hdinsight-troubleshoot-yarn.md
         - name: Apache Hadoop HDFS のトラブルシューティング
           href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
         - name: Apache HIVE のトラブルシューティング

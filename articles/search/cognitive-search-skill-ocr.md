@@ -5,19 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 653fbfe8c20150b2aca3e0a45b2877af35e01fff
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 617bc843084ed8f40c9d7f8c3f02303d39f50596
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840995"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639064"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 

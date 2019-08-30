@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 7128413e48fdeef9b9284bc6db11649016a06153
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722809"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079615"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure から Windows VHD をダウンロードする
 
@@ -52,11 +51,11 @@ VHD を既存の VM の新しいインスタンス用のディスクまたはデ
 VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
 
 1.  VM のブレードのメニューで、 **[ディスク]** をクリックします。
-2.  VM のオペレーティング システム ディスクを選択し、 **[エクスポート]** をクリックします。
+2.  VM のオペレーティング システム ディスクを選択し、 **[Disk Export]\(ディスク エクスポート\)** をクリックします。
 3.  URL の有効期限を *36000* に設定します。
 4.  **[URL の生成]** をクリックします。
 
-    ![URL の生成](./media/download-vhd/export-generate.png)
+    ![URL の生成](./media/download-vhd/export-generate-new.png)
 
 > [!NOTE]
 > Windows Server オペレーティング システム用の大きな VHD ファイルをダウンロードするのに十分な時間を確保するために、有効期限を既定値から増やしています。 Windows Server オペレーティング システムを含む VHD ファイルのダウンロードには、接続によっては数時間かかることがあります。 データ ディスク用の VHD をダウンロードする場合は、既定の時間で十分です。 

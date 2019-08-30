@@ -2,19 +2,19 @@
 title: ポータルで Azure 管理アクセス用の RBAC ロールを設定する - Azure Search
 description: Azure Search Management の管理タスクを制御および委任するための、Azure portal でのロールベースの管理制御 (RBAC)。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 924d2529e3477c299d4a90c076fe9e6c8faf11f3
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61282386"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647411"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>管理アクセス用の RBAC ロールを設定する
 

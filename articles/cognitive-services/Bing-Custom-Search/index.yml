@@ -2,15 +2,15 @@
 documentType: LandingData
 title: Bing Custom Search のドキュメント
 metadata:
-  title: Bing Custom Search API のドキュメント - チュートリアル、クイック スタート、API リファレンス - Microsoft Cognitive Services | Microsoft Docs
+  title: Bing Custom Search API のドキュメント - チュートリアル、クイックスタート、API リファレンス
+  titleSuffix: Azure Cognitive Services
   description: Bing Custom Search ポータルと Bing Custom Search API を使用してカスタム検索エクスペリエンスを作成する方法について説明します
   services: cognitive-services
   author: v-deken
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: v-deken

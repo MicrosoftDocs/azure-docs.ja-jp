@@ -1,21 +1,21 @@
 ---
-title: 分類:信用リスクの予測
+title: 'ビジュアル インターフェイスの例 #3: 信用リスクを予測するための分類'
 titleSuffix: Azure Machine Learning service
 description: コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、機械学習の分類器を構築する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 6ec91ca83d7aa1bc5e6c290d35b573a60cc0ed19
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605767"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990066"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>サンプル 3 - 分類:信用リスクの予測
 
@@ -39,7 +39,7 @@ ms.locfileid: "67605767"
 
 [サンプル 4 - 分類:信用リスクの予測 (コスト重視)](ui-sample-classification-predict-credit-risk-cost-sensitive.md) は、この実験と同じ問題を解決する高度な実験を提供します。 **Python スクリプトの実行**モジュールを使用して_コスト重視_の分類を実行し、二項分類アルゴリズムのパフォーマンスを比較する方法を示します。 分類実験の構築方法について詳しく知りたい場合に参照してください。
 
-## <a name="data"></a>データ
+## <a name="data"></a>Data
 
 UC Irvine リポジトリの German Credit Card のデータセットを使用します。
 このデータセットには、20 個のフィーチャーと 1 個のラベルを含む 1,000 個のサンプルが含まれています。 各サンプルは個人を表します。 フィーチャーには、数値とカテゴリのフィーチャーが含まれています。 カテゴリー フィーチャーの意味については、[UCI Web サイト](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)を参照してください。 最後の列は信用リスクを表すラベルで、使用できるのは次の 2 つの値だけです: 高信用リスク = 2、および低信用リスク = 1。

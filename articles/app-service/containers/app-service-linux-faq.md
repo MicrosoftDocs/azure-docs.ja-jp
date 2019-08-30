@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ec571555415a912a31b094722bd47f67210a0372
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617348"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066899"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -60,7 +59,7 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 はい、ソース管理 (SCM) サイトからご利用いただけます。
 
 > [!NOTE]
-> SSH、SFTP、または Visual Studio Code (ライブ デバッグ Node.js アプリ用) を使用して、ローカル開発用コンピューターから直接アプリ コンテナーに接続することもできます。 詳細については、[Linux での App Service のリモート デバッグと SSH](https://aka.ms/linux-debug) に関するページをご覧ください。
+> SSH、SFTP、または Visual Studio Code (ライブ デバッグ Node.js アプリ用) を使用して、ローカル開発用コンピューターから直接アプリ コンテナーに接続することもできます。 詳細については、[Linux での App Service のリモート デバッグと SSH](https://azure.github.io/AppService/2018/05/07/New-SSH-Experience-and-Remote-Debugging-for-Linux-Web-Apps.html) に関するページをご覧ください。
 >
 
 **SDK または Azure Resource Manager テンプレートから Linux App Service プランを作成するにはどうすればよいですか。**

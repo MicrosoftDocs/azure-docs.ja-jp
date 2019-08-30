@@ -9,17 +9,16 @@ ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 19d58ed90de4bdbd3cd7606d15c115bb1633770a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705760"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069686"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
 
@@ -33,15 +32,15 @@ App Service Environment (ASE) をデプロイするには、次の 2 つの方�
 - 外部 IP アドレスの VIP を使用する。外部 ASE と呼ばれます。
 - 内部 IP アドレスの VIP を使用する。内部エンドポイントは内部ロード バランサー (ILB) であるため、ILB ASE と呼ばれます。
 
-この記事では、外部 ASE を作成する方法について説明します。 ASE の概要については、[App Service Environment の概要][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE]に関するページをご覧ください。
+この記事では、外部 ASE を作成する方法について説明します。 ASE の概要については、[App Service Environment の概要][Intro]に関するページをご覧ください。 ILB ASE の作成方法について詳しくは、[ILB ASE の作成と使用][MakeILBASE]に関するページをご覧ください。
 
 ## <a name="before-you-create-your-ase"></a>ASE を作成する前に
 
 ASE を作成した後は、次の変更は行えません。
 
 - Location
-- サブスクリプション
-- リソース グループ
+- Subscription
+- Resource group
 - 使用する VNet
 - 使用するサブネット
 - サブネットのサイズ
@@ -176,7 +175,7 @@ ASE スタンドアロンを作成する場合、ASE には何も含まれませ
 
 最初のバージョンの App Service Environment (ASEv1) のインスタンスを作成することもできます。 そのプロセスを開始するには、Marketplace で **App Service Environment v1** を検索します。 スタンドアロン ASE を作成するのと同じ方法で、ASE を作成します。 完了すると、ASEv1 は 2 つのフロントエンドと 2 つの worker を持ちます。 ASEv1 では、フロントエンドや worker を管理する必要があります。 App Service プランを作成するときに自動的には追加されません。 フロントエンドは HTTP/HTTPS エンドポイントとして動作し、worker にトラフィックを送信します。 worker は、アプリをホストするロールです。 ASE を作成した後は、フロントエンドと worker の数を調整できます。 
 
-ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1]に関するページをご覧ください。
+ASEv1 について詳しくは、「[App Service Environment v1 の概要][ASEv1Intro]」をご覧ください。 ASEv1 のスケーリング、管理、および監視について詳しくは、[App Service Environment の構成方法][ConfigureASEv1]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

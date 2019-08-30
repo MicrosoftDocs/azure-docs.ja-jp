@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348646"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036647"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -125,7 +125,7 @@ IBM Db2 構成をデプロイするには、これらの手順に従う必要が
   + VM をデプロイします。
   + RHEL Linux を更新してファイル システムを構成する。
   + Pacemaker をインストールして構成する。
-  + [glusterfs クラスター][glusterfs]または Azure NetApp Files をセットアップする or [Azure NetApp Files][anf-rhel]
+  + [glusterfs クラスター][glusterfs]または [Azure NetApp Files][anf-rhel] を設定する
   + [別のクラスターに ASCS/ERS][ascs-ha-rhel] をインストールする。
   + 分散/高可用性オプション (SWPM) で IBM Db2 データベースをインストールする。
   + セカンダリ データベース ノードとインスタンスをインストールおよび作成し、HADR を構成する。
@@ -517,11 +517,11 @@ Db2 HADR 構成を作成する前にインストールを行った場合は、�
 J2EE Config ツールを使用して JDBC URL を確認または更新します。 J2EE Config ツールはグラフィカル ツールであるため、X サーバーがインストールされている必要があります。
  
 1. J2EE インスタンスのプライマリ アプリケーション サーバーにサインインし、以下を実行します。
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
 1. 左側のフレームで、**セキュリティ ストア**を選択します。
 1. 右側のフレームで、キー jdbc/pool/\<SAPSID>/url を選択します。
 1. JDBC URL のホスト名を仮想ホスト名に変更します。
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
+     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
 1. **[追加]** を選択します。
 1. 変更を保存するには、左上のディスク アイコンを選択します。
 1. 構成ツールを閉じます。

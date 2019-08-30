@@ -1,19 +1,18 @@
 ---
 title: AzCopy v10 を使用して Azure Storage にデータをコピーまたは移動する | Microsoft Docs
 description: AzCopy は、ストレージ アカウント間のデータ コピーに利用できるコマンドライン ユーティリティです。 この記事は、AzCopy をダウンロードし、ストレージ アカウントに接続し、ファイルを転送する際に役立ちます。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 07/25/2019
+ms.topic: conceptual
+ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7ad5be0c7774beacaa15fcca0646c78e2d328ba4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699845"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648725"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -66,9 +65,9 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 |**BLOB ストレージ (階層的名前空間)** | Azure AD および SAS |
 |**File Storage** | SAS のみ |
 
-### <a name="option-1-use-azure-ad"></a>オプション 1:Azure AD の使用
+### <a name="option-1-use-azure-active-directory"></a>オプション 1:Azure Active Directory を使用する
 
-Azure AD を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
+Azure Active Directory を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
 
 > [!NOTE]
 > 現在のリリースでは、ストレージ アカウント間で BLOB をコピーする場合は、各ソース URL に SAS トークンを追加する必要があります。 コピー先 URL からのみ、SAS トークンを省略できます。 例については、「[ストレージ アカウント間で BLOB をコピーする](storage-use-azcopy-blobs.md)」をご覧ください。
@@ -150,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> この例で示すように、プロンプトを使用することを検討してください。 そうすると、クライアント シークレットがご使用のコンソールのコマンド履歴に表示されません。 
+> この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。  
 
 次に、次のコマンドを入力し、Enter キーを押します。
 
@@ -171,7 +170,7 @@ azcopy login --service-principal --application-id <application-id>
 > [!NOTE]
 > この値は、必ず、ご使用のオペレーティング システムの環境変数の設定ではなく、ご使用のコマンド プロンプトから設定します。 そうすることで、この値を現在のセッションでのみ使用できるようになります。
 
-この例では、これを PowerShell で実行する方法を示しています。
+この例では、このタスクを PowerShell で実行する方法を示しています。
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
@@ -239,10 +238,10 @@ AzCopy コマンドで使用する各コピー元または各コピー先の URL
 この例のコマンドでは、ローカル ディレクトリから BLOB コンテナーにデータが繰り返しコピーされます。 架空の SAS トークンがコンテナー URL の末尾に追加されます。
 
 ```azcopy
-azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
+azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-SAS トークンの詳細とその取得方法については、「[Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)」を参照してください。
+SAS トークンの詳細とその取得方法については、「[Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)」を参照してください。
 
 ## <a name="transfer-files"></a>ファイルの転送
 
@@ -260,7 +259,9 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 
 ## <a name="use-azcopy-in-a-script"></a>スクリプト内で AzCopy を使用する
 
-時間と共に、AzCopy の[ダウンロード リンク](#download-and-install-azcopy)は AzCopy の新しいバージョンを指します。 実際のスクリプトで AzCopy をダウンロードする場合、実際のスクリプトで使用する機能が新しいバージョンの AzCopy で変更されていると、スクリプトの動作が停止する可能性があります。 
+### <a name="obtain-a-static-download-link"></a>静的なダウンロード リンクを取得する
+
+時間と共に、AzCopy の[ダウンロード リンク](#download-and-install-azcopy)は AzCopy の新しいバージョンを指します。 実際のスクリプトで AzCopy をダウンロードする場合、実際のスクリプトで使用する機能が新しいバージョンの AzCopy で変更されていると、スクリプトの動作が停止する可能性があります。
 
 こうした問題を回避するには、AzCopy の現在のバージョンの静的 (変更されない) リンクを取得します。 そうすることで、実際のスクリプトを実行するたびに、まったく同じバージョンの AzCopy がダウンロードされます。
 
@@ -281,9 +282,13 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 | **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
+### <a name="escape-special-characters-in-sas-tokens"></a>SAS トークンの特殊文字をエスケープする
+
+拡張子が `.cmd` のバッチ ファイルでは、SAS トークンに出現する `%` 文字をエスケープする必要があります。 これを行うには、SAS トークン文字列の既存の `%` 文字の横に `%` の文字を追加します。
+
 ## <a name="use-azcopy-in-storage-explorer"></a>Storage Explorer で AzCopy を使用する
 
-AzCopy のパフォーマンス上の利点を活用するとき、ファイルの操作に、コマンド ラインではなく Storage Explorer を使用する場合は、ストレージ エクスプローラーで AzCopy を有効にします。 
+AzCopy のパフォーマンス上の利点を活用するとき、ファイルの操作に、コマンド ラインではなく Storage Explorer を使用する場合は、ストレージ エクスプローラーで AzCopy を有効にします。
 
 Storage Explorer で、 **[プレビュー]** -> の **[Use AzCopy for Improved Blob Upload and Download]\(向上した Blob アップロードおよびダウンロードに AzCopy を使用する\)** に移動します。
 

@@ -79,10 +79,12 @@
           href: batch-pool-vm-sizes.md
         - name: コンピューティング ノードへのアクセスを構成する
           href: pool-endpoint-configuration.md
-        - name: カスタム イメージを使用してプールを作成する
+        - name: Shared Image Gallery を使用してプールを作成する
           href: batch-custom-images.md
         - name: 仮想ネットワーク内にプールを作成する
           href: batch-virtual-network.md
+        - name: 仮想ファイル システムをマウントする
+          href: virtual-file-mount.md
         - name: Azure ファイル共有をマウントする
           href: pool-file-shares.md
         - name: RDMA または GPU インスタンスを使用する

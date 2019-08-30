@@ -306,7 +306,7 @@ END
     1. **[ストアド プロシージャ名]** に **[usp_write_watermark]** を選択します。 
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。 
 
-        | EnableAdfsAuthentication | Type | 値 | 
+        | 名前 | Type | 値 | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | string | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

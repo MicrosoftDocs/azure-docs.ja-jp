@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 710d64b445953ae3124830931c8cbb9315d32b83
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3594d9670e8fb94b053479352fb88997caa16db6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875712"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016489"
 ---
 # <a name="execute-r-script"></a>R スクリプトの実行
 
@@ -76,8 +76,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1.  **R スクリプトの実行**モジュールを実験に追加します。
 
-    > [!NOTE]
-    > **R スクリプトの実行**モジュールに渡されたすべてのデータは R `data.frame` 形式に変換されます。
+  
 
 1. スクリプトで必要なすべての入力を接続します。 入力は、任意指定であり、データと追加の R コードを含めることができます。
 
@@ -90,10 +89,33 @@ azureml_main <- function(dataframe1, dataframe2){
 1. **[R script]\(R スクリプト\)** テキストボックスに、有効な R スクリプトを入力するか貼り付けます。
 
     作業を支援するために、 **[R Script]\(R スクリプト\)** テキスト ボックスにはサンプル コードが事前に入力されており、編集または置換することができます。
+    
+```R
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
 
-    * スクリプトには、このモジュールのエントリ ポイントである `azureml_main` という名前の関数を含める必要があります。
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
 
-    * エントリ ポイント関数には、最大 2 つの入力引数を含めることができます (`Param<dataframe1>` および `Param<dataframe2>`)。
+  # If a zip file is connected to the third input port, it is
+  # unzipped under "./Script Bundle". This directory is added
+  # to sys.path.
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+ * スクリプトには、このモジュールのエントリ ポイントである `azureml_main` という名前の関数を含める必要があります。
+
+ * エントリ ポイント関数には、最大 2 つの入力引数を含めることができます (`Param<dataframe1>` および `Param<dataframe2>`)。
+ 
+   > [!NOTE]
+    > **[R スクリプトの実行]** モジュールに渡されるデータは、`dataframe1` および `dataframe2` として参照されます。これは、Azure Machine Learning Studio とは異なります (Studio では `dataset1`、`dataset2` として参照されます)。 スクリプトで入力データが正しく参照されていることを確認してください。  
  
     > [!NOTE]
     >  既存の R コードは、ビジュアル インターフェイス実験で実行するには、多少の変更が必要な場合があります。 たとえば、CSV 形式で指定した入力データは、コードで使用する前に、データセットに明示的に変換する必要があります。 また、R 言語で使用されるデータ型および列型は、ビジュアル インターフェイスで使用されるデータ型および列型とはいくつかの点で異なります。

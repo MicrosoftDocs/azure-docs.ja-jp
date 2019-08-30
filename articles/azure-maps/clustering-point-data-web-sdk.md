@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639069"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839481"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 
@@ -35,7 +35,7 @@ var datasource = new atlas.source.DataSource(null, {
 
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
@@ -107,6 +107,16 @@ Azure Maps による <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster 
 
  <iframe height="500" style="width: 100%;" scrolling="no" title="クラスター領域の凸包" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>クラスター領域の凸包</a>の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>クラスター内のデータの集計
+
+多くの場合、クラスターはクラスター内のいくつかのポイントと共にシンボルを使用して表されますが、クラスター内のすべてのポイントの合計収益など、いくつかのメトリックに基づいてクラスターのスタイルをさらにカスタマイズすることが望ましい場合があります。 クラスター集計では、[集計式](data-driven-style-expressions-web-sdk.md#aggregate-expression)の計算を使用してカスタム プロパティを作成および設定できます。  クラスター集計は、`DataSource` の `clusterProperties` オプションで定義できます。
+
+次のサンプルでは、集計式を使用して、クラスター内の各データ ポイントのエンティティ型プロパティに基づいてカウントを計算します。
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター集計" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/jgYyRL/'>クラスター集計</a>の Pen を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
 ## <a name="next-steps"></a>次の手順

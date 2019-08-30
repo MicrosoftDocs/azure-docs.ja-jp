@@ -21,7 +21,7 @@ ms.locfileid: "69012189"
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0
 ```
 
-| EnableAdfsAuthentication | 置換後の文字列 |
+| Name | 置換後の文字列 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Azure Digital Twins インスタンスの名前 |
 | YOUR_LOCATION | インスタンスをホストするリージョン |

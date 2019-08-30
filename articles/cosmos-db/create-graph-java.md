@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019
-ms.openlocfilehash: 58356db2fbdf53bbd16e6fd20de54e022afb38b3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: cea53aefae2e559b7874b1235e4f952fe46ea642
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736660"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509621"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>クイック スタート:Azure Cosmos DB で Java SDK を使用してグラフ データベースを作成する 
 
@@ -106,7 +106,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ここで Azure Portal に戻り、接続情報を取得して、アプリにコピーします。 これらの設定により、アプリはホストされているデータベースと通信できるようになります。
 
-1. [Azure Portal](https://portal.azure.com/) で **[キー]** をクリックします。 
+1. [Azure portal](https://portal.azure.com/) で **[キー]** を選択します。 
 
     URI の値の最初の部分をコピーします。
 
@@ -165,14 +165,14 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     
     タイムアウト エラーが発生した場合は、[[Update your connection information]\(接続情報の更新\)](#update-your-connection-information) で接続情報が適切に更新されていることを確認し、最後のコマンドを再試行してください。 
     
-    プログラムが停止したら、Enter キーを押して、インターネット ブラウザーで Azure Portal に切り替えます。 
+    プログラムが停止したら、Enter キーを選択し、インターネット ブラウザーで Azure portal に切り替えます。 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>サンプル データの確認と追加
 
 今度はデータ エクスプローラーに戻って、グラフに追加された頂点を確認し、さらにデータ ポイントを追加してみましょう。
 
-1. **[データ エクスプローラー]** をクリックし、**sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
+1. **[データ エクスプローラー]** を選択し、**sample-graph** を展開して **[グラフ]** 、 **[フィルターの適用]** の順に選択します。 
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -180,13 +180,13 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
    ![Azure Portal のデータ エクスプローラーにおけるグラフの新しい頂点](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** ボタンをクリックします。
+3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** を選択します。
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. ラベル ボックスに「*person*」と入力します。
 
-5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
+5. **[プロパティの追加]** を選択して、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
 
     key|value|メモ
     ----|----|----
@@ -197,13 +197,13 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     > [!NOTE]
     > このクイック スタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
 
-6. Click **OK**. 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
+6. **[OK]** を選択します。 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
 
-7. もう一度 **[New Vertex]\(新しい頂点\)** をクリックして、新しいユーザーを追加します。 
+7. もう一度 **[New Vertex]\(新しい頂点\)** を選択して、新しいユーザーを追加します。 
 
 8. 「*person*」というラベルを入力します。
 
-9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
+9. **[プロパティの追加]** を選択し、次の各プロパティを追加します。
 
     key|value|メモ
     ----|----|----
@@ -211,17 +211,17 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     gender|male| 
     school|MIT| 
 
-10. Click **OK**. 
+10. **[OK]** を選択します。 
 
-11. 既定の `g.V()` フィルターで **[フィルターの適用]** ボタンをクリックして、グラフ内のすべての値を表示します。 すると、 **[結果]** リストにすべてのユーザーが表示されます。 
+11. 既定の `g.V()` フィルターで **[フィルターの適用]** ボタンを選択し、グラフ内のすべての値を表示します。 すると、 **[結果]** リストにすべてのユーザーが表示されます。 
 
-    追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** をクリックし、もう一度すべての結果を表示します。
+    追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** を選択し、もう一度すべての結果を表示します。
 
-12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある ![[Change the target of a vertex in a graph]\(グラフ内の頂点のターゲットを変更します\)](./media/create-graph-java/edit-pencil-button.png) をクリックします。 ウィンドウの幅を広げないとボタンが見えない場合があります。
+12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある ![[Change the target of a vertex in a graph]\(グラフ内の頂点のターゲットを変更します\)](./media/create-graph-java/edit-pencil-button.png) を選択します。 ウィンドウの幅を広げないとボタンが見えない場合があります。
 
     ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
+13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力し、チェック ボックスを選択します。
 
     ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Web App for Containers のカスタム イメージを作成する - Azure App Service | Microsoft Docs
+title: カスタム イメージを作成し、プライベート レジストリから App Service 内で実行する
 description: Web App for Containers のカスタム Docker イメージを使用する方法。
 keywords: Azure App Service, Web アプリ, Linux, Docker, コンテナー
 services: app-service
@@ -11,17 +11,16 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b48ec72a1f0a4178dad66ed31c544399e90c5293
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 07d5b718cb96a938cb6e796e1cf4864851433516
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484497"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070932"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>チュートリアル:カスタム イメージを作成し、プライベート レジストリから App Service 内で実行する
 
@@ -292,20 +291,20 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 * この[エントリ スクリプト](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5)では、SSH サーバーを起動しています。
 
-      ```bash
-      #!/bin/bash
-      service ssh start
+    ```bash
+    #!/bin/bash
+    service ssh start
     ```
 
-### Open SSH connection to container
+### <a name="open-ssh-connection-to-container"></a>コンテナーへの SSH 接続 を開く
 
-SSH connection is available only through the Kudu site, which is accessible at `https://<app-name>.scm.azurewebsites.net`.
+SSH 接続は Kudu サイトを通してのみ利用できます。Kudo サイトには `https://<app-name>.scm.azurewebsites.net` からアクセスできます。
 
-To connect, browse to `https://<app-name>.scm.azurewebsites.net/webssh/host` and sign in with your Azure account.
+接続するには、`https://<app-name>.scm.azurewebsites.net/webssh/host` に移動し、Azure アカウントでサインインします。
 
-You are then redirected to a page displaying an interactive console.
+その後、対話型コンソールを表示するページにリダイレクトされます。
 
-You may wish to verify that certain applications are running in the container. To inspect the container and verify running processes, issue the `top` command at the prompt.
+特定のアプリケーションがコンテナーで実行されていることを確認できます。 コンテナーを検査し、実行中のプロセスを確認するには、プロンプトで `top` コマンドを発行します。
 
 ```bash
 top

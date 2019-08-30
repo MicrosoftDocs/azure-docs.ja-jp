@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f39331cb6fb5da370ec34b38592f513d713e957
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61257652"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640272"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -63,7 +63,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. Blob Storage の **adfspark** コンテナーにある**pyFiles** フォルダーに **test.py** をアップロードします。 コンテナーとフォルダーを作成します (存在しない場合)。
 
-### <a name="create-a-data-factory"></a>Data Factory を作成する。
+### <a name="create-a-data-factory"></a>Data Factory の作成
 データ ファクトリを作成するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
@@ -276,7 +276,7 @@ getDebugInfo を **Always** に設定しているため、BLOB コンテナー�
 詳細なトラブルシューティングを行う場合は、次の手順を実行します。
 
 
-1. `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster` にアクセスします。
+1. [https://aka.ms/MFASetup](`https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`) にアクセスします。
 
     ![YARN UI アプリケーション](media/data-factory-spark/yarnui-application.png)
 
@@ -306,7 +306,7 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
                     "arguments": [ "arg1", "arg2" ],
                     "sparkConfig": {
                         "spark.python.worker.memory": "512m"
-                    }
+                    },
                     "getDebugInfo": "Always"
                 },
                 "outputs": [
@@ -329,7 +329,7 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| name | パイプラインのアクティビティの名前。 | はい |
+| 名前 | パイプラインのアクティビティの名前。 | はい |
 | description | アクティビティの動作を説明するテキスト。 | いいえ |
 | type | このプロパティは HDInsightSpark に設定する必要があります。 | はい |
 | linkedServiceName | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | はい |

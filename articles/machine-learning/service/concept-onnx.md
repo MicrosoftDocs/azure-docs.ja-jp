@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
-ms.date: 04/24/2019
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10c47c5dbae0ffb204a78ff510e457cce9a25ff0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 1d97e2d2698c482b75f037dbd8cde1027c472125
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361091"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534887"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
@@ -28,7 +28,7 @@ ONNX は、機械学習モデルを表現するためのオープン スタン�
 
 [ONNX Runtime](https://github.com/Microsoft/onnxruntime) は、ONNX モデルを運用環境にデプロイするためのハイパフォーマンスの推論エンジンです。 クラウドとエッジの両方に最適化され、Linux、Windows、Mac で動作します。 C++ で書かれており、C、Python、C# の API も存在します。 ONNX Runtime はあらゆる ONNX-ML 仕様に対応し、また、NVidia GPU 上の TensorRT など、さまざまなハードウェアのアクセラレータと連携します。
 
-ONNX Runtime は、Bing、Office、Cognitive Services といった高スケールの Microsoft サービスで使用されています。 パフォーマンス向上はさまざまな要素に左右されますが、これらの Microsoft サービスは、__CPU のパフォーマンスが平均 2 倍に向上__しています。 また、ONNX Runtime は、Windows ML の構成要素として何億ものデバイスで使用されています。 このランタイムは、Azure Machine Learning service と組み合わせて使用できます。 ONNX Runtime を使用することにより、広範囲にわたる運用グレードの最適化、テスト、継続的改善の恩恵が得られます。
+ONNX Runtime は、Bing、Office、Cognitive Services といった高スケールの Microsoft サービスで使用されています。 パフォーマンス向上はさまざまな要素に左右されますが、これらの Microsoft サービスは、 __CPU のパフォーマンスが平均 2 倍に向上__ しています。 また、ONNX Runtime は、Windows ML の構成要素として何億ものデバイスで使用されています。 このランタイムは、Azure Machine Learning service と組み合わせて使用できます。 ONNX Runtime を使用することにより、広範囲にわたる運用グレードの最適化、テスト、継続的改善の恩恵が得られます。
 
 [![トレーニング、コンバーター、デプロイを示す ONNX フロー図](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 

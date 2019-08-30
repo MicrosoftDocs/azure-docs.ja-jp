@@ -1,5 +1,5 @@
 ---
-title: サムネイルの生成 - Computer Vision
+title: スマート トリミングされたサムネイル - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用するイメージ サムネイルの生成に関する概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372856"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945228"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Computer Vision でのスマート トリミングされたサムネイルの生成
 

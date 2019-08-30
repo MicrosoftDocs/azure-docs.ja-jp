@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ffd693ea3452ef48dc3e05e7bc4a6d3988a487b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027719"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129004"
 ---
 # <a name="add-rows-module"></a>Add Rows (行の追加) モジュール
 

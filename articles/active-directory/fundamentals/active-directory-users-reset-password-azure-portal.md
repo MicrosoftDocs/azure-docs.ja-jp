@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382ffab090613a2b14ce710a45be10b4c36e5222
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561743"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032662"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
 
@@ -43,7 +43,8 @@ ms.locfileid: "68561743"
 
 3. **[パスワードのリセット]** ページで、 **[パスワードのリセット]** を選択します。
 
-    ユーザー用に一時パスワードが自動生成されます。
+    > [!Note]
+    > Azure Active Directory を使用している場合、ユーザー用に一時パスワードが自動生成されます。 オンプレミスで Active Directory を使用している場合は、自分でユーザー用のパスワードを作成します。
 
 4. そのパスワードをコピーして、ユーザーに付与します。 ユーザーは次のサインイン プロセス中にパスワードを変更するように求められます。
 

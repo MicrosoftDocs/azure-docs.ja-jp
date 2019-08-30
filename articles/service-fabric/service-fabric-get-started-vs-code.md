@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9662ebd26a263fa006c8fccf877fdc950e9014c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946574"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102959"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -35,7 +34,7 @@ ms.locfileid: "60946574"
 すべての環境に以下の前提条件をインストールする必要があります。
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Node.js](https://nodejs.org/)
+* [Node.JS](https://nodejs.org/)
 * [Git](https://git-scm.com/)
 * [Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
 * Yeoman Generators -- アプリケーションに適したジェネレーターをインストールしてください

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5836dda186c7bd9baeafa193052b0b75d63e291b
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406228"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019621"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -42,6 +42,8 @@ Apache Ambari REST API を使用して Azure HDInsight の Apache Hadoop クラ�
 ## <a name="authentication"></a>Authentication
 
 HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成中に入力した管理者アカウント名 (既定値は **admin**) とパスワードを使用します。
+
+Enterprise セキュリティ パッケージ クラスターの場合、`admin` ではなく、`username@domain.onmicrosoft.com` のように完全修飾ユーザー名を使用します。
 
 ## <a name="examples"></a>例
 

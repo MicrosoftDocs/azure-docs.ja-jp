@@ -29,6 +29,8 @@
           items:
             - name: アプリ統合の概要
               href: plan-an-application-integration.md
+            - name: アクセス パネルのデプロイの計画
+              href: access-panel-deployment-plan.md
             - name: 開発者向けのガイダンス
               href: developer-guidance-for-integrating-applications.md
         - name: シングル サインオン

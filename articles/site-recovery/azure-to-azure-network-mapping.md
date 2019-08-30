@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521750"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907884"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNet のネットワーク マッピングと IP アドレス指定を設定する
 
@@ -97,5 +97,3 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 
 - Azure VM ディザスター リカバリーについては、[ネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)をご確認ください。
 - フェールオーバー後の IP アドレスの保持について[ご確認ください](site-recovery-retain-ip-azure-vm-failover.md)。
-
-「選択されたターゲット ネットワークがフェールオーバー VNet の場合」と、2 番目の点の「選択されたターゲット ネットワークがフェールオーバー VNet とは異なるものの、フェールオーバー VNet と同じサブネット範囲の場合」

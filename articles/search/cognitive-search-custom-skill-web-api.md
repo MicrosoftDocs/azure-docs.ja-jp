@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seojan2018
-ms.openlocfilehash: e1ca8a5ce7b615ed8d84c91d8a0d72098c175c44
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: cognitive-search
+ms.openlocfilehash: bd38dacd9161812032512fcb8bfdcbe90d64731c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672126"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639869"
 ---
 # <a name="custom-web-api-skill"></a>カスタム Web API スキル
 
@@ -26,6 +25,7 @@ JSON ペイロードの構造については、このドキュメントの後の
 
 > [!NOTE]
 > インデクサーは、Web API から返された特定の標準 HTTP 状態コードに対して、再試行を 2 回実行します。 これらの HTTP 状態コードは次のとおりです。 
+> * `502 Bad Gateway`
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
@@ -41,7 +41,7 @@ Microsoft.Skills.Custom.WebApiSkill
 | uri | _JSON_ ペイロードの送信先となる Web API の URI です。 **https** URI スキームのみが許可されます |
 | httpMethod | ペイロードの送信時に使用されるメソッドです。 許可されるメソッドは `PUT` または `POST` です |
 | httpHeaders | キー/値ペアのコレクションです。キーはヘッダーの名前と値を表し、値はペイロードと共に Web API に送信されるヘッダー値を表します。 次のヘッダーは、このコレクションに含めることはできません: `Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
-| timeout | (省略可能) 指定した場合は、API 呼び出しを行う http クライアントのタイムアウト値を示します。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 たとえば、60 秒の場合は `PT60S` とします。 設定しなかった場合は、既定値の 30 秒が選択されます。 タイムアウトは、最大で 90 秒、最小で 1 秒に設定できます。 |
+| timeout | (省略可能) 指定した場合は、API 呼び出しを行う http クライアントのタイムアウト値を示します。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 たとえば、60 秒の場合は `PT60S` とします。 設定しなかった場合は、既定値の 30 秒が選択されます。 タイムアウトは、最大で 230 秒、最小で 1 秒に設定できます。 |
 | batchSize | (省略可能) 1 回の API 呼び出しにつき、どれだけの "データ レコード" が送信されるかを示します (後述の _JSON_ ペイロードの構造を参照してください)。 設定しなかった場合は、既定値の 1000 が選択されます。 このパラメーターを使用して、インデックス作成のスループットと API への負荷の適切なトレードオフを確保することをお勧めします |
 
 ## <a name="skill-inputs"></a>スキルの入力

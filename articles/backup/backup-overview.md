@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: a4fbfeb96d2316ce6af100cb16fcbf0d13f230f2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737113"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950026"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup サービスとは
 
@@ -66,7 +66,7 @@ Azure Backup では、オンプレミス マシンと Azure VM の両方をバ�
 **マシン** | **バックアップ シナリオ**
 --- | ---
 **オンプレミスのバックアップ** |  1) オンプレミスの Windows マシンで Azure Backup Microsoft Azure Recovery Services (MARS) エージェントを実行して、個々のファイルとシステムの状態をバックアップします。 <br/><br/>2) オンプレミスのマシンをバックアップ サーバー (System Center Data Protection Manager (DPM) または Microsoft Azure Backup Server (MABS)) にバックアップした後、Azure の Azure Backup Recovery Services コンテナーにバックアップするようにバックアップ サーバーを構成します。
-**Azure VM** | 1) 個々の Azure VM のバックアップを有効にします。 バックアップを有効にすると、Azure Backup によって、VM で実行されている Azure VM エージェントに拡張機能がインストールされます。 エージェントによって、VM 全体がバックアップされます。<br/><br/> 2) Azure VM で MARS エージェントを実行します。 これは、VM 上の個々のファイルとフォルダーをバックアップする場合に役立ちます。<br/><br/> 3) Azure で実行されている DPM サーバーまたは MABS に、Azure VM をバックアップします。 その後、Azure Backup を使用してコンテナーに DPM サーバー/MABS をバックアップします。
+**Azure VM** | 1) 個々の Azure VM のバックアップを有効にします。 バックアップを有効にすると、Azure Backup によって、VM で実行されている Azure VM エージェントに拡張機能がインストールされます。 エージェントによって、VM 全体がバックアップされます。<br/><br/> 2) Azure VM で MARS エージェントを実行します。 これは、VM 上の個々のファイルとフォルダーをバックアップする場合に役立ちます。<br/><br/> 
 
 
 ## <a name="why-use-a-backup-server"></a>バックアップ サーバーを使用する理由
@@ -116,7 +116,7 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 - 保護されているインスタンスとは、データを Azure にバックアップするように構成されているコンピューター、サーバー (物理または仮想)、またはワークロードです。 インスタンスは、データのバックアップ コピーが保存されると保護されます。
 - データのバックアップ コピーは、保護することです。 ソース データが失われた場合や破損した場合は、バックアップ コピーによってソース データを復元できることがあります。
 
-次の表は、コンポーネントごとの最大バックアップ頻度を示します。バックアップ ポリシーの構成では、復旧ポイントを使用する頻度を決定します。 たとえば、日ごとに復旧ポイントを作成すると、期限切れになるまで 27 年間復旧ポイントを保持できます。月ごとの復旧ポイントを取得すると、期限切れになるまで 833 年間復旧ポイントを保持できます。Backup サービスによって、復旧ポイントに有効期限が設定されることはありません。
+次の表は、コンポーネントごとの最大バックアップ頻度を示します。 バックアップ ポリシーの構成では、復旧ポイントを使用する頻度を決定します。 たとえば、日ごとに復旧ポイントを作成すると、期限切れになるまで 27 年間復旧ポイントを保持できます。月ごとの復旧ポイントを取得すると、期限切れになるまで 833 年間復旧ポイントを保持できます。Backup サービスによって、復旧ポイントに有効期限が設定されることはありません。
 
 |  | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |

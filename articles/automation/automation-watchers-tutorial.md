@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: bee414ada61e2cfcf7609b02ef1da7323a0fe0e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61304649"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989247"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>ローカル マシンでのファイル変更を追跡する Azure Automation 監視タスクを作成する
 
@@ -42,7 +42,14 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 
 ## <a name="import-a-watcher-runbook"></a>監視 Runbook をインポートする
 
-このチュートリアルでは、**Watch-NewFile** という名前の監視 Runbook を使用して、ディレクトリ内の新規ファイルを検索します。 この監視 Runbook は、フォルダー内のファイルに対する既知の最終書き込み時刻を取得し、この基準時刻より新しいファイルを監視します。 このステップでは、この Runbook を Automation アカウントにインポートします。
+このチュートリアルでは、**Watch-NewFile** という名前の監視 Runbook を使用して、ディレクトリ内の新規ファイルを検索します。 この監視 Runbook は、フォルダー内のファイルに対する既知の最終書き込み時刻を取得し、この基準時刻より新しいファイルを監視します。
+
+このインポート プロセスは [PowerShell ギャラリー](https://www.powershellgallery.com)で実行できます。
+
+1. [Watch-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd) のギャラリー ページに移動します。
+2. **[Azure Automation]** タブで、 **[Deploy to Azure Automation]\(Azure Automation にデプロイ\)** をクリックします。
+
+次の手順を使用して、この Runbook をポータルから Automation アカウントにインポートすることもできます。
 
 1. Automation アカウントを開き、 **[Runbook]** ページをクリックします。
 2. **[ギャラリーの参照]** ボタンをクリックします。
@@ -62,7 +69,14 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 
 ## <a name="create-an-action-runbook"></a>アクション Runbook を作成する
 
-監視タスクで、アクション Runbook を使用して、監視 Runbook から渡されたデータを操作します。 PowerShell ワークフロー Runbook は監視タスクではサポートされておらず、PowerShell Runbook を使用する必要があります。 この手順では、"Process-NewFile" という名前の事前定義済みのアクション Runbook をインポートして更新します。
+監視タスクで、アクション Runbook を使用して、監視 Runbook から渡されたデータを操作します。 PowerShell ワークフロー Runbook は監視タスクではサポートされておらず、PowerShell Runbook を使用する必要があります。 **Process-NewFile** という名前の事前定義済みのアクション Runbook をインポートする必要があります。
+
+このインポート プロセスは [PowerShell ギャラリー](https://www.powershellgallery.com)で実行できます。
+
+1. [Process-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf) のギャラリー ページに移動します。
+2. **[Azure Automation]** タブで、 **[Deploy to Azure Automation]\(Azure Automation にデプロイ\)** をクリックします。
+
+次の手順を使用して、この Runbook をポータルから Automation アカウントにインポートすることもできます。
 
 1. Automation アカウントに移動して、 **[プロセスの自動化]** カテゴリで **[Runbook]** を選択します。
 1. **[ギャラリーの参照]** ボタンをクリックします。
@@ -92,7 +106,7 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 1. **[アクションを構成]** を選択し、“Process-NewFile” Runbook を選びます。
 1. パラメーターに次の値を入力します。
 
-   * **EVENTDATA** - 空白のままにします。 監視 Runbook からデータが渡されます。  
+   * **EVENTDATA** - 空白のままにします。 監視 Runbook からデータが渡されます。
    * **Run Settings** - この Runbook は Automation サービスで実行するので、Azure のままにします。
 
 1. **[OK]** をクリックし、[監視] ページに戻るように選択します。
@@ -105,7 +119,7 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 監視が想定通りに動作するかテストするには、テスト ファイルを作成する必要があります。
 
 ハイブリッド ワーカーにリモート接続します。 **PowerShell** を開き、テスト対象のフォルダーにテスト ファイルを作成します。
-  
+
 ```azurepowerShell-interactive
 New-Item -Name ExampleFile1.txt
 ```

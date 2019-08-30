@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 470f723782ca29409549e0df8e900edf86cd446e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60523281"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534283"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>チュートリアル:Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
 この記事では、[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) を使用して [Microsoft Dynamics CRM Online](https://www.dynamics.com/) からテレメトリ データを取得する方法について説明します。 アプリケーションに Application Insights のスクリプトを追加し、データをキャプチャし、データを視覚化するすべてのプロセスを見てみましょう。
@@ -38,7 +38,7 @@ ms.locfileid: "60523281"
     ![[+]、[開発者向けサービス]、[Application Insights] をクリックします。](./media/sample-mscrm/01.png)
 
     アプリケーションの種類として ASP.NET を選択します。
-3. 指示に従って[アプリ用の JavaScript SDK スクリプトを取得](../../azure-monitor/app/javascript.md#set-up-application-insights-for-your-web-page)し、JavaScript スニペットをコピーして、インストルメンテーション キーを Application Insights リソースの適切な値で必ず置き換えます。
+3. 指示に従って[アプリ用の JavaScript SDK スクリプトを取得](../../azure-monitor/app/javascript.md)し、JavaScript スニペットをコピーして、インストルメンテーション キーを Application Insights リソースの適切な値で必ず置き換えます。
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Microsoft Dynamics CRM で JavaScript の Web リソースを作成する
 1. CRM Online インスタンスを開き、管理者権限でログインします。

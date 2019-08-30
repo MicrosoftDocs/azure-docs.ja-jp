@@ -39,7 +39,7 @@ Cognitive Services Speech SDK には、[Visual Studio 2019 の Microsoft Visual 
 
 必要な Speech SDK ファイルは、お使いのアプリケーションと同じディレクトリに展開できます。 この方法で、お使いのアプリケーションはライブラリに直接アクセスできます。 必ず、お使いのアプリケーションと一致する正しいバージョン (Win32/x64) を選択してください。
 
-| 名前 | 機能
+| 名前 | Function
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK。ネイティブおよびマネージド展開に必要
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要

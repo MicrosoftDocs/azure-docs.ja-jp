@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 5971fe53f52725a88c484edcc9a5a672fceceb07
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b7a9f28d06b5e921b5f1b8defa151641bb039940
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571091"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990218"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Azure Australia でのゲートウェイのログ記録、監査、可視性
 
@@ -81,7 +81,7 @@ Azure 環境に出入りするネットワーク トラフィックを確実に�
 
 この記事に記載されているコンポーネントを導入するにあたっては、次の一般的なガイダンスが適用されます。
 
-* サービスが利用できるリージョンを確認し、すべてのデータが承認された場所内に維持されるようにします。また、保護されたワークロードについては、オーストラリア中部またはオーストラリア中部 2 を最優先のデプロイ先にします
+* サービスが利用できるリージョンを確認し、すべてのデータが承認された場所内に維持されるようにします。また、保護されたワークロードについては、オーストラリア中部またはオーストラリア中部 2 を最優先のデプロイ先にします。
 
 * 個々のサービスの認定状況については、ドキュメント『*Azure - ACSC 認定レポート - Protected 2018*』を参照してください。このレポートに記載のない関連コンポーネントについては、『*ACSC コンシューマー ガイド - Microsoft Azure at PROTECTED*』に従って自己評価を実施します
 
@@ -113,7 +113,7 @@ Azure 環境に出入りするネットワーク トラフィックを確実に�
 |---|---|
 |オーストラリアの規制とポリシーのコンプライアンス ドキュメント|[https://aka.ms/au-irap](https://aka.ms/au-irap)|
 |Azure 製品 - オーストラリアのリージョンと非リージョン|[https://azure.microsoft.com/global-infrastructure/services/?regions=non-regional,australia-central,australia-central-2,australia-east,australia-southeast](https://azure.microsoft.com/global-infrastructure/services/?regions=non-regional,australia-central,australia-central-2,australia-east,australia-southeast)|
-|Microsoft Azure Security and Audit ログの管理ホワイトペーパー|[https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)|
+|Microsoft Azure Security and Audit ログの管理ホワイトペーパー|[https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)|
 |Microsoft Monitoring Agent の構成|[https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)|
 |
 
@@ -149,7 +149,7 @@ Azure Application Gateway は Azure 環境への有効なエントリ ポイン�
 |リソース|Link|
 |---|---|
 |VPN Gateway のドキュメント|[https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway)|
-|オーストラリア政府固有の VPN Gateway ガイダンス|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
+|オーストラリア政府固有の VPN Gateway ガイダンス|[Azure VPN Gateway の構成](vpn-gateway.md)|
 |
 
 ### <a name="azure-firewall"></a>Azure Firewall

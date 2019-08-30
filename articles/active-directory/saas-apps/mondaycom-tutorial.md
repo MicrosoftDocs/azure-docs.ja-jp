@@ -102,7 +102,7 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
 
 1. その他に、monday.com アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | EnableAdfsAuthentication | ソース属性|
+    | Name | ソース属性|
     | ---------------| --------------- |
     | Email | User.mail |
     | FirstName | User.givenname |

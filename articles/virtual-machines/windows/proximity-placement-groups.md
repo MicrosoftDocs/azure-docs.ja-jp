@@ -6,31 +6,30 @@ documentationcenter: ''
 author: cynthn
 manager: jeconnoc
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 9e9b8dddf7f48fe672a37b0343d215e0735ed760
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: af75b3f98232d6507fc8b0fda179bebc75828086
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302500"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088838"
 ---
 # <a name="preview-deploy-vms-to-proximity-placement-groups-using-powershell"></a>更新:PowerShell を使用し、近接通信配置グループに VM をデプロイする
 
 
 VM を可能な限り近くに置き、待ち時間を可能な限り短くするためには、[近接通信配置グループ](co-location.md#preview-proximity-placement-groups)内に VM をデプロイしてください。
 
-近接通信配置グループは、Azure コンピューティング リソースが互いに近い場所に物理的に配置されるようにする目的で使用される論理グループです。 近接通信配置グループは、短い待ち時間が要件となるワークロードに役立ちます。
+近接通信配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 近接通信配置グループは、短い待ち時間が要件であるワークロードに役立ちます。
 
 > [!IMPORTANT]
-> 近接通信配置グループは現在のところ、パブリック プレビューの段階にあります。
+> 近接通信配置グループは現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> プレビュー期間中、近接通信配置グループは、**日本東部**、**オーストラリア東部**、**インド中部**で利用できません。
+> 近接通信配置グループは、プレビュー期間中、**東日本**、**オーストラリア東部**、**インド中部**では利用できません。
 
 
 ## <a name="create-a-proximity-placement-group"></a>近接通信配置グループの作成
@@ -88,4 +87,4 @@ Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure CLI](../linux/proximity-placement-groups.md) を使用し、近接通信配置グループを作成することもできます。
+[Azure CLI](../linux/proximity-placement-groups.md) を使用して近接通信配置グループを作成することもできます。

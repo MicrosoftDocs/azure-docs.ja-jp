@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89443062f7d5cc697e83cc4039d0f3a47ad3077
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561839"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987143"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
@@ -32,7 +32,7 @@ ms.locfileid: "68561839"
 ## <a name="licensing-requirements"></a>ライセンスの要件
 グループベースのライセンスを使用するには、次のいずれかのライセンスが必要です。
 
-- Azure AD Basic 以上の有料または試用版のサブスクリプション
+- Azure AD Premium P1 以上の有料または試用版のサブスクリプション
 
 - Office 365 Enterprise E3 または Office 365 A3 または Office 365 GCC G3 以上の有料または試用版のエディション
 

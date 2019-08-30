@@ -1,71 +1,112 @@
 ---
-title: クイック スタート:Python SDK を使用して Text Analytics サービスを呼び出す
+title: クイック スタート:Python 用 Text Analytics クライアント ライブラリ | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: このクイックスタートを使用して、Azure Cognitive Services から Text Analytics API を使ってみましょう。
 services: cognitive-services
 author: ctufts
 manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/05/2019
 ms.author: aahi
-ms.openlocfilehash: 82f0313a237358fcaa1ae52e92821abef2b52af7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d7ad19a58327ba508ccb4e47d12d3d0f50465f4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697312"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884004"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>クイック スタート:Python SDK を使用して Text Analytics サービスを呼び出す 
+# <a name="quickstart-text-analytics-client-library-for-python"></a>クイック スタート:Python 用 Text Analytics クライアント ライブラリ
 <a name="HOLTop"></a>
 
-このクイックスタートを使用して、Python 用 Text Analytics SDK を使用した言語の分析を開始します。 Text Analytics REST API は、ほとんどのプログラミング言語に対応しますが、この SDK を使用すれば、JSON をシリアル化および逆シリアル化することなく、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py) にあります。
+Python 用 Text Analytics クライアント ライブラリの概要を紹介します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 
+
+Python 用 Text Analytics クライアント ライブラリを使って次のことを実行します。
+
+* センチメント分析
+* 言語検出
+* エンティティの認識
+* キー フレーズの抽出
+
+
+[リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+
 
 ## <a name="prerequisites"></a>前提条件
 
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
-* パッケージのインストールに使用できる [Python 用](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) Text Analytics SDK。
+## <a name="setting-up"></a>設定
 
-    `pip install --upgrade azure-cognitiveservices-language-textanalytics`
+### <a name="create-a-text-analytics-azure-resource"></a>Text Analytics Azure リソースを作成する
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](../../cognitive-services-apis-create-account.md) または [Azure CLI](../../cognitive-services-apis-create-account-cli.md) を使用して、ローカル コンピューター上に Text Analytics のリソースを作成します。 さらに、以下を実行できます。
 
-## <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
+* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#decision)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
+* お使いのリソースを [Azure portal](https://portal.azure.com/) で表示する
 
-お気に入りのエディターまたは IDE で、新しい Python アプリケーションを作成します。 続いて、以下の import ステートメントをファイルに追加します。
+試用版のサブスクリプションまたはリソースからキーを取得した後、`TEXT_ANALYTICS_SUBSCRIPTION_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
+
+Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
+
+```console
+pip install --upgrade azure-cognitiveservices-language-textanalytics
+```
+
+### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
+
+お気に入りのエディターまたは IDE で、新しい Python アプリケーションを作成します。 次に、次のライブラリをインポートします。
 
 ```python
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="authenticate-your-credentials"></a>資格情報の認証
+自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
 
-> [!Tip]
-> 運用システムでシークレットを安全にデプロイするために、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net) の使用をお勧めします。
->
-
-Text Analytics サブスクリプション キー用の変数を作成した後、一緒に `CognitiveServicesCredentials` オブジェクトをインスタンス化します。
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```python
-subscription_key = "enter-your-key-here"
-credentials = CognitiveServicesCredentials(subscription_key)
-```
-
-## <a name="create-a-text-analytics-client"></a>Text Analytics クライアントの作成
-
-`credentials` および `text_analytics_url` をパラメーターとして新しい `TextAnalyticsClient` オブジェクトを作成します。 Text Analytics サブスクリプションには、必ず適切な Azure リージョンを使用してください (たとえば `westcentralus`)。
-
-```
+# replace this endpoint with the correct one for your Azure resource. 
 text_analytics_url = "https://westcentralus.api.cognitive.microsoft.com/"
+# This sample assumes you have created an environment variable for your key
+key = os.environ["TEXT_ANALYTICS_SUBSCRIPTION_KEY"]
+credentials = CognitiveServicesCredentials(key)
+```
+
+## <a name="object-model"></a>オブジェクト モデル
+
+Text Analytics クライアントは、ご利用のキーを使用して Azure に対して認証を行う [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) オブジェクトです。 このクライアントには、テキストを単一の文字列として、またはバッチとして分析するためのメソッドがいくつか備わっています。 
+
+テキストは、`documents` (使用したメソッドに応じて `id`、`text`、`language` の各属性の組み合わせを保持する `dictionary` オブジェクト) のリストとして API に送信されます。 `text` 属性には、分析対象のテキストが元の `language` で格納され、`id` には任意の値を指定できます。 
+
+応答オブジェクトは、各ドキュメントの分析情報を格納するリストです。 
+
+## <a name="code-examples"></a>コード例
+
+これらのコード スニペットでは、Python 用 Text Analytics クライアント ライブラリを使用して次のことを実行する方法が示されています。
+
+* [クライアントを認証する](#authenticate-the-client)
+* [感情分析](#sentiment-analysis)
+* [言語検出](#language-detection)
+* [エンティティの認識](#entity-recognition)
+* [キー フレーズ抽出](#key-phrase-extraction)
+
+## <a name="authenticate-the-client"></a>クライアントを認証する
+
+`credentials` および `text_analytics_url` をパラメーターとして新しい [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) オブジェクトを作成します。 Text Analytics サブスクリプションには、必ず適切な Azure リージョンを使用してください (たとえば `westcentralus`)。
+
+```python
 text_analytics = TextAnalyticsClient(endpoint=text_analytics_url, credentials=credentials)
 ```
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 
-API に対するペイロードは、`id` および `text` の属性を含んだディレクトリである `documents` の一覧で構成されます。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
+[sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 関数を呼び出し、結果を取得します。 結果を反復処理し、各ドキュメントの ID とセンチメント スコアを印刷します。 0 に近いスコアは否定的センチメント、1 に近いスコアは肯定的センチメントを示します。
 
 ```python
 documents = [
@@ -73,28 +114,8 @@ documents = [
         "id": "1",
         "language": "en",
         "text": "I had the best day of my life."
-    },
-    {
-        "id": "2",
-        "language": "en",
-        "text": "This was a waste of my time. The speaker put me to sleep."
-    },
-    {
-        "id": "3",
-        "language": "es",
-        "text": "No tengo dinero ni nada que dar..."
-    },
-    {
-        "id": "4",
-        "language": "it",
-        "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
     }
 ]
-```
-
-`sentiment()` 関数を呼び出し、結果を取得します。 結果を反復処理し、各ドキュメントの ID とセンチメント スコアを印刷します。 0 に近いスコアは否定的センチメント、1 に近いスコアは肯定的センチメントを示します。
-
-```python
 response = text_analytics.sentiment(documents=documents)
 for document in response.documents:
     print("Document Id: ", document.id, ", Sentiment Score: ",
@@ -105,35 +126,19 @@ for document in response.documents:
 
 ```console
 Document Id:  1 , Sentiment Score:  0.87
-Document Id:  2 , Sentiment Score:  0.11
-Document Id:  3 , Sentiment Score:  0.44
-Document Id:  4 , Sentiment Score:  1.00
 ```
 
 ## <a name="language-detection"></a>言語検出
 
-それぞれが分析するドキュメントを含んだディレクトリの一覧を作成します。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
+以前に作成したクライアントを使用して、[detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID と最初に返された言語を印刷します。
 
 ```python
 documents = [
     {
         'id': '1',
         'text': 'This is a document written in English.'
-    },
-    {
-        'id': '2',
-        'text': 'Este es un document escrito en Español.'
-    },
-    {
-        'id': '3',
-        'text': '这是一个用中文写的文件'
     }
 ]
-```
-
-前に作成したクライアントを使用して、`detect_language()` を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID と最初に返された言語を印刷します。
-
-```python
 response = text_analytics.detect_language(documents=documents)
 for document in response.documents:
     print("Document Id: ", document.id, ", Language: ",
@@ -144,14 +149,11 @@ for document in response.documents:
 
 ```console
 Document Id:  1 , Language:  English
-Document Id:  2 , Language:  Spanish
-Document Id:  3 , Language:  Chinese_Simplified
 ```
 
 ## <a name="entity-recognition"></a>エンティティの認識
 
-分析するドキュメントを含んだディレクトリの一覧を作成します。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
-
+以前に作成したクライアントを使用して、[entities()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 関数を呼び出して結果を取得します。 続いて、結果を反復処理し、各ドキュメントの ID とそれに含まれているエンティティを印刷します。
 
 ```python
 documents = [
@@ -159,18 +161,8 @@ documents = [
         "id": "1",
         "language": "en",
         "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."
-    },
-    {
-        "id": "2",
-        "language": "es",
-        "text": "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."
     }
 ]
-```
-
-以前に作成したクライアントを使用して、`entities()` 関数を呼び出して結果を取得します。 続いて、結果を反復処理し、各ドキュメントの ID とそれに含まれているエンティティを印刷します。
-
-```python
 response = text_analytics.entities(documents=documents)
 
 for document in response.documents:
@@ -183,7 +175,6 @@ for document in response.documents:
             print("\t\t\tOffset: ", match.offset, "\tLength: ", match.length, "\tScore: ",
                   "{:.2f}".format(match.entity_type_score))
 ```
-
 
 ### <a name="output"></a>Output
 
@@ -204,51 +195,20 @@ Document Id:  1
             Offset:  89     Length:  5  Score:  0.80
          NAME:  Altair 8800     Type:  Other    Sub-type:  None
             Offset:  116    Length:  11     Score:  0.80
-Document Id:  2
-    Key Entities:
-         NAME:  Microsoft   Type:  Organization     Sub-type:  None
-            Offset:  21     Length:  9  Score:  1.00
-         NAME:  Redmond (Washington)    Type:  Location     Sub-type:  None
-            Offset:  60     Length:  7  Score:  0.99
-         NAME:  21 kilómetros   Type:  Quantity     Sub-type:  Dimension
-            Offset:  71     Length:  13     Score:  0.80
-         NAME:  Seattle     Type:  Location     Sub-type:  None
-            Offset:  88     Length:  7  Score:  1.00
 ```
 
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 
-分析するドキュメントを含んだディレクトリの一覧を作成します。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
-
+以前に作成したクライアントを使用して、[key_phrases()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) 関数を呼び出して結果を取得します。 続いて、結果を反復処理し、各ドキュメントの ID とそれに含まれているキー フレーズを印刷します。
 
 ```python
 documents = [
     {
         "id": "1",
-        "language": "ja",
-        "text": "猫は幸せ"
-    },
-    {
-        "id": "2",
-        "language": "de",
-        "text": "Fahrt nach Stuttgart und dann zum Hotel zu Fu."
-    },
-    {
-        "id": "3",
         "language": "en",
         "text": "My cat might need to see a veterinarian."
-    },
-    {
-        "id": "4",
-        "language": "es",
-        "text": "A mi me encanta el fútbol!"
     }
 ]
-```
-
-以前に作成したクライアントを使用して、`key_phrases()` 関数を呼び出して結果を取得します。 続いて、結果を反復処理し、各ドキュメントの ID とそれに含まれているキー フレーズを印刷します。
-
-```python
 response = text_analytics.key_phrases(documents=documents)
 
 for document in response.documents:
@@ -258,34 +218,32 @@ for document in response.documents:
         print("\t\t", phrase)
 ```
 
+
 ### <a name="output"></a>Output
 
 ```console
-Document Id:  1
-    Phrases:
-         幸せ
-Document Id:  2
-    Phrases:
-         Stuttgart
-         Hotel
-         Fahrt
-         Fu
 Document Id:  3
     Phrases:
          cat
          veterinarian
-Document Id:  4
-    Phrases:
-         fútbol
 ```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+
+* [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>関連項目
 
-* [Text Analytics API とは](../overview.md)
-* [ユーザー シナリオの例](../text-analytics-user-scenarios.md)
-* [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)
+* [Text Analytics の概要](../overview.md)
+* [感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [エンティティの認識](../how-tos/text-analytics-how-to-entity-linking.md)
+* [言語を検出する](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [言語の認識](../how-tos/text-analytics-how-to-language-detection.md)
+* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py) にあります。

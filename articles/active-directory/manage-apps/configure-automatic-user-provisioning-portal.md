@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b6d42c961054927581e7cc43b6f467e5d3e23c4e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807630"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996722"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
@@ -92,9 +92,3 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 * サービスを再起動し、初期同期を再度実行する
 
 このオプションを使用すると、プロビジョニング デプロイ プロセスを繰り返し開始できます。
-
-### <a name="synchronization-details"></a>[Synchronization Details (同期の詳細)]
-
-このセクションには、アプリケーションに対してプロビジョニング サービスを最初に実行した時間と最後に実行した時間や、管理しているユーザーとグループ オブジェクトの数など、プロビジョニング サービスの操作の詳細が表示されます。
-
-**プロビジョニング アクティビティ レポート**へのリンクが提供されます。これにより、Azure AD とターゲット アプリケーションの間で作成、更新、削除されたすべてのユーザーとグループのログを確認できます。 また、**プロビジョニング エラー レポート**へのリンクも提供されます。これにより、読み取り、作成、または削除に失敗したユーザー オブジェクトとグループ オブジェクトの詳細なエラー メッセージを確認できます。

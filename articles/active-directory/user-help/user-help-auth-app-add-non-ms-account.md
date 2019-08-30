@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effe48c859e711f0efc41c1a4d651e5d15d5ada9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382612"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942929"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Microsoft 以外のアカウントを追加する
 
@@ -33,6 +33,9 @@ ms.locfileid: "68382612"
 1. ご利用のアカウントにサインインしてから、デバイスまたはコンピューターを使用して 2 要素検証を有効にします。
 
 2. アカウントを Microsoft Authenticator アプリに追加します。 このプロセスの一環として QR コードをスキャンするように求められることがあります。
+
+    >[!Note]
+    >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
 ここでは、Facebook、Google、GitHub、および Amazon のアカウントに関するプロセスについて説明しますが、このプロセスは、Instagram、Netflix、または Adobe などの他のアプリの場合も同じです。
 

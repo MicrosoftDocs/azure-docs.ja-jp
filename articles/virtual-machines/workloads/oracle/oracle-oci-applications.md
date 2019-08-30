@@ -7,19 +7,18 @@ author: romitgirdhar
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: ca16dceae9ab1afab17b2893b61f6a1c3309cf93
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: b183a4d4922c89f60ccb19b3e3e978216f33cc9a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361279"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100081"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Azure に Oracle アプリケーションをデプロイするアーキテクチャ
 

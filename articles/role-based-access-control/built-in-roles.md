@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 07/11/2019
+ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: de068563e50da4510343572fd641aadd93157073
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868641"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899729"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -139,6 +139,10 @@ ms.locfileid: "67868641"
 | [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 | [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 | [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
+| [Storage Blob デリゲータ](#storage-blob-delegator) | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 |
+| [記憶域ファイル データの SMB 共有の共同作成者](#storage-file-data-smb-share-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します。 |
+| [記憶域ファイル データの SMB 共有の管理者特権共同作成者](#storage-file-data-smb-share-elevated-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセス、NTFS アクセス許可の変更アクセスを許可します。 |
+| [ストレージ ファイル データの SMB 共有の閲覧者](#storage-file-data-smb-share-reader) | SMB 経由の Azure ファイル共有に対する読み取りアクセスを許可します。 |
 | [ストレージ キュー データ共同作成者共同作成者](#storage-queue-data-contributor) | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 | [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 | [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
@@ -698,7 +702,7 @@ ms.locfileid: "67868641"
 > | **説明** | Azure Stack の登録を管理できます。 |
 > | **Id** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | **アクション** |  |
-> | Microsoft.AzureStack/registrations/products/listDetails/action | Azure Stack Marketplace の製品の拡張詳細を取得します |
+> | Microsoft.AzureStack/registrations/products/*/action |  |
 > | Microsoft.AzureStack/registrations/products/read | Azure Stack Marketplace の製品のプロパティを取得します |
 > | Microsoft.AzureStack/registrations/read | Azure Stack の登録のプロパティを取得します |
 > | **NotActions** |  |
@@ -2605,6 +2609,7 @@ ms.locfileid: "67868641"
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除します。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | コンテナーのメタデータまたはプロパティを変更します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2622,6 +2627,7 @@ ms.locfileid: "67868641"
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/* | コンテナーのフル アクセス許可。 |
+> | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2637,10 +2643,76 @@ ms.locfileid: "67868641"
 > | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="storage-blob-delegator"></a>Storage Blob デリゲータ
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 |
+> | **Id** | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
+> | **アクション** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="storage-file-data-smb-share-contributor"></a>記憶域ファイル データの SMB 共有の共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します。 |
+> | **Id** | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | ファイル/フォルダーまたはファイル/フォルダーの一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | ファイルの書き込みまたはフォルダーの作成の結果を返します。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | ファイル/フォルダーの削除の結果を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="storage-file-data-smb-share-elevated-contributor"></a>記憶域ファイル データの SMB 共有の管理者特権共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセス、NTFS アクセス許可の変更アクセスを許可します。 |
+> | **Id** | a7264617-510b-434b-a828-9731dc254ea7 |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | ファイル/フォルダーまたはファイル/フォルダーの一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | ファイルの書き込みまたはフォルダーの作成の結果を返します。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | ファイル/フォルダーの削除の結果を返します。 |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action | ファイル/フォルダーに対するアクセス許可の変更の結果を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="storage-file-data-smb-share-reader"></a>記憶域ファイル データの SMB 共有の閲覧者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | SMB 経由の Azure ファイル共有に対する読み取りアクセスを許可します。 |
+> | **Id** | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | ファイル/フォルダーまたはファイル/フォルダーの一覧を返します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 

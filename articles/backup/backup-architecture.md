@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 44bf85eafe3f5cfa801b6c845a51e3dcd5e1262a
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466866"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881865"
 ---
-# <a name="azure-backup-architecture"></a>Azure Backup のアーキテクチャ
+# <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
 [Azure Backup サービス](backup-overview.md)を使用して、Microsoft Azure クラウド プラットフォームにデータをバックアップすることができます。 この記事では、Azure Backup のアーキテクチャ、コンポーネント、およびプロセスの概要を示します。 
 
@@ -120,7 +120,7 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
     - 最後のバックアップ以降に変更されたデータのブロックのみがコピーされます。
     - データは暗号化されません。 Azure Backup では、Azure Disk Encryption を使用して暗号化された Azure VM をバックアップできます。
     - スナップショット データはコンテナーにすぐにコピーされない場合があります。 ピーク時には、バックアップに数時間かかる場合があります。 毎日のバックアップ ポリシーでは、VM のバックアップの合計時間は 24 時間未満になります。
-1. データがコンテナーに送信された後、スナップショットが削除され、復旧ポイントが作成されます。
+1. データがコンテナーに送信されると、復旧ポイントが作成されます。 既定では、スナップショットは 2 日間保持されてから削除されます。 この機能では、復元時間を削減して、これらのスナップショットから復元操作を行うことができます。 それにより、コンテナーからデータを変換して元の場所にコピーするために必要な時間が削減されます。 [Azure Backup のインスタント リストア機能](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability)に関するページを参照してください。
 
 Azure VM では制御コマンド用にインターネット アクセスが必要です。 VM 内のワークロードをバックアップしている場合は (SQL Server データベースのバックアップなど)、バックエンド データにもインターネット アクセスが必要です。 
 

@@ -66,11 +66,11 @@ Windows ストア アプリケーションの開発の詳細については、�
 1. **[ファイル]** メニューの **[新規作成]** をクリックし、 **[プロジェクト]** をクリックします。
 1. [新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
 
-    | EnableAdfsAuthentication | 値 |
+    | Name | 値 |
     | --- | --- |
     | テンプレート グループ |インストール済み/テンプレート/Visual C#/Windows ストア |
     | Template |新しいアプリケーション (XAML) |
-    | EnableAdfsAuthentication |SSPlayer |
+    | Name |SSPlayer |
     | Location |C:\SSTutorials |
     | ソリューション名 |SSPlayer |
     | ソリューションのディレクトリを作成 |(オン) |
@@ -82,7 +82,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 1. ソリューション エクスプローラーで **[SSPlayer]** を右クリックし、 **[参照の追加]** をクリックします。
 1. 次の値を入力または選択します。
 
-    | EnableAdfsAuthentication | 値 |
+    | Name | 値 |
     | --- | --- |
     | 参照グループ |Windows/拡張 |
     | リファレンス |Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択 |

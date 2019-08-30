@@ -71,12 +71,24 @@
           href: event-hubs-geo-dr.md
     - name: セキュリティ
       items:
-        - name: Azure リソースのマネージド ID
-          href: event-hubs-managed-service-identity.md
-        - name: ロールベースのアクセス制御 (プレビュー)
-          href: event-hubs-role-based-access-control.md
-        - name: 認証とセキュリティ モデルの概要
-          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Authorization
+          items:
+            - name: Azure Event Hubs へのアクセスを承認する
+              href: authorize-access-event-hubs.md
+            - name: Azure Active Directory を使用したアクセスを承認する
+              href: authorize-access-azure-active-directory.md
+            - name: Shared Access Signature を使用したアクセスを承認する
+              href: authorize-access-shared-access-signature.md
+        - name: Authentication
+          items:
+            - name: Azure Active Directory を使用して認証する
+              items:
+                - name: マネージド ID による認証
+                  href: authenticate-managed-identity.md
+                - name: アプリケーションからの認証
+                  href: authenticate-application.md
+            - name: 共有アクセス署名を使用して認証する
+              href: authenticate-shared-access-signature.md
         - name: セキュリティ属性
           href: event-hubs-security-attributes.md
     - name: AMQP 1.0 プロトコル ガイド
@@ -166,6 +178,8 @@
           href: event-hubs-service-endpoints.md
         - name: Event Hubs 名前空間での仮想ネットワークの統合とファイアウォールの有効化
           href: event-hubs-tutorial-virtual-networks-firewalls.md
+        - name: 保存データの暗号化のために顧客管理キーを構成する
+          href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:
         - name: 例外

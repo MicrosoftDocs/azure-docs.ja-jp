@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 5e7a3d849f726ae4dbbd559d541464404e427775
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2080d283c6cb7466dcb4847a81d76a4c3109217a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717098"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012194"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure CLI から Azure コンテナー インスタンス リソースを作成する
 
-次の YAML は、Azure コンテナー インスタンス リソースを定義します。 内容をコピーして新しいファイルに貼り付け、`my-aci.yaml` という名前を付け、コメント付きの値を独自の値に置き換えます。 有効な YAML については、[テンプレートの形式][テンプレートの形式] を参照してください。 使用可能なイメージ名と対応するリポジトリについては、[コンテナーのリポジトリとイメージ][repositories-and-images]を参照してください。
+次の YAML は、Azure コンテナー インスタンス リソースを定義します。 内容をコピーして新しいファイルに貼り付け、`my-aci.yaml` という名前を付け、コメント付きの値を独自の値に置き換えます。 有効な YAML については、[テンプレートの形式][template-format]を参照してください。 使用可能なイメージ名と対応するリポジトリについては、[コンテナーのリポジトリとイメージ][repositories-and-images]を参照してください。
 
 ```YAML
 apiVersion: 2018-10-01

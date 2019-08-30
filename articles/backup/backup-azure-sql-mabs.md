@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 5e91d63f4479d0677c57342cb1b726e33a45bb86
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689081"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954470"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用した Azure への SQL Server のバックアップ
 この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する手順について説明します。
@@ -41,12 +41,12 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     ![Select SQL DB](./media/backup-azure-backup-sql/pg-databases.png)
 6. 保護グループの名前を指定し、 **[オンライン保護を利用する]** チェック ボックスをオンにします。
 
-    ![Data Protection Method - short term disk & Online Azure](./media/backup-azure-backup-sql/pg-name.png)
+    ![Data Protection Method - short-term disk & Online Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. **[短期的な目標値の指定]** 画面で、ディスクへのバックアップ ポイントを作成するために必要な入力を含めます。
 
-    ここで、 **[保有期間の範囲]** が *5 日間*、 **[同期の頻度]** (バックアップが実行される頻度) が *15 分*ごとに設定されていることを確認します。 **[高速完全バックアップ]** は *午後 8 時 00 分*に設定されています。
+    ここで、 **[リテンション期間]** が *5 日間*、 **[同期の頻度]** (バックアップが実行される頻度) が *15 分*ごとに設定されていることを確認します。 **[高速完全バックアップ]** は *午後 8 時 00 分*に設定されています。
 
-    ![Short term goals](./media/backup-azure-backup-sql/pg-shortterm.png)
+    ![短期的な目標値](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
    > (画面の入力に従って) 毎日午後 8 時 00 分に、前日午後 8 時 00 分のバックアップ ポイントから変更されているデータを転送することにより、バックアップ ポイントが作成されます。 このプロセスは、 **高速完全バックアップ**と呼ばれます。 トランザクション ログは 15 分ごとに同期されますが、午後 9 時 00 分にデータベースを回復する必要がある場合は、最新の高速完全バックアップ ポイント (この例では午後 8 時) からログを再生することでポイントが作成されます。

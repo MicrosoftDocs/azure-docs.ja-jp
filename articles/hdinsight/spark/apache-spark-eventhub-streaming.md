@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489805"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049482"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>チュートリアル:HDInsight で Azure Event Hubs と Apache Spark を使用してツイートを処理する
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     |プロパティ |値 |
     |---|---|
-    |EnableAdfsAuthentication|アプリケーション名を指定します。 このチュートリアルで使用されている値は **HDISparkStreamApp0423** です。 この名前は、一意の名前にする必要があります。|
+    |名前|アプリケーション名を指定します。 このチュートリアルで使用されている値は **HDISparkStreamApp0423** です。 この名前は、一意の名前にする必要があります。|
     |説明|アプリケーションの簡単な説明を指定します。 このチュートリアルで使用されている値は **A simple HDInsight Spark streaming application** です。|
     |Web サイト|アプリケーションの Web サイトを指定します。 有効な Web サイトである必要はありません。  このチュートリアルで使用されている値は `http://www.contoso.com` です。|
     |コールバック URL|空白のままにできます。|
@@ -82,8 +82,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     |プロパティ |値 |
     |---|---|
-    |EnableAdfsAuthentication|イベント ハブの名前を入力します。  このチュートリアルで使用されている値は **myeventhubns20180403** です。|
-    |価格レベル|**[Standard]** を選択します。|
+    |名前|イベント ハブの名前を入力します。  このチュートリアルで使用されている値は **myeventhubns20180403** です。|
+    |Pricing tier|**[Standard]** を選択します。|
     |Subscription|適切なサブスクリプションを選択します。|
     |Resource group|ドロップダウン リストから既存のリソース グループを選択するか、または **[新規作成]** を選択して新しいリソース グループを作成します。|
     |Location|待機時間とコストを削減するには、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択します。|
@@ -135,7 +135,7 @@ Jupyter Notebook を作成し、それに **SendTweetsToEventHub** という名�
 
     ```
     %%configure
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0,org.twitter4j:twitter4j-core:4.0.6"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
 2. 次のコードを編集して、`<Event hub name>`、`<Event hub namespace connection string>`、`<CONSUMER KEY>`、`<CONSUMER SECRET>`、`<ACCESS TOKEN>`、および `<TOKEN SECRET>` を適切な値に置き換えます。 編集されたコードを実行して、イベント ハブにツイートを送信します。
@@ -217,7 +217,7 @@ Jupyter Notebook を作成し、それに **SendTweetsToEventHub** という名�
 
     ```
     %%configure -f
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
 2. 次のコードを編集して、`<Event hub name>` と `<Event hub namespace connection string>` を適切な値に置き換えます。 編集されたコードを実行して、イベント ハブからツイートを読み取ります。

@@ -18,7 +18,7 @@ sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: Azure で Azure 仮想マシンをバックアップする方法を説明します。
+        text: Azure で Azure VM をバックアップする方法を説明します。
       - type: list
         style: icon48
         items:
@@ -43,7 +43,7 @@ sections:
         items:
           - html: <a href="tutorial-backup-vm-at-scale">複数の Azure VM をバックアップする</a>
           - html: <a href="tutorial-restore-disk">ディスクを復元し、回復した VM を作成する</a>
-          - html: <a href="tutorial-restore-files">Azure の仮想マシンにファイルを復元する</a>
+          - html: <a href="tutorial-restore-files">Azure VM にファイルを復元する</a>
           - html: <a href="tutorial-backup-windows-server-to-azure">Azure で Windows Server のバックアップをとる</a>
           - html: <a href="tutorial-backup-restore-files-windows-server">Azure から Windows Server にファイルを復旧する</a>
   - title: サンプル

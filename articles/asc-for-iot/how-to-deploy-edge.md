@@ -161,7 +161,7 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
    
 1. 次のコンテナーが実行中であることを確認します。
    
-   | EnableAdfsAuthentication | イメージ |
+   | Name | イメージ |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |

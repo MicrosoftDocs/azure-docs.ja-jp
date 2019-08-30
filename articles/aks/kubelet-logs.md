@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: mlearned
 ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67615177"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes Service (AKS) クラスター ノードから kubelet ログを取得する
 
-場合によっては、AKS クラスターの操作の一環として、ログを確認して問題のトラブルシューティングを行う必要があります。 Azure portal には、[AKS マスター コンポーネント][aks-master-logs]or [containers in an AKS cluster][azure-container-logs]のログを表示する機能が組み込まれています。 場合によっては、トラブルシューティングの目的で、AKS ノードから *kubelet* ログを取得しなければならない可能性があります。
+場合によっては、AKS クラスターの操作の一環として、ログを確認して問題のトラブルシューティングを行う必要があります。 Azure portal には、[AKS マスター コンポーネント][aks-master-logs]や [AKS クラスター内のコンテナー][azure-container-logs]のログを表示する機能が組み込まれています。 場合によっては、トラブルシューティングの目的で、AKS ノードから *kubelet* ログを取得しなければならない可能性があります。
 
 この記事では、`journalctl` を使用して AKS ノード上の *kubelet* ログを表示する方法を示します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、AKS のクイックスタートの、[Azure CLI を使用][aks-quickstart-cli]に関するページと、Azure portal に関するページor [using the Azure portal][aks-quickstart-portal]を参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 ## <a name="create-an-ssh-connection"></a>SSH 接続を作成する
 

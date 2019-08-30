@@ -6,24 +6,23 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/23/2019
+ms.date: 08/13/2019
 ms.author: lahugh
-ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 916dceb7c5e4314df98407b4e8fa4ed75cdb308c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323655"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095275"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 
 [Azure Batch サービス](https://azure.microsoft.com/services/batch/)は、コンピューティング ノードで以下の環境変数を設定します。 これらの環境変数は、タスク コマンドラインと、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。
 
-Batch での環境変数の使用に関する詳細については、[「タスクの環境設定」](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks)を参照してください。
+Batch での環境変数の使用に関する詳細については、「[タスクの環境設定](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks)」を参照してください。
 
 ## <a name="environment-variable-visibility"></a>環境変数の可視性
 
@@ -51,7 +50,7 @@ Batch での環境変数の使用に関する詳細については、[「タス�
 | AZ_BATCH_ACCOUNT_URL            | Batch アカウントの URL。 | すべてのタスク。 | `https://myaccount.westus.batch.azure.com` |
 | AZ_BATCH_APP_PACKAGE            | すべてのアプリ パッケージ環境変数のプレフィックス。 たとえば、アプリケーション "Foo" のバージョン "1" がプールにインストールされる場合、環境変数は AZ_BATCH_APP_PACKAGE_FOO_1 です。 AZ_BATCH_APP_PACKAGE_FOO_1 は、パッケージがダウンロードされた場所 (フォルダー) を示します。 | 関連付けられたアプリ パッケージがある任意のタスク。 ノード自体にアプリケーション パッケージがある場合は、すべてのタスクに対しても使用できます。 | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Batch サービス操作の制限されたセットへのアクセスを許可する認証トークン。 この環境変数は、[タスクが追加される](/rest/api/batchservice/task/add#request-body)ときに、[authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) が設定された場合のみに存在します。 このトークン値は、[BatchClient.Open() .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_) などの Batch API 内で、Batch クライアントを作成するための資格署名として使用されます。 | すべてのタスク。 | OAuth2 アクセス トークン |
-| AZ_BATCH_CERTIFICATES_DIR       | [ タスク作業ディレクトリ内のディレクトリ][files_dirs]、この中に Linux コンピューティング ノードの証明書が格納される。 この環境変数は Windows コンピューティング ノードに適用されないので注意してください。                                                  | すべてのタスク。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
+| AZ_BATCH_CERTIFICATES_DIR       | [ タスク作業ディレクトリ内のディレクトリ][files_dirs]、この中に Linux コンピューティング ノードの証明書が格納される。 この環境変数は Windows コンピューティング ノードに適用されません。                                                  | すべてのタスク。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | [マルチ インスタンス タスク][multi_instance]に割り当てられているノードのリストを形式 `nodeIP,nodeIP` で示します。 | マルチ インスタンスのプライマリおよびサブタスク。 | `10.0.0.4,10.0.0.5` |
 | AZ_BATCH_IS_CURRENT_NODE_MASTER | 現在のノードが[マルチインスタンス タスク][multi_instance]のマスター ノードかどうかを指定します。 可能な値は `true` と `false` です。| マルチ インスタンスのプライマリおよびサブタスク。 | `true` |
 | AZ_BATCH_JOB_ID                 | タスクが属するジョブの ID。 | 開始タスクを除くすべてのタスク。 | batchjob001 |
@@ -61,6 +60,7 @@ Batch での環境変数の使用に関する詳細については、[「タス�
 | AZ_BATCH_NODE_ID                | タスクが割り当てられているノードの ID。 | すべてのタスク。 | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | `true` の場合、現在のノードが専用ノードです。 `false` の場合、これは[優先順位の低いノード](batch-low-pri-vms.md)です。 | すべてのタスク。 | `true` |
 | AZ_BATCH_NODE_LIST              | [マルチ インスタンス タスク][multi_instance]に割り当てられているノードのリストを形式 `nodeIP;nodeIP` で示します。 | マルチ インスタンスのプライマリおよびサブタスク。 | `10.0.0.4;10.0.0.5` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | すべてのマウント ディレクトリが存在するノード レベルの[ファイル システム マウント](virtual-file-mount.md)場所の完全パス。 Windows ファイル共有はドライブ文字を使用するので、Windows の場合、マウント ドライブはデバイスとドライブの一部になります。  |  マウントされたディレクトリのマウント アクセス許可をユーザーが認識している場合、開始タスクを含むすべてのタスクがユーザーにアクセスできます。 | たとえば、Ubuntu での場所は `/mnt/batch/tasks/fsmounts` です。 |
 | AZ_BATCH_NODE_ROOT_DIR          | ノード上のすべての [Batch ディレクトリ][files_dirs]のルートの完全パス。 | すべてのタスク。 | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | ノード上の[共有ディレクトリ][files_dirs]の完全パス。 ノードで実行されるすべてのタスクに、このディレクトリに対する読み取り/書き込みアクセス権があります。 他のノードで実行されるタスクにはこのディレクトリに対するリモート アクセス権がありません (「共有」ネットワーク ディレクトリではありません)。 | すべてのタスク。 | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | ノード上の[開始タスク ディレクトリ][files_dirs]の完全パス。 | すべてのタスク。 | C:\user\tasks\startup |

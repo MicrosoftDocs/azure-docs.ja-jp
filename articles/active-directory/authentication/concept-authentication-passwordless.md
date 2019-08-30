@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/05/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d80b359be0a6249327ba1ba1d51ffbc330bb073
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ae8f6854241240249cb3b7494872cbbd8fd41e6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711968"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823781"
 ---
 # <a name="what-is-passwordless"></a>パスワードなしとは
 
@@ -26,11 +26,13 @@ ms.locfileid: "67711968"
 | --- | --- | --- |
 | パスワードなし | 電話またはセキュリティ キー | 生体認証または PIN |
 
-各組織には認証についてさまざまなニーズがあることを認識しています。 Microsoft では現在、Windows PC 用のプレミア パスワードなしエクスペリエンスである、Windows Hello を提供しています。 新しい資格情報をパスワードなしのファミリに追加しています:Microsoft Authenticator アプリと FIDO2 セキュリティ キー。
+認証については、組織ごとにさまざまなニーズがあります。 現在、Microsoft では Windows PC 用に Windows Hello を提供しています。 Microsoft Authenticator アプリと FIDO2 のセキュリティ キーをパスワードなしファミリに追加しています。
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator アプリ
 
 従業員の電話をパスワードなしの認証方法として使用できるようにします。 パスワードに加え、便利な多要素認証オプションとして Microsoft Authenticator アプリを既に使用されているかもしれません。 しかし、ここでは、パスワードなしのオプションとして使用できます。
+
+![Microsoft Authenticator アプリを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
 あらゆる iOS や Android フォンを、強力なパスワードなしの資格情報に変えます。その場合、ユーザーが、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認することで、プラットフォームまたはブラウザーにサインインできるようにします。
 
@@ -40,11 +42,13 @@ FIDO2 セキュリティ キーは、フォーム ファクターとして提供
 
 パブリック プレビューでは、従業員は外部のセキュリティ キーを使用して、Azure Active Directory 参加済みの Windows 10 コンピューター (バージョン 1809 以降を実行している) にサインインし、クラウド リソースへのシングル サインオンを行うことができます。 サポートされているブラウザーにサインインすることもできます。
 
+![セキュリティ キーを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
+
 FIDO Alliance によって FIDO2 認定されたキーが多数存在する場合、Microsoft では、最大限のセキュリティと最適なエクスペリエンスを保証するために、ベンダーによって実装される FIDO2 CTAP 仕様の一部の省略可能な拡張機能が必要になります。
 
 セキュリティ キーでは、Microsoft との互換性を維持するために、FIDO2 CTAP プロトコルの以下の機能と拡張機能を実装する**必要があります**。
 
-| # | 機能 / 拡張機能 (信頼) | これが必要な理由 |
+| # | 機能 / 拡張機能 (信頼) | この機能または拡張機能が必要な理由 |
 | --- | --- | --- |
 | 1 | 常駐キー | 資格情報がセキュリティ キーに格納されている場合、この機能により、セキュリティ キーの移植が可能になります。 |
 | 2 | クライアント PIN | この機能では、2 番目のファクターで資格情報を保護できます。これは、ユーザー インターフェイスがないセキュリティ キーに適用されます。 |
@@ -67,16 +71,18 @@ FIDO2 セキュリティ キーは、セキュリティに非常に敏感であ�
 
 ## <a name="what-scenarios-work-with-the-preview"></a>プレビューで動作するシナリオ
 
-1. 管理者は、テナントに対してパスワードなしの認証方法を有効にすることができます
-1. 管理者は、すべてのユーザーをターゲットにすることも、方法ごとにテナント内のユーザー/グループを選ぶこともできます
-1. エンド ユーザーは、アカウント ポータルでこれらのパスワードなしの認証方法を登録して管理することができます
-1. エンド ユーザーは、これらのパスワードなしの認証方法でサインインすることができます
-   1. Microsoft Authenticator アプリ:すべてのブラウザー間で、Windows 10 の Out Of Box (OOBE) セットアップ時に、また、オペレーティング システム上の統合されたモバイル アプリでなど、Azure AD 認証が使用されるすべてのシナリオで動作します。
-   1. セキュリティ キー:Windows 10 バージョン 1809 以降のロック画面、および Microsoft Edge などのサポートされているブラウザーの Web で動作します。
+- 管理者は、テナントに対してパスワードなしの認証方法を有効にすることができます
+- 管理者は、すべてのユーザーをターゲットにすることも、方法ごとにテナント内のユーザー/グループを選ぶこともできます
+- エンド ユーザーは、アカウント ポータルでこれらのパスワードなしの認証方法を登録して管理することができます
+- エンド ユーザーは、これらのパスワードなしの認証方法でサインインすることができます
+   - Microsoft Authenticator アプリ:すべてのブラウザー間で、Windows 10 の Out Of Box (OOBE) セットアップ時に、また、オペレーティング システム上の統合されたモバイル アプリでなど、Azure AD 認証が使用されるシナリオで動作します。
+   - セキュリティ キー:Windows 10 バージョン 1809 以降のロック画面、および Microsoft Edge などのサポートされているブラウザーの Web で動作します。
 
 ## <a name="next-steps"></a>次の手順
 
-[組織でパスワードなしのオプションを有効にする](howto-authentication-passwordless-enable.md)
+[組織内で FIDO2 セキュリティ キーのパスワードなしオプションを有効にする](howto-authentication-passwordless-security-key.md)
+
+[組織内で電話ベースのパスワードなしオプションを有効にする](howto-authentication-passwordless-phone.md)
 
 ### <a name="external-links"></a>外部リンク
 

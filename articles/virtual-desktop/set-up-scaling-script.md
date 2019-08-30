@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d7b91e3e74c65919a3afe80addfbd0fadd23b03c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620410"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931801"
 ---
 # <a name="automatically-scale-session-hosts"></a>セッション ホストを自動的にスケーリングする
 
@@ -65,7 +65,7 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
     Install-Module Microsoft.RdInfra.RdPowershell
     ```
     
-3. 編集ウィンドウを開き、**Function-PSStoredCredentials.ps1** ファイルを読み込みます。
+3. 編集ウィンドウを開き、**Function-PSStoredCredentials.ps1** ファイルを読み込んでから、スクリプト全体を実行します (F5)
 4. 次のコマンドレットを実行します。
     
     ```powershell
@@ -111,7 +111,7 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
 4. **[トリガー]** タブに移動し、 **[新規]** を選択します
 5. **[新しいトリガー]** ダイアログの **[詳細設定]** で、 **[繰り返し間隔]** をオンにし、適切な期間と継続時間 (たとえば、 **[15 分]** または **[無期限]** ) を選択します。
 6. **[アクション]** タブと **[新規]** を選択します
-7. **[新しいアクション]** ダイアログで、**powershell.exe** を **[プログラム/スクリプト]** フィールドに入力し、**C:\\scaling\\RDSScaler.ps1** を **[引数の追加 (オプション)]** フィールドに入力します。
+7. **[新しいアクション]** ダイアログで、**powershell.exe** を **[プログラム/スクリプト]** フィールドに入力し、**C:\\scaling\\basicScale.ps1** を **[引数の追加 (オプション)]** フィールドに入力します。
 8. **[条件]** タブと **[設定]** タブに移動し、 **[OK]** を選択してそれぞれの既定の設定を受け入れます。
 9. スケーリング スクリプトの実行を計画している管理アカウントのパスワードを入力します。
 

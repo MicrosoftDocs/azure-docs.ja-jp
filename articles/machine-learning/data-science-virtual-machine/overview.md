@@ -15,27 +15,30 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: 5816f53115f3ec54cbd9784894a5262b68dd6e95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2814ad51d2f0f868833cf9c6964b7ea4a8424435
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565179"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574914"
 ---
 # <a name="what-is-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure Data Science Virtual Machine とは
 
-データ サイエンス仮想マシン (DSVM) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server と Linux で使用できます。 Windows エディションの DSVM は、Windows Server 2016 と Windows Server 2012 で提供しています。 Linux エディションの DSVM は、Ubuntu 16.04 LTS と CentOS 7.4 で提供しています。
+データ サイエンス仮想マシン (DSVM) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 
 
-この記事では、Data Science VM でできることについて説明します。 VM の使用に関する主要なシナリオの概要を説明し、Windows および Linux のバージョンで使用できる主な機能を列挙します。 また、この記事では、それらの使用を開始する手順についても説明します。
+ツールの構成は、安定性と一般的な実行可能性を保証するために、データ サイエンティストやマイクロソフトの開発者に加えて、より広範なデータ サイエンス コミュニティによって綿密にテストされています。
+
+DSVM を利用できる OS:
++ Windows Server 2016、Windows Server 2012
++ Ubuntu 16.04 LTS、CentOS 7.4
+
+**すべての Deep Learning Virtual Machine** ツールは、Data Science VM に組み込まれています。 
 
 
-## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでできること
+## <a name="what-can-i-do-with-dsvm"></a>DSVM で何ができますか?
 Data Science Virtual Machine (DSVM) の目標は、業界を越えてすべてのスキル レベルのデータ専門家に、摩擦のない、事前に構成され、かつ完全に統合されたデータ サイエンス環境を提供することです。 同等のワークスペースを独自にロールアウトする代わりに DSVM をプロビジョニングすることによって、インストール、構成、およびパッケージ管理プロセスにかかる数日、場合によっては "_数週間_" の期間を節約できます。 DSVM が割り当てられたら、直ちにデータ サイエンス プロジェクトに関する作業を開始できます。
 
 データ サイエンス VM は、広範な使用シナリオで使えるように設計および構成されています。 環境は、プロジェクトの要件の変化に応じてスケールアップまたはスケールダウンできます。 また、好みの言語を使ってデータ サイエンス タスクをプログラミングしたり、他のツールをインストールして正確なニーズに合わせてシステムをカスタマイズしたりすることもできます。
-
-## <a name="key-scenarios"></a>主なシナリオ
-ここでは、データ サイエンス VM をデプロイできる主要なシナリオをいくつか示します。
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>クラウド内の事前構成済み分析デスクトップ
 データ サイエンス VM は、ローカル デスクトップを管理されたクラウド デスクトップに置き換えようと考えているデータ サイエンス チームに基準となる構成を提供します。 この基準により、チームのすべてのデータ科学者に、実験を確認して共同作業を促進するための一貫性のあるセットアップが保証されます。 また、システム管理者の負担が軽減されるためコストも低減されます。 この負担軽減により、高度な分析を行うために必要なさまざまなソフトウェア パッケージの評価、インストール、および保守に必要な時間が節約されます。
@@ -47,18 +50,37 @@ Data Science Virtual Machine (DSVM) の目標は、業界を越えてすべて�
 データ サイエンスのハッカーソンや競技または大規模なデータ モデリングと探索では、スケールアウトしたハードウェア容量が通常は短期間に必要になります。 Data Science VM は、高性能コンピューティング リソースが実行される実験を可能にするスケールアウトされたサーバー上で、必要に応じて迅速にデータ サイエンス環境を複製する際に役立ちます。
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks のカスタム コンピューティング能力
-
-[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 ただし、無料のサービス レベルは 4GB のメモリと 1GB のデータに制限されています。 すべての制限を解放するには、その後 Notebooks プロジェクトを Data Science VM か、または Jupyter サーバーを実行している他の任意の VM に接続できます。 Azure Active Directory を使用してアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられたいずれかのサブスクリプションの Data Science VM が自動的に表示されます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)」を参照してください。
+[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 ただし、無料のサービス レベルは 4GB のメモリと 1GB のデータに制限されています。 すべての制限を解放するには、その後 Notebooks プロジェクトを Data Science VM か、または Jupyter サーバーを実行している他の任意の VM に接続できます。 Azure Active Directory を使用してアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられたいずれかのサブスクリプションの Data Science VM が自動的に表示されます。 [Data Science VM を Azure Notebooks に接続して](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)、利用可能なコンピューティング能力を拡張することができます。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期的な実験と評価
 データ サイエンス VM は、Microsoft ML Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 Data Science VM は短時間で設定できるため、他の短期的な使用シナリオに適用できます。 これらのシナリオには、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルが含まれます。
 
 ### <a name="deep-learning"></a>ディープ ラーニング
-Data Science VM は、GPU (グラフィック処理装置) ベースのハードウェア上でディープ ラーニング アルゴリズムを使用するトレーニング モデルに使用できます。 DSVM では、Azure クラウドの VM スケーリング機能を利用すると、必要に応じてクラウド上で GPU ベースのハードウェアを使用できます。 同じ OS ディスクを保持しつつ、大規模モデルをトレーニングするときまたは高速計算が必要なときに GPU ベースの VM に切り替えることができます。  Windows Server 2016 エディションの DSVM には、GPU ドライバー、フレームワーク、および GPU バージョンのディープ ラーニング フレームワークが事前インストールされています。 Linux エディションでは、GPU でのディープ ラーニングは、CentOS と Ubuntu DSVM の両方で可能です。 Data Science VM の Ubuntu、CentOS、または Windows 2016 エディションは GPU ベース以外の Azure 仮想マシンにデプロイできます。 この場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックはします。
+Data Science VM は、GPU (グラフィック処理装置) ベースのハードウェア上でディープ ラーニング アルゴリズムを使用するトレーニング モデルに使用できます。 DSVM では、Azure クラウドの VM スケーリング機能を利用すると、必要に応じてクラウド上で GPU ベースのハードウェアを使用できます。 同じ OS ディスクを保持しつつ、大規模モデルをトレーニングするときまたは高速計算が必要なときに GPU ベースの VM に切り替えることができます。  Windows Server 2016 エディションの DSVM には、GPU ドライバー、フレームワーク、および GPU バージョンのディープ ラーニング フレームワークが事前インストールされています。 Linux エディションでは、GPU でのディープ ラーニングは、CentOS と Ubuntu DSVM の両方で可能です。 Data Science VM の Ubuntu、CentOS、または Windows 2016 エディションは GPU ベース以外の Azure 仮想マシンにデプロイできます。 この場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックはします。 ディープ ラーニングと AI のフレームワークについては[こちら](dsvm-deep-learning-ai-frameworks.md)をご覧ください。
+ 
+ディープ ラーニングと AI のフレームワークについては[こちら](dsvm-deep-learning-ai-frameworks.md)をご覧ください。
 
-## <a name="whats-included-in-the-data-science-vm"></a>データ サイエンス VM に含まれるもの
-データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Microsoft ML Server (R、Python) などの各種の Azure データおよび分析製品を簡単に操作して予測モデルを構築したり、SQL Server 2017 を使用して大規模なデータ セットを探査したりするためのツールも含まれています。 この Data Science VM には、オープンソース コミュニティや Microsoft の他のツールのホストのほか、サンプル コードやノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
+<a name="included"></a>
 
+## <a name="whats-included-on-dsvm"></a>DSVM には何が含まれていますか?
+データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Microsoft ML Server (R、Python) などの各種の Azure データおよび分析製品を簡単に操作して予測モデルを構築したり、SQL Server 2017 を使用して大規模なデータ セットを探査したりするためのツールも含まれています。 この Data Science VM には、オープンソース コミュニティや Microsoft の他のツールのホストのほか、[サンプル コードやノートブック](dsvm-samples-and-walkthroughs.md)も含まれます。 
+
+ツールとプラットフォーム:
++ [サポートされるプログラミング言語](dsvm-languages.md)
+
++ [サポートされるデータ プラットフォーム](dsvm-data-platforms.md)
+
++ [開発ツールと IDE](dsvm-tools-development.md)
+
++ [ディープ ラーニングと AI のフレームワーク](dsvm-deep-learning-ai-frameworks.md)
+
++ [機械学習ツールとデータ サイエンス ツール](dsvm-ml-data-science-tools.md)
+
++ [データ インジェスト ツール](dsvm-tools-ingestion.md)
+
++ [データの探索と視覚化のツール](dsvm-tools-explore-and-visualize.md)
+
+次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
 
 | **ツール**                                                           | **Windows エディション** | **Linux エディション** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
@@ -129,18 +151,16 @@ Data Science VM は、GPU (グラフィック処理装置) ベースのハード
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA、cuDNN、NVIDIA Driver](https://developer.nvidia.com/cuda-toolkit) | Y | Y |
-| **ビッグ データ プラットフォーム (Devtest のみ)**|||
-| &nbsp;&nbsp;&nbsp;&nbsp;* ローカル [Spark](https://spark.apache.org/) Standalone | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* ローカル [Hadoop](https://hadoop.apache.org/) (HDFS、YARN) | N | Y |
-
-## <a name="get-started"></a>作業開始
-
-### <a name="windows-data-science-vm"></a>Windows データ サイエンス VM
-* Windows DSVM の作成方法とその使用方法の詳細については、「[Azure での Windows データ サイエンス仮想マシンのプロビジョニング](provision-vm.md)」を参照してください。 Windows DSVM のデータ サイエンス プロジェクトに必要なさまざまなタスクを実行する方法について詳しくは、「[データ サイエンス仮想マシンでできる 10 のこと](vm-do-ten-things.md)」をご覧ください。
-
-### <a name="linux-data-science-vm"></a>Linux データ サイエンス VM
-* Ubuntu DSVM の作成方法とその使用方法の詳細については、「[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](dsvm-ubuntu-intro.md)」を参照してください。 CentOS DSVM の作成方法とその使用方法の詳細については、「[Azure での Linux CentOS データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md)」を参照してください。
-* Linux VM (CentOS および Ubuntu) で一般的なデータ サイエンス タスクを実行する方法がわかるチュートリアルについては、「[Linux データ サイエンス仮想マシンでのデータ サイエンス](linux-dsvm-walkthrough.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-[Azure での R 開発者向けガイド](/azure/architecture/data-guide/technology-choices/r-developers-guide)
+
+詳細については、次の記事を参照してください。
+
++ Windows:
+  + [Windows DSVM を設定する](provision-vm.md)
+  + [Windows DSVM でできる 10 のこと](vm-do-ten-things.md)
+
++ Linux:
+  + [Linux DSVM を設定する (Ubuntu)](dsvm-ubuntu-intro.md)
+  + [Linux DSVM を設定する (CentOS)](linux-dsvm-intro.md)
+  + [Linux DSVM のデータ サイエンス](linux-dsvm-walkthrough.md)

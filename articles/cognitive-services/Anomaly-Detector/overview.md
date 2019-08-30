@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 80e0984deff83726fd96a462a1ae8a4375db9d2e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 70cb4a008391ad55562bc55fb45d877988e68643
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721611"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854771"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -38,15 +38,22 @@ Anomaly Detector を利用すると、時系列データ全体で異常を自動
 
 ## <a name="demo"></a>デモ
 
-Anomaly Detector API の使用を手軽に始めるには、ブラウザーで実行できる[オンライン デモ](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)をお試しください。 このデモは Web でホストされる Jupyter ノートブックで実行され、API 要求の送信方法を見せ、結果を視覚的に表示します。
+この[対話型デモ](https://aka.ms/adDemo)をご覧になり、Anomaly Detector のしくみを理解してください。
+デモを実行するには、Anomaly Detector のリソースを作成し、API キーとエンドポイントを取得する必要があります。
 
-デモを実行するには、次の手順を行います。
+## <a name="notebook"></a>ノートブック
 
-1. 有効な Anomaly Detector API サブスクリプション キーと API エンドポイントを取得します。 下のセクションに新規登録方法があります。 
-2. 右上隅でサインインし、[複製] をクリックします。
-3. **[無料のコンピューティングで実行]** をクリックします。
-4. このサンプルのためにノートブックを 1 つ選択します。
-5. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。 `endpoint` 変数を自分のエンドポイントに変更します。 次に例を示します。`https://westus2.api.cognitive.microsoft.com`
+Anomaly Detector API を呼び出す方法については、こちらの [Azure Notebook](https://aka.ms/adNotebook) をお試しください。 Web でホストされるこの Jupyter Notebook では、API 要求を送信して結果を視覚化する方法について説明しています。
+
+Notebook を実行するには、次の手順を完了します。
+
+1. 有効な Anomaly Detector API サブスクリプション キーと API エンドポイントを取得します。 下のセクションに新規登録方法があります。
+1. 右上隅でサインインし、[複製] をクリックします。
+1. 複製操作を完了する前に、ダイアログ ボックスの [パブリック] オプションをオフにします。そうしないと、ノートブックはサブスクリプション キーを含めてパブリックになります。
+1. **[無料のコンピューティングで実行]** をクリックします。
+1. いずれかのノートブックを選択します。
+1. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。 
+1. `endpoint` 変数を自分のエンドポイントに変更します。 次に例を示します。`https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. 上部のメニュー バーで **[セル]** をクリックし、 **[すべて実行]** をクリックします。
 
 ## <a name="workflow"></a>ワークフロー
@@ -62,6 +69,13 @@ Anomaly Detector API は RESTful Web サービスです。HTTP 要求を作成�
 1. 時系列データを取り出し、有効な JSON 形式に変換します。 最良の結果を得るために、データを準備するとき、[ベスト プラクティス](concepts/anomaly-detection-best-practices.md)を使用してください。
 1. Anomaly Detector API に自分のデータを含む要求を送信します。
 1. 返された JSON メッセージを解析して API 応答を処理します。
+
+## <a name="algorithms"></a>アルゴリズム
+
+* 内部のアルゴリズムについては、こちらのテクニカル ブログ「[Azure Anomaly Detector API の概要](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)」を参照してください。
+* Microsoft によって開発された最先端の SR-CNN アルゴリズムについては、こちらの論文「[Microsoft での時系列の異常検出サービス](https://arxiv.org/abs/1906.03821)」 (KDD 2019 採択済み) を参照してください。
+
+> [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
 ## <a name="next-steps"></a>次の手順
 

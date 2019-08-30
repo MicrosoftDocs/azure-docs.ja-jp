@@ -4,271 +4,198 @@ description: Azure Active Directory と Kanbanize の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: b436d2f6-bfa5-43fd-a8f9-d2144dc25669
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/12/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 69103ea0e6088b4a823df34ebd982c67e2502cb3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60264238"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879469"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>チュートリアル:Azure Active Directory と Kanbanize の統合
+# <a name="tutorial-integrate-kanbanize-with-azure-active-directory"></a>チュートリアル:Kanbanize と Azure Active Directory との統合
 
-このチュートリアルでは、Kanbanize と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Kanbanize と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Kanbanize を統合すると、次のことができます。
 
-Kanbanize と Azure AD の統合には、次の利点があります。
+* Kanbanize にアクセスできる Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Kanbanize に自動的にサインインできるようにすることができます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
 
-- Kanbanize にアクセスできる Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Kanbanize にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Kanbanize と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-- Azure AD サブスクリプション
-- シングル サインオンが有効な Kanbanize のサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* シングル サインオン (SSO) が有効な Kanbanize のサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Kanbanize の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+
+* Kanbanize では、**SP および IDP** Initiated SSO がサポートされます
+* Kanbanize では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-kanbanize-from-the-gallery"></a>ギャラリーからの Kanbanize の追加
+
 Azure AD への Kanbanize の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Kanbanize を追加する必要があります。
 
-**ギャラリーから Kanbanize を追加するには、次の手順に従います。**
-
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
-
-    ![Azure Active Directory のボタン][1]
-
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
-
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
-
-    ![[新しいアプリケーション] ボタン][3]
-
-4. 検索ボックスに「**Kanbanize**」と入力し、結果パネルで **Kanbanize** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
-
-    ![結果一覧の Kanbanize](./media/kanbanize-tutorial/tutorial_kanbanize_addfromgallery.png)
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Kanbanize**」と入力します。
+1. 結果のパネルから **[Kanbanize]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Kanbanize で Azure AD のシングル サインオンを構成し、テストします。
+**B.Simon** というテスト ユーザーを使用して、Kanbanize に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Kanbanize の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Kanbanize ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Kanbanize の関連ユーザーの間で、リンク関係が確立されている必要があります。
+Kanbanize に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
-Kanbanize で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+2. **[Kanbanize SSO の構成](#configure-kanbanize-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Kanbanize テスト ユーザーの作成](#create-kanbanize-test-user)** - Azure AD の B.Simon にリンクさせるために、対応するユーザーを Kanbanize で作成します。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Kanbanizeテスト ユーザーの作成](#create-a-kanbanize-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Kanbanize で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にして、Kanbanize アプリケーションでシングル サインオンを構成します。
+1. [Azure portal](https://portal.azure.com/) の **Kanbanize** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
-**Kanbanize で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. Azure portal の **Kanbanize** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
-
-    ![シングル サインオン構成のリンク][4]
-
-2. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/kanbanize-tutorial/tutorial_kanbanize_samlbase.png)
-
-3. アプリケーションを **IDP** 開始モードで構成する場合は、 **[Kanbanize のドメインと URL]** セクションで次の手順を実行します。
-
-    ![[Kanbanize のドメインと URL] のシングル サインオン情報](./media/kanbanize-tutorial/tutorial_kanbanize_url.png)
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
     a. **[識別子]** ボックスに、`https://<subdomain>.kanbanize.com/` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.kanbanize.com/saml/acs` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://<subdomain>.kanbanize.com/saml/acs` のパターンを使用して URL を入力します
 
-    c. **[詳細な URL 設定の表示]** をクリックします。
+    c. **[追加の URL を設定します]** をクリックします。
 
-    d.  **[リレー状態]** ボックスに、URL `/ctrl_login/saml_login` を入力します。
+    d. **[リレー状態]** ボックスに、URL `/ctrl_login/saml_login` を入力します。
 
-    e. **[SP]** 開始モードでアプリケーションを構成する場合は、 **[サインオン URL]** テキストボックスに `https://<subdomain>.kanbanize.com` のパターンで URL を入力します。
-     
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Kanbanize クライアント サポート チーム](mailto:support@ms.kanbanize.com)に問い合わせてください。 
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-5. Kanbanize アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[ユーザー識別子]** の既定値は **user.userprincipalname** ですが、Kanbanize はこれがユーザーの電子メール アドレスにマップされることを想定します。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
-    
-    ![Configure single sign-on](./media/kanbanize-tutorial/tutorial_Kanbanize_attribute.png)
+    **[サインオン URL]** ボックスに、`https://<subdomain>.kanbanize.com` という形式で URL を入力します。
 
-6. **[SAML 署名証明書]** セクションで、 **[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Kanbanize クライアント サポート チーム](mailto:support@ms.kanbanize.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-    ![証明書のダウンロードのリンク](./media/kanbanize-tutorial/tutorial_kanbanize_certificate.png) 
+1. Kanbanize アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、nameidentifier は **user.userprincipalname** にマップされています。 Kanbanize アプリケーションでは、nameidentifier が **user.mail** にマップされると想定されているため、[編集] アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
-7. **[保存]** ボタンをクリックします。
+    ![image](common/edit-attribute.png)
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/kanbanize-tutorial/tutorial_general_400.png)
-    
-8. **[Kanbanize 構成]** セクションで、 **[Kanbanize の構成]** をクリックして、 **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![Kanbanize の構成](./media/kanbanize-tutorial/tutorial_kanbanize_configure.png)
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-9. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Kanbanize にログインします。 
+1. **[Kanbanize のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-10. ページの右上の**設定**ロゴをクリックします。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    ![Kanbanize の設定](./media/kanbanize-tutorial/tutorial_kanbanize_set.png)
+### <a name="configure-kanbanize-sso"></a>Kanbanize SSO の構成
 
-11. [Administration]\(管理\) パネル ページのメニューの左側にある **[Integration]\(統合\)** をクリックし、 **[Single Sign-On]\(シングル サインオン\)** を有効にします。 
+1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Kanbanize にサインインします。
 
-    ![Kanbanize の統合](./media/kanbanize-tutorial/tutorial_kanbanize_admin.png)
+2. ページの右上の**設定**ロゴをクリックします。
 
-12. [Integration]\(統合\) セクションで、 **[CONFIGURE]\(構成\)** をっクリックして **[Single Sign-On Integration]\(シングル サインオンの統合\)** ページを開きます。
+    ![Kanbanize の設定](./media/kanbanize-tutorial/tutorial-kanbanize-set.png)
 
-    ![Kanbanize の構成](./media/kanbanize-tutorial/tutorial_kanbanize_config.png)
+3. [Administration]\(管理\) パネル ページのメニューの左側にある **[Integration]\(統合\)** をクリックし、 **[Single Sign-On]\(シングル サインオン\)** を有効にします。
 
-13. **[Single Sign-On Configuration]\(シングル サインオンの統合\)** ページの **[Configurations]\(構成\)** で、次の手順を実行します。
+    ![Kanbanize の統合](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
-    ![Kanbanize の統合](./media/kanbanize-tutorial/tutorial_kanbanize_save.png)
+4. [Integration]\(統合\) セクションで、 **[CONFIGURE]\(構成\)** をっクリックして **[Single Sign-On Integration]\(シングル サインオンの統合\)** ページを開きます。
 
-    a. **[Idp Entity Id]\(Idp エンティティ ID\)** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    ![Kanbanize の構成](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-    b. **[Idp Login Endpoint]\(IdP ログイン エンドポイント\)** テキストボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+5. **[Single Sign-On Configuration]\(シングル サインオンの統合\)** ページの **[Configurations]\(構成\)** で、次の手順を実行します。
 
-    c. **[Idp Login Endpoint]\(IdP ログイン エンドポイント\)** テキストボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
+    ![Kanbanize の統合](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+
+    a. **[Idp Entity ID]\(Idp エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+
+    b. **[Idp Login Endpoint]\(Idp ログイン エンドポイント\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+
+    c. **[Idp Logout Endpoint]\(Idp ログアウト エンドポイント\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
     d. **[Attribute name for Email]\(電子メールの属性名\)** テキストボックスで、この値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を入力します。
 
     e. **[Attribute name for First Name]\(名の属性名\)** テキストボックスで、この値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` を入力します。
 
-    f. **[Attribute name for Last Name]\(姓の属性名\)** テキストボックスで、この値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` を入力します。 
+    f. **[Attribute name for Last Name]\(姓の属性名\)** テキストボックスで、この値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` を入力します。
+
     > [!Note]
     > これらの値は、Azure Portal の [ユーザー属性] セクションから対応する名前空間と名前の値を結合することで取得できます。
 
-    g. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容を (開始マーカーとエンド マーカーを除いて) コピーして  **[Idp X.509 Certificate]\(IdP X.509 証明書\)**  ボックスに貼り付けます。
+    g. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容を (開始マーカーとエンド マーカーを除いて) コピーして **[Idp X.509 Certificate]\(IdP X.509 証明書\)** ボックスに貼り付けます。
 
     h. **[Enable login with both SSO and Kanbanize]\(SSO と Kanbanize の両方でログインを有効にする\)** をオンにします。
-    
+
     i. **[設定の保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-   ![Azure AD のテスト ユーザーの作成][100]
-
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
-
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
-
-    ![Azure Active Directory のボタン](./media/kanbanize-tutorial/create_aaduser_01.png)
-
-2. ユーザーの一覧を表示するには、 **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックします。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/kanbanize-tutorial/create_aaduser_02.png)
-
-3. **[ユーザー]** ダイアログ ボックスを開くには、 **[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
-
-    ![[追加] ボタン](./media/kanbanize-tutorial/create_aaduser_03.png)
-
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/kanbanize-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
- 
-### <a name="create-a-kanbanize-test-user"></a>Kanbanize テスト ユーザーの作成
-
-このセクションの目的は、Kanbanize で Britta Simon というユーザーを作成することです。 Kanbanize では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Kanbanize ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
-
->[!Note]
->ユーザーを手動で作成する必要がある場合は、 [Kanbanize クライアント サポート チーム](mailto:support@ms.kanbanize.com)にお問い合わせください。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Kanbanize へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
+このセクションでは、B.Simon に Kanbanize へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Kanbanize]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-**Kanbanize に Britta Simon を割り当てるには、次の手順に従います。**
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-2. アプリケーションの一覧で **[Kanbanize]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-    ![アプリケーションの一覧の Kanbanize のリンク](./media/kanbanize-tutorial/tutorial_kanbanize_app.png)  
+### <a name="create-kanbanize-test-user"></a>Kanbanize テスト ユーザーの作成
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+このセクションでは、Britta Simon というユーザーを Kanbanize に作成します。 Kanbanize では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Kanbanize にユーザーがまだ存在していない場合は、認証後に新しく作成されます。 ユーザーを手動で作成する必要がある場合は、[Kanbanize クライアント サポート チーム](mailto:support@ms.kanbanize.com)にお問い合わせください。
 
-    ![[ユーザーとグループ] リンク][202]
-
-4. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ][203]
-
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Kanbanize] タイルをクリックすると、自動的に Kanbanize アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネル上で [Kanbanize] タイルをクリックすると、SSO を設定した Kanbanize に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/kanbanize-tutorial/tutorial_general_01.png
-[2]: ./media/kanbanize-tutorial/tutorial_general_02.png
-[3]: ./media/kanbanize-tutorial/tutorial_general_03.png
-[4]: ./media/kanbanize-tutorial/tutorial_general_04.png
-
-[100]: ./media/kanbanize-tutorial/tutorial_general_100.png
-
-[200]: ./media/kanbanize-tutorial/tutorial_general_200.png
-[201]: ./media/kanbanize-tutorial/tutorial_general_201.png
-[202]: ./media/kanbanize-tutorial/tutorial_general_202.png
-[203]: ./media/kanbanize-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

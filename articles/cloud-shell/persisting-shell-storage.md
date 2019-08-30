@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell の Bash でファイルを永続化する | Microsoft Docs
-description: Azure Cloud Shell の Bash でファイルを永続化する方法についてのチュートリアルです。
+title: Azure Cloud Shell でファイルを永続化する | Microsoft Docs
+description: Azure Cloud Shell でファイルを永続化する方法についてのチュートリアルです。
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: 0aa00af543a3d21db9b8ad0ed808a8bff0b534e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f60125123d019cbfa93bfc1b06da7ac90b54e311
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60200269"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742031"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 

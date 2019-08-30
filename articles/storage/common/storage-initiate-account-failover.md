@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305732"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985339"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>ストレージ アカウントのフェールオーバー (プレビュー) を開始する
 
@@ -68,12 +68,13 @@ PowerShell を使用してアカウントのフェールオーバーを開始す
 
     - **[設定]** の **[アプリと機能]** 設定を使用して、Windows から Azure PowerShell の以前のインストールを削除します。
     - `%Program Files%\WindowsPowerShell\Modules` からすべての **Azure** モジュールを削除します。
-    
+
 1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 Windows PowerShell ウィンドウを開き、次のコマンドを実行して最新バージョンをインストールします。
- 
+
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+
 1. PowerShellGet のインストール後、PowerShell ウィンドウを閉じて再び開きます。 
 
 1. 最新バージョンの Azure PowerShell をインストールします。
@@ -82,14 +83,14 @@ PowerShell を使用してアカウントのフェールオーバーを開始す
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Azure AD をサポートする Azure Storage プレビュー モジュールをインストールします。
-   
+1. アカウントのフェールオーバーをサポートする Azure Storage プレビュー モジュールをインストールします。
+
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
+
 1. PowerShell ウィンドウを閉じて再び開きます。
  
-
 PowerShell からアカウントのフェールオーバーを開始するには、次のコマンドを実行します。
 
 ```powershell

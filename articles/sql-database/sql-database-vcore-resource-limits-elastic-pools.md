@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: b84e317745b7bd20f4862bd04584e42254a660d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566190"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640852"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>仮想コアベースの購入モデルを使用したエラスティック プールに対するリソース制限
 
@@ -37,7 +37,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>General Purpose サービス レベル:ストレージ サイズとコンピューティング サイズ
 
 > [!IMPORTANT]
-> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
+> 新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>General Purpose サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 
@@ -153,7 +153,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Business Critical サービス レベル:ストレージ サイズとコンピューティング サイズ
 
 > [!IMPORTANT]
-> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
+> 新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Business Critical サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 

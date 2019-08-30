@@ -10,17 +10,16 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4b125649dee51680625ac5a92b31bdc9f6830529
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e26cf5ede2c8884719152b6d35f1b41eb092eda6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069622"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071796"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続 #
 
@@ -66,7 +65,7 @@ Azure App Service 内では、ハイブリッド接続を使用して、他の�
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>アプリでハイブリッド接続を追加または作成する ##
 
-ハイブリッド接続を作成するには、[Azure Portal][portal] に移動し、アプリを選択します。 **[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** の順に選択します。 ここで、アプリ用に構成されているハイブリッド接続を確認できます。  
+ハイブリッド接続を作成するには、[Azure portal][portal] に移動し、アプリを選択します。 **[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** の順に選択します。 ここで、アプリ用に構成されているハイブリッド接続を確認できます。  
 
 ![ハイブリッド接続の一覧のスクリーンショット][2]
 
@@ -123,7 +122,7 @@ App Service プランの SKU 要件が存在する以外に、ハイブリッド
 
 ## <a name="hybrid-connection-manager"></a>Hybrid Connection Manager の使用 ##
 
-ハイブリッド接続を機能させるためには、ハイブリッド接続エンドポイントをホストしているネットワークにリレー エージェントを作成する必要があります。 そのリレー エージェントは、Hybrid Connection Manager (HCM) と呼ばれます。 [Azure ポータル]にあるアプリから HCM をダウンロードするには、 [portal] **[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** を選択します。  
+ハイブリッド接続を機能させるためには、ハイブリッド接続エンドポイントをホストしているネットワークにリレー エージェントを作成する必要があります。 そのリレー エージェントは、Hybrid Connection Manager (HCM) と呼ばれます。 [Azure portal][portal] にあるアプリから HCM をダウンロードするには、 **[ネットワーク]**  >  **[ハイブリッド接続エンドポイントの構成]** を選択します。  
 
 このツールは、Windows Server 2012 以降のバージョンの Windows で実行されます。 HCM はサービスとして実行し、送信のためにポート 443 で Azure Relay に接続します。  
 
@@ -166,7 +165,7 @@ HCM はそれぞれ、複数のハイブリッド接続をサポートできま�
 
 ### <a name="manually-add-a-hybrid-connection"></a>ハイブリッド接続の手動追加 ###
 
-サブスクリプションを持っていないユーザーが特定のハイブリッド接続に対する HCM インスタンスをホストするには、ハイブリッド接続用のゲートウェイ接続文字列を共有します。 [Azure Portal][portal] の [ハイブリッド接続プロパティ] でゲートウェイ接続文字列を確認できます。 この文字列を使用するには、HCM で **[手動で入力]** ボタンをクリックし、ゲートウェイ接続文字列を貼り付けます。
+サブスクリプションを持っていないユーザーが特定のハイブリッド接続に対する HCM インスタンスをホストするには、ハイブリッド接続用のゲートウェイ接続文字列を共有します。 [Azure portal][portal] の [ハイブリッド接続プロパティ] でゲートウェイ接続文字列を確認できます。 この文字列を使用するには、HCM で **[手動で入力]** ボタンをクリックし、ゲートウェイ接続文字列を貼り付けます。
 
 ![ハイブリッド接続の手動追加][11]
 

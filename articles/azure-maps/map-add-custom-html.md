@@ -1,6 +1,6 @@
 ---
 title: Azure Maps に HTML マーカーを追加する | Microsoft Docs
-description: JavaScript マップに HTML マーカーを追加する方法
+description: Azure Maps Web SDK に HTML マーカーを追加する方法。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 65777a87cd042a4d8b3b14255dbf99241cd42e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ff18b8646a3845d029e9826c0895b9d3eb16bdde
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638752"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976198"
 ---
 # <a name="add-html-markers-to-the-map"></a>マップに HTML マーカーを追加する
 
@@ -28,16 +28,36 @@ ms.locfileid: "68638752"
 
 ## <a name="add-an-html-marker"></a>HTML マーカーを追加する
 
-HtmlMarker クラスには既定のスタイルがあります。 マーカーをカスタマイズするには、マーカーの色とテキストのオプションを設定します。 HtmlMarker クラスの既定のスタイルは、色とテキストのプレースホルダーがある SVG テンプレートです。 簡単にカスタマイズするには、HtmlMarker オプションの色とテキストのプロパティを設定します。 
+[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) クラスには既定のスタイルがあります。 マーカーをカスタマイズするには、マーカーの色とテキストのオプションを設定します。 HTML マーカー クラスの既定のスタイルは、`{color}` と `{text}` のプレースホルダーがある SVG テンプレートです。 簡単にカスタマイズするには、HTML マーカー オプションの色とテキストのプロパティを設定します。 
+
+次のコードでは、HTML マーカーを作成し、color プロパティを "DodgerBlue" に、text プロパティを "10" に設定しています。 ポップアップがマーカーにアタッチされ、ポップアップの表示を切り替えるために `click` イベントが使用されます。
+
+```javascript
+//Create a HTML marker and add it to the map.
+var marker = new atlas.HtmlMarker({
+    color: 'DodgerBlue',
+    text: '10',
+    position: [0, 0],
+    popup: new atlas.Popup({
+        content: '<div style="padding:10px">Hello World</div>',
+        pixelOffset: [0, -30]
+    })
+});
+
+map.markers.add(marker);
+
+//Add a click event to toggle the popup.
+map.events.add('click',marker, () => {
+    marker.togglePopup();
+});
+```
+
+上記の機能の完全な実行コード サンプルを以下に示します。
 
 <br/>
 
 <iframe height='500' scrolling='no' title='マップに HTML マーカーを追加する' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/MVoeVw/'>Add an HTML Marker to a map</a>」Pen を表示します。
 </iframe>
-
-上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
-
-2 番目のコード ブロックでは、[Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) クラスの [markers](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) プロパティを使用して、マップに [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) が追加されます。 HtmlMarker は[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、HtmlMarker が表示されます。
 
 ## <a name="create-svg-templated-html-marker"></a>SVG テンプレート化された HTML マーカーを作成する
 
@@ -47,6 +67,9 @@ HTML マーカーの既定の `htmlContent` は、プレースホルダー `{col
 
 <iframe height='500' scrolling='no' title='カスタム SVG テンプレートを使用した HTML マーカー' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LXqMWx/'>HTML Marker with Custom SVG Template</a>」Pen を表示します。
 </iframe>
+
+> [!TIP]
+> Azure Maps Web SDK には、HTML マーカーと共に使用できるいくつかの SVG イメージ テンプレートが用意されています。 詳細については、「[イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)」のドキュメントを参照してください。
 
 ## <a name="add-a-css-styled-html-marker"></a>CSS スタイルの HTML マーカーを追加する
 
@@ -89,6 +112,9 @@ HTML マーカーの利点の 1 つは、CSS を使用して達成できる優�
 > [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)
 
 マップに追加するコード例の詳細については、次の記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [イメージ テンプレートの使用方法](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [シンボル レイヤーを追加する](./map-add-pin.md)

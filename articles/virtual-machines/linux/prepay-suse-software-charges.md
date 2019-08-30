@@ -4,18 +4,17 @@ description: ソフトウェア プランを前払いして、従量課金制の
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: c8e9d07bf01536d7865bd79f667a937037d96837
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: e4cab8963e3083d265d0254c81b78fbabb84a269
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67489880"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091537"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure ソフトウェア プランへの前払い
 

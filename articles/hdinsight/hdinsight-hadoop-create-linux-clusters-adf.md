@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: e9773c2e8f6f8de3a44e45989aa577a5d8c2dcee
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433842"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854982"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -177,7 +177,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
     
 3. HDInsight Hadoop クラスターは、処理が完了し、(TimeToLive 設定で) 構成された時間アイドル状態になると、削除されます。 この TimeToLive アイドル時間内に次のデータ スライスを処理できる場合、スライスを処理するために同じクラスターが使用されます。  
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -189,7 +189,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     |プロパティ  |値  |
     |---------|---------|
-    |Name | データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
+    |EnableAdfsAuthentication | データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
     |Subscription | Azure サブスクリプションを選択します。 |
     |Resource group | **[既存のものを使用]** を選択し、PowerShell スクリプトを使用して作成したリソース グループを選択します。 |
     |Version | **V2**のままにします。 |
@@ -230,7 +230,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     |プロパティ |値 |
     |---|---|
-    |Name |「 `HDIStorageLinkedService` 」を入力します。|
+    |EnableAdfsAuthentication |「 `HDIStorageLinkedService` 」を入力します。|
     |Azure サブスクリプション |ドロップダウン リストからサブスクリプションを選択します。|
     |ストレージ アカウント名 |PowerShell スクリプトの一部として作成した Azure Storage アカウントを選択します。|
 
@@ -252,7 +252,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     | プロパティ | 値 |
     | --- | --- |
-    | Name | 「 `HDInsightLinkedService` 」を入力します。|
+    | EnableAdfsAuthentication | 「 `HDInsightLinkedService` 」を入力します。|
     | Type | **[On-demand HDInsight]\(オンデマンド HDInsight\)** を選択します。 |
     | Azure Storage のリンクされたサービス | [`HDIStorageLinkedService`] を選択します。 |
     | クラスターの種類 | **[hadoop]** を選択します。 |
@@ -294,7 +294,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
         ![パイプラインの Hive スクリプトの詳細を指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "パイプラインの Hive スクリプトの詳細を指定する")
 
-    1. **[詳細設定]**  >  **[パラメーター]** で、 **[Auto-fill from script]\(スクリプトから自動入力\)** を選択します。 このオプションを選択すると、実行時に値を必要とする、Hive スクリプトのパラメーターが検索されます。 使用するスクリプト (**partitionweblogs.hql**) には、**Output** パラメーターがあります。 Azure Storage の既存のフォルダーを参照する**値**を `wasb://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` の形式で指定します。 パスでは大文字と小文字が区別されます。 これはスクリプトの出力が格納されるパスです。
+    1. **[詳細設定]**  >  **[パラメーター]** で、 **[Auto-fill from script]\(スクリプトから自動入力\)** を選択します。 このオプションを選択すると、実行時に値を必要とする、Hive スクリプトのパラメーターが検索されます。 使用するスクリプト (**partitionweblogs.hql**) には、**Output** パラメーターがあります。 Azure Storage の既存のフォルダーを参照する**値**を `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` の形式で指定します。 パスでは大文字と小文字が区別されます。 これはスクリプトの出力が格納されるパスです。 ストレージ アカウントではセキュリティで保護された転送が既定で有効であることが必要になったため、`wasbs` スキーマが不可欠です。
     
         ![Hive スクリプトのパラメーターを指定する](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Hive スクリプトのパラメーターを指定する")
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/01/2019
 ms.author: orspodek
-ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a7ac0bdc2bd5eed802f6959a628dee4c8141dbd1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449647"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720796"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -62,7 +62,7 @@ Azure Data Explorer のコネクタでは、サービス プリンシパル認�
     - **シンクとして**、少なくとも**データベースのデータ取り込み**ロールをデータベースに付与します。
 
 >[!NOTE]
->作成のために ADF の UI を使用していると、リンクされたサービスのデータベースの一覧表示やデータセットのテーブルの一覧表示の操作で、サービス プリンシパルに付与される上位の特権のある権限が必要になることがあります。 または、データベース名とテーブル名を手動で入力することも選択できます。 コピー アクティビティの実行は、サービス プリンシパルが適切なデータの読み取り/書き込みアクセス許可を与えられている限り機能します。
+>ADF UI を使用して作成する場合、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 そのような操作に対するアクセス許可がない場合は、名前を手動で入力します。
 
 Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
 
@@ -116,12 +116,13 @@ Azure Data Explorer にデータをコピーするには、データセットの
    "name": "AzureDataExplorerDataset",
     "properties": {
         "type": "AzureDataExplorerTable",
+        "typeProperties": {
+            "table": "<table name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Data Explorer linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "table": "<table name>"
         }
     }
 }

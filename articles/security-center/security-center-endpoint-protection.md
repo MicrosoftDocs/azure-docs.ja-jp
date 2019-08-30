@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2019
+ms.date: 08/08/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b17e5f16b988bfa562b00bc6f5b9dfd34be4ca43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d3fc90a722b9f4043e891a14b542e6b90c94c55
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245574"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881036"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Security Center での Endpoint Protection の評価と推奨事項
 
@@ -116,8 +116,8 @@ Azure Security Center の Endpoint Protection の評価と推奨事項では、E
 
 レジストリ パス:
 
-**"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path**
- **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
+* **"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;**
+* **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
 
 ## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee Endpoint Protection for Windows
 
@@ -136,6 +136,42 @@ Azure Security Center の Endpoint Protection の評価と推奨事項では、E
 * シグネチャの日付の検索:**HKLM:\Software\McAfee\AVSolution\DS\DS - 値 "szContentCreationDate" >= 7 日**
 
 * スキャン日の検索:**HKLM:\Software\McAfee\Endpoint\AV\ODS - 値 "LastFullScanOdsRunTime" >= 7 日**
+
+## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>Linux 向け McAfee エンドポイント セキュリティの脅威防止 
+
+**仮想マシンに Endpoint Protection ソリューションをインストールする** の推奨事項は、次の一方または両方のチェックが満たされていない場合に生成されます。  
+
+- ファイル **/opt/isec/ens/threatprevention/bin/isecav** が終了する 
+
+- **"/opt/isec/ens/threatprevention/bin/isecav --version"** の出力:**McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
+
+**マシンのエンドポイント保護の正常性に関する問題を解決する** 推奨事項は、次の一方または両方のチェックが満たされていない場合に生成されます。
+
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** から **Quick scan, Full scan** が返され、両方のスキャンが <= 7 日間
+
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** から **DAT and engine Update time** が返され、両方が <= 7 日間
+
+- **"/opt/isec/ens/threatprevention/bin/isecav --getoasconfig --summary"** から **On Access Scan** ステータスが返される
+
+## <a name="sophos-antivirus-for-linux"></a>Linux 向け Sophos Antivirus 
+
+**Install endpoint protection solutions on virtual machine**\(仮想マシンにエンドポイント保護ソリューションをインストールする\) 推奨事項は、次の一方または両方のチェックが満たされていない場合に生成されます。
+
+- ファイル **/opt/sophos-av/bin/savdstatus** が終了する。あるいは、カスタマイズされた場所 **"readlink $(which savscan)"** を探す
+
+- **"/opt/sophos-av/bin/savdstatus --version"** から Sophos 名 = **Sophos Anti-Virus and Sophos version >= 9** が返される
+
+**マシンのエンドポイント保護の正常性に関する問題を解決する** 推奨事項は、次の一方または両方のチェックが満たされていない場合に生成されます。
+
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** から値が返される   
+
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" から値が返される   
+
+- **"/opt/sophos-av/bin/savdstatus --lastupdate"** から lastUpdate が返される。これは <= 7 日間になる必要がある 
+
+- **"/opt/sophos-av/bin/savdstatus -v"** が **"On-access scanning is running"** に等しい 
+
+- **"/opt/sophos-av/bin/savconfig get LiveProtection"** から有効が返される  
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608073"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931947"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>ベースライン ポリシー:レガシ認証をブロックする (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "68608073"
 
 1. **[Azure portal]**  >  **[Azure Active Directory]**  >  **[サインイン]** に移動します。
 1. [Client App] (クライアント アプリ) 列が表示されていない場合は、 **[列]**  >  **[Client App] (クライアント アプリ)** をクリックしてその列を追加します。
-1. **[Client App] (クライアント アプリ)**  >  **[他のクライアント]** でフィルター処理し、 **[適用]** をクリックします。
+1. **[フィルターの追加]**  >  **[クライアント アプリ]** を選択し、 **[他のクライアント]** のすべてのオプションを選択し、 **[適用]** をクリックします。
 
 フィルター処理によって、レガシ認証プロトコルによって行われたサインイン試行のみが表示されます。 個々のサインイン試行をクリックすると、追加の詳細が表示されます。 **[Basic Info] (基本情報)** タブの下の **[Client App] (クライアント アプリ)** フィールドには、どのレガシ認証プロトコルが使用されたかが表示されます。
 

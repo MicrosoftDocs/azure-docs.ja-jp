@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: a194919a488f6cb59c76315c9d8a3db1e9c1feb1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 285af0e5e5d5ab03027fc29064a5f3623ed10e2f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472198"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617042"
 ---
 # <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対する Secure LDAP (LDAPS) のトラブルシューティング
 
@@ -42,8 +42,8 @@ Secure LDAP を使用したマネージド ドメインへの接続の問題が�
 
 
 ## <a name="related-content"></a>関連コンテンツ
-* [Azure AD ドメイン サービス - 作業開始ガイド](create-instance.md)
-* [Azure AD Domain Services ドメインを管理する](manage-domain.md)
+* [Azure AD ドメイン サービス - 作業開始ガイド](tutorial-create-instance.md)
+* [Azure AD Domain Services ドメインを管理する](tutorial-create-management-vm.md)
 * [LDAP query basics](https://technet.microsoft.com/library/aa996205.aspx) (LDAP クエリの基本)
 * [Azure AD Domain Services のグループ ポリシーを管理する](manage-group-policy.md)
 * [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)

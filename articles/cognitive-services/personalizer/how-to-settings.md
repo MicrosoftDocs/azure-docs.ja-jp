@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663897"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559094"
 ---
 # <a name="personalizer-settings"></a>Personalizer 設定
 
@@ -86,6 +86,7 @@ ms.locfileid: "68663897"
 ## <a name="import-and-export-learning-policy"></a>学習ポリシーのインポートとエクスポート
 
 **[Model and Policy]\(モデルとポリシー\)** のリソース管理セクションで、新しい学習ポリシーをインポートしたり、現在の学習ポリシーをエクスポートしたりします。
+以前のエクスポートから学習ポリシー ファイルを取得したり、オフライン評価中に検出された最適化されたポリシーをダウンロードしたりできます。 これらのファイルに手動で変更を加えると、機械学習のパフォーマンスとオフライン評価の精度に影響します。Microsoft では、手動で編集されたポリシーによる機械学習と評価の精度やサービス例外を保証することはできません。
 
 ## <a name="next-steps"></a>次の手順
 

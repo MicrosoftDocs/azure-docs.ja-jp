@@ -5,17 +5,16 @@ manager: eladz
 author: vkurpad
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 39bf5c65cd4577007dfbfe973963849ea663ec16
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4fa669eaf96c08d7a2e1e7255ff6b1f6ff7b4f14
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840766"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639833"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>ナレッジ ストアでのプロジェクションの操作
 

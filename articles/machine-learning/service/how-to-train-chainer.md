@@ -1,7 +1,7 @@
 ---
-title: Chainer モデルのトレーニングと登録
+title: Chainer を使用したディープ ラーニング ニューラル ネットワークのトレーニング
 titleSuffix: Azure Machine Learning service
-description: この記事では、Azure Machine Learning service を使用して Chainer モデルをトレーニングし、登録する方法について説明します。
+description: Azure Machine Learning の Chainer 推定クラスを使用して、PyTorch トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。  このサンプル スクリプトでは、numpy 上で実行される Chainer Python ライブラリを使用して、ディープ ラーニング ニューラル ネットワークを構築するために手書きの数字の画像を分類します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
-ms.date: 06/15/2019
-ms.openlocfilehash: 7cf5650708cd951e872e3df6ea533a62bde0389d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.date: 08/02/2019
+ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618327"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966828"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して Chainer モデルを大規模にトレーニングし、登録する
 
-この記事では、Azure Machine Learning service を使用して Chainer モデルをトレーニングし、登録する方法について説明します。 人気の [MNIST データセット](http://yann.lecun.com/exdb/mnist/)を使用し、[numpy](https://www.numpy.org/) を基盤に [Chainer Python ライブラリ](https://Chainer.org)を使用して構築されたディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類します。
+この記事では、Azure Machine Learning の [Chainer 推定](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)クラスを使用して、[Chainer](https://chainer.org/) トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。 この記事のトレーニング スクリプトの例では、人気の [MNIST データセット](http://yann.lecun.com/exdb/mnist/)を使用し、[numpy](https://www.numpy.org/) を基盤に Chainer Python ライブラリを使用して構築されたディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類します。
 
-Chainer は、他の人気 DNN フレームワークを基盤に実行することで開発を簡素化できるハイレベル ニューラル ネットワーク API です。 Azure Machine Learning service を利用すると、エラスティック クラウド コンピューティング リソースを使用し、トレーニング ジョブを迅速にスケールアウトできます。 トレーニングの実行、モデルのバージョン管理、モデルのデプロイなどを追跡することもできます。
+Chainer のディープ ラーニング モデルを一からトレーニングする場合でも、既存のモデルをクラウドに持ち込む場合でも、Azure Machine Learning のエラスティック クラウド コンピューティング リソースを使用して、オープンソースのトレーニング ジョブをスケールアウトできます。 Azure Machine Learning を使用して、運用レベルのモデルをビルド、デプロイ、バージョン管理、および監視することができます。 
 
-Chainer モデルをゼロから開発する場合でも、既存のモデルをクラウドに導入する場合でも、Azure Machine Learning service は運用環境対応モデルの構築に役立ちます。
+[ディープ ラーニングと機械学習の比較](concept-deep-learning-vs-machine-learning.md)の詳細を確認してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
@@ -33,14 +33,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 
-    - [クラウドベースのノートブックによるクイック スタート](quickstart-run-cloud-notebook.md)に従って、SDK とサンプル リポジトリが事前に読み込まれた専用の Notebook サーバーを作成します。
-    - Notebook サーバー上の samples フォルダー内で、**how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer** フォルダーから完了済みのノートブックとファイルを見つけます。  このノートブックには、インテリジェント ハイパーパラメーター チューニング、モデル デプロイ、ノートブック ウィジェットを取り上げた拡張セクションがあります。
+    - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+    - Notebook サーバー上の samples deep learning フォルダー内で、**how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer** フォルダーから完了済みのノートブックとファイルを見つけます。  このノートブックには、インテリジェントなハイパーパラメーター調整、モデル デプロイ、およびノートブックのウィジェットを示す展開済みセクションが含まれています。
 
 - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK for Python をインストールする](setup-create-workspace.md#sdk)
-    - [ワークスペース構成ファイルを作成する](setup-create-workspace.md#write-a-configuration-file)
-    - サンプル スクリプト ファイル [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py) をダウンロードする
+    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
+    - サンプル スクリプト ファイル [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py) をダウンロードします。
      - GitHub サンプル ページにも、完全な [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)があります。 このノートブックには、インテリジェント ハイパーパラメーター チューニング、モデル デプロイ、ノートブック ウィジェットを取り上げた拡張セクションがあります。
 
 ## <a name="set-up-the-experiment"></a>実験を設定する
@@ -94,7 +94,7 @@ import shutil
 shutil.copy('chainer_mnist.py', project_folder)
 ```
 
-### <a name="create-an-experiment"></a>実験の作成
+### <a name="create-a-deep-learning-experiment"></a>ディープ ラーニングの実験を作成する
 
 実験を作成します。 この例では、"chainer-mnist" という実験を作成します。
 
@@ -209,10 +209,10 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Machine Learning service で Chainer モデルをトレーニングしました。 
-
-* モデルをデプロイする方法を学習するには、[モデル デプロイ](how-to-deploy-and-where.md)の記事に進んでください。
+この記事では、Azure Machine Learning service 上で Chainer を使用して、ディープ ラーニング ニューラル ネットワークをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、[モデル デプロイ](how-to-deploy-and-where.md)の記事に進んでください。
 
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 
 * [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
+
+* [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャを表示する](/azure/architecture/reference-architectures/ai/training-deep-learning)

@@ -108,7 +108,7 @@
 - name: サンプル
   items:
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
@@ -354,8 +354,10 @@
       href: service-fabric-api-management-overview.md
     - name: アプリ リソース モデル
       href: service-fabric-concept-resource-model.md
-    - name: マネージド ID
+    - name: マネージド ID (プレビュー)
       href: concepts-managed-identity.md
+    - name: コンテナー リポジトリの資格情報の構成
+      href: configure-container-repository-credentials.md
 - name: ハウツー ガイド
   items:
     - name: 開発環境を設定する
@@ -747,7 +749,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: ローカル クラスターのトラブルシューティング
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Service Fabric アプリのマネージド ID を使用する
+    - name: Service Fabric アプリのマネージド ID を使用する (プレビュー)
       items:
         - name: クラスターのセットアップ
           items:

@@ -5,18 +5,18 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/24/2019
+ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 6ddd1b160110e7a751f54f89b387a62d94e9308e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67614477"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932310"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
-Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を通して、AKS ノードへのアクセスが必要になる場合があります。 メンテナンス、ログ収集、その他のトラブルシューティング操作のための接続です。 Windows Server ノードを含め (現在 AKS ではプレビュー段階)、AKS ノードには SSH を使用してアクセスできます。 [リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続する][aks-windows-rdp]こともできます。 セキュリティのため、AKS ノードはインターネットに公開されていません。
+Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を通して、AKS ノードへのアクセスが必要になる場合があります。 メンテナンス、ログ収集、その他のトラブルシューティング操作のための接続です。 Windows Server ノードを含め (現在 AKS ではプレビュー段階)、AKS ノードには SSH を使用してアクセスできます。 [リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続する][aks-windows-rdp]こともできます。 セキュリティのため、AKS ノードはインターネットに公開されません。 AKS ノードに SSH 接続するには、プライベート IP アドレスを使用します。
 
 この記事では、プライベート IP アドレスを使用して、AKS ノードとの SSH 接続を作成する方法を示します。
 
@@ -24,116 +24,50 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
+既定では、SSH キーが取得または生成され、AKS クラスターを作成するときにノードに追加されます。 この記事では、AKS クラスターの作成時に使用した SSH キーとは別の SSH キーを指定する方法について説明します。 この記事では、ノードのプライベート IP アドレスを特定し、SSH を使用してそれに接続する方法についても説明します。 別の SSH キーを指定する必要がない場合は、SSH 公開キーをノードに追加する手順を省略できます。
+
+この記事では、SSH キーを持っていることも前提とします。 [macOS または Linux][ssh-nix]、あるいは [Windows][ssh-windows] を使用して、SSH キーを作成できます。 PuTTY を使用してキーの組を作成する場合、そのキーの組は、既定の PuTTy 秘密キー形式 (.ppk ファイル) ではなく、OpenSSH 形式で保存します。
+
 また、Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
-## <a name="add-your-public-ssh-key"></a>SSH 公開キーを追加する
+## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>SSH アクセス用の仮想マシン スケール セット ベースの AKS クラスターを構成する
 
-既定では、SSH キーが取得または生成され、AKS クラスターを作成するときにノードに追加されます。 AKS クラスターを作成したときに使用したものとは異なる SSH キーを指定する必要がある場合は、お使いの SSH 公開キーを Linux AKS ノードに追加します。 必要に応じて、[macOS または Linux][ssh-nix]、あるいは [Windows][ssh-windows] を使用して、SSH キーを作成できます。 PuTTY を使用してキーの組を作成する場合、そのキーの組は、既定の PuTTy 秘密キー形式 (.ppk ファイル) ではなく、OpenSSH 形式で保存します。
+SSH アクセス用の仮想マシン スケール セットを構成するには、クラスターの仮想マシン スケール セットの名前を見つけ、そのスケール セットに SSH 公開キーを追加します。
 
-> [!NOTE]
-> 現時点では、SSH キーは Azure CLI を使用して Linux ノードにのみ追加できます。 Windows Server ノードを使用する場合は、AKS クラスターを作成したときに指定した SSH キーを使用して、[AKS ノード アドレスを取得する方法](#get-the-aks-node-address)の手順に進みます。 または、[リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続][aks-windows-rdp]します。
-
-AKS ノードのプライベート IP アドレスを取得する手順は、実行する AKS クラスターの種類によって異なります。
-
-* ほとんどの AKS クラスターについて、[通常の AKS クラスターの IP アドレスを取得](#add-ssh-keys-to-regular-aks-clusters)する手順に従います。
-* 複数のノード プール、Windows Server コンテナーのサポートなど、仮想マシン スケール セットが使用されている AKS のプレビュー機能を使用する場合は、[仮想マシン スケール セットに基づく AKS クラスターの手順に従います](#add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters)。
-
-### <a name="add-ssh-keys-to-regular-aks-clusters"></a>通常の AKS クラスターに SSH キーを追加する
-
-SSH キーを Linux AKS ノードに追加するには、次の手順を実行します。
-
-1. [az aks show][az-aks-show] を使用して、AKS クラスター リソース用のリソース グループ名を取得します。 クラスター名は *CLUSTER_RESOURCE_GROUP* という名前の変数に割り当てられています。 *myResourceGroup* を、AKS クラスターが配置されているリソース グループの名前に置き換えます。
-
-    ```azurecli-interactive
-    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-    ```
-
-1. [az vm list][az-vm-list] コマンドを使用して、AKS クラスター リソース グループ内の VM を一覧表示します。 これらの VM はお使いの AKS ノードです。
-
-    ```azurecli-interactive
-    az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
-    ```
-
-    次の出力例では AKS ノードが示されています。
-
-    ```
-    Name                      ResourceGroup                                  Location
-    ------------------------  ---------------------------------------------  ----------
-    aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
-    ```
-
-1. ノードに SSH キーを追加するには、[az vm user update][az-vm-user-update] コマンドを使用します。 リソース グループ名と、前の手順で取得した AKS ノードのいずれかを指定します。 AKS ノードの既定のユーザー名は *azureuser* です。 独自の SSH 公開キーの場所を入力するか (例: *~/.ssh/id_rsa.pub*)、または SSH 公開キーの内容を貼り付けます。
-
-    ```azurecli-interactive
-    az vm user update \
-      --resource-group $CLUSTER_RESOURCE_GROUP \
-      --name aks-nodepool1-79590246-0 \
-      --username azureuser \
-      --ssh-key-value ~/.ssh/id_rsa.pub
-    ```
-
-### <a name="add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters"></a>仮想マシン スケール セットに基づく AKS クラスターに SSH キーを追加する
-
-仮想マシン スケール セットに含まれている Linux AKS ノードに SSH キーを追加するには、次の手順を実行します。
-
-1. [az aks show][az-aks-show] を使用して、AKS クラスター リソース用のリソース グループ名を取得します。 クラスター名は *CLUSTER_RESOURCE_GROUP* という名前の変数に割り当てられています。 *myResourceGroup* を、AKS クラスターが配置されているリソース グループの名前に置き換えます。
-
-    ```azurecli-interactive
-    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-    ```
-
-1. 次に、[az vmss list][az-vmss-list] コマンドを使用して、AKS クラスターの仮想マシン スケール セットを取得します。 仮想マシン スケール セット名は、*SCALE_SET_NAME* という名前の変数に割り当てられています。
-
-    ```azurecli-interactive
-    SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
-    ```
-
-1. 仮想マシン スケール セット内のノードに SSH キーを追加するには、[az vmss extension set][az-vmss-extension-set] コマンドを使用します。 クラスター リソース グループと仮想マシン スケール セット名は、前のコマンドから提供されます。 AKS ノードの既定のユーザー名は *azureuser* です。 必要に応じて、独自の SSH 公開キーの場所を更新します (例: *~/.ssh/id_rsa.pub*)。
-
-    ```azurecli-interactive
-    az vmss extension set  \
-        --resource-group $CLUSTER_RESOURCE_GROUP \
-        --vmss-name $SCALE_SET_NAME \
-        --name VMAccessForLinux \
-        --publisher Microsoft.OSTCExtensions \
-        --version 1.4 \
-        --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
-    ```
-
-1. [az vmss update-instances][az-vmss-update-instances] コマンドを使用して、ノードに SSH キーを適用します。
-
-    ```azurecli-interactive
-    az vmss update-instances --instance-ids '*' \
-        --resource-group $CLUSTER_RESOURCE_GROUP \
-        --name $SCALE_SET_NAME
-    ```
-
-## <a name="get-the-aks-node-address"></a>AKS ノード アドレスを取得する
-
-AKS ノードは、インターネットにパブリックに公開されていません。 AKS ノードに SSH 接続するには、プライベート IP アドレスを使用します。 次の手順では、AKS クラスターでヘルパー ポッドを作成して、ノードのこのプライベート IP アドレスに SSH 接続できるようにします。 AKS ノードのプライベート IP アドレスを取得する手順は、実行する AKS クラスターの種類によって異なります。
-
-* ほとんどの AKS クラスターについて、[通常の AKS クラスターの IP アドレスを取得](#ssh-to-regular-aks-clusters)する手順に従います。
-* 複数のノード プール、Windows Server コンテナーのサポートなど、仮想マシン スケール セットが使用されている AKS のプレビュー機能を使用する場合は、[仮想マシン スケール セットに基づく AKS クラスターの手順に従います](#ssh-to-virtual-machine-scale-set-based-aks-clusters)。
-
-### <a name="ssh-to-regular-aks-clusters"></a>通常の AKS クラスターに SSH 接続する
-
-[az vm list-ip-addresses][az-vm-list-ip-addresses] コマンドを使用して、AKS クラスター ノードのプライベート IP アドレスを表示します。 前の [az aks show][az-aks-show] のステップで取得した独自の AKS クラスター リソース グループ名を指定します。
+[az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得した後、[az vmss list][az-vmss-list] コマンドを使用してスケール セットの名前を取得します。
 
 ```azurecli-interactive
-az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
+$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-次の出力例では AKS ノードのプライベート IP アドレスが示されています。
+上の例では、*myResourceGroup* 内の *myAKSCluster* のクラスター リソース グループの名前に *CLUSTER_RESOURCE_GROUP* を割り当てています。 次に、例では、*CLUSTER_RESOURCE_GROUP* を使用してスケール セット名を表示し、それを *SCALE_SET_NAME* に割り当てています。  
 
+> [!NOTE]
+> 現時点では、SSH キーは Azure CLI を使用して Linux ノードにのみ追加できます。 SSH を使用して Windows Server ノードに接続する場合は、AKS クラスターの作成時に指定した SSH キーを使用し、SSH 公開キーを追加するための次の一連のコマンドをスキップします。 このセクションの最後のコマンドに示すように、トラブルシューティングを行うノードの IP アドレスが必要です。 または、SSH を使用する代わりに、[リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続する][aks-windows-rdp]ことができます。
+
+SSH キーを仮想マシン スケール セット内のノードに追加するには、[az vmss extension set][az-vmss-extension-set] コマンドと [az vmss update-instances][az-vmss-update-instances] コマンドを使用します。
+
+```azurecli-interactive
+az vmss extension set  \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --vmss-name $SCALE_SET_NAME \
+    --name VMAccessForLinux \
+    --publisher Microsoft.OSTCExtensions \
+    --version 1.4 \
+    --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
+
+az vmss update-instances --instance-ids '*' \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --name $SCALE_SET_NAME
 ```
-VirtualMachine            PrivateIPAddresses
-------------------------  --------------------
-aks-nodepool1-79590246-0  10.240.0.4
-```
 
-### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>仮想マシン スケール セットに基づく AKS クラスターに SSH 接続する
+上の例では、前のコマンドの *CLUSTER_RESOURCE_GROUP* 変数と *SCALE_SET_NAME* 変数が使用されています。 上の例では、SSH 公開キーの場所として *~/.ssh/id_rsa.pub* も使用されています。
 
-[kubectl get コマンド][kubectl-get]を使用して、ノードの内部 IP アドレスの一覧を表示します。
+> [!NOTE]
+> AKS ノードの既定のユーザー名は *azureuser* です。
+
+SSH 公開キーをスケール セットに追加した後、そのスケール セット内のノード仮想マシンに IP アドレスを使用して SSH 接続できます。 [kubectl get コマンド][kubectl-get] を使用して、AKS クラスター ノードのプライベート IP アドレスを表示します。
 
 ```console
 kubectl get nodes -o wide
@@ -149,7 +83,57 @@ aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4 
 aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
 ```
 
-トラブルシューティングを行うノードの内部 IP アドレスを記録します。 このアドレスは、後の手順で使用します。
+トラブルシューティングを行うノードの内部 IP アドレスを記録します。
+
+SSH を使用してノードにアクセスするには、「[SSH 接続を作成する](#create-the-ssh-connection)」の手順に従います。
+
+## <a name="configure-virtual-machine-availability-set-based-aks-clusters-for-ssh-access"></a>SSH アクセス用の仮想マシン可用性セット ベースの AKS クラスターを構成する
+
+SSH アクセス用の仮想マシン可用性セット ベースの AKS クラスターを構成するには、クラスターの Linux ノードの名前を見つけ、そのスケール セットに SSH 公開キーを追加します。
+
+[az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得した後、[az vmss list][az-vm-list] コマンドを使用して、クラスターの Linux ノードの仮想マシンの名前を表示します。
+
+```azurecli-interactive
+$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
+```
+
+上の例では、*myResourceGroup* 内の *myAKSCluster* のクラスター リソース グループの名前に *CLUSTER_RESOURCE_GROUP* を割り当てています。 その後、この例では、*CLUSTER_RESOURCE_GROUP* を使用して、仮想マシン名を一覧表示しています。 出力例には、仮想マシンの名前が表示されています。 
+
+```
+Name                      ResourceGroup                                  Location
+------------------------  ---------------------------------------------  ----------
+aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
+```
+
+ノードに SSH キーを追加するには、[az vm user update][az-vm-user-update] コマンドを使用します。
+
+```azurecli-interactive
+az vm user update \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --name aks-nodepool1-79590246-0 \
+    --username azureuser \
+    --ssh-key-value ~/.ssh/id_rsa.pub
+```
+
+上の例では、前のコマンドの *CLUSTER_RESOURCE_GROUP* 変数とノードの仮想マシン名が使用されています。 上の例では、SSH 公開キーの場所として *~/.ssh/id_rsa.pub* も使用されています。 パスを指定する代わりに、SSH 公開キーの内容を使用することもできます。
+
+> [!NOTE]
+> AKS ノードの既定のユーザー名は *azureuser* です。
+
+SSH 公開キーをノードの仮想マシンに追加した後、その仮想マシンに IP アドレスを使用して SSH 接続できます。 [az vm list-ip-addresses][az-vm-list-ip-addresses] コマンドを使用して、AKS クラスター ノードのプライベート IP アドレスを表示します。
+
+```azurecli-interactive
+az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
+```
+
+上の例では、前のコマンドに設定された *CLUSTER_RESOURCE_GROUP* 変数が使用されています。 次の出力例では AKS ノードのプライベート IP アドレスが示されています。
+
+```
+VirtualMachine            PrivateIPAddresses
+------------------------  --------------------
+aks-nodepool1-79590246-0  10.240.0.4
+```
 
 ## <a name="create-the-ssh-connection"></a>SSH 接続を作成する
 
@@ -162,17 +146,17 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
     ```
 
     > [!TIP]
-    > Windows Server ノードを使用する場合は (現在 AKS ではプレビュー段階)、次にようにノード セレクターをコマンドに追加して、Linux ノードで Debian コンテナーのスケジュールを設定します。
+    > Windows Server ノードを使用する場合は (現在 AKS ではプレビュー段階)、ノード セレクターをコマンドに追加して、Linux ノードで Debian コンテナーのスケジュールを設定します。
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. 基本の Debian イメージには、SSH コンポーネントは含まれません。 ターミナル セッションがコンテナーに接続された後、次のように `apt-get` を使用して SSH クライアントをインストールします。
+1. ターミナル セッションがコンテナーに接続された後、`apt-get` を使用して SSH クライアントをインストールします。
 
     ```console
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. コンテナーに接続されていない新しいターミナル ウィンドウで、[kubectl get pods][kubectl-get] コマンドを使用して AKS クラスター上のポッドの一覧を表示します。 次の例に示すように、前のステップで作成したポッドは *aks-ssh* という名前で開始します。
+1. コンテナーに接続されていない新しいターミナル ウィンドウを開き、[kubectl get pods][kubectl-get] コマンドを使用して AKS クラスター上のポッドの一覧を表示します。 次の例に示すように、前のステップで作成したポッドは *aks-ssh* という名前で開始します。
 
     ```
     $ kubectl get pods
@@ -181,7 +165,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
     aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
     ```
 
-1. この記事の最初のステップで、SSH 公開キーを AKS ノードに追加しました。 ここでは、SSH の秘密キーをポッドにコピーします。 この秘密キーは、AKS ノードへの SSH を作成するために使用されます。
+1. 前の手順で、トラブルシューティングを行う AKS ノードに公開 SSH キーを追加しました。 ここでは、SSH 秘密キーをヘルパー ポッドにコピーします。 この秘密キーは、AKS ノードへの SSH を作成するために使用されます。
 
     前のステップで取得した独自の *aks-ssh* ポッド名を指定します。 必要に応じて、 *~/.ssh/id_rsa* をお使いの SSH 秘密キーの場所に変更します。
 
@@ -189,13 +173,13 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
     kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
     ```
 
-1. コンテナーへのターミナル セッションに戻り、コピーした `id_rsa` SSH 秘密キーに対するアクセス許可を、ユーザーが読み取り専用であるように更新します。
+1. コンテナーへのターミナル セッションに戻り、コピーした `id_rsa` SSH 秘密キーに対するアクセス許可を、ユーザーに対して読み取り専用になるように更新します。
 
     ```console
     chmod 0600 id_rsa
     ```
 
-1. ここで、AKS ノードへの SSH 接続を作成します。 前に説明したように、AKS ノードの既定のユーザー名は *azureuser* です。 SSH キーが最初に信頼されるときに接続続行のプロンプトを受け入れます。 次に、AKS ノードの bash プロンプトが提供されます。
+1. AKS ノードへの SSH 接続を作成します。 前に説明したように、AKS ノードの既定のユーザー名は *azureuser* です。 SSH キーが最初に信頼されるときに接続続行のプロンプトを受け入れます。 次に、AKS ノードの bash プロンプトが提供されます。
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4

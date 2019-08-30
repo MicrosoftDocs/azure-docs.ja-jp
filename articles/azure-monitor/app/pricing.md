@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 05/29/2019
+ms.date: 08/13/2019
 ms.author: dalek
-ms.openlocfilehash: 188911fa3fb872c8db1612406bf3d4e9b36d837b
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303843"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989225"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -26,7 +26,7 @@ ms.locfileid: "67303843"
 > この記事では、Application Insights でデータの使用状況を分析する方法について説明します。  関連する情報については、次の記事を参照してください。
 > - 「[使用量と推定コストの監視](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)」では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。 価格モデルを変更する方法についても説明します。
 
-Application Insights の課金のしくみについてご質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights)に投稿してください。
+Application Insights の課金のしくみについてご質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights)に投稿してください。
 
 ## <a name="pricing-model"></a>価格モデル
 
@@ -132,6 +132,14 @@ Application Insights の課金は Azure の課金内容に加えられます。 
     | render areachart
 
 保持されている各レコードで、`itemCount` は、それが表す元のレコードの数を示します。 これは、1 + 以前に破棄されたレコードの数と同じです。 
+
+## <a name="change-the-data-retention-period"></a>データ保持期間の変更
+
+現在、Application Insights では、限られた数の Application Insights のお客様に対して、可変の保持期間のプレビューを提供しています。 このプレビュー プログラムへの参加方法については、[こちら](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)を参照してください。
+
+Application Insights リソースの既定の保持期間は 90 日です。 Application Insights リソースごとに異なる保持期間を選択できます。 使用可能な保持期間の完全なセットは、30 日、60 日、120 日、180 日、270 日、365 日、550 日、または 730 日です。 
+
+長期の保持期間に対する課金が有効になっている場合、90 日を超えて保持されているデータには、Azure Log Analytics のデータ保持期間に対して現在請求されているのと同じ料金で課金されます。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。  [この提案に投票する](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ことによって、可変の保持期間の進捗に関する最新情報を把握してください。 
 
 ## <a name="limits-summary"></a>制限の概要
 

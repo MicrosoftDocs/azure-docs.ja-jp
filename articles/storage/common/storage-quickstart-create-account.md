@@ -6,15 +6,15 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/28/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72f8c3ed0658765827c4a9b0669c08fefd9044f
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234187"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016328"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -141,6 +141,8 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 |ゾーン冗長ストレージ (ZRS)     |Standard_ZRS         |
 |geo 冗長ストレージ (GRS)     |Standard_GRS         |
 |読み取りアクセス geo 冗長ストレージ (GRS)     |Standard_RAGRS         |
+|geo ゾーン冗長ストレージ (GZRS) (プレビュー)    |Standard_GZRS         |
+|読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) (プレビュー)    |Standard_RAGZRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -179,6 +181,8 @@ az storage account create \
 |ゾーン冗長ストレージ (ZRS)     |Standard_ZRS         |
 |geo 冗長ストレージ (GRS)     |Standard_GRS         |
 |読み取りアクセス geo 冗長ストレージ (GRS)     |Standard_RAGRS         |
+|geo ゾーン冗長ストレージ (GZRS) (プレビュー)    |Standard_GZRS         |
+|読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) (プレビュー)    |Standard_RAGZRS         |
 
 # <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
 

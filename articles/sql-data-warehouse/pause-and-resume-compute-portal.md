@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9c3ed6dd79d6225b38751c910253cfa1f0720d1c
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 46fb1fc6455cd35d8bb1eaf0a1b7ee499f5c1caf
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731967"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574890"
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure portal での Azure SQL Data Warehouse のコンピューティングの一時停止と再開
 
@@ -23,7 +23,7 @@ Azure Portal を使用して、Azure SQL Data Warehouse のコンピューティ
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -43,9 +43,9 @@ SQL Data Warehouse を一時停止するには、次の手順を実行します�
 
     ![コンピューティングがオンライン](media/pause-and-resume-compute-portal/compute-online.png)
 
-4. データ ウェアハウスを一時停止するには、**[一時停止]** ボタンをクリックします。 
+4. データ ウェアハウスを一時停止するには、 **[一時停止]** ボタンをクリックします。 
 5. 続行してよいかどうかを確認するメッセージが表示されます。 **[はい]** をクリックします。
-6. 少し待つと、**[状態]** が **[一時停止中]** になります。
+6. 少し待つと、 **[状態]** が **[一時停止中]** になります。
 
     ![一時停止中](media/pause-and-resume-compute-portal/pausing.png)
 
@@ -65,7 +65,7 @@ SQL Data Warehouse を再開するには、次の手順を実行します。
 
     ![コンピューティングがオフライン](media/pause-and-resume-compute-portal/compute-offline.png)
 
-4. データ ウェアハウスを再開するには、**[開始]** をクリックします。 
+4. データ ウェアハウスを再開するには、 **[開始]** をクリックします。 
 5. 開始してよいかどうかを確認するメッセージが表示されます。 **[はい]** をクリックします。
 6. **[状態]** が **[再開中]** になっていることがわかります。
 
@@ -89,13 +89,13 @@ SQL Data Warehouse を再開するには、次の手順を実行します。
 
     ![リソースのクリーンアップ](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-1. コンピューティング リソースを一時停止するには、**[一時停止]** ボタンをクリックします。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、**[開始]** をクリックします。
+1. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンをクリックします。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、 **[開始]** をクリックします。
 
-2. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、**[削除]** をクリックします。
+2. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、 **[削除]** をクリックします。
 
-3. 作成した SQL Server を削除するには、**mynewserver-20171113.database.windows.net** をクリックした後、**[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
+3. 作成した SQL Server を削除するには、**mynewserver-20171113.database.windows.net** をクリックした後、 **[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
 
-4. リソース グループを削除するには、**myResourceGroup** をクリックして、**[リソース グループの削除]** をクリックします。
+4. リソース グループを削除するには、**myResourceGroup** をクリックして、 **[リソース グループの削除]** をクリックします。
 
 
 ## <a name="next-steps"></a>次の手順

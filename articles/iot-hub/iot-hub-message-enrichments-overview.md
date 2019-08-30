@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377202"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873193"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント (プレビュー)
 
@@ -29,9 +29,9 @@ ms.locfileid: "68377202"
 
 * エンリッチメントを適用する[エンドポイント](iot-hub-devguide-endpoints.md) (複数可)
 
-キーには、任意の文字列を使用できます。
+**キー**は文字列です。 キーに含めることができるのは、英数字と特殊文字 (ハイフン (`-`)、アンダースコア (`_`)、ピリオド (`.`)) のみです。
 
-値には、次の例のいずれかを使用できます。
+**値**には、次の例のいずれかを使用できます。
 
 * 任意の静的文字列。 条件、ロジック、演算、関数などの動的な値は使用できません。 たとえば、複数の顧客によって使用される SaaS アプリケーションを開発する場合、それぞれの顧客に識別子を割り当て、その識別子をアプリケーション内で利用可能にすることができます。 アプリケーションを実行すると、IoT Hub によってデバイス テレメトリ メッセージに顧客の識別子のスタンプが適用され、顧客ごとに異なる処理をメッセージに適用することができます。
 
@@ -76,6 +76,8 @@ ms.locfileid: "68377202"
 
 * エンリッチメントを含むメッセージ サイズの合計が 256 KB を超えることは許容されません。 メッセージ サイズが 256 KB を超えた場合、IoT ハブでメッセージがドロップされます。 メッセージがドロップされたときのエラーは、[IoT Hub メトリック](iot-hub-metrics.md)を使用して識別し、デバッグすることができます。 たとえば、d2c.telemetry.egress.invalid を監視することが考えられます。
 
+* メッセージ エンリッチメントは、デジタル ツイン変更イベント ([IoT プラグ アンド プレイ パブリック プレビューの一部](../iot-pnp/overview-iot-plug-and-play.md)) には適用されません。
+
 ## <a name="pricing"></a>価格
 
 メッセージ エンリッチメントは、追加料金なしで利用できます。 現在は、IoT ハブにメッセージを送信したときに料金が発生します。 メッセージが複数のエンドポイントに向かう場合でも、そのメッセージに関して料金が課されるのは 1 回だけです。
@@ -87,6 +89,8 @@ ms.locfileid: "68377202"
 ## <a name="next-steps"></a>次の手順
 
 IoT Hub へのメッセージのルーティングの詳細については、次の記事を参照してください。
+
+* [メッセージ拡張のチュートリアル](tutorial-message-enrichments.md)
 
 * [IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](iot-hub-devguide-messages-d2c.md)
 

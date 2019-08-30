@@ -3,19 +3,19 @@ title: Azure Blob インデクサーから JSON BLOB のインデックスを作
 description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
 ms.date: 05/02/2019
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f60a41c48b3e78b860dca0e93d399420900dbd46
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d266f5edb85dd732cc39cfe98a64bee8019cdbd1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485433"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656676"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 この記事では、Azure Blob Storage 内の JSON ドキュメントから構造化コンテンツを抽出するように Azure Search BLOB [インデクサー](search-indexer-overview.md)を構成し、Azure Search で検索できるようにする方法について説明します。 このワークフローでは、Azure Search インデックスを作成し、JSON BLOB から抽出された既存のテキストとともに読み込みます。 

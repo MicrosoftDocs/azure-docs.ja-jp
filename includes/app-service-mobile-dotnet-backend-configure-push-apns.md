@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181861"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857432"
 ---
 **.NET バックエンド (C#)** :
   
@@ -67,7 +67,7 @@ ms.locfileid: "67181861"
 
 **Node.js バックエンド**:
 
-1. これをまだ行っていない場合は、[クイック スタート プロジェクト](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)をダウンロードするか、[Azure Portal でオンライン エディター](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。    
+1. バックエンド プロジェクトを設定します。    
 
 2. todoitem.js テーブル スクリプトを次のコードで置き換えます。
 

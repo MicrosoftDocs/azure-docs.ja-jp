@@ -8,17 +8,16 @@ manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 387c1972155017f8cd65abd0fee3244d7bbe7c1e
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: b9501cc88e5d83b5c5724b0fbb2f988a8ca1509e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730584"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067549"
 ---
 # <a name="secure-back-end"></a>バックエンドをセキュリティで保護する
 

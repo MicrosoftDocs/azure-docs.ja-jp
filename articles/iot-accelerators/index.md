@@ -8,16 +8,15 @@ layout: LandingPage
 ms.assetid: ''
 ms.service: iot-accelerators
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 12/17/2018
 ms.author: dobett
-ms.openlocfilehash: 2295ca75b7ca266506dbc45b9017a08001ce6e2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 449db5b062436261cec34bfab001a2ab0fc76fa0
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61451210"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049287"
 ---
 # <a name="iot-solution-accelerators-documentation"></a>IoT ソリューション アクセラレータのドキュメント
 

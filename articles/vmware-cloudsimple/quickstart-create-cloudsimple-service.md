@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5732ea726bdecc10d0757224870ee5d8be83a2b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 13b07b3b50bdb03373275ca9594baa6357e9f66f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164214"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812295"
 ---
 # <a name="quickstart---create-service"></a>クイック スタート - サービスの作成
 
@@ -25,25 +25,13 @@ Azure VMware Solution by CloudSimple は、CloudSimple サービスを通じて�
 
 CloudSimple サービスを追加するには、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットはエッジ ネットワークを作成するときに使用し、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 これは、オンプレミス ネットワークのアドレス空間や Azure の仮想ネットワーク アドレス空間と重複できません。
 
+## <a name="before-you-begin"></a>開始する前に
+
+ゲートウェイ サブネットに /28 CIDR ブロックを割り当てます。  CloudSimple サービスごとに、その作成先のリージョンに固有のゲートウェイ サブネットが必要となります。 ゲートウェイ サブネットは、エッジ ネットワーク サービスを作成するときに使用され、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 CloudSimple 環境と通信するネットワークと重複しないようにしてください。  CloudSimple と通信するネットワークとしては、オンプレミスのネットワークや Azure Virtual Network があります。 
+
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
-
-## <a name="enable-microsoftvmwarecloudsimple-resource-provider"></a>Microsoft.VMwareCloudSimple リソース プロバイダーを有効にします。
-
-CloudSimple サービスのリソース プロバイダーを有効にするには、次の手順に従います。
-
-1. **[すべてのサービス]** を選択します。
-2. **サブスクリプション**を検索して選択します。
-
-    ![[サブスクリプション] を選択する](media/cloudsimple-service-select-subscriptions.png)
-
-3. CloudSimple サービスを有効にするサブスクリプションを選択します。
-4. サブスクリプションの**リソースプロバイダー**をクリックします。
-5. **Microsoft.VMwareCloudSimple** を使用してリソース プロバイダーをフィルタ処理します。
-6. **Microsoft.VMwareCloudSimple**リソース プロバイダーを選択して**Register** (登録) をクリックします。
-
-    ![リソース プロバイダーの登録](media/cloudsimple-service-enable-resource-provider.png)
 
 ## <a name="create-the-service"></a>サービスの作成
 

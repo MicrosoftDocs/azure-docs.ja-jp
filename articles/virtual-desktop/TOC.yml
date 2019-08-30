@@ -32,8 +32,12 @@
       href: create-host-pools-arm-template.md
     - name: PowerShell を使用してホスト プールを作成する
       href: create-host-pools-powershell.md
-    - name: ホスト プールのユーザー プロファイル共有を設定する
+    - name: Windows Virtual Desktop セッション ホストに Windows ライセンスを適用する
+      href: apply-windows-license.md
+    - name: ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する
       href: create-host-pools-user-profile.md
+    - name: Azure NetApp Files を使用してホスト プール用のプロファイル コンテナーを作成する
+      href: create-fslogix-profile-container.md
     - name: Windows Virtual Desktop の負荷分散方法を構成する
       href: configure-host-pool-load-balancing.md
     - name: マスター VHD イメージを準備してカスタマイズする
@@ -48,6 +52,8 @@
       href: customize-feed-for-virtual-desktop-users.md
     - name: RDP プロパティをカスタマイズする
       href: customize-rdp-properties.md
+    - name: 診断ツールをデプロイする
+      href: deploy-diagnostics.md
 - name: 概念
   items:
     - name: Windows Virtual Desktop の環境

@@ -2,20 +2,18 @@
 title: レベルおよび SKU のサービスの制限 - Azure Search
 description: 容量計画で使用されるサービス上限と、Azure Search の要求および応答の上限について説明します。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 35beb55d7326b954a568a377b73696fe598742c5
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348299"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640621"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。

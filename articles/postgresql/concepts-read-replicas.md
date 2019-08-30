@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/14/2019
-ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.date: 08/12/2019
+ms.openlocfilehash: 928a85c9d03148198fe3e965636740812ce732f7
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147929"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976283"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
 読み取りレプリカ機能を使用すると、Azure Database for PostgreSQL サーバーから、読み取り専用サーバーにデータをレプリケートできます。 マスター サーバーから最大 5 つのレプリカにレプリケートできます。 レプリカは、PostgreSQL エンジンのネイティブ レプリケーション テクノロジを使用して非同期的に更新されます。
-
-> [!IMPORTANT]
-> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 リージョン間レプリケーションは、現在パブリック プレビュー段階です。
 
 レプリカは、通常の Azure Database for PostgreSQL サーバーと同様に管理する新しいサーバーです。 読み取りレプリカごとに、仮想コアおよびストレージのプロビジョニング済みコンピューティング (GB/月) に対して課金されます。
 
@@ -33,7 +30,32 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 読み取りレプリカ機能は、PostgreSQL の非同期レプリケーションを使用します。 機能は、同期レプリケーション シナリオを目的としていません。 マスターとレプリカの間には測定可能な遅延が発生します。 レプリカ上のデータは、最終的にマスター上のデータと整合します。 この機能は、この遅延に対応できるワークロードに使用してください。
 
-読み取りレプリカを使用すると、ディザスター リカバリー計画を強化できます。 まずマスターとは異なる Azure リージョンにレプリカを作成する必要があります。 リージョンの災害が発生した場合は、そのレプリカへのレプリケーションを停止して、ワークロードをそこにリダイレクトできます。 レプリケーションを停止すると、レプリカで読み取りだけでなく書き込みの受け入れも開始できます。 詳細については、[レプリケーションの停止](#stop-replication)に関するセクションを参照してください。 
+## <a name="cross-region-replication"></a>リージョン間レプリケーション
+マスター サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
+
+> [!IMPORTANT]
+> リージョン間レプリケーションは、現在パブリック プレビュー段階です。
+
+任意の [Azure Database for PostgreSQL リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)にマスター サーバーを作成できます。  マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。
+
+### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
+マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカをいつでも作成できます。 ユニバーサル レプリカ リージョンは次のとおりです。
+
+オーストラリア東部、オーストラリア南東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部、米国西部 2。
+
+
+### <a name="paired-regions"></a>ペアになっているリージョン
+ユニバーサル レプリカ リージョンに加えて、マスター サーバーの Azure のペアになっているリージョンに読み取りレプリカを作成できます。 リージョンのペアがわからない場合は、[Azure のペアになっているリージョンに関する記事](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)を参照してください。
+
+ディザスター リカバリー計画にリージョン間レプリカを使用している場合、レプリカの作成場所は別のリージョンのいずれか 1 つではなく、ペアになっているリージョンにすることをお勧めします。 ペアになっているリージョンでは、同時更新を避け、物理的な分離とデータの保存に優先順位を付けます。  
+
+ただし、考慮すべきいくつかの制限があります。 
+
+* リージョン別の提供状況Azure Database for PostgreSQL は、米国西部 2、フランス中部、アラブ首長国連邦北部、およびドイツ中部で利用できます。 ただし、それらのペアになっているリージョンは使用できません。
+    
+* 一方向のペア:一部の Azure リージョンは一方向にのみペアになっています。 これらのリージョンには、インド西部、ブラジル南部、および US Gov バージニアが含まれます。 
+   これは、インド西部のマスター サーバーでインド南部のレプリカを作成できることを意味します。 ただし、インド南部のマスター サーバーでインド西部のレプリカを作成することはできません。 この理由は、インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド西部ではないためです。
+
 
 ## <a name="create-a-replica"></a>レプリカの作成
 マスター サーバーでは、`azure.replication_support` パラメーターが **[REPLICA]** に設定されている必要があります。 このパラメーターが変更された場合、その変更を有効にするにはサーバーの再起動が必要です。 (`azure.replication_support` パラメーターは、汎用レベルおよびメモリ最適化レベルのみに適用されます)。
@@ -123,7 +145,7 @@ PostgreSQL では、読み取りレプリカの `max_connections` パラメー�
 
 サーバーの値を更新しようとしていて、制限に従っていない場合、エラーが表示されます。
 
-### <a name="maxpreparedtransactions"></a>max_prepared_transactions
+### <a name="max_prepared_transactions"></a>max_prepared_transactions
 読み取りレプリカの `max_prepared_transactions` パラメーターの値をマスターの値以上にすることが [PostgreSQL では必要](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)です。そうしないと、レプリカが起動しません。 マスターで `max_prepared_transactions` を変更する場合、まずレプリカで変更します。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ

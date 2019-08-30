@@ -1,22 +1,22 @@
 ---
-title: オファー作成のチェックリスト - Azure 向けの Commercial Marketplace
-description: オファー作成プロセスで指定できる詳細。 - Azure 向けの Commercial Marketplace
+title: SaaS オファー作成のチェックリスト - Azure 向けの Commercial Marketplace
+description: SaaS オファー作成プロセスで指定できる詳細。 - Azure 向けの Commercial Marketplace
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: eb824eb67e84ec4bdb93bc355ac6a6afa844ceb9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 08/14/2019
+ms.openlocfilehash: 66c28039f9126ed9e3f56c3ac15b1b3d82279b64
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701165"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036367"
 ---
-# <a name="offer-creation-checklist"></a>オファー作成のチェックリスト
+# <a name="saas-offer-creation-checklist"></a>SaaS オファー作成のチェックリスト
 
-オファー作成プロセスでは、複数のページを使用します。 ここでは、各ページで指定できる詳細と、各項目の詳細へのリンクを示します。
+SaaS オファー作成プロセスでは、複数のページを使用します。 ここでは、各ページで指定できる詳細と、各項目の詳細へのリンクを示します。
 
 入力または指定する必要がある項目を以下に示します。 省略可能な領域や、既定値が指定されている領域もありますが、必要に応じて変更できます。 これらのセクションについて、記載されている順序で作業する必要はありません。
 
@@ -78,7 +78,7 @@ ms.locfileid: "67701165"
 
 | **フィールド名**    | **メモ**   |
 | :---------------- | :-----------| 
-| Name  | 必須。最大 50 文字。 |
+| EnableAdfsAuthentication  | 必須。最大 50 文字。 |
 | まとめ  | 必須。最大 100 文字。 | 
 | 説明  | 必須。最大 3,000 文字。 |
 | Getting Started Instructions (使用開始時の説明)  | 必須。最大 3,000 文字。 |

@@ -4,16 +4,16 @@ description: Azure Migrate サービスを使用して VMware VM を評価して
 services: backup
 author: rayne-wiselman
 manager: carmonm
-ms.service: backup
+ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640796"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018140"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware の評価と移行のサポート マトリックス
 
@@ -42,8 +42,12 @@ ms.locfileid: "68640796"
 **地理的な場所** | **メタデータ ストレージの場所**
 --- | ---
 Azure Government | 米国政府バージニア州
-アジア太平洋 | 東南アジアまたは東アジア
-ヨーロッパ | 南ヨーロッパまたは西ヨーロッパ
+アジア太平洋 | 東アジアまたは東南アジア
+オーストラリア | オーストラリア東部またはオーストラリア南東部
+カナダ | カナダ中部またはカナダ東部
+ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+インド | インド中部またはインド南部
+日本 |  東日本または西日本
 イギリス | 英国南部または英国西部
 米国 | 米国中部または米国西部 2
 
@@ -70,7 +74,7 @@ VMware 用 Azure Migrate アプライアンスは、vCenter Server にインポ�
 
 **サポート** | **詳細**
 --- | ---
-**vCenter Server** | 32 GB のメモリ、4 つの vCPU、および外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。
+**vCenter Server** | 32 GB の RAM、8 つの vCPU、および外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。
 **ESXi** | バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。
 **Azure Migrate プロジェクト** | 1 つのプロジェクトにアプライアンスを関連付けることができます。
 **vCenter Server** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは 1 つの vCenter Server に接続できます。
@@ -78,7 +82,7 @@ VMware 用 Azure Migrate アプライアンスは、vCenter Server にインポ�
 
 ## <a name="assessment-url-access-requirements"></a>評価 - URL アクセス要件
 
-Azure Migrate アプライアンスには、インターネット接続が必要です。
+Azure Migrate アプライアンスには、インターネットへの接続が必要です。
 
 - アプライアンスをデプロイすると、下の表にまとめた URL への接続チェックが Azure Migrate によって実行されます。
 - URL ベースのプロキシを使用してインターネットに接続している場合は、それらの URL へのアクセスを許可して、URL の探索中に受信されたすべての CNAME レコードがプロキシによって解決されるようにします。
@@ -86,8 +90,8 @@ Azure Migrate アプライアンスには、インターネット接続が必要
 **URL** | **詳細**  
 --- | --- |
 *.portal.azure.com  | Azure portal で Azure Migrate に移動します。
-*.windows.net | Azure サブスクリプションにログインします。
-*.microsoftonline.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure サブスクリプションにログインします。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
 management.azure.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
 dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
 *.vault.azure.net | Azure Key Vault でシークレットを管理します。
@@ -100,7 +104,7 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 **デバイス** | **Connection**
 --- | ---
-アプライアンス | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ```https://<appliance-ip-or-name>:44368``` <br/><br/>ポート 443 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
+アプライアンス | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ```https://<appliance-ip-or-name>:44368``` <br/><br/>ポート 443、5671、5672 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
 vCenter サーバー | TCP ポート 443 で、アプライアンスが評価用に構成およびパフォーマンスのメタデータを収集できるようにするインバウンド接続。 <br/><br/> 既定では、アプライアンスはポート 443 で vCenter に接続します。 vCenter Server が別のポートでリッスンする場合、検出の設定時にポートを変更できます。
 
 
@@ -171,8 +175,8 @@ Azure Migrate アプライアンスには、インターネット接続が必要
 **URL** | **詳細**  
 --- | ---
 *.portal.azure.com | Azure portal で Azure Migrate に移動します。
-*.windows.net | Azure サブスクリプションにログインします。
-*.microsoftonline.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Azure サブスクリプションにログインします。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
 management.azure.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
 dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
 *.vault.azure.net | Azure Key Vault でシークレットを管理します。

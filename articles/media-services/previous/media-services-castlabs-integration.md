@@ -68,7 +68,7 @@ CastLabs と AMS の両方でライセンスの承認に使用する JWT (JSON W
 
 次の表では castLabs での JWT トークンについて説明してます。 
 
-| EnableAdfsAuthentication | 説明 |
+| Name | 説明 |
 | --- | --- |
 | optData |ユーザーに関する情報が含まれる JSON 文字列 |
 | crt |アセット、ライセンス情報、再生権に関する情報が含まれる JSON 文字列 |

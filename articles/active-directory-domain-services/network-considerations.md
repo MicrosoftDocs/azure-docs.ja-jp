@@ -1,145 +1,166 @@
 ---
-title: Azure AD Domain Services:ネットワークのガイドライン | Microsoft Docs
-description: Azure Active Directory Domain Services のネットワークに関する考慮事項
+title: Azure AD Domain Services のネットワーク計画と接続 | Microsoft Docs
+description: Azure Active Directory Domain Services を実行するときの仮想ネットワーク設計の考慮事項と接続に使用されるリソースについて説明します。
 services: active-directory-ds
-documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2010
-ms.author: mstephen
-ms.openlocfilehash: 1f21d71bba01eb4bec24dbb558a126ecbbd78bbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/09/2019
+ms.author: iainfou
+ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245438"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617321"
 ---
-# <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
-## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
-次のガイドラインは、Azure AD Domain Services で使用する仮想ネットワークを選択する際に役立ちます。
+# <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
-### <a name="type-of-azure-virtual-network"></a>Azure 仮想ネットワークの種類
-* **Resource Manager の仮想ネットワーク**:Azure AD Domain Services は、Azure Resource Manager を使って作成された仮想ネットワークでは有効にできます。
-* 従来の Azure 仮想ネットワークで Azure AD Domain Services を有効にすることはできません。
-* Azure AD Domain Services が有効になっている仮想ネットワークに他の仮想ネットワークを接続することができます。 詳細については、「[ネットワーク接続](network-considerations.md#network-connectivity)」を参照してください。
+Azure Active Directory Domain Services (AD DS) から他のアプリケーションおよびワークロードに認証および管理サービスが提供されるため、ネットワーク接続は重要なコンポーネントです。 仮想ネットワーク リソースが適切に構成されていないと、アプリケーションとワークロードは Azure AD DS で提供される機能と通信して使用することができません。 仮想ネットワークを正しく計画している場合は、Azure AD DS が必要に応じてアプリケーションとワークロードにサービスを提供できることを確認します。
 
-### <a name="azure-region-for-the-virtual-network"></a>仮想ネットワークの Azure リージョン
-* Azure AD Domain Services のマネージド ドメインは、サービスを有効にすることを選択した仮想ネットワークと同じ Azure リージョンにデプロイされます。
-* Azure AD Domain Services でサポートされている Azure リージョンの仮想ネットワークを選択します。
-* Azure AD Domain Services を使用できる Azure リージョンを確認するには、 [リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services/) に関するページを参照してください。
+この記事では、Azure AD DS をサポートする Azure 仮想ネットワークの設計の考慮事項と要件について説明します。
 
-### <a name="requirements-for-the-virtual-network"></a>仮想ネットワークの要件
-* **Azure ワークロードへの近さ**:Azure AD Domain Services にアクセスする必要のある仮想マシンを現在ホストしている (または今後ホストする予定の) 仮想ネットワークを選択します。 マネージド ドメインとは異なる仮想ネットワークにワークロードがデプロイされている場合は、仮想ネットワークを接続することも選択できます。
-* **カスタムまたは持ち込みの DNS サーバー**:仮想ネットワーク用にカスタムの DNS サーバーが構成されていないことを確認します。 カスタム DNS サーバーの例は、仮想ネットワークにデプロイした Windows Server VM で実行されている Windows Server DNS のインスタンスです。 Azure AD Domain Services は、仮想ネットワーク内にデプロイされているカスタム DNS サーバーと統合されません。
-* **同じドメイン名を持つ既存のドメイン**:その仮想ネットワークで使用できるドメインと同じ名前のドメインがないことを確認します。 たとえば、選択した仮想ネットワークで既に利用可能な "contoso.com" という名前のドメインがあると仮定します。 その後、その仮想ネットワークでこれと同じドメイン名 (つまり "contoso.com") で、Azure AD Domain Services のマネージド ドメインを有効にしようとします。 Azure AD Domain Services を有効にしようとすると、エラーが発生します。 このエラーの原因は、仮想ネットワークのドメイン名で名前が競合していることにあります。 この場合、Azure AD Domain Services のマネージド ドメインを設定するには、別の名前を使用する必要があります。 または、既存のドメインのプロビジョニングを解除してから、Azure AD ドメイン サービスの有効化に進みます。
+## <a name="azure-virtual-network-design"></a>Azure 仮想ネットワークの設計
 
-> [!WARNING]
-> Domain Services は、有効にした後、別の仮想ネットワークに移動できません。
->
->
+ネットワーク接続を提供し、アプリケーションとサービスが Azure AD DS に対して認証できるようにするには、Azure 仮想ネットワークとサブネットを使用します。 Azure AD DS を独自の仮想ネットワークにデプロイするのが理想的です。 同じ仮想ネットワーク内に別のアプリケーション サブネットを追加して、管理 VM または軽量なアプリケーション ワークロードをホストすることができます。 Azure AD DS 仮想ネットワークとピアリングされた大規模または複雑なアプリケーション ワークロードの場合は、通常、別の仮想ネットワークが最適な設計です。 以下のセクションに記載されている仮想ネットワークとサブネットの要件を満たしている場合は、その他の設計の選択肢が有効です。
 
+Azure AD DS の仮想ネットワークを設計する際には、次の考慮事項が適用されます。
 
-## <a name="guidelines-for-choosing-a-subnet"></a>サブネットの選択に関するガイドライン
+* Azure AD DS は、仮想ネットワークと同じ Azure リージョンにデプロイする必要があります。
+    * 現時点では、Azure AD テナントごとにデプロイできる Azure AD DS マネージド ドメインは 1 つのみです。 Azure AD DS マネージド ドメインは、1 つのリージョンにデプロイされます。 仮想ネットワークは、必ず [Azure AD DS をサポートするリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)で作成または選択します。
+* 他の Azure リージョンとアプリケーション ワークロードをホストする仮想ネットワークの距離を考慮します。
+    * 待機時間を最小限に抑えるには、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットの近く、または同じリージョンにコア アプリケーションを保持します。 Azure 仮想ネットワーク間には、仮想ネットワーク ピアリングまたは仮想プライベート ネットワーク (VPN) 接続を使用できます。
+* 仮想ネットワークは、Azure AD DS が提供するもの以外の DNS サービスに依存することはできません。
+    * Azure AD DS は独自の DNS サービスを提供しています。 これらの DNS サービス アドレスを使用するように仮想ネットワークを構成する必要があります。 追加の名前空間の名前解決は、条件付きフォワーダーを使用して実現できます。
+    * カスタム DNS サーバー設定を使用して、VM などの他の DNS サーバーにクエリを送信することはできません。 仮想ネットワーク内のリソースでは、Azure AD DS から提供される DNS サービスを使用する必要があります。
+
+> [!IMPORTANT]
+> サービスを有効にした後、Azure AD DS を別の仮想ネットワークに移行することはできません。
+
+Azure AD DS マネージド ドメインは、Azure 仮想ネットワーク内のサブネットに接続します。 次の点を考慮して、Azure AD DS 用にこのサブネットを設計します。
+
+* Azure AD DS は、独自のサブネットにデプロイする必要があります。 既存のサブネットまたはゲートウェイ サブネットは使用しないでください。
+* Azure AD DS マネージド ドメインのデプロイ時に、ネットワーク セキュリティ グループが作成されます。 このネットワーク セキュリティ グループには、サービス通信を正しく行うために必要な規則が含まれています。
+    * 独自のカスタム規則を持つ既存のネットワーク セキュリティ グループを作成または使用しないでください。
+* Azure AD DS には、5 から 7 個の IP アドレスが必要です。 サブネットの IP アドレス範囲でこの数のアドレスを提供できることを確認してください。
+    * 使用可能な IP アドレスを制限すると、Azure AD Domain Services で 2 つのドメイン コントローラーを維持できなくなる可能性があります。
+
+次の図の例は、Azure AD DS に独自のサブネットがあり、外部接続用にゲートウェイ サブネットがあり、アプリケーション ワークロードが仮想ネットワーク内の接続されたサブネットにある有効な設計を示しています。
 
 ![Recommended subnet design](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-* Azure AD Domain Services は、Azure 仮想ネットワーク内の**別の専用サブネット**にデプロイします。
-* マネージド ドメインの専用サブネットに NSG を適用しないでください。 この専用サブネットに NSG を適用する必要がある場合は、**ドメインのサービス提供および管理に必要なポートがブロックされていない**ことを確認してください。
-* マネージド ドメインの専用サブネット内で使用できる IP アドレスの数を過度に制限しないでください。 このような制限により、サービスがマネージド ドメインに対して 2 つのドメイン コントローラーを利用できなくなります。
-* 仮想ネットワークの**ゲートウェイ サブネットでは Azure AD Domain Services を有効にしないでください**。
+## <a name="connections-to-the-azure-ad-ds-virtual-network"></a>Azure AD DS 仮想ネットワークへの接続
+
+前のセクションで説明したように、Azure AD Domain Services マネージド ドメインは、Azure の 1 つの仮想ネットワークにのみ作成できます。また、Azure AD テナントごとに作成できるマネージド ドメインは 1 つのみです。 このアーキテクチャに基づいて、アプリケーション ワークロードをホストする 1 つ以上の仮想ネットワークを Azure AD DS 仮想ネットワークに接続することが必要になる場合があります。
+
+次のいずれかの方法を使用して、他の Azure 仮想ネットワークでホストされているアプリケーション ワークロードを接続できます。
+
+* 仮想ネットワーク ピアリング
+* 仮想プライベート ネットワーク (VPN)
+
+### <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
+
+仮想ネットワーク ピアリングとは、同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続する機構です。 グローバル仮想ネットワーク ピアリングで、Azure リージョン間の仮想ネットワークを接続できます。 ピアリングされると、2 つの仮想ネットワークでは、VM などのリソースでプライベート IP アドレスを使用して相互に直接通信できるようになります。 仮想ネットワーク ピアリングを使用すると、他の仮想ネットワークにデプロイされたアプリケーション ワークロードで Azure AD DS マネージド ドメインをデプロイできます。
+
+![Virtual network connectivity using peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
+
+詳細については、[Azure 仮想ネットワークのピアリングの概要](../virtual-network/virtual-network-peering-overview.md)に関するページを参照してください。
+
+### <a name="virtual-private-networking"></a>仮想プライベート ネットワーク
+
+仮想ネットワークをオンプレミス サイトの場所に構成する場合と同じ方法で、仮想ネットワークを別の仮想ネットワークに (VNet 間) 接続することができます。 どちらの接続でも、VPN ゲートウェイを使用して、IPsec/IKE を使用してセキュリティで保護されたトンネルを作成します。 この接続モデルを使用すると、Azure AD DS を Azure 仮想ネットワークにデプロイし、オンプレミスの場所または他のクラウドに接続することができます。
+
+![VPN Gateway を使用した仮想ネットワーク接続](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
+
+仮想プライベート ネットワークの使用方法の詳細については、「[Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)」を参照してください。
+
+## <a name="name-resolution-when-connecting-virtual-networks"></a>仮想ネットワークを接続するときの名前解決
+
+Azure AD Domain Services 仮想ネットワークに接続される仮想ネットワークには、通常、独自の DNS 設定があります。 仮想ネットワークに接続しても、接続中の仮想ネットワークが Azure AD DS マネージド ドメインから提供されるサービスを解決するための名前解決は自動的に構成されません。 アプリケーション ワークロードが Azure AD Domain Services を見つけられるように、接続している仮想ネットワークの名前解決を構成する必要があります。
+
+名前解決を有効にするには、接続している仮想ネットワークをサポートする DNS サーバー上で条件付き DNS フォワーダーを使用するか、Azure AD Domain Services 仮想ネットワークと同じ DNS IP アドレスを使用します。
+
+## <a name="network-resources-used-by-azure-ad-ds"></a>Azure AD DS によって使用されるネットワーク リソース
+
+Azure AD DS マネージド ドメインでは、デプロイ時にいくつかのネットワーク リソースが作成されます。 これらのリソースは、Azure AD DS マネージド ドメインの正常な運用と管理のために必要であり、手動で構成することはできません。
+
+| Azure リソース                          | 説明 |
+|:----------------------------------------|:---|
+| ネットワーク インターフェイス カード                  | Azure AD DS は、Windows Server 上で Azure VM として実行されている 2 つのドメイン コントローラー (DC) 上でマネージド ドメインをホストします。 各 VM には、仮想ネットワークのサブネットに接続する仮想ネットワーク インターフェイスがあります。 |
+| 動的な Basic パブリック IP アドレス         | Azure AD DS は、Basic SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)」を参照してください。 |
+| Azure Basic Load Balancer               | Azure AD DS では、ネットワーク アドレス変換 (NAT) および負荷分散 (セキュリティで保護された LDAP と共に使用する場合) に Basic SKU のロード バランサーを使用します。 Azure Load Balancer の詳細については、[Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)に関する記事を参照してください。 |
+| ネットワーク アドレス変換 (NAT) 規則 | Azure AD DS では、ロード バランサーに対して 3 つの NAT 規則が作成され、使用されます。セキュリティで保護された HTTP トラフィックに関する 1 つの規則と、セキュリティで保護された PowerShell リモート処理に関する 2 つの規則です。 |
+| 負荷分散規則                     | Azure AD DS マネージド ドメインが TCP ポート 636 上のセキュリティで保護された LDAP 用に構成されている場合、トラフィックを分散する 3 つの規則がロード バランサーに対して作成され、使用されます。 |
 
 > [!WARNING]
-> Azure AD Domain Services が有効になっているサブネットに NSG を関連付けると、Microsoft によるドメインのサービス提供および管理機能が中断される可能性があります。 さらに、Azure AD テナントとマネージド ドメインの間の同期が中断されます。 **SLA は、Azure AD Domain Services によるドメインの更新と管理をブロックする NSG が適用されているデプロイには適用されません。**
+> Azure AD DS によって作成されたネットワーク リソースは削除しないでください。 ネットワーク リソースのいずれかを削除すると、Azure AD DS サービスの停止が発生します。
+
+## <a name="network-security-groups-and-required-ports"></a>ネットワーク セキュリティ グループと必要なポート
+
+[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) には、Azure 仮想ネットワーク内のトラフィックへのネットワーク トラフィックを許可または拒否するルールの一覧が含まれています。 ネットワーク セキュリティ グループは、サービスが認証および管理機能を提供できるようにする一連の規則を含む Azure AD DS を展開するときに作成されます。 この既定のネットワーク セキュリティ グループは、Azure AD DS のマネージド ドメインがデプロイされる仮想ネットワーク サブネットに関連付けられています。
+
+Azure AD DS で認証と管理サービスを提供するには、次のネットワーク セキュリティ グループの規則が必要です。 Azure AD DS マネージド ドメインが展開されている仮想ネットワーク サブネットのネットワーク セキュリティ グループ規則を編集または削除しないでください。
+
+| ポート番号 | Protocol | Source                             | Destination | Action | 必須 | 目的 |
+|:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | Azure AD テナントとの同期。 |
+| 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | はい      | ドメインの管理。 |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | ドメインの管理。 |
+| 636         | TCP      | Any                                | Any         | Allow  | いいえ       | セキュリティで保護された LDAP (LDAPS) を構成するときにのみ有効になります。 |
+
+> [!WARNING]
+> これらのネットワーク リソースと構成を手動で編集しないでください。 正しく構成されていないネットワーク セキュリティ グループまたはユーザー定義のルート テーブルを、Azure AD DS が展開されているサブネットに関連付けると、Microsoft のドメインのサービスと管理の機能が中断する可能性があります。 Azure AD テナントと Azure AD DS マネージド ドメインの間の同期も中断されます。
 >
+> *AllowVnetInBound*、*AllowAzureLoadBalancerInBound*、*DenyAllInBound*、*AllowVnetOutBound*、*AllowInternetOutBound*、*DenyAllOutBound* の既定の規則もネットワーク セキュリティ グループに存在します。 これらの既定の規則は編集または削除しないでください。
 >
+> 不適切に構成されたネットワーク セキュリティ グループやユーザー定義のルート テーブルが適用され、Azure AD DS がドメインの更新と管理をブロックするようなデプロイには、Azure SLA は適用されません。
 
-## <a name="ports-required-for-azure-ad-domain-services"></a>Azure AD Domain Services に必要なポート
-Azure AD Domain Services によるマネージド ドメインのサービス提供および管理には、次のポートが必要です。 マネージド ドメインを有効にしたサブネットに対してこれらのポートがブロックされていないことを確認してください。
+### <a name="port-443---synchronization-with-azure-ad"></a>ポート 443 - Azure AD との同期
 
-| ポート番号 | 必須 | 目的 |
-| --- | --- | --- |
-| 443 | Mandatory |Azure AD テナントとの同期 |
-| 5986 | Mandatory | ドメインの管理 |
-| 3389 | Mandatory | ドメインの管理 |
-| 636 | 省略可能 | マネージド ドメインへのセキュリティで保護された LDAP (LDAPS) アクセス |
+* Azure AD テナントを Azure AD DS のマネージド ドメインと同期するために使用します。
+* このポートにアクセスできない場合、Azure AD DS マネージド ドメインは Azure AD テナントと同期できません。 パスワードへの変更が Azure AD DS マネージド ドメインに同期されないため、ユーザーはサインインできない可能性があります。
+* IP アドレスへのこのポートへの受信アクセスは、既定では **AzureActiveDirectoryDomainServices** サービス タグを使用して制限されます。
+* このポートからの発信アクセスは制限しないでください。
 
-**ポート 443 (Azure AD との同期)**
-* マネージド ドメインと Azure AD ディレクトリを同期するために使用されます。
-* NSG でこのポートへのアクセスを許可する必要があります。 このポートにアクセスできない場合、マネージド ドメインは Azure AD ディレクトリと同期されません。 ユーザーのパスワードがマネージド ドメインと同期されていないために、ユーザーがサインインできないことがあります。
-* このポートへの受信アクセスを、Azure の IP アドレス範囲に属する IP アドレスに限定できます。 Azure の IP アドレス範囲は、以下の規則で示されている PowerShell の範囲とは異なることに注意してください。
+### <a name="port-3389---management-using-remote-desktop"></a>ポート 3389 - リモート デスクトップを使用した管理
 
-**Port 5986 (PowerShell リモート処理)**
-* PowerShell のリモート処理を使用してマネージド ドメインの管理タスクを実行するために使用されます。
-* NSG でこのポートを利用するアクセスを許可する必要があります。 このポートにアクセスできない場合、マネージド ドメインの更新、構成、バックアップおよび監視は行えません。
-* すべての新しいドメインまたは Azure Resource Manager 仮想ネットワークを使用するドメインでは、このポートへの受信アクセスを次のソース IP アドレスに制限できます。52.180.179.108、52.180.177.87、13.75.105.168、52.175.18.134、52.138.68.41、52.138.65.157、104.41.159.212、104.45.138.161、52.169.125.119、52.169.218.0、52.187.19.1、52.187.120.237、13.78.172.246、52.161.110.169、52.174.189.149、40.68.160.142、40.83.144.56、13.64.151.161、52.180.183.67、52.180.181.39、52.175.28.111、52.175.16.141、52.138.70.93、52.138.64.115、40.80.146.22、40.121.211.60、52.138.143.173、52.169.87.10、13.76.171.84、52.187.169.156、13.78.174.255、13.78.191.178、40.68.163.143、23.100.14.28、13.64.188.43、23.99.93.197
-* クラシック仮想ネットワークを使用するドメインでは、このポートへの受信アクセスを次のソース IP アドレスに制限できます。52.180.183.8、23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209
-* マネージド ドメインのドメイン コントローラーは、通常はこのポートをリッスンしません。 サービスは、管理操作またはメンテナンス操作をマネージド ドメインに対して実行する必要がある場合にのみ、マネージド ドメイン コントローラー上のこのポートを開きます。 操作が完了すると、サービスはすぐにマネージド ドメイン コントローラー上のこのポートを停止します。
+* Azure AD DS マネージド ドメイン内のドメイン コントローラーへのリモート デスクトップ接続に使用されます。
+* 既定のネットワーク セキュリティ グループの規則では、*CorpNetSaw* サービス タグを使用してトラフィックがさらに制限されます。
+    * このサービス タグでは、Microsoft 企業ネットワーク上のセキュリティで保護されたアクセス ワークステーションのみが、Azure AD DS マネージド ドメインへのリモート デスクトップを使用できます。
+    * アクセスは、管理やトラブルシューティングのシナリオなど、業務上の正当な理由でのみ許可されます。
+* この規則を *[拒否]* に設定し、必要な場合にのみ *[許可]* に設定することができます。 ほとんどの管理タスクと監視タスクは、PowerShell リモート処理を使用して実行されます。 RDP は、Microsoft が高度なトラブルシューティングのためにマネージド ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。
 
-**ポート 3389 (リモート デスクトップ)**
-* マネージド ドメインのドメイン コントローラーへのリモート デスクトップ接続に使用されます。
-* 受信アクセスを次のソース IP アドレスに制限できます。207.68.190.32/27、13.106.78.32/27、13.106.174.32/27、13.106.4.96/27
-* このポートも、マネージド ドメイン上でほとんど無効な状態を保持します。 管理タスクと監視タスクは PowerShell のリモート処理を使用して実行されるため、この仕組みは継続的には使用されません。 このポートは、Microsoft が高度なトラブルシューティングのためにマネージド ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。 トラブルシューティングの操作が完了すると、ポートはただちに閉じられます。
+> [!NOTE]
+> このネットワーク セキュリティ グループの規則を編集しようとすると、ポータルから *CorpNetSaw* サービス タグを手動で選択することはできません。 *CorpNetSaw* サービス タグを使用する規則を手動で構成するには、Azure PowerShell または Azure CLI を使用する必要があります。
 
-**ポート 636 (Secure LDAP)**
-* インターネット経由でマネージド ドメインへの Secure LDAP によるアクセスを有効にするために使用されます。
-* NSG でこのポートを開くかどうかは任意です。 インターネット経由で Secure LDAP によるアクセスを有効にしている場合にのみ、ポートを開きます。
-* このポートへの受信アクセスを、Secure LDAP での接続が見込まれる送信元 IP アドレスに限定できます。
+### <a name="port-5986---management-using-powershell-remoting"></a>ポート 5986 - PowerShell リモート処理を使用した管理
 
+* PowerShell のリモート処理を使用して Azure AD DS マネージド ドメインの管理タスクを実行するために使用されます。
+* このポートにアクセスできない場合、Azure AD DS マネージド ドメインの更新、構成、バックアップおよび監視は行えません。
+* Resource Manager ベースの仮想ネットワークを使用する Azure AD DS マネージド ドメインでは、このポートへの受信アクセスを *AzureActiveDirectoryDomainServices* サービス タグに制限することができます。
+    * クラシックベースの仮想ネットワークを使用する従来の Azure AD DS マネージド ドメインでは、このポートへの受信アクセスを次の発信元 IP アドレスに制限することができます。*52.180.183.8*、*23.101.0.70*、*52.225.184.198*、*52.179.126.223*、*13.74.249.156*、*52.187.117.83*、*52.161.13.95*、*104.40.156.18*、*104.40.87.209*。
 
-## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
-[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) には、仮想ネットワークの VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
+## <a name="user-defined-routes"></a>ユーザー定義のルート
 
-### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Azure AD Domain Services を使用する仮想ネットワークのサンプル NSG
-次の表は、Azure AD Domain Services のマネージド ドメインを使用して仮想ネットワークを構成できるサンプル NSG を示しています。 この規則によって、必須ポートからの受信トラフィックでマネージド ドメインへの修正プログラムや更新プログラムを適用し、Microsoft による監視を可能にしています。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。
+ユーザー定義ルートは、既定では作成されず、Azure AD DS が正しく機能するためには必要ありません。 ルート テーブルを使用する必要がある場合は、*0.0.0.0* ルートに変更を加えないようにしてください。 このルートを変更すると、Azure AD Domain Services が中断する可能性があります。
 
-また、この NSG では、インターネット経由での、セキュリティで保護された LDAP アクセスをロック ダウンする方法も示しています。 インターネット経由でのマネージド ドメインへのセキュリティで保護された LDAP アクセスを行えないようにしている場合は、この規則についてはスキップしてください。 この NSG には、指定した IP アドレスから TCP ポート 636 経由で入ってくる LDAPS アクセスのみを許可するルール セットが含まれています。 指定した IP アドレスからインターネット経由で入ってくる LDAPS アクセスを許可する NSG ルールには、DenyAll NSG ルールより高い優先度が設定されています。
+また、それぞれの Azure サービス タグに含まれる IP アドレスからの受信トラフィックを Azure AD Domain Services サブネットにルーティングする必要があります。 サービス タグとそれに関連付けられている IP アドレスの詳細については、「[Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/en-us/download/details.aspx?id=56519)」を参照してください。
 
-![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](./media/active-directory-domain-services-alerts/default-nsg.png)
+> [!CAUTION]
+> これらの Azure データセンターの IP 範囲は、予告なしに変わる可能性があります。 最新の IP アドレスを取得していることを検証するプロセスを用意してください。
 
-**詳細** - [ネットワーク セキュリティ グループの作成](../virtual-network/manage-network-security-group.md)
+## <a name="next-steps"></a>次の手順
 
+Azure AD DS で使用されるネットワーク リソースと接続オプションの詳細については、次の記事を参照してください。
 
-## <a name="network-connectivity"></a>ネットワーク接続
-Azure AD Domain Services のマネージド ドメインは、Azure の 1 つの仮想ネットワーク内のみで有効にすることができます。
-
-### <a name="scenarios-for-connecting-azure-networks"></a>Azure ネットワークを接続するためのシナリオ
-次のいずれかのデプロイ シナリオで Azure 仮想ネットワークを接続してマネージド ドメインを使用します。
-
-#### <a name="use-the-managed-domain-in-more-than-one-azure-virtual-network"></a>複数の Azure 仮想ネットワークでマネージド ドメインを使う
-Azure AD Domain Services を有効にした Azure 仮想ネットワークには他の Azure 仮想ネットワークを接続できます。 この VPN/VNet ピアリング接続により、ワークロードが他の仮想ネットワークにデプロイされているマネージド ドメインを使用できます。
-
-![Classic virtual network connectivity](./media/active-directory-domain-services-design-guide/classic-vnet-connectivity.png)
-
-#### <a name="use-the-managed-domain-in-a-resource-manager-based-virtual-network"></a>Resource Manager ベースの仮想ネットワークでマネージド ドメインを使用する
-Resource Manager ベースの仮想ネットワークを、Azure AD Domain Services を有効にした Azure クラシック仮想ネットワークに接続できます。 この接続により、ワークロードが Resource Manager ベースの仮想ネットワークにデプロイされているマネージド ドメインを使用できます。
-
-![Resource Manager to classic virtual network connectivity](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
-
-### <a name="network-connection-options"></a>ネットワーク接続オプション
-* **仮想ネットワーク ピアリングを使用した VNet 間接続**:仮想ネットワーク ピアリングとは、同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続する機構です。 ピアリングされた 2 つの仮想ネットワークは、あらゆる接続において、見かけ上 1 つのネットワークとして機能します。 これらの仮想ネットワークはあくまで個別のリソースとして管理されますが、そこに存在する仮想マシンは互いに、プライベート IP アドレスを使用して直接通信を行うことができます。
-
-    ![Virtual network connectivity using peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
-
-    [関連情報 - 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
-
-* **サイト間 VPN 接続を使用した VNet 間接続**:仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。
-
-    ![Virtual network connectivity using VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
-
-    [関連情報 - VPN ゲートウェイを使用した仮想ネットワークの接続](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-
-<br>
-
-## <a name="related-content"></a>関連コンテンツ
 * [Azure 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
-* [クラシック デプロイ モデルで VNet 対 VNet 接続を構成する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
+* [Azure VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Azure ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
-* [ネットワーク セキュリティ グループの作成](../virtual-network/manage-network-security-group.md)
+
+<!-- INTERNAL LINKS -->
+
+<!-- EXTERNAL LINKS -->

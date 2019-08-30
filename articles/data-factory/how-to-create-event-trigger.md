@@ -11,12 +11,12 @@ ms.date: 10/18/2018
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: bf4dc55d0ec17daf4c611563dd7aee3a06aa192b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 32edacb7dd66274757359c4eb0e8c169995026ce
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384695"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019522"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する
 
@@ -49,10 +49,7 @@ ms.locfileid: "68384695"
 5. [Azure サブスクリプション] ドロップダウンからストレージ アカウントを選択するか、ストレージ アカウントのリソース ID を使用して手動で選択します。 イベントを発生させるコンテナーを選択します。 コンテナーの選択は省略可能ですが、すべてのコンテナーを選択すると、多数のイベントが発生する可能性があることに注意してください。
 
    > [!NOTE]
-   > イベント トリガーでは現在、バージョン 2 のストレージ アカウント (汎用) のみがサポートされています。
-
-   > [!NOTE]
-   > Azure Event Grid の制限により、Azure Data Factory は、ストレージ アカウントあたり最大 500 のイベント トリガーのみをサポートします。
+   > 現在、イベント トリガーでサポートされているのは、Azure Data Lake Storage Gen2 と汎用バージョン 2 のストレージ アカウントのみです。 Azure Event Grid の制限により、Azure Data Factory は、ストレージ アカウントあたり最大 500 のイベント トリガーのみをサポートします。
 
 6. **[Blob path begins with]** (次で始まる BLOB パス) と **[Blob path ends with]** (次で終わる BLOB パス) のプロパティでは、イベントを受け取るコンテナー、フォルダー、および BLOB の名前を指定できます。 イベント トリガーでは、これらのプロパティの少なくとも 1 つを定義する必要があります。 この記事で後述する例に示すように、 **[Blob path begins with]\(Blob パスの先頭\)** と **[Blob path ends with]\(Blob パスの末尾\)** のプロパティにはさまざまなパターンを使用できます。
 
@@ -63,7 +60,7 @@ ms.locfileid: "68384695"
 
     ![イベント トリガーを構成する](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
-8. トリガーを構成したら、 **[次へ: データのプレビュー]** をクリックします。 この画面には、イベント トリガーの構成に一致する既存の BLOB が表示されます。 特定のフィルターがあることを確認します。 対象範囲が広くなりすぎるフィルターを構成すると、多数のファイルに一致する場合があり、コストに相当の影響が及ぶ可能性があります。 フィルター構成が確認されたら、 **[完了]** をクリックします。
+8. トリガーを構成したら、 **[次へ:データのプレビュー]** をクリックします。 この画面には、イベント トリガーの構成に一致する既存の BLOB が表示されます。 特定のフィルターがあることを確認します。 対象範囲が広くなりすぎるフィルターを構成すると、多数のファイルに一致する場合があり、コストに相当の影響が及ぶ可能性があります。 フィルター構成が確認されたら、 **[完了]** をクリックします。
 
     ![イベント トリガー データのプレビュー](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 

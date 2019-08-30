@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 95069bafa94770511c7ee40e82068960298fd6c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027799"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128563"
 ---
 # <a name="normalize-data-module"></a>Normalize Data (データの正規化) モジュール
 

@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 7ea852fcd312c6f7b1b716278ed538b7accde5bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f0ad3cc6f506efdc0579f7b8949c41b539ade6a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027769"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128360"
 ---
 # <a name="two-class-neural-network-module"></a>2 クラス ニューラル ネットワーク モジュール
 

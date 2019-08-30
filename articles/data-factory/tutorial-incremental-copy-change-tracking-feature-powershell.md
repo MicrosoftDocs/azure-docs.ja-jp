@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 117b6d53a3392e8a4f75d5d1966e3f48fb66d5ce
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66167525"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966403"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL データベースから**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -150,7 +150,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="azure-powershell"></a>Azure PowerShell
 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
    
      ```powershell
@@ -191,7 +191,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください (「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください (「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
@@ -216,8 +216,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         }
     }
     ```
-2. **Azure PowerShell** で **C:\ADFTutorials\IncCopyChgTrackingTutorial** フォルダーに切り替えます。
-3. **Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス**AzureStorageLinkedService** を作成します。 次の例では、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡しています。 
+2. **Azure PowerShell** で **C:\ADFTutorials\IncCopyChangeTrackingTutorial** フォルダーに切り替えます。
+3. **Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureStorageLinkedService** を作成します。 次の例では、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡しています。 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -235,7 +235,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 この手順では、Azure SQL データベースをデータ ファクトリにリンクします。
 
-1. 以下の内容を記述した **AzureSQLDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADFTutorials\IncCopyChangeTrackingTutorial** フォルダー内に作成します。server、database name **、&lt;user id&gt;、&lt;password&gt;** を実際の Azure SQL サーバーの名前、データベースの名前、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
+1. 以下の内容を記述した **AzureSQLDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADFTutorials\IncCopyChangeTrackingTutorial** フォルダー内に作成します。 **&lt;server&gt;、&lt;database name **、&lt;user id&gt;、&lt;password&gt;** を実際の Azure SQL サーバーの名前、データベースの名前、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
 
     ```json
     {
@@ -370,7 +370,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
     前提条件の 1 つとして table_store_ChangeTracking_version テーブルを作成します。
-2.  Set-AzDataFactoryV2Dataset コマンドレットを実行して、データセットWatermarkDataset を作成します。
+2.  Set-AzDataFactoryV2Dataset コマンドレットを実行して、データセットChangeTrackingDataset
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -445,7 +445,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 ### <a name="monitor-the-full-copy-pipeline"></a>フル コピー パイプラインを監視する
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
-2. **[すべてのサービス]** をクリックし、キーワード「`data factories`」で検索して、**[データ ファクトリ]** を選択します。 
+2. **[すべてのサービス]** をクリックし、キーワード「`data factories`」で検索して、 **[データ ファクトリ]** を選択します。 
 
     ![[データ ファクトリ] メニュー](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
 3. データ ファクトリの一覧から**目的のデータ ファクトリ**を探して選択し、[データ ファクトリ] ページを起動します。 
@@ -454,7 +454,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 4. [データ ファクトリ] ページの **[監視と管理]** タイルをクリックします。 
 
     ![Monitor & Manage tile](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
-5. 独立したタブで**データ統合アプリケーション**が起動します。すべての**パイプラインの実行**とその状態を確認できます。 次の例では、パイプラインの実行が、**成功**状態であることに注目してください。 **[パラメーター]** 列のリンクをクリックすると、パイプラインに渡されたパラメーターを確認できます。 エラーが発生した場合は、**[エラー]** 列にリンクが表示されます。 **[アクション]** 列のリンクをクリックします。 
+5. 独立したタブで**データ統合アプリケーション**が起動します。すべての**パイプラインの実行**とその状態を確認できます。 次の例では、パイプラインの実行が、**成功**状態であることに注目してください。 **[パラメーター]** 列のリンクをクリックすると、パイプラインに渡されたパラメーターを確認できます。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。 **[アクション]** 列のリンクをクリックします。 
 
     ![パイプライン実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての**アクティビティの実行**が表示されます。 

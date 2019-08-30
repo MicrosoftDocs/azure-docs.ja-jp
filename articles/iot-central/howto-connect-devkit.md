@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81a355cc7c0d1190ee86fac6ed155380e6e5c0d1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235879"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877528"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 この記事では、デバイス開発者として、MXChip IoT DevKit (DevKit) デバイスを Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
@@ -233,7 +235,7 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | オフ     |
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
 | Type            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |

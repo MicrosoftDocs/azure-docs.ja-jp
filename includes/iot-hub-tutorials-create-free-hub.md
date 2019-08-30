@@ -30,7 +30,7 @@ Azure portal を使用して IoT ハブを作成するには:
     | Subscription | ドロップダウンから Azure サブスクリプションを選択します。 |
     | Resource group | 新規作成。 このチュートリアルでは、**tutorials-iot-hub-rg** という名前を使います。 |
     | リージョン | このチュートリアルでは、 **[米国西部]** を使います。 最も近いリージョンを選択できます。 |
-    | EnableAdfsAuthentication | 次のスクリーンショットでは、**tutorials-iot-hub** という名前を使っています。 ハブを作成するときは、独自の一意名を選ぶ必要があります。 |
+    | 名前 | 次のスクリーンショットでは、**tutorials-iot-hub** という名前を使っています。 ハブを作成するときは、独自の一意名を選ぶ必要があります。 |
 
     ![ハブの設定 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 

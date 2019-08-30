@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 7fecf8c5fdafb64f7922054dd2bb9755b0dec031
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16322b2cca4875f1ace89e29752608b95fe568ef
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386178"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103447"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM でリモート デスクトップの接続が頻繁に切れる
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: dacurwin
-ms.openlocfilehash: 53051c88d5723f61fa08e431bdf7ab531e88123e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 96adca2da28517c28ba3583f5d15f07311d2792a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689149"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954505"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure Backup レポートのデータ モデル
 この記事では、Azure Backup レポートの作成に使用する Power BI データ モデルについて説明します。 このデータ モデルを使用すると、関連するフィールドに基づく既存のレポートをフィルター処理し、さらに重要なことに、モデルのテーブルとフィールドを使用して独自のレポートを作成できます。 
@@ -33,13 +33,13 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | %ActiveAlertsCreatedInPeriod |割合 |選択した期間のアクティブなアラートの割合 |
 | %CriticalAlertsCreatedInPeriod |割合 |選択した期間の重大なアラートの割合 |
 | AlertOccurrenceDate |Date |アラートが作成された日付 |
-| AlertSeverity |Text |アラートの重要度 (例: 重大) |
-| AlertStatus |Text |アラートの状態 (例: アクティブ) |
-| AlertType |Text |生成されたアラートの種類 (例: バックアップ) |
+| AlertSeverity |Text |アラートの重大度。 例: 重大 |
+| AlertStatus |Text |アラートの状態。 例: アクティブ |
+| AlertType |Text |生成されたアラートの種類。 例: バックアップ |
 | AlertUniqueId |Text |生成されたアラートの一意の ID |
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
 | AvgResolutionTimeInMinsForAlertsCreatedInPeriod |10 進数 |選択した期間のアラートを解決するための平均時間 (分) |
-| EntityState |Text |アラート オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| EntityState |Text |アラート オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
 
 ### <a name="backup-item"></a>バックアップ項目
 次の表は、さまざまなバックアップ項目に関連するフィールドの基本フィールドと集計を示しています。
@@ -52,27 +52,27 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | BackupItemFriendlyName |Text |バックアップ項目のフレンドリ名 |
 | BackupItemId |Text |バックアップ項目の ID |
 | BackupItemName |Text |バックアップ項目の名前 |
-| BackupItemType |Text |バックアップ項目の種類 (例: VM、FileFolder) |
-| EntityState |Text |バックアップ項目オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| BackupItemType |Text |バックアップ項目の種類。 例: VM、FileFolder |
+| EntityState |Text |バックアップ項目オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
 | LastBackupDateTime |日付/時刻 |選択したバックアップ項目の最後のバックアップの時刻 |
-| LastBackupState |Text |選択したバックアップ項目の最後のバックアップの状態 (例: 成功、失敗) |
+| LastBackupState |Text |選択したバックアップ項目の最後のバックアップの状態。 例: 成功、失敗 |
 | LastSuccessfulBackupDateTime |日付/時刻 |選択したバックアップ項目の最後に成功したバックアップの時刻 |
-| ProtectionState |Text |バックアップ項目の現在の保護状態 (例: 保護済み、保護停止) |
+| ProtectionState |Text |バックアップ項目の現在の保護状態。 例: 保護、ProtectionStopped |
 
-### <a name="calendar"></a>カレンダー
+### <a name="calendar"></a>Calendar
 次の表は、カレンダーに関連するフィールドを示しています。
 
 | フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | Date |Date |データをフィルター処理するために選択した日付 |
 | DateKey |Text |各日付項目の一意のキー |
-| DayDiff |10 進数 |データのフィルター処理に使用する日単位の差。たとえば、0 は現在の日付のデータを示し、-1 は前日のデータを示し、0 および-1 は現在の日付と前日のデータを示します  |
+| DayDiff |10 進数 |データのフィルター処理に使用する日単位の差。 たとえば、0 は現在の日付のデータを示し、-1 は前日のデータを示し、0 および -1 は現在の日付と前日のデータを示します  |
 | 月 |Text |データをフィルター処理するために選択した月。月は 1 日から始まり、31 日で終わります |
 | MonthDate | Date |データをフィルター処理するために選択した、月が終わる日付 |
-| MonthDiff |10 進数 |データのフィルター処理に使用する月単位の差。たとえば、0 は現在の月のデータを示し、-1 は前月のデータを示し、0 および-1 は現在の月と前月のデータを示します |
+| MonthDiff |10 進数 |データのフィルター処理に使用する月単位の差。 たとえば、0 は現在の月のデータを示し、-1 は前月のデータを示し、0 および-1 は現在の月と前月のデータを示します |
 | 週 |Text |データをフィルター処理するために選択した週。週は日曜日から始まり、土曜日で終わります |
 | WeekDate |Date |データをフィルター処理するために選択した、週が終わる曜日 |
-| WeekDiff |10 進数 |データのフィルター処理に使用する週単位の差。たとえば、0 は現在の週のデータを示し、-1 は前の週のデータを示し、0 および-1 は現在と前の週のデータを示します |
+| WeekDiff |10 進数 |データのフィルター処理に使用する週単位の差。 たとえば、0 は現在の週のデータを示し、-1 は前の週のデータを示し、0 および -1 は現在と前の週のデータを示します |
 | 年 |Text |データをフィルター処理するために選択したカレンダーの年 |
 | YearDate |Date |データをフィルター処理するために選択した、年が終わる日付 |
 
@@ -87,13 +87,13 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |10 進数 |選択した期間に作成された**完了したバックアップ** ジョブの平均時間 (分) |
 | AvgRestoreDurationInMinsForJobsCreatedInPeriod |10 進数 |選択した期間に作成された**完了した復元**ジョブの平均時間 (分) |
-| BackupStorageDestination |Text |バックアップ ストレージの保存先 (例: クラウド、ディスク)  |
-| EntityState |Text |ジョブ オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| BackupStorageDestination |Text |バックアップ ストレージの保存先。 例: クラウド、ディスク  |
+| EntityState |Text |ジョブ オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
 | JobFailureCode |Text |ジョブ エラーが発生したことによるエラー コードの文字列 |
-| JobOperation |Text |ジョブを実行する対象の操作 (例: バックアップ、復元、バックアップの構成) |
+| JobOperation |Text |ジョブが実行される操作。 例: バックアップ、復元、バックアップの構成 |
 | JobStartDate |Date |ジョブの実行開始日 |
 | JobStartTime |Time |ジョブの実行開始時刻 |
-| JobStatus |Text |完了したジョブの状態 (例: 完了、失敗) |
+| JobStatus |Text |完了したジョブの状態。 例: 完了、失敗 |
 | JobUniqueId |Text |ジョブを識別する一意の ID |
 
 ### <a name="policy"></a>ポリシー
@@ -105,30 +105,30 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | #PoliciesInUse |整数 |現在、バックアップを構成するために使用されているポリシーの数 |
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
 | BackupDaysOfTheWeek |Text |バックアップがスケジュールされている曜日 |
-| BackupFrequency |Text |バックアップが実行される頻度 (例: 毎日、毎週) |
+| BackupFrequency |Text |バックアップを実行する頻度。 例: 毎日、毎週 |
 | BackupTimes |Text |バックアップがスケジュールされている日付と時刻 |
 | DailyRetentionDuration |整数 |構成されたバックアップに使用される合計リテンション期間 (日数) |
 | DailyRetentionTimes |Text |毎日のリテンション期間が構成された日付と時刻 |
-| EntityState |Text |ポリシー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| EntityState |Text |ポリシー オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
 | MonthlyRetentionDaysOfTheMonth |Text |毎月のリテンション期間に選択された月の日数 |
 | MonthlyRetentionDaysOfTheWeek |Text |毎月のリテンション期間に選択された曜日 |
 | MonthlyRetentionDuration |10 進数 |構成されたバックアップに使用される合計のリテンション期間 (月単位) |
-| MonthlyRetentionFormat |Text |毎月のリテンション期間に使用する構成の種類 (例: 日単位の毎日、週単位の毎週) |
+| MonthlyRetentionFormat |Text |毎月のリテンション期間に対する構成の種類。 例: 日単位の毎日、週単位の毎週 |
 | MonthlyRetentionTimes |Text |毎月のリテンション期間が構成される日付と時刻 |
-| MonthlyRetentionWeeksOfTheMonth |Text |毎月のリテンション期間が構成されたときの月の週 (例: 最初、最後など) |
+| MonthlyRetentionWeeksOfTheMonth |Text |毎月のリテンション期間が構成されたときの月の週 例: 最初、最後など |
 | PolicyName |Text |定義されたポリシーの名前 |
 | PolicyUniqueId |Text |ポリシーを識別する一意の ID |
-| RetentionType |Text |リテンション ポリシーの種類 (例: 毎日、毎週、毎月、毎年) |
+| RetentionType |Text |リテンション ポリシーの種類。 例: 毎日、毎週、毎月、毎年 |
 | WeeklyRetentionDaysOfTheWeek |Text |毎週のリテンション期間に選択された曜日 |
 | WeeklyRetentionDuration |10 進数 |構成されたバックアップの毎週の合計リテンション期間 (週単位) |
 | WeeklyRetentionTimes |Text |毎週のリテンション期間が構成される日付と時刻 |
 | YearlyRetentionDaysOfTheMonth |Text |毎年のリテンション期間に選択された月の日数 |
 | YearlyRetentionDaysOfTheWeek |Text |毎年のリテンション期間に選択された曜日 |
 | YearlyRetentionDuration |10 進数 |構成されたバックアップに使用される合計リテンション期間 (年単位) |
-| YearlyRetentionFormat |Text |毎年のリテンション期間に使用する構成の種類 (例: 日単位の毎日、週単位の毎週) |
+| YearlyRetentionFormat |Text |毎年のリテンション期間に対する構成の種類。 例: 日単位の毎日、週単位の毎週 |
 | YearlyRetentionMonthsOfTheYear |Text |毎年のリテンション期間に選択された月 |
 | YearlyRetentionTimes |Text |毎年のリテンション期間が構成される日付と時刻 |
-| YearlyRetentionWeeksOfTheMonth |Text |毎年のリテンション期間が構成される場合の月の週 (例: 最初、最後など) |
+| YearlyRetentionWeeksOfTheMonth |Text |毎年のリテンション期間が構成されたときの月の週 例: 最初、最後など |
 
 ### <a name="protected-server"></a>保護されるサーバー
 次の表は、さまざまな保護されるサーバーに関連するフィールドの基本フィールドと集計を示しています。
@@ -141,11 +141,11 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | AzureBackupAgentOSVersion |Text |Azure Backup エージェントの OS バージョン |
 | AzureBackupAgentUpdateDate |Text |Azure Backup エージェントが更新された日付 |
 | AzureBackupAgentVersion |Text |エージェント バックアップ バージョンのバージョン番号 |
-| BackupManagementType |Text |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、FileFolder) |
-| EntityState |Text |保護されるサーバー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| BackupManagementType |Text |バックアップを実行するためのプロバイダーの種類。 たとえば、IaaSVM や FileFolder |
+| EntityState |Text |保護されるサーバー オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
 | ProtectedServerFriendlyName |Text |保護されるサーバーのフレンドリ名 |
 | ProtectedServerName |Text |保護されるサーバーの名前 |
-| ProtectedServerType |Text |バックアップされた保護されるサーバーの種類 (例: IaaSVMContainer) |
+| ProtectedServerType |Text |バックアップされた保護されるサーバーの種類。 たとえば、IaaSVMContainer |
 | ProtectedServerName |Text |バックアップ項目が属している保護されるサーバーの名前 |
 | RegisteredContainerId |Text |バックアップ用に登録されたコンテナーの ID |
 
@@ -157,7 +157,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | #ProtectedInstances |10 進数 |選択した時刻の最新の値に基づいて計算された、課金されるフロントエンド ストレージの計算に使用する保護されるインスタンスの数 |
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
 | CloudStorageInMB |10 進数 |選択した時刻の最新の値に基づいて計算された、バックアップによって使用されるクラウド バックアップ ストレージ |
-| EntityState |Text |オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| EntityState |Text |オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
 | LastUpdatedDate |Date |選択した行が最後に更新された日付 |
 
 ### <a name="time"></a>Time
@@ -165,11 +165,11 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 
 | フィールド | データ型 | 説明 |
 | --- | --- | --- |
-| Hour |Time |時刻 (例: 1:00:00 PM) |
-| HourNumber |10 進数 |1 日の時間 (例: 13.00) |
-| [分] |10 進数 |分 |
-| PeriodOfTheDay |Text |1 日の時間帯スロット (例: 12-3 AM) |
-| Time |Time |1 日の時刻 (例 12:00:01 AM) |
+| Hour |Time |1 日の時刻。 例: 1:00:00 PM |
+| HourNumber |10 進数 |1 日の時間の数値。 例: 13.00 |
+| 分 |10 進数 |分 |
+| PeriodOfTheDay |Text |1 日の期間スロット。 例: 12-3 AM |
+| Time |Time |1 日の時間。 例: 12:00:01 AM |
 | TimeKey |Text |時刻を表すキー値 |
 
 ### <a name="vault"></a>コンテナー
@@ -180,8 +180,8 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | #Vaults |整数 |コンテナーの数 |
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
 | AzureDataCenter |Text |コンテナーが配置されるデータ センター |
-| EntityState |Text |コンテナー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| StorageReplicationType |Text |コンテナーのストレージ レプリケーションの種類 (例: GeoRedundant) |
+| EntityState |Text |コンテナー オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
+| StorageReplicationType |Text |コンテナーのストレージ レプリケーションの種類。 例: GeoRedundant |
 | SubscriptionId |Text |レポートを生成するために選択された顧客のサブスクリプション ID |
 | VaultName |Text |コンテナーの名前 |
 | VaultTags |Text |コンテナーに関連付けられるタグ |

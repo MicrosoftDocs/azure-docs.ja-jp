@@ -1,20 +1,20 @@
 ---
 title: Azure Digital Twins で UDF をデバッグする方法 | Microsoft Docs
 description: Azure Digital Twins で UDF をデバッグする方法に関するガイドライン。
-author: stefanmsft
-manager: deshner
+author: kingdomofends
+manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.author: stegaw
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849327"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876581"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 
@@ -45,7 +45,7 @@ Azure Digital Twins は堅牢なログ記録、監視、分析をサポートし
 
 センサー テレメトリのメッセージが対応するログと一致するように、送信されるイベント データに相関 ID を指定できます。 これを行うには、`x-ms-client-request-id` プロパティを GUID に設定します。
 
-テレメトリを送信した後は、Log Analytics を開き、設定された相関 ID を使用してログに対してクエリを実行します。
+テレメトリを送信した後、Azure Monitor ログ分析を開いて、設定された相関 ID を使用してログのクエリを実行します。
 
 ```Kusto
 AzureDiagnostics

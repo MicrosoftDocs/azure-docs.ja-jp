@@ -3,15 +3,15 @@ title: Azure Cosmos DB でマルチマスターを構成する方法
 description: Azure Cosmos DB 内のアプリケーションでマルチマスターを構成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: a5232101d4e5d13fb4c95268311e06b56fa81e65
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e86cacbd76a70c8b114d65a77ff013d32327a2d0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356222"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093102"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションでマルチマスターを構成する
 

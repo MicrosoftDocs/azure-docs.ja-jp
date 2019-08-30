@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 5b406f9c7f8c16038561853170896d2cd95dc383
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 852530910f7a8c6c815493d0dbcc57f67695d6de
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444847"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066105"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に言語検出コンテナーをデプロイする
 
@@ -62,19 +62,19 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
 
 1. Azure CLI にサインインする
 
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
 
 1. `cogserv-container-rg` という名前のリソース グループを作成して、この手順で作成したすべてのリソースを保持します。
 
-    ```azurecli
+    ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
 1. ご自分の名前とその後に `registry` が続く形式 (`pattyregistry` など) で、独自の Azure Container Registry を作成します。 名前にダッシュや下線の文字を使用しないでください。
 
-    ```azurecli
+    ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
@@ -104,7 +104,7 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
 
 1. コンテナー レジストリにサイン インします。 レジストリにイメージをプッシュする前に、ログインする必要があります。
 
-    ```azurecli
+    ```azurecli-interactive
     az acr login --name pattyregistry
     ```
 
@@ -174,7 +174,7 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
 
 1. サービス プリンシパルを作成します。
 
-    ```azurecli
+    ```azurecli-interactive
     az ad sp create-for-rbac --skip-assignment
     ```
 
@@ -193,7 +193,7 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
 
 1. コンテナー レジストリ ID を取得します。
 
-    ```azurecli
+    ```azurecli-interactive
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
@@ -208,7 +208,7 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
 
 1. コンテナー イメージに格納されているイメージを使用するために、AKS クラスターに適切なアクセス権を付与するには、ロールの割り当てを作成します。 `<appId>` と `<acrId>` を、前の 2 つの手順で収集した値に置き換えます。
 
-    ```azurecli
+    ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
     ```
 
@@ -216,7 +216,7 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
 
 1. Kubernetes クラスターを作成します。 name パラメーターを除き、すべてのパラメーター値は前のセクションと同じです。 作成したユーザーとその目的を示す名前 (`patty-kube` など) を選択します。
 
-    ```azurecli
+    ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
     ```
 
@@ -284,7 +284,7 @@ Azure Kubernetes Service にコンテナーをデプロイするには、コン�
 
 1. Kubernetes クラスターの資格情報を取得します。
 
-    ```azurecli
+    ```azurecli-interactive
     az aks get-credentials --resource-group cogserv-container-rg --name patty-kube
     ```
 
@@ -397,7 +397,7 @@ replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 
 クラスターの作業が終了したら、Azure リソース グループを削除します。
 
-```azure-cli
+```azurecli-interactive
 az group delete --name cogserv-container-rg
 ```
 

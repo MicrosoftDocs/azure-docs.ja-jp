@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 7d40c0604f0947abe8d536eafe87545790476a98
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625546"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879909"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -292,15 +292,21 @@ Azure AD アプリケーション プロキシをサポートするために次�
 
 ### <a name="reporting-and-monitoring"></a>レポートと監視
 
-Azure AD は、監査ログとレポートによって組織のユーザーのプロビジョニング使用状況と操作の正常性に関する追加の分析情報を提供できます。 
+Azure AD は、[監査ログとレポート](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs)によって組織のアプリケーション使用状況と操作の正常性に関する追加の分析情報を提供します。 また、アプリケーション プロキシを使用すると、Azure AD ポータルと Windows イベント ログからのコネクタの監視が非常に簡単になります。
 
 #### <a name="application-audit-logs"></a>アプリケーションの監査ログ
 
-これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 監査ログは Azure portal 内に、およびエクスポート用の Audit API にあります。
+これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs)は Azure portal 内に、およびエクスポート用の [Audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) にあります。 また、[使用状況と分析情報のレポート](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report)もアプリケーションで利用できます。
+
+#### <a name="application-proxy-connector-monitoring"></a>アプリケーション プロキシ コネクタの監視
+
+コネクタとサービスは、高可用性のすべてのタスクに対処します。 Azure AD ポータルの [アプリケーション プロキシ] ページからコネクタの状態を監視できます。 コネクタのメンテナンスの詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance)」を参照してください。
+
+![例:Azure AD アプリケーション プロキシ コネクタ](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows イベント ログおよびパフォーマンス カウンター
 
-コネクタには管理者ログとセッション ログがあります。 管理者ログには主要なイベントとそのエラーが含まれます。 セッション ログには、すべてのトランザクションとその処理の詳細が含まれます。 ログとカウンターは Windows イベント ログにあります。[Azure Monitor でイベント ログ データ ソースを構成するにはこのチュートリアル](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events)に従います。
+コネクタには管理者ログとセッション ログがあります。 管理者ログには主要なイベントとそのエラーが含まれます。 セッション ログには、すべてのトランザクションとその処理の詳細が含まれます。 ログとカウンターは Windows イベント ログにあります。詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#under-the-hood)」を参照してください。 [Azure Monitor でイベント ログのデータ ソースを構成するにはこのチュートリアル](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events)に従ってください。
 
 ### <a name="troubleshooting-guide-and-steps"></a>トラブルシューティングのガイドと手順
 

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI スクリプト - Azure Cosmos DB コンテナー スループットのスケーリング | Microsoft Docs
-description: Azure CLI スクリプト サンプル - Azure Cosmos DB コンテナー スループットのスケーリング
+title: Azure CLI スクリプト - Azure Cosmos コンテナー スループットのスケーリング | Microsoft Docs
+description: Azure CLI スクリプト サンプル - Azure Cosmos コンテナー スループットのスケーリング
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 593fade731fac86e7fcda69bfe223716127de9e1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a7ae4b015ba476ca1ffdb4b4510334490a6f6fee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038451"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616694"
 ---
-# <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Azure CLI での Azure Cosmos DB コンテナー スループットのスケーリング
+# <a name="scale-azure-cosmos-container-throughput-using-the-azure-cli"></a>Azure CLI での Azure Cosmos コンテナー スループットのスケーリング
 
-さまざまな種類の Azure Cosmos DB コンテナーのスループットをスケーリングする例を紹介します。  
+すべての種類の Azure Cosmos コンテナーのスループットをスケーリングする例を紹介します。  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -39,13 +39,13 @@ az group delete --name $resourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB アカウントを作成します。 |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Azure Cosmos DB データベースを作成します。 |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Azure Cosmos DB コンテナーを作成します。 |
-| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Azure Cosmos DB コンテナーを更新します。 |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Azure Cosmos データベースを作成します。 |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Azure Cosmos コンテナーを作成します。 |
+| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Azure Cosmos コンテナーを更新します。 |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順

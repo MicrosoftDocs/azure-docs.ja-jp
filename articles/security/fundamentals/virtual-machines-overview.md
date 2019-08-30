@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 186a0b0d4025f7d8a8888a9a0d2d0bd8832cf2d9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7b33484084b4ada5aeaf89eb90167658ade15ad8
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726490"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899782"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -79,7 +79,7 @@ Azure の Microsoft マルウェア対策を展開して有効にすると、次
 
 詳細情報:
 
-* [WDATP の使用を開始する](/windows/security/threat-protection/windows-defender-atp/get-started)  
+* [WDATP の使用を開始する](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)  
 * [WDATP 機能の概要](/windows/security/threat-protection/windows-defender-atp/overview)  
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール

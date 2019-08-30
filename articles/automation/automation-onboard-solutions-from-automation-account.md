@@ -65,7 +65,7 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 使用している Automation アカウントに移動し、 **[全般]** の **[保存した検索条件]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|EnableAdfsAuthentication     |Category  |エイリアス  |
+|名前     |Category  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |

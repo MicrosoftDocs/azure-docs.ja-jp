@@ -1,27 +1,24 @@
 ---
 title: Azure Blob Storage モジュールをデバイスにデプロイする - Azure IoT Edge | Microsoft Docs
 description: Azure Blob Storage モジュールをご利用の IoT Edge デバイスにデプロイして、そのエッジにデータを格納します。
-author: arduppal
-ms.author: arduppal
-ms.date: 06/19/2019
+author: kgremban
+ms.author: kgremban
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.reviewer: arduppal
+ms.reviewer: kgremban
 manager: mchad
-ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 089c90abb999751db77bbe1d89d1d118ae712b52
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640665"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947076"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
 IoT Edge デバイスにモジュールをデプロイするにはいくつかの方法があり、これらすべてが IoT Edge モジュールの Azure Blob Storage で機能します。 2 つの最も簡単な方法では、Azure portal または Visual Studio Code テンプレートを使用します。
-
-> [!NOTE]
-> IoT Edge の Azure Blob Storage は、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,7 +55,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
    > [!IMPORTANT]
    > Azure IoT Edge は、モジュールを呼び出すときに大文字と小文字を区別し、Storage SDK も既定で小文字になります。 [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) でのモジュールの名前は **AzureBlobStorageonIoTEdge** ですが、名前を小文字に変更すると、IoT Edge モジュールの Azure Blob Storage への接続が中断されないことが保証されます。
 
-1. 既定の **[コンテナーの作成オプション]** の値により、コンテナーで必要なポート バインドが定義されますが、ストレージ アカウント情報と、デバイス上のストレージ ディレクトリのバインドも追加する必要があります。 ポータル内の JSON を以下の JSON で置き換えます。
+1. 既定の **[コンテナーの作成オプション]** の値により、コンテナーで必要なポート バインドが定義されますが、ストレージ アカウント情報と、デバイス上のストレージ マウントも追加する必要があります。 ポータル内の JSON を以下の JSON で置き換えます。
 
    ```json
    {
@@ -68,10 +65,10 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
      ],
      "HostConfig":{
        "Binds":[
-           "<storage directory bind>"
+           "<storage mount>"
        ],
-     "PortBindings":{
-       "11002/tcp":[{"HostPort":"11002"}]
+       "PortBindings":{
+         "11002/tcp":[{"HostPort":"11002"}]
        }
      }
    }
@@ -83,13 +80,18 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
    - `<your storage account key>` を 64 バイトの Base64 キーに置き換えます。 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) などのツールを使ってキーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。
 
-   - コンテナーのオペレーティング システムに応じて `<storage directory bind>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ ディレクトリのバインドは、提供したデバイス上の位置をモジュール内の設定された位置にマップします。
+   - コンテナーのオペレーティング システムに応じて `<storage mount>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ マウントによって、提供したデバイス上の位置がモジュール内の設定された位置にマップされます。
 
-     - Linux コンテナーの場合、形式は *\<ストレージのパス>:/blobroot* です。 例: **/srv/containerdata:/blobroot** または **my-volume:/blobroot**。
-     - Windows コンテナーの場合、形式は *\<ストレージのパス>:C:/BlobRoot* です。 例: **C:/ContainerData:C:/BlobRoot** または **my-volume:C:/blobroot**。 ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
+     - Linux コンテナーの場合、形式は *\<ストレージのパスまたはボリューム>:/blobroot* です。 たとえば、次のように入力します。
+         - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: **my-volume:/blobroot** 
+         - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する: **/srv/containerdata:/blobroot**. [コンテナー ユーザーにディレクトリへのアクセス権を付与する](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)手順に必ず従ってください
+     - Windows コンテナーの場合、形式は *\<ストレージのパスまたはボリューム>:C:/BlobRoot* です。 たとえば、次のように入力します。
+         - [ボリュームマウント](https://docs.docker.com/storage/volumes/)を使用する: **my-volume:C:/blobroot**。 
+         - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する:**C:/ContainerData:C:/BlobRoot**。
+         - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
 
      > [!IMPORTANT]
-     > モジュールの特定の位置を指す、ストレージ ディレクトリのバインド値の後半を変更しないでください。 ストレージ ディレクトリ バインドは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
+     > モジュールの特定の位置を指す、ストレージ マウント値の後半を変更しないでください。 ストレージ マウントは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
 
 1. 次の JSON をコピーして、 **[モジュール ツインの必要なプロパティの設定]** ボックスに貼り付けて、モジュールの [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) プロパティと [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) プロパティを設定します。 各プロパティを適切な値で構成して保存し、デプロイを続行します。
 
@@ -168,7 +170,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 
 1. 新しいソリューション ワークスペースで *deployment.template.json* を開いて、**modules** セクションを見つけます。 次の構成の変更を行います。
 
-   1. このデプロイに必要ないときは、**tempSensor** モジュールを削除します。
+   1. このデプロイに必要ないときは、**SimulatedTemperatureSensor** モジュールを削除します。
 
    1. 次のコードをコピーして、`createOptions` フィールドに貼り付けます。
 
@@ -178,7 +180,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
        "LOCAL_STORAGE_ACCOUNT_KEY=<your storage account key>"
       ],
       "HostConfig":{
-        "Binds": ["<storage directory bind>"],
+        "Binds": ["<storage mount>"],
         "PortBindings":{
           "11002/tcp": [{"HostPort":"11002"}]
         }
@@ -191,13 +193,19 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 
 1. `<your storage account key>` を 64 バイトの Base64 キーに置き換えます。 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) などのツールを使ってキーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。
 
-1. コンテナーのオペレーティング システムに応じて `<storage directory bind>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ ディレクトリのバインドは、提供したデバイス上の位置をモジュール内の設定された位置にマップします。  
+1. コンテナーのオペレーティング システムに応じて `<storage mount>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ マウントによって、提供したデバイス上の位置がモジュール内の設定された位置にマップされます。  
 
-      - Linux コンテナーの場合、形式は *\<ストレージのパス>:/blobroot* です。 例: **/srv/containerdata:/blobroot** または **my-volume:/blobroot**。
-      - Windows コンテナーの場合、形式は *\<ストレージのパス>:C:/BlobRoot* です。 例: **C:/ContainerData:C:/BlobRoot** または **my-volume:C:/blobroot**。  ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
+      
+     - Linux コンテナーの場合、形式は *\<ストレージのパスまたはボリューム>:/blobroot* です。 たとえば、次のように入力します。
+         - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: **my-volume:/blobroot** 
+         - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する: **/srv/containerdata:/blobroot**. [コンテナー ユーザーにディレクトリへのアクセス権を付与する](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)手順に必ず従ってください
+     - Windows コンテナーの場合、形式は *\<ストレージのパスまたはボリューム>:C:/BlobRoot* です。 たとえば、次のように入力します。
+         - [ボリュームマウント](https://docs.docker.com/storage/volumes/)を使用する: **my-volume:C:/blobroot**。 
+         - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する:**C:/ContainerData:C:/BlobRoot**。
+         - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
 
-      > [!IMPORTANT]
-      > モジュールの特定の位置を指す、ストレージ ディレクトリのバインド値の後半を変更しないでください。 ストレージ ディレクトリ バインドは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
+     > [!IMPORTANT]
+     > モジュールの特定の位置を指す、ストレージ マウント値の後半を変更しないでください。 ストレージ マウントは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
 
 1. 次の JSON を *deployment.template.json* ファイルに追加して、モジュールの [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) と [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) を構成します。 各プロパティを適切な値で構成して、ファイルを保存します。
 
@@ -250,7 +258,5 @@ IoT Edge モジュールで Azure Blob Storage の複数のインスタンスを
 
 ## <a name="next-steps"></a>次の手順
 [IoT Edge 上のAzure Blob Storage ](how-to-store-data-blob.md)の詳細を確認する
-
-[IoT Edge 上のAzure Blob Storage ブログ](https://aka.ms/abs-iot-blogpost)の最新の更新とお知らせによって最新情報を得る
 
 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。

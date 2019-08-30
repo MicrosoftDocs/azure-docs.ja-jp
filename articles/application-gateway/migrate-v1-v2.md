@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/18/2019
+ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: 0fd605d7d502970dccd37da1f3f70fdadb1094a1
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: c4bc0ec2bf15a29962909f14f55854c06f0a6561
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550445"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932493"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -84,7 +84,7 @@ Azure Az モジュールがインストールされていて、それらをア�
     -sslCertificates <comma-separated SSLCert objects as above>
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
-    -publicIpResourceName <public IP name string>
+    -publicIpResourceId <public IP name string>
     -validateMigration -enableAutoScale
    ```
 
@@ -183,6 +183,10 @@ Azure PowerShell スクリプトにより、既存の v1 ゲートウェイの�
 ### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Azure Storage にログを送信するように v1 ゲートウェイを構成しました。 スクリプトによって、この構成も v2 用にレプリケートされますか?
 
 いいえ。 スクリプトでは、この構成は v2 用にレプリケートされません。 ログ構成は、移行後の v2 ゲートウェイに個別に追加する必要があります。
+
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>このスクリプトは、Azure KeyVault にアップロードされた証明書をサポートしていますか?
+
+いいえ。 現在、スクリプトは KeyVault の証明書をサポートしていません。 ただし、これは将来のバージョンで検討されています。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>このスクリプトの使用中に問題が発生しました。 どこに問い合わせればよいですか?
   

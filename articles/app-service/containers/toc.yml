@@ -150,7 +150,7 @@
     - name: アプリのスケール
       items:
         - name: サーバー容量のスケールアップ
-          href: ../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+          href: ../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: 複数のインスタンスへのスケールアウト
           href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: 高密度ホスティング
@@ -193,6 +193,8 @@
       href: '../../azure-subscription-service-limits.md#app-service-limits'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Migration Assistant のガイド
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: ベスト プラクティス
       href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: サンプル

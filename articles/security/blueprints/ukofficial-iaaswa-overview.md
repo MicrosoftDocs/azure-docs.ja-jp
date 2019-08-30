@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946544"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899937"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL のための 3 層 IaaS Web アプリケーション
 
@@ -186,7 +186,7 @@ Storage
 
 [Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)。
 
-**Active Directory 統合**: 専用 AD DS のアーキテクチャの代わりに、お客様は [Azure Active Directory](/azure/architecture/reference-architectures/identity.md) 統合または[オンプレミスのフォレストに参加している Azure 内の Active Directory](/azure/architecture/reference-architectures/identity.md) を使用できます。
+**Active Directory 統合**: 専用 AD DS のアーキテクチャの代わりに、お客様は [Azure Active Directory](/azure/architecture/reference-architectures/identity) 統合または[オンプレミスのフォレストに参加している Azure 内の Active Directory](/azure/architecture/reference-architectures/identity) を使用できます。
 
 ### <a name="security"></a>セキュリティ
 
@@ -200,9 +200,9 @@ Storage
 
 **IP 範囲**: アーキテクチャの IP 範囲は推奨範囲です。 お客様自身の環境を検討し、適切な範囲を使用することをお勧めします。
 
-**ハイブリッド接続**: クラウド ベースのワークロードは、Azure VPN Gateway を使用して、IPSEC VPN を介してオンプレミスのデータセンターに接続されます。 お客様は、適切な VPN Gateway を使用して Azure に接続する必要があります。 例 - [VPN Gateway Resource Manager テンプレート](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 ビッグ データが必要な大規模でミッション クリティカルなワークロードを実行しているお客様は、Microsoft クラウド サービスへのプライベート ネットワーク接続のために [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) を使用したハイブリッド ネットワーク アーキテクチャを検討できます。
+**ハイブリッド接続**: クラウド ベースのワークロードは、Azure VPN Gateway を使用して、IPSEC VPN を介してオンプレミスのデータセンターに接続されます。 お客様は、適切な VPN Gateway を使用して Azure に接続する必要があります。 例 - [VPN Gateway Resource Manager テンプレート](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 ビッグ データが必要な大規模でミッション クリティカルなワークロードを実行しているお客様は、Microsoft クラウド サービスへのプライベート ネットワーク接続のために [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) を使用したハイブリッド ネットワーク アーキテクチャを検討できます。
 
-**懸念事項の分離**: この参照アーキテクチャは、VNet を管理操作用とビジネス操作用に分離します。 分離された VNet とサブネットにより、「[Microsoft クラウド サービスとネットワーク セキュリティ](/azure/architecture/vdc/networking-virtual-datacenter.md)」のベスト プラクティスに従ってネットワーク セグメント間に NSG を使用して、トラフィックの受信と送信の制限などのトラフィック管理を実行できます。
+**懸念事項の分離**: この参照アーキテクチャは、VNet を管理操作用とビジネス操作用に分離します。 分離された VNet とサブネットにより、「[Microsoft クラウド サービスとネットワーク セキュリティ](/azure/architecture/vdc/networking-virtual-datacenter)」のベスト プラクティスに従ってネットワーク セグメント間に NSG を使用して、トラフィックの受信と送信の制限などのトラフィック管理を実行できます。
 
 **リソース管理**: VM、VNet、ロード バランサーなどの Azure リソースは、[Azure リソース グループ](../../azure-resource-manager/resource-group-overview.md)にグループ化することで管理されます。 リソース ベースのアクセス制御ロールを各リソース グループに割り当てて、許可されているユーザーのみにアクセスを制限することができます。
 

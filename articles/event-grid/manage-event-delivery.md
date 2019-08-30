@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: a1b49fd3a2a85377a56c92aefd1b0056f91895b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119573"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933374"
 ---
 # <a name="dead-letter-and-retry-policies"></a>配信不能と再試行に関する方針
 
@@ -25,7 +25,9 @@ ms.locfileid: "66119573"
 配信不能の場所を設定するには、エンドポイントに配信できなかったイベントを保持するためストレージ アカウントが必要です。 この例では、既存のストレージ アカウントのリソース ID を取得します。 ここでは、配信不能エンドポイント用にそのストレージ アカウント内のコンテナーを使用するイベント サブスクリプションを作成します。
 
 > [!NOTE]
-> この記事のコマンドを実行する前に、ストレージ アカウントを作成し、ストレージに BLOB コンテナーを作成してください。
+> - この記事のコマンドを実行する前に、ストレージ アカウントを作成し、ストレージに BLOB コンテナーを作成してください。
+> - Event Grid サービスは、このコンテナーに BLOB を作成します。 BLOB の名前には、すべての文字を大文字にした Event Grid サブスクリプションの名前が付けられます。 たとえば、サブスクリプションの名前が My-Blob-Subscription の場合、配信不能 BLOB の名前は、MY-BLOB-SUBSCRIPTION (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.json) になります。 この動作は、Azure サービス間での大文字と小文字の処理の違いから保護するためのものです。
+
 
 ### <a name="azure-cli"></a>Azure CLI
 

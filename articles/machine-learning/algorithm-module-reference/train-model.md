@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 29d0f698456b83c1520a92bc7df47b26540325f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08b551e766632949db350478fa8d3725906c8af8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027645"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128444"
 ---
 # <a name="train-model-module"></a>モデルのトレーニング モジュール
 

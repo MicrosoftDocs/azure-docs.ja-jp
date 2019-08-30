@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/26/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967975"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640873"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。 
@@ -48,15 +48,15 @@ Jeff はクラウド ワークロード所有者で、 Contoso のセキュリ�
 Jeff は、以下のタスクを実行します。
 
 - Security Center によって提供されるセキュリティに関する推奨事項を管理する
-- セキュリティに関する推奨事項を評価し、適用するか無視するか判断する
+- セキュリティに関する推奨事項を評価し、推奨事項を適用するか無視するか判断する
 - セキュリティに関する推奨事項を適用する
 
 ### <a name="remediate-threats-using-recommendations"></a>推奨事項を使用して脅威を修復する
 Jeff は、毎日の監視アクティビティの一環として、Azure にサインインし、Security Center を開きます。 
 
-1. Jeff は、自分のワークロードのサブスクリプションを選択します。
+1. Jeff は、ワークロードのサブスクリプションを選択します。
 
-2. Jeff は、**セキュリティ スコア**を確認し、サブスクリプションがどれほど保護されているか全体像を把握します。彼のスコアは 548 と表示されます。
+2. Jeff は、**セキュリティ スコア**を確認し、サブスクリプションがどれほど保護されているか全体像を把握します。スコアが 548 であることを確認します。
 
 3. Jeff は、最初に処理する推奨事項を決定する必要があります。 それで、セキュリティ スコアをクリックし、[セキュリティ スコアの影響](security-center-secure-score.md)がどれほど改善されるかに注目しながら推奨事項について処理を始めます。
 

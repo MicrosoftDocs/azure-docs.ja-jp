@@ -2,6 +2,8 @@
   items:
     - name: SQL Server VM とは
       href: virtual-machines-windows-sql-server-iaas-overview.md
+    - name: どの SQL オプションを選択すればよいですか?
+      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
     - name: リリース ノート
       href: virtual-machines-windows-sql-server-iaas-release-notes.md
 - name: クイック スタート
@@ -116,8 +118,6 @@
       href: virtual-machines-windows-sql-server-iaas-faq.md
     - name: 価格
       href: virtual-machines-windows-sql-server-pricing-guidance.md
-    - name: PaaS または IaaS
-      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
     - name: SQL Server Data Tools (SSDT)
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
     - name: SQL Server Management Studio (SSMS)

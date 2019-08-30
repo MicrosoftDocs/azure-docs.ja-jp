@@ -6,16 +6,15 @@ author: MarkHeff
 services: search
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 79e99e8311941e46c35c17472ed4833706834940
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 58252bdbad8e7775add3805c28b2da076c07d9aa
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840863"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636063"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C# のチュートリアル: Azure Search のインデックス パイプラインで Cognitive Services APIs を呼び出す
 

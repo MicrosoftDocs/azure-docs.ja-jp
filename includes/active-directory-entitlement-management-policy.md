@@ -5,21 +5,23 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 154d71c9cbc109834a5854b46c3e6584dcefa7eb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678182"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968896"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>ポリシー:ディレクトリ内のユーザーの場合
 
 このアクセス パッケージを要求できるディレクトリ内のユーザーを対象としたポリシーが必要な場合は、以下の手順のようにします。  **ディレクトリ内のユーザー**には、内部ユーザーと、別のアクセス パッケージでのエンタイトルメント管理要求または Azure AD B2B での招待によってそのディレクトリに以前に招待された外部ユーザーの両方が含まれます。 ポリシーを定義するときは、個々のユーザーでも、より一般的なユーザー グループでも指定できます。 たとえば、組織には**すべての従業員**のようなグループが既に存在している場合があります。  アクセスを要求できるユーザーに対するポリシーにそのグループが追加されている場合、そのグループのすべてのメンバーがアクセスを要求できます。
 
 1. **[Users who can request access]\(アクセスを要求できるユーザー\)** セクションで、 **[For users in your directory]\(ディレクトリ内のユーザー\)** を選択します。
+
+    **[For users in your directory]\(ディレクトリ内のユーザー\)** 設定には、ディレクトリに追加されたメンバー ユーザーとゲスト ユーザーの両方が含まれていることに注意してください。 ゲスト ユーザーではなくメンバー ユーザーのみを含める場合は、 **[For users in your directory]\(ディレクトリ内のユーザー\)** を選択し、メンバー ユーザーのグループを選択します。 必要に応じて、メンバー ユーザーの動的なグループを作成できます (user.userType -eq "Member")。 詳細については、「[Azure Active Directory の動的グループ メンバーシップ ルール](../articles/active-directory/users-groups-roles/groups-dynamic-membership.md)」を参照してください。
 
 1. **[ユーザーとグループの選択]** セクションで、 **[ユーザーとグループの追加]** をクリックします。
 
@@ -33,7 +35,7 @@ ms.locfileid: "68678182"
 
 ### <a name="policy-for-users-not-in-your-directory"></a>ポリシー:ディレクトリ内にいないユーザーの場合
 
-このアクセス パッケージを要求できる、ディレクトリ内にいないユーザーを対象としたポリシーが必要な場合は、以下の手順を実行します。 **ディレクトリ内にいないユーザー**とは、別の Azure AD ディレクトリ内のユーザーのことであり、ディレクトリにまだ招待されていない可能性があります。  ディレクトリは、 **[Organizational relationships collaboration restrictions]\(組織関係コラボレーション制限\)** 設定で許可するように構成する必要があります。
+このアクセス パッケージを要求できる、ディレクトリ内にいないユーザーを対象としたポリシーが必要な場合は、以下の手順を実行します。 **ディレクトリ内にいないユーザー**とは、別の Azure AD ディレクトリ内のユーザーのことであり、ディレクトリにまだ招待されていない可能性があります。 現時点では、Azure AD を使用している組織のユーザーのみを追加できます。 ディレクトリは、 **[Organizational relationships collaboration restrictions]\(組織関係コラボレーション制限\)** 設定で許可するように構成する必要があります。
 
 > [!NOTE]
 > 要求が承認されるか自動承認される、ディレクトリ内にまだ存在しないユーザーに対しては、ゲスト外部ユーザー アカウントが作成されます。 ゲストは招待されますが、招待メールは届きません。 その代わりに、自分のアクセス パッケージの割り当てが配信されるときに電子メールを受け取ります。 既定では、最後の割り当てが期限切れになったかキャンセルされたことが原因でそのゲスト ユーザーにアクセス パッケージの割り当てがなくなった場合、そのゲスト ユーザー アカウントはサインインがブロックされ、その後で削除されます。 アクセス パッケージの割り当てがない場合でも、ゲスト ユーザーがディレクトリ内に無期限に残るようにしたい場合は、エンタイトルメント管理構成の設定を変更できます。

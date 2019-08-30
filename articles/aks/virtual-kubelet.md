@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
 ms.openlocfilehash: f18992be353d2d6cc739412d98ccd97d5e78d4c7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67613856"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
@@ -22,7 +22,7 @@ Azure Container Instances (ACI) には Azure 内でコンテナーを実行す�
 Azure Container Instances に Virtual Kubelet プロバイダーを使用する場合、標準の Kubernetes ノードであるかのように、コンテナー インスタンス上で Linux と Windows 両方のコンテナーをスケジュールすることができます。 この構成では、Kubernetes の機能と、コンテナー インスタンスの管理値とコスト上の利点の両方を活用できます。
 
 > [!NOTE]
-> AKS では、ACI でコンテナーをスケジュールするための "*仮想ノード*" と呼ばれる組み込みサポートを利用できるようになりました。 これらの仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 Windows コンテナー インスタンスをスケジュールする必要がある場合は、引き続き Virtual Kubelet を使用できます。 それ以外の場合は、この記事に記載されている手動の Virtual Kubelet の手順ではなく、仮想ノードを使用する必要があります。 仮想ノードを使い始めるには、[Azure CLI][virtual-nodes-cli] または or [Azure portal][virtual-nodes-portal] を使用します。
+> AKS では、ACI でコンテナーをスケジュールするための "*仮想ノード*" と呼ばれる組み込みサポートを利用できるようになりました。 これらの仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 Windows コンテナー インスタンスをスケジュールする必要がある場合は、引き続き Virtual Kubelet を使用できます。 それ以外の場合は、この記事に記載されている手動の Virtual Kubelet の手順ではなく、仮想ノードを使用する必要があります。 仮想ノードを使い始めるには、[Azure CLI][virtual-nodes-cli] または [Azure portal][virtual-nodes-portal] を使用します。
 >
 > Virtual Kubelet は実験的なオープン ソース プロジェクトなので、その点を考慮して使用する必要があります。 Virtual Kubelet に関する投稿、問題の提起、詳細情報については、[Virtual Kubelet GitHub プロジェクト][vk-github]に関するページを参照してください。
 
@@ -139,7 +139,7 @@ virtual-kubelet-virtual-kubelet-windows-eastus   Ready    agent   37s   v1.13.1-
 
 ## <a name="run-linux-container"></a>Linux コンテナーを実行する
 
-`virtual-kubelet-linux.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と and [toleration][toleration] が使用されている点に気を付けてください。
+`virtual-kubelet-linux.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に注意してください。
 
 ```yaml
 apiVersion: apps/v1
@@ -189,7 +189,7 @@ aci-helloworld-7b9ffbf946-rx87g   1/1     Running   0          22s     52.224.14
 
 ## <a name="run-windows-container"></a>Windows コンテナーを実行する
 
-`virtual-kubelet-windows.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と and [toleration][toleration] が使用されている点に気を付けてください。
+`virtual-kubelet-windows.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に注意してください。
 
 ```yaml
 apiVersion: apps/v1
@@ -254,7 +254,7 @@ az aks remove-connector \
 
 ## <a name="next-steps"></a>次の手順
 
-Virtual Kubelet で考えられる問題については、[既知の問題と回避策][vk-troubleshooting]. To report problems with the Virtual Kubelet, [open a GitHub issue][vk-issues]に関する記事を参照してください。
+Virtual Kubelet で考えられる問題については、[既知の問題と回避策][vk-troubleshooting]に関する記事を参照してください。 Virtual Kubelet の問題をレポートするには、[GitHub の問題を開きます][vk-issues]。
 
 [Virtual Kubelet GitHub プロジェクト][vk-github]のページで Virtual Kubelet の詳細について参照してください。
 

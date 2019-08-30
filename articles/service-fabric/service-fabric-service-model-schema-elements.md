@@ -2295,11 +2295,11 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -2328,11 +2328,11 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -2931,11 +2931,11 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -3046,11 +3046,11 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 #### <a name="generatedid"></a>GeneratedId
@@ -3346,12 +3346,12 @@ ETW イベントのファイル格納先について説明します。 オンプ
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 ローカル グループ アカウントの名前。 名前の前にアプリケーション ID が付けられます。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -5128,12 +5128,12 @@ Microsoft Azure Service Fabric ノードについて説明します。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 NodeType の名前
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -5429,12 +5429,12 @@ NodeType の名前
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 "[Name]" としてマニフェストで使用される、パラメーターの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 #### <a name="defaultvalue"></a>DefaultValue
@@ -5575,11 +5575,11 @@ NodeType の名前
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -5775,12 +5775,12 @@ true の場合、このパラメーターの値は暗号化されます。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 パーティションの名前
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 
@@ -5823,11 +5823,11 @@ true の場合、このパラメーターの値は暗号化されます。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -6090,11 +6090,11 @@ true の場合、このパラメーターの値は暗号化されます。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -6604,12 +6604,12 @@ true の場合、このパラメーターの値は暗号化されます。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 オーバーライドする Settings.xml ファイルのセクションの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -6670,11 +6670,11 @@ true の場合、このパラメーターの値は暗号化されます。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -6839,12 +6839,12 @@ true の場合、このパラメーターの値は暗号化されます。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 完全修飾のアプリケーションの名前 URI を形成するために使用される、サービス名。 サービスの完全修飾の名前 URI は、fabric:/ApplicationName/ServiceName となります。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -7103,12 +7103,12 @@ NonAlignedAffinity では、異なるサービスのレプリカまたはイン�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 このアプリケーションの名前 URI に対する、このサービスの相対名。 サービスの完全修飾名は、アプリケーションの名前 URI とこの名前を組み合わせたものです。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -7424,11 +7424,11 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 
@@ -8310,12 +8310,12 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 システム グループの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -8344,11 +8344,11 @@ InvalidDomain では、特定の障害ドメインがこのワークロードに
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -8625,12 +8625,12 @@ Int64 キーに基づく統一されたパーティション構成について�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 ユーザー アカウントの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 

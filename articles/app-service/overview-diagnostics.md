@@ -10,17 +10,16 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: f2f798be85e9c3aeb8d4b54cba89d8be059427e0
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147333"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066850"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要
 
@@ -97,18 +96,22 @@ Application Insights の例外と依存関係を表示するには、 **[Web App
 
 ![プロアクティブ CPU 監視](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
-### <a name="proactive-auto-healing"></a>プロアクティブ自動復旧
+### <a name="auto-healing-and-proactive-auto-healing"></a>自動復旧とプロアクティブ自動復旧
 
-プロアクティブ CPU 監視と同様に、プロアクティブ自動復旧では、アプリの予期しない動作を緩和するための簡単かつ事前対応型の手法を提供しています。 要求数、低速の要求、メモリ制限、および HTTP ステータス コードに基づいて独自のルールを設定し、軽減のアクションをトリガーできます。 このツールは、問題の実質的な原因が検出されるまで、予期しない動作を一時的に軽減するために使用できます。 プロアクティブ自動復旧について詳しくは、「[Announcing the new auto healing experience in app service diagnostics (アプリ サービス診断における新しい自動復旧エクスペリエンスの告知)](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)」をご覧ください。
+自動復旧は、アプリで予期しない動作が発生した場合に実行できる軽減策です。 要求数、低速の要求、メモリ制限、および HTTP ステータス コードに基づいて独自のルールを設定し、軽減のアクションをトリガーできます。 ツールを使用して、根本的な原因が見つかるまで、予期しない動作を一時的に軽減します。
 
-![プロアクティブ自動復旧](./media/app-service-diagnostics/proactive-auto-healing-10.png)
+![自動復旧](./media/app-service-diagnostics/auto-healing-10.png)
 
-## <a name="change-analysis-only-for-windows-app"></a>変更分析 (Windows アプリのみ)
+プロアクティブ CPU 監視と同様に、プロアクティブ自動復旧は、アプリの予期しない動作を緩和するためのターンキー ソリューションです。 アプリが復旧不可能な状態であると App Service で判断されると、プロアクティブ自動復旧によってアプリが再起動されます。 詳しくは、「[アプリ サービス診断における新しい自動復旧エクスペリエンスの告知](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)」をご覧ください。
 
-ペースの速い開発環境では、アプリに対して行われたすべての変更を継続的に追跡して、異常な動作の原因となった変更を単独で特定することは難しい場合があります。 変更分析を利用すると、アプリに対して行われた変更を絞り込み、トラブルシューティングのエクスペリエンスを円滑に進めることができます。 変更分析は **[Application Changes]\(アプリケーションの変更\)** にあり、 **[アプリケーションのクラッシュ]** などの診断レポートにも埋め込まれるため、他のメトリックと同時に使用できます。
+## <a name="navigator-and-change-analysis-only-for-windows-app"></a>ナビゲーターと変更分析 (Windows アプリのみ)
 
-変更分析は、機能を使用する前に、有効にする必要があります。 変更分析について詳しくは、「[Announcing the new change analysis experience in App Service Diagnostics (アプリ サービス診断における新しい変更分析エクスペリエンスの告知)](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)」をご覧ください。
+継続的インテグレーションが使用されていて、アプリに多くの依存関係がある大規模なチームでは、異常な動作を引き起こす特定の変更を明らかにするのが困難な場合があります。 ナビゲーターを使用すると、同じサブスクリプション内にあるアプリとすべてのリソースの依存関係マップが自動的にレンダリングされるため、アプリのトポロジを可視化するのに役立ちます。 ナビゲーターを使用すると、アプリとその依存関係によって行われた変更の統合リストを表示し、異常な動作を引き起こす変更を絞り込むことができます。 ホームページの **[ナビゲーター]** タイルからアクセスでき、初めて使用する前に有効にする必要があります。 詳しくは、「[ナビゲーターでアプリの依存関係を可視化する](https://azure.github.io/AppService/2019/08/06/Bring-visibility-to-your-app-and-its-dependencies-with-Navigator.html)」をご覧ください。
 
-![変更分析の既定のページ](./media/app-service-diagnostics/change-analysis-default-page-11.png)
+![ナビゲーターの既定ページ](./media/app-service-diagnostics/navigator-default-page-11.png)
 
 ![差分ビュー](./media/app-service-diagnostics/diff-view-12.png)
+
+アプリの変更の変更分析には、 **[Availability and Performance]\(可用性とパフォーマンス\)** のタイル ショートカット **[Application Changes]\(アプリケーションの変更\)** および **[Application Crashes]\(アプリケーションのクラッシュ\)** を通じてアクセスできるので、他のメトリックと同時に使用できます。 機能を使用する前に、最初に有効にする必要があります。 詳しくは、「[App Service 診断での新しい変更分析エクスペリエンスの告知](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)」をご覧ください。
+
+質問またはフィードバックは、[UserVoice](https://feedback.azure.com/forums/169385-web-apps) でタイトルに "[Diag]" を付けて投稿してください。

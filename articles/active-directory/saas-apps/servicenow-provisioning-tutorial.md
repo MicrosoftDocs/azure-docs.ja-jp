@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60869846"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967180"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>チュートリアル:ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる
 
@@ -44,8 +44,7 @@ ServiceNow と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
-
+- Azure AD の評価環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
 
 ## <a name="assigning-users-to-servicenow"></a>ServiceNow へのユーザーの割り当て
 
@@ -57,6 +56,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 > [!IMPORTANT]
 >*   単一の Azure AD ユーザーを ServiceNow に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 >*   ServiceNow にユーザーを割り当てるときに、有効なユーザー ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
+>*   Azure AD でロールを作成して構成する方法の詳細については、こちらの[リンク](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)を参照してください。
 
 ## <a name="enable-automated-user-provisioning"></a>自動化されたユーザー プロビジョニングを有効にする
 

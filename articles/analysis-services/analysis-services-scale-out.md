@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8297a2b1e78da6685b3129071612dc4457990bc1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696397"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736748"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -143,9 +143,9 @@ SSMS、SSDT、および PowerShell、Azure 関数アプリ、AMO の接続文字
 
 ![サーバー名](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up--down-vs-scale-out"></a>スケールアップ/スケールダウンとスケールアウト
+## <a name="scale-up-scale-down-vs-scale-out"></a>スケールアップ、スケールダウン、およびスケールアウト
 
-複数のレプリカを持つサーバーではサーバーの価格レベルを変更できます。 同じ価格レベルがすべてのレプリカに適用されます。 スケールアップとスケールダウンの操作では、まずすべてのレプリカが一度に停止されてから、新しい価格レベルですべてのレプリカが起動されます。
+複数のレプリカを持つサーバーの価格レベルを変更できます。 同じ価格レベルがすべてのレプリカに適用されます。 スケーリング操作では、まずすべてのレプリカが一度に停止された後、すべてのレプリカが新しい価格レベルで起動されます。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

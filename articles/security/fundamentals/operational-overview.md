@@ -8,22 +8,23 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 1940cd3481fbc6ff136e25a2f06fa7152c721c26
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611510"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899817"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
-[Azure で運用可能なセキュリティ](/azure/security/azure-operational-security)とは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 これは、Microsoft 独自のさまざまな機能を通じて得られた知識を統合化したフレームワークです。 これらの機能には、Microsoft Security Development Lifecycle (SDL)、Microsoft Security Response Center プログラム、およびサイバーセキュリティ上の脅威に関する高度なノウハウが含まれています。
+[Azure で運用可能なセキュリティ](/azure/security/fundamentals/operational-security)とは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 これは、Microsoft 独自のさまざまな機能を通じて得られた知識を統合化したフレームワークです。 これらの機能には、Microsoft Security Development Lifecycle (SDL)、Microsoft Security Response Center プログラム、およびサイバーセキュリティ上の脅威に関する高度なノウハウが含まれています。
 
 ## <a name="azure-management-services"></a>Azure 管理サービス
 
@@ -86,7 +87,7 @@ Security Center では、仮想マシン (VM) のセキュリティ設定を可�
 - ディスク暗号化の検証。
 - ネットワークベースの攻撃。
 
-Security Center では、[ロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/role-assignments-portal) が使用されます。 この RBAC により、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)が提供されます。
+Security Center では、[ロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/role-assignments-portal) が使用されます。 この RBAC により、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
 
 Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
 

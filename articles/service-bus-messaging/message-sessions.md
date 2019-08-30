@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2c206d42e220534225cfef0415a65c1f9494f761
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67f3fd8f3166abac987e8fefbbf4a020f165c8bf
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569797"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951869"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
@@ -76,6 +76,16 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 キューまたはサブスクリプションに存在するすべてのセッションは、Java API の **SessionBrowser** メソッドを使用して、.NET クライアントでは [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) および [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) の [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) を使って列挙できます。
 
 キューに保持されたセッション状態またはサブスクリプション数は、そのエンティティのストレージ クォータがいっぱいになるまで計算されます。 このため、セッションで、アプリケーションが終了したら、外部管理コストを回避するために、アプリケーションで保持された状態をクリーンアップすることをを推奨します。
+
+## <a name="impact-of-delivery-count"></a>配信数の影響
+
+メッセージごとの配信数の定義は、セッションのコンテキストと、セッションがない場合とで若干異なります。 配信数が増える場合についてまとめた表を次に示します。
+
+| シナリオ | メッセージの配信数が増える |
+|----------|---------------------------------------------|
+| セッションは受け入れられますが、(タイムアウトによって) セッション ロックの有効期限が切れています | はい |
+| セッションは受け入れられ、セッション内のメッセージは (ロックされている場合でも) 完了しておらず、セッションは閉じられています | いいえ |
+| セッションは受け入れられ、メッセージが完了した後、セッションは明示的に閉じられています | N/A (これは標準のフローです。 この場合、メッセージはセッションから削除されます) |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,11 +1,19 @@
 - name: ユーザー ヘルプのドキュメント
-  href: index.md
+  href: index.yml
 - name: 2 段階認証のヘルプ
   items:
     - name: 概要
       href: user-help-two-step-verification-overview.md
-    - name: アカウントの設定
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: 2 要素認証方法の設定
+      items:
+        - name: 概要
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: 認証アプリの設定
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: モバイル デバイスの設定
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: 会社電話の設定
+          href: multi-factor-authentication-setup-office-phone.md
     - name: 設定の管理
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: 問い合わせ

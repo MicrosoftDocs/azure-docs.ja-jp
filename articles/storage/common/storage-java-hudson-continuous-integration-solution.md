@@ -6,15 +6,15 @@ author: seguler
 ms.service: storage
 ms.devlang: Java
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 54e91d4df1109b9ece1150f8b44665789e4dfce1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 10bfc3ce4666ee1653110099a3c8d22a58d80f35
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875881"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985295"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -73,11 +73,11 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 2. **[Manage Hudson]** ページで **[Configure System]** をクリックします。
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
    
-    a. [Azure Portal](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
+    a. [Azure portal](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
    
-    b. 同様に、[Azure Portal](https://portal.azure.com) で取得したストレージ アカウント キーを入力します。
+    b. 同様に、[Azure portal](https://portal.azure.com) で取得したストレージ アカウント キーを入力します。
    
-    c. パブリック Azure クラウドを使用している場合、 **[Blob Service Endpoint URL]** には既定値を使用します。 これとは異なる Azure クラウドを使用している場合には、[Azure Portal](https://portal.azure.com) でストレージ アカウント用に指定されたエンドポイントを使用します。
+    c. グローバル Azure クラウドを使用している場合は、 **[Blob Service Endpoint URL]\(BLOB service エンドポイント URL\)** の既定値を使用します。 これとは異なる Azure クラウドを使用している場合には、[Azure portal](https://portal.azure.com) でストレージ アカウント用に指定されたエンドポイントを使用します。
    
     d. **[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。
    
@@ -108,7 +108,7 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
     **ヒント**
    
     **[Execute Windows batch command]** にスクリプトを入力した **[Command]** セクションの下には、Hudson が認識できる環境変数へのリンクがあります。 環境変数の名前および説明を確認するには、リンクをクリックします。 **BUILD_URL** など、特殊文字が含まれる環境変数は、コンテナー名および共通仮想パスに使用できません。
-8. この例では **[Make new container public by default]** をクリックします。 (プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。 ただし、この点についてはこの記事では取り扱いません。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) の使用](../storage-dotnet-shared-access-signature-part-1.md)」を参照してください。)
+8. この例では **[Make new container public by default]** をクリックします。 (プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。 ただし、この点についてはこの記事では取り扱いません。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」を参照してください。)
 9. [省略可能] ビルド アーティファクトをアップロードする前にコンテナーの内容をクリアする場合、 **[Clean container before uploading]** をクリックします (コンテナーの内容をクリアしない場合は、チェック ボックスをオフにします)。
 10. **[List of Artifacts to upload]\(アップロードするアーティファクトのリスト\)** では、「**text/*.txt**」と入力します。
 11. **[Common virtual path for uploaded artifacts]** では、「 **${BUILD\_ID}/${BUILD\_NUMBER}** 」と入力します。
@@ -126,7 +126,7 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
     
     e. **myjob** という名前のコンテナーをクリックします。これは、Hudson ジョブを作成したときに割り当てたジョブ名を小文字にしたものです。 Azure Storage では、コンテナー名と BLOB 名は小文字です (大文字と小文字は区別されます)。 **myjob** という名前のコンテナーの BLOB の一覧に、**hello.txt** と **date.txt** の 2 つがあります。 そのどちらかの URL をコピーして、ブラウザーで開きます。 このテキスト ファイルがビルド アーティファクトとしてアップロードされていることがわかります。
 
-アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。 **[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。 たとえば、Hudson ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure Blob Storage にアップロードする場合は、 **[List of Artifacts to upload]** の値に「**build/\*.jar;build/\*.txt**」を使用します。 また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。 たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、 **[List of Artifacts to upload]** の値として **build/\*.jar::binaries;build/\*.txt::notices** を使用します。
+アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。 **[List of Artifacts to upload]\(アップロードするアーティファクトのリスト\)** でセミコロンを区切り記号として使用することで、アーティファクトを Azure Blob Storage にアップロードするビルド後のアクションの 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。 たとえば、Hudson ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure Blob Storage にアップロードする場合は、 **[List of Artifacts to upload]** の値に「**build/\*.jar;build/\*.txt**」を使用します。 また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。 たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、 **[List of Artifacts to upload]** の値として **build/\*.jar::binaries;build/\*.txt::notices** を使用します。
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Azure BLOB ストレージからのダウンロードを実行するビルド手順の作成方法
 次の手順では、Azure BLOB ストレージから項目をダウンロードするビルド手順を構成する方法を示します。 この手順は、Azure BLOB ストレージに保持している JAR ファイルなどの項目をビルドに含める場合に便利です。
@@ -147,11 +147,11 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 * **ストレージ アカウント**: Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 これは、アクセスする BLOB の名前空間の中でも最高レベルに位置するものです。 アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB (テラバイト) 未満である限り無制限です。
 * **コンテナー**:コンテナーは、BLOB のセットをグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。
 * **BLOB**:任意の種類およびサイズのファイルです。 Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。 ほとんどのファイルはブロック BLOB です。 1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。 このチュートリアルでは、 ブロック BLOB を使用します。 もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。 BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
-* **URL 形式**:BLOB は、次の URL 形式を使用してアドレスを指定し、アクセスできます。
+* **URL 形式**:BLOB は、次の URL 形式を使用してアドレス指定できます。
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
-    (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。 これとは異なる Azure クラウドを使用している場合は、[Azure Portal](https://portal.azure.com) 内のエンドポイントを使用して URL エンドポイントを指定します。)
+    (上の形式は、グローバル Azure クラウドに適用されます。 これとは異なる Azure クラウドを使用している場合は、[Azure portal](https://portal.azure.com) 内のエンドポイントを使用して URL エンドポイントを指定します。)
   
     この形式では、`storageaccount` はストレージ アカウントの名前、`container_name` はコンテナーの名前、`blob_name` は BLOB の名前をそれぞれ表します。 コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ **/** で区切ります。 このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
   

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: e76fcd937f85ce3b1c156cf2f3dabb8ca95b9b68
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a6e303c26278eff290a2d4efb6f96e9962cf2f87
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710564"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775361"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -128,7 +128,7 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 
 1.  「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。
 
-1.  「`ch -si 1`」と入力して、CMD インスタンスを実行しているチャネルに切り替えます。
+1.  「`ch -si 1`」と入力するか、`<esc>+<tab>` のショートカット キーを押して、CMD インスタンスを実行しているチャネルに切り替えます。
 
 1.  **Enter** キーを押して、管理アクセス許可を持つサインイン資格情報を入力します。
 

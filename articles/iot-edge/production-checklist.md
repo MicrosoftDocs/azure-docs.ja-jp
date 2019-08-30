@@ -4,17 +4,17 @@ description: Azure IoT Edge ソリューションを開発環境から運用環�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/28/2018
+ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: cb72949c0bb543885498b1b997fa0b4a644c204a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45c802fb42088be1eecd7c711c6693d325252c91
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956972"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985798"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -24,7 +24,7 @@ IoT Edge ソリューションを開発環境から運用環境に移行する�
 
 ## <a name="device-configuration"></a>デバイス構成
 
-IoT Edge デバイスとして、Raspberry Pi から、ノート PC、サーバー上で実行されている仮想マシンまで、任意のものを指定できます。 デバイスには物理的に、または仮想接続を介してアクセスできる場合があります。また、デバイスは長時間分離される場合もあります。 いずれにせよ、適切に実行されるように構成されていることを確認する必要があります。 
+IoT Edge デバイスとして、Raspberry Pi から、ノート PC、サーバー上で実行されている仮想マシンまで、任意のものを指定できます。 デバイスには物理的に、または仮想接続を介してアクセスできる場合があります。また、デバイスは長時間分離される場合もあります。 いずれにせよ、適切に動作するように構成されていることを確認する必要があります。 
 
 * **重要**
     * 運用環境の証明書をインストールする
@@ -52,15 +52,15 @@ IoT Edge デバイスに証明書をインストールし、config.yaml ファ�
 * IoT Edge デーモン
 * CA 証明書
 
-IoT Edge デーモンを更新する手順については、「[Update the IoT Edge runtime](how-to-update-iot-edge.md)」 (IoT Edge ランタイムの更新) を参照してください。 IoT Edge デーモンを更新するための現在の方法では、IoT Edge デバイスへの物理的アクセスまたは SSH アクセスが必要になります。 更新するデバイスの数が多い場合は、スクリプトに更新手順を追加することを検討するか、Ansible などの自動化ツールを使用して大規模な更新を行います。
+詳細については、[IoT Edge ランタイムの更新](how-to-update-iot-edge.md)に関する記事を参照してください。 IoT Edge デーモンを更新するための現在の方法では、IoT Edge デバイスへの物理的アクセスまたは SSH アクセスが必要になります。 更新するデバイスの数が多い場合は、スクリプトに更新手順を追加することを検討するか、Ansible などの自動化ツールを使用します。
 
 ### <a name="use-moby-as-the-container-engine"></a>コンテナー エンジンとして Moby を使用する
 
-デバイスでコンテナー エンジンを使用することは、すべての IoT Edge デバイスの前提条件となります。 運用環境では moby-engine のみがサポートされます。 Docker などのその他のコンテナー エンジンは IoT Edge で動作します。開発用にこれらのエンジンを使用してもかまいません。 Azure IoT Edge で使用する場合は moby-engine を再配布でき、Microsoft ではこのエンジンのサービスを提供しています。 IoT Edge デバイス上でのその他のコンテナー エンジンの使用はサポートされていません。
+コンテナー エンジンは、すべての IoT Edge デバイスの前提条件となります。 運用環境では moby-engine のみがサポートされます。 Docker などのその他のコンテナー エンジンは IoT Edge で動作します。開発用にこれらのエンジンを使用してもかまいません。 Azure IoT Edge で使用する場合は moby-engine を再配布でき、Microsoft ではこのエンジンのサービスを提供しています。
 
 ### <a name="choose-upstream-protocol"></a>アップストリーム プロトコルを選ぶ
 
-IoT Hub へのアップストリーム通信用のプロトコル (そのため、使用されるポート) を、Edge エージェントと Edge ハブの両方に対して構成することができます。 既定のプロトコルは AMQP ですが、ネットワーク設定に応じてそれを変更できます。 
+IoT Hub へのアップストリーム通信用のプロトコル (そのため、使用されるポート) を、IoT Edge エージェントと IoT Edge ハブの両方に対して構成することができます。 既定のプロトコルは AMQP ですが、ネットワーク設定に応じてそれを変更できます。 
 
 2 つのランタイム モジュールの両方に **UpstreamProtocol** 環境変数があります。 変数の有効な値は次のとおりです。 
 
@@ -69,7 +69,7 @@ IoT Hub へのアップストリーム通信用のプロトコル (そのため�
 * MQTTWS
 * AMQPWS
 
-デバイス自体の config.yaml ファイルで、Edge エージェント用に UpstreamProtocol 変数を構成します。 たとえば、IoT Edge デバイスが、AMQP ポートをブロックするプロキシ サーバーの背後にある場合、IoT Hub への初期接続を確立するために WebSocket (AMQPWS) 経由で AMQP を使用するように Edge エージェントを構成する必要があることがあります。 
+デバイス自体の config.yaml ファイルで、IoT Edge エージェント用に UpstreamProtocol 変数を構成します。 たとえば、IoT Edge デバイスが、AMQP ポートをブロックするプロキシ サーバーの背後にある場合、IoT Hub への初期接続を確立するために WebSocket (AMQPWS) 経由で AMQP を使用するように IoT Edge エージェントを構成する必要があることがあります。 
 
 IoT Edge デバイスが接続されたら、必ず、以降のデプロイでも引き続き両方のランタイム モジュールに対して UpstreamProtocol 変数を構成してください。 このプロセスの例については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」を参照してください。
 
@@ -77,32 +77,39 @@ IoT Edge デバイスが接続されたら、必ず、以降のデプロイで�
 
 * **有用**
     * アップストリーム プロトコルに合わせる
-    * Edge ハブで使用されるメモリ領域を減らす
+    * システム モジュール用にホスト ストレージを設定する
+    * IoT Edge ハブで使用されるメモリ領域を減らす
     * デバッグ バージョンのモジュール イメージを使用しない
 
 ### <a name="be-consistent-with-upstream-protocol"></a>アップストリーム プロトコルに合わせる
 
-既定の AMQP とは異なるプロトコルを使用するように IoT Edge デバイス上の Edge エージェントを構成した場合は、以降のすべてのデプロイで同じプロトコルを宣言する必要があります。 たとえば、IoT Edge デバイスが、AMQP ポートをブロックするプロキシ サーバーの背後にある場合、WebSocket (AMQPWS) 経由の AMQP で接続するようにデバイスを構成したと考えられます。 デバイスにモジュールをデプロイするときに、Edge エージェントと Edge ハブに対して同じ APQPWS プロトコルを構成しない場合、既定の AMQP で設定がオーバーライドされ、再度接続することはできません。 
+既定の AMQP とは異なるプロトコルを使用するように IoT Edge デバイス上の IoT Edge エージェントを構成した場合は、今後のすべてのデプロイで同じプロトコルを宣言する必要があります。 たとえば、IoT Edge デバイスが、AMQP ポートをブロックするプロキシ サーバーの背後にある場合、WebSocket (AMQPWS) 経由の AMQP で接続するようにデバイスを構成したと考えられます。 デバイスにモジュールをデプロイするときは、IoT Edge エージェントと IoT Edge ハブに対して同じ APQPWS プロトコルを構成します。そうしない場合、既定の AMQP で設定がオーバーライドされ、再度接続することはできません。 
 
-Edge エージェントおよび Edge ハブ モジュールには、UpstreamProtocol 環境変数のみを構成する必要があります。 追加モジュールではすべて、ランタイム モジュールに設定されている任意のプロトコルが採用されます。 
+IoT Edge エージェントおよび IoT Edge ハブ モジュールには、UpstreamProtocol 環境変数のみを構成する必要があります。 追加モジュールではすべて、ランタイム モジュールに設定されている任意のプロトコルが採用されます。 
 
 このプロセスの例については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」を参照してください。
 
-### <a name="reduce-memory-space-used-by-edge-hub"></a>Edge ハブで使用されるメモリ領域を減らす
+### <a name="set-up-host-storage-for-system-modules"></a>システム モジュール用にホスト ストレージを設定する
 
-使用可能なメモリが限られている制約付きデバイスをデプロイする場合は、より効率的な容量で実行し、より少ないディスク領域を使用するように Edge ハブを構成できます。 しかし、これらの構成では Edge ハブのパフォーマンスが制限されるため、ソリューションに適したバランスを見つけてください。 
+IoT Edge ハブおよびエージェント モジュールでは、ローカル ストレージの使用により状態が維持され、モジュール、デバイス、およびクラウド間のメッセージングが有効となります。 信頼性とパフォーマンスを向上させるために、ホスト ファイルシステム上のストレージを使用するようにシステム モジュールを構成します。
+
+詳細については、「[システム モジュール用のホスト ストレージ](offline-capabilities.md#host-storage-for-system-modules)」を参照してください。
+
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>IoT Edge ハブで使用されるメモリ領域を減らす
+
+使用可能なメモリが限られている制約付きデバイスをデプロイする場合は、より効率的な容量で実行し、より少ないディスク領域を使用するように IoT Edge ハブを構成できます。 しかし、これらの構成では IoT Edge ハブのパフォーマンスが制限されるため、ソリューションに適したバランスを見つけてください。 
 
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>制限付きデバイスのパフォーマンスを最適化しない
 
-Edge ハブは既定でパフォーマンスが最適化されているため、大きなメモリ チャンクの割り当てが試行されます。 この構成によって、Raspberry Pi などのより小さなデバイスで安定性の問題が発生する場合があります。 リソースに制約があるデバイスをデプロイする場合は、Edge ハブで **OptimizeForPerformance** 環境変数を **false** に設定することができます。 
+IoT Edge ハブは既定でパフォーマンスが最適化されているため、大きなメモリ チャンクの割り当てが試行されます。 この構成によって、Raspberry Pi などのより小さなデバイスで安定性の問題が発生する場合があります。 リソースに制約があるデバイスをデプロイする場合は、IoT Edge ハブで **OptimizeForPerformance** 環境変数を **false** に設定することができます。 
 
 詳細については、「[リソースに制約があるデバイスでの安定性の問題](troubleshoot.md#stability-issues-on-resource-constrained-devices)」を参照してください。
 
 #### <a name="disable-unused-protocols"></a>未使用のプロトコルを無効にする
 
-Edge ハブのパフォーマンスを最適化し、そのメモリ使用量を減らす別の方法は、ソリューションで使用していないすべてのプロトコルのプロトコル ヘッドを無効にすることです。 
+IoT Edge ハブのパフォーマンスを最適化し、そのメモリ使用量を減らす別の方法は、ソリューションで使用していないすべてのプロトコルのプロトコル ヘッドを無効にすることです。 
 
-プロトコル ヘッドは、デプロイ マニフェストで Edge ハブ モジュールに対してブール型の環境変数を設定することで構成されます。 変数には以下の 3 つがあります。
+プロトコル ヘッドは、デプロイ マニフェストで IoT Edge ハブ モジュールに対してブール型の環境変数を設定することで構成されます。 変数には以下の 3 つがあります。
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
@@ -112,7 +119,7 @@ Edge ハブのパフォーマンスを最適化し、そのメモリ使用量を
 
 #### <a name="reduce-storage-time-for-messages"></a>メッセージのストレージ時間を短縮する
 
-何らかの理由でメッセージを IoT Hub に配信できない場合、そのメッセージは一時的に Edge ハブ モジュールに格納されます。 配信されなかったメッセージの有効期限が切れるまで Edge ハブで保持する期間を構成することができます。 デバイス上のメモリが心配な場合は、Edge ハブ モジュール ツインで **timeToLiveSecs** の値を下げることができます。 
+何らかの理由でメッセージを IoT Hub に配信できない場合、そのメッセージは一時的に IoT Edge ハブ モジュールに格納されます。 配信されなかったメッセージの有効期限が切れるまで IoT Edge ハブで保持する期間を構成することができます。 デバイス上のメモリが心配な場合は、IoT Edge ハブ モジュール ツインで **timeToLiveSecs** の値を下げることができます。 
 
 timeToLiveSecs パラメーターの既定値は 7,200 秒 (2 時間) です。 
 
@@ -144,16 +151,16 @@ timeToLiveSecs パラメーターの既定値は 7,200 秒 (2 時間) です。
 
 * **有用**
     * アウトバウンド/インバウンド構成を確認する
-    * 接続をホワイトリストに登録する
+    * IoT Edge デバイスからの接続を許可する
     * プロキシを介した通信を構成する
 
 ### <a name="review-outboundinbound-configuration"></a>アウトバウンド/インバウンド構成を確認する
 
 Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウトバウンドに構成されます。 ほとんどの IoT Edge シナリオでは、3 つの接続のみが必要になります。 コンテナー エンジンは、モジュール イメージを保持するコンテナー レジストリと接続する必要があります。 IoT Edge ランタイムは、デバイス構成情報を取得する場合、またメッセージとテレメトリを送信する場合に IoT Hub と接続する必要があります。 また、自動プロビジョニングを使用する場合、IoT Edge デーモンはデバイス プロビジョニング サービスに接続する必要があります。 詳細については、[ファイアウォールとポート構成ルール](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)に関する記述を参照してください。
 
-### <a name="whitelist-connections"></a>接続をホワイトリストに登録する
+### <a name="allow-connections-from-iot-edge-devices"></a>IoT Edge デバイスからの接続を許可する
 
-ネットワーク設定で、IoT Edge デバイスから行われた接続をホワイトリストに明示的に登録する必要がある場合、次の IoT Edge コンポーネントのリストを確認します。
+ネットワーク設定で、IoT Edge デバイスから行われた接続を明示的に許可する必要がある場合、次の IoT Edge コンポーネントのリストを確認します。
 
 * **IoT Edge エージェント**: 場合によっては WebSockets 経由で、IoT Hub への永続的な AMQP/MQTT 接続が開かれます。 
 * **IoT Edge ハブ**: 場合によっては WebSockets 経由で、IoT Hub への 1 つの永続的な AMQP 接続または複数の MQTT 接続が開かれます。 

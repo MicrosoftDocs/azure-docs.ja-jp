@@ -6,18 +6,18 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689040"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954454"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
-この記事では、Azure 仮想マシン上で SAP HANA データベースをバックアップするためのトラブルシューティング情報を提供します。
+この記事では、Azure 仮想マシン上で SAP HANA データベースをバックアップするためのトラブルシューティング情報を提供します。 次のセクションでは、SAP HANA バックアップの一般的なエラーの診断に必要となる重要な概念データについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,6 +56,26 @@ ms.locfileid: "68689040"
 
 > [!NOTE]
 > これらのパラメーターが HOST レベルに存在*しない*ことを確認してください。 ホスト レベルのパラメーターによってこれらのパラメーターがオーバーライドされるため、予期しない動作が発生することがあります。
+
+## <a name="restore-checks"></a>復元の確認
+
+### <a name="single-container-database-sdc-restore"></a>単一コンテナー データベース (SDC) の復元
+
+HANA 用の単一コンテナー データベース (SDC) を別の SDC マシンに復元するときは、入力に注意してください。 データベース名は小文字で指定し、かっこで囲んだ "sdc" を後に付ける必要があります。 HANA インスタンスは大文字で表示されます。
+
+SDC HANA インスタンス "H21" がバックアップされているとします。 バックアップ項目のページに、バックアップ項目名が **"h21(sdc)"** と表示されます。 このデータベースを別のターゲット SDC (たとえば H11) に復元する場合は、次の入力を指定する必要があります。
+
+![SDC 復元の入力](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+
+以下の点に注意してください。
+- 既定では、復元されるデータベース名に、バックアップ項目名 h21 (sdc) が設定されます。
+- ターゲットを H11 として選択しても、復元されるデータベース名は自動的に変更されません。 **h11(sdc) となるように編集する必要があります**。 SDC の場合、復元されるデータベース名は、小文字のターゲット インスタンス ID の後に sdc をかっこで囲んで付けたものです。
+- SDC はデータベースを 1 つしか含むことができないため、復旧ポイント データによる既存のデータベース データのオーバーライドを許可するチェックボックスをオンにすることも必要です。
+- Linux では大文字と小文字が区別されるため、必ず大文字と小文字をそのまま使用してください。
+
+### <a name="multiple-container-database-mdc-restore"></a>複数コンテナー データベース (MDC) の復元
+
+HANA 用の複数コンテナー データベースの場合、標準構成は SYSTEMDB と 1 つ以上のテナント DB です。 SAP HANA インスタンス全体の復元は、SYSTEMDB とテナント DB の両方を復元することを意味します。 最初に SYSTEMDB を復元してから、テナント DB の処理に進みます。 基本的にシステム DB では、選択したターゲットのシステム情報がオーバーライドされます。 ターゲット インスタンス内の BackInt 関連情報もオーバーライドされます。 したがって、システム DB がターゲット インスタンスに復元された後で、事前登録スクリプトを再実行する必要があります。 その後でのみ、後続のテナント DB の復元が成功します。
 
 ## <a name="common-user-errors"></a>一般的なユーザー エラー
 

@@ -7,7 +7,7 @@ metadata:
   description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 5/14/2019
+  ms.date: 8/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na

@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
-description: このクイックスタートでは、RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行します。
+description: このクイック スタートでは、RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 484763adfa154dcdf226b03f1f591d248532ee35
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 295430027afabcfcf793a87ae5859dc9c6675966
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451503"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876311"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>クイック スタート:RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
 
 Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark と Apache Hadoop MapReduce を使用して、分散計算を実行できます。 ML Services では、コンピューティング コンテキストを設定することによって呼び出しの実行方法が制御されます。 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、RevoScaleR の並列化された分散関数を実行できます。 また、RevoScaleR の Hadoop Map Reduce または Apache Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
-このクイックスタートでは、RStudio Server で、分散 R 計算に Spark を使用する方法を示す R スクリプトを実行する方法について説明します。 エッジ ノード上のローカルで計算を実行し、再び HDInsight クラスター内のノードに分散するように計算コンテキストを定義します。
+このクイック スタートでは、RStudio Server で、分散 R 計算に Spark を使用する方法を示す R スクリプトを実行する方法について説明します。 エッジ ノード上のローカルで計算を実行し、再び HDInsight クラスター内のノードに分散するように計算コンテキストを定義します。
 
 ## <a name="prerequisite"></a>前提条件
 
-HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML Services]** を選択してください。
+HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成 ](../hdinsight-hadoop-create-linux-clusters-portal.md) に関するページを参照し、 **[クラスターの種類]** で **[ML Services]** を選択してください。
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server に接続する
 
@@ -105,7 +105,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. **ローカル**のコンピューティング テキストを使用して、データに対してロジスティック回帰を実行します。 RStudio に次のコードを入力します。
+1. **ローカル** のコンピューティング テキストを使用して、データに対してロジスティック回帰を実行します。 RStudio に次のコードを入力します。
 
     ```RStudio
     # Set a local compute context
@@ -172,13 +172,16 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイックスタートを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
+このクイック スタートを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
-クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
+クラスターを削除するには、「[ ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する ](../hdinsight-delete-cluster.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、RStudio Server で、分散 R 計算に Spark を使用する方法を示す R スクリプトを実行する方法について学習しました。  次の記事に進み、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて学習します。
+このクイック スタートでは、RStudio Server で、分散 R 計算に Spark を使用する方法を示す R スクリプトを実行する方法について学習しました。  次の記事に進み、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて学習します。
 
 > [!div class="nextstepaction"]
->[HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション](./r-server-compute-contexts.md)
+>[HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション ](./r-server-compute-contexts.md)
+
+> [!NOTE]
+> このページでは、RStudio ソフトウェアの機能が説明されています。 Microsoft Azure HDInsight は RStudio, Inc. と提携していません。

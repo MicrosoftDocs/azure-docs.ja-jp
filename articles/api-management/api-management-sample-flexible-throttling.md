@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 0e7c6fe10467bb68417172dc95fef874d37fc97b
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f0f89275006498c0ff4883f259d7e76f723b922b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696252"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851333"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management を使用した高度な要求スロットル
 受信要求のスロットルは、Azure API Management の重要な役割の 1 つです。 要求のレートや転送される要求/データの合計を制御できるため、API プロバイダーは API Management を使用して、さまざまな API 成果物階層に対する値の不正使用や作成から API を保護できます。
@@ -29,7 +29,7 @@ ms.locfileid: "68696252"
 
 ## <a name="custom-key-based-throttling"></a>カスタム キー ベースのスロットル
 
-> 注:`rate-limit-by-key` ポリシーは、Azure API Management の従量課金レベルでは使用できません。 
+> 注:`rate-limit-by-key` と `quota-by-key` のポリシーは、Azure API Management の従量課金レベルでは使用できません。 
 
 新しい [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) ポリシーと [quota-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) ポリシーを使用すると、トラフィック制御の柔軟性が向上します。 これらの新しいポリシーでは、トラフィックの使用状況を追跡するために使用されるキーを識別する式を定義できます。 このしくみを理解しやすいように、例を示します。 
 

@@ -3,7 +3,7 @@ title: クライアント アプリケーション (Microsoft Authentication Lib
 description: Microsoft Authentication Library (MSAL) でのパブリック クライアント アプリケーションと機密クライアント アプリケーションについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: rwike77
+author: TylerMSFT
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: ryanwi
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d09436b9a2ac38e7b07a51f01d65769ed19d08e
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 8c854cc34a1ea50f37428cfc18146618d516de7d
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66430834"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532964"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>パブリック クライアント アプリケーションと機密クライアント アプリケーション
 Microsoft Authentication Library (MSAL) には、2 種類のクライアントが定義されています。パブリック クライアントと機密クライアントです。 その 2 種類のクライアントは、認証サーバーを使用してセキュリティを確保した認証を行い、クライアント資格情報の機密性を維持する能力によって区別されます。 これに対し、Azure AD 認証ライブラリ (ADAL) では、"*認証コンテキスト*" (Azure AD への接続) と呼ばれるものが使用されます。

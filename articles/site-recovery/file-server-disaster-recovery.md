@@ -5,15 +5,15 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 51754021f5029a751be90bfc4194ac6347c1e278
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 780db0cc5a99adfd2e7f8cd5be20a191bba009e8
+ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772157"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68708137"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -56,7 +56,7 @@ DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリ�
 
 |環境  |推奨  |考慮すべき点 |
 |---------|---------|---------|
-|ファイル サーバー環境 (DFSR あり/なし)|   [Site Recovery を使用したレプリケーション](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery では、共有ディスク クラスターとネットワーク接続ストレージ (NAS) はサポートされません。 環境でこれらの構成を使用する場合は、他の方法を適宜使用してください。 <br> Site Recovery では SMB 3.0 はサポートされません。 レプリケートされた VM にファイルの変更が反映されるのは、変更がファイルの元の場所で更新された場合だけです。
+|ファイル サーバー環境 (DFSR あり/なし)|   [Site Recovery を使用したレプリケーション](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery では、共有ディスク クラスターとネットワーク接続ストレージ (NAS) はサポートされません。 環境でこれらの構成を使用する場合は、他の方法を適宜使用してください。 <br> Site Recovery では SMB 3.0 はサポートされません。 レプリケートされた VM にファイルの変更が反映されるのは、変更がファイルの元の場所で更新された場合だけです。<br>  Site Recovery では、ほぼ同期で実行されるデータ レプリケーション プロセスが提供されます。そのため、予定外のフェールオーバーが発生した場合、データ損失と USN 不一致問題が発生する可能性があります。
 |ファイル サーバー環境 (DFSR あり)     |  [Azure IaaS 仮想マシンへの DFSR の拡張](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR は、帯域幅が極端に不足している環境でも適切に機能します。 この方法では、Azure VM を常時稼働させておく必要があります。 計画で VM のコストを考慮する必要があります。         |
 |Azure Iaas VM     |     File Sync    |     ディザスター リカバリー シナリオで File Sync を使用する場合は、フェールオーバー時に手動アクションを実行して、クライアント マシンがファイル共有に透過的にアクセスできるようにする必要があります。 File Sync では、クライアント マシンからポート 445 を開いておく必要があります。     |
 
@@ -74,6 +74,8 @@ Site Recovery レプリケーションはアプリケーションに依存しな
 
 > [!IMPORTANT]
 > 以下の 3 つの方法のいずれかを使用する前に、次の依存関係を考慮してください。
+
+
 
 **サイト間接続**: サーバー間の通信を許可するには、オンプレミスのサイトと Azure ネットワークの間の直接接続を確立する必要があります。 ディザスター リカバリー サイトとして使用する Azure 仮想ネットワークへのセキュリティで保護されたサイト間 VPN 接続を使用します。 詳細については、[オンプレミス サイトと Azure 仮想ネットワーク間のサイト間 VPN 接続の確立](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)に関する記事をご覧ください。
 

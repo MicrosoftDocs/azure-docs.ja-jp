@@ -71,7 +71,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
    | フィールド | 値 |
    | ----- | ----- |
-   | EnableAdfsAuthentication | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
+   | 名前 | **EdgeTreeClassifier** など、プロジェクトの名前を指定します。 |
    | 説明 | オプションのプロジェクトの説明。 |
    | リソース グループ | Custom Vision Service Resource を含む Azure リソース グループを 1 つ選択するか、まだ追加していない場合は**新規作成**します。 |
    | プロジェクトの種類 | **分類** |

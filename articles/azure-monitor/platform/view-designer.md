@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33930823fbeb42011d8e2a368d17c9a21070a243
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61342141"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035593"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -45,7 +45,7 @@ Azure portal の Azure Monitor **[概要]** ページにビューが表示され
 | 視覚化パーツ | 1 つまたは複数の[ログ クエリ](../log-query/log-query-overview.md)に基づく Log Analytics ワークスペース内のデータの視覚化を表します。 ほとんどのパーツには、概要レベルの視覚化を提供するヘッダーと、上位の結果を表示する一覧が含まれています。 各パーツの種類では、Log Analytics ワークスペース内のレコードのさまざまな視覚化が提供されます。 パーツの要素を選択すると、ログ クエリが実行されて、詳細なレコードが提供されます。 |
 
 ## <a name="required-permissions"></a>必要なアクセス許可
-ビューの作成または編集には、少なくとも Log Analytics ワークスペースの[共同作成者レベルのアクセス許可](manage-access.md#manage-accounts-and-users)が必要です。 このアクセス許可がないと、[ビュー デザイナー] オプションがメニューに表示されません。
+ビューの作成または編集には、少なくとも Log Analytics ワークスペースの[共同作成者レベルのアクセス許可](manage-access.md#manage-access-using-azure-permissions)が必要です。 このアクセス許可がないと、[ビュー デザイナー] オプションがメニューに表示されません。
 
 
 ## <a name="work-with-an-existing-view"></a>既存のビューの使用

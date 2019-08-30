@@ -5,31 +5,33 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 9e145bc3a6824100409a0f6215152cdf70ec6777
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67501251"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626363"
 ---
-メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
+メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
+
+* Ev3 シリーズは、ハイパー スレッド構成の E5-2673 v4 2.3 GHz (Broadwell) プロセッサを備えることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。  Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
+
+* Eav3 シリーズと Easv3 シリーズでは、最大 256 MB の L3 キャッシュを備えたマルチスレッド構成で AMD の 2.35Ghz EPYC<sup>TM</sup> 7452V プロセッサを利用しており、ほとんどのメモリ最適化されたワークロードを実行するためのオプションが増えています。  Eav3 シリーズと Easv3 シリーズは、Ev3 および Esv3 シリーズと同じメモリおよびディスク構成を備えています。
 
 * Mv2 シリーズは、クラウドの VM で最大の vCPU 数 (最大 208 個の vCPU) と最大のメモリ (最大 5.7 TiB) を提供します。 非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用することができます。
- 
+
 * M シリーズは、多数の vCPU (最大 128 個の vCPU) と大量のメモリ (最大 3.8 TiB) を提供します。 このシリーズも非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用できます。
 
 * Dv2 シリーズ、G シリーズ、および対応する DSv2/GS は、より高速の vCPU やより高パフォーマンスの一時ストレージが必要なアプリケーション、またはメモリ要求がより高いアプリケーションに最適です。 多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 
 * オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。 Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。 これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 2.4 GHz (Haswell) または E5-2673 v4 2.3 GHz (Broadwell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.1 GHz まで実現できます。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
-* Ev3 シリーズは、ハイパー スレッド構成の E5-2673 v4 2.3 GHz (Broadwell) プロセッサを備えることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。  Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
-
 * Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。  これらの仮想マシン サイズは、コンプライアンスや規制上の要件などの要素に関連するワークロードについて、他の顧客からの高いレベルの分離を必要とするワークロードに最適です。  お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)を使用して、これらの分離された仮想マシンのリソースをさらに分割することもできます。  分離された VM オプションについては、下の仮想マシン ファミリーの表をご覧ください。
 
-## <a name="esv3-series"></a>Esv3-series 
+## <a name="esv3-series"></a>Esv3-series
 
 ACU: 160 から 190 <sup>1</sup>
 
@@ -59,6 +61,23 @@ ESv3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Bro
 
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
+## <a name="easv3-series"></a>Easv3 シリーズ
+
+Premium Storage: サポートされています
+
+Premium Storage キャッシュ:サポートされています
+
+Easv3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452V プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Easv3 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
+
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
+|---|---|---|---|
+| Standard_E2as_v3  | 2  | 16  | 32  |
+| Standard_E4as_v3  | 4  | 32  | 64  |
+| Standard_E8as_v3  | 8  | 64  | 128 |
+| Standard_E16as_v3 | 16 | 128 | 256 |
+| Standard_E32as_v3 | 32 | 256 | 512 |
+| Standard_E48as_v3 | 48 | 384 | 768 |
+| Standard_E64as_v3 | 64 | 432 | 864 |
 
 ## <a name="ev3-series"></a>Ev3 シリーズ 
 
@@ -91,6 +110,23 @@ Ev3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broa
 
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
+## <a name="eav3-series"></a>Eav3 シリーズ
+
+Premium Storage: サポートされていません
+
+Premium Storage キャッシュ:サポートされていません
+
+Eav3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452V プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Eav3 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Easv3 シリーズのサイズを使用してください。 Easv3 サイズの料金および課金の計算方法は、Eav3 シリーズと同じです。
+
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
+|---|---|---|---|---|---|
+| Standard_E2a_v3  | 2  | 16  | 50   |
+| Standard_E4a_v3  | 4  | 32  | 100  |
+| Standard_E8a_v3  | 8  | 64  | 200  |
+| Standard_E16a_v3 | 16 | 128 | 400  |
+| Standard_E32a_v3 | 32 | 256 | 800  |
+| Standard_E48a_v3 | 48 | 384 | 1200 |
+| Standard_E64a_v3 | 64 | 432 | 1600 |
 
 ## <a name="mv2-series"></a>Mv2 シリーズ
 

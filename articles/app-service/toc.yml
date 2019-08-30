@@ -67,6 +67,8 @@
       href: overview-hosting-plans.md
     - name: OS 機能
       href: operating-system-functionality.md
+    - name: デプロイのベスト プラクティス
+      href: deploy-best-practices.md
     - name: セキュリティ
       items:
         - name: Recommendations
@@ -168,7 +170,7 @@
     - name: アプリのスケール
       items:
         - name: サーバー容量のスケールアップ
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: PremiumV2 レベルの構成
           href: app-service-configure-premium-tier.md
         - name: 複数のインスタンスへのスケールアウト
@@ -217,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: リソース
   items:
+    - name: App Service ブログ
+      href: 'https://aka.ms/appserviceblog'
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/
     - name: Azure のロードマップ
@@ -227,6 +231,8 @@
       href: '../azure-subscription-service-limits.md#app-service-limits'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Migration Assistant のガイド
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: ベスト プラクティス
       href: app-service-best-practices.md
     - name: サンプル

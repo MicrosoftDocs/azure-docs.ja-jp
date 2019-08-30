@@ -10,16 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0ed042b3b004fd43bc03304c3042c2ac3e1a6482
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706081"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092567"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux および Windows 用の Chef VM 拡張機能
 
@@ -68,7 +67,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 ### <a name="core-property-values"></a>コア プロパティ値
 
-| Name | 値/例 | データ型
+| 名前 | 値/例 | データ型
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
@@ -77,7 +76,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 ### <a name="settings"></a>設定
 
-| Name | 値/例 | データ型 | 必須
+| 名前 | 値/例 | データ型 | 必須
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Y |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
@@ -85,7 +84,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 ### <a name="protected-settings"></a>保護された設定
 
-| Name | 例 | データ型 | 必須
+| 名前 | 例 | データ型 | 必須
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
 

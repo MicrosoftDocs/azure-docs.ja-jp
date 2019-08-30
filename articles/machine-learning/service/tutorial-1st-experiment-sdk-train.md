@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:最初のモデルをトレーニングする。
+title: チュートリアル:最初の ML モデルをトレーニングする
 titleSuffix: Azure Machine Learning service
 description: このチュートリアルでは、Azure Machine Learning service の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934234"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516232"
 ---
-# <a name="tutorial-train-your-first-model"></a>チュートリアル:最初のモデルをトレーニングする
+# <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 前のチュートリアルでは、[ワークスペースを作成し、開発環境を選択](tutorial-1st-experiment-sdk-setup.md)しました。 このチュートリアルでは、Azure Machine Learning service の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、SDK の実用的な知識が得られます。
 
@@ -112,7 +112,7 @@ for alpha in alphas:
 experiment
 ```
 
-<table style="width:100%"><tr><th>EnableAdfsAuthentication</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>ポータルでトレーニング結果を表示する
 

@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: e66a2ffa6578ed0c9eb5eb19659adf9ba253bbeb
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613366"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876887"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 
@@ -71,10 +71,7 @@ Visual Studio を使用して、Azure で Always On が有効な場合に継続�
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>.NET Framework コンソール アプリとしての WebJobs  
 
-Visual Studio で WebJobs 対応の .NET Framework コンソール アプリケーション プロジェクトをデプロイする場合、次の 2 つのタスクが実行されます。
-
-* ランタイム ファイルが Web アプリの適切なフォルダーにコピーされます (継続的な Web ジョブの場合は *App_Data/jobs/continuous*、スケジュールされたまたはオンデマンドの Web ジョブの場合は *App_Data/jobs/triggered*)。
-* 特定の時間に実行するようにスケジュールされる Web ジョブに [Azure Scheduler ジョブ](https://docs.microsoft.com/azure/scheduler/)を設定します (これは継続的な Web ジョブでは必要ありません)。
+Visual Studio で Web ジョブが有効な .NET Framework Console Application プロジェクトがデプロイされるとき、Web アプリの適切なフォルダーにランタイム ファイルがコピーされます (継続的な Web ジョブの場合は *App_Data/jobs/continuous*、スケジュールされたまたはオンデマンドの Web ジョブの場合は *App_Data/jobs/triggered*)。
 
 Web ジョブ対応のプロジェクトでは、次の項目が追加されています。
 
@@ -93,7 +90,7 @@ Web ジョブ対応のプロジェクトでは、次の項目が追加されて�
 
 Visual Studio 2015 を使用している場合は、[Azure SDK for .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/) をインストールします。
 
-Visual Studio 2019 を使用している場合は、[Azure 開発ワークロード](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)をインストールします。
+Visual Studio 2017 を使用している場合は、[Azure 開発ワークロード](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)をインストールします。
 
 ### <a id="convert"></a>既存のコンソール アプリケーション プロジェクトに対する Web ジョブのデプロイを有効にする
 
@@ -231,7 +228,7 @@ WebJobs では *settings.job* ファイルを使用して、Web ジョブが実�
 
 ### <a name="cron-expressions"></a>CRON 式
 
-WebJobs では、Azure Functions でのタイマー トリガーと同じ CRON 式がスケジュール設定で使用されます。 CRON サポートの詳細については、[タイマー トリガーのリファレンス記事](../azure-functions/functions-bindings-timer.md#cron-expressions)を参照してください。
+WebJobs では、Azure Functions でのタイマー トリガーと同じ CRON 式がスケジュール設定で使用されます。 CRON サポートの詳細については、[タイマー トリガーのリファレンス記事](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)を参照してください。
 
 ### <a name="settingjob-reference"></a>setting.job 参照
 
@@ -241,7 +238,7 @@ WebJobs では、次の設定がサポートされています。
 | ----------- | --------- | --------------- |
 | `is_in_place` | All | 最初に一時フォルダーにコピーすることなく、特定の時点でジョブを実行できます。 詳細については、「[WebJobs working directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory)」 (WebJobs 作業ディレクトリ) を参照してください。 |
 | `is_singleton` | 継続的 | WebJobs をスケールアウトした時にのみ、単一のインスタンスに対して実行します。詳細については、「[Set a continuous job as singleton](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)」 (シングルトンとしての継続的なジョブの設定) を参照してください。 |
-| `schedule` | トリガー | CRON ベースのスケジュールに従って、Web ジョブを実行します。 詳細については、[タイマー トリガーのリファレンス記事](../azure-functions/functions-bindings-timer.md#cron-expressions)を参照してください。 |
+| `schedule` | トリガー | CRON ベースのスケジュールに従って、Web ジョブを実行します。 詳細については、[タイマー トリガーのリファレンス記事](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)を参照してください。 |
 | `stopping_wait_time`| All | シャットダウン動作の制御を許可します。 詳細については、「[Graceful shutdown](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown)」 (正常なシャットダウン) を参照してください。 |
 
 ## <a name="next-steps"></a>次の手順

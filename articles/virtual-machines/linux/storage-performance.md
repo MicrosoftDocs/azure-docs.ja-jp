@@ -5,26 +5,29 @@ services: virtual-machines-linux
 author: laurenhughes
 manager: gwallace
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 26c474419a096741f544eb21cff3837afd8a60dd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ea64a4274eda947aebf0f693657c17a120bec560
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708676"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081801"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する
 
 Lsv2 シリーズの仮想マシンは、幅広いアプリケーションや業界において、ローカル ストレージに高い I/O とスループットを必要とするさまざまなワークロードをサポートしています。  Lsv2 シリーズは、Cassandra、MongoDB、Cloudera、Redis などのビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、大規模トランザクション データベースに最適です。
 
-Lsv2 シリーズの仮想マシン (VM) の設計は、AMD EPYC™ 7551 プロセッサを最大限活用し、プロセッサ、メモリ、NVMe デバイス、VM の間で最善のパフォーマンスを実現できるようになっています。 Lsv2 シリーズの VM は、ハードウェアのパフォーマンス最大化だけでなく、Linux オペレーティング システムでハードウェアとソフトウェアを使ってパフォーマンスを改善したいというニーズにも対応できる設計になっています。
+Lsv2 シリーズの仮想マシン (VM) の設計は、AMD EPYC™ 7551 プロセッサを最大限活用し、プロセッサ、メモリ、NVMe デバイス、VM の間で最善のパフォーマンスを実現できるようになっています。 Linux のパートナーと協力することで、Lsv2 シリーズのパフォーマンス向けに最適化されたいくかつのビルドを Azure Marketplace で入手できます。現在、以下のものがあります。
 
-ソフトウェアとハードウェアのチューニングを経て、2018 年 12 月初旬には Azure Marketplace に [Canonical の Ubuntu 18.04 および 16.04](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer?tab=Overview) の最適化済みバージョンをリリースしました。これは、Lsv2 シリーズ VM 内の NVMe デバイスに最大のパフォーマンスを実現するものです。
+- Ubuntu 18.04
+- Ubuntu 16.04
+- RHEL 8.0
+- Debian 9
+- Debian 10
 
 この記事では、ワークロードとアプリケーションで VM の設計に応じた最大限のパフォーマンスを実現するためのヒントと推奨事項を紹介します。 このページに掲載した情報は、最適化済みの Lsv2 イメージが Azure Marketplace に追加されるのに応じて随時更新していく予定です。
 

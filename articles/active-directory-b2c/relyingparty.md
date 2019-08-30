@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512850"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716692"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -54,7 +54,7 @@ ms.locfileid: "66512850"
     </UserJourneyBehaviors>
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
-      <Description>The policy profile</Description> 
+      <Description>The policy profile</Description>
       <Protocol Name="OpenIdConnect" />
       <Metadata>collection of key/value pairs of data</Metadata>
       <OutputClaims>
@@ -133,18 +133,18 @@ ms.locfileid: "66512850"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| TelemetryEngine | はい | 値は `ApplicationInsights` である必要があります。 | 
+| TelemetryEngine | はい | 値は `ApplicationInsights` である必要があります。 |
 | InstrumentationKey | はい | Application Insights 要素のインストルメンテーション キーを含む文字列。 |
 | DeveloperMode | はい | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は、開発に適していますが、大量に制約されています。詳細なアクティビティ ログは、カスタム ポリシーの開発のみを支援するように設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
-| ClientEnabled | はい | 指定できる値: `true` または `false`。 `true` とした場合、ページ ビューとクライアント側エラーを追跡するためのクライアント側スクリプトを Application Insights に送信します。 | 
-| ServerEnabled | はい | 指定できる値: `true` または `false`。 `true` では、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。 | 
-| TelemetryVersion | はい | 値は `1.0.0` である必要があります。 | 
+| ClientEnabled | はい | 指定できる値: `true` または `false`。 `true` とした場合、ページ ビューとクライアント側エラーを追跡するためのクライアント側スクリプトを Application Insights に送信します。 |
+| ServerEnabled | はい | 指定できる値: `true` または `false`。 `true` では、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。 |
+| TelemetryVersion | はい | 値は `1.0.0` である必要があります。 |
 
 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」をご覧ください。
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
-Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列でパラメーターを送信できます。 パラメーターを HTML エンドポイントに渡すことで、ページのコンテンツを動的に変更することができます。 たとえば、Web またはモバイル アプリケーションから渡すパラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 Azure AD B2C では、aspx ファイルなど、動的な HTML ファイルにクエリ文字列パラメーターを渡します。 
+Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列でパラメーターを送信できます。 パラメーターを HTML エンドポイントに渡すことで、ページのコンテンツを動的に変更することができます。 たとえば、Web またはモバイル アプリケーションから渡すパラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 Azure AD B2C では、aspx ファイルなど、動的な HTML ファイルにクエリ文字列パラメーターを渡します。
 
 次の例は、`hawaii`クエリ文字列 のある `campaignId` という名前のパラメーターを渡します。
 
@@ -169,7 +169,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 **TechnicalProfile** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
-| --------- | -------- | ----------- | 
+| --------- | -------- | ----------- |
 | Id | はい | 値は `PolicyProfile` である必要があります。 |
 
 **TechnicalProfile** には、次の属性が含まれています。
@@ -217,7 +217,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | --------- | -------- | ----------- |
 | ClaimType | はい | 出力要求の **PartnerClaimType** への参照。 証明書利用者ポリシー **OutputClaims**コレクションに出力要求を定義する必要があります。 |
 
-次の例では、OpenId Connect の証明書利用者を定義する方法を示します。 サブジェクト名情報は、`objectId` として構成されます。
+次の例では、OpenID Connect の証明書利用者を定義する方法を示します。 サブジェクト名情報は、`objectId` として構成されます。
 
 ```XML
 <RelyingParty>

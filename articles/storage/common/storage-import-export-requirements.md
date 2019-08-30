@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 448d416ce4915aeae048639f6021197ed8c1d334
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147949"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967871"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -24,14 +24,14 @@ ms.locfileid: "67147949"
 WAImportExport ツールを使用してハード ドライブを準備するために、以下の **BitLocker ドライブ暗号化をサポートする 64 ビット OS** がサポートされます。
 
 
-|プラットフォーム |バージョン |
+|プラットフォーム |Version |
 |---------|---------|
 |Windows     | Windows 7 Enterprise、Windows 7 Ultimate <br> Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows クライアントに必要なその他のソフトウェア
 
-|プラットフォーム |バージョン |
+|プラットフォーム |Version |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
 | BitLocker        |  _          |
@@ -72,11 +72,15 @@ Azure Import/Export サービスでは、データのコピーをサポートし
 Import/Export サービスでは、次のディスクの一覧の使用がサポートされます。
 
 
-|ディスクの種類  |Size  |サポートされています |サポートされていません  |
-|---------|---------|---------|---------|
-|SSD    |   2.5"      |SATA III          |  USB       |
-|HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |USB アダプターが組み込まれた外部 HDD <br> 外部 HDD のケーシング内のディスク         |
+|ディスクの種類  |Size  |サポートされています |
+|---------|---------|---------|
+|SSD    |   2.5"      |SATA III          | 
+|HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |
 
+次のディスクの種類はサポートされていません。
+- USB。
+- USB アダプターが組み込まれた外部 HDD。
+- 外部 HDD のケース内にあるディスク。
 
 1 つのインポート/エクスポート ジョブは、以下を使用できます。
 - 最大 10 台の HDD/SSD。

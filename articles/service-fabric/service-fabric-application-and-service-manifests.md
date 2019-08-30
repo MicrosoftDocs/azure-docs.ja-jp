@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/19/2018
+ms.date: 8/12/2019
 ms.author: atsenthi
-ms.openlocfilehash: e5fb28b176ce14a9b871b2a6a775e0017fcc993d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052672"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977121"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェスト
 この記事では、ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルを使って、Service Fabric のアプリケーションとサービスの定義およびバージョン管理を行う方法について説明します。  詳細な例については、[アプリケーションとサービスのマニフェストの例](service-fabric-manifest-examples.md)を参照してください。  これらのマニフェスト ファイルの XML スキーマについては、「[ServiceFabricServiceModel.xsd スキーマ ドキュメント](service-fabric-service-model-schema.md)」をご覧ください。
@@ -98,6 +98,10 @@ SetupEntryPoint の構成方法について詳しくは、「[エントリ ポ�
 
 Service Fabric のサービス **エンドポイント**は、Service Fabric リソースの例です。 Service Fabric リソースは、コンパイルしたコードを変更せずに宣言/変更することができます。 サービス マニフェストで指定した Service Fabric リソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。 サービス マニフェストでエンドポイント リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。 詳しくは、[エンドポイント リソースの指定またはオーバーライド](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
 
+ 
+> [!WARNING]
+> 設計上、静的ポートは、ClusterManifest で指定されたアプリケーションのポート範囲と重複しないようにします。 静的ポートを指定する場合は、アプリケーションのポート範囲外に割り当てる必要があります。そうしないと、ポートの競合が発生します。 リリース 6.5CU2 では、このような競合が検出された場合に**正常性に関する警告**が発行されますが、デプロイは配布された 6.5 の動作と同期して続行されます。 ただし、次のメジャー リリースからはアプリケーションをデプロイできなくなる可能性があります。
+>
 
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
@@ -147,6 +151,7 @@ For more information about other features supported by service manifests, refer 
     <Service Name="VotingWeb" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="VotingWebType" InstanceCount="[VotingWeb_InstanceCount]">
         <SingletonPartition />
+         <PlacementConstraints>(NodeType==NodeType0)</PlacementConstraints
       </StatelessService>
     </Service>
   </DefaultServices>
@@ -162,6 +167,8 @@ For more information about other features supported by service manifests, refer 
 **DefaultServices** は、アプリケーションがこのアプリケーションの種類に対してインスタンス化されるたびに自動的に作成されるサービス インスタンスを宣言します。 既定のサービスは便利で、作成後はすべての面で通常のサービスと同様に動作します。 アプリケーション インスタンスの他のサービスと共にアップグレードされ、削除することもできます。 アプリケーション マニフェストは、複数の既定サービスを含むことができます。
 
 **Certificates** (前の例では設定されていません) では、[HTTPS エンドポイントのセットアップ](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)または[アプリケーション マニフェストでのシークレットの暗号化](service-fabric-application-secret-management.md)に使われる証明書を宣言します。
+
+**配置の制約**は、サービスを実行する場所を定義するステートメントです。 これらのステートメントは、1 つまたは複数のノードのプロパティに対して選択した個々のサービスに接続されます。 詳細については、「[配置の制約とノードのプロパティの構文](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)」を参照してください。
 
 **Policies** (前の例では設定されていません) では、サービスが Service Fabric ランタイムにアクセスできるかどうかなど、アプリケーション レベルで設定するログ コレクション、[既定の実行アカウント](service-fabric-application-runas-security.md)、[正常性](service-fabric-health-introduction.md#health-policies)、[セキュリティ アクセス](service-fabric-application-runas-security.md)の各ポリシーを記述します。
 

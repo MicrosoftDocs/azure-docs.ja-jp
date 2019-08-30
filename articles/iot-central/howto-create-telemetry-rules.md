@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8684301b83e01989c745b63848995142cb766188
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ac8e488de11abc3471df836ca852cf3dc85c82f
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052974"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877363"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでテレメトリ ルールを作成して通知を設定する
 
 *この記事は、オペレーター、ビルダー、および管理者に適用されます。*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Azure IoT Central を使用して、接続されたデバイスをリモートで監視できます。 Azure IoT Central のルールを使用すると、ほぼリアルタイムでデバイスを監視し、電子メールの送信または Microsoft Flow のトリガーなどのアクションを自動的に呼び出すことができます。 数回のクリックで、デバイスのデータを監視する条件を定義したり、対応するアクションを構成したりできます。 この記事では、デバイスから送信されたテレメトリを監視するルールを作成する方法について説明します。
 

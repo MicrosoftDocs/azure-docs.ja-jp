@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b13b23e59595acf8c637a2ef58c8098256920bea
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 196ee5546a5065aebfae36d0af1fccff6b271a70
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654058"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032458"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -410,16 +410,16 @@ Azure AD Connect バージョン 1.1.654.0 (以降) が強化され、Azure AD C
 
 Type     | 名前                          | Access               | 適用対象
 ---------|-------------------------------|----------------------|--------------|
-ALLOW    | SYSTEM                        | フル コントロール         | このオブジェクト  |
-ALLOW    | Enterprise Admins             | フル コントロール         | このオブジェクト  |
-ALLOW    | Domain Admins                 | フル コントロール         | このオブジェクト  |
-ALLOW    | 管理者                | フル コントロール         | このオブジェクト  |
-ALLOW    | Enterprise Domain Controllers | コンテンツの一覧        | このオブジェクト  |
-ALLOW    | Enterprise Domain Controllers | すべてのプロパティの読み取り  | このオブジェクト  |
-ALLOW    | Enterprise Domain Controllers | 読み取りのアクセス許可     | このオブジェクト  |
-ALLOW    | Authenticated Users           | コンテンツの一覧        | このオブジェクト  |
-ALLOW    | Authenticated Users           | すべてのプロパティの読み取り  | このオブジェクト  |
-ALLOW    | Authenticated Users           | 読み取りのアクセス許可     | このオブジェクト  |
+Allow    | SYSTEM                        | フル コントロール         | このオブジェクト  |
+Allow    | Enterprise Admins             | フル コントロール         | このオブジェクト  |
+Allow    | Domain Admins                 | フル コントロール         | このオブジェクト  |
+Allow    | 管理者                | フル コントロール         | このオブジェクト  |
+Allow    | Enterprise Domain Controllers | コンテンツの一覧        | このオブジェクト  |
+Allow    | Enterprise Domain Controllers | すべてのプロパティの読み取り  | このオブジェクト  |
+Allow    | Enterprise Domain Controllers | 読み取りのアクセス許可     | このオブジェクト  |
+Allow    | Authenticated Users           | コンテンツの一覧        | このオブジェクト  |
+Allow    | Authenticated Users           | すべてのプロパティの読み取り  | このオブジェクト  |
+Allow    | Authenticated Users           | 読み取りのアクセス許可     | このオブジェクト  |
 
 AD DS アカウントの設定を強化するために、[この PowerShell スクリプト](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)を実行できます。 PowerShell スクリプトでは、AD DS アカウントに上記のアクセス許可が割り当てられます。
 
@@ -508,7 +508,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同期
 > [!NOTE]
-> 注:同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、[組み込みスケジューラ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) を使用する必要があります。
+> 注:同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、[組み込みスケジューラ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)を使用する必要があります。
 
 #### <a name="fixed-issues"></a>修正された問題
 * Azure AD Connect ウィザードで、オンプレミス Active Directory からの変更を同期するために必要な AD Connector アカウントを作成するときに、PublicFolder オブジェクトの読み取りに必要なアクセス許可がアカウントに正しく割り当てられません。 この問題は、高速インストールとカスタム インストールの両方に影響します。 今回の変更により、この問題が修正されました。

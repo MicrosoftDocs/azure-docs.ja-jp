@@ -13,7 +13,7 @@ ms.locfileid: "68320531"
 ---
 送信要求を行うために HTTP プロキシを構成する必要がある場合は、次の 2 つの引数を使用します。
 
-| EnableAdfsAuthentication | データ型 | 説明 |
+| 名前 | データ型 | 説明 |
 |--|--|--|
 |HTTP_PROXY|string|使用するプロキシ。例: `http://proxy:8888`<br>`<proxy-url>`|
 |HTTP_PROXY_CREDS|string|プロキシで認証されるために必要な資格情報。例: ユーザー名:パスワード。|

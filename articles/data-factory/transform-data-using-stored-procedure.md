@@ -10,12 +10,12 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e063875e4c619b65290511d61923fd7c715aba49
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764409"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742174"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory での SQL Server ストアド プロシージャ アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -67,12 +67,23 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 | プロパティ                  | 説明                              | 必須 |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | アクティビティの名前                     | はい      |
+| 名前                      | アクティビティの名前                     | はい      |
 | description               | アクティビティの用途を説明するテキストです。 | いいえ       |
 | type                      | ストアド プロシージャ アクティビティの場合、アクティビティの種類は **SqlServerStoredProcedure** です | はい      |
 | linkedServiceName         | Data Factory のリンクされたサービスとして登録されている **Azure SQL Database**、**Azure SQL Data Warehouse**、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
 | storedProcedureName       | 呼び出すストアド プロシージャの名前を指定します。 | はい      |
 | storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ       |
+
+## <a name="parameter-data-type-mapping"></a>パラメーターのデータ型のマッピング
+パラメーターに指定するデータ型は、使用しているデータ ソースのデータ型にマップされる Azure Data Factory の型です。 データ ソースのデータ型マッピングは、コネクタ領域で確認できます。 次に例をいくつか示します。
+
+| データ ソース          | データ型のマッピング |
+| ---------------------|-------------------|
+| Azure SQL Data Warehouse | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure SQL Database   | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Oracle               | https://docs.microsoft.com/en-us/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
+| SQL Server           | https://docs.microsoft.com/en-us/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
+
 
 ## <a name="error-info"></a>エラー情報
 

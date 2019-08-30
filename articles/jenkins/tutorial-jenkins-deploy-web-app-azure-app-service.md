@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Jenkins を使用して GitHub から Azure App Service にデプロイする
+title: チュートリアル:Jenkins を使用して GitHub から Azure App Service にデプロイする
 description: GitHub からの継続的インテグレーション (CI) と Azure App Service への継続的デプロイ (CD) を Java Web アプリで行えるよう、Jenkins を設定します
 services: jenkins
 ms.service: jenkins
@@ -8,12 +8,13 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-august2019
+ms.openlocfilehash: 955ce9724d576e56766ab3d87a374a65e4ca5c0e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326918"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967122"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル: Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure App Service にデプロイする
 
@@ -170,7 +171,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
    | **テナント ID** | <*yourAzureActiveDirectoryTenant-ID*> | お客様の Azure Active Directory テナントの `tenant` GUID 値 | 
    | **ID** | <*yourAzureServicePrincipalName*> | お客様の Azure サービス プリンシパルの `displayName` 値 | 
 
-1. お客様のサービス プリンシパルが機能することを確認するために、 **[Verify Service Principal]\(サービス プリンシパルの検証\)** を選択します。 完了したら、 **[OK]** を選びます。
+1. お客様のサービス プリンシパルが機能することを確認するために、 **[Verify Service Principal]\(サービス プリンシパルの検証\)** を選択します。 終了したら、 **[OK]** を選択します。
 
 次に、お客様のアプリをビルドしてデプロイする Jenkins パイプラインを作成します。
 
@@ -200,7 +201,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 
       ![[Prepare an environment for the run]\(実行用の環境を準備\) の選択と環境変数の設定](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
 
-1. 完了したら、 **[保存]** を選択します。
+1. 終了したら、 **[保存]** を選択します。
 
 次に、Jenkins 用のビルド スクリプトとデプロイ スクリプトを作成します。
 
@@ -273,7 +274,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 
    ![スクリプトでのパイプラインの設定](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
-1. 完了したら、 **[保存]** を選択します。
+1. 終了したら、 **[保存]** を選択します。
 
 次に、お客様のアプリをビルドして Azure App Service にデプロイします。 
 

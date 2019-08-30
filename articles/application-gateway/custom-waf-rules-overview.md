@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164660"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716618"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>Web アプリケーション ファイアウォール v2 のカスタム規則
 
@@ -110,10 +110,10 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 - RemoteAddr – リモート コンピューター接続の IP アドレス/ホスト名
 - RequestMethod – HTTP 要求メソッド (GET、POST、PUT、DELETE など)
 - QueryString – URI 内の変数
-- PostArgs – POST 本文で送信される引数
+- PostArgs – POST 本文で送信される引数。 この一致変数を使用するカスタム ルールは、"Content-Type" ヘッダーが "application/x-www-form-urlencoded" および "multipart/form-data" に設定されている場合にのみ適用されます。
 - RequestUri – 要求の URI
 - RequestHeaders – 要求のヘッダー
-- RequestBody – 要求の本文
+- RequestBody – 要求本文全体が含まれます。 この一致変数を使用するカスタム ルールは、"Content-Type" ヘッダーが "application/x-www-form-urlencoded" に設定されている場合にのみ適用されます。 
 - RequestCookies – 要求の Cookie
 
 ### <a name="selector-optional"></a>Selector (セレクター) [省略可能]

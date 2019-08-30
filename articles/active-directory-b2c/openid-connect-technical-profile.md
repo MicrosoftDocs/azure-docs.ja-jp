@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C 内のカスタム ポリシーで OpenId Connect 技術プロファイルを定義する |Microsoft Docs
-description: Azure Active Directory B2C 内のカスタム ポリシーで OpenId Connect 技術プロファイルを定義します。
+title: Azure Active Directory B2C 内のカスタム ポリシーで OpenID Connect 技術プロファイルを定義する |Microsoft Docs
+description: Azure Active Directory B2C 内のカスタム ポリシーで OpenID Connect 技術プロファイルを定義します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6d16415aa5111388ec2d2a1009ff477574ae42c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e8f03b17c5e8ea68affa9fe83875382fd5d8512
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512907"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716712"
 ---
-# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenId Connect 技術プロファイルを定義する
+# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) プロトコルの ID プロバイダーにサポートを提供しています。 OpenID Connect 1.0 は OAuth 2.0 の上に ID レイヤーを定義し、現在の認証プロトコルにおいて最先端のものとなっています。 OpenId Connect 技術プロファイルを使用して、OpenId Connect baseの ID プロバイダー (Azure AD など) とフェデレーションできます。 ID プロバイダーとのフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
+Azure Active Directory (Azure AD) B2C では、[OpenID Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) プロトコルの ID プロバイダーにサポートを提供しています。 OpenID Connect 1.0 は OAuth 2.0 の上に ID レイヤーを定義し、現在の認証プロトコルにおいて最先端のものとなっています。 OpenID Connect 技術プロファイルを使用して、OpenID Connect base の ID プロバイダー (Azure AD など) とフェデレーションできます。 ID プロバイダーとのフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
 
 ## <a name="protocol"></a>Protocol
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 <TechnicalProfile Id="MSA-OIDC">
   <DisplayName>Microsoft Account</DisplayName>
   <Protocol Name="OpenIdConnect" />
-  ...    
+  ...
 ```
 
 ## <a name="input-claims"></a>入力要求
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 
 ## <a name="output-claims"></a>出力要求
 
-**OutputClaims** 要素には、OpenId Connect ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
+**OutputClaims** 要素には、OpenID Connect ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
 
 **OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
@@ -94,10 +94,10 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |  
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
 
 ## <a name="redirect-uri"></a>リダイレクト URI
- 
+
 ID プロバイダーのリダイレクト URI を構成する場合は、`https://login.microsoftonline.com/te/tenant/oauth2/authresp` を入力します。 **tenant** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) またはテナントの ID に必ず置き換えてください。 リダイレクト URI は、すべて小文字である必要があります。
 
 **login.microsoftonline.com** の代わりに **b2clogin.com** ドメインを使用している場合は、login.microsoftonline.com の代わりに b2clogin.com を使用することを確認します。

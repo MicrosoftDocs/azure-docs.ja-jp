@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: jowargo
-ms.openlocfilehash: 3f5b23028094b545262e9c01640890f2c0b989ca
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431256"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891585"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs のセキュリティ
 
@@ -29,9 +29,7 @@ ms.locfileid: "66431256"
 
 ## <a name="shared-access-signature-security-sas"></a>Shared Access Signature セキュリティ (SAS)
 
-Notification Hubs は、SAS (Shared Access Signature) と呼ばれるエンティティ レベルのセキュリティ方式を実装しています。 この方式では、メッセージング エンティティは最大 12 個の承認規則を記述で宣言し、そのエンティティに対する権限を付与できます。
-
-各規則には、名前、キーの値 (共有シークレット)、および「[セキュリティ要求](#security-claims)」で説明されている権限のセットが含まれます。 通知ハブを作成すると、2 つの規則が自動的に作成されます。1 つは **Listen** 権限を持ち (クライアント アプリが使用するもの)、もう 1 つは**すべて**の権限を持ちます (アプリ バックエンドが使用するもの)。
+Notification Hubs は、SAS (Shared Access Signature) と呼ばれるエンティティ レベルのセキュリティ方式を実装しています。 各規則には、名前、キーの値 (共有シークレット)、および「[セキュリティ要求](#security-claims)」で説明されている権限のセットが含まれます。 通知ハブを作成すると、2 つの規則が自動的に作成されます。1 つは **Listen** 権限を持ち (クライアント アプリが使用するもの)、もう 1 つは**すべて**の権限を持ちます (アプリ バックエンドが使用するもの)。
 
 クライアント アプリから登録管理を実行するとき、通知で送信される情報が機密性のものではない場合の (たとえば、最新の気象情報)、Notification Hub への一般的なアクセス方法は、クライアント アプリには Listen のみのアクセス規則のキー値を渡し、アプリ バックエンドにはフル アクセス規則のキー値を渡すというものです。
 

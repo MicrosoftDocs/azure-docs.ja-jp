@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: 7db66f6f4efa5e48f2af9380115de8bcfb75cb86
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67786686"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Excel から Azure Machine Learning Studio に分析を移行する
@@ -111,7 +111,7 @@ Excel 内で Machine Learning Web サービスを使用したいと考えまし�
 ### <a name="optimization-and-further-experiments"></a>最適化と今後の実験
 これまで、Excel モデルを使用してベースラインを構築し、Machine Learning 線形回帰モデルの最適化を進めてきました。 [フィルターに基づく機能の選択][filter-based-feature-selection]モジュールを使用して初期データ要素の選択を改善することで、平均絶対誤差 4.6% のパフォーマンス向上の達成を実現しました。 今後のプロジェクトのために、データ属性に反復処理を行う数週間を節約できる可能性があるこの特徴を使用して、モデリングに使用する正しい特徴セットを検索します。 
 
-次は、パフォーマンスを比較するために、[ベイジアン][bayesian-linear-regression] or [Boosted Decision Trees][boosted-decision-tree-regression] などのアルゴリズムを実験に含める予定です。 
+次は、パフォーマンスを比較するために、[ベイジアン][bayesian-linear-regression]や[ブースト デシジョン ツリー][boosted-decision-tree-regression]などのアルゴリズムを実験に含める予定です。 
 
 回帰を試してみる場合に適切なデータセットは、多くの数値属性を持つエネルギー効率回帰のサンプル データセットです。 このデータセットは、Studio でサンプル データセットの一部として提供されています。 さまざまな学習モジュールを使用して、暖房負荷または冷房負荷のいずれかを予測できます。 次の表は、さまざまな回帰のパフォーマンスを比較したもので、エネルギー効率データセットに対する、ターゲット変数の冷房負荷の予測を示しています。 
 

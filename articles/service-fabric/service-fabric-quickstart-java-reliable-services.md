@@ -1,5 +1,5 @@
 ---
-title: Azure で Service Fabric 上に Java アプリを作成する | Microsoft Docs
+title: クイック スタート:Azure Service Fabric で Java アプリを作成する
 description: このクイック スタートでは、Service Fabric Reliable Services サンプル アプリケーションを使用して、Azure 用の Java アプリケーションを作成します。
 services: service-fabric
 documentationcenter: java
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter
-ms.openlocfilehash: ddd56b8479678b288424dd896baadea6a41a2aef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: mvc, devcenter, seo-java-august2019
+ms.openlocfilehash: a69590adc329361ac1c2191e7a984757af4f69af
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008144"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977103"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>クイック スタート:Service Fabric に Java Reliable Services アプリケーションをデプロイする
 
@@ -60,18 +60,18 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
-    ローカル クラスターの起動には、一定の時間がかかります。 クラスターが完全に起動されたことを確認するには、**http://localhost:19080** で Service Fabric Explorer にアクセスします。 5 つの正常なノードは、ローカル クラスターが起動され、実行されていることを示します。
+    ローカル クラスターの起動には、一定の時間がかかります。 クラスターが完全に起動されたことを確認するには、 **http://localhost:19080** で Service Fabric Explorer にアクセスします。 5 つの正常なノードは、ローカル クラスターが起動され、実行されていることを示します。
 
     ![正常なローカル クラスター](./media/service-fabric-quickstart-java/localclusterup.png)
 
 2. Eclipse を開きます。
-3. [ファイル]、[インポート]、Gradle、既存の Gradle プロジェクトの順にクリックして、ウィザードに従います。
-4. [ディレクトリ] をクリックし、GitHub から複製した `service-fabric-java-quickstart` フォルダーから `Voting` ディレクトリを選択します。 [完了] をクリックします。
+3. **[File]\(ファイル\)**  >  **[Import]\(インポート\)**  >  **[Gradle]**  >  **[Existing Gradle Project]\(既存の Gradle プロジェクト\)** の順に選択してウィザードに従います。
+4. **[Directory]\(ディレクトリ\)** を選択し、GitHub から複製した `service-fabric-java-quickstart` フォルダーから `Voting` ディレクトリを選択します。 **[完了]** を選択します。
 
     ![Eclipse の [インポート] ダイアログ](./media/service-fabric-quickstart-java/eclipseimport.png)
 
 5. これで、Eclipse のパッケージ エクスプローラーに `Voting` プロジェクトが配置されました。
-6. プロジェクトを右クリックして、**[Service Fabric]** ドロップダウンの **[Publish Application...]\(アプリケーションの発行\)** を選択します。 ターゲット プロファイルとして **[PublishProfiles/Local.json]** を選択し、[発行] をクリックします。
+6. プロジェクトを右クリックして、 **[Service Fabric]** ドロップダウンの **[Publish Application]\(アプリケーションの発行\)** を選択します。 ターゲット プロファイルとして **[PublishProfiles/Local.json]** を選択し、 **[発行]** を選択します。
 
     ![ローカルの [発行] ダイアログ](./media/service-fabric-quickstart-java/localjson.png)
 
@@ -90,14 +90,14 @@ Service Fabric Explorer は、すべての Service Fabric クラスターで動�
 Web フロントエンド サービスをスケーリングするには、以下を実行します。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `https://localhost:19080`)。
-2. ツリー ビューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
+2. ツリービューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 ( **...** ) を選択し、 **[サービスのスケール]** を選択します。
 
     ![Service Fabric Explorer スケール サービス](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
 
     これで Web フロントエンド サービスのインスタンス数をスケールできる状態になりました。
 
-3. この数値を **2** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
-4. ツリー ビューの **fabric:/Voting/VotingWeb** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
+3. 数値を **2** に変更し、 **[サービスのスケール]** を選択します。
+4. ツリービューの **fabric:/Voting/VotingWeb** ノードを選択し、パーティション ノード (GUID で表されます) を展開します。
 
     ![Service Fabric Explorer スケール サービスの完了](./media/service-fabric-quickstart-java/servicescaled.png)
 

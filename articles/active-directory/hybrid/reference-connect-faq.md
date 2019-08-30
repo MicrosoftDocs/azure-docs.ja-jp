@@ -15,12 +15,12 @@ ms.date: 05/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65137798"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014194"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -136,7 +136,7 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 いいえ。Azure AD Connect は、純粋な IPv6 環境はサポートしていません。
 
 **Q: マルチフォレスト環境を使用しており、2 つのフォレスト間のネットワークでは NAT (ネットワーク アドレス変換) を使用しています。2 つのフォレスト間で Azure AD Connect の使用はサポートされますか。**</br>
- いいえ、NAT を介した Azure AD Connect の使用はサポートされていません。 
+いいえ、NAT を介した Azure AD Connect の使用はサポートされていません。 
 
 ## <a name="federation"></a>フェデレーション
 **Q:Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**  
@@ -151,6 +151,12 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 
 **Q:FIPS 対応のコンピューター上で次世代暗号化 (NGC) 同期規則はサポートされていますか?**  
 いいえ。  それらはサポートされていません。
+
+**Q.Azure portal で同期されているデバイス (たとえば HAADJ) を無効にしても、再び有効になるのはなぜですか?**<br>
+同期されているデバイスは、オンプレミスで作成または管理されている場合があります。 同期されているデバイスがオンプレミスで有効になっているときは、前に管理者によって無効になった場合でも、Azure portal で再び有効になることがあります。 同期されているデバイスを無効にするには、オンプレミスの Active Directory を使用して、コンピューター アカウントを無効にします。
+
+**Q.Office 365 または Azure AD ポータルで同期されているユーザーのサインインをブロックした場合、サインイン時に再びブロックが解除されるのはなぜですか?**<br>
+同期されているユーザーは、オンプレミスで作成または管理されている場合があります。 アカウントがオンプレミスで有効になっている場合、管理者によって実行されたサインイン ブロックは解除される可能性があります。
 
 ## <a name="identity-data"></a>ID データ
 **Q:Azure AD の userPrincipalName (UPN) 属性がオンプレミス UPN と一致しないのはなぜですか。**  

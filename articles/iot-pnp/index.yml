@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: IoT プラグ アンド プレイのプレビューのドキュメント
+metadata:
+  title: IoT プラグ アンド プレイのプレビューのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: チュートリアル、API リファレンス、ビデオ、その他のドキュメントを参照しながら、IoT プラグ アンド プレイを使用する方法について説明します。
+  author: dominicbetts
+  manager: philmea
+  ms.service: iot-pnp
+  services: iot-pnp
+  ms.topic: landing-page
+  ms.date: 07/23/2019
+  ms.author: dobett
+abstract:
+  description: IoT プラグ アンド プレイのプレビューを使用してデバイス モデルを定義する方法を説明します。デバイス モデルを使用すると、デバイス コードを記述することなく、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。 チュートリアル、API リファレンス、ビデオ、その他のドキュメントは、Azure IoT Central やパートナー アプリケーションなどのクラウド ソリューションにデバイスを接続するのに役立ちます。
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/index/video-thumb-pnp-introduction.png
+      width: 250
+    title: 'IoT プラグ アンド プレイの概要 (11:54)'
+    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
+    width: 250
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: <a href="quickstart-create-pnp-device">デバイス機能モデルを使用してデバイスを作成する</a>方法を説明します。
+      - type: paragraph
+        text: <a href="quickstart-connect-pnp-device-solution">デバイスをソリューションに接続する</a>方法を説明します。
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-pnp-visual-studio-code">Visual Studio Code を使用してデバイスを作成する</a>
+          - html: <a href="tutorial-build-device-certification">認定に対応したデバイスを構築する</a>
+          - html: <a href="tutorial-certification-test">デバイスの認定を受ける</a>

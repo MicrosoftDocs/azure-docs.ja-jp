@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: c55828244d73e612da7a7da2d050252cce04aa2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a26302b0c0b4361fe3e7aae6aba798f433c72ade
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061146"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742194"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
@@ -35,7 +35,7 @@ ms.locfileid: "67061146"
 * この xml ファイルに `<DisableTelemetry>true</DisableTelemetry>` ノードが存在しないことをご確認ください。
 * ファイアウォールで、dc.services.visualstudio.com への送信トラフィック用に TCP ポート 80 と 443 を開くことが必要な場合があります。 最新のバージョンの [ファイアウォール例外の一覧に関する記事](../../azure-monitor/app/ip-addresses.md)
 * Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。 アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
-* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへのログを有効にし、AI:INFO/WARN/ERROR から始まるエントリに疑わしいログがないかを調べます。
+* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへの[ログを有効にし](#debug-data-from-the-sdk)、AI:INFO/WARN/ERROR から始まるエントリに疑わしいログがないかを調べます。 
 * 正しい ApplicationInsights.xml ファイルが Java SDK によって正常に読み込まれたことを確認します。そのためには、コンソールの出力メッセージに「構成ファイルが正常に検出されました」というメッセージがあるかどうかを確認します。
 * 構成ファイルが見つからない場合、出力メッセージを確認して構成ファイルの検索範囲を確かめ、ApplicationInsights.xml がこれらの検索場所のいずれかに存在していることを確認します。 通例、構成ファイルは Application Insights SDK の JAR ファイルの近くに見つかります。 たとえば、Tomcat の場合は WEB-INF/classes フォルダーがこれに相当します。 開発時に、Web プロジェクトのリソース フォルダーに ApplicationInsights.xml を配置できます。
 * SDK の既知の問題については、[GitHub の問題に関するページ](https://github.com/Microsoft/ApplicationInsights-Java/issues)を参照してください。
@@ -110,7 +110,7 @@ API の仕組みの詳細を取得するには、ApplicationInsights.xml 構成�
 ファイルに出力するようにロガーに指示することもできます。
 
 ```XML
-  <SDKLogger type="FILE">
+  <SDKLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
@@ -127,16 +127,38 @@ azure.application-insights.logger.base-folder-path=C:/agent/AISDK
 azure.application-insights.logger.level=trace
 ```
 
+または標準エラーに出力します。
+
+```yaml
+azure.application-insights.logger.type=console
+azure.application-insights.logger.level=trace
+```
+
 ### <a name="java-agent"></a>Java エージェント
 
 JVM エージェントのログ記録を有効にするには、[AI-Agent.xml ファイル](java-agent.md)を更新します。
 
 ```xml
-<AgentLogger type="FILE">
+<AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
 </AgentLogger>
+```
+
+### <a name="java-command-line-properties"></a>Java コマンド ラインのプロパティ
+_バージョン 2.4.0 以降_
+
+構成ファイルを変更せずに、コマンド ライン オプションを使用してログを有効にするには、次のコマンドを実行します。
+
+```
+java -Dapplicationinsights.logger.file.level=trace -Dapplicationinsights.logger.file.uniquePrefix=AI -Dapplicationinsights.logger.baseFolderPath="C:/my/log/dir" -jar MyApp.jar
+```
+
+または標準エラーに出力します。
+
+```
+java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 ```
 
 ## <a name="the-azure-start-screen"></a>Azure のスタート画面
@@ -158,7 +180,7 @@ JVM エージェントのログ記録を有効にするには、[AI-Agent.xml �
 ## <a name="data-retention"></a>データの保持
 **ポータルでのデータ保持期間はどのくらいですか?セキュリティで保護されていますか?**
 
-[データの保持とプライバシー][data]に関するページを参照してください。
+[データ保持とプライバシー][data]に関するページを参照してください。
 
 ## <a name="debug-logging"></a>デバッグ ログ
 Application Insights では `org.apache.http` が使用されます。 これは、名前空間 `com.microsoft.applicationinsights.core.dependencies.http` の下の Application Insights のコアの jar ファイル内に再配置されます。 これにより、Application Insights では、同じ `org.apache.http` のさまざまなバージョンが 1 つのコード ベースに存在するシナリオに対処できます。

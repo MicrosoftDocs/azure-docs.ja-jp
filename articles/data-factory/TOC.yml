@@ -110,6 +110,19 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
+    - name: Data Lake Storage Gen2 の読み込み
+      href: load-azure-data-lake-storage-gen2.md
+      items:
+        - name: Data Lake Storage Gen1 からのコピー
+          href: load-azure-data-lake-storage-gen2-from-gen1.md
+    - name: SQL Data Warehouse の読み込み
+      href: load-azure-sql-data-warehouse.md
+    - name: Data Lake Storage Gen1 の読み込み
+      href: load-azure-data-lake-store.md
+    - name: SAP BW データの読み込み
+      href: load-sap-bw-data.md
+    - name: Office 365 データの読み込み
+      href: load-office-365-data.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -358,29 +371,14 @@
           href: delete-activity.md
         - name: データのコピー ツール
           href: copy-data-tool.md
-        - name: Data Lake Storage Gen2 の読み込み
-          href: load-azure-data-lake-storage-gen2.md
-          items:
-            - name: Data Lake Storage Gen1 からのコピー
-              href: load-azure-data-lake-storage-gen2-from-gen1.md
-        - name: SQL Data Warehouse の読み込み
-          href: load-azure-sql-data-warehouse.md
-        - name: Data Lake Storage Gen1 の読み込み
-          href: load-azure-data-lake-store.md
-        - name: SAP BW データの読み込み
-          href: load-sap-bw-data.md
-        - name: Office 365 データの読み込み
-          href: load-office-365-data.md
-        - name: パーティション分割されたデータの読み取りまたは書き込み
-          href: how-to-read-write-partitioned-data.md
+        - name: パフォーマンスとチューニング
+          href: copy-activity-performance.md
         - name: フォーマットと圧縮のサポート
           href: supported-file-formats-and-compression-codecs.md
         - name: スキーマと型マッピング
           href: copy-activity-schema-and-type-mapping.md
         - name: フォールト トレランス
           href: copy-activity-fault-tolerance.md
-        - name: パフォーマンスとチューニング
-          href: copy-activity-performance.md
     - name: データを変換する
       href: transform-data.md
       items:
@@ -472,7 +470,7 @@
           href: data-flow-sink.md
         - name: 並べ替え
           href: data-flow-sort.md
-        - name: source
+        - name: Source
           href: data-flow-source.md
         - name: 代理キー
           href: data-flow-surrogate-key.md

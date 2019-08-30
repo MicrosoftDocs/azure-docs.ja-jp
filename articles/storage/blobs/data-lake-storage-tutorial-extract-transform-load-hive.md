@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. このページで、次の値を選択します。
 
-   | EnableAdfsAuthentication | 値 |
+   | Name | 値 |
    | --- | --- |
    | Filter Year |2013 |
    | Filter Period |January |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e434065feb218b0a46220b95cc6bfd9a7033de30
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816119"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972721"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>CloudSimple による Azure VMware ソリューションを管理するための重要な概念
 
@@ -34,7 +34,6 @@ CloudSimple サービスでは、CloudSimple によって VMware ソリューシ
 ## <a name="cloudsimple-node"></a>CloudSimple ノード
 
 CloudSimple ノードは、その中に VMware ESXi ハイパーバイザーがデプロイされる専用のベア メタルのハイパーコンバージド コンピューティングおよびストレージ ホストです。 このノードが VMware vSphere、vCenter、vSAN、および NSX プラットフォームに組み込まれます。 CloudSimple ネットワーク サービスとエッジ ネットワーク サービスも有効化されます。 各ノードは、[CloudSimple プライベート クラウド](cloudsimple-private-cloud.md)を作成するためにプロビジョニングできる、コンピューティングおよびストレージの容量の単位として機能します。 お客様は、CloudSimple サービスを利用できるリージョン内のノードをプロビジョニングまたは予約します。
-
 
 [CloudSimple ノード](cloudsimple-node.md)の詳細を確認してください。
 

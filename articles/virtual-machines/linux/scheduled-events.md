@@ -9,18 +9,17 @@ editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f7691bcd6f9f3137f48bdd52722c887c4777a32c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d427544ab9396211e4cbb247527a0eb848f42926
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706545"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091291"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -75,7 +74,7 @@ VM が仮想ネットワーク内で作成されていない場合 (クラウド
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
 スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2017-11-01` です。
 
-| バージョン | リリースの種類 | リージョン | リリース ノート | 
+| Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - | 
 | 2017-11-01 | 一般公開 | All | <li> 優先順位の低い VM の削除の EventType 'Preempt' のサポートを追加<br> | 
 | 2017-08-01 | 一般公開 | All | <li> IaaS VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 

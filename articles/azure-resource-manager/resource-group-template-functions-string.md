@@ -110,7 +110,7 @@ base64 形式を含む文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | base64Output | string | b25lLCB0d28sIHRocmVl |
 | toStringOutput | string | one, two, three |
@@ -175,7 +175,7 @@ JSON オブジェクト。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | base64Output | string | b25lLCB0d28sIHRocmVl |
 | toStringOutput | string | one, two, three |
@@ -240,7 +240,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | base64Output | string | b25lLCB0d28sIHRocmVl |
 | toStringOutput | string | one, two, three |
@@ -288,7 +288,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | concatOutput | string | prefix-5yj4yjf5mbg72 |
 
@@ -329,7 +329,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -405,7 +405,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -464,7 +464,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | string | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | string | Hello, World! |
@@ -519,7 +519,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | string | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | string | Hello, World! |
@@ -583,7 +583,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -646,7 +646,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -702,7 +702,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | string | one |
 | stringOutput | string | O |
@@ -760,7 +760,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | formatTest | string | Hello, User. Formatted number:8,175,133 |
 
@@ -888,7 +888,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -943,7 +943,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | string | three |
 | stringOutput | string | e |
@@ -1001,7 +1001,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1079,7 +1079,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -1134,7 +1134,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1177,7 +1177,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | nameOutput | string | storagenziwvyru7uxie |
 
@@ -1228,7 +1228,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | string | 0000000123 |
 
@@ -1280,7 +1280,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | string | 1231231234 |
 | secondOutput | string | 123-123-xxxx |
@@ -1348,7 +1348,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | string | two three |
@@ -1407,7 +1407,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1469,7 +1469,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -1543,7 +1543,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | string | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | string | ["a","b","c"] |
@@ -1606,7 +1606,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | substringOutput | string | two |
 
@@ -1673,7 +1673,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | string | on |
@@ -1724,7 +1724,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | string | one two three |
 | toUpperOutput | string | ONE TWO THREE |
@@ -1775,7 +1775,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | string | one two three |
 | toUpperOutput | string | ONE TWO THREE |
@@ -1822,7 +1822,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | 戻り値 | string | one two three |
 
@@ -1962,7 +1962,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2017,7 +2017,7 @@ URI エンコードされた値の文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2072,7 +2072,7 @@ URI エンコードされた値のデコード済み文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2145,7 +2145,7 @@ URI エンコードされた値のデコード済み文字列。
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |

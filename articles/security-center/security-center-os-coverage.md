@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 02d993d760338356fa29ee58a03215e14d6583f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295597"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640784"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Security Center でサポートされている機能とプラットフォーム
 
@@ -30,8 +30,7 @@ ms.locfileid: "68295597"
 >
 
 ## <a name="platforms-that-support-the-data-collection-agent"></a>データ コレクション エージェントをサポートするプラットフォーム 
-
-このセクションでは、Azure Security Center エージェントで実行できるプラットフォーム、およびデータを収集する元となるプラットフォームが一覧されます。
+このセクションでは、Azure Security Center によって使用される、Log Analytics エージェントを実行できるプラットフォームを示します。
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows コンピューターおよび VM でサポートされているプラットフォーム
 次の Windows オペレーティング システムがサポートされています。
@@ -112,14 +111,17 @@ ms.locfileid: "68295597"
 |------|------|-----|-----|
 | Windows Defender (Microsoft Antimalware)| Windows Server 2016| いいえ、OS に組み込まれている| はい |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 (下記の注を参照) | 拡張機能を介して | はい |
-| Trend Micro – すべてのバージョン | Windows Server ファミリ  | いいえ | はい |
+| Trend Micro – すべてのバージョン* | Windows Server ファミリ  | いいえ | はい |
 | Symantec v12.1.1100 以降| Windows Server ファミリ  | いいえ | はい |
 | McAfee v10 以降 | Windows Server ファミリ  | いいえ | はい |
-| Kaspersky| Windows Server ファミリ  | いいえ | いいえ  |
-| Sophos| Windows Server ファミリ  | いいえ | いいえ  |
+| McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい **\*** |
+| Sophos V9+| Linux Server ファミリ  | いいえ | はい  **\***  |
+
+ **\*** カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用でき、Azure Security Center ポータルには反映されません。
 
 > [!NOTE]
 > - Windows Server 2008 R2 の仮想マシンで System Center Endpoint Protection (SCEP) が検出されるには、PowerShell 3.0 (またはそれ以降) の後で SCEP をインストールする必要があります。
+> - Trend Micro 保護の検出が Deep Security エージェント用にサポートされています。  OfficeScan エージェントはサポートされていません。
 
 ## <a name="supported-paas-features"></a>サポートされている PaaS 機能
 
@@ -163,6 +165,6 @@ ms.locfileid: "68295597"
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Security Center を導入するための設計上の考慮事項を計画し、理解する](security-center-planning-and-operations-guide.md)方法について説明しています。
-- [Security Center における仮想マシンの動作分析とクラッシュ ダンプ メモリ分析](security-center-alerts-type.md#virtual-machine-behavioral-analysis)について説明します。
+- [Azure Security Center での VM と サーバーの脅威検出](security-center-alerts-iaas.md)の詳細を確認します。
 - [Azure Security Center の使用に関してよく寄せられる質問](security-center-faq.md)が記載されています。
 - [Azure のセキュリティとコンプライアンスについてのブログ記事](https://blogs.msdn.com/b/azuresecurity/)を確認できます。

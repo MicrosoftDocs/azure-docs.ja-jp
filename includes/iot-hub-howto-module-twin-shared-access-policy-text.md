@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 07/17/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1e4227578b078dde64f9a8c041eeea57a28fe1e0
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: fe3d47d41d10a3abc8c9c889081af2db337963ad
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402362"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883734"
 ---
 <!-- This contains intro text for the "Get an IoT hub connection string" section in the iot-hub-lang-lang-module-twin-getstarted.md files-->
 
-この記事では、ID レジストリにデバイスを追加してそのデバイスにモジュールを追加するバックエンド サービスを作成します。 これらの操作を実行するサービスには、**レジストリ書き込み**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **registryReadWrite** という名前の共有アクセス ポリシーがある状態で作成されます。
+この記事では、ID レジストリにデバイスを追加してそのデバイスにモジュールを追加するバックエンド サービスを作成します。 サービスには、**レジストリ書き込み**のアクセス許可が必要です。 既定では、どの IoT ハブも、このアクセス許可を付与する **registryReadWrite** という名前の共有アクセス ポリシーがある状態で作成されます。

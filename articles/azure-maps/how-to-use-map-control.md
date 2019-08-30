@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: aa923fa7e2d5e673e6a2db2b349e54d433d1817b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa6a3af7893830eba2f4a5c43184991bff68d8a8
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957278"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898203"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -96,13 +96,13 @@ ms.locfileid: "65957278"
                 authType: 'aad',
                 clientId: '<Your AAD Client Id>',
                 aadAppId: '<Your AAD App Id>',
-                aadTenant: 'msft.ccsctp.net'
+                aadTenant: '<Your AAD Tenant Id>'
             }
         });
     </script>
     ```
 
-    詳細については、「[Azure Maps による認証](azure-maps-authentication.md)」を参照してください。
+    詳細については、「[Azure Maps による認証](azure-maps-authentication.md)」ドキュメントを参照してください。
 
 6. 必要に応じて、ページの見出しに次のメタ タグ要素を追加すると役立つ場合があります。
 
@@ -169,6 +169,40 @@ ms.locfileid: "65957278"
     <iframe height="700" style="width: 100%;" scrolling="no" title="マップ コントロールの使用方法" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen 「<a href='https://codepen.io/azuremaps/pen/yZpEYL/'>How to use the map control (マップ コントロールの使用方法)</a>」を参照してください。
     </iframe>
 
+## <a name="localizing-the-map"></a>マップのローカライズ
+
+Azure Maps には、マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバルな `atlas` 名前空間に追加します。これにより、アプリ内のすべてのマップ コントロール インスタンスにより、これらの設定が既定で使用されます。 以下では、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定します。
+
+```javascript
+atlas.setLanguage('fr-FR');
+atlas.setView('auto');
+```
+
+2 つ目のオプションでは、次のようにマップを読み込むときに、この情報をマップ オプションに渡します。
+
+```javascript
+map = new atlas.Map('myMap', {
+    language: 'fr-FR',
+    view: 'auto',
+
+    authOptions: {
+        authType: 'aad',
+        clientId: '<Your AAD Client Id>',
+        aadAppId: '<Your AAD App Id>',
+        aadTenant: '<Your AAD Tenant Id>'
+    }
+});
+```
+
+> [!Note]
+> Web SDK を使用すると、言語と地域の設定が異なる複数のマップ インスタンスを同じページに読み込むことができます。 また、これらの設定は、マップの `setStyle` 関数を使用してマップが読み込まれた後に更新することができます。 
+
+言語が "fr-FR" に設定され、地域ビューが "auto" に設定されている Azure Maps の例を次に示します。
+
+![ラベルをフランス語で表示するマップ イメージ](./media/how-to-use-map-control/websdk-localization.png)
+
+サポートされている言語と地域ビューの完全な一覧については、[こちら](supported-languages.md)をご覧ください。
+
 ## <a name="next-steps"></a>次の手順
 
 マップを作成して操作する方法について説明します。
@@ -180,3 +214,11 @@ ms.locfileid: "65957278"
 
 > [!div class="nextstepaction"]
 > [マップ スタイルを選択する](choose-map-style.md)
+
+マップにさらにデータを追加するには:
+
+> [!div class="nextstepaction"]
+> [マップを作成する](map-create.md)
+
+> [!div class="nextstepaction"]
+> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)

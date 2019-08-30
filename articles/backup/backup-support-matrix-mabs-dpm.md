@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: c4d01c3c72669f7fbfd5b2d8df0678cc0675ccde
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7f890ddf7aff63189a720f3d604b00610af7a933
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639559"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949843"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -55,7 +55,7 @@ DPM/MABS と Azure Backup を使用したバックアップは、次のように
 **シナリオ** | **エージェント** | **Location**
 --- | --- | ---
 **オンプレミス マシン/ワークロードのバックアップ** | DPM/MABS 保護エージェントは、バックアップするコンピューター上で実行されます。<br/><br/> DPM/MABS サーバー上の MARS エージェント。<br/> この機能を有効にするための、Microsoft Azure Recovery Services エージェントまたは Azure Backup エージェントの最小バージョンは、2.0.8719.0 です。  | DPM/MABS は、オンプレミスで実行する必要があります。
-**Azure VM/ワークロードのバックアップ** | 保護されたコンピューター上の DPM/MABS 保護エージェント。<br/><br/> DPM/MABS サーバー上の MARS エージェント。 | DPM/MABS は、Azure VM で実行する必要があります。
+
 
 ## <a name="supported-deployments"></a>サポートされているデプロイ
 
@@ -166,9 +166,9 @@ DPM 2016/MABS v2 (Windows Server 2016 上で実行されている) 以降は、M
 **Windows Server 2012 R2 (Datacenter および Standard)**<br/><br/> 64/32 ビット | MABS v3、v2 | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VMprotection**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
 **Windows Server 2012 SP1 (Datacenter および Standard)**<br/><br/> 64/32 ビット | MABS v3、v2 <br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) がインストールされている必要があります。 | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
 **Windows 2008 R2 SP1 (Standard および Enterprise)**<br/><br/> 64/32 ビット | MABS v3、v2 でサポートされています。<br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) がインストールされている必要があります。 | オンプレミス/Azure VM。 |   **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
-**Windows 2008 R2 (Standard および Enterprise)**<br/><br/> 64/32 ビット | MABS v2/v3 では、OS で SP1 が実行されている必要があります。 | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
-**Windows Server 2008 SP2**<br/><br/> 64/32 ビット | MABS v2、v3 | MABS が VMware VM としてデプロイされる場合、MABS v2、v3 がサポートされます。<br/><br/> Azure VM で実行されている MABS ではサポートされません。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル |
-**Windows Storage Server 2008** | MABS v2、v3 | オンプレミスの物理サーバー/Hyper-V VM としての MABS。 <br/><br/> Azure VM で実行されている MABS ではサポートされません。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
+**Windows 2008 R2 (Standard および Enterprise)**<br/><br/> 64/32 ビット | MABS v3、v2 では、OS で SP1 が実行されている必要があります。 | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
+**Windows Server 2008 SP2**<br/><br/> 64/32 ビット | MABS v3、v2 | MABS が VMware VM としてデプロイされる場合、MABS v2、v3 がサポートされます。<br/><br/> Azure VM で実行されている MABS ではサポートされません。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル |
+**Windows Storage Server 2008** | MABS v3、v2 | オンプレミスの物理サーバー/Hyper-V VM としての MABS。 <br/><br/> Azure VM で実行されている MABS ではサポートされません。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
 **SQL Server 2017** | MABS v3 | オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。 |
 **SQL Server 2016/2016 SP1** | MABS v3、v2 | オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。 |
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3、v2 | オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。 |
@@ -195,7 +195,7 @@ DPM 2016/MABS v2 (Windows Server 2016 上で実行されている) 以降は、M
 **Windows 2008 R2 (Standard および Enterprise)**<br/><br/> 64/32 ビット | オンプレミス。<br/><br/> DPM は VMware VM としてインストールできません。<br/><br/> Azure VM で実行されている DPM はサポートされません。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
 **Windows Server 2008 SP2**<br/><br/> 64/32 ビット | オンプレミスのみ。<br/><br/> VMware VM として実行されている DPM はサポートされません。 物理サーバーまたは Hyper-V VM としての実行はサポートされません。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
 **Windows Storage Server 2008** | 物理サーバーまたは Hyper-V VM として実行されている DPM オンプレミス。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
-**SQL Server 2017** | DPM SAC、更新プログラム ロールアップ 5 以降を実行している DPM 2016。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。
+**SQL Server 2017** | DPM SAC、更新プログラム ロールアップ 5 以降が実行されている DPM 2016。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。
 **SQL Server 2016 SP1** | DPM 2012 R2 ではサポートされません。DPM SAC、および更新プログラム ロールアップ 4 以降を実行している DPM 2016 ではサポートされます。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。
 **SQL Server 2016** | DPM 2012 R2 ではサポートされません。 DPM SAC、更新プログラム ロールアップ 2 以降の DPM 2016 でサポートされます。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。
 **SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | 更新プログラム ロールアップ 4 以降を実行している DPM 2012 R2 を備えた SQL Server 2014。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。

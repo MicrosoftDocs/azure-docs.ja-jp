@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 08/01/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b32ef37c6d61c88a18acd5ddc80cc6154369ca29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 553118486d1148f63e79ca25c32ed7dd8a3b7414
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780536"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736798"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -102,7 +102,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 - Microsoft Stream
 - Dynamics 365 無料試用版
 
-外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプションや Office Basic SKU 経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。 アンマネージド テナントからドメイン名を削除し、目的のテナントでその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 この ForceTakeover オプションでユーザーが移動することはありません。サブスクリプションへのアクセスが保持されます。 そうではなく、このオプションではドメイン名のみが移動します。 
+外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプション経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。 アンマネージド テナントからドメイン名を削除し、目的のテナントでその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 この ForceTakeover オプションでユーザーが移動することはありません。サブスクリプションへのアクセスが保持されます。 そうではなく、このオプションではドメイン名のみが移動します。 
 
 #### <a name="more-information-about-rms-for-individuals"></a>個人向け RMS の詳細
 

@@ -5,15 +5,15 @@ services: virtual-machines-windows, virtual-machines-linux
 author: laurenhughes
 ms.service: multiple
 ms.topic: include
-ms.date: 04/11/2019
+ms.date: 08/15/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 5c35cbfbd2e9d0a1655d05c1116d293fb78c9eb7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4746a945f1a89c34308a3bd968f6341e0e25ac5
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133684"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541498"
 ---
 このセクションでは、より古い世代の仮想マシンのサイズの情報が提供されます。 これらのサイズは引き続きサポートされますが、追加容量は得られません。 一般提供されるより新しいまたは代替のサイズがあります。 ニーズに最も合う VM サイズを選択する場合は、「[Sizes for Windows virtual machines in Azure](../articles/virtual-machines/windows/sizes.md)」 (Azure の Windows 仮想マシンのサイズ) または「[Sizes for Linux virtual machines in Azure](../articles/virtual-machines/linux/sizes.md)」 (Azure の Linux 仮想マシンのサイズ) を参照してください。  
 
@@ -40,6 +40,16 @@ Basic レベルのサイズは主に、負荷分散や自動スケール、メ�
 |A4\Basic_A4|8|14 GB|2| 240 GB |16|16 x 300|
 
 <br>
+
+### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standard A0 ～ A4 (CLI と PowerShell の使用)
+
+クラシック デプロイ モデルでは、一部の VM サイズが CLI と PowerShell で若干異なります。
+
+* Standard_A0: ExtraSmall
+* Standard_A1: Small
+* Standard_A2: Medium
+* Standard_A3: Large
+* Standard_A4: ExtraLarge
 
 ### <a name="a-series"></a>A シリーズ  
 
@@ -173,6 +183,29 @@ Premium Storage キャッシュ:サポートされています
 <sup>2</sup> VM ファミリは、次の CPU のいずれかで実行できます。2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell)、または 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
 
 <br>
+
+### <a name="ls-series"></a>Ls シリーズ
+
+Ls シリーズでは、[Intel® Xeon® プロセッサ E5 v3 ファミリ](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)を使用し、最大 32 個の vCPU を提供します。 Ls シリーズは、G/GS シリーズと同じ CPU パフォーマンスであり、vCPU あたり 8 GiB のメモリを搭載しています。
+
+Ls シリーズでは、持続性のあるデータ ディスクで実現できる IOPS を向上させるためのローカル キャッシュの作成はサポートされません。 Ls シリーズの VM は、ローカル ディスクの高スループットと IOPS によって、1 つの VM で障害が発生した場合に複数の VM にデータをレプリケートして永続性を実現する Apache Cassandra や MongoDB などの NoSQL ストアにとって最適なものになっています。
+
+ACU: 180 から 240
+
+Premium Storage: サポートされています
+
+Premium Storage キャッシュ:サポートされていません
+ 
+| Size          | vCPU | メモリ (GiB) | 一時ストレージ (GiB) | 最大データ ディスク数 | 一時ストレージの最大スループット (IOPS / MBps) | キャッシュ不使用時の最大ディスク スループット (IOPS / MBps) | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 
+|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
+| Standard_L4s   | 4  | 32  | 678   | 16 | 20000/200 | 5000/125  | 2/4,000  | 
+| Standard_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4/8,000  | 
+| Standard_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/1,6000 | 
+| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5630 | 64   | 160000/1600   | 40000/1000     | 8/20,000 | 
+
+Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されたディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
+
+<sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
 ### <a name="gs-series"></a>GS シリーズ 
 

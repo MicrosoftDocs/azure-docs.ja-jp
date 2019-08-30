@@ -145,7 +145,7 @@ New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
-| EnableAdfsAuthentication | 詳細を取得する Blockchain Service メンバーの名前。 名前を入力すると、そのメンバーの詳細が返されます。 名前を省略すると、すべてのコンソーシアム メンバーの一覧が返されます。 | いいえ |
+| Name | 詳細を取得する Blockchain Service メンバーの名前。 名前を入力すると、そのメンバーの詳細が返されます。 名前を省略すると、すべてのコンソーシアム メンバーの一覧が返されます。 | いいえ |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
@@ -174,7 +174,7 @@ Role           : ADMIN
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
-| EnableAdfsAuthentication | 削除するメンバーの名前 | はい |
+| Name | 削除するメンバーの名前 | はい |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Account | Import-Web3Account で取得した Web3Account オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
@@ -198,7 +198,7 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
-| EnableAdfsAuthentication | ブロックチェーン メンバーの名前 | はい |
+| Name | ブロックチェーン メンバーの名前 | はい |
 | DisplayName | 新しい表示名 | いいえ |
 | AccountAddress | アカウント アドレス | いいえ |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |

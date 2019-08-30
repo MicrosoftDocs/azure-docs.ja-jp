@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 07/05/2019
-ms.openlocfilehash: 33c844374d6d2b8e64cde6c7c9633e54a292d95f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/14/2019
+ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567284"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035829"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のタイム ゾーン
 
@@ -83,10 +83,10 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-<del>ポイントインタイム リストアを実行するとき、復元する時刻は UTC 時間として解釈されます。 これは、夏時間とそれに伴う潜在的な変更によるあいまいさを回避するためです。<del>
+<del>ポイントインタイム リストアを実行するとき、復元する時刻は UTC 時間として解釈されます。 これにより、夏時間とそれに伴う潜在的な変更によるあいまいさが回避されます。<del>
 
  >[!WARNING]
-  > 現在の動作は上記と一致しておらず、復元する時刻は、自動データベース バックアップが取得されるソース マネージド インスタンスのタイム ゾーンに従って解釈されます。 特定の時点を UTC 時間として解釈するように、この動作の修正に取り組んでいます。 詳細については、「[既知の問題](sql-database-managed-instance-timezone.md#known-issues)」をご覧ください。
+  > 現在の動作は上記と一致しておらず、復元する時刻は、自動データベース バックアップが取得されるソース マネージド インスタンスのタイム ゾーンに従って解釈されます。 特定の時点を UTC 時間として解釈するように、この動作の修正に取り組んでいます。
 
 ### <a name="auto-failover-groups"></a>自動フェールオーバー グループ
 

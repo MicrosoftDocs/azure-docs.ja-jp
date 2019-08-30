@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494496"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881443"
 ---
 # <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
@@ -136,7 +136,18 @@ Web Test Date Time Plugin によって、パラメーター化された時間を
 
 **単純なユーザー名とパスワード** 通常の方法で Web テストを記録します。 まず Cookie を削除します。
 
-**SAML 認証** Web テストで使用できる SAML プラグインを使用します。 このプラグインにアクセスします。
+**SAML 認証**
+
+|プロパティ名| 説明|
+|----|-----|
+| 対象ユーザー URI | SAML トークンの対象ユーザー URI です。  これは Access Control Service (ACS) の URI で、ACS 名前空間とホスト名を含みます。 |
+| 証明書のパスワード | 埋め込まれた秘密キーへのアクセスを許可するクライアント証明書のパスワード。 |
+| クライアント証明書  | Base64 でエンコードされた形式の秘密キーを持つクライアント証明書の値。 |
+| 名前識別子 | トークンの名前識別子 |
+| 有効期間の終了時刻 | トークンが有効な期間。  既定値は 5 分です。 |
+| 期間の開始時刻 | 過去に作成されたトークンの有効期間 (時間のずれを解決するため)。  既定値は (マイナス) 5 分です。 |
+| ターゲット コンテキスト パラメーター名 | 生成されたアサーションを受け取るコンテキスト パラメーター。 |
+
 
 **クライアント シークレット** アプリにクライアント シークレットを含むサインイン ルートがある場合は、そのルートを使用します。 クライアント シークレット サインインを提供するサービスの例として、Azure Active Directory (AAD) が挙げられます。 AAD の場合、クライアント シークレットはアプリ キーです。
 

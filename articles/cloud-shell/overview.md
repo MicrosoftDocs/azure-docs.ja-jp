@@ -3,7 +3,7 @@ title: Azure Cloud Shell の概要 | Microsoft Docs
 description: Azure Cloud Shell について概説します。
 services: ''
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: 5608b3e0f9b98db62d22245de5a864f757f48799
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f3d7edf21edf116732eceb332cb8725a0dee85dc
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199665"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742025"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
@@ -71,11 +71,9 @@ Cloud Shell は、以下から使用できる柔軟なツールです。
 * [Visual Studio Code の Azure Account 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure Files ストレージの接続
-Cloud Shell マシンは一時的なものであるため、ファイルを永続化するには新規または既存の Azure Files 共有を `clouddrive` としてマウントする必要があります。
+Cloud Shell マシンは一時的ですが、ファイルは、ディスク イメージを使用する方法と、`clouddrive` という名前のマウントされたファイル共有を使用する方法の 2 つの方法で保持されます。  Cloud Shell の初回起動時に、リソース グループ、ストレージ アカウント、Azure Files 共有を作成するように求められます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 1 つのファイル共有をマップすると、Cloud Shell の Bash と PowerShell の両方で使われます。
 
-Cloud Shell の初回起動時に、リソース グループ、ストレージ アカウント、Azure Files 共有を作成するように求められます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 1 つのファイル共有をマップすると、Cloud Shell の Bash と PowerShell の両方で使われます。
-
-[新規または既存のストレージ アカウント](persisting-shell-storage.md)をマウントする方法に関するページを参照してください。
+[新規または既存のストレージ アカウント](persisting-shell-storage.md)をマウントする方法または [Cloud Shell で使用される永続化メカニズム](persisting-shell-storage.md#how-cloud-shell-storage-works)に関する記事で詳細をご確認ください。
 
 ## <a name="concepts"></a>概念
 * Cloud Shell は、ユーザーごとにセッション単位で一時的に提供されるホスト上で実行されます。

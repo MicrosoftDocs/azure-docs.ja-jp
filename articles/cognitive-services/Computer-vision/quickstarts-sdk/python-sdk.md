@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67786645"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Python 用の Azure Cognitive Services Computer Vision SDK
@@ -38,7 +38,7 @@ Computer Vision サービスを使用すると、開発者は、イメージを�
 ## <a name="prerequisites"></a>前提条件
 
 * [Python 3.6 以降][python]
-* 無料の [Computer Vision キー][computervision_resource]とそれに関連付けられたエンドポイント。ComputerVisionAPI クライアント オブジェクトのインスタンスを作成するときに、これらの値が必要となります。 次のいずれかの方法を使用してこれらの値を取得してください。
+* 無料の [Computer Vision キー][computervision_resource]とそれに関連付けられたエンドポイント。 [ComputerVisionClient][ref_computervisionclient] クライアント オブジェクトのインスタンスを作成するときに、これらの値が必要となります。 次のいずれかの方法を使用してこれらの値を取得してください。
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Azure のサブスクリプションをお持ちでない場合
 
@@ -84,7 +84,7 @@ source cogsrv-vision-env/bin/activate
 
 ### <a name="install-the-sdk"></a>SDK のインストール
 
-pip を使用して、Python 用の Azure Cognitive Services Computer Vision SDK [パッケージ ][pypi_computervision] をインストールします。
+[pip][pip] を使用して、Python 用の Azure Cognitive Services Computer Vision SDK [パッケージ][pypi_computervision]をインストールします。
 
 ```Bash
 pip install azure-cognitiveservices-vision-computervision
@@ -154,7 +154,7 @@ client = ComputerVisionClient(endpoint, credentials)
 
 ### <a name="analyze-an-image"></a>イメージを分析する
 
-[`analyze_image`][ref_computervisionclient_analyze_image] を使用して、特定の特徴について画像を分析できます。visual_features プロパティを使用して、画像に対して実行する分析の種類を設定します。 一般的な値は `VisualFeatureTypes.tags` と `VisualFeatureTypes.description` です。
+[`analyze_image`][ref_computervisionclient_analyze_image] を使用して、特定の特徴について画像を分析できます。 [`visual_features`][ref_computervision_model_visualfeatures] プロパティを使用して、画像に対して実行する分析の種類を設定します。 一般的な値は `VisualFeatureTypes.tags` と `VisualFeatureTypes.description` です。
 
 ```Python
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
@@ -286,7 +286,7 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>全般
 
-Python SDK を使用して [ComputerVisionClient][ref_computervisionclient] クライアント オブジェクトを操作する場合、ComputerVisionErrorException クラスを使用してエラーを返します。 このサービスによって返されるエラーは、REST API 要求に対して返される同じ HTTP 状態コードに対応しています。
+Python SDK を使用して [ComputerVisionClient][ref_computervisionclient] クライアント オブジェクトを操作する場合、[`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] クラスを使用してエラーを返します。 このサービスによって返されるエラーは、REST API 要求に対して返される同じ HTTP 状態コードに対応しています。
 
 たとえば、無効なキーを使用して画像を分析しようとすると、`401` エラーが返されます。 次のスニペットでは、例外をキャッチし、エラーに関する追加情報を表示することで、[エラー][ref_httpfailure]が適切に処理されます。
 
@@ -312,7 +312,7 @@ except HTTPFailure as e:
 
 ### <a name="handle-transient-errors-with-retries"></a>再試行による一時的なエラーを処理する
 
-[ComputerVisionClient][ref_computervisionclient] クライアントの操作中に、このサービスによって適用されたレート制限によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン][azure_pattern_retry]」および「[サーキット ブレーカー パターン][azure_pattern_circuit_breaker]」を参照してください。
+[ComputerVisionClient][ref_computervisionclient] クライアントの操作中に、このサービスによって適用された[レート制限][computervision_request_units]によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン][azure_pattern_retry]」および「[サーキット ブレーカー パターン][azure_pattern_circuit_breaker]」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

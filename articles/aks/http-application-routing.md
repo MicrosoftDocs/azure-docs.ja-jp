@@ -6,27 +6,27 @@ author: lachie83
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0975d0a60081b66d3d5a513954deb0c4fa1b978
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60466312"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851546"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
-HTTP アプリケーション ルーティング ソリューションを使用すると、Azure Kubernetes Service (AKS) にデプロイされたアプリケーションに簡単にアクセスできます。 ソリューションを有効にすると、AKS クラスター内にイングレス コントローラーが構成されます。 アプリケーションがデプロイされると、このソリューションは、アプリケーション エンドポイントのパブリックにアクセス可能な DNS 名も作成します。
+HTTP アプリケーション ルーティング ソリューションを使用すると、Azure Kubernetes Service (AKS) にデプロイされたアプリケーションに簡単にアクセスできます。 ソリューションを有効にすると、AKS クラスター内に[イングレス コントローラー](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)が構成されます。 アプリケーションがデプロイされると、このソリューションは、アプリケーション エンドポイントのパブリックにアクセス可能な DNS 名も作成します。
 
-アドオンを有効にすると、サブスクリプション内に DNS ゾーンが作成されます。 DNS のコストの詳細については、「[Azure DNS の価格][dns-pricing]」を参照してください。
+アドオンを有効にすると、サブスクリプション内に DNS ゾーンが作成されます。 DNS のコストの詳細については、[DNS の価格][dns-pricing]に関するページを参照してください。
 
 > [!CAUTION]
 > HTTP アプリケーションのルーティング アドオンは、ユーザーがすばやくイングレス コントローラーを作成し、アプリケーションにアクセスできるように設計されています。 このアドオンを運用環境で使用することはお勧めできません。 複数のレプリカと TLS のサポートを含む運用環境対応のイングレス デプロイについては、[HTTPS イングレス コントローラーの作成](https://docs.microsoft.com/azure/aks/ingress-tls)に関するページを参照してください。
 
 ## <a name="http-routing-solution-overview"></a>HTTP のルーティング ソリューションの概要
 
-アドオンによって、[Kubernetes イングレス コントローラー][ingress] と[外部 DNS][external-dns] コントローラーの 2 つのコンポーネントがデプロイされます。
+アドオンによって、[Kubernetes イングレス コントローラー][ingress]と[外部 DNS][external-dns] コントローラーの 2 つのコンポーネントがデプロイされます。
 
 - **イングレス コントローラー**:イングレス コントローラーは、LoadBalancer タイプの Kubernetes サービスを使用することで、インターネットに公開されます。 イングレス コントローラーは、アプリケーションのエンドポイントへのルートを作成する [Kubernetes イングレス リソース][ingress-resource]を監視し、実装します。
 - **外部 DNS コントローラー**:Kubernetes イングレス リソースを監視し、クラスター固有の DNS ゾーンに DNS A レコードを作成します。

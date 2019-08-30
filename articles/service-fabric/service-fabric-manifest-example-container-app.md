@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 622e6f7552d91cdb9ccf3668c302496c68a5920f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece0b763a2dbe501b0f46d026c59e1294a448c59
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719245"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650607"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>複数コンテナーのアプリケーション マニフェストとサービス マニフェストの例
 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Windows Server 2016 コンテナー サンプル](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) のマニフェストに基づいています。
@@ -28,7 +28,7 @@ ms.locfileid: "60719245"
 
 |Manifest|機能|
 |---|---|
-|[アプリケーション マニフェスト](#application-manifest)| [環境変数のオーバーライド](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[コンテナー ポートからホストへのマッピングの構成](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[コンテナー レジストリ認証の構成](service-fabric-get-started-containers.md#configure-container-registry-authentication)、[リソース ガバナンス](service-fabric-resource-governance.md)、[分離モードの設定](service-fabric-get-started-containers.md#configure-isolation-mode)、[OS ビルド固有のコンテナー イメージの指定](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[アプリケーション マニフェスト](#application-manifest)| [環境変数のオーバーライド](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[コンテナー ポートからホストへのマッピングの構成](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[コンテナー レジストリ認証の構成](service-fabric-get-started-containers.md#configure-container-repository-authentication)、[リソース ガバナンス](service-fabric-resource-governance.md)、[分離モードの設定](service-fabric-get-started-containers.md#configure-isolation-mode)、[OS ビルド固有のコンテナー イメージの指定](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService サービス マニフェスト](#frontendservice-service-manifest)| [環境変数の設定](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[エンドポイントの構成](service-fabric-get-started-containers.md#configure-communication)、コマンドをコンテナーに渡す、[証明書のコンテナーへのインポート](service-fabric-securing-containers.md)| 
 |[BackEndService サービス マニフェスト](#backendservice-service-manifest)|[環境変数の設定](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[エンドポイントの構成](service-fabric-get-started-containers.md#configure-communication)、[ボリューム ドライバーの構成](service-fabric-containers-volume-logging-drivers.md)| 
 

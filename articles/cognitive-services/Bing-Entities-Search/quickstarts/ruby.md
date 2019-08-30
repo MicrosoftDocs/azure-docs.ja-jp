@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: e470173dc9e747547ff5085f3c804fb18c0c3594
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e892d9917d0cc295236ee5e134348248dd4817a1
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423935"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034511"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Bing Entity Search API のクイック スタート (Ruby)
 

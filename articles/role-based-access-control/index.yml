@@ -1,56 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure リソースの RBAC に関するドキュメント
+summary: ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるシステムです。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 metadata:
-  document_id: null
-  title: Azure リソースのロールベースのアクセス制御 (RBAC) に関するドキュメント | Microsoft Docs
+  title: Azure リソースのロールベースのアクセス制御 (RBAC) に関するドキュメント
   description: Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するためのロールベースのアクセス制御 (RBAC) について学習します。
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  services: role-based-access-control
   ms.service: role-based-access-control
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 02/16/2019
+  ms.collection: na
+  author: rolyon
   ms.author: rolyon
-abstract:
-  description: ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるシステムです。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-get-started.png
-      width: 200
-    title: 'Azure へのアクセスのロックダウン (1:16)'
-    href: 'https://www.youtube.com/embed/FKBoWWKRnvI'
-    width: 200
-sections:
-  - title: 5 分間のクイックスタート
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/check-access">ユーザーのアクセス権の表示</a>
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">ユーザーへのアクセス権の付与 - ポータル</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">グループへのアクセス権の付与 - PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">カスタム ロールの作成 - PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">カスタム ロールの作成 - CLI</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: ロールベースのアクセス制御 (RBAC) を使用した Azure リソースのセキュリティ保護
-            href: /learn/modules/secure-azure-resources-with-rbac/
-            image:
-              src: /learn/achievements/secure-azure-resources-with-rbac.svg
-              href: /learn/modules/secure-azure-resources-with-rbac/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-active-directory">対話型学習の詳細...</a>
+  ms.date: 08/26/2019
+  ms.openlocfilehash: cd4628ef5e7d56f03590899fe514141d415c8f01
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70052013"
+landingContent:
+- title: Azure リソースの RBAC について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: RBAC とは
+      url: overview.md
+    - text: 各種ロールについて
+      url: rbac-and-directory-admin-roles.md
+  - linkListType: video
+    links:
+    - text: Microsoft Ignite:Azure へのアクセスのロックダウン
+      url: https://www.youtube.com/embed/FKBoWWKRnvI
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ユーザーのアクセス権の表示
+      url: check-access.md
+  - linkListType: tutorial
+    links:
+    - text: ユーザーへのアクセス権の付与 - ポータル
+      url: quickstart-assign-role-user-portal.md
+    - text: グループへのアクセス権の付与 - PowerShell
+      url: tutorial-role-assignments-group-powershell.md
+  - linkListType: learn
+    links:
+    - text: RBAC による Azure リソースのセキュリティ保護
+      url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
+- title: アクセスを管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ポータル
+      url: role-assignments-portal.md
+    - text: PowerShell
+      url: role-assignments-powershell.md
+    - text: Azure CLI
+      url: role-assignments-cli.md
+    - text: REST API
+      url: role-assignments-rest.md
+    - text: Template
+      url: role-assignments-template.md
+- title: カスタム ロールを作成する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: カスタム ロール
+      url: custom-roles.md
+  - linkListType: tutorial
+    links:
+    - text: カスタム ロールの作成 - PowerShell
+      url: tutorial-custom-role-powershell.md
+    - text: カスタム ロールの作成 - CLI
+      url: tutorial-custom-role-cli.md

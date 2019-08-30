@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1545e2e7eba23b0bedbfe297c292fc94e1659ae3
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365592"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775279"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -121,7 +121,7 @@ ms.locfileid: "60365592"
 
    ![基本ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. **[設定]** ページで **[仮想ネットワーク ゲートウェイ]** を選び、 **[承認の利用]** チェック ボックスをオンにします。
-6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 Click **OK**.
+6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 Click **OK**. **[ピア回線の URI]** は、ExpressRoute 回線のリソース ID です (ExpressRoute 回線の [Properties Setting]\(プロパティ設定\) ウィンドウで確認できます)。
 
    ![[設定] ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. **[概要]** ページの内容を確認し、 **[OK]** をクリックします。

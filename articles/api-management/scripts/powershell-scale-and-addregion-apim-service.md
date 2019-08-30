@@ -8,17 +8,16 @@ manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: ec603ec7bd87062d19651fc13b8cf452a8cda2af
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 9bd584c4759d8a4abeae32983fcb60ac8102bb36
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729733"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073278"
 ---
 # <a name="scale-the-service-instance"></a>サービス インスタンスのスケーリング
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 70f6e26d423781ba53865304a3fe8440fb120a7a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 49780ec342ea168d27ab8a029c41a1c18a6ffcc4
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705168"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019049"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -78,22 +78,23 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
-|TotalRequests|ゲートウェイ要求の合計|Count|合計|ゲートウェイ要求の数|Location、Hostname|
-|SuccessfulRequests|成功したゲートウェイ要求|Count|合計|成功したゲートウェイ要求の数|Location、Hostname|
-|UnauthorizedRequests|未承認ゲートウェイ要求|Count|合計|未承認ゲートウェイ要求の数|Location、Hostname|
-|FailedRequests|失敗したゲートウェイ要求|Count|合計|ゲートウェイ要求における失敗の数|Location、Hostname|
-|OtherRequests|その他のゲートウェイ要求|Count|合計|その他のゲートウェイ要求の数|Location、Hostname|
-|Duration|ゲートウェイ要求の全体の期間|ミリ秒|平均|ゲートウェイ要求の全体の期間 (ミリ秒単位)|Location、Hostname|
-|容量|容量|Percent|平均|ApiManagement サービスの使用状況メトリック|Location|
-|EventHubTotalEvents|EventHub イベントの合計数|Count|合計|EventHub に送信されるイベントの数|Location|
-|EventHubSuccessfulEvents|成功した EventHub イベント数|Count|合計|成功した EventHub イベントの数|Location|
-|EventHubTotalFailedEvents|失敗した EventHub イベント数|Count|合計|失敗した EventHub イベントの数|Location|
-|EventHubRejectedEvents|拒否された EventHub イベント数|Count|合計|拒否された EventHub イベントの数 (誤った構成または未承認)|Location|
-|EventHubThrottledEvents|調整された EventHub イベント数|Count|合計|調整された EventHub イベントの数|Location|
-|EventHubTimedoutEvents|タイムアウトした EventHub イベント数|Count|合計|タイムアウトした EventHub イベントの数|Location|
-|EventHubDroppedEvents|破棄された EventHub イベント数|Count|合計|キューのサイズ制限に達したためスキップされたイベントの数|Location|
-|EventHubTotalBytesSent|EventHub イベントのサイズ|Bytes|合計|EventHub イベントの合計サイズ (バイト単位)|Location|
-|Requests|Requests|Count|合計|ゲートウェイ要求数|Location、BackendResponseCode、LastErrorReason、GatewayResponseCode|
+|Requests|Requests|Count|合計|指定した期間内のゲートウェイ要求の合計数。 さまざまなディメンションでスライスして、問題の診断に役立てることができます。 |Location、BackendResponseCode、LastErrorReason、GatewayResponseCode|
+|TotalRequests|ゲートウェイ要求の合計|Count|合計|指定した期間内のゲートウェイ要求の合計数。 このメトリックは推奨されていません。新しい `Requests` メトリックを使用することをお勧めします。 |Location、Hostname|
+|SuccessfulRequests|成功したゲートウェイ要求|Count|合計|指定した期間内に成功したゲートウェイ要求の合計数。 このメトリックは推奨されていません。新しい `Requests` メトリックを使用することをお勧めします。|Location、Hostname|
+|UnauthorizedRequests|未承認ゲートウェイ要求|Count|合計| 指定した期間内に承認されなかったゲートウェイ要求の合計数。 このメトリックは推奨されていません。新しい `Requests` メトリックを使用することをお勧めします。|Location、Hostname|
+|FailedRequests|失敗したゲートウェイ要求|Count|合計|指定した期間内に失敗したゲートウェイ要求の合計数。 このメトリックは推奨されていません。新しい `Requests` メトリックを使用することをお勧めします。|Location、Hostname|
+|OtherRequests|その他のゲートウェイ要求|Count|合計|指定した期間内の、成功、未承認、または失敗のカテゴリに分類されないゲートウェイ要求の合計数。 このメトリックは推奨されていません。新しい `Requests` メトリックを使用することをお勧めします。 |Location、Hostname|
+|Duration|ゲートウェイ要求の全体の期間|ミリ秒|平均|API Management がクライアントから要求を受信してからクライアントに応答を返すまでの時間。|Location、Hostname|
+|容量|容量|Percent|平均|インスタンスをスケールしてより多くの負荷に対応できるかどうかを判断するための、API Management インスタンスにかかる負荷のインジケーター。|Location|
+|EventHubTotalEvents|EventHub イベントの合計数|Count|合計|指定した期間内に API Management から EventHub に送信されたイベントの合計数。|Location|
+|EventHubSuccessfulEvents|成功した EventHub イベント数|Count|合計|指定した期間内に成功した EventHub イベントの合計数。|Location|
+|EventHubTotalFailedEvents|失敗した EventHub イベント数|Count|合計|指定した期間内に失敗した EventHub イベントの合計数。|Location|
+|EventHubRejectedEvents|拒否された EventHub イベント数|Count|合計|指定した期間内に拒否された EventHub イベント (不適切な構成、または承認されていない) の合計数。|Location|
+|EventHubThrottledEvents|調整された EventHub イベント数|Count|合計|指定した期間内に調整された EventHub イベントの合計数。|Location|
+|EventHubTimedoutEvents|タイムアウトした EventHub イベント数|Count|合計|指定した期間内にタイムアウトした EventHub イベントの合計数。|Location|
+|EventHubDroppedEvents|破棄された EventHub イベント数|Count|合計|指定した期間内にキュー サイズの制限に達したためにスキップされたイベントの合計数。|Location|
+|EventHubTotalBytesSent|EventHub イベントのサイズ|Bytes|合計|指定した期間内の EventHub イベントの合計サイズ (バイト単位)。|Location|
+
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
@@ -1242,9 +1243,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |outgoing.wns.authenticationerror|WNS 認証エラー|Count|合計|資格情報無効または間違ったトークンによる Windows Live との通信エラーのため、通知が配信されません。|ディメンションなし|
 |outgoing.apns.success|APNS 正常通知|Count|合計|成功した通知の数。|ディメンションなし|
 |outgoing.apns.invalidcredentials|APNS 認証エラー|Count|合計|PNS が提供された資格情報を受け取らなかったか、資格情報がブロックされたために失敗したプッシュの数|ディメンションなし|
-|outgoing.apns.badchannel|APNS 不良チャネル エラー|Count|合計|トークンが無効なために失敗したプッシュの数 (APNS 状態コード: 8)。|ディメンションなし|
+|outgoing.apns.badchannel|APNS 不良チャネル エラー|Count|合計|トークンが無効なために失敗したプッシュの数 (APNS バイナリ プロトコルの状態コード:8. APNS HTTP プロトコルの状態コード:"BadDeviceToken" を含む 400)。|ディメンションなし|
 |outgoing.apns.expiredchannel|APNS 期限切れチャネル エラー|Count|合計|APNS フィードバック チャネルによって無効化されたトークンの数。|ディメンションなし|
-|outgoing.apns.invalidnotificationsize|APNS 無効通知サイズ エラー|Count|合計|ペイロードが長すぎたために失敗したプッシュの数 (APNS 状態コード: 7)。|ディメンションなし|
+|outgoing.apns.invalidnotificationsize|APNS 無効通知サイズ エラー|Count|合計|ペイロードが長すぎたために失敗したプッシュの数 (APNS バイナリ プロトコルの状態コード:7)。|ディメンションなし|
 |outgoing.apns.pnserror|APNS エラー|Count|合計|APNS との通信エラーにより失敗したプッシュの数。|ディメンションなし|
 |outgoing.gcm.success|GCM 正常通知|Count|合計|成功した通知の数。|ディメンションなし|
 |outgoing.gcm.invalidcredentials|GCM 承認エラー (無効な資格情報)|Count|合計|PNS が提供された資格情報を受け取らなかったか、資格情報がブロックされたために失敗したプッシュの数|ディメンションなし|

@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 74d345249e1cbaeb45a1a35d3c3d2f61a4c0b9cf
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358618"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032970"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
 
@@ -49,6 +49,14 @@ Azure Machine Learning SDK for Python:PyYAML は distutils によってインス
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
+**エラー メッセージ: `ERROR: No matching distribution found for azureml-dataprep-native`**
+
+Anaconda の Python 3.7.4 ディストリビューションには、azureml-sdk のインストールが壊れるバグがあります。 この問題については、こちらの [GitHub の問題](https://github.com/ContinuumIO/anaconda-issues/issues/11195)で説明されています。これは、次のコマンドを使用して新しい Conda 環境を作成することによって回避できます。
+```bash
+conda create -n <env-name> python=3.7.3
+```
+これにより、Python 3.7.3 を使用する Conda 環境が作成され、この環境には 3.7.4 でのインストールの問題はありません。
+
 ## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning コンピューティングの作成に関する問題
 
 まれにですが、GA リリースの前に Azure portal から Azure Machine Learning ワークスペースを作成したユーザーが、そのワークスペースに Azure Machine Learning コンピューティングを作成できないことがあります。 サービスにサポート要求を送るか、ポータルまたは SDK を使って新しいワークスペースを作成してすぐにブロックを解除することができます。
@@ -71,7 +79,7 @@ Tensor Flow の自動化された機械学習は現在、Tensor Flow バージ�
 
 ### <a name="experiment-charts"></a>実験グラフ
 
-自動化された ML の実験の反復に示された二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は 4/12 以降のユーザー インターフェイスで正しくレンダリングされていません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
+自動化された ML の実験のイテレーションで示される二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は、4/12 以降のユーザー インターフェイスでは正しくレンダリングされません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
 
 ## <a name="databricks"></a>Databricks
 
@@ -134,6 +142,15 @@ SDK またはポータルで共有リンクからワークスペースを直接�
 
 サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 いくつかのログを確認するには、[Azure portal](https://portal.azure.com) にアクセスし、自分のワークスペースに移動して、 **[ワークスペース]、[実験]、[実行]、[ログ]** の順に選択します。
 
+> [!NOTE]
+> Azure Machine Learning service では、AutoML や トレーニング ジョブを実行する Docker コンテナーなど、トレーニング中にさまざまなソースからの情報がログに記録すされます。 これらのログの多くについては、ドキュメントに記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
+
+## <a name="activity-logs"></a>アクティビティ ログ
+
+Azure Machine Learning ワークスペース内の一部の操作では、情報は__アクティビティ ログ__に記録されません。 たとえば、トレーニングの開始やモデルの登録などです。
+
+これらの操作の一部はワークスペースの __[アクティビティ]__ 領域に表示されますが、アクティビティを開始したユーザーは示されません。
+
 ## <a name="resource-quotas"></a>リソース クォータ
 
 Azure Machine Learning の使用時に扱うことがあるリソース クォータの詳細は[こちら](how-to-manage-quotas.md)にあります。
@@ -151,3 +168,9 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
 ```
 
 たとえば、リモート実行のために送信される ML パイプラインからコンピューティング ターゲットを作成またはアタッチしようとすると、エラーが発生します。
+
+## <a name="overloaded-azurefile-storage"></a>オーバーロードされた AzureFile ストレージ
+
+エラー `Unable to upload project files to working directory in AzureFile because the storage is overloaded` が発生する場合は、次の回避策を適用してください。
+
+データ転送などの他のワークロードにファイル共有を使用している場合は、BLOB を使用して、ファイル共有を実行の送信のために自由に使用できるようにすることをお勧めします。 2 つの異なるワークスペース間でワークロードを分割することもできます。

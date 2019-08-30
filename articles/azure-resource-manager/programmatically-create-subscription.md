@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: 701b35d99cb98009ec0116c23eaeab94ff967f51
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d6ae863aed629f5f5b1497d5a6e0f8108f4703c8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678932"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848713"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションをプログラムで作成する (プレビュー)
 
@@ -69,7 +69,7 @@ GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?
 }
 ```
 
-`principalName` プロパティを使用して、サブスクリプション料金の請求先アカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、登録アカウント SignUpEngineering@contoso.com でサブスクリプションを作成する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 これは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
+`principalName` プロパティを使用して、サブスクリプション料金の請求先アカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、登録アカウント SignUpEngineering@contoso.com でサブスクリプションを作成する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 この識別子は登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
 
 ## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -117,7 +117,7 @@ az billing enrollment-account list
 ]
 ```
 
-`principalName` プロパティを使用して、サブスクリプション料金の請求先アカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、登録アカウント SignUpEngineering@contoso.com でサブスクリプションを作成する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 これは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
+`principalName` プロパティを使用して、サブスクリプション料金の請求先アカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、登録アカウント SignUpEngineering@contoso.com でサブスクリプションを作成する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 この識別子は登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
 
 ---
 
@@ -201,7 +201,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Enterprise のサブスクリプション作成 API の制限事項
 
 - この API を使用して作成できるのは、Azure Enterprise サブスクリプションのみです。
-- 登録アカウントあたり作成できるサブスクリプションの上限数は 200 です。 その後、サブスクリプションはアカウント センターからのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。
+- 登録アカウントあたり作成できるサブスクリプションの上限数は 200 です。 その後、アカウントの追加のサブスクリプションは、アカウント センターからのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。
 - アカウント所有者ではないが、RBAC 経由で登録アカウントに追加されたユーザーは、アカウント センターを使用してサブスクリプションを作成できません。
 - サブスクリプションが作成されるテナントを選択することはできません。 サブスクリプションは常に、アカウント所有者のホーム テナント内に作成されます。 サブスクリプションを別のテナントに移動する場合は、[テナントのサブスクリプションの変更](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関する記事を参照してください。
 

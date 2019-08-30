@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: 52f2236b8c0a63d8a34f14843d7d6752411d2663
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d3e4e0f4e7b1f8d3e100b3f1b3446907cfd587c5
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668053"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716967"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Node.js)
 
@@ -53,33 +53,26 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 このセクションでは、[デバイスから IoT Hub へのテレメトリ送信](quickstart-send-telemetry-node.md)に関するページで作成したシミュレート デバイス アプリを変更して、cloud-to-device メッセージを IoT ハブから受信するようにします。
 
-1. テキスト エディターを使用して SimulatedDevice.js ファイルを開きます。
+1. テキスト エディターを使用して **SimulatedDevice.js** ファイルを開きます。 このファイルは、[デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)に関するクイックスタートでダウンロードした Node.js サンプル コードのルート フォルダーの **iot-hub\Quickstarts\simulated-device** フォルダーにあります。
 
-2. IoT Hub から送信されたメッセージを処理するように **connectCallback** 関数を変更します。 この例では、メッセージが処理されたことを IoT Hub に通知するために、デバイスは必ず **complete** 関数を呼び出します。 変更後の **connectCallback** 関数は次のスニペットのようになります。
+2. IoT Hub から送信されたメッセージを受信するために、デバイス クライアントにハンドラーを登録します。 次のスニペットのように、デバイス クライアントを作成する行の直後に、`client.on` の呼び出しを追加します。
 
     ```javascript
-    var connectCallback = function (err) {
-      if (err) {
-        console.log('Could not connect: ' + err);
-      } else {
-        console.log('Client connected');
-        client.on('message', function (msg) {
-          console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
-          client.complete(msg, printResultFor('completed'));
-        });
-        // Create a message and send it to the IoT Hub every second
-        setInterval(function(){
-            var temperature = 20 + (Math.random() * 15);
-            var humidity = 60 + (Math.random() * 20);
-            var data = JSON.stringify({ deviceId: 'myFirstNodeDevice', temperature: temperature, humidity: humidity });
-            var message = new Message(data);
-            message.properties.add('temperatureAlert', (temperature > 30) ? 'true' : 'false');
-            console.log("Sending message: " + message.getData());
-            client.sendEvent(message, printResultFor('send'));
-        }, 1000);
-      }
-    };
+    var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
+
+    client.on('message', function (msg) {
+      console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
+      client.complete(msg, function (err) {
+        if (err) {
+          console.error('complete error: ' + err.toString());
+        } else {
+          console.log('complete sent');
+        }
+      });
+    });
     ```
+
+    この例では、メッセージが処理されたことを IoT Hub に通知するために、デバイスで **complete** 関数が呼び出されます。 MQTT トランスポートを使用している場合は、**complete** の呼び出しは必要なく省略できます。 HTTPS と AMQP の場合は必要です。
   
    > [!NOTE]
    > トランスポートとして AMQP の代わりに HTTPS を使用した場合、**DeviceClient** インスタンスが IoT Hub からのメッセージをチェックする頻度は低くなります (25 分に 1 回未満)。 MQTT、AMQP、および HTTPS のサポートの相違点と、IoT Hub スロットルの詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide-messaging.md)を参照してください。
@@ -173,7 +166,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 これで、アプリケーションを実行する準備が整いました。
 
-1. **simulateddevice** フォルダーからコマンド プロンプトで次のコマンドを実行し、IoT Hub にテレメトリを送信して、クラウドからデバイスへのメッセージを待機します。
+1. **simulated-device** フォルダーからコマンド プロンプトで次のコマンドを実行し、IoT Hub にテレメトリを送信して、クラウドからデバイスへのメッセージを待機します。
 
     ```shell
     node SimulatedDevice.js

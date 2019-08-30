@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335754"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772897"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
@@ -88,6 +88,15 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 さらに、実行している Azure 関数アプリ インスタンスの数がわかっている場合は、そのシナリオを検証できます。 リース コンテナーを調べて、その中のリース項目の数を数えた場合、`Owner` プロパティの異なる値の数は、関数アプリのインスタンスの数と等しくなっている必要があります。 既知の Azure 関数アプリ インスタンスの数より Owner の数の方が多い場合、余分な所有者が変更を "盗んでいる" ことを意味します。
 
 このような状況を回避する簡単な方法は、`LeaseCollectionPrefix/leaseCollectionPrefix` を新しい/別の値で関数に適用するか、または新しいリース コンテナーでテストします。
+
+### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>再起動してコンテナーにあるすべての項目を最初から再処理する必要がある 
+コンテナーにあるすべての項目を最初から再処理するには、次の手順を実行します。
+1. 現在実行中の場合は、Azure 関数を停止します。 
+1. リース コレクション内のドキュメントを削除します (または、空になるようにリース コレクションを削除して再作成します)。
+1. 関数内の [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger 属性を true に設定します。 
+1. Azure 関数を再起動します。 これですべての変更が最初から読み取られ、処理されるようになります。 
+
+[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) を true に設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、Azure 関数が指示されます。 これは、リースがまだ作成されていないとき (つまり、リース コレクションにドキュメントがあるとき) にのみ機能します。 既に作成されているリースがある場合は、このプロパティを true に設定しても影響はありません。このシナリオでは、関数を停止して再起動すると、リース コレクションで定義されている最後のチェックポイントから読み取りが開始されます。 最初から再処理するには、上記の手順1 から 4 に従います。  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>バインディングを実行するには、IReadOnlyList\<Document> または JArray を使用する必要があります。
 

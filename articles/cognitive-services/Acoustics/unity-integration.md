@@ -3,20 +3,20 @@ title: Project Acoustics Unity の統合とデプロイ
 titlesuffix: Azure Cognitive Services
 description: このハウツー記事では、Project Acoustics Unity プラグインの Unity プロジェクトへの統合について説明します。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1a90f6102d35dc1a3bb97c840f2955b54f35bbad
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 54bc98e0ddba0292c6a5dbb07f2bbdfce6a1cb45
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706641"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933154"
 ---
 # <a name="project-acoustics-unity-integration"></a>Project Acoustics Unity の統合
 このハウツー記事では、Project Acoustics Unity プラグインの Unity プロジェクトへの統合について説明します。
@@ -32,6 +32,10 @@ ms.locfileid: "68706641"
     ![Unity の [Import Package] メニューのスクリーンショット](media/import-package.png)  
 
 * **[ProjectAcoustics.unitypackage]** を選択します。
+
+* **[Import]** ボタンをクリックして、Unity パッケージをプロジェクトに統合します。  
+
+    ![Unity の [Import Package] ダイアログのスクリーンショット](media/import-dialog.png)  
 
 プラグインを既存のプロジェクトにインポートする場合、C# コンパイラへのオプションを指定する **mcs.rsp** ファイルがプロジェクト ルートに既に存在している可能性があります。 このファイルの内容を、Project Acoustics プラグインに付属する mcs.rsp ファイルにマージする必要があります。
 

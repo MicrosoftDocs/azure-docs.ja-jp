@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 0d352d61a971e289a6286c2d948c3f0869ddd8d2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6f363003dc24509bd0b80922d9e34560250cc7ed
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706377"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779298"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions のネットワークについてよく寄せられる質問
 
@@ -48,7 +48,7 @@ App Service Environment の使用の詳細については、まず「[App Servic
 
 ## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>サービス エンドポイントで保護されたリソースにアクセスするにはどうすればよいですか?
 
-仮想ネットワーク統合 (現在プレビュー段階です) を使用すると、実行中の関数からサービスエンドポイントで保護されたリソースにアクセスすることができます。 詳細については、[仮想ネットワーク統合のプレビュー](functions-networking-options.md#preview-version-of-virtual-network-integration)に関する記事を参照してください。
+仮想ネットワーク統合を使用すると、実行中の関数からサービスエンドポイントで保護されたリソースにアクセスすることができます。 詳細については、[仮想ネットワーク統合](functions-networking-options.md#virtual-network-integration)に関する記事を参照してください。
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>仮想ネットワーク内のリソースから関数をトリガーするにはどうすればよいですか?
 

@@ -11,6 +11,9 @@
     - name: ブループリントの作成 - ポータル
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-portal.md
+    - name: ブループリントの作成 - PowerShell
+      displayName: 'publish, assign, track, unassign, delete'
+      href: create-blueprint-powershell.md
     - name: ブループリントの作成 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -27,6 +30,12 @@
     - name: Index
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: CIS Microsoft Azure Foundations Benchmark
+      items:
+        - name: 概要
+          href: ./samples/cis-azure-1.1.0/index.md
+        - name: 推奨マッピング
+          href: ./samples/cis-azure-1.1.0/control-mapping.md
     - name: IRS 1075
       items:
         - name: 概要
@@ -101,6 +110,22 @@
         - name: デプロイ手順
           displayName: 'standards, uk official, uk nhs'
           href: ./samples/ukofficial/deploy.md
+    - name: CAF 基盤
+      items:
+        - name: 概要
+          displayName: 'caf, foundation'
+          href: ./samples/caf-foundation/index.md
+        - name: デプロイ手順
+          displayName: 'caf, foundation, deploy'
+          href: ./samples/caf-foundation/deploy.md
+    - name: CAF 移行ランディング ゾーン
+      items:
+        - name: 概要
+          displayName: 'caf, migrate, landing zone'
+          href: ./samples/caf-migrate-landing-zone/index.md
+        - name: デプロイ手順
+          displayName: 'caf, migrate, landing zone, deploy'
+          href: ./samples/caf-migrate-landing-zone/deploy.md
 - name: 概念
   items:
     - name: ブループリントのライフサイクル

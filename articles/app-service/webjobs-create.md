@@ -2,26 +2,22 @@
 title: WebJobs でバックグラウンド タスクを実行する - Azure App Service
 description: Azure App Service Web アプリ、API アプリ、またはモバイル アプリで Web ジョブを使用してバックグラウンド タスクを実行する方法を説明します。
 services: app-service
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 47a068ac6a7941c8ce71cf5c6745d2958c75fe74
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736593"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945803"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -165,7 +161,7 @@ when making changes in one don't forget the other two.
    | **[ファイルのアップロード]**  | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
    | **[種類]**  | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **[トリガー]**  | スケジュール | スケジュールを確実に動作させるために、Always On 機能を有効にします。 Always On 機能は、Basic、Standard、および Premium の価格レベルでのみ利用できます。|
-   | **[CRON 式]**  | 0 0/20 * * * * | [CRON 式](#cron-expressions)については、次のセクションで説明します。 |
+   | **[CRON 式]**  | 0 0/20 * * * * | [CRON 式](#ncrontab-expressions)については、次のセクションで説明します。 |
 
 4. Click **OK**.
 
@@ -173,9 +169,9 @@ when making changes in one don't forget the other two.
 
    ![Web ジョブの一覧](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-## <a name="cron-expressions"></a>CRON 式
+## <a name="ncrontab-expressions"></a>NCRONTAB 式
 
-[CRON 式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)は、ポータルで入力するか、`settings.job` ファイルを Web ジョブの *.zip* ファイルのルートに含めることができます。例を以下に示します。
+[NCRONRAB 式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)は、ポータルで入力するか、`settings.job` ファイルを Web ジョブの *.zip* ファイルのルートに含めることができます。例を以下に示します。
 
 ```json
 {

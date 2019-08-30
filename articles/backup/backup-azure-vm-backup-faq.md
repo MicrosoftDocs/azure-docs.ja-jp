@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8948a620c27311f0371a557c91a971da37111cb9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688587"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827574"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -64,14 +64,14 @@ Azure Backup に Key Vault へのアクセス許可を付与してください�
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>進行中のバックアップ ジョブを取り消すことはできますか。
 はい。 **スナップショット作成**状態のバックアップ ジョブは取り消すことができます。 スナップショットからのデータ転送が進行中である場合は、ジョブを取り消せません。
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Azure Backup サービスによって作成されたリソース グループ ( `AzureBackupRG_<geo>_<number>`) に対してロックを有効にしました。バックアップは引き続き動作しますか。
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Azure Backup サービスによって作成されたリソース グループ ( `AzureBackupRG_<geo>_<number>`) に対してロックを有効にしました。バックアップは引き続き動作しますか。
 Azure Backup サービスによって作成されたリソース グループをロックする場合は、復元ポイントの最大限度が 18 であるため、バックアップは失敗し始めます。
 
 将来のバックアップを成功させるために、ユーザーはロックを解除しリソース グループからの復元ポイント コレクションをクリアする必要があります。その場合は[次の手順に従って](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)復元ポイント コレクションを削除します。
 
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
-Azure Backup では、[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)がサポートされています。 SSD マネージド ディスクは、Azure VM に対して新しい種類の永続ストレージを提供します。 SSD マネージド ディスクのサポートは、[インスタント リストア](backup-instant-restore-capability.md)で提供されています。
+はい、Azure Backup では、[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)がサポートされています。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>書き込みアクセラレータ (WA) 対応ディスクを使用して VM をバックアップできますか。
 WA 対応ディスクでスナップショットを作成することはできません。 ただし、Azure Backup サービスでは、WA 対応ディスクをバックアップから除外できます。
@@ -119,7 +119,7 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 マネージド ディスクの Azure VM については、マネージド ディスクとして復元しているときに、可用性セットへの復元オプションがテンプレートに提供されます。 このテンプレートには、**可用性セット**と呼ばれる入力パラメーターがあります。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>復元のパフォーマンスを高めるには、どうすればよいですか。
-復元のパフォーマンスを高めるために、[インスタント リストア](backup-instant-restore-capability.md)機能に移行しています。
+[インスタント リストア](backup-instant-restore-capability.md)機能は、迅速なバックアップと、スナップショットからの即時のリストアに役立ちます。
 
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 

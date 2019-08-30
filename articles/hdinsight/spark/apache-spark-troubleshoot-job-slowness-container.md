@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 07/29/2019
-ms.openlocfilehash: 78dff1b9d9db4e54ab1a8f7203088753e206c610
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/21/2019
+ms.openlocfilehash: 635b7adb8753b7e9490e8f14a0699c09297fdbbb
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641488"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899095"
 ---
 # <a name="scenario-apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>シナリオ: Azure ストレージ コンテナーに Azure HDInsight のファイルが多数含まれる場合、Apache Spark ジョブの実行速度が低下する
 
@@ -27,8 +27,6 @@ HDInsight クラスターの実行時にファイルやサブフォルダーが�
 
 パーティションを追跡するために、Spark はディレクトリ構造に関する情報を格納する `FileStatusCache` を保持する必要があります。 このキャッシュを使用して、Spark はパスを解析し、使用可能なパーティションを認識できます。 パーティションを追跡することの利点は、データを読み取るときに、Spark が必要なファイルにのみアクセスすることです。 この情報を最新の状態に保つために、ユーザーが新しいデータを書き込むときに Spark はディレクトリにあるすべてのファイルをリストし、このキャッシュを更新する必要があります。
 
-Spark 1.6 では、ディレクトリを更新するたびに、(1) キャッシュをクリアし、(2) すべてのファイルを再帰的にリストし、(3) キャッシュ全体を更新します。 これにより、多くのリスト操作が行われます。
-
 Spark 2.1 では、書き込みのたびにキャッシュを更新する必要はありませんが、Spark は、既存のパーティション列が現在の書き込み要求で示されている列と一致するかどうかをチェックします。そのため、書き込みのたびに最初にリスト操作が行われます。
 
 Spark 2.2 では、追加モードでデータを書き込むときに、このパフォーマンスの問題を修正する必要があります。
@@ -43,8 +41,8 @@ N % 100 == 0 (100 は単なる例です) である N 番目のマイクロ バ�
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 
-* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得ることができます。
+* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
 
-* [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる – Microsoft Azure 公式アカウントです。Azure コミュニティを適切なリソース (回答、サポート、エキスパート) に結び付けることで、カスタマー エクスペリエンスを向上します。
+* [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート要求を送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure サポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」をご覧ください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

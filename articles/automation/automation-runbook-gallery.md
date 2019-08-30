@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fcf48cfdb43473f99b139f0a0a07a5ace9a91642
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476962"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019102"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 
@@ -57,7 +57,7 @@ PowerShell ギャラリーから直接インポートできるのは、Azure por
 
 ## <a name="modules-in-powershell-gallery"></a>PowerShell ギャラリーのモジュール
 
-PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com)から入手できます。 このギャラリーは Azure portal から起動でき、Azure Automation に直接インストールします。 ダウンロードして手動でインストールすることもできます。  
+PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com)から入手できます。 このギャラリーは Azure portal から起動でき、Azure Automation に直接インストールします。 ダウンロードして手動でインストールすることもできます。
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Azure ポータルで Automation モジュール ギャラリーからモジュールをインポートするには
 
@@ -74,7 +74,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
    * 作成者
    * コマンドレット/DSC リソース名
 
-5. 目的のモジュールを探し、選択して詳細を表示します。  
+5. 目的のモジュールを探し、選択して詳細を表示します。
 
    特定のモジュールにドリルダウンすると、詳細を表示できます。 この情報には、PowerShell ギャラリーへのリンク、必要な依存関係、モジュールに含まれるすべてのコマンドレットまたは DSC リソースが含まれています。
 
@@ -94,13 +94,23 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 Python Runbook は、[スクリプト センター ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)にあります。 Python Runbook をスクリプト センター ギャラリーに投稿するには、 **[Upload a contribution]** \(投稿のアップロード\) をクリックします。 投稿をアップロードするときに、タグ **Python** を確実に追加してください。
 
 > [!NOTE]
-> [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter)にコンテンツをアップロードするには、最低 100 ポイントが必要です。 
+> [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter)にコンテンツをアップロードするには、最低 100 ポイントが必要です。
 
 ## <a name="requesting-a-runbook-or-module"></a>Runbook またはモジュールの要求
 
 [ユーザーの声](https://feedback.azure.com/forums/246290-azure-automation/)に要求を送信できます。  Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
 
+## <a name="common-solutions-available-in-the-runbook-gallery"></a>Runbook ギャラリーで使用できる一般的なソリューション
+
+以下の一覧には、一般的なシナリオに対する解決策となるいくつかの Runbook が含まれています。 Azure Automation チームによって作成された Runbook の詳細な一覧については、[AzureAutomationTeam のプロファイル](https://www.powershellgallery.com/profiles/AzureAutomationTeam)のページを参照してください。
+
+* [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) - Automation アカウント内のすべてのモジュールの PowerShell ギャラリーに最新バージョンをインポートします。
+* [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) - このスクリプトでは、ジョブの状態とジョブ ストリームを含む Azure Automation ログを受信するように Azure Diagnostics と Log Analytics を構成します。
+* [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) - この Runbook では、Windows Azure 仮想マシンからリモート ファイルがコピーされます。
+* [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - この Runbook では、ローカル ファイルを Azure 仮想マシンにコピーします。
+
 ## <a name="next-steps"></a>次の手順
 
 * Runbook の使用を開始するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」をご覧ください
 * Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「 [PowerShell ワークフローについて](automation-powershell-workflow.md)
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/en-us/powershell/scripting/overview)に関するページを参照してください。

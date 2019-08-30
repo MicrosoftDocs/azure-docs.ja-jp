@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ac3d1a55a707349873132befb25a38358b563138
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bb54221dedc3bfd5ddc84098d5309d26abcfa305
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875555"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515583"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure Security Center の検出機能
 このドキュメントでは、Azure Security Center の高度な検出機能について取り上げます。この機能を使用すると、Microsoft Azure リソース (Windows と Linux の両方) が今さらされている脅威を特定し、迅速に対応するうえで必要な知見を得ることができます。
@@ -83,7 +83,7 @@ Azure Security Center に寄与するセキュリティ リサーチ チーム�
 
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)
-* [Azure Security Center の種類別のセキュリティの警告](security-center-alerts-type.md)
+* [Azure Security Center のセキュリティ アラート](security-center-alerts-overview.md)
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。

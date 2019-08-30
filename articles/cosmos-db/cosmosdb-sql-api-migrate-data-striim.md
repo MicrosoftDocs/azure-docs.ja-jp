@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: rimman
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: b1817b54e16d77c41b5d5e80776c92eedfec7fc6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600358"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981837"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB SQL API アカウントにデータを移行する
  
@@ -22,7 +22,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure サブスクリプション](/azure/guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+* [Azure サブスクリプション](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
 * オンプレミスで実行されている、データが含まれた Oracle データベース。
 
@@ -91,7 +91,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
    scp ojdbc8.jar striimdemo@striimdemo.westus.cloudapp.azure.com:/tmp
    ```
 
-   ![ローカル マシンから Striim に Jar ファイルをコピーする](./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png)
+   ![ローカル コンピューターから Striim に Jar ファイルをコピーする](./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png)
 
 1. 次に、Striim インスタンスへの SSH 接続を実行したウィンドウに戻り、sudo としてログインします。 次のコマンドを使用して、**ojdbc8.jar** ファイルを **/tmp** ディレクトリから、Striim インスタンスの **lib** ディレクトリに移動します。
 
@@ -124,7 +124,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    ![Striim VM の IP アドレスをコピーする](./media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png)
 
-1. Striim の Web UI に移動するために、ブラウザーで新しいタブを開き、パブリック IP をコピーし、その後に 9080 を指定します。 **admin** ユーザー名と、Azure portal で指定した管理者パスワードを使用してサインインします。
+1. Striim の Web UI に移動するために、ブラウザーで新しいタブを開き、パブリック IP をコピーし、その後に9080 を指定します。 **admin** ユーザー名と、Azure portal で指定した管理者パスワードを使用してサインインします。
 
    ![Striim にサインインする](./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png)
 
@@ -138,7 +138,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    ![テンプレートを使用してアプリを開始する](./media/cosmosdb-sql-api-migrate-data-striim/start-with-template.png)
 
-1. **[テンプレートの検索]** フィールドに「Cosmos」と入力し、 **[Target:Azure Cosmos DB]\(ターゲット:Azure Cosmos DB\)** を選択し、 **[Oracle CDC to Azure Cosmos DB]\(Oracle CDC から Azure Cosmos DB\)** を選択します。
+1. **[テンプレートの検索]** フィールドに「Cosmos」と入力し、 **[ターゲット:Azure Cosmos DB]** を選択し、 **[Oracle CDC to Azure Cosmos DB]\(Oracle CDC から Azure Cosmos DB へ\)** を選択します。
 
    ![Oracle CDC から Cosmos DB を選択する](./media/cosmosdb-sql-api-migrate-data-striim/oracle-cdc-cosmosdb.png)
 

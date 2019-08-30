@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/06/2019
 ms.author: meirm
-ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 971757a4778dd50be486bead0c50fd6b3a25002e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60452655"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839279"
 ---
 # <a name="azure-monitor-for-service-providers"></a>サービス プロバイダー向け Azure Monitor
 Azure Monitor の Log Analytics ワークスペースは、マネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV)、およびホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視するのに役立ちます。 
@@ -29,7 +29,7 @@ Azure Monitor の Log Analytics ワークスペースは、マネージド サ�
 
 ## <a name="architectures-for-service-providers"></a>サービス プロバイダー向けアーキテクチャ
 
-Log Analytics ワークスペースは、ログのフローと分離を制御し、特定のビジネス ニーズに対処するログ アーキテクチャを作成するための方法を管理者にもたらします。 [この記事](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)では、ワークスペースの管理に関する一般的な考慮事項について説明します。 サービス プロバイダーには追加の考慮事項があります。
+Log Analytics ワークスペースは、[ログ](data-platform-logs.md) データのフローと分離を制御し、特定のビジネス ニーズに対処するアーキテクチャを作成するための方法を管理者にもたらします。 [この記事](design-logs-deployment.md)では、ワークスペースの設計、デプロイ、移行に関する考慮事項について説明します。また、[アクセスの管理](manage-access.md)に関する記事では、ログ データへのアクセス許可を適用および管理する方法についても説明します。 サービス プロバイダーには追加の考慮事項があります。
 
 Log Analytics ワークスペースに関するサービス プロバイダー向けのアーキテクチャは次の 3 つ考えられます。
 
@@ -55,16 +55,21 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 このアーキテクチャの利点は次のとおりです。
 * 多数の顧客を管理して、さまざまなバックエンド システムに統合するときに簡単に行えます。
+
 * サービス プロバイダーは、ログと、関数や保存クエリなどの成果物に対する完全な所有権を持ちます。
+
 * サービス プロバイダーは、すべての顧客の分析を実行できます。
 
 このアーキテクチャの短所は次のとおりです。
 * このアーキテクチャは、エージェント ベースの VM データにのみ適用可能で、PaaS、SaaS、Azure ファブリック データ ソースには対応しません。
-* 顧客間のデータは、単一のワークスペースにマージされると、分離することが困難になる可能性があります。 これを行う唯一の適切な方法は、コンピューターの完全修飾ドメイン名 (FQDN) を使用するか、または Azure サブスクリプション ID を介するというものです。 
-* すべてのお客様からのすべてのデータは、単一の請求書と、同じ保有期間および構成設定を伴う同じリージョンに格納されます。
-* Microsoft Azure Diagnostics や Azure 監査ログなどの Azure のファブリックおよび PaaS サービスは、ワークスペースがリソースと同じテナントにあることを必要とするため、中央のワークスペースにログを送信することができません。
-* すべての顧客からのすべての VM エージェントは、同じワークスペース ID とキーを使用して中央のワークスペースで認証されます。 他の顧客を中断せずに特定の顧客からのログをブロックする方法はありません。
 
+* 顧客間のデータは、単一のワークスペースにマージされると、分離することが困難になる可能性があります。 これを行う唯一の適切な方法は、コンピューターの完全修飾ドメイン名 (FQDN) を使用するか、または Azure サブスクリプション ID を介するというものです。 
+
+* すべてのお客様からのすべてのデータは、単一の請求書と、同じ保有期間および構成設定を伴う同じリージョンに格納されます。
+
+* Microsoft Azure Diagnostics や Azure 監査ログなどの Azure のファブリックおよび PaaS サービスは、ワークスペースがリソースと同じテナントにあることを必要とするため、中央のワークスペースにログを送信することができません。
+
+* すべての顧客からのすべての VM エージェントは、同じワークスペース ID とキーを使用して中央のワークスペースで認証されます。 他の顧客を中断せずに特定の顧客からのログをブロックする方法はありません。
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>手順 3.ハイブリッド - ログは、顧客のテナントに置かれているワークスペースに格納され、その一部は中央の場所にプルされます。
 
@@ -76,10 +81,14 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics ワークスペースと [Power BI](../../azure-monitor/platform/powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。 
 
-
 ## <a name="next-steps"></a>次の手順
+
 * [Resource Manager テンプレート](template-workspace-configuration.md)を使用してワークスペースの作成および構成を自動化する
+
 * [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) を使用してワークスペースの作成を自動化する 
+
 * [アラート](../../azure-monitor/platform/alerts-overview.md) を使用して既存のシステムと統合する
+
 * [Power BI](../../azure-monitor/platform/powerbi.md) を使用して概要レポートを作成する
+
 * [複数の CSP 顧客を監視するために Log Analytics と Power BI を構成する](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)プロセスを確認する

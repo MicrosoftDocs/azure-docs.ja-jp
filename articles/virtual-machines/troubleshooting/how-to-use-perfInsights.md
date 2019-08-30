@@ -10,16 +10,15 @@ tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 26301e9a8aef29f1ff786f4fcd28b806eb10b8df
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: eace9c196ebd9f71b7a6f2bac7a59f581e6f313f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846770"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090457"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 

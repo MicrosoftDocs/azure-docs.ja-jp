@@ -70,7 +70,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 以下に、すべての Automation アカウントにインポートされる内部 `Orchestrator.AssetManagement.Cmdlets` モジュール内のコマンドレットの一覧を示します。 これらのコマンドレットは、Runbook および DSC 構成でアクセスでき、Automation アカウント内のアセットを操作できるようにします。 さらに、内部コマンドレットは、暗号化された **[変数]** 値、 **[資格情報]** 、および暗号化された **[接続]** フィールドからシークレットを取得できるようにします。 Azure PowerShell コマンドレットはこれらのシークレットを取得できません。 これらのコマンドレットでは、使用するときに、暗黙的に Azure に接続する必要はありません。 これは、Azure に対する認証に使用する必要がある実行アカウントなど、接続しているシナリオに役立ちます。
 
-|EnableAdfsAuthentication|説明|
+|名前|説明|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |

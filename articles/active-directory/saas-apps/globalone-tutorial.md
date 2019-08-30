@@ -86,7 +86,7 @@ GlobalOne に対する Azure AD SSO を構成してテストするには、次�
 
 1. その他に、GlobalOne アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | EnableAdfsAuthentication | ソース属性|
+    | Name | ソース属性|
     | ---------------| --------------- |
     | FirstName | User.givenname |
     | LastName | User.surname |

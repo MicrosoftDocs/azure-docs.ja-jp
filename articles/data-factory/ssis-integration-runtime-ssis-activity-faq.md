@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a7ad0f3be754029c654b04d19750aab7bbcd210d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621850"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933646"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -128,12 +128,19 @@ SSIS 統合ランタイムで多数のパッケージが並列に実行されて
 
 *ConnectUsingManagedIdentity* パラメーターが **True** のときは、接続マネージャーの認証方法を **[Active Directory パスワード認証]** として構成していないことを確認してください。 代わりに **[SQL 認証]** として構成できます。これは、*ConnectUsingManagedIdentity* が設定されている場合は無視されます。
 
+### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>複数のパッケージの実行が予期せずにトリガーされた
+
+* 考えられる原因と推奨される操作:
+  * SSIS パッケージの実行をトリガーするために、ADF ストアド プロシージャ アクティビティが使用されます。 t-sql コマンドによって、一時的な問題が発生し、再実行がトリガーされ、複数のパッケージが実行されることがあります。
+  * 代わりに ExecuteSSISPackage アクティビティを使用してください。これにより、ユーザーがアクティビティで再試行回数を設定しない限り、パッケージの実行は再実行されません。 詳細については、[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) を参照してください。
+
 ### <a name="package-execution-takes-too-long"></a>パッケージの実行に時間がかかりすぎる
 
 考えられる原因と推奨されるアクションを次に示します。
+
 * SSIS 統合ランタイムでスケジュール設定されているパッケージの実行が多すぎます。 これらのすべての実行は、キュー内で順番を待つことになります。
-  * 次の数式を使用して、最大値を確認します。 
-    
+  * 次の数式を使用して、最大値を確認します。
+
     IR あたりの最大並列実行数 = ノード数 * ノードあたりの最大並列実行数
   * ノード数とノードあたりの最大並列実行数を設定する方法については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)」を参照してください。
 * SSIS 統合ランタイムが停止しているか、異常な状態にあります。 SSIS 統合ランタイムの状態とエラーを確認する方法については、「[Azure-SSIS 統合ランタイム](monitor-integration-runtime.md#azure-ssis-integration-runtime)」を参照してください。

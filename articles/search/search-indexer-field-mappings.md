@@ -3,19 +3,19 @@ title: インデクサーを使用した自動インデックス作成用のフ�
 description: フィールド名とデータ表現の間の違いを調整するよう Azure Search インデクサー フィールド マッピングを構成する。
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 3546e342b535a122ea4ed3f844cd5e28a76d551a
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: b64f6dcecb26e35689ad6f569ade6c7862f06f1a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147787"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648131"
 ---
 # <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Azure Search インデクサーを使用したフィールドのマッピングと変換
 
@@ -113,6 +113,8 @@ api-key: [admin key]
 * [base64Decode](#base64DecodeFunction)
 * [extractTokenAtPosition](#extractTokenAtPositionFunction)
 * [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
+* [urlEncode](#urlEncodeFunction)
+* [urlDecode](#urlDecodeFunction)
 
 <a name="base64EncodeFunction"></a>
 
@@ -243,3 +245,51 @@ Azure SQL Database には、Azure Search の `Collection(Edm.String)` のフィ�
 ```
 
 リレーショナル データをインデックス コレクション フィールドに変換する詳細な例については、「[リレーショナル データをモデル化する](search-example-adventureworks-modeling.md)」を参照してください。
+
+<a name="urlEncodeFunction"></a>
+
+### <a name="urlencode-function"></a>urlEncode 関数
+
+この関数を使用すると、"URL セーフ" になるように文字列をエンコードできます。 URL 内で許可されていない文字を含む文字列と共に使用する場合、この関数では、これらの "安全でない" 文字が等価の文字エンティティに変換されます。 この関数では、UTF-8 エンコード形式が使用されます。
+
+#### <a name="example---document-key-lookup"></a>例 - ドキュメント キーの検索
+
+`urlEncode` 関数は、他の文字をそのままにして、URL の安全でない文字だけを変換する場合に、`base64Encode` 関数の代わりに使用できます。
+
+たとえば、入力文字列が `<hello>` の場合、`(Edm.String)` 型のターゲット フィールドに値 `%3chello%3e`が設定されます
+
+検索時にエンコードされたキーを取得すると、`urlDecode` 関数を使用して元のキー値を取得し、それを使用してソース ドキュメントを取得できます。
+
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
+    "mappingFunction" : {
+      "name" : "urlEncode"
+    }
+  }]
+ ```
+
+ <a name="urlDecodeFunction"></a>
+
+ ### <a name="urldecode-function"></a>urlDecode 関数
+
+ この関数では、UTF-8 エンコード形式を使用して、URL エンコードされた文字列がデコードされた文字列に変換されます。
+
+ ### <a name="example---decode-blob-metadata"></a>例 - BLOB メタデータをデコードする
+
+ 一部の Azure ストレージ クライアントでは、ASCII 以外の文字が含まれている場合に、BLOB メタデータが自動的に URL エンコードされます。 ただし、このようなメタデータを (プレーンテキストとして) 検索可能にする場合は、`urlDecode` 関数を使用して、検索インデックスを設定する際に、エンコードされたデータを通常の文字列に戻すことがきます。
+
+ ```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "UrlEncodedMetadata",
+    "targetFieldName" : "SearchableMetadata",
+    "mappingFunction" : {
+      "name" : "urlDecode"
+    }
+  }]
+ ```

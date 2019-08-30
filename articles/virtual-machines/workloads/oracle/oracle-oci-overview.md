@@ -8,19 +8,18 @@ manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: fcdd46ea60ea53088ffacd7d13693b16a208d527
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4628955998ab8b289a429cdfb85e23f7f97b0b40
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707466"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101431"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Microsoft Azure と Oracle Cloud Infrastructure を統合した Oracle アプリケーション ソリューション (プレビュー)
 
@@ -29,7 +28,7 @@ Microsoft と Oracle は、低待機時間、高スループットのクロス�
 このクロスクラウド接続を使用すると、多層アプリケーションを分割し、Oracle Cloud Infrastructure (OCI) 上ではデータベース層を、Microsoft Azure 上ではアプリケーション層と他の層を実行できます。 このエクスペリエンスは、ソリューション スタック全体を 1 つのクラウドで実行する場合と似ています。 
 
 > [!IMPORTANT]
-> このクロスクラウド機能は現在プレビュー段階であり、一定の[制限事項が適用されます](#preview-limitations)。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+> このクロスクラウド機能は現在プレビュー段階であり、[制限事項が適用されます](#preview-limitations)。 Azure と OCI の間で低待機時間の接続を有効にするには、最初にお使いの Azure サブスクリプションをこの機能用のホワイトリストに登録する必要があります。 この簡単な[アンケート フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)を完了することで、プレビューに登録する必要があります。 サブスクリプションが登録されると、メールが届きます。 確認メールを受信するまで、この機能を使用することはできません。 Microsoft の担当者に問い合わせて、このプレビューを有効にすることもできます。 プレビュー機能へのアクセスは可用性の対象であり、Microsoft の独自の判断によって制限されます。 アンケートを完了しても、アクセスが保証されるわけではありません。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 Oracle ソリューションを完全に Azure インフラストラクチャにデプロイすることに興味がある場合は、「[Oracle VM images and their deployment on Microsoft Azure (Oracle VM イメージとその Microsoft Azure へのデプロイ)](oracle-vm-solutions.md)」を参照してください。
 

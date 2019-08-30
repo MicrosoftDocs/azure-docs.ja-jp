@@ -6,19 +6,18 @@ manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901425"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081653"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル:Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -70,14 +69,14 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 
 最初に、2 つの Jenkins プラグインを構成する必要があります。**NodeJS** と **VS Team Services Continuous Deployment** です。
 
-1. Jenkins アカウントを開き、**[Jenkins の管理]** を選択します。
-2. **[Jenkins の管理]** ページで、**[プラグインの管理]** を選択します。
-3. 一覧を絞り込んで **[NodeJS]** プラグインを探し、**[Install without restart] \(再起動せずにインストール)** オプションを選択します。
+1. Jenkins アカウントを開き、 **[Jenkins の管理]** を選択します。
+2. **[Jenkins の管理]** ページで、 **[プラグインの管理]** を選択します。
+3. 一覧を絞り込んで **[NodeJS]** プラグインを探し、 **[Install without restart] \(再起動せずにインストール)** オプションを選択します。
     ![NodeJS プラグインを Jenkins に追加する](media/tutorial-build-deploy-jenkins/jenkins-nodejs-plugin.png)
 4. 一覧を絞り込んで **VS Team Services Continuous Deployment** プラグインを探し、**Install without restart \(再起動せずにインストール)** オプションを選択します。
-5. Jenkins ダッシュボードに戻り、**[Jenkins の管理]** を選択します。
+5. Jenkins ダッシュボードに戻り、 **[Jenkins の管理]** を選択します。
 6. **[Global Tool Configuration]\(ツールのグローバル構成)** を選択します。 **[NodeJS]** を検索して **[NodeJS installations] \(NodeJS のインストール)** を選択します。
-7. **[Install automatically] \(自動的にインストールする)** オプションを選択して、**[名前]** の値を入力します。
+7. **[Install automatically] \(自動的にインストールする)** オプションを選択して、 **[名前]** の値を入力します。
 8. **[保存]** を選択します。
 
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Node.js の Jenkins フリースタイル プロジェクトを構成する
@@ -87,7 +86,7 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 3. **[Source Code Management] \(ソース コードの管理)** タブで **[Git]** を選択し、アプリ コードを保存するリポジトリとブランチの詳細情報を入力します。    
     ![ビルドにリポジトリを追加する](media/tutorial-build-deploy-jenkins/jenkins-git.png)
 4. **[Build Triggers] \(ビルド トリガー)** タブで **[Poll SCM] \(SCM のポーリング)** を選択し、スケジュール「`H/03 * * * *`」を入力して Git リポジトリの変更を 3 分間隔でポーリングします。 
-5. **[Build Environment] \(ビルド環境)** タブで **[Provide Node &amp; npm bin/ folder PATH] \(Node と npm bin/ フォルダーのパスを入力)** を選択し、**[NodeJS Installation] \(Node JS のインストール)** の値を選択します。 **[npmrc file] \(npmrc ファイル)** は **[use system default] \(システムの既定値を使用する)** のままにします。
+5. **[Build Environment] \(ビルド環境)** タブで **[Provide Node &amp; npm bin/ folder PATH] \(Node と npm bin/ フォルダーのパスを入力)** を選択し、 **[NodeJS Installation] \(Node JS のインストール)** の値を選択します。 **[npmrc file] \(npmrc ファイル)** は **[use system default] \(システムの既定値を使用する)** のままにします。
 6. **[ビルド]** タブで **[Execute shell] \(シェルの実行)** を選択して `npm install` コマンドを入力し、すべての依存関係が更新されるようにします。
 
 
@@ -104,9 +103,9 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 4. 別のアクションを作成するには **[Add post-build action] \(ビルド後のアクションを追加する)** をクリックします。
 5. **[Trigger release in TFS/Team Services]\(TFS/Team Services でリリースをトリガーする)** を選択します。 Azure DevOps Services 組織の URI を入力します (例: **https://{your-organization-name}.visualstudio.com**)。
 6. **プロジェクト**の名前を入力します。
-7. リリース パイプラインの名前を選択します  (このリリース パイプラインは、後で Azure DevOps Services で作成します)。
+7. リリース パイプラインの名前を選択します (このリリース パイプラインは、後で Azure DevOps Services で作成します)。
 8. Azure DevOps Services 環境または Team Foundation Server 環境に接続するための資格情報を選択します。
-   - Azure DevOps Services を使用している場合は、**[ユーザー名]** を空白のままにしておきます。 
+   - Azure DevOps Services を使用している場合は、 **[ユーザー名]** を空白のままにしておきます。 
    - オンプレミス版の Team Foundation Server を使用している場合は、ユーザー名とパスワードを入力します。    
    ![Jenkins のビルド後のアクションを構成する](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Jenkins プロジェクトを保存します。
@@ -116,10 +115,10 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 
 サービス エンドポイントを使用して、Azure DevOps Services から Jenkins に接続できます。
 
-1. Azure DevOps Services の **[サービス]** ページを開き、**[新しいサービス エンドポイント]** 一覧を開いて、**[Jenkins]** を選択します。
+1. Azure DevOps Services の **[サービス]** ページを開き、 **[新しいサービス エンドポイント]** 一覧を開いて、 **[Jenkins]** を選択します。
    ![Jenkins エンドポイントを追加する](media/tutorial-build-deploy-jenkins/add-jenkins-endpoint.png)
 2. 接続名を入力します。
-3. Jenkins サーバーの URL を入力し、**[信頼されていない SSL 証明書を受け入れる]** オプションを選択します。 URL は、たとえば **http://{YourJenkinsURL}.westcentralus.cloudapp.azure.com** です。
+3. Jenkins サーバーの URL を入力し、 **[信頼されていない SSL 証明書を受け入れる]** オプションを選択します。 URL は、たとえば **http://{YourJenkinsURL}.westcentralus.cloudapp.azure.com** です。
 4. Jenkins アカウントのユーザー名とパスワードを入力します。
 5. **[接続の確認]** を選択して情報が正しいことを確認します。
 6. **[OK]** を選択してサービス エンドポイントを作成します。
@@ -131,9 +130,9 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
    > [!NOTE]
    > 次の手順では前提条件となるものをインストールしますが、*スクリプトは sudo 権限で実行しない*ようにします。
 
-1. **[ビルドと&amp;リリース]** ハブの **[リリース]** タブを開き、**[Deployment groups] \(デプロイ グループ)** を開いて **[+ 新規]** を選択します。
+1. **[ビルドと&amp;リリース]** ハブの **[リリース]** タブを開き、 **[Deployment groups] \(デプロイ グループ)** を開いて **[+ 新規]** を選択します。
 2. 配置グループの名前と、説明 (省略可能) を入力します。 **[作成]** を選択します。
-3. デプロイ ターゲットの仮想マシンのオペレーティング システムを選択します。 たとえば、**[Ubuntu 16.04+]** を選択します。
+3. デプロイ ターゲットの仮想マシンのオペレーティング システムを選択します。 たとえば、 **[Ubuntu 16.04+]** を選択します。
 4. **[認証用にスクリプト内の個人用アクセス トークンを使用する]** を選択します。
 5. **[システムの前提条件]** を選択します。 お使いのオペレーティング システムの前提条件となるものをインストールします。
 6. **[スクリプトをクリップボードにコピー]** を選択してスクリプトをコピーします。
@@ -147,23 +146,23 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 
 Azure Pipelines でリリース パイプラインを作成するには、次の手順に従います。
 
-1. **[ビルドとリリース]** ハブの **[リリース]** タブを開き、**[リリース パイプラインの作成]** を選択します。 
+1. **[ビルドとリリース]** ハブの **[リリース]** タブを開き、 **[リリース パイプラインの作成]** を選択します。 
 2. **[空のプロセス]** で開始することを選択して **[空]** のテンプレートを選択します。
-3. **[成果物]** セクションで **[+ 成果物の追加]** を選択し、**[ソースの種類]** に **[Jenkins]** を選択します。 Jenkins サービス エンドポイントの接続を選択します。 Jenkins ソース ジョブを選択し、**[追加]** を選択します。
+3. **[成果物]** セクションで **[+ 成果物の追加]** を選択し、 **[ソースの種類]** に **[Jenkins]** を選択します。 Jenkins サービス エンドポイントの接続を選択します。 Jenkins ソース ジョブを選択し、 **[追加]** を選択します。
 4. **[環境 1]** の横にある省略記号を選択します。 **[Add deployment group phase]\(デプロイ グループ フェーズを追加)** をクリックします。
 5. ご利用のデプロイ グループを選択します。
 5. **[+]** を選択して **[Deployment group phase]\(デプロイ グループ フェーズ)** にタスクを追加します。
 6. **[シェル スクリプト]** タスクを選択して **[追加]** を選択します。 **[シェル スクリプト]** タスクは、Node.js をインストールし、アプリを起動するために各サーバーで実行されるスクリプトの構成を指定します。
-8. **[スクリプト パス]** については、**$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** を入力します。
-9. **[詳細]** を選択して、**[作業ディレクトリを指定する]** を有効にします。
-10. **[作業ディレクトリ]** については、**$(System.DefaultWorkingDirectory)/Fabrikam-Node** を入力します。
+8. **[スクリプト パス]** については、 **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** を入力します。
+9. **[詳細]** を選択して、 **[作業ディレクトリを指定する]** を有効にします。
+10. **[作業ディレクトリ]** については、 **$(System.DefaultWorkingDirectory)/Fabrikam-Node** を入力します。
 11. リリース パイプラインの名前を、Jenkins のビルドの **[Post-build Actions] \(ビルド後のアクション)** タブで指定した名前に変更します。 ソース アーティファクトが更新されたときに、Jenkins から新しいリリースをトリガーするには、この名前を指定する必要があります。
-12. **[保存]** を選択し、**[OK]** をクリックしてリリース パイプラインを保存します。
+12. **[保存]** を選択し、 **[OK]** をクリックしてリリース パイプラインを保存します。
 
 ## <a name="execute-manual-and-ci-triggered-deployments"></a>手動デプロイおよび CI によってトリガーされるデプロイを実行する
 
-1. **[+ リリース]** を選択し、**[リリースの作成]** を選択します。
-2. 強調表示されているドロップダウン リストから完了したビルドを選択し、**[キュー]** を選択します。
+1. **[+ リリース]** を選択し、 **[リリースの作成]** を選択します。
+2. 強調表示されているドロップダウン リストから完了したビルドを選択し、 **[キュー]** を選択します。
 3. ポップアップ メッセージでリリース リンクを選択します。 例: "リリース **Release-1** が作成されました。"
 4. **[ログ]** タブを開いて、リリース コンソールの出力を確認します。
 5. ブラウザーで、デプロイ グループに追加したサーバーのいずれかについて URL を開きます。 たとえば、**http://{your-server-ip-address}** と入力します。

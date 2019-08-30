@@ -10,17 +10,16 @@ ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc40c2296e583ab93a7c34d709cfbf1334ae3926
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60765171"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069841"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -48,7 +47,7 @@ ms.locfileid: "60765171"
     サブスクリプションを複数保有している場合、App Service 環境でアプリを作成するには、App Service 環境を作成するときに使用したものと同じサブスクリプションを使用する必要があります。 
 3. リソース グループを選択または作成します。
    
-    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」をご覧ください。 
+    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
 4. App Service プランを選択または作成します。
    
     *App Service プラン*は、管理された Web アプリのセットです。  通常、価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。 ASE では、ASP に記載されているものではなく、ASE に割り当てられているコンピューティング インスタンスに対して課金されます。  Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。  サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。  詳細については、「[Azure App Service プランの概要](../overview-hosting-plans.md)」を参照してください。

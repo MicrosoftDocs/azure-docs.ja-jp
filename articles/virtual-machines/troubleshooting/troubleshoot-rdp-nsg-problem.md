@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cfb0464fd7fbd271272a992cffead44e9ba3b553
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318937"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103417"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>NSG で RDP ポートが有効ではないために VM にリモート接続できない
 
@@ -47,9 +46,9 @@ NSG で RDP ポートを有効にするには、次の手順のようにしま�
     **名前**:Port_3389 </br>
     **ポート**:3389 </br>
     **プロトコル**:TCP </br>
-    **ソース**:任意 </br>
-    **宛先**:任意 </br>
-    **アクション**:ALLOW </br>
+    **ソース**:Any </br>
+    **宛先**:Any </br>
+    **アクション**:Allow </br>
 
 ソース IP アドレスを指定した場合、この設定では、特定の IP アドレスまたは IP アドレス範囲からのトラフィックのみが VM への接続を許可されます。 RDP セッションを開始するために使用しているコンピューターが範囲内にあることを確認します。
 

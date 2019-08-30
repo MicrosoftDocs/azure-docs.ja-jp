@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a33b7263cd7a3b2f5e39ce9d24df11a7d6283c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5c6e3ef74ea2d77ba03526e05145fe6faa61c050
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688600"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882056"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -154,10 +154,11 @@ Azure VM では、キーとシークレット、および関連付けられた V
 2. 次のいずれかの手順を行います。
     - 復元操作の間に生成されるテンプレートを使用して VM の設定をカスタマイズし、VM のデプロイをトリガーします。 [詳細情報](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
     - PowerShell を使用して、復元されたディスクから新しい VM を作成します。 [詳細情報](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
+    - Linux VM の場合は、データ ディスクが開かれてマウントされるように、ADE 拡張機能をリセットします。 
 
 ## <a name="next-steps"></a>次の手順
 
-問題が発生した場合は、以下を確認します。
+問題が発生した場合は、以下の記事を確認します。
 
 - 暗号化された Azure VM をバックアップして復元するときの[一般的なエラー](backup-azure-vms-troubleshoot.md)
 - [Azure VM エージェント/バックアップの拡張機能](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)に関する問題

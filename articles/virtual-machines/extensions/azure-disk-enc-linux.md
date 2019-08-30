@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6a81f105f9632a7ca7e2bf7188e358274020c78f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706143"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084763"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -45,7 +44,7 @@ Linux 用 Azure Disk Encryption では、Active Directory、Key Vault、Storage�
 Azure Disk Encryption には 2 つのスキーマがあります。より新しい v1.1 は Azure Active Directory (AAD) のプロパティを使用しない推奨されるスキーマで、より古い v0.1 は AAD のプロパティを必要とします。 使用する拡張機能に対応するスキーマのバージョンを使用する必要があります。スキーマ v1.1 は AzureDiskEncryptionForLinux 拡張機能バージョン 1.1 用で、スキーマ v0.1 は AzureDiskEncryptionForLinux 拡張機能バージョン 0.1 用です。
 ### <a name="schema-v11-no-aad-recommended"></a>スキーマ v1.1:AAD なし (推奨)
 
-V1.1 スキーマは推奨されていて、Azure Active Directory のプロパティを必要としません。
+V1.1 スキーマは推奨されており、Azure Active Directory のプロパティを必要としません。
 
 ```json
 {
@@ -73,7 +72,7 @@ V1.1 スキーマは推奨されていて、Azure Active Directory のプロパ�
 
 ### <a name="schema-v01-with-aad"></a>スキーマ v0.1: AAD を含む 
 
-0\.1 スキーマは、`aadClientID` と、`aadClientSecret` または `AADClientCertificate` のいずれかを必要とします。
+0\.1 スキーマでは、`aadClientID` と、`aadClientSecret` または `AADClientCertificate` のいずれかを必要とします。
 
 `aadClientSecret`コマンドを使用します。
 
@@ -138,7 +137,7 @@ V1.1 スキーマは推奨されていて、Azure Active Directory のプロパ�
 
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |

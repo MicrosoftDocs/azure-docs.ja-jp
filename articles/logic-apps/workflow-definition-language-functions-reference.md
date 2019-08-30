@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 08/15/2018
-ms.openlocfilehash: 8ad7d7497a0fbe6fcf20ad5b50ef4e6cac9ed51f
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 07/27/2019
+ms.openlocfilehash: 30123e03a686eed8df0595c8562f2f9d9351bbde
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868897"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706449"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps および Microsoft Flow でのワークフロー定義言語の関数リファレンス
 
@@ -240,7 +240,7 @@ Logic Apps が変換時にコンテンツ タイプを処理する方法の詳�
 | ----------------- | ---- |
 | [action](../logic-apps/workflow-definition-language-functions-reference.md#action) | 実行時に現在のアクションの出力を返すか、または他の JSON の名前と値のペアの値を返します。 [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) もご覧ください。 |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | 実行時のアクションの `body` 出力を返します。 [body](../logic-apps/workflow-definition-language-functions-reference.md#body) もご覧ください。 |
-| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | 実行時のアクションの出力を返します。 [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) をご覧ください。 |
+| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | 実行時のアクションの出力を返します。 [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) と [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) を参照してください。 |
 | [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) | 実行時にアクションの出力を返すか、または他の JSON の名前と値のペアの値を返します。 [action](../logic-apps/workflow-definition-language-functions-reference.md#action) もご覧ください。  |
 | [body](#body) | 実行時のアクションの `body` 出力を返します。 [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) もご覧ください。 |
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | *form-data* または *form-encoded* アクション出力内のキー名と一致する値を含む配列を作成します。 |
@@ -250,6 +250,7 @@ Logic Apps が変換時にコンテンツ タイプを処理する方法の詳�
 | [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Until ループ内で使用すると、現在の繰り返しのインデックス値を返します。 この関数は、入れ子になった Until ループ内で使用できます。 |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | トリガーまたはアクションを呼び出す "コールバック URL" を返します。 |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 複数の部分を持つアクションの出力の特定の部分に対する本文を返します。 |
+| [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | 実行時のアクションの出力を返します。 |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | ワークフローの定義で記述されているパラメーターの値を返します。 |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 実行時に、または他の JSON の名前と値のペアから、トリガーの出力を返します。 [triggerOutputs](#triggerOutputs) および [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) もご覧ください。 |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 実行時にトリガーの `body` 出力を返します。 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) をご覧ください。 |
@@ -380,9 +381,7 @@ actionBody('Get_user')
 
 ### <a name="actionoutputs"></a>actionOutputs
 
-実行時のアクションの出力を返します。
-`actions('<actionName>').outputs` の短縮形です。
-[actions()](#actions) をご覧ください。
+実行時のアクションの出力を返します。  `actions('<actionName>').outputs` の短縮形です。 [actions()](#actions) をご覧ください。 `actionOutputs()` 関数はロジック アプリ デザイナーでは `outputs()` に解決されるため、`actionOutputs()` ではなく [outputs()](#outputs) を使用することを検討してください。 どちらの関数も機能は同じですが、`outputs()` をお勧めします。
 
 ```
 actionOutputs('<actionName>')
@@ -649,7 +648,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*object*> | はい | Object | プロパティを追加する JSON オブジェクト |
 | <*property*> | はい | string | 追加するプロパティの名前 |
-| <*value*> | はい | 任意 | プロパティの値 |
+| <*value*> | はい | Any | プロパティの値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1021,7 +1020,7 @@ bool(<value>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | はい | 任意 | 変換する値 |
+| <*value*> | はい | Any | 変換する値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1061,7 +1060,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | 任意 | null ではない最初の項目または値。 すべてのパラメーターが null の場合、この関数は null を返します。 |
+| <*first-non-null-item*> | Any | null ではない最初の項目または値。 すべてのパラメーターが null の場合、この関数は null を返します。 |
 ||||
 
 *例*
@@ -1797,7 +1796,7 @@ first([<collection>])
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*first-collection-item*> | 任意 | コレクション内の最初の項目 |
+| <*first-collection-item*> | Any | コレクション内の最初の項目 |
 ||||
 
 *例*
@@ -2151,13 +2150,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | はい | Boolean | 調べる式。 |
-| <*valueIfTrue*> | はい | 任意 | 式が true の場合に返す値 |
-| <*valueIfFalse*> | はい | 任意 | 式が false の場合に返す値 |
+| <*valueIfTrue*> | はい | Any | 式が true の場合に返す値 |
+| <*valueIfFalse*> | はい | Any | 式が false の場合に返す値 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*specified-return-value*> | 任意 | 式が true か false かに基づいて返すように指定された値 |
+| <*specified-return-value*> | Any | 式が true か false かに基づいて返すように指定された値 |
 ||||
 
 *例*
@@ -2244,7 +2243,7 @@ item()
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*current-array-item*> | 任意 | アクションの現在の繰り返しに対する配列内の現在の項目 |
+| <*current-array-item*> | Any | アクションの現在の繰り返しに対する配列内の現在の項目 |
 ||||
 
 *例*
@@ -2273,7 +2272,7 @@ items('<loopName>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*item*> | 任意 | 指定した for-each ループの現在のサイクルからの項目 |
+| <*item*> | Any | 指定した for-each ループの現在のサイクルからの項目 |
 ||||
 
 *例*
@@ -2954,6 +2953,69 @@ or(equals(1, 2), equals(1, 3))
 * 1 番目の例:少なくとも 1 つの式が true なので、関数は `true` を返します。
 * 2 番目の例:両方の式が false なので、関数は `false` を返します。
 
+<a name="outputs"></a>
+
+### <a name="outputs"></a>outputs
+
+実行時のアクションの出力を返します。 ロジック アプリ デザイナーで `outputs()` に解決される `actionOutputs()` ではなく、この関数を使用してください。 どちらの関数も機能は同じですが、`outputs()` をお勧めします。
+
+```
+outputs('<actionName>')
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*actionName*> | はい | string | 取得するアクションの出力の名前 |
+|||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | -----| ----------- |
+| <*output*> | string | 指定したアクションからの出力 |
+||||
+
+*例*
+
+この例は、Twitter アクション `Get user` からの出力を取得します。
+
+```
+outputs('Get_user')
+```
+
+返される結果:
+
+```json
+{
+  "statusCode": 200,
+  "headers": {
+    "Pragma": "no-cache",
+    "Vary": "Accept-Encoding",
+    "x-ms-request-id": "a916ec8f52211265d98159adde2efe0b",
+    "X-Content-Type-Options": "nosniff",
+    "Timing-Allow-Origin": "*",
+    "Cache-Control": "no-cache",
+    "Date": "Mon, 09 Apr 2018 18:47:12 GMT",
+    "Set-Cookie": "ARRAffinity=b9400932367ab5e3b6802e3d6158afffb12fcde8666715f5a5fbd4142d0f0b7d;Path=/;HttpOnly;Domain=twitter-wus.azconn-wus.p.azurewebsites.net",
+    "X-AspNet-Version": "4.0.30319",
+    "X-Powered-By": "ASP.NET",
+    "Content-Type": "application/json; charset=utf-8",
+    "Expires": "-1",
+    "Content-Length": "339"
+  },
+  "body": {
+    "FullName": "Contoso Corporation",
+    "Location": "Generic Town, USA",
+    "Id": 283541717,
+    "UserName": "ContosoInc",
+    "FollowersCount": 172,
+    "Description": "Leading the way in transforming the digital workplace.",
+    "StatusesCount": 93,
+    "FriendsCount": 126,
+    "FavouritesCount": 46,
+    "ProfileImageUrl": "https://pbs.twimg.com/profile_images/908820389907722240/gG9zaHcd_400x400.jpg"
+  }
+}
+```
+
 <a name="parameters"></a>
 
 ### <a name="parameters"></a>parameters
@@ -2971,7 +3033,7 @@ parameters('<parameterName>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*parameter-value*> | 任意 | 指定したパラメーターの値 |
+| <*parameter-value*> | Any | 指定したパラメーターの値 |
 ||||
 
 *例*
@@ -3130,7 +3192,7 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*object*> | はい | Object | プロパティを設定する JSON オブジェクト |
 | <*property*> | はい | string | 設定する既存または新規のプロパティの名前 |
-| <*value*> | はい | 任意 | 指定したプロパティに設定する値 |
+| <*value*> | はい | Any | 指定したプロパティに設定する値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3357,7 +3419,7 @@ string(<value>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | はい | 任意 | 変換する値 |
+| <*value*> | はい | Any | 変換する値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -4148,7 +4210,7 @@ variables('<variableName>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*variable-value*> | 任意 | 指定した変数の値 |
+| <*variable-value*> | Any | 指定した変数の値 |
 ||||
 
 *例*
@@ -4255,14 +4317,14 @@ xpath('<xml>', '<xpath>')
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | はい | 任意 | XPath 式の値に一致するノードまたは値を検索する XML 文字列 |
-| <*xpath*> | はい | 任意 | 一致する XML ノードまたは値の検索に使用する XPath 式 |
+| <*xml*> | はい | Any | XPath 式の値に一致するノードまたは値を検索する XML 文字列 |
+| <*xpath*> | はい | Any | 一致する XML ノードまたは値の検索に使用する XPath 式 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 1 つのノードだけが指定した XPath 式と一致するときの XML ノード |
-| <*value*> | 任意 | 1 つの値だけが指定した XPath 式と一致するときの XML ノードの値 |
+| <*value*> | Any | 1 つの値だけが指定した XPath 式と一致するときの XML ノードの値 |
 | [<*xml-node1*>, <*xml-node2*>, ...] </br>または </br>[<*value1*>, <*value2*>, ...] | Array | 指定した XPath 式と一致する XML ノードまたは値の配列 |
 ||||
 

@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 1022bdc26a340b6b54ad840d1fe47674509fa865
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871667"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128729"
 ---
 # <a name="join-data"></a>データの結合
 

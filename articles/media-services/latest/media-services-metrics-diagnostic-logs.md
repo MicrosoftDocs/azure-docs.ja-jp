@@ -91,7 +91,7 @@ Media Services では、次の診断ログがサポートされています。
 
 ### <a name="key-delivery"></a>キー配信
 
-|EnableAdfsAuthentication|説明|
+|名前|説明|
 |---|---|
 |キー配信サービス要求|キー配信サービス要求の情報を表示するログ。 詳細については、[スキーマ](media-services-diagnostic-logs-schema.md)に関するページを参照してください。|
 

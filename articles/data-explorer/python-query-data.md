@@ -1,24 +1,24 @@
 ---
-title: クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータのクエリを実行する
-description: このクイック スタートでは、Python を使用して Azure データ エクスプ ローラーからデータをクエリする方法について説明します。
+title: Azure Data Explorer の Python ライブラリを使用してデータのクエリを実行する
+description: この記事では、Python を使用して Azure Data Explorer からデータをクエリする方法について説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/16/2018
-ms.openlocfilehash: 253629bab6b0985ab8f540c653f3671c49e6d278
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.topic: conceptual
+ms.date: 08/05/2019
+ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360237"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827534"
 ---
-# <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータのクエリを実行する
+# <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer の Python ライブラリを使用してデータのクエリを実行する
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプ ローラーでは、[Python 用のデータ クライアント ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)が提供されています。 このライブラリを使用すると、コードからデータをクエリできます。 このクイック スタートでは、学習を支援するために設定した*ヘルプ クラスター*上のテーブルに接続します。 次に、そのクラスター上のテーブルをクエリし、結果を返します。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプ ローラーでは、[Python 用のデータ クライアント ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)が提供されています。 このライブラリを使用すると、コードからデータをクエリできます。 この記事では、学習を支援するために設定した*ヘルプ クラスター*上のテーブルに接続します。 次に、そのクラスター上のテーブルをクエリし、結果を返します。
 
-このクイック スタートは [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) でも利用できます。
+この記事は [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) でも利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -98,4 +98,4 @@ StormEvents テーブルの上位 10 件の結果が表示されます。
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
+> [Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)

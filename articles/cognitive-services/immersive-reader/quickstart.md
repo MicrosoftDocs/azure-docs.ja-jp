@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:C# を使用してイマーシブ リーダーを起動する Web アプリを作成する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
 author: metanMSFT
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ed49f834cb7cd4f649d84aea9e549e212771eead
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688859"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899359"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)
 
@@ -223,5 +223,7 @@ namespace QuickstartSampleWebApp.Controllers
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル](./tutorial.md)を見て、Immersive Reader SDK で他にできることを確認する
+* [Node.js チュートリアル](./tutorial-nodejs.md)で、Node.js と Immersive Reader SDK を使用して他にできることを確認する
+* [Python チュートリアル](./tutorial-python.md)を見て、Python と Immersive Reader SDK を使用して他にできることを確認する
+* [iOS チュートリアル](./tutorial-ios-picture-immersive-reader.md)を見て、Swift と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する

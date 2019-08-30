@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fff2469269d8f60f837f0af444e16928a9212bb0
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad0c510244c78fa3bdba41690c2284d0650c4b55
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67866574"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019329"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -218,7 +218,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>バックエンド アプリの認証と承認を有効にする
 
-[Azure portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]**  > **myAuthResourceGroup** >  _\<back-end-app-name>_ をクリックして、バックエンド アプリの管理ページを開きます。
+[Azure portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]**  > **myAuthResourceGroup** >  **_\<back-end-app-name>_** の順にクリックして、バックエンド アプリの管理ページを開きます。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -236,15 +236,15 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 `Successfully saved the Auth Settings for <back-end-app-name> App` というメッセージの通知が表示されたら、ページを更新します。
 
-**[Azure Active Directory]** を再度クリックし、 **[アプリケーションの管理]** をクリックします。
+**[Azure Active Directory]** を再度クリックし、 **[Azure AD アプリ]** をクリックします。
 
-AD アプリケーションの管理ページで、**アプリケーション ID** をメモ帳にコピーします。 この値は、後で必要になります。
+Azure AD アプリケーションの**クライアント ID** をメモ帳にコピーします。 この値は、後で必要になります。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>フロントエンド アプリの認証と承認を有効にする
 
-フロントエンド アプリに対して同じ手順を行いますが、最後の手順はスキップします。 フロントエンド アプリでは、**アプリケーション ID** は必要ありません。 **[Azure Active Directory の設定]** ページを開いたままにしておきます。
+フロントエンド アプリに対して同じ手順を行いますが、最後の手順はスキップします。 フロントエンド アプリでは、クライアント ID は必要ありません。
 
 必要に応じて、`http://<front-end-app-name>.azurewebsites.net` に移動します。 セキュリティで保護されたサインイン ページにリダイレクトされるようになったはずです。 サインインした後でも、まだバックエンド アプリのデータにアクセスすることはできません。次の 3 つの作業を行う必要があります。
 
@@ -259,21 +259,19 @@ AD アプリケーションの管理ページで、**アプリケーション ID
 
 両方のアプリに対する認証と承認を有効にしたので、それぞれのアプリは AD アプリケーションによってサポートされています。 この手順では、ユーザーの代わりにバックエンドにアクセスするアクセス許可をフロントエンド アプリに付与します (技術的には、ユーザーの代わりにバックエンドの "_AD アプリケーション_" にアクセスするためのアクセス許可をフロントエンドの "_AD アプリケーション_" に付与します)。
 
-現時点では、フロントエンド アプリの **[Azure Active Directory の設定]** ページにいるはずです。 そうでない場合は、そのページに戻ります。 
-
-**[アクセス許可の管理]**  >  **[追加]**  >  **[API を選択する]** の順にクリックします。
+ポータルの左側のメニューから、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[所有しているアプリケーション]**  >  **\<front-end-app-name>**  >  **[API のアクセス許可]** の順に選択します。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-**[API を選択する]** ページで、バックエンド アプリの AD アプリケーション名を入力します。これは、既定では、バックエンド アプリと同じ名前です。 それを一覧で選択し、 **[選択]** をクリックします。
+**[アクセス許可の追加]** を選択し、 **[自分の API]**  >  **\<back-end-app-name>** を選択します。
 
-**[ _\<AD-application-name>_ へのアクセス]** の横にあるチェック ボックスをオンにします。 **[選択]**  >  **[完了]** の順にクリックします。
+バックエンド アプリの **[API アクセス許可の要求]** ページで、 **[委任されたアクセス許可]** と **[user_impersonation]** を選択し、次に **[アクセス許可の追加]** を選択します。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>使用可能なアクセス トークンを返すように App Service を構成する
 
-フロントエンド アプリに、必要なアクセス許可が付与されました。 この手順では、バックエンドにアクセスするための使用可能なアクセス トークンを提供するように、App Service の認証および承認を構成します。 この手順では、バックエンドのアプリケーション ID が必要です。この ID は、「[バックエンド アプリの認証と承認を有効にする](#enable-authentication-and-authorization-for-back-end-app)」でコピーしたものです。
+これで、フロントエンド アプリに、サインインしたユーザーとしてバックエンド アプリにアクセスするために必要なアクセス許可が与えられました。 この手順では、バックエンドにアクセスするための使用可能なアクセス トークンを提供するように、App Service の認証および承認を構成します。 この手順では、バックエンドのクライアント ID が必要です。この ID は、「[バックエンド アプリの認証と承認を有効にする](#enable-authentication-and-authorization-for-back-end-app)」でコピーしたものです。
 
 [Azure Resource Explorer](https://resources.azure.com) にサインインします。 ページの上部にある **[読み取り/書き込み]** をクリックして、Azure リソースの編集を有効にします。
 
@@ -281,10 +279,10 @@ AD アプリケーションの管理ページで、**アプリケーション ID
 
 左側のブラウザーで、 **[subscriptions]**  >  **_\<your-subscription>_**  >  **[resourceGroups]**  >  **[myAuthResourceGroup]**  >  **[providers]**  > **Microsoft.Web** >  **[sites]**  >  **_\<front-end-app-name>_**  >  **[config]**  >  **[authsettings]** の順にクリックします。
 
-**[authsettings]** ビューで、 **[編集]** をクリックします。 コピーしたアプリケーション ID を使用して、`additionalLoginParams` を次の JSON 文字列に設定します。 
+**[authsettings]** ビューで、 **[編集]** をクリックします。 コピーしたクライアント ID を使用して、`additionalLoginParams` を次の JSON 文字列に設定します。 
 
 ```json
-"additionalLoginParams": ["response_type=code id_token","resource=<back_end_application_id>"],
+"additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/additional-login-params-front-end.png)
@@ -293,13 +291,13 @@ AD アプリケーションの管理ページで、**アプリケーション ID
 
 これでアプリの構成は完了です。 フロントエンドが適切なアクセス トークンを使用してバックエンドにアクセスする準備ができました。
 
-他のプロバイダー用に構成する方法については、「[Refresh identity provider tokens (ID プロバイダー トークンの更新)](app-service-authentication-how-to.md#refresh-identity-provider-tokens)」を参照してください。
+他のプロバイダー用にアクセス トークンを構成する方法については、「[ID プロバイダー トークンの更新](app-service-authentication-how-to.md#refresh-identity-provider-tokens)」を参照してください。
 
 ## <a name="call-api-securely-from-server-code"></a>サーバー コードから API を安全に呼び出す
 
 この手順では、前に変更したサーバー コードを有効にして、バックエンド API への認証済み呼び出しを行います。
 
-フロントエンド アプリに必要なアクセス許可が付与されていて、バックエンドのアプリケーション ID もログイン パラメーターに追加されます。 そのため、バックエンド アプリでの認証用のアクセス トークンを取得することができます。 App Service は、認証された各要求に `X-MS-TOKEN-AAD-ACCESS-TOKEN` ヘッダーを挿入することで、このトークンをサーバー コードに提供します (「[Retrieve tokens in app code (アプリ コードでトークンを取得する)](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)」を参照)。
+フロントエンド アプリに必要なアクセス許可が付与されていて、バックエンドのクライアント ID もログイン パラメーターに追加されます。 そのため、バックエンド アプリでの認証用のアクセス トークンを取得することができます。 App Service は、認証された各要求に `X-MS-TOKEN-AAD-ACCESS-TOKEN` ヘッダーを挿入することで、このトークンをサーバー コードに提供します (「[Retrieve tokens in app code (アプリ コードでトークンを取得する)](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)」を参照)。
 
 > [!NOTE]
 > これらのヘッダーは、サポートされているすべての言語用に挿入されます。 言語ごとの標準パターンを使用して、これらにアクセスします。
@@ -317,7 +315,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 }
 ```
 
-このコードは、すべてのリモート API 呼び出しに標準の HTTP ヘッダー `Authorization: Bearer <access_token>` を追加します。 ASP.NET Core MVC 要求実行パイプラインでは、`OnActionExecuting` が各アクション メソッド (`GetAll()` など) の直前に実行されるため、各発信 API 呼び出しにアクセス トークンが提供されます。
+このコードは、すべてのリモート API 呼び出しに標準の HTTP ヘッダー `Authorization: Bearer <access-token>` を追加します。 ASP.NET Core MVC 要求実行パイプラインでは、`OnActionExecuting` が各アクション メソッド (`GetAll()` など) の直前に実行されるため、各発信 API 呼び出しにアクセス トークンが提供されます。
 
 すべての変更を保存します。 ローカル ターミナル ウィンドウで、以下の Git コマンドを使用して、変更をフロントエンド アプリにデプロイします。
 

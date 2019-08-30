@@ -19,6 +19,10 @@
 - name: 概念
   expanded: false
   items:
+    - name: 条件付きアクセスの導入
+      href: howto-conditional-access-adoption-kit.md
+    - name: 一般的な条件付きアクセス ポリシー
+      href: concept-conditional-access-policy-common.md
     - name: 条件
       href: conditions.md
     - name: 場所の条件
@@ -38,6 +42,22 @@
       href: plan-conditional-access.md
     - name: ベスト プラクティス
       href: best-practices.md
+    - name: 一般的な条件付きアクセス ポリシー
+      items:
+        - name: 管理者に対して MFA を必須にする
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: Azure 管理のために MFA を必須にする
+          href: howto-conditional-access-policy-azure-management.md
+        - name: レガシ認証をブロックする
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: リスクベースの条件付きアクセス
+          href: howto-conditional-access-policy-risk.md
+        - name: 信頼できる場所を MFA 登録で必須にする
+          href: howto-conditional-access-policy-registration.md
+        - name: 場所ごとにアクセスをブロックする
+          href: howto-conditional-access-policy-location.md
+        - name: Require compliant devices (準拠しているデバイスが必須)
+          href: howto-conditional-access-policy-compliant-device.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
     - name: MFA 登録の条件付きアクセス

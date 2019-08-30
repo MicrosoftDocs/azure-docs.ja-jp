@@ -99,7 +99,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | intOutput | Array | [1] |
 | stringOutput | Array | ["efgh"] |
@@ -185,7 +185,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | string | default |
 | intOutput | int | 1 |
@@ -263,7 +263,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -303,7 +303,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | concatOutput | string | prefix-5yj4yjf5mbg72 |
 
@@ -392,7 +392,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -474,7 +474,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringArray | Array | ["a", "b", "c"] |
 | intArray | Array | [1, 2, 3] |
@@ -554,7 +554,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -620,7 +620,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | string | one |
 | stringOutput | string | O |
@@ -699,7 +699,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -771,7 +771,7 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | jsonOutput | Object | {"a": "b"} |
 | nullOutput | Boolean | True |
@@ -837,7 +837,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | string | three |
 | stringOutput | string | e |
@@ -925,7 +925,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -1001,7 +1001,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -1065,7 +1065,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -1130,7 +1130,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | rangeOutput | Array | [5, 6, 7] |
 
@@ -1210,7 +1210,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | string | two three |
@@ -1291,7 +1291,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | string | on |
@@ -1370,7 +1370,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6b91ab53ba7b5ce30c1dfa4a2bd90390875b8615
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bcf3964fb289be9b7410938f9e2eac843e795d4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102691"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945189"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>チュートリアル:Azure Active Directory と Figma の統合
 
@@ -122,13 +122,13 @@ Figma で Azure AD シングル サインオンを構成するには、次の手
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 Figma の記事「[Configure Azure Active Directory SAML SSO process (Azure Active Directory SAML SSO プロセスを構成する)](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)」の手順 11. で、`TENANT ID` を取得できます。
 
-6. Figma アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]**   ダイアログを開きます。
+6. Figma アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
 7. その他に、Figma アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性|
+    | EnableAdfsAuthentication | ソース属性|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
     | `displayName` | `user.displayname` |

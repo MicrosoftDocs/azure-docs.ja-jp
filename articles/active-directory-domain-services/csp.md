@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: a0ea28f3b62e6560e4adf8ea6bcb1fe984a1dbe6
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473555"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612970"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Cloud Solution Provider (CSP) 用 Azure Active Directory (AD) Domain Services
 この記事では、Azure CSP サブスクリプションで Azure AD Domain Services を使用する方法について説明します。
@@ -90,4 +90,4 @@ Azure CSP サブスクリプションでマネージド ドメインを管理す
 * [Azure CSP プログラムに登録](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program)し、Azure CSP を通じてビジネスを創出する
 * [Azure CSP で利用できる Azure サービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)の一覧を確認する
 * [PowerShell を使用して Azure AD Domain Services を有効にする](powershell-create-instance.md)
-* [Azure AD ドメイン サービスの使用開始](create-instance.md)
+* [Azure AD ドメイン サービスの使用開始](tutorial-create-instance.md)

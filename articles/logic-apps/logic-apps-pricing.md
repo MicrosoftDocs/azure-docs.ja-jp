@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 62b96fa8722408aed81e87cb31218140fa4f5da8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335991"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099408"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -61,7 +61,7 @@ ms.locfileid: "68335991"
 
   * **Developer SKU**:最大 4 つの追加の Standard アカウント、または合計で最大 5 つの標準 Standard アカウント。 Basic アカウントはありません。
 
-統合アカウントの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)」をご覧ください。 このトピックで後述する[統合アカウントのレベルとそれらの価格モデル](#integration-accounts)で詳細を確認できます。 
+統合アカウントの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)」をご覧ください。 このトピックで後述する[統合アカウントのレベルとそれらの価格モデル](#integration-accounts)で詳細を確認できます。
 
 Premium ISE SKU では、基本単位の容量は固定されているため、さらにスループットが必要な場合は、作成中または作成後に[スケール ユニットを追加](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)できます。 Developer ISE SKU には、スケール ユニットを追加する機能はありません。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。
 

@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 54884728533aeff0472ed99660be00478227fbcd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056786"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875779"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 このチュートリアルでは、作成者向けに、デバイス テンプレートを使用して、Microsoft Azure IoT Central アプリケーションでデバイスの新しい種類を定義する方法について説明します。 デバイス テンプレートでは、デバイスの種類のテレメトリ、状態、プロパティ、設定を定義します。
 

@@ -6,17 +6,16 @@ documentationcenter: na
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: f7fa1d58c21ea0ed457cc5987d7823fad68d554f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a612505acdc37591377eebf290365b65cc3836cd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153812"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098284"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service プランで Linux 上に関数アプリを作成する
 
@@ -34,7 +33,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 Linux での関数の実行をホストするための関数アプリが必要です。 関数アプリは、関数コードの実行環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 この記事では、関数アプリを作成するときに App Service プランを作成します。
 
-1. Azure portal の左上にある **[リソースの作成]** ボタンを選択し、**[コンピューティング]** > **[Function App]** を選択します。
+1. Azure portal の左上にある **[リソースの作成]** ボタンを選択し、 **[コンピューティング]**  >  **[Function App]** を選択します。
 
     ![Azure ポータルでの関数アプリの作成](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
@@ -50,10 +49,10 @@ Linux での関数の実行をホストするための関数アプリが必要�
     | **OS** | Linux | Linux 上で関数アプリを実行する |
     | **[発行]** | コード | **ランタイム スタック**の既定の Linux コンテナーが使用されます。 用意する必要があるのは関数アプリ プロジェクトのコードのみです。 もう 1 つの選択肢は、カスタムの [Docker イメージ](functions-create-function-linux-custom-image.md)を公開することです。 |
     | **[ホスティング プラン](functions-scale.md)** | App Service プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 App Service プランで実行する場合は、[関数アプリのスケーリング](functions-scale.md)を制御できます。  |
-    | **App Service プラン/場所** | プランの作成 | **[新規作成]** を選択し、**[App Service プラン]** の名前を指定します。 最寄りの[リージョン](https://azure.microsoft.com/regions/)または関数がアクセスする他のサービスの近くのリージョン内の **[場所]** を選択します。 目的の **[[価格レベル]](https://azure.microsoft.com/pricing/details/app-service/linux/)** を選択します。 <br/>同じ App Service プランで Linux と Windows の両方の関数アプリを実行することはできません。 |
+    | **App Service プラン/場所** | プランの作成 | **[新規作成]** を選択し、 **[App Service プラン]** の名前を指定します。 最寄りの[リージョン](https://azure.microsoft.com/regions/)または関数がアクセスする他のサービスの近くのリージョン内の **[場所]** を選択します。 目的の **[[価格レベル]](https://azure.microsoft.com/pricing/details/app-service/linux/)** を選択します。 <br/>同じ App Service プランで Linux と Windows の両方の関数アプリを実行することはできません。 |
     | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 [Python のサポート](functions-reference-python.md)は現時点でプレビュー段階です |
     | **[Storage](../storage/common/storage-quickstart-create-account.md)** |  グローバルに一意の名前 |  関数アプリで使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
-    | **[Application Insights](functions-monitoring.md)** | Enabled | Application Insights は、既定で無効です。 今すぐ Application Insights 統合を有効にして、App Service プランの場所に近いホスティング場所を選択することをお勧めします。 これを後で行う場合は、「[Azure 関数を監視する](functions-monitoring.md)」を参照してください。  |
+    | **[Application Insights](functions-monitoring.md)** | 有効 | Application Insights は、既定で無効です。 今すぐ Application Insights 統合を有効にして、App Service プランの場所に近いホスティング場所を選択することをお勧めします。 これを後で行う場合は、「[Azure 関数を監視する](functions-monitoring.md)」を参照してください。  |
 
 3. **[作成]** を選択して、Function App をプロビジョニングし、デプロイします。
 
@@ -72,15 +71,15 @@ Linux での関数の実行をホストするための関数アプリが必要�
 > [!NOTE]
 > Azure Functions を試す場合、ポータル開発の経験があれば役立ちます。 ほとんどのシナリオでは、[Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) または [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project) を使用して、ローカルで関数を開発し、プロジェクトを関数アプリに公開することを検討してください。  
 
-1. 新しい関数アプリで、**[概要]** タブを選択し、読み込みが完了したら **[+ 新しい関数]** を選択します。
+1. 新しい関数アプリで、 **[概要]** タブを選択し、読み込みが完了したら **[+ 新しい関数]** を選択します。
 
     ![[概要] タブから新しい関数を作成する](./media/create-function-app-linux-app-service-plan/overview-create-function.png)
 
-1. **[クイック スタート]** タブで **[ポータル内]** を選択し、**[続行]** を選択します。
+1. **[クイック スタート]** タブで **[ポータル内]** を選択し、 **[続行]** を選択します。
 
     ![関数の開発プラットフォームを選択します。](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
 
-1. **[webhook + API]** を選択し、**[作成]** を選択します。
+1. **[webhook + API]** を選択し、 **[作成]** を選択します。
 
     ![Azure Portal での関数のクイック スタート。](./media/create-function-app-linux-app-service-plan/function-app-quickstart-node-webhook.png)
 
@@ -90,7 +89,7 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
 ## <a name="test-the-function"></a>関数をテストする
 
-1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、**[既定値 (関数キー)]** を選択して、**[コピー]** をクリックします。 
+1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、 **[既定値 (関数キー)]** を選択して、 **[コピー]** をクリックします。 
 
     ![Azure Portal からの関数 URL のコピー](./media/create-function-app-linux-app-service-plan/function-app-develop-tab-testing.png)
 

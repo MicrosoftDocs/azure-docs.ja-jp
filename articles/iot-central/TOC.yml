@@ -135,20 +135,22 @@
   items:
     - name: 解決方法
       items:
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-suite
         - name: IoT Central
-          href: /microsoft-iot-central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
     - name: プラットフォーム サービス
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: サービス SDK
+        - name: IoT サービスの SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: マップ
+          href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
     - name: IoT Edge

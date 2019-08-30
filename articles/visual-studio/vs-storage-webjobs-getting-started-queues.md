@@ -3,7 +3,7 @@ title: キュー ストレージと Visual Studio 接続済みサービスの概
 description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Web ジョブ プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44206f1826fc25407d9dec3f832b70881091e187
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248970"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510795"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 **string** だけでなく、パラメーターにはバイト配列、**CloudQueueMessage** オブジェクト、または自分で定義した POCO があります。
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 次の例では、**BlobName** プロパティを持つ **BlobInformation** オブジェクトの JSON がキュー メッセージに含まれています。 SDK は自動的にオブジェクトを逆シリアル化します。
 
 ```csharp
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 文字列ではなく POCO オブジェクトを含むキュー メッセージを作成するには、出力パラメーターとして POCO 型を **Queue** 属性のコンス トラクターに渡します。
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 キュー メッセージ内に JSON として格納される POCO については、プレースホルダーを使用して、**Queue** 属性の **blobPath** パラメーター内でオブジェクトのプロパティを指定できます。 また、キュー メタデータのプロパティ名もプレースホルダーとして使用できます。 「 [キューまたはキュー メッセージ メタデータの取得](#get-queue-or-queue-message-metadata)」をご覧ください。
 
 次の例では、BLOB を別の拡張子を持つ新しい BLOB にコピーします。 キュー メッセージは、**BlobName** および **BlobNameWithoutExtension** プロパティを含む **BlobInformation** オブジェクトです。 プロパティの名前は、 **Blob** 属性の BLOB パスのプレース ホルダーとして使用されます

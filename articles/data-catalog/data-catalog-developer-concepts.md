@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 81e17e1e450e45e4c163ca8231a47deeb8b9ed2c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734697"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976825"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
 Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、フル マネージドのクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。
@@ -19,7 +19,7 @@ Microsoft **Azure Data Catalog** は、データ ソース検出およびデー�
 ## <a name="key-concepts"></a>主要な概念
 **Azure Data Catalog** の概念モデルは、**カタログ**、**ユーザー**、**資産**、**注釈**という 4 つの主要な概念に基づいています。
 
-![概念][1]
+![Azure Data Catalog 概念モデルの図](./media/data-catalog-developer-concepts/concept2.png)
 
 *図 1 - Azure Data Catalog の簡略化された概念モデル*
 
@@ -76,7 +76,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 「主要な概念」セクションで説明したように、 **Azure Data Catalog** オブジェクト モデルには、資産または注釈を指定できる項目が含まれます。 項目には、省略可能または必須のプロパティがあります。 一部のプロパティは、すべての項目に適用されます。 一部のプロパティは、すべての資産に適用されます。 一部のプロパティは、特定の資産の型のみに適用されます。
 
 ### <a name="system-properties"></a>システム プロパティ
-<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>項目が最後に変更された日時。 このフィールドは、項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。 公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。 項目に対する一意のアドレス可能 URI です。  公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>type</td><td>string</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>string</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック コンカレンシーに使用できる項目のバージョンに対応する文字列。 *" を使用して任意の値と照合することができます。</td></tr></table>
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>項目が最後に変更された日時。 このフィールドは、項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。 公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。 項目に対する一意のアドレス可能 URI です。  公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>type</td><td>string</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>string</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック コンカレンシーに使用できる項目のバージョンに対応する文字列。 *" を使用して任意の値と照合することができます。</td></tr></table>
 
 ### <a name="common-properties"></a>共通のプロパティ
 これらのプロパティは、すべてのルート資産の型とすべての注釈の型に適用されます。
@@ -286,7 +286,7 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Contributor</t
 > 
 
 **本文**
-
+```json
     {
         "roles": [
             {
@@ -299,9 +299,11 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Contributor</t
             }
         ]
     }
+```
 
   **所有者を割り当て、既存のルート項目の表示を制限する**:**PUT** https:\//api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
+```json
     {
         "roles": [
             {
@@ -343,11 +345,8 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Contributor</t
             }
         ]
     }
+```
 
 > [!NOTE]
 > PUT では、本文に項目のペイロードを指定する必要はありません。PUT は、ロールまたはアクセス許可だけを更新するために使用できます。
 > 
-> 
-
-<!--Image references-->
-[1]: ./media/data-catalog-developer-concepts/concept2.png

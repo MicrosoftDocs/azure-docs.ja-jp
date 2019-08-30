@@ -2,19 +2,19 @@
 title: 検索インデックスにデータを取り込むのためのデータのインポート - Azure Search
 description: 外部データソースから Azure Search のインデックスにデータを取り込んだりアップロードしたりする方法について説明します。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b56a31a58937ddbea08ff22c3d1c0c71942f47f1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 71ee63dfbe880cbf6018f3dd13d360850ed994f9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445396"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647333"
 ---
 # <a name="data-import-overview---azure-search"></a>データ インポートの概要 - Azure Search
 

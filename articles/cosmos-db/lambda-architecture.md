@@ -6,12 +6,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 70f3471b22027bbf5ece87897e678370767f6743
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 56f293600d876a5bc52b618ce8eed044e93f424d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717080"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616885"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB:Azure プラットフォームでラムダ アーキテクチャを実装する 
 
@@ -42,7 +42,7 @@ Azure にラムダ アーキテクチャを実装するには、以下のテク�
 
 参考として、次のものだけを使ってこのアーキテクチャを実装できます。
 
-* Azure Cosmos DB コレクション
+* Azure Cosmos コンテナー
 * HDInsight (Apache Spark 2.1) クラスター
 * Spark コネクタ [1.0](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark_2.1.0_2.11-1.0.0)
 
@@ -114,7 +114,7 @@ Azure Cosmos DB 変更フィードについて詳しくは、以下をご覧く�
 
  1. すべての**データ**は、Azure Cosmos DB に対してのみプッシュされます (マルチキャストの問題を回避するため)。
  2. **バッチ レイヤー**では、マスター データセット (生データの変更不能な追加専用のセット) が Azure Cosmos DB に格納されています。 HDI Spark を使うことで、集計を事前計算して計算済みのバッチ ビューに格納できます。
- 3. **サービス レイヤー**は、マスター データセットと計算済みバッチ ビューのコレクションを含む Azure Cosmos DB データベースです。
+ 3. **サービス レイヤー**は、マスター データセットと計算済みバッチ ビューのコレクションを含む Azure Cosmos データベースです。
  4. **スピード レイヤー**については後で説明します。
  5. すべてのクエリの応答は、バッチ ビューとリアルタイム ビューの結果をマージすることで、またはそれらを個別に ping することで得られます。
 
@@ -161,7 +161,7 @@ limit 10
 
 ![ハッシュタグあたりのツイート数を示すグラフ](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-クエリができたので、Spark コネクタを使ってそれを元のコレクションに保存し、出力データを別のコレクションに保存します。  この例では、Scala を使って接続を示します。 前の例と同様に、Apache Spark データ フレームを別の Azure Cosmos DB コレクションに保存する構成接続を作成します。
+クエリができたので、Spark コネクタを使ってそれを元のコレクションに保存し、出力データを別のコレクションに保存します。  この例では、Scala を使って接続を示します。 前の例と同様に、Apache Spark DataFrame を別の Azure Cosmos コンテナーに保存する構成接続を作成します。
 
 ```
 val writeConfigMap = Map(
@@ -192,7 +192,7 @@ val tweets_bytags = spark.sql("select hashtags.text as hashtags, count(distinct 
 tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-この最後のステートメントでは、Spark データ フレームを新しい Azure Cosmos DB コレクションに保存しています。ラムダ アーキテクチャの観点からは、これは**サービス レイヤー**内の**バッチ ビュー**です。
+この最後のステートメントでは、Spark DataFrame を新しい Azure Cosmos コンテナーに保存しています。ラムダ アーキテクチャの観点からは、これは**サービス レイヤー**内の**バッチ ビュー**です。
  
 #### <a name="resources"></a>リソース
 
@@ -205,7 +205,7 @@ tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 ![ラムダ アーキテクチャのスピード レイヤーが強調表示されている図](./media/lambda-architecture/lambda-architecture-speed.png)
 
-これを行うには、別の Azure Cosmos DB コレクションを作成して、構造化ストリーミング クエリの結果を保存します。  これにより、Apache Spark だけでなく他のシステムもこの情報にアクセスできるようになります。 Cosmos DB の Time-to-Live (TTL) 機能と同様に、設定した期間の後で自動的に削除されるようにドキュメントを構成できます。  Azure Cosmos DB の TTL 機能について詳しくは、「[TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする](time-to-live.md)」をご覧ください
+これを行うには、別の Azure Cosmos コンテナーを作成して、構造化ストリーミング クエリの結果を保存します。  これにより、Apache Spark だけでなく他のシステムもこの情報にアクセスできるようになります。 Cosmos DB の Time-to-Live (TTL) 機能と同様に、設定した期間の後で自動的に削除されるようにドキュメントを構成できます。  Azure Cosmos DB の TTL 機能について詳しくは、「[TTL (Time to Live) を使って Azure Cosmos コンテナーのデータの有効期限が自動的に切れるようにする](time-to-live.md)」をご覧ください
 
 ```
 // Import Libraries

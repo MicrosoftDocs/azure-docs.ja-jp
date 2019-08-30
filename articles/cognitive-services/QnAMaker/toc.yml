@@ -108,7 +108,7 @@
           displayName: 'create bot, bot, publish to bot, test, edit'
         - name: メタデータを使用した回答の取得
           href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context'
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
         - name: ナレッジ ベースに対応したボットの作成
           href: Tutorials/integrate-qnamaker-luis.md
         - name: 別の言語によるナレッジ ベースの作成
@@ -166,11 +166,6 @@
       href: troubleshooting.md
     - name: 制限
       href: limits.md
-    - name: 用語集
-      href: glossary.md
-    - name: HTTP 応答コード
-      displayName: '200, 2xx, 400, 401, 403, 404'
-      href: http-response-codes.md
     - name: サンプル
       items:
         - name: QnA Maker のヘルプ ボット

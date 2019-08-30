@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64680891"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900631"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Data Box Edge 上のファイルを移動する C# IoT Edge モジュールを開発する
 
@@ -127,8 +127,10 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 2. **[FileCopyModule]** 名前空間の上部で、後で使用する型として次の using ステートメントを追加します。 **Microsoft.Azure.Devices.Client.Transport.Mqtt** は、メッセージを IoT Edge Hub に送信するためのプロトコルです。
 
     ```
-    using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-    using Newtonsoft.Json;
+    namespace FileCopyModule
+    {
+        using Microsoft.Azure.Devices.Client.Transport.Mqtt;
+        using Newtonsoft.Json;
     ```
 3. **InputFolderPath** と **OutputFolderPath** 変数を Program クラスに追加します。
 
@@ -140,11 +142,11 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. **MessageBody** クラスを Program クラスに追加します。 これらのクラスは、受信メッセージの本文に対して予期されるスキーマを定義します。
+4. 前の手順の直後に、**FileEvent** クラスを追加してメッセージ本文を定義します。
 
     ```
     /// <summary>
-    /// The MessageBody class defines the expected schema for the body of incoming messages. 
+    /// The FileEvent class defines the body of incoming messages. 
     /// </summary>
     private class FileEvent
     {
@@ -156,7 +158,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
     }
     ```
 
-5. **Init** メソッドでは、コードによって **ModuleClient** オブジェクトが作成され、構成されます。 このオブジェクトにより、モジュールは MQTT プロトコルを使用してローカルの Azure IoT Edge ランタイムに接続し、メッセージを送受信することができます。 Init メソッドで使用される接続文字列は、IoT Edge ランタイムによってモジュールに提供されます。 コードによって、IoT Edge ハブから **input1** エンドポイントを介してメッセージを受信するための FileCopy コールバックが登録されます。
+5. **Init メソッド**では、コードによって **ModuleClient** オブジェクトが作成され、構成されます。 このオブジェクトにより、モジュールは MQTT プロトコルを使用してローカルの Azure IoT Edge ランタイムに接続し、メッセージを送受信することができます。 Init メソッドで使用される接続文字列は、IoT Edge ランタイムによってモジュールに提供されます。 コードによって、IoT Edge ハブから **input1** エンドポイントを介してメッセージを受信するための FileCopy コールバックが登録されます。 **Init メソッド**を次のコードに置き換えます。
 
     ```
     /// <summary>
@@ -178,11 +180,11 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
     }
     ```
 
-6. **FileCopy** のコードを挿入します。
+6. **パイプ メッセージ メソッド**のコードを削除し、その代わりに **FileCopy** のコードを挿入します。
 
     ```
         /// <summary>
-        /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
+        /// This method is called whenever the module is sent a message from the IoT Edge Hub.
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
         /// </summary>
@@ -236,6 +238,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
     ```
 
 7. このファイルを保存します。
+8. このプロジェクト用の[既存のコード サンプルをダウンロード](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable)することもできます。 このサンプルでは、**program.cs** ファイルに対して保存したファイルを検証できます。
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
 
@@ -246,7 +249,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
     `docker login <ACR login server> -u <ACR username>`
 
-    コンテナー レジストリからコピーしたログイン サーバーとユーザー名を使用します。 
+    コンテナー レジストリからコピーしたログイン サーバーとユーザー名を使用します。
 
     ![IoT Edge ソリューションをビルドしてプッシュする](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 

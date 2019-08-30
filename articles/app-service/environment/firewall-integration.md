@@ -9,17 +9,16 @@ ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3e24b95704249a8a0b7588112cbaa678ae1e2c86
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a3136939b27a5703aef8213225dee3d4d525754d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619138"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069489"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 

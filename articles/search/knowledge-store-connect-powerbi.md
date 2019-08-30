@@ -5,16 +5,15 @@ author: heidisteen
 services: search
 ms.service: search
 ms.subservice: cognitive-search
-ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 518a96ae8ace5c9630d594fe70487635b6ec1d2c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1c7f297092760f2a92f524347a3c1a5e353d0965
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840850"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635548"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Azure Search のナレッジ ストアを作成し、Power BI を使用して接続する
 

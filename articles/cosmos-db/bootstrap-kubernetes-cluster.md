@@ -3,15 +3,15 @@ title: Azure Cosmos DB で Azure Kubernetes を使用する方法
 description: Azure Cosmos DB (プレビュー) を使用して Azure での Kubernetes クラスターのブートストラップする方法について説明します
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 2c6af53aeec5d40f603d65595d93527107c0d80a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427708"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093722"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Cosmos DB (プレビュー) で Azure Kubernetes を使用する方法
 

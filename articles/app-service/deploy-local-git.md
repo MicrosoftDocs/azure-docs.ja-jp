@@ -9,18 +9,17 @@ ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 4b2934c8b93ffb247661886cb2791c0719996aeb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 9714052de5cdfbdbf0789c7b4711469ee9202bac
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297180"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070639"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -156,7 +155,7 @@ Git を使用して Azure の App Service アプリに発行すると、次の�
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|`git push` の間にブランチを指定しなかったか、または `.gitconfig` に `push.default` 値を設定していません。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
 |`src refspec [branchname] does not match any.`|"azure" リモートの master 以外のブランチにプッシュしようとしました。|master ブランチを指定して、もう一度 `git push` を実行します: `git push azure master`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|このエラーは、HTTPS 経由で大規模な Git リポジトリをプッシュしようとした場合に発生する可能性があります。|ローカル コンピューター上の Git 構成を変更して `postBuffer` を増やします。 (例: `git config --global http.postBuffer 524288000`)。|
-|`Error - Changes committed to remote repository but your web app not updated.`|追加の必須モジュールを指定する _package.json_ ファイルを使用して Node.js アプリをデプロイしました。|失敗に関する詳細なコンテキストについては、このエラーの前の `npm ERR!` エラー メッセージを確認してください。 このエラーの既知の原因と、対応する `npm ERR!` メッセージを以下に示します。<br /><br />**形式が正しくない package.json ファイル**: `npm ERR! Couldn't read dependencies.`<br /><br />**Windows 用のバイナリ配布がないネイティブ モジュール**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\`|
+|`Error - Changes committed to remote repository but your web app not updated.`|追加の必須モジュールを指定する _package.json_ ファイルを使用して Node.js アプリをデプロイしました。|失敗に関する詳細なコンテキストについては、このエラーの前の `npm ERR!` エラー メッセージを確認してください。 このエラーの既知の原因と、対応する `npm ERR!` メッセージを以下に示します。<br /><br />**形式が正しくない package.json ファイル**: `npm ERR! Couldn't read dependencies.`<br /><br />**Windows 用のバイナリ配布がないネイティブ モジュール**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />or <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>その他のリソース
 

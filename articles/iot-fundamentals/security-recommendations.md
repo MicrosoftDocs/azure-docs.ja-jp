@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dkshir
 ms.custom: security-recommendations
-ms.openlocfilehash: 4416f3149c33a0c9a437b2fbd6a48729a5a7f044
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 55ca189d5f4622a395ffe603d7f0d6764db82f3d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722859"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877220"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure のモノのインターネット (IoT) デプロイのセキュリティに関する推奨事項
 
@@ -42,7 +42,7 @@ ms.locfileid: "67722859"
 | 推奨 | 説明 |
 |-|-|
 | デバイス認証をセキュリティで保護する | [一意の ID キーまたはセキュリティ トークン](iot-security-deployment.md#iot-hub-security-tokens)、あるいは各デバイスの[デバイス上の X.509 証明書](iot-security-deployment.md#x509-certificate-based-device-authentication)を使用して、デバイスと IoT ハブ間のセキュリティで保護された通信を確保します。 適切な方法を使って、[選択されたプロトコル (MQTT、AMQP、または HTTPS) に基づいてセキュリティ トークンを使用](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security)します。 |
-| デバイスの通信をセキュリティで保護する | IoT Hub では、バージョン 1.2、1.2、および 1.0 がサポートされる、トランスポート層セキュリティ (TLS) 標準を使用して、デバイスへの接続をセキュリティで保護します。 最大のセキュリティを確保するには、[TLS 1.2](https://tools.ietf.org/html/rfc5246) を使用します。 |
+| デバイスの通信をセキュリティで保護する | IoT Hub では、バージョン 1.2 および 1.0 がサポートされる、トランスポート層セキュリティ (TLS) 標準を使用して、デバイスへの接続をセキュリティで保護します。 最大のセキュリティを確保するには、[TLS 1.2](https://tools.ietf.org/html/rfc5246) を使用します。 |
 | サービスの通信をセキュリティで保護する | IoT Hub では、[Azure Storage](/azure/storage/) または [Event Hubs](/azure/event-hubs) (TLS プロトコルのみを使用) などのバックエンド サービスに接続するためのエンドポイントが提供され、エンドポイントは非暗号化チャネルでは公開されません。 このデータが格納または分析のためにこれらのバックエンド サービスに達したら、必ず、そのサービスに適したセキュリティと暗号化の方法を採用し、バックエンドの機密情報を保護するようにしてください。 |
 
 

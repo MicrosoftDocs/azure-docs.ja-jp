@@ -1,21 +1,19 @@
 ---
 title: Azure Portal で Azure Search インデックスを作成する - Azure Search
 description: ポータルに組み込まれているインデックス デザイナーを使用して Azure Search のインデックスを作成する方法について説明します。
-manager: cgronlun
+manager: nitinme
 author: heidisteen
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 02/16/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6a2bac71c37cc750eb24e3492ecdcdf0b2333cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fec81cd9660348d492b1dabd24ac689f2b06e880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60817322"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638823"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>ポータルで Azure Search インデックスを作成する
 

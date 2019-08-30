@@ -1,5 +1,5 @@
 ---
-title: 例と一般的なシナリオ - Azure Logic Apps | Microsoft Docs
+title: 例と一般的なシナリオ - Azure Logic Apps
 description: Azure Logic Apps の例、シナリオ、チュートリアル、手順
 services: logic-apps
 ms.service: logic-apps
@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
-ms.date: 01/31/2018
-ms.openlocfilehash: 95eca4c7f3e8170f6559799fc4c706e95df70e9e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.date: 07/31/2019
+ms.openlocfilehash: 000de22105615c3f6aa015b07e13bf8a47955b52
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385510"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706800"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) には、オンプレミスの SQL Server または SAP から Azure Cognitive Services まで、[すぐに使用できるコネクタが数百個](../connectors/apis-list.md)用意されているため、さまざまなサービスの調整と統合に使用できます。 Logic Apps サービスは "サーバーレス" なので、スケールやインスタンスに関する心配は不要です。 必要なことは、ワークフローが実行するトリガーとアクションに関するワークフローの定義のみです。 拡張性、可用性、およびパフォーマンスは、基になるプラットフォームによって処理されます。 Logic Apps は、複数のシステム全体で複数のアクションを調整する必要があるユース ケースやシナリオに特に適しています。
 
-ここでは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) がサポートする数多くのパターンと機能を理解するうえで役立つ、一般的な例とシナリオを紹介します。
+ここでは、Azure Logic Apps がサポートする数多くのパターンと機能を理解するうえで役立つ、一般的な例とシナリオを紹介します。
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>ロジック アプリ ワークフローの一般的な開始点
 
@@ -33,23 +33,31 @@ ms.locfileid: "68385510"
 
 一般的なトリガー例をいくつか紹介します。
 
-* ポーリング: 
+* ポーリング:
 
-  * [**スケジュール - 繰り返し**トリガー](../connectors/connectors-native-recurrence.md)を使用すると、開始日時と、ロジック アプリを実行する頻度を設定できます。 
-  たとえば、ロジック アプリをトリガーする曜日と時刻を選択できます。
+  * [**繰り返し**トリガー](../connectors/connectors-native-recurrence.md)を使用すると、開始日時と、ロジック アプリを実行する頻度を設定できます。 たとえば、ロジック アプリをトリガーする曜日と時刻を選択できます。 詳細については、以下のトピックを参照してください。
 
-  * "メールを受信したとき" トリガーでは、[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](https://docs.microsoft.com/connectors/gmail/)、[Outlook.com](https://docs.microsoft.com/connectors/outlook/) などの Logic Apps でサポートされる任意のメール プロバイダーからの新規メールをチェックすることができます。
+    * [Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
+    * [チュートリアル:Azure Logic Apps を使用してスケジュールに従ってトラフィックをチェックする](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+
+  * "メールを受信したとき" トリガーでは、[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](https://docs.microsoft.com/connectors/gmail/)、[Outlook.com](https://docs.microsoft.com/connectors/outlook/) などの Logic Apps でサポートされる任意のメール プロバイダーからの新規メールをチェックすることができます。 詳細については、以下のトピックを参照してください。 
+
+    * [チュートリアル:Azure Logic Apps でメーリング リスト要求を管理する](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
+    * [チュートリアル:Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する](../logic-apps/tutorial-process-email-attachments-workflow.md)
 
   * [**HTTP** トリガー](../connectors/connectors-native-http.md)を使用すると、HTTP 上で通信することで、指定されたサービス エンドポイントをロジック アプリでチェックできます。
   
 * プッシュ:
 
-  * [**要求/応答 - 要求**トリガー](../connectors/connectors-native-reqres.md)を使用すると、ロジック アプリから何らかの方法でリアル タイムに HTTP 要求を受信し、応答できます。
+  * [**要求**トリガー](../connectors/connectors-native-reqres.md)は、ロジック アプリが HTTP 要求を受信し、何らかの方法でリアル タイムに イベントに応答できるようにします。
 
-  * [**HTTP Webhook** トリガー](../connectors/connectors-native-webhook.md)は、サービスに*コールバック URL* を登録することでサービス エンドポイントにサブスクライブします。 
-  この方法では、指定されたイベントが発生したときにサービスからトリガーに通知することができるので、トリガーでサービスをポーリングする必要がありません。
+  * [**HTTP Webhook** トリガー](../connectors/connectors-native-webhook.md)は、サービスに*コールバック URL* を登録することでサービス エンドポイントにサブスクライブします。 この方法では、指定されたイベントが発生したときにサービスからトリガーに通知することができるので、トリガーでサービスをポーリングする必要がありません。
 
-新しいデータまたはイベントに関する通知を受信した後に、トリガーが呼び出され、新しいロジック アプリ ワークフロー インスタンスが作成され、ワークフローのアクションが実行されます。 ワークフロー全体でトリガーのすべてのデータにアクセスできます。 たとえば、"新しいツイートで" トリガーは、実行されているロジック アプリにツイートの内容を渡します。 
+新しいデータまたはイベントに関する通知を受信した後に、トリガーが呼び出され、新しいロジック アプリ ワークフロー インスタンスが作成され、ワークフローのアクションが実行されます。 ワークフロー全体でトリガーのすべてのデータにアクセスできます。 たとえば、"新しいツイートで" トリガーは、実行されているロジック アプリにツイートの内容を渡します。 Azure Logic Apps の使用を開始するには、次のクイックスタート トピックを試してください。
+
+* [クイック スタート:Azure portal で Azure Logic Apps を使用して自動化されたワークフローを初めて作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [クイック スタート:Visual Studio を使用することによって Azure Logic Apps で自動化されたタスク、プロセス、およびワークフローを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+* [クイック スタート:Visual Studio Code の使用による、自動化されたロジック アプリ ワークフローの作成と管理](../logic-apps/quickstart-create-logic-apps-visual-studio-code.md)
 
 ## <a name="respond-to-triggers-and-extend-actions"></a>トリガーへの応答とアクションの拡張
 
@@ -81,6 +89,10 @@ Visual Studio、Azure DevOps、またはその他のソース管理および自�
 * [Visual Studio でロジック アプリを作成してデプロイする](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [既存のロジック アプリで監視、ログ記録、アラートをオンにする](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [ロジック アプリ デプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [サンプル: Azure Logic Apps から Azure Service Bus キューに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps から Azure Storage アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps の関数アプリ アクションを設定し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps から統合アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>実行時のコンテンツ タイプ、変換
 
@@ -112,6 +124,5 @@ Azure Logic Apps [ワークフロー定義言語](https://aka.ms/logicappsdocs)�
 
 ## <a name="next-steps"></a>次の手順
 
-* [JSON を使用してロジック アプリ定義を編集する](../logic-apps/logic-apps-author-definitions.md)
-* [ロジック アプリでエラーと例外を処理する](../logic-apps/logic-apps-exception-handling.md)
-* [Azure Logic Apps の強化に関するコメント、質問、フィードバック、提案を送信する](https://feedback.azure.com/forums/287593-logic-apps)
+* [Logic Apps 用コネクタ](../connectors/apis-list.md)の詳細情報
+* [Azure Logic Apps を使用した B2B エンタープライズ統合シナリオ](../logic-apps/logic-apps-enterprise-integration-overview.md)の詳細情報

@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/29/2019
+ms.date: 08/12/2019
 ms.author: roiyz
-ms.openlocfilehash: b9d0e582b77dc06e1655a7bdb57ee232c603bc86
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 393b01d7815d94e4ad623c552f4110421c9d98bd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706681"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092246"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Windows 用の Azure Monitor 仮想マシン拡張機能
 
@@ -32,16 +31,14 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Windows 用の Log Analytics エージェント拡張機能は、次のバージョンの Windows オペレーティング システムをサポートします。
-
-- Windows Server 2019
-- Windows Server 2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
+サポートされる Windows オペレーティング システムの詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)に関する記事を参照してください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
 次の表は、Windows Azure Monitor VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 
 
 | Log Analytics Windows Agent バンドルのバージョン | Azure Monitor Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> MaxExpressionDepth を 10000 に引き上げ </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> プロキシ接続時に既定の資格情報を無効にする機能を追加 (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH のサポート) </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>軽微な安定化の修正 </li></ul> |
 | 10.19.10006 | 該当なし | 2018 年 12 月 | <ul><li> 軽微な安定化の修正 </li></ul> | 
@@ -87,7 +84,7 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 ```
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
@@ -105,7 +102,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 >[!NOTE]
 >このテンプレートでは、複数のワークスペースに報告するようにエージェントを構成する場合に複数のワークスペース ID とワークスペース キーを指定することはサポートされていません。 複数のワークスペースに報告するようにエージェントを構成するには、「[ワークスペースの追加または削除](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)」を参照してください。  
 
-仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)に関する記事を参照してください。 
+仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/child-resource-name-type.md)に関する記事を参照してください。 
 
 次の例では、Azure Monitor 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 
@@ -168,7 +165,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
 $ProtectedSettings = @{"workspaceKey" = "myWorkspaceKey"}
 
-Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
+Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.EnterpriseCloud.Monitoring" `

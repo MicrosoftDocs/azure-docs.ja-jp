@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381588"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900055"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect:ステージング サーバーとディザスター リカバリー
 ステージング モードのサーバーでは、構成を変更した後、そのサーバーをアクティブにする前に変更内容をプレビューできます。 また、フル インポートおよび完全同期を実行して、変更を運用環境に加える前に、すべての変更が予定どおりに加えられていることを確認できます。
@@ -42,7 +42,7 @@ ms.locfileid: "60381588"
 
 同期サービス マネージャーを使用して、引き続き強制的にエクスポートすることもできます。
 
-ステージング モードのサーバーは、Active Directory と Azure AD から変更を受信し続けます。 サーバーには常に最新の変更のコピーが保持され、別のサーバーの役割を迅速に引き継ぐことができます。 プライマリ サーバーの構成を変更する場合、ステージング モードのサーバーに同じ変更を適用するのは管理者の責任です。
+ステージング モードのサーバーは Active Directory と Azure AD から変更を受信し続け、障害発生時に別のサーバーの役割を迅速に引き継ぐことができます。 プライマリ サーバーの構成を変更する場合、ステージング モードのサーバーに同じ変更を適用するのは管理者の責任です。
 
 従来の同期テクノロジの知識を持つ管理者にとっては、サーバーが独自の SQL Database を持つ点で、ステージング モードは異なるテクノロジに思えることでしょう。 このアーキテクチャにより、ステージング モードのサーバーを別のデータ センターに配置できます。
 

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6f1a0cf6025cb3a398ab93320c6fcb69b1e62429
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60558097"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072152"
 ---
 # <a name="edit-an-api"></a>API の編集
 
@@ -42,7 +41,7 @@ ms.locfileid: "60558097"
 2. 前にインポートした API の 1 つを選びます。
 3. **[デザイン]** タブを選択します。
 4. 編集する操作を選びます。
-5. 操作の名前を変更するには、**[フロントエンド]** ウィンドウの**鉛筆**を選択します。
+5. 操作の名前を変更するには、 **[フロントエンド]** ウィンドウの**鉛筆**を選択します。
 
 ## <a name="update-the-swagger"></a>Swagger を更新する
 

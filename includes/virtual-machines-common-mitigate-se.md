@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/04/2019
+ms.date: 08/08/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 169e25aeb8503a11f768a2a3062022eef51a76b8
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: b13b809b04f6cf878d68311b756ed2ca826f9697
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659841"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935305"
 ---
-**ドキュメントの最終更新日**:2019 年 6 月 4 日午後 3:00 PST。
+**ドキュメントの最終更新日**:2019 年 8 月 9 日午前 10:00 (PST)。
 
 投機的実行のサイドチャネル攻撃として知られる[新たな CPU 脆弱性クラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)を開示したところ、よりわかりやすい説明を求めて、お客様からさまざまな質問が寄せられています。  
 
@@ -168,6 +168,7 @@ NUMA node(s):          1
 - CVE-2017-5715 - ブランチ ターゲット インジェクション (BTI)  
 - CVE-2017-5754 - カーネル ページ テーブル アイソレーション (KPTI)
 - CVE-2018-3639 - 投機的ストア バイパス (KPTI) 
+- [CVE-2019-1125](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1125) – Windows カーネル情報 – Spectre Variant 1 の変種
  
 [L1 ターミナル フォールト (L1TF)](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180018):
 - CVE-2018-3615 - Intel ソフトウェア ガード エクステンションズ (Intel SGX)

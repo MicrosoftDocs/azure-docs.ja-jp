@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 282652adb917450c262e08bf10c3c6e537b829e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072721"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128863"
 ---
 # <a name="edit-metadata-module"></a>Edit Metadata (メタデータの編集) モジュール
 

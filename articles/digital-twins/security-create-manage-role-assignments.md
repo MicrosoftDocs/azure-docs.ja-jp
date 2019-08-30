@@ -39,7 +39,7 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 次の表は、各属性を示しています。
 
-| Attribute | EnableAdfsAuthentication | 必須 | Type | 説明 |
+| Attribute | 名前 | 必須 | Type | 説明 |
 | --- | --- | --- | --- | --- |
 | roleId | ロール定義識別子 | はい | string | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
 | objectId | オブジェクト識別子 | はい | string | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |

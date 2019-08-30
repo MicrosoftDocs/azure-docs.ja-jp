@@ -121,6 +121,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: コネクタ
+      href: /connectors/aci
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

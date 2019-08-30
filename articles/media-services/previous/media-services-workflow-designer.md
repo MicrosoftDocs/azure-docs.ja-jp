@@ -87,7 +87,7 @@ Media Services のラーニング パスを確認します。
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-ワークフロー デザイナー ツールでカスタム ワークフローを作成するとき、サポートが必要になりましたら、あるいはご質問がございましたら、mepd@microsoft.com までメールを送信してください。
+ワークフロー デザイナー ツールでカスタム ワークフローを作成するとき、サポートが必要になりましたら、あるいはご質問がございましたら、mepd@microsoft.com まで英語でメールを送信してください。
 
 ## <a name="see-also"></a>関連項目
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)

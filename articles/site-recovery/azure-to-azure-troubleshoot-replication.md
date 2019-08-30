@@ -6,14 +6,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 11/27/2018
+ms.date: 8/2/2019
 ms.author: asgang
-ms.openlocfilehash: bf24b2d1395e128dc73361670ea93ac938574146
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02f3dff4c9649beeadade942f4b32595f8543c2d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258780"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742548"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Azure 間の VM レプリケーションに関する継続的な問題のトラブルシューティング
 
@@ -63,7 +63,11 @@ Azure Site Recovery にはデータ変更率に制限があり、これはディ
 データの急激な増加が時折しか発生せず、データ変更率が一時的に 10 MB/秒 (Premium の場合) と 2 MB/秒 (Standard の場合) を超えてから低下する場合、レプリケーションは追いつきます。 ただし、ほとんどの時間において、サポートされる制限をチャーンが大きく下回っている場合、可能であれば、次のいずれかのオプションを検討してください。
 
 * **高データ変更率を引き起こしているディスクを除外する**:[PowerShell](./azure-to-azure-exclude-disks.md) を使用して、ディスクを除外できます。ディスクを除外するには、まず、レプリケーションを無効にする必要があります。 
-* **ディザスター リカバリー ストレージ ディスクの階層を変更する**:このオプションを使用できるのは、ディスクのデータ チャーンが 10 MB/秒未満の場合だけです。 たとえば、P10 ディスクを含む VM で、8 MB/秒を超えて 10 MB/秒未満のデータ チャーンが発生しているとします。 顧客が保護中にターゲット ストレージのために P30 ディスクを使用できる場合、問題は解決できます。
+* **ディザスター リカバリー ストレージ ディスクの階層を変更する**:このオプションを使用できるのは、ディスクのデータ チャーンが 20 MB/秒未満の場合だけです。 たとえば、P10 ディスクを含む VM で、8 MB/秒を超えて 10 MB/秒未満のデータ チャーンが発生しているとします。 顧客が保護中にターゲット ストレージのために P30 ディスクを使用できる場合、問題は解決できます。 このソリューションは、Premium Managed Disks を使用しているコンピューターでのみ可能です。 次の手順に従ってください。
+    - 影響を受けたレプリケーション対象のマシンの [ディスク] ブレードに移動し、レプリカ ディスク名をコピーします
+    - このレプリカ マネージド ディスクに移動します
+    - [概要] ブレードに、SAS URL が生成されていることを示すバナーが表示される場合があります。 このバナーをクリックして、エクスポートをキャンセルします。 バナーが表示されない場合は、この手順を無視してください。
+    - SAS URL が取り消されたらすぐに、マネージド ディスクの [構成] ブレードにアクセスし、ASR がソース ディスク上で測定済みチャーン レートをサポートできるように、サイズを増やします
 
 ## <a name="Network-connectivity-problem"></a>ネットワーク接続の問題
 
@@ -84,7 +88,7 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 #### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1:SQL Server 2008/2008 R2 での既知の問題 
 **修正方法**: SQL Server 2008/2008 R2 には、既知の問題があります。 サポート技術情報の「[Azure Site Recovery Agent or other non-component VSS backup fails for a server hosting SQL Server 2008 R2 (SQL Server 2008 R2 をホストしているサーバーで Azure Site Recovery エージェントまたはその他の非コンポーネント VSS バックアップが失敗する)](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)」を参照してください
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>原因 2:AUTO_CLOSE DB があるいずれかのバージョンの SQL Server インスタンスをホストするサーバーで Azure Site Recovery ジョブが失敗します 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因 2:AUTO_CLOSE DB があるいずれかのバージョンの SQL Server インスタンスをホストするサーバーで Azure Site Recovery ジョブが失敗します 
 **修正方法**: サポート技術情報の[記事](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)を参照してください 
 
 
@@ -123,7 +127,7 @@ Site Recovery レプリケーションを動作させるには、VM から特定
         - Azure Site Recovery VSS プロバイダー
         - VDS サービス
 
-####  <a name="vss-provider-notregistered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - エラー 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - エラー 2147754756
 
 **修正方法**: アプリケーション整合性タグを生成するために、Azure Site Recovery では Microsoft ボリューム シャドウ コピー サービス (VSS) が使用されます。 Azure Site Recovery VSS プロバイダー サービスがインストールされているかどうかを確認してください。 </br>
 

@@ -7,18 +7,17 @@ author: hermanndms
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 875060a59cf70d295534c3a4f56136010a560e74
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709926"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078594"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>ストレージ スナップショットに基づいた SAP HANA のバックアップ
 

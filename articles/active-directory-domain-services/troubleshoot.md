@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 2df1ac6325f692e2d433238ae0b92d8e3f8482b5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: acb001417b85b8ff45b2617e148e8b1961f3cbfa
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472281"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772990"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -147,6 +147,9 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
     1. net stop 'Microsoft Azure AD Sync'
     2. net start 'Microsoft Azure AD Sync'
 * **クラウド専用アカウント**: 影響を受けているユーザー アカウントがクラウド専用のユーザー アカウントの場合は、Azure AD Domain Services を有効にした後でユーザーが自分のパスワードを変更していることを確認します。 この手順によって、Azure AD ドメイン サービスに必要な資格情報ハッシュが生成されます。
+* **ユーザー アカウントがアクティブであることを確認する**:ユーザーのアカウントがロックアウトされている場合は、アカウントが再びアクティブになるまでサインインできません。 管理対象ドメインに、2 分以内に無効なパスワードの試行が5回行われると、ユーザーのアカウントは、30 分ロックアウトされます。 30 分後、ユーザー アカウントは、自動的にロック解除されます。
+  * マネージド ドメインでの無効なパスワードの試行によっては、Azure AD のユーザー アカウントはロックアウトされません。 ユーザー アカウントは、Azure AD Domain Services の管理対象ドメイン内でだけ、ロックアウトされます。 Active Directory 管理コンソール (ADAC) を使用して、Azure AD ではなく Azure AD DS マネージド ドメインのユーザー アカウントの状態を確認します。
+  * また、[既定のロックアウトのしきい値と期間を変更する細かい設定が可能なパスワード ポリシーを構成する](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy)こともできます。
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>マネージド ドメインに 1 つまたは複数のアラートがある
 

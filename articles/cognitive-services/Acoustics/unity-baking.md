@@ -3,26 +3,26 @@ title: Project Acoustics Unity ベイク チュートリアル
 titlesuffix: Azure Cognitive Services
 description: このチュートリアルでは、Unity の Project Acoustics での音響ベイクについて説明します。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2362b3916d1b1f430350d975dc0b61914a777be2
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: b7249c3048ba3af3adbaac01f43770482a0d38ad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706683"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933271"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Project Acoustics Unity ベイク チュートリアル
 このチュートリアルでは、Unity の Project Acoustics での音響ベイクについて説明します。
 
 ソフトウェア要件:
-* Windows 用の [Unity 2018.2 以上](https://unity3d.com)
+* [Unity 2018.2 以上](https://unity3d.com) (Windows または MacOS)
 * [Unity プロジェクトに統合されている Project Acoustics プラグイン](unity-integration.md)または[Project Acoustics Unity のサンプル コンテンツ](unity-quickstart.md)
 * 省略可能:クラウド コンピューティングを使用してベイクを高速化するための [Azure Batch アカウント](create-azure-account.md)
 
@@ -179,6 +179,25 @@ Azure Batch サービスを使用して、クラウド内のコンピューテ�
 
 Azure 資格情報はローカル コンピューターに安全に保存され、Unity エディターに関連付けられます。 これらは、Azure へのセキュリティで保護された接続を確立する目的でのみ使用されます。
 
+## <a name="to-find-the-status-of-a-running-job-on-the-azure-portal"></a>実行中のジョブの状態を Azure portal で調べるには
+
+1. [bake]\(ベイク\) タブでベイク ジョブ ID を探します。
+
+![Unity のベイク ジョブ ID のスクリーンショット](media/unity-job-id.png)  
+
+2. [Azure portal](https://portal.azure.com) を開き、ベイクに使用された Batch アカウントに移動して **[ジョブ]** を選択します。
+
+![[ジョブ] リンクのスクリーンショット](media/azure-batch-jobs.png)  
+
+3. ジョブの一覧からジョブ ID を検索します。
+
+![ベイク ジョブの状態のスクリーンショット](media/azure-bake-job-status.png)  
+
+4. ジョブ ID をクリックすると、関連するタスクの状態と全体的なジョブの状態が表示されます。
+
+![ベイク タスクの状態のスクリーンショット](media/azure-batch-task-state.png)  
+
+
 ### <a name="Estimating-bake-cost"></a> Azure のベイク コストの見積もり
 
 特定のベイクのコストを見積もるには、 **[Estimated Compute Cost]\(推定コンピューティング コスト\)** に表示されている値 (時間) に、選択した **VM ノード タイプ**の現地通貨での時間あたりのコストを掛けます。 結果には、ノードを稼働させるために必要なノード時間は含まれません。 たとえば、ノード タイプとして、時間あたりのコストが 0.40 ドルの **Standard_F8s_v2** を選択し、Estimated Compute Cost\(推定コンピューティング コスト\) が 3 時間 57 分の場合、ジョブを実行するための推定コストは 0.40 ドル * 最大 4 時間 = 最大 1.60 ドルになります。 実際のコストは、ノードの起動に余分な時間がかかるため、少し高くなる可能性があります。 ノードの時間あたりのコストは、[Azure Batch の価格](https://azure.microsoft.com/pricing/details/virtual-machines/linux)に関するページで確認できます (カテゴリの "コンピューティングの最適化" または "ハイ パフォーマンス コンピューティング" を選択します)。
@@ -188,6 +207,7 @@ Azure 資格情報はローカル コンピューターに安全に保存され�
 
 ### <a name="minimum-hardware-requirements"></a>最小ハードウェア要件
 * x86-64 プロセッサ。少なくとも 8 個のコアと 32 GB の RAM
+* Docker を実行するためには [Hyper-V 対応](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)であること
 
 たとえば、テストでは、8 コアのマシンに 3 GHz の Intel Xeon E5-1660 と 32 GB 以上の RAM を備えたものが必要です
 * 100 プローブの小さいシーンには、粗ベイクの場合には約 2 時間、細ベイクの場合には 32 時間かかることがあります。
@@ -195,13 +215,15 @@ Azure 資格情報はローカル コンピューターに安全に保存され�
 
 ### <a name="setup-docker"></a>Docker のセットアップ
 シミュレーションを処理する PC 上に Docker をインストールして構成します。
-1. [Docker ツールセット](https://www.docker.com/products/docker-desktop)をインストールします。
-2. Docker 設定を起動し、[Advanced]\(詳細\) オプションに移動して、少なくとも 8 GB の RAM があるリソースを構成します。 Docker に CPU を多く割り当てると、ベイクの実行速度は上がります。 ![Docker 設定の例のスクリーンショット](media/docker-settings.png)
-3. 「共有ドライブ」に移動し、処理に使用されるドライブの共有を有効にします。![Docker 共有ドライブ オプションのスクリーンショット](media/docker-shared-drives.png)
+1. [Docker Desktop](https://www.docker.com/products/docker-desktop) をインストールします。
+2. Docker 設定を起動し、[Advanced]\(詳細\) オプションに移動して、少なくとも 8 GB の RAM があるリソースを構成します。 Docker に CPU を多く割り当てると、ベイクの実行速度は上がります。  
+![Docker 設定の例のスクリーンショット](media/docker-settings.png)
+1. 「共有ドライブ」に移動し、処理に使用されるドライブの共有を有効にします。  
+![Docker 共有ドライブ オプションのスクリーンショット](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>ローカル ベイクの実行
 1. **[Bake]\(ベイク\)** タブで [Prepare Local Bake (ローカル ベイクの準備)] ボタンをクリックし、入力ファイルと実行スクリプトの保存先フォルダーを選択します。 ハードウェアの最小要件を満たしており、そのマシンにフォルダーをコピーして Docker がインストールされていれば、どのマシンでもベイクを実行できます。
-2. 「runlocalbake.bat」スクリプトを使用してシミュレーションを起動します。 このスクリプトはシミュレーションの処理に必要なツールセットでプロジェクト Acoustics Docker イメージをフェッチし、シミュレーションを開始します。 
+2. Windows で "runlocalbake.bat" スクリプトを使用して、または MacOS で "runlocalbake.sh" スクリプトを使用してシミュレーションを起動します。 このスクリプトはシミュレーションの処理に必要なツールセットでプロジェクト Acoustics Docker イメージをフェッチし、シミュレーションを開始します。 
 3. シミュレーションが終了したら、結果の .ace ファイルを Unity プロジェクトにコピーします。 Unity にこれをバイナリ ファイルとして確実に認識させるには、「.bytes」をファイル拡張子に追加します (「Scene1.ace.bytes」などとします)。 シミュレーションの詳細ログは、「AcousticsLog.txt」に格納されます。 問題が発生した場合は、診断の支援のためにこのファイルを共有します。
 
 ## <a name="Data-Files"></a> ベイク プロセスで追加されたデータ ファイル

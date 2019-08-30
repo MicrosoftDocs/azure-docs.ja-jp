@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 9906fe5de9c24f1b1a8c3f713fa772e56ed4e13f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441959"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779539"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
@@ -117,7 +117,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 
 * インターネットで利用可能なリソース。 たとえば、microsoft.com、windowsupdate.com など。
 
-* 同じ Azure Virtual Network 内にあるリソース (リソースの __内部 DNS 名__ を使用)。 たとえば、既定の名前解決を使用する場合、HDInsight ワーカー ノードに割り当てられている内部 DNS 名の例として次のようなものがあります。
+* 同じ Azure Virtual Network 内にあるリソース (リソースの __内部 DNS 名__ を使用)。 たとえば、既定の名前解決を使用するときに、HDInsight ワーカー ノードに割り当てられる内部 DNS 名の例を、次に示します。
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net

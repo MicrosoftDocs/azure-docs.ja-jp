@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 81aac356f49f7bf8dc57f77054d10aa3e09d473f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565265"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779477"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>データ サイエンス仮想マシンに基づくチーム分析と AI 環境 
 [データ サイエンス仮想マシン](overview.md) (DSVM) は、人工知能 (AI) およびデータ分析用にあらかじめ構築されているソフトウェアで、Azure プラットフォーム上のリッチな環境を提供します。 
@@ -43,12 +43,12 @@ DSVM は、Azure インフラストラクチャ レベルで動作するため�
 
 この一連の記事では、前述の各項目に対するガイダンスと指針を示します。 大規模なエンタープライズ構成で DSVM を展開する際のすべての考慮事項とニーズを網羅していません。 社内で DSVM インスタンスを実装するときに使用できるその他の Azure のドキュメントを次に示します。 
 
-* [ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/azure-network-security)
+* [ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/fundamentals/network-security
 * [監視](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)と[管理](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [ログ記録と監査](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [ログ記録と監査](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [ポリシーの設定と適用](../../governance/policy/overview.md)
-* [マルウェア対策](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+* [マルウェア対策](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [データの探索とガバナンス](https://docs.microsoft.com/azure/data-catalog/)
 

@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: ユーザー ヘルプのドキュメント
+summary: 従業員、IT 担当者、またはエンドユーザーとして、職場または学校アカウントの認証の設定、自分のパスワードのリセット、デバイスの設定および参加、Microsoft Authenticator アプリの設定、各種ポータルの使用を行います。
+metadata:
+  title: 認証、アプリ、デバイスに関するユーザー ヘルプ
+  description: 従業員またはエンドユーザーとして、認証、Microsoft Authenticator アプリ、マイ アプリ ポータルを設定して使用する方法について説明します。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: user-help
+  ms.topic: landing-page
+  ms.collection: M365-identity-device-management
+  author: eross-msft
+  ms.author: lizross
+  ms.date: 08/26/2019
+  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70062207"
+landingContent:
+- title: Microsoft Authenticator アプリの設定と使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft Authenticator アプリとは
+      url: user-help-auth-app-overview.md
+  - linkListType: download
+    links:
+    - text: アプリのダウンロードとインストール
+      url: user-help-auth-app-download-install.md
+  - linkListType: how-to-guide
+    links:
+    - text: アカウント情報のバックアップと復旧
+      url: user-help-auth-app-backup-recovery.md
+    - text: アプリを使用したサインイン
+      url: user-help-auth-app-sign-in.md
+- title: 2 段階認証の設定と使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 2 要素認証とは
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 認証方法の設定
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: 設定の管理
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: 問い合わせ
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: マイ アプリ ポータルの設定と使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: マイ アプリ ポータルとは
+      url: my-apps-portal-end-user-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: 情報の更新
+      url: my-apps-portal-end-user-update-profile.md
+    - text: 問い合わせ
+      url: my-apps-portal-end-user-troubleshoot.md
+- title: セキュリティ情報 (プレビュー) の設定と使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: セキュリティ情報 (プレビュー) とは
+      url: user-help-security-info-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: セキュリティ情報の方法の設定
+      url: security-info-add-update-methods-overview.md
+    - text: サインイン プロンプトでの情報の追加
+      url: security-info-setup-signin.md
+- title: マイ プロファイル (プレビュー) の設定と使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: マイ プロファイル (プレビュー) ポータルとは
+      url: myprofile-portal-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 組織の管理
+      url: myprofile-portal-organizations-page.md
+    - text: 接続されているデバイスの管理
+      url: myprofile-portal-devices-page.md
+- title: 自分のパスワードのリセット
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: パスワードのリセットとは
+      url: user-help-password-reset-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: パスワードをリセットするためのサインアップ
+      url: active-directory-passwords-reset-register.md
+    - text: パスワードをリセットする
+      url: user-help-reset-password.md

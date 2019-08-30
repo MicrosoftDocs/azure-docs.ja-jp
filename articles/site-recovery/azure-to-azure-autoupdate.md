@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: rajanaki
-ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92a46f7be116d0664b438c9039e311f802c873e5
+ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65922076"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68708074"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -64,7 +64,7 @@ Site Recovery による更新の管理は、次の方法で行えます。
 
 
 > [!Note]
-> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、既定で新しい Automation アカウントが作成されます。 あるいは、この設定をカスタマイズして、既存の Automation アカウントを選択できます。 それ以降は、同じコンテナー内でレプリケーションを有効にすると、以前に作成されたアカウントが使用されます。
+> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、既定で新しい Automation アカウントが作成されます。 あるいは、この設定をカスタマイズして、既存の Automation アカウントを選択できます。 それ以降は、同じコンテナー内でレプリケーションを有効にすると、以前に作成されたアカウントが使用されます。 現在、ドロップダウンには、コンテナーと同じリソース グループ内にある Automation アカウントのみが表示されます。  
 
 カスタムの Automation アカウントを使用する場合は、次のスクリプトを使用します。
 

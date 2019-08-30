@@ -167,7 +167,7 @@ App Service 環境を使用する場合は、[Barracuda ファイル](https://az
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>App Service Web アプリ内のポートをブロックする方法は?
 
-App Service 共有テナント環境では、インフラストラクチャの特性のため、特定のポートをブロックすることはできません。 TCP ポート 4016、4018、および 4020 も Visual Studio リモート デバッグに対して開いている場合があります。
+App Service 共有テナント環境では、インフラストラクチャの特性のため、特定のポートをブロックすることはできません。 TCP ポート 4020、4022、および 4024 も Visual Studio リモート デバッグに対して開いている場合があります。
 
 App Service Environment では、受信トラフィックおよび送信トラフィックを完全に制御できます。 ネットワーク セキュリティ グループを使用して、特定のポートを制限またはブロックできます。 App Service Environment の詳細については、「[Introducing App Service Environment](https://azure.microsoft.com/blog/introducing-app-service-environment/)」(App Service Environment の概要) を参照してください。
 

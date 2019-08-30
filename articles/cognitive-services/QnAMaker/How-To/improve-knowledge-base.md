@@ -181,7 +181,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 要求プロパティ|EnableAdfsAuthentication|Type|目的|
+|HTTP 要求プロパティ|Name|Type|目的|
 |--|--|--|--|
 |URL ルート パラメーター|ナレッジ ベース ID|string|ナレッジ ベースの GUID。|
 |ホストのサブドメイン|QnAMaker リソース名|string|Azure サブスクリプション内の QnA Maker のホスト名。 これは、ナレッジ ベースを公開した後に、[設定] ページで利用できます。 |

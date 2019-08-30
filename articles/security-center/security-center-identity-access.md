@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296486"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905339"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Azure Security Center での ID とアクセスの監視 (プレビュー)
 この記事は、Azure Security Center を使用してユーザーの ID とアクセス アクティビティを監視する際に役立ちます。
@@ -128,7 +128,7 @@ ID とアクセスの推奨事項の詳細な一覧については、「[推奨�
 ## <a name="next-steps"></a>次の手順
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
 
-- [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-recommendations.md)
+- [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 - [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
 - [Azure Security Center での Azure SQL サービスとデータの保護](security-center-sql-service-recommendations.md)
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: dd4eef7998b83c7a527738762379d0d3e720d70f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699807"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900207"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -26,7 +26,7 @@ ms.locfileid: "68699807"
 
 1 つのロジック アプリ定義の制限を次に示します。
 
-| EnableAdfsAuthentication | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | ワークフローごとのアクション数 | 500 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
 | アクションで許可される入れ子の深さ | 8 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
@@ -48,7 +48,7 @@ ms.locfileid: "68699807"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | 実行継続時間 | 90 日間 | 365 日 | 既定の制限を変更するには、[実行継続時間の変更](#change-duration)に関する記事を参照してください。 |
 | ストレージのリテンション期間 | 実行の開始時刻から 90 日間 | 365 日 | 既定の制限を変更するには、[ストレージのリテンション期間の変更](#change-retention)に関する記事を参照してください。 |
@@ -75,7 +75,7 @@ ms.locfileid: "68699807"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| EnableAdfsAuthentication | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | トリガーのコンカレンシー | * コンカレンシー制御がオフの場合は無制限 <p><p>* コンカレンシー制御がオンの場合、25 が既定値の制限となります。制御をオンにした後、元に戻すことはできません。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
 | 待機中の実行の最大数 | コンカレンシー制御がオンの場合、待機中の実行の最大数は 10 にコンカレンシー (トリガーのコンカレンシー) の数を加えたものになります。 最大数は 100 以下で変更することができます。 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
@@ -93,7 +93,7 @@ ms.locfileid: "68699807"
 
 ### <a name="multi-tenant-logic-apps-service"></a>マルチテナント Logic Apps サービス
 
-| EnableAdfsAuthentication | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | アクション:5 分あたりの実行数 | 既定の制限は 100,000、上限は 300,000 です。 | 既定の制限を変更するには、["高スループット" モードでのロジック アプリの実行](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)に関する記事をご覧ください。 または、必要に応じて複数のロジック アプリにワークロードを分散できます。 |
 | アクション:同時発信呼び出し数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
@@ -105,7 +105,7 @@ ms.locfileid: "68699807"
 
 ### <a name="integration-service-environment-ise"></a>統合サービス環境 (ISE)
 
-| EnableAdfsAuthentication | 制限 | メモ |
+| Name | 制限 | メモ |
 |------|-------|-------|
 | 基本単位の実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 1 分あたり最大 4,000 回のアクション実行 (1 か月あたり最大 1 億 6,000 万回のアクション実行) が提供されます | |
 | スケール ユニットの実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 各スケール ユニットでは、1 分あたり最大 2,000 回の追加アクション実行 (1 か月あたり最大 8,000 万回の追加アクション実行) を提供できます | |
@@ -124,7 +124,7 @@ ms.locfileid: "68699807"
 
 コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトはこれらの制限より長くなる場合があります。 詳細については、特定のコネクタの技術詳細をご覧ください。「[Workflow triggers and actions](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)」もご覧ください。
 
-| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | 送信要求 | 120 秒 | 240 秒 | これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern)または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 |
 | 同期応答 | 120 秒 | 240 秒 | 元の要求で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
@@ -132,7 +132,7 @@ ms.locfileid: "68699807"
 
 #### <a name="message-size"></a>メッセージ サイズ
 
-| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | メッセージ サイズ | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 |
 | チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p>統合サービス環境の場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。[Azure Blob Storage コネクタ](/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいサイズのメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
@@ -141,7 +141,7 @@ ms.locfileid: "68699807"
 
 #### <a name="retry-policy"></a>再試行ポリシー
 
-| EnableAdfsAuthentication | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | 再試行 | 90 | 既定値は 4 です。 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
 | 再試行の最大間隔 | 1 日 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
@@ -154,7 +154,7 @@ ms.locfileid: "68699807"
 
 次に示すのは、Web API から作成できるカスタム コネクタの制限です。
 
-| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | カスタム コネクタの数 | Azure サブスクリプションあたり 1,000 | Azure サブスクリプションあたり 1,000 ||
 | カスタム コネクタの 1 分あたりの要求数 | 接続ごとに、1 分あたり 500 の要求 | *カスタム コネクタ*ごとに、1 分あたり 2,000 の要求 ||
@@ -164,7 +164,7 @@ ms.locfileid: "68699807"
 
 ## <a name="managed-identities"></a>マネージド ID
 
-| EnableAdfsAuthentication | 制限 |
+| Name | 制限 |
 | ---- | ----- |
 | マネージド ID が自動割り当てされているロジック アプリの数 (Azure サブスクリプションあたり) | 100 |
 |||
@@ -205,7 +205,7 @@ ISE に含まれている統合アカウント以外に追加する統合アカ�
 | マップ | 25 | 500 | 1,000 |
 | スキーマ | 25 | 500 | 1,000 |
 | アセンブリ | 10 | 25 | 1,000 |
-| 証明書 | 25 | 2 | 500 |
+| 証明書 | 25 | 2 | 1,000 |
 | バッチの構成 | 5 | 1 | 50 |
 ||||
 
@@ -234,7 +234,7 @@ ISE に含まれている統合アカウント以外に追加する統合アカ�
 
 B2B プロトコルに適用されるメッセージ サイズの制限を次に示します。
 
-| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | デコードおよびエンコードに適用 |
 | X12 | 50 MB | 50 MB | デコードおよびエンコードに適用 |
@@ -253,9 +253,11 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 ## <a name="firewall-configuration-ip-addresses"></a>ファイアウォールの構成:IP アドレス
 
-同じリージョン内のすべてのロジック アプリは、同じ IP アドレス範囲を使用します。 ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在する場所に基づいて、Logic Apps サービスで使用される*すべて*の[着信](#inbound) IP アドレス*と*[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**受信**と**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
+同じリージョン内のすべてのロジック アプリは、同じ IP アドレス範囲を使用します。 ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在する場所に基づいて、Logic Apps サービスで使用される*すべて*の[着信](#inbound) IP アドレス*と*[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**受信**と**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。 
 
 [Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
+
+統合サービス環境 (ISE) 内で実行されるロジック アプリの場合は、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)ことを確認してください。
 
 [Azure Government](../azure-government/documentation-government-overview.md) と [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) の場合、コネクタに対する予約済み IP アドレスは現在使用できません。
 

@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ad9c50953447c1effee48eec5b0cb9f64386e6cc
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: eb362ec652b306a12a41e7e96dcbc86638369c17
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155565"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085888"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から関数アプリを作成する
 

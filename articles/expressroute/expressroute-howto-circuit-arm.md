@@ -54,7 +54,7 @@ Get-AzExpressRouteServiceProvider
 
 接続プロバイダーがそこにリストされているかどうかを確認します。 以下の項目は、回線を作成する際に後で必要になるため、書き留めておいてください。
 
-* EnableAdfsAuthentication
+* Name
 * PeeringLocations
 * BandwidthsOffered
 

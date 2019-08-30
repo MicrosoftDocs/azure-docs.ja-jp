@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8163b2261601b701913e07d703f5db0ac6fa7c0
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 13c9003baaca11dce5a2192a8183674faddfa6dc
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688087"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967294"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションにユーザーとグループを割り当てる
 この記事では、Azure Active Directory (Azure AD) においてユーザーまたはグループをアプリケーションに割り当てる方法を説明します。 管理者が次の操作を実行するためのアクセス権をユーザーに付与する前に、最初にアプリケーションにユーザーを割り当てる必要があります。
@@ -120,7 +120,7 @@ ms.locfileid: "68688087"
 
 15. **[割り当て]** ボタンをクリックして、選択したグループにアプリケーションを割り当てます。
 
-少し待つと、選択したグループ内のユーザーが、ソリューションの説明セクションで説明されているメソッドを使用してそれらのアプリケーションを起動できるようになります。 これらが動的グループである場合、割り当てられているグループ内のユーザーに割り当てが表示されるまでに、さらに処理時間がかかる可能性があります。
+少し待つと、選択したグループ内のユーザーは、ソリューションの説明セクションで説明されている方法を使用してこれらのアプリケーションを起動できるようになります。 これらが動的グループである場合、割り当てられているグループ内のユーザーに割り当てが表示されるまでに、さらに処理時間がかかる可能性があります。
 
 ## <a name="enable-self-service-application-access"></a>アプリケーションのセルフ サービス アクセスを有効化
 

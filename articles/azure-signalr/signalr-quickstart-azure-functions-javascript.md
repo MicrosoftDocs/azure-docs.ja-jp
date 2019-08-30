@@ -7,12 +7,12 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: b096a6c7bb5b1fedaa5d2963dddae03df9fe6954
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c234324bf76f9d944037a411ed8bb3b7e4841cbe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494052"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882540"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用してチャット ルームを作成する
 
@@ -25,6 +25,8 @@ Azure SignalR Service を使用すると、アプリケーションにリアル�
 [Visual Studio Code](https://code.visualstudio.com/) などのコード エディターがインストールされていることを確認してください。
 
 Azure Functions アプリをローカルで実行するために、[Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) をインストールします。
+
+Azure Functions には、[Node.js](https://nodejs.org/en/download/) バージョン 8 または 10 が必要です。
 
 現在の Azure Functions Core Tools では、拡張機能をインストールするために [.NET Core SDK](https://www.microsoft.com/net/download) をインストールする必要があります。 ただし、JavaScript Azure Functions アプリの構築には、.NET の知識は必要ありません。
 
@@ -84,4 +86,4 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 このクイック スタートでは、VS Code でリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次は、VS Code から Azure Functions をデプロイする方法を詳しく学びます。
 
 > [!div class="nextstepaction"]
-> [VS Code で Azure Functions をデプロイする](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started)
+> [VS Code で Azure Functions をデプロイする](https://code.visualstudio.com/tutorials/functions-extension/getting-started)

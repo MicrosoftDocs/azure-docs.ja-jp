@@ -10,7 +10,7 @@ ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/21/2019
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6b7c732a0af7fb3519cf255fa26478cd9ae82d2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235347"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835107"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -46,23 +46,23 @@ ms.locfileid: "66235347"
 
 ## <a name="application-manifest"></a>アプリケーション マニフェスト
 
-[Azure Portal][AZURE-portal]に備わっている機能の 1 つで、アプリケーションの ID 構成が JSON 形式で生成されて表現されます。そのマニフェストが関連付けられている [Application][AAD-Graph-App-Entity] エンティティと [ServicePrincipal][AAD-Graph-Sp-Entity] エンティティを更新するための機構として使用されます。 詳細については、「[Azure Active Directory のアプリケーション マニフェストについて][AAD-App-Manifest]」を参照してください。
+[Azure portal][AZURE-portal] に備わっている機能の 1 つで、アプリケーションの ID 構成が JSON 形式で生成されて表現されます。そのマニフェストが関連付けられている [Application][AAD-Graph-App-Entity] エンティティと [ServicePrincipal][AAD-Graph-Sp-Entity] エンティティを更新するための機構として使用されます。 詳細については、[Azure Active Directory のアプリケーション マニフェストについて][AAD-App-Manifest]のページを参照してください。
 
 ## <a name="application-object"></a>アプリケーション オブジェクト
 
-[Azure Portal][AZURE-portal] でアプリケーションを登録/更新すると、そのテナントを対象に、アプリケーション オブジェクトおよび対応する[サービス プリンシパル オブジェクト](#service-principal-object)の両方が作成/更新されます。 アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (そのアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
+[Azure portal][AZURE-portal] でアプリケーションを登録または更新すると、そのテナントを対象に、アプリケーション オブジェクトおよび対応する[サービス プリンシパル オブジェクト](#service-principal-object)の両方が作成または更新されます。 アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (そのアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
 
-詳しくは、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト (Azure AD)][AAD-App-SP-Objects]」をご覧ください。
+詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト][AAD-App-SP-Objects]に関するページを参照してください。
 
 ## <a name="application-registration"></a>アプリケーションの登録
 
 アプリケーションの "ID とアクセス管理" の機能を Azure AD で行うためには、そのアプリケーションを Azure AD [テナント](#tenant)に登録する必要があります。 アプリケーションを Azure AD に登録するとき、アプリケーションに使用する ID 構成を指定します。これによって Azure AD との連携が可能となり、次のような機能が使用できるようになります。
 
-* Azure AD Identity Management と[ OpenID Connect][OpenIDConnect] プロトコル実装によるシングル サインオンの強固な管理
+* Azure AD Identity Management と [OpenID Connect][OpenIDConnect] プロトコル実装によるシングル サインオンの強固な管理
 * [クライアント アプリケーション](#client-application)による[保護されたリソース](#resource-server)への OAuth 2.0 [承認サーバー](#authorization-server)を介したブローカー アクセス
 * [同意フレームワーク](#consent)
 
-詳細については、「[Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]」を参照してください。
+詳細については、[Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]に関するページを参照してください。
 
 ## <a name="authentication"></a>認証
 
@@ -115,7 +115,7 @@ Microsoft ID プラットフォーム アプリケーション統合の場合、
 
 ## <a name="id-token"></a>ID トークン
 
-[承認サーバー](#authorization-server)の[承認エンドポイント](#authorization-endpoint)から提供される [OpenID Connect][OpenIDConnect-ID-Token][ セキュリティ トークン](#security-token)。このトークンには、エンド ユーザーの[リソース所有者](#resource-owner)の認証に関連した[要求](#claim)が格納されます。 ID トークンもアクセス トークンと同様、デジタル署名された [JSON Web トークン (JWT)][JWT] として表現されます。 ただし、アクセス トークンとは異なり、ID トークンの要求は、リソース アクセス (特にアクセス制御) に関連した目的には使用されません。
+[承認サーバー](#authorization-server)の[承認エンドポイント](#authorization-endpoint)から提供される [OpenID Connect][OpenIDConnect-ID-Token] [セキュリティ トークン](#security-token)。このトークンには、エンド ユーザーの[リソース所有者](#resource-owner)の認証に関連した[要求](#claim)が格納されます。 ID トークンもアクセス トークンと同様、デジタル署名された [JSON Web トークン (JWT)][JWT] として表現されます。 ただし、アクセス トークンとは異なり、ID トークンの要求は、リソース アクセス (特にアクセス制御) に関連した目的には使用されません。
 
 詳細については、[Microsoft ID プラットフォーム トークンのリファレンス][AAD-Tokens-Claims]に関するページを参照してください。
 
@@ -127,7 +127,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 クライアントが登録されたテナントに限らず、任意の Azure AD [テナント](#tenant)にプロビジョニングされたユーザーによるサインインと[同意](#consent)を有効にするアプリケーションのクラス。 [ネイティブ クライアント](#native-client) アプリケーションは、既定ではマルチテナントとなります。これに対し、[Web クライアント](#web-client)と [Web リソース/API](#resource-server) アプリケーションは、シングル テナントまたはマルチテナントを選択できるようになっています。 一方シングル テナントとして登録される Web アプリケーションの場合は、アプリケーションの登録先と同じテナントにプロビジョニングされたユーザー アカウントからのみサインインが許可されます。
 
-詳細については、「[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法][AAD-Multi-Tenant-Overview]」を参照してください。
+詳細については、[マルチテナント アプリケーション パターンを使用して Azure AD ユーザーをサインインさせる方法][AAD-Multi-Tenant-Overview]に関するページを参照してください。
 
 ## <a name="native-client"></a>ネイティブ クライアント
 
@@ -160,15 +160,15 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 ロールは、[スコープ](#scopes)と同様、[リソース サーバー](#resource-server)の保護されたリソースへのアクセスを管理するための手段です。 ロールには、"ユーザー" ロールと "アプリケーション" ロールの 2 種類があります。ユーザー ロールでは、リソースへのアクセスを必要とするユーザー/グループに関してロールベースのアクセス制御を実装します。これに対してアプリケーション ロールで実装するのは、アクセスを要求する[クライアント アプリケーション](#client-application)の場合と同じです。
 
-ロールは、リソースによって定義される文字列 ("経費承認者"、"読み取り専用"、"Directory.ReadWrite.All" など) です。[Azure Portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [appRoles プロパティ][AAD-Graph-Sp-Entity]に格納されます。 Azure Portal は、ユーザーを "ユーザー" ロールに割り当てたり、"アプリケーション" ロールに対するクライアント [アプリケーションのアクセス許可](#permissions)を構成したりするためにも使用します。
+ロールは、リソースによって定義される文字列 ("経費承認者"、"読み取り専用"、"Directory.ReadWrite.All" など) です。[Azure portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [appRoles プロパティ][AAD-Graph-Sp-Entity]に格納されます。 Azure Portal は、ユーザーを "ユーザー" ロールに割り当てたり、"アプリケーション" ロールに対するクライアント [アプリケーションのアクセス許可](#permissions)を構成したりするためにも使用します。
 
-Azure AD の Graph API によって公開されているアプリケーション ロールの詳しい説明については、[Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]に関するページを参照してください。 実装手順の例については、「[RBAC と Azure portal を使用してアクセスを管理する][AAD-RBAC]」をご覧ください。
+Azure AD の Graph API によって公開されているアプリケーション ロールの詳しい説明については、[Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]に関するページを参照してください。 実装手順の例については、[RBAC と Azure portal を使用してアクセスを管理する方法][AAD-RBAC]に関するページを参照してください。
 
 ## <a name="scopes"></a>スコープ
 
 スコープは、[ロール](#roles)と同様、[リソース サーバー](#resource-server)の保護されたリソースへのアクセスを管理するための手段です。 リソースへの委任されたアクセス権を所有者から付与されている[クライアント アプリケーション](#client-application)に対し、[スコープベース][OAuth2-Access-Token-Scopes]のアクセス制御を実装する目的で使用されます。
 
-スコープは、リソースによって定義される文字列 ("Mail.Read"、"Directory.ReadWrite.All" など) です。[Azure Portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [oauth2Permissions プロパティ][AAD-Graph-Sp-Entity]に格納されます。 Azure Portal は、クライアント アプリケーションの、スコープに対する[委任されたアクセス許可](#permissions)を構成するためにも使用します。
+スコープは、リソースによって定義される文字列 ("Mail.Read"、"Directory.ReadWrite.All" など) です。[Azure portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [oauth2Permissions プロパティ][AAD-Graph-Sp-Entity]に格納されます。 Azure Portal は、クライアント アプリケーションの、スコープに対する[委任されたアクセス許可](#permissions)を構成するためにも使用します。
 
 推奨される名前付け規則は、"resource.operation.constraint" 形式です。 Azure AD の Graph API によって公開されているスコープの詳しい説明については、[Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]に関するページを参照してください。 Office 365 サービスによって公開されているスコープについては、[Office 365 API アクセス許可に関するリファレンス][O365-Perm-Ref]を参照してください。
 
@@ -178,9 +178,9 @@ Azure AD の Graph API によって公開されているアプリケーション
 
 ## <a name="service-principal-object"></a>サービス プリンシパル オブジェクト
 
-[Azure Portal][AZURE-portal] でアプリケーションを登録/更新すると、そのテナントを対象に、[アプリケーション オブジェクト](#application-object)および対応するサービス プリンシパル オブジェクトの両方が作成/更新されます。 アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (関連するアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
+[Azure portal][AZURE-portal] でアプリケーションを登録または更新すると、そのテナントを対象に、[アプリケーション オブジェクト](#application-object)および対応するサービス プリンシパル オブジェクトの両方が作成または更新されます。 アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (関連するアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
 
-詳しくは、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト (Azure AD)][AAD-App-SP-Objects]」をご覧ください。
+詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト][AAD-App-SP-Objects]に関するページを参照してください。
 
 ## <a name="sign-in"></a>サインイン
 
@@ -200,7 +200,7 @@ Azure AD ディレクトリのインスタンスを "Azure AD テナント" と�
 * ユーザー アカウントや登録済みアプリケーションの認証
 * OAuth2、SAML などの各種プロトコルをサポートするうえで必要な REST エンドポイント ([承認エンドポイント](#authorization-endpoint)、[トークン エンドポイント](#token-endpoint)のほか、[マルチテナント アプリケーション](#multi-tenant-application)によって使用される "共通" エンドポイントなど)
 
-Azure AD テナントはサインアップ時に作成され、Azure サブスクリプションおよび Office 365 サブスクリプションに関連付けられます。これにより、そのサブスクリプションの ID およびアクセス管理機能が提供されます。 Azure サブスクリプション管理者は、Azure Portal を使用して追加の Azure AD テナントを作成することもできます。 テナントを利用するための各種方法について詳しくは、「[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]」をご覧ください。 サブスクリプションと Azure AD テナントの関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法][AAD-How-Subscriptions-Assoc]」をご覧ください。
+Azure AD テナントはサインアップ時に作成され、Azure サブスクリプションおよび Office 365 サブスクリプションに関連付けられます。これにより、そのサブスクリプションの ID およびアクセス管理機能が提供されます。 Azure サブスクリプション管理者は、Azure Portal を使用して追加の Azure AD テナントを作成することもできます。 テナントを利用するための各種方法について詳しくは、[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]に関するページを参照してください。 サブスクリプションと Azure AD テナントの関係について詳しくは、[Azure サブスクリプションを Azure Active Directory に関連付ける方法][AAD-How-Subscriptions-Assoc]に関するページを参照してください。
 
 ## <a name="token-endpoint"></a>トークン エンドポイント
 
@@ -208,7 +208,7 @@ Azure AD テナントはサインアップ時に作成され、Azure サブス�
 
 ## <a name="user-agent-based-client"></a>ユーザー エージェント ベースのクライアント
 
-Web サーバーからコードをダウンロードしてユーザー エージェント (Web ブラウザーなど) 内で実行する[クライアント アプリケーション](#client-application)の一種。その例としてシングル ページ アプリケーション (SPA) が挙げられます。 すべてのコードがデバイス上で実行され、機密性を保った状態でプライベートに資格情報を保存することができないため、"public" クライアントと見なされます。 詳しくは、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページをご覧ください。
+Web サーバーからコードをダウンロードしてユーザー エージェント (Web ブラウザーなど) 内で実行する[クライアント アプリケーション](#client-application)の一種。その例としてシングル ページ アプリケーション (SPA) が挙げられます。 すべてのコードがデバイス上で実行され、機密性を保った状態でプライベートに資格情報を保存することができないため、"public" クライアントと見なされます。 詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページを参照してください。
 
 ## <a name="user-principal"></a>ユーザー プリンシパル
 
@@ -216,7 +216,7 @@ Web サーバーからコードをダウンロードしてユーザー エージ
 
 ## <a name="web-client"></a>Web クライアント
 
-Web サーバーですべてのコードを実行する[クライアント アプリケーション](#client-application)の一種。資格情報をサーバー上に安全に保存することで、"confidential" クライアントとして動作することができます。 詳しくは、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページをご覧ください。
+Web サーバーですべてのコードを実行する[クライアント アプリケーション](#client-application)の一種。資格情報をサーバー上に安全に保存することで、"confidential" クライアントとして動作することができます。 詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,12 +10,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774169"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942805"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -50,9 +50,9 @@ Azure AD の実装を強化するために、Azure Active Directory Premium P1 �
 
 - **Azure Active Directory Free。** ユーザーとグループの管理、オンプレミス ディレクトリ同期、基本レポート、クラウド ユーザー向けのセルフサービスのパスワード変更のほか、Azure、Office 365、および多くの一般的な SaaS アプリ全体のシングル サインオンを提供します。
 
-- **Azure Active Directory Premium P1。** P1 では、Free と Basic の機能に加えて、ハイブリッド ユーザーがオンプレミスとクラウドの両方のリソースにアクセスすることもできます。 さらに、動的グループ、セルフサービス グループ管理、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート)、オンプレミス ユーザーによるセルフサービスのパスワード リセットを可能にするクラウドの書き戻し機能など、高度な管理機能もサポートしています。
+- **Azure Active Directory Premium P1。** P1 では、Free の機能に加えて、ハイブリッド ユーザーがオンプレミスとクラウドの両方のリソースにアクセスすることもできます。 さらに、動的グループ、セルフサービス グループ管理、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート)、オンプレミス ユーザーによるセルフサービスのパスワード リセットを可能にするクラウドの書き戻し機能など、高度な管理機能もサポートしています。
 
-- **Azure Active Directory Premium P2。** P2 では、Free、Basic、および P1 の機能に加えて、アプリや重要な企業データへのリスクベースの条件付きアクセスを提供するのに役立つ [Azure Active Directory Identity Protection](../identity-protection/enable.md) のほか、管理者と管理者によるリソースへのアクセスを検出、制限、監視するのに役立ち、必要に応じてジャストインタイム アクセスを提供できる [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) が提供されます。
+- **Azure Active Directory Premium P2。** P2 では、Free および P1 の機能に加えて、アプリや重要な企業データへのリスクベースの条件付きアクセスを提供するのに役立つ [Azure Active Directory Identity Protection](../identity-protection/enable.md) のほか、管理者と管理者によるリソースへのアクセスを検出、制限、監視するのに役立ち、必要に応じてジャストインタイム アクセスを提供できる [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) が提供されます。
 
 - **"従量課金制" の機能ライセンス。** Azure Active Directory Business-to-Customer (B2C) などの機能ライセンスを別途取得することもできます。 B2C は、顧客向けアプリ用の ID およびアクセス管理ソリューションを提供するのに役立つ可能性があります。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。
 

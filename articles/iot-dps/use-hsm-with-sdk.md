@@ -1,20 +1,19 @@
 ---
 title: Azure - Azure の Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 description: Azure - Azure の Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd974ad81a641afb1c93fffb0a12a147c55b3a73
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248132"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951893"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>C 言語用 Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 
@@ -36,11 +35,11 @@ ms.locfileid: "61248132"
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>サポートされている構成証明メカニズムでの認証を有効にする
 
-Azure Portal で物理デバイスまたはシミュレーターを登録するためには、その物理デバイスまたはシミュレーターに使用する SDK 認証モード (X **.** 509 または TPM) を有効にしておく必要があります。 まず、azure-iot-sdk-c のルート フォルダーに移動します。 その後、選択した認証モードに応じて、指定のコマンドを実行してください。
+Azure portal で物理デバイスまたはシミュレーターを登録するためには、その物理デバイスまたはシミュレーターに使用する SDK 認証モード (X.509 または TPM) を有効にしておく必要があります。 まず、azure-iot-sdk-c のルート フォルダーに移動します。 その後、選択した認証モードに応じて、指定のコマンドを実行してください。
 
-### <a name="use-x509-with-simulator"></a>X **.** 509 をシミュレーターで使用する場合
+### <a name="use-x509-with-simulator"></a>X.509 をシミュレーターで使用する場合
 
-プロビジョニング サービスには、デバイスの認証用の X **.** 509 証明書を生成する Device Identity Composition Engine (DICE) エミュレーターが付属しています。 X **.** 509 認証を有効にするには、次のコマンドを実行します。 
+プロビジョニング サービスには、デバイスの認証用の **X.509** 証明書を生成する Device Identity Composition Engine (DICE) エミュレーターが付属しています。 **X.509** 認証を有効にするには、次のコマンドを実行します。 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -48,9 +47,9 @@ cmake -Ddps_auth_type=x509 ..
 
 DICE 対応ハードウェアについては、[こちら](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)を参照してください。
 
-### <a name="use-x509-with-hardware"></a>X **.** 509 をハードウェアで使用する場合
+### <a name="use-x509-with-hardware"></a>X.509 をハードウェアで使用する場合
 
-プロビジョニング サービスは、他のハードウェア上の X **.** 509 と共に使用することができます。 ハードウェアと SDK との間には、接続を確立するためのインターフェイスが必要となります。 このインターフェイスについては、ご利用の HSM の製造元にお問い合わせください。
+プロビジョニング サービスは、他のハードウェア上の **X.509** と共に使用することができます。 ハードウェアと SDK との間には、接続を確立するためのインターフェイスが必要となります。 このインターフェイスについては、ご利用の HSM の製造元にお問い合わせください。
 
 ### <a name="use-tpm"></a>TPM を使用する場合
 
@@ -142,15 +141,15 @@ cmake -Ddps_auth_type=tpm_simulator ..
 ### <a name="tpm"></a>TPM
 TPM を使用する場合は、「[シミュレートされたデバイスを作成して IoT Hub Device Provisioning Service でプロビジョニングする](./quick-create-simulated-device.md)」の手順に従って、Device Provisioning Service にデバイス登録エントリを作成し、初回ブートをシミュレートします。
 
-### <a name="x509"></a>X **.** 509
+### <a name="x509"></a>X.509
 
 1. プロビジョニング サービスにデバイスを登録するためには、各デバイスの保証キーと登録 ID を書き留めておく必要があります。これらの情報は、クライアント SDK に含まれるプロビジョニング ツールに表示されます。 次のコマンドを実行して、ルート CA 証明書 (グループ登録用) とリーフ証明書 (個別登録用) を出力してください。
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
-   - X **.** 509 個別登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Individual Enrollments]\(個々の登録\)** タブの上部にある **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、ブレードの指示に従ってリーフ証明書をアップロードします。 作業が完了したら、 **[保存]** をクリックします。 
-   - X **.** 509 グループ登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Group Enrollments]\(グループ登録\)** タブを選択して、上部の **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、グループ名と証明書名を入力してから、ブレードの指示に従って CA/中間証明機関の証明書をアップロードします。 作業が完了したら、 **[保存]** をクリックします。 
+   - **X.509 個別登録**: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Individual Enrollments]\(個々の登録\)** タブの上部にある **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X.509** を選択し、ブレードの指示に従ってリーフ証明書をアップロードします。 作業が完了したら、 **[保存]** をクリックします。 
+   - **X.509 グループ登録**: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Group Enrollments]\(グループ登録\)** タブを選択して、上部の **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X.509** を選択し、グループ名と証明書名を入力してから、ブレードの指示に従って CA/中間証明機関の証明書をアップロードします。 作業が完了したら、 **[保存]** をクリックします。 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>カスタム構成証明メカニズムを使用してデバイスの認証を有効にする (省略可)
 
@@ -182,7 +181,7 @@ TPM を使用する場合は、「[シミュレートされたデバイスを作
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>プロビジョニング後の IoT Hub への接続
 
-プロビジョニング サービスを使ってデバイスがプロビジョニングされた後は、この API で IoT Hub に接続する際、指定した認証モード (X **.** 509 または TPM) が使用されます。 
+プロビジョニング サービスを使ってデバイスがプロビジョニングされた後は、この API で IoT Hub に接続する際、指定した認証モード (**X.509** または TPM) が使用されます。 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6faa585f1ad38eb981e0bbffffef603c4aab0bc8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: defb47f49549bf8ca308aec9862c1bcc08f1ff4e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66163402"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535021"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -44,7 +44,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account. 
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 subscriptionID=$(az account show --query id)
 
 # Concatenate this number onto the resources that have to be globally unique.

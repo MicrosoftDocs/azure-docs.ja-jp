@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: e7407f62bd3401411d56076b298bd8cd134ece62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027643"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128492"
 ---
 # <a name="select-columns-in-dataset-module"></a>データセット内の列の選択モジュール
 

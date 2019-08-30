@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666286"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953012"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -60,6 +60,7 @@ ms.locfileid: "68666286"
     |`https://login.microsoftonline.com`|認証要求|
     |`https://enterpriseregistration.windows.net`|Azure AD パスワード保護機能|
 
+* パスワード保護用のプロキシ サービスがホストされているすべてのコンピューターを、プロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 これは、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
 * パスワード保護用プロキシ サービスがホストされているすべてのマシンで、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
 * Azure AD でパスワード保護用プロキシ サービスとフォレストを登録するグローバル管理者アカウント。
 * Azure AD で Windows Server Active Directory フォレストを登録するために、フォレスト ルート ドメインの Active Directory ドメイン管理者特権を持つアカウント。
@@ -282,12 +283,33 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    ソフトウェアのインストールは、標準 MSI プロシージャを使用して自動化できます。 例:
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
-   > [!WARNING]
-   > この例の msiexec コマンドではすぐに再起動が実行されます。 これを避けるには、`/norestart` フラグを使用します。
+   インストーラーでコンピューターが自動的に再起動されるようにする場合は、`/norestart` フラグを省略できます。
 
 インストールが完了するのは、DC エージェント ソフトウェアがドメイン コントローラーにインストールされ、そのコンピューターが再起動された後です。 これ以外の構成は必要ないか、可能ではありません。
+
+## <a name="upgrading-the-proxy-agent"></a>プロキシ エージェントのアップグレード
+
+新しいバージョンの Azure AD パスワード保護プロキシ ソフトウェアを使用できるようになったら、最新バージョンの `AzureADPasswordProtectionProxySetup.exe` ソフトウェア インストーラーを実行してアップグレードを行います。 最新バージョンのソフトウェアは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)で入手できます。
+
+現在のバージョンのプロキシ ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 プロキシ ソフトウェアをアップグレードするときに、再起動は必要ありません。 ソフトウェアのアップグレードは、標準 MSI プロシージャを使用して自動化できます。次はその例です: `AzureADPasswordProtectionProxySetup.exe /quiet`。
+
+プロキシ エージェントでは、自動アップグレードがサポートされています。 自動アップグレードでは、プロキシ サービスと並んでインストールされる Microsoft Azure AD Connect Agent Updater サービスが使用されます。 自動アップグレードは既定では有効であり、Set-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して有効または無効にすることができます。 現在の設定のクエリは、Get-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して実行できます。 自動アップグレードを有効のままにしておくことをお勧めします。
+
+`Get-AzureADPasswordProtectionProxy` コマンドレットを使用して、フォレストに現在インストールされているすべてのプロキシ エージェントのソフトウェア バージョンを照会できます。
+
+## <a name="upgrading-the-dc-agent"></a>DC エージェントのアップグレード
+
+新しいバージョンの Azure AD パスワード保護 DC エージェント ソフトウェアを使用できるようになったら、最新バージョンの `AzureADPasswordProtectionDCAgentSetup.msi` ソフトウェア パッケージを実行してアップグレードを行います。 最新バージョンのソフトウェアは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)で入手できます。
+
+現在のバージョンの DC エージェント ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 DC エージェント ソフトウェアをアップグレードするときは、再起動が常に必要になります。これは、Windows のコア動作によるものです。 
+
+ソフトウェアのアップグレードは、標準 MSI プロシージャを使用して自動化できます。次はその例です: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`。
+
+インストーラーでコンピューターが自動的に再起動されるようにする場合は、`/norestart` フラグを省略できます。
+
+`Get-AzureADPasswordProtectionDCAgent` コマンドレットを使用して、フォレストに現在インストールされているすべての DC エージェントのソフトウェア バージョンを照会できます。
 
 ## <a name="multiple-forest-deployments"></a>複数のフォレストへの展開
 
@@ -301,7 +323,7 @@ Azure AD パスワード保護を複数のフォレストに展開するため�
 
 パスワード保護の高可用性に関する主要な関心事は、フォレストのドメイン コントローラーが Azure から新しいポリシーやその他のデータをダウンロードしようとしたときのプロキシ サーバーの可用性です。 各 DC エージェントは、どのプロキシ サーバーを呼び出すかを決定するときに、単純なラウンドロビン方式のアルゴリズムを使用します。 エージェントは、応答しないプロキシ サーバーをスキップします。 完全に接続された Active Directory デプロイの場合、ディレクトリと sysvol フォルダー状態の両方の正常なレプリケーションがあるときは、可用性を保証するために 2 つのプロキシ サーバーがあれば十分です。 この場合には、新しいポリシーやその他のデータがタイミングよくダウンロードされます。 ただし、追加のプロキシ サーバーをデプロイすることもできます。
 
-高可用性に関連する一般的な問題は、DC エージェント ソフトウェアの設計によって軽減されています。 DC エージェントは、ごく最近ダウンロードされたパスワード ポリシーのローカル キャッシュを保持します。 登録されているすべてのプロキシ サーバーが使用できなくなった場合でも、DC エージェントは、キャッシュされたパスワード ポリシーを引き続き適用します。 大規模なデプロイでのパスワード ポリシーの妥当な更新頻度は、通常は "*日単位*" であり、時間単位やそれ以下の単位ではありません。 そのため、プロキシ サーバーが短時間停止しても、Azure AD パスワード保護に大きな影響はありません。
+高可用性に関連する一般的な問題は、DC エージェント ソフトウェアの設計によって軽減されています。 DC エージェントは、ごく最近ダウンロードされたパスワード ポリシーのローカル キャッシュを保持します。 登録されているすべてのプロキシ サーバーが使用できなくなった場合でも、DC エージェントは、キャッシュされたパスワード ポリシーを引き続き適用します。 大規模なデプロイでのパスワード ポリシーの妥当な更新頻度は、通常は日単位であり、時間単位やそれ以下の単位ではありません。 そのため、プロキシ サーバーが短時間停止しても、Azure AD パスワード保護に大きな影響はありません。
 
 ## <a name="next-steps"></a>次の手順
 

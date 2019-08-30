@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d1bad50f2d97434865bb02ad54b1643c54e01790
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953020"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985939"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Azure Data Box を安全にインストールして操作する
 ![警告のアイコン](./media/data-box-safety/warning_icon.png)
@@ -40,8 +40,8 @@ Data Box を設定および実行しているときに従うべき安全に関�
 
 ![警告のアイコン](./media/data-box-safety/warning_icon.png) ![感電のアイコン](./media/data-box-safety/electrical_shock_hazard_icon.png)![ユーザーによる保守不可能な部品アイコン](./media/data-box-safety/no_user_serviceable_parts_icon.png) **注意** 
 
-* "*受け取った状態*" のデバイスで損傷を検査してください。 デバイスのエンクロージャが損傷している場合は、Microsoft サポートに連絡して代わりの製品を受け取ります。 デバイスを操作しようとしないでください。 
-* デバイスには、不正操作防止用のねじが付いています。 デバイスが正常に動作していないと思われる場合は、Microsoft サポートに連絡して代わりの製品を受け取ります。 デバイスを修理しようとしないでください。 
+* "*受け取った状態*" のデバイスで損傷を検査してください。 デバイスの筐体が損傷している場合は、[Microsoft サポートに連絡](data-box-disk-contact-microsoft-support.md)して代わりの製品を受け取ってください。 デバイスを操作しようとしないでください。 
+* デバイスには、不正操作防止用のねじが付いています。 デバイスが正常に動作していないと思われる場合は、[Microsoft サポートに連絡](data-box-disk-contact-microsoft-support.md)して代わりの製品を受け取ってください。 デバイスを修理しようとしないでください。 
 * デバイスには、ユーザーでは修理できない部品が含まれています。 危険な電圧、電流、エネルギー レベルが内部に存在します。 開かないでください。 修理のために Microsoft にデバイスを返却してください。
 
 ![警告のアイコン](./media/data-box-safety/warning_icon.png) ![ヘビー ウェイト アイコン](./media/data-box-safety/heavy_weight_hazard_icon.png) **警告!** 
@@ -132,7 +132,7 @@ Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 
 **欧州連合:**
 
-EU 適合宣言のコピーをここで提供します。
+[EU 適合宣言のコピーを要求します](mailto:CSI_Compliance@microsoft.com)。
 
 ![警告のアイコン](./media/data-box-safety/warning_icon.png) **警告:** 
 

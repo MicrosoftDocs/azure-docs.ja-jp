@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 16bb7d84bbf19081c146aaac13ecc798610bc4bc
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c67080cf5ffb06cd0b0ee45ea673bc45557570b0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840956"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638901"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 

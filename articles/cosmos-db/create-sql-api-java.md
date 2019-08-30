@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB ドキュメント データベースを Java で作成する
+title: Java を使用してドキュメント データベースを作成する - Azure Cosmos DB
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Java コード サンプルについて説明します
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: d277ef51fd7f39ffab7ed4ace8848c682b28c383
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.custom: seo-java-august2019
+ms.openlocfilehash: a7e2089b8dfff1f021c31d2b13591b54dcd9c4ac
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68001239"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616983"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Java アプリケーションを構築する
 
@@ -25,7 +26,7 @@ ms.locfileid: "68001239"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-このクイック スタートでは、Java アプリケーションを使用して Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウントのリソースを作成および管理する方法について説明します。 まず、Azure portal を使用して Azure Cosmos DB SQL API アカウントを作成し、[SQL Java SDK](sql-api-sdk-async-java.md) を使用して Java アプリケーションを作成します。さらに Java アプリケーションを使用して Cosmos DB アカウントにリソースを追加します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI とプログラムのどちらか好きな方法で、Cosmos DB データベースとコンテナーの作成と変更ができるようになります。
+このクイック スタートでは、Java アプリケーションを使用して Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウントのリソースを作成および管理する方法について説明します。 まず、Azure portal を使用して Azure Cosmos DB SQL API アカウントを作成し、[SQL Java SDK](sql-api-sdk-async-java.md) を使用して Java アプリケーションを作成します。さらに Java アプリケーションを使用して Cosmos DB アカウントにリソースを追加します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI またはプログラムのいずれかのご自分のお好きな方法で、Cosmos データベースとコンテナーを作成および変更できるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 

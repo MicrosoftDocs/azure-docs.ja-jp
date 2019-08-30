@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a4c0e2b5cfb73613ab349b827e429062c6237681
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1eae5c4b94a59b09e73454fdfcea4e9f041652f2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136499"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098360"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>ストレージ アカウントへの App Service アプリの接続
 

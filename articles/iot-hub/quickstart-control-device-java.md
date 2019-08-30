@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub からのデバイスの制御に関するクイック スタート (Java) | Microsoft Docs
+title: クイック スタート:Java を使用して Azure IoT Hub からデバイスを制御する
 description: このクイック スタートでは、2 つのサンプル Java アプリケーションを実行します。 1 つのアプリケーションは、ハブに接続されたデバイスをリモートで制御できるバックエンド アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
 author: wesmc7777
 manager: philmea
@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, seo-java-august2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 5cf7153b5370bd5e1002963027295f79ecfeb6db
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 977bf07c8383bb1086e7878bd10f2519cc2f40ad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330660"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68958633"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Java)
 

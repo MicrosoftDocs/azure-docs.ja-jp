@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3a49681c5c5fa081157e1264f3e9f757c3ee0e6c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 90f064ce5d6dc7ffa6b4c532ac30d9b4dd60e13f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516960"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981137"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -357,6 +357,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure Event Hubs         | Microsoft.EventHub         | Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細情報](/azure/event-hubs/event-hubs-capture-overview)                                                                                                                                                                                                                           |
 | Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md)                                                                                                       |
 | Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細情報](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。                                                                                                                                    |
+| Azure Machine Learning サービス | Microsoft.MachineLearningServices | 承認された Azure Machine Learning ワークスペースは、BLOB ストレージに実験の出力、モデル、およびログを書き込みます。 [詳細情報](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。                                                               
 | Azure Monitor            | Microsoft.Insights         | セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。                                                                                                                                                                        |
 | Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 [詳細情報](/azure/network-watcher/network-watcher-packet-capture-overview)。                                                                                                                                                                                                        |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Azure IaaS 仮想マシンのレプリケーションを有効にすることで、ディザスター リカバリーを構成します。 これは、ファイアウォールが有効なキャッシュ ストレージ アカウントまたはソース ストレージ アカウントまたはターゲット ストレージ アカウントを使用している場合に必要です。  [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |

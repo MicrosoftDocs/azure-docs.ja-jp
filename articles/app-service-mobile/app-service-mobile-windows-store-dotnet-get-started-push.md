@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 3ea2b336f647d9a27baaeeb489895b8f67d2e2d9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445625"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851120"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する
 
@@ -119,7 +119,7 @@ Microsoft Store にアプリを送信した後、サーバープロジェクト�
 4. サーバー プロジェクトを発行します。
 
 ### <a name="nodejs"></a>Node.js バックエンド プロジェクト
-1. これをまだ行っていない場合は、[クイック スタート プロジェクト](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)をダウンロードするか、[Azure Portal でオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
+1. バックエンド プロジェクトを設定します。
 2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
 
     ```javascript

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2c469b333c6896d33b440bfadf0ebbdbeece71a3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5dffba9106493e60b35538a5210a51cead7fb135
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272137"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899630"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
@@ -27,6 +27,7 @@ ms.locfileid: "67272137"
 
 - 「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
 - 秘密キーで証明書 .pfx ファイルにアクセスできることを確認してください。 独自の署名付き証明書を生成し、それを Azure AD B2C にアップロードできます。 Azure AD B2C は、この証明書を使用して、SAML ID プロバイダーに送信された SAML 要求に署名します。
+- Azure で .pfx ファイルのパスワードを受け入れるには、Windows 証明書ストアのエクスポート ユーティリティで、AES256-SHA256 ではなく、TripleDES-SHA1 オプションを使用してパスワードを暗号化する必要があります。
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
@@ -178,6 +179,8 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
     | Given-Name | given_name |
     | E-Mail-Address | email |
     | Display-Name | 名前 |
+    
+    これらの名前は、[出力方向の要求の種類] ボックスの一覧には表示されないので注意してください。 手動で入力する必要があります (ドロップダウンは実際に編集可能です)。 
     
 12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、 **[詳細]** タブを選択して、 **[セキュア ハッシュ アルゴリズム]** を `SHA-256` に変更し、 **[OK]** をクリックします。  
 13. [サーバー マネージャー] で、 **[ツール]** を選択し、 **[ADFS Management]\(ADFS 管理\)** を選択します。

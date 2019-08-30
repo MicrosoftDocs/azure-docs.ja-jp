@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2019
-ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.date: 08/20/2019
+ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335671"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996320"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
 
@@ -44,6 +44,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 -   [Azure BLOB Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+-   [Azure File Storage](connector-azure-file-storage.md)
 
 ### <a name="file-system-data-stores"></a>ファイル システムのデータ ストア
 
@@ -51,6 +52,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
+-   [Google Cloud Storage](connector-google-cloud-storage.md)
 
 ## <a name="syntax"></a>構文
 
@@ -115,7 +117,7 @@ Delete アクティビティの結果は、次の 2 つの場所から表示お�
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete アクティビティのログ ファイル例
 
-| EnableAdfsAuthentication | Category | Status | Error |
+| Name | Category | Status | Error |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | ファイル | Deleted |  |
 | test2/hello789.txt | ファイル | Deleted |  |

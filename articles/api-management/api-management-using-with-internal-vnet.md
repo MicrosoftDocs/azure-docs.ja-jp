@@ -10,16 +10,15 @@ ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: a5d8a724a0b4dd6899a71187176b9d444e5fe19c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 29c86363842299870179b35a0466d2e44d2e56e0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051684"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072199"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。
@@ -91,7 +90,9 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 
    * ゲートウェイまたはプロキシ: contosointernalvnet.azure-api.net
 
-   * Azure portal と開発者ポータル: contosointernalvnet.portal.azure-api.net
+   * 開発者ポータル: contosointernalvnet.portal.azure-api.net
+
+   * 新しい開発者ポータル: contosointernalvnet.developer.azure-api.net
 
    * ダイレクト管理エンドポイント: contosointernalvnet.management.azure-api.net
 
@@ -102,6 +103,8 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
    * 10.1.0.5     contosointernalvnet.azure-api.net
 
    * 10.1.0.5     contosointernalvnet.portal.azure-api.net
+
+   * 10.1.0.5     contosointernalvnet.developer.azure-api.net
 
    * 10.1.0.5     contosointernalvnet.management.azure-api.net
 
@@ -121,7 +124,7 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 ## <a name="routing"> </a> ルーティング
 
 * サブネット範囲から負荷分散された*プライベート*仮想 IP アドレスは予約され、仮想ネットワークから API Management サービス エンドポイントにアクセスするために使用されます。 この*プライベート* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 このアドレスを、仮想ネットワークによって使用される DNS サーバーに登録する必要があります。
-* 負荷分散された*パブリック* IP アドレス (VIP) は、管理サービス エンドポイントへのアクセスをポート 3443 経由で提供するための予約も行われます。 この*パブリック* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 *パブリック* IP アドレスは、ポート 3443 での `management` エンドポイントへのコントロール プレーン トラフィックにのみに使用され、[ApiManagement][ServiceTags] サービス タグにロックダウンすることができます。
+* 負荷分散された*パブリック* IP アドレス (VIP) は、管理サービス エンドポイントへのアクセスをポート 3443 経由で提供するための予約も行われます。 この*パブリック* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 "*パブリック*" IP アドレスは、ポート 3443 での `management` エンドポイントへのコントロール プレーン トラフィックにのみに使用され、[ApiManagement][ServiceTags] サービス タグにロックダウンすることができます。
 * サービス内の各 VM には、サブネット IP 範囲 (DIP) の IP アドレスが割り当てられ、仮想ネットワーク内のリソースにアクセスするために使用されます。 パブリック IP アドレス (VIP) は、仮想ネットワークの外部のリソースにアクセスするために使用されます。 IP 制限リストを使用して仮想ネットワーク内のリソースをセキュリティで保護する場合は、API Management サービスがデプロイされるサブネットの範囲全体に対して、サービスからのアクセスを許可するか制限するように指定する必要があります。
 * 負荷分散されたパブリック IP アドレスとプライベート IP アドレスは、Azure portal の [概要] ブレードで確認できます。
 * サービスが仮想ネットワークから削除された後、再び追加された場合、パブリックとプライベートに対して割り当てられる IP アドレスが変更される可能性があります。 これが発生した場合は、仮想ネットワーク内の DNS 登録、ルーティング規則、および IP 制限リストの更新が必要な場合があります。

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/15/2018
+ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: c83326212dc84348a04d54f04348a6c4c7699bde
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 046558007f1a2f2c86f80af610be56b77fa63da1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631517"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990386"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple ソリューションのサポート
 
@@ -81,7 +81,7 @@ Microsoft は、StorSimple エンタープライズ ストレージのお客様�
 サポート契約が満了していた場合、更新処理が完了し、部品が配送されるまで、最大 3 週間かかる場合があります (配送までに要する時間は、サポート契約が満了してから経過した時間によって決まります)。これは、契約が処理されるまで、契約の現地の在庫場所にデバイスの交換パーツが供給されないためです。
 
 ## <a name="local-language-support"></a>現地語のサポート
-英語だけではなく、次の言語では、営業時間中、現地語のサポートも提供されます:日本語、韓国語、台湾語、および繁体字中国語。
+英語だけではなく、次の言語では、営業時間中、現地語のサポートも提供されます:スペイン語、ポルトガル語、日本語、韓国語、台湾語、および繁体字中国語。
 
 ## <a name="support-scope"></a>サポート範囲 
 課金とサブスクリプション管理に関連する問題のサポートは、すべてのサポート レベルでご利用いただけます。 StorSimple サポートを利用するには、StorSimple の Standard サポート プランまたは Premium サポート プランにご自分で申し込む必要があります。 StorSimple サポート チームは、StorSimple ソリューションに影響を与えるすべての問題の解決を担当します。 StorSimple には直接関係しない Azure 関連の問題のサポートを利用するには、該当する Azure サポート プランに申し込む必要があります。 詳細については、[こちら](https://azure.microsoft.com/support/plans/)をご覧ください。 サポート チームは、お客様の Azure サポートに関する資格に基づき、StorSimple 以外のサポート ケースは Azure チームに委託して、フォローアップを行います。 

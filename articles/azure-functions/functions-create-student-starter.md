@@ -8,16 +8,15 @@ author: alexkarcher-msft
 manager: ggailey777
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 860fedb13e84054e8ba264116be4e452445b7e9b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b4a143f14dc4e443570e8eca9ce6ce9e81b1d783
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143095"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096635"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する
 
@@ -41,7 +40,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 関数の実行をホストするための Function App が存在する必要があります。 Function App を使用すると、リソースの管理、デプロイ、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 
 
-1. Azure Portal の左上隅にある **[新規]** ボタンを選択し、**[コンピューティング]** > **[Function App]** を選択します。
+1. Azure Portal の左上隅にある **[新規]** ボタンを選択し、 **[コンピューティング]**  >  **[Function App]** を選択します。
 
     ![Azure ポータルでの関数アプリの作成](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -56,7 +55,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
     | **[リソース グループ](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
    | **[App Service プラン/場所](./functions-scale.md)** | 新規 | 関数アプリのデプロイ先リージョン、リソースの密度を制御するホスティング プラン。 同じプランにデプロイされた複数の関数アプリは、すべて同じ単一の無料インスタンスを共有します。 これは Student Starter プランの制限です。 ホスティング オプションの詳細については、[こちら](./functions-scale.md)を参照してください。|
     | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 |
-    |**[Application Insights](./functions-monitoring.md)**| Enabled | Application Insights は、関数アプリのログを保存および分析するために使用されます。 Application Insights をサポートする場所を選択した場合は、既定で有効になります。 手動で近くのリージョンを選択して Application Insights をデプロイすることで、Application Insights を任意の関数に対して有効にすることができます。 Application Insights を使用しない場合、ライブ ストリーミング ログを確認できません。
+    |**[Application Insights](./functions-monitoring.md)**| 有効 | Application Insights は、関数アプリのログを保存および分析するために使用されます。 Application Insights をサポートする場所を選択した場合は、既定で有効になります。 手動で近くのリージョンを選択して Application Insights をデプロイすることで、Application Insights を任意の関数に対して有効にすることができます。 Application Insights を使用しない場合、ライブ ストリーミング ログを確認できません。
 
 3. 別の場所を選択するには、上の **[App Service プラン/場所]** を選択します。
 
@@ -80,11 +79,11 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 ## <a name="create-function"></a>HTTP によってトリガーされる関数の作成
 
-1. 新しい関数アプリを展開し、**[関数]** の横にある **[+]** ボタン、**[ポータル内]**、**[続行]** の順に選択します。
+1. 新しい関数アプリを展開し、 **[関数]** の横にある **[+]** ボタン、 **[ポータル内]** 、 **[続行]** の順に選択します。
 
     ![Functions のクイック スタート: プラットフォームを選択する。](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 
-1. **[webhook + API]** を選択し、**[作成]** を選択します。
+1. **[webhook + API]** を選択し、 **[作成]** を選択します。
 
     ![Azure Portal での関数のクイック スタート。](./media/functions-create-student-starter/function-app-quickstart-node-webhook.png)
 
@@ -94,7 +93,7 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
 ## <a name="test-the-function"></a>関数をテストする
 
-1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、**[既定値 (関数キー)]** を選択して、**[コピー]** をクリックします。 
+1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、 **[既定値 (関数キー)]** を選択して、 **[コピー]** をクリックします。 
 
     ![Azure Portal からの関数 URL のコピー](./media/functions-create-student-starter/function-app-develop-tab-testing.png)
 

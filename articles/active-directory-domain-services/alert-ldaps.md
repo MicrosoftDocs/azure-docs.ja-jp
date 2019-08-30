@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234181"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613160"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - Secure LDAP の構成のトラブルシューティング
 
-この記事では、Azure AD Domain Services に [Secure LDAP を構成する](configure-ldaps.md)ときの一般的な問題に対する解決策を示します。
+この記事では、Azure AD Domain Services に [Secure LDAP を構成する](tutorial-configure-ldaps.md)ときの一般的な問題に対する解決策を示します。
 
 ## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101:Secure LDAP ネットワーク セキュリティ グループの構成
 
@@ -62,7 +62,7 @@ Secure LDAP を有効にするときは、特定の IP アドレスからの受�
 
 **解決策:**
 
-[セキュリティで保護された LDAP の構成](configure-ldaps.md)に関する記事で説明されている手順に従って、セキュリティで保護された LDAP 証明書を新規に作成します。
+[セキュリティで保護された LDAP の構成](tutorial-configure-ldaps.md)に関する記事で説明されている手順に従って、セキュリティで保護された LDAP 証明書を新規に作成します。
 
 ## <a name="contact-us"></a>お問い合わせ
 [フィードバックの共有およびサポートについては](contact-us.md)、Azure Active Directory Domain Services 製品チームにお問い合わせください。

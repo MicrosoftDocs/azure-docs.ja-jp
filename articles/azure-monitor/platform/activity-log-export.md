@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: acf2526e79519e610614dc5217efbfe5e327b90f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d34040722ac8793fd4bbb02f2d3fa59247f8267c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245598"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639630"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
@@ -63,8 +63,10 @@ ms.locfileid: "66245598"
 
 > [!WARNING]
 > ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更しました。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](diagnostic-logs-append-blobs.md)
->
->
+
+
+> [!IMPORTANT]
+> Microsoft.Insights リソースプロバイダーが登録されていない場合、ログ プロファイルを作成するときにエラーが発生することがあります。 このプロバイダーの登録については、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Azure portal を使用してログ プロファイルを作成する
 
@@ -154,7 +156,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
 
     | プロパティ | 必須 | 説明 |
     | --- | --- | --- |
-    | name |はい |ログ プロファイルの名前。 |
+    | 名前 |はい |ログ プロファイルの名前。 |
     | storage-account-id |はい |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
     | locations |はい |アクティビティ ログ イベントを収集するリージョンのスペース区切りリスト。 `az account list-locations --query [].name` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
     | days |はい |イベントを保持する日数。1 -365 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。  0 の場合は、enabled パラメーターを true に設定する必要があります。 |

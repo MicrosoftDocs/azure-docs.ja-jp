@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e7a343e257a926f010b52f9833d7acb321c8aeb6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ea4f982409f339487cd570230ebbb75682f409ec
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639469"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874598"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Azure PowerShell を使用した Azure の仮想マシンのバックアップ
 
@@ -104,14 +104,13 @@ Azure VM のバックアップを有効にし、バックアップ ポリシー�
         -Policy $policy
     ```
 
-
 ## <a name="start-a-backup-job"></a>バックアップ ジョブを開始する
 
 バックアップ ポリシーに指定されているスケジュールに従ってバックアップが実行されます。 アドホック バックアップを実行することもできます。
 
 - 最初の初回バックアップ ジョブによって、完全な復旧ポイントが作成されます。
 - 初回バックアップ後の各バックアップ ジョブでは、増分復旧ポイントが作成されます。
-- 増分復元ポイントでは、前回のバックアップ以降に行われた変更のみが転送されるため、保存効率と時間効率が向上します。
+- 増分復元ポイントでは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
 
 アドホック バックアップを実行するには、[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) を使用します。 
 - [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) を使用して、バックアップ データを保持するコンテナー内のコンテナーを指定します。
@@ -145,7 +144,7 @@ Azure VM のバックアップを有効にし、バックアップ ポリシー�
     ```
     出力は次の例のようになります。ジョブが **InProgress** であることが示されています。
 
-    ```
+    ```output
     WorkloadName   Operation         Status       StartTime              EndTime                JobID
     ------------   ---------         ------       ---------              -------                -----
     myvm           Backup            InProgress   9/18/2017 9:38:02 PM                          9f9e8f14

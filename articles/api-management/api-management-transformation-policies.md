@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: b55502bbc24868b6d8b0352f581bbf4adc81e53a
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4f57f7cbc4e93f8a98b64b31ca51e0f1e32c375c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442246"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073292"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -120,7 +119,7 @@ ms.locfileid: "68442246"
 
 ### <a name="attributes"></a>属性
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |kind|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   javascript-friendly - 変換後の JSON が JavaScript 開発者にとってわかりやすい形になります。<br />-   direct - 変換後の JSON に元の XML ドキュメントの構造が反映されます。|はい|該当なし|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換します。<br />-   content-type-xml - 応答の Content-Type ヘッダーに XML の存在が示されている場合のみ変換を行います。|はい|該当なし|
@@ -156,7 +155,7 @@ ms.locfileid: "68442246"
 
 ### <a name="attributes"></a>属性
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |from|検索する文字列。|はい|該当なし|
 |to|置換する文字列。 長さゼロの置換文字列を指定すると、検索文字列を削除できます。|はい|該当なし|
@@ -267,7 +266,7 @@ or
 
 ### <a name="attributes"></a>属性
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |base-url|バックエンド サービスの新しいベース URL。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
 |backend-id|ルーティング先のバックエンドの識別子。 (バックエンド エンティティは、[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます)。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
@@ -403,7 +402,7 @@ or
 
 ### <a name="properties"></a>properties
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |template|本文の設定ポリシーが実行されるテンプレート作成モードの変更に使用されます。 現在サポートされている値:<br /><br />- liquid - 本文の設定ポリシーでは、liquid テンプレート作成エンジンが使用されます |いいえ||
 
@@ -511,7 +510,7 @@ OriginalUrl.
 
 ### <a name="properties"></a>properties
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|
 |名前|設定するヘッダーの名前を指定します。|はい|該当なし|
@@ -571,7 +570,7 @@ OriginalUrl.
 
 ### <a name="properties"></a>properties
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のクエリ パラメーターが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のパラメーターの値を置き換えます。<br />-   skip - 既存のクエリ パラメーターの値を置き換えません。<br />-   append - 既存のクエリ パラメーターの値に値を追加します。<br />-   delete - 要求からクエリ パラメーターを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってクエリ パラメーターが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|
 |名前|設定するクエリ パラメーターの名前を指定します。|はい|該当なし|
@@ -649,7 +648,7 @@ OriginalUrl.
 
 ### <a name="attributes"></a>属性
 
-|Attribute|説明|必須|既定値|
+|Attribute|説明|必須|Default|
 |---------------|-----------------|--------------|-------------|
 |template|クエリ文字列パラメーターを設定した実際の Web サービス URL。 式を使用する場合は、値の全体が式である必要があります。|はい|該当なし|
 |copy-unmatched-params|元の URL テンプレートに存在しない着信要求のクエリ パラメーターを、書き換えテンプレートで定義されている URL に追加するかどうかを指定します。|いいえ|true|

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 0d79b4d76249bd4a79f8adbd5df0cfa1ae133760
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c2c9e3d29ced5f75873656e253ecdbab5efe7df8
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613731"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114404"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -21,14 +21,14 @@ Azure Kubernetes Service (AKS) では、Windows Server をゲスト OS として
 この記事では、AKS 内の Windows Server ノードの制限事項および OS の概念について説明します。 Windows Server 用のノード プールは現在プレビューの段階です。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
 >
 > * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Kubernetes での Windows Server の制限事項
 
-Windows Server コンテナーは、Windows ベースのコンテナー ホスト上で実行する必要があります。 AKS で Windows Server コンテナーを実行するには、ゲスト OS として [Windows Server を実行するノード プールを作成][windows-node-cli]します。 Window Server ノード プールのサポートには、Kubernetes プロジェクトの上流 Windows Server の一部であるいくつかの制限が含まれます。 これらの制限は、AKS 固有ではありません。 Kubernetes での Windows Server 向けのこのアップストリーム サポートについて詳しくは、[Kubernetes での Windows Server コンテナーの制限事項](https://docs.microsoft.com/azure/aks/windows-node-limitations)に関するページを参照してください。
+Windows Server コンテナーは、Windows ベースのコンテナー ホスト上で実行する必要があります。 AKS で Windows Server コンテナーを実行するには、ゲスト OS として [Windows Server を実行するノード プールを作成][windows-node-cli]します。 Window Server ノード プールのサポートには、Kubernetes プロジェクトの上流 Windows Server の一部であるいくつかの制限が含まれます。 これらの制限は、AKS 固有ではありません。 Kubernetes での Windows Server 向けのこのアップストリーム サポートについて詳しくは、[Kubernetes での Windows Server コンテナーの制限事項](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations)に関するページを参照してください。
 
 Kubernetes での Windows Server コンテナーに対する次のアップストリーム制限は、AKS に関連しています。
 

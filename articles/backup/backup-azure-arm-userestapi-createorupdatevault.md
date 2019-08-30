@@ -44,7 +44,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 要求本文を作成するには、以下の一般的な定義が使用されます。
 
-|EnableAdfsAuthentication  |必須  |Type  |説明  |
+|名前  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
 |eTag     |         |   string      |  省略可能な eTag       |
 |location     |  true       |string         |   リソースの場所      |
@@ -72,7 +72,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Recovery Services コンテナーの作成または更新操作には、2 種類の成功応答があります。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |   [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 Created     | [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成されました      |

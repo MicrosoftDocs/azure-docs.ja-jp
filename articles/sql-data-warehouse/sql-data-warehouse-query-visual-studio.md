@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse への接続 (VSTS) | Microsoft Docs
 description: Visual Studio で SQL Data Warehouse に対してクエリを実行します。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.date: 08/15/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c0867252023378347e55d673260f28a7bf2ccc4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479457"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575303"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio および SSDT を使用して SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]
@@ -27,17 +27,17 @@ ms.locfileid: "68479457"
 > 
 > 
 
-Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に対するクエリを実行します。 この方法では、Visual Studio の SQL Server Data Tools (SSDT) 拡張機能を使います。 
+Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に対するクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL Data Warehouse。 その作成方法については、 [SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
+* 既存の SQL データ ウェアハウス。 その作成方法については、 [SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
 * Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既に SSDT を所有していると思われます。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール][Installing Visual Studio and SSDT]に関するページを参照してください。
 * 完全修飾 SQL サーバー名。 これを特定するには、 [SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関するページを参照してください。
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL Data Warehouse への接続
-1. Visual Studio 2013 または 2015 を開きます。
+1. Visual Studio 2019 を開きます。
 2. SQL Server オブジェクト エクスプローラーを開きます。 これを行うには、 **[表示]**  >  **[SQL Server オブジェクト エクスプローラー]** の順に選択します。
    
     ![[SQL Server オブジェクト エクスプローラー]][1]

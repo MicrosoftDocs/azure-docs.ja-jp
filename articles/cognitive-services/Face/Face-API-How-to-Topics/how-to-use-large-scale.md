@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: dcbec817f771324219a68de96eb5dd262a887fc1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d8ecfb53b78277e4b0e4a85d60fb6712d0bc2292
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449037"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114836"
 ---
 # <a name="example-use-the-large-scale-feature"></a>例:大規模なフィーチャーを使用する
 
@@ -32,7 +32,7 @@ LargePersonGroup と LargeFaceList は、まとめて大規模操作と呼びま
 
 Face API クライアント ライブラリを使用する場合、サブスクリプション キーとサブスクリプション エンドポイントは、FaceClient クラスのコンストラクターを介して渡されます。 例:
 
-```CSharp
+```csharp
 string SubscriptionKey = "<Subscription Key>";
 // Use your own subscription endpoint corresponding to the subscription key.
 string SubscriptionEndpoint = "https://westus.api.cognitive.microsoft.com";
@@ -73,7 +73,7 @@ PersonGroup または Person 関連の実装では、API パスまたは SDK ク
 
 上の表は、FaceList と LargeFaceList の間のリストレベル操作の比較です。 ご覧のように、FaceList と比較すると、LargeFaceList にはトレーニングとトレーニング状態の取得という新しい操作が追加されています。 LargeFaceList のトレーニングは、[FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 操作の前提条件です。 FaceList にはトレーニングは必要ありません。 次のスニペットは、LargeFaceList のトレーニングを待機するヘルパー関数です。
 
-```CSharp
+```csharp
 /// <summary>
 /// Helper function to train LargeFaceList and wait for finish.
 /// </summary>
@@ -123,7 +123,7 @@ private static async Task TrainLargeFaceList(
 
 以前は、顔を追加した FaceList と FindSimilar の一般的な使用方法は、次のようなものでした。
 
-```CSharp
+```csharp
 // Create a FaceList.
 const string FaceListId = "myfacelistid_001";
 const string FaceListName = "MyFaceListDisplayName";
@@ -156,7 +156,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 
 LargeFaceList に移行すると、次のようになります。
 
-```CSharp
+```csharp
 // Create a LargeFaceList.
 const string LargeFaceListId = "mylargefacelistid_001";
 const string LargeFaceListName = "MyLargeFaceListDisplayName";
@@ -233,7 +233,7 @@ LargePersonGroup または LargeFaceList の Persons または Faces は、ト�
 
 `TrainLargeFaceList` と似た `TrainLargePersonGroup` 関数があるとします。 `System.Timers` の [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) クラスを呼び出して LargePersonGroup に対してスタンドアロン トレーニングを実行する一般的な実装を次に示します。
 
-```CSharp
+```csharp
 private static void Main()
 {
     // Create a LargePersonGroup.

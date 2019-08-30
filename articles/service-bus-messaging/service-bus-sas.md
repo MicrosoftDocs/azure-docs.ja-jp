@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: a14e03c21de0b5388040943fbe5e9434271b567f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2cd7c8e24571f66fa73ceaa9a70ce33d6105e9c
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258814"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69017736"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -51,13 +51,13 @@ Service Bus での SAS 認証は、アクセス権が関連付けられている
 
 名前空間ポリシーまたはエンティティ ポリシーは最大 12 個の共有アクセス承認規則を保持でき、それぞれが基本権限と送信および受信の組み合わせをカバーする、3 つの規則セットに対応できます。 この制限は、SAS ポリシー ストアがユーザーまたはサービス アカウント ストアのためのものではないことを明確に示します。 お使いのアプリケーションがユーザー ID またはサービス ID に基づいて Service Bus へのアクセスを許可する必要がある場合は、認証とアクセス チェックの後で SAS トークンを発行するセキュリティ トークン サービスを実装する必要があります。
 
-承認規則には、"*主キー*" と "*セカンダリ キー*" が割り当てられます。 これらは、暗号化された強力なキーです。 これらをなくしたり、外部に漏らしたりしないでください。これらは、常に [Azure Portal][Azure portal] から入手可能です。 生成されたキーのいずれかを使用できます。また、いつでも再生成できます。 ポリシーのキーを再生成または変更すると、そのキーに基づいてそれまでに発行されたすべてのトークンが、すぐに無効になります。 ただし、そのようなトークンを基にして作成された進行中の接続は、トークンの有効期限が切れるまで動作し続けます。
+承認規則には、"*主キー*" と "*セカンダリ キー*" が割り当てられます。 これらは、暗号化された強力なキーです。 これらをなくしたり、外部に漏らしたりしないでください。これらは、常に [Azure portal][Azure portal] から入手可能です。 生成されたキーのいずれかを使用できます。また、いつでも再生成できます。 ポリシーのキーを再生成または変更すると、そのキーに基づいてそれまでに発行されたすべてのトークンが、すぐに無効になります。 ただし、そのようなトークンを基にして作成された進行中の接続は、トークンの有効期限が切れるまで動作し続けます。
 
 Service Bus の名前空間を作成すると、**RootManageSharedAccessKey** という名前のポリシー規則が、その名前空間に対して自動的に作成されます。 このポリシーには、名前空間全体の管理アクセス許可があります。 この規則は管理 **root** アカウントと同じように扱い、アプリケーションでは使わないようにすることをお勧めします。 ポータルの名前空間の **[構成]** タブ、Powershell、または Azure CLI を使って、追加のポリシー規則を作成できます。
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Shared Access Signature 認証の構成
 
-[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 規則は、Service Bus の名前空間、キュー、トピックに構成できます。 Service Bus サブスクリプションに対する [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。 この手順を示す作業サンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) に関するサンプルを参照してください。
+[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 規則は、Service Bus の名前空間、キュー、トピックに構成できます。 Service Bus サブスクリプションに対する [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。 実際に動作してこの手順を説明するサンプルについては、[Managing Azure Service Bus Queues](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule) サンプルを参照してください。
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -88,7 +88,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、`http://<namespace>.servicebus.windows.net/<entityPath>` または `sb://<namespace>.servicebus.windows.net/<entityPath>` (つまり `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`) です。 
 
-**URI は[パーセント エンコード](https://msdn.microsoft.com/library/4fkewx0t.aspx)になっている必要があります。**
+**URI は[パーセント エンコード](/dotnet/api/system.web.httputility.urlencode?view=netframework-4.8)になっている必要があります。**
 
 署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/contosoTopics/T1` または `http://contoso.servicebus.windows.net` となります。
 
@@ -104,8 +104,8 @@ SAS トークンは、`signature-string` で使われている `<resourceURI>` �
 
 以下で説明するシナリオには、承認規則の構成、SAS トークンの生成、クライアントの承認などが含まれます。
 
-構成を説明して SAS 承認を使用する、Service Bus アプリケーションの完全に動作するサンプルについては、 [Service Bus による Shared Access Signature 認証](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)に関するページを参照してください。 Service Bus サブスクリプションをセキュリティで保護するために、名前空間またはトピックに構成される SAS 承認規則の使い方を示した関連サンプルについては、[Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)に関するページを参照してください。
-
+構成を説明して SAS 承認を使用する、Service Bus アプリケーションの完全に動作するサンプルについては、GitHub リポジトリにある次のサンプルを参照してください: [Managing Azure Service Bus Queues](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)。
+ 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>エンティティの共有アクセス承認規則へのアクセス
 
 Service Bus .NET Framework ライブラリでは、Service Bus のキューまたはトピックに構成された [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトに、対応する [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) または [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) の [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) コレクションを介してアクセスできます。

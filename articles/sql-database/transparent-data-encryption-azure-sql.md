@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 04/19/2019
-ms.openlocfilehash: 1d5baf4b7f8a28638c5dbd50fb407035a5b9ea89
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/12/2019
+ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566123"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967897"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL Database と Data Warehouse の Transparent Data Encryption
 
@@ -37,7 +37,7 @@ Azure での Transparent Data Encryption の既定の設定では、データベ
 また、geo レプリケーションと復元のために、必要に応じてキーの移動と管理をシームレスに行います。
 
 > [!IMPORTANT]
-> 新しく作成されたすべての SQL データベースは、サービスによって管理された Transparent Data Encryption を使用して既定で暗号化されます。 Azure SQL Managed Instance データベース、2017 年 5 月より前に作成された既存の SQL データベース、復元、geo レプリケーション、データベース コピーによって作成された SQL データベースは既定では暗号化されません。
+> 新しく作成されたすべての SQL データベースと Managed Instance データベースは、既定でサービスによって管理された Transparent Data Encryption を使用して暗号化されます。 2017 年 5 月より前に作成された既存の SQL データベースと、復元、geo レプリケーション、データベース コピーによって作成された SQL データベースは、既定では暗号化されません。 2019 年 2 月より前に作成された既存の Managed Instance データベースは、既定では暗号化されません。 復元によって作成された Managed Instance データベースでは、ソースから暗号化の状態が継承されます。
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>ユーザーが管理する Transparent Data Encryption - Bring Your Own Key
 

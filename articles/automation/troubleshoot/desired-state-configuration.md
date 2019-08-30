@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6de348a19081eba685deafebd8a7c9b9d6556444
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688108"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850250"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
@@ -24,23 +24,24 @@ ms.locfileid: "68688108"
 
 Azure State Configuration で構成をコンパイルまたはデプロイするときにエラーが発生した場合は、以下の手順が問題を診断するのに役立ちます。
 
-1. **ローカル コンピューターで構成が正常にコンパイルされていることを確認する:** Azure State Configuration は、PowerShell DSC 上に構築されます。 DSC の言語と構文については、[PowerShell DSC のドキュメント](/powershell/dsc/overview/overview)を参照してください。
+1. **ローカル コンピューターで構成が正常にコンパイルされていることを確認する:** Azure State Configuration は、PowerShell DSC 上に構築されます。 DSC の言語と構文については、[PowerShell DSC のドキュメント](https://docs.microsoft.com/en-us/powershell/scripting/overview)を参照してください。
 
-   ローカル コンピューターで DSC の構成をコンパイルすると、次のような一般的なエラーを検出して解決できます。
+   お使いのローカル コンピューターでお使いの DSC の構成をコンパイルすると、次のような一般的なエラーを検出して解決できます。
 
    - **モジュールの不足**
    - **構文エラー**
    - **論理エラー**
+
 2. **ノードで DSC のログを表示する:** 構成のコンパイルは正常に行われても、ノードに適用されるときに失敗する場合は、ログで詳細情報を確認できます。 DSC ログを探す場所については、「[DSC イベント ログの場所](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)」を参照してください。
 
-   さらに、[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) は、DSC ログから詳細な情報を解析するのに役立ちます。 サポートに問い合わせる場合、サポートでは問題を診断するのにこれらのログが必要です。
+   また、[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) は、DSC ログから詳細な情報を解析するのに役立ちます。 サポートに問い合わせる場合、ご自分の問題の診断にこれらのログが求められます。
 
    ご利用のローカル コンピューターに **xDscDiagnostics** をインストールする手順については、[安定バージョンのモジュールのインストール](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)に関するページをご覧ください。
 
    ご利用の Azure マシンに **xDscDiagnostics** をインストールするには、[az vm run-command](/cli/azure/vm/run-command) または [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) を使用できます。 また、「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../../virtual-machines/windows/run-command.md)」の手順に従って、ポータルから **[実行コマンド]** オプションを使うこともできます。
 
    **xDscDiagnostics** の使い方については、「[xDscDiagnostics を使用した DSC ログの分析](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)」と [xDscDiagnostics のコマンドレット](https://github.com/PowerShell/xDscDiagnostics#cmdlets)に関するページをご覧ください。
-3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** Desired State Configuration は、ノードにインストールされているモジュールに依存します。  Azure Automation State Configuration を使うときは、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」の手順に従って、必要なモジュールを Automation アカウントにインポートします。 構成が特定のバージョンのモジュールに依存することもあります。  詳細については、「[共有リソースのエラーをトラブルシューティングする](shared-resources.md#modules)」を参照してください。
+3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** Desired State Configuration は、ノードにインストールされているモジュールに依存します。  Azure Automation State Configuration を使うときは、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」の手順に従って、必要なモジュールを Automation アカウントにインポートします。 構成が特定のバージョンのモジュールに依存することもあります。  詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) の使用時に発生する一般的なエラー
 
@@ -130,7 +131,7 @@ DSC 構成の **Node** キーワードに続く式の評価結果が `$null` の
 次の解決策のいずれでもこの問題は解決されます。
 
 * 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。
-* 構成のコンパイル時に ConfigurationData を渡す場合は、 [ConfigurationData](../automation-dsc-compile.md#configurationdata)から、構成に必要な期待値を渡すようにしてください。
+* 構成のコンパイル時に ConfigurationData を渡す場合は、 [ConfigurationData](../automation-dsc-compile.md)から、構成に必要な期待値を渡すようにしてください。
 
 ### <a name="dsc-in-progress"></a>シナリオ:DSC ノードのレポートが "処理中" の状態で停止する
 
@@ -166,7 +167,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 #### <a name="resolution"></a>解決策
 
-* 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。 詳細については、[Azure Automation DSC の資産](../automation-dsc-compile.md#assets)に関するページをご覧ください。
+* 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。 詳細については、[Azure Automation DSC の資産](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)に関するページをご覧ください。
 
 ### <a name="failure-processing-extension"></a>シナリオ:DSC 拡張機能からのオンボード、"エラーの処理拡張機能" のエラー
 
@@ -199,11 +200,27 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>原因
 
-/tmp の場所が noexec に設定されている場合に、現在のバージョンの DSC では構成の適用に失敗することを、顧客は特定しています。
+`/tmp` の場所が `noexec` に設定されている場合、現在のバージョンの DSC では構成が適用されないことが、顧客によって特定されています。
 
 #### <a name="resolution"></a>解決策
 
-* /tmp の場所から noexec オプションを削除します。
+* `/tmp` の場所から、`noexec` オプションを削除します。
+
+### <a name="compilation-node-name-overlap"></a>シナリオ:重複するノード構成名のために不正なリリースになる可能性
+
+#### <a name="issue"></a>問題
+
+複数のノードの構成に 1 つの構成スクリプトを使用し、一部のノード構成名が他のもの一部である場合、コンパイル サービスの問題によって不正な構成が割り当てられる場合があります。  これは、1 つのスクリプトを使用してノードごとに構成データがある構成を生成した場合のみ、および名前の重複が文字列の先頭にある場合のみ発生します。
+
+たとえば、コマンドレットを使用し、ハッシュテーブルとして渡されたノード データに基づいて構成を生成するために 1 つの構成スクリプトを使用した場合、およびノード データに "server" と "1server" という名前のサーバーが含まれる場合です。
+
+#### <a name="cause"></a>原因
+
+コンパイル サービスに既知の問題があります。
+
+#### <a name="resolution"></a>解決策
+
+最善の回避策としては、ローカルで、または CI/CD パイプラインでコンパイルを行い、サービスに MOF ファイルを直接アップロードします。  サービス内でコンパイルを行うことが必須である場合、最善の回避策として次に推奨されるのは、名前が重複しないように、コンパイル ジョブを分割することです。
 
 ## <a name="next-steps"></a>次の手順
 

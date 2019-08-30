@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 833d0d0b17f7cc22b2ab37b4e225c1a8cce9c592
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9dcc5fa201c08ca4b1e65b8aae88118731eba427
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385550"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881065"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -133,6 +133,10 @@ SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり�
 
 UDP SNAT ポートは、TCP SNAT ポートではなく、別のアルゴリズムによって管理されます。  ロード バランサーは、UDP の "ポート制限された Cone NAT" と呼ばれるアルゴリズムを使用します。  1 つの SNAT ポートは、宛先 IP アドレス、ポートに関係なく、各フローに対して使用されます。
 
+#### <a name="snat-port-reuse"></a>SNAT ポートの再利用
+
+解放されたポートは必要に応じて再利用できます。  SNAT ポートは、特定のシナリオに対する最低から最高までのシーケンスと見なすことができます。最初に利用できる SNAT ポートは新しい接続に利用されます。 
+ 
 #### <a name="exhaustion"></a>ポート不足
 
 SNAT ポート リソースがなくなると、既存のフローによって SNAT ポートが解放されない限り、送信フローは失敗します。 Load Balancer はフローが終了すると SNAT ポートを回収します。また、[4 分間のアイドル タイムアウト](#idletimeout)を使用して、アイドル フローからの SNAT ポートを回収します。

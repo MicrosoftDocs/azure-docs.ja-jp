@@ -149,7 +149,7 @@
       items:
         - name: 概要
           href: media-services-apis-overview.md
-          displayName: 'accessing, naming, long-running'
+          displayName: 'accessing, naming, long-running, invalid character'
         - name: エンティティのページング、フィルター、並べ替え
           href: entities-overview.md
         - name: RBAC

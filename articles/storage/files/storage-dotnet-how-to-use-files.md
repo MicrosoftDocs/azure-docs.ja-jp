@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b79086298983e807cbfe0f4413d1fde54969cc6c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699775"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986370"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -55,10 +55,11 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 Azure クラウド サービス、Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure Storage クライアント ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>NuGet を使用した必要なパッケージのインストール
-このチュートリアルを完了するには、プロジェクトで参照する必要があるパッケージが 2 つあります。
+このチュートリアルを完了するには、次のパッケージをプロジェクトで参照する必要があります。
 
 * [.NET 用 Microsoft Azure Storage 共通ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/):このパッケージを使用すると、ストレージ アカウント内の共通リソースにプログラムでアクセスできます。
 * [.NET 用 Microsoft Azure Storage Blob ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/):このパッケージを使用すると、ストレージ アカウント内の BLOB リソースにプログラムでアクセスできます。
+* [.NET 用の Microsoft Azure Storage ファイル ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/):このパッケージを使用すると、ストレージ アカウント内のファイル リソースにプログラムでアクセスできます。
 * [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/):このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
 
 NuGet を使って両方のパッケージを取得できます。 次の手順に従います。
@@ -220,7 +221,7 @@ if (share.Exists())
 }
 ```
 
-Shared Access Signature の作成方法と使用方法の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
+Shared Access Signature の作成方法と使用方法の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
 ## <a name="copy-files"></a>ファイルのコピー
 Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。 次のセクションでは、プログラムを使用してこれらのコピー操作を実行する方法を示します。

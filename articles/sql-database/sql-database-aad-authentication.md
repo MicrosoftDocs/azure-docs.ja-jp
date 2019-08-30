@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019678"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69896999"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory 認証を使用して SQL を認証する
 
@@ -116,8 +116,9 @@ Azure SQL Database、マネージド インスタンス、または SQL Data War
 
 Azure Active Directory 認証では、Azure AD の ID を使用してデータベースに接続する次の方法がサポートされています。
 
-- 統合 Windows 認証を使用する
-- Azure AD のプリンシパル名とパスワードを使用する
+- Azure Active Directory パスワード
+- Azure Active Directory 統合
+- MFA による Azure Active Directory ユニバーサル
 - アプリケーション トークン認証を使用する
 
 Azure AD サーバー プリンシパル (ログイン) では、次の認証方法がサポートされています (**パブリック プレビュー**)。
@@ -125,7 +126,6 @@ Azure AD サーバー プリンシパル (ログイン) では、次の認証方
 - Azure Active Directory パスワード
 - Azure Active Directory 統合
 - MFA による Azure Active Directory ユニバーサル
-- Azure Active Directory 対話型
 
 
 ### <a name="additional-considerations"></a>追加の考慮事項

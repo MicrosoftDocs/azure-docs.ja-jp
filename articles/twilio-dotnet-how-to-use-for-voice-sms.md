@@ -3,9 +3,7 @@ title: 音声および SMS に Twilio を使用する方法 (.NET) | Microsoft D
 description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは .NET で記述されています。
 services: ''
 documentationcenter: .net
-author: devinrader
-manager: twilio
-editor: ''
+author: georgewallace
 ms.assetid: 74d4f3c9-f1cb-4968-b744-36b32cd0e834
 ms.service: multiple
 ms.workload: na
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
-ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60329491"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876820"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure から音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細とアプリケーションで音声と SMS を使用する方法については、「 [次の手順](#NextSteps) 」を参照してください。
@@ -35,7 +33,7 @@ Azure ユーザーには、[特別プラン](https://www.twilio.com/azure)とし
 Twilio は、従量課金制サービスです。 セットアップ料金は不要で、いつでもアカウントを閉じることができます。 詳細については、 [Twilio の料金のページ](https://www.twilio.com/voice/pricing)をご覧ください。
 
 ## <a id="Concepts"></a>概念
-Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。 クライアント ライブラリはさまざまな言語で用意されています。言語の一覧については、[Twilio API ライブラリ][twilio_libraries]に関するページをご覧ください。
+Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。 クライアント ライブラリは複数の言語で使用できます。一覧については、[Twilio API ライブラリ][twilio_libraries]に関するページを参照してください。
 
 Twilio API の主要な側面として、Twilio 動詞と Twilio Markup Language (TwiML) が挙げられます。
 
@@ -69,16 +67,16 @@ TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで�
 
 アプリケーションで Twilio API を呼び出す場合は、API パラメーターの 1 つである URL によって TwiML 応答が返されます。 開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。 また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、**TwiMLResponse** オブジェクトを使用することもできます。
 
-Twilio の動詞と属性、TwiML の詳細については、[TwiML][twiml] に関するページをご覧ください。 Twilio API の詳細については、[Twilio API][twilio_api] に関するページをご覧ください。
+Twilio 動詞、その属性、および TwiML の詳細については、[TwiML][twiml] に関するページを参照してください。 Twilio API の詳細については、[Twilio API][twilio_api] に関するページを参照してください。
 
 ## <a id="CreateAccount"></a>Twilio アカウントを作成する
 Twilio アカウントを取得する準備ができたら、[Twilio のサインアップ ページ][try_twilio]でサインアップします。 無料アカウントで始め、後でアカウントをアップグレードすることができます。
 
-Twilio アカウントにサインアップすると、アカウント ID と認証トークンが発行されます。 Twilio API を呼び出すには、この両方が必要になります。 自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。 アカウント ID と認証トークンは、[Twilio アカウント ページ][twilio_account]の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
+Twilio アカウントにサインアップすると、アカウント ID と認証トークンが発行されます。 Twilio API を呼び出すには、この両方が必要になります。 自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。 アカウント ID と認証トークンは、[Twilio アカウント ページ][twilio_account]の **[ACCOUNT SID]\(アカウント SID\)** フィールドと **[AUTH TOKEN]\(認証トークン\)** フィールドでそれぞれ確認できます。
 
 ## <a id="create_app"></a>Azure アプリケーションの作成
 Twilio 対応のアプリケーションをホストする Azure アプリケーションには、他の Azure アプリケーションとの違いはありません。 Twilio .NET ライブラリを追加し、その Twilio .NET ライブラリを使用するようにロールを構成します。
-最初の Microsoft Azure プロジェクトの作成に関する詳細については、「[Visual Studio を使用した Microsoft Azure プロジェクトの作成][vs_project]」をご覧ください。
+最初の Azure プロジェクトの作成に関する詳細については、[Visual Studio での Azure プロジェクトの作成][vs_project]に関するページを参照してください。
 
 ## <a id="configure_app"></a>Twilio ライブラリを使用するアプリケーションの構成
 Twilio は、一連の .NET ヘルパー ライブラリを提供します。このライブラリは、Twilio のさまざまな側面をラップし、Twilio REST API および Twilio Client と対話して TwiML 応答を生成するためのシンプルで簡単な方法を提供します。
@@ -98,7 +96,7 @@ Twilio は、.NET 開発者向けに次の 5 つのライブラリを用意し�
 
 このガイドに記載した例では、Twilio.API ライブラリを使用します。
 
-これらのライブラリは、Visual Studio 2010 から 2015 で利用可能な [NuGet パッケージ マネージャー拡張機能を使用してインストール](https://www.twilio.com/docs/csharp/install)できます。  [GitHub][twilio_github_repo] でホストされているソース コードには、ライブラリの使用に関するすべてのドキュメントを網羅した Wiki が含まれています。
+これらのライブラリは、Visual Studio 2010 から 2015 で利用可能な [NuGet パッケージ マネージャー拡張機能を使用してインストール](https://www.twilio.com/docs/csharp/install)できます。  ソース コードは [GitHub][twilio_github_repo] でホストされています。これには、ライブラリの使用に関するすべてのドキュメントを網羅した Wiki が含まれています。
 
 Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインストールされます。 Twilio ライブラリをインストールするには、NuGet の Version 1.6 以降が必要です。 NuGet のインストールまたは更新については、[https://nuget.org/][nuget] を参照してください。
 
@@ -267,7 +265,7 @@ var call = CallResource.Create(
     }
 ```
 
-ASP.NET を使用する Microsoft Azure での Twilio の使用に関する詳細については、「[Microsoft Azure の Web ロールで Twilio を使用して通話する方法][howto_phonecall_dotnet]」をご覧ください。
+ASP.NET を使用する Azure での Twilio の使用に関する詳細については、「[Azure の Web ロールで Twilio を使用して通話する方法][howto_phonecall_dotnet]」をご覧ください。
 
 [!INCLUDE [twilio-additional-services-and-next-steps](../includes/twilio-additional-services-and-next-steps.md)]
 

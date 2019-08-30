@@ -5,17 +5,15 @@ manager: pablocas
 author: mrcarter8
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
-ms.custom: seodec2018
-ms.openlocfilehash: b881a645a42d92407aa39d0f4896629f799e6928
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: dc8bc43d6d7b17d1ecd4cf2a1dbe7b2890594e55
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66426928"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640462"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Azure Search アプリケーションに提案やオートコンプリートを追加する
 

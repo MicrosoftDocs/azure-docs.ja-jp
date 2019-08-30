@@ -149,6 +149,8 @@
       items:
         - name: OPC Twin アーキテクチャ
           href: overview-opc-twin-architecture.md
+        - name: OPC Vault アーキテクチャ
+          href: overview-opc-vault-architecture.md
     - name: ハウツー ガイド
       items:
         - name: 接続済みファクトリ
@@ -169,14 +171,14 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC Vault
           items:
-            - name: 既存のプロジェクトに OPC Vault をデプロイする
-              items:
-                - name: OPC クライアントと OPC PLC の通信をセキュリティで保護する
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: OPC UA クライアントと OPC UA サーバー アプリケーションを保護する
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: OPC Vault をゼロからデプロイする
-              href: howto-opc-vault-deploy-scratch.md
+            - name: OPC Vault サービスをデプロイする
+              href: howto-opc-vault-deploy.md
+            - name: OPC Vault サービスを管理する
+              href: howto-opc-vault-manage.md
+            - name: OPC UA デバイスと OPC Vault の通信をセキュリティで保護する
+              href: howto-opc-vault-secure.md
+            - name: OPC Vault サービスを安全に運用する
+              href: howto-opc-vault-secure-ca.md
         - name: OPC Publisher
           items:
             - name: OPC Publisher の構成
@@ -251,14 +253,16 @@
   items:
     - name: 解決方法
       items:
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
     - name: プラットフォーム サービス
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT サービスの SDK
@@ -267,18 +271,12 @@
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT デバイス SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-    - name: Stream Analytics
-      href: /azure/stream-analytics/
-    - name: Event Hubs
-      href: /azure/event-hubs/
-    - name: Machine Learning
-      href: /azure/machine-learning/
 - name: リソース
   items:
     - name: Azure のロードマップ

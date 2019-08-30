@@ -22,7 +22,7 @@ ms.locfileid: "68705052"
 
 <sub> *次の属性は、会議 (インスタンス) エンティティに固有です。(Ty = '4') </sub>
 
-名前    |説明                            |Type       | Operations
+EnableAdfsAuthentication    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 CIN     |会議 (インスタンス) の標準化名 ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |string     |等しい
@@ -44,6 +44,6 @@ ECC     |会議 (インスタンス) の引用の推定総数 |Int32      |な�
 
 ## <a name="extended-metadata-attributes"></a>拡張メタデータの属性 ##
 
-名前    | 説明               
+EnableAdfsAuthentication    | 説明               
 --------|---------------------------    
 FN      | 会議 (インスタンス) のフル ネーム

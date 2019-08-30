@@ -6,8 +6,6 @@
       href: security-center-intro.md
     - name: Security Center でサポートされているプラットフォームと機能
       href: security-center-os-coverage.md
-    - name: エンドポイント保護の評価および推奨事項
-      href: security-center-endpoint-protection.md
 - name: クイック スタート
   expanded: true
   items:
@@ -35,16 +33,30 @@
       href: security-center-data-security.md
     - name: 推奨事項を使用してセキュリティを強化する
       href: security-center-using-recommendations.md
-    - name: 脅威を検出する
-      href: security-center-detection-capabilities.md
-    - name: セキュリティ アラートを管理する
-      href: security-center-managing-and-responding-alerts.md
-    - name: セキュリティ インシデント
-      href: security-center-incident.md
-    - name: インシデント対応
-      href: security-center-incident-response.md
     - name: テナント間の管理
       href: security-center-cross-tenant-management.md
+    - name: 脅威検出アラートとインシデント
+      items:
+        - name: セキュリティ アラートの概要
+          href: security-center-alerts-overview.md
+        - name: セキュリティ アラートの管理
+          href: security-center-managing-and-responding-alerts.md
+        - name: セキュリティ インシデントを管理する
+          href: security-center-incident.md
+        - name: VM とサーバーの脅威検出
+          href: security-center-alerts-iaas.md
+        - name: クラウド ネイティブ コンピューティングの脅威検出
+          href: security-center-alerts-compute.md
+        - name: データ サービスの脅威検出
+          href: security-center-alerts-data-services.md
+        - name: Azure サービス レイヤーの脅威検出
+          href: security-center-alerts-service-layer.md
+        - name: Azure のセキュリティ製品との統合
+          href: security-center-alerts-integration.md
+        - name: クラウドのスマート アラートの関連付け (インシデント)
+          href: security-center-alerts-cloud-smart.md
+        - name: アラートの検証 (EICAR テスト ファイル)
+          href: security-center-alert-validation.md
 - name: ハウツー ガイド
   items:
     - name: セキュリティ スコアを向上させる
@@ -75,7 +87,7 @@
       href: security-center-policy-definitions.md
     - name: 電子メール通知
       href: security-center-provide-security-contact-details.md
-    - name: 価格レベル
+    - name: Pricing tier
       href: security-center-pricing.md
     - name: テナント全体の可視性
       href: security-center-management-groups.md
@@ -105,62 +117,16 @@
           href: security-center-file-integrity-monitoring.md
         - name: アダプティブ ネットワークのセキュリティ強化機能
           href: security-center-adaptive-network-hardening.md
-    - name: 脅威検出アラート
-      items:
-        - name: セキュリティ アラートの概要
-          href: security-center-alerts-overview.md
-        - name: VM とサーバーの脅威検出
-          href: security-center-alerts-iaas.md
-        - name: クラウド ネイティブ コンピューティングの脅威検出
-          href: security-center-alerts-compute.md
-        - name: データ サービスの脅威検出
-          href: security-center-alerts-data-services.md
-        - name: Azure サービス レイヤーの脅威検出
-          href: security-center-alerts-service-layer.md
-        - name: Azure のセキュリティ製品との統合
-          href: security-center-alerts-integration.md
-        - name: クラウドのスマート アラートの関連付け (インシデント)
-          href: security-center-alerts-cloud-smart.md
-        - name: アラートの検証 (EICAR テスト ファイル)
-          href: security-center-alert-validation.md
     - name: アーカイブ
       items:
         - name: ディスク暗号化の適用
           href: security-center-apply-disk-encryption.md
         - name: システムの更新の適用
           href: security-center-apply-system-updates.md
-        - name: ストレージ アカウントの暗号化の有効化
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: VM エージェントの有効化
-          href: security-center-enable-vm-agent.md
         - name: Endpoint Protection をインストールします
           href: security-center-install-endpoint-protection.md
-        - name: システムの更新後に再起動する
-          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
-        - name: セキュリティ構成の修復
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: OS バージョンの更新
-          href: security-center-update-os-version.md
         - name: 脆弱性評価がインストールされていない
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Web アプリケーション ファイアウォールの追加
-          href: security-center-add-web-application-firewall.md
-        - name: アプリケーション保護を完了する
-          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
-        - name: 次世代ファイアウォールを追加する
-          href: security-center-add-next-generation-firewall.md
-        - name: Enable Network Security Groups
-          href: security-center-enable-network-security-groups.md
-        - name: インターネット接続エンドポイント経由のアクセスを制限する
-          href: security-center-restrict-access-through-internet-facing-endpoints.md
-        - name: NGFW 経由に限定したトラフィックのルーティング
-          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
-        - name: SQL データベースの監査と脅威検出を有効にする
-          href: security-center-enable-auditing-on-sql-databases.md
-        - name: SQL サーバーの監査と脅威検出を有効にする
-          href: security-center-enable-auditing-on-sql-servers.md
-        - name: Transparent Data Encryption の有効化
-          href: security-center-enable-transparent-data-encryption.md
         - name: 脅威レポート
           href: security-center-threat-report.md
         - name: カスタム アラート
@@ -175,16 +141,10 @@
           href: security-center-investigation-user-data.md
         - name: Logic Apps のプレイブック
           href: security-center-playbooks.md
-        - name: イベントの表示
-          href: security-center-events-dashboard.md
         - name: Search
           href: security-center-search.md
         - name: 計画と運用
           href: security-center-planning-and-operations-guide.md
-        - name: セキュリティ アラートについて
-          href: security-center-alerts-type.md
-        - name: Azure リソースおよびユーザーに対する UEBA
-          href: security-center-ueba-mcas.md
         - name: セキュリティ構成のカスタマイズ
           href: security-center-customize-os-security-config.md
 - name: リファレンス
@@ -195,6 +155,8 @@
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 機能と API の廃止 (2019 年 7 月)
       href: security-center-features-retirement-july2019.md
+    - name: エンドポイント保護の評価および推奨事項
+      href: security-center-endpoint-protection.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

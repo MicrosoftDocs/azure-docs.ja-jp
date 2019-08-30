@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB アカウントに IP ファイアウォールを構成する
-description: Azure Cosmos DB データベース アカウント上でファイアウォールをサポートするために IP アクセス制御ポリシーを構成する方法について説明します。
+description: Azure Cosmos アカウントでファイアウォールをサポートするために IP アクセス制御ポリシーを構成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b8ad6c5addbff293e9f7e9b8af6ed34d4dd274b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 534f64b19adb29a0ff7811c50c9698ca33d6966f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494888"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093538"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 
@@ -36,7 +36,7 @@ IP アクセス制御を有効にすると、Azure portal で IP アドレス、
 
 IP アクセス制御ポリシーをプログラムで有効にする場合は、アクセスを維持するために、Azure Portal の IP アドレスを **ipRangeFilter** プロパティに追加する必要があります。 ポータルの IP アドレスは次のとおりです。
 
-|リージョン|IP アドレス|
+|Region|IP アドレス|
 |------|----------|
 |ドイツ|51.4.229.218|
 |中国|139.217.8.252|

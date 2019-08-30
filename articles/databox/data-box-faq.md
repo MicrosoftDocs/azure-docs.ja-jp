@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: f1a1a8a6b32567a1571c70e76a4ae6c570d27ca5
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561410"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900565"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -185,6 +185,9 @@ A. Data Box サービスでは、Microsoft が Azure データセンターとの
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Q. Data Box デバイスは配送中に国境を越えますか?
 A. すべての Data Box デバイスは配送先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもデバイスを配送できます。 これは、Data Box デバイスと Data Box Heavy デバイスの両方に適用されます。
+
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>Q. 米国東部で Data Box を注文しましたが、受け取ったデバイスは米国西部にある場所から出荷されていました。 デバイスはどこに戻す必要がありますか?
+A. お客様のため、できるだけ早い Data Box デバイスの入手を試みています。 お客様のストレージ アカウントの場所に最も近いデータセンターから出荷することを優先していますが、デバイスは、使用可能な在庫がある、あらゆる Azure データセンターから発送されます。 Data Box は配送先住所ラベルに表示されたものと同じ出荷場所に返す必要があります。
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. E インク表示が返品ラベルを示していません。 どうすればよいですか。
 A. E インク表示が返品ラベルを示していない場合は、次の手順を実行します。

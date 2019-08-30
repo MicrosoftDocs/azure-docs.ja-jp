@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop プレビュー ホスト プールのユーザー プロファイル共有を設定する - Azure
-description: Windows Virtual Desktop プレビュー ホスト プールの FSLogix プロファイル コンテナーを設定する方法。
+title: 仮想マシンベースのファイル共有を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する  - Azure
+description: 仮想マシンベースのファイル共有を使用して Windows Virtual Desktop プレビュー ホスト プールの FSLogix プロファイル コンテナーを設定する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cf3d682e4d0c68822267a4e63846d80b632cbdcc
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619103"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876791"
 ---
-# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>ホスト プールのユーザー プロファイル共有を設定する
+# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する
 
 Windows Virtual Desktop プレビュー サービスでは、推奨されるユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが提供されます。 ユーザー プロファイル ディスク (UPD) ソリューションの使用は推奨されず、Windows Virtual Desktop の将来のバージョンでは非推奨になります。
 
-ここでは、ホスト プールに対して FSLogix プロファイル コンテナー共有を設定する方法を説明します。 FSLogix に関する一般的なドキュメントについては、[FSLogix サイト](https://docs.fslogix.com/)を参照してください。
+この記事では、仮想マシンベースのファイル共有を使用してホスト プールの FSLogix プロファイル コンテナー共有を設定する方法について説明します。 FSLogix のその他のドキュメントについては、[FSLogix サイト](https://docs.fslogix.com/)を参照してください。
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>ファイル共有として機能する新しい仮想マシンを作成する
 
@@ -48,15 +48,15 @@ Windows Virtual Desktop プレビュー サービスでは、推奨されるユ�
 6. Windows Virtual Desktop ユーザーを追加したセキュリティ グループを検索し、そのグループに**フル コントロール**があることを確認します。
 7. セキュリティ グループを追加した後、フォルダーを右クリックして **[プロパティ]** を選択し、 **[共有]** を選択して、後で使用するために **[ネットワーク パス]** をコピーしておきます。
 
-アクセス許可について詳しくは、[FSLogix のドキュメント](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers)をご覧ください。
+アクセス許可について詳しくは、[FSLogix のドキュメント](https://docs.microsoft.com/fslogix/fslogix-storage-config-ht)をご覧ください。
 
 ## <a name="configure-the-fslogix-profile-container"></a>FSLogix プロファイル コンテナーを構成する
 
 FSLogix ソフトウェアで仮想マシンを構成するには、ホスト プールに登録される各マシンで、以下を実行します。
 
 1. 仮想マシンの作成時に指定した資格情報を使用して[仮想マシンに接続](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)します。
-2. インターネット ブラウザーを起動し、[このリンク](https://go.microsoft.com/fwlink/?linkid=2084562)に移動して FSLogix エージェントをダウンロードします。 Windows Virtual Desktop パブリック プレビューの一部として、FSLogix ソフトウェアをアクティブにするライセンス キーを取得します。 キーは、FSLogix エージェントの .zip ファイルに含まれる LicenseKey.txt ファイルです。
-3. .zip ファイル内の \\\\Win32\\Release または \\\\X64\\Release のいずれかに移動し、**FSLogixAppsSetup** を実行して FSLogix エージェントをインストールします。
+2. インターネット ブラウザーを起動し、[このリンク](https://go.microsoft.com/fwlink/?linkid=2084562)に移動して FSLogix エージェントをダウンロードします。
+3. .zip ファイル内の \\\\Win32\\Release または \\\\X64\\Release のいずれかに移動し、**FSLogixAppsSetup** を実行して FSLogix エージェントをインストールします。  FSLogix のインストール方法の詳細については、「[Download and install FSLogix (FSLogix のダウンロードとインストール)](https://docs.microsoft.com/fslogix/install-ht)」を参照してください。
 4. **Program Files** > **FSLogix** > **Apps** に移動して、インストールされているエージェントを確認します。
 5. スタート メニューから、**RegEdit** を管理者として実行します。 **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix** に移動します。
 6. **Profiles** という名前のキーを作成します。
@@ -64,7 +64,7 @@ FSLogix ソフトウェアで仮想マシンを構成するには、ホスト �
 
 | Name                | Type               | データ/値                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 1                                 |
+| 有効             | DWORD              | 1                                 |
 | VHDLocations        | 複数行文字列値 | "ファイル共有のネットワーク パス"     |
 
 >[!IMPORTANT]

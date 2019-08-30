@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f97cce2d1a8b2de5634215629ddb997dc8f7196a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 02dcb7174dd9cb2926ef2fafda4b521b939ae68a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235169"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077985"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
 SAP NetWeaver または SAP S/4HANA アーキテクチャを基盤とする SAP アプリケーションは、SAP アプリケーション層と SAP データベース層の間のネットワーク待ち時間の影響を受けます。 これらのアーキテクチャでこうした影響が生じる理由には、ほとんどのビジネス ロジックがアプリケーション レイヤーで実行されるという事実があります。 ビジネス ロジックの実行結果として、SAP アプリケーション レイヤーは、データベース層に対し、1 秒間に数千回や数万回という高い頻度でクエリを実行します。 これらのクエリの性質は単純であることがほとんどです。 しかも、データベース層で実行すれば、500 マイクロ秒未満、またはそれより短時間で済むことも少なくありません。 ネットワークでそのようなクエリをアプリケーション層からデータベース層に送信し、またデータベース層から結果セットを受け取るために費やされる時間が、ビジネス プロセスの実行にかかる時間に大きく影響しています。 このようにネットワーク待ち時間の影響を受けやすいことから、SAP デプロイ プロジェクトでは、しっかりと手間暇をかけて最適なネットワーク待ち時間を実現する必要があるのです。 [SAP Note #1100926 - FAQ: ネットワーク パフォーマンス](https://launchpad.support.sap.com/#/notes/1100926/E)に関するページに、ネットワーク待ち時間を分類する方法についてのいくつかのガイドラインが公開されています。

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478935"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779902"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -84,7 +84,7 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 - 組織で作成されている仮想マシンが、予約での VM サイズと一致していることを確認します。
 - インスタンス サイズの柔軟性が有効になっていることを確認します。 詳細については、予約の管理に関する記事の「[予約 VM インスタンスの最適化設定を変更する](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)」をご覧ください。
 - より広範に適用されるように、予約範囲を共有に変更します。 詳細については、予約の管理に関する記事の「[予約のスコープを変更する](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)」をご覧ください。
-- 未使用の数量を交換します。 詳細については、予約の管理に関する記事の「[Cancellations and exchanges](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges)」(キャンセルと交換) をご覧ください。
+- 未使用の数量を交換します。 詳しくは、[予約の管理](billing-manage-reserved-vm-instance.md)に関する記事をご覧ください。
 
 ## <a name="give-access-to-reservations"></a>予約にアクセスできるようにする
 

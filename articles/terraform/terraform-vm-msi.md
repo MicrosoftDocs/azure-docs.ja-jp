@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e3aaf943b5eecd9ec1853c09ea36156b98560d3d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007967"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648704"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Azure Marketplace イメージを使用して Azure リソースのマネージド ID を使用する Terraform Linux 仮想マシンを作成する
 
@@ -35,7 +35,7 @@ Terraform Linux 仮想マシンのインスタンスを作成する手順を以�
 
 2. **[Search the Marketplace]\(Marketplace の検索\)** 検索バーで、**Terraform** を探します。 **Terraform** テンプレートを選択します。 
 
-3. 右下にある Terraform の詳細タブで、**[作成]** ボタンを選択します。
+3. 右下にある Terraform の詳細タブで、 **[作成]** ボタンを選択します。
 
     ![Terraform 仮想マシンの作成](media/terraformmsi.png)
 
@@ -56,7 +56,7 @@ Terraform Linux 仮想マシンのインスタンスを作成する手順を以�
 
 2. **追加設定**
 
-   * **[サイズ]**:仮想マシンのサイズ。 
+   * **[サイズ]** :仮想マシンのサイズ。 
    * **VM ディスクの種類**: SSD または HDD。
 
 3. **[Summary Terraform]\(Terraform の概要\)**
@@ -65,7 +65,7 @@ Terraform Linux 仮想マシンのインスタンスを作成する手順を以�
 
 4. **[購入]**
 
-   * プロビジョニング プロセスを開始するには、**[購入]** を選択します。 取引条件へのリンクが用意されています。 サイズに関するステップで選択したサーバー サイズのコンピューティングを超える追加の課金が、VM で発生することはありません。
+   * プロビジョニング プロセスを開始するには、 **[購入]** を選択します。 取引条件へのリンクが用意されています。 サイズに関するステップで選択したサーバー サイズのコンピューティングを超える追加の課金が、VM で発生することはありません。
 
 Terraform VM イメージでは、次の手順が実行されます。
 
@@ -85,7 +85,7 @@ SSH を使用して仮想マシンに接続したら、仮想マシン上の Azu
 
 `. ~/tfEnv.sh`
 
-上記のスクリプトでは、Azure での認証に [AZ CLI v 2.0 の対話型ログイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) メカニズムを使用し、仮想マシンのマネージド ID に、サブスクリプション全体に対する共同作成者のアクセス許可を割り当てます。 
+上記のスクリプトでは、Azure での認証に [AZ CLI v 2.0 の対話型ログイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#sign-in-interactively) メカニズムを使用し、仮想マシンのマネージド ID に、サブスクリプション全体に対する共同作成者のアクセス許可を割り当てます。 
 
  VM は、Terraform のリモート状態バックエンドを備えています。 Terraform デプロイメントでこれを有効にするには、remoteState.tf ファイルを tfTemplate ディレクトリから Terraform スクリプトのルートにコピーします。  
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 63f2e12b9b769e806f8bd052af5bc78aed6a1fe0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 5a8f3401de0dc452193efbcf79aef87a19aed081
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472304"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617085"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services - アラートのトラブルシューティング
 この記事では、マネージド ドメインで発生する可能性があるすべてのアラート向けのトラブルシューティング ガイドを提供します。
@@ -81,7 +81,7 @@ ms.locfileid: "67472304"
 
 1. 既存の Azure AD ディレクトリから[マネージド ドメインを削除](delete-aadds.md)します。
 2. Azure AD B2C 以外の新しいディレクトリを作成します。
-3. [使用の開始](create-instance.md)ガイドに従って、マネージド ドメインを再作成します。
+3. [使用の開始](tutorial-create-instance.md)ガイドに従って、マネージド ドメインを再作成します。
 
 ## <a name="aadds103-address-is-in-a-public-ip-range"></a>AADDS103:アドレスがパブリック IP 範囲内である
 
@@ -110,7 +110,7 @@ ms.locfileid: "67472304"
    5. 左側のナビゲーション メニューで、 **[サブネット]** をクリックします。
    6. テーブルの編集するサブネットをクリックします。
    7. アドレス範囲を更新し、変更を保存します。
-3. [Azure AD Domain Services の使用開始に関するガイド](create-instance.md)に従って、マネージド ドメインを再作成します。 プライベート IP アドレス範囲にある仮想ネットワークを選択していることを確認します。
+3. [Azure AD Domain Services の使用開始に関するガイド](tutorial-create-instance.md)に従って、マネージド ドメインを再作成します。 プライベート IP アドレス範囲にある仮想ネットワークを選択していることを確認します。
 4. 仮想マシンを新しいドメインに参加させるには、[こちらのガイド](join-windows-vm.md)に従います。
 8. アラートが解決されたことを確認するために、ドメインの正常性を 2 時間以内に確認します。
 
@@ -126,7 +126,7 @@ Azure AD Domain Services が機能するには、サブスクリプションが�
 
 1. Azure サブスクリプションを作成します。
 2. 既存の Azure AD ディレクトリから[マネージド ドメインを削除](delete-aadds.md)します。
-3. [使用の開始](create-instance.md)ガイドに従って、マネージド ドメインを再作成します。
+3. [使用の開始](tutorial-create-instance.md)ガイドに従って、マネージド ドメインを再作成します。
 
 ## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107:Azure サブスクリプションが無効
 
@@ -177,7 +177,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 **解決策:**
 
-このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](delete-aadds.md)し、[マネージド ドメインを再作成する](create-instance.md)必要があります。
+このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](delete-aadds.md)し、[マネージド ドメインを再作成する](tutorial-create-instance.md)必要があります。
 
 ## <a name="aadds111-service-principal-unauthorized"></a>AADDS111:サービス プリンシパルが承認されていない
 
@@ -222,7 +222,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 **解決策:**
 
-このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](delete-aadds.md)し、[マネージド ドメインを再作成する](create-instance.md)必要があります。
+このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](delete-aadds.md)し、[マネージド ドメインを再作成する](tutorial-create-instance.md)必要があります。
 
 ## <a name="aadds114-subnet-invalid"></a>AADDS114:サブネットが無効
 
@@ -232,7 +232,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 **解決策:**
 
-このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](delete-aadds.md)し、[マネージド ドメインを再作成する](create-instance.md)必要があります。
+このエラーは回復できません。 解決するには、[既存のマネージド ドメインを削除](delete-aadds.md)し、[マネージド ドメインを再作成する](tutorial-create-instance.md)必要があります。
 
 ## <a name="aadds115-resources-are-locked"></a>AADDS115:リソースがロックされている
 
@@ -270,7 +270,7 @@ Azure AD Domain Services では、適切に機能するために、デプロイ�
 
 管理対象ドメインで同期が停止する一般的な理由を次に示します。
 - 管理対象ドメインでネットワーク接続がブロックされる。 ネットワークに問題がないか確認することの詳細については、[ネットワーク セキュリティ グループをトラブルシューティングする方法](alert-nsg.md)および[Azure AD Domain Services に対するネットワーク要件](network-considerations.md)を参照してください。
--  パスワード同期が設定されないか、完了しない。 パスワード同期を設定するには、[この記事](active-directory-ds-getting-started-password-sync.md)を読んでください。
+-  パスワード同期が設定されないか、完了しない。 パスワード同期を設定するには、[この記事](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)を読んでください。
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501:バックアップがしばらく行われていない
 

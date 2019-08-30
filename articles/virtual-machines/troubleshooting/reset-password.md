@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fc51dfb90158316b3fe6c11b5265f1cf3251505
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306953"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641047"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Azure VM 上でローカルの Linux パスワードをリセットする方法
 
@@ -30,11 +30,14 @@ VM にログインすることができず、使用したパスワードが正�
 
 ## <a name="manual-password-reset-procedure"></a>パスワードの手動リセットの手順
 
-1.  VM を削除し、アタッチされているディスクを維持します。
+> [!NOTE]
+> 次の手順は、アンマネージド ディスクを使用する VM には適用されません。
 
-2.  OS ドライブをデータ ディスクとして、同じ場所の別のテンポラル VM にアタッチします。
+1. 影響のあった VM の OS ディスクのスナップショットを取得し、スナップショットからディスクを作成して、トラブルシューティング用 VM にディスクをアタッチします。 詳細については、[Azure portal を使用した OS ディスクの復旧 VM へのアタッチによる Windows VM のトラブルシューティング](troubleshoot-recovery-disks-portal-linux.md)に関するページを参照してください。
 
-3.  テンポラル VM 上で次の SSH コマンドを実行して、スーパーユーザーになります。
+2. リモート デスクトップを使用してトラブルシューティング用 VM に接続します。
+
+3.  トラブルシューティング用 VM 上で次の SSH コマンドを実行して、スーパーユーザーになります。
 
     ```bash
     sudo su
@@ -98,9 +101,9 @@ VM にログインすることができず、使用したパスワードが正�
     umount /tempmount
     ```
 
-11. 管理ポータルからディスクをデタッチします。
+11. Azure portal で、トラブルシューティング VM からディスクの接続を切断します。
 
-12. VM を再作成します。
+12. [影響を受けている VM の OS ディスクを変更します](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)。
 
 ## <a name="next-steps"></a>次の手順
 

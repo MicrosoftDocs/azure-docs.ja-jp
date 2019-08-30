@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 08/15/2019
+ms.author: v-mohabe
+ms.openlocfilehash: df4f51f97798048b28c0193dbc61e07fc55c9adc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662476"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535078"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (廃止)
 
@@ -317,4 +317,4 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 
 - [Security Center の一般的な構成識別子と基準規則](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。
 - Security Center では、Common Configuration Enumeration (CCE) を使用して構成規則に一意の識別子を割り当てます。 詳細については、[CCE](https://nvd.nist.gov/config/cce/index) に関するページをご覧ください。
-- ご利用の OS 構成が、推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決する方法については、[セキュリティ構成の修復](security-center-remediate-os-vulnerabilities.md)に関するページをご覧ください。
+- ご利用の OS 構成が、推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決する方法については、[セキュリティ構成の修復](security-center-virtual-machine-protection.md)に関するページをご覧ください。

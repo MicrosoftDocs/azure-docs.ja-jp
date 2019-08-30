@@ -4,23 +4,23 @@ description: このチュートリアルでは、Windows コンテナーを使�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/06/2019
+ms.date: 08/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 94a287cd996bd18b757620254540f8dc0df499e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051873"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541897"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
 Visual Studio を使用して、コードを開発し、IoT Edge を実行している Windows デバイスにデプロイします。
 
-クイックスタートでは、Windows 仮想マシンを使用して IoT Edge デバイスを作成し、Azure Marketplace から事前構成済みのモジュールをデプロイしました。 このチュートリアルでは、独自のコードを開発して IoT Edge デバイスにデプロイするために必要なことを順を追って説明します。 このチュートリアルは、特定のプログラミング言語や Azure サービスをより詳細に説明する、他のすべてのチュートリアルにとって有用な前提条件です。 
+クイックスタートでは、Windows 仮想マシンを使用して IoT Edge デバイスを作成し、Azure Marketplace から事前構成済みのモジュールをデプロイしました。 このチュートリアルでは、独自のコードを開発して IoT Edge デバイスにデプロイするために必要なことを順を追って説明します。 このチュートリアルは、特定のプログラミング言語や Azure サービスをより詳細に説明する他のチュートリアルにとって有用な前提条件です。 
 
 このチュートリアルでは、**C# モジュールの Windows デバイスへの**デプロイ例を使用します。 この例が選択された理由は、最も一般的な開発シナリオだからです。 異なる言語での開発に関心がある場合や、Azure サービスをモジュールとしてデプロイする予定の場合でも、このチュートリアルは開発ツールの学習に役立ちます。 開発の概念を理解したら、使用する言語や Azure サービスを選択して、詳細に進むことができます。 
 
@@ -126,26 +126,25 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
 3. [新しいプロジェクトの構成] ウィンドウで、プロジェクトとソリューションを、**CSharpTutorialApp** のようなわかりやすい名前に変更します。 **[作成]** をクリックしてプロジェクトを作成します。
 
    ![新しい Azure IoT Edge プロジェクトを構成する](./media/tutorial-develop-for-windows/configure-project.png)
- 
 
-4. IoT Edge アプリケーションとモジュールのウィンドウで、次の値を使用してプロジェクトを構成します。 
+4. [モジュールの追加] ウィンドウで、以下の値を使用してプロジェクトを構成します。 
 
    | フィールド | 値 |
    | ----- | ----- |
-   | テンプレートの選択 | **[C# モジュール]** を選択します。 | 
-   | モジュール プロジェクト名 | 既定の **IoTEdgeModule1** をそのまま使用します。 | 
-   | Docker イメージ リポジトリ | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/iotedgemodule1 のようになります。 |
+   | Visual Studio テンプレート | **[C# モジュール]** を選択します。 | 
+   | モジュール名 | 既定の **IotEdgeModule1** をそのまま使用します。 | 
+   | リポジトリの URL | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/iotedgemodule1 のようになります。 |
 
-   ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-develop-for-windows/add-module-to-solution.png)
+      ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
-5. **[はい]** を選択して変更を適用します。 
+5. **[追加]** を選択し、モジュールを作成します。 
 
 新しいプロジェクトが Visual Studio ウィンドウに読み込まれたら、少し時間を取って、作成されたファイルをよく確認してください。 
 
 * **CSharpTutorialApp** という IoT Edge プロジェクト。
-    * **Modules** フォルダーには、プロジェクトに含まれるモジュールへのポインターが含まれています。 この例では、IoTEdgeModule1 だけです。 
+    * **Modules** フォルダーには、プロジェクトに含まれるモジュールへのポインターが含まれています。 この例では、IotEdgeModule1 だけです。 
     * **deployment.template.json** ファイルは、配置マニフェストの作成に役立つテンプレートです。 *配置マニフェスト*は、どのモジュールをデバイスにデプロイするか、それらをどのように構成するか、そしてそれらが互いに、およびクラウドとどのように通信するかを正確に定義するファイルです。 
-* **IoTEdgeModule1** という IoT Edge モジュール プロジェクト。
+* **IotEdgeModule1** という IoT Edge モジュール プロジェクト。
     * **program.cs** ファイルには、プロジェクト テンプレートに付属する既定の C# モジュール コードが含まれています。 既定のモジュールは、ソースから入力を受け取り、それを IoT Hub に渡します。 
     * **module.json** ファイルには、完全なイメージ リポジトリ、イメージ バージョン、サポートされているプラットフォームごとに使用する Dockerfile など、モジュールに関する詳細情報が含まれています。
 
@@ -201,7 +200,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 7. $edgeHub の必要なプロパティから **routes** プロパティを見つけます。 
 
-   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 最初のルートである **IotEdgeModule1ToIoTHub** では、IoTEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象にするために、ワイルドカード文字 ( **\*** ) を使用します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 つ目のルートである **sensorToIotEdgeModule1** では、tempSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。 
+   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 最初のルートである **IotEdgeModule1ToIoTHub** では、IotEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象にするために、ワイルドカード文字 ( **\*** ) を使用します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 つ目のルートである **sensorToIotEdgeModule1** では、tempSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。 
 
    ![deployment.template.json でルートを確認する](./media/tutorial-develop-for-windows/deployment-routes.png)
 

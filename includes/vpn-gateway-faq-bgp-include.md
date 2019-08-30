@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0e3f996ab2a42057198368759c75f10e911d5f54
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386913"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68936842"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
@@ -39,6 +39,13 @@ ms.locfileid: "68386913"
 はい。以下の ASN は [IANA によって予約済み](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml)であり、Azure VPN Gateway では構成できません。
 
 23456、64496 ～ 64511、65535 ～ 65551、および 429496729
+
+### <a name="what-private-asns-can-i-use"></a>どのようなプライベート ASN を使用できますか。
+使用できるプライベート ASN の範囲は次のとおりです。
+
+* 64512 ～ 65514、65521 ～ 65534
+
+これらの ASN は、IANA または Azure で使用するために予約されていないため、Azure VPN Gateway に割り当てるために使用できます。
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>オンプレミスの VPN ネットワークと Azure Vnet の両方に同じ ASN を使用できますか。
 いいえ、BGP を使用して接続している場合は、オンプレミスのネットワークと Azure Vnet に異なる ASN を割り当てる必要があります。 Azure VPN Gateway には、クロスプレミス接続向けに BGP が有効になっているかどうかにかかわらず、ASN の既定値として 65515 が割り当てられています。 VPN ゲートウェイを作成する際に異なる ASN を割り当てて既定値をオーバーライドするか、ゲートウェイの作成後に ASN を変更することができます。 対応する Azure ローカル ネットワーク ゲートウェイにオンプレミスの ASN を割り当てる必要があります。

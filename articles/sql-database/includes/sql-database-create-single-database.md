@@ -3,30 +3,31 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 06/19/2019
+ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935042"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894130"
 ---
-この手順では、リソース グループと Azure SQL Database の単一データベースを作成します。
+この手順では、Azure SQL Database の単一データベースを作成します。 
 
 > [!IMPORTANT]
-> この記事の手順を実行しているコンピューターのパブリック IP アドレスを使用するようにファイアウォール規則を確実に設定してください。 
+> この記事の実行に使用しているコンピューターのパブリック IP アドレスを使用するようにファイアウォール規則を確実に設定してください。
 >
-> 詳細については、[データベース レベルのファイアウォール規則の作成](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)に関するページを参照してください。ご利用のコンピューターのサーバー レベルのファイアウォール規則に使用する IP アドレスを調べる場合は、[サーバーレベルのファイアウォールの作成](../sql-database-server-level-firewall-rule.md)に関するページを参照してください。  
+> 詳細については、[データベース レベルのファイアウォール規則の作成](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)に関するページを参照してください。ご利用のコンピューターのサーバーレベルのファイアウォール規則に使用する IP アドレスを調べる場合は、[サーバーレベルのファイアウォールの作成](../sql-database-server-level-firewall-rule.md)に関するページを参照してください。  
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、リソース グループと単一データベースを作成します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
-2. **[データベース]** を選択してから、 **[SQL Database]** を選択し、 **[SQL データベースの作成]** ページを開きます。
+1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択してから、検索ボックスに「*Azure SQL*」と入力します。
+2. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[データベース]** タイルで **[詳細の表示]** を選択すると、さまざまなデータベースに関する追加情報を表示できます。
+3. **[作成]** を選択します。
 
-   ![単一データベースの作成](../media/sql-database-get-started-portal/create-database-1.png)
+   ![単一データベースの作成](../media/sql-database-get-started-portal/create-single-database.png)
 
 3. **[基本]** タブの **[プロジェクトの詳細]** セクションで、次の値を入力または選択します。
 

@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/21/2019
-ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 08/16/2019
+ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668404"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891636"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで自動車価格を予測する
 
@@ -27,9 +27,11 @@ ms.locfileid: "68668404"
 チュートリアルのパート 1 で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * データのインポートとクリーンアップ
+> * 新しい実験を作成する
+> * データのインポート
+> * データを準備する
 > * 機械学習モデルのトレーニング
-> * モデルのスコア付けと評価
+> * 機械学習モデルを評価する
 
 チュートリアルの[パート 2](ui-tutorial-automobile-price-deploy.md) では、予測モデルを Azure Web サービスとしてデプロイし、これを使用して、送信した技術仕様に基づいて任意の自動車の価格を予測する方法を学習します。 
 
@@ -37,13 +39,17 @@ ms.locfileid: "68668404"
 
 これを見つけるには、 **[実験] ページ**から **[新規追加]** を選択し、**サンプル 1 - 回帰:Automobile Price Prediction(Basic)** (自動車価格の予測 (Basic)) を選択します。
 
-## <a name="create-a-workspace"></a>ワークスペースの作成
+## <a name="create-a-new-experiment"></a>新しい実験を作成する
+
+ビジュアル インターフェイス実験を作成するには、まず、Azure Machine Learnings service ワークスペースが必要です。 このセクションでは、これらのリソースを作成する方法について説明します。
+
+### <a name="create-a-new-workspace"></a>新しいワークスペースを作成する
 
 Azure Machine Learning service ワークスペースがある場合は、次のセクションに進みます。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-new-experiment"></a>新しい実験の作成
+### <a name="create-an-experiment"></a>実験の作成
 
 1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。
 
@@ -57,7 +63,7 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 
 1. キャンバスの上部にある既定の実験名 "**Experiment created on ...** " を選択し、わかりやすい名前に変更します。 たとえば、"**Automobile price prediction**" (自動車価格の予測) です。 名前は一意でなくてもかまいません。
 
-## <a name="specify-data"></a>データの指定
+## <a name="import-data"></a>データのインポート
 
 機械学習は、データに依存します。 さいわい、このインターフェイスには、実験に利用できるいくつかのサンプル データセットが含まれています。 このチュートリアルでは、**Automobile price data (Raw)** というサンプル データセットを使用します。 
 
@@ -65,7 +71,7 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 
 1. **Automobile price data (raw)** データセットを選択し、キャンバスにドラッグします。
 
-   ![データをキャンバスにドラッグする](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
+   ![データをキャンバスにドラッグする](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
 
 1. 使用するデータの列を選択します。 パレットの上部にある検索ボックスに「**Select**」と入力し、**Select Columns in Dataset** (データセットの列を選択する) モジュールを見つけます。
 
@@ -87,11 +93,11 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 
     **[Select columns]\(列の選択\)** ダイアログで、 **[ALL COLUMNS]\(すべての列\)** を選択し、 **[all features]\(すべてのフィーチャー\)** を含めます。 ダイアログは次のようになります。
 
-     ![列セレクター](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+     ![列セレクター](./media/ui-tutorial-automobile-price-train-score/select-all.gif)
 
 1. 右下の **[OK]** を選択して列セレクターを閉じます。
 
-## <a name="run-the-experiment"></a>実験を実行する
+### <a name="run-the-experiment"></a>実験を実行する
 
 いつでもデータセットまたはモジュールの出力ポートをクリックすると、データ フローのその時点でデータがどのようになっているかを確認できます。 **[Visualize]\(可視化\)** オプションが無効になっている場合、最初に実験を実行する必要があります。
 
@@ -100,7 +106,7 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 コンピューティング ターゲットが使用できるようになった後、実験が実行されます。 実行が完了したら、各モジュールに緑色のチェック マークが表示されます。
 
 
-## <a name="visualize-the-data"></a>データの視覚化
+### <a name="visualize-the-data"></a>データの視覚化
 
 最初の実験を実行したので、次にデータを視覚化して、データセットについてさらに理解することができます。
 
@@ -110,9 +116,9 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 
     このデータセットでは、各行が自動車を表していて、各自動車に関連付けられている変数は列として表示されます。 このデータセット内には、205 の行と 26 の列があります。
 
-     データの列をクリックするたびに、その列の **[Statistics]\(統計\)** 情報と **[Visualization]\(視覚化\)** の画像が左側に表示されます。 たとえば、**num-of-doors** をクリックすると、一意の値が 2 つ、不足している値が 2 つあることがわかります。 下にスクロールして 2 ドアと 4 ドアの値を表示します。
+    データの列をクリックするたびに、その列の **[Statistics]\(統計\)** 情報と **[Visualization]\(視覚化\)** の画像が左側に表示されます。
 
-     ![データをプレビューする](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+    [![データをプレビューする](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)](./media/ui-tutorial-automobile-price-train-score/preview-data.gif#lightbox)
 
 1. 各列をクリックしてデータセットの詳細を把握し、自動車の価格を予測する際にこれらの列が役立つかどうかを考えます。
 
@@ -137,15 +143,11 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 
     * 右下の **[OK]** を選択して列セレクターを閉じます。
 
-    ![列を除外する](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![列を除外する](./media/ui-tutorial-automobile-price-train-score/exclude-column.gif)
         
     これで、Select Columns in Dataset (データセットの列を選択する) のプロパティ ウィンドウに、**normalized-losses** 以外のデータセットのすべての列がフィルターを通過することが示されます。
         
     "**normalized-losses**" 列が除外されたことを示すプロパティ ウィンドウ。
-        
-    ![プロパティ ウィンドウ](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
-        
-    モジュールをダブルクリックして、テキストを入力すると、モジュールにコメントを追加できます。 これで、実験でモジュールがどのような処理をするのかがひとめでわかります。 
 
 1. **Select Columns in Dataset (データセットの列を選択する)** モジュールをダブルクリックして、「Exclude normalized losses」(normalized losses を除外する) というコメントを入力します。 
     
@@ -168,22 +170,22 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 1. [Properties]\(プロパティ\) ウィンドウで、 **[Cleaning mode]\(整理モード\)** の **[Remove entire row]\(行全体を削除\)** を選択します。
 
 1. モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
- 
-    ![行を削除する](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
 
     実験は以下のようになっているはずです。
     
     ![select-column](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
 
-## <a name="train-the-model"></a>モデルをトレーニングする
+## <a name="train-a-machine-learning-model"></a>機械学習モデルのトレーニング
 
 これでデータを用意できたので、予測モデルを構築できます。 データをモデルのトレーニングに使用します。 その後、モデルをテストして、価格をどの程度の精度で予測できるかを確認します。
+
+### <a name="select-an-algorithm"></a>アルゴリズムを選択する
 
 "**分類**" と "**回帰**" は、2 種類の教師あり機械学習アルゴリズムです。 **分類**は、色 (赤、青、または緑) のような定義された一連のカテゴリから答えを予測するものです。 **回帰**は、数値を予測する目的で使用されます。
 
 予測したい価格は数値であるため、回帰アルゴリズムを使用できます。 この例では、線形回帰モデルを使用します。
 
-価格が含まれた一連のデータを指定して、モデルをトレーニングします。 モデルによってデータがスキャンされ、自動車のフィーチャーと価格の相関関係が検出されます。
+### <a name="split-the-data"></a>データを分割する
 
 データを別個のトレーニング データセットとテスト データセットに分割して、モデルのトレーニングとテストの両方に使用します。
 
@@ -191,17 +193,17 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 
 1. **[Split Data]\(データの分割\)** モジュールを選択します。 [Properties]\(プロパティ\) ウィンドウで、[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\) を 0.7 に設定します。 このようにして、データの 70% をモデルのトレーニングに使用し、30% をテスト用に保持しておきます。
 
-    ![[Properties]\(プロパティ\) ウィンドウの正しい構成を示すスクリーンショット "Split Data" (データの分割) の各値は、"Split Rows" (行の分割)、0.7、Randomized split (ランダム分割)、0、False である必要があります。](./media/ui-tutorial-automobile-price-train-score/split-data.png)
-
 1. **Split Data** (データの分割) をダブルクリックし、「Split the dataset into training set(0.7) and test set(0.3)」(データセットをトレーニング セット (0.7) とテスト セット (0.3) に分割する) というコメントを入力します。
+
+### <a name="train-the-model"></a>モデルをトレーニングする
+
+価格が含まれた一連のデータを指定して、モデルをトレーニングします。 モデルによってデータがスキャンされ、自動車のフィーチャーと価格の相関関係が検出されます。
 
 1. 学習アルゴリズムを選択するには、モジュール パレットの検索ボックスをオフにします。
 
 1. **[Machine Learning]** を展開し、 **[Initialize Model]\(モデルの初期化\)** を展開します。 これにより、機械学習アルゴリズムの初期化に使用できるモジュールのカテゴリが複数表示されます。
 
 1. この実験では、 **[Regression]\(回帰\)**  > **Linear Regression** (線形回帰) モジュールを選択し、実験キャンバスにドラッグします。
-
-    ![[Properties]\(プロパティ\) ウィンドウの正しい構成を示すスクリーンショット "Split Data" (データの分割) の各値は、"Split Rows" (行の分割)、0.7、Randomized split (ランダム分割)、0、False である必要があります。](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
 
 1. **Train Model** (モデルのトレーニング) モジュールを見つけて、実験にドラッグします。 Linear Regression (線形回帰) モジュールの出力を、Train Model (モデルのトレーニング) モジュールの左側の入力に接続します。次に、**Split Data** (データの分割) モジュールのトレーニング データ出力 (左側のポート) を、**Train Model** (モデルのトレーニング) モジュールの右側の入力に接続します。
 
@@ -215,7 +217,7 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 
     ![Train Model (モデルのトレーニング) モジュールを追加した後の実験の正しい構成を示すスクリーンショット。](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
-## <a name="score-and-evaluate-the-model"></a>モデルにスコアを付け、評価する
+## <a name="evaluate-a-machine-learning-model"></a>機械学習モデルを評価する
 
 これまでにデータの 70% を使用してモデルをトレーニングしました。ここからは残りの 30% のデータにスコアを付け、モデルの精度を確認します。
 
@@ -244,26 +246,6 @@ Azure Machine Learning service ワークスペースがある場合は、次の�
 * **Coefficient of Determination** (決定係数):R-2 乗値ともいいます。どの程度モデルが高い精度でデータと適合するかを示す統計指標です。
 
 この誤差の統計情報は、それぞれ小さいほど良いとされます。 値が小さいほど、予測が実際の値により近いことを示します。 Coefficient of Determination (決定係数) では、値が 1 (1.0) に近づくほど、予測の精度が高くなります。
-
-## <a name="manage-experiments-in-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースで実験を管理する
-
-ビジュアル インターフェイスで作成した実験は、Azure Machine Learning service ワークスペースから管理できます。 ワークスペースを使用して、個別の実験の実行、診断ログ、実行グラフなど、より詳細な情報を参照してください。
-
-1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  
-
-1. ワークスペースで、 **[実験]** を選択します。 次に、作成した実験を選択します。
-
-    ![Azure portal で実験に移動する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/portal-experiments.png)
-
-    このページに、実験とその最新の実行の概要が表示されます。
-
-    ![Azure portal での実験の統計情報の概要を示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/experiment-overview.png)
-
-1. 特定の実行に関する詳細情報を表示するには、実行番号を選択します。
-
-    ![詳細な実行レポートを示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/run-details.png)
-
-    実行レポートはリアルタイムで更新されます。 実験で **Execute Python Script (Python スクリプトの実行)** または **Execute R Script (R スクリプトの実行)** モジュールを使用した場合は、 **[ログ]** タブで出力するスクリプト ログを指定できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

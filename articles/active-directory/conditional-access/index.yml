@@ -1,56 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD の条件付きアクセスのドキュメント
+### YamlMime:Landing
+title: Azure AD 条件付きアクセスのドキュメント
+summary: Azure Active Directory 条件付きアクセスを構成してテストする方法について説明します
 metadata:
-  document_id: null
-  title: Azure Active Directory の条件付きアクセスのドキュメント - チュートリアル、クイック スタート、概念、リファレンス | Microsoft Docs
-  description: Azure Active Directory の条件付きアクセスを構成してテストする方法について説明します。
+  title: Azure AD 条件付きアクセスのドキュメント
+  description: Azure Active Directory 条件付きアクセスを構成してテストする方法について説明します
   services: active-directory
-  ms.subservice: conditional-access
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: conditional-access
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: Azure AD の条件付きアクセスを構成して、セキュリティと生産性のバランスを完全に制御する方法について説明します。 条件付きアクセス ポリシーを使用すると、アクセスに関する意思決定にクラウド アプリへのアクセス方法を組み込むことができます。 たとえば、アクセスに関する意思決定において以下の問題に対処できます。<ul><li>ユーザーのネットワークの場所はどこか。</li><li>アクセスの試行はマネージド デバイスから開始されたか。</li><li>どのクライアント アプリから接続の試行が試行されたか。</li><li>リスクの高いサインインからアクセスの試行が実行されたか。</li></ul>以下のリソースは、すぐに作業を開始するうえで役に立ちます。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: 条件付きアクセスの説明
-    href: 'https://www.youtube.com/watch?v=XruceejcCKQ'
-    width: 246
-sections:
-  - title: 5 分間のクイックスタート
-    items:
-      - type: paragraph
-        text: 一般的なアクセス シナリオの条件付きアクセス ポリシーを構成する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 特定のアプリで MFA を必須にする
-            href: app-based-mfa.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: セッションのリスクが検出されたときにアクセスをブロックする
-            href: app-sign-in-risk.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 使用条件への同意を必須にする
-            href: require-tou.md
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: クラシック条件付きアクセス ポリシーを移行する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/policy-migration-mfa">多要素認証が必須のクラシック ポリシーを移行する</a>
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 39f9cf3e64e343c2da98f2c4f4b403ccdc0f3f20
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874264"
+landingContent:
+- title: 条件付きアクセスについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 条件付きアクセスとは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 条件とは
+      url: conditions.md
+    - text: 場所を定義するには
+      url: location-condition.md
+    - text: コントロールとは
+      url: controls.md
+    - text: 条件付きアクセスのサービスの依存関係
+      url: service-dependencies.md
+- title: 条件付きアクセスをデプロイする
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 条件付きアクセスのデプロイを計画する
+      url: plan-conditional-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: レガシ認証をブロックする
+      url: block-legacy-authentication.md
+    - text: What If ツールを使用したトラブルシューティング
+      url: troubleshoot-conditional-access-what-if.md
+- title: 一般的な条件付きアクセス ポリシー
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 一般的な条件付きアクセス ポリシー
+      url: concept-conditional-access-policy-common.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理者に対して MFA を必須にする
+      url: howto-conditional-access-policy-admin-mfa.md
+    - text: Azure 管理のために MFA を必須にする
+      url: howto-conditional-access-policy-azure-management.md
+    - text: レガシ認証をブロックする
+      url: howto-conditional-access-policy-block-legacy.md
+    - text: リスクベースの条件付きアクセス (Azure AD Premium P2 が必要)
+      url: howto-conditional-access-policy-risk.md
+    - text: 信頼できる場所を MFA 登録で必須にする
+      url: howto-conditional-access-policy-registration.md
+    - text: 場所ごとにアクセスをブロックする
+      url: howto-conditional-access-policy-location.md
+    - text: 準拠しているデバイスを要求する
+      url: howto-conditional-access-policy-compliant-device.md

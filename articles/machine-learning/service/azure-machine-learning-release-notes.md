@@ -10,18 +10,75 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565119"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828617"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
 この記事では、Azure Machine Learning service の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-08-05"></a>2019-08-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1055"></a>Azure Machine Learning SDK for Python v1.0.55
+
++ **新機能**
+  + AKS にデプロイされたスコアリング エンドポイントへの呼び出しに対して、トークン ベースの認証がサポートされるようになりました。 現在のキー ベースの認証は引き続きサポートされ、ユーザーはこれらの認証メカニズムのいずれか一方を使用できます。
+  + 仮想ネットワーク (VNet) の内側にある BLOB ストレージをデータストアとして登録する機能。
+  
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + CV 分割の検証サイズが小さくて、回帰や予測の真のグラフに対して予測が不適切になるバグを修正しました。
+    + リモート実行での予測タスクのログ記録が改善され、実行が失敗した場合に、ユーザーに包括的なエラー メッセージが提供されるようになりました。
+    + 前処理フラグが True の場合の時系列のエラーを修正しました。
+    + いくつかの予測データ検証エラー メッセージをより実用的なものにしました。
+    + データセットの削除や遅延読み込みによって (特にプロセスの生成間)、AutoML のメモリ消費量を削減しました
+  + **azureml-contrib-explain-model**
+    + Explainer に model_task フラグを追加し、ユーザーがモデルの種類の既定の自動推論ロジックをオーバーライドできるようにしました
+    + ウィジェットの変更:contrib で自動的にインストールされます。nbextension はインストール/有効化されなくなります。グローバルな機能の重要性 (Permutative など) に関する説明だけがサポートされます
+    + ダッシュボードの変更: - [概要] ページでの beeswarm プロットに加えて、box プロットと violin プロット - "Top -k'" スライダー変更での beeswarm プロットのレンダリングの高速化 - top-k 計算方法を説明する便利なメッセージ - データが提供されないときのグラフに代わる便利なカスタマイズ可能なメッセージ
+  + **azureml-core**
+    + モデルとその依存関係をカプセル化する Docker イメージと Dockerfile を作成するための Model.package() メソッドを追加しました。
+    + Environment オブジェクトを含む InferenceConfig を受け入れるようにローカルな Web サービスを更新しました。
+    + model_path パラメーターとして "." (現在のディレクトリ) が渡されたときに無効なモデルを生成する Model.register() を修正しました。
+    + Run.submit_child を追加しました。機能は Experiment.submit と同じですが、送信された子実行の親として実行を指定します。
+    + Run.register_model で Model.register からの構成オプションがサポートされるようになりました。
+    + 既存のクラスターで JAR ジョブを実行する機能。
+    + instance_pool_id パラメーターと cluster_log_dbfs_path パラメーターをサポートするようになりました。
+    + Web サービスにモデルをデプロイするときに、Environment オブジェクトの使用のサポートを追加しました。 InferenceConfig オブジェクトの一部として Environment オブジェクトを提供できるようになりました。
+    + 次の新しいリージョンに対する appinsifht のマッピングを追加しました - centralus - westus - northcentralus
+    + すべての Datastore クラスのすべての属性に関するドキュメントを追加しました。
+    + blob_cache_timeout パラメーターを `Datastore.register_azure_blob_container` に追加しました。
+    + save_to_directory メソッドと load_from_directory メソッドを azureml.core.environment.Environment に追加しました。
+    + "az ml environment download" コマンドと "az ml environment register" コマンドを CLI に追加しました。
+    + Environment.add_private_pip_wheel メソッドを追加しました。
+  + **azureml-explain-model**
+    + Dataset サービス を使用する説明に対してデータセットの追跡を追加しました (プレビュー)。
+    + グローバルな説明をストリーミングするときの既定のバッチ サイズを、10k から 100 に減らしました。
+    + Explainer に model_task フラグを追加し、ユーザーがモデルの種類の既定の自動推論ロジックをオーバーライドできるようにしました。
+  + **azureml-mlflow**
+    + 入れ子になったディレクトリが無視される mlflow.azureml.build_image のバグを修正しました。
+  + **azureml-pipeline-steps**
+    + 既存の Azure Databricks クラスターで JAR ジョブを実行する機能を追加しました。
+    + DatabricksStep ステップに対する instance_pool_id パラメーターと cluster_log_dbfs_path パラメーターのサポートを追加しました。
+    + DatabricksStep ステップでのパイプライン パラメーターのサポートを追加しました。
+  + **azureml-train-automl**
+    + アンサンブル関連のファイルに対する docstrings を追加しました。
+    + `max_cores_per_iteration` および `max_concurrent_iterations` に対する言語がより適切になるようにドキュメントを更新しました
+    + リモート実行での予測タスクのログ記録が改善され、実行が失敗した場合に、ユーザーに包括的なエラー メッセージが提供されるようになりました。
+    + パイプラインの automlstep notebook から get_data を削除しました。
+    + automlstep での dataprep のサポートを開始しました。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning Data Prep SDK v1.1.10
+
++ **新機能**
+  + 特定の列に対して特定のインスペクター (ヒストグラム、散布図など) の実行を要求できるようになりました。
+  + `append_columns` に並列化引数を追加しました。 True の場合、データはメモリに読み込まれますが、実行は並列で実行されます。False の場合、実行はストリーミングされますが、シングル スレッドです。
 
 ## <a name="2019-07-23"></a>2019-07-23
 
@@ -72,7 +129,7 @@ ms.locfileid: "68565119"
     + 登録後にモデルの説明を更新できるようになりました
     + バグの修正:モデルとイメージの削除の際、アップストリームの依存関係が原因で削除が失敗した場合に、それらに依存しているアップストリーム オブジェクトの取得に関する詳細情報が提供されるようになりました。
     + 一部の環境でワークスペースの作成時に発生する、デプロイの空白の期間が出力されたバグを修正しました。
-    + ワークスペースの作成エラーの例外が改善されました。 そのようなユーザーには、メッセージとして "ワークスペースを作成できません。 ...が見つかりません" は表示されず、代わりに実際の作成エラーが表示されます。
+    + ワークスペースの作成エラーの例外が改善されました。 ユーザーに対して "Unable to create workspace. Unable to find..." (ワークスペースを作成できません。... を検索できません) というメッセージは表示されず、実際の作成エラーが代わりに表示されます。
     + AKS Web サービスのトークン認証のサポートが追加されました。 
     + `Webservice` オブジェクトに `get_token()` メソッドを追加します。
     + 機械学習データセットを管理するための CLI サポートを追加しました。
@@ -352,7 +409,7 @@ Azure portal で、次のことが可能になりました。
 ### <a name="notebook-virtual-machine"></a>Notebook Virtual Machine 
 
 Notebook VM は Jupyter ノートブック向けのセキュリティで保護された、エンタープライズ対応のホスティング環境で使用します。ここで、機械学習の実験をプログラミングしたり、モデルを Web エンドポイントとしてデプロイしたり、Python を使用して Azure Machine Learning SDK でサポートされる他のすべての操作を実行したりすることができます。 次のような機能が提供されます。
-+ 最新バージョンの Azure Machine Learning SDK と関連パッケージが含まれる、[構成済みのノートブック VM の迅速な起動](quickstart-run-cloud-notebook.md) 。
++ 最新バージョンの Azure Machine Learning SDK と関連パッケージが含まれる、[構成済みのノートブック VM の迅速な起動](tutorial-1st-experiment-sdk-setup.md) 。
 + アクセスは、HTTPS、Azure Active Directory の認証と認可など、実績のあるテクノロジによってセキュリティ保護されます。
 + Azure Machine Learning ワークスペースの BLOB ストレージ アカウント内にある、ノートブックとコードの信頼性の高いクラウド ストレージ。 作業内容を失わずに、ノートブックの VM を安全に削除できます。
 + Azure Machine Learning service の機能を使用して探索と実験を行うためにプレインストールされたサンプル ノートブック。

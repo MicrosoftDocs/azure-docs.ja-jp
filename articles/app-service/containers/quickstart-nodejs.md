@@ -1,197 +1,203 @@
 ---
-title: Linux での Node.js アプリの作成 - Azure App Service | Microsoft Docs
-description: Azure App Service on Linux で、初めての Node.js の Hello World を数分でデプロイします。
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
-ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Node.js Web アプリを作成する
+description: Azure App Service への Node.js のデプロイ
+author: KarlErickson
+ms.author: karler
+ms.date: 07/18/2019
 ms.topic: quickstart
-ms.date: 03/27/2019
-ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 54602425ae6e1ff65a8445355af2eca09d495b05
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.service: app-service
+ms.devlang: javascript
+ms.openlocfilehash: ced2977509f16f8dab2abe5546e19b7e05fb2a3d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548680"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975769"
 ---
-# <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js アプリの作成
+# <a name="create-a-nodejs-app-in-azure"></a>Azure で Node.js アプリを作成する
 
-> [!NOTE]
-> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ で App Service にデプロイするには、[Azure での Node.js アプリの作成](../app-service-web-get-started-nodejs.md)に関するページを参照してください。
->
+Azure App Service では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイック スタートでは、Azure App Service に Node.js アプリをデプロイする方法を示します。
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して App Service on Linux に Node.js アプリをデプロイする方法を示します。
+## <a name="prerequisites"></a>前提条件
 
-このクイックスタートは Cloud Shell で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。
+Azure アカウントをお持ちでない場合は、無料アカウントに[今すぐサインアップ](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)してください。200 ドルの Azure クレジットを使用してさまざまな組み合わせのサービスをお試しいただけます。
 
-![Azure で実行されるサンプル アプリ](media/quickstart-nodejs/hello-world-in-browser.png)
+[Node.js と npm](https://nodejs.org/en/download) (Node.js のパッケージ マネージャー) と共に [Visual Studio Code](https://code.visualstudio.com/) がインストールされている必要があります。
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+また、[Azure App Service 拡張機能](vscode:extension/ms-azuretools.vscode-azureappservice)もインストールする必要があります。これにより、Azure PaaS (サービスとしてのプラットフォーム) 上で Linux Web アプリを作成、管理、デプロイすることができます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+### <a name="sign-in"></a>サインイン
 
-## <a name="download-the-sample"></a>サンプルのダウンロード
+拡張機能のインストール後、自分の Azure アカウントにログインします。 アクティビティ バーで Azure のロゴをクリックし、**Azure App Service** エクスプローラーを表示します。 **[Azure にサインイン]** をクリックして、指示に従います。
 
-Cloud Shell で、クイックスタートのディレクトリを作成し、それに変更します。
+![Azure にサインイン](./media/quickstart-nodejs/sign-in.png)
+
+### <a name="troubleshooting"></a>トラブルシューティング
+
+**"サブスクリプション名 <サブスクリプション ID> が見つかりません"** というエラーが表示された場合、原因としては、プロキシの内側にいるために、Azure API に到達できないことが考えられます。 ご利用のターミナルで `export` を使用して、自分のプロキシ情報で `HTTP_PROXY` と `HTTPS_PROXY` の環境変数を構成してください。
+
+```sh
+export HTTPS_PROXY=https://username:password@proxy:8080
+export HTTP_PROXY=http://username:password@proxy:8080
+```
+
+環境変数を設定しても問題が解決しない場合は、下の **[問題が発生しました]** ボタンをクリックしてお問い合わせください。
+
+### <a name="prerequisite-check"></a>前提条件のチェック
+
+続行する前に、すべての前提条件がインストールされ、構成されていることを確認してください。
+
+VS Code では、ステータス バーに自分の Azure メール アドレスが、**Azure App Service** エクスプローラーに自分のサブスクリプションが表示されます。
+
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
+
+## <a name="create-your-nodejs-application"></a>Node.js アプリケーションの作成
+
+次に、クラウドにデプロイできる Node.js アプリケーションを作成します。 このクイックスタートでは、アプリケーション ジェネレーターを使用して、アプリケーションをターミナルからすばやくスキャフォールディングします。
+
+> [!TIP]
+> [Node.js チュートリアル](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)を既に完了している場合は、「[Web サイトのデプロイ](#deploy-the-website)」に進んでかまいません。
+
+### <a name="install-the-express-generator"></a>Express ジェネレーターのインストール
+
+[Express](https://www.expressjs.com) は、Node.js アプリケーションの構築と実行に広く使われているフレームワークです。 [Express ジェネレーター](https://expressjs.com/en/starter/generator.html) ツールを使用して新しい Express アプリケーションをスキャフォールディング (作成) できます。 Express ジェネレーターは npm モジュールとして提供されており、npm コマンドライン ツール (`npm`) を使用してインストールされます。
 
 ```bash
-mkdir quickstart
-
-cd quickstart
+npm install -g express-generator
 ```
 
-次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
+`-g` スイッチを指定すると、自分のマシンに Express ジェネレーターがグローバルにインストールされて、どこからでも実行できるようになります。
+
+### <a name="scaffold-a-new-application"></a>新しいアプリケーションのスキャフォールディング
+
+次に、下記を実行して、`myExpressApp` という新しい Express アプリケーションをスキャフォールディングします。
 
 ```bash
-git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
+express myExpressApp --view pug --git
 ```
 
-実行中、次の例のような情報が表示されます。
+`--view pug --git` は、[pug](https://pugjs.org/api/getting-started.html) テンプレート エンジン (旧称 `jade`) を使用すること、また `.gitignore` ファイルを作成することをジェネレーターに伝えるパラメーターです。
+
+アプリケーションの依存関係をすべてインストールするために、新しいフォルダーに移動して `npm install` を実行します。
 
 ```bash
-Cloning into 'nodejs-docs-hello-world'...
-remote: Counting objects: 40, done.
-remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
-Unpacking objects: 100% (40/40), done.
-Checking connectivity... done.
+cd myExpressApp
+npm install
 ```
 
-> [!NOTE]
-> サンプル index.js では、リッスン ポートが process.env.PORT に設定されます。 この環境変数は、App Service によって割り当てられます。
->
+### <a name="run-the-application"></a>アプリケーションの実行
 
-## <a name="create-a-web-app"></a>Web アプリを作成する
-
-サンプル コードが含まれているディレクトリに移動し、`az webapp up` コマンドを実行します。
-
-次の例で、<app_name> を一意のアプリ名に置き換えます。
+次に、アプリケーションが動作することを確認します。 ターミナルから `npm start` コマンドを使用してアプリケーションを起動し、サーバーを起動します。
 
 ```bash
-cd nodejs-docs-hello-world
-
-az webapp up -n <app_name>
+npm start
 ```
 
-このコマンドの実行には、数分かかる場合があります。 実行中、次の例のような情報が表示されます。
+今度は、ブラウザーを開いて [http://localhost:3000](http://localhost:3000) に移動します。そこで、このような画面が表示されるはずです。
 
-```json
-Creating Resource group 'appsvc_rg_Linux_CentralUS' ...
-Resource group creation complete
-Creating App service plan 'appsvc_asp_Linux_CentralUS' ...
-App service plan creation complete
-Creating app '<app_name>' ....
-Webapp creation complete
-Updating app settings to enable build after deployment
-Creating zip with contents of dir /home/username/quickstart/nodejs-docs-hello-world ...
-Preparing to deploy and build contents to app.
-Fetching changes.
+![Express アプリケーションの実行](./media/quickstart-nodejs/express.png)
 
-Generating deployment script.
-Generating deployment script.
-Generating deployment script.
-Running deployment command...
-Running deployment command...
-Running deployment command...
-Deployment successful.
-All done.
-{
-  "app_url": "https://<app_name>.azurewebsites.net",
-  "location": "Central US",
-  "name": "<app_name>",
-  "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_CentralUS ",
-  "serverfarm": "appsvc_asp_Linux_CentralUS",
-  "sku": "STANDARD",
-  "src_path": "/home/username/quickstart/nodejs-docs-hello-world ",
-  "version_detected": "6.9",
-  "version_to_create": "node|6.9"
-}
-```
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-`az webapp up` コマンドは、次の処理を実行します。
+## <a name="deploy-the-website"></a>Web サイトのデプロイ
 
-- 既定のリソース グループを作成する。
+このセクションでは、VS Code と Azure App Service 拡張機能を使用して自分の Node.js Web サイトをデプロイします。 このクイックスタートで使用するのは最も基本的なデプロイ モデルであり、自分のアプリは zip 圧縮されて、Linux 上の Azure Web アプリにデプロイされます。
 
-- 既定の App Service プランを作成する。
+### <a name="deploy-using-azure-app-service"></a>Azure App Service を使用したデプロイ
 
-- 指定された名前でアプリを作成する。
-
-- 現在の作業ディレクトリからアプリにファイルを [zip してデプロイ](https://docs.microsoft.com/azure/app-service/deploy-zip)する。
-
-## <a name="browse-to-the-app"></a>アプリの参照
-
-Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。 <app_name> は、お客様のアプリの名前に置き換えます。
+まず、VS Code で自分のアプリケーション フォルダーを開きます。
 
 ```bash
-http://<app_name>.azurewebsites.net
+code .
 ```
 
-App Service on Linux で組み込みのイメージを使用して Node.js サンプル コードが実行されています。
+**Azure App Service** エクスプローラーで青色の上矢印アイコンをクリックして、自分のアプリを Azure にデプロイします。
 
-![Azure で実行されるサンプル アプリ](media/quickstart-nodejs/hello-world-in-browser.png)
+![Web アプリへのデプロイ](./media/quickstart-nodejs/deploy.png)
 
-**お疲れさまでした。** App Service on Linux に初めての Node.js アプリをデプロイしました。
+> [!TIP]
+> **コマンド パレット** (Ctrl + Shift + P) で「deploy to web app」と入力し、 **[Azure App Service: Deploy to Web App]** コマンドを実行してデプロイすることもできます。
 
-## <a name="update-and-redeploy-the-code"></a>コードを更新して再デプロイする
+1. 現在開いているディレクトリ (`myExpressApp`) を選択します。
 
-Cloud Shell で、「`nano index.js`」と入力して nano テキスト エディターを開きます。
+2. **[Create new Web App]\(新しい Web アプリを作成する\)** を選択します。
 
-![nano index.js](media/quickstart-nodejs/nano-indexjs.png)
+3. 自分の Web アプリ用にグローバルに一意な名前を入力し、Enter キーを押します。 アプリ名に使用できる有効な文字は "a-z"、"0-9"、"-" です。
 
- `response.end` を呼び出すテキストに小さな変更を加えます。
+4. 該当する **Node.js バージョン**を選択します (LTS を推奨)。
 
-```nodejs
-response.end("Hello Azure!");
-```
+    自分のアプリ用に作成されている Azure リソースが通知チャネルに表示されます。
 
-変更内容を保存し、nano を終了します。 コマンド `^O` を使用して保存し、`^X` を使用して終了します。
+ターゲット サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** をクリックします。 その後、アプリがデプロイされます。
 
-これでアプリを再デプロイします。 `<app_name>` をお客様のアプリに置き換えます。
+![構成済みのデプロイ](./media/quickstart-nodejs/server-build.png)
+
+デプロイが開始されると、以後デプロイのターゲットが自動的に同じ App Service Web アプリとなるように自分のワークスペースを更新するよう求められます。 自分の変更が適切なアプリにデプロイされるよう **[はい]** を選択してください。
+
+![構成済みのデプロイ](./media/quickstart-nodejs/save-configuration.png)
+
+> [!TIP]
+> 必ず、PORT 環境変数 (`process.env.PORT`) に指定されたポートで自分のアプリケーションがリッスンするようにしてください。
+
+### <a name="browse-the-website"></a>Web サイトの閲覧
+
+デプロイが完了したら、プロンプトの **[Web サイトの参照]** をクリックして、自分が新しくデプロイした Web サイトを表示します。
+
+### <a name="troubleshooting"></a>トラブルシューティング
+
+**"このディレクトリまたはページを表示するアクセス許可がありません"** というエラーが表示された場合、おそらくアプリケーションが正常に起動できていません。 次のセクションに進んでログ出力を表示し、エラーを探して修正してください。 ご自身で解決できない場合は、以下の **[問題が発生しました]** ボタンをクリックしてお問い合わせください。 喜んでお手伝いします。
+
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
+
+### <a name="updating-the-website"></a>Web サイトの更新
+
+同じプロセスを使用し、新しいアプリを作成する代わりに既存のものを選択することで、このアプリに対する変更をデプロイできます。
+
+## <a name="viewing-logs"></a>ログの表示
+
+このセクションでは、稼働中の Web サイトのログ (またはその "末尾") を表示する方法について説明します。 サイトでの `console.log` の呼び出しはすべて、Visual Studio Code の出力ウィンドウに表示されます。
+
+**Azure App Service** エクスプローラーでアプリを探して右クリックし、 **[ストリーミング ログの表示]** を選択します。
+
+確認を求められたら、ログを有効にしてアプリケーションを再起動します。 アプリが再起動すると、ログ ストリームへの接続と共に VS Code の出力ウィンドウが開きます。
+
+![ストリーミング ログの表示](./media/quickstart-nodejs/view-logs.png)
+
+![ログの有効化と再起動](./media/quickstart-nodejs/enable-restart.png)
+
+数秒後、ログストリーミング サービスに接続されていることを示すメッセージが表示されます。
 
 ```bash
-az webapp up -n <app_name>
+Connecting to log-streaming service...
+2017-12-21 17:33:51.428 INFO  - Container practical-mustache_2 for site practical-mustache initialized successfully.
+2017-12-21 17:33:56.500 INFO  - Container logs
 ```
 
-デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
+ブラウザーで数回、ページを最新の情報に更新してログ出力を確認します。
 
-![Azure で実行される更新済みのサンプル アプリ](media/quickstart-nodejs/hello-azure-in-browser.png)
-
-## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
-
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> に移動し、お客様が作成したアプリを管理します。
-
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
-
-![Azure アプリへのポータル ナビゲーション](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
-
-お客様のアプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを完了できます。
-
-![Azure Portal の [App Service] ページ](media/quickstart-nodejs/nodejs-docs-hello-world-app-service-detail.png)
-
-左側のメニューは、アプリを構成するためのさまざまなページを示しています。
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-前の手順では、リソース グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、Cloud Shell からリソース グループを削除します。 リージョンを変更した場合は、リソース グループ名 `appsvc_rg_Linux_CentralUS` をアプリ固有のリソース グループに更新します。
-
-```azurecli-interactive
-az group delete --name appsvc_rg_Linux_CentralUS
+```bash
+2017-12-21 17:35:17.774 INFO  - Container logs
+2017-12-21T17:35:14.955412230Z GET / 304 141.798 ms - -
+2017-12-21T17:35:15.248930479Z GET /stylesheets/style.css 304 3.180 ms - -
+2017-12-21T17:35:15.378623115Z GET /favicon.ico 404 53.839 ms - 995
 ```
 
-このコマンドの実行には、少し時間がかかる場合があります。
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [チュートリアル:Node.js app と MongoDB](tutorial-nodejs-mongodb-app.md)
+おめでとうございます。このクイックスタートを正常に完了できました。
 
-> [!div class="nextstepaction"]
-> [Node.js アプリの構成](configure-language-nodejs.md)
+次は、他の Azure 拡張機能もチェックしてみましょう。
+
+* [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
+* [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+* [Docker ツール](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
+* [Azure CLI Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
+* [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+
+または、[Node Pack for Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 拡張機能パックをインストールして、これらすべてを入手しましょう。

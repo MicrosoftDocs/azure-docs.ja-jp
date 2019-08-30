@@ -11,14 +11,14 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0be78b444c9af9c5c0a818d790982670d2b68ee8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477612"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850561"
 ---
-# <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して Linux 仮想マシンを構成する
+# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して仮想マシンを構成する
 
 Desired State Configuration (DSC) を有効にすると、Windows および Linux サーバーの構成を管理および監視できます。 目的の構成から外れている構成を特定し、自動修正することができます。 このクイックスタートでは、Linux VM をオンボードし、DSC を使用して LAMP スタックをデプロイする手順について説明します。
 

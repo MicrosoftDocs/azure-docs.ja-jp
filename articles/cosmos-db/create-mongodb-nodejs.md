@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
-ms.openlocfilehash: 3f6eca30379eb8890695df946f1d7e697cb3f7d7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 0ff15c29fb7d71919b54cbcd73ead30a8673e0f7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979061"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543081"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>クイック スタート:既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 
@@ -100,7 +100,7 @@ az login
 
 次の例は、西ヨーロッパ リージョンにリソース グループを作成します。 リソース グループには一意の名前を選択します。
 
-Azure Cloud Shell を使用する場合は、 **[試してみる]** をクリックし、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
+Azure Cloud Shell を使用する場合は、 **[試してみる]** を選択し、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
@@ -204,7 +204,7 @@ npm start
 
 開発環境が稼働したことを通知するコンソール メッセージが表示されます。 
 
-ブラウザーで `http://localhost:3000` にアクセスします。 上部のメニューの **[Sign Up (サインアップ)]** をクリックし、ダミー ユーザーを 2 人作成します。 
+ブラウザーで `http://localhost:3000` にアクセスします。 上部のメニューの **[新規登録]** を選択し、ダミー ユーザーを 2 つ作成します。 
 
 MEAN.js サンプル アプリケーションでは、ユーザー データをデータベースに格納します。 操作が成功し、MEAN.js が作成されたユーザーに自動的にサインインすれば、Azure Cosmos DB 接続は機能しています。 
 
@@ -216,7 +216,7 @@ Cosmos データベースの格納データは、Azure portal で表示したり
 
 前の手順で作成されたユーザー データを、表示、クエリ、操作するには、Web ブラウザーで [Azure Portal](https://portal.azure.com) にログインします。
 
-上部の検索ボックスに、「Azure Cosmos DB」と入力します。 Cosmos アカウントのブレードが開いたら、自分の Cosmos アカウントを選択します。 左側のナビゲーションで、[データ エクスプローラー] をクリックします。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
+上部の検索ボックスに、「**Azure Cosmos DB**」と入力します。 Cosmos アカウントのブレードが開いたら、自分の Cosmos アカウントを選択します。 左側のナビゲーションで、 **[データ エクスプローラー]** を選択します。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
 
 ![Azure Portal でのデータ エクスプローラー](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 

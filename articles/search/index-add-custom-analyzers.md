@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: Yahnoosh
 ms.author: jlembicz
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 25edc52be90b6133ec0a0f0b5e8ea525d75d4800
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0cd2cf4b7847b767bac391f2547c0a5c3e3a9135
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881527"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891571"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスにカスタム アナライザーを追加する
 
@@ -213,7 +213,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|EnableAdfsAuthentication|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
+|Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされているアナライザーの一覧に含まれるアナライザーの種類です。 下記の[アナライザー](#AnalyzerTable)の表の **analyzer_type** 列をご覧ください。|  
 |オプション|下記の[アナライザー](#AnalyzerTable)の表に列記されている定義済みアナライザーの有効なオプションを指定する必要があります。|  
 
@@ -221,7 +221,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|EnableAdfsAuthentication|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
+|Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|"#Microsoft.Azure.Search.CustomAnalyzer" を指定する必要があります。|  
 |CharFilters|[文字フィルター](#char-filters-reference)の表に列記されている定義済みの文字フィルターのいずれか、またはインデックスの定義で指定されているカスタム文字フィルターに設定します。|  
 |トークナイザー|必須。 下記の[トークナイザー](#Tokenizers)の表に列記されている定義済みのトークナイザーのいずれか、またはインデックスの定義で指定されているカスタム トークナイザーに設定します。|  
@@ -238,7 +238,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|EnableAdfsAuthentication|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
+|Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
 |オプション|指定した[文字フィルター](#char-filters-reference)の種類で有効なオプションを使用する必要があります。|  
 
@@ -251,7 +251,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|EnableAdfsAuthentication|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
+|Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされているトークナイザーの一覧のトークナイザー名を使用します。 下記の[トークナイザー](#Tokenizers)の表の **tokenizer_type** 列をご覧ください。|  
 |オプション|下記の[トークナイザー](#Tokenizers)の表で示されている特定のトークナイザーの種類の有効なオプションを指定する必要があります。|  
 
@@ -262,7 +262,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|EnableAdfsAuthentication|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
+|Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされているトークン フィルターの一覧のトークン フィルター名を使用します。 下記の[トークン フィルター](#TokenFilters)の表の **token_filter_type** 列をご覧ください。|  
 |オプション|特定のトークン フィルターの種類の[トークン フィルター](#TokenFilters)を使用する必要があります。|  
 
@@ -279,7 +279,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |**analyzer_name**|**analyzer_type**  <sup>1</sup>|**説明とオプション**|  
 |-|-|-|  
 |[keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| (種類は、オプションが使用可能な場合にだけ適用されます) |フィールドの内容全体を 1 つのトークンとして扱います。 これは、郵便番号、ID、製品名などのデータで役立ちます。|  
-|[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|正規表現のパターンを使用してテキストを用語に柔軟に分割します。<br /><br /> **オプション**<br /><br /> lowercase (型: bool) - 用語が小文字かどうかを決定します。 既定値は true です。<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (型: string) - トークンの区切り記号に一致する正規表現パターン。 既定値は \w+ です。<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (型: string) - 正規表現フラグ。 既定値は空の文字列です。 使用できる値は以下の通りです。CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は空のリストです。|  
+|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|正規表現のパターンを使用してテキストを用語に柔軟に分割します。<br /><br /> **オプション**<br /><br /> lowercase (型: bool) - 用語が小文字かどうかを決定します。 既定値は true です。<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (型: string) - トークンの区切り記号に一致する正規表現パターン。 既定値は \w+ です。<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (型: string) - 正規表現フラグ。 既定値は空の文字列です。 使用できる値は以下の通りです。CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は空のリストです。|  
 |[simple](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(種類は、オプションが使用可能な場合にだけ適用されます) |非文字でテキストが分割され、それらが小文字に変換されます。 |  
 |[standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />(standard.lucene とも呼ばれます)|StandardAnalyzer|標準トークナイザー、小文字フィルター、ストップ フィルターで構成される標準の Lucene アナライザー。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は 255 です。 最大長より長いトークンは分割されます。 使用できる最大トークン長は、300 文字です。<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は空のリストです。|  
 |standardasciifolding.lucene|(種類は、オプションが使用可能な場合にだけ適用されます) |Ascii フォールディング フィルターの標準アナライザー。 |  
@@ -323,7 +323,7 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 |[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|入力が指定サイズの n グラムにトークン化されます。<br /><br /> **オプション**<br /><br /> minGram (型: int) - 既定値:1、最大値:300。<br /><br /> maxGram (型: int) - 既定値:2、最大値:300。 minGram より大きい値にする必要があります。 <br /><br /> tokenChars (型: string 配列) - トークン内で維持する文字クラス。 使用できる値: "letter"、"digit"、"whitespace"、"punctuation"、"symbol"。 既定値は空の配列で、すべての文字が維持されます。 |  
 |[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|パスのような階層のトークナイザー。<br /><br /> **オプション**<br /><br /> delimiter (型: string) - 既定値: '/。<br /><br /> replacement (型: string) - 設定した場合、区切り記号文字が置き換えられます。 既定値は、delimiter の値と同じです。<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は300、最大値は300。 maxTokenLength より長いパスは無視されます。<br /><br /> reverse (型: bool) - true の場合、逆の順序でトークンが生成されます。 既定値は false です。<br /><br /> skip (型: bool) - スキップする最初のトークン。 既定値は 0 です。|  
 |[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|このトークナイザーでは、正規表現のパターン マッチングを使用して個別のトークンが作成されます。<br /><br /> **オプション**<br /><br /> [pattern](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (型: string) - 正規表現パターン。 既定値は \W+ です。 <br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (型: string) - 正規表現フラグ。 既定値は空の文字列です。 使用できる値は以下の通りです。CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> group (型: int) - トークンの抽出に使用するグループ。 既定値は -1 (分割) です。|
-|[standard_v2](http://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|[Unicode テキスト セグメント化ルール](https://unicode.org/reports/tr29/)に従ってテキストを分割します。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
+|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|[Unicode テキスト セグメント化ルール](https://unicode.org/reports/tr29/)に従ってテキストを分割します。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
 |[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|URL と電子メールが 1 つのトークンとしてトークン化されます。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
 |[whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(種類は、オプションが使用可能な場合にだけ適用されます) |空白文字によりテキストが分割されます。 255 文字より長いトークンは分割されます。|  
 

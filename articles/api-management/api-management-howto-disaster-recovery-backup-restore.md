@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: c566dc28338a47c1bf24066436c21544eb7c5c7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498587"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072448"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -176,6 +175,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   バックアップの進行中は、**サービス管理に変更を加えることは避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
 -   バックアップの復元は、作成されたときから **30 日間だけ保証されます**。
 -   分析レポートの生成に使用される**使用状況データ**は、バックアップに**含まれません**。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
+-   さらに、バックアップ データの一部ではない項目として、カスタム ドメインの SSL 証明書および顧客によってアップロードされたすべての中間証明書またはルート証明書、開発者ポータルのコンテンツ、および仮想ネットワーク統合設定があります。
 -   サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 -   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた**変更**は、**バックアップ対象から除外され、その結果失われる可能性があります**。
 -   コントロール プレーンから Azure Storage アカウントへのアクセスを**許可**します。 顧客は、自分のバックアップ用のストレージ アカウントで次の一連の受信 IP を開く必要があります。 

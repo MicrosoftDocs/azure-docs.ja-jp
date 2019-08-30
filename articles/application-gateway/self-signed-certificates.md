@@ -161,7 +161,7 @@ SSL バインドの手順については、「[How to Set Up SSL on IIS 7](https
    ![信頼されたルート証明書](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > Web サーバー名 (この例では www.fabrikam.com) が Web サーバーの IP アドレスを指すように DNS が構成されていることを前提としています。 そうでない場合は、[ホスト ファイル](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)を編集して名前を解決することができます。
+   > Web サーバー名 (この例では www.fabrikam.com ) が Web サーバーの IP アドレスを指すように DNS が構成されていることを前提としています。 そうでない場合は、[ホスト ファイル](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)を編集して名前を解決することができます。
 1. Web サイトを参照し、ブラウザーのアドレス ボックスにあるロック アイコンをクリックして、サイトと証明書の情報を確認します。
 
 ## <a name="verify-the-configuration-with-openssl"></a>OpenSSL を使用して構成を検証する

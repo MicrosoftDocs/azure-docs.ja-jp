@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: cc730650f7bd570f237c06b074afb3678b54448f
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: b8855fa061e07ec77482ca960971db8252608b51
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901464"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096879"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob Storage によってトリガーされる関数の作成
 
@@ -42,17 +41,17 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Blob Storage でトリガーされる関数の作成
 
-1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、**[ポータル内]**、**[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
+1. Function App を展開し、 **[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
 
    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
 
-1. **[その他のテンプレート]**、**[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
+1. **[その他のテンプレート]** 、 **[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
 
     ![Functions のクイック スタート: [その他のテンプレート] を選択する](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
 1. 検索フィールドに「`blob`」と入力し、**BLOB トリガー** テンプレートを選択します。
 
-1. プロンプトが表示されたら、**[インストール]** を選択して Azure Storage 拡張機能とすべての依存関係を関数アプリにインストールします。 インストールが正常に完了したら、**[続行]** を選択します。
+1. プロンプトが表示されたら、 **[インストール]** を選択して Azure Storage 拡張機能とすべての依存関係を関数アプリにインストールします。 インストールが正常に完了したら、 **[続行]** を選択します。
 
     ![バインディング拡張機能をインストールする](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
 
@@ -72,19 +71,19 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
 ## <a name="create-the-container"></a>コンテナーの作成
 
-1. 関数で、**[統合]** をクリックし、**[ドキュメント]** を展開して、**[アカウント名]** と **[アカウント キー]** の両方をコピーします。 これらの資格情報を使用して、ストレージ アカウントに接続します。 ストレージ アカウントに既に接続している場合は、手順 4 に進みます。
+1. 関数で、 **[統合]** をクリックし、 **[ドキュメント]** を展開して、 **[アカウント名]** と **[アカウント キー]** の両方をコピーします。 これらの資格情報を使用して、ストレージ アカウントに接続します。 ストレージ アカウントに既に接続している場合は、手順 4 に進みます。
 
     ![ストレージ アカウント接続の資格情報を取得します。](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. [Microsoft Azure Storage Explorer](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
+1. [Microsoft Azure Storage Explorer](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、 **[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、 **[次へ]** をクリックします。
 
     ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 
-1. 手順 1 の **[アカウント名]** と **[アカウント キー]** を入力し、**[次へ]** をクリックし、**[接続]** をクリックします。 
+1. 手順 1 の **[アカウント名]** と **[アカウント キー]** を入力し、 **[次へ]** をクリックし、 **[接続]** をクリックします。 
 
     ![ストレージ資格情報を入力し、接続します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. 接続されたストレージ アカウントを展開し、**[Blob containers] \(Blob コンテナー)** を右クリックして、**[Create blob container] \(Blob コンテナーの作成)** をクリックし、「`samples-workitems`」と入力して、Enter キーを押します。
+1. 接続されたストレージ アカウントを展開し、 **[Blob containers] \(Blob コンテナー)** を右クリックして、 **[Create blob container] \(Blob コンテナーの作成)** をクリックし、「`samples-workitems`」と入力して、Enter キーを押します。
 
     ![ストレージ キューを作成します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -94,11 +93,11 @@ Blob コンテナーが用意されているので、このコンテナーにフ
 
 1. Azure Portal に戻り、関数を参照して、ページ下部の **[ログ]** を展開して、ログ ストリーミングが一時停止していないことを確認します。
 
-1. Storage Explorer で、ストレージ アカウント、**[Blob containers]** \(BLOB コンテナー\)、**[samples-workitems]** の順に展開します。 **[アップロード]**、**[Upload files...] \(ファイルをアップロードしています...)** の順にクリックします。
+1. Storage Explorer で、ストレージ アカウント、 **[Blob containers]** \(BLOB コンテナー\)、 **[samples-workitems]** の順に展開します。 **[アップロード]** 、 **[Upload files...] \(ファイルをアップロードしています...)** の順にクリックします。
 
     ![Blob コンテナーにファイルをアップロードします。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 
-1. **[Upload files] \(ファイルのアップロード)** ダイアログ ボックスで、**[ファイル]** フィールドをクリックします。 画像ファイルなど、ローカル コンピューター上のファイルを参照して選択し、**[開く]**、**[アップロード]** の順にクリックします。
+1. **[Upload files] \(ファイルのアップロード)** ダイアログ ボックスで、 **[ファイル]** フィールドをクリックします。 画像ファイルなど、ローカル コンピューター上のファイルを参照して選択し、 **[開く]** 、 **[アップロード]** の順にクリックします。
 
 1. 関数ログに戻り、Blob が読み取られたことを確認します。
 

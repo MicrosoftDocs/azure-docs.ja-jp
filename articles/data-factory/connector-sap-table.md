@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 18b5b941716fd2c6664c37f9e7c1ab2a37d07a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: da7dbdee4a376d88219a7a621ed7e3867873a37c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720644"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967402"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -201,7 +201,7 @@ SAP BW オープン ハブのリンクされたサービスとの間でデータ
 
 アクティビティを定義するためのセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関するページをご覧ください。 次のセクションでは、SAP テーブル ソースでサポートされるプロパティの一覧を示します。
 
-### <a name="sap-table-as-a-source"></a>ソースとしての SAP テーブル
+### <a name="sap-table-as-source"></a>ソースとしての SAP テーブル
 
 SAP テーブルからデータをコピーするために、次のプロパティがサポートされています。
 
@@ -223,7 +223,7 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 <br/>
 >例として `partitionOption` を `partitionOnInt` として取ると、各パーティション内の行数はこの式を使って計算されます: (`partitionUpperBound` と `partitionLowerBound` の間の合計行数)/`maxPartitionsNumber`。<br/>
 <br/>
->コピーの速度を上げるためにパーティションを並行して実行するには、`maxPartitionsNumber` を、`parallelCopies` プロパティの値の倍数にすることを強くお勧めします。 詳細については、「[並列コピー](copy-activity-performance.md#parallel-copy)」を参照してください。
+>コピーを高速化するためにデータ パーティションを並行して読み込むために、並列度はコピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリは、SAP テーブルからデータの一部を取得します。 `maxPartitionsNumber` を `parallelCopies` プロパティの値の倍数にすることを強くお勧めします。
 
 `rfcTableOptions` では、次の一般的な SAP クエリ演算子を使用して行をフィルター処理できます。
 
@@ -269,7 +269,8 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]

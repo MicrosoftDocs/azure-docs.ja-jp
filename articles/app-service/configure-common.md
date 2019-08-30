@@ -5,23 +5,22 @@ keywords: Azure App Service、Web アプリ、アプリ設定、環境変数
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bcc970375120f76e4ec8a90f487d251296f92dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11a29a980fbbbafad850daeda5af11b78580bcaa
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957566"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067006"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -29,16 +28,18 @@ ms.locfileid: "65957566"
 
 ## <a name="configure-app-settings"></a>アプリケーションの設定の構成
 
-App Service では、環境変数などのアプリ設定を使用します。 [Azure portal] で、アプリの管理ページに移動します。 アプリの左側のメニューで、 **[構成]**  >  **[アプリケーションの設定]** をクリックします。
+App Service では、アプリ設定は、環境変数としてアプリケーション コードに渡される変数です。 Linux アプリとカスタム コンテナーの場合、App Service では、コンテナー内に環境変数を設定するためのアプリ設定が `--env` フラグを使用してコンテナーに渡されます。
+
+[Azure portal] で、アプリの管理ページに移動します。 アプリの左側のメニューで、 **[構成]**  >  **[アプリケーションの設定]** をクリックします。
 
 ![アプリケーションの設定](./media/configure-common/open-ui.png)
 
-ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ設定の設定は *Web.config* 内の `<appSettings>` での設定と同様ですが、App Service での値によって *Web.config* 内の値がオーバーライドされます。運用シークレット (Azure MySQL データベースのパスワードなど) を除き、*Web.config* 内の開発設定 (ローカルの MySQL パスワードなど) は App Service で安全に保持できます。 ローカルでデバッグするときに開発設定を使用するコードと、Azure にデプロイされたときに運用シークレットを使用するコードは同じです。
+ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ設定の設定は *Web.config* または *appsettings.json* での `<appSettings>` の設定と同様ですが、App Service の値によって *Web.config* または *appsettings.json* でそれらがオーバーライドされます。 運用シークレット (Azure MySQL データベースのパスワードなど) を除き、*Web.config* または *appsettings.json* 内の開発設定 (ローカルの MySQL パスワードなど) を App Service で安全に保持できます。 ローカルでデバッグするときに開発設定を使用するコードと、Azure にデプロイされたときに運用シークレットを使用するコードは同じです。
 
 同様に、他の言語スタックも実行時に環境変数としてアプリ設定を取得します。 言語スタック固有の手順については、次を参照してください。
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
+- [Node.JS](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
@@ -94,7 +95,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ�
 
 ![アプリケーションの設定](./media/configure-common/open-ui.png)
 
-ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文字列の設定は *Web.config* 内の `<connectionStrings>` での設定と同様ですが、App Service で設定した値によって *Web.config* 内の値がオーバーライドされます。*Web.config* 内の開発設定 (データベース ファイルなど) や運用シークレット (SQL Database の資格情報など) は App Service で安全に保持できます。 ローカルでデバッグするときに開発設定を使用するコードと、Azure にデプロイされたときに運用シークレットを使用するコードは同じです。
+ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文字列の設定は *Web.config* 内の `<connectionStrings>` での設定と同様ですが、App Service で設定した値によって *Web.config* 内の値がオーバーライドされます。*Web.config* 内の開発設定 (データベース ファイルなど) や運用シークレット (SQL Database の資格情報など) を App Service で安全に保持できます。 ローカルでデバッグするときに開発設定を使用するコードと、Azure にデプロイされたときに運用シークレットを使用するコードは同じです。
 
 他の言語スタックの場合は、値にアクセスするために接続文字列の変数キーに特殊な形式が必要になるため、代わりに[アプリ設定](#configure-app-settings)を使用することをお勧めします。 ただし、例外が 1 つあります。特定の Azure データベースの種類は、その接続文字列をアプリで構成した場合、アプリと共にバックアップされます。 詳細については、「[バックアップ対象](manage-backup.md#what-gets-backed-up)」を参照してください。 この自動バックアップが必要ない場合は、アプリ設定を使用してください。
 
@@ -108,7 +109,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 たとえば、*connectionstring1* という名前の MySql 接続文字列には環境変数 `MYSQLCONNSTR_connectionString1` としてアクセスできます。 言語スタック固有の手順については、次を参照してください。
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
+- [Node.JS](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
@@ -165,13 +166,13 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 
 ![全般設定](./media/configure-common/open-general.png)
 
-ここでは、アプリのいくつかの一般的な設定を構成できます。 一部の設定では、[より高い価格レベルにスケールアップする](web-sites-scale.md)必要があります。
+ここでは、アプリのいくつかの一般的な設定を構成できます。 一部の設定では、[より高い価格レベルにスケールアップする](manage-scale-up.md)必要があります。
 
 - **[Stack settings] (スタックの設定)** : アプリを実行するためのソフトウェア スタック (言語や SDK バージョンを含む)。 Linux アプリやカスタム コンテナー アプリの場合は、オプションのスタートアップ コマンドまたはファイルを設定することもできます。
 - **[プラットフォームの設定]** : ホスティング プラットフォームの設定を構成できます。次のものが含まれます。
     - **[ビット]** : 32 ビットまたは 64 ビット。
     - **[WebSocket プロトコル]** : [ASP.NET SignalR] や [socket.io](https://socket.io/) など。
-    - **[常時接続]** : トラフィックがない場合も、アプリを読み込まれたままにします。 これは、継続的な Web ジョブや、CRON 式を使用してトリガーされる Web ジョブに対して有効にする必要があります。
+    - **[常時接続]** : トラフィックがない場合も、アプリを読み込まれたままにします。 継続的な Web ジョブや、CRON 式を使用してトリガーされる Web ジョブに対して有効にする必要があります。
     - **[Managed pipeline version] (マネージド パイプライン バージョン)** : IIS の[パイプライン モード]。 以前のバージョンの IIS を必要とするレガシ アプリがある場合は、これを **[Classic] (クラシック)** に設定します。
     - **[HTTP version] (HTTP バージョン)** :[HTTPS/2](https://wikipedia.org/wiki/HTTP/2) プロトコルのサポートを有効にするには、 **[2.0]** に設定します。
     > [!NOTE]
@@ -236,7 +237,7 @@ Windows アプリの場合は、IIS ハンドラー マッピングや仮想ア�
 Linux アプリについては、次を参照してください。
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
+- [Node.JS](containers/configure-language-nodejs.md)
 - [PHP](containers/configure-language-php.md)
 - [Python](containers/how-to-configure-python.md)
 - [Java](containers/configure-language-java.md)
@@ -266,4 +267,4 @@ Linux アプリについては、次を参照してください。
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Azure App Service での監視の基本]: ./web-sites-monitor.md
 [パイプライン モード]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Azure App Service でのアプリのスケーリング]: ./web-sites-scale.md
+[Azure App Service でのアプリのスケーリング]: ./manage-scale-up.md

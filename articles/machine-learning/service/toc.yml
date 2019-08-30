@@ -28,10 +28,7 @@
               href: tutorial-deploy-models-with-aml.md
         - name: 回帰 (ニューヨーク市のタクシー データ)
           items:
-            - name: 1. モデリング用にデータを準備する
-              displayName: data prep
-              href: tutorial-data-prep.md
-            - name: 2. ML モデルを自動トレーニングする
+            - name: ML モデルを自動トレーニングする
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
     - name: ビジュアル インターフェイス
@@ -128,6 +125,9 @@
         - name: 開発環境を構成する
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
+        - name: ソフトウェア環境を管理する
+          displayName: 'pip, Conda'
+          href: how-to-use-environments.md
         - name: ログの有効化
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
@@ -145,9 +145,6 @@
         - name: データセットを追加および登録する
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
-        - name: データを調査する
-          displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
-          href: how-to-explore-prepare-data.md
         - name: azureml.dataprep で準備する
           items:
             - name: データを読み込む
@@ -179,6 +176,9 @@
         - name: ハイパーパラメーターを調整する
           displayName: parameter
           href: how-to-tune-hyperparameters.md
+        - name: トレーニング時に Key Vault を使用する
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
     - name: 実験を追跡および監視する
       items:
         - name: 実行の開始、監視、または取り消し
@@ -213,29 +213,29 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: ノートブック VM
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: Azure Kubernetes Service
+        - name: Azure Kubernetes Service にデプロイする
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: GPU 推論
+        - name: GPU 推論のためにデプロイする
           href: how-to-deploy-inferencing-gpus.md
-        - name: FPGA 推論
-          href: how-to-deploy-fpga-web-service.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Azure App Service
+        - name: Azure App Service にデプロイする
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: カスタム Docker イメージ
+        - name: Azure Container Instances へのデプロイ
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: Notebook VM にデプロイする
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: カスタム Docker イメージを使用する
           href: how-to-deploy-custom-docker-image.md
         - name: 既存のモデルをデプロイする
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: トラブルシューティングとデバッグ
+        - name: IoT Edge にデプロイする
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: FPGA 推論のためにデプロイする
+          href: how-to-deploy-fpga-web-service.md
+        - name: デプロイのトラブルシューティングとデバッグ
           href: how-to-troubleshoot-deployment.md
     - name: Web サービスを使用する
       items:
@@ -257,7 +257,7 @@
     - name: 再利用可能なワークフローを作成する
       displayName: pipelines
       items:
-        - name: ML パイプライン
+        - name: Python で ML パイプラインを作成する
           href: how-to-create-your-first-pipeline.md
         - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'

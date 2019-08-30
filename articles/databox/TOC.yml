@@ -95,8 +95,10 @@
               href: data-box-disk-deploy-set-up.md
             - name: 3 - テストおよび検証
               href: data-box-disk-deploy-copy-data.md
-            - name: 4 - 返却、アップロード、確認
+            - name: 4 - 返却
               href: data-box-disk-deploy-picked-up.md
+            - name: 5 - アップロードの確認
+              href: data-box-disk-deploy-upload-verify.md
         - name: 概念
           items:
             - name: 要件を確認する

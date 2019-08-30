@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 08/01/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 815ff980abdde7ab91861d8550030476312fb6d3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483016"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835166"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 
@@ -115,6 +115,9 @@ OAuth 2.0、`refresh_tokens`、および `access_tokens` の詳細について�
 ## <a name="token-claims"></a>トークン要求
 
 Microsoft ID プラットフォーム エンドポイントでは、ペイロードを小さくするため、トークン内の一部の要求のみが既定で発行されます。 Microsoft ID プラットフォーム トークンの既定では提供されない v1.0 トークン内の特定の要求に依存するアプリやサービスがある場合は、[省略可能な要求](active-directory-optional-claims.md)の機能を使用してそのクレームを含めることを検討してください。
+
+> [!IMPORTANT]
+> v1.0 および v2.0 のトークンは、v1.0 と v2.0 のどちらのエンドポイントからでも発行できます。 id_tokens は "*必ず*" その要求元のエンドポイントと一致し、アクセス トークンは "*必ず*"、そのトークンを使用してクライアントが呼び出す Web API で想定された形式と一致します。  そのため、アプリで v2.0 エンドポイントを使用して、Microsoft Graph を呼び出すためのトークンを取得する場合、そこで想定されるのは v1.0 形式のアクセス トークンなので、アプリには v1.0 形式でトークンが返されます。  
 
 ## <a name="limitations"></a>制限事項
 

@@ -64,7 +64,7 @@ sections:
               src: media/index/spark-logo.png
             title: Apache Spark による組み込みの分析
           - href: /azure/cosmos-db/change-feed/
-            html: <p>変更された順に並べ替えられた Azure Cosmos DB コンテナー内のドキュメントの一覧を読み込むことで、変更フィードを使用してリアルタイム分析を実行します。 </p>
+            html: <p>変更された順に並べ替えられた Azure Cosmos コンテナー内のドキュメントの一覧を読み取ることで、変更フィードを使用してリアルタイム分析を実行します。 </p>
             image:
               src: media/index/change-feed-logo.png
             title: Change Feed

@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3d5bfa2426d58fa5a09d2203272536eec7fa9c55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789955"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986561"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -25,8 +25,8 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
     - ストレージ アカウントを対象とする RBAC ロールをセキュリティ プリンシパルに割り当て、Azure AD を使用して、キー管理などのリソース管理操作を承認できます。
     - Azure AD の統合は、BLOB およびキュー データ操作でサポートされています。 サブスクリプション、リソース グループ、ストレージ アカウント、または個々のコンテナーやキューを対象とする RBAC ロールをセキュリティ プリンシパルまたは Azure リソースのマネージド ID に割り当てることができます。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。   
 - アプリケーションと Azure の間で送信されるデータを、 [クライアント側暗号化](../storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。  
-- Azure 仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../../security/azure-security-disk-encryption.md) を使用して暗号化できます。 
-- Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、 [Shared Access Signature](../storage-dotnet-shared-access-signature-part-1.md)を使用して付与できます。
+- Azure 仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../../security/azure-security-disk-encryption.md) を使用して暗号化できます。
+- Shared Access Signature を使用して、Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権を付与できます。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](storage-sas-overview.md)」を参照してください。
 
 この記事では、Azure Storage で使用できる各セキュリティ機能の概要について説明します。 また、各トピックの詳細を簡単に調べられるように、各機能の詳細を説明した記事のリンクも紹介します。
 
@@ -238,11 +238,6 @@ Shared Access Signature と Stored Access Policy の詳しい使用方法と例�
     この記事では、BLOB、キュー メッセージ、テーブルの範囲、ファイルにサービスレベルの SAS を使用する例を紹介しています。
   * [Constructing a service SAS (サービス SAS の構築)](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Constructing an account SAS (アカウント SAS の構築)](https://msdn.microsoft.com/library/mt584140.aspx)
-
-* これは、.NET クライアント ライブラリを使用して Shared Access Signature と Stored Access Policy を作成する方法のチュートリアルです。
-  * [Shared Access Signatures (SAS) の使用](../storage-dotnet-shared-access-signature-part-1.md)
-
-    この記事には、SAS モデルの説明、Shared Access Signature の例、Shared Access Signature のベスト プラクティスの使用の推奨が含まれています。 また、付与されたアクセス許可の無効化についても説明しています。
 
 * Authentication
 

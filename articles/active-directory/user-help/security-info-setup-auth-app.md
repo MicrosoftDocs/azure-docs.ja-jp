@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 912bda010ddcf9b02506df14f06fb0650271a53b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382985"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616132"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>認証アプリを使用するようにセキュリティ情報 (プレビュー) を設定する
 
@@ -65,7 +65,10 @@ ms.locfileid: "68382985"
 
 6. Microsoft Authenticator アプリを開き、通知を許可するように選択し (メッセージが表示された場合)、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[職場または学校アカウント]** を選択します。
 
-7. **[アカウントのセットアップ]** ページに戻り、 **[次へ]** を選択します。
+    >[!Note]
+    >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
+
+7. コンピューターで **[アカウントのセットアップ]** ページに戻り、 **[次へ]** を選択します。
 
     **[QR コードをスキャンします]** ページが表示されます。
 
@@ -75,7 +78,7 @@ ms.locfileid: "68382985"
 
     認証アプリによって、ユーザーからの追加情報を必要とせずに、職場または学校アカウントが正常に追加されるはずです。 ただし、QR コード リーダーで、コードを読み取れない場合は、 **[QR コードをスキャンできませんか?]** リンクを選択し、コードと URL を Microsoft Authenticator アプリに手動で入力します。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
-9. **[QR コードをスキャンします]** ページで、 **[次へ]** を選択します。
+9. コンピューターの **[QR コードをスキャンします]** ページで、 **[次へ]** を選択します。
 
     モバイル デバイスの Microsoft Authenticator アプリに、アカウントをテストするための通知が送信されます。
 
@@ -142,6 +145,8 @@ ms.locfileid: "68382985"
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 
 ## <a name="next-steps"></a>次の手順
+
+- 「[2 段階認証またはセキュリティ情報を使ったサインイン方法](security-info-setup-signin.md)」の手順に従って、Microsoft Authenticator アプリを使用してサインインします。
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](user-help-reset-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 

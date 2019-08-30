@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 5fde581f322504c7e329da7fa153671b8a91183d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688376"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954583"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -87,6 +87,9 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 
 ![RS コンテナーの組み込みのメール通知](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
+> [!NOTE]
+> SQL バックアップのアラートは統合され、最初に発生したときにのみ電子メールが送信されます。 しかし、アラートがユーザーによって非アクティブにされている場合、次の発生時に別の電子メールがトリガーされます。
+
 通知が構成されている場合、ウェルカム メールまたは導入時のメールを受け取ります。 これは、アラートの生成時に、Azure Backup がこれらのアドレスにメールを送信できるかどうかを確認するものです。<br>
 
 頻度が 1 時間ごとのダイジェストに設定されており、アラートが生成されて 1 時間以内にこれが解決された場合は、次の 1 時間ごとのダイジェストにこのアラートは含まれません。
@@ -95,6 +98,14 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 >
 > * **保護の停止 (データの削除を含む)** などの破壊的な操作が実行されると、アラートが生成され、Recovery Service コンテナーに対して通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
 > * 成功したジョブの通知を構成するには、[Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace) を使用します。
+
+## <a name="inactivating-alerts"></a>アラートの非アクティブ化
+
+アクティブなアラートを無効化または解決するには、非アクティブ化するアラートに対応するリスト アイテムをクリックできます。 これにより、アラートに関する詳細情報を表示する画面が開き、上部に [非アクティブ化] ボタンが表示されます。 このボタンをクリックすると、アラートの状態が "非アクティブ" に変わります。 また、アラートに対応するリスト アイテムを右クリックし、[非アクティブ化] を選択するだけで、アラートを非アクティブにすることもできます。
+
+![RS コンテナーのアラートの非アクティブ化](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+
 
 ## <a name="next-steps"></a>次の手順
 

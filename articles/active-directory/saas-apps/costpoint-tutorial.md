@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/28/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f21c7896f0ed2afba3a302b4686289cf331ba510
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 6c1a8b916feb2ad67623434f2b63468be72bf1aa
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536840"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879584"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>チュートリアル:Costpoint と Azure Active Directory の統合
 
@@ -78,38 +78,53 @@ Costpoint で Azure AD SSO を構成してテストするには、次の構成�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
 
-    a. **[識別子]** ボックスに、`https://<CostpointURI>` の形式で URL を入力します。
+    > [!NOTE]
+    > このチュートリアルの「**Costpoint メタデータの生成**」セクションで後述するように、サービス プロバイダー メタデータ ファイルを取得します。
+ 
+    1. **[メタデータ ファイルをアップロードします]** をクリックします。
+    
+    1. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    
+    1. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、Costpoint セクションのテキスト ボックスに自動的に設定されます
 
-    b. **[応答 URL]** ボックスに、`https://<CostpointURI>/LoginServlet.cps` のパターンを使用して URL を入力します
+        > [!Note]
+        > **識別子**と**返信 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。 **[識別子 (エンティティ ID)]** および **[応答 URL (Assertion Consumer Service URL)]** が正しく設定され、 **[ACS URL]** が **/LoginServlet.cps** で終わる有効な Costpoint URL であることを確認してください。
 
-    c. **[追加の URL を設定します]** をクリックします。
+    1. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** ボックスに、値を次の形式で URL を入力します。`<SYSTEM VALUE>`
+    1. **[リレー状態]** ボックスに、値を次の形式で URL を入力します。`system=[your system], (for example, **system=DELTEKCP**)`
+
+1. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
+    
+    **[サインオン URL]** テキスト ボックスに URL として「`https://costpointteea.deltek.com/cpweb/cploginform.htm`」と入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、およびリレー状態でこれらの値を更新します。 これらの値を取得するには、[Costpoint クライアント サポート チーム](https://www.deltek.com/about/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
-
-    **[サインオン URL]** テキスト ボックスに URL として「`https://costpointteea.deltek.com/cpweb/cploginform.htm`」と入力します。
-
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、メモ帳に保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー アイコンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に保存します。
 
    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-1. **[Costpoint の設定]** セクションで、要件に基づく適切な URL をコピーします。
+### <a name="generate-costpoint-metadata"></a>Costpoint メタデータの生成
 
-   ![構成 URL のコピー](common/copy-configuration-urls.png)
+Costpoint SAML SSO 構成については、**DeltekCostpoint711Security.pdf** ガイドで説明されています。 これの、「**SAML Single Sign-on Setup -> Configure SAML Single Sign-on between Costpoint and Azure AD (SAML シングル サインオンの設定 -> Costpoint と Azure AD 間の SAML シングル サインオンの構成)** 」セクションを参照してください。 指示に従って、**Costpoint SP フェデレーション メタデータ XML** ファイルを生成します。 Azure portal の **[基本的な SAML 構成]** で、これを使用します。
+
+![Costpoint Configuration Utility (Costpoint 構成ユーティリティ)](./media/costpoint-tutorial/config02.png)
+
+> [!NOTE]
+> [Costpoint クライアント サポート チーム](https://www.deltek.com/about/contact-us)から **DeltekCostpoint711Security.pdf** ガイドを入手できます。 このファイルがない場合は、サポート チームに連絡して入手してください。
 
 ### <a name="configure-costpoint"></a>Costpoint の構成
 
-**Costpoint** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Costpoint クライアント サポート チーム](https://www.deltek.com/about/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Costpoint Configuration Utility (Costpoint 構成ユーティリティ)** に戻り、**アプリのフェデレーション メタデータ URL** を **[IdP Federation Metadata XML]\(IdP フェデレーション メタデータ XML\)** ボックス貼り付けます。その後、**DeltekCostpoint711Security.pdf** ガイドの手順を続行し、Costpoint SAML の設定を完了します。 
+
+![Costpoint Configuration Utility (Costpoint 構成ユーティリティ)](./media/costpoint-tutorial/config01.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure portal で B.Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
@@ -123,23 +138,27 @@ Costpoint で Azure AD SSO を構成してテストするには、次の構成�
 
 このセクションでは、B.Simon に Costpoint へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 1. アプリケーションの一覧で **[Costpoint]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. アプリの概要ページの **[管理]** セクションで、 **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスの [ユーザー] の一覧から **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーションにロール値が必要な場合は、 **[ロールの選択]** ダイアログ ボックスでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログ ボックスで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-costpoint-test-user"></a>Costpoint テスト ユーザーの作成
 
-このセクションでは、Costpoint で B.Simon というユーザーを作成します。  [Costpoint クライアント サポート チーム](https://www.deltek.com/about/contact-us)と協力して、Costpoint プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Costpoint 内にユーザーを作成します。 **ユーザー ID** が **B.SIMON** で、名前が **B.Simon** であるとします。 [Costpoint クライアント サポート チーム](https://www.deltek.com/about/contact-us)と協力して、Costpoint プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+ 
+作成後、ユーザーの **[Authentication Method]\(認証方法\)** の選択は **Active Directory** であり、 **[SAML Single Sign-on]\(SAML シングル サインオン\)** チェック ボックスはオンであり、 **[Active Directory or Certificate ID]\(Active Directory または証明書 ID\)** は Azure Active Directory からのユーザー名である必要があります (次の図を参照)。
+
+![Costpoint ユーザー](./media/costpoint-tutorial/user01.png)
 
 ### <a name="test-sso"></a>SSO のテスト
 

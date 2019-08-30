@@ -1,0 +1,22 @@
+### YamlMime:Yaml
+ms.openlocfilehash: 8f0811dacfbedd59726fcdfe58d6a71cb02797da
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968370"
+groups:
+- id: programming-languages-set-one
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-go
+    title: Go

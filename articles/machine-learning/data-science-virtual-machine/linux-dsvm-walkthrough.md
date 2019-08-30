@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557346"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574967"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -229,6 +229,20 @@ DSVM の R セッションで、 **AzureML** パッケージを読み込み、�
 
     consume(ep, smallTestSet[1:10, ])
 
+<a name="deep-learning"></a>
+
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>ディープ ラーニングのチュートリアル
+
+フレームワーク ベースのサンプルに加えて、DLVM で検証済みの包括的なチュートリアルのセットも提供しています。 これらのチュートリアルは、イメージやテキスト/言語の理解などの分野でディープ ラーニング アプリケーションの開発をすぐに開始するのに役立ちます。 さまざまな分野とテクノロジのエンド ツー エンドのチュートリアルが引き続き追加される予定です。   
+
+
+- [さまざまなフレームワークでのニューラル ネットワークの実行](https://github.com/ilkarman/DeepLearningFrameworks): あるフレームワークから別のフレームワークにコードを移行する方法を示す包括的なチュートリアルです。 フレームワーク間でモデルと実行時のパフォーマンスを比較する方法も示します。 
+
+- [イメージ内で製品を検出するエンド ツー エンド ソリューションを構築するための攻略ガイド](https://github.com/Azure/cortana-intelligence-product-detection-from-images): イメージ検出は、イメージ内のオブジェクトを特定して分類する手法です。 このテクノロジには、多くの実際のビジネス ドメインに大きなメリットをもたらす可能性があります。 たとえば、小売り業者は、この手法を使用して、顧客が棚から選ぶ製品を判断できます。 この情報は、店舗が製品在庫を管理するのに役立ちます。 
+
+- [音声の深層学習](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) このチュートリアルでは、[都市音声データセット](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)で発生する音声イベントを検出するための深層学習モデルの教育方法と、音声データの操作方法の概要について説明します。
+
+- [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルでは、2 つの異なるニューラル ネットワーク アーキテクチャを構築してトレーニングする方法を示します。Hierarchical Attention Network と Long Short Term Memory (LSTM) ネットワークです。 これらのニューラル ネットワークでは、ディープ ラーニング用の Keras API を使用して、テキスト ドキュメントを分類します。 Keras は、最も普及している 3 つのディープ ラーニング フレームワーク (Microsoft Cognitive Toolkit、TensorFlow、および Theano) のフロントエンドです。
 
 ## <a name="use-other-tools-available"></a>利用できるその他のツールを使用する
 残りのセクションでは、Linux データ サイエンス VM にインストールされているツールの一部について、その使用方法を示します。次に説明するツールの一覧を示します。

@@ -11,21 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2019
+ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 389d467bd9672743d4a086e8a1c505fb0366dba7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d08105e78274300eb7ee0a8c0ad146a737d0ffa
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237116"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644948"
 ---
-# <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services のラボで Linux 仮想マシン向けリモート デスクトップを有効にして使用する
+# <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする
 この記事では、次のタスクの手順について説明します。
 
 - Linux VM のリモート デスクトップを有効にする
 - 教師がリモート デスクトップ接続 (RDP) 経由でテンプレート VM に接続する
-- 学生が RDP 経由で学生用 VM に接続する
 
 ## <a name="enable-remote-desktop-for-linux-vm"></a>Linux VM のリモート デスクトップを有効にする
 教師はラボの作成時に **Linux** イメージの**リモート デスクトップ接続**を有効にすることができます。 テンプレートに対して Linux イメージが選択されていると、 **[Enable Remote Desktop Connection]\(リモート デスクトップ接続を有効にする\)** オプションが表示されます。 このオプションが有効になっていると、教師が RDP (リモート デスクトップ) を介してテンプレート VM と学生用 VM に接続することができます。 
@@ -67,15 +66,6 @@ SSH または RDP を使用した VM への接続の詳細については、[SSH
 
 SSH または RDP を使用した VM への接続の詳細については、[SSH または RDP を使用して接続する](#connect-using-ssh-or-rdp) を参照してください。 
 
-## <a name="students-connecting-to-the-student-vm"></a>学生が学生用 VM に接続する
-ラボ所有者 (教師/教授) がマシンにインストールされた RDP と GUI のパッケージを使用してテンプレート VM を**発行**すると、学生が学生の Linux VM にリモート デスクトップ接続できるようになります。 手順は次のようになります。 
-
-1. 学生がラボのポータルに直接 (`https://labs.azure.com`)、または登録リンク (`https://labs.azure.com/register/<registrationCode>`) を使用してサインインすると、学生がアクセスできる各ラボのタイルが表示されます。 
-2. タイル上で、VM が停止している場合は **[開始]** を選択します。 
-3. **[接続]** を選択します。 VM に接続するための 2 つのオプションが表示されます。**SSH** と**リモート デスクトップ**。
-
-    ![学生用 VM - 接続オプション](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
-
 ## <a name="connect-using-ssh-or-rdp"></a>SSH または RDP を使用して接続する
 **[SSH]** オプションを選択した場合は、次の **[仮想マシンに接続する]** ダイアログ ボックスが表示されます。  
 
@@ -86,10 +76,4 @@ SSH または RDP を使用した VM への接続の詳細については、[SSH
 **[RDP]** オプションを選択した場合は、RDP ファイルがお使いのコンピューターにダウンロードされます。 それを保存してから開いて、マシンに接続します。 
 
 ## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
-
-- [管理者としてラボ アカウントを作成および管理する](how-to-manage-lab-accounts.md)
-- [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)
-- [ラボ所有者としてテンプレートを設定および発行する](how-to-create-manage-template.md)
-- [ラボ ユーザーとしてクラスルーム ラボにアクセスする](how-to-use-classroom-lab.md)
-
+リモート デスクトップ接続機能をインストラクターが有効にした後で、学生が RDP と SSH 経由でその VM に接続することはできません。 詳細については、[クラスルーム ラボの Linux VM でリモート デスクトップを使用する方法](how-to-use-remote-desktop-linux-student.md)に関するページを参照してください。 

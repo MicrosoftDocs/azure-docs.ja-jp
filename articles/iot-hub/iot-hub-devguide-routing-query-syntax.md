@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400645"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877072"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -57,6 +57,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
 | iothub-connection-device-id | string | この値は IoT Hub によって設定され、デバイスの ID を示します。 クエリを実行するには、`$connectionDeviceId` を使用します。 |
 | iothub-enqueuedtime | string | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
+| iothub-interface-name | string | この値はユーザーによって設定され、テレメトリ メッセージを実装するデジタル ツイン インターフェイスの名前を表します。 クエリを実行するには、`$interfaceName` を使用します。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 |
 
 [IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 **contentType**、**contentEncoding**、**enqueuedTime** に加えて、**connectionDeviceId** と **connectionModuleId** に対してもクエリを実行できます。
 
@@ -86,7 +87,7 @@ processingPath = 'hot'
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-サポートされている演算子と関数の完全な一覧については、[式と条件](iot-hub-devguide-query-language.md#expressions-and-conditions)に関するページを参照してください。
+サポートされている演算子と関数の完全な一覧については、「[式と条件](iot-hub-devguide-query-language.md#expressions-and-conditions)」を参照してください。
 
 ## <a name="message-routing-query-based-on-message-body"></a>メッセージ本文に基づいたメッセージ ルーティング クエリ 
 
@@ -163,7 +164,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>デバイス ツインに基づいたメッセージ ルーティング クエリ 
 
-メッセージ ルーティングでは、JSON オブジェクトである[デバイス ツイン](iot-hub-devguide-device-twins.md)のタグとプロパティに基づいてクエリを実行できます。 モジュール ツインに基づいたクエリ実行はサポートされていないことに注意してください。 デバイス ツインのタグとプロパティのサンプルを以下に示します。
+メッセージ ルーティングでは、JSON オブジェクトである[デバイス ツイン](iot-hub-devguide-device-twins.md)のタグとプロパティに基づいてクエリを実行できます。 モジュール ツインでのクエリ実行はサポートされていません。 デバイス ツインのタグとプロパティのサンプルを以下に示します。
 
 ```JSON
 {

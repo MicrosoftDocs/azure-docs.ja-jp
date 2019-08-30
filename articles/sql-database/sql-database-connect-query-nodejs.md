@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 4a99acaaae0c0efee61d97605a81d74549e02509
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569196"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947094"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>クイック スタート:Node.js を使用して Azure SQL データベースに照会する
 
@@ -62,7 +62,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
-コマンド プロンプトを開き、*sqltest* という名前のフォルダーを作成します。 作成したフォルダに移動し、次のコマンドを実行します。
+コマンド プロンプトを開き、*sqltest* という名前のフォルダーを作成します。 作成したフォルダーを開き、次のコマンドを実行します。
 
   ```bash
   npm init -y

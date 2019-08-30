@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 958f82ef94a08adaf2bbae1ef8ceefae5db289ea
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608196"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780791"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure の管理サービスの概要
 
@@ -40,7 +40,7 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 ## <a name="govern"></a>ガバナンス
 
 ガバナンスは、Azure のアプリケーションとリソースに対するコントロールを維持するメカニズムとプロセスを提供します。 これには、イニシアチブの計画と戦略的な優先順位の設定が含まれます。
-Azure におけるガバナンスは、主に 2 つのサービスで実装されます。 [Azure Policy](./policy/overview.md) を使用すると、ポリシーの定義を作成、割り当て、および管理して、お使いのリソースに規則を適用できます。 この機能によって、リソースを継続的に企業の標準に準拠させることができます。 [Azure Cost Management by Cloudyn](../cost-management/overview.md) では、クラウドの使用状況と、Azure リソースおよび他のクラウド プロバイダーに対する支出を追跡することができます。
+Azure におけるガバナンスは、主に 2 つのサービスで実装されます。 [Azure Policy](./policy/overview.md) を使用すると、ポリシーの定義を作成、割り当て、および管理して、お使いのリソースに規則を適用できます。 この機能によって、リソースを継続的に企業の標準に準拠させることができます。 [Azure Cost Management](../cost-management/overview-cost-mgt.md) では、クラウドの使用状況と、Azure リソースおよび他のクラウド プロバイダーに対する支出を追跡することができます。
 
 ## <a name="secure"></a>セキュリティ保護
 

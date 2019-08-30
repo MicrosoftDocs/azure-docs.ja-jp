@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 0507b3cb64b4b12bac92cc6bc90120ab4ec56dee
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5dd241fed757669cf8bccd96a1de948e8d73a021
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568740"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033266"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに Azure SQL Database エラスティック プールを追加する
 
@@ -76,11 +76,11 @@ Azure SQL Database エラスティック プールのフェールオーバー �
 1. **[SQL サーバー]** を選択し、セクション 1 で作成したサーバーを選択します。
 1. **[設定]** ウィンドウで **[フェールオーバー グループ]** を選択し、 **[グループの追加]** を選択して新しいフェールオーバー グループを作成します。 
 
-    ![新しいフェールオーバー グループの追加](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![新しいフェールオーバー グループの追加](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. **[フェールオーバー グループ]** ページで、次の値を入力するか選択してから、 **[作成]** を選択します。
     - **フェールオーバー グループ名**:一意のフェールオーバー グループ名 (`failovergrouptutorial` など) を入力します。 
-    - **セカンダリ サーバー**:*必要な設定を構成*するオプションを選択してから、 **[新しいサーバーの作成]** を選択します。 または、既に存在しているサーバーをセカンダリ サーバーとして選択することもできます。 次の値を入力したら、 **[選択]** を選択します。 
+    - **セカンダリ サーバー**:*必要な設定を構成*するオプションを選択してから、 **[新しいサーバーの作成]** を選択します。 または、既に存在しているサーバーをセカンダリ サーバーとして選択することもできます。 新しいセカンダリ サーバーに対して次の値を入力した後、 **[選択]** を選択します。 
         - **サーバー名**: セカンダリ サーバーの一意の名前 (`mysqlsecondary` など) を入力します。 
         - **サーバー管理者ログイン**:「`azureuser`」と入力します
         - **Password**:パスワードの要件を満たす複雑なパスワードを入力します。
@@ -91,9 +91,9 @@ Azure SQL Database エラスティック プールのフェールオーバー �
     
        ![フェールオーバー グループのセカンダリ サーバーを作成する](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
 
-1. セカンダリ サーバーが選択されると、 **[Databases within the group]\(グループ内のデータベース\)** オプションのロックが解除されます。 これを **[追加するデータベースを選択]** に選択してから、セクション 2 で作成したエラスティック プールを選択します。 セカンダリ サーバー上にエラスティック プールを作成するよう求める警告が表示されます。 警告を選択し、 **[OK]** を選択して、セカンダリ サーバー上にエラスティック プールを作成します。 
+1. **[グループ内のデータベース]** を選択してから、セクション 2 で作成したエラスティック プールを選択します。 セカンダリ サーバー上にエラスティック プールを作成するよう求める警告が表示されます。 警告を選択し、 **[OK]** を選択して、セカンダリ サーバー上にエラスティック プールを作成します。 
         
-    ![フェールオーバー グループへの SQL DB の追加](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![エラスティック プールをフェールオーバー グループに追加する](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
 1. **[選択]** を選択してエラスティック プール設定をフェールオーバー グループに適用した後、 **[作成]** を選択してフェールオーバー グループを作成します。 フェールオーバー グループにエラスティック プールを追加すると、geo レプリケーション プロセスが自動的に開始されます。 
 

@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/12/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 089334d32ca54035abfbf59446366ecbe3378c15
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 791017fffe96455157388fb43e0c1d65faba8933
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919758"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071535"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure でのカスタム Windows コンテナーの実行 (プレビュー)
 
@@ -35,20 +34,20 @@ ms.locfileid: "64919758"
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows をインストールする</a>。
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
 - **ASP.NET と Web 開発**ワークロードと **Azure の開発**ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 をインストールする</a>。 Visual Studio 2017 を既にインストールしている場合:
-    - **[ヘルプ]** > **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
-    - **[ツール]** > **[ツールと機能を取得]** の順にクリックし、Visual Studio にワークロードを追加します。
+    - **[ヘルプ]**  >  **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
+    - **[ツール]**  >  **[ツールと機能を取得]** の順にクリックし、Visual Studio にワークロードを追加します。
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
-Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして、プロジェクトを作成します。 
+Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして、プロジェクトを作成します。 
 
-**[新しいプロジェクト]** ダイアログで、**[Visual C#]、[Web]、[ASP.NET Web アプリケーション (.NET Framework)]** の順にクリックします。
+**[新しいプロジェクト]** ダイアログで、 **[Visual C#]、[Web]、[ASP.NET Web アプリケーション (.NET Framework)]** の順にクリックします。
 
-アプリケーションに _myFirstAzureWebApp_ という名前を付けて、**[OK]** をクリックします。
+アプリケーションに _myFirstAzureWebApp_ という名前を付けて、 **[OK]** をクリックします。
    
 ![New Project dialog box](./media/app-service-web-get-started-windows-container/new-project.png)
 
-任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、**[MVC]** テンプレートを選択し、認証が **[認証なし]** に設定されていることを確認してください。
+任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、 **[MVC]** テンプレートを選択し、認証が **[認証なし]** に設定されていることを確認してください。
 
 **[Docker Compose サポートを有効にする]** を選択します
 
@@ -64,21 +63,21 @@ _Dockerfile_ ファイルが自動的に開かない場合は、**ソリュー�
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
-メニューから、**[デバッグ]、[デバッグなしで開始]** の順にクリックし、ローカルで Web アプリを実行します。
+メニューから、 **[デバッグ]、[デバッグなしで開始]** の順にクリックし、ローカルで Web アプリを実行します。
 
 ![アプリをローカルで実行する](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
 ## <a name="publish-to-docker-hub"></a>Docker Hub に発行する
 
-**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、**[発行]** を選択します。
+**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
 ![ソリューション エクスプローラーから発行する](./media/app-service-web-get-started-windows-container/solution-explorer-publish.png)
 
-発行ウィザードが自動的に起動します。 **[Container Registry]** > **[Docker Hub]** > **[発行]** を選択します。
+発行ウィザードが自動的に起動します。 **[Container Registry]**  >  **[Docker Hub]**  >  **[発行]** を選択します。
 
 ![プロジェクトの概要ページから発行する](./media/app-service-web-get-started-windows-container/publish-to-docker.png)
 
-Docker Hub アカウントの資格情報を指定し、**[保存]** をクリックします。 
+Docker Hub アカウントの資格情報を指定し、 **[保存]** をクリックします。 
 
 デプロイが完了するまで待ちます。 **[発行]** ページに、後で App Service で使用するリポジトリ名が表示されるようになります。
 
@@ -94,17 +93,17 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
-2. Azure Marketplace リソース一覧の上にある検索ボックスで、**[Web App for Containers]** を検索して選択します。
+2. Azure Marketplace リソース一覧の上にある検索ボックスで、 **[Web App for Containers]** を検索して選択します。
 
-3. アプリ名 (*win-container-demo* など) を入力し、既定値のまま新しいリソース グループを作成して、**[OS]** ボックスの **[Windows (プレビュー)]** をクリックします。
+3. アプリ名 (*win-container-demo* など) を入力し、既定値のまま新しいリソース グループを作成して、 **[OS]** ボックスの **[Windows (プレビュー)]** をクリックします。
 
     ![](media/app-service-web-get-started-windows-container/portal-create-page.png)
 
-4. **[App Service プラン/場所]** > **[新規作成]** の順にクリックして App Service プランを作成します。 新しいプランに名前を付け、既定値のまま **[OK]** をクリックします。
+4. **[App Service プラン/場所]**  >  **[新規作成]** の順にクリックして App Service プランを作成します。 新しいプランに名前を付け、既定値のまま **[OK]** をクリックします。
 
     ![](media/app-service-web-get-started-windows-container/portal-create-plan.png)
 
-5. **[コンテナーの構成]** をクリックします。 **[イメージとオプションのタグ]** では「[Docker Hub に発行する](#publish-to-docker-hub)」でコピーしたリポジトリ名を使用し、**[OK]** をクリックします。
+5. **[コンテナーの構成]** をクリックします。 **[イメージとオプションのタグ]** では「[Docker Hub に発行する](#publish-to-docker-hub)」でコピーしたリポジトリ名を使用し、 **[OK]** をクリックします。
 
     ![](media/app-service-web-get-started-windows-container/portal-configure-container-vs.png)
 
@@ -120,7 +119,7 @@ Azure の処理が完了すると、通知ボックスが表示されます。
 
 1. **[リソースに移動]** をクリックします。
 
-2. アプリ ページで、**[URL]** の下にあるリンクをクリックします。
+2. アプリ ページで、 **[URL]** の下にあるリンクをクリックします。
 
 新しいブラウザー ページが開いて次のページが表示されます。
 
@@ -134,7 +133,7 @@ Azure の処理が完了すると、通知ボックスが表示されます。
 
 ## <a name="see-container-start-up-logs"></a>コンテナーの起動ログの表示
 
-Windows コンテナーが読み込まれるまでにしばらく時間がかかる場合があります。 進行状況を確認するには、*\<app_name>* をアプリの名前に置き換えて次の URL に移動します。
+Windows コンテナーが読み込まれるまでにしばらく時間がかかる場合があります。 進行状況を確認するには、 *\<app_name>* をアプリの名前に置き換えて次の URL に移動します。
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```
@@ -162,11 +161,11 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 </div>
 ```
 
-Azure に再デプロイするには、**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、**[発行]** を選択します。
+Azure に再デプロイするには、**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
 発行ページで **[発行]** を選択し、発行が完了するまで待ちます。
 
-App Service に Docker Hub から新しいイメージをプルするよう指示するには、アプリを再起動します。 ポータルでアプリ ページに戻り、**[再起動]** > **[はい]** をクリックします。
+App Service に Docker Hub から新しいイメージをプルするよう指示するには、アプリを再起動します。 ポータルでアプリ ページに戻り、 **[再起動]**  >  **[はい]** をクリックします。
 
 ![Azure で Web アプリを再起動する](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 

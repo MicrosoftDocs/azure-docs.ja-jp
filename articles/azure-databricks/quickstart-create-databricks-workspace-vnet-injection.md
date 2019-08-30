@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
     |Setting|推奨値|説明|
     |-------|---------------|-----------|
-    |EnableAdfsAuthentication|databricks-quickstart|仮想ネットワークの名前を選択します。|
+    |Name|databricks-quickstart|仮想ネットワークの名前を選択します。|
     |アドレス空間|10.1.0.0/16|CIDR 表記の仮想ネットワークのアドレス範囲。|
     |Subscription|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
     |Resource group|databricks-quickstart|**[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。|

@@ -60,7 +60,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - インデックス状態の変更: 
     - プロパティ:    
     
-        |EnableAdfsAuthentication|説明|
+        |名前|説明|
         |---|---|
         |id|ビデオ ID|
         |state|ビデオの状態|  
@@ -68,7 +68,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - ビデオで特定された人物:
   - properties
     
-      |EnableAdfsAuthentication|説明|
+      |名前|説明|
       |---|---|
       |id| ビデオ ID|
       |faceId|ビデオ インデックスに表示される顔 ID|

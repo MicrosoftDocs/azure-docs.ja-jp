@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: de13518173f21a0a802c37eb7be3cd6c4926d884
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ffc245402965cdcd62bb210d79bd95db5444f964
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689206"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954623"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -212,7 +212,7 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
 - すべてのソリューションについて、アドホック バックアップ ジョブと復元ジョブは、"*終了*" するとすぐにプッシュされます。
 - すべてのソリューション (SQL バックアップ以外) について、スケジュール済みバックアップ ジョブは、"*終了*" するとすぐにプッシュされます。
 - SQL バックアップでは、15 分ごとにログ バックアップを行うことができるため、完了したすべてのスケジュール済みバックアップ ジョブの情報は、ログも含めて 6 時間ごとにバッチ処理されてプッシュされます。
-- すべてのソリューションについて、バックアップ項目、ポリシー、復旧ポイント、ストレージなどのその他の情報は、少なくとも "*1 日 1 回*" プッシュされます。
+- すべてのソリューションにわたって、バックアップ項目、ポリシー、復旧ポイント、ストレージなどのその他の情報は、少なくとも "*1 日 1 回*" プッシュされます。
 - バックアップ構成を変更すると (ポリシーの変更や編集など)、関連するすべてのバックアップ情報のプッシュがトリガーされます。
 
 ## <a name="using-the-recovery-services-vaults-activity-logs"></a>Recovery Services コンテナーのアクティビティ ログを使用する
@@ -238,7 +238,7 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
 
    ![新しいアラート ルール](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-ここで、リソースは Recovery Services コンテナー自体です。 アクティビティ ログを使用して通知を受け取るすべてのコンテナーに対して同じ手順を繰り返す必要があります。 このアラートはイベントに基づいているため、この条件にしきい値、期間、または頻度は設定されません。 関連するアクティビティ ログが生成されるとすぐに、アラートが発生します。
+ここで、リソースは Recovery Services コンテナー自体です。 アクティビティ ログを使用して通知を受け取るすべてのコンテナーに対して同じ手順を繰り返します。 このアラートはイベントに基づいているため、この条件にしきい値、期間、または頻度は設定されません。 関連するアクティビティ ログが生成されるとすぐに、アラートが発生します。
 
 ## <a name="using-log-analytics-to-monitor-at-scale"></a>Log Analytics を使用した Azure Backup の大規模な監視
 

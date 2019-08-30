@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: d9cc5da0cd2936c1ac79a308366b8164548cb202
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241719"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072458"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management でユーザー アカウントを管理する方法
 
@@ -43,7 +42,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
     ![新しいユーザーの追加](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-既定では、新しく作成された開発者アカウントは**アクティブ**になり、**開発者**グループに関連付けられます。 **[アクティブ]** 状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。 新しく作成した開発者を追加のグループに関連付ける方法については、「[グループと開発者の関連付け][How to associate groups with developers]」を参照してください。
+既定では、新しく作成された開発者アカウントは**アクティブ**になり、**開発者**グループに関連付けられます。 **[アクティブ]** 状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。 新しく作成した開発者を追加のグループに関連付ける方法については、「 [グループと開発者の関連付け][How to associate groups with developers]」を参照してください。
 
 ## <a name="invite-developer"> </a>開発者の招待
 開発者を招待するには、このセクションの手順に従います。
@@ -53,7 +52,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 確認メッセージが表示されます。ただし、新しく招待した開発者は、招待を受け入れるまで一覧に表示されません。 
 
-開発者を招待すると、招待された開発者に電子メールが送信されます。 この電子メールはテンプレートを使用して生成され、カスタマイズできます。 詳細については、「[電子メール テンプレートの構成][Configure email templates]」を参照してください。
+開発者を招待すると、招待された開発者に電子メールが送信されます。 この電子メールはテンプレートを使用して生成され、カスタマイズできます。 詳細については、「 [電子メール テンプレートの構成][Configure email templates]」を参照してください。
 
 招待が受け入れられると、そのアカウントがアクティブになります。
 
@@ -72,7 +71,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 プログラムによってユーザー アカウントを操作するには、「[API Management REST API](/rest/api/apimanagement/)」リファレンスのユーザー エンティティに関するドキュメントを参照してください。 ユーザー アカウントのパスワードを特定の値にリセットするには、 [ユーザーの更新](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) 操作を使用して目的のパスワードを指定します。
 
 ## <a name="next-steps"> </a>次のステップ
-開発者アカウントを作成した後は、このアカウントをロールに関連付け、成果物と API をサブスクライブできます。 詳細については、[グループを作成して使用する方法][How to create and use groups]に関するページを参照してください。
+開発者アカウントを作成した後は、このアカウントをロールに関連付け、成果物と API をサブスクライブできます。 詳細については、「 [How to create and use groups (グループを作成して使用する方法)][How to create and use groups]」をご覧ください。
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

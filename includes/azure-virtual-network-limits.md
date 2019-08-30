@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 1fd08efd12e723a16445eba1d341f017a86a212e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68481488"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69903878"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -78,7 +78,7 @@ ms.locfileid: "68481488"
 | Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | 仮想ネットワーク |100 |100 |
-| ローカル ネットワーク サイト |20 |サポートにお問い合せください。 |
+| ローカル ネットワーク サイト |20 |50 |
 | 仮想ネットワークあたりの DNS サーバー数 |20 |20 |
 | 仮想ネットワークごとのプライベート IP アドレス |4,096 |4,096 |
 | 仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数 |2 つ以上の NIC で 500,000 (最大 1,000,000)。 |2 つ以上の NIC で 500,000 (最大 1,000,000)。 |

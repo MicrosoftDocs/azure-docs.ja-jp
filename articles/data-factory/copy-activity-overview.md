@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150861"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614255"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -27,13 +27,13 @@ ms.locfileid: "65150861"
 > * [Version 1](v1/data-factory-data-movement-activities.md)
 > * [現在のバージョン](copy-activity-overview.md)
 
-Azure Data Factory では、コピー アクティビティを使用して、オンプレミスにあるデータ ストアやクラウド内のデータ ストアの間でデータをコピーできます。 コピーされたデータをさらに変換して分析することができます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
+Azure Data Factory では、コピー アクティビティを使用して、オンプレミスにあるデータ ストアやクラウド内のデータ ストアの間でデータをコピーできます。 データをコピーした後、他のアクティビティを使用してそれをさらに変換して分析することができます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
 
 ![コピー アクティビティの役割](media/copy-activity-overview/copy-activity.png)
 
 コピー アクティビティは、[統合ランタイム](concepts-integration-runtime.md)で実行されます。 異なるデータ コピーのシナリオでは、別の種類の統合ランタイムを利用できます。
 
-* どちらもパブリックにアクセス可能なデータ ストア間でデータをコピーする場合は、セキュリティ保護され、信頼性が高く、スケーラブルで、かつ[グローバルに使用可能な](concepts-integration-runtime.md#integration-runtime-location) **Azure 統合ランタイム**でコピー アクティビティを機能強化できます。
+* どちらも任意の IP アドレスからインターネット経由でパブリックにアクセス可能なデータ ストア間でデータをコピーする場合は、セキュリティ保護され、信頼性が高く、スケーラブルで、かつ[グローバルに使用可能な](concepts-integration-runtime.md#integration-runtime-location) **Azure Integration Runtime** で、コピー アクティビティを機能強化できます。
 * オンプレミスにあるデータ ストアや、アクセス制御が設定されたネットワーク (Azure Virtual Network など) 内のデータ ストアの間でデータをコピーする場合は、データ コピーを機能強化するために**自己ホスト型統合ランタイム**を設定する必要があります。
 
 統合ランタイムを各ソースおよびシンク データ ストアに関連付ける必要があります。 コピー アクティビティが、[使用する IR を決定する](concepts-integration-runtime.md#determining-which-ir-to-use)方法について詳細を学習してください。
@@ -144,7 +144,7 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 ## <a name="monitoring"></a>監視
 
-Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI またはプログラムで、コピー アクティビティの実行を監視できます。 その後、お客様のシナリオのパフォーマンスと構成を、社内テストから得られたコピー アクティビティの[パフォーマンス リファレンス](copy-activity-performance.md#performance-reference)と比較できます。
+Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI またはプログラムで、コピー アクティビティの実行を監視できます。
 
 ### <a name="monitor-visually"></a>視覚的な監視
 
@@ -177,11 +177,13 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 | dataWritten | シンクに書き込まれたデータ サイズ | Int64 値 **(バイト数)** |
 | filesRead | ファイル ストレージからデータをコピーするときに、コピーされるファイルの数。 | Int64 値 (単位なし) |
 | filesWritten | ファイル ストレージにデータをコピーするときに、コピーされるファイルの数。 | Int64 値 (単位なし) |
+| sourcePeakConnections | コピー アクティビティの実行中にソース データ ストアに対して確立されたコンカレント接続の最大数。 | Int64 値 (単位なし) |
+| sinkPeakConnections | コピー アクティビティの実行中にシンク データ ストアに対して確立されたコンカレント接続の最大数。 | Int64 値 (単位なし) |
 | rowsRead | ソースから読み取られる行数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
 | rowsCopied | シンクにコピーされる行数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
 | rowsSkipped | スキップされた互換性のない行の数。 この機能は、"enableSkipIncompatibleRow" を true に設定することによって有効にできます。 | Int64 値 (単位なし) |
-| throughput | データが転送される速度。 | 浮動小数点数 **(KB/秒)** |
 | copyDuration | コピーの持続期間。 | Int32 値 (秒数) |
+| throughput | データが転送される速度。 | 浮動小数点数 **(KB/秒)** |
 | sourcePeakConnections | コピー中にソース データ ストアで確立されたコンカレント接続のピーク数。 | Int32 値 |
 | sinkPeakConnections| コピー中にシンク データ ストアで確立されたコンカレント接続のピーク数。| Int32 値 |
 | sqlDwPolyBase | SQL Data Warehouse にデータをコピーするときに PolyBase が使用される場合。 | Boolean |
@@ -189,39 +191,51 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 | hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | Boolean |
 | effectiveIntegrationRuntime | アクティビティの実行を機能強化するために、どの統合ランタイムが使用されるかを `<IR name> (<region if it's Azure IR>)` の形式で示します。 | Text (文字列) |
 | usedDataIntegrationUnits | コピーの間に有効なデータ統合単位。 | Int32 値 |
-| usedParallelCopies | コピー中の効率的な parallelCopies。 | Int32 値|
+| usedParallelCopies | コピー中の効率的な parallelCopies。 | Int32 値 |
 | redirectRowPath | "redirectIncompatibleRowSettings" で構成した、BLOB ストレージ内のスキップされた互換性のない行のログのパス。 下の例を参照してください。 | Text (文字列) |
-| executionDetails | コピー アクティビティが処理される際の段階の詳細、対応するステップ、期間、使用される構成など。このセクションは変更される場合があるため、解析はお勧めしません。 | Array |
+| executionDetails | コピー アクティビティが処理される際の段階の詳細、対応するステップ、期間、使用される構成など。このセクションは変更される場合があるため、解析はお勧めしません。<br/><br/>ADF の `detailedDurations` では、それぞれの手順で費やされた詳細な時間 (秒) も報告されます。 これらの手順の継続時間は限定的であり、特定のコピー アクティビティの実行に適用された時間だけが表示されます。<br/>- **キュー時間** (`queuingDuration`):コピー アクティビティが統合ランタイムで実際に開始されるまでの経過時間。 セルフホステッド IR を使用していて、この値が大きい場合は、IR の容量と使用量を確認し、ワークロードに応じてスケールアップ/スケールアウトすることをお勧めします。 <br/>- **コピー前スクリプト時間** (`preCopyScriptDuration`):コピー アクティビティが IR で開始してから、コピー アクティビティによるシンク データ ストアでのコピー前スクリプトの実行が終了するまでの経過時間。 コピー前スクリプトを構成したときに適用されます。 <br/>- **最初のバイトまでの時間** (`timeToFirstByte`):前のステップが終了してから、IR がソース データ ストアから最初のバイトを受信するまでの経過時間。 ファイル ベース以外のソースに適用されます。 この値が大きい場合は、クエリまたはサーバーを確認して最適化することをお勧めします。<br/>- **転送時間** (`transferDuration`):前のステップが終了してから、IR がソースからシンクにすべてのデータを転送するまでの経過時間。 | Array |
+| perfRecommendation | コピー パフォーマンスのチューニングのヒント。 詳しくは、「[パフォーマンスとチューニング](#performance-and-tuning)」のセクションを参照してください。 | Array |
 
 ```json
 "output": {
-    "dataRead": 107280845500,
-    "dataWritten": 107280845500,
-    "filesRead": 10,
-    "filesWritten": 10,
-    "copyDuration": 224,
-    "throughput": 467707.344,
+    "dataRead": 6198358,
+    "dataWritten": 19169324,
+    "filesRead": 1,
+    "sourcePeakConnections": 1,
+    "sinkPeakConnections": 2,
+    "rowsRead": 39614,
+    "rowsCopied": 39614,
+    "copyDuration": 1325,
+    "throughput": 4.568,
     "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
-    "usedDataIntegrationUnits": 32,
-    "usedParallelCopies": 8,
+    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
+    "usedDataIntegrationUnits": 4,
+    "usedParallelCopies": 1,
     "executionDetails": [
         {
             "source": {
-                "type": "AmazonS3"
+                "type": "AzureBlobStorage"
             },
             "sink": {
-                "type": "AzureDataLakeStore"
+                "type": "AzureSqlDatabase"
             },
             "status": "Succeeded",
-            "start": "2018-01-17T15:13:00.3515165Z",
-            "duration": 221,
-            "usedDataIntegrationUnits": 32,
-            "usedParallelCopies": 8,
+            "start": "2019-08-06T01:01:36.7778286Z",
+            "duration": 1325,
+            "usedDataIntegrationUnits": 4,
+            "usedParallelCopies": 1,
             "detailedDurations": {
                 "queuingDuration": 2,
-                "transferDuration": 219
+                "preCopyScriptDuration": 12,
+                "transferDuration": 1311
             }
+        }
+    ],
+    "perfRecommendation": [
+        {
+            "Tip": "Sink Azure SQL Database: The DTU utilization was high during the copy activity run. To achieve better performance, you are suggested to scale the database to a higher tier than the current 1600 DTUs.",
+            "ReferUrl": "https://go.microsoft.com/fwlink/?linkid=2043368",
+            "RuleName": "AzureDBTierUpgradePerfRecommendRule"
         }
     ]
 }
@@ -248,7 +262,7 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 ![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>増分コピー
-Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。
+Data Factory では、ソース データ ストアからシンク データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。
 
 ## <a name="read-and-write-partitioned-data"></a>パーティション分割されたデータの読み取りおよび書き込み
 Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 現在のバージョンでは、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関するページをご覧ください。

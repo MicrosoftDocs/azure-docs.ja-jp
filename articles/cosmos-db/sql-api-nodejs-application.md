@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/10/2018
+ms.date: 08/06/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: efe24f5203c0479c71b565b8cf2c272dc107a96b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0f410e06e1f5b9ae3b5319c4ff63f9632a2159dc
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088113"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989444"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル: JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 
@@ -28,7 +28,7 @@ ms.locfileid: "58088113"
 
 お客様は開発者として、NoSQL ドキュメント データが使用されるアプリケーションをお持ちかもしれません。 Azure Cosmos DB の SQL API アカウントを使用して、このドキュメント データを格納し、それにアクセスできます。 この Node.js チュートリアルでは、Microsoft Azure App Service の Web Apps 機能にホストされている Node.js Express アプリケーションを使用して、Azure Cosmos DB の SQL API アカウントからデータを格納する方法やデータにアクセスする方法を示します。 このチュートリアルでは、タスクの作成、取得、および完了を行える Web ベースのアプリケーション (Todo アプリ) を構築します。 タスクは、JSON ドキュメントとして Azure Cosmos DB に保存するものとします。 
 
-このチュートリアルでは、Azure portal を使用して Azure Cosmos DB の SQL API アカウントを作成する方法を示します。 その後、Node.js SDK に基づく Web アプリを構築および実行して、データベースとコンテナーを作成し、コンテナーに項目を追加します。 このチュートリアルでは、JavaScript SDK のバージョン 2.0 を使用します。
+このチュートリアルでは、Azure portal を使用して Azure Cosmos DB の SQL API アカウントを作成する方法を示します。 その後、Node.js SDK に基づく Web アプリを構築および実行して、データベースとコンテナーを作成し、コンテナーに項目を追加します。 このチュートリアルでは、JavaScript SDK のバージョン 3.0 を使用します。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -87,19 +87,13 @@ ms.locfileid: "58088113"
    
    ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
-   ターミナル ウィンドウで Ctrl キーを押しながら C キーを押してアプリケーションを停止し、**[y]** を選択してバッチ ジョブを終了します。
+   ターミナル ウィンドウで Ctrl キーを押しながら C キーを押してアプリケーションを停止し、 **[y]** を選択してバッチ ジョブを終了します。
 
 ## <a name="_Toc395783179"></a>必須のモジュールをインストールする
 
 **package.json** ファイルは、プロジェクトのルートに作成されるファイルの 1 つです。 このファイルには、Node.js アプリケーションで必要な追加モジュールのリストが含まれます。 このファイルは、このアプリケーションを Azure にデプロイするときに、アプリケーションをサポートするために Azure にインストールする必要があるモジュールを判断するために使用されます。 このチュートリアルのために、さらに 2 つのパッケージをインストールします。
 
-1. ターミナルを開き、npm を使用して **async** モジュールをインストールします。
-
-   ```bash
-   npm install async --save
-   ```
-
-2. npm を使用して **\@azure/cosmos** モジュールをインストールします。 
+1. npm を使用して **\@azure/cosmos** モジュールをインストールします。 
 
    ```bash
    npm install @azure/cosmos
@@ -116,76 +110,79 @@ ms.locfileid: "58088113"
 3. 次のコードを **taskDao.js** ファイルにコピーします。
 
    ```javascript
-   // @ts-check
-   const CosmosClient = require("@azure/cosmos").CosmosClient;
-   const debug = require("debug")("todo:taskDao");
-   class TaskDao {
-     /**
-      * Manages reading, adding, and updating Tasks in Cosmos DB
-      * @param {CosmosClient} cosmosClient
-      * @param {string} databaseId
-      * @param {string} containerId
-      */
-     constructor(cosmosClient, databaseId, containerId) {
-       this.client = cosmosClient;
-       this.databaseId = databaseId;
-       this.collectionId = containerId;
+    // @ts-check
+    const CosmosClient = require('@azure/cosmos').CosmosClient
+    const debug = require('debug')('todo:taskDao')
 
-       this.database = null;
-       this.container = null;
-     }
+    // For simplicity we'll set a constant partition key
+    const partitionKey = '0'
+    class TaskDao {
+      /**
+       * Manages reading, adding, and updating Tasks in Cosmos DB
+       * @param {CosmosClient} cosmosClient
+       * @param {string} databaseId
+       * @param {string} containerId
+       */
+      constructor(cosmosClient, databaseId, containerId) {
+        this.client = cosmosClient
+        this.databaseId = databaseId
+        this.collectionId = containerId
 
-     async init() {
-       debug("Setting up the database...");
-       const dbResponse = await this.client.databases.createIfNotExists({
-         id: this.databaseId
-       });
-       this.database = dbResponse.database;
-       debug("Setting up the database...done!");
-       debug("Setting up the container...");
-       const coResponse = await this.database.containers.createIfNotExists({
-         id: this.collectionId
-       });
-       this.container = coResponse.container;
-       debug("Setting up the container...done!");
-     }
+        this.database = null
+        this.container = null
+      }
 
-     async find(querySpec) {
-       debug("Querying for items from the database");
-       if (!this.container) {
-         throw new Error("Collection is not initialized.");
-       }
-       const { result: results } = await this.container.items
-        .query(querySpec)
-        .toArray();
-      return results;
+      async init() {
+        debug('Setting up the database...')
+        const dbResponse = await this.client.databases.createIfNotExists({
+          id: this.databaseId
+        })
+        this.database = dbResponse.database
+        debug('Setting up the database...done!')
+        debug('Setting up the container...')
+        const coResponse = await this.database.containers.createIfNotExists({
+          id: this.collectionId
+        })
+        this.container = coResponse.container
+        debug('Setting up the container...done!')
+      }
+
+      async find(querySpec) {
+        debug('Querying for items from the database')
+        if (!this.container) {
+          throw new Error('Collection is not initialized.')
+        }
+        const { resources } = await this.container.items.query(querySpec).fetchAll()
+        return resources
+      }
+
+      async addItem(item) {
+        debug('Adding an item to the database')
+        item.date = Date.now()
+        item.completed = false
+        const { resource: doc } = await this.container.items.create(item)
+        return doc
+      }
+
+      async updateItem(itemId) {
+        debug('Update an item in the database')
+        const doc = await this.getItem(itemId)
+        doc.completed = true
+
+        const { resource: replaced } = await this.container
+          .item(itemId, partitionKey)
+          .replace(doc)
+        return replaced
+      }
+
+      async getItem(itemId) {
+        debug('Getting an item from the database')
+        const { resource } = await this.container.item(itemId, partitionKey).read()
+        return resource
+      }
     }
 
-    async addItem(item) {
-      debug("Adding an item to the database");
-      item.date = Date.now();
-      item.completed = false;
-      const { body: doc } = await this.container.items.create(item);
-      return doc;
-    }
-
-    async updateItem(itemId) {
-      debug("Update an item in the database");
-      const doc = await this.getItem(itemId);
-      doc.completed = true;
-
-      const { body: replaced } = await this.container.item(itemId).replace(doc);
-      return replaced;
-    }
-
-    async getItem(itemId) {
-      debug("Getting an item from the database");
-      const { body } = await this.container.item(itemId).read();
-      return body;
-    }
-   }
-
-   module.exports = TaskDao;
+    module.exports = TaskDao
    ```
 4. **taskDao.js** ファイルを保存して閉じます。  
 
@@ -196,56 +193,56 @@ ms.locfileid: "58088113"
 2. 次のコードを **tasklist.js** に追加します。 このコードによって、**tasklist.js** で使用される CosmosClient および async モジュールが読み込まれます。 また、**TaskList** クラスが定義されます。先ほど定義した **TaskDao** オブジェクトのインスタンスとして、このクラスが渡されます。
    
    ```javascript
-   const TaskDao = require("../models/TaskDao");
+    const TaskDao = require("../models/TaskDao");
+    
+    class TaskList {
+      /**
+       * Handles the various APIs for displaying and managing tasks
+       * @param {TaskDao} taskDao
+       */
+      constructor(taskDao) {
+        this.taskDao = taskDao;
+      }
+      async showTasks(req, res) {
+        const querySpec = {
+          query: "SELECT * FROM root r WHERE r.completed=@completed",
+          parameters: [
+            {
+              name: "@completed",
+              value: false
+            }
+          ]
+        };
 
-   class TaskList {
-     /**
-      * Handles the various APIs for displaying and managing tasks
-      * @param {TaskDao} taskDao
-     */
-    constructor(taskDao) {
-    this.taskDao = taskDao;
+        const items = await this.taskDao.find(querySpec);
+        res.render("index", {
+          title: "My ToDo List ",
+          tasks: items
+        });
+      }
+
+      async addTask(req, res) {
+        const item = req.body;
+
+        await this.taskDao.addItem(item);
+        res.redirect("/");
+      }
+
+      async completeTask(req, res) {
+        const completedTasks = Object.keys(req.body);
+        const tasks = [];
+
+        completedTasks.forEach(task => {
+          tasks.push(this.taskDao.updateItem(task));
+        });
+
+        await Promise.all(tasks);
+
+        res.redirect("/");
+      }
     }
-    async showTasks(req, res) {
-      const querySpec = {
-        query: "SELECT * FROM root r WHERE r.completed=@completed",
-        parameters: [
-          {
-            name: "@completed",
-            value: false
-          }
-        ]
-      };
 
-      const items = await this.taskDao.find(querySpec);
-      res.render("index", {
-        title: "My ToDo List ",
-        tasks: items
-      });
-    }
-
-    async addTask(req, res) {
-      const item = req.body;
-
-      await this.taskDao.addItem(item);
-      res.redirect("/");
-    }
-
-    async completeTask(req, res) {
-      const completedTasks = Object.keys(req.body);
-      const tasks = [];
-
-      completedTasks.forEach(task => {
-        tasks.push(this.taskDao.updateItem(task));
-      });
-
-      await Promise.all(tasks);
-
-      res.redirect("/");
-    }
-   }
-
-   module.exports = TaskList;
+    module.exports = TaskList;
    ```
 
 3. **tasklist.js** ファイルを保存して閉じます。
@@ -286,74 +283,76 @@ ms.locfileid: "58088113"
 2. 次のコードを **app.js** ファイルに追加します。 このコードにより、使用される構成ファイルが定義され、以降のセクションで使用するいくつかの変数に値が読み込まれます。 
    
    ```javascript
-   const CosmosClient = require("@azure/cosmos").CosmosClient;
-   const config = require("./config");
-   const TaskList = require("./routes/tasklist");
-   const TaskDao = require("./models/taskDao");
+    const CosmosClient = require('@azure/cosmos').CosmosClient
+    const config = require('./config')
+    const TaskList = require('./routes/tasklist')
+    const TaskDao = require('./models/taskDao')
 
-   const express = require("express");
-   const path = require("path");
-   const logger = require("morgan");
-   const cookieParser = require("cookie-parser");
-   const bodyParser = require("body-parser");
+    const express = require('express')
+    const path = require('path')
+    const logger = require('morgan')
+    const cookieParser = require('cookie-parser')
+    const bodyParser = require('body-parser')
 
-   const app = express();
+    const app = express()
 
-   // view engine setup
-   app.set("views", path.join(__dirname, "views"));
-   app.set("view engine", "jade");
+    // view engine setup
+    app.set('views', path.join(__dirname, 'views'))
+    app.set('view engine', 'jade')
 
-   // uncomment after placing your favicon in /public
-   //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-   app.use(logger("dev"));
-   app.use(bodyParser.json());
-   app.use(bodyParser.urlencoded({ extended: false }));
-   app.use(cookieParser());
-   app.use(express.static(path.join(__dirname, "public")));
+    // uncomment after placing your favicon in /public
+    //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+    app.use(logger('dev'))
+    app.use(bodyParser.json())
+    app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(cookieParser())
+    app.use(express.static(path.join(__dirname, 'public')))
 
-   //Todo App:
-   const cosmosClient = new CosmosClient({
-     endpoint: config.host,
-     auth: {
-       masterKey: config.authKey
-     }
-   });
-   const taskDao = new TaskDao(cosmosClient, config.databaseId, config.containerId);
-   const taskList = new TaskList(taskDao);
-   taskDao
-     .init(err => {
-       console.error(err);
-     })
-     .catch(err => {
-       console.error(err);
-       console.error("Shutting down because there was an error setting up the database.");
-       process.exit(1);
-     });
+    //Todo App:
+    const cosmosClient = new CosmosClient({
+      endpoint: config.host,
+      key: config.authKey
+    })
+    const taskDao = new TaskDao(cosmosClient, config.databaseId, config.containerId)
+    const taskList = new TaskList(taskDao)
+    taskDao
+      .init(err => {
+        console.error(err)
+      })
+      .catch(err => {
+        console.error(err)
+        console.error(
+          'Shutting down because there was an error settinig up the database.'
+        )
+        process.exit(1)
+      })
 
-   app.get("/", (req, res, next) => taskList.showTasks(req, res).catch(next));
-   app.post("/addtask", (req, res, next) => taskList.addTask(req, res).catch(next));
-   app.post("/completetask", (req, res, next) => taskList.completeTask(req, res).catch(next));
-   app.set("view engine", "jade");
+    app.get('/', (req, res, next) => taskList.showTasks(req, res).catch(next))
+    app.post('/addtask', (req, res, next) => taskList.addTask(req, res).catch(next))
+    app.post('/completetask', (req, res, next) =>
+      taskList.completeTask(req, res).catch(next)
+    )
+    app.set('view engine', 'jade')
 
-   // catch 404 and forward to error handler
-   app.use(function(req, res, next) {
-     const err = new Error("Not Found");
-     err.status = 404;
-     next(err);
-   });
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+      const err = new Error('Not Found')
+      err.status = 404
+      next(err)
+    })
 
-   // error handler
-   app.use(function(err, req, res, next) {
-     // set locals, only providing error in development
-     res.locals.message = err.message;
-     res.locals.error = req.app.get("env") === "development" ? err : {};
+    // error handler
+    app.use(function(err, req, res, next) {
+      // set locals, only providing error in development
+      res.locals.message = err.message
+      res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-     // render the error page
-     res.status(err.status || 500);
-     res.render("error");
-   });
+      // render the error page
+      res.status(err.status || 500)
+      res.render('error')
+    })
 
-   module.exports = app;
+    module.exports = app
    ```
 
 3. 最後に、**app.js** ファイルを保存して閉じます。
@@ -445,15 +444,15 @@ ms.locfileid: "58088113"
     > [!TIP]
     > layout.jade ファイルまたは index.jade ファイルのインデントについてのエラーが表示される場合は、両ファイルの最初の 2 行がスペースなしで左揃えになっていることを確認してください。 最初の 2 行の前にスペースがある場合は、それらを削除し、両方のファイルを保存してから、ブラウザー ウィンドウを更新します。 
 
-2. [Item]、[Item Name]、および [Category] フィールドを使用して、新しいタスクを入力し、**[Add Item]** を選択します。 これらのプロパティに基づいて、Azure Cosmos DB にドキュメントが作成されます。 
+2. [Item]、[Item Name]、および [Category] フィールドを使用して、新しいタスクを入力し、 **[Add Item]** を選択します。 これらのプロパティに基づいて、Azure Cosmos DB にドキュメントが作成されます。 
 
 3. ページが更新され、ToDo リストに新しく作成された項目が表示されます。
    
     ![ToDo リストに新しい項目があるアプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
 
-4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、**[Update tasks]** を選択します。 既に作成したドキュメントが更新され、ビューから削除されます。
+4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]** を選択します。 既に作成したドキュメントが更新され、ビューから削除されます。
 
-5. アプリケーションを停止するには、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、**[Y]** を選択してバッジ ジョブを終了します。
+5. アプリケーションを停止するには、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、 **[Y]** を選択してバッジ ジョブを終了します。
 
 ## <a name="_Toc395783182"></a>アプリケーションを Web Apps にデプロイする
 
@@ -477,7 +476,7 @@ ms.locfileid: "58088113"
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-これらのリソースが必要なくなったら、リソース グループ、Azure Cosmos DB アカウント、およびすべての関連リソースを削除できます。 そうするには、Azure Cosmos DB アカウントのためにお客様が使用したリソース グループを選択し、**[削除]** を選択した後、削除するリソース グループの名前を確認します。
+これらのリソースが必要なくなったら、リソース グループ、Azure Cosmos DB アカウント、およびすべての関連リソースを削除できます。 そうするには、Azure Cosmos DB アカウントのためにお客様が使用したリソース グループを選択し、 **[削除]** を選択した後、削除するリソース グループの名前を確認します。
 
 ## <a name="_Toc395637775"></a>次のステップ
 

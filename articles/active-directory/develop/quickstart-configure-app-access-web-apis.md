@@ -5,24 +5,23 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: aragra, lenalepa, sureshja
+ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8b0e17248dff3c53b96fd240a7566f09b22fae
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482694"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879391"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>クイック スタート:Web API にアクセスするためのクライアント アプリケーションの構成
 
@@ -39,6 +38,8 @@ Web/confidential クライアント アプリケーションが認証を必要�
 このクイック スタートでは、アプリを次のように構成する方法を説明します。
 
 * [リダイレクト URI をアプリケーションに追加する](#add-redirect-uris-to-your-application)
+* [アプリケーションの詳細設定を構成する](#configure-advanced-settings-for-your-application)
+* [サポートされるアカウントの種類を変更する](#modify-supported-account-types)
 * [資格情報を Web アプリケーションに追加する](#add-credentials-to-your-web-application)
 * [Web API にアクセスするためのアクセス許可を追加する](#add-permissions-to-access-web-apis)
 
@@ -58,35 +59,90 @@ Web/confidential クライアント アプリケーションが認証を必要�
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
 1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]** を選択します。
 1. 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** またはメイン登録ページが表示されます。
-1. Web API にアクセスするようにアプリケーションを構成するには、以下の手順を実行します。 
+1. Web API にアクセスするようにアプリケーションを構成するには、以下の手順を実行します。
     * [リダイレクト URI をアプリケーションに追加する](#add-redirect-uris-to-your-application)
+    * [アプリケーションの詳細設定を構成する](#configure-advanced-settings-for-your-application)
+    * [サポートされるアカウントの種類を変更する](#modify-supported-account-types)
     * [資格情報を Web アプリケーションに追加する](#add-credentials-to-your-web-application)
     * [Web API にアクセスするためのアクセス許可を追加する](#add-permissions-to-access-web-apis)
 
 ## <a name="add-redirect-uris-to-your-application"></a>リダイレクト URI をアプリケーションに追加する
 
-[![Web アプリとパブリック クライアント アプリのカスタム リダイレクト URI を追加する](./media/quickstart-update-azure-ad-app-preview/authentication-redirect-uris-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-redirect-uris-expanded.png#lightbox)
-
 リダイレクト URI をアプリケーションに追加するには:
 
 1. アプリの **[概要]** ページで、 **[認証]** セクションを選択します。
-
 1. Web アプリケーションとパブリック クライアント アプリケーションのカスタム リダイレクト URI を追加するには、次の手順を実行します。
-
    1. **[リダイレクト URI]** セクションを見つけます。
    1. 構築するアプリケーションの種類として **[Web]** または **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
    1. アプリケーションのリダイレクト URI を入力します。
       * Web アプリケーションの場合は、アプリケーションのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリケーションの URL であれば、たとえば `http://localhost:31544` のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
-      * パブリック アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 https://MyFirstApp など、アプリケーションに固有の値を入力してください。
+      * パブリック アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 `https://MyFirstApp` など、ご自分のアプリケーションに固有の値を入力してください。
 
 1. パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI の中から選択するには、以下の手順に従います。
-
     1. **[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションを探します。
     1. チェック ボックスを使用して、アプリケーションの適切なリダイレクト URI を選択します。
 
-## <a name="add-credentials-to-your-web-application"></a>資格情報を Web アプリケーションに追加する
+> [!NOTE]
+> 新しい**認証**設定エクスペリエンスを試してみてください。このエクスペリエンスでは、対象とするプラットフォームまたはデバイスに基づいてアプリケーションの設定を構成できます。
+>
+> このビューを表示するには、既定の **[認証]** ページ ビューで **[新しいエクスペリエンスを試す]** を選択します。
+>
+> ![[新しいエクスペリエンスを試す] をクリックして、[プラットフォーム構成] ビューを表示する](./media/quickstart-update-azure-ad-app-preview/authentication-try-new-experience-cropped.png)
+>
+> この操作により、[新しい **[プラットフォーム構成]** ページ](#configure-platform-settings-for-your-application)が表示されます。
 
-[![資格情報とクライアント シークレットを追加する](./media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)](./media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png#lightbox)
+### <a name="configure-advanced-settings-for-your-application"></a>アプリケーションの詳細設定を構成する
+
+登録するアプリケーションに応じて、次のようないくつかの追加設定を構成する必要があります。
+
+* **ログアウト URL**
+* シングルページ アプリの場合は、 **[暗黙の付与]** を有効にし、承認エンドポイントによって発行されるトークンを選択できます。
+* 統合 Windows 認証、デバイス コード フロー、または **[既定のクライアントの種類]** セクションのユーザー名およびパスワードを使用してトークンを取得しているデスクトップ アプリの場合は、 **[アプリケーションは、パブリック クライアントとして扱います]** 設定を **[はい]** に構成します。
+* Live SDK を使用して Microsoft アカウント サービスと統合していたレガシ アプリの場合は、 **[Live SDK サポート]** を構成します。 新しいアプリでは、この設定は必要ありません。
+* **既定のクライアントの種類**
+
+### <a name="modify-supported-account-types"></a>サポートされるアカウントの種類を変更する
+
+**[サポートされているアカウントの種類]** では、アプリケーションを使用できるユーザーまたは API にアクセスできるユーザーを指定します。
+
+アプリケーションを初めて登録するときに、[サポートされているアカウントの種類を構成](quickstart-register-app.md)した後は、次の場合にのみ、アプリケーション マニフェスト エディターを使用してこの設定を変更できます。
+
+* アカウントの種類を **AzureADMyOrg** または **AzureADMultipleOrgs** から **AzureADandPersonalMicrosoftAccount** に、またはその逆に変更します。
+* アカウントの種類を **AzureADMyOrg** から **AzureADMultipleOrgs** に、またはその逆に変更します。
+
+既存のアプリの登録で、サポートされているアカウントの種類を変更するには、次のようにします。
+
+* [アプリケーション マニフェストの構成](reference-app-manifest.md)に関するページを参照して、`signInAudience` キーを更新します。
+
+## <a name="configure-platform-settings-for-your-application"></a>アプリケーションのプラットフォーム設定を構成する
+
+[![プラットフォームまたはデバイスに基づいてアプリの設定を構成する](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+
+プラットフォームまたはデバイスに基づいてアプリケーション設定を構成するには、以下のものが対象になります。
+
+1. [**プラットフォーム構成]** ページで、 **[プラットフォームを追加]** を選択し、使用可能なオプションを選択します。
+
+   ![[プラットフォームの構成] ページを表示](./media/quickstart-update-azure-ad-app-preview/authentication-platform-configurations-configure-platforms.png)
+
+1. 選択したプラットフォームに基づいて設定情報を入力します。
+
+   | プラットフォーム                | 選択              | 構成設定            |
+   |-------------------------|----------------------|-----------------------------------|
+   | **Web アプリケーション**    | **Web**              | アプリケーションの**リダイレクト URI** を入力します。 |
+   | **モバイル アプリケーション** | **iOS**              | アプリの**バンドル ID** を入力します。これは、Info.plist の XCode または [ビルド設定] で見つけることができます。 バンドル ID を追加すると、アプリケーションのリダイレクト URI が自動的に作成されます。 |
+   |                         | **Android**          | * アプリの**パッケージ名**を指定します。これは、AndroidManifest.xml ファイルで見つけることができます。<br/>* **名ハッシュ**を生成して入力します。 署名ハッシュを追加すると、アプリケーションのリダイレクト URI が自動的に作成されます。  |
+   | **デスクトップとデバイス**   | **デスクトップとデバイス** | * 省略可能。 デスクトップとデバイス用のアプリを構築している場合は、 **[推奨されるリダイレクト URI]** でいずれかを選択します。<br/>* 省略可能。 **カスタム リダイレクト URI** を入力します。これは、Azure AD が認証要求に応答してユーザーをリダイレクトする場所として使用されます。 たとえば、対話が必要な .NET Core アプリケーションの場合、`https://localhost` を使用します。 |
+
+   > [!IMPORTANT]
+   > 最新の MSAL ライブラリを使用していない、またはブローカーを使用していないモバイル アプリケーションでは、これらのアプリケーションのリダイレクト URI を **[デスクトップとデバイス]** で構成する必要があります。
+
+1. 選択したプラットフォームによっては、構成できる追加の設定がある場合があります。 **Web** アプリの場合は、以下のことができます。
+    * さらにリダイレクト URI を追加する
+    * **暗黙的な許可**を構成して、次のように、承認エンドポイントによって発行されるトークンを選択する。
+        * シングルページ アプリの場合は、 **[アクセス トークン]** と **[ID トークン]** の両方を選択します
+        * Web アプリの場合は、 **[ID トークン]** を選択します
+
+## <a name="add-credentials-to-your-web-application"></a>資格情報を Web アプリケーションに追加する
 
 資格情報を Web アプリケーションに追加するには:
 
@@ -109,8 +165,6 @@ Web/confidential クライアント アプリケーションが認証を必要�
 > 構成の変更を保存すると、右端の列にクライアント シークレットの値が格納されます。 クライアント アプリケーションのコードで使用するので、**必ず値をコピーしておいてください**。このページを一度閉じると、値にアクセスできなくなります。
 
 ## <a name="add-permissions-to-access-web-apis"></a>Web API にアクセスするためのアクセス許可を追加する
-
-[![API アクセス許可を追加できる画面の画像](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
 
 クライアントからリソース API にアクセスするためのアクセス許可を追加するには:
 

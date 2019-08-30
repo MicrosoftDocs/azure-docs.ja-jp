@@ -33,7 +33,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
   ```
 ### <a name="uri-parameters"></a>URI パラメーター
 
-|EnableAdfsAuthentication  |イン  |必須 |Type |説明 |
+|名前  |場所  |必須 |Type |説明 |
 |---------|---------|---------|---------|--------|
 |subscriptionId   |  path       |  True       |   string      |  Microsoft Azure サブスクリプションを一意に識別するサブスクリプションの資格情報。 サブスクリプション ID は、全ての修理依頼についてURI の一部を生じさせます。      |
 |resourceGroupName     |     path    | True        |  string       |   リソース グループの名前。     |
@@ -46,7 +46,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
 
 要求される唯一のパラメーターは`location`です。 *SKU*のバージョンを定義しなければ、Basic Load Balancer が規定で作成されます。  [省略可能なパラメーター](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body)を使用してロード バランサ―をカスタマイズします。
 
-| EnableAdfsAuthentication | Type | 説明 |
+| 名前 | Type | 説明 |
 | :--- | :--- | :---------- |
 | location | string | リソースの場所。 [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作を使用して、最新の場所一覧を取得します。 |
 

@@ -1,7 +1,7 @@
 ---
 title: シノニム C# の例 - Azure Search
 description: この C# の例では、Azure Search のインデックスにシノニム機能を追加する方法を学習します。 シノニム マップとは、同等の用語の一覧です。 シノニムをサポートするフィールドでは、ユーザー指定の用語とそれに関連するすべてのシノニムを含むように、クエリが拡張されます。
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5b81e4b9a8773cc8e4cc76582ccf2df88565d3d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad71a6ab5090e601ef075617edf08c421abebdb0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025168"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647766"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>例:C# で Azure Search にシノニムを追加する
 

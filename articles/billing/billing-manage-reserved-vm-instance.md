@@ -1,6 +1,6 @@
 ---
 title: Azure の予約を管理する
-description: サブスクリプション スコープを変更し、Azure の予約に対するアクセス権を管理する方法について説明します。
+description: Azure の予約を管理する方法について説明します。
 ms.service: billing
 author: bandersmsft
 manager: yashesvi
@@ -8,20 +8,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: 89279387b3630ea654070eef671f131ec757d55f
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b161fc7cd4faa75dd87613c297c12f1edd862510
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491190"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840010"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
 Azure の予約を購入した後、必要に応じて、別のサブスクリプションに予約を適用する、予約を管理できるユーザーを変更する、または予約の範囲を変更します。 また、1 つの予約を 2 つの予約に分割して、購入したインスタンスの一部を別のサブスクリプションに適用することもできます。
 
-Azure Reserved Virtual Machine Instances を購入した場合は、予約の最適化設定を変更できます。 予約割引は、同じシリーズの VM に適用するか、特定の VM サイズのデータセンター容量を予約することもできます。
+Azure Reserved Virtual Machine Instances を購入した場合は、予約の最適化設定を変更できます。 予約割引は、同じシリーズの VM に適用するか、特定の VM サイズのデータセンター容量を予約することもできます。 また、予約を最適化して、完全に使用されるようにする必要があります。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -106,13 +106,9 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
     Update-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
-## <a name="cancellations-and-exchanges"></a>キャンセルと交換
+## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-予約の種類に応じて、予約の取り消しや交換を行える場合があります。 詳細については、次のトピック内で取り消しと交換に関するセクションをご覧ください。
-
-- [Azure Reserved VM Instances による仮想マシンの前払い](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
-- [Azure の予約からの SUSE ソフトウェア プランの前払い](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
-- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>予約 VM インスタンスの最適化設定を変更する
 
@@ -129,6 +125,37 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 3. 予約を選択します。
 4. **[設定]**  >  **[構成]** を選択します。
 5. **[最適化の対象]** 設定を変更します。
+
+## <a name="optimize-reservation-use"></a>予約の使用を最適化する
+
+Azure の予約の割引は、継続的にリソースを使用した場合にのみ発生します。 予約を購入する場合、1 年または 3 年間のリソース使用率が基本的に 100% であることに対して、前払い料金を支払います。 できるだけ多くの使用と割引を実現するために、予約を最大限に活用してください。 以下のセクションでは、予約を監視し、その使用を最適化する方法について説明します。
+
+### <a name="view-reservation-use-in-the-azure-portal"></a>予約の使用状況は Azure portal 内で表示できます
+
+予約の使用状況を表示する方法の 1 つは、Azure portal にあります。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. **[すべてのサービス]**  > [ **[予約]** ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) を選択し、予約の **[使用率 (%)]** に注目します。  
+  ![予約の一覧を表示したイメージ](./media/billing-manage-reserved-vm-instance/reservation-list.png)
+3. 予約を選択します。
+4. 一定期間にわたる予約の使用傾向を確認します。  
+  ![予約の使用状況を表示しているイメージ ](./media/billing-manage-reserved-vm-instance/reservation-utilization-trend.png)
+
+### <a name="view-reservation-use-with-api"></a>API を使用して予約の使用状況を表示する
+
+Enterprise Agreement (EA) のお客様の場合、ご自身の組織内で予約がどのように使用されているかを、プログラムで表示することができます。 使用状況データを通じて未使用の予約を取得します。 予約料金を確認するときは、実際のコストと償却コストの間にデータが分割されることに注意してください。 実際のコストでは、月ごとの請求を調整するためのデータが提供されます。 これには、予約購入コストと予約アプリケーションの詳細も含まれています。 償却コストは実際のコストに似ていますが、予約使用状況の有効価格が日割りで計算される点が異なります。 未使用の予約時間は、償却コスト データ内に表示されます。 EA のお客様の使用状況データについて詳しくは、「[Enterprise Agreement の予約のコストと使用状況を取得する](billing-understand-reserved-instance-usage-ea.md)」をご覧ください。
+
+他の種類のサブスクリプションの場合は、「[Reservations Summaries - List By Reservation Order And Reservation (予約の概要 - 予約注文別および予約別の一覧)](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation)」で説明されている API を使用します。
+
+### <a name="optimize-your-reservation"></a>予約を最適化する
+
+組織の予約の使用率が低い場合は、次のようにします。
+
+- 組織で作成されている仮想マシンが、予約での VM サイズと一致していることを確認します。
+- インスタンス サイズの柔軟性が有効になっていることを確認します。 詳細については、予約の管理に関する記事の「[予約 VM インスタンスの最適化設定を変更する](#change-optimize-setting-for-reserved-vm-instances)」をご覧ください。
+- より広範に適用されるように、予約範囲を "_共有_" に変更します。 詳細については、「[予約のスコープの変更](#change-the-reservation-scope)」をご覧ください。
+- 未使用の数量の交換を検討します。 詳しくは、[キャンセルと交換](#cancel-exchange-or-refund-reservations)に関するページをご覧ください。
+
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

@@ -3,18 +3,17 @@ title: Azure IoT Hub の概要 | Microsoft Docs
 description: Azure IoT Hub について説明します。 この IoT サービスは、スケーラブルなデータ インジェスト、デバイスの管理、およびセキュリティを目的として作成されています。
 author: nberdy
 ms.author: nberdy
-ms.date: 07/04/2018
+ms.date: 08/08/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-manager: briz
-ms.openlocfilehash: 6dadd746bccd028a2b81a980d99ab47ec9e6e2a3
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726739"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950459"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -26,7 +25,7 @@ IoT Hub の機能を使うと、製造で使われる産業機器の管理、医
 
 ## <a name="scale-your-solution"></a>ソリューションをスケール調整する
 
-IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT Hub では、スケーラビリティのニーズに最適になるように、複数のサービス階層が提供されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/iot-hub/)に関するページを参照してください。
+IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT ハブのスケーリングについて詳しくは、[IoT Hub のスケーリング](iot-hub-scaling.md?branch=release-iotbasic)に関するページを参照してください。 IoT Hub で提供される複数階層のサービスと、スケーラビリティ ニーズへの最適な対応について詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/iot-hub/)を参照してください。
 
 ## <a name="secure-your-communications"></a>通信のセキュリティ保護
 
@@ -50,7 +49,7 @@ IoT Hub が提供するセキュリティで保護された通信チャネルを
 
 組み込まれているメッセージ ルーティング機能により、ルールに基づく自動メッセージ ファンアウトを柔軟に設定できます。
 
-* メッセージ ルーティングを使って、ハブがデバイスのテレメトリを送信する場所を制御します。
+* [メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使って、ハブがデバイスのテレメトリを送信する場所を制御します。
 
 * 複数のエンドポイントにメッセージをルーティングしても、追加コストは発生しません。
 
@@ -110,7 +109,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 
 ## <a name="quotas-and-limits"></a>クォータと制限
 
-各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT ハブの数は 50 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 クォータ制限の詳細については、次を参照してください。
+各 Azure サブスクリプションにはサービスの悪用を防ぐために既定のクォータ制限が設けられており、これらの制限が IoT ソリューションの範囲に影響する可能性があります。 現在、サブスクリプションごとの IoT ハブの数は 50 個に制限されています。 クォータの増加を要求する場合は、サポートに連絡してください。 詳細については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 クォータ制限の詳細については、次のいずれかの記事を参照してください。
 
 * [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)
 

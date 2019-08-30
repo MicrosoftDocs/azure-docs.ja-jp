@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 08/12/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397873"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650240"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -43,6 +43,12 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 * 値
 
 式の中の要素の順序は、構文エラーを回避するために重要です。
+
+### <a name="rule-builder-in-the-azure-portal"></a>Azure portal のルール ビルダー
+
+Azure AD には、重要なルールをすばやく作成したり更新したりできるルール ビルダーが用意されています。 ルール ビルダーでは、最大 5 つのルールがサポートされます。 6 番目以降のルール項を追加するには、テキスト ボックスを使用する必要があります。 具体的な手順については、[動的グループの更新](groups-update-rule.md)に関するページを参照してください。
+
+   ![動的グループのメンバーシップのルールを追加する](./media/groups-update-rule/update-dynamic-group-rule.png)
 
 ### <a name="rules-with-a-single-expression"></a>単一式のルール
 
@@ -68,14 +74,14 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-boolean"></a>ブール型のプロパティ
 
-| Properties | 使用できる値 | 使用法 |
+| properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>文字列型のプロパティ
 
-| Properties | 使用できる値 | 使用法 |
+| properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | city |任意の文字列値または *null* |(user.city -eq "value") |
 | country |任意の文字列値または *null* |(user.country -eq "value") |
@@ -106,7 +112,7 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-string-collection"></a>文字列コレクション型のプロパティ
 
-| Properties | 使用できる値 | 使用法 |
+| properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -231,7 +237,7 @@ null 値を参照する正しい方法は次のとおりです。
 
 複数値プロパティは、同じ型のオブジェクトのコレクションです。 論理演算子の -any と -all でメンバーシップ ルールを作成するときに使用できます。
 
-| Properties | 値 | 使用法 |
+| properties | 値 | 使用法 |
 | --- | --- | --- |
 | assignedPlans | コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
@@ -261,7 +267,7 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore--syntax"></a>アンダースコア (\_) 構文を使用する
+### <a name="using-the-underscore-_-syntax"></a>アンダースコア (\_) 構文を使用する
 
 アンダースコア (\_) 構文は、いずれかの複数値文字列コレクション プロパティの特定の値の出現回数を一致させて、ユーザーまたはデバイスを動的グループに追加します。 -any 演算子または -all 演算子と共に使用します。
 

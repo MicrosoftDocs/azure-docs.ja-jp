@@ -72,7 +72,7 @@
   items:
     - name: クラスルーム ラボ
       items:
-        - name: ラボ アカウントを作成および構成する
+        - name: ラボ アカウントを作成および構成する (ラボ アカウント オーナー)
           items:
             - name: ラボ アカウントを作成および管理する
               href: classroom-labs/how-to-manage-lab-accounts.md
@@ -82,7 +82,7 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: クラスルーム ラボを作成、構成、使用する
+        - name: クラスルーム ラボを作成して構成する (講師)
           items:
             - name: クラスルーム ラボを作成して管理する
               href: classroom-labs/how-to-manage-classroom-labs.md
@@ -90,8 +90,6 @@
               href: classroom-labs/how-to-create-manage-template.md
             - name: 使用の構成と制御
               href: classroom-labs/how-to-configure-student-usage.md
-            - name: クラスルーム ラボへのアクセス
-              href: classroom-labs/how-to-use-classroom-lab.md
             - name: スケジュールの作成と管理
               href: classroom-labs/how-to-create-schedules.md
             - name: テンプレート VM 内に複数の VM を備えた環境を作成する
@@ -102,6 +100,14 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: 仮想マシンのパスワードを設定またはリセットする
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+        - name: クラスルーム ラボの VM に接続する (学生)
+          items:
+            - name: クラスルーム ラボへのアクセス
+              href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Linux VM にリモート デスクトップ接続を使用する
+              href: classroom-labs/how-to-use-remote-desktop-linux-student.md
+            - name: 仮想マシンのパスワードを設定またはリセットする
+              href: classroom-labs/how-to-set-virtual-machine-passwords-student.md
     - name: DevTest Labs
       items:
         - name: ラボの構成
@@ -120,6 +126,8 @@
               href: configure-lab-remote-desktop-gateway.md
             - name: ラボでのお知らせの投稿
               href: devtest-lab-announcements.md
+            - name: VM でブラウザー接続を有効にする
+              href: enable-browser-connection-lab-virtual-machines.md
             - name: コスト管理の構成
               href: devtest-lab-configure-cost-management.md
             - name: 自動シャットダウン通知の送信
@@ -166,6 +174,8 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: 共有イメージ ギャラリーのイメージを使用して VM を作成する
               href: add-vm-use-shared-image.md
+            - name: ブラウザーを使用して VM に接続する
+              href: connect-virtual-machine-through-browser.md
             - name: PowerShell または CLI を使用して VM を開始/停止する
               href: use-command-line-start-stop-virtual-machines.md
             - name: VM の再起動
@@ -253,6 +263,10 @@
               href: integrate-environments-devops-pipeline.md
             - name: Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
               href: use-devtest-labs-build-release-pipelines.md
+        - name: DevTest Labs の拡張
+          items:
+            - name: Azure Functions を使用した DevTest Labs の拡張
+              href: extend-devtest-labs-azure-functions.md
         - name: ラボの使用状況のレポート
           href: report-usage-across-multiple-labs-subscriptions.md
         - name: 企業内での DevTest Labs

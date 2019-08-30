@@ -79,10 +79,6 @@
       href: service-bus-samples.md
 - name: 概念
   items:
-    - name: Azure リソースのマネージド ID
-      href: service-bus-managed-service-identity.md
-    - name: ロールベースのアクセス制御 (プレビュー)
-      href: service-bus-role-based-access-control.md
     - name: Premium メッセージング
       href: service-bus-premium-messaging.md
     - name: Azure キューと Service Bus キューを比較する
@@ -95,8 +91,25 @@
       href: service-bus-async-messaging.md
     - name: 故障と障害の扱い
       href: service-bus-outages-disasters.md
-    - name: Azure の一般的なセキュリティ属性
-      href: service-bus-messaging-security-attributes.md
+    - name: セキュリティ
+      items:
+        - name: 認証と権限承認
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: Shared Access Signature の使用
+              items:
+                - name: ACS から SAS への移行
+                  href: service-bus-migrate-acs-sas.md
+                - name: Shared Access Signature による認証
+                  href: service-bus-sas.md
+            - name: Azure Active Directory を使用する
+              items:
+                - name: Azure リソースのマネージド ID を使用した認証
+                  href: service-bus-managed-service-identity.md
+                - name: アプリケーションからの認証
+                  href: authenticate-application.md
+        - name: Azure の一般的なセキュリティ属性
+          href: service-bus-messaging-security-attributes.md
 - name: ハウツー ガイド
   items:
     - name: 名前空間の作成
@@ -119,13 +132,6 @@
               href: service-bus-to-event-grid-integration-concept.md
             - name: Azure Event Grid の例
               href: service-bus-to-event-grid-integration-example.md
-        - name: 認証と権限承認
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: ACS から SAS への移行
-              href: service-bus-migrate-acs-sas.md
-            - name: Shared Access Signature による認証
-              href: service-bus-sas.md
         - name: トピック フィルターとアクション
           href: topic-filters.md
         - name: Standard 名前空間から Premium 名前空間への移行

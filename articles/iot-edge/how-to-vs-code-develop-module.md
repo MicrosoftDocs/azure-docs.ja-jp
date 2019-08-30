@@ -4,23 +4,22 @@ description: Visual Studio Code を使用して、Azure IoT Edge のモジュー
 services: iot-edge
 keywords: ''
 author: shizn
-manager: philmea
 ms.author: xshi
-ms.date: 07/23/2019
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b63b68b7721dd848e6a72b3b7d9cfa38bf031b23
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565347"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035083"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
 ビジネス ロジックを Azure IoT Edge のモジュールにすることができます。 この記事では、主なツールとして Visual Studio Code を使用してモジュールを開発およびデバッグする方法を説明します。
 
-C#、Node.js、または Java で記述されたモジュールの場合、Visual Studio Code でモジュールをデバッグする方法は 2 つあります。モジュール コンテナー内にプロセスをアタッチするか、モジュール コードをデバッグ モードで起動することができます。 Python または C で記述されたモジュールの場合は、それらをデバッグできるのは、Linux amd64 コンテナー内のプロセスにアタッチする方法だけです。
+Visual Studio Code で、C#、Node.js、または Java で記述されたモジュールをデバッグする方法は 2 つあります。モジュール コンテナー内にプロセスをアタッチするか、モジュール コードをデバッグ モードで起動することができます。 Python または C で記述されたモジュールをデバッグするには、Linux amd64 コンテナー内のプロセスにアタッチする方法だけです。
 
 Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。
 
@@ -31,7 +30,7 @@ Visual Studio Code のデバッグ機能をよく知らない場合は、[デバ
 
 ## <a name="prerequisites"></a>前提条件
 
-Windows、macOS、または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用できます。 IoT Edge デバイスとして、別の物理デバイスを使用できます。
+Windows、macOS、または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用できます。 Windows コンピューターでは、Windows または Linux のいずれかのモジュールを開発できます。 Windows モジュールを開発するには、バージョン 1809/ビルド 17763 以降を実行している Windows コンピューターを使用します。 Linux モジュールを開発するには、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす Windows コンピューターを使用します。 
 
 まず [Visual Studio Code](https://code.visualstudio.com/) をインストールしてから、次の拡張機能を追加します。
 
@@ -107,7 +106,7 @@ Visual Studio Code は、指定された情報を取得し、IoT Edge ソリュ�
   > [!NOTE]
   > 環境ファイルは、モジュールのイメージ リポジトリを指定した場合にのみ作成されます。 localhost の既定値を受け入れてローカルでテストおよびデバッグする場合は、環境変数を宣言する必要はありません。
 
-- **deployment.template.json** ファイルには新しいモジュールと、テストに使用できるデータをシミュレートする **tempSensor** のサンプル モジュールの一覧が表示されます。 配置マニフェストがどのように機能するかについて詳しくは、「[配置マニフェストを使ってモジュールをデプロイしルートを確立する](module-composition.md)」をご覧ください。
+- **deployment.template.json** ファイルには新しいモジュールと、テストに使用できるデータをシミュレートする **SimulatedTemperatureSensor** のサンプル モジュールの一覧が表示されます。 配置マニフェストがどのように機能するかについて詳しくは、「[配置マニフェストを使ってモジュールをデプロイしルートを確立する](module-composition.md)」をご覧ください。
 
 ## <a name="add-additional-modules"></a>他のモジュールを追加する
 
@@ -124,7 +123,7 @@ Visual Studio Code は、指定された情報を取得し、IoT Edge ソリュ�
 - Java: **modules > *&lt;対象のモジュール名&gt;* > src > main > java > com > edgemodulemodules > App.java**
 - C: **modules > *&lt;対象のモジュール名&gt;* > main.c**
 
-モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信するようにビルドされています。
+モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールは単にソース (この場合は、データをシミュレートする SimulatedTemperatureSensor モジュール) から入力を取得して IoT Hub に送信するように作成されています。
 
 テンプレートを独自のコードでカスタマイズする準備ができたら、[Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して、セキュリティ、デバイス管理、信頼性など、IoT ソリューションの主なニーズに対処するモジュールをビルドします。
 
@@ -227,7 +226,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 1. Visual Studio Code の [エクスプローラー] ビューで、対象のソリューションの `deployment.debug.template.json` ファイルを右クリックし、 **[Build and Run IoT Edge solution in Simulator]\(シミュレーターでの IoT Edge ソリューションのビルドおよび実行\)** を選択します。 モジュール コンテナーのすべてのログを同じウィンドウで確認できます。 また、[Docker] ビューに移動してコンテナーの状態を確認することもできます。
 
-   ![watch 変数](media/how-to-develop-csharp-module/view-log.png)
+   ![watch 変数](media/how-to-vs-code-develop-module/view-log.png)
 
 1. Visual Studio Code の [デバッグ] ビューに移動し、対象のモジュール用のデバッグ構成ファイルを選択します。 デバッグ オプション名は、 ***&lt;対象のモジュール名&gt;* Remote Debug** のようになります。
 

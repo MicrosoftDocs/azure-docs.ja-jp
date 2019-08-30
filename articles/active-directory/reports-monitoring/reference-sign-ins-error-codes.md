@@ -3,7 +3,7 @@ title: Azure Active Directory ポータルのサインイン アクティビテ�
 description: サインイン アクティビティ レポートのエラー コードのリファレンス。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/08/2019
-ms.author: markvi
+ms.date: 08/08/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6972c91a18f9deb240871d8c64a14647474d9d78
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377264"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989595"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 
@@ -127,6 +127,7 @@ ms.locfileid: "68377264"
 |50177|外部のチャレンジは、パススルー ユーザーに対してサポートされていません。|
 |50178|セッション制御は、パススルー ユーザーに対してサポートされていません。|
 |50180|Windows 統合認証が必要です。 シームレス SSO に対してテナントを有効にしてください。|
+|50201|このメッセージ プロンプトの割り込みは、ログイン中、追加の情報をユーザーに提供する必要があるときにユーザーに表示されます。|
 |51001|オンプレミスのセキュリティ識別子 - オンプレミスの UPN に関してドメイン ヒントが存在しません。|
 |51004|ユーザー アカウントがディレクトリ内に存在しません。|
 |51006|Windows 統合認証が必要です。 ユーザーが、要求を通じて、欠落したセッション トークンを使ってログインしました。 ユーザーに再ログインを要求してください。|
@@ -181,6 +182,9 @@ ms.locfileid: "68377264"
 |500121| 強力な認証の要求時に、認証に失敗しました。|
 |500133| アサーションが有効な時間範囲内ではありません。 アクセス トークンの有効期限が切れていないことを確認してからアサーションを使用するか、新しいトークンを要求してください。|
 |530021|アプリケーションは、条件付きアクセスで承認されているアプリの要件を満たしていません。|
+|530032|セキュリティ ポリシーによってブロックされます。| 
+|700016|識別子 '{appIdentifier}' を持つアプリケーションがディレクトリ '{tenantName}' に見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。|
+|900432|Confidential Client はクロスクラウド要求でサポートされていません。|
 |7000218|要求本文には、次のパラメーターが含まれる必要があります: 'client_assertion' または 'client_secret'。|
 
 

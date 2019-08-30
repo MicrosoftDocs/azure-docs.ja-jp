@@ -3,16 +3,16 @@ title: 一般的なエラーのトラブルシューティング
 description: Azure Resource Graph を使用して Azure リソースをクエリする際の問題をトラブルシューティングする方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 511d170f90e8ed34b00a3960d084223ec73d99dd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480467"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900006"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Resource Graph 使用時のエラーのトラブルシューティング
 
@@ -60,6 +60,33 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 # View the completed results of the query on all subscriptions
 $response
 ```
+
+### <a name="rest-contenttype"></a>シナリオ:サポートされていない Content-Type REST ヘッダー
+
+#### <a name="issue"></a>問題
+
+Azure Resource Graph REST API クエリを実行すると、_500_ (内部サーバー エラー) 応答が返される。
+
+#### <a name="cause"></a>原因
+
+Azure Resource Graph REST API では、**application/json** の `Content-Type` のみがサポートされます。 一部の REST ツールまたはエージェントは、既定で **text/plain** に設定されています。これは、REST API ではサポートされていません。
+
+#### <a name="resolution"></a>解決策
+
+Azure Resource Graph のクエリに使用しているツールまたはエージェントの REST API ヘッダー `Content-Type` が **application/json** 用に構成されていることを検証します。
+### <a name="rest-403"></a>シナリオ:リスト内のすべてのサブスクリプションに対する読み取りアクセス許可がない
+
+#### <a name="issue"></a>問題
+
+Azure Resource Graph クエリを使用してサブスクリプションの一覧を明示的に渡すと、_403_ (禁止) の応答が返される。
+
+#### <a name="cause"></a>原因
+
+指定されたすべてのサブスクリプションに対する読み取りアクセス許可を持っていない場合は、ユーザーに適切なセキュリティ権限がないため、要求は拒否されます。
+
+#### <a name="resolution"></a>解決策
+
+そのクエリを実行するユーザーが、少なくとも読み取りアクセス権を持っている 1 つ以上のサブスクリプションを、サブスクリプション一覧に含めます。 詳細については、「[Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

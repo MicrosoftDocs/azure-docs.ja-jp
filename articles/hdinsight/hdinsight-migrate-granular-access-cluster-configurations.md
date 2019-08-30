@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 08/09/2019
+ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464676"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623840"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -20,8 +20,9 @@ ms.locfileid: "68464676"
 
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
-以前は、所有者、共同作成者、または閲覧者の [RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)を保有するクラスター ユーザーが HDInsight API を介してシークレットを取得できました。これは、`*/read` アクセス許可を持っていればだれでも利用できたためです。
-今後、これらのシークレットにアクセスするには `Microsoft.HDInsight/clusters/configurations/*` アクセス許可が必要になります。つまり、閲覧者ロールを持つユーザーからはアクセスできなくなります。 シークレットは、ユーザーのロールよりもさらに高度なアクセス権を取得するために使用できる値として定義されます。 これらには、クラスター ゲートウェイ HTTP 資格情報、ストレージ アカウント キー、およびデータベースの資格情報などの値が含まれます。
+以前は、所有者、共同作成者、または閲覧者の [RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)を保有するクラスター ユーザーが HDInsight API を介してシークレットを取得できました。これは、`*/read` アクセス許可を持っていればだれでも利用できたためです。 シークレットは、ユーザーのロールよりもさらに高度なアクセス権を取得するために使用できる値として定義されます。 これらには、クラスター ゲートウェイ HTTP 資格情報、ストレージ アカウント キー、およびデータベースの資格情報などの値が含まれます。
+
+今後、これらのシークレットにアクセスするには `Microsoft.HDInsight/clusters/configurations/action` アクセス許可が必要になります。つまり、閲覧者ロールを持つユーザーからはアクセスできなくなります。 このアクセス許可を持つロールは、共同作成者、所有者、新しい HDInsight クラスター オペレーター ロールです (以下で詳しく説明します)。
 
 また、共同作成者または所有者の管理アクセス許可を付与されなくても、シークレットを取得することができる新しい [HDInsight クラスター オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールも導入されます。 まとめると次のようになります。
 
@@ -128,7 +129,7 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 ### <a name="sdk-for-java"></a>Java 用 SDK
 
-[バージョン 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/) の HDInsight SDK for Java に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
+[バージョン 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) の HDInsight SDK for Java に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの**機密性の高いパラメーターが返されなくなります**。
     - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
@@ -155,14 +156,14 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加する
 
-[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)ロールまたは[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)ロールを保有するユーザーは、機密 HDInsight クラスター構成 (クラスター ゲートウェイ資格情報やストレージ アカウント キーなど) への読み取り/書き込みアクセスを求めるユーザーに[ HDInsight Cluster Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールを付与することができます。
+[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)ロールを保有するユーザーは、機密の HDInsight クラスター構成の値 (クラスター ゲートウェイ資格情報やストレージ アカウント キーなど) への読み取り/書き込みアクセスを求めるユーザーに [HDInsight クラスター オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールを付与することができます。
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
 このロール割り当てを追加するには、Azure CLI 内で `az role assignment create` コマンドを使用するのが最も簡単な方法です。
 
 > [!NOTE]
-> このコマンドは、共同作成者ロールまたは所有者ロールを保有するユーザーによって、それらのアクセス許可が付与される場合にのみ、実行される必要があります。 `--assignee` は HDInsight クラスター オペレーター ロールの割り当て先とするユーザーの電子メール アドレスです。
+> このコマンドは、所有者ロールを保有するユーザーによって、それらのアクセス許可が付与される場合にのみ、実行される必要があります。 `--assignee` は、サービス プリンシパルの名前、または HDInsight クラスター オペレーター ロールの割り当て先とするユーザーの電子メール アドレスです。 アクセス許可が不十分であることを示すエラーが表示された場合は、以下の「FAQ」を参照してください。
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>リソース (クラスター) レベルでロールを付与します。
 
@@ -185,3 +186,23 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
 Azure portal を使用して、HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加することもできます。 詳細については、[RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する - ロール割り当ての追加](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)に関するページを参照してください。
+
+## <a name="faq"></a>FAQ
+
+### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>API 要求やツールを更新した後、403 (禁止) の応答が表示されるのはなぜですか?
+
+クラスター構成は、細かく設定したロールベースのアクセス制御の背後にあり、これらにアクセスするには `Microsoft.HDInsight/clusters/configurations/*` アクセス許可が必要です。 このアクセス許可を取得するには、構成にアクセスしようとしているユーザーまたはサービス プリンシパルに、HDInsight クラスター オペレーター、共同作成者、または所有者ロールを割り当てます。
+
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Azure CLI コマンドを実行して HDInsight クラスター オペレーター ロールを別のユーザーまたはサービス プリンシパルに割り当てると、"操作を完了するための十分な特権がありません" と表示されるのはなぜですか?
+
+所有者ロールだけでなく、コマンドを実行しているユーザーまたはサービス プリンシパルは、担当者のオブジェクト ID を検索するために、十分な AAD アクセス許可を持っている必要があります。 このメッセージは、AAD のアクセス許可が不十分であることを示します。 `-–assignee` 引数を `–assignee-object-id` に置き換えて、名前の代わりにパラメーターとして担当者のオブジェクト ID (またはマネージド ID の場合は、プリンシパル ID) を指定します。 詳細については、[az role assignment create ドキュメント](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)の「省略可能なパラメーター」セクションを参照してください。
+
+それでもうまくいかない場合は、AAD 管理者に連絡して、適切なアクセス許可を取得してください。
+
+### <a name="what-will-happen-if-i-take-no-action"></a>操作を行わない場合、どうなりますか?
+
+`GET /configurations` と `POST /configurations/gateway` の呼び出しによって、情報が返されなくなります。また、`GET /configurations/{configurationName}` 呼び出しでは、ストレージ アカウント キーやクラスター パスワードなどの機密性の高いパラメーターは返されなくなります。 これは、対応する SDK メソッドと PowerShell コマンドレットにも当てはまります。
+
+上記の Visual Studio、VSCode、IntelliJ または Eclipse 用のいずれかのツールで以前のバージョンを使用している場合は、更新するまで機能しなくなります。
+
+詳細については、自分のシナリオに対応するこのドキュメントのセクションを参照してください。

@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b008ef47ba530affd65e4d0e5e293312cfe74b69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 799fb67b20c45653ec741a92ec7a75aff2f8c509
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136523"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087830"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>SQL データベースへの App Service アプリの接続
 

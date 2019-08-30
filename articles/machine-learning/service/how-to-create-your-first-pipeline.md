@@ -1,7 +1,7 @@
 ---
 title: ML パイプラインの作成、実行、追跡
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning SDK for Python で機械学習パイプラインを作成して実行します。 パイプラインを使用して、機械学習 (ML) のフェーズをつなぎ合わせるワークフローを作成して管理することができます。 これらのフェーズとしては、データ保護、モデルのトレーニング、モデル デプロイ、推論/スコアリングなどがあります。
+description: Azure Machine Learning SDK for Python で機械学習パイプラインを作成して実行します。 機械学習 (ML) のフェーズをつなぎ合わせるワークフローを作成して管理するには、ML パイプラインを使用します。 これらのフェーズとしては、データ保護、モデルのトレーニング、モデル デプロイ、推論/スコアリングなどがあります。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,45 +9,48 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 05/02/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f0b764b16c1b550c9afa4107449c1b02815e8d1
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 1e68f60880e09dfeb46641f40eca12e1fc0560bc
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668497"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950420"
 ---
-# <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK を使用して機械学習パイプラインを作成および実行する
+# <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 
-この記事では、[Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して、[機械学習パイプライン](concept-ml-pipelines.md)を作成、公開、実行、追跡する方法について説明します。  パイプラインは、機械学習のさまざまなフェーズを結び付けるワークフローを作成して管理するのに役立ちます。 データの準備やモデルのトレーニングなど、パイプラインの各フェーズには、1 つまたは複数のステップを含めることができます。
+この記事では、[Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して、[機械学習パイプライン](concept-ml-pipelines.md)を作成、公開、実行、追跡する方法について説明します。  さまざまな ML フェーズを結び付けてワークフローを作成した後、そのパイプラインを Azure Machine Learning ワークスペースに発行し、後でアクセスしたり、他のユーザーと共有したりするには、**Ml パイプライン**を使用します。  ML パイプラインは、さまざまなコンピューティングを使用し、ステップを再実行する代わりに再利用し、ML ワークフローを他のユーザーと共有する、バッチ スコアリングのシナリオに最適です。 
 
-作成したパイプラインは、Azure Machine Learning service [ワークスペース](how-to-manage-workspace.md)のメンバーであれば見ることができます。 
+ML タスクの CI/CD オートメーションには [Azure パイプライン](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml)と呼ばれる別の種類のパイプラインを使用できますが、その種類のパイプラインはワークスペース内には格納されません。 [これらの異なるパイプラインを比較してください](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
 
-パイプラインでは、そのパイプラインに関連付けられている中間および最終データの計算と格納に、リモート コンピューティング先が使用されます。 パイプラインでは、サポートされている [Azure Storage](https://docs.microsoft.com/azure/storage/) の場所に対してデータを読み取ったり書き込んだりすることができます。
+データの準備やモデルのトレーニングなど、ML パイプラインの各フェーズには、1 つまたは複数のステップを含めることができます。
+
+作成した ML パイプラインは、Azure Machine Learning service [ワークスペース](how-to-manage-workspace.md)のメンバーであれば見ることができます。 
+
+ML パイプラインでは、そのパイプラインに関連付けられている中間および最終データの計算と格納に、リモート コンピューティング先が使用されます。 それらでは、サポートされている [Azure Storage](https://docs.microsoft.com/azure/storage/) の場所に対してデータを読み取ったり書き込んだりすることができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) をお試しください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning SDK をインストールするための[開発環境を構成](how-to-configure-environment.md)します。
+* すべてのパイプライン リソースを保持するための [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)を作成します。
 
-* すべてのパイプライン リソースを保持するための [Azure Machine Learning ワークスペース](how-to-configure-environment.md#workspace)を作成します。 
+* [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、または SDK が既にインストールされている [Notebook VM](tutorial-1st-experiment-sdk-setup.md#azure) を使用します。
 
-  ```python
-  from azureml.core import Workspace
-  
-  ws = Workspace.create(
-     name = '<workspace-name>',
-     subscription_id = '<subscription-id>',
-     resource_group = '<resource-group>',
-     location = '<workspace_region>',
-     exist_ok = True)
-  ```
+まず、ワークスペースをアタッチします。
+
+```Python
+import azureml.core
+from azureml.core import Workspace, Datastore
+
+ws = Workspace.from_config()
+```
+
 
 ## <a name="set-up-machine-learning-resources"></a>機械学習リソースをセットアップする
 
-パイプラインの実行に必要なリソースを作成します。
+ML パイプラインの実行に必要なリソースを作成します。
 
 * パイプラインの手順で必要なデータへのアクセスに使用されるデータストアを設定します。
 
@@ -56,22 +59,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * パイプラインの手順が実行される[コンピューティング先](concept-azure-machine-learning-architecture.md#compute-targets)を設定します。
 
 ### <a name="set-up-a-datastore"></a>データストアをセットアップする
+
 データストアには、パイプラインでアクセスするデータが格納されます。 各ワークスペースに既定のデータストアがあります。 データストアを追加登録できます。 
 
 ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) と [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) がワークスペースに接続されます。 既定のデータストアが、Azure Blob Storage に接続するために登録されています。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページを参照してください。 
 
 ```python
-# Default datastore (Azure blob storage)
+# Default datastore 
 def_data_store = ws.get_default_datastore()
 
-# The above call is equivalent to this
-def_data_store = Datastore(ws, "workspaceblobstore")
+# Get the blob storage associated with the workspace
+def_blob_store = Datastore(ws, "workspaceblobstore")
 
 # Get file storage associated with the workspace
 def_file_store = Datastore(ws, "workspacefilestore")
+
 ```
 
-パイプラインからアクセスできるように、データ ファイルまたはディレクトリをデータストアにアップロードします。 この例では、BLOB ストレージ バージョンのデータストアを使用します。
+パイプラインからアクセスできるように、データ ファイルまたはディレクトリをデータストアにアップロードします。 この例では、データストアとして BLOB ストレージを使用します。
 
 ```python
 def_blob_store.upload_files(
@@ -333,19 +338,21 @@ pipeline_run1.wait_for_completion()
 
 詳細については、「[Experiment class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)」リファレンスを参照してください。
 
+
+
 ## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
 
 ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。
 
 ## <a name="publish-a-pipeline"></a>パイプラインを発行する
 
-後で異なる入力を使用して実行するために、パイプラインを発行することができます。 パラメーターを受け入れるように既に発行されているパイプラインの REST エンドポイントの場合、発行する前にパイプラインをパラメーター化する必要があります。 
+後で異なる入力を使用して実行するために、パイプラインを発行することができます。 パラメーターを受け入れるように既に発行されているパイプラインの REST エンドポイントの場合、発行する前にパイプラインをパラメーター化する必要があります。
 
 1. パイプライン パラメーターを作成するには、既定の値で [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) オブジェクトを使用します。
 
    ```python
    pipeline_param = PipelineParameter(
-     name="pipeline_arg", 
+     name="pipeline_arg",
      default_value=10)
    ```
 
@@ -356,20 +363,21 @@ pipeline_run1.wait_for_completion()
      script_name="compare.py",
      arguments=["--comp_data1", comp_data1, "--comp_data2", comp_data2, "--output_data", out_data3, "--param1", pipeline_param],
      inputs=[ comp_data1, comp_data2],
-     outputs=[out_data3],    
-     target=compute_target, 
+     outputs=[out_data3],
+     target=compute_target,
      source_directory=project_folder)
    ```
 
 3. 呼び出されるときにパラメーターを受け取るこのパイプラインを発行します。
 
    ```python
-   published_pipeline1 = pipeline1.publish(
-       name="My_Published_Pipeline", 
-       description="My Published Pipeline Description")
+   published_pipeline1 = pipeline_run1.publish_pipeline(
+        name="My_Published_Pipeline",
+        description="My Published Pipeline Description",
+        version="1.0")
    ```
 
-## <a name="run-a-published-pipeline"></a>発行されたパイプラインを実行する
+### <a name="run-a-published-pipeline"></a>発行されたパイプラインを実行する
 
 発行されたすべてのパイプラインに REST エンドポイントがあります。 このエンドポイントでは、Python ではないクライアントなどの外部システムからパイプラインの実行を呼び出します。 このエンドポイントでは、バッチ スコアリングと再トレーニングのシナリオでの "管理された再現性" が有効になります。
 
@@ -382,15 +390,28 @@ response = requests.post(published_pipeline1.endpoint,
                                "ParameterAssignments": {"pipeline_arg": 20}})
 ```
 
-## <a name="view-results"></a>結果の表示
+### <a name="view-results-of-a-published-pipeline"></a>発行されたパイプラインの結果を表示する
 
-すべてのパイプラインとその実行の詳細の一覧を表示します。
+すべての発行済みパイプラインとその実行の詳細の一覧を表示します。
 1. [Azure Portal](https://portal.azure.com/) にサインインします。  
 
 1. [ワークスペースを表示](how-to-manage-workspace.md#view)して、パイプラインの一覧を検索します。
  ![機械学習パイプラインの一覧](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. 実行結果を表示する特定のパイプラインを選択します。
+
+### <a name="disable-a-published-pipeline"></a>発行されたパイプラインを無効にする
+
+発行済みパイプラインの一覧にパイプラインが表示されないようにするには、それを無効にします。
+
+```
+# Get the pipeline by using its ID in the Azure portal
+p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
+p.disable()
+```
+
+`p.enable()` で再び有効にすることができます。
+
 
 ## <a name="caching--reuse"></a>キャッシュと再利用  
 
@@ -412,6 +433,7 @@ step = PythonScriptStep(name="Hello World",
  
 
 ## <a name="next-steps"></a>次の手順
+
 - [GitHub 上のこれらの Jupyter notebook](https://aka.ms/aml-pipeline-readme) を使用して、機械学習パイプラインをさらに調べます。
 - [azureml-pipelines-core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) パッケージおよび [azureml-pipelines-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) パッケージの SDK リファレンス ヘルプを読みます。
 

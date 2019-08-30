@@ -8,17 +8,16 @@ manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.devlang: na
 ms.topic: sample
 ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 19f5016b5fb6906046875ad1ab96c892d6e10ecf
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 08bd36ae1d8498d40d997ce03a9d8e4a3d5aef9e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729737"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071897"
 ---
 # <a name="set-up-custom-domain"></a>カスタム ドメインのセットアップ
 

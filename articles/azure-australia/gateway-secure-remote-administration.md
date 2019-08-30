@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 827dffc1c7544d9373b5f8d4426ea8c448fa25ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1e4c4712312faf2274a4a0737c4fc1f7ce39f98e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571163"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824198"
 ---
 # <a name="secure-remote-administration-of-your-gateway-in-azure-australia"></a>Azure Australia におけるゲートウェイの安全なリモート管理
 
@@ -31,9 +31,8 @@ ms.locfileid: "68571163"
 |多要素認証   |ユーザー名とパスフレーズ以外にも、物理トークンやスマートカードなどの追加の認証ファクターを導入することで、重要な資産の保護を強化することができます。 特権アカウントの資格情報が敵対者によって侵害されたとしても、すべての管理操作はまず何らかの形態の多要素認証を経なければならないため、その影響は大幅に軽減されます。|
 |特権ワークステーション|既知の安全な環境を管理タスクに使用することで、さらなるセキュリティ制御が導入されるため、ネットワーク侵害のリスクを軽減できます。|
 |ログ記録と監査   |セキュリティや管理に関連してワークステーションやサーバー、ネットワーク デバイス、ジャンプ ボックスで発生したイベントの生成、収集、分析を自動化することで、セキュリティ侵害やその試みを検出することができます。 自動化によって組織がより迅速に対応できるようになるため、セキュリティ侵害の影響が軽減されます。|
-|ネットワークのセグメンテーションと分離|ネットワークを論理ゾーン (各種セキュリティ ドメインなど) にセグメント化し、ゾーン間を流れるデータの種類を制限してそれらの論理ネットワークを分離することによって、侵入拡大を抑制することができます。 セグメント化によって、敵対者がさらに別のリソースにアクセスするのを阻止することができます。|
+|ネットワークのセグメント化と分離|ネットワークを論理ゾーン (各種セキュリティ ドメインなど) にセグメント化し、ゾーン間を流れるデータの種類を制限してそれらの論理ネットワークを分離することによって、侵入拡大を抑制することができます。 セグメント化によって、敵対者がさらに別のリソースにアクセスするのを阻止することができます。|
 |ジャンプ ボックス|ジャンプ ボックスは、一般に Microsoft のリモート デスクトップ サービスや Secure Shell (SSH) ソフトウェアを利用する堅牢化されたリモート アクセス サーバーです。 すべての管理操作が専用ホストから実行されるという点で、ジャンプ ボックスは、管理者が重要なシステムにアクセスする際の足掛かりとしての役割を果たします。|
-|
 
 この記事では、以上の要素を使用して Azure にデプロイされたシステムの安全な管理を実現する方法を示すリファレンス アーキテクチャを紹介します。
 
@@ -50,7 +49,7 @@ ms.locfileid: "68571163"
 |解決策| コンポーネント|要素|
 |---|---|---|
 |安全なデバイス |<ul><li>特権ワークステーション</li><li>モバイル デバイス</li><li>Microsoft Intune</li><li>グループ ポリシー</li><li>ジャンプ サーバー (要塞ホスト)</li><li>Just-In-Time (JIT) 管理</li></ul> |<ul><li>特権ワークステーション</li><li>ジャンプ ボックス</li></ul>|
-|セキュリティで保護された通信 |<ul><li>Azure ポータル</li><li>Azure VPN Gateway</li><li>リモート デスクトップ (RD) ゲートウェイ</li><li>ネットワーク セキュリティ グループ (NSG)</li></ul> |<ul><li>ネットワークのセグメント化と分離</li></ul>|
+|セキュリティで保護された通信 |<ul><li>Azure portal</li><li>Azure VPN Gateway</li><li>リモート デスクトップ (RD) ゲートウェイ</li><li>ネットワーク セキュリティ グループ (NSG)</li></ul> |<ul><li>ネットワークのセグメント化と分離</li></ul>|
 |強力な認証 |<ul><li>ドメイン コントローラー (DC)</li><li>Azure Active Directory (Azure AD)</li><li>ネットワーク ポリシー サーバー (NPS)</li><li>Azure MFA</li></ul> |<ul><li>多要素認証</li></ul> |
 |強力な承認 |<ul><li>Identity and Access Management (IAM)</li><li>Privileged Identity Management (PIM)</li><li>条件付きアクセス</li></ul>|<ul><li>特権アクセス制御</li></ul>|
 |||
@@ -77,7 +76,6 @@ Azure にデプロイされたシステムの管理は、Azure の構成の管�
 |条件付きアクセス |条件付きアクセス ポリシーは、認証の試行をチェックして、必要な要件 (接続元の IP アドレス、特権アカウントのグループ メンバーシップ、Intune によってレポートされた特権ワークステーションの管理ステータスとコンプライアンス ステータスなど) が満たされていることを確認します。 |
 |Privileged Identity Management (PIM) |これで管理者は Azure portal を使用して、PIM 経由で承認された特権ロールをアクティブ化するか、そのアクティブ化を要求することができます。 特権アカウントに放置された管理特権がないこと、また特権アクセスに対するすべての要求が、管理タスクを遂行するために必要な期間に限定されていることが PIM によって保証されます。 また、PIM では監査用に、すべての要求およびアクティブ化のログが提供されます。 |
 |ID 管理とアクセス管理|特権アカウントが安全に識別されてロールがアクティブ化されると、管理者は、ID 管理とアクセス管理を通じてアクセス許可が割り当てられた Azure サブスクリプションとリソースにアクセスできるようになります。|
-|
 
 特権アカウントで Azure portal に管理アクセスできるようにするステップが完了したら、ワークロードへのアクセスを構成し、管理接続を確立することができます。
 
@@ -91,7 +89,6 @@ Azure にデプロイされたシステムの管理は、Azure の構成の管�
 |ネットワーク ポリシー サーバー (NPS)|NPS は、RD ゲートウェイから認証要求を受け取り、Active Directory に対してユーザー名とパスワードを検証した後、Azure Active Directory に要求を送信して Azure MFA 認証要求をトリガーします。|
 |Azure MFA|特権アカウントの登録済みのモバイル デバイスに対し、Azure MFA から認証要求が送信されます。 セキュリティ要件への準拠を徹底するため、モバイル デバイスは Intune によって管理されます。 管理者はまず、モバイル デバイスに対して認証を行った後、PIN または生体認証システムを使用して Microsoft Authenticator アプリに対して認証を行う必要があります。その後、試行された認証が Azure MFA に対して承認されます。|
 |ジャンプ サーバー|認証に成功すると、RDP 接続は、トランスポート層セキュリティ (TLS) を使用して暗号化された後、暗号化された IPsec トンネルを通じて Azure VPN Gateway に送信され、RD ゲートウェイを介してジャンプ サーバーに送信されます。 管理者は、JIT 要求に指定されたワークロード仮想マシンに対し、ジャンプ サーバーから RDP または SSH で接続することができます。|
-|
 
 ## <a name="general-guidance"></a>一般的なガイダンス
 
@@ -133,7 +130,6 @@ Azure にデプロイされたシステムの管理は、Azure の構成の管�
 |---|---|
 |特権アクセス ワークステーションのアーキテクチャ概要|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)|
 |特権アクセスの保護に関する参考資料|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)|
-|
 
 ### <a name="mobile-device"></a>モバイル デバイス
 
@@ -143,7 +139,6 @@ Azure にデプロイされたシステムの管理は、Azure の構成の管�
 |---|---|
 |Azure AD の認証方法|[https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)|
 |Microsoft Authenticator アプリの使い方|[https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app](https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app)|
-|
 
 ### <a name="microsoft-intune"></a>Microsoft Intune
 
@@ -153,7 +148,6 @@ Intune は、モバイル デバイスとアプリを管理する Enterprise Mob
 |---|---|
 |Microsoft Intune のドキュメント|[https://docs.microsoft.com/intune/](https://docs.microsoft.com/intune/)|
 |Intune におけるデバイス コンプライアンスの概要|[https://docs.microsoft.com/intune/device-compliance-get-started](https://docs.microsoft.com/intune/device-compliance-get-started)|
-|
 
 ### <a name="group-policy"></a>グループ ポリシー
 
@@ -162,7 +156,6 @@ Intune は、モバイル デバイスとアプリを管理する Enterprise Mob
 |リソース|Link|
 |---|---|
 |ローカル サインインを許可するグループ ポリシーの設定|[https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally)|
-|
 
 ### <a name="jump-server--bastion-host"></a>ジャンプ サーバー (要塞ホスト)
 
@@ -171,7 +164,6 @@ Intune は、モバイル デバイスとアプリを管理する Enterprise Mob
 |リソース|Link|
 |---|---|
 |安全な管理用のホストを実装する|[https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts)|
-|
 
 ### <a name="just-in-time-jit-access"></a>Just-In-Time (JIT) アクセス
 
@@ -181,20 +173,18 @@ JIT は、ネットワーク セキュリティ グループ (NSG) を使用し�
 |---|---|
 |Just-In-Time (JIT) アクセスの管理|[https://docs.microsoft.com/azure/security-center/security-center-just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|
 |Azure の Just-In-Time VM アクセスを自動化する|[https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access](https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access)|
-|
 
 ## <a name="secure-communication"></a>安全な通信
 
 管理作業の通信トラフィックには、管理者資格情報など、特に機密性の高い情報が含まれている可能性があるため、それに応じた管理と保護が必要となります。 安全な通信を確保するためには、傍受を防ぐ信頼性の高い暗号化機能と、管理トラフィックを承認済みのエンド ポイントに限定するネットワークのセグメント化と制限が欠かせません。また、システムが侵入を受けた場合にその拡大を抑制する必要があります。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal との通信はトランスポート層セキュリティ (TLS) を使用して暗号化されており、Azure portal の使用は ACSC による認定を受けています。 連邦政府機関は、『*ACSC コンシューマー ガイド*』にある推奨事項に従い、最新バージョンの TLS とサポート対象の暗号アルゴリズムを使用するようにその Web ブラウザーを構成する必要があります。
 
 |リソース |Link |
 |---|---|
 |Azure の暗号化の概要 - 転送中の暗号化|[https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit](https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit)|
-|
 
 ### <a name="azure-vpn-gateway"></a>Azure VPN Gateway
 
@@ -204,8 +194,7 @@ Azure VPN Gateway は、特権ワークステーションから Azure への暗�
 |---|---|
 |ポイント対サイト接続について|[https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about)|
 |Azure VPN Gateway の暗号の詳細|[https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto)|
-|Azure VPN Gateway の構成|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
-|
+|Azure VPN Gateway の構成|[Azure VPN Gateway の構成](vpn-gateway.md)|
 
 ### <a name="remote-desktop-rd-gateway"></a>リモート デスクトップ (RD) ゲートウェイ
 
@@ -214,7 +203,6 @@ RD ゲートウェイは、システムへの RDP 接続を制御、承認する
 |リソース |Link |
 |---|---|
 |リモート デスクトップ サービスのアーキテクチャ|[https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)|
-|
 
 ### <a name="network-security-groups-nsgs"></a>ネットワーク セキュリティ グループ (NSG)
 
@@ -224,7 +212,6 @@ NSG は、サブネットや仮想マシンに入ってくるネットワーク 
 |---|---|
 |Azure セキュリティ グループの概要|[https://docs.microsoft.com/azure/virtual-network/security-overview](https://docs.microsoft.com/azure/virtual-network/security-overview)|
 |方法:仮想ネットワークを計画する|[https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)|
-|
 
 ## <a name="strong-authentication"></a>強力な認証
 
@@ -237,7 +224,6 @@ NSG は、サブネットや仮想マシンに入ってくるネットワーク 
 |リソース |Link |
 |---|---|
 |Active Directory Domain Services の概要|[https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)|
-|
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
@@ -249,7 +235,6 @@ ID を格納し、Azure 環境における認証と承認を提供します。 A
 |---|---|
 |Azure Active Directory のドキュメント|[https://docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory)|
 |ハイブリッド ID のドキュメント|[https://docs.microsoft.com/azure/active-directory/hybrid](https://docs.microsoft.com/azure/active-directory/hybrid)|
-|
 
 ### <a name="network-policy-server-nps"></a>ネットワーク ポリシー サーバー (NPS)
 
@@ -258,7 +243,6 @@ NPS は、認証とポリシーのためのサーバーであり、高度な認�
 |リソース |Link |
 |---|---|
 |ネットワーク ポリシー サーバーのドキュメント|[https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)|
-|
 
 ### <a name="azure-mfa"></a>Azure MFA
 
@@ -268,7 +252,6 @@ Azure MFA は、Azure Active Directory 内で提供される認証サービス�
 |---|---|
 |動作のしくみ: Azure Multi-Factor Authentication|[https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)|
 |方法:クラウドベースの Azure Multi-Factor Authentication をデプロイする|[https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)|
-|
 
 ## <a name="strong-authorisation"></a>強力な承認
 
@@ -282,7 +265,6 @@ Azure 内で特権操作を実行するためのアクセス権は、そのア�
 |---|---|
 |Azure のロール ベースのアクセス制御|[https://docs.microsoft.com/azure/role-based-access-control](https://docs.microsoft.com/azure/role-based-access-control)|
 |ロールの定義について|[https://docs.microsoft.com/azure/role-based-access-control/role-definitions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions)|
-|
 
 ### <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 
@@ -292,7 +274,6 @@ PIM は、特権ロールへのアクセスを制御する Azure Active Director
 |---|---|
 |Privileged Identity Management (PIM) のドキュメント|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)|
 |PIM の使用を開始する|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started)|
-|
 
 ### <a name="conditional-access"></a>条件付きアクセス
 
@@ -302,7 +283,6 @@ PIM は、特権ロールへのアクセスを制御する Azure Active Director
 |---|---|
 |条件付きアクセスのドキュメント|[https://docs.microsoft.com/azure/active-directory/conditional-access](https://docs.microsoft.com/azure/active-directory/conditional-access)|
 |方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する|[https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|
-|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Bing Entity Search のドキュメント
 metadata:
-  title: Bing Entity Search API のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  title: Bing Entity Search API のドキュメント - チュートリアル、クイックスタート、API リファレンス
+  titleSuffix: Azure Cognitive Services
   description: Bing Entity Search API を使用して、人物、場所、または定義されたサブジェクトに関する情報を取得する方法を説明します。 チュートリアルでは、このサービスを使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-entity-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

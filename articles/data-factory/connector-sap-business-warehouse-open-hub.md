@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256906"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967434"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 
@@ -174,6 +174,8 @@ SAP BW オープン ハブとの間でデータをコピーするには、デー
 
 SAP BW オープン ハブからデータをコピーするには、コピー アクティビティのソースの種類を **SapOpenHubSource** に設定します。 コピー アクティビティの**ソース** セクションで必要とされる、種類固有のその他のプロパティはありません。
 
+データ読み込みを高速化するために、コピー アクティビティに [`parallelCopies`](copy-activity-performance.md#parallel-copy) を設定して、SAP BW オープン ハブから並行してデータを読み込むことができます。 たとえば、`parallelCopies` を 4 に設定すると、Data Factory では同時に 4 つの RFC 呼び出しが実行され、各 RFC 呼び出しは、DTP 要求 ID とパッケージ ID でパーティション分割された SAP BW オープン ハブ テーブルからデータの一部を取得します。 これは、一意の DTP 要求 ID + パッケージ ID の数値が `parallelCopies` の値よりも大きい場合に適用されます。
+
 **例:**
 
 ```json
@@ -199,7 +201,8 @@ SAP BW オープン ハブからデータをコピーするには、コピー �
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]

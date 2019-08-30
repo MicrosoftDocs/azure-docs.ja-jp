@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 20bb8d5380f5a905a827dfb12dcc032e327267e0
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8f33e36568171ab7b37f536a3c7883b004cb71c0
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418230"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68838028"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -338,13 +338,13 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. **[接続文字列]** ボックスで、次のエントリを追加します。
 
-   |Name  |接続文字列  |データベースの種類|
+   |EnableAdfsAuthentication  |接続文字列  |データベースの種類|
    |---------|---------|------|
    |AzureWebJobsStorage | {先ほどコピーした Storage 接続文字列}|カスタム|
 
 1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
 
-   |Name  |値  |
+   |EnableAdfsAuthentication  |値  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 
@@ -370,7 +370,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 [Application Insights](../azure-monitor/app/app-insights-overview.md) のログ記録を利用するには、ログ記録のコードを次のように更新します。
 
 * 既定の[フィルター](webjobs-sdk-how-to.md#log-filtering)を使用して、Application Insights のログ記録プロバイダーを追加します。ローカル環境で実行すると、すべての情報と高レベルのログが、コンソールと Application Insights の両方に送られます。
-* ホストの終了時にログ出力がフラッシュされるように、`LoggerFactory` オブジェクトを `using` ブロックに配置します。
+* ホストの終了時にログ出力がフラッシュされるように、[LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) オブジェクトを `using` ブロックに配置します。
 
 1. Application Insights ログ記録プロバイダー用の NuGet パッケージの最新の安定した 3.x バージョンをインストールします: `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`。
 

@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370479"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946386"
 ---
-# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Azure Machine Learning 内でトレーニングの実行中にメトリックを記録する
+# <a name="log-metrics-during-training-runs"></a>トレーニングの実行中にメトリックを記録する
 
 実験を追跡し、メトリックを監視することで、モデルの作成プロセスを拡張します。 この記事では、Azure Machine Learning service におけるトレーニング スクリプトへのログ記録の追加、実験の実行の送信、実行の監視、実行の結果の表示を行う方法について説明します。
+
+> [!NOTE]
+> Azure Machine Learning service では、AutoML や トレーニング ジョブを実行する Docker コンテナーなど、トレーニング中に他のソースから情報をログに記録することもできます。 これらのログについては記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
 
 ## <a name="list-of-training-metrics"></a>トレーニング メトリックの一覧 
 
@@ -49,7 +52,7 @@ ms.locfileid: "68370479"
 ## <a name="set-up-the-workspace"></a>ワークスペースを設定する
 ログを追加して実験を送信する前に、ワークスペースを設定する必要があります。
 
-1. ワークスペースを読み込みます。 ワークスペース構成の設定について詳しくは、「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md#sdk)」の手順に従ってください。
+1. ワークスペースを読み込みます。 ワークスペースの構成の設定について詳しくは、[ワークスペース構成ファイル](how-to-configure-environment.md#workspace)についての記事を参照してください。
 
    ```python
    from azureml.core import Experiment, Run, Workspace

@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 810f375642af49814049589cb83ad17fea578b13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b4ec9e71d9ce932a7b206467db91760f4a4fc47
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027713"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128980"
 ---
 # <a name="apply-transformation-module"></a>変換の適用モジュール
 

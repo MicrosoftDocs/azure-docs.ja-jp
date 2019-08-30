@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7312821320084c766f5b3357fe64c061df83673b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827652"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534230"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -22,9 +22,9 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
 このソリューションでは、SQL ネイティブ API シリーズを活用して、SQL データベースのバックアップを作成します。
 
-* 保護し、その中のデータベースに対してクエリを実行する SQL Server VM を指定すると、Azure Backup サービスにより、`AzureBackupWindowsWorkload`  拡張機能という名前のワークロード バックアップ拡張機能が VM 内にインストールされます。
+* SQL Server VM (保護対象で、その中のデータベースに対してクエリを実行するもの) を指定すると、Azure Backup サービスにより、`AzureBackupWindowsWorkload` 拡張機能という名前のワークロード バックアップ拡張機能が VM 上にインストールされます。
 * この拡張機能は、コーディネーターと SQL プラグインで構成されています。 コーディネーターは、バックアップの構成、バックアップ、復元など、さまざまな操作のワークフローのトリガーを処理し、プラグインは実際のデータ フローを処理します。
-* この VM 上のデータベースを検出できるようにするために、Azure Backup により、アカウント  `NT SERVICE\AzureWLBackupPluginSvc` が作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。 Azure Backup では、データベースの検出と照会に `NT AUTHORITY\SYSTEM` アカウントが利用されます。そのため、このアカウントは SQL 上でパブリック ログインである必要があります。 SQL Server VM を Azure Marketplace から作成しなかった場合、エラー  **UserErrorSQLNoSysadminMembership** が発生する可能性があります。 これが発生した場合、 [こちらの手順に従ってください](backup-azure-sql-database.md)。
+* この VM 上のデータベースを検出できるようにするために、Azure Backup により、アカウント `NT SERVICE\AzureWLBackupPluginSvc` が作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。 Azure Backup では、データベースの検出と照会に `NT AUTHORITY\SYSTEM` アカウントが利用されます。そのため、このアカウントは SQL 上でパブリック ログインである必要があります。 SQL Server VM を Azure Marketplace から作成しなかった場合、エラー **UserErrorSQLNoSysadminMembership** が発生する可能性があります。 これが発生した場合、[こちらの手順に従ってください](backup-azure-sql-database.md)。
 * 選択したデータベースに対して保護の構成をトリガーすると、バックアップ サービスにより、コーディネーターに対してバックアップ スケジュールとその他のポリシーの詳細が設定されます。これにより、拡張機能が VM 内にローカルにキャッシュされます。
 * スケジュールされた時刻になると、コーディネーターがプラグインと通信し、VDI を使用して SQL サーバーからバックアップ データのストリーム配信を開始します。  
 * プラグインは Recovery Services コンテナーに直接データを送信するため、ステージングの場所は必要ありません。 データは Azure Backup サービスによって暗号化され、ストレージ アカウント内に格納されます。
@@ -45,7 +45,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 **サポート** | **詳細**
 --- | ---
 **サポートされているデプロイ** | SQL Marketplace の Azure VM と、Marketplace 以外の (SQL Server が手動でインストールされる) VM がサポートされています。
-**サポートされている地域** | オーストラリア南東部 (ASE)、オーストラリア東部 (AE) <br> ブラジル南部 (BRS)<br> カナダ中部 (CNC)、カナダ東部 (CE)<br> 東南アジア (SEA)、東アジア (EA) <br> 米国東部 (EUS)、米国東部 2 (EUS2)、米国中西部 (WCUS)、米国西部 (WUS)、米国西部 2 (WUS 2)、米国中北部 (NCUS)、米国中部 (CUS)、米国中南部 (SCUS) <br> インド中部 (INC)、インド南部 (INS) <br> 東日本 (JPE)、西日本 (JPW) <br> 韓国中部 (KRC)、韓国南部 (KRS) <br> 北ヨーロッパ (NE)、西ヨーロッパ <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov アリゾナ、US Gov バージニア、US Gov テキサス、US DoD 中部、US DoD 東部
+**サポートされている地域** | オーストラリア南東部 (ASE)、オーストラリア東部 (AE) <br> ブラジル南部 (BRS)<br> カナダ中部 (CNC)、カナダ東部 (CE)<br> 東南アジア (SEA)、東アジア (EA) <br> 米国東部 (EUS)、米国東部 2 (EUS2)、米国中西部 (WCUS)、米国西部 (WUS)、米国西部 2 (WUS 2)、米国中北部 (NCUS)、米国中部 (CUS)、米国中南部 (SCUS) <br> インド中部 (INC)、インド南部 (INS) <br> 東日本 (JPE)、西日本 (JPW) <br> 韓国中部 (KRC)、韓国南部 (KRS) <br> 北ヨーロッパ (NE)、西ヨーロッパ <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov アリゾナ、US Gov バージニア、US Gov テキサス、US DoD 中部、US DoD 東部
 **サポートされているオペレーティング システム** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012<br/><br/> Linux は現在サポートされていません。
 **サポートされる SQL Server のバージョン** | SQL Server 2017 (詳細は[こちら](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017))、SQL Server 2016 および SP (詳細は[こちら](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack))、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
 **サポートされている .NET バージョン** | VM 内にインストールされている .NET Framework 4.5.2 以降
@@ -58,7 +58,7 @@ Azure Backup による [EOS SQL Sever](https://docs.microsoft.com/azure/virtual-
 2. .NET Framework 4.5.2 以降を VM にインストールする必要がある
 3. FCI とミラー化されたデータベースのバックアップはサポートされない
 
-この機能の一般提供が開始されるまで、ユーザーはこの機能について課金されません。 その他の[機能の考慮事項と制限事項](#feature-consideration-and-limitations)もすべてこれらのバージョンに適用されます。 [レジストリ キー](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration)の設定など、SQL Servers 2008 および 2008 R2 で保護を構成する前に、[前提条件](backup-sql-server-database-azure-vms.md#prerequisites)を参照してください (この機能が一般提供された場合、この手順は不要です)。
+この機能の一般提供が開始されるまで、ユーザーはこの機能について課金されません。 その他の[機能の考慮事項と制限事項](#feature-consideration-and-limitations)もすべてこれらのバージョンに適用されます。 [レジストリ キー](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration)の設定など、SQL Servers 2008 および 2008 R2 上で保護を構成する前に、[前提条件](backup-sql-server-database-azure-vms.md#prerequisites)を参照してください (この機能が一般提供になると、この手順は不要になります)。
 
 
 ## <a name="feature-consideration-and-limitations"></a>機能の考慮事項と制限事項
@@ -75,7 +75,7 @@ Azure Backup による [EOS SQL Sever](https://docs.microsoft.com/azure/virtual-
 - コンテナーあたり**約 2,000 個**の SQL Server データベースをバックアップできます。 データベースの数が多い場合、複数のコンテナーを作成できます。
 - 一度に最大 **50** 個のデータベースのバックアップを構成できます。この制限により、バックアップの負荷が最適化されます。
 - サポートされているデータベースの最大サイズは **2 TB** です。これを超えるサイズの場合は、パフォーマンスの問題が生じる可能性があります。
-- サーバーあたりいくつのデータベースを保護できるかを把握するには、帯域幅、VM のサイズ、バックアップの頻度、データベースのサイズなどの要因を考慮する必要があります。VM リソースとバックアップ ポリシーに基づいて、サーバーごとに使用できるデータベースの概数を算出する、リソース プランナーを[ダウンロード](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)します。
+- サーバーあたりいくつのデータベースを保護できるかを把握するには、帯域幅、VM のサイズ、バックアップの頻度、データベースのサイズなどの要因を考慮する必要があります。VM リソースとバックアップ ポリシーに基づいて、サーバーごとに使用できるデータベースの概数を算出する、リソース プランナーを[ダウンロード](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)します。
 - 可用性グループの場合は、バックアップはいくつかの要因に基づいて異なるノードから作成されます。 可用性グループのバックアップ動作を以下にまとめています。
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性グループの場合のバックアップ動作

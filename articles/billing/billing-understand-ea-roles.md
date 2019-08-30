@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
-ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39526defb8f41ddacb0a26d7ad852f820ca6ea77
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370715"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034525"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure の Azure Enterprise Agreement 管理者ロールを理解する
 
@@ -56,7 +56,7 @@ ms.locfileid: "60370715"
 |通知の連絡窓口を追加または削除する<sup>2</sup> |✔|✘|✘|✘|✘|
 |部門を作成し、管理する |✔|✘|✘|✘|✘|
 |部門管理者を表示する|✔|✔|✔|✔|✘|
-|部門管理者を追加または削除する|✔|✔|✔|✘|✘|
+|部門管理者を追加または削除する|✔|✘|✔|✘|✘|
 |登録済みのアカウントを表示する |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
 |登録にアカウントを追加する/アカウント所有者を変更する|✔|✘|✔<sup>3</sup>|✘|✘|
 |サブスクリプションとサブスクリプション アクセス許可を作成し、管理する|✘|✘|✘|✘|✔|

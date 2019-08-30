@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Java での Table API の使用 - Azure Cosmos DB'
+title: Table API と Java を使用してアプリを作成する - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB Table API を使って Azure Portal と Java でアプリケーションを作成する方法を示します
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 3610a5be356f306e4f92ea35d399a888f568d6d3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-august2019
+ms.openlocfilehash: d1eade1b5bdbbce2bc47c5e6177d21c7ff835936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326196"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933944"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>クイック スタート: Java と Azure Cosmos DB で Table API アプリを構築する
 
@@ -84,7 +85,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
-1. [Azure Portal](https://portal.azure.com/) で **[接続文字列]** をクリックします。 
+1. [Azure portal](https://portal.azure.com/) で **[接続文字列]** を選択します。 
 
    ![[接続文字列] ウィンドウに表示されている必要な接続文字列情報をコピーします。](./media/create-table-java/connection-string.png)
 

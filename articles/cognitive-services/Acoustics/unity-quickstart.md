@@ -3,20 +3,20 @@ title: Unity での Project Acoustics クイック スタート
 titlesuffix: Azure Cognitive Services
 description: サンプル コンテンツを使用して、Unity の Project Acoustics 設計コントロールを試し、Windows デスクトップにデプロイします。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93eb44bf91bc2c8346660a4d770ee6d83501c3ae
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0ea020ca76381a4ae5d6b6e480c94e63f9aa2dab
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706604"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933115"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Project Acoustics Unity クイック スタート
 Unity のProject Acoustics サンプル コンテンツを使用して、シミュレーション機能付きの設計 コントロールを試します。
@@ -38,16 +38,35 @@ Unity のProject Acoustics サンプル コンテンツを使用して、シミ�
 
 * **[ProjectAcoustics.unitypackage]** を選択します。
 
+* **[Import]\(インポート\)** ボタンをクリックして、Unity パッケージをプロジェクトに統合します。  
+  
+    ![Unity の [Import Package]\(パッケージのインポート\) ダイアログのスクリーンショット](media/import-dialog.png)  
+
 既存のプロジェクトにパッケージをインポートする場合は、追加の手順と備考について [Unity の統合](unity-integration.md)をご覧ください。
+
+>[!NOTE] 
+>インポートの完了後、コンソール ログにいくつかのエラーが表示されます。  次の手順に進んで Unity を再起動してください。
 
 ## <a name="restart-unity"></a>Unity を再起動する
 音響ツールキットのベイク部分には、.NET 4.x スクリプト ランタイム バージョンが必要です。 パッケージ インポートによって Unity Player の設定が更新されます。 この設定を有効にするには、Unity を再起動します。
 
 **[Player Settings]\(Player の設定\)** を開くと、この設定が有効になったことを確認できます。
 
-![Unity の [Player Settings]\(Player の設定\) パネルのスクリーンショット](media/player-settings.png)
+![Unity の [Player Settings]\(Player の設定\) パネルのスクリーンショット](media/player-settings.png)  
 
-![Unity の [Player Settings]\(Player の設定\) パネルで .NET 4.5 を選択したところのスクリーンショット](media/net45.png)
+![Unity の [Player Settings]\(Player の設定\) パネルで .NET 4.5 を選択したところのスクリーンショット](media/net45.png)  
+
+>[!NOTE]
+>スクリーンショットは、Unity 2018.x で撮影しました。 それよりも新しいバージョンの Unity では異なる場合があります。
+
+## <a name="open-the-project-acoustics-bake-window"></a>Project Acoustics ベイク ウィンドウを開く
+次のように、Unity メニューから **[Window]\(ウィンドウ\)、[Acoustics]\(音響\)** の順に選択します。
+
+![Acoustics ウィンドウ メニュー オプションが強調表示されている Unity エディターのスクリーンショット](media/window-acoustics.png)
+
+**Acoustics** という名前の新しいフローティング ウィンドウが表示されます。  音響シミュレーションのプロパティは、このウィンドウで設定します。
+
+![Acoustics ウィンドウが表示された Unity エディターのスクリーンショット](media/unity-editor-plugin-window.png)  
 
 ## <a name="experiment-with-design-controls"></a>設計コントロールを試してみる
 **[ProjectAcousticsSample]** フォルダーのサンプル シーンを開き、Unity エディターの再生ボタンをクリックします。 W、A、S、D、およびマウスを使用してあちこち移動します。 音響があるシーンとないシーンがどのように聞こえるかを比較するには、**R** ボタンを押し続けます (オーバーレイ テキストが赤色になり、[Acoustics: Disabled]\(音響: 無効\) と表示されるまで)。 その他のコントロールのキーボード ショートカットを表示するには、**F1** を押します。 コントロールは、右クリックして実行するアクションを選択し、左クリックしてアクションを実行することによっても使用できます。
@@ -56,7 +75,7 @@ Unity のProject Acoustics サンプル コンテンツを使用して、シミ�
 
 ![Unity AcousticsAdjust スクリプトのスクリーンショット](media/acoustics-adjust.png)
 
-以下で、提供されるコントロールで生成できる効果の一部を説明します。 各コントロールの詳細については、[Project Acoustics Unity 設計チュートリアル](unreal-workflow.md)をご覧ください。
+以下で、提供されるコントロールで生成できる効果の一部を説明します。 各コントロールの詳細については、[Project Acoustics Unity 設計チュートリアル](unity-workflow.md)をご覧ください。
 
 ### <a name="modify-distance-based-attenuation"></a>距離ベースの減衰を変更する
 **Project Acoustics** Unity 立体化プラグインによって提供されるオーディオ DSP は、Unity エディターに組み込まれているソース単位かつ距離ベースの減衰を考慮します。 距離ベースの減衰のコントロールは、音源の **[Inspector]** パネルで、 **[3D Sound Settings]** 下の **[Audio Source]** コンポーネント内にあります。

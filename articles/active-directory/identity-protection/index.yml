@@ -1,40 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD Identity Protection
+### YamlMime:Landing
+title: Azure AD Identity Protection のドキュメント
+summary: Identity Protection を使用して組織内の ID のリスクを特定し、対処する方法について説明します
 metadata:
-  document_id: null
-  title: Azure Active Directory Identity Protection のドキュメント - クイック スタート、概念、リファレンス | Microsoft Docs
-  description: Azure Active Directory Identity Protection を構成してテストする方法について説明します。
+  title: Azure AD Identity Protection のドキュメント
+  description: Identity Protection を使用して組織内の ID のリスクを特定し、対処する方法について説明します
   services: active-directory
-  ms.subservice: identity-protection
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: identity-protection
   ms.topic: landing-page
-  ms.date: 09/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 侵害された可能性のある ID の検出のしくみと、それらに対処する自動応答を実装する方法について説明します。 Azure Active Directory Identity Protection は Azure AD Premium P2 エディションの機能です。この機能を使用すると、以下を行うことができます。<ul><li>組織の ID に影響する潜在的な脆弱性を検出する</li><li>組織の ID に関連する疑わしいアクションに自動的に対応する条件付きアクセス ポリシーを構成する</li><li>疑わしいインシデントを調査し、適切なアクションを実行して解決する</li></ul><br> 以下のリソースは、すぐに作業を開始するうえで役に立ちます。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Azure AD Identity Protection 入門
-    href: 'https://www.youtube.com/watch?v=zI3jn_G0_Ns'
-    width: 246
-sections:
-  - title: 5 分間のクイックスタート
-    items:
-      - type: paragraph
-        text: 一般的なアクセス シナリオのサインイン リスク条件付きアクセス ポリシーを構成する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: セッションのリスクが検出されたときにアクセスをブロックする
-            href: quickstart-sign-in-risk-policy.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 5f69dff8568c308d7a8eb9d80e247ef7cfc58acd
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874105"
+landingContent:
+- title: Identity Protection について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Identity Protection とは
+      url: overview-v2.md
+    - text: セキュリティの概要の紹介
+      url: security-overview.md
+- title: リスク イベントの調査
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: リスク ポリシーの構成
+      url: howto-configure-risk-policies.md
+    - text: 危険なユーザーとサインインの調査
+      url: howto-investigate-risky-users-signins.md
+  - linkListType: reference
+    links:
+    - text: イベントの種類
+      url: risk-events-reference.md
+- title: Identity Protection のエクスペリエンス
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: サインイン エクスペリエンス
+      url: flows.md
+  - linkListType: how-to-guide
+    links:
+    - text: リスク イベントのシミュレーション
+      url: playbook.md
+  - linkListType: quickstart
+    links:
+    - text: セッションのリスクが検出されたときにアクセスをブロックする
+      url: quickstart-sign-in-risk-policy.md

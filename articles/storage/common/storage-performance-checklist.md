@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233018"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985162"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 
@@ -172,7 +172,7 @@ Azure CDN の詳細については、「 [Azure CDN](https://azure.microsoft.com
 
 #### <a name="useful-resources"></a>有用なリソース
 
-SAS の詳細については、[Shared Access Signature に関する記事のパート 1 の SAS モデル](../storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。  
+SAS の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](storage-sas-overview.md)」を参照してください。  
 
 CORS の詳細については、「 [Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](https://msdn.microsoft.com/library/azure/dn535601.aspx)」を参照してください。  
 

@@ -1,21 +1,21 @@
 ---
-title: '回帰: 価格を予測する'
+title: 'ビジュアル インターフェイスの例 #1: 価格を予測するための回帰'
 titleSuffix: Azure Machine Learning service
 description: コードを 1 行も書くことなく、自動車の価格を予測する機械学習モデルを構築する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: ddc7ae10581075127f72dd020c59cf28bbfc9ae2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0c86955e0b10111bf9b6db0d884b73867a4467c5
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606134"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990405"
 ---
 # <a name="sample-1---regression-predict-price"></a>サンプル 1 - 回帰: 価格を予測する
 

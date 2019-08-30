@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: a77cc22c7a56c29b5b42a032af3d0ea0b2c17d88
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640820"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563523"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -57,7 +57,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
             * **flows** - フローのコレクション
                 * **mac** - フローが収集された VM の NIC の MAC アドレス
                 * **flowTuples** - コンマで区切る形式で表現されたフローの組に対して複数のプロパティを含む文字列
-                    * **Time Stamp** - UNIX EPOCH 形式でフローが発生した際のタイム スタンプ
+                    * **Time Stamp** - UNIX epoch 形式でフローが発生した際のタイム スタンプ
                     * **Source IP** - 発信元 IP
                     * **Destination IP** - 宛先 IP
                     * **Source Port** - 発信ポート
@@ -90,6 +90,9 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **リソースに接続されているすべての NSG 上で NSG フロー ログ記録を有効にする**:Azure のフロー ログ記録は NSG リソースに対して構成されています。 1 つのフローは 1 つの NSG ルールにのみ関連付けられます。 複数の NSG が利用されるシナリオでは、リソースのサブネットまたはネットワーク インターフェイスが適用されたすべての NSG で NSG フロー ログ記録を有効にして、すべてのトラフィックを確実に記録することをお勧めします。 ネットワーク セキュリティ グループの詳細については、[トラフィックの評価方法](../virtual-network/security-overview.md#how-traffic-is-evaluated)に関するページを参照してください。 
 
 **フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 NSG フロー ログ記録と共にアイテム保持ポリシー機能を使用すると、大量のストレージ操作とそれに関連するコストが発生する可能性があります。 アイテム保持ポリシー機能が不要な場合は、この値を 0 に設定することをお勧めします。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」と「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+
+> [!IMPORTANT]
+> 現在、Network Watcher の[ネットワーク セキュリティ グループ (NSG) フロー ログ](network-watcher-nsg-flow-logging-overview.md)がアイテム保持ポリシー設定に基づいて BLOB ストレージから自動的に削除されないという問題があります。 0 以外のアイテム保持ポリシーが存在する場合は、保持期間を過ぎているストレージ BLOB を定期的に削除して、課金が発生しないようにすることをお勧めします。 NSG フロー ログ ストレージ BLOB を削除する方法の詳細については、[NSG フロー ログ ストレージ BLOB の削除](network-watcher-delete-nsg-flow-log-blobs.md)に関する記事を参照してください。
 
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
 

@@ -24,7 +24,7 @@ ms.locfileid: "68234864"
 
 Azure Portal で使用可能な Azure の [ヘルプとサポート] ブレード経由でサポート要求を作成するには、次の手順に従います。 
 
-1. https://portal.azure.com から、 **[ヘルプとサポート]** を選択します。
+1. [https://portal.azure.com](https://portal.azure.com ) から、 **[ヘルプとサポート]** を選択します。
 
    ![[ヘルプとサポート]](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -64,7 +64,7 @@ Azure Portal で使用可能な Azure の [ヘルプとサポート] ブレー�
 
 Azure Portal で使用可能な Azure の [Usages + Quota] (使用量とクォータ) ブレード経由でサポート要求を作成するには、次の手順に従います。 
 
-1. https://portal.azure.com から **[サブスクリプション]** を選択します。
+1. [https://portal.azure.com](https://portal.azure.com ) から **[サブスクリプション]** を選択します。
 
    ![Subscriptions](./media/resource-manager-core-quotas-request/subscriptions.png)
 

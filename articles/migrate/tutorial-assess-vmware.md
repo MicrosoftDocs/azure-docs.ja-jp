@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828305"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952095"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Azure Migrate: Server Assessment を使用して VMware VM を評価する
 
@@ -180,8 +180,39 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 
 ### <a name="scoping-discovery"></a>検出のスコープ設定
 
-検出に使用する vCenter アカウントのアクセスを制限することで、検出のスコープを設定できます。 vCenter Server のデータセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM に、スコープを設定できます。 
+検出に使用する vCenter アカウントのアクセスを制限することで、検出のスコープを設定できます。 vCenter Server のデータセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM に、スコープを設定できます。
 
+スコープを設定するには、次の手順を実行する必要があります。
+1.  vCenter ユーザー アカウントを作成します。
+2.  必要な特権を持つ新しいロールを定義します (<em>エージェントレス サーバー移行に必要</em>)。
+3.  vCenter オブジェクトに対するアクセス許可をユーザー アカウントに割り当てます。
+
+**vCenter ユーザー アカウントを作成する**
+1.  vCenter Server 管理者として vSphere Web クライアントにログインします。
+2.  **[Administration]\(管理\)**  >  **[SSO users and Groups]\(SSO のユーザーとグループ\)**  >  **[Users]\(ユーザー\)** タブの順にクリックします。
+3.  **[New User]\(新しいユーザー\)** アイコンをクリックします。
+4.  必要な情報を入力して新しいユーザーを作成し、 **[OK]** をクリックします。
+
+**必要な特権を持つ新しいロールを定義する** (<em>エージェントレス サーバー移行に必要</em>)
+1.  vCenter Server 管理者として vSphere Web クライアントにログインします。
+2.  **[Administration]\(管理\)**  >  **[Role Manager]\(ロール マネージャー\)** に移動します。
+3.  ドロップダウン メニューから目的の vCenter Server を選択します。
+4.  **[Create role]\(ロールの作成\)** アクションをクリックします。
+5.  新しいロールの名前を入力します (例: <em>Azure_Migrate</em>)。
+6.  新しく定義したロールに、必要な[アクセス許可](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)を割り当てます。
+7.  Click **OK**.
+
+**vCenter オブジェクトに対するアクセス許可を割り当てる**
+
+vCenter ユーザー アカウントにロールを割り当ててて、vCenter のインベントリ オブジェクトに対するアクセス許可を割り当てる方法としては、2 つのアプローチがあります。
+- サーバー評価に関しては、検出対象の VM がホストされるすべての親オブジェクトの**読み取り専用**ロールを vCenter ユーザー アカウントに適用する必要があります。 すべての親オブジェクト (データ センターを最上位とする階層内のホスト、ホストのフォルダー、クラスター、クラスターのフォルダー) を対象にしてください。 階層内の子オブジェクトには、これらのアクセス許可が反映されます。 
+
+    同様に、サーバー移行に関しては、移行対象の VM がホストされるすべての親オブジェクトについて、必要な[特権](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)が割り当てられた (たとえば <em>Azure_Migrate</em> という名前の) ユーザー定義ロールを vCenter ユーザー アカウントに適用する必要があります。
+
+![アクセス許可の割り当て](./media/tutorial-assess-vmware/assign-perms.png)
+
+- もう 1 つのアプローチとして、ユーザー アカウントとロールをデータセンター レベルで割り当て、それらを子オブジェクトに伝達する方法もあります。 そのうえで、検出も移行もしたくないすべてのオブジェクト (VM など) に関して、**アクセスなし**ロールをアカウントに与えます。 ただし、この構成は扱いが煩雑です。 親から継承されたアクセス権がすべての新しい子オブジェクトにも自動的に付与されるので、予期しないアクセス制御が行われる恐れがあります。 そのため、最初の方法を使用することをお勧めします。
+ 
 > [!NOTE]
 > 現在は、vCenter アカウントに vCenter VM フォルダー レベルのアクセス権を付与した場合、Server Assessment で VM を検出することはできません。 VM フォルダーで検出のスコープを指定する場合は、vCenter アカウントに VM レベルで読み取り専用アクセス権を割り当てることにより実現できます。  これを行う手順は以下のとおりです。
 >

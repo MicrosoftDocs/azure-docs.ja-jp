@@ -1,244 +1,163 @@
 ---
-title: チュートリアル:Azure Active Directory と Land Gorilla Client の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory と Land Gorilla の統合 | Microsoft Docs
 description: Azure Active Directory と Land Gorilla の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/13/2017
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d12519a2bd0a5e3951d0ca9ae51a54bd728a782b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7c2f9b076d831f4d851a964ababb64930a7c7f8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65987893"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880005"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>チュートリアル:Azure Active Directory と Land Gorilla Client の統合
+# <a name="tutorial-integrate-land-gorilla-with-azure-active-directory"></a>チュートリアル:Land Gorilla と Azure Active Directory の統合
 
-このチュートリアルでは、Land Gorilla Client と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Land Gorilla と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Land Gorilla を統合すると、次のことができます。
 
-Land Gorilla Client と Azure AD の統合には、次の利点があります。
+* Land Gorilla にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Land Gorilla に自動的にサインインするように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
 
-- Land Gorilla Client にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Land Gorilla Client にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Land Gorilla Client と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-- Azure AD サブスクリプション
-- Land Gorilla Client でのシングル サインオンが有効なサブスクリプション
-
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
-
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Land Gorilla でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Land Gorilla Client の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
+* Land Gorilla では、**IDP** Initiated SSO がサポートされます
 
-## <a name="adding-land-gorilla-client-from-the-gallery"></a>ギャラリーからの Land Gorilla Client の追加
-Azure AD への Land Gorilla Client の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Land Gorilla Client を追加する必要があります。
+## <a name="adding-land-gorilla-from-the-gallery"></a>ギャラリーからの Land Gorilla 追加
 
-**ギャラリーから Land Gorilla Client を追加するには、次の手順に従います。**
+Azure AD への Land Gorilla の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Land Gorilla を追加する必要があります。
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Land Gorilla**」と入力します。
+1. 結果のパネルから **[Land Gorilla]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-    ![Active Directory][1]
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
+**B.Simon** というテスト ユーザーを使用して、Land Gorilla に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Land Gorilla の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-    ![[アプリケーション]][2]
-    
-1. ダイアログの上部にある **[追加]** をクリックします。
+Land Gorilla に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
-    ![[アプリケーション]][3]
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+2. **[Land Gorilla SSO の構成](#configure-land-gorilla-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Land Gorilla テスト ユーザーの作成](#create-land-gorilla-test-user)** - Land Gorilla で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-1. 検索ボックスに、「**Land Gorilla Client**」と入力します。
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![Azure AD のテスト ユーザーの作成](./media/landgorilla-tutorial/tutorial_landgorilla_search.png)
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. 結果ウィンドウで **[Land Gorilla Client]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+1. [Azure portal](https://portal.azure.com/) の **Land Gorilla** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/landgorilla-tutorial/tutorial_landgorilla_addfromgallery.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
+1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"B. Simon" というテスト ユーザーに基づいて、Land Gorilla Client で Azure AD のシングル サインオンを構成し、テストします。
+    a. **[識別子]** ボックスに、次のいずれかのパターンで URL を入力します。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Land Gorilla Client ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Land Gorilla Client の関連ユーザーの間で、リンク関係が確立されている必要があります。
+    | | |
+    |-|-|
+    | `https://<customer domain>.landgorilla.com/`|
+    | `https://www.<customer domain>.landgorilla.com`|
+    | | |
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Land Gorilla Client の **[Username (ユーザー名)]** の値として割り当てます。
+    b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
-Land Gorilla Client で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+    | | |
+    |-|-|
+    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
+    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
+    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
+    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - 制限されたグループで Azure AD のシングル サインオンをテストします。
-1. **[Land Gorilla のテスト ユーザーの作成](#creating-a-land-gorilla-test-user)** - B. Simon で Azure AD のシングル サインオンをテストします。
-1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - B. Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値の取得については、[Land Gorilla Client サポート チーム](https://www.landgorilla.com/support/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-このセクションでは、Microsoft Azure 管理ポータルで Azure AD のシングル サインオンを有効にし、Land Gorilla Client アプリケーションでシングル サインオンを構成します。
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-**Land Gorilla Client で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+1. **[Land Gorilla のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-1. Microsoft Azure 管理ポータルの **Land Gorilla Client** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    ![Configure single sign-on][4]
+### <a name="configure-land-gorilla-sso"></a>Land Gorilla SSO の構成
 
-1. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![Configure single sign-on](./media/landgorilla-tutorial/tutorial_landgorilla_samlbase.png)
+**Land Gorilla** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Land Gorilla サポート チーム](https://www.landgorilla.com/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
-1. **[Land Gorilla Client のドメインと URL]** セクションで、次の手順を実行します。
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    ![Configure single sign-on](./media/landgorilla-tutorial/tutorial_landgorilla_url_02.png)
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-    a. **[識別子]** ボックスに、次のいずれかの形式で値を入力します。 
-    
-    `https://<customer domain>.landgorilla.com/` 
-    
-    `https://www.<customer domain>.landgorilla.com`
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
-    b. **[応答 URL]** ボックスに、次のいずれかの形式で URL を入力します。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-    `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`
+このセクションでは、B.Simon に Land Gorilla へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-    `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧から、 **[Land Gorilla]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    `https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
-    
-    `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-    > [!NOTE] 
-    > これは実際の値ではないので注意してください。 これらの値は、実際の識別子と応答 URL で更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値の取得については、[Land Gorilla Client チーム](https://www.landgorilla.com/support/)にお問い合わせください。 
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-1. **[SAML 署名証明書]** セクションで、 **[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-    ![Configure single sign-on](./media/landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-1. **[保存]** ボタンをクリックします。
+### <a name="create-land-gorilla-test-user"></a>Land Gorilla テスト ユーザーの作成
 
-    ![Configure single sign-on](./media/landgorilla-tutorial/tutorial_general_400.png) 
+このセクションでは、Land Gorilla で Britta Simon というユーザーを作成します。  [Land Gorilla サポート チーム](https://www.landgorilla.com/support/)と連携し、Land Gorilla プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-1. アプリケーションの SSO 構成を Land Gorilla 側で完成させるには、[Land Gorilla Client サポート チーム](https://www.landgorilla.com/support/)に問い合わせてダウンロード済みの**メタデータ XML** ファイルを提供してください。
-
-
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションの目的は、Microsoft Azure 管理ポータルで B. Simon というテスト ユーザーを作成することです。
-
-![Azure AD ユーザーの作成][100]
-
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
-
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
-
-    ![Azure AD のテスト ユーザーの作成](./media/landgorilla-tutorial/create_aaduser_01.png) 
-
-1. **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/landgorilla-tutorial/create_aaduser_02.png) 
-
-1. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/landgorilla-tutorial/create_aaduser_03.png) 
-
-1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/landgorilla-tutorial/create_aaduser_04.png) 
-
-    a. **[名前]** ボックスに「**B. Simon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、B. Simon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、 **[パスワード]** の値をメモします。
-
-    d. **Create** をクリックしてください。 
-
-### <a name="creating-a-land-gorilla-test-user"></a>Land Gorilla テスト ユーザーの作成
-
-[Land Gorilla サポート チーム](https://www.landgorilla.com/support/)と連携し、Land Gorilla プラットフォームにユーザーを追加してください。
-    
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、B. Simon に Land Gorilla Client へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-![ユーザーの割り当て][200] 
-
-**Land Gorilla Client に B. Simon を割り当てるには、次の手順に従います。**
-
-1. Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
-
-1. アプリケーションの一覧から、**Land Gorilla Client** を選択します。
-
-    ![Configure single sign-on](./media/landgorilla-tutorial/tutorial_landgorilla_app.png) 
-
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
-
-    ![ユーザーの割り当て][202] 
-
-1. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![ユーザーの割り当て][203]
-
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[B. Simon]** を選択します。
-
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-
-
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Land Gorilla Client] タイルをクリックすると、自動的に Land Gorilla Client アプリケーションにサインオンします。
-
+アクセス パネルで [Land Gorilla] タイルをクリックすると、SSO を設定した Land Gorilla に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/landgorilla-tutorial/tutorial_general_01.png
-[2]: ./media/landgorilla-tutorial/tutorial_general_02.png
-[3]: ./media/landgorilla-tutorial/tutorial_general_03.png
-[4]: ./media/landgorilla-tutorial/tutorial_general_04.png
-
-[100]: ./media/landgorilla-tutorial/tutorial_general_100.png
-[200]: ./media/landgorilla-tutorial/tutorial_general_200.png
-[201]: ./media/landgorilla-tutorial/tutorial_general_201.png
-[202]: ./media/landgorilla-tutorial/tutorial_general_202.png
-[203]: ./media/landgorilla-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

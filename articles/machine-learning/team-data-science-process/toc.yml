@@ -115,7 +115,7 @@
                 - name: Storage Explorer を使用する
                   href: move-data-to-azure-blob-using-azure-storage-explorer.md
                 - name: AzCopy を使用する
-                  href: move-data-to-azure-blob-using-azcopy.md
+                  href: 'https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10'
                 - name: Python の使用
                   href: /azure/storage/blobs/storage-python-how-to-use-blob-storage?context=azure/machine-learning/team-data-science-process/context/ml-context
                 - name: SSIS を使用する

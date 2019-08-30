@@ -116,6 +116,8 @@
         - name: AKS クラスターの削除
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
+        - name: AKS クラスターを備えた ACR の作成 (プレビュー)
+          href: cluster-container-registry-integration.md
         - name: 仮想ノードの作成
           items:
             - name: Azure CLI の使用

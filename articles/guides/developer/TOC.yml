@@ -127,7 +127,7 @@
     - name: スケール
       items:
         - name: Web アプリとモバイル アプリ
-          href: 'https://docs.microsoft.com/azure/app-service/web-sites-scale'
+          href: 'https://docs.microsoft.com/azure/app-service/manage-scale-up'
         - name: 仮想マシン
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: マイクロサービス アプリ

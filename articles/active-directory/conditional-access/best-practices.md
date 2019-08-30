@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248877"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963446"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -50,6 +50,7 @@ ms.locfileid: "68248877"
 すべてのポリシーは 2 つのフェーズで適用されます。
 
 - **第 1** のフェーズでは、すべてのポリシーが評価され、満たされていないすべてのアクセス制御が収集されます。 
+
 - **第 2** のフェーズでは、満たしていない要件を満たすように求められます。 いずれかのポリシーによってアクセスがブロックされる場合、ユーザーはブロックされ、他のポリシー制御を満たすよう求めるメッセージは表示されません。 いずれのポリシーによってもブロックされない場合は、次の順序で他のポリシー制御を満たすように求められます。
 
    ![順序](./media/best-practices/06.png)

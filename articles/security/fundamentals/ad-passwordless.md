@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 30c2eb2964f11b729b0ffaf58c532d5189cdc2cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727767"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899953"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory でのパスワードなしの環境
 
 パスワードとの関係を解消するときが来ました。 パスワードは過去には良いものでしたが、今日のデジタルワークプレースでは、ハッカーにとって比較的簡単な攻撃ベクトルとなっています。 ハッカーはパスワードが大好きです。Azure Active Directory (Azure AD) で最もよく拒否されているパスワードに、年、月、季節、地元のスポーツ チームなどの用語が含まれていることを考えれば、その理由は難しくありません。 さらに、[研究](https://aka.ms/passwordguidance)によると、長さの要件、複雑さの要件、変更の頻度など、パスワード管理に対する従来の推奨事項は、人間性に関連するさまざまな理由から逆効果であることが示されています。
 
-ユーザー アカウントの侵害に一般的に使用される 3 種類の攻撃は、パスワード スプレイ、フィッシング、および侵害のリプレイです。 [スマート ロックアウト](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)、[禁止パスワード](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)、[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)などの Azure AD の機能は、このような種類の攻撃に対する保護に役立ちます。 同様に、[多要素認証](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) (MFA)、つまり 2 段階認証を実装し、2 つ目の形式の認証を要求することでセキュリティが強化されます。 ただし、長期的に見れば、最も安全な認証方法を確保するには、パスワードなしのソリューションが最適なソリューションです。
+ユーザー アカウントの侵害に一般的に使用される 3 種類の攻撃は、パスワード スプレイ、フィッシング、および侵害のリプレイです。 [スマート ロックアウト](../../active-directory/authentication/howto-password-smart-lockout.md)、[禁止パスワード](../../active-directory/authentication/concept-password-ban-bad-on-premises.md)、[パスワード保護](../../active-directory/authentication/concept-password-ban-bad-on-premises.md)などの Azure AD の機能は、このような種類の攻撃に対する保護に役立ちます。 同様に、[多要素認証](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA)、つまり 2 段階認証を実装し、2 つ目の形式の認証を要求することでセキュリティが強化されます。 ただし、長期的に見れば、最も安全な認証方法を確保するには、パスワードなしのソリューションが最適なソリューションです。
 
 この記事は、Microsoft のパスワードなしのソリューションを理解して実装し、次の選択肢から 1 つ以上を選択するために役立つユーザー体験の始まりです。
 
@@ -109,7 +109,7 @@ Windows Hello for Business が関係する他のシナリオの認証プロセ�
 
 [Microsoft PIN リセット サービス](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset)は、必要に応じてユーザーが自分の PIN をリセットできる Azure AD の機能です。 管理者は、グループ ポリシー、Microsoft Intune、または互換性のある MDM を使用して、Microsoft PIN リセット サービスを安全に使用するように Windows 10 デバイスを構成できます。これにより、ユーザーは、忘れた PIN を再登録することなく、設定またはロック画面上でリセットできるようになります。
 
-場合によっては、ユーザーはパスワードの使用にフォールバックする必要があります。 [パスワード リセットのセルフサービス](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) (SSPR) は、ユーザーが IT スタッフに連絡することなくパスワードをリセットできるようにする Azure AD のもう 1 つの機能です。 サービスを使用する前に、ユーザーはパスワード リセットのセルフサービスに登録するか、登録してもらう必要があります。 登録時に、ユーザーは組織で有効になっている 1 つまたは複数の認証方法を選択します。 SSPR を使用すると、ユーザーは場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分でブロックを解除できるようにすることで、組織としては、生産に寄与しない時間と、パスワード関連で最も一般的な問題の高いサポート コストを、削減できます。
+場合によっては、ユーザーはパスワードの使用にフォールバックする必要があります。 [パスワード リセットのセルフサービス](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) は、ユーザーが IT スタッフに連絡することなくパスワードをリセットできるようにする Azure AD のもう 1 つの機能です。 サービスを使用する前に、ユーザーはパスワード リセットのセルフサービスに登録するか、登録してもらう必要があります。 登録時に、ユーザーは組織で有効になっている 1 つまたは複数の認証方法を選択します。 SSPR を使用すると、ユーザーは場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分でブロックを解除できるようにすることで、組織としては、生産に寄与しない時間と、パスワード関連で最も一般的な問題の高いサポート コストを、削減できます。
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>Microsoft Authenticator でのパスワードなしのサインイン
 
@@ -125,9 +125,9 @@ Microsoft Authenticator アプリを使用して Azure AD にパスワードな�
 
 * エンド ユーザーの Azure Multi-Factor Authentication が有効になっている
 
-* Microsoft Intune またはサードパーティのモバイル デバイス管理 (MDM) ソリューションを使用してユーザーが自分のデバイスを登録する機能
+* アプリを容易に展開できるように、ユーザーには Microsoft Intune またはサードパーティのモバイル デバイス管理 (MDM) ソリューションを使用して自分のデバイスを登録することをお勧めします
 
-これらの要件が満たされていると想定して、管理者がテナントでパスワードなしの電話によるサインインを有効にするには、[Windows PowerShell](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users) を使用します。 テナントで電話によるサインインが有効になった後、エンド ユーザーが自分の電話を使用したサインインを選択するには、アプリの **[アカウント]** 画面で職場または学校アカウントを選択し、 **[電話によるサインインを有効にする]** を選択します。
+これらの要件が満たされていると想定して、管理者がテナントでパスワードなしの電話によるサインインを有効にするには、[Windows PowerShell](../../active-directory/authentication/howto-authentication-passwordless-phone.md) を使用します。 テナントで電話によるサインインが有効になった後、エンド ユーザーが自分の電話を使用したサインインを選択するには、アプリの **[アカウント]** 画面で職場または学校アカウントを選択し、 **[電話によるサインインを有効にする]** を選択します。
 
 管理者がパスワードなしのサインインを有効にしていると想定すると、エンド ユーザーは次の要件を満たす必要があります。
 
@@ -137,9 +137,9 @@ Microsoft Authenticator アプリを使用して Azure AD にパスワードな�
 
 * アプリにプッシュ通知が追加されている職場または学校のアカウント
 
-アカウントがロックアウトされたり、新しいデバイス上でアカウントの再作成が必要になったりする可能性を回避するには、Microsoft Authenticator を使用してクラウドに[アカウントの資格情報をバックアップ](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-backup-recovery)することをお勧めします。 バックアップ後に、アプリを使用して情報を新しいデバイスに復旧することもできます。これにより、ロックアウトやアカウントの再作成の必要性を回避できる可能性があります。
+アカウントがロックアウトされたり、新しいデバイス上でアカウントの再作成が必要になったりする可能性を回避するには、Microsoft Authenticator を使用してクラウドに[アカウントの資格情報をバックアップ](../../active-directory/user-help/user-help-auth-app-backup-recovery.md)することをお勧めします。 バックアップ後に、アプリを使用して情報を新しいデバイスに復旧することもできます。これにより、ロックアウトやアカウントの再作成の必要性を回避できる可能性があります。
 
-ユーザーの多くはパスワードのみを使用した認証に慣れているため、組織はこのプロセスについてすべてのユーザーを教育することが重要です。 認知によって、ユーザーが Microsoft Authenticator アプリを使用したサインインに関連する[問題](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#known-issues)をヘルプ デスクに問い合わせる可能性が低くなります。
+ユーザーの多くはパスワードのみを使用した認証に慣れているため、組織はこのプロセスについてすべてのユーザーを教育することが重要です。 認知によって、ユーザーが Microsoft Authenticator アプリを使用したサインインに関連する[問題](../../active-directory/authentication/howto-authentication-passwordless-phone.md)をヘルプ デスクに問い合わせる可能性が低くなります。
 
 > [!NOTE]
 > このソリューションの潜在的な障害点は、ローミング ユーザーがインターネットに接続できない場所にいるときです。 FIDO2 セキュリティ キーと Windows Hello for Business に同じ制限は適用されません。
@@ -150,9 +150,9 @@ Microsoft Authenticator アプリを使用して Azure AD にパスワードな�
 
 Microsoft Authenticator アプリをパスワードなしのソリューションとして使用して Azure AD アカウントにサインインする前に、管理者とエンド ユーザーの両方が手順を実行する必要があります。
 
-まず、管理者は Windows PowerShell を使用して、テナント内で[資格情報としてのアプリの使用を有効にする](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-phone-sign-in#enable-my-users)必要があります。 管理者は、Azure Multi-Factor Authentication (Azure MFA) のエンド ユーザーを有効にし、[確認方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#verification-methods)の 1 つとして Microsoft Authenticator アプリを構成する必要もあります。
+まず、管理者は Windows PowerShell を使用して、テナント内で[資格情報としてのアプリの使用を有効にする](../../active-directory/authentication/howto-authentication-passwordless-phone.md)必要があります。 管理者は、Azure Multi-Factor Authentication (Azure MFA) のエンド ユーザーを有効にし、[確認方法](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods)の 1 つとして Microsoft Authenticator アプリを構成する必要もあります。
 
-エンド ユーザーは Microsoft Authenticator アプリを[ダウンロードしてインストール](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)し、確認方法の 1 つとして Microsoft Authenticator アプリを使用するように[アカウントを設定する](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)必要があります。
+エンド ユーザーは Microsoft Authenticator アプリを[ダウンロードしてインストール](../../active-directory/user-help/user-help-auth-app-download-install.md)し、確認方法の 1 つとして Microsoft Authenticator アプリを使用するように[アカウントを設定する](../../active-directory/user-help/security-info-setup-auth-app.md)必要があります。
 
 > [!VIDEO https://www.youtube.com/embed/uWbkLuI4g30]
 
@@ -184,7 +184,7 @@ Microsoft Authenticator を使用したパスワードなしの認証は、Windo
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>ユーザーが Microsoft Authenticator の資格情報を使用してパスワードなしのサインインを管理する
 
-[統合された登録](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)を使用すると、ユーザーは Azure Multi-Factor Authentication とパスワード リセットのセルフサービスの両方を登録してそのメリットを得ることができます。 ユーザーは自分の [[マイ プロファイル] ページ](https://aka.ms/mysecurityinfo)に移動して、これらの設定を登録および管理します。 SSPR を有効にすることに加えて、統合された登録では複数の認証方法とアクションをサポートします。
+[統合された登録](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)を使用すると、ユーザーは Azure Multi-Factor Authentication とパスワード リセットのセルフサービスの両方を登録してそのメリットを得ることができます。 ユーザーは自分の [[マイ プロファイル] ページ](https://aka.ms/mysecurityinfo)に移動して、これらの設定を登録および管理します。 SSPR を有効にすることに加えて、統合された登録では複数の認証方法とアクションをサポートします。
 
 ## <a name="fido2-security-keys"></a>FIDO2 セキュリティ キー
 
@@ -226,9 +226,9 @@ FIDO2 準拠のフォーム ファクターには、USB、NFC、および Blueto
 
 #### <a name="user-sets-up-fido2-security-key"></a>ユーザーが FIDO2 セキュリティ キーを設定する
 
-管理者は[手動でキーをプロビジョニング](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)し、エンド ユーザーに配布することができますが、Windows 10 のロック画面で FIDO2 資格情報プロバイダーをプロビジョニングして有効にすることは、[Intune](https://docs.microsoft.com/intune/windows-enrollment-methods) を介してサポートされます。 管理者は、パスワードなしの認証方法としてハードウェア トークン デバイスを有効にするには、[Azure portal](https://portal.azure.com/) も使用する必要があります。
+管理者は[手動でキーをプロビジョニング](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)し、エンド ユーザーに配布することができますが、Windows 10 のロック画面で FIDO2 資格情報プロバイダーをプロビジョニングして有効にすることは、[Intune](https://docs.microsoft.com/intune/windows-enrollment-methods) を介してサポートされます。 管理者は、パスワードなしの認証方法としてハードウェア トークン デバイスを有効にするには、[Azure portal](https://portal.azure.com/) も使用する必要があります。
 
-FIDO2 セキュリティ キーを展開するには、ユーザーが[統合された登録](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)を使用して自分のキーを登録する必要もあります。 統合された登録では、ユーザーは一度登録するだけで、Azure Multi-Factor Authentication とシングル サインオン パスワード リセット (SSPR) の両方のメリットを受けられます。
+FIDO2 セキュリティ キーを展開するには、ユーザーが[統合された登録](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)を使用して自分のキーを登録する必要もあります。 統合された登録では、ユーザーは一度登録するだけで、Azure Multi-Factor Authentication とシングル サインオン パスワード リセット (SSPR) の両方のメリットを受けられます。
 
 既定の多要素認証方法としてハードウェア トークンを選択するだけでなく、追加の検証オプションも選択することをお勧めします。
 
@@ -342,5 +342,5 @@ Microsoft のパスワードなしテクノロジを選択する際には、考�
 
 ## <a name="next-steps"></a>次の手順
 
-* 「[what is passwordless? (パスワードなしとは)](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)」の概要
-* [Azure AD でパスワードなしを有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* 「[what is passwordless? (パスワードなしとは)](../../active-directory/authentication/concept-authentication-passwordless.md)」の概要
+* [Azure AD でパスワードなしを有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 73a9aebfd0c5338f63927860ce3f6c57b20428a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754781"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648640"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -72,7 +72,7 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
 
 ### <a name="device-telemetry-schema"></a>デバイス テレメトリ スキーマ
 
-デバイス テレメトリ メッセージは、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType が JSON に設定され、contentEncoding が UTF-8 に設定された有効な JSON 形式でなければなりません。 これが設定されていない場合、IoT Hub は Base 64 エンコード形式でメッセージを書き込みます。
+デバイス テレメトリ メッセージは、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType が **application/json** に設定され、contentEncoding が **UTF-8** に設定された有効な JSON 形式である必要があります。 これらのプロパティでは、どちらも大文字と小文字が区別されません。 コンテンツのエンコードが設定されていない場合、IoT Hub では Base 64 エンコード形式でメッセージが書き込まれます。
 
 エンドポイントを Event Grid として選択してデバイス テレメトリ イベントを Event Grid に発行する前に、それらをエンリッチすることができます。 詳細については、[メッセージ エンリッチメントの概要](iot-hub-message-enrichments-overview.md)に関するページを参照してください。
 
@@ -174,9 +174,9 @@ IoT イベントのサブジェクトには次の形式が使われます。
 devices/{deviceId}
 ```
 
-さらに、Event Grid では、データ コンテンツなどの各イベントの属性でフィルター処理することもできます。 これにより、テレメトリ メッセージの内容に基づいて配信されるイベントを選択することができます。 [高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)を参照して、例を確認してください。
+さらに、Event Grid では、データ コンテンツなどの各イベントの属性でフィルター処理することもできます。 これにより、テレメトリ メッセージの内容に基づいて配信されるイベントを選択することができます。 [高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)を参照して、例を確認してください。 テレメトリ メッセージ本文のフィルター処理の場合、メッセージの[システム プロパティ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのプロパティでは、どちらも大文字と小文字が区別されません。
 
-DeviceConnected、DeviceDisconnected、DeviceCreated、DeviceDeleted のような非テレメトリ イベントの場合、サブスクリプションの作成時に Event Grid のフィルター処理を使用できます。 テレメトリ イベントの場合、Event Grid でのフィルター処理に加えて、ユーザーは、メッセージ ルーティング クエリ経由で、デバイス ツイン、メッセージのプロパティと本文に対してフィルター処理することもできます。 デバイス テレメトリへの Event Grid サブスクリプションに基づいて、IoT Hub に既定の[ルート](iot-hub-devguide-messages-d2c.md)を作成します。 この単一のルートによって、すべての Event Grid サブスクリプションを処理できます。 テレメトリ データが送信される前に、メッセージをフィルター処理するために、[ルーティング クエリ](iot-hub-devguide-routing-query-syntax.md)を更新できます。 ルーティング クエリは本文が JSON である場合にのみ、メッセージ本文に適用できることに注意してください。
+DeviceConnected、DeviceDisconnected、DeviceCreated、DeviceDeleted のような非テレメトリ イベントの場合、サブスクリプションの作成時に Event Grid のフィルター処理を使用できます。 テレメトリ イベントの場合、Event Grid でのフィルター処理に加えて、ユーザーは、メッセージ ルーティング クエリ経由で、デバイス ツイン、メッセージのプロパティと本文に対してフィルター処理することもできます。 デバイス テレメトリへの Event Grid サブスクリプションに基づいて、IoT Hub に既定の[ルート](iot-hub-devguide-messages-d2c.md)を作成します。 この単一のルートによって、すべての Event Grid サブスクリプションを処理できます。 テレメトリ データが送信される前に、メッセージをフィルター処理するために、[ルーティング クエリ](iot-hub-devguide-routing-query-syntax.md)を更新できます。 ルーティング クエリは本文が JSON である場合にのみ、メッセージ本文に適用できることに注意してください。 また、メッセージの[システム プロパティ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要もあります。
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
@@ -203,3 +203,5 @@ IoT Hub イベントを処理するアプリケーションは、以下の推奨
 * [Event Grid の詳細を確認します](../event-grid/overview.md)
 
 * [IoT Hub のイベントとメッセージのルーティングの違いを比較します](iot-hub-event-grid-routing-comparison.md)
+
+* [IoT テレメトリ イベントを使用して、Azure Maps (および IoT Hub メッセージ ルーティング) を使用して IoT 空間分析を実装する方法について学びます](../azure-maps/tutorial-iot-hub-maps.md#filter-events-using-iot-hub-message-routing)

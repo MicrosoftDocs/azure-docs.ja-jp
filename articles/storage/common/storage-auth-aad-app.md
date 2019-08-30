@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory を使用して認証を行い、BLOB やキュー データにクライアント アプリケーションからアクセスする
+title: クライアント アプリケーションから Azure Active Directory を使用して BLOB およびキューへのアクセスを承認する - Azure Storage
 description: Azure Active Directory を使用して、クライアント アプリケーション内から認証し、OAuth 2.0 トークンを取得し、および Azure Blob Storage および Queue Storage への要求を承認します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ffae7467e9f94c68cf004b74c9791f2d9cda3171
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5138fb6338f4ade322414619f8785d77550a91d1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250007"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986799"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>BLOB やキューにアクセスするためにアプリケーションから Azure Active Directory で認証を行う
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>クライアント アプリケーションから Azure Active Directory を使用して BLOB およびキューへのアクセスを承認する
 
 Azure Blob Storage または Queue Storage で Azure Active Directory (Azure AD) を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 その代わりに、Microsoft ID プラットフォーム (以前の Azure AD) から OAuth 2.0 アクセス トークンを要求することができます。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Blob Storage および Queue Storage への要求を承認できます。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07341c1ad30f1242bdff430826fdc82c45e09dac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086069"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>チュートリアル:Azure Active Directory と Zscaler Beta の統合
 
@@ -112,13 +112,13 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
     > [!NOTE]
     > これは実際の値ではありません。 実際のサインオン URL 値でこの値を更新します。 この値を取得するには、[Zscaler Beta クライアント サポート チーム](https://www.zscaler.com/company/contact)に問い合わせてください。
 
-5. Zscaler Beta アプリケーションでは、特定の形式の SAML アサーションを予期しています。 カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** を選択して **[ユーザー属性]**   ダイアログ ボックスを開きます。
+5. Zscaler Beta アプリケーションでは、特定の形式の SAML アサーションを予期しています。 カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** を選択して **[ユーザー属性]** ダイアログ ボックスを開きます。
 
     ![[ユーザー属性] ダイアログ ボックス](common/edit-attribute.png)
 
 6. Zscaler Beta アプリケーションでは、いくつかの追加の属性が SAML 応答で返されることを予期しています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、次の手順を実行して、以下の表に示すように SAML トークン属性を追加します。
     
-    | Name | ソース属性 | 
+    | EnableAdfsAuthentication | ソース属性 | 
     | ---------------| --------------- |
     | memberOf  | user.assignedroles |
 

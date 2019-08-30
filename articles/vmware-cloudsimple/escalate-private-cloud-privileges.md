@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812214"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617609"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple ポータルからのプライベート クラウド vCenter 特権のエスカレート 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple ポータルからのプライベート クラウド vCenter 特権のエスカレート
 
 プライベート クラウド vCenter への管理者アクセスのために、CloudSimple 特権を一時的にエスカレートすることができます。  エスカレートした特権を使用して、VMware のソリューションのインストール、ID ソースの追加、およびユーザーの管理を行うことができます。
 
@@ -38,7 +38,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![vSphere 特権を変更する](media/escalate-private-cloud-privilege.png)
 
-4. vSphere のユーザーの種類を選択します。  エスカレートできるのは **CloudOwner@cloudsimple.local** ローカル ユーザーのみです。
+4. vSphere のユーザーの種類を選択します。  エスカレートできるのは `CloudOwner@cloudsimple.local` ローカル ユーザーのみです。
 
 5. ドロップダウンからエスカレートの期間を選択します。 タスクを完了できる最短の期間を選択します。
 

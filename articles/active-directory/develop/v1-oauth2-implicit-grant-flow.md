@@ -10,7 +10,7 @@ ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fe0ee8021ae7e70654a161e37d072195bbc035f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e30bd940d3312a16f2dd30b175deb6622cb8c01
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545257"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834733"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 
@@ -62,7 +62,7 @@ JavaScript ベースのアプローチを最大限に活用するアプリケー
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>暗黙的な許可に適切なアプリ
 
-暗黙的な付与は他の付与よりリスクが大きくなります。また、注意を払うべき領域が詳しく記録されます (たとえば、「[Misuse of Access Token to Impersonate Resource Owner in Implicit Flow][OAuth2-Spec-Implicit-Misuse]」 (暗黙的フローでの偽装リソース所有者に対するアクセス トークンの誤用) や「[OAuth 2.0 Threat Model and Security Considerations][OAuth2-Threat-Model-And-Security-Implications]」 (OAuth 2.0 の脅威モデルとセキュリティの考慮事項))。 ただし、よりリスクが高いプロファイルは、多くの場合、リモート リソースによってブラウザーに対して処理されるアクティブ コードを実行するアプリケーションを有効にしなければならないという事実に起因します。 SPA アーキテクチャを計画していて、バックエンド コンポーネントがない場合、または JavaScript を使用して Web API を呼び出そうとしている場合は、トークンの取得に暗黙的フローを使用することをお勧めします。
+暗黙的な付与は他の付与よりリスクが大きくなります。また、注意を払うべき領域が詳しく記録されます (たとえば、「[Misuse of Access Token to Impersonate Resource Owner in Implicit Flow (暗黙的フローでの偽装リソース所有者に対するアクセス トークンの誤用)][OAuth2-Spec-Implicit-Misuse]」や「[OAuth 2.0 Threat Model and Security Considerations (OAuth 2.0 の脅威モデルとセキュリティの考慮事項)][OAuth2-Threat-Model-And-Security-Implications]」)。 ただし、よりリスクが高いプロファイルは、多くの場合、リモート リソースによってブラウザーに対して処理されるアクティブ コードを実行するアプリケーションを有効にしなければならないという事実に起因します。 SPA アーキテクチャを計画していて、バックエンド コンポーネントがない場合、または JavaScript を使用して Web API を呼び出そうとしている場合は、トークンの取得に暗黙的フローを使用することをお勧めします。
 
 アプリケーションがネイティブ クライアントの場合は、暗黙的フローはあまり向いていません。 ネイティブ クライアントのコンテキストには Azure AD のセッション Cookie がないので、アプリケーションには存続期間の長いセッションを維持する手段がありません。 つまり、アプリケーションは新しいリソースのアクセス トークンを取得する場合、繰り返しユーザーに求めることになります。
 

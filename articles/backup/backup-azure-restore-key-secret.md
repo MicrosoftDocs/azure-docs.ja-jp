@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: dacurwin
-ms.openlocfilehash: 379dd87edbbfa878a034cd61854ee15f215b0228
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: cca8cf3a222b71954e6727e184ff5d16839a6a68
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689111"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954555"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元
 
@@ -23,7 +23,7 @@ ms.locfileid: "68689111"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **暗号化された VM のバックアップ** - 暗号化された Azure VM が Azure Backup を使用してバックアップされています。 暗号化された Azure VM のバックアップ方法について詳しくは、[PowerShell を使用した Azure VM のバックアップと復元の管理に関する記事](backup-azure-vms-automation.md)をご覧ください。
+* **暗号化された VM のバックアップ** - 暗号化された Azure VM が Azure Backup を使用してバックアップされています。 暗号化された Azure VM のバックアップ方法について詳しくは、[PowerShell を使用して Azure VM のバックアップおよび復元を管理する方法](backup-azure-vms-automation.md)に関する記事をご覧ください。
 * **Azure Key Vault の構成** – キーとシークレットの復元先の Key Vault が既に存在しています。 Key Vault の管理について詳しくは、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。
 * **ディスクの復元** - [PowerShell ステップ](backup-azure-vms-automation.md#restore-an-azure-vm)を使って暗号化された VM のディスクを復元するために、復元ジョブを必ずトリガーしてください。 このジョブでは、暗号化された VM の復元先となる、キーとシークレットを含むストレージ アカウント内に、JSON ファイルを生成するためです。
 
@@ -138,4 +138,4 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 ## <a name="next-steps"></a>次の手順
 
-キーとシークレットを Key Vault に復元した後で、復元したディスク、キー、およびシークレットから暗号化された VM を作成するには、[PowerShell を使用した Azure VM のバックアップと復元の管理](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)に関する記事をご覧ください。
+キーとシークレットをキー コンテナーに復元した後で、復元したディスク、キー、シークレットから暗号化された VM を作成するには、[PowerShell を使用して Azure VM のバックアップおよび復元を管理する方法](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)に関する記事をご覧ください。

@@ -169,7 +169,7 @@ else
 | ResourceGroupName | VM が含まれているリソース グループの名前 | 
 | ResourceId | VM の完全修飾リソース ID。 |
 | ResourceUId | VM の GUID |
-| EnableAdfsAuthentication | 仮想マシン名。 |
+| Name | 仮想マシン名。 |
 | CreatedTime | VM が作成された日時。 |
 | DeletedDate | VM が削除された日時。 空の場合は、まだ削除されていません。 |
 | ResourceOwner | VM の所有者。 値が空の場合、これはクレーム可能 VM です。または、サービス プリンシパルによって作成されます。 |
@@ -197,7 +197,7 @@ else
 | ResourceGroupName | ラボが含まれているリソース グループの名前 | 
 | ResourceId | VM の完全修飾リソース ID。 |
 | ResourceUId | VM の GUID |
- |EnableAdfsAuthentication | 接続されたディスクの名前 |
+ |Name | 接続されたディスクの名前 |
 | CreatedTime |データ ディスクが作成された日時。 |
 | DeletedDate | データ ディスクが削除された日時。 |
 | ResourceStatus | リソースの状態。 リソースが存在する場合は Active です。 削除された場合は Inactive です。 |

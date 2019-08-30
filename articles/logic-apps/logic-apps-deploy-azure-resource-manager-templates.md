@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: ce0ebd29427092ddc99929674735bab798d38190
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/01/2019
+ms.openlocfilehash: 083c908609ebcf1bdc6dcad5e37ae03daa41758f
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562553"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706506"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 
@@ -91,10 +91,14 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 ロジック アプリ テンプレートをデプロイし、環境を管理するために、チームは一般的に [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services) の [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) のようなツールを使用します。 Azure Pipelines は、あらゆるビルドまたはリリース パイプラインに追加できる [[Azure リソース グループの配置] タスク](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) を提供します。 リリース パイプラインをデプロイおよび生成するための承認には、Azure Active Directory (AD) [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)も必要です。 詳細は、[Azure Pipelines でのサービス プリンシパルの使用](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)に関するページを参照してください。
 
-Azure Pipelines と Azure Resource Manager テンプレートの継続的インテグレーションおよび継続的配置 (CI/CD) の詳細については、以下のトピックを参照してください。
+Azure Pipelines と Azure Resource Manager テンプレートの継続的インテグレーションおよび継続的デプロイ (CI/CD) の詳細については、以下のトピックとサンプルを参照してください。
 
 * [Azure Pipelines を使用した Resource Manager テンプレートの統合](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
 * [チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [サンプル: Azure Logic Apps から Azure Service Bus キューに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps から Azure Storage アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps の関数アプリ アクションを設定し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル: Azure Logic Apps から統合アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 Azure Pipelines を使用するための一般的な大まかな手順は次のとおりです。
 

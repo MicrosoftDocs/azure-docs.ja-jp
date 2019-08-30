@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 652fe182663d37c389658c8fe3b172826168e51f
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617990"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "69623868"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル: Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -221,11 +221,11 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
 
 イベント サブスクリプションは、どのプロバイダー生成イベントを特定のエンドポイントに送信するかを示します。 この場合、エンドポイントは関数によって公開されます。 Azure Portal で関数に通知を送信するイベント サブスクリプションを作成するには、次の手順に従います。 
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで **[すべてのサービス]** を選択し、**[Function App]** を選択します。 
+1. [Azure portal](https://portal.azure.com) の左側のメニューで **[すべてのサービス]** を選択し、 **[Function App]** を選択します。 
 
     ![Azure Portal で Function App を参照する](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
 
-2. 目的の関数アプリを展開して、**Thumbnail** 関数を選択し、**[Event Grid サブスクリプションの追加]** を選択します。
+2. 目的の関数アプリを展開して、**Thumbnail** 関数を選択し、 **[Event Grid サブスクリプションの追加]** を選択します。
 
     ![Azure Portal で Function App を参照する](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
 
@@ -245,7 +245,7 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | **サブスクライバー エンドポイント** | 自動生成 | 自動的に生成されるエンドポイントの URL を使います。 | 
 4. **[フィルター]** タブに切り替えて、次の手順を実行します。     
     1. **[サブジェクト フィルタリングを有効にする]** オプションを選択します。
-    2. **[次で始まるサブジェクト]** には、「**/blobServices/default/containers/images/blobs/**」と入力します。
+    2. **[次で始まるサブジェクト]** には、「 **/blobServices/default/containers/images/blobs/** 」と入力します。
 
         ![イベント サブスクリプションのフィルターを指定する](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
 2. **[作成]** を選択して、イベント サブスクリプションを追加します。 これにより、BLOB が `images` コンテナーに追加されたときに `Thumbnail` 関数をトリガーするイベント サブスクリプションが作成されます。 この関数により、イメージはサイズが変更されて、`thumbnails` コンテナーに追加されます。
@@ -266,15 +266,17 @@ Web アプリでイメージのサイズ変更をテストするには、公開�
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 
-**[Choose File]** をクリックしてファイルを選び、**[Upload Image]** をクリックします。 アップロードが成功すると、ブラウザーが成功ページに移動します。 リンクをクリックすると、ホーム ページに戻ります。 **[Generated thumbnails]** 領域には、アップロードされた画像のコピーが表示されます。 画像が表示されない場合は、ページを再度読み込んでみてください。この画像は、関数によってサイズが変更され、*thumbnails* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
+**[Choose File]** をクリックしてファイルを選び、 **[Upload Image]** をクリックします。 アップロードが成功すると、ブラウザーが成功ページに移動します。 リンクをクリックすると、ホーム ページに戻ります。 **[Generated thumbnails]** 領域には、アップロードされた画像のコピーが表示されます。 画像が表示されない場合は、ページを再度読み込んでみてください。この画像は、関数によってサイズが変更され、*thumbnails* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
 
 ![ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-**[Choose File]** をクリックしてファイルを選び、**[Upload Image]** をクリックします。 アップロードが成功すると、ブラウザーが成功ページに移動します。 リンクをクリックすると、ホーム ページに戻ります。 **[Generated thumbnails]** 領域には、アップロードされた画像のコピーが表示されます。 画像が表示されない場合は、ページを再度読み込んでみてください。この画像は、関数によってサイズが変更され、*thumbnails* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
+**[Choose File]** をクリックしてファイルを選び、 **[Upload Image]** をクリックします。 アップロードが成功すると、ブラウザーが成功ページに移動します。 リンクをクリックすると、ホーム ページに戻ります。 **[Generated thumbnails]** 領域には、アップロードされた画像のコピーが表示されます。 画像が表示されない場合は、ページを再度読み込んでみてください。この画像は、関数によってサイズが変更され、*thumbnails* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
 
 ![ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+
+---
 
 ## <a name="next-steps"></a>次の手順
 

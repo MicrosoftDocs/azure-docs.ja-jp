@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499877"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637587"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -31,7 +31,7 @@ ms.locfileid: "68499877"
 
 AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイでは、[AD FS エクストラネット ロックアウトとエクストラネット スマート ロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)を使用して同様の効果を実現できます。
 
-スマート ロックアウトは、すべての Azure AD 顧客に既定として設定され、常に有効で、セキュリティとユーザビリティを適切な割合で提供します。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Basic 以上のライセンスが必要です。
+スマート ロックアウトは、すべての Azure AD 顧客に既定として設定され、常に有効で、セキュリティとユーザビリティを適切な割合で提供します。 組織固有の値でスマート ロックアウト設定をカスタマイズするには、ユーザーに有料の Azure AD ライセンスが必要です。
 
 スマート ロックアウトを使用しても、正規のユーザーが決してロックアウトされないことは保証されません。スマート ロックアウトによってユーザー アカウントがロックされた場合、マイクロソフトでは可能な限り正規ユーザーをロックアウトしないよう試みます。 ロックアウト サービスでは、悪意のあるアクターが正規のユーザー アカウントへのアクセス権を取得できないよう試みます。  
 
@@ -48,7 +48,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 たとえば、Azure AD のカウンターが AD よりも高くなるようにしたい場合は、オンプレミス AD が 1 分 (60 秒) に設定されていても、Azure AD は 120 秒 (2 分) になります。
 
 > [!IMPORTANT]
-> 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。
+> 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。 ただし、ユーザーは信頼されたデバイスまたは場所から、パスワード リセットのセルフサービス (SSPR) を使用してロックを解除できます。
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>オンプレミス アカウントのロックアウト ポリシーを検証する
 
@@ -63,7 +63,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD スマート ロックアウトの値を管理する
 
-組織の要件によっては、スマート ロックアウトの値をカスタマイズする必要があります。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Basic 以上のライセンスが必要です。
+組織の要件によっては、スマート ロックアウトの値をカスタマイズする必要があります。 組織固有の値でスマート ロックアウト設定をカスタマイズするには、ユーザーに有料の Azure AD ライセンスが必要です。
 
 組織のスマート ロックアウト値を確認または編集するには、次の手順を実行します。
 

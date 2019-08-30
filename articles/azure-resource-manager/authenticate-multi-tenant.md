@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5370b9b6d6a8bee82f8feca6dbcbcd78a4c12193
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 625a17156eaf199af0d51151c6fd37769b8f7b4a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205611"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848767"
 ---
 # <a name="authenticate-requests-across-tenants"></a>テナントをまたいだ認証要求
 
@@ -24,7 +24,7 @@ ms.locfileid: "67205611"
 | ヘッダー名 | 説明 | 値の例 |
 | ----------- | ----------- | ------------ |
 | Authorization | プライマリ トークン | Bearer &lt;primary-token&gt; |
-| x-ms-authorization-auxiliary | 補助トークン | Bearer &lt;auxiliary-token1&gt;; EncryptedBearer &lt;auxiliary-token2&gt;; Bearer &lt;auxiliary-token3&gt; |
+| x-ms-authorization-auxiliary | 補助トークン | Bearer &lt;auxiliary-token1&gt;、EncryptedBearer &lt;auxiliary-token2&gt;、Bearer &lt;auxiliary-token3&gt; |
 
 補助ヘッダーは最大 3 つの補助トークンを保持できます。 
 

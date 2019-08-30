@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5bd4926494e13c1dd0cfb6283292ade967471238
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679137"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013431"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
@@ -163,5 +163,5 @@ VMware VM のエージェントベース移行の要件を確認します。
 2 番目のチュートリアルに進み、Azure Migrate プロジェクトを設定し、Azure に移行するために VMware VM を評価します。
 
 > [!div class="nextstepaction"] 
-> [VMware VM の評価](./tutorial-migrate-vmware.md) 
+> [VMware VM の評価](./tutorial-assess-vmware.md) 
 

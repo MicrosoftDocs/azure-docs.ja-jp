@@ -10,16 +10,15 @@ ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 86c61679a73f03f7e54bba746107685796ec07c9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442311"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073720"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -123,7 +122,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 ### <a name="elements"></a>要素
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |cors|ルート要素。|はい|該当なし|
 |allowed-origins|クロス ドメイン要求で許可される配信元を示す `origin` 要素を含みます。 `allowed-origins` に含めることができるのは、すべての配信元を許可する `*`を含む 1 つの `origin` 要素か、URI を含む 1 つ以上の `origin` 要素です。|はい|該当なし|
@@ -136,7 +135,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 ### <a name="attributes"></a>属性
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|事前応答内の `Access-Control-Allow-Credentials` ヘッダーが、この属性の値に設定されます。これは、クライアントがクロス ドメイン要求で資格情報を送信できるかどうかに影響します。|いいえ|false|
 |preflight-result-max-age|事前応答内の `Access-Control-Max-Age` ヘッダーが、この属性の値に設定されます。これは、ユーザー エージェントが事前応答をキャッシュできるかどうかに影響します。|いいえ|0|
@@ -174,7 +173,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 ### <a name="attributes"></a>属性
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|はい|該当なし|
 

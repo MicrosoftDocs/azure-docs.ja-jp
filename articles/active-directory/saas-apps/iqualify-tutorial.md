@@ -137,7 +137,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
 7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | EnableAdfsAuthentication | ソース属性|
+    | Name | ソース属性|
     | --- | --- |
     | email | user.userprincipalname |
     | first_name | User.givenname |

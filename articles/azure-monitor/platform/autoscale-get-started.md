@@ -9,10 +9,10 @@ ms.date: 07/07/2017
 ms.author: rajram
 ms.subservice: autoscale
 ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60788596"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
@@ -23,7 +23,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>サブスクリプションの自動スケール設定の表示
 Azure Monitor で自動スケールを適用できるすべてのリソースを確認できます。 詳しい手順については、次の手順を参照してください。
 
-1. [Azure Portal][1] を開きます。
+1. [Azure portal][1] を開きます。
 1. 左側のウィンドウにある Azure Monitor アイコンをクリックします。
   ![Azure Monitor][2] を開きます。
 1. **自動スケール**をクリックすると、現在の自動スケールの状態と共に、自動スケールが適用できるすべてのリソースが表示されます。

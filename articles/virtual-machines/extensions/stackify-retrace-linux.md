@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: ca3232dc3862cffb67d396b3ec2333fdc28dbb65
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6db152394a8e57689b34436b48dbcb4ecdc58b5a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706635"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084310"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux Agent 拡張機能
 
@@ -44,7 +43,7 @@ Retrace は 1 つのプラットフォーム上のすべての環境にまたが
 
 Retrace エージェントは､次の Linux ディストリビューションに対して実行できます｡
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | Ubuntu | 16.04 LTS､14.04 LTS､16.10､17.04 |
 | Debian | 7.9+ および 8.2+､9 |

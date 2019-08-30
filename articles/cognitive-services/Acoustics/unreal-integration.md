@@ -3,26 +3,26 @@ title: Project Acoustics Unreal と Wwise の統合
 titlesuffix: Azure Cognitive Services
 description: ここでは、Project Acoustics Unreal および Wwise プラグインのプロジェクトへの統合について説明します。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5511dd6b9a7d77c0988a94fef747a30d25bb4fc3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 47f39e8dcd96ea3bdba564df348e9b89a6b036ba
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706622"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933181"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Project Acoustics Unreal と Wwise の統合
 ここでは、既存の Unreal と Wwise のゲーム プロジェクトへの Project Acoustics プラグイン パッケージの詳しい統合手順を示します。 
 
 ソフトウェア要件:
-* [Unreal Engine](https://www.unrealengine.com/) 4.20 または 4.21
+* [Unreal Engine](https://www.unrealengine.com/) 4.20 以降
 * [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1\*
 * [Unreal 用の Wwise プラグイン](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Wwise Unreal プラグインを使用する代わりに Wwise SDK の直接統合を使用する場合は、Project Acoustics Unreal プラグインを調べて、Wwise API 呼び出しを調整します。
@@ -52,7 +52,7 @@ Unreal Engine プラグインと Wwise ミキサー プラグインをパッケ�
 
 * ダウンロードしたパッケージに含まれた `AcousticsWwisePlugin\ProjectAcoustics` ディレクトリを選択します。 Wwise ミキサー プラグインのバンドルが含まれています。
 
-* Wwise によってプラグインがインストールされます。 Wwise にインストールされているプラグインの一覧に Project Acoustics が表示されます。
+* Wwise によってプラグインがインストールされます。 Wwise にインストールされているプラグインの一覧に Project Acoustics が表示されます。  
 ![Project Acoustics インストール後のインストールされた Wwise プラグインの一覧のスクリーンショット](media/unreal-integration-post-mixer-plugin-install.png)
 
 ## <a name="2-redeploy-wwise-into-your-game"></a>2.ゲームに Wwise を (再) デプロイする
@@ -81,9 +81,13 @@ Wwise を既に統合している場合でも、ゲームに Wwise を再デプ�
 
     ![Wwise を修正するために提供されたスクリプトが強調表示されている Windows エクスプローラー ウィンドウのスクリーンショット](media/patch-wwise-script.png)
 
-* DirectX SDK がインストールされていない場合は、`[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` の DXSDK_DIR を含む行をコメントアウトする必要があります
+* DirectX SDK がインストールされていない場合、使っている Wwise のバージョンによっては、`AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` で `DXSDK_DIR` が含まれる行をコメントにすることが必要な場合があります。
 
     ![DXSDK がコメント アウトされているコード エディターのスクリーンショット](media/directx-sdk-comment.png)
+
+* Wwise でのリンク エラーを回避するために Visual Studio 2019 でコンパイルする場合は、`AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` で `VSVersion` の既定値を手動で編集して `vc150` に設定します。
+
+    ![コード エディターのスクリーンショット (VSVersion を vc150 に変更)](media/vsversion-comment.png)
 
 ## <a name="5-build-game-and-check-python-is-enabled"></a>5.ゲームを作成し、Python が有効になっていることを確認する
 
@@ -167,7 +171,7 @@ Project Acoustics には、オブジェクトベースの高解像度 HRTF レ�
 
 1. アクターに音響オーディオ コンポーネントを追加します。 このコンポーネントは、Wwise オーディオ コンポーネントを Project Acoustics の機能で拡張します。
 2. 既定では、レベル起動時に関連付けらている Wwise イベントをトリガーする [Play on Start]\(開始時に再生\) ボックスがオンになります。
-3. [Show Acoustics Parameters]\(音響パラメーターの表示\) チェックボックスを使用して、ソースに関する画面上のデバッグ情報を出力します。
+3. [Show Acoustics Parameters]\(音響パラメーターの表示\) チェックボックスを使用して、ソースに関する画面上のデバッグ情報を出力します。  
     ![デバッグ値が有効になっている音源の Unreal エディターの音響パネルのスクリーンショット](media/debug-values.png)
 4. 通常の Wwise ワークフローごとに Wwise イベントを割り当てます
 5. [Use Spatial Audio]\(空間オーディオの使用\) がオフになっていることを確認します。 この時点で、Project Acoustics を特定のオーディオ コンポーネントに使用する場合、同時に Wwise の空間オーディオ エンジンを音響に使用することはできません。

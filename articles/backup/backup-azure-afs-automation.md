@@ -5,15 +5,15 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/05/2018
+ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: 5f62bd0456bfbf5882d6d8c3ee822433fbb58302
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2c9ca71816d6688881de465a575a8a0eef3cde1f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688774"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650439"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップおよび復元する
 
@@ -152,10 +152,11 @@ Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultConte
 
 ### <a name="fetch-the-vault-id"></a>コンテナー ID をフェッチする
 
-コンテナーのコンテキストの設定は、Azure PowerShell のガイドラインに従って廃止される予定です。 代わりに、次のようにしてコンテナー ID を格納またはフェッチしたり、関連するコマンドに渡したりできます。
+コンテナーのコンテキストの設定は、Azure PowerShell のガイドラインに従って廃止される予定です。 代わりに、次のようにコンテナー ID を格納またはフェッチし、関連するコマンドに渡すことができます。 そのため、コンテナーのコンテキストを設定していない場合や、特定のコンテナーに対して実行するコマンドを指定する場合は、次のように関連するすべてのコマンドにコンテナー ID を "-vaultID" として渡します。
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
+New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType "AzureFiles" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultID $vaultID
 ```
 
 ## <a name="configure-a-backup-policy"></a>バックアップ ポリシーを構成する
@@ -166,6 +167,18 @@ $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Nam
 - [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0) を使用して、既定のバックアップ ポリシー リテンション期間を表示します。
 - [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0) を使用して、既定のバックアップ ポリシー スケジュールを表示します。
 -  新しいバックアップ ポリシーを作成するには、[New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) コマンドレットを使用します。 スケジュール ポリシー オブジェクトとアイテム保持ポリシー オブジェクトを入力します。
+
+既定では、開始時刻はスケジュール ポリシー オブジェクトで定義されます。 開始時刻を希望の時刻に変更するには、次の例を使用します。 希望の開始時刻も、UTC で指定する必要があります。 次の例では、毎日のバックアップの希望の開始時刻が午前 01:00 UTC であるものとします。
+
+```powershell
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
+$UtcTime = Get-Date -Date "2019-03-20 01:30:00Z"
+$UtcTime = $UtcTime.ToUniversalTime()
+$schpol.ScheduleRunTimes[0] = $UtcTime
+```
+
+> [!IMPORTANT]
+> 開始時刻は 30 分単位のみで指定する必要があります。 上の例では、"01:00:00" または "02:30:00" のみを指定できます。 開始時刻を "01:15:00" にすることはできません。
 
 次の例では、スケジュール ポリシーとアイテム保持ポリシーを変数に格納します。 その後に、それらの変数を新しいポリシー (**NewAFSPolicy**) のパラメーターとして使用しています。 **NewAFSPolicy** は毎日のバックアップを受け取り、30 日間保持します。
 
@@ -180,10 +193,8 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
 ----                 ------------       -------------------- ----------                ----------
-NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
+NewAFSPolicy           AzureFiles            AzureStorage              10/24/2019 1:30:00 AM
 ```
-
-
 
 ## <a name="enable-backup"></a>バックアップの有効化
 
@@ -208,6 +219,7 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 ----                 ------------       -------------------- ----------                ----------
 dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 AM
 ```
+
 > [!NOTE]
 > PowerShell の **BackupTime** フィールドのタイム ゾーンは協定世界時 (UTC) です。 Azure portal 上でバックアップ時刻が表示されるときに、時刻はローカル タイム ゾーンに調整されます。
 
@@ -262,6 +274,12 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 ```
 
 バックアップ作成時には Azure ファイル共有のスナップショットが使用されるため、通常は、コマンドからこの出力が返されるまでにジョブが完了します。
+
+### <a name="using-on-demand-backups-to-extend-retention"></a>オンデマンド バックアップを使用して保持期間を延長する
+
+オンデマンド バックアップを使用すると、スナップショットを 10 年間保持することができます。 スケジューラを使い、保持期間を選択して PowerShell スクリプトをオンデマンドで実行することで、スナップショットを定期的 (週次、月次、年次) に作成することも可能です。 定期的なスナップショットの取得については、Azure Backup を使用した[オンデマンド バックアップの制限](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share-)に関するページを参照してください。
+
+サンプル スクリプトをお探しの場合、GitHub (https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) でサンプル スクリプトをご覧いただけます。定期バックアップのスケジュールを設定すると共にそれらのバックアップを最大 10 年間保持できる Azure Automation Runbook を使用したサンプル スクリプトをご用意しています。
 
 ### <a name="modify-the-protection-policy"></a>保護ポリシーを変更する
 

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: b857d1780e9734ce891ce2c0ce4bedf50dfe13e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859496"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067499"
 ---
 # <a name="add-a-forwarded-header"></a>転送ヘッダーの追加
 

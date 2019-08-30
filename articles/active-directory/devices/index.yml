@@ -1,35 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure AD デバイス ID のドキュメント
+summary: Azure AD でデバイス ID を構成して管理する方法について説明します。
 metadata:
-  document_id: null
-  title: Azure Active Directory デバイス ID 管理のドキュメント - チュートリアル、概念、リファレンス | Microsoft Docs
+  title: Azure AD デバイス ID のドキュメント
   description: Azure AD でデバイス ID を構成して管理する方法について説明します。
   services: active-directory
-  ms.subservice: devices
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: ユーザーは、Azure AD のデバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、Azure AD でこれらのデバイス ID を管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。<br>デバイス ID 管理は、デバイスに基づく条件付きアクセスの基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、マネージド デバイスでのみ可能となります。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: オンプレミスの AD 参加済みデバイスと Azure AD を統合する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: マネージド ドメイン
-            href: hybrid-azuread-join-managed-domains.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: フェデレーション ドメイン
-            href: hybrid-azuread-join-federated-domains.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: e26be2206ba63fa4721ced7ed1a2f35ddc63a5fd
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69648938"
+landingContent:
+- title: デバイス ID について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: デバイス ID とは
+      url: overview.md
+    - text: Enterprise State Roaming とは
+      url: enterprise-state-roaming-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure AD 登録済みデバイス
+      url: concept-azure-ad-register.md
+    - text: Azure AD 参加済みデバイス
+      url: concept-azure-ad-join.md
+    - text: ハイブリッド Azure AD 参加済みデバイス
+      url: concept-azure-ad-join-hybrid.md
+    - text: オンプレミスのリソースへの SSO
+      url: azuread-join-sso.md
+    - text: プライマリ更新トークン
+      url: concept-primary-refresh-token.md
+- title: Azure AD 参加済みデバイスを構成して管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD Join の実装を計画する
+      url: azureadjoin-plan.md
+    - text: Azure AD 参加済みデバイスのローカル管理者グループを管理する
+      url: assign-local-admin.md
+    - text: Azure AD で古くなったデバイスを検索して管理する
+      url: manage-stale-devices.md
+- title: ハイブリッド Azure AD 参加済みデバイスを構成して管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ハイブリッド Azure AD 参加の実装を計画する
+      url: hybrid-azuread-join-plan.md
+    - text: ハイブリッド Azure AD 参加済みデバイスのトラブルシューティング
+      url: troubleshoot-hybrid-join-windows-current.md

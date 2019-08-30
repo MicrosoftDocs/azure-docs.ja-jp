@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: eb6b42a88e47e3fcb35700ec542c8ca642e17a6a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250149"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815807"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -99,9 +99,7 @@ HDInsight 3.6 では、Hive サーバーと対話するための GUI クライ�
 
 実行のノードの種類として "ヘッド ノード" を使用して、ご利用のクラスターに対してスクリプト アクションを起動します。 次の URI を、"Bash スクリプト URI" とマークされたテキスト ボックスに貼り付けます: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-https://\<clustername>.azurehdinsight.net/das/ という URL を使用して Data Analytics Studio を起動できます
-
-
+5～10 分待機してから、 https://\<clustername>.azurehdinsight.net/das/ の URL を使用して Data Analytics Studio を起動します
 
 DAS がインストールされた後、クエリ ビューアーで実行したクエリが表示されない場合は、次の手順を実行します。
 

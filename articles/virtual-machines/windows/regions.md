@@ -7,18 +7,17 @@ author: cynthn
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: cynthn
-ms.openlocfilehash: fc26bd5f65c24330ef056fc7c6d99d41e5f2f783
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 84f8a20dec5da12667ec263f9560a054cf9324c8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850752"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088694"
 ---
 [!INCLUDE [virtual-machines-common-regions](../../../includes/virtual-machines-common-regions.md)]
 

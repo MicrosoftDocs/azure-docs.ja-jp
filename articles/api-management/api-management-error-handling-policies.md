@@ -10,16 +10,15 @@ ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 87693caa5343e359bb3ab424de489c2270bbca62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df7b14c8221ab7837cabe968a82cfc5d5d9050c4
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704438"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072578"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management のポリシーにおけるエラー処理
 
@@ -77,7 +76,7 @@ Azure API Management では、パブリッシャーは `ProxyError` オブジェ
 
  エラーが発生し、コントロールが `on-error` ポリシー セクションにジャンプすると、エラーは [context.LastError](api-management-policy-expressions.md#ContextVariables) プロパティ内に格納されます。このプロパティには、`on-error` セクションにあるポリシーがアクセス可能です。 LastError のプロパティは次のとおりです。  
   
-| Name       | Type   | 説明                                                                                               | 必須 |
+| 名前       | Type   | 説明                                                                                               | 必須 |
 |------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
 | `Source`   | string | エラーが発生した要素を指定します。 ポリシーまたは組み込みパイプライン ステップ名のいずれかになります。     | はい      |
 | `Reason`   | string | エラー処理に使用できる、マシンに適したエラー コード。                                       | いいえ       |

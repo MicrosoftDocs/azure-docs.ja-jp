@@ -3,33 +3,24 @@ title: Azure Search サービスの価格レベルまたは SKU の選択 - Azur
 description: Azure Search をプロビジョニングできる SKU は、Free、Basic、および Standard です。Standard は、さまざまなリソース構成および容量レベルで使用できます。
 services: search
 author: HeidiSteen
-manager: cgronlun
-tags: azure-portal
+manager: nitinme
+tags: ''
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/15/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 892a79f898e2448096ad4b252a18e0713bb32e52
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485304"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647349"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
 Azure Search サービスを作成すると、サービスの有効期間にわたって固定される価格レベル (つまり SKU) で[リソースが作成](search-create-service-portal.md)されます。 レベルには、Free、Basic、Standard、および Storage Optimized があります。 Standard と Storage Optimized は、いくつかの構成および容量で利用できます。
 
-ほとんどのお客様は、サービスを評価できるように、Free レベルから始めます。 評価後には、開発および運用環境用のデプロイのために上位レベルのいずれかに 2 つ目のサービスを作成するのが一般的です。 すべてのクイック スタートとチュートリアルは、リソースを集中的に使用するコグニティブ検索に関するものも含めて、Free レベルを利用して実行できます。
-
-> [!NOTE]
-> 7 月 1 日時点で、すべてのレベルは、ストレージ最適化レベルを含め、一般的に利用できます。 すべての価格は、[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページを参照してください。
-
-レベルは (機能ではなく) サービスをホストしているハードウェアの特性を反映していて、以下によって差別化されています。
-
-+ 作成可能なインデックスの数。
-+ パーティション (物理ストレージ) のサイズと速度。
+ほとんどのお客様は、サービスを評価できるように、Free レベルから始めます。 評価後には、開発および運用環境用のデプロイのために上位レベルのいずれかに 2 つ目のサービスを作成するのが一般的です。
 
 一般に、Free レベルを含むすべてのレベルで機能パリティが提供されますが、ワークロードが大きいほど、より高いレベルが必要になる可能性があります。 たとえば、[Cognitive Services を利用した AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 
@@ -37,50 +28,67 @@ Azure Search サービスを作成すると、サービスの有効期間にわ�
 > 機能パリティの例外は[インデクサー](search-indexer-overview.md)で、これは S3 HD では利用できません。
 >
 
-レベル内では、[レプリカとパーティションのリソースを調整する](search-capacity-planning.md)ことによって、スケールを大きくしたり小さくしたりできます。 それぞれ 1、2 個から始めて、大きなインデックス作成ワークロード用に一時的に計算能力を高めることができます。 レベル内でリソース レベルを調整する機能により、柔軟性が加わりますが、分析もやや複雑になります。 下位レベルでより多いリソースやレプリカを使用する方が、上位レベルでより少ないリソースを使用するよりも優れた値とパフォーマンスを得られるかどうかについて、確認する実験が必要になる可能性があります。 容量を調整するタイミングと理由の詳細については、「[Azure Search のパフォーマンスと最適化に関する考慮事項](search-performance-optimization.md)」を参照してください。
+<!-- For Basic tier and up, you can [adjust replica and partition resources](search-capacity-planning.md) to increase or decrease scale. You could start with one or two of each and then temporarily raise your computational power for a heavy indexing workload. The ability to tune resource levels within a tier adds flexibility, but also slightly complicates your analysis. You might have to experiment to see whether a lower tier with more resources/replicas offers better value and performance than a higher tier with fewer resources. To learn more about when and why you would adjust capacity, see [Performance and optimization considerations](search-performance-optimization.md). -->
 
-## <a name="tiers-for-azure-search"></a>Azure Search のレベル
+## <a name="available-tiers"></a>使用可能なレベル
 
-次の表は使用できるレベルの一覧です。 さまざまなレベルの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)、「[Azure Search サービスの制限](search-limits-quotas-capacity.md)」、サービスのプロビジョニング時のポータル ページを参照してください。
+レベルは (機能ではなく) サービスをホストしているハードウェアの特性を反映していて、以下によって差別化されています。
 
-|レベル | 容量 |
-|-----|-------------|
-|無料 | 他のサブスクライバーと共有されます。 スケーラブルではありません。 3 つのインデックスと 50 MB のストレージまでに制限されています。 |
-|Basic | 小規模の運用ワークロードのための専用コンピューティング リソースです。 1 個の 2 GB パーティションと、最大 3 個のレプリカです。 |
-|Standard 1 (S1) | S1 以上では、すべてのレベルでさらに多くのストレージや処理能力を持つ専用マシンです。 S1 では、パーティション サイズは 25 GB/パーティション (サービスあたり最大 300 GB) です。 |
-|Standard 2 (S2) | S1 に似ていますが、100 GB パーティション (サービスあたり最大 1.2 TB) です。 |
-|Standard 3 (S3) | 200 GB パーティション (サービスあたり最大 2.4 TB) です。 |
-|Standard 3 High Density (S3 HD) | 高密度は、S3 用の "*ホスティング モード*" です。 基になるハードウェアは多数の小さいインデックス用に最適化されており、マルチテナント シナリオ向けです。 S3 HD のユニットあたりの料金は S3 と同じですが、ハードウェアは数多くの小さいインデックスでの高速ファイル読み取り用に最適化されています。|
-|Storage Optimized 1 (L1) | 1 TB パーティション (サービスあたり最大 12 TB) です。 |
-|Storage Optimized 2 (L2) | 2 TB パーティション (サービスあたり最大 24 TB) です。 |
++ 作成できるインデックスとインデクサーの数
++ パーティション (物理ストレージ) のサイズと速度
 
-> [!NOTE] 
-> Storage Optimized レベルでは、Standard レベルより安い TB あたりの価格で、大容量のストレージが提供されます。 主なトレードオフとしてクエリの待ち時間が長くなるので、特定のアプリケーションの要件に対して妥当かどうかを確認する必要があります。  このレベルのパフォーマンスに関する考慮事項の詳細については、[パフォーマンスと最適化の考慮事項](search-performance-optimization.md)に関するページを参照してください。
->
+選択したレベルによって課金対象のレートが決まります。 次の Azure portal のスクリーンショットは、使用可能なレベルを示しています。価格は除外されていますが、ポータルと[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)で確認できます。 最も一般的なレベルは、**Free**、**Basic**、**Standard** です。
 
-## <a name="how-billing-works"></a>請求体系について
+**Free** では、クラスター上に限定的な検索サービスが作成され、他のサブスクライバーと共有されます。 クイックスタートやチュートリアルなどの小規模なプロジェクトを完成させることはできますが、サービスをスケーリングしたり、重要なワークロードを実行したりすることはできません。 **Basic** と **Standard** は最も一般的に使用される課金対象のレベルで、**Standard** が既定値になっています。
 
-Azure Search でコストが発生する場合は 3 つあります。 このセクションでは、3 つの課金コンポーネントについて説明します。 
+![Azure Search の価格レベル](media/search-sku-tier/tiers.png "Azure Search の価格レベル")
 
-+ コア サービス コスト
-+ データ エグレス (または帯域幅) 料金
-+ AI エンリッチメント
+一部のレベルは、特定の種類の作業向けに最適化されています。 たとえば、**Standard 3 High Density (S3 HD)** は、S3 用の "*ホスティング モード*" で、基になるハードウェアが多数の小さいインデックス用に最適化されており、マルチテナント シナリオ向けです。 S3 HD のユニットあたりの料金は S3 と同じですが、ハードウェアは数多くの小さいインデックスでの高速ファイル読み取り用に最適化されています。
 
-### <a name="core-service-costs-fixed-and-variable"></a>コア サービスのコスト (固定および可変)
+**Storage Optimized** レベルでは、Standard レベルより安い TB あたりの価格で、大容量のストレージが提供されます。 主なトレードオフとしてクエリの待ち時間が長くなるので、特定のアプリケーションの要件に対して妥当かどうかを確認する必要があります。  このレベルのパフォーマンスに関する考慮事項の詳細については、[パフォーマンスと最適化の考慮事項](search-performance-optimization.md)に関するページを参照してください。
 
-サービス自体については、最低料金は最初の検索単位 (1 レプリカ x 1 パーティション) です。 これより小さい構成ではサービスは実行できないため、この最低料金はサービスの有効期間を通して一定です。
+さまざまなレベルの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)、「[Azure Search サービスの制限](search-limits-quotas-capacity.md)」、サービスのプロビジョニング時のポータル ページを参照してください。
 
-最小構成を超える場合は、レプリカとパーティションを個別に追加できます。 たとえば、レプリカだけ、またはパーティションだけを追加できます。 レプリカとパーティションによる容量の増分が、可変コストの構成要素となります。
+## <a name="billable-events"></a>課金対象のイベント
 
-課金は、[数式 (レプリカ数 x パーティション数 x レート)](#search-units) に基づきます。 課金されるレートは、選択した価格レベルにより異なります。
+Azure Search 上に構築されたソリューションでは、次のようなコストが発生する場合があります。
 
-次のスクリーンショットは、Free、Basic、S1 のユニット単位価格を示したものです (S2、S3、L1、および L2 は示されていません)。Basic サービスを作成した場合、月間のコストは *price-1* に表示される値の平均になります。 Standard サービスの場合、月間のコストは *price-2* に表示される値の平均になります。 レベルが上がるごとにコンピューティング能力とストレージ容量が大きくなるため、ユニット コストはレベルに従って増えます。 Azure Search のレートは、[Azure Search の価格のページ](https://azure.microsoft.com/pricing/details/search/)でご覧いただけます。
++ 最小構成でのサービスの基本コスト (サービスの作成)
++ スケールアップ (レプリカまたはパーティションの追加) 時の増分コスト
++ 帯域幅料金 (送信データ転送) 
++ コグニティブ検索 (AI エンリッチメントには Cognitive Services、ナレッジ ストアには Azure Storage をアタッチする)
 
-![ユニットあたりの価格](./media/search-sku-tier/per-unit-pricing.png "ユニットあたりの価格")
+### <a name="service-costs"></a>サービスのコスト
+
+課金を回避するために "一時停止" できる仮想マシンやその他のリソースとは異なり、Azure Search サービスは、お客様が独占的に使用できる専用のハードウェア上で常に使用可能です。 そのため、サービスの作成は課金対象のイベントであり、そのサービスを作成したときに開始され、そのサービスを削除したときに終了します。 
+
+最低料金は、課金対象のレートでの最初の検索単位 (1 つのレプリカ x 1 つのパーティション) です。 これより小さい構成ではサービスは実行できないため、この最低料金はサービスの有効期間を通して一定です。 最小構成を超える場合は、レプリカとパーティションを互いに独立して追加できます。 レプリカおよびパーティションによって容量が徐々に増加すると、[(レプリカ数 x パーティション数 x レート)](#search-units) という式に基づいて料金が増加します。この場合、課金されるレートは、選択した価格レベルによって異なります。
 
 検索ソリューションのコストを見積もる際には、価格と容量は直線的に比例するものではないことに注意してください (容量を 2 倍にすると、コストは 2 倍より多くなります)。数式による計算の例については、「[レプリカとパーティションを割り当てる方法](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)」を参照してください。
 
-#### <a name="billing-based-on-search-units"></a>検索ユニット数に基づく課金
+### <a name="bandwidth-charges"></a>帯域幅の料金
+
+[Azure Search インデクサー](search-indexer-overview.md)を使用すると、サービスの場所によっては、課金に影響することがあります。 Azure Search サービスをデータと同じリージョンに作成すれば、データ エグレス料金が発生する事態を回避できます。 以下に、[帯域幅の価格に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)の情報の一部を示します。
+
++ Azure 上のあらゆるサービスへのインバウンド データと、Azure Search からのアウトバウンド データには料金が課金されません。
++ マルチサービス ソリューションでは、すべてのサービスが同じリージョンにあれば、伝送データに料金はかかりません。
+
+それらのサービスが別々のリージョンにある場合は、アウトバウンド データに料金が適用されます。 これらの料金は、実際には Azure Search の課金の一部ではありません。 データまたは AI によって強化されたインデクサーを使用して異なるリージョンからデータをプルする場合、それらのコストが全体の請求書に反映されるため、ここで言及しています。
+
+### <a name="cognitive-search-ai-enrichment-with-cognitive-services"></a>Cognitive Services を使用するコグニティブ検索の AI エンリッチメント
+
+[Cognitive Services を使用する AI エンリッチメント](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、Azure Search と同じリージョンの S0 価格レベルで、[有料の Azure Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)ように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
+
+| Operation | 課金への影響 |
+|-----------|----------------|
+| ドキュメント解析、テキスト抽出 | 無料 |
+| ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成**で、[imageAction](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|
+| [事前に構築されたコグニティブ スキル](cognitive-search-predefined-skills.md) | Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。 |
+| カスタム スキル | カスタム スキルは、自分が提供する機能です。 カスタム スキルを使用した場合のコストは、カスタム コードで他の従量制サービスを呼び出しているかどうかによって決まります。 |
+
+<a name="search-units"></a>
+
+## <a name="billing-formula-r-x-p--su"></a>請求式 (R x P = SU)
 
 Azure Search の操作について理解するための最も重要な課金の概念は、"*検索ユニット*" (SU) です。 Azure Search は、インデックス作成とクエリについてレプリカとパーティションの両方に依存しているため、この片方のみを基準に課金しても意味がありません。 このため、この両方を合わせた単位に基づいて課金されます。
 
@@ -92,47 +100,21 @@ SU は、サービスによって使用される "*レプリカ*" と "*パー�
 
 ほとんどのお客様は、総容量の一部だけをオンラインにし、残りを取っておきます。 課金については、オンラインにするパーティションとレプリカの数 (SU 式を使用して計算) によって、時間単位で支払う金額が決まります。
 
-### <a name="data-egress-charges-during-indexing"></a>インデックス作成時のデータ エグレス料金
+## <a name="how-to-manage-and-reduce-costs"></a>コストを管理および削減する方法
 
-[Azure Search インデクサー](search-indexer-overview.md)を使用すると、サービスの場所によっては、課金に影響することがあります。 Azure Search サービスをデータと同じリージョンに作成すれば、データ エグレス料金が発生する事態を回避できます。 以下に、[帯域幅の価格に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)の情報の一部を示します。
+次の提案に加えて、[課金とコスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started)に関するページも参照してください。
 
-+ Azure 上のあらゆるサービスへのインバウンド データと、Azure Search からのアウトバウンド データには料金が課金されません。
+- 帯域幅の料金を最小限に抑えるかなくすために、すべてのリソースを同一のリージョンか可能な限り少ないリージョンに作成します。
 
-+ マルチサービス ソリューションでは、すべてのサービスが同じリージョンにあれば、伝送データに料金はかかりません。
+- Azure Search、Cognitive Services、ご利用のソリューションで使用されているその他の Azure サービスなど、すべてのサービスを 1 つのリソース グループに統合します。 Azure portal で、リソース グループを見つけ、 **[コスト管理]** のコマンドを使用して、実際の支出と予想される支出を把握します。
 
-それらのサービスが別々のリージョンにある場合は、アウトバウンド データに料金が適用されます。 これらの料金は、実際には Azure Search の課金の一部ではありません。 データまたは AI によって強化されたインデクサーを使用して異なるリージョンからデータをプルする場合、それらのコストが全体の請求書に反映されるため、ここで言及しています。
+- フロントエンド アプリケーションには、要求と応答がデータ センターの境界内に収まるように Azure Web アプリを検討します。
 
-### <a name="ai-enrichments-with-cognitive-services"></a>Cognitive Services を使用する AI エンリッチメント
+- インデックス作成などのリソースを大量に消費する操作に対してはスケールアップし、通常のクエリ ワークロードに対して再調整してスケールダウンします。 Azure Search の最小構成 (1 つのパーティションと 1 つのレプリカで構成された 1 つの SU) から開始し、ユーザー アクティビティを監視して、容量の増加に対するニーズを示す使用パターンを特定します。 予測可能なパターンがある場合は、スケールをアクティビティと同期できることがあります (これを自動化するにはコードを記述する必要があります)。
 
-[Cognitive Services を使用する AI エンリッチメント](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、有料の Azure Cognitive Services リソースを Azure Search と同じリージョンの S0 価格レベルにアタッチするように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
+課金を抑えるために検索サービスをシャットダウンすることはできません。 専用リソースは常に動作し、サービスの有効期間中、お客様専用として割り当てられています。 サービス自体に関して、課金を抑える唯一の方法は、レプリカとパーティションを、まだ許容可能なパフォーマンスと [SLA コンプライアンス](https://azure.microsoft.com/support/legal/sla/search/v1_0/)を提供する低いレベルに下げるか、より低いレベルでサービスを作成することです (S1 の時間あたりの料金は S2 または S3 の料金よりも低くなります)。 負荷予測の下限でサービスをプロビジョニングすると仮定した場合、サービスが拡大したら、2 番目に高いレベルのサービスを作成し、その 2 番目のサービスでインデックスを再構築してから、最初のサービスを削除することができます。
 
-ドキュメントの解析時の画像抽出は、Azure Search の課金対象です。 ドキュメントから抽出された画像の数に基づいて課金されます。 現在、テキストの抽出は無料です。
-
-自然言語処理など、他のエンリッチメントは[組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md)に基づいており、Cognitive Services リソースに対して課金されます。 エンリッチメントは、Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。 詳細については、[Cognitive Services リソースをスキルセットにアタッチする方法](cognitive-search-attach-cognitive-services.md)に関するページを参照してください。
-
-<a name="search-units"></a>
-
-#### <a name="billing-for-image-extraction-in-cognitive-search"></a>コグニティブ検索での画像抽出の課金
-
-コグニティブ検索のインデックス作成パイプラインでファイルから画像を抽出する場合、Azure Search の請求書でその操作に対する料金が課金されます。 **インデクサー構成**で、[imageAction](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。
-
-価格は変更されることがあります。 Azure Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。
-
-#### <a name="billing-for-built-in-skills-in-cognitive-search"></a>コグニティブ検索での組み込みスキルの課金
-
-エンリッチメント パイプラインを設定すると、そのパイプラインで使用される[組み込みスキル](cognitive-search-predefined-skills.md)はすべて機械学習モデルに基づきます。 これらのモデルは Cognitive Services に用意されています。 インデックス作成時にこれらのモデルを使用すると、リソースを直接要求した場合と同じレートで課金されます。
-
-たとえば、スキャンされた JPEG ファイルに対して光学式文字認識 (OCR) を使用し、結果のテキストは自由形式の検索クエリのために Azure Search インデックスにプッシュされるパイプラインがあるとします。 インデックス作成パイプラインには [OCR スキル](cognitive-search-skill-ocr.md)を持つインデクサーが含まれ、そのスキルが [Cognitive Services リソースにアタッチ](cognitive-search-attach-cognitive-services.md)されます。 インデクサーを実行すると、OCR の実行に関する料金は Cognitive Resources の請求書に記載されます。
-
-## <a name="tips-for-reducing-costs"></a>コスト削減のためのヒント
-
-課金を抑えるためにサービスをシャットダウンすることはできません。 専用リソースは常に動作し、サービスの有効期間中、お客様専用として割り当てられています。 課金を抑える唯一の方法は、レプリカとパーティションを、まだ許容可能なパフォーマンスと [SLA コンプライアンス](https://azure.microsoft.com/support/legal/sla/search/v1_0/)を提供する低いレベルに下げることです。
-
-コストを削減する 1 つの手段は、時間あたりの料金が低いレベルを選択することです。 S1 の時間あたりの料金は S2 または S3 の料金よりも低くなります。 負荷予測の下限でサービスをプロビジョニングすると仮定した場合、サービスが拡大したら、2 番目に高いレベルのサービスを作成し、その 2 番目のサービスでインデックスを再構築してから、最初のサービスを削除することができます。
-
-オンプレミスのサーバーで容量計画を行った場合、予測される成長に対応できるように、"買い増し" することは普通です。 クラウド サービスなら、特定の購入に固定されないため、より積極的にコスト節約を追求できます。 現在のサービスが不十分であれば、より高いレベルのサービスにいつでも切り替えることができます。
-
-### <a name="capacity"></a>容量
+## <a name="how-to-evaluate-capacity-requirements"></a>容量の要件を評価する方法
 
 Azure Search では、容量は*レプリカ*と*パーティション*で構成されています。
 
@@ -143,47 +125,39 @@ Azure Search では、容量は*レプリカ*と*パーティション*で構成
 > [!NOTE]
 > すべての Standard および Storage Optimized レベルで、[レプリカとパーティションを柔軟に組み合わせる](search-capacity-planning.md#chart)ことができます。そのバランスを変更することにより、[システムを速度またはストレージ量の点で最適化](search-performance-optimization.md)できます。 Basic レベルでは、最大で 3 つのレプリカが使用できるため可用性が高くなりますが、パーティションは 1 つのみです。 Free レベルでは、専用のリソースが提供されません。コンピューティング リソースは複数のサブスクライバー間で共用されます。
 
-### <a name="more-about-service-limits"></a>サービスの制限の詳細
+<!-- ## Consumption patterns
 
-サービスでは、インデックス、インデクサーなどのリソースがホストされます。 各レベルには、作成できるリソースの数に対する[サービス制限](search-limits-quotas-capacity.md)があります。 そのため、インデックス (およびその他のオブジェクト) の最大数は、レベル間の第 2 の差別化要素です。 ポータルで各オプションを確認するときに、インデックスの数の制限に注意してください。 インデクサー、データ ソース、スキルセットなど、その他のリソースは、インデックスの制限に固定されています。
+On the low and high ends, Basic and S3 HD are for important but atypical consumption patterns. Basic is for small production workloads. It offers SLAs, dedicated resources, and high availability, but it provides modest storage, topping out at 2 GB total. This tier was engineered for customers that consistently underutilize available capacity. At the high end, S3 HD is for workloads typical of ISVs, partners, [multitenant solutions](search-modeling-multitenant-saas-applications.md), or any configuration that calls for a large number of small indexes. It's often clear when Basic or S3 HD is the right tier. If you want confirmation, you can post to [StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) or [contact Azure support](https://azure.microsoft.com/support/options/) for guidance.
 
-## <a name="consumption-patterns"></a>消費パターン
-
-ほとんどのお客様が、Free サービスから始め、これを無期限に維持しながら、重要な開発または運用ワークロードのために Standard または Storage Optimized レベルを選択します。
-
-![Azure Search の価格レベル](./media/search-sku-tier/tiers.png "Azure Search の価格レベル")
-
-ロー エンドとハイ エンドでは、重要であるものの一般的な消費パターンのために Basic と S3 HD が存在します。 Basic は、小規模な運用ワークロード用です。 SLA、専用のリソース、および高可用性を提供しますが、ストレージは合計 2 GB を上限としており、大きくはありません。 このレベルは、使用する容量が利用可能な容量を一貫して下回るお客様のために設計されています。 ハイ エンドでは、小さなインデックスを大量に必要とする構成、ISV、パートナー、[マルチテナント ソリューション](search-modeling-multitenant-saas-applications.md)で典型的なワークロードのために、S3 HD があります。 多くの場合、Basic または S3 HD が適切なレベルであるかどうかは明確です。 確認のためにガイダンスが必要な場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) に投稿するか、[Azure サポートに問い合わせ](https://azure.microsoft.com/support/options/)てください。
-
-より一般的に使用される Standard レベルである S1 から S3 では、容量の水準が段階的に増えていきます。 パーティション サイズには変曲点があり、インデックス、インデクサー、および推論リソースの数には制限があります。
+The more commonly used standard tiers, S1 through S3, make up a progression of increasing levels of capacity. There are inflection points on partition size and limits on numbers of indexes, indexers, and corollary resources:
 
 |  | S1 | S2 | S3 |  |  |  |  |
 |--|----|----|----|--|--|--|--|
-| パーティション サイズ|  25 GB | 100 GB | 200 GB |  |  |  |  |
-| インデックスとインデクサーの制限| 50 | 200 | 200 |  |  |  |  |
+| Partition size|  25 GB | 100 GB | 200 GB |  |  |  |  |
+| Index and indexer limits| 50 | 200 | 200 |  |  |  |  |
 
-S1 は、専用のリソースと複数のパーティションが必要なお客様にとって、一般的な選択肢です。 S1 は 25 GB のパーティションを最大 12 パーティションまで提供します。複数のレプリカにわたってパーティションを最大にした場合、サービスあたりの制限は 300 GB になります (よりバランスのとれた割り当てについては、[パーティションとレプリカの割り当て](search-capacity-planning.md#chart)に関するページを参照してください)。
+S1 is a common choice for customers that need dedicated resources and multiple partitions. S1 offers partitions of 25 GB and up to 12 partitions, providing a per-service limit of 300 GB if you maximize partitions over replicas. (See [Allocate partitions and replicas](search-capacity-planning.md#chart) for more balanced allocations.)
 
-ポータルと価格のページでは、パーティションのサイズとストレージが強調されていますが、各レベルのすべてのコンピューティング機能 (ディスク容量、速度、CPU) は一般には価格と共に直線的に増加します。 S2 レプリカは S1 より高速で、S3 は S2 より高速です。 S3 レベルでは、格段に I/O が速いため、コンピューティング機能と価格の直線的なパターンから逸脱します。 I/O がボトルネックになると予想される場合は、S3 を使用すると、より低いレベルを使用するよりもはるかに多くの IOPS が得られることに注意してください。
+The portal and pricing pages put the focus on partition size and storage, but, for each tier, all compute capabilities (disk capacity, speed, CPUs) generally increase linearly with price. An S2 replica is faster than S1, and S3 is faster than S2. S3 tiers break from the linear compute-pricing pattern with disproportionately faster I/O. If you expect I/O to be the bottleneck, keep in mind that you can get much more IOPS with S3 than you can get with lower tiers.
 
-S3 と S3 HD は同一の大容量インフラストラクチャを使用していますが、上限に達する方法が異なります。 S3 は少数の非常に大きなインデックスを対象としているため、その上限はリソースに左右されます (サービスごとに 2.4 TB)。 S3 HD の対象は、非常に小さな多数のインデックスです。 インデックスが 1,000 個になった時点で、S3 HD は、インデックス制約という形でその制限に達します。 S3 HD を使用しているお客様で、1,000 を超えるインデックスが必要な場合は、Microsoft サポートに対応方法についてお問い合わせください。
+S3 and S3 HD are backed by identical high-capacity infrastructure, but they reach their maximum limits in different ways. S3 targets a smaller number of very large indexes, so its maximum limit is resource-bound (2.4 TB for each service). S3 HD targets a large number of very small indexes. At 1,000 indexes, S3 HD reaches its limits in the form of index constraints. If you're an S3 HD customer and you need more than 1,000 indexes, contact Microsoft Support for information about how to proceed.
 
 > [!NOTE]
-> 一時はドキュメントの制限が考慮事項となっていましたが、新しいサービスには該当しなくなりました。 ドキュメントの制限が引き続き適用される条件については、「[ドキュメントの制限](search-limits-quotas-capacity.md#document-limits)」を参照してください。
+> Document limits were a consideration at one time, but they're no longer applicable for new services. For information about conditions in which document limits still apply, see [Document limits](search-limits-quotas-capacity.md#document-limits).
 >
 
-Storage Optimized レベル (L1 および L2) は、必要なデータは多くても、エンド ユーザーの数は比較的少なく、クエリの待ち時間を最小に抑えることが最優先事項ではないアプリケーションに最適です。  
+Storage Optimized tiers, L1 and L2, are ideal for applications with large data requirements but a relatively low number of end users, when minimizing query latency isn't the top priority.  
 
 |  | L1 | L2 |  |  |  |  |  |
 |--|----|----|--|--|--|--|--|
-| パーティション サイズ|  1 TB (テラバイト) | 2 TB |  |  |  |  |  |
-| インデックスとインデクサーの制限| 10 | 10 |  |  |  |  |  |
+| Partition size|  1 TB | 2 TB |  |  |  |  |  |
+| Index and indexer limits| 10 | 10 |  |  |  |  |  |
 
-L2 で提供されるストレージ容量の総量は、L1 の 2 倍です。  インデックスで必要と思われる最大データ量に基づいて、レベルを選択してください。 L1 レベルのパーティションは、1 TB 単位の増分で最大 12 TB までスケールアップします。 L2 パーティションは、パーティションごとに 2 TB ずつ、最大 24 TB まで増加します。
+L2 offers twice the overall storage capacity of L1.  Choose your tier based on the maximum amount of data that you think your index needs. The L1 tier partitions scale up in 1-TB increments to a maximum of 12 TB. The L2 partitions increase by 2 TBs per partition up to a maximum of 24 TB. -->
 
-## <a name="evaluating-capacity"></a>容量の評価
+### <a name="evaluating-capacity"></a>容量の評価
 
-容量とサービスの実行コストは直接関係しています。 レベルによって、ストレージとリソースという 2 つの要素に制限が設けられます。 先に上限に達した方が実質的な制限になるため、両方を考慮する必要があります。
+容量とサービスの実行コストは密接に関係しています。 レベルによって、ストレージとリソースという 2 つの要素に制限が設けられます。 先に上限に達した方が実質的な制限になるため、両方を考慮する必要があります。
 
 通常、必要となるインデックスの数は、ビジネス要件によって規定されます。 たとえば、ドキュメントの大規模なリポジトリ用にグローバル インデックスが必要な場合があります。 また、リージョン、アプリケーション、またはビジネス分野に基づいて複数のインデックスが必要な場合があります。
 
@@ -193,25 +167,25 @@ L2 で提供されるストレージ容量の総量は、L1 の 2 倍です。  
 > インデックスとストレージの将来のニーズの見積もりは、当て推量のように感じられるかもしれませんが、行う価値があります。 あるレベルの容量が少なすぎることがわかった場合は、それより上のレベルで新しいサービスをプロビジョニングしたうえで、[インデックスを再読み込み](search-howto-reindex.md)する必要があります。 特定の SKU から別の SKU へのサービスのインプレース アップグレードを実行することはできません。
 >
 
-### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>手順 1:Free レベルを使用して大まかな見積もりを作成する
+### <a name="estimate-with-the-free-tier"></a>Free レベルでの見積もり
 
-容量を見積もる方法の 1 つは、まず Free レベルを使用することです。 Free サービスでは、最大 3 つのインデックス、50 MB のストレージ、および 2 分間のインデックス作成時間が提供されます。 これらの制約の中で予想インデックス サイズを見積もることは簡単ではない可能性があります。 以下に、1 つの方法を示します。
+容量を見積もる方法の 1 つは、まず Free レベルを使用することです。 Free サービスでは、最大 3 つのインデックス、50 MB のストレージ、および 2 分間のインデックス作成時間が提供されます。 これらの制約の中で予想インデックス サイズを見積もることは簡単ではない可能性がありますが、その手順は次のとおりです。
 
 + [Free サービスを作成](search-create-service-portal.md)します。
-+ 少量の代表的なデータ セットを準備します (たとえば、5,000 のドキュメントと 10% のサンプル サイズ)。
-+ [最初のインデックスを構築](search-create-index-portal.md)し、ポータルに表示されるサイズを確認します (たとえば、30 MB)。
++ 小さな代表的なデータセットを準備します。
++ [ポータルで最初のインデックスを構築](search-create-index-portal.md)し、そのサイズをメモします。 機能と属性はストレージに影響を与えます。 たとえば、suggester (先行入力) を追加すると、ストレージ要件が増加します。 同じデータ セットを使用する場合、各フィールドに異なる属性を設定してインデックスの複数のバージョンを作成し、ストレージ要件がどのように変化するかを確認してみてください。 詳細については、[基本的なインデックスの作成に関するページの「ストレージへの影響」](search-what-is-an-index.md#storage-implications)を参照してください。
 
-サンプルが代表的でデータ ソース全体の 10% だとすると、すべてのドキュメントのインデックスが作成された場合、30 MB のインデックスは約 300 MB になります。 この予備的な数値を基にして、2 つのインデックス (開発用と運用用) の量を予測するために、この数値を 2 倍にします。 これで、ストレージの必要量が合計で 600 MB になります。 この必要量は Basic レベルで簡単に満たせるため、そこから利用を開始します。
+大まかな見積もりが得られたら、2 つのインデックス (開発用と運用用) の量を予測するためにこの値を 2 倍にし、それに応じてレベルを選択します。
 
-### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>手順 2:課金対象レベルを使用して詳細な見積もりを作成する
+### <a name="estimate-with-a-billable-tier"></a>課金対象レベルでの見積もり
 
-お客様によっては、大量のサンプリングと処理時間に対応できる専用リソースから始め、開発段階でインデックスの量、サイズ、クエリ量の現実的な予想を立てることを選択することもできます。 最初に、サービスは、最も確度の高い見積もりに基づいてプロビジョニングされます。 その後、開発プロジェクトが成熟するに伴って、チームは通常、既存のサービスの容量が予想される運用ワークロードを上回るか下回るかを予想することができます。
+専用のリソースでは、より長いサンプリングと処理時間に対応でき、開発段階でのインデックスの量、サイズ、クエリ量についてより現実的な見積もりを求めることができます。 課金対象のレベルから始め、開発プロジェクトが成熟するのに応じて再評価するお客様もいます。
 
 1. [各レベルのサービス制限を確認](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits)して、より低いレベルで、必要なインデックス数に対応できるかどうかを判断してください。 Basic、S1、S2 レベルでのインデックス制限は、それぞれ 15、50、200 です。 Storage Optimized レベルは、少数の非常に大きいインデックスをサポートするように設計されているため、10 インデックスに制限されています。
 
 1. [課金対象レベルでサービスを作成します](search-create-service-portal.md)。
 
-    + 学習曲線の初めの段階では、Basic または S1 の低レベルから始めます。
+    + 予想される負荷がわからない場合は、Basic または S1 の低いレベルで始めます。
     + サイズの大きなインデックスの作成とクエリの負荷への対応が必要になることがわかっている場合は、S2 または S3 の高レベルから始めます。
     + 社内のビジネス アプリケーションのように、インデックスを付けるデータの量が多く、クエリの負荷が比較的低い場合は、Storage Optimized (L1 または L2) から始めます。
 

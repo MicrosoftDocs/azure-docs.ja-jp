@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386911"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817230"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -268,6 +268,9 @@ Premium Storage データ ディスクの ReadOnly キャッシュを構成す�
 
 *ReadWrite*  
 既定では、OS ディスクは ReadWrite キャッシュが有効になっています。 最近、データ ディスクでも ReadWrite キャッシュのサポートが追加されました。 ReadWrite キャッシュを使用する場合、データをキャッシュから永続ディスクに適切な方法で書き込む必要があります。 たとえば、SQL Server では、永続ストレージ ディスクへのキャッシュ データの書き込みを独自に処理します。 必要なデータの永続化を処理しないアプリケーションで ReadWrite キャッシュを使用すると、VM がクラッシュした場合にデータが失われる可能性があります。
+
+*なし*  
+現在、 **[なし]** はデータ ディスクでのみサポートされています。 OS ディスクではサポートされていません。 OS ディスクに **[なし]** を設定した場合、これは内部でオーバーライドされ、 **[ReadOnly]** に設定されます。
 
 たとえば、次の手順を実行することで、Premium Storage で実行されている SQL Server にこれらのガイドラインを適用できます。
 

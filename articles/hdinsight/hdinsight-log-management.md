@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: b42eb51b510423ffc0d15ee3a646bca3d4392f7f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686856"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623892"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -93,11 +93,11 @@ HDInsight の[スクリプト アクション](hdinsight-hadoop-customize-cluste
 
 ここでは、さまざまなサービスのジョブ実行ログ ファイルを確認します。  Apache HBase や Apache Spark など、多くのサービスがあります。 Hadoop クラスターでは多数の詳細ログが生成されるので、役に立つ (役に立たない) ログを判断するには時間がかかることがあります。  ログ ファイル管理の対象を絞り込むには、ログ システムを理解することが重要です。  ログ ファイルの例を次に示します。
 
-![HDInsight のログ ファイルの例](./media/hdinsight-troubleshoot-failed-cluster/logs.png)
+![HDInsight のログ ファイルの例](./media/hdinsight-log-management/logs.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop のログ ファイルにアクセスする
 
-HDInsight では、クラスター ファイル システムと Azure ストレージの両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure ストレージのログ ファイルは、Azure ストレージにアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
+HDInsight では、クラスター ファイル システムと Azure ストレージの両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure ストレージのログ ファイルは、Azure ストレージにアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
 
 Hadoop は、クラスターのさまざまなノードでジョブの作業を "*タスク試行*" として実行します。 HDInsight は、予測タスク試行を開始して、最初に完了していない他のすべてのタスク試行を終了することがあります。 これにより、コントローラー、stderr、syslog のログ ファイルに即座に記録される大量のアクティビティが生成されます。 さらに、複数のタスク試行が同時に実行しますが、ログ ファイルでは結果を順番にしか表示できません。
 

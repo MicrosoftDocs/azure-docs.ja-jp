@@ -5,17 +5,16 @@ manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: e181aab3d92d8111a0a7d1d41bbddac20687a547
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: cognitive-search
+ms.openlocfilehash: d917525706eaede9431cb1bbb9a51783156cf118
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668874"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639202"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>コグニティブ検索パイプラインにカスタム スキルを追加する方法
 
@@ -27,13 +26,13 @@ Azure Search の [コグニティブ検索インデックス作成パイプラ�
 
 ## <a name="web-api-custom-skill-interface"></a>Web API のカスタム スキル インターフェイス
 
-Web API のカスタム スキル エンドポイントが、30 秒以内に応答を返さない場合、既定ではタイムアウトになります。 インデックス作成パイプラインは同期的であり、この時間内に応答が受信されない場合は、タイムアウト エラーが発生します。  タイムアウト パラメーターを設定することで、タイムアウトを最長で 90 秒に構成できます。
+Web API のカスタム スキル エンドポイントが、30 秒以内に応答を返さない場合、既定ではタイムアウトになります。 インデックス作成パイプラインは同期的であり、この時間内に応答が受信されない場合は、タイムアウト エラーが発生します。  タイムアウト パラメーターを設定することで、タイムアウトを最長で 230 秒に構成できます。
 
 ```json
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "This skill has a 90 second timeout",
+        "description": "This skill has a 230 second timeout",
         "uri": "https://[your custom skill uri goes here]",
-        "timeout": "PT90S",
+        "timeout": "PT230S",
 ```
 
 現在のところ、カスタム スキルとやり取りするための唯一のメカニズムは、Web API インターフェイスです。 Web API は、このセクションで説明する要件を満たしている必要があります。

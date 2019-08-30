@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dacurwin
-ms.openlocfilehash: f88555c6a8b3d4122a1a8ef82f58788a46dd5226
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639845"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735536"
 ---
-# <a name="back-up-an-sap-hana-database"></a>SAP HANA データベースをバックアップする
+# <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA データベースを Azure にバックアップする
 
 [Azure Backup](backup-overview.md) では、Azure への SAP HANA データベースのバックアップがサポートされます。
 

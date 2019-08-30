@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688979"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615875"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -29,12 +29,10 @@ ms.locfileid: "68688979"
 **エラー コード**:UserErrorGuestAgentStatusUnavailable <br>
 **エラー メッセージ**:VM エージェントが Azure Backup と通信できない<br>
 
-Backup サービスに VM を登録してスケジュール設定すると、Backup サービスは、VM エージェントと通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされずにバックアップが失敗する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。<br>
-**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
-**原因 4:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
-**原因 5:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
+Azure VM エージェントが停止しているか、古くなっているか、一貫性のない状態になっているか、インストールされていないために、Azure Backup サービスがスナップショットをトリガーできなくなっている可能性があります。  
+    
+- VM エージェントが停止しているか、一貫性のない状態になっている場合には、**エージェントを再起動**して、バックアップ操作を再試行してください (アドホック バックアップをお試しください)。 エージェントを再起動する手順については、[Windows VM](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) に関するページを参照してください。 
+- VM エージェントがインストールされていないか、古くなっている場合には、VM エージェントをインストールまたは更新してから、バックアップ操作を再試行してください。 エージェントをインストールまたは更新する手順については、[Windows VM](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) に関するページを参照してください。  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - Could not communicate with the VM agent for snapshot status (スナップショットの状態について VM エージェントと通信できませんでした)
 
@@ -44,7 +42,8 @@ Backup サービスに VM を登録してスケジュール設定すると、Bac
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
 **原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
+**原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
+**原因 4:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)** 
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)
 
@@ -107,7 +106,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
 **エラー メッセージ**:現在、Azure Backup では 4095 GB を超えるディスク サイズはサポートされていません <br>
 
-VM をバックアップするときディスク サイズが 4095 GB よりも大きい場合、バックアップ操作が失敗することがあります。 4 TB 超から最大 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートのプライベート プレビューにサインアップするには、AskAzureBackupTeam@microsoft.com までご連絡ください。
+VM をバックアップする際にディスク サイズが 4,095 GB よりも大きいと、バックアップ操作が失敗することがあります。 4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[こちらの記事](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)を参照してください。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません
 

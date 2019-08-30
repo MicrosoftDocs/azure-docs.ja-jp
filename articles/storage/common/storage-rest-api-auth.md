@@ -1,24 +1,24 @@
 ---
-title: 認証を含む Azure ストレージ サービス REST API 操作の呼び出し | Microsoft Docs
-description: 認証を含む Azure ストレージ サービス REST API 操作の呼び出し
+title: 共有キーによる承認を使用して Azure Storage サービスの REST API 操作を呼び出す | Microsoft Docs
+description: Azure Storage の REST API と共有キーによる承認を使用して、Blob Storage への要求を行います。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1463a470c84d38ebc30e32cf539aa9d6f64a6854
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306658"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640673"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
 
-この記事では、Blob Storage サービス REST API を使う方法と、サービスの呼び出しを認証する方法について説明します。 REST について何も知らず、REST をどうやって呼び出せばよいかわからない開発者の観点から書かれています。 REST 呼び出しに関するリファレンス ドキュメントを参照し、実際の REST 呼び出しへの変換方法 (フィールドの対応) を確認します。 REST 呼び出しの設定方法を学習した後は、この知識を利用して他のストレージ サービス REST API を使うことができます。
+この記事では、Blob Storage サービス REST API を使う方法と、サービスの呼び出しを承認する方法について説明します。 REST について何も知らず、REST をどうやって呼び出せばよいかわからない開発者の観点から書かれています。 REST 呼び出しに関するリファレンス ドキュメントを参照し、実際の REST 呼び出しへの変換方法 (フィールドの対応) を確認します。 REST 呼び出しの設定方法を学習した後は、この知識を利用して他のストレージ サービス REST API を使うことができます。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -79,11 +79,11 @@ REST API リファレンスの [ListContainers](/rest/api/storageservices/List-C
 
 [要求ヘッダー](/rest/api/storageservices/List-Containers2#request-headers) **:** このセクションには、必須および省略可能な要求ヘッダーの一覧が示されています。 必須のヘッダーは、*Authorization* ヘッダー、*x-ms-date* (要求の UTC 時刻を含みます)、*x-ms-version* (使う REST API のバージョンを指定します) の 3 つです。 ヘッダーに *x-ms-client-request-id* を含めるかどうかは自由です。このフィールドには任意の値を設定できます。ログが有効になっていると、この値がストレージ分析ログに書き込まれます。
 
-[要求本文](/rest/api/storageservices/List-Containers2#request-body) **:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+[要求本文](/rest/api/storageservices/List-Containers2#request-body) **:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
 
 [応答の状態コード](/rest/api/storageservices/List-Containers2#status-code) **:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
 
-[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers) **:** *コンテンツ タイプ*、*x-ms-request-id* (渡した要求 ID)、*x-ms-version* (使われた Blob service のバージョン)、*Date* (UTC、要求が行われた日時) などがあります。
+[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers) **:** *コンテンツ タイプ*、*x-ms-request-id* (渡した要求 ID)、*x-ms-version* (使われた Blob service のバージョン)、*Date* (UTC、要求が行われた日時) が含まれます。
 
 [応答本文](/rest/api/storageservices/List-Containers2#response-body):このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
 
@@ -267,12 +267,13 @@ Content-Length: 1511
 ## <a name="creating-the-authorization-header"></a>Authorization ヘッダーの作成
 
 > [!TIP]
-> Azure Storage で、BLOB およびキューのために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Authenticate with Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)」 (Azure Active Directory (AAD) での認証) を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証) を参照してください。
+> Azure Storage で、BLOB およびキューのために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Azure Active Directory での承認](/rest/api/storageservices/authorize-with-azure-active-directory)」を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証) を参照してください。
 
-[Azure ストレージ サービスの認証](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services)を実行する方法を (コードではなく) 概念的に説明した記事があります。
+[Azure Storage に対する要求の承認](/rest/api/storageservices/authorize-requests-to-azure-storage)方法を (コードではなく) 概念的に説明した記事があります。
+
 その記事から本当に必要な部分を取り出し、コードを示します。
 
-最初に、共有キー認証を使います。 Authorization ヘッダーの形式は次のようになります。
+まず、共有キーによる承認を使用します。 Authorization ヘッダーの形式は次のようになります。
 
 ```  
 Authorization="SharedKey <storage account name>:<signature>"  
@@ -360,7 +361,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 
 クエリ パラメーターがある場合は、この例にはそれらのパラメーターも含まれます。 次に示すコードでは、追加のクエリ パラメーターと、複数の値を持つクエリ パラメーターも処理しています。 このコードは、すべての REST API で動作するように構築していることに注意してください。 ListContainers メソッドでそれらすべてを必要としない場合も、すべての可能性を含めています。
 
-```csharp 
+```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
 {
     // The absolute path will be "/" because for we're getting a list of containers.
@@ -376,7 +377,7 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
         sb.Append('\n').Append(item).Append(':').Append(values[item]);
     }
 
-    return sb.ToString();
+    return sb.ToString().ToLower();
 }
 ```
 
@@ -571,3 +572,4 @@ Content-Length: 1135
 * [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)
 * [ファイル サービスの REST API](/rest/api/storageservices/file-service-rest-api)
 * [キュー サービスの REST API](/rest/api/storageservices/queue-service-rest-api)
+* [Table service の REST API](/rest/api/storageservices/table-service-rest-api)

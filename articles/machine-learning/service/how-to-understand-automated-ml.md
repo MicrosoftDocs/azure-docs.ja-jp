@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: ea85a0906ce231312c491d31a33c331480d23812
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a5632767ef8230d16b47f350436fda53794efdf5
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361455"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872557"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
 
@@ -47,15 +47,15 @@ ms.locfileid: "68361455"
 
 1. 実験の一覧で、探索する項目を選択します。
 
-   ![実験リスト](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)
+   [![実験リスト](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
 1. 下部の表で、 **[実行数]** を選択します。
 
-   ![実験の実行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)
+   [![実験の実行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
 1. 繰り返しの表で、詳しく調べるモデルの **[Iteration Number]\(繰り返し回数\)** を選択します。
 
-   ![実験モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)
+   [![実験モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
 `RunDetails`[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用した場合も、実行中に同じ結果が表示されます。
 
@@ -192,7 +192,7 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
 例 1:予測の精度が低い回帰モデル![予測の精度が低い回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-例 2:予測の精度が高い回帰モデル![予測の精度が高い回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
+例 2:予測の精度が高い回帰モデル[![予測の精度が高い回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 

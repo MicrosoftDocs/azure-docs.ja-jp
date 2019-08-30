@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3cdddac74552b56dfe3567adf30f1a05b6eb8e24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3d0d6077da4df9a7f0d1b246c9752d38488a175
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616536"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963832"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード: 高度なトピック
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>アプリケーション アップグレード中のサービスの種類の追加と削除
@@ -85,6 +85,44 @@ app1/
 ```
 
 つまり、通常どおり完全なアプリケーション パッケージを作成した後、バージョンが変更されなかったコード/構成/データ パッケージ フォルダーをすべて削除します。
+
+## <a name="upgrade-application-parameters-independently-of-version"></a>バージョンとは無関係にアプリケーション パラメーターをアップグレードする
+
+マニフェストのバージョンを変更せずに Service Fabric アプリケーションのパラメーターを変更することが望ましい場合があります。 これは、Azure Service Fabric の **Start-ServiceFabricApplicationUpgrade** という PowerShell コマンドレットで **-ApplicationParameter** フラグを使用することで簡単に実行できます。 次のプロパティを持つ Service Fabric アプリケーションを想定します。
+
+```PowerShell
+PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
+
+ApplicationName        : fabric:/Application1
+ApplicationTypeName    : Application1Type
+ApplicationTypeVersion : 1.0.0
+ApplicationStatus      : Ready
+HealthState            : Ok
+ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
+```
+
+ここで、**Start-ServiceFabricApplicationUpgrade** コマンドレットを使用してアプリケーションをアップグレードします。 この例では監視付きのアップグレードを示していますが、監視されていないアップグレードも使用できます。 このコマンドレットに指定できるフラグの詳細については、[Azure Service Fabric PowerShell モジュール リファレンス](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)をご覧ください。
+
+```PowerShell
+PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
+
+PS C:\> Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/Application1 -ApplicationTypeVers
+ion 1.0.0 -ApplicationParameter $appParams -Monitored
+
+```
+
+アップグレード後、アプリケーションのパラメーターが更新されていること、またバージョンが同じであることを確認します。
+
+```PowerShell
+PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
+
+ApplicationName        : fabric:/Application1
+ApplicationTypeName    : Application1Type
+ApplicationTypeVersion : 1.0.0
+ApplicationStatus      : Ready
+HealthState            : Ok
+ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
+```
 
 ## <a name="rolling-back-application-upgrades"></a>アプリケーションのアップグレードのロールバック
 

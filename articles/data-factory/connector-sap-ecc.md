@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: c92c1b87de1b728fd79c1ef02b32135463c7124f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6fd7c4ffafa54acb7ff67bd2e595f0b3c02a0e5a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720682"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967414"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 
@@ -50,6 +50,10 @@ SAP ECC から、サポートされている任意のシンク データ スト�
 
 - **SAP OData サービスをアクティブ化して構成します**。 OData サービスは TCODE SICF を通じて数秒でアクティブ化できます。 また、どのオブジェクトを公開する必要があるかを構成することもできます。 詳しくは、[ステップ バイ ステップ ガイダンス](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/)に関する記事をご覧ください。
 
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>作業開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -66,7 +70,7 @@ SAP ECC のリンクされたサービスでは、次のプロパティがサポ
 | `url` | SAP ECC OData サービスの URL。 | はい |
 | `username` | SAP ECC への接続に使うユーザー名。 | いいえ |
 | `password` | SAP ECC への接続に使うプレーンテキスト パスワード。 | いいえ |
-| `connectVia` | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 ランタイムを指定していない場合、`connectVia` では既定の Azure 統合ランタイムが使用されます。 | いいえ |
+| `connectVia` | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 ランタイムを指定していない場合、既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 ### <a name="example"></a>例
 

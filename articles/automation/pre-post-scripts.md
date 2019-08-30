@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94ec7c54e8e49685ad0289102f092516bcb0acfc
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f13851dd43c80a63ec628e04b98271894c15afc0
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478250"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542868"
 ---
 # <a name="manage-pre-and-post-scripts"></a>事前および事後スクリプトを管理する
 
@@ -66,22 +66,6 @@ Runbook が事前または事後スクリプトとして使用されるように
 
 標準の Runbook パラメーターに加えて、追加のパラメーターが表示されます。 このパラメーターは **SoftwareUpdateConfigurationRunContext** です。 このパラメーターは JSON 文字列であるため、事前または事後スクリプトで定義すると、このパラメーターは更新プログラムの展開によって自動的に渡されます。 このパラメーターには、更新プログラムの展開に関する情報が含まれています。これは、[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) によって返される情報のサブセットです。次の表に、この変数で提供されるプロパティを示します。
 
-## <a name="stopping-a-deployment"></a>デプロイの停止
-
-事前スクリプトに基づくデプロイを停止する場合は、例外を[スロー](automation-runbook-execution.md#throw)する必要があります。 例外をスローしないと、デプロイと事後スクリプトが引き続き実行されます。 ギャラリー内の [Runbook の例](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)に、その方法が示されています。 その Runbook からのスニペットを次に示します。
-
-```powershell
-#In this case, we want to terminate the patch job if any run fails.
-#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
-foreach($summary in $finalStatus)
-{
-    if ($summary.Type -eq "Error")
-    {
-        #We must throw in order to fail the patch deployment.  
-        throw $summary.Summary
-    }
-}
-```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
@@ -133,6 +117,25 @@ foreach($summary in $finalStatus)
 
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext` オブジェクトには、マシン用の重複するエントリを含めることができます。 これにより、同じマシン上で事前および事後スクリプトを複数回使用できます。 この動作を回避するには、`Sort-Object -Unique` を使用して、スクリプト内の一意の VM 名だけを選択します。
+
+
+## <a name="stopping-a-deployment"></a>デプロイの停止
+
+事前スクリプトに基づくデプロイを停止する場合は、例外を[スロー](automation-runbook-execution.md#throw)する必要があります。 例外をスローしないと、デプロイと事後スクリプトが引き続き実行されます。 ギャラリー内の [Runbook の例](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)に、その方法が示されています。 その Runbook からのスニペットを次に示します。
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
+
 
 ## <a name="samples"></a>サンプル
 

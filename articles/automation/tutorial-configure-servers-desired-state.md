@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 3bcdb667ee649b9bbf32ad33e74e876cdd2b5cbf
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 0d877dafc4ab4f8ec4edb0a94450fa9c5dfcd0bb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144186"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850245"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する
 
@@ -63,6 +63,9 @@ configuration TestConfig {
    }
 }
 ```
+
+> [!NOTE]
+> DSC リソースを提供するモジュールを複数インポートする必要があるより高度なシナリオでは、ご自分の構成にモジュールごとに `Import-DscResource` 行があることを確認してください。
 
 `Import-AzureRmAutomationDscConfiguration` コマンドレットを呼び出して、構成を Automation アカウントにアップロードします。
 
@@ -130,6 +133,17 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 このコマンドレットは、`TestConfig.WebServer` という名前のノード構成を、登録済みの DSC ノード `DscVm` に割り当てます。
 既定では、DSC ノードはノード構成に準拠していることを 30 分ごとにチェックされます。
 準拠チェック間隔を変更する方法については、「[ローカル構成マネージャーの構成](/PowerShell/DSC/metaConfig)」をご覧ください。
+
+## <a name="working-with-partial-configurations"></a>部分構成の操作
+
+Azure Automation State Configuration では [部分構成](/powershell/dsc/pull-server/partialconfigs) の使用をサポートします。
+このシナリオでは、DSC は複数の構成を別々に管理するように構成されており、各構成は Azure Automation から取得されます。
+ただし、ノードに割り当てることができる構成はAutomation アカウントあたり 1 つだけです。
+つまり、1 つのノードに 2 つの構成を使用している場合、2 つの Automation アカウントが必要になります。
+
+プル サービスから部分構成を登録する方法の詳細については、[部分構成](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)に関するドキュメントを参照してください。
+
+構成をコードとして使用し、チームが連携してサーバーを共同で管理する方法の詳細については、「[Understanding DSC's role in a CI/CD Pipeline (CI/CD パイプラインの DSC のロールを理解する)](/powershell/dsc/overview/authoringadvanced)」を参照してください。
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>管理対象ノードの準拠状態を確認する
 

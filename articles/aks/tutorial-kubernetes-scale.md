@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9bccd826a37b66f7f89e70c57260a0db08342421
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614195"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019186"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -70,18 +70,19 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>ポッドを自動スケールする
 
-Kubernetes のサポート[ポッドの水平自動スケール][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server]を Kubernetes では、リソース使用率を提供するために使用し、AKS クラスター 1.10 以降のバージョンでは自動的にデプロイします。 ご利用の AKS クラスターのバージョンを確認するには、次の例に示すように、[az aks show][az-aks-show] コマンドを使用します。
+Kubernetes は[ポッドの水平自動スケーリング][kubernetes-hpa]をサポートしており、CPU 使用率などの選ばれたメトリックに応じて、デプロイのポッドの数を調整します。 [Metrics Server][metrics-server] は、Kubernetes にリソース使用率を提供するために使用され、AKS クラスター バージョン 1.10 以降に自動的にデプロイされます。 AKS クラスターのバージョンを確認するには、次の例に示すように、[az aks show][az-aks-show] コマンドを使用します。
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-AKS クラスターが *1.10* 未満の場合は、Metrics Server をインストールします。そうでない場合は、この手順をスキップします。 インストールするには、`metrics-server` GitHub リポジトリを複製し、サンプル リソース定義をインストールします。 これらの YAML 定義の内容を表示する場合は、[Metrics Server for Kubernetes 1.8+][metrics-server-github] に関するページを参照してください。
-
-```console
-git clone https://github.com/kubernetes-incubator/metrics-server.git
-kubectl create -f metrics-server/deploy/1.8+/
-```
+> [!NOTE]
+> AKS クラスターが *1.10* 未満の場合、Metrics Server は自動的にインストールされません。 インストールするには、`metrics-server` GitHub リポジトリを複製し、サンプル リソース定義をインストールします。 これらの YAML 定義の内容を表示する場合は、[Metrics Server for Kubernetes 1.8+][metrics-server-github] に関するページを参照してください。
+> 
+> ```console
+> git clone https://github.com/kubernetes-incubator/metrics-server.git
+> kubectl create -f metrics-server/deploy/1.8+/
+> ```
 
 オートスケーラーを使用するには、ポッド内のすべてのコンテナーで CPU の要求と制限が定義されている必要があります。 `azure-vote-front` のデプロイでは、フロントエンド コンテナーによって既に 0.25 CPU が要求されています。上限は 0.5 CPU です。 これらのリソース要求と制限は、次のスニペットの例に示されているように定義されています。
 

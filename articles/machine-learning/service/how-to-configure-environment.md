@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668477"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848194"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "68668477"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](setup-create-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。 独自の[クラウドベースのノートブック サーバー](#notebookvm)、[DSVM](#dsvm)、[Azure Databricks](#aml-databricks)、または [Azure Notebooks](#aznotebooks) を使い始めるために必要なものは、ワークスペースだけです。
+Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。 独自の[クラウドベースのノートブック サーバー](#notebookvm)、[DSVM](#dsvm)、[Azure Databricks](#aml-databricks)、または [Azure Notebooks](#aznotebooks) を使い始めるために必要なものは、ワークスペースだけです。
 
 [ローカル コンピューター](#local)、[Jupyter Notebook サーバー](#jupyter)、または [Visual Studio Code](#vscode) 用の SDK 環境をインストールするには、以下も必要です。
 
@@ -72,11 +72,11 @@ Azure Machine Learning ワークスペース。 ワークスペースを作成�
 
   コードを書く場合、VM にはチュートリアルやサンプルが含まれているため、Azure Machine Learning service を使用する方法について調べて学習することができます。 サンプル ノートブックはワークスペースの Azure Blob Storage アカウントに保存されており、VM 間で共有することができます。 実行されると、データ ストアと、ワークスペースのコンピューティング リソースにもアクセスできます。
 
-+ **設定が簡単**:Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[クイックスタート:クラウドベースのノートブック サーバーを使用して Azure Machine Learning の利用を開始する](quickstart-run-cloud-notebook.md)」を参照してください。
++ **設定が簡単**:Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。
 
 + **カスタマイズ可能**。 セキュリティで保護されたマネージド VM オファリングであるにも関わらず、ハードウェアの機能へのフル アクセスが維持されており、望みどおりにカスタマイズできます。 たとえば、最新の NVidia V100 を使用する VM をすばやく作成し、新しいニューラル ネットワーク アーキテクチャをステップバイステップでデバッグできます。
 
-ノートブック VM の課金を停止するには、[ノートブック VM を停止します](quickstart-run-cloud-notebook.md#stop-the-notebook-vm)。
+ノートブック VM の課金を停止するには、[ノートブック VM を停止します](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm)。 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -377,7 +377,7 @@ Azure Notebooks を使い始めるには、[Azure portal](https://portal.azure.c
 
 構成ファイルは 3 つの方法で作成できます。
 
-* **「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md#sdk)」の手順に従う**: *config.json* ファイルが Azure Notebooks ライブラリ内に作成されます。 このファイルには、ワークスペースの構成情報が含まれています。 *config.json* を他の開発環境にダウンロードまたはコピーできます。
+* **[ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用する**: *config.json* ファイルを描き込みます。 このファイルには、ワークスペースの構成情報が含まれています。 *config.json* を他の開発環境にダウンロードまたはコピーできます。
 
 * **ファイルをダウンロードする**:[Azure portal](https://ms.portal.azure.com) で、お使いのワークスペースの **[概要]** セクションから **[config.json をダウンロード]** を選択します。
 

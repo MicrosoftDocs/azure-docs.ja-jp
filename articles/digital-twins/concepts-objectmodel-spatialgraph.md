@@ -82,7 +82,7 @@ Digital Twins オブジェクト モデルでは、オブジェクトの以下�
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| EnableAdfsAuthentication | 置換後の文字列 |
+| 名前 | 置換後の文字列 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | お客様の Digital Twins インスタンスの名前 |
 | YOUR_LOCATION | インスタンスをホストするサーバーのリージョン |

@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 6a748031f9d35e26eeb544f154477ea3449903f5
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67796095"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934334"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -250,7 +250,44 @@ Azure App Service 上またはマネージド ID が有効な Azure VM 上でコ
 
 3. [.NET Core サンプルとマネージド ID を使用して、Azure Linux VM から Azure サービスを呼び出す](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="appauthentication-troubleshooting"></a>AppAuthentication のトラブルシューティング
+
+### <a name="common-issues-during-local-development"></a>ローカル開発時の一般的な問題
+
+#### <a name="azure-cli-is-not-installed-you-are-not-logged-in-or-you-do-not-have-the-latest-version"></a>Azure CLI がインストールされていないか、ログインしていないか、または最新バージョンがない
+
+**az account get-access-token** を実行して、Azure CLI にトークンが表示されるかどうかを確認します。 そのようなプログラムが見つからない場合は、[最新バージョンの Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールしてください。 インストールした場合は、ログインするように求められることがあります。 
+ 
+#### <a name="azureservicetokenprovider-cannot-find-the-path-for-azure-cli"></a>AzureServiceTokenProvider で Azure CLI のパスを見つけることができない
+
+AzureServiceTokenProvider では、既定のインストール場所で Azure CLI が検索されます。 Azure CLI が見つからない場合は、環境変数 **AzureCLIPath** を Azure CLI インストール フォルダーに設定してください。 AzureServiceTokenProvider によって、環境変数が Path 環境変数に追加されます。
+ 
+#### <a name="you-are-logged-into-azure-cli-using-multiple-accounts-the-same-account-has-access-to-subscriptions-in-multiple-tenants-or-you-get-an-access-denied-error-when-trying-to-make-calls-during-local-development"></a>複数のアカウントを使用して Azure CLI にログインしているか、同じアカウントが複数のテナント内のサブスクリプションへのアクセス権を持つか、ローカル開発中に呼び出しを行おうとしたときにアクセス拒否エラーが発生する
+
+Azure CLI を使用して、既定のサブスクリプションを、使用するアカウントがあり、アクセスするリソースと同じテナント内にあるものに設定します: **az account set --subscription [subscription-id]** 。 出力が表示されない場合は、成功しています。 **az account list** を使用して、適切なアカウントが既定値になっていることを確認します。
+
+### <a name="common-issues-across-environments"></a>環境間の一般的な問題
+
+#### <a name="unauthorized-access-access-denied-forbidden-etc-error"></a>未承認のアクセス、アクセスの拒否や禁止などのエラー
+ 
+使用されているプリンシパルに、アクセスしようとしているリソースへのアクセス権がありません。 サンプルをローカル開発用マシン上で実行しているか、Azure 内で App Service にデプロイしたかに応じて、ユーザー アカウントまたは App Service の MSI に、目的のリソースへの "共同作成者" アクセス権を付与します。 キー コンテナーなどの一部のリソースには、プリンシパル (ユーザー、アプリ、グループなど) へのアクセス権の付与に使用する独自の[アクセス ポリシー](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)もあります。
+
+### <a name="common-issues-when-deployed-to-azure-app-service"></a>Azure App Service にデプロイするときの一般的な問題
+
+#### <a name="managed-identity-is-not-setup-on-the-app-service"></a>App Service に対してマネージド ID が設定されていない
+ 
+[Kudu デバッグ コンソール](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)を使用して、環境変数 MSI_ENDPOINT および MSI_SECRET が存在することを確認します。 これらの環境変数が存在しない場合は、App Service に対してマネージド ID が有効になりません。 
+ 
+### <a name="common-issues-when-deployed-locally-with-iis"></a>IIS を使用してローカルにデプロイするときの一般的な問題
+
+#### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>IIS 内でアプリをデバッグするときにトークンを取得できない
+
+既定では、AppAuth は IIS 内で別のユーザー コンテキストで実行されるため、開発者 ID を使用してアクセス トークンを取得するためのアクセス権はありません。 次の 2 つの手順に従って、ユーザー コンテキストで実行するように IIS を構成できます。
+- 現在のユーザー アカウントとして実行するように Web アプリのアプリケーション プールを構成します。 詳細については、[こちら](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)をご覧ください。
+- "SetProfileEnvironment" を "True" に構成します。 詳細については、[こちら](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)をご覧ください。 
+
+    - %windir%\System32\inetsrv\config\applicationHost.config にアクセスします
+    - "setProfileEnvironment" を検索します。 "False" に設定されている場合は、"True" に変更します。 これが存在しない場合は、processModel 要素 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) に属性として追加し、それを "True" に設定します。
 
 - 詳細については、「[Azure リソースの管理 ID について](../active-directory/managed-identities-azure-resources/index.yml)」を参照してください。
 - [Azure AD の認証シナリオ](../active-directory/develop/active-directory-authentication-scenarios.md)について詳細を参照する。

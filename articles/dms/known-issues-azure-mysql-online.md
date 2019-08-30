@@ -10,29 +10,30 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 0641545c10d7f59cb1874659eae9c7e7bf65932e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/06/2019
+ms.openlocfilehash: fc5565ab9e3be21b96ce5aa5a938cf22ec3caeb0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532257"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848482"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Azure DB for MySQL へのオンライン移行に関する既知の問題と移行の制限事項
 
-MySQL から Azure Database for MySQL へのオンライン移行に関する既知の問題点と制限事項について、後続のセクションで説明します。 
+MySQL から Azure Database for MySQL へのオンライン移行に関する既知の問題点と制限事項について、後続のセクションで説明します。
 
 ## <a name="online-migration-configuration"></a>オンライン移行の構成
+
 - ソースの MySQL サーバーのバージョンが 5.6.35、5.7.18、またはそれ以降のバージョンである必要があります
 - Azure Database for MySQL では、次の項目をサポートしています。
-    - MySQL コミュニティ エディション
-    - InnoDB エンジン
+  - MySQL コミュニティ エディション
+  - InnoDB エンジン
 - 同じバージョン間の移行。 MySQL 5.6 から Azure Database for MySQL 5.7 への移行はサポートされません。
 - my.ini (Windows) または my.cnf (Unix) のバイナリ ログを有効にします
-    - Server_id=1 のように、Server_id を 1 以上に設定します (MySQL 5.6 の場合のみ)
-    - log-bin = \<パス> を設定します (MySQL 5.6 の場合のみ)
-    - binlog_format = row を設定します
-    - Expire_logs_days = 5 (推奨 - MySQL 5.6 の場合のみ)
+  - Server_id=1 のように、Server_id を 1 以上に設定します (MySQL 5.6 の場合のみ)
+  - log-bin = \<パス> を設定します (MySQL 5.6 の場合のみ)
+  - binlog_format = row を設定します
+  - Expire_logs_days = 5 (推奨 - MySQL 5.6 の場合のみ)
 - ユーザーが ReplicationAdmin ロールを持つ必要があります。
 - ソース MySQL データベースに定義された照合順序は、ターゲット Azure Database for MySQL で定義された照合順序と同じです。
 - スキーマは、Azure Database for MySQL のソース MySQL データベースとターゲット データベースの間で一致する必要があります。
@@ -60,15 +61,17 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
     ```
 
 ## <a name="datatype-limitations"></a>データ型に関する制限事項
+
 - **制限事項**:ソースの MySQL データベースに JSON データ型がある場合、移行は、継続的同期中に失敗します。
 
     **対処法**: ソース MySQL データベース内の JSON データ型を medium text または longtext に変更します。
 
 - **制限事項**:テーブルに主キーがない場合、継続的同期は失敗します。
- 
+
     **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 
 ## <a name="lob-limitations"></a>LOB に関する制限事項
+
 ラージ オブジェクト (LOB) 列は、サイズが大きくなる可能性のある列です。 MySQL の場合、LOB のデータ型には、Medium text、Longtext、BLOB、Mediumblob、Longblob などがあります。
 
 - **制限事項**:LOB のデータ型を主キーとして使用すると、移行は失敗します。
@@ -82,14 +85,47 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
 
     **対処法**: 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。 
 
+## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>AWS RDS MySQL からオンラインで移行するときの制限事項
+
+AWS RDS MySQL から Azure Database for MySQL へのオンライン移行を実行しようとすると、次のエラーが発生する場合があります。
+
+- **エラー:** データベース '{0}' はターゲットに外部キーを持っています。 ターゲットを修正し、新しいデータ移行アクティビティを開始します。 ターゲットで次のスクリプトを実行して、外部キーを表示します。
+
+  **制限事項**:スキーマに外部キーが含まれている場合、移行の初回の読み込みと継続的同期は失敗します。
+  **対処法**: MySQL Workbench で次のスクリプトを実行して、外部キー削除スクリプトと外部キー追加スクリプトを抽出します。
+
+  ```
+  SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
+  ```
+
+- **エラー:** Database '{0}' does not exists on server.\(データベース '{0}' はサーバーに存在しません。\) Provided MySQL source server is case sensitive.\(指定された MySQL ソース サーバーでは大文字と小文字が区別されます。\) Please check the database name.\(データベース名を確認してください。\)
+
+  **制限事項**:コマンド ライン インターフェイス (CLI) を使用して MySQL データベースを Azure に移行するときに、このエラーが発生する場合があります。 サービスはソース サーバーでデータベースを見つけることができませんでした。データベース名が正しく指定されていないか、一覧表示されたサーバーにデータベースが存在しない可能性があります。 データベース名では大文字と小文字が区別されることに注意してください。
+
+  **対処法**: 正確なデータベース名を指定して、再試行してください。
+
+- **エラー:** There are tables with the same name in the database '{database}'.\(データベース '{database}' に同じ名前のテーブルがあります。\) Azure Database for MySQL does not support case sensitive tables.\(Azure Database for MySQL では、大文字と小文字を区別するテーブルはサポートされていません。\)
+
+  **制限事項**:このエラーは、ソース データベースに同じ名前の 2 つのテーブルがある場合に発生します。 Azure Database for MySQL では、大文字と小文字を区別するテーブルはサポートされていません。
+
+  **対処法**: テーブル名を一意になるように更新して、再試行してください。
+
+- **エラー:** ターゲット データベース {database} が空です。 スキーマを移行してください。
+
+  **制限事項**:このエラーは、ターゲットの Azure Database for MySQL データベースに必要なスキーマがない場合に発生します。 データをターゲットに移行できるようにするには、スキーマの移行が必要です。
+
+  **対処法**: ソース データベースからターゲット データベースに[スキーマを移行](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema)してください。
+
 ## <a name="other-limitations"></a>その他の制限事項
+
 - 先頭と末尾に中かっこ {} を含むパスワード文字列はサポートされていません。 この制限は、ソース MySQL とターゲット Azure Database for MySQL の両方への接続に適用されます。
 - 次の DDL はサポートされていません。
-    - すべてのパーティション DDL
-    - テーブルの削除
-    - テーブルの名前変更
+  - すべてのパーティション DDL
+  - テーブルの削除
+  - テーブルの名前変更
 - *alter table <テーブル名> add column <列名>* ステートメントを使用してテーブルの先頭または中間に列を追加することはサポートされていません。 *alter table <テーブル名> add column <列名>* を実行すると、テーブルの末尾に列が追加されます。
 - 列データの一部のみに対して作成されたインデックスはサポートされていません。 次のステートメントは、列データの一部のみを使用してインデックスを作成する一例です。
+
     ``` 
     CREATE INDEX partial_name ON customer (name(10));
     ```

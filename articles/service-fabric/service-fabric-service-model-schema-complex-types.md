@@ -62,12 +62,12 @@ ms.locfileid: "69036395"
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 作成するアプリケーションの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -1074,12 +1074,12 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 クラスターの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 #### <a name="version"></a>Version
@@ -1252,12 +1252,12 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 オーバーライドされる設定を含むサービス マニフェストの構成パッケージの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -1313,12 +1313,12 @@ Settings.xml ファイルを含む Name 属性を使用して名前が付けら�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 バージョン管理される項目の名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 #### <a name="sectionname"></a>SectionName
@@ -1542,12 +1542,12 @@ true の場合、パスワードの値は暗号化されます。
 |type|xs:boolean|
 |default|false|
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 特定の証明書情報の識別子。 この名前は、コンテナーの環境変数を設定するために使用されます。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -1986,11 +1986,11 @@ ApplicationManifest.xml 内で "RepositoryCredentials" タグで指定された�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -2844,12 +2844,12 @@ ETW トレースの収集を指定します。 ETW トレースは、アプリ�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 ドライバー オプションの名前。 
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -2988,11 +2988,11 @@ X509 証明書の拇印。
 |名前|X509FindValue|
 |use|必須|
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|省略可能|
 
@@ -3048,12 +3048,12 @@ X509 証明書の拇印。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 オーバーライドするエンドポイントの名前。 文字列。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 #### <a name="port"></a>Port
@@ -3189,12 +3189,12 @@ URI スキーム。 サービス マニフェストの値をオーバーライ�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 エンドポイントの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 #### <a name="protocol"></a>Protocol
@@ -3445,12 +3445,12 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 環境変数の名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -3513,12 +3513,12 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 環境変数の名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -3817,11 +3817,11 @@ X509 証明書のストア名。
 |use|省略可能|
 |default||
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|省略可能|
 
@@ -4384,12 +4384,12 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 コンテナー イメージの名前。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 
@@ -4783,12 +4783,12 @@ NodeTypes セクションで定義されているノード型の名前。
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 クラスター リソース マネージャーから見たクラスター内のメトリックの一意識別子。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 #### <a name="defaultload"></a>DefaultLoad
@@ -6250,12 +6250,12 @@ Service Fabric でレプリケートされたブロックストアを、サー�
 |名前|ServiceTypeName|
 |use|必須|
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 サービス グループ名に対するサービス グループ メンバーの相対名。
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |use|必須|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
@@ -6922,11 +6922,11 @@ ServicePackage は、配置とアクティブ化のバージョン付き単位�
 ```
 ### <a name="attribute-details"></a>属性の詳細
 
-#### <a name="name"></a>EnableAdfsAuthentication
+#### <a name="name"></a>Name
 
 |Attribute|値|
 |---|---|
-|名前|EnableAdfsAuthentication|
+|名前|Name|
 |type|xs:string|
 |use|必須|
 

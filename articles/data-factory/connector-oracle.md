@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a71c7ffe9040c3002b1f5378ce298a047554b15
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640195"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966457"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -33,11 +33,13 @@ Oracle データベースから、サポートされている任意のシンク 
 具体的には、この Oracle コネクタでは以下がサポートされています。
 
 - Oracle データベースの次のバージョン:
-  - Oracle 12c R1 (12.1)
-  - Oracle 11g R1、R2 (11.1、11.2)
-  - Oracle 10g R1、R2 (10.1、10.2)
-  - Oracle 9i R1、R2 (9.0.1、9.2)
-  - Oracle 8i R3 (8.1.7)
+    - Oracle 18c R1 (18.1) 以降
+    - Oracle 12c R1 (12.1) 以降
+    - Oracle 11g R1 (11.1) 以降
+    - Oracle 10g R1 (10.1) 以降
+    - Oracle 9i R2 (9.2) 以降
+    - Oracle 8i R3 (8.1.7) 以降
+    - Oracle Database Cloud Exadata Service
 - 基本認証または OID 認証を使用したデータのコピー。
 - Oracle ソースからの並列コピー。 詳細については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」セクションを参照してください。
 
@@ -46,7 +48,9 @@ Oracle データベースから、サポートされている任意のシンク 
 
 ## <a name="prerequisites"></a>前提条件
 
-パブリックにアクセスできない Oracle データベースをコピー元またはコピー先としてデータをコピーするには、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)を設定する必要があります。 統合ランタイムには、組み込みの Oracle ドライバーがあります。 そのため、Oracle をコピー元またはコピー先としてデータをコピーするときに、ドライバーを手動でインストールする必要はありません。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
+
+統合ランタイムには、組み込みの Oracle ドライバーがあります。 そのため、Oracle をコピー元またはコピー先としてデータをコピーするときに、ドライバーを手動でインストールする必要はありません。
 
 ## <a name="get-started"></a>作業開始
 
@@ -62,7 +66,7 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 |:--- |:--- |:--- |
 | type | type プロパティは **Oracle** に設定する必要があります。 | はい |
 | connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを `SecureString` としてマークします。 パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 <br><br>**サポートされる接続の種類**:**Oracle SID** または **Oracle サービス名**を使用してデータベースを識別できます。<br>- SID を使用する場合: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- サービス名を使用する場合: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、このプロパティで既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 >[!TIP]
 >"ORA-01025:UPI パラメーターの値が有効範囲外です" というエラーが発生し、Oracle のバージョンが 8i である場合は、接続文字列に `WireProtocolMode=1` を追加してください。 その後、やり直してください。
@@ -191,11 +195,10 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 
 このセクションでは、Oracle のソースとシンクでサポートされるプロパティの一覧を示します。 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関するページを参照してください。 
 
-### <a name="oracle-as-a-source-type"></a>ソース タイプとしての Oracle
+### <a name="oracle-as-source"></a>ソースとしての Oracle
 
-> [!TIP]
->
-> データ パーティション分割を使用して、Oracle からデータを効率的に読み込むには、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」を参照してください。
+>[!TIP]
+>データ パーティション分割を使用して、Oracle からデータを効率的に読み込むには、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」を参照してください。
 
 Oracle からデータをコピーするは、コピー アクティビティのソースの種類を `OracleSource` に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
@@ -242,7 +245,7 @@ Oracle からデータをコピーするは、コピー アクティビティの
 ]
 ```
 
-### <a name="oracle-as-a-sink-type"></a>シンクの種類としての Oracle
+### <a name="oracle-as-sink"></a>シンクとしての Oracle
 
 Oracle にデータをコピーするには、コピー アクティビティのシンクの種類を `OracleSink` に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 

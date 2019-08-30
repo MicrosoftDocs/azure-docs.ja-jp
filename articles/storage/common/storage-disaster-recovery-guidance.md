@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f9d68af12f6b2e98c77d0bd1b65a82c69588f203
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147613"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015655"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
 
@@ -37,8 +37,11 @@ Azure Storage では、geo 冗長ストレージ アカウントのアカウン�
 
 Azure Storage の他の冗長性オプションとしては、1 つのリージョン内の可用性ゾーン間でデータがレプリケートされるゾーン冗長ストレージ (ZRS)、および 1 つのリージョン内の 1 つのデータ センター内でデータがレプリケートされるローカル冗長ストレージ (LRS) があります。 ストレージ アカウントが ZRS または LRS 用に構成されている場合、GRS または RA-GRS を使用するようにアカウントを変換できます。 geo 冗長ストレージ用にアカウントを構成すると、追加のコストが発生します。 詳細については、「[Azure Storage のレプリケーション](storage-redundancy.md)」をご覧ください。
 
+> [!NOTE]
+> geo ゾーン冗長ストレージ (GZRS) および読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) は現在プレビュー段階ですが、お客様が管理するアカウントのフェールオーバーと同じリージョンではまだ利用できません。 このため、お客様は現在、GZRS および RA-GZRS アカウントでアカウント フェールオーバー イベントを管理できません。 プレビュー期間中、GZRS/RA-GZRS アカウントに影響するフェールオーバー イベントはすべて Microsoft によって管理されます。
+
 > [!WARNING]
-> geo 冗長ストレージでは、データ損失のリスクが伴います。 データはセカンダリ リージョンに非同期的にレプリケートされるため、データがプライマリ リージョンに書き込まれてからセカンダリ リージョンに書き込まれるまでの間に遅延があります。 障害が発生した時点で、セカンダリ エンドポイントにまだレプリケートされていないプライマリ エンドポイントへの書き込み操作は失われます。 
+> geo 冗長ストレージでは、データ損失のリスクが伴います。 データはセカンダリ リージョンに非同期的にレプリケートされるため、データがプライマリ リージョンに書き込まれてからセカンダリ リージョンに書き込まれるまでの間に遅延があります。 障害が発生した時点で、セカンダリ エンドポイントにまだレプリケートされていないプライマリ エンドポイントへの書き込み操作は失われます。
 
 ## <a name="design-for-high-availability"></a>高可用性向けの設計
 

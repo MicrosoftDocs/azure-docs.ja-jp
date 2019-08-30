@@ -3,15 +3,15 @@ title: Azure Cosmos DB のコンテナーのスループットをプロビジョ
 description: Azure Cosmos DB のコンテナー レベルでスループットをプロビジョニングする方法について説明します。
 author: rimman
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: f195eaa0f5d22160de8c1e9e2f429073de001828
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 0975fe5135bbe9f5e1dc65ee0444cc3aab986a2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986021"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093049"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos コンテナー上でのスループットをプロビジョニングする
 

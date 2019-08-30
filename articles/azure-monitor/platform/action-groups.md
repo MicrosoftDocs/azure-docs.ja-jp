@@ -144,7 +144,7 @@ Webhook は、次のルールを使用して再試行されます。 Webhook の
 
 アクション グループの Webhook アクションを使用すると、Azure Active Directory を利用して、アクション グループと、保護された Web API (Webhook エンドポイント) との間の接続をセキュリティで保護することができます。 この機能を利用するための全体的なワークフローを次に示します。 Azure AD アプリケーションとサービス プリンシパルの概要については、「[Microsoft ID プラットフォーム (v2.0) の概要](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)」を参照してください。
 
-1. 保護された Web API 用の Azure AD アプリケーションを作成します。 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview をご覧ください。
+1. 保護された Web API 用の Azure AD アプリケーションを作成します。 [https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview ) をご覧ください。
     - デーモン アプリで呼び出されるよう、保護された API を構成します。
     
 1. アクション グループで Azure AD アプリケーションを使用できるようにします。

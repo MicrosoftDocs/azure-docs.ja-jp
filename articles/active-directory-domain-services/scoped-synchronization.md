@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: bb96e7ccbc38a71d24178c31f8eb9a077c06b8f0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 7d3bd8c6c62c0b8a1be6203e426337fcee7d2126
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472518"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617124"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Azure AD からマネージド ドメインまで範囲指定された同期を構成する
 この記事では、Azure AD ディレクトリから Azure AD Domain Services のマネージド ドメインに同期される特定のユーザー アカウントのみを構成する方法を示します。
@@ -47,7 +47,7 @@ ms.locfileid: "67472518"
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Azure portal を使用して新しいマネージド ドメインを作成し、グループ ベースのスコープ付き同期を有効にする
 
-1. [ファースト ステップ ガイド](create-instance.md)に従って、マネージド ドメインを作成します。
+1. [ファースト ステップ ガイド](tutorial-create-instance.md)に従って、マネージド ドメインを作成します。
 2. Azure AD Domain Services 作成ウィザードで同期スタイルを選択するときに **[スコープ付き]** を選択します。
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>PowerShell を使用して新しいマネージド ドメインを作成し、グループ ベースのスコープ付き同期を有効にする
@@ -81,7 +81,7 @@ ms.locfileid: "67472518"
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso100.com"
+   $ManagedDomainName = "contoso.com"
    $ResourceGroupName = "ContosoAaddsRg"
    $VnetName = "DomainServicesVNet_WUS"
    $AzureLocation = "westus"

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0325a3bda912c95d8d27646bc1e80fff5ce10a8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236245"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639422"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure Diagnostics 拡張機能とは何か
 Azure Diagnostics 拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、Virtual Machines、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](../../azure-monitor/overview.md)」を参照してください。
@@ -74,7 +74,7 @@ Azure Monitor メトリック時系列データベースにデータを送信す
 
 ## <a name="virtual-machines"></a>Virtual Machines
 * Visual Studio を使用する場合は、[Visual Studio を使用した Azure Virtual Machines のトレース](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines)に関するページを参照して操作を開始してください。 それ以外の場合は次を参照してください。
-* [Azure 仮想マシンでの Azure Diagnostics の設定](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+* [Azure 仮想マシンでの Azure Diagnostics の設定](/azure/virtual-machines/extensions/diagnostics-windows)
 
 詳細なトピックについては、次を参照してください。
 

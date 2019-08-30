@@ -8,17 +8,16 @@ manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 01a0dc658728379f29d5ae32a07da1b77d5caab6
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: e9da57ffe89dd6e187b7681024924d4853463ee2
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730555"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067358"
 ---
 # <a name="set-up-rate-limit-policy"></a>レート制限ポリシーのセットアップ
 

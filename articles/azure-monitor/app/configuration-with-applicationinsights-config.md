@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 382f43156ab450600ff0d2e5e2db763cd6bd94df
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 02ad74e5b1f8b86a0072b413db2a572f8ed92781
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875050"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932145"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかに対してパラメーターを設定したりできます。
 
-アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。 構成ファイルは、[SDK のほとんどのバージョンのインストール][start]時にプロジェクトに自動的に追加されます。 また、[IIS サーバー上の Status Monitor][redfield] によって Web アプリに追加されます。 [Azure Web サイトの拡張機能](azure-web-apps.md)または [Azure VM の拡張機能と仮想マシン スケールセット](azure-vm-vmss-apps.md)が使用されている場合、構成ファイルは無視されます。
+アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。 構成ファイルは、[SDK のほとんどのバージョンのインストール][start]時にプロジェクトに自動的に追加されます。 既定では、 **[追加] > [Application Insights Telemetry]** がサポートされている Visual Studio テンプレート プロジェクトからの自動化されたエクスペリエンスを使用すると、ApplicationInsights.config ファイルがプロジェクトのルート フォルダーに作成され、コンパイル時に bin フォルダーにコピーされます。 また、[IIS サーバー上の Status Monitor][redfield] によって Web アプリに追加されます。 [Azure Web サイトの拡張機能](azure-web-apps.md)または [Azure VM の拡張機能と仮想マシン スケールセット](azure-vm-vmss-apps.md)が使用されている場合、構成ファイルは無視されます。
 
 [Web ページの SDK][client] を制御するための同等のファイルはありません。
 
@@ -45,7 +45,7 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet パッケージ
 
-エージェントベース (コードなし) アタッチを使用してコードを変更することなく、依存関係を自動収集できます。 これを Azure Web アプリで使用するには、[Application Insights 拡張](azure-web-apps.md)を有効にします。 Azure VM または Azure 仮想マシン スケール セットで使用するには、[VM と仮想マシン スケール セットのアプリケーション監視拡張](azure-vm-vmss-apps.md)を有効にします。
+エージェントベース (コードなし) アタッチを使用してコードを変更することなく、依存関係を自動収集できます。 これを Azure Web アプリで使用するには、[Application Insights 拡張機能](azure-web-apps.md)を有効にします。 Azure VM または Azure 仮想マシン スケール セットで使用するには、[VM と仮想マシン スケール セットのアプリケーション監視拡張](azure-vm-vmss-apps.md)を有効にします。
 
 ### <a name="performance-collector"></a>パフォーマンス コレクター
 CPU、メモリ、IIS インストールのネットワーク負荷など、[システム パフォーマンス カウンターを収集](../../azure-monitor/app/performance-counters.md)します。 自分で設定したパフォーマンス カウンターなど、回収するカウンターを指定できます。

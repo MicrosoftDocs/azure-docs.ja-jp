@@ -2,21 +2,19 @@
 title: 検索サービスのリソースの使用状況とクエリのメトリックを監視する - Azure Search
 description: ログ記録を有効にし、Azure Search サービスからクエリ アクティビティのメトリック、リソースの使用状況、およびその他のシステム データを取得します。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755067"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640528"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
 

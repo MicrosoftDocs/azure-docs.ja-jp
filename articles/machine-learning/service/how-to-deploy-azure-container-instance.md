@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 04c77a82d08e2559d4ce29d49d56d6b7a5edfca5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 29bff3383985905ac3146dfc7fc097fbd49a5a6d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856145"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543559"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances にモデルをデプロイする
 
@@ -46,11 +46,14 @@ ACI の利用可能なクォータとリージョンについては、[Azure Con
 
 ## <a name="deploy-to-aci"></a>ACI にデプロイする
 
-Azure Container Instances にモデルをデプロイするには、必要なコンピューティング リソースが記述されている__デプロイ構成__を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した__推論構成__も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+Azure Container Instances にモデルをデプロイするには、必要なコンピューティング リソースが記述されている __デプロイ構成__ を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 
 ```python
+from azureml.core.webservice import AciWebservice, Webservice
+from azureml.core.model import Model
+
 deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
 service = Model.deploy(ws, "aciservice", [model], inference_config, deployment_config)
 service.wait_for_deployment(show_output = True)

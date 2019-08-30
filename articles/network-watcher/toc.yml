@@ -49,7 +49,7 @@
       items:
         - name: VM 拡張機能をインストールする
           items:
-            - name: ' Windows'
+            - name: Windows
               href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
             - name: Linux
               href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
@@ -101,6 +101,8 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+        - name: NSG フロー ログ ストレージ BLOB の削除
+          href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: NSG フロー ログの分析
           items:
             - name: NSG フロー ログの読み取り

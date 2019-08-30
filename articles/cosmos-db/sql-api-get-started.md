@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ea3779ce7d4d77e6b0a55b8a00374b701a073b66
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598519"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876436"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 
@@ -253,7 +253,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 **F5** キーを押してアプリケーションを実行します。
 
-お疲れさまでした。 これで、Azure Cosmos DB データベースが作成されました。  
+お疲れさまでした。 これで、Azure Cosmos データベースが作成されました。  
 
 ## <a id="CreateColl"></a>手順 5: コンテナーを作成する
 > [!WARNING]
@@ -283,10 +283,10 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
    **F5** キーを押してアプリケーションを実行します。
 
-お疲れさまでした。 これで、Azure Cosmos DB コンテナーが作成されました。  
+お疲れさまでした。 これで、Azure Cosmos コンテナーが作成されました。  
 
 ## <a id="CreateDoc"></a>手順 6: コンテナーに項目を追加する
-項目は、**CosmosContainer** クラスの [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) 関数を使用して作成できます。 SQL API を使用すると、項目はドキュメントとして投影されます。これは、ユーザー定義の (任意の) JSON コンテンツです。 これで、Azure Cosmos DB コンテナーに項目を挿入できます。
+項目は、**CosmosContainer** クラスの [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) 関数を使用して作成できます。 SQL API を使用すると、項目はドキュメントとして投影されます。これは、ユーザー定義の (任意の) JSON コンテンツです。 これで、Azure Cosmos コンテナーに項目を挿入できます。
 
 まず、このサンプルの Azure Cosmos DB 内に格納するオブジェクトの **Family** クラスを作成しましょう。 さらに、**Family** 内で使用するサブクラスとして、**Parent**、**Child**、**Pet**、**Address** を作成します。 項目には、JSON で **id** としてシリアル化される **Id** プロパティが必要であることに注意してください。
 
@@ -320,10 +320,10 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 **F5** キーを押してアプリケーションを実行します。
 
-お疲れさまでした。 これで、Azure Cosmos DB の項目が 2 つ作成されました。  
+お疲れさまでした。 これで、Azure Cosmos の項目が 2 つ作成されました。  
 
 ## <a id="Query"></a>手順 7: Azure Cosmos DB リソースを照会する
-Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](sql-api-sql-query.md)がサポートされています。 次のサンプル コードを使用して、前の手順で挿入した項目に対してどのようにクエリを実行するかを説明します。
+Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメントに対する豊富な[クエリ](sql-api-sql-query.md)がサポートされています。 次のサンプル コードを使用して、前の手順で挿入した項目に対してどのようにクエリを実行するかを説明します。
 
 1. **QueryItemsAsync** メソッドをコピーして、**AddItemsToContainerAsync** メソッドの下に貼り付けます。
 
@@ -347,7 +347,7 @@ Azure Cosmos DB では、各コレクションに格納された JSON ドキュ�
 
 **F5** キーを押してアプリケーションを実行します。
 
-お疲れさまでした。 これで、Azure Cosmos DB コンテナーに対するクエリが実行されました。
+お疲れさまでした。 これで、Azure Cosmos コンテナーに対するクエリが実行されました。
 
 ## <a id="ReplaceItem"></a>手順 8: JSON 項目を置換する
 ここでは、Azure Cosmos DB 内の項目を更新します。
@@ -375,7 +375,7 @@ Azure Cosmos DB では、各コレクションに格納された JSON ドキュ�
 
    **F5** キーを押してアプリケーションを実行します。
 
-お疲れさまでした。 これで、Azure Cosmos DB 項目が置換されました。
+お疲れさまでした。 これで、Azure Cosmos 項目が置換されました。
 
 ## <a id="DeleteDocument"></a>手順 9: アイテムを削除する
 ここでは、Azure Cosmos DB 内の項目を削除します。
@@ -404,7 +404,7 @@ Azure Cosmos DB では、各コレクションに格納された JSON ドキュ�
 
 **F5** キーを押してアプリケーションを実行します。
 
-お疲れさまでした。 これで、Azure Cosmos DB 項目が削除されました。
+お疲れさまでした。 これで、Azure Cosmos 項目が削除されました。
 
 ## <a id="DeleteDatabase"></a>手順 10: データベースを削除する
 ここでは、データベースを削除します。 作成したデータベースを削除すると、データベースとすべての子リソース (コンテナー、項目、ストアド プロシージャ、ユーザー定義関数、トリガーなど) が削除されます。 ここでは、**CosmosClient** インスタンスも破棄します。
@@ -419,7 +419,7 @@ Azure Cosmos DB では、各コレクションに格納された JSON ドキュ�
 
 **F5** キーを押してアプリケーションを実行します。
 
-お疲れさまでした。 これで、Azure Cosmos DB データベースが削除されました。
+お疲れさまでした。 これで、Azure Cosmos データベースが削除されました。
 
 ## <a id="Run"></a>手順 11: C# コンソール アプリケーションの全体的な実行の流れ
 Visual Studio で F5 キーを押すと、アプリケーションがビルドされデバッグ モードで実行します。

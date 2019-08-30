@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722145"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942840"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory でのヨーロッパの顧客のための ID データ ストレージ
 Office 365 や Azure などの Microsoft Online サービスをサブスクライブしている場合、ID データは Azure AD により、組織によって提供されるアドレスに基づいて地理的な場所に格納されます。 ID データの格納場所については、Microsoft Trust Center の「[データの保管場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」のセクションを参照してください。
@@ -43,6 +43,15 @@ Azure AD B2B は、利用リンクとリダイレクト URL 情報がある招�
 ## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory Domain Services (Azure AD DS)
 
 Azure AD DS は、ユーザーが選択した Azure Virtual Network と同じ場所にユーザー データを保存します。 そのため、ネットワークがヨーロッパ以外にある場合、データはレプリケートされ、ヨーロッパ以外の場所に保存されます。
+
+## <a name="federation-in-microsoft-exchange-server-2013"></a>Microsoft Exchange Server 2013 のフェデレーション
+    
+- アプリケーション識別子 (AppID) - Exchange の組織を識別するために Azure Active Directory 認証システムによって生成される一意の番号
+- アプリケーションに対して承認されたフェデレーション ドメインの一覧
+- アプリケーションのトークン署名公開キー 
+
+Microsoft Exchange サーバーのフェデレーションの詳細については、「[フェデレーション: Exchange 2013 のヘルプ](https://docs.microsoft.com/exchange/federation-exchange-2013-help)」の記事を参照してください。
+
 
 ## <a name="other-considerations"></a>その他の考慮事項
 

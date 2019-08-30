@@ -6,16 +6,15 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1168963c0698c6bdafe20babe2e5143585bf90a8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730543"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087122"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
@@ -35,7 +34,7 @@ ms.locfileid: "60730543"
 > [!NOTE]
 > JavaScript Durable Functions は、Functions 2.x ランタイムでのみ利用できます。
 
-## <a name="e1hellosequence"></a>E1_HelloSequence
+## <a name="e1_hellosequence"></a>E1_HelloSequence
 
 ### <a name="functionjson-file"></a>function.json ファイル
 
@@ -72,7 +71,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 `context` オブジェクトには、他の "*アクティビティ*" 関数を呼び出し、`callActivity` メソッドを使用して入力パラメーターを渡すことができる、`df` オブジェクトが含まれています。 このコードでは、異なるパラメーター値で `E1_SayHello` を 3 回続けて呼び出しています。`yield` を使用して実行を示すと、非同期アクティビティ関数呼び出しが返されるのを待つ必要があります。 各呼び出しの戻り値が `outputs` 一覧に追加され、それが関数の末尾に返されます。
 
-## <a name="e1sayhello"></a>E1_SayHello
+## <a name="e1_sayhello"></a>E1_SayHello
 
 ### <a name="functionjson-file"></a>function.json ファイル
 

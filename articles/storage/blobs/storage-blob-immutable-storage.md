@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618405"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941944"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -175,7 +175,7 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 **この機能が適用されるのはブロック BLOB だけですか? それとも、ページ BLOB と追加 BLOB にも適用されますか?**
 
-不変ストレージは任意の BLOB 型で使用できますが、主にブロック BLOB に使用することをお勧めします。 ブロック BLOB とは異なり、ページ BLOB と追加 BLOB は WORM コンテナーの外部で作成し、コンテナー内にコピーする必要があります。 これらの BLOB を WORM コンテナー内にコピーした後は、追加 BLOB への "*追加*" やページ BLOB の変更を行うことはできなくなります。
+コンテナー レベルで設定されている任意の種類の BLOB には不変ストレージを使用できますが、主にブロック BLOB を格納するコンテナーには WORM を使用することをお勧めします。 ブロック BLOB とは異なり、新しいページ BLOB と追加の BLOB はいずれも WORM コンテナーの外部で作成し、コンテナー内にコピーする必要があります。 これらの BLOB を WORM コンテナー内にコピーした後は、追加 BLOB への "*追加*" やページ BLOB の変更を行うことはできなくなります。 そのため、アクティブな Virtual Machines 用の VHD (ページ BLOB) を格納するコンテナーに対して WORM ポリシーを設定することは推奨できません。そのことによって、VM ディスクがロックされるからです。
 
 **この機能を使用するために、新しいストレージ アカウントを作成する必要がありますか?**
 

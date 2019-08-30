@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5088cfa417c76933be6785188f2b173b7b461d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772571"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035936"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning service を探索する
 
@@ -67,4 +67,4 @@ Azure Notebooks のサンプル リポジトリにアクセスするには、[Az
 
 - [MNIST を使用した画像分類モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)
 
-- [NYC タクシー データ セットを使用して回帰モデルをトレーニングするためのデータの準備と自動化された機械学習](tutorial-data-prep.md)
+- [NYC タクシー データ セットを使用して回帰モデルをトレーニングするためのデータの準備と自動化された機械学習](tutorial-auto-train-models.md)

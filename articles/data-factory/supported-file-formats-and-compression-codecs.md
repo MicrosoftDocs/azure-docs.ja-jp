@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 9f6edc45316eaeceb75da643ed64b39382712852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165953"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840255"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -27,6 +27,7 @@ ms.locfileid: "66165953"
 * [Parquet 形式](#parquet-format)
 * [ORC 形式](#orc-format)
 * [Avro 形式](#avro-format)
+* [バイナリ形式](#binary-format)
 
 > [!TIP]
 > コピー アクティビティがソース データをシンクにマッピングする方法については、「[コピー アクティビティでのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)」を参照してください。
@@ -227,7 +228,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 
 オブジェクトと配列両方からデータを抽出することで、上記の内容を次の形式の Azure SQL テーブルにコピーします。
 
-| ID | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
@@ -359,7 +360,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 
 SQL Database 内に次のテーブルが含まれているとします。
 
-| ID | order_date | order_price | order_by |
+| id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -461,7 +462,7 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 | Double | Double | 該当なし | 該当なし |
 | Decimal | Binary | Decimal | Decimal |
 | string | Binary | Utf8 | Utf8 |
-| DateTime | Int96 | 該当なし | 該当なし |
+| Datetime | Int96 | 該当なし | 該当なし |
 | TimeSpan | Int96 | 該当なし | 該当なし |
 | DateTimeOffset | Int96 | 該当なし | 該当なし |
 | ByteArray | Binary | 該当なし | 該当なし |
@@ -511,7 +512,7 @@ ORC ファイルのシリアル化/逆シリアル化を使用してセルフホ
 | Double | Double |
 | Decimal | Decimal |
 | string | string |
-| DateTime | Timestamp |
+| Datetime | Timestamp |
 | DateTimeOffset | Timestamp |
 | TimeSpan | Timestamp |
 | ByteArray | Binary |
@@ -534,6 +535,10 @@ Hive テーブルで Avro 形式を使用するには、 [Apache Hive のチュ�
 以下の点に注意してください。
 
 * [複合データ型](https://avro.apache.org/docs/current/spec.html#schema_complex)はサポートされていません (レコード、列挙型、配列、マップ、共用体、および固定)。
+
+## <a name="binary-format"></a>バイナリ形式
+
+詳しくは、[バイナリ形式](format-binary.md)に関する記事をご覧ください。
 
 ## <a name="compression-support"></a>圧縮のサポート
 

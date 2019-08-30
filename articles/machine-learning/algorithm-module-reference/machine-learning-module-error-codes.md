@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 5ce3d86d37940f66065debce30b348371b7aa6af
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: dc383d302fb3e9920ee8ef2d7d908a5b406ea1da
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568244"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128662"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>アルゴリズムとモジュールに関する例外とエラー コードの参照
 

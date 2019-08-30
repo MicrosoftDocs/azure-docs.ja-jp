@@ -10,12 +10,12 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31f6a3fc281b8dc309ddcd237246c870c85ae20b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60847402"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971642"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -27,8 +27,8 @@ ms.locfileid: "60847402"
 この例では、HTTP 要求でトリガーすることのできるロジック アプリを使用します。 このロジック アプリは、SAP サーバーに IDoc (Intermediate Document) を送信し、そのロジック アプリを呼び出した要求元に応答を返します。
 現在の SAP コネクタには、アクションはありますが、トリガーがありません。そこで、この例では、ロジック アプリのワークフローにおける最初のステップとして、[HTTP 要求トリガー](../connectors/connectors-native-reqres.md)を使用しています。 SAP コネクタに固有の技術情報については、次のリファレンス記事を参照してください。 
 
-* <a href="https://docs.microsoft.com/connectors/sapapplicationserver/" target="blank">SAP アプリケーション サーバー コネクタ</a>
-* <a href="https://docs.microsoft.com/connectors/sapmessageserver/" target="blank">SAP メッセージ サーバー コネクタ</a>
+* <a href="https://docs.microsoft.com/connectors/sap" target="blank">SAP アプリケーション サーバー コネクタ</a>
+* <a href="https://docs.microsoft.com/connectors/sap/#send-message-to-sap" target="blank">SAP メッセージ サーバー コネクタ</a>
 
 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
@@ -190,8 +190,8 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 コネクタに関して、その Swagger ファイルで記述される技術的詳細については、次のリファレンス記事を参照してください。 
 
-* [SAP アプリケーション サーバー](/connectors/sapapplicationserver/)
-* [SAP メッセージ サーバー](/connectors/sapmessageserver/)
+* [SAP アプリケーション サーバー](/connectors/sap)
+* [SAP メッセージ サーバー](/connectors/sap/#send-message-to-sap)
 
 ## <a name="get-support"></a>サポートを受ける
 

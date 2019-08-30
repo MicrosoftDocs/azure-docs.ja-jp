@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 678a5de4a0adf0bbabb57c2dad857022d9ff03e2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1d7cf8baafb7208909b54c4d74d2b73777b075c8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708349"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090938"
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>PowerShell を使用して WordPress VM を作成する
 

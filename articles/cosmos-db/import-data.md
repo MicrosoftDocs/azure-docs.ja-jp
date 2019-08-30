@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: dech
-ms.openlocfilehash: 792dca41a052930bf2c853846cdd0c09661c5cd3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0981a0810ee64f78443512d794d172a69fb54494
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954503"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617023"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 
-このチュートリアルでは、Azure Cosmos DB データ移行ツールを使用して、さまざまなソースからデータを Azure Cosmos DB コレクションおよびテーブルにインポートする方法について説明します。 JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、さらには Azure Cosmos DB SQL API コレクションからインポートすることができます。 Azure Cosmos DB で使用するためには、そのデータをコレクションやテーブルに移行します。 データ移行ツールは、SQL API の 1 つの単一パーティション コレクションから複数パーティション コレクションに移行する場合にも使用できます。
+このチュートリアルでは、Azure Cosmos DB データ移行ツールを使用して、さまざまなソースからデータを Azure Cosmos コンテナーおよびテーブルにインポートする方法について説明します。 JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、さらには Azure Cosmos DB SQL API コレクションからインポートすることができます。 Azure Cosmos DB で使用するためには、そのデータをコレクションやテーブルに移行します。 データ移行ツールは、SQL API の 1 つの単一パーティション コレクションから複数パーティション コレクションに移行する場合にも使用できます。
 
 Azure Cosmos DB で使用する API を教えてください。
 
@@ -39,7 +39,7 @@ Azure Cosmos DB で使用する API を教えてください。
 
 * **スループットを上げる**: データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure portal でスループットを上げることの詳細については、Azure Cosmos DB の[パフォーマンス レベル](performance-levels.md)と[価格レベル](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページを参照してください。
 
-* **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal のすべてのコレクションを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行する場合は、Azure Cosmos DB コレクションの作成時にパーティション キーを指定してください。
+* **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal のすべてのコレクションを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行する場合は、Azure Cosmos コンテナーの作成時にパーティション キーを指定してください。
 
 ## <a id="Overviewl"></a>概要
 
@@ -52,7 +52,7 @@ Azure Cosmos DB で使用する API を教えてください。
 * Azure Table Storage
 * Amazon DynamoDB
 * hbase
-* Azure Cosmos DB コレクション
+* Azure Cosmos コンテナー
 
 このインポート ツールにはグラフィカル ユーザー インターフェイス (dtui.exe) が搭載されていますが、コマンド ライン (dt.exe) から実行することもできます。 実際には、UI を使用してインポートを設定した後で関連コマンドを出力するオプションもあります。 インポート時には、表形式のソース データ (SQL Server や CSV ファイルなど) を変換して階層関係 (サブドキュメント) を作成できます。 最後まで目を通し、ソース オプション、各ソースからインポートするためのサンプル コマンド、ターゲット オプション、およびインポート結果の表示に関する詳細を確認してください。
 
@@ -75,7 +75,7 @@ Azure Cosmos DB で使用する API を教えてください。
 * [Azure Table Storage](#AzureTableSource)
 * [Amazon DynamoDB](#DynamoDBSource)
 * [BLOB](#BlobImport)
-* [Azure Cosmos DB コレクション](#SQLSource)
+* [Azure Cosmos コンテナー](#SQLSource)
 * [HBase](#HBaseSource)
 * [Azure Cosmos DB の一括インポート](#SQLBulkTarget)
 * [Azure Cosmos DB シーケンシャル レコード インポート](#SQLSeqTarget)
@@ -273,7 +273,7 @@ Amazon DynamoDB の接続文字列の形式は次のとおりです。
 Amazon DynamoDB からインポートするためのコマンド ライン サンプルを以下に示します。
 
 ```console
-dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<Azure Cosmos DB Endpoint>;AccountKey=<Azure Cosmos DB Key>;Database=<Azure Cosmos DB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
+dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<Azure Cosmos DB Endpoint>;AccountKey=<Azure Cosmos DB Key>;Database=<Azure Cosmos database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 ```
 
 ## <a id="BlobImport"></a>Azure Blob Storage からのインポート
@@ -290,7 +290,7 @@ dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net
 
 ## <a id="SQLSource"></a>SQL API コレクションからのインポート
 
-Azure Cosmos DB ソース インポーターのオプションを使用して、1 つ以上の Azure Cosmos DB コレクションからデータをインポートできます。また、必要に応じて、クエリを使用してドキュメントをフィルター処理できます。  
+Azure Cosmos DB ソース インポーターのオプションを使用して、1 つ以上の Azure Cosmos コンテナーからデータをインポートできます。また、必要に応じて、クエリを使用してドキュメントをフィルター処理できます。  
 
 ![Azure Cosmos DB ソース オプションのスクリーンショット](./media/import-data/documentdbsource.png)
 
@@ -305,7 +305,7 @@ Azure Cosmos DB アカウントの接続文字列は、[Azure Cosmos DB アカ�
 > [!NOTE]
 > [確認] を使用して、[接続文字列] フィールドで指定した Azure Cosmos DB インスタンスにアクセスできることを確認してください。
 
-1 つの Azure Cosmos DB コレクションからインポートするには、データのインポート元のコレクション名を入力します。 複数の Azure Cosmos DB コレクションからインポートするには、1 つ以上のコレクション名に一致する正規表現を指定します (例: collection01 | collection02 | collection03)。 必要に応じて、クエリを直接入力するか、そのためのファイルを指定して、インポートするデータのフィルター処理と整形を実行できます。
+1 つの Azure Cosmos コンテナーからインポートするには、データのインポート元コレクションの名前を入力します。 複数の Azure Cosmos コンテナーからインポートするには、1 つ以上のコレクション名に一致する正規表現を指定します (例: collection01 | collection02 | collection03)。 必要に応じて、クエリを直接入力するか、そのためのファイルを指定して、インポートするデータのフィルター処理と整形を実行できます。
 
 > [!NOTE]
 > コレクション フィールドは正規表現に対応しているため、名前に正規表現文字を含む 1 つのコレクションからインポートする場合は、これらの文字を適宜エスケープする必要があります。
@@ -325,13 +325,13 @@ Azure Cosmos DB ソース インポーター オプションには、次の詳�
 Azure Cosmos DB からインポートするためのコマンド ライン サンプルを以下にいくつか示します。
 
 ```console
-#Migrate data from one Azure Cosmos DB collection to another Azure Cosmos DB collections
+#Migrate data from one Azure Cosmos container to another Azure Cosmos containers
 dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:TEColl /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:TESessions /t.CollectionThroughput:2500
 
-#Migrate data from more than one Azure Cosmos DB collection to a single Azure Cosmos DB collection
+#Migrate data from more than one Azure Cosmos container to a single Azure Cosmos container
 dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:comp1|comp2|comp3|comp4 /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:singleCollection /t.CollectionThroughput:2500
 
-#Export an Azure Cosmos DB collection to a JSON file
+#Export an Azure Cosmos container to a JSON file
 dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionThroughput:2500
 ```
 
@@ -361,7 +361,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 ## <a id="SQLBulkTarget"></a>SQL API へのインポート (一括インポート)
 
-Azure Cosmos DB 一括インポーターを使用すると、Azure Cosmos DB ストアド プロシージャによって使用可能な任意のソース オプションからインポートできるようになり、効率が向上します。 このツールは、1 つの単一パーティション Azure Cosmos DB コレクションへのインポートをサポートします。 また、データが複数の単一パーティションの Azure Cosmos DB コレクションにパーティション分割される、シャード化されたインポートもサポートされます。 データのパーティション分割の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関する記事をご覧ください。 このツールでは、ストアド プロシージャの作成と実行、およびターゲット コレクションからの削除が実行されます。  
+Azure Cosmos DB 一括インポーターを使用すると、Azure Cosmos DB ストアド プロシージャによって使用可能な任意のソース オプションからインポートできるようになり、効率が向上します。 このツールは、1 つの単一パーティション Azure Cosmos コンテナーへのインポートをサポートします。 また、データが複数の単一パーティションの Azure Cosmos コンテナーにパーティション分割される、シャード化されたインポートもサポートされます。 データのパーティション分割の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関する記事をご覧ください。 このツールでは、ストアド プロシージャの作成と実行、およびターゲット コレクションからの削除が実行されます。  
 
 ![Azure Cosmos DB 一括オプションのスクリーンショット](./media/import-data/documentdbbulk.png)
 
@@ -387,7 +387,7 @@ Azure Cosmos DB アカウントの接続文字列は、「[Azure Cosmos DB ア�
 > [!NOTE]
 > パフォーマンス スループットの設定は、コレクションの作成にのみ適用されます。 指定したコレクションが既に存在する場合、そのスループットは変更されません。
 
-複数のコレクションにインポートする場合、インポート ツールはハッシュベースのシャーディングをサポートします。 このシナリオでは、パーティション キーとして使用するドキュメント プロパティを指定します  (パーティション キーを空白のままにすると、ドキュメントはターゲット コレクション全体でランダムにシャード化されます)。
+複数のコレクションにインポートする場合、インポート ツールはハッシュベースのシャーディングをサポートします。 このシナリオでは、パーティション キーとして使用するドキュメント プロパティを指定します (パーティション キーを空白のままにすると、ドキュメントはターゲット コレクション全体でランダムにシャード化されます)。
 
 インポート時には、Azure Cosmos DB ドキュメントの ID プロパティとして使用するインポート ソースのフィールドを必要に応じて指定できます。 ドキュメントにこのプロパティがない場合は、インポート ツールによって ID プロパティの値として GUID が生成されます。
 
@@ -420,7 +420,7 @@ Azure Cosmos DB 一括インポーターには、次の詳細オプションが�
 
 ## <a id="SQLSeqTarget"></a>SQL API へのインポート (シーケンシャル レコードのインポート)
 
-Azure Cosmos DB シーケンシャル レコード インポーターを使用すると、レコードで使用可能なソース オプションからレコード単位でインポートできます。 ストアド プロシージャのクォータに達した既存のコレクションにインポートしている場合に、このオプションを選択できます。 このツールは、単一の Azure Cosmos DB コレクション (単一パーティション コレクションと複数パーティション コレクションの両方) へのインポートをサポートします。 また、複数の単一パーティション Azure Cosmos DB コレクションまたは複数パーティション Azure Cosmos DB コレクション全体でデータがパーティション分割される、シャード化されたインポートもサポートされます。 データのパーティション分割の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関する記事をご覧ください。
+Azure Cosmos DB シーケンシャル レコード インポーターを使用すると、レコードで使用可能なソース オプションからレコード単位でインポートできます。 ストアド プロシージャのクォータに達した既存のコレクションにインポートしている場合に、このオプションを選択できます。 このツールは、単一の Azure Cosmos コンテナー (単一パーティション コンテナーと複数パーティション コンテナーの両方) へのインポートをサポートします。 また、複数の単一パーティション Azure Cosmos コンテナー全体、または複数パーティション Azure Cosmos コンテナー全体でデータがパーティション分割される、シャード化されたインポートもサポートされます。 データのパーティション分割の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関する記事をご覧ください。
 
 ![Azure Cosmos DB シーケンシャル レコード インポート オプションのスクリーンショット](./media/import-data/documentdbsequential.png)
 
@@ -430,7 +430,7 @@ Azure Cosmos DB の接続文字列の形式は次のとおりです。
 
 Azure Cosmos DB アカウントの接続文字列は、[Azure Cosmos DB アカウントの管理方法](manage-account.md)に関するページの説明に従って、Azure portal の [キー] ページから取得できます。 ただし、その接続文字列には、データベースの名前を次の形式で追加する必要があります。
 
-`Database=<Azure Cosmos DB Database>;`
+`Database=<Azure Cosmos database>;`
 
 > [!NOTE]
 > [確認] を使用して、[接続文字列] フィールドで指定した Azure Cosmos DB インスタンスにアクセスできることを確認してください。
@@ -446,9 +446,9 @@ Azure Cosmos DB アカウントの接続文字列は、[Azure Cosmos DB アカ�
 > [!NOTE]
 > スループットの設定は、コレクションまたはデータベースの作成にのみ適用されます。 指定したコレクションが既に存在する場合、そのスループットは変更されません。
 
-複数のコレクションにインポートする場合、インポート ツールはハッシュベースのシャーディングをサポートします。 このシナリオでは、パーティション キーとして使用するドキュメント プロパティを指定します  (パーティション キーを空白のままにすると、ドキュメントはターゲット コレクション全体でランダムにシャード化されます)。
+複数のコレクションにインポートする場合、インポート ツールはハッシュベースのシャーディングをサポートします。 このシナリオでは、パーティション キーとして使用するドキュメント プロパティを指定します (パーティション キーを空白のままにすると、ドキュメントはターゲット コレクション全体でランダムにシャード化されます)。
 
-インポート時には、Azure Cosmos DB ドキュメントの ID プロパティとして使用するインポート ソースのフィールドを必要に応じて指定できます  (ドキュメントにこのプロパティがない場合は、インポート ツールによって ID プロパティの値として GUID が生成されます)。
+インポート時には、Azure Cosmos DB ドキュメントの ID プロパティとして使用するインポート ソースのフィールドを必要に応じて指定できます (ドキュメントにこのプロパティがない場合は、インポート ツールによって ID プロパティの値として GUID が生成されます)。
 
 インポート時に利用できる詳細オプションは多数あります。 まず、日付型をインポートする際 (たとえば SQL Server や MongoDB から) に、次の 3 つのインポート オプションから選択できます。
 
@@ -557,7 +557,7 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 
 ## <a name="confirm-import-settings-and-view-command-line"></a>インポート設定の確認とコマンド ラインの表示
 
-1. ソース情報、ターゲット情報、詳細な構成を指定した後、必要であれば、移行の概要を確認し、生成された移行コマンドの表示やコピーを実行します  (コマンドのコピーは、インポート操作を自動化するのに役立ちます)。
+1. ソース情報、ターゲット情報、詳細な構成を指定した後、必要であれば、移行の概要を確認し、生成された移行コマンドの表示やコピーを実行します (コマンドのコピーは、インポート操作を自動化するのに役立ちます)。
 
     ![概要画面のスクリーンショット](./media/import-data/summary.png)
 
@@ -567,7 +567,7 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 
     ![Azure Cosmos DB JSON エクスポート オプションのスクリーンショット](./media/import-data/viewresults.png)
 
-3. すべての値をリセットするか、既存の設定をそのまま使用して、新たにインポートを開始することもできます  (たとえば、接続文字列の情報やソースとターゲットの選択などをそのまま使用することもできます)。
+3. すべての値をリセットするか、既存の設定をそのまま使用して、新たにインポートを開始することもできます (たとえば、接続文字列の情報やソースとターゲットの選択などをそのまま使用することもできます)。
 
     ![Azure Cosmos DB JSON エクスポート オプションのスクリーンショット](./media/import-data/newimport.png)
 

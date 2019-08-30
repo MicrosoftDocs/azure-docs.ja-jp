@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 082033cebc68fc97f7cff9ce80eb02acbbf5f4b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145893"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016342"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -131,7 +131,7 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 
 * ストレージ アカウントに割り当てられている**タグ**。 多くの場合、タグは課金のためのリソースの分類に使用されます。
 
-* **SKU** は、LRS (ローカル冗長ストレージ) など、ストレージ アカウントのレプリケーション設定です。 たとえば、Standard\_LRS を Standard\_GRS または Standard\_RAGRS に変更できます。 Standard\_ZRS や Premium\_LRS をその他の SKU に変更したり、その他の SKU を Standard_ZRS や Premium_LRS に変更したりすることはできません。
+* **SKU** は、LRS (ローカル冗長ストレージ) など、ストレージ アカウントのレプリケーション設定です。 たとえば、Standard\_LRS を Standard\_GRS または Standard\_RAGRS に変更できます。 Standard\_ZRS、Standard\_GZRS、Standard\_RAGZRS、または Premium\_LRS をその他の SKU に変更することや、その他の SKU をこれらに変更することはできないことに注意してください。
 
 * Blob Storage アカウントの**アクセス層**。 アクセス層の値は**ホット**または**クール**に設定されます。この値を使用すると、ストレージ アカウントの使用方法に合致したアクセス層を選択してコストを最小限に抑えることができます。 詳細については、「[Azure Blob Storage: ホット、クール、およびアーカイブ (プレビュー) ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
 

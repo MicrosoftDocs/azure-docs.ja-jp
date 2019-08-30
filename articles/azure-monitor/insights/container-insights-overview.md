@@ -1,6 +1,6 @@
 ---
 title: コンテナー用 Azure Monitor の概要 | Microsoft Docs
-description: この記事では、AKS Container Insights ソリューションを監視するコンテナーに対する Azure Monitor と、Azure の AKS クラスターと Container Instances の正常性を監視して取得される値について説明します。
+description: この記事では、AKS Container Insights ソリューションを監視するコンテナーに対する Azure Monitor と、Azure の AKS クラスターと Container Instances の正常性を監視することによって提供される価値について説明します。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,18 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e1fca1532352c4955f478df70f818ee3151053c1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414136"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742207"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
-コンテナーに対する Azure Monitor は、Azure Kubernetes Service (AKS) でホストされた Azure Container Instances またはマネージド Kubernetes クラスターにデプロイされているコンテナー ワークロードのパフォーマンスを監視するために設計された機能です。 コンテナーの監視は、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
+コンテナーに対する Azure Monitor は、Azure Container Instances またはAzure Kubernetes Service (AKS) でホストされたマネージド Kubernetes クラスターにデプロイされているコンテナー ワークロードのパフォーマンスを監視するために設計された機能です。 コンテナーの監視は、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
 コンテナーに対する Azure Monitor では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを把握できます。 コンテナーのログも収集されます。  Kubernetes クラスターから監視を有効化すると、コンテナー化されたバージョンの Linux 向けの Log Analytics エージェントを使用してメトリックとログが自動的に収集されます。 メトリックはメトリック ストアに書き込まれ、ログ データは [Log Analytics](../log-query/log-query-overview.md) ワークスペースに関連付けられたログ ストアに書き込まれます。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "68414136"
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>コンテナーに対する Azure Monitor の機能
 
-Azure Monitor for containers では、お使いの Kubernetes クラスターやコンテナー ワークロードのパフォーマンスと正常性を把握できる Azure Monnitor のさまざまな機能を利用した、包括的な監視エクスペリエンスを提供しています。 Azure Monitor for containers を利用すると、次のことが可能です。
+コンテナーに対する Azure Monitor では、お使いの Kubernetes クラスターやコンテナー ワークロードのパフォーマンスと正常性を把握できる Azure Monitor のさまざまな機能を利用した、包括的な監視エクスペリエンスを提供しています。 コンテナーに対する Azure Monitor を利用すると、次のことが可能です。
 
 * ノードで実行されている AKS コンテナーと、そのプロセッサおよびメモリの平均使用率を特定します。 この知識は、リソースのボトルネックを特定するのに役立ちます。
 * Azure Container Instances でホストされているコンテナー グループとそのコンテナーのプロセッサおよびメモリ使用率を特定します。  
@@ -40,11 +40,13 @@ Azure Monitor for containers では、お使いの Kubernetes クラスターや
 * ノードまたはコンテナーの CPU やメモリの使用量がしきい値を超えた場合に、事前に通知したりそのことを記録したりするように、アラートを構成します。
 * [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-search.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、詳細な分析を作成します。
 
->[!NOTE]
->現時点では、Prometheus のサポートはパブリック プレビューの機能です。
->
+    >[!NOTE]
+    >現時点では、Prometheus のサポートはパブリック プレビューの機能です。
+    >
 
-Azure Monitor for containers を使用して AKS クラスターを監視する方法について、中間レベルの詳細情報を紹介した次の動画をご覧ください。
+* [AKS エンジンにデプロイされた](https://github.com/microsoft/OMS-docker/tree/aks-engine)コンテナー ワークロードを監視します。
+
+コンテナーに対する Azure Monitor を使用して AKS クラスターを監視する方法について、中間レベルの詳細情報を紹介した次の動画をご覧ください。
 
 > [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
 

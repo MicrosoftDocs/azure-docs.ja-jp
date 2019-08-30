@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: 2b87f9bcbaa0fd9d8a23d774e0765e1eb5b56633
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563898"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050082"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -248,7 +248,7 @@ ApiKey={API_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 発行済み (ステージングまたは運用) アプリのエンドポイントには、トレーニング済みアプリのエンドポイントとは "_異なる_" ルートがあります。 
 
-コンテナーの API のホストとしては `https://localhost:5000` を使用します。 
+コンテナーの API のホストとしては `http://localhost:5000` を使用します。 
 
 |パッケージの種類|Method|ルート|クエリ パラメーター|
 |--|--|--|--|

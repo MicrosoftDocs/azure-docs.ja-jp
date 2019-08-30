@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249dfeeb231c61b05af2e89f0dc02822cc18e627
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 15f7e830079c224e9e15dd45d14c1741376f8762
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702185"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851697"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
 
@@ -54,9 +54,11 @@ ms.locfileid: "67702185"
 
 **[ユーザーの割り当てが必要ですか?]** オプション:
 
+- このオプションを [はい] に設定した場合、ユーザーは、このアプリケーションに割り当てられるまでアプリケーションにアクセスできません。
+- このオプションを [いいえ] に設定した場合は、アプリケーションのディープリンク URL またはアプリケーションの URL に直接移動したすべてのユーザーにアクセス権が付与されます。
 - アプリケーションがアプリケーション アクセス パネルに表示されるかどうかには影響しません。 アクセス パネルにアプリケーションを表示するには、適切なユーザーまたはグループをアプリケーションに割り当てる必要があります。
-- SAML シングル サインオン用に構成されたクラウド アプリケーションと、アプリケーション プロキシを使用して構成されたオンプレミス アプリケーションでのみ機能します。 [アプリケーションのシングル サインオン](what-is-single-sign-on.md)に関するページを参照してください。
-- ユーザーはアプリケーションに同意する必要があります。 管理者はすべてのユーザーについて同意を許可することができます。  [アプリケーションに対するエンドユーザーの同意の構成](configure-user-consent.md)に関するページを参照してください。
+- SAML シングル サインオンを使用するように構成されたクラウド アプリケーション、Azure Active Directory の事前認証を使用するアプリケーション プロキシ アプリケーション、あるいはユーザーまたは管理者がアプリケーションに同意した後に OAuth 2.0 または OpenID Connect 認証を使用する Azure AD アプリケーション プラットフォームに直接構築されたアプリケーションでのみ機能します。 [アプリケーションのシングル サインオン](what-is-single-sign-on.md)に関するページを参照してください。 [アプリケーションに対するエンドユーザーの同意の構成](configure-user-consent.md)に関するページを参照してください。
+- その他のシングル サインオン モードを使用するようにアプリケーションが構成されている場合、このオプションは一切作用しません。
 
 ## <a name="assign-a-user-to-an-app---powershell"></a>アプリへのユーザーの割り当て - PowerShell
 

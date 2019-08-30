@@ -12,17 +12,16 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128451"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066535"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -155,7 +154,7 @@ Kudu で利用できる機能の詳細については、[知っておくべき A
 #### <a name="scale-the-app"></a>アプリをスケーリングする
 Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。 アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
 
-スケーリングの詳細については、[Azure App Service でのアプリのスケーリング](web-sites-scale.md)に関する記事を参照してください。
+スケーリングの詳細については、[Azure App Service でのアプリのスケーリング](manage-scale-up.md)に関する記事を参照してください。
 
 さらに、アプリケーションを複数のインスタンスで実行することもできます。 スケールアウトすると、処理能力が向上するだけでなく、ある程度のフォールト トレランスを確保することができます。 1 つのインスタンスでプロセスがダウンしても、他のインスタンスが要求の処理を続行します。
 

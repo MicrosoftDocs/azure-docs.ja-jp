@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ae4840877ae461244a76984ed8ac3edc82d57a38
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: c547ad256e6ba44da4ef81aa2a3aa2c77ba24815
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653977"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982748"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Commercial Marketplace のオファーの発行状態を確認する
 
@@ -75,7 +75,7 @@ ms.locfileid: "67653977"
 - 高品質のスクリーンショットと付属のビデオ、および
 - オファーで Microsoft のプラットフォームとツールを使用する方法の説明。
 
-コンテンツの検証条件の詳細については、[一般的な掲載ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general-policies)に関するページを参照してください。
+コンテンツの検証条件の詳細については、[一般的な掲載ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general)に関するページを参照してください。
 
 #### <a name="technical-validation"></a>技術的な検証
 

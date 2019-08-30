@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: b997451a25f8a093491a322376db95ea53165893
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357821"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989153"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートでの条件の使用
 
@@ -86,7 +86,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 既存のテンプレートに 2 つの変更を加えます。
 
 * ストレージ アカウント名パラメーターを追加します。 ユーザーは、新しいストレージ アカウント名を指定するか、または既存のストレージ アカウント名を指定することができます。
-* **newOrExisting** という新しいパラメーターを追加します。 デプロイする際には、このパラメーターを使用して、新しいストレージ アカウントを作成する、または既存のストレージ アカウントを使用する場所が判別されます。
+* **newOrExisting** という新しいパラメーターを追加します。 デプロイする際には、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかどうかが、このパラメーターを使用して判別されます。
 
 変更を行う手順は次のとおりです。
 

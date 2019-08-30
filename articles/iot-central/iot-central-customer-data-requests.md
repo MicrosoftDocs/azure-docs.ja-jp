@@ -3,17 +3,17 @@ title: Azure IoT Central の顧客データ要求機能 | Microsoft Docs
 description: Azure IoT Central の顧客データ要求機能
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/24/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 4c63ac8d6b16b2a0476600f67c66b2ccc8dc2aab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1775c8680b2e0d931c623d2e8ced2224205a767
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685568"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050490"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 

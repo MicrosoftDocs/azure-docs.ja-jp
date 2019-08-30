@@ -323,17 +323,17 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 | 日付/時刻 |DateTime |
 | Email |String |
 | Id |String |
-| 参照リレーションシップ |String |
-| 複数選択の候補リスト |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
 | Percent |Decimal |
-| 電話 |String |
-| 候補リスト |String |
+| Phone |String |
+| Picklist |String |
 | Text |String |
-| テキスト領域 |String |
-| テキスト領域 (ロング) |String |
-| テキスト領域 (リッチ) |String |
-| テキスト (暗号化) |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
 | URL |String |
 
 ## <a name="next-steps"></a>次の手順

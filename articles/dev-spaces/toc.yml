@@ -73,6 +73,8 @@
           href: how-to/manage-secrets.md
         - name: カスタム NuGet フィードを使用する
           href: how-to/use-custom-nuget-feed.md
+        - name: 非公開 Helm リポジトリを使用する
+          href: how-to/use-private-helm-repo.md
         - name: Azure Dev Spaces で kubectl を使用する
           href: how-to/use-kubectl-with-azure-dev-spaces.md
         - name: Azure Dev Spaces ツールをアップグレードする
@@ -85,5 +87,7 @@
           href: how-to/dev-spaces-business-continuity.md
         - name: Windows コンテナーを操作する
           href: how-to/run-dev-spaces-windows-containers.md
+        - name: カスタム イングレスと HTTPS に traefik を使用する
+          href: how-to/ingress-https-traefik.md
     - name: トラブルシューティング
       href: troubleshooting.md

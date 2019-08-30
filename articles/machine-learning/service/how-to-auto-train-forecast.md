@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 34902aa23339b62920f918ae19b410a99e226a0e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 793474495f3ab3ef06a17b48d15c2f91d0677365
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358799"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848158"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -27,17 +27,17 @@ ms.locfileid: "68358799"
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-自動化された ML を使用してテクニックとアプローチを組み合わせて、推奨される高品質な時系列予測を得ることができます。 自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 
+自動化された ML を使用してテクニックとアプローチを組み合わせて、推奨される高品質な時系列予測を得ることができます。 自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。
 
 このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるという利点があります。 現実の予測アプリケーションでは、複数の要因が予測に影響を与える可能性があります。 たとえば、売上の予測では、履歴による傾向とのインタラクション、為替レート、および価格のすべてが、売上の結果に貢献します。 さらなるメリットは、回帰モデルのすべての最新の革新が予測にすぐに適用されることです。
 
-将来の予測をどこまで行うか (予測期間) の他に、ラグなども[構成](#config)できます。 自動化された ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。 
+将来の予測をどこまで行うか (予測期間) の他に、ラグなども[構成](#config)できます。 自動化された ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
 
-トレーニング データから抽出されたフィーチャーが重要な役割を果たします。 さらに、自動化された ML では、標準的な前処理手順が実行され、追加の時系列フィーチャーが生成されて季節的影響がキャプチャされ、予測の精度が最大化されます。 
+トレーニング データから抽出されたフィーチャーが重要な役割を果たします。 さらに、自動化された ML では、標準的な前処理手順が実行され、追加の時系列フィーチャーが生成されて季節的影響がキャプチャされ、予測の精度が最大化されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](setup-create-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。
+* Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。
 * この記事では、自動化された機械学習実験の設定に基本的に精通していることを前提としています。 [チュートリアル](tutorial-auto-train-models.md)または[ハウツー](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の基本的な設計パターンについて確認してください。
 
 ## <a name="preparing-data"></a>データの準備
@@ -106,9 +106,13 @@ time_series_settings = {
     "grain_column_names": ["store"],
     "max_horizon": 50,
     "target_lags": 2,
-    "target_rolling_window_size": 10
+    "target_rolling_window_size": 10,
+    "preprocess": True,
 }
 ```
+
+> [!NOTE]
+> 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
 
 次に標準的な `AutoMLConfig` オブジェクトを作成し、`forecasting` タスクの種類を指定して、実験を送信します。 モデルの終了後、最適な実行イテレーションを取得します。
 

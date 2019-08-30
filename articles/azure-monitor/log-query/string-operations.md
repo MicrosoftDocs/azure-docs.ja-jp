@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466948"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741457"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の文字列を操作する
 
@@ -34,7 +34,7 @@ ms.locfileid: "68466948"
 
 
 ## <a name="strings-and-escaping-them"></a>文字列とそのエスケープ
-文字列の値は、一重引用符または二重引用符のいずれかで囲まれています。 バックスラッシュ (\) はエスケープ文字で、その次の文字をエスケープします。たとえば、\t はタブを、\n は改行を、そして \" は引用符自体を表します。
+文字列の値は、一重引用符または二重引用符のいずれかで囲まれています。 バックスラッシュ (\\) はエスケープ文字で、その次の文字をエスケープします。たとえば、\t はタブを、\n は改行を、そして \" は引用符自体を表します。
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"

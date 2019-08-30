@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: a6e5cd69a0655bf8235bf5755ab596ca2bde0387
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68003908"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716171"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -90,6 +90,12 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 **以前のレベル:** 値はターゲットの型に基づいて切り捨てられました。
 
 **1.2 レベル:** ターゲットの型に適合しない値は、出力エラー ポリシーに従って処理されます。
+
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>SQL 出力への書き込み時のレコードと配列のシリアル化
+
+**以前のレベル:** レコードは "Record" として書き込まれ、配列は "Array" として書き込まれました。
+
+**1.2 レベル:** レコードと配列は JSON 形式でシリアル化されます。
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>関数のプレフィックスの厳密な検証
 
